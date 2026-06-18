@@ -2661,7 +2661,7 @@ elastic scattering events.</value>
     <value>6, 6</value>
   </data>
   <data name="buttonCopyClipboard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>

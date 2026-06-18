@@ -58,27 +58,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericUpDown2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 59</value>
-  </data>
-  <data name="numericUpDown3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 59</value>
-  </data>
-  <data name="labelV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 41</value>
-  </data>
-  <data name="numericUpDown1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 59</value>
-  </data>
-  <data name="labelU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 41</value>
-  </data>
-  <data name="labelW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 41</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
   <data name="comboBoxColor.ToolTip" xml:space="preserve">
     <value>極密度を表示するカラーマップを選択します。Cold-Warm
 (青〜赤) または Gray scale (グレースケール)。</value>

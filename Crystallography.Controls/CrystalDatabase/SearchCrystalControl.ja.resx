@@ -58,230 +58,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxSearchName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSearchName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkBoxSearchName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
-  </data>
   <data name="checkBoxSearchName.Text" xml:space="preserve">
     <value>名前</value>
-  </data>
-  <data name="textBoxSearchName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 22</value>
-  </data>
-  <data name="textBoxSearchName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 25</value>
-  </data>
-  <data name="checkBoxSearchElements.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSearchElements.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 53</value>
-  </data>
-  <data name="checkBoxSearchElements.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
   </data>
   <data name="checkBoxSearchElements.Text" xml:space="preserve">
     <value>元素</value>
   </data>
-  <data name="buttonPeriodicTable.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonPeriodicTable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 75</value>
-  </data>
-  <data name="buttonPeriodicTable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 30</value>
-  </data>
   <data name="buttonPeriodicTable.Text" xml:space="preserve">
     <value>周期表</value>
-  </data>
-  <data name="checkBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 111</value>
-  </data>
-  <data name="checkBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
   </data>
   <data name="checkBoxSearchReference.Text" xml:space="preserve">
     <value>文献</value>
   </data>
-  <data name="textBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 133</value>
-  </data>
-  <data name="textBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 25</value>
-  </data>
-  <data name="checkBoxSearchCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSearchCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 164</value>
-  </data>
-  <data name="checkBoxSearchCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 22</value>
-  </data>
   <data name="checkBoxSearchCrystalSystem.Text" xml:space="preserve">
     <value>結晶系</value>
-  </data>
-  <data name="comboBoxSearchCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 186</value>
-  </data>
-  <data name="comboBoxSearchCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 25</value>
-  </data>
-  <data name="checkBoxSearchCellParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSearchCellParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 217</value>
-  </data>
-  <data name="checkBoxSearchCellParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
   </data>
   <data name="checkBoxSearchCellParameter.Text" xml:space="preserve">
     <value>格子定数</value>
   </data>
-  <data name="groupBoxCellParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 239</value>
-  </data>
-  <data name="groupBoxCellParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 125</value>
-  </data>
-  <data name="checkBoxDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 370</value>
-  </data>
-  <data name="checkBoxDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
   <data name="checkBoxDspacing.Text" xml:space="preserve">
     <value>d値</value>
-  </data>
-  <data name="groupBoxDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 392</value>
-  </data>
-  <data name="groupBoxDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 128</value>
-  </data>
-  <data name="checkBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 524</value>
-  </data>
-  <data name="checkBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
   </data>
   <data name="checkBoxDensity.Text" xml:space="preserve">
     <value>密度</value>
   </data>
-  <data name="groupBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 546</value>
-  </data>
-  <data name="groupBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 44</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 608</value>
-  </data>
-  <data name="numericBoxCellGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 63</value>
-  </data>
-  <data name="numericBoxCellGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 25</value>
-  </data>
-  <data name="numericBoxCellAngleErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 93</value>
-  </data>
-  <data name="numericBoxCellAngleErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 25</value>
-  </data>
-  <data name="numericBoxCellLengthErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="numericBoxCellC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 25</value>
-  </data>
-  <data name="numericBoxCellBeta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 37</value>
-  </data>
-  <data name="numericBoxCellBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 25</value>
-  </data>
-  <data name="numericBoxCellAlpha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 11</value>
-  </data>
-  <data name="numericBoxCellAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 25</value>
-  </data>
-  <data name="numericBoxCellB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 25</value>
-  </data>
-  <data name="numericBoxCellA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 25</value>
-  </data>
-  <data name="numericBoxD3Err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 69</value>
-  </data>
-  <data name="numericBoxD3Err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="numericBoxD2Err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 40</value>
-  </data>
-  <data name="numericBoxD2Err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="numericBoxD1Err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 10</value>
-  </data>
-  <data name="numericBoxD1Err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
-  </data>
-  <data name="numericBoxD3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 25</value>
-  </data>
-  <data name="numericBoxD2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 25</value>
-  </data>
-  <data name="numericBoxD1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 25</value>
-  </data>
-  <data name="checkBoxIgnoreScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxIgnoreScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
   <data name="checkBoxIgnoreScatteringFactor.Text" xml:space="preserve">
     <value>散乱因子を無視</value>
   </data>
-  <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="numericBoxDensityErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 13</value>
-  </data>
-  <data name="buttonSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 33</value>
-  </data>
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>検索</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 641</value>
   </data>
   <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
     <value>周期表を開き、検索結果に含める

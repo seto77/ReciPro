@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -118,60 +109,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="groupBoxAuthors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 162</value>
-  </data>
   <data name="groupBoxAuthors.Text" xml:space="preserve">
     <value>著者</value>
-  </data>
-  <data name="groupBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 162</value>
   </data>
   <data name="groupBoxTitle.Text" xml:space="preserve">
     <value>タイトル</value>
   </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 162</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="textBoxAuthor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 140</value>
-  </data>
   <data name="textBoxAuthor.ToolTip" xml:space="preserve">
     <value>この結晶構造の出典文献の著者名です。</value>
   </data>
-  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="textBoxTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 140</value>
-  </data>
   <data name="textBoxTitle.ToolTip" xml:space="preserve">
     <value>この結晶構造の出典文献のタイトルです。</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 22</value>
-  </data>
-  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 310</value>
-  </data>
-  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
   </data>
   <data name="tabPageBasicInfo.Text" xml:space="preserve">
     <value>格子/対称性</value>
@@ -182,25 +131,7 @@
   <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
     <value>格子定数、対称性、その他の基本情報</value>
   </data>
-  <data name="panelSymmetryInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
-  </data>
-  <data name="flowLayoutPanelCellProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 161</value>
-  </data>
-  <data name="flowLayoutPanelCellProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 113</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxVolumeAng.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxVolumeAng.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
     <value>単位胞体積</value>
   </data>
@@ -210,35 +141,17 @@
   <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
     <value>単位胞の体積 (Å³)</value>
   </data>
-  <data name="numericBoxCellVolumeNm.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCellVolumeNm.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
     <value>単位胞の体積 (nm³)</value>
   </data>
   <data name="numericBoxCellVolumeNm.ToolTip1" xml:space="preserve">
     <value>単位胞の体積 (nm³)</value>
   </data>
-  <data name="numericBoxCellMass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>×10⁻²⁴ g</value>
   </data>
-  <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxCellMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
     <value>単位胞質量</value>
-  </data>
-  <data name="numericBoxCellMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 25</value>
   </data>
   <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
     <value>単位胞の質量 (10⁻²⁴ g)</value>
@@ -246,26 +159,8 @@
   <data name="numericBoxCellMass.ToolTip1" xml:space="preserve">
     <value>単位胞の質量 (10⁻²⁴ g)</value>
   </data>
-  <data name="numericBoxMolarVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMolarVolume.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMolarVolume.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
     <value>モル体積</value>
-  </data>
-  <data name="numericBoxMolarVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 29</value>
-  </data>
-  <data name="numericBoxMolarVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
     <value>モル体積 (cm³/mol)</value>
@@ -273,20 +168,8 @@
   <data name="numericBoxMolarVolume.ToolTip1" xml:space="preserve">
     <value>モル体積 (cm³/mol)</value>
   </data>
-  <data name="numericBoxMolarMass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxMolarMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMolarMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxMolarMass.HeaderText" xml:space="preserve">
     <value>モル質量</value>
-  </data>
-  <data name="numericBoxMolarMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 25</value>
   </data>
   <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
     <value>モル質量 (g/mol)</value>
@@ -294,26 +177,8 @@
   <data name="numericBoxMolarMass.ToolTip1" xml:space="preserve">
     <value>モル質量 (g/mol)</value>
   </data>
-  <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxDensity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxDensity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>密度</value>
-  </data>
-  <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 54</value>
-  </data>
-  <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 25</value>
   </data>
   <data name="numericBoxDensity.ToolTip" xml:space="preserve">
     <value>密度 (g/cm³)</value>
@@ -321,43 +186,13 @@
   <data name="numericBoxDensity.ToolTip1" xml:space="preserve">
     <value>密度 (g/cm³)</value>
   </data>
-  <data name="flowLayoutPanelSymmetryActions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 136</value>
-  </data>
-  <data name="flowLayoutPanelSymmetryActions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 25</value>
-  </data>
-  <data name="buttonConvertToSubgroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 0</value>
-  </data>
-  <data name="buttonConvertToSubgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 23</value>
-  </data>
   <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
     <value>結晶を部分群（対称性を下げた空間群）へ
 変換します。現在未実装（作成中）です。</value>
   </data>
-  <data name="buttonChangeAxesOriginSetting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 0</value>
-  </data>
-  <data name="buttonChangeAxesOriginSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 25</value>
-  </data>
   <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
     <value>同じ空間群内で軸や原点の取り方が異なる設定（例:
 別の原点選択やセル選択）へ結晶を変換します。</value>
-  </data>
-  <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 136</value>
-  </data>
-  <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabPageAtom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子情報</value>
@@ -368,21 +203,6 @@
   <data name="tabPageAtom.ToolTipText" xml:space="preserve">
     <value>原子位置と種類</value>
   </data>
-  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 276</value>
-  </data>
-  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 26</value>
-  </data>
-  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 22</value>
-  </data>
   <data name="resetToolStripMenuItem.Text" xml:space="preserve">
     <value>デバイワラー因子をゼロにする</value>
   </data>
@@ -390,190 +210,70 @@
     <value>全原子の Debye-Waller 因子（熱振動によ
 る回折強度の減衰）をゼロに設定します。</value>
   </data>
-  <data name="tabPageBondsPolyhedra.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabPageBondsPolyhedra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
   <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
     <value>多面体/結合描画設定</value>
-  </data>
-  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 276</value>
-  </data>
-  <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
   </data>
   <data name="tabPageReference.Text" xml:space="preserve">
     <value>引用文献</value>
   </data>
-  <data name="groupBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 55</value>
-  </data>
   <data name="groupBoxJournal.Text" xml:space="preserve">
     <value>雑誌名</value>
-  </data>
-  <data name="textBoxJournal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 33</value>
   </data>
   <data name="textBoxJournal.ToolTip" xml:space="preserve">
     <value>この結晶構造の出典文献が掲載された雑誌名です。</value>
   </data>
-  <data name="groupBoxNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 57</value>
-  </data>
-  <data name="textBoxMemo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 35</value>
-  </data>
   <data name="textBoxMemo.ToolTip" xml:space="preserve">
     <value>この結晶に関する自由記述のメモです。</value>
-  </data>
-  <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
   </data>
   <data name="tabPageEOS.Text" xml:space="preserve">
     <value>状態方程式</value>
   </data>
-  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
-  </data>
-  <data name="tabPageElasticity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
-  </data>
-  <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
-  <data name="numericBoxStress33.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress33.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStress33.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルの法線成分
 σ33（c 軸方向、弾性定数と同じ単位 GPa）です。</value>
   </data>
-  <data name="numericBoxStress22.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress22.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStress22.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルの法線成分
 σ22（b 軸方向、弾性定数と同じ単位 GPa）です。</value>
-  </data>
-  <data name="numericBoxStress11.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress11.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStress11.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルの法線成分
 σ11（a 軸方向、弾性定数と同じ単位 GPa）です。</value>
   </data>
-  <data name="numericBoxStress23.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress23.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStress23.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルのせん
 断成分 σ23（弾性定数と同じ単位 GPa）です。</value>
-  </data>
-  <data name="numericBoxStress13.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress13.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStress13.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルのせん
 断成分 σ13（弾性定数と同じ単位 GPa）です。</value>
   </data>
-  <data name="numericBoxStress12.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStress12.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStress12.ToolTip" xml:space="preserve">
     <value>Reuss モデルで与える応力テンソルのせん
 断成分 σ12（弾性定数と同じ単位 GPa）です。</value>
-  </data>
-  <data name="numericBoxStrain33.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain33.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 123</value>
   </data>
   <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソルの
 法線成分 ε33（c 軸方向、無次元）です。</value>
   </data>
-  <data name="numericBoxStrain11.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain11.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソルの
 法線成分 ε11（a 軸方向、無次元）です。</value>
-  </data>
-  <data name="numericBoxStrain22.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain22.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソルの
 法線成分 ε22（b 軸方向、無次元）です。</value>
   </data>
-  <data name="numericBoxStrain12.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain12.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソル
 のせん断成分 ε12（無次元）です。</value>
   </data>
-  <data name="numericBoxStrain23.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain23.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソル
 のせん断成分 ε23（無次元）です。</value>
-  </data>
-  <data name="numericBoxStrain13.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain13.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
     <value>Voigt モデルで与える格子歪みテンソル
@@ -581,12 +281,6 @@
   </data>
   <data name="buttonStressSet.ToolTip" xml:space="preserve">
     <value>入力した歪み・応力・Hill 係数を結晶に適用します。</value>
-  </data>
-  <data name="numericBoxHill.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxHill.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHill.ToolTip" xml:space="preserve">
     <value>Voigt(均一歪み)モデルと Reuss(均一応力)モデルを
@@ -606,18 +300,6 @@
     <value>Voigt（均一歪み）モデルで与える格子歪み
 テンソル。独立な 6 成分を入力します（無次元）。</value>
   </data>
-  <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 226</value>
-  </data>
-  <data name="flowLayoutPanelRandomOrientationActions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 27</value>
-  </data>
-  <data name="flowLayoutPanelRandomOrientationSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 27</value>
-  </data>
-  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
   <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
     <value>ランダムな配向の結晶子集団を生成し、極点図に表示します。</value>
   </data>
@@ -631,12 +313,6 @@
 分解能（0.5〜45°）。小さいほど細かく
 サンプリングしますが計算は遅くなります。</value>
   </data>
-  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 15</value>
-  </data>
   <data name="label29.Text" xml:space="preserve">
     <value>分割</value>
   </data>
@@ -645,61 +321,25 @@
 する分割数（1〜45）。大きいほど分布が滑ら
 かになりますが計算負荷が増えます。</value>
   </data>
-  <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 2</value>
-  </data>
   <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
     <value>各方位セルをさらに細分してサブサンプリング
 する分割数（1〜45）。大きいほど分布が滑ら
 かになりますが計算負荷が増えます。</value>
   </data>
-  <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 4</value>
-  </data>
   <data name="label101.ToolTip" xml:space="preserve">
     <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
 広がり（ピーク幅）と回折の体積重みを決定します。</value>
-  </data>
-  <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>288, 2</value>
   </data>
   <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
     <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
 広がり（ピーク幅）と回折の体積重みを決定します。</value>
   </data>
-  <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 4</value>
-  </data>
   <data name="label99.ToolTip" xml:space="preserve">
     <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
 広がり（ピーク幅）と回折の体積重みを決定します。</value>
   </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
-  <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
-  </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
-  <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
-  </data>
-  <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>描画色</value>
-  </data>
-  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 0</value>
-  </data>
-  <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 24</value>
   </data>
   <data name="colorControl.ToolTip" xml:space="preserve">
     <value>この結晶の表示色。3D 構造表示と
@@ -709,26 +349,8 @@
     <value>この結晶の表示色。3D 構造表示と
 回折プロファイル曲線の両方で使用されます。</value>
   </data>
-  <data name="panelFormula.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="panelFormula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 24</value>
-  </data>
-  <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 0</value>
-  </data>
-  <data name="textBoxFormula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 24</value>
-  </data>
   <data name="textBoxFormula.ToolTip" xml:space="preserve">
     <value>化学式</value>
-  </data>
-  <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
   </data>
   <data name="label90.Text" xml:space="preserve">
     <value>化学組成</value>
@@ -736,26 +358,8 @@
   <data name="label90.ToolTip" xml:space="preserve">
     <value>化学式</value>
   </data>
-  <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxZnumber.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxZnumber.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
     <value>Z数</value>
-  </data>
-  <data name="numericBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 0</value>
-  </data>
-  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 24</value>
   </data>
   <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
     <value>Z（単位胞中の化学式の数）</value>
@@ -763,89 +367,35 @@
   <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
     <value>Z（単位胞中の化学式の数）</value>
   </data>
-  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 242</value>
-  </data>
-  <data name="beamInteractionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
   <data name="beamInteractionToolStripMenuItem.Text" xml:space="preserve">
     <value>ビーム相互作用</value>
-  </data>
-  <data name="symmetryInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
   </data>
   <data name="symmetryInformationToolStripMenuItem.Text" xml:space="preserve">
     <value>対称性詳細</value>
   </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
-  </data>
-  <data name="importCrystalFromCIFAMCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
   <data name="importCrystalFromCIFAMCToolStripMenuItem.Text" xml:space="preserve">
     <value>CIFファイル又はAMCファイルから読み込み</value>
-  </data>
-  <data name="exportThisCrystalAsCIFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
   </data>
   <data name="exportThisCrystalAsCIFToolStripMenuItem.Text" xml:space="preserve">
     <value>CIFファイルとして出力</value>
   </data>
-  <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
-  </data>
-  <data name="revertCellConstantsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
   <data name="revertCellConstantsToolStripMenuItem.Text" xml:space="preserve">
     <value>アプリ起動時の格子定数に戻す</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
-  </data>
-  <data name="strainControlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
   </data>
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>格子ひずみ (invisible)</value>
   </data>
-  <data name="convertToP1SymmetryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
   <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
     <value>P1に変換</value>
-  </data>
-  <data name="convertToSuperstructureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
   </data>
   <data name="convertToSuperstructureToolStripMenuItem.Text" xml:space="preserve">
     <value>超構造に変換</value>
   </data>
-  <data name="convertToAnotherSpacegroupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
-  </data>
   <data name="convertToAnotherSpacegroupToolStripMenuItem.Text" xml:space="preserve">
     <value>異なる軸・原点セッティングの空間群に変換</value>
   </data>
-  <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 0</value>
-  </data>
-  <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>281, 25</value>
-  </data>
   <data name="textBoxName.ToolTip" xml:space="preserve">
     <value>結晶の名前</value>
-  </data>
-  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 19</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>結晶名</value>
@@ -853,29 +403,11 @@
   <data name="label22.ToolTip" xml:space="preserve">
     <value>結晶の名前</value>
   </data>
-  <data name="buttonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonBeamInteraction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 0</value>
-  </data>
-  <data name="buttonBeamInteraction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 26</value>
-  </data>
   <data name="buttonBeamInteraction.Text" xml:space="preserve">
     <value>ビーム相互作用</value>
   </data>
   <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
     <value>ビーム相互作用データを別ウィンドウで開く</value>
-  </data>
-  <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonSymmetryInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 0</value>
-  </data>
-  <data name="buttonSymmetryInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 26</value>
   </data>
   <data name="buttonSymmetryInfo.Text" xml:space="preserve">
     <value>対称性詳細</value>
@@ -883,35 +415,8 @@
   <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
     <value>対称性の詳細情報を別ウィンドウで開く</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 0</value>
-  </data>
-  <data name="panelNameAndActions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 28</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 362</value>
-  </data>
-  <data name="numericBoxMeanZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanZnumber.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxMeanZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanZnumber.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxMeanZnumber.HeaderText" xml:space="preserve">
     <value>平均Z (個数)</value>
-  </data>
-  <data name="numericBoxMeanZnumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="numericBoxMeanZnumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxMeanZnumber.ToolTip" xml:space="preserve">
     <value>個数平均の平均原子番号:  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = 単位胞あたりの元素 i の原子数, 占有率込み)</value>
@@ -919,26 +424,8 @@
   <data name="numericBoxMeanZnumber.ToolTip1" xml:space="preserve">
     <value>個数平均の平均原子番号:  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = 単位胞あたりの元素 i の原子数, 占有率込み)</value>
   </data>
-  <data name="numericBoxMeanZmass.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanZmass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxMeanZmass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanZmass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxMeanZmass.HeaderText" xml:space="preserve">
     <value>平均Z (質量)</value>
-  </data>
-  <data name="numericBoxMeanZmass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="numericBoxMeanZmass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxMeanZmass.ToolTip" xml:space="preserve">
     <value>質量平均の平均原子番号:  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (モンテカルロ電子飛程計算の実効 Z)</value>
@@ -946,26 +433,8 @@
   <data name="numericBoxMeanZmass.ToolTip1" xml:space="preserve">
     <value>質量平均の平均原子番号:  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (モンテカルロ電子飛程計算の実効 Z)</value>
   </data>
-  <data name="numericBoxMeanAtomicWeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanAtomicWeight.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxMeanAtomicWeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxMeanAtomicWeight.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxMeanAtomicWeight.HeaderText" xml:space="preserve">
     <value>平均A</value>
-  </data>
-  <data name="numericBoxMeanAtomicWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="numericBoxMeanAtomicWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxMeanAtomicWeight.ToolTip" xml:space="preserve">
     <value>原子あたりの平均原子量:  A = Σ(n_i·A_i) / Σ n_i   (Molar Mass=式単位あたり とは別物)</value>
@@ -973,26 +442,8 @@
   <data name="numericBoxMeanAtomicWeight.ToolTip1" xml:space="preserve">
     <value>原子あたりの平均原子量:  A = Σ(n_i·A_i) / Σ n_i   (Molar Mass=式単位あたり とは別物)</value>
   </data>
-  <data name="numericBoxAtomicNumberDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAtomicNumberDensity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxAtomicNumberDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAtomicNumberDensity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxAtomicNumberDensity.HeaderText" xml:space="preserve">
     <value>原子数密度</value>
-  </data>
-  <data name="numericBoxAtomicNumberDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="numericBoxAtomicNumberDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxAtomicNumberDensity.ToolTip" xml:space="preserve">
     <value>原子数密度 = 単位胞内の原子数 / 単位胞体積</value>
@@ -1000,26 +451,8 @@
   <data name="numericBoxAtomicNumberDensity.ToolTip1" xml:space="preserve">
     <value>原子数密度 = 単位胞内の原子数 / 単位胞体積</value>
   </data>
-  <data name="numericBoxElectronDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxElectronDensity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxElectronDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxElectronDensity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
   <data name="numericBoxElectronDensity.HeaderText" xml:space="preserve">
     <value>電子数密度</value>
-  </data>
-  <data name="numericBoxElectronDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="numericBoxElectronDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
   </data>
   <data name="numericBoxElectronDensity.ToolTip" xml:space="preserve">
     <value>電子数密度 = Σ(n_i·Z_i) / 単位胞体積</value>

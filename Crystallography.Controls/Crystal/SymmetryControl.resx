@@ -319,7 +319,7 @@ deviation) fields for the cell constants.</value>
     <value>8</value>
   </data>
   <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 3</value>
@@ -1191,7 +1191,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>18</value>
   </data>
   <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex2.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 30</value>
@@ -1218,7 +1218,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>19</value>
   </data>
   <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex3.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 58</value>
@@ -1245,7 +1245,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>20</value>
   </data>
   <data name="labelLaTex4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex4.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1272,7 +1272,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>21</value>
   </data>
   <data name="labelLaTex5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 30</value>
@@ -1299,7 +1299,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>22</value>
   </data>
   <data name="labelLaTex6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex6.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 58</value>

@@ -17,9 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Culture resx are text-only (de/fr/es/pt/zh-Hans, ReciPro + Controls)
+      # 260618Cl: ja を既定スコープへ格上げ (ReciPro 本体・Controls とも text-only 化済) し、
+      #   neutral snap も両ルートへ拡大。以前の ja 専用ステップ / --root ReciPro 限定は解消。
+      - name: Culture resx are text-only (de/fr/es/pt/zh-Hans/ja, ReciPro + Controls)
         run: python tools/check_resx_textonly.py
-      - name: Culture resx are text-only (ja, ReciPro app only)
-        run: python tools/check_resx_textonly.py --lang ja --root ReciPro
-      - name: Neutral resx font sizes are tier-normalized (ReciPro app only)
-        run: python tools/snap_neutral_font_tiers.py --root ReciPro
+      - name: Neutral resx font sizes are tier-normalized (ReciPro + Controls)
+        run: python tools/snap_neutral_font_tiers.py

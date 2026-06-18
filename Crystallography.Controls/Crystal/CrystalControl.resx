@@ -712,7 +712,7 @@ crystal structure is taken from.</value>
     <value>False</value>
   </data>
   <data name="buttonConvertToSubgroup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="buttonConvertToSubgroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2090,7 +2090,7 @@ in the Voigt model (dimensionless).</value>
     <value>11</value>
   </data>
   <data name="labelLaTex6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex6.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 106</value>
@@ -2117,7 +2117,7 @@ in the Voigt model (dimensionless).</value>
     <value>12</value>
   </data>
   <data name="labelLaTex5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex5.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 69</value>
@@ -2144,7 +2144,7 @@ in the Voigt model (dimensionless).</value>
     <value>13</value>
   </data>
   <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex3.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 29</value>
@@ -2171,7 +2171,7 @@ in the Voigt model (dimensionless).</value>
     <value>14</value>
   </data>
   <data name="labelLaTex4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex4.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 69</value>
@@ -2198,7 +2198,7 @@ in the Voigt model (dimensionless).</value>
     <value>15</value>
   </data>
   <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex2.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 29</value>
@@ -2225,7 +2225,7 @@ in the Voigt model (dimensionless).</value>
     <value>16</value>
   </data>
   <data name="labelLaTex13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex13.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 162</value>
@@ -2252,7 +2252,7 @@ in the Voigt model (dimensionless).</value>
     <value>17</value>
   </data>
   <data name="labelLaTex12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex12.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 106</value>
@@ -2279,7 +2279,7 @@ in the Voigt model (dimensionless).</value>
     <value>18</value>
   </data>
   <data name="labelLaTex11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex11.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 69</value>
@@ -2306,7 +2306,7 @@ in the Voigt model (dimensionless).</value>
     <value>19</value>
   </data>
   <data name="labelLaTex10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex10.Location" type="System.Drawing.Point, System.Drawing">
     <value>256, 69</value>
@@ -2333,7 +2333,7 @@ in the Voigt model (dimensionless).</value>
     <value>20</value>
   </data>
   <data name="labelLaTex9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex9.Location" type="System.Drawing.Point, System.Drawing">
     <value>306, 28</value>
@@ -2360,7 +2360,7 @@ in the Voigt model (dimensionless).</value>
     <value>21</value>
   </data>
   <data name="labelLaTex8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex8.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 28</value>
@@ -2387,7 +2387,7 @@ in the Voigt model (dimensionless).</value>
     <value>22</value>
   </data>
   <data name="labelLaTex7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex7.Location" type="System.Drawing.Point, System.Drawing">
     <value>209, 29</value>
@@ -2414,7 +2414,7 @@ in the Voigt model (dimensionless).</value>
     <value>23</value>
   </data>
   <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 28</value>

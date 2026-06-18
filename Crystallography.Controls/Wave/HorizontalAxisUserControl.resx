@@ -1107,7 +1107,7 @@ diffracted beam); used in monochromatic mode.</value>
     <value>Å⁻¹</value>
   </data>
   <data name="groupBoxHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -1640,7 +1640,7 @@ per unit wavelength interval is constant.</value>
     <value>KeV</value>
   </data>
   <data name="groupBoxWaveProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxTofAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>

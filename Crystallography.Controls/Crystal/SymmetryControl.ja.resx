@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -118,39 +109,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11pt</value>
-  </data>
-  <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 109</value>
-  </data>
-  <data name="labelLaTex1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 15</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelLaTex1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="labelLaTex1.Text" xml:space="preserve">
     <value>\alpha</value>
   </data>
   <data name="labelLaTex1.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 103</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 26</value>
-  </data>
-  <data name="checkBoxShowError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 106</value>
-  </data>
-  <data name="checkBoxShowError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
   </data>
   <data name="checkBoxShowError.Text" xml:space="preserve">
     <value>誤差表示</value>
@@ -160,38 +124,8 @@
 esd）欄の表示／非表示を切り替えます。</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 82</value>
-  </data>
-  <data name="groupBoxCellConstants.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>352, 132</value>
-  </data>
   <data name="groupBoxCellConstants.Text" xml:space="preserve">
     <value>格子定数</value>
-  </data>
-  <data name="radioButtonNanoMeter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 0</value>
-  </data>
-  <data name="radioButtonNanoMeter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 26</value>
-  </data>
-  <data name="radioButtonAngstrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 0</value>
-  </data>
-  <data name="radioButtonAngstrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 26</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 23</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>長さの単位</value>
@@ -199,65 +133,17 @@ esd）欄の表示／非表示を切り替えます。</value>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>格子定数 a, b, c の長さ単位（Å または nm）を選択します。</value>
   </data>
-  <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 54</value>
-  </data>
-  <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 27</value>
-  </data>
-  <data name="numericBoxBeta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 27</value>
-  </data>
-  <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
   <data name="numericBoxBeta.ToolTip" xml:space="preserve">
     <value>格子定数 β (度)</value>
   </data>
   <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
     <value>格子定数 β (度)</value>
   </data>
-  <data name="numericBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 0</value>
-  </data>
-  <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
   <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
     <value>格子定数 α (度)</value>
   </data>
   <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
     <value>格子定数 α (度)</value>
-  </data>
-  <data name="label47.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 0</value>
-  </data>
-  <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 54</value>
-  </data>
-  <data name="numericBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 28</value>
-  </data>
-  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 15</value>
-  </data>
-  <data name="numericBoxAlphaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 0</value>
-  </data>
-  <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
-  <data name="numericBoxBetaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 27</value>
-  </data>
-  <data name="numericBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
-  <data name="numericBoxA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 0</value>
-  </data>
-  <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
     <value>単位胞の格子定数 a（単位は Å / nm 切替）。
@@ -267,41 +153,11 @@ esd）欄の表示／非表示を切り替えます。</value>
     <value>単位胞の格子定数 a（単位は Å / nm 切替）。
 結晶系の制約に従って入力されます。</value>
   </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 0</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 15</value>
-  </data>
-  <data name="labelLengthUnitC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 54</value>
-  </data>
-  <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 54</value>
-  </data>
-  <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 28</value>
-  </data>
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
     <value>格子定数 γ (度)</value>
   </data>
   <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
     <value>格子定数 γ (度)</value>
-  </data>
-  <data name="labelLengthUnitB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 27</value>
-  </data>
-  <data name="numericBoxBErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 27</value>
-  </data>
-  <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
-  <data name="numericBoxB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 27</value>
-  </data>
-  <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
     <value>単位胞の格子定数 b（単位は Å / nm 切替）。
@@ -311,33 +167,6 @@ esd）欄の表示／非表示を切り替えます。</value>
     <value>単位胞の格子定数 b（単位は Å / nm 切替）。
 対称性により a に固定される場合があります。</value>
   </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 15</value>
-  </data>
-  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 54</value>
-  </data>
-  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 15</value>
-  </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 54</value>
-  </data>
-  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 15</value>
-  </data>
-  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 27</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 15</value>
-  </data>
-  <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 54</value>
-  </data>
-  <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 28</value>
-  </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
     <value>単位胞の格子定数 c（単位は Å / nm 切替）。
 対称性により a に固定される場合があります。</value>
@@ -346,55 +175,16 @@ esd）欄の表示／非表示を切り替えます。</value>
     <value>単位胞の格子定数 c（単位は Å / nm 切替）。
 対称性により a に固定される場合があります。</value>
   </data>
-  <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 54</value>
-  </data>
-  <data name="numericBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 28</value>
-  </data>
-  <data name="numericBoxAErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 0</value>
-  </data>
-  <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 27</value>
-  </data>
-  <data name="labelLengthUnitA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 0</value>
-  </data>
-  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 0</value>
-  </data>
-  <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 132</value>
-  </data>
   <data name="groupBoxSymmetry.Text" xml:space="preserve">
     <value>対称性</value>
-  </data>
-  <data name="comboBoxSpaceGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 74</value>
-  </data>
-  <data name="comboBoxSpaceGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 23</value>
   </data>
   <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
     <value>空間群を（番号 : Hermann–Mauguin (HM) 記号で）選択し
 ます。編集可能な格子定数が対称性で制限されます。</value>
   </data>
-  <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 45</value>
-  </data>
-  <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 23</value>
-  </data>
   <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
     <value>点群を Hermann–Mauguin (HM) 記号で選択しま
 す。選択に応じて空間群の候補が絞られます。</value>
-  </data>
-  <data name="comboBoxCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="comboBoxCrystalSystem.Items" xml:space="preserve">
     <value>不明</value>
@@ -420,21 +210,9 @@ esd）欄の表示／非表示を切り替えます。</value>
   <data name="comboBoxCrystalSystem.Items7" xml:space="preserve">
     <value>立方晶系</value>
   </data>
-  <data name="comboBoxCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 17</value>
-  </data>
-  <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 26</value>
-  </data>
   <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
     <value>結晶系（三斜晶系〜立方晶系）を選択しま
 す。どの格子定数が独立かが決まります。</value>
-  </data>
-  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 18</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>空間群</value>
@@ -443,30 +221,12 @@ esd）欄の表示／非表示を切り替えます。</value>
     <value>空間群を（番号 : Hermann–Mauguin (HM) 記号で）選択し
 ます。編集可能な格子定数が対称性で制限されます。</value>
   </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 107</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
-  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>検索</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
     <value>Hermann–Mauguin (HM) 記号の文字で空間群を検索します。
 結果は一覧に表示されます（下付きは "sub" と入力）。</value>
-  </data>
-  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 21</value>
-  </data>
-  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 18</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>結晶系</value>
@@ -475,18 +235,9 @@ esd）欄の表示／非表示を切り替えます。</value>
     <value>結晶系（三斜晶系〜立方晶系）を選択しま
 す。どの格子定数が独立かが決まります。</value>
   </data>
-  <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 105</value>
-  </data>
   <data name="textBoxSearch.ToolTip" xml:space="preserve">
     <value>Hermann–Mauguin (HM) 記号の文字で空間群を検索します。
 結果は一覧に表示されます（下付きは "sub" と入力）。</value>
-  </data>
-  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>点群</value>
@@ -494,18 +245,6 @@ esd）欄の表示／非表示を切り替えます。</value>
   <data name="label21.ToolTip" xml:space="preserve">
     <value>点群を Hermann–Mauguin (HM) 記号で選択しま
 す。選択に応じて空間群の候補が絞られます。</value>
-  </data>
-  <data name="comboBoxSearchResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 0</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 132</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 132</value>
   </data>
   <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
     <value>検索に一致した空間群（番号 :
