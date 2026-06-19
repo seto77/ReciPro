@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>倾转 X
+方向</value>
+  </data>
+  <data name="numericBoxLinkTiltX.HeaderText" xml:space="preserve">
+    <value>倾转 X</value>
+  </data>
+  <data name="numericBoxLinkTiltY.HeaderText" xml:space="preserve">
+    <value>倾转 Y</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>倾转 Y
+极性</value>
+  </data>
+  <data name="groupBoxTEMSettings.Text" xml:space="preserve">
+    <value>TEM 专用设置</value>
+  </data>
+  <data name="groupBoxLink.Text" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="buttonRotate180.Text" xml:space="preserve">
+    <value>↻ 旋转 180°</value>
+  </data>
+  <data name="buttonLink.Text" xml:space="preserve">
+    <value>链接到
+当前
+方向</value>
+  </data>
+  <data name="groupBoxIndexRange.Text" xml:space="preserve">
+    <value>指数范围</value>
+  </data>
+  <data name="groupBoxColorAndSize.Text" xml:space="preserve">
+    <value>颜色与大小</value>
+  </data>
+  <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
+    <value>绘图区域</value>
+  </data>
+  <data name="checkBoxTiltDirections.Text" xml:space="preserve">
+    <value>显示倾转方向</value>
+  </data>
+  <data name="checkBox1DegLine.Text" xml:space="preserve">
+    <value>显示 1° 线</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
+    <value>显示指数标签</value>
+  </data>
+  <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
+    <value>极射网属性</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
+    <value>包含等效指数</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>点大小</value>
+  </data>
+  <data name="label1MousePosition.Text" xml:space="preserve">
+    <value>倾转-X: ##.#°    倾转-Y:##.# °</value>
+  </data>
+  <data name="groupBoxHolderAngles.Text" xml:space="preserve">
+    <value>样品台角度</value>
+  </data>
+  <data name="numericBoxArrowStep.HeaderText" xml:space="preserve">
+    <value>(步长 </value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>倾转 X（主旋转）</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>倾转 Y（次旋转）</value>
+  </data>
+  <data name="checkBoxEnableArrow.Text" xml:space="preserve">
+    <value>启用方向键</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TEM 样品台模拟</value>
+  </data>
+</root>

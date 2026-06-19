@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSearchPhoto1.Text" xml:space="preserve">
+    <value>查找
+晶带轴</value>
+  </data>
+  <data name="radioButtonPhoto1Mode2.Text" xml:space="preserve">
+    <value>两边一角</value>
+  </data>
+  <data name="radioButtonPhoto1Mode1.Text" xml:space="preserve">
+    <value>三边</value>
+  </data>
+  <data name="groupBoxPhoto1Pattern.Text" xml:space="preserve">
+    <value>图样</value>
+  </data>
+  <data name="label67.Text" xml:space="preserve">
+    <value>波长</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>相机长度</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>加速电压</value>
+  </data>
+  <data name="groupBoxTEMCondition.Text" xml:space="preserve">
+    <value>TEM 条件</value>
+  </data>
+  <data name="groupBoxPhoto1HolderCondition.Text" xml:space="preserve">
+    <value>样品台条件</value>
+  </data>
+  <data name="groupBoxPhoto1.Text" xml:space="preserve">
+    <value>照片 1</value>
+  </data>
+  <data name="buttonSearchPhoto2.Text" xml:space="preserve">
+    <value>查找
+晶带轴</value>
+  </data>
+  <data name="radioButtonPhoto2Mode2.Text" xml:space="preserve">
+    <value>两边一角</value>
+  </data>
+  <data name="radioButtonPhoto2Mode1.Text" xml:space="preserve">
+    <value>三边</value>
+  </data>
+  <data name="groupBoxPhoto2Pattern.Text" xml:space="preserve">
+    <value>图样</value>
+  </data>
+  <data name="groupBoxPhoto2HolderCondition.Text" xml:space="preserve">
+    <value>样品台条件</value>
+  </data>
+  <data name="groupBoxPhoto2.Text" xml:space="preserve">
+    <value>照片 2</value>
+  </data>
+  <data name="buttonSearchPhoto3.Text" xml:space="preserve">
+    <value>查找
+晶带轴</value>
+  </data>
+  <data name="radioButtonPhoto3Mode2.Text" xml:space="preserve">
+    <value>两边一角</value>
+  </data>
+  <data name="radioButtonPhoto3Mode1.Text" xml:space="preserve">
+    <value>三边</value>
+  </data>
+  <data name="groupBoxPhoto3Pattern.Text" xml:space="preserve">
+    <value>图样</value>
+  </data>
+  <data name="groupBoxPhoto3HolderCondition.Text" xml:space="preserve">
+    <value>样品台条件</value>
+  </data>
+  <data name="groupBoxPhoto3.Text" xml:space="preserve">
+    <value>照片 3</value>
+  </data>
+  <data name="checkBoxPhoto2.Text" xml:space="preserve">
+    <value>照片 2</value>
+  </data>
+  <data name="checkBoxPhoto3.Text" xml:space="preserve">
+    <value>照片 3</value>
+  </data>
+  <data name="buttonSearchAll.Text" xml:space="preserve">
+    <value>从三张图样查找晶带轴</value>
+  </data>
+</root>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="radioButtonIsotoropy.Text" xml:space="preserve">
+    <value>等向性</value>
+  </data>
+  <data name="radioButtonAnisotropy.Text" xml:space="preserve">
+    <value>非等向性</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>標籤: </value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.Text" xml:space="preserve">
+    <value>顯示
+誤差</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>將所有原子座標平移:</value>
+  </data>
+  <data name="tabPageOriginShift.Text" xml:space="preserve">
+    <value>原點平移</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>模型: </value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.Text" xml:space="preserve">
+    <value>顯示
+誤差</value>
+  </data>
+  <data name="tabPageDebyeWaller.Text" xml:space="preserve">
+    <value>德拜-沃勒因子</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value> X射線:</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>中子:</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>電子:</value>
+  </data>
+  <data name="tabPageScatteringFactor.Text" xml:space="preserve">
+    <value>散射因子</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>顯示標籤</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>環境光</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>鏡面反光</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>漫射</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>光澤度</value>
+  </data>
+  <data name="colorControlAtomColor.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="tabPageAppearance.Text" xml:space="preserve">
+    <value>外觀</value>
+  </data>
+  <data name="buttonApplyToSameElement.Text" xml:space="preserve">
+    <value>套用至相同元素</value>
+  </data>
+  <data name="buttonAddAtom.Text" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="buttonChange.Text" xml:space="preserve">
+    <value>取代</value>
+  </data>
+  <data name="buttonApplyToAllElements.Text" xml:space="preserve">
+    <value>套用至所有元素</value>
+  </data>
+  <data name="buttonAtomUp.Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="buttonAtomDown.Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="buttonDeleteAtom.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="labelDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>標籤</value>
+  </data>
+  <data name="occDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>佔有率</value>
+  </data>
+  <data name="multiDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>多重度</value>
+  </data>
+  <data name="wyckLetDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>維科夫字母</value>
+  </data>
+  <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>位置對稱</value>
+  </data>
+</root>

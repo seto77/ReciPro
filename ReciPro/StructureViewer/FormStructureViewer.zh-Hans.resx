@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label11.Text" xml:space="preserve">
+    <value>性能日志</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>原子信息（所有坐标单位为 Å）</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>范围</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>设置范围为</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>设置中心为</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>中心</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
+    <value>显示边界平面</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="checkBoxClipObjects.Text" xml:space="preserve">
+    <value>按边界平面裁剪对象</value>
+  </data>
+  <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
+    <value>由晶胞定义边界</value>
+  </data>
+  <data name="radioButtonBoundPlane.Text" xml:space="preserve">
+    <value>由晶面定义边界</value>
+  </data>
+  <data name="tabPageBounds.Text" xml:space="preserve">
+    <value>边界</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>此控件现显示于
+ "Structure Viewer" 窗口中。</value>
+  </data>
+  <data name="tabPageAtom.Text" xml:space="preserve">
+    <value>原子</value>
+  </data>
+  <data name="tabPageBond.Text" xml:space="preserve">
+    <value>键 &amp; 多面体</value>
+  </data>
+  <data name="checkBoxUnitCell.Text" xml:space="preserve">
+    <value>显示晶胞</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.Text" xml:space="preserve">
+    <value>所有平面</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.Text" xml:space="preserve">
+    <value>各平面</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.HeaderText" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.Text" xml:space="preserve">
+    <value>所有棱边</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.Text" xml:space="preserve">
+    <value>各棱边</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>棱边宽度</value>
+  </data>
+  <data name="checkBoxShowSubCell.Text" xml:space="preserve">
+    <value>显示子胞</value>
+  </data>
+  <data name="checkBoxCellShowEdge.Text" xml:space="preserve">
+    <value>显示晶胞棱边</value>
+  </data>
+  <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
+    <value>显示晶胞平面</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>晶胞</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.HeaderText" xml:space="preserve">
+    <value>不透明度 </value>
+  </data>
+  <data name="tabPageLatticePlane.Text" xml:space="preserve">
+    <value>晶面</value>
+  </data>
+  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
+    <value>配位</value>
+  </data>
+  <data name="labelGraphicsCard.Text" xml:space="preserve">
+    <value>显卡:  </value>
+  </data>
+  <data name="labelGraphicsDriver.Text" xml:space="preserve">
+    <value>显卡驱动:  </value>
+  </data>
+  <data name="labelOpenGLversion.Text" xml:space="preserve">
+    <value>OpenGL 版本:  </value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>将投影中心设为分数坐标</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Text" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="groupBoxProjectionCenter.Text" xml:space="preserve">
+    <value>投影中心</value>
+  </data>
+  <data name="groupBoxProjection.Text" xml:space="preserve">
+    <value>投影</value>
+  </data>
+  <data name="groupBoxTransparency.Text" xml:space="preserve">
+    <value>透明模式</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
+    <value>深度淡化</value>
+  </data>
+  <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
+    <value>渲染质量</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>远</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>近</value>
+  </data>
+  <data name="tabPageProjection.Text" xml:space="preserve">
+    <value>投影</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
+    <value>反演中心
+</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.HeaderText" xml:space="preserve">
+    <value>符号大小</value>
+  </data>
+  <data name="colorControlInversion.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="groupBoxInversion.Text" xml:space="preserve">
+    <value>反演中心</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
+    <value>滑移面</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderText" xml:space="preserve">
+    <value>符号大小</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
+    <value>镜面</value>
+  </data>
+  <data name="colorControlPlane.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="groupBoxPlanes.Text" xml:space="preserve">
+    <value>平面</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderText" xml:space="preserve">
+    <value>符号大小</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
+    <value>旋转反演</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
+    <value>螺旋</value>
+  </data>
+  <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="groupBoxAxes.Text" xml:space="preserve">
+    <value>对称轴</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
+    <value>显示对称元素</value>
+  </data>
+  <data name="tabPageSymElems.Text" xml:space="preserve">
+    <value>对称元素</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>显示标签</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
+    <value>使用材质颜色</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
+    <value>使用固定颜色</value>
+  </data>
+  <data name="numericBoxLabelSize.HeaderText" xml:space="preserve">
+    <value>字号</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.Text" xml:space="preserve">
+    <value>白色描边</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>（单击图例条目可
+单独调整）</value>
+  </data>
+  <data name="groupBoxLabel.Text" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
+    <value>显示成键原子 
+即使其位于 
+边界之外</value>
+  </data>
+  <data name="groupBoxBondedAtoms.Text" xml:space="preserve">
+    <value>成键原子</value>
+  </data>
+  <data name="checkBoxGroupByElement.Text" xml:space="preserve">
+    <value>按元素分组</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
+    <value>图例大小</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
+    <value>坐标轴大小</value>
+  </data>
+  <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
+    <value>光球大小</value>
+  </data>
+  <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
+    <value>辅助元素</value>
+  </data>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.Text" xml:space="preserve">
+    <value>坐标轴</value>
+  </data>
+  <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
+    <value>光照</value>
+  </data>
+  <data name="toolStripButtonLegend.Text" xml:space="preserve">
+    <value>图例</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
+    <value>类 Vesta</value>
+  </data>
+  <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
+    <value>重置旋转</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
+    <value>原子</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.Text" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
+    <value>晶胞</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
+    <value>对称元素</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>主图像</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
+    <value>图例</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>晶轴</value>
+  </data>
+  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光照方向</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>保存图像</value>
+  </data>
+  <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>主图像</value>
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
+    <value>图例</value>
+  </data>
+  <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>晶轴</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>光照方向</value>
+  </data>
+  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制主图像到剪贴板</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>主图像</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>晶轴</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存视频</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="iLikeVESTAToolStripMenuItem.Text" xml:space="preserve">
+    <value>我喜欢 VESTA</value>
+  </data>
+  <data name="toolToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+SHIFT+c:  将主图像复制到剪贴板</value>
+  </data>
+  <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+ 鼠标右键双击:  在透视 &lt;=&gt; 正交投影之间交替切换</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>CTRL+ 鼠标右键上/下:  更改透视程度</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>快捷键提示</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>尺寸 (W×H)</value>
+  </data>
+</root>

@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
+    <value>衍射斑点</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
+    <value>菊池线</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.Text" xml:space="preserve">
+    <value>德拜环</value>
+  </data>
+  <data name="toolStripButtonScale.Text" xml:space="preserve">
+    <value>标尺</value>
+  </data>
+  <data name="toolStripButtonDistance.Text" xml:space="preserve">
+    <value>距离</value>
+  </data>
+  <data name="toolStripButtonExcitationError.Text" xml:space="preserve">
+    <value>激发误差</value>
+  </data>
+  <data name="groupBoxStringSize.Text" xml:space="preserve">
+    <value>文字大小</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>样品垂足
+位置</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>通用</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>结构因子</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>对菊池线应用运动学强度</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/d 截止</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="tabPageKikuchi.Text" xml:space="preserve">
+    <value>菊池线</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
+    <value>显示指数标签</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
+    <value>忽略衍射强度
+</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="tabPageDebye.Text" xml:space="preserve">
+    <value>德拜环</value>
+  </data>
+  <data name="checkBoxScaleLabel.Text" xml:space="preserve">
+    <value>显示标尺标签</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>分度</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.Text" xml:space="preserve">
+    <value>细</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.Text" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.Text" xml:space="preserve">
+    <value>粗</value>
+  </data>
+  <data name="tabPageScale.Text" xml:space="preserve">
+    <value>标尺</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.HeaderText" xml:space="preserve">
+    <value>斑点半径</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
+    <value>使远离 
+埃瓦尔德球的斑点透明</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>步长</value>
+  </data>
+  <data name="buttonResetAngle.Text" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="groupBoxViewDirection.Text" xml:space="preserve">
+    <value>观察方向</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>相对强度
+阈值</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
+    <value>方向导引</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
+    <value>埃瓦尔德球</value>
+  </data>
+  <data name="groupBoxOptions.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.Text" xml:space="preserve">
+    <value>倒易空间</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>鼠标位置：</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>实空间坐标，单位 mm（原点：晶体）：</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>倒易空间坐标，单位 nm⁻¹：</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>探测器坐标，单位 mm（原点：垂足）：</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.Text" xml:space="preserve">
+    <value>水平翻转</value>
+  </data>
+  <data name="checkBoxFlipVertically.Text" xml:space="preserve">
+    <value>垂直翻转</value>
+  </data>
+  <data name="checkBoxNegativeImage.Text" xml:space="preserve">
+    <value>负像</value>
+  </data>
+  <data name="buttonResetCenter.Text" xml:space="preserve">
+    <value>将中心设为</value>
+  </data>
+  <data name="checkBoxFixCenter.Text" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>尺寸 (W×H)</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>分辨率</value>
+  </data>
+  <data name="groupBoxMonitor.Text" xml:space="preserve">
+    <value>显示设置</value>
+  </data>
+  <data name="buttonHolderSimulation.Text" xml:space="preserve">
+    <value>TEM 样品台
+ 模拟</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>旋转灵敏度</value>
+  </data>
+  <data name="groupBoxMisc.Text" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
+    <value>相机长度 2</value>
+  </data>
+  <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
+    <value>探测器几何 &amp;&amp; 叠加图像</value>
+  </data>
+  <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
+    <value>开发者代码</value>
+  </data>
+  <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>为图像（PNG 格式）</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>为元文件（EMF）</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存图像</value>
+  </data>
+  <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>为图像  （PNG 格式）</value>
+  </data>
+  <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>为元文件（EMF）</value>
+  </data>
+  <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存探测器区域</value>
+  </data>
+  <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
+    <value>为单张图像（PNG 格式）</value>
+  </data>
+  <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
+    <value>为单张图像（TIFF 格式）</value>
+  </data>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>为合并图像（PNG 格式）</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>为合并图像（TIFF 格式）</value>
+  </data>
+  <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存 CBED 盘</value>
+  </data>
+  <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>为图像</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>为元文件（EMF）</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>为图像</value>
+  </data>
+  <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>为元文件（EMF）</value>
+  </data>
+  <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制探测器区域</value>
+  </data>
+  <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>为合并图像</value>
+  </data>
+  <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制 CBED 盘</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
+    <value>衍射图样</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
+    <value>倒易空间</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>保存视频</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>页面设置</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>打印预览</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>打印</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>动态压缩</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>电子 300 kV</value>
+  </data>
+  <data name="electron200KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>电子 200 kV</value>
+  </data>
+  <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>电子 120 keV</value>
+  </data>
+  <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X射线 30 keV</value>
+  </data>
+  <data name="xray20KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X射线 20 keV</value>
+  </data>
+  <data name="xrayMoKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X射线 17.48 keV (MoKα₁)</value>
+  </data>
+  <data name="xrayCuKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X射线 8.041 keV (CuKα₁)</value>
+  </data>
+  <data name="presetToolStripMenuItem.Text" xml:space="preserve">
+    <value>预设</value>
+  </data>
+  <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bethe 方法基本概念</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.Text" xml:space="preserve">
+    <value>动力学理论</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
+    <value>为每个晶体使用指定颜色</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>反常色散 (f', f'')</value>
+  </data>
+  <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
+    <value>排除所有禁戒衍射</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.Text" xml:space="preserve">
+    <value>排除由点阵带心
+ 禁戒的衍射</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>进动属性</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
+    <value>半角</value>
+  </data>
+  <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
+    <value>步长</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>布洛赫波设置</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
+    <value>衍射波数目</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>厚度</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>外观</value>
+  </data>
+  <data name="radioButtonCircleArea.Text" xml:space="preserve">
+    <value>实心球</value>
+  </data>
+  <data name="radioButtonPointSpread.Text" xml:space="preserve">
+    <value>高斯</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="numericBoxSpotRadius.HeaderText" xml:space="preserve">
+    <value>斑点半径</value>
+  </data>
+  <data name="checkBoxDrawSameSize.Text" xml:space="preserve">
+    <value>以相同半径绘制 
+所有斑点</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>色阶</value>
+  </data>
+  <data name="checkBoxLogScale.Text" xml:space="preserve">
+    <value>对数刻度</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>斑点颜色</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>强度计算</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
+    <value>仅激发误差</value>
+  </data>
+  <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
+    <value>运动学 &amp;&amp; 激发误差</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>斑点详情</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>光学</value>
+  </data>
+  <data name="radioButtonBeamParallel.Text" xml:space="preserve">
+    <value>平行束</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
+    <value>进动（电子）</value>
+  </data>
+  <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
+    <value>会聚（电子）</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Text" xml:space="preserve">
+    <value>背反射劳厄（X射线）</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
+    <value>进动（X射线，ZOLZ）</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>波源</value>
+  </data>
+  <data name="groupBoxSpotProperty.Text" xml:space="preserve">
+    <value>模拟设置</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>衍射模拟器</value>
+  </data>
+</root>

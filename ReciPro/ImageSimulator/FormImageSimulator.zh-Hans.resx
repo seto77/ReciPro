@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label27.Text" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
+    <value>高斯模糊 (FWHM)</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="groupBoxAdjust.Text" xml:space="preserve">
+    <value>调整</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
+    <value>逐幅图像</value>
+  </data>
+  <data name="groupBoxNormalization.Text" xml:space="preserve">
+    <value>归一化</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
+    <value>弹性</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
+    <value>弹性
+&amp;&amp;TDS</value>
+  </data>
+  <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
+    <value>STEM 图像</value>
+  </data>
+  <data name="colorControlScale.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
+    <value>长度</value>
+  </data>
+  <data name="checkBoxShowScale.Text" xml:space="preserve">
+    <value>标尺</value>
+  </data>
+  <data name="colorControlLabel.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
+    <value>晶胞</value>
+  </data>
+  <data name="groupBoxDisplay.Text" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
+    <value>步长</value>
+  </data>
+  <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>步长</value>
+  </data>
+  <data name="checkBoxSerialThickness.Text" xml:space="preserve">
+    <value>厚度 (nm)</value>
+  </data>
+  <data name="checkBoxSerialDefocus.Text" xml:space="preserve">
+    <value>欠焦 (nm)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>水平方向：</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Text" xml:space="preserve">
+    <value>欠焦</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
+    <value>厚度</value>
+  </data>
+  <data name="radioButtonSingleMode.Text" xml:space="preserve">
+    <value>单幅图像</value>
+  </data>
+  <data name="radioButtonSerialMode.Text" xml:space="preserve">
+    <value>序列图像</value>
+  </data>
+  <data name="groupBoxSerialImage.Text" xml:space="preserve">
+    <value>单幅/序列模式</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.Text" xml:space="preserve">
+    <value>幅值与相位</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.Text" xml:space="preserve">
+    <value>两者</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.Text" xml:space="preserve">
+    <value>仅幅值</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.Text" xml:space="preserve">
+    <value>仅相位</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>相位标度</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.Text" xml:space="preserve">
+    <value>实部与虚部</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.Text" xml:space="preserve">
+    <value>两者</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.Text" xml:space="preserve">
+    <value>仅实部</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.Text" xml:space="preserve">
+    <value>仅虚部</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.Text" xml:space="preserve">
+    <value>U'g：用于 TDS 的虚（吸收）势</value>
+  </data>
+  <data name="checkBoxPotentialUg.Text" xml:space="preserve">
+    <value>Ug：弹性散射的晶体势</value>
+  </data>
+  <data name="groupBoxPotentialOption.Text" xml:space="preserve">
+    <value>势选项</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
+    <value>入射电子的角分辨率</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
+    <value>TDS 计算的切片厚度</value>
+  </data>
+  <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
+    <value>STEM 选项</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
+    <value>线性图像</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
+    <value>透射交叉系数</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>部分相干模型</value>
+  </data>
+  <data name="groupBoxHREMoption2.Text" xml:space="preserve">
+    <value>HRTEM 选项</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>尺寸 (W×H)</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>分辨率</value>
+  </data>
+  <data name="groupBoxImageProperty.Text" xml:space="preserve">
+    <value>图像属性</value>
+  </data>
+  <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
+    <value>衍射波</value>
+  </data>
+  <data name="groupBoxSimulation.Text" xml:space="preserve">
+    <value>模拟设置</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>有效光源尺寸 (σs,  FWHM)</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>α（入射束的
+ 会聚角）</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
+    <value>外</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
+    <value>内</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>环形探测器
+半径范围</value>
+  </data>
+  <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
+    <value>STEM 选项</value>
+  </data>
+  <data name="checkBoxOpenAperture.Text" xml:space="preserve">
+    <value>光阑全开</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
+    <value>偏移  X</value>
+  </data>
+  <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>内含衍射斑</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>衍射斑信息</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>光阑轮廓显示于
+"Diffraction
+Simulator"</value>
+  </data>
+  <data name="groupBoxHREMoption1.Text" xml:space="preserve">
+    <value>物镜光阑 (HRTEM 选项)</value>
+  </data>
+  <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>将欠焦设为 0 nm</value>
+  </data>
+  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>将欠焦设为 Scherzer 值</value>
+  </data>
+  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
+    <value>将所有像差设为零</value>
+  </data>
+  <data name="checkBoxCTF.Text" xml:space="preserve">
+    <value>衬度传递函数 (CTF)</value>
+  </data>
+  <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
+    <value>欠焦 Δf</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>加速电压 (kV)</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Scherzer
+ 欠焦</value>
+  </data>
+  <data name="groupBoxTEMConditions.Text" xml:space="preserve">
+    <value>TEM 条件</value>
+  </data>
+  <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
+    <value>光学属性</value>
+  </data>
+  <data name="groupBoxImageMode.Text" xml:space="preserve">
+    <value>图像模式</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>厚度</value>
+  </data>
+  <data name="groupBoxSampleProperty.Text" xml:space="preserve">
+    <value>样品</value>
+  </data>
+  <data name="checkBoxPreset.Text" xml:space="preserve">
+    <value>预设设置</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
+    <value>实时模拟</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>模拟</value>
+  </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>为图像 (PNG 格式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>为图像 (TIFF 格式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>为元文件 (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   序列图像模式下单独保存 </value>
+  </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>保存图像</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>为图像</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>为元文件 (EMF)</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制图像</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>     叠印符号</value>
+  </data>
+  <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>加载 TEM 参数</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存 TEM 参数</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>HRTEM 模拟基本概念</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>计算库</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>HRTEM/STEM 模拟器</value>
+  </data>
+  <data name="labelMousePositionValue.Text" xml:space="preserve">
+    <value>值： </value>
+  </data>
+</root>
