@@ -153,8 +153,13 @@ internal static partial class GuiCapture
         // テキストを表示する代表的なリーフ型のみ。ButtonBase=Button/CheckBox/RadioButton。
         if (c is not (Label or ButtonBase or GroupBox or LinkLabel)) return;
         // 260617Cl: NumericBox 系は自己管理 (数値欄の最低幅を死守し、ヘッダは固定幅+ellipsis+tooltip) のため内部 (labelHeader/textBox) は測らない。
+        // 260620Cl: ColorControl も同様に自己管理する複合コントロール (内部 labelHeader/labelFooter/pictureBox)。
+        //   HeaderText「Color」等が groupBox 詰まり (伸長 NumericBox 隣接) で内部ラベルとして誤検出され、
+        //   deficit が文字長と無相関になる (例 ru「Цвет」最短なのに最大 deficit) ため除外する。
+        //   注: ColorControl 内部 footer の長文オーバーフローは culture resx の FooterText 翻訳で個別対処済。
         for (var a = c.Parent; a != null; a = a.Parent)
-            if (a.GetType().Name.Contains("NumericBox")) return;
+            // if (a.GetType().Name.Contains("NumericBox")) return;  // 260617Cl 旧
+            if (a.GetType().Name.Contains("NumericBox") || a.GetType().Name.Contains("ColorControl")) return;  // 260620Cl
 
         // 260617Cl: 擬似ローカライズ (inflate>1) の伸長予測は「翻訳される語」にのみ意味がある。記号/単位/短いインデックス
         //   (° ± ∓ % θ mm kV l1 等) は翻訳されず伸びないので擬似モードでは予測対象外 (実カルチャ inflate=1.0 は実テキストを測るので素通し)。

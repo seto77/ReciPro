@@ -97,7 +97,7 @@ Corrente</value>
     <value>Area di disegno</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Mostra direzioni di inclinazione</value>
+    <value>Direzioni di inclinazione</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Mostra linee a 1°</value>

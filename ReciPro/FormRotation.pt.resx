@@ -69,7 +69,7 @@
     <value>Vincular</value>
   </data>
   <data name="buttonCopy.Text" xml:space="preserve">
-    <value>Copiar para o Excel</value>
+    <value>Copiar</value>
   </data>
   <data name="buttonPaste.Text" xml:space="preserve">
     <value>Colar do

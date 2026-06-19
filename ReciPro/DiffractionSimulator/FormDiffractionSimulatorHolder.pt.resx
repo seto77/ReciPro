@@ -97,7 +97,7 @@ Atual</value>
     <value>Área de desenho</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Mostrar direções de inclinação</value>
+    <value>Direções de inclinação</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Mostrar linhas de 1°</value>
@@ -106,10 +106,10 @@ Atual</value>
     <value>Mostrar rótulos de índices</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
-    <value>Propriedades do estereograma</value>
+    <value>Propriedades estereograma</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Incluir índices equivalentes</value>
+    <value>Incluir índices equiv.</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Tamanho do texto</value>

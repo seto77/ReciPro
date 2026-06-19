@@ -72,7 +72,7 @@
     <value>Axe X (axe de rotation)</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Axe Z (direction du faisceau)</value>
+    <value>Axe Z (faisceau)</value>
   </data>
   <data name="buttonSimulateBSE.Text" xml:space="preserve">
     <value>Simuler</value>

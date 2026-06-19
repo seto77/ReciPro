@@ -103,13 +103,13 @@ verknüpfen</value>
     <value>1°-Linien anzeigen</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Index-Beschriftungen anzeigen</value>
+    <value>Indexbeschriftungen zeigen</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
     <value>Stereonetz-Eigenschaften</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Äquivalente Indizes einschließen</value>
+    <value>Äquiv. Indizes einschließen</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Textgröße</value>

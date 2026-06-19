@@ -187,7 +187,7 @@
     <value>Immagine lineare</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Coefficiente di trasmissione incrociato</value>
+    <value>Coef. di trasmissione incrociato</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Modello di coerenza parziale</value>

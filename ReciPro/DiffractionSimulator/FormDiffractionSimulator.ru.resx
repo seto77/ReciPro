@@ -81,7 +81,7 @@
     <value>Размер текста</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Основание перпендикуляра
+    <value>Осн. перпендикуляра
 от образца</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
@@ -218,7 +218,7 @@
  держателя ПЭМ</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Чувствительность вращения</value>
+    <value>Чувствит. вращения</value>
   </data>
   <data name="groupBoxMisc.Text" xml:space="preserve">
     <value>Прочее</value>
@@ -227,7 +227,7 @@
     <value>Длина камеры 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Геометрия детектора &amp;&amp; наложенное изображение</value>
+    <value>Геометрия детектора &amp;&amp; наложение</value>
   </data>
   <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
     <value>Код разработчика</value>

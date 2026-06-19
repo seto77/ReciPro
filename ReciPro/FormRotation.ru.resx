@@ -69,7 +69,7 @@
     <value>Связать</value>
   </data>
   <data name="buttonCopy.Text" xml:space="preserve">
-    <value>Копировать в Excel</value>
+    <value>Копировать</value>
   </data>
   <data name="buttonPaste.Text" xml:space="preserve">
     <value>Вставить из

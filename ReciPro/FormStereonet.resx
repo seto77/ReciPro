@@ -495,7 +495,7 @@ planes); the minimum value hides the labels.</value>
     <value>116, 3</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 24</value>
+    <value>124, 24</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>

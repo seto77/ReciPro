@@ -74,7 +74,7 @@ l'inclinaison X</value>
 l'inclinaison Y</value>
   </data>
   <data name="groupBoxTEMSettings.Text" xml:space="preserve">
-    <value>Réglages spécifiques au MET</value>
+    <value>Réglages propres au MET</value>
   </data>
   <data name="groupBoxLink.Text" xml:space="preserve">
     <value>Liaison</value>
@@ -97,19 +97,19 @@ actuelle</value>
     <value>Zone de tracé</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Afficher les directions d'inclinaison</value>
+    <value>Directions d'inclinaison</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Afficher les lignes 1°</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Afficher les étiquettes d'indices</value>
+    <value>Afficher étiquettes d'indices</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
     <value>Propriétés du stéréogramme</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Inclure les indices équivalents</value>
+    <value>Inclure indices équivalents</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Taille du texte</value>

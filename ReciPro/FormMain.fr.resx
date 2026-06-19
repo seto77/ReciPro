@@ -183,7 +183,7 @@
   rotation</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Commande de rotation</value>
+    <value>Rotation</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
     <value>Désactiver le rendu de texte OpenGL (redémarrage requis)</value>

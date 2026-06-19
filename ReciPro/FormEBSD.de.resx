@@ -115,7 +115,7 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>Nicht-lokales Absorptionsmodell verwenden</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS-Hintergrundintensitäten einbeziehen</value>
+    <value>TDS-Hintergrund einbeziehen</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Dicke von</value>

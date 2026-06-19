@@ -69,10 +69,10 @@
     <value>Normale alla superficie</value>
   </data>
   <data name="buttonFromX.Text" xml:space="preserve">
-    <value>Asse X (asse di rotazione)</value>
+    <value>Asse X (rotazione)</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Asse Z (direzione del fascio)</value>
+    <value>Asse Z (fascio)</value>
   </data>
   <data name="buttonSimulateBSE.Text" xml:space="preserve">
     <value>Simula</value>

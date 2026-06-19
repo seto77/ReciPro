@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBoxInputParameters.Text" xml:space="preserve">
+    <value>입력 매개변수</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>솔버</value>
+  </data>
+  <data name="numericBoxThread.HeaderText" xml:space="preserve">
+    <value>스레드</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>회절파 수</value>
+  </data>
+  <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
+    <value>반각</value>
+  </data>
+  <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
+    <value>디스크 해상도</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>전체 픽셀:</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
+    <value>두께 (시작)</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>끝</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>간격</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
+    <value>안내원 그리기</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>그라데이션</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>밝기</value>
+  </data>
+  <data name="labelGamma.Text" xml:space="preserve">
+    <value>감마 (외곽 디스크 강조)</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>시뮬레이션</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>중지</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>출력 매개변수</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>밝기 조정</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>두께</value>
+  </data>
+  <data name="radioButtonAllDisks.Text" xml:space="preserve">
+    <value>모든 디스크</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
+    <value>개별 디스크</value>
+  </data>
+</root>

@@ -79,7 +79,7 @@ de zone</value>
     <value>Longueur de caméra</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Tension d'accél.</value>
+    <value>Tension accél.</value>
   </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Conditions du MET</value>

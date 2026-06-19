@@ -221,7 +221,7 @@ intensidad relativa</value>
     <value>Longitud de cámara 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Geometría del detector &amp;&amp; imagen superpuesta</value>
+    <value>Geometría detector &amp;&amp; imagen superpuesta</value>
   </data>
   <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
     <value>Código de desarrollador</value>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBoxPenetrationDepth.Text" xml:space="preserve">
+    <value>最大BSE穿透深度</value>
+  </data>
+  <data name="radioButtonAverageEnergy.Text" xml:space="preserve">
+    <value>平均能量</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>平均BSE能量</value>
+  </data>
+  <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
+    <value>BSE方向分佈（極網中心對應於表面法線方向）</value>
+  </data>
+  <data name="buttonSurfaceNormal.Text" xml:space="preserve">
+    <value>從表面法線</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>軌跡模擬器（蒙地卡羅法）</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>繪製
+座標軸</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>欲計算的
+軌跡數量</value>
+  </data>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>試樣傾角</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>從Z軸（=射束方向）</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>背向散射電子係數, η</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>散射截面 (σ_E)</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>模擬軌跡</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>阻止本領 (dE/ds)</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
+    <value>繪製輔助圓</value>
+  </data>
+  <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
+    <value>最大BSE平行表面距離</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
+    <value>繪製被試樣吸收的軌跡</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
+    <value>繪製逃逸後的路徑</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>彈性平均自由程 (λ)</value>
+  </data>
+  <data name="groupBoxEnergyDistribution.Text" xml:space="preserve">
+    <value>逃逸時的BSE能量分佈</value>
+  </data>
+  <data name="buttonViewFromX.Text" xml:space="preserve">
+    <value>從X軸（旋轉軸）</value>
+  </data>
+  <data name="checkBoxDrawAxes.Text" xml:space="preserve">
+    <value>繪製座標軸</value>
+  </data>
+  <data name="radioButtonFrequency.Text" xml:space="preserve">
+    <value>頻率</value>
+  </data>
+  <data name="groupBoxStatistics.Text" xml:space="preserve">
+    <value>統計</value>
+  </data>
+  <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
+    <value>欲繪製的軌跡數量</value>
+  </data>
+  <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
+    <value>能量標準差</value>
+  </data>
+</root>

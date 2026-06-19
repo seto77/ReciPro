@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>선택한 결정을 CIF 파일로 내보내기</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>라이선스</value>
+  </data>
+  <data name="buttonUp.Text" xml:space="preserve">
+    <value>위로</value>
+  </data>
+  <data name="toolStripButtonStereonet.Text" xml:space="preserve">
+    <value>  스테레오넷</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>힌트</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
+    <value>  대칭
+  정보</value>
+  </data>
+  <data name="toolStripButtonDatabase.Text" xml:space="preserve">
+    <value>  결정
+  데이터베이스</value>
+  </data>
+  <data name="checkBoxFixePlane.Text" xml:space="preserve">
+    <value>고정</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
+    <value>GitHub 저장소</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>종료 시 레지스트리 설정 초기화 (재시작 후 적용)</value>
+  </data>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>매크로</value>
+  </data>
+  <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
+    <value>모든 OpenGL 렌더링 사용 안 함 (재시작 필요)</value>
+  </data>
+  <data name="buttonDuplicate.Text" xml:space="preserve">
+    <value>복제</value>
+  </data>
+  <data name="buttonSetAxis.Text" xml:space="preserve">
+    <value>축</value>
+  </data>
+  <data name="buttonDown.Text" xml:space="preserve">
+    <value>아래로</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
+    <value>  구조
+  뷰어</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>스텝</value>
+  </data>
+  <data name="groupBoxCrystalList.Text" xml:space="preserve">
+    <value>결정 목록</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>↑ 추가 ↑</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>옵션</value>
+  </data>
+  <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>업데이트 확인</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>결정 목록 불러오기 (현재 목록 교체)</value>
+  </data>
+  <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
+    <value>다크 모드</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>도움말</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>오일러 각</value>
+  </data>
+  <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>CIF로 내보내기</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>회전 초기화</value>
+  </data>
+  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
+    <value>보는 방향</value>
+  </data>
+  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
+    <value>현재 방향</value>
+  </data>
+  <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
+    <value>복제</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>기능</value>
+  </data>
+  <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>결정 목록 불러오기 (현재 목록에 추가)</value>
+  </data>
+  <data name="buttonClearAllCrystals.Text" xml:space="preserve">
+    <value>모든 결정 지우기</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="toolStripStatusLabel.Text" xml:space="preserve">
+    <value>계산 시간: </value>
+  </data>
+  <data name="checkBoxFixAxis.Text" xml:space="preserve">
+    <value>고정</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
+    <value> 분말
+ 회절</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
+    <value>  회절
+  시뮬레이터</value>
+  </data>
+  <data name="toolStripButtonRotation.Text" xml:space="preserve">
+    <value>  회전
+  기하학</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>회전 제어</value>
+  </data>
+  <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
+    <value>OpenGL 텍스트 렌더링 사용 안 함 (재시작 필요)</value>
+  </data>
+  <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
+    <value>분말 회절 기능 (개발 중)</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
+    <value>초기 결정 목록으로 재설정</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>결정 목록 저장</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
+    <value>MKL 라이브러리 사용</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
+    <value>이온 산란 인자 사용</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>모든 결정 지우기</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
+    <value>밀러-브라베 (hkil) 지수 사용</value>
+  </data>
+  <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>GUI 구성 요소 캡처...</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
+    <value>결정 정보</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>툴팁 표시</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.Text" xml:space="preserve">
+    <value>  궤적
+  시뮬레이터</value>
+  </data>
+  <data name="groupBoxArrows.Text" xml:space="preserve">
+    <value>화살표</value>
+  </data>
+  <data name="buttonReplace.Text" xml:space="preserve">
+    <value>↑ 교체 ↑</value>
+  </data>
+  <data name="buttonSetPlane.Text" xml:space="preserve">
+    <value>면</value>
+  </data>
+  <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>CIF 또는 AMC 파일에서 결정 가져오기</value>
+  </data>
+  <data name="renameToolStripMenuItem.Text" xml:space="preserve">
+    <value>이름 바꾸기</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
+    <value>버그, 요청 또는 의견 보고</value>
+  </data>
+  <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
+    <value>Crystallography.Native 라이브러리 사용 안 함 (재시작 필요)</value>
+  </data>
+  <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>버전 기록</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>도움말 (웹)</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
+    <value>  빔
+  상호작용</value>
+  </data>
+</root>

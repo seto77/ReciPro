@@ -173,7 +173,7 @@ projection</value>
     <value>Tracer les étiquettes d'indices</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Choisir la couleur</value>
+    <value>Choisir couleur</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Taille</value>
@@ -240,7 +240,7 @@ par deux plans</value>
     <value>Couleur</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Axe de zone / Plan réticulaire : </value>
+    <value>Axe de zone / Plan réticul. : </value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Inclinaison X/Y :</value>

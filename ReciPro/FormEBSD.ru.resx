@@ -72,7 +72,7 @@
     <value>Ось X (ось вращения)</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Ось Z (направление пучка)</value>
+    <value>Ось Z (пучок)</value>
   </data>
   <data name="buttonSimulateBSE.Text" xml:space="preserve">
     <value>Моделировать</value>
@@ -115,7 +115,7 @@
     <value>Использовать нелокальную модель поглощения</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Включить фоновые интенсивности ТДР</value>
+    <value>Учитывать фон ТДР</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Толщина от</value>
@@ -217,7 +217,7 @@
     <value>Сетка</value>
   </data>
   <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>Параметры динамического моделирования</value>
+    <value>Параметры динам. моделирования</value>
   </data>
   <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
     <value>Энергия</value>

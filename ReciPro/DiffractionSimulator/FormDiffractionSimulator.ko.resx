@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
+    <value>반사점</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
+    <value>기쿠치 선</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.Text" xml:space="preserve">
+    <value>디바이 링</value>
+  </data>
+  <data name="toolStripButtonScale.Text" xml:space="preserve">
+    <value>축척</value>
+  </data>
+  <data name="toolStripButtonDistance.Text" xml:space="preserve">
+    <value>거리</value>
+  </data>
+  <data name="toolStripButtonExcitationError.Text" xml:space="preserve">
+    <value>여기 오차</value>
+  </data>
+  <data name="groupBoxStringSize.Text" xml:space="preserve">
+    <value>글자 크기</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>시료로부터의
+수선의 발</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>구조 인자</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>기쿠치 선에 운동학적 강도 적용</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/d 차단값</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>상위</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>선 너비</value>
+  </data>
+  <data name="tabPageKikuchi.Text" xml:space="preserve">
+    <value>기쿠치 선</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
+    <value>지수 라벨 표시</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
+    <value>회절 강도 무시
+</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>선 너비</value>
+  </data>
+  <data name="tabPageDebye.Text" xml:space="preserve">
+    <value>디바이 링</value>
+  </data>
+  <data name="checkBoxScaleLabel.Text" xml:space="preserve">
+    <value>축척 라벨 표시</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>분할</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>선 너비</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.Text" xml:space="preserve">
+    <value>정밀</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.Text" xml:space="preserve">
+    <value>보통</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.Text" xml:space="preserve">
+    <value>성김</value>
+  </data>
+  <data name="tabPageScale.Text" xml:space="preserve">
+    <value>축척</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.HeaderText" xml:space="preserve">
+    <value>반사점 반지름</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
+    <value>라벨</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
+    <value>에발트 구에서 먼 
+반사점을 투명하게</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>간격</value>
+  </data>
+  <data name="buttonResetAngle.Text" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="groupBoxViewDirection.Text" xml:space="preserve">
+    <value>시선 방향</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>상대 강도의
+임계값</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
+    <value>방향 안내</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
+    <value>에발트 구</value>
+  </data>
+  <data name="groupBoxOptions.Text" xml:space="preserve">
+    <value>옵션</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.Text" xml:space="preserve">
+    <value>역공간</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>마우스 위치:</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>실공간 좌표 (mm) (원점: 결정):</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>역공간 좌표 (nm⁻¹):</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>검출기 좌표 (mm) (원점: 수선의 발):</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.Text" xml:space="preserve">
+    <value>좌우 반전</value>
+  </data>
+  <data name="checkBoxFlipVertically.Text" xml:space="preserve">
+    <value>상하 반전</value>
+  </data>
+  <data name="checkBoxNegativeImage.Text" xml:space="preserve">
+    <value>음화 이미지</value>
+  </data>
+  <data name="buttonResetCenter.Text" xml:space="preserve">
+    <value>중심을 다음으로 설정</value>
+  </data>
+  <data name="checkBoxFixCenter.Text" xml:space="preserve">
+    <value>고정</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>크기 (W×H)</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>해상도</value>
+  </data>
+  <data name="groupBoxMonitor.Text" xml:space="preserve">
+    <value>표시 설정</value>
+  </data>
+  <data name="buttonHolderSimulation.Text" xml:space="preserve">
+    <value>TEM 홀더
+ 시뮬레이션</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>회전 감도</value>
+  </data>
+  <data name="groupBoxMisc.Text" xml:space="preserve">
+    <value>기타</value>
+  </data>
+  <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
+    <value>카메라 길이 2</value>
+  </data>
+  <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
+    <value>검출기 기하 &amp;&amp; 오버레이 이미지</value>
+  </data>
+  <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
+    <value>개발자 코드</value>
+  </data>
+  <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>이미지로 (PNG 형식)</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>메타파일로 (EMF)</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>이미지 저장</value>
+  </data>
+  <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>이미지로  (PNG 형식)</value>
+  </data>
+  <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>메타파일로 (EMF)</value>
+  </data>
+  <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>검출기 영역 저장</value>
+  </data>
+  <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
+    <value>개별 이미지로 (PNG 형식)</value>
+  </data>
+  <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
+    <value>개별 이미지로 (TIFF 형식)</value>
+  </data>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>통합 이미지로 (PNG 형식)</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>통합 이미지로 (Tiff 형식)</value>
+  </data>
+  <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED 디스크 저장</value>
+  </data>
+  <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>이미지로</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>메타파일로 (EMF)</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>이미지로</value>
+  </data>
+  <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>메타파일로 (EMF)</value>
+  </data>
+  <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>검출기 영역 복사</value>
+  </data>
+  <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>통합 이미지로</value>
+  </data>
+  <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED 디스크 복사</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
+    <value>회절 패턴</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
+    <value>역공간</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>동영상 저장</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>페이지 설정</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>인쇄 미리보기</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>인쇄</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>파일</value>
+  </data>
+  <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>동적 압축</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>옵션</value>
+  </data>
+  <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>전자 300 kV</value>
+  </data>
+  <data name="electron200KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>전자 200 kV</value>
+  </data>
+  <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>전자 120 keV</value>
+  </data>
+  <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X선 30 keV</value>
+  </data>
+  <data name="xray20KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>X선 20 keV</value>
+  </data>
+  <data name="xrayMoKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X선 17.48 keV (MoKα₁)</value>
+  </data>
+  <data name="xrayCuKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>X선 8.041 keV (CuKα₁)</value>
+  </data>
+  <data name="presetToolStripMenuItem.Text" xml:space="preserve">
+    <value>프리셋</value>
+  </data>
+  <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
+    <value>베테 방법의 기본 개념</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>도움말</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.Text" xml:space="preserve">
+    <value>동역학 이론</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
+    <value>각 결정에 지정된 색 사용</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>이상 분산 (f', f'')</value>
+  </data>
+  <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
+    <value>모든 금지 반사 제외</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.Text" xml:space="preserve">
+    <value>격자 중심화로 금지된
+ 반사 제외</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>세차 특성</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
+    <value>반각</value>
+  </data>
+  <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
+    <value>간격</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>블로흐 파 설정</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
+    <value>회절파 개수</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>두께</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>외관</value>
+  </data>
+  <data name="radioButtonCircleArea.Text" xml:space="preserve">
+    <value>꽉 찬 구</value>
+  </data>
+  <data name="radioButtonPointSpread.Text" xml:space="preserve">
+    <value>가우시안</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>불투명도</value>
+  </data>
+  <data name="numericBoxSpotRadius.HeaderText" xml:space="preserve">
+    <value>반사점 반지름</value>
+  </data>
+  <data name="checkBoxDrawSameSize.Text" xml:space="preserve">
+    <value>모든 반사점을 동일한 
+반지름으로 그리기</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>밝기</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>색 척도</value>
+  </data>
+  <data name="checkBoxLogScale.Text" xml:space="preserve">
+    <value>로그 척도</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>반사점 색</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>강도 계산</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
+    <value>여기 오차만</value>
+  </data>
+  <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
+    <value>운동학적 &amp;&amp; 여기 오차</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>반사점 세부정보</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>광학계</value>
+  </data>
+  <data name="radioButtonBeamParallel.Text" xml:space="preserve">
+    <value>평행 빔</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
+    <value>세차 (전자)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
+    <value>수렴 (전자)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Text" xml:space="preserve">
+    <value>후방 라우에 (X선)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
+    <value>세차 (X선, ZOLZ)</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>파원</value>
+  </data>
+  <data name="groupBoxSpotProperty.Text" xml:space="preserve">
+    <value>시뮬레이션 설정</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>회절 시뮬레이터</value>
+  </data>
+</root>

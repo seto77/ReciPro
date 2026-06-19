@@ -199,7 +199,7 @@
     <value>Image linéaire</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Coefficient de transmission croisée</value>
+    <value>Coef. de transmission croisée</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Modèle de cohérence partielle</value>

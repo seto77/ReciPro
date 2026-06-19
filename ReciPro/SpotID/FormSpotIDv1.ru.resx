@@ -79,7 +79,7 @@
     <value>Длина камеры</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Ускор. напряжение</value>
+    <value>Уск. напряж.</value>
   </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Условия ПЭМ</value>

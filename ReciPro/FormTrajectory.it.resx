@@ -72,7 +72,7 @@
     <value>Distribuzione direzionale BSE (il centro della rete stereografica corrisponde alla direzione normale alla superficie)</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
-    <value>Dalla normale alla superficie</value>
+    <value>Normale alla superficie</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulatore di traiettorie (metodo Monte Carlo)</value>

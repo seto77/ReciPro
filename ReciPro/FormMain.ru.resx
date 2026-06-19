@@ -189,7 +189,7 @@
   поворота</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Управление поворотом</value>
+    <value>Вращение</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
     <value>Отключить рендеринг текста OpenGL (требуется перезапуск)</value>

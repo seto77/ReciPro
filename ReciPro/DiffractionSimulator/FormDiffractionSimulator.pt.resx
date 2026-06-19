@@ -78,7 +78,7 @@
     <value>Erro excit.</value>
   </data>
   <data name="groupBoxStringSize.Text" xml:space="preserve">
-    <value>Tamanho do texto</value>
+    <value>Tamanho texto</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Pé da perpendicular
@@ -218,7 +218,7 @@ intensidade relativa</value>
  suporte TEM</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Sensibilidade de rotação</value>
+    <value>Sensib. de rotação</value>
   </data>
   <data name="groupBoxMisc.Text" xml:space="preserve">
     <value>Diversos</value>
@@ -227,7 +227,7 @@ intensidade relativa</value>
     <value>Comprimento de câmara 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Geometria do detector &amp;&amp; imagem sobreposta</value>
+    <value>Geometria detector &amp;&amp; imagem sobreposta</value>
   </data>
   <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
     <value>Código de desenvolvedor</value>

@@ -450,4 +450,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>衍射模拟器</value>
   </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>一般斑点</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>消光斑点 (螺旋或滑移)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>消光斑点 (点阵带心)</value>
+  </data>
 </root>

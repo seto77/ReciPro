@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonSearchPhoto1.Text" xml:space="preserve">
-    <value>Encontrar Eixo
+    <value>Achar Eixo
 de Zona</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Text" xml:space="preserve">
@@ -79,7 +79,7 @@ de Zona</value>
     <value>Comprimento de câmera</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Tensão de acel.</value>
+    <value>Tensão acel.</value>
   </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Condição do TEM</value>

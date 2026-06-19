@@ -104,7 +104,7 @@
     <value>Тормозная способность (dE/ds)</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
-    <value>Рисовать вспомогательные окружности</value>
+    <value>Направ. окружности</value>
   </data>
   <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
     <value>Максимальное расстояние ОРЭ вдоль поверхности</value>

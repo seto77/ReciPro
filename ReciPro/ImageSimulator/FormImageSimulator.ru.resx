@@ -199,7 +199,7 @@
     <value>Линейное изображение</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Перекрёстный коэффициент передачи</value>
+    <value>Перекр. коэф. передачи</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Модель частичной когерентности</value>
@@ -217,7 +217,7 @@
     <value>Свойства изображения</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Дифрагированные волны</value>
+    <value>Дифр. волны</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Настройки моделирования</value>

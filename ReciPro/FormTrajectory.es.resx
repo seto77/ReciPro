@@ -72,7 +72,7 @@
     <value>Distribución de direcciones de BSE (el centro del estereograma corresponde a la dirección normal a la superficie)</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
-    <value>Desde la normal a la superficie</value>
+    <value>Normal a la superficie</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulador de trayectorias (método de Monte Carlo)</value>

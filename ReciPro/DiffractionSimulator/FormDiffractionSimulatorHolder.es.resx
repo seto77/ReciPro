@@ -74,7 +74,7 @@ Inclinación X</value>
 Inclinación Y</value>
   </data>
   <data name="groupBoxTEMSettings.Text" xml:space="preserve">
-    <value>Ajustes específicos de TEM</value>
+    <value>Ajustes propios de TEM</value>
   </data>
   <data name="groupBoxLink.Text" xml:space="preserve">
     <value>Vínculo</value>
@@ -97,19 +97,19 @@ actual</value>
     <value>Área de dibujo</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Mostrar direcciones de inclinación</value>
+    <value>Direcciones de inclinación</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Mostrar líneas de 1°</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Mostrar etiquetas de índices</value>
+    <value>Etiquetas de índices</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
-    <value>Propiedades del estereograma</value>
+    <value>Propiedades estereograma</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Incluir índices equivalentes</value>
+    <value>Incluir índices equiv.</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Tamaño del texto</value>

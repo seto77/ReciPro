@@ -69,7 +69,7 @@
     <value>Verknüpfen</value>
   </data>
   <data name="buttonCopy.Text" xml:space="preserve">
-    <value>Nach Excel kopieren</value>
+    <value>Kopieren</value>
   </data>
   <data name="buttonPaste.Text" xml:space="preserve">
     <value>Aus

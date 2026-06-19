@@ -78,10 +78,10 @@
     <value>Err. eccit.</value>
   </data>
   <data name="groupBoxStringSize.Text" xml:space="preserve">
-    <value>Dimensione testo</value>
+    <value>Dim. testo</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Piede della perpendicolare
+    <value>Piede perpendicolare
 dal campione</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
@@ -224,7 +224,7 @@ intensità relativa</value>
     <value>Lunghezza di camera 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Geometria rivelatore &amp;&amp; immagine sovrapposta</value>
+    <value>Geometria rivelatore &amp;&amp; immagine sovrapp.</value>
   </data>
   <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
     <value>Codice sviluppatore</value>

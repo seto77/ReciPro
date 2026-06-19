@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>將選取的晶體匯出為 CIF 檔案</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>授權</value>
+  </data>
+  <data name="buttonUp.Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="toolStripButtonStereonet.Text" xml:space="preserve">
+    <value>  極射赤平投影</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
+    <value>  對稱性
+  資訊</value>
+  </data>
+  <data name="toolStripButtonDatabase.Text" xml:space="preserve">
+    <value>  晶體
+  資料庫</value>
+  </data>
+  <data name="checkBoxFixePlane.Text" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
+    <value>GitHub 儲存庫</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>結束時重設登錄設定（重新啟動後生效）</value>
+  </data>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>巨集</value>
+  </data>
+  <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
+    <value>停用所有 OpenGL 算繪（需重新啟動）</value>
+  </data>
+  <data name="buttonDuplicate.Text" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="buttonSetAxis.Text" xml:space="preserve">
+    <value>軸</value>
+  </data>
+  <data name="buttonDown.Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
+    <value>  結構
+  檢視器</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>步進</value>
+  </data>
+  <data name="groupBoxCrystalList.Text" xml:space="preserve">
+    <value>晶體清單</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>↑ 新增 ↑</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>載入晶體清單（取代目前清單）</value>
+  </data>
+  <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
+    <value>深色模式</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>說明</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>歐拉角</value>
+  </data>
+  <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>匯出為 CIF</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>重設旋轉</value>
+  </data>
+  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
+    <value>視線方向</value>
+  </data>
+  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
+    <value>目前方位</value>
+  </data>
+  <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>功能</value>
+  </data>
+  <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>載入晶體清單（加入目前清單）</value>
+  </data>
+  <data name="buttonClearAllCrystals.Text" xml:space="preserve">
+    <value>清除所有晶體</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="toolStripStatusLabel.Text" xml:space="preserve">
+    <value>計算時間: </value>
+  </data>
+  <data name="checkBoxFixAxis.Text" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
+    <value> 粉末
+ 繞射</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
+    <value>  繞射
+  模擬器</value>
+  </data>
+  <data name="toolStripButtonRotation.Text" xml:space="preserve">
+    <value>  旋轉
+  幾何</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>旋轉控制</value>
+  </data>
+  <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
+    <value>停用 OpenGL 文字算繪（需重新啟動）</value>
+  </data>
+  <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
+    <value>粉末繞射功能（開發中）</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
+    <value>重設為初始晶體清單</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存晶體清單</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
+    <value>使用 MKL 程式庫</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
+    <value>使用離子散射因子</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>清除所有晶體</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
+    <value>使用米勒-布拉維 (hkil) 指數</value>
+  </data>
+  <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>擷取 GUI 元件...</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
+    <value>晶體資訊</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>顯示工具提示</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.Text" xml:space="preserve">
+    <value>  軌跡
+  模擬器</value>
+  </data>
+  <data name="groupBoxArrows.Text" xml:space="preserve">
+    <value>箭頭</value>
+  </data>
+  <data name="buttonReplace.Text" xml:space="preserve">
+    <value>↑ 取代 ↑</value>
+  </data>
+  <data name="buttonSetPlane.Text" xml:space="preserve">
+    <value>晶面</value>
+  </data>
+  <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>從 CIF 或 AMC 檔案匯入晶體</value>
+  </data>
+  <data name="renameToolStripMenuItem.Text" xml:space="preserve">
+    <value>重新命名</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>結束</value>
+  </data>
+  <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
+    <value>回報錯誤、需求或意見</value>
+  </data>
+  <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
+    <value>停用 Crystallography.Native 程式庫（需重新啟動）</value>
+  </data>
+  <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>版本紀錄</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>說明（網頁）</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
+    <value>  電子束
+  交互作用</value>
+  </data>
+</root>

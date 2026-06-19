@@ -218,7 +218,7 @@ relativen Intensität</value>
 simulation</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>Rotationsempfindlichkeit</value>
+    <value>Rotationssensitivität</value>
   </data>
   <data name="groupBoxMisc.Text" xml:space="preserve">
     <value>Sonstiges</value>

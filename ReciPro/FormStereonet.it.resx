@@ -176,7 +176,7 @@ proiezione</value>
     <value>Disegna etichette indici</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Specifica colore</value>
+    <value>Imposta colore</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Dimensione</value>
@@ -246,7 +246,7 @@ da due piani</value>
     <value>Colore</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Asse di zona / Piano reticolare: </value>
+    <value>Asse di zona / Piano retic.: </value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Inclinazione X/Y:</value>

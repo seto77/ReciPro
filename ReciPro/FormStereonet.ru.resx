@@ -249,7 +249,7 @@
     <value>Цвет</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Ось зоны / плоскость решётки: </value>
+    <value>Ось зоны / пл. реш.: </value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Наклон X/Y:</value>

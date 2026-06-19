@@ -78,8 +78,8 @@
     <value>Taille du texte</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Pied de la perpendiculaire
-issue de l'échantillon</value>
+    <value>Pied de perpendiculaire
+de l'échantillon</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
     <value>Couleur</value>
@@ -215,7 +215,7 @@ l'intensité relative</value>
     <value>Longueur de caméra 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Géométrie du détecteur &amp;&amp; image superposée</value>
+    <value>Géométrie détecteur &amp;&amp; image superposée</value>
   </data>
   <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
     <value>Code développeur</value>

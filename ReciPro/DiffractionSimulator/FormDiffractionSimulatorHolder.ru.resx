@@ -85,7 +85,7 @@
   <data name="buttonLink.Text" xml:space="preserve">
     <value>Связать с
 текущим
-направлением</value>
+направл.</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
     <value>Диапазон индексов</value>
@@ -97,19 +97,19 @@
     <value>Область построения</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Показать направления наклона</value>
+    <value>Направления наклона</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Показать линии 1°</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Показать подписи индексов</value>
+    <value>Подписи индексов</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
     <value>Свойства стереосетки</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Включить эквивалентные индексы</value>
+    <value>Включить эквивалентные</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Размер текста</value>

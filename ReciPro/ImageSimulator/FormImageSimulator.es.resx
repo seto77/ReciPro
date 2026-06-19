@@ -190,7 +190,7 @@
     <value>Imagen lineal</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Coeficiente cruzado de transmisión</value>
+    <value>Coef. cruzado de transmisión</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>Modelo de coherencia parcial</value>
@@ -208,7 +208,7 @@
     <value>Propiedades de imagen</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Ondas difractadas</value>
+    <value>Ondas difract.</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Ajustes de simulación</value>

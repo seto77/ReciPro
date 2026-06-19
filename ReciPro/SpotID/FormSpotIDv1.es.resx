@@ -79,7 +79,7 @@ de zona</value>
     <value>Longitud de cámara</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Voltaje de acel.</value>
+    <value>Volt. acel.</value>
   </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Condición TEM</value>

@@ -72,7 +72,7 @@
     <value>BSE-Richtungsverteilung (das Stereonetz-Zentrum entspricht der Oberflächennormalen-Richtung)</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
-    <value>Von der Oberflächennormalen</value>
+    <value>Flächennormale</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Trajektorien-Simulator (Monte-Carlo-Methode)</value>
@@ -82,7 +82,7 @@
 zeichnen</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Anzahl der zu berechnenden
+    <value>Anzahl zu berechnender
 Trajektorien</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">

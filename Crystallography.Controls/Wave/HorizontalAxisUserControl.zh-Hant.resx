@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="radioButtonXray.Text" xml:space="preserve">
+    <value>X射線</value>
+  </data>
+  <data name="radioButtonElectron.Text" xml:space="preserve">
+    <value>電子</value>
+  </data>
+  <data name="radioButtonNeutron.Text" xml:space="preserve">
+    <value>中子</value>
+  </data>
+  <data name="groupBoxSource.Text" xml:space="preserve">
+    <value>射源</value>
+  </data>
+  <data name="radioButtonMonochro.Text" xml:space="preserve">
+    <value>單色</value>
+  </data>
+  <data name="radioButtonFlatWhite.Text" xml:space="preserve">
+    <value>平坦白光</value>
+  </data>
+  <data name="radioButtonCustomWhite.Text" xml:space="preserve">
+    <value>自訂白光</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>色彩模式</value>
+  </data>
+  <data name="groupBoxTwoTheta.Text" xml:space="preserve">
+    <value>波長</value>
+  </data>
+  <data name="groupBoxWaveProperty.Text" xml:space="preserve">
+    <value>波動性質</value>
+  </data>
+  <data name="radioButtonTwoTheta.Text" xml:space="preserve">
+    <value>2θ (角度)</value>
+  </data>
+  <data name="radioButtonDspacing.Text" xml:space="preserve">
+    <value>晶面間距</value>
+  </data>
+  <data name="radioButtonWavenumber.Text" xml:space="preserve">
+    <value>q (波數)</value>
+  </data>
+  <data name="radioButtonEnergy.Text" xml:space="preserve">
+    <value>能量</value>
+  </data>
+  <data name="radioButtonTOF.Text" xml:space="preserve">
+    <value>中子 TOF</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
+    <value>度</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.Text" xml:space="preserve">
+    <value>釐度</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Text" xml:space="preserve">
+    <value>弧度</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.Text" xml:space="preserve">
+    <value>毫弧度</value>
+  </data>
+  <data name="groupBoxOption.Text" xml:space="preserve">
+    <value>單位選項</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
+    <value>水平軸</value>
+  </data>
+</root>

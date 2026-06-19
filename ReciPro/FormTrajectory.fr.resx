@@ -72,7 +72,7 @@
     <value>Distribution directionnelle des BSE (le centre du stéréogramme correspond à la direction de la normale à la surface)</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
-    <value>Depuis la normale à la surface</value>
+    <value>Normale de surface</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulateur de trajectoires (méthode de Monte-Carlo)</value>
@@ -104,7 +104,7 @@ axes</value>
     <value>Pouvoir d'arrêt (dE/ds)</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
-    <value>Tracer les cercles de repère</value>
+    <value>Cercles de repère</value>
   </data>
   <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
     <value>Distance maximale des BSE parallèle à la surface</value>

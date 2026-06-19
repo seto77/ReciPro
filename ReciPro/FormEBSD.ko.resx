@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>시료 기울기</value>
+  </data>
+  <data name="buttonViewQuarter.Text" xml:space="preserve">
+    <value>조감도</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
+    <value>표면 법선</value>
+  </data>
+  <data name="buttonFromX.Text" xml:space="preserve">
+    <value>X축 (회전축)</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z축 (빔 방향)</value>
+  </data>
+  <data name="buttonSimulateBSE.Text" xml:space="preserve">
+    <value>시뮬레이션</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
+    <value>Dev: PCHIP 압축</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>축 그리기</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>검출기 중심</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>선 너비</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>구조 인자</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>구조 인자를
+기쿠치 선 강도에 적용</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/d 컷오프</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>상위</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>텍스트 크기</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>단계 간격</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>회절파 개수</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
+    <value>비국소 흡수 모델 사용</value>
+  </data>
+  <data name="checkBoxTDSBackground.Text" xml:space="preserve">
+    <value>TDS 배경 강도 포함</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>두께 시작</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>끝</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>정지</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>에너지</value>
+  </data>
+  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
+    <value>깊이</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>극성</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
+    <value>BSE 각도/에너지 분포와 함께 이미지 표시</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>밝기</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>출력 매개변수</value>
+  </data>
+  <data name="checkBoxShowOverlays.Text" xml:space="preserve">
+    <value>오버레이 표시</value>
+  </data>
+  <data name="buttonCopyImage.Text" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
+    <value>끝</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
+    <value>에너지 시작</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
+    <value>단계 간격</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>깊이 (nm)</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
+    <value>동역학적 EBSD 패턴 표시 (마스터 패턴 필요)</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
+    <value>검출기 윤곽</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>검출기 기울기</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>검출기 반지름</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSD 기하구조</value>
+  </data>
+  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
+    <value>SEM &amp;&amp; 시료 조건</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>기하구조</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>스테레오넷 중심은 표면 법선 방향입니다</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>BSE 분포</value>
+  </data>
+  <data name="checkBoxShowMesh.Text" xml:space="preserve">
+    <value>메시 표시</value>
+  </data>
+  <data name="checkBoxShowCircle.Text" xml:space="preserve">
+    <value>원 표시</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>텍스트 설정</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
+    <value>기쿠치 선 표시</value>
+  </data>
+  <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
+    <value>기쿠치 선 기준</value>
+  </data>
+  <data name="checkBoxShowGIndices.Text" xml:space="preserve">
+    <value>기쿠치 선 지수 표시</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
+    <value>정대축 지수 표시</value>
+  </data>
+  <data name="labelMasterPatternGrid.Text" xml:space="preserve">
+    <value>격자</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
+    <value>동역학적 시뮬레이션 매개변수</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
+    <value>에너지</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
+    <value>깊이</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
+    <value>반구</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
+    <value>마스터 패턴 생성</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
+    <value>축 레이블</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
+    <value>축 화살표</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
+    <value>축 방향 보기</value>
+  </data>
+  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
+    <value>마스터 패턴</value>
+  </data>
+  <data name="groupBoxEBSDPattern.Text" xml:space="preserve">
+    <value>EBSD 패턴</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EBSD 시뮬레이터</value>
+  </data>
+</root>
