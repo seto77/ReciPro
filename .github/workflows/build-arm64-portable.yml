@@ -127,7 +127,11 @@ jobs:
           # に合わせて絞る。★この一覧から外れた言語はアプリ自身のサテライト DLL も含め ZIP から無言で除外されるため、
           # 新言語を出荷する際は必ずここへ追加すること (多言語化方針 Phase 0)。csproj には入れず publish 引数に
           # 留める: x64 MSI (vdproj の LocalizedResourceDlls 自動収集) のビルド経路に影響させないため。
-          # PowerShell では ';' が文番号区切りになるため、値全体を単一引用符で囲む。
+          # 260621Cl 修正: セミコロン区切りは ';' が二重に問題になる -- PowerShell の文区切りに加え、
+          # MSBuild の -p: は ';' をプロパティ区切りと解釈するため、単一引用符で囲むだけでは
+          # 'SatelliteResourceLanguages=en' しか渡らず ja/de/... の全サテライトが脱落 (実測で publish 失敗)。
+          # release.yml / signing-test.yml と同じく ';' を '%3B' でエスケープして統一する (3-D packaging 検査)。
+          # 旧: -p:SatelliteResourceLanguages='en;ja;de;fr;es;pt;it;ru;zh-Hans;zh-Hant;ko'
           # 260611Cl PublishSingleFile=true: フラット 292 ファイルから「ReciPro.exe + データ数個 + native」へ
           # (Surface 検証での作者要望)。ランタイム・managed DLL・ja サテライト・libxrl/glfw は exe に埋め込み。
           # Crystallography.Native.dll のみ csproj の ExcludeFromSingleFile で exe 横に外置き (NativeWrapper の
@@ -142,7 +146,7 @@ jobs:
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
             -p:PublishSingleFile=true `
             -p:PublishTrimmed=false `
-            -p:SatelliteResourceLanguages='en;ja;de;fr;es;pt;it;ru;zh-Hans;zh-Hant;ko' `
+            -p:SatelliteResourceLanguages=en%3Bja%3Bde%3Bfr%3Bes%3Bpt%3Bit%3Bru%3Bzh-Hans%3Bzh-Hant%3Bko `
             -o $publishDir
           "dir=$publishDir" >> $env:GITHUB_OUTPUT
 

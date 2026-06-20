@@ -175,6 +175,13 @@ jobs:
           if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
           if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
           if (-not (Test-Path "$s\ReciPro.exe")) { throw "ReciPro.exe missing from staging" }
+          # 260621Cl 追加 (3-D packaging 検査): 全カルチャのサテライト DLL が staging に揃っているか検査する。
+          #   MSI は WiX の <Files Include="**"> で staging を丸ごと収集するため、ここで欠ければ MSI からも無言で欠落する。
+          #   framework-dependent publish は SatelliteResourceLanguages 無指定 = アプリの全 resx 言語を生成する想定。
+          #   新言語を増やしたらこの一覧も更新すること (Crystallography.SupportedCultures と同期)。
+          $expectedCultures = @('ja','de','fr','es','pt','it','ru','zh-Hans','zh-Hant','ko')
+          $missingSat = $expectedCultures | Where-Object { -not (Get-ChildItem "$s\$_" -Filter *.resources.dll -ErrorAction SilentlyContinue) }
+          if ($missingSat) { throw "satellite assemblies missing for culture(s): $($missingSat -join ', ')" }
           Write-Host "MSI staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
 
       # 260613Cl vdproj→WiX 移行 (Phase B) で以下 4 ステップを廃止 (本文は git 履歴 b6340c74 以前を参照):
