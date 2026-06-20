@@ -208,7 +208,7 @@
     <value>HRTEM 選項</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
-    <value>大小 (W×H)</value>
+    <value>尺寸 (寬×高)</value>
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>解析度</value>

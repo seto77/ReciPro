@@ -158,13 +158,13 @@
     <value>레이블</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>깊이 감쇠</value>
+    <value>깊이 페이드</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
     <value>초기화</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
-    <value>표시</value>
+    <value>외관</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>대원</value>

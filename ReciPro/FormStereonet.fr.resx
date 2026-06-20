@@ -152,7 +152,7 @@ projection</value>
     <value>Étiquette</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Estompage en profondeur</value>
+    <value>Fondu en profondeur</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
     <value>Réinitialiser</value>

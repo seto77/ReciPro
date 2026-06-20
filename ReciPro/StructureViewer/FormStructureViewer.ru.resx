@@ -377,7 +377,7 @@
     <value>CTRL+ Правая кнопка мыши вверх/вниз:  Изменить степень перспективы</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Подсказки по горячим клавишам</value>
+    <value>Подсказки по сочетаниям клавиш</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Размер (Ш×В)</value>

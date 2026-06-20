@@ -380,7 +380,7 @@
     <value>快速鍵提示</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
-    <value>大小 (W×H)</value>
+    <value>尺寸 (寬×高)</value>
   </data>
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>將目前影像儲存至檔案</value>

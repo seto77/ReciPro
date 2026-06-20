@@ -368,7 +368,7 @@ de los límites</value>
     <value>CTRL+ botón derecho del ratón arriba/abajo:  Cambiar el grado de perspectiva</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Sugerencias de atajos</value>
+    <value>Atajos de teclado</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Tamaño (An×Al)</value>

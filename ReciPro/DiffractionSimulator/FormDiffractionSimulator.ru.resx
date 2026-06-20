@@ -109,7 +109,7 @@
     <value>Линии Кикучи</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>Показать индексы</value>
+    <value>Подписи индексов</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
     <value>Игнорировать интенсивность дифракции
@@ -146,7 +146,7 @@
     <value>Радиус рефлекса</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
-    <value>Метка</value>
+    <value>Подпись</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
     <value>Делать рефлексы вдали от 
@@ -381,7 +381,7 @@
     <value>Толщина</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>Внешний вид</value>
+    <value>Вид</value>
   </data>
   <data name="radioButtonCircleArea.Text" xml:space="preserve">
     <value>Сплошная сфера</value>

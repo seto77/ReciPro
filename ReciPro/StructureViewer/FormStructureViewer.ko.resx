@@ -245,7 +245,7 @@
     <value>대칭 요소</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>라벨 표시</value>
+    <value>레이블 표시</value>
   </data>
   <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
     <value>재질 색 사용</value>
@@ -264,7 +264,7 @@
 개별 조정)</value>
   </data>
   <data name="groupBoxLabel.Text" xml:space="preserve">
-    <value>라벨</value>
+    <value>레이블</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
     <value>경계 밖에 있어도 

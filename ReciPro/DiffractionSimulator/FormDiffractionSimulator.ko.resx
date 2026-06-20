@@ -109,7 +109,7 @@
     <value>기쿠치 선</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>지수 라벨 표시</value>
+    <value>지수 레이블 표시</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
     <value>회절 강도 무시
@@ -146,7 +146,7 @@
     <value>반사점 반지름</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
-    <value>라벨</value>
+    <value>레이블</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
     <value>에발트 구에서 먼 

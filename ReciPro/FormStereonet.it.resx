@@ -155,7 +155,7 @@ proiezione</value>
     <value>Etichetta</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Attenuazione profondità</value>
+    <value>Dissolvenza profondità</value>
   </data>
   <data name="button3D_reset.Text" xml:space="preserve">
     <value>Reimposta</value>

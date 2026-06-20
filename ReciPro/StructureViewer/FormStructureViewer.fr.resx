@@ -362,7 +362,7 @@ des limites</value>
     <value>CTRL+ Souris droite haut/bas :  Modifier le degré de perspective</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Astuces de raccourcis</value>
+    <value>Aide raccourcis clavier</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Taille (L×H)</value>

@@ -172,7 +172,7 @@
     <value>Modo de transparência</value>
   </data>
   <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
-    <value>Esmaecer por profundidade</value>
+    <value>Atenuação de profundidade</value>
   </data>
   <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
     <value>Qualidade de renderização</value>

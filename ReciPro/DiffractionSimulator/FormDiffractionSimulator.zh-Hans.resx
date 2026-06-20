@@ -205,7 +205,7 @@
     <value>固定</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
-    <value>尺寸 (W×H)</value>
+    <value>尺寸 (宽×高)</value>
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>分辨率</value>

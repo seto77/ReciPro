@@ -172,7 +172,7 @@
     <value>Transparenzmodus</value>
   </data>
   <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
-    <value>Tiefenblende</value>
+    <value>Tiefenabblendung</value>
   </data>
   <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
     <value>Renderqualität</value>

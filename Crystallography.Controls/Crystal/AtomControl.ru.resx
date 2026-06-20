@@ -146,7 +146,7 @@
     <value>Удалить</value>
   </data>
   <data name="labelDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Метка</value>
+    <value>Подпись</value>
   </data>
   <data name="occDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Засел.</value>

@@ -109,7 +109,7 @@ a partir da amostra</value>
     <value>Linhas de Kikuchi</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>Mostrar rótulos de índice</value>
+    <value>Mostrar rótulos de índices</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
     <value>Ignorar intensidade de difração
