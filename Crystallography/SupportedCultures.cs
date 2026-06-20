@@ -52,14 +52,14 @@ public static class SupportedCultures
         new("en",      "English",   "Segoe UI",              "en", true ),
         new("ja",      "日本語",     "Yu Gothic UI",          "ja", true ),
         new("de",      "Deutsch",   "Segoe UI",              "en", true ), // 260618Cl: 翻訳 resx 整備済→言語メニューに追加(Released=true)
-        new("fr",      "Français",  "Segoe UI",              "en", false),
-        new("es",      "Español",   "Segoe UI",              "en", false),
-        new("pt",      "Português", "Segoe UI",              "en", false),
-        new("it",      "Italiano",  "Segoe UI",              "en", false), // 260617Cl 追加: Latin/Segoe UI・IUCr 用語あり
-        new("ru",      "Русский",   "Segoe UI",              "en", false), // 260617Cl 追加: Cyrillic は Segoe UI が網羅・IUCr 用語あり
-        new("zh-Hans", "简体中文",   "Microsoft YaHei UI",    "en", false),
-        new("zh-Hant", "繁體中文",   "Microsoft JhengHei UI", "en", false), // 260617Cl 追加: 繁体字(台湾/香港)。zh-Hans より長い接頭辞として先に評価される
-        new("ko",      "한국어",     "Malgun Gothic",         "en", false), // 260617Cl 追加: 韓国語フォント分岐。IUCr 未収録→別途用語典拠
+        new("fr",      "Français",  "Segoe UI",              "en", true ), // 260621Cl Released (波A 翻訳・tooltip 完了)
+        new("es",      "Español",   "Segoe UI",              "en", true ), // 260621Cl Released (波A)
+        new("pt",      "Português", "Segoe UI",              "en", false), // preview: pt-BR 寄り綴り要ネイティブ校閲 (D 決定)
+        new("it",      "Italiano",  "Segoe UI",              "en", true ), // 260617Cl 追加 / 260621Cl Released (波A): Latin/Segoe UI・IUCr 用語あり
+        new("ru",      "Русский",   "Segoe UI",              "en", true ), // 260617Cl 追加 / 260621Cl Released (波A): Cyrillic は Segoe UI が網羅・IUCr 用語あり
+        new("zh-Hans", "简体中文",   "Microsoft YaHei UI",    "en", true ), // 260621Cl Released (波B 翻訳・用語統一完了)
+        new("zh-Hant", "繁體中文",   "Microsoft JhengHei UI", "en", true ), // 260617Cl 追加 / 260621Cl Released (波B): 繁体字(台湾/香港)。zh-Hans より長い接頭辞として先に評価される
+        new("ko",      "한국어",     "Malgun Gothic",         "en", false), // 260617Cl 追加 / preview: IUCr 未収録→別途用語典拠 (D 決定)
     };
 
     /// <summary>既定言語 (英語)。未知カルチャはここへ解決する。</summary>
