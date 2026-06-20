@@ -67,8 +67,15 @@ public partial class FormBase : Form
     //旧々: if (WineCompat.IsWine) Load += (s,e) => { try { WineCompat.ApplyTo(this); } catch { } };      // Wine 専用 walk
     protected override void OnLoad(EventArgs e)
     {
-        base.OnLoad(e);
-        try { UiFont.Apply(this); } catch { /* フォント適用失敗で Load を止めない */ }
+        // 260621Cl 変更: base.OnLoad(e) (派生 Load ハンドラ) が GL 無効時 NRE 等で投げても、フォント適用と
+        // コード側多言語化は確実に走らせる (finally)。例外自体は従来どおり呼び出し側へ伝播させる。
+        try { base.OnLoad(e); }
+        finally
+        {
+            try { UiFont.Apply(this); } catch { /* フォント適用失敗で Load を止めない */ }
+            // 260621Cl 追加 (§2.5): Localizable=false ラベルをコード側テーブルで多言語化 (動的追加分も base.OnLoad 後に確実)。
+            try { CodeLocalizer.Apply(this); } catch { /* 多言語化失敗で Load を止めない */ }
+        }
     }
 
     //260604Cl 追加: タイトル(Text)の右端に現在の UI 言語の案内文字列を配置する (本文との間を全角スペースで詰めて右寄せ)。

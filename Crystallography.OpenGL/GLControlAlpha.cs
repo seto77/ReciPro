@@ -17,6 +17,7 @@ using Vec2d = OpenTK.Mathematics.Vector2d;
 using Vec3d = OpenTK.Mathematics.Vector3d;
 using Vec3f = OpenTK.Mathematics.Vector3;
 using OpenTK.Mathematics;
+using static Crystallography.L10n; // 260621Cl 追加: コード側多言語化 Loc() (§2.5, OpenGL は Controls.CodeLocalizer 非参照のため個別実装)
 #endregion
 
 namespace Crystallography.OpenGL;
@@ -672,6 +673,26 @@ public unsafe partial class GLControlAlpha : UserControl
             DisablingOpenGL = true;
             return;
         }
+    }
+
+    // 260621Cl 追加 (§2.5): コンテキストメニュー項目を実行時にコード側多言語化する。GLControlAlpha は OpenGL
+    // プロジェクト所属で Crystallography.Controls.CodeLocalizer を参照できないため、L10n.Loc を直接使う個別実装。
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+        if (DesignMode) return;
+        try
+        {
+            toolStripMenuItemProjectionMode.Text = Loc(en: "Projection mode", ja: "投影モード", de: "Projektionsmodus", fr: "Mode de projection", es: "Modo de proyección", pt: "Modo de projeção", it: "Modalità di proiezione", ru: "Режим проекции", zhHans: "投影模式", zhHant: "投影模式", ko: "투영 모드");
+            toolStripMenuItemRenderTransparency.Text = Loc(en: "Rendering transparency", ja: "描画の透明度", de: "Rendering-Transparenz", fr: "Transparence du rendu", es: "Transparencia de renderizado", pt: "Transparência da renderização", it: "Trasparenza di rendering", ru: "Прозрачность рендеринга", zhHans: "渲染透明度", zhHant: "繪製透明度", ko: "렌더링 투명도");
+            toolStripMenuItemRotate.Text = Loc(en: "Left drag: Rotate", ja: "左ドラッグ: 回転", de: "Ziehen mit links: Drehen", fr: "Glisser gauche : rotation", es: "Arrastrar con izquierdo: Rotar", pt: "Arrastar com o esquerdo: girar", it: "Trascinamento sinistro: ruota", ru: "Перетаскивание ЛКМ: вращение", zhHans: "左键拖动：旋转", zhHant: "左鍵拖曳: 旋轉", ko: "왼쪽 드래그: 회전");
+            toolStripMenuItemTranslate.Text = Loc(en: "Middle drag: Translate", ja: "中ドラッグ: 平行移動", de: "Ziehen mit Mitte: Verschieben", fr: "Glisser milieu : translation", es: "Arrastrar con central: Trasladar", pt: "Arrastar com o meio: transladar", it: "Trascinamento centrale: trasla", ru: "Перетаскивание СКМ: перемещение", zhHans: "中键拖动：平移", zhHant: "中鍵拖曳: 平移", ko: "가운데 드래그: 이동");
+            toolStripMenuItemChange.Text = Loc(en: "Right drag: Change", ja: "右ドラッグ: 変更", de: "Rechts ziehen: Ändern", fr: "Glisser droit : modifier", es: "Arrastre derecho: cambiar", pt: "Arrastar direita: Alterar", it: "Trascina destro: Modifica", ru: "Перетаскивание ПКМ: изменить", zhHans: "右键拖动: 更改", zhHant: "右鍵拖曳：變更", ko: "오른쪽 드래그: 변경");
+            toolStripMenuItem4.Text = Loc(en: "Background color (RGB)", ja: "背景色 (RGB)", de: "Hintergrundfarbe (RGB)", fr: "Couleur de fond (RVB)", es: "Color de fondo (RGB)", pt: "Cor de fundo (RGB)", it: "Colore di sfondo (RGB)", ru: "Цвет фона (RGB)", zhHans: "背景色 (RGB)", zhHant: "背景色 (RGB)", ko: "배경색 (RGB)");
+            inputRGAndB0255ToolStripMenuItem.Text = Loc(en: "Input values of R, G, B (0-255)", ja: "R, G, B の値を入力 (0-255)", de: "Werte für R, G, B eingeben (0-255)", fr: "Saisir les valeurs de R, G, B (0-255)", es: "Introduzca los valores de R, G, B (0-255)", pt: "Insira os valores de R, G, B (0-255)", it: "Inserisci i valori di R, G, B (0-255)", ru: "Введите значения R, G, B (0-255)", zhHans: "输入 R, G, B 值 (0-255)", zhHant: "輸入 R, G, B 值 (0-255)", ko: "R, G, B 값 입력 (0-255)");
+            showHintsToolStripMenuItem.Text = Loc(en: "Show hints", ja: "ヒントを表示", de: "Hinweise anzeigen", fr: "Afficher les astuces", es: "Mostrar sugerencias", pt: "Mostrar dicas", it: "Mostra suggerimenti", ru: "Показывать подсказки", zhHans: "显示提示", zhHant: "顯示提示", ko: "힌트 표시");
+        }
+        catch { /* 多言語化失敗で Load を止めない */ }
     }
 
     /// <summary>コンストラクタ. Zsort, DDP, PPLLは、コンストラクタで決める. 生成後に変更はできない。</summary>

@@ -58,6 +58,15 @@ public partial class UserControlBase : UserControl
 
     private bool _toolTipRelayed; // 260531Cl 追加: ハンドル再生成で複数回呼ばれても配布は一度だけにするガード
 
+    // 260621Cl 追加 (§2.5): この UC が Designer.cs に英語直書きした Localizable=false ラベルを、
+    // L10n の中央テーブルに基づきコード側で多言語化する (埋め込み先 Form とは独立に、UC 表示時に適用)。
+    protected override void OnLoad(EventArgs e)
+    {
+        // 260621Cl: base.OnLoad が投げてもコード側多言語化は確実に走らせる (finally)。例外は呼び出し側へ伝播。
+        try { base.OnLoad(e); }
+        finally { try { CodeLocalizer.Apply(this); } catch { /* 多言語化失敗で Load を止めない */ } }
+    }
+
     /// <summary>260531Cl 追加: ハンドル生成後、親の標準 ToolTip からこのコントロール宛のチップを読み取り内部子へ反映する。</summary>
     protected override void OnHandleCreated(EventArgs e)
     {

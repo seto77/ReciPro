@@ -37,4 +37,42 @@ public static class L10n
         };
         return string.IsNullOrEmpty(pick) ? en : pick;
     }
+
+    // 260621Cl 追加 (§2.5 横展開): Localizable=false のフォーム/UC が Designer.cs に英語直書きしている
+    // 可視ラベル (.Text / DataGridView 列の .HeaderText / ToolStripItem の .Text) を、型名単位の中央テーブルで
+    // 多言語化する。FormBase / UserControlBase の OnLoad から CodeLocalizer.Apply(this) が実行時に差し替える。
+    // データ本体は自動生成の L10nData.cs (tools/gen_l10n_data.py)。詳細は方針 §3-B/§12.7。
+    /// <summary>1 コントロール (またはメニュー項目・列) の 1 プロパティぶんの 11 言語訳。</summary>
+    public sealed class Entry
+    {
+        /// <summary>コントロール名 (Designer の Name)。フォーム自身のタイトルは "this"。</summary>
+        public readonly string Ctrl;
+        /// <summary>"Text" または "HeaderText"。</summary>
+        public readonly string Prop;
+        public readonly string En, Ja, De, Fr, Es, Pt, It, Ru, ZhHans, ZhHant, Ko;
+        public Entry(string ctrl, string prop, string en, string ja, string de, string fr, string es,
+                     string pt, string it, string ru, string zhHans, string zhHant, string ko)
+        {
+            Ctrl = ctrl; Prop = prop; En = en; Ja = ja; De = de; Fr = fr; Es = es;
+            Pt = pt; It = it; Ru = ru; ZhHans = zhHans; ZhHant = zhHant; Ko = ko;
+        }
+        /// <summary>現在の UI カルチャに対応する訳 (<see cref="Loc"/> と同一の解決)。</summary>
+        public string Resolve() => Loc(En, Ja, De, Fr, Es, Pt, It, Ru, ZhHans, ZhHant, Ko);
+    }
+
+    private static System.Collections.Generic.Dictionary<string, Entry[]> _registry;
+    private static void EnsureRegistry()
+    {
+        if (_registry != null) return;
+        var reg = new System.Collections.Generic.Dictionary<string, Entry[]>();
+        L10nData.Populate(reg); // 自動生成データ
+        _registry = reg;
+    }
+
+    /// <summary>型名 (root.GetType().Name) に対応するローカライズ項目を返す。未登録なら null。</summary>
+    public static Entry[] Get(string typeName)
+    {
+        EnsureRegistry();
+        return _registry.TryGetValue(typeName, out var e) ? e : null;
+    }
 }
