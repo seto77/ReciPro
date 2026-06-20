@@ -450,4 +450,605 @@ Radius zeichnen</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Beugungssimulator</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden Beugungsreflexe simuliert.</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden Kikuchi-Linien (Bänder, die von
+inelastisch gestreuten Elektronen erzeugt werden, die
+anschließend Bragg-gebeugt werden) simuliert.</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden Debye-Ringe (Pulverbeugungsringe
+zufällig orientierter Kristallite) simuliert.</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden Maßstabslinien simuliert.</value>
+  </data>
+  <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden Indexbeschriftungen angezeigt</value>
+  </data>
+  <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden d-Werte (Netzebenenabstände) angezeigt</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden die Kehrwerte der d-Werte
+(d. h. die Länge des g-Vektors) angezeigt</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden die Abstände (mm) von
+den Reflexen zum direkten Reflex angezeigt</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, wird der Anregungsfehler s_g für jeden
+Reflex angezeigt, der angibt, wie weit der reziproke
+Gitterpunkt von der exakten Bragg-/Ewald-Kugel-Bedingung entfernt ist.</value>
+  </data>
+  <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, wird der Betrag des Strukturfaktors
+|Fg| für jeden Reflex angezeigt; ein größeres |Fg|
+bedeutet im Allgemeinen einen stärkeren Reflex.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Legt die Größe der Zeichenketten fest</value>
+  </data>
+  <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
+    <value>Legt eine Schriftgröße fest</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der Zeichenketten fest</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der Zeichenketten fest</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Lotfußpunkts
+der Senkrechten von der Probe fest.</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Lotfußpunkts
+der Senkrechten von der Probe fest.</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des direkten Reflexes fest</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe des direkten Reflexes fest</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>Lotfußpunktposition anzeigen</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>Direktposition anzeigen</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Legt eine Hintergrundfarbe fest</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Legt eine Hintergrundfarbe fest</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>Legt eine Hintergrundfarbe fest</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>Legt eine Hintergrundfarbe fest</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Wählt die Reflexe für Kikuchi-Linien nach dem
+Strukturfaktor aus (stärkste Reflexe zuerst).</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden die Intensitäten der Kikuchi-Linien mit
+der kinematischen relativen Intensität jedes Reflexes gewichtet.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Wählt die Reflexe für Kikuchi-Linien
+über einen 1/d-Grenzwert (d-Wert) aus.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Legt die Anzahl der stärksten Reflexe (nach
+Strukturfaktor) fest, die zum Zeichnen der Kikuchi-Linien verwendet werden.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Zeichnet Kikuchi-Linien nur für Reflexe, deren
+1/d (reziproke Länge) unter diesem Wert liegt
+(nm⁻¹); d. h. nur für Abstände gröber als 1/Wert.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>Zeichnet Kikuchi-Linien nur für Reflexe, deren
+1/d (reziproke Länge) unter diesem Wert liegt
+(nm⁻¹); d. h. nur für Abstände gröber als 1/Wert.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der Kikuchi-Linien fest.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Kikuchi-Linien fest</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Kikuchi-Linien fest</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>Kikuchi-Linien</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der Debye-Ringe fest</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der Debye-Ringe fest</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden Indexbeschriftungen für die Debye-Ringe angezeigt.</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden alle Debye-Ringe
+mit derselben Intensität dargestellt.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Debye-Ringe fest</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Debye-Ringe fest</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden Maßstabsbeschriftungen angezeigt</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Legt die Dichte der Maßstabsunterteilungen fest (fein / mittel / grob).</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Maßstabslinien fest</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Legt eine Linienbreite der Maßstabslinien fest</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>Legt die Unterteilung der Maßstabslinien fest</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>Legt die Unterteilung der Maßstabslinien fest</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>Legt die Unterteilung der Maßstabslinien fest</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der Azimut-Maßstabslinien fest</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der Azimut-Maßstabslinien fest</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der 2θ-Maßstabslinien fest</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der 2θ-Maßstabslinien fest</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Linksziehen (nahe der Bildschirmmitte): Drehung um die zum Monitor parallele Achse
+Linksziehen (am Bildschirmrand): Drehung um die zum Monitor senkrechte Achse
+Rechtsklick: Verkleinern
+Rechtsziehen: Den ausgewählten Bereich vergrößern
+Mittleres Ziehen: Das simulierte Bild verschieben
+Linker Doppelklick: Die Informationen des g-Vektors anzeigen</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der reziproken Gitterpunkte
+in der Nähe der Ewald-Kugel fest.</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der reziproken Gitterpunkte in der Nähe der Ewald-Kugel fest.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
+    <value>Legt den gezeichneten Radius der Beugungsreflexkugeln
+in der 3D-Ansicht des reziproken Raums fest (nm⁻¹);
+Reflexe innerhalb dieses Abstands von der Ewald-Kugel
+werden als nah eingefärbt und können beschriftet werden.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>Legt den gezeichneten Radius der Beugungsreflexkugeln
+in der 3D-Ansicht des reziproken Raums fest (nm⁻¹);
+Reflexe innerhalb dieses Abstands von der Ewald-Kugel
+werden als nah eingefärbt und können beschriftet werden.</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>Legt die Transparenz der 3D-Reflexe fest.</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden die reziproken Gitterpunkte in der
+Nähe der Ewald-Kugel mit ihren hkl-Indizes beschriftet.</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der reziproken Gitterpunkte
+fern von der Ewald-Kugel fest.</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden reziproke Gitterpunkte umso
+transparenter, je weiter sie von der Ewald-Kugel entfernt sind.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>Legt den Schwellenwert der relativen Intensität (%) fest,
+unterhalb dessen reziproke Gitterpunkte ausgeblendet werden.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Legt den Schwellenwert der relativen Intensität (%) fest,
+unterhalb dessen reziproke Gitterpunkte ausgeblendet werden.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>Legt den Schwellenwert der relativen Intensität (%) fest,
+unterhalb dessen reziproke Gitterpunkte ausgeblendet werden.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Left)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Down)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Up)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Right)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Legt den Winkelschritt für die obigen Schaltflächen
+oder die Drehgeschwindigkeit fest.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Legt den Winkelschritt für die obigen Schaltflächen
+oder die Drehgeschwindigkeit fest.</value>
+  </data>
+  <data name="buttonResetAngle.ToolTip" xml:space="preserve">
+    <value>Setzt die Ausrichtung der 3D-Ansicht auf die Standardrichtung zurück.</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der Ewald-Kugeloberfläche fest.</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Ursprungsreflexes (000) fest.</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Führungspfeils für die Rechts-Richtung fest.</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Führungspfeils für die Oben-Richtung fest.</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Führungspfeils für die Strahlrichtung fest.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Index-/Beschriftungstexts in der 3D-Ansicht fest.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe des Index-/Beschriftungstexts in der 3D-Ansicht fest.</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden die Führungspfeile für Strahl-/Oben-/Rechts-
+Richtung in der 3D-Ansicht des reziproken Gitters angezeigt.</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die Ewald-Kugel
+in der 3D-Ansicht des reziproken Gitters gezeichnet.</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die 3D-Ansicht des reziproken Raums
+(reziprokes Gitter und Ewald-Kugel) angezeigt.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Realraumkoordinaten des Mauszeigers
+in mm (Ursprung: Kristall).</value>
+  </data>
+  <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
+    <value>Realraumkoordinaten des Mauszeigers
+in mm (Ursprung: Kristall).</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Realraumkoordinaten des Mauszeigers
+in mm (Ursprung: Kristall).</value>
+  </data>
+  <data name="labelD.ToolTip" xml:space="preserve">
+    <value>d-Wert (nm) entsprechend der Position des Mauszeigers.</value>
+  </data>
+  <data name="labelDinv.ToolTip" xml:space="preserve">
+    <value>Reziproker Abstand d⁻¹ (nm⁻¹) entsprechend
+der Position des Mauszeigers.</value>
+  </data>
+  <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
+    <value>Streuwinkel 2θ in Grad entsprechend
+der Position des Mauszeigers.</value>
+  </data>
+  <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
+    <value>Streuwinkel 2θ in Radiant (mrad unterhalb von 0,1 rad)
+entsprechend der Position des Mauszeigers.</value>
+  </data>
+  <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
+    <value>Detektorebenen-Koordinaten des Mauszeigers
+in mm (Ursprung: Lotfußpunkt des Musters).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Detektorebenen-Koordinaten des Mauszeigers
+in mm (Ursprung: Lotfußpunkt des Musters).</value>
+  </data>
+  <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
+    <value>Koordinaten des Mauszeigers im reziproken Raum in nm⁻¹.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Koordinaten des Mauszeigers im reziproken Raum in nm⁻¹.</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, öffnet sich das detaillierte
+Informationsfenster an der Cursorposition.</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird das Simulationsbild
+horizontal (links-rechts) gespiegelt.</value>
+  </data>
+  <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird das Simulationsbild
+vertikal (oben-unten) gespiegelt.</value>
+  </data>
+  <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird das Bild mit
+invertierter Helligkeit (negativ) angezeigt.</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>Setzt die Monitormitte auf den folgenden Punkt</value>
+  </data>
+  <data name="comboBoxCenter.ToolTip" xml:space="preserve">
+    <value>Wählt den Bezugspunkt aus, der als Monitormitte verwendet wird
+(direkter Reflex, Lotfußpunkt oder Detektormitte).</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>Fixiert die Monitormitte auf den folgenden Punkt</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Legt die Pixelgrößen des simulierten Musters fest</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Legt eine Auflösung des simulierten Musters fest</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Legt eine Auflösung des simulierten Musters fest</value>
+  </data>
+  <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
+    <value>Drückt die Auflösung als Länge auf der
+Detektorebene pro Pixel aus (mm/px).</value>
+  </data>
+  <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
+    <value>Drückt die Auflösung als Länge im
+reziproken Raum pro Pixel aus (nm⁻¹/px).</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>Legt die Drehgeschwindigkeit per Mausbedienung fest</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Legt die Drehgeschwindigkeit per Mausbedienung fest</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>Öffnet das Simulationsfenster für den TEM-Halter.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Legt Kameralänge 2 fest, d. h. den Abstand von
+der Probe zum Detektor (Monitor).</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>Legt Kameralänge 2 fest, d. h. den Abstand von
+der Probe zum Detektor (Monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>Öffnet das Fenster für die detaillierten Optikeinstellungen.</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Speichert das aktuelle Bild in einer Datei</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Kopiert das aktuelle Bild in die Zwischenablage</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Legt die Strahlungsart und die
+Beschleunigungsspannung (Wellenlänge) fest.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Legt die Strahlungsart und die
+Beschleunigungsspannung (Wellenlänge) fest.</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>In diesem Modus wird die Intensität mit der Bloch-Wellen-Methode berechnet.
+Nur für eine Elektronenquelle gültig.</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden Beugungsreflexe
+mit der jeweils zugewiesenen Kristallfarbe gezeichnet.</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Fügt dem Strukturfaktor die energieabhängigen Terme der anomalen Röntgendispersion (f', f'') hinzu. In der Nähe einer Absorptionskante ist das Friedelsche Gesetz verletzt, was zu Bijvoet-Intensitätsunterschieden (hkl gegenüber -h-k-l) führt. Deaktivieren Sie dies für das klassische dispersionsfreie Ergebnis.</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden alle durch die
+Raumgruppe verbotenen Reflexe ausgeblendet.</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden durch die
+Gitterzentrierung verbotene Reflexe ausgeblendet.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Einstellungen für die Simulation der
+Präzessions-Elektronenbeugung (PED)</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>Präzessions-Halbwinkel (mrad) für die PED-Simulation
+(Präzessions-Elektronenbeugung); der halbe Kegelwinkel,
+der zum Kippen und Integrieren des einfallenden Strahls verwendet wird.</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>Präzessions-Halbwinkel (mrad) für die PED-Simulation
+(Präzessions-Elektronenbeugung); der halbe Kegelwinkel,
+der zum Kippen und Integrieren des einfallenden Strahls verwendet wird.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>Anzahl der azimutalen Unterteilungen des Präzessionskegels
+für die PED-Simulation (Präzessions-Elektronenbeugung).
+Mehr Unterteilungen tasten den Kegel gleichmäßiger ab,
+dauern aber länger.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>Anzahl der azimutalen Unterteilungen des Präzessionskegels
+für die PED-Simulation (Präzessions-Elektronenbeugung).
+Mehr Unterteilungen tasten den Kegel gleichmäßiger ab,
+dauern aber länger.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Einstellungen für die Bloch-Wellen-
+Beugungsberechnung (dynamisch)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Anzahl der gebeugten Strahlen (Bloch-Wellen), die in die
+dynamische Mehrfachstreuungsberechnung einbezogen werden. Mehr
+Wellen verbessern die Genauigkeit, verlangsamen aber die Berechnung.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Anzahl der gebeugten Strahlen (Bloch-Wellen), die in die
+dynamische Mehrfachstreuungsberechnung einbezogen werden. Mehr
+Wellen verbessern die Genauigkeit, verlangsamen aber die Berechnung.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Legt eine Dicke der Probe fest</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Legt eine Dicke der Probe fest</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Einstellungen für die Darstellung der Beugungsreflexe</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>Reflexe werden als Kreise dargestellt.</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>Reflexe werden als zweidimensionale Gaußfunktionen dargestellt.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Legt die Deckkraft der Beugungsreflexe fest</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Legt die Deckkraft der Beugungsreflexe fest</value>
+  </data>
+  <data name="flowLayoutPanelSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Legt eine Deckkraft der Beugungsreflexe fest</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>Legt den Radius des Beugungsreflexes oder das Gauß-Sigma
+in Einheiten des reziproken Raums fest (nm⁻¹, sofern
+angezeigt); größere Werte zeichnen breitere Reflexe und
+schließen eine größere Toleranz des Anregungsfehlers ein.</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>Legt den Radius des Beugungsreflexes oder das Gauß-Sigma
+in Einheiten des reziproken Raums fest (nm⁻¹, sofern
+angezeigt); größere Werte zeichnen breitere Reflexe und
+schließen eine größere Toleranz des Anregungsfehlers ein.</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden alle Beugungsreflexe
+in derselben Größe gezeichnet.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Legt eine Helligkeit der Beugungsreflexe fest</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>Legt eine Helligkeit der Beugungsreflexe fest</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Legt die Farbskala fest</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Wählt die Farbskala aus, die zur Zuordnung der
+Beugungsreflex-Intensität zur Farbe verwendet wird. Eine
+von der Standardeinstellung abweichende Skala färbt die Reflexe
+nach Intensität statt mit der zugewiesenen Kristallfarbe.</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden die Intensitäten der
+Beugungsreflexe auf einer logarithmischen Skala angezeigt.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Legt die Zeichenfarben der Beugungsreflexe für
+allgemeine und systematisch ausgelöschte
+(Zentrierung / Schraubenachse / Gleitspiegelung) Reflexe fest.</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der allgemeinen Reflexe fest</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der allgemeinen Reflexe fest</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der ausgelöschten Reflexe (Schraubenachse oder Gleitspiegelung) fest</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der ausgelöschten Reflexe (Schraubenachse oder Gleitspiegelung) fest</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe der ausgelöschten Reflexe (Gitterzentrierung) fest</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe der ausgelöschten Reflexe (Gitterzentrierung) fest</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Wählt aus, wie die Beugungsreflex-Intensitäten
+berechnet werden (dynamisch Bloch-Wellen,
+kinematisch oder nur Anregungsfehler).</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>In diesem Modus wird für die Intensitätsberechnung nur der Anregungsfehler berücksichtigt.
+(Der Effekt des Strukturfaktors wird ignoriert) </value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>In diesem Modus wird die Intensität aus
+dem Strukturfaktor und dem Anregungsfehler berechnet.</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Öffnet das Fenster mit den Reflexdetails.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Wählt die Beleuchtungsoptik aus (parallel/SAED,
+konvergent/CBED, Präzession/PED, Rück-Laue).</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>Parallelstrahlmodus (d. h. SAED-Modus)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>Präzessions-Strahlmodus (d. h. PED-Modus)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>Konvergenter Strahlmodus (d. h. CBED-Modus)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>Rückreflexions-Laue-Modus (polychromatische Röntgenstrahlung).</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>Röntgen-Präzessionsmodus (ZOLZ, Zero-Order Laue Zone):
+zeigt die reziproke Gitterebene der Nullschicht als
+Polarprojektion, im Unterschied zum Elektronen-PED-Modus.</value>
+  </data>
 </root>

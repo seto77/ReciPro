@@ -80,4 +80,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>이동</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>격자면의 색</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>위에서 지정한 격자면 (지수, 이동량, 색)을
+목록에 추가합니다.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>목록에서 현재 선택된 격자면을
+위에 입력한 값으로 교체합니다.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>목록에서 현재 선택된 격자면을 삭제합니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>정의된 격자면 목록입니다. 각 행의
+체크박스를 켜서 해당 면의 표시 여부를 전환합니다.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>격자면의 밀러 지수 (h k l)를 입력합니다
+(육방정계 결정에서는 밀러–브라베 지수 h k i l).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>격자면을 법선 방향으로 이동시키는 양을
+면간 거리에 대한 비율 (-0.5 ~ 0.5)로 지정합니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>격자면을 법선 방향으로 이동시키는 양을
+면간 거리에 대한 비율 (-0.5 ~ 0.5)로 지정합니다.</value>
+  </data>
 </root>

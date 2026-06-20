@@ -125,4 +125,100 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>Polyeder</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Element im Zentrum der
+Bindung/des Polyeders (das koordinierende Zentralatom).</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Element an den Ecken der
+Bindung/des Polyeders (die koordinierten Ligandenatome).</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>Radius der Bindungszylinder, in Å.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>Radius der Bindungszylinder, in Å.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Die untenstehenden Bindungs-/Polyeder-Einstellungen hinzufügen.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Die ausgewählte Bindung/das ausgewählte Polyeder
+durch die untenstehenden Einstellungen ersetzen.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Die ausgewählte Bindung/das ausgewählte Polyeder löschen.</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>Farbe der Polyederkanten (das
+Drahtgitter des Koordinationspolyeders).</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>Farbe der Polyederflächen (das Koordinationspolyeder).</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>Farbe der Bindungszylinder.</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Die Bindungen als Zylinder anzeigen und die Bindungseinstellungen aktivieren.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Die Kanten (Drahtgitter) des Koordinations-
+polyeders anzeigen und die Kantenbreiten-Einstellung aktivieren.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Die inneren Bindungen (Zentrum-zu-Ecke-
+Bindungen) innerhalb des Koordinationspolyeders anzeigen.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Das Koordinationspolyeder anzeigen
+und die Polyeder-Einstellungen aktivieren.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Die Eckatome (koordinierte Ligandenatome)
+des Koordinationspolyeders anzeigen.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste der definierten Bindungen/Polyeder; wählen Sie
+eine Zeile, um sie unten zu bearbeiten, oder schalten Sie ihre
+Spalten Aktiviert / Anzeigen direkt um.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Deckkraft der Bindungszylinder (0
+= vollständig transparent, 1 = undurchsichtig).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Maximaler interatomarer Abstand (in Å),
+damit zwei Atome als gebunden behandelt werden.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Minimaler interatomarer Abstand (in Å),
+damit zwei Atome als gebunden behandelt werden.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Linienbreite der Polyederkanten.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Deckkraft der Polyederflächen (0
+= vollständig transparent, 1 = undurchsichtig).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Elementpaar (Zentrum und
+Ecke), das die Bindung/das Polyeder bildet.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Elementpaar (Zentrum und
+Ecke), das die Bindung/das Polyeder bildet.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Element im Zentrum der
+Bindung/des Polyeders (das koordinierende Zentralatom).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das Element an den Ecken der
+Bindung/des Polyeders (die koordinierten Ligandenatome).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Das Zentralatom des Koordinationspolyeders anzeigen.</value>
+  </data>
 </root>

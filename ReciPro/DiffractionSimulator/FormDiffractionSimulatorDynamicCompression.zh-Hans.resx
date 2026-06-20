@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>运行动态压缩衍射模拟
+并累加图案。</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>勾选后，计算过程中跳过屏幕
+绘制以加快计算速度。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>分隔未压缩区域与压缩区域的
+前边界的深度。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>分隔压缩区域与释放区域的
+后边界的深度。</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>选择保存模拟 TIFF 图案的
+输出文件夹。</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>保存的 TIFF 图案的基础文件名；
+'.tif' 会自动附加。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>保存的 TIFF 图案的基础文件名；
+'.tif' 会自动附加。</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>压缩区域内晶体平均
+旋转速率 ω（°/ns）。</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>压缩区域内旋转速率的
+标准差 σ_ω（°/ns）。</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>压缩区域旋转轴弥散 σ_θ 的
+常数项 a（°，2019 年模型）。</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>压缩区域旋转轴弥散 σ_θ 的
+时间系数 b（°/ns，2019 年模型）。</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>勾选后，按固定步长递增整体 Ω 角
+并重复进行模拟。</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>勾选后，将每个模拟图案作为
+TIFF 文件保存到所选文件夹。</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>对旋转速率（速度）分布进行积分时
+所用的采样分割数。</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>旋转轴的方位角
+采样分割数。</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>释放区域内晶体平均旋转速率 ω（°/ns）。</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>释放区域内旋转速率的
+标准差 σ_ω（°/ns）。</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>释放区域旋转轴弥散 σ_θ 的
+常数项 a（°，2019 年模型）。</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>释放区域旋转轴弥散 σ_θ 的
+时间系数 b（°/ns，2019 年模型）。</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>冲击（压缩）面法线的米勒指数 h。</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>冲击（压缩）面法线的米勒指数 k。</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>冲击（压缩）面法线的米勒指数 l。</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>滑移面法线的米勒指数 h（用于
+在 2019 年模型中定义旋转轴）。</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>滑移面法线的米勒指数 k（用于
+在 2019 年模型中定义旋转轴）。</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>滑移面法线的米勒指数 l（用于
+在 2019 年模型中定义旋转轴）。</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>冲击（压缩）波速 Us（km/s），
+用于将压缩区域内的深度
+换算为经历时间。</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>对压缩区域的点阵施加
+各向同性（静水压）压缩。</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>对压缩区域的点阵沿冲击面
+法线方向施加单轴压缩。</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>释放波速 Ur（km/s），用于将
+释放区域内的深度换算为经历时间。</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>对释放区域的点阵施加
+各向同性（静水压）压缩。</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>对释放区域的点阵沿冲击面
+法线方向施加单轴压缩。</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>启用 'Increment Ω' 时，每次重复
+所施加的 Ω 角增量（°）。</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>启用 'Increment Ω' 时的重复次数。</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>使用 2018 年旋转模型（旋转轴
+垂直于压缩轴）。</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>使用 2019 年旋转模型（由滑移面与
+压缩面的叉积确定旋转轴，
+并带有 θ、φ 弥散）。</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>三阶 Birch–Murnaghan 状态方程的
+体积模量 K0（GPa）。</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>三阶 Birch–Murnaghan 状态方程中
+体积模量的压力导数 K'0。</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>试样的质量吸收系数（cm²/g），
+用于使强度在穿过各层时衰减。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>试样的质量吸收系数（cm²/g），
+用于使强度在穿过各层时衰减。</value>
+  </data>
+</root>

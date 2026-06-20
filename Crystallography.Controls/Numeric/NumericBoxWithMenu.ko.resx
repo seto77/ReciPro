@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="smartIncrementToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>스핀 버튼의 스텝을 고정 증분 대신 현재 값의
+자릿수 (10의 거듭제곱) 에 맞추어 1/2/5 계열로
+자동 조정합니다.</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.ToolTipText" xml:space="preserve">
+    <value>표시·반올림에 사용할 소수점 이하 자릿수를
+선택합니다. 'No control' 을 선택하면 자릿수를
+고정하지 않고 값을 표시합니다.</value>
+  </data>
+  <data name="toolStripComboBoxIncrement.ToolTipText" xml:space="preserve">
+    <value>스핀 버튼 (위/아래) 1회 클릭마다 더하거나 빼는 고정
+스텝을 설정합니다. Smart increment 가 꺼져 있을 때 사용됩니다.</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.ToolTipText" xml:space="preserve">
+    <value>가운데 버튼 드래그로 값을 변경하는 방향을
+선택합니다. Vertical (상하), Horizontal
+(좌우) 드래그입니다.</value>
+  </data>
+  <data name="toolStripMenuItemRestrictLimit.ToolTipText" xml:space="preserve">
+    <value>입력값을 Maximum/Minimum 범위 내로
+제한합니다. 범위를 벗어난 값은 가장 가까운
+한계값으로 맞춰집니다.</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.ToolTipText" xml:space="preserve">
+    <value>이 값에 허용할 상한입니다. Restrict limit 가
+켜져 있을 때만 유효하며, 최솟값보다 커야 합니다.</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.ToolTipText" xml:space="preserve">
+    <value>이 값에 허용할 하한입니다. Restrict limit 가
+켜져 있을 때만 유효하며, 최댓값보다 작아야 합니다.</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.ToolTipText" xml:space="preserve">
+    <value>마우스 드래그 감도: 가운데 버튼 드래그 1픽셀당
+값의 변화량입니다 (마우스 조작이 활성화되어
+있을 때 유효).</value>
+  </data>
+</root>

@@ -239,4 +239,191 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>Mostrar números</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Exibir símbolos de marcador nos pontos observados</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>Identificar pontos
+(é necessário selecionar um cristal apropriado na janela principal)</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>Reajustar posições e intensidades de todos os pontos detectados</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>Unidade do tamanho de pixel: milímetros</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>Detecta os pontos de difração na imagem carregada e os ajusta com a função selecionada.
+Especifique o número de pontos a procurar, a distância mínima entre pontos
+e a faixa de ajuste na caixa à direita.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Exibir símbolos de marcador nos pontos calculados</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>Ignora reflexões cinematicamente proibidas que
+podem surgir por difração múltipla (dinâmica),
+excluindo-as do padrão calculado.</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Semi-amplitude angular (o semiângulo de convergência,
+em mrad) sobre a qual as direções do feixe incidente são
+procuradas durante o refinamento de espessura/orientação.</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>Realizar ajuste global de todas as posições dos pontos (experimental)</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>Separação mínima (px) permitida entre
+pontos detectados; picos mais próximos que isto são
+mesclados para que um único ponto não seja contado duas vezes.</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>Separação mínima (px) permitida entre
+pontos detectados; picos mais próximos que isto são
+mesclados para que um único ponto não seja contado duas vezes.</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>Procurar orientações de múltiplos grãos cristalinos</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>Número máximo de orientações de grãos a procurar</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>Número máximo de orientações de grãos a procurar</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>Comprimento de câmara para o padrão de difração (mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Comprimento de câmara para o padrão de difração (mm)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>Aplicar subtração de fundo em forma de rosca (experimental)</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Interromper o cálculo atual</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>Tabela de pontos observados; marque 'Direct' para definir o
+ponto do feixe direto, clique em 'Fit' de uma linha para ajustar seu
+pico, ou selecione uma linha para destacá-la no padrão</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>Número máximo de feixes difratados (ondas de
+Bloch) incluídos no refinamento dinâmico de
+espessura/direção; mais ondas dão maior precisão,
+mas cálculo mais lento (1-2048).</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>Número máximo de feixes difratados (ondas de
+Bloch) incluídos no refinamento dinâmico de
+espessura/direção; mais ondas dão maior precisão,
+mas cálculo mais lento (1-2048).</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>Largura (px) do anel anular externo
+em torno de cada ponto usado como fundo
+local na subtração em rosca (1-100).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>Tamanho de um pixel do detector; a unidade (mm ou nm⁻¹)
+segue os botões de opção à direita. Define a
+escala do espaço recíproco usada para distância interplanar e indexação.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de um pixel do detector; a unidade (mm ou nm⁻¹)
+segue os botões de opção à direita. Define a
+escala do espaço recíproco usada para distância interplanar e indexação.</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>Exibir a direção do eixo de zona no padrão</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Copiar a informação acima para a área de transferência.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>Exibir rótulos de índice nos pontos calculados</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>Raio (em pixels, 0–100) da região circular
+em torno de cada ponto usada para o ajuste do pico; os pixels dentro
+desse círculo são ajustados com a função pseudo-Voigt.</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>Raio (em pixels, 0–100) da região circular
+em torno de cada ponto usada para o ajuste do pico; os pixels dentro
+desse círculo são ajustados com a função pseudo-Voigt.</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>Exclui o ponto atualmente selecionado da
+lista (use o botão Clear para remover todos os pontos).</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>Lista de candidatos de indexação encontrados; selecione uma
+linha para mostrar abaixo sua(s) orientação(ões) de grão.</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>Exibir círculos-guia no padrão de difração</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>Orientações de grão no candidato selecionado;
+selecionar uma linha sobrepõe seus pontos calculados
+e atribui índices hkl aos pontos observados.</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>Refina a espessura da amostra (nm) e a direção do feixe
+fazendo coincidir as intensidades dos pontos observados com
+cálculos CBED dinâmicos (onda de Bloch) para o
+grão selecionado (apenas difração de elétrons).</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>Especificar o número de pontos a detectar</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>Especificar o número de pontos a detectar</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>Exibir números de índice nos pontos observados</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>Exibir informações detalhadas do ponto selecionado</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>Tolerância máxima de comprimento relativo (distância interplanar),
+em %, permitida ao fazer coincidir os pontos observados com
+as reflexões candidatas (0,1–10%).</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>Tolerância máxima de comprimento relativo (distância interplanar),
+em %, permitida ao fazer coincidir os pontos observados com
+as reflexões candidatas (0,1–10%).</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>Procurar a orientação de um único grão cristalino</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>Limpar todos os pontos</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>Salvar a informação acima</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>Define o raio de ajuste de cada ponto para o
+valor atual de 'Fitting range' (px).</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>Unidade do tamanho de pixel: nanômetros recíprocos</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Fonte de radiação e energia/tensão
+que definem o comprimento de onda usado para
+indexação (padrão: elétrons, 200 kV).</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>Sobrepor anéis de Debye-Scherrer no padrão</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>Exibir parâmetros detalhados da função de ajuste</value>
+  </data>
 </root>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (pt) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyGraph.ToolTip" xml:space="preserve">
+    <value>Copia as curvas plotadas (u e cada valor
+de função) como texto separado por tabulações
+para a área de transferência, para colar no Excel</value>
+  </data>
+  <data name="checkBoxACTF.ToolTip" xml:space="preserve">
+    <value>Plota a ACTF (Função de Transferência de Contraste de
+Amplitude) = Cos[W(u)] x Es x Ec, a transferência
+efetiva de amplitude dentro da abertura</value>
+  </data>
+  <data name="checkBoxCosW.ToolTip" xml:space="preserve">
+    <value>Plota Cos[W(u)], o cosseno da
+aberração de onda W(u): a componente de contraste de amplitude
+da transferência da lente</value>
+  </data>
+  <data name="checkBoxEc.ToolTip" xml:space="preserve">
+    <value>Plota Ec(u), a envoltória de coerência temporal (cromática):
+amortecimento de contraste devido à aberração
+cromática e à alta tensão / dispersão de energia</value>
+  </data>
+  <data name="checkBoxEs_HRTEM.ToolTip" xml:space="preserve">
+    <value>Plota Es(u), a envoltória de coerência espacial
+para HRTEM (TEM de Alta Resolução): amortecimento de
+contraste pela divergência do feixe (semiângulo beta)</value>
+  </data>
+  <data name="checkBoxEs_STEM.ToolTip" xml:space="preserve">
+    <value>Plota Es(u), a envoltória de coerência espacial
+para STEM (TEM de Varredura): amortecimento de contraste
+pelo tamanho finito da fonte (sigma_s)</value>
+  </data>
+  <data name="checkBoxPCTF.ToolTip" xml:space="preserve">
+    <value>Plota a PCTF (Função de Transferência de Contraste de
+Fase) = Sin[W(u)] x Es x Ec, a
+transferência efetiva de fase dentro da abertura</value>
+  </data>
+  <data name="checkBoxSinW.ToolTip" xml:space="preserve">
+    <value>Plota Sin[W(u)], o seno da aberração de onda W(u):
+o núcleo de contraste de fase da função de transferência</value>
+  </data>
+  <data name="numericBoxMaxU1.ToolTip" xml:space="preserve">
+    <value>Limite superior do eixo de frequência espacial u
+para o gráfico, em nm-1 (0-20); define até onde
+no espaço recíproco as curvas são desenhadas</value>
+  </data>
+  <data name="radioButtonCTF_Incoherent.ToolTip" xml:space="preserve">
+    <value>Trata STEM (TEM de Varredura) como imagem
+incoerente: calcula uma única curva CTFI
+integrando sobre a abertura de convergência</value>
+  </data>
+  <data name="radioButtonCTF_coherent.ToolTip" xml:space="preserve">
+    <value>Trata STEM (TEM de Varredura) como imagem
+coerente: mostra as curvas Sin[W], Cos[W], Es,
+Ec, PCTF e ACTF como para HRTEM</value>
+  </data>
+</root>

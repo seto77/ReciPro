@@ -71,4 +71,11 @@
   <data name="buttonNext.Text" xml:space="preserve">
     <value>Avanti</value>
   </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>Mostra il suggerimento successivo.</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>Chiude automaticamente questa finestra di avvio
+una volta terminata l'inizializzazione.</value>
+  </data>
 </root>

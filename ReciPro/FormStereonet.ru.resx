@@ -309,4 +309,432 @@
   <data name="radioButtonZigzagScan.Text" xml:space="preserve">
     <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (Зигзагообразное сканирование)</value>
   </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Добавить к структурному фактору энергозависимые члены аномальной дисперсии рентгеновского излучения (f', f''). Вблизи края поглощения закон Фриделя нарушается, что приводит к различиям интенсивностей по Бейвоету (hkl и -h-k-l). Снимите флажок для классического результата без учёта дисперсии.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой (вблизи центра экрана): поворот вокруг оси, параллельной монитору
+Перетаскивание левой кнопкой (у края экрана): поворот вокруг оси, перпендикулярной монитору
+Щелчок правой кнопкой: уменьшение масштаба
+Перетаскивание правой кнопкой: увеличение выбранной области
+Перетаскивание средней кнопкой: перетаскивание смоделированного изображения
+</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Выберите символ-разделитель,
+помещаемый между индексами Миллера.</value>
+  </data>
+  <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
+    <value>Без разделителя при выводе индексов</value>
+  </data>
+  <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
+    <value>Использовать пробел как разделитель при выводе индексов</value>
+  </data>
+  <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
+    <value>Использовать запятую как разделитель при выводе индексов</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Задать размер шрифта меток проецируемых индексов
+([u v w] для осей, (h k l) для плоскостей);
+минимальное значение скрывает метки.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Задать размер шрифта меток проецируемых индексов
+([u v w] для осей, (h k l) для плоскостей);
+минимальное значение скрывает метки.</value>
+  </data>
+  <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
+    <value>Использовать для меток индексов фиксированный
+цвет вместо цвета рефлекса.</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>Задать фиксированный цвет, используемый для меток
+индексов, когда включён режим «Указать цвет».</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
+    <value>Задать фиксированный цвет, используемый для меток
+индексов, когда включён режим «Указать цвет».</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Задать ширину контурных (сетчатых) линий стереограммы (1–20).</value>
+  </data>
+  <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
+    <value>Задать ширину контурных (сетчатых) линий стереограммы (1–20).</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Задать цвет фона области построения стереограммы.</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Задать цвет фона области построения стереограммы.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Задать цвет линий 90° (внешняя основная
+окружность и главные оси, самые толстые линии).</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
+    <value>Задать цвет линий 90° (внешняя основная
+окружность и главные оси, самые толстые линии).</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Задать цвет линий сетки 10° (широты/долготы
+через каждые 10°) стереограммы.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value>Задать цвет линий сетки 10° (широты/долготы
+через каждые 10°) стереограммы.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Задать цвет линий сетки 1° (тонкие линии,
+отображаются только при включённом «1° Lines»).</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
+    <value>Задать цвет линий сетки 1° (тонкие линии,
+отображаются только при включённом «1° Lines»).</value>
+  </data>
+  <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
+    <value>Проецировать линии широты и долготы
+из экваториального направления.</value>
+  </data>
+  <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
+    <value>Проецировать линии широты и долготы
+из полярного направления.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Если установлено, к стереограмме добавляются
+тонкие линии сетки 1°; если снято, отображается
+только более грубая сетка.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Задать радиус проецируемых на стереограмму точек
+направлений или нормалей к плоскостям.</value>
+  </data>
+  <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
+    <value>Показывать проецируемые направления или нормали к плоскостям
+на верхней полусфере стереограммы.</value>
+  </data>
+  <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
+    <value>Показывать проецируемые направления или нормали к плоскостям
+на нижней полусфере стереограммы.</value>
+  </data>
+  <data name="radioButtonWulff.ToolTip" xml:space="preserve">
+    <value>Проецировать направления по сетке Вульфа (равноугольный метод)</value>
+  </data>
+  <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
+    <value>Проецировать направления по сетке Шмидта (равноплощадный метод)</value>
+  </data>
+  <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
+    <value>Масштабировать размер каждого рефлекса по его структурному
+фактору (амплитуде рассеяния одной элементарной
+ячейкой), так что более сильные рефлексы выглядят крупнее.</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Рисовать метку индекса ([uvw] или
+(hkl)) рядом с каждой нанесённой точкой.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Проецировать кристаллографические оси (оси зон)
+на стереограмму и подписывать их как [u v w].</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Проецировать нормали к кристаллографическим плоскостям на
+стереограмму и подписывать их индексами Миллера (h k l).</value>
+  </data>
+  <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
+    <value>Рисовать пары линий Кикучи — парные полосы,
+возникающие, когда кристаллографическая плоскость дифрагирует
+неупруго рассеянные электроны.</value>
+  </data>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>Углы наклона и азимута (в градусах) в
+положении курсора на стереограмме.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Углы наклона и азимута (в градусах) в
+положении курсора на стереограмме.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Задать радиус проецируемых на стереограмму точек индексов.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Задать радиус точек осей зон,
+рисуемых для пар линий Кикучи.</value>
+  </data>
+  <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
+    <value>Задать радиус точек осей зон,
+рисуемых для пар линий Кикучи.</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>Задать цвет полюсов и линий,
+рисуемых в режиме линий Кикучи.</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
+    <value>Задать цвет полюсов и линий,
+рисуемых в режиме линий Кикучи.</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>Задать цвет меток осей зон в режиме линий
+Кикучи (линии Кикучи: дифракционные полосы
+от неупруго рассеянных электронов).</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
+    <value>Задать цвет меток осей зон в режиме линий
+Кикучи (линии Кикучи: дифракционные полосы
+от неупруго рассеянных электронов).</value>
+  </data>
+  <data name="groupBoxColor.ToolTip" xml:space="preserve">
+    <value>Изменить цвета отображения</value>
+  </data>
+  <data name="checkedListBoxCircles.ToolTip" xml:space="preserve">
+    <value>Список добавленных больших кругов (кругов зон); установите флажок,
+чтобы показать или скрыть каждый круг, или выберите один для удаления</value>
+  </data>
+  <data name="buttonAddCircle.ToolTip" xml:space="preserve">
+    <value>Добавить большой круг (по оси зоны или по двум
+плоскостям решётки) на стереографическую проекцию.</value>
+  </data>
+  <data name="buttonDeleteCircle.ToolTip" xml:space="preserve">
+    <value>Удалить выбранный большой круг
+со стереографической проекции.</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>Задать цвет отрисовки больших кругов.</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
+    <value>Задать цвет отрисовки больших кругов.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Задать ширину линий больших кругов.</value>
+  </data>
+  <data name="trackBarGreatCircleLineWidth.ToolTip" xml:space="preserve">
+    <value>Задать ширину линий больших кругов.</value>
+  </data>
+  <data name="radioButtonCircleByAxis.ToolTip" xml:space="preserve">
+    <value>Определить большой круг (зону) вводом индекса
+её оси зоны [uvw]; круг содержит все
+плоскости, имеющие эту общую ось.</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Направление оси зоны [uvw]; большой круг,
+перпендикулярный этой оси (его круг зоны),
+добавляется на стереограмму</value>
+  </data>
+  <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
+    <value>Определить большой круг (зону) по двум индексам плоскостей;
+их общая ось зоны (векторное произведение) задаёт круг.</value>
+  </data>
+  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
+    <value>Индекс первой кристаллографической плоскости (hkl) пары; линия,
+общая для плоскости 1 и плоскости 2, определяет большой
+круг оси зоны, рисуемый на стереограмме</value>
+  </data>
+  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
+    <value>Индекс второй кристаллографической плоскости (hkl) пары;
+вместе с плоскостью 1 их векторное произведение определяет
+большой круг оси зоны на стереограмме</value>
+  </data>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>Остановить моделирование сканирования наклона и скопировать записанные
+координаты траектории полюсов в буфер обмена.</value>
+  </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>Запустить моделирование сканирования наклона гониометра:
+анимирует выбранные полюса и записывает их
+стереографические траектории.</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>Режим вращательного сканирования: развёртка наклона
+при фиксированном радиусе (θ²+ω²=константа),
+вычерчивая окружность на стереограмме.</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Режим зигзагообразного (растрового) сканирования: θ перемещается
+вперёд-назад при продвижении ω (+θ → +ω → -θ → +ω …).</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Включить вращение вокруг оси Ry (угол ω) во время сканирования.</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Включить вращение вокруг оси Rz (угол θ) во время сканирования.</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>Включить вращение вокруг оси Rx
+(угол наклона φ) во время сканирования.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Скорость вращения двигателя Rx (φ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Скорость вращения двигателя Rx (φ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Скорость вращения двигателя Rx (φ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip1" xml:space="preserve">
+    <value>Скорость вращения двигателя Rx (φ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>Скорость вращения двигателя Ry (ω)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip1" xml:space="preserve">
+    <value>Скорость вращения двигателя Ry (ω)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>Скорость вращения двигателя Rz (θ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip1" xml:space="preserve">
+    <value>Скорость вращения двигателя Rz (θ)
+в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>Общая длительность сканирования в секундах.</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip1" xml:space="preserve">
+    <value>Общая длительность сканирования в секундах.</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>Угловая скорость вращательного
+сканирования в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip1" xml:space="preserve">
+    <value>Угловая скорость вращательного
+сканирования в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>Угловой шаг сканирования Ry (ω) на одно приращение, в градусах.</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip1" xml:space="preserve">
+    <value>Угловой шаг сканирования Ry (ω) на одно приращение, в градусах.</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>Радиальный угол наклона (половинный угол конуса от
+центра) вращательного сканирования, в градусах.</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip1" xml:space="preserve">
+    <value>Радиальный угол наклона (половинный угол конуса от
+центра) вращательного сканирования, в градусах.</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>Амплитуда колебаний (±) оси Ry (ω), в градусах.</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip1" xml:space="preserve">
+    <value>Амплитуда колебаний (±) оси Ry (ω), в градусах.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>Амплитуда колебаний (±) оси Rz (θ), в градусах.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip1" xml:space="preserve">
+    <value>Амплитуда колебаний (±) оси Rz (θ), в градусах.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Задаёт источник излучения и длину волны, используемые
+для расчёта интенсивностей структурных факторов и списка
+рефлексов сферы Эвальда, отображаемого на стереограмме</value>
+  </data>
+  <data name="radioButtonRange.ToolTip" xml:space="preserve">
+    <value>Отображает все индексы в пределах введённого
+ниже диапазона; для осей это [u v w], а для
+плоскостей — индексы Миллера (h k l).</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>Отображает только отдельный индекс, введённый
+ниже, вместо перебора всего диапазона индексов.</value>
+  </data>
+  <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Отображает индексы плоскостей с наивысшим рангом
+по интенсивности структурного фактора; более сильные
+структурные факторы соответствуют более сильным рефлексам.</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>Список заданных пользователем индексов, спроецированных на
+стереограмму; выберите строки, чтобы перекрасить или удалить их</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>Добавляет введённый выше индекс в список
+заданных индексов для построения.</value>
+  </data>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>Удаляет выбранный индекс из
+списка заданных индексов.</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>Задаёт цвет построения для добавляемого или текущего
+выбранного индекса (используется, когда «Rotate color» выключен).</value>
+  </data>
+  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
+    <value>Задаёт цвет построения для добавляемого или текущего
+выбранного индекса (используется, когда «Rotate color» выключен).</value>
+  </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>Автоматически назначает каждому индексу цвет из
+чередующейся палитры; когда выключено, все используют
+единый цвет, выбранный справа.</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Число отображаемых рефлексов, выбранных из верхней
+части ранжирования по структурному фактору (1–1000).</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip1" xml:space="preserve">
+    <value>Число отображаемых рефлексов, выбранных из верхней
+части ранжирования по структурному фактору (1–1000).</value>
+  </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>Введите индекс для построения — один [uvw]/(hkl) в режиме
+«Specified» или максимальные h,k,l в режиме «Range».</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
+    <value>Также строит все симметрично эквивалентные индексы (полное
+семейство {hkl} или &lt;uvw&gt;), а не только введённый.</value>
+  </data>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>Показывает трёхмерное (OpenGL) изображение кристалла
+рядом со стереографической проекцией; если флажок снят,
+отображается только двумерная стереограмма</value>
+  </data>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>Сбрасывает трёхмерное изображение к ориентации и масштабу по умолчанию.</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>В трёхмерном изображении выводит метки индексов
+([uvw] или (hkl)) рядом с каждым построенным полюсом.</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>В трёхмерном изображении строит только точки верхней
+полусферы (Z&gt;0), а не всю сферу.</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>В трёхмерном изображении также выводит плоский диск стереограммы
+(плоскость проекции) со спроецированными на него точками.</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>В трёхмерном изображении выводит контур (каркас широт/долгот)
+опорной сферы.</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>В трёхмерном изображении выводит лучи проекции,
+соединяющие каждый полюс на сфере с его
+построенной точкой на диске стереограммы.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Регулирует глубинное затенение: насколько сильно объекты
+тускнеют с расстоянием (глубиной) в трёхмерном изображении.</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Регулирует глубинное затенение: насколько сильно объекты
+тускнеют с расстоянием (глубиной) в трёхмерном изображении.</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>Ось зоны [uvw] и плоскость решётки (hkl),
+ближайшие к положению курсора на стереограмме.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Ось зоны [uvw] и плоскость решётки (hkl),
+ближайшие к положению курсора на стереограмме.</value>
+  </data>
 </root>

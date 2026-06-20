@@ -242,4 +242,191 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>번호 표시</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>관측 스폿에 마커 기호를 표시</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>스폿 식별
+(메인 창에서 적절한 결정을 선택해야 합니다)</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>검출된 모든 스폿의 위치와 강도를 재피팅</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>픽셀 크기 단위: mm</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>불러온 이미지 안의 회절 스폿을 검출하여 선택한 함수로 피팅합니다.
+검색할 스폿 수, 스폿 간 최소 거리,
+피팅 범위를 오른쪽 상자에서 지정하세요.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>계산 스폿에 마커 기호를 표시</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>운동학적으로는 금지되지만 다중(동력학) 회절로
+나타날 수 있는 반사를 계산 패턴에서
+제외합니다.</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>두께/방위 정밀화 시 입사빔 방향을
+탐색하는 각도 반범위(반수렴각,
+mrad)입니다.</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>모든 스폿 위치의 전역 피팅 수행(실험적)</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>검출 스폿 간에 허용되는 최소 간격(px)입니다.
+이보다 가까운 피크는 병합되어 동일한
+스폿이 이중으로 계수되지 않습니다.</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>검출 스폿 간에 허용되는 최소 간격(px)입니다.
+이보다 가까운 피크는 병합되어 동일한
+스폿이 이중으로 계수되지 않습니다.</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>복수 결정립의 방위를 탐색</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>탐색할 결정립 방위의 최대 수</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>탐색할 결정립 방위의 최대 수</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>회절 패턴의 카메라 길이(mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>회절 패턴의 카메라 길이(mm)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>도넛형 배경 제거 적용(실험적)</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>현재 계산을 중지</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>관측 스폿의 목록 표입니다. 'Direct'를 체크하면
+직접 빔 스폿을 지정하고, 행의 'Fit'을 클릭하면
+해당 피크를 피팅하며, 행을 선택하면 패턴 위에서 강조됩니다</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>동력학적 두께/방향 정밀화에 포함하는
+회절빔(블로흐 파)의 최대 개수입니다.
+많을수록 정밀도가 높아지지만 계산은
+느려집니다(1–2048).</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>동력학적 두께/방향 정밀화에 포함하는
+회절빔(블로흐 파)의 최대 개수입니다.
+많을수록 정밀도가 높아지지만 계산은
+느려집니다(1–2048).</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>도넛형 배경 제거에서 각 스폿 주위에
+국소 배경으로 사용하는 외측 환상
+영역의 너비(px)입니다(1–100).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>검출기 1픽셀의 크기입니다. 단위(mm 또는 nm⁻¹)는
+오른쪽 라디오 버튼을 따릅니다. d 값 계산과 지수
+부여에 사용하는 역공간 스케일을 결정합니다.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>검출기 1픽셀의 크기입니다. 단위(mm 또는 nm⁻¹)는
+오른쪽 라디오 버튼을 따릅니다. d 값 계산과 지수
+부여에 사용하는 역공간 스케일을 결정합니다.</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>패턴 위에 정대축 방향을 표시</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>위 정보를 클립보드에 복사합니다.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>계산 스폿에 인덱스 라벨을 표시</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>피크 피팅에 사용하는 각 스폿 주위 원형 영역의
+반지름(픽셀, 0–100)입니다. 이 원 안의 픽셀을
+유사 Voigt 함수로 피팅합니다.</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>피크 피팅에 사용하는 각 스폿 주위 원형 영역의
+반지름(픽셀, 0–100)입니다. 이 원 안의 픽셀을
+유사 Voigt 함수로 피팅합니다.</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>현재 선택한 스폿을 목록에서 삭제합니다
+(모두 삭제하려면 Clear 버튼을 사용하세요).</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>발견된 지수 부여 후보의 목록입니다. 행을
+선택하면 그 결정립 방위가 아래에 표시됩니다.</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>회절 패턴에 가이드 원을 표시</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>선택한 후보에 포함된 결정립 방위의
+목록입니다. 행을 선택하면 계산 스폿을 겹쳐 표시하고,
+관측 스폿에 hkl 지수를 할당합니다.</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>선택한 결정립에 대해 관측 스폿 강도를
+동력학(블로흐 파) CBED 계산과 대조하여
+시료 두께(nm)와 빔 방향을 정밀화합니다
+(전자 회절 전용).</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>검출할 스폿 수를 지정</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>검출할 스폿 수를 지정</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>관측 스폿에 번호를 표시</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>선택한 스폿의 상세 정보를 표시</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>관측 스폿을 후보 반사와 대조할 때
+허용하는 상대 길이(d 값)의 최대
+오차(%, 0.1–10)입니다.</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>관측 스폿을 후보 반사와 대조할 때
+허용하는 상대 길이(d 값)의 최대
+오차(%, 0.1–10)입니다.</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>단일 결정립의 방위를 탐색</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>모든 스폿을 지우기</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>위 정보를 저장</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>모든 스폿의 피팅 반지름을 현재
+'Fitting range' 값(px)으로 맞춥니다.</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>픽셀 크기 단위: nm⁻¹</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>지수 부여에 사용하는 파장을 결정하는
+선원과 에너지/가속 전압입니다
+(기본값: 전자, 200 kV).</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>패턴에 디바이-셰러 링을 겹쳐 표시</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>피팅 함수의 상세 매개변수를 표시</value>
+  </data>
 </root>

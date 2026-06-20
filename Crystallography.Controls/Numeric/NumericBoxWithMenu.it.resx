@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="smartIncrementToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Adatta automaticamente il passo dei pulsanti di selezione
+all'ordine di grandezza del valore corrente (sequenza 1/2/5)
+invece di usare un incremento fisso.</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.ToolTipText" xml:space="preserve">
+    <value>Numero di decimali visualizzati e a cui arrotondare;
+scegli 'No control' per visualizzare il
+valore senza fissare il numero di decimali.</value>
+  </data>
+  <data name="toolStripComboBoxIncrement.ToolTipText" xml:space="preserve">
+    <value>Imposta il passo fisso aggiunto o sottratto a ogni clic dei pulsanti
+di selezione (su/giù); usato quando Smart increment è disattivato.</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.ToolTipText" xml:space="preserve">
+    <value>Scegli quale asse di trascinamento modifica il
+valore: trascinamento con il tasto centrale Vertical (su/giù)
+o Horizontal (sinistra/destra).</value>
+  </data>
+  <data name="toolStripMenuItemRestrictLimit.ToolTipText" xml:space="preserve">
+    <value>Vincola il valore inserito all'intervallo
+Maximum/Minimum; i valori al di fuori dell'intervallo
+vengono portati al limite più vicino.</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.ToolTipText" xml:space="preserve">
+    <value>Limite superiore consentito per questo valore;
+attivo solo quando Restrict limit è
+attivato, e deve essere maggiore del minimo.</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.ToolTipText" xml:space="preserve">
+    <value>Limite inferiore consentito per questo valore;
+attivo solo quando Restrict limit è
+attivato, e deve essere minore del massimo.</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.ToolTipText" xml:space="preserve">
+    <value>Sensibilità del trascinamento del mouse: la quantità di cui il valore
+cambia per ogni pixel di trascinamento con il tasto centrale
+(attivo quando il controllo tramite mouse è abilitato).</value>
+  </data>
+</root>

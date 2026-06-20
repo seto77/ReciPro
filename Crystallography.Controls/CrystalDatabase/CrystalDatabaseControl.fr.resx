@@ -62,4 +62,37 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Si vous publiez un article utilisant des données de cette base de données, veuillez citer la référence suivante ou les références indiquées sur la page web correspondante. AMCSD : Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD : https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>Va au premier enregistrement de cristal de la liste.</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>Va au dernier enregistrement de cristal de la liste.</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>Va à l'enregistrement de cristal suivant.</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>Va à l'enregistrement de cristal précédent.</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>Charge et affiche les entrées de l'AMCSD (American
+Mineralogist Crystal Structure Database).</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>Charge et affiche les entrées de la COD
+(Crystallography Open Database) ; la télécharge
+depuis le web si elle n'est pas présente localement.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste des cristaux de la base de données ; sélectionnez
+une ligne pour charger ce cristal (paramètres de
+maille, groupe d'espace, référence, etc.).</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>Nombre total d'enregistrements de cristaux dans la base de données.</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>Numéro de l'enregistrement courant ; saisissez un
+numéro pour accéder à ce cristal.</value>
+  </data>
 </root>

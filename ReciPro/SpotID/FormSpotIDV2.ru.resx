@@ -242,4 +242,190 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>Показать номера</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Показывать символы маркеров на наблюдаемых рефлексах</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>Идентифицировать рефлексы
+(нужно выбрать подходящий кристалл в главном окне)</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>Повторно подогнать положения и интенсивности всех обнаруженных рефлексов</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>Единица размера пикселя: миллиметры</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>Обнаружить дифракционные рефлексы в загруженном изображении и подогнать их выбранной функцией.
+Укажите число искомых рефлексов, минимальное расстояние между рефлексами
+и диапазон подгонки в поле справа.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Показывать символы маркеров на расчётных рефлексах</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>Игнорировать кинематически запрещённые рефлексы, которые
+могут возникать через многократную (динамическую) дифракцию,
+исключая их из расчётной картины.</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Угловой полудиапазон (полуугол сходимости, в мрад), в пределах
+которого ведётся поиск направлений падающего пучка при
+уточнении толщины/ориентации.</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>Выполнить глобальную подгонку положений всех рефлексов (экспериментально)</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>Минимальное расстояние (пикс), допускаемое между обнаруженными
+рефлексами; пики ближе этого расстояния объединяются, чтобы
+один рефлекс не считался дважды.</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>Минимальное расстояние (пикс), допускаемое между обнаруженными
+рефлексами; пики ближе этого расстояния объединяются, чтобы
+один рефлекс не считался дважды.</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>Искать ориентации нескольких кристаллических зёрен</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>Максимальное число искомых ориентаций зёрен</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>Максимальное число искомых ориентаций зёрен</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>Длина камеры для дифракционной картины (мм)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Длина камеры для дифракционной картины (мм)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>Применить вычитание фона в форме бублика (экспериментально)</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Остановить текущее вычисление</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>Таблица наблюдаемых рефлексов; отметьте 'Direct', чтобы задать
+рефлекс прямого пучка, нажмите 'Fit' в строке для подгонки её
+пика, или выберите строку для подсветки её на картине</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>Максимальное число дифрагированных пучков (блоховских волн),
+включаемых в динамическое уточнение толщины/направления;
+больше волн даёт более высокую точность, но замедляет
+вычисление (1-2048).</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>Максимальное число дифрагированных пучков (блоховских волн),
+включаемых в динамическое уточнение толщины/направления;
+больше волн даёт более высокую точность, но замедляет
+вычисление (1-2048).</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>Ширина (пикс) внешнего кольцевого пояса вокруг каждого
+рефлекса, используемого как локальный фон
+при вычитании бублика (1-100).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>Размер одного пикселя детектора; единица (мм или nm⁻¹)
+следует за переключателями справа. Задаёт масштаб обратного
+пространства для межплоскостных расстояний и индицирования.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Размер одного пикселя детектора; единица (мм или nm⁻¹)
+следует за переключателями справа. Задаёт масштаб обратного
+пространства для межплоскостных расстояний и индицирования.</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>Показывать направление оси зоны на картине</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Скопировать приведённую выше информацию в буфер обмена.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>Показывать метки индексов на расчётных рефлексах</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>Радиус (в пикселях, 0–100) круговой области вокруг каждого
+рефлекса, используемой для подгонки пика; пиксели внутри
+этого круга подгоняются функцией псевдо-Фойгта.</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>Радиус (в пикселях, 0–100) круговой области вокруг каждого
+рефлекса, используемой для подгонки пика; пиксели внутри
+этого круга подгоняются функцией псевдо-Фойгта.</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>Удалить из списка только текущий выбранный рефлекс
+(для удаления всех рефлексов используйте кнопку Clear).</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>Список найденных кандидатов индицирования; выберите
+строку, чтобы показать ниже его ориентации зёрен.</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>Показывать направляющие окружности на дифракционной картине</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>Ориентации зёрен в выбранном кандидате; выбор строки
+накладывает её расчётные рефлексы и присваивает
+индексы hkl наблюдаемым рефлексам.</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>Уточнить толщину образца (нм) и направление пучка путём
+сопоставления наблюдаемых интенсивностей рефлексов с
+динамическими (блоховскими) расчётами CBED для выбранного
+зерна (только электронная дифракция).</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>Указать число обнаруживаемых рефлексов</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>Указать число обнаруживаемых рефлексов</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>Показывать номера на наблюдаемых рефлексах</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>Показать подробную информацию о выбранном рефлексе</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>Максимальный допуск на относительную длину (межплоскостное
+расстояние), в %, допускаемый при сопоставлении наблюдаемых
+рефлексов с рефлексами-кандидатами (0,1–10%).</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>Максимальный допуск на относительную длину (межплоскостное
+расстояние), в %, допускаемый при сопоставлении наблюдаемых
+рефлексов с рефлексами-кандидатами (0,1–10%).</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>Искать ориентацию одного кристаллического зерна</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>Очистить все рефлексы</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>Сохранить приведённую выше информацию</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>Установить радиус подгонки каждого рефлекса равным
+текущему значению 'Fitting range' (пикс).</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>Единица размера пикселя: обратные нанометры</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Источник излучения и энергия/напряжение, задающие длину
+волны для индицирования (по умолчанию: электроны, 200 kV).</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>Наложить кольца Дебая–Шеррера на картину</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>Показать подробные параметры функции подгонки</value>
+  </data>
 </root>

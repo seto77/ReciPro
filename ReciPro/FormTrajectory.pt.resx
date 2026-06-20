@@ -139,4 +139,141 @@ a calcular</value>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>Desvio padrão da energia</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Executa a simulação de Monte Carlo: rastreia o
+número definido de elétrons incidentes através
+da amostra e, em seguida, atualiza as estatísticas,
+os gráficos de distribuição e a visualização 3D de trajetórias.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Define a visualização 3D para olhar ao longo da normal
+à superfície da amostra (considerando a inclinação atual).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Define a visualização 3D para olhar ao longo do eixo X,
+que é o eixo de rotação (inclinação) da amostra.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Define a visualização 3D para olhar ao longo do eixo Z,
+ou seja, na direção do feixe incidente.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Desenha também as trajetórias dos elétrons absorvidos
+na amostra (aqueles que não retroespalharam),
+não apenas os retroespalhados, na visualização 3D.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Mostra os eixos de coordenadas X (vermelho), Y (verde) e Z = direção do feixe
+(roxo) na visualização 3D de trajetórias.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Sobrepõe as posições dos eixos ±X / ±Y / ±Z na
+projeção estereográfica (figura de polos) das
+direções de saída dos elétrons retroespalhados.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Desenha círculos de escala concêntricos na superfície da
+amostra na visualização 3D como referência de distância
+(espaçamento auto-escalado, rotulado em nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Estende o trajeto de cada elétron retroespalhado
+para além da superfície para mostrar sua direção de saída
+na visualização 3D (colorida pela energia de saída).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Energia média de saída dos elétrons retroespalhados
+(BSE) que deixam a superfície da amostra, em keV.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Energia média de saída dos elétrons retroespalhados
+(BSE) que deixam a superfície da amostra, em keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Coeficiente de retroespalhamento η: fração dos elétrons
+incidentes reemitidos da superfície como elétrons retroespalhados
+(BSE), obtida da simulação de Monte Carlo.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Coeficiente de retroespalhamento η: fração dos elétrons
+incidentes reemitidos da superfície como elétrons retroespalhados
+(BSE), obtida da simulação de Monte Carlo.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Seção de choque de espalhamento σ_E: área efetiva do alvo
+para espalhamento elástico na energia incidente;
+valores maiores significam espalhamento mais frequente (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Seção de choque de espalhamento σ_E: área efetiva do alvo
+para espalhamento elástico na energia incidente;
+valores maiores significam espalhamento mais frequente (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Caminho livre médio elástico λ: distância média que o
+elétron percorre entre eventos de espalhamento
+elástico, na energia incidente (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Caminho livre médio elástico λ: distância média que o
+elétron percorre entre eventos de espalhamento
+elástico, na energia incidente (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Poder de freamento dE/ds: energia que o elétron
+perde por unidade de comprimento de trajeto em colisões
+inelásticas, na energia incidente (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Poder de freamento dE/ds: energia que o elétron
+perde por unidade de comprimento de trajeto em colisões
+inelásticas, na energia incidente (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Número de trajetórias de elétrons a simular
+(100 a 1.000.000). Mais trajetórias dão
+estatísticas mais suaves, mas levam mais tempo para calcular.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Número de trajetórias de elétrons a simular
+(100 a 1.000.000). Mais trajetórias dão
+estatísticas mais suaves, mas levam mais tempo para calcular.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Número máximo de trajetórias a renderizar na visualização 3D
+(1 a 100.000). Isto limita apenas o desenho, não a
+simulação; valores menores mantêm a visualização 3D responsiva.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Inclinação da superfície da amostra em relação ao feixe incidente
+(0 a -90 graus). 0 graus = normal à superfície ao longo do
+feixe; inclinar altera o rendimento e a distribuição
+de direção dos elétrons retroespalhados.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Colore a projeção estereográfica pela
+energia média de saída (keV) dos
+elétrons retroespalhados em cada direção.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Colore a projeção estereográfica pela
+frequência: o número de elétrons retroespalhados
+que saem em cada direção.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Colore a projeção estereográfica pelo
+desvio padrão da energia de saída dos
+elétrons retroespalhados em cada direção.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Barra de status: mostra o tempo decorrido para
+o cálculo de trajetórias, o desenho de gráficos
+e a renderização 3D da última simulação.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Energia do elétron incidente (tensão de aceleração) em
+keV. Define a energia do feixe usada no cálculo de trajetórias,
+seção de choque, caminho livre médio e poder de
+freamento; maior energia resulta em penetração mais profunda.</value>
+  </data>
 </root>

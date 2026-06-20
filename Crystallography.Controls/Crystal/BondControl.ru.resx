@@ -125,4 +125,100 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>Многогранник</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>Выберите элемент в центре связи / многогранника
+(координирующий центральный атом).</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>Выберите элемент в вершинах связи / многогранника
+(координированные атомы лигандов).</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>Радиус цилиндров связей, в Å.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>Радиус цилиндров связей, в Å.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Добавить настройки связи/многогранника, заданные ниже.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Заменить выбранную связь/многогранник
+настройками ниже.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Удалить выбранную связь/многогранник.</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>Цвет рёбер многогранника (каркас
+координационного многогранника).</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>Цвет граней многогранника (координационный многогранник).</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>Цвет цилиндров связей.</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Показывать связи в виде цилиндров и включить настройки связей.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Показывать рёбра (каркас) координационного
+многогранника и включить настройку ширины рёбер.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Показывать внутренние связи (связи центр–вершина)
+внутри координационного многогранника.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Показывать координационный многогранник
+и включить настройки многогранника.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Показывать атомы вершин (координированные атомы
+лигандов) координационного многогранника.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Список заданных связей/многогранников; выберите
+строку, чтобы редактировать её ниже, или
+переключите столбцы Enabled / Show напрямую.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Непрозрачность цилиндров связей (0
+= полностью прозрачные, 1 = непрозрачные).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Максимальное межатомное расстояние (в Å),
+при котором два атома считаются связанными.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Минимальное межатомное расстояние (в Å),
+при котором два атома считаются связанными.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Ширина линии рёбер многогранника.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Непрозрачность граней многогранника (0
+= полностью прозрачные, 1 = непрозрачные).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Выберите пару элементов (центр и вершину),
+образующих связь/многогранник.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Выберите пару элементов (центр и вершину),
+образующих связь/многогранник.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Выберите элемент в центре связи/многогранника
+(координирующий центральный атом).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Выберите элемент в вершинах связи/многогранника
+(координированные атомы лигандов).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Показывать центральный атом координационного многогранника.</value>
+  </data>
 </root>

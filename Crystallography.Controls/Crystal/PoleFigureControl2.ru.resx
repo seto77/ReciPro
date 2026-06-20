@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Цвет</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу для полюсной фигуры:
+спектр от холодного к тёплому или градиент оттенков серого.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу для полюсной фигуры:
+спектр от холодного к тёплому или градиент оттенков серого.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Показывает максимальное и минимальное значения пикселей,
+отображаемых в данный момент на полюсной фигуре.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Верхний предел цветовой шкалы для
+полюсной фигуры; значения на этом уровне и выше
+отображаются на тёплом/ярком конце полосы.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Нижний предел цветовой шкалы для
+полюсной фигуры; значения на этом уровне и ниже
+отображаются на холодном/тёмном конце полосы.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Размер угловой ячейки в градусах для
+гистограммы полюсной фигуры; меньшие значения дают
+более детальные (более высокого разрешения) ячейки (диапазон 1–30°).</value>
+  </data>
 </root>

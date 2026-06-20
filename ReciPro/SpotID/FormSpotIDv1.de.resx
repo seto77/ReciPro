@@ -137,4 +137,435 @@ suchen</value>
   <data name="buttonSearchAll.Text" xml:space="preserve">
     <value>Zonenachsen aus drei Mustern suchen</value>
   </data>
+  <data name="buttonSearchAll.ToolTip" xml:space="preserve">
+    <value>Durchsucht alle registrierten Kristalle nach Zonenachsen-
+Kombinationen, die mit den zwei oder drei
+Beugungsbildern und den Halter-Kippwinkeln dazwischen
+verträglich sind; öffnet das Fenster mit den Kandidatenergebnissen.</value>
+  </data>
+  <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
+    <value>Durchsucht den/die geladenen Kristall(e) nach Zonenachsen, deren
+berechnetes Beugungsbild innerhalb der Toleranzen mit Pattern 1
+(den eingegebenen L1/L2/L3 und θ) übereinstimmt;
+Übereinstimmungen werden in einem Ergebnisfenster aufgelistet.</value>
+  </data>
+  <data name="buttonSearchPhoto2.ToolTip" xml:space="preserve">
+    <value>Durchsucht den/die geladenen Kristall(e) nach Zonenachsen, deren
+berechnetes Beugungsbild innerhalb der Toleranzen mit Pattern 2
+(den eingegebenen L1/L2/L3 und θ) übereinstimmt;
+Übereinstimmungen werden in einem Ergebnisfenster aufgelistet.</value>
+  </data>
+  <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
+    <value>Sucht nach Kristall-Zonenachsen, die allein mit dem
+Beugungsbild von Photo 3 (Vektoren L1, L2 und dem
+Winkel/der dritten Seite) übereinstimmen, unter Verwendung aller geladenen Kristalle.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L1Photo2L1.ToolTip" xml:space="preserve">
+    <value>Behandelt den L1-Reflex von Photo 1 und Photo 2 als denselben
+Spot (der entlang der Kippachse gemeinsame Reflex); fixiert die
+L1-Länge von Photo 2 auf den Wert von Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L2Photo2L2.ToolTip" xml:space="preserve">
+    <value>Behandelt den L2-Reflex von Photo 1 und Photo 2 als denselben
+Spot (der entlang der Kippachse gemeinsame Reflex); fixiert die
+L2-Länge von Photo 2 auf den Wert von Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L1Photo3L1.ToolTip" xml:space="preserve">
+    <value>Behandelt den L1-Reflex von Photo 2 und Photo 3 als denselben
+Spot (der entlang der Kippachse gemeinsame Reflex); fixiert die
+L1-Länge von Photo 3 auf den Wert von Photo 2.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L2Photo3L2.ToolTip" xml:space="preserve">
+    <value>Behandelt den L2-Reflex von Photo 2 und Photo 3 als denselben
+Spot (der entlang der Kippachse gemeinsame Reflex); fixiert die
+L2-Länge von Photo 3 auf den Wert von Photo 2.</value>
+  </data>
+  <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
+    <value>Aktiviert ein zweites Beugungsbild (Photo 2):
+zeigt dessen Eingabefelder an, sodass Zonenachsen aus zwei
+Bildern und ihrer relativen Halterkippung gesucht werden können.</value>
+  </data>
+  <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
+    <value>Aktiviert ein drittes Beugungsbild (Photo
+3): zeigt dessen Eingabefelder an, sodass Zonenachsen
+aus drei Bildern und ihren relativen Halterkippungen
+gesucht werden können (erfordert Photo 2).</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Beschleunigungsspannung (kV) des Transmissions-
+Elektronenmikroskops; legt die Elektronenwellenlänge fest,
+die zur Auswertung der Beugungsbilder verwendet wird.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Beschleunigungsspannung (kV) des Transmissions-
+Elektronenmikroskops; legt die Elektronenwellenlänge fest,
+die zur Auswertung der Beugungsbilder verwendet wird.</value>
+  </data>
+  <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
+    <value>Kameralänge (mm) des Beugungsbildes;
+rechnet die gemessenen Spot-Abstände (mm) in
+reziproke Gitterabstände für die Indizierung um.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Kameralänge (mm) des Beugungsbildes;
+rechnet die gemessenen Spot-Abstände (mm) in
+reziproke Gitterabstände für die Indizierung um.</value>
+  </data>
+  <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
+    <value>Winkel θ (Grad) zwischen den beiden reziproken
+Vektoren L1 und L2 von Pattern 1. Im Modus 'Two
+Sides and an Angle' editierbar; im Modus 'Three Sides'
+wird er aus L1/L2/L3 berechnet und schreibgeschützt angezeigt.</value>
+  </data>
+  <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
+    <value>Erster Kippwinkel des Goniometerhalters (Tilt
+1, in Grad), bei dem Photo 1 aufgenommen wurde.
+Wird verwendet, um die Bilder zueinander in Beziehung zu setzen,
+wenn Zonenachsen aus mehreren Fotos gesucht werden.</value>
+  </data>
+  <data name="numericBoxP1Tilt2.ToolTip" xml:space="preserve">
+    <value>Zweiter Kippwinkel des Goniometerhalters (Tilt
+2, in Grad), bei dem Photo 1 aufgenommen wurde
+(die zweite, orthogonale Kippachse des Halters).</value>
+  </data>
+  <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
+    <value>Winkel θ (Grad) zwischen den beiden reziproken
+Vektoren L1 und L2 von Pattern 2. Im Modus 'Two
+Sides and an Angle' editierbar; im Modus 'Three Sides'
+aus L1/L2/L3 berechnet und schreibgeschützt angezeigt.</value>
+  </data>
+  <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
+    <value>Erster Kippwinkel des Goniometerhalters (Tilt 1,
+in Grad), bei dem Photo 2 aufgenommen wurde. Wird verwendet,
+um Photo 2 zu den anderen Bildern in Beziehung zu setzen,
+wenn Zonenachsen aus mehreren Fotos gesucht werden.</value>
+  </data>
+  <data name="numericBoxP2Tilt2.ToolTip" xml:space="preserve">
+    <value>Zweiter Kippwinkel des Goniometerhalters (Tilt
+2, in Grad), bei dem Photo 2 aufgenommen wurde
+(die zweite, orthogonale Kippachse des Halters).</value>
+  </data>
+  <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
+    <value>Winkel theta (Grad) zwischen den beiden Beugungs-
+vektoren L1 und L2 von Photo 3. Im Modus 'Three Sides'
+schreibgeschützt und aus den drei Seiten berechnet;
+im Modus 'Two Sides and an Angle' editierbar.</value>
+  </data>
+  <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
+    <value>Kippwinkel (Grad) der ersten Halterachse,
+der bei der Aufnahme von Photo 3 verwendet wurde; zusammen mit
+Tilt 2 zur Berechnung des Winkels zwischen den Halter-
+einstellungen verschiedener Bilder.</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Kippwinkel (Grad) der ersten Halterachse,
+der bei der Aufnahme von Photo 3 verwendet wurde; zusammen mit
+Tilt 2 zur Berechnung des Winkels zwischen den Halter-
+einstellungen verschiedener Bilder.</value>
+  </data>
+  <data name="numericBoxP3Tilt2.ToolTip" xml:space="preserve">
+    <value>Kippwinkel (Grad) der zweiten Halterachse,
+der bei der Aufnahme von Photo 3 verwendet wurde; zusammen
+mit Tilt 1 zur Berechnung des Winkels zwischen den
+Haltereinstellungen verschiedener Bilder.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Kippwinkel (Grad) der zweiten Halterachse,
+der bei der Aufnahme von Photo 3 verwendet wurde; zusammen
+mit Tilt 1 zur Berechnung des Winkels zwischen den
+Haltereinstellungen verschiedener Bilder.</value>
+  </data>
+  <data name="numericBoxPhoto1L1Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L1 von Pattern 1, als
+Prozentsatz seiner Länge (0-50 %, Standard 5). Zonen-
+achsen, deren L1 vom eingegebenen Wert um
+bis zu diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto1L2Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L2 von Pattern 1, als
+Prozentsatz seiner Länge (0-50 %, Standard 5). Zonen-
+achsen, deren L2 vom eingegebenen Wert um
+bis zu diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L3 von Pattern 1, als
+Prozentsatz seiner Länge (0-50 %, Standard 5).
+Nur im Modus 'Three Sides' verwendet; Übereinstimmungen innerhalb
+dieses Anteils des eingegebenen L3 werden akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für den Winkel θ von Pattern 1, in
+Grad (0-30, Standard 3). Nur im Modus 'Two Sides
+and an Angle' verwendet; Zonenachsen, deren Winkel um
+bis zu so viele Grad abweicht, werden noch als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für Tilt 1 von Photo 1, in
+Grad (0-10). Legt fest, wie weit der Halter-Kippwinkel
+beim Abgleich von Kandidaten abweichen darf.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für Tilt 2 von Photo 1, in Grad
+(0-10). Legt fest, wie weit der zweite Halter-Kippwinkel
+beim Abgleich von Kandidaten abweichen darf.</value>
+  </data>
+  <data name="numericBoxPhoto2L1Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L1 von Pattern 2, als
+Prozentsatz seiner Länge (0-50 %, Standard
+5). Zonenachsen, deren L1 um bis zu
+diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto2L2Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L2 von Pattern 2, als
+Prozentsatz seiner Länge (0-50 %, Standard
+5). Zonenachsen, deren L2 um bis zu
+diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L3 von Pattern 2, als
+Prozentsatz seiner Länge (0-50 %, Standard 5).
+Nur im Modus 'Three Sides' verwendet; Übereinstimmungen
+innerhalb dieses Anteils von L3 werden akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für den Winkel θ von Pattern
+2, in Grad (0-30, Standard 3). Nur im Modus
+'Two Sides and an Angle' verwendet; Winkel innerhalb
+so vieler Grad werden als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für Tilt 1 von Photo 2, in
+Grad (0-10). Legt fest, wie weit der Halter-Kippwinkel
+beim Abgleich von Kandidaten abweichen darf.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für Tilt 2 von Photo 2, in Grad
+(0-10). Legt fest, wie weit der zweite Halter-Kippwinkel
+beim Abgleich von Kandidaten abweichen darf.</value>
+  </data>
+  <data name="numericBoxPhoto3L1Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für die Länge des Vektors L1 von Photo 3, in
+Prozent (0-50). Kandidaten, deren berechnetes L1 um
+bis zu diesen Betrag abweicht, werden als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto3L2Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für die Länge des Vektors L2 von Photo 3, in
+Prozent (0-50). Kandidaten, deren berechnetes L2 um
+bis zu diesen Betrag abweicht, werden als Übereinstimmung akzeptiert.</value>
+  </data>
+  <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für die Länge der dritten Seite L3 von Photo 3,
+in Prozent (0-50). Nur im Modus 'Three Sides' verwendet.</value>
+  </data>
+  <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für den Winkel theta von Photo 3, in
+Grad (0-30). Kandidaten, deren berechneter Winkel um
+bis zu diesen Betrag abweicht, werden akzeptiert. Nur
+im Modus 'Two Sides and an Angle' verwendet.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Toleranz (± Grad, 0-10) für den Tilt 1-
+Winkel von Photo 3, mit der Zonenachsen-
+Kandidaten akzeptiert werden, deren berechneter
+Halterwinkel zwischen den Bildern innerhalb dieses Bereichs übereinstimmt.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Toleranz (± Grad, 0-10) für den Tilt 2-
+Winkel von Photo 3, mit der Zonenachsen-
+Kandidaten akzeptiert werden, deren berechneter
+Halterwinkel zwischen den Bildern innerhalb dieses Bereichs übereinstimmt.</value>
+  </data>
+  <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
+    <value>Definiert Pattern 1 über die drei Seitenlängen L1,
+L2 und L3; der Winkel θ wird dann daraus
+berechnet. (Die andere Optionsschaltfläche definiert das
+Bild stattdessen über zwei Seiten und den Winkel.)</value>
+  </data>
+  <data name="radioButtonPhoto1Mode2.ToolTip" xml:space="preserve">
+    <value>Definiert Pattern 1 über zwei Seitenlängen L1, L2
+und den Winkel θ zwischen ihnen; L3 wird dann
+berechnet. (Die andere Optionsschaltfläche definiert das
+Bild stattdessen über drei Seiten.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode1.ToolTip" xml:space="preserve">
+    <value>Definiert Pattern 2 über die drei Seitenlängen L1, L2 und
+L3; der Winkel θ wird dann daraus berechnet. (Die andere
+Optionsschaltfläche verwendet stattdessen zwei Seiten und den Winkel.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode2.ToolTip" xml:space="preserve">
+    <value>Definiert Pattern 2 über zwei Seitenlängen L1, L2 und
+den Winkel θ zwischen ihnen; L3 wird dann berechnet.
+(Die andere Optionsschaltfläche verwendet stattdessen drei Seiten.)</value>
+  </data>
+  <data name="radioButtonPhoto3Mode1.ToolTip" xml:space="preserve">
+    <value>Definiert das Musterdreieck von Photo 3 über seine
+drei Seitenlängen L1, L2, L3; der Winkel
+theta wird dann automatisch berechnet.</value>
+  </data>
+  <data name="radioButtonPhoto3Mode2.ToolTip" xml:space="preserve">
+    <value>Definiert das Muster von Photo 3 über zwei Seitenlängen
+L1, L2 und den Winkel theta zwischen ihnen; die
+dritte Seite L3 wird dann automatisch berechnet.</value>
+  </data>
+  <data name="textBoxAngleBetween12.ToolTip" xml:space="preserve">
+    <value>Winkel (Grad) zwischen den Halter-Kipp-
+einstellungen von Photo 1 und Photo 2, berechnet
+aus ihren Tilt 1 / Tilt 2-Werten (schreibgeschützt).</value>
+  </data>
+  <data name="textBoxAngleBetween23.ToolTip" xml:space="preserve">
+    <value>Winkel (Grad) zwischen den Halter-Kipp-
+einstellungen von Photo 2 und Photo 3, berechnet
+aus ihren Tilt 1 / Tilt 2-Werten (schreibgeschützt).</value>
+  </data>
+  <data name="textBoxAngleBetween31.ToolTip" xml:space="preserve">
+    <value>Winkel (Grad) zwischen den Halter-Kipp-
+einstellungen von Photo 3 und Photo 1, berechnet
+aus ihren Tilt 1 / Tilt 2-Werten (schreibgeschützt).</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Elektronenwellenlänge (nm), automatisch
+aus der Beschleunigungsspannung berechnet (schreibgeschützt).</value>
+  </data>
+  <data name="label67.ToolTip" xml:space="preserve">
+    <value>Elektronenwellenlänge (nm), automatisch
+aus der Beschleunigungsspannung berechnet (schreibgeschützt).</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Zweiter Kippwinkel des Goniometerhalters (Tilt
+2, Grad), bei dem Photo 1 aufgenommen wurde.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>L3: Länge (mm auf dem Foto) des dritten
+reziproken Gittervektors von Pattern 1, zur
+Definition des Spot-Dreiecks im Modus 'Three Sides'.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>L2: Länge (mm auf dem Foto) des zweiten
+reziproken Gittervektors von Pattern 1.</value>
+  </data>
+  <data name="label131.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L1 von Pattern 1, als
+Prozentsatz seiner Länge (0-50 %, Standard 5).</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Erster Kippwinkel des Goniometerhalters (Tilt
+1, Grad), bei dem Photo 1 aufgenommen wurde.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>L1: Länge (mm auf dem Foto) des ersten
+reziproken Gittervektors von Pattern 1.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Prozent: Einheit der L1-Suchtoleranz
+von Pattern 2 (0-50 %, Standard 5).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Grad: Einheit der Winkel-Suchtoleranz
+für θ von Pattern 2 (0-30, Standard 3).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Prozent: Einheit der L2-Suchtoleranz
+von Pattern 2 (0-50 %, Standard 5).</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Prozent: Einheit der L3-Suchtoleranz von Pattern
+2 (0-50 %, Standard 5; im Modus 'Three Sides' verwendet).</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>L1: Länge (mm auf dem Foto) des ersten
+reziproken Gittervektors von Pattern 2.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>L2: Länge (mm auf dem Foto) des zweiten
+reziproken Gittervektors von Pattern 2.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Winkel θ (Grad) zwischen den reziproken
+Vektoren L1 und L2 von Pattern 2.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>L3: Länge (mm auf dem Foto) des
+dritten reziproken Gittervektors von
+Pattern 2, verwendet im Modus 'Three Sides'.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Grad: Einheit des Winkels θ zwischen L1 und L2 von Pattern 2.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L2 von Pattern 1, als
+Prozentsatz seiner Länge (0-50 %, Standard 5).</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Gemessene Länge L1 des ersten Beugungsvektors
+von Photo 3, in mm auf dem Aufnahmemedium.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Gemessene Länge L2 des zweiten Beugungsvektors
+von Photo 3, in mm auf dem Aufnahmemedium.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Winkel θ (Grad) zwischen den Vektoren L1 und L2 von Photo 3.</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Länge L3 der dritten Dreiecksseite von Photo 3,
+in mm (verwendet im Modus 'Three Sides').</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Erster Kippwinkel des Goniometerhalters (Tilt
+1, Grad), bei dem Photo 2 aufgenommen wurde.</value>
+  </data>
+  <data name="label69.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L1
+von Pattern 1 (Prozentsatz seiner Länge).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Zweiter Kippwinkel des Goniometerhalters (Tilt
+2, Grad), bei dem Photo 2 aufgenommen wurde.</value>
+  </data>
+  <data name="label70.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L2
+von Pattern 1 (Prozentsatz seiner Länge).</value>
+  </data>
+  <data name="label71.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L3 von Pattern 1
+(Prozentsatz seiner Länge; verwendet im Modus 'Three Sides').</value>
+  </data>
+  <data name="label75.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf
+den Winkel θ von Pattern 1 (Grad;
+verwendet im Modus 'Two Sides and an Angle').</value>
+  </data>
+  <data name="label76.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L1
+von Pattern 2 (Prozentsatz seiner Länge).</value>
+  </data>
+  <data name="label77.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L2
+von Pattern 2 (Prozentsatz seiner Länge).</value>
+  </data>
+  <data name="label78.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf L3 von Pattern 2
+(Prozentsatz seiner Länge; verwendet im Modus 'Three Sides').</value>
+  </data>
+  <data name="label79.ToolTip" xml:space="preserve">
+    <value>Plus/Minus-Suchtoleranz, angewendet auf
+den Winkel θ von Pattern 2 (Grad;
+verwendet im Modus 'Two Sides and an Angle').</value>
+  </data>
+  <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
+    <value>Winkel θ (Grad) zwischen den reziproken
+Vektoren L1 und L2 von Pattern 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_3.ToolTip" xml:space="preserve">
+    <value>Grad: Einheit des Winkels θ zwischen L1 und L2 von Pattern 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
+    <value>Grad: Einheit der Winkel-Suchtoleranz
+für θ von Pattern 1 (0-30, Standard 3).</value>
+  </data>
+  <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
+    <value>Suchtoleranz für L3 von Pattern 1,
+als Prozentsatz seiner Länge (0-50 %,
+Standard 5; verwendet im Modus 'Three Sides').</value>
+  </data>
 </root>

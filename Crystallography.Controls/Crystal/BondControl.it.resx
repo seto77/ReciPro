@@ -125,4 +125,100 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>Poliedro</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>Seleziona l'elemento al centro del legame / poliedro
+(l'atomo centrale coordinante).</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>Seleziona l'elemento ai vertici del legame / poliedro
+(gli atomi leganti coordinati).</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>Raggio dei cilindri di legame, in Å.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>Raggio dei cilindri di legame, in Å.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Aggiungi le impostazioni di legame/poliedro sottostanti.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Sostituisci il legame/poliedro selezionato
+con le impostazioni sottostanti.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Elimina il legame/poliedro selezionato.</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>Colore degli spigoli del poliedro (il
+reticolo a fil di ferro del poliedro di coordinazione).</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>Colore delle facce del poliedro (il poliedro di coordinazione).</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>Colore dei cilindri di legame.</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Mostra i legami come cilindri e abilita le impostazioni dei legami.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Mostra gli spigoli (struttura a fil di ferro) del poliedro di
+coordinazione e abilita l'impostazione della larghezza degli spigoli.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Mostra i legami interni (legami centro-vertice)
+all'interno del poliedro di coordinazione.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Mostra il poliedro di coordinazione
+e abilita le impostazioni del poliedro.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Mostra gli atomi ai vertici (atomi leganti coordinati)
+del poliedro di coordinazione.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Elenco dei legami/poliedri definiti; seleziona
+una riga per modificarla sotto, oppure commuta
+direttamente le sue colonne Abilitato / Mostra.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Opacità dei cilindri di legame (0
+= completamente trasparente, 1 = opaco).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Distanza interatomica massima (in Å)
+perché due atomi siano trattati come legati.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Distanza interatomica minima (in Å)
+perché due atomi siano trattati come legati.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Larghezza della linea degli spigoli del poliedro.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Opacità delle facce del poliedro (0
+= completamente trasparente, 1 = opaca).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Seleziona la coppia di elementi (centro e
+vertice) che formano il legame/poliedro.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Seleziona la coppia di elementi (centro e
+vertice) che formano il legame/poliedro.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Seleziona l'elemento al centro del legame/poliedro
+(l'atomo centrale coordinante).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Seleziona l'elemento ai vertici del legame/poliedro
+(gli atomi leganti coordinati).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Mostra l'atomo centrale del poliedro di coordinazione.</value>
+  </data>
 </root>

@@ -77,4 +77,125 @@
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
     <value>Размытие по Гауссу</value>
   </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения 1:1 (×1,
+один пиксель экрана на пиксель изображения).</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения ×2 (увеличение в 2 раза).</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения ×4 (увеличение в 4 раза).</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения ×1/16 (уменьшение до 1/16 размера).</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения на ×1/2 (уменьшение до половинного размера).</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения на ×1/4 (уменьшение до 1/4 размера).</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>Установить масштаб отображения на ×1/8 (уменьшение до 1/8 размера).</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Применить фильтр Dust &amp; Scratches, удаляющий
+мелкие точки и царапиноподобные артефакты,
+заменяя пиксели, которые сильно отличаются от
+соседних (задайте Radius и Threshold).</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Применить гауссово размытие, сглаживающее изображение
+гауссовым ядром для подавления шума (задайте ширину FWHM).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Переключить полярность отображения: Positive показывает
+интенсивности в обычном виде, Negative инвертирует
+градации серого (светлое и тёмное меняются местами).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Переключить полярность отображения: Positive показывает
+интенсивности в обычном виде, Negative инвертирует
+градации серого (светлое и тёмное меняются местами).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Выберите способ преобразования интенсивности в яркость: Linear
+(пропорциональный) или Log (логарифмический, который
+выявляет слабые детали наряду с сильными).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Выберите способ преобразования интенсивности в яркость: Linear
+(пропорциональный) или Log (логарифмический, который
+выявляет слабые детали наряду с сильными).</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую карту для отображения интенсивности:
+Gray, Cold-Warm, Spectrum или Fire (псевдоцветовая
+схема облегчает восприятие различий интенсивности).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую карту для отображения интенсивности:
+Gray, Cold-Warm, Spectrum или Fire (псевдоцветовая
+схема облегчает восприятие различий интенсивности).</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Показывает положение курсора (X, Y в пикселях
+изображения) и, для полутоновых изображений,
+исходное значение пикселя под курсором.</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>Текущее увеличение отображения (коэффициент масштаба)
+изображения; обновляется при масштабировании или панорамировании.</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Задать радиус фильтра Dust &amp; Scratches в
+пикселях (0-5). Больший радиус удаляет более крупные
+точки/царапины, но сильнее размывает детали.</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Задать порог фильтра Dust &amp; Scratches (0-10).
+Как дефекты обрабатываются и заменяются только те
+пиксели, которые отличаются от соседних больше, чем
+на это значение; меньшее значение удаляет больше.</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>Задать ширину гауссова размытия как FWHM (полную
+ширину на полувысоте) в пикселях (0-100).
+Большее значение размывает сильнее.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Строка состояния, отображающая сообщения обработки,
+например, затраченное время фильтров Dust &amp;
+Scratches и Gaussian Blur.</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>Задать верхний предел интенсивности: значения пикселей
+выше этого ограничиваются до белого (полная
+яркость). Вместе с ползунком Min. это задаёт
+отображаемое окно яркости/контраста.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Задать верхний предел интенсивности: значения пикселей
+выше этого ограничиваются до белого (полная
+яркость). Вместе с ползунком Min. это задаёт
+отображаемое окно яркости/контраста.</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>Задать нижний предел интенсивности: значения пикселей ниже
+этого ограничиваются до чёрного. Вместе с ползунком Max.
+это задаёт отображаемое окно яркости/контраста.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Задать нижний предел интенсивности: значения пикселей ниже
+этого ограничиваются до чёрного. Вместе с ползунком Max.
+это задаёт отображаемое окно яркости/контраста.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Текущее увеличение отображения (коэффициент масштаба) изображения.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Текущее увеличение отображения
+(Magnification, коэффициент масштаба) изображения.</value>
+  </data>
 </root>

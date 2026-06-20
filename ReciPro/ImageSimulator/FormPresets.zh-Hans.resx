@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>关闭并恢复打开此
+对话框时所处的设置。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>保留当前已应用的设置并关闭对话框。</value>
+  </data>
+  <data name="checkBoxManageList.ToolTip" xml:space="preserve">
+    <value>切换预设管理模式：显示
+添加/替换/重命名/删除及名称框
+（此时选择某项不再应用其设置）。</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>已保存预设的列表；选择其中一项
+会将其设置应用到图像
+模拟器（管理模式开启时除外）。</value>
+  </data>
+  <data name="textBoxPresetName.ToolTip" xml:space="preserve">
+    <value>要添加或重命名的预设名称。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>要添加或重命名的预设名称。</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>将当前图像模拟设置添加为新预设。</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>从列表中删除选中的预设。</value>
+  </data>
+  <data name="buttonRename.ToolTip" xml:space="preserve">
+    <value>将选中的预设重命名为 Name 框中的文字。</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>用当前设置覆盖选中的预设。</value>
+  </data>
+</root>

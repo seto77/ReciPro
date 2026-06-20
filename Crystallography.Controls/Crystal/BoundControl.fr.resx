@@ -92,4 +92,69 @@
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
+    <value>Si le domaine de tracé n'est pas fermé par des plans
+cristallins, le limiter par cette distance depuis l'origine.</value>
+  </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
+    <value>Si le domaine de tracé n'est pas fermé par des plans
+cristallins, le limiter par cette distance depuis l'origine.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Remplacer le plan de délimitation sélectionné</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Supprimer le plan de délimitation sélectionné</value>
+  </data>
+  <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
+    <value>Appliquer les changements immédiatement</value>
+  </data>
+  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
+    <value>Inclure les plans équivalents par symétrie</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Décale le plan de délimitation selon sa normale de cette
+distance (Å) ; une valeur positive l'éloigne de l'origine.</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
+    <value>Décale le plan de délimitation selon sa normale de cette
+distance (Å) ; une valeur positive l'éloigne de l'origine.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Décale le plan de délimitation selon sa normale de cette
+distance (Å) ; une valeur positive l'éloigne de l'origine.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Ajoute un nouveau plan de délimitation à la liste à partir
+des réglages actuels d'indices, de distance et de couleur.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Couleur utilisée pour rendre ce plan de délimitation
+(plan de découpe) dans l'affichage du cristal.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste des plans de délimitation définis ; cochez la
+case pour activer/désactiver un plan, ou sélectionnez
+une ligne pour le charger dans l'éditeur ci-dessus.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Distance de l'origine au plan de délimitation,
+saisie directement en angströms (Å) ; maintenue synchronisée
+avec le multiple de la distance interréticulaire à gauche.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>Distance de l'origine au plan de délimitation comme
+multiple de la distance interréticulaire (hkl) d ; maintenue
+synchronisée avec la valeur absolue en Å à droite.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Distance de l'origine du cristal au plan de
+délimitation, définie comme multiple de la distance
+interréticulaire (gauche) ou directement en Å (droite).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Indices de Miller (h k l) de la normale du
+plan de délimitation ; définit l'orientation
+du plan qui découpe le cristal.</value>
+  </data>
 </root>

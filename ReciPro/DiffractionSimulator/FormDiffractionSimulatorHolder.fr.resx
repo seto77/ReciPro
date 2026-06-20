@@ -138,4 +138,132 @@ actuelle</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulation du porte-objet MET</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Couleur d'arrière-plan de la zone de tracé du stéréogramme.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Couleur du contour du porte-échantillon tracé sur le stéréogramme.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Couleur des lignes principales de la grille à 90°
+et du cercle externe du stéréogramme.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Couleur des lignes intermédiaires de la grille
+à 10° tracées sur le stéréogramme.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Couleur des lignes à 1 degré
+Active lorsque « Show 1° Lines » est cochée</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Couleur des étiquettes des axes [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Couleur des points et étiquettes des axes de zone généraux
+(axes autres que [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Couleur de la flèche de direction Tilt-X (axe primaire)
+(affichée lorsque « Show tilt directions » est cochée)</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Couleur de la flèche de direction Tilt-Y (axe secondaire)
+(affichée lorsque « Show tilt directions » est cochée)</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, les touches fléchées inclinent
+le porte-échantillon : Gauche/Droite modifient Tilt X et
+Haut/Bas modifient Tilt Y du pas des flèches.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Incrément de l'angle d'inclinaison (en degrés)
+appliqué à chaque appui sur une touche fléchée.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison du porte-échantillon autour de
+l'axe primaire (Tilt X), en degrés.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison du porte-échantillon autour de
+l'axe primaire (Tilt X), en degrés.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison du porte-échantillon autour de
+l'axe secondaire (Tilt Y), en degrés.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison du porte-échantillon autour de
+l'axe secondaire (Tilt Y), en degrés.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Direction azimutale (en degrés) de l'axe
+Tilt X (primaire) sur le stéréogramme.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Direction azimutale (en degrés) de l'axe
+Tilt X (primaire) sur le stéréogramme.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Utiliser une polarité négative pour l'axe Tilt Y (secondaire).</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Utiliser une polarité positive pour l'axe Tilt Y (secondaire).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Polarité (signe) de l'axe Tilt Y (secondaire) ; faites-la
+correspondre à la convention de votre goniomètre TEM.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Rayon des points des axes de zone tracés sur le stéréogramme.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Rayon des points des axes de zone tracés sur le stéréogramme.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Taille de police des étiquettes d'indices des axes de zone.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Taille de police des étiquettes d'indices des axes de zone.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Régler l'inclinaison actuelle du porte-échantillon sur les
+valeurs Link Tilt X/Y et utiliser l'orientation
+résultante comme direction neutre.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Faire pivoter le cristal de 180° autour de l'axe du faisceau ([001]).</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Angle Tilt X cible (en degrés) appliqué
+lorsque le bouton Link est pressé.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Angle Tilt Y cible (en degrés) appliqué
+lorsque le bouton Link est pressé.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, trace les lignes à 1° d'intervalle sur le
+stéréogramme (couleur définie par le contrôle de couleur 1°).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, affiche l'étiquette d'indices
+[u v w] à côté de chaque point d'axe de zone.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, trace des flèches sur le stéréogramme
+indiquant les directions Tilt-X et Tilt-Y.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Demi-angle (en degrés) de la zone du stéréogramme
+à afficher ; des valeurs plus petites zooment.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Stéréogramme des directions d'inclinaison. Double-cliquez sur un point
+pour incliner le porte-échantillon vers cette direction.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, génère aussi les axes
+de zone équivalents par symétrie pour chaque indice.</value>
+  </data>
 </root>

@@ -139,4 +139,141 @@ Trajektorien</value>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>Energie-Standardabweichung</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Führt die Monte-Carlo-Simulation aus: verfolgt die
+eingestellte Anzahl einfallender Elektronen durch
+die Probe und aktualisiert dann die Statistiken,
+Verteilungsgrafiken und die 3D-Trajektorienansicht.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Setzt die 3D-Ansicht so, dass entlang der
+Probenoberflächen-Normalen geblickt wird (unter Berücksichtigung der aktuellen Neigung).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Setzt die 3D-Ansicht so, dass entlang der X-Achse
+geblickt wird, die die Probenrotations- (Neigungs-)Achse ist.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Setzt die 3D-Ansicht so, dass entlang der Z-Achse
+geblickt wird, also in Richtung des einfallenden Strahls.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Zeichnet in der 3D-Ansicht zusätzlich die Trajektorien der in der
+Probe absorbierten Elektronen (jene, die nicht rückgestreut wurden),
+nicht nur die rückgestreuten.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Zeigt die Koordinatenachsen X (rot), Y (grün) und Z = Strahlrichtung
+(violett) in der 3D-Trajektorienansicht an.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Überlagert die Positionen der Achsen ±X / ±Y / ±Z auf
+der stereografischen Projektion (Polfigur) der
+Austrittsrichtungen der rückgestreuten Elektronen.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Zeichnet in der 3D-Ansicht konzentrische Maßstabskreise auf
+der Probenoberfläche als Entfernungsreferenz
+(Abstand automatisch skaliert, beschriftet in nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Verlängert in der 3D-Ansicht den Pfad jedes rückgestreuten
+Elektrons über die Oberfläche hinaus, um seine Austrittsrichtung
+zu zeigen (eingefärbt nach Austrittsenergie).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Mittlere Austrittsenergie der rückgestreuten Elektronen
+(BSE), die die Probenoberfläche verlassen, in keV.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Mittlere Austrittsenergie der rückgestreuten Elektronen
+(BSE), die die Probenoberfläche verlassen, in keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Rückstreukoeffizient η: Anteil der einfallenden
+Elektronen, die als rückgestreute Elektronen (BSE) von der Oberfläche
+wieder emittiert werden, aus der Monte-Carlo-Simulation.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Rückstreukoeffizient η: Anteil der einfallenden
+Elektronen, die als rückgestreute Elektronen (BSE) von der Oberfläche
+wieder emittiert werden, aus der Monte-Carlo-Simulation.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Streuquerschnitt σ_E: effektive Zielfläche
+für elastische Streuung bei der einfallenden Energie;
+größere Werte bedeuten häufigere Streuung (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Streuquerschnitt σ_E: effektive Zielfläche
+für elastische Streuung bei der einfallenden Energie;
+größere Werte bedeuten häufigere Streuung (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Elastische mittlere freie Weglänge λ: mittlere Strecke, die das
+Elektron zwischen elastischen Streuereignissen
+zurücklegt, bei der einfallenden Energie (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Elastische mittlere freie Weglänge λ: mittlere Strecke, die das
+Elektron zwischen elastischen Streuereignissen
+zurücklegt, bei der einfallenden Energie (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Bremsvermögen dE/ds: Energie, die das Elektron
+pro Wegeinheit durch inelastische
+Stöße verliert, bei der einfallenden Energie (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Bremsvermögen dE/ds: Energie, die das Elektron
+pro Wegeinheit durch inelastische
+Stöße verliert, bei der einfallenden Energie (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Anzahl der zu simulierenden Elektronentrajektorien
+(100 bis 1.000.000). Mehr Trajektorien ergeben
+glattere Statistiken, benötigen aber mehr Rechenzeit.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Anzahl der zu simulierenden Elektronentrajektorien
+(100 bis 1.000.000). Mehr Trajektorien ergeben
+glattere Statistiken, benötigen aber mehr Rechenzeit.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Maximale Anzahl der in der 3D-Ansicht darzustellenden Trajektorien
+(1 bis 100.000). Dies begrenzt nur das Zeichnen, nicht die
+Simulation; niedrigere Werte halten die 3D-Ansicht reaktionsfähig.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Neigung der Probenoberfläche relativ zum einfallenden Strahl
+(0 bis -90 Grad). 0 Grad = Oberflächennormale entlang des
+Strahls; das Neigen ändert die Ausbeute und Richtungsverteilung
+der rückgestreuten Elektronen.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Färbt die stereografische Projektion nach
+der mittleren Austrittsenergie (keV) der
+rückgestreuten Elektronen in jeder Richtung.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Färbt die stereografische Projektion nach
+Häufigkeit: der Anzahl der rückgestreuten
+Elektronen, die in jeder Richtung austreten.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Färbt die stereografische Projektion nach der
+Standardabweichung der Austrittsenergie der
+rückgestreuten Elektronen in jeder Richtung.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Statusleiste: zeigt die verstrichene Zeit für
+die Trajektorienberechnung, das Zeichnen der Grafik
+und das 3D-Rendering der letzten Simulation an.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Energie der einfallenden Elektronen (Beschleunigungsspannung) in
+keV. Sie legt die Strahlenergie für die Berechnung von Trajektorie,
+Streuquerschnitt, mittlerer freier Weglänge und Bremsvermögen
+fest; höhere Energie ergibt tiefere Eindringtiefe.</value>
+  </data>
 </root>

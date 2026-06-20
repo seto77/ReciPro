@@ -444,4 +444,604 @@ raggio</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulatore di diffrazione</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono simulati gli spot di diffrazione.</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono simulate le linee di Kikuchi (bande prodotte
+da elettroni diffusi anelasticamente che vengono
+poi diffratti secondo Bragg).</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono simulati gli anelli di Debye (anelli di diffrazione
+da polveri prodotti da cristalliti orientati casualmente).</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono simulate le linee di scala.</value>
+  </data>
+  <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzate le etichette degli indici</value>
+  </data>
+  <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzate le distanze interplanari</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzati gli inversi della distanza interplanare
+(cioè la lunghezza del vettore g)</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzate le distanze (mm) dagli
+spot allo spot diretto</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, per ogni spot viene visualizzato l'errore di eccitazione s_g,
+che indica quanto il punto del reticolo reciproco
+si discosta dall'esatta condizione di Bragg/sfera di Ewald.</value>
+  </data>
+  <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, per ogni spot viene visualizzata l'ampiezza
+del fattore di struttura |Fg|; un |Fg| maggiore
+indica generalmente una riflessione più intensa.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Imposta la dimensione delle stringhe</value>
+  </data>
+  <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
+    <value>Imposta la dimensione dei caratteri</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Imposta il colore delle stringhe</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore delle stringhe</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Imposta il colore del piede della
+perpendicolare condotta dal campione.</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>Imposta il colore del piede della
+perpendicolare condotta dal campione.</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>Imposta il colore dello spot diretto</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore dello spot diretto</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>Mostra la posizione del piede della perpendicolare</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>Mostra la posizione diretta</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Imposta un colore di sfondo</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Imposta un colore di sfondo</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>Imposta un colore di sfondo</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>Imposta un colore di sfondo</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Seleziona le riflessioni per le linee di Kikuchi in base al
+fattore di struttura (prima le riflessioni più intense).</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Se selezionato, le intensità delle linee di Kikuchi sono pesate in base
+all'intensità relativa cinematica di ciascuna riflessione.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Seleziona le riflessioni per le linee di Kikuchi
+in base a una soglia di 1/d (distanza interplanare).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Imposta il numero delle riflessioni più intense (per
+fattore di struttura) usate per tracciare le linee di Kikuchi.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Traccia le linee di Kikuchi solo per le riflessioni il cui
+1/d (lunghezza reciproca) è inferiore a questo valore
+(nm⁻¹); cioè solo le distanze più grandi di 1/valore.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>Traccia le linee di Kikuchi solo per le riflessioni il cui
+1/d (lunghezza reciproca) è inferiore a questo valore
+(nm⁻¹); cioè solo le distanze più grandi di 1/valore.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Imposta il colore delle linee di Kikuchi.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee di Kikuchi</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee di Kikuchi</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>Linee di Kikuchi</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli anelli di Debye</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore degli anelli di Debye</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzate le etichette degli indici per gli anelli di Debye.</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>Se selezionato, tutti gli anelli di Debye vengono
+visualizzati con la stessa intensità.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee degli anelli di Debye</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee degli anelli di Debye</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>Se selezionato, vengono visualizzate le etichette di scala</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Imposta la densità delle divisioni di scala (fine / media / grossolana).</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee di scala</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore delle linee di scala</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>Imposta la divisione delle linee di scala</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>Imposta la divisione delle linee di scala</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>Imposta la divisione delle linee di scala</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>Imposta il colore delle linee di scala azimutali</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore delle linee di scala azimutali</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>Imposta il colore delle linee di scala 2θ</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore delle linee di scala 2θ</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Trascinamento sinistro (vicino al centro dello schermo): ruota attorno all'asse parallelo al monitor
+Trascinamento sinistro (sul bordo dello schermo): ruota attorno all'asse normale al monitor
+Clic destro: rimpicciolisci
+Trascinamento destro: ingrandisci l'area selezionata
+Trascinamento centrale: trascina l'immagine simulata
+Doppio clic sinistro: visualizza le informazioni del vettore g</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli spot del reticolo
+reciproco vicini alla sfera di Ewald.</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore degli spot del reticolo reciproco vicini alla sfera di Ewald.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
+    <value>Imposta il raggio di rendering delle sfere degli spot di
+diffrazione nella vista 3D dello spazio reciproco (nm⁻¹);
+gli spot entro questa distanza dalla sfera di Ewald
+sono colorati come vicini e possono essere etichettati.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>Imposta il raggio di rendering delle sfere degli spot di
+diffrazione nella vista 3D dello spazio reciproco (nm⁻¹);
+gli spot entro questa distanza dalla sfera di Ewald
+sono colorati come vicini e possono essere etichettati.</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>Imposta la trasparenza degli spot 3D.</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
+    <value>Se selezionato, etichetta gli spot del reticolo reciproco
+vicini alla sfera di Ewald con i loro indici hkl.</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli spot del reticolo
+reciproco lontani dalla sfera di Ewald.</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
+    <value>Se selezionato, rende più trasparenti gli spot del reticolo
+reciproco più lontani dalla sfera di Ewald.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>Imposta la soglia di intensità relativa (%) al di sotto
+della quale gli spot del reticolo reciproco vengono nascosti.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Imposta la soglia di intensità relativa (%) al di sotto
+della quale gli spot del reticolo reciproco vengono nascosti.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>Imposta la soglia di intensità relativa (%) al di sotto
+della quale gli spot del reticolo reciproco vengono nascosti.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.
+(Ctrl+Shift+Sinistra)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.
+(Ctrl+Shift+Giù)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.
+(Ctrl+Shift+Su)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo nella direzione della freccia.
+(Ctrl+Shift+Destra)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Imposta il passo angolare per i pulsanti
+sovrastanti, oppure la velocità di rotazione.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Imposta il passo angolare per i pulsanti
+sovrastanti, oppure la velocità di rotazione.</value>
+  </data>
+  <data name="buttonResetAngle.ToolTip" xml:space="preserve">
+    <value>Ripristina l'orientazione della vista 3D alla direzione predefinita.</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Imposta il colore della superficie della sfera di Ewald.</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>Imposta il colore dello spot dell'origine (riflessione 000).</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>Imposta il colore della freccia guida della direzione destra.</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>Imposta il colore della freccia guida della direzione superiore.</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>Imposta il colore della freccia guida della direzione del fascio.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>Imposta il colore del testo degli indici/etichette nella vista 3D.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore del testo delle etichette degli indici nella vista 3D.</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
+    <value>Se selezionato, mostra le frecce guida delle direzioni Beam/Top/Right
+nella vista 3D del reticolo reciproco.</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Se selezionato, traccia la sfera di Ewald
+nella vista 3D del reticolo reciproco.</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
+    <value>Se selezionato, viene mostrata la vista 3D dello spazio reciproco
+(reticolo reciproco e sfera di Ewald).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Coordinate nello spazio reale del puntatore del
+mouse in mm (origine: cristallo).</value>
+  </data>
+  <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
+    <value>Coordinate nello spazio reale del puntatore del
+mouse in mm (origine: cristallo).</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Coordinate nello spazio reale del puntatore del
+mouse in mm (origine: cristallo).</value>
+  </data>
+  <data name="labelD.ToolTip" xml:space="preserve">
+    <value>Distanza interplanare d (nm) corrispondente alla posizione del puntatore del mouse.</value>
+  </data>
+  <data name="labelDinv.ToolTip" xml:space="preserve">
+    <value>Spaziatura reciproca d⁻¹ (nm⁻¹) corrispondente
+alla posizione del puntatore del mouse.</value>
+  </data>
+  <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
+    <value>Angolo di diffusione 2θ in gradi
+corrispondente alla posizione del puntatore del mouse.</value>
+  </data>
+  <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
+    <value>Angolo di diffusione 2θ in radianti (mrad sotto 0,1
+rad) corrispondente alla posizione del puntatore del mouse.</value>
+  </data>
+  <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
+    <value>Coordinate sul piano del rivelatore del puntatore del
+mouse in mm (origine: piede del pattern).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Coordinate sul piano del rivelatore del puntatore del
+mouse in mm (origine: piede del pattern).</value>
+  </data>
+  <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
+    <value>Coordinate nello spazio reciproco del puntatore del mouse in nm⁻¹.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Coordinate nello spazio reciproco del puntatore del mouse in nm⁻¹.</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>Se selezionato, si apre il pannello delle informazioni
+dettagliate alla posizione del cursore.</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
+    <value>Se selezionato, l'immagine della simulazione
+viene ribaltata orizzontalmente (sinistra-destra).</value>
+  </data>
+  <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
+    <value>Se selezionato, l'immagine della simulazione
+viene ribaltata verticalmente (alto-basso).</value>
+  </data>
+  <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
+    <value>Se selezionato, l'immagine viene mostrata
+con luminosità invertita (negativo).</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>Imposta il centro del monitor sul punto seguente</value>
+  </data>
+  <data name="comboBoxCenter.ToolTip" xml:space="preserve">
+    <value>Seleziona il punto di riferimento usato come centro del monitor
+(spot diretto, piede della perpendicolare o centro del rivelatore).</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>Fissa il centro del monitor sul punto seguente</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Imposta le dimensioni in pixel del pattern simulato</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Imposta la risoluzione del pattern simulato</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Imposta la risoluzione del pattern simulato</value>
+  </data>
+  <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
+    <value>Esprime la risoluzione come una lunghezza
+sul piano del rivelatore per pixel (mm/px).</value>
+  </data>
+  <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
+    <value>Esprime la risoluzione come una lunghezza
+nello spazio reciproco per pixel (nm⁻¹/px).</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>Imposta la velocità di rotazione mediante l'operazione del mouse</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Imposta la velocità di rotazione mediante l'operazione del mouse</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>Apre la finestra di simulazione del portacampioni TEM.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Imposta la lunghezza di camera 2, ossia la distanza
+dal campione al rivelatore (monitor).</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>Imposta la lunghezza di camera 2, ossia la distanza
+dal campione al rivelatore (monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>Apre la finestra delle impostazioni dettagliate del sistema ottico.</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salva l'immagine corrente in un file</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Copia l'immagine corrente negli appunti</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Imposta la sorgente d'onda e la
+tensione di accelerazione (lunghezza d'onda).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Imposta la sorgente d'onda e la
+tensione di accelerazione (lunghezza d'onda).</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>In questa modalità, l'intensità è calcolata con il metodo delle onde di Bloch.
+Valido solo per una sorgente di elettroni.</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>Se selezionato, gli spot di diffrazione vengono tracciati
+usando il colore assegnato a ciascun cristallo.</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Aggiunge al fattore di struttura i termini di dispersione anomala dei raggi X dipendenti dall'energia (f', f''). In prossimità di una soglia di assorbimento la legge di Friedel viene violata, dando differenze di intensità di Bijvoet (hkl rispetto a -h-k-l). Deseleziona per il risultato classico senza dispersione.</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>Se selezionato, tutte le riflessioni proibite
+dal gruppo spaziale vengono nascoste.</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>Se selezionato, le riflessioni proibite
+dalla centratura del reticolo vengono nascoste.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Impostazioni per la simulazione della diffrazione
+elettronica a precessione (PED)</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>Semiangolo di precessione (mrad) per la simulazione PED (Precession
+Electron Diffraction); il semiangolo del cono
+usato per inclinare e integrare il fascio incidente.</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>Semiangolo di precessione (mrad) per la simulazione PED (Precession
+Electron Diffraction); il semiangolo del cono
+usato per inclinare e integrare il fascio incidente.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>Numero di divisioni azimutali del cono di precessione
+per la simulazione PED (Precession Electron
+Diffraction). Un numero maggiore di divisioni campiona
+il cono in modo più uniforme ma richiede più tempo.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>Numero di divisioni azimutali del cono di precessione
+per la simulazione PED (Precession Electron
+Diffraction). Un numero maggiore di divisioni campiona
+il cono in modo più uniforme ma richiede più tempo.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Impostazioni per il calcolo della diffrazione
+con onde di Bloch (dinamica)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Numero di fasci diffratti (onde di Bloch) inclusi nel
+calcolo dinamico di scattering multiplo. Un numero maggiore
+di onde migliora la precisione ma rallenta il calcolo.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Numero di fasci diffratti (onde di Bloch) inclusi nel
+calcolo dinamico di scattering multiplo. Un numero maggiore
+di onde migliora la precisione ma rallenta il calcolo.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Imposta lo spessore del campione</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Imposta lo spessore del campione</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Impostazioni per l'aspetto degli spot di diffrazione</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>Gli spot sono visualizzati come cerchi.</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>Gli spot sono visualizzati come gaussiane bidimensionali.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Imposta l'opacità degli spot di diffrazione</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Imposta l'opacità degli spot di diffrazione</value>
+  </data>
+  <data name="flowLayoutPanelSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Imposta un'opacità degli spot di diffrazione</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>Imposta il raggio dello spot di diffrazione o il sigma
+gaussiano in unità dello spazio reciproco (nm⁻¹ dove
+indicato); valori maggiori tracciano spot più larghi e
+includono una tolleranza più ampia dell'errore di eccitazione.</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>Imposta il raggio dello spot di diffrazione o il sigma
+gaussiano in unità dello spazio reciproco (nm⁻¹ dove
+indicato); valori maggiori tracciano spot più larghi e
+includono una tolleranza più ampia dell'errore di eccitazione.</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>Se selezionato, tutti gli spot di
+diffrazione vengono tracciati con la stessa dimensione.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Imposta la luminosità degli spot di diffrazione</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>Imposta la luminosità degli spot di diffrazione</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Imposta la scala dei colori</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Scegli la scala dei colori usata per mappare l'intensità degli
+spot di diffrazione sul colore. Una scala non predefinita colora gli spot
+in base all'intensità anziché al colore assegnato al cristallo.</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>Se selezionato, le intensità degli spot di diffrazione
+vengono visualizzate su scala logaritmica.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Imposta i colori di disegno degli spot di diffrazione
+per le riflessioni generali e sistematicamente estinte
+(centratura / vite / slittamento).</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli spot generali</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore degli spot generali</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli spot estinti (vite o slittamento)</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore degli spot estinti (vite o slittamento)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>Imposta il colore degli spot estinti (centratura del reticolo)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore degli spot estinti (centratura del reticolo)</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Seleziona come vengono calcolate le intensità
+degli spot di diffrazione (onde di Bloch dinamiche,
+cinematica o solo errore di eccitazione).</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>In questa modalità, per il calcolo dell'intensità viene considerato solo l'errore di eccitazione.
+(L'effetto del fattore di struttura viene ignorato) </value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>In questa modalità, l'intensità è calcolata a partire
+dal fattore di struttura e dall'errore di eccitazione.</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Apre la finestra dei dettagli dello spot.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Seleziona il sistema ottico di illuminazione (parallelo/SAED,
+convergente/CBED, precessione/PED, back-Laue).</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>Modalità a fascio parallelo (cioè modalità SAED)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>Modalità a fascio in precessione (cioè modalità PED)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>Modalità a fascio convergente (cioè modalità CBED)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>Modalità Laue in retroriflessione (raggi X policromatici).</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>Modalità precessione raggi X (ZOLZ, zona di Laue di ordine zero):
+mostra il piano del reticolo reciproco dello strato zero come
+proiezione polare, distinta dalla modalità PED elettronica.</value>
+  </data>
 </root>

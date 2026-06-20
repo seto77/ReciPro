@@ -160,4 +160,389 @@
   <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>位置对称性</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>标识该原子位置的名称（如 O1、Fe2），
+显示在原子列表和三维标签中。</value>
+  </data>
+  <data name="textBoxLabel.ToolTip" xml:space="preserve">
+    <value>标识该原子位置的名称（如 O1、Fe2），
+显示在原子列表和三维标签中。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>该原子位置的化学元素。</value>
+  </data>
+  <data name="comboBoxAtom.ToolTip" xml:space="preserve">
+    <value>选择一个元素</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
+    <value>位置占有率：该位置被原子占据的
+比例（0 = 空，1 = 完全占据）。</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
+    <value>位置占有率：该位置被原子占据的
+比例（0 = 空，1 = 完全占据）。</value>
+  </data>
+  <data name="numericBoxZ.ToolTip" xml:space="preserve">
+    <value>c 轴的分数坐标。
+可接受分数形式（如 3/4）。</value>
+  </data>
+  <data name="numericBoxY.ToolTip" xml:space="preserve">
+    <value>b 轴的分数坐标。
+可接受分数形式（如 3/4）。</value>
+  </data>
+  <data name="numericBoxX.ToolTip" xml:space="preserve">
+    <value>a 轴的分数坐标。
+可接受分数形式（如 3/4）。</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
+    <value>对原子位移（温度）参数采用 U 表示法——
+即热振动引起的均方原子位移
+（Å²）；B = 8π²·U。</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
+    <value>对原子位移（温度）参数采用 B 表示法；
+B = 8π²·U，其中数值
+越大表示热振动越强。</value>
+  </data>
+  <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
+    <value>德拜-沃勒因子的设置选项卡</value>
+  </data>
+  <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
+    <value>选择用于该原子电子衍射/像
+模拟的电子散射因子条目
+（离子荷电状态及参数化，
+如“Fe2+: HF”）。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>选择用于该原子电子衍射/像
+模拟的电子散射因子条目
+（离子荷电状态及参数化，
+如“Fe2+: HF”）。</value>
+  </data>
+  <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
+    <value>选择用于该原子 X 射线衍射计算的 X 射线散射
+因子条目（离子荷电状态及参数化，如“Fe2+”）。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>选择用于该原子 X 射线衍射计算的 X 射线散射
+因子条目（离子荷电状态及参数化，如“Fe2+”）。</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>要绘制的球的半径</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip1" xml:space="preserve">
+    <value>要绘制的球的半径</value>
+  </data>
+  <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
+    <value>将当前设置（Appearance 选项卡上的
+外观，或 Debye–Waller 选项卡上的
+德拜-沃勒/位移参数）
+复制到同一元素的所有原子。</value>
+  </data>
+  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
+    <value>将下方的原子添加到上方的列表中。</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>用下方的原子替换所选原子</value>
+  </data>
+  <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
+    <value>将当前的德拜-沃勒（原子
+位移）参数应用于列表中的每个原子
+（在 Debye–Waller 选项卡中可用）。</value>
+  </data>
+  <data name="buttonAtomUp.ToolTip" xml:space="preserve">
+    <value>将所选原子上移</value>
+  </data>
+  <data name="buttonAtomDown.ToolTip" xml:space="preserve">
+    <value>将所选原子下移</value>
+  </data>
+  <data name="buttonDeleteAtom.ToolTip" xml:space="preserve">
+    <value>删除所选原子</value>
+  </data>
+  <data name="buttonOriginShift1.ToolTip" xml:space="preserve">
+    <value>通过将 (1/8, 1/8, 1/8) 加到每个原子的
+分数坐标上来平移原点（符号
+由 +/- 按钮设置）。可用于
+在不同的原点取法之间切换。</value>
+  </data>
+  <data name="buttonOriginShift2.ToolTip" xml:space="preserve">
+    <value>通过将 (1/4, 1/4, 1/4) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift3.ToolTip" xml:space="preserve">
+    <value>通过将 (0, 1/4, 1/8) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift4.ToolTip" xml:space="preserve">
+    <value>通过将 (1/4, 0, 1/4) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value>通过将 (0, 1/4, 1/4) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift6.ToolTip" xml:space="preserve">
+    <value>通过将 (1/4, 1/4, 0) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
+    <value>通过将 (1/4, -1/4, 0) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift8.ToolTip" xml:space="preserve">
+    <value>通过将 (1/4, -1/4, 1/4) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
+    <value>通过将 (0, 1/4, -1/8) 加到每个原子的
+分数坐标上来平移原点
+（符号由 +/- 按钮设置）。</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>切换在三维结构视图中是否
+在该原子的球旁绘制其标签文字。</value>
+  </data>
+  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
+    <value>点击以选择该原子球在三维
+结构视图中的显示颜色。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>晶体中所有原子位置的列表。选择某一
+行可将其载入下方的编辑栏；复选框
+用于切换该原子在3D视图中的显示/隐藏。</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>原子球的不透明度（alpha值），
+0（完全透明）至1（不透明）。</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>原子球的不透明度（alpha值），
+0（完全透明）至1（不透明）。</value>
+  </data>
+  <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
+    <value>环境光反射系数（0–1）：与光源方向
+无关、均匀照射在原子球上的
+背景光照的强度。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>环境光反射系数（0–1）：与光源方向
+无关、均匀照射在原子球上的
+背景光照的强度。</value>
+  </data>
+  <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
+    <value>漫反射系数（0–1）：随光源方向变化的
+哑光反射（即球体受光面的
+亮度）。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>漫反射系数（0–1）：随光源方向变化的
+哑光反射（即球体受光面的
+亮度）。</value>
+  </data>
+  <data name="numericBoxEmission.ToolTip" xml:space="preserve">
+    <value>自发光系数（0–1）：使原子球
+看起来独立于任何光源而自身
+发光的强度。</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>自发光系数（0–1）：使原子球
+看起来独立于任何光源而自身
+发光的强度。</value>
+  </data>
+  <data name="numericBoxOccerr.ToolTip" xml:space="preserve">
+    <value>位置占有率的标准不确定度（±误差）。</value>
+  </data>
+  <data name="numericBoxShininess.ToolTip" xml:space="preserve">
+    <value>高光指数（0–20）：镜面高光的
+锐利程度；数值越大，高光越
+小、越集中。</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>高光指数（0–20）：镜面高光的
+锐利程度；数值越大，高光越
+小、越集中。</value>
+  </data>
+  <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
+    <value>镜面反射系数（0–1）：原子球
+表面光泽高光的强度（与高光
+指数Shininess配合使用）。</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>镜面反射系数（0–1）：原子球
+表面光泽高光的强度（与高光
+指数Shininess配合使用）。</value>
+  </data>
+  <data name="numericBoxXerr.ToolTip" xml:space="preserve">
+    <value>a轴分数坐标的标准
+不确定度（±误差）。</value>
+  </data>
+  <data name="numericBoxYerr.ToolTip" xml:space="preserve">
+    <value>b轴分数坐标的标准
+不确定度（±误差）。</value>
+  </data>
+  <data name="numericBoxZerr.ToolTip" xml:space="preserve">
+    <value>c轴分数坐标的标准
+不确定度（±误差）。</value>
+  </data>
+  <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
+    <value>按下原点平移按钮时，减去所选的平移
+矢量（负方向的原点平移）。</value>
+  </data>
+  <data name="radioButtonOriginShiftPlus.ToolTip" xml:space="preserve">
+    <value>按下原点平移按钮时，加上所选的平移
+矢量（正方向的原点平移）。</value>
+  </data>
+  <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
+    <value>使用各向异性位移模型（用6分量
+张量B11…B23描述的、依赖方向的
+热振动）。</value>
+  </data>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value>使用各向同性位移模型（用单个数值
+描述各方向相等的热振动）。</value>
+  </data>
+  <data name="labelDimension.ToolTip" xml:space="preserve">
+    <value>位移参数的当前单位：U（及各向同性B）
+为Å²；各向异性B为
+"None"（无量纲）。</value>
+  </data>
+  <data name="numericBoxB11.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，11分量
+（Å²）——描述该原子依赖方向的
+热振动；按所选记法显示为
+B11或U11。</value>
+  </data>
+  <data name="numericBoxB11err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数11分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxB12.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，12分量
+（Å²）——依赖方向的热振动；
+按所选记法显示为B12或U12。</value>
+  </data>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数12分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxB13.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，13分量
+（Å²）——依赖方向的热振动；
+按所选记法显示为B13或U13。</value>
+  </data>
+  <data name="numericBoxB13err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数13分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxB22.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，22分量
+（Å²）——依赖方向的热振动；
+按所选记法显示为B22或U22。</value>
+  </data>
+  <data name="numericBoxB22err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数22分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxB23.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，23分量
+（Å²）——依赖方向的热振动；
+按所选记法显示为B23或U23。</value>
+  </data>
+  <data name="numericBoxB23err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数23分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxB33.ToolTip" xml:space="preserve">
+    <value>各向异性原子位移参数，33分量
+（Å²）——依赖方向的热振动；
+按所选记法显示为B33或U33。</value>
+  </data>
+  <data name="numericBoxB33err.ToolTip" xml:space="preserve">
+    <value>各向异性位移参数33分量的
+标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="numericBoxBiso.ToolTip" xml:space="preserve">
+    <value>各向同性原子位移参数
+Biso/Uiso（Å²）——各方向相等的
+热振动幅度；按所选记法
+显示为Biso或Uiso。</value>
+  </data>
+  <data name="numericBoxBisoerr.ToolTip" xml:space="preserve">
+    <value>各向同性位移参数
+Biso/Uiso的标准偏差（误差，Å²）。</value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
+    <value>显示或隐藏原子坐标和占有率的
+误差（标准偏差）字段。</value>
+  </data>
+  <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
+    <value>将所有原子的分数坐标按下方输入的
+自定义(x, y, z)数值平移，
+然后重新生成对称等价位置。</value>
+  </data>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value>沿a轴(x)的原点平移，以分数
+坐标表示（范围-1至1）；通过
+"Apply custom shift"应用于所有原子。</value>
+  </data>
+  <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
+    <value>沿b轴(y)的原点平移，以分数
+坐标表示（范围-1至1）；通过
+"Apply custom shift"应用于所有原子。</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
+    <value>沿c轴(z)的原点平移，以分数
+坐标表示（范围-1至1）；通过
+"Apply custom shift"应用于所有原子。</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.ToolTip" xml:space="preserve">
+    <value>打开对话框以编辑用于中子散射长度的
+同位素丰度（仅在选择自定义同位素
+组成时可用）。</value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.ToolTip" xml:space="preserve">
+    <value>显示德拜–沃勒温度因子（即衰减由
+热振动引起的衍射强度的位移参数
+Biso/Uiso及各向异性Bij/Uij）的
+不确定度（标准偏差）输入字段，
+该因子用于衰减由热振动引起的衍射强度。</value>
+  </data>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value>选择中子相干散射长度采用天然同位素
+丰度还是自定义同位素组成；选择
+'Custom isotope abundance'会启用
+编辑按钮，使您可以输入用于中子
+结构因子计算的各同位素
+比例。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>选择原子位移模型：各向同性
+（单个数值）或各向异性（描述
+依赖方向热振动的6分量张量）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>选择原子位移（温度）参数的
+记法：B或U，二者满足关系B = 8π²·U。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>当前记法下位移参数的物理
+量纲（单位）：U（及各向同性B）为Å²，
+各向异性B为无量纲。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>输入应用于所有原子的
+分数坐标平移量(x, y, z)。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>选择中子散射长度采用天然（标准）
+同位素丰度还是自定义同位素
+组成。</value>
+  </data>
 </root>

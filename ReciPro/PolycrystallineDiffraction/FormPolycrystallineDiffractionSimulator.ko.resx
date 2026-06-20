@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Rz(θ) 축을 활성화합니다. 시료를 좌우로 '스윙'
+진동시키며, 아래의 모터 속도(°/s)와
+진동 범위(±°)로 설정합니다.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 축을 활성화합니다. 시료를 '끄덕임' 진동
+시키며, 아래의 모터 속도(°/s), 진동
+범위(±°), 스텝(°)으로 설정합니다.</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>어닐링된 'Num per Step'이 오른쪽에서 설정한
+임계값(%) 아래로 떨어지면 피팅을
+자동으로 정지합니다.</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>어닐링된 'Directional density'가 오른쪽에서 설정한
+임계값(°) 아래로 떨어지면 피팅을
+자동으로 정지합니다.</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>'Inheritability'가 오른쪽에서 설정한 임계값(%)
+위로 올라가면 피팅을 자동으로 정지합니다.</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>빔 중심 오프셋을 피팅의 자유 파라미터로 포함하여,
+패턴의 중심 위치를 참조 이미지에 가장 잘
+맞도록 정밀화합니다.</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>빔 수렴 각도를 피팅의 자유 파라미터로
+포함합니다(입사 빔이 얼마나 수렴하는지를
+정밀화합니다).</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>필름/검출기 흐림(각 스폿의 점상
+확산 넓힘)을 피팅의 자유 파라미터로
+포함합니다.</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>선호 방위(집합 조직/LPO) 밀도 분포를 정밀화합니다.
+이것은 피팅의 핵심이며 항상 활성화되어 있습니다
+(끌 수 없음).</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>잔류 응력(링을 이동/확장시키는 격자
+변형)을 피팅의 자유 파라미터로
+포함합니다.</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>진동('Yusa형') 고니오미터를 시뮬레이션합니다.
+아래에서 설정하는 Rx(Φ 회전), Rz(θ 스윙),
+Ry(ω 끄덕임) 동작에 걸쳐 패턴을 적분하여,
+실제 분말/집합 조직 측정을 모사합니다.</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Rx(Φ) 축을 활성화합니다. 시료를 표면 법선
+주위로 오른쪽에서 설정한 모터 속도(°/s)로
+연속 회전시킵니다.</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>강도 표시의 농담 방향입니다.
+Positive는 고강도를 밝게 표시하고,
+Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>표시되는 패턴의 강도 매핑입니다. 대수
+스케일(약한 반사를 강조) 또는
+선형 스케일을 선택합니다.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>표시되는 패턴의 강도 매핑입니다. 대수
+스케일(약한 반사를 강조) 또는
+선형 스케일을 선택합니다.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>표시되는 패턴의 컬러 맵입니다.
+회색조 또는 한색-난색 컬러 스케일을 선택합니다.</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>표시되는 패턴의 컬러 맵입니다.
+회색조 또는 한색-난색 컬러 스케일을 선택합니다.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>선호 방위(LPO, Lattice Preferred Orientation)
+피팅의 각 정밀화 스텝에서 방위가 교란되는 결정립의
+비율(%)입니다. 클수록 스텝이 더 크며, 값은
+피팅이 수렴함에 따라 자동으로 축소(×0.8)
+됩니다.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>'Num per Step'의 임계값(%)입니다. 파라미터가
+이 수준 아래로 어닐링되면 피팅이 정지합니다.</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>각 정밀화 스텝에서 적용되는 방위 편향의 각도 폭(°)
+입니다. 선택한 방위의 밀도가 강화되는 반치폭으로,
+피팅이 날카로워짐에 따라 자동으로 축소(×0.8)
+됩니다.</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>'Directional density'의 임계값(°)입니다. 파라미터가
+이 수준 아래로 어닐링되면 피팅이 정지합니다.</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>정밀화 스텝이 무작위로 선택하는 대신 이미 밀도가
+높은 방위를 재사용('상속')할 확률(%)입니다.
+값이 높을수록 피팅이 더 날카로운 집합 조직으로
+수렴합니다.</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>'Inheritability'의 임계값(%)입니다. 파라미터가
+이 수준 위로 올라가면 피팅이 정지합니다.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rx(Φ) 회전축의 모터 속도(°/s)입니다.
+회전이 빠를수록 더 많은 면내 방위에
+걸쳐 평균화됩니다.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 축의 진동(끄덕임) 범위로,
+중심에 대해 ± 도 단위로 지정합니다.</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 축의 진동(끄덕임) 범위로,
+중심에 대해 ± 도 단위로 지정합니다.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 축의 진동(끄덕임) 범위로,
+중심에 대해 ± 도 단위로 지정합니다.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 축의 진동(끄덕임) 범위로,
+중심에 대해 ± 도 단위로 지정합니다.</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 끄덕임 축의
+모터 속도(°/s)입니다.</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 끄덕임 축의
+모터 속도(°/s)입니다.</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 끄덕임 축의
+모터 속도(°/s)입니다.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Ry(ω) 진동의 각도 스텝(°)입니다. 스캔 중 ω가 한 번
+진행될 때의 증분으로, 작을수록 방위 샘플링이
+세밀해지지만 시뮬레이션은 느려집니다.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 축의 진동(흔들림) 범위입니다. 중심을
+기준으로 ±° 로 지정하며, 시료는 −값과 +값
+사이를 왕복합니다.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 흔들림 축의 모터
+속도입니다 (°/s).</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 흔들림 축의 모터
+속도입니다 (°/s).</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 흔들림 축의 모터
+속도입니다 (°/s).</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>지그재그 스캔 순서입니다. θ (Rz)를 정방향과 역방향으로
+왕복시키면서 ω (Ry)를 1회마다 진행시켜, 고니오미터가
+방위 공간을 지그재그로 주사합니다.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>디버그용 테스트: 선택한 결정에 대해 단일
+무작위 방위의 회절 패턴을 생성합니다.</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>선택한 결정에 대해 다결정 디바이 링
+(분말) 회절 패턴을 시뮬레이션하여
+현재 탭에 표시합니다.</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>이전에 저장한 방위 피팅
+설정(.setting 파일)을 불러옵니다.</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>현재 방위 피팅 설정(결정, 각 매개변수,
+잔차 이력)을 .setting 파일에
+저장합니다.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴이 참조 패턴에 가장 잘 일치하도록
+결정 방위 분포(LPO, Lattice-Preferred Orientation)의
+피팅을 시작 또는 중지합니다. 다시 누르면
+중지됩니다.</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>측정한 참조 회절 패턴(.ipa 이미지)을 피팅 대상으로
+추가합니다. 새 탭에서 열립니다.</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>목록에서 선택한 참조 회절 패턴
+(과 해당 탭)을 삭제합니다.</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>불러온 참조 회절 패턴의 목록입니다.
+하나를 선택하면 해당 탭으로 전환됩니다.</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>피팅 중에 설정을 주기적으로 자동
+저장합니다. (현재 비활성화됨)</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>잔차의 개선 속도가 충분히 빠르지 않게 되면
+피팅 매개변수를 자동으로 축소합니다.
+(현재 항상 켜짐으로 고정)</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>피팅 매개변수 자동 축소의 임계값(0–1)입니다.
+최근 잔차(Rwp) 기울기 대 이전 기울기의
+비율이 이 값보다 낮아지면 각 매개변수를
+0.8배로 축소합니다.</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>읽기 전용 피팅 로그: 경과 시간, 속도
+(ms/step), 단계 수, 성공한 갱신 횟수,
+잔차(%) 및 S 값을 표시합니다.</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>회절 패턴에 기여하지 않는 결정자 방위를
+반복적으로 찾아 제거하고, 기여하는
+방위만 남깁니다.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>강도 표시의 농담 방향입니다. Positive는 높은 강도를
+밝게, Negative는 반전하여 표시합니다.</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+중심을 기준으로 ±° 로 지정합니다.</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+중심을 기준으로 ±° 로 지정합니다.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+중심을 기준으로 ±° 로 지정합니다.</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 진동의 각도 스텝(°)입니다. 작을수록
+방위 샘플링이 세밀해지지만 시뮬레이션은 느려집니다.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 회전 축의 모터
+속도입니다 (°/s).</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 회전 축의 모터
+속도입니다 (°/s).</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 진동의 각도 스텝(°)입니다.</value>
+  </data>
+</root>

@@ -138,4 +138,132 @@ Atual</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulação de Suporte TEM</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Cor de fundo da área de desenho do estereograma.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Cor do contorno do porta-amostra desenhado no estereograma.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Cor das linhas da grade principal de 90°
+e do círculo externo do estereograma.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Cor das linhas intermediárias da grade
+de 10° desenhadas no estereograma.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Cor das linhas de 1 grau
+Ativa quando "Show 1° Lines" está marcado</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Cor dos rótulos dos eixos [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Cor dos pontos e rótulos de eixos de zona gerais
+(eixos diferentes de [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Cor da seta de direção Tilt-X (eixo primário)
+(exibida quando "Show tilt directions" está marcado)</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Cor da seta de direção Tilt-Y (eixo secundário)
+(exibida quando "Show tilt directions" está marcado)</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Quando marcado, as teclas de seta inclinam o
+porta-amostra: Esquerda/Direita alteram Tilt X e
+Cima/Baixo alteram Tilt Y pelo passo da seta.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Incremento do ângulo de inclinação (em graus)
+aplicado a cada pressionamento de tecla de seta.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Ângulo de inclinação do porta-amostra em torno do
+eixo primário (Tilt X), em graus.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Ângulo de inclinação do porta-amostra em torno do
+eixo primário (Tilt X), em graus.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Ângulo de inclinação do porta-amostra em torno do
+eixo secundário (Tilt Y), em graus.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Ângulo de inclinação do porta-amostra em torno do
+eixo secundário (Tilt Y), em graus.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Direção azimutal (em graus) do
+eixo Tilt X (primário) no estereograma.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Direção azimutal (em graus) do
+eixo Tilt X (primário) no estereograma.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Usa polaridade negativa para o eixo Tilt Y (secundário).</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Usa polaridade positiva para o eixo Tilt Y (secundário).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Polaridade (sinal) do eixo Tilt Y (secundário);
+ajuste-a à convenção do goniômetro do seu TEM.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Raio dos pontos de eixo de zona desenhados no estereograma.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Raio dos pontos de eixo de zona desenhados no estereograma.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Tamanho da fonte dos rótulos de índice dos eixos de zona.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Tamanho da fonte dos rótulos de índice dos eixos de zona.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Aplica os valores de Link Tilt X/Y à inclinação atual do
+porta-amostra e usa a orientação resultante
+como a direção neutra.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Gira o cristal 180° em torno do eixo do feixe ([001]).</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Ângulo Tilt X alvo (em graus)
+aplicado quando o botão Link é pressionado.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Ângulo Tilt Y alvo (em graus)
+aplicado quando o botão Link é pressionado.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Quando marcado, desenha as linhas de intervalo de 1° no
+estereograma (cor definida pelo controle de cor de 1°).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Quando marcado, mostra o rótulo de índice [u v w]
+ao lado de cada ponto de eixo de zona.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Quando marcado, desenha setas no estereograma
+mostrando as direções Tilt-X e Tilt-Y.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Semiângulo (em graus) da área do estereograma
+a exibir; valores menores ampliam a visualização.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Estereograma de direção de inclinação. Clique duas vezes em um ponto
+para inclinar o porta-amostra naquela direção.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Quando marcado, também gera os
+eixos de zona equivalentes por simetria para cada índice.</value>
+  </data>
 </root>

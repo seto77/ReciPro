@@ -62,4 +62,37 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>이 데이터베이스의 데이터를 사용하여 논문을 발표하는 경우, 다음 참고문헌 또는 해당 웹 페이지에 나열된 참고문헌을 인용해 주십시오. AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>목록의 첫 번째 결정 레코드로 이동합니다.</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>목록의 마지막 결정 레코드로 이동합니다.</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>다음 결정 레코드로 이동합니다.</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>이전 결정 레코드로 이동합니다.</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>AMCSD (American Mineralogist Crystal Structure
+Database)의 항목을 읽어들여 표시합니다.</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>COD (Crystallography Open Database)의 항목을
+읽어들여 표시합니다. 로컬에 없는 경우
+Web에서 다운로드합니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>데이터베이스 내 결정 목록입니다. 행을 선택하면
+해당 결정 (격자 상수, 공간군, 참고문헌
+등)이 읽어들여집니다.</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>데이터베이스 내 결정 레코드의 총 개수입니다.</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>현재 레코드 번호입니다. 번호를
+입력하면 해당 결정으로 이동합니다.</value>
+  </data>
 </root>

@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>Masquer la région actuellement prévisualisée : exclure
+ces pixels de l'ajustement (résidu) afin qu'ils
+soient ignorés lors de la comparaison avec la simulation.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>Masquer chaque pixel de l'image (exclure
+l'image entière de l'ajustement).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>Enregistrer le masque actuel dans un fichier .mas
+afin de pouvoir le recharger ultérieurement.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>Démasquer la région actuellement prévisualisée :
+réintégrer ces pixels dans l'ajustement.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>Effacer tous les masques : réintégrer chaque pixel dans l'ajustement.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Appliquer un flou de film : convoluer les anneaux simulés avec
+une fonction d'étalement instrumentale (gaussienne) de la largeur
+définie à droite (µm) pour imiter le flou détecteur/film.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Mode masque : sélectionner les pixels autour des pics
+de diffraction choisis (réflexions hkl) à masquer ;
+mutuellement exclusif avec les autres modes de masque.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>Mode masque : masquer un anneau annulaire (couronne) entre
+les rayons Start et End depuis le centre du diagramme ;
+mutuellement exclusif avec les autres modes de masque.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>Mode masque : peindre les masques directement sur
+l'image à la souris en utilisant la forme choisie
+ci-dessous (tache/cercle/rectangle/couronne) ;
+mutuellement exclusif avec les autres modes de masque.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>Mode masque : masquer une bande droite (rectangle)
+définie par la direction, la largeur de bande et l'angle ;
+mutuellement exclusif avec les autres modes de masque.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>Appliquer le masque en bande symétriquement des deux côtés
+de la ligne centrale (au lieu d'un seul côté).</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>Préréglage de direction pour le masque en bande
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free) ;
+les préréglages fixent l'angle, Free permet de le saisir manuellement.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>Rayon (en pixels) du masque en tache manuel
+peint à chaque clic de souris (1–128).</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra (distance échantillon-détecteur)
+en mm ; met à l'échelle le rayon des anneaux
+de diffraction simulés sur le détecteur.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>Coordonnée X en pixels du centre du faisceau
+direct (diagramme) ; définit où les
+anneaux de diffraction sont centrés sur l'image.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>Coordonnée Y en pixels du centre du faisceau
+direct (diagramme) ; définit où les
+anneaux de diffraction sont centrés sur l'image.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Largeur du flou de film en µm : la fonction d'étalement
+instrumentale gaussienne convoluée avec les anneaux pour élargir
+les pics (résolution détecteur/film).</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>Taille de pixel du détecteur de l'image source en
+mm/pixel ; avec la longueur de caméra, elle convertit
+l'angle de diffusion en rayon d'anneau en pixels.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>Résolution d'affichage à l'écran en mm/pixel ;
+définit le facteur de zoom (mm/pixel moniteur ÷
+mm/pixel image) du diagramme affiché.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>Angle du masque en bande en degrés (0–360°) ; définit
+l'orientation de la bande. Modifiable uniquement quand Direction est Free.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>Largeur du masque en bande en pixels (0–10000) ;
+définit la largeur de la bande masquée.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>Forme de masque manuel : glisser pour définir un cercle (du
+centre au rayon) et masquer la zone délimitée.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>Forme de masque manuel : glisser deux rayons autour du
+centre du diagramme pour masquer un anneau annulaire (couronne).</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>Forme de masque manuel : glisser un rectangle (deux
+points d'angle) et masquer la zone délimitée.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>Forme de masque manuel : cliquer pour masquer (gauche)
+ou démasquer (droite) une tache circulaire du
+rayon défini par Size ; le mode par défaut.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Largeur × hauteur de l'image simulée en
+pixels (1–10000) ; définit la taille du canevas
+du diagramme de diffraction généré.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Enregistre le diagramme de diffraction simulé actuel
+dans un fichier image IPA (*.ipa), comprenant
+la résolution, le centre, la longueur de caméra et la longueur d'onde.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>Met en évidence les pixels masqués (exclus de l'ajustement) sur
+l'image afin de voir quelles régions sont ignorées.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>Borne supérieure de la fenêtre de luminosité d'affichage
+(comptes associés à la couleur la plus claire).
+N'affecte que le contraste d'affichage, pas les données.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Borne supérieure de la fenêtre de luminosité d'affichage
+(comptes associés à la couleur la plus claire).
+N'affecte que le contraste d'affichage, pas les données.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>Borne inférieure de la fenêtre de luminosité d'affichage
+(comptes associés à la couleur la plus sombre).
+N'affecte que le contraste d'affichage, pas les données.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Borne inférieure de la fenêtre de luminosité d'affichage
+(comptes associés à la couleur la plus sombre).
+N'affecte que le contraste d'affichage, pas les données.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) du halo de fond diffus initial,
+sur une échelle logarithmique. Définit la hauteur du pic de
+l'anneau de fond utilisé comme estimation de départ pour l'ajustement.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) du halo de fond diffus initial,
+sur une échelle logarithmique. Définit la hauteur du pic de
+l'anneau de fond utilisé comme estimation de départ pour l'ajustement.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>Largeur (H, largeur à mi-hauteur en pixels)
+du halo de fond diffus initial. Des valeurs plus
+grandes rendent l'anneau de fond plus large.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Largeur (H, largeur à mi-hauteur en pixels)
+du halo de fond diffus initial. Des valeurs plus
+grandes rendent l'anneau de fond plus large.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>Rayon (R, en pixels depuis le centre)
+du halo de fond diffus initial.
+Définit où l'anneau de fond atteint son maximum.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Rayon (R, en pixels depuis le centre)
+du halo de fond diffus initial.
+Définit où l'anneau de fond atteint son maximum.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>Rayon externe (en pixels depuis le centre)
+du masque annulaire. Les pixels entre les rayons
+Start et End sont sélectionnés pour le masquage.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Rayon externe (en pixels depuis le centre)
+du masque annulaire. Les pixels entre les rayons
+Start et End sont sélectionnés pour le masquage.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>Rayon interne (en pixels depuis le centre)
+du masque annulaire. Les pixels entre les rayons
+Start et End sont sélectionnés pour le masquage.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Rayon interne (en pixels depuis le centre)
+du masque annulaire. Les pixels entre les rayons
+Start et End sont sélectionnés pour le masquage.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Rayon interne (en pixels depuis le centre)
+du masque annulaire. Les pixels entre les rayons
+Start et End sont sélectionnés pour le masquage.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Azimut (phi) de l'axe d'inclinaison échantillon/détecteur, en
+degrés. Définit la direction autour de laquelle le diagramme est
+incliné, affectant l'orientation de la distorsion des anneaux.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Azimut (phi) de l'axe d'inclinaison échantillon/détecteur, en
+degrés. Définit la direction autour de laquelle le diagramme est
+incliné, affectant l'orientation de la distorsion des anneaux.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Amplitude (tau) de l'inclinaison échantillon/détecteur autour
+de l'axe phi, en degrés. Des valeurs plus grandes distordent
+les anneaux de Debye de cercles vers des ellipses.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Amplitude (tau) de l'inclinaison échantillon/détecteur autour
+de l'axe phi, en degrés. Des valeurs plus grandes distordent
+les anneaux de Debye de cercles vers des ellipses.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Coche chaque réflexion (hkl) de la
+liste des pics, sélectionnant tous les pics d'un coup.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Décoche chaque réflexion (hkl) de
+la liste des pics, annulant la sélection.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>Sélectionne la zone d'image autour des anneaux des
+réflexions cochées (hkl) afin de pouvoir la masquer.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>Liste des indices de réflexion (hkl) ;
+cochez les pics dont vous voulez sélectionner la zone
+d'anneau environnante pour le masquage.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>Convergence du faisceau (demi-angle) du rayonnement
+incident, en degrés. Des valeurs plus grandes élargissent
+les pics des anneaux de Debye simulés.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Convergence du faisceau (demi-angle) du rayonnement
+incident, en degrés. Des valeurs plus grandes élargissent
+les pics des anneaux de Debye simulés.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>Convergence du faisceau (demi-angle) du rayonnement
+incident, en degrés. Des valeurs plus grandes élargissent
+les pics des anneaux de Debye simulés.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>Dispersion en longueur d'onde (monochromaticité,
+Delta-lambda / lambda) de la source, en %.
+Des valeurs plus grandes élargissent les anneaux simulés.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>Dispersion en longueur d'onde (monochromaticité,
+Delta-lambda / lambda) de la source, en %.
+Des valeurs plus grandes élargissent les anneaux simulés.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>Dispersion en longueur d'onde (monochromaticité,
+Delta-lambda / lambda) de la source, en %.
+Des valeurs plus grandes élargissent les anneaux simulés.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Sélectionne la source de rayonnement (rayons X ou électrons) et
+sa longueur d'onde utilisée pour calculer les rayons des anneaux de Debye.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>Affiche le résidu (diagramme expérimental moins
+simulé), afin de voir la qualité de l'ajustement.
+Mutuellement exclusif avec Simulation.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>Superpose le diagramme simulé sur
+l'image expérimentale, mélangé via le curseur Opacity.
+Mutuellement exclusif avec Residual.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Opacité de fusion (0-100%) du diagramme simulé
+sur l'image expérimentale en mode Simulation.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>Enregistre les paramètres de fond actuels dans
+un fichier de fond (*.bg) pour une réutilisation ultérieure.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>Active la configuration manuelle du fond initial ;
+active les curseurs A/H/R pour définir un
+anneau de fond de départ avant l'affinement.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>Résumé en lecture seule de la diffraction :
+nombre de cristallites contribuant et
+fraction de chaque réflexion (hkl).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Rayon (en pixels) du masque en tache manuel
+peint à chaque clic de souris.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Rayon (en pixels) du masque en tache manuel
+peint à chaque clic de souris.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Coordonnée X/Y en pixels du centre du faisceau direct (diagramme) ;
+définit où les anneaux de diffraction sont centrés.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Résolution d'affichage à l'écran en mm/pixel ;
+définit le facteur de zoom du diagramme affiché.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Résolution d'affichage à l'écran en mm/pixel ;
+définit le facteur de zoom du diagramme affiché.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra (distance échantillon-détecteur)
+en mm ; met à l'échelle les rayons des anneaux de diffraction.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra (distance échantillon-détecteur)
+en mm ; met à l'échelle les rayons des anneaux de diffraction.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Angle du masque en bande en degrés
+(0–360°) ; définit l'orientation de la bande
+(modifiable uniquement quand Direction est Free).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Largeur du masque en bande en pixels ;
+définit la largeur de la bande masquée.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Préréglage de direction pour le masque en bande
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free) ;
+Free permet de saisir l'angle manuellement.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Taille de pixel du détecteur de l'image source en
+mm/pixel ; convertit l'angle de diffusion en rayon d'anneau.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>Taille de pixel du détecteur de l'image source en
+mm/pixel ; convertit l'angle de diffusion en rayon d'anneau.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>Coordonnée X en pixels du centre du faisceau
+direct ; définit le centre des anneaux.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Coordonnée Y en pixels du centre du faisceau
+direct ; définit le centre des anneaux.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Largeur du flou de film en µm : fonction d'étalement instrumentale
+gaussienne convoluée avec les anneaux pour élargir les pics.</value>
+  </data>
+</root>

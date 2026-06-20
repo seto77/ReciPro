@@ -252,4 +252,350 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Simulador EBSD</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Define a cor de fundo</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Define a cor do texto de sobreposição, incluindo
+os rótulos de índices das linhas de Kikuchi e dos eixos de zona.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Corte no espaçamento recíproco 1/d (nm^-1). Apenas as linhas
+de Kikuchi cujo 1/d está abaixo deste valor são desenhadas, de modo
+que valores menores mantêm apenas reflexões com maior distância interplanar.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Tamanho do passo da varredura de espessura
+da amostra, em nm; o intervalo de Start a
+End é calculado com este incremento.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Número de feixes difratados (vetores g) incluídos
+no cálculo dinâmico de ondas de Bloch (1-2048);
+mais feixes melhoram a precisão mas tornam o cálculo mais lento.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>Início do intervalo de varredura de espessura
+da amostra, em nm; Start, End e Step
+definem as fatias de espessura a calcular.</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Fim do intervalo de varredura de espessura da amostra, em nm; Start,
+End e Step definem as fatias de espessura a calcular.</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>Energia final (inferior) dos elétrons
+retroespalhados usada na varredura EBSD (Difração
+de Elétrons Retroespalhados), em keV.</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>Energia inicial (superior) dos elétrons
+retroespalhados usada na varredura EBSD (Difração
+de Elétrons Retroespalhados), em keV.</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>Tamanho do passo da varredura de energia
+dos elétrons retroespalhados, em keV; as energias são calculadas
+de Start até End por este incremento.</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>Copia a imagem do padrão EBSD simulado para a área de transferência.</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Constrói o padrão mestre EBSD (o mapa de intensidade
+de retroespalhamento dinâmico da esfera completa) via Monte Carlo
+e então difração dinâmica de ondas de Bloch (Bethe).</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>Ferramenta de desenvolvedor: comprime as tabelas
+de seção transversal de espalhamento elástico NIST (E_*.TXT)
+com interpolação PCHIP e gera o código-fonte resultante.</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>Define a vista de geometria 3D para olhar ao longo
+do eixo X (o eixo de rotação da amostra).</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>Copia a imagem do padrão mestre 2D
+(projeção de Lambert) para a área de transferência.</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>Copia a pré-visualização do padrão mestre
+3D (esférico) para a área de transferência.</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>Gira o padrão mestre 3D de modo que o eixo de zona
+[u v w] inserido à direita fique voltado para o observador.</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>Executa uma simulação de Monte Carlo das trajetórias de BSE (Elétrons
+Retroespalhados) para calcular as distribuições de energia de saída e
+profundidade usadas para ponderar o padrão EBSD.</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Interrompe o cálculo de padrão mestre
+(Monte Carlo / ondas de Bloch) em execução.</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Define a vista de geometria 3D para olhar
+ao longo da normal à superfície da amostra.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Define a vista de geometria 3D para olhar ao longo
+do eixo Z (a direção do feixe de elétrons).</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>Define a vista de geometria 3D para um ponto de vista oblíquo em perspectiva aérea.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Sobrepõe os eixos do cristal/referência na rede estereográfica
+(projeção estereográfica da distribuição de BSE).</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>Sobrepõe o contorno do detector
+(tela de fósforo) sobre o padrão. Ativa
+o grupo de opções de contorno do detector.</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Pondera cada linha de Kikuchi pelo seu fator
+de estrutura (intensidade de difração cinemática =
+amplitude dispersada por uma célula unitária),
+mesclando a cor da linha em direção ao fundo
+de modo que reflexões mais fortes apareçam mais escuras.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>Mostra a inserção com as setas dos eixos
+do cristal (a, b, c) na vista do padrão mestre 3D.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>Mostra o texto dos rótulos dos eixos a, b, c
+na vista do padrão mestre 3D.</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>Usa o modelo de absorção não local (potencial óptico
+complexo que contabiliza o espalhamento térmico difuso)
+ao construir o padrão mestre.</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>Desenha o círculo que marca o contorno do detector sobre o padrão.</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>Mostra o padrão EBSD dinâmico (Difração de Elétrons
+Retroespalhados) projetado a partir do padrão mestre;
+desmarcado deixa um fundo simples.</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>Mostra os índices de reflexão (h k l) que
+rotulam cada linha de Kikuchi (banda).</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>Mostra as linhas de Kikuchi (as feições de difração
+em forma de banda formadas por elétrons espalhados
+inelasticamente). Ativa o grupo de opções das linhas de Kikuchi.</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>Desenha a grade de divisão do detector (linhas de malha) sobre o padrão.</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>Sobrepõe as linhas de Kikuchi, os índices, os eixos de zona
+e o contorno do detector sobre o padrão.</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>Rotula os eixos de zona [u v w] nas
+interseções das bandas de Kikuchi.</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>Inclui a intensidade de fundo do TDS (Espalhamento
+Térmico Difuso) no padrão mestre.</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>Renderiza o padrão EBSD ponderado pela distribuição
+simulada de energia e profundidade dos BSE (Elétrons
+Retroespalhados), integrando sobre todas as fatias em vez
+de mostrar uma única fatia de energia/profundidade. Execute
+Simulate primeiro para obter a distribuição.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Define a cor usada para desenhar as linhas de Kikuchi.</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Escolha tons de cinza Positive ou Negative (invertido)
+para a intensidade do padrão.</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Escolha qual hemisfério (+Z ou -Z) do
+padrão mestre é mostrado na vista 2D.</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Escolha qual hemisfério (+Z ou -Z) do
+padrão mestre é mostrado na vista 2D.</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Resolução (pixels por lado) da grade
+quadrada de Lambert do padrão mestre
+(64–2048); maior é mais fina mas mais lenta.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Escolha a escala de cores que mapeia a intensidade para
+cor (Gray, Cold-Warm, Spectrum ou Fire).</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Insira os índices do eixo de zona [u v w] usados pelo
+botão 'View Along' para orientar o padrão mestre 3D.</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>Mostra a profundidade (nm) da fatia do padrão
+EBSD atualmente renderizada (modo de fatia única).</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>Define o raio do detector EBSD (tela de fósforo)
+em mm. Isso define o ângulo sólido capturado e a
+resolução de tela (mm/pixel) do padrão simulado.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Define o raio do detector EBSD (tela de fósforo)
+em mm. Isso define o ângulo sólido capturado e a
+resolução de tela (mm/pixel) do padrão simulado.</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>Define o ângulo de inclinação do plano do detector em graus
+em relação ao eixo do feixe (Z). Isso afeta o comprimento de
+câmara e a forma projetada das bandas de Kikuchi.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Define o ângulo de inclinação do plano do detector em graus
+em relação ao eixo do feixe (Z). Isso afeta o comprimento de
+câmara e a forma projetada das bandas de Kikuchi.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Mostra a energia do elétron (keV) da fatia do padrão
+EBSD atualmente renderizada (modo de fatia única).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Número das reflexões mais fortes (Top N,
+classificadas pelo fator de estrutura = amplitude
+dispersada por uma célula unitária) a desenhar como
+linhas de Kikuchi. Valores maiores mostram mais linhas.</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Mostra a profundidade (nm) da fatia do padrão mestre
+atualmente selecionada pelo controle deslizante de profundidade para pré-visualização.</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Mostra a energia do elétron (keV) da fatia
+do padrão mestre atualmente selecionada
+pelo controle deslizante de energia para pré-visualização.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Ângulo de inclinação da amostra no MEV, em graus
+(-90 a 0; tipicamente -70 para EBSD); define
+a geometria de projeção do retroespalhamento.</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>Define a coordenada Y (posição lateral em relação
+à amostra) do centro do detector, em mm.</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>Define a coordenada Z (ao longo da direção do feixe)
+do centro do detector, em mm. Em conjunto com Y
+ela determina o comprimento de câmara.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Seleciona reflexões para as linhas de Kikuchi
+por um corte de espaçamento recíproco (1/d).</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Seleciona reflexões para as linhas de Kikuchi tomando
+as mais fortes classificadas pelo fator de estrutura.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Define o nível superior de brilho (corte de branco) da
+imagem EBSD exibida como uma fração da faixa de intensidade;
+pixels neste valor ou acima são mapeados para branco.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Define o nível superior de brilho (corte de branco) da
+imagem EBSD exibida como uma fração da faixa de intensidade;
+pixels neste valor ou acima são mapeados para branco.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Define o nível inferior de brilho (corte de preto) da
+imagem EBSD exibida como uma fração da faixa de intensidade;
+pixels neste valor ou abaixo são mapeados para preto.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Define o nível inferior de brilho (corte de preto) da
+imagem EBSD exibida como uma fração da faixa de intensidade;
+pixels neste valor ou abaixo são mapeados para preto.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Define a largura da linha (espessura da caneta)
+usada para desenhar as linhas de Kikuchi.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Define a largura da linha (espessura da caneta)
+usada para desenhar as linhas de Kikuchi.</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Seleciona qual fatia de profundidade (nm) do padrão mestre
+pré-visualizar; o valor é mostrado na caixa Depth.</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Seleciona qual fatia de energia (keV) do padrão mestre
+pré-visualizar; o valor é mostrado na caixa Energy.</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>Seleciona qual fatia de energia (keV) do
+padrão EBSD renderizar no modo de fatia
+única; o valor é mostrado na caixa Energy.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Seleciona qual fatia de profundidade (nm) do padrão
+EBSD renderizar no modo de fatia única;
+o valor é mostrado na caixa Depth.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Ajusta o tamanho da fonte do texto de índices da sobreposição.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Ajusta o tamanho da fonte do texto de índices da sobreposição.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Define a tensão de aceleração / comprimento de onda
+do elétron do feixe incidente (a energia dos
+elétrons primários para a simulação EBSD).</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Ajusta a faixa de brilho (corte de preto/branco)
+da imagem EBSD exibida.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Distribuição da profundidade máxima de penetração
+(nm) dos elétrons retroespalhados simulados.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Distribuição da perda de energia ΔE (keV)
+dos elétrons retroespalhados simulados.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Nesta rede estereográfica, o centro
+corresponde à normal à superfície da amostra.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Posição do centro do detector
+em relação à amostra, dada como Y
+(lateral) e Z (ao longo do feixe) em mm.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Seleciona polaridade de níveis de cinza normal ou
+invertida (negativa) para a imagem exibida.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Seleciona a escala de cores (Gray, Cold-Warm,
+Spectrum, Fire) usada para mapear a intensidade para cor.</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Resolução (pixels por lado) da grade quadrada
+de Lambert do padrão mestre (64–2048).</value>
+  </data>
 </root>

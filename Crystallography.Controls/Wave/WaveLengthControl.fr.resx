@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Neutrons</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Sélectionne un élément (1:H à 98:Cf) qui émet des rayons X caractéristiques.
+Si « 0:custom » est sélectionné, vous pouvez saisir librement l'énergie ou la longueur d'onde.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Utilise des rayons X comme source d'onde (énergie en keV) ;
+active les sélecteurs d'élément et de raie caractéristique.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Utilise un faisceau d'électrons comme source d'onde (énergie en keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Sélectionne la raie d'émission X caractéristique (par ex.
+Kα1, Kα2, Kβ1) ; ceci fixe la longueur d'onde et l'énergie.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Saisissez l'énergie du faisceau (keV pour rayons X/électrons, meV pour
+neutrons) ; la longueur d'onde est recalculée automatiquement.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Saisissez l'énergie du faisceau (keV pour rayons X/électrons, meV pour
+neutrons) ; la longueur d'onde est recalculée automatiquement.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Sélectionne un élément (1:H à 98:Cf) qui émet des rayons X
+caractéristiques. Choisissez « 0:custom » pour
+saisir librement l'énergie ou la longueur d'onde.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Saisissez ici la longueur d'onde (utilisez les boutons radio Å / nm pour changer l'unité d'affichage).
+L'énergie du faisceau est recalculée automatiquement.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Saisissez ici la longueur d'onde (utilisez les boutons radio Å / nm pour changer l'unité d'affichage).
+L'énergie du faisceau est recalculée automatiquement.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Utilise un faisceau de neutrons comme source d'onde (énergie en meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>Indique le mode blanc plat (spectre continu) :
+un faisceau large bande uniforme est utilisé
+au lieu d'une longueur d'onde unique.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>Affiche la longueur d'onde en nanomètre (nm). Affichage seulement — la longueur d'onde physique et l'énergie sont inchangées (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>Affiche la longueur d'onde en ångström (Å). Affichage seulement — la longueur d'onde physique et l'énergie sont inchangées (1 nm = 10 Å).</value>
+  </data>
 </root>

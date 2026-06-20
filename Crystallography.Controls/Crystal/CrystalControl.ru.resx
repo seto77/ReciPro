@@ -158,4 +158,338 @@
   <data name="numericBoxElectronDensity.HeaderText" xml:space="preserve">
     <value>Электронная плотность</value>
   </data>
+  <data name="textBoxAuthor.ToolTip" xml:space="preserve">
+    <value>Имя (имена) автора(ов) публикации, из которой
+взята эта кристаллическая структура.</value>
+  </data>
+  <data name="textBoxTitle.ToolTip" xml:space="preserve">
+    <value>Заглавие публикации, из которой взята
+эта кристаллическая структура.</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip" xml:space="preserve">
+    <value>Объём ячейки в Å³</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
+    <value>Объём ячейки в Å³</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
+    <value>Объём ячейки в nm³</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.ToolTip1" xml:space="preserve">
+    <value>Объём ячейки в nm³</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
+    <value>Масса ячейки в 10⁻²⁴ g</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip1" xml:space="preserve">
+    <value>Масса ячейки в 10⁻²⁴ g</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
+    <value>Молярный объём в cm³/mol</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip1" xml:space="preserve">
+    <value>Молярный объём в cm³/mol</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
+    <value>Молярная масса в g/mol</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip1" xml:space="preserve">
+    <value>Молярная масса в g/mol</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>Плотность в g/cm³</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip1" xml:space="preserve">
+    <value>Плотность в g/cm³</value>
+  </data>
+  <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
+    <value>Преобразовать кристалл в подгруппу (пространственную
+группу более низкой симметрии) — пока
+не реализовано (в разработке).</value>
+  </data>
+  <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
+    <value>Преобразовать ячейку в другую установку осей/начала
+координат той же пространственной группы (например,
+альтернативный выбор начала координат или ячейки
+для того же номера Германа–Могена).</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
+    <value>Постоянные ячейки, симметрия и другая базовая информация</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
+    <value>Постоянные ячейки, симметрия и другая базовая информация</value>
+  </data>
+  <data name="resetToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Обнулить фактор Дебая–Валлера (ослабление интенсивности
+дифракции от тепловых колебаний) для всех атомов.</value>
+  </data>
+  <data name="tabPageAtom.ToolTip" xml:space="preserve">
+    <value>Положения и типы атомов</value>
+  </data>
+  <data name="tabPageAtom.ToolTipText" xml:space="preserve">
+    <value>Положения и типы атомов</value>
+  </data>
+  <data name="textBoxJournal.ToolTip" xml:space="preserve">
+    <value>Журнал, в котором была опубликована
+эта кристаллическая структура.</value>
+  </data>
+  <data name="textBoxMemo.ToolTip" xml:space="preserve">
+    <value>Произвольная заметка или памятка об этом кристалле.</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ33 (вдоль c) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ33 (вдоль c) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ22 (вдоль b) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ22 (вдоль b) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ11 (вдоль a) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента напряжения σ11 (вдоль a) приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ23 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ23 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ13 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ13 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ12 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента напряжения σ12 приложенного
+тензора напряжений, используемого в модели Ройсса,
+в тех же единицах, что и упругие константы (GPa).</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента деформации ε33 (вдоль c)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента деформации ε33 (вдоль c)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента деформации ε11 (вдоль a)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента деформации ε11 (вдоль a)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>Нормальная компонента деформации ε22 (вдоль b)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip1" xml:space="preserve">
+    <value>Нормальная компонента деформации ε22 (вдоль b)
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε12
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε12
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε23
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε23
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε13
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip1" xml:space="preserve">
+    <value>Сдвиговая компонента деформации ε13
+задаваемого тензора деформации решётки,
+используемого в модели Фойгта (безразмерная).</value>
+  </data>
+  <data name="buttonStressSet.ToolTip" xml:space="preserve">
+    <value>Применить введённые деформацию, напряжение
+и коэффициент Хилла к кристаллу.</value>
+  </data>
+  <data name="numericBoxHill.ToolTip" xml:space="preserve">
+    <value>Коэффициент усреднения Хилла, смешивающий модели Фойгта
+(однородная деформация) и Ройсса (однородное напряжение):
+0 использует только заданную деформацию, 1 — деформацию,
+полученную из приложенного напряжения (безразмерный).</value>
+  </data>
+  <data name="numericBoxHill.ToolTip1" xml:space="preserve">
+    <value>Коэффициент усреднения Хилла, смешивающий модели Фойгта
+(однородная деформация) и Ройсса (однородное напряжение):
+0 использует только заданную деформацию, 1 — деформацию,
+полученную из приложенного напряжения (безразмерный).</value>
+  </data>
+  <data name="label117.ToolTip" xml:space="preserve">
+    <value>Коэффициент усреднения Хилла, смешивающий модели Фойгта
+(однородная деформация) и Ройсса (однородное напряжение):
+0 использует только заданную деформацию, 1 — деформацию,
+полученную из приложенного напряжения (безразмерный).</value>
+  </data>
+  <data name="label109.ToolTip" xml:space="preserve">
+    <value>Приложенный тензор напряжений для модели Ройсса (однородное
+напряжение); введите шесть независимых компонент (GPa).</value>
+  </data>
+  <data name="label102.ToolTip" xml:space="preserve">
+    <value>Задаваемый тензор деформации решётки для
+модели Фойгта (однородная деформация); введите
+шесть независимых компонент (безразмерных).</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
+    <value>Сгенерировать набор случайно ориентированных кристаллитов
+и отобразить их на полюсной фигуре.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение сетки (0,5–45°) для распределения
+ориентаций поликристалла и полюсной фигуры;
+меньшее значение даёт более тонкую
+дискретизацию, но более медленный расчёт.</value>
+  </data>
+  <data name="numericUpDownAngleResolution.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение сетки (0,5–45°) для распределения
+ориентаций поликристалла и полюсной фигуры;
+меньшее значение даёт более тонкую
+дискретизацию, но более медленный расчёт.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Число подразбиений на угловую ячейку
+(1–45), используемое для более тонкой субдискретизации
+каждой ячейки ориентации; большие значения сглаживают
+распределение ценой более высоких вычислительных затрат.</value>
+  </data>
+  <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
+    <value>Число подразбиений на угловую ячейку
+(1–45), используемое для более тонкой субдискретизации
+каждой ячейки ориентации; большие значения сглаживают
+распределение ценой более высоких вычислительных затрат.</value>
+  </data>
+  <data name="label101.ToolTip" xml:space="preserve">
+    <value>Размер кристаллита (зерна) в nm (1–1000); задаёт
+размер точки обратной решётки (уширение
+пиков) и весовой коэффициент дифракционного объёма.</value>
+  </data>
+  <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
+    <value>Размер кристаллита (зерна) в nm (1–1000); задаёт
+размер точки обратной решётки (уширение
+пиков) и весовой коэффициент дифракционного объёма.</value>
+  </data>
+  <data name="label99.ToolTip" xml:space="preserve">
+    <value>Размер кристаллита (зерна) в nm (1–1000); задаёт
+размер точки обратной решётки (уширение
+пиков) и весовой коэффициент дифракционного объёма.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Цвет отображения этого кристалла, используемый как в 3D-виде
+структуры, так и в кривых дифракционного профиля.</value>
+  </data>
+  <data name="colorControl.ToolTip1" xml:space="preserve">
+    <value>Цвет отображения этого кристалла, используемый как в 3D-виде
+структуры, так и в кривых дифракционного профиля.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Химическая формула</value>
+  </data>
+  <data name="label90.ToolTip" xml:space="preserve">
+    <value>Химическая формула</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
+    <value>Z (число формульных единиц в элементарной ячейке)</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
+    <value>Z (число формульных единиц в элементарной ячейке)</value>
+  </data>
+  <data name="textBoxName.ToolTip" xml:space="preserve">
+    <value>Название кристалла</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Название кристалла</value>
+  </data>
+  <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
+    <value>Открыть данные взаимодействия с пучком в отдельном окне.</value>
+  </data>
+  <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
+    <value>Открыть подробную информацию о симметрии в отдельном окне.</value>
+  </data>
+  <data name="numericBoxMeanZnumber.ToolTip" xml:space="preserve">
+    <value>Средний по числу атомов атомный номер:  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = число атомов элемента i на элементарную ячейку, с учётом заселённости)</value>
+  </data>
+  <data name="numericBoxMeanZnumber.ToolTip1" xml:space="preserve">
+    <value>Средний по числу атомов атомный номер:  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = число атомов элемента i на элементарную ячейку, с учётом заселённости)</value>
+  </data>
+  <data name="numericBoxMeanZmass.ToolTip" xml:space="preserve">
+    <value>Средний по массе атомный номер:  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (эффективный Z, используемый при расчёте переноса электронов методом Монте-Карло)</value>
+  </data>
+  <data name="numericBoxMeanZmass.ToolTip1" xml:space="preserve">
+    <value>Средний по массе атомный номер:  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (эффективный Z, используемый при расчёте переноса электронов методом Монте-Карло)</value>
+  </data>
+  <data name="numericBoxMeanAtomicWeight.ToolTip" xml:space="preserve">
+    <value>Средняя по числу атомов атомная масса (на один атом):  A = Σ(n_i·A_i) / Σ n_i   (отличается от молярной массы, которая дана на формульную единицу)</value>
+  </data>
+  <data name="numericBoxMeanAtomicWeight.ToolTip1" xml:space="preserve">
+    <value>Средняя по числу атомов атомная масса (на один атом):  A = Σ(n_i·A_i) / Σ n_i   (отличается от молярной массы, которая дана на формульную единицу)</value>
+  </data>
+  <data name="numericBoxAtomicNumberDensity.ToolTip" xml:space="preserve">
+    <value>Атомная плотность (по числу атомов) = (число атомов в элементарной ячейке) / объём ячейки</value>
+  </data>
+  <data name="numericBoxAtomicNumberDensity.ToolTip1" xml:space="preserve">
+    <value>Атомная плотность (по числу атомов) = (число атомов в элементарной ячейке) / объём ячейки</value>
+  </data>
+  <data name="numericBoxElectronDensity.ToolTip" xml:space="preserve">
+    <value>Электронная плотность (по числу электронов) = Σ(n_i·Z_i) / объём ячейки</value>
+  </data>
+  <data name="numericBoxElectronDensity.ToolTip1" xml:space="preserve">
+    <value>Электронная плотность (по числу электронов) = Σ(n_i·Z_i) / объём ячейки</value>
+  </data>
 </root>

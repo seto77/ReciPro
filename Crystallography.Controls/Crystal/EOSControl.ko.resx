@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxUseEOS.ToolTip" xml:space="preserve">
+    <value>상태 방정식(EOS)을 활성화합니다: 아래에서 설정한
+매개변수를 사용해 현재 단위 격자 부피로부터
+압력을 계산합니다.</value>
+  </data>
+  <data name="numericBox3rdVinetBeta.ToolTip" xml:space="preserve">
+    <value>3차 Vinet 상태 방정식(EOS)의 경험적 매개변수 β
+('3rd Vinet' 선택 시에만 사용됩니다).</value>
+  </data>
+  <data name="numericBox3rdVinetIta.ToolTip" xml:space="preserve">
+    <value>3차 Vinet 상태 방정식(EOS)의 경험적 매개변수 η
+('3rd Vinet' 선택 시에만 사용됩니다).</value>
+  </data>
+  <data name="numericBox3rdVinetPsi.ToolTip" xml:space="preserve">
+    <value>3차 Vinet 상태 방정식(EOS)의 경험적 매개변수 ψ
+('3rd Vinet' 선택 시에만 사용됩니다).</value>
+  </data>
+  <data name="numericBoxEOS_A.ToolTip" xml:space="preserve">
+    <value>열팽창 계수 a(단위
+10⁻⁵/K). α(T)=a+bT+c/T²에서 온도에 따른
+기준 부피의 팽창을 나타냅니다.</value>
+  </data>
+  <data name="numericBoxEOS_B.ToolTip" xml:space="preserve">
+    <value>열팽창 계수 b(단위 10⁻⁹/K²).
+α(T)=a+bT+c/T²의 온도 1차 항입니다.</value>
+  </data>
+  <data name="numericBoxEOS_C.ToolTip" xml:space="preserve">
+    <value>열팽창 계수 c(단위 K). α(T)=a+bT+c/T²의
+c/T² 항(저온 보정)입니다.</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.ToolTip" xml:space="preserve">
+    <value>기준 부피에서의 그뤼나이젠 매개변수 γ₀
+(무차원) — 열진동 에너지가 압력에
+얼마나 강하게 기여하는지를 나타내며,
+Mie–Grüneisen 모델에서 사용됩니다.</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>기준 온도 T₀에서의 등온 부피 탄성률 K₀
+(단위 GPa) — 균일 압축에 대한 물질의
+저항(클수록 단단함)을 나타냅니다.</value>
+  </data>
+  <data name="numericBoxEOS_Kp0.ToolTip" xml:space="preserve">
+    <value>부피 탄성률의 압력 1차 미분 K'₀
+= (∂K/∂P)|P=0 (무차원, 보통 ≈4) —
+압력에 따라 물질이 얼마나 빨리 단단해지는지를 나타냅니다.</value>
+  </data>
+  <data name="numericBoxEOS_KpInfinity.ToolTip" xml:space="preserve">
+    <value>무한 압력에서 부피 탄성률의 압력 미분의
+극한값 K'∞(무차원).
+Keane 상태 방정식에서 사용됩니다.</value>
+  </data>
+  <data name="numericBoxEOS_KperT.ToolTip" xml:space="preserve">
+    <value>부피 탄성률의 온도 미분
+∂K/∂T (P=0, 단위 GPa/K) — 켈빈당 강성
+K의 변화량(보통 음수)을 나타냅니다.</value>
+  </data>
+  <data name="numericBoxEOS_Kpp0.ToolTip" xml:space="preserve">
+    <value>부피 탄성률의 압력 2차 미분
+K''₀ = (∂²K/∂P²)|P=0 (단위 1/GPa). 4차
+Birch–Murnaghan 상태 방정식에서 사용됩니다.</value>
+  </data>
+  <data name="numericBoxEOS_Q.ToolTip" xml:space="preserve">
+    <value>그뤼나이젠 매개변수의 부피 의존 지수 q
+(무차원). γ = γ₀·(V/V₀)^q의 지수입니다.</value>
+  </data>
+  <data name="numericBoxEOS_T0.ToolTip" xml:space="preserve">
+    <value>기준 온도 T₀(단위 K). 등온 매개변수
+V₀, K₀, K'₀가 정의되는 온도입니다
+(보통 300 K).</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.ToolTip" xml:space="preserve">
+    <value>기준 부피에서의 디바이 온도 θ₀(단위 K) —
+격자 진동을 특징짓는 온도로,
+열적(Mie–Grüneisen) 압력 계산에 사용됩니다.</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.ToolTip" xml:space="preserve">
+    <value>기준 상태(T₀, P=0)에서의 단위 격자 부피 V₀
+(단위 Å³/cell). 클릭하면 이 칸이 편집 대상이
+되며, cm³/mol 칸은 자동으로 환산됩니다.</value>
+  </data>
+  <data name="numericBoxEOS_V0perMol.ToolTip" xml:space="preserve">
+    <value>기준 상태(T₀, P=0)에서의 몰 부피 V₀(단위
+cm³/mol). 클릭하면 이 칸이 편집 대상이
+되며, Å³/cell 칸은 자동으로 환산됩니다.</value>
+  </data>
+  <data name="numericBoxPressure.ToolTip" xml:space="preserve">
+    <value>계산된 압력 P(단위 GPa). 상태 방정식이
+현재 단위 격자 부피와 온도로부터 산출한
+값입니다(출력 전용, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>압력을 평가하는 대상 온도 T(단위 K).
+기준 온도 T₀와의 차 T − T₀에 따라
+열적 압력이 더해집니다.</value>
+  </data>
+  <data name="radioButtonEOS_AP2.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 AP2(2차 적응
+다항식 / Holzapfel) 상태 방정식을
+사용합니다.</value>
+  </data>
+  <data name="radioButtonEOS_FourthBirchMunaghan.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 4차 Birch–Murnaghan(BM)
+상태 방정식을 사용합니다
+(K''₀ 항이 추가됩니다).</value>
+  </data>
+  <data name="radioButtonEOS_Keane.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 Keane 상태 방정식을
+사용합니다(고압 극한 K'∞를
+사용합니다).</value>
+  </data>
+  <data name="radioButtonEOS_ThirdBirchMurnaghan.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 3차 Birch–Murnaghan(BM) 상태
+방정식을 사용합니다(가장 표준적인 선택지로,
+V₀, K₀, K'₀를 사용합니다).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 Vinet 상태 방정식을
+사용합니다(강한 압축 영역에서 흔히 선호되며,
+V₀, K₀, K'₀를 사용합니다).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet3rd.ToolTip" xml:space="preserve">
+    <value>등온 압력–부피 관계에 확장 3차 Vinet 상태
+방정식을 사용합니다(추가 매개변수 η, β, ψ를
+사용합니다).</value>
+  </data>
+  <data name="radioButtonMieGruneisen.ToolTip" xml:space="preserve">
+    <value>Mie–Grüneisen 모델을 사용해 격자 진동에 의한
+열적 압력을 계산합니다(매개변수 γ₀, 디바이
+온도 θ₀, q를 사용합니다).</value>
+  </data>
+  <data name="radioButtonTdependenceK0andV0.ToolTip" xml:space="preserve">
+    <value>기준 부피 V₀와 부피 탄성률 K₀를 온도 의존적으로
+만들어 온도 효과를 반영합니다(열팽창
+a,b,c와 ∂K/∂T를 사용합니다).</value>
+  </data>
+  <data name="textBoxEOS_Note.ToolTip" xml:space="preserve">
+    <value>이 상태 방정식 매개변수 세트에 대한
+자유 기술 메모(예: 문헌 출처나 주석).</value>
+  </data>
+  <data name="label83.ToolTip" xml:space="preserve">
+    <value>이 상태 방정식 매개변수 세트에 대한
+자유 기술 메모(예: 문헌 출처나 주석).</value>
+  </data>
+</root>

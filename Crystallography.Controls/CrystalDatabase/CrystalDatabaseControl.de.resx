@@ -62,4 +62,37 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Wenn Sie eine Arbeit unter Verwendung von Daten aus dieser Datenbank veröffentlichen, zitieren Sie bitte die folgende Referenz oder die auf der entsprechenden Webseite aufgeführten Referenzen. AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>Springt zum ersten Kristalldatensatz in der Liste.</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>Springt zum letzten Kristalldatensatz in der Liste.</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>Springt zum nächsten Kristalldatensatz.</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>Springt zum vorherigen Kristalldatensatz.</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>Lädt und zeigt Einträge aus der AMCSD (American
+Mineralogist Crystal Structure Database) an.</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>Lädt und zeigt Einträge aus der COD
+(Crystallography Open Database) an; lädt sie aus
+dem Web herunter, falls sie lokal nicht vorhanden ist.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste der Kristalle in der Datenbank; wählen Sie
+eine Zeile aus, um diesen Kristall zu laden (Gitter-
+parameter, Raumgruppe, Literatur usw.).</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>Gesamtzahl der Kristalldatensätze in der Datenbank.</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>Aktuelle Datensatznummer; geben Sie eine
+Zahl ein, um zu diesem Kristall zu springen.</value>
+  </data>
 </root>

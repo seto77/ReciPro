@@ -109,4 +109,223 @@ zurücksetzen</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Rotationsgeometrie</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>Setzt die Blickrichtung parallel zur Strahlrichtung</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>Setzt die Blickrichtung auf eine isometrische Ansicht</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden das ReciPro- und das
+experimentelle Koordinatensystem verknüpft.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Kopiert die Werte der Rotationsmatrix
+im Excel-Format in die Zwischenablage.</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>Fügt die Werte der Rotationsmatrix
+im Excel-Format aus der Zwischenablage ein.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>Dritter Euler-Winkel Ψ (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention (die letzte
+Rotation um Z); legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>Dritter Euler-Winkel Ψ (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention (die letzte
+Rotation um Z); legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>Zweiter Euler-Winkel Θ (Grad) des
+ReciPro-Koordinatensystems in der ZXZ-
+Konvention (die mittlere Rotation um X);
+legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>Zweiter Euler-Winkel Θ (Grad) des
+ReciPro-Koordinatensystems in der ZXZ-
+Konvention (die mittlere Rotation um X);
+legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Erster Euler-Winkel Φ (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention;
+zusammen mit Θ und Ψ legt er die Kristall-
+orientierung (Rotationsmatrix) fest.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>Erster Euler-Winkel Φ (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention;
+zusammen mit Θ und Ψ legt er die Kristall-
+orientierung (Rotationsmatrix) fest.</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>Rotationswinkel (Grad, −180 bis 180) um die 1.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>Rotationswinkel (Grad, −180 bis 180) um die 1.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>Rotationswinkel (Grad, −180 bis 180) um die 2.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>Rotationswinkel (Grad, −180 bis 180) um die 2.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>Rotationswinkel (Grad, -180..180) um die 3.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>Rotationswinkel (Grad, -180..180) um die 3.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>Aktiviert die 2. Goniometer-Rotationsachse des
+experimentellen Koordinatensystems (fügt eine
+zweite Kippung um eine gewählte X/Y/Z-Achse hinzu).</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>Fixiert den 1. Winkel auf dem aktuellen Wert</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>Fixiert den 2. Winkel auf dem aktuellen Wert.</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>Fixiert den 3. Winkel auf dem aktuellen Wert.</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>Aktiviert die 3. Goniometer-Rotationsachse des
+experimentellen Koordinatensystems (fügt eine
+dritte Kippung um eine gewählte X/Y/Z-Achse hinzu).</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>Setzt die 3. Goniometer-Rotationsachse auf die
+kartesische Z-Achse (die 3. experimentelle
+Rotation wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>Setzt die 3. Goniometer-Rotationsachse auf die
+kartesische Y-Achse (die 3. experimentelle
+Rotation wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>Setzt die 3. Goniometer-Rotationsachse auf die
+kartesische X-Achse (die 3. experimentelle
+Rotation wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>Setzt die 2. Goniometer-Rotationsachse auf die
+kartesische Z-Achse (die 2. experimentelle
+Rotation, numericBoxExp2, wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>Setzt die 2. Goniometer-Rotationsachse auf die
+kartesische Y-Achse (die 2. experimentelle
+Rotation, numericBoxExp2, wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>Setzt die 2. Goniometer-Rotationsachse auf die
+kartesische X-Achse (die 2. experimentelle
+Rotation, numericBoxExp2, wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>Setzt die 1. Goniometer-Rotationsachse auf die
+kartesische Z-Achse (die 1. experimentelle
+Rotation, numericBoxExp1, wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>Setzt die 1. Goniometer-Rotationsachse auf die
+kartesische Y-Achse (die 1. experimentelle
+Rotation, numericBoxExp1, wird um sie angewendet).</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>Setzt die 1. Goniometer-Rotationsachse auf die
+kartesische X-Achse (die 1. experimentelle
+Rotation, numericBoxExp1, wird um sie angewendet).</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>Setzt alle Winkel auf null zurück</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>3x3-Orientierungsmatrix (Rotationsmatrix) des
+ReciPro-Koordinatensystems, berechnet aus den
+ZXZ-Euler-Winkeln (schreibgeschützt).</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 1, Spalte 1) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln Phi, Theta, Psi.</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 1, Spalte 2) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 1, Spalte 3) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 2, Spalte 1) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 2, Spalte 2) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 2, Spalte 3) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 3, Spalte 1) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 3, Spalte 2) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>Element (Zeile 3, Spalte 3) der ReciPro-
+Orientierungsmatrix (schreibgeschützt, dimensionslos),
+berechnet aus den ZXZ-Euler-Winkeln.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Zweiter Euler-Winkel Theta (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention
+(Rotation um X); legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Dritter Euler-Winkel Psi (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention (letzte
+Rotation um Z); legt die Kristallorientierung fest.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Erster Euler-Winkel Phi (Grad) des ReciPro-
+Koordinatensystems in der ZXZ-Konvention; legt die
+Kristallorientierung und die Rotationsmatrix fest.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Rotationswinkel (Grad, -180..180) um die 1.
+Goniometerachse des experimentellen Koordinatensystems,
+kippt den Kristall um die gewählte X/Y/Z-Achse.</value>
+  </data>
 </root>

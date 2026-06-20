@@ -139,4 +139,141 @@
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>Стандартное отклонение энергии</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Запускает моделирование методом Монте-Карло: прослеживает
+заданное число падающих электронов через
+образец, затем обновляет статистику,
+графики распределения и трёхмерное изображение траекторий.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Устанавливает трёхмерный вид вдоль нормали к поверхности
+образца (с учётом текущего наклона).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Устанавливает трёхмерный вид вдоль оси X,
+которая является осью вращения (наклона) образца.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Устанавливает трёхмерный вид вдоль оси Z,
+то есть вдоль направления падающего пучка.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Также выводит в трёхмерном изображении траектории электронов,
+поглощённых в образце (тех, что не испытали обратного рассеяния),
+а не только обратно рассеянных.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Показывает координатные оси X (красная), Y (зелёная) и Z = направление
+пучка (фиолетовая) в трёхмерном изображении траекторий.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Накладывает положения осей ±X / ±Y / ±Z на
+стереографическую проекцию (полюсную фигуру)
+направлений выхода обратно рассеянных электронов.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Выводит на поверхности образца в трёхмерном изображении
+концентрические шкальные окружности как ориентир расстояния
+(шаг масштабируется автоматически, подписи в nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Продлевает траекторию каждого обратно рассеянного электрона
+за пределы поверхности, чтобы показать направление его выхода
+в трёхмерном изображении (окраска по энергии выхода).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Средняя энергия выхода обратно рассеянных электронов
+(BSE), покидающих поверхность образца, в keV.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Средняя энергия выхода обратно рассеянных электронов
+(BSE), покидающих поверхность образца, в keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Коэффициент обратного рассеяния η: доля падающих
+электронов, повторно испускаемых с поверхности как обратно рассеянные
+электроны (BSE), по результатам моделирования методом Монте-Карло.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Коэффициент обратного рассеяния η: доля падающих
+электронов, повторно испускаемых с поверхности как обратно рассеянные
+электроны (BSE), по результатам моделирования методом Монте-Карло.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Сечение рассеяния σ_E: эффективная площадь мишени
+для упругого рассеяния при энергии падения;
+большие значения означают более частое рассеяние (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Сечение рассеяния σ_E: эффективная площадь мишени
+для упругого рассеяния при энергии падения;
+большие значения означают более частое рассеяние (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Длина свободного пробега при упругом рассеянии λ: среднее расстояние,
+проходимое электроном между событиями упругого
+рассеяния, при энергии падения (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Длина свободного пробега при упругом рассеянии λ: среднее расстояние,
+проходимое электроном между событиями упругого
+рассеяния, при энергии падения (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Тормозная способность dE/ds: энергия, теряемая
+электроном на единицу длины пути на неупругие
+столкновения, при энергии падения (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Тормозная способность dE/ds: энергия, теряемая
+электроном на единицу длины пути на неупругие
+столкновения, при энергии падения (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Число моделируемых траекторий электронов
+(от 100 до 1 000 000). Больше траекторий даёт
+более гладкую статистику, но требует больше времени на расчёт.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Число моделируемых траекторий электронов
+(от 100 до 1 000 000). Больше траекторий даёт
+более гладкую статистику, но требует больше времени на расчёт.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Максимальное число траекторий для отрисовки в трёхмерном
+изображении (от 1 до 100 000). Это ограничивает только отрисовку, а не
+моделирование; меньшие значения сохраняют отзывчивость трёхмерного вида.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Наклон поверхности образца относительно падающего пучка
+(от 0 до -90 град). 0 град = нормаль к поверхности вдоль
+пучка; наклон изменяет выход обратно рассеянных электронов
+и распределение их направлений.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Окрашивает стереографическую проекцию по
+средней энергии выхода (keV) обратно
+рассеянных электронов в каждом направлении.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Окрашивает стереографическую проекцию по
+частоте: числу обратно рассеянных
+электронов, выходящих в каждом направлении.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Окрашивает стереографическую проекцию по
+стандартному отклонению энергии выхода
+обратно рассеянных электронов в каждом направлении.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Строка состояния: показывает затраченное время на
+расчёт траекторий, отрисовку графиков
+и трёхмерную визуализацию последнего моделирования.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Энергия падающих электронов (ускоряющее напряжение) в
+keV. Задаёт энергию пучка, используемую для расчёта траекторий,
+сечения, длины свободного пробега и тормозной
+способности; более высокая энергия даёт более глубокое проникновение.</value>
+  </data>
 </root>

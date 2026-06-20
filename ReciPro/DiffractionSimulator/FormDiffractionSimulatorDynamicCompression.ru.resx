@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Запустить моделирование дифракции при динамическом
+сжатии и накопить картину.</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>Если отмечено, пропускает отрисовку на экране
+во время расчёта для его ускорения.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Глубина передней границы, разделяющей
+несжатую и сжатую области.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Глубина задней границы, разделяющей
+сжатую и разгруженную области.</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>Выберите выходную папку, куда
+сохраняются смоделированные TIFF-картины.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Базовое имя файла для сохранённой TIFF-
+картины; '.tif' добавляется автоматически.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Базовое имя файла для сохранённой TIFF-
+картины; '.tif' добавляется автоматически.</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>Средняя скорость вращения кристалла ω в
+сжатой области (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Стандартное отклонение σ_ω скорости
+вращения в сжатой области (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>Постоянный член a (°) разброса оси вращения
+σ_θ для сжатой области (модель 2019 г.).</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>Временной коэффициент b (°/ns) разброса оси вращения
+σ_θ для сжатой области (модель 2019 г.).</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>Если отмечено, повторяет моделирование, увеличивая
+общий угол Ω на фиксированный шаг.</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>Если отмечено, сохраняет каждую смоделированную картину
+как TIFF-файл в выбранную папку.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>Число делений дискретизации для интегрирования
+по распределению скорости вращения.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>Число делений азимутальной
+дискретизации для оси вращения.</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>Средняя скорость вращения кристалла ω в разгруженной области (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Стандартное отклонение σ_ω скорости
+вращения в разгруженной области (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>Постоянный член a (°) разброса оси вращения
+σ_θ для разгруженной области (модель 2019 г.).</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>Временной коэффициент b (°/ns) разброса оси вращения
+σ_θ для разгруженной области (модель 2019 г.).</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера h нормали к ударной (сжатой) плоскости.</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера k нормали к ударной (сжатой) плоскости.</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера l нормали к ударной (сжатой) плоскости.</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера h нормали к плоскости скольжения (используется
+для определения оси вращения в модели 2019 г.).</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера k нормали к плоскости скольжения (используется
+для определения оси вращения в модели 2019 г.).</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>Индекс Миллера l нормали к плоскости скольжения (используется
+для определения оси вращения в модели 2019 г.).</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>Скорость ударной (сжимающей) волны Us
+(km/s), используемая для преобразования глубины в
+прошедшее время в сжатой области.</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>Применить изотропное (гидростатическое) сжатие
+решётки в сжатой области.</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>Применить одноосное сжатие решётки вдоль
+нормали к ударной плоскости в сжатой области.</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>Скорость волны разгрузки Ur (km/s), используемая для преобразования
+глубины в прошедшее время в разгруженной области.</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>Применить изотропное (гидростатическое) сжатие
+решётки в разгруженной области.</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>Применить одноосное сжатие решётки вдоль
+нормали к ударной плоскости в разгруженной области.</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>Шаг приращения угла Ω (°), применяемый при каждом
+повторе, когда включено 'Increment Ω'.</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>Число повторов, когда включено 'Increment Ω'.</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>Использовать модель вращения 2018 г. (оси вращения
+перпендикулярны оси сжатия).</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>Использовать модель вращения 2019 г. (ось вращения
+из векторного произведения плоскости скольжения /
+плоскости сжатия, с разбросом θ,φ).</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>Модуль всестороннего сжатия K0 (GPa) для уравнения
+состояния Бирча–Мурнагана третьего порядка.</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>Производная модуля всестороннего сжатия по давлению K'0 для
+уравнения состояния Бирча–Мурнагана третьего порядка.</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>Массовый коэффициент поглощения (cm²/g) образца,
+используемый для ослабления интенсивностей сквозь слои.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Массовый коэффициент поглощения (cm²/g) образца,
+используемый для ослабления интенсивностей сквозь слои.</value>
+  </data>
+</root>

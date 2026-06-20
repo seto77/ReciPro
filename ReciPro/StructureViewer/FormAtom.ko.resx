@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxIsDraw.ToolTip" xml:space="preserve">
+    <value>3D 뷰에서 이 원자를 표시하거나 숨깁니다.
+이는 그리기만 전환할 뿐, 결정 구조
+자체는 변경되지 않습니다.</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>원자 구의 표시 반지름(옹스트롬 단위, 0–9.9 Å).
+렌더링에만 영향을 주며 산란 인자에는 영향이 없습니다.</value>
+  </data>
+  <data name="radioButtonAllSameElement.ToolTip" xml:space="preserve">
+    <value>색, 재질, 반지름 변경 사항을
+같은 원소의 모든 원자에 적용합니다.</value>
+  </data>
+  <data name="radioButtonApplyEquivalentAtoms.ToolTip" xml:space="preserve">
+    <value>변경 사항을 대칭 등가 위치(동일한 결정학적
+자리)에 있는 원자에만 적용합니다.</value>
+  </data>
+  <data name="radioButtonApplyThis.ToolTip" xml:space="preserve">
+    <value>변경 사항을 현재 선택된 원자에만 적용합니다.</value>
+  </data>
+  <data name="numericBoxAtomAmbient.ToolTip" xml:space="preserve">
+    <value>원자 구의 환경광(ambient) 성분(0–1):
+직접 조명을 받지 않는 면의 밝기입니다.</value>
+  </data>
+  <data name="numericBoxAtomDiffusion.ToolTip" xml:space="preserve">
+    <value>확산 반사(diffuse) 성분(0–1): 광원을 향한
+면을 밝게 하는 주된 음영입니다.</value>
+  </data>
+  <data name="numericBoxAtomEmmision.ToolTip" xml:space="preserve">
+    <value>자체 발광(emission) 성분(0–1): 광원과 무관하게
+원자 자체가 발하는 밝기입니다.</value>
+  </data>
+  <data name="numericBoxAtomShininess.ToolTip" xml:space="preserve">
+    <value>정반사 광택 지수(shininess, 0–50): 값이
+클수록 하이라이트가 작고 날카로워집니다.</value>
+  </data>
+  <data name="numericBoxAtomSpecular.ToolTip" xml:space="preserve">
+    <value>정반사(specular) 강도(0–1): 원자 표면에
+나타나는 광택 하이라이트의 밝기입니다
+(날카로움은 Shininess로 설정합니다).</value>
+  </data>
+  <data name="numericBoxAtomTransparency.ToolTip" xml:space="preserve">
+    <value>원자 구의 불투명도(알파 값, 0–1):
+1 = 불투명, 0 = 완전히 투명.</value>
+  </data>
+  <data name="pictureBoxAtomColor.ToolTip" xml:space="preserve">
+    <value>클릭하면 3D 뷰에서 이 원자의 표시 색을 설정합니다.</value>
+  </data>
+</root>

@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Sélectionnez l'échelle de couleurs de la figure de pôles : un
+spectre froid-chaud ou un dégradé en niveaux de gris.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Sélectionnez l'échelle de couleurs de la figure de pôles : un
+spectre froid-chaud ou un dégradé en niveaux de gris.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Affiche les valeurs de pixel maximale et minimale
+actuellement rendues dans la figure de pôles.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Limite supérieure de l'échelle de couleurs de la
+figure de pôles ; les valeurs supérieures ou égales
+sont mappées vers l'extrémité chaude/claire de la barre.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Limite inférieure de l'échelle de couleurs de la
+figure de pôles ; les valeurs inférieures ou égales
+sont mappées vers l'extrémité froide/sombre de la barre.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Taille de classe angulaire en degrés pour l'histogramme
+de la figure de pôles ; de plus petites valeurs donnent
+des classes plus fines (résolution accrue) (plage 1–30°).</value>
+  </data>
 </root>

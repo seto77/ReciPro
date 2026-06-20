@@ -138,4 +138,132 @@
   <data name="$this.Text" xml:space="preserve">
     <value>TEM 样品台模拟</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>极网绘制区域的背景颜色。</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>极网上绘制的试样夹持器轮廓的颜色。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>极网的 90° 主网格线
+和外周圆的颜色。</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>极网上绘制的 10° 中间
+网格线的颜色。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1 度线的颜色
+勾选“显示 1° 线”时有效</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>[100]、[010]、[001] 轴标签的颜色</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>一般晶带轴点及标签的颜色
+（[100]、[010]、[001] 以外的轴）</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Tilt-X（主轴）方向箭头的颜色
+（勾选“显示倾斜方向”时显示）</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Tilt-Y（副轴）方向箭头
+的颜色（勾选“显示倾斜方向”时显示）</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>勾选后，方向键可倾斜夹持器：
+左/右按箭头步长改变 Tilt X，
+上/下按箭头步长改变 Tilt Y。</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>每次按方向键所施加的
+倾斜角增量（度）。</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>绕主轴（Tilt X）的
+夹持器倾斜角（度）。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>绕主轴（Tilt X）的
+夹持器倾斜角（度）。</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>绕副轴（Tilt Y）的
+夹持器倾斜角（度）。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>绕副轴（Tilt Y）的
+夹持器倾斜角（度）。</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>极网上 Tilt X（主轴）的
+方位方向（度）。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>极网上 Tilt X（主轴）的
+方位方向（度）。</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>对 Tilt Y（副轴）使用负极性。</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>对 Tilt Y（副轴）使用正极性。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Tilt Y（副轴）的极性（符号）；
+请与您的 TEM 测角台约定保持一致。</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>极网上绘制的晶带轴点的半径。</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>极网上绘制的晶带轴点的半径。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>晶带轴指数标签的字体大小。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>晶带轴指数标签的字体大小。</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>将当前夹持器倾斜设置为 Link 的
+Tilt X/Y 值，并将由此得到的
+取向用作中立方向。</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>使晶体绕电子束（[001]）轴旋转 180°。</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>按下 Link 按钮时施加于 Tilt X 的
+目标倾斜角（度）。</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>按下 Link 按钮时施加于 Tilt Y 的
+目标倾斜角（度）。</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>勾选后，在极网上绘制 1° 间隔的线
+（颜色由 1° 颜色控件设置）。</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>勾选后，在每个晶带轴点旁
+显示 [u v w] 指数标签。</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>勾选后，在极网上绘制箭头
+以显示 Tilt-X 和 Tilt-Y 方向。</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>要显示的极网区域的半角（度）；
+值越小放大倍率越高。</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>倾斜方向极网。双击某一点
+可使夹持器朝该方向倾斜。</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>勾选后，还会为每个指数生成
+晶体对称等效的晶带轴。</value>
+  </data>
 </root>

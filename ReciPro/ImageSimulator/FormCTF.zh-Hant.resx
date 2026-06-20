@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyGraph.ToolTip" xml:space="preserve">
+    <value>將所繪曲線（u 與各函數值）以
+定位字元分隔的文字複製到剪貼簿，
+以便貼入 Excel</value>
+  </data>
+  <data name="checkBoxACTF.ToolTip" xml:space="preserve">
+    <value>繪製 ACTF（振幅對比傳遞函數）
+= Cos[W(u)] x Es x Ec，即光圈內的
+有效振幅傳遞</value>
+  </data>
+  <data name="checkBoxCosW.ToolTip" xml:space="preserve">
+    <value>繪製 Cos[W(u)]，即波像差 W(u) 的餘弦：
+透鏡傳遞中的振幅
+對比成分</value>
+  </data>
+  <data name="checkBoxEc.ToolTip" xml:space="preserve">
+    <value>繪製 Ec(u)，即時間（色）相干包絡線：
+由色像差與高壓 / 能量散佈所造成的
+對比衰減</value>
+  </data>
+  <data name="checkBoxEs_HRTEM.ToolTip" xml:space="preserve">
+    <value>繪製 Es(u)，即 HRTEM（高解析度 TEM）的
+空間相干包絡線：由束發散（半角 beta）
+所造成的對比衰減</value>
+  </data>
+  <data name="checkBoxEs_STEM.ToolTip" xml:space="preserve">
+    <value>繪製 Es(u)，即 STEM（掃描式 TEM）的
+空間相干包絡線：由有限光源尺寸
+(sigma_s) 所造成的對比衰減</value>
+  </data>
+  <data name="checkBoxPCTF.ToolTip" xml:space="preserve">
+    <value>繪製 PCTF（相位對比傳遞函數）
+= Sin[W(u)] x Es x Ec，即光圈內的
+有效相位傳遞</value>
+  </data>
+  <data name="checkBoxSinW.ToolTip" xml:space="preserve">
+    <value>繪製 Sin[W(u)]，即波像差 W(u) 的正弦：
+傳遞函數的相位對比核心</value>
+  </data>
+  <data name="numericBoxMaxU1.ToolTip" xml:space="preserve">
+    <value>繪圖橫軸空間頻率 u 的上限，單位 nm-1
+(0-20)；用於設定曲線在倒空間中
+繪製到多遠</value>
+  </data>
+  <data name="radioButtonCTF_Incoherent.ToolTip" xml:space="preserve">
+    <value>將 STEM（掃描式 TEM）視為非相干
+成像：透過對會聚光圈積分，計算
+單一 CTFI 曲線</value>
+  </data>
+  <data name="radioButtonCTF_coherent.ToolTip" xml:space="preserve">
+    <value>將 STEM（掃描式 TEM）視為相干
+成像：如同 HRTEM 一般顯示 Sin[W]、
+Cos[W]、Es、Ec、PCTF 與 ACTF 曲線</value>
+  </data>
+</root>

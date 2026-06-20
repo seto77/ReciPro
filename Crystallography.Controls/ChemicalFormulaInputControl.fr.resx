@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxCompound.ToolTip" xml:space="preserve">
+    <value>Traite l'élément comme un cation et le combine
+avec un groupe anionique (oxyde, hydroxyde,
+etc.) ; affiche la ligne de la formule du composé.</value>
+  </data>
+  <data name="comboBoxCompound.ToolTip" xml:space="preserve">
+    <value>Sélectionne le groupe anionique (par ex. O²⁻, OH⁻,
+CO₃²⁻, SO₄²⁻) à combiner avec le cation ;
+choisissez Custom pour saisir la formule directement.</value>
+  </data>
+  <data name="comboBoxElement.ToolTip" xml:space="preserve">
+    <value>Sélectionne l'élément chimique (Z = 1-97) ; sa
+valence usuelle est renseignée automatiquement.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Sélectionne l'élément chimique (Z = 1-97) ; sa
+valence usuelle est renseignée automatiquement.</value>
+  </data>
+  <data name="numericBoxMolarRatio.ToolTip" xml:space="preserve">
+    <value>Définit le rapport molaire (nombre relatif
+de moles) de ce composant.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Définit le rapport molaire (nombre relatif
+de moles) de ce composant.</value>
+  </data>
+  <data name="numericBoxValence.ToolTip" xml:space="preserve">
+    <value>Définit la valence (état d'oxydation, charge ionique)
+de l'élément sélectionné ; détermine la
+stœchiométrie lors de la combinaison avec un groupe anionique.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Définit la valence (état d'oxydation, charge ionique)
+de l'élément sélectionné ; détermine la
+stœchiométrie lors de la combinaison avec un groupe anionique.</value>
+  </data>
+  <data name="numericBoxWeight.ToolTip" xml:space="preserve">
+    <value>Définit la fraction massique de ce composant, en pourcentage (%).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Définit la fraction massique de ce composant, en pourcentage (%).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Définit la fraction massique de ce composant, en pourcentage (%).</value>
+  </data>
+  <data name="textBoxCompoundForm.ToolTip" xml:space="preserve">
+    <value>Affiche la formule chimique du composé construite
+à partir du cation et du groupe anionique
+sélectionné ; modifiable uniquement quand Custom est sélectionné.</value>
+  </data>
+</root>

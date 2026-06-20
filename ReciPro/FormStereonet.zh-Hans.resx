@@ -309,4 +309,427 @@
   <data name="radioButtonZigzagScan.Text" xml:space="preserve">
     <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (锯齿扫描)</value>
   </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>在结构因子中加入随能量变化的 X射线反常色散项（f', f''）。在吸收边附近 Friedel 定律失效，从而在 hkl 与 -h-k-l 之间产生 Bijvoet 强度差。取消勾选则回到不含色散的经典结果。</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>左键拖动（屏幕中央附近）：绕平行于显示器的轴旋转
+左键拖动（屏幕边缘）：  绕垂直于显示器的轴旋转
+右键单击：缩小
+右键拖动：放大所选区域
+中键拖动：拖动模拟图像
+</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>选择放在 Miller 指数之间的
+分隔字符。</value>
+  </data>
+  <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
+    <value>指数输出不使用分隔符</value>
+  </data>
+  <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
+    <value>指数输出使用空格作为分隔符</value>
+  </data>
+  <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
+    <value>指数输出使用逗号作为分隔符</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>设置投影指数标签（轴为 [u v w]，
+晶面为 (h k l)）的字号；取最小值
+时隐藏标签。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>设置投影指数标签（轴为 [u v w]，
+晶面为 (h k l)）的字号；取最小值
+时隐藏标签。</value>
+  </data>
+  <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
+    <value>使用固定颜色而非斑点颜色
+绘制指数标签。</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>设置启用“指定颜色”时
+指数标签所用的固定颜色。</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
+    <value>设置启用“指定颜色”时
+指数标签所用的固定颜色。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>设置极射赤面网轮廓（网格）线的宽度（1–20）。</value>
+  </data>
+  <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
+    <value>设置极射赤面网轮廓（网格）线的宽度（1–20）。</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>设置极射赤面网绘图区域的背景颜色。</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>设置极射赤面网绘图区域的背景颜色。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>设置 90° 线（最外侧基圆与主轴，
+即最粗的线）的颜色。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
+    <value>设置 90° 线（最外侧基圆与主轴，
+即最粗的线）的颜色。</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>设置极射赤面网 10° 网格线
+（每 10° 的纬线/经线）的颜色。</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value>设置极射赤面网 10° 网格线
+（每 10° 的纬线/经线）的颜色。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>设置 1° 网格线（细线，仅在启用
+“1° Lines”时显示）的颜色。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
+    <value>设置 1° 网格线（细线，仅在启用
+“1° Lines”时显示）的颜色。</value>
+  </data>
+  <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
+    <value>从赤道方向投影
+纬线和经线。</value>
+  </data>
+  <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
+    <value>从极轴方向投影
+纬线和经线。</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>勾选后，在极射赤面网上添加 1° 间隔的细网格
+线；取消勾选时仅显示较粗的网格。</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>设置投影到极射赤面网上的方向点
+或晶面法线点的半径。</value>
+  </data>
+  <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
+    <value>显示位于极射赤面网上半球的
+投影方向或晶面法线。</value>
+  </data>
+  <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
+    <value>显示位于极射赤面网下半球的
+投影方向或晶面法线。</value>
+  </data>
+  <data name="radioButtonWulff.ToolTip" xml:space="preserve">
+    <value>用吴氏网（等角法）投影方位</value>
+  </data>
+  <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
+    <value>用施密特网（等面积法）投影方位</value>
+  </data>
+  <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
+    <value>按结构因子（单个晶胞散射的振幅）
+缩放各斑点的大小，使较强的衍射
+显示得更大。</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>在每个绘制点旁绘制指数标签
+（[uvw] 或 (hkl)）。</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>将晶轴（晶带方向）投影到极射赤面网上
+并标注为 [u v w]。</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>将晶面法线投影到极射赤面网上
+并标注为 Miller 指数 (h k l)。</value>
+  </data>
+  <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
+    <value>绘制菊池线对，即非弹性散射电子
+在晶面上发生衍射时形成的成对
+带状条纹。</value>
+  </data>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>显示极射赤面网上光标位置处的
+倾斜角和方位角（度）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>显示极射赤面网上光标位置处的
+倾斜角和方位角（度）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>设置投影到极射赤面网上的指数点的半径。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>设置为菊池线对绘制的
+晶带轴点的半径。</value>
+  </data>
+  <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
+    <value>设置为菊池线对绘制的
+晶带轴点的半径。</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>设置菊池线模式下绘制的
+极点和线的颜色。</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
+    <value>设置菊池线模式下绘制的
+极点和线的颜色。</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>设置菊池线模式下晶带轴标签的颜色
+（菊池线＝非弹性散射电子产生的
+衍射带）。</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
+    <value>设置菊池线模式下晶带轴标签的颜色
+（菊池线＝非弹性散射电子产生的
+衍射带）。</value>
+  </data>
+  <data name="groupBoxColor.ToolTip" xml:space="preserve">
+    <value>更改显示颜色</value>
+  </data>
+  <data name="checkedListBoxCircles.ToolTip" xml:space="preserve">
+    <value>已添加大圆（晶带圆）的列表；勾选可显示或隐藏
+各圆，或选中某一项以将其删除</value>
+  </data>
+  <data name="buttonAddCircle.ToolTip" xml:space="preserve">
+    <value>将由指定晶带轴或两个晶面求得的
+大圆添加到极射赤面投影图中。</value>
+  </data>
+  <data name="buttonDeleteCircle.ToolTip" xml:space="preserve">
+    <value>从极射赤面投影图中
+删除选中的大圆。</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>设置大圆的绘制颜色。</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
+    <value>设置大圆的绘制颜色。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>设置大圆的线宽。</value>
+  </data>
+  <data name="trackBarGreatCircleLineWidth.ToolTip" xml:space="preserve">
+    <value>设置大圆的线宽。</value>
+  </data>
+  <data name="radioButtonCircleByAxis.ToolTip" xml:space="preserve">
+    <value>用晶带轴指数 [uvw] 定义大圆（晶带）；
+该圆包含所有共享此轴的晶面。</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>晶带轴方向 [uvw]；垂直于此轴的大圆
+（其晶带圆）将被添加到极射赤面网上</value>
+  </data>
+  <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
+    <value>由两个晶面指数定义大圆（晶带）；
+它们的公共晶带轴（叉积）确定该圆。</value>
+  </data>
+  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
+    <value>晶带对中第一个晶面指数 (hkl)；晶面 1 与
+晶面 2 的公共交线定义了绘制在极射赤面
+网上的晶带轴大圆</value>
+  </data>
+  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
+    <value>晶带对中第二个晶面指数 (hkl)；它与晶面 1
+的叉积定义了极射赤面网上的晶带轴大圆</value>
+  </data>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>停止倾斜扫描模拟，并将记录的极点
+轨迹坐标复制到剪贴板。</value>
+  </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>开始测角仪倾斜扫描模拟：以动画显示
+所选极点并记录其极射赤面投影轨迹。</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>回转扫描模式：在固定半径下扫描倾斜
+（θ²+ω²=常数），在极射赤面网上
+画出一个圆。</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>锯齿（光栅）扫描模式：在推进 ω 的同时
+来回步进 θ（+θ → +ω → -θ → +ω …）。</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>在扫描中启用绕 Ry 轴（角度 ω）的旋转。</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>在扫描中启用绕 Rz 轴（角度 θ）的旋转。</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>在扫描中启用绕 Rx 轴
+（倾斜角 φ）的旋转。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rx 轴（φ）
+电机的旋转速度。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rx 轴（φ）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rx 轴（φ）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip1" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rx 轴（φ）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Ry 轴（ω）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip1" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Ry 轴（ω）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rz 轴（θ）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip1" xml:space="preserve">
+    <value>以度每秒（°/s）设置 Rz 轴（θ）
+电机的旋转速度。</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>以秒为单位设置扫描的总时长。</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip1" xml:space="preserve">
+    <value>以秒为单位设置扫描的总时长。</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置回转扫描
+的角速度。</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip1" xml:space="preserve">
+    <value>以度每秒（°/s）设置回转扫描
+的角速度。</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>以度为单位设置 Ry 轴（ω）扫描每一步的角度增量。</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip1" xml:space="preserve">
+    <value>以度为单位设置 Ry 轴（ω）扫描每一步的角度增量。</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>以度为单位设置回转扫描的径向
+倾斜角（自中心的锥半角）。</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip1" xml:space="preserve">
+    <value>以度为单位设置回转扫描的径向
+倾斜角（自中心的锥半角）。</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>以度为单位设置 Ry 轴（ω）的振荡振幅（±）。</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip1" xml:space="preserve">
+    <value>以度为单位设置 Ry 轴（ω）的振荡振幅（±）。</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>以度为单位设置 Rz 轴（θ）的振荡振幅（±）。</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip1" xml:space="preserve">
+    <value>以度为单位设置 Rz 轴（θ）的振荡振幅（±）。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>设置用于计算结构因子强度以及极射赤面投影网上所示
+埃瓦尔德球衍射列表的辐射源（电子/X射线等）
+和波长</value>
+  </data>
+  <data name="radioButtonRange.ToolTip" xml:space="preserve">
+    <value>显示位于下方所输入范围内的所有指数；
+对于轴而言指 [u v w]，对于晶面而言
+指米勒指数 (h k l)。</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>仅显示下方输入的单个指数，
+而非扫描整个指数范围。</value>
+  </data>
+  <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>按结构因子强度显示排名最高的晶面指数；
+结构因子越大，通常对应越强的
+衍射。</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>投影到极射赤面投影网上的用户指定指数列表；
+选择行可重新着色或移除它们</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>将上方输入的指数添加到
+要绘制的指定指数列表中。</value>
+  </data>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>从指定指数列表中
+移除所选指数。</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>设置正在添加或当前所选指数的绘制颜色
+（当“Rotate color”关闭时使用）。</value>
+  </data>
+  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
+    <value>设置正在添加或当前所选指数的绘制颜色
+（当“Rotate color”关闭时使用）。</value>
+  </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>自动为每个指数分配轮转调色板中的
+颜色；关闭时，全部使用右侧
+所选的单一颜色。</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>要显示的衍射数量，取自结构因子
+排名的前列（1–1000）。</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip1" xml:space="preserve">
+    <value>要显示的衍射数量，取自结构因子
+排名的前列（1–1000）。</value>
+  </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>输入要绘制的指数——在“Specified”模式下为单个
+[uvw]/(hkl)，在“Range”模式下为最大的 h,k,l。</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
+    <value>同时绘制所有对称等效的指数（完整的
+{hkl} 或 &lt;uvw&gt; 族），而不仅是所输入的那一个。</value>
+  </data>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>在极射赤面投影旁同时显示晶体的
+3D（OpenGL）视图；
+未勾选时仅显示2D极射赤面投影网</value>
+  </data>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>将3D视图重置为默认的方位和缩放。</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>在3D视图中，于每个绘制的极点旁
+绘制指数标签（[uvw] 或 (hkl)）。</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>在3D视图中，仅绘制上半球（Z&gt;0）上的点，
+而非整个球面。</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>在3D视图中，同时绘制平面的极射赤面投影网圆盘
+（投影平面）及其上的投影点。</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>在3D视图中，绘制参考球的轮廓
+（纬线/经线的线框）。</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>在3D视图中，绘制连接球面上每个极点
+与其在极射赤面投影网圆盘上所绘制点的
+投影线。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>调节深度提示：在3D视图中物体
+随距离（深度）变淡的强度。</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>调节深度提示：在3D视图中物体
+随距离（深度）变淡的强度。</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>显示极射赤面投影网上最接近光标位置的
+晶带轴 [uvw] 与晶面 (hkl)。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>显示极射赤面投影网上最接近光标位置的
+晶带轴 [uvw] 与晶面 (hkl)。</value>
+  </data>
 </root>

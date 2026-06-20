@@ -450,4 +450,604 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Симулятор дифракции</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, моделируются дифракционные рефлексы.</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, моделируются линии Кикучи (полосы,
+создаваемые неупруго рассеянными электронами,
+которые затем испытывают брэгговскую дифракцию).</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, моделируются кольца Дебая (кольца порошковой
+дифракции от хаотически ориентированных кристаллитов).</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, моделируются масштабные линии.</value>
+  </data>
+  <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, отображаются индексы рефлексов</value>
+  </data>
+  <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, отображаются межплоскостные расстояния</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, отображаются обратные величины межплоскостного
+расстояния (т. е. длина вектора g)</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, отображаются расстояния (мм) от
+рефлексов до прямого рефлекса</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, для каждого рефлекса отображается ошибка возбуждения
+s_g, показывающая, насколько узел обратной решётки отклоняется
+от точного условия Брэгга / сферы Эвальда.</value>
+  </data>
+  <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
+    <value>Если отмечено, для каждого рефлекса отображается величина
+структурного фактора |Fg|; большее |Fg| обычно
+означает более сильный рефлекс.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Задать размер строк</value>
+  </data>
+  <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
+    <value>Задать размер шрифта</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Задать цвет строк</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>Задать цвет строк</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Задать цвет основания перпендикуляра,
+опущенного из образца.</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>Задать цвет основания перпендикуляра,
+опущенного из образца.</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>Задать цвет прямого рефлекса</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>Задать цвет прямого рефлекса</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>Показать положение основания перпендикуляра</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>Показать положение прямого пучка</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Выбрать рефлексы для линий Кикучи по
+структурному фактору (сначала самые сильные рефлексы).</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Если отмечено, интенсивности линий Кикучи взвешиваются по
+кинематической относительной интенсивности каждого рефлекса.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Выбрать рефлексы для линий Кикучи
+по порогу 1/d (межплоскостного расстояния).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Задать число самых сильных рефлексов (по структурному
+фактору), используемых для построения линий Кикучи.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Строить линии Кикучи только для рефлексов, у которых
+1/d (обратная длина) меньше этого значения
+(nm⁻¹); т. е. только для расстояний крупнее, чем 1/значение.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>Строить линии Кикучи только для рефлексов, у которых
+1/d (обратная длина) меньше этого значения
+(nm⁻¹); т. е. только для расстояний крупнее, чем 1/значение.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Задать цвет линий Кикучи.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Задать ширину линий Кикучи</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Задать ширину линий Кикучи</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>Линии Кикучи</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>Задать цвет колец Дебая</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>Задать цвет колец Дебая</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>Если отмечено, отображаются индексы колец Дебая.</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>Если отмечено, все кольца Дебая
+отображаются с одинаковой интенсивностью.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Задать ширину колец Дебая</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>Задать ширину колец Дебая</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>Если отмечено, отображаются масштабные подписи</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Задать плотность делений шкалы (мелкая / средняя / крупная).</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>Задать ширину масштабных линий</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Задать ширину масштабных линий</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>Задать деление масштабных линий</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>Задать деление масштабных линий</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>Задать деление масштабных линий</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>Задать цвет масштабных линий азимутального угла</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>Задать цвет масштабных линий азимутального угла</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>Задать цвет масштабных линий 2θ</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>Задать цвет масштабных линий 2θ</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Перетаскивание левой кнопкой (вблизи центра экрана): поворот вокруг оси, параллельной монитору
+Перетаскивание левой кнопкой (у края экрана): поворот вокруг оси, перпендикулярной монитору
+Щелчок правой кнопкой: уменьшение масштаба
+Перетаскивание правой кнопкой: увеличение выделенной области
+Перетаскивание средней кнопкой: перемещение смоделированного изображения
+Двойной щелчок левой кнопкой: отображение информации о векторе g</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
+    <value>Задать цвет узлов обратной решётки
+вблизи сферы Эвальда.</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>Задать цвет узлов обратной решётки вблизи сферы Эвальда.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
+    <value>Задать радиус отрисовки сфер дифракционных рефлексов
+в 3D-виде обратного пространства (nm⁻¹); рефлексы в пределах
+этого расстояния от сферы Эвальда окрашиваются как близкие
+и могут получать подписи.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>Задать радиус отрисовки сфер дифракционных рефлексов
+в 3D-виде обратного пространства (nm⁻¹); рефлексы в пределах
+этого расстояния от сферы Эвальда окрашиваются как близкие
+и могут получать подписи.</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>Задать прозрачность 3D-рефлексов.</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
+    <value>Если отмечено, узлы обратной решётки вблизи сферы
+Эвальда подписываются их индексами hkl.</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>Задать цвет узлов обратной решётки,
+удалённых от сферы Эвальда.</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
+    <value>Если отмечено, узлы обратной решётки, более удалённые
+от сферы Эвальда, становятся более прозрачными.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>Задать порог относительной интенсивности (%), ниже
+которого узлы обратной решётки скрываются.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Задать порог относительной интенсивности (%), ниже
+которого узлы обратной решётки скрываются.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>Задать порог относительной интенсивности (%) для отображения
+узлов обратной решётки. Рефлексы слабее этого значения скрываются.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Влево)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вниз)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вверх)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вправо)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Задать угловой шаг для кнопок
+выше или скорость вращения.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Задать угловой шаг для кнопок
+выше или скорость вращения.</value>
+  </data>
+  <data name="buttonResetAngle.ToolTip" xml:space="preserve">
+    <value>Сбросить ориентацию 3D-вида в направление по умолчанию.</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Задать цвет поверхности сферы Эвальда.</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>Задать цвет рефлекса начала координат (000).</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>Задать цвет направляющей стрелки направления вправо.</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>Задать цвет направляющей стрелки направления вверх.</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>Задать цвет направляющей стрелки направления пучка.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>Задать цвет текста индексов/подписей в 3D-виде.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
+    <value>Задать цвет текста подписей индексов в 3D-виде.</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
+    <value>Если отмечено, в 3D-виде обратной решётки показываются
+направляющие стрелки Пучок/Верх/Право.</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Если отмечено, в 3D-виде обратной
+решётки отрисовывается сфера Эвальда.</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
+    <value>Если отмечено, показывается 3D-вид обратного пространства
+(обратная решётка и сфера Эвальда).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в реальном
+пространстве в мм (начало: кристалл).</value>
+  </data>
+  <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в реальном
+пространстве в мм (начало: кристалл).</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в реальном
+пространстве в мм (начало: кристалл).</value>
+  </data>
+  <data name="labelD.ToolTip" xml:space="preserve">
+    <value>Межплоскостное расстояние d (nm), соответствующее положению указателя мыши.</value>
+  </data>
+  <data name="labelDinv.ToolTip" xml:space="preserve">
+    <value>Обратное расстояние d⁻¹ (nm⁻¹), соответствующее
+положению указателя мыши.</value>
+  </data>
+  <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
+    <value>Угол рассеяния 2θ в градусах,
+соответствующий положению указателя мыши.</value>
+  </data>
+  <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
+    <value>Угол рассеяния 2θ в радианах (mrad ниже 0,1
+рад), соответствующий положению указателя мыши.</value>
+  </data>
+  <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в плоскости детектора
+в мм (начало: основание картины).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в плоскости детектора
+в мм (начало: основание картины).</value>
+  </data>
+  <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в обратном пространстве в nm⁻¹.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Координаты указателя мыши в обратном пространстве в nm⁻¹.</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>Если отмечено, открывается подробная информационная
+панель в положении курсора.</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
+    <value>Если отмечено, смоделированное изображение
+отражается по горизонтали (слева направо).</value>
+  </data>
+  <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
+    <value>Если отмечено, смоделированное изображение
+отражается по вертикали (сверху вниз).</value>
+  </data>
+  <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
+    <value>Если отмечено, изображение показывается
+с инвертированной (негативной) яркостью.</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>Установить центр монитора в следующую точку</value>
+  </data>
+  <data name="comboBoxCenter.ToolTip" xml:space="preserve">
+    <value>Выбрать опорную точку, используемую как центр монитора
+(прямой рефлекс, основание перпендикуляра или центр детектора).</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>Зафиксировать центр монитора в следующей точке</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Задать размеры в пикселях смоделированной картины</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Задать разрешение смоделированной картины</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Задать разрешение смоделированной картины</value>
+  </data>
+  <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
+    <value>Выразить разрешение как длину на плоскости
+детектора в расчёте на пиксель (мм/px).</value>
+  </data>
+  <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
+    <value>Выразить разрешение как длину в обратном
+пространстве в расчёте на пиксель (nm⁻¹/px).</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>Задать скорость вращения при помощи мыши</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Задать скорость вращения при помощи мыши</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>Открыть окно моделирования держателя ПЭМ.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Задать длину камеры 2, т. е. расстояние
+от образца до детектора (монитора).</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>Задать длину камеры 2, т. е. расстояние
+от образца до детектора (монитора).</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>Открыть окно подробных настроек оптической системы.</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохранить текущее изображение в файл</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Скопировать текущее изображение в буфер обмена</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Задать источник излучения и ускоряющее
+напряжение (длину волны).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Задать источник излучения и ускоряющее
+напряжение (длину волны).</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>В этом режиме интенсивность вычисляется методом блоховских волн.
+Действует только для электронного источника.</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>Если отмечено, дифракционные рефлексы отрисовываются
+цветом, назначенным каждому кристаллу.</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Добавить к структурному фактору энергозависимые члены аномальной дисперсии рентгеновского излучения (f', f''). Вблизи края поглощения закон Фриделя нарушается, что приводит к различиям интенсивностей по Бейвоету (hkl и -h-k-l). Снимите флажок для классического результата без учёта дисперсии.</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>Если отмечено, скрываются все рефлексы,
+запрещённые пространственной группой.</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>Если отмечено, скрываются рефлексы,
+запрещённые центрировкой решётки.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Настройки моделирования прецессионной
+электронной дифракции (PED)</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+электронной дифракции); половинный угол конуса,
+используемый для наклона и интегрирования падающего пучка.</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+электронной дифракции); половинный угол конуса,
+используемый для наклона и интегрирования падающего пучка.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>Число азимутальных делений конуса прецессии для
+моделирования PED (прецессионной электронной
+дифракции). Большее число делений сглаживает
+выборку конуса, но требует больше времени.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>Число азимутальных делений конуса прецессии для
+моделирования PED (прецессионной электронной
+дифракции). Большее число делений сглаживает
+выборку конуса, но требует больше времени.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Настройки расчёта дифракции методом
+блоховских волн (динамического)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Число дифрагированных пучков (блоховских волн), включаемых
+в динамический расчёт многократного рассеяния. Большее число
+волн повышает точность, но замедляет вычисления.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Число дифрагированных пучков (блоховских волн), включаемых
+в динамический расчёт многократного рассеяния. Большее число
+волн повышает точность, но замедляет вычисления.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Задать толщину образца</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Задать толщину образца</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Настройки внешнего вида дифракционных рефлексов</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>Рефлексы отображаются в виде кругов.</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>Рефлексы отображаются в виде двумерных гауссиан.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Задать непрозрачность дифракционных рефлексов</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Задать непрозрачность дифракционных рефлексов</value>
+  </data>
+  <data name="flowLayoutPanelSpotOpacity.ToolTip" xml:space="preserve">
+    <value>Задать непрозрачность дифракционных рефлексов</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>Задать радиус дифракционного рефлекса или сигму
+гауссианы в единицах обратного пространства (nm⁻¹, где
+указано); большие значения отрисовывают более широкие рефлексы и
+включают более широкий допуск по ошибке возбуждения.</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>Задать радиус дифракционного рефлекса или сигму
+гауссианы в единицах обратного пространства (nm⁻¹, где
+указано); большие значения отрисовывают более широкие рефлексы и
+включают более широкий допуск по ошибке возбуждения.</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>Если отмечено, все дифракционные
+рефлексы отрисовываются одного размера.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Задать яркость дифракционных рефлексов</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>Задать яркость дифракционных рефлексов</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Задать цветовую шкалу</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Выбрать цветовую шкалу, используемую для сопоставления интенсивности
+дифракционных рефлексов с цветом. Шкала, отличная от заданной по умолчанию,
+окрашивает рефлексы по интенсивности, а не назначенным цветом кристалла.</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>Если отмечено, интенсивности дифракционных
+рефлексов отображаются в логарифмической шкале.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Задать цвета отрисовки дифракционных рефлексов
+для общих и систематически погашенных
+(центрировка / винтовая ось / плоскость скольжения) рефлексов.</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>Задать цвет общих рефлексов</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>Задать цвет общих рефлексов</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>Задать цвет погашенных рефлексов (винтовая ось или скольжение)</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>Задать цвет погашенных рефлексов (винтовая ось или скольжение)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>Задать цвет погашенных рефлексов (центрировка решётки)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>Задать цвет погашенных рефлексов (центрировка решётки)</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Выбрать способ вычисления интенсивностей дифракционных
+рефлексов (динамический метод блоховских волн,
+кинематический или только ошибка возбуждения).</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>В этом режиме при расчёте интенсивности учитывается только ошибка возбуждения.
+(Влияние структурного фактора игнорируется) </value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>В этом режиме интенсивность вычисляется из
+структурного фактора и ошибки возбуждения.</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Открыть окно сведений о рефлексе.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Выбрать оптику освещения (параллельная/SAED,
+сходящаяся/CBED, прецессионная/PED, обратная Лауэ).</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>Режим параллельного пучка (т. е. режим SAED)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>Режим прецессионного пучка (т.е. режим PED)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>Режим сходящегося пучка (т.е. режим CBED)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>Режим Лауэ на отражение (обратная съёмка, полихроматическое рентгеновское излучение).</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>Рентгеновский прецессионный режим (ZOLZ, зона Лауэ нулевого порядка):
+показывает плоскость обратной решётки нулевого слоя в виде
+полярной проекции, в отличие от электронного режима PED.</value>
+  </data>
 </root>

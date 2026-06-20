@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>對目前預覽中的區域加上遮罩:將這些像素
+排除於擬合(殘差)之外,使其在比對
+模擬時被忽略。</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>對影像的每個像素加上遮罩(將整張
+影像排除於擬合之外)。</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>將目前的遮罩儲存為 .mas
+檔,以便日後重新載入。</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>解除目前預覽中區域的遮罩:
+將這些像素重新納入擬合。</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>清除所有遮罩:將每個像素重新納入擬合。</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>套用底片模糊:將模擬出的繞射環與右側設定
+寬度 (µm) 的儀器點擴散(高斯)函數進行摺積,
+以模擬偵測器/底片的暈染。</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>遮罩模式:選取所選繞射峰(hkl 繞射)
+周圍的像素以進行遮罩;
+與其他遮罩模式互斥。</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>遮罩模式:遮罩自圖樣中心 Start 與 End
+半徑之間的環狀(甜甜圈)區域;
+與其他遮罩模式互斥。</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>遮罩模式:以下方所選形狀
+(點狀/圓/矩形/甜甜圈),用滑鼠直接
+在影像上塗畫遮罩;
+與其他遮罩模式互斥。</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>遮罩模式:以方向、帶寬與角度
+所定義的直線帶狀(矩形)區域加上遮罩;
+與其他遮罩模式互斥。</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>將帶狀遮罩對稱地套用於中心線的
+兩側(而非僅單側)。</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的方向預設
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+預設會固定角度,Free 則可手動輸入。</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>每次滑鼠點按所塗畫的手動點狀
+遮罩半徑(像素,1–128)。</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>相機長度(試料至偵測器距離)
+單位 mm;用以縮放偵測器上模擬
+繞射環的半徑。</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>直接光束(圖樣)中心的 X 像素座標;
+決定繞射環在影像上以何處
+為中心。</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>直接光束(圖樣)中心的 Y 像素座標;
+決定繞射環在影像上以何處
+為中心。</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>底片模糊寬度(µm):與繞射環摺積以加寬
+峰形的高斯儀器點擴散函數
+(偵測器/底片解析度)。</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>來源影像的偵測器像素尺寸,單位
+mm/pixel;與相機長度共同將散射角
+換算為以像素為單位的繞射環半徑。</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>畫面顯示解析度,單位 mm/pixel;
+設定所顯示圖樣的縮放倍率(螢幕 mm/pixel ÷
+影像 mm/pixel)。</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的角度,單位度(0–360°);設定帶的
+方向。僅當 Direction 為 Free 時可編輯。</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的寬度,單位像素(0–10000);
+設定遮罩帶的寬度。</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>手動遮罩形狀:拖曳以定義一個圓(自中心
+至半徑)並遮罩其所圍住的區域。</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>手動遮罩形狀:以圖樣中心為基準拖曳兩個半徑,
+以遮罩環狀(甜甜圈)區域。</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>手動遮罩形狀:拖曳一個矩形(兩個
+角點)並遮罩其所圍住的區域。</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>手動遮罩形狀:點按以遮罩(左鍵)
+或解除遮罩(右鍵)一個由 Size 設定
+半徑的圓形點狀區域;此為預設模式。</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>模擬影像的寬×高,單位像素(1–10000);
+設定所產生繞射圖樣的畫布
+尺寸。</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>將目前模擬的繞射圖樣儲存為
+IPA 影像檔(*.ipa),包含
+解析度、中心、相機長度與波長。</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>在影像上將已遮罩(排除於擬合之外)的像素
+反白顯示,以便檢視哪些區域被忽略。</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>顯示亮度視窗的強度上限
+(對應至最亮顏色的計數)。
+僅影響顯示對比,不改變資料。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>顯示亮度視窗的強度上限
+(對應至最亮顏色的計數)。
+僅影響顯示對比,不改變資料。</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>顯示亮度視窗的強度下限
+(對應至最暗顏色的計數)。
+僅影響顯示對比,不改變資料。</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>顯示亮度視窗的強度下限
+(對應至最暗顏色的計數)。
+僅影響顯示對比,不改變資料。</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的振幅 (A),採對數刻度。
+設定作為擬合起始猜測值的背景環
+峰高。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的振幅 (A),採對數刻度。
+設定作為擬合起始猜測值的背景環
+峰高。</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的寬度
+(H,半高全寬,單位像素)。
+數值越大,背景環越寬。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的寬度
+(H,半高全寬,單位像素)。
+數值越大,背景環越寬。</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的半徑
+(R,自中心起以像素計)。
+設定背景環峰值出現的位置。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>初始擴散背景(暈環)的半徑
+(R,自中心起以像素計)。
+設定背景環峰值出現的位置。</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>環狀遮罩的外側半徑(自中心起以像素計)。
+Start 與 End 半徑之間的像素會被選取以
+進行遮罩。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>環狀遮罩的外側半徑(自中心起以像素計)。
+Start 與 End 半徑之間的像素會被選取以
+進行遮罩。</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>環狀遮罩的內側半徑(自中心起以像素計)。
+Start 與 End 半徑之間的像素會被選取以
+進行遮罩。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>環狀遮罩的內側半徑(自中心起以像素計)。
+Start 與 End 半徑之間的像素會被選取以
+進行遮罩。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>環狀遮罩的內側半徑(自中心起以像素計)。
+Start 與 End 半徑之間的像素會被選取以
+進行遮罩。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>試料/偵測器傾斜軸的方位角(phi),單位度。
+設定圖樣傾斜所繞之軸的方向,影響繞射環
+變形的方位。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>試料/偵測器傾斜軸的方位角(phi),單位度。
+設定圖樣傾斜所繞之軸的方向,影響繞射環
+變形的方位。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>試料/偵測器繞 phi 軸傾斜的大小
+(tau),單位度。數值越大,
+德拜環越從正圓變形為橢圓。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>試料/偵測器繞 phi 軸傾斜的大小
+(tau),單位度。數值越大,
+德拜環越從正圓變形為橢圓。</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>勾選峰清單中的每一個繞射(hkl)項目,
+一次選取所有峰。</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>取消勾選峰清單中的每一個繞射(hkl)
+項目,清除選取。</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>選取已勾選繞射(hkl)之繞射環周圍的
+影像區域,以便進行遮罩。</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>繞射指數(hkl)清單;勾選其周圍繞射環
+區域你想選取以進行遮罩的
+峰。</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>入射輻射的光束收斂(半角),單位度。
+數值越大,模擬出的德拜環峰越
+寬。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>入射輻射的光束收斂(半角),單位度。
+數值越大,模擬出的德拜環峰越
+寬。</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>入射輻射的光束收斂(半角),單位度。
+數值越大,模擬出的德拜環峰越
+寬。</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>線源的波長擴散(單色性,
+Delta-lambda / lambda),單位 %。
+數值越大,模擬出的繞射環越寬。</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>線源的波長擴散(單色性,
+Delta-lambda / lambda),單位 %。
+數值越大,模擬出的繞射環越寬。</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>線源的波長擴散(單色性,
+Delta-lambda / lambda),單位 %。
+數值越大,模擬出的繞射環越寬。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>選擇用以計算德拜環半徑的輻射源(X射線
+或電子)及其波長。</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>顯示殘差(實測減去模擬圖樣),
+以便檢視擬合的吻合程度。與 Simulation
+顯示互斥。</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>將模擬圖樣疊加於實測影像上,
+以 Opacity 滑桿混合。與 Residual
+顯示互斥。</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>在 Simulation 模式下,模擬圖樣疊加於
+實測影像上的混合不透明度(0-100%)。</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>將目前的背景參數儲存為背景檔
+(*.bg),以供日後重複使用。</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>啟用背景初始值的手動設定模式;
+啟用 A/H/R 滑桿,以便在精修前
+定義起始的背景環。</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>繞射資訊的唯讀摘要欄:顯示
+貢獻繞射的結晶子數目以及
+各繞射(hkl)的比例。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>每次滑鼠點按所塗畫的手動點狀
+遮罩半徑(像素)。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>每次滑鼠點按所塗畫的手動點狀
+遮罩半徑(像素)。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>直接光束(圖樣)中心的 X/Y 像素座標;
+決定繞射環以何處為中心。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>畫面顯示解析度,單位 mm/pixel;
+設定所顯示圖樣的縮放倍率。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>畫面顯示解析度,單位 mm/pixel;
+設定所顯示圖樣的縮放倍率。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>相機長度(試料至偵測器距離)
+單位 mm;用以縮放繞射環半徑。</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>相機長度(試料至偵測器距離)
+單位 mm;用以縮放繞射環半徑。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的角度(度,0–360°);
+設定帶的方向
+(僅當 Direction 為 Free 時可編輯)。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的寬度(像素);
+設定遮罩帶的寬度。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>帶狀遮罩的方向預設
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+Free 可讓你手動輸入角度。</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>來源影像的偵測器像素尺寸,單位
+mm/pixel;將散射角換算為繞射環半徑。</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>來源影像的偵測器像素尺寸,單位
+mm/pixel;將散射角換算為繞射環半徑。</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>直接光束中心的 X 像素座標;
+設定繞射環中心。</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>直接光束中心的 Y 像素座標;
+設定繞射環中心。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>底片模糊寬度(µm):與繞射環摺積以加寬峰形的
+高斯儀器點擴散函數。</value>
+  </data>
+</root>

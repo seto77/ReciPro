@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>색</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>극점도의 색 스케일을 선택합니다: 한색에서
+난색으로 이어지는 스펙트럼 또는 회색조 그러데이션.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>극점도의 색 스케일을 선택합니다: 한색에서
+난색으로 이어지는 스펙트럼 또는 회색조 그러데이션.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>현재 극점도에 렌더링된 픽셀 값의
+최댓값과 최솟값을 표시합니다.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>극점도 색 스케일의 상한값. 이 값
+이상의 값은 색 막대의 난색/밝은
+끝에 사상됩니다.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>극점도 색 스케일의 하한값. 이 값
+이하의 값은 색 막대의 한색/어두운
+끝에 사상됩니다.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>극점도 히스토그램의 각도 빈 크기 (도).
+값이 작을수록 더 정밀한 (고해상도)
+빈이 됩니다 (범위 1–30°).</value>
+  </data>
 </root>

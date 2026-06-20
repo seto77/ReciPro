@@ -95,4 +95,69 @@
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>Farbe</value>
   </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
+    <value>Wenn der Zeichenbereich nicht durch Kristallflächen geschlossen ist,
+begrenzen Sie ihn durch diesen Abstand vom Ursprung.</value>
+  </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
+    <value>Wenn der Zeichenbereich nicht durch Kristallflächen geschlossen ist,
+begrenzen Sie ihn durch diesen Abstand vom Ursprung.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Die ausgewählte Begrenzungsebene ersetzen</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Die ausgewählte Begrenzungsebene löschen</value>
+  </data>
+  <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
+    <value>Änderungen sofort anwenden</value>
+  </data>
+  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
+    <value>Symmetrieäquivalente Ebenen einbeziehen</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Die Begrenzungsebene entlang ihrer Normalen um diesen
+Abstand (Å) verschieben; positive Werte bewegen sie vom Ursprung weg.</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
+    <value>Die Begrenzungsebene entlang ihrer Normalen um diesen
+Abstand (Å) verschieben; positive Werte bewegen sie vom Ursprung weg.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Die Begrenzungsebene entlang ihrer Normalen um diesen
+Abstand (Å) verschieben; positive Werte bewegen sie vom Ursprung weg.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Eine neue Begrenzungsebene aus den aktuellen Einstellungen
+für Index, Abstand und Farbe zur Liste hinzufügen.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Farbe, mit der diese Begrenzungsebene
+(Schnittebene) in der Kristalldarstellung gerendert wird.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste der definierten Begrenzungsebenen; aktivieren Sie das
+Kontrollkästchen, um eine Ebene zu aktivieren/deaktivieren, oder wählen Sie
+eine Zeile, um sie in den Editor oben zu laden.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Abstand vom Ursprung zur Begrenzungsebene,
+direkt in Ångström (Å) eingegeben; wird mit
+dem Vielfachen des d-Werts links synchron gehalten.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>Abstand vom Ursprung zur Begrenzungsebene als
+Vielfaches des (hkl)-Netzebenenabstands d; wird
+mit dem absoluten Å-Wert rechts synchron gehalten.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Abstand vom Kristallursprung zur
+Begrenzungsebene, festgelegt als Vielfaches des
+d-Werts (links) oder direkt in Å (rechts).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Millersche Indizes (h k l) der Normalen der
+Begrenzungsebene; definiert die Orientierung
+der Ebene, die den Kristall schneidet.</value>
+  </data>
 </root>

@@ -62,4 +62,31 @@
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>Resolución</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Selecciona la escala de color de la figura de polos: un
+espectro de frío a cálido o un gradiente de escala de grises.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Selecciona la escala de color de la figura de polos: un
+espectro de frío a cálido o un gradiente de escala de grises.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Muestra los valores de píxel máximo y mínimo
+actualmente representados en la figura de polos.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Límite superior de la escala de color de la
+figura de polos; los valores iguales o superiores a este
+se asignan al extremo cálido/brillante de la barra.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Límite inferior de la escala de color de la
+figura de polos; los valores iguales o inferiores a este
+se asignan al extremo frío/oscuro de la barra.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Tamaño de bin angular en grados para el
+histograma de la figura de polos; valores menores dan
+bins más finos (mayor resolución) (rango 1–30°).</value>
+  </data>
 </root>

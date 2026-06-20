@@ -122,4 +122,123 @@
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
     <value>Горизонтальная ось</value>
   </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>Угол рассеяния детектора 2θ (градусы) для
+нейтронного времяпролётного (TOF) измерения.</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>Угол рассеяния детектора 2θ (градусы) для
+нейтронного времяпролётного (TOF) измерения.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Использовать нейтроны в качестве источника
+излучения (включает ось времени пролёта).</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>Показывать ось энергии в мегаэлектронвольтах (MeV).</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>Строить горизонтальную ось как энергию фотона/частицы
+(для энергодисперсионного режима белого пучка).</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>Показывать ось межплоскостного расстояния в нанометрах (nm).</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>Показывать ось 2θ в сантиградусах (1/100 градуса).</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Задать длину волны излучения здесь: введите её
+напрямую, через ускоряющее напряжение электронов или
+через характеристическую линию рентгеновского излучения (элемент + линия).</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>Длина пролётного пути L (метры) от источника до детектора
+для нейтронного времяпролётного (TOF) измерения.</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>Длина пролётного пути L (метры) от источника до детектора
+для нейтронного времяпролётного (TOF) измерения.</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>Строить горизонтальную ось как угол дифракции
+2θ (угол рассеяния между падающим и
+дифрагированным пучком); используется в монохроматическом режиме.</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>Использовать одну (монохроматическую) длину волны;
+включает оси 2θ и межплоскостного расстояния.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>Угол рассеяния (отбора) детектора 2θ в градусах
+для энергодисперсионного (белый пучок) измерения.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>Угол рассеяния (отбора) детектора 2θ в градусах
+для энергодисперсионного (белый пучок) измерения.</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>Показывать ось волнового числа q в обратных нанометрах (nm⁻¹).</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>Строить горизонтальную ось как межплоскостное расстояние
+(межплоскостной интервал решётки каждого рефлекса).</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>Показывать ось времени пролёта в наносекундах (ns).</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>Показывать ось 2θ в миллирадианах (1/1000 радиана).</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>Показывать ось времени пролёта в микросекундах (μs).</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Использовать электроны в качестве источника излучения
+(длина волны задаётся ускоряющим напряжением).</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>Показывать ось энергии в килоэлектронвольтах (keV).</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>Показывать ось 2θ в радианах (rad).</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>Использовать плоский белый спектр: для рентгеновского излучения интенсивность
+падающего пучка на единицу энергии постоянна;
+для нейтронов число падающих нейтронов
+на единичный интервал длины волны постоянно.</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>Показывать ось энергии в электронвольтах (eV).</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>Использовать заданный пользователем непрерывный (белый)
+спектр длин волн/энергий.</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>Показывать ось 2θ в градусах (°).</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>Показывать ось межплоскостного расстояния в ангстремах (Å, 0.1 nm).</value>
+  </data>
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>Выбрать источник волны</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Использовать рентгеновский пучок в качестве источника излучения
+(характеристическая линия или произвольная длина волны).</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>Показывать ось волнового числа q в обратных ангстремах (Å⁻¹).</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>Строить горизонтальную ось как волновое число рассеяния
+q = 4π·sinθ/λ (модуль вектора рассеяния).</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>Строить горизонтальную ось как нейтронное время пролёта
+(TOF) — время прохождения нейтроном пролётного
+пути; доступно для нейтронного режима белого пучка.</value>
+  </data>
 </root>

@@ -122,4 +122,120 @@
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
     <value>가로축</value>
   </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>중성자 비행 시간 (TOF) 측정에서의
+검출기 산란각 2θ (도) 입니다.</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>중성자 비행 시간 (TOF) 측정에서의
+검출기 산란각 2θ (도) 입니다.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>선원을 중성자선으로 합니다 (비행
+시간 TOF 축이 사용 가능해집니다).</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>에너지 축의 단위를 MeV (메가 전자볼트) 로 합니다.</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>수평 축을 광자/입자 에너지로 표시합니다
+(에너지 분산·백색 빔 모드용).</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>d 값 축의 길이 단위를 나노미터 (nm) 로 합니다.</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>2θ 축의 각도 단위를 센티 도 (1/100 도) 로 합니다.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>선원의 파장을 설정합니다. 파장을 직접
+입력하거나, 전자 가속 전압, 또는 특성 X선
+선 (원소 + 선종) 으로 지정할 수 있습니다.</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>중성자 비행 시간 (TOF) 측정에서 선원으로부터 검출기까지의
+비행 경로 길이 L 을 m 단위로 설정합니다.</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>중성자 비행 시간 (TOF) 측정에서 선원으로부터 검출기까지의
+비행 경로 길이 L 을 m 단위로 설정합니다.</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>수평 축을 회절각 2θ (입사 빔과 회절 빔이
+이루는 산란각) 로 표시합니다. 단색 빔 모드용입니다.</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>단일 (단색) 파장을 사용합니다.
+2θ·d 값 축이 사용 가능해집니다.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>에너지 분산 (백색 빔) 측정에서 검출기의
+산란각 (취출각) 2θ 를 도 단위로 설정합니다.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>에너지 분산 (백색 빔) 측정에서 검출기의
+산란각 (취출각) 2θ 를 도 단위로 설정합니다.</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>파수 q 축의 단위를 nm⁻¹ (역 나노미터) 로 합니다.</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>수평 축을 d 값 (각 반사의 격자면 간격 d-spacing) 으로 표시합니다.</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>비행 시간 축의 시간 단위를 ns (나노초) 로 합니다.</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>2θ 축의 각도 단위를 밀리라디안 (1/1000 라디안) 으로 합니다.</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>비행 시간 축의 시간 단위를 μs (마이크로초) 로 합니다.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>선원을 전자선으로 합니다
+(파장은 가속 전압에서 결정됩니다).</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>에너지 축의 단위를 keV (킬로 전자볼트) 로 합니다.</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>2θ 축의 각도 단위를 라디안 (rad) 으로 합니다.</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>평탄한 백색 스펙트럼을 사용합니다. X선에서는 입사 빔의
+단위 에너지당 강도가 일정하고, 중성자에서는
+단위 파장 간격당 입사 중성자 수가 일정합니다.</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>에너지 축의 단위를 eV (전자볼트) 로 합니다.</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>파장·에너지의 분포를 사용자 정의의
+연속 (백색) 스펙트럼으로 합니다.</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>2θ 축의 각도 단위를 도 (°) 로 합니다.</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>d 값 축의 길이 단위를 옹스트롬 (Å = 0.1 nm) 으로 합니다.</value>
+  </data>
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>파원 선택</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>선원을 X선으로 합니다
+(특성 X선 또는 임의 파장을 지정 가능).</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>파수 q 축의 단위를 Å⁻¹ (역 옹스트롬) 으로 합니다.</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>수평 축을 산란 파수 q = 4π·sinθ/λ (산란
+벡터의 크기) 로 표시합니다.</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>수평 축을 중성자 비행 시간 (TOF), 즉 중성자가
+비행 경로를 이동하는 시간으로 표시합니다.
+중성자 백색 빔 모드 전용입니다.</value>
+  </data>
 </root>

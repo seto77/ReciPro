@@ -122,4 +122,162 @@
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>para discos individuales</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Ejecuta una simulación CBED</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>Dibuja círculos que muestran el límite de cada disco de difracción</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>Elija cómo se resuelven las ecuaciones de ondas de Bloch
+(problema de autovalores o exponencial de matriz; biblioteca
+Eigen o MKL). Los resultados deben coincidir, pero la velocidad
+difiere; use Auto salvo que esté comparando rendimiento.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Elija cómo se resuelven las ecuaciones de ondas de Bloch
+(problema de autovalores o exponencial de matriz; biblioteca
+Eigen o MKL). Los resultados deben coincidir, pero la velocidad
+difiere; use Auto salvo que esté comparando rendimiento.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>Número de hilos de CPU usados para el cálculo de ondas
+de Bloch de CBED (Difracción de Electrones de Haz
+Convergente), 1-128. Deshabilitado cuando Solver es Auto.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Número de hilos de CPU usados para el cálculo de ondas
+de Bloch de CBED (Difracción de Electrones de Haz
+Convergente), 1-128. Deshabilitado cuando Solver es Auto.</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>Modo CBED (Difracción de Electrones de Haz Convergente):
+cada reflexión de Bragg se convierte en un disco cuya
+intensidad interna cambia con la inclinación del haz incidente.</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>Modo LACBED (Difracción de Electrones de Haz Convergente
+de Gran Ángulo): usa un ángulo de convergencia más amplio para
+registrar una reflexión en un rango angular mayor.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Número de haces difractados (ondas de Bloch)
+incluidos en el cálculo dinámico de dispersión
+múltiple, 1-2048. Más ondas mejoran la
+precisión pero ralentizan el cálculo.</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>Semiángulo de convergencia máximo (mrad)</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>Semiángulo de convergencia máximo (mrad)</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>Paso de muestreo angular por píxel a lo largo de cada
+disco (mrad/píxel). Valores menores dan más divisiones
+de diámetro, mostradas a la derecha, para
+discos más finos pero un cálculo más largo.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Paso de muestreo angular por píxel a lo largo de cada
+disco (mrad/píxel). Valores menores dan más divisiones
+de diámetro, mostradas a la derecha, para
+discos más finos pero un cálculo más largo.</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Establece un rango y un paso de los espesores de la muestra</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Detiene la simulación actual</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Seleccione la dirección del gradiente de intensidad:
+Positive significa que lo brillante es fuerte; Negative
+invierte la escala de modo que lo oscuro es fuerte.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Seleccione la escala de color usada para mapear la intensidad del disco
+al color de visualización (Gray, Cold-Warm, Spectrum o Fire).</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>Establece un valor de gamma.
+Cuanto mayor sea este valor, más brillante aparecerá el disco exterior.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Establece una intensidad a la cual el
+brillo se muestra como cero.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Establece una intensidad a la cual el
+brillo se muestra como cero.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Establece una intensidad a la cual el brillo
+se muestra como el valor máximo.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Establece una intensidad a la cual el brillo
+se muestra como el valor máximo.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Establece una intensidad a la cual el brillo
+se muestra como el valor máximo.</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>Se aplica el mismo rango de brillo (Mín/Máx) a todos los discos.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Se aplica el mismo rango de brillo (Mín/Máx) a todos los discos.</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>Se aplican rangos de brillo independientes
+a cada disco individual.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Seleccione un espesor de muestra para mostrar.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Espesor de la muestra (nm) del
+patrón de discos mostrado actualmente.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Espesor de la muestra (nm) del
+patrón de discos mostrado actualmente.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Espesor de la muestra (nm) del
+patrón de discos mostrado actualmente.</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>Paso de muestreo angular por píxel a lo largo
+de cada disco (mrad/píxel). Valores menores
+dan más divisiones de diámetro, mostradas aquí,
+para discos más finos pero un cálculo más largo.</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>Establece un valor de gamma. Cuanto mayor sea este valor,
+más brillante aparecerá el disco exterior.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Seleccione una escala de color (Gray / Cold-Warm / Spectrum / Fire).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Seleccione la dirección del gradiente
+(Positive o Negative / invertido).</value>
+  </data>
 </root>

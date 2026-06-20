@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApply.ToolTip" xml:space="preserve">
+    <value>변형을 적용한 결정을 새 구조로
+확정하고 이 창을 닫습니다.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 상수 a(단위 Å). 변형
+텐서로부터 계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 각 α(b축과 c축
+사이의 각, 단위 도). 변형 텐서로부터
+계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 상수 b(단위 Å). 변형
+텐서로부터 계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 각 β(c축과 a축
+사이의 각, 단위 도). 변형 텐서로부터
+계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 상수 c(단위 Å). 변형
+텐서로부터 계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>변형된 격자의 격자 각 γ(a축과 b축
+사이의 각, 단위 도). 변형 텐서로부터
+계산되는 읽기 전용 값입니다.</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>a(x) 방향의 수직 변형 성분 ε11
+(무차원 분율 신장량). 값을 변경하면
+변형된 격자 상수와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>a-b(x-y) 면 내의 전단 변형 성분 ε12
+(무차원. ε12 = ε21로 대칭 입력됩니다).
+값을 변경하면 변형 격자와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>a-c(x-z) 면 내의 전단 변형 성분 ε13
+(무차원. ε13 = ε31로 대칭 입력됩니다).
+값을 변경하면 변형 격자와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>b(y) 방향의 수직 변형 성분 ε22
+(무차원 분율 신장량). 값을 변경하면
+변형된 격자 상수와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>b-c(y-z) 면 내의 전단 변형 성분 ε23
+(무차원. ε23 = ε32로 대칭 입력됩니다).
+값을 변경하면 변형 격자와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>c(z) 방향의 수직 변형 성분 ε33
+(무차원 분율 신장량). 값을 변경하면
+변형된 격자 상수와 응력이 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+수직 응력 성분 σ11 (단위 GPa, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+전단 응력 성분 σ12 (단위 GPa, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+전단 응력 성분 σ13 (단위 GPa, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+수직 응력 성분 σ22 (단위 GPa, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+전단 응력 성분 σ23 (단위 GPa, 읽기 전용).</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>강성 행렬과 변형의 곱으로 계산되는
+수직 응력 성분 σ33 (단위 GPa, 읽기 전용).</value>
+  </data>
+</root>

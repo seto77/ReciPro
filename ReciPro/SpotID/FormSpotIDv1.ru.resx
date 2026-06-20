@@ -137,4 +137,424 @@
   <data name="buttonSearchAll.Text" xml:space="preserve">
     <value>Найти оси зон по трём картинам</value>
   </data>
+  <data name="buttonSearchAll.ToolTip" xml:space="preserve">
+    <value>Искать во всех зарегистрированных кристаллах комбинации осей
+зон, согласующиеся с двумя или тремя дифракционными картинами
+и углами наклона держателя между ними; открывает окно
+результатов с кандидатами.</value>
+  </data>
+  <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
+    <value>Искать в загруженных кристаллах оси зон, чья расчётная
+дифракционная картина совпадает с Pattern 1 (введённые L1/L2/L3
+и θ) в пределах допусков; совпадения перечисляются
+в окне результатов.</value>
+  </data>
+  <data name="buttonSearchPhoto2.ToolTip" xml:space="preserve">
+    <value>Искать в загруженных кристаллах оси зон, чья расчётная
+дифракционная картина совпадает с Pattern 2 (введённые L1/L2/L3
+и θ) в пределах допусков; совпадения перечисляются
+в окне результатов.</value>
+  </data>
+  <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
+    <value>Искать оси зон кристаллов, совпадающие только с дифракционной
+картиной Photo 3 (векторы L1, L2 и угол/третья сторона),
+используя все загруженные кристаллы.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L1Photo2L1.ToolTip" xml:space="preserve">
+    <value>Считать рефлексы L1 на Photo 1 и Photo 2 одним и тем же
+рефлексом (общий рефлекс вдоль оси наклона); фиксирует
+длину L1 на Photo 2 равной значению на Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L2Photo2L2.ToolTip" xml:space="preserve">
+    <value>Считать рефлексы L2 на Photo 1 и Photo 2 одним и тем же
+рефлексом (общий рефлекс вдоль оси наклона); фиксирует
+длину L2 на Photo 2 равной значению на Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L1Photo3L1.ToolTip" xml:space="preserve">
+    <value>Считать рефлексы L1 на Photo 2 и Photo 3 одним и тем же
+рефлексом (общий рефлекс вдоль оси наклона); фиксирует
+длину L1 на Photo 3 равной значению на Photo 2.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L2Photo3L2.ToolTip" xml:space="preserve">
+    <value>Считать рефлексы L2 на Photo 2 и Photo 3 одним и тем же
+рефлексом (общий рефлекс вдоль оси наклона); фиксирует
+длину L2 на Photo 3 равной значению на Photo 2.</value>
+  </data>
+  <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
+    <value>Включить вторую дифракционную картину (Photo 2): показывает
+её поля ввода, чтобы можно было искать оси зон по двум
+картинам и их относительному наклону держателя.</value>
+  </data>
+  <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
+    <value>Включить третью дифракционную картину (Photo 3): показывает
+её поля ввода, чтобы можно было искать оси зон по трём
+картинам и их относительным наклонам держателя
+(требуется Photo 2).</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение (kV) просвечивающего электронного
+микроскопа; задаёт длину волны электронов, используемую
+для интерпретации дифракционных картин.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение (kV) просвечивающего электронного
+микроскопа; задаёт длину волны электронов, используемую
+для интерпретации дифракционных картин.</value>
+  </data>
+  <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
+    <value>Длина камеры (мм) дифракционной картины; преобразует измеренные
+расстояния между рефлексами (мм) в межплоскостные расстояния
+обратной решётки для индицирования.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Длина камеры (мм) дифракционной картины; преобразует измеренные
+расстояния между рефлексами (мм) в межплоскостные расстояния
+обратной решётки для индицирования.</value>
+  </data>
+  <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между двумя векторами обратной решётки L1 и L2
+картины Pattern 1. Редактируется в режиме 'Two Sides and an
+Angle'; в режиме 'Three Sides' вычисляется из L1/L2/L3
+и отображается только для чтения.</value>
+  </data>
+  <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
+    <value>Первый угол наклона держателя гониометра (Tilt 1, в градусах),
+при котором было снято Photo 1. Используется для связи картин
+между собой при поиске осей зон по нескольким снимкам.</value>
+  </data>
+  <data name="numericBoxP1Tilt2.ToolTip" xml:space="preserve">
+    <value>Второй угол наклона держателя гониометра (Tilt 2, в градусах),
+при котором было снято Photo 1 (вторая, ортогональная
+ось наклона держателя).</value>
+  </data>
+  <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между двумя векторами обратной решётки L1 и L2
+картины Pattern 2. Редактируется в режиме 'Two Sides and an
+Angle'; вычисляется из L1/L2/L3 и отображается только
+для чтения в режиме 'Three Sides'.</value>
+  </data>
+  <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
+    <value>Первый угол наклона держателя гониометра (Tilt 1, в градусах),
+при котором было снято Photo 2. Используется для связи Photo 2
+с другими картинами при поиске осей зон по нескольким снимкам.</value>
+  </data>
+  <data name="numericBoxP2Tilt2.ToolTip" xml:space="preserve">
+    <value>Второй угол наклона держателя гониометра (Tilt 2, в градусах),
+при котором было снято Photo 2 (вторая, ортогональная
+ось наклона держателя).</value>
+  </data>
+  <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между двумя дифракционными векторами L1 и L2
+картины Photo 3. Только для чтения и вычисляется из трёх сторон
+в режиме 'Three Sides'; редактируется в режиме 'Two Sides and an
+Angle'.</value>
+  </data>
+  <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
+    <value>Угол наклона (градусы) первой оси держателя при съёмке Photo 3;
+в сочетании с Tilt 2 используется для вычисления угла между
+настройками держателя разных картин.</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Угол наклона (градусы) первой оси держателя при съёмке Photo 3;
+в сочетании с Tilt 2 используется для вычисления угла между
+настройками держателя разных картин.</value>
+  </data>
+  <data name="numericBoxP3Tilt2.ToolTip" xml:space="preserve">
+    <value>Угол наклона (градусы) второй оси держателя при съёмке Photo 3;
+в сочетании с Tilt 1 используется для вычисления угла между
+настройками держателя разных картин.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Угол наклона (градусы) второй оси держателя при съёмке Photo 3;
+в сочетании с Tilt 1 используется для вычисления угла между
+настройками держателя разных картин.</value>
+  </data>
+  <data name="numericBoxPhoto1L1Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L1 картины Pattern 1, в процентах от её длины
+(0-50%, по умолчанию 5). Оси зон, чья L1 отличается от введённого
+значения не более чем на эту долю, всё равно принимаются
+как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto1L2Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L2 картины Pattern 1, в процентах от её длины
+(0-50%, по умолчанию 5). Оси зон, чья L2 отличается от введённого
+значения не более чем на эту долю, всё равно принимаются
+как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L3 картины Pattern 1, в процентах от её длины
+(0-50%, по умолчанию 5). Используется только в режиме 'Three
+Sides'; принимаются совпадения в пределах этой доли
+от введённого L3.</value>
+  </data>
+  <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для угла θ картины Pattern 1, в градусах
+(0-30, по умолчанию 3). Используется только в режиме 'Two Sides
+and an Angle'; оси зон, чей угол отличается не более чем на это
+число градусов, всё равно принимаются как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для Tilt 1 на Photo 1, в градусах
+(0-10). Задаёт, насколько может отличаться угол наклона
+держателя при сопоставлении кандидатов.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для Tilt 2 на Photo 1, в градусах
+(0-10). Задаёт, насколько может отличаться второй угол наклона
+держателя при сопоставлении кандидатов.</value>
+  </data>
+  <data name="numericBoxPhoto2L1Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L1 картины Pattern 2, в процентах от её длины
+(0-50%, по умолчанию 5). Оси зон, чья L1 отличается не более чем
+на эту долю, всё равно принимаются как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto2L2Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L2 картины Pattern 2, в процентах от её длины
+(0-50%, по умолчанию 5). Оси зон, чья L2 отличается не более чем
+на эту долю, всё равно принимаются как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L3 картины Pattern 2, в процентах от её длины
+(0-50%, по умолчанию 5). Используется только в режиме 'Three
+Sides'; принимаются совпадения в пределах этой доли от L3.</value>
+  </data>
+  <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для угла θ картины Pattern 2, в градусах
+(0-30, по умолчанию 3). Используется только в режиме 'Two Sides
+and an Angle'; углы в пределах этого числа градусов принимаются
+как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для Tilt 1 на Photo 2, в градусах
+(0-10). Задаёт, насколько может отличаться угол наклона
+держателя при сопоставлении кандидатов.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для Tilt 2 на Photo 2, в градусах
+(0-10). Задаёт, насколько может отличаться второй угол наклона
+держателя при сопоставлении кандидатов.</value>
+  </data>
+  <data name="numericBoxPhoto3L1Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для длины вектора L1 на Photo 3, в процентах
+(0-50). Кандидаты, чья расчётная L1 отличается не более чем на
+эту величину, принимаются как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto3L2Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для длины вектора L2 на Photo 3, в процентах
+(0-50). Кандидаты, чья расчётная L2 отличается не более чем на
+эту величину, принимаются как совпадения.</value>
+  </data>
+  <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для длины третьей стороны L3 на Photo 3,
+в процентах (0-50). Используется только в режиме 'Three Sides'.</value>
+  </data>
+  <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для угла θ на Photo 3, в градусах
+(0-30). Кандидаты, чей расчётный угол отличается не более чем
+на эту величину, принимаются. Используется только в режиме 'Two
+Sides and an Angle'.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Допуск (± градусы, 0-10) на угол Tilt 1 на Photo 3,
+используемый для принятия кандидатов осей зон, чей расчётный
+угол держателя между картинами совпадает в пределах
+этого диапазона.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Допуск (± градусы, 0-10) на угол Tilt 2 на Photo 3,
+используемый для принятия кандидатов осей зон, чей расчётный
+угол держателя между картинами совпадает в пределах
+этого диапазона.</value>
+  </data>
+  <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
+    <value>Определить Pattern 1 по трём длинам сторон L1, L2 и L3; угол θ
+тогда вычисляется из них. (Другой переключатель вместо этого
+определяет картину по двум сторонам и углу.)</value>
+  </data>
+  <data name="radioButtonPhoto1Mode2.ToolTip" xml:space="preserve">
+    <value>Определить Pattern 1 по двум длинам сторон L1, L2 и углу θ
+между ними; L3 тогда вычисляется. (Другой переключатель вместо
+этого определяет картину по трём сторонам.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode1.ToolTip" xml:space="preserve">
+    <value>Определить Pattern 2 по трём длинам сторон L1, L2 и L3; угол θ
+тогда вычисляется из них. (Другой переключатель вместо этого
+использует две стороны и угол.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode2.ToolTip" xml:space="preserve">
+    <value>Определить Pattern 2 по двум длинам сторон L1, L2 и углу θ
+между ними; L3 тогда вычисляется. (Другой переключатель вместо
+этого использует три стороны.)</value>
+  </data>
+  <data name="radioButtonPhoto3Mode1.ToolTip" xml:space="preserve">
+    <value>Определить треугольник картины Photo 3 по его трём
+длинам сторон L1, L2, L3; угол θ тогда
+вычисляется автоматически.</value>
+  </data>
+  <data name="radioButtonPhoto3Mode2.ToolTip" xml:space="preserve">
+    <value>Определить картину Photo 3 по двум длинам сторон L1, L2 и углу θ
+между ними; третья сторона L3 тогда вычисляется
+автоматически.</value>
+  </data>
+  <data name="textBoxAngleBetween12.ToolTip" xml:space="preserve">
+    <value>Угол (градусы) между настройками наклона держателя Photo 1
+и Photo 2, вычисленный из их значений Tilt 1 / Tilt 2
+(только для чтения).</value>
+  </data>
+  <data name="textBoxAngleBetween23.ToolTip" xml:space="preserve">
+    <value>Угол (градусы) между настройками наклона держателя Photo 2
+и Photo 3, вычисленный из их значений Tilt 1 / Tilt 2
+(только для чтения).</value>
+  </data>
+  <data name="textBoxAngleBetween31.ToolTip" xml:space="preserve">
+    <value>Угол (градусы) между настройками наклона держателя Photo 3
+и Photo 1, вычисленный из их значений Tilt 1 / Tilt 2
+(только для чтения).</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Длина волны электронов (нм), вычисленная автоматически
+из ускоряющего напряжения (только для чтения).</value>
+  </data>
+  <data name="label67.ToolTip" xml:space="preserve">
+    <value>Длина волны электронов (нм), вычисленная автоматически
+из ускоряющего напряжения (только для чтения).</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Второй угол наклона держателя гониометра (Tilt 2, градусы),
+при котором было снято Photo 1.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>L3: длина (мм на фото) третьего вектора обратной решётки
+картины Pattern 1, используемая для определения треугольника
+рефлексов в режиме 'Three Sides'.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>L2: длина (мм на фото) второго вектора обратной
+решётки картины Pattern 1.</value>
+  </data>
+  <data name="label131.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L1 картины Pattern 1, в процентах
+от её длины (0-50%, по умолчанию 5).</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Первый угол наклона держателя гониометра (Tilt 1, градусы),
+при котором было снято Photo 1.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>L1: длина (мм на фото) первого вектора обратной
+решётки картины Pattern 1.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Процент: единица допуска поиска для L1
+картины Pattern 2 (0-50%, по умолчанию 5).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Градусы: единица допуска поиска для угла θ
+картины Pattern 2 (0-30, по умолчанию 3).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Процент: единица допуска поиска для L2
+картины Pattern 2 (0-50%, по умолчанию 5).</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Процент: единица допуска поиска для L3 картины Pattern 2
+(0-50%, по умолчанию 5; используется в режиме 'Three Sides').</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>L1: длина (мм на фотографии) первого
+вектора обратной решётки Pattern 2.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>L2: длина (мм на фотографии) второго
+вектора обратной решётки Pattern 2.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между векторами
+обратной решётки L1 и L2 Pattern 2.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>L3: длина (мм на фотографии) третьего
+вектора обратной решётки Pattern 2,
+используется в режиме «Three Sides».</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Градусы: единица измерения угла θ между L1 и L2 Pattern 2.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L2 Pattern 1, в процентах
+от её длины (0–50%, по умолчанию 5).</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Измеренная длина L1 первого дифракционного вектора
+Photo 3, в мм на регистрирующем носителе.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Измеренная длина L2 второго дифракционного
+вектора Photo 3, в мм на регистрирующем носителе.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между векторами L1 и L2 Photo 3.</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Длина L3 третьей стороны треугольника Photo 3,
+в мм (используется в режиме «Three Sides»).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Первый угол наклона держателя гониометра (Tilt 1,
+градусы), при котором было снято Photo 2.</value>
+  </data>
+  <data name="label69.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L1
+Pattern 1 (в процентах от её длины).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Второй угол наклона держателя гониометра (Tilt 2,
+градусы), при котором было снято Photo 2.</value>
+  </data>
+  <data name="label70.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L2
+Pattern 1 (в процентах от её длины).</value>
+  </data>
+  <data name="label71.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L3 Pattern 1
+(в процентах от её длины; используется в режиме «Three Sides»).</value>
+  </data>
+  <data name="label75.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к
+углу θ Pattern 1 (градусы; используется
+в режиме «Two Sides and an Angle»).</value>
+  </data>
+  <data name="label76.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L1
+Pattern 2 (в процентах от её длины).</value>
+  </data>
+  <data name="label77.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L2
+Pattern 2 (в процентах от её длины).</value>
+  </data>
+  <data name="label78.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к L3 Pattern 2
+(в процентах от её длины; используется в режиме «Three Sides»).</value>
+  </data>
+  <data name="label79.ToolTip" xml:space="preserve">
+    <value>Допуск поиска плюс/минус, применяемый к
+углу θ Pattern 2 (градусы; используется
+в режиме «Two Sides and an Angle»).</value>
+  </data>
+  <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
+    <value>Угол θ (градусы) между векторами
+обратной решётки L1 и L2 Pattern 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_3.ToolTip" xml:space="preserve">
+    <value>Градусы: единица измерения угла θ между L1 и L2 Pattern 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
+    <value>Градусы: единица измерения допуска поиска угла
+θ для Pattern 1 (0–30, по умолчанию 3).</value>
+  </data>
+  <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
+    <value>Допуск поиска для L3 Pattern 1,
+в процентах от её длины (0–50%,
+по умолчанию 5; используется в режиме «Three Sides»).</value>
+  </data>
 </root>

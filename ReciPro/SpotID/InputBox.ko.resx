@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBoxDvalue.ToolTip" xml:space="preserve">
+    <value>면간 거리 d(Å 단위, 면 사이의 거리)이며,
+스폿 거리(mm)와 g 길이(nm⁻¹)를 역산합니다.
+클릭하면 이 필드를 편집할 수 있습니다.</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>면간 거리 d(Å 단위, 면 사이의 거리)이며,
+스폿 거리(mm)와 g 길이(nm⁻¹)를 역산합니다.
+클릭하면 이 필드를 편집할 수 있습니다.</value>
+  </data>
+  <data name="numericBoxGlength.ToolTip" xml:space="preserve">
+    <value>역격자 벡터 길이 g = 1/d(nm⁻¹ 단위)이며,
+면간 거리 d(Å)와 스폿 거리(mm)를 역산합니다.
+클릭하면 이 필드를 편집할 수 있습니다.</value>
+  </data>
+  <data name="label64.ToolTip" xml:space="preserve">
+    <value>역격자 벡터 길이 g = 1/d(nm⁻¹ 단위)이며,
+면간 거리 d(Å)와 스폿 거리(mm)를 역산합니다.
+클릭하면 이 필드를 편집할 수 있습니다.</value>
+  </data>
+  <data name="numericBoxLength.ToolTip" xml:space="preserve">
+    <value>패턴 중심에서 스폿까지의 거리(mm)이며, 카메라
+길이와 파장과 함께 면간 거리 d(Å)와 g 길이
+(nm⁻¹)를 계산합니다. 클릭하면 이 필드를
+편집할 수 있습니다.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>패턴 중심에서 스폿까지의 거리(mm)이며, 카메라
+길이와 파장과 함께 면간 거리 d(Å)와 g 길이
+(nm⁻¹)를 계산합니다. 클릭하면 이 필드를
+편집할 수 있습니다.</value>
+  </data>
+</root>

@@ -382,4 +382,496 @@
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>尺寸 (W×H)</value>
   </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>将当前图像保存到文件</value>
+  </data>
+  <data name="buttonSetRange2.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的 ±3/4</value>
+  </data>
+  <data name="buttonSetRange4.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的 ±1.5</value>
+  </data>
+  <data name="buttonSetRange3.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的 ±1</value>
+  </data>
+  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
+    <value>将显示中心设为原点 (0, 0, 0)</value>
+  </data>
+  <data name="buttonCenter2.ToolTip" xml:space="preserve">
+    <value>将显示中心设为 (1/4, 1/4, 1/4)</value>
+  </data>
+  <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
+    <value>将显示中心设为 (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="buttonSetRange0.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的 ±1/4</value>
+  </data>
+  <data name="buttonSetRange1.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的 ±1/2</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip" xml:space="preserve">
+    <value>沿 c 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>沿 c 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip" xml:space="preserve">
+    <value>沿 b 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
+    <value>沿 b 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxARange.ToolTip" xml:space="preserve">
+    <value>沿 a 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>沿 a 轴显示区域的半宽，
+以分数坐标表示；绘制处于
+中心 ± Range 范围内的原子。</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value>沿 c 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value>沿 c 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
+    <value>沿 b 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>沿 b 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip" xml:space="preserve">
+    <value>沿 a 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value>沿 a 轴显示区域的中心，以分数坐标表示；
+结合 Range 可设定所绘结构的
+最小/最大边界面。</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
+    <value>显示/隐藏晶体的边界面</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
+    <value>边界面的不透明度（0=透明，1=不透明）</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
+    <value>边界面的不透明度（0=透明，1=不透明）</value>
+  </data>
+  <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
+    <value>在边界面处裁剪原子和键</value>
+  </data>
+  <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
+    <value>若勾选，则按如下方式
+基于晶胞定义绘制范围</value>
+  </data>
+  <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
+    <value>若勾选，则按如下方式
+基于晶面定义绘制范围</value>
+  </data>
+  <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
+    <value>在三维结构上叠加显示晶胞的棱边。</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
+    <value>设置所有晶胞面的颜色</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value>设置所有晶胞面的颜色</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
+    <value>设置所有晶胞面的颜色</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
+    <value>单独设置各晶胞面的颜色</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
+    <value>垂直于 a 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
+    <value>垂直于 a 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
+    <value>垂直于 b 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
+    <value>垂直于 b 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
+    <value>垂直于 c 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
+    <value>垂直于 c 轴的晶胞面的颜色
+（选择 "Each plane" 时使用）。</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
+    <value>晶胞面的不透明度（1：不透明，0：透明）</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
+    <value>晶胞面的不透明度（1：不透明，0：透明）</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
+    <value>设置所有晶胞棱边的颜色</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
+    <value>设置所有晶胞棱边的颜色</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
+    <value>设置所有晶胞棱边的颜色</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
+    <value>单独设置各晶胞棱边的颜色</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
+    <value>沿 a 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
+    <value>沿 a 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
+    <value>沿 b 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
+    <value>沿 b 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
+    <value>沿 c 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
+    <value>沿 c 轴的晶胞棱边的颜色
+（选择 "Each edge" 时使用）。</value>
+  </data>
+  <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
+    <value>晶胞棱边的线宽，单位像素（1–5）。</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
+    <value>平移晶胞（分数坐标）</value>
+  </data>
+  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
+    <value>显示晶胞内部的细分</value>
+  </data>
+  <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
+    <value>显示晶胞棱边</value>
+  </data>
+  <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
+    <value>显示晶胞面</value>
+  </data>
+  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
+    <value>配置晶胞显示设置</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
+    <value>晶面的不透明度（0=透明，1=不透明）</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
+    <value>晶面的不透明度（0=透明，1=不透明）</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
+    <value>投影中心的 a 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
+    <value>投影中心的 a 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
+    <value>投影中心的 b 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
+    <value>投影中心的 b 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
+    <value>投影中心的 c 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
+    <value>投影中心的 c 轴分数坐标；该点被
+置于视图中心（等效于平移晶胞）。</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
+    <value>使用自定义投影中心坐标</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
+    <value>将投影中心设为原点</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
+    <value>将投影中心设为 (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
+    <value>选择正射投影或透视投影。</value>
+  </data>
+  <data name="trackBarPerspective.ToolTip" xml:space="preserve">
+    <value>调整透视投影中视点到对象的距离：
+距离越短，透视（缩短）效果越夸张。
+仅当投影设为 Perspective 时有效。</value>
+  </data>
+  <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
+    <value>透明渲染模式：Approximate（快速
+Z 深度排序），或高质量的
+顺序无关方法（Dual Depth Peeling /
+Per-Pixel Linked List，需要较新的 OpenGL）。</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>启用深度暗示（景深雾化）：距离观察者较远的
+对象会淡出；下方的近/远范围
+设置随之生效。</value>
+  </data>
+  <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
+    <value>渲染质量（Low / Middle / High）：质量越高，
+球体和圆柱越平滑、透明度越准确，
+但渲染越慢。</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
+    <value>深度暗示近界限（Å）：比此深度更近的
+对象保持完全不透明（−30 至 30）。
+与远界限配对以淡化远处原子。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>深度暗示远界限（Å）：超过此深度的
+对象淡化为完全透明（-30 至 30）</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
+    <value>深度暗示远界限（Å）：比此深度更远的
+对象淡化为完全透明（−30 至 30）。
+与近界限配对以淡化远处原子。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>深度暗示近界限（Å）：比此深度更近的
+对象保持完全不透明（-30 至 30）</value>
+  </data>
+  <data name="colorControlInversion.ToolTip" xml:space="preserve">
+    <value>设置反演中心符号的显示颜色。</value>
+  </data>
+  <data name="colorControlPlane.ToolTip" xml:space="preserve">
+    <value>设置对称面符号（镜面和滑移面）
+的显示颜色。</value>
+  </data>
+  <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
+    <value>设置对称轴符号（旋转轴、螺旋轴
+和反演轴）的显示颜色。</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>在图例中显示标签</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
+    <value>使用材质颜色作为标签颜色 </value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
+    <value>使用固定颜色作为标签颜色 </value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
+    <value>原子标签的字号（0–200）。</value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
+    <value>原子标签的字号（0–200）。</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
+    <value>勾选后，图例标签将带有白色描边。</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
+    <value>即使成键原子位于边界外也予以显示</value>
+  </data>
+  <data name="checkBoxGroupByElement.ToolTip" xml:space="preserve">
+    <value>若勾选，相同元素将在图例面板中分组</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
+    <value>图例的显示尺寸（右侧）</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
+    <value>图例的显示尺寸（右侧）</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
+    <value>晶轴的显示尺寸（左下）</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
+    <value>晶轴的显示尺寸（左下）</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
+    <value>光源球的显示尺寸（左上）</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
+    <value>光源球的显示尺寸（左上）</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.ToolTipText" xml:space="preserve">
+    <value>显示/隐藏晶轴指示器</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
+    <value>显示/隐藏光源方向控制球</value>
+  </data>
+  <data name="toolStripButtonLegend.ToolTipText" xml:space="preserve">
+    <value>显示/隐藏图例</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>设置渲染图像的尺寸（宽×高），
+以像素为单位；窗口会随之调整大小。</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value>显示空间群的滑移面符号
+（镜映与平移的组合）</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value>在显示的对称要素中切换反演中心（结构在
+x 映射到 -x 的变换下与自身重合的
+点）的显示/隐藏。</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value>显示空间群的镜面符号</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value>显示空间群的旋转轴符号
+（2、3、4、6 次）</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value>显示空间群的旋转反演轴符号
+（旋转后再反演）</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value>显示空间群的螺旋轴符号（旋转
+与平移的组合）</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>应用于原子标签的固定颜色（在选中
+“Use fixed color”时使用）</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>对称轴符号的线宽 (0.5-10)</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>对称轴符号的显示尺寸，
+以百分比表示 (20-500%)</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>反演中心符号的尺寸，以百分比
+表示（100% = 默认尺寸）。</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>对称面符号的线宽 (0.5-10)</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>对称面符号的显示尺寸，
+以百分比表示 (20-500%)</value>
+  </data>
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
+    <value>晶胞沿 a 轴的细分数（整数，1-10），
+用于在启用“Show Subcell”时
+显示的子晶胞网格。</value>
+  </data>
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
+    <value>晶胞沿 b 轴的细分数（整数，1-10），
+用于在启用“Show Subcell”时
+显示的子晶胞网格。</value>
+  </data>
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
+    <value>晶胞沿 c 轴的细分数（整数，1-10），
+用于在启用“Show Subcell”时
+显示的子晶胞网格。</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>切换叠加在每个原子上的原子
+标签（元素符号）的显示/隐藏。</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>切换三维模型中原子球的显示/隐藏。</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>将原子半径、颜色和键重置为
+VESTA 风格的默认值（VESTA 是一款广泛使用的
+晶体结构可视化程序）。</value>
+  </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>将模型方向重置为默认状态（无旋转）。</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>切换晶体对称要素（旋转轴、镜面、
+螺旋轴等）的显示/隐藏。</value>
+  </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>切换晶胞框架与晶面的显示/隐藏。</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value>在三维视图中叠加显示晶体的对称要素
+（旋转轴、镜面/滑移面、
+反演中心）。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>显示区域沿各晶胞轴的中心
+（分数坐标）。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>沿 a、b、c 轴平移晶胞框架
+（分数坐标）。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>晶胞选项中 a 轴所在的行。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>晶胞选项中 b 轴所在的行。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>晶胞选项中 c 轴所在的行。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>显示区域沿各晶胞轴的半宽
+（分数坐标）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>将显示中心设为预设的分数坐标位置。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>将显示范围设为各晶胞轴的
+预设比例。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>晶胞棱边的线宽 (1-5)</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>以晶胞的分数坐标指定投影中心；
+所选点将被放置在视图的
+中心位置。</value>
+  </data>
 </root>

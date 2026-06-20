@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyElements.ToolTip" xml:space="preserve">
+    <value>Copia il diagramma degli elementi di simmetria negli appunti
+nel formato selezionato (vettoriale emf o bitmap bmp).</value>
+  </data>
+  <data name="buttonCopyPositions.ToolTip" xml:space="preserve">
+    <value>Copia il diagramma delle posizioni generali negli appunti
+nel formato selezionato (vettoriale emf o bitmap bmp).</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Posizioni di Wyckoff di questo gruppo spaziale: ogni riga
+indica un insieme di siti atomici equivalenti per simmetria
+con la loro molteplicità, lettera di Wyckoff, simmetria del
+sito e coordinate frazionarie (sola lettura).</value>
+  </data>
+  <data name="indexControlAxis1.ToolTip" xml:space="preserve">
+    <value>Inserisci gli indici di direzione (u₁ v₁ w₁)
+dell'asse 1; aggiorna la sua lunghezza, l'angolo
+tra gli assi e il piano comune.</value>
+  </data>
+  <data name="indexControlAxis2.ToolTip" xml:space="preserve">
+    <value>Inserisci gli indici di direzione (u₂ v₂ w₂)
+dell'asse 2; aggiorna la sua lunghezza, l'angolo
+tra gli assi e il piano comune.</value>
+  </data>
+  <data name="indexControlPlane1.ToolTip" xml:space="preserve">
+    <value>Inserisci gli indici di Miller (h₁ k₁ l₁) del
+piano 1; aggiorna la sua distanza interplanare,
+l'angolo tra i piani e l'asse di zona.</value>
+  </data>
+  <data name="indexControlPlane2.ToolTip" xml:space="preserve">
+    <value>Inserisci gli indici di Miller (h₂ k₂ l₂) del
+piano 2; aggiorna la sua distanza interplanare,
+l'angolo tra i piani e l'asse di zona.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Scegli il formato immagine usato quando si copia un diagramma
+negli appunti: vettoriale (emf) o bitmap (bmp).</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Condizioni di riflessione (assenze sistematiche) di questo
+gruppo spaziale: quali riflessioni hkl sono permesse o
+estinte dalla centratura del reticolo e dalla simmetria.</value>
+  </data>
+  <data name="numericBoxAngleAxes.ToolTip" xml:space="preserve">
+    <value>Angolo (in gradi) tra l'asse 1 (u₁v₁w₁) e l'asse
+2 (u₂v₂w₂); calcolato automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis1.ToolTip" xml:space="preserve">
+    <value>Angolo (in gradi) tra il piano 1 (h₁k₁l₁) e
+l'asse 1 (u₁v₁w₁); calcolato automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis2.ToolTip" xml:space="preserve">
+    <value>Angolo (in gradi) tra il piano 2 (h₂k₂l₂) e
+l'asse 2 (u₂v₂w₂); calcolato automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxAnglePlanes.ToolTip" xml:space="preserve">
+    <value>Angolo (in gradi) tra il piano 1 (h₁k₁l₁) e
+il piano 2 (h₂k₂l₂); calcolato automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxLengthAxis1.ToolTip" xml:space="preserve">
+    <value>Lunghezza del vettore di direzione reticolare
+per l'asse 1 (u₁v₁w₁), in ångström (Å);
+calcolata automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxLengthAxis2.ToolTip" xml:space="preserve">
+    <value>Lunghezza del vettore di direzione reticolare
+per l'asse 2 (u₂v₂w₂), in ångström (Å);
+calcolata automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxLengthPlane1.ToolTip" xml:space="preserve">
+    <value>Distanza interplanare d del piano 1 (h₁k₁l₁), in
+ångström (Å); calcolata automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxLengthPlane2.ToolTip" xml:space="preserve">
+    <value>Distanza interplanare d del piano 2 (h₂k₂l₂), in
+ångström (Å); calcolata automaticamente (sola lettura).</value>
+  </data>
+  <data name="numericBoxPositionA.ToolTip" xml:space="preserve">
+    <value>Coordinata frazionaria x del punto di prova
+tracciato nel diagramma delle posizioni generali
+(intervallo da -1 a 1; ridisegna il diagramma).</value>
+  </data>
+  <data name="numericBoxPositionB.ToolTip" xml:space="preserve">
+    <value>Coordinata frazionaria y del punto di prova
+tracciato nel diagramma delle posizioni generali
+(intervallo da -1 a 1; ridisegna il diagramma).</value>
+  </data>
+  <data name="numericBoxPositionC.ToolTip" xml:space="preserve">
+    <value>Coordinata frazionaria z del punto di prova
+tracciato nel diagramma delle posizioni generali
+(intervallo da -1 a 1; ridisegna il diagramma).</value>
+  </data>
+  <data name="radioButtonBmp.ToolTip" xml:space="preserve">
+    <value>Copia i diagrammi negli appunti come immagine
+raster bitmap (bmp) (risoluzione fissa).</value>
+  </data>
+  <data name="radioButtonDirectionA.ToolTip" xml:space="preserve">
+    <value>Proietta i diagrammi degli elementi di simmetria
+e delle posizioni generali lungo l'asse a
+(disponibile per i cristalli ortorombici).</value>
+  </data>
+  <data name="radioButtonDirectionB.ToolTip" xml:space="preserve">
+    <value>Proietta i diagrammi degli elementi di simmetria
+e delle posizioni generali lungo l'asse b
+(disponibile per i cristalli ortorombici).</value>
+  </data>
+  <data name="radioButtonDirectionC.ToolTip" xml:space="preserve">
+    <value>Proietta i diagrammi degli elementi di simmetria
+e delle posizioni generali lungo l'asse c
+(predefinito; selezionabile per i cristalli ortorombici).</value>
+  </data>
+  <data name="radioButtonEmf.ToolTip" xml:space="preserve">
+    <value>Copia i diagrammi negli appunti come immagine
+vettoriale Enhanced Metafile (emf) che si ridimensiona
+senza pixelatura (predefinito).</value>
+  </data>
+  <data name="textBoxZoneAxis.ToolTip" xml:space="preserve">
+    <value>Asse di zona [uvw]: la direzione cristallina
+che giace sia nel piano 1 sia nel piano 2
+(la loro zona comune), mostrata in sola lettura.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Asse di zona [uvw]: la direzione cristallina
+che giace sia nel piano 1 sia nel piano 2
+(la loro zona comune), mostrata in sola lettura.</value>
+  </data>
+  <data name="textBoxZonePlane.ToolTip" xml:space="preserve">
+    <value>Piano reticolare (hkl) che contiene sia
+l'asse 1 sia l'asse 2 (il piano comune alle
+due direzioni), mostrato in sola lettura.</value>
+  </data>
+  <data name="label42.ToolTip" xml:space="preserve">
+    <value>Piano reticolare (hkl) che contiene sia
+l'asse 1 sia l'asse 2 (il piano comune alle
+due direzioni), mostrato in sola lettura.</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Sistema cristallino della struttura (ad es.
+cubico, esagonale, ortorombico).</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Simbolo Hermann–Mauguin (HM) del gruppo puntuale (ad es. m-3m).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Simbolo Schoenflies (SF) del gruppo puntuale (ad es. O_h).</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Direzione di proiezione dei diagrammi degli elementi
+di simmetria e delle posizioni generali (selezionabile
+per i cristalli ortorombici).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Numero del gruppo spaziale (1–230) dalle
+International Tables for Crystallography,
+con il sotto-numero del setting.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Simbolo Hermann–Mauguin (HM) abbreviato del
+gruppo spaziale (notazione standard internazionale).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Simbolo Hermann–Mauguin (HM) completo del gruppo spaziale,
+che elenca esplicitamente la simmetria lungo ciascun asse.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Simbolo Schoenflies (SF) del gruppo spaziale (ad es. O_h^7).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Simbolo di Hall del gruppo spaziale: una
+notazione compatta che codifica l'intero
+insieme delle operazioni di simmetria generatrici.</value>
+  </data>
+</root>

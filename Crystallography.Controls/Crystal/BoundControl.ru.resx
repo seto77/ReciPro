@@ -95,4 +95,69 @@
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>Цвет</value>
   </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
+    <value>Если область отрисовки не замкнута кристаллическими плоскостями,
+ограничить её этим расстоянием от начала координат.</value>
+  </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
+    <value>Если область отрисовки не замкнута кристаллическими плоскостями,
+ограничить её этим расстоянием от начала координат.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Заменить выбранную ограничивающую плоскость</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Удалить выбранную ограничивающую плоскость</value>
+  </data>
+  <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
+    <value>Применить изменения немедленно</value>
+  </data>
+  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
+    <value>Включить симметрично эквивалентные плоскости</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Сдвинуть ограничивающую плоскость вдоль её нормали на это
+расстояние (Å); положительное значение удаляет её от начала координат.</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
+    <value>Сдвинуть ограничивающую плоскость вдоль её нормали на это
+расстояние (Å); положительное значение удаляет её от начала координат.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Сдвинуть ограничивающую плоскость вдоль её нормали на это
+расстояние (Å); положительное значение удаляет её от начала координат.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Добавить новую ограничивающую плоскость в список из
+текущих настроек индексов, расстояния и цвета.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Цвет, используемый для отрисовки этой ограничивающей
+(секущей) плоскости в отображении кристалла.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Список заданных ограничивающих плоскостей; установите
+флажок, чтобы включить/отключить плоскость, или выберите
+строку, чтобы загрузить её в редактор выше.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Расстояние от начала координат до ограничивающей плоскости,
+вводится напрямую в ангстремах (Å); синхронизировано
+с кратным межплоскостного расстояния слева.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>Расстояние от начала координат до ограничивающей плоскости как
+кратное межплоскостного расстояния d для (hkl); синхронизировано
+с абсолютным значением в Å справа.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Расстояние от начала координат кристалла до
+ограничивающей плоскости, задаётся как кратное
+межплоскостного расстояния (слева) или напрямую в Å (справа).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Индексы Миллера (h k l) нормали ограничивающей
+плоскости; определяют ориентацию плоскости,
+которая отсекает кристалл.</value>
+  </data>
 </root>

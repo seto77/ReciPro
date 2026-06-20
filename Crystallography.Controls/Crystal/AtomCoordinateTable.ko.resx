@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBox.ToolTip" xml:space="preserve">
+    <value>대상 원자를 선택합니다. 이 원자 주위의
+이웃 원자와 원자 간 거리가 목록과
+그래프로 표시됩니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>대상 원자를 선택합니다. 이 원자 주위의
+이웃 원자와 원자 간 거리가 목록과
+그래프로 표시됩니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>대상 원자로부터의 거리(옹스트롬, Å)와 함께
+이웃 원자 목록을 거리가 가까운 순서로
+정렬하여 표시합니다.</value>
+  </data>
+  <data name="numericUpDownMaxLength.ToolTip" xml:space="preserve">
+    <value>탐색할 최대 원자 간 거리(옹스트롬, Å)입니다.
+대상 원자로부터 이 반지름 이내의 원자만
+나열됩니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>탐색할 최대 원자 간 거리(옹스트롬, Å)입니다.
+대상 원자로부터 이 반지름 이내의 원자만
+나열됩니다.</value>
+  </data>
+  <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
+    <value>거리 히스토그램 막대의 반너비(옹스트롬, Å)입니다.
+값이 클수록 각 막대가 넓어져 가까운
+피크가 병합됩니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>거리 히스토그램 막대의 반너비(옹스트롬, Å)입니다.
+값이 클수록 각 막대가 넓어져 가까운
+피크가 병합됩니다.</value>
+  </data>
+</root>

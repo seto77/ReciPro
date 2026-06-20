@@ -125,4 +125,95 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>多面體</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>選取位於鍵／多面體中心的元素
+（配位的中心原子）。</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>選取位於鍵／多面體頂點的元素（配位的配位子原子）。</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>鍵圓柱的半徑，以 Å 為單位。</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>鍵圓柱的半徑，以 Å 為單位。</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>新增下方的鍵／多面體設定。</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>以下方的設定取代所選的鍵／多面體。</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>刪除所選的鍵／多面體。</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>多面體稜邊的顏色（配位
+多面體的線框）。</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>多面體面的顏色（配位多面體）。</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>鍵圓柱的顏色。</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>以圓柱顯示鍵，並啟用鍵設定。</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>顯示配位多面體的稜邊（線框），並
+啟用稜邊寬度設定。</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>顯示配位多面體內部的內鍵（中心
+到頂點的鍵）。</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>顯示配位多面體，並啟用多面體設定。</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>顯示配位多面體的頂點原子（配位
+的配位子原子）。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>已定義的鍵／多面體清單；選取某一列即可
+在下方編輯，或直接切換其 Enabled／
+Show 欄。</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>鍵圓柱的不透明度（0 = 完全
+透明，1 = 不透明）。</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>兩原子被視為成鍵的原子間距離上限（以 Å 為單位）。</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>兩原子被視為成鍵的原子間距離下限（以 Å 為單位）。</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>多面體稜邊的線寬。</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>多面體面的不透明度（0 = 完全
+透明，1 = 不透明）。</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>選取構成鍵／多面體的元素對
+（中心與頂點）。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>選取構成鍵／多面體的元素對
+（中心與頂點）。</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>選取位於鍵／多面體中心的元素
+（配位的中心原子）。</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>選取位於鍵／多面體頂點的元素
+（配位的配位子原子）。</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>顯示配位多面體的中心原子。</value>
+  </data>
 </root>

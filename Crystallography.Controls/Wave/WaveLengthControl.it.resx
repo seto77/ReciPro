@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Neutroni</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Seleziona un elemento (da 1:H a 98:Cf) che emette raggi X caratteristici.
+Se si seleziona "0:custom", è possibile inserire liberamente l'energia o la lunghezza d'onda.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Usa i raggi X come sorgente d'onda (energia in keV);
+abilita i selettori dell'elemento e della riga caratteristica.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Usa un fascio di elettroni come sorgente d'onda (energia in keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Seleziona la riga di emissione caratteristica di raggi X (es.
+Kα1, Kα2, Kβ1); questo fissa la lunghezza d'onda e l'energia.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Inserisci l'energia del fascio (keV per raggi X/elettroni, meV per
+neutroni); la lunghezza d'onda viene ricalcolata automaticamente.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Inserisci l'energia del fascio (keV per raggi X/elettroni, meV per
+neutroni); la lunghezza d'onda viene ricalcolata automaticamente.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Seleziona un elemento (da 1:H a 98:Cf) che emette
+raggi X caratteristici. Scegli "0:custom" per
+inserire liberamente l'energia o la lunghezza d'onda.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Inserisci qui la lunghezza d'onda (usa i pulsanti di opzione Å / nm per cambiare l'unità di visualizzazione).
+L'energia del fascio viene ricalcolata automaticamente.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Inserisci qui la lunghezza d'onda (usa i pulsanti di opzione Å / nm per cambiare l'unità di visualizzazione).
+L'energia del fascio viene ricalcolata automaticamente.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Usa un fascio di neutroni come sorgente d'onda (energia in meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>Indica la modalità a luce bianca (spettro continuo):
+viene usato un fascio uniforme a banda larga
+invece di una singola lunghezza d'onda.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>Mostra la lunghezza d'onda in nanometri (nm). Solo visualizzazione: la lunghezza d'onda fisica e l'energia non cambiano (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>Mostra la lunghezza d'onda in ångström (Å). Solo visualizzazione: la lunghezza d'onda fisica e l'energia non cambiano (1 nm = 10 Å).</value>
+  </data>
 </root>

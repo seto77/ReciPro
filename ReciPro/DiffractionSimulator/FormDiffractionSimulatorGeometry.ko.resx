@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>필름 계조를 양 또는 음으로 선택합니다
+(음이면 겹쳐진 이미지의 표시 강도
+척도가 반전됩니다).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>필름 계조를 양 또는 음으로 선택합니다
+(음이면 겹쳐진 이미지의 표시 강도
+척도가 반전됩니다).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지의 강도 매핑을
+로그 척도와 선형 척도 사이에서 전환합니다.</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지의 강도 매핑을
+로그 척도와 선형 척도 사이에서 전환합니다.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 렌더링하는 데 사용하는 색 척도
+(Gray, Cold-Warm, Spectrum, Fire)를 선택합니다.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 렌더링하는 데 사용하는 색 척도
+(Gray, Cold-Warm, Spectrum, Fire)를 선택합니다.</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>회절 패턴 위에 겹쳐진 이미지의
+불투명도(0-100%)를 조정합니다.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>회절 패턴 위에 겹쳐진 이미지의
+불투명도(0-100%)를 조정합니다.</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>검출기 상의 풋포인트(직접 빔 중심)의
+X 픽셀 좌표를 설정합니다.</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>검출기 상의 풋포인트(직접 빔 중심)의
+Y 픽셀 좌표를 설정합니다.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>검출기 픽셀 하나의 물리적 크기를 밀리미터 단위로 설정합니다.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>검출기 크기(너비 x 높이)를 픽셀 단위로 설정합니다.</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>불러온 겹침 이미지를 지웁니다.</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>회절 패턴 위에 겹칠 이미지 파일을 불러옵니다.</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지와 검출기 치수를
+90도 회전합니다.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>불러온 겹침 이미지의 파일 경로를
+표시합니다(읽기 전용).</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 표시하는
+강도의 상한을 설정합니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 표시하는
+강도의 상한을 설정합니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 표시하는
+강도의 상한을 설정합니다.</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 표시하는
+강도의 하한을 설정합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>겹쳐진 이미지를 표시하는
+강도의 하한을 설정합니다.</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>선택하면 검출기 기하 구조의
+모식도를 표시합니다.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>검출기 면까지의 카메라 길이를 밀리미터 단위로 설정합니다.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>검출기 기울임 축의 방위각 phi를
+도 단위로 설정합니다.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>기울임 축을 중심으로 한 검출기 기울임 각도 tau를
+도 단위로 설정합니다.</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>선택하면 회절 패턴 위에 검출기 영역을
+그리고 겹침 이미지 설정을 활성화합니다.</value>
+  </data>
+</root>

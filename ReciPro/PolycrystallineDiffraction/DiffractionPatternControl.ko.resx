@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>현재 미리보기 중인 영역을 마스크합니다. 해당 픽셀을
+피팅(잔차)에서 제외하여 시뮬레이션 일치 시
+무시되도록 합니다.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>이미지의 모든 픽셀을 마스크합니다(전체
+이미지를 피팅에서 제외).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>현재 마스크를 *.mas 파일로 저장하여
+나중에 다시 불러올 수 있게 합니다.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>현재 미리보기 중인 영역의 마스크를 해제합니다.
+해당 픽셀을 다시 피팅에 포함시킵니다.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>모든 마스크를 해제합니다. 모든 픽셀을 다시 피팅에 포함시킵니다.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>필름 흐림을 적용합니다. 시뮬레이션 링을 오른쪽에서
+설정한 너비(µm)의 장치 점상 분포(가우시안)로 합성곱하여
+검출기/필름 번짐을 재현합니다.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>마스크 모드: 선택한 회절 피크(hkl 반사) 주변의
+픽셀을 마스크 대상으로 선택합니다.
+다른 마스크 모드와는 배타적입니다.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>마스크 모드: 패턴 중심으로부터 Start 및 End 반지름
+사이의 환상(도넛) 링을 마스크합니다.
+다른 마스크 모드와는 배타적입니다.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>마스크 모드: 아래에서 선택한 형태(스폿/원/사각형/도넛)로
+마우스를 사용해 이미지 위에 직접 마스크를
+그립니다.
+다른 마스크 모드와는 배타적입니다.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>마스크 모드: 방향, 띠 너비, 각도로 정의되는
+직선 띠(사각형)를 마스크합니다.
+다른 마스크 모드와는 배타적입니다.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>띠 마스크를 중심선의 한쪽만이 아니라
+양쪽에 대칭으로 적용합니다.</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 방향 프리셋입니다
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free).
+프리셋은 각도를 고정하고, Free는 직접 입력할 수 있게 합니다.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>마우스 클릭마다 그려지는 수동 스폿 마스크의
+반지름(픽셀 단위, 1–128)입니다.</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>카메라 길이(시료-검출기 간 거리)를 mm
+단위로 설정합니다. 검출기 상의 시뮬레이션
+회절 링 반지름의 배율을 결정합니다.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>다이렉트 빔(패턴) 중심의 X 픽셀 좌표입니다.
+이미지 상에서 회절 링이 중심에 오는 위치를
+설정합니다.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>다이렉트 빔(패턴) 중심의 Y 픽셀 좌표입니다.
+이미지 상에서 회절 링이 중심에 오는 위치를
+설정합니다.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>필름 흐림 너비(µm)입니다. 링과 합성곱하여
+피크를 넓히는(검출기/필름 분해능) 가우시안 장치
+점상 분포입니다.</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>원본 이미지의 검출기 픽셀 크기(mm/pixel)입니다.
+카메라 길이와 함께 산란각을 픽셀 단위의 링 반지름으로
+환산합니다.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>화면 표시 해상도(mm/pixel)입니다.
+표시되는 패턴의 줌 배율(모니터 mm/pixel ÷
+이미지 mm/pixel)을 설정합니다.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 각도(0–360°)로, 띠의 방향을 설정합니다.
+Direction이 Free일 때만 편집할 수 있습니다.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 너비(픽셀, 0–10000)입니다.
+마스크되는 띠의 폭을 설정합니다.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>수동 마스크 형태: 드래그하여 원(중심에서 반지름까지)을
+정의하고 둘러싸인 영역을 마스크합니다.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>수동 마스크 형태: 패턴 중심을 기준으로 두 반지름을
+드래그하여 환상(도넛) 링을 마스크합니다.</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>수동 마스크 형태: 사각형(두 모서리 점)을
+드래그하여 둘러싸인 영역을 마스크합니다.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>수동 마스크 형태: 클릭으로 Size에서 설정한 반지름의
+원형 스폿을 마스크(왼쪽 클릭)하거나 해제(오른쪽 클릭)
+합니다. 기본 모드입니다.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 이미지의 너비×높이(픽셀,
+1–10000)입니다. 생성되는 회절 패턴의
+캔버스 크기를 설정합니다.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>현재 시뮬레이션 회절 패턴을 해상도, 중심,
+카메라 길이, 파장을 포함하여 IPA 이미지
+파일(*.ipa)로 저장합니다.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>마스크된(피팅에서 제외된) 픽셀을 이미지 위에
+강조 표시하여 어느 영역이 무시되는지 확인할 수 있게 합니다.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>표시 밝기 윈도우의 상한(가장 밝은 색에 대응되는
+강도 카운트)입니다. 표시 대비에만 영향을 주며
+데이터는 변경하지 않습니다.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>표시 밝기 윈도우의 상한(가장 밝은 색에 대응되는
+강도 카운트)입니다. 표시 대비에만 영향을 주며
+데이터는 변경하지 않습니다.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>표시 밝기 윈도우의 하한(가장 어두운 색에 대응되는
+강도 카운트)입니다. 표시 대비에만 영향을 주며
+데이터는 변경하지 않습니다.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>표시 밝기 윈도우의 하한(가장 어두운 색에 대응되는
+강도 카운트)입니다. 표시 대비에만 영향을 주며
+데이터는 변경하지 않습니다.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 진폭(A)을 대수 스케일로
+설정합니다. 피팅의 시작 추정값으로 사용되는
+배경 링의 피크 높이를 설정합니다.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 진폭(A)을 대수 스케일로
+설정합니다. 피팅의 시작 추정값으로 사용되는
+배경 링의 피크 높이를 설정합니다.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 너비(H, 반치전폭, 픽셀
+단위)입니다. 값이 클수록 배경 링이 더
+넓어집니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 너비(H, 반치전폭, 픽셀
+단위)입니다. 값이 클수록 배경 링이 더
+넓어집니다.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 반지름(R, 중심으로부터의
+픽셀 거리)입니다. 배경 링이 솟아오르는
+위치를 설정합니다.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>초기 확산 배경(헤일로)의 반지름(R, 중심으로부터의
+픽셀 거리)입니다. 배경 링이 솟아오르는
+위치를 설정합니다.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>환상 마스크의 외측 반지름(중심으로부터의 픽셀
+거리)입니다. Start와 End 반지름 사이의
+픽셀이 마스크 대상으로 선택됩니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>환상 마스크의 외측 반지름(중심으로부터의 픽셀
+거리)입니다. Start와 End 반지름 사이의
+픽셀이 마스크 대상으로 선택됩니다.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>환상 마스크의 내측 반지름(중심으로부터의 픽셀
+거리)입니다. Start와 End 반지름 사이의
+픽셀이 마스크 대상으로 선택됩니다.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>환상 마스크의 내측 반지름(중심으로부터의 픽셀
+거리)입니다. Start와 End 반지름 사이의
+픽셀이 마스크 대상으로 선택됩니다.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>환상 마스크의 내측 반지름(중심으로부터의 픽셀
+거리)입니다. Start와 End 반지름 사이의
+픽셀이 마스크 대상으로 선택됩니다.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>시료/검출기 기울기 축의 방위각(phi)을 도 단위로
+설정합니다. 패턴을 기울이는 축의 방향을 설정하며,
+링 왜곡의 방향에 영향을 줍니다.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>시료/검출기 기울기 축의 방위각(phi)을 도 단위로
+설정합니다. 패턴을 기울이는 축의 방향을 설정하며,
+링 왜곡의 방향에 영향을 줍니다.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>phi 축을 중심으로 한 시료/검출기 기울기의 크기(tau)를
+도 단위로 설정합니다. 값이 클수록 디바이 링이
+원에서 타원으로 왜곡됩니다.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>phi 축을 중심으로 한 시료/검출기 기울기의 크기(tau)를
+도 단위로 설정합니다. 값이 클수록 디바이 링이
+원에서 타원으로 왜곡됩니다.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>피크 목록의 모든 반사(hkl)를 체크하여
+모든 피크를 한 번에 선택합니다.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>피크 목록의 모든 반사(hkl) 체크를
+해제하여 선택을 해제합니다.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>체크된 반사(hkl)의 링 주변 이미지 영역을
+선택하여 마스크할 수 있게 합니다.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>반사 지수(hkl) 목록입니다.
+주변 링 영역을 마스크 대상으로 선택하려는
+피크를 체크합니다.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>입사선의 빔 수렴(반각)을 도 단위로 설정합니다.
+값이 클수록 시뮬레이션된 디바이 링
+피크가 넓어집니다.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>입사선의 빔 수렴(반각)을 도 단위로 설정합니다.
+값이 클수록 시뮬레이션된 디바이 링
+피크가 넓어집니다.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>입사선의 빔 수렴(반각)을 도 단위로 설정합니다.
+값이 클수록 시뮬레이션된 디바이 링
+피크가 넓어집니다.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>선원의 파장 폭(단색성, Delta-lambda / lambda)을
+% 단위로 설정합니다.
+값이 클수록 시뮬레이션된 링이 넓어집니다.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>선원의 파장 폭(단색성, Delta-lambda / lambda)을
+% 단위로 설정합니다.
+값이 클수록 시뮬레이션된 링이 넓어집니다.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>선원의 파장 폭(단색성, Delta-lambda / lambda)을
+% 단위로 설정합니다.
+값이 클수록 시뮬레이션된 링이 넓어집니다.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>디바이 링 반지름 계산에 사용되는 선원(X선 또는 전자)과
+그 파장을 선택합니다.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>잔차(실측 패턴 − 시뮬레이션 패턴)를 표시하여
+피팅이 얼마나 잘 일치하는지 확인할 수 있게
+합니다. Simulation 표시와는 배타적입니다.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴을 실측 이미지 위에 Opacity
+슬라이더로 혼합하여 겹쳐 표시합니다.
+Residual 표시와는 배타적입니다.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Simulation 모드에서 실측 이미지 위에 겹친
+시뮬레이션 패턴의 혼합 불투명도(0-100%)입니다.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>현재 배경 파라미터를 배경 파일(*.bg)로
+저장하여 나중에 재사용할 수 있게 합니다.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>초기 배경의 수동 설정을 활성화합니다.
+정밀화 전에 시작 배경 링을 지정할 수 있도록
+A/H/R 슬라이더를 활성화합니다.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>회절에 대한 읽기 전용 요약입니다.
+기여한 결정립 수와 각 반사(hkl)의
+비율을 표시합니다.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>마우스 클릭마다 그려지는 수동 스폿
+마스크의 반지름(픽셀)입니다.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>마우스 클릭마다 그려지는 수동 스폿
+마스크의 반지름(픽셀)입니다.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>다이렉트 빔(패턴) 중심의 X/Y 픽셀 좌표입니다.
+회절 링이 중심에 오는 위치를 설정합니다.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>화면 표시 해상도(mm/pixel)입니다.
+표시되는 패턴의 줌 배율을 설정합니다.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>화면 표시 해상도(mm/pixel)입니다.
+표시되는 패턴의 줌 배율을 설정합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>카메라 길이(시료-검출기 간 거리, mm)입니다.
+회절 링 반지름의 배율을 결정합니다.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>카메라 길이(시료-검출기 간 거리, mm)입니다.
+회절 링 반지름의 배율을 결정합니다.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 각도(도, 0–360°)입니다. 띠의 방향을
+설정합니다(Direction이 Free일
+때만 편집 가능).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 너비(픽셀)입니다.
+마스크되는 띠의 폭을 설정합니다.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>띠 마스크의 방향 프리셋입니다
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free).
+Free는 각도를 직접 입력할 수 있게 합니다.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>원본 이미지의 검출기 픽셀 크기(mm/pixel)입니다.
+산란각을 링 반지름으로 환산합니다.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>원본 이미지의 검출기 픽셀 크기(mm/pixel)입니다.
+산란각을 링 반지름으로 환산합니다.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>다이렉트 빔 중심의 X 픽셀
+좌표입니다. 링 중심을 설정합니다.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>다이렉트 빔 중심의 Y 픽셀
+좌표입니다. 링 중심을 설정합니다.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>필름 흐림 너비(µm)입니다. 링과 합성곱하여
+피크를 넓히는 가우시안 장치 점상 분포입니다.</value>
+  </data>
+</root>

@@ -74,4 +74,54 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>중성자</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>특성 X선을 방출하는 원소 (1:H~98:Cf) 를 선택합니다.
+"0:custom" 을 선택하면 에너지 또는 파장을 자유롭게 입력할 수 있습니다.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>파원을 X선으로 합니다 (에너지 단위 keV).
+특성 X선의 원소·선종 선택 항목이 표시됩니다.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>파원을 전자선으로 합니다 (에너지 단위 keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>특성 X선의 휘선 (예: Kα1, Kα2, Kβ1) 을 선택합니다.
+파장과 에너지가 그 값으로 고정됩니다.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>빔 에너지 (X선·전자선은 keV, 중성자는 meV) 를
+입력합니다. 파장이 자동으로 다시 계산됩니다.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>빔 에너지 (X선·전자선은 keV, 중성자는 meV) 를
+입력합니다. 파장이 자동으로 다시 계산됩니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>특성 X선을 방출하는 원소 (1:H~98:Cf) 를 선택합니다.
+"0:custom" 을 선택하면 에너지·파장을 자유롭게 입력할 수 있습니다.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>여기에 파장을 입력합니다 (표시 단위는 Å / nm 라디오 버튼으로 전환).
+빔 에너지가 자동으로 다시 계산됩니다.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>여기에 파장을 입력합니다 (표시 단위는 Å / nm 라디오 버튼으로 전환).
+빔 에너지가 자동으로 다시 계산됩니다.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>파원을 중성자선으로 합니다 (에너지 단위 meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>백색광 (연속 스펙트럼) 모드를 나타냅니다.
+단일 파장이 아닌 평탄한 광대역 빔을
+사용합니다.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>파장의 표시 단위를 나노미터 (nm) 로 합니다. 표시 전용으로, 물리 파장과 에너지는 변하지 않습니다 (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>파장의 표시 단위를 옹스트롬 (Å) 으로 합니다. 표시 전용으로, 물리 파장과 에너지는 변하지 않습니다 (1 nm = 10 Å).</value>
+  </data>
 </root>

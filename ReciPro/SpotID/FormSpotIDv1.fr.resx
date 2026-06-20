@@ -122,4 +122,435 @@ de zone</value>
   <data name="buttonSearchAll.Text" xml:space="preserve">
     <value>Trouver les axes de zone à partir de trois clichés</value>
   </data>
+  <data name="buttonSearchAll.ToolTip" xml:space="preserve">
+    <value>Recherche, parmi tous les cristaux enregistrés, les combinaisons
+d'axes de zone cohérentes avec les deux ou trois
+clichés de diffraction et les angles d'inclinaison du porte-objet
+entre eux ; ouvre la fenêtre des résultats candidats.</value>
+  </data>
+  <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
+    <value>Recherche, dans le ou les cristaux chargés, les axes de zone dont
+le cliché de diffraction calculé correspond au Pattern 1
+(les L1/L2/L3 et θ saisis) dans les limites des
+tolérances ; les correspondances sont listées dans une fenêtre de résultats.</value>
+  </data>
+  <data name="buttonSearchPhoto2.ToolTip" xml:space="preserve">
+    <value>Recherche, dans le ou les cristaux chargés, les axes de zone dont
+le cliché de diffraction calculé correspond au Pattern 2
+(les L1/L2/L3 et θ saisis) dans les limites des
+tolérances ; les correspondances sont listées dans une fenêtre de résultats.</value>
+  </data>
+  <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
+    <value>Recherche les axes de zone de cristaux correspondant au cliché de
+diffraction de Photo 3 seul (vecteurs L1, L2 et
+l'angle/troisième côté), en utilisant tous les cristaux chargés.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L1Photo2L1.ToolTip" xml:space="preserve">
+    <value>Traite la réflexion L1 de Photo 1 et Photo 2 comme la
+même tache (la réflexion commune partagée le long de l'axe
+d'inclinaison) ; verrouille la longueur L1 de Photo 2 à la valeur de Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L2Photo2L2.ToolTip" xml:space="preserve">
+    <value>Traite la réflexion L2 de Photo 1 et Photo 2 comme la
+même tache (la réflexion commune partagée le long de l'axe
+d'inclinaison) ; verrouille la longueur L2 de Photo 2 à la valeur de Photo 1.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L1Photo3L1.ToolTip" xml:space="preserve">
+    <value>Traite la réflexion L1 de Photo 2 et Photo 3 comme la
+même tache (la réflexion commune partagée le long de l'axe
+d'inclinaison) ; verrouille la longueur L1 de Photo 3 à la valeur de Photo 2.</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L2Photo3L2.ToolTip" xml:space="preserve">
+    <value>Traite la réflexion L2 de Photo 2 et Photo 3 comme la
+même tache (la réflexion commune partagée le long de l'axe
+d'inclinaison) ; verrouille la longueur L2 de Photo 3 à la valeur de Photo 2.</value>
+  </data>
+  <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
+    <value>Active un deuxième cliché de diffraction (Photo 2) :
+affiche ses champs de saisie afin de rechercher les axes de zone
+à partir de deux clichés et de leur inclinaison relative du porte-objet.</value>
+  </data>
+  <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
+    <value>Active un troisième cliché de diffraction (Photo
+3) : affiche ses champs de saisie afin de rechercher les axes de zone
+à partir de trois clichés et de leurs inclinaisons relatives
+du porte-objet (nécessite Photo 2).</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Tension d'accélération (kV) du microscope électronique
+en transmission ; définit la longueur d'onde des électrons
+utilisée pour interpréter les clichés de diffraction.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Tension d'accélération (kV) du microscope électronique
+en transmission ; définit la longueur d'onde des électrons
+utilisée pour interpréter les clichés de diffraction.</value>
+  </data>
+  <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra (mm) du cliché de diffraction ;
+convertit les distances mesurées entre taches (mm) en
+espacements du réseau réciproque pour l'indexation.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra (mm) du cliché de diffraction ;
+convertit les distances mesurées entre taches (mm) en
+espacements du réseau réciproque pour l'indexation.</value>
+  </data>
+  <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
+    <value>Angle θ (degrés) entre les deux vecteurs réciproques
+L1 et L2 du Pattern 1. Modifiable en mode 'Two
+Sides and an Angle' ; en mode 'Three Sides', il est calculé
+à partir de L1/L2/L3 et affiché en lecture seule.</value>
+  </data>
+  <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
+    <value>Premier angle d'inclinaison du porte-objet du goniomètre
+(Tilt 1, en degrés) lors de la prise de Photo 1.
+Utilisé pour relier les clichés entre eux lors de
+la recherche d'axes de zone à partir de plusieurs photos.</value>
+  </data>
+  <data name="numericBoxP1Tilt2.ToolTip" xml:space="preserve">
+    <value>Deuxième angle d'inclinaison du porte-objet du goniomètre
+(Tilt 2, en degrés) lors de la prise de Photo 1
+(le second axe d'inclinaison orthogonal du porte-objet).</value>
+  </data>
+  <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
+    <value>Angle θ (degrés) entre les deux vecteurs réciproques
+L1 et L2 du Pattern 2. Modifiable en mode 'Two
+Sides and an Angle' ; calculé à partir de L1/L2/L3
+et affiché en lecture seule en mode 'Three Sides'.</value>
+  </data>
+  <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
+    <value>Premier angle d'inclinaison du porte-objet du goniomètre
+(Tilt 1, en degrés) lors de la prise de Photo 2. Utilisé
+pour relier Photo 2 aux autres clichés lors de
+la recherche d'axes de zone à partir de plusieurs photos.</value>
+  </data>
+  <data name="numericBoxP2Tilt2.ToolTip" xml:space="preserve">
+    <value>Deuxième angle d'inclinaison du porte-objet du goniomètre
+(Tilt 2, en degrés) lors de la prise de Photo 2
+(le second axe d'inclinaison orthogonal du porte-objet).</value>
+  </data>
+  <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
+    <value>Angle theta (degrés) entre les deux vecteurs de diffraction
+L1 et L2 de Photo 3. En lecture seule et
+calculé à partir des trois côtés en mode 'Three Sides' ;
+modifiable en mode 'Two Sides and an Angle'.</value>
+  </data>
+  <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison (degrés) du premier axe du porte-objet
+utilisé lors de l'enregistrement de Photo 3 ; combiné à
+Tilt 2 pour calculer l'angle entre les réglages du
+porte-objet des différents clichés.</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison (degrés) du premier axe du porte-objet
+utilisé lors de l'enregistrement de Photo 3 ; combiné à
+Tilt 2 pour calculer l'angle entre les réglages du
+porte-objet des différents clichés.</value>
+  </data>
+  <data name="numericBoxP3Tilt2.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison (degrés) du second axe du porte-objet
+utilisé lors de l'enregistrement de Photo 3 ; combiné
+à Tilt 1 pour calculer l'angle entre les réglages
+du porte-objet des différents clichés.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison (degrés) du second axe du porte-objet
+utilisé lors de l'enregistrement de Photo 3 ; combiné
+à Tilt 1 pour calculer l'angle entre les réglages
+du porte-objet des différents clichés.</value>
+  </data>
+  <data name="numericBoxPhoto1L1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L1 du Pattern 1, en
+pourcentage de sa longueur (0-50%, par défaut 5). Les axes
+de zone dont L1 diffère de la valeur saisie de
+jusqu'à cette fraction sont encore acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto1L2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L2 du Pattern 1, en
+pourcentage de sa longueur (0-50%, par défaut 5). Les axes
+de zone dont L2 diffère de la valeur saisie de
+jusqu'à cette fraction sont encore acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L3 du Pattern 1, en
+pourcentage de sa longueur (0-50%, par défaut 5).
+Utilisée uniquement en mode 'Three Sides' ; les correspondances dans
+cette fraction du L3 saisi sont acceptées.</value>
+  </data>
+  <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour l'angle θ du Pattern 1, en
+degrés (0-30, par défaut 3). Utilisée uniquement en mode 'Two Sides
+and an Angle' ; les axes de zone dont l'angle diffère de
+jusqu'à ce nombre de degrés sont encore acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour le Tilt 1 de Photo 1, en
+degrés (0-10). Définit dans quelle mesure l'angle d'inclinaison
+du porte-objet peut différer lors de l'appariement des candidats.</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour le Tilt 2 de Photo 1, en degrés
+(0-10). Définit dans quelle mesure le second angle d'inclinaison du porte-objet
+peut différer lors de l'appariement des candidats.</value>
+  </data>
+  <data name="numericBoxPhoto2L1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L1 du Pattern 2, en
+pourcentage de sa longueur (0-50%, par défaut
+5). Les axes de zone dont L1 diffère de jusqu'à
+cette fraction sont encore acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto2L2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L2 du Pattern 2, en
+pourcentage de sa longueur (0-50%, par défaut
+5). Les axes de zone dont L2 diffère de jusqu'à
+cette fraction sont encore acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L3 du Pattern 2, en
+pourcentage de sa longueur (0-50%, par défaut 5).
+Utilisée uniquement en mode 'Three Sides' ; les correspondances
+dans cette fraction de L3 sont acceptées.</value>
+  </data>
+  <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour l'angle θ du Pattern
+2, en degrés (0-30, par défaut 3). Utilisée uniquement en
+mode 'Two Sides and an Angle' ; les angles dans
+ce nombre de degrés sont acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour le Tilt 1 de Photo 2, en
+degrés (0-10). Définit dans quelle mesure l'angle d'inclinaison
+du porte-objet peut différer lors de l'appariement des candidats.</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour le Tilt 2 de Photo 2, en degrés
+(0-10). Définit dans quelle mesure le second angle d'inclinaison du porte-objet
+peut différer lors de l'appariement des candidats.</value>
+  </data>
+  <data name="numericBoxPhoto3L1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour la longueur du vecteur L1 de Photo 3, en
+pourcentage (0-50). Les candidats dont le L1 calculé diffère
+de jusqu'à cette valeur sont acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto3L2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour la longueur du vecteur L2 de Photo 3, en
+pourcentage (0-50). Les candidats dont le L2 calculé diffère
+de jusqu'à cette valeur sont acceptés comme correspondances.</value>
+  </data>
+  <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour la longueur du troisième côté L3 de Photo 3,
+en pourcentage (0-50). Utilisée uniquement en mode 'Three Sides'.</value>
+  </data>
+  <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour l'angle theta de Photo 3, en
+degrés (0-30). Les candidats dont l'angle calculé
+diffère de jusqu'à cette valeur sont acceptés. Utilisée
+uniquement en mode 'Two Sides and an Angle'.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance (± degrés, 0-10) sur l'angle Tilt 1
+de Photo 3, utilisée pour accepter les candidats
+axes de zone dont l'angle inter-clichés du porte-objet
+correspond dans cette plage.</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance (± degrés, 0-10) sur l'angle Tilt 2
+de Photo 3, utilisée pour accepter les candidats
+axes de zone dont l'angle inter-clichés du porte-objet
+correspond dans cette plage.</value>
+  </data>
+  <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
+    <value>Définit le Pattern 1 par les trois longueurs de côté L1,
+L2 et L3 ; l'angle θ est ensuite calculé à partir
+de ceux-ci. (L'autre bouton radio définit plutôt
+le cliché par deux côtés et l'angle.)</value>
+  </data>
+  <data name="radioButtonPhoto1Mode2.ToolTip" xml:space="preserve">
+    <value>Définit le Pattern 1 par deux longueurs de côté L1, L2
+et l'angle θ entre eux ; L3 est ensuite
+calculé. (L'autre bouton radio définit plutôt
+le cliché par trois côtés.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode1.ToolTip" xml:space="preserve">
+    <value>Définit le Pattern 2 par les trois longueurs de côté L1, L2 et
+L3 ; l'angle θ est ensuite calculé à partir de ceux-ci. (L'autre
+bouton radio utilise plutôt deux côtés et l'angle.)</value>
+  </data>
+  <data name="radioButtonPhoto2Mode2.ToolTip" xml:space="preserve">
+    <value>Définit le Pattern 2 par deux longueurs de côté L1, L2 et
+l'angle θ entre eux ; L3 est ensuite calculé.
+(L'autre bouton radio utilise plutôt trois côtés.)</value>
+  </data>
+  <data name="radioButtonPhoto3Mode1.ToolTip" xml:space="preserve">
+    <value>Définit le triangle du cliché de Photo 3 par ses
+trois longueurs de côté L1, L2, L3 ; l'angle
+theta est ensuite calculé automatiquement.</value>
+  </data>
+  <data name="radioButtonPhoto3Mode2.ToolTip" xml:space="preserve">
+    <value>Définit le cliché de Photo 3 par deux longueurs de côté
+L1, L2 et l'angle theta entre eux ; le
+troisième côté L3 est ensuite calculé automatiquement.</value>
+  </data>
+  <data name="textBoxAngleBetween12.ToolTip" xml:space="preserve">
+    <value>Angle (degrés) entre les réglages d'inclinaison du
+porte-objet de Photo 1 et Photo 2, calculé
+à partir de leurs valeurs Tilt 1 / Tilt 2 (lecture seule).</value>
+  </data>
+  <data name="textBoxAngleBetween23.ToolTip" xml:space="preserve">
+    <value>Angle (degrés) entre les réglages d'inclinaison du
+porte-objet de Photo 2 et Photo 3, calculé
+à partir de leurs valeurs Tilt 1 / Tilt 2 (lecture seule).</value>
+  </data>
+  <data name="textBoxAngleBetween31.ToolTip" xml:space="preserve">
+    <value>Angle (degrés) entre les réglages d'inclinaison du
+porte-objet de Photo 3 et Photo 1, calculé
+à partir de leurs valeurs Tilt 1 / Tilt 2 (lecture seule).</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Longueur d'onde des électrons (nm), calculée automatiquement
+à partir de la tension d'accélération (lecture seule).</value>
+  </data>
+  <data name="label67.ToolTip" xml:space="preserve">
+    <value>Longueur d'onde des électrons (nm), calculée automatiquement
+à partir de la tension d'accélération (lecture seule).</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Deuxième angle d'inclinaison du porte-objet du goniomètre
+(Tilt 2, degrés) lors de la prise de Photo 1.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>L3 : longueur (mm sur la photo) du troisième
+vecteur du réseau réciproque du Pattern 1, utilisée pour
+définir le triangle des taches en mode 'Three Sides'.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>L2 : longueur (mm sur la photo) du deuxième
+vecteur du réseau réciproque du Pattern 1.</value>
+  </data>
+  <data name="label131.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L1 du Pattern 1, en
+pourcentage de sa longueur (0-50%, par défaut 5).</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Premier angle d'inclinaison du porte-objet du goniomètre
+(Tilt 1, degrés) lors de la prise de Photo 1.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>L1 : longueur (mm sur la photo) du premier
+vecteur du réseau réciproque du Pattern 1.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Pour cent : unité de la tolérance de recherche sur L1
+du Pattern 2 (0-50%, par défaut 5).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Degrés : unité de la tolérance de recherche sur l'angle
+θ du Pattern 2 (0-30, par défaut 3).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Pour cent : unité de la tolérance de recherche sur L2
+du Pattern 2 (0-50%, par défaut 5).</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Pour cent : unité de la tolérance de recherche sur L3 du Pattern
+2 (0-50%, par défaut 5 ; utilisée en mode 'Three Sides').</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>L1 : longueur (mm sur le cliché) du premier
+vecteur du réseau réciproque du Motif 2.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>L2 : longueur (mm sur le cliché) du deuxième
+vecteur du réseau réciproque du Motif 2.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Angle θ (degrés) entre les vecteurs
+réciproques L1 et L2 du Motif 2.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>L3 : longueur (mm sur le cliché) du
+troisième vecteur du réseau réciproque du
+Motif 2, utilisée en mode « Three Sides ».</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Degrés : unité de l'angle θ entre L1 et L2 du Motif 2.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L2 du Motif 1, en
+pourcentage de sa longueur (0-50 %, défaut 5).</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Longueur mesurée L1 du premier vecteur de diffraction
+du Cliché 3, en mm sur le support d'enregistrement.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Longueur mesurée L2 du deuxième vecteur de
+diffraction du Cliché 3, en mm sur le support d'enregistrement.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Angle thêta (degrés) entre les vecteurs L1 et L2 du Cliché 3.</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Longueur L3 du troisième côté du triangle
+du Cliché 3, en mm (utilisée en mode « Three Sides »).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Premier angle d'inclinaison du porte-objet du goniomètre
+(Tilt 1, degrés) lors de la prise du Cliché 2.</value>
+  </data>
+  <data name="label69.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L1
+du Motif 1 (pourcentage de sa longueur).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Deuxième angle d'inclinaison du porte-objet du goniomètre
+(Tilt 2, degrés) lors de la prise du Cliché 2.</value>
+  </data>
+  <data name="label70.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L2
+du Motif 1 (pourcentage de sa longueur).</value>
+  </data>
+  <data name="label71.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L3 du Motif 1
+(pourcentage de sa longueur ; utilisée en mode « Three Sides »).</value>
+  </data>
+  <data name="label75.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à
+l'angle θ du Motif 1 (degrés ;
+utilisée en mode « Two Sides and an Angle »).</value>
+  </data>
+  <data name="label76.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L1
+du Motif 2 (pourcentage de sa longueur).</value>
+  </data>
+  <data name="label77.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L2
+du Motif 2 (pourcentage de sa longueur).</value>
+  </data>
+  <data name="label78.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à L3 du Motif 2
+(pourcentage de sa longueur ; utilisée en mode « Three Sides »).</value>
+  </data>
+  <data name="label79.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche plus/moins appliquée à
+l'angle θ du Motif 2 (degrés ;
+utilisée en mode « Two Sides and an Angle »).</value>
+  </data>
+  <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
+    <value>Angle θ (degrés) entre les vecteurs
+réciproques L1 et L2 du Motif 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_3.ToolTip" xml:space="preserve">
+    <value>Degrés : unité de l'angle θ entre L1 et L2 du Motif 1.</value>
+  </data>
+  <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
+    <value>Degrés : unité de la tolérance de recherche d'angle
+pour θ du Motif 1 (0-30, défaut 3).</value>
+  </data>
+  <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
+    <value>Tolérance de recherche pour L3 du Motif 1,
+en pourcentage de sa longueur (0-50 %,
+défaut 5 ; utilisée en mode « Three Sides »).</value>
+  </data>
 </root>

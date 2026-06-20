@@ -80,4 +80,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>平移</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>晶面的颜色</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>将上面定义的晶面（指数、平移量、颜色）
+添加到列表中。</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>用上面输入的值替换列表中
+当前选中的晶面。</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>从列表中删除当前选中的晶面。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>已定义晶面的列表；勾选某一行的
+复选框可切换是否显示该晶面。</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>输入晶面的米勒指数 (h k l)
+（六方晶体使用米勒-布拉维指数 h k i l）。</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>沿法线方向平移晶面，以晶面间距的
+比例表示（-0.5 到 0.5）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>沿法线方向平移晶面，以晶面间距的
+比例表示（-0.5 到 0.5）。</value>
+  </data>
 </root>

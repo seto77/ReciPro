@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Colore</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Seleziona la scala di colori per la figura polare: uno
+spettro dal freddo al caldo o un gradiente in scala di grigi.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Seleziona la scala di colori per la figura polare: uno
+spettro dal freddo al caldo o un gradiente in scala di grigi.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Mostra i valori massimo e minimo dei pixel
+attualmente disegnati nella figura polare.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Limite superiore della scala di colori per la
+figura polare; i valori pari o superiori a questo
+si mappano sull'estremo caldo/chiaro della barra.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Limite inferiore della scala di colori per la
+figura polare; i valori pari o inferiori a questo
+si mappano sull'estremo freddo/scuro della barra.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Dimensione del bin angolare in gradi per l'istogramma
+della figura polare; valori più piccoli danno bin
+più fini (a risoluzione più alta) (intervallo 1–30°).</value>
+  </data>
 </root>

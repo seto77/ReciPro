@@ -98,4 +98,141 @@
   <data name="label21.Text" xml:space="preserve">
     <value>점군</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>격자 상수 a, b, c의 길이 단위
+(Å 또는 nm)를 선택합니다.</value>
+  </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>격자 상수의 ± 오차 (추정 표준 편차)
+입력란의 표시 여부를 전환합니다.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>격자 상수 "β" (도)</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>격자 상수 "β" (도)</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>격자 상수 "α" (도)</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>격자 상수 "α" (도)</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 a (단위 선택에 따라
+Å 또는 nm). 입력은 결정계의
+제약을 따릅니다.</value>
+  </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 a (단위 선택에 따라
+Å 또는 nm). 입력은 결정계의
+제약을 따릅니다.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>격자 상수 "γ" (도)</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value>격자 상수 "γ" (도)</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 b (단위 선택에 따라 Å
+또는 nm). 대칭에 의해 a에 고정될 수 있습니다.</value>
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 b (단위 선택에 따라 Å
+또는 nm). 대칭에 의해 a에 고정될 수 있습니다.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 c (단위 선택에 따라 Å
+또는 nm). 대칭에 의해 a에 고정될 수 있습니다.</value>
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 c (단위 선택에 따라 Å
+또는 nm). 대칭에 의해 a에 고정될 수 있습니다.</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>공간군을 (번호 : 헤르만–모갱 (HM) 기호로)
+선택합니다. 편집 가능한 격자 상수가 대칭으로 제약됩니다.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>공간군을 (번호 : 헤르만–모갱 (HM) 기호로)
+선택합니다. 편집 가능한 격자 상수가 대칭으로 제약됩니다.</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>결정학적 점군을 헤르만–모갱 (HM) 표기로
+선택합니다. 이 선택에 따라 사용 가능한
+공간군이 걸러집니다.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>결정학적 점군을 헤르만–모갱 (HM) 표기로
+선택합니다. 이 선택에 따라 사용 가능한
+공간군이 걸러집니다.</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>결정계 (삼사정계 … 입방정계)를 선택합니다.
+이에 따라 어떤 격자 상수가 독립인지가 결정됩니다.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>결정계 (삼사정계 … 입방정계)를 선택합니다.
+이에 따라 어떤 격자 상수가 독립인지가 결정됩니다.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>헤르만–모갱 (HM) 기호의 문자를 입력하여
+공간군을 검색합니다. 일치 항목이 결과 목록에
+나타납니다 (아래 첨자는 "sub"로 입력).</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>헤르만–모갱 (HM) 기호의 문자를 입력하여
+공간군을 검색합니다. 일치 항목이 결과 목록에
+나타납니다 (아래 첨자는 "sub"로 입력).</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>검색 결과에서 공간군 (번호 : 헤르만–모갱
+기호)을 선택하여 위의 결정계, 점군,
+공간군에 적용합니다.</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>격자 상수 a의 추정 표준 편차 (± 오차).
+단위는 a와 동일합니다.</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>각도 α의 추정 표준 편차
+(± 오차, 도).</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>격자 상수 b의 추정 표준 편차 (± 오차).
+단위는 b와 동일합니다.</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>각도 β의 추정 표준 편차
+(± 오차, 도).</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>격자 상수 c의 추정 표준 편차 (± 오차).
+단위는 c와 동일합니다.</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>각도 γ의 추정 표준 편차
+(± 오차, 도).</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>a, b, c의 길이 단위로 옹스트롬 (Å)을
+사용합니다. 기존 값은 자동으로 환산됩니다.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>a, b, c의 길이 단위로 나노미터 (nm)를
+사용합니다. 기존 값은 자동으로 환산됩니다.</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>a의 현재 길이 단위 (Å 또는
+nm. 단위 선택기로 전환).</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>b의 현재 길이 단위 (Å 또는
+nm. 단위 선택기로 전환).</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>c의 현재 길이 단위 (Å 또는
+nm. 단위 선택기로 전환).</value>
+  </data>
 </root>

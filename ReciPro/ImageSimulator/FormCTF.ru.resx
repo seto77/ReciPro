@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyGraph.ToolTip" xml:space="preserve">
+    <value>Копирует построенные кривые (u и каждое
+значение функции) как текст с разделителями-табуляциями
+в буфер обмена для вставки в Excel</value>
+  </data>
+  <data name="checkBoxACTF.ToolTip" xml:space="preserve">
+    <value>Строит ACTF (амплитудную передаточную функцию
+контраста) = Cos[W(u)] x Es x Ec, эффективную
+передачу амплитуды в пределах апертуры</value>
+  </data>
+  <data name="checkBoxCosW.ToolTip" xml:space="preserve">
+    <value>Строит Cos[W(u)], косинус волновой
+аберрации W(u): амплитудно-контрастную
+компоненту передачи линзы</value>
+  </data>
+  <data name="checkBoxEc.ToolTip" xml:space="preserve">
+    <value>Строит Ec(u), огибающую временной (хроматической)
+когерентности: затухание контраста из-за хроматической
+аберрации и нестабильности высокого напряжения / разброса энергии</value>
+  </data>
+  <data name="checkBoxEs_HRTEM.ToolTip" xml:space="preserve">
+    <value>Строит Es(u), огибающую пространственной когерентности
+для HRTEM (ПЭМ высокого разрешения): затухание контраста
+из-за расходимости пучка (полуугол beta)</value>
+  </data>
+  <data name="checkBoxEs_STEM.ToolTip" xml:space="preserve">
+    <value>Строит Es(u), огибающую пространственной когерентности
+для STEM (сканирующий ПЭМ): затухание контраста
+из-за конечного размера источника (sigma_s)</value>
+  </data>
+  <data name="checkBoxPCTF.ToolTip" xml:space="preserve">
+    <value>Строит PCTF (фазовую передаточную функцию
+контраста) = Sin[W(u)] x Es x Ec,
+эффективную передачу фазы в пределах апертуры</value>
+  </data>
+  <data name="checkBoxSinW.ToolTip" xml:space="preserve">
+    <value>Строит Sin[W(u)], синус волновой аберрации W(u):
+фазово-контрастное ядро передаточной функции</value>
+  </data>
+  <data name="numericBoxMaxU1.ToolTip" xml:space="preserve">
+    <value>Верхний предел оси пространственной частоты u
+для графика, в nm-1 (0-20); задаёт, насколько далеко
+в обратном пространстве строятся кривые</value>
+  </data>
+  <data name="radioButtonCTF_Incoherent.ToolTip" xml:space="preserve">
+    <value>Рассматривает STEM (сканирующий ПЭМ) как некогерентное
+формирование изображения: вычисляет единую кривую CTFI путём
+интегрирования по апертуре сходимости</value>
+  </data>
+  <data name="radioButtonCTF_coherent.ToolTip" xml:space="preserve">
+    <value>Рассматривает STEM (сканирующий ПЭМ) как когерентное
+формирование изображения: показывает кривые Sin[W], Cos[W], Es,
+Ec, PCTF и ACTF, как для HRTEM</value>
+  </data>
+</root>

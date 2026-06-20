@@ -139,4 +139,135 @@
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>能量标准差</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>运行蒙特卡罗模拟：在样品中追踪设定
+数量的入射电子，然后更新统计值、
+分布图和3D轨迹视图。</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>将3D视图视角设置为沿样品表面
+法线方向（考虑当前的倾斜角）。</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>将3D视图视角设置为沿X轴方向，
+即样品旋转（倾斜）轴。</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>将3D视图视角设置为沿Z轴方向，
+即沿入射束方向。</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>在3D视图中，同时绘制被样品吸收的电子
+（未发生背散射的电子）的轨迹，
+而不仅是背散射电子的轨迹。</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>在3D轨迹视图中显示 X（红）、Y（绿）和
+Z=束方向（紫）坐标轴。</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>在背散射电子出射方向的极射赤面投影图
+（极图）上，叠加显示 ±X / ±Y / ±Z 轴
+的位置。</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>在3D视图中，于样品表面绘制作为距离参考的
+同心刻度圆（间距自动缩放，以 nm/µm 标注）。</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>在3D视图中，将每个背散射电子的路径
+延伸至表面之外，以显示其逸出方向
+（按出射能量着色）。</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>离开样品表面的背散射电子（BSE）的
+平均出射能量，单位 keV。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>离开样品表面的背散射电子（BSE）的
+平均出射能量，单位 keV。</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>背散射系数 η：入射电子中以背散射电子
+（BSE）形式从表面重新发射出去的比例，
+由蒙特卡罗模拟得出。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>背散射系数 η：入射电子中以背散射电子
+（BSE）形式从表面重新发射出去的比例，
+由蒙特卡罗模拟得出。</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>散射截面 σ_E：入射能量下弹性散射的
+有效靶面积；数值越大表示散射越频繁
+（nm²）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>散射截面 σ_E：入射能量下弹性散射的
+有效靶面积；数值越大表示散射越频繁
+（nm²）。</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>弹性平均自由程 λ：在入射能量下电子
+两次弹性散射事件之间所经过的
+平均距离（nm）。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>弹性平均自由程 λ：在入射能量下电子
+两次弹性散射事件之间所经过的
+平均距离（nm）。</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>阻止本领 dE/ds：在入射能量下电子
+因非弹性碰撞每单位路径长度所损失的
+能量（eV/nm）。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>阻止本领 dE/ds：在入射能量下电子
+因非弹性碰撞每单位路径长度所损失的
+能量（eV/nm）。</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>要模拟的电子轨迹数量（100 至 1,000,000）。
+轨迹越多，统计越平滑，但计算耗时越长。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>要模拟的电子轨迹数量（100 至 1,000,000）。
+轨迹越多，统计越平滑，但计算耗时越长。</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>3D视图中要绘制的轨迹数量上限（1 至 100,000）。
+此项仅限制绘制，不影响模拟；
+数值越小，3D视图响应越流畅。</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>样品表面相对于入射束的倾斜角
+（0 至 -90 度）。0 度=表面法线沿束方向；
+倾斜会改变背散射电子的
+产额和方向分布。</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>按各方向背散射电子的平均出射能量
+（keV）为极射赤面投影图着色。</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>按频率为极射赤面投影图着色：
+即各方向出射的背散射电子
+数量。</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>按各方向背散射电子出射能量的
+标准偏差为极射赤面投影图
+着色。</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>状态栏：显示上一次模拟中轨迹计算、
+绘图和3D渲染各自所耗费的
+时间。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>入射电子能量（加速电压），单位 keV。它设定用于
+轨迹、截面、平均自由程和阻止本领计算的
+束能量；能量越高，穿透越深。</value>
+  </data>
 </root>

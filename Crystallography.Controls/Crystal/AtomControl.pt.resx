@@ -160,4 +160,391 @@ Erro</value>
   <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Sim. sítio</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Nome que identifica este sítio atômico (ex.: O1, Fe2),
+mostrado na lista de átomos e como rótulo 3D.</value>
+  </data>
+  <data name="textBoxLabel.ToolTip" xml:space="preserve">
+    <value>Nome que identifica este sítio atômico (ex.: O1, Fe2),
+mostrado na lista de átomos e como rótulo 3D.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Elemento químico deste sítio atômico.</value>
+  </data>
+  <data name="comboBoxAtom.ToolTip" xml:space="preserve">
+    <value>Selecione um elemento</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
+    <value>Ocupação do sítio: fração deste sítio ocupada
+pelo átomo (0 = vazio, 1 = totalmente ocupado).</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
+    <value>Ocupação do sítio: fração deste sítio ocupada
+pelo átomo (0 = vazio, 1 = totalmente ocupado).</value>
+  </data>
+  <data name="numericBoxZ.ToolTip" xml:space="preserve">
+    <value>Coordenadas fracionárias do eixo c.
+O formato fracionário (ex.: 3/4) é aceito.</value>
+  </data>
+  <data name="numericBoxY.ToolTip" xml:space="preserve">
+    <value>Coordenadas fracionárias do eixo b.
+O formato fracionário (ex.: 3/4) é aceito.</value>
+  </data>
+  <data name="numericBoxX.ToolTip" xml:space="preserve">
+    <value>Coordenadas fracionárias do eixo a.
+O formato fracionário (ex.: 3/4) é aceito.</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
+    <value>Usa a notação U para o parâmetro de deslocamento
+atômico (temperatura) — o deslocamento atômico médio
+quadrático (Å²) da vibração térmica; B = 8π²·U.</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
+    <value>Usa a notação B para o parâmetro de deslocamento
+atômico (temperatura); B = 8π²·U, onde
+valores maiores indicam vibração térmica mais forte.</value>
+  </data>
+  <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
+    <value>Aba de configurações do fator de Debye-Waller</value>
+  </data>
+  <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
+    <value>Seleciona a entrada de fator de dispersão de elétrons
+(estado de carga iônica e parametrização,
+ex.: "Fe2+: HF") usada para a simulação de difração /
+imagem de elétrons deste átomo.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Seleciona a entrada de fator de dispersão de elétrons
+(estado de carga iônica e parametrização,
+ex.: "Fe2+: HF") usada para a simulação de difração /
+imagem de elétrons deste átomo.</value>
+  </data>
+  <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
+    <value>Seleciona a entrada de fator de dispersão de raios X (estado
+de carga iônica e parametrização, ex.: "Fe2+") usada
+para o cálculo de difração de raios X deste átomo.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Seleciona a entrada de fator de dispersão de raios X (estado
+de carga iônica e parametrização, ex.: "Fe2+") usada
+para o cálculo de difração de raios X deste átomo.</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>Raio da esfera a ser desenhada</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip1" xml:space="preserve">
+    <value>Raio da esfera a ser desenhada</value>
+  </data>
+  <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
+    <value>Copia as configurações atuais (aparência na
+aba Appearance, ou parâmetros de Debye–Waller /
+deslocamento na aba Debye–Waller)
+para todos os átomos do mesmo elemento.</value>
+  </data>
+  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
+    <value>Adiciona o átomo abaixo à lista acima.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Substitui o átomo selecionado pelo átomo abaixo</value>
+  </data>
+  <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
+    <value>Aplica os parâmetros atuais de Debye–Waller (deslocamento
+atômico) a cada átomo da lista
+(disponível na aba Debye–Waller).</value>
+  </data>
+  <data name="buttonAtomUp.ToolTip" xml:space="preserve">
+    <value>Move o átomo selecionado para cima</value>
+  </data>
+  <data name="buttonAtomDown.ToolTip" xml:space="preserve">
+    <value>Move o átomo selecionado para baixo</value>
+  </data>
+  <data name="buttonDeleteAtom.ToolTip" xml:space="preserve">
+    <value>Exclui o átomo selecionado</value>
+  </data>
+  <data name="buttonOriginShift1.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/8, 1/8, 1/8)
+às coordenadas fracionárias de cada átomo (sinal
+definido pelos botões +/-). Útil para
+alternar entre escolhas alternativas de origem.</value>
+  </data>
+  <data name="buttonOriginShift2.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/4, 1/4,
+1/4) às coordenadas fracionárias de cada
+átomo (sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift3.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (0, 1/4, 1/8)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift4.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/4, 0, 1/4)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (0, 1/4, 1/4)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift6.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/4, 1/4, 0)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/4, -1/4, 0)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift8.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (1/4, -1/4,
+1/4) às coordenadas fracionárias de cada
+átomo (sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
+    <value>Desloca a origem adicionando (0, 1/4, -1/8)
+às coordenadas fracionárias de cada átomo
+(sinal definido pelos botões +/-).</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Ativa/desativa o desenho do texto do rótulo deste átomo
+ao lado de sua esfera na visualização 3D da estrutura.</value>
+  </data>
+  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
+    <value>Clique para escolher a cor de exibição da esfera
+deste átomo na visualização 3D da estrutura.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista de todos os sítios atômicos no cristal. Selecione uma
+linha para carregá-la no editor abaixo; a caixa de
+seleção alterna a visibilidade do átomo na vista 3D.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Opacidade (alfa) da esfera do átomo,
+0 (totalmente transparente) a 1 (opaco).</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Opacidade (alfa) da esfera do átomo,
+0 (totalmente transparente) a 1 (opaco).</value>
+  </data>
+  <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão ambiente (0–1): intensidade
+da iluminação de fundo uniforme sobre a esfera do
+átomo, independente da direção da luz.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão ambiente (0–1): intensidade
+da iluminação de fundo uniforme sobre a esfera do
+átomo, independente da direção da luz.</value>
+  </data>
+  <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão difusa (0–1): reflexão fosca
+que varia com a direção da luz (brilho do lado
+iluminado da esfera).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão difusa (0–1): reflexão fosca
+que varia com a direção da luz (brilho do lado
+iluminado da esfera).</value>
+  </data>
+  <data name="numericBoxEmission.ToolTip" xml:space="preserve">
+    <value>Coeficiente de emissão (0–1): autoiluminação
+que faz a esfera do átomo parecer brilhar
+independentemente de qualquer fonte de luz.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Coeficiente de emissão (0–1): autoiluminação
+que faz a esfera do átomo parecer brilhar
+independentemente de qualquer fonte de luz.</value>
+  </data>
+  <data name="numericBoxOccerr.ToolTip" xml:space="preserve">
+    <value>Incerteza padrão (± erro) da ocupação do sítio.</value>
+  </data>
+  <data name="numericBoxShininess.ToolTip" xml:space="preserve">
+    <value>Expoente de brilho especular (0–20): nitidez do
+realce especular; valores maiores
+produzem um realce menor e mais concentrado.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Expoente de brilho especular (0–20): nitidez do
+realce especular; valores maiores
+produzem um realce menor e mais concentrado.</value>
+  </data>
+  <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão especular (0–1):
+intensidade do realce brilhante sobre a
+esfera do átomo (atua junto com o brilho especular).</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Coeficiente de reflexão especular (0–1):
+intensidade do realce brilhante sobre a
+esfera do átomo (atua junto com o brilho especular).</value>
+  </data>
+  <data name="numericBoxXerr.ToolTip" xml:space="preserve">
+    <value>Incerteza padrão (± erro) da
+coordenada fracionária do eixo a.</value>
+  </data>
+  <data name="numericBoxYerr.ToolTip" xml:space="preserve">
+    <value>Incerteza padrão (± erro) da
+coordenada fracionária do eixo b.</value>
+  </data>
+  <data name="numericBoxZerr.ToolTip" xml:space="preserve">
+    <value>Incerteza padrão (± erro) da
+coordenada fracionária do eixo c.</value>
+  </data>
+  <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
+    <value>Subtrair o vetor de deslocamento escolhido (deslocamento
+de origem negativo) quando um botão de deslocamento de origem é pressionado.</value>
+  </data>
+  <data name="radioButtonOriginShiftPlus.ToolTip" xml:space="preserve">
+    <value>Adicionar o vetor de deslocamento escolhido (deslocamento
+de origem positivo) quando um botão de deslocamento de origem é pressionado.</value>
+  </data>
+  <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
+    <value>Usar o modelo de deslocamento anisotrópico
+(vibração térmica dependente da direção
+descrita por um tensor de 6 componentes B11…B23).</value>
+  </data>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value>Usar o modelo de deslocamento isotrópico (um único valor
+descrevendo vibração térmica igual em todas as direções).</value>
+  </data>
+  <data name="labelDimension.ToolTip" xml:space="preserve">
+    <value>Unidade atual do parâmetro de
+deslocamento: Å² para U (e B isotrópico);
+"None" (adimensional) para B anisotrópico.</value>
+  </data>
+  <data name="numericBoxB11.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico,
+componente 11 (Å²) — descreve a vibração térmica
+dependente da direção deste átomo; exibido
+como B11 ou U11 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB11err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 11
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxB12.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico, componente
+12 (Å²) — vibração térmica dependente da direção;
+exibido como B12 ou U12 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 12
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxB13.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico, componente
+13 (Å²) — vibração térmica dependente da direção;
+exibido como B13 ou U13 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB13err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 13
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxB22.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico, componente
+22 (Å²) — vibração térmica dependente da direção;
+exibido como B22 ou U22 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB22err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 22
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxB23.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico, componente
+23 (Å²) — vibração térmica dependente da direção;
+exibido como B23 ou U23 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB23err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 23
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxB33.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico anisotrópico, componente
+33 (Å²) — vibração térmica dependente da direção;
+exibido como B33 ou U33 conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxB33err.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do componente 33
+do parâmetro de deslocamento anisotrópico (Å²).</value>
+  </data>
+  <data name="numericBoxBiso.ToolTip" xml:space="preserve">
+    <value>Parâmetro de deslocamento atômico isotrópico
+Biso/Uiso (Å²) — a magnitude da vibração
+térmica, igual em todas as direções; exibido
+como Biso ou Uiso conforme a notação escolhida.</value>
+  </data>
+  <data name="numericBoxBisoerr.ToolTip" xml:space="preserve">
+    <value>Desvio padrão (erro) do parâmetro de
+deslocamento isotrópico Biso/Uiso (Å²).</value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar os campos de erro (desvio padrão)
+das coordenadas atômicas e da ocupação.</value>
+  </data>
+  <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
+    <value>Deslocar as coordenadas fracionárias de todos os átomos
+pelos valores personalizados (x, y, z) inseridos abaixo,
+e então regenerar as posições simetricamente equivalentes.</value>
+  </data>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value>Deslocamento de origem ao longo de a (x), em coordenadas
+fracionárias (intervalo -1 a 1); aplicado a
+todos os átomos com "Apply custom shift".</value>
+  </data>
+  <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
+    <value>Deslocamento de origem ao longo de b (y), em coordenadas
+fracionárias (intervalo -1 a 1); aplicado a
+todos os átomos com "Apply custom shift".</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
+    <value>Deslocamento de origem ao longo de c (z), em coordenadas
+fracionárias (intervalo -1 a 1); aplicado a
+todos os átomos com "Apply custom shift".</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.ToolTip" xml:space="preserve">
+    <value>Abrir uma caixa de diálogo para editar as abundâncias isotópicas usadas
+no comprimento de dispersão de nêutrons (habilitado apenas
+quando a composição isotópica personalizada está selecionada).</value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.ToolTip" xml:space="preserve">
+    <value>Mostrar os campos de entrada de incerteza (desvio padrão)
+dos fatores de temperatura de Debye–Waller
+(parâmetros de deslocamento térmico Biso/Uiso e
+Bij/Uij anisotrópicos), que atenuam a intensidade de
+difração devido à vibração térmica dos átomos.</value>
+  </data>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value>Escolher se o comprimento de dispersão coerente de nêutrons
+usa a abundância isotópica natural ou uma composição
+isotópica personalizada; selecionar 'Custom
+isotope abundance' habilita o botão Editar para
+que você possa inserir as frações por isótopo usadas nos
+cálculos do fator de estrutura de nêutrons.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Escolher o modelo de deslocamento atômico: isotrópico
+(um valor) ou anisotrópico (tensor de 6 componentes
+para vibração térmica dependente da direção).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Escolher a notação para o parâmetro de deslocamento
+atômico (de temperatura): B ou U, relacionados por B = 8π²·U.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Dimensão física (unidade) do parâmetro de deslocamento
+para a notação atual: Å² para U (e
+B isotrópico), adimensional para B anisotrópico.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Inserir um deslocamento de coordenadas fracionárias
+(x, y, z) a ser aplicado a todos os átomos.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Escolher se o comprimento de dispersão de nêutrons
+usa a abundância isotópica natural (padrão)
+ou uma composição isotópica personalizada.</value>
+  </data>
 </root>

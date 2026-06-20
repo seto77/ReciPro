@@ -62,4 +62,37 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>Если вы публикуете работу, в которой используются данные из этой базы данных, пожалуйста, процитируйте следующую ссылку или ссылки, перечисленные на соответствующей веб-странице. AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>Перейти к первой записи кристалла в списке.</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>Перейти к последней записи кристалла в списке.</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>Перейти к следующей записи кристалла.</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>Перейти к предыдущей записи кристалла.</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>Загрузить и показать записи из AMCSD (American
+Mineralogist Crystal Structure Database).</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>Загрузить и показать записи из COD
+(Crystallography Open Database); загружает
+их из сети, если они отсутствуют локально.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Список кристаллов в базе данных; выберите
+строку, чтобы загрузить этот кристалл (параметры
+ячейки, пространственную группу, ссылку и т. д.).</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>Общее число записей кристаллов в базе данных.</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>Номер текущей записи; введите
+номер, чтобы перейти к этому кристаллу.</value>
+  </data>
 </root>

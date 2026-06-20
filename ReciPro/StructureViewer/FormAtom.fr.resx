@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxIsDraw.ToolTip" xml:space="preserve">
+    <value>Afficher ou masquer cet atome dans la
+vue 3D. Ceci ne fait que basculer l'affichage ;
+la structure cristalline elle-même reste inchangée.</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>Rayon d'affichage de la sphère de l'atome, en angströms (0–9,9
+Å). N'affecte que le rendu, pas le facteur de diffusion.</value>
+  </data>
+  <data name="radioButtonAllSameElement.ToolTip" xml:space="preserve">
+    <value>Appliquer les modifications de couleur, de matériau et de
+rayon à tous les atomes du même élément.</value>
+  </data>
+  <data name="radioButtonApplyEquivalentAtoms.ToolTip" xml:space="preserve">
+    <value>Appliquer les modifications uniquement aux atomes en positions
+équivalentes par symétrie (le même site cristallographique).</value>
+  </data>
+  <data name="radioButtonApplyThis.ToolTip" xml:space="preserve">
+    <value>Appliquer les modifications uniquement à l'atome actuellement sélectionné.</value>
+  </data>
+  <data name="numericBoxAtomAmbient.ToolTip" xml:space="preserve">
+    <value>Composante de lumière ambiante de la sphère de l'atome
+(0–1) : luminosité des faces non éclairées directement.</value>
+  </data>
+  <data name="numericBoxAtomDiffusion.ToolTip" xml:space="preserve">
+    <value>Composante de réflexion diffuse (0–1) : l'ombrage principal
+qui éclaire les faces orientées vers la source de lumière.</value>
+  </data>
+  <data name="numericBoxAtomEmmision.ToolTip" xml:space="preserve">
+    <value>Composante d'auto-émission (0–1) : luminosité que l'atome
+émet par lui-même, indépendamment de la source de lumière.</value>
+  </data>
+  <data name="numericBoxAtomShininess.ToolTip" xml:space="preserve">
+    <value>Exposant de brillance spéculaire (0–50) : des valeurs plus
+élevées donnent un reflet plus petit et plus net.</value>
+  </data>
+  <data name="numericBoxAtomSpecular.ToolTip" xml:space="preserve">
+    <value>Intensité de la réflexion spéculaire (0–1) : luminosité
+du reflet brillant à la surface de l'atome
+(sa netteté est définie par Shininess).</value>
+  </data>
+  <data name="numericBoxAtomTransparency.ToolTip" xml:space="preserve">
+    <value>Opacité (alpha) de la sphère de l'atome
+(0–1) : 1 = opaque, 0 = entièrement transparent.</value>
+  </data>
+  <data name="pictureBoxAtomColor.ToolTip" xml:space="preserve">
+    <value>Cliquez pour définir la couleur d'affichage de cet atome dans la vue 3D.</value>
+  </data>
+</root>

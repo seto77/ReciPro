@@ -62,4 +62,79 @@
   <data name="checkBoxSamples.Text" xml:space="preserve">
     <value>Mostrar exemplos</value>
   </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Adiciona a macro atualmente no editor
+(nome e corpo) como uma nova entrada na lista.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Substitui a macro selecionada na
+lista pelo conteúdo atual do editor.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Exclui a macro selecionada da lista.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Move a macro selecionada uma posição para baixo na lista.</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>Avança para a próxima linha durante
+a execução passo a passo (atalho: F10).</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>Executa a macro (script Python) no
+editor do início ao fim.</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>Executa a macro uma linha por vez (modo de depuração), pausando
+em cada linha para que você possa inspecionar os valores das variáveis.</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>Interrompe a macro em execução (efetivo
+durante a execução passo a passo).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Move a macro selecionada uma posição para cima na lista.</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>Alterna a exibição das macros de exemplo
+integradas (somente leitura). Suas próprias macros são
+guardadas à parte e restauradas ao desmarcar.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista de referência das funções de macro integradas
+do ReciPro e suas descrições. Dê duplo clique em uma
+função para inseri-la na posição do cursor no editor.</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>Inspeção de depuração: durante a execução passo a passo,
+mostra os nomes das variáveis locais e seus
+valores atuais na linha pausada.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>As macros usam a sintaxe básica do Python juntamente com
+as funções integradas fornecidas pelo ReciPro.</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>Lista de macros salvas. Selecione uma para
+carregar seu nome e corpo no editor.</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carrega um arquivo de macro (*.mcr) no editor.</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>Editor de código para o corpo da macro. Escreva o script
+Python (IronPython) aqui; são fornecidos auto-completar, números
+de linha e destaque de erros.</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salva o conteúdo atual do editor em um arquivo de macro (*.mcr).</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>Nome da macro. Usado como sua entrada na lista
+e como o nome do item de menu quando adicionada ou substituída.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Nome da macro. Usado como sua entrada na lista
+e como o nome do item de menu quando adicionada ou substituída.</value>
+  </data>
 </root>

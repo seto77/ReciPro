@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Seleziona il gradiente positivo o negativo della
+pellicola (negativo inverte la scala di intensità
+visualizzata dell'immagine sovrapposta).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Seleziona il gradiente positivo o negativo della
+pellicola (negativo inverte la scala di intensità
+visualizzata dell'immagine sovrapposta).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Commuta la mappatura di intensità dell'immagine sovrapposta
+tra scala logaritmica e lineare.</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Commuta la mappatura di intensità dell'immagine sovrapposta
+tra scala logaritmica e lineare.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Seleziona la scala di colori (Gray, Cold-Warm, Spectrum
+o Fire) usata per rendere l'immagine sovrapposta.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Seleziona la scala di colori (Gray, Cold-Warm, Spectrum
+o Fire) usata per rendere l'immagine sovrapposta.</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>Regola l'opacità (0-100%) dell'immagine
+sovrapposta sulla figura di diffrazione.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Regola l'opacità (0-100%) dell'immagine
+sovrapposta sulla figura di diffrazione.</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>Imposta la coordinata X in pixel del punto di base
+(centro del fascio diretto) sul rivelatore.</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>Imposta la coordinata Y in pixel del punto di base
+(centro del fascio diretto) sul rivelatore.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Imposta la dimensione fisica di un pixel del rivelatore in millimetri.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Imposta la dimensione del rivelatore (larghezza x altezza) in pixel.</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>Cancella l'immagine sovrapposta caricata.</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>Carica un file immagine da sovrapporre alla figura di diffrazione.</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>Ruota l'immagine sovrapposta e le dimensioni
+del rivelatore di 90 gradi.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Mostra il percorso del file dell'immagine
+sovrapposta caricata (sola lettura).</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>Imposta il limite superiore di intensità per
+visualizzare l'immagine sovrapposta.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Imposta il limite superiore di intensità per
+visualizzare l'immagine sovrapposta.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Imposta il limite superiore di intensità per
+visualizzare l'immagine sovrapposta.</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>Imposta il limite inferiore di intensità per
+visualizzare l'immagine sovrapposta.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Imposta il limite inferiore di intensità per
+visualizzare l'immagine sovrapposta.</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>Se selezionato, mostra lo schema
+della geometria del rivelatore.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Imposta la lunghezza di camera fino al piano del rivelatore in millimetri.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Imposta l'angolo azimutale phi dell'asse
+di inclinazione del rivelatore in gradi.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Imposta l'angolo di inclinazione tau del rivelatore
+attorno all'asse di inclinazione in gradi.</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>Se selezionato, disegna l'area del rivelatore
+sulla figura di diffrazione e abilita le
+impostazioni dell'immagine sovrapposta.</value>
+  </data>
+</root>

@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Nêutrons</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Selecione um elemento (1:H a 98:Cf) que emite raios X característicos.
+Se "0:custom" for selecionado, você pode inserir livremente a energia ou o comprimento de onda.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Usa raios X como fonte de onda (energia em keV);
+habilita os seletores de elemento e de linha característica.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Usa um feixe de elétrons como fonte de onda (energia em keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Seleciona a linha de emissão de raios X característicos (ex.:
+Kα1, Kα2, Kβ1); isso fixa o comprimento de onda e a energia.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Insira a energia do feixe (keV para raios X/elétrons, meV para
+nêutrons); o comprimento de onda é recalculado automaticamente.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Insira a energia do feixe (keV para raios X/elétrons, meV para
+nêutrons); o comprimento de onda é recalculado automaticamente.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Selecione um elemento (1:H a 98:Cf) que emite
+raios X característicos. Escolha "0:custom" para
+inserir a energia ou o comprimento de onda livremente.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Insira aqui o comprimento de onda (use os botões de opção Å / nm para alternar a unidade de exibição).
+A energia do feixe é recalculada automaticamente.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Insira aqui o comprimento de onda (use os botões de opção Å / nm para alternar a unidade de exibição).
+A energia do feixe é recalculada automaticamente.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Usa um feixe de nêutrons como fonte de onda (energia em meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>Indica o modo de luz branca (espectro contínuo):
+usa-se um feixe de banda larga uniforme em vez
+de um único comprimento de onda.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>Mostra o comprimento de onda em nanômetro (nm). Apenas exibição — o comprimento de onda físico e a energia permanecem inalterados (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>Mostra o comprimento de onda em Ångström (Å). Apenas exibição — o comprimento de onda físico e a energia permanecem inalterados (1 nm = 10 Å).</value>
+  </data>
 </root>

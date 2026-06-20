@@ -255,4 +255,350 @@
   <data name="$this.Text" xml:space="preserve">
     <value>EBSD 시뮬레이터</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>키쿠치선 지수 및 정대축 지수 레이블을 포함한
+오버레이 문자의 색을 설정합니다.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>역격자 길이 1/d(nm^-1)의 임계값입니다. 1/d가 이 값보다
+작은 키쿠치선만 그려지므로, 값이 작을수록 면간 거리 d가
+큰 반사만 남게 됩니다.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>시료 두께 스캔의 스텝 폭(nm)입니다.
+Start에서 End까지의 범위를
+이 증분으로 계산합니다.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>블로흐파 동력학 계산에 포함되는 회절파(g 벡터)의
+개수(1-2048)입니다.
+많을수록 정밀도는 높아지지만 계산은 느려집니다.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>시료 두께 스캔 범위의 시작값(nm)입니다.
+Start, End, Step으로 계산할 두께
+슬라이스를 정합니다.</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>시료 두께 스캔 범위의 끝값(nm)입니다. Start,
+End, Step으로 계산할 두께 슬라이스를 정합니다.</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>EBSD(전자 후방산란 회절) 스캔에 사용하는
+후방산란 전자 에너지 범위의
+끝(하한)값(keV)입니다.</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>EBSD(전자 후방산란 회절) 스캔에 사용하는
+후방산란 전자 에너지 범위의
+시작(상한)값(keV)입니다.</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>후방산란 전자 에너지 스캔의 스텝 폭(keV)입니다.
+Start에서 End까지 이 증분으로 낮추면서
+에너지를 계산합니다.</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>시뮬레이션한 EBSD 패턴 이미지를 클립보드에 복사합니다.</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Monte-Carlo에 이어 블로흐파(Bethe) 동력학 회절
+계산으로 EBSD 마스터 패턴(전체 구면의
+후방산란 강도 맵)을 구축합니다.</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>개발자용 도구: NIST 탄성 산란 단면적
+테이블(E_*.TXT)을 PCHIP 보간으로 압축하여
+생성된 소스를 출력합니다.</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>3D 기하 뷰의 시점을 X축(시료의 회전축)
+방향으로 설정합니다.</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>2D(Lambert 투영) 마스터 패턴
+이미지를 클립보드에 복사합니다.</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>3D(구면) 마스터 패턴 미리보기를
+클립보드에 복사합니다.</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>오른쪽에 입력한 정대축 [u v w]가 시선 방향을
+향하도록 3D 마스터 패턴을 회전합니다.</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>Monte Carlo 법으로 BSE(후방산란 전자)의 궤적을
+시뮬레이션하여, EBSD 패턴의 가중치 부여에
+사용하는 탈출 에너지 분포와 깊이 분포를 계산합니다.</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>실행 중인 마스터 패턴(Monte-Carlo
+/ 블로흐파) 계산을 중단합니다.</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>3D 기하 뷰의 시점을 시료 표면의
+법선 방향으로 설정합니다.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>3D 기하 뷰의 시점을 Z축(전자선
+방향)으로 설정합니다.</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>3D 기하 뷰의 시점을 비스듬한 위에서의 조감 시점으로 설정합니다.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>스테레오넷(BSE 분포의 입체 투영도) 위에
+결정축/참조축을 겹쳐서 표시합니다.</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>검출기(형광 스크린)의 윤곽을 패턴 위에
+겹쳐서 표시합니다. 검출기 윤곽 옵션
+그룹이 활성화됩니다.</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>각 키쿠치선을 구조 인자(운동학적 회절
+강도 = 단위 격자 하나가 산란하는
+진폭)로 가중하여, 선 색을 배경 쪽으로
+혼합함으로써 강한 반사일수록 더 진하게
+표시합니다.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>3D 마스터 패턴 뷰에 결정축(a, b, c) 화살표
+인셋을 표시합니다.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>3D 마스터 패턴 뷰에 a, b, c 축 레이블
+문자를 표시합니다.</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>마스터 패턴 구축 시 비국소 흡수 모델(열적 산만
+산란을 고려한 복소 광학 퍼텐셜)을
+사용합니다.</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>검출기 윤곽을 나타내는 원을 패턴 위에 그립니다.</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>마스터 패턴으로부터 투영한 동력학 EBSD(전자
+후방산란 회절) 패턴을 표시합니다. 해제하면
+배경만 남습니다.</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>각 키쿠치선(밴드)에 해당하는
+반사 지수 (h k l) 레이블을 표시합니다.</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>키쿠치선(비탄성 산란된 전자가 만드는 밴드 형태의
+회절 특징)을 표시합니다. 키쿠치선 옵션 그룹이
+활성화됩니다.</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>검출기면의 분할 격자(격자선)를 패턴 위에 그립니다.</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>패턴 위에 키쿠치선, 지수, 정대축 및
+검출기 윤곽을 겹쳐서 표시합니다.</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>키쿠치 밴드의 교점(정대축)에
+정대축 지수 [u v w] 레이블을 표시합니다.</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>TDS(열적 산만 산란) 배경 강도를
+마스터 패턴에 포함합니다.</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>단일 에너지/깊이 슬라이스를 표시하는 대신, 시뮬레이션한
+BSE(후방산란 전자)의 에너지 및 깊이 분포로 가중하여
+모든 슬라이스를 적산한 EBSD 패턴을 렌더링합니다.
+분포를 얻으려면 먼저 Simulate를
+실행하십시오.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>키쿠치선을 그리는 데 사용하는 색을 설정합니다.</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>패턴 강도의 계조를 Positive 또는
+Negative(흑백 반전) 중에서 선택합니다.</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2D 뷰에 표시할 마스터 패턴의
+반구(+Z 또는 -Z)를 선택합니다.</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2D 뷰에 표시할 마스터 패턴의
+반구(+Z 또는 -Z)를 선택합니다.</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>정방 Lambert 마스터 패턴 격자의 분해능(한 변당
+픽셀 수, 64~2048)입니다.
+클수록 정밀하지만 느립니다.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>강도를 색에 대응시키는 컬러 스케일(Gray,
+Cold-Warm, Spectrum 또는 Fire)을 선택합니다.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>'View Along' 버튼이 3D 마스터 패턴을 향하게 하는 데
+사용하는 정대축 지수 [u v w]를 입력합니다.</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>현재 렌더링 중인 EBSD 패턴 슬라이스의
+깊이(nm)를 표시합니다(단일 슬라이스 모드).</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>EBSD 검출기(형광 스크린)의 반지름을 mm 단위로 설정합니다.
+이는 포착되는 입체각과 시뮬레이션된 패턴의
+스크린 분해능(mm/픽셀)을 결정합니다.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>EBSD 검출기(형광 스크린)의 반지름을 mm 단위로 설정합니다.
+이는 포착되는 입체각과 시뮬레이션된 패턴의
+스크린 분해능(mm/픽셀)을 결정합니다.</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로
+설정합니다. 이는 카메라 길이와 키쿠치 밴드의
+투영 형상에 영향을 줍니다.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로
+설정합니다. 이는 카메라 길이와 키쿠치 밴드의
+투영 형상에 영향을 줍니다.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>현재 렌더링 중인 EBSD 패턴 슬라이스의
+전자 에너지(keV)를 표시합니다(단일 슬라이스 모드).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>키쿠치선으로 그릴 반사의 개수(구조 인자 =
+단위 격자 하나가 산란하는 진폭으로 순위를
+매긴 상위 N개)입니다. 값이 클수록 더
+많은 선을 표시합니다.</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>미리보기용으로 깊이 슬라이더로 현재 선택 중인 마스터
+패턴 깊이 슬라이스의 값(nm)을 표시합니다.</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>미리보기용으로 에너지 슬라이더로 현재
+선택 중인 마스터 패턴 에너지 슬라이스의
+값(keV)을 표시합니다.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>SEM 내에서의 시료 기울기 각(°, -90~0,
+EBSD에서는 일반적으로 -70)입니다.
+후방산란 투영 기하를 결정합니다.</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>검출기 중심의 Y 좌표(시료로부터의
+횡방향 위치)를 mm 단위로 설정합니다.</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>검출기 중심의 Z 좌표(전자선 방향의 위치)를
+mm 단위로 설정합니다. Y와 함께
+카메라 길이를 결정합니다.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>키쿠치선에 그릴 반사를, 역격자 길이(1/d)
+임계값으로 선별합니다.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>키쿠치선에 그릴 반사를, 구조 인자가 큰
+상위 N개로 선별합니다.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>표시 EBSD 영상의 밝기 상한(흰색 클립) 레벨을 강도 범위에
+대한 비율로 설정합니다. 이 값 이상인 픽셀이
+흰색으로 매핑됩니다.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>표시 EBSD 영상의 밝기 상한(흰색 클립) 레벨을 강도 범위에
+대한 비율로 설정합니다. 이 값 이상인 픽셀이
+흰색으로 매핑됩니다.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>표시 EBSD 영상의 밝기 하한(검은색 클립) 레벨을 강도 범위에
+대한 비율로 설정합니다. 이 값 이하인 픽셀이
+검은색으로 매핑됩니다.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>표시 EBSD 영상의 밝기 하한(검은색 클립) 레벨을 강도 범위에
+대한 비율로 설정합니다. 이 값 이하인 픽셀이
+검은색으로 매핑됩니다.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>키쿠치선을 그리는 데 사용하는 선 너비(펜
+두께)를 설정합니다.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>키쿠치선을 그리는 데 사용하는 선 너비(펜
+두께)를 설정합니다.</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>미리보기할 마스터 패턴의 깊이 슬라이스(nm)를
+선택합니다. 값은 Depth 상자에 표시됩니다.</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>미리보기할 마스터 패턴의 에너지 슬라이스(keV)를
+선택합니다. 값은 Energy 상자에 표시됩니다.</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>단일 슬라이스 모드에서 렌더링할 EBSD
+패턴의 에너지 슬라이스(keV)를 선택합니다.
+값은 Energy 상자에 표시됩니다.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>단일 슬라이스 모드에서 렌더링할 EBSD
+패턴의 깊이 슬라이스(nm)를 선택합니다.
+값은 Depth 상자에 표시됩니다.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>오버레이 지수 문자의 글꼴 크기를 조정합니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>오버레이 지수 문자의 글꼴 크기를 조정합니다.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>입사 전자선의 가속 전압 / 전자 파장
+(EBSD 시뮬레이션의 일차 전자 에너지)을
+설정합니다.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>표시 EBSD 영상의 밝기(검은색/흰색
+클립) 범위를 조정합니다.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>시뮬레이션한 후방산란 전자의 최대 침투
+깊이(nm) 분포입니다.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>시뮬레이션한 후방산란 전자의 에너지
+손실 ΔE(keV) 분포입니다.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>이 스테레오넷에서는 중심이
+시료 표면의 법선 방향에 대응합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>시료를 기준으로 한 검출기 중심의 위치를,
+Y(횡방향)와 Z(전자선 방향)의 mm로
+지정합니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>표시 영상의 그레이 레벨 극성을 정상 또는
+반전(네거티브)으로 선택합니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>강도를 색으로 매핑하는 데 사용하는 컬러 스케일(Gray,
+Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>정방 Lambert 마스터 패턴 격자의
+분해능(한 변당 픽셀 수, 64~2048)입니다.</value>
+  </data>
 </root>

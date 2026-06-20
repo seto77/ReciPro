@@ -98,4 +98,141 @@
   <data name="label21.Text" xml:space="preserve">
     <value>Punktgruppe</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Wählt die Längeneinheit (Å oder nm)
+für die Gitterkonstanten a, b, c.</value>
+  </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>Blendet die Felder für den ± Fehler (geschätzte
+Standardabweichung) der Gitterkonstanten ein oder aus.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Gitterkonstante "β" in Grad</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>Gitterkonstante "β" in Grad</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Gitterkonstante "α" in Grad</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>Gitterkonstante "α" in Grad</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Kantenlänge a der Elementarzelle (in Å oder nm,
+gemäß Einheitenauswahl). Eingaben berücksichtigen
+die Beschränkungen des Kristallsystems.</value>
+  </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value>Kantenlänge a der Elementarzelle (in Å oder nm,
+gemäß Einheitenauswahl). Eingaben berücksichtigen
+die Beschränkungen des Kristallsystems.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Gitterkonstante "γ" in Grad</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value>Gitterkonstante "γ" in Grad</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Kantenlänge b der Elementarzelle (in Å oder nm, gemäß
+Einheitenauswahl). Kann durch Symmetrie an a gekoppelt sein.</value>
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
+    <value>Kantenlänge b der Elementarzelle (in Å oder nm, gemäß
+Einheitenauswahl). Kann durch Symmetrie an a gekoppelt sein.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Kantenlänge c der Elementarzelle (in Å oder nm, gemäß
+Einheitenauswahl). Kann durch Symmetrie an a gekoppelt sein.</value>
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value>Kantenlänge c der Elementarzelle (in Å oder nm, gemäß
+Einheitenauswahl). Kann durch Symmetrie an a gekoppelt sein.</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>Wählt die Raumgruppe (Nummer : Hermann–Mauguin-(HM)-
+Symbol); sie beschränkt die editierbaren Gitterkonstanten.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Wählt die Raumgruppe (Nummer : Hermann–Mauguin-(HM)-
+Symbol); sie beschränkt die editierbaren Gitterkonstanten.</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>Wählt die kristallographische Punktgruppe
+in Hermann–Mauguin-(HM)-Notation; dies
+filtert die verfügbaren Raumgruppen.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Wählt die kristallographische Punktgruppe
+in Hermann–Mauguin-(HM)-Notation; dies
+filtert die verfügbaren Raumgruppen.</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Wählt das Kristallsystem (triklin … kubisch);
+dies legt fest, welche Gitterkonstanten unabhängig sind.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Wählt das Kristallsystem (triklin … kubisch);
+dies legt fest, welche Gitterkonstanten unabhängig sind.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Geben Sie Zeichen eines Hermann–Mauguin-(HM)-
+Symbols ein, um Raumgruppen zu suchen; Treffer erscheinen
+in der Ergebnisliste (verwenden Sie "sub" für einen Index).</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>Geben Sie Zeichen eines Hermann–Mauguin-(HM)-
+Symbols ein, um Raumgruppen zu suchen; Treffer erscheinen
+in der Ergebnisliste (verwenden Sie "sub" für einen Index).</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>Wählen Sie eine Raumgruppe aus den Suchergebnissen (Nummer
+: Hermann–Mauguin-Symbol), um sie auf das
+Kristallsystem, die Punktgruppe und die Raumgruppe oben anzuwenden.</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (± Fehler) der
+Gitterkonstante a, in derselben Längeneinheit wie a.</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (±
+Fehler) des Winkels α, in Grad.</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (± Fehler) der
+Gitterkonstante b, in derselben Längeneinheit wie b.</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (±
+Fehler) des Winkels β, in Grad.</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (± Fehler) der
+Gitterkonstante c, in derselben Längeneinheit wie c.</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>Geschätzte Standardabweichung (±
+Fehler) des Winkels γ, in Grad.</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>Verwendet Ångström (Å) als Längeneinheit für a, b,
+c; vorhandene Werte werden automatisch umgerechnet.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>Verwendet Nanometer (nm) als Längeneinheit für a, b,
+c; vorhandene Werte werden automatisch umgerechnet.</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>Aktuelle Längeneinheit für a (Å oder
+nm; mit der Einheitenauswahl umschaltbar).</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>Aktuelle Längeneinheit für b (Å oder
+nm; mit der Einheitenauswahl umschaltbar).</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>Aktuelle Längeneinheit für c (Å oder
+nm; mit der Einheitenauswahl umschaltbar).</value>
+  </data>
 </root>

@@ -125,4 +125,100 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>Poliedro</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>Selecionar o elemento no centro da ligação / poliedro
+(o átomo central coordenador).</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>Selecionar o elemento nos vértices da ligação / poliedro
+(os átomos ligantes coordenados).</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>Raio dos cilindros de ligação, em Å.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>Raio dos cilindros de ligação, em Å.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Adicionar as configurações de ligação/poliedro abaixo.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Substituir a ligação/poliedro selecionada
+pelas configurações abaixo.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Excluir a ligação/poliedro selecionada.</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>Cor das arestas do poliedro (a
+malha do poliedro de coordenação).</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>Cor das faces do poliedro (o poliedro de coordenação).</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>Cor dos cilindros de ligação.</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Mostrar as ligações como cilindros e habilitar as configurações de ligação.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Mostrar as arestas (malha) do poliedro de
+coordenação e habilitar a configuração de largura da aresta.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Mostrar as ligações internas (ligações centro-vértice)
+dentro do poliedro de coordenação.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Mostrar o poliedro de coordenação
+e habilitar as configurações do poliedro.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Mostrar os átomos dos vértices (átomos ligantes
+coordenados) do poliedro de coordenação.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista das ligações/poliedros definidos; selecione
+uma linha para editá-la abaixo, ou alterne suas
+colunas Habilitado / Mostrar diretamente.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Opacidade dos cilindros de ligação (0
+= totalmente transparente, 1 = opaco).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Distância interatômica máxima (em Å)
+para que dois átomos sejam tratados como ligados.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Distância interatômica mínima (em Å)
+para que dois átomos sejam tratados como ligados.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Largura da linha das arestas do poliedro.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Opacidade das faces do poliedro (0
+= totalmente transparente, 1 = opaco).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Selecionar o par de elementos (centro e
+vértice) que formam a ligação/poliedro.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Selecionar o par de elementos (centro e
+vértice) que formam a ligação/poliedro.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Selecionar o elemento no centro da ligação/poliedro
+(o átomo central coordenador).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Selecionar o elemento nos vértices da ligação/poliedro
+(os átomos ligantes coordenados).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Mostrar o átomo central do poliedro de coordenação.</value>
+  </data>
 </root>

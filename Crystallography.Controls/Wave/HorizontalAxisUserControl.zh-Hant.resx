@@ -122,4 +122,123 @@
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
     <value>水平軸</value>
   </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>中子飛行時間（TOF）測量的
+偵測器散射角 2θ（度）。</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>中子飛行時間（TOF）測量的
+偵測器散射角 2θ（度）。</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>使用中子束作為輻射源
+（啟用飛行時間軸）。</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>以百萬電子伏特（MeV）顯示能量軸。</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>將水平軸繪製為光子/粒子
+能量（用於能量色散白色光束模式）。</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>以奈米（nm）顯示晶面間距軸。</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>以厘度（1/100 度）顯示 2θ 軸。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>在此設定輻射波長：可直接輸入，
+透過電子加速電壓，或透過特性
+X射線譜線（元素＋譜線）來指定。</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>中子飛行時間（TOF）測量中，從輻射源至偵測器的
+飛行路徑長 L（公尺）。</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>中子飛行時間（TOF）測量中，從輻射源至偵測器的
+飛行路徑長 L（公尺）。</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>將水平軸繪製為繞射角 2θ（入射束與
+繞射束之間的散射角）；
+用於單色光束模式。</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>使用單一（單色）波長；
+啟用 2θ 與晶面間距軸。</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>能量色散（白色光束）測量的偵測器
+散射（取出）角 2θ，以度為單位。</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>能量色散（白色光束）測量的偵測器
+散射（取出）角 2θ，以度為單位。</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>以每奈米倒數（nm⁻¹）顯示波數 q 軸。</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>將水平軸繪製為晶面間距
+（各個繞射的晶面間距）。</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>以奈秒（ns）顯示飛行時間軸。</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>以毫弧度（1/1000 弧度）顯示 2θ 軸。</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>以微秒（μs）顯示飛行時間軸。</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>使用電子束作為輻射源
+（波長由加速電壓決定）。</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>以千電子伏特（keV）顯示能量軸。</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>以弧度（rad）顯示 2θ 軸。</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>使用平坦的白色光譜：對 X射線而言，
+每單位能量的入射強度為定值；
+對中子而言，每單位波長區間的
+入射中子數為定值。</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>以電子伏特（eV）顯示能量軸。</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>使用使用者自訂的連續（白色）
+波長/能量光譜。</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>以度（°）顯示 2θ 軸。</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>以埃（Å，0.1 nm）顯示晶面間距軸。</value>
+  </data>
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>選擇波源</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>使用 X射線束作為輻射源
+（特性譜線或自訂波長）。</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>以每埃倒數（Å⁻¹）顯示波數 q 軸。</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>將水平軸繪製為散射波數
+q = 4π·sinθ/λ（散射向量的大小）。</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>將水平軸繪製為中子飛行時間
+（TOF），即中子飛越飛行路徑的時間；
+適用於中子白色光束模式。</value>
+  </data>
 </root>

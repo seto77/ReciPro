@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Mapa de color para la densidad de polos:
+Cold-Warm (azul a rojo) o escala de grises.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Mapa de color para la densidad de polos:
+Cold-Warm (azul a rojo) o escala de grises.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Escalado de intensidad del mapa de color de densidad:
+Lineal asigna la densidad proporcionalmente, Log
+comprime los valores altos para revelar texturas débiles.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Escalado de intensidad del mapa de color de densidad:
+Lineal asigna la densidad proporcionalmente, Log
+comprime los valores altos para revelar texturas débiles.</value>
+  </data>
+  <data name="numericUpDown1.ToolTip" xml:space="preserve">
+    <value>Primer componente del índice (u para un eje, h para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="labelU.ToolTip" xml:space="preserve">
+    <value>Primer componente del índice (u para un eje, h para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="numericUpDown2.ToolTip" xml:space="preserve">
+    <value>Segundo componente del índice (v para un eje, k para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="labelV.ToolTip" xml:space="preserve">
+    <value>Segundo componente del índice (v para un eje, k para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="numericUpDown3.ToolTip" xml:space="preserve">
+    <value>Tercer componente del índice (w para un eje, l para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="labelW.ToolTip" xml:space="preserve">
+    <value>Tercer componente del índice (w para un eje, l para
+un plano) de la dirección o plano cristalino cuyos
+polos se proyectan (rango -20 a 20).</value>
+  </data>
+  <data name="numericUpDownFullscale.ToolTip" xml:space="preserve">
+    <value>Densidad a escala completa (saturación) como potencia
+de 10 por la media: el mapa de color se
+satura en media × 10^E (rango -9 a
+9). Valores mayores amplían el rango mostrado.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Densidad a escala completa (saturación) como potencia
+de 10 por la media: el mapa de color se
+satura en media × 10^E (rango -9 a
+9). Valores mayores amplían el rango mostrado.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Densidad a escala completa (saturación) como potencia
+de 10 por la media: el mapa de color se
+satura en media × 10^E (rango -9 a
+9). Valores mayores amplían el rango mostrado.</value>
+  </data>
+  <data name="numericUpDownResolution.ToolTip" xml:space="preserve">
+    <value>Resolución angular (tamaño de bin) del mapa de
+densidad, en grados (rango 1–60°). Valores menores
+dan una figura de polos más fina pero un cálculo más lento.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Resolución angular (tamaño de bin) del mapa de
+densidad, en grados (rango 1–60°). Valores menores
+dan una figura de polos más fina pero un cálculo más lento.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Resolución angular (tamaño de bin) del mapa de
+densidad, en grados (rango 1–60°). Valores menores
+dan una figura de polos más fina pero un cálculo más lento.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Proyecta direcciones cristalinas [u v w] (ejes
+reticulares). Las casillas de índices se etiquetan u, v, w
+y se incluyen los ejes simétricamente equivalentes.</value>
+  </data>
+  <data name="radioButtonInversePoleFigure.ToolTip" xml:space="preserve">
+    <value>Figura de polos inversa (IPF): representa, en el sistema
+de referencia del cristal, la distribución de una dirección
+fija de la muestra (x, y, z), mostrando qué direcciones
+cristalinas se alinean con ese eje de la muestra.</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Proyecta planos cristalinos (h k l) por sus
+normales. Las casillas de índices se etiquetan h, k, l
+y se incluyen los planos simétricamente equivalentes.</value>
+  </data>
+  <data name="radioButtonPoleFigure.ToolTip" xml:space="preserve">
+    <value>Figura de polos: representa, en el sistema de referencia de la
+muestra, la distribución de los polos de la dirección o plano
+cristalino elegido (definido por la opción Ejes/Planos).</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Indicador de solo lectura de las densidades de polos máxima
+y mínima del mapa actual, normalizadas
+de modo que la densidad media sea igual a 1.</value>
+  </data>
+</root>

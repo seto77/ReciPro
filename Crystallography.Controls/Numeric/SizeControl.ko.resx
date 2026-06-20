@@ -65,4 +65,26 @@
   <data name="checkBoxKeepAspect.Text" xml:space="preserve">
     <value>종횡비 유지</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>너비와 높이의 종횡비를 고정합니다. 한쪽
+치수를 변경하면 비율을 유지하도록 다른 쪽이
+자동으로 갱신됩니다.</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>이미지 높이 (픽셀, px). 종횡비가 고정되어
+있을 때는 너비가 자동으로 따라옵니다.</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>이미지 너비 (픽셀, px). 종횡비가 고정되어
+있을 때는 높이가 자동으로 따라옵니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>이미지 크기: 너비 × 높이 (픽셀, px).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>이미지 크기: 너비 × 높이 (픽셀, px).</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>이미지 크기: 너비 × 높이 (픽셀, px).</value>
+  </data>
 </root>

@@ -86,4 +86,146 @@
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>搜索</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>打开周期表，选择搜索中
+必须包含或排除的元素。</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>使用所有启用的条件（名称、参考文献、元素、
+晶系、晶胞、晶面间距、密度）组合
+搜索晶体数据库，
+仅显示匹配的晶体。</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>启用按第 1 个晶面间距值筛选；
+激活其数值和容差输入框。</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>启用按第 2 个晶面间距值筛选；
+激活其数值和容差输入框。</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>启用按第 3 个晶面间距值筛选；
+激活其数值和容差输入框。</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>按实测/计算密度 (g/cm³) 筛选
+数据库；启用密度输入框。</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>按晶面间距（晶面间的点阵间距，单位 Å —
+决定衍射峰位置的量）筛选；
+启用晶面间距输入框。</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>勾选后，晶面间距搜索将忽略
+散射因子（衍射强度）：从晶胞计算出
+每一个几何上允许的 d 值，
+包括强度为零（消光）
+的衍射。</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>按晶胞参数（轴长 a、b、c 单位 Å 与
+夹角 α、β、γ 单位 °）筛选晶体；
+启用晶胞参数输入框。</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>按晶系（三斜……立方）筛选晶体；
+启用晶系选择器。</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>按组成元素筛选晶体；显示用于
+指定包含或排除哪些元素
+的周期表按钮。</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>按矿物/化合物名称筛选晶体；显示一个文本框
+用于（不区分大小写、部分匹配的）名称搜索。</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>按参考文献（期刊、作者或章节
+文本）筛选晶体；显示一个用于输入搜索词的文本框。</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>选择用于筛选的晶系（三斜、
+单斜、正交、四方、
+三方、六方或立方）。</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞轴长 a，
+单位 Å（0 = 忽略该参数）。</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞夹角 α（b 轴与
+c 轴之间），单位 °（0 = 忽略）。</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>晶胞夹角 (α、β、γ) 搜索的容差，
+以 ±° 表示（注意：单位为度，
+而轴长容差为 %）。</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞轴长 b，
+单位 Å（0 = 忽略该参数）。</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞夹角 β（a 轴与
+c 轴之间），单位 °（0 = 忽略）。</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞轴长 c，
+单位 Å（0 = 忽略该参数）。</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>要搜索的目标晶胞夹角 γ（a 轴与
+b 轴之间），单位 °（0 = 忽略）。</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>晶胞轴长 (a、b、c) 搜索的容差，
+以 ±% 表示；轴长落在该相对
+范围内的晶胞将被匹配。</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>要搜索的第 1 个晶面间距
+（面间距）的目标值，单位 Å。</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>第 1 个晶面间距搜索的容差，
+以 ±% 表示；具有该范围内 d
+值的晶体将被匹配。</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>要搜索的第 2 个晶面间距
+（面间距）的目标值，单位 Å。</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>第 2 个晶面间距搜索的容差，
+以 ±% 表示；具有该范围内 d
+值的晶体将被匹配。</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>要搜索的第 3 个晶面间距
+（面间距）的目标值，单位 Å。</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>第 3 个晶面间距搜索的容差，
+以 ±% 表示；具有该范围内 d
+值的晶体将被匹配。</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>要搜索的目标密度，单位 g/cm³。</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>密度搜索的容差，以
+±% 表示；密度落在该相对
+范围内的晶体将被匹配。</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>输入要搜索的矿物/化合物名称（部分、
+不区分大小写匹配）；按 Enter 执行搜索。</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>输入要搜索的参考文献词（期刊、作者或章节）；
+按 Enter 执行搜索。</value>
+  </data>
 </root>

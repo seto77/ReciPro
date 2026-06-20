@@ -255,4 +255,350 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Симулятор EBSD</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Задаёт цвет наложенного текста, включая
+подписи индексов линий Кикучи и осей зон.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Порог по обратному расстоянию 1/d (nm^-1). Рисуются только линии
+Кикучи, у которых 1/d ниже этого значения, поэтому меньшие
+значения оставляют только рефлексы с большим межплоскостным расстоянием.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Шаг сканирования по толщине образца
+в nm; диапазон от Start до End
+рассчитывается с этим приращением.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Число дифрагированных пучков (g-векторов), включаемых
+в динамический расчёт методом блоховских волн (1-2048);
+больше пучков повышает точность, но замедляет расчёт.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>Начало диапазона сканирования по
+толщине образца в nm; Start, End и Step
+задают слои по толщине для расчёта.</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Конец диапазона сканирования по толщине образца в nm; Start,
+End и Step задают слои по толщине для расчёта.</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>Конечная (нижняя) энергия обратно рассеянных
+электронов, используемая при сканировании EBSD (дифракция
+обратно рассеянных электронов), в keV.</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>Начальная (верхняя) энергия обратно рассеянных
+электронов, используемая при сканировании EBSD (дифракция
+обратно рассеянных электронов), в keV.</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>Шаг сканирования по энергии обратно
+рассеянных электронов в keV; энергии рассчитываются
+от Start до End с этим приращением.</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>Копировать смоделированное изображение картины EBSD в буфер обмена.</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Построить мастер-картину EBSD (полносферную
+карту интенсивности динамического обратного рассеяния) методом Монте-Карло,
+затем динамической дифракцией блоховских волн (метод Бете).</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>Инструмент разработчика: сжать таблицы сечений
+упругого рассеяния NIST (E_*.TXT)
+с PCHIP-интерполяцией и вывести сгенерированный исходный код.</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>Установить вид 3D-геометрии вдоль
+оси X (оси вращения образца).</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>Копировать 2D-изображение мастер-картины
+(проекция Ламберта) в буфер обмена.</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>Копировать 3D-предпросмотр (сферический)
+мастер-картины в буфер обмена.</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>Повернуть 3D мастер-картину так, чтобы ось зоны
+[u v w], введённая справа, была обращена к наблюдателю.</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>Запустить моделирование методом Монте-Карло траекторий BSE (обратно
+рассеянных электронов) для расчёта распределений энергии выхода и
+глубины, используемых для взвешивания картины EBSD.</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Остановить выполняющийся расчёт мастер-картины
+(Монте-Карло / блоховские волны).</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Установить вид 3D-геометрии
+вдоль нормали к поверхности образца.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Установить вид 3D-геометрии вдоль
+оси Z (направления электронного пучка).</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>Установить вид 3D-геометрии в наклонный ракурс с высоты птичьего полёта.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Наложить кристаллографические/опорные оси на стереосетку
+(стереографическую проекцию распределения BSE).</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>Наложить контур детектора
+(люминофорного экрана) на картину. Активирует
+группу параметров контура детектора.</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Взвешивать каждую линию Кикучи по её структурному
+фактору (кинематическая интенсивность дифракции =
+амплитуда, рассеянная одной элементарной ячейкой),
+смешивая цвет линии с фоном,
+так что более сильные рефлексы выглядят темнее.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>Показывать вставку со стрелками кристаллографических осей (a, b, c)
+на виде 3D мастер-картины.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>Показывать текст подписей осей a, b, c
+на виде 3D мастер-картины.</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>Использовать нелокальную модель поглощения (комплексный
+оптический потенциал, учитывающий тепловое диффузное
+рассеяние) при построении мастер-картины.</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>Рисовать окружность, обозначающую контур детектора, на картине.</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>Показывать динамическую картину EBSD (дифракция обратно
+рассеянных электронов), спроецированную с мастер-картины;
+при снятом флажке остаётся пустой фон.</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>Показывать индексы рефлексов (h k l),
+подписывающие каждую линию Кикучи (полосу).</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>Показывать линии Кикучи (полосовидные дифракционные
+особенности, образованные неупруго рассеянными
+электронами). Активирует группу параметров линий Кикучи.</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>Рисовать делительную сетку детектора (линии сетки) на картине.</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>Наложить линии Кикучи, индексы, оси зон и
+контур детектора поверх картины.</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>Подписывать оси зон [u v w] на
+пересечениях полос Кикучи.</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>Включить фоновую интенсивность TDS (тепловое диффузное
+рассеяние) в мастер-картину.</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>Отображать картину EBSD, взвешенную по смоделированному
+распределению энергии и глубины BSE (обратно рассеянных
+электронов), интегрируя по всем слоям вместо
+показа одного слоя по энергии/глубине. Сначала запустите
+Simulate, чтобы получить распределение.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Задаёт цвет, используемый для рисования линий Кикучи.</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Выберите Positive или Negative (инвертированные)
+оттенки серого для интенсивности картины.</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Выберите, какое полушарие (+Z или -Z)
+мастер-картины показывается в 2D-виде.</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Выберите, какое полушарие (+Z или -Z)
+мастер-картины показывается в 2D-виде.</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Разрешение (пикселей на сторону) квадратной
+сетки мастер-картины Ламберта
+(64–2048); больше — детальнее, но медленнее.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу, отображающую интенсивность в
+цвет (Gray, Cold-Warm, Spectrum или Fire).</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Введите индексы оси зоны [u v w], используемые кнопкой
+'View Along' для ориентации 3D мастер-картины.</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>Показывает глубину (nm) слоя картины EBSD,
+отображаемого в данный момент (режим одного слоя).</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>Задаёт радиус детектора EBSD (люминофорного экрана)
+в mm. Это задаёт захватываемый телесный угол и
+разрешение экрана (mm/пиксель) смоделированной картины.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Задаёт радиус детектора EBSD (люминофорного экрана)
+в mm. Это задаёт захватываемый телесный угол и
+разрешение экрана (mm/пиксель) смоделированной картины.</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>Задаёт угол наклона плоскости детектора в градусах
+относительно оси пучка (Z). Это влияет на длину камеры
+и проецируемую форму полос Кикучи.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Задаёт угол наклона плоскости детектора в градусах
+относительно оси пучка (Z). Это влияет на длину камеры
+и проецируемую форму полос Кикучи.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Показывает энергию электронов (keV) слоя картины EBSD,
+отображаемого в данный момент (режим одного слоя).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Число самых сильных рефлексов (Top N,
+ранжированных по структурному фактору = амплитуде,
+рассеянной одной элементарной ячейкой), рисуемых как
+линии Кикучи. Большие значения показывают больше линий.</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Показывает глубину (nm) слоя мастер-картины,
+выбранного в данный момент ползунком глубины для предпросмотра.</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Показывает энергию электронов (keV) слоя
+мастер-картины, выбранного в данный момент
+ползунком энергии для предпросмотра.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Угол наклона образца в РЭМ, в градусах
+(-90 до 0; обычно -70 для EBSD); задаёт
+геометрию проекции обратного рассеяния.</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>Задаёт координату Y (боковое положение от
+образца) центра детектора в mm.</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>Задаёт координату Z (вдоль направления пучка)
+центра детектора в mm. Вместе с Y
+она определяет длину камеры.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Выбирать рефлексы для линий Кикучи
+по порогу обратного расстояния (1/d).</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Выбирать рефлексы для линий Кикучи, беря
+самые сильные, ранжированные по структурному фактору.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Задаёт верхний уровень яркости (отсечка по белому)
+отображаемого изображения EBSD как долю диапазона
+интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Задаёт верхний уровень яркости (отсечка по белому)
+отображаемого изображения EBSD как долю диапазона
+интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Задаёт нижний уровень яркости (отсечка по чёрному)
+отображаемого изображения EBSD как долю диапазона
+интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Задаёт нижний уровень яркости (отсечка по чёрному)
+отображаемого изображения EBSD как долю диапазона
+интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Задаёт ширину линии (толщину пера),
+используемую для рисования линий Кикучи.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Задаёт ширину линии (толщину пера),
+используемую для рисования линий Кикучи.</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Выберите, какой слой по глубине (nm) мастер-картины
+предпросматривать; значение показывается в поле Depth.</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Выберите, какой слой по энергии (keV) мастер-картины
+предпросматривать; значение показывается в поле Energy.</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>Выберите, какой слой по энергии (keV)
+картины EBSD визуализировать в режиме одного
+слоя; значение показывается в поле Energy.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Выберите, какой слой по глубине (nm) картины EBSD
+визуализировать в режиме одного слоя;
+значение показывается в поле Depth.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Регулирует размер шрифта наложенного текста индексов.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Регулирует размер шрифта наложенного текста индексов.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Задаёт ускоряющее напряжение / длину волны
+электронов падающего пучка (энергию
+первичных электронов для моделирования EBSD).</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Регулирует диапазон яркости (отсечка по чёрному/белому)
+отображаемого изображения EBSD.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Распределение максимальной глубины проникновения
+(nm) смоделированных обратно рассеянных электронов.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Распределение потери энергии ΔE (keV)
+смоделированных обратно рассеянных электронов.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>На этой стереосетке центр
+соответствует нормали к поверхности образца.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Положение центра детектора
+относительно образца, заданное как Y
+(боковое) и Z (вдоль пучка) в mm.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Выберите обычную или инвертированную (негативную)
+полярность уровней серого для отображаемого изображения.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу (Gray, Cold-Warm,
+Spectrum, Fire), используемую для отображения интенсивности в цвет.</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Разрешение (пикселей на сторону) квадратной
+сетки мастер-картины Ламберта (64–2048).</value>
+  </data>
 </root>

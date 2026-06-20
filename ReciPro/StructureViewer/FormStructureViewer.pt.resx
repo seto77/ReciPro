@@ -382,4 +382,503 @@ dos limites</value>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Tamanho (L×A)</value>
   </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salve a imagem atual em um arquivo</value>
+  </data>
+  <data name="buttonSetRange2.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição em ±3/4 de cada eixo da célula unitária</value>
+  </data>
+  <data name="buttonSetRange4.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição em ±1.5 de cada eixo da célula unitária</value>
+  </data>
+  <data name="buttonSetRange3.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição em ±1 de cada eixo da célula unitária</value>
+  </data>
+  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
+    <value>Define o centro de exibição na origem (0, 0, 0)</value>
+  </data>
+  <data name="buttonCenter2.ToolTip" xml:space="preserve">
+    <value>Define o centro de exibição em (1/4, 1/4, 1/4)</value>
+  </data>
+  <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
+    <value>Define o centro de exibição em (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="buttonSetRange0.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição em ±1/4 de cada eixo da célula unitária</value>
+  </data>
+  <data name="buttonSetRange1.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição em ±1/2 de cada eixo da célula unitária</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo c, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo c, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo b, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo b, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxARange.ToolTip" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo a, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>Semilargura da região exibida ao longo
+do eixo a, em coordenadas fracionárias;
+átomos dentro de Centro ± Intervalo são desenhados.</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo c, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo c, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo b, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo b, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo a, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value>Centro da região exibida ao longo do eixo a, em
+coordenadas fracionárias; combinado com Intervalo define
+os planos limítrofes mín/máx da estrutura desenhada.</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
+    <value>Mostra/oculta os planos limítrofes do cristal</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
+    <value>Opacidade dos planos limítrofes (0=transparente, 1=opaco)</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
+    <value>Opacidade dos planos limítrofes (0=transparente, 1=opaco)</value>
+  </data>
+  <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
+    <value>Recorta átomos e ligações nos planos limítrofes</value>
+  </data>
+  <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
+    <value>Se marcado, os limites de desenho são
+definidos com base na célula unitária da seguinte forma</value>
+  </data>
+  <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
+    <value>Se marcado, os limites de desenho são definidos
+com base nos planos cristalinos da seguinte forma</value>
+  </data>
+  <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
+    <value>Mostra as arestas da célula unitária sobrepostas à estrutura 3D.</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
+    <value>Define a cor para todos os planos da célula</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value>Define a cor para todos os planos da célula</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
+    <value>Define a cor para todos os planos da célula</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
+    <value>Define a cor dos planos da célula individualmente</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo a (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo a (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo b (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo b (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo c (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
+    <value>Cor da face da célula unitária normal ao
+eixo c (usada quando 'Each plane' está selecionado).</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
+    <value>Opacidade dos planos da célula (1: opaco, 0: transparente)</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
+    <value>Opacidade dos planos da célula (1: opaco, 0: transparente)</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
+    <value>Define a cor para todas as arestas da célula</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
+    <value>Define a cor para todas as arestas da célula</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
+    <value>Define a cor para todas as arestas da célula</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
+    <value>Define a cor das arestas da célula individualmente</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo a (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo a (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo b (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo b (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo c (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
+    <value>Cor das arestas da célula unitária ao longo do
+eixo c (usada quando 'Each edge' está selecionado).</value>
+  </data>
+  <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Largura da linha das arestas da célula unitária, em pixels (1–5).</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
+    <value>Translada a célula unitária (coordenadas fracionárias)</value>
+  </data>
+  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
+    <value>Mostra as subdivisões dentro da célula unitária</value>
+  </data>
+  <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
+    <value>Mostra as arestas da célula</value>
+  </data>
+  <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
+    <value>Mostra os planos da célula</value>
+  </data>
+  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
+    <value>Configura as definições de exibição da célula unitária</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
+    <value>Opacidade dos planos reticulares (0=transparente, 1=opaco)</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
+    <value>Opacidade dos planos reticulares (0=transparente, 1=opaco)</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
+    <value>Coordenada fracionária no eixo a do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
+    <value>Coordenada fracionária no eixo a do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
+    <value>Coordenada fracionária no eixo b do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
+    <value>Coordenada fracionária no eixo b do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
+    <value>Coordenada fracionária no eixo c do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
+    <value>Coordenada fracionária no eixo c do centro de
+projeção; este ponto é colocado no centro da
+vista (de forma equivalente, translada a célula unitária).</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
+    <value>Usa coordenadas personalizadas do centro de projeção</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
+    <value>Define o centro de projeção na origem</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
+    <value>Define o centro de projeção em (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
+    <value>Seleciona projeção ortográfica ou em perspectiva.</value>
+  </data>
+  <data name="trackBarPerspective.ToolTip" xml:space="preserve">
+    <value>Distância do ponto de vista ao objeto na
+projeção em perspectiva: uma distância menor
+exagera a perspectiva (escorço).
+Ativa apenas quando Projection está definido como Perspective.</value>
+  </data>
+  <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
+    <value>Modo de renderização de transparência: Approximate (ordenação
+rápida por profundidade Z) ou um método de alta qualidade
+independente da ordem (Dual Depth Peeling /
+Per-Pixel Linked List, que exigem OpenGL mais recente).</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Ativa o depth cueing (névoa): objetos
+mais distantes do observador desaparecem; o
+intervalo próximo/distante abaixo torna-se ativo.</value>
+  </data>
+  <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
+    <value>Qualidade de renderização (Low / Middle / High): qualidade
+mais alta gera esferas e cilindros mais suaves e
+transparência mais precisa, mas renderiza mais lentamente.</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
+    <value>Limite próximo do depth cueing (Å): objetos mais próximos
+que esta profundidade permanecem totalmente opacos (−30 a 30).
+Emparelha com o limite distante para esmaecer átomos distantes.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Limite distante do depth cueing (Å): objetos além desta
+profundidade esmaecem até ficarem totalmente transparentes (-30 a 30)</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
+    <value>Limite distante do depth cueing (Å): objetos mais distantes
+que esta profundidade esmaecem até ficarem totalmente transparentes (−30 a 30).
+Emparelha com o limite próximo para esmaecer átomos distantes.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Limite próximo do depth cueing (Å): objetos mais próximos
+que esta profundidade permanecem totalmente opacos (-30 a 30)</value>
+  </data>
+  <data name="colorControlInversion.ToolTip" xml:space="preserve">
+    <value>Define a cor de exibição dos símbolos de centro de inversão.</value>
+  </data>
+  <data name="colorControlPlane.ToolTip" xml:space="preserve">
+    <value>Define a cor de exibição dos símbolos de plano de
+simetria (planos de espelho e de deslizamento).</value>
+  </data>
+  <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
+    <value>Define a cor de exibição dos símbolos de eixo de
+simetria (eixos de rotação, helicoidais e de rotoinversão).</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Mostra rótulos nas legendas</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
+    <value>Usa a cor do material como cor do rótulo </value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
+    <value>Usa a cor fixa como cor do rótulo </value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
+    <value>Tamanho da fonte dos rótulos dos átomos (0–200).</value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
+    <value>Tamanho da fonte dos rótulos dos átomos (0–200).</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
+    <value>Quando marcado, os rótulos da legenda recebem um contorno branco.</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
+    <value>Mostra átomos ligados mesmo que estejam fora dos limites</value>
+  </data>
+  <data name="checkBoxGroupByElement.ToolTip" xml:space="preserve">
+    <value>Se marcado, elementos iguais são agrupados no painel de legenda</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de exibição das legendas (direita)</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
+    <value>Tamanho de exibição das legendas (direita)</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de exibição dos eixos cristalinos (canto inferior esquerdo)</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
+    <value>Tamanho de exibição dos eixos cristalinos (canto inferior esquerdo)</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de exibição da esfera de luz (canto superior esquerdo)</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
+    <value>Tamanho de exibição da esfera de luz (canto superior esquerdo)</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta o indicador de eixos cristalinos</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta a esfera de controle da direção da luz</value>
+  </data>
+  <data name="toolStripButtonLegend.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta a legenda</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Define o tamanho da imagem renderizada (largura × altura)
+em pixels; a janela é redimensionada para corresponder.</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value>Mostra os símbolos de planos de deslizamento (reflexão
+combinada com translação) do grupo espacial</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value>Mostra/oculta os centros de inversão (pontos onde
+a estrutura se mapeia sobre si mesma sob x para
+-x) entre os elementos de simetria exibidos.</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value>Mostra os símbolos de planos de espelho do grupo espacial</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value>Mostra os símbolos de eixos de rotação (de ordem
+2, 3, 4, 6) do grupo espacial</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value>Mostra os símbolos de eixos de rotoinversão (rotação
+seguida de inversão) do grupo espacial</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value>Mostra os símbolos de eixos helicoidais (rotação combinada
+com translação) do grupo espacial</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>Cor fixa aplicada aos rótulos dos átomos (usada
+quando 'Use fixed color' está selecionado)</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>Largura de linha dos símbolos de eixos de simetria (0.5-10)</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de exibição dos símbolos de eixos de
+simetria, em porcentagem (20-500%)</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>Tamanho dos símbolos de centro de inversão,
+em porcentagem (100% = tamanho padrão).</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>Largura de linha dos símbolos de planos de simetria (0.5-10)</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>Tamanho de exibição dos símbolos de planos de
+simetria, em porcentagem (20-500%)</value>
+  </data>
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
+    <value>Número de subdivisões da célula unitária ao longo
+do eixo a (inteiro, 1-10) para a grade de subcélula
+mostrada quando 'Show Subcell' está ativado.</value>
+  </data>
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
+    <value>Número de subdivisões da célula unitária ao longo
+do eixo b (inteiro, 1-10) para a grade de subcélula
+mostrada quando 'Show Subcell' está ativado.</value>
+  </data>
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
+    <value>Número de subdivisões da célula unitária ao longo
+do eixo c (inteiro, 1-10) para a grade de subcélula
+mostrada quando 'Show Subcell' está ativado.</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta os rótulos dos átomos (símbolos de
+elemento) sobrepostos em cada átomo.</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta as esferas dos átomos no modelo 3D.</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>Redefine os raios, cores e ligações dos átomos para
+os padrões estilo VESTA (VESTA é um programa de
+visualização de estruturas cristalinas amplamente usado).</value>
+  </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>Redefine a orientação do modelo para o padrão (sem rotação).</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta os elementos de simetria cristalográfica
+(eixos de rotação, planos de espelho, eixos helicoidais, etc.).</value>
+  </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>Mostra/oculta o contorno e as faces da célula unitária.</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value>Sobrepõe os elementos de simetria do cristal
+(eixos de rotação, planos de espelho/deslizamento,
+centros de inversão) na visualização 3D.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Centro da região exibida (coordenadas fracionárias)
+ao longo de cada eixo da célula unitária.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Translada o contorno da célula unitária ao longo dos
+eixos a, b, c (coordenadas fracionárias).</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Linha do eixo a das opções da célula unitária.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Linha do eixo b das opções da célula unitária.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Linha do eixo c das opções da célula unitária.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Semilargura da região exibida (coordenadas fracionárias)
+ao longo de cada eixo da célula unitária.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Define o centro de exibição para uma posição fracionária predefinida.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Define o intervalo de exibição para uma fração
+predefinida de cada eixo da célula unitária.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Largura de linha das arestas da célula unitária (1-5)</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Define o centro de projeção como uma coordenada
+fracionária da célula unitária; o ponto escolhido
+é posicionado no centro da visualização.</value>
+  </data>
 </root>

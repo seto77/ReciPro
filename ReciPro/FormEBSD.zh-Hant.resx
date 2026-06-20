@@ -255,4 +255,336 @@
   <data name="$this.Text" xml:space="preserve">
     <value>EBSD 模擬器</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>設定背景顏色</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>設定疊加文字的顏色，包括
+菊池線與晶帶軸指數標籤。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>倒晶格間距 1/d (nm^-1) 的截止值。只繪製其 1/d
+低於此值的菊池線，因此較低的值僅保留
+晶面間距較大的繞射。</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>試片厚度掃描的步階大小，單位為
+nm；自 Start 到 End 的範圍以
+此增量進行計算。</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>布洛赫波動力學計算中所含的繞射波（g 向量）
+數目 (1-2048)；繞射波越多精度越高，
+但計算越慢。</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>試片厚度掃描範圍的起始值，
+單位為 nm；Start、End 與 Step
+決定要計算的厚度切片。</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>試片厚度掃描範圍的終止值，單位為 nm；Start、
+End 與 Step 決定要計算的厚度切片。</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>EBSD（電子背向散射繞射）掃描中所用
+背向散射電子的終止（下限）能量，
+單位為 keV。</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>EBSD（電子背向散射繞射）掃描中所用
+背向散射電子的起始（上限）能量，
+單位為 keV。</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>背向散射電子能量掃描的步階大小，單位為
+keV；能量自 Start 向下以此增量計算至 End。</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>將模擬的 EBSD 圖樣影像複製到剪貼簿。</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>透過蒙地卡羅法接續布洛赫波（Bethe）動力學
+繞射計算，建構 EBSD 主圖樣（全球面的
+動力學背向散射強度分佈圖）。</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>開發者工具：以 PCHIP 內插壓縮 NIST
+彈性散射截面表 (E_*.TXT)，
+並輸出產生的原始碼。</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>將 3D 幾何視圖的視點設定為
+沿 X 軸（試片旋轉軸）方向觀看。</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>將 2D（Lambert 投影）主圖樣
+影像複製到剪貼簿。</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>將 3D（球面）主圖樣預覽
+複製到剪貼簿。</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>旋轉 3D 主圖樣，使右側輸入的晶帶軸
+[u v w] 朝向觀看者。</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>以蒙地卡羅法模擬 BSE（背向散射電子）的
+飛程，計算用以對 EBSD 圖樣加權的
+出射能量分佈與深度分佈。</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>中止執行中的主圖樣
+（蒙地卡羅／布洛赫波）計算。</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>將 3D 幾何視圖的視點設定為
+沿試片表面法線方向觀看。</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>將 3D 幾何視圖的視點設定為
+沿 Z 軸（電子束方向）觀看。</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>將 3D 幾何視圖的視點設定為斜上方的鳥瞰視角。</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>在立體網（BSE 分佈的立體投影圖）上
+疊加顯示晶體軸／參考軸。</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>在圖樣上疊加顯示偵測器（螢光屏）的
+輪廓。會啟用偵測器輪廓選項群組。</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>以結構因子（運動學繞射強度 =
+單一晶胞所散射的振幅）對各菊池線
+加權，將線條顏色朝背景混合，
+使較強的繞射顯得較暗。</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>在 3D 主圖樣視圖上顯示晶體軸
+(a, b, c) 的箭頭嵌入圖。</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>在 3D 主圖樣視圖上顯示
+a, b, c 軸標籤文字。</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>建構主圖樣時使用非局域吸收模型
+（計入熱漫散射的複數光學位能）。</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>在圖樣上繪製標示偵測器輪廓的圓。</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>顯示自主圖樣投影而來的動力學 EBSD（電子背向
+散射繞射）圖樣；取消勾選則僅留下純背景。</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>顯示標示各菊池線（菊池帶）的
+繞射指數 (h k l)。</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>顯示菊池線（由非彈性散射電子所形成的帶狀
+繞射特徵）。會啟用菊池線選項群組。</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>在圖樣上繪製偵測器分割格線（網格線）。</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>在圖樣上方疊加顯示菊池線、指數、
+晶帶軸與偵測器輪廓。</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>在菊池帶的交點（晶帶軸）處標示
+晶帶軸指數 [u v w]。</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>在主圖樣中納入 TDS（熱漫散射）
+背景強度。</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>以模擬的 BSE（背向散射電子）能量與深度
+分佈加權繪製 EBSD 圖樣，對所有切片積分，
+而非僅顯示單一能量／深度切片。請先執行
+Simulate 以取得該分佈。</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>設定繪製菊池線所用的顏色。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>為圖樣強度選擇 Positive 或
+Negative（反轉）灰階。</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>選擇於 2D 視圖中顯示主圖樣的
+哪一半球（+Z 或 -Z）。</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>選擇於 2D 視圖中顯示主圖樣的
+哪一半球（+Z 或 -Z）。</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>正方 Lambert 主圖樣網格的解析度
+（每邊像素數，64–2048）；越大越精細
+但越慢。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>選擇將強度對應至顏色的色彩刻度
+（Gray、Cold-Warm、Spectrum 或 Fire）。</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>輸入 'View Along' 按鈕用以定向 3D 主圖樣的
+晶帶軸指數 [u v w]。</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>顯示目前繪製的 EBSD 圖樣切片的
+深度 (nm)（單一切片模式）。</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>以 mm 設定 EBSD 偵測器（螢光屏）的半徑。
+此設定決定所捕捉的立體角與模擬圖樣的
+螢幕解析度 (mm/像素)。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>以 mm 設定 EBSD 偵測器（螢光屏）的半徑。
+此設定決定所捕捉的立體角與模擬圖樣的
+螢幕解析度 (mm/像素)。</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
+角。此會影響相機長度與菊池帶的投影形狀。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
+角。此會影響相機長度與菊池帶的投影形狀。</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>顯示目前繪製的 EBSD 圖樣切片的
+電子能量 (keV)（單一切片模式）。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>繪製為菊池線的最強繞射數目（前 N 個，
+依結構因子 = 單一晶胞所散射的振幅
+排序）。值越大顯示越多線條。</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>顯示目前由深度滑桿選取以供預覽的
+主圖樣深度切片之值 (nm)。</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>顯示目前由能量滑桿選取以供
+預覽的主圖樣能量切片之值 (keV)。</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>SEM 中試片的傾斜角，單位為度
+(-90 至 0；EBSD 通常為 -70)；決定
+背向散射投影的幾何。</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>以 mm 設定偵測器中心的 Y 座標
+（相對於試片的橫向位置）。</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>以 mm 設定偵測器中心的 Z 座標
+（沿電子束方向）。此與 Y 共同
+決定相機長度。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>以倒晶格間距 (1/d) 截止值
+選取菊池線所用的繞射。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>依結構因子排序取最強者，
+選取菊池線所用的繞射。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>以強度範圍的比例設定所顯示 EBSD 影像的
+亮度上限（白色截止）位準；位於此值或以上的
+像素對應為白色。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>以強度範圍的比例設定所顯示 EBSD 影像的
+亮度上限（白色截止）位準；位於此值或以上的
+像素對應為白色。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>以強度範圍的比例設定所顯示 EBSD 影像的
+亮度下限（黑色截止）位準；位於此值或以下的
+像素對應為黑色。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>以強度範圍的比例設定所顯示 EBSD 影像的
+亮度下限（黑色截止）位準；位於此值或以下的
+像素對應為黑色。</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>設定繪製菊池線所用的線寬（畫筆粗細）。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>設定繪製菊池線所用的線寬（畫筆粗細）。</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>選擇要預覽主圖樣的哪一深度切片 (nm)；
+該值顯示於 Depth 欄。</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>選擇要預覽主圖樣的哪一能量切片 (keV)；
+該值顯示於 Energy 欄。</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>選擇單一切片模式下要繪製的 EBSD
+圖樣能量切片 (keV)；該值顯示於
+Energy 欄。</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>選擇單一切片模式下要繪製的 EBSD
+圖樣深度切片 (nm)；該值顯示於
+Depth 欄。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>調整疊加指數文字的字型大小。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>調整疊加指數文字的字型大小。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>設定入射束的加速電壓／電子波長
+（EBSD 模擬的一次電子能量）。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>調整所顯示 EBSD 影像的亮度
+（黑／白截止）範圍。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>模擬的背向散射電子最大穿透
+深度 (nm) 的分佈。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>模擬的背向散射電子能量損失 ΔE (keV)
+的分佈。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>在此立體網中，中心
+對應於試片表面法線方向。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>偵測器中心相對於試片的位置，
+以 Y（橫向）與 Z（沿電子束方向）
+的 mm 表示。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>為所顯示影像選擇正常或反轉（負片）
+的灰階極性。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>選擇將強度對應至顏色所用的色彩刻度
+（Gray、Cold-Warm、Spectrum、Fire）。</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>正方 Lambert 主圖樣網格的解析度
+（每邊像素數，64–2048）。</value>
+  </data>
 </root>

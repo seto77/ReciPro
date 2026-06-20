@@ -450,4 +450,600 @@
   <data name="$this.Text" xml:space="preserve">
     <value>회절 시뮬레이터</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>체크하면 회절 점이 시뮬레이션됩니다.</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>체크하면 키쿠치 선(비탄성 산란된 전자가
+이후 브래그 회절하여 생기는 띠)을
+시뮬레이션합니다.</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>체크하면 디바이 링(무작위 배향된 결정자에 의한
+분말 회절 링)을 시뮬레이션합니다.</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>체크하면 스케일 선이 시뮬레이션됩니다.</value>
+  </data>
+  <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
+    <value>체크하면 지수 라벨이 표시됩니다</value>
+  </data>
+  <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
+    <value>체크하면 면간 거리가 표시됩니다</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>체크하면 면간 거리의 역수(즉,
+g 벡터의 길이)가 표시됩니다</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>체크하면 각 점에서 투과 점까지의
+거리(mm)가 표시됩니다</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>체크하면 각 점에 대해 여기 오차 s_g가 표시되며,
+역격자점이 정확한 브래그 조건/에발트 구 조건에서
+얼마나 벗어나 있는지를 나타냅니다.</value>
+  </data>
+  <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
+    <value>체크하면 각 점에 대해 구조 인자의 크기
+|Fg|가 표시됩니다. |Fg|가 클수록
+일반적으로 더 강한 반사를 의미합니다.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>문자열 크기를 설정합니다</value>
+  </data>
+  <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
+    <value>문자 크기를 설정합니다</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>문자열의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>문자열의 색을 설정합니다</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>시료에서 내린 수직선의 발 위치 색을
+설정합니다.</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>시료에서 내린 수직선의 발 위치 색을
+설정합니다.</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>투과 점의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>투과 점의 색을 설정합니다</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>수직선의 발 위치를 표시합니다</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>투과 위치를 표시합니다</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>키쿠치 선에 사용할 반사를 구조 인자(가장 강한
+반사 순)로 선택합니다.</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>체크하면 키쿠치 선의 세기가 각 반사의
+운동학적 상대 세기에 따라 가중됩니다.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>키쿠치 선에 사용할 반사를
+1/d(면간 거리) 임계값으로 선택합니다.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>키쿠치 선을 그리는 데 사용하는, 구조 인자가
+큰 순서의 반사 개수를 설정합니다.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>1/d(역격자 길이)가 이 값(nm⁻¹)보다 작은 반사에
+대해서만 키쿠치 선을 그립니다. 즉, 면간 거리가
+1/값보다 큰 반사만 표시됩니다.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>1/d(역격자 길이)가 이 값(nm⁻¹)보다 작은 반사에
+대해서만 키쿠치 선을 그립니다. 즉, 면간 거리가
+1/값보다 큰 반사만 표시됩니다.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>키쿠치 선의 색을 설정합니다.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>키쿠치 선의 선 너비를 설정합니다</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>키쿠치 선의 선 너비를 설정합니다</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>키쿠치 선</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>디바이 링의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>디바이 링의 색을 설정합니다</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>체크하면 디바이 링의 지수 라벨이 표시됩니다.</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>체크하면 모든 디바이 링이 동일한
+세기로 표시됩니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>디바이 링의 선 너비를 설정합니다</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>디바이 링의 선 너비를 설정합니다</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>체크하면 스케일 라벨이 표시됩니다</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>스케일 분할(눈금)의 세밀함을 설정합니다(세밀 / 중간 / 거침).</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>스케일 선의 선 너비를 설정합니다</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>스케일 선의 선 너비를 설정합니다</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>스케일 선의 분할을 설정합니다</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>스케일 선의 분할을 설정합니다</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>스케일 선의 분할을 설정합니다</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>방위각 스케일 선의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>방위각 스케일 선의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>2θ 스케일 선의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>2θ 스케일 선의 색을 설정합니다</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>왼쪽 드래그(화면 중앙 부근): 모니터에 평행한 축으로 회전
+왼쪽 드래그(화면 가장자리): 모니터에 수직한 축으로 회전
+오른쪽 클릭: 축소
+오른쪽 드래그: 선택 영역을 확대
+가운데 드래그: 시뮬레이션 이미지를 드래그
+왼쪽 더블 클릭: g 벡터의 정보를 표시</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
+    <value>에발트 구 근방의 역격자점
+색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>에발트 구 근방의 역격자점 색을 설정합니다.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
+    <value>3D 역공간 뷰에서 그려지는 회절 점 구의 반지름
+(nm⁻¹)을 설정합니다. 이 거리 내에 에발트 구가 있는
+점은 근방 점으로 착색되며 라벨을 표시할 수 있습니다.</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>3D 역공간 뷰에서 그려지는 회절 점 구의 반지름
+(nm⁻¹)을 설정합니다. 이 거리 내에 에발트 구가 있는
+점은 근방 점으로 착색되며 라벨을 표시할 수 있습니다.</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>3D 점의 투명도를 설정합니다.</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
+    <value>체크하면 에발트 구 근방의 역격자점에
+hkl 지수 라벨을 표시합니다.</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>에발트 구에서 멀리 떨어진 역격자점의
+색을 설정합니다.</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
+    <value>체크하면 에발트 구에서 멀리 떨어진
+역격자점일수록 더 투명하게 표시합니다.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>역격자점을 숨기는 상대 세기 임계값(%)을
+설정합니다. 이보다 약한 점은 표시되지 않습니다.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>역격자점을 숨기는 상대 세기 임계값(%)을
+설정합니다. 이보다 약한 점은 표시되지 않습니다.</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>역격자점을 표시하는 상대 세기 임계값(%)을
+설정합니다. 이보다 약한 점은 표시되지 않습니다.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+왼쪽)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+아래)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+위)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+오른쪽)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>위 버튼의 각도 스텝, 또는
+회전 속도를 설정합니다.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>위 버튼의 각도 스텝, 또는
+회전 속도를 설정합니다.</value>
+  </data>
+  <data name="buttonResetAngle.ToolTip" xml:space="preserve">
+    <value>3D 뷰의 시선 방향을 기본 방향으로 되돌립니다.</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>에발트 구 표면의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>원점(000 반사) 점의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>오른쪽(Right) 방향 안내 화살표의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>위쪽(Top) 방향 안내 화살표의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>빔 방향 안내 화살표의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>3D 뷰의 지수/라벨 문자 색을 설정합니다.</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
+    <value>3D 뷰의 지수 라벨 문자 색을 설정합니다.</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
+    <value>체크하면 3D 역격자 뷰에 Beam/Top/Right
+방향 안내 화살표를 표시합니다.</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>체크하면 3D 역격자 뷰에
+에발트 구를 그립니다.</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
+    <value>체크하면 3D 역공간 뷰(역격자와
+에발트 구)가 표시됩니다.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 실공간 좌표를
+mm 단위로 표시합니다(원점: 결정).</value>
+  </data>
+  <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 실공간 좌표를
+mm 단위로 표시합니다(원점: 결정).</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 실공간 좌표를
+mm 단위로 표시합니다(원점: 결정).</value>
+  </data>
+  <data name="labelD.ToolTip" xml:space="preserve">
+    <value>마우스 포인터 위치에 해당하는 면간 거리 d(nm).</value>
+  </data>
+  <data name="labelDinv.ToolTip" xml:space="preserve">
+    <value>마우스 포인터 위치에 해당하는
+역격자 간격 d⁻¹(nm⁻¹).</value>
+  </data>
+  <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
+    <value>마우스 포인터 위치에 해당하는
+산란각 2θ를 도(°) 단위로 표시합니다.</value>
+  </data>
+  <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
+    <value>마우스 포인터 위치에 해당하는 산란각 2θ를 라디안
+(0.1 rad 미만은 mrad)으로 표시합니다.</value>
+  </data>
+  <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 검출기 평면 좌표를
+mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 검출기 평면 좌표를
+mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
+  </data>
+  <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 역공간 좌표를 nm⁻¹ 단위로 표시합니다.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>마우스 포인터의 역공간 좌표를 nm⁻¹ 단위로 표시합니다.</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>체크하면 커서 위치의 상세
+정보 패널이 열립니다.</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
+    <value>체크하면 시뮬레이션 이미지가
+수평(좌우)으로 뒤집힙니다.</value>
+  </data>
+  <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
+    <value>체크하면 시뮬레이션 이미지가
+수직(상하)으로 뒤집힙니다.</value>
+  </data>
+  <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
+    <value>체크하면 이미지가 명암이 반전된
+(네거티브) 상태로 표시됩니다.</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>모니터 중심을 다음 점으로 설정합니다</value>
+  </data>
+  <data name="comboBoxCenter.ToolTip" xml:space="preserve">
+    <value>모니터 중심으로 사용할 기준점(투과 점,
+수직선의 발, 또는 검출기 중심)을 선택합니다.</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>모니터 중심을 다음 점으로 고정합니다</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴의 픽셀 크기를 설정합니다</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴의 해상도를 설정합니다</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>시뮬레이션 패턴의 해상도를 설정합니다</value>
+  </data>
+  <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
+    <value>해상도를 검출기 평면상의 픽셀당 길이
+(mm/px)로 지정합니다.</value>
+  </data>
+  <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
+    <value>해상도를 역공간의 픽셀당 길이
+(nm⁻¹/px)로 지정합니다.</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>마우스 조작에 의한 회전 속도를 설정합니다</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>마우스 조작에 의한 회전 속도를 설정합니다</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>TEM 홀더 시뮬레이션 창을 엽니다.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>카메라 길이 2, 즉 시료에서 검출기(모니터)
+까지의 거리를 설정합니다.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>카메라 길이 2, 즉 시료에서 검출기(모니터)
+까지의 거리를 설정합니다.</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>상세 광학계 설정 창을 엽니다.</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>현재 이미지를 파일로 저장합니다</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>현재 이미지를 클립보드에 복사합니다</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>파동원과 가속 전압(파장)을
+설정합니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>파동원과 가속 전압(파장)을
+설정합니다.</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>이 모드에서는 블로흐 파 방법으로 세기를 계산합니다.
+전자 선원의 경우에만 유효합니다.</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>체크하면 회절 점이 각 결정에 지정된
+색으로 그려집니다.</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>에너지 의존 X선 이상 분산 항(f', f'')을 구조 인자에 추가합니다. 흡수단 근방에서는 프리델 법칙이 깨져 hkl과 -h-k-l 사이에 베이보에트(Bijvoet) 세기 차이가 생깁니다. 체크를 해제하면 분산이 없는 기존 결과로 돌아갑니다.</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>체크하면 공간군에 의한 금지
+반사가 모두 숨겨집니다.</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>체크하면 격자 중심화에 의한
+금지 반사가 숨겨집니다.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>세차 전자 회절(PED) 시뮬레이션에
+관한 설정</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+입니다. 입사 빔을 기울여 적분하는 원뿔의
+반정각(half-angle)입니다.</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+입니다. 입사 빔을 기울여 적분하는 원뿔의
+반정각(half-angle)입니다.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>PED(세차 전자 회절) 시뮬레이션에서 세차 원뿔을
+방위 방향으로 분할하는 수입니다. 분할이 많을수록
+원뿔을 더 매끄럽게 샘플링하지만 계산은 느려집니다.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>PED(세차 전자 회절) 시뮬레이션에서 세차 원뿔을
+방위 방향으로 분할하는 수입니다. 분할이 많을수록
+원뿔을 더 매끄럽게 샘플링하지만 계산은 느려집니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>블로흐 파(동역학) 회절 계산에
+관한 설정</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>동역학적 다중 산란 계산에 포함되는 회절파(블로흐 파)
+의 수입니다. 파의 수가 많을수록 정확도는 높아지지만
+계산은 느려집니다.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>동역학적 다중 산란 계산에 포함되는 회절파(블로흐 파)
+의 수입니다. 파의 수가 많을수록 정확도는 높아지지만
+계산은 느려집니다.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>시료의 두께를 설정합니다</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>시료의 두께를 설정합니다</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>회절 점의 외관에 관한 설정</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>점이 원으로 표시됩니다.</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>점이 2차원 가우스 함수로 표시됩니다.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>회절 점의 불투명도를 설정합니다</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>회절 점의 불투명도를 설정합니다</value>
+  </data>
+  <data name="flowLayoutPanelSpotOpacity.ToolTip" xml:space="preserve">
+    <value>회절 점의 불투명도를 설정합니다</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>회절 점의 반지름 또는 가우스 sigma를 역공간
+단위(표시 시 nm⁻¹)로 설정합니다. 값이 클수록
+점이 넓게 그려지며 여기 오차의 허용 폭도
+넓어집니다.</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>회절 점의 반지름 또는 가우스 sigma를 역공간
+단위(표시 시 nm⁻¹)로 설정합니다. 값이 클수록
+점이 넓게 그려지며 여기 오차의 허용 폭도
+넓어집니다.</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>체크하면 모든 회절 점이
+동일한 크기로 그려집니다.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>회절 점의 밝기를 설정합니다</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>회절 점의 밝기를 설정합니다</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>색 스케일을 설정합니다</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>회절 점의 세기를 색에 대응시키는 색 스케일을
+선택합니다. 기본값 이외에서는 결정별 지정 색이
+아니라 세기에 따라 점이 착색됩니다.</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>체크하면 회절 점의 세기가
+로그 스케일로 표시됩니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>일반 반사와 계통적 소멸(중심화 / 나선축 /
+글라이드) 반사에 대한 회절 점의 그리기
+색을 설정합니다.</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>일반 점의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>일반 점의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>소멸 점(나선축 또는 글라이드)의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>소멸 점(나선축 또는 글라이드)의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>소멸 점(격자 중심화)의 색을 설정합니다</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>소멸 점(격자 중심화)의 색을 설정합니다</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>회절 점의 세기를 계산하는 방법(동역학적
+블로흐 파, 운동학적, 또는 여기 오차만)을
+선택합니다.</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>이 모드에서는 세기 계산에 여기 오차만 고려됩니다.
+(구조 인자의 효과는 무시됩니다) </value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>이 모드에서는 세기가 구조 인자와
+여기 오차로 계산됩니다.</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>점 상세 정보 창을 엽니다.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>조사 광학계(평행/SAED, 수렴/CBED,
+세차/PED, 백-라우에)를 선택합니다.</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>평행 빔 모드(즉, SAED 모드)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>세차 빔 모드(즉, PED 모드)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>수렴 빔 모드(즉, CBED 모드)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>후방 반사 라우에 모드(백색 X선).</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>X선 세차 모드(ZOLZ, 영차 라우에 영역):
+영층 역격자면을 극투영으로 표시하며,
+전자 PED 모드와는 구별됩니다.</value>
+  </data>
 </root>

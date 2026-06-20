@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>屏蔽当前预览的区域：将这些像素从
+拟合（残差）中排除，使其在与模拟
+匹配时被忽略。</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>屏蔽图像的每一个像素（将整幅图像
+从拟合中排除）。</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>将当前蒙版保存为 .mas
+文件，以便日后重新加载。</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>解除当前预览区域的屏蔽：
+将这些像素重新纳入拟合。</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>清除所有蒙版：将每一个像素重新纳入拟合。</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>应用胶片模糊：用右侧设定宽度（µm）的
+仪器点扩散函数（高斯）对模拟环进行卷积，
+以模拟检测器/胶片的弥散。</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>蒙版模式：选取选定衍射峰（hkl 衍射）
+周围的像素进行屏蔽；与其他蒙版模式
+互斥。</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>蒙版模式：屏蔽从图样中心起 Start 到 End
+半径之间的环状（甜甜圈）区域；
+与其他蒙版模式互斥。</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>蒙版模式：用下方选定的形状
+（斑点/圆/矩形/甜甜圈）用鼠标
+直接在图像上绘制蒙版；
+与其他蒙版模式互斥。</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>蒙版模式：屏蔽由方向、带宽和角度
+定义的直条带（矩形）；
+与其他蒙版模式互斥。</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>将条带蒙版对称地应用于中心线的两侧
+（而非仅一侧）。</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>条带蒙版的方向预设
+（Top/Bottom/Right/Left/Vertical/Horizontal/Free）；
+预设会固定角度，Free 则允许手动输入。</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>每次鼠标单击时绘制的手动斑点
+蒙版的半径（像素，1–128）。</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>相机长度（试样到检测器的距离），
+单位 mm；用于缩放检测器上模拟
+衍射环的半径。</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>直射束（图样）中心的 X 像素坐标；
+设定衍射环在图像上的
+中心位置。</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>直射束（图样）中心的 Y 像素坐标；
+设定衍射环在图像上的
+中心位置。</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>胶片模糊宽度，单位 µm：用于与环卷积
+以展宽峰的高斯仪器点扩散函数
+（检测器/胶片分辨率）。</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>源图像的检测器像素尺寸，单位
+mm/pixel；与相机长度一起将散射角
+换算为以像素为单位的环半径。</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>屏幕显示分辨率，单位 mm/pixel；
+设定所显示图样的缩放系数
+（显示器 mm/pixel ÷ 图像 mm/pixel）。</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>条带蒙版的角度，单位度（0–360°）；设定条带
+方向。仅当 Direction 为 Free 时可编辑。</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>条带蒙版的宽度，单位像素（0–10000）；
+设定被屏蔽条带的宽度。</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>手动蒙版形状：拖动以定义一个圆（从中心
+到半径）并屏蔽所围区域。</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>手动蒙版形状：围绕图样中心拖动两个
+半径，以屏蔽一个环状（甜甜圈）区域。</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>手动蒙版形状：拖动一个矩形（两个
+角点）并屏蔽所围区域。</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>手动蒙版形状：单击以屏蔽（左键）
+或解除屏蔽（右键）一个由 Size 设定
+半径的圆形斑点；默认模式。</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>模拟图像的宽×高，单位像素
+（1–10000）；设定所生成衍射图样
+的画布尺寸。</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>将当前模拟衍射图样保存为
+IPA 图像文件（*.ipa），包含
+分辨率、中心、相机长度和波长。</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>在图像上高亮显示被屏蔽（已从拟合中排除）的
+像素，以便查看哪些区域被忽略。</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>显示亮度窗口的强度上限（映射到最亮
+颜色的计数）。仅影响显示对比度，
+不改变数据。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>显示亮度窗口的强度上限（映射到最亮
+颜色的计数）。仅影响显示对比度，
+不改变数据。</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>显示亮度窗口的强度下限（映射到最暗
+颜色的计数）。仅影响显示对比度，
+不改变数据。</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>显示亮度窗口的强度下限（映射到最暗
+颜色的计数）。仅影响显示对比度，
+不改变数据。</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的振幅（A），采用对数
+标度。设定用作拟合初始估计的
+背景环的峰高。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的振幅（A），采用对数
+标度。设定用作拟合初始估计的
+背景环的峰高。</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的宽度（H，半高全宽，
+单位像素）。值越大，背景环
+越宽。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的宽度（H，半高全宽，
+单位像素）。值越大，背景环
+越宽。</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的半径（R，从中心
+起的像素数）。设定背景环
+峰值所在的位置。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>初始弥散背景晕环的半径（R，从中心
+起的像素数）。设定背景环
+峰值所在的位置。</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>环状蒙版的外半径（从中心起的
+像素数）。位于 Start 与 End 半径
+之间的像素被选作屏蔽对象。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>环状蒙版的外半径（从中心起的
+像素数）。位于 Start 与 End 半径
+之间的像素被选作屏蔽对象。</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>环状蒙版的内半径（从中心起的
+像素数）。位于 Start 与 End 半径
+之间的像素被选作屏蔽对象。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>环状蒙版的内半径（从中心起的
+像素数）。位于 Start 与 End 半径
+之间的像素被选作屏蔽对象。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>环状蒙版的内半径（从中心起的
+像素数）。位于 Start 与 End 半径
+之间的像素被选作屏蔽对象。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>试样/检测器倾斜轴的方位角（phi），
+单位度。设定图样倾斜所绕的方向，
+影响环畸变的取向。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>试样/检测器倾斜轴的方位角（phi），
+单位度。设定图样倾斜所绕的方向，
+影响环畸变的取向。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>试样/检测器绕 phi 轴的倾斜幅度（tau），
+单位度。值越大，德拜环越从圆形
+畸变为椭圆。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>试样/检测器绕 phi 轴的倾斜幅度（tau），
+单位度。值越大，德拜环越从圆形
+畸变为椭圆。</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>勾选峰列表中的每一个衍射（hkl），
+一次性选中所有峰。</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>取消勾选峰列表中的每一个衍射
+（hkl），清除选择。</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>选取已勾选衍射（hkl）的环周围的
+图像区域，以便对其进行屏蔽。</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>衍射指数（hkl）列表；勾选你想要
+选取其周围环区域进行屏蔽的
+那些峰。</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>入射辐射的束会聚（半角），
+单位度。值越大，模拟的
+德拜环峰越宽。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>入射辐射的束会聚（半角），
+单位度。值越大，模拟的
+德拜环峰越宽。</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>入射辐射的束会聚（半角），
+单位度。值越大，模拟的
+德拜环峰越宽。</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>源的波长展宽（单色性，
+Delta-lambda / lambda），单位 %。
+值越大，模拟的环越宽。</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>源的波长展宽（单色性，
+Delta-lambda / lambda），单位 %。
+值越大，模拟的环越宽。</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>源的波长展宽（单色性，
+Delta-lambda / lambda），单位 %。
+值越大，模拟的环越宽。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>选择辐射源（X射线或电子）及
+用于计算德拜环半径的波长。</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>显示残差（实测减去模拟图样），
+以便查看拟合的匹配程度。
+与 Simulation 互斥。</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>将模拟图样叠加在实测图像上，
+按 Opacity 滑块进行混合。
+与 Residual 互斥。</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>在 Simulation 模式下，模拟图样
+叠加在实测图像上的混合不透明度（0-100%）。</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>将当前背景参数保存到
+背景文件（*.bg）以便日后重用。</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>启用背景初始值的手动设置；
+激活 A/H/R 滑块，以在精修前
+定义一个起始背景环。</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>衍射信息的只读摘要：
+参与衍射的晶粒数量
+以及每个衍射（hkl）的占比。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>每次鼠标单击时绘制的手动斑点
+蒙版的半径（像素）。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>每次鼠标单击时绘制的手动斑点
+蒙版的半径（像素）。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>直射束（图样）中心的 X/Y 像素坐标；
+设定衍射环的中心位置。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>屏幕显示分辨率，单位 mm/pixel；
+设定所显示图样的缩放系数。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>屏幕显示分辨率，单位 mm/pixel；
+设定所显示图样的缩放系数。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>相机长度（试样到检测器的距离），
+单位 mm；用于缩放衍射环半径。</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>相机长度（试样到检测器的距离），
+单位 mm；用于缩放衍射环半径。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>条带蒙版的角度（度，0–360°）；设定条带
+方向（仅当 Direction 为 Free 时可编辑）。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>条带蒙版的宽度（像素）；
+设定被屏蔽条带的宽度。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>条带蒙版的方向预设
+（Top/Bottom/Right/Left/Vertical/Horizontal/Free）；
+Free 允许你手动输入角度。</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>源图像的检测器像素尺寸，单位
+mm/pixel；将散射角换算为环半径。</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>源图像的检测器像素尺寸，单位
+mm/pixel；将散射角换算为环半径。</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>直射束中心的 X 像素坐标；
+设定环中心。</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>直射束中心的 Y 像素坐标；
+设定环中心。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>胶片模糊宽度，单位 µm：用于与环卷积
+以展宽峰的高斯仪器点扩散函数。</value>
+  </data>
+</root>

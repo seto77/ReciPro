@@ -77,4 +77,125 @@
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
     <value>Flou gaussien</value>
   </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur 1:1 (×1,
+un pixel écran par pixel d'image).</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×2 (agrandissement 2×).</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×4 (agrandissement 4×).</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×1/16 (réduction à 1/16 de la taille).</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×1/2 (réduction à la moitié de la taille).</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×1/4 (réduction au quart de la taille).</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>Règle le zoom d'affichage sur ×1/8 (réduction au huitième de la taille).</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Applique un filtre Dust &amp;&amp; Scratches (poussière et rayures) qui supprime
+les petits points et les artefacts en forme de rayure en
+remplaçant les pixels qui s'écartent trop de leurs
+voisins (régler Radius et Threshold).</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Applique un flou gaussien qui lisse l'image avec un noyau
+gaussien afin de réduire le bruit (régler la largeur FWHM).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Bascule la polarité de l'affichage : Positive affiche les
+intensités normalement, Negative inverse l'échelle de
+gris (clair et sombre intervertis).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Bascule la polarité de l'affichage : Positive affiche les
+intensités normalement, Negative inverse l'échelle de
+gris (clair et sombre intervertis).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Choisit la correspondance entre intensité et luminosité : Linear
+(proportionnelle) ou Log (logarithmique, qui révèle les
+détails faibles en même temps que les détails intenses).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Choisit la correspondance entre intensité et luminosité : Linear
+(proportionnelle) ou Log (logarithmique, qui révèle les
+détails faibles en même temps que les détails intenses).</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Sélectionne la palette de couleurs utilisée pour afficher l'intensité :
+Gray, Cold-Warm, Spectrum ou Fire (une représentation en fausses couleurs
+peut rendre les différences d'intensité plus faciles à voir).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Sélectionne la palette de couleurs utilisée pour afficher l'intensité :
+Gray, Cold-Warm, Spectrum ou Fire (une représentation en fausses couleurs
+peut rendre les différences d'intensité plus faciles à voir).</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Affiche la position du curseur (X, Y en pixels
+de l'image) et, pour les images en niveaux de gris,
+la valeur brute du pixel situé sous le curseur.</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>Grossissement d'affichage actuel (facteur de zoom)
+de l'image ; mis à jour lors du zoom ou du déplacement.</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Règle le rayon du filtre Dust &amp;&amp; Scratches en
+pixels (0-5). Un rayon plus grand supprime des points/rayures
+plus grands mais floute davantage les détails.</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Règle le seuil du filtre Dust &amp;&amp; Scratches (0-10).
+Seuls les pixels qui diffèrent de leurs voisins
+de plus que cette valeur sont traités comme des défauts
+et remplacés ; une valeur plus basse en supprime davantage.</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>Règle la largeur du flou gaussien en FWHM (largeur
+à mi-hauteur, Full Width at Half Maximum) en pixels (0-100).
+Une valeur plus grande floute plus fortement.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Barre d'état affichant les messages de traitement,
+comme le temps écoulé des filtres Dust &amp;&amp;
+Scratches et Gaussian Blur.</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>Règle la limite supérieure d'intensité : les valeurs de pixel
+au-dessus de celle-ci sont écrêtées en blanc (luminosité
+maximale). Avec le curseur Min., elle définit la fenêtre
+de luminosité/contraste affichée.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Règle la limite supérieure d'intensité : les valeurs de pixel
+au-dessus de celle-ci sont écrêtées en blanc (luminosité
+maximale). Avec le curseur Min., elle définit la fenêtre
+de luminosité/contraste affichée.</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>Règle la limite inférieure d'intensité : les valeurs de pixel en dessous
+de celle-ci sont écrêtées en noir. Avec le curseur Max.,
+elle définit la fenêtre de luminosité/contraste affichée.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Règle la limite inférieure d'intensité : les valeurs de pixel en dessous
+de celle-ci sont écrêtées en noir. Avec le curseur Max.,
+elle définit la fenêtre de luminosité/contraste affichée.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Grossissement d'affichage actuel (facteur de zoom) de l'image.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Grossissement d'affichage actuel
+(Magnification, facteur de zoom) de l'image.</value>
+  </data>
 </root>

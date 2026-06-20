@@ -242,4 +242,191 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>显示编号</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>在观测斑点上显示标记符号</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>识别斑点
+（需要在主窗口中选择合适的晶体）</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>重新拟合所有已检测斑点的位置和强度</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>像素尺寸单位：毫米</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>检测载入图像中的衍射斑点并用所选函数拟合。
+请在右侧框中指定要搜索的斑点数、斑点之间的最小距离
+以及拟合范围。</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>在计算斑点上显示标记符号</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>忽略运动学禁戒、但可经多重（动力学）
+衍射出现的反射，将其从计算图样中
+排除。</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>在厚度/方位精修过程中搜索入射束方向
+所覆盖的角度半范围（半收敛角，
+单位 mrad）。</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>对所有斑点位置执行全局拟合（实验性）</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>允许的已检测斑点之间的最小间隔 (px)；
+比此距离更近的峰会被合并，以免将
+同一斑点重复计数。</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>允许的已检测斑点之间的最小间隔 (px)；
+比此距离更近的峰会被合并，以免将
+同一斑点重复计数。</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>搜索多个晶粒的方位</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>要搜索的晶粒方位的最大数量</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>要搜索的晶粒方位的最大数量</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>衍射图样的相机长度 (mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>衍射图样的相机长度 (mm)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>应用环形（甜甜圈状）背景扣除（实验性）</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>停止当前计算</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>观测斑点的列表；勾选 'Direct' 以设定直接
+束斑点，点击某行的 'Fit' 以拟合其峰，
+或选择某行以在图样上高亮该斑点</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>动力学厚度/方向精修中纳入的衍射波
+（布洛赫波）的最大数量；波数越多
+精度越高，但计算越慢
+（1-2048）。</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>动力学厚度/方向精修中纳入的衍射波
+（布洛赫波）的最大数量；波数越多
+精度越高，但计算越慢
+（1-2048）。</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>在环形背景扣除中，用作每个斑点
+局部背景的外侧环形区域的宽度
+(px)（1-100）。</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>一个探测器像素的尺寸；单位（mm 或 nm⁻¹）
+遵循右侧的单选按钮。该值设定用于晶面间距
+计算和标定的倒易空间标尺。</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>一个探测器像素的尺寸；单位（mm 或 nm⁻¹）
+遵循右侧的单选按钮。该值设定用于晶面间距
+计算和标定的倒易空间标尺。</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>在图样上显示晶带轴方向</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>将上述信息复制到剪贴板。</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>在计算斑点上显示指数标签</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>用于峰拟合的、每个斑点周围圆形区域的
+半径（像素，0–100）；该圆内的像素
+以伪 Voigt 函数进行拟合。</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>用于峰拟合的、每个斑点周围圆形区域的
+半径（像素，0–100）；该圆内的像素
+以伪 Voigt 函数进行拟合。</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>从列表中删除当前所选的斑点
+（使用 Clear 按钮可删除所有斑点）。</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>找到的标定候选列表；选择某行
+即可在下方显示其晶粒方位。</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>在衍射图样上显示引导圆</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>所选候选中包含的晶粒方位；选择某行
+会叠加其计算斑点，并为观测斑点
+分配 hkl 指数。</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>针对所选晶粒，将观测斑点强度与动力学
+（布洛赫波）CBED 计算进行比对，从而
+精修试样厚度 (nm) 和束方向
+（仅限电子衍射）。</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>指定要检测的斑点数</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>指定要检测的斑点数</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>在观测斑点上显示编号</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>显示所选斑点的详细信息</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>将观测斑点与候选反射匹配时允许的
+最大相对长度（晶面间距）容差，
+单位为 %（0.1–10%）。</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>将观测斑点与候选反射匹配时允许的
+最大相对长度（晶面间距）容差，
+单位为 %（0.1–10%）。</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>搜索单个晶粒的方位</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>清除所有斑点</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>保存上述信息</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>将每个斑点的拟合半径都设为当前
+'Fitting range' 的值 (px)。</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>像素尺寸单位：倒纳米 (nm⁻¹)</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>设定用于标定的波长的辐射源和
+能量／加速电压（默认：电子，
+200 kV）。</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>在图样上叠加显示德拜-谢乐环</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>显示拟合函数的详细参数</value>
+  </data>
 </root>

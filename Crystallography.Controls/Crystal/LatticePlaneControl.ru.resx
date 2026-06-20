@@ -80,4 +80,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Сдвиг</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Цвет плоскости решётки</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Добавить заданную выше плоскость решётки
+(индексы, сдвиг, цвет) в список.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Заменить выделенную в списке плоскость решётки
+на значения, введённые выше.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Удалить выделенную в списке плоскость решётки из списка.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Список заданных плоскостей решётки; отметьте флажок строки,
+чтобы включить или выключить показ этой плоскости.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Введите индексы Миллера (h k l) плоскости решётки
+(индексы Миллера–Браве h k i l для гексагональных кристаллов).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Сдвинуть плоскость решётки вдоль её нормали, в виде
+доли межплоскостного расстояния (от -0,5 до 0,5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Сдвинуть плоскость решётки вдоль её нормали, в виде
+доли межплоскостного расстояния (от -0,5 до 0,5).</value>
+  </data>
 </root>

@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Farbe</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Wählt die Farbskala für die Polfigur: ein
+Spektrum von Kalt zu Warm oder einen Graustufenverlauf.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Wählt die Farbskala für die Polfigur: ein
+Spektrum von Kalt zu Warm oder einen Graustufenverlauf.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Zeigt die maximalen und minimalen Pixelwerte,
+die aktuell in der Polfigur dargestellt werden.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Obere Grenze der Farbskala für die
+Polfigur; Werte an dieser Grenze oder darüber werden
+dem warmen/hellen Ende des Balkens zugeordnet.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Untere Grenze der Farbskala für die
+Polfigur; Werte an dieser Grenze oder darunter werden
+dem kalten/dunklen Ende des Balkens zugeordnet.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Winkel-Bin-Größe in Grad für das
+Polfigur-Histogramm; kleinere Werte ergeben
+feinere Bins (höhere Auflösung) (Bereich 1–30°).</value>
+  </data>
 </root>

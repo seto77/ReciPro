@@ -122,4 +122,162 @@
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>pour les disques individuels</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Exécuter une simulation CBED</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>Tracer des cercles indiquant la limite de chaque disque de diffraction</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>Choisir la méthode de résolution des équations des ondes de Bloch
+(problème aux valeurs propres ou exponentielle de matrice ; bibliothèque
+Eigen ou MKL). Les résultats devraient coïncider, mais la vitesse
+diffère ; utilisez Auto sauf pour des essais de performance.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Choisir la méthode de résolution des équations des ondes de Bloch
+(problème aux valeurs propres ou exponentielle de matrice ; bibliothèque
+Eigen ou MKL). Les résultats devraient coïncider, mais la vitesse
+diffère ; utilisez Auto sauf pour des essais de performance.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>Nombre de fils CPU utilisés pour le calcul des ondes de Bloch
+du CBED (diffraction électronique en faisceau convergent),
+1-128. Désactivé lorsque le solveur est sur Auto.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Nombre de fils CPU utilisés pour le calcul des ondes de Bloch
+du CBED (diffraction électronique en faisceau convergent),
+1-128. Désactivé lorsque le solveur est sur Auto.</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>Mode CBED (diffraction électronique en faisceau convergent) :
+chaque réflexion de Bragg devient un disque dont l'intensité
+interne varie avec l'inclinaison du faisceau incident.</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>Mode LACBED (diffraction électronique en faisceau convergent
+à grand angle) : utilise un angle de convergence plus large afin
+qu'une réflexion soit enregistrée sur une plus grande plage angulaire.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Nombre d'ondes diffractées (ondes de Bloch) incluses
+dans le calcul dynamique de diffusion multiple, 1-2048.
+Un plus grand nombre d'ondes améliore la précision
+mais ralentit le calcul.</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>Demi-angle de convergence maximal (mrad)</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>Demi-angle de convergence maximal (mrad)</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>Pas d'échantillonnage angulaire par pixel à travers chaque
+disque (mrad/pixel). Des valeurs plus petites donnent plus de
+divisions en diamètre, indiquées à droite, pour des disques
+plus fins mais un calcul plus long.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Pas d'échantillonnage angulaire par pixel à travers chaque
+disque (mrad/pixel). Des valeurs plus petites donnent plus de
+divisions en diamètre, indiquées à droite, pour des disques
+plus fins mais un calcul plus long.</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Définir une plage et un pas pour les épaisseurs de l'échantillon</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Arrêter la simulation en cours</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Sélectionner le sens du dégradé d'intensité :
+Positif signifie que le clair est fort ; Négatif
+inverse l'échelle de sorte que le sombre est fort.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Sélectionner l'échelle de couleurs utilisée pour associer l'intensité du
+disque à la couleur d'affichage (Gray, Cold-Warm, Spectrum ou Fire).</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>Définir une valeur gamma.
+Plus cette valeur est élevée, plus le disque extérieur paraît lumineux.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Définir une intensité à laquelle la
+luminosité est affichée comme nulle.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Définir une intensité à laquelle la
+luminosité est affichée comme nulle.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Définir une intensité à laquelle la luminosité
+est affichée comme la valeur maximale.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Définir une intensité à laquelle la luminosité
+est affichée comme la valeur maximale.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Définir une intensité à laquelle la luminosité
+est affichée comme la valeur maximale.</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>La même plage de luminosité (Min/Max) est appliquée à tous les disques.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>La même plage de luminosité (Min/Max) est appliquée à tous les disques.</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>Des plages de luminosité distinctes sont
+appliquées à chaque disque individuel.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Sélectionner une épaisseur d'échantillon à afficher.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon (nm) du
+motif de disques actuellement affiché.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon (nm) du
+motif de disques actuellement affiché.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon (nm) du
+motif de disques actuellement affiché.</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>Pas d'échantillonnage angulaire par pixel à travers
+chaque disque (mrad/pixel). Des valeurs plus petites
+donnent plus de divisions en diamètre, indiquées ici,
+pour des disques plus fins mais un calcul plus long.</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>Définir une valeur gamma. Plus cette valeur est élevée,
+plus le disque extérieur paraît lumineux.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Sélectionner une échelle de couleurs (Gray / Cold-Warm / Spectrum / Fire).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Sélectionner le sens du dégradé
+(Positif ou Négatif / inversé).</value>
+  </data>
 </root>

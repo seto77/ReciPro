@@ -138,4 +138,132 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Моделирование держателя ПЭМ</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Цвет фона области рисования стереонета.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Цвет контура держателя образца, нарисованного на стереонете.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Цвет основных линий сетки 90° и
+внешней окружности стереонета.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Цвет промежуточных линий сетки 10°,
+нарисованных на стереонете.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Цвет линий 1°
+Активно, когда отмечено "Показывать линии 1°"</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Цвет меток осей [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Цвет точек и меток общих осей зоны
+(оси, кроме [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Цвет стрелки направления Tilt-X (основная ось)
+(показывается, когда отмечено "Показывать направления наклона")</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Цвет стрелки направления Tilt-Y (вторичная ось)
+(показывается, когда отмечено "Показывать направления наклона")</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Если отмечено, клавиши-стрелки наклоняют
+держатель: Влево/Вправо меняют Tilt X, а
+Вверх/Вниз меняют Tilt Y на шаг стрелки.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Приращение угла наклона (в градусах),
+применяемое на каждое нажатие клавиши-стрелки.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Угол наклона держателя вокруг
+основной (Tilt X) оси, в градусах.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Угол наклона держателя вокруг
+основной (Tilt X) оси, в градусах.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Угол наклона держателя вокруг
+вторичной (Tilt Y) оси, в градусах.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Угол наклона держателя вокруг
+вторичной (Tilt Y) оси, в градусах.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Азимутальное направление (в градусах)
+оси Tilt X (основной) на стереонете.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Азимутальное направление (в градусах)
+оси Tilt X (основной) на стереонете.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Использовать отрицательную полярность для оси Tilt Y (вторичной).</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Использовать положительную полярность для оси Tilt Y (вторичной).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Полярность (знак) оси Tilt Y (вторичной);
+согласуйте её с соглашением гониометра вашего ПЭМ.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Радиус точек осей зоны, нарисованных на стереонете.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Радиус точек осей зоны, нарисованных на стереонете.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Размер шрифта меток индексов осей зоны.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Размер шрифта меток индексов осей зоны.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Установить текущий наклон держателя в значения Link
+Tilt X/Y и использовать получившуюся
+ориентацию как нейтральное направление.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл на 180° вокруг оси пучка ([001]).</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Целевой угол Tilt X (в градусах),
+применяемый при нажатии кнопки Link.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Целевой угол Tilt Y (в градусах),
+применяемый при нажатии кнопки Link.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Если отмечено, рисует линии с интервалом 1° на
+стереонете (цвет задаётся элементом управления цветом 1°).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Если отмечено, показывает метку индекса [u v w]
+рядом с каждой точкой оси зоны.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Если отмечено, рисует на стереонете стрелки,
+показывающие направления Tilt-X и Tilt-Y.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Полуугол (в градусах) области стереонета
+для отображения; меньшие значения увеличивают.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Стереонет направлений наклона. Дважды щёлкните точку,
+чтобы наклонить держатель в этом направлении.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Если отмечено, также генерирует
+симметрийно-эквивалентные оси зоны для каждого индекса.</value>
+  </data>
 </root>

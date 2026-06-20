@@ -109,4 +109,211 @@
   <data name="$this.Text" xml:space="preserve">
     <value>旋转几何</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>将视线方向设为平行于束流方向</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>将视线方向设为等角投影</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>勾选后，ReciPro 坐标系与实验
+坐标系将相互关联。</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>将旋转矩阵的数值以 Excel 格式
+复制到剪贴板。</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>从剪贴板以 Excel 格式粘贴
+旋转矩阵的数值。</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
+最后一次绕 Z 轴的旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
+最后一次绕 Z 轴的旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 2
+欧拉角 Θ（度，中间一次绕 X 轴的
+旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 2
+欧拉角 Θ（度，中间一次绕 X 轴的
+旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 1
+欧拉角 Φ（度）；与 Θ、Ψ 一起设定
+晶体取向（旋转矩阵）。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 1
+欧拉角 Φ（度）；与 Θ、Ψ 一起设定
+晶体取向（旋转矩阵）。</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>绕实验坐标系第 1 测角仪轴的旋转角
+（度，−180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>绕实验坐标系第 1 测角仪轴的旋转角
+（度，−180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>绕实验坐标系第 2 测角仪轴的旋转角
+（度，−180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>绕实验坐标系第 2 测角仪轴的旋转角
+（度，−180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>绕实验坐标系第 3 测角仪轴的旋转角
+（度，-180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>绕实验坐标系第 3 测角仪轴的旋转角
+（度，-180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>启用实验坐标系的第 2 测角仪旋转轴
+（增加一次绕所选 X/Y/Z 轴的倾斜）。</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>将第 1 角固定为当前值</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>将第 2 角固定为当前值。</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>将第 3 角固定为当前值。</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>启用实验坐标系的第 3 测角仪旋转轴
+（增加一次绕所选 X/Y/Z 轴的倾斜）。</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>将第 3 测角仪旋转轴设为直角坐标的
+Z 轴（第 3 次实验旋转将绕此轴
+施加）。</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>将第 3 测角仪旋转轴设为直角坐标的
+Y 轴（第 3 次实验旋转将绕此轴
+施加）。</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>将第 3 测角仪旋转轴设为直角坐标的
+X 轴（第 3 次实验旋转将绕此轴
+施加）。</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>将第 2 测角仪旋转轴设为直角坐标的
+Z 轴（第 2 次实验旋转 numericBoxExp2
+将绕此轴施加）。</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>将第 2 测角仪旋转轴设为直角坐标的
+Y 轴（第 2 次实验旋转 numericBoxExp2
+将绕此轴施加）。</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>将第 2 测角仪旋转轴设为直角坐标的
+X 轴（第 2 次实验旋转 numericBoxExp2
+将绕此轴施加）。</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>将第 1 测角仪旋转轴设为直角坐标的
+Z 轴（第 1 次实验旋转 numericBoxExp1
+将绕此轴施加）。</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>将第 1 测角仪旋转轴设为直角坐标的
+Y 轴（第 1 次实验旋转 numericBoxExp1
+将绕此轴施加）。</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>将第 1 测角仪旋转轴设为直角坐标的
+X 轴（第 1 次实验旋转 numericBoxExp1
+将绕此轴施加）。</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>将所有角度重置为零</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>ReciPro 坐标系的 3×3 取向（旋转）
+矩阵，由 ZXZ 欧拉角计算得出
+（只读）。</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (1,1) 元素（只读、无量纲），
+由 ZXZ 欧拉角 Φ、Θ、Ψ 计算得出。</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (1,2) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (1,3) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (2,1) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (2,2) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (2,3) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (3,1) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (3,2) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>ReciPro 取向矩阵的 (3,3) 元素
+（只读、无量纲），由 ZXZ 欧拉
+角计算得出。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 2 欧拉角 Θ
+（度，绕 X 轴的旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
+最后一次绕 Z 轴的旋转）；用于设定晶体取向。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>ZXZ 约定下 ReciPro 坐标系的第 1 欧拉角 Φ（度）；
+用于设定晶体取向和旋转矩阵。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>绕实验坐标系第 1 测角仪轴的旋转角
+（度，-180 至 180），使晶体绕所选的
+X/Y/Z 轴倾斜。</value>
+  </data>
 </root>

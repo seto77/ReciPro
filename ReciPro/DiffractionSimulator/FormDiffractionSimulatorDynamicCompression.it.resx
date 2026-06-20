@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Esegue la simulazione di diffrazione a compressione
+dinamica e accumula la figura di diffrazione.</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>Se selezionato, salta il disegno a schermo
+durante il calcolo per accelerarlo.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Profondità del confine anteriore che separa
+le regioni non compressa e compressa.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Profondità del confine posteriore che separa
+le regioni compressa e rilasciata.</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>Sceglie la cartella di output dove
+vengono salvate le figure TIFF simulate.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Nome di base del file per la figura TIFF
+salvata; '.tif' viene aggiunto automaticamente.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Nome di base del file per la figura TIFF
+salvata; '.tif' viene aggiunto automaticamente.</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>Velocità media di rotazione del cristallo ω
+nella regione compressa (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Deviazione standard σ_ω della velocità
+di rotazione nella regione compressa (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>Termine costante a (°) della dispersione dell'asse di rotazione
+σ_θ per la regione compressa (modello 2019).</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>Coefficiente temporale b (°/ns) della dispersione dell'asse di
+rotazione σ_θ per la regione compressa (modello 2019).</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>Se selezionato, ripete la simulazione incrementando
+l'angolo Ω complessivo di un passo fisso.</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>Se selezionato, salva ciascuna figura simulata
+come file TIFF nella cartella scelta.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>Numero di divisioni di campionamento per integrare
+sulla distribuzione della velocità di rotazione.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>Numero di divisioni di campionamento
+azimutale per l'asse di rotazione.</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>Velocità media di rotazione del cristallo ω nella regione rilasciata (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Deviazione standard σ_ω della velocità
+di rotazione nella regione rilasciata (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>Termine costante a (°) della dispersione dell'asse di rotazione
+σ_θ per la regione rilasciata (modello 2019).</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>Coefficiente temporale b (°/ns) della dispersione dell'asse di
+rotazione σ_θ per la regione rilasciata (modello 2019).</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>Indice di Miller h della normale al piano di shock (compressione).</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>Indice di Miller k della normale al piano di shock (compressione).</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>Indice di Miller l della normale al piano di shock (compressione).</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>Indice di Miller h della normale al piano di scorrimento (usato
+per definire l'asse di rotazione nel modello 2019).</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>Indice di Miller k della normale al piano di scorrimento (usato
+per definire l'asse di rotazione nel modello 2019).</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>Indice di Miller l della normale al piano di scorrimento (usato
+per definire l'asse di rotazione nel modello 2019).</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>Velocità dell'onda di shock (compressione) Us
+(km/s) usata per convertire la profondità in
+tempo trascorso nella regione compressa.</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>Applica una compressione isotropa (idrostatica)
+del reticolo nella regione compressa.</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>Applica una compressione uniassiale del reticolo lungo la
+normale al piano di shock nella regione compressa.</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>Velocità dell'onda di rilascio Ur (km/s) usata per convertire
+la profondità in tempo trascorso nella regione rilasciata.</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>Applica una compressione isotropa (idrostatica)
+del reticolo nella regione rilasciata.</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>Applica una compressione uniassiale del reticolo lungo la
+normale al piano di shock nella regione rilasciata.</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>Incremento dell'angolo Ω (°) applicato per
+ogni ripetizione quando 'Increment Ω' è abilitato.</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>Numero di ripetizioni quando 'Increment Ω' è abilitato.</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>Usa il modello di rotazione 2018 (assi di rotazione
+perpendicolari all'asse di compressione).</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>Usa il modello di rotazione 2019 (asse di rotazione
+dal prodotto vettoriale tra piano di scorrimento e
+piano di compressione, con dispersione θ,φ).</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>Modulo di compressibilità K0 (GPa) per l'equazione di
+stato di Birch–Murnaghan del terzo ordine.</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>Derivata rispetto alla pressione del modulo di compressibilità K'0
+per l'equazione di stato di Birch–Murnaghan del terzo ordine.</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>Coefficiente di assorbimento di massa (cm²/g) del campione
+usato per attenuare le intensità attraverso gli strati.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Coefficiente di assorbimento di massa (cm²/g) del campione
+usato per attenuare le intensità attraverso gli strati.</value>
+  </data>
+</root>

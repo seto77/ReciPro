@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApply.ToolTip" xml:space="preserve">
+    <value>Applica il cristallo deformato come
+nuova struttura e chiude questa finestra.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Parametro reticolare a (in ångström) della cella
+deformata, calcolato dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Angolo reticolare α tra gli assi b e c
+(in gradi) della cella deformata, calcolato
+dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Parametro reticolare b (in ångström) della cella
+deformata, calcolato dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Angolo reticolare β tra gli assi c e a
+(in gradi) della cella deformata, calcolato
+dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Parametro reticolare c (in ångström) della cella
+deformata, calcolato dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Angolo reticolare γ tra gli assi a e b
+(in gradi) della cella deformata, calcolato
+dal tensore di deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione normale ε11 lungo la direzione a (x)
+(allungamento frazionario adimensionale); modificandolo si
+aggiornano i parametri di cella deformati e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione di taglio ε12 nel piano a-b (x-y)
+(adimensionale; inserito simmetricamente come ε12 = ε21);
+modificandolo si aggiornano il reticolo deformato e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione di taglio ε13 nel piano a-c (x-z)
+(adimensionale; inserito simmetricamente come ε13 = ε31);
+modificandolo si aggiornano il reticolo deformato e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione normale ε22 lungo la direzione b (y)
+(allungamento frazionario adimensionale); modificandolo si
+aggiornano i parametri di cella deformati e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione di taglio ε23 nel piano b-c (y-z)
+(adimensionale; inserito simmetricamente come ε23 = ε32);
+modificandolo si aggiornano il reticolo deformato e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>Componente di deformazione normale ε33 lungo la direzione c (z)
+(allungamento frazionario adimensionale); modificandolo si
+aggiornano i parametri di cella deformati e lo sforzo.</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo normale σ11 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo di taglio σ12 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo di taglio σ13 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo normale σ22 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo di taglio σ23 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>Componente di sforzo normale σ33 (in GPa) calcolata dal
+prodotto della matrice di rigidità per la deformazione (sola lettura).</value>
+  </data>
+</root>

@@ -158,4 +158,337 @@
   <data name="numericBoxElectronDensity.HeaderText" xml:space="preserve">
     <value>电子密度</value>
   </data>
+  <data name="textBoxAuthor.ToolTip" xml:space="preserve">
+    <value>此晶体结构所取自的
+出版物的作者姓名。</value>
+  </data>
+  <data name="textBoxTitle.ToolTip" xml:space="preserve">
+    <value>此晶体结构所取自的
+出版物的标题。</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip" xml:space="preserve">
+    <value>晶胞体积，单位Å³</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
+    <value>晶胞体积，单位Å³</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
+    <value>晶胞体积，单位nm³</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.ToolTip1" xml:space="preserve">
+    <value>晶胞体积，单位nm³</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
+    <value>晶胞质量，单位10⁻²⁴ g</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip1" xml:space="preserve">
+    <value>晶胞质量，单位10⁻²⁴ g</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
+    <value>摩尔体积，单位cm³/mol</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip1" xml:space="preserve">
+    <value>摩尔体积，单位cm³/mol</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
+    <value>摩尔质量，单位g/mol</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip1" xml:space="preserve">
+    <value>摩尔质量，单位g/mol</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>密度，单位g/cm³</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip1" xml:space="preserve">
+    <value>密度，单位g/cm³</value>
+  </data>
+  <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
+    <value>将晶体转换为子群（对称性更低
+的空间群）——尚未实现
+（正在建设中）。</value>
+  </data>
+  <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
+    <value>将晶胞转换为同一空间群的不同轴/原点
+设置（例如对同一Hermann–Mauguin
+编号采用另一种原点选择或晶胞
+选择）。</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
+    <value>晶胞常数、对称性及其他基本信息</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
+    <value>晶胞常数、对称性及其他基本信息</value>
+  </data>
+  <data name="resetToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>将每个原子的德拜–沃勒因子
+（热振动引起的强度衰减）设为零。</value>
+  </data>
+  <data name="tabPageAtom.ToolTip" xml:space="preserve">
+    <value>原子位置和种类</value>
+  </data>
+  <data name="tabPageAtom.ToolTipText" xml:space="preserve">
+    <value>原子位置和种类</value>
+  </data>
+  <data name="textBoxJournal.ToolTip" xml:space="preserve">
+    <value>刊载此晶体结构出版物的期刊。</value>
+  </data>
+  <data name="textBoxMemo.ToolTip" xml:space="preserve">
+    <value>关于此晶体的自由格式注释或备忘。</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ33（沿c轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ33（沿c轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ22（沿b轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ22（沿b轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ11（沿a轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+法向应力分量σ11（沿a轴），
+单位与弹性常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ23，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ23，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ13，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ13，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ12，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip1" xml:space="preserve">
+    <value>Reuss模型中所用施加应力张量的
+剪切应力分量σ12，单位与弹性
+常数相同（GPa）。</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε33
+（沿c轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε33
+（沿c轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε11
+（沿a轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε11
+（沿a轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε22
+（沿b轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的法向应变分量ε22
+（沿b轴，无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε12
+（无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε12
+（无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε23
+（无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε23
+（无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε13
+（无量纲）。</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip1" xml:space="preserve">
+    <value>Voigt模型中所用施加的晶格
+应变张量的剪切应变分量ε13
+（无量纲）。</value>
+  </data>
+  <data name="buttonStressSet.ToolTip" xml:space="preserve">
+    <value>将输入的应变、应力和Hill
+系数应用于晶体。</value>
+  </data>
+  <data name="numericBoxHill.ToolTip" xml:space="preserve">
+    <value>Hill平均系数，用于混合Voigt
+（均匀应变）模型和Reuss（均匀应力）模型：
+0仅使用施加的应变，1使用由施加应力
+导出的应变（无量纲）。</value>
+  </data>
+  <data name="numericBoxHill.ToolTip1" xml:space="preserve">
+    <value>Hill平均系数，用于混合Voigt
+（均匀应变）模型和Reuss（均匀应力）模型：
+0仅使用施加的应变，1使用由施加应力
+导出的应变（无量纲）。</value>
+  </data>
+  <data name="label117.ToolTip" xml:space="preserve">
+    <value>Hill平均系数，用于混合Voigt
+（均匀应变）模型和Reuss（均匀应力）模型：
+0仅使用施加的应变，1使用由施加应力
+导出的应变（无量纲）。</value>
+  </data>
+  <data name="label109.ToolTip" xml:space="preserve">
+    <value>Reuss（均匀应力）模型所用的施加应力
+张量；输入六个独立分量（GPa）。</value>
+  </data>
+  <data name="label102.ToolTip" xml:space="preserve">
+    <value>Voigt（均匀应变）模型所用施加的
+晶格应变张量；输入六个
+独立分量（无量纲）。</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
+    <value>生成一组随机取向的晶粒，
+并在极图中显示它们。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>多晶取向分布与极图的角度网格
+分辨率（0.5-45°）；数值越小
+采样越精细，但计算
+越慢。</value>
+  </data>
+  <data name="numericUpDownAngleResolution.ToolTip" xml:space="preserve">
+    <value>多晶取向分布与极图的角度网格
+分辨率（0.5-45°）；数值越小
+采样越精细，但计算
+越慢。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>每个角度单元的细分数（1-45），
+用于对每个取向单元进行更精细的
+子采样；数值越大分布越平滑，
+但计算开销越高。</value>
+  </data>
+  <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
+    <value>每个角度单元的细分数（1-45），
+用于对每个取向单元进行更精细的
+子采样；数值越大分布越平滑，
+但计算开销越高。</value>
+  </data>
+  <data name="label101.ToolTip" xml:space="preserve">
+    <value>晶粒（颗粒）尺寸，单位nm（1-1000）；它决定
+倒易点阵点的尺寸（峰展宽）
+和衍射体积权重。</value>
+  </data>
+  <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
+    <value>晶粒（颗粒）尺寸，单位nm（1-1000）；它决定
+倒易点阵点的尺寸（峰展宽）
+和衍射体积权重。</value>
+  </data>
+  <data name="label99.ToolTip" xml:space="preserve">
+    <value>晶粒（颗粒）尺寸，单位nm（1-1000）；它决定
+倒易点阵点的尺寸（峰展宽）
+和衍射体积权重。</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>此晶体的显示颜色，在3D结构视图
+和衍射谱曲线中均使用。</value>
+  </data>
+  <data name="colorControl.ToolTip1" xml:space="preserve">
+    <value>此晶体的显示颜色，在3D结构视图
+和衍射谱曲线中均使用。</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>化学式</value>
+  </data>
+  <data name="label90.ToolTip" xml:space="preserve">
+    <value>化学式</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
+    <value>Z（晶胞中化学式单元的数目）</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
+    <value>Z（晶胞中化学式单元的数目）</value>
+  </data>
+  <data name="textBoxName.ToolTip" xml:space="preserve">
+    <value>晶体的名称</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>晶体的名称</value>
+  </data>
+  <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
+    <value>在单独窗口中打开束流相互作用数据。</value>
+  </data>
+  <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
+    <value>在单独窗口中打开详细的对称性信息。</value>
+  </data>
+  <data name="numericBoxMeanZnumber.ToolTip" xml:space="preserve">
+    <value>按数目加权的平均原子序数：  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = 每个晶胞中元素 i 的原子数，已计入占有率)</value>
+  </data>
+  <data name="numericBoxMeanZnumber.ToolTip1" xml:space="preserve">
+    <value>按数目加权的平均原子序数：  Z = Σ(n_i·Z_i) / Σ n_i   (n_i = 每个晶胞中元素 i 的原子数，已计入占有率)</value>
+  </data>
+  <data name="numericBoxMeanZmass.ToolTip" xml:space="preserve">
+    <value>按质量加权的平均原子序数：  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (用于蒙特卡洛电子输运计算的有效 Z)</value>
+  </data>
+  <data name="numericBoxMeanZmass.ToolTip1" xml:space="preserve">
+    <value>按质量加权的平均原子序数：  Z = Σ(n_i·A_i·Z_i) / Σ(n_i·A_i)   (用于蒙特卡洛电子输运计算的有效 Z)</value>
+  </data>
+  <data name="numericBoxMeanAtomicWeight.ToolTip" xml:space="preserve">
+    <value>按数目加权的平均原子量（每个原子）：  A = Σ(n_i·A_i) / Σ n_i   (与摩尔质量不同，后者是每个化学式单元的)</value>
+  </data>
+  <data name="numericBoxMeanAtomicWeight.ToolTip1" xml:space="preserve">
+    <value>按数目加权的平均原子量（每个原子）：  A = Σ(n_i·A_i) / Σ n_i   (与摩尔质量不同，后者是每个化学式单元的)</value>
+  </data>
+  <data name="numericBoxAtomicNumberDensity.ToolTip" xml:space="preserve">
+    <value>原子数密度 = （每个晶胞的原子数）/ 晶胞体积</value>
+  </data>
+  <data name="numericBoxAtomicNumberDensity.ToolTip1" xml:space="preserve">
+    <value>原子数密度 = （每个晶胞的原子数）/ 晶胞体积</value>
+  </data>
+  <data name="numericBoxElectronDensity.ToolTip" xml:space="preserve">
+    <value>电子数密度 = Σ(n_i·Z_i) / 晶胞体积</value>
+  </data>
+  <data name="numericBoxElectronDensity.ToolTip1" xml:space="preserve">
+    <value>电子数密度 = Σ(n_i·Z_i) / 晶胞体积</value>
+  </data>
 </root>

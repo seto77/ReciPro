@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCapture.ToolTip" xml:space="preserve">
+    <value>체크한 각 컨트롤의 PNG 스크린샷을
+출력 폴더에 저장합니다.</value>
+  </data>
+  <data name="buttonDeselectAll.ToolTip" xml:space="preserve">
+    <value>트리 내의 모든 컨트롤 체크를 해제하여
+아무것도 캡처되지 않도록 합니다.</value>
+  </data>
+  <data name="buttonRefresh.ToolTip" xml:space="preserve">
+    <value>열려 있는 폼을 다시 스캔하여 컨트롤 트리를 재구성합니다.</value>
+  </data>
+  <data name="buttonSelectAll.ToolTip" xml:space="preserve">
+    <value>트리 내의 모든 컨트롤을 체크하여
+전부 캡처되도록 합니다.</value>
+  </data>
+  <data name="buttonSelectDir.ToolTip" xml:space="preserve">
+    <value>캡처한 이미지를 저장할
+출력 폴더를 찾아 선택합니다.</value>
+  </data>
+  <data name="comboBoxTargetForm.ToolTip" xml:space="preserve">
+    <value>컨트롤 트리를 표시하고 캡처할
+대상 폼을 선택합니다.</value>
+  </data>
+  <data name="labelTargetForm.ToolTip" xml:space="preserve">
+    <value>컨트롤 트리를 표시하고 캡처할
+대상 폼을 선택합니다.</value>
+  </data>
+  <data name="textBoxOutputDir.ToolTip" xml:space="preserve">
+    <value>캡처한 PNG 이미지가 저장되는 출력 폴더
+(Select... 버튼으로 설정).</value>
+  </data>
+</root>

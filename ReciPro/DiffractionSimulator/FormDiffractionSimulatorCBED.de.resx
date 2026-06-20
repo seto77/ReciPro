@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 260617Cl 追加: 多言語化 Phase 1 パイロット。独語(de) text-only リソース。
-       レイアウト(Size/Location/Font)は一切持たず neutral へフォールバックさせる方針 (ReciPro_多言語化方針.md)。
-       結晶学/電子回折用語は IUCr Online Dictionary 準拠 (de)。 -->
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -67,9 +65,6 @@
   <data name="label13.Text" xml:space="preserve">
     <value>Löser</value>
   </data>
-  <data name="numericBoxThread.HeaderText" xml:space="preserve">
-    <value>Threads</value>
-  </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Anzahl gebeugter Wellen</value>
   </data>
@@ -93,9 +88,6 @@
   </data>
   <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
     <value>Hilfskreise zeichnen</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Gradient</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Farbe</value>
@@ -126,5 +118,163 @@
   </data>
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>für einzelne Scheiben</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Eine CBED-Simulation ausführen</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>Kreise zeichnen, die den Rand jeder Beugungsscheibe anzeigen</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>Wählen Sie, wie die Bloch-Wellen-Gleichungen gelöst werden
+(Eigenwertproblem oder Matrixexponential; Eigen- oder
+MKL-Bibliothek). Die Ergebnisse sollten übereinstimmen, aber die
+Geschwindigkeit unterscheidet sich; verwenden Sie Auto, außer beim Benchmarking.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Wählen Sie, wie die Bloch-Wellen-Gleichungen gelöst werden
+(Eigenwertproblem oder Matrixexponential; Eigen- oder
+MKL-Bibliothek). Die Ergebnisse sollten übereinstimmen, aber die
+Geschwindigkeit unterscheidet sich; verwenden Sie Auto, außer beim Benchmarking.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>Anzahl der CPU-Threads für die Bloch-Wellen-Berechnung
+der CBED (Convergent-Beam Electron Diffraction),
+1-128. Deaktiviert, wenn der Solver auf Auto steht.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Anzahl der CPU-Threads für die Bloch-Wellen-Berechnung
+der CBED (Convergent-Beam Electron Diffraction),
+1-128. Deaktiviert, wenn der Solver auf Auto steht.</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>CBED- (Convergent-Beam Electron Diffraction) Modus:
+jeder Bragg-Reflex wird zu einer Scheibe, deren
+innere Intensität sich mit der Neigung des einfallenden Strahls ändert.</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>LACBED- (Large-Angle Convergent-Beam Electron
+Diffraction) Modus: verwendet einen größeren Konvergenzwinkel, sodass
+ein Reflex über einen größeren Winkelbereich aufgezeichnet wird.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Anzahl der gebeugten Strahlen (Bloch-Wellen),
+die in die dynamische Mehrfachstreuungs-
+Berechnung einbezogen werden, 1-2048. Mehr Wellen verbessern
+die Genauigkeit, verlangsamen aber die Berechnung.</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>Maximaler halber Konvergenzwinkel (mrad)</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>Maximaler halber Konvergenzwinkel (mrad)</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>Winkel-Abtastschritt pro Pixel über jede
+Scheibe (mrad/pixel). Kleinere Werte ergeben mehr
+Durchmesser-Unterteilungen, rechts angezeigt, für
+feinere Scheiben, aber längere Berechnung.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Winkel-Abtastschritt pro Pixel über jede
+Scheibe (mrad/pixel). Kleinere Werte ergeben mehr
+Durchmesser-Unterteilungen, rechts angezeigt, für
+feinere Scheiben, aber längere Berechnung.</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Bereich und Schritt der Probendicken festlegen</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Die aktuelle Simulation stoppen</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Wählen Sie die Richtung des Intensitätsverlaufs:
+Positive bedeutet, hell ist stark; Negative
+kehrt die Skala um, sodass dunkel stark ist.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Wählen Sie die Farbskala, mit der die Scheibenintensität auf die
+Anzeigefarbe abgebildet wird (Gray, Cold-Warm, Spectrum oder Fire).</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>Einen Gamma-Wert festlegen.
+Je größer dieser Wert ist, desto heller erscheint die äußere Scheibe.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Eine Intensität festlegen, bei der die
+Helligkeit als Null angezeigt wird.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Eine Intensität festlegen, bei der die
+Helligkeit als Null angezeigt wird.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Eine Intensität festlegen, bei der die Helligkeit
+als Maximalwert angezeigt wird.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Eine Intensität festlegen, bei der die Helligkeit
+als Maximalwert angezeigt wird.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Eine Intensität festlegen, bei der die Helligkeit
+als Maximalwert angezeigt wird.</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>Derselbe Helligkeitsbereich (Min/Max) wird auf alle Scheiben angewendet.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Derselbe Helligkeitsbereich (Min/Max) wird auf alle Scheiben angewendet.</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>Separate Helligkeitsbereiche werden
+auf jede einzelne Scheibe angewendet.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Eine anzuzeigende Probendicke auswählen.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Probendicke (nm) des aktuell
+angezeigten Scheibenmusters.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Probendicke (nm) des aktuell
+angezeigten Scheibenmusters.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Probendicke (nm) des aktuell
+angezeigten Scheibenmusters.</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>Winkel-Abtastschritt pro Pixel über
+jede Scheibe (mrad/pixel). Kleinere Werte
+ergeben mehr Durchmesser-Unterteilungen, hier angezeigt,
+für feinere Scheiben, aber längere Berechnung.</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>Einen Gamma-Wert festlegen. Je größer dieser Wert ist,
+desto heller erscheint die äußere Scheibe.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Eine Farbskala auswählen (Gray / Cold-Warm / Spectrum / Fire).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Die Verlaufsrichtung auswählen
+(Positive oder Negative / invertiert).</value>
   </data>
 </root>

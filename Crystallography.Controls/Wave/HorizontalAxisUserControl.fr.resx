@@ -113,4 +113,123 @@
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
     <value>Axe horizontal</value>
   </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>Angle de diffusion du détecteur 2θ (degrés) pour
+la mesure neutronique par temps de vol (TOF).</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>Angle de diffusion du détecteur 2θ (degrés) pour
+la mesure neutronique par temps de vol (TOF).</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Utilise un faisceau de neutrons comme source de rayonnement
+(active l'axe du temps de vol).</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe d'énergie en méga-électronvolts (MeV).</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>Trace l'axe horizontal comme énergie du photon/de la particule
+(pour le mode dispersif en énergie à faisceau blanc).</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe des distances interréticulaires en nanomètres (nm).</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe 2θ en centidegrés (1/100 de degré).</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Réglez ici la longueur d'onde du rayonnement : saisissez-la
+directement, via la tension d'accélération des électrons, ou
+via une raie X caractéristique (élément + raie).</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>Longueur du trajet de vol L (mètres) de la source au détecteur
+pour la mesure neutronique par temps de vol (TOF).</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>Longueur du trajet de vol L (mètres) de la source au détecteur
+pour la mesure neutronique par temps de vol (TOF).</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>Trace l'axe horizontal comme angle de diffraction
+2θ (angle de diffusion entre le faisceau incident et le
+faisceau diffracté) ; utilisé en mode monochromatique.</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>Utilise une longueur d'onde unique (monochromatique) ;
+active les axes 2θ et distance interréticulaire.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>Angle de diffusion (de sortie) du détecteur 2θ en degrés
+pour la mesure dispersive en énergie (faisceau blanc).</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>Angle de diffusion (de sortie) du détecteur 2θ en degrés
+pour la mesure dispersive en énergie (faisceau blanc).</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe du nombre d'onde q en nanomètres inverses (nm⁻¹).</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>Trace l'axe horizontal comme distance interréticulaire
+(espacement réticulaire interplanaire de chaque réflexion).</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe du temps de vol en nanosecondes (ns).</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe 2θ en milliradians (1/1000 de radian).</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe du temps de vol en microsecondes (μs).</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Utilise un faisceau d'électrons comme source de rayonnement
+(longueur d'onde déterminée par la tension d'accélération).</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe d'énergie en kilo-électronvolts (keV).</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe 2θ en radians (rad).</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>Utilise un spectre blanc plat : pour les rayons X, l'intensité
+incidente par unité d'énergie est constante ;
+pour les neutrons, le nombre de neutrons incidents
+par intervalle de longueur d'onde unitaire est constant.</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe d'énergie en électronvolts (eV).</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>Utilise un spectre continu (blanc) de longueurs
+d'onde/énergies défini par l'utilisateur.</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe 2θ en degrés (°).</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe des distances interréticulaires en ångströms (Å, 0,1 nm).</value>
+  </data>
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>Sélectionner la source d'onde</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Utilise un faisceau de rayons X comme source de rayonnement
+(raie caractéristique ou longueur d'onde personnalisée).</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>Affiche l'axe du nombre d'onde q en ångströms inverses (Å⁻¹).</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>Trace l'axe horizontal comme nombre d'onde de diffusion
+q = 4π·sinθ/λ (norme du vecteur de diffusion).</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>Trace l'axe horizontal comme temps de vol neutronique
+(TOF), le temps mis par un neutron pour parcourir le trajet
+de vol ; disponible pour le mode neutronique à faisceau blanc.</value>
+  </data>
 </root>

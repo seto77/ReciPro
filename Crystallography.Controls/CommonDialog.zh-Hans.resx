@@ -71,4 +71,11 @@
   <data name="buttonNext.Text" xml:space="preserve">
     <value>下一步</value>
   </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>显示下一条提示。</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>初始化完成后自动关闭
+该启动窗口。</value>
+  </data>
 </root>

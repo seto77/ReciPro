@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>Maskiert den aktuell in der Vorschau gezeigten Bereich: schließt
+diese Pixel vom Fit (Residuum) aus, sodass sie beim Abgleich
+mit der Simulation ignoriert werden.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>Maskiert jedes Pixel des Bildes (schließt
+das gesamte Bild vom Fit aus).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>Speichert die aktuelle Maske in eine .mas-
+Datei, damit sie später erneut geladen werden kann.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>Hebt die Maske des aktuell in der Vorschau gezeigten Bereichs auf:
+nimmt diese Pixel wieder in den Fit auf.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>Hebt alle Masken auf: nimmt jedes Pixel wieder in den Fit auf.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Wendet Film-Unschärfe an: faltet die simulierten Ringe mit
+einer instrumentellen Punktverteilung (Gauß) der rechts
+eingestellten Breite (µm), um Detektor-/Filmverschmierung nachzuahmen.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Maskenmodus: wählt Pixel um ausgewählte
+Beugungspeaks (hkl-Reflexe) zum Maskieren aus;
+schließt sich mit den anderen Maskenmodi gegenseitig aus.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>Maskenmodus: maskiert einen ringförmigen (Donut-)Bereich zwischen
+dem Start- und Endradius vom Musterzentrum aus;
+schließt sich mit anderen Maskenmodi gegenseitig aus.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>Maskenmodus: zeichnet Masken direkt auf das
+Bild mit der Maus, mit der unten gewählten Form
+(Spot/Kreis/Rechteck/Donut);
+schließt sich mit anderen Maskenmodi gegenseitig aus.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>Maskenmodus: maskiert ein gerades Band (Rechteck),
+definiert durch Richtung, Bandbreite und Winkel;
+schließt sich mit anderen Maskenmodi gegenseitig aus.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>Wendet die Bandmaske symmetrisch auf beide Seiten
+der Mittellinie an (statt nur auf eine Seite).</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>Richtungs-Voreinstellung für die Bandmaske
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+die Voreinstellungen legen den Winkel fest, bei Free geben Sie ihn manuell ein.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>Radius (in Pixeln) der manuellen Spot-
+maske, die bei jedem Mausklick gezeichnet wird (1–128).</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Kameralänge (Abstand Probe-Detektor)
+in mm; skaliert den Radius der simulierten
+Beugungsringe auf dem Detektor.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>X-Pixelkoordinate des Zentrums des Direktstrahls
+(Musters); legt fest, wo die
+Beugungsringe auf dem Bild zentriert sind.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>Y-Pixelkoordinate des Zentrums des Direktstrahls
+(Musters); legt fest, wo die
+Beugungsringe auf dem Bild zentriert sind.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Film-Unschärfebreite in µm: die instrumentelle Gauß-
+Punktverteilung, die mit den Ringen gefaltet wird, um
+Peaks zu verbreitern (Detektor-/Filmauflösung).</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>Detektor-Pixelgröße des Quellbildes in
+mm/Pixel; zusammen mit der Kameralänge wandelt sie den
+Streuwinkel in den Ringradius in Pixeln um.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>Bildschirm-Anzeigeauflösung in mm/Pixel;
+legt den Zoomfaktor (Monitor mm/Pixel ÷
+Bild mm/Pixel) des angezeigten Musters fest.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>Winkel der Bandmaske in Grad (0–360°); legt die
+Bandausrichtung fest. Nur editierbar, wenn Direction auf Free steht.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>Breite der Bandmaske in Pixeln (0–10000);
+legt fest, wie breit der maskierte Streifen ist.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>Manuelle Maskenform: Ziehen, um einen Kreis (vom
+Zentrum zum Radius) zu definieren und die eingeschlossene Fläche zu maskieren.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>Manuelle Maskenform: zwei Radien um das
+Musterzentrum ziehen, um einen ringförmigen (Donut-)Bereich zu maskieren.</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>Manuelle Maskenform: ein Rechteck ziehen (zwei
+Eckpunkte) und die eingeschlossene Fläche maskieren.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>Manuelle Maskenform: klicken zum Maskieren (links)
+oder Aufheben (rechts) eines kreisförmigen Spots mit dem
+über Size eingestellten Radius; der Standardmodus.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Breite × Höhe des simulierten Bildes in
+Pixeln (1–10000); legt die Bildgröße
+des erzeugten Beugungsmusters fest.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Speichert das aktuelle simulierte Beugungsmuster
+in eine IPA-Bilddatei (*.ipa), einschließlich
+Auflösung, Zentrum, Kameralänge und Wellenlänge.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>Hebt die maskierten (vom Fit ausgeschlossenen) Pixel auf
+dem Bild hervor, sodass Sie sehen, welche Bereiche ignoriert werden.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>Obere Intensität des Anzeige-Helligkeitsfensters
+(auf die hellste Farbe abgebildete Counts).
+Wirkt nur auf den Anzeigekontrast, nicht auf die Daten.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Obere Intensität des Anzeige-Helligkeitsfensters
+(auf die hellste Farbe abgebildete Counts).
+Wirkt nur auf den Anzeigekontrast, nicht auf die Daten.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>Untere Intensität des Anzeige-Helligkeitsfensters
+(auf die dunkelste Farbe abgebildete Counts).
+Wirkt nur auf den Anzeigekontrast, nicht auf die Daten.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Untere Intensität des Anzeige-Helligkeitsfensters
+(auf die dunkelste Farbe abgebildete Counts).
+Wirkt nur auf den Anzeigekontrast, nicht auf die Daten.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) des anfänglichen diffusen Untergrund-Halos,
+auf logarithmischer Skala. Legt die Peakhöhe des
+Untergrundrings fest, der als Startschätzung für den Fit dient.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) des anfänglichen diffusen Untergrund-Halos,
+auf logarithmischer Skala. Legt die Peakhöhe des
+Untergrundrings fest, der als Startschätzung für den Fit dient.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>Breite (H, Halbwertsbreite in Pixeln)
+des anfänglichen diffusen Untergrund-Halos. Größere
+Werte machen den Untergrundring breiter.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Breite (H, Halbwertsbreite in Pixeln)
+des anfänglichen diffusen Untergrund-Halos. Größere
+Werte machen den Untergrundring breiter.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>Radius (R, in Pixeln vom Zentrum)
+des anfänglichen diffusen Untergrund-Halos.
+Legt fest, wo der Untergrundring sein Maximum hat.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Radius (R, in Pixeln vom Zentrum)
+des anfänglichen diffusen Untergrund-Halos.
+Legt fest, wo der Untergrundring sein Maximum hat.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>Außenradius (in Pixeln vom Zentrum)
+der ringförmigen Maske. Pixel zwischen Start-
+und Endradius werden zum Maskieren ausgewählt.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Außenradius (in Pixeln vom Zentrum)
+der ringförmigen Maske. Pixel zwischen Start-
+und Endradius werden zum Maskieren ausgewählt.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>Innenradius (in Pixeln vom Zentrum)
+der ringförmigen Maske. Pixel zwischen Start-
+und Endradius werden zum Maskieren ausgewählt.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Innenradius (in Pixeln vom Zentrum)
+der ringförmigen Maske. Pixel zwischen Start-
+und Endradius werden zum Maskieren ausgewählt.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Innenradius (in Pixeln vom Zentrum)
+der ringförmigen Maske. Pixel zwischen Start-
+und Endradius werden zum Maskieren ausgewählt.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Azimut (phi) der Kippachse von Probe/Detektor, in
+Grad. Legt die Richtung fest, um die das Muster gekippt
+wird, und beeinflusst die Orientierung der Ringverzerrung.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Azimut (phi) der Kippachse von Probe/Detektor, in
+Grad. Legt die Richtung fest, um die das Muster gekippt
+wird, und beeinflusst die Orientierung der Ringverzerrung.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Betrag (tau) der Kippung von Probe/Detektor um
+die phi-Achse, in Grad. Größere Werte verzerren
+die Debye-Ringe von Kreisen zu Ellipsen.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Betrag (tau) der Kippung von Probe/Detektor um
+die phi-Achse, in Grad. Größere Werte verzerren
+die Debye-Ringe von Kreisen zu Ellipsen.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Setzt bei jedem Reflex (hkl) in der
+Peak-Liste ein Häkchen und wählt so alle Peaks auf einmal.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Entfernt bei jedem Reflex (hkl) in
+der Peak-Liste das Häkchen und hebt die Auswahl auf.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>Wählt den Bildbereich um die Ringe der
+angehakten Reflexe (hkl) zum Maskieren aus.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>Liste der Reflexindizes (hkl);
+haken Sie die Peaks an, deren umgebenden Ring-
+bereich Sie zum Maskieren auswählen möchten.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>Strahlkonvergenz (Halbwinkel) der einfallenden
+Strahlung, in Grad. Größere Werte verbreitern
+die simulierten Debye-Ring-Peaks.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Strahlkonvergenz (Halbwinkel) der einfallenden
+Strahlung, in Grad. Größere Werte verbreitern
+die simulierten Debye-Ring-Peaks.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>Strahlkonvergenz (Halbwinkel) der einfallenden
+Strahlung, in Grad. Größere Werte verbreitern
+die simulierten Debye-Ring-Peaks.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>Wellenlängenstreuung (Monochromasie,
+Delta-lambda / lambda) der Quelle, in %.
+Größere Werte verbreitern die simulierten Ringe.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>Wellenlängenstreuung (Monochromasie,
+Delta-lambda / lambda) der Quelle, in %.
+Größere Werte verbreitern die simulierten Ringe.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>Wellenlängenstreuung (Monochromasie,
+Delta-lambda / lambda) der Quelle, in %.
+Größere Werte verbreitern die simulierten Ringe.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Wählt die Strahlungsart (Röntgen oder Elektronen) und
+deren Wellenlänge zur Berechnung der Debye-Ring-Radien.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>Zeigt das Residuum (experimentelles minus
+simuliertes Muster), sodass Sie sehen können, wie gut der
+Fit passt. Schließt sich mit Simulation gegenseitig aus.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>Überlagert das simulierte Muster über dem
+experimentellen Bild, eingeblendet über den Opacity-
+Schieber. Schließt sich mit Residual gegenseitig aus.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Überblend-Deckkraft (0-100%) des simulierten Musters
+über dem experimentellen Bild im Simulationsmodus.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>Speichert die aktuellen Untergrundparameter in
+eine Untergrunddatei (*.bg) zur späteren Wiederverwendung.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>Aktiviert die manuelle Einrichtung des anfänglichen Untergrunds;
+aktiviert die A/H/R-Schieber, um einen
+Start-Untergrundring vor der Verfeinerung festzulegen.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>Schreibgeschützte Zusammenfassung der Beugung:
+Anzahl der beitragenden Kristallite und
+der Anteil jedes Reflexes (hkl).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Radius (in Pixeln) der manuellen Spot-
+maske, die bei jedem Mausklick gezeichnet wird.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Radius (in Pixeln) der manuellen Spot-
+maske, die bei jedem Mausklick gezeichnet wird.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>X/Y-Pixelkoordinate des Zentrums des Direktstrahls (Musters);
+legt fest, wo die Beugungsringe zentriert sind.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Bildschirm-Anzeigeauflösung in mm/Pixel;
+legt den Zoomfaktor des angezeigten Musters fest.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Bildschirm-Anzeigeauflösung in mm/Pixel;
+legt den Zoomfaktor des angezeigten Musters fest.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Kameralänge (Abstand Probe-Detektor)
+in mm; skaliert die Beugungsring-Radien.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Kameralänge (Abstand Probe-Detektor)
+in mm; skaliert die Beugungsring-Radien.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Winkel der Bandmaske in Grad
+(0–360°); legt die Bandausrichtung fest
+(nur editierbar, wenn Direction auf Free steht).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Breite der Bandmaske in Pixeln;
+legt fest, wie breit der maskierte Streifen ist.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Richtungs-Voreinstellung für die Bandmaske
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+bei Free können Sie den Winkel manuell eingeben.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Detektor-Pixelgröße des Quellbildes in
+mm/Pixel; wandelt den Streuwinkel in den Ringradius um.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>Detektor-Pixelgröße des Quellbildes in
+mm/Pixel; wandelt den Streuwinkel in den Ringradius um.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>X-Pixelkoordinate des Zentrums des Direkt-
+strahls; legt das Ringzentrum fest.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Y-Pixelkoordinate des Zentrums des Direkt-
+strahls; legt das Ringzentrum fest.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Film-Unschärfebreite in µm: instrumentelle Gauß-
+Punktverteilung, die mit den Ringen gefaltet wird, um Peaks zu verbreitern.</value>
+  </data>
+</root>

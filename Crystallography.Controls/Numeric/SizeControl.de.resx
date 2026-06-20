@@ -65,4 +65,26 @@
   <data name="checkBoxKeepAspect.Text" xml:space="preserve">
     <value>Seitenverhältnis beibehalten</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>Sperrt das Breite-zu-Höhe-Seitenverhältnis;
+das Ändern einer Dimension aktualisiert automatisch
+die andere, um das Verhältnis beizubehalten.</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>Bildhöhe in Pixeln (px); wenn das Seitenverhältnis
+gesperrt ist, folgt die Breite automatisch.</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>Bildbreite in Pixeln (px); wenn das Seitenverhältnis
+gesperrt ist, folgt die Höhe automatisch.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Bildgröße: Breite × Höhe in Pixeln (px).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Bildgröße: Breite × Höhe in Pixeln (px).</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>Bildgröße: Breite × Höhe in Pixeln (px).</value>
+  </data>
 </root>

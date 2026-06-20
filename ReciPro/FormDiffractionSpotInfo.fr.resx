@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Copier l'ensemble du tableau des réflexions (colonnes
+visibles, séparées par des tabulations) dans le presse-papiers
+pour le coller dans Excel ou un éditeur de texte.</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, ajuste automatiquement la largeur
+de chaque colonne à son contenu affiché. Désactivez-la pour un
+défilement plus rapide sur les grands tableaux.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Résultats par réflexion du calcul dynamique de
+diffraction (méthode de Bethe) : indices hkl, distance
+interréticulaire, vecteur réciproque g, potentiel cristallin
+Ug/Vg, erreur d'excitation Sg (distance du point réciproque
+par rapport à la sphère d'Ewald), et amplitude de l'onde diffractée Φ.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Conversion entre les deux unités de potentiel :
+Ug [nm⁻²] = 2·m₀/h² · Vg [eV] × 10¹⁸.
+Sélectionnée par les boutons radio ci-dessus.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Conventions d'unités de ce tableau : les longueurs
+sont en nanomètres (nm), non en Ångströms ;
+les nombres d'onde sont en 1/nm, non en 2π/nm.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Légende des colonnes du tableau : Vg/Ug = potentiel cristallin
+pour la diffusion élastique ; V'g/U'g = potentiel imaginaire
+(d'absorption) pour la diffusion diffuse thermique ;
+Φ = amplitude de l'onde diffractée à la surface de sortie.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Nombre de chiffres significatifs (1-16) utilisés pour
+afficher les cellules du tableau. N'affecte que l'affichage ;
+les valeurs calculées sous-jacentes restent inchangées.</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>Affiche les colonnes de potentiel cristallin sous forme de Vg,
+le potentiel de Fourier en unités d'énergie (eV).
+Bascule les en-têtes Ug/U'g en Vg/V'g.</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>Affiche les colonnes de potentiel cristallin sous forme de Ug, le
+coefficient de potentiel de Fourier en unités d'inverse de longueur
+au carré (nm⁻²) utilisé dans les calculs dynamiques. Bascule
+les en-têtes Vg/V'g en Ug/U'g.</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>Tension d'accélération du faisceau d'électrons, en
+kilovolts (kV). En lecture seule ; définie dans le simulateur parent.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Tension d'accélération du faisceau d'électrons, en
+kilovolts (kV). En lecture seule ; définie dans le simulateur parent.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Tension d'accélération du faisceau d'électrons, en
+kilovolts (kV). En lecture seule ; définie dans le simulateur parent.</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>Rapport de vitesse relativiste β = v/c des
+électrons (sans dimension), dérivé
+de la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Rapport de vitesse relativiste β = v/c des
+électrons (sans dimension), dérivé
+de la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>Facteur de masse relativiste γ = m/m₀ = 1 +
+e₀E/m₀c² (sans dimension), dérivé de
+la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Facteur de masse relativiste γ = m/m₀ = 1 +
+e₀E/m₀c² (sans dimension), dérivé de
+la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>Volume de la maille élémentaire du cristal, en
+nanomètres cubes (nm³). En lecture seule.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Volume de la maille élémentaire du cristal, en
+nanomètres cubes (nm³). En lecture seule.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Volume de la maille élémentaire du cristal, en
+nanomètres cubes (nm³). En lecture seule.</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Demi-angle de convergence maximal du faisceau d'électrons
+en mode CBED (diffraction électronique en faisceau convergent),
+en milliradians (mrad). En lecture seule.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Demi-angle de convergence maximal du faisceau d'électrons
+en mode CBED (diffraction électronique en faisceau convergent),
+en milliradians (mrad). En lecture seule.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Demi-angle de convergence maximal du faisceau d'électrons
+en mode CBED (diffraction électronique en faisceau convergent),
+en milliradians (mrad). En lecture seule.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon utilisée dans le calcul
+dynamique, en nanomètres (nm). L'amplitude diffractée
+Φ dépend de cette épaisseur. En lecture seule.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon utilisée dans le calcul
+dynamique, en nanomètres (nm). L'amplitude diffractée
+Φ dépend de cette épaisseur. En lecture seule.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Épaisseur de l'échantillon utilisée dans le calcul
+dynamique, en nanomètres (nm). L'amplitude diffractée
+Φ dépend de cette épaisseur. En lecture seule.</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Longueur d'onde relativiste des électrons (=
+1/k_vac), en nanomètres (nm), calculée
+à partir de la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Longueur d'onde relativiste des électrons (=
+1/k_vac), en nanomètres (nm), calculée
+à partir de la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Longueur d'onde relativiste des électrons (=
+1/k_vac), en nanomètres (nm), calculée
+à partir de la tension d'accélération. En lecture seule.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Choisit l'unité utilisée pour afficher les colonnes
+de potentiel cristallin : Vg en unités d'énergie
+(eV) ou Ug en inverse de longueur au carré (nm⁻²).</value>
+  </data>
+</root>

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Скопировать всю таблицу рефлексов (видимые
+столбцы, разделённые табуляцией) в буфер обмена
+для вставки в Excel или текстовый редактор.</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>Если отмечено, автоматически подгоняет ширину каждого
+столбца под его отображаемое содержимое.
+Отключите для более быстрой прокрутки больших таблиц.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Результаты по каждому рефлексу динамического
+(метод Бете) расчёта дифракции:
+индексы hkl, межплоскостное расстояние, вектор обратной решётки g,
+кристаллический потенциал Ug/Vg, ошибка возбуждения Sg
+(расстояние точки обратной решётки от
+сферы Эвальда) и амплитуда дифрагированной волны Φ.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Преобразование между двумя единицами
+потенциала: Ug [nm⁻²] = 2·m₀/h² · Vg [eV] ×
+10¹⁸. Выбирается переключателями выше.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Соглашения о единицах для этой таблицы: длины
+указаны в нанометрах (nm), а не в ангстремах;
+волновые числа — 1/nm, а не 2π/nm.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Легенда столбцов таблицы: Vg/Ug = кристаллический
+потенциал упругого рассеяния; V'g/U'g = мнимый
+(поглощающий) потенциал теплового диффузного рассеяния;
+Φ = амплитуда дифрагированной волны на выходной поверхности.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Число значащих цифр (1-16), используемых для
+отображения ячеек таблицы. Влияет только на отображение;
+лежащие в основе вычисленные значения не изменяются.</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>Показывать столбцы кристаллического потенциала как Vg,
+фурье-потенциал в единицах энергии (eV).
+Заголовки Ug/U'g переключаются на Vg/V'g.</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>Показывать столбцы кристаллического потенциала как Ug, коэффициент
+фурье-потенциала в единицах обратной длины в квадрате
+(nm⁻²), используемый в динамических расчётах. Переключает
+заголовки Vg/V'g на Ug/U'g.</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение электронного пучка в
+киловольтах (kV). Только для чтения; задаётся в родительском симуляторе.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение электронного пучка в
+киловольтах (kV). Только для чтения; задаётся в родительском симуляторе.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение электронного пучка в
+киловольтах (kV). Только для чтения; задаётся в родительском симуляторе.</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>Релятивистское отношение скоростей β = v/c
+электронов (безразмерное), вычисленное
+из ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Релятивистское отношение скоростей β = v/c
+электронов (безразмерное), вычисленное
+из ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>Релятивистский массовый множитель γ = m/m₀ = 1 +
+e₀E/m₀c² (безразмерный), вычисленный из
+ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Релятивистский массовый множитель γ = m/m₀ = 1 +
+e₀E/m₀c² (безразмерный), вычисленный из
+ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>Объём элементарной ячейки кристалла в
+кубических нанометрах (nm³). Только для чтения.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Объём элементарной ячейки кристалла в
+кубических нанометрах (nm³). Только для чтения.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Объём элементарной ячейки кристалла в
+кубических нанометрах (nm³). Только для чтения.</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Максимальный полуугол сходимости электронного пучка в
+режиме CBED (дифракция сходящегося электронного пучка),
+в миллирадианах (mrad). Только для чтения.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Максимальный полуугол сходимости электронного пучка в
+режиме CBED (дифракция сходящегося электронного пучка),
+в миллирадианах (mrad). Только для чтения.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Максимальный полуугол сходимости электронного пучка в
+режиме CBED (дифракция сходящегося электронного пучка),
+в миллирадианах (mrad). Только для чтения.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Толщина образца, используемая в динамическом
+расчёте, в нанометрах (nm). Амплитуда дифрагированной
+волны Φ зависит от этой толщины. Только для чтения.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Толщина образца, используемая в динамическом
+расчёте, в нанометрах (nm). Амплитуда дифрагированной
+волны Φ зависит от этой толщины. Только для чтения.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Толщина образца, используемая в динамическом
+расчёте, в нанометрах (nm). Амплитуда дифрагированной
+волны Φ зависит от этой толщины. Только для чтения.</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Релятивистская длина волны электрона (=
+1/k_vac) в нанометрах (nm), вычисленная
+из ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Релятивистская длина волны электрона (=
+1/k_vac) в нанометрах (nm), вычисленная
+из ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Релятивистская длина волны электрона (=
+1/k_vac) в нанометрах (nm), вычисленная
+из ускоряющего напряжения. Только для чтения.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Выберите единицу для отображения столбцов
+кристаллического потенциала: Vg в единицах энергии
+(eV) или Ug в обратной длине в квадрате (nm⁻²).</value>
+  </data>
+</root>

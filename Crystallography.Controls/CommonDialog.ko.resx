@@ -71,4 +71,11 @@
   <data name="buttonNext.Text" xml:space="preserve">
     <value>다음</value>
   </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>다음 힌트를 표시합니다.</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>초기화가 완료되면 이 시작 창을
+자동으로 닫습니다.</value>
+  </data>
 </root>

@@ -265,4 +265,222 @@
     <value>  빔
   상호작용</value>
   </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+왼쪽)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+아래)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+위)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>화살표 방향으로 결정을 회전합니다.
+(Ctrl+Shift+오른쪽)</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>시선 방향에 가장 가까운 정대축을 탐색할 때
+사용하는 |u|+|v|+|w|의 상한값입니다(위에 표시된
+근사 지수). 값이 클수록 더 많은 후보
+정대축을 평가합니다.</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>시선 방향에 가장 가까운 정대축을 탐색할 때
+사용하는 |u|+|v|+|w|의 상한값입니다(위에 표시된
+근사 지수). 값이 클수록 더 많은 후보
+정대축을 평가합니다.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>결정 방위를 정의하는 첫 번째 회전인 오일러
+각 Φ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 첫 번째 회전인 오일러
+각 Φ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 첫 번째 회전인 오일러
+각 Φ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>선택한 결정을 위의 리스트에 추가합니다.</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>대칭성 정보 열기</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>HRTEM/STEM 영상 시뮬레이터를 엽니다. HRTEM은
+고분해능 투과 전자현미경법이며,
+STEM은 주사 투과 전자현미경법입니다.</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>지정한 결정면을 화면에 수직으로 설정합니다.
+축 지수도 함께 지정되어 있으면, 그 축 방향이 위쪽으로 표시됩니다.</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>분말 회절 열기</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 두 번째 회전인 오일러
+각 θ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 두 번째 회전인 오일러
+각 θ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>결정 방위를 정의하는 두 번째 회전인 오일러
+각 θ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>결정 방위를 정의하는 세 번째 회전인 오일러
+각 ψ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 세 번째 회전인 오일러
+각 ψ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
+    <value>결정 방위를 정의하는 세 번째 회전인 오일러
+각 ψ(도)를 설정/표시합니다.</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>결정 데이터베이스 열기</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>시선 방향으로 향하게 할 결정면 지수 (h k l)입니다. 'Plane'을
+클릭하면 이 면의 법선이 사용자 쪽(화면 밖)을
+향하도록 결정이 회전합니다.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>회전 버튼의 각도 스텝(도)을 설정합니다. 애니메이션이
+활성화되어 있으면, 동일한 값이 초당 회전
+속도(도/초)로 사용됩니다.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>회전 버튼의 각도 스텝(도)을 설정합니다. 애니메이션이
+활성화되어 있으면, 동일한 값이 초당 회전
+속도(도/초)로 사용됩니다.</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
+    <value>스트럭처 뷰어(3차원 결정 구조)를 엽니다.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>결정의 현재 3차원 회전을 나타내는 오일러
+각(φ, θ, ψ)입니다. 편집하면 방위를
+직접 설정할 수 있습니다.</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>Spot ID v1 열기</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>시선 방향으로 향하게 할 정대축의 지수 [u v w]입니다. 'Axis'를
+클릭하면 이 방향이 사용자 쪽(화면 밖)을
+향하도록 결정이 회전합니다.</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>근사적인 정대축 지수</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>선택한 결정을 삭제합니다</value>
+  </data>
+  <data name="buttonDown.ToolTip" xml:space="preserve">
+    <value>선택한 결정을 아래로 이동합니다</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>회전 상태를 초기 방위로 리셋합니다</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>체크하면, 지정한 축이 공간 내에 고정됩니다.</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>회절 시뮬레이터 열기</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>활성화하면, 육방정/삼방정(육방축) 결정의
+지수를 4지수 밀러-브라베 표기로 표시합니다.</value>
+  </data>
+  <data name="buttonSetAxis.ToolTip" xml:space="preserve">
+    <value>지정한 결정축을 화면에 수직으로 설정합니다.
+면 지수도 함께 지정되어 있으면, 그 면 방향이 위쪽으로 표시됩니다.</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>회전 기하 도구를 엽니다.</value>
+  </data>
+  <data name="buttonUp.ToolTip" xml:space="preserve">
+    <value>선택한 결정을 위로 이동합니다</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>빔 상호작용 열기</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Intel MKL을 활성화하여 행렬 계산을 고속화합니다.
+최초 사용 시 약 55MB를 다운로드합니다.</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>동력학 계산에서 중성 원자 대신 이온(완전 Peng) 전자 산란
+인자를 사용합니다. OFF = 중성 원자 IAM(기본값).</value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>선택한 결정을 복제합니다.</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>결정 리스트가 여기에 표시됩니다.
+새 결정을 추가하려면, 아래 'Crystal Information' 패널에서 데이터를 설정하고 'Add'를 클릭하십시오.
+결정을 수정하려면, 결정을 선택하고 'Crystal Information' 패널에서 데이터를 갱신한 후 'Replace'를 클릭하십시오.
+결정을 리스트에서 제거하려면, 결정을 선택하고 'Delete'를 클릭하십시오.
+모든 결정을 리스트에서 제거하려면, 'Clear All'을 클릭하십시오.</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>선택한 결정의 현재 방위입니다.</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>궤도 시뮬레이터를 엽니다.</value>
+  </data>
+  <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
+    <value>체크하면, 위의 버튼을 클릭했을 때
+결정이 일정한 속도로 회전합니다.</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>체크하면, 지정한 면이 공간 내에 고정됩니다.</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>결정 방위로부터의 후방산란 전자 회절 패턴을 위한
+EBSD(전자 후방산란 회절) 시뮬레이터를
+엽니다.</value>
+  </data>
+  <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
+    <value>모든 결정을 삭제합니다</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>위에서 선택한 결정을
+아래의 새 결정으로 교체합니다.</value>
+  </data>
+  <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
+    <value>스테레오넷(스테레오 투영 / 울프 네트)을 엽니다.</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>「스폿 ID v2」 기능을 엽니다.</value>
+  </data>
 </root>

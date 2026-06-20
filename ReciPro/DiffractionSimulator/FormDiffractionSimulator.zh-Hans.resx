@@ -459,4 +459,602 @@
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
     <value>消光斑点 (点阵带心)</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>勾选后，模拟衍射斑点。</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>勾选后，模拟菊池线（由非弹性散射电子
+经布拉格衍射后形成的条带）。</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>勾选后，模拟德拜环（由随机取向的
+晶粒产生的粉末衍射环）。</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>勾选后，模拟刻度线。</value>
+  </data>
+  <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示指数标签</value>
+  </data>
+  <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示晶面间距</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示晶面间距的倒数
+（即 g 矢量的长度）</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示各斑点到
+透射斑点的距离（mm）</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示各斑点的激发误差 s_g，
+表示倒易点阵点偏离精确布拉格条件/
+Ewald 球的程度。</value>
+  </data>
+  <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
+    <value>勾选后，显示各斑点的结构因子
+幅值 |Fg|；|Fg| 越大，
+通常表示衍射越强。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>设置字符串的大小</value>
+  </data>
+  <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
+    <value>设置字符大小</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>设置字符串的颜色</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>设置字符串的颜色</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>设置由试样所引垂线的
+垂足颜色。</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>设置由试样所引垂线的
+垂足颜色。</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>设置透射斑点的颜色</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>设置透射斑点的颜色</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>显示垂足位置</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>显示透射位置</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>设置背景颜色</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>设置背景颜色</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>设置背景颜色</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>设置背景颜色</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>按结构因子（强度从大到小）选择
+用于菊池线的衍射。</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>勾选后，菊池线的强度按各衍射的
+运动学相对强度加权。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>按 1/d（晶面间距）阈值选择
+用于菊池线的衍射。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>设置用于绘制菊池线的最强衍射
+（按结构因子排序）的条数。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>仅为 1/d（倒易长度）小于此值
+（nm⁻¹）的衍射绘制菊池线；
+即仅限晶面间距大于 1/值 的衍射。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>仅为 1/d（倒易长度）小于此值
+（nm⁻¹）的衍射绘制菊池线；
+即仅限晶面间距大于 1/值 的衍射。</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>设置菊池线的颜色。</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>设置菊池线的线宽</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>设置菊池线的线宽</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>菊池线</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>设置德拜环的颜色</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>设置德拜环的颜色</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>勾选后，显示德拜环的指数标签。</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>勾选后，所有德拜环
+以相同强度显示。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>设置德拜环的线宽</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>设置德拜环的线宽</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>勾选后，显示刻度标签</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>设置刻度分度的疏密程度（细 / 中 / 粗）。</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>设置刻度线的线宽</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>设置刻度线的线宽</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>设置刻度线的分度</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>设置刻度线的分度</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>设置刻度线的分度</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>设置方位角刻度线的颜色</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>设置方位角刻度线的颜色</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>设置 2θ 刻度线的颜色</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>设置 2θ 刻度线的颜色</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>左键拖动（屏幕中央附近）：绕与显示器平行的轴旋转
+左键拖动（屏幕边缘）：绕与显示器垂直的轴旋转
+右键单击：缩小
+右键拖动：放大所选区域
+中键拖动：拖动模拟图像
+左键双击：显示 g 矢量的信息</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
+    <value>设置 Ewald 球附近
+倒易点阵点的颜色。</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>设置 Ewald 球附近
+倒易点阵点的颜色。</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
+    <value>设置 3D 倒易空间视图中衍射斑点球的
+绘制半径（nm⁻¹）；位于 Ewald 球此
+距离范围内的点被着色为近邻点，
+并可显示标签。</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>设置 3D 倒易空间视图中衍射斑点球的
+绘制半径（nm⁻¹）；位于 Ewald 球此
+距离范围内的点被着色为近邻点，
+并可显示标签。</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>设置 3D 斑点的透明度。</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
+    <value>勾选后，为 Ewald 球附近的
+倒易点阵点标注 hkl 指数。</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>设置远离 Ewald 球的
+倒易点阵点的颜色。</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
+    <value>勾选后，使距离 Ewald 球越远的
+倒易点阵点越透明。</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>设置显示倒易点阵点的相对强度阈值（%）。
+低于此值的斑点将被隐藏。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>设置显示倒易点阵点的相对强度阈值（%）。
+低于此值的斑点将被隐藏。</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>设置显示倒易点阵点的相对强度阈值（%）。
+低于此值的斑点将被隐藏。</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+←)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+↓)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+↑)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+→)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>设置上方按钮的角度步长，
+或旋转速度。</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>设置上方按钮的角度步长，
+或旋转速度。</value>
+  </data>
+  <data name="buttonResetAngle.ToolTip" xml:space="preserve">
+    <value>将 3D 视图的视线方向重置为默认方向。</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>设置 Ewald 球面的颜色。</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>设置原点（000）斑点的颜色。</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>设置 Right（右）方向引导箭头的颜色。</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>设置 Top（上）方向引导箭头的颜色。</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>设置束流方向引导箭头的颜色。</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>设置 3D 视图中指数/标签文字的颜色。</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
+    <value>设置 3D 视图中指数/标签文字的颜色。</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
+    <value>勾选后，在 3D 倒易点阵视图中显示
+Beam/Top/Right 方向引导箭头。</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>勾选后，在 3D 倒易点阵视图中
+绘制 Ewald 球。</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
+    <value>勾选后，显示 3D 倒易空间视图
+（倒易点阵与 Ewald 球）。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>鼠标指针的实空间坐标，单位
+mm（原点：晶体）。</value>
+  </data>
+  <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
+    <value>鼠标指针的实空间坐标，单位
+mm（原点：晶体）。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>鼠标指针的实空间坐标，单位
+mm（原点：晶体）。</value>
+  </data>
+  <data name="labelD.ToolTip" xml:space="preserve">
+    <value>对应鼠标指针位置的晶面间距 d（nm）。</value>
+  </data>
+  <data name="labelDinv.ToolTip" xml:space="preserve">
+    <value>对应鼠标指针位置的倒易
+间距 d⁻¹（nm⁻¹）。</value>
+  </data>
+  <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
+    <value>对应鼠标指针位置的散射角 2θ，
+以度（°）表示。</value>
+  </data>
+  <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
+    <value>对应鼠标指针位置的散射角 2θ，以弧度
+表示（小于 0.1 rad 时以 mrad 表示）。</value>
+  </data>
+  <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
+    <value>鼠标指针的检测器平面坐标，单位
+mm（原点：图样垂足）。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>鼠标指针的检测器平面坐标，单位
+mm（原点：图样垂足）。</value>
+  </data>
+  <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
+    <value>鼠标指针的倒易空间坐标，单位 nm⁻¹。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>鼠标指针的倒易空间坐标，单位 nm⁻¹。</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>勾选后，打开光标位置处的
+详细信息面板。</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
+    <value>勾选后，将模拟图像
+水平（左右）翻转。</value>
+  </data>
+  <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
+    <value>勾选后，将模拟图像
+垂直（上下）翻转。</value>
+  </data>
+  <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
+    <value>勾选后，以反相（负片）
+亮度显示图像。</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>将显示器中心设置为以下点</value>
+  </data>
+  <data name="comboBoxCenter.ToolTip" xml:space="preserve">
+    <value>选择用作显示器中心的基准点
+（直接斑点、垂足或检测器中心）。</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>将显示器中心固定到以下点</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>设置模拟图样的像素尺寸</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>设置模拟图样的分辨率</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>设置模拟图样的分辨率</value>
+  </data>
+  <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
+    <value>以检测器平面上每像素对应的
+长度（mm/px）表示分辨率。</value>
+  </data>
+  <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
+    <value>以倒易空间中每像素对应的
+长度（nm⁻¹/px）表示分辨率。</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>设置鼠标操作的旋转速度</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>设置鼠标操作的旋转速度</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>打开 TEM 样品台模拟窗口。</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>设置相机长度 2，即从试样到
+检测器（显示器）的距离。</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>设置相机长度 2，即从试样到
+检测器（显示器）的距离。</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>打开详细光学系统设置窗口。</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>将当前图像保存到文件</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>将当前图像复制到剪贴板</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>设置波源和加速电压
+（波长）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>设置波源和加速电压
+（波长）。</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>在此模式下，使用布洛赫波法计算强度。
+仅对电子源有效。</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>勾选后，使用各晶体所分配的
+颜色绘制衍射斑点。</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>在结构因子中加入随能量变化的 X射线反常色散项（f', f''）。在吸收边附近 Friedel 定律失效，从而在 hkl 与 -h-k-l 之间产生 Bijvoet 强度差。取消勾选则回到不含色散的经典结果。</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>勾选后，隐藏所有由空间群
+造成的禁戒衍射。</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>勾选后，隐藏由点阵心化
+造成的禁戒衍射。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>进动电子衍射（PED）模拟
+的相关设置</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>设置 PED（进动电子衍射）模拟的
+进动半角（mrad）；即用于倾斜并积分
+入射束的圆锥半顶角。</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>设置 PED（进动电子衍射）模拟的
+进动半角（mrad）；即用于倾斜并积分
+入射束的圆锥半顶角。</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>PED（进动电子衍射）模拟中进动圆锥
+沿方位方向的分割数。分割越多，对圆锥
+的采样越平滑，但计算耗时也越长。</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>PED（进动电子衍射）模拟中进动圆锥
+沿方位方向的分割数。分割越多，对圆锥
+的采样越平滑，但计算耗时也越长。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>布洛赫波法（动力学计算）
+的相关设置</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>动力学多重散射计算中纳入的衍射束
+（布洛赫波）数目。波数越多精度越高，
+但计算越慢。</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>动力学多重散射计算中纳入的衍射束
+（布洛赫波）数目。波数越多精度越高，
+但计算越慢。</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>设置试样的厚度</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>设置试样的厚度</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>衍射斑点外观的相关设置</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>斑点以圆形显示。</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>斑点以二维高斯函数显示。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>设置衍射斑点的不透明度</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>设置衍射斑点的不透明度</value>
+  </data>
+  <data name="flowLayoutPanelSpotOpacity.ToolTip" xml:space="preserve">
+    <value>设置衍射斑点的不透明度</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>以倒易空间单位（标注处为 nm⁻¹）设置
+衍射斑点半径或高斯 sigma；值越大，
+斑点绘制得越宽，所允许的激发误差
+容差也越大。</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>以倒易空间单位（标注处为 nm⁻¹）设置
+衍射斑点半径或高斯 sigma；值越大，
+斑点绘制得越宽，所允许的激发误差
+容差也越大。</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>勾选后，所有衍射斑点
+以相同大小绘制。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>设置衍射斑点的亮度</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>设置衍射斑点的亮度</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>设置色阶</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>选择用于将衍射斑点强度映射为颜色的色阶。
+采用非默认色阶时，将按强度而非各晶体所
+分配的颜色为斑点着色。</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>勾选后，衍射斑点强度
+以对数刻度显示。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>设置一般衍射斑点以及系统消光
+（心化 / 螺旋 / 滑移）衍射斑点
+的绘制颜色。</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>设置一般斑点的颜色</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>设置一般斑点的颜色</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>设置消光斑点（螺旋或滑移）的颜色</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>设置消光斑点（螺旋或滑移）的颜色</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>设置消光斑点（点阵心化）的颜色</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>设置消光斑点（点阵心化）的颜色</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>选择衍射斑点强度的计算方法
+（动力学布洛赫波法、运动学或
+仅激发误差）。</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>在此模式下，强度计算仅考虑激发误差。
+（忽略结构因子的影响） </value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>在此模式下，强度由结构因子和
+激发误差计算得出。</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>打开斑点详情窗口。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>选择照明光学系统（平行/SAED、
+会聚/CBED、进动/PED、背反射劳厄）。</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>平行束模式（即 SAED 模式）</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>进动束模式（即 PED 模式）</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>会聚束模式（即 CBED 模式）</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>背反射劳厄模式（多色 X射线）。</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>X射线进动模式（ZOLZ，零阶劳厄带）：
+以极投影方式显示零层倒易点阵平面，
+与电子 PED 模式不同。</value>
+  </data>
 </root>

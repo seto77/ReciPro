@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Нейтроны</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Выберите элемент (1:H до 98:Cf), испускающий характеристическое рентгеновское излучение.
+Если выбрано "0:custom", можно свободно ввести энергию или длину волны.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Использовать рентгеновское излучение как источник волны (энергия в keV);
+включает селекторы элемента и характеристической линии.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Использовать электроны как источник волны (энергия в keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Выберите характеристическую линию испускания рентгеновского излучения (например,
+Kα1, Kα2, Kβ1); это фиксирует длину волны и энергию.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Введите энергию пучка (keV для рентгеновского излучения/электронов, meV для
+нейтронов); длина волны пересчитывается автоматически.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Введите энергию пучка (keV для рентгеновского излучения/электронов, meV для
+нейтронов); длина волны пересчитывается автоматически.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Выберите элемент (1:H до 98:Cf), испускающий
+характеристическое рентгеновское излучение. Выберите "0:custom", чтобы
+свободно ввести энергию или длину волны.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Введите здесь длину волны (используйте радиокнопки Å / nm для переключения единицы отображения).
+Энергия пучка пересчитывается автоматически.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Введите здесь длину волны (используйте радиокнопки Å / nm для переключения единицы отображения).
+Энергия пучка пересчитывается автоматически.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Использовать нейтроны как источник волны (энергия в meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>Указывает на режим белого света (непрерывный спектр):
+используется однородный широкополосный пучок
+вместо одной длины волны.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>Показывать длину волны в нанометрах (nm). Только отображение — физическая длина волны и энергия не меняются (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>Показывать длину волны в ангстремах (Å). Только отображение — физическая длина волны и энергия не меняются (1 nm = 10 Å).</value>
+  </data>
 </root>

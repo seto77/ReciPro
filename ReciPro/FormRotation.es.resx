@@ -109,4 +109,223 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Geometría de rotación</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>Establece la dirección de visión paralela a la dirección del haz</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>Establece la dirección de visión en proyección isométrica</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, los sistemas de coordenadas de ReciPro
+y experimental quedan vinculados.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Copia los valores de la matriz de rotación
+al portapapeles en formato Excel.</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>Pega los valores de la matriz de rotación
+desde el portapapeles en formato Excel.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>Tercer ángulo de Euler Ψ (grados) del sistema de coordenadas
+de ReciPro en la convención ZXZ (la rotación final
+alrededor de Z); establece la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>Tercer ángulo de Euler Ψ (grados) del sistema de coordenadas
+de ReciPro en la convención ZXZ (la rotación final
+alrededor de Z); establece la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>Segundo ángulo de Euler Θ (grados) del sistema
+de coordenadas de ReciPro en la convención ZXZ
+(la rotación intermedia alrededor de X); establece
+la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>Segundo ángulo de Euler Θ (grados) del sistema
+de coordenadas de ReciPro en la convención ZXZ
+(la rotación intermedia alrededor de X); establece
+la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Primer ángulo de Euler Φ (grados) del sistema
+de coordenadas de ReciPro en la convención ZXZ;
+junto con Θ y Ψ establece la orientación del
+cristal (matriz de rotación).</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>Primer ángulo de Euler Φ (grados) del sistema
+de coordenadas de ReciPro en la convención ZXZ;
+junto con Θ y Ψ establece la orientación del
+cristal (matriz de rotación).</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>Ángulo de rotación (grados, −180 a 180) alrededor del 1.er
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>Ángulo de rotación (grados, −180 a 180) alrededor del 1.er
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>Ángulo de rotación (grados, −180 a 180) alrededor del 2.º
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>Ángulo de rotación (grados, −180 a 180) alrededor del 2.º
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>Ángulo de rotación (grados, -180..180) alrededor del 3.er
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>Ángulo de rotación (grados, -180..180) alrededor del 3.er
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>Habilita el 2.º eje de rotación del goniómetro del
+sistema de coordenadas experimental (añade una
+segunda inclinación alrededor de un eje X/Y/Z elegido).</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>Fija el 1.er ángulo en el valor actual</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>Fija el 2.º ángulo en el valor actual.</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>Fija el 3.er ángulo en el valor actual.</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>Habilita el 3.er eje de rotación del goniómetro del
+sistema de coordenadas experimental (añade una
+tercera inclinación alrededor de un eje X/Y/Z elegido).</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>Establece el 3.er eje de rotación del goniómetro en
+el eje Z cartesiano (la 3.ª rotación experimental
+se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>Establece el 3.er eje de rotación del goniómetro en
+el eje Y cartesiano (la 3.ª rotación experimental
+se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>Establece el 3.er eje de rotación del goniómetro en
+el eje X cartesiano (la 3.ª rotación experimental
+se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>Establece el 2.º eje de rotación del goniómetro en el
+eje Z cartesiano (la 2.ª rotación experimental,
+numericBoxExp2, se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>Establece el 2.º eje de rotación del goniómetro en el
+eje Y cartesiano (la 2.ª rotación experimental,
+numericBoxExp2, se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>Establece el 2.º eje de rotación del goniómetro en el
+eje X cartesiano (la 2.ª rotación experimental,
+numericBoxExp2, se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>Establece el 1.er eje de rotación del goniómetro en el
+eje Z cartesiano (la 1.ª rotación experimental,
+numericBoxExp1, se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>Establece el 1.er eje de rotación del goniómetro en el
+eje Y cartesiano (la 1.ª rotación experimental,
+numericBoxExp1, se aplica alrededor de él).</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>Establece el 1.er eje de rotación del goniómetro en el
+eje X cartesiano (la 1.ª rotación experimental,
+numericBoxExp1, se aplica alrededor de él).</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>Restablece todos los ángulos a cero</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Matriz de orientación (rotación) 3x3 del
+sistema de coordenadas de ReciPro, calculada
+a partir de los ángulos de Euler ZXZ (solo lectura).</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 1, col 1) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a partir
+de los ángulos de Euler ZXZ Phi, Theta, Psi.</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 1, col 2) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 1, col 3) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 2, col 1) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 2, col 2) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 2, col 3) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 3, col 1) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 3, col 2) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>Elemento (fila 3, col 3) de la matriz de orientación
+de ReciPro (solo lectura, adimensional), calculado a
+partir de los ángulos de Euler ZXZ.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Segundo ángulo de Euler Theta (grados) del sistema de coordenadas
+de ReciPro en la convención ZXZ
+(rotación alrededor de X); establece la orientación del cristal.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Tercer ángulo de Euler Psi (grados) del sistema de coordenadas
+de ReciPro en la convención ZXZ (rotación final
+alrededor de Z); establece la orientación del cristal.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Primer ángulo de Euler Phi (grados) del sistema de coordenadas
+de ReciPro en la convención ZXZ; establece
+la orientación del cristal y la matriz de rotación.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Ángulo de rotación (grados, -180..180) alrededor del 1.er
+eje del goniómetro del sistema de coordenadas experimental,
+inclinando el cristal alrededor del eje X/Y/Z elegido.</value>
+  </data>
 </root>

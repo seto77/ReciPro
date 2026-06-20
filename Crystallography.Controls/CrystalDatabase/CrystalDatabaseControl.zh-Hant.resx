@@ -62,4 +62,37 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>若您發表使用本資料庫資料的論文，請引用下列參考文獻或對應網頁所列出的參考文獻。AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>移至清單中第一筆結晶記錄。</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>移至清單中最後一筆結晶記錄。</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>移至下一筆結晶記錄。</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>移至上一筆結晶記錄。</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>載入並顯示 AMCSD (American
+Mineralogist Crystal Structure Database) 的條目。</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>載入並顯示 COD (Crystallography Open
+Database) 的條目；若本機尚無資料，
+則會從網路下載。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>資料庫中的結晶清單；選取某一列
+即可載入該結晶 (晶胞
+參數、空間群、參考文獻等)。</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>資料庫中結晶記錄的總數。</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>目前的記錄編號；輸入數字
+可跳至該結晶。</value>
+  </data>
 </root>

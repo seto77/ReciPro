@@ -242,4 +242,191 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>Nummern anzeigen</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Markersymbole an beobachteten Spots anzeigen</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>Spots identifizieren
+(Sie müssen im Hauptfenster einen passenden Kristall auswählen)</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>Positionen und Intensitäten aller erkannten Spots neu anpassen</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>Einheit der Pixelgröße: Millimeter</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>Erkennt Beugungsspots im geladenen Bild und passt sie mit der gewählten Funktion an.
+Geben Sie die Anzahl der zu suchenden Spots, den Mindestabstand zwischen Spots
+und den Anpassungsbereich im Feld rechts an.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Markersymbole an berechneten Spots anzeigen</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>Ignoriert kinematisch verbotene Reflexe, die durch
+Mehrfach- (dynamische) Beugung auftreten können,
+und schließt sie aus dem berechneten Bild aus.</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Winkel-Halbbereich (der Halbkonvergenzwinkel,
+in mrad), über den die Einfallsstrahl-Richtungen bei
+der Dicken-/Orientierungsverfeinerung durchsucht werden.</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>Globale Anpassung aller Spot-Positionen durchführen (experimentell)</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>Mindestabstand (px), der zwischen erkannten
+Spots zugelassen wird; näher beieinanderliegende Peaks
+werden zusammengeführt, damit ein einzelner Spot nicht doppelt gezählt wird.</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>Mindestabstand (px), der zwischen erkannten
+Spots zugelassen wird; näher beieinanderliegende Peaks
+werden zusammengeführt, damit ein einzelner Spot nicht doppelt gezählt wird.</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>Orientierungen mehrerer Kristallkörner suchen</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>Maximale Anzahl der zu suchenden Kornorientierungen</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>Maximale Anzahl der zu suchenden Kornorientierungen</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>Kameralänge für das Beugungsbild (mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Kameralänge für das Beugungsbild (mm)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>Donut-förmigen Hintergrundabzug anwenden (experimentell)</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Aktuelle Berechnung anhalten</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>Tabelle der beobachteten Spots; aktivieren Sie 'Direct', um den
+Direktstrahl-Spot festzulegen, klicken Sie auf 'Fit' einer Zeile, um deren
+Peak anzupassen, oder wählen Sie eine Zeile, um sie im Bild hervorzuheben</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>Maximale Anzahl der gebeugten Strahlen (Bloch-
+Wellen), die in die dynamische
+Dicken-/Richtungsverfeinerung einbezogen werden; mehr Wellen liefern
+höhere Genauigkeit, aber langsamere Berechnung (1-2048).</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>Maximale Anzahl der gebeugten Strahlen (Bloch-
+Wellen), die in die dynamische
+Dicken-/Richtungsverfeinerung einbezogen werden; mehr Wellen liefern
+höhere Genauigkeit, aber langsamere Berechnung (1-2048).</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>Breite (px) des äußeren ringförmigen Bereichs
+um jeden Spot, der beim Donut-Abzug als lokaler
+Hintergrund verwendet wird (1-100).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>Größe eines Detektorpixels; die Einheit (mm oder nm⁻¹)
+richtet sich nach den Optionsschaltflächen rechts. Legt den
+Maßstab im reziproken Raum für d-Wert und Indizierung fest.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Größe eines Detektorpixels; die Einheit (mm oder nm⁻¹)
+richtet sich nach den Optionsschaltflächen rechts. Legt den
+Maßstab im reziproken Raum für d-Wert und Indizierung fest.</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>Richtung der Zonenachse im Bild anzeigen</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Kopiert die obigen Informationen in die Zwischenablage.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>Indexbeschriftungen an berechneten Spots anzeigen</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>Radius (in Pixeln, 0–100) des kreisförmigen Bereichs
+um jeden Spot, der für die Peak-Anpassung verwendet wird; Pixel innerhalb
+dieses Kreises werden mit der Pseudo-Voigt-Funktion angepasst.</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>Radius (in Pixeln, 0–100) des kreisförmigen Bereichs
+um jeden Spot, der für die Peak-Anpassung verwendet wird; Pixel innerhalb
+dieses Kreises werden mit der Pseudo-Voigt-Funktion angepasst.</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>Löscht den aktuell ausgewählten Spot aus der
+Liste (mit der Schaltfläche Clear werden alle Spots entfernt).</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>Liste der gefundenen Indizierungskandidaten; wählen Sie eine
+Zeile, um deren Kornorientierung(en) darunter anzuzeigen.</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>Hilfskreise im Beugungsbild anzeigen</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>Kornorientierungen im ausgewählten Kandidaten;
+das Auswählen einer Zeile überlagert deren berechnete Spots
+und weist den beobachteten Spots hkl-Indizes zu.</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>Verfeinert die Probendicke (nm) und die Strahlrichtung,
+indem die beobachteten Spot-Intensitäten mit dynamischen
+(Bloch-Wellen-)CBED-Berechnungen für das ausgewählte Korn
+abgeglichen werden (nur Elektronenbeugung).</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>Anzahl der zu erkennenden Spots angeben</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>Anzahl der zu erkennenden Spots angeben</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>Indexnummern an beobachteten Spots anzeigen</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>Detaillierte Informationen zum ausgewählten Spot anzeigen</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>Maximale relative Längentoleranz (d-Wert),
+in %, die beim Abgleich beobachteter Spots mit
+Kandidatenreflexen zulässig ist (0,1–10 %).</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>Maximale relative Längentoleranz (d-Wert),
+in %, die beim Abgleich beobachteter Spots mit
+Kandidatenreflexen zulässig ist (0,1–10 %).</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>Orientierung eines einzelnen Kristallkorns suchen</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>Alle Spots löschen</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>Die obigen Informationen speichern</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>Setzt den Anpassungsradius jedes Spots auf den
+aktuellen Wert von 'Fitting range' (px).</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>Einheit der Pixelgröße: inverse Nanometer</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Strahlungsart und Energie/Spannung, die
+die für die Indizierung verwendete Wellenlänge
+festlegen (Standard: Elektronen, 200 kV).</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>Debye-Scherrer-Ringe über das Bild legen</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>Detaillierte Parameter der Anpassungsfunktion anzeigen</value>
+  </data>
 </root>

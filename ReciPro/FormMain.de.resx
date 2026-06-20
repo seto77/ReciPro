@@ -265,4 +265,222 @@
     <value>  Strahl-
   Wechselwirkung</value>
   </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Left)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Down)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Up)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Dreht den Kristall in Pfeilrichtung.
+(Ctrl+Shift+Right)</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>Obergrenze von |u|+|v|+|w|, die bei der Suche nach
+der Zonenachse verwendet wird, die der Blickrichtung am nächsten liegt
+(oben als ungefährer Index angezeigt). Größere Werte
+prüfen mehr Kandidaten-Zonenachsen.</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>Obergrenze von |u|+|v|+|w|, die bei der Suche nach
+der Zonenachse verwendet wird, die der Blickrichtung am nächsten liegt
+(oben als ungefährer Index angezeigt). Größere Werte
+prüfen mehr Kandidaten-Zonenachsen.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel Φ (Grad), die erste
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel Φ (Grad), die erste
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel Φ (Grad), die erste
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Fügt den ausgewählten Kristall der obigen Liste hinzu.</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>Symmetrieinformationen öffnen</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>Öffnet den HRTEM/STEM-Bildsimulator. HRTEM ist die
+hochauflösende Transmissionselektronenmikroskopie;
+STEM ist die Raster-Transmissionselektronenmikroskopie.</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>Stellt die angegebene Kristallebene senkrecht zum Bildschirm.
+Wenn zusätzlich ein Achsenindex angegeben ist, wird diese Achsenrichtung nach oben gezeigt.</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>Pulverbeugung öffnen</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel θ (Grad), die zweite
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel θ (Grad), die zweite
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel θ (Grad), die zweite
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel ψ (Grad), die dritte
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel ψ (Grad), die dritte
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
+    <value>Setzt/zeigt den Euler-Winkel ψ (Grad), die dritte
+Rotation, die die Kristallorientierung definiert.</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>Kristalldatenbank öffnen</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>Kristallebenenindizes (h k l), entlang derer geblickt werden soll. Klicken Sie
+auf 'Plane', um den Kristall so zu drehen, dass die Normale dieser Ebene
+zu Ihnen zeigt (aus dem Bildschirm heraus).</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Legt den Winkelschritt in Grad für die Rotationsschaltflächen
+fest; bei aktivierter Animation wird derselbe Wert
+als Rotationsgeschwindigkeit in Grad pro Sekunde verwendet.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Legt den Winkelschritt in Grad für die Rotationsschaltflächen
+fest; bei aktivierter Animation wird derselbe Wert
+als Rotationsgeschwindigkeit in Grad pro Sekunde verwendet.</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
+    <value>Öffnet den Structure Viewer (3-D-Kristallstruktur).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Euler-Winkel (φ, θ, ψ), die die aktuelle
+3-D-Rotation des Kristalls beschreiben;
+bearbeiten, um die Orientierung direkt zu setzen.</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>Spot ID v1 öffnen</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Zonenachsenindizes [u v w], entlang derer geblickt werden soll. Klicken Sie
+auf 'Axis', um den Kristall so zu drehen, dass diese Richtung
+zu Ihnen zeigt (aus dem Bildschirm heraus).</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>Ungefährer Index der Zonenachse</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>Löscht den ausgewählten Kristall</value>
+  </data>
+  <data name="buttonDown.ToolTip" xml:space="preserve">
+    <value>Verschiebt den ausgewählten Kristall nach unten</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>Setzt den Rotationszustand auf die Ausgangsorientierung zurück</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die angegebene Achse im Raum fixiert.</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>Beugungssimulator öffnen</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, werden hexagonale / trigonale (hexagonale Achsen)
+Kristalle mit vierindizierten Miller-Bravais-Indizes angezeigt.</value>
+  </data>
+  <data name="buttonSetAxis.ToolTip" xml:space="preserve">
+    <value>Stellt die angegebene Kristallachse senkrecht zum Bildschirm.
+Wenn zusätzlich ein Ebenenindex angegeben ist, wird diese Ebenenrichtung nach oben gezeigt.</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>Öffnet das Werkzeug Rotation Geometry.</value>
+  </data>
+  <data name="buttonUp.ToolTip" xml:space="preserve">
+    <value>Verschiebt den ausgewählten Kristall nach oben</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>Beam Interaction öffnen</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Aktiviert Intel MKL für schnellere Matrix-
+berechnungen. Lädt bei der ersten Verwendung ca. 55 MB herunter.</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>Verwendet in dynamischen Rechnungen ionische (vollständige Peng) Elektronen-Streufaktoren
+anstelle neutraler Atome. Aus = IAM mit neutralen Atomen (Standard).</value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>Dupliziert den ausgewählten Kristall.</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>Hier wird die Kristallliste angezeigt.
+Um einen neuen Kristall hinzuzufügen, legen Sie seine Daten im Panel 'Crystal Information' unten fest und klicken auf 'Add'.
+Um einen Kristall zu ändern, wählen Sie ihn aus, aktualisieren seine Daten im Panel 'Crystal Information' und klicken auf 'Replace'.
+Um einen Kristall aus der Liste zu entfernen, wählen Sie ihn aus und klicken auf 'Delete'.
+Um alle Kristalle aus der Liste zu entfernen, klicken Sie auf 'Clear All'.</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>Aktuelle Orientierung des ausgewählten Kristalls.</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>Öffnet den Trajectory Simulator.</value>
+  </data>
+  <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, dreht ein Klick auf die obigen Schaltflächen
+den Kristall mit konstanter Geschwindigkeit.</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die angegebene Ebene im Raum fixiert.</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>Öffnet den EBSD-Simulator (Electron Backscatter Diffraction)
+für Rückstreu-Elektronenbeugungsmuster
+auf Basis der Kristallorientierung.</value>
+  </data>
+  <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
+    <value>Alle Kristalle löschen</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>Ersetzt den oben ausgewählten
+Kristall durch den neuen Kristall unten.</value>
+  </data>
+  <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
+    <value>Öffnet das Stereonetz (stereografische Projektion / Wulff-Netz).</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>"Spot-ID v2" öffnen</value>
+  </data>
 </root>

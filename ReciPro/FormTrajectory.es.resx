@@ -139,4 +139,141 @@ a calcular</value>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>Desviación estándar de energía</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Ejecuta la simulación de Monte Carlo: traza el
+número fijado de electrones incidentes a través
+de la muestra y luego actualiza las estadísticas,
+los gráficos de distribución y la vista 3D de trayectorias.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Ajusta la vista 3D para mirar a lo largo de la normal
+a la superficie de la muestra (teniendo en cuenta la inclinación actual).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Ajusta la vista 3D para mirar a lo largo del eje X,
+que es el eje de rotación (inclinación) de la muestra.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Ajusta la vista 3D para mirar a lo largo del eje Z,
+es decir, en la dirección del haz incidente.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Dibuja también en la vista 3D las trayectorias de los electrones absorbidos
+en la muestra (los que no retrodispersaron),
+no solo las de los retrodispersados.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Muestra los ejes de coordenadas X (rojo), Y (verde) y Z = dirección del haz
+(morado) en la vista 3D de trayectorias.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Superpone las posiciones de los ejes ±X / ±Y / ±Z en
+la proyección estereográfica (figura de polos) de
+las direcciones de salida de los electrones retrodispersados.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Dibuja círculos de escala concéntricos sobre la superficie de la
+muestra en la vista 3D como referencia de distancia
+(espaciado autoescalado, etiquetado en nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Prolonga la trayectoria de cada electrón retrodispersado
+más allá de la superficie para mostrar su dirección de escape
+en la vista 3D (coloreada según la energía de salida).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Energía media de salida de los electrones retrodispersados
+(BSE) que abandonan la superficie de la muestra, en keV.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Energía media de salida de los electrones retrodispersados
+(BSE) que abandonan la superficie de la muestra, en keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Coeficiente de retrodispersión η: fracción de electrones
+incidentes reemitidos desde la superficie como electrones
+retrodispersados (BSE), según la simulación de Monte Carlo.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Coeficiente de retrodispersión η: fracción de electrones
+incidentes reemitidos desde la superficie como electrones
+retrodispersados (BSE), según la simulación de Monte Carlo.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Sección eficaz de dispersión σ_E: área efectiva del blanco
+para la dispersión elástica a la energía incidente;
+valores mayores significan dispersión más frecuente (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Sección eficaz de dispersión σ_E: área efectiva del blanco
+para la dispersión elástica a la energía incidente;
+valores mayores significan dispersión más frecuente (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Recorrido libre medio elástico λ: distancia media que
+recorre el electrón entre eventos de dispersión
+elástica, a la energía incidente (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Recorrido libre medio elástico λ: distancia media que
+recorre el electrón entre eventos de dispersión
+elástica, a la energía incidente (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Poder de frenado dE/ds: energía que el electrón
+pierde por unidad de longitud de trayectoria en
+colisiones inelásticas, a la energía incidente (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Poder de frenado dE/ds: energía que el electrón
+pierde por unidad de longitud de trayectoria en
+colisiones inelásticas, a la energía incidente (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Número de trayectorias de electrones a simular
+(100 a 1.000.000). Más trayectorias dan
+estadísticas más suaves pero tardan más en calcularse.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Número de trayectorias de electrones a simular
+(100 a 1.000.000). Más trayectorias dan
+estadísticas más suaves pero tardan más en calcularse.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Número máximo de trayectorias a representar en la vista 3D
+(1 a 100.000). Esto solo limita el dibujado, no la
+simulación; valores menores mantienen ágil la vista 3D.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Inclinación de la superficie de la muestra respecto al haz incidente
+(0 a -90 grados). 0 grados = normal a la superficie a lo largo del
+haz; inclinarla cambia el rendimiento y la distribución de
+direcciones de los electrones retrodispersados.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Colorea la proyección estereográfica según
+la energía media de salida (keV) de los
+electrones retrodispersados en cada dirección.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Colorea la proyección estereográfica según
+la frecuencia: el número de electrones
+retrodispersados que salen en cada dirección.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Colorea la proyección estereográfica según la
+desviación estándar de la energía de salida de los
+electrones retrodispersados en cada dirección.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Barra de estado: muestra el tiempo transcurrido en el
+cálculo de trayectorias, el dibujado de gráficos
+y el renderizado 3D de la última simulación.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Energía del electrón incidente (voltaje de aceleración) en
+keV. Fija la energía del haz usada en el cálculo de trayectorias,
+sección eficaz, recorrido libre medio y poder de frenado;
+mayor energía produce mayor penetración.</value>
+  </data>
 </root>

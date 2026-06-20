@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Wählt positiven oder negativen Film-
+verlauf aus (negativ invertiert die angezeigte
+Intensitätsskala des überlagerten Bildes).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Wählt positiven oder negativen Film-
+verlauf aus (negativ invertiert die angezeigte
+Intensitätsskala des überlagerten Bildes).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Schaltet die Intensitätsabbildung des überlagerten
+Bildes zwischen logarithmischer und linearer Skala um.</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Schaltet die Intensitätsabbildung des überlagerten
+Bildes zwischen logarithmischer und linearer Skala um.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Wählt die Farbskala (Gray, Cold-Warm, Spectrum
+oder Fire) aus, mit der das überlagerte Bild dargestellt wird.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Wählt die Farbskala (Gray, Cold-Warm, Spectrum
+oder Fire) aus, mit der das überlagerte Bild dargestellt wird.</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>Stellt die Deckkraft (0-100%) des
+überlagerten Bildes auf dem Beugungsmuster ein.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Stellt die Deckkraft (0-100%) des
+überlagerten Bildes auf dem Beugungsmuster ein.</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>Stellt die X-Pixelkoordinate des Fußpunkts
+(Zentrum des Direktstrahls) auf dem Detektor ein.</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>Stellt die Y-Pixelkoordinate des Fußpunkts
+(Zentrum des Direktstrahls) auf dem Detektor ein.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Stellt die physische Größe eines Detektorpixels in Millimetern ein.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Stellt die Detektorgröße (Breite x Höhe) in Pixeln ein.</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>Löscht das geladene überlagerte Bild.</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>Lädt eine Bilddatei, die auf das Beugungsmuster überlagert wird.</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>Dreht das überlagerte Bild und die
+Detektorabmessungen um 90 Grad.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Zeigt den Dateipfad des geladenen
+überlagerten Bildes an (schreibgeschützt).</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>Stellt die obere Intensitätsgrenze für
+die Anzeige des überlagerten Bildes ein.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Stellt die obere Intensitätsgrenze für
+die Anzeige des überlagerten Bildes ein.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Stellt die obere Intensitätsgrenze für
+die Anzeige des überlagerten Bildes ein.</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>Stellt die untere Intensitätsgrenze für
+die Anzeige des überlagerten Bildes ein.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Stellt die untere Intensitätsgrenze für
+die Anzeige des überlagerten Bildes ein.</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die schematische
+Darstellung der Detektorgeometrie angezeigt.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Stellt die Kameralänge zur Detektorebene in Millimetern ein.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Stellt den Azimutwinkel phi der
+Detektorneigungsachse in Grad ein.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Stellt den Detektorneigungswinkel tau
+um die Neigungsachse in Grad ein.</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird der Detektorbereich
+auf dem Beugungsmuster gezeichnet und
+die Einstellungen für das überlagerte Bild aktiviert.</value>
+  </data>
+</root>

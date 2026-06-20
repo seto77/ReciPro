@@ -294,4 +294,432 @@ par deux plans</value>
   <data name="radioButtonZigzagScan.Text" xml:space="preserve">
     <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (balayage en zigzag)</value>
   </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Ajouter au facteur de structure les termes de dispersion anomale des rayons X dépendant de l'énergie (f', f''). Près d'un seuil d'absorption, la loi de Friedel est violée, produisant des différences d'intensité de Bijvoet (hkl vs -h-k-l). Décochez pour obtenir le résultat classique sans dispersion.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Glisser gauche (près du centre de l'écran) : rotation autour de l'axe parallèle au moniteur
+Glisser gauche (au bord de l'écran) : rotation autour de l'axe normal au moniteur
+Clic droit : zoom arrière
+Glisser droit : zoom avant sur la zone sélectionnée
+Glisser milieu : déplacer l'image simulée
+</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Choisissez le caractère séparateur
+placé entre les indices de Miller.</value>
+  </data>
+  <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
+    <value>Aucun séparateur pour la sortie des indices</value>
+  </data>
+  <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
+    <value>Utiliser l'espace comme séparateur pour la sortie des indices</value>
+  </data>
+  <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
+    <value>Utiliser la virgule comme séparateur pour la sortie des indices</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Définit la taille de police des étiquettes d'indices
+projetées ([u v w] pour les axes, (h k l) pour les
+plans) ; la valeur minimale masque les étiquettes.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Définit la taille de police des étiquettes d'indices
+projetées ([u v w] pour les axes, (h k l) pour les
+plans) ; la valeur minimale masque les étiquettes.</value>
+  </data>
+  <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
+    <value>Utilise une couleur fixe pour les étiquettes
+d'indices au lieu de la couleur du point.</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>Définit la couleur fixe utilisée pour les étiquettes
+d'indices lorsque « Spécifier la couleur » est activé.</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur fixe utilisée pour les étiquettes
+d'indices lorsque « Spécifier la couleur » est activé.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Définit la largeur des lignes du contour (grille) de la figure stéréographique (1–20).</value>
+  </data>
+  <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
+    <value>Définit la largeur des lignes du contour (grille) de la figure stéréographique (1–20).</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Définit la couleur de fond de la zone de tracé de la figure stéréographique.</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur de fond de la zone de tracé de la figure stéréographique.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Définit la couleur des lignes à 90° (cercle primitif
+extérieur et axes principaux, les lignes les plus épaisses).</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur des lignes à 90° (cercle primitif
+extérieur et axes principaux, les lignes les plus épaisses).</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Définit la couleur des lignes de grille à 10°
+(latitude/longitude tous les 10°) de la figure stéréographique.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur des lignes de grille à 10°
+(latitude/longitude tous les 10°) de la figure stéréographique.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Définit la couleur des lignes de grille à 1° (lignes
+fines, affichées uniquement lorsque « 1° Lines » est activé).</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur des lignes de grille à 1° (lignes
+fines, affichées uniquement lorsque « 1° Lines » est activé).</value>
+  </data>
+  <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
+    <value>Projette les lignes de latitude et de
+longitude depuis la direction équatoriale.</value>
+  </data>
+  <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
+    <value>Projette les lignes de latitude et de
+longitude depuis la direction polaire.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, ajoute des lignes de grille
+fines à 1° à la figure stéréographique ; lorsqu'elle est
+décochée, seule la grille plus grossière est affichée.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Définit le rayon des points de direction ou de normale
+de plan projetés sur la figure stéréographique.</value>
+  </data>
+  <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
+    <value>Affiche les directions ou normales de plan projetées
+sur l'hémisphère supérieur de la figure stéréographique.</value>
+  </data>
+  <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
+    <value>Affiche les directions ou normales de plan projetées
+sur l'hémisphère inférieur de la figure stéréographique.</value>
+  </data>
+  <data name="radioButtonWulff.ToolTip" xml:space="preserve">
+    <value>Projette les directions par le canevas de Wulff (méthode équiangulaire)</value>
+  </data>
+  <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
+    <value>Projette les directions par le canevas de Schmidt (méthode équiaire)</value>
+  </data>
+  <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
+    <value>Met à l'échelle la taille de chaque point selon son facteur
+de structure (l'amplitude diffusée par une maille
+élémentaire), de sorte que les réflexions plus fortes apparaissent plus grandes.</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Trace l'étiquette d'indice ([uvw] ou
+(hkl)) à côté de chaque point tracé.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Projette les axes cristallins (axes de zone) sur
+la figure stéréographique et les étiquette comme [u v w].</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Projette les normales aux plans cristallins sur la figure
+stéréographique et les étiquette par les indices de Miller (h k l).</value>
+  </data>
+  <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
+    <value>Trace les paires de lignes de Kikuchi, les bandes appariées
+produites lorsqu'un plan cristallin diffracte des
+électrons diffusés inélastiquement.</value>
+  </data>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>Angles d'inclinaison et d'azimut (en degrés) à
+la position du curseur sur la figure stéréographique.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Angles d'inclinaison et d'azimut (en degrés) à
+la position du curseur sur la figure stéréographique.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Définit le rayon des points d'indices projetés sur la figure stéréographique.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Définit le rayon des points d'axe de zone
+tracés pour les paires de lignes de Kikuchi.</value>
+  </data>
+  <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
+    <value>Définit le rayon des points d'axe de zone
+tracés pour les paires de lignes de Kikuchi.</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>Définit la couleur des pôles et des
+lignes tracés en mode lignes de Kikuchi.</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur des pôles et des
+lignes tracés en mode lignes de Kikuchi.</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>Définit la couleur des étiquettes d'axe de zone en mode
+lignes de Kikuchi (lignes de Kikuchi : bandes de diffraction
+produites par les électrons diffusés inélastiquement).</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur des étiquettes d'axe de zone en mode
+lignes de Kikuchi (lignes de Kikuchi : bandes de diffraction
+produites par les électrons diffusés inélastiquement).</value>
+  </data>
+  <data name="groupBoxColor.ToolTip" xml:space="preserve">
+    <value>Modifier les couleurs d'affichage</value>
+  </data>
+  <data name="checkedListBoxCircles.ToolTip" xml:space="preserve">
+    <value>Liste des grands cercles (cercles de zone) ajoutés ; cochez pour
+afficher ou masquer chaque cercle, ou sélectionnez-en un pour le supprimer</value>
+  </data>
+  <data name="buttonAddCircle.ToolTip" xml:space="preserve">
+    <value>Ajoute un grand cercle (à partir d'un axe de zone ou de deux
+plans réticulaires) à la projection stéréographique.</value>
+  </data>
+  <data name="buttonDeleteCircle.ToolTip" xml:space="preserve">
+    <value>Supprime le grand cercle sélectionné
+de la projection stéréographique.</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>Définit la couleur de tracé des grands cercles.</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur de tracé des grands cercles.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Définit la largeur de ligne des grands cercles.</value>
+  </data>
+  <data name="trackBarGreatCircleLineWidth.ToolTip" xml:space="preserve">
+    <value>Définit la largeur de ligne des grands cercles.</value>
+  </data>
+  <data name="radioButtonCircleByAxis.ToolTip" xml:space="preserve">
+    <value>Définit un grand cercle (zone) en saisissant
+son indice d'axe de zone [uvw] ; le cercle
+contient tous les plans partageant cet axe.</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Direction de l'axe de zone [uvw] ; le grand
+cercle perpendiculaire à cet axe (son cercle de
+zone) est ajouté à la figure stéréographique</value>
+  </data>
+  <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
+    <value>Définit un grand cercle (zone) à partir de deux indices de plan ;
+leur axe de zone commun (produit vectoriel) détermine le cercle.</value>
+  </data>
+  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
+    <value>Premier indice de plan cristallin (hkl) de la paire ; la
+droite commune au plan 1 et au plan 2 définit le grand
+cercle d'axe de zone tracé sur la figure stéréographique</value>
+  </data>
+  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
+    <value>Deuxième indice de plan cristallin (hkl) de la paire ;
+conjointement avec le plan 1, leur produit vectoriel définit
+le grand cercle d'axe de zone sur la figure stéréographique</value>
+  </data>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>Arrête la simulation de balayage en inclinaison et copie les
+coordonnées enregistrées de la trajectoire du pôle dans le presse-papiers.</value>
+  </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>Démarre la simulation de balayage en inclinaison du
+goniomètre : anime les pôles sélectionnés et enregistre
+leurs trajectoires stéréographiques.</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>Mode de balayage rotationnel : balaie l'inclinaison
+à rayon constant (θ²+ω²=constante),
+traçant un cercle sur la figure stéréographique.</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Mode de balayage en zigzag (tramé) : fait avancer θ
+d'avant en arrière tout en augmentant ω (+θ → +ω → -θ → +ω …).</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Active la rotation autour de l'axe Ry (angle ω) pendant le balayage.</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Active la rotation autour de l'axe Rz (angle θ) pendant le balayage.</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>Active la rotation autour de l'axe Rx
+(angle d'inclinaison φ) pendant le balayage.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rx (φ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rx (φ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rx (φ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip1" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rx (φ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Ry (ω),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip1" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Ry (ω),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rz (θ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip1" xml:space="preserve">
+    <value>Vitesse de rotation du moteur Rz (θ),
+en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>Durée totale du balayage, en secondes.</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip1" xml:space="preserve">
+    <value>Durée totale du balayage, en secondes.</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>Vitesse angulaire du balayage
+rotationnel, en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip1" xml:space="preserve">
+    <value>Vitesse angulaire du balayage
+rotationnel, en degrés par seconde (°/s).</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>Pas angulaire du balayage Ry (ω) par incrément, en degrés.</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip1" xml:space="preserve">
+    <value>Pas angulaire du balayage Ry (ω) par incrément, en degrés.</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>Angle d'inclinaison radial (demi-angle du cône depuis le
+centre) du balayage rotationnel, en degrés.</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip1" xml:space="preserve">
+    <value>Angle d'inclinaison radial (demi-angle du cône depuis le
+centre) du balayage rotationnel, en degrés.</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>Amplitude d'oscillation (±) de l'axe Ry (ω), en degrés.</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip1" xml:space="preserve">
+    <value>Amplitude d'oscillation (±) de l'axe Ry (ω), en degrés.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>Amplitude d'oscillation (±) de l'axe Rz (θ), en degrés.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip1" xml:space="preserve">
+    <value>Amplitude d'oscillation (±) de l'axe Rz (θ), en degrés.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Définit la source de rayonnement et la longueur d'onde utilisées pour
+calculer les intensités des facteurs de structure et la liste des
+réflexions de la sphère d'Ewald affichée sur le canevas stéréographique</value>
+  </data>
+  <data name="radioButtonRange.ToolTip" xml:space="preserve">
+    <value>Affiche tous les indices compris dans la plage saisie
+ci-dessous ; pour les axes il s'agit de [u v w], et pour
+les plans des indices de Miller (h k l).</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>Affiche uniquement l'indice individuel saisi
+ci-dessous, au lieu de balayer toute une plage d'indices.</value>
+  </data>
+  <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Affiche les indices de plans les mieux classés selon
+l'intensité du facteur de structure ; des facteurs de structure
+plus élevés correspondent à des réflexions plus intenses.</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>Liste des indices spécifiés par l'utilisateur, projetés sur le
+canevas stéréographique ; sélectionnez des lignes pour les recolorer ou les supprimer</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>Ajoute l'indice saisi ci-dessus à la liste
+des indices spécifiés à tracer.</value>
+  </data>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>Supprime l'indice sélectionné de
+la liste des indices spécifiés.</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>Définit la couleur de tracé de l'indice en cours d'ajout ou
+actuellement sélectionné (utilisée lorsque « Rotate color » est désactivé).</value>
+  </data>
+  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
+    <value>Définit la couleur de tracé de l'indice en cours d'ajout ou
+actuellement sélectionné (utilisée lorsque « Rotate color » est désactivé).</value>
+  </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>Attribue automatiquement à chaque indice une couleur
+d'une palette tournante ; lorsque désactivé, tous les indices utilisent
+l'unique couleur choisie à droite.</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Nombre de réflexions à afficher, prises dans le
+haut du classement des facteurs de structure (1–1000).</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip1" xml:space="preserve">
+    <value>Nombre de réflexions à afficher, prises dans le
+haut du classement des facteurs de structure (1–1000).</value>
+  </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>Saisissez l'indice à tracer — un seul [uvw]/(hkl) en
+mode « Specified », ou les valeurs maximales h,k,l en mode « Range ».</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
+    <value>Trace aussi tous les indices symétriquement équivalents (toute
+la famille {hkl} ou &lt;uvw&gt;), pas seulement celui saisi.</value>
+  </data>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>Affiche la vue 3D (OpenGL) du cristal
+à côté de la projection stéréographique ;
+décoché, seul le canevas stéréographique 2D est affiché</value>
+  </data>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>Réinitialise la vue 3D à son orientation et son zoom par défaut.</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>Dans la vue 3D, dessine les étiquettes d'indices
+([uvw] ou (hkl)) à côté de chaque pôle tracé.</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>Dans la vue 3D, ne trace que les points de l'hémisphère
+supérieur (Z&gt;0) au lieu de toute la sphère.</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>Dans la vue 3D, dessine aussi le disque plat du canevas stéréographique
+(le plan de projection) avec les points projetés dessus.</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>Dans la vue 3D, dessine le contour (maillage fil de fer
+des latitudes/longitudes) de la sphère de référence.</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>Dans la vue 3D, dessine les rayons de projection
+reliant chaque pôle sur la sphère à son
+point tracé sur le disque du canevas stéréographique.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Ajuste l'estompage en profondeur : à quel point les objets
+s'estompent avec la distance (profondeur) dans la vue 3D.</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Ajuste l'estompage en profondeur : à quel point les objets
+s'estompent avec la distance (profondeur) dans la vue 3D.</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>Axe de zone [uvw] et plan réticulaire (hkl)
+les plus proches de la position du curseur sur le canevas stéréographique.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Axe de zone [uvw] et plan réticulaire (hkl)
+les plus proches de la position du curseur sur le canevas stéréographique.</value>
+  </data>
 </root>

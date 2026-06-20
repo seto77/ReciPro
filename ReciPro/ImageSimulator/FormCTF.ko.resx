@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyGraph.ToolTip" xml:space="preserve">
+    <value>표시 중인 곡선(u와 각 함수 값)을 탭으로 구분된
+텍스트로 클립보드에 복사합니다(Excel 붙여넣기용)</value>
+  </data>
+  <data name="checkBoxACTF.ToolTip" xml:space="preserve">
+    <value>ACTF(진폭 콘트라스트 전달 함수) = Cos[W(u)] x Es x Ec,
+즉 조리개 내의 유효 진폭 전달을
+플롯합니다</value>
+  </data>
+  <data name="checkBoxCosW.ToolTip" xml:space="preserve">
+    <value>Cos[W(u)], 즉 파면 수차 W(u)의 코사인
+(렌즈 전달의 진폭 콘트라스트 성분)
+곡선을 플롯합니다</value>
+  </data>
+  <data name="checkBoxEc.ToolTip" xml:space="preserve">
+    <value>Ec(u), 즉 시간적(색) 결맞음 포락선을 플롯합니다:
+색수차와 고전압/에너지 폭에 의한
+콘트라스트 감쇠입니다</value>
+  </data>
+  <data name="checkBoxEs_HRTEM.ToolTip" xml:space="preserve">
+    <value>HRTEM(고분해능 TEM)용 공간 결맞음 포락선
+Es(u)를 플롯합니다: 빔 발산(반각 β)에 의한
+콘트라스트 감쇠입니다</value>
+  </data>
+  <data name="checkBoxEs_STEM.ToolTip" xml:space="preserve">
+    <value>STEM(주사 TEM)용 공간 결맞음 포락선 Es(u)를
+플롯합니다: 유한한 선원 크기(σ_s)에 의한
+콘트라스트 감쇠입니다</value>
+  </data>
+  <data name="checkBoxPCTF.ToolTip" xml:space="preserve">
+    <value>PCTF(위상 콘트라스트 전달 함수) = Sin[W(u)] x Es x Ec,
+즉 조리개 내의 유효 위상 전달을
+플롯합니다</value>
+  </data>
+  <data name="checkBoxSinW.ToolTip" xml:space="preserve">
+    <value>Sin[W(u)], 즉 파면 수차 W(u)의 사인(전달 함수의
+위상 콘트라스트 핵심) 곡선을 플롯합니다</value>
+  </data>
+  <data name="numericBoxMaxU1.ToolTip" xml:space="preserve">
+    <value>플롯의 공간 주파수 축 u의 상한을 nm-1 단위로
+설정합니다 (0~20). 곡선을 역공간 어디까지
+그릴지를 결정합니다</value>
+  </data>
+  <data name="radioButtonCTF_Incoherent.ToolTip" xml:space="preserve">
+    <value>STEM(주사 TEM)을 비간섭(인코히어런트) 결상으로 취급하여,
+수렴 조리개 내 적분으로 단일 CTFI 곡선을 계산합니다</value>
+  </data>
+  <data name="radioButtonCTF_coherent.ToolTip" xml:space="preserve">
+    <value>STEM(주사 TEM)을 간섭(코히어런트) 결상으로
+취급하여, HRTEM과 동일하게 Sin[W], Cos[W], Es,
+Ec, PCTF, ACTF 곡선을 표시합니다</value>
+  </data>
+</root>

@@ -262,4 +262,222 @@
     <value>  Interacción
   del haz</value>
   </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.
+(Ctrl+Mayús+Izquierda)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.
+(Ctrl+Mayús+Abajo)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.
+(Ctrl+Mayús+Arriba)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Rota el cristal en la dirección de la flecha.
+(Ctrl+Mayús+Derecha)</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>Límite superior de |u|+|v|+|w| usado al buscar
+el eje de zona más cercano a la dirección de visión
+(mostrado como el índice aproximado arriba). Valores mayores
+prueban más ejes de zona candidatos.</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>Límite superior de |u|+|v|+|w| usado al buscar
+el eje de zona más cercano a la dirección de visión
+(mostrado como el índice aproximado arriba). Valores mayores
+prueban más ejes de zona candidatos.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler Φ (grados), la primera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler Φ (grados), la primera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler Φ (grados), la primera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Añade el cristal seleccionado a la lista de arriba.</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>Abrir Información de Simetría</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>Abre el simulador de imágenes HRTEM/STEM. HRTEM es
+microscopía electrónica de transmisión de alta resolución;
+STEM es microscopía electrónica de transmisión de barrido.</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>Coloca la normal del plano cristalino especificado hacia la pantalla.
+Si también se especifica un índice de eje, esa dirección del eje se muestra hacia arriba.</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>Abrir Difracción de Polvo</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler ψ (grados), la tercera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler ψ (grados), la tercera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
+    <value>Fija/muestra el ángulo de Euler ψ (grados), la tercera
+rotación que define la orientación del cristal.</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>Abrir Base de Datos de Cristales</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>Índices del plano cristalino (h k l) hacia el que mirar. Haga clic
+en 'Plane' para rotar el cristal de modo que la normal de este
+plano apunte hacia usted (fuera de la pantalla).</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Fija el paso angular en grados para los botones de
+rotación; cuando la animación está habilitada, se usa el mismo valor
+como velocidad de rotación en grados por segundo.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Fija el paso angular en grados para los botones de
+rotación; cuando la animación está habilitada, se usa el mismo valor
+como velocidad de rotación en grados por segundo.</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
+    <value>Abre el Visor de Estructura (estructura cristalina 3D).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Ángulos de Euler (φ, θ, ψ) que describen
+la rotación 3D actual del cristal;
+edite para fijar la orientación directamente.</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>Abrir Spot ID v1</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Índices del eje de zona [u v w] hacia el que mirar. Haga clic
+en 'Axis' para rotar el cristal de modo que esta dirección
+apunte hacia usted (fuera de la pantalla).</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>Índice aproximado del eje de zona</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>Eliminar el cristal seleccionado</value>
+  </data>
+  <data name="buttonDown.ToolTip" xml:space="preserve">
+    <value>Bajar el cristal seleccionado</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>Restablecer el estado de rotación a la orientación inicial</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, el eje especificado queda fijo en el espacio.</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>Abrir Simulador de Difracción</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>Cuando está habilitado, los cristales hexagonales / trigonales (ejes
+hexagonales) muestran índices de Miller-Bravais de cuatro índices.</value>
+  </data>
+  <data name="buttonSetAxis.ToolTip" xml:space="preserve">
+    <value>Coloca el eje cristalino especificado hacia la pantalla.
+Si también se especifica un índice de plano, esa dirección del plano se muestra hacia arriba.</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>Abre la herramienta de Geometría de Rotación.</value>
+  </data>
+  <data name="buttonUp.ToolTip" xml:space="preserve">
+    <value>Subir el cristal seleccionado</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>Abrir Interacción del Haz</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Habilita Intel MKL para cálculos matriciales
+más rápidos. Descarga ~55MB en el primer uso.</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>Usa factores de dispersión de electrones iónicos (Peng completo) en los cálculos
+dinámicos en lugar de átomos neutros. Off = IAM de átomos neutros (predeterminado).</value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>Duplica el cristal seleccionado.</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>Aquí se muestra la lista de cristales.
+Para añadir un cristal nuevo, fije sus datos en el panel 'Crystal Information' de abajo y haga clic en 'Añadir'.
+Para modificar un cristal, selecciónelo, actualice sus datos en el panel 'Crystal Information' y haga clic en 'Reemplazar'.
+Para quitar un cristal de la lista, selecciónelo y haga clic en 'Eliminar'.
+Para quitar todos los cristales de la lista, haga clic en 'Clear All'.</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>Orientación actual del cristal seleccionado.</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>Abre el Simulador de Trayectorias.</value>
+  </data>
+  <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, al hacer clic en los botones de arriba
+el cristal rota a velocidad constante.</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, el plano especificado queda fijo en el espacio.</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>Abre el simulador EBSD (difracción de electrones retrodispersados)
+para patrones de difracción de electrones retrodispersados
+a partir de la orientación del cristal.</value>
+  </data>
+  <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
+    <value>Eliminar todos los cristales</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>Reemplaza el cristal seleccionado
+arriba por el nuevo cristal de abajo.</value>
+  </data>
+  <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
+    <value>Abre la estereored (proyección estereográfica / red de Wulff).</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>Abrir Spot ID v2</value>
+  </data>
 </root>

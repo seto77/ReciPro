@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Цветовая карта для плотности полюсов:
+Cold-Warm (от синего к красному) или Gray scale (оттенки серого).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Цветовая карта для плотности полюсов:
+Cold-Warm (от синего к красному) или Gray scale (оттенки серого).</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Шкала интенсивности цветовой карты плотности:
+Linear отображает плотность пропорционально, Log
+сжимает большие значения, выявляя слабую текстуру.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Шкала интенсивности цветовой карты плотности:
+Linear отображает плотность пропорционально, Log
+сжимает большие значения, выявляя слабую текстуру.</value>
+  </data>
+  <data name="numericUpDown1.ToolTip" xml:space="preserve">
+    <value>Первая компонента индекса (u для оси, h для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="labelU.ToolTip" xml:space="preserve">
+    <value>Первая компонента индекса (u для оси, h для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="numericUpDown2.ToolTip" xml:space="preserve">
+    <value>Вторая компонента индекса (v для оси, k для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="labelV.ToolTip" xml:space="preserve">
+    <value>Вторая компонента индекса (v для оси, k для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="numericUpDown3.ToolTip" xml:space="preserve">
+    <value>Третья компонента индекса (w для оси, l для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="labelW.ToolTip" xml:space="preserve">
+    <value>Третья компонента индекса (w для оси, l для
+плоскости) кристаллографического направления или плоскости,
+полюса которых проецируются (диапазон от -20 до 20).</value>
+  </data>
+  <data name="numericUpDownFullscale.ToolTip" xml:space="preserve">
+    <value>Плотность насыщения (полная шкала) как средняя плотность,
+умноженная на 10 в степени E: цветовая карта
+насыщается при среднем × 10^E (диапазон от -9 до
+9). Большие значения расширяют отображаемый диапазон.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Плотность насыщения (полная шкала) как средняя плотность,
+умноженная на 10 в степени E: цветовая карта
+насыщается при среднем × 10^E (диапазон от -9 до
+9). Большие значения расширяют отображаемый диапазон.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Плотность насыщения (полная шкала) как средняя плотность,
+умноженная на 10 в степени E: цветовая карта
+насыщается при среднем × 10^E (диапазон от -9 до
+9). Большие значения расширяют отображаемый диапазон.</value>
+  </data>
+  <data name="numericUpDownResolution.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение (размер ячейки) карты
+плотности в градусах (диапазон 1–60°). Меньшие значения
+дают более детальную полюсную фигуру, но замедляют вычисление.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение (размер ячейки) карты
+плотности в градусах (диапазон 1–60°). Меньшие значения
+дают более детальную полюсную фигуру, но замедляют вычисление.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение (размер ячейки) карты
+плотности в градусах (диапазон 1–60°). Меньшие значения
+дают более детальную полюсную фигуру, но замедляют вычисление.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Проецировать кристаллографические направления [u v w] (оси
+решётки). Поля индексов помечены u, v, w,
+и включаются симметрийно эквивалентные оси.</value>
+  </data>
+  <data name="radioButtonInversePoleFigure.ToolTip" xml:space="preserve">
+    <value>Обратная полюсная фигура (IPF): строится в системе
+отсчёта кристалла распределение фиксированного
+направления образца (x, y, z), показывая, какие
+кристаллографические направления совпадают с этой осью образца.</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Проецировать кристаллографические плоскости (h k l) по их
+нормалям. Поля индексов помечены h, k, l,
+и включаются симметрийно эквивалентные плоскости.</value>
+  </data>
+  <data name="radioButtonPoleFigure.ToolTip" xml:space="preserve">
+    <value>Полюсная фигура: строится в системе отсчёта образца
+распределение полюсов выбранного кристаллографического
+направления или плоскости (задаётся опцией Axes/Planes).</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Показ только для чтения максимальной и минимальной
+плотности полюсов на текущей карте, нормированных
+так, что средняя плотность равна 1.</value>
+  </data>
+</root>

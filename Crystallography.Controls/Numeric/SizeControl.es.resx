@@ -65,4 +65,26 @@
   <data name="checkBoxKeepAspect.Text" xml:space="preserve">
     <value>Mantener proporción</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>Bloquea la relación de aspecto anchura-altura;
+al cambiar una dimensión, la otra se
+actualiza automáticamente para preservar la relación.</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>Altura de la imagen en píxeles (px); cuando la relación de aspecto
+está bloqueada, la anchura se ajusta automáticamente.</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>Anchura de la imagen en píxeles (px); cuando la relación de aspecto
+está bloqueada, la altura se ajusta automáticamente.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Tamaño de la imagen: anchura × altura en píxeles (px).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Tamaño de la imagen: anchura × altura en píxeles (px).</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>Tamaño de la imagen: anchura × altura en píxeles (px).</value>
+  </data>
 </root>

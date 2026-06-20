@@ -62,4 +62,79 @@
   <data name="checkBoxSamples.Text" xml:space="preserve">
     <value>Показать примеры</value>
   </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Добавить макрос, находящийся сейчас в редакторе
+(имя и тело), как новую запись в списке.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Заменить выбранный макрос в
+списке текущим содержимым редактора.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Удалить выбранный макрос из списка.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Переместить выбранный макрос на одну позицию вниз в списке.</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>Перейти к следующей строке во время
+пошагового выполнения (горячая клавиша: F10).</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>Выполнить макрос (скрипт Python) в
+редакторе от начала до конца.</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>Выполнить макрос построчно (режим отладки), приостанавливаясь
+на каждой строке, чтобы можно было проверить значения переменных.</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>Остановить выполняющийся макрос (действует
+во время пошагового выполнения).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Переместить выбранный макрос на одну позицию вверх в списке.</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>Переключить отображение встроенных образцовых
+макросов (только для чтения). Ваши собственные макросы
+сохраняются отдельно и восстанавливаются при снятии флажка.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Справочный список встроенных макрофункций ReciPro
+и их описаний. Дважды щёлкните по функции,
+чтобы вставить её в позицию курсора в редакторе.</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>Окно наблюдения отладки: во время пошагового выполнения
+показывает имена локальных переменных и их
+текущие значения на приостановленной строке.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Макросы используют базовый синтаксис Python вместе
+со встроенными функциями, предоставляемыми ReciPro.</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>Список сохранённых макросов. Выберите один,
+чтобы загрузить его имя и тело в редактор.</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Открыть файл макроса (*.mcr) в редакторе.</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>Редактор кода для тела макроса. Напишите здесь скрипт Python
+(IronPython); предоставляются автодополнение, номера
+строк и подсветка ошибок.</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохранить текущее содержимое редактора в файл макроса (*.mcr).</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>Название макроса. Используется как его запись в списке
+и как имя пункта меню при добавлении или замене.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Название макроса. Используется как его запись в списке
+и как имя пункта меню при добавлении или замене.</value>
+  </data>
 </root>

@@ -65,4 +65,31 @@
   <data name="label9.Text" xml:space="preserve">
     <value>顏色</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>選擇極圖的色彩刻度：
+寒色至暖色的光譜，或灰階漸層。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>選擇極圖的色彩刻度：
+寒色至暖色的光譜，或灰階漸層。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>顯示目前繪製於極圖中的
+像素值之最大值與最小值。</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>極圖色彩刻度的上限；等於或
+高於此值者對應到色條的
+暖色／亮端。</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>極圖色彩刻度的下限；等於或
+低於此值者對應到色條的
+寒色／暗端。</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>極圖直方圖的角度區間大小（度）；
+值越小，區間越精細（解析度越高）
+（範圍 1–30°）。</value>
+  </data>
 </root>

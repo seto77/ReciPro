@@ -125,4 +125,160 @@
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>套用至個別圓盤</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>執行 CBED 模擬</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>繪製圓圈以標示各繞射盤的邊界</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>選擇布洛赫波方程式的求解方式
+（特徵值問題或矩陣指數；Eigen 或
+MKL 函式庫）。結果應相同，但速度
+不同；除非要進行基準測試，否則請使用 Auto。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>選擇布洛赫波方程式的求解方式
+（特徵值問題或矩陣指數；Eigen 或
+MKL 函式庫）。結果應相同，但速度
+不同；除非要進行基準測試，否則請使用 Auto。</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>用於 CBED（會聚電子繞射）布洛赫波
+計算的 CPU 執行緒數，1-128。當 Solver
+設為 Auto 時無效。</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>用於 CBED（會聚電子繞射）布洛赫波
+計算的 CPU 執行緒數，1-128。當 Solver
+設為 Auto 時無效。</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>CBED（會聚電子繞射）模式：
+每個布拉格繞射會成為一個盤，其
+內部強度隨入射光束傾斜而改變。</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>LACBED（大角度會聚電子繞射）模式：使用
+較寬的會聚角，使一個繞射在較大的角度範圍內被記錄。</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>納入動力學多重散射計算的繞射波
+（布洛赫波）數目，1-2048。波數越多
+精度越高，但計算越慢。</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>最大半會聚角（mrad）</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>最大半會聚角（mrad）</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>橫跨每個盤的每像素角度取樣步距
+（mrad/pixel）。值越小，直徑方向
+的分割數越多（顯示於右側），盤越
+精細，但計算時間越長。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>橫跨每個盤的每像素角度取樣步距
+（mrad/pixel）。值越小，直徑方向
+的分割數越多（顯示於右側），盤越
+精細，但計算時間越長。</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>設定試樣厚度的範圍與步距</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>停止目前的模擬</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>選擇強度漸層方向：
+Positive 表示亮為強；Negative
+反轉刻度，使暗為強。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>選擇用於將盤強度對應到顯示顏色的色階
+（Gray、Cold-Warm、Spectrum 或 Fire）。</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>設定 gamma 值。
+此值越大，外側的盤看起來越亮。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>設定亮度顯示為零
+所對應的強度。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>設定亮度顯示為零
+所對應的強度。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>設定亮度顯示為最大值
+所對應的強度。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>設定亮度顯示為最大值
+所對應的強度。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>設定亮度顯示為最大值
+所對應的強度。</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>對所有盤套用相同的亮度範圍（Min/Max）。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>對所有盤套用相同的亮度範圍（Min/Max）。</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>對每個個別盤套用
+各自的亮度範圍。</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>選擇要顯示的試樣厚度。</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>目前顯示之盤圖樣的
+試樣厚度（nm）。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>目前顯示之盤圖樣的
+試樣厚度（nm）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>目前顯示之盤圖樣的
+試樣厚度（nm）。</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>橫跨每個盤的每像素角度取樣步距
+（mrad/pixel）。值越小，直徑方向
+的分割數越多（顯示於此），盤越
+精細，但計算時間越長。</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>設定 gamma 值。此值越大，
+外側的盤看起來越亮。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>選擇色階（Gray / Cold-Warm / Spectrum / Fire）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>選擇漸層方向
+（Positive 或 Negative／反轉）。</value>
+  </data>
 </root>

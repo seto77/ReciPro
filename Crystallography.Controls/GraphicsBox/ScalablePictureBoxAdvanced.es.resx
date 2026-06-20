@@ -74,4 +74,125 @@
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
     <value>Desenfoque gaussiano</value>
   </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>Fija el zoom de visualización a 1:1 (×1,
+un píxel de pantalla por píxel de imagen).</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>Fija el zoom de visualización a ×2 (ampliación 2×).</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>Fija el zoom de visualización a ×4 (ampliación 4×).</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>Fija el zoom de visualización a ×1/16 (reduce a 1/16 del tamaño).</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>Establece el zoom de visualización en ×1/2 (reducir a la mitad del tamaño).</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>Establece el zoom de visualización en ×1/4 (reducir a 1/4 del tamaño).</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>Establece el zoom de visualización en ×1/8 (reducir a 1/8 del tamaño).</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Aplica un filtro Dust &amp; Scratches (polvo y arañazos) que elimina
+pequeños puntos y artefactos similares a arañazos
+reemplazando los píxeles que se desvían de sus
+vecinos (ajuste Radius y Threshold).</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Aplica un desenfoque gaussiano que suaviza la imagen con un
+núcleo gaussiano para reducir el ruido (ajuste la anchura FWHM).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Cambia la polaridad de la visualización: Positive muestra
+las intensidades de forma normal, Negative invierte la
+escala de grises (claro y oscuro intercambiados).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Cambia la polaridad de la visualización: Positive muestra
+las intensidades de forma normal, Negative invierte la
+escala de grises (claro y oscuro intercambiados).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Elija cómo se asigna la intensidad al brillo: Linear
+(proporcional) o Log (logarítmica, que
+revela detalles tenues junto a los intensos).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Elija cómo se asigna la intensidad al brillo: Linear
+(proporcional) o Log (logarítmica, que
+revela detalles tenues junto a los intensos).</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Seleccione el mapa de color usado para mostrar la intensidad:
+Gray, Cold-Warm, Spectrum o Fire (un esquema de falso color
+puede facilitar la visualización de las diferencias de intensidad).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Seleccione el mapa de color usado para mostrar la intensidad:
+Gray, Cold-Warm, Spectrum o Fire (un esquema de falso color
+puede facilitar la visualización de las diferencias de intensidad).</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Muestra la posición del cursor (X, Y en píxeles
+de la imagen) y, en imágenes en escala de grises, el
+valor de píxel sin procesar bajo el cursor.</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>Aumento de visualización actual (factor de zoom)
+de la imagen; se actualiza al acercar o desplazar.</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Establece el radio del filtro Dust &amp; Scratches en
+píxeles (0-5). Un radio mayor elimina puntos
+o arañazos más grandes pero desenfoca más detalle.</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Establece el umbral del filtro Dust &amp; Scratches (0-10).
+Solo los píxeles que difieren de sus vecinos
+en más de este valor se tratan como defectos
+y se reemplazan; un valor menor elimina más.</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>Establece la anchura del desenfoque gaussiano como FWHM (anchura
+a media altura, Full Width at Half Maximum) en píxeles (0-100).
+Un valor mayor desenfoca con más intensidad.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Barra de estado que muestra mensajes de procesamiento,
+como el tiempo transcurrido de los filtros Dust &amp;
+Scratches y Gaussian Blur.</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>Establece el límite superior de intensidad: los valores de píxel
+por encima de este se recortan a blanco (brillo
+máximo). Junto con el deslizador Min. esto define
+la ventana de brillo/contraste mostrada.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Establece el límite superior de intensidad: los valores de píxel
+por encima de este se recortan a blanco (brillo
+máximo). Junto con el deslizador Min. esto define
+la ventana de brillo/contraste mostrada.</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>Establece el límite inferior de intensidad: los valores de píxel por debajo de este
+se recortan a negro. Junto con el deslizador Max.
+esto define la ventana de brillo/contraste mostrada.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Establece el límite inferior de intensidad: los valores de píxel por debajo de este
+se recortan a negro. Junto con el deslizador Max.
+esto define la ventana de brillo/contraste mostrada.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Aumento de visualización actual (factor de zoom) de la imagen.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Aumento de visualización actual
+(Magnification, factor de zoom) de la imagen.</value>
+  </data>
 </root>

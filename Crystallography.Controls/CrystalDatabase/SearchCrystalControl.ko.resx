@@ -86,4 +86,146 @@
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>검색</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>주기율표를 열어 검색에 포함하거나
+제외할 원소를 선택합니다.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>활성화된 모든 조건 (이름, 참고문헌, 원소, 결정계,
+격자 상수, 면간 거리, 밀도)을 조합하여
+결정 데이터베이스를 검색하고,
+일치하는 결정만 표시합니다.</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>첫 번째 면간 거리 값에 의한 필터링을 활성화합니다.
+값과 허용 오차 입력란이 사용 가능해집니다.</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>두 번째 면간 거리 값에 의한 필터링을 활성화합니다.
+값과 허용 오차 입력란이 사용 가능해집니다.</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>세 번째 면간 거리 값에 의한 필터링을 활성화합니다.
+값과 허용 오차 입력란이 사용 가능해집니다.</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>측정/계산된 밀도 (g/cm³)로 데이터베이스를
+필터링합니다. 밀도 입력란이 활성화됩니다.</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>면간 거리 (Å 단위의 격자면 간격 — 회절 피크
+위치를 결정하는 간격)로 필터링합니다.
+면간 거리 입력란이 활성화됩니다.</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>체크하면 면간 거리 검색이 산란 인자
+(반사 강도)를 무시하고, 단위 격자로부터
+기하학적으로 허용되는 모든 d 값을 계산하며,
+소광되어 강도가 0이 되는
+반사도 후보에 포함합니다.</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>단위 격자 상수 (길이 a, b, c [Å]와 각도 α, β, γ
+[°])로 필터링합니다. 격자 상수 입력란이
+활성화됩니다.</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>결정계 (삼사정계 … 입방정계)로 필터링합니다.
+결정계 선택기가 활성화됩니다.</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>구성 원소로 필터링합니다. 포함하거나 제외할
+원소를 지정하는 데 사용하는 주기율표
+버튼이 표시됩니다.</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>광물/화합물 이름으로 필터링합니다. (대소문자 구분
+없는 부분 일치) 이름 검색용 텍스트 상자가 표시됩니다.</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>참고문헌 (저널, 저자 또는 섹션 텍스트)으로
+필터링합니다. 검색어 입력용 텍스트 상자가 표시됩니다.</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>필터링할 결정계 (삼사정계, 단사정계, 사방정계,
+정방정계, 삼방정계, 육방정계 또는 입방정계)를
+선택합니다.</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>검색할 목표 단위 격자 길이 a를 Å 단위로
+입력합니다 (0 = 이 조건 무시).</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>검색할 목표 격자 각도 α (b축과 c축
+사이)를 ° 단위로 입력합니다 (0 = 무시).</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>격자 각도 (α, β, γ) 검색의 허용 오차를
+±° 단위로 입력합니다 (참고: 길이 허용 오차는
+%인 것과 달리 여기는 도 단위입니다).</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>검색할 목표 단위 격자 길이 b를 Å 단위로
+입력합니다 (0 = 이 조건 무시).</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>검색할 목표 격자 각도 β (a축과 c축
+사이)를 ° 단위로 입력합니다 (0 = 무시).</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>검색할 목표 단위 격자 길이 c를 Å 단위로
+입력합니다 (0 = 이 조건 무시).</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>검색할 목표 격자 각도 γ (a축과 b축
+사이)를 ° 단위로 입력합니다 (0 = 무시).</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>격자 길이 (a, b, c) 검색의 허용 오차를
+±% 단위로 입력합니다. 길이가 이 상대 범위
+안에 들어가는 격자가 일치됩니다.</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>검색할 첫 번째 면간 거리 (격자면 간격)의
+목표 값을 Å 단위로 입력합니다.</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>첫 번째 면간 거리 검색의 허용 오차를
+±% 단위로 입력합니다. 이 범위 안의 d
+값을 가진 결정이 일치됩니다.</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>검색할 두 번째 면간 거리 (격자면 간격)의
+목표 값을 Å 단위로 입력합니다.</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>두 번째 면간 거리 검색의 허용 오차를
+±% 단위로 입력합니다. 이 범위 안의 d
+값을 가진 결정이 일치됩니다.</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>검색할 세 번째 면간 거리 (격자면 간격)의
+목표 값을 Å 단위로 입력합니다.</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>세 번째 면간 거리 검색의 허용 오차를
+±% 단위로 입력합니다. 이 범위 안의 d
+값을 가진 결정이 일치됩니다.</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>검색할 목표 밀도를 g/cm³ 단위로 입력합니다.</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>밀도 검색의 허용 오차를 ±% 단위로
+입력합니다. 밀도가 이 상대 범위
+안에 들어가는 결정이 일치됩니다.</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>검색할 광물/화합물 이름을 입력합니다 (대소문자
+구분 없는 부분 일치). Enter 키를 눌러 검색을 실행합니다.</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>검색할 참고문헌 용어 (저널, 저자 또는 섹션)를
+입력합니다. Enter 키를 눌러 검색을 실행합니다.</value>
+  </data>
 </root>

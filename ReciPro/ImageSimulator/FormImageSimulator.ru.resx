@@ -365,4 +365,538 @@ Simulator"</value>
   <data name="labelMousePositionValue.Text" xml:space="preserve">
     <value>Значение: </value>
   </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Остановить текущее моделирование</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
+    <value>Если флажок установлен, интенсивность
+нормируется для каждого изображения отдельно.</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>Минимальное (нижнее) значение интенсивности для нормировки
+(активно, когда установлен флажок Min слева).</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
+    <value>Минимальное (нижнее) значение интенсивности для нормировки
+(активно, когда установлен флажок Min слева).</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>Максимальная интенсивность смоделированного изображения.</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
+    <value>Максимальная интенсивность смоделированного изображения.</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>Отображает в STEM-изображении только неупруго рассеянные электроны
+TDS (термическое диффузное рассеяние).</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>Отображает в STEM-изображении только упруго
+рассеянные электроны.</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
+    <value>Отображает в STEM-изображении как упруго рассеянные электроны, так и
+неупруго рассеянные электроны TDS (термическое
+диффузное рассеяние).</value>
+  </data>
+  <data name="colorControlScale.ToolTip" xml:space="preserve">
+    <value>Цвет масштабной линейки</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>Цвет масштабной линейки</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
+    <value>Длина масштабной линейки в nm</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
+    <value>Длина масштабной линейки в nm</value>
+  </data>
+  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
+    <value>Показывает или скрывает масштабную линейку поверх
+смоделированного изображения; длина и цвет задаются
+соседними элементами управления масштабом.</value>
+  </data>
+  <data name="colorControlLabel.ToolTip" xml:space="preserve">
+    <value>Цвет метки</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>Цвет метки</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
+    <value>Задаёт размер шрифта метки в пунктах</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
+    <value>Задаёт размер шрифта метки в пунктах</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Показывает или скрывает текстовые метки, такие как условия
+изображения и индексы, поверх смоделированного
+изображения; цвет метки и размер шрифта задаются рядом.</value>
+  </data>
+  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
+    <value>Показывает или скрывает контур спроецированной
+элементарной ячейки на смоделированном изображении, чтобы связать
+контраст изображения с кристаллической решёткой.</value>
+  </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>Создаёт серию изображений с разной толщиной</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>Создаёт серию изображений с разными значениями дефокуса</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>Угловое разрешение выборки направлений падающего зонда
+(mrad). Меньшие значения выбирают STEM-зонд
+более точно, но замедляют расчёт.</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
+    <value>Угловое разрешение выборки направлений падающего зонда
+(mrad). Меньшие значения выбирают STEM-зонд
+более точно, но замедляют расчёт.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
+    <value>Толщина слоя (nm), используемая при расчёте
+интенсивности TDS (термическое диффузное рассеяние, неупругое)
+электронов. Меньшие значения повышают
+точность, но замедляют расчёт.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
+    <value>Толщина слоя (nm), используемая при расчёте
+интенсивности TDS (термическое диффузное рассеяние, неупругое)
+электронов. Меньшие значения повышают
+точность, но замедляют расчёт.</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
+    <value>Линейная модель изображения с низкой вычислительной стоимостью.
+Эта модель подходит для тонких образцов,
+для которых справедливо приближение слабого фазового объекта.
+</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
+    <value>Модель перекрёстного коэффициента пропускания (TCC) с высокой вычислительной стоимостью.
+Эту модель следует использовать для сильно рассеивающих объектов, которые
+возбуждают много сильных дифрагированных пучков.
+</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Размер моделируемого изображения в пикселях</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Разрешение смоделированного изображения в пикометрах на пиксель</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Разрешение смоделированного изображения в пикометрах на пиксель</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Максимальное число блоховских волн, используемых в методе Бете.
+Большие значения замедляют расчёт, но повышают точность.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Максимальное число блоховских волн, используемых в методе Бете.
+Большие значения замедляют расчёт, но повышают точность.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>Внешний полуугол сбора кольцевого STEM-детектора
+(mrad); сигналы за пределами этого угла исключаются.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
+    <value>Внешний полуугол сбора кольцевого STEM-детектора
+(mrad); сигналы за пределами этого угла исключаются.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>Эффективный размер источника электронов (nm). Большие значения
+размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
+    <value>Эффективный размер источника электронов (nm). Большие значения
+размывают STEM-зонд и снижают чёткость мелких деталей изображения.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>Полуугол сходимости падающего STEM-зонда
+(mrad); большие значения дают более узкий
+зонд и изменяют дифракционный контраст.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>Полуугол сходимости падающего STEM-зонда
+(mrad); большие значения дают более узкий
+зонд и изменяют дифракционный контраст.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
+    <value>Внутренний полуугол сбора кольцевого STEM-детектора
+(mrad); сигналы внутри этого угла исключаются.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
+    <value>Внутренний полуугол сбора кольцевого STEM-детектора
+(mrad); сигналы внутри этого угла исключаются.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>Полуугол объективной апертуры (mrad). Меньшая
+апертура отсекает высокоугловые дифрагированные
+пучки и сглаживает мелкие детали изображения высокого разрешения.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
+    <value>Полуугол объективной апертуры (mrad). Меньшая
+апертура отсекает высокоугловые дифрагированные
+пучки и сглаживает мелкие детали изображения высокого разрешения.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>ΔV: полная ширина на половине высоты (FWHM)
+разброса энергии электронного пучка, в eV;
+вместе с хроматической аберрацией Cc она
+задаёт хроматический разброс фокуса (размытие изображения).</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
+    <value>ΔV: полная ширина на половине высоты (FWHM)
+разброса энергии электронного пучка, в eV;
+вместе с хроматической аберрацией Cc она
+задаёт хроматический разброс фокуса (размытие изображения).</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
+    <value>ΔV: полная ширина на половине высоты (FWHM)
+разброса энергии электронного пучка, в eV;
+вместе с хроматической аберрацией Cc она
+задаёт хроматический разброс фокуса (размытие изображения).</value>
+  </data>
+  <data name="numericBoxCc.ToolTip" xml:space="preserve">
+    <value>Коэффициент хроматической аберрации Cc
+объективной линзы (mm); большие значения
+увеличивают размытие из-за разброса энергии пучка.</value>
+  </data>
+  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
+    <value>Коэффициент хроматической аберрации Cc
+объективной линзы (mm); большие значения
+увеличивают размытие из-за разброса энергии пучка.</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
+    <value>β: полуугол освещения (mrad)
+из-за эффекта конечного размера источника</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
+    <value>β: полуугол освещения (mrad)
+из-за эффекта конечного размера источника</value>
+  </data>
+  <data name="numericBoxCs.ToolTip" xml:space="preserve">
+    <value>Коэффициент сферической аберрации Cs
+объективной линзы (mm); он формирует CTF (передаточную
+функцию контраста) и дефокус Шерцера.</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>Коэффициент сферической аберрации Cs
+объективной линзы (mm); он формирует CTF (передаточную
+функцию контраста) и дефокус Шерцера.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
+    <value>Дефокус объективной линзы (nm). Изменение
+дефокуса смещает CTF (передаточную
+функцию контраста) и контраст изображения.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>Дефокус объективной линзы (nm). Изменение
+дефокуса смещает CTF (передаточную
+функцию контраста) и контраст изображения.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Ускоряющее напряжение ПЭМ (просвечивающий
+электронный микроскоп), в kV; оно изменяет
+длину волны электронов и контраст изображения.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>Ускоряющее напряжение ПЭМ (просвечивающий
+электронный микроскоп), в kV; оно изменяет
+длину волны электронов и контраст изображения.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Дефокус Шерцера (nm), дефокус вблизи
+оптимального условия фазового контраста, рассчитанный по
+текущей длине волны и сферической аберрации Cs.</value>
+  </data>
+  <data name="textBoxScherzer.ToolTip" xml:space="preserve">
+    <value>Дефокус Шерцера (nm), дефокус вблизи
+оптимального условия фазового контраста, рассчитанный по
+текущей длине волны и сферической аберрации Cs.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Дефокус Шерцера (nm), дефокус вблизи
+оптимального условия фазового контраста, рассчитанный по
+текущей длине волны и сферической аберрации Cs.</value>
+  </data>
+  <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
+    <value>HRTEM (просвечивающая электронная микроскопия
+высокого разрешения): моделирует фазово-контрастное ПЭМ-изображение
+для выбранного кристалла, толщины и дефокуса.</value>
+  </data>
+  <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
+    <value>STEM (сканирующая просвечивающая электронная микроскопия):
+моделирует изображение сканирующего зонда с использованием
+угла сходимости и настроек кольцевого детектора.</value>
+  </data>
+  <data name="radioButton1.ToolTip" xml:space="preserve">
+    <value>STEM-EDX (сканирующая просвечивающая электронная микроскопия
+с энергодисперсионной рентгеновской спектроскопией): моделирует
+вывод STEM-EDX с использованием элементов управления расчётом STEM.</value>
+  </data>
+  <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
+    <value>Режим потенциала: вычисляет проецированный
+потенциал кристалла вместо применения
+эффектов передачи изображения ПЭМ/STEM.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Толщина образца.
+Это значение игнорируется, когда выбран режим «Serial image».</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Толщина образца.
+Это значение игнорируется, когда выбран режим «Serial image».</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
+    <value>Если флажок установлен, изображение рассчитывается
+немедленно при вращении кристалла.</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Запускает моделирование изображения с текущими настройками кристалла,
+микроскопа, толщины, дефокуса и отображения.</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
+    <value>При моделировании изображений в режиме серии
+сохраняет каждое изображение отдельно.</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
+    <value>Накладывает на сохранённое изображение элементарную ячейку,
+метки и масштабную линейку.</value>
+  </data>
+  <data name="checkBoxCTF.ToolTip" xml:space="preserve">
+    <value>Показывает окно графика передаточной функции контраста (CTF),
+который отображает, как аберрации линзы и дефокус
+передают контраст изображения в зависимости от пространственной частоты.</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Применяет гауссово размытие (FWHM задаётся справа, в
+pm) к отображаемому изображению для приближения
+конечного разрешения / функции рассеяния точки.</value>
+  </data>
+  <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>Фиксирует верхнюю границу интенсивности для нормировки на
+значение справа вместо использования максимума изображения.</value>
+  </data>
+  <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>Фиксирует нижнюю границу интенсивности для нормировки на
+значение справа вместо использования минимума изображения.</value>
+  </data>
+  <data name="checkBoxOpenAperture.ToolTip" xml:space="preserve">
+    <value>Убирает объективную апертуру (открытая / бесконечная);
+все дифрагированные пучки участвуют в формировании изображения.</value>
+  </data>
+  <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
+    <value>Показывает Ug, (электростатический) потенциал
+кристалла, отвечающий за упругое рассеяние.</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
+    <value>Показывает U'g, мнимый (поглощающий) потенциал,
+возникающий из-за TDS (термического диффузного рассеяния).</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Выбирает цветовую шкалу для отображения изображения:
+градации серого или холодно-тёплую (сине-красную) цветовую карту.</value>
+  </data>
+  <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
+    <value>Число значений дефокуса, генерируемых
+в режиме серии (через фокус).</value>
+  </data>
+  <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
+    <value>Начальный дефокус (nm; отрицательный = недофокус)
+для серии через фокус.</value>
+  </data>
+  <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
+    <value>Шаг дефокуса (nm) между последовательными
+изображениями в серии через фокус.</value>
+  </data>
+  <data name="numericBoxGaussianBlurRadius.ToolTip" xml:space="preserve">
+    <value>Полная ширина на половине высоты (FWHM, в pm)
+гауссова размытия, применяемого к отображаемому изображению.</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.ToolTip" xml:space="preserve">
+    <value>Горизонтальный (X) сдвиг центра объективной
+апертуры, в mrad (для наклонной / тёмнопольной съёмки).</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
+    <value>Вертикальный (Y) сдвиг центра объективной
+апертуры, в mrad (для наклонной / тёмнопольной съёмки).</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
+    <value>Отображает потенциал кристалла (Ug /
+U'g) как изображения модуля и фазы.</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
+    <value>Отображает потенциал кристалла (Ug /
+U'g) как изображения действительной и мнимой части.</value>
+  </data>
+  <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
+    <value>Режим серии: генерирует серию изображений при
+изменении дефокуса и/или толщины образца
+(серия через фокус / через толщину).</value>
+  </data>
+  <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
+    <value>Одиночный режим: генерирует одно изображение при
+текущих настройках дефокуса и толщины.</value>
+  </data>
+  <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
+    <value>Список значений дефокуса (nm) для моделирования; автоматически
+заполняется по Start/Step/Num, но допускает ручное редактирование.</value>
+  </data>
+  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
+    <value>Внешний радиус детектора STEM (сканирующая
+просвечивающая электронная микроскопия) в
+обратных единицах (nm⁻¹), пересчитанный из внешнего
+угла сбора детектора. Только для чтения.</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Внешний радиус детектора STEM (сканирующая
+просвечивающая электронная микроскопия) в
+обратных единицах (nm⁻¹), пересчитанный из внешнего
+угла сбора детектора. Только для чтения.</value>
+  </data>
+  <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
+    <value>Верхняя интенсивность отображения (соответствует белому); повышайте/понижайте
+для задания верхнего предела контраста показываемого изображения.</value>
+  </data>
+  <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
+    <value>Нижняя интенсивность отображения (соответствует чёрному); повышайте/понижайте
+для задания нижнего предела контраста показываемого изображения.</value>
+  </data>
+  <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
+    <value>Полуугол сходимости, выраженный как
+радиус в обратном пространстве sin(theta)/lambda
+(nm^-1); обновляется автоматически по
+углу сходимости STEM. Только для чтения.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Полуугол сходимости, выраженный как
+радиус в обратном пространстве sin(theta)/lambda
+(nm^-1); обновляется автоматически по
+углу сходимости STEM. Только для чтения.</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
+    <value>Размещать дефокусировку вдоль горизонтальной оси сетки
+серийных изображений (по вертикали меняется толщина).</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
+    <value>Размещать толщину вдоль горизонтальной оси
+сетки серийных изображений (по вертикали меняется дефокусировка).</value>
+  </data>
+  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
+    <value>Внутренний угол детектора, выраженный как радиус в обратном
+пространстве sin(theta)/lambda (nm^-1); обновляется по внутреннему
+углу STEM-детектора. Только для чтения.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Внутренний угол детектора, выраженный как радиус в обратном
+пространстве sin(theta)/lambda (nm^-1); обновляется по внутреннему
+углу STEM-детектора. Только для чтения.</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.ToolTip" xml:space="preserve">
+    <value>Показывать только модуль (амплитуду) комплексного
+кристаллического потенциала (коэффициент Фурье Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
+    <value>Показывать одновременно модуль и фазу
+комплексного кристаллического потенциала (Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
+    <value>Показывать только фазу комплексного кристаллического потенциала (Ug).</value>
+  </data>
+  <data name="textBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>Радиус объективной апертуры, выраженный как
+радиус в обратном пространстве sin(theta)/lambda
+(nm^-1); только для чтения. Определяет, какие
+пучки проходят через объективную апертуру HRTEM.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Радиус объективной апертуры, выраженный как
+радиус в обратном пространстве sin(theta)/lambda
+(nm^-1); только для чтения. Определяет, какие
+пучки проходят через объективную апертуру HRTEM.</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.ToolTip" xml:space="preserve">
+    <value>Показывать только мнимую часть комплексного кристаллического
+потенциала (Ug), то есть поглощающую составляющую.</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.ToolTip" xml:space="preserve">
+    <value>Показывать только действительную часть
+комплексного кристаллического потенциала (Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.ToolTip" xml:space="preserve">
+    <value>Показывать одновременно действительную и мнимую части
+комплексного кристаллического потенциала (Ug).</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Открыть таблицу со списком дифрагированных пучков
+(рефлексов), попадающих внутрь объективной апертуры.</value>
+  </data>
+  <data name="textBoxNumOfSpots.ToolTip" xml:space="preserve">
+    <value>Число дифрагированных пучков (рефлексов), попадающих
+внутрь объективной апертуры (только для чтения).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Число дифрагированных пучков (рефлексов), попадающих
+внутрь объективной апертуры (только для чтения).</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Открыть пояснение базовой концепции,
+лежащей в основе моделирования изображений HRTEM
+(просвечивающая электронная микроскопия высокого разрешения).</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.ToolTipText" xml:space="preserve">
+    <value>Выберите вычислительную библиотеку: нативный
+код (быстрый C++/Eigen) или управляемый код
+(.NET). Нативный обычно работает быстрее.</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Выберите вычислительную библиотеку: нативный
+код (быстрый C++/Eigen) или управляемый код
+(.NET). Нативный обычно работает быстрее.</value>
+  </data>
+  <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
+    <value>Число толщин (изображений),
+генерируемых в серии последовательных изображений.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>Начальная толщина образца (nm) в серии толщин
+для последовательных изображений. Вместе со значениями Step и Num
+формирует список толщин ниже.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Шаг по толщине (nm) между соседними
+изображениями в серии последовательных изображений.</value>
+  </data>
+  <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
+    <value>Список толщин образца (nm) для моделирования,
+по одному значению в строке. Заполняется автоматически
+из Start/Step/Num, но допускает прямое редактирование.</value>
+  </data>
+  <data name="checkBoxPreset.ToolTip" xml:space="preserve">
+    <value>Показать или скрыть окно предустановок, в котором
+сохраняются и вызываются условия съёмки TEM.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Внутренний/внешний полуугол сбора (mrad)
+кольцевого детектора тёмного поля.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Цветовая шкала для отображения интенсивности (серая или холодно-тёплая).</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Полуугол сходимости α (mrad) падающего STEM-зонда.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Эффективный размер источника электронов (σs, FWHM, в pm);
+моделирует размытие STEM-зонда из-за конечного размера источника.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Толщина образца (nm). Это значение игнорируется,
+когда выбран режим «Serial image».</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Выберите, какая величина (дефокусировка или толщина) меняется
+вдоль горизонтальной оси сетки серийных изображений.</value>
+  </data>
 </root>

@@ -137,4 +137,435 @@
   <data name="buttonSearchAll.Text" xml:space="preserve">
     <value>由三張圖樣尋找晶帶軸</value>
   </data>
+  <data name="buttonSearchAll.ToolTip" xml:space="preserve">
+    <value>在所有已登錄的結晶中，搜尋能同時滿足
+兩張或三張繞射圖樣及其間
+夾持器傾斜角的晶帶軸組合；
+並開啟候選結果視窗。</value>
+  </data>
+  <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
+    <value>在已載入的結晶中，搜尋計算繞射圖樣
+於容差範圍內與 Pattern 1
+（所輸入的 L1/L2/L3 與 θ）吻合的晶帶軸；
+吻合者會列於結果視窗中。</value>
+  </data>
+  <data name="buttonSearchPhoto2.ToolTip" xml:space="preserve">
+    <value>在已載入的結晶中，搜尋計算繞射圖樣
+於容差範圍內與 Pattern 2
+（所輸入的 L1/L2/L3 與 θ）吻合的晶帶軸；
+吻合者會列於結果視窗中。</value>
+  </data>
+  <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
+    <value>使用所有已載入的結晶，搜尋僅與 Photo 3 繞射
+圖樣（向量 L1、L2 與夾角／第三邊）相符的
+結晶晶帶軸。</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L1Photo2L1.ToolTip" xml:space="preserve">
+    <value>將 Photo 1 與 Photo 2 的 L1 反射視為同一斑點
+（沿傾斜軸共用的共同反射）；並將 Photo 2 的
+L1 長度鎖定為 Photo 1 的值。</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto1L2Photo2L2.ToolTip" xml:space="preserve">
+    <value>將 Photo 1 與 Photo 2 的 L2 反射視為同一斑點
+（沿傾斜軸共用的共同反射）；並將 Photo 2 的
+L2 長度鎖定為 Photo 1 的值。</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L1Photo3L1.ToolTip" xml:space="preserve">
+    <value>將 Photo 2 與 Photo 3 的 L1 反射視為同一斑點
+（沿傾斜軸共用的共同反射）；並將 Photo 3 的
+L1 長度鎖定為 Photo 2 的值。</value>
+  </data>
+  <data name="checkBoxEquivalentPhoto2L2Photo3L2.ToolTip" xml:space="preserve">
+    <value>將 Photo 2 與 Photo 3 的 L2 反射視為同一斑點
+（沿傾斜軸共用的共同反射）；並將 Photo 3 的
+L2 長度鎖定為 Photo 2 的值。</value>
+  </data>
+  <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
+    <value>啟用第二張繞射圖樣（Photo 2）：
+顯示其輸入欄位，以便由兩張圖樣及其相對
+夾持器傾斜來搜尋晶帶軸。</value>
+  </data>
+  <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
+    <value>啟用第三張繞射圖樣（Photo 3）：
+顯示其輸入欄位，以便由三張圖樣及其
+相對夾持器傾斜來搜尋晶帶軸
+（需要 Photo 2）。</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>穿透式電子顯微鏡的加速電壓 (kV)；
+決定用於解析繞射圖樣的
+電子波長。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>穿透式電子顯微鏡的加速電壓 (kV)；
+決定用於解析繞射圖樣的
+電子波長。</value>
+  </data>
+  <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
+    <value>繞射圖樣的相機長度 (mm)；
+將量測到的斑點距離 (mm) 換算為
+用於指標化的倒晶格間距。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>繞射圖樣的相機長度 (mm)；
+將量測到的斑點距離 (mm) 換算為
+用於指標化的倒晶格間距。</value>
+  </data>
+  <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
+    <value>Pattern 1 的兩個倒空間向量 L1 與 L2 之間的
+夾角 θ（度）。在「Two Sides and an Angle」模式
+下可編輯；在「Three Sides」模式下由 L1/L2/L3
+計算並以唯讀方式顯示。</value>
+  </data>
+  <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 1 時測角儀夾持器的
+第一傾斜角（Tilt 1，以度計）。
+在由多張照片搜尋晶帶軸時，
+用於建立各圖樣之間的相互關係。</value>
+  </data>
+  <data name="numericBoxP1Tilt2.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 1 時夾持器的第二傾斜角
+（Tilt 2，以度計）（夾持器的第二個、
+與其正交的傾斜軸）。</value>
+  </data>
+  <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
+    <value>Pattern 2 的兩個倒空間向量 L1 與 L2 之間的
+夾角 θ（度）。在「Two Sides and an Angle」模式
+下可編輯；在「Three Sides」模式下由 L1/L2/L3
+計算並以唯讀方式顯示。</value>
+  </data>
+  <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 2 時測角儀夾持器的
+第一傾斜角（Tilt 1，以度計）。
+在由多張照片搜尋晶帶軸時，用於建立
+Photo 2 與其他圖樣之間的關係。</value>
+  </data>
+  <data name="numericBoxP2Tilt2.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 2 時夾持器的第二傾斜角
+（Tilt 2，以度計）（夾持器的第二個、
+與其正交的傾斜軸）。</value>
+  </data>
+  <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
+    <value>Photo 3 的兩個繞射向量 L1 與 L2 之間的夾角 θ（度）。
+在「Three Sides」模式下由三邊計算
+並以唯讀方式顯示；在「Two Sides and an Angle」
+模式下可直接編輯。</value>
+  </data>
+  <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
+    <value>記錄 Photo 3 時所用第一夾持器軸的
+傾斜角（度）；與 Tilt 2 結合
+以計算不同圖樣的夾持器
+設定之間的夾角。</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>記錄 Photo 3 時所用第一夾持器軸的
+傾斜角（度）；與 Tilt 2 結合
+以計算不同圖樣的夾持器
+設定之間的夾角。</value>
+  </data>
+  <data name="numericBoxP3Tilt2.ToolTip" xml:space="preserve">
+    <value>記錄 Photo 3 時所用第二夾持器軸的
+傾斜角（度）；與 Tilt 1 結合
+以計算不同圖樣的夾持器
+設定之間的夾角。</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>記錄 Photo 3 時所用第二夾持器軸的
+傾斜角（度）；與 Tilt 1 結合
+以計算不同圖樣的夾持器
+設定之間的夾角。</value>
+  </data>
+  <data name="numericBoxPhoto1L1Err.ToolTip" xml:space="preserve">
+    <value>Pattern 1 的 L1 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。L1 與所輸入值
+之差在此比例以內的晶帶軸，仍會被接受
+為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto1L2Err.ToolTip" xml:space="preserve">
+    <value>Pattern 1 的 L2 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。L2 與所輸入值
+之差在此比例以內的晶帶軸，仍會被接受
+為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
+    <value>Pattern 1 的 L3 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。僅用於
+「Three Sides」模式；與所輸入 L3 之差在此
+比例以內者會被接受。</value>
+  </data>
+  <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
+    <value>Pattern 1 角 θ 的搜尋容差，以度表示
+（0-30，既定 3）。僅用於「Two Sides and an
+Angle」模式；角度之差在此度數以內的晶帶軸，
+仍會被接受為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Photo 1 的 Tilt 1 搜尋容差，以度表示
+（0-10）。設定比對候選時夾持器傾斜角
+可允許的偏差幅度。</value>
+  </data>
+  <data name="numericBoxPhoto1Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Photo 1 的 Tilt 2 搜尋容差，以度表示
+（0-10）。設定比對候選時第二夾持器傾斜角
+可允許的偏差幅度。</value>
+  </data>
+  <data name="numericBoxPhoto2L1Err.ToolTip" xml:space="preserve">
+    <value>Pattern 2 的 L1 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。L1 之差在
+此比例以內的晶帶軸，仍會被接受
+為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto2L2Err.ToolTip" xml:space="preserve">
+    <value>Pattern 2 的 L2 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。L2 之差在
+此比例以內的晶帶軸，仍會被接受
+為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
+    <value>Pattern 2 的 L3 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。僅用於
+「Three Sides」模式；與 L3 之差在此比例
+以內者會被接受。</value>
+  </data>
+  <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
+    <value>Pattern 2 角 θ 的搜尋容差，以度表示
+（0-30，既定 3）。僅用於「Two Sides and an
+Angle」模式；角度之差在此度數以內者，
+會被接受為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Photo 2 的 Tilt 1 搜尋容差，以度表示
+（0-10）。設定比對候選時夾持器傾斜角
+可允許的偏差幅度。</value>
+  </data>
+  <data name="numericBoxPhoto2Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Photo 2 的 Tilt 2 搜尋容差，以度表示
+（0-10）。設定比對候選時第二夾持器傾斜角
+可允許的偏差幅度。</value>
+  </data>
+  <data name="numericBoxPhoto3L1Err.ToolTip" xml:space="preserve">
+    <value>Photo 3 向量 L1 長度的搜尋容差，以百分比表示
+（0-50）。計算出的 L1 之差在此範圍以內的候選
+會被接受為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto3L2Err.ToolTip" xml:space="preserve">
+    <value>Photo 3 向量 L2 長度的搜尋容差，以百分比表示
+（0-50）。計算出的 L2 之差在此範圍以內的候選
+會被接受為吻合。</value>
+  </data>
+  <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
+    <value>Photo 3 第三邊 L3 長度的搜尋容差，以百分比表示
+（0-50）。僅用於「Three Sides」模式。</value>
+  </data>
+  <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
+    <value>Photo 3 角度 θ 的搜尋容差，以度表示
+（0-30）。計算角之差在此範圍以內的候選
+會被接受。僅用於「Two Sides and an Angle」
+模式。</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
+    <value>Photo 3 Tilt 1 角度的容差
+（±度，0-10），用於接受計算出的
+圖樣間夾持器角度在此範圍以內
+相符的晶帶軸候選。</value>
+  </data>
+  <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
+    <value>Photo 3 Tilt 2 角度的容差
+（±度，0-10），用於接受計算出的
+圖樣間夾持器角度在此範圍以內
+相符的晶帶軸候選。</value>
+  </data>
+  <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
+    <value>以三邊長 L1、L2、L3 定義 Pattern 1；
+夾角 θ 隨即由此三邊計算。
+（另一個單選按鈕則改以兩邊與夾角
+來定義圖樣。）</value>
+  </data>
+  <data name="radioButtonPhoto1Mode2.ToolTip" xml:space="preserve">
+    <value>以兩邊長 L1、L2 及兩者間的夾角 θ
+定義 Pattern 1；L3 隨即計算得出。
+（另一個單選按鈕則改以三邊
+來定義圖樣。）</value>
+  </data>
+  <data name="radioButtonPhoto2Mode1.ToolTip" xml:space="preserve">
+    <value>以三邊長 L1、L2、L3 定義 Pattern 2；夾角 θ
+隨即由此三邊計算。（另一個單選按鈕
+則改以兩邊與夾角來定義。）</value>
+  </data>
+  <data name="radioButtonPhoto2Mode2.ToolTip" xml:space="preserve">
+    <value>以兩邊長 L1、L2 及兩者間的夾角 θ 定義
+Pattern 2；L3 隨即計算得出。（另一個單選
+按鈕則改以三邊來定義。）</value>
+  </data>
+  <data name="radioButtonPhoto3Mode1.ToolTip" xml:space="preserve">
+    <value>以三邊長 L1、L2、L3 定義 Photo 3 的
+圖樣三角形；角度 θ 隨即
+自動計算。</value>
+  </data>
+  <data name="radioButtonPhoto3Mode2.ToolTip" xml:space="preserve">
+    <value>以兩邊長 L1、L2 及兩者間的夾角 θ 定義
+Photo 3 的圖樣；第三邊 L3 隨即
+自動計算。</value>
+  </data>
+  <data name="textBoxAngleBetween12.ToolTip" xml:space="preserve">
+    <value>Photo 1 與 Photo 2 的夾持器傾斜設定
+之間的夾角（度），由各自的 Tilt 1 / Tilt 2
+值計算得出（唯讀）。</value>
+  </data>
+  <data name="textBoxAngleBetween23.ToolTip" xml:space="preserve">
+    <value>Photo 2 與 Photo 3 的夾持器傾斜設定
+之間的夾角（度），由各自的 Tilt 1 / Tilt 2
+值計算得出（唯讀）。</value>
+  </data>
+  <data name="textBoxAngleBetween31.ToolTip" xml:space="preserve">
+    <value>Photo 3 與 Photo 1 的夾持器傾斜設定
+之間的夾角（度），由各自的 Tilt 1 / Tilt 2
+值計算得出（唯讀）。</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>由加速電壓自動計算出的電子波長 (nm)，
+為唯讀。</value>
+  </data>
+  <data name="label67.ToolTip" xml:space="preserve">
+    <value>由加速電壓自動計算出的電子波長 (nm)，
+為唯讀。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 1 時夾持器的第二傾斜角
+（Tilt 2，度）。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>L3：Pattern 1 第三個倒晶格向量的長度
+（照片上的 mm），用於在「Three Sides」模式
+定義斑點三角形。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>L2：Pattern 1 第二個倒晶格向量的長度
+（照片上的 mm）。</value>
+  </data>
+  <data name="label131.ToolTip" xml:space="preserve">
+    <value>Pattern 1 的 L1 搜尋容差，以其長度的
+百分比表示（0-50%，既定 5）。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 1 時夾持器的第一傾斜角
+（Tilt 1，度）。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>L1：Pattern 1 第一個倒晶格向量的長度
+（照片上的 mm）。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Percent：Pattern 2 的 L1 搜尋容差的
+單位（0-50%，既定 5）。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Degrees：Pattern 2 角 θ 的搜尋容差的
+單位（0-30，既定 3）。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Percent：Pattern 2 的 L2 搜尋容差的
+單位（0-50%，既定 5）。</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Percent：Pattern 2 的 L3 搜尋容差的單位
+（0-50%，既定 5；用於「Three Sides」模式）。</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>L1：Pattern 2 第 1 倒晶格向量的長度
+（照片上的 mm）。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>L2：Pattern 2 第 2 倒晶格向量的長度
+（照片上的 mm）。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Pattern 2 倒晶格向量 L1 與
+L2 之間的夾角 θ（度）。</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>L3：Pattern 2 第 3 倒晶格向量的長度
+（照片上的 mm），於「Three Sides」
+模式下使用。</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>度：Pattern 2 之 L1 與 L2 間夾角 θ 的單位。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Pattern 1 之 L2 的搜尋容許誤差，以其
+長度的百分比表示（0-50%，預設 5）。</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Photo 3 第 1 繞射向量的實測長度 L1，
+以記錄面上的 mm 表示。</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Photo 3 第 2 繞射向量的實測長度 L2，
+以記錄面上的 mm 表示。</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Photo 3 之向量 L1 與 L2 之間的夾角 θ（度）。</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Photo 3 圖案三角形的第 3 邊長 L3，
+以 mm 表示（於「Three Sides」模式下使用）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 2 時測角儀載台的第 1 傾斜角
+（Tilt 1，度）。</value>
+  </data>
+  <data name="label69.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 1 之 L1 的正負搜尋容許誤差
+（以其長度的百分比表示）。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>拍攝 Photo 2 時測角儀載台的第 2 傾斜角
+（Tilt 2，度）。</value>
+  </data>
+  <data name="label70.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 1 之 L2 的正負搜尋容許誤差
+（以其長度的百分比表示）。</value>
+  </data>
+  <data name="label71.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 1 之 L3 的正負搜尋容許誤差
+（以其長度的百分比表示；於「Three Sides」模式下使用）。</value>
+  </data>
+  <data name="label75.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 1 之夾角 θ 的正負搜尋容許誤差
+（度；於「Two Sides and an Angle」
+模式下使用）。</value>
+  </data>
+  <data name="label76.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 2 之 L1 的正負搜尋容許誤差
+（以其長度的百分比表示）。</value>
+  </data>
+  <data name="label77.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 2 之 L2 的正負搜尋容許誤差
+（以其長度的百分比表示）。</value>
+  </data>
+  <data name="label78.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 2 之 L3 的正負搜尋容許誤差
+（以其長度的百分比表示；於「Three Sides」模式下使用）。</value>
+  </data>
+  <data name="label79.ToolTip" xml:space="preserve">
+    <value>套用於 Pattern 2 之夾角 θ 的正負搜尋容許誤差
+（度；於「Two Sides and an Angle」
+模式下使用）。</value>
+  </data>
+  <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
+    <value>Pattern 1 倒晶格向量 L1 與
+L2 之間的夾角 θ（度）。</value>
+  </data>
+  <data name="labelPhoto1Mode1_3.ToolTip" xml:space="preserve">
+    <value>度：Pattern 1 之 L1 與 L2 間夾角 θ 的單位。</value>
+  </data>
+  <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
+    <value>度：Pattern 1 之夾角 θ 搜尋容許誤差的
+單位（0-30，預設 3）。</value>
+  </data>
+  <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
+    <value>Pattern 1 之 L3 的搜尋容許誤差，以其長度的
+百分比表示（0-50%，
+預設 5；於「Three Sides」模式下使用）。</value>
+  </data>
 </root>

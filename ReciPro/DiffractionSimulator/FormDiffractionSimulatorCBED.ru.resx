@@ -125,4 +125,162 @@
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>для отдельных дисков</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Выполнить моделирование CBED</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>Рисовать окружности, показывающие границу каждого дифракционного диска</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>Выберите способ решения уравнений блоховских волн
+(задача на собственные значения или матричная экспонента; библиотека
+Eigen или MKL). Результаты должны совпадать, но скорость
+различается; используйте Auto, кроме случаев бенчмаркинга.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Выберите способ решения уравнений блоховских волн
+(задача на собственные значения или матричная экспонента; библиотека
+Eigen или MKL). Результаты должны совпадать, но скорость
+различается; используйте Auto, кроме случаев бенчмаркинга.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>Число потоков CPU, используемых для расчёта блоховских
+волн CBED (дифракция электронов в сходящемся пучке), 1-128.
+Отключено, когда Solver установлен в Auto.</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Число потоков CPU, используемых для расчёта блоховских
+волн CBED (дифракция электронов в сходящемся пучке), 1-128.
+Отключено, когда Solver установлен в Auto.</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>Режим CBED (дифракция электронов в сходящемся пучке):
+каждый брэгговский рефлекс становится диском, чьё
+внутреннее распределение интенсивности меняется с наклоном падающего пучка.</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>Режим LACBED (дифракция электронов в сходящемся пучке
+с большим углом): использует более широкий угол сходимости, поэтому
+рефлекс регистрируется в большем угловом диапазоне.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Число дифрагированных пучков (блоховских волн),
+включённых в динамический расчёт многократного
+рассеяния, 1-2048. Большее число волн повышает
+точность, но замедляет вычисление.</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>Максимальный полуугол сходимости (mrad)</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>Максимальный полуугол сходимости (mrad)</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>Угловой шаг дискретизации на пиксель поперёк каждого
+диска (mrad/пиксель). Меньшие значения дают больше
+делений по диаметру, показанных справа, для более
+детальных дисков, но более длительного расчёта.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Угловой шаг дискретизации на пиксель поперёк каждого
+диска (mrad/пиксель). Меньшие значения дают больше
+делений по диаметру, показанных справа, для более
+детальных дисков, но более длительного расчёта.</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Задайте диапазон и шаг толщин образца</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Остановить текущее моделирование</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Выберите направление градиента интенсивности:
+Positive означает, что яркое — сильное; Negative
+инвертирует шкалу, так что тёмное — сильное.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу, используемую для сопоставления интенсивности диска с
+цветом отображения (Gray, Cold-Warm, Spectrum или Fire).</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>Задайте значение гаммы.
+Чем больше это значение, тем ярче выглядит внешний диск.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Задайте интенсивность, при которой
+яркость отображается как ноль.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Задайте интенсивность, при которой
+яркость отображается как ноль.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Задайте интенсивность, при которой яркость
+отображается как максимальное значение.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Задайте интенсивность, при которой яркость
+отображается как максимальное значение.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Задайте интенсивность, при которой яркость
+отображается как максимальное значение.</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>Один и тот же диапазон яркости (Min/Max) применяется ко всем дискам.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Один и тот же диапазон яркости (Min/Max) применяется ко всем дискам.</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>Отдельные диапазоны яркости
+применяются к каждому отдельному диску.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Выберите толщину образца для отображения.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Толщина образца (nm) дисковой
+картины, отображаемой в настоящий момент.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Толщина образца (nm) дисковой
+картины, отображаемой в настоящий момент.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Толщина образца (nm) дисковой
+картины, отображаемой в настоящий момент.</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>Угловой шаг дискретизации на пиксель поперёк
+каждого диска (mrad/пиксель). Меньшие значения
+дают больше делений по диаметру, показанных здесь,
+для более детальных дисков, но более длительного расчёта.</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>Задайте значение гаммы. Чем больше это значение,
+тем ярче выглядит внешний диск.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Выберите цветовую шкалу (Gray / Cold-Warm / Spectrum / Fire).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Выберите направление градиента
+(Positive или Negative / инвертированный).</value>
+  </data>
 </root>

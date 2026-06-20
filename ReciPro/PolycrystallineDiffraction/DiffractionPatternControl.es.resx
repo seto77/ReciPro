@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>Enmascara la región actualmente previsualizada: excluye
+esos píxeles del ajuste (residuo) para que se
+ignoren al comparar con la simulación.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>Enmascara todos los píxeles de la imagen (excluye
+la imagen completa del ajuste).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>Guarda la máscara actual en un archivo .mas
+para poder recargarla más adelante.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>Desenmascara la región actualmente previsualizada:
+vuelve a incluir esos píxeles en el ajuste.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>Borra todas las máscaras: vuelve a incluir todos los píxeles en el ajuste.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Aplica difuminado de película: convoluciona los anillos simulados con
+una función de dispersión de punto instrumental (gaussiana) de la anchura
+fijada a la derecha (µm) para imitar el difuminado del detector/película.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Modo de máscara: selecciona los píxeles alrededor de picos
+de difracción elegidos (reflexiones hkl) para enmascarar;
+mutuamente excluyente con los demás modos de máscara.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>Modo de máscara: enmascara un anillo anular (de rosquilla) entre
+los radios Start y End desde el centro del patrón;
+mutuamente excluyente con los demás modos de máscara.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>Modo de máscara: pinta máscaras directamente sobre la
+imagen con el ratón usando la forma elegida
+abajo (punto/círculo/rectángulo/rosquilla);
+mutuamente excluyente con los demás modos de máscara.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>Modo de máscara: enmascara una banda recta (rectángulo)
+definida por dirección, anchura de banda y ángulo;
+mutuamente excluyente con los demás modos de máscara.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>Aplica la máscara de banda simétricamente a ambos lados
+de la línea central (en lugar de solo a un lado).</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>Dirección predefinida de la máscara de banda
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+las predefinidas fijan el ángulo, Free permite introducirlo manualmente.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>Radio (en píxeles) de la máscara de punto manual
+pintada en cada clic del ratón (1–128).</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Longitud de cámara (distancia muestra-detector)
+en mm; escala el radio de los anillos de
+difracción simulados en el detector.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>Coordenada X en píxeles del centro del haz directo
+(patrón); fija dónde se centran los
+anillos de difracción en la imagen.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>Coordenada Y en píxeles del centro del haz directo
+(patrón); fija dónde se centran los
+anillos de difracción en la imagen.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Anchura del difuminado de película en µm: la función de dispersión
+de punto instrumental gaussiana convolucionada con los anillos para ensanchar
+los picos (resolución del detector/película).</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>Tamaño de píxel del detector de la imagen de origen en
+mm/píxel; junto con la longitud de cámara convierte
+el ángulo de dispersión en radio de anillo en píxeles.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>Resolución de visualización en pantalla en mm/píxel;
+fija el factor de zoom (mm/píxel del monitor ÷
+mm/píxel de la imagen) del patrón mostrado.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>Ángulo de la máscara de banda en grados (0–360°); fija la
+orientación de la banda. Editable solo cuando Direction es Free.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>Anchura de la máscara de banda en píxeles (0–10000);
+fija lo ancha que es la franja enmascarada.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>Forma de máscara manual: arrastre para definir un círculo (desde
+el centro hasta el radio) y enmascarar el área encerrada.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>Forma de máscara manual: arrastre dos radios alrededor del
+centro del patrón para enmascarar un anillo anular (de rosquilla).</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>Forma de máscara manual: arrastre un rectángulo (dos
+puntos de esquina) y enmascare el área encerrada.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>Forma de máscara manual: haga clic para enmascarar (izquierda)
+o desenmascarar (derecha) un punto circular del
+radio fijado por Size; el modo predeterminado.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Anchura × altura de la imagen simulada en
+píxeles (1–10000); fija el tamaño del lienzo
+del patrón de difracción generado.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Guarda el patrón de difracción simulado actual
+en un archivo de imagen IPA (*.ipa), incluyendo
+resolución, centro, longitud de cámara y longitud de onda.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>Resalta los píxeles enmascarados (excluidos del ajuste) en
+la imagen para que pueda ver qué regiones se ignoran.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>Intensidad superior de la ventana de brillo de
+visualización (cuentas asignadas al color más brillante).
+Afecta solo al contraste de visualización, no a los datos.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Intensidad superior de la ventana de brillo de
+visualización (cuentas asignadas al color más brillante).
+Afecta solo al contraste de visualización, no a los datos.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>Intensidad inferior de la ventana de brillo de
+visualización (cuentas asignadas al color más oscuro).
+Afecta solo al contraste de visualización, no a los datos.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Intensidad inferior de la ventana de brillo de
+visualización (cuentas asignadas al color más oscuro).
+Afecta solo al contraste de visualización, no a los datos.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>Amplitud (A) del halo de fondo difuso inicial,
+en escala logarítmica. Fija la altura del pico del
+anillo de fondo usado como conjetura inicial para el ajuste.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Amplitud (A) del halo de fondo difuso inicial,
+en escala logarítmica. Fija la altura del pico del
+anillo de fondo usado como conjetura inicial para el ajuste.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>Anchura (H, anchura total a media altura en píxeles)
+del halo de fondo difuso inicial. Valores mayores
+hacen el anillo de fondo más ancho.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Anchura (H, anchura total a media altura en píxeles)
+del halo de fondo difuso inicial. Valores mayores
+hacen el anillo de fondo más ancho.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>Radio (R, en píxeles desde el centro)
+del halo de fondo difuso inicial.
+Fija dónde alcanza su pico el anillo de fondo.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Radio (R, en píxeles desde el centro)
+del halo de fondo difuso inicial.
+Fija dónde alcanza su pico el anillo de fondo.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>Radio exterior (en píxeles desde el centro)
+de la máscara anular. Los píxeles entre los radios
+Start y End se seleccionan para enmascarar.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Radio exterior (en píxeles desde el centro)
+de la máscara anular. Los píxeles entre los radios
+Start y End se seleccionan para enmascarar.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>Radio interior (en píxeles desde el centro)
+de la máscara anular. Los píxeles entre los radios
+Start y End se seleccionan para enmascarar.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Radio interior (en píxeles desde el centro)
+de la máscara anular. Los píxeles entre los radios
+Start y End se seleccionan para enmascarar.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Radio interior (en píxeles desde el centro)
+de la máscara anular. Los píxeles entre los radios
+Start y End se seleccionan para enmascarar.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Acimut (phi) del eje de inclinación de muestra/detector, en
+grados. Fija la dirección alrededor de la cual se inclina el patrón,
+afectando a la orientación de la distorsión de los anillos.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Acimut (phi) del eje de inclinación de muestra/detector, en
+grados. Fija la dirección alrededor de la cual se inclina el patrón,
+afectando a la orientación de la distorsión de los anillos.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Magnitud (tau) de la inclinación de muestra/detector alrededor
+del eje phi, en grados. Valores mayores distorsionan
+los anillos de Debye de círculos hacia elipses.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Magnitud (tau) de la inclinación de muestra/detector alrededor
+del eje phi, en grados. Valores mayores distorsionan
+los anillos de Debye de círculos hacia elipses.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Marca todas las reflexiones (hkl) de la
+lista de picos, seleccionando todos los picos a la vez.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Desmarca todas las reflexiones (hkl) de
+la lista de picos, eliminando la selección.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>Selecciona el área de la imagen alrededor de los anillos de las
+reflexiones marcadas (hkl) para poder enmascararlas.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>Lista de índices de reflexión (hkl);
+marque los picos cuya área de anillo
+circundante desee seleccionar para enmascarar.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>Convergencia del haz (semiángulo) de la radiación
+incidente, en grados. Valores mayores ensanchan
+los picos simulados de los anillos de Debye.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Convergencia del haz (semiángulo) de la radiación
+incidente, en grados. Valores mayores ensanchan
+los picos simulados de los anillos de Debye.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>Convergencia del haz (semiángulo) de la radiación
+incidente, en grados. Valores mayores ensanchan
+los picos simulados de los anillos de Debye.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>Dispersión de longitud de onda (monocromaticidad,
+Delta-lambda / lambda) de la fuente, en %.
+Valores mayores ensanchan los anillos simulados.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>Dispersión de longitud de onda (monocromaticidad,
+Delta-lambda / lambda) de la fuente, en %.
+Valores mayores ensanchan los anillos simulados.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>Dispersión de longitud de onda (monocromaticidad,
+Delta-lambda / lambda) de la fuente, en %.
+Valores mayores ensanchan los anillos simulados.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Selecciona la fuente de radiación (rayos X o electrones) y
+su longitud de onda usada para calcular los radios de los anillos de Debye.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>Muestra el residuo (patrón experimental menos
+simulado), para que pueda ver el grado de coincidencia
+del ajuste. Mutuamente excluyente con Simulation.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>Superpone el patrón simulado sobre la
+imagen experimental, mezclado con el deslizador de Opacity.
+Mutuamente excluyente con Residual.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Opacidad de mezcla (0-100%) del patrón simulado
+sobre la imagen experimental en el modo Simulation.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>Guarda los parámetros de fondo actuales en
+un archivo de fondo (*.bg) para reutilizarlo más adelante.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>Habilita la configuración manual del fondo inicial;
+activa los deslizadores A/H/R para definir un
+anillo de fondo inicial antes del refinamiento.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>Resumen de solo lectura de la difracción:
+número de cristalitos que contribuyen y
+la fracción de cada reflexión (hkl).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Radio (en píxeles) de la máscara de punto
+manual pintada en cada clic del ratón.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Radio (en píxeles) de la máscara de punto
+manual pintada en cada clic del ratón.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Coordenada X/Y en píxeles del centro del haz directo (patrón);
+fija dónde se centran los anillos de difracción.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Resolución de visualización en pantalla en mm/píxel;
+fija el factor de zoom del patrón mostrado.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Resolución de visualización en pantalla en mm/píxel;
+fija el factor de zoom del patrón mostrado.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Longitud de cámara (distancia muestra-detector)
+en mm; escala los radios de los anillos de difracción.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Longitud de cámara (distancia muestra-detector)
+en mm; escala los radios de los anillos de difracción.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Ángulo de la máscara de banda en grados
+(0–360°); fija la orientación de la banda
+(editable solo cuando Direction es Free).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Anchura de la máscara de banda en píxeles;
+fija lo ancha que es la franja enmascarada.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Dirección predefinida de la máscara de banda
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+Free permite introducir el ángulo manualmente.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Tamaño de píxel del detector de la imagen de origen en
+mm/píxel; convierte el ángulo de dispersión en radio de anillo.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>Tamaño de píxel del detector de la imagen de origen en
+mm/píxel; convierte el ángulo de dispersión en radio de anillo.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>Coordenada X en píxeles del centro del haz
+directo; fija el centro del anillo.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Coordenada Y en píxeles del centro del haz
+directo; fija el centro del anillo.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Anchura del difuminado de película en µm: función de dispersión de punto
+instrumental gaussiana convolucionada con los anillos para ensanchar los picos.</value>
+  </data>
+</root>

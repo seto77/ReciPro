@@ -125,4 +125,162 @@
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>单个衍射盘</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>执行 CBED 模拟</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>绘制圆圈以显示各衍射盘的边界</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>选择布洛赫波方程的求解方式
+（本征值问题或矩阵指数；Eigen 或
+MKL 库）。结果应当一致，但速度
+不同；除非做性能测试，否则请使用 Auto。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>选择布洛赫波方程的求解方式
+（本征值问题或矩阵指数；Eigen 或
+MKL 库）。结果应当一致，但速度
+不同；除非做性能测试，否则请使用 Auto。</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>用于 CBED（会聚束电子衍射）布洛赫波
+计算的 CPU 线程数，1-128。当 Solver 为
+Auto 时此项不可用。</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>用于 CBED（会聚束电子衍射）布洛赫波
+计算的 CPU 线程数，1-128。当 Solver 为
+Auto 时此项不可用。</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>CBED（会聚束电子衍射）模式：
+每个布拉格衍射变为一个盘，其内部
+强度随入射束倾斜而变化。</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>LACBED（大角度会聚束电子衍射）模式：
+使用更大的会聚角，使一个衍射在更大的
+角度范围内被记录。</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>纳入动力学多重散射计算的
+衍射波（布洛赫波）数目，1-2048。
+波的数目越多精度越高，
+但计算越慢。</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>最大半会聚角（mrad）</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
+    <value>最大半会聚角（mrad）</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>横穿每个盘时每像素的角度采样步长
+（mrad/像素）。值越小，直径方向的
+分割数越多（显示在右侧），盘越精细
+但计算时间越长。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>横穿每个盘时每像素的角度采样步长
+（mrad/像素）。值越小，直径方向的
+分割数越多（显示在右侧），盘越精细
+但计算时间越长。</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>设置试样厚度的范围和步长</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>停止当前模拟</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>选择强度梯度方向：
+Positive 表示越亮越强；Negative
+反转刻度，使越暗越强。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>选择用于将盘强度映射为显示颜色的色阶
+（Gray、Cold-Warm、Spectrum 或 Fire）。</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>设置 gamma 值。
+该值越大，外侧的盘看起来越亮。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>设置一个强度值，
+在该值处亮度显示为零。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>设置一个强度值，
+在该值处亮度显示为零。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>设置一个强度值，在该值处
+亮度显示为最大值。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>设置一个强度值，在该值处
+亮度显示为最大值。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>设置一个强度值，在该值处
+亮度显示为最大值。</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>对所有盘应用相同的亮度范围（Min/Max）。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>对所有盘应用相同的亮度范围（Min/Max）。</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>对每个单独的盘
+应用各自的亮度范围。</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>选择要显示的试样厚度。</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>当前显示的盘图案的
+试样厚度（nm）。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>当前显示的盘图案的
+试样厚度（nm）。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>当前显示的盘图案的
+试样厚度（nm）。</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value>横穿每个盘时每像素的角度采样
+步长（mrad/像素）。值越小，直径
+方向的分割数越多（显示在此处），
+盘越精细但计算时间越长。</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value>设置 gamma 值。该值越大，
+外侧的盘看起来越亮。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>选择色阶（Gray / Cold-Warm / Spectrum / Fire）。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>选择梯度方向
+（Positive 或 Negative / 反转）。</value>
+  </data>
 </root>

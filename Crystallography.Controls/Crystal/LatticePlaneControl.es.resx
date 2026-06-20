@@ -74,4 +74,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Traslación</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Color del plano reticular</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Añade el plano reticular definido arriba
+(índices, traslación, color) a la lista.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Reemplaza el plano reticular actualmente seleccionado
+en la lista con los valores introducidos arriba.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Elimina de la lista el plano reticular actualmente seleccionado.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista de planos reticulares definidos; marca la casilla de
+una fila para alternar si ese plano se muestra.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Introduce los índices de Miller (h k l) del plano reticular
+(índices de Miller-Bravais h k i l para cristales hexagonales).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Desplaza el plano reticular a lo largo de su normal, como
+fracción de la distancia interplanar (-0,5 a 0,5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Desplaza el plano reticular a lo largo de su normal, como
+fracción de la distancia interplanar (-0,5 a 0,5).</value>
+  </data>
 </root>

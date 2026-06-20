@@ -109,4 +109,209 @@
   <data name="$this.Text" xml:space="preserve">
     <value>회전 기하학</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>시선 방향을 빔 방향과 평행하게 설정합니다.</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>시선 방향을 등각 투영으로 설정합니다.</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>체크하면 ReciPro 좌표계와 실험 좌표계가
+연동됩니다.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>회전 행렬 값을 Excel 형식으로
+클립보드에 복사합니다.</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>클립보드에서 Excel 형식의 회전
+행렬 값을 붙여넣습니다.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
+Ψ(도, 마지막 Z축 둘레의 회전). 결정 방위를
+결정합니다.</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
+Ψ(도, 마지막 Z축 둘레의 회전). 결정 방위를
+결정합니다.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 두
+번째 오일러 각 Θ(도, 중간 X축 둘레의
+회전). 결정 방위를 결정합니다.</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 두
+번째 오일러 각 Θ(도, 중간 X축 둘레의
+회전). 결정 방위를 결정합니다.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째
+오일러 각 Φ(도). Θ·Ψ와 함께 결정
+방위(회전 행렬)를 결정합니다.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째
+오일러 각 Φ(도). Θ·Ψ와 함께 결정
+방위(회전 행렬)를 결정합니다.</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 축을 중심으로 한
+회전각(도, −180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 축을 중심으로 한
+회전각(도, −180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 두 번째 고니오미터 축을 중심으로 한
+회전각(도, −180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>실험 좌표계의 두 번째 고니오미터 축을 중심으로 한
+회전각(도, −180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 세 번째 고니오미터 축을 중심으로 한
+회전각(도, -180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>실험 좌표계의 세 번째 고니오미터 축을 중심으로 한
+회전각(도, -180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>실험 좌표계(고니오미터)의 두 번째 회전축을
+활성화합니다 (선택한 X/Y/Z 축을 중심으로
+하는 두 번째 기울기를 추가).</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>첫 번째 각도를 현재 값으로 고정합니다.</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>두 번째 각도를 현재 값으로 고정합니다.</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>세 번째 각도를 현재 값으로 고정합니다.</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>실험 좌표계(고니오미터)의 세 번째 회전축을
+활성화합니다 (선택한 X/Y/Z 축을 중심으로
+하는 세 번째 기울기를 추가).</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 세 번째 고니오미터 회전축을 직교
+좌표의 Z 축으로 설정합니다 (세 번째 회전이 이
+축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 세 번째 고니오미터 회전축을 직교
+좌표의 Y 축으로 설정합니다 (세 번째 회전이 이
+축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 세 번째 고니오미터 회전축을 직교
+좌표의 X 축으로 설정합니다 (세 번째 회전이 이
+축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
+좌표의 Z 축으로 설정합니다 (두 번째 회전
+numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
+좌표의 Y 축으로 설정합니다 (두 번째 회전
+numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 두 번째 고니오미터 회전축을 직교
+좌표의 X 축으로 설정합니다 (두 번째 회전
+numericBoxExp2가 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
+좌표의 Z 축으로 설정합니다 (첫 번째 회전
+numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
+좌표의 Y 축으로 설정합니다 (첫 번째 회전
+numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 회전축을 직교
+좌표의 X 축으로 설정합니다 (첫 번째 회전
+numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>모든 각도를 0으로 초기화합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>ReciPro 좌표계의 3×3 방위(회전) 행렬.
+ZXZ 오일러 각으로부터 계산되는
+읽기 전용 표시입니다.</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (1행, 1열) 성분(읽기
+전용·무차원). ZXZ 오일러 각 Φ·Θ·Ψ로부터
+계산됩니다.</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (1행, 2열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (1행, 3열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (2행, 1열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (2행, 2열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (2행, 3열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (3행, 1열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (3행, 2열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>ReciPro 방위(회전) 행렬의 (3행, 3열) 성분(읽기
+전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 두 번째 오일러 각
+Θ(도, X축 둘레의 회전). 결정 방위를 결정합니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
+Ψ(도, 마지막 Z축 둘레의 회전). 결정 방위를
+결정합니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째 오일러 각
+Φ(도). 결정 방위와 회전 행렬을 결정합니다.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>실험 좌표계의 첫 번째 고니오미터 축을 중심으로 한
+회전각(도, -180~180). 선택한 X/Y/Z 축을 중심으로
+결정을 기울입니다.</value>
+  </data>
 </root>

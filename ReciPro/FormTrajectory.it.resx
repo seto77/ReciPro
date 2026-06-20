@@ -139,4 +139,141 @@ da calcolare</value>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>Deviazione standard dell'energia</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Esegue la simulazione Monte-Carlo: traccia il
+numero impostato di elettroni incidenti attraverso
+il campione, poi aggiorna le statistiche,
+i grafici di distribuzione e la vista 3D delle traiettorie.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Imposta la vista 3D in modo da guardare lungo la normale
+alla superficie del campione (tenendo conto dell'inclinazione attuale).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Imposta la vista 3D in modo da guardare lungo l'asse X,
+che è l'asse di rotazione (inclinazione) del campione.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Imposta la vista 3D in modo da guardare lungo l'asse Z,
+cioè lungo la direzione del fascio incidente.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Disegna anche le traiettorie degli elettroni assorbiti
+nel campione (quelli che non sono stati retrodiffusi),
+non solo quelle retrodiffuse, nella vista 3D.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Mostra gli assi coordinati X (rosso), Y (verde) e Z = direzione del fascio
+(viola) nella vista 3D delle traiettorie.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Sovrappone le posizioni degli assi ±X / ±Y / ±Z sulla
+proiezione stereografica (figura polare) delle
+direzioni di uscita degli elettroni retrodiffusi.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Disegna cerchi di scala concentrici sulla superficie del
+campione nella vista 3D come riferimento di distanza
+(spaziatura scalata automaticamente, etichettata in nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Estende il percorso di ciascun elettrone retrodiffuso
+oltre la superficie per mostrarne la direzione di fuga
+nella vista 3D (colorato in base all'energia di uscita).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Energia media di uscita degli elettroni retrodiffusi
+(BSE) che lasciano la superficie del campione, in keV.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Energia media di uscita degli elettroni retrodiffusi
+(BSE) che lasciano la superficie del campione, in keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Coefficiente di retrodiffusione η: frazione degli elettroni
+incidenti riemessi dalla superficie come elettroni retrodiffusi
+(BSE), dalla simulazione Monte-Carlo.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Coefficiente di retrodiffusione η: frazione degli elettroni
+incidenti riemessi dalla superficie come elettroni retrodiffusi
+(BSE), dalla simulazione Monte-Carlo.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Sezione d'urto di diffusione σ_E: area bersaglio efficace
+per la diffusione elastica all'energia incidente;
+valori maggiori indicano diffusione più frequente (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Sezione d'urto di diffusione σ_E: area bersaglio efficace
+per la diffusione elastica all'energia incidente;
+valori maggiori indicano diffusione più frequente (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Cammino libero medio elastico λ: distanza media percorsa
+dall'elettrone tra eventi di diffusione elastica,
+all'energia incidente (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Cammino libero medio elastico λ: distanza media percorsa
+dall'elettrone tra eventi di diffusione elastica,
+all'energia incidente (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Potere frenante dE/ds: energia che l'elettrone
+perde per unità di lunghezza di percorso a causa di
+collisioni anelastiche, all'energia incidente (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Potere frenante dE/ds: energia che l'elettrone
+perde per unità di lunghezza di percorso a causa di
+collisioni anelastiche, all'energia incidente (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Numero di traiettorie elettroniche da simulare
+(da 100 a 1.000.000). Più traiettorie danno
+statistiche più lisce ma richiedono più tempo di calcolo.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Numero di traiettorie elettroniche da simulare
+(da 100 a 1.000.000). Più traiettorie danno
+statistiche più lisce ma richiedono più tempo di calcolo.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Numero massimo di traiettorie da disegnare nella vista 3D
+(da 1 a 100.000). Limita solo il disegno, non la
+simulazione; valori più bassi mantengono reattiva la vista 3D.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Inclinazione della superficie del campione rispetto al fascio incidente
+(da 0 a -90°). 0° = normale alla superficie lungo il
+fascio; l'inclinazione cambia la resa e la distribuzione
+direzionale degli elettroni retrodiffusi.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Colora la proiezione stereografica in base
+all'energia media di uscita (keV) degli
+elettroni retrodiffusi in ciascuna direzione.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Colora la proiezione stereografica in base alla
+frequenza: il numero di elettroni retrodiffusi
+che escono in ciascuna direzione.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Colora la proiezione stereografica in base alla
+deviazione standard dell'energia di uscita degli
+elettroni retrodiffusi in ciascuna direzione.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Barra di stato: mostra il tempo trascorso per
+il calcolo delle traiettorie, il disegno dei grafici
+e il rendering 3D dell'ultima simulazione.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Energia degli elettroni incidenti (tensione di accelerazione) in
+keV. Imposta l'energia del fascio usata per il calcolo delle traiettorie,
+della sezione d'urto, del cammino libero medio e del potere frenante;
+un'energia maggiore dà una penetrazione più profonda.</value>
+  </data>
 </root>

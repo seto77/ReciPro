@@ -138,4 +138,132 @@ Corrente</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulazione portacampioni TEM</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Colore di sfondo dell'area di disegno dello stereonet.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Colore del contorno del portacampione disegnato sullo stereonet.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Colore delle linee di griglia principali a 90°
+e del cerchio esterno dello stereonet.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Colore delle linee di griglia intermedie
+a 10° disegnate sullo stereonet.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Colore delle linee a 1 grado
+Attivo quando "Show 1° Lines" è selezionato</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Colore delle etichette degli assi [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Colore dei punti e delle etichette degli assi di zona generici
+(assi diversi da [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Colore della freccia di direzione Tilt-X (asse primario)
+(mostrata quando "Show tilt directions" è selezionato)</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Colore della freccia di direzione Tilt-Y (asse secondario)
+(mostrata quando "Show tilt directions" è selezionato)</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Se selezionato, i tasti freccia inclinano il
+portacampione: Sinistra/Destra cambiano Tilt X e
+Su/Giù cambiano Tilt Y del passo della freccia.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Incremento dell'angolo di inclinazione (in gradi)
+applicato per ogni pressione del tasto freccia.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Angolo di inclinazione del portacampione attorno
+all'asse primario (Tilt X), in gradi.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Angolo di inclinazione del portacampione attorno
+all'asse primario (Tilt X), in gradi.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Angolo di inclinazione del portacampione attorno
+all'asse secondario (Tilt Y), in gradi.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Angolo di inclinazione del portacampione attorno
+all'asse secondario (Tilt Y), in gradi.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Direzione azimutale (in gradi) dell'asse
+Tilt X (primario) sullo stereonet.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Direzione azimutale (in gradi) dell'asse
+Tilt X (primario) sullo stereonet.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Usa polarità negativa per l'asse Tilt Y (secondario).</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Usa polarità positiva per l'asse Tilt Y (secondario).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Polarità (segno) dell'asse Tilt Y (secondario);
+falla corrispondere alla convenzione del goniometro del tuo TEM.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Raggio dei punti degli assi di zona disegnati sullo stereonet.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Raggio dei punti degli assi di zona disegnati sullo stereonet.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Dimensione del carattere delle etichette degli indici degli assi di zona.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Dimensione del carattere delle etichette degli indici degli assi di zona.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Imposta l'inclinazione corrente del portacampione ai valori
+Link Tilt X/Y e usa l'orientazione risultante
+come direzione neutra.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Ruota il cristallo di 180° attorno all'asse del fascio ([001]).</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Angolo Tilt X obiettivo (in gradi)
+applicato quando si preme il pulsante Link.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Angolo Tilt Y obiettivo (in gradi)
+applicato quando si preme il pulsante Link.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Se selezionato, disegna le linee a intervallo di 1° sullo
+stereonet (colore impostato dal controllo del colore 1°).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Se selezionato, mostra l'etichetta dell'indice [u v w]
+accanto a ciascun punto di asse di zona.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Se selezionato, disegna sullo stereonet frecce
+che mostrano le direzioni Tilt-X e Tilt-Y.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Semi-angolo (in gradi) dell'area dello stereonet
+da visualizzare; valori più piccoli ingrandiscono.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Stereonet delle direzioni di inclinazione. Fai doppio clic su un punto
+per inclinare il portacampione verso quella direzione.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Se selezionato, genera anche gli assi di zona
+equivalenti per simmetria per ciascun indice.</value>
+  </data>
 </root>

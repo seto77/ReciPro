@@ -95,4 +95,69 @@
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>색</value>
   </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
+    <value>그리기 범위가 결정면으로 닫히지 않은 경우,
+원점으로부터 이 거리로 범위를 제한합니다.</value>
+  </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
+    <value>그리기 범위가 결정면으로 닫히지 않은 경우,
+원점으로부터 이 거리로 범위를 제한합니다.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>선택한 경계면을 교체합니다</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>선택한 경계면을 삭제합니다</value>
+  </data>
+  <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
+    <value>변경 사항을 즉시 적용합니다</value>
+  </data>
+  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
+    <value>대칭 등가면을 포함합니다</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
+    <value>경계면을 법선 방향으로 이 거리(Å)만큼 이동합니다.
+양의 값은 원점에서 멀어지게 합니다.</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
+    <value>경계면을 법선 방향으로 이 거리(Å)만큼 이동합니다.
+양의 값은 원점에서 멀어지게 합니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>경계면을 법선 방향으로 이 거리(Å)만큼 이동합니다.
+양의 값은 원점에서 멀어지게 합니다.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>현재 지수, 거리, 색 설정으로부터 새 경계면을
+목록에 추가합니다.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>결정 표시에서 이 경계(절단)면을
+그리는 데 사용하는 색입니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>정의된 경계면 목록입니다. 체크 박스를 선택하여
+면을 활성화/비활성화하거나, 행을 선택하여 위의
+편집기에 불러옵니다.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>원점에서 경계면까지의 거리로, 옹스트롬(Å)
+단위로 직접 입력합니다. 왼쪽의 면간 거리
+배수와 연동됩니다.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>원점에서 경계면까지의 거리로, (hkl) 면간 거리 d의
+배수로 입력합니다. 오른쪽의 절대 거리(Å) 값과
+연동됩니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>결정 원점에서 경계면까지의 거리입니다. 면간
+거리의 배수(왼쪽) 또는 Å 단위 직접 입력
+(오른쪽)으로 설정합니다.</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>경계면 법선의 밀러 지수(h k l)입니다.
+결정을 절단하는 면의 방향을
+결정합니다.</value>
+  </data>
 </root>

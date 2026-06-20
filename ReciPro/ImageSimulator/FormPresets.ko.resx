@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>대화 상자를 닫고, 열었던 시점에
+활성화되어 있던 설정으로 되돌립니다.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>현재 적용 중인 설정을 유지하고 대화 상자를 닫습니다.</value>
+  </data>
+  <data name="checkBoxManageList.ToolTip" xml:space="preserve">
+    <value>프리셋 관리 모드를 전환합니다. 추가/교체/이름
+변경/삭제와 이름 입력란을 표시하며(항목을
+선택해도 더 이상 적용되지 않습니다).</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>저장된 프리셋 목록입니다. 하나를 선택하면
+그 설정이 이미지 시뮬레이터에 적용됩니다
+(관리 모드가 켜져 있을 때는 제외).</value>
+  </data>
+  <data name="textBoxPresetName.ToolTip" xml:space="preserve">
+    <value>추가하거나 이름을 변경할 프리셋의 이름입니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>추가하거나 이름을 변경할 프리셋의 이름입니다.</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>현재 이미지 시뮬레이션 설정을 새 프리셋으로 추가합니다.</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>목록에서 선택한 프리셋을 삭제합니다.</value>
+  </data>
+  <data name="buttonRename.ToolTip" xml:space="preserve">
+    <value>선택한 프리셋을 Name 란의 문자열로 이름 변경합니다.</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>선택한 프리셋을 현재 설정으로 덮어씁니다.</value>
+  </data>
+</root>

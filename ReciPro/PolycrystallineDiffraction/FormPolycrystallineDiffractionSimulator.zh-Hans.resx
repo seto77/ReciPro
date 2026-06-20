@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>启用 Rz (θ) 轴：试样左右“摆动”
+往复运动，由下方的电机转速（°/s）
+和摆动范围（±°）设定。</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>启用 Ry (ω) 轴：试样“点头”往复运动，
+由下方的电机转速（°/s）、
+摆动范围（±°）和步长（°）设定。</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>一旦退火后的 'Num per Step' 降至
+右侧设定的阈值（%）以下，
+便自动停止拟合。</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>一旦退火后的 'Directional density' 降至
+右侧设定的阈值（°）以下，便自动停止拟合。</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>一旦 'Inheritability' 升至右侧设定的
+阈值（%）以上，便自动停止拟合。</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>将束中心偏移作为自由参数纳入
+拟合，对图样的中心位置进行精修
+以最佳匹配参考。</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>将束会聚角作为自由参数纳入
+拟合（精修入射束的会聚程度）。</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>将胶片/检测器模糊（每个斑点的
+点扩散展宽）作为自由参数
+纳入拟合。</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>精修择优取向（织构/LPO）密度分布。
+这是拟合的核心，始终启用
+（无法关闭）。</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>将残余应力（使环移位/展宽的
+晶格应变）作为自由参数
+纳入拟合。</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>模拟摆动式（Yusa 型）测角仪：
+在下方设定的 Rx(Φ 旋转)、
+Rz(θ 摆动) 和 Ry(ω 点头) 运动上对图样
+积分，模拟真实的粉末/织构测量。</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>启用 Rx (Φ) 轴：试样绕其表面法线
+以右侧设定的电机转速（°/s）
+连续自旋。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>强度显示的渐变方向：
+Positive 将高强度显示为亮，
+Negative 反转（高强度显示为暗）。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>所显示图样的强度映射：
+对数标度（强调弱衍射）或
+线性标度。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>所显示图样的强度映射：
+对数标度（强调弱衍射）或
+线性标度。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>所显示图样的颜色映射：
+灰度或寒色至暖色的色阶。</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>所显示图样的颜色映射：
+灰度或寒色至暖色的色阶。</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>在择优取向（LPO，晶格择优取向）拟合的
+每个精修步中，取向被扰动的
+晶粒比例（%）。值越大步长越大；
+随着拟合收敛，该值会退火减小
+（×0.8）。</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>'Num per Step' 的阈值（%）：当该参数
+退火低于此水平时，拟合停止。</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>在每个精修步中施加的取向偏置的角度
+展宽（°）：所选取向密度被强化的半宽。
+随着拟合变锐，退火减小（×0.8）。</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>'Directional density' 的阈值（°）：当该参数
+退火低于此水平时，拟合停止。</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>某个精修步重用（“继承”）一个已有高密度
+取向而非随机选取的概率（%）；值越高，
+拟合越趋向更锐的织构。</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>'Inheritability' 的阈值（%）：当该参数
+升至此水平以上时，拟合停止。</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 旋转轴的电机转速，单位
+度每秒（°/s）。旋转越快，
+对越多的面内取向进行平均。</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 轴的往复（点头）范围，
+相对中心以 ± 度表示。</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 轴的往复（点头）范围，
+相对中心以 ± 度表示。</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 轴的往复（点头）范围，
+相对中心以 ± 度表示。</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 轴的往复（点头）范围，
+相对中心以 ± 度表示。</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 点头轴的电机转速，
+单位度每秒（°/s）。</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 点头轴的电机转速，
+单位度每秒（°/s）。</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 点头轴的电机转速，
+单位度每秒（°/s）。</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 往复运动的角度步长（°）：扫描期间
+每次 ω 推进的增量；越小则取向
+采样越精细，但模拟越慢。</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 轴的摆动（首尾摆动）范围。
+以相对中心的 ±° 指定，试样在
+−数值与 +数值之间往复摆动。</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 摆动轴的电机速度，
+单位为度每秒 (°/s)。</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 摆动轴的电机速度，
+单位为度每秒 (°/s)。</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 摆动轴的电机速度，
+单位为度每秒 (°/s)。</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Z 字形扫描顺序：往复扫掠 θ (Rz)，
+同时每往复一次推进 ω (Ry)，使测角仪
+在方位空间中描绘出 Z 字形路径。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>调试测试：为所选晶体生成单个随机
+方位的衍射图样并显示。</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>为所选晶体模拟多晶的德拜环
+（粉末）衍射图样，并在当前
+选项卡中显示。</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>载入此前保存的方位拟合
+设置（.setting 文件）。</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>将当前方位拟合设置（晶体、
+各参数及残差历史）
+保存到 .setting 文件。</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>开始或停止拟合晶体方位分布
+（LPO，晶格择优取向），
+使模拟图样与参考图样最佳匹配。
+再次点击即可停止。</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>添加实测的参考衍射图样（.ipa 图像）
+作为拟合目标。它会在新选项卡中打开。</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>删除列表中所选的参考衍射
+图样（及其对应选项卡）。</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>已载入的参考衍射图样列表。
+选择某一项即可切换到其对应选项卡。</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>在拟合过程中定期自动保存
+设置。（当前已禁用。）</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>当残差改善速度不再足够快时，
+自动收缩拟合参数。
+（当前固定为开启。）</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>拟合参数自动收缩的阈值（0-1）。
+当残差（Rwp）斜率的近期与早期
+之比低于此值时，各参数
+缩小至 0.8 倍。</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>只读拟合日志：经过时间、速度
+(ms/step)、步数、成功更新次数、
+残差 (%) 及 S 值。</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>反复查找并剔除对衍射图样无贡献的
+晶粒方位，仅保留有贡献的
+方位。</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>强度显示的明暗方向：Positive 将高强度
+显示为亮，Negative 则反转显示。</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 轴的摆动（首尾摆动）范围。
+以相对中心的 ±° 指定。</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 轴的摆动（首尾摆动）范围。
+以相对中心的 ±° 指定。</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 轴的摆动（首尾摆动）范围。
+以相对中心的 ±° 指定。</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 摆动的角度步长 (°)；越小则方位
+采样越精细，但模拟越慢。</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 旋转轴的电机速度，
+单位为度每秒 (°/s)。</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 旋转轴的电机速度，
+单位为度每秒 (°/s)。</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 摆动的角度步长 (°)。</value>
+  </data>
+</root>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>關閉並還原本對話開啟時
+所使用的設定。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>保留目前套用的設定並關閉對話框。</value>
+  </data>
+  <data name="checkBoxManageList.ToolTip" xml:space="preserve">
+    <value>切換預設管理模式:顯示
+新增/取代/重新命名/刪除以及名稱欄
+(選取項目不再自動套用)。</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>已儲存預設的清單;選取一項即會
+將其設定套用至影像
+模擬器(管理模式開啟時除外)。</value>
+  </data>
+  <data name="textBoxPresetName.ToolTip" xml:space="preserve">
+    <value>要新增或重新命名的預設名稱。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>要新增或重新命名的預設名稱。</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>將目前的影像模擬設定新增為新預設。</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>從清單中刪除選取的預設。</value>
+  </data>
+  <data name="buttonRename.ToolTip" xml:space="preserve">
+    <value>將選取的預設重新命名為 Name 欄中的文字。</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>以目前的設定覆寫選取的預設。</value>
+  </data>
+</root>

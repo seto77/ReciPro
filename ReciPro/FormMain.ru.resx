@@ -265,4 +265,222 @@
     <value>  Взаимодействие
   пучка</value>
   </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Влево)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вниз)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вверх)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Повернуть кристалл в направлении стрелки.
+(Ctrl+Shift+Вправо)</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>Верхний предел |u|+|v|+|w|, используемый при поиске
+оси зоны, ближайшей к направлению наблюдения
+(показана как приблизительный индекс выше). Большие
+значения проверяют больше кандидатных осей зон.</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>Верхний предел |u|+|v|+|w|, используемый при поиске
+оси зоны, ближайшей к направлению наблюдения
+(показана как приблизительный индекс выше). Большие
+значения проверяют больше кандидатных осей зон.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>Задать/показать угол Эйлера Φ (град), первое
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера Φ (град), первое
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера Φ (град), первое
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Добавить выбранный кристалл в список выше.</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>Открыть «Информацию о симметрии»</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>Открыть симулятор изображений HRTEM/STEM. HRTEM —
+высокоразрешающая просвечивающая электронная микроскопия;
+STEM — сканирующая просвечивающая электронная микроскопия.</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>Установить заданную кристаллическую плоскость нормально к экрану (перпендикулярно ему).
+Если также задан индекс оси, направление этой оси показывается вверх.</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>Открыть «Порошковую дифракцию»</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера θ (град), второе
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера θ (град), второе
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>Задать/показать угол Эйлера θ (град), второе
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>Задать/показать угол Эйлера ψ (град), третье
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера ψ (град), третье
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
+    <value>Задать/показать угол Эйлера ψ (град), третье
+вращение, определяющее ориентацию кристалла.</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>Открыть «Базу данных кристаллов»</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>Индексы кристаллической плоскости (h k l) для наблюдения вдоль. Нажмите
+'Plane', чтобы повернуть кристалл так, чтобы нормаль этой плоскости
+указывала на вас (из экрана).</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>Задаёт угловой шаг в градусах для кнопок
+вращения; при включённой анимации это же значение
+используется как скорость вращения в градусах в секунду.</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>Задаёт угловой шаг в градусах для кнопок
+вращения; при включённой анимации это же значение
+используется как скорость вращения в градусах в секунду.</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
+    <value>Открыть просмотрщик структуры (3D-структура кристалла).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Углы Эйлера (φ, θ, ψ), описывающие
+текущее 3D-вращение кристалла;
+редактируйте, чтобы задать ориентацию напрямую.</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>Открыть «Spot ID v1»</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Индексы оси зоны [u v w] для наблюдения вдоль. Нажмите
+'Axis', чтобы повернуть кристалл так, чтобы это направление
+указывало на вас (из экрана).</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>Приблизительный индекс оси зоны</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>Удалить выбранный кристалл</value>
+  </data>
+  <data name="buttonDown.ToolTip" xml:space="preserve">
+    <value>Переместить выбранный кристалл вниз</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>Сбросить состояние вращения в исходную ориентацию</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>Если отмечено, заданная ось фиксируется в пространстве.</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>Открыть «Симулятор дифракции»</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>Если включено, гексагональные / тригональные (гексагональные оси)
+кристаллы показывают четырёхиндексные индексы Миллера-Браве.</value>
+  </data>
+  <data name="buttonSetAxis.ToolTip" xml:space="preserve">
+    <value>Установить заданную ось кристалла нормально к экрану (перпендикулярно ему).
+Если также задан индекс плоскости, направление этой плоскости показывается вверх.</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>Открыть инструмент «Геометрия вращения».</value>
+  </data>
+  <data name="buttonUp.ToolTip" xml:space="preserve">
+    <value>Переместить выбранный кристалл вверх</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>Открыть «Взаимодействие пучка»</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Включить Intel MKL для ускорения матричных
+расчётов. При первом использовании загружается ~55MB.</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>Использовать ионные (полные Peng) факторы электронного рассеяния в динамических
+расчётах вместо нейтральных атомов. Выкл = IAM нейтральных атомов (по умолчанию).</value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>Дублировать выбранный кристалл.</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>Здесь отображается список кристаллов.
+Чтобы добавить новый кристалл, задайте его данные на панели 'Crystal Information' ниже и нажмите 'Add'.
+Чтобы изменить кристалл, выберите его, обновите его данные на панели 'Crystal Information' и нажмите 'Replace'.
+Чтобы удалить кристалл из списка, выберите его и нажмите 'Delete'.
+Чтобы удалить все кристаллы из списка, нажмите 'Clear All'.</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>Текущая ориентация выбранного кристалла.</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>Открыть «Симулятор траекторий».</value>
+  </data>
+  <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
+    <value>Если отмечено, нажатие кнопок выше
+поворачивает кристалл с постоянной скоростью.</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>Если отмечено, заданная плоскость фиксируется в пространстве.</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>Открыть симулятор EBSD (дифракция обратно рассеянных
+электронов) для картин дифракции обратно рассеянных электронов
+по ориентации кристалла.</value>
+  </data>
+  <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
+    <value>Удалить все кристаллы</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>Заменить выбранный кристалл
+выше новым кристаллом ниже.</value>
+  </data>
+  <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
+    <value>Открыть стереосетку (стереографическая проекция / сетка Вульфа).</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>Открыть «Spot ID v2»</value>
+  </data>
 </root>

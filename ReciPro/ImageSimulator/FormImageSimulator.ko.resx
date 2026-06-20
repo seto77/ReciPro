@@ -365,4 +365,539 @@ Simulator"에 표시됩니다</value>
   <data name="labelMousePositionValue.Text" xml:space="preserve">
     <value>값: </value>
   </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>현재 시뮬레이션을 중지합니다</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
+    <value>체크하면 각 이미지마다
+개별적으로 강도가 정규화됩니다.</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>정규화를 위한 최소(하한) 강도입니다
+(왼쪽 Min 박스를 체크하면 활성화됩니다).</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
+    <value>정규화를 위한 최소(하한) 강도입니다
+(왼쪽 Min 박스를 체크하면 활성화됩니다).</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 이미지의 최대 강도입니다.</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
+    <value>시뮬레이션 이미지의 최대 강도입니다.</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>STEM 이미지에서 TDS(thermal diffuse scattering,
+열 확산 산란에 의한 비탄성) 전자만 표시합니다.</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>STEM 이미지에서 탄성 산란된
+전자만 표시합니다.</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
+    <value>STEM 이미지에서 탄성 전자와 TDS(thermal diffuse
+scattering, 열 확산 산란에 의한 비탄성)
+전자를 모두 표시합니다.</value>
+  </data>
+  <data name="colorControlScale.ToolTip" xml:space="preserve">
+    <value>스케일 바의 색</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>스케일 바의 색</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
+    <value>스케일 바의 길이 (nm)</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
+    <value>스케일 바의 길이 (nm)</value>
+  </data>
+  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 이미지 위에 스케일 바를 표시하거나
+숨깁니다. 길이와 색은 인접한 스케일
+설정으로 지정합니다.</value>
+  </data>
+  <data name="colorControlLabel.ToolTip" xml:space="preserve">
+    <value>라벨의 색</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>라벨의 색</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
+    <value>라벨의 폰트 크기를 포인트 단위로 설정</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
+    <value>라벨의 폰트 크기를 포인트 단위로 설정</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>이미지 조건이나 지수 같은 텍스트 라벨을
+시뮬레이션 이미지 위에 표시하거나 숨깁니다.
+라벨 색과 폰트 크기는 근처에서 설정합니다.</value>
+  </data>
+  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
+    <value>투영된 단위 격자 윤곽을 시뮬레이션
+이미지 위에 표시하거나 숨겨, 이미지 콘트라스트와
+결정 격자의 대응을 확인합니다.</value>
+  </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>서로 다른 두께의 연속 이미지를 생성합니다</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>서로 다른 디포커스 값의 연속 이미지를 생성합니다</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>입사 프로브 방향의 각도 샘플링 분해능(mrad)입니다.
+값이 작을수록 STEM 프로브를 더 세밀하게
+샘플링하지만 계산이 느려집니다.</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
+    <value>입사 프로브 방향의 각도 샘플링 분해능(mrad)입니다.
+값이 작을수록 STEM 프로브를 더 세밀하게
+샘플링하지만 계산이 느려집니다.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
+    <value>TDS(thermal diffuse scattering, 열 확산 산란에 의한
+비탄성) 전자 강도를 계산할 때 사용하는
+슬라이스 두께(nm)입니다. 값이 작을수록 정확도는
+높아지지만 계산이 느려집니다.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
+    <value>TDS(thermal diffuse scattering, 열 확산 산란에 의한
+비탄성) 전자 강도를 계산할 때 사용하는
+슬라이스 두께(nm)입니다. 값이 작을수록 정확도는
+높아지지만 계산이 느려집니다.</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
+    <value>계산 비용이 낮은 선형 이미지 모델입니다.
+이 모델은 약위상 물체 근사가 성립하는
+얇은 시료에 적합합니다.
+</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
+    <value>계산 비용이 높은 투과 교차 계수(TCC) 모델입니다.
+이 모델은 강한 회절 빔을 많이 여기시키는
+강산란 물체에 사용해야 합니다.
+</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>시뮬레이션할 이미지의 크기 (픽셀)</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 이미지의 분해능 (pm/픽셀)</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>시뮬레이션 이미지의 분해능 (pm/픽셀)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>베테 방법에서 사용하는 블로흐 파의 최대 개수입니다.
+값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>베테 방법에서 사용하는 블로흐 파의 최대 개수입니다.
+값이 클수록 계산 속도는 느려지지만 정확도는 높아집니다.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>환상 STEM 검출기의 외측 수집 반각(mrad)입니다.
+이 각도보다 바깥쪽의 신호는 제외됩니다.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
+    <value>환상 STEM 검출기의 외측 수집 반각(mrad)입니다.
+이 각도보다 바깥쪽의 신호는 제외됩니다.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>유효 전자원 크기(nm)입니다. 값이 클수록 STEM
+프로브가 흐려지고 미세한 이미지 디테일이 줄어듭니다.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
+    <value>유효 전자원 크기(nm)입니다. 값이 클수록 STEM
+프로브가 흐려지고 미세한 이미지 디테일이 줄어듭니다.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>STEM 입사 프로브의 수렴 반각(mrad)입니다.
+값이 클수록 프로브가 더 가늘어지고
+회절 콘트라스트가 변합니다.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>STEM 입사 프로브의 수렴 반각(mrad)입니다.
+값이 클수록 프로브가 더 가늘어지고
+회절 콘트라스트가 변합니다.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
+    <value>환상 STEM 검출기의 내측 수집 반각(mrad)입니다.
+이 각도보다 안쪽의 신호는 제외됩니다.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
+    <value>환상 STEM 검출기의 내측 수집 반각(mrad)입니다.
+이 각도보다 안쪽의 신호는 제외됩니다.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>대물 조리개의 반각(mrad)입니다. 조리개가
+작을수록 고각 회절 빔을 차단하여 고분해능
+이미지 디테일을 매끄럽게 만듭니다.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
+    <value>대물 조리개의 반각(mrad)입니다. 조리개가
+작을수록 고각 회절 빔을 차단하여 고분해능
+이미지 디테일을 매끄럽게 만듭니다.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>ΔV: 전자 빔 에너지 폭의 반값 전폭(FWHM)으로,
+단위는 eV입니다. 색수차 계수 Cc와 함께
+색수차에 의한 초점 퍼짐(이미지 흐림)을
+결정합니다.</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
+    <value>ΔV: 전자 빔 에너지 폭의 반값 전폭(FWHM)으로,
+단위는 eV입니다. 색수차 계수 Cc와 함께
+색수차에 의한 초점 퍼짐(이미지 흐림)을
+결정합니다.</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
+    <value>ΔV: 전자 빔 에너지 폭의 반값 전폭(FWHM)으로,
+단위는 eV입니다. 색수차 계수 Cc와 함께
+색수차에 의한 초점 퍼짐(이미지 흐림)을
+결정합니다.</value>
+  </data>
+  <data name="numericBoxCc.ToolTip" xml:space="preserve">
+    <value>대물 렌즈의 색수차 계수 Cc(mm)입니다. 값이
+클수록 빔 에너지 폭에 의한 흐림이
+증가합니다.</value>
+  </data>
+  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
+    <value>대물 렌즈의 색수차 계수 Cc(mm)입니다. 값이
+클수록 빔 에너지 폭에 의한 흐림이
+증가합니다.</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
+    <value>β: 유한한 선원 크기 효과에 의한
+조사 반각 (mrad)</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
+    <value>β: 유한한 선원 크기 효과에 의한
+조사 반각 (mrad)</value>
+  </data>
+  <data name="numericBoxCs.ToolTip" xml:space="preserve">
+    <value>대물 렌즈의 구면 수차 계수 Cs(mm)입니다.
+CTF(contrast transfer function, 콘트라스트 전달
+함수)와 Scherzer 디포커스에 영향을 줍니다.</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>대물 렌즈의 구면 수차 계수 Cs(mm)입니다.
+CTF(contrast transfer function, 콘트라스트 전달
+함수)와 Scherzer 디포커스에 영향을 줍니다.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
+    <value>대물 렌즈의 디포커스 양(nm)입니다. 디포커스를
+바꾸면 CTF(contrast transfer function, 콘트라스트
+전달 함수)와 이미지 콘트라스트가 변합니다.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>대물 렌즈의 디포커스 양(nm)입니다. 디포커스를
+바꾸면 CTF(contrast transfer function, 콘트라스트
+전달 함수)와 이미지 콘트라스트가 변합니다.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>TEM(transmission electron microscope, 투과 전자
+현미경)의 가속 전압(kV)입니다. 이 값은
+전자 파장과 이미지 콘트라스트를 변화시킵니다.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>TEM(transmission electron microscope, 투과 전자
+현미경)의 가속 전압(kV)입니다. 이 값은
+전자 파장과 이미지 콘트라스트를 변화시킵니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Scherzer 디포커스(nm)로, 현재 파장과 구면 수차
+Cs로부터 계산되는, 위상 콘트라스트가 최적이
+되는 부근의 디포커스 값입니다.</value>
+  </data>
+  <data name="textBoxScherzer.ToolTip" xml:space="preserve">
+    <value>Scherzer 디포커스(nm)로, 현재 파장과 구면 수차
+Cs로부터 계산되는, 위상 콘트라스트가 최적이
+되는 부근의 디포커스 값입니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Scherzer 디포커스(nm)로, 현재 파장과 구면 수차
+Cs로부터 계산되는, 위상 콘트라스트가 최적이
+되는 부근의 디포커스 값입니다.</value>
+  </data>
+  <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
+    <value>HRTEM(high-resolution transmission electron
+microscopy, 고분해능 투과 전자 현미경): 선택한
+결정, 두께, 디포커스로 위상 콘트라스트 TEM 이미지를 시뮬레이션합니다.</value>
+  </data>
+  <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
+    <value>STEM(scanning transmission electron microscopy,
+주사 투과 전자 현미경): 수렴각과 환상 검출기
+설정을 사용하여 주사 프로브 이미지를 시뮬레이션합니다.</value>
+  </data>
+  <data name="radioButton1.ToolTip" xml:space="preserve">
+    <value>STEM-EDX(scanning transmission electron microscopy
+with energy-dispersive X-ray spectroscopy): STEM
+계산 컨트롤을 사용하여 STEM-EDX 출력을 시뮬레이션합니다.</value>
+  </data>
+  <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
+    <value>포텐셜 모드: TEM/STEM 이미지 전달 효과를
+적용하지 않고 투영된 결정
+포텐셜을 계산합니다.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>시료 두께입니다.
+"연속 이미지" 모드가 선택된 경우 이 값은 무시됩니다.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>시료 두께입니다.
+"연속 이미지" 모드가 선택된 경우 이 값은 무시됩니다.</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
+    <value>체크하면 결정이 회전함에 따라
+이미지가 즉시 계산됩니다.</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>현재의 결정, 현미경 조건, 두께, 디포커스, 표시
+설정으로 이미지 시뮬레이션을 실행합니다.</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
+    <value>연속 이미지 모드에서 시뮬레이션할
+때 각 이미지를 개별적으로 저장합니다.</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
+    <value>저장된 이미지에 단위 격자, 라벨,
+스케일 바를 겹쳐 인쇄합니다.</value>
+  </data>
+  <data name="checkBoxCTF.ToolTip" xml:space="preserve">
+    <value>콘트라스트 전달 함수(CTF) 그래프 창을 표시합니다.
+렌즈 수차와 디포커스가 공간 주파수에 따라
+이미지 콘트라스트를 어떻게 전달하는지를
+플롯합니다.</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>표시된 이미지에 가우시안 흐림(오른쪽에서 FWHM을
+pm 단위로 설정)을 적용하여 유한한
+분해능/점상 분포를 근사합니다.</value>
+  </data>
+  <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>정규화의 강도 상한을 이미지 최대값이 아니라
+오른쪽의 지정 값으로 고정합니다.</value>
+  </data>
+  <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>정규화의 강도 하한을 이미지 최소값이 아니라
+오른쪽의 지정 값으로 고정합니다.</value>
+  </data>
+  <data name="checkBoxOpenAperture.ToolTip" xml:space="preserve">
+    <value>대물 조리개를 개방(무한대)으로 하여,
+모든 회절 빔이 결상에 기여하게 합니다.</value>
+  </data>
+  <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
+    <value>탄성 산란을 담당하는 결정(정전기) 포텐셜인
+Ug의 이미지를 표시합니다.</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
+    <value>TDS(Thermal Diffuse Scattering, 열 확산 산란)에서
+비롯된 허수(흡수) 포텐셜 U'g의 이미지를 표시합니다.</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>이미지 표시에 사용할 색상 척도를 선택합니다:
+그레이스케일 또는 cold-warm(청적) 색상 맵.</value>
+  </data>
+  <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
+    <value>연속(스루 포커스) 모드에서 생성할
+디포커스 값의 개수입니다.</value>
+  </data>
+  <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
+    <value>연속 스루 포커스 시리즈의 디포커스
+시작 값(nm, 음수=언더포커스)입니다.</value>
+  </data>
+  <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
+    <value>연속 스루 포커스 시리즈에서 연속된 이미지
+사이의 디포커스 증분(nm)입니다.</value>
+  </data>
+  <data name="numericBoxGaussianBlurRadius.ToolTip" xml:space="preserve">
+    <value>표시된 이미지에 적용되는 가우시안 흐림의
+반값 전폭(FWHM, pm 단위)입니다.</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.ToolTip" xml:space="preserve">
+    <value>대물 조리개 중심의 수평(X) 시프트 양(mrad)입니다
+(경사/암시야 결상용).</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
+    <value>대물 조리개 중심의 수직(Y) 시프트 양(mrad)입니다
+(경사/암시야 결상용).</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
+    <value>결정 포텐셜(Ug / U'g)을 크기와
+위상 이미지로 표시합니다.</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
+    <value>결정 포텐셜(Ug / U'g)을 실수부와
+허수부 이미지로 표시합니다.</value>
+  </data>
+  <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
+    <value>연속 모드: 디포커스 및/또는 시료 두께를
+단계적으로 변화시키면서 일련의 이미지
+(스루 포커스/스루 두께 시리즈)를 생성합니다.</value>
+  </data>
+  <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
+    <value>단일 모드: 현재의 디포커스와 두께
+설정으로 이미지 한 장을 생성합니다.</value>
+  </data>
+  <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
+    <value>시뮬레이션할 디포커스 값(nm)의 목록입니다.
+Start/Step/Num으로부터 자동 생성되며 수동 편집도 가능합니다.</value>
+  </data>
+  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
+    <value>STEM(주사 투과 전자 현미경) 검출기의 외측
+수집각을 역격자 반지름(nm⁻¹)으로 환산한
+값으로, 검출기 외측 수집각에서 변환됩니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>STEM(주사 투과 전자 현미경) 검출기의 외측
+수집각을 역격자 반지름(nm⁻¹)으로 환산한
+값으로, 검출기 외측 수집각에서 변환됩니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
+    <value>표시 강도 상한(흰색에 대응)입니다. 표시된
+이미지의 콘트라스트 상한을 설정하려면 올리거나 내립니다.</value>
+  </data>
+  <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
+    <value>표시 강도 하한(검은색에 대응)입니다. 표시된
+이미지의 콘트라스트 하한을 설정하려면 올리거나 내립니다.</value>
+  </data>
+  <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
+    <value>수렴 반각을 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 나타낸 값으로, STEM 수렴각으로부터
+자동으로 갱신됩니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>수렴 반각을 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 나타낸 값으로, STEM 수렴각으로부터
+자동으로 갱신됩니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 격자의 가로축을 따라 초점 흐림(디포커스)을
+배치합니다(두께는 세로 방향으로 진행).</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 격자의 가로축을 따라 두께를
+배치합니다(초점 흐림은 세로 방향으로 진행).</value>
+  </data>
+  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
+    <value>검출기 내측 각도를 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 환산한 값이며, STEM 검출기 내측 각도로부터
+자동 갱신됩니다. 읽기 전용.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>검출기 내측 각도를 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 환산한 값이며, STEM 검출기 내측 각도로부터
+자동 갱신됩니다. 읽기 전용.</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(푸리에 계수 Ug)의
+크기(진폭)만 표시합니다.</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(Ug)의 크기와 위상을
+모두 표시합니다.</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(Ug)의 위상만 표시합니다.</value>
+  </data>
+  <data name="textBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>대물 조리개 반지름을 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 환산한 값이며 읽기 전용입니다. HRTEM
+대물 조리개를 통과하는 빔을
+결정합니다.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>대물 조리개 반지름을 역공간 반지름 sin(theta)/lambda
+(nm^-1)로 환산한 값이며 읽기 전용입니다. HRTEM
+대물 조리개를 통과하는 빔을
+결정합니다.</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(Ug)의 허수부, 즉
+흡수 성분만 표시합니다.</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(Ug)의 실수부만
+표시합니다.</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.ToolTip" xml:space="preserve">
+    <value>복소 결정 퍼텐셜(Ug)의 실수부와 허수부를
+모두 표시합니다.</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>대물 조리개 안에 들어오는 회절 빔
+(스폿) 목록 표를 엽니다.</value>
+  </data>
+  <data name="textBoxNumOfSpots.ToolTip" xml:space="preserve">
+    <value>대물 조리개 안에 들어오는 회절 빔(스폿)의
+개수입니다(읽기 전용).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>대물 조리개 안에 들어오는 회절 빔(스폿)의
+개수입니다(읽기 전용).</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>HRTEM(고분해능 투과 전자 현미경법)
+이미지 시뮬레이션의 기본 개념에 대한
+설명을 엽니다.</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.ToolTipText" xml:space="preserve">
+    <value>계산 라이브러리를 선택합니다. Native
+code(고속 C++/Eigen) 또는 Managed code
+(.NET). 일반적으로 Native가 더 빠릅니다.</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>계산 라이브러리를 선택합니다. Native
+code(고속 C++/Eigen) 또는 Managed code
+(.NET). 일반적으로 Native가 더 빠릅니다.</value>
+  </data>
+  <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 시리즈에서 생성되는
+두께(이미지)의 개수입니다.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 두께 시리즈의 시작 시료 두께(nm)입니다.
+Step 및 Num과 조합하여 아래의
+두께 목록을 만듭니다.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 시리즈에서 연속된 이미지
+사이의 두께 증분(nm)입니다.</value>
+  </data>
+  <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
+    <value>시뮬레이션할 시료 두께(nm) 목록으로,
+한 줄에 한 값씩 입력합니다. Start/Step/Num에서
+자동 채워지지만 직접 편집할 수도 있습니다.</value>
+  </data>
+  <data name="checkBoxPreset.ToolTip" xml:space="preserve">
+    <value>TEM 촬영 조건을 저장하고 불러오는
+프리셋 설정 창의 표시/숨김을 전환합니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>환상 암시야(ADF) 검출기의 내측/외측
+집광 반각(mrad)입니다.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>이미지 강도를 색으로 대응시키는 컬러 스케일(회색 또는 한색-난색)입니다.</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>STEM 입사 프로브의 수렴 반각 α(mrad)입니다.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>유효 전자원 크기(σs, FWHM, 단위 pm)이며,
+STEM 프로브의 유한 광원 흐림을 모델링합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>시료 두께(nm)입니다. "Serial image" 모드가
+선택된 경우 이 값은 무시됩니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>직렬 이미지 격자의 가로축을 따라 변하는
+양(초점 흐림 또는 두께)을 선택합니다.</value>
+  </data>
 </root>

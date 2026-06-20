@@ -74,4 +74,34 @@
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Couleur du plan réticulaire</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Ajoute à la liste le plan réticulaire défini ci-dessus
+(indices, translation, couleur).</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Remplace le plan réticulaire actuellement sélectionné
+dans la liste par les valeurs saisies ci-dessus.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Supprime de la liste le plan réticulaire actuellement sélectionné.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste des plans réticulaires définis ; cochez la case
+d'une ligne pour afficher ou masquer ce plan.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Saisissez les indices de Miller (h k l) du plan réticulaire
+(indices de Miller-Bravais h k i l pour les cristaux hexagonaux).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Décale le plan réticulaire selon sa normale, en fraction
+de la distance interréticulaire (-0,5 à 0,5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Décale le plan réticulaire selon sa normale, en fraction
+de la distance interréticulaire (-0,5 à 0,5).</value>
+  </data>
 </root>

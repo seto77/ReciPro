@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>Замаскировать просматриваемую сейчас область: исключить
+эти пиксели из подгонки (невязки), чтобы они
+игнорировались при сопоставлении с моделированием.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>Замаскировать каждый пиксель изображения (исключить
+всё изображение из подгонки).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>Сохранить текущую маску в файл .mas,
+чтобы её можно было загрузить позже.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>Снять маску с просматриваемой сейчас области:
+вернуть эти пиксели в подгонку.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>Снять все маски: вернуть каждый пиксель в подгонку.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Применить размытие плёнки: свернуть смоделированные кольца с
+аппаратной функцией рассеяния точки (гауссовой) с шириной,
+заданной справа (µm), для имитации размытия детектора/плёнки.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Режим маски: выбрать пиксели вокруг указанных
+дифракционных пиков (рефлексов hkl) для маскирования;
+взаимно исключает другие режимы маски.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>Режим маски: замаскировать кольцевую (бубликовую) область между
+радиусами Start и End от центра картины;
+взаимно исключает другие режимы маски.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>Режим маски: рисовать маски прямо на
+изображении мышью с помощью выбранной ниже формы
+(точка/круг/прямоугольник/бублик);
+взаимно исключает другие режимы маски.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>Режим маски: замаскировать прямую полосу (прямоугольник),
+заданную направлением, шириной полосы и углом;
+взаимно исключает другие режимы маски.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>Применять полосовую маску симметрично с обеих сторон
+от центральной линии (а не только с одной стороны).</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>Предустановка направления для полосовой маски
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+предустановки фиксируют угол, Free позволяет ввести его вручную.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>Радиус (в пикселях) ручной точечной
+маски, наносимой при каждом щелчке мыши (1–128).</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Длина камеры (расстояние образец–детектор)
+в mm; масштабирует радиус смоделированных
+дифракционных колец на детекторе.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>X-координата (в пикселях) центра прямого пучка
+(картины); задаёт, где на изображении
+центрируются дифракционные кольца.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>Y-координата (в пикселях) центра прямого пучка
+(картины); задаёт, где на изображении
+центрируются дифракционные кольца.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Ширина размытия плёнки в µm: гауссова аппаратная
+функция рассеяния точки, свёртываемая с кольцами для уширения
+пиков (разрешение детектора/плёнки).</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>Размер пикселя детектора исходного изображения в
+mm/пиксель; вместе с длиной камеры переводит
+угол рассеяния в радиус кольца в пикселях.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>Разрешение экранного отображения в mm/пиксель;
+задаёт коэффициент увеличения (mm/пиксель монитора ÷
+mm/пиксель изображения) отображаемой картины.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>Угол полосовой маски в градусах (0–360°); задаёт
+ориентацию полосы. Редактируется только когда Direction равно Free.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>Ширина полосовой маски в пикселях (0–10000);
+задаёт, насколько широка маскируемая полоса.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>Ручная форма маски: перетащите, чтобы задать круг (от
+центра к радиусу), и замаскируйте заключённую область.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>Ручная форма маски: задайте перетаскиванием два радиуса вокруг
+центра картины, чтобы замаскировать кольцевую (бубликовую) область.</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>Ручная форма маски: перетащите прямоугольник (две
+угловые точки) и замаскируйте заключённую область.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>Ручная форма маски: щёлкните, чтобы замаскировать (левой)
+или снять маску (правой) с круглой точки
+радиусом, заданным в Size; режим по умолчанию.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Ширина × высота смоделированного изображения в
+пикселях (1–10000); задаёт размер холста
+генерируемой дифракционной картины.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Сохраняет текущую смоделированную дифракционную картину
+в файл изображения IPA (*.ipa), включая
+разрешение, центр, длину камеры и длину волны.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>Подсвечивает замаскированные (исключённые из подгонки) пиксели на
+изображении, чтобы видеть, какие области игнорируются.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>Верхняя интенсивность окна яркости отображения
+(отсчёты, отображаемые в самый светлый цвет).
+Влияет только на контраст отображения, не на данные.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Верхняя интенсивность окна яркости отображения
+(отсчёты, отображаемые в самый светлый цвет).
+Влияет только на контраст отображения, не на данные.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>Нижняя интенсивность окна яркости отображения
+(отсчёты, отображаемые в самый тёмный цвет).
+Влияет только на контраст отображения, не на данные.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Нижняя интенсивность окна яркости отображения
+(отсчёты, отображаемые в самый тёмный цвет).
+Влияет только на контраст отображения, не на данные.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>Амплитуда (A) начального диффузного фонового гало
+в логарифмическом масштабе. Задаёт высоту пика
+фонового кольца, используемого как начальное приближение для подгонки.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Амплитуда (A) начального диффузного фонового гало
+в логарифмическом масштабе. Задаёт высоту пика
+фонового кольца, используемого как начальное приближение для подгонки.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>Ширина (H, полная ширина на половине высоты в пикселях)
+начального диффузного фонового гало. Бо́льшие
+значения делают фоновое кольцо шире.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Ширина (H, полная ширина на половине высоты в пикселях)
+начального диффузного фонового гало. Бо́льшие
+значения делают фоновое кольцо шире.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>Радиус (R, в пикселях от центра)
+начального диффузного фонового гало.
+Задаёт, где фоновое кольцо достигает пика.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Радиус (R, в пикселях от центра)
+начального диффузного фонового гало.
+Задаёт, где фоновое кольцо достигает пика.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>Внешний радиус (в пикселях от центра)
+кольцевой маски. Пиксели между радиусами Start
+и End выбираются для маскирования.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Внешний радиус (в пикселях от центра)
+кольцевой маски. Пиксели между радиусами Start
+и End выбираются для маскирования.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>Внутренний радиус (в пикселях от центра)
+кольцевой маски. Пиксели между радиусами Start
+и End выбираются для маскирования.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Внутренний радиус (в пикселях от центра)
+кольцевой маски. Пиксели между радиусами Start
+и End выбираются для маскирования.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Внутренний радиус (в пикселях от центра)
+кольцевой маски. Пиксели между радиусами Start
+и End выбираются для маскирования.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Азимут (phi) оси наклона образца/детектора, в
+градусах. Задаёт направление, вокруг которого наклоняется картина,
+влияя на ориентацию искажения колец.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Азимут (phi) оси наклона образца/детектора, в
+градусах. Задаёт направление, вокруг которого наклоняется картина,
+влияя на ориентацию искажения колец.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Величина (tau) наклона образца/детектора вокруг
+оси phi, в градусах. Бо́льшие значения искажают
+кольца Дебая из окружностей в эллипсы.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Величина (tau) наклона образца/детектора вокруг
+оси phi, в градусах. Бо́льшие значения искажают
+кольца Дебая из окружностей в эллипсы.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Отмечает каждый рефлекс (hkl) в
+списке пиков, выбирая сразу все пики.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Снимает отметку с каждого рефлекса (hkl) в
+списке пиков, очищая выбор.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>Выбирает область изображения вокруг колец
+отмеченных рефлексов (hkl), чтобы их можно было замаскировать.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>Список индексов рефлексов (hkl);
+отметьте пики, область колец вокруг которых
+вы хотите выбрать для маскирования.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>Сходимость пучка (полуугол) падающего
+излучения, в градусах. Бо́льшие значения уширяют
+смоделированные пики колец Дебая.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Сходимость пучка (полуугол) падающего
+излучения, в градусах. Бо́льшие значения уширяют
+смоделированные пики колец Дебая.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>Сходимость пучка (полуугол) падающего
+излучения, в градусах. Бо́льшие значения уширяют
+смоделированные пики колец Дебая.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>Разброс длин волн (монохроматичность,
+Delta-lambda / lambda) источника, в %.
+Бо́льшие значения уширяют смоделированные кольца.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>Разброс длин волн (монохроматичность,
+Delta-lambda / lambda) источника, в %.
+Бо́льшие значения уширяют смоделированные кольца.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>Разброс длин волн (монохроматичность,
+Delta-lambda / lambda) источника, в %.
+Бо́льшие значения уширяют смоделированные кольца.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Выбирает источник излучения (рентгеновское или электроны) и
+его длину волны, используемую для расчёта радиусов колец Дебая.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>Отображает невязку (экспериментальная минус
+смоделированная картина), чтобы видеть, насколько хорошо
+совпадает подгонка. Взаимно исключает Simulation.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>Накладывает смоделированную картину на
+экспериментальное изображение, смешивая по ползунку Opacity.
+Взаимно исключает Residual.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность смешивания (0-100%) смоделированной картины
+поверх экспериментального изображения в режиме Simulation.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>Сохраняет текущие параметры фона в
+файл фона (*.bg) для повторного использования.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>Включает ручную настройку начального фона;
+активирует ползунки A/H/R для задания
+стартового фонового кольца перед уточнением.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>Сводка дифракции только для чтения:
+число вносящих вклад кристаллитов и
+доля каждого рефлекса (hkl).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Радиус (в пикселях) ручной точечной
+маски, наносимой при каждом щелчке мыши.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Радиус (в пикселях) ручной точечной
+маски, наносимой при каждом щелчке мыши.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>X/Y-координата (в пикселях) центра прямого пучка (картины);
+задаёт, где центрируются дифракционные кольца.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Разрешение экранного отображения в mm/пиксель;
+задаёт коэффициент увеличения отображаемой картины.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Разрешение экранного отображения в mm/пиксель;
+задаёт коэффициент увеличения отображаемой картины.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Длина камеры (расстояние образец–детектор)
+в mm; масштабирует радиусы дифракционных колец.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Длина камеры (расстояние образец–детектор)
+в mm; масштабирует радиусы дифракционных колец.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Угол полосовой маски в градусах
+(0–360°); задаёт ориентацию полосы
+(редактируется только когда Direction равно Free).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Ширина полосовой маски в пикселях;
+задаёт, насколько широка маскируемая полоса.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Предустановка направления для полосовой маски
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+Free позволяет ввести угол вручную.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Размер пикселя детектора исходного изображения в
+mm/пиксель; переводит угол рассеяния в радиус кольца.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>Размер пикселя детектора исходного изображения в
+mm/пиксель; переводит угол рассеяния в радиус кольца.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>X-координата (в пикселях) центра прямого
+пучка; задаёт центр колец.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Y-координата (в пикселях) центра прямого
+пучка; задаёт центр колец.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Ширина размытия плёнки в µm: гауссова аппаратная
+функция рассеяния точки, свёртываемая с кольцами для уширения пиков.</value>
+  </data>
+</root>

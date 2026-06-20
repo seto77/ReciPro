@@ -239,4 +239,191 @@
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>Afficher les numéros</value>
   </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Afficher des symboles repères sur les taches observées</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>Identifier les taches
+(vous devez sélectionner un cristal approprié dans la fenêtre principale)</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value>Réajuster les positions et les intensités de toutes les taches détectées</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>Unité de la taille de pixel : millimètres</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>Détecte les taches de diffraction dans l'image chargée et les ajuste avec la fonction sélectionnée.
+Indiquez le nombre de taches à rechercher, la distance minimale entre les taches
+et la plage d'ajustement dans la case à droite.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value>Afficher des symboles repères sur les taches calculées</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value>Ignore les réflexions cinématiquement interdites qui
+peuvent apparaître par diffraction multiple (dynamique),
+en les excluant du cliché calculé.</value>
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Demi-amplitude angulaire (le demi-angle de convergence,
+en mrad) sur laquelle les directions du faisceau incident sont
+recherchées lors de l'affinement de l'épaisseur/orientation.</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value>Effectuer un ajustement global de toutes les positions de taches (expérimental)</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>Séparation minimale (px) autorisée entre les
+taches détectées ; les pics plus proches que cela sont
+fusionnés pour qu'une même tache ne soit pas comptée deux fois.</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>Séparation minimale (px) autorisée entre les
+taches détectées ; les pics plus proches que cela sont
+fusionnés pour qu'une même tache ne soit pas comptée deux fois.</value>
+  </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value>Rechercher les orientations de plusieurs grains cristallins</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value>Nombre maximal d'orientations de grains à rechercher</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>Nombre maximal d'orientations de grains à rechercher</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>Longueur de caméra du cliché de diffraction (mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Longueur de caméra du cliché de diffraction (mm)</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value>Appliquer une soustraction de fond en forme d'anneau (expérimental)</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Arrêter le calcul en cours</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>Tableau des taches observées ; cochez 'Direct' pour définir la
+tache du faisceau direct, cliquez sur le 'Fit' d'une ligne pour ajuster son
+pic, ou sélectionnez une ligne pour la surligner sur le cliché</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>Nombre maximal de faisceaux diffractés (ondes de
+Bloch) inclus dans l'affinement dynamique de
+l'épaisseur/direction ; plus d'ondes donne une
+précision supérieure mais un calcul plus lent (1-2048).</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
+    <value>Nombre maximal de faisceaux diffractés (ondes de
+Bloch) inclus dans l'affinement dynamique de
+l'épaisseur/direction ; plus d'ondes donne une
+précision supérieure mais un calcul plus lent (1-2048).</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>Largeur (px) de l'anneau extérieur entourant
+chaque tache, utilisé comme fond local
+dans la soustraction en anneau (1-100).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>Taille d'un pixel du détecteur ; l'unité (mm ou nm⁻¹)
+suit les boutons radio à droite. Définit l'échelle de l'espace
+réciproque utilisée pour la distance interréticulaire et l'indexation.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Taille d'un pixel du détecteur ; l'unité (mm ou nm⁻¹)
+suit les boutons radio à droite. Définit l'échelle de l'espace
+réciproque utilisée pour la distance interréticulaire et l'indexation.</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
+    <value>Afficher la direction de l'axe de zone sur le cliché</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Copier les informations ci-dessus dans le presse-papiers.</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value>Afficher les étiquettes d'indices sur les taches calculées</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>Rayon (en pixels, 0-100) de la région circulaire
+autour de chaque tache utilisée pour l'ajustement du pic ; les pixels à l'intérieur
+de ce cercle sont ajustés avec la fonction pseudo-Voigt.</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>Rayon (en pixels, 0-100) de la région circulaire
+autour de chaque tache utilisée pour l'ajustement du pic ; les pixels à l'intérieur
+de ce cercle sont ajustés avec la fonction pseudo-Voigt.</value>
+  </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>Supprime la tache actuellement sélectionnée de la
+liste (utilisez le bouton Clear pour supprimer toutes les taches).</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>Liste des candidats d'indexation trouvés ; sélectionnez une
+ligne pour afficher ses orientations de grain ci-dessous.</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>Afficher les cercles de guidage sur le cliché de diffraction</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>Orientations de grain du candidat sélectionné ;
+sélectionner une ligne superpose ses taches calculées
+et attribue les indices hkl aux taches observées.</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value>Affine l'épaisseur de l'échantillon (nm) et la direction du faisceau
+en comparant les intensités des taches observées aux calculs
+CBED dynamiques (ondes de Bloch) pour le grain
+sélectionné (diffraction d'électrons uniquement).</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>Indiquer le nombre de taches à détecter</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>Indiquer le nombre de taches à détecter</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value>Afficher les numéros d'indice sur les taches observées</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value>Afficher les informations détaillées de la tache sélectionnée</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value>Tolérance maximale sur la longueur relative (distance
+interréticulaire), en %, autorisée lors de l'appariement des taches
+observées aux réflexions candidates (0,1-10%).</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>Tolérance maximale sur la longueur relative (distance
+interréticulaire), en %, autorisée lors de l'appariement des taches
+observées aux réflexions candidates (0,1-10%).</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value>Rechercher l'orientation d'un seul grain cristallin</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>Effacer toutes les taches</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>Enregistrer les informations ci-dessus</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value>Régler le rayon d'ajustement de chaque tache à la
+valeur actuelle de 'Fitting range' (px).</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>Unité de la taille de pixel : nanomètres inverses</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Source de rayonnement et énergie/tension qui
+définissent la longueur d'onde utilisée pour
+l'indexation (par défaut : électrons, 200 kV).</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>Superposer les anneaux de Debye-Scherrer sur le cliché</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value>Afficher les paramètres détaillés de la fonction d'ajustement</value>
+  </data>
 </root>

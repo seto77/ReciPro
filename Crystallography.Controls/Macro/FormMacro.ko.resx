@@ -62,4 +62,79 @@
   <data name="checkBoxSamples.Text" xml:space="preserve">
     <value>예제 표시</value>
   </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>현재 에디터에 있는 매크로 (이름과 본문) 를
+목록에 새 항목으로 추가합니다.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>목록에서 선택 중인 매크로를
+현재 에디터의 내용으로 교체합니다.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>선택 중인 매크로를 목록에서 삭제합니다.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>선택 중인 매크로를 목록에서 한 칸 아래로 이동합니다.</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>단계별 실행 중에 다음 한 줄로
+진행합니다 (단축키: F10).</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>에디터 내의 매크로 (Python 스크립트) 를
+처음부터 끝까지 실행합니다.</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>매크로를 한 줄씩 실행하며 (디버그 모드), 각 줄에서
+멈추어 변수 값을 확인할 수 있습니다.</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>실행 중인 매크로를 중단합니다 (단계별
+실행 중에 유효).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>선택 중인 매크로를 목록에서 한 칸 위로 이동합니다.</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>내장된 샘플 매크로 (읽기 전용) 의
+표시를 전환합니다. 직접 만든 매크로는 따로
+보관되어 체크를 해제하면 복원됩니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>ReciPro 의 내장 매크로 함수와 그 설명의
+참조 목록입니다. 함수를 더블 클릭하면
+에디터의 커서 위치에 삽입됩니다.</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>디버그 워치: 단계별 실행 중에, 멈춘
+줄에서의 로컬 변수 이름과 현재
+값을 표시합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>매크로는 기본적인 Python 구문과 ReciPro 가
+제공하는 내장 함수를 사용하여 작성합니다.</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>저장된 매크로의 목록입니다. 항목을 선택하면
+그 이름과 본문이 에디터에 읽혀 들어옵니다.</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>매크로 파일 (*.mcr) 을 에디터에 읽어 들입니다.</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>매크로 본문을 위한 코드 에디터입니다. 여기에 Python
+(IronPython) 스크립트를 작성하며, 자동 완성·행
+번호·오류 강조 표시가 제공됩니다.</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>현재 에디터의 내용을 매크로 파일 (*.mcr) 로 저장합니다.</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>매크로의 이름입니다. 추가하거나 교체할 때 목록의
+등록명 및 메뉴 항목의 이름으로 사용됩니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>매크로의 이름입니다. 추가하거나 교체할 때 목록의
+등록명 및 메뉴 항목의 이름으로 사용됩니다.</value>
+  </data>
 </root>

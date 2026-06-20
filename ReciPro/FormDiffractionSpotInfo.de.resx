@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Die gesamte Reflextabelle (sichtbare
+Spalten, tabulatorgetrennt) in die Zwischenablage kopieren,
+um sie in Excel oder einen Texteditor einzufügen.</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die Breite jeder Spalte
+automatisch an ihren angezeigten Inhalt angepasst.
+Zum schnelleren Scrollen bei großen Tabellen deaktivieren.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Ergebnisse der dynamischen (Bethe-Methode)
+Beugungsberechnung pro Reflex:
+Indizes hkl, d-Wert, reziproker Vektor g,
+Kristallpotential Ug/Vg, Anregungsfehler Sg
+(Abstand des reziproken Punktes von der
+Ewald-Kugel) und Amplitude der gebeugten Welle Φ.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Umrechnung zwischen den beiden Potential-
+einheiten: Ug [nm⁻²] = 2·m₀/h² · Vg [eV] ×
+10¹⁸. Ausgewählt über die Optionsfelder oben.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Einheitenkonventionen für diese Tabelle: Längen
+sind in Nanometern (nm), nicht in Ångström;
+Wellenzahlen sind 1/nm, nicht 2π/nm.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Legende für die Tabellenspalten: Vg/Ug = Kristall-
+potential für elastische Streuung; V'g/U'g = imaginäres
+(Absorptions-) Potential für thermische diffuse Streuung;
+Φ = Amplitude der gebeugten Welle an der Austrittsfläche.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Anzahl der signifikanten Stellen (1-16) zur
+Anzeige der Tabellenzellen. Betrifft nur die Anzeige;
+die zugrunde liegenden berechneten Werte bleiben unverändert.</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>Zeigt die Kristallpotential-Spalten als Vg an,
+das Fourier-Potential in Energieeinheiten (eV).
+Ändert die Spaltenüberschriften Ug/U'g in Vg/V'g.</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>Zeigt die Kristallpotential-Spalten als Ug an, den
+Fourier-Potentialkoeffizienten in Einheiten der inversen
+Länge zum Quadrat (nm⁻²), wie er in dynamischen Rechnungen
+verwendet wird. Ändert die Überschriften Vg/V'g in Ug/U'g.</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>Beschleunigungsspannung des Elektronenstrahls in
+Kilovolt (kV). Nur Anzeige; wird im übergeordneten Simulator gesetzt.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Beschleunigungsspannung des Elektronenstrahls in
+Kilovolt (kV). Nur Anzeige; wird im übergeordneten Simulator gesetzt.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Beschleunigungsspannung des Elektronenstrahls in
+Kilovolt (kV). Nur Anzeige; wird im übergeordneten Simulator gesetzt.</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>Relativistisches Geschwindigkeitsverhältnis β = v/c
+der Elektronen (dimensionslos), abgeleitet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Relativistisches Geschwindigkeitsverhältnis β = v/c
+der Elektronen (dimensionslos), abgeleitet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>Relativistischer Massenfaktor γ = m/m₀ = 1 +
+e₀E/m₀c² (dimensionslos), abgeleitet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Relativistischer Massenfaktor γ = m/m₀ = 1 +
+e₀E/m₀c² (dimensionslos), abgeleitet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>Volumen der Elementarzelle des Kristalls in
+Kubiknanometern (nm³). Nur Anzeige.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Volumen der Elementarzelle des Kristalls in
+Kubiknanometern (nm³). Nur Anzeige.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Volumen der Elementarzelle des Kristalls in
+Kubiknanometern (nm³). Nur Anzeige.</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Maximaler Konvergenz-Halbwinkel des Elektronenstrahls
+im CBED-Modus (Convergent-Beam Electron Diffraction,
+konvergente Elektronenstrahlbeugung), in Milliradiant (mrad). Nur Anzeige.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Maximaler Konvergenz-Halbwinkel des Elektronenstrahls
+im CBED-Modus (Convergent-Beam Electron Diffraction,
+konvergente Elektronenstrahlbeugung), in Milliradiant (mrad). Nur Anzeige.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Maximaler Konvergenz-Halbwinkel des Elektronenstrahls
+im CBED-Modus (Convergent-Beam Electron Diffraction,
+konvergente Elektronenstrahlbeugung), in Milliradiant (mrad). Nur Anzeige.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Probendicke, die in der dynamischen Rechnung
+verwendet wird, in Nanometern (nm). Die gebeugte
+Amplitude Φ hängt von dieser Dicke ab. Nur Anzeige.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Probendicke, die in der dynamischen Rechnung
+verwendet wird, in Nanometern (nm). Die gebeugte
+Amplitude Φ hängt von dieser Dicke ab. Nur Anzeige.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Probendicke, die in der dynamischen Rechnung
+verwendet wird, in Nanometern (nm). Die gebeugte
+Amplitude Φ hängt von dieser Dicke ab. Nur Anzeige.</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Relativistische Elektronenwellenlänge (=
+1/k_vac), in Nanometern (nm), berechnet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Relativistische Elektronenwellenlänge (=
+1/k_vac), in Nanometern (nm), berechnet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Relativistische Elektronenwellenlänge (=
+1/k_vac), in Nanometern (nm), berechnet aus
+der Beschleunigungsspannung. Nur Anzeige.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Wählt die Einheit zur Anzeige der
+Kristallpotential-Spalten: Vg in Energieeinheiten
+(eV) oder Ug in inverser Länge zum Quadrat (nm⁻²).</value>
+  </data>
+</root>

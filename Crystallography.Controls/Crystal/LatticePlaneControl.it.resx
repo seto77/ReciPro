@@ -80,4 +80,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Traslazione</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Colore del piano reticolare</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Aggiunge alla lista il piano reticolare definito sopra
+(indici, traslazione, colore).</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Sostituisce il piano reticolare attualmente selezionato
+nella lista con i valori inseriti sopra.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Elimina dalla lista il piano reticolare attualmente selezionato.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista dei piani reticolari definiti; spunta la casella di una
+riga per attivare o disattivare la visualizzazione di quel piano.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Inserisci gli indici di Miller (h k l) del piano reticolare
+(indici di Miller-Bravais h k i l per i cristalli esagonali).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Sposta il piano reticolare lungo la sua normale, come
+frazione della distanza interplanare (da -0.5 a 0.5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Sposta il piano reticolare lungo la sua normale, come
+frazione della distanza interplanare (da -0.5 a 0.5).</value>
+  </data>
 </root>

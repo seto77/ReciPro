@@ -265,4 +265,220 @@
     <value>  束流
   相互作用</value>
   </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+←)</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+↓)</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+↑)</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>沿箭头方向旋转晶体。
+(Ctrl+Shift+→)</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>搜索最接近观察方向的晶带轴时所用的
+|u|+|v|+|w| 上限（如上方显示的近似指数）。
+值越大测试的候选晶带轴越多。</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>搜索最接近观察方向的晶带轴时所用的
+|u|+|v|+|w| 上限（如上方显示的近似指数）。
+值越大测试的候选晶带轴越多。</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>设置／显示欧拉角 Φ（度），即
+定义晶体取向的第一个旋转。</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 Φ（度），即
+定义晶体取向的第一个旋转。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 Φ（度），即
+定义晶体取向的第一个旋转。</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>将选定的晶体添加到上方列表。</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>打开对称性信息</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>打开 HRTEM/STEM 图像模拟器。HRTEM 为
+高分辨透射电子显微镜；
+STEM 为扫描透射电子显微镜。</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>将指定的晶面法线设置为朝向屏幕。
+若同时指定了轴指数，则该轴方向显示为向上。</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>打开粉末衍射</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 θ（度），即
+定义晶体取向的第二个旋转。</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 θ（度），即
+定义晶体取向的第二个旋转。</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>设置／显示欧拉角 θ（度），即
+定义晶体取向的第二个旋转。</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>设置／显示欧拉角 ψ（度），即
+定义晶体取向的第三个旋转。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 ψ（度），即
+定义晶体取向的第三个旋转。</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
+    <value>设置／显示欧拉角 ψ（度），即
+定义晶体取向的第三个旋转。</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>打开晶体数据库</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>要沿其观察的晶面指数 (h k l)。点击
+'Plane' 可旋转晶体，使该晶面的
+法线指向您（朝屏幕外）。</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>设置旋转按钮的角度步长（度）；
+启用动画时，同一数值用作
+旋转速度（度/秒）。</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>设置旋转按钮的角度步长（度）；
+启用动画时，同一数值用作
+旋转速度（度/秒）。</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
+    <value>打开结构查看器（三维晶体结构）。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>描述晶体当前三维旋转的
+欧拉角 (φ, θ, ψ)；
+编辑可直接设置取向。</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>打开 Spot ID v1</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>要沿其观察的晶带轴指数 [u v w]。点击
+'Axis' 可旋转晶体，使该方向
+指向您（朝屏幕外）。</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>晶带轴的近似指数</value>
+  </data>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>删除选定的晶体</value>
+  </data>
+  <data name="buttonDown.ToolTip" xml:space="preserve">
+    <value>将选定的晶体下移</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>将旋转状态重置为初始取向</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>勾选时，指定的轴在空间中被固定。</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>打开衍射模拟器</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>启用时，六方／三方（六方轴）晶体
+显示四指数米勒-布拉维指数。</value>
+  </data>
+  <data name="buttonSetAxis.ToolTip" xml:space="preserve">
+    <value>将指定的晶轴法线设置为朝向屏幕。
+若同时指定了晶面指数，则该晶面方向显示为向上。</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>打开旋转几何工具。</value>
+  </data>
+  <data name="buttonUp.ToolTip" xml:space="preserve">
+    <value>将选定的晶体上移</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>打开束流相互作用</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>启用 Intel MKL 以加快矩阵
+计算。首次使用时下载约 55MB。</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>在动力学计算中使用离子（完整 Peng）电子散射因子，
+而非中性原子。关闭 = 中性原子 IAM（默认）。</value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>复制选定的晶体。</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>此处显示晶体列表。
+要添加新晶体，请在下方的 'Crystal Information' 面板中设置其数据并点击 'Add'。
+要修改晶体，请选中它，在 'Crystal Information' 面板中更新其数据，然后点击 'Replace'。
+要从列表中移除某个晶体，请选中它并点击 'Delete'。
+要从列表中移除所有晶体，请点击 'Clear All'。</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>选定晶体的当前取向。</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>打开轨迹模拟器。</value>
+  </data>
+  <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
+    <value>勾选时，点击上方按钮
+会使晶体以恒定速度旋转。</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>勾选时，指定的晶面在空间中被固定。</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>打开 EBSD（电子背散射衍射）
+模拟器，根据晶体取向计算
+背散射衍射图案。</value>
+  </data>
+  <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
+    <value>清除所有晶体</value>
+  </data>
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
+    <value>用下方的新晶体替换
+上方选定的晶体。</value>
+  </data>
+  <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
+    <value>打开立体网（立体投影／吴氏网）。</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>打开“斑点 ID v2”功能</value>
+  </data>
 </root>

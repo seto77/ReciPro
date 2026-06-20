@@ -80,4 +80,34 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Verschiebung</value>
   </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Farbe der Netzebene</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Fügt die oben definierte Netzebene
+(Indizes, Translation, Farbe) zur Liste hinzu.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Ersetzt die aktuell in der Liste ausgewählte Netzebene
+durch die oben eingegebenen Werte.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Löscht die aktuell in der Liste ausgewählte Netzebene.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste der definierten Netzebenen; aktivieren Sie das
+Kontrollkästchen einer Zeile, um die Anzeige dieser Ebene umzuschalten.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Geben Sie die Miller-Indizes (h k l) der Netzebene ein
+(Miller-Bravais h k i l bei hexagonalen Kristallen).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Verschiebt die Netzebene entlang ihrer Normalen, als
+Bruchteil des Netzebenenabstands (-0,5 bis 0,5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Verschiebt die Netzebene entlang ihrer Normalen, als
+Bruchteil des Netzebenenabstands (-0,5 bis 0,5).</value>
+  </data>
 </root>

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (pt) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Gira a vista no sentido anti-horário em torno do
+eixo de visão (normal à tela) para o vídeo.</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para baixo em torno do
+eixo horizontal da tela para o vídeo.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para baixo e à esquerda em torno do
+eixo no plano correspondente para o vídeo.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para baixo e à direita em torno
+do eixo no plano correspondente para o vídeo.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Fecha esta caixa de diálogo sem criar um vídeo.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Gira a vista no sentido horário em torno do
+eixo de visão (normal à tela) para o vídeo.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para a esquerda em torno do
+eixo vertical da tela para o vídeo.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Gera o vídeo de rotação com a direção, a velocidade
+e a duração escolhidas, salvando-o como arquivo MP4.</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para a direita em torno do
+eixo vertical da tela para o vídeo (padrão).</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para cima em torno do
+eixo horizontal da tela para o vídeo.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para cima e à esquerda em torno do
+eixo no plano correspondente para o vídeo.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Inclina a vista para cima e à direita em torno
+do eixo no plano correspondente para o vídeo.</value>
+  </data>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Rótulo da predefinição de velocidade de codificação (ultrafast…veryslow).
+Nota: com o atual codificador Media Foundation
+isto aparece apenas na caixa de progresso e já
+não afeta a codificação real.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Rótulo da predefinição de velocidade de codificação (ultrafast…veryslow).
+Nota: com o atual codificador Media Foundation
+isto aparece apenas na caixa de progresso e já
+não afeta a codificação real.</value>
+  </data>
+  <data name="numericBoxDuration.ToolTip" xml:space="preserve">
+    <value>Duração do vídeo em segundos (a taxa de quadros é de 30 fps).</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Velocidade de rotação da vista em graus por segundo (°/s).</value>
+  </data>
+  <data name="radioButtonAxis.ToolTip" xml:space="preserve">
+    <value>Define o eixo de rotação usando um índice de direção cristalina [uvw].</value>
+  </data>
+  <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
+    <value>Gira em torno da projeção (orientação)
+atualmente exibida, escolhendo a direção
+de inclinação com os botões de seta.</value>
+  </data>
+  <data name="radioButtonH264.ToolTip" xml:space="preserve">
+    <value>Codifica o vídeo com o codec de vídeo H.264 (AVC).</value>
+  </data>
+  <data name="radioButtonH265.ToolTip" xml:space="preserve">
+    <value>Codifica o vídeo com o codec de vídeo H.265 (HEVC)
+(melhor compressão; requer um codificador HEVC).</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>Define o eixo de rotação como a
+normal de um plano reticular (hkl).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Insira os índices que definem o eixo de rotação:
+uma direção [uvw] no modo de índice de direção,
+ou um plano reticular (hkl) (rotação em torno
+da sua normal) no modo de plano reticular.</value>
+  </data>
+</root>

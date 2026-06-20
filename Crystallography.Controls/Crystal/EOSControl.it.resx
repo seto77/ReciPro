@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxUseEOS.ToolTip" xml:space="preserve">
+    <value>Abilita l'equazione di stato (EOS): calcola
+la pressione dal volume attuale della cella
+elementare usando i parametri impostati sotto.</value>
+  </data>
+  <data name="numericBox3rdVinetBeta.ToolTip" xml:space="preserve">
+    <value>Parametro empirico β dell'equazione di stato di Vinet
+di 3° ordine (usato solo quando è selezionato '3rd Vinet').</value>
+  </data>
+  <data name="numericBox3rdVinetIta.ToolTip" xml:space="preserve">
+    <value>Parametro empirico η dell'equazione di stato di Vinet
+di 3° ordine (usato solo quando è selezionato '3rd Vinet').</value>
+  </data>
+  <data name="numericBox3rdVinetPsi.ToolTip" xml:space="preserve">
+    <value>Parametro empirico ψ dell'equazione di stato di Vinet
+di 3° ordine (usato solo quando è selezionato '3rd Vinet').</value>
+  </data>
+  <data name="numericBoxEOS_A.ToolTip" xml:space="preserve">
+    <value>Coefficiente di espansione termica a (in
+10⁻⁵/K) in α(T)=a+bT+c/T², usato per espandere
+il volume di riferimento con la temperatura.</value>
+  </data>
+  <data name="numericBoxEOS_B.ToolTip" xml:space="preserve">
+    <value>Coefficiente di espansione termica b (in 10⁻⁹/K²),
+il termine lineare in temperatura di α(T)=a+bT+c/T².</value>
+  </data>
+  <data name="numericBoxEOS_C.ToolTip" xml:space="preserve">
+    <value>Coefficiente di espansione termica c (in K), il termine
+c/T² di α(T)=a+bT+c/T² (correzione a bassa temperatura).</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.ToolTip" xml:space="preserve">
+    <value>Parametro di Grüneisen γ₀ al volume di riferimento
+(adimensionale) — misura quanto fortemente
+l'energia vibrazionale termica contribuisce alla
+pressione; usato dal modello di Mie–Grüneisen.</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>Modulo di compressibilità isotermo K₀ alla temperatura
+di riferimento T₀, in GPa — la resistenza del
+materiale alla compressione uniforme (maggiore = più rigido).</value>
+  </data>
+  <data name="numericBoxEOS_Kp0.ToolTip" xml:space="preserve">
+    <value>Derivata prima rispetto alla pressione del modulo di compressibilità, K'₀
+= (∂K/∂P) a P=0 (adimensionale, tipicamente ≈4) —
+quanto rapidamente il materiale si irrigidisce sotto pressione.</value>
+  </data>
+  <data name="numericBoxEOS_KpInfinity.ToolTip" xml:space="preserve">
+    <value>Valore limite K'∞ della derivata rispetto alla pressione del
+modulo di compressibilità a pressione infinita (adimensionale);
+usato dall'equazione di stato di Keane.</value>
+  </data>
+  <data name="numericBoxEOS_KperT.ToolTip" xml:space="preserve">
+    <value>Derivata rispetto alla temperatura del modulo di compressibilità,
+∂K/∂T a P=0 (in GPa/K) — di quanto varia la rigidità
+K per kelvin (di solito negativa).</value>
+  </data>
+  <data name="numericBoxEOS_Kpp0.ToolTip" xml:space="preserve">
+    <value>Derivata seconda rispetto alla pressione del modulo di compressibilità,
+K''₀ = (∂²K/∂P²) a P=0, in 1/GPa; usata dall'equazione
+di stato di Birch–Murnaghan di 4° ordine.</value>
+  </data>
+  <data name="numericBoxEOS_Q.ToolTip" xml:space="preserve">
+    <value>Esponente q di dipendenza dal volume del parametro
+di Grüneisen, γ = γ₀·(V/V₀)^q (adimensionale).</value>
+  </data>
+  <data name="numericBoxEOS_T0.ToolTip" xml:space="preserve">
+    <value>Temperatura di riferimento T₀ (in K) alla
+quale sono definiti i parametri isotermi V₀,
+K₀, K'₀ (tipicamente 300 K).</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.ToolTip" xml:space="preserve">
+    <value>Temperatura di Debye θ₀ al volume di riferimento (in K) —
+la temperatura caratteristica delle vibrazioni reticolari;
+usata per valutare la pressione termica (Mie–Grüneisen).</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.ToolTip" xml:space="preserve">
+    <value>Volume di riferimento della cella elementare V₀ a T₀ e P=0,
+in Å³ per cella. Cliccare per modificare questo campo (il
+campo cm³/mol viene poi derivato automaticamente).</value>
+  </data>
+  <data name="numericBoxEOS_V0perMol.ToolTip" xml:space="preserve">
+    <value>Volume molare di riferimento V₀ a T₀ e P=0, in
+cm³/mol. Cliccare per modificare questo campo (il
+campo Å³/cell viene poi derivato automaticamente).</value>
+  </data>
+  <data name="numericBoxPressure.ToolTip" xml:space="preserve">
+    <value>Pressione calcolata P (in GPa), derivata dall'equazione
+di stato dal volume e dalla temperatura attuali
+della cella elementare (output di sola lettura).</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>Temperatura obiettivo T (in K) alla quale viene
+valutata la pressione; la pressione termica
+viene aggiunta dalla differenza T − T₀.</value>
+  </data>
+  <data name="radioButtonEOS_AP2.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato AP2 (polinomio adattato
+di 2° ordine / Holzapfel) per la relazione
+isoterma pressione–volume.</value>
+  </data>
+  <data name="radioButtonEOS_FourthBirchMunaghan.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato di Birch–Murnaghan (BM)
+di 4° ordine per la relazione isoterma
+pressione–volume (aggiunge il termine K''₀).</value>
+  </data>
+  <data name="radioButtonEOS_Keane.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato di Keane per la
+relazione isoterma pressione–volume
+(usa il limite ad alta pressione K'∞).</value>
+  </data>
+  <data name="radioButtonEOS_ThirdBirchMurnaghan.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato di Birch–Murnaghan (BM) di
+3° ordine per la relazione isoterma pressione–volume
+(la scelta standard; usa V₀, K₀, K'₀).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato di Vinet per la relazione isoterma
+pressione–volume (spesso preferita a forte
+compressione; usa V₀, K₀, K'₀).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet3rd.ToolTip" xml:space="preserve">
+    <value>Usa l'equazione di stato di Vinet estesa di 3° ordine
+per la relazione isoterma pressione–volume
+(usa i parametri aggiuntivi η, β, ψ).</value>
+  </data>
+  <data name="radioButtonMieGruneisen.ToolTip" xml:space="preserve">
+    <value>Calcola la pressione termica dalle vibrazioni
+reticolari usando il modello di Mie–Grüneisen (con
+i parametri γ₀, temperatura di Debye θ₀ e q).</value>
+  </data>
+  <data name="radioButtonTdependenceK0andV0.ToolTip" xml:space="preserve">
+    <value>Tiene conto della temperatura rendendo il volume di
+riferimento V₀ e il modulo di compressibilità K₀ dipendenti dalla
+temperatura (usa l'espansione termica a,b,c e ∂K/∂T).</value>
+  </data>
+  <data name="textBoxEOS_Note.ToolTip" xml:space="preserve">
+    <value>Nota a testo libero per questo insieme di parametri
+dell'equazione di stato (es. fonte bibliografica o commento).</value>
+  </data>
+  <data name="label83.ToolTip" xml:space="preserve">
+    <value>Nota a testo libero per questo insieme di parametri
+dell'equazione di stato (es. fonte bibliografica o commento).</value>
+  </data>
+</root>

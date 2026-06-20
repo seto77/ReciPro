@@ -160,4 +160,391 @@ anzeigen</value>
   <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Lagesym.</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Name zur Identifizierung dieser Atomposition (z. B. O1, Fe2),
+angezeigt in der Atomliste und als 3D-Beschriftung.</value>
+  </data>
+  <data name="textBoxLabel.ToolTip" xml:space="preserve">
+    <value>Name zur Identifizierung dieser Atomposition (z. B. O1, Fe2),
+angezeigt in der Atomliste und als 3D-Beschriftung.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Chemisches Element dieser Atomposition.</value>
+  </data>
+  <data name="comboBoxAtom.ToolTip" xml:space="preserve">
+    <value>Element auswählen</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
+    <value>Besetzung der Position: Anteil dieser Position, der vom
+Atom besetzt ist (0 = leer, 1 = vollständig besetzt).</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
+    <value>Besetzung der Position: Anteil dieser Position, der vom
+Atom besetzt ist (0 = leer, 1 = vollständig besetzt).</value>
+  </data>
+  <data name="numericBoxZ.ToolTip" xml:space="preserve">
+    <value>Fraktionelle Koordinate der c-Achse.
+Bruchformat (z. B. 3/4) ist zulässig.</value>
+  </data>
+  <data name="numericBoxY.ToolTip" xml:space="preserve">
+    <value>Fraktionelle Koordinate der b-Achse.
+Bruchformat (z. B. 3/4) ist zulässig.</value>
+  </data>
+  <data name="numericBoxX.ToolTip" xml:space="preserve">
+    <value>Fraktionelle Koordinate der a-Achse.
+Bruchformat (z. B. 3/4) ist zulässig.</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
+    <value>Verwendet die U-Notation für den Parameter der atomaren
+Auslenkung (Temperatur) — die mittlere quadratische atomare
+Auslenkung (Å²) durch thermische Schwingung; B = 8π²·U.</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
+    <value>Verwendet die B-Notation für den Parameter der atomaren
+Auslenkung (Temperatur); B = 8π²·U, wobei
+größere Werte stärkere thermische Schwingung bedeuten.</value>
+  </data>
+  <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
+    <value>Einstellungs-Registerkarte für den Debye-Waller-Faktor</value>
+  </data>
+  <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
+    <value>Wählt den Eintrag für den Elektronen-Streufaktor
+(Ionenladungszustand und Parametrisierung,
+z. B. "Fe2+: HF"), der für die Elektronen-
+beugung / Bildsimulation dieses Atoms verwendet wird.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Wählt den Eintrag für den Elektronen-Streufaktor
+(Ionenladungszustand und Parametrisierung,
+z. B. "Fe2+: HF"), der für die Elektronen-
+beugung / Bildsimulation dieses Atoms verwendet wird.</value>
+  </data>
+  <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
+    <value>Wählt den Eintrag für den Röntgen-Streufaktor (Ionen-
+ladungszustand und Parametrisierung, z. B. "Fe2+"), der
+für die Röntgenbeugungsberechnung dieses Atoms verwendet wird.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Wählt den Eintrag für den Röntgen-Streufaktor (Ionen-
+ladungszustand und Parametrisierung, z. B. "Fe2+"), der
+für die Röntgenbeugungsberechnung dieses Atoms verwendet wird.</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>Radius der zu zeichnenden Kugel</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip1" xml:space="preserve">
+    <value>Radius der zu zeichnenden Kugel</value>
+  </data>
+  <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
+    <value>Kopiert die aktuellen Einstellungen (Darstellung auf
+der Registerkarte Appearance oder Debye-Waller-/
+Auslenkungsparameter auf der Registerkarte Debye-Waller)
+auf alle Atome desselben Elements.</value>
+  </data>
+  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
+    <value>Fügt das untenstehende Atom zur obigen Liste hinzu.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Ersetzt das ausgewählte Atom durch das untenstehende Atom</value>
+  </data>
+  <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
+    <value>Wendet die aktuellen Debye-Waller-Parameter (atomare
+Auslenkung) auf jedes Atom in der Liste an
+(verfügbar auf der Registerkarte Debye-Waller).</value>
+  </data>
+  <data name="buttonAtomUp.ToolTip" xml:space="preserve">
+    <value>Verschiebt das ausgewählte Atom nach oben</value>
+  </data>
+  <data name="buttonAtomDown.ToolTip" xml:space="preserve">
+    <value>Verschiebt das ausgewählte Atom nach unten</value>
+  </data>
+  <data name="buttonDeleteAtom.ToolTip" xml:space="preserve">
+    <value>Löscht das ausgewählte Atom</value>
+  </data>
+  <data name="buttonOriginShift1.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/8, 1/8, 1/8) addiert wird (Vorzeichen
+über die +/--Schaltflächen). Nützlich zum
+Wechseln zwischen alternativen Ursprungswahlen.</value>
+  </data>
+  <data name="buttonOriginShift2.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/4, 1/4,
+1/4) addiert wird (Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift3.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (0, 1/4, 1/8) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift4.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/4, 0, 1/4) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (0, 1/4, 1/4) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift6.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/4, 1/4, 0) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/4, -1/4, 0) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift8.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (1/4, -1/4,
+1/4) addiert wird (Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
+    <value>Verschiebt den Ursprung, indem zu den fraktionellen
+Koordinaten jedes Atoms (0, 1/4, -1/8) addiert wird
+(Vorzeichen über die +/--Schaltflächen).</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Schaltet die Anzeige des Beschriftungstextes dieses Atoms
+neben seiner Kugel in der 3D-Strukturansicht um.</value>
+  </data>
+  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
+    <value>Klicken Sie, um die Anzeigefarbe der Kugel dieses
+Atoms in der 3D-Strukturansicht auszuwählen.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Liste aller Atompositionen im Kristall. Wählen Sie
+eine Zeile, um sie in den Editor darunter zu laden;
+das Kontrollkästchen schaltet die Sichtbarkeit des Atoms in der 3D-Ansicht um.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Deckkraft (Alpha) der Atomkugel,
+0 (vollständig transparent) bis 1 (undurchsichtig).</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Deckkraft (Alpha) der Atomkugel,
+0 (vollständig transparent) bis 1 (undurchsichtig).</value>
+  </data>
+  <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
+    <value>Umgebungslicht-Reflexionskoeffizient (0–1): Stärke
+der gleichmäßigen Hintergrundbeleuchtung der Atomkugel,
+unabhängig von der Lichtrichtung.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Umgebungslicht-Reflexionskoeffizient (0–1): Stärke
+der gleichmäßigen Hintergrundbeleuchtung der Atomkugel,
+unabhängig von der Lichtrichtung.</value>
+  </data>
+  <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
+    <value>Diffus-Reflexionskoeffizient (0–1): matte
+Reflexion, die mit der Lichtrichtung variiert
+(Helligkeit der beleuchteten Seite der Kugel).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Diffus-Reflexionskoeffizient (0–1): matte
+Reflexion, die mit der Lichtrichtung variiert
+(Helligkeit der beleuchteten Seite der Kugel).</value>
+  </data>
+  <data name="numericBoxEmission.ToolTip" xml:space="preserve">
+    <value>Emissionskoeffizient (0–1): Selbstbeleuchtung,
+die die Atomkugel unabhängig von jeder
+Lichtquelle leuchten lässt.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Emissionskoeffizient (0–1): Selbstbeleuchtung,
+die die Atomkugel unabhängig von jeder
+Lichtquelle leuchten lässt.</value>
+  </data>
+  <data name="numericBoxOccerr.ToolTip" xml:space="preserve">
+    <value>Standardunsicherheit (± Fehler) der Besetzung der Lage.</value>
+  </data>
+  <data name="numericBoxShininess.ToolTip" xml:space="preserve">
+    <value>Glanzgrad-Exponent (0–20): Schärfe des
+Glanzlichts; größere Werte ergeben
+ein kleineres, schärferes Glanzlicht.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Glanzgrad-Exponent (0–20): Schärfe des
+Glanzlichts; größere Werte ergeben
+ein kleineres, schärferes Glanzlicht.</value>
+  </data>
+  <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
+    <value>Glanz-Reflexionskoeffizient (0–1):
+Stärke des Glanzlichts auf der
+Atomkugel (wirkt zusammen mit dem Glanzgrad).</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Glanz-Reflexionskoeffizient (0–1):
+Stärke des Glanzlichts auf der
+Atomkugel (wirkt zusammen mit dem Glanzgrad).</value>
+  </data>
+  <data name="numericBoxXerr.ToolTip" xml:space="preserve">
+    <value>Standardunsicherheit (± Fehler) der
+fraktionellen a-Achsen-Koordinate.</value>
+  </data>
+  <data name="numericBoxYerr.ToolTip" xml:space="preserve">
+    <value>Standardunsicherheit (± Fehler) der
+fraktionellen b-Achsen-Koordinate.</value>
+  </data>
+  <data name="numericBoxZerr.ToolTip" xml:space="preserve">
+    <value>Standardunsicherheit (± Fehler) der
+fraktionellen c-Achsen-Koordinate.</value>
+  </data>
+  <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
+    <value>Beim Drücken einer Ursprungsverschiebungs-Schaltfläche den
+gewählten Verschiebungsvektor subtrahieren (negative Ursprungsverschiebung).</value>
+  </data>
+  <data name="radioButtonOriginShiftPlus.ToolTip" xml:space="preserve">
+    <value>Beim Drücken einer Ursprungsverschiebungs-Schaltfläche den
+gewählten Verschiebungsvektor addieren (positive Ursprungsverschiebung).</value>
+  </data>
+  <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
+    <value>Das anisotrope Auslenkungsmodell verwenden
+(richtungsabhängige thermische Schwingung,
+beschrieben durch einen 6-komponentigen Tensor B11…B23).</value>
+  </data>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value>Das isotrope Auslenkungsmodell verwenden (ein einzelner Wert,
+der eine in alle Richtungen gleiche thermische Schwingung beschreibt).</value>
+  </data>
+  <data name="labelDimension.ToolTip" xml:space="preserve">
+    <value>Aktuelle Einheit des Auslenkungs-
+parameters: Å² für U (und isotropes B);
+"Keine" (dimensionslos) für anisotropes B.</value>
+  </data>
+  <data name="numericBoxB11.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter,
+Komponente 11 (Å²) — beschreibt die
+richtungsabhängige thermische Schwingung dieses
+Atoms; je nach gewählter Notation als B11 oder U11 angezeigt.</value>
+  </data>
+  <data name="numericBoxB11err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 11
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxB12.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter, Komponente
+12 (Å²) — richtungsabhängige thermische Schwingung;
+je nach gewählter Notation als B12 oder U12 angezeigt.</value>
+  </data>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 12
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxB13.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter, Komponente
+13 (Å²) — richtungsabhängige thermische Schwingung;
+je nach gewählter Notation als B13 oder U13 angezeigt.</value>
+  </data>
+  <data name="numericBoxB13err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 13
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxB22.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter, Komponente
+22 (Å²) — richtungsabhängige thermische Schwingung;
+je nach gewählter Notation als B22 oder U22 angezeigt.</value>
+  </data>
+  <data name="numericBoxB22err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 22
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxB23.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter, Komponente
+23 (Å²) — richtungsabhängige thermische Schwingung;
+je nach gewählter Notation als B23 oder U23 angezeigt.</value>
+  </data>
+  <data name="numericBoxB23err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 23
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxB33.ToolTip" xml:space="preserve">
+    <value>Anisotroper atomarer Auslenkungsparameter, Komponente
+33 (Å²) — richtungsabhängige thermische Schwingung;
+je nach gewählter Notation als B33 oder U33 angezeigt.</value>
+  </data>
+  <data name="numericBoxB33err.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) der Komponente 33
+des anisotropen Auslenkungsparameters (Å²).</value>
+  </data>
+  <data name="numericBoxBiso.ToolTip" xml:space="preserve">
+    <value>Isotroper atomarer Auslenkungsparameter
+Biso/Uiso (Å²) — die Größe der thermischen
+Schwingung, in alle Richtungen gleich; je nach
+gewählter Notation als Biso oder Uiso angezeigt.</value>
+  </data>
+  <data name="numericBoxBisoerr.ToolTip" xml:space="preserve">
+    <value>Standardabweichung (Fehler) des isotropen
+Auslenkungsparameters Biso/Uiso (Å²).</value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
+    <value>Die Fehlerfelder (Standardabweichung) für die
+Atomkoordinaten und die Besetzung ein- oder ausblenden.</value>
+  </data>
+  <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
+    <value>Die fraktionellen Koordinaten aller Atome um die
+unten eingegebenen benutzerdefinierten (x, y, z)-Werte
+verschieben und dann die symmetrieäquivalenten Positionen neu erzeugen.</value>
+  </data>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value>Ursprungsverschiebung entlang a (x), in fraktionellen
+Koordinaten (Bereich -1 bis 1); wird mit
+"Benutzerdefinierte Verschiebung anwenden" auf alle Atome angewendet.</value>
+  </data>
+  <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
+    <value>Ursprungsverschiebung entlang b (y), in fraktionellen
+Koordinaten (Bereich -1 bis 1); wird mit
+"Benutzerdefinierte Verschiebung anwenden" auf alle Atome angewendet.</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
+    <value>Ursprungsverschiebung entlang c (z), in fraktionellen
+Koordinaten (Bereich -1 bis 1); wird mit
+"Benutzerdefinierte Verschiebung anwenden" auf alle Atome angewendet.</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.ToolTip" xml:space="preserve">
+    <value>Öffnet einen Dialog zum Bearbeiten der Isotopenhäufigkeiten, die für die
+Neutronen-Streulänge verwendet werden (nur aktiviert,
+wenn eine benutzerdefinierte Isotopenzusammensetzung gewählt ist).</value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.ToolTip" xml:space="preserve">
+    <value>Zeigt die Unsicherheits-Eingabefelder (Standardabweichung)
+für die Debye–Waller-Temperaturfaktoren
+(thermische Auslenkungsparameter Biso/Uiso und
+anisotrope Bij/Uij) an, die die Beugungsintensität
+durch thermische Atomschwingung dämpfen.</value>
+  </data>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value>Wählen Sie, ob die kohärente Neutronen-Streulänge
+die natürliche Isotopenhäufigkeit oder eine
+benutzerdefinierte Isotopenzusammensetzung verwendet; die Auswahl von
+'Benutzerdefinierte Isotopenhäufigkeit' aktiviert die Schaltfläche Bearbeiten, sodass
+Sie die Anteile je Isotop eingeben können, die in
+Neutronen-Strukturfaktorberechnungen verwendet werden.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Wählen Sie das atomare Auslenkungsmodell: isotrop
+(ein Wert) oder anisotrop (6-komponentiger Tensor
+für richtungsabhängige thermische Schwingung).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Wählen Sie die Notation für den atomaren Auslenkungs-
+(Temperatur-)Parameter: B oder U, verknüpft über B = 8π²·U.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Physikalische Dimension (Einheit) des Auslenkungs-
+parameters für die aktuelle Notation: Å² für U (und
+isotropes B), dimensionslos für anisotropes B.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Geben Sie eine Verschiebung der fraktionellen Koordinaten
+(x, y, z) ein, die auf alle Atome angewendet wird.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Wählen Sie, ob die Neutronen-Streulänge die
+natürliche (Standard-)Isotopenhäufigkeit oder eine
+benutzerdefinierte Isotopenzusammensetzung verwendet.</value>
+  </data>
 </root>

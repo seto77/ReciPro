@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>전체 반사 표(표시 중인 열, 탭 구분)를
+클립보드에 복사하여 Excel이나
+텍스트 편집기에 붙여넣을 수 있습니다.</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>선택하면 각 열의 너비를 표시되는 내용에
+맞춰 자동으로 조정합니다. 큰 표에서 스크롤을
+빠르게 하려면 끄세요.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>동역학적(Bethe 법) 회절 계산에 의한 각 반사의
+결과입니다. 지수 hkl, 면간 거리, 역격자 벡터 g,
+결정 퍼텐셜 Ug/Vg, 여기 오차 Sg(역격자점이
+Ewald 구에서 벗어난 거리), 회절파 진폭 Φ를
+표시합니다.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>두 퍼텐셜 단위 간의 환산: Ug [nm⁻²] = 2·m₀/h² ·
+Vg [eV] × 10¹⁸. 위의 라디오 버튼으로
+선택합니다.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>이 표의 단위 규약: 길이는 옹스트롬이 아닌
+나노미터(nm)로, 파수는 2π/nm가 아닌
+1/nm로 표시합니다.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>표 열 기호의 범례: Vg/Ug = 탄성 산란의 결정
+퍼텐셜; V'g/U'g = 열 산만 산란의 허수(흡수)
+퍼텐셜; Φ = 출사면에서의 회절파 진폭.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>표 셀 표시에 사용하는 유효 숫자 자릿수(1-16)입니다.
+표시에만 영향을 주며, 실제로 계산된 값은
+변하지 않습니다.</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>결정 퍼텐셜 열을 에너지 단위(eV)의 푸리에 퍼텐셜인 Vg로
+표시합니다.
+열 머리글이 Ug/U'g에서 Vg/V'g로 전환됩니다.</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>결정 퍼텐셜 열을 동력학 계산에 사용하는 역길이 제곱
+단위(nm⁻²)의 푸리에 퍼텐셜 계수인 Ug로
+표시합니다. 열 머리글이 Vg/V'g에서
+Ug/U'g로 전환됩니다.</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>전자선의 가속 전압(kV)입니다.
+읽기 전용이며, 값은 상위 시뮬레이터에서 설정합니다.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>전자선의 가속 전압(kV)입니다.
+읽기 전용이며, 값은 상위 시뮬레이터에서 설정합니다.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>전자선의 가속 전압(kV)입니다.
+읽기 전용이며, 값은 상위 시뮬레이터에서 설정합니다.</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 산출되는 전자의
+상대론적 속도비 β = v/c(무차원)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 산출되는 전자의
+상대론적 속도비 β = v/c(무차원)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 산출되는 상대론적
+질량 계수 γ = m/m₀ = 1 + e₀E/m₀c²(무차원)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 산출되는 상대론적
+질량 계수 γ = m/m₀ = 1 + e₀E/m₀c²(무차원)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>결정 단위 격자의 부피(nm³)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>결정 단위 격자의 부피(nm³)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>결정 단위 격자의 부피(nm³)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>CBED(수렴 전자선 회절) 모드에서의 전자선의
+최대 수렴 반각(mrad)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>CBED(수렴 전자선 회절) 모드에서의 전자선의
+최대 수렴 반각(mrad)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>CBED(수렴 전자선 회절) 모드에서의 전자선의
+최대 수렴 반각(mrad)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>동력학 계산에 사용하는 시료의 두께(nm)입니다.
+회절파 진폭 Φ는 이 두께에 의존합니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>동력학 계산에 사용하는 시료의 두께(nm)입니다.
+회절파 진폭 Φ는 이 두께에 의존합니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>동력학 계산에 사용하는 시료의 두께(nm)입니다.
+회절파 진폭 Φ는 이 두께에 의존합니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 계산한 전자의 상대론적 파장(=
+1/k_vac, 단위 nm)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 계산한 전자의 상대론적 파장(=
+1/k_vac, 단위 nm)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>가속 전압으로부터 계산한 전자의 상대론적 파장(=
+1/k_vac, 단위 nm)입니다.
+읽기 전용입니다.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>결정 퍼텐셜 열의 표시 단위를 선택합니다.
+에너지 단위(eV)의 Vg 또는 역길이 제곱
+(nm⁻²)의 Ug 중에서 선택합니다.</value>
+  </data>
+</root>

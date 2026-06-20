@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Aktiviert die Rz-(θ-)Achse: seitliches "Schwenk"-
+Pendeln der Probe, eingestellt über deren Motor-
+geschwindigkeit (°/s) und Pendelbereich (±°) unten.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Aktiviert die Ry-(ω-)Achse: "Nick"-Pendeln
+der Probe, eingestellt über deren Motorgeschwindigkeit (°/s),
+Pendelbereich (±°) und Schritt (°) unten.</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Stoppt den Fit automatisch, sobald die
+abgekühlte 'Num per Step' unter den rechts
+eingestellten Schwellenwert (%) fällt.</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Stoppt den Fit automatisch, sobald die
+abgekühlte 'Directional density' unter den rechts
+eingestellten Schwellenwert (°) fällt.</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Stoppt den Fit automatisch, sobald 'Inheritability'
+über den rechts eingestellten Schwellenwert (%) steigt.</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>Bezieht den Versatz des Strahlzentrums als freien
+Parameter in den Fit ein und verfeinert die Zentrumsposition
+des Musters, um die Referenz bestmöglich anzupassen.</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>Bezieht den Strahlkonvergenzwinkel als
+freien Parameter in den Fit ein (verfeinert,
+wie stark der einfallende Strahl konvergiert).</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>Bezieht die Film-/Detektor-Unschärfe
+(Punktverteilungs-Verbreiterung jedes
+Spots) als freien Parameter in den Fit ein.</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>Verfeinert die Dichteverteilung der Vorzugsorientierung
+(Textur/LPO). Dies ist der Kern des
+Fits und stets aktiviert (kann nicht abgeschaltet werden).</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>Bezieht die Eigenspannung (Gitter-
+verzerrung, die die Ringe verschiebt/verbreitert)
+als freien Parameter in den Fit ein.</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>Simuliert ein pendelndes Goniometer ('Yusa-Typ'):
+integriert das Muster über die unten eingestellten Bewegungen
+Rx(Φ-Rotation), Rz(θ-Schwenk) und Ry(ω-Nicken)
+und ahmt eine reale Pulver-/Texturmessung nach.</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Aktiviert die Rx-(Φ-)Achse: kontinuierliche Drehung
+der Probe um ihre Oberflächennormale mit der
+rechts eingestellten Motorgeschwindigkeit (°/s).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Gradientenrichtung der Intensitätsanzeige:
+Positive zeigt hohe Intensität hell,
+Negative kehrt dies um (hohe Intensität dunkel).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Intensitätsabbildung für das angezeigte
+Muster: logarithmische Skala (hebt
+schwache Reflexe hervor) oder lineare Skala.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Intensitätsabbildung für das angezeigte
+Muster: logarithmische Skala (hebt
+schwache Reflexe hervor) oder lineare Skala.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Farbabbildung für das angezeigte Muster:
+Graustufen oder eine Kalt-Warm-Farbskala.</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Farbabbildung für das angezeigte Muster:
+Graustufen oder eine Kalt-Warm-Farbskala.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>Anteil der Kristallite (%), deren Orientierung bei
+jedem Verfeinerungsschritt des Fits der Vorzugsorientierung
+(LPO, Lattice Preferred Orientation) gestört wird. Größer = größere
+Schritte; der Wert wird mit fortschreitender Konvergenz
+abgekühlt (×0,8).</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Schwellenwert (%) für 'Num per Step': der Fit stoppt,
+wenn der Parameter unter dieses Niveau abgekühlt ist.</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>Winkelbreite (°) der bei jedem Verfeinerungsschritt
+angewendeten Orientierungs-Verzerrung: die Halbwertsbreite, über die
+die Dichte einer gewählten Orientierung verstärkt wird.
+Wird mit zunehmender Schärfung des Fits kleiner abgekühlt (×0,8).</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Schwellenwert (°) für 'Directional density': der Fit
+stoppt, wenn der Parameter unter dieses Niveau abgekühlt ist.</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>Wahrscheinlichkeit (%), dass ein Verfeinerungsschritt eine
+bereits dichte Orientierung wiederverwendet ('vererbt'),
+statt eine zufällige zu wählen; höhere Werte
+treiben den Fit zu einer schärferen Textur.</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Schwellenwert (%) für 'Inheritability': der Fit
+stoppt, sobald der Parameter über dieses Niveau steigt.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rx-(Φ-)Rotationsachse, in
+Grad pro Sekunde (°/s). Schnellere Rotation
+mittelt über mehr Orientierungen in der Ebene.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Pendel-(Nick-)Bereich der Ry-
+(ω-)Achse, in ± Grad um das Zentrum.</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Pendel-(Nick-)Bereich der Ry-
+(ω-)Achse, in ± Grad um das Zentrum.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Pendel-(Nick-)Bereich der Ry-
+(ω-)Achse, in ± Grad um das Zentrum.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Pendel-(Nick-)Bereich der Ry-
+(ω-)Achse, in ± Grad um das Zentrum.</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Ry-(ω-)Nick-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Ry-(ω-)Nick-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Ry-(ω-)Nick-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Winkelschritt (°) des Ry-(ω-)Pendelns: das
+Inkrement pro ω-Fortschritt während des Scans; kleiner ergibt
+feinere Orientierungsabtastung, aber langsamere Simulation.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Oszillationsbereich (Schwenkbereich) der Rz (θ)-
+Achse, in ± Grad um die Mitte; die Probe
+schwenkt zwischen −Wert und +Wert.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rz (θ)-Schwenk-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rz (θ)-Schwenk-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rz (θ)-Schwenk-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Zickzack-Scanreihenfolge: θ (Rz) wird vor und zurück
+geschwenkt, während ω (Ry) bei jedem Durchlauf weiterrückt,
+sodass das Goniometer den Orientierungsraum im Zickzack abfährt.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Debug-Test: erzeugt für die ausgewählten Kristalle das
+Beugungsbild einer einzelnen zufälligen Orientierung.</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>Simuliert das polykristalline Debye-Ring-
+(Pulver-)Beugungsbild für die ausgewählten
+Kristalle und zeigt es im aktuellen Tab an.</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>Lädt eine zuvor gespeicherte Einstellung der
+Orientierungsanpassung (.setting-Datei).</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>Speichert die aktuelle Einstellung der Orientierungs-
+anpassung (Kristalle, Parameter und
+Residuen-Verlauf) in eine .setting-Datei.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Startet oder stoppt die Anpassung der Kristall-
+orientierungsverteilung (LPO, Lattice-Preferred Orientation),
+sodass das simulierte Bild bestmöglich mit den
+Referenzbildern übereinstimmt. Erneut klicken zum Stoppen.</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>Fügt ein gemessenes Referenz-Beugungsbild (.ipa-
+Bild) als Anpassungsziel hinzu. Es öffnet sich in einem neuen Tab.</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>Entfernt das in der Liste ausgewählte
+Referenz-Beugungsbild (und dessen Tab).</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>Liste der geladenen Referenz-Beugungsbilder.
+Wählen Sie eines, um zu dessen Tab zu wechseln.</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>Speichert die Einstellung während der Anpassung
+automatisch in regelmäßigen Abständen. (Derzeit deaktiviert.)</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>Verkleinert die Anpassungsparameter automatisch,
+wenn sich das Residuum nicht mehr schnell
+genug verbessert. (Derzeit fest aktiviert.)</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>Schwellenwert (0-1) für die automatische Verkleinerung
+der Anpassungsparameter. Wenn das Verhältnis der jüngeren
+zur früheren Steigung des Residuums (Rwp) unter
+diesen Wert fällt, werden die Parameter auf das 0,8-fache reduziert.</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Schreibgeschütztes Anpassungsprotokoll: verstrichene Zeit,
+Geschwindigkeit (ms/Schritt), Schrittzahl, Anzahl erfolgreicher
+Aktualisierungen, Residuum (%) und S-Wert.</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>Sucht und entfernt iterativ Kristallit-Orientierungen,
+die nicht zum Beugungsbild beitragen,
+und behält nur die beitragenden bei.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>Verlaufsrichtung der Intensitätsdarstellung: Positiv
+zeigt hohe Intensität hell, Negativ kehrt dies um.</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Oszillationsbereich (Schwenkbereich) der Rz (θ)-
+Achse, in ± Grad um die Mitte.</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Oszillationsbereich (Schwenkbereich) der Rz (θ)-
+Achse, in ± Grad um die Mitte.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Oszillationsbereich (Schwenkbereich) der Rz (θ)-
+Achse, in ± Grad um die Mitte.</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Winkelschritt (°) der Ry (ω)-Oszillation; kleiner
+liefert feinere Orientierungsabtastung, aber langsamere Simulation.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rx (Φ)-Rotations-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Motorgeschwindigkeit der Rx (Φ)-Rotations-
+achse, in Grad pro Sekunde (°/s).</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Winkelschritt (°) der Ry (ω)-Oszillation.</value>
+  </data>
+</root>

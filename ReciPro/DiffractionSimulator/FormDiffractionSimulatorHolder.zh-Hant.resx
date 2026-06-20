@@ -138,4 +138,132 @@
   <data name="$this.Text" xml:space="preserve">
     <value>TEM試樣台模擬</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>立體網繪製區的背景顏色。</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>繪製於立體網上之試樣固定座外框的顏色。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>立體網之 90° 主格線
+與外周圓的顏色。</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>繪製於立體網上之 10° 中間
+格線的顏色。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1 度線的顏色
+勾選「Show 1° Lines」時有效</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>[100]、[010]、[001] 軸標籤的顏色</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>一般晶帶軸點與標籤的顏色
+（[100]、[010]、[001] 以外的軸）</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Tilt-X（主軸）方向箭頭的顏色
+（勾選「Show tilt directions」時顯示）</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Tilt-Y（副軸）方向箭頭的顏色
+（勾選「Show tilt directions」時顯示）</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>勾選時，方向鍵會傾斜固定座：
+左/右改變 Tilt X，上/下依方向鍵
+步距改變 Tilt Y。</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>每次按下方向鍵所套用的
+傾斜角增量（以度為單位）。</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>固定座繞主軸（Tilt X）
+的傾斜角，以度為單位。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>固定座繞主軸（Tilt X）
+的傾斜角，以度為單位。</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>固定座繞副軸（Tilt Y）
+的傾斜角，以度為單位。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>固定座繞副軸（Tilt Y）
+的傾斜角，以度為單位。</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>立體網上 Tilt X（主軸）的
+方位方向（以度為單位）。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>立體網上 Tilt X（主軸）的
+方位方向（以度為單位）。</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>對 Tilt Y（副軸）使用負極性。</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>對 Tilt Y（副軸）使用正極性。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Tilt Y（副軸）的極性（符號）；
+請與您的 TEM 測角器慣例一致。</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>繪製於立體網上之晶帶軸點的半徑。</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>繪製於立體網上之晶帶軸點的半徑。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>晶帶軸指數標籤的字體大小。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>晶帶軸指數標籤的字體大小。</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>將目前的固定座傾斜設為 Link 的
+Tilt X/Y 值，並以所得姿態
+作為中立方向。</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>將晶體繞光束（[001]）軸旋轉 180°。</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>按下 Link 按鈕時所套用的
+目標 Tilt X 角（以度為單位）。</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>按下 Link 按鈕時所套用的
+目標 Tilt Y 角（以度為單位）。</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>勾選時，於立體網上繪製 1° 間隔線
+（顏色由 1° 顏色控制項設定）。</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>勾選時，於每個晶帶軸點旁
+顯示 [u v w] 指數標籤。</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>勾選時，於立體網上繪製箭頭
+以顯示 Tilt-X 與 Tilt-Y 方向。</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>要顯示之立體網區域的半角（以度為
+單位）；值越小放大越多。</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>傾斜方向立體網。雙擊某點
+即可將固定座朝該方向傾斜。</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>勾選時，同時為每個指數產生
+對稱等效的晶帶軸。</value>
+  </data>
 </root>

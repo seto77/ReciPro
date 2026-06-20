@@ -122,4 +122,123 @@
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
     <value>Horizontale Achse</value>
   </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>Streuwinkel 2θ des Detektors (Grad) für
+Neutronen-Flugzeitmessung (TOF, Time-Of-Flight).</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>Streuwinkel 2θ des Detektors (Grad) für
+Neutronen-Flugzeitmessung (TOF, Time-Of-Flight).</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Verwendet einen Neutronenstrahl als Strahlungsart
+(aktiviert die Flugzeit-Achse).</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>Zeigt die Energieachse in Mega-Elektronenvolt (MeV) an.</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>Stellt die horizontale Achse als Photonen-/Teilchen-
+energie dar (für den energiedispersiven Weißstrahl-Modus).</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>Zeigt die d-Wert-Achse in Nanometern (nm) an.</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>Zeigt die 2θ-Achse in Zenti-Grad (1/100 Grad) an.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Stellen Sie hier die Wellenlänge der Strahlung ein: direkte
+Eingabe, über die Beschleunigungsspannung der Elektronen oder
+über eine charakteristische Röntgenlinie (Element + Linie).</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>Flugweglänge L (Meter) von der Quelle zum Detektor
+für die Neutronen-Flugzeitmessung (TOF, Time-Of-Flight).</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>Flugweglänge L (Meter) von der Quelle zum Detektor
+für die Neutronen-Flugzeitmessung (TOF, Time-Of-Flight).</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>Stellt die horizontale Achse als Beugungswinkel
+2θ (Streuwinkel zwischen einfallendem und gebeugtem
+Strahl) dar; wird im monochromatischen Modus verwendet.</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>Verwendet eine einzelne (monochromatische) Wellenlänge;
+aktiviert die 2θ- und d-Wert-Achsen.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>Streuwinkel (Take-off-Winkel) 2θ des Detektors in Grad
+für die energiedispersive (Weißstrahl-)Messung.</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>Streuwinkel (Take-off-Winkel) 2θ des Detektors in Grad
+für die energiedispersive (Weißstrahl-)Messung.</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>Zeigt die Wellenzahl-q-Achse in inversen Nanometern (nm⁻¹) an.</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>Stellt die horizontale Achse als d-Wert (Netzebenen-
+abstand jedes Reflexes) dar.</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>Zeigt die Flugzeit-Achse in Nanosekunden (ns) an.</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>Zeigt die 2θ-Achse in Milliradiant (1/1000 Radiant) an.</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>Zeigt die Flugzeit-Achse in Mikrosekunden (μs) an.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Verwendet einen Elektronenstrahl als Strahlungsart
+(Wellenlänge durch die Beschleunigungsspannung festgelegt).</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>Zeigt die Energieachse in Kilo-Elektronenvolt (keV) an.</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>Zeigt die 2θ-Achse in Radiant (rad) an.</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>Verwendet ein flaches weißes Spektrum: bei Röntgenstrahlung ist
+die einfallende Intensität pro Energieeinheit konstant; bei Neutronen
+ist die Anzahl der einfallenden Neutronen pro Wellenlängenintervall
+konstant.</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>Zeigt die Energieachse in Elektronenvolt (eV) an.</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>Verwendet ein benutzerdefiniertes kontinuierliches (weißes)
+Spektrum von Wellenlängen/Energien.</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>Zeigt die 2θ-Achse in Grad (°) an.</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>Zeigt die d-Wert-Achse in Ångström (Å, 0,1 nm) an.</value>
+  </data>
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>Wellenquelle auswählen</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Verwendet einen Röntgenstrahl als Strahlungsart
+(charakteristische Linie oder benutzerdefinierte Wellenlänge).</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>Zeigt die Wellenzahl-q-Achse in inversen Ångström (Å⁻¹) an.</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>Stellt die horizontale Achse als Streuwellenzahl
+q = 4π·sinθ/λ (Betrag des Streuvektors) dar.</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>Stellt die horizontale Achse als Neutronen-Flugzeit
+(TOF) dar, die Zeit, die ein Neutron für den Flugweg
+benötigt; verfügbar für den Neutronen-Weißstrahl-Modus.</value>
+  </data>
 </root>

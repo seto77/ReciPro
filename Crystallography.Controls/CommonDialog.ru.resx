@@ -71,4 +71,11 @@
   <data name="buttonNext.Text" xml:space="preserve">
     <value>Далее</value>
   </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>Показать следующую подсказку.</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>Автоматически закрыть это стартовое окно
+после завершения инициализации.</value>
+  </data>
 </root>

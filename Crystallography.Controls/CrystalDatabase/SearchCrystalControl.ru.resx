@@ -86,4 +86,146 @@
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>Поиск</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>Открыть периодическую таблицу для выбора элементов,
+которые должны быть включены или исключены в поиске.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Выполнить поиск по базе данных кристаллов по всем включённым
+критериям (название, ссылка, элементы, кристаллическая
+система, ячейка, межплоскостное расстояние, плотность) совместно
+и показать только подходящие кристаллы.</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>Включить фильтрацию по 1-му значению межплоскостного расстояния;
+активирует поля его значения и допуска.</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>Включить фильтрацию по 2-му значению межплоскостного расстояния;
+активирует поля его значения и допуска.</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>Включить фильтрацию по 3-му значению межплоскостного расстояния;
+активирует поля его значения и допуска.</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>Фильтровать базу данных по измеренной/расчётной
+плотности (g/cm³); активирует поля ввода плотности.</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Фильтровать по межплоскостному расстоянию (расстоянию между плоскостями решётки,
+в Å — расстоянию, определяющему положения дифракционных
+пиков); активирует поля ввода межплоскостного расстояния.</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>При включении поиск по межплоскостному расстоянию игнорирует
+фактор рассеяния (интенсивность рефлекса): каждое
+геометрически разрешённое значение d вычисляется из
+элементарной ячейки, включая рефлексы, которые были бы
+погашены (нулевая интенсивность).</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>Фильтровать по параметрам элементарной ячейки (длины
+a, b, c в Å и углы α, β, γ в °);
+активирует поля ввода параметров ячейки.</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Фильтровать по кристаллической системе (триклинная …
+кубическая); активирует селектор кристаллической системы.</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>Фильтровать по элементам-составляющим; отображает
+кнопку периодической таблицы для указания
+элементов, которые нужно включить или исключить.</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Фильтровать по названию минерала/соединения; отображает текстовое поле
+для поиска по названию (без учёта регистра, частичное совпадение).</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Фильтровать по ссылке (журнал, автор или текст раздела);
+отображает текстовое поле для поискового запроса.</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Выберите кристаллическую систему для фильтрации
+(триклинную, моноклинную, ромбическую,
+тетрагональную, тригональную, гексагональную или кубическую).</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>Искомая длина a элементарной ячейки
+в Å (0 = игнорировать этот параметр).</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>Искомый угол α элементарной ячейки (между осями b и
+c) в ° (0 = игнорировать).</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по углам ячейки (α, β, γ)
+в ±° (учтите: в градусах, в отличие от
+допуска для длин, который задаётся в %).</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>Искомая длина b элементарной ячейки
+в Å (0 = игнорировать этот параметр).</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>Искомый угол β элементарной ячейки (между осями a и
+c) в ° (0 = игнорировать).</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>Искомая длина c элементарной ячейки
+в Å (0 = игнорировать этот параметр).</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>Искомый угол γ элементарной ячейки (между осями a и
+b) в ° (0 = игнорировать).</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по длинам ячейки (a, b, c)
+в ±%; ячейки, длины которых попадают
+в этот относительный диапазон, считаются совпадающими.</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>Искомое значение 1-го межплоскостного расстояния
+(расстояния между плоскостями) в Å.</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по 1-му межплоскостному
+расстоянию в ±%; кристаллы со значением d
+в этом диапазоне считаются совпадающими.</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>Искомое значение 2-го межплоскостного расстояния
+(расстояния между плоскостями) в Å.</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по 2-му межплоскостному
+расстоянию в ±%; кристаллы со значением d
+в этом диапазоне считаются совпадающими.</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>Искомое значение 3-го межплоскостного расстояния
+(расстояния между плоскостями) в Å.</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по 3-му межплоскостному
+расстоянию в ±%; кристаллы со значением d
+в этом диапазоне считаются совпадающими.</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>Искомая плотность в g/cm³.</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>Допуск для поиска по плотности в
+±%; кристаллы, плотность которых попадает
+в этот относительный диапазон, считаются совпадающими.</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Введите название минерала/соединения для поиска (частичное,
+без учёта регистра); нажмите Enter для запуска поиска.</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Введите поисковый термин ссылки (журнал, автор или раздел)
+для поиска; нажмите Enter для запуска поиска.</value>
+  </data>
 </root>

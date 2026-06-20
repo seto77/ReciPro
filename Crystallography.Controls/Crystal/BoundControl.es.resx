@@ -89,4 +89,69 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Distancia al origen</value>
   </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
+    <value>Si el rango de dibujo no está cerrado por planos cristalinos,
+lo limita según esta distancia desde el origen.</value>
+  </data>
+  <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
+    <value>Si el rango de dibujo no está cerrado por planos cristalinos,
+lo limita según esta distancia desde el origen.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Reemplaza el plano delimitador seleccionado</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Elimina el plano delimitador seleccionado</value>
+  </data>
+  <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
+    <value>Aplica los cambios inmediatamente</value>
+  </data>
+  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
+    <value>Incluir los planos equivalentes por simetría</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Desplaza el plano delimitador a lo largo de su normal según esta
+distancia (Å); un valor positivo lo aleja del origen.</value>
+  </data>
+  <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
+    <value>Desplaza el plano delimitador a lo largo de su normal según esta
+distancia (Å); un valor positivo lo aleja del origen.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Desplaza el plano delimitador a lo largo de su normal según esta
+distancia (Å); un valor positivo lo aleja del origen.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Añade un nuevo plano delimitador a la lista a partir de
+los ajustes actuales de índice, distancia y color.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Color usado para representar este plano delimitador
+(de recorte) en la visualización del cristal.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Lista de planos delimitadores definidos; marque la
+casilla para habilitar/deshabilitar un plano, o seleccione
+una fila para cargarla en el editor de arriba.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Distancia desde el origen hasta el plano delimitador,
+introducida directamente en ángstroms (Å); se mantiene sincronizada
+con el múltiplo de la distancia interplanar de la izquierda.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>Distancia desde el origen hasta el plano delimitador como
+múltiplo de la distancia interplanar (hkl) d; se mantiene
+sincronizada con el valor absoluto en Å de la derecha.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Distancia desde el origen del cristal hasta el
+plano delimitador, fijada como múltiplo de la
+distancia interplanar (izquierda) o directamente en Å (derecha).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Índices de Miller (h k l) de la normal del plano
+delimitador; define la orientación
+del plano que recorta el cristal.</value>
+  </data>
 </root>

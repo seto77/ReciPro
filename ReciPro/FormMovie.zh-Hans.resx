@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>在影片中绕视轴（屏幕法线）
+逆时针旋转视图。</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>在影片中绕水平屏幕轴
+向下倾斜旋转视图。</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>在影片中绕对应的面内轴
+向左下方倾斜旋转视图。</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>在影片中绕对应的面内轴
+向右下方倾斜旋转视图。</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>不创建影片即关闭此对话框。</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>在影片中绕视轴（屏幕法线）
+顺时针旋转视图。</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>在影片中绕垂直屏幕轴
+向左倾斜旋转视图。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>按设定的方向、速度和时长生成旋转影片，
+并保存为 MP4 文件。</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>在影片中绕垂直屏幕轴
+向右倾斜旋转视图（默认）。</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>在影片中绕水平屏幕轴
+向上倾斜旋转视图。</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>在影片中绕对应的面内轴
+向左上方倾斜旋转视图。</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>在影片中绕对应的面内轴
+向右上方倾斜旋转视图。</value>
+  </data>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>编码速度预设标签（ultrafast…veryslow）。注：
+在当前的 Media Foundation 编码器下，此项仅显示
+于进度对话框中，已不再影响实际编码。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>编码速度预设标签（ultrafast…veryslow）。注：
+在当前的 Media Foundation 编码器下，此项仅显示
+于进度对话框中，已不再影响实际编码。</value>
+  </data>
+  <data name="numericBoxDuration.ToolTip" xml:space="preserve">
+    <value>设置生成影片的时长（秒，帧率为 30 fps）。</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>以度每秒（°/s）设置视点的旋转速度。</value>
+  </data>
+  <data name="radioButtonAxis.ToolTip" xml:space="preserve">
+    <value>用晶体方向指数 [uvw] 指定旋转轴。</value>
+  </data>
+  <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
+    <value>以当前显示的投影方位（取向）
+为基准进行旋转，倾斜方向由
+箭头按钮选择。</value>
+  </data>
+  <data name="radioButtonH264.ToolTip" xml:space="preserve">
+    <value>使用 H.264 (AVC) 视频编解码器对影片编码。</value>
+  </data>
+  <data name="radioButtonH265.ToolTip" xml:space="preserve">
+    <value>使用 H.265 (HEVC) 视频编解码器对影片编码
+（压缩率更高；需要 HEVC 编码器）。</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>将旋转轴设为某晶面 (hkl)
+的法线方向。</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>输入定义旋转轴的指数：在方向指数模式下
+为方向 [uvw]，在晶面模式下为晶面 (hkl)
+（绕其法线旋转）。</value>
+  </data>
+</root>

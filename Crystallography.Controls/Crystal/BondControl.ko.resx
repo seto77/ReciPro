@@ -125,4 +125,100 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>다면체</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>결합 / 다면체 중심에 있는 원소(배위하는
+중심 원자)를 선택합니다.</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>결합 / 다면체 꼭짓점에 있는 원소(배위되는
+리간드 원자)를 선택합니다.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>결합 원기둥의 반지름(Å)입니다.</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>결합 원기둥의 반지름(Å)입니다.</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>아래의 결합/다면체 설정을 추가합니다.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>선택한 결합/다면체를 아래 설정으로
+교체합니다.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>선택한 결합/다면체를 삭제합니다.</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>다면체 모서리(배위 다면체 와이어프레임)의
+색입니다.</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>다면체 면(배위 다면체)의 색입니다.</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>결합 원기둥의 색입니다.</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>결합을 원기둥으로 표시하고, 결합 설정을 활성화합니다.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>배위 다면체의 모서리(와이어프레임)를 표시하고,
+모서리 너비 설정을 활성화합니다.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>배위 다면체 내부의 내부 결합(중심-꼭짓점
+결합)을 표시합니다.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>배위 다면체를 표시하고,
+다면체 설정을 활성화합니다.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>배위 다면체의 꼭짓점 원자(배위되는 리간드
+원자)를 표시합니다.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>정의된 결합/다면체 목록입니다. 행을 선택하면
+아래에서 편집할 수 있으며, Enabled / Show
+열을 직접 전환할 수도 있습니다.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>결합 원기둥의 불투명도입니다(0
+= 완전 투명, 1 = 불투명).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>두 원자를 결합된 것으로 간주하는 최대
+원자 간 거리(Å)입니다.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>두 원자를 결합된 것으로 간주하는 최소
+원자 간 거리(Å)입니다.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>다면체 모서리의 선 너비입니다.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>다면체 면의 불투명도입니다(0
+= 완전 투명, 1 = 불투명).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>결합/다면체를 구성하는 원소 쌍(중심과
+꼭짓점)을 선택합니다.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>결합/다면체를 구성하는 원소 쌍(중심과
+꼭짓점)을 선택합니다.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>결합/다면체 중심에 있는 원소(배위하는
+중심 원자)를 선택합니다.</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>결합/다면체 꼭짓점에 있는 원소(배위되는
+리간드 원자)를 선택합니다.</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>배위 다면체의 중심 원자를 표시합니다.</value>
+  </data>
 </root>

@@ -98,4 +98,141 @@
   <data name="label21.Text" xml:space="preserve">
     <value>Gruppo puntuale</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Seleziona l'unità di lunghezza (Å o nm)
+per i parametri di cella a, b, c.</value>
+  </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>Mostra o nasconde i campi dell'errore ± (deviazione
+standard stimata) per i parametri di cella.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Parametro di cella "β" in gradi</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>Parametro di cella "β" in gradi</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Parametro di cella "α" in gradi</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>Parametro di cella "α" in gradi</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Lunghezza dello spigolo a della cella elementare (in Å o nm,
+secondo il selettore di unità). Le modifiche rispettano
+i vincoli del sistema cristallino.</value>
+  </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value>Lunghezza dello spigolo a della cella elementare (in Å o nm,
+secondo il selettore di unità). Le modifiche rispettano
+i vincoli del sistema cristallino.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Parametro di cella "γ" in gradi</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value>Parametro di cella "γ" in gradi</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Lunghezza dello spigolo b della cella elementare (in Å o nm,
+secondo il selettore di unità). Può essere vincolata ad a per simmetria.</value>
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
+    <value>Lunghezza dello spigolo b della cella elementare (in Å o nm,
+secondo il selettore di unità). Può essere vincolata ad a per simmetria.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Lunghezza dello spigolo c della cella elementare (in Å o nm,
+secondo il selettore di unità). Può essere vincolata ad a per simmetria.</value>
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value>Lunghezza dello spigolo c della cella elementare (in Å o nm,
+secondo il selettore di unità). Può essere vincolata ad a per simmetria.</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>Seleziona il gruppo spaziale (numero : simbolo Hermann–Mauguin (HM));
+esso vincola i parametri di cella modificabili.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Seleziona il gruppo spaziale (numero : simbolo Hermann–Mauguin (HM));
+esso vincola i parametri di cella modificabili.</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>Seleziona il gruppo puntuale cristallografico
+in notazione Hermann–Mauguin (HM); questo
+filtra i gruppi spaziali disponibili.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Seleziona il gruppo puntuale cristallografico
+in notazione Hermann–Mauguin (HM); questo
+filtra i gruppi spaziali disponibili.</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Seleziona il sistema cristallino (triclino … cubico);
+ciò stabilisce quali parametri di cella sono indipendenti.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Seleziona il sistema cristallino (triclino … cubico);
+ciò stabilisce quali parametri di cella sono indipendenti.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Digita i caratteri di un simbolo Hermann–Mauguin (HM)
+per cercare gruppi spaziali; le corrispondenze appaiono
+nella lista dei risultati (usa "sub" per un pedice).</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>Digita i caratteri di un simbolo Hermann–Mauguin (HM)
+per cercare gruppi spaziali; le corrispondenze appaiono
+nella lista dei risultati (usa "sub" per un pedice).</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>Scegli un gruppo spaziale dai risultati della ricerca (numero
+: simbolo Hermann–Mauguin) per applicarlo al
+sistema cristallino, gruppo puntuale e gruppo spaziale sopra.</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore ±) del
+parametro di cella a, nella stessa unità di lunghezza di a.</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore
+±) dell'angolo α, in gradi.</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore ±) del
+parametro di cella b, nella stessa unità di lunghezza di b.</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore
+±) dell'angolo β, in gradi.</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore ±) del
+parametro di cella c, nella stessa unità di lunghezza di c.</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>Deviazione standard stimata (errore
+±) dell'angolo γ, in gradi.</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>Usa ångström (Å) come unità di lunghezza per a, b,
+c; i valori esistenti vengono riscalati automaticamente.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>Usa nanometro (nm) come unità di lunghezza per a, b,
+c; i valori esistenti vengono riscalati automaticamente.</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>Unità di lunghezza corrente per a (Å o
+nm; cambiabile con il selettore di unità).</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>Unità di lunghezza corrente per b (Å o
+nm; cambiabile con il selettore di unità).</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>Unità di lunghezza corrente per c (Å o
+nm; cambiabile con il selettore di unità).</value>
+  </data>
 </root>

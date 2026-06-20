@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>將整個繞射表（顯示中的欄，以定位
+字元分隔）複製到剪貼簿，以便
+貼入 Excel 或文字編輯器。</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>勾選時，自動將每欄寬度調整為
+其顯示內容。在大型表格中停用
+可使捲動更快。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>動力學（Bethe 法）繞射計算的
+各繞射結果：指數 hkl、晶面間距、
+倒晶格向量 g、晶體位能 Ug/Vg、
+激發誤差 Sg（倒晶格點與 Ewald 球
+的距離），以及繞射波振幅 Φ。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>兩種位能單位之間的換算：
+Ug [nm⁻²] = 2·m₀/h² · Vg [eV] ×
+10¹⁸。由上方的選項按鈕選擇。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>此表的單位慣例：長度以奈米（nm）
+表示，而非埃；波數為 1/nm，
+而非 2π/nm。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>表格各欄的圖例：Vg/Ug = 彈性散射的晶體
+位能；V'g/U'g = 熱漫散射的虛（吸收）
+位能；Φ = 出射面處的繞射波振幅。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>用於顯示表格儲存格的有效位數（1-16）。
+僅影響顯示；底層計算所得的值不變。</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>將晶體位能各欄以 Vg 顯示，
+即以能量單位 (eV) 表示的傅立葉位能。
+會將 Ug/U'g 欄標題切換為 Vg/V'g。</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>將晶體位能各欄以 Ug 顯示，即動力學計算中
+所用、以倒長度平方為單位 (nm⁻²) 的傅立葉
+位能係數。會將 Vg/V'g 欄標題切換為 Ug/U'g。</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>電子束的加速電壓，單位為千伏特
+(kV)。唯讀；於上層模擬器中設定。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>電子束的加速電壓，單位為千伏特
+(kV)。唯讀；於上層模擬器中設定。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>電子束的加速電壓，單位為千伏特
+(kV)。唯讀；於上層模擬器中設定。</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>電子的相對論速度比 β = v/c（無因次），
+由加速電壓推算得出。唯讀。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>電子的相對論速度比 β = v/c（無因次），
+由加速電壓推算得出。唯讀。</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>相對論質量係數 γ = m/m₀ = 1 +
+e₀E/m₀c²（無因次），由加速電壓
+推算得出。唯讀。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>相對論質量係數 γ = m/m₀ = 1 +
+e₀E/m₀c²（無因次），由加速電壓
+推算得出。唯讀。</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>晶體晶胞的體積，單位為
+立方奈米 (nm³)。唯讀。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>晶體晶胞的體積，單位為
+立方奈米 (nm³)。唯讀。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>晶體晶胞的體積，單位為
+立方奈米 (nm³)。唯讀。</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>CBED（收斂束電子繞射）模式下電子束的
+最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>CBED（收斂束電子繞射）模式下電子束的
+最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>CBED（收斂束電子繞射）模式下電子束的
+最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>動力學計算中所用的試片厚度，單位為奈米
+(nm)。繞射波振幅 Φ 與此厚度有關。唯讀。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>動力學計算中所用的試片厚度，單位為奈米
+(nm)。繞射波振幅 Φ 與此厚度有關。唯讀。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>動力學計算中所用的試片厚度，單位為奈米
+(nm)。繞射波振幅 Φ 與此厚度有關。唯讀。</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>由加速電壓計算得出的電子相對論波長
+(= 1/k_vac)，單位為奈米 (nm)。唯讀。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>由加速電壓計算得出的電子相對論波長
+(= 1/k_vac)，單位為奈米 (nm)。唯讀。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>由加速電壓計算得出的電子相對論波長
+(= 1/k_vac)，單位為奈米 (nm)。唯讀。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>選擇顯示晶體位能各欄所用的單位：
+以能量單位 (eV) 表示的 Vg，或以倒長度
+平方 (nm⁻²) 表示的 Ug。</value>
+  </data>
+</root>

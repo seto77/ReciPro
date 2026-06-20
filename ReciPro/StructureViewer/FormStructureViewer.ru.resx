@@ -382,4 +382,503 @@
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Размер (Ш×В)</value>
   </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохранить текущее изображение в файл</value>
+  </data>
+  <data name="buttonSetRange2.ToolTip" xml:space="preserve">
+    <value>Задать диапазон отображения ±3/4 каждой оси элементарной ячейки</value>
+  </data>
+  <data name="buttonSetRange4.ToolTip" xml:space="preserve">
+    <value>Задать диапазон отображения ±1,5 каждой оси элементарной ячейки</value>
+  </data>
+  <data name="buttonSetRange3.ToolTip" xml:space="preserve">
+    <value>Задать диапазон отображения ±1 каждой оси элементарной ячейки</value>
+  </data>
+  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
+    <value>Задать центр отображения в начало координат (0, 0, 0)</value>
+  </data>
+  <data name="buttonCenter2.ToolTip" xml:space="preserve">
+    <value>Задать центр отображения в (1/4, 1/4, 1/4)</value>
+  </data>
+  <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
+    <value>Задать центр отображения в (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="buttonSetRange0.ToolTip" xml:space="preserve">
+    <value>Задать диапазон отображения ±1/4 каждой оси элементарной ячейки</value>
+  </data>
+  <data name="buttonSetRange1.ToolTip" xml:space="preserve">
+    <value>Задать диапазон отображения ±1/2 каждой оси элементарной ячейки</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси c, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси c, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси b, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси b, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxARange.ToolTip" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси a, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>Полуширина отображаемой области вдоль
+оси a, в дробных координатах;
+рисуются атомы в пределах Центр ± Диапазон.</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси c, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси c, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси b, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси b, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси a, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value>Центр отображаемой области вдоль оси a, в
+дробных координатах; вместе с Диапазоном задаёт
+минимальную/максимальную граничные плоскости рисуемой структуры.</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
+    <value>Показать/скрыть граничные плоскости кристалла</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность граничных плоскостей (0=прозрачно, 1=непрозрачно)</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
+    <value>Непрозрачность граничных плоскостей (0=прозрачно, 1=непрозрачно)</value>
+  </data>
+  <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
+    <value>Обрезать атомы и связи по граничным плоскостям</value>
+  </data>
+  <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
+    <value>Если отмечено, границы отрисовки
+определяются на основе элементарной ячейки следующим образом</value>
+  </data>
+  <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
+    <value>Если отмечено, границы отрисовки определяются
+на основе плоскостей кристалла следующим образом</value>
+  </data>
+  <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
+    <value>Показать рёбра элементарной ячейки, наложенные на 3D-структуру.</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
+    <value>Задать цвет для всех плоскостей ячейки</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value>Задать цвет для всех плоскостей ячейки</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
+    <value>Задать цвет для всех плоскостей ячейки</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
+    <value>Задать цвет плоскостей ячейки по отдельности</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси a (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси a (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси b (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси b (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси c (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
+    <value>Цвет грани элементарной ячейки, нормальной к
+оси c (используется при выборе «Each plane»).</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
+    <value>Непрозрачность плоскостей ячейки (1: непрозрачно, 0: прозрачно)</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
+    <value>Непрозрачность плоскостей ячейки (1: непрозрачно, 0: прозрачно)</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
+    <value>Задать цвет для всех рёбер ячейки</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
+    <value>Задать цвет для всех рёбер ячейки</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
+    <value>Задать цвет для всех рёбер ячейки</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
+    <value>Задать цвет рёбер ячейки по отдельности</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси a (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси a (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси b (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси b (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси c (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
+    <value>Цвет рёбер элементарной ячейки вдоль
+оси c (используется при выборе «Each edge»).</value>
+  </data>
+  <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Толщина линий рёбер элементарной ячейки, в пикселях (1–5).</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
+    <value>Сдвинуть элементарную ячейку (дробные координаты)</value>
+  </data>
+  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
+    <value>Показать подразделения внутри элементарной ячейки</value>
+  </data>
+  <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
+    <value>Показать рёбра ячейки</value>
+  </data>
+  <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
+    <value>Показать плоскости ячейки</value>
+  </data>
+  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
+    <value>Настроить параметры отображения элементарной ячейки</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность плоскостей решётки (0=прозрачно, 1=непрозрачно)</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
+    <value>Непрозрачность плоскостей решётки (0=прозрачно, 1=непрозрачно)</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси a;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси a;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси b;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси b;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси c;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
+    <value>Дробная координата центра проекции по оси c;
+эта точка помещается в центр
+вида (что эквивалентно сдвигу элементарной ячейки).</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
+    <value>Использовать пользовательские координаты центра проекции</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
+    <value>Задать центр проекции в начало координат</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
+    <value>Задать центр проекции в (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
+    <value>Выбрать ортографическую или перспективную проекцию.</value>
+  </data>
+  <data name="trackBarPerspective.ToolTip" xml:space="preserve">
+    <value>Расстояние от точки обзора до объекта в
+перспективной проекции: меньшее расстояние
+усиливает перспективу (перспективное укорочение).
+Активно только когда Projection установлено в Perspective.</value>
+  </data>
+  <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
+    <value>Режим отрисовки прозрачности: Approximate (быстрая
+сортировка по Z-глубине) или высококачественный
+метод, не зависящий от порядка (Dual Depth Peeling /
+Per-Pixel Linked List, требующие более нового OpenGL).</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Включить глубинное затенение (туман): объекты,
+более удалённые от наблюдателя, угасают; диапазон
+ближний/дальний ниже становится активным.</value>
+  </data>
+  <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
+    <value>Качество отрисовки (Low / Middle / High): более высокое
+качество даёт более гладкие сферы и цилиндры и
+более точную прозрачность, но рисует медленнее.</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
+    <value>Ближний предел глубинного затенения (Å): объекты ближе
+этой глубины остаются полностью непрозрачными (−30…30).
+В паре с дальним пределом обеспечивает угасание удалённых атомов.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Дальний предел глубинного затенения (Å): объекты за
+этой глубиной угасают до полной прозрачности (-30…30)</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
+    <value>Дальний предел глубинного затенения (Å): объекты дальше
+этой глубины угасают до полной прозрачности (−30…30).
+В паре с ближним пределом обеспечивает угасание удалённых атомов.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Ближний предел глубинного затенения (Å): объекты ближе
+этой глубины остаются полностью непрозрачными (-30…30)</value>
+  </data>
+  <data name="colorControlInversion.ToolTip" xml:space="preserve">
+    <value>Задать цвет отображения символов центров инверсии.</value>
+  </data>
+  <data name="colorControlPlane.ToolTip" xml:space="preserve">
+    <value>Задать цвет отображения символов плоскостей
+симметрии (зеркальные плоскости и плоскости скольжения).</value>
+  </data>
+  <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
+    <value>Задать цвет отображения символов осей
+симметрии (поворотные, винтовые и инверсионно-поворотные оси).</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Показывать подписи в легендах</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
+    <value>Использовать цвет материала как цвет подписи </value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
+    <value>Использовать фиксированный цвет как цвет подписи </value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
+    <value>Размер шрифта подписей атомов (0–200).</value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
+    <value>Размер шрифта подписей атомов (0–200).</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
+    <value>Если отмечено, подписи легенды обводятся белым контуром.</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
+    <value>Показывать связанные атомы, даже если они за пределами границ</value>
+  </data>
+  <data name="checkBoxGroupByElement.ToolTip" xml:space="preserve">
+    <value>Если отмечено, одинаковые элементы группируются в панели легенды</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
+    <value>Отображаемый размер легенд (справа)</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
+    <value>Отображаемый размер легенд (справа)</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
+    <value>Отображаемый размер кристаллографических осей (внизу слева)</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
+    <value>Отображаемый размер кристаллографических осей (внизу слева)</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
+    <value>Отображаемый размер шара источника света (вверху слева)</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
+    <value>Отображаемый размер шара источника света (вверху слева)</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть индикатор кристаллографических осей</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть шар управления направлением света</value>
+  </data>
+  <data name="toolStripButtonLegend.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть легенду</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Задаёт размер визуализируемого изображения (ширина × высота)
+в пикселях; окно изменяет размер соответственно.</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value>Показать символы плоскостей скольжения (зеркальное
+отражение в сочетании с трансляцией) пространственной группы</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value>Показать/скрыть центры инверсии (точки, в которых
+структура отображается сама на себя при замене x на
+-x) среди отображаемых элементов симметрии.</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value>Показать символы зеркальных плоскостей пространственной группы</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value>Показать символы осей вращения (2-,
+3-, 4-, 6-кратных) пространственной группы</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value>Показать символы инверсионных осей (вращение
+с последующей инверсией) пространственной группы</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value>Показать символы винтовых осей (вращение в сочетании
+с трансляцией) пространственной группы</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>Фиксированный цвет, применяемый к меткам атомов (используется
+при выборе «Use fixed color»)</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>Толщина линий символов осей симметрии (0.5–10)</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>Размер отображения символов осей
+симметрии в процентах (20–500%)</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>Размер символов центров инверсии
+в процентах (100% = размер по умолчанию).</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>Толщина линий символов плоскостей симметрии (0.5–10)</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>Размер отображения символов плоскостей
+симметрии в процентах (20–500%)</value>
+  </data>
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
+    <value>Число делений элементарной ячейки вдоль
+оси a (целое, 1–10) для сетки подъячеек,
+отображаемой при включённой опции «Show Subcell».</value>
+  </data>
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
+    <value>Число делений элементарной ячейки вдоль
+оси b (целое, 1–10) для сетки подъячеек,
+отображаемой при включённой опции «Show Subcell».</value>
+  </data>
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
+    <value>Число делений элементарной ячейки вдоль
+оси c (целое, 1–10) для сетки подъячеек,
+отображаемой при включённой опции «Show Subcell».</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть метки атомов (символы
+элементов), наложенные на каждый атом.</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть сферы атомов в 3D-модели.</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>Сбросить радиусы, цвета атомов и связи к
+значениям по умолчанию в стиле VESTA (VESTA — широко
+используемая программа визуализации кристаллических структур).</value>
+  </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>Сбросить ориентацию модели к значению по умолчанию (без вращения).</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть элементы кристаллографической симметрии
+(оси вращения, зеркальные плоскости, винтовые оси и т. д.).</value>
+  </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>Показать/скрыть каркас и грани элементарной ячейки.</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value>Наложить элементы симметрии кристалла
+(оси вращения, зеркальные плоскости/плоскости скольжения,
+центры инверсии) на 3D-вид.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Центр отображаемой области (дробные
+координаты) вдоль каждой оси элементарной ячейки.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Сместить каркас элементарной ячейки вдоль
+осей a, b, c (дробные координаты).</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Строка оси a в параметрах элементарной ячейки.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Строка оси b в параметрах элементарной ячейки.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Строка оси c в параметрах элементарной ячейки.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Полуширина отображаемой области (дробные
+координаты) вдоль каждой оси элементарной ячейки.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Установить центр отображения в заданную дробную позицию.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Установить диапазон отображения в заданную
+долю каждой оси элементарной ячейки.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Толщина линий рёбер элементарной ячейки (1–5)</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Задаёт центр проекции в дробных координатах
+элементарной ячейки; выбранная точка
+помещается в центр вида.</value>
+  </data>
 </root>

@@ -138,4 +138,132 @@ verknüpfen</value>
   <data name="$this.Text" xml:space="preserve">
     <value>TEM-Halter-Simulation</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Hintergrundfarbe des Zeichenbereichs des Stereonetzes.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Farbe der auf dem Stereonetz gezeichneten Umrisslinie des Probenhalters.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Farbe der 90°-Hauptgitterlinien
+und des äußeren Kreises des Stereonetzes.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Farbe der 10°-Zwischen-
+gitterlinien, die auf dem Stereonetz gezeichnet werden.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Farbe der 1-Grad-Linien
+Aktiv, wenn "1°-Linien anzeigen" aktiviert ist</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Farbe der Achsenbeschriftungen [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Farbe der allgemeinen Zonenachsen-Punkte und
+-Beschriftungen (andere Achsen als [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Farbe des Richtungspfeils Tilt-X (Hauptachse)
+(angezeigt, wenn "Neigungsrichtungen anzeigen" aktiviert ist)</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Farbe des Richtungspfeils Tilt-Y (Nebenachse)
+(angezeigt, wenn "Neigungsrichtungen anzeigen" aktiviert ist)</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, neigen die Pfeiltasten den
+Halter: Links/Rechts ändern Tilt X und
+Hoch/Runter ändern Tilt Y um den Pfeilschritt.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Neigungswinkelinkrement (in Grad),
+das pro Pfeiltastendruck angewendet wird.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Halterneigungswinkel um die
+Hauptachse (Tilt X), in Grad.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Halterneigungswinkel um die
+Hauptachse (Tilt X), in Grad.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Halterneigungswinkel um die
+Nebenachse (Tilt Y), in Grad.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Halterneigungswinkel um die
+Nebenachse (Tilt Y), in Grad.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Azimutale Richtung (in Grad) der
+Tilt-X- (Haupt-) Achse auf dem Stereonetz.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Azimutale Richtung (in Grad) der
+Tilt-X- (Haupt-) Achse auf dem Stereonetz.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Negative Polarität für die Tilt-Y- (Neben-) Achse verwenden.</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Positive Polarität für die Tilt-Y- (Neben-) Achse verwenden.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Polarität (Vorzeichen) der Tilt-Y- (Neben-) Achse;
+passen Sie sie an die Konvention Ihres TEM-Goniometers an.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Radius der auf dem Stereonetz gezeichneten Zonenachsen-Punkte.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Radius der auf dem Stereonetz gezeichneten Zonenachsen-Punkte.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Schriftgröße der Indexbeschriftungen der Zonenachsen.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Schriftgröße der Indexbeschriftungen der Zonenachsen.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Die aktuelle Halterneigung auf die Werte von Link
+Tilt X/Y setzen und die resultierende
+Orientierung als neutrale Richtung verwenden.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Den Kristall um 180° um die Strahlachse ([001]) drehen.</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Ziel-Neigungswinkel Tilt X (in Grad),
+der beim Drücken der Link-Schaltfläche angewendet wird.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Ziel-Neigungswinkel Tilt Y (in Grad),
+der beim Drücken der Link-Schaltfläche angewendet wird.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden die 1°-Intervalllinien auf dem
+Stereonetz gezeichnet (Farbe durch das 1°-Farbsteuerelement festgelegt).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, wird die [u v w]-Index-
+beschriftung neben jedem Zonenachsen-Punkt angezeigt.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden Pfeile auf dem Stereonetz gezeichnet,
+die die Tilt-X- und Tilt-Y-Richtungen anzeigen.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Halbwinkel (in Grad) des anzuzeigenden Stereonetz-
+Bereichs; kleinere Werte vergrößern die Ansicht.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Stereonetz der Neigungsrichtungen. Doppelklicken Sie auf einen Punkt,
+um den Halter in diese Richtung zu neigen.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Wenn aktiviert, werden auch
+symmetrieäquivalente Zonenachsen für jeden Index erzeugt.</value>
+  </data>
 </root>

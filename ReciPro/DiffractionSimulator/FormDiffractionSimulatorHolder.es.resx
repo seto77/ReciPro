@@ -138,4 +138,132 @@ actual</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Simulación de portamuestras TEM</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Color de fondo del área de dibujo de la falsilla estereográfica.</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>Color del contorno del portamuestras dibujado en la falsilla estereográfica.</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Color de las líneas de cuadrícula principales de 90°
+y del círculo exterior de la falsilla estereográfica.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Color de las líneas de cuadrícula intermedias de 10°
+dibujadas en la falsilla estereográfica.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Color de las líneas de 1 grado
+Activo cuando "Show 1° Lines" está marcado</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>Color de las etiquetas de los ejes [100], [010], [001]</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>Color de los puntos y etiquetas de ejes de zona generales
+(ejes distintos de [100], [010], [001])</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Color de la flecha de dirección del Tilt-X (eje primario)
+(mostrada cuando "Show tilt directions" está marcado)</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Color de la flecha de dirección del Tilt-Y (eje secundario)
+(mostrada cuando "Show tilt directions" está marcado)</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, las teclas de flecha inclinan el
+portamuestras: Izquierda/Derecha cambian Tilt X y
+Arriba/Abajo cambian Tilt Y según el paso de flecha.</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>Incremento del ángulo de inclinación (en grados)
+aplicado por cada pulsación de tecla de flecha.</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>Ángulo de inclinación del portamuestras alrededor del
+eje primario (Tilt X), en grados.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Ángulo de inclinación del portamuestras alrededor del
+eje primario (Tilt X), en grados.</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>Ángulo de inclinación del portamuestras alrededor del
+eje secundario (Tilt Y), en grados.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Ángulo de inclinación del portamuestras alrededor del
+eje secundario (Tilt Y), en grados.</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>Dirección azimutal (en grados) del eje
+Tilt X (primario) en la falsilla estereográfica.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Dirección azimutal (en grados) del eje
+Tilt X (primario) en la falsilla estereográfica.</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Usa polaridad negativa para el eje Tilt Y (secundario).</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Usa polaridad positiva para el eje Tilt Y (secundario).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Polaridad (signo) del eje Tilt Y (secundario);
+ajústela al convenio del goniómetro de su TEM.</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>Radio de los puntos de ejes de zona dibujados en la falsilla estereográfica.</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Radio de los puntos de ejes de zona dibujados en la falsilla estereográfica.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Tamaño de fuente de las etiquetas de índices de los ejes de zona.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Tamaño de fuente de las etiquetas de índices de los ejes de zona.</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Establece la inclinación actual del portamuestras a los
+valores de Link Tilt X/Y y usa la orientación
+resultante como la dirección neutra.</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>Rota el cristal 180° alrededor del eje del haz ([001]).</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Ángulo Tilt X objetivo (en grados)
+aplicado al pulsar el botón Link.</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Ángulo Tilt Y objetivo (en grados)
+aplicado al pulsar el botón Link.</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, dibuja las líneas de intervalo de 1° en la
+falsilla estereográfica (color fijado por el control de color de 1°).</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, muestra la etiqueta de índices [u v w]
+junto a cada punto de eje de zona.</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, dibuja flechas en la falsilla estereográfica
+que muestran las direcciones Tilt-X y Tilt-Y.</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>Semiángulo (en grados) del área de la falsilla
+estereográfica a mostrar; valores menores amplían.</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Falsilla estereográfica de direcciones de inclinación. Haga doble clic en un punto
+para inclinar el portamuestras hacia esa dirección.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>Cuando está marcado, también genera ejes de
+zona equivalentes por simetría para cada índice.</value>
+  </data>
 </root>

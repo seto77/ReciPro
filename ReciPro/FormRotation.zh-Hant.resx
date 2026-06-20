@@ -109,4 +109,221 @@
   <data name="$this.Text" xml:space="preserve">
     <value>旋轉幾何</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>將視線方向設定為平行於束流方向</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>將視線方向設定為等角投影</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>勾選後，ReciPro 座標系統與實驗
+座標系統會相互連結。</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>將旋轉矩陣的數值
+以 Excel 格式複製到剪貼簿。</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>從剪貼簿以 Excel 格式
+貼上旋轉矩陣的數值。</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
+Ψ（度，繞 Z 軸的最後一次旋轉）；設定晶體
+方位。</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
+Ψ（度，繞 Z 軸的最後一次旋轉）；設定晶體
+方位。</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的
+第二歐拉角 Θ（度，繞 X 軸的中間
+旋轉）；設定晶體
+方位。</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的
+第二歐拉角 Θ（度，繞 X 軸的中間
+旋轉）；設定晶體
+方位。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的
+第一歐拉角 Φ（度）；與 Θ、Ψ 一起
+設定晶體方位（旋轉矩陣）。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的
+第一歐拉角 Φ（度）；與 Θ、Ψ 一起
+設定晶體方位（旋轉矩陣）。</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>繞實驗座標系統第 1 測角儀軸的
+旋轉角（度，−180 至 180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>繞實驗座標系統第 1 測角儀軸的
+旋轉角（度，−180 至 180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>繞實驗座標系統第 2 測角儀軸的
+旋轉角（度，−180 至 180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>繞實驗座標系統第 2 測角儀軸的
+旋轉角（度，−180 至 180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>繞實驗座標系統第 3 測角儀軸的
+旋轉角（度，-180..180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>繞實驗座標系統第 3 測角儀軸的
+旋轉角（度，-180..180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>啟用實驗座標系統的第 2 測角儀
+旋轉軸（繞所選的 X/Y/Z 軸新增
+第二段傾斜）。</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>將第 1 角度固定於目前的數值</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>將第 2 角度固定於目前的數值。</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>將第 3 角度固定於目前的數值。</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>啟用實驗座標系統的第 3 測角儀
+旋轉軸（繞所選的 X/Y/Z 軸新增
+第三段傾斜）。</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>將第 3 測角儀旋轉軸設定為
+直角座標 Z 軸（第 3 次實驗
+旋轉會繞其進行）。</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>將第 3 測角儀旋轉軸設定為
+直角座標 Y 軸（第 3 次實驗
+旋轉會繞其進行）。</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>將第 3 測角儀旋轉軸設定為
+直角座標 X 軸（第 3 次實驗
+旋轉會繞其進行）。</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>將第 2 測角儀旋轉軸設定為直角
+座標 Z 軸（第 2 次實驗旋轉
+numericBoxExp2 會繞其進行）。</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>將第 2 測角儀旋轉軸設定為直角
+座標 Y 軸（第 2 次實驗旋轉
+numericBoxExp2 會繞其進行）。</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>將第 2 測角儀旋轉軸設定為直角
+座標 X 軸（第 2 次實驗旋轉
+numericBoxExp2 會繞其進行）。</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>將第 1 測角儀旋轉軸設定為直角
+座標 Z 軸（第 1 次實驗旋轉
+numericBoxExp1 會繞其進行）。</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>將第 1 測角儀旋轉軸設定為直角
+座標 Y 軸（第 1 次實驗旋轉
+numericBoxExp1 會繞其進行）。</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>將第 1 測角儀旋轉軸設定為直角
+座標 X 軸（第 1 次實驗旋轉
+numericBoxExp1 會繞其進行）。</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>將所有角度重設為零</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統的 3x3 方位（旋轉）
+矩陣，由 ZXZ 歐拉角計算而得
+（唯讀）。</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 1, 行 1) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+Φ、Θ、Ψ 計算而得。</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 1, 行 2) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 1, 行 3) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 2, 行 1) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 2, 行 2) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 2, 行 3) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 3, 行 1) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 3, 行 2) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>ReciPro 方位矩陣的 (列 3, 行 3) 元素
+（唯讀、無因次），由 ZXZ 歐拉角
+計算而得。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的第二歐拉角
+Theta（度，繞 X 軸的旋轉）；
+設定晶體方位。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
+Psi（度，繞 Z 軸的最後一次旋轉）；
+設定晶體方位。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>ReciPro 座標系統在 ZXZ 慣例下的第一歐拉角
+Phi（度）；設定晶體方位
+與旋轉矩陣。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>繞實驗座標系統第 1 測角儀軸的
+旋轉角（度，-180..180），
+繞所選的 X/Y/Z 軸傾斜晶體。</value>
+  </data>
 </root>

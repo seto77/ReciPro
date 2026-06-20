@@ -139,4 +139,141 @@
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>에너지 표준 편차</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>몬테카를로 시뮬레이션을 실행합니다: 지정한
+개수의 입사 전자를 시료 내에서 추적한 뒤,
+통계값·분포 그래프·3D 궤적 표시를
+갱신합니다.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>3D 표시의 시점을 시료 표면 법선 방향(현재의
+경사각 반영)으로 설정합니다.</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>3D 표시의 시점을 시료의 회전(경사) 축인
+X축 방향으로 설정합니다.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>3D 표시의 시점을 Z축 방향,
+즉 입사 빔 방향으로 설정합니다.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>3D 표시에서 후방 산란된 전자뿐 아니라, 시료
+내에 흡수된(후방 산란하지 않은) 전자의
+궤적도 함께 그립니다.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>3D 궤적 표시에서 X(빨강)·Y(초록)·Z=빔 방향
+(보라) 좌표축을 표시합니다.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>후방 산란 전자의 탈출 방향에 대한 입체 투영도
+(극점도) 위에 ±X / ±Y / ±Z 축의 위치를
+겹쳐 표시합니다.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>3D 표시에서 시료 표면에 거리 기준이 되는 동심
+스케일 원을 그립니다 (간격은 자동 조정,
+nm/µm 단위로 표시).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>3D 표시에서 각 후방 산란 전자의 경로를 표면
+바깥으로 연장하여 그 탈출 방향을
+나타냅니다 (탈출 에너지로 색 구분).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>시료 표면에서 탈출하는 후방 산란 전자(BSE)의
+평균 탈출 에너지 (keV).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>시료 표면에서 탈출하는 후방 산란 전자(BSE)의
+평균 탈출 에너지 (keV).</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>후방 산란 계수 η: 입사 전자 중 표면에서 후방 산란
+전자(BSE)로 재방출되는 비율로, 몬테카를로
+시뮬레이션으로 구한 값입니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>후방 산란 계수 η: 입사 전자 중 표면에서 후방 산란
+전자(BSE)로 재방출되는 비율로, 몬테카를로
+시뮬레이션으로 구한 값입니다.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>산란 단면적 σ_E: 입사 에너지에서의 탄성 산란
+유효 면적입니다. 값이 클수록 산란이 더
+빈번하게 일어납니다 (nm²).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>산란 단면적 σ_E: 입사 에너지에서의 탄성 산란
+유효 면적입니다. 값이 클수록 산란이 더
+빈번하게 일어납니다 (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>탄성 평균 자유 행로 λ: 입사 에너지에서 전자가
+탄성 산란을 한 번 일으킬 때까지 진행하는
+평균 거리 (nm).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>탄성 평균 자유 행로 λ: 입사 에너지에서 전자가
+탄성 산란을 한 번 일으킬 때까지 진행하는
+평균 거리 (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>저지능 dE/ds: 입사 에너지에서 전자가 비탄성
+충돌로 단위 경로 길이당 잃는
+에너지 (eV/nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>저지능 dE/ds: 입사 에너지에서 전자가 비탄성
+충돌로 단위 경로 길이당 잃는
+에너지 (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>시뮬레이션할 전자 궤적의 개수 (100~1,000,000).
+궤적이 많을수록 통계는 매끄러워지지만
+계산 시간이 늘어납니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>시뮬레이션할 전자 궤적의 개수 (100~1,000,000).
+궤적이 많을수록 통계는 매끄러워지지만
+계산 시간이 늘어납니다.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>3D 표시에 렌더링할 궤적 개수의 상한 (1~100,000).
+이것은 시뮬레이션이 아니라 그리기에만 영향을 주며,
+값을 낮추면 3D 표시가 가벼워집니다.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>입사 빔에 대한 시료 표면의 경사각
+(0~-90°). 0°=표면 법선이 빔과 평행. 기울이면
+후방 산란 전자의 수율과 방향 분포가
+변화합니다.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>입체 투영도를 각 방향으로 탈출한 후방 산란
+전자의 평균 탈출 에너지 (keV)로
+착색합니다.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>입체 투영도를 빈도, 즉 각 방향으로 탈출한
+후방 산란 전자의 수로
+착색합니다.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>입체 투영도를 각 방향으로 탈출한 후방 산란
+전자의 탈출 에너지 표준 편차로
+착색합니다.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>상태 표시줄: 직전 시뮬레이션의 궤적 계산, 그래프
+그리기, 3D 렌더링에 걸린
+경과 시간을 표시합니다.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>입사 전자 에너지(가속 전압, keV)입니다. 궤적,
+산란 단면적, 평균 자유 행로, 저지능 계산에
+사용되는 빔 에너지를 설정하며, 에너지가
+높을수록 시료에 더 깊이 침투합니다.</value>
+  </data>
 </root>

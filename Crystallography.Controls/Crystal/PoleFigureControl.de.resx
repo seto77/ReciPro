@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Farbskala für die Poldichte:
+Cold-Warm (Blau zu Rot) oder Graustufen.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Farbskala für die Poldichte:
+Cold-Warm (Blau zu Rot) oder Graustufen.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Intensitätsskalierung der Dichte-Farbskala:
+Linear bildet die Dichte proportional ab, Log
+komprimiert hohe Werte, um schwache Textur sichtbar zu machen.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Intensitätsskalierung der Dichte-Farbskala:
+Linear bildet die Dichte proportional ab, Log
+komprimiert hohe Werte, um schwache Textur sichtbar zu machen.</value>
+  </data>
+  <data name="numericUpDown1.ToolTip" xml:space="preserve">
+    <value>Erste Indexkomponente (u für eine Achse, h für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="labelU.ToolTip" xml:space="preserve">
+    <value>Erste Indexkomponente (u für eine Achse, h für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="numericUpDown2.ToolTip" xml:space="preserve">
+    <value>Zweite Indexkomponente (v für eine Achse, k für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="labelV.ToolTip" xml:space="preserve">
+    <value>Zweite Indexkomponente (v für eine Achse, k für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="numericUpDown3.ToolTip" xml:space="preserve">
+    <value>Dritte Indexkomponente (w für eine Achse, l für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="labelW.ToolTip" xml:space="preserve">
+    <value>Dritte Indexkomponente (w für eine Achse, l für
+eine Ebene) der Kristallrichtung oder Ebene,
+deren Pole projiziert werden (Bereich -20 bis 20).</value>
+  </data>
+  <data name="numericUpDownFullscale.ToolTip" xml:space="preserve">
+    <value>Vollausschlag-(Sättigungs-)Dichte als Zehnerpotenz
+mal dem Mittelwert: Die Farbskala sättigt
+bei Mittelwert × 10^E (Bereich -9 bis
+9). Höhere Werte verbreitern den dargestellten Bereich.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Vollausschlag-(Sättigungs-)Dichte als Zehnerpotenz
+mal dem Mittelwert: Die Farbskala sättigt
+bei Mittelwert × 10^E (Bereich -9 bis
+9). Höhere Werte verbreitern den dargestellten Bereich.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Vollausschlag-(Sättigungs-)Dichte als Zehnerpotenz
+mal dem Mittelwert: Die Farbskala sättigt
+bei Mittelwert × 10^E (Bereich -9 bis
+9). Höhere Werte verbreitern den dargestellten Bereich.</value>
+  </data>
+  <data name="numericUpDownResolution.ToolTip" xml:space="preserve">
+    <value>Winkelauflösung (Bin-Größe) der Dichtekarte,
+in Grad (Bereich 1–60°). Kleinere Werte ergeben
+eine feinere Polfigur, aber langsamere Berechnung.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Winkelauflösung (Bin-Größe) der Dichtekarte,
+in Grad (Bereich 1–60°). Kleinere Werte ergeben
+eine feinere Polfigur, aber langsamere Berechnung.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Winkelauflösung (Bin-Größe) der Dichtekarte,
+in Grad (Bereich 1–60°). Kleinere Werte ergeben
+eine feinere Polfigur, aber langsamere Berechnung.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Projiziert Kristallrichtungen [u v w] (Gitterachsen).
+Die Indexfelder sind mit u, v, w beschriftet
+und symmetrieäquivalente Achsen werden einbezogen.</value>
+  </data>
+  <data name="radioButtonInversePoleFigure.ToolTip" xml:space="preserve">
+    <value>Inverse Polfigur (IPF): stellt im Kristallbezugssystem
+die Verteilung einer festen Probenrichtung (x, y, z) dar
+und zeigt, welche Kristallrichtungen mit dieser
+Probenachse ausgerichtet sind.</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Projiziert Kristallebenen (h k l) über ihre
+Normalen. Die Indexfelder sind mit h, k, l beschriftet
+und symmetrieäquivalente Ebenen werden einbezogen.</value>
+  </data>
+  <data name="radioButtonPoleFigure.ToolTip" xml:space="preserve">
+    <value>Polfigur: stellt im Probenbezugssystem die Verteilung
+der Pole der gewählten Kristallrichtung oder Ebene dar
+(festgelegt über die Option Achsen/Ebenen).</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Schreibgeschützte Anzeige der maximalen und minimalen
+Poldichte in der aktuellen Karte, so normiert,
+dass die mittlere Dichte gleich 1 ist.</value>
+  </data>
+</root>

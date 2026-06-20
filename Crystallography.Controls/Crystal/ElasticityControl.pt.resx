@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (pt) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c11 (notação de Voigt):
+rigidez Cij quando 'Elastic stiffness constant' está
+selecionado, caso contrário compliância Sij (matriz
+tensão-deformação). Termo diagonal; unidade GPa para rigidez,
+GPa^-1 para compliância. Em sistemas de alta simetria
+c11 também origina termos equivalentes como c22/c33.</value>
+  </data>
+  <data name="label100.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c11 (notação de Voigt):
+rigidez Cij quando 'Elastic stiffness constant' está
+selecionado, caso contrário compliância Sij (matriz
+tensão-deformação). Termo diagonal; unidade GPa para rigidez,
+GPa^-1 para compliância. Em sistemas de alta simetria
+c11 também origina termos equivalentes como c22/c33.</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c12 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Acoplamento fora da
+diagonal entre o eixo-1 e o eixo-2; unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c12 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Acoplamento fora da
+diagonal entre o eixo-1 e o eixo-2; unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c13 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Acoplamento fora da
+diagonal entre o eixo-1 e o eixo-3; unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c13 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Acoplamento fora da
+diagonal entre o eixo-1 e o eixo-3; unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox14.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c14 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo fora da diagonal que acopla componentes normais e
+de cisalhamento (ativo em sistemas de baixa simetria/trigonais);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c14 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo fora da diagonal que acopla componentes normais e
+de cisalhamento (ativo em sistemas de baixa simetria/trigonais);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox15.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c15 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento fora da diagonal
+(ativo em sistemas de baixa simetria/trigonais);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c15 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento fora da diagonal
+(ativo em sistemas de baixa simetria/trigonais);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox16.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c16 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo em sistemas de baixa simetria);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c16 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo em sistemas de baixa simetria);
+unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c22 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+para o eixo-2; em muitos sistemas cristalinos é
+derivado de c11 e desativado automaticamente.
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c22 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+para o eixo-2; em muitos sistemas cristalinos é
+derivado de c11 e desativado automaticamente.
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c23 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Acoplamento fora da diagonal entre
+o eixo-2 e o eixo-3; em sistemas de simetria mais alta é
+derivado de c13 (ou de c12 no cúbico). Unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c23 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Acoplamento fora da diagonal entre
+o eixo-2 e o eixo-3; em sistemas de simetria mais alta é
+derivado de c13 (ou de c12 no cúbico). Unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox24.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c24 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no trigonal é definido como -c14).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c24 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no trigonal é definido como -c14).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox25.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c25 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no trigonal 3/-3 é definido como -c15). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c25 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no trigonal 3/-3 é definido como -c15). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox26.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c26 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no tetragonal 4/-4/4/m é definido como -c16).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c26 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (no tetragonal 4/-4/4/m é definido como -c16).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c33 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+para o eixo-3 (definido igual a c11 no cúbico).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c33 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+para o eixo-3 (definido igual a c11 no cúbico).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox34.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c34 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c34 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox35.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c35 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c35 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox36.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c36 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c36 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento normal-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox44.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c44 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+de cisalhamento; em tetragonal/hexagonal/trigonal
+origina c55, e no cúbico c55=c66=c44. Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c44 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+de cisalhamento; em tetragonal/hexagonal/trigonal
+origina c55, e no cúbico c55=c66=c44. Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox45.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c45 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c45 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (ativo apenas em sistemas de baixa simetria). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox46.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c46 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (no trigonal 3/-3 é definido como -c15). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c46 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme o
+modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (no trigonal 3/-3 é definido como -c15). Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox55.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c55 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo diagonal de cisalhamento; em
+tetragonal/hexagonal/trigonal/cúbico é
+derivado de c44 e desativado. Unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c55 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo diagonal de cisalhamento; em
+tetragonal/hexagonal/trigonal/cúbico é
+derivado de c44 e desativado. Unidade GPa
+(rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox56.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c56 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (no trigonal é definido como c14).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c56 (notação de Voigt):
+rigidez Cij ou compliância Sij conforme
+o modo selecionado. Termo de acoplamento cisalhamento-cisalhamento
+fora da diagonal (no trigonal é definido como c14).
+Unidade GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="numericBox66.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c66 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+de cisalhamento; em hexagonal/trigonal é
+(c11-c12)/2 e no cúbico é igual a c44. Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Define a constante elástica c66 (notação
+de Voigt): rigidez Cij ou compliância Sij
+conforme o modo selecionado. Termo diagonal
+de cisalhamento; em hexagonal/trigonal é
+(c11-c12)/2 e no cúbico é igual a c44. Unidade
+GPa (rigidez) ou GPa^-1 (compliância).</value>
+  </data>
+  <data name="radioButtonCompliance.ToolTip" xml:space="preserve">
+    <value>Interpreta a matriz 6x6 como constantes de compliância
+elástica Sij (deformação = S x tensão), a inversa do
+tensor de rigidez C, em GPa^-1. A matriz de rigidez
+C é mantida como sua inversa. Mutuamente exclusiva
+com 'Elastic stiffness constant'.</value>
+  </data>
+  <data name="radioButtonStiffness.ToolTip" xml:space="preserve">
+    <value>Interpreta a matriz 6x6 como constantes de rigidez
+elástica Cij (tensão = C x deformação), isto é, o
+tensor de rigidez em GPa. A matriz de compliância
+S é mantida como sua inversa. Mutuamente exclusiva
+com 'Elastic compliance constant'.</value>
+  </data>
+</root>

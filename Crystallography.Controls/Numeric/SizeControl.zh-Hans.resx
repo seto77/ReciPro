@@ -65,4 +65,26 @@
   <data name="checkBoxKeepAspect.Text" xml:space="preserve">
     <value>保持宽高比</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>锁定宽高比；更改一个尺寸时，
+另一个会自动更新以
+保持比例。</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>图像高度（像素，px）；锁定宽高比时，
+宽度会自动随之变化。</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>图像宽度（像素，px）；锁定宽高比时，
+高度会自动随之变化。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>图像尺寸：宽度 × 高度（像素，px）。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>图像尺寸：宽度 × 高度（像素，px）。</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>图像尺寸：宽度 × 高度（像素，px）。</value>
+  </data>
 </root>

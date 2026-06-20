@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>동적 압축 회절 시뮬레이션을 실행하고
+패턴을 누적합니다.</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>선택하면 계산 중 화면 그리기를
+생략하여 계산을 가속합니다.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>미압축 영역과 압축 영역을 나누는
+전방 경계의 깊이입니다.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>압축 영역과 해방 영역을 나누는
+후방 경계의 깊이입니다.</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>시뮬레이션한 TIFF 패턴이 저장되는
+출력 폴더를 선택합니다.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>저장되는 TIFF 패턴의 기본 파일
+이름입니다. '.tif'는 자동으로 추가됩니다.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>저장되는 TIFF 패턴의 기본 파일
+이름입니다. '.tif'는 자동으로 추가됩니다.</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>압축 영역에서 결정 회전
+속도 ω의 평균값(°/ns)입니다.</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>압축 영역에서 회전 속도의
+표준 편차 σ_ω(°/ns)입니다.</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>압축 영역의 회전축 퍼짐 σ_θ에 대한
+상수항 a(°, 2019년 모델)입니다.</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>압축 영역의 회전축 퍼짐 σ_θ에 대한
+시간 계수 b(°/ns, 2019년 모델)입니다.</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>선택하면 전체 Ω 각도를 일정 간격으로 증가시키면서
+시뮬레이션을 반복합니다.</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>선택하면 각 시뮬레이션 패턴을
+선택한 폴더에 TIFF 파일로 저장합니다.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>회전 속도(speed) 분포에 대해 적분하기 위한
+샘플링 분할 수입니다.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>회전축에 대한 방위각
+샘플링 분할 수입니다.</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>해방 영역에서 결정 회전 속도 ω의 평균값(°/ns)입니다.</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>해방 영역에서 회전 속도의
+표준 편차 σ_ω(°/ns)입니다.</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>해방 영역의 회전축 퍼짐 σ_θ에 대한
+상수항 a(°, 2019년 모델)입니다.</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>해방 영역의 회전축 퍼짐 σ_θ에 대한
+시간 계수 b(°/ns, 2019년 모델)입니다.</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>충격(압축)면 법선의 밀러 지수 h입니다.</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>충격(압축)면 법선의 밀러 지수 k입니다.</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>충격(압축)면 법선의 밀러 지수 l입니다.</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>미끄럼면 법선의 밀러 지수 h(2019년 모델에서
+회전축을 정의하는 데 사용)입니다.</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>미끄럼면 법선의 밀러 지수 k(2019년 모델에서
+회전축을 정의하는 데 사용)입니다.</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>미끄럼면 법선의 밀러 지수 l(2019년 모델에서
+회전축을 정의하는 데 사용)입니다.</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>압축 영역에서 깊이를 경과 시간으로
+변환하는 데 사용하는 충격(압축)파
+속도 Us(km/s)입니다.</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>압축 영역의 격자에 등방(정수압) 압축을 적용합니다.</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>압축 영역에서 충격면 법선을 따라
+격자에 일축 압축을 적용합니다.</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>해방 영역에서 깊이를 경과 시간으로 변환하는 데
+사용하는 해방파 속도 Ur(km/s)입니다.</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>해방 영역의 격자에 등방(정수압)
+압축을 적용합니다.</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>해방 영역에서 충격면 법선을 따라
+격자에 일축 압축을 적용합니다.</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>'Increment Ω'가 활성화되어 있을 때 반복마다
+적용되는 Ω 각도 증분(°)입니다.</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>'Increment Ω'가 활성화되어 있을 때의 반복 횟수입니다.</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>2018년 회전 모델을 사용합니다(회전축이
+압축축에 수직).</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>2019년 회전 모델을 사용합니다(미끄럼면과
+압축면의 외적에서 회전축을 정의하며,
+θ, φ 퍼짐을 포함).</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>3차 Birch-Murnaghan 상태 방정식의
+체적 탄성률 K0(GPa)입니다.</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>3차 Birch-Murnaghan 상태 방정식의
+체적 탄성률의 압력 미분 K'0입니다.</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>각 층을 통과하며 강도를 감쇠시키는 데 사용하는
+시료의 질량 흡수 계수(cm²/g)입니다.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>각 층을 통과하며 강도를 감쇠시키는 데 사용하는
+시료의 질량 흡수 계수(cm²/g)입니다.</value>
+  </data>
+</root>

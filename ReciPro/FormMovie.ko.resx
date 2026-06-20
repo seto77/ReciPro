@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>동영상에서 시선축(화면에 수직인 축)을
+중심으로 시계 반대 방향으로 회전시킵니다.</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>동영상에서 수평 화면축을 중심으로
+아래쪽으로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>동영상에서 대응하는 면내 축을 중심으로
+왼쪽 아래로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>동영상에서 대응하는 면내 축을 중심으로
+오른쪽 아래로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>동영상을 생성하지 않고 이 대화상자를 닫습니다.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>동영상에서 시선축(화면에 수직인 축)을
+중심으로 시계 방향으로 회전시킵니다.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>동영상에서 수직 화면축을 중심으로
+왼쪽으로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>설정한 방향·속도·길이로 회전 동영상을
+생성하여 MP4 파일로 저장합니다.</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>동영상에서 수직 화면축을 중심으로 오른쪽
+으로 기울이며 회전시킵니다 (기본값).</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>동영상에서 수평 화면축을 중심으로
+위쪽으로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>동영상에서 대응하는 면내 축을 중심으로
+왼쪽 위로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>동영상에서 대응하는 면내 축을 중심으로
+오른쪽 위로 기울이며 회전시킵니다.</value>
+  </data>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>인코딩 속도 프리셋 라벨 (ultrafast…veryslow).
+주의: 현재의 Media Foundation 인코더에서는 진행률
+대화상자에 표시될 뿐이며, 실제 인코딩에는 더 이상
+영향을 주지 않습니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>인코딩 속도 프리셋 라벨 (ultrafast…veryslow).
+주의: 현재의 Media Foundation 인코더에서는 진행률
+대화상자에 표시될 뿐이며, 실제 인코딩에는 더 이상
+영향을 주지 않습니다.</value>
+  </data>
+  <data name="numericBoxDuration.ToolTip" xml:space="preserve">
+    <value>생성할 동영상의 길이(초)를 설정합니다
+(프레임 레이트는 30 fps).</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>시점의 회전 속도를 초당 도(°/s)로 설정합니다.</value>
+  </data>
+  <data name="radioButtonAxis.ToolTip" xml:space="preserve">
+    <value>회전축을 결정의 방향 지수 [uvw]로 지정합니다.</value>
+  </data>
+  <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
+    <value>현재 표시 중인 투영 방위(방향)를 기준으로
+회전합니다. 기울이는 방향은 화살표
+버튼으로 선택합니다.</value>
+  </data>
+  <data name="radioButtonH264.ToolTip" xml:space="preserve">
+    <value>동영상을 H.264 (AVC) 비디오 코덱으로 인코딩합니다.</value>
+  </data>
+  <data name="radioButtonH265.ToolTip" xml:space="preserve">
+    <value>동영상을 H.265 (HEVC) 비디오 코덱으로 인코딩
+합니다 (고압축. HEVC 인코더가 필요합니다).</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>회전축을 격자면 (hkl)의
+법선으로 지정합니다.</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>회전축을 정의하는 지수를 입력합니다. 방향 지수
+모드에서는 방향 [uvw]로, 격자면 모드에서는 격자면
+(hkl) (그 법선을 중심으로 회전)으로 해석됩니다.</value>
+  </data>
+</root>

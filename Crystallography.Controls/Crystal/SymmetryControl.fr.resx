@@ -98,4 +98,141 @@
   <data name="label21.Text" xml:space="preserve">
     <value>Groupe ponctuel</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Sélectionnez l'unité de longueur (Å ou nm)
+pour les paramètres de maille a, b, c.</value>
+  </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>Affiche ou masque les champs d'erreur ± (écart-type
+estimé) pour les paramètres de maille.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Paramètre de maille « β » en degré</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>Paramètre de maille « β » en degré</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Paramètre de maille « α » en degré</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>Paramètre de maille « α » en degré</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête a de la maille élémentaire (en Å ou nm,
+selon le sélecteur d'unité). Les modifications respectent
+les contraintes du système cristallin.</value>
+  </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value>Longueur d'arête a de la maille élémentaire (en Å ou nm,
+selon le sélecteur d'unité). Les modifications respectent
+les contraintes du système cristallin.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Paramètre de maille « γ » en degré</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value>Paramètre de maille « γ » en degré</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête b de la maille élémentaire (en Å ou nm, selon le
+sélecteur d'unité). Peut être verrouillée sur a par symétrie.</value>
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
+    <value>Longueur d'arête b de la maille élémentaire (en Å ou nm, selon le
+sélecteur d'unité). Peut être verrouillée sur a par symétrie.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête c de la maille élémentaire (en Å ou nm, selon le
+sélecteur d'unité). Peut être verrouillée sur a par symétrie.</value>
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value>Longueur d'arête c de la maille élémentaire (en Å ou nm, selon le
+sélecteur d'unité). Peut être verrouillée sur a par symétrie.</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le groupe d'espace (numéro : symbole Hermann–Mauguin
+(HM)) ; il contraint les paramètres de maille modifiables.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le groupe d'espace (numéro : symbole Hermann–Mauguin
+(HM)) ; il contraint les paramètres de maille modifiables.</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le groupe ponctuel cristallographique
+en notation Hermann–Mauguin (HM) ; ceci
+filtre les groupes d'espace disponibles.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le groupe ponctuel cristallographique
+en notation Hermann–Mauguin (HM) ; ceci
+filtre les groupes d'espace disponibles.</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le système cristallin (triclinique … cubique) ;
+ceci définit quels paramètres de maille sont indépendants.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Sélectionnez le système cristallin (triclinique … cubique) ;
+ceci définit quels paramètres de maille sont indépendants.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Tapez les caractères d'un symbole Hermann–Mauguin (HM)
+pour rechercher des groupes d'espace ; les correspondances
+apparaissent dans la liste de résultats (utilisez « sub » pour un indice).</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>Tapez les caractères d'un symbole Hermann–Mauguin (HM)
+pour rechercher des groupes d'espace ; les correspondances
+apparaissent dans la liste de résultats (utilisez « sub » pour un indice).</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>Choisissez un groupe d'espace parmi les résultats de recherche (numéro
+: symbole Hermann–Mauguin) pour l'appliquer au système
+cristallin, au groupe ponctuel et au groupe d'espace ci-dessus.</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±) du paramètre de
+maille a, dans la même unité de longueur que a.</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±)
+de l'angle α, en degré.</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±) du paramètre de
+maille b, dans la même unité de longueur que b.</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±)
+de l'angle β, en degré.</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±) du paramètre de
+maille c, dans la même unité de longueur que c.</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>Écart-type estimé (erreur ±)
+de l'angle γ, en degré.</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>Utilise l'ångström (Å) comme unité de longueur pour a, b,
+c ; les valeurs existantes sont automatiquement reconverties.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>Utilise le nanomètre (nm) comme unité de longueur pour a, b,
+c ; les valeurs existantes sont automatiquement reconverties.</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>Unité de longueur actuelle pour a (Å ou
+nm ; changez avec le sélecteur d'unité).</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>Unité de longueur actuelle pour b (Å ou
+nm ; changez avec le sélecteur d'unité).</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>Unité de longueur actuelle pour c (Å ou
+nm ; changez avec le sélecteur d'unité).</value>
+  </data>
 </root>

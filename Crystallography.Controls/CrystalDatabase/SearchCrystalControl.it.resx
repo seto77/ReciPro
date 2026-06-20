@@ -86,4 +86,146 @@
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>Cerca</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>Apre la tavola periodica per scegliere quali elementi
+devono essere inclusi o esclusi nella ricerca.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Cerca nel database dei cristalli usando tutti i criteri
+abilitati (nome, riferimento, elementi, sistema
+cristallino, cella, distanza interplanare, densità) combinati,
+e mostra solo i cristalli corrispondenti.</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>Abilita il filtraggio in base al 1° valore di distanza interplanare;
+attiva i relativi campi di valore e tolleranza.</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>Abilita il filtraggio in base al 2° valore di distanza interplanare;
+attiva i relativi campi di valore e tolleranza.</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>Abilita il filtraggio in base al 3° valore di distanza interplanare;
+attiva i relativi campi di valore e tolleranza.</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>Filtra il database in base alla densità misurata/calcolata
+(g/cm³); abilita i campi di immissione della densità.</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Filtra in base alla distanza interplanare (distanza reticolare
+tra i piani, in Å — la distanza che determina le posizioni dei picchi
+di diffrazione); abilita i campi di immissione della distanza interplanare.</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>Quando selezionato, la ricerca per distanza interplanare ignora il
+fattore di diffusione (intensità della riflessione): ogni valore di d
+geometricamente permesso viene calcolato dalla cella
+elementare, incluse le riflessioni che sarebbero estinte
+(intensità nulla).</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>Filtra in base ai parametri della cella elementare (lunghezze
+a, b, c in Å e angoli α, β, γ in °);
+abilita i campi di immissione dei parametri di cella.</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Filtra in base al sistema cristallino (triclino …
+cubico); abilita il selettore del sistema cristallino.</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>Filtra in base agli elementi costituenti; mostra il
+pulsante della tavola periodica usato per specificare
+quali elementi includere o escludere.</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Filtra in base al nome del minerale/composto; mostra una casella di testo
+per una ricerca per nome (non sensibile alle maiuscole, a corrispondenza parziale).</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Filtra in base al riferimento (rivista, autore o testo della sezione);
+mostra una casella di testo per il termine di ricerca.</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Seleziona il sistema cristallino in base a cui filtrare
+(triclino, monoclino, ortorombico,
+tetragonale, trigonale, esagonale o cubico).</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>Lunghezza a della cella elementare da cercare,
+in Å (0 = ignora questo parametro).</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>Angolo α della cella elementare (tra gli assi b e
+c) da cercare, in ° (0 = ignora).</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca sugli angoli di cella (α, β, γ),
+come ±° (nota: gradi, a differenza
+della tolleranza sulle lunghezze che è in %).</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>Lunghezza b della cella elementare da cercare,
+in Å (0 = ignora questo parametro).</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>Angolo β della cella elementare (tra gli assi a e
+c) da cercare, in ° (0 = ignora).</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>Lunghezza c della cella elementare da cercare,
+in Å (0 = ignora questo parametro).</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>Angolo γ della cella elementare (tra gli assi a e
+b) da cercare, in ° (0 = ignora).</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca sulle lunghezze di cella (a, b, c),
+come ±%; vengono trovate le celle le cui lunghezze rientrano
+in questo intervallo relativo.</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>Valore della 1ª distanza interplanare
+(distanza tra i piani) da cercare, in Å.</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca della 1ª distanza interplanare,
+come ±%; vengono trovati i cristalli con un valore
+di d entro questo intervallo.</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>Valore della 2ª distanza interplanare
+(distanza tra i piani) da cercare, in Å.</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca della 2ª distanza interplanare,
+come ±%; vengono trovati i cristalli con un valore
+di d entro questo intervallo.</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>Valore della 3ª distanza interplanare
+(distanza tra i piani) da cercare, in Å.</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca della 3ª distanza interplanare,
+come ±%; vengono trovati i cristalli con un valore
+di d entro questo intervallo.</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>Densità da cercare, in g/cm³.</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>Tolleranza per la ricerca sulla densità, come
+±%; vengono trovati i cristalli la cui densità rientra
+in questo intervallo relativo.</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Inserisci un nome di minerale/composto da cercare (corrispondenza parziale,
+non sensibile alle maiuscole); premi Invio per eseguire la ricerca.</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Inserisci un termine di riferimento (rivista, autore o sezione)
+da cercare; premi Invio per eseguire la ricerca.</value>
+  </data>
 </root>

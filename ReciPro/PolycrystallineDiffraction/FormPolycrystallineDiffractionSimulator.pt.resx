@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (pt) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Habilita o eixo Rz (θ): oscilação de 'balanço'
+lateral da amostra, definida por sua velocidade do motor
+(°/s) e faixa de oscilação (±°) abaixo.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Habilita o eixo Ry (ω): oscilação de 'aceno'
+da amostra, definida por sua velocidade do motor (°/s),
+faixa de oscilação (±°) e passo (°) abaixo.</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Para o ajuste automaticamente quando o
+'Num per Step' recozido cair abaixo do
+valor limite (%) definido à direita.</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Para o ajuste automaticamente quando a
+'Directional density' recozida cair abaixo
+do valor limite (°) definido à direita.</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Para o ajuste automaticamente quando a 'Inheritability'
+subir acima do valor limite (%) definido à direita.</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>Inclui o deslocamento do centro do feixe como um
+parâmetro livre no ajuste, refinando a posição central
+do padrão para melhor corresponder à referência.</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>Inclui o ângulo de convergência do feixe como
+um parâmetro livre no ajuste (refina
+quanto o feixe incidente converge).</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>Inclui o borramento do filme/detector
+(alargamento por dispersão de ponto de cada
+ponto) como um parâmetro livre no ajuste.</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>Refina a distribuição de densidade de orientação preferencial
+(textura/LPO). Este é o núcleo do
+ajuste e está sempre habilitado (não pode ser desativado).</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>Inclui a tensão residual (deformação
+da rede que desloca/alarga os
+anéis) como um parâmetro livre no ajuste.</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>Simula um goniômetro oscilante (tipo 'Yusa'):
+integra o padrão sobre os movimentos Rx(Φ rotação),
+Rz(θ balanço) e Ry(ω aceno) definidos abaixo,
+imitando uma medição real de pó/textura.</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Habilita o eixo Rx (Φ): giro contínuo
+da amostra em torno de sua normal de superfície na
+velocidade do motor definida à direita (°/s).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Direção do gradiente da exibição de intensidade:
+Positive mostra a alta intensidade brilhante,
+Negative inverte (alta intensidade escura).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Mapeamento de intensidade para o padrão exibido:
+escala logarítmica (enfatiza
+reflexões fracas) ou escala linear.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Mapeamento de intensidade para o padrão exibido:
+escala logarítmica (enfatiza
+reflexões fracas) ou escala linear.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Mapa de cores para o padrão exibido:
+escala de cinza ou uma escala de cores frio-quente.</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Mapa de cores para o padrão exibido:
+escala de cinza ou uma escala de cores frio-quente.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>Fração de cristalitos (%) cuja orientação é
+perturbada a cada passo de refinamento do
+ajuste de orientação preferencial (LPO, Orientação Preferencial
+de Rede). Maior = passos maiores; o valor
+é recozido para baixo (×0,8) à medida que o ajuste converge.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Valor limite (%) para 'Num per Step': o ajuste para
+quando o parâmetro é recozido abaixo deste nível.</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>Dispersão angular (°) do viés de orientação aplicado
+a cada passo de refinamento: a meia largura sobre a qual
+a densidade de uma orientação escolhida é reforçada.
+Recozida menor (×0,8) à medida que o ajuste se aguça.</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Valor limite (°) para 'Directional density': o ajuste
+para quando o parâmetro é recozido abaixo deste nível.</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>Probabilidade (%) de que um passo de refinamento reutilize
+('herde') uma orientação já de alta densidade
+em vez de escolher uma aleatoriamente; valores maiores
+levam o ajuste a uma textura mais aguda.</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Valor limite (%) para 'Inheritability': o ajuste
+para quando o parâmetro sobe acima deste nível.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de rotação Rx (Φ), em
+graus por segundo (°/s). A rotação mais rápida
+faz a média sobre mais orientações no plano.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Faixa de oscilação (aceno) do eixo Ry
+(ω), em ± graus em torno do centro.</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Faixa de oscilação (aceno) do eixo Ry
+(ω), em ± graus em torno do centro.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Faixa de oscilação (aceno) do eixo Ry
+(ω), em ± graus em torno do centro.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Faixa de oscilação (aceno) do eixo Ry
+(ω), em ± graus em torno do centro.</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de aceno
+Ry (ω), em graus por segundo (°/s).</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de aceno
+Ry (ω), em graus por segundo (°/s).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de aceno
+Ry (ω), em graus por segundo (°/s).</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Passo angular (°) da oscilação Ry (ω): o
+incremento por avanço de ω durante a varredura; menor dá uma
+amostragem de orientação mais fina, mas simulação mais lenta.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+em ± graus em torno do centro; a amostra
+oscila entre −valor e +valor.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de balanço Rz (θ),
+em graus por segundo (°/s).</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de balanço Rz (θ),
+em graus por segundo (°/s).</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de balanço Rz (θ),
+em graus por segundo (°/s).</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Ordem de varredura em ziguezague: varre θ (Rz) para frente e para trás
+enquanto ω (Ry) avança a cada volta, de modo que o goniômetro
+traça um percurso em ziguezague pelo espaço de orientações.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Teste de depuração: gera o padrão de difração de uma
+única orientação aleatória para os cristais selecionados.</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>Simula o padrão de difração de anéis de Debye
+(pó) policristalino para os cristais selecionados
+e o exibe na aba atual.</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>Carrega uma configuração de ajuste de orientação
+salva anteriormente (arquivo .setting).</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>Salva a configuração atual de ajuste de orientação
+(cristais, parâmetros e histórico de
+resíduos) em um arquivo .setting.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Inicia ou interrompe o ajuste da distribuição de orientações
+cristalinas (LPO, Lattice-Preferred Orientation)
+para que o padrão simulado coincida melhor com os
+padrões de referência. Clique novamente para parar.</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>Adiciona um padrão de difração de referência medido (imagem
+.ipa) como alvo de ajuste. Ele abre em uma nova aba.</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>Remove o padrão de difração de referência
+selecionado na lista (e sua aba).</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>Lista dos padrões de difração de referência
+carregados. Selecione um para alternar para sua aba.</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente a configuração de forma periódica
+durante o ajuste. (Atualmente desativado.)</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>Reduz automaticamente os parâmetros de ajuste
+quando o resíduo deixa de melhorar com
+rapidez suficiente. (Atualmente fixo em ativado.)</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>Limiar (0-1) para a redução automática dos parâmetros
+de ajuste. Quando a razão entre a inclinação recente e
+a anterior do resíduo (Rwp) cai abaixo
+deste valor, os parâmetros são reduzidos a 0,8x.</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Registro de ajuste somente leitura: tempo decorrido, velocidade
+(ms/passo), contagem de passos, número de atualizações
+bem-sucedidas, resíduo (%) e valor S.</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>Procura e remove iterativamente as orientações de cristalitos
+que não contribuem para o padrão de difração,
+mantendo apenas as que contribuem.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>Direção do gradiente da exibição de intensidade: Positive
+mostra a alta intensidade em claro, Negative inverte para escuro.</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+em ± graus em torno do centro.</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+em ± graus em torno do centro.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+em ± graus em torno do centro.</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Passo angular (°) da oscilação Ry (ω); quanto menor,
+mais fina a amostragem de orientação, mas mais lenta a simulação.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de rotação Rx (Φ),
+em graus por segundo (°/s).</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Velocidade do motor do eixo de rotação Rx (Φ),
+em graus por segundo (°/s).</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Passo angular (°) da oscilação Ry (ω).</value>
+  </data>
+</root>

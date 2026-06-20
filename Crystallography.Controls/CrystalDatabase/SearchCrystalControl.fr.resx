@@ -86,4 +86,146 @@
   <data name="buttonSearch.Text" xml:space="preserve">
     <value>Rechercher</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>Ouvre le tableau périodique pour choisir quels éléments
+doivent être inclus ou exclus dans la recherche.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Recherche dans la base de données de cristaux selon tous
+les critères activés (nom, référence, éléments, système
+cristallin, maille, distance interréticulaire, densité) combinés,
+et n'affiche que les cristaux correspondants.</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>Active le filtrage par la 1re valeur de distance interréticulaire ;
+active ses champs de valeur et de tolérance.</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>Active le filtrage par la 2e valeur de distance interréticulaire ;
+active ses champs de valeur et de tolérance.</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>Active le filtrage par la 3e valeur de distance interréticulaire ;
+active ses champs de valeur et de tolérance.</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>Filtre la base de données par densité mesurée/calculée
+(g/cm³) ; active les champs de saisie de la densité.</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Filtre par distance interréticulaire (espacement entre plans
+réticulaires, en Å — l'espacement qui détermine la position des pics
+de diffraction) ; active les champs de saisie de la distance interréticulaire.</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>Lorsque cette case est cochée, la recherche par distance interréticulaire
+ignore le facteur de diffusion (intensité de la réflexion) : toute
+valeur de d géométriquement permise est calculée à partir de la
+maille élémentaire, y compris les réflexions qui seraient
+éteintes (intensité nulle).</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>Filtre par paramètres de maille (longueurs
+a, b, c en Å et angles α, β, γ en °) ;
+active les champs de saisie des paramètres de maille.</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Filtre par système cristallin (triclinique …
+cubique) ; active le sélecteur de système cristallin.</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>Filtre par éléments constitutifs ; affiche le
+bouton Tableau périodique servant à spécifier
+quels éléments inclure ou exclure.</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Filtre par nom de minéral/composé ; affiche un champ de texte
+pour une recherche de nom (insensible à la casse, correspondance partielle).</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Filtre par référence (revue, auteur ou texte de section) ;
+affiche un champ de texte pour le terme de recherche.</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Sélectionne le système cristallin servant de filtre
+(triclinique, monoclinique, orthorhombique,
+quadratique, trigonal, hexagonal ou cubique).</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>Longueur cible a de la maille élémentaire à rechercher,
+en Å (0 = ignorer ce paramètre).</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>Angle cible α de la maille élémentaire (entre les axes b et
+c) à rechercher, en ° (0 = ignorer).</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche d'angle de maille (α, β, γ),
+en ±° (note : en degrés, contrairement à la
+tolérance de longueur qui est en %).</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>Longueur cible b de la maille élémentaire à rechercher,
+en Å (0 = ignorer ce paramètre).</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>Angle cible β de la maille élémentaire (entre les axes a et
+c) à rechercher, en ° (0 = ignorer).</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>Longueur cible c de la maille élémentaire à rechercher,
+en Å (0 = ignorer ce paramètre).</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>Angle cible γ de la maille élémentaire (entre les axes a et
+b) à rechercher, en ° (0 = ignorer).</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche de longueur de maille (a, b, c),
+en ±% ; les mailles dont les longueurs sont
+dans cette plage relative correspondent.</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>Valeur cible de la 1re distance interréticulaire
+(espacement entre plans) à rechercher, en Å.</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche de la 1re distance interréticulaire,
+en ±% ; les cristaux ayant une valeur de d
+dans cette plage correspondent.</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>Valeur cible de la 2e distance interréticulaire
+(espacement entre plans) à rechercher, en Å.</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche de la 2e distance interréticulaire,
+en ±% ; les cristaux ayant une valeur de d
+dans cette plage correspondent.</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>Valeur cible de la 3e distance interréticulaire
+(espacement entre plans) à rechercher, en Å.</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche de la 3e distance interréticulaire,
+en ±% ; les cristaux ayant une valeur de d
+dans cette plage correspondent.</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>Densité cible à rechercher, en g/cm³.</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>Tolérance pour la recherche de densité, en
+±% ; les cristaux dont la densité est
+dans cette plage relative correspondent.</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Saisissez un nom de minéral/composé à rechercher (correspondance partielle,
+insensible à la casse) ; appuyez sur Entrée pour lancer la recherche.</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Saisissez un terme de référence (revue, auteur ou section)
+à rechercher ; appuyez sur Entrée pour lancer la recherche.</value>
+  </data>
 </root>

@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Neutronen</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Wählt ein Element (1:H bis 98:Cf), das charakteristische Röntgenstrahlung aussendet.
+Ist "0:custom" ausgewählt, können Sie die Energie oder Wellenlänge frei eingeben.
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>Verwendet Röntgenstrahlung als Wellenquelle (Energie in keV);
+aktiviert die Auswahlfelder für Element und charakteristische Linie.</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Verwendet einen Elektronenstrahl als Wellenquelle (Energie in keV).</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Wählt die charakteristische Röntgen-Emissionslinie (z. B.
+Kα1, Kα2, Kβ1); dies legt Wellenlänge und Energie fest.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Geben Sie die Strahlenergie ein (keV für Röntgen/Elektronen, meV für
+Neutronen); die Wellenlänge wird automatisch neu berechnet.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Geben Sie die Strahlenergie ein (keV für Röntgen/Elektronen, meV für
+Neutronen); die Wellenlänge wird automatisch neu berechnet.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Wählt ein Element (1:H bis 98:Cf), das charakteristische
+Röntgenstrahlung aussendet. Wählen Sie "0:custom", um die
+Energie oder Wellenlänge frei einzugeben.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Geben Sie hier die Wellenlänge ein (verwenden Sie die Å- / nm-Optionsfelder zum Umschalten der Anzeigeeinheit).
+Die Strahlenergie wird automatisch neu berechnet.</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Geben Sie hier die Wellenlänge ein (verwenden Sie die Å- / nm-Optionsfelder zum Umschalten der Anzeigeeinheit).
+Die Strahlenergie wird automatisch neu berechnet.</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Verwendet einen Neutronenstrahl als Wellenquelle (Energie in meV).</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>Kennzeichnet den Flat-White-Modus (kontinuierliches Spektrum):
+statt einer einzelnen Wellenlänge wird ein gleichmäßiger
+Breitbandstrahl verwendet.</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>Zeigt die Wellenlänge in Nanometern (nm) an. Nur Anzeige — die physikalische Wellenlänge und Energie bleiben unverändert (1 nm = 10 Å).</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>Zeigt die Wellenlänge in Ångström (Å) an. Nur Anzeige — die physikalische Wellenlänge und Energie bleiben unverändert (1 nm = 10 Å).</value>
+  </data>
 </root>

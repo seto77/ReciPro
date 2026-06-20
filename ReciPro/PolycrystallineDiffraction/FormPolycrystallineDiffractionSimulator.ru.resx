@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Включить ось Rz (θ): покачивание образца из стороны
+в сторону, задаваемое его скоростью двигателя
+(°/s) и диапазоном колебаний (±°) ниже.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Включить ось Ry (ω): «кивающее» колебание
+образца, задаваемое его скоростью двигателя (°/s),
+диапазоном колебаний (±°) и шагом (°) ниже.</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Останавливать подгонку автоматически, как только
+отожжённое 'Num per Step' опустится ниже
+порогового значения (%), заданного справа.</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Останавливать подгонку автоматически, как только
+отожжённое 'Directional density' опустится ниже
+порогового значения (°), заданного справа.</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Останавливать подгонку автоматически, как только 'Inheritability'
+превысит пороговое значение (%), заданное справа.</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>Включить смещение центра пучка как свободный
+параметр подгонки, уточняя положение центра картины
+для наилучшего совпадения с эталоном.</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>Включить угол сходимости пучка как
+свободный параметр подгонки (уточняет,
+насколько сходится падающий пучок).</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>Включить размытие плёнки/детектора
+(уширение функции рассеяния точки каждого
+рефлекса) как свободный параметр подгонки.</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>Уточнять распределение плотности преимущественной
+ориентации (текстуры/LPO). Это ядро
+подгонки, всегда включено (нельзя отключить).</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>Включить остаточное напряжение (деформацию
+решётки, сдвигающую/уширяющую кольца)
+как свободный параметр подгонки.</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>Моделировать качающийся гониометр (типа «Yusa»):
+интегрировать картину по движениям Rx(вращение Φ),
+Rz(покачивание θ) и Ry(кивок ω), заданным ниже,
+имитируя реальное измерение порошка/текстуры.</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Включить ось Rx (Φ): непрерывное вращение
+образца вокруг нормали к его поверхности со
+скоростью двигателя, заданной справа (°/s).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Направление градиента отображения интенсивности:
+Positive показывает высокую интенсивность светлой,
+Negative инвертирует (высокая интенсивность тёмная).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Отображение интенсивности картины:
+логарифмический масштаб (подчёркивает
+слабые рефлексы) или линейный масштаб.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Отображение интенсивности картины:
+логарифмический масштаб (подчёркивает
+слабые рефлексы) или линейный масштаб.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Цветовая карта отображаемой картины:
+серая шкала или холодно-тёплая цветовая шкала.</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Цветовая карта отображаемой картины:
+серая шкала или холодно-тёплая цветовая шкала.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>Доля кристаллитов (%), ориентация которых
+возмущается на каждом шаге уточнения
+подгонки преимущественной ориентации (LPO, Lattice Preferred
+Orientation). Больше = крупнее шаги; значение
+уменьшается при отжиге (×0.8) по мере сходимости подгонки.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Пороговое значение (%) для 'Num per Step': подгонка останавливается,
+когда параметр отжигается ниже этого уровня.</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>Угловой разброс (°) ориентационного смещения, применяемого
+на каждом шаге уточнения: полуширина, на которой
+плотность выбранной ориентации усиливается.
+Уменьшается при отжиге (×0.8) по мере заострения подгонки.</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Пороговое значение (°) для 'Directional density': подгонка
+останавливается, когда параметр отжигается ниже этого уровня.</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>Вероятность (%) того, что шаг уточнения повторно использует
+(«наследует») уже высокоплотную ориентацию,
+а не выбирает случайную; бо́льшие значения
+ведут подгонку к более острой текстуре.</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Пороговое значение (%) для 'Inheritability': подгонка
+останавливается, как только параметр превысит этот уровень.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси вращения Rx (Φ), в
+градусах в секунду (°/s). Более быстрое вращение
+усредняет по большему числу ориентаций в плоскости.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Диапазон колебаний (кивка) оси Ry
+(ω), в ± градусах вокруг центра.</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Диапазон колебаний (кивка) оси Ry
+(ω), в ± градусах вокруг центра.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Диапазон колебаний (кивка) оси Ry
+(ω), в ± градусах вокруг центра.</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Диапазон колебаний (кивка) оси Ry
+(ω), в ± градусах вокруг центра.</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя кивающей оси Ry
+(ω), в градусах в секунду (°/s).</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя кивающей оси Ry
+(ω), в градусах в секунду (°/s).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя кивающей оси Ry
+(ω), в градусах в секунду (°/s).</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Угловой шаг (°) колебания Ry (ω): приращение
+на одно продвижение ω во время сканирования; меньше даёт
+более тонкую выборку ориентаций, но более медленное моделирование.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Диапазон осцилляции (качания) оси Rz (θ),
+в ± градусах относительно центра; образец
+качается между −значением и +значением.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси качания Rz (θ),
+в градусах в секунду (°/с).</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси качания Rz (θ),
+в градусах в секунду (°/с).</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси качания Rz (θ),
+в градусах в секунду (°/с).</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Порядок зигзагообразного сканирования: θ (Rz) качается вперёд
+и назад, а ω (Ry) продвигается на каждом обороте, так что
+гониометр прочерчивает зигзагообразный путь в пространстве ориентаций.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Отладочный тест: построить дифракционную картину одной
+случайной ориентации для выбранных кристаллов.</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>Смоделировать поликристаллическую дифракционную картину с
+кольцами Дебая (порошковую) для выбранных кристаллов
+и показать её в текущей вкладке.</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>Загрузить ранее сохранённую настройку подгонки
+ориентаций (файл .setting).</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>Сохранить текущую настройку подгонки ориентаций
+(кристаллы, параметры и историю невязки)
+в файл .setting.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Запустить или остановить подгонку распределения ориентаций
+кристаллов (LPO, преимущественная ориентация решётки),
+чтобы смоделированная картина наилучшим образом совпадала
+с эталонными картинами. Нажмите снова для остановки.</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>Добавить измеренную эталонную дифракционную картину (изображение
+.ipa) в качестве цели подгонки. Она открывается в новой вкладке.</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>Удалить эталонную дифракционную картину,
+выбранную в списке (и её вкладку).</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>Список загруженных эталонных дифракционных
+картин. Выберите одну, чтобы переключиться на её вкладку.</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>Автоматически периодически сохранять настройку
+во время подгонки. (В настоящее время отключено.)</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>Автоматически уменьшать параметры подгонки,
+когда невязка перестаёт улучшаться достаточно
+быстро. (В настоящее время постоянно включено.)</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>Порог (0-1) для автоматического уменьшения параметров
+подгонки. Когда отношение наклона недавней невязки к более
+раннему (Rwp) падает ниже этого значения, параметры
+уменьшаются в 0,8 раза.</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Журнал подгонки только для чтения: прошедшее время, скорость
+(мс/шаг), число шагов, число успешных обновлений,
+невязка (%) и значение S.</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>Итеративно находить и удалять ориентации кристаллитов,
+которые не вносят вклад в дифракционную картину,
+оставляя только дающие вклад.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>Направление градиента отображения интенсивности: Positive
+показывает высокую интенсивность ярко, Negative инвертирует.</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Диапазон осцилляции (качания) оси Rz (θ),
+в ± градусах относительно центра.</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Диапазон осцилляции (качания) оси Rz (θ),
+в ± градусах относительно центра.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Диапазон осцилляции (качания) оси Rz (θ),
+в ± градусах относительно центра.</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Угловой шаг (°) осцилляции Ry (ω); меньшее значение даёт более
+тонкую выборку ориентаций, но замедляет моделирование.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси вращения Rx (Φ),
+в градусах в секунду (°/с).</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Скорость двигателя оси вращения Rx (Φ),
+в градусах в секунду (°/с).</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Угловой шаг (°) осцилляции Ry (ω).</value>
+  </data>
+</root>

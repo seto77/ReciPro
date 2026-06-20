@@ -139,4 +139,141 @@
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>能量標準差</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>執行蒙地卡羅模擬：在試樣中追蹤所
+設定數目的入射電子，然後更新
+統計值、分佈圖
+與 3D 軌跡視圖。</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>將 3D 視圖設為沿試樣表面法線方向
+觀看（已計入目前的傾斜角）。</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>將 3D 視圖設為沿 X 軸方向觀看，
+即試樣旋轉（傾斜）軸。</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>將 3D 視圖設為沿 Z 軸方向觀看，
+即沿入射束方向往下看。</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>在 3D 視圖中，除了後向散射的電子外，
+也繪製被試樣吸收（未後向散射）之
+電子的軌跡。</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>在 3D 軌跡視圖中顯示 X（紅）、Y（綠）與
+Z＝束方向（紫）的座標軸。</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>在後向散射電子脫離方向的立體投影圖
+（極圖）上，疊加顯示 ±X / ±Y / ±Z
+軸的位置。</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>在 3D 視圖中，於試樣表面繪製同心刻度圓
+作為距離參考（間距自動縮放，以 nm/µm
+標示）。</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>在 3D 視圖中，將每個後向散射電子的路徑
+延伸至表面之外，以顯示其脫離方向
+（依脫離能量著色）。</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>離開試樣表面的後向散射電子
+(BSE) 的平均脫離能量，單位 keV。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>離開試樣表面的後向散射電子
+(BSE) 的平均脫離能量，單位 keV。</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>後向散射係數 η：入射電子中以後向散射
+電子 (BSE) 形式從表面重新射出的比例，
+由蒙地卡羅模擬得出。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>後向散射係數 η：入射電子中以後向散射
+電子 (BSE) 形式從表面重新射出的比例，
+由蒙地卡羅模擬得出。</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>散射截面 σ_E：在入射能量下彈性散射的
+有效靶面積；數值越大表示散射越頻繁
+(nm²)。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>散射截面 σ_E：在入射能量下彈性散射的
+有效靶面積；數值越大表示散射越頻繁
+(nm²)。</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>彈性平均自由程 λ：在入射能量下電子
+於兩次彈性散射事件之間所行進的
+平均距離 (nm)。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>彈性平均自由程 λ：在入射能量下電子
+於兩次彈性散射事件之間所行進的
+平均距離 (nm)。</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>阻止本領 dE/ds：在入射能量下電子
+因非彈性碰撞而於單位路徑長度上
+所損失的能量 (eV/nm)。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>阻止本領 dE/ds：在入射能量下電子
+因非彈性碰撞而於單位路徑長度上
+所損失的能量 (eV/nm)。</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>欲模擬的電子軌跡數目 (100 至 1,000,000)。
+軌跡越多，統計越平滑，但計算所需時間
+越長。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>欲模擬的電子軌跡數目 (100 至 1,000,000)。
+軌跡越多，統計越平滑，但計算所需時間
+越長。</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>在 3D 視圖中欲繪製的軌跡數目上限 (1 至 100,000)。
+此項僅限制繪製，不影響模擬；數值越低可使
+3D 視圖保持流暢回應。</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>試樣表面相對於入射束的傾斜角
+(0 至 -90 度)。0 度＝表面法線沿束方向；
+傾斜會改變後向散射電子的產率
+與方向分佈。</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>依各方向後向散射電子的
+平均脫離能量 (keV)
+為立體投影圖著色。</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>依頻率為立體投影圖著色：
+即各方向脫離的
+後向散射電子的數目。</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>依各方向後向散射電子之
+脫離能量的標準差
+為立體投影圖著色。</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>狀態列：顯示上一次模擬中
+軌跡計算、繪圖與 3D 算繪
+各自所耗用的時間。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>入射電子能量（加速電壓），單位 keV。它
+設定用於軌跡、截面、平均自由程與
+阻止本領計算的束能量；能量越高，
+穿透越深。</value>
+  </data>
 </root>

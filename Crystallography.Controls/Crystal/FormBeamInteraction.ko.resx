@@ -140,4 +140,223 @@
   <data name="$this.Text" xml:space="preserve">
     <value>빔 상호작용</value>
   </data>
+  <data name="radioButtonXrayFs.ToolTip" xml:space="preserve">
+    <value>X선 원자 산란 인자 f(s)를 표시합니다. 이는 단일 원자가 탄성적으로 산란하는 진폭
+(전자 1개를 단위로 함)입니다.
+가로축은 s = sin(θ)/λ로 단위는 1/Å이며, 회절각이 커질수록 증가합니다. s = 0에서 이 값은
+원자 번호 Z(전체 전자 수)와 같고, 고각으로 갈수록 작아집니다.</value>
+  </data>
+  <data name="radioButtonElecAll.ToolTip" xml:space="preserve">
+    <value>아래의 세 곡선을 각각 자신의 최댓값으로 재조정하여 겹쳐 표시하므로, 한 그래프에서
+형태를 비교할 수 있습니다(절댓값은 표에서 확인하십시오).</value>
+  </data>
+  <data name="radioButtonAttenLinMu.ToolTip" xml:space="preserve">
+    <value>선형 감쇠 계수 µ = (µ/ρ)·ρ(단위: cm⁻¹)를 표시합니다.
+실제 밀도의 물질을 1센티미터 통과할 때마다의 감쇠량입니다.
+투과 강도는 I = I₀·exp(−µ·t)를 따르며(t는 경로 길이),
+1/µ는 빔 강도가 약 37%(1/e)로 떨어지는 거리에 해당합니다.</value>
+  </data>
+  <data name="numericBoxL_min.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 l의 최솟값
+(l min에서 l max까지 l step 간격으로 진행합니다).</value>
+  </data>
+  <data name="radioButtonElecIMFP.ToolTip" xml:space="preserve">
+    <value>IMFP — 비탄성 평균 자유 행로: 에너지를 잃는
+충돌 사이의 평균 간격.</value>
+  </data>
+  <data name="numericBoxK_step.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 k의 간격(증분).
+범위 0.001~1. 1 미만이면 분수 지수가 됩니다.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>탐침(방사선원)과 그 파장 / 에너지를 선택합니다.
+탐침은 X선, 전자, 중성자에서 선택할 수 있으며,
+전환하면 원자가 산란하는 방식과 사용 가능한 탭이
+바뀝니다.
+X선과 중성자에서는 파장 λ(또는 광자
+에너지)를, 전자에서는 가속 전압을 설정합니다.
+파장은 회절각을 결정하며, 이 화면의 모든
+계산에 사용됩니다.</value>
+  </data>
+  <data name="numericBoxK_min.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 k의 최솟값
+(k min에서 k max까지 k step 간격으로 진행합니다).</value>
+  </data>
+  <data name="checkBoxHideEquivalentPlane.ToolTip" xml:space="preserve">
+    <value>대칭 등가 반사를 숨깁니다. 결정의 대칭성으로 인해 여러 면 집합(예: 입방정 결정의 (100),
+(010), (001))은 물리적으로 동등하므로 정확히 같은 강도를 냅니다.
+선택하면 각 그룹의 대표 1개만, 그 중복도(몇 개의 등가면을 대표하는지)와 함께
+표시됩니다.</value>
+  </data>
+  <data name="colElecA.ToolTipText" xml:space="preserve">
+    <value>탄성 단면적 σ_el (NIST Mott 50 eV–36 keV, 36 keV 초과는
+차폐 Rutherford).</value>
+  </data>
+  <data name="radioButtonAttenMassMu.ToolTip" xml:space="preserve">
+    <value>질량 감쇠 계수 µ/ρ(단위: cm²/g)를 표시합니다.
+물질 1그램당 X선이 빔에서 얼마나 강하게 제거되는지(흡수와 산란에 의해)를
+나타내며, 물질이 얼마나 조밀하게 채워졌는지에는 의존하지 않습니다. 참조표에
+실리는 값이 바로 이것입니다.
+밀도 ρ를 곱하면 선형 계수 µ가 됩니다.</value>
+  </data>
+  <data name="radioButtonXrayFqSq.ToolTip" xml:space="preserve">
+    <value>xraylib로 두 가지 X선 양을 q = sin(θ)/λ에 대해 표시합니다:
+  F(q) - 코히어런트(탄성) 형태 인자. 굵은 곡선으로 그립니다.
+  S(q) - 비코히어런트(콤프턴) 산란 함수. 옅게 그립니다.
+이 둘은 산란이 저각의 코히어런트에서 고각의 비코히어런트로 옮겨가는 모습을 보여줍니다.
+xraylib를 사용할 수 없으면 비활성화됩니다.</value>
+  </data>
+  <data name="radioButtonElecRange.ToolTip" xml:space="preserve">
+    <value>비정(飛程, CSDA) — 전자가 멈출 때까지 이동하는 전체 경로 길이.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>테스트 모드에서 지수 l의 주사 범위: 최소·최대·간격.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>테스트 모드에서 지수 k의 주사 범위: 최소·최대·간격.</value>
+  </data>
+  <data name="numericBoxK_max.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 k가 도달하는 최댓값.</value>
+  </data>
+  <data name="labelModel.ToolTip" xml:space="preserve">
+    <value>원자 산란 인자(단일 원자가 각도에 따라 빔을 얼마나 강하게 산란하는지)를 계산하는 데
+사용할 식(매개변수화)을 선택합니다.
+선택지는 빔에 따라 바뀝니다: X선은 f(s) 또는 F(q)+S(q)를,
+전자는 Peng, Kirkland 또는 8-Gaussian 모델을 제공합니다.</value>
+  </data>
+  <data name="checkBoxTest.ToolTip" xml:space="preserve">
+    <value>테스트 모드를 켭니다. 물리적으로 허용되는 반사만이 아니라 임의 범위의
+h, k, l 지수(비정수=분수 값 포함)를 주사할 수 있는 패널이
+나타납니다.
+구조 인자의 거동을 확인하는 데 유용합니다. 일반적인 사용에서는 꺼 두십시오.</value>
+  </data>
+  <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
+    <value>반사 목록에 포함할 최소 면간 거리 d입니다. 이보다 면 간격이 가까운 반사(고
+회절각에 나타남)는 제외됩니다.
+컷오프를 낮추면 더 많은 고각 반사가 추가되고, 높이면 저각 반사만 남습니다.
+단위: 길이 단위 설정에 따라 nm 또는 Å.</value>
+  </data>
+  <data name="radioButtonElecSigma.ToolTip" xml:space="preserve">
+    <value>σ 탄성 — 탄성 산란 단면적: 단일 원자가 전자를
+편향시킬 가능성(클수록 더 많이 산란).</value>
+  </data>
+  <data name="numericBoxH_max.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 h가 도달하는 최댓값.</value>
+  </data>
+  <data name="radioButtonElectronPeng.ToolTip" xml:space="preserve">
+    <value>Peng의 매개변수화(5개의 가우스 함수의 합)를 사용한 전자의 원자 산란 인자
+fe(s)입니다. 기본값이며 일반적으로 좋은 선택입니다.
+전자의 경우 fe(s)는 원자의 정전 퍼텐셜과 관련되며, 여기에서의 단위는
+nm입니다.</value>
+  </data>
+  <data name="numericBoxH_min.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 h의 최솟값
+(h min에서 h max까지 h step 간격으로 진행합니다).</value>
+  </data>
+  <data name="comboBoxReflXAxis.ToolTip" xml:space="preserve">
+    <value>회절 피크 그래프의 가로축을 선택합니다. 세 가지 선택지는 동일한 반사 집합을
+나타내며, 가로축의 척도만 바뀝니다.
+  • 2θ — 산란각(도), 즉 빔이 얼마나 휘어지는가. 회절계가 직접
+    읽는 값입니다.
+  • d — 반사를 만드는 결정 격자면 사이의 간격
+    (큰 d = 저각 = 면 간격이 넓음).
+  • Q = 4π·sinθ/λ — '산란 벡터'(운동량 전달). 싱크로트론과
+    쌍분포함수 연구에서 흔히 사용. 큰 Q = 고각.</value>
+  </data>
+  <data name="checkBoxBragBrentano.ToolTip" xml:space="preserve">
+    <value>일반적인 분말 X선 회절계(Bragg-Brentano 집속 기하)에서 관측되는
+강도로 표시합니다.
+구조 인자 강도에 각도 의존 로런츠-편광 인자와 중복도를 곱하므로, 원시 |F|²이
+아니라 상대 피크 높이가 실제 분말 패턴과 일치합니다.
+이 모드에서는 금지 반사와 등가 반사가 자동으로 숨겨집니다.</value>
+  </data>
+  <data name="radioButtonAttenTrans.ToolTip" xml:space="preserve">
+    <value>투과율 T = exp(−µ·t)를 백분율로 표시합니다 — 아래 'Thickness t' 칸에서
+설정한 시료 두께 t에 대해, 흡수나 산란 없이 시료를 통과하는 X선 빔의
+비율입니다.
+100% = 시료가 빔에 투명; 0% = 빔이 완전히 차단됨.
+현재 에너지에서 적절한 시료 두께를 판단하는 데 사용하십시오.</value>
+  </data>
+  <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">
+    <value>'금지' 반사 — 서로 다른 원자에서 산란된 파가 상쇄되어 강도가 정확히 0이 되는
+반사 — 를 숨깁니다. 이러한 계통적 소멸은 결정의 대칭성(예: 체심 또는 면심
+격자)에서 비롯됩니다.
+선택을 해제하면 이 강도 0의 반사도, 그것을 금지시키는 소멸 규칙이 별도의 열에
+표시된 채로 함께 나열됩니다.</value>
+  </data>
+  <data name="numericBoxH_step.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 h의 간격(증분).
+범위 0.001~1. 1 미만이면 분수 지수가 됩니다.</value>
+  </data>
+  <data name="numericBoxL_step.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 l의 간격(증분).
+범위 0.001~1. 1 미만이면 분수 지수가 됩니다.</value>
+  </data>
+  <data name="radioButtonElecDeds.ToolTip" xml:space="preserve">
+    <value>|dE/ds| — 저지능의 크기: 전자가 1나노미터 이동할 때마다 잃는 에너지.</value>
+  </data>
+  <data name="buttonCopyClipboard.ToolTip" xml:space="preserve">
+    <value>반사 표 전체를 탭으로 구분된 텍스트로 클립보드에 복사합니다
+(현재 표시 중인 열만).
+Excel이나 텍스트 편집기에 그대로 붙여 넣을 수 있습니다.</value>
+  </data>
+  <data name="numericBoxL_max.ToolTip" xml:space="preserve">
+    <value>테스트 모드 주사에서 지수 l이 도달하는 최댓값.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>아래의 'max' 열은 테스트 모드 주사에 사용되는 h, k, l 지수의 상한을 설정합니다.</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.ToolTip" xml:space="preserve">
+    <value>8개의 가우스 함수 피팅에 의한 전자의 원자 산란 인자 fe(s)입니다.
+대안적인 매개변수화로, Peng·Kirkland와 비교하여 모델 선택이 결과에 얼마나 영향을
+미치는지 확인할 수 있습니다.</value>
+  </data>
+  <data name="checkBoxReflLog.ToolTip" xml:space="preserve">
+    <value>세로(강도) 축을 선형 척도와 로그 척도
+(…, ×0.01, ×0.1, ×1)로 전환합니다.
+회절 강도는 여러 자릿수에 걸쳐 있습니다: 몇몇 피크는 매우 강하고 대부분은
+약합니다. 선형 척도에서는 약한 피크가 기준선에 눌려 보이지 않지만,
+로그 척도는 아래쪽을 늘려 약한 피크도 볼 수 있게 합니다.</value>
+  </data>
+  <data name="numericBoxAttenThickness.ToolTip" xml:space="preserve">
+    <value>X선 투과율 계산 T = exp(-µ·t)에 사용되는 시료 두께입니다(µ는 선형 감쇠 계수,
+t가 이 두께).
+표의 'Transmission (t = ...)' 값과 투과율-에너지 곡선에 반영됩니다.
+단위: 마이크로미터(µm).</value>
+  </data>
+  <data name="radioButtonElecEMFP.ToolTip" xml:space="preserve">
+    <value>탄성 MFP — 평균 자유 행로: 탄성 산란 사건 사이에
+전자가 이동하는 평균 거리.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>현재 결정과 방사선에 대한 모든 회절 반사의 표입니다.
+각 행은 밀러 지수 (h k l)로 명명된 하나의 격자면 군입니다.
+열에는 중복도(대칭 등가면의 수), 면간 거리 d(면 사이의 거리), 회절각 2-theta,
+구조 인자(하나의 단위 격자가 산란하는 파의 진폭), 상대 강도, 그리고 소멸
+(반사 금지) 규칙이 포함됩니다. 왼쪽의 체크 박스를 사용해 대칭 등가 반사나
+금지 반사를 숨길 수 있습니다.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>테스트 모드에서 지수 h의 주사 범위: 최소·최대·간격.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>아래의 'step' 열은 테스트 모드 주사에서 연속하는 h, k, l 값 사이의 증분(0.001~1,
+1 미만이면 분수 지수)을 설정합니다.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>아래의 'min' 열은 테스트 모드 주사에 사용되는 h, k, l 지수의 하한을 설정합니다.</value>
+  </data>
+  <data name="checkBoxDebyeWaller.ToolTip" xml:space="preserve">
+    <value>산란 인자 곡선에 디바이-발러 인자 exp(-B·s²)를 곱합니다. 이는 원자의 열진동을
+반영하는 항입니다.
+진동하는 원자는 번져 보이기 때문에 겉보기 산란능은 고각에서 더 빨리 감소합니다.
+B는 결정 데이터에서 가져온 등방성 변위 매개변수(Biso)입니다. 이를 끄면 원자는
+정지 상태로 취급됩니다.</value>
+  </data>
+  <data name="radioButtonElectronKirkland.ToolTip" xml:space="preserve">
+    <value>Kirkland의 매개변수화(3개의 로런츠 함수와 3개의 가우스 함수)를 사용한 전자의
+원자 산란 인자 fe(s)입니다.
+큰 s까지 정확도가 유지되므로 고각 / 고분해능 영상 시뮬레이션 작업에서 흔히
+선호됩니다.</value>
+  </data>
 </root>

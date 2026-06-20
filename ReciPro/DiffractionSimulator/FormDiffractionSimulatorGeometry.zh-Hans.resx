@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>选择正片或负片梯度
+（负片会反转所叠加图像的
+显示强度刻度）。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>选择正片或负片梯度
+（负片会反转所叠加图像的
+显示强度刻度）。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>在对数刻度与线性刻度之间切换
+所叠加图像的强度映射。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>在对数刻度与线性刻度之间切换
+所叠加图像的强度映射。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>选择用于渲染所叠加图像的色阶
+（Gray、Cold-Warm、Spectrum 或 Fire）。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>选择用于渲染所叠加图像的色阶
+（Gray、Cold-Warm、Spectrum 或 Fire）。</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>调整叠加在衍射图案上的图像的
+不透明度（0-100%）。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>调整叠加在衍射图案上的图像的
+不透明度（0-100%）。</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>设置探测器上脚点（直射束中心）
+的 X 像素坐标。</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>设置探测器上脚点（直射束中心）
+的 Y 像素坐标。</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>以毫米为单位设置一个探测器像素的物理尺寸。</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>以像素为单位设置探测器尺寸（宽×高）。</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>清除已加载的叠加图像。</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>加载要叠加在衍射图案上的图像文件。</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>将叠加图像和探测器尺寸
+旋转 90 度。</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>显示已加载叠加图像的
+文件路径（只读）。</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>设置显示叠加图像的
+强度上限。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>设置显示叠加图像的
+强度上限。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>设置显示叠加图像的
+强度上限。</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>设置显示叠加图像的
+强度下限。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>设置显示叠加图像的
+强度下限。</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>勾选后，显示探测器几何的
+示意图。</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>以毫米为单位设置到探测器面的相机长度。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>以度为单位设置探测器
+倾斜轴的方位角 phi。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>以度为单位设置绕倾斜轴的
+探测器倾斜角 tau。</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>勾选后，在衍射图案上绘制
+探测器范围，并启用
+叠加图像的设置。</value>
+  </data>
+</root>

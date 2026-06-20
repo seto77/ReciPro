@@ -74,4 +74,55 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>中子</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>選擇發射特性 X射線的元素（1:H 至 98:Cf）。
+若選擇「0:custom」，您可自由輸入能量或波長。
+</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>使用 X射線作為波源（能量單位 keV）；
+啟用元素與特性譜線選擇器。</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>使用電子束作為波源（能量單位 keV）。</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>選擇特性 X射線發射譜線（例如
+Kα1、Kα2、Kβ1）；此將固定波長與能量。</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>輸入光束能量（X射線/電子為 keV，中子為
+meV）；波長會自動重新計算。</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>輸入光束能量（X射線/電子為 keV，中子為
+meV）；波長會自動重新計算。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>選擇發射特性 X射線的元素（1:H 至 98:Cf）。
+選擇「0:custom」可自由輸入能量
+或波長。</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>在此輸入波長（以 Å / nm 選項按鈕切換顯示單位）。
+光束能量會自動重新計算。</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>在此輸入波長（以 Å / nm 選項按鈕切換顯示單位）。
+光束能量會自動重新計算。</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>使用中子束作為波源（能量單位 meV）。</value>
+  </data>
+  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
+    <value>表示平坦白光（連續光譜）模式：
+使用均勻的寬頻光束，而非
+單一波長。</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>以奈米（nm）顯示波長。僅為顯示——物理波長與能量不變（1 nm = 10 Å）。</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>以埃（Å）顯示波長。僅為顯示——物理波長與能量不變（1 nm = 10 Å）。</value>
+  </data>
 </root>

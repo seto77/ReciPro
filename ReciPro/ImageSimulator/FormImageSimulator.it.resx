@@ -350,4 +350,538 @@ Simulator"</value>
   <data name="labelMousePositionValue.Text" xml:space="preserve">
     <value>Valore: </value>
   </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Arresta la simulazione in corso</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
+    <value>Se selezionato, l'intensità viene
+normalizzata per ciascuna immagine singolarmente.</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>Intensità minima (soglia inferiore) per la normalizzazione
+(attivata quando la casella Min a sinistra è selezionata).</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
+    <value>Intensità minima (soglia inferiore) per la normalizzazione
+(attivata quando la casella Min a sinistra è selezionata).</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>Intensità massima dell'immagine simulata.</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
+    <value>Intensità massima dell'immagine simulata.</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>Mostra solo gli elettroni TDS (thermal diffuse scattering,
+anelastici) nell'immagine STEM.</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>Mostra solo gli elettroni diffusi
+elasticamente nell'immagine STEM.</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
+    <value>Mostra sia gli elettroni elastici sia gli elettroni TDS
+(thermal diffuse scattering,
+anelastici) nell'immagine STEM.</value>
+  </data>
+  <data name="colorControlScale.ToolTip" xml:space="preserve">
+    <value>Colore della barra di scala</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>Colore della barra di scala</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
+    <value>Lunghezza della barra di scala in nm</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
+    <value>Lunghezza della barra di scala in nm</value>
+  </data>
+  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
+    <value>Mostra o nasconde la barra di scala sull'immagine
+simulata; lunghezza e colore sono
+impostati dai controlli di scala adiacenti.</value>
+  </data>
+  <data name="colorControlLabel.ToolTip" xml:space="preserve">
+    <value>Colore dell'etichetta</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>Colore dell'etichetta</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
+    <value>Imposta la dimensione del carattere dell'etichetta in punti</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
+    <value>Imposta la dimensione del carattere dell'etichetta in punti</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Mostra o nasconde etichette testuali quali condizioni
+dell'immagine e indici sull'immagine simulata;
+colore e dimensione del carattere si impostano nelle vicinanze.</value>
+  </data>
+  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
+    <value>Mostra o nasconde il contorno della cella elementare
+proiettata sull'immagine simulata, per mettere in relazione
+il contrasto dell'immagine con il reticolo cristallino.</value>
+  </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>Crea una serie di immagini con spessori diversi</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>Crea una serie di immagini con diversi valori di defocus</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>Risoluzione di campionamento angolare delle direzioni della sonda
+incidente (mrad). Valori più piccoli campionano la sonda
+STEM più finemente ma rallentano il calcolo.</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
+    <value>Risoluzione di campionamento angolare delle direzioni della sonda
+incidente (mrad). Valori più piccoli campionano la sonda
+STEM più finemente ma rallentano il calcolo.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
+    <value>Spessore della fetta (nm) usato nel calcolo dell'intensità
+degli elettroni TDS (thermal diffuse scattering,
+anelastici). Valori più piccoli migliorano l'accuratezza
+ma rallentano il calcolo.</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
+    <value>Spessore della fetta (nm) usato nel calcolo dell'intensità
+degli elettroni TDS (thermal diffuse scattering,
+anelastici). Valori più piccoli migliorano l'accuratezza
+ma rallentano il calcolo.</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
+    <value>Modello di immagine lineare a basso costo computazionale.
+Questo modello è adatto a campioni sottili
+per i quali vale l'approssimazione di oggetto a fase debole.
+</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
+    <value>Modello a coefficiente di trasmissione incrociata (TCC) ad alto costo computazionale.
+Questo modello va usato per oggetti a forte diffusione che
+eccitano molti fasci diffratti intensi.
+</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Dimensione dell'immagine da simulare in pixel</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Risoluzione dell'immagine simulata in picometri per pixel</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Risoluzione dell'immagine simulata in picometri per pixel</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
+Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Numero massimo di onde di Bloch usate nel metodo di Bethe.
+Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>Semiangolo di raccolta esterno del rivelatore STEM
+anulare (mrad); i segnali oltre questo angolo sono esclusi.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
+    <value>Semiangolo di raccolta esterno del rivelatore STEM
+anulare (mrad); i segnali oltre questo angolo sono esclusi.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
+    <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
+sfocano la sonda STEM e riducono il dettaglio fine dell'immagine.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>Semiangolo di convergenza della sonda incidente
+STEM (mrad); valori maggiori producono una sonda
+più stretta e cambiano il contrasto di diffrazione.</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>Semiangolo di convergenza della sonda incidente
+STEM (mrad); valori maggiori producono una sonda
+più stretta e cambiano il contrasto di diffrazione.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
+    <value>Semiangolo di raccolta interno del rivelatore STEM
+anulare (mrad); i segnali entro questo angolo sono esclusi.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
+    <value>Semiangolo di raccolta interno del rivelatore STEM
+anulare (mrad); i segnali entro questo angolo sono esclusi.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>Semiangolo dell'apertura obiettivo (mrad). Un'apertura
+più piccola taglia i fasci diffratti ad alto angolo e
+attenua il dettaglio ad alta risoluzione dell'immagine.</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
+    <value>Semiangolo dell'apertura obiettivo (mrad). Un'apertura
+più piccola taglia i fasci diffratti ad alto angolo e
+attenua il dettaglio ad alta risoluzione dell'immagine.</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>ΔV: la larghezza a metà altezza (FWHM)
+della dispersione di energia del fascio elettronico, in eV;
+insieme all'aberrazione cromatica Cc determina
+lo sparpagliamento cromatico del fuoco (sfocatura dell'immagine).</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
+    <value>ΔV: la larghezza a metà altezza (FWHM)
+della dispersione di energia del fascio elettronico, in eV;
+insieme all'aberrazione cromatica Cc determina
+lo sparpagliamento cromatico del fuoco (sfocatura dell'immagine).</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
+    <value>ΔV: la larghezza a metà altezza (FWHM)
+della dispersione di energia del fascio elettronico, in eV;
+insieme all'aberrazione cromatica Cc determina
+lo sparpagliamento cromatico del fuoco (sfocatura dell'immagine).</value>
+  </data>
+  <data name="numericBoxCc.ToolTip" xml:space="preserve">
+    <value>Coefficiente di aberrazione cromatica Cc
+della lente obiettivo (mm); valori maggiori
+aumentano la sfocatura dovuta alla dispersione di energia del fascio.</value>
+  </data>
+  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
+    <value>Coefficiente di aberrazione cromatica Cc
+della lente obiettivo (mm); valori maggiori
+aumentano la sfocatura dovuta alla dispersione di energia del fascio.</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
+    <value>β: semiangolo di illuminazione (mrad)
+ dovuto all'effetto delle dimensioni finite della sorgente</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
+    <value>β: semiangolo di illuminazione (mrad)
+ dovuto all'effetto delle dimensioni finite della sorgente</value>
+  </data>
+  <data name="numericBoxCs.ToolTip" xml:space="preserve">
+    <value>Coefficiente di aberrazione sferica Cs della
+lente obiettivo (mm); modella la CTF (funzione di
+trasferimento del contrasto) e il defocus di Scherzer.</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>Coefficiente di aberrazione sferica Cs della
+lente obiettivo (mm); modella la CTF (funzione di
+trasferimento del contrasto) e il defocus di Scherzer.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
+    <value>Defocus della lente obiettivo (nm). Variare il
+defocus sposta la CTF (funzione di trasferimento
+del contrasto) e il contrasto dell'immagine.</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>Defocus della lente obiettivo (nm). Variare il
+defocus sposta la CTF (funzione di trasferimento
+del contrasto) e il contrasto dell'immagine.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Tensione di accelerazione del TEM (microscopio elettronico
+a trasmissione), in kV; modifica la lunghezza
+d'onda degli elettroni e il contrasto dell'immagine.</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>Tensione di accelerazione del TEM (microscopio elettronico
+a trasmissione), in kV; modifica la lunghezza
+d'onda degli elettroni e il contrasto dell'immagine.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Defocus di Scherzer (nm), il defocus prossimo alla
+condizione ottimale di contrasto di fase calcolato dalla
+lunghezza d'onda attuale e dall'aberrazione sferica Cs.</value>
+  </data>
+  <data name="textBoxScherzer.ToolTip" xml:space="preserve">
+    <value>Defocus di Scherzer (nm), il defocus prossimo alla
+condizione ottimale di contrasto di fase calcolato dalla
+lunghezza d'onda attuale e dall'aberrazione sferica Cs.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Defocus di Scherzer (nm), il defocus prossimo alla
+condizione ottimale di contrasto di fase calcolato dalla
+lunghezza d'onda attuale e dall'aberrazione sferica Cs.</value>
+  </data>
+  <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
+    <value>HRTEM (microscopia elettronica a trasmissione ad
+alta risoluzione): simula un'immagine TEM a contrasto di fase
+per il cristallo, lo spessore e il defocus selezionati.</value>
+  </data>
+  <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
+    <value>STEM (microscopia elettronica a trasmissione a scansione):
+simula un'immagine a sonda scansionata usando l'angolo
+di convergenza e le impostazioni del rivelatore anulare.</value>
+  </data>
+  <data name="radioButton1.ToolTip" xml:space="preserve">
+    <value>STEM-EDX (microscopia elettronica a trasmissione a scansione
+con spettroscopia a dispersione di energia di raggi X): simula
+l'output STEM-EDX usando i controlli di calcolo STEM.</value>
+  </data>
+  <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
+    <value>Modalità potenziale: calcola il potenziale
+cristallino proiettato anziché applicare
+gli effetti di trasferimento dell'immagine TEM/STEM.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Spessore del campione.
+Questo valore viene ignorato quando è selezionata la modalità "Serial image".</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Spessore del campione.
+Questo valore viene ignorato quando è selezionata la modalità "Serial image".</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
+    <value>Se selezionato, l'immagine viene calcolata
+immediatamente man mano che il cristallo ruota.</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Esegue la simulazione dell'immagine con le impostazioni attuali di cristallo,
+microscopio, spessore, defocus e visualizzazione.</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
+    <value>Durante la simulazione di immagini in modalità
+seriale, salva ciascuna immagine singolarmente.</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
+    <value>Sovrastampa la cella elementare, le etichette
+e la barra di scala sull'immagine salvata.</value>
+  </data>
+  <data name="checkBoxCTF.ToolTip" xml:space="preserve">
+    <value>Mostra la finestra del grafico della funzione di trasferimento del contrasto (CTF),
+che traccia come le aberrazioni della lente e il defocus
+trasferiscono il contrasto dell'immagine in funzione della frequenza spaziale.</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Applica una sfocatura gaussiana (FWHM impostata a destra, in
+pm) all'immagine visualizzata per approssimare
+la risoluzione finita / la dispersione del punto.</value>
+  </data>
+  <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>Fissa il limite superiore di intensità per la normalizzazione al
+valore a destra, anziché usare il massimo dell'immagine.</value>
+  </data>
+  <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>Fissa il limite inferiore di intensità per la normalizzazione al
+valore a destra, anziché usare il minimo dell'immagine.</value>
+  </data>
+  <data name="checkBoxOpenAperture.ToolTip" xml:space="preserve">
+    <value>Rimuove l'apertura obiettivo (aperta / infinita);
+tutti i fasci diffratti contribuiscono all'immagine.</value>
+  </data>
+  <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
+    <value>Mostra Ug, il potenziale (elettrostatico)
+del cristallo responsabile della diffusione elastica.</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
+    <value>Mostra U'g, il potenziale immaginario (di assorbimento)
+derivante dal TDS (Thermal Diffuse Scattering).</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Seleziona la scala di colore usata per visualizzare l'immagine:
+scala di grigi o una mappa di colori freddo-caldo (blu-rosso).</value>
+  </data>
+  <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
+    <value>Numero di valori di defocus da generare
+in modalità seriale (through-focus).</value>
+  </data>
+  <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
+    <value>Defocus iniziale (nm; negativo = sottofuoco)
+per la serie seriale through-focus.</value>
+  </data>
+  <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
+    <value>Incremento di defocus (nm) tra immagini
+successive nella serie seriale through-focus.</value>
+  </data>
+  <data name="numericBoxGaussianBlurRadius.ToolTip" xml:space="preserve">
+    <value>Larghezza a metà altezza (FWHM, in pm) della
+sfocatura gaussiana applicata all'immagine visualizzata.</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.ToolTip" xml:space="preserve">
+    <value>Spostamento orizzontale (X) del centro dell'apertura
+obiettivo, in mrad (per imaging inclinato/in campo scuro).</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
+    <value>Spostamento verticale (Y) del centro dell'apertura
+obiettivo, in mrad (per imaging inclinato/in campo scuro).</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
+    <value>Mostra il potenziale cristallino (Ug /
+U'g) come immagini di modulo e fase.</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
+    <value>Mostra il potenziale cristallino (Ug /
+U'g) come immagini di parte reale e immaginaria.</value>
+  </data>
+  <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
+    <value>Modalità seriale: genera una serie di immagini variando
+a passi il defocus e/o lo spessore del campione
+(serie through-focus / through-thickness).</value>
+  </data>
+  <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
+    <value>Modalità singola: genera una sola immagine con le
+impostazioni attuali di defocus e spessore.</value>
+  </data>
+  <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
+    <value>Lista dei valori di defocus (nm) da simulare; compilata automaticamente
+da Start/Step/Num ma modificabile a mano.</value>
+  </data>
+  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
+    <value>Raggio esterno del rivelatore STEM (microscopia
+elettronica a trasmissione a scansione) in
+unità reciproche (nm⁻¹), convertito dall'angolo di raccolta
+esterno del rivelatore. Sola lettura.</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Raggio esterno del rivelatore STEM (microscopia
+elettronica a trasmissione a scansione) in
+unità reciproche (nm⁻¹), convertito dall'angolo di raccolta
+esterno del rivelatore. Sola lettura.</value>
+  </data>
+  <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
+    <value>Intensità di visualizzazione superiore (mappata sul bianco); aumentare/diminuire
+per impostare il tetto di contrasto dell'immagine mostrata.</value>
+  </data>
+  <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
+    <value>Intensità di visualizzazione inferiore (mappata sul nero); aumentare/diminuire
+per impostare la soglia di contrasto dell'immagine mostrata.</value>
+  </data>
+  <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
+    <value>Semiangolo di convergenza espresso come
+raggio nello spazio reciproco sin(theta)/lambda
+(nm^-1); si aggiorna automaticamente in base all'angolo
+di convergenza STEM. Sola lettura.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Semiangolo di convergenza espresso come
+raggio nello spazio reciproco sin(theta)/lambda
+(nm^-1); si aggiorna automaticamente in base all'angolo
+di convergenza STEM. Sola lettura.</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
+    <value>Dispone i valori di defocus lungo l'asse orizzontale
+della griglia di immagini seriali (lo spessore varia in verticale).</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
+    <value>Dispone i valori di spessore lungo l'asse orizzontale
+della griglia di immagini seriali (il defocus varia in verticale).</value>
+  </data>
+  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
+    <value>Angolo interno del rivelatore espresso come raggio nello
+spazio reciproco sin(theta)/lambda (nm^-1); si aggiorna
+dall'angolo interno del rivelatore STEM. Sola lettura.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Angolo interno del rivelatore espresso come raggio nello
+spazio reciproco sin(theta)/lambda (nm^-1); si aggiorna
+dall'angolo interno del rivelatore STEM. Sola lettura.</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.ToolTip" xml:space="preserve">
+    <value>Mostra solo il modulo (ampiezza) del potenziale
+cristallino complesso (coefficiente di Fourier Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
+    <value>Mostra sia il modulo sia la fase
+del potenziale cristallino complesso (Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
+    <value>Mostra solo la fase del potenziale cristallino complesso (Ug).</value>
+  </data>
+  <data name="textBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>Raggio dell'apertura obiettivo espresso come
+raggio nello spazio reciproco sin(theta)/lambda
+(nm^-1); sola lettura. Determina quali fasci
+passano attraverso l'apertura obiettivo HRTEM.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Raggio dell'apertura obiettivo espresso come
+raggio nello spazio reciproco sin(theta)/lambda
+(nm^-1); sola lettura. Determina quali fasci
+passano attraverso l'apertura obiettivo HRTEM.</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.ToolTip" xml:space="preserve">
+    <value>Mostra solo la parte immaginaria del potenziale cristallino
+complesso (Ug), ossia la componente di assorbimento.</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.ToolTip" xml:space="preserve">
+    <value>Mostra solo la parte reale del
+potenziale cristallino complesso (Ug).</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.ToolTip" xml:space="preserve">
+    <value>Mostra sia la parte reale sia la parte immaginaria
+del potenziale cristallino complesso (Ug).</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Apre una tabella che elenca i fasci diffratti
+(spot) che cadono entro l'apertura obiettivo.</value>
+  </data>
+  <data name="textBoxNumOfSpots.ToolTip" xml:space="preserve">
+    <value>Numero di fasci diffratti (spot) che cadono
+entro l'apertura obiettivo (sola lettura).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Numero di fasci diffratti (spot) che cadono
+entro l'apertura obiettivo (sola lettura).</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Apre una spiegazione del concetto di base
+alla base della simulazione di immagini HRTEM
+(microscopia elettronica in trasmissione ad alta risoluzione).</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.ToolTipText" xml:space="preserve">
+    <value>Scegli la libreria di calcolo: codice Native
+(C++/Eigen veloce) o codice Managed
+(.NET). Native è di solito più veloce.</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Scegli la libreria di calcolo: codice Native
+(C++/Eigen veloce) o codice Managed
+(.NET). Native è di solito più veloce.</value>
+  </data>
+  <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
+    <value>Numero di spessori (immagini)
+generati nella serie di immagini seriali.</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>Spessore iniziale del campione (nm) della serie di spessori
+per le immagini seriali. Combinato con Step e Num per
+costruire l'elenco di spessori qui sotto.</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Incremento di spessore (nm) tra immagini
+successive nella serie di immagini seriali.</value>
+  </data>
+  <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
+    <value>Elenco degli spessori del campione (nm) da simulare,
+un valore per riga. Compilato automaticamente da
+Start/Step/Num ma modificabile direttamente.</value>
+  </data>
+  <data name="checkBoxPreset.ToolTip" xml:space="preserve">
+    <value>Mostra o nasconde la finestra delle impostazioni predefinite,
+che memorizza e richiama le condizioni di imaging TEM.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Semiangoli di raccolta interno/esterno (mrad)
+del rivelatore anulare in campo scuro.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Scala di colore usata per mappare l'intensità dell'immagine (grigio o freddo-caldo).</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Semiangolo di convergenza α (mrad) della sonda STEM incidente.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Dimensione effettiva della sorgente di elettroni (σs, FWHM, in pm);
+modella la sfocatura da sorgente finita della sonda STEM.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Spessore del campione (nm). Questo valore viene ignorato
+quando è selezionata la modalità "Serial image".</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Scegli quale grandezza (defocus o spessore) varia
+lungo l'asse orizzontale della griglia di immagini seriali.</value>
+  </data>
 </root>
