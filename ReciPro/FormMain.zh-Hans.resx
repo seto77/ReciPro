@@ -262,7 +262,7 @@
     <value>帮助（网页）</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
-    <value>  束流
+    <value>  射束
   相互作用</value>
   </data>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
@@ -430,7 +430,7 @@ STEM 为扫描透射电子显微镜。</value>
     <value>将选定的晶体上移</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>打开束流相互作用</value>
+    <value>打开射束相互作用</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>启用 Intel MKL 以加快矩阵

@@ -266,4 +266,13 @@ pour incliner le porte-échantillon vers cette direction.</value>
     <value>Lorsque cette case est cochée, génère aussi les axes
 de zone équivalents par symétrie pour chaque indice.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fond</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>Axes généraux</value>
+  </data>
 </root>

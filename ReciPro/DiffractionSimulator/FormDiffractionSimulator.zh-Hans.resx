@@ -744,7 +744,7 @@ Ewald 球的程度。</value>
     <value>设置 Top（上）方向引导箭头的颜色。</value>
   </data>
   <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
-    <value>设置束流方向引导箭头的颜色。</value>
+    <value>设置射束方向引导箭头的颜色。</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
     <value>设置 3D 视图中指数/标签文字的颜色。</value>
@@ -1056,5 +1056,44 @@ mm（原点：图样垂足）。</value>
     <value>X射线进动模式（ZOLZ，零阶劳厄带）：
 以极投影方式显示零层倒易点阵平面，
 与电子 PED 模式不同。</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>直射斑点位置</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>菊池线颜色</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>德拜环颜色</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>方位角刻度线</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>2θ 刻度线</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
+    <value>靠近 Ewald 球的斑点</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
+    <value>远离 Ewald 球的斑点</value>
+  </data>
+  <data name="colorControl3D_Background.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
+    <value>Ewald 球</value>
+  </data>
+  <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
+    <value>原点</value>
+  </data>
+  <data name="colorControl3D_lText.FooterText" xml:space="preserve">
+    <value>文字</value>
   </data>
 </root>

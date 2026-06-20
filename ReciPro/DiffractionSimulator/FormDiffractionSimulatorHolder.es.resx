@@ -266,4 +266,13 @@ para inclinar el portamuestras hacia esa dirección.</value>
     <value>Cuando está marcado, también genera ejes de
 zona equivalentes por simetría para cada índice.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Soporte</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>Ejes generales</value>
+  </data>
 </root>

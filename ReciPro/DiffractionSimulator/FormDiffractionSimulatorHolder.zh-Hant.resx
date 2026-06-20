@@ -266,4 +266,13 @@ Tilt X/Y 值，並以所得姿態
     <value>勾選時，同時為每個指數產生
 對稱等效的晶帶軸。</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>樣品桿</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>一般軸</value>
+  </data>
 </root>

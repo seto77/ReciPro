@@ -415,7 +415,7 @@
     <value>晶體的名稱</value>
   </data>
   <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
-    <value>在另一個視窗中開啟束流相互作用資料。</value>
+    <value>在另一個視窗中開啟射束相互作用資料。</value>
   </data>
   <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
     <value>在另一個視窗中開啟對稱性的詳細資訊。</value>

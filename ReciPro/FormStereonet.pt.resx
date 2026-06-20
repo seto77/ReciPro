@@ -737,4 +737,16 @@ mais próximos da posição do cursor na figura de polos.</value>
     <value>Eixo de zona [uvw] e plano reticular (hkl)
 mais próximos da posição do cursor na figura de polos.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fundo</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Ponto</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Rótulo</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Cor</value>
+  </data>
 </root>

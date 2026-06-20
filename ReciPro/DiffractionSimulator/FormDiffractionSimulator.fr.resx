@@ -1035,4 +1035,52 @@ convergente/CBED, précession/PED, back-Laue).</value>
 affiche le plan du réseau réciproque de la couche zéro en
 projection polaire, distinct du mode PED en électrons.</value>
   </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>Position directe</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fond</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Couleur des lignes de Kikuchi</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>Couleur des anneaux de Debye</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>Ligne d'échelle azimutale</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>Ligne d'échelle 2θ</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
+    <value>Tache proche de la sphère d'Ewald</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
+    <value>Taches éloignées de la sphère d'Ewald</value>
+  </data>
+  <data name="colorControl3D_Background.FooterText" xml:space="preserve">
+    <value>Fond</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
+    <value>Sphère d'Ewald</value>
+  </data>
+  <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
+    <value>Origine</value>
+  </data>
+  <data name="colorControl3D_lText.FooterText" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>Taches générales</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>Taches éteintes (hélic./gliss.)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>Taches éteintes (centrage)</value>
+  </data>
 </root>

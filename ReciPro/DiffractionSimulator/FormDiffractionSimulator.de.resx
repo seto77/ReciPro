@@ -1051,4 +1051,52 @@ konvergent/CBED, Präzession/PED, Rück-Laue).</value>
 zeigt die reziproke Gitterebene der Nullschicht als
 Polarprojektion, im Unterschied zum Elektronen-PED-Modus.</value>
   </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>Direkte Position</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Kikuchi-Linienfarbe</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>Debye-Ring-Farbe</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>Azimut-Maßstabslinie</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>2θ-Maßstabslinie</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
+    <value>Spot nahe Ewald-Kugel</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
+    <value>Spot fern der Ewald-Kugel</value>
+  </data>
+  <data name="colorControl3D_Background.FooterText" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
+    <value>Ewald-Kugel</value>
+  </data>
+  <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
+    <value>Ursprung</value>
+  </data>
+  <data name="colorControl3D_lText.FooterText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>Allgemeine Reflexe</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>Ausgelöscht (Schraube/Gleit.)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>Ausgelöscht (Zentrierung)</value>
+  </data>
 </root>

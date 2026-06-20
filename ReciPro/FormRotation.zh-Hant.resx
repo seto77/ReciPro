@@ -110,7 +110,7 @@
     <value>旋轉幾何</value>
   </data>
   <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
-    <value>將視線方向設定為平行於束流方向</value>
+    <value>將視線方向設定為平行於射束方向</value>
   </data>
   <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
     <value>將視線方向設定為等角投影</value>

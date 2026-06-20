@@ -263,4 +263,13 @@
     <value>선택하면 각 지수에 대해 대칭 등가
 정대축도 함께 생성합니다.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>배경</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>홀더</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>일반 축</value>
+  </data>
 </root>

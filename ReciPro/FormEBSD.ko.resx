@@ -601,4 +601,13 @@ Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
     <value>정방 Lambert 마스터 패턴 격자의
 분해능(한 변당 픽셀 수, 64~2048)입니다.</value>
   </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>배경색</value>
+  </data>
 </root>

@@ -427,7 +427,7 @@
     <value>將選取的晶體上移</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>開啟「束流交互作用」</value>
+    <value>開啟「射束交互作用」</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>啟用 Intel MKL 以加速矩陣計算。

@@ -737,4 +737,16 @@ die der Cursorposition auf dem Stereonetz am nächsten liegen.</value>
     <value>Zonenachse [uvw] und Netzebene (hkl),
 die der Cursorposition auf dem Stereonetz am nächsten liegen.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Punkt</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Beschriftung</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
 </root>

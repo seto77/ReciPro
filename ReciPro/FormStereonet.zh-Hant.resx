@@ -737,4 +737,16 @@ Ewald 球繞射列表的輻射源（電子/X射線等）
     <value>顯示極圖上最接近游標位置的
 晶帶軸 [uvw] 與晶面 (hkl)。</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>點</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>標籤</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
 </root>

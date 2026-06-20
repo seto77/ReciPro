@@ -266,4 +266,13 @@ para inclinar o porta-amostra naquela direção.</value>
     <value>Quando marcado, também gera os
 eixos de zona equivalentes por simetria para cada índice.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fundo</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Suporte</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>Eixos gerais</value>
+  </data>
 </root>

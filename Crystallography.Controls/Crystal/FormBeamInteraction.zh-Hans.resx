@@ -138,7 +138,7 @@
     <value>荧光</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>束流相互作用</value>
+    <value>射束相互作用</value>
   </data>
   <data name="radioButtonXrayFs.ToolTip" xml:space="preserve">
     <value>绘制 X射线原子散射因子 f(s)——即振幅（以一个电子为单位），
@@ -155,7 +155,7 @@
     <value>绘制线性衰减系数 µ = (µ/ρ)·ρ（单位：cm⁻¹）。
 这是实际材料在其真实密度下每厘米的衰减量。
 透射强度遵循 I = I₀·exp(−µ·t)，其中 t 为路径长度，
-1/µ 是束流强度衰减到约 37%（1/e）所经过的距离。</value>
+1/µ 是射束强度衰减到约 37%（1/e）所经过的距离。</value>
   </data>
   <data name="numericBoxL_min.ToolTip" xml:space="preserve">
     <value>测试模式扫描中指数 l 的最小值
@@ -198,7 +198,7 @@
   </data>
   <data name="radioButtonAttenMassMu.ToolTip" xml:space="preserve">
     <value>绘制质量衰减系数 µ/ρ（单位：cm²/g）。
-它衡量材料每克对束流中 X射线的去除
+它衡量材料每克对射束中 X射线的去除
 强度（通过吸收和散射），因此不依赖于材料的堆积密实程度。
 这是参考表中所列的值。
 将它乘以密度 ρ 即得到线性系数 µ。</value>
@@ -224,8 +224,8 @@
   </data>
   <data name="labelModel.ToolTip" xml:space="preserve">
     <value>选择用于计算原子散射因子的公式（参数化）——
-即单个原子作为角度的函数对束流散射的强弱。
-可选项随束流改变：X射线提供 f(s) 或 F(q)+S(q)；
+即单个原子作为角度的函数对射束散射的强弱。
+可选项随射束改变：X射线提供 f(s) 或 F(q)+S(q)；
 电子提供 Peng、Kirkland 或 8-Gaussian 模型。</value>
   </data>
   <data name="checkBoxTest.ToolTip" xml:space="preserve">
@@ -260,7 +260,7 @@ fe(s)。这是默认值，也是良好的通用选择。
   <data name="comboBoxReflXAxis.ToolTip" xml:space="preserve">
     <value>选择衍射峰图的横轴。这三个选项
 描述的是同一组衍射；只是横轴比例发生变化。
-  • 2θ——散射角（度），即束流被弯折的程度。这正是
+  • 2θ——散射角（度），即射束被弯折的程度。这正是
     衍射仪直接读取的值。
   • d——产生该衍射的晶体点阵晶面之间的间距
     （d 大 = 低角 = 晶面相距远）。
@@ -278,7 +278,7 @@ fe(s)。这是默认值，也是良好的通用选择。
   <data name="radioButtonAttenTrans.ToolTip" xml:space="preserve">
     <value>以百分比绘制透射率 T = exp(−µ·t)——对于下方“Thickness t”框中
 设定的试样厚度 t，X射线束未被吸收或散射而穿过试样的比例。
-100% = 试样对束流透明；0% = 束流被完全阻挡。
+100% = 试样对射束透明；0% = 射束被完全阻挡。
 用它在当前能量下判断合理的试样厚度。</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">

@@ -138,7 +138,7 @@
     <value>螢光</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>束流交互作用</value>
+    <value>射束交互作用</value>
   </data>
   <data name="radioButtonXrayFs.ToolTip" xml:space="preserve">
     <value>繪製 X 射線原子散射因子 f(s) — 單一原子彈性散射的振幅
@@ -155,7 +155,7 @@
     <value>繪製「線」性衰減係數 µ = (µ/ρ)·ρ（單位：cm⁻¹）。
 這是實際密度下材料每公分的衰減量。
 透射強度遵循 I = I₀·exp(−µ·t)，其中 t 為路徑長度，
-而 1/µ 為束流強度降至約 37%（1/e）所經的距離。</value>
+而 1/µ 為射束強度降至約 37%（1/e）所經的距離。</value>
   </data>
   <data name="numericBoxL_min.ToolTip" xml:space="preserve">
     <value>測試模式掃描中指數 l 的最小值
@@ -198,7 +198,7 @@ Rutherford 近似）。</value>
   </data>
   <data name="radioButtonAttenMassMu.ToolTip" xml:space="preserve">
     <value>繪製「質」量衰減係數 µ/ρ（單位：cm²/g）。
-它衡量材料每克將 X 射線從束流中移除（藉由
+它衡量材料每克將 X 射線從射束中移除（藉由
 吸收與散射）的強弱，因此與材料的堆積
 緊密程度無關。它即為參考表中所列之值。
 將其乘以密度 ρ 即得線性係數 µ。</value>
@@ -224,8 +224,8 @@ Rutherford 近似）。</value>
   </data>
   <data name="labelModel.ToolTip" xml:space="preserve">
     <value>選擇用於計算原子散射因子的公式（參數化）—
-即單一原子隨角度變化散射束流的強弱。
-可用選項隨束流而變：X 射線提供 f(s) 或 F(q)+S(q)；
+即單一原子隨角度變化對射束散射的強弱。
+可用選項隨射束而變：X 射線提供 f(s) 或 F(q)+S(q)；
 電子提供 Peng、Kirkland 或 8-Gaussian 模型。</value>
   </data>
   <data name="checkBoxTest.ToolTip" xml:space="preserve">
@@ -260,7 +260,7 @@ h, k, l 指數 — 包含非整數（分數）值 — 而不僅限於
   <data name="comboBoxReflXAxis.ToolTip" xml:space="preserve">
     <value>選擇繞射峰圖的橫軸。三個選項
 描述的是「同一」組繞射；僅橫軸刻度改變。
-  • 2θ — 散射角（度），即束流被彎折的程度。這是
+  • 2θ — 散射角（度），即射束被彎折的程度。這是
     繞射儀直接讀取之值。
   • d — 產生該繞射之晶體晶面間的間距
     （d 大 = 低角 = 晶面相距遠）。
@@ -278,8 +278,8 @@ h, k, l 指數 — 包含非整數（分數）值 — 而不僅限於
   <data name="radioButtonAttenTrans.ToolTip" xml:space="preserve">
     <value>以百分比繪製「透射率」T = exp(−µ·t) — 在下方「Thickness t」
 方塊所設的試樣厚度 t 下，未被吸收或散射而穿過試樣的
-X 射線束流比例。
-100% = 試樣對束流透明；0% = 束流被完全阻擋。
+X 射線射束比例。
+100% = 試樣對射束透明；0% = 射束被完全阻擋。
 用此可在目前能量下判斷合理的試樣厚度。</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">

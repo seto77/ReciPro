@@ -598,4 +598,13 @@ Spectrum, Fire) usada para asignar la intensidad al color.</value>
     <value>Resolución (píxeles por lado) de la cuadrícula
 cuadrada de Lambert del patrón maestro (64–2048).</value>
   </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Color de fondo</value>
+  </data>
 </root>

@@ -266,4 +266,13 @@ Tilt X/Y 值，并将由此得到的
     <value>勾选后，还会为每个指数生成
 晶体对称等效的晶带轴。</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>样品杆</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>一般轴</value>
+  </data>
 </root>

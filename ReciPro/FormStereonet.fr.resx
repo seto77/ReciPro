@@ -722,4 +722,16 @@ les plus proches de la position du curseur sur le canevas stéréographique.</va
     <value>Axe de zone [uvw] et plan réticulaire (hkl)
 les plus proches de la position du curseur sur le canevas stéréographique.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fond</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Étiquette</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
 </root>

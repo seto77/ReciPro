@@ -1049,4 +1049,52 @@ convergente/CBED, precessão/PED, back-Laue).</value>
 mostra o plano da rede recíproca da camada zero como uma
 projeção polar, distinto do modo PED de elétrons.</value>
   </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>Posição direta</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fundo</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Cor das linhas de Kikuchi</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>Cor dos anéis de Debye</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>Linha de escala azimutal</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>Linha de escala 2θ</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
+    <value>Ponto perto da esfera de Ewald</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
+    <value>Pontos longe da esfera de Ewald</value>
+  </data>
+  <data name="colorControl3D_Background.FooterText" xml:space="preserve">
+    <value>Fundo</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
+    <value>Esfera de Ewald</value>
+  </data>
+  <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
+    <value>Origem</value>
+  </data>
+  <data name="colorControl3D_lText.FooterText" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>Pontos gerais</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>Pontos extintos (paraf./desl.)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>Pontos extintos (centragem)</value>
+  </data>
 </root>

@@ -72,7 +72,7 @@
     <value>X軸（旋轉軸）</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Z軸（束流方向）</value>
+    <value>Z軸（射束方向）</value>
   </data>
   <data name="buttonSimulateBSE.Text" xml:space="preserve">
     <value>模擬</value>
@@ -586,5 +586,14 @@ Depth 欄。</value>
   <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>正方 Lambert 主圖樣網格的解析度
 （每邊像素數，64–2048）。</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景色</value>
   </data>
 </root>

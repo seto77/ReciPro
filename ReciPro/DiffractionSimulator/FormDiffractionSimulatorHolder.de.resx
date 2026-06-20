@@ -266,4 +266,13 @@ um den Halter in diese Richtung zu neigen.</value>
     <value>Wenn aktiviert, werden auch
 symmetrieäquivalente Zonenachsen für jeden Index erzeugt.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Halter</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>Allgemeine Achsen</value>
+  </data>
 </root>

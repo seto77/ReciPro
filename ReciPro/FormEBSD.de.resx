@@ -601,4 +601,13 @@ Fire), mit der die Intensität auf Farbe abgebildet wird.</value>
     <value>Auflösung (Pixel pro Seite) des quadratischen
 Lambert-Master-Pattern-Gitters (64–2048).</value>
   </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Hintergrundfarbe</value>
+  </data>
 </root>

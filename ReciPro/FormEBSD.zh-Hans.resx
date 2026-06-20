@@ -72,7 +72,7 @@
     <value>X轴（旋转轴）</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Z轴（束流方向）</value>
+    <value>Z轴（射束方向）</value>
   </data>
   <data name="buttonSimulateBSE.Text" xml:space="preserve">
     <value>模拟</value>
@@ -595,5 +595,14 @@ EBSD 图案能量切片 (keV)；
   <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>方形 Lambert 主图案网格的
 分辨率（每边像素数，64–2048）。</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景色</value>
   </data>
 </root>

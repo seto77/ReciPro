@@ -598,4 +598,13 @@ Spectrum, Fire) usada para mapear a intensidade para cor.</value>
     <value>Resolução (pixels por lado) da grade quadrada
 de Lambert do padrão mestre (64–2048).</value>
   </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Cor de fundo</value>
+  </data>
 </root>

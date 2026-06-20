@@ -1044,4 +1044,52 @@ convergente/CBED, precessione/PED, back-Laue).</value>
 mostra il piano del reticolo reciproco dello strato zero come
 proiezione polare, distinta dalla modalità PED elettronica.</value>
   </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>Posizione diretta</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Sfondo</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Colore delle linee di Kikuchi</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>Colore degli anelli di Debye</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>Linea scala azimutale</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>Linea scala 2θ</value>
+  </data>
+  <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
+    <value>Spot vicino alla sfera di Ewald</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
+    <value>Spot lontani dalla sfera di Ewald</value>
+  </data>
+  <data name="colorControl3D_Background.FooterText" xml:space="preserve">
+    <value>Sfondo</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
+    <value>Sfera di Ewald</value>
+  </data>
+  <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
+    <value>Origine</value>
+  </data>
+  <data name="colorControl3D_lText.FooterText" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>Spot generali</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>Spot estinti (vite/slitt.)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>Spot estinti (centratura)</value>
+  </data>
 </root>

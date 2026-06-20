@@ -598,4 +598,13 @@ Spectrum, Fire) usata per mappare l'intensità sul colore.</value>
     <value>Risoluzione (pixel per lato) della griglia
 quadrata di Lambert del master pattern (64–2048).</value>
   </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Colore</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>Colore</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Colore di sfondo</value>
+  </data>
 </root>

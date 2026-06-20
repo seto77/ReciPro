@@ -266,4 +266,13 @@ Tilt X/Y и использовать получившуюся
     <value>Если отмечено, также генерирует
 симметрийно-эквивалентные оси зоны для каждого индекса.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Держатель</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>Общие оси</value>
+  </data>
 </root>

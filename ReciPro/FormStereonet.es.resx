@@ -734,4 +734,16 @@ más próximos a la posición del cursor en la proyección estereográfica.</val
     <value>Eje de zona [uvw] y plano reticular (hkl)
 más próximos a la posición del cursor en la proyección estereográfica.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Punto</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Color</value>
+  </data>
 </root>

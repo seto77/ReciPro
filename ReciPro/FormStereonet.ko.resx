@@ -737,4 +737,16 @@ Ewald 구 반사 목록을 계산하는 데 사용할
     <value>입체 투영도에서 커서 위치에 가장 가까운
 정대축 [uvw]와 격자면 (hkl)을 표시합니다.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>배경</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>점</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>레이블</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>색</value>
+  </data>
 </root>

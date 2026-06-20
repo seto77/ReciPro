@@ -734,4 +734,16 @@ più vicini alla posizione del cursore sulla proiezione stereografica.</value>
     <value>Asse di zona [uvw] e piano reticolare (hkl)
 più vicini alla posizione del cursore sulla proiezione stereografica.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Sfondo</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Punto</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Etichetta</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Colore</value>
+  </data>
 </root>

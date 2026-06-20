@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonViewAlongBeam.Text" xml:space="preserve">
-    <value>沿束流方向视图</value>
+    <value>沿射束方向视图</value>
   </data>
   <data name="buttonViewIsometric.Text" xml:space="preserve">
     <value>等轴视图</value>
@@ -110,7 +110,7 @@
     <value>旋转几何</value>
   </data>
   <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
-    <value>将视线方向设为平行于束流方向</value>
+    <value>将视线方向设为平行于射束方向</value>
   </data>
   <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
     <value>将视线方向设为等角投影</value>

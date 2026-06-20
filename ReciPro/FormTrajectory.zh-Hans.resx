@@ -89,7 +89,7 @@
     <value>样品倾转</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>沿Z轴（=束流方向）</value>
+    <value>沿Z轴（=射束方向）</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>背散射电子系数，η</value>

@@ -737,4 +737,16 @@
     <value>Ось зоны [uvw] и плоскость решётки (hkl),
 ближайшие к положению курсора на стереограмме.</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>Точка</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>Подпись</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
 </root>

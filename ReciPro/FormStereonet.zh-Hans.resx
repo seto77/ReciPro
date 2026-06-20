@@ -732,4 +732,16 @@
     <value>显示极射赤面投影网上最接近光标位置的
 晶带轴 [uvw] 与晶面 (hkl)。</value>
   </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
 </root>
