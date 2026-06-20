@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D; // 260504Cl
 using System.Drawing.Text; // 260504Cl
 using System.Text.RegularExpressions; // 260427Cl
 using System.Windows.Forms;
+using static Crystallography.L10n; // 260620Cl 追加: コード側多言語化 Loc() (方式②, §3-B)
 
 namespace Crystallography.Controls;
 #endregion
@@ -30,6 +31,10 @@ public partial class FormSymmetryInformation : FormBase
     public FormSymmetryInformation()
     {
         InitializeComponent(); // (260426Ch)
+        // 260620Cl 追加: Localizable=false で英語直書きの静的ラベルをコード側 Loc() で多言語化 (方式②)。
+        // デザイナ表示は neutral 英語のままにしたいので実行時のみ適用する。
+        if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            LocalizeLabels();
     }
 
     /// <summary>
@@ -51,6 +56,57 @@ public partial class FormSymmetryInformation : FormBase
     {
         e.Cancel = true;
         Visible = false; // (260426Ch)
+    }
+    #endregion
+
+    #region ラベルの多言語化 (260620Cl 追加, 方式②)
+    /// <summary>
+    /// Designer.cs に英語直書き (Localizable=false) されている静的ラベルを、現在の UI カルチャの訳へ差し替える。
+    /// コンストラクタの InitializeComponent 直後に 1 回だけ呼ぶ (フォームは閉じても再利用するため再適用不要)。
+    /// 用語は出荷済みの <see cref="SymmetryControl"/> / <see cref="AtomControl"/> の訳に合わせ、結晶学用語は IUCr 準拠。
+    /// SF (Schoenflies) / HM (Hermann–Mauguin) / Hall の略号は各言語とも据置 (国際表記)。
+    /// LaTeX/単一軸文字/bmp・emf/実行時に流し込む labelLaTex* は対象外。
+    /// </summary>
+    private void LocalizeLabels()
+    {
+        // --- 共通ボタン / タブ見出し ---
+        buttonCopyElements.Text = buttonCopyPositions.Text =
+            Loc(en: "Copy", ja: "コピー", de: "Kopieren", fr: "Copier", es: "Copiar", pt: "Copiar", it: "Copia", ru: "Копировать", zhHans: "复制", zhHant: "複製", ko: "복사");
+        tabPageGeometrics.Text = Loc(en: "Geometrics Calculation", ja: "幾何計算", de: "Geometrische Berechnung", fr: "Calculs géométriques", es: "Cálculo geométrico", pt: "Cálculo geométrico", it: "Calcoli geometrici", ru: "Геометрические расчёты", zhHans: "几何计算", zhHant: "幾何計算", ko: "기하 계산");
+        tabPageWyckoff.Text = Loc(en: "Wyckoff Positions", ja: "ワイコフ位置", de: "Wyckoff-Lagen", fr: "Positions de Wyckoff", es: "Posiciones de Wyckoff", pt: "Posições de Wyckoff", it: "Posizioni di Wyckoff", ru: "Позиции Уайкоффа", zhHans: "Wyckoff 位置", zhHant: "Wyckoff 位置", ko: "와이코프 위치");
+        tabPageConditions.Text = Loc(en: "Conditions", ja: "反射条件", de: "Bedingungen", fr: "Conditions", es: "Condiciones", pt: "Condições", it: "Condizioni", ru: "Условия", zhHans: "衍射条件", zhHant: "條件", ko: "조건");
+
+        // --- Geometrics タブ: 計算結果ラベル ---
+        label40.Text = Loc(en: "The axis normal to both planes", ja: "両面に垂直な軸", de: "Achse senkrecht zu beiden Ebenen", fr: "L'axe normal aux deux plans", es: "Eje normal a ambos planos", pt: "O eixo normal a ambos os planos", it: "L'asse normale a entrambi i piani", ru: "Ось, перпендикулярная обеим плоскостям", zhHans: "同时垂直于两晶面的晶轴", zhHant: "垂直於兩晶面的晶軸", ko: "두 면에 수직인 축");
+        label42.Text = Loc(en: "The plane normal to both axes", ja: "両軸に垂直な面", de: "Ebene senkrecht zu beiden Achsen", fr: "Le plan normal aux deux axes", es: "Plano normal a ambos ejes", pt: "O plano normal a ambos os eixos", it: "Il piano normale a entrambi gli assi", ru: "Плоскость, перпендикулярная обеим осям", zhHans: "同时垂直于两晶轴的晶面", zhHant: "垂直於兩晶軸的晶面", ko: "두 축에 수직인 면");
+
+        // --- Wyckoff タブ: DataGridView 列見出し (Mult./Site Sym. は AtomControl の出荷済み訳に一致) ---
+        columnMultiplicityDataGridViewTextBoxColumn.HeaderText = Loc(en: "Mult.", ja: "多重度", de: "Mult.", fr: "Mult.", es: "Mult.", pt: "Mult.", it: "Molt.", ru: "Кратн.", zhHans: "多重性", zhHant: "多重度", ko: "중복도");
+        columnWyckoffLetterDataGridViewTextBoxColumn.HeaderText = Loc(en: "Wyck. Let.", ja: "記号", de: "Wyck.-Buchst.", fr: "Lettre Wyck.", es: "Let. Wyck.", pt: "Let. Wyck.", it: "Lett. Wyck.", ru: "Б. Уайк.", zhHans: "Wyck. 字母", zhHant: "Wyck. 字母", ko: "WP 기호");
+        columnSiteSymmetryDataGridViewTextBoxColumn.HeaderText = Loc(en: "Site Sym.", ja: "サイト対称性", de: "Lagesym.", fr: "Sym. site", es: "Sim. sitio", pt: "Sim. sítio", it: "Simm. sito", ru: "Симм. поз.", zhHans: "位置对称性", zhHant: "位置對稱", ko: "자리 대칭");
+        columnCoordinates1DataGridViewTextBoxColumn.HeaderText = Loc(en: "Coordinates", ja: "座標", de: "Koordinaten", fr: "Coordonnées", es: "Coordenadas", pt: "Coordenadas", it: "Coordinate", ru: "Координаты", zhHans: "坐标", zhHant: "座標", ko: "좌표");
+
+        // --- Conditions タブ ---
+        label49.Text = Loc(en: "Conditions limiting possible reflections", ja: "反射条件（系統的消滅則）", de: "Auslöschungsbedingungen", fr: "Conditions limitant les réflexions possibles", es: "Condiciones limitantes de las reflexiones posibles", pt: "Condições que limitam as reflexões possíveis", it: "Condizioni che limitano le riflessioni possibili", ru: "Условия, ограничивающие возможные отражения", zhHans: "可能衍射的限制条件", zhHant: "限制可能反射的條件", ko: "가능한 반사를 제한하는 조건");
+
+        // --- Space Group グループ (Space Group/Crystal System は SymmetryControl の出荷済み訳に一致) ---
+        groupBoxSpaceGroup.Text = Loc(en: "Space Group", ja: "空間群", de: "Raumgruppe", fr: "Groupe d'espace", es: "Grupo espacial", pt: "Grupo espacial", it: "Gruppo spaziale", ru: "Пространственная группа", zhHans: "空间群", zhHant: "空間群", ko: "공간군");
+        label8.Text = Loc(en: "SF symbol:", ja: "SF 記号:", de: "SF-Symbol:", fr: "Symbole SF :", es: "Símbolo SF:", pt: "Símbolo SF:", it: "Simbolo SF:", ru: "Символ SF:", zhHans: "SF 符号:", zhHant: "SF 符號：", ko: "SF 기호:");
+        label9.Text = Loc(en: "Hall symbol:", ja: "Hall 記号:", de: "Hall-Symbol:", fr: "Symbole Hall :", es: "Símbolo Hall:", pt: "Símbolo Hall:", it: "Simbolo Hall:", ru: "Символ Hall:", zhHans: "Hall 符号:", zhHant: "Hall 符號：", ko: "Hall 기호:");
+        label5.Text = Loc(en: "HM symbol (short):", ja: "HM 記号 (短縮):", de: "HM-Symbol (kurz):", fr: "Symbole HM (court) :", es: "Símbolo HM (corto):", pt: "Símbolo HM (curto):", it: "Simbolo HM (corto):", ru: "Символ HM (краткий):", zhHans: "HM 符号(简):", zhHant: "HM 符號（簡式）：", ko: "HM 기호 (단축형):");
+        label6.Text = Loc(en: "HM symbol (full):", ja: "HM 記号 (完全):", de: "HM-Symbol (voll):", fr: "Symbole HM (complet) :", es: "Símbolo HM (completo):", pt: "Símbolo HM (completo):", it: "Simbolo HM (completo):", ru: "Символ HM (полный):", zhHans: "HM 符号(全):", zhHant: "HM 符號（全式）：", ko: "HM 기호 (완전형):");
+        label.Text = Loc(en: "Crystal System:", ja: "結晶系:", de: "Kristallsystem:", fr: "Système cristallin :", es: "Sistema cristalino:", pt: "Sistema cristalino:", it: "Sistema cristallino:", ru: "Кристаллическая система:", zhHans: "晶系:", zhHant: "晶系：", ko: "결정계:");
+
+        // --- Point Group グループ ---
+        groupBoxPointGroup.Text = Loc(en: "Point Group", ja: "点群", de: "Punktgruppe", fr: "Groupe ponctuel", es: "Grupo puntual", pt: "Grupo pontual", it: "Gruppo puntuale", ru: "Точечная группа", zhHans: "点群", zhHant: "點群", ko: "점군");
+        label10.Text = Loc(en: "HM symbol:", ja: "HM 記号:", de: "HM-Symbol:", fr: "Symbole HM :", es: "Símbolo HM:", pt: "Símbolo HM:", it: "Simbolo HM:", ru: "Символ HM:", zhHans: "HM 符号:", zhHant: "HM 符號：", ko: "HM 기호:");
+        label11.Text = Loc(en: "SF symbol:", ja: "SF 記号:", de: "SF-Symbol:", fr: "Symbole SF :", es: "Símbolo SF:", pt: "Símbolo SF:", it: "Simbolo SF:", ru: "Символ SF:", zhHans: "SF 符号:", zhHant: "SF 符號：", ko: "SF 기호:");
+        label4.Text = Loc(en: "Number:", ja: "番号:", de: "Nummer:", fr: "Numéro :", es: "Número:", pt: "Número:", it: "Numero:", ru: "Номер:", zhHans: "序号:", zhHant: "編號：", ko: "번호:");
+
+        // --- Options グループ ---
+        label15.Text = Loc(en: "Options", ja: "オプション", de: "Optionen", fr: "Options", es: "Opciones", pt: "Opções", it: "Opzioni", ru: "Параметры", zhHans: "选项", zhHant: "選項", ko: "옵션");
+        label16.Text = Loc(en: "Direction", ja: "投影方向", de: "Richtung", fr: "Direction", es: "Dirección", pt: "Direção", it: "Direzione", ru: "Направление", zhHans: "方向", zhHant: "方向", ko: "방향");
+        label12.Text = Loc(en: "Copy format", ja: "コピー形式", de: "Kopierformat", fr: "Format de copie", es: "Formato de copia", pt: "Formato de cópia", it: "Formato di copia", ru: "Формат копирования", zhHans: "复制格式", zhHant: "複製格式", ko: "복사 형식");
     }
     #endregion
 
