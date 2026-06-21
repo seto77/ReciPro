@@ -6,3 +6,6 @@ pymdown-extensions>=10.8,<11
 mkdocs-glightbox>=0.4,<1
 # 260525Cl 追加: 旧 URL から新パスへのリダイレクト生成
 mkdocs-redirects>=1.2,<2
+# 260622Cl 追加: マニュアル多言語化 (folder mode・default en をルート出力・未訳は英語フォールバック)。
+#   プラグインは maintenance-mode のため <2 でなくパッチ版を固定 pin する (上限レンジでなく ==)。
+mkdocs-static-i18n==1.3.1

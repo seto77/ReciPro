@@ -14,6 +14,7 @@ using static System.Math;
 #endregion
 
 namespace ReciPro;
+
 public partial class FormImageSimulator : FormBase
 {
     #region プロパティ
@@ -24,7 +25,7 @@ public partial class FormImageSimulator : FormBase
 
     public ImageSimulatorSetting Setting { get => new("", this); set => value.Apply(this); }
     public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
- 
+
     public ImageModes ImageMode
     {
         get => radioButtonHRTEM.Checked ? ImageModes.HRTEM : radioButtonProjectedPotential.Checked ? ImageModes.POTENTIAL : ImageModes.STEM;
@@ -65,7 +66,7 @@ public partial class FormImageSimulator : FormBase
     public double DeltaVol { get => DeltaVolFWHM / 2 / Sqrt(2 * Log(2)); set => DeltaVolFWHM = value * 2 * Sqrt(2 * Log(2)); }
 
     /// <summary>電子の加速電圧の揺らぎ FWHM (kV)</summary>
-    public double DeltaVolFWHM { get => numericBoxDeltaV.Value / 1000; set => numericBoxDeltaV.Value = value * 1000;}
+    public double DeltaVolFWHM { get => numericBoxDeltaV.Value / 1000; set => numericBoxDeltaV.Value = value * 1000; }
 
     /// <summary>Δ</summary>
     public double Delta => Cc * DeltaVol / AccVol;
@@ -158,12 +159,12 @@ public partial class FormImageSimulator : FormBase
     public int LabelSize { get => numericBoxLabelFontSize.ValueInteger; set => numericBoxLabelFontSize.Value = value; }
     public bool ScaleBarVisible { get => checkBoxShowScale.Checked; set => checkBoxShowScale.Checked = value; }
     public double ScaleBarLength { get => numericBoxScaleLength.Value; set => numericBoxScaleLength.Value = value; }
-    
+
     public bool OverprintSymbols { get => toolStripMenuItemOverprintSymbols.Checked; set => toolStripMenuItemOverprintSymbols.Checked = value; }
     public bool SaveIndividually { get => toolStripMenuItemSaveIndividually.Checked; set => toolStripMenuItemSaveIndividually.Checked = value; }
 
     public bool GaussianBlurEnabled { get => checkBoxGaussianBlur.Checked; set => checkBoxGaussianBlur.Checked = value; }
-    public double GaussianBlurFWHM { get => numericBoxGaussianBlurRadius.Value;set=>numericBoxGaussianBlurRadius.Value = value; }
+    public double GaussianBlurFWHM { get => numericBoxGaussianBlurRadius.Value; set => numericBoxGaussianBlurRadius.Value = value; }
     #endregion
 
     #region HRTEM固有プロパティ
@@ -271,7 +272,7 @@ public partial class FormImageSimulator : FormBase
 
     public enum HRTEM_Modes { Quasi, TCC }
 
-    public enum STEM_ModeEnum { Both, Elastic, TDS}
+    public enum STEM_ModeEnum { Both, Elastic, TDS }
 
     #endregion フィールド
 
@@ -359,7 +360,7 @@ public partial class FormImageSimulator : FormBase
         Simulate();
     }
 
-    public void Simulate(bool sync =false)
+    public void Simulate(bool sync = false)
     {
         toolStripStatusLabel1.Text = "";
         toolStripProgressBar.Value = 0;
@@ -527,7 +528,7 @@ public partial class FormImageSimulator : FormBase
         {
             //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             GeneratePseudBitmap();
-          
+
 
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
@@ -569,18 +570,18 @@ public partial class FormImageSimulator : FormBase
         }
 
         FormMain.Crystal.Bethe.GetHRTEMImage(
-            BlochNum, 
-            AccVol, 
-            FormMain.Crystal.RotationMatrix, 
+            BlochNum,
+            AccVol,
+            FormMain.Crystal.RotationMatrix,
             (HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY),
-            ImageSize, 
-            ImageResolution, 
-            Cs, 
-            HRTEM_Beta, 
-            Delta, 
-            ThicknessArray, 
-            DefocusArray, 
-            HRTEM_Mode == HRTEM_Modes.Quasi, 
+            ImageSize,
+            ImageResolution,
+            Cs,
+            HRTEM_Beta,
+            Delta,
+            ThicknessArray,
+            DefocusArray,
+            HRTEM_Mode == HRTEM_Modes.Quasi,
             Native);
 
         var temp = sw1.ElapsedMilliseconds;
@@ -1197,7 +1198,7 @@ public partial class FormImageSimulator : FormBase
     }
     public enum FormatEnum { Meta, PNG, TIFF }
     public enum ActionEnum { Save, Copy }
-    public void Save(FormatEnum format, ActionEnum action, string _filename=null)
+    public void Save(FormatEnum format, ActionEnum action, string _filename = null)
     {
         if (pictureBoxes != null && pictureBoxes.Length != 0)
         {
@@ -1268,9 +1269,9 @@ public partial class FormImageSimulator : FormBase
                     return;
             }
             //
-            if(action== ActionEnum.Save)
+            if (action == ActionEnum.Save)
             {
-                if (!Path.Exists(Path.GetDirectoryName(filename))) 
+                if (!Path.Exists(Path.GetDirectoryName(filename)))
                     return;
                 if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png"))
                     filename += ".png";
@@ -1373,8 +1374,10 @@ public partial class FormImageSimulator : FormBase
         // 260604Cl hrtem.pdf の同梱・表示を廃止。GitHub Pages の HRTEM像形成 付録を既定ブラウザで開く。
         //var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         //new FormPDF(appPath + @"\doc\hrtem.pdf").ShowDialog();
-        var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
-        Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/hrtem/") { UseShellExecute = true });
+        // 260622Cl: ja/en 二値＋旧 a2-bloch-wave 名を、HelpBaseUrl() (HelpCulture 駆動) ＋現行 a3-bloch-wave へ統一。
+        Process.Start(new ProcessStartInfo($"{FormMain.HelpBaseUrl()}appendix/a3-bloch-wave/hrtem/") { UseShellExecute = true });
+        //var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en"; // 260622Cl 旧
+        //Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/hrtem/") { UseShellExecute = true });
     }
 
 
@@ -1558,5 +1561,9 @@ public partial class FormImageSimulator : FormBase
     }
     #endregion
 
+    private void radioButtonPotentialShowPhase_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
 

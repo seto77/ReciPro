@@ -1,4 +1,9 @@
 # 260525Ch: MkDocs Material configuration for the GitHub Pages manual.
+# 260622Cl: 多言語化のため mkdocs-static-i18n (folder mode) へ移行。
+#   - en を default locale としてサイトルート (/ReciPro/) へ、ja を /ReciPro/ja/ へ出力。
+#   - 未訳ページは fallback_to_default で英語本文をローカライズ URL に自動生成 (ページ単位の増分公開)。
+#   - 言語切替は reconfigure_material が Material のセレクタを現在ページ基準で自動構成 (旧 language_switch.js は廃止)。
+#   詳細・設計判断は .project-guidance/ReciPro_Pages多言語化計画.md。
 site_name: ReciPro Manual
 site_description: ReciPro user manual
 site_url: https://seto77.github.io/ReciPro/
@@ -13,24 +18,20 @@ use_directory_urls: true
 theme:
   name: material
   language: en
+  custom_dir: overrides   # 260622Cl: 未訳=英語フォールバックを知らせるバナー (overrides/main.html)
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    # 260525Cl: navigation.sections / navigation.expand を外し、左ナビを「折り畳み可能＋インデント」表示にする。
-    #   旧構成 (sections + expand) は入れ子グループを常時展開のセクション見出しにし、全項目が同一階層で羅列されて見にくかった。
-    # 260525Cl: navigation.indexes でセクション見出し自体を概要ページへのリンクにする (独立した「概要」項目を無くす)。
-    #   MkDocs は file.name=='index' のページしか section index と認識しない (Page.is_index) ため、
-    #   概要ページは docs/src/<lang>/<slug>/index.md の形に置いている (frontmatter で title を付与)。
-    # - navigation.sections   # 260525Cl 除去
-    # - navigation.expand     # 260525Cl 除去
+    # 260622Cl: navigation.tabs / navigation.tabs.sticky は言語タブ用途だったため撤去。
+    #   多言語化後は言語選択をヘッダーのセレクタ (static-i18n が構成) に一本化し、
+    #   nav は 1 言語ぶん (章立て) を左サイドバーに出す。
+    # 260525Cl: navigation.indexes でセクション見出し自体を概要ページ (index.md) へのリンクにする。
     - navigation.indexes
-    - navigation.footer    # 260525Cl: 前/次ページリンクを本文下部に表示 (手書きの本文内ナビ行は廃止)
+    - navigation.footer    # 前/次ページリンクを本文下部に表示
     - navigation.top
     - search.highlight
     - search.share
     - content.code.copy
-    - content.code.annotate   # 260525Cl 追加: コード内に丸数字の注釈マーカーを置ける (マクロ例の解説用)
-    - content.action.edit     # 260525Cl 追加: 各ページに GitHub 編集リンクを表示 (edit_uri 設定済み・認証は GitHub 側が処理)
+    - content.code.annotate
+    - content.action.edit
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -47,56 +48,86 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 
+# 260622Cl: 旧英語 URL (/en/<slug>/) → 新ルート URL (/<slug>/) 互換の stub を post-build で生成。
+#   mkdocs-redirects は static-i18n 再ホーム後のルート URL を target にできない (実測) ため、英語の /en/ 互換は
+#   このフックが担当する。JA リネーム履歴は下の redirects プラグインが担当 (責務分離)。
+hooks:
+  - hooks/legacy_en_redirects.py
+
 plugins:
   - search:
       lang:
         - en
         - ja
-  # 260525Cl 追加: スクリーンショットをクリックで拡大表示 (ライトボックス)。mkdocs-glightbox が必要。
   - glightbox
-  # 260525Cl 追加: manual 再編 (260525) より前のフラットなページ URL を新パスへ 301 相当でリダイレクトし、
-  #   過去に公開済みの旧 URL の 404 を防ぐ。mkdocs-redirects が必要。キー=旧パス / 値=新パス (いずれも src 相対)。
+  # 260622Cl: 多言語化プラグイン。languages は en (default=ルート出力) / ja。新言語はここに 1 行ずつ追加していく。
+  #   redirects より前に置く: redirects (JA リネーム履歴) は i18n 適用後のファイル URL を解決する必要がある。
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: ja
+          name: 日本語
+          build: true
+          nav_translations:
+            Home: ホーム
+            0. Main window: 0. メインウィンドウ
+            1. Crystal database: 1. 結晶データベース
+            2. Symmetry information: 2. 対称性情報
+            3. Beam interaction: 3. ビーム相互作用
+            4. Rotation Geometry: 4. 回転ジオメトリ
+            5. Structure viewer: 5. 結晶構造ビューア
+            6. Stereonet: 6. ステレオネット
+            7. Diffraction simulator: 7. 回折シミュレータ
+            7.1. SAED simulation: 7.1. SAEDシミュレーション
+            7.2. PED simulation: 7.2. PEDシミュレーション
+            7.3. CBED simulation: 7.3. CBEDシミュレーション
+            "7.4. X-ray / neutron diffraction": 7.4. X線・中性子線回折シミュレーション
+            8. Electron trajectory: 8. 電子飛程
+            9. HRTEM/STEM simulator: 9. HRTEM/STEMシミュレータ
+            9.1. HRTEM simulation: 9.1. HRTEMシミュレーション
+            9.2. STEM simulation: 9.2. STEMシミュレーション
+            9.3. Potential simulation: 9.3. ポテンシャルシミュレーション
+            12. EBSD simulation: 12. EBSDシミュレーション
+            20. Macro: 20. マクロ
+            20.1. Built-in functions: 20.1. 組み込み関数一覧
+            20.2. Examples: 20.2. マクロの使用例
+            21. Keyboard & mouse shortcuts: 21. キーボード・マウスショートカット
+            Appendix: 付録
+            How to use (videos): How to use（動画）
+            "Appendix A1. Coordinate systems": Appendix A1. 座標系の定義
+            A1.1. Basic coordinate system and crystal orientation: A1.1. 基本座標系と結晶方位の定義
+            A1.2. Coordinate system for diffraction simulation: A1.2. 回折シミュレーションにおける座標系の定義
+            "Appendix A2. Beam interaction (solid-state background)": Appendix A2. ビーム相互作用（固体物理的背景）
+            A2.1. Atomic scattering factors: A2.1. 原子散乱因子
+            A2.2. Structure factor: A2.2. 構造因子
+            "A2.3. Attenuation & transport": A2.3. 減衰・輸送
+            A2.4. Fluorescence: A2.4. 蛍光
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": Appendix A3. 動力学回折（Bloch波法）
+            A3.1. Dynamical calculation: A3.1. 動力学計算
+            A3.2. HRTEM image formation: A3.2. HRTEM 像形成
+            Troubleshooting: トラブルシューティング
+  # 260622Cl: 日本語ページのリネーム/移動履歴の redirect。JA は /ja/ 配下のままなので value (ja/新.md) が
+  #   正しいルート URL に解決される。英語 (/en/) 系は legacy_en_redirects.py フックが担当するため入れない。
+  #   i18n の後に置くこと (i18n 適用後の File URL を解決させるため)。
+  #   罠: 'foo.md':'foo/index.md' 形の自己ループ redirect を張らない (use_directory_urls で同一 URL)。
   - redirects:
       redirect_maps:
-        # 260526Cl: メインウィンドウは EN/JA とも単一フラットページ (0-main-window.md) に統合。
-        #   crystal-orientation-control の旧サブページ URL (本日公開) はフラットページへリダイレクトする。
-        #   ※ '…/0-main-window/index.md' → '…/0-main-window.md' は張らない: use_directory_urls では
-        #     両者が同一 URL /0-main-window/ になり自己参照 meta-refresh = 無限リロードになるため (方針 §5)。
-        'en/0-1-crystal-orientation-control.md': 'en/0-main-window.md'
-        'en/0-main-window/1-crystal-orientation-control.md': 'en/0-main-window.md'
-        'ja/0-main-window/1-crystal-orientation-control.md': 'ja/0-main-window.md'
-        'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
-        'en/12-scattering-factor.md': 'en/3-beam-interaction.md'
-        'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
-        # 260526Cl/260602Cl: 7章を SAED(7.1)/PED(7.2)/CBED(7.3)/X線・中性子(7.4) の順へ再編。旧フラット/フォルダURLを現ファイル名へ。
-        'en/7-1-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
-        'en/7-2-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
-        'en/7-3-ped-simulation.md': 'en/7-diffraction-simulator/2-ped-simulation.md'
-        'en/7-4-cbed-simulation.md': 'en/7-diffraction-simulator/3-cbed-simulation.md'
-        'en/7-diffraction-simulator/2-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
-        # 260602Cl: 本日公開した繰り上げ前 (7.1=X線/7.2=SAED/7.3=PED/7.4=CBED) の URL を現ファイル名へ。
-        'en/7-diffraction-simulator/1-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
-        'en/7-diffraction-simulator/2-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
-        'en/7-diffraction-simulator/3-ped-simulation.md': 'en/7-diffraction-simulator/2-ped-simulation.md'
-        'en/7-diffraction-simulator/4-cbed-simulation.md': 'en/7-diffraction-simulator/3-cbed-simulation.md'
-        'en/8-1-hrtem-simulation.md': 'en/9-hrtem-stem-simulator/1-hrtem-simulation.md'
-        'en/8-2-stem-simulation.md': 'en/9-hrtem-stem-simulator/2-stem-simulation.md'
-        'en/8-3-potential-simulation.md': 'en/9-hrtem-stem-simulator/3-potential-simulation.md'
-        'en/8-hrtem-stem-simulator/index.md': 'en/9-hrtem-stem-simulator/index.md'
-        'en/13-electron-trajectory.md': 'en/8-electron-trajectory.md'
-        'en/10-1-spot-id-v2.md': 'en/11-spot-id-v2.md'
-        'en/14-ebsd-simulation.md': 'en/12-ebsd-simulation.md'
-        'en/20-1-built-in-functions.md': 'en/20-macro/1-built-in-functions.md'
-        'en/20-2-examples.md': 'en/20-macro/2-examples.md'
         'ja/11-symmetry-information.md': 'ja/2-symmetry-information.md'
         'ja/12-scattering-factor.md': 'ja/3-beam-interaction.md'
+        'ja/3-scattering-factor.md': 'ja/3-beam-interaction.md'
         'ja/3-rotation-geometry.md': 'ja/4-rotation-geometry.md'
         'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
         'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
         'ja/7-3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
         'ja/7-4-cbed-simulation.md': 'ja/7-diffraction-simulator/3-cbed-simulation.md'
         'ja/7-diffraction-simulator/2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
-        # 260602Cl: 本日公開した繰り上げ前の URL を現ファイル名へ。
         'ja/7-diffraction-simulator/1-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
         'ja/7-diffraction-simulator/2-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
         'ja/7-diffraction-simulator/3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
@@ -110,43 +141,19 @@ plugins:
         'ja/14-ebsd-simulation.md': 'ja/12-ebsd-simulation.md'
         'ja/20-1-built-in-functions.md': 'ja/20-macro/1-built-in-functions.md'
         'ja/20-2-examples.md': 'ja/20-macro/2-examples.md'
-        'en/appendix-a0-how-to-use.md': 'en/appendix/a0-how-to-use.md'
-        # 260526Cl: A1 を A1.1(基本座標系)/A1.2(回折) に分割。旧URL(統合A1・旧A2検出器)を新ページへ
-        'en/appendix-a1-coordinate-system.md': 'en/appendix/a1-coordinate-system/1-orientation.md'
-        'en/appendix/a1-coordinate-system.md': 'en/appendix/a1-coordinate-system/1-orientation.md'
-        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system/2-diffraction.md'
-        'en/appendix/a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system/2-diffraction.md'
         'ja/appendix-a0-how-to-use.md': 'ja/appendix/a0-how-to-use.md'
         'ja/appendix-a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system/1-orientation.md'
         'ja/appendix/a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system/1-orientation.md'
         'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
         'ja/appendix/a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
-        # 260526Cl: A2(概要)とA3(計算)を1つの bloch-wave セクションへ統合。旧URLを新ページへ
-        # 260608Cl: Bloch波 appendix を A2→A3 へ改番 (A2 は新設 beam-interaction を割当)。旧 a2-bloch-wave URL を a3 へ。
-        'en/appendix/a2-bloch-wave-method.md': 'en/appendix/a3-bloch-wave/index.md'
         'ja/appendix/a2-bloch-wave-method.md': 'ja/appendix/a3-bloch-wave/index.md'
-        'en/appendix/a3-bloch-wave-calculation.md': 'en/appendix/a3-bloch-wave/calculation.md'
         'ja/appendix/a3-bloch-wave-calculation.md': 'ja/appendix/a3-bloch-wave/calculation.md'
-        'en/appendix/a2-bloch-wave/index.md': 'en/appendix/a3-bloch-wave/index.md'
-        'en/appendix/a2-bloch-wave/calculation.md': 'en/appendix/a3-bloch-wave/calculation.md'
-        'en/appendix/a2-bloch-wave/hrtem.md': 'en/appendix/a3-bloch-wave/hrtem.md'
-        'en/appendix/a2-bloch-wave/cbed.md': 'en/appendix/a3-bloch-wave/cbed.md'
-        'en/appendix/a2-bloch-wave/stem.md': 'en/appendix/a3-bloch-wave/stem.md'
-        'en/appendix/a2-bloch-wave/ebsd.md': 'en/appendix/a3-bloch-wave/ebsd.md'
         'ja/appendix/a2-bloch-wave/index.md': 'ja/appendix/a3-bloch-wave/index.md'
         'ja/appendix/a2-bloch-wave/calculation.md': 'ja/appendix/a3-bloch-wave/calculation.md'
         'ja/appendix/a2-bloch-wave/hrtem.md': 'ja/appendix/a3-bloch-wave/hrtem.md'
         'ja/appendix/a2-bloch-wave/cbed.md': 'ja/appendix/a3-bloch-wave/cbed.md'
         'ja/appendix/a2-bloch-wave/stem.md': 'ja/appendix/a3-bloch-wave/stem.md'
         'ja/appendix/a2-bloch-wave/ebsd.md': 'ja/appendix/a3-bloch-wave/ebsd.md'
-        # 260608Cl: 本編 3-scattering-factor を 3-beam-interaction にリネーム。旧URLを新名へ。
-        'en/3-scattering-factor.md': 'en/3-beam-interaction.md'
-        'ja/3-scattering-factor.md': 'ja/3-beam-interaction.md'
-
-# 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
-#   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
-# hooks:
-#   - hooks/language_switch.py
 
 markdown_extensions:
   - admonition
@@ -155,10 +162,7 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-      # 260602Cl: 日本語見出しの slug を機能させる。既定 (python-markdown の ASCII slugify) では
-      #   日本語が NFKD→ASCII で消えてアンカーが連番化し、ページ間の `#日本語見出し` リンクが
-      #   すべてページ先頭へ落ちていた (mkdocs は INFO 止まりで strict も素通り)。
-      #   pymdownx の Unicode slugify へ切替えて日本語アンカーを有効化する (英語アンカーは lower 化で不変)。
+      # 260602Cl: 日本語見出しの slug を機能させる (pymdownx の Unicode slugify)。
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
@@ -168,18 +172,17 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.arithmatex:
       generic: true
-  # 260525Cl 追加: 略語のツールチップ。定義は includes/abbreviations.md に集約し全 md 末尾へ自動付加する。
   - abbr
   - pymdownx.snippets:
       base_path:
-        - docs   # CI は repo ルートから `mkdocs build -f docs/mkdocs.yml` を実行
-        - .       # docs/ 内から実行した場合のフォールバック
+        - docs
+        - .
       auto_append:
         - includes/abbreviations.md
-  - pymdownx.keys    # 260525Cl 追加: ++ctrl+alt+shift+c++ をキーキャップ風に表示
-  - pymdownx.caret   # 260525Cl 追加: ^上付き^ と ^^下線/挿入^^
-  - pymdownx.tilde   # 260525Cl 追加: ~下付き~ と ~~取り消し線~~
-  - pymdownx.mark    # 260525Cl 追加: ==蛍光ペン強調==
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.mark
 
 extra_css:
   - assets/stylesheets/extra.css
@@ -187,112 +190,56 @@ extra_css:
 extra_javascript:
   - assets/javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  # 260525Cl: ヘッダーの言語セレクタを現在ページの相手言語版へ向け直す (既定だと各言語トップへ戻るため)。
-  - assets/javascripts/language_switch.js
+  # 260622Cl: 言語切替 JS (language_switch.js) は static-i18n の reconfigure_material が
+  #   現在ページ基準のセレクタを構成するため不要になり廃止。
 
-extra:
-  alternate:
-    - name: English
-      link: /ReciPro/
-      lang: en
-    - name: 日本語
-      link: /ReciPro/ja/
-      lang: ja
+# 260622Cl: extra.alternate は static-i18n が自動構成するため手書きしない。
 
 nav:
-  - English:
-      - Home: index.md
-      - 0. Main window: en/0-main-window.md
-      - 1. Crystal database: en/1-crystal-database.md
-      - 2. Symmetry information: en/2-symmetry-information.md
-      - 3. Beam interaction: en/3-beam-interaction.md
-      - 4. Rotation Geometry: en/4-rotation-geometry.md
-      - 5. Structure viewer: en/5-structure-viewer.md
-      - 6. Stereonet: en/6-stereonet.md
-      - 7. Diffraction simulator:
-          - en/7-diffraction-simulator/index.md
-          - 7.1. SAED simulation: en/7-diffraction-simulator/1-saed-simulation.md
-          - 7.2. PED simulation: en/7-diffraction-simulator/2-ped-simulation.md
-          - 7.3. CBED simulation: en/7-diffraction-simulator/3-cbed-simulation.md
-          - 7.4. X-ray / neutron diffraction: en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md
-      - 8. Electron trajectory: en/8-electron-trajectory.md
-      - 9. HRTEM/STEM simulator:
-          - en/9-hrtem-stem-simulator/index.md
-          - 9.1. HRTEM simulation: en/9-hrtem-stem-simulator/1-hrtem-simulation.md
-          - 9.2. STEM simulation: en/9-hrtem-stem-simulator/2-stem-simulation.md
-          - 9.3. Potential simulation: en/9-hrtem-stem-simulator/3-potential-simulation.md
-      - 10. Spot ID v1: en/10-spot-id.md
-      - 11. Spot ID v2: en/11-spot-id-v2.md
-      - 12. EBSD simulation: en/12-ebsd-simulation.md
-      - 20. Macro:
-          - en/20-macro/index.md
-          - 20.1. Built-in functions: en/20-macro/1-built-in-functions.md
-          - 20.2. Examples: en/20-macro/2-examples.md
-      - 21. Keyboard & mouse shortcuts: en/21-shortcuts.md
-      - Appendix:
-          - How to use (videos): en/appendix/a0-how-to-use.md
-          - Appendix A1. Coordinate systems:
-              - A1.1. Basic coordinate system and crystal orientation: en/appendix/a1-coordinate-system/1-orientation.md
-              - A1.2. Coordinate system for diffraction simulation: en/appendix/a1-coordinate-system/2-diffraction.md
-          - Appendix A2. Beam interaction (solid-state background):
-              - en/appendix/a2-beam-interaction/index.md
-              - A2.1. Atomic scattering factors: en/appendix/a2-beam-interaction/scattering-factor.md
-              - A2.2. Structure factor: en/appendix/a2-beam-interaction/structure-factor.md
-              - A2.3. Attenuation & transport: en/appendix/a2-beam-interaction/attenuation-transport.md
-              - A2.4. Fluorescence: en/appendix/a2-beam-interaction/fluorescence.md
-          - Appendix A3. Dynamical diffraction (Bloch-wave method):
-              - en/appendix/a3-bloch-wave/index.md
-              - A3.1. Dynamical calculation: en/appendix/a3-bloch-wave/calculation.md
-              - A3.2. HRTEM image formation: en/appendix/a3-bloch-wave/hrtem.md
-              - A3.3. CBED: en/appendix/a3-bloch-wave/cbed.md
-              - A3.4. STEM: en/appendix/a3-bloch-wave/stem.md
-              - A3.5. EBSD: en/appendix/a3-bloch-wave/ebsd.md
-      - Troubleshooting: en/troubleshooting.md
-  - 日本語:
-      - ホーム: ja/index.md
-      - 0. メインウィンドウ: ja/0-main-window.md
-      - 1. 結晶データベース: ja/1-crystal-database.md
-      - 2. 対称性情報: ja/2-symmetry-information.md
-      - 3. ビーム相互作用: ja/3-beam-interaction.md
-      - 4. 回転ジオメトリ: ja/4-rotation-geometry.md
-      - 5. 結晶構造ビューア: ja/5-structure-viewer.md
-      - 6. ステレオネット: ja/6-stereonet.md
-      - 7. 回折シミュレータ:
-          - ja/7-diffraction-simulator/index.md
-          - 7.1. SAEDシミュレーション: ja/7-diffraction-simulator/1-saed-simulation.md
-          - 7.2. PEDシミュレーション: ja/7-diffraction-simulator/2-ped-simulation.md
-          - 7.3. CBEDシミュレーション: ja/7-diffraction-simulator/3-cbed-simulation.md
-          - 7.4. X線・中性子線回折シミュレーション: ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md
-      - 8. 電子飛程: ja/8-electron-trajectory.md
-      - 9. HRTEM/STEMシミュレータ:
-          - ja/9-hrtem-stem-simulator/index.md
-          - 9.1. HRTEMシミュレーション: ja/9-hrtem-stem-simulator/1-hrtem-simulation.md
-          - 9.2. STEMシミュレーション: ja/9-hrtem-stem-simulator/2-stem-simulation.md
-          - 9.3. ポテンシャルシミュレーション: ja/9-hrtem-stem-simulator/3-potential-simulation.md
-      - 10. Spot ID v1: ja/10-spot-id.md
-      - 11. Spot ID v2: ja/11-spot-id-v2.md
-      - 12. EBSDシミュレーション: ja/12-ebsd-simulation.md
-      - 20. マクロ:
-          - ja/20-macro/index.md
-          - 20.1. 組み込み関数一覧: ja/20-macro/1-built-in-functions.md
-          - 20.2. マクロの使用例: ja/20-macro/2-examples.md
-      - 21. キーボード・マウスショートカット: ja/21-shortcuts.md
-      - 付録:
-          - How to use（動画）: ja/appendix/a0-how-to-use.md
-          - Appendix A1. 座標系の定義:
-              - A1.1. 基本座標系と結晶方位の定義: ja/appendix/a1-coordinate-system/1-orientation.md
-              - A1.2. 回折シミュレーションにおける座標系の定義: ja/appendix/a1-coordinate-system/2-diffraction.md
-          - Appendix A2. ビーム相互作用（固体物理的背景）:
-              - ja/appendix/a2-beam-interaction/index.md
-              - A2.1. 原子散乱因子: ja/appendix/a2-beam-interaction/scattering-factor.md
-              - A2.2. 構造因子: ja/appendix/a2-beam-interaction/structure-factor.md
-              - A2.3. 減衰・輸送: ja/appendix/a2-beam-interaction/attenuation-transport.md
-              - A2.4. 蛍光: ja/appendix/a2-beam-interaction/fluorescence.md
-          - Appendix A3. 動力学回折（Bloch波法）:
-              - ja/appendix/a3-bloch-wave/index.md
-              - A3.1. 動力学計算: ja/appendix/a3-bloch-wave/calculation.md
-              - A3.2. HRTEM 像形成: ja/appendix/a3-bloch-wave/hrtem.md
-              - A3.3. CBED: ja/appendix/a3-bloch-wave/cbed.md
-              - A3.4. STEM: ja/appendix/a3-bloch-wave/stem.md
-              - A3.5. EBSD: ja/appendix/a3-bloch-wave/ebsd.md
-      - トラブルシューティング: ja/troubleshooting.md
+  - Home: index.md
+  - 0. Main window: 0-main-window.md
+  - 1. Crystal database: 1-crystal-database.md
+  - 2. Symmetry information: 2-symmetry-information.md
+  - 3. Beam interaction: 3-beam-interaction.md
+  - 4. Rotation Geometry: 4-rotation-geometry.md
+  - 5. Structure viewer: 5-structure-viewer.md
+  - 6. Stereonet: 6-stereonet.md
+  - 7. Diffraction simulator:
+      - 7-diffraction-simulator/index.md
+      - 7.1. SAED simulation: 7-diffraction-simulator/1-saed-simulation.md
+      - 7.2. PED simulation: 7-diffraction-simulator/2-ped-simulation.md
+      - 7.3. CBED simulation: 7-diffraction-simulator/3-cbed-simulation.md
+      - 7.4. X-ray / neutron diffraction: 7-diffraction-simulator/4-x-ray-neutron-diffraction.md
+  - 8. Electron trajectory: 8-electron-trajectory.md
+  - 9. HRTEM/STEM simulator:
+      - 9-hrtem-stem-simulator/index.md
+      - 9.1. HRTEM simulation: 9-hrtem-stem-simulator/1-hrtem-simulation.md
+      - 9.2. STEM simulation: 9-hrtem-stem-simulator/2-stem-simulation.md
+      - 9.3. Potential simulation: 9-hrtem-stem-simulator/3-potential-simulation.md
+  - 10. Spot ID v1: 10-spot-id.md
+  - 11. Spot ID v2: 11-spot-id-v2.md
+  - 12. EBSD simulation: 12-ebsd-simulation.md
+  - 20. Macro:
+      - 20-macro/index.md
+      - 20.1. Built-in functions: 20-macro/1-built-in-functions.md
+      - 20.2. Examples: 20-macro/2-examples.md
+  - 21. Keyboard & mouse shortcuts: 21-shortcuts.md
+  - Appendix:
+      - How to use (videos): appendix/a0-how-to-use.md
+      - Appendix A1. Coordinate systems:
+          - A1.1. Basic coordinate system and crystal orientation: appendix/a1-coordinate-system/1-orientation.md
+          - A1.2. Coordinate system for diffraction simulation: appendix/a1-coordinate-system/2-diffraction.md
+      - Appendix A2. Beam interaction (solid-state background):
+          - appendix/a2-beam-interaction/index.md
+          - A2.1. Atomic scattering factors: appendix/a2-beam-interaction/scattering-factor.md
+          - A2.2. Structure factor: appendix/a2-beam-interaction/structure-factor.md
+          - A2.3. Attenuation & transport: appendix/a2-beam-interaction/attenuation-transport.md
+          - A2.4. Fluorescence: appendix/a2-beam-interaction/fluorescence.md
+      - Appendix A3. Dynamical diffraction (Bloch-wave method):
+          - appendix/a3-bloch-wave/index.md
+          - A3.1. Dynamical calculation: appendix/a3-bloch-wave/calculation.md
+          - A3.2. HRTEM image formation: appendix/a3-bloch-wave/hrtem.md
+          - A3.3. CBED: appendix/a3-bloch-wave/cbed.md
+          - A3.4. STEM: appendix/a3-bloch-wave/stem.md
+          - A3.5. EBSD: appendix/a3-bloch-wave/ebsd.md
+  - Troubleshooting: troubleshooting.md

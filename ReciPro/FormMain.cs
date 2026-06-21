@@ -286,13 +286,19 @@ public partial class FormMain : FormBase
 
         //260529Cl 追加: F1 オンラインヘルプの URL 解決ロジックを登録 (起動時に 1 回)。
         //Controls 側フォームは ReciPro 固有の URL を知らないため、ここで一括して組み立てる。
+        //260622Cl 変更: F1 ヘルプ URL を SupportedCultures.HelpCulture 駆動に (旧: ja/en 二値判定)。
+        //  Pages マニュアルは mkdocs-static-i18n で英語(en)をサイトルート (/ReciPro/) へ、他言語を /ReciPro/<lang>/ へ出す。
+        //  HelpCulture の値そのものが「そのマニュアルが整備済みか」を表す (未整備言語は "en" のまま英語マニュアルへ)。
         FormBase.HelpUrlResolver = f =>
-        {
-            var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
-            return string.IsNullOrEmpty(f.HelpPage)
-                ? (lang == "ja" ? "https://seto77.github.io/ReciPro/ja/" : "https://seto77.github.io/ReciPro/")
-                : $"https://seto77.github.io/ReciPro/{lang}/{f.HelpPage}/";
-        };
+            string.IsNullOrEmpty(f.HelpPage) ? HelpBaseUrl() : $"{HelpBaseUrl()}{f.HelpPage}/";
+        //260529Cl 旧コード (コメントアウト保存):
+        //FormBase.HelpUrlResolver = f =>
+        //{
+        //    var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+        //    return string.IsNullOrEmpty(f.HelpPage)
+        //        ? (lang == "ja" ? "https://seto77.github.io/ReciPro/ja/" : "https://seto77.github.io/ReciPro/")
+        //        : $"https://seto77.github.io/ReciPro/{lang}/{f.HelpPage}/";
+        //};
 
         //260529Cl 追加: Crystallography.Controls 側 (CrystalControl 内) で生成される子フォームの
         //HelpPage は ReciPro からインスタンスに触れるここで設定する。
@@ -1629,14 +1635,26 @@ public partial class FormMain : FormBase
     private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e)
         => ReadCrystalList(UserAppDataPath + "initial.xml", false, true);
 
+    /// <summary>260622Cl 追加: 現在の UI 言語に対応する GitHub Pages マニュアルの基底 URL を返す。
+    /// 英語(HelpCulture=="en")はサイトルート、他言語は /ReciPro/&lt;lang&gt;/ (mkdocs-static-i18n の出力構造)。
+    /// マニュアル未整備の言語は SupportedCultures.HelpCulture が "en" のままなので英語マニュアルへ落ちる。</summary>
+    public static string HelpBaseUrl()
+    {
+        var help = Crystallography.SupportedCultures.Current.HelpCulture;
+        return help == "en" ? "https://seto77.github.io/ReciPro/" : $"https://seto77.github.io/ReciPro/{help}/";
+    }
+
     private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
     {
         // 260602Cl: yseto.net 旧 web マニュアル(現在は GitHub Pages への移転スタブ)と同梱の旧 PDF(2023年版) を廃止し、
-        //           GitHub Pages のマニュアルを UI 言語別 (ja/en) に開くよう変更。
-        Process.Start(new ProcessStartInfo(
-            Thread.CurrentThread.CurrentUICulture.Name == "ja"
-                ? "https://seto77.github.io/ReciPro/ja/"
-                : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
+        //           GitHub Pages のマニュアルを UI 言語別に開くよう変更。
+        // 260622Cl: ja/en 二値判定を HelpBaseUrl() (SupportedCultures.HelpCulture 駆動) に統一。
+        Process.Start(new ProcessStartInfo(HelpBaseUrl()) { UseShellExecute = true });
+        // 260602Cl 旧コード (コメントアウト保存):
+        //Process.Start(new ProcessStartInfo(
+        //    Thread.CurrentThread.CurrentUICulture.Name == "ja"
+        //        ? "https://seto77.github.io/ReciPro/ja/"
+        //        : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
 
         // 260602Cl 旧コード (コメントアウト保存):
         //if (Language != Languages.English)

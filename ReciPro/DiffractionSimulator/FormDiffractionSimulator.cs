@@ -2139,8 +2139,10 @@ public partial class FormDiffractionSimulator : FormBase
         //var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         //var f = new FormPDF(appPath + @"\doc\bethe.pdf");
         //f.ShowDialog();
-        var lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
-        Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/") { UseShellExecute = true });
+        // 260622Cl: ja/en 二値＋旧 a2-bloch-wave 名を、HelpBaseUrl() (HelpCulture 駆動) ＋現行 a3-bloch-wave へ統一。
+        Process.Start(new ProcessStartInfo($"{FormMain.HelpBaseUrl()}appendix/a3-bloch-wave/") { UseShellExecute = true });
+        //var lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en"; // 260622Cl 旧
+        //Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/") { UseShellExecute = true });
     }
 
     /// <summary>プリセットメニュー</summary>

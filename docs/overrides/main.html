@@ -1,0 +1,21 @@
+{# 260622Cl: mkdocs-static-i18n のフォールバックバナー。
+   未訳ページ (fallback_to_default で英語本文がローカライズ URL に出ているページ) では
+   i18n_page_locale (閲覧中の言語) と i18n_file_locale (実ファイルの言語) が食い違う。
+   その場合に「このページはまだ翻訳されておらず英語版を表示しています」と知らせる。
+   日本語のときだけ日本語の文面を出し、それ以外の言語では英語の文面にする。 #}
+{% extends "base.html" %}
+
+{% block content %}
+  {% if i18n_page_locale and i18n_file_locale and i18n_page_locale != i18n_file_locale %}
+    <div class="admonition warning" markdown="0">
+      {% if i18n_page_locale == "ja" %}
+      <p class="admonition-title">翻訳準備中</p>
+      <p>このページはまだ翻訳されていないため、英語版を表示しています。</p>
+      {% else %}
+      <p class="admonition-title">Translation pending</p>
+      <p>This page has not been translated yet and is shown in English.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

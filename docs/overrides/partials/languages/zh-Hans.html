@@ -1,0 +1,5 @@
+{#- 260622Cl: Material には簡体字パーシャルが "zh" 名で入っているが、本サイトの locale 名は "zh-Hans"
+   (GUI の CultureInfo 名・F1 HelpCulture と一致させるため)。Material の zh パーシャルをそのまま
+   "zh-Hans" として再エクスポートする (wave B で zh-Hans を build:true にしたとき必要)。 -#}
+{% import "partials/languages/zh.html" as zh %}
+{% macro t(key) %}{{ zh.t(key) }}{% endmacro %}
