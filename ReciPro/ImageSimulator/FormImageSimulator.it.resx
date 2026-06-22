@@ -291,7 +291,7 @@ Simulator"</value>
     <value>Campione</value>
   </data>
   <data name="checkBoxPreset.Text" xml:space="preserve">
-    <value>Impostazioni preimpostate</value>
+    <value>Preimpostazioni</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
     <value>Simulazione in tempo reale</value>

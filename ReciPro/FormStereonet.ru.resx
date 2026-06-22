@@ -176,7 +176,7 @@
     <value>Подписи индексов</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Рисовать подписи индексов</value>
+    <value>Подписи индексов</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
     <value>Задать цвет</value>

@@ -3063,13 +3063,13 @@ public partial class FormEBSD : FormBase
 
     private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
     {
-        groupBoxDetectorOutline.Enabled = checkBoxDrawDetectorOutline.Checked;
+        flowLayoutPanel1DetectorOutline.Enabled = checkBoxDrawDetectorOutline.Checked;
         Draw();
     }
 
     private void checkBoxShowKikuchiLines_CheckedChanged(object sender, EventArgs e)
     {
-        groupBoxKikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
+        flowLayoutPanel1KikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
         Draw();
     }
 }

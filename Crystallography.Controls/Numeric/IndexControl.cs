@@ -265,13 +265,11 @@ namespace Crystallography.Controls
         {
             // 260519Cl: BoxWidthEnabled=false の均等配分モードでは BoxWidth 設定を無視する
             if (!boxWidthEnabled) return;
-            // 260618Cl 追加: NumericBox.DefaultValueBoxWidth(=54, 多言語化レバー) はヘッダ付き数値欄向け。
-            // IndexControl の h/k/l/i はヘッダ無しの整数欄で、幅は BoxWidth で固定するのが設計意図。
-            // ValueBoxWidth を明示(=valueBoxWidth>=0)すると静的既定(54)と「親=TableLayoutPanel→M3」
-            // ヒューリスティックの両方が無効化され、M3(AutoSize で 54px へ膨張) でなく
-            // M2(AutoSize=false・固定幅) に保たれる。値は BoxWidth に追従させる。
-            numericBoxH.ValueBoxWidth = numericBoxK.ValueBoxWidth = numericBoxL.ValueBoxWidth = logicalBoxWidth;
-            numericBoxI.ValueBoxWidth = Math.Max(1, logicalBoxWidth - 16);
+            // 260618Cl/260621Cl: h/k/l/i はヘッダ無しの整数欄。NumericBox.DefaultValueBoxWidth(=54)レバー撤去後は、
+            // numericBox の外形 .Width を直接指定し、textBox(Dock=Fill)がそれを満たす方式で十分。
+            // (旧コードはレバーの 54px を打ち消す目的で ValueBoxWidth を明示設定していたが、撤去に伴い不要。
+            //  ValueBoxWidth>=0 を残すと textBox が Dock=Left 固定化し外形幅との差で隙間/1px ズレを生むため設定しない)。
+            // 260621Cl 削除: numericBoxH/K/L/I.ValueBoxWidth の明示設定 (上記理由)
             if (!boxWidthExplicitlySet) return;
             var w = LogicalToDeviceUnits(logicalBoxWidth);
             numericBoxH.Width = numericBoxK.Width = numericBoxL.Width = w;

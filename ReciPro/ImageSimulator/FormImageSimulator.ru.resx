@@ -303,10 +303,10 @@ Simulator"</value>
     <value>Образец</value>
   </data>
   <data name="checkBoxPreset.Text" xml:space="preserve">
-    <value>Предустановки</value>
+    <value>Пресеты</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Моделирование в реальном времени</value>
+    <value>В реальном времени</value>
   </data>
   <data name="buttonSimulate.Text" xml:space="preserve">
     <value>Моделировать</value>

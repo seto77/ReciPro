@@ -72,6 +72,8 @@
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
             numericBoxResolution.Value = 6D;
+            numericBoxResolution.HeaderWidth = 70; // 260622Cl 追加: ru「Разрешение」ヘッダ確保
+            numericBoxResolution.ValueBoxWidth = 35; // 260622Cl 追加: 値欄固定+本体AutoSizeで内部つぶれ回避(2行目単独配置で300px余裕)
             numericBoxResolution.ValueChanged += numericUpDownResolution_Click;
             // 
             // label9

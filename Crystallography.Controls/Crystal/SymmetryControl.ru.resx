@@ -87,16 +87,16 @@
     <value>кубическая</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Пространственная группа</value>
+    <value>Простр. группа</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Поиск</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>Кристаллическая система</value>
+    <value>Крист. система</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
-    <value>Точечная группа</value>
+    <value>Точечная гр.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Выберите единицу длины (Å или nm)

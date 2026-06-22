@@ -41,7 +41,7 @@
             labelGraphTitle = new System.Windows.Forms.Label();
             labelX1 = new System.Windows.Forms.Label();
             pictureBox = new System.Windows.Forms.PictureBox();
-            flowLayoutPanelTitle = new System.Windows.Forms.FlowLayoutPanel(); // 260611Cl 追加: タイトルと凡例ラベルを横一列に並べる
+            flowLayoutPanelTitle = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelMousePosition = new System.Windows.Forms.FlowLayoutPanel();
             contextMenuStripY = new System.Windows.Forms.ContextMenuStrip(components);
             toolStripMenuItemLogScaleX = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             panelTitleAndMouse = new System.Windows.Forms.Panel();
             panelRangeAndCopy = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
-            flowLayoutPanelTitle.SuspendLayout(); // 260611Cl 追加
+            flowLayoutPanelTitle.SuspendLayout();
             flowLayoutPanelMousePosition.SuspendLayout();
             contextMenuStripY.SuspendLayout();
             panelMain.SuspendLayout();
@@ -89,10 +89,11 @@
             numericBoxXMin.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxXMin.Name = "numericBoxXMin";
             numericBoxXMin.ShowUpDown = true;
-            numericBoxXMin.Size = new System.Drawing.Size(66, 26);
+            numericBoxXMin.Size = new System.Drawing.Size(71, 26);
             numericBoxXMin.SmartIncrement = true;
             numericBoxXMin.TabIndex = 0;
             toolTip.SetToolTip(numericBoxXMin, "Minimum of the X-axis plot range (left edge).\r\nOn a log axis, enter the real (non-log) value.");
+            numericBoxXMin.ValueBoxWidth = 54;
             numericBoxXMin.ValueFontSize = 9.5F;
             numericBoxXMin.ValueChanged += numericBoxRange_ValueChanged;
             // 
@@ -103,16 +104,17 @@
             numericBoxXMax.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxXMax.HeaderFont = new System.Drawing.Font("Segoe UI", 9.5F);
             numericBoxXMax.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxXMax.Location = new System.Drawing.Point(169, 0);
+            numericBoxXMax.Location = new System.Drawing.Point(174, 0);
             numericBoxXMax.Margin = new System.Windows.Forms.Padding(0);
             numericBoxXMax.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxXMax.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxXMax.Name = "numericBoxXMax";
             numericBoxXMax.ShowUpDown = true;
-            numericBoxXMax.Size = new System.Drawing.Size(66, 26);
+            numericBoxXMax.Size = new System.Drawing.Size(71, 26);
             numericBoxXMax.SmartIncrement = true;
             numericBoxXMax.TabIndex = 0;
             toolTip.SetToolTip(numericBoxXMax, "Maximum of the X-axis plot range (right edge).\r\nOn a log axis, enter the real (non-log) value.");
+            numericBoxXMax.ValueBoxWidth = 54;
             numericBoxXMax.ValueFontSize = 9.5F;
             numericBoxXMax.ValueChanged += numericBoxRange_ValueChanged;
             // 
@@ -123,16 +125,17 @@
             numericBoxYMin.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxYMin.HeaderFont = new System.Drawing.Font("Segoe UI", 9.5F);
             numericBoxYMin.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxYMin.Location = new System.Drawing.Point(284, 0);
+            numericBoxYMin.Location = new System.Drawing.Point(294, 0);
             numericBoxYMin.Margin = new System.Windows.Forms.Padding(0);
             numericBoxYMin.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxYMin.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxYMin.Name = "numericBoxYMin";
             numericBoxYMin.ShowUpDown = true;
-            numericBoxYMin.Size = new System.Drawing.Size(66, 26);
+            numericBoxYMin.Size = new System.Drawing.Size(71, 26);
             numericBoxYMin.SmartIncrement = true;
             numericBoxYMin.TabIndex = 0;
             toolTip.SetToolTip(numericBoxYMin, "Minimum of the Y-axis plot range (bottom edge).\r\nOn a log axis, enter the real (non-log) value.");
+            numericBoxYMin.ValueBoxWidth = 54;
             numericBoxYMin.ValueFontSize = 9.5F;
             numericBoxYMin.ValueChanged += numericBoxRange_ValueChanged;
             // 
@@ -143,16 +146,17 @@
             numericBoxYMax.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxYMax.HeaderFont = new System.Drawing.Font("Segoe UI", 9.5F);
             numericBoxYMax.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxYMax.Location = new System.Drawing.Point(369, 0);
+            numericBoxYMax.Location = new System.Drawing.Point(384, 0);
             numericBoxYMax.Margin = new System.Windows.Forms.Padding(0);
             numericBoxYMax.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxYMax.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxYMax.Name = "numericBoxYMax";
             numericBoxYMax.ShowUpDown = true;
-            numericBoxYMax.Size = new System.Drawing.Size(66, 26);
+            numericBoxYMax.Size = new System.Drawing.Size(71, 26);
             numericBoxYMax.SmartIncrement = true;
             numericBoxYMax.TabIndex = 0;
             toolTip.SetToolTip(numericBoxYMax, "Maximum of the Y-axis plot range (top edge).\r\nOn a log axis, enter the real (non-log) value.");
+            numericBoxYMax.ValueBoxWidth = 54;
             numericBoxYMax.ValueFontSize = 9.5F;
             numericBoxYMax.ValueChanged += numericBoxRange_ValueChanged;
             // 
@@ -207,33 +211,18 @@
             labelXValue.Size = new System.Drawing.Size(29, 17);
             labelXValue.TabIndex = 5;
             labelXValue.Text = "000";
-            //
+            // 
             // labelGraphTitle
-            //
+            // 
             labelGraphTitle.AutoSize = true;
-            //labelGraphTitle.Dock = System.Windows.Forms.DockStyle.Top; // 260611Cl 削除: flowLayoutPanelTitle 内へ移設 (凡例ラベルと横並びにするため Dock 不要)
             labelGraphTitle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             labelGraphTitle.Location = new System.Drawing.Point(0, 0);
-            labelGraphTitle.Margin = new System.Windows.Forms.Padding(0); // 260611Cl 追加: 旧 Dock=Top 時と同じ左端位置を保つ
+            labelGraphTitle.Margin = new System.Windows.Forms.Padding(0);
             labelGraphTitle.Name = "labelGraphTitle";
             labelGraphTitle.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             labelGraphTitle.Size = new System.Drawing.Size(3, 17);
             labelGraphTitle.TabIndex = 8;
-            labelGraphTitle.Visible = false; // 260610Cl 追加: 「visible ⇔ タイトル非空」の不変条件を構築時から成立させる (Dock=Top 化により空 Text でも 17px の空行が出るため)
-            //
-            // flowLayoutPanelTitle
-            // 260611Cl 追加: タイトル(labelGraphTitle)と動的凡例ラベル(labelGraphTitle1, 2, ...)を横一列に並べるパネル
-            //
-            flowLayoutPanelTitle.AutoSize = true;
-            flowLayoutPanelTitle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelTitle.Controls.Add(labelGraphTitle);
-            flowLayoutPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanelTitle.Location = new System.Drawing.Point(0, 0);
-            flowLayoutPanelTitle.Name = "flowLayoutPanelTitle";
-            flowLayoutPanelTitle.Size = new System.Drawing.Size(523, 17);
-            flowLayoutPanelTitle.TabIndex = 9;
-            flowLayoutPanelTitle.Visible = false; // タイトル非空または凡例ありのときのみ表示 (GraphControl.cs の updateUpperPanelVisibility)
-            //flowLayoutPanelTitle.WrapContents = false; // 260611Cl 削除: 既定 true に戻し、凡例ラベルが多い時 (多元素の F(q)+S(q) 等) はラベル単位で次の行へ折り返す (AutoSize 連鎖で行高も自動拡張)
+            labelGraphTitle.Visible = false;
             // 
             // labelX1
             // 
@@ -259,6 +248,18 @@
             pictureBox.MouseMove += pictureBox_MouseMove;
             pictureBox.MouseUp += pictureBox_MouseUp;
             // 
+            // flowLayoutPanelTitle
+            // 
+            flowLayoutPanelTitle.AutoSize = true;
+            flowLayoutPanelTitle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelTitle.Controls.Add(labelGraphTitle);
+            flowLayoutPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanelTitle.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanelTitle.Name = "flowLayoutPanelTitle";
+            flowLayoutPanelTitle.Size = new System.Drawing.Size(523, 17);
+            flowLayoutPanelTitle.TabIndex = 9;
+            flowLayoutPanelTitle.Visible = false;
+            // 
             // flowLayoutPanelMousePosition
             // 
             flowLayoutPanelMousePosition.AutoSize = true;
@@ -276,7 +277,7 @@
             flowLayoutPanelMousePosition.Size = new System.Drawing.Size(523, 17);
             flowLayoutPanelMousePosition.TabIndex = 8;
             flowLayoutPanelMousePosition.Visible = false;
-            flowLayoutPanelMousePosition.WrapContents = false; // 260610Cl 復元: 既定 true のため削除は挙動変更 (長い読取り文字列が固定高 17px の 2 行目へ折り返して丸ごと消える)。右端クリップの旧挙動を維持
+            flowLayoutPanelMousePosition.WrapContents = false;
             // 
             // contextMenuStripY
             // 
@@ -352,7 +353,7 @@
             flowLayoutPanelRange.Dock = System.Windows.Forms.DockStyle.Left;
             flowLayoutPanelRange.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanelRange.Name = "flowLayoutPanelRange";
-            flowLayoutPanelRange.Size = new System.Drawing.Size(435, 25);
+            flowLayoutPanelRange.Size = new System.Drawing.Size(455, 25);
             flowLayoutPanelRange.TabIndex = 12;
             flowLayoutPanelRange.Visible = false;
             flowLayoutPanelRange.WrapContents = false;
@@ -383,7 +384,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            label3.Location = new System.Drawing.Point(153, 3);
+            label3.Location = new System.Drawing.Point(158, 3);
             label3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(13, 17);
@@ -393,7 +394,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(238, 0);
+            label6.Location = new System.Drawing.Point(248, 0);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(19, 15);
             label6.TabIndex = 8;
@@ -403,7 +404,7 @@
             // 
             labelY2.AutoSize = true;
             labelY2.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            labelY2.Location = new System.Drawing.Point(263, 3);
+            labelY2.Location = new System.Drawing.Point(273, 3);
             labelY2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             labelY2.Name = "labelY2";
             labelY2.Size = new System.Drawing.Size(18, 17);
@@ -414,7 +415,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            label4.Location = new System.Drawing.Point(353, 3);
+            label4.Location = new System.Drawing.Point(368, 3);
             label4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(13, 17);
@@ -426,7 +427,6 @@
             panelTitleAndMouse.AutoSize = true;
             panelTitleAndMouse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             panelTitleAndMouse.Controls.Add(flowLayoutPanelMousePosition);
-            //panelTitleAndMouse.Controls.Add(labelGraphTitle); // 260611Cl 変更: labelGraphTitle は flowLayoutPanelTitle 内へ移設
             panelTitleAndMouse.Controls.Add(flowLayoutPanelTitle);
             panelTitleAndMouse.Dock = System.Windows.Forms.DockStyle.Top;
             panelTitleAndMouse.Location = new System.Drawing.Point(0, 0);
@@ -460,8 +460,8 @@
             Size = new System.Drawing.Size(523, 200);
             Resize += GraphControl_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
-            flowLayoutPanelTitle.ResumeLayout(false); // 260611Cl 追加
-            flowLayoutPanelTitle.PerformLayout(); // 260611Cl 追加
+            flowLayoutPanelTitle.ResumeLayout(false);
+            flowLayoutPanelTitle.PerformLayout();
             flowLayoutPanelMousePosition.ResumeLayout(false);
             flowLayoutPanelMousePosition.PerformLayout();
             contextMenuStripY.ResumeLayout(false);

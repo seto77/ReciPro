@@ -176,7 +176,7 @@ linien</value>
     <value>Index-Beschriftungen</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Index-Beschriftungen zeichnen</value>
+    <value>Indexbeschriftung</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
     <value>Farbe wählen</value>

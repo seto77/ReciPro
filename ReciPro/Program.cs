@@ -91,10 +91,11 @@ internal static class Program
         // Designer/resx で明示指定されたコントロールには適用されない (それらは文字列置換で対応済み)。
         Application.SetDefaultFont(Crystallography.Controls.FontHelper.GetUIFont());
 
-        // 260617Cl 追加: 多言語化対応の全体レバー。全 NumericBox の数値欄に最低固定幅(論理px)を保証し、
-        // ヘッダ翻訳で数値欄が縮む問題を解消する (親が Flow/Table なら全幅を伸ばしリフロー、絶対配置なら数値欄死守+ヘッダは tooltip 救済)。
-        // ValueBoxWidth を明示設定した個別 NumericBox はそちらが優先。詳細は .project-guidance/ReciPro_多言語化方針.md Phase 1。
-        Crystallography.Controls.NumericBox.DefaultValueBoxWidth = 54;
+        // 260621Cl 撤去: 多言語化の全体レバー(DefaultValueBoxWidth=54)を廃止。NumericBox の幅モデルを
+        // HeaderWidth/FooterWidth/ValueBoxWidth(-1→Fill, >=0→固定幅+本体 AutoSize)へ整理したため、
+        // 「全数値欄に最低 54px を強制+ヘッダ自動クリップ」する旧 M2/M3 機構ごと削除した。
+        // 最低可読幅が要るフォームは各 NumericBox で ValueBoxWidth を明示設定する。
+        //Crystallography.Controls.NumericBox.DefaultValueBoxWidth = 54;
 
         // 260617Cl 追加: 多言語化のオーバーフロー診断モード本体。通常起動には一切影響しない。
         if (doDiagnose)

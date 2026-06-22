@@ -611,20 +611,11 @@ Kα1, Kα2, Kβ1); this fixes the wavelength and energy.</value>
   <data name="&gt;&gt;comboBoxXrayLine.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEnergy.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxEnergy.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxEnergy.FooterText" xml:space="preserve">
     <value>keV</value>
-  </data>
-  <data name="numericBoxEnergy.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergy.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -648,16 +639,12 @@ Kα1, Kα2, Kβ1); this fixes the wavelength and energy.</value>
     <value>0, 2, 1, 0</value>
   </data>
   <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 27</value>
+    <value>182, 27</value>
   </data>
   <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>Enter the beam energy (keV for X-ray/electron, meV for
-neutron); the wavelength is recalculated automatically.</value>
-  </data>
-  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
     <value>Enter the beam energy (keV for X-ray/electron, meV for
 neutron); the wavelength is recalculated automatically.</value>
   </data>
@@ -714,20 +701,11 @@ enter the energy or wavelength freely.</value>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxWaveLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxWaveLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxWaveLength.FooterText" xml:space="preserve">
     <value>Å</value>
-  </data>
-  <data name="numericBoxWaveLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxWaveLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -751,16 +729,12 @@ enter the energy or wavelength freely.</value>
     <value>0, 2, 1, 0</value>
   </data>
   <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 27</value>
+    <value>196, 27</value>
   </data>
   <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>Enter the wavelength here (use the Å / nm radio buttons to switch the display unit).
-The beam energy is recalculated automatically.</value>
-  </data>
-  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
     <value>Enter the wavelength here (use the Å / nm radio buttons to switch the display unit).
 The beam energy is recalculated automatically.</value>
   </data>

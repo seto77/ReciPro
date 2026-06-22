@@ -265,6 +265,20 @@ public partial class NumericBox : UserControlBase
         get => labelFooter.Text;
     }
 
+    /// <summary>フッタラベル(labelFooter)の固定幅(論理px)。-1 (既定) で従来どおり AutoSize=true。
+    /// >=0 で labelFooter.AutoSize=false にして Width をこの値(論理px→DPIスケール)に固定する。
+    /// HeaderWidth と対称。Horizontal 配置(フッタ=Right)のときのみ有効。Vertical 配置(フッタ=Bottom)では無視され従来どおり AutoSize。
+    /// 文字が幅に収まらない場合は ellipsis でクリップし、hover で全文を tooltip 表示する。</summary>
+    [DefaultValue(-1)]                                                                                                                                // 260621Cl 追加 (HeaderWidth と対称)
+    [Category("Header && Footer")]
+    [Description("フッタラベルの固定幅(論理px)。-1 で従来どおり AutoSize。>=0 で Width を固定する (HeaderWidth と対称)。")] // 260621Cl 追加
+    public int FooterWidth                                                                                                                            // 260621Cl 追加
+    {
+        get => footerWidth;
+        set { if (footerWidth == value) return; footerWidth = value; applyWidthMode(); }
+    }
+    private int footerWidth = -1;                                                                                                                     // 260621Cl 追加 -1=AutoSize(従来), >=0=固定幅
+
     [Category("Header && Footer")]
     //[DefaultValue(typeof(Padding), "0,2,0,0")] // 260428Cl 変更: TextAlign=Middle 化に伴い既定 Padding を 0 に
     [DefaultValue(typeof(Padding), "0,0,0,0")]
@@ -327,6 +341,19 @@ public partial class NumericBox : UserControlBase
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public override Font Font { get => base.Font; set => base.Font = value; }
+
+    // 260621Cl 追加: 全体幅は ValueBoxWidth (>=0 で本体 AutoSize) で制御するため、基底の AutoSize / AutoSizeMode は
+    // デザイナ/IntelliSense から隠す (consumer が直接いじると幅モデルと競合するため)。内部 applyWidthMode は
+    // base.AutoSize を引き続き使用する。
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public override bool AutoSize { get => base.AutoSize; set => base.AutoSize = value; }
+
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public new AutoSizeMode AutoSizeMode { get => base.AutoSizeMode; set => base.AutoSizeMode = value; }
 
 
     /// <summary>＋を表示するかどうか</summary>
@@ -522,6 +549,7 @@ public partial class NumericBox : UserControlBase
         textBox.FontChanged += (_, _) => updateLabelBaselines();
         SizeChanged += (_, _) => updateLabelBaselines();
         HandleCreated += (_, _) => updateLabelBaselines();
+        DockChanged += (_, _) => applyWidthMode();                                                                                                    // 260621Cl 追加: 本体 Dock 変化で ValueBoxWidth 固定の有効/無効が変わるため再適用
 
         if (DesignMode) return;
 
@@ -545,9 +573,7 @@ public partial class NumericBox : UserControlBase
         spinButtonPanel.SizeChanged += (_, _) => alignSpinButton();
         alignSpinButton();
 
-        // 260617Cl 追加: 数値欄幅モード (多言語化対応) の配線。親が確定したら(Flow/Table 判定のため)再適用、全幅変化で M2 ヘッダ幅を追従。
-        ParentChanged += (_, _) => applyWidthMode();
-        SizeChanged += (_, _) => refreshWidthMode();
+        // 260621Cl 改修: 幅モデル(HeaderWidth/FooterWidth/ValueBoxWidth)を初期適用。旧 ParentChanged/SizeChanged 配線(Flow/Table 検出・M2 全幅追従)は撤去。
         applyWidthMode();
     }
 
@@ -610,172 +636,147 @@ public partial class NumericBox : UserControlBase
         labelHeader.Visible = !string.IsNullOrEmpty(labelHeader.Text);
         labelFooter.Visible = !string.IsNullOrEmpty(labelFooter.Text);
         applyDockOrder();                                                                                                                             // (260428Ch) Visible更新でRight dockのfooter/spin順が入れ替わるのを防ぐ
-        refreshWidthMode();                                                                                                                           // 260617Cl: ヘッダ/フッタ可視変化を数値欄幅モードへ反映
+        applyWidthMode(); // 260621Cl: ヘッダ/フッタ可視変化を幅モデルへ反映 (旧 refreshWidthMode)
     }
 
-    #region 260617Cl 追加: 多言語化対応の「数値欄幅モード」
-    // 問題: 既定では labelHeader(Dock=Left,AutoSize) | textBox(Dock=Fill) | spin/footer(Right) で全幅固定のため、
-    //       HeaderText が翻訳で伸びると数値欄(Fill)が縮んで数値が読めなくなる (多言語化の最大の切れリスク)。
-    // 対処: 数値欄に最低固定幅を持たせ、ヘッダの伸長を「数値欄の縮小」でなく
-    //       M3=全幅の伸長(Flow/TableLayoutPanel でリフロー) / M2=ヘッダのクリップ(絶対配置で格子維持・tooltip 救済) に変える。
-    // レイアウト構造(Dock)は壊さず、ヘッダの AutoSize/幅と本体の AutoSize/GetPreferredSize だけで実現する (低リスク)。
-    // 詳細は .project-guidance/ReciPro_多言語化方針.md (Phase 1)。既定 OFF で従来挙動と完全一致。
+    #region 260621Cl 改修: NumericBox の幅モデルを HeaderWidth/FooterWidth/ValueBoxWidth に整理 (旧 i18n M1/M2/M3 + DefaultValueBoxWidth + AutoSizeWidth を撤去)
+    // 設計 (Horizontal 配置のみ。Vertical はラベルが独立行のため横幅ルール非適用):
+    //   ①  HeaderWidth   : -1=labelHeader AutoSize / >=0=固定幅 (AutoEllipsis でクリップ + hover tooltip)
+    //   ①' FooterWidth   : -1=labelFooter AutoSize / >=0=固定幅 (HeaderWidth と対称)
+    //   ②  ValueBoxWidth : -1=textBox Dock=Fill (残り幅を占有・全体幅は外形/親が決める)
+    //                      >=0=textBox を固定幅 (Dock=Left) にし本体を AutoSize にして全体サイズを
+    //                          「ヘッダ + 数値欄 + フッタ + spin」へ自動決定する (デザイナ上でもサイズ変更不可)。
+    //                      ただし本体が Dock=Fill/Top/Bottom で横に引き伸ばされる場合は外形幅を親が決めるため、
+    //                      ValueBoxWidth>=0 でも固定を解除し数値欄を Fill (横伸縮) に戻す。
+    //   基底の AutoSize/AutoSizeMode はデザイナ非表示 (②で内部管理。consumer 直接操作は不可)。
+    // 旧実装(260617〜)の DefaultValueBoxWidth(静的 54px 全体レバー)・M2(ヘッダ自動クリップ)・親 Flow/Table 自動 M3・
+    // 独立した AutoSizeWidth プロパティは撤去した (ValueBoxWidth>=0 が AutoSize を兼ねる)。最低可読幅が要る箇所は
+    // 各フォームで HeaderWidth/ValueBoxWidth を明示設定する方針。旧コードは git 履歴の本リビジョン以前を参照。
 
-    private int valueBoxWidth = -1;
-    private bool autoSizeWidth = false;
+    private int valueBoxWidth = -1;   // -1=Fill, >=0=固定幅(論理px) + 本体 AutoSize
 
-    /// <summary>静的既定: アプリ起動時に >=0 (論理px) を設定すると、ValueBoxWidth 未指定の全 NumericBox に最低数値欄幅を一括適用する。
-    /// 親が Flow/TableLayoutPanel なら全幅を伸ばし(リフロー)、絶対配置なら数値欄を死守してヘッダをクリップ(tooltip で全文救済)。
-    /// 既定 -1 = 無効 (従来挙動)。アプリ側で 1 行設定するだけで全数値欄に最低可読幅を保証する。</summary>
-    public static int DefaultValueBoxWidth { get; set; } = -1;
-
-    /// <summary>数値欄(textBox)の固定幅(論理px)。-1 (既定) で従来どおり残り幅を Fill。
-    /// >=0 でヘッダ伸長時も数値欄をこの幅に死守する。未指定(-1)でも <see cref="DefaultValueBoxWidth"/> が効く。</summary>
+    /// <summary>数値欄(textBox)の幅(論理px)。-1 (既定) で残り幅を Fill (全体幅は外形/親が決める)。
+    /// >=0 で textBox をこの幅(論理px→DPIスケール)に固定し、本体を AutoSize にして全体サイズを
+    /// 「ヘッダ + 数値欄 + フッタ + spin」へ自動決定する (デザイナ上でもサイズ変更不可)。Horizontal 配置のときのみ有効。
+    /// ただし本体が Dock=Fill/Top/Bottom で横に引き伸ばされる場合は、>=0 でも数値欄は Fill (横伸縮) に戻る。</summary>
     [DefaultValue(-1)]
     [Category("Value box")]
-    [Description("数値欄の固定幅(論理px)。-1 で従来どおり(残り幅を Fill)。>=0 でヘッダ伸長時も数値欄を死守する。")]
+    [Description("数値欄の幅(論理px)。-1 で残り幅を Fill。>=0 で固定幅+本体 AutoSize。本体が Dock で横伸縮する場合は Fill に戻る。")]
     public int ValueBoxWidth
     {
         get => valueBoxWidth;
         set { if (valueBoxWidth == value) return; valueBoxWidth = value; applyWidthMode(); }
     }
 
-    /// <summary>true で数値欄を固定し全幅を AutoSize で伸ばす(Flow/TableLayoutPanel 内向け=リフローで完全可読)。
-    /// false(既定)で全幅固定のままヘッダをクリップ。ValueBoxWidth 未指定+DefaultValueBoxWidth 有効時は、親が Flow/Table なら自動で true 相当に振る舞う。</summary>
-    [DefaultValue(false)]
-    [Category("Value box")]
-    [Description("数値欄を固定し全幅を AutoSize で伸ばす(Flow/TableLayoutPanel 内向け)。false なら全幅固定でヘッダをクリップ。")]
-    public bool AutoSizeWidth
-    {
-        get => autoSizeWidth;
-        set { if (autoSizeWidth == value) return; autoSizeWidth = value; applyWidthMode(); }
-    }
+    // Horizontal 配置か (Vertical ではヘッダ=Dock.Top で横幅ルールは無意味)。
+    private bool horizontalLayout => labelOrientation == NumericBoxOrientation.Horizontal;
+    // ① ヘッダ固定幅モードが有効か (Horizontal かつ HeaderWidth>=0)。
+    private bool headerWidthFixed => headerWidth >= 0 && horizontalLayout;
+    // ①' フッタ固定幅モードが有効か (Horizontal かつ FooterWidth>=0)。HeaderWidth と対称。
+    private bool footerWidthFixed => footerWidth >= 0 && horizontalLayout;
+    // 本体が Dock で横に引き伸ばされるか (Fill/Top/Bottom)。このとき外形幅は親が決めるため数値欄は固定せず Fill (横伸縮) にする。
+    private bool dockStretchesHorizontally => Dock is DockStyle.Fill or DockStyle.Top or DockStyle.Bottom;
+    // ② 数値欄固定幅 + 本体 AutoSize モードが有効か (Horizontal・ValueBoxWidth>=0・かつ本体が横に引き伸ばされない)。
+    private bool valueBoxFixed => valueBoxWidth >= 0 && horizontalLayout && !dockStretchesHorizontally;
 
-    // 有効な数値欄幅 (インスタンス指定優先、無ければ静的既定)。<0 ならモード無効=従来挙動。
-    private int effectiveValueBoxWidth => valueBoxWidth >= 0 ? valueBoxWidth : DefaultValueBoxWidth;
-    // 設計時は適用しない (Designer の再シリアライズ汚染を避け、実行時のみ反映)。
-    private bool widthModeActive => effectiveValueBoxWidth >= 0 && !DesignMode;
-    // M3(全幅 AutoSize): 明示 AutoSizeWidth、または静的既定経由で親が Flow/Table のとき。
-    private bool useAutoSizeWidth => autoSizeWidth || (valueBoxWidth < 0 && Parent is FlowLayoutPanel or TableLayoutPanel);
-
-    // 260617Cl 追加: HeaderWidth(>=0) によるヘッダ固定幅モードが有効か。Horizontal 配置のときのみ
-    // (Vertical では labelHeader.Dock=Top で Width が無意味かつ AutoSize=false が高さを壊すため不可)。
-    // DesignMode は問わない (デザイナ上でも数値欄の整列を確認できるようにする。labelHeader は内部子のため
-    //  消費側フォームの Designer.cs には直列化されず、再シリアライズ汚染は起きない)。
-    private bool headerWidthFixed => headerWidth >= 0 && labelOrientation == NumericBoxOrientation.Horizontal;
-
+    // HeaderWidth/FooterWidth/ValueBoxWidth を現在値からレイアウトへ一括反映する。
     private void applyWidthMode()
     {
         if (labelHeader == null || textBox == null) return;
 
-        // 260617Cl 追加: Vertical 配置ではヘッダは独立行(Dock=Top)で「ヘッダ vs 数値欄」の横幅競合が無い。
-        // よって幅モード(HeaderWidth/ValueBoxWidth=M2/M3)は一切適用せず、ヘッダは常に AutoSize=true に保つ。
-        // (Dock=Top で AutoSize=false にするとヘッダ高さがテキスト/フォントに追従せず壊れるため必須のガード。
-        //  headerWidthFixed は Horizontal を要求するが、併存する M2 経路には orientation ガードが無かった—ここで一元的に塞ぐ)。
-        if (labelOrientation != NumericBoxOrientation.Horizontal)
+        // Vertical: ヘッダ/フッタは独立行(Dock=Top/Bottom)で横幅競合が無い。
+        // 横幅ルールは適用せず従来どおり (ヘッダ/フッタ AutoSize / 数値欄 Fill / 本体は外形幅) に保つ。
+        if (!horizontalLayout)
         {
-            if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
-            labelHeader.AutoEllipsis = false;
+            applyLabelWidth(labelHeader, false, 0);
+            applyLabelWidth(labelFooter, false, 0);
+            if (textBox.Dock != DockStyle.Fill) textBox.Dock = DockStyle.Fill;
             if (AutoSize) AutoSize = false;
             return;
         }
 
-        // --- 以下 Horizontal 配置のみ ---
-        // 260617Cl 追加: HeaderWidth(>=0, Horizontal) によるヘッダ固定幅モード。
-        // 有効ならヘッダの AutoSize/Width をここで確定し、以降の widthMode(ValueBoxWidth)系の
-        // ヘッダ操作(M1 の AutoSize=true / M2 の動的クリップ)は抑止して固定幅を死守する。
-        // (HeaderWidth と ValueBoxWidth が両方有効な場合: M3 なら GetPreferredSize が header+box+… を返し両立。
-        //  M2 では全幅固定のためヘッダ固定が優先され、数値欄の最低幅は保証されない=固定幅指定側の責務)。
-        bool fixedHeader = headerWidthFixed;
-        if (fixedHeader)
-        {
-            if (labelHeader.AutoSize) labelHeader.AutoSize = false;
-            labelHeader.AutoEllipsis = true;                                                                                                          // はみ出しは ellipsis(+hover tooltip)でクリップ
-            int hw = LogicalToDeviceUnits(headerWidth);                                                                                               // 高DPI対応 (論理px→デバイスpx)
-            if (labelHeader.Width != hw) labelHeader.Width = hw;
-        }
+        // ① HeaderWidth / ①' FooterWidth: -1=AutoSize / >=0=固定幅(ellipsis でクリップ + hover tooltip)
+        applyLabelWidth(labelHeader, headerWidthFixed, headerWidth);
+        applyLabelWidth(labelFooter, footerWidthFixed, footerWidth);
 
-        if (!widthModeActive)
+        // ② ValueBoxWidth: 固定幅 (Dock=Left + Width) か、Fill (横伸縮) か。
+        // valueBoxFixed=false は「ValueBoxWidth=-1」または「本体が Dock=Fill/Top/Bottom で横引き伸ばし」のいずれか。
+        if (valueBoxFixed)
         {
-            // M1 (従来): ヘッダ AutoSize、全幅固定、ellipsis 無し。
-            if (!fixedHeader)
-            {
-                if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
-                labelHeader.AutoEllipsis = false;
-            }
-            if (AutoSize) AutoSize = false;
-            return;
-        }
-        if (useAutoSizeWidth)
-        {
-            // M3: ヘッダ AutoSize のまま(固定時を除く)、本体 AutoSize=true → GetPreferredSize が header+box+spin+footer を返す。
-            if (!fixedHeader)
-            {
-                if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
-                labelHeader.AutoEllipsis = false;
-            }
-            if (!AutoSize) AutoSize = true;
-            PerformLayout();
+            int bw = LogicalToDeviceUnits(valueBoxWidth);   // 高DPI対応
+            if (textBox.Dock != DockStyle.Left) textBox.Dock = DockStyle.Left;
+            if (textBox.Width != bw) textBox.Width = bw;
         }
         else
         {
-            // M2: 全幅固定。ヘッダを固定幅+ellipsis にし、Fill の数値欄を effectiveValueBoxWidth に死守する。
-            if (AutoSize) AutoSize = false;
-            if (!fixedHeader)
-            {
-                labelHeader.AutoSize = false;
-                labelHeader.AutoEllipsis = true;
-                layoutM2HeaderWidth();
-            }
+            if (textBox.Dock != DockStyle.Fill) textBox.Dock = DockStyle.Fill;
+        }
+
+        // valueBoxFixed のとき本体を AutoSize にし、全体サイズを GetPreferredSize の合算へ自動決定する。
+        // デザイナ上でもサイズ変更不可にするため DesignMode でも適用する (作者方針 260621Cl)。
+        // 260621Cl: AutoSizeMode を GrowAndShrink に明示する。既定の GrowOnly だと preferred 幅が下限になり
+        // 「広げられるが縮められない」=デザイナでサイズ変更不可にならない。GrowAndShrink で preferred 幅に固定する。
+        // 260621Cl: bool wantAuto = valueBoxFixed; は valueBoxFixed の 1:1 エイリアスのため除去しインライン化 (260622Cl)
+        if (valueBoxFixed && base.AutoSizeMode != System.Windows.Forms.AutoSizeMode.GrowAndShrink)
+            base.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        if (AutoSize != valueBoxFixed) AutoSize = valueBoxFixed;
+        if (valueBoxFixed) PerformLayout();
+    }
+
+    // ラベル(header/footer)を固定幅(ellipsis でクリップ+hover tooltip)または AutoSize に設定する。HeaderWidth/FooterWidth 共通。
+    // 同値なら代入しない (AutoEllipsis/AutoSize/Width の無駄な Invalidate・再レイアウトを抑止)。
+    private void applyLabelWidth(Label label, bool fixedWidth, int logicalWidth)
+    {
+        if (label == null) return;
+        if (fixedWidth)
+        {
+            if (label.AutoSize) label.AutoSize = false;
+            if (!label.AutoEllipsis) label.AutoEllipsis = true;
+            int w = LogicalToDeviceUnits(logicalWidth);   // 高DPI対応 (論理px→デバイスpx)
+            if (label.Width != w) label.Width = w;
+        }
+        else
+        {
+            if (!label.AutoSize) label.AutoSize = true;
+            if (label.AutoEllipsis) label.AutoEllipsis = false;
         }
     }
 
-    // M2: ヘッダ(Dock=Left,AutoSize=false)を「必要幅まで縮め、足りなければクリップ」して、Fill の数値欄を最低 box に死守する。
-    // ヘッダ幅 = min(ヘッダ必要幅, 全幅 − box − spin − footer)。
-    //  - ヘッダが短いフォーム: ヘッダ=必要幅 → 数値欄 = 残り(自然な広い幅) を温存 (=従来と同じ。広い数値欄を不要に削らない)。
-    //  - ヘッダが長い/翻訳で伸びた場合: ヘッダ=上限でクリップ(ellipsis+tooltip) → 数値欄は最低 box を死守。
-    // ＝ box は「固定」でなく「下限」。これにより既存の見た目を壊さず、翻訳で縮む時だけ保護が効く。
-    private void layoutM2HeaderWidth()
-    {
-        if (!widthModeActive || useAutoSizeWidth || labelHeader == null) return;
-        if (headerWidthFixed) return;                                                                                                                 // 260617Cl: ヘッダ固定幅モードでは applyWidthMode が幅を確定済み (動的クリップしない)
-        int box = LogicalToDeviceUnits(effectiveValueBoxWidth); // 高DPI対応
-        int footerW = labelFooter is { Visible: true } ? labelFooter.Width : 0;
-        int spinW = spinButtonPanel is { Visible: true } ? spinButtonPanel.Width : 0;
-        int maxHeader = Math.Max(0, ClientSize.Width - box - footerW - spinW);
-        int desired = labelHeader.Visible ? Math.Min(labelHeader.PreferredWidth, maxHeader) : 0;
-        if (labelHeader.Width != desired) labelHeader.Width = desired;
-    }
-
-    // 全幅変化(M2)/ヘッダ・フッタ可視変化 を幅モードへ反映する軽量フック。
-    private void refreshWidthMode()
-    {
-        if (!widthModeActive || labelOrientation != NumericBoxOrientation.Horizontal) return;                                                        // 260617Cl: Vertical は幅モード非対象
-        if (useAutoSizeWidth) PerformLayout(); else layoutM2HeaderWidth();
-    }
-
-    // M3: 親(Flow/Table)が問い合わせる優先サイズ = ヘッダ実必要幅 + 数値欄 + spin + footer。
+    // valueBoxFixed (本体 AutoSize) のとき親(または自身)が問い合わせる優先サイズ = ヘッダ + 数値欄 + フッタ + spin。
     public override Size GetPreferredSize(Size proposedSize)
     {
-        if (widthModeActive && useAutoSizeWidth && labelHeader != null && labelOrientation == NumericBoxOrientation.Horizontal)                       // 260617Cl: Vertical は横方向集計しない(ラベルは縦積み)
+        if (valueBoxFixed && labelHeader != null && textBox != null)
         {
-            int box = LogicalToDeviceUnits(effectiveValueBoxWidth);
-            int hw = labelHeader.Visible ? (headerWidthFixed ? LogicalToDeviceUnits(headerWidth) : labelHeader.PreferredWidth) : 0; // 260617Cl: 固定幅時は HeaderWidth を加算
-            int fw = labelFooter is { Visible: true } ? labelFooter.PreferredWidth : 0;
+            int hw = labelHeader.Visible ? (headerWidthFixed ? LogicalToDeviceUnits(headerWidth) : labelHeader.PreferredWidth) : 0;
+            int bw = LogicalToDeviceUnits(valueBoxWidth);
+            int fw = labelFooter is { Visible: true } ? (footerWidthFixed ? LogicalToDeviceUnits(footerWidth) : labelFooter.PreferredWidth) : 0;
             int sw = spinButtonPanel is { Visible: true } ? spinButtonPanel.Width : 0;
-            return new Size(hw + box + fw + sw, Height);
+            return new Size(hw + bw + fw + sw, Height);
         }
         return base.GetPreferredSize(proposedSize);
     }
 
-    // 260617Cl 追加: Handle 作成時 / Per-Monitor DPI 変化時に幅モードを再適用する。
-    // HeaderWidth(固定ヘッダ幅)・ValueBoxWidth(数値欄幅) は LogicalToDeviceUnits でデバイスpx化するが、
-    // プロパティ設定/ParentChanged はハンドル生成前(DeviceDpi=96)に走るため、その時点では論理値=物理値のまま
-    // stamp されてしまう。実際の DPI が確定する OnHandleCreated と、モニタ移動時の OnDpiChangedAfterParent で
-    // 再計算しないと高DPIでヘッダ幅がずれ、縦並びの数値欄整列が崩れる (姉妹コントロール IndexControl.cs:276-289 と同じ定石)。
+    // 260621Cl 追加: valueBoxFixed のとき幅を preferred に強制し、デザイナのサイズ変更を実効的に無効化する。
+    // 素の ControlDesigner は AutoResizeHandles=false でリサイズハンドルを消さず、AutoSizeMode=GrowAndShrink の
+    // レイアウト・スナップバックだけではデザイナのドラッグを確実に弾けない。bounds 設定段で幅を上書きすれば、
+    // デザイナがドラッグで与えた幅も即 preferred に戻る(=実効的にサイズ変更不可)。高さは content 追従で従来どおり可変。
+    // 260622Cl: DesignMode 限定に変更。実行時は AutoSize=true+GrowAndShrink が既に preferred 幅へスナップするため
+    // この上書きは不要で、毎 bounds 設定での GetPreferredSize (labelHeader/Footer.PreferredWidth のテキスト計測×2) が
+    // レイアウトのホットパスに乗っていた。デザイナのドラッグ抑止という本来の目的は DesignMode のみで足りる。
+    protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
+    {
+        if (DesignMode && valueBoxFixed && labelHeader != null && textBox != null)
+            width = GetPreferredSize(Size.Empty).Width;
+        base.SetBoundsCore(x, y, width, height, specified);
+    }
+
+    // 260617Cl: Handle 作成時 / Per-Monitor DPI 変化時に固定幅(HeaderWidth/ValueBoxWidth)を再スケールする。
+    // プロパティ設定/コンストラクタはハンドル生成前(DeviceDpi=96)に走るため、その時点では論理値=物理値のまま
+    // stamp される。実際の DPI が確定する OnHandleCreated と、モニタ移動時の OnDpiChangedAfterParent で
+    // 再計算しないと高DPIで固定幅がずれる (姉妹コントロール IndexControl.cs と同じ定石)。
     protected override void OnHandleCreated(EventArgs e)
     {
-        base.OnHandleCreated(e);                                                                                                                      // UserControlBase の ToolTip relay を維持
+        base.OnHandleCreated(e);   // UserControlBase の ToolTip relay を維持
         applyWidthMode();
     }
 

@@ -176,7 +176,7 @@ proyección</value>
     <value>Etiquetas de índices</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Dibujar etiquetas de índices</value>
+    <value>Etiquetas de índices</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
     <value>Definir color</value>

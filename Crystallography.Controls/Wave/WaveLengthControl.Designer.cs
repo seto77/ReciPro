@@ -93,14 +93,13 @@
             // 
             // numericBoxEnergy
             // 
-            resources.ApplyResources(numericBoxEnergy, "numericBoxEnergy");
             numericBoxEnergy.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergy.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxEnergy, "numericBoxEnergy");
             numericBoxEnergy.Minimum = 0D;
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.RoundErrorAccuracy = 8;
-            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip1"));
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
+            numericBoxEnergy.ValueBoxWidth = 105;
             numericBoxEnergy.ValueChanged += numericBoxEnergy_ValueChanged;
             // 
             // label1
@@ -111,14 +110,13 @@
             // 
             // numericBoxWaveLength
             // 
-            resources.ApplyResources(numericBoxWaveLength, "numericBoxWaveLength");
             numericBoxWaveLength.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxWaveLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxWaveLength, "numericBoxWaveLength");
             numericBoxWaveLength.Minimum = 0D;
             numericBoxWaveLength.Name = "numericBoxWaveLength";
             numericBoxWaveLength.RoundErrorAccuracy = 11;
-            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip1"));
+            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
+            numericBoxWaveLength.ValueBoxWidth = 105;
             numericBoxWaveLength.ValueChanged += numericBoxWaveLength_ValueChanged;
             // 
             // radioButtonNeutron

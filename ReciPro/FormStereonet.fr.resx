@@ -170,7 +170,7 @@ projection</value>
     <value>Étiquettes d'indices</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Tracer les étiquettes d'indices</value>
+    <value>Étiquettes d'indices</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
     <value>Choisir couleur</value>

@@ -34,10 +34,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRotationMatrix));
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
             buttonViewAlongBeam = new System.Windows.Forms.Button();
             buttonViewIsometric = new System.Windows.Forms.Button();
             checkBoxLink = new System.Windows.Forms.CheckBox();
@@ -64,12 +60,6 @@
             radioButton1stY = new System.Windows.Forms.RadioButton();
             radioButton1stX = new System.Windows.Forms.RadioButton();
             buttonResetExpEuler = new System.Windows.Forms.Button();
-            panelViewOptions = new System.Windows.Forms.Panel();
-            panel1 = new System.Windows.Forms.Panel();
-            groupBoxReciProCoordinate = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             numericBox11 = new NumericBox();
             numericBox12 = new NumericBox();
             numericBox13 = new NumericBox();
@@ -79,14 +69,18 @@
             numericBox23 = new NumericBox();
             numericBox31 = new NumericBox();
             numericBox32 = new NumericBox();
-            label3 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            panelViewOptions = new System.Windows.Forms.Panel();
+            panel1 = new System.Windows.Forms.Panel();
+            groupBoxReciProCoordinate = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             groupBoxExperimentalCoordinate = new System.Windows.Forms.GroupBox();
             flowLayoutPanelFirstAxis = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSecondAxis = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelThirdAxis = new System.Windows.Forms.FlowLayoutPanel();
-            label5 = new System.Windows.Forms.Label();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             panelViewOptions.SuspendLayout();
             groupBoxReciProCoordinate.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -95,7 +89,16 @@
             flowLayoutPanelSecondAxis.SuspendLayout();
             flowLayoutPanelThirdAxis.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
+            // 
+            // toolTip
+            // 
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // buttonViewAlongBeam
             // 
@@ -139,77 +142,84 @@
             // 
             // numericBoxPsi
             // 
-            resources.ApplyResources(numericBoxPsi, "numericBoxPsi");
             numericBoxPsi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxPsi, "numericBoxPsi");
             numericBoxPsi.Name = "numericBoxPsi";
             numericBoxPsi.ReadOnly = true;
             numericBoxPsi.SkipEventDuringInput = false;
             numericBoxPsi.SmartIncrement = true;
-            numericBoxPsi.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPsi, resources.GetString("numericBoxPsi.ToolTip"));
+            numericBoxPsi.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPsi.ValueFontSize = 9F;
             // 
             // numericBoxTheta
             // 
-            resources.ApplyResources(numericBoxTheta, "numericBoxTheta");
             numericBoxTheta.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxTheta, "numericBoxTheta");
             numericBoxTheta.Name = "numericBoxTheta";
             numericBoxTheta.ReadOnly = true;
             numericBoxTheta.SkipEventDuringInput = false;
             numericBoxTheta.SmartIncrement = true;
-            numericBoxTheta.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTheta, resources.GetString("numericBoxTheta.ToolTip"));
+            numericBoxTheta.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTheta.ValueFontSize = 9F;
             // 
             // numericBoxPhi
             // 
-            resources.ApplyResources(numericBoxPhi, "numericBoxPhi");
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxPhi, "numericBoxPhi");
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.ReadOnly = true;
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
-            numericBoxPhi.ValueBackColor = System.Drawing.Color.Yellow;
             numericBoxPhi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip"));
+            numericBoxPhi.ValueBackColor = System.Drawing.Color.Yellow;
+            numericBoxPhi.ValueBoxWidth = 48;
+            numericBoxPhi.ValueFontSize = 9F;
             // 
             // numericBoxExp1
             // 
-            resources.ApplyResources(numericBoxExp1, "numericBoxExp1");
             numericBoxExp1.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp1.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxExp1, "numericBoxExp1");
             numericBoxExp1.Name = "numericBoxExp1";
             numericBoxExp1.ShowUpDown = true;
             numericBoxExp1.SkipEventDuringInput = false;
             numericBoxExp1.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp1, resources.GetString("numericBoxExp1.ToolTip"));
+            numericBoxExp1.ValueFontSize = 9F;
             numericBoxExp1.ValueChanged += NumericBoxExp_ValueChanged;
             // 
             // numericBoxExp2
             // 
-            resources.ApplyResources(numericBoxExp2, "numericBoxExp2");
             numericBoxExp2.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp2.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxExp2, "numericBoxExp2");
             numericBoxExp2.Name = "numericBoxExp2";
             numericBoxExp2.ShowUpDown = true;
             numericBoxExp2.SkipEventDuringInput = false;
             numericBoxExp2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp2, resources.GetString("numericBoxExp2.ToolTip"));
+            numericBoxExp2.ValueFontSize = 9F;
             numericBoxExp2.ValueChanged += NumericBoxExp_ValueChanged;
             // 
             // numericBoxExp3
             // 
-            resources.ApplyResources(numericBoxExp3, "numericBoxExp3");
             numericBoxExp3.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp3.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxExp3, "numericBoxExp3");
             numericBoxExp3.Name = "numericBoxExp3";
             numericBoxExp3.ShowUpDown = true;
             numericBoxExp3.SkipEventDuringInput = false;
             numericBoxExp3.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp3, resources.GetString("numericBoxExp3.ToolTip"));
+            numericBoxExp3.ValueFontSize = 9F;
             numericBoxExp3.ValueChanged += NumericBoxExp_ValueChanged;
             // 
             // checkBoxEnable2nd
@@ -348,6 +358,147 @@
             buttonResetExpEuler.UseVisualStyleBackColor = true;
             buttonResetExpEuler.Click += buttonResetExpEuler_Click;
             // 
+            // numericBox11
+            // 
+            numericBox11.BackColor = System.Drawing.SystemColors.Control;
+            numericBox11.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox11, "numericBox11");
+            numericBox11.Name = "numericBox11";
+            numericBox11.ReadOnly = true;
+            numericBox11.SkipEventDuringInput = false;
+            numericBox11.SmartIncrement = true;
+            numericBox11.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox11, resources.GetString("numericBox11.ToolTip"));
+            numericBox11.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox11.ValueFontSize = 9F;
+            numericBox11.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox12
+            // 
+            numericBox12.BackColor = System.Drawing.SystemColors.Control;
+            numericBox12.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox12, "numericBox12");
+            numericBox12.Name = "numericBox12";
+            numericBox12.ReadOnly = true;
+            numericBox12.SkipEventDuringInput = false;
+            numericBox12.SmartIncrement = true;
+            numericBox12.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox12, resources.GetString("numericBox12.ToolTip"));
+            numericBox12.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox12.ValueFontSize = 9F;
+            numericBox12.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox13
+            // 
+            numericBox13.BackColor = System.Drawing.SystemColors.Control;
+            numericBox13.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox13, "numericBox13");
+            numericBox13.Name = "numericBox13";
+            numericBox13.ReadOnly = true;
+            numericBox13.SkipEventDuringInput = false;
+            numericBox13.SmartIncrement = true;
+            numericBox13.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox13, resources.GetString("numericBox13.ToolTip"));
+            numericBox13.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox13.ValueFontSize = 9F;
+            numericBox13.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox21
+            // 
+            numericBox21.BackColor = System.Drawing.SystemColors.Control;
+            numericBox21.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox21, "numericBox21");
+            numericBox21.Name = "numericBox21";
+            numericBox21.ReadOnly = true;
+            numericBox21.SkipEventDuringInput = false;
+            numericBox21.SmartIncrement = true;
+            numericBox21.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox21, resources.GetString("numericBox21.ToolTip"));
+            numericBox21.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox21.ValueFontSize = 9F;
+            numericBox21.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox22
+            // 
+            numericBox22.BackColor = System.Drawing.SystemColors.Control;
+            numericBox22.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox22, "numericBox22");
+            numericBox22.Name = "numericBox22";
+            numericBox22.ReadOnly = true;
+            numericBox22.SkipEventDuringInput = false;
+            numericBox22.SmartIncrement = true;
+            numericBox22.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox22, resources.GetString("numericBox22.ToolTip"));
+            numericBox22.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox22.ValueFontSize = 9F;
+            numericBox22.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox33
+            // 
+            numericBox33.BackColor = System.Drawing.SystemColors.Control;
+            numericBox33.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox33, "numericBox33");
+            numericBox33.Name = "numericBox33";
+            numericBox33.ReadOnly = true;
+            numericBox33.SkipEventDuringInput = false;
+            numericBox33.SmartIncrement = true;
+            numericBox33.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox33, resources.GetString("numericBox33.ToolTip"));
+            numericBox33.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox33.ValueFontSize = 9F;
+            numericBox33.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox23
+            // 
+            numericBox23.BackColor = System.Drawing.SystemColors.Control;
+            numericBox23.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox23, "numericBox23");
+            numericBox23.Name = "numericBox23";
+            numericBox23.ReadOnly = true;
+            numericBox23.SkipEventDuringInput = false;
+            numericBox23.SmartIncrement = true;
+            numericBox23.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox23, resources.GetString("numericBox23.ToolTip"));
+            numericBox23.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox23.ValueFontSize = 9F;
+            numericBox23.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox31
+            // 
+            numericBox31.BackColor = System.Drawing.SystemColors.Control;
+            numericBox31.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox31, "numericBox31");
+            numericBox31.Name = "numericBox31";
+            numericBox31.ReadOnly = true;
+            numericBox31.SkipEventDuringInput = false;
+            numericBox31.SmartIncrement = true;
+            numericBox31.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox31, resources.GetString("numericBox31.ToolTip"));
+            numericBox31.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox31.ValueFontSize = 9F;
+            numericBox31.ValueChanged += numericBox_ValueChanged;
+            // 
+            // numericBox32
+            // 
+            numericBox32.BackColor = System.Drawing.SystemColors.Control;
+            numericBox32.DecimalPlaces = 5;
+            resources.ApplyResources(numericBox32, "numericBox32");
+            numericBox32.Name = "numericBox32";
+            numericBox32.ReadOnly = true;
+            numericBox32.SkipEventDuringInput = false;
+            numericBox32.SmartIncrement = true;
+            numericBox32.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBox32, resources.GetString("numericBox32.ToolTip"));
+            numericBox32.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBox32.ValueFontSize = 9F;
+            numericBox32.ValueChanged += numericBox_ValueChanged;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
+            // 
             // panelViewOptions
             // 
             resources.ApplyResources(panelViewOptions, "panelViewOptions");
@@ -365,183 +516,27 @@
             // 
             // groupBoxReciProCoordinate
             // 
-            groupBoxReciProCoordinate.Controls.Add(numericBoxPhi);
-            groupBoxReciProCoordinate.Controls.Add(numericBoxTheta);
-            groupBoxReciProCoordinate.Controls.Add(numericBoxPsi);
-            groupBoxReciProCoordinate.Controls.Add(buttonPaste);
-            groupBoxReciProCoordinate.Controls.Add(buttonCopy);
-            groupBoxReciProCoordinate.Controls.Add(label1);
-            groupBoxReciProCoordinate.Controls.Add(label4);
-            groupBoxReciProCoordinate.Controls.Add(tableLayoutPanel1);
-            groupBoxReciProCoordinate.Controls.Add(label3);
-            groupBoxReciProCoordinate.Controls.Add(label2);
+            groupBoxReciProCoordinate.Controls.Add(flowLayoutPanel1);
             resources.ApplyResources(groupBoxReciProCoordinate, "groupBoxReciProCoordinate");
             groupBoxReciProCoordinate.Name = "groupBoxReciProCoordinate";
             groupBoxReciProCoordinate.TabStop = false;
             // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
-            label1.Name = "label1";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
-            label4.Name = "label4";
-            // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
-            tableLayoutPanel1.Controls.Add(numericBox11, 0, 0);
-            tableLayoutPanel1.Controls.Add(numericBox12, 1, 0);
-            tableLayoutPanel1.Controls.Add(numericBox13, 2, 0);
-            tableLayoutPanel1.Controls.Add(numericBox21, 0, 1);
-            tableLayoutPanel1.Controls.Add(numericBox22, 1, 1);
-            tableLayoutPanel1.Controls.Add(numericBox33, 2, 2);
-            tableLayoutPanel1.Controls.Add(numericBox23, 2, 1);
-            tableLayoutPanel1.Controls.Add(numericBox31, 0, 2);
-            tableLayoutPanel1.Controls.Add(numericBox32, 1, 2);
+            tableLayoutPanel1.Controls.Add(numericBoxPsi, 0, 2);
+            tableLayoutPanel1.Controls.Add(numericBox11, 2, 0);
+            tableLayoutPanel1.Controls.Add(numericBox12, 3, 0);
+            tableLayoutPanel1.Controls.Add(numericBox13, 4, 0);
+            tableLayoutPanel1.Controls.Add(numericBox21, 2, 1);
+            tableLayoutPanel1.Controls.Add(numericBox22, 3, 1);
+            tableLayoutPanel1.Controls.Add(numericBox33, 4, 2);
+            tableLayoutPanel1.Controls.Add(numericBox23, 4, 1);
+            tableLayoutPanel1.Controls.Add(numericBox31, 2, 2);
+            tableLayoutPanel1.Controls.Add(numericBox32, 3, 2);
+            tableLayoutPanel1.Controls.Add(numericBoxPhi, 0, 0);
+            tableLayoutPanel1.Controls.Add(numericBoxTheta, 0, 1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // numericBox11
-            // 
-            resources.ApplyResources(numericBox11, "numericBox11");
-            toolTip.SetToolTip(numericBox11, resources.GetString("numericBox11.ToolTip")); // 260531Cl
-            numericBox11.BackColor = System.Drawing.SystemColors.Control;
-            numericBox11.DecimalPlaces = 5;
-            numericBox11.Name = "numericBox11";
-            numericBox11.ReadOnly = true;
-            numericBox11.SkipEventDuringInput = false;
-            numericBox11.SmartIncrement = true;
-            numericBox11.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox11.ThousandsSeparator = true;
-            numericBox11.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox12
-            // 
-            resources.ApplyResources(numericBox12, "numericBox12");
-            toolTip.SetToolTip(numericBox12, resources.GetString("numericBox12.ToolTip")); // 260531Cl
-            numericBox12.BackColor = System.Drawing.SystemColors.Control;
-            numericBox12.DecimalPlaces = 5;
-            numericBox12.Name = "numericBox12";
-            numericBox12.ReadOnly = true;
-            numericBox12.SkipEventDuringInput = false;
-            numericBox12.SmartIncrement = true;
-            numericBox12.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox12.ThousandsSeparator = true;
-            numericBox12.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox13
-            // 
-            resources.ApplyResources(numericBox13, "numericBox13");
-            toolTip.SetToolTip(numericBox13, resources.GetString("numericBox13.ToolTip")); // 260531Cl
-            numericBox13.BackColor = System.Drawing.SystemColors.Control;
-            numericBox13.DecimalPlaces = 5;
-            numericBox13.Name = "numericBox13";
-            numericBox13.ReadOnly = true;
-            numericBox13.SkipEventDuringInput = false;
-            numericBox13.SmartIncrement = true;
-            numericBox13.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox13.ThousandsSeparator = true;
-            numericBox13.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox21
-            // 
-            resources.ApplyResources(numericBox21, "numericBox21");
-            toolTip.SetToolTip(numericBox21, resources.GetString("numericBox21.ToolTip")); // 260531Cl
-            numericBox21.BackColor = System.Drawing.SystemColors.Control;
-            numericBox21.DecimalPlaces = 5;
-            numericBox21.Name = "numericBox21";
-            numericBox21.ReadOnly = true;
-            numericBox21.SkipEventDuringInput = false;
-            numericBox21.SmartIncrement = true;
-            numericBox21.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox21.ThousandsSeparator = true;
-            numericBox21.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox22
-            // 
-            resources.ApplyResources(numericBox22, "numericBox22");
-            toolTip.SetToolTip(numericBox22, resources.GetString("numericBox22.ToolTip")); // 260531Cl
-            numericBox22.BackColor = System.Drawing.SystemColors.Control;
-            numericBox22.DecimalPlaces = 5;
-            numericBox22.Name = "numericBox22";
-            numericBox22.ReadOnly = true;
-            numericBox22.SkipEventDuringInput = false;
-            numericBox22.SmartIncrement = true;
-            numericBox22.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox22.ThousandsSeparator = true;
-            numericBox22.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox33
-            // 
-            resources.ApplyResources(numericBox33, "numericBox33");
-            toolTip.SetToolTip(numericBox33, resources.GetString("numericBox33.ToolTip")); // 260531Cl
-            numericBox33.BackColor = System.Drawing.SystemColors.Control;
-            numericBox33.DecimalPlaces = 5;
-            numericBox33.Name = "numericBox33";
-            numericBox33.ReadOnly = true;
-            numericBox33.SkipEventDuringInput = false;
-            numericBox33.SmartIncrement = true;
-            numericBox33.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox33.ThousandsSeparator = true;
-            numericBox33.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox23
-            // 
-            resources.ApplyResources(numericBox23, "numericBox23");
-            toolTip.SetToolTip(numericBox23, resources.GetString("numericBox23.ToolTip")); // 260531Cl
-            numericBox23.BackColor = System.Drawing.SystemColors.Control;
-            numericBox23.DecimalPlaces = 5;
-            numericBox23.Name = "numericBox23";
-            numericBox23.ReadOnly = true;
-            numericBox23.SkipEventDuringInput = false;
-            numericBox23.SmartIncrement = true;
-            numericBox23.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox23.ThousandsSeparator = true;
-            numericBox23.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox31
-            // 
-            resources.ApplyResources(numericBox31, "numericBox31");
-            toolTip.SetToolTip(numericBox31, resources.GetString("numericBox31.ToolTip")); // 260531Cl
-            numericBox31.BackColor = System.Drawing.SystemColors.Control;
-            numericBox31.DecimalPlaces = 5;
-            numericBox31.Name = "numericBox31";
-            numericBox31.ReadOnly = true;
-            numericBox31.SkipEventDuringInput = false;
-            numericBox31.SmartIncrement = true;
-            numericBox31.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox31.ThousandsSeparator = true;
-            numericBox31.ValueChanged += numericBox_ValueChanged;
-            // 
-            // numericBox32
-            // 
-            resources.ApplyResources(numericBox32, "numericBox32");
-            toolTip.SetToolTip(numericBox32, resources.GetString("numericBox32.ToolTip")); // 260531Cl
-            numericBox32.BackColor = System.Drawing.SystemColors.Control;
-            numericBox32.DecimalPlaces = 5;
-            numericBox32.Name = "numericBox32";
-            numericBox32.ReadOnly = true;
-            numericBox32.SkipEventDuringInput = false;
-            numericBox32.SmartIncrement = true;
-            numericBox32.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBox32.ThousandsSeparator = true;
-            numericBox32.ValueChanged += numericBox_ValueChanged;
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
-            label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
-            label2.Name = "label2";
             // 
             // groupBoxExperimentalCoordinate
             // 
@@ -586,12 +581,6 @@
             flowLayoutPanelThirdAxis.Controls.Add(radioButton3rdZ);
             flowLayoutPanelThirdAxis.Name = "flowLayoutPanelThirdAxis";
             // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
-            label5.Name = "label5";
-            // 
             // tableLayoutPanel2
             // 
             resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
@@ -600,10 +589,23 @@
             tableLayoutPanel2.Controls.Add(panelViewOptions, 1, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(tableLayoutPanel1);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(buttonCopy);
+            flowLayoutPanel2.Controls.Add(buttonPaste);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
             // FormRotationMatrix
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(tableLayoutPanel2);
@@ -614,8 +616,8 @@
             panelViewOptions.ResumeLayout(false);
             panelViewOptions.PerformLayout();
             groupBoxReciProCoordinate.ResumeLayout(false);
-            groupBoxReciProCoordinate.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             groupBoxExperimentalCoordinate.ResumeLayout(false);
             groupBoxExperimentalCoordinate.PerformLayout();
             flowLayoutPanelFirstAxis.ResumeLayout(false);
@@ -626,6 +628,10 @@
             flowLayoutPanelThirdAxis.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -642,8 +648,6 @@
         private NumericBox numericBoxPsi;
         private System.Windows.Forms.Button buttonPaste;
         private System.Windows.Forms.Button buttonCopy;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private NumericBox numericBox11;
         private NumericBox numericBox12;
@@ -654,8 +658,6 @@
         private NumericBox numericBox23;
         private NumericBox numericBox31;
         private NumericBox numericBox32;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxExperimentalCoordinate;
         private System.Windows.Forms.Button buttonResetExpEuler;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFirstAxis;
@@ -680,5 +682,7 @@
         private NumericBox numericBoxExp1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

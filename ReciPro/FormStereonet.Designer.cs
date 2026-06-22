@@ -499,8 +499,8 @@ namespace ReciPro
             // 
             // groupBoxSphere
             // 
-            groupBoxSphere.Controls.Add(flowLayoutPanelSphere);
             resources.ApplyResources(groupBoxSphere, "groupBoxSphere");
+            groupBoxSphere.Controls.Add(flowLayoutPanelSphere);
             groupBoxSphere.Name = "groupBoxSphere";
             groupBoxSphere.TabStop = false;
             // 
@@ -528,8 +528,8 @@ namespace ReciPro
             // 
             // groupBoxProjectionScheme
             // 
-            groupBoxProjectionScheme.Controls.Add(flowLayoutPanelProjectionScheme);
             resources.ApplyResources(groupBoxProjectionScheme, "groupBoxProjectionScheme");
+            groupBoxProjectionScheme.Controls.Add(flowLayoutPanelProjectionScheme);
             groupBoxProjectionScheme.Name = "groupBoxProjectionScheme";
             groupBoxProjectionScheme.TabStop = false;
             // 
@@ -576,7 +576,7 @@ namespace ReciPro
             checkBoxAnomalousDispersion.Checked = true;
             checkBoxAnomalousDispersion.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxAnomalousDispersion.Name = "checkBoxAnomalousDispersion";
-            toolTip.SetToolTip(checkBoxAnomalousDispersion, resources.GetString("checkBoxAnomalousDispersion.ToolTip"));// 260606Cl ツールチップ配線
+            toolTip.SetToolTip(checkBoxAnomalousDispersion, resources.GetString("checkBoxAnomalousDispersion.ToolTip"));
             checkBoxAnomalousDispersion.UseVisualStyleBackColor = true;
             checkBoxAnomalousDispersion.CheckedChanged += checkBoxAnomalousDispersion_CheckedChanged;
             // 
@@ -825,7 +825,6 @@ namespace ReciPro
             indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis.Name = "indexControlAxis";
             toolTip.SetToolTip(indexControlAxis, resources.GetString("indexControlAxis.ToolTip"));
-            indexControlAxis.Values = ((int, int, int))resources.GetObject("indexControlAxis.Values");
             // 
             // radioButtonCircleByPlanes
             // 
@@ -855,7 +854,6 @@ namespace ReciPro
             indexControlCirclePlane1.Name = "indexControlCirclePlane1";
             indexControlCirclePlane1.SubScript = "1";
             toolTip.SetToolTip(indexControlCirclePlane1, resources.GetString("indexControlCirclePlane1.ToolTip"));
-            indexControlCirclePlane1.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane1.Values");
             // 
             // flowLayoutPanel2
             // 
@@ -871,7 +869,6 @@ namespace ReciPro
             indexControlCirclePlane2.Name = "indexControlCirclePlane2";
             indexControlCirclePlane2.SubScript = "2";
             toolTip.SetToolTip(indexControlCirclePlane2, resources.GetString("indexControlCirclePlane2.ToolTip"));
-            indexControlCirclePlane2.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane2.Values");
             // 
             // tabPage3
             // 
@@ -966,118 +963,118 @@ namespace ReciPro
             // 
             // numericBoxRxSpeed
             // 
-            resources.ApplyResources(numericBoxRxSpeed, "numericBoxRxSpeed");
             numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRxSpeed, "numericBoxRxSpeed");
             numericBoxRxSpeed.Name = "numericBoxRxSpeed";
             numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
             numericBoxRxSpeed.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip"));
             numericBoxRxSpeed.Value = 18D;
             numericBoxRxSpeed.ValueFontSize = 8F;
             // 
             // numericBoxRySpeed
             // 
-            resources.ApplyResources(numericBoxRySpeed, "numericBoxRySpeed");
             numericBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRySpeed, "numericBoxRySpeed");
             numericBoxRySpeed.Name = "numericBoxRySpeed";
             numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
             numericBoxRySpeed.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip"));
             numericBoxRySpeed.Value = 1D;
             numericBoxRySpeed.ValueFontSize = 8F;
             // 
             // numericBoxRzSpeed
             // 
-            resources.ApplyResources(numericBoxRzSpeed, "numericBoxRzSpeed");
             numericBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRzSpeed, "numericBoxRzSpeed");
             numericBoxRzSpeed.Name = "numericBoxRzSpeed";
             numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
             numericBoxRzSpeed.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip"));
             numericBoxRzSpeed.Value = 2D;
             numericBoxRzSpeed.ValueFontSize = 8F;
             // 
             // numericBoxTotalTime
             // 
-            resources.ApplyResources(numericBoxTotalTime, "numericBoxTotalTime");
             numericBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxTotalTime, "numericBoxTotalTime");
             numericBoxTotalTime.Name = "numericBoxTotalTime";
             numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
             numericBoxTotalTime.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip1"));
+            toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip"));
             numericBoxTotalTime.Value = 100D;
             numericBoxTotalTime.ValueFontSize = 8F;
             // 
             // numericBoxAngularSpeed
             // 
-            resources.ApplyResources(numericBoxAngularSpeed, "numericBoxAngularSpeed");
             numericBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxAngularSpeed, "numericBoxAngularSpeed");
             numericBoxAngularSpeed.Name = "numericBoxAngularSpeed";
             numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
             numericBoxAngularSpeed.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip1"));
+            toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip"));
             numericBoxAngularSpeed.Value = 30D;
             numericBoxAngularSpeed.ValueFontSize = 8F;
             // 
             // numericBoxRyStep
             // 
-            resources.ApplyResources(numericBoxRyStep, "numericBoxRyStep");
             numericBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRyStep, "numericBoxRyStep");
             numericBoxRyStep.Name = "numericBoxRyStep";
             numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
             numericBoxRyStep.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip"));
             numericBoxRyStep.Value = 0.2D;
             numericBoxRyStep.ValueFontSize = 8F;
             // 
             // numericBoxRadialAngle
             // 
-            resources.ApplyResources(numericBoxRadialAngle, "numericBoxRadialAngle");
             numericBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRadialAngle, "numericBoxRadialAngle");
             numericBoxRadialAngle.Name = "numericBoxRadialAngle";
             numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
             numericBoxRadialAngle.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip"));
             numericBoxRadialAngle.Value = 8D;
             numericBoxRadialAngle.ValueFontSize = 8F;
             // 
             // numericBoxRyOscillation
             // 
-            resources.ApplyResources(numericBoxRyOscillation, "numericBoxRyOscillation");
             numericBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRyOscillation, "numericBoxRyOscillation");
             numericBoxRyOscillation.Name = "numericBoxRyOscillation";
             numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
             numericBoxRyOscillation.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip"));
             numericBoxRyOscillation.Value = 8D;
             numericBoxRyOscillation.ValueFontSize = 8F;
             // 
             // numericBoxRzOscillation
             // 
-            resources.ApplyResources(numericBoxRzOscillation, "numericBoxRzOscillation");
             numericBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxRzOscillation, "numericBoxRzOscillation");
             numericBoxRzOscillation.Name = "numericBoxRzOscillation";
             numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
             numericBoxRzOscillation.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip1"));
+            toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip"));
             numericBoxRzOscillation.Value = 8D;
             numericBoxRzOscillation.ValueFontSize = 8F;
             // 
@@ -1289,8 +1286,9 @@ namespace ReciPro
             numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxHighStructureFactor.ShowUpDown = true;
             numericBoxHighStructureFactor.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip1"));
+            toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip"));
             numericBoxHighStructureFactor.Value = 100D;
+            numericBoxHighStructureFactor.ValueBoxWidth = 40;
             numericBoxHighStructureFactor.ValueFontSize = 9F;
             numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
             // 
@@ -1578,6 +1576,7 @@ namespace ReciPro
             flowLayoutPanel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
             groupBoxMode.ResumeLayout(false);
+            groupBoxMode.PerformLayout();
             groupBoxSphere.ResumeLayout(false);
             groupBoxSphere.PerformLayout();
             flowLayoutPanelSphere.ResumeLayout(false);

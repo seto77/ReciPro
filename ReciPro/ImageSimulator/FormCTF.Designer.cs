@@ -24,14 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container(); // 260531Cl
-            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCTF));
-            flowLayoutPanelSTEM = new System.Windows.Forms.FlowLayoutPanel();
+            toolTip = new System.Windows.Forms.ToolTip(components);
             radioButtonCTF_coherent = new System.Windows.Forms.RadioButton();
             radioButtonCTF_Incoherent = new System.Windows.Forms.RadioButton();
             checkBoxSinW = new System.Windows.Forms.CheckBox();
@@ -40,12 +35,13 @@
             checkBoxPCTF = new System.Windows.Forms.CheckBox();
             buttonCopyGraph = new System.Windows.Forms.Button();
             numericBoxMaxU1 = new NumericBox();
-            graphControl = new GraphControl();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxCosW = new System.Windows.Forms.CheckBox();
             checkBoxEs_STEM = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxACTF = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelSTEM = new System.Windows.Forms.FlowLayoutPanel();
+            graphControl = new GraphControl();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             pictureBoxA_STEM = new System.Windows.Forms.PictureBox();
             pictureBoxA_HRTEM = new System.Windows.Forms.PictureBox();
             pictureBoxSTEM_CTFI = new System.Windows.Forms.PictureBox();
@@ -55,7 +51,6 @@
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSTEM.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).BeginInit();
@@ -65,17 +60,12 @@
             flowLayoutPanel6.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanelSTEM
+            // toolTip
             // 
-            flowLayoutPanelSTEM.AutoSize = true;
-            flowLayoutPanelSTEM.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelSTEM.Controls.Add(radioButtonCTF_coherent);
-            flowLayoutPanelSTEM.Controls.Add(radioButtonCTF_Incoherent);
-            flowLayoutPanelSTEM.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanelSTEM.Location = new System.Drawing.Point(3, 3);
-            flowLayoutPanelSTEM.Name = "flowLayoutPanelSTEM";
-            flowLayoutPanelSTEM.Size = new System.Drawing.Size(706, 27);
-            flowLayoutPanelSTEM.TabIndex = 60;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // radioButtonCTF_coherent
             // 
@@ -85,11 +75,11 @@
             radioButtonCTF_coherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_coherent.Location = new System.Drawing.Point(3, 3);
             radioButtonCTF_coherent.Name = "radioButtonCTF_coherent";
-            toolTip.SetToolTip(radioButtonCTF_coherent, resources.GetString("radioButtonCTF_coherent.ToolTip")); // 260531Cl
             radioButtonCTF_coherent.Size = new System.Drawing.Size(130, 21);
             radioButtonCTF_coherent.TabIndex = 53;
             radioButtonCTF_coherent.TabStop = true;
             radioButtonCTF_coherent.Text = "Coherent imaging";
+            toolTip.SetToolTip(radioButtonCTF_coherent, "Treat STEM (Scanning TEM) as coherent\r\nimaging: show the Sin[W], Cos[W], Es,\r\nEc, PCTF and ACTF curves as for HRTEM");
             radioButtonCTF_coherent.UseVisualStyleBackColor = true;
             radioButtonCTF_coherent.CheckedChanged += radioButtonCTF_coherent_CheckedChanged;
             // 
@@ -100,10 +90,10 @@
             radioButtonCTF_Incoherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_Incoherent.Location = new System.Drawing.Point(139, 3);
             radioButtonCTF_Incoherent.Name = "radioButtonCTF_Incoherent";
-            toolTip.SetToolTip(radioButtonCTF_Incoherent, resources.GetString("radioButtonCTF_Incoherent.ToolTip")); // 260531Cl
             radioButtonCTF_Incoherent.Size = new System.Drawing.Size(138, 21);
             radioButtonCTF_Incoherent.TabIndex = 53;
             radioButtonCTF_Incoherent.Text = "Incoherent imaging";
+            toolTip.SetToolTip(radioButtonCTF_Incoherent, "Treat STEM (Scanning TEM) as incoherent\r\nimaging: compute a single CTFI curve by\r\nintegrating over the convergence aperture");
             radioButtonCTF_Incoherent.UseVisualStyleBackColor = true;
             // 
             // checkBoxSinW
@@ -118,9 +108,9 @@
             checkBoxSinW.Location = new System.Drawing.Point(3, 1);
             checkBoxSinW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxSinW.Name = "checkBoxSinW";
-            toolTip.SetToolTip(checkBoxSinW, resources.GetString("checkBoxSinW.ToolTip")); // 260531Cl
             checkBoxSinW.Size = new System.Drawing.Size(312, 32);
             checkBoxSinW.TabIndex = 5;
+            toolTip.SetToolTip(checkBoxSinW, "Plot Sin[W(u)], the sine of the wave-aberration W(u):\r\nthe phase-contrast core of the transfer function");
             checkBoxSinW.UseVisualStyleBackColor = true;
             checkBoxSinW.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -132,12 +122,12 @@
             checkBoxEs_HRTEM.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxEs_HRTEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_HRTEM.Image");
             checkBoxEs_HRTEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_HRTEM.Location = new System.Drawing.Point(201, 35);
+            checkBoxEs_HRTEM.Location = new System.Drawing.Point(3, 35);
             checkBoxEs_HRTEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_HRTEM.Name = "checkBoxEs_HRTEM";
-            toolTip.SetToolTip(checkBoxEs_HRTEM, resources.GetString("checkBoxEs_HRTEM.ToolTip")); // 260531Cl
             checkBoxEs_HRTEM.Size = new System.Drawing.Size(304, 32);
             checkBoxEs_HRTEM.TabIndex = 6;
+            toolTip.SetToolTip(checkBoxEs_HRTEM, "Plot Es(u), the spatial coherence envelope\r\nfor HRTEM (High-Resolution TEM): contrast\r\ndamping from beam-divergence (semi-angle beta)");
             checkBoxEs_HRTEM.UseVisualStyleBackColor = true;
             checkBoxEs_HRTEM.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -149,12 +139,12 @@
             checkBoxEc.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxEc.Image = (System.Drawing.Image)resources.GetObject("checkBoxEc.Image");
             checkBoxEc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEc.Location = new System.Drawing.Point(3, 69);
+            checkBoxEc.Location = new System.Drawing.Point(307, 35);
             checkBoxEc.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEc.Name = "checkBoxEc";
-            toolTip.SetToolTip(checkBoxEc, resources.GetString("checkBoxEc.ToolTip")); // 260531Cl
             checkBoxEc.Size = new System.Drawing.Size(288, 32);
             checkBoxEc.TabIndex = 7;
+            toolTip.SetToolTip(checkBoxEc, "Plot Ec(u), the temporal (chromatic) coherence\r\nenvelope: contrast damping from chromatic\r\naberration and high-tension / energy spread");
             checkBoxEc.UseVisualStyleBackColor = true;
             checkBoxEc.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -169,10 +159,10 @@
             checkBoxPCTF.Location = new System.Drawing.Point(0, 1);
             checkBoxPCTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxPCTF.Name = "checkBoxPCTF";
-            toolTip.SetToolTip(checkBoxPCTF, resources.GetString("checkBoxPCTF.ToolTip")); // 260531Cl
             checkBoxPCTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             checkBoxPCTF.Size = new System.Drawing.Size(349, 32);
             checkBoxPCTF.TabIndex = 8;
+            toolTip.SetToolTip(checkBoxPCTF, "Plot the PCTF (Phase Contrast Transfer\r\nFunction) = Sin[W(u)] x Es x Ec, the\r\neffective phase transfer within the aperture");
             checkBoxPCTF.UseVisualStyleBackColor = true;
             checkBoxPCTF.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -182,70 +172,41 @@
             buttonCopyGraph.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonCopyGraph.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             buttonCopyGraph.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonCopyGraph.Location = new System.Drawing.Point(658, 0);
+            buttonCopyGraph.Location = new System.Drawing.Point(795, 0);
             buttonCopyGraph.Margin = new System.Windows.Forms.Padding(0);
             buttonCopyGraph.Name = "buttonCopyGraph";
-            toolTip.SetToolTip(buttonCopyGraph, resources.GetString("buttonCopyGraph.ToolTip")); // 260531Cl
             buttonCopyGraph.Size = new System.Drawing.Size(48, 27);
             buttonCopyGraph.TabIndex = 58;
             buttonCopyGraph.Text = "Copy";
+            toolTip.SetToolTip(buttonCopyGraph, "Copy the plotted curves (u and each\r\nfunction value) as tab-separated text\r\nto the clipboard for pasting into Excel");
             buttonCopyGraph.UseVisualStyleBackColor = true;
             buttonCopyGraph.Click += ButtonCopyGraph_Click;
             // 
             // numericBoxMaxU1
             // 
-            numericBoxMaxU1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.DecimalPlaces = 1;
+            numericBoxMaxU1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxMaxU1.FooterText = "nm⁻¹";
+            numericBoxMaxU1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxMaxU1.HeaderText = "Max u";
-            numericBoxMaxU1.Location = new System.Drawing.Point(522, 0);
+            numericBoxMaxU1.Location = new System.Drawing.Point(659, 0);
             numericBoxMaxU1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             numericBoxMaxU1.Maximum = 20D;
             numericBoxMaxU1.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMaxU1.Minimum = 0D;
             numericBoxMaxU1.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMaxU1.Name = "numericBoxMaxU1";
-            toolTip.SetToolTip(numericBoxMaxU1, resources.GetString("numericBoxMaxU1.ToolTip")); // 260531Cl
             numericBoxMaxU1.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxMaxU1.RadianValue = 0.10471975511965977D;
             numericBoxMaxU1.ShowUpDown = true;
             numericBoxMaxU1.Size = new System.Drawing.Size(136, 27);
             numericBoxMaxU1.SmartIncrement = true;
             numericBoxMaxU1.TabIndex = 56;
-            // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
             numericBoxMaxU1.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxMaxU1, "Upper limit of the spatial-frequency axis u\r\nfor the plot, in nm-1 (0-20); sets how far\r\nin reciprocal space the curves are drawn");
             numericBoxMaxU1.Value = 6D;
             numericBoxMaxU1.ValueChanged += numericBoxMaxU1_ValueChanged;
-            // 
-            // graphControl
-            // 
-            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 8F);
-            graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphControl.Font = new System.Drawing.Font("Segoe UI", 9F);
-            graphControl.GraphTitle = "";
-            graphControl.Location = new System.Drawing.Point(3, 280);
-            graphControl.Margin = new System.Windows.Forms.Padding(0);
-            graphControl.MousePositionXDigit = 4;
-            graphControl.MousePositionYDigit = 4;
-            graphControl.Name = "graphControl";
-            graphControl.OriginPosition = new System.Drawing.Point(20, 20);
-            graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
-            graphControl.Size = new System.Drawing.Size(706, 176);
-            graphControl.TabIndex = 57;
-            graphControl.UnitX = " nm⁻¹";
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.Controls.Add(buttonCopyGraph);
-            flowLayoutPanel1.Controls.Add(numericBoxMaxU1);
-            flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new System.Drawing.Point(3, 456);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(706, 27);
-            flowLayoutPanel1.TabIndex = 62;
             // 
             // checkBoxCosW
             // 
@@ -257,9 +218,9 @@
             checkBoxCosW.Location = new System.Drawing.Point(315, 1);
             checkBoxCosW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxCosW.Name = "checkBoxCosW";
-            toolTip.SetToolTip(checkBoxCosW, resources.GetString("checkBoxCosW.ToolTip")); // 260531Cl
             checkBoxCosW.Size = new System.Drawing.Size(314, 32);
             checkBoxCosW.TabIndex = 14;
+            toolTip.SetToolTip(checkBoxCosW, "Plot Cos[W(u)], the cosine of the\r\nwave-aberration W(u): the amplitude-contrast\r\ncomponent of the lens transfer");
             checkBoxCosW.UseVisualStyleBackColor = true;
             checkBoxCosW.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -272,14 +233,70 @@
             checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_STEM.Image");
             checkBoxEs_STEM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxEs_STEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_STEM.Location = new System.Drawing.Point(3, 35);
+            checkBoxEs_STEM.Location = new System.Drawing.Point(629, 1);
             checkBoxEs_STEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_STEM.Name = "checkBoxEs_STEM";
-            toolTip.SetToolTip(checkBoxEs_STEM, resources.GetString("checkBoxEs_STEM.ToolTip")); // 260531Cl
             checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
             checkBoxEs_STEM.TabIndex = 9;
+            toolTip.SetToolTip(checkBoxEs_STEM, "Plot Es(u), the spatial coherence envelope\r\nfor STEM (Scanning TEM): contrast damping\r\nfrom finite source size (sigma_s)");
             checkBoxEs_STEM.UseVisualStyleBackColor = true;
             checkBoxEs_STEM.CheckedChanged += checkBoxSinW_CheckedChanged;
+            // 
+            // checkBoxACTF
+            // 
+            checkBoxACTF.AutoSize = true;
+            checkBoxACTF.Font = new System.Drawing.Font("Segoe UI", 8F);
+            checkBoxACTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxACTF.Image");
+            checkBoxACTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxACTF.Location = new System.Drawing.Point(0, 35);
+            checkBoxACTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            checkBoxACTF.Name = "checkBoxACTF";
+            checkBoxACTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            checkBoxACTF.Size = new System.Drawing.Size(351, 31);
+            checkBoxACTF.TabIndex = 8;
+            toolTip.SetToolTip(checkBoxACTF, "Plot the ACTF (Amplitude Contrast Transfer\r\nFunction) = Cos[W(u)] x Es x Ec, the effective\r\namplitude transfer within the aperture");
+            checkBoxACTF.UseVisualStyleBackColor = true;
+            checkBoxACTF.CheckedChanged += checkBoxSinW_CheckedChanged;
+            // 
+            // flowLayoutPanelSTEM
+            // 
+            flowLayoutPanelSTEM.AutoSize = true;
+            flowLayoutPanelSTEM.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelSTEM.Controls.Add(radioButtonCTF_coherent);
+            flowLayoutPanelSTEM.Controls.Add(radioButtonCTF_Incoherent);
+            flowLayoutPanelSTEM.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanelSTEM.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanelSTEM.Name = "flowLayoutPanelSTEM";
+            flowLayoutPanelSTEM.Size = new System.Drawing.Size(843, 27);
+            flowLayoutPanelSTEM.TabIndex = 60;
+            // 
+            // graphControl
+            // 
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 8F);
+            graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            graphControl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            graphControl.Location = new System.Drawing.Point(3, 246);
+            graphControl.Margin = new System.Windows.Forms.Padding(0);
+            graphControl.MousePositionXDigit = 4;
+            graphControl.MousePositionYDigit = 4;
+            graphControl.Name = "graphControl";
+            graphControl.OriginPosition = new System.Drawing.Point(20, 20);
+            graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
+            graphControl.Size = new System.Drawing.Size(843, 210);
+            graphControl.TabIndex = 57;
+            graphControl.UnitX = " nm⁻¹";
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.Controls.Add(buttonCopyGraph);
+            flowLayoutPanel1.Controls.Add(numericBoxMaxU1);
+            flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new System.Drawing.Point(3, 456);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(843, 27);
+            flowLayoutPanel1.TabIndex = 62;
             // 
             // flowLayoutPanel3
             // 
@@ -291,22 +308,6 @@
             flowLayoutPanel3.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanel3.TabIndex = 13;
             flowLayoutPanel3.WrapContents = false;
-            // 
-            // checkBoxACTF
-            // 
-            checkBoxACTF.AutoSize = true;
-            checkBoxACTF.Font = new System.Drawing.Font("Segoe UI", 8F);
-            checkBoxACTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxACTF.Image");
-            checkBoxACTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxACTF.Location = new System.Drawing.Point(0, 35);
-            checkBoxACTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            checkBoxACTF.Name = "checkBoxACTF";
-            toolTip.SetToolTip(checkBoxACTF, resources.GetString("checkBoxACTF.ToolTip")); // 260531Cl
-            checkBoxACTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            checkBoxACTF.Size = new System.Drawing.Size(351, 31);
-            checkBoxACTF.TabIndex = 8;
-            checkBoxACTF.UseVisualStyleBackColor = true;
-            checkBoxACTF.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
             // pictureBoxA_STEM
             // 
@@ -338,7 +339,7 @@
             pictureBoxSTEM_CTFI.Location = new System.Drawing.Point(6, 0);
             pictureBoxSTEM_CTFI.Margin = new System.Windows.Forms.Padding(0);
             pictureBoxSTEM_CTFI.Name = "pictureBoxSTEM_CTFI";
-            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(694, 75);
+            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(831, 75);
             pictureBoxSTEM_CTFI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             pictureBoxSTEM_CTFI.TabIndex = 10;
             pictureBoxSTEM_CTFI.TabStop = false;
@@ -366,7 +367,7 @@
             panel2.Location = new System.Drawing.Point(3, 30);
             panel2.Name = "panel2";
             panel2.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            panel2.Size = new System.Drawing.Size(706, 250);
+            panel2.Size = new System.Drawing.Size(843, 216);
             panel2.TabIndex = 64;
             // 
             // flowLayoutPanel7
@@ -376,9 +377,9 @@
             flowLayoutPanel7.Controls.Add(pictureBoxA_STEM);
             flowLayoutPanel7.Controls.Add(pictureBoxA_HRTEM);
             flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel7.Location = new System.Drawing.Point(6, 177);
+            flowLayoutPanel7.Location = new System.Drawing.Point(6, 143);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new System.Drawing.Size(694, 73);
+            flowLayoutPanel7.Size = new System.Drawing.Size(831, 73);
             flowLayoutPanel7.TabIndex = 16;
             flowLayoutPanel7.WrapContents = false;
             // 
@@ -396,15 +397,15 @@
             flowLayoutPanel6.Location = new System.Drawing.Point(6, 75);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            flowLayoutPanel6.Size = new System.Drawing.Size(694, 102);
+            flowLayoutPanel6.Size = new System.Drawing.Size(831, 68);
             flowLayoutPanel6.TabIndex = 11;
             // 
             // FormCTF
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            ClientSize = new System.Drawing.Size(712, 486);
+            ClientSize = new System.Drawing.Size(849, 486);
             Controls.Add(graphControl);
             Controls.Add(panel2);
             Controls.Add(flowLayoutPanel1);
@@ -419,8 +420,6 @@
             flowLayoutPanelSTEM.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).EndInit();

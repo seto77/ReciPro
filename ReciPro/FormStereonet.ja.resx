@@ -108,7 +108,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="graphicsBox.ToolTip" xml:space="preserve">
     <value>左ドラッグ（画面中央付近）: モニターに平行な軸で回転
 左ドラッグ（画面端）: モニターに垂直な軸で回転
@@ -116,8 +115,10 @@
 右ドラッグ: 選択領域をズームイン
 中ドラッグ: シミュレーション画像をドラッグ</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>指数ラベル</value>
+  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>区切り文字</value>
   </data>
@@ -155,18 +156,43 @@
 [u v w]、面は (h k l)）の文字サイズを設定し
 ます。最小値ではラベルを非表示にします。</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
     <value>指定色</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>指数ラベル</value>
+  <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
+    <value>指数ラベルをスポット色ではなく固定色で描画します。</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>「色を指定」が有効なときに指数ラベル
+へ用いる固定色を設定します。</value>
+  </data>
+  <data name="groupBoxOutline.Text" xml:space="preserve">
+    <value>輪郭</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>線幅</value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>ステレオネットの輪郭(格子)線の太さを設定します(1〜20)。</value>
+  </data>
+  <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
+    <value>ステレオネットの輪郭(格子)線の太さを設定します(1〜20)。</value>
+  </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>ステレオネット描画領域の背景色を設定します。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>90度線(最外周の基準円と主軸線、最も太い線)の色を設定します。</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>ステレオネットの10度刻みの線(緯線・経線)の色を設定します。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1度刻みの細線の色を設定します
+（「1° Lines」有効時のみ描画）。</value>
   </data>
   <data name="radioButtonOutlineEquator.Text" xml:space="preserve">
     <value>極垂直</value>
@@ -187,15 +213,15 @@
     <value>チェックするとステレオネットに 1° 間隔の細かいグリッド
 線を追加します。オフでは粗いグリッドのみ表示します。</value>
   </data>
-  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
-    <value>構造因子にエネルギー依存の X 線異常分散項 (f', f'') を加える。吸収端近傍では Friedel 則が破れ、hkl と -h-k-l の間に Bijvoet 強度差が生じる。オフで従来の分散なしの結果に戻る。</value>
-  </data>
-  <data name="groupBoxOutline.Text" xml:space="preserve">
-    <value>輪郭</value>
-  </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
     <value>ステレオネット上に投影する方向点ま
 たは晶面法線点の半径を設定します。</value>
+  </data>
+  <data name="groupBoxMode.Text" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="groupBoxSphere.Text" xml:space="preserve">
+    <value>描画半球</value>
   </data>
   <data name="radioButtonUpperSphere.Text" xml:space="preserve">
     <value>上半球</value>
@@ -211,23 +237,29 @@
     <value>ステレオネットの下半球側にある
 方向または晶面法線を表示します。</value>
   </data>
-  <data name="groupBoxSphere.Text" xml:space="preserve">
-    <value>描画半球</value>
+  <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
+    <value>投影方法</value>
   </data>
   <data name="radioButtonWulff.Text" xml:space="preserve">
-    <value>等角投影 (Wulff)</value>
+    <value>等角投影</value>
   </data>
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
     <value>ウルフネット（等角法）で方位を投影</value>
   </data>
   <data name="radioButtonSchmidt.Text" xml:space="preserve">
-    <value>等積投影 (Schmidt)</value>
+    <value>等積投影</value>
   </data>
   <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
     <value>シュミットネット（等面積法）で方位を投影</value>
   </data>
-  <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
-    <value>投影方法</value>
+  <data name="groupBoxProjectionObject.Text" xml:space="preserve">
+    <value>投影対象</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>異常分散</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>構造因子にエネルギー依存の X 線異常分散項 (f', f'') を加える。吸収端近傍では Friedel 則が破れ、hkl と -h-k-l の間に Bijvoet 強度差が生じる。オフで従来の分散なしの結果に戻る。</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
     <value>構造因子を
@@ -239,6 +271,9 @@
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
     <value>指数ラベルを表示</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>各点の脇に指数ラベル([uvw]または(hkl))を描画します。</value>
   </data>
   <data name="radioButtonAxes.Text" xml:space="preserve">
     <value>方向指数</value>
@@ -261,11 +296,8 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>菊池線対を描画します。菊池線は、非弾性散乱され
 た電子が晶面で Bragg 回折してできる対の帯です。</value>
   </data>
-  <data name="groupBoxProjectionObject.Text" xml:space="preserve">
-    <value>投影対象</value>
-  </data>
-  <data name="groupBoxMode.Text" xml:space="preserve">
-    <value>モード</value>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>カーソル位置の傾斜角・方位角(度)を表示します。</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>サイズ</value>
@@ -273,20 +305,8 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>ステレオネット上に投影する指数点の半径を設定します。</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value>菊池線対で描画する晶帯軸点の半径を設定します。</value>
-  </data>
-  <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
-    <value>菊池線対で描画する晶帯軸点の半径を設定します。</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>点サイズ</value>
-  </data>
-  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
-    <value>点</value>
-  </data>
-  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
-    <value>ラベル</value>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>表示</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
     <value>晶帯軸 (菊池線モード)</value>
@@ -294,8 +314,30 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="groupBoxColor.ToolTip" xml:space="preserve">
     <value>表示色を変更</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>表示</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>点サイズ</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>菊池線対で描画する晶帯軸点の半径を設定します。</value>
+  </data>
+  <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
+    <value>菊池線対で描画する晶帯軸点の半径を設定します。</value>
+  </data>
+  <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>菊池線モードでの極(点)と線の色を設定します。</value>
+  </data>
+  <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
+    <value>ラベル</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>菊池線モードでの晶帯軸ラベルの色を設定しま
+す(菊池線=非弾性散乱電子による回折バンド)。</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>大円</value>
   </data>
   <data name="checkedListBoxCircles.ToolTip" xml:space="preserve">
     <value>追加した大円(帯円)の一覧です。チェックで
@@ -323,12 +365,22 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="label5.Text" xml:space="preserve">
     <value>線幅</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>大円の線幅を設定します。</value>
+  </data>
+  <data name="trackBarGreatCircleLineWidth.ToolTip" xml:space="preserve">
+    <value>大円の線幅を設定します。</value>
+  </data>
   <data name="radioButtonCircleByAxis.Text" xml:space="preserve">
     <value>晶帯軸の指数</value>
   </data>
   <data name="radioButtonCircleByAxis.ToolTip" xml:space="preserve">
     <value>大円(晶帯)を晶帯軸の指数[uvw]で定義し
 ます（その軸を共有する面群の大円）。</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>帯軸方向 [uvw] を指定します。この軸に垂直な
+大円(帯円)がステレオ投影に追加されます</value>
   </data>
   <data name="radioButtonCircleByPlanes.Text" xml:space="preserve">
     <value>晶帯に属する
@@ -337,10 +389,6 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
     <value>大円(晶帯)を2つの面指数から定義しま
 す（2面の共通晶帯軸=外積で決定）。</value>
-  </data>
-  <data name="indexControlAxis.ToolTip" xml:space="preserve">
-    <value>帯軸方向 [uvw] を指定します。この軸に垂直な
-大円(帯円)がステレオ投影に追加されます</value>
   </data>
   <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
     <value>2面で帯(ゾーン)を定義する1つ目の
@@ -351,23 +399,86 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>2面で帯(ゾーン)を定義する2つ目の結晶面指数(hkl)
 です。面1との外積から大円の帯軸を決定します</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>大円</value>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>傾斜スキャンの模擬を停止し、記録した極の
+軌跡座標をクリップボードにコピーします。</value>
+  </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>ゴニオメータ傾斜スキャンの模擬を開始し、選択した
+極の投影軌跡をアニメーション表示・記録します。</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>回転スキャン方式(θ²+ω²=一定の円錐状掃引で
+投影面上に円を描く)を選択します。</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>ジグザグ(ラスタ状)スキャン方式(+θ→+ω→-θ→+ω
+… と往復しながら掃引)を選択します。</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>スキャン中に Ry 軸(角度 ω)の回転を有効にします。</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>スキャン中に Rz 軸(角度 θ)の回転を有効にします。</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>スキャン中に Rx 軸(傾斜角 φ)の回転を有効にします。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>Ry 軸(ω)モータの回転速度(°/秒)を設定します。</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rz 軸(θ)モータの回転速度(°/秒)を設定します。</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>スキャン全体の所要時間(秒)を設定します。</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>回転スキャンの角速度(°/秒)を設定します。</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>Ry 軸(ω)スキャンの1ステップあたりの角度増分(°)を設定します。</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>回転スキャンの半径方向傾斜角(中心
+からの開き角、°)を設定します。</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>Ry 軸(ω)の振動振幅(±°)を設定します。</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>Rz 軸(θ)の振動振幅(±°)を設定します。</value>
   </data>
   <data name="tabPage4.Text" xml:space="preserve">
     <value>線源</value>
   </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>ステレオ投影の構造因子強度と Ewald 球反射リスト
+の計算に用いる線源(電子/X線等)と波長を設定します</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>画像を保存</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>クリップボードにコピー</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
     <value>画像として</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>メタファイルとして (EMF)</value>
-  </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>クリップボードにコピー</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>プリント設定</value>
@@ -377,9 +488,6 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>プリント</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
   </data>
   <data name="radioButtonRange.Text" xml:space="preserve">
     <value>範囲で指定</value>
@@ -401,21 +509,37 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>構造因子の強度順位が高い晶面指数を表示します。
 構造因子が大きいほど、一般に強い反射を示します。</value>
   </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>ステレオ投影に追加した指定指数の一覧です。
+行を選択して色を変更したり削除したりできます</value>
+  </data>
   <data name="buttonAddIndex.Text" xml:space="preserve">
     <value>追加</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>上で入力した指数を、プロットする指定指数リストに追加します。</value>
   </data>
   <data name="buttonRemoveIndex.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="colorControlIndex.FooterText" xml:space="preserve">
-    <value>色</value>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>リストで選択中の指数を指定指数リストから削除します。</value>
   </data>
   <data name="colorControlIndex.HeaderText" xml:space="preserve">
-    <value />
+    <value>色</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>追加または選択中の指数のプロット色を設定し
+ます（「Rotate color」オフ時に使用）。</value>
   </data>
   <data name="checkBoxRotateColor.Text" xml:space="preserve">
     <value>色を自動で変更する</value>
   </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>各指数に既定パレットの色を順番に自動割り当て
+します（オフ時は右の指定色を共通で使用）。</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
     <value>トップ</value>
   </data>
@@ -423,128 +547,80 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>構造因子の大きい順に表示する
 反射の個数(1〜1000)を設定します。</value>
   </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>プロットする指数を入力します（Specifiedでは
+1つの[uvw]/(hkl)、Rangeでは最大のh,k,l）。</value>
+  </data>
   <data name="checkBoxIncludingEquivalentPlanes.Text" xml:space="preserve">
     <value>等価な指数を含める</value>
-  </data>
-  <data name="groupBoxIndices.Text" xml:space="preserve">
-    <value>描画する指数</value>
-  </data>
-  <data name="checkBoxDisplay3D.Text" xml:space="preserve">
-    <value>3D描画     </value>
-  </data>
-  <data name="button3D_reset.Text" xml:space="preserve">
-    <value>方位リセット</value>
-  </data>
-  <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
-    <value>指数ラベル</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
-    <value>半球表示</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
-    <value>ステレオネット</value>
-  </data>
-  <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
-    <value>球面の輪郭</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
-    <value>投影補助線</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>奥行フェードアウト</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Tilt Y:</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ステレオネット</value>
-  </data>
-  <data name="button3D_reset.ToolTip" xml:space="preserve">
-    <value>3D表示の視点(向き・倍率)を初期状態に戻します。</value>
-  </data>
-  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
-    <value>上で入力した指数を、プロットする指定指数リストに追加します。</value>
-  </data>
-  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
-    <value>リストで選択中の指数を指定指数リストから削除します。</value>
-  </data>
-  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
-    <value>ゴニオメータ傾斜スキャンの模擬を開始し、選択した
-極の投影軌跡をアニメーション表示・記録します。</value>
-  </data>
-  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
-    <value>傾斜スキャンの模擬を停止し、記録した極の
-軌跡座標をクリップボードにコピーします。</value>
-  </data>
-  <data name="checkBox1.ToolTip" xml:space="preserve">
-    <value>スキャン中に Rx 軸(傾斜角 φ)の回転を有効にします。</value>
-  </data>
-  <data name="checkBox2.ToolTip" xml:space="preserve">
-    <value>スキャン中に Rz 軸(角度 θ)の回転を有効にします。</value>
-  </data>
-  <data name="checkBox3.ToolTip" xml:space="preserve">
-    <value>スキャン中に Ry 軸(角度 ω)の回転を有効にします。</value>
-  </data>
-  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
-    <value>3D表示で各点に指数ラベル([uvw]または(hkl))を描画します。</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
-    <value>3D表示で、球面上の各点から投影面(ステレオネット
-円板)上の投影点へ向かう投影線を描画します。</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
-    <value>3D表示で上半球(Z&gt;0)の点のみを描画します。</value>
-  </data>
-  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
-    <value>3D表示で参照球の輪郭(緯線・経線の
-ワイヤーフレーム)を描画します。</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
-    <value>3D表示で投影面となるステレオネット円板と、
-その上への投影点を重ねて描画します。</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>入力した指数だけでなく、対称等価な指数(同じ
 {hkl}・&lt;uvw&gt;群)もまとめて表示します。</value>
   </data>
-  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
-    <value>各指数に既定パレットの色を順番に自動割り当て
-します（オフ時は右の指定色を共通で使用）。</value>
+  <data name="checkBoxDisplay3D.Text" xml:space="preserve">
+    <value>3D描画     </value>
   </data>
-  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
-    <value>各点の脇に指数ラベル([uvw]または(hkl))を描画します。</value>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>ステレオ投影に加えて結晶の3D(OpenGL)表示を併せて
+表示します。OFFでは2Dステレオ投影のみになります</value>
   </data>
-  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>ステレオネットの10度刻みの線(緯線・経線)の色を設定します。</value>
+  <data name="button3D_reset.Text" xml:space="preserve">
+    <value>方位リセット</value>
   </data>
-  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>1度刻みの細線の色を設定します
-（「1° Lines」有効時のみ描画）。</value>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>3D表示の視点(向き・倍率)を初期状態に戻します。</value>
   </data>
-  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線(最外周の基準円と主軸線、最も太い線)の色を設定します。</value>
+  <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
+    <value>指数ラベル</value>
   </data>
-  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>ステレオネット描画領域の背景色を設定します。</value>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>3D表示で各点に指数ラベル([uvw]または(hkl))を描画します。</value>
   </data>
-  <data name="colorControlIndex.ToolTip" xml:space="preserve">
-    <value>追加または選択中の指数のプロット色を設定し
-ます（「Rotate color」オフ時に使用）。</value>
+  <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
+    <value>半球表示</value>
   </data>
-  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
-    <value>「色を指定」が有効なときに指数ラベル
-へ用いる固定色を設定します。</value>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>3D表示で上半球(Z&gt;0)の点のみを描画します。</value>
   </data>
-  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
-    <value>菊池線モードでの晶帯軸ラベルの色を設定しま
-す(菊池線=非弾性散乱電子による回折バンド)。</value>
+  <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
+    <value>ステレオネット</value>
   </data>
-  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
-    <value>菊池線モードでの極(点)と線の色を設定します。</value>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>3D表示で投影面となるステレオネット円板と、
+その上への投影点を重ねて描画します。</value>
   </data>
-  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
-    <value>プロットする指数を入力します（Specifiedでは
-1つの[uvw]/(hkl)、Rangeでは最大のh,k,l）。</value>
+  <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
+    <value>球面の輪郭</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>3D表示で参照球の輪郭(緯線・経線の
+ワイヤーフレーム)を描画します。</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
+    <value>投影補助線</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>3D表示で、球面上の各点から投影面(ステレオネット
+円板)上の投影点へ向かう投影線を描画します。</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>奥行フェードアウト</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>3D表示の奥行きフェード(深度に応じて奥の
+物体を薄くする効果)の強さを調整します。</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>3D表示の奥行きフェード(深度に応じて奥の
+物体を薄くする効果)の強さを調整します。</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>カーソル位置に最も近い晶帯軸 [uvw]
+と格子面 (hkl) を表示します。</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Tilt Y:</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>カーソル位置に最も近い晶帯軸 [uvw]
@@ -553,91 +629,16 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>カーソル位置の傾斜角・方位角(度)を表示します。</value>
   </data>
-  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
-    <value>カーソル位置に最も近い晶帯軸 [uvw]
-と格子面 (hkl) を表示します。</value>
+  <data name="groupBoxIndices.Text" xml:space="preserve">
+    <value>描画する指数</value>
   </data>
-  <data name="labelXYpos.ToolTip" xml:space="preserve">
-    <value>カーソル位置の傾斜角・方位角(度)を表示します。</value>
-  </data>
-  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
-    <value>回転スキャンの角速度(°/秒)を設定します。</value>
-  </data>
-  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
-    <value>回転スキャンの半径方向傾斜角(中心
-からの開き角、°)を設定します。</value>
-  </data>
-  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
-    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
-  </data>
-  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
-    <value>Ry 軸(ω)の振動振幅(±°)を設定します。</value>
-  </data>
-  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
-    <value>Ry 軸(ω)モータの回転速度(°/秒)を設定します。</value>
-  </data>
-  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
-    <value>Ry 軸(ω)スキャンの1ステップあたりの角度増分(°)を設定します。</value>
-  </data>
-  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
-    <value>Rz 軸(θ)の振動振幅(±°)を設定します。</value>
-  </data>
-  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
-    <value>Rz 軸(θ)モータの回転速度(°/秒)を設定します。</value>
-  </data>
-  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
-    <value>スキャン全体の所要時間(秒)を設定します。</value>
-  </data>
-  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
-    <value>回転スキャン方式(θ²+ω²=一定の円錐状掃引で
-投影面上に円を描く)を選択します。</value>
-  </data>
-  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
-    <value>ジグザグ(ラスタ状)スキャン方式(+θ→+ω→-θ→+ω
-… と往復しながら掃引)を選択します。</value>
-  </data>
-  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
-    <value>3D表示の奥行きフェード(深度に応じて奥の
-物体を薄くする効果)の強さを調整します。</value>
-  </data>
-  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
-    <value>ステレオ投影に加えて結晶の3D(OpenGL)表示を併せて
-表示します。OFFでは2Dステレオ投影のみになります</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
-    <value>ステレオ投影に追加した指定指数の一覧です。
-行を選択して色を変更したり削除したりできます</value>
-  </data>
-  <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value>ステレオ投影の構造因子強度と Ewald 球反射リスト
-の計算に用いる線源(電子/X線等)と波長を設定します</value>
-  </data>
-  <data name="label22.ToolTip" xml:space="preserve">
-    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
-  </data>
-  <data name="label25.ToolTip" xml:space="preserve">
-    <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>
-  </data>
-  <data name="label29.ToolTip" xml:space="preserve">
-    <value>3D表示の奥行きフェード(深度に応じて奥の
-物体を薄くする効果)の強さを調整します。</value>
-  </data>
-  <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
-    <value>指数ラベルをスポット色ではなく固定色で描画します。</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>ステレオネットの輪郭(格子)線の太さを設定します(1〜20)。</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>大円の線幅を設定します。</value>
-  </data>
-  <data name="trackBarGreatCircleLineWidth.ToolTip" xml:space="preserve">
-    <value>大円の線幅を設定します。</value>
-  </data>
-  <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
-    <value>ステレオネットの輪郭(格子)線の太さを設定します(1〜20)。</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ステレオネット</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
@@ -658,7 +659,7 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="colorControlIndexLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxOutline.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
@@ -683,9 +684,6 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxOutline.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonUpperSphere.Font" type="System.Drawing.Font, System.Drawing">
@@ -736,6 +734,12 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9.75pt</value>
+  </data>
+  <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -745,10 +749,10 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="colorControlKikuchiLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkedListBoxCircles.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="checkedListBoxCircles.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanel10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonAddCircle.Font" type="System.Drawing.Font, System.Drawing">
@@ -761,9 +765,6 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanel10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonCircleByAxis.Font" type="System.Drawing.Font, System.Drawing">
@@ -801,9 +802,6 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9.75pt</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

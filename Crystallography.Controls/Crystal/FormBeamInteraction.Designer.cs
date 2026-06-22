@@ -207,21 +207,15 @@
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(dataGridView);
-            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(graphControlReflections);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel6);
-            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
-            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
             // 
             // dataGridView
             // 
-            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeRows = false;
@@ -236,6 +230,7 @@
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumnH, dataGridViewTextBoxColumnK, dataGridViewTextBoxColumnL, dataGridViewTextBoxColumnMulti, dataGridViewTextBoxColumnD, dataGridViewTextBoxColumnQ, dataGridViewTextBoxColumnTwoTheta, dataGridViewTextBoxColumnFreal, dataGridViewTextBoxColumnFinv, dataGridViewTextBoxColumnFabs, dataGridViewTextBoxColumnFsq, dataGridViewTextBoxColumnIntPercent, dataGridViewTextBoxColumnIntCondition, dataGridViewTextBoxColumnI });
             dataGridView.DataSource = bindingSourceScatteringFactor;
+            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -381,12 +376,11 @@
             // 
             // graphControlReflections
             // 
-            resources.ApplyResources(graphControlReflections, "graphControlReflections");
             graphControlReflections.CopyVisible = true;
+            resources.ApplyResources(graphControlReflections, "graphControlReflections");
             graphControlReflections.FixLowerXToZero = true;
             graphControlReflections.Name = "graphControlReflections";
             graphControlReflections.RangePanelVisible = true;
-            toolTip.SetToolTip(graphControlReflections, resources.GetString("graphControlReflections.ToolTip"));
             // 
             // flowLayoutPanel6
             // 
@@ -394,13 +388,12 @@
             flowLayoutPanel6.Controls.Add(comboBoxReflXAxis);
             flowLayoutPanel6.Controls.Add(checkBoxReflLog);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            toolTip.SetToolTip(flowLayoutPanel6, resources.GetString("flowLayoutPanel6.ToolTip"));
             // 
             // comboBoxReflXAxis
             // 
-            resources.ApplyResources(comboBoxReflXAxis, "comboBoxReflXAxis");
             comboBoxReflXAxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxReflXAxis.FormattingEnabled = true;
+            resources.ApplyResources(comboBoxReflXAxis, "comboBoxReflXAxis");
             comboBoxReflXAxis.Name = "comboBoxReflXAxis";
             toolTip.SetToolTip(comboBoxReflXAxis, resources.GetString("comboBoxReflXAxis.ToolTip"));
             comboBoxReflXAxis.SelectedIndexChanged += reflectionsView_OptionChanged;
@@ -514,10 +507,10 @@
             // 
             // numericBoxL_step
             // 
-            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
             numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_step.DecimalPlaces = 3;
             numericBoxL_step.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
             numericBoxL_step.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxL_step.Maximum = 1D;
             numericBoxL_step.Minimum = 0.001D;
@@ -532,10 +525,10 @@
             // 
             // numericBoxK_step
             // 
-            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
             numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_step.DecimalPlaces = 3;
             numericBoxK_step.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
             numericBoxK_step.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxK_step.Maximum = 1D;
             numericBoxK_step.Minimum = 0.001D;
@@ -550,10 +543,10 @@
             // 
             // numericBoxH_step
             // 
-            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
             numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_step.DecimalPlaces = 3;
             numericBoxH_step.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
             numericBoxH_step.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxH_step.Maximum = 1D;
             numericBoxH_step.Minimum = 0.001D;
@@ -568,9 +561,9 @@
             // 
             // numericBoxL_max
             // 
-            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
             numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_max.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
             numericBoxL_max.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
@@ -582,9 +575,9 @@
             // 
             // numericBoxK_max
             // 
-            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_max.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxK_max.Name = "numericBoxK_max";
             numericBoxK_max.ShowUpDown = true;
@@ -594,9 +587,9 @@
             // 
             // numericBoxL_min
             // 
-            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_min.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxL_min.Name = "numericBoxL_min";
             numericBoxL_min.ShowUpDown = true;
@@ -606,9 +599,9 @@
             // 
             // numericBoxK_min
             // 
-            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_min.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxK_min.Name = "numericBoxK_min";
             numericBoxK_min.ShowUpDown = true;
@@ -618,9 +611,9 @@
             // 
             // numericBoxH_max
             // 
-            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_max.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxH_max.Name = "numericBoxH_max";
             numericBoxH_max.ShowUpDown = true;
@@ -630,9 +623,9 @@
             // 
             // numericBoxH_min
             // 
-            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_min.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxH_min.Name = "numericBoxH_min";
             numericBoxH_min.ShowUpDown = true;
@@ -642,9 +635,9 @@
             // 
             // numericBoxCutoffD
             // 
-            resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
             numericBoxCutoffD.BackColor = System.Drawing.Color.Transparent;
             numericBoxCutoffD.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
             numericBoxCutoffD.FooterBackColor = System.Drawing.Color.Transparent;
             numericBoxCutoffD.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxCutoffD.Maximum = 10D;
@@ -655,6 +648,7 @@
             numericBoxCutoffD.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxCutoffD, resources.GetString("numericBoxCutoffD.ToolTip"));
             numericBoxCutoffD.Value = 1D;
+            numericBoxCutoffD.ValueBoxWidth = 60;
             numericBoxCutoffD.ValueChanged += numericBoxCutoffD_ValueChanged;
             // 
             // labelModel
@@ -718,9 +712,9 @@
             // 
             // numericBoxAttenThickness
             // 
-            resources.ApplyResources(numericBoxAttenThickness, "numericBoxAttenThickness");
             numericBoxAttenThickness.BackColor = System.Drawing.Color.Transparent;
             numericBoxAttenThickness.FooterBackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxAttenThickness, "numericBoxAttenThickness");
             numericBoxAttenThickness.HeaderBackColor = System.Drawing.Color.Transparent;
             numericBoxAttenThickness.Maximum = 10000000D;
             numericBoxAttenThickness.Minimum = 0D;
@@ -732,7 +726,6 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(numericBoxL_step);
             panel1.Controls.Add(numericBoxK_step);
             panel1.Controls.Add(numericBoxH_step);
@@ -748,40 +741,37 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label3);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // tabControl
             // 
-            resources.ApplyResources(tabControl, "tabControl");
             tabControl.Controls.Add(tabPageReflections);
             tabControl.Controls.Add(tabPageAttenuations);
             tabControl.Controls.Add(tabPageScatteringFactors);
             tabControl.Controls.Add(tabPageFluorescence);
+            resources.ApplyResources(tabControl, "tabControl");
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            toolTip.SetToolTip(tabControl, resources.GetString("tabControl.ToolTip"));
             tabControl.SelectedIndexChanged += tabControl_SelectedIndexChanged;
             // 
             // tabPageReflections
             // 
-            resources.ApplyResources(tabPageReflections, "tabPageReflections");
             tabPageReflections.Controls.Add(splitContainer1);
             tabPageReflections.Controls.Add(panel5);
             tabPageReflections.Controls.Add(flowLayoutPanel3);
             tabPageReflections.Controls.Add(flowLayoutPanel1);
             tabPageReflections.Controls.Add(flowLayoutPanel4);
+            resources.ApplyResources(tabPageReflections, "tabPageReflections");
             tabPageReflections.Name = "tabPageReflections";
-            toolTip.SetToolTip(tabPageReflections, resources.GetString("tabPageReflections.ToolTip"));
             tabPageReflections.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
-            resources.ApplyResources(panel5, "panel5");
             panel5.Controls.Add(buttonCopyClipboard);
             panel5.Controls.Add(numericBoxCutoffD);
+            resources.ApplyResources(panel5, "panel5");
             panel5.Name = "panel5";
-            toolTip.SetToolTip(panel5, resources.GetString("panel5.ToolTip"));
             // 
             // flowLayoutPanel3
             // 
@@ -789,7 +779,6 @@
             flowLayoutPanel3.Controls.Add(checkBoxTest);
             flowLayoutPanel3.Controls.Add(panel1);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
             // 
             // flowLayoutPanel1
             // 
@@ -798,65 +787,58 @@
             flowLayoutPanel1.Controls.Add(checkBoxHideProhibitedPlanes);
             flowLayoutPanel1.Controls.Add(checkBoxHideEquivalentPlane);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // flowLayoutPanel4
             // 
             resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
             // 
             // tabPageAttenuations
             // 
-            resources.ApplyResources(tabPageAttenuations, "tabPageAttenuations");
             captureExtender.SetCapture(tabPageAttenuations, true);
             tabPageAttenuations.Controls.Add(graphControlAtten);
             tabPageAttenuations.Controls.Add(flowLayoutPanel9);
             tabPageAttenuations.Controls.Add(flowLayoutPanelAttenuationModel);
+            resources.ApplyResources(tabPageAttenuations, "tabPageAttenuations");
             tabPageAttenuations.Name = "tabPageAttenuations";
-            toolTip.SetToolTip(tabPageAttenuations, resources.GetString("tabPageAttenuations.ToolTip"));
             tabPageAttenuations.UseVisualStyleBackColor = true;
             // 
             // graphControlAtten
             // 
-            resources.ApplyResources(graphControlAtten, "graphControlAtten");
             graphControlAtten.CopyVisible = true;
+            resources.ApplyResources(graphControlAtten, "graphControlAtten");
             graphControlAtten.FixLowerXToZero = true;
             graphControlAtten.MousePositionVisible = true;
             graphControlAtten.MousePositionX_FormatSpecifier = "g6";
             graphControlAtten.MousePositionY_FormatSpecifier = "g6";
             graphControlAtten.Name = "graphControlAtten";
             graphControlAtten.RangePanelVisible = true;
-            toolTip.SetToolTip(graphControlAtten, resources.GetString("graphControlAtten.ToolTip"));
             graphControlAtten.VerticalLineMarkerVisible = true;
             // 
             // flowLayoutPanel9
             // 
-            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
             flowLayoutPanel9.Controls.Add(miniTableAttenScalars);
             flowLayoutPanel9.Controls.Add(miniTableAttenEdges);
             flowLayoutPanel9.Controls.Add(miniTableAttenElectron);
             flowLayoutPanel9.Controls.Add(miniTableAttenNeutron);
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
             flowLayoutPanel9.Name = "flowLayoutPanel9";
-            toolTip.SetToolTip(flowLayoutPanel9, resources.GetString("flowLayoutPanel9.ToolTip"));
             // 
             // miniTableAttenScalars
             // 
-            resources.ApplyResources(miniTableAttenScalars, "miniTableAttenScalars");
             miniTableAttenScalars.AutoFitHeight = true;
+            resources.ApplyResources(miniTableAttenScalars, "miniTableAttenScalars");
             miniTableAttenScalars.Name = "miniTableAttenScalars";
             miniTableAttenScalars.TabStop = false;
-            toolTip.SetToolTip(miniTableAttenScalars, resources.GetString("miniTableAttenScalars.ToolTip"));
             // 
             // miniTableAttenEdges
             // 
-            resources.ApplyResources(miniTableAttenEdges, "miniTableAttenEdges");
             miniTableAttenEdges.AllowVerticalScroll = true;
             miniTableAttenEdges.AutoFitHeight = true;
             miniTableAttenEdges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colEdgeElem, colEdgeZ, colEdgeEdge, colEdgeKeV, colEdgeJump });
+            resources.ApplyResources(miniTableAttenEdges, "miniTableAttenEdges");
             miniTableAttenEdges.Name = "miniTableAttenEdges";
             miniTableAttenEdges.TabStop = false;
-            toolTip.SetToolTip(miniTableAttenEdges, resources.GetString("miniTableAttenEdges.ToolTip"));
             // 
             // colEdgeElem
             // 
@@ -895,13 +877,12 @@
             // 
             // miniTableAttenElectron
             // 
-            resources.ApplyResources(miniTableAttenElectron, "miniTableAttenElectron");
             miniTableAttenElectron.AllowVerticalScroll = true;
             miniTableAttenElectron.AutoFitHeight = true;
             miniTableAttenElectron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colElecElem, colElecZ, colElecAt, colElecA });
+            resources.ApplyResources(miniTableAttenElectron, "miniTableAttenElectron");
             miniTableAttenElectron.Name = "miniTableAttenElectron";
             miniTableAttenElectron.TabStop = false;
-            toolTip.SetToolTip(miniTableAttenElectron, resources.GetString("miniTableAttenElectron.ToolTip"));
             // 
             // colElecElem
             // 
@@ -933,12 +914,11 @@
             // 
             // miniTableAttenNeutron
             // 
-            resources.ApplyResources(miniTableAttenNeutron, "miniTableAttenNeutron");
             miniTableAttenNeutron.AllowVerticalScroll = true;
             miniTableAttenNeutron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colNeutElem, colNeutBcoh, colNeutScoh, colNeutAt });
+            resources.ApplyResources(miniTableAttenNeutron, "miniTableAttenNeutron");
             miniTableAttenNeutron.Name = "miniTableAttenNeutron";
             miniTableAttenNeutron.TabStop = false;
-            toolTip.SetToolTip(miniTableAttenNeutron, resources.GetString("miniTableAttenNeutron.ToolTip"));
             // 
             // colNeutElem
             // 
@@ -974,7 +954,6 @@
             flowLayoutPanelAttenuationModel.Controls.Add(flowLayoutPanelAttenCoeff);
             flowLayoutPanelAttenuationModel.Controls.Add(flowLayoutPanelElecQuantity);
             flowLayoutPanelAttenuationModel.Name = "flowLayoutPanelAttenuationModel";
-            toolTip.SetToolTip(flowLayoutPanelAttenuationModel, resources.GetString("flowLayoutPanelAttenuationModel.ToolTip"));
             // 
             // flowLayoutPanelAttenCoeff
             // 
@@ -984,7 +963,6 @@
             flowLayoutPanelAttenCoeff.Controls.Add(radioButtonAttenTrans);
             flowLayoutPanelAttenCoeff.Controls.Add(numericBoxAttenThickness);
             flowLayoutPanelAttenCoeff.Name = "flowLayoutPanelAttenCoeff";
-            toolTip.SetToolTip(flowLayoutPanelAttenCoeff, resources.GetString("flowLayoutPanelAttenCoeff.ToolTip"));
             // 
             // radioButtonAttenMassMu
             // 
@@ -1022,7 +1000,6 @@
             flowLayoutPanelElecQuantity.Controls.Add(radioButtonElecIMFP);
             flowLayoutPanelElecQuantity.Controls.Add(radioButtonElecRange);
             flowLayoutPanelElecQuantity.Name = "flowLayoutPanelElecQuantity";
-            toolTip.SetToolTip(flowLayoutPanelElecQuantity, resources.GetString("flowLayoutPanelElecQuantity.ToolTip"));
             // 
             // radioButtonElecAll
             // 
@@ -1076,47 +1053,43 @@
             // 
             // tabPageScatteringFactors
             // 
-            resources.ApplyResources(tabPageScatteringFactors, "tabPageScatteringFactors");
             captureExtender.SetCapture(tabPageScatteringFactors, true);
             tabPageScatteringFactors.Controls.Add(graphControlScatteringFactor);
             tabPageScatteringFactors.Controls.Add(flowLayoutPanel8);
             tabPageScatteringFactors.Controls.Add(flowLayoutPanelScatteringFactorModel);
+            resources.ApplyResources(tabPageScatteringFactors, "tabPageScatteringFactors");
             tabPageScatteringFactors.Name = "tabPageScatteringFactors";
-            toolTip.SetToolTip(tabPageScatteringFactors, resources.GetString("tabPageScatteringFactors.ToolTip"));
             tabPageScatteringFactors.UseVisualStyleBackColor = true;
             // 
             // graphControlScatteringFactor
             // 
-            resources.ApplyResources(graphControlScatteringFactor, "graphControlScatteringFactor");
             graphControlScatteringFactor.CopyVisible = true;
+            resources.ApplyResources(graphControlScatteringFactor, "graphControlScatteringFactor");
             graphControlScatteringFactor.FixLowerXToZero = true;
             graphControlScatteringFactor.MousePositionVisible = true;
             graphControlScatteringFactor.MousePositionX_FormatSpecifier = "g6";
             graphControlScatteringFactor.MousePositionY_FormatSpecifier = "g6";
             graphControlScatteringFactor.Name = "graphControlScatteringFactor";
             graphControlScatteringFactor.RangePanelVisible = true;
-            toolTip.SetToolTip(graphControlScatteringFactor, resources.GetString("graphControlScatteringFactor.ToolTip"));
             graphControlScatteringFactor.VerticalLineMarkerVisible = true;
             graphControlScatteringFactor.LinePositionChanged += scattering_LinePositionChanged;
             // 
             // flowLayoutPanel8
             // 
-            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
             flowLayoutPanel8.Controls.Add(miniTableScatteringFactorsXray);
             flowLayoutPanel8.Controls.Add(miniTableScatteringFactorsElectron);
             flowLayoutPanel8.Controls.Add(miniTableScatteringFactorsNeutron);
+            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
             flowLayoutPanel8.Name = "flowLayoutPanel8";
-            toolTip.SetToolTip(flowLayoutPanel8, resources.GetString("flowLayoutPanel8.ToolTip"));
             // 
             // miniTableScatteringFactorsXray
             // 
-            resources.ApplyResources(miniTableScatteringFactorsXray, "miniTableScatteringFactorsXray");
             miniTableScatteringFactorsXray.AutoFitHeight = true;
             miniTableScatteringFactorsXray.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             miniTableScatteringFactorsXray.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colSfxElem, colSfxZ, colSfxFs, colSfxFp, colSfxFpp });
+            resources.ApplyResources(miniTableScatteringFactorsXray, "miniTableScatteringFactorsXray");
             miniTableScatteringFactorsXray.Name = "miniTableScatteringFactorsXray";
             miniTableScatteringFactorsXray.TabStop = false;
-            toolTip.SetToolTip(miniTableScatteringFactorsXray, resources.GetString("miniTableScatteringFactorsXray.ToolTip"));
             // 
             // colSfxElem
             // 
@@ -1155,13 +1128,12 @@
             // 
             // miniTableScatteringFactorsElectron
             // 
-            resources.ApplyResources(miniTableScatteringFactorsElectron, "miniTableScatteringFactorsElectron");
             miniTableScatteringFactorsElectron.AutoFitHeight = true;
             miniTableScatteringFactorsElectron.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             miniTableScatteringFactorsElectron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colSfeElem, colSfeZ, colSfeFe, colSfeModel });
+            resources.ApplyResources(miniTableScatteringFactorsElectron, "miniTableScatteringFactorsElectron");
             miniTableScatteringFactorsElectron.Name = "miniTableScatteringFactorsElectron";
             miniTableScatteringFactorsElectron.TabStop = false;
-            toolTip.SetToolTip(miniTableScatteringFactorsElectron, resources.GetString("miniTableScatteringFactorsElectron.ToolTip"));
             // 
             // colSfeElem
             // 
@@ -1193,13 +1165,12 @@
             // 
             // miniTableScatteringFactorsNeutron
             // 
-            resources.ApplyResources(miniTableScatteringFactorsNeutron, "miniTableScatteringFactorsNeutron");
             miniTableScatteringFactorsNeutron.AutoFitHeight = true;
             miniTableScatteringFactorsNeutron.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             miniTableScatteringFactorsNeutron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colSfnElem, colSfnBcoh, colSfnScoh, colSfnSinc });
+            resources.ApplyResources(miniTableScatteringFactorsNeutron, "miniTableScatteringFactorsNeutron");
             miniTableScatteringFactorsNeutron.Name = "miniTableScatteringFactorsNeutron";
             miniTableScatteringFactorsNeutron.TabStop = false;
-            toolTip.SetToolTip(miniTableScatteringFactorsNeutron, resources.GetString("miniTableScatteringFactorsNeutron.ToolTip"));
             // 
             // colSfnElem
             // 
@@ -1237,7 +1208,6 @@
             flowLayoutPanelScatteringFactorModel.Controls.Add(flowLayoutPanelModel_Electron);
             flowLayoutPanelScatteringFactorModel.Controls.Add(checkBoxDebyeWaller);
             flowLayoutPanelScatteringFactorModel.Name = "flowLayoutPanelScatteringFactorModel";
-            toolTip.SetToolTip(flowLayoutPanelScatteringFactorModel, resources.GetString("flowLayoutPanelScatteringFactorModel.ToolTip"));
             // 
             // flowLayoutPanelModel_Xray
             // 
@@ -1245,7 +1215,6 @@
             flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFs);
             flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFqSq);
             flowLayoutPanelModel_Xray.Name = "flowLayoutPanelModel_Xray";
-            toolTip.SetToolTip(flowLayoutPanelModel_Xray, resources.GetString("flowLayoutPanelModel_Xray.ToolTip"));
             // 
             // flowLayoutPanelModel_Electron
             // 
@@ -1254,59 +1223,52 @@
             flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronEightGaussian);
             flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronKirkland);
             flowLayoutPanelModel_Electron.Name = "flowLayoutPanelModel_Electron";
-            toolTip.SetToolTip(flowLayoutPanelModel_Electron, resources.GetString("flowLayoutPanelModel_Electron.ToolTip"));
             // 
             // tabPageFluorescence
             // 
-            resources.ApplyResources(tabPageFluorescence, "tabPageFluorescence");
             captureExtender.SetCapture(tabPageFluorescence, true);
             tabPageFluorescence.Controls.Add(panel4);
             tabPageFluorescence.Controls.Add(flowLayoutPanel7);
+            resources.ApplyResources(tabPageFluorescence, "tabPageFluorescence");
             tabPageFluorescence.Name = "tabPageFluorescence";
-            toolTip.SetToolTip(tabPageFluorescence, resources.GetString("tabPageFluorescence.ToolTip"));
             tabPageFluorescence.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
-            resources.ApplyResources(panel4, "panel4");
             panel4.Controls.Add(graphControlFluor);
+            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
-            toolTip.SetToolTip(panel4, resources.GetString("panel4.ToolTip"));
             // 
             // graphControlFluor
             // 
-            resources.ApplyResources(graphControlFluor, "graphControlFluor");
             graphControlFluor.CopyVisible = true;
+            resources.ApplyResources(graphControlFluor, "graphControlFluor");
             graphControlFluor.FixLowerXToZero = true;
             graphControlFluor.Name = "graphControlFluor";
             graphControlFluor.RangePanelVisible = true;
-            toolTip.SetToolTip(graphControlFluor, resources.GetString("graphControlFluor.ToolTip"));
             // 
             // flowLayoutPanel7
             // 
-            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
             flowLayoutPanel7.Controls.Add(miniTableFluorScalars);
             flowLayoutPanel7.Controls.Add(miniTableFluorLines);
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            toolTip.SetToolTip(flowLayoutPanel7, resources.GetString("flowLayoutPanel7.ToolTip"));
             // 
             // miniTableFluorScalars
             // 
-            resources.ApplyResources(miniTableFluorScalars, "miniTableFluorScalars");
             miniTableFluorScalars.AutoFitHeight = true;
+            resources.ApplyResources(miniTableFluorScalars, "miniTableFluorScalars");
             miniTableFluorScalars.Name = "miniTableFluorScalars";
             miniTableFluorScalars.TabStop = false;
-            toolTip.SetToolTip(miniTableFluorScalars, resources.GetString("miniTableFluorScalars.ToolTip"));
             // 
             // miniTableFluorLines
             // 
-            resources.ApplyResources(miniTableFluorLines, "miniTableFluorLines");
             miniTableFluorLines.AllowVerticalScroll = true;
             miniTableFluorLines.AutoFitHeight = true;
             miniTableFluorLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colFlElem, colFlLine, colFlE, colFlRelI, colFlOmega });
+            resources.ApplyResources(miniTableFluorLines, "miniTableFluorLines");
             miniTableFluorLines.Name = "miniTableFluorLines";
             miniTableFluorLines.TabStop = false;
-            toolTip.SetToolTip(miniTableFluorLines, resources.GetString("miniTableFluorLines.ToolTip"));
             // 
             // colFlElem
             // 
@@ -1352,7 +1314,6 @@
             Controls.Add(waveLengthControl);
             Name = "FormBeamInteraction";
             ShowIcon = false;
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormBeamInteraction_FormClosing;
             Load += FormBeamInteraction_Load;
             VisibleChanged += FormBeamInteraction_VisibleChanged;

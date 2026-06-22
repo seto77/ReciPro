@@ -519,10 +519,10 @@ U（および等方性 B）は Å²、異方性 B は無次元です。</value>
 か、カスタムの同位体組成を使うかを選びます。</value>
   </data>
   <data name="radioButtonIsotoropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAnisotropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="labelX_.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -540,6 +540,9 @@ U（および等方性 B）は Å²、異方性 B は無次元です。</value>
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonOriginShift1.Font" type="System.Drawing.Font, System.Drawing">
@@ -569,29 +572,29 @@ U（および等方性 B）は Å²、異方性 B は無次元です。</value>
   <data name="buttonOriginShift9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonOriginShiftCustom.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="labelDimension.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDebyeWallerTypeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -633,9 +636,6 @@ U（および等方性 B）は Å²、異方性 B は無次元です。</value>
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlAtomColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonApplyToSameElement.Font" type="System.Drawing.Font, System.Drawing">

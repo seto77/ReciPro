@@ -296,6 +296,7 @@
             numericBoxVolumeAng.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxVolumeAng.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxVolumeAng.Name = "numericBoxVolumeAng";
+            numericBoxVolumeAng.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxVolumeAng.ReadOnly = true;
             numericBoxVolumeAng.RestrictLimitValue = false;
             numericBoxVolumeAng.SkipEventDuringInput = false;
@@ -313,6 +314,7 @@
             numericBoxCellVolumeNm.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellVolumeNm.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellVolumeNm.Name = "numericBoxCellVolumeNm";
+            numericBoxCellVolumeNm.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxCellVolumeNm.ReadOnly = true;
             numericBoxCellVolumeNm.RestrictLimitValue = false;
             numericBoxCellVolumeNm.SkipEventDuringInput = false;
@@ -330,6 +332,7 @@
             numericBoxCellMass.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellMass.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellMass.Name = "numericBoxCellMass";
+            numericBoxCellMass.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxCellMass.ReadOnly = true;
             numericBoxCellMass.RestrictLimitValue = false;
             numericBoxCellMass.SkipEventDuringInput = false;
@@ -347,6 +350,7 @@
             numericBoxMolarVolume.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarVolume.Name = "numericBoxMolarVolume";
+            numericBoxMolarVolume.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxMolarVolume.ReadOnly = true;
             numericBoxMolarVolume.RestrictLimitValue = false;
             numericBoxMolarVolume.SkipEventDuringInput = false;
@@ -364,6 +368,7 @@
             numericBoxMolarMass.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarMass.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarMass.Name = "numericBoxMolarMass";
+            numericBoxMolarMass.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxMolarMass.ReadOnly = true;
             numericBoxMolarMass.RestrictLimitValue = false;
             numericBoxMolarMass.SkipEventDuringInput = false;
@@ -379,6 +384,7 @@
             numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
             numericBoxDensity.DecimalPlaces = 4;
             numericBoxDensity.Name = "numericBoxDensity";
+            numericBoxDensity.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxDensity.ReadOnly = true;
             numericBoxDensity.SkipEventDuringInput = false;
             numericBoxDensity.SmartIncrement = true;
@@ -396,6 +402,7 @@
             numericBoxMeanZnumber.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanZnumber.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanZnumber.Name = "numericBoxMeanZnumber";
+            numericBoxMeanZnumber.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxMeanZnumber.ReadOnly = true;
             numericBoxMeanZnumber.RestrictLimitValue = false;
             numericBoxMeanZnumber.SkipEventDuringInput = false;
@@ -413,6 +420,7 @@
             numericBoxMeanZmass.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanZmass.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanZmass.Name = "numericBoxMeanZmass";
+            numericBoxMeanZmass.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxMeanZmass.ReadOnly = true;
             numericBoxMeanZmass.RestrictLimitValue = false;
             numericBoxMeanZmass.SkipEventDuringInput = false;
@@ -430,6 +438,7 @@
             numericBoxMeanAtomicWeight.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanAtomicWeight.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMeanAtomicWeight.Name = "numericBoxMeanAtomicWeight";
+            numericBoxMeanAtomicWeight.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxMeanAtomicWeight.ReadOnly = true;
             numericBoxMeanAtomicWeight.RestrictLimitValue = false;
             numericBoxMeanAtomicWeight.SkipEventDuringInput = false;
@@ -447,6 +456,7 @@
             numericBoxAtomicNumberDensity.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxAtomicNumberDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAtomicNumberDensity.Name = "numericBoxAtomicNumberDensity";
+            numericBoxAtomicNumberDensity.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxAtomicNumberDensity.ReadOnly = true;
             numericBoxAtomicNumberDensity.RestrictLimitValue = false;
             numericBoxAtomicNumberDensity.SkipEventDuringInput = false;
@@ -465,6 +475,7 @@
             numericBoxElectronDensity.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxElectronDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxElectronDensity.Name = "numericBoxElectronDensity";
+            numericBoxElectronDensity.ValueBoxWidth = 76; // 260622Cl 追加: 長ラベル言語(ru等)で値欄が痩せ数値クリップする回帰の修正 (DefaultValueBoxWidth=54 撤去後の明示幅)
             numericBoxElectronDensity.ReadOnly = true;
             numericBoxElectronDensity.RestrictLimitValue = false;
             numericBoxElectronDensity.SkipEventDuringInput = false;
