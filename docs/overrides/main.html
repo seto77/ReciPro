@@ -31,6 +31,22 @@
       {# 260622Cl: 波A ru #}
       <p class="admonition-title">Перевод ожидается</p>
       <p>Эта страница ещё не переведена и отображается на английском языке.</p>
+      {% elif i18n_page_locale == "zh-Hans" %}
+      {# 260622Cl: 波B zh-Hans #}
+      <p class="admonition-title">翻译待定</p>
+      <p>此页面尚未翻译，显示为英文版本。</p>
+      {% elif i18n_page_locale == "zh-Hant" %}
+      {# 260622Cl: 波B zh-Hant #}
+      <p class="admonition-title">翻譯待定</p>
+      <p>此頁面尚未翻譯，顯示為英文版本。</p>
+      {% elif i18n_page_locale == "ko" %}
+      {# 260622Cl: 波B ko #}
+      <p class="admonition-title">번역 준비 중</p>
+      <p>이 페이지는 아직 번역되지 않아 영어로 표시됩니다.</p>
+      {% elif i18n_page_locale == "pt" %}
+      {# 260622Cl: pt (preview) #}
+      <p class="admonition-title">Tradução pendente</p>
+      <p>Esta página ainda não foi traduzida e é exibida em inglês.</p>
       {% else %}
       <p class="admonition-title">Translation pending</p>
       <p>This page has not been translated yet and is shown in English.</p>
