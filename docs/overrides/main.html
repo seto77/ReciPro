@@ -2,7 +2,7 @@
    未訳ページ (fallback_to_default で英語本文がローカライズ URL に出ているページ) では
    i18n_page_locale (閲覧中の言語) と i18n_file_locale (実ファイルの言語) が食い違う。
    その場合に「このページはまだ翻訳されておらず英語版を表示しています」と知らせる。
-   日本語のときだけ日本語の文面を出し、それ以外の言語では英語の文面にする。 #}
+   各言語の文面はここに 1 分岐ずつ足す (未対応言語は英語の文面にフォールバック)。 #}
 {% extends "base.html" %}
 
 {% block content %}
@@ -11,6 +11,14 @@
       {% if i18n_page_locale == "ja" %}
       <p class="admonition-title">翻訳準備中</p>
       <p>このページはまだ翻訳されていないため、英語版を表示しています。</p>
+      {% elif i18n_page_locale == "de" %}
+      {# 260622Cl: Phase 1 de パイロット #}
+      <p class="admonition-title">Übersetzung ausstehend</p>
+      <p>Diese Seite wurde noch nicht übersetzt und wird auf Englisch angezeigt.</p>
+      {% elif i18n_page_locale == "fr" %}
+      {# 260622Cl: 波A fr #}
+      <p class="admonition-title">Traduction en attente</p>
+      <p>Cette page n'a pas encore été traduite et est affichée en anglais.</p>
       {% else %}
       <p class="admonition-title">Translation pending</p>
       <p>This page has not been translated yet and is shown in English.</p>

@@ -113,6 +113,106 @@ plugins:
             A3.1. Dynamical calculation: A3.1. 動力学計算
             A3.2. HRTEM image formation: A3.2. HRTEM 像形成
             Troubleshooting: トラブルシューティング
+        # 260622Cl: Phase 1 = de パイロット。nav_translations は GUI の de.resx 実ラベルに用語を揃える
+        #   (Stereonetz/Rotationsgeometrie/Strahl-Wechselwirkung/Strukturansicht/Beugungssimulator/
+        #    HRTEM-STEM-Simulator/Makro/Kristalldatenbank 等)。固有名 (Spot ID v1/v2) と略語
+        #   (SAED/PED/CBED/STEM/HRTEM/EBSD) は英語のまま明示登録し「未訳の取りこぼし」と区別する。
+        - locale: de
+          name: Deutsch
+          build: true
+          nav_translations:
+            Home: Startseite
+            0. Main window: 0. Hauptfenster
+            1. Crystal database: 1. Kristalldatenbank
+            2. Symmetry information: 2. Symmetrieinformationen
+            3. Beam interaction: 3. Strahl-Wechselwirkung
+            4. Rotation Geometry: 4. Rotationsgeometrie
+            5. Structure viewer: 5. Strukturansicht
+            6. Stereonet: 6. Stereonetz
+            7. Diffraction simulator: 7. Beugungssimulator
+            7.1. SAED simulation: 7.1. SAED-Simulation
+            7.2. PED simulation: 7.2. PED-Simulation
+            7.3. CBED simulation: 7.3. CBED-Simulation
+            "7.4. X-ray / neutron diffraction": 7.4. Röntgen- / Neutronenbeugung
+            8. Electron trajectory: 8. Elektronenbahnen
+            9. HRTEM/STEM simulator: 9. HRTEM/STEM-Simulator
+            9.1. HRTEM simulation: 9.1. HRTEM-Simulation
+            9.2. STEM simulation: 9.2. STEM-Simulation
+            9.3. Potential simulation: 9.3. Potential-Simulation
+            10. Spot ID v1: 10. Spot ID v1
+            11. Spot ID v2: 11. Spot ID v2
+            12. EBSD simulation: 12. EBSD-Simulation
+            20. Macro: 20. Makro
+            20.1. Built-in functions: 20.1. Integrierte Funktionen
+            20.2. Examples: 20.2. Beispiele
+            21. Keyboard & mouse shortcuts: 21. Tastatur- & Maus-Kurzbefehle
+            Appendix: Anhang
+            How to use (videos): Bedienung (Videos)
+            "Appendix A1. Coordinate systems": Anhang A1. Koordinatensysteme
+            A1.1. Basic coordinate system and crystal orientation: A1.1. Grundlegendes Koordinatensystem und Kristallorientierung
+            A1.2. Coordinate system for diffraction simulation: A1.2. Koordinatensystem für die Beugungssimulation
+            "Appendix A2. Beam interaction (solid-state background)": "Anhang A2. Strahl-Wechselwirkung (festkörperphysikalischer Hintergrund)"
+            A2.1. Atomic scattering factors: A2.1. Atomare Streufaktoren
+            A2.2. Structure factor: A2.2. Strukturfaktor
+            "A2.3. Attenuation & transport": "A2.3. Abschwächung & Transport"
+            A2.4. Fluorescence: A2.4. Fluoreszenz
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": "Anhang A3. Dynamische Beugung (Bloch-Wellen-Methode)"
+            A3.1. Dynamical calculation: A3.1. Dynamische Berechnung
+            A3.2. HRTEM image formation: A3.2. HRTEM-Bildentstehung
+            A3.3. CBED: A3.3. CBED
+            A3.4. STEM: A3.4. STEM
+            A3.5. EBSD: A3.5. EBSD
+            Troubleshooting: Fehlerbehebung
+        # 260622Cl: 波A 先頭 = fr。nav_translations は GUI の fr.resx 実ラベルに用語を揃える
+        #   (Stéréonet/Géométrie de rotation/Interaction du faisceau/Visualiseur de structure/
+        #    Simulateur de diffraction/Simulateur HRTEM-STEM/Macro/Base de données de cristaux 等)。
+        #   固有名 (Spot ID v1/v2) と略語 (SAED/PED/CBED/STEM/HRTEM/EBSD) は維持。
+        - locale: fr
+          name: Français
+          build: true
+          nav_translations:
+            Home: Accueil
+            0. Main window: 0. Fenêtre principale
+            1. Crystal database: 1. Base de données de cristaux
+            2. Symmetry information: 2. Informations de symétrie
+            3. Beam interaction: 3. Interaction du faisceau
+            4. Rotation Geometry: 4. Géométrie de rotation
+            5. Structure viewer: 5. Visualiseur de structure
+            6. Stereonet: 6. Stéréonet
+            7. Diffraction simulator: 7. Simulateur de diffraction
+            7.1. SAED simulation: 7.1. Simulation SAED
+            7.2. PED simulation: 7.2. Simulation PED
+            7.3. CBED simulation: 7.3. Simulation CBED
+            "7.4. X-ray / neutron diffraction": 7.4. Diffraction des rayons X / neutrons
+            8. Electron trajectory: 8. Trajectoires électroniques
+            9. HRTEM/STEM simulator: 9. Simulateur HRTEM/STEM
+            9.1. HRTEM simulation: 9.1. Simulation HRTEM
+            9.2. STEM simulation: 9.2. Simulation STEM
+            9.3. Potential simulation: 9.3. Simulation du potentiel
+            10. Spot ID v1: 10. Spot ID v1
+            11. Spot ID v2: 11. Spot ID v2
+            12. EBSD simulation: 12. Simulation EBSD
+            20. Macro: 20. Macro
+            20.1. Built-in functions: 20.1. Fonctions intégrées
+            20.2. Examples: 20.2. Exemples
+            21. Keyboard & mouse shortcuts: 21. Raccourcis clavier et souris
+            Appendix: Annexe
+            How to use (videos): Utilisation (vidéos)
+            "Appendix A1. Coordinate systems": Annexe A1. Systèmes de coordonnées
+            A1.1. Basic coordinate system and crystal orientation: A1.1. Système de coordonnées de base et orientation du cristal
+            A1.2. Coordinate system for diffraction simulation: A1.2. Système de coordonnées pour la simulation de diffraction
+            "Appendix A2. Beam interaction (solid-state background)": "Annexe A2. Interaction du faisceau (contexte de physique du solide)"
+            A2.1. Atomic scattering factors: A2.1. Facteurs de diffusion atomique
+            A2.2. Structure factor: A2.2. Facteur de structure
+            "A2.3. Attenuation & transport": "A2.3. Atténuation et transport"
+            A2.4. Fluorescence: A2.4. Fluorescence
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": "Annexe A3. Diffraction dynamique (méthode des ondes de Bloch)"
+            A3.1. Dynamical calculation: A3.1. Calcul dynamique
+            A3.2. HRTEM image formation: A3.2. Formation de l'image HRTEM
+            A3.3. CBED: A3.3. CBED
+            A3.4. STEM: A3.4. STEM
+            A3.5. EBSD: A3.5. EBSD
+            Troubleshooting: Dépannage
   # 260622Cl: 日本語ページのリネーム/移動履歴の redirect。JA は /ja/ 配下のままなので value (ja/新.md) が
   #   正しいルート URL に解決される。英語 (/en/) 系は legacy_en_redirects.py フックが担当するため入れない。
   #   i18n の後に置くこと (i18n 適用後の File URL を解決させるため)。
