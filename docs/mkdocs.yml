@@ -213,6 +213,153 @@ plugins:
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
             Troubleshooting: Dépannage
+        # 260622Cl: 波A es。nav_translations は GUI es.resx 実ラベルに一致
+        #   (Estereograma/Geometría de rotación/Interacción del haz/Visor de estructura/
+        #    Simulador de difracción/Simulador HRTEM-STEM/Macro/Base de datos de cristales 等)。
+        - locale: es
+          name: Español
+          build: true
+          nav_translations:
+            Home: Inicio
+            0. Main window: 0. Ventana principal
+            1. Crystal database: 1. Base de datos de cristales
+            2. Symmetry information: 2. Información de simetría
+            3. Beam interaction: 3. Interacción del haz
+            4. Rotation Geometry: 4. Geometría de rotación
+            5. Structure viewer: 5. Visor de estructura
+            6. Stereonet: 6. Estereograma
+            7. Diffraction simulator: 7. Simulador de difracción
+            7.1. SAED simulation: 7.1. Simulación SAED
+            7.2. PED simulation: 7.2. Simulación PED
+            7.3. CBED simulation: 7.3. Simulación CBED
+            "7.4. X-ray / neutron diffraction": 7.4. Difracción de rayos X / neutrones
+            8. Electron trajectory: 8. Trayectorias electrónicas
+            9. HRTEM/STEM simulator: 9. Simulador HRTEM/STEM
+            9.1. HRTEM simulation: 9.1. Simulación HRTEM
+            9.2. STEM simulation: 9.2. Simulación STEM
+            9.3. Potential simulation: 9.3. Simulación de potencial
+            10. Spot ID v1: 10. Spot ID v1
+            11. Spot ID v2: 11. Spot ID v2
+            12. EBSD simulation: 12. Simulación EBSD
+            20. Macro: 20. Macro
+            20.1. Built-in functions: 20.1. Funciones integradas
+            20.2. Examples: 20.2. Ejemplos
+            21. Keyboard & mouse shortcuts: 21. Atajos de teclado y ratón
+            Appendix: Apéndice
+            How to use (videos): Uso (vídeos)
+            "Appendix A1. Coordinate systems": Apéndice A1. Sistemas de coordenadas
+            A1.1. Basic coordinate system and crystal orientation: A1.1. Sistema de coordenadas básico y orientación del cristal
+            A1.2. Coordinate system for diffraction simulation: A1.2. Sistema de coordenadas para la simulación de difracción
+            "Appendix A2. Beam interaction (solid-state background)": "Apéndice A2. Interacción del haz (fundamentos de física del estado sólido)"
+            A2.1. Atomic scattering factors: A2.1. Factores de dispersión atómica
+            A2.2. Structure factor: A2.2. Factor de estructura
+            "A2.3. Attenuation & transport": "A2.3. Atenuación y transporte"
+            A2.4. Fluorescence: A2.4. Fluorescencia
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": "Apéndice A3. Difracción dinámica (método de ondas de Bloch)"
+            A3.1. Dynamical calculation: A3.1. Cálculo dinámico
+            A3.2. HRTEM image formation: A3.2. Formación de la imagen HRTEM
+            A3.3. CBED: A3.3. CBED
+            A3.4. STEM: A3.4. STEM
+            A3.5. EBSD: A3.5. EBSD
+            Troubleshooting: Solución de problemas
+        # 260622Cl: 波A it。nav_translations は GUI it.resx 実ラベルに一致
+        #   (Stereogramma/Geometria di rotazione/Interazione del fascio/Visualizzatore struttura/
+        #    Simulatore di diffrazione/Simulatore HRTEM-STEM/Macro/Database dei cristalli 等)。
+        - locale: it
+          name: Italiano
+          build: true
+          nav_translations:
+            Home: Home
+            0. Main window: 0. Finestra principale
+            1. Crystal database: 1. Database dei cristalli
+            2. Symmetry information: 2. Informazioni di simmetria
+            3. Beam interaction: 3. Interazione del fascio
+            4. Rotation Geometry: 4. Geometria di rotazione
+            5. Structure viewer: 5. Visualizzatore struttura
+            6. Stereonet: 6. Stereogramma
+            7. Diffraction simulator: 7. Simulatore di diffrazione
+            7.1. SAED simulation: 7.1. Simulazione SAED
+            7.2. PED simulation: 7.2. Simulazione PED
+            7.3. CBED simulation: 7.3. Simulazione CBED
+            "7.4. X-ray / neutron diffraction": 7.4. Diffrazione di raggi X / neutroni
+            8. Electron trajectory: 8. Traiettorie elettroniche
+            9. HRTEM/STEM simulator: 9. Simulatore HRTEM/STEM
+            9.1. HRTEM simulation: 9.1. Simulazione HRTEM
+            9.2. STEM simulation: 9.2. Simulazione STEM
+            9.3. Potential simulation: 9.3. Simulazione del potenziale
+            10. Spot ID v1: 10. Spot ID v1
+            11. Spot ID v2: 11. Spot ID v2
+            12. EBSD simulation: 12. Simulazione EBSD
+            20. Macro: 20. Macro
+            20.1. Built-in functions: 20.1. Funzioni integrate
+            20.2. Examples: 20.2. Esempi
+            21. Keyboard & mouse shortcuts: 21. Scorciatoie da tastiera e mouse
+            Appendix: Appendice
+            How to use (videos): Utilizzo (video)
+            "Appendix A1. Coordinate systems": Appendice A1. Sistemi di coordinate
+            A1.1. Basic coordinate system and crystal orientation: A1.1. Sistema di coordinate di base e orientazione del cristallo
+            A1.2. Coordinate system for diffraction simulation: A1.2. Sistema di coordinate per la simulazione di diffrazione
+            "Appendix A2. Beam interaction (solid-state background)": "Appendice A2. Interazione del fascio (basi di fisica dello stato solido)"
+            A2.1. Atomic scattering factors: A2.1. Fattori di diffusione atomica
+            A2.2. Structure factor: A2.2. Fattore di struttura
+            "A2.3. Attenuation & transport": "A2.3. Attenuazione e trasporto"
+            A2.4. Fluorescence: A2.4. Fluorescenza
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": "Appendice A3. Diffrazione dinamica (metodo delle onde di Bloch)"
+            A3.1. Dynamical calculation: A3.1. Calcolo dinamico
+            A3.2. HRTEM image formation: A3.2. Formazione dell'immagine HRTEM
+            A3.3. CBED: A3.3. CBED
+            A3.4. STEM: A3.4. STEM
+            A3.5. EBSD: A3.5. EBSD
+            Troubleshooting: Risoluzione dei problemi
+        # 260622Cl: 波A ru (Cyrillic)。nav_translations は GUI ru.resx 実ラベルに一致
+        #   (Стереосеть/Геометрия вращения/Взаимодействие пучка/Просмотр структуры/
+        #    Симулятор дифракции/Симулятор HRTEM-STEM/Макрос/База данных кристаллов 等)。
+        - locale: ru
+          name: Русский
+          build: true
+          nav_translations:
+            Home: Главная
+            0. Main window: 0. Главное окно
+            1. Crystal database: 1. База данных кристаллов
+            2. Symmetry information: 2. Сведения о симметрии
+            3. Beam interaction: 3. Взаимодействие пучка
+            4. Rotation Geometry: 4. Геометрия вращения
+            5. Structure viewer: 5. Просмотр структуры
+            6. Stereonet: 6. Стереосеть
+            7. Diffraction simulator: 7. Симулятор дифракции
+            7.1. SAED simulation: 7.1. Моделирование SAED
+            7.2. PED simulation: 7.2. Моделирование PED
+            7.3. CBED simulation: 7.3. Моделирование CBED
+            "7.4. X-ray / neutron diffraction": 7.4. Рентгеновская / нейтронная дифракция
+            8. Electron trajectory: 8. Траектории электронов
+            9. HRTEM/STEM simulator: 9. Симулятор HRTEM/STEM
+            9.1. HRTEM simulation: 9.1. Моделирование HRTEM
+            9.2. STEM simulation: 9.2. Моделирование STEM
+            9.3. Potential simulation: 9.3. Моделирование потенциала
+            10. Spot ID v1: 10. Spot ID v1
+            11. Spot ID v2: 11. Spot ID v2
+            12. EBSD simulation: 12. Моделирование EBSD
+            20. Macro: 20. Макрос
+            20.1. Built-in functions: 20.1. Встроенные функции
+            20.2. Examples: 20.2. Примеры
+            21. Keyboard & mouse shortcuts: 21. Сочетания клавиш и мыши
+            Appendix: Приложение
+            How to use (videos): Использование (видео)
+            "Appendix A1. Coordinate systems": Приложение A1. Системы координат
+            A1.1. Basic coordinate system and crystal orientation: A1.1. Базовая система координат и ориентация кристалла
+            A1.2. Coordinate system for diffraction simulation: A1.2. Система координат для моделирования дифракции
+            "Appendix A2. Beam interaction (solid-state background)": "Приложение A2. Взаимодействие пучка (основы физики твёрдого тела)"
+            A2.1. Atomic scattering factors: A2.1. Атомные факторы рассеяния
+            A2.2. Structure factor: A2.2. Структурный фактор
+            "A2.3. Attenuation & transport": "A2.3. Ослабление и перенос"
+            A2.4. Fluorescence: A2.4. Флуоресценция
+            "Appendix A3. Dynamical diffraction (Bloch-wave method)": "Приложение A3. Динамическая дифракция (метод блоховских волн)"
+            A3.1. Dynamical calculation: A3.1. Динамический расчёт
+            A3.2. HRTEM image formation: A3.2. Формирование изображения HRTEM
+            A3.3. CBED: A3.3. CBED
+            A3.4. STEM: A3.4. STEM
+            A3.5. EBSD: A3.5. EBSD
+            Troubleshooting: Устранение неполадок
   # 260622Cl: 日本語ページのリネーム/移動履歴の redirect。JA は /ja/ 配下のままなので value (ja/新.md) が
   #   正しいルート URL に解決される。英語 (/en/) 系は legacy_en_redirects.py フックが担当するため入れない。
   #   i18n の後に置くこと (i18n 適用後の File URL を解決させるため)。
