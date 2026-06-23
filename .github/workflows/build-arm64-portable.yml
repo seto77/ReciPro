@@ -13,6 +13,15 @@ on:
   # ビルド + 検査ロジックを 1 か所に保つ (二重保守の回避)。outputs は呼び出し側が ZIP 命名と
   # 「添付先 release tag との版数一致」検査に使う
   workflow_call:
+    # 260623Cl Phase 3 (release.yml への inline 統合): 呼び出し元が assembly_version を渡せるようにする。
+    #   同一 run で x64 (release.yml) と arm64 の FileVersion を完全一致させるため (cross-grade 要件、WiX計画 Phase A)。
+    #   未指定 (単独 dispatch / attach-arm64 の backfill) は従来どおり tag v.<ver> の commit 時刻にアンカーする。
+    inputs:
+      assembly_version:
+        description: "AssemblyVersion/FileVersion (yyyy.M.d.HHmm)。空なら tag commit 時刻 (無ければ UtcNow) を使う"
+        type: string
+        required: false
+        default: ""
     outputs:
       version:
         description: "Version.cs の History 先頭から解析したバージョン (例: 4.926)"
@@ -62,20 +71,27 @@ jobs:
           #   (WiX計画 Phase A 実測)。release.yml は release commit の時刻を使うため、ここでは tag v.<ver> の
           #   commit 時刻に合わせる (tag は GITHUB_SHA に作られるので一致する)。tag 未作成 (リリース前の
           #   単独 dispatch / dry_run) は UtcNow フォールバック (release には添付されないため影響なし)
+          # 260623Cl 呼び出し元 (release.yml inline 統合) が assembly_version を渡したらそれを優先する
+          #   (同一 run では tag がまだ無いので tag 時刻参照は使えず、x64 と一致させるには引数渡しが必須)。
           # 旧: $now = [System.DateTime]::UtcNow
-          $tag = "v.$ver"
-          git fetch origin "refs/tags/${tag}:refs/tags/${tag}" --depth=1 2>$null
-          $global:LASTEXITCODE = 0
-          $iso = (git log -1 --format=%cI $tag 2>$null)
-          $global:LASTEXITCODE = 0
-          if ($iso) {
-            $now = ([System.DateTimeOffset]::Parse($iso)).UtcDateTime
-            Write-Host "FileVersion anchored to tag $tag commit time ($iso)."
+          $assemblyVer = '${{ inputs.assembly_version }}'
+          if ($assemblyVer) {
+            Write-Host "FileVersion provided by caller: $assemblyVer."
           } else {
-            $now = [System.DateTime]::UtcNow
-            Write-Warning "Tag $tag not found; using UtcNow (fine for artifact-only runs; do not attach this MSI to a release)."
+            $tag = "v.$ver"
+            git fetch origin "refs/tags/${tag}:refs/tags/${tag}" --depth=1 2>$null
+            $global:LASTEXITCODE = 0
+            $iso = (git log -1 --format=%cI $tag 2>$null)
+            $global:LASTEXITCODE = 0
+            if ($iso) {
+              $now = ([System.DateTimeOffset]::Parse($iso)).UtcDateTime
+              Write-Host "FileVersion anchored to tag $tag commit time ($iso)."
+            } else {
+              $now = [System.DateTime]::UtcNow
+              Write-Warning "Tag $tag not found; using UtcNow (fine for artifact-only runs; do not attach this MSI to a release)."
+            }
+            $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
           }
-          $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
           Write-Host "Version: $ver (assembly: $assemblyVer)"
           "version=$ver"                  >> $env:GITHUB_OUTPUT

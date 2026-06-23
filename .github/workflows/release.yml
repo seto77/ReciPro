@@ -1,5 +1,11 @@
 # 260405Cl Version.cs の History 先頭行が変わったら自動でインストーラをビルド・リリースする
 # 260602Cl portable ZIP も同じリリースに添付。MSI を主配布のまま (管理 PC 向けの代替として self-contained ZIP を追加)
+# 260623Cl Phase 3 (ARM64化方針 §6 = 完全 inline 統合): 単一 job を 5 job (prepare/build-x64/build-arm64/smoke-arm64/release)
+#   に再編し、arm64 (ZIP+MSI) を同一 run でビルド・実機 smoke して x64 と一緒に 1 回の gh release create で原子的に公開する。
+#   これにより「arm64 は後から添付」窓 (旧 attach-arm64-experimental.yml の workflow_run 後付け = 一時404 + †脚注) が消える。
+#   ★不変条件「x64 は arm64 の成否に連動しない」は維持: release job は build-x64 成功のみを必須とし、arm64 (build/smoke) が
+#   失敗したら x64 のみ公開して †脚注を残す (フォールバック)。FileVersion は prepare で 1 度算出して x64/arm64 双方へ渡し
+#   完全一致させる (cross-grade 要件、WiX計画 Phase A)。attach-arm64-experimental.yml は手動復旧/backfill 専用に降格。
 name: Build And Release Installer And Portable ZIP
 
 on:
@@ -16,41 +22,63 @@ on:
   #         description: "既存リリースを削除してリビルドする"
   #         type: boolean
   #         default: false
+  # 260623Cl dry_run を追加: x64+arm64 をビルド・smoke し notes/資産まで組むが gh release create はしない
+  #   (最終資産を workflow artifact で検分)。inline 統合フロー全体をリリースを作らずに検証するため。
+  #   dry_run では既存 release があっても needed=true で続行する (検証目的)。
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build x64 + arm64 and run smokes, but do NOT create the release (assets uploaded as artifacts only)."
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
 jobs:
-  release:
-    runs-on: windows-2025-vs2026
-    timeout-minutes: 30
-
+  # ---- 1. prepare: 版数解析・リリース要否判定・FileVersion 算出 (gh + git だけなので ubuntu) ----
+  # 260623Cl 旧 release job の先頭ステップを分離。assembly_version をここで 1 度だけ算出し、x64/arm64 双方へ配って
+  #   FileVersion を完全一致させる (cross-grade 要件)。notes 生成は arm64 の成否で変わるため release job へ後送り。
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      needed: ${{ steps.version.outputs.needed }}
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      product_version: ${{ steps.version.outputs.product_version }}
+      assembly_version: ${{ steps.version.outputs.assembly_version }}
+      history_line: ${{ steps.version.outputs.history_line }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # 260623Cl assembly_version 用に GITHUB_SHA の commit 時刻を git log で引くため全履歴が要る
 
       - name: Parse version and check if release needed
         id: version
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          $content = Get-Content "ReciPro\Version.cs" -Raw
+          $content = Get-Content "ReciPro/Version.cs" -Raw
           if ($content -notmatch 'ver(\d+\.\d+)\(') {
             throw "Could not parse version from Version.cs History."
           }
           $ver = $Matches[1]
           $tag = "v.$ver"
+          $dryRun = $env:DRY_RUN -eq 'true'
 
           # 同じバージョンのリリースが既にあれば常にスキップ
           # 260530Cl force モードを廃止: v* tag 削除禁止 ruleset と非整合で、
           #          既存 release を消した後にタグを再作成できず壊すため。
           #          リリースに失敗したら Version.cs を進めて新しい tag で出し直す運用とする。
+          # 260623Cl dry_run は検証目的なので既存 release でも続行する (gh release create は最終 job でスキップする)。
           gh release view $tag 2>&1 | Out-Null
           $releaseExists = ($LASTEXITCODE -eq 0)
           $global:LASTEXITCODE = 0
-          if ($releaseExists) {
+          if ($releaseExists -and -not $dryRun) {
             Write-Host "Release $tag already exists. Skipping."
             "needed=false" >> $env:GITHUB_OUTPUT
             return
@@ -69,67 +97,49 @@ jobs:
           #     }
           #   }
 
-          # History の先頭行をリリースノートに使う
+          # History の先頭行をリリースノートに使う (release job が notes を組む)
           $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
-          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
-          # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260602Cl 旧: 変更履歴 1 行のみ
-          @( # 260602Cl MSI を第一候補、portable ZIP を管理 PC 向け代替として release notes に明記
-            # 260613Cl SHA256SUMS.txt の行を削除 (checksum 公開廃止: 同一チャネル配布では改竄対策にならず、初心者を惑わすため)
-            # 260613Cl アセット改名 (ReciPro-setup.msi 系、作者決定) に伴い直リンク付き Download 表へ全面改訂 (文案は作者承認済み)。
-            #   本文はアセット一覧の真上に表示されるため実質的な目次になる。arm64 の 2 資産は後付け添付
-            #   (attach-arm64-experimental.yml) のため添付完了までリンクは一時 404 († 注記でカバー)。
-            #   旧名 ReciProSetup.msi は旧クライアント自動更新互換の同一バイトコピー (リンク無しで DL 対象外を暗示)。
-            #   旧 (260613Cl 以前のプレーンテキスト3行):
-            #   "Assets:"
-            #   "- ReciProSetup.msi: recommended installer."
-            #   "- ReciPro-v.$ver.zip: no-install, self-contained portable alternative for managed Windows PCs."
-            #   "- ReciProSetup-arm64.msi / ReciPro-v.$ver-arm64.zip: native Arm64 builds (attached after on-device verification; may appear slightly later than the x64 assets)."
-            $historyLine
-            ""
-            "| Download | Description |"
-            "|---|---|"
-            "| **[ReciPro-setup.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
-            "| [ReciPro-setup_arm64.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup_arm64.msi) | Installer for Windows on Arm: Snapdragon PCs such as some Surface models (Surface Pro X / Pro 11 / Laptop 7), or Apple Silicon Macs running Windows via Parallels, etc.† |"
-            "| [ReciPro-v.$ver.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. May also run on macOS via a Wine wrapper (see [ReciPro_macOS_memo](https://github.com/Ryo-fkushima/ReciPro_macOS_memo)). |"
-            "| [ReciPro-v.${ver}_arm64.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.${ver}_arm64.zip) | Portable for Windows on Arm: no installation, no administrator rights needed.† |"
-            "| ReciProSetup.msi | Identical to ReciPro-setup.msi (legacy name for auto-update from older versions). |"
-            ""
-            "† Arm64 files are attached after on-device verification and may appear slightly later than the x64 files."
-          ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
           # 260613Cl ビルド時刻 → release commit (GITHUB_SHA) の commit 時刻に変更 (決定論化、Phase C)。
           #   x64⇔arm64 の same-version cross-grade には両 MSI の FileVersion 完全一致が必要 (WiX計画 Phase A 実測:
           #   incoming が古いと自前アセンブリの FileCopy が costing で省略され REP 削除後に欠落する)。
-          #   tag は GITHUB_SHA に作られるため、後続の arm64 ビルド (attach 経由) が tag の commit 時刻を
-          #   使うことで完全一致する。同一コミットの再実行でも同一 FileVersion になり再現性も向上。
+          # 260623Cl inline 統合では同一 run の x64/arm64 がこの 1 値を共有する (arm64 へは build-arm64-portable.yml の
+          #   assembly_version 入力で渡す)。同一コミットの再実行でも同一 FileVersion になり再現性も保つ。
           # 旧: $now = [System.DateTime]::UtcNow
           $now = ([System.DateTimeOffset]::Parse((git log -1 --format=%cI $env:GITHUB_SHA))).UtcDateTime
           $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
-          Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"
-          "needed=true"           >> $env:GITHUB_OUTPUT
-          "version=$ver"          >> $env:GITHUB_OUTPUT
-          "tag=$tag"              >> $env:GITHUB_OUTPUT
+          Write-Host "Version: $ver (tag: $tag, assembly: $assemblyVer, dryRun: $dryRun)"
+          "needed=true"            >> $env:GITHUB_OUTPUT
+          "version=$ver"           >> $env:GITHUB_OUTPUT
+          "tag=$tag"               >> $env:GITHUB_OUTPUT
           "product_version=0.$ver" >> $env:GITHUB_OUTPUT
-          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
           "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
+          "history_line=$historyLine" >> $env:GITHUB_OUTPUT
 
-      # ---- 以降、新バージョンが検出されたときのみ実行 ----
+  # ---- 2. build-x64: x64 MSI + portable ZIP (旧 release job のビルドロジックを無変更で移設) ----
+  # 260623Cl 各ステップの `if: steps.version.outputs.needed == 'true'` は job 全体の if: で代替。
+  #   版数/FileVersion は steps.version でなく needs.prepare.outputs を参照する。
+  build-x64:
+    needs: prepare
+    if: needs.prepare.outputs.needed == 'true'
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
       - name: Setup .NET 10
-        if: steps.version.outputs.needed == 'true'
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.x"
 
       - name: Restore managed dependencies
-        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: dotnet restore ReciPro\ReciPro.csproj
 
       - name: Find devenv.com
-        if: steps.version.outputs.needed == 'true'
         id: devenv
         shell: pwsh
         run: |
@@ -141,7 +151,6 @@ jobs:
           "cli=$cli" >> $env:GITHUB_OUTPUT
 
       - name: Build native runtime binaries
-        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
           $log = Join-Path $env:RUNNER_TEMP "devenv-native.log"
@@ -157,12 +166,11 @@ jobs:
       #   ファイルバージョン規則で自前アセンブリの FileCopy が costing 段階で省略され、
       #   アップグレード時に REP 削除後ファイル欠落する (validate-wix-msi.yml run 27405216245 で実証)。
       - name: Stage MSI payload (framework-dependent publish)
-        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
           $s = "artifacts\staging-msi-x64"
           dotnet publish ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore `
-            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+            -p:AssemblyVersion=${{ needs.prepare.outputs.assembly_version }} -p:FileVersion=${{ needs.prepare.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
           # Crystallography.Native 3 flavor は publish グラフ外 (vcxproj が bin\Release へ後置き) → 明示コピー
           $native = Get-ChildItem "ReciPro\bin\Release" -Filter "Crystallography.Native*.dll" -File
@@ -194,12 +202,11 @@ jobs:
       #   vdproj 一式 (ReciProSetup\) は WiX 版リリース 1 回成功後に削除予定 (計画書 §6 Phase B-3)。
       - name: Build installer with WiX
         id: build_installer
-        if: steps.version.outputs.needed == 'true'
         timeout-minutes: 10
         shell: pwsh
         run: |
           dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=x64 `
-            -p:ProductVersion=${{ steps.version.outputs.product_version }} `
+            -p:ProductVersion=${{ needs.prepare.outputs.product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-x64"
           if ($LASTEXITCODE -ne 0) { throw "WiX build failed (exit $LASTEXITCODE)." }
 
@@ -217,7 +224,6 @@ jobs:
           "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
 
       - name: Publish portable ZIP
-        if: steps.version.outputs.needed == 'true'
         id: portable
         shell: pwsh
         run: |
@@ -231,7 +237,7 @@ jobs:
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-portable\ReciPro"
           # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-x64-portable.zip → ReciPro-v.X-x64.zip → 最終形 ReciPro-v.X.zip)。
           #          x64 が既定で無印、arm64 のみ接尾辞付き (ReciPro-v.X-arm64.zip) の対称形。自動更新は MSI 固定 URL のみで ZIP 名に依存しない
-          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}.zip"
+          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ needs.prepare.outputs.version }}.zip"
 
           if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
           if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
@@ -257,8 +263,8 @@ jobs:
             -r win-x64 `
             --self-contained true `
             -p:Platform=x64 `
-            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:AssemblyVersion=${{ needs.prepare.outputs.assembly_version }} `
+            -p:FileVersion=${{ needs.prepare.outputs.assembly_version }} `
             -p:PublishSingleFile=true `
             -p:PublishTrimmed=false `
             -p:SatelliteResourceLanguages=en%3Bja%3Bde%3Bfr%3Bes%3Bpt%3Bit%3Bru%3Bzh-Hans%3Bzh-Hant%3Bko `
@@ -288,41 +294,403 @@ jobs:
       #   リリースページで初心者を惑わす悪影響の方が大きい (作者決定)。真正性保証は SignPath 署名 (Phase D) で行う。
       #   本文は git 履歴 b3c35d22 以前を参照。
 
-      - name: Upload workflow artifacts
-        if: steps.version.outputs.needed == 'true'
+      # 260623Cl 旧「Upload workflow artifacts」+「Create tag and GitHub Release」を分離。ここでは x64 の 3 資産を
+      #   1 つの dir にまとめて artifact 化する (release job が download して原子的添付に使う + 検分記録を兼ねる)。
+      - name: Collect x64 release assets
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:RUNNER_TEMP "x64-out"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          Copy-Item "${{ steps.build_installer.outputs.msi_path }}" $out
+          Copy-Item "${{ steps.build_installer.outputs.legacy_msi_path }}" $out
+          Copy-Item "${{ steps.portable.outputs.zip_path }}" $out
+          Get-ChildItem $out | ForEach-Object { Write-Host "x64 asset: $($_.Name) ($($_.Length) bytes)" }
+
+      - name: Upload x64 release assets
         # 260425Cl Node.js 20 廃止対応 (v6 で Node.js 24 がデフォルト)
         uses: actions/upload-artifact@v6
         with:
-          name: ReciPro-release-v.${{ steps.version.outputs.version }}
+          name: x64-release-assets
+          path: ${{ runner.temp }}/x64-out
+
+  # ---- 3. build-arm64: reusable build (二重保守なし)。prepare の FileVersion を渡して x64 と一致させる ----
+  # 260623Cl build-arm64-portable.yml を workflow_call で再利用。assembly_version を渡すことで x64 と同一 FileVersion。
+  build-arm64:
+    needs: prepare
+    if: needs.prepare.outputs.needed == 'true'
+    uses: ./.github/workflows/build-arm64-portable.yml
+    with:
+      assembly_version: ${{ needs.prepare.outputs.assembly_version }}
+    permissions:
+      contents: read
+
+  # ---- 4. smoke-arm64: windows-11-arm 実機で smoke → 検証済み ZIP+MSI を artifact 化 (旧 attach の smoke を移設) ----
+  # 260623Cl このジョブが失敗しても release job は走る (フォールバックで x64 のみ公開)。smoke 内容は旧 attach-arm64 と同一:
+  #   想定故障モードが全て「ビルド緑・実行時死亡」型 (BadImageFormat / DLL 黙殺フォールバック / 起動即死) のため、
+  #   PE 検査 + LoadLibrary + ReciPro.exe --smoke (NativeWrapper/Xraylib 明示アサート) + GUI 起動 + MSI install/smoke を実機で行う。
+  smoke-arm64:
+    needs: [prepare, build-arm64]
+    if: needs.prepare.outputs.needed == 'true'
+    runs-on: windows-11-arm # arm64 ネイティブランナー (public repo 無料、方針 §1.3)
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5 # native\win-arm64\ の LoadLibrary 検査用 (バンドル内 DLL と同一ソース)
+
+      - name: Resolve arm64 asset names
+        id: names
+        shell: pwsh
+        run: |
+          # 260613Cl アセット改名 (作者決定): アーキ接尾辞は _arm64 (_ は . より後・英字より前にソートされ、無印 x64 が各ペアの上に来る)。
+          $ver = "${{ needs.prepare.outputs.version }}"
+          "zip_name=ReciPro-v.${ver}_arm64.zip" >> $env:GITHUB_OUTPUT
+          "msi_name=ReciPro-setup_arm64.msi"    >> $env:GITHUB_OUTPUT
+
+      - name: Verify version consistency between prepare and build
+        shell: pwsh
+        run: |
+          # 同一 SHA から解析しているので一致するはずだが、出力配線のミスをここで検出する
+          if ('${{ needs.prepare.outputs.version }}' -ne '${{ needs.build-arm64.outputs.version }}') {
+            throw "Version mismatch: prepare=${{ needs.prepare.outputs.version }} build=${{ needs.build-arm64.outputs.version }}"
+          }
+
+      - name: Download build artifact
+        # v7 = upload-artifact@v6 と同日リリースの Node 24 対 (download 側は 2025-08 の v5 breaking の分 major が 1 進んでいる)。
+        # 同一 run 内 (reusable workflow がアップロードした artifact を含む) は name 指定だけで取得できる
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build-arm64.outputs.artifact_name }}
+          path: ${{ runner.temp }}/arm64-artifact
+
+      - name: Download arm64 MSI artifact # 260613Cl Phase C
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build-arm64.outputs.msi_artifact_name }}
+          path: ${{ runner.temp }}/arm64-msi
+
+      - name: "Smoke 1: PE machine + native LoadLibrary (arm64-native pwsh)"
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          if (-not (Test-Path (Join-Path $dir "ReciPro.exe"))) {
+            throw "Artifact layout unexpected: ReciPro.exe not found in $dir"
+          }
+
+          # PE machine 再検査 (ビルド側でも検査済みだが、artifact 往復後の実物を添付直前に確認する)
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            $pe = [BitConverter]::ToInt32($b, 0x3C)
+            return [BitConverter]::ToUInt16($b, $pe + 4)
+          }
+          foreach ($f in @("ReciPro.exe", "Crystallography.Native.dll")) {
+            $m = Get-PEMachine (Join-Path $dir $f)
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+
+          # arm64 ネイティブの pwsh で実 LoadLibrary (= AA64 PE + /MT 静的 CRT がクリーン環境で本当にロードできるか)。
+          # libxrl/glfw のリポ側コピーはここで検査し、単一ファイル exe バンドル内の実物は後続の --smoke が検査する
+          # (xraylib self-test + glfwInit。リポ側だけでは配布物の検査にならない、codex レビュー指摘)
+          foreach ($dll in @(
+            (Join-Path $dir "Crystallography.Native.dll"),
+            "ReciPro\native\win-arm64\libxrl-11.dll",
+            "ReciPro\native\win-arm64\glfw3.dll")) {
+            $abs = (Resolve-Path $dll).Path
+            $h = [System.Runtime.InteropServices.NativeLibrary]::Load($abs)
+            [System.Runtime.InteropServices.NativeLibrary]::Free($h)
+            Write-Host "LoadLibrary OK: $abs"
+          }
+
+      - name: "Smoke 2: ReciPro.exe --smoke (NativeWrapper / Xraylib explicit assertion)"
+        shell: pwsh
+        run: |
+          # 黙殺フォールバック型 (動くが native 無効で異常に遅い) を CI で確実に検出する (方針 §7)。
+          # 初回起動は単一ファイルバンドルの抽出 + Defender スキャンで時間がかかるためタイムアウトは長めに
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $out = Join-Path $env:RUNNER_TEMP "smoke-result.txt"
+          # 引数はパスに空白が入っても壊れないよう明示的にクォートする (Start-Process は自動クォートしない)
+          $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $dir -PassThru
+          if (-not $p.WaitForExit(600000)) {
+            Stop-Process -Id $p.Id -Force
+            throw "--smoke did not finish within 10 minutes."
+          }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode)). See output above." }
+          # glfwEnabled は単一ファイルバンドル内の glfw3.dll を実際に抽出・glfwInit して検査した結果
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+      - name: "Smoke 3: GUI launch (main window appears and survives)"
+        shell: pwsh
+        run: |
+          # 起動即死 (例外ダイアログ前のクラッシュ等) の検出。ウィンドウ生成までを確認して終了する。
+          # GL 検証はしない (方針 §6.3): GPU 無しの hosted runner は GDI Generic GL 1.1 のみで、
+          # GLControlAlpha の静的初期化 (checkSupportedVersion = GL コンテキスト実生成) が WndProc 内例外
+          # → ThreadExceptionDialog ("Microsoft .NET") のモーダル表示で永久ブロックする (run 27383602242/27384362544 で実証)。
+          # CRYSTALLOGRAPHY_DISABLE_OPENGL=1 (260612Cl GLControlAlpha + FormMain) で GL 判定を丸ごとスキップし
+          # 3D 無効モードの起動経路を検査する。GL の実機検証は Phase 2 (Surface) で完了済み、
+          # バンドル内 glfw3.dll のロードは Smoke 2 (glfwInit) が検査済み
+          # 260612Cl 初回 dry_run (run 27382975111) の知見で改訂:
+          #   - FormMain_Load は進捗ダイアログ (Owner 付き = Process.MainWindowHandle に数えられない) を出した後、
+          #     全子フォームを構築してから FormMain を表示する。Process.MainWindowHandle 頼みでは進捗が見えない
+          #   - → EnumWindows でプロセスの全トップレベルウィンドウ (hidden/owned 含む) と CPU 時間を定期ログし、
+          #     「unowned + visible + タイトル 'ReciPro*'」(= Load 完了後の FormMain) を合格条件にする。
+          #     タイトル検査はエラーダイアログの誤合格防止 (codex レビュー指摘) を兼ねる
+          #   - タイムアウト時はデスクトップをスクリーンショットして artifact 化 (次ステップ)
+          Add-Type -TypeDefinition @'
+          using System;
+          using System.Collections.Generic;
+          using System.Runtime.InteropServices;
+          using System.Text;
+          public static class WinEnum {
+            delegate bool EnumProc(IntPtr h, IntPtr lp);
+            [DllImport("user32.dll")] static extern bool EnumWindows(EnumProc cb, IntPtr lp);
+            [DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+            [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr h);
+            [DllImport("user32.dll", CharSet = CharSet.Unicode)] static extern int GetWindowText(IntPtr h, StringBuilder sb, int n);
+            [DllImport("user32.dll")] static extern IntPtr GetWindow(IntPtr h, uint cmd);
+            public static List<string> List(int pid) {
+              var r = new List<string>();
+              EnumWindows((h, lp) => {
+                uint wpid; GetWindowThreadProcessId(h, out wpid);
+                if (wpid == pid) {
+                  var sb = new StringBuilder(512); GetWindowText(h, sb, 512);
+                  r.Add((IsWindowVisible(h) ? "visible" : "hidden") + "|" + (GetWindow(h, 4) != IntPtr.Zero ? "owned" : "unowned") + "|" + sb);
+                }
+                return true;
+              }, IntPtr.Zero);
+              return r;
+            }
+          }
+          '@
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $env:CRYSTALLOGRAPHY_DISABLE_OPENGL = "1" # 上記コメント参照 (タイトルは "ReciPro  ...  (3D rendering disable mode)" になる)
+          $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -WorkingDirectory $dir -PassThru
+          $deadline = (Get-Date).AddSeconds(480) # 初回起動は全子フォーム構築 + JIT で CI の非力な VM では数分かかり得る
+          $shown = $false
+          $lastLog = [DateTime]::MinValue
+          while ((Get-Date) -lt $deadline) {
+            if ($p.HasExited) { throw "ReciPro.exe exited prematurely (exit $($p.ExitCode))." }
+            $windows = [WinEnum]::List($p.Id)
+            if ($windows | Where-Object { $_ -like 'visible|unowned|ReciPro*' }) { $shown = $true; break }
+            if (((Get-Date) - $lastLog).TotalSeconds -ge 30) {
+              $p.Refresh()
+              Write-Host ("t={0:f0}s cpu={1:f1}s windows: {2}" -f ((Get-Date) - $p.StartTime).TotalSeconds, $p.TotalProcessorTime.TotalSeconds, ($windows -join ' / '))
+              $lastLog = Get-Date
+            }
+            Start-Sleep -Seconds 3
+          }
+          if (-not $shown) {
+            # 失敗診断: デスクトップのスクリーンショット (hosted runner は interactive desktop session) と最終ウィンドウ一覧
+            Write-Host "Final window list: $(([WinEnum]::List($p.Id)) -join ' / ')"
+            Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+            $bounds = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $bmp = New-Object System.Drawing.Bitmap $bounds.Width, $bounds.Height
+            [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($bounds.X, $bounds.Y, 0, 0, $bmp.Size)
+            $bmp.Save((Join-Path $env:RUNNER_TEMP "smoke3-desktop.png"))
+            Stop-Process -Id $p.Id -Force
+            throw "ReciPro main window did not appear within 480 s (see logged window lists and smoke3-desktop.png artifact)."
+          }
+          Write-Host "Main window appeared: $(([WinEnum]::List($p.Id) | Where-Object { $_ -like 'visible|*' }) -join ' / ')"
+          Start-Sleep -Seconds 10 # 表示直後のクラッシュ検出
+          if ($p.HasExited) { throw "ReciPro.exe crashed shortly after showing the main window (exit $($p.ExitCode))." }
+          Stop-Process -Id $p.Id -Force
+          Write-Host "GUI launch smoke OK."
+
+      - name: "Smoke 4: arm64 MSI (per-user install, --smoke, uninstall)" # 260613Cl Phase C
+        shell: pwsh
+        run: |
+          # 260613Cl MSI の Template/UpgradeCode/ProductVersion 検査はビルド側 (x64 ランナー) で実施済み:
+          #   windows-11-arm の COM 遅延バインディングは OpenDatabase が DISP_E_TYPEMISMATCH で失敗する
+          #   (dry_run 27427847939 で実測)。ここでは COM を使わず install/uninstall とも MSI パス指定で行う
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI artifact not found: $msi" }
+
+          # MSI 版は framework-dependent → smoke 実行に .NET 10 Desktop Runtime (arm64) が必要。
+          # ランナーに無ければ dotnet-install で導入 (DOTNET_ROOT は同一ステップ内の子プロセスに引き継がれる)
+          $hasDesktop = $false
+          try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "Microsoft.WindowsDesktop.App 10\.") -ne $null } catch {}
+          if (-not $hasDesktop) {
+            Write-Host "Installing .NET 10 Desktop Runtime (arm64) for the smoke test..."
+            Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile "$env:RUNNER_TEMP\dotnet-install.ps1"
+            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 10.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
+            $env:DOTNET_ROOT = "$env:RUNNER_TEMP\dotnet"
+          }
+
+          # per-user silent install (ALLUSERS/MSIINSTALLPERUSER は渡さない = per-user 固定パッケージの既定)
+          $p = Start-Process msiexec -ArgumentList '/i', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-install.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI install failed (exit $($p.ExitCode)). See msi-install.log artifact." }
+          $appDir = "$env:LOCALAPPDATA\Crystallography Software\ReciPro"
+          if (-not (Test-Path "$appDir\ReciPro.exe")) { throw "installed ReciPro.exe missing in $appDir" }
+
+          # インストール実体で --smoke (黙殺フォールバック型故障の検出。Smoke 2 と同一アサート)
+          $out = Join-Path $env:RUNNER_TEMP "msi-smoke-result.txt"
+          $p = Start-Process -FilePath "$appDir\ReciPro.exe" -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $appDir -PassThru
+          if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke (MSI install) did not finish within 10 minutes." }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode))." }
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+          # アンインストールしてランナーを汚さない (残骸検査込み)。ProductCode は不要 (MSI パス指定で /x できる)
+          $p = Start-Process msiexec -ArgumentList '/x', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-uninstall.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI uninstall failed (exit $($p.ExitCode))." }
+          if (Test-Path "$appDir\ReciPro.exe") { throw "uninstall left ReciPro.exe behind" }
+          Write-Host "MSI smoke OK (install -> --smoke -> uninstall)."
+
+      - name: Upload smoke diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: smoke-arm64-diagnostics
           path: |
-            ${{ steps.build_installer.outputs.msi_path }}
-            ${{ steps.portable.outputs.zip_path }}
+            ${{ runner.temp }}/smoke3-desktop.png
+            ${{ runner.temp }}/smoke-result.txt
+            ${{ runner.temp }}/msi-smoke-result.txt
+            ${{ runner.temp }}/msi-install.log
+            ${{ runner.temp }}/msi-uninstall.log
+          if-no-files-found: ignore
+
+      - name: Create release ZIP and stage arm64 assets
+        shell: pwsh
+        run: |
+          # x64 portable ZIP (release.yml) と同じ構造 (ZIP 直下に ReciPro\ フォルダ) に合わせる
+          # 260613Cl checksum (SHA256SUMS-arm64.txt) の生成を廃止
+          # 260623Cl ZIP と smoke 済み MSI を 1 つの dir にまとめて artifact 化 (release job が download して原子的添付に使う)
+          $out = Join-Path $env:RUNNER_TEMP "arm64-out"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $zip = Join-Path $out "${{ steps.names.outputs.zip_name }}"
+          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI not found: $msi" }
+          Copy-Item $msi $out
+          Get-ChildItem $out | ForEach-Object { Write-Host "arm64 asset: $($_.Name) ($($_.Length) bytes)" }
+
+      - name: Upload arm64 release assets
+        # dry_run の検分用 + 実添付時の記録。release に上がる実物と bit 同一
+        uses: actions/upload-artifact@v6
+        with:
+          name: arm64-release-assets
+          path: ${{ runner.temp }}/arm64-out
+
+  # ---- 5. release: x64 必須・arm64 は揃っていれば一緒に、1 回の gh release create で原子的に公開 ----
+  # 260623Cl !cancelled() で arm64 (build/smoke) が失敗しても本 job は走らせ、内部で x64 のみ公開へフォールバックする。
+  #   ただし build-x64 成功と needed=true は必須 (x64 が無ければ何も公開しない)。
+  release:
+    needs: [prepare, build-x64, build-arm64, smoke-arm64]
+    if: ${{ !cancelled() && needs.prepare.outputs.needed == 'true' && needs.build-x64.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download x64 release assets
+        uses: actions/download-artifact@v7
+        with:
+          name: x64-release-assets
+          path: ${{ runner.temp }}/x64
+
+      - name: Download arm64 release assets
+        # 260623Cl arm64 が build/smoke とも成功したときだけ取得する (失敗時はフォールバックで x64 のみ公開)
+        if: ${{ needs.build-arm64.result == 'success' && needs.smoke-arm64.result == 'success' }}
+        uses: actions/download-artifact@v7
+        with:
+          name: arm64-release-assets
+          path: ${{ runner.temp }}/arm64
 
       - name: Create tag and GitHub Release
-        if: steps.version.outputs.needed == 'true'
+        id: create
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          ARM64_BUILD: ${{ needs.build-arm64.result }}
+          ARM64_SMOKE: ${{ needs.smoke-arm64.result }}
+          # 260623Cl history_line は式の直接展開でなく env 経由で渡す ($/`/" 混入でも pwsh 文字列が壊れない定石)
+          HISTORY_LINE: ${{ needs.prepare.outputs.history_line }}
         run: |
-          $tag = "${{ steps.version.outputs.tag }}"
+          $ver = "${{ needs.prepare.outputs.version }}"
+          $tag = "${{ needs.prepare.outputs.tag }}"
+          $historyLine = $env:HISTORY_LINE
+          $dryRun = $env:DRY_RUN -eq 'true'
+          $arm64Ok = ($env:ARM64_BUILD -eq 'success') -and ($env:ARM64_SMOKE -eq 'success')
 
+          $x64 = Join-Path $env:RUNNER_TEMP "x64"
           # 260530Cl タグとリリースを gh release create で原子的に作成 (--target で対象コミットを固定)
           #   旧実装は git tag -a + git push の2段階で、push 成功後に release 作成が失敗すると
           #   タグだけ remote に残り、v* tag 削除禁止 ruleset により同一バージョンで復旧不能だった。
           #   gh release create は tag 未存在時に --target のコミットへ lightweight tag を作成し、
           #   release と一括で作るため orphan tag が発生せず、失敗時も同一バージョンで再試行できる。
-          #   旧コード:
-          #   git config user.name "github-actions[bot]"
-          #   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          #   git tag -a $tag -m "ReciPro ${{ steps.version.outputs.version }}"
-          #   git push origin $tag
           # 260602Cl 第一候補の MSI に加え、portable ZIP も添付する。
           # 260613Cl SHA256SUMS.txt の添付を廃止 (checksum 公開廃止)。
           # 260613Cl アセット改名: 旧名 ReciProSetup.msi (同一バイトコピー) も旧クライアント自動更新互換のため添付
-          gh release create $tag `
-            "${{ steps.build_installer.outputs.msi_path }}" `
-            "${{ steps.build_installer.outputs.legacy_msi_path }}" `
-            "${{ steps.portable.outputs.zip_path }}" `
+          $assets = @(
+            (Join-Path $x64 "ReciPro-setup.msi")
+            (Join-Path $x64 "ReciProSetup.msi")
+            (Join-Path $x64 "ReciPro-v.$ver.zip")
+          )
+
+          # 260623Cl Download 表 (本文はアセット一覧の真上に表示されるため実質的な目次)。
+          #   arm64 が揃っていれば 4 資産を atomic 公開し †脚注を付けない。揃わなければ x64 のみ公開し、
+          #   arm64 行は残して †脚注で「後から添付」を説明する (作者が attach-arm64-experimental.yml を
+          #   手動 dispatch して後から添付できる。リンクはその時点で有効になる)。
+          # 260613Cl 旧名 ReciProSetup.msi は旧クライアント自動更新互換の同一バイトコピー (リンク無しで DL 対象外を暗示)。
+          if ($arm64Ok) {
+            $arm64 = Join-Path $env:RUNNER_TEMP "arm64"
+            $assets += (Join-Path $arm64 "ReciPro-v.${ver}_arm64.zip")
+            $assets += (Join-Path $arm64 "ReciPro-setup_arm64.msi")
+            $mark = ""
+            $footnote = @()
+          } else {
+            Write-Warning "ARM64 build/smoke did not succeed (build=$env:ARM64_BUILD smoke=$env:ARM64_SMOKE); publishing x64-only with footnote. Attach arm64 later via attach-arm64-experimental.yml."
+            $mark = "&dagger;"
+            $footnote = @("", "&dagger; Arm64 files are attached after on-device verification and may appear slightly later than the x64 files.")
+          }
+
+          $notes = @(
+            $historyLine
+            ""
+            "| Download | Description |"
+            "|---|---|"
+            "| **[ReciPro-setup.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
+            "| [ReciPro-setup_arm64.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup_arm64.msi) | Installer for Windows on Arm: Snapdragon PCs such as some Surface models (Surface Pro X / Pro 11 / Laptop 7), or Apple Silicon Macs running Windows via Parallels, etc.$mark |"
+            "| [ReciPro-v.$ver.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. May also run on macOS via a Wine wrapper (see [ReciPro_macOS_memo](https://github.com/Ryo-fkushima/ReciPro_macOS_memo)). |"
+            "| [ReciPro-v.${ver}_arm64.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.${ver}_arm64.zip) | Portable for Windows on Arm: no installation, no administrator rights needed.$mark |"
+            "| ReciProSetup.msi | Identical to ReciPro-setup.msi (legacy name for auto-update from older versions). |"
+          ) + $footnote
+          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
+          $notes | Set-Content -Path $notesPath -Encoding UTF8
+
+          foreach ($a in $assets) { if (-not (Test-Path $a)) { throw "Release asset missing: $a" } }
+
+          if ($dryRun) {
+            Write-Host "=== DRY RUN: would 'gh release create $tag' with assets: ==="
+            $assets | ForEach-Object { Write-Host "  $_" }
+            Write-Host "=== notes ==="
+            Get-Content $notesPath | ForEach-Object { Write-Host $_ }
+            # 検分用に最終資産 + notes を 1 つの dir にまとめて artifact 化する (次ステップ)
+            $stage = Join-Path $env:RUNNER_TEMP "release-staged"
+            New-Item -ItemType Directory -Force -Path $stage | Out-Null
+            $assets | ForEach-Object { Copy-Item $_ $stage }
+            Copy-Item $notesPath $stage
+            "staged=$stage" >> $env:GITHUB_OUTPUT
+            return
+          }
+
+          gh release create $tag $assets `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
-            --notes-file "${{ steps.version.outputs.notes_path }}"
+            --notes-file $notesPath
+          if ($LASTEXITCODE -ne 0) { throw "gh release create failed (exit $LASTEXITCODE)." }
+          Write-Host "Released $tag with $($assets.Count) assets (arm64Ok=$arm64Ok)."
+
+      - name: Upload staged release assets (dry-run inspection)
+        if: ${{ inputs.dry_run }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-staged-${{ needs.prepare.outputs.tag }}
+          path: ${{ steps.create.outputs.staged }}
