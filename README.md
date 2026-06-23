@@ -13,12 +13,7 @@
 
 ***[See the manual to learn how to use!](https://seto77.github.io/ReciPro/)***
 
-
-
-
-
 [Various simulations being performed in real time (sample: MgAl2O4)](https://github.com/user-attachments/assets/6b0234dd-f2d6-49db-b146-bb74cf6021b6)
-
 
 ## Authors
 
