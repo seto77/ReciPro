@@ -18,13 +18,24 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+      # 260623Cl: tools/ はメインリポから exclude された独立ローカルリポ (CLAUDE.md: 公開リポに出さない)。
+      #   そのため CI ランナーにはこれらのスクリプトが存在せず、無条件実行は "No such file" で必ず落ちていた
+      #   (このジョブは push 毎に赤・Pages とは無関係の別件)。本来の enforcement はローカルの pre-commit フック
+      #   (tools/git-hooks/pre-commit) が担うので、CI は「スクリプトがあれば検査・無ければ通知してスキップ」にする。
+      #   将来 CI でも強制したくなったら、この 3 スクリプトを追跡パスへ carve out して committed にすればよい。
       # 260618Cl: ja を既定スコープへ格上げ (両ルート)。他言語=完全 text-only、
       #   ja のみ .Font を保持 (値は Yu Gothic UI + ティアへ正規化必須)。neutral snap も両ルート。
       - name: Culture resx conform (de/fr/es/pt/zh-Hans=text-only, ja=text+normalized Font; ReciPro + Controls)
-        run: python tools/check_resx_textonly.py
+        run: |
+          if [ -f tools/check_resx_textonly.py ]; then python tools/check_resx_textonly.py;
+          else echo "::notice::tools/ is excluded from this repo (local-only per CLAUDE.md); enforced by local pre-commit hook — skipping resx text-only check in CI."; fi
       - name: Neutral resx font sizes are tier-normalized (ReciPro + Controls)
-        run: python tools/snap_neutral_font_tiers.py
+        run: |
+          if [ -f tools/snap_neutral_font_tiers.py ]; then python tools/snap_neutral_font_tiers.py;
+          else echo "::notice::tools/ not present in CI — skipping neutral tier check (local pre-commit hook enforces it)."; fi
       # 260618Cl: ja.resx の .Font が neutral と完全ミラーか (neutral にあって ja に無い穴=日本語デザイナで
       #   Segoe フォールバック→実行時 Yu Gothic とズレる、を検出)。未同期なら fail → ローカルで --fix。
       - name: ja resx fonts mirror neutral (designer == runtime)
-        run: python tools/restore_ja_fonts.py
+        run: |
+          if [ -f tools/restore_ja_fonts.py ]; then python tools/restore_ja_fonts.py;
+          else echo "::notice::tools/ not present in CI — skipping ja-font mirror check (local pre-commit hook enforces it)."; fi
