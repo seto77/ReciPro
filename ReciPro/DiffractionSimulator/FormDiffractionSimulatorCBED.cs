@@ -129,7 +129,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     public FormDiffractionSimulatorCBED()
     {
         InitializeComponent();
-        HelpPage = "7-diffraction-simulator/4-cbed-simulation"; //260529Cl 追加
+        //HelpPage = "7-diffraction-simulator/4-cbed-simulation"; //260529Cl 追加 (旧: 実ページは 3-cbed-simulation、4- は x-ray-neutron)
+        HelpPage = "7-diffraction-simulator/3-cbed-simulation"; //260623Cl: 実ページ名へ修正 (HelpCulture flip で 9 言語に 404 波及するため)
         NumericBoxDivision_ValueChanged(new object(), new EventArgs());
 
         //260611Cl 追加: ARM64 には MKL ネイティブが存在しない (x86/x64 専用) ため、MKL の選択肢自体を出さない

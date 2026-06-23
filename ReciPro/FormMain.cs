@@ -303,7 +303,11 @@ public partial class FormMain : FormBase
         //260529Cl 追加: Crystallography.Controls 側 (CrystalControl 内) で生成される子フォームの
         //HelpPage は ReciPro からインスタンスに触れるここで設定する。
         crystalControl.FormSymmetryInformation.HelpPage = "2-symmetry-information";
-        crystalControl.FormBeamInteraction.HelpPage = "3-scattering-factor";
+        // 260623Cl: HelpPage スラッグを実ページ名へ修正。"3-scattering-factor" は存在せず (実ページは 3-beam-interaction)、
+        //   ja のみ redirect_maps、en も /en/ stub だけで HelpBaseUrl() のルート URL は 404 だった。HelpCulture flip で
+        //   9 言語に 404 が波及するため根本修正 (redirect 増設より実スラッグに合わせる)。
+        //crystalControl.FormBeamInteraction.HelpPage = "3-scattering-factor"; // 旧 (260529Cl): 実ページと不一致
+        crystalControl.FormBeamInteraction.HelpPage = "3-beam-interaction";
 
         //260413Cl DPI スケーリング補正 (ListBox.ColumnWidth は自動スケール対象外)
         listBox.ColumnWidth = (int)(listBox.ColumnWidth * DeviceDpi / 96.0);

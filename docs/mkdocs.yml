@@ -457,7 +457,7 @@ plugins:
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
             Troubleshooting: 疑難排解
-        # 260622Cl: 波B ko (preview/Released=false)。Material 内蔵 ko partial。lunr 非対応で検索除外。
+        # 260622Cl: 波B ko。Material 内蔵 ko partial。lunr 非対応で検索除外。260623Cl Released=true(作者判断・要ネイティブ校閲)。
         #   IUCr 未収録のため用語は GUI ko.resx 実ラベル拠 (회절/스테레오넷/회전 기하학/구조 뷰어/매크로/결정 목록 等)。
         - locale: ko
           name: 한국어
@@ -505,7 +505,7 @@ plugins:
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
             Troubleshooting: 문제 해결
-        # 260622Cl: pt (preview/Released=false・pt-BR 寄り綴り要ネイティブ校閲)。nav は GUI pt.resx 実ラベルに一致
+        # 260622Cl: pt (pt-BR 寄り綴り要ネイティブ校閲)。260623Cl Released=true(作者判断)。nav は GUI pt.resx 実ラベルに一致
         #   (Estereonete/Geometria de rotação/Interação do feixe/Visualizador de estrutura/Simulador de difração 等)。
         - locale: pt
           name: Português

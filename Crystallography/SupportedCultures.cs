@@ -25,7 +25,9 @@ public sealed class UiCulture
     /// <summary>この言語の UI フォントファミリ。Latin 系は "Segoe UI"、日本語は "Yu Gothic UI"、中国語簡体字は "Microsoft YaHei UI"。</summary>
     public string FontFamily { get; }
 
-    /// <summary>GitHub Pages マニュアルの言語ディレクトリ ("en" or "ja")。マニュアル未整備の言語は "en" にフォールバックする。</summary>
+    /// <summary>GitHub Pages マニュアルの言語ディレクトリ (neutral 名。例 "en"/"ja"/"de"/"zh-Hans")。
+    /// 260623Cl: 全 9 言語のマニュアル(全 40 ページ)が揃ったため各言語が自分のディレクトリを指す。
+    /// マニュアル未整備の言語があれば "en" にフォールバックさせる運用 (値そのものがマニュアル整備済みフラグ)。</summary>
     public string HelpCulture { get; }
 
     /// <summary>UI 翻訳 (resx) が出荷可能な水準まで用意できているか。
@@ -49,17 +51,20 @@ public static class SupportedCultures
     // 翻訳が揃ったら Released を true にし、言語メニュー項目 (Designer) を追加する。
     public static readonly UiCulture[] All = new UiCulture[]
     {
-        new("en",      "English",   "Segoe UI",              "en", true ),
-        new("ja",      "日本語",     "Yu Gothic UI",          "ja", true ),
-        new("de",      "Deutsch",   "Segoe UI",              "en", true ), // 260618Cl: 翻訳 resx 整備済→言語メニューに追加(Released=true)
-        new("fr",      "Français",  "Segoe UI",              "en", true ), // 260621Cl Released (波A 翻訳・tooltip 完了)
-        new("es",      "Español",   "Segoe UI",              "en", true ), // 260621Cl Released (波A)
-        new("pt",      "Português", "Segoe UI",              "en", false), // preview: pt-BR 寄り綴り要ネイティブ校閲 (D 決定)
-        new("it",      "Italiano",  "Segoe UI",              "en", true ), // 260617Cl 追加 / 260621Cl Released (波A): Latin/Segoe UI・IUCr 用語あり
-        new("ru",      "Русский",   "Segoe UI",              "en", true ), // 260617Cl 追加 / 260621Cl Released (波A): Cyrillic は Segoe UI が網羅・IUCr 用語あり
-        new("zh-Hans", "简体中文",   "Microsoft YaHei UI",    "en", true ), // 260621Cl Released (波B 翻訳・用語統一完了)
-        new("zh-Hant", "繁體中文",   "Microsoft JhengHei UI", "en", true ), // 260617Cl 追加 / 260621Cl Released (波B): 繁体字(台湾/香港)。zh-Hans より長い接頭辞として先に評価される
-        new("ko",      "한국어",     "Malgun Gothic",         "en", false), // 260617Cl 追加 / preview: IUCr 未収録→別途用語典拠 (D 決定)
+        new("en",      "English",   "Segoe UI",              "en",      true ),
+        new("ja",      "日本語",     "Yu Gothic UI",          "ja",      true ),
+        // 260623Cl: HelpCulture を "en" → 各言語コードへ flip。全 9 言語の GitHub Pages マニュアル(全 40 ページ)が揃い
+        //   機械ハーネス 40/0・mkdocs --strict 通過・本番 live になったため、F1/Help(WEB) を各言語マニュアルへ向ける。
+        //   ko/pt も同日 Released 化(作者判断: 非商用ソフトゆえ完成度が多少低くても公開する方針・prose ネイティブ校閲は継続課題)。
+        new("de",      "Deutsch",   "Segoe UI",              "de",      true ), // 260618Cl Released(波A) / 260623Cl HelpCulture "en"→"de"
+        new("fr",      "Français",  "Segoe UI",              "fr",      true ), // 260621Cl Released(波A) / 260623Cl HelpCulture "en"→"fr"
+        new("es",      "Español",   "Segoe UI",              "es",      true ), // 260621Cl Released(波A) / 260623Cl HelpCulture "en"→"es"
+        new("pt",      "Português", "Segoe UI",              "pt",      true ), // 260623Cl Released(作者判断: 非商用ゆえ完成度低めでも公開可・要ネイティブ校閲) / HelpCulture "en"→"pt"
+        new("it",      "Italiano",  "Segoe UI",              "it",      true ), // 260617Cl 追加 / 260621Cl Released(波A) / 260623Cl HelpCulture "en"→"it"
+        new("ru",      "Русский",   "Segoe UI",              "ru",      true ), // 260617Cl 追加 / 260621Cl Released(波A) / 260623Cl HelpCulture "en"→"ru"
+        new("zh-Hans", "简体中文",   "Microsoft YaHei UI",    "zh-Hans", true ), // 260621Cl Released(波B) / 260623Cl HelpCulture "en"→"zh-Hans"
+        new("zh-Hant", "繁體中文",   "Microsoft JhengHei UI", "zh-Hant", true ), // 260617Cl 追加 / 260621Cl Released(波B): zh-Hans より長い接頭辞として先に評価 / 260623Cl HelpCulture "en"→"zh-Hant"
+        new("ko",      "한국어",     "Malgun Gothic",         "ko",      true ), // 260617Cl 追加 / 260623Cl Released(作者判断: 非商用ゆえ完成度低めでも公開可・要ネイティブ校閲) / HelpCulture "en"→"ko"
     };
 
     /// <summary>既定言語 (英語)。未知カルチャはここへ解決する。</summary>
