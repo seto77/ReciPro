@@ -35,7 +35,7 @@ These three conventions describe the same geometry; only the scale differs. The 
 !!! note "Units"
     The published parametrisations of the form factors use $s$ in Å⁻¹ (so $s^2$ in Å⁻²), while ReciPro carries $s^2$ internally in nm⁻². The two differ by a factor $100$ in $s^2$; the curves and tables are presented in the units stated in each table's header. One model — **Kirkland** — is tabulated against $q = 2s = 1/d$ rather than $s$; see [Atomic scattering factors](scattering-factor.md).
 
-### Bragg, Laue, and the Ewald sphere
+### Bragg, Laue, and the Ewald sphere {#phase-convention}
 
 The Bragg condition is one face of a single geometric requirement. Constructive interference (the **Laue condition**) demands that the scattering vector equal a reciprocal-lattice vector,
 

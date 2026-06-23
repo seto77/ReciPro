@@ -22,7 +22,7 @@ This window has no special key combinations. <kbd>F1</kbd> opens this manual pag
 
 ---
 
-## Beam and wavelength
+## Beam and wavelength {#reflections-tab}
 
 The top band is a **Wave Length Control** shared with the other simulators.
 
@@ -124,13 +124,13 @@ The quantity selector chooses what is plotted against beam energy (1–30 keV):
 
 The scalar table lists the electron **wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, the **Plasma E** and mean excitation energy **J**, two electron **ranges** (the Kanaya–Okayama penetration estimate and the CSDA integrated path length), and the mean **Z, A**. The per-element table gives each element's atomic fraction and elastic cross section σ. The elastic cross sections use the **NIST Mott** data (50 eV–36 keV) and fall back to **screened Rutherford** above 36 keV.
 
-### Neutron
+### Neutron {#scattering-factors-tab}
 
 Neutron interaction is set by nuclear cross sections rather than an energy-dependent curve, so this tab shows tables only. The scalar table lists the mean coherent scattering length **b̄**, the **Coherent SLD**, the averaged coherent / incoherent / absorption / total cross sections (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), the macroscopic total cross section **Σ_total** and the corresponding **attenuation length**. The absorption cross section is evaluated with the 1/v law at the current wavelength; nuclides where this is invalid (Cd, Sm, Eu, Gd resonant absorbers) are flagged. The per-element table lists **b_coh**, **σ_coh**, and the atomic fraction.
 
 ---
 
-## Scattering factors tab
+## Scattering factors tab {#fluorescence-tab}
 
 The atomic scattering factor of each constituent element, plotted against $s = \sin\theta/\lambda$ (Å⁻¹). Each element is drawn in its own colour, and the **vertical cursor line** can be dragged to read off the scattering factor of every element at that position into the table on the left.
 

@@ -23,9 +23,7 @@ The trajectories are shown in a 3-D OpenGL view. It uses ReciPro's standard [vie
 
 ## Calculation Conditions
 
-![Calculation Conditions](../assets/cap-en-auto/FormTrajectory.panelCalculationConditions.png)
-
-Beam energy, number of incident electrons, sample/material, and other Monte-Carlo parameters.
+Beam energy, number of incident electrons, sample/material, and other Monte-Carlo parameters (see the overview screenshot above).
 
 ### Beam energy
 
@@ -51,9 +49,7 @@ The elastic-scattering cross-section model (Mott / Bethe / NIST). Different mode
 
 ## Stereonet Options
 
-![Stereonet Options](../assets/cap-en-auto/FormTrajectory.panelDrawingOptions.png)
-
-Display options for the angular distribution drawn on the stereographic projection.
+Display options for the angular distribution drawn on the stereographic projection (see the overview screenshot above).
 
 ### Projection method
 
@@ -71,7 +67,7 @@ Bin size of the angular histogram and the colour map used for the density displa
 
 ## Statistics
 
-![Statistics](../assets/cap-en-auto/FormTrajectory.groupBoxStatistics.png)
+![Statistics](../assets/cap-en-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Summary of the run.
 
@@ -84,7 +80,7 @@ Summary of the run.
 
 ## BSE direction distribution
 
-![BSE direction distribution](../assets/cap-en-auto/FormTrajectory.groupBoxDirectionDistribution.png)
+![BSE direction distribution](../assets/cap-en-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Angular distribution of the backscattered electrons (the stereonet centre corresponds to the surface normal direction). The yellow/orange outline (when present) marks the region subtended by the EBSD detector.
 

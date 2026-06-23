@@ -114,7 +114,7 @@ The information corresponding to the cursor position (cursor *q*, *d*, 2θ, azim
 | **Copy** | Copy the displayed image to the clipboard. |
 | **Copy detector area** | Copy only the detector-area crop. |
 
-### Preset
+### Preset {#toolbar}
 
 ![Preset menu](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -166,7 +166,7 @@ Save and recall a complete simulator configuration — wavelength, detector geom
 
 ---
 
-## TEM holder simulation
+## TEM holder simulation {#drawing-overlay-tabs}
 
 ![TEM holder simulation](../../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
 
@@ -212,7 +212,7 @@ Active when the scale lines are enabled on the toolbar.
 - **Division** : Angular interval between adjacent scale lines.
 - **Show scale labels** : Whether to draw numeric labels on the scale lines.
 
-### Misc
+### Misc {#diffraction-spot-information}
 
 Miscellaneous settings such as the mouse rotation sensitivity.
 
@@ -262,7 +262,7 @@ The schematic (top left) shows the vectors on the Ewald sphere and defines the q
 
 ---
 
-## Detector geometry
+## Detector geometry {#detector-geometry}
 
 A window for the detailed setup of the detector geometry (camera length, tilt, rotation) and overlay of an experimental image. Open it from **Details** in the **Detector geometry** panel.
 
