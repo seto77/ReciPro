@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.941(2026/06/23)  Added multi-language UI support and fixed many bugs." +
         "\r\n ver4.940(2026/06/14)  Improved the accuracy of ionic elastic scattering factor calculations, and reorganized the distribution package formats." +
         "\r\n ver4.939(2026/06/13)  Enhanced support for Arm64 environments and fixed bugs in Beam Interactions." +
         "\r\n ver4.938(2026/06/11)  Slightly accelerated STEM simulation and other calculations, and added experimental support for running on macOS via Wine." +

@@ -1543,10 +1543,10 @@ namespace ReciPro
             Controls.Add(labelXYpos);
             Controls.Add(label2);
             Controls.Add(labelAxisPlane);
-            Controls.Add(panel3);
             Controls.Add(tabControl);
             Controls.Add(menuStrip1);
             Controls.Add(splitContainer1);
+            Controls.Add(panel3);
             KeyPreview = true;
             MainMenuStrip = menuStrip1;
             Name = "FormStereonet";
