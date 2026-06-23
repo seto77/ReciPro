@@ -1,5 +1,12 @@
 # ReciPro 手册
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## 简要介绍
 * ReciPro 是一款采用 MIT 许可证的免费软件，提供多种晶体学计算和电子显微镜模拟功能。
 * 自 2020 年 3 月在 GitHub 发布以来，ReciPro 累计下载量已超过 27,000 次，被众多晶体学家和电子显微镜研究者使用。

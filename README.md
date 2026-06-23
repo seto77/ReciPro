@@ -13,7 +13,9 @@
 
 ***[See the manual to learn how to use!](https://seto77.github.io/ReciPro/)***
 
-[Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
+<!-- 260623Ch: Replaced the former user-images demo movie link with the repository-hosted MP4.
+Former link: https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4 -->
+[Various simulations being performed in real time (sample: SrTiO3)](docs/src/assets/Recipro_Demo.mp4)
 
 
 ## Authors

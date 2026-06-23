@@ -1,5 +1,12 @@
 # ReciPro マニュアル
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## 概要
 * ReciProは、MITライセンスで配布されている無料のソフトウェアです。様々な結晶学的計算や電子顕微鏡シミュレーション機能を提供します。
 * 2020年3月のGitHub公開以来、累計27,000回以上ダウンロードされ、多くの結晶学者・電子顕微鏡研究者に利用されています。

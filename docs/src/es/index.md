@@ -1,5 +1,12 @@
 # Manual de ReciPro
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## Breve introducción
 * ReciPro es un software libre con licencia MIT que ofrece una gran variedad de cálculos cristalográficos y simulaciones de microscopía electrónica.
 * ReciPro se ha descargado más de 27.000 veces en total desde su publicación en GitHub (marzo de 2020) y es utilizado por numerosos cristalógrafos y microscopistas electrónicos.

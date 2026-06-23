@@ -1,5 +1,12 @@
 # ReciPro 매뉴얼
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## 간단한 소개
 * ReciPro는 다양한 결정학 계산과 전자현미경 시뮬레이션을 제공하는 MIT 라이선스 무료 소프트웨어입니다.
 * ReciPro는 GitHub에 공개된 이래(2020년 3월) 누적 27,000회 이상 다운로드되었으며, 많은 결정학자와 전자현미경 연구자가 사용하고 있습니다.

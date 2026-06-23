@@ -23,6 +23,20 @@
   height: auto;
 }
 
+/* 260623Ch: Keep the shared demo movie responsive on manual home pages. */
+.md-typeset .rp-demo-video {
+  margin: 0.4rem 0 1.2rem;
+}
+.md-typeset .rp-demo-video video {
+  background: #000;
+  border: 0.05rem solid var(--md-default-fg-color--lightest);
+  border-radius: 0.25rem;
+  display: block;
+  height: auto;
+  max-width: 56rem;
+  width: 100%;
+}
+
 .md-typeset table {
   font-size: 0.75rem;
 }
@@ -204,4 +218,3 @@
     min-width: 0;
   }
 }
-

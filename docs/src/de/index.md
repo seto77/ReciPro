@@ -1,5 +1,12 @@
 # ReciPro-Handbuch
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## Kurze Einführung
 * ReciPro ist eine MIT-lizenzierte, kostenlose Software, die vielfältige kristallographische Berechnungen und elektronenmikroskopische Simulationen bereitstellt.
 * ReciPro wurde seit seiner Veröffentlichung auf GitHub (März 2020) insgesamt mehr als 27.000-mal heruntergeladen und wird von vielen Kristallographen und Elektronenmikroskopikern verwendet.

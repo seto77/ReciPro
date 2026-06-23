@@ -1,5 +1,12 @@
 # ReciPro 手冊
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## 簡介
 * ReciPro 是一款採用 MIT 授權條款的免費軟體，提供多種晶體學計算與電子顯微鏡模擬功能。
 * 自 2020 年 3 月在 GitHub 發布以來，ReciPro 累計下載量已超過 27,000 次，並為眾多晶體學家與電子顯微鏡研究者所使用。

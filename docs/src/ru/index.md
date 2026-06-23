@@ -1,5 +1,12 @@
 # Руководство ReciPro
 
+<!-- 260623Ch: Shared demo movie for all localized top pages. -->
+<div class="rp-demo-video" markdown="0">
+  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+    <source src="../assets/Recipro_Demo.mp4" type="video/mp4">
+  </video>
+</div>
+
 ## Краткое введение
 * ReciPro — это бесплатное программное обеспечение под лицензией MIT, предоставляющее разнообразные кристаллографические расчёты и моделирование в электронной микроскопии.
 * С момента публикации на GitHub (март 2020 г.) ReciPro был загружен в общей сложности более 27 000 раз и используется многими кристаллографами и специалистами по электронной микроскопии.
