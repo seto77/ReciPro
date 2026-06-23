@@ -2,7 +2,7 @@
 
 <!-- 260623Ch: Shared demo movie for all localized top pages. -->
 <div class="rp-demo-video" markdown="0">
-  <video controls muted playsinline preload="metadata" aria-label="ReciPro demo movie">
+  <video controls autoplay muted playsinline preload="metadata" aria-label="ReciPro demo movie">
     <source src="assets/Recipro_Demo.mp4" type="video/mp4">
   </video>
 </div>
