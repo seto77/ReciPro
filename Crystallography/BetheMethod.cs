@@ -3851,7 +3851,14 @@ public class BetheMethod
         #endregion
 
         count = Math.Min(count, maxNumOfBloch + 1);
-        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));
+        // 260623Cl 修正: 候補ビーム数 (beamsSpan.Length) が要求数 count 以下のとき、QuickSelect.Execute は
+        // n (=count) が source.Length 以上だと "n is bigger than source.Length" を投げる (Validation は n < Length 前提)。
+        // これは反射が少ない条件 (例: spinel の PED 動力学計算) で実際に発生し、PED スクショ撮影を落としていた。
+        // count == Length は「全候補を使う」意味で部分選択が不要なので、その場合は QuickSelect をスキップする
+        // (どのみち下の beams.Sort で並べ替えるため、選別をしないことによる順序差は結果に影響しない)。
+        if (count < beamsSpan.Length)
+            QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));
+        // QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating)); // 260623Cl 旧: 無条件呼び出し (count==Length で throw)
 
         var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan();
         for (int i = 0; i < count; i++)

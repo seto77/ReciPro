@@ -312,7 +312,11 @@ internal static partial class GuiCapture
     /// </summary>
     private static void CaptureDiffractionSimulatorModeShots(FormDiffractionSimulator sim, string baseName, string outDir, Action<string> trace)
     {
-        foreach (var suffix in new[] { "saed", "xray", "ped" })
+        // 260623Cl 修正: 旧順 { saed, xray, ped }。SetCaptureMode("ped") は電子線+歳差を選ぶが波長/エネルギーを
+        // 設定しないため、直前の "xray" が入れた 0.154 nm (Cu Kα) を引き継ぎ → 電子線 63 eV 相当の極小エワルド球になり
+        // 反射がほぼ消えた空の PED 図になっていた (de 撮影で実害)。"ped" を "saed" (電子線 200 keV の正状態) の直後に
+        // 並べ替え、正しい電子線エネルギー/波長を継承させる。"xray" は自前で波長を設定するので最後で問題ない。
+        foreach (var suffix in new[] { "saed", "ped", "xray" })
         {
             var name = baseName + "-" + suffix; // 例: FormDiffractionSimulator-saed
             try
@@ -429,12 +433,46 @@ internal static partial class GuiCapture
         } while (Environment.TickCount < until);
     }
 
+    // 260623Cl 追加: --capture は Application.Run を回さず DoEvents で描画を進めるため、CurrentUICulture を
+    // 持つ UI スレッドに WindowsForms の SynchronizationContext が無い。すると FormEBSD/FormImageSimulator が
+    // 起動する BackgroundWorker の RunWorkerCompleted が UI スレッドへマーシャリングされず ThreadPool スレッドで
+    // 走り、そこで GL の MakeCurrent が一時的な WGL "要求されたリソースは使用中です" で失敗すると、OpenTK 既定の
+    // GLFW エラーコールバック (GLFWProvider.DefaultErrorCallback) が GLFWException を throw し、UI スレッド外の
+    // 未処理例外としてプロセスごと落ちる (cap-de-auto が FormEBSD で全滅・60/156 で停止した実害)。
+    // 対策: 撮影中だけ GLFW エラーコールバックを「throw せず log する」ものに差し替えて撮影を頑健化する
+    // (例外メッセージ自身が案内する GLFWProvider.SetErrorCallback の正規の使い方)。正常時はコールバック未発火＝
+    // 挙動不変、GL エラー時のみ throw→log に変わるだけ。後段の RenderOpenGlControls(1007) が UI スレッドで
+    // 再描画するため、握りつぶした後も EBSD マスターパターン等は正しく撮れる見込み。プロセス終了時に復元不要 (Environment.Exit)。
+    private static bool CaptureGlfwErrorCallbackInstalled;
+    private static OpenTK.Windowing.GraphicsLibraryFramework.GLFWCallbacks.ErrorCallback CaptureGlfwErrorCallback; // GC 回収防止に保持
+    private static void EnsureGlfwErrorCallbackInstalled(Action<string> trace)
+    {
+        if (CaptureGlfwErrorCallbackInstalled) return;
+        try
+        {
+            CaptureGlfwErrorCallback = (error, description) =>
+            {
+                // ThreadPool スレッドから呼ばれ得るので共有 log (List) は触らず Console のみ (スレッド安全)。
+                try { Console.WriteLine($"{DateTime.Now:HH:mm:ss.fff}\tGLFW\tWARN\tsuppressed during capture: {error}: {description}"); } catch { /* ログ書き込み失敗は無視 */ }
+            };
+            OpenTK.Windowing.Desktop.GLFWProvider.SetErrorCallback(CaptureGlfwErrorCallback);
+            CaptureGlfwErrorCallbackInstalled = true;
+            trace("capture\tINFO\tinstalled non-throwing GLFW error callback (capture robustness)");
+        }
+        catch (Exception ex)
+        {
+            // GLFW 未初期化等で今は設定できなければ flag を立てず、次に GL を描く時に再試行する。
+            trace($"capture\tWARN\tGLFW error callback not installed yet: {ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
     /// <summary>
     /// 260524Cl 追加: フォーム内の GLControlAlpha を通常描画 (SwapBuffers あり) して、可視バッファへ最新シーンを出す。
     /// CopyFromScreen は画面の front buffer を読むため、撮影前に GL シーンを画面へ反映しておく必要がある。
     /// </summary>
     private static void RenderOpenGlControls(Form form, Action<string> trace)
     {
+        EnsureGlfwErrorCallbackInstalled(trace); // 260623Cl: 初の GL 描画時に GLFW エラーコールバックを非 throw 化
         foreach (var glControl in EnumerateControls(form).OfType<GLControlAlpha>())
         {
             if (glControl.IsDisposed || !glControl.Visible || glControl.Width <= 0 || glControl.Height <= 0)
@@ -876,6 +914,7 @@ internal static partial class GuiCapture
     /// </summary>
     private static void PrepareSpecialCaptureState(Form form, Action<string> trace)
     {
+        EnsureGlfwErrorCallbackInstalled(trace); // 260623Cl: FormEBSD/FormImageSimulator の非同期 GL 起動前に必ず非 throw 化しておく
         if (form is FormMain mainForm)
         {
             var selected = mainForm.PrepareCaptureCrystalSelection();
