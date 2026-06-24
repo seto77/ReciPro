@@ -157,9 +157,13 @@ internal static partial class GuiCapture
         //   HeaderText「Color」等が groupBox 詰まり (伸長 NumericBox 隣接) で内部ラベルとして誤検出され、
         //   deficit が文字長と無相関になる (例 ru「Цвет」最短なのに最大 deficit) ため除外する。
         //   注: ColorControl 内部 footer の長文オーバーフローは culture resx の FooterText 翻訳で個別対処済。
+        // 260623Cl: WaveLengthControl も自己管理する複合UC (UC自体 AutoSize=true ＋ 単位行 flowLayoutPanel1 AutoSize=true・WrapContents 既定)。
+        //   内部 label2「Unit」/radioButtonUnitAngstrom「Å」/radioButtonUnitNanoMeter「nm」が、訳語伸長時に
+        //   AutoSize 連鎖＋フロー折返しを診断が追えず ClippedByParent:FormBeamInteraction(=AutoSize祖先を遡った先のフォーム) と
+        //   誤検出される (def が文字長と無相関・nm「nm」最短なのに def114)。単位「Å/nm」は短縮不可で実体は自己解決するため除外。
         for (var a = c.Parent; a != null; a = a.Parent)
             // if (a.GetType().Name.Contains("NumericBox")) return;  // 260617Cl 旧
-            if (a.GetType().Name.Contains("NumericBox") || a.GetType().Name.Contains("ColorControl")) return;  // 260620Cl
+            if (a.GetType().Name.Contains("NumericBox") || a.GetType().Name.Contains("ColorControl") || a.GetType().Name.Contains("WaveLengthControl")) return;  // 260620Cl / 260623Cl WaveLengthControl 追加
 
         // 260617Cl: 擬似ローカライズ (inflate>1) の伸長予測は「翻訳される語」にのみ意味がある。記号/単位/短いインデックス
         //   (° ± ∓ % θ mm kV l1 等) は翻訳されず伸びないので擬似モードでは予測対象外 (実カルチャ inflate=1.0 は実テキストを測るので素通し)。

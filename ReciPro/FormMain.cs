@@ -1717,9 +1717,36 @@ public partial class FormMain : FormBase
         //   englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
         //   japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
         //   Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
+        // 260623Cl 変更: 「再起動が必要」の手動再起動から自動再起動方式へ (作者承認・方針 §4-E)。
+        //   構築済みフォームの live re-localize は ApplyResources/コード側 Loc/フォント/AutoScale の全再適用が要り
+        //   投資対効果が悪いため採らない。代わりに、選択カルチャを CurrentUICulture へ入れてから Application.Restart()
+        //   で自分を再起動する。Restart は FormClosing を発火 → Registry(Reg.Mode.Write) が CurrentUICulture.Name を
+        //   永続化 → 再起動後の Registry(Reg.Mode.Read) が新言語を復元する、という既存の保存/復元経路にそのまま乗る。
         var culture = Crystallography.SupportedCultures.Resolve(LanguageMenuItemCulture((ToolStripMenuItem)sender));
+
+        // 既に現在の言語を選んだだけなら何もしない (再クリックでの無用な再起動を防ぐ)。
+        if (culture.Name == Crystallography.SupportedCultures.Current.Name)
+        {
+            UpdateLanguageMenuChecks(culture.Name);
+            return;
+        }
+
+        // 切替には再起動が要る (作業中の状態は失われる) ことを、まだ切り替わっていない現在の言語で確認する。
+        var msg = Crystallography.Localization.Loc(
+            en: $"Switching the display language to \"{culture.NativeName}\" requires restarting ReciPro.\nUnsaved work will be lost. Restart now?",
+            ja: $"表示言語を「{culture.NativeName}」に切り替えるには ReciPro の再起動が必要です。\n保存していない作業は失われます。今すぐ再起動しますか？");
+        if (MessageBox.Show(this, msg, Crystallography.Localization.Loc(en: "Change language", ja: "言語の変更"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+        {
+            // キャンセル: メニューのチェックを現在の言語へ戻す (新言語に先走ってチェックされたままにしない)。
+            UpdateLanguageMenuChecks(Crystallography.SupportedCultures.Current.Name);
+            return;
+        }
+
         Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
         UpdateLanguageMenuChecks(culture.Name);
+        Application.Restart(); // FormClosing→Registry(Write) で新カルチャが保存され、再起動後に復元される
+        // 旧 (260617Cl): 再起動せず CurrentUICulture を更新するのみ → 構築済みフォームは英語のままで手動再起動が必要だった。
     }
 
     // 260617Cl 追加: 言語メニュー各項目のチェックを現在カルチャに合わせて更新する (Load 時と切替時で共用。Phase 0)。
@@ -1734,7 +1761,8 @@ public partial class FormMain : FormBase
     //   Released=true の言語だけを各々の自言語表記 (NativeName) で並べ、Tag に CultureInfo 名を入れて
     //   既存の Tag 駆動の切替 (languageToolStripMenuItem_Click) / チェック更新 (UpdateLanguageMenuChecks) に乗せる。
     //   → 言語を増やすときは SupportedCultures.cs で Released=true にするだけでメニューに出る (Designer 編集不要)。
-    //   切替は再起動方式 (CurrentUICulture を更新するのみ) なので各項目に再起動の注記を付す。
+    //   260623Cl: 切替は自動再起動方式になった (languageToolStripMenuItem_Click が確認の上 Application.Restart())。
+    //   そのため各項目は自言語表記のみにする (旧: "(requires restart)" 注記付き → 再起動の案内は確認ダイアログへ移譲)。
     private void PopulateLanguageMenu()
     {
         languageToolStripMenuItem.DropDownItems.Clear();
@@ -1742,7 +1770,8 @@ public partial class FormMain : FormBase
         {
             if (!c.Released)
                 continue;
-            var item = new ToolStripMenuItem($"{c.NativeName} (requires restart)") { Tag = c.Name, Name = c.Name + "ToolStripMenuItem" };
+            //260623Cl 旧: var item = new ToolStripMenuItem($"{c.NativeName} (requires restart)") { ... };
+            var item = new ToolStripMenuItem(c.NativeName) { Tag = c.Name, Name = c.Name + "ToolStripMenuItem" };
             item.Click += languageToolStripMenuItem_Click;
             languageToolStripMenuItem.DropDownItems.Add(item);
         }
