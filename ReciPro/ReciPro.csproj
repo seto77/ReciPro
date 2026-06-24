@@ -39,7 +39,12 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <!-- (260320Ch) Installer に不要な非 Windows / win-x86 ランタイム資産を出さないため、RID を win-x64 に固定 -->
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- 260625Cl: design-time ビルド (WinForms デザイナーが参照を集める background build) では RID を外す。
+         RID を無条件で持つと out-of-process デザイナー (DesignToolsServer) が別プロジェクトの基底クラス
+         Crystallography.Controls.FormBase をロードできず「基本クラス … を読み込めませんでした」になる (ReciPro/PDIndexer 両方で再現)。
+         F5・CLI ビルド・publish は従来どおり win-x64 (DesignTimeBuild!=true なので影響なし。CLI publish は -r で global property 上書き)。
+         旧: <RuntimeIdentifier>win-x64</RuntimeIdentifier> (無条件) -->
+    <RuntimeIdentifier Condition="'$(DesignTimeBuild)' != 'true'">win-x64</RuntimeIdentifier>
     <!-- 260611Cl 追加: restore グラフを両 RID 対応にする (build 出力には無影響)。これが無いと arm64 publish (-r win-arm64) の
          implicit restore が obj\project.assets.json を単一 RID で書き換え、直後の no-restore 付き x64 ビルドが NETSDK1047 で死ぬ。
          RID 自体は無条件 win-x64 のまま。CLI の -r win-arm64 は global property としてこれを上書きする (方針 §3.1) -->
