@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           persist-credentials: false
+          submodules: recursive # 260624Cl shared libs are git submodules
 
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v5

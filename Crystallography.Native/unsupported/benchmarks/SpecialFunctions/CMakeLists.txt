@@ -1,1 +1,0 @@
-eigen_add_benchmark(bench_special_functions bench_special_functions.cpp)

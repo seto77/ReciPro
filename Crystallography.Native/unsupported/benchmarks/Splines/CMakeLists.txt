@@ -1,1 +1,0 @@
-eigen_add_benchmark(bench_splines bench_splines.cpp)

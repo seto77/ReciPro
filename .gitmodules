@@ -1,0 +1,16 @@
+[submodule "Crystallography"]
+	path = Crystallography
+	url = https://github.com/seto77/Crystallography.git
+	branch = main
+[submodule "Crystallography.Controls"]
+	path = Crystallography.Controls
+	url = https://github.com/seto77/Crystallography.Controls.git
+	branch = main
+[submodule "Crystallography.OpenGL"]
+	path = Crystallography.OpenGL
+	url = https://github.com/seto77/Crystallography.OpenGL.git
+	branch = main
+[submodule "Crystallography.Native"]
+	path = Crystallography.Native
+	url = https://github.com/seto77/Crystallography.Native.git
+	branch = main
