@@ -53,7 +53,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # 260623Cl assembly_version 用に GITHUB_SHA の commit 時刻を git log で引くため全履歴が要る
+          fetch-depth: 2 # 260625Cl GITHUB_SHA(=HEAD) の commit 時刻取得には浅い clone で足りる (CSManager 横展開: 重い履歴で fetch-depth:0 が prepare 5min timeout した教訓。旧: fetch-depth:0)
 
       - name: Parse version and check if release needed
         id: version
@@ -609,6 +609,12 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 260625Cl 追加: この release job は artifact のみ扱い checkout しないため .git が無く、gh はローカル git remote から
+          #   repo を推定できず "failed to run git: fatal: not a git repository" で gh release create が exit 1 する
+          #   (gh は GITHUB_REPOSITORY を repo 解決に使わない。要 GH_REPO/-R/checkout)。dry_run は gh release create の手前で
+          #   return するため実リリースまで顕在化しない盲点。GH_REPO で repo を明示する (--target は明示 SHA なので checkout 不要)。
+          #   IPAnalyzer の初回 5-job 本番リリースで実測・修正済 (PDIndexer/ReciPro も同一構造で latent)。
+          GH_REPO: ${{ github.repository }}
           DRY_RUN: ${{ inputs.dry_run }}
           ARM64_BUILD: ${{ needs.build-arm64.result }}
           ARM64_SMOKE: ${{ needs.smoke-arm64.result }}
@@ -683,7 +689,9 @@ jobs:
             return
           }
 
+          # 260625Cl -R 必須: release job は checkout しない (artifact DL のみ) ため、-R が無いと gh が repo を特定できず "fatal: not a git repository" で失敗する (CSManager 本番で実証)
           gh release create $tag $assets `
+            -R $env:GITHUB_REPOSITORY `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
             --notes-file $notesPath
