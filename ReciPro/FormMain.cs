@@ -1745,8 +1745,41 @@ public partial class FormMain : FormBase
 
         Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
         UpdateLanguageMenuChecks(culture.Name);
-        Application.Restart(); // FormClosing→Registry(Write) で新カルチャが保存され、再起動後に復元される
+        RestartApplicationForLanguageChange(); // 260625Ch Application.Restart() に頼らず、先に新プロセスを起動してから終了する
+        //Application.Restart(); // 260625Ch 旧: FormClosing→Registry(Write) 頼みだと終了後に新プロセスが起動しない環境があった
         // 旧 (260617Cl): 再起動せず CurrentUICulture を更新するのみ → 構築済みフォームは英語のままで手動再起動が必要だった。
+    }
+
+    private void RestartApplicationForLanguageChange()
+    {
+        // 260625Ch 追加: 新プロセスが起動直後に新言語を読めるよう、FormClosing を待たずに言語値を先行保存する。
+        // ここで CurrentUICulture は既に新言語へ切替済み。後続の FormClosing でも同じ値が保存されるため、言語値は競合しない。
+        Registry(Reg.Mode.Write);
+
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = !string.IsNullOrEmpty(Application.ExecutablePath) ? Application.ExecutablePath : Environment.ProcessPath,
+            WorkingDirectory = Environment.CurrentDirectory,
+            UseShellExecute = true,
+        };
+
+        try
+        {
+            if (Process.Start(startInfo) == null)
+                throw new InvalidOperationException("Process.Start returned null.");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(this,
+                Crystallography.Localization.Loc(
+                    en: $"Failed to restart ReciPro.\n{ex.Message}",
+                    ja: $"ReciPro の再起動に失敗しました。\n{ex.Message}"),
+                Crystallography.Localization.Loc(en: "Change language", ja: "言語の変更"),
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        Close();
     }
 
     // 260617Cl 追加: 言語メニュー各項目のチェックを現在カルチャに合わせて更新する (Load 時と切替時で共用。Phase 0)。
