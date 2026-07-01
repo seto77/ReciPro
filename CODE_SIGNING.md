@@ -4,7 +4,7 @@ This document describes the code-signing policy for ReciPro release artifacts.
 
 ## Current status
 
-ReciPro is preparing code signing for Windows installer releases.
+ReciPro has been accepted into the **SignPath Foundation** free code-signing program for open-source projects, and a production signing certificate was issued to the ReciPro SignPath organization on 2026-06-29. Signing is being integrated into the automated release pipeline.
 
 Unless a GitHub Release explicitly states that `ReciPro-setup.msi` (named `ReciProSetup.msi` up to v.4.939) is digitally signed, users should not assume that the installer is signed.
 
@@ -18,13 +18,9 @@ Users should avoid downloading ReciPro installers from unofficial mirrors or thi
 
 ## Intended signing model
 
-The intended signing route for Windows installer packages is the **SignPath Foundation** open-source code-signing program (SignPath.io). ReciPro is currently adopting this program (application in progress).
+This project uses free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
 
-Once signing is enabled, ReciPro will carry the following attribution:
-
-> Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
-
-Release artifacts will be signed using Windows Authenticode signing and then published from GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer.
+Once enabled for a given release, release artifacts are signed using Windows Authenticode signing before being published to GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer. Because SignPath Foundation signing requires a maintainer to manually approve each signing request, there may be a delay between a new version being pushed and the corresponding GitHub Release appearing, while the signing request awaits approval.
 
 ## Scope of signing
 

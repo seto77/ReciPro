@@ -6,6 +6,13 @@
 #   ★不変条件「x64 は arm64 の成否に連動しない」は維持: release job は build-x64 成功のみを必須とし、arm64 (build/smoke) が
 #   失敗したら x64 のみ公開して †脚注を残す (フォールバック)。FileVersion は prepare で 1 度算出して x64/arm64 双方へ渡し
 #   完全一致させる (cross-grade 要件、WiX計画 Phase A)。attach-arm64-experimental.yml は手動復旧/backfill 専用に降格。
+# 260701Cl Phase C (SignPath release-signing 統合): 本番署名証明書が SignPath Foundation より発行された
+#   (2026-06-29, Phillip Deng)。新規 sign-x64 job を build-x64 と release の間に挿入し、x64 の MSI + portable exe を
+#   本番証明書で署名してから最終資産を組み立てる。release-signing は Foundation tier のため署名リクエストごとに
+#   SignPath UI での手動 Approve が必要 (wait-for-completion で最大90分待つ)。arm64 は experimental のため対象外のまま
+#   (CODE_SIGNING.md の scope 記載どおり)。適用前提: SignPath dashboard に本番 artifact configuration
+#   (slug=release-msi-portable-v1, <zip-file><msi-file path="ReciPro-setup.msi"/><pe-file path="ReciPro.exe"/></zip-file>)
+#   を作成済みで、release-signing の Allowed branch = master、CI ユーザーに release-signing の Submitter 権限があること。
 name: Build And Release Installer And Portable ZIP
 
 on:
@@ -34,6 +41,9 @@ on:
 
 permissions:
   contents: write
+  # 260701Cl SignPath の github-token 認証 (sign-x64 job) は actions:read を要求する。
+  #   permissions を明示すると未指定スコープは既定で none になるため、必ず書いておく必要がある。
+  actions: read
 
 jobs:
   # ---- 1. prepare: 版数解析・リリース要否判定・FileVersion 算出 (gh + git だけなので ubuntu) ----
@@ -126,6 +136,9 @@ jobs:
     if: needs.prepare.outputs.needed == 'true'
     runs-on: windows-2025-vs2026
     timeout-minutes: 30
+    # 260701Cl Phase C: signing-input artifact-id を sign-x64 job へ渡す (署名対象は build-x64 内で収集する)。
+    outputs:
+      signing_artifact_id: ${{ steps.signinput.outputs.artifact-id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -219,13 +232,16 @@ jobs:
           # 旧: $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" -ErrorAction SilentlyContinue
           $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciPro-setup.msi" -ErrorAction SilentlyContinue
           if (-not $msi) { throw "ReciPro-setup.msi was not found." }
-          Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
+          Write-Host "MSI built (unsigned): $($msi.FullName) ($($msi.Length) bytes)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
-          $legacy = Join-Path (Split-Path $msi.FullName) "ReciProSetup.msi"
-          Copy-Item $msi.FullName $legacy -Force
-          "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
+          # 260701Cl Phase C: 旧名コピー (ReciProSetup.msi) の生成はここから撤去し、sign-x64 job の
+          #   署名後アセンブリへ移動 (旧名は署名済み MSI の同一バイトコピーである必要があるため)。
+          # 旧 (260613Cl〜260623Cl):
+          #   $legacy = Join-Path (Split-Path $msi.FullName) "ReciProSetup.msi"
+          #   Copy-Item $msi.FullName $legacy -Force
+          #   "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
 
-      - name: Publish portable ZIP
+      - name: Stage portable payload (unsigned publish)
         id: portable
         shell: pwsh
         run: |
@@ -239,10 +255,9 @@ jobs:
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-portable\ReciPro"
           # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-x64-portable.zip → ReciPro-v.X-x64.zip → 最終形 ReciPro-v.X.zip)。
           #          x64 が既定で無印、arm64 のみ接尾辞付き (ReciPro-v.X-arm64.zip) の対称形。自動更新は MSI 固定 URL のみで ZIP 名に依存しない
-          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ needs.prepare.outputs.version }}.zip"
+          # 260701Cl Phase C: zip 化を sign-x64 job へ移した (下記) ため、ここでの zip パス算出/事前削除は不要になった。
 
           if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
-          if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
 
           # 260602Cl DebugType は csproj の既定 (ReciPro 本体は embedded) を使うため、PDIndexer のような
           #          別 pdb 欠落による MSI ビルド失敗 (方針 §4-a) は起こらない。参照ライブラリ
@@ -286,36 +301,136 @@ jobs:
           # 260602Cl 参照ライブラリの分離 pdb を配布物から除去 (ReciPro 本体は embedded のため元々 pdb なし)。
           Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
 
-          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "ReciPro") -DestinationPath $zipPath -Force
-
-          Write-Host "Portable ZIP built: $zipPath"
-          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
+          # 260701Cl Phase C: zip 化はここでは行わない。ReciPro.exe は sign-x64 job で SignPath 本番証明書により
+          #   署名されてから差し替えるため、Compress-Archive は署名後の assemble ステップへ移動した。
+          #   ここでは publish_dir (未署名 exe 込みの payload 一式) をそのまま次段へ artifact として渡す。
+          # 旧: Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "ReciPro") -DestinationPath $zipPath -Force
+          Write-Host "Portable payload staged (unsigned): $publishDir"
+          "publish_dir=$publishDir" >> $env:GITHUB_OUTPUT
 
       # 260613Cl 「Generate release checksums」ステップを廃止 (SHA256SUMS.txt の公開をやめる)。
       #   理由: 同一チャネル (同じ release ページ) に置く checksum は改竄対策にならず、
       #   リリースページで初心者を惑わす悪影響の方が大きい (作者決定)。真正性保証は SignPath 署名 (Phase D) で行う。
       #   本文は git 履歴 b3c35d22 以前を参照。
 
-      # 260623Cl 旧「Upload workflow artifacts」+「Create tag and GitHub Release」を分離。ここでは x64 の 3 資産を
-      #   1 つの dir にまとめて artifact 化する (release job が download して原子的添付に使う + 検分記録を兼ねる)。
-      - name: Collect x64 release assets
+      # 260701Cl Phase C (SignPath release-signing 統合): 旧「Collect/Upload x64 release assets」
+      #   (署名なしでそのまま最終資産化) をここで廃止。代わりに (a) 署名対象 2 点 (MSI + portable exe) を
+      #   集約して signing-input artifact にする、(b) portable payload 一式 (未署名 exe 込み) を後段の
+      #   zip 化用に artifact 化する。実際の署名・zip 化・最終 x64-release-assets の組み立ては
+      #   sign-x64 job (build-x64 の次段) が行う。本文は git 履歴 (260701Cl 以前) を参照。
+      - name: Collect files to sign
         shell: pwsh
         run: |
+          # 署名対象は SignPath 本番 artifact configuration (release-msi-portable-v1) の
+          #   <zip-file><msi-file path="ReciPro-setup.msi"/><pe-file path="ReciPro.exe"/></zip-file> に対応する
+          #   フラットな 2 ファイル (upload-artifact がフォルダを zip 包装するので root がそのまま <zip-file> になる)。
+          $sign = "artifacts\to-sign"
+          if (Test-Path $sign) { Remove-Item $sign -Recurse -Force }
+          New-Item -ItemType Directory -Path $sign | Out-Null
+          Copy-Item "${{ steps.build_installer.outputs.msi_path }}" (Join-Path $sign "ReciPro-setup.msi") -Force
+          Copy-Item (Join-Path "${{ steps.portable.outputs.publish_dir }}" "ReciPro.exe") (Join-Path $sign "ReciPro.exe") -Force
+          Get-ChildItem $sign
+
+      - name: Upload signing input
+        id: signinput
+        uses: actions/upload-artifact@v6
+        with:
+          name: signing-input-v.${{ needs.prepare.outputs.version }}
+          path: artifacts/to-sign
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          overwrite: true
+
+      - name: Upload unsigned portable payload
+        # 260425Cl Node.js 20 廃止対応 (v6 で Node.js 24 がデフォルト)
+        uses: actions/upload-artifact@v6
+        with:
+          name: x64-portable-payload-unsigned
+          path: ${{ steps.portable.outputs.publish_dir }}
+          if-no-files-found: error
+          retention-days: 1
+          overwrite: true # 260701Cl codex指摘: 再実行時の artifact 名衝突を防ぐ
+
+  # ---- 3. sign-x64: SignPath 本番証明書 (release-signing) で MSI + portable exe を署名し、
+  #        署名済み最終資産 (MSI・旧名コピー・portable ZIP) を組み立てる ----
+  # 260701Cl Phase C 適用 (本番証明書は 2026-06-29, Phillip Deng より発行通知)。release-signing は Foundation tier
+  #   のため署名リクエストごとに SignPath UI での手動 Approve が必須 (test-signing の自動完走とは異なる)。
+  #   arm64 は experimental のため対象外のまま (CODE_SIGNING.md の scope 記載どおり、build-arm64/smoke-arm64 は無変更)。
+  sign-x64:
+    needs: [prepare, build-x64]
+    if: needs.prepare.outputs.needed == 'true'
+    runs-on: windows-2025-vs2026
+    # 260701Cl 手動承認待ち (wait-for-completion-timeout-in-seconds 最大90分) + 検証/組み立てのオーバーヘッドを吸収。
+    timeout-minutes: 100
+    # 260701Cl 同一 ref への署名リクエスト重複を防ぐ (再実行時に前回の承認待ちと競合しないため)。
+    concurrency:
+      group: release-signing-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: Submit signing request (SignPath, release-signing)
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: 9ae9903a-7afe-48b5-a2fb-f670fd8ba98e
+          project-slug: ReciPro
+          signing-policy-slug: release-signing
+          # 260701Cl 本番 artifact configuration (zip-file > msi-file "ReciPro-setup.msi" + pe-file "ReciPro.exe")。
+          #   ★適用前に SignPath dashboard でこの slug の artifact configuration を作成しておくこと (未作成だと失敗する)。
+          artifact-configuration-slug: release-msi-portable-v1
+          github-artifact-id: ${{ needs.build-x64.outputs.signing_artifact_id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 5400
+          output-artifact-directory: artifacts/signed
+
+      - name: Download unsigned portable payload
+        uses: actions/download-artifact@v7
+        with:
+          name: x64-portable-payload-unsigned
+          path: ${{ runner.temp }}/portable-payload/ReciPro
+
+      - name: Verify signatures and assemble signed release assets
+        shell: pwsh
+        run: |
+          $signedMsi = "artifacts\signed\ReciPro-setup.msi"
+          $signedExe = "artifacts\signed\ReciPro.exe"
+          if (-not (Test-Path $signedMsi)) { throw "signed MSI was not downloaded" }
+          if (-not (Test-Path $signedExe)) { throw "signed EXE was not downloaded" }
+
+          # 本番証明書は信頼チェーンが通るため Status=Valid を要求する (test-signing 疎通確認とは異なるゲート)。
+          foreach ($f in @($signedMsi, $signedExe)) {
+            $sig = Get-AuthenticodeSignature -LiteralPath $f
+            Write-Host "$f -> $($sig.Status) / $($sig.SignerCertificate.Subject)"
+            if (-not $sig.SignerCertificate) { throw "no signature on $f" }
+            if ($sig.Status -ne 'Valid') { throw "signature on $f is not Valid: $($sig.Status) ($($sig.StatusMessage))" }
+            # タイムスタンプ必須 (証明書失効後も署名検証を可能にするため)。
+            if (-not $sig.TimeStamperCertificate) { throw "signature on $f is not timestamped" }
+          }
+
           $out = Join-Path $env:RUNNER_TEMP "x64-out"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
-          Copy-Item "${{ steps.build_installer.outputs.msi_path }}" $out
-          Copy-Item "${{ steps.build_installer.outputs.legacy_msi_path }}" $out
-          Copy-Item "${{ steps.portable.outputs.zip_path }}" $out
-          Get-ChildItem $out | ForEach-Object { Write-Host "x64 asset: $($_.Name) ($($_.Length) bytes)" }
 
-      - name: Upload x64 release assets
-        # 260425Cl Node.js 20 廃止対応 (v6 で Node.js 24 がデフォルト)
+          # 署名済み MSI (主名称) と、その同一バイトコピー (旧名, 260613Cl 命名規約)
+          Copy-Item $signedMsi (Join-Path $out "ReciPro-setup.msi") -Force
+          Copy-Item $signedMsi (Join-Path $out "ReciProSetup.msi") -Force
+
+          # portable: 未署名 payload の ReciPro.exe を署名済みに差し替えてから zip 化
+          #   (ZIP 直下に ReciPro\ フォルダを置く構造は download-artifact の展開先指定で再現している)
+          $portableDir = Join-Path $env:RUNNER_TEMP "portable-payload\ReciPro"
+          Copy-Item $signedExe (Join-Path $portableDir "ReciPro.exe") -Force
+          $zipPath = Join-Path $out "ReciPro-v.${{ needs.prepare.outputs.version }}.zip"
+          Compress-Archive -Path $portableDir -DestinationPath $zipPath -Force
+
+          Get-ChildItem $out | ForEach-Object { Write-Host "x64 asset (signed): $($_.Name) ($($_.Length) bytes)" }
+
+      - name: Upload x64 release assets (signed)
         uses: actions/upload-artifact@v6
         with:
           name: x64-release-assets
           path: ${{ runner.temp }}/x64-out
+          overwrite: true # 260701Cl codex指摘: 再実行時の artifact 名衝突を防ぐ
 
-  # ---- 3. build-arm64: reusable build (二重保守なし)。prepare の FileVersion を渡して x64 と一致させる ----
+  # ---- 4. build-arm64: reusable build (二重保守なし)。prepare の FileVersion を渡して x64 と一致させる ----
   # 260623Cl build-arm64-portable.yml を workflow_call で再利用。assembly_version を渡すことで x64 と同一 FileVersion。
   build-arm64:
     needs: prepare
@@ -326,7 +441,7 @@ jobs:
     permissions:
       contents: read
 
-  # ---- 4. smoke-arm64: windows-11-arm 実機で smoke → 検証済み ZIP+MSI を artifact 化 (旧 attach の smoke を移設) ----
+  # ---- 5. smoke-arm64: windows-11-arm 実機で smoke → 検証済み ZIP+MSI を artifact 化 (旧 attach の smoke を移設) ----
   # 260623Cl このジョブが失敗しても release job は走る (フォールバックで x64 のみ公開)。smoke 内容は旧 attach-arm64 と同一:
   #   想定故障モードが全て「ビルド緑・実行時死亡」型 (BadImageFormat / DLL 黙殺フォールバック / 起動即死) のため、
   #   PE 検査 + LoadLibrary + ReciPro.exe --smoke (NativeWrapper/Xraylib 明示アサート) + GUI 起動 + MSI install/smoke を実機で行う。
@@ -581,12 +696,13 @@ jobs:
           name: arm64-release-assets
           path: ${{ runner.temp }}/arm64-out
 
-  # ---- 5. release: x64 必須・arm64 は揃っていれば一緒に、1 回の gh release create で原子的に公開 ----
+  # ---- 6. release: x64 (署名済み) 必須・arm64 は揃っていれば一緒に、1 回の gh release create で原子的に公開 ----
   # 260623Cl !cancelled() で arm64 (build/smoke) が失敗しても本 job は走らせ、内部で x64 のみ公開へフォールバックする。
-  #   ただし build-x64 成功と needed=true は必須 (x64 が無ければ何も公開しない)。
+  #   ただし x64 の署名成功 (sign-x64) と needed=true は必須 (署名済み x64 が無ければ何も公開しない)。
+  # 260701Cl Phase C: 必須ゲートを build-x64 → sign-x64 に変更 (sign-x64 は build-x64 成功を前提に走るので後方互換)。
   release:
-    needs: [prepare, build-x64, build-arm64, smoke-arm64]
-    if: ${{ !cancelled() && needs.prepare.outputs.needed == 'true' && needs.build-x64.result == 'success' }}
+    needs: [prepare, build-x64, sign-x64, build-arm64, smoke-arm64]
+    if: ${{ !cancelled() && needs.prepare.outputs.needed == 'true' && needs.sign-x64.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
