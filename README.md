@@ -56,7 +56,7 @@ You may also cite the software repository itself when appropriate:
 
 ## Code signing policy
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
+[<img src="https://signpath.org/assets/favicon-50x50.png" alt="SignPath" height="20">](https://about.signpath.io/) Free code signing on Windows provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
 
 Since v.4.942, release artifacts (the *ReciPro-setup.msi* installer and the portable *ReciPro.exe*) are signed with Windows Authenticode as part of the automated release pipeline, and each signing request is reviewed and manually approved by the maintainer before publication. See [CODE_SIGNING.md](CODE_SIGNING.md) for the full policy, including the signing scope, how to verify an installer, and how to report suspicious artifacts.
 

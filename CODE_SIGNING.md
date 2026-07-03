@@ -18,7 +18,7 @@ Users should avoid downloading ReciPro installers from unofficial mirrors or thi
 
 ## Intended signing model
 
-This project uses free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+Free code signing on Windows provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
 
 Once enabled for a given release, release artifacts are signed using Windows Authenticode signing before being published to GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer. Because SignPath Foundation signing requires a maintainer to manually approve each signing request, there may be a delay between a new version being pushed and the corresponding GitHub Release appearing, while the signing request awaits approval.
 
