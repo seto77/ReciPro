@@ -872,4 +872,10 @@ predefinida de cada eje de la celda unidad.</value>
 fraccionaria de la celda unidad; el punto elegido
 se sitúa en el centro de la vista.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Anchura de la vista principal proyectada en nm.
+Los valores más pequeños acercan la vista.
+Sincronizada con el zoom mediante arrastre con el
+botón derecho o rueda del ratón sobre la vista.</value>
+  </data>
 </root>

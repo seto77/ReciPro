@@ -878,4 +878,10 @@ preimpostata di ciascun asse della cella elementare.</value>
 frazionaria della cella elementare; il punto scelto
 viene posizionato al centro della vista.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Larghezza della vista principale proiettata in nm.
+Valori più piccoli ingrandiscono la vista.
+Sincronizzata con lo zoom tramite trascinamento
+con il tasto destro / rotellina del mouse sulla vista.</value>
+  </data>
 </root>

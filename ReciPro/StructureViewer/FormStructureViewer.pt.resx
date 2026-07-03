@@ -881,4 +881,10 @@ predefinida de cada eixo da célula unitária.</value>
 fracionária da célula unitária; o ponto escolhido
 é posicionado no centro da visualização.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Largura da vista principal projetada, em nm.
+Valores menores ampliam o zoom. Sincronizada
+com o zoom ao arrastar com o botão direito
+ou usar a roda do mouse na vista.</value>
+  </data>
 </root>

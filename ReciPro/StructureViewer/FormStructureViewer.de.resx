@@ -881,4 +881,10 @@ Anteil jeder Elementarzellenachse.</value>
 Koordinate der Elementarzelle fest; der gewählte
 Punkt wird in die Mitte der Ansicht gesetzt.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Breite der projizierten Hauptansicht in nm.
+Kleinere Werte entsprechen einer stärkeren
+Vergrößerung. Synchronisiert mit dem Zoomen in
+der Ansicht (Ziehen mit rechter Maustaste/Mausrad).</value>
+  </data>
 </root>

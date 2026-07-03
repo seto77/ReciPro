@@ -87,7 +87,7 @@
 왼쪽으로 기울이며 회전시킵니다.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>설정한 방향·속도·길이로 회전 동영상을
+    <value>선택한 설정에 따라 동영상(회전 및/또는 병진 이동)을
 생성하여 MP4 파일로 저장합니다.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
@@ -119,14 +119,16 @@
 영향을 주지 않습니다.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>생성할 동영상의 길이(초)를 설정합니다
-(프레임 레이트는 30 fps).</value>
+    <value>생성할 동영상의 길이(초)를 설정합니다.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>시점의 회전 속도를 초당 도(°/s)로 설정합니다.</value>
+    <value>시점의 회전 속도를 초당 도(°/s, -360 ~ 360)로
+설정합니다. 음수 값은 회전 방향을 반전시킵니다.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>회전축을 결정의 방향 지수 [uvw]로 지정합니다.</value>
+    <value>회전축을 결정의 방향 지수 [uvw]로 지정합니다.
+Translation이 켜져 있으면 [uvw]가 병진 이동 방향도
+지정하며, 이 모드만 선택할 수 있습니다.</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>현재 표시 중인 투영 방위(방향)를 기준으로
@@ -144,9 +146,42 @@
     <value>회전축을 격자면 (hkl)의
 법선으로 지정합니다.</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>회전축을 정의하는 지수를 입력합니다. 방향 지수
 모드에서는 방향 [uvw]로, 격자면 모드에서는 격자면
-(hkl) (그 법선을 중심으로 회전)으로 해석됩니다.</value>
+(hkl) (그 법선을 중심으로 회전)으로 해석됩니다.
+Translation이 켜져 있으면 [uvw]가 병진 이동
+방향도 지정합니다.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>동영상의 프레임 레이트를 초당 프레임 수(1-120)로
+설정합니다. 값이 클수록 움직임이 부드러워지지만
+프레임 수와 파일 크기가 커집니다.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>MP4 인코더 품질(1-100)을 설정합니다. 값이 클수록
+목표 비트레이트가 높아지고 파일 크기가 커집니다.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>투영 중심이 방향 지수 [uvw]를 따라 이동하는
+속도를 단위 지수당 초당 격자 주기 수(periods/s)로
+설정합니다 (지수 값에 비례하여 조정됩니다).
+음수 값은 이동 방향을 반전시킵니다.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>t = Duration 시점에 프레임을 하나 더 추가하여
+동영상이 정확히 마지막 방위/위치에서 끝나도록
+합니다.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>동영상에서 시점을 회전시킵니다. 체크를 해제하면
+병진 이동만 하는 동영상이 됩니다 (Rotation과
+Translation 중 적어도 하나는 켜져 있어야 합니다).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>동영상에서 투영 중심을 병진 이동시킵니다.
+이동 방향은 방향 지수 [uvw]로 지정합니다
+(이 항목이 켜져 있는 동안 선택 가능한 유일한
+방향 모드입니다).</value>
   </data>
 </root>

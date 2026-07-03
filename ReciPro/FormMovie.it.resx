@@ -87,8 +87,8 @@ di osservazione (normale allo schermo) per il filmato.</value>
 all'asse verticale dello schermo per il filmato.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Genera il filmato di rotazione con la direzione, la velocità
-e la durata scelte, e lo salva come file MP4.</value>
+    <value>Genera il filmato (rotazione e/o traslazione)
+con le impostazioni scelte e lo salva come file MP4.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Inclina la vista verso destra attorno
@@ -119,13 +119,18 @@ compare solo nella finestra di avanzamento e non
 influisce più sulla codifica effettiva.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Durata del filmato in secondi (la frequenza dei fotogrammi è 30 fps).</value>
+    <value>Durata del filmato in secondi.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Velocità di rotazione della vista in gradi al secondo (°/s).</value>
+    <value>Velocità di rotazione della vista
+in gradi al secondo (°/s, da -360 a 360).
+I valori negativi invertono il senso di rotazione.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Imposta l'asse di rotazione tramite un indice di direzione cristallina [uvw].</value>
+    <value>Imposta l'asse di rotazione tramite un indice
+di direzione cristallina [uvw]. Quando Traslazione
+è attiva, [uvw] definisce anche la direzione
+di traslazione (unica modalità disponibile).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Ruota attorno alla proiezione (orientazione)
@@ -143,10 +148,46 @@ di inclinazione con i pulsanti a freccia.</value>
     <value>Imposta l'asse di rotazione sulla
 normale di un piano reticolare (hkl).</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Inserisci gli indici che definiscono l'asse di rotazione:
 una direzione [uvw] in modalità Indice di direzione,
 oppure un piano reticolare (hkl) (rotazione attorno
-alla sua normale) in modalità Piano reticolare.</value>
+alla sua normale) in modalità Piano reticolare.
+Quando Traslazione è attiva, [uvw] definisce
+anche la direzione di traslazione.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Frequenza dei fotogrammi del filmato,
+in fotogrammi al secondo (1-120). Valori più alti
+rendono il movimento più fluido, ma aumentano
+il numero di fotogrammi e la dimensione del file.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>Qualità del codificatore MP4 (1-100). Valori più alti
+usano un bitrate target più elevato e aumentano
+la dimensione del file.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Velocità con cui il centro di proiezione si sposta
+lungo l'indice di direzione [uvw], espressa in
+periodi reticolari al secondo (periods/s) per unità
+di indice (scalata secondo i valori degli indici).
+I valori negativi invertono la direzione.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Aggiunge un fotogramma extra a t = Duration,
+in modo che il filmato termini esattamente
+nell'orientazione/posizione finale.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Ruota la vista durante il filmato. Deseleziona
+per creare un filmato di sola traslazione (almeno
+una tra Rotazione e Traslazione deve essere attiva).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Trasla il centro di proiezione durante il filmato.
+La direzione è data dall'indice di direzione [uvw]
+(unica modalità di direzione disponibile
+quando questa opzione è attiva).</value>
   </data>
 </root>

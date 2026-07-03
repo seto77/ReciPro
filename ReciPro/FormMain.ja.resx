@@ -109,6 +109,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupBoxCrystalList.Text" xml:space="preserve">
+    <value>結晶リスト</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
+    <value>結晶情報</value>
+  </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>結晶リストを表示します。
 新規追加するには、下の″Crystal Information″パネルで結晶を新規設定し″リストへ追加″します。
@@ -146,13 +152,6 @@
   <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>リスト中の選択された結晶を上に移動します</value>
   </data>
-  <data name="groupBoxCrystalList.Text" xml:space="preserve">
-    <value>結晶リスト</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
-    <value>結晶情報</value>
-  </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>↑ リストへ追加 ↑</value>
   </data>
@@ -165,7 +164,14 @@
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>リスト中の選択されている結晶を置き換えます。</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
+    <value>軸/面投影</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>視線方向に向ける結晶面の指数 (h k l) を入力しま
+す。［Plane］を押すと、この面の法線が
+画面手前（視線方向）を向くよう結晶が回転します。</value>
+  </data>
   <data name="buttonSetPlane.Text" xml:space="preserve">
     <value>面方向</value>
   </data>
@@ -178,6 +184,11 @@
   </data>
   <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
     <value>チェックすると、指定した面が空間内で固定されます。</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>視線方向に向ける晶帯軸の指数 [u v w] を入力しま
+す。［Axis］を押すと、この方向が画面手前（視線
+方向）を向くよう結晶が回転します。</value>
   </data>
   <data name="buttonSetAxis.Text" xml:space="preserve">
     <value>軸方向</value>
@@ -192,10 +203,9 @@
   <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
     <value>チェックすると、指定した軸が空間内で固定されます。</value>
   </data>
-  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
-    <value>軸/面投影</value>
+  <data name="groupBoxArrows.Text" xml:space="preserve">
+    <value>回転</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
   </data>
@@ -242,11 +252,20 @@
     <value>チェックすると、上のボタンをクリック
 した際に結晶が一定速度で回転します</value>
   </data>
-  <data name="groupBoxArrows.Text" xml:space="preserve">
-    <value>回転</value>
+  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
+    <value>現在の結晶方位</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>選択された結晶の現在の方位</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
@@ -254,8 +273,15 @@
   <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>オイラー角</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>結晶の現在の3次元回転姿勢を表すオイラー角(φ,
+θ, ψ)。値を編集すると方位を直接設定できます。</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>方向リセット</value>
@@ -270,12 +296,6 @@
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
     <value>おおよその晶帯軸指数</value>
-  </data>
-  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
-    <value>現在の結晶方位</value>
-  </data>
-  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
-    <value>選択された結晶の現在の方位</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>回転状態表示/制御</value>
@@ -298,7 +318,8 @@
     <value>「対称性情報」機能を開く</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
-    <value>ビーム相互作用</value>
+    <value>ビーム
+相互作用</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
     <value>「ビーム相互作用」機能を開く</value>
@@ -340,7 +361,7 @@
     <value>「軌道シミュレータ」機能を開きます。</value>
   </data>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
-    <value>HRTEM/STEM
+    <value>HR/STEM
 シミュレータ</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
@@ -374,6 +395,9 @@ v2</value>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
     <value>粉末回折機能を開く</value>
   </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを読込 (現在のリストを消去)</value>
   </data>
@@ -398,11 +422,15 @@ v2</value>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>閉じる</value>
   </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>オプション</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップを表示</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>有効にすると、六方晶／三方晶（六方軸）の指数を
+4指数のミラー・ブラベー (hkil) 表記で表示します。</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
     <value>レジストリを初期化 (要再起動)</value>
@@ -419,6 +447,10 @@ v2</value>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>MKL ライブラリを使用</value>
   </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Intel MKL を有効化し行列計算を高速化しま
+す。初回使用時に約55MBダウンロードします。</value>
+  </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>イオン散乱因子を使用</value>
   </data>
@@ -426,15 +458,11 @@ v2</value>
     <value>動力学計算で中性原子の代わりにイオン (完全 Peng) の
 電子散乱因子を使う。OFF = 中性原子 IAM (既定)。</value>
   </data>
-  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Intel MKL を有効化し行列計算を高速化しま
-す。初回使用時に約55MBダウンロードします。</value>
-  </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>ダークモード</value>
   </data>
-  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>オプション</value>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデート</value>
@@ -457,14 +485,11 @@ v2</value>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>使い方 (WEB)</value>
   </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ヘルプ</value>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>マクロ</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>編集</value>
-  </data>
-  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>マクロ</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
     <value>名前の変更</value>
@@ -478,59 +503,22 @@ v2</value>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="indexControlAxis.ToolTip" xml:space="preserve">
-    <value>視線方向に向ける晶帯軸の指数 [u v w] を入力しま
-す。［Axis］を押すと、この方向が画面手前（視線
-方向）を向くよう結晶が回転します。</value>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
   </data>
-  <data name="indexControlPlane.ToolTip" xml:space="preserve">
-    <value>視線方向に向ける結晶面の指数 (h k l) を入力しま
-す。［Plane］を押すと、この面の法線が
-画面手前（視線方向）を向くよう結晶が回転します。</value>
+  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value>結晶の現在の3次元回転姿勢を表すオイラー角(φ,
-θ, ψ)。値を編集すると方位を直接設定できます。</value>
+  <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
-  </data>
-  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
-    <value>有効にすると、六方晶／三方晶（六方軸）の指数を
-4指数のミラー・ブラベー (hkil) 表記で表示します。</value>
-  </data>
-  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>回転ボタンの角度ステップ（度）を設定しま
-す。アニメーション有効時は、同じ値を 1 秒あ
-たりの回転速度（度/秒）として使います。</value>
-  </data>
-  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value>視線方向に最も近い晶帯軸を探索する際の指数和
-|u|+|v|+|w| の上限を設定します。値を大きくするほど多く
-の候補晶帯軸を評価します（上の概略指数表示に反映）。</value>
-  </data>
-  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
-  </data>
-  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
-  </data>
-  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
-    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
-  </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="listBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="buttonClock.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
+  <data name="buttonClearAllCrystals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripButtonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonDuplicate.Font" type="System.Drawing.Font, System.Drawing">
@@ -539,8 +527,35 @@ v2</value>
   <data name="buttonDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonUp.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="indexControlPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="indexControlAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxFixAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -548,166 +563,130 @@ v2</value>
   <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonAntiClock.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="buttonClearAllCrystals.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="buttonClock.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="tableLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 6.5pt</value>
-  </data>
-  <data name="contextMenuStripListBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 7pt</value>
-  </data>
-  <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 10pt</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  <data name="buttonTopLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
   </data>
   <data name="buttonLeft.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
   <data name="buttonBottomLeft.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 7pt</value>
-  </data>
-  <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 10pt</value>
-  </data>
-  <data name="buttonUp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 7pt</value>
-  </data>
-  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonAntiClock.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonBottom.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
   <data name="buttonBottomRight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="indexControlAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 10pt</value>
-  </data>
-  <data name="buttonTopLeft.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonTop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
-  </data>
-  <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 7pt</value>
   </data>
   <data name="buttonTopRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
-  </data>
-  <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonBottom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
-  </data>
-  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="listBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 7pt</value>
-  </data>
-  <data name="buttonTop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
   <data name="buttonRight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="indexControlPlane.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="tableLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 6.5pt</value>
+  </data>
+  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="contextMenuStripListBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
   </data>
 </root>

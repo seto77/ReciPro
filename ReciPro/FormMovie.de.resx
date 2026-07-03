@@ -87,8 +87,9 @@ um die Blickachse (Bildschirmnormale).</value>
 vertikale Bildschirmachse.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Erzeugt den Rotationsfilm mit der gewählten Richtung,
-Geschwindigkeit und Dauer und speichert ihn als MP4-Datei.</value>
+    <value>Erzeugt den Film (Rotation und/oder Translation)
+mit den gewählten Einstellungen
+und speichert ihn als MP4-Datei.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Kippt die Ansicht für den Film nach rechts um die
@@ -119,13 +120,18 @@ erscheint dies nur im Fortschrittsdialog und beeinflusst
 die eigentliche Kodierung nicht mehr.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Länge des Films in Sekunden (Bildrate ist 30 fps).</value>
+    <value>Länge des Films in Sekunden.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Rotationsgeschwindigkeit der Ansicht in Grad pro Sekunde (°/s).</value>
+    <value>Rotationsgeschwindigkeit der Ansicht in Grad pro
+Sekunde (°/s, -360 bis 360). Negative Werte kehren
+die Drehrichtung um.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Legt die Rotationsachse über einen Kristallrichtungsindex [uvw] fest.</value>
+    <value>Legt die Rotationsachse über einen
+Kristallrichtungsindex [uvw] fest. Bei aktivierter
+Translation gibt [uvw] auch die
+Translationsrichtung vor (einziger verfügbarer Modus).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Dreht um die aktuell angezeigte
@@ -143,10 +149,46 @@ wird mit den Pfeiltasten gewählt.</value>
     <value>Legt die Rotationsachse auf die
 Normale einer Netzebene (hkl) fest.</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Geben Sie die Indizes ein, die die Rotationsachse
-festlegen: eine Richtung [uvw] im Richtungsindex-
-Modus oder eine Netzebene (hkl) (Rotation um
-ihre Normale) im Netzebenen-Modus.</value>
+festlegen: eine Richtung [uvw] im
+Richtungsindex-Modus oder eine Netzebene (hkl)
+(Rotation um ihre Normale) im Netzebenen-Modus.
+Bei aktivierter Translation legt [uvw]
+auch die Translationsrichtung fest.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Bildrate des Films in Bildern pro Sekunde (1-120).
+Höhere Werte ergeben flüssigere Bewegungen,
+erhöhen aber die Anzahl der Bilder und die Dateigröße.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>Qualität des MP4-Kodierers (1-100). Höhere Werte
+verwenden eine höhere Ziel-Bitrate und erhöhen
+die Dateigröße.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Geschwindigkeit, mit der sich das Projektionszentrum
+entlang des Richtungsindex [uvw] bewegt,
+in Gitterperioden pro Sekunde (periods/s)
+pro Indexeinheit (skaliert mit den Indexwerten).
+Negative Werte kehren die Richtung um.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Fügt bei t = Duration ein zusätzliches Bild hinzu,
+sodass der Film exakt in der endgültigen
+Orientierung/Position endet.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Dreht die Ansicht während des Films. Deaktivieren,
+um einen reinen Translationsfilm zu erzeugen
+(mindestens eine der beiden Optionen Rotation
+und Translation muss aktiviert sein).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Verschiebt das Projektionszentrum während des Films.
+Die Richtung wird durch den Richtungsindex [uvw]
+vorgegeben (einziger Richtungsmodus, solange dies
+aktiviert ist).</value>
   </data>
 </root>

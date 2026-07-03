@@ -1129,19 +1129,10 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="checkBoxCellShowEdge.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="numericBoxSubCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxSubCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxSubCellA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
@@ -1206,5 +1197,10 @@ List、新しい OpenGL が必要）かを選びます。</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>投影ビューの横幅 (nm)。小さいほど拡大表示に
+なります。ビュー上の右ドラッグ/ホイールに
+よるズームと連動します。</value>
   </data>
 </root>

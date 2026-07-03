@@ -624,22 +624,13 @@ generally means a stronger reflection.</value>
   <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colorControlString.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
     <value>Text</value>
-  </data>
-  <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlString.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 49</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="colorControlString.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -717,17 +708,8 @@ perpendicular from the sample.</value>
   <data name="colorControlOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlOrigin.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlOrigin.FooterText" xml:space="preserve">
     <value>Direct position</value>
-  </data>
-  <data name="colorControlOrigin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlOrigin.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlOrigin.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 18</value>
@@ -768,20 +750,8 @@ perpendicular from the sample.</value>
   <data name="colorControlFoot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlFoot.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlFoot.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlFoot.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlFoot.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlFoot.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlFoot.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 52</value>
@@ -895,17 +865,8 @@ perpendicular from the sample.</value>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>Background</value>
-  </data>
-  <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlBackGround.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlBackGround.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 21</value>
@@ -1084,14 +1045,8 @@ lines by a 1/d (d-spacing) cutoff.</value>
   <data name="&gt;&gt;radioButtonKikuchiThresholdOfLength.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxKikuchiThresholdOfStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -1117,10 +1072,6 @@ lines by a 1/d (d-spacing) cutoff.</value>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>Set the number of strongest reflections (by
-structure factor) used to draw Kikuchi lines.</value>
-  </data>
   <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.Name" xml:space="preserve">
     <value>numericBoxKikuchiThresholdOfStructureFactor</value>
   </data>
@@ -1133,17 +1084,11 @@ structure factor) used to draw Kikuchi lines.</value>
   <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxKikuchiThresholdOfLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxKikuchiThresholdOfLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.FooterText" xml:space="preserve">
     <value>nm⁻¹</value>
-  </data>
-  <data name="numericBoxKikuchiThresholdOfLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -1174,11 +1119,6 @@ structure factor) used to draw Kikuchi lines.</value>
 1/d (reciprocal length) is below this value
 (nm⁻¹); i.e. only spacings coarser than 1/value.</value>
   </data>
-  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value>Draw Kikuchi lines only for reflections whose
-1/d (reciprocal length) is below this value
-(nm⁻¹); i.e. only spacings coarser than 1/value.</value>
-  </data>
   <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Name" xml:space="preserve">
     <value>numericBoxKikuchiThresholdOfLength</value>
   </data>
@@ -1200,20 +1140,11 @@ structure factor) used to draw Kikuchi lines.</value>
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
     <value>Kikuchi line color</value>
   </data>
   <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlExcessLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 3</value>
@@ -1347,20 +1278,11 @@ structure factor) used to draw Kikuchi lines.</value>
   <data name="colorControlDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlDebyeRing.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlDebyeRing.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
     <value>Debye ring color</value>
   </data>
   <data name="colorControlDebyeRing.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlDebyeRing.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlDebyeRing.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
@@ -1847,20 +1769,11 @@ displayed at the same intensity.</value>
   <data name="colorControlScaleAzimuth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlScaleAzimuth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlScaleAzimuth.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
     <value>Azimuth scale line</value>
   </data>
   <data name="colorControlScaleAzimuth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlScaleAzimuth.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScaleAzimuth.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 29</value>
@@ -1901,20 +1814,11 @@ displayed at the same intensity.</value>
   <data name="colorControlScale2Theta.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlScale2Theta.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlScale2Theta.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
     <value>2θ scale line</value>
   </data>
   <data name="colorControlScale2Theta.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlScale2Theta.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScale2Theta.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 4</value>
@@ -2077,17 +1981,8 @@ Double left click: Display the information of the g-vector</value>
   <data name="colorControl3D_SpotsNear.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_SpotsNear.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
     <value>Spot near Ewald sphere</value>
-  </data>
-  <data name="colorControl3D_SpotsNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_SpotsNear.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_SpotsNear.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 107</value>
@@ -2105,9 +2000,6 @@ Double left click: Display the information of the g-vector</value>
     <value>Set the color of reciprocal-lattice
 spots near the Ewald sphere.</value>
   </data>
-  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
-    <value>エワルド球近傍の逆格子点の色を設定します。</value>
-  </data>
   <data name="&gt;&gt;colorControl3D_SpotsNear.Name" xml:space="preserve">
     <value>colorControl3D_SpotsNear</value>
   </data>
@@ -2119,9 +2011,6 @@ spots near the Ewald sphere.</value>
   </data>
   <data name="&gt;&gt;colorControl3D_SpotsNear.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBox3D_SpotRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
   <data name="numericBox3D_SpotRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -2163,12 +2052,6 @@ spots near the Ewald sphere.</value>
     <value>0</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
-    <value>Set the rendered radius of diffraction-spot
-spheres in the 3D reciprocal-space view (nm⁻¹);
-spots within this distance of the Ewald sphere
-are colored as near and can be labeled.</value>
-  </data>
-  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
     <value>Set the rendered radius of diffraction-spot
 spheres in the 3D reciprocal-space view (nm⁻¹);
 spots within this distance of the Ewald sphere
@@ -2268,17 +2151,8 @@ near the Ewald sphere with their hkl indices.</value>
   <data name="colorControl3D_SpotsFar.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_SpotsFar.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
     <value>Spots away from Ewald sphere</value>
-  </data>
-  <data name="colorControl3D_SpotsFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_SpotsFar.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_SpotsFar.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 87</value>
@@ -2361,17 +2235,8 @@ farther from the Ewald sphere more transparent.</value>
   <data name="colorControl3D_Background.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_Background.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_Background.FooterText" xml:space="preserve">
     <value>Background</value>
-  </data>
-  <data name="colorControl3D_Background.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_Background.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_Background.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 47</value>
@@ -2402,9 +2267,6 @@ farther from the Ewald sphere more transparent.</value>
   </data>
   <data name="&gt;&gt;colorControl3D_Background.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="numericBoxReciprocalThreshold.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxReciprocalThreshold.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -2443,10 +2305,6 @@ farther from the Ewald sphere more transparent.</value>
     <value>33</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
-    <value>Set the relative-intensity threshold (%) below
-which reciprocal-lattice spots are hidden.</value>
-  </data>
-  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
     <value>逆格子点を表示する相対強度のしきい値(%)を設定し
 ます。これより弱いスポットは非表示になります。</value>
   </data>
@@ -2973,9 +2831,6 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="panelViewStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="numericBoxStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -3013,10 +2868,6 @@ which reciprocal-lattice spots are hidden.</value>
     <value>0</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Set the angle step for the buttons
-above, or the rotation speed.</value>
-  </data>
-  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value>Set the angle step for the buttons
 above, or the rotation speed.</value>
   </data>
@@ -3187,17 +3038,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_EwaldSphere.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_EwaldSphere.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_EwaldSphere.FooterText" xml:space="preserve">
     <value>Ewald sphere</value>
-  </data>
-  <data name="colorControl3D_EwaldSphere.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_EwaldSphere.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_EwaldSphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 67</value>
@@ -3238,17 +3080,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_Origin.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_Origin.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_Origin.FooterText" xml:space="preserve">
     <value>Origin</value>
-  </data>
-  <data name="colorControl3D_Origin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_Origin.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_Origin.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 67</value>
@@ -3289,17 +3122,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_rightDirection.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_rightDirection.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_rightDirection.FooterText" xml:space="preserve">
     <value>Right</value>
-  </data>
-  <data name="colorControl3D_rightDirection.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_rightDirection.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_rightDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>298, 128</value>
@@ -3340,17 +3164,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_topDirection.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_topDirection.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_topDirection.FooterText" xml:space="preserve">
     <value>Top</value>
-  </data>
-  <data name="colorControl3D_topDirection.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_topDirection.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_topDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>241, 128</value>
@@ -3391,17 +3206,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_beamDirection.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_beamDirection.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_beamDirection.FooterText" xml:space="preserve">
     <value>Beam</value>
-  </data>
-  <data name="colorControl3D_beamDirection.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_beamDirection.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_beamDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 128</value>
@@ -3442,17 +3248,8 @@ which reciprocal-lattice spots are hidden.</value>
   <data name="colorControl3D_lText.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControl3D_lText.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControl3D_lText.FooterText" xml:space="preserve">
     <value>Text</value>
-  </data>
-  <data name="colorControl3D_lText.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControl3D_lText.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl3D_lText.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 47</value>
@@ -3468,9 +3265,6 @@ which reciprocal-lattice spots are hidden.</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
     <value>Set the color of the index/label text in the 3D view.</value>
-  </data>
-  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
-    <value>3D ビューの指数ラベル文字の色を設定します。</value>
   </data>
   <data name="&gt;&gt;colorControl3D_lText.Name" xml:space="preserve">
     <value>colorControl3D_lText</value>
@@ -4706,9 +4500,6 @@ in inverted (negative) brightness.</value>
   <data name="sizeControl1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
-  </data>
   <data name="&gt;&gt;sizeControl1.Name" xml:space="preserve">
     <value>sizeControl1</value>
   </data>
@@ -4727,17 +4518,8 @@ in inverted (negative) brightness.</value>
   <data name="flowLayoutPanelResolutionUnit.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxResolution.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxResolution.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4761,15 +4543,12 @@ in inverted (negative) brightness.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 25</value>
+    <value>146, 25</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value>Set a resolution of the simulated pattern</value>
-  </data>
-  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
     <value>Set a resolution of the simulated pattern</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Name" xml:space="preserve">
@@ -4791,7 +4570,7 @@ in inverted (negative) brightness.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonResoUnitMilliMeter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 2</value>
+    <value>150, 2</value>
   </data>
   <data name="radioButtonResoUnitMilliMeter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 0, 0</value>
@@ -4831,7 +4610,7 @@ detector-plane length per pixel (mm/px).</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonResoUnitNanometerInv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 2</value>
+    <value>217, 2</value>
   </data>
   <data name="radioButtonResoUnitNanometerInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5052,7 +4831,7 @@ reciprocal-space length per pixel (nm⁻¹/px).</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 79</value>
+    <value>291, 79</value>
   </data>
   <data name="groupBoxMisc.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -5078,17 +4857,11 @@ reciprocal-space length per pixel (nm⁻¹/px).</value>
   <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCameraLength2.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCameraLength2.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCameraLength2.FooterText" xml:space="preserve">
     <value>mm</value>
-  </data>
-  <data name="numericBoxCameraLength2.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCameraLength2.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -5109,16 +4882,12 @@ reciprocal-space length per pixel (nm⁻¹/px).</value>
     <value>10, 20</value>
   </data>
   <data name="numericBoxCameraLength2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 25</value>
+    <value>209, 25</value>
   </data>
   <data name="numericBoxCameraLength2.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
-    <value>Set Camera Length 2, i.e., the distance
-from the sample to the detector (monitor).</value>
-  </data>
-  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Set Camera Length 2, i.e., the distance
 from the sample to the detector (monitor).</value>
   </data>
@@ -5150,7 +4919,7 @@ from the sample to the detector (monitor).</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDetailedGeometry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 2</value>
+    <value>211, 2</value>
   </data>
   <data name="buttonDetailedGeometry.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5189,7 +4958,7 @@ from the sample to the detector (monitor).</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 31</value>
+    <value>287, 31</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5222,7 +4991,7 @@ from the sample to the detector (monitor).</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 58</value>
+    <value>291, 58</value>
   </data>
   <data name="groupBoxDetectorGeometry.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5249,7 +5018,7 @@ from the sample to the detector (monitor).</value>
     <value>2, 0, 0, 0</value>
   </data>
   <data name="panelDetectorAndMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 137</value>
+    <value>291, 137</value>
   </data>
   <data name="panelDetectorAndMisc.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -5266,20 +5035,11 @@ from the sample to the detector (monitor).</value>
   <data name="&gt;&gt;panelDetectorAndMisc.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxDev.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDev.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxDev.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxDev.FooterText" xml:space="preserve">
     <value>%</value>
-  </data>
-  <data name="numericBoxDev.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDev.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5350,20 +5110,11 @@ from the sample to the detector (monitor).</value>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAcc.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAcc.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAcc.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxAcc.FooterText" xml:space="preserve">
     <value>kev</value>
-  </data>
-  <data name="numericBoxAcc.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAcc.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5900,9 +5651,6 @@ from the sample to the detector (monitor).</value>
     <value>Set the wave source and the
 accelerating voltage (wavelength).</value>
   </data>
-  <data name="waveLengthControl.ValueFontSize" type="System.Single, mscorlib">
-    <value>9.75</value>
-  </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
   </data>
@@ -6167,20 +5915,11 @@ diffraction (PED) simulation</value>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxPED_Semiangle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPED_Semiangle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxPED_Semiangle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxPED_Semiangle.FooterText" xml:space="preserve">
     <value>mrad</value>
-  </data>
-  <data name="numericBoxPED_Semiangle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -6214,11 +5953,6 @@ diffraction (PED) simulation</value>
 Electron Diffraction) simulation; the cone half-angle
 used to tilt and integrate the incident beam.</value>
   </data>
-  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Precession semi-angle (mrad) for the PED (Precession
-Electron Diffraction) simulation; the cone half-angle
-used to tilt and integrate the incident beam.</value>
-  </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Name" xml:space="preserve">
     <value>numericBoxPED_Semiangle</value>
   </data>
@@ -6231,17 +5965,8 @@ used to tilt and integrate the incident beam.</value>
   <data name="&gt;&gt;numericBoxPED_Semiangle.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxPED_Step.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPED_Step.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxPED_Step.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxPED_Step.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPED_Step.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -6276,12 +6001,6 @@ cone for the PED (Precession Electron
 Diffraction) simulation. More divisions sample
 the cone more smoothly but take longer.</value>
   </data>
-  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value>Number of azimuthal divisions of the precession
-cone for the PED (Precession Electron
-Diffraction) simulation. More divisions sample
-the cone more smoothly but take longer.</value>
-  </data>
   <data name="&gt;&gt;numericBoxPED_Step.Name" xml:space="preserve">
     <value>numericBoxPED_Step</value>
   </data>
@@ -6301,7 +6020,7 @@ the cone more smoothly but take longer.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 817</value>
+    <value>0, 815</value>
   </data>
   <data name="flowLayoutPanelPED.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 74</value>
@@ -6373,17 +6092,8 @@ the cone more smoothly but take longer.</value>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxNumOfBlochWave.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxNumOfBlochWave.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxNumOfBlochWave.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxNumOfBlochWave.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -6417,11 +6127,6 @@ the cone more smoothly but take longer.</value>
 the dynamical, multiple-scattering calculation. More
 waves improve accuracy but slow the computation.</value>
   </data>
-  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>Number of diffracted beams (Bloch waves) included in
-the dynamical, multiple-scattering calculation. More
-waves improve accuracy but slow the computation.</value>
-  </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Name" xml:space="preserve">
     <value>numericBoxNumOfBlochWave</value>
   </data>
@@ -6434,20 +6139,11 @@ waves improve accuracy but slow the computation.</value>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxThickness.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxThickness.FooterText" xml:space="preserve">
     <value>nm</value>
-  </data>
-  <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -6479,9 +6175,6 @@ waves improve accuracy but slow the computation.</value>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Set a thickness of the sample</value>
   </data>
-  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>Set a thickness of the sample</value>
-  </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
   </data>
@@ -6501,7 +6194,7 @@ waves improve accuracy but slow the computation.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelBethe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 743</value>
+    <value>0, 741</value>
   </data>
   <data name="flowLayoutPanelBethe.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6782,20 +6475,11 @@ waves improve accuracy but slow the computation.</value>
   <data name="&gt;&gt;flowLayoutPanelSpotOpacity.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxSpotRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxSpotRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxSpotRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSpotRadius.FooterText" xml:space="preserve">
     <value>nm⁻¹</value>
-  </data>
-  <data name="numericBoxSpotRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxSpotRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -6825,12 +6509,6 @@ waves improve accuracy but slow the computation.</value>
     <value>0</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
-    <value>Set the diffraction-spot radius or Gaussian
-sigma in reciprocal-space units (nm⁻¹ where
-shown); larger values draw broader spots and
-include a wider excitation-error tolerance.</value>
-  </data>
-  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
     <value>Set the diffraction-spot radius or Gaussian
 sigma in reciprocal-space units (nm⁻¹ where
 shown); larger values draw broader spots and
@@ -7233,17 +6911,8 @@ for general and systematically-extinct
   <data name="colorControlNoCondition.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlNoCondition.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlNoCondition.FooterText" xml:space="preserve">
     <value>General spots</value>
-  </data>
-  <data name="colorControlNoCondition.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlNoCondition.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlNoCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 40</value>
@@ -7287,17 +6956,8 @@ for general and systematically-extinct
   <data name="colorControlScrewGlide.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlScrewGlide.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
     <value>Extinct spots (Screw or Glide)</value>
-  </data>
-  <data name="colorControlScrewGlide.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlScrewGlide.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScrewGlide.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 61</value>
@@ -7341,17 +7001,8 @@ for general and systematically-extinct
   <data name="colorControlForbiddenLattice.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlForbiddenLattice.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
     <value>Extinct spots (Lattice centring)</value>
-  </data>
-  <data name="colorControlForbiddenLattice.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlForbiddenLattice.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlForbiddenLattice.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 82</value>
@@ -7414,7 +7065,7 @@ for general and systematically-extinct
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 428</value>
+    <value>0, 426</value>
   </data>
   <data name="flowLayoutPanelAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -7622,7 +7273,7 @@ the structure factor and the excitation error.</value>
     <value>10, 0, 0, 0</value>
   </data>
   <data name="buttonDetailsOfSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 27</value>
+    <value>79, 25</value>
   </data>
   <data name="buttonDetailsOfSpots.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7655,7 +7306,7 @@ the structure factor and the excitation error.</value>
     <value>0, 249</value>
   </data>
   <data name="flowLayoutPanelIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 179</value>
+    <value>192, 177</value>
   </data>
   <data name="flowLayoutPanelIntensity.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -8840,5 +8491,12 @@ accelerating voltage (wavelength).</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Set the number of strongest reflections (by
+structure factor) used to draw Kikuchi lines.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
   </data>
 </root>

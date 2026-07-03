@@ -31,6 +31,10 @@
             buttonSimulate = new System.Windows.Forms.Button();
             checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
             groupBoxInputParameters = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            label13 = new System.Windows.Forms.Label();
+            comboBoxSolver = new System.Windows.Forms.ComboBox();
+            numericBoxThread = new NumericBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonCBED = new System.Windows.Forms.RadioButton();
@@ -47,10 +51,7 @@
             numericBoxWholeThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             numericBoxThicknessStep = new NumericBox();
-            comboBoxSolver = new System.Windows.Forms.ComboBox();
-            numericBoxThread = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
-            label13 = new System.Windows.Forms.Label();
             groupBoxOutput = new System.Windows.Forms.GroupBox();
             flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
@@ -81,12 +82,8 @@
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
-            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxInputParameters.SuspendLayout();
+            flowLayoutPanel13.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
@@ -105,7 +102,6 @@
             flowLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
             statusStrip2.SuspendLayout();
-            flowLayoutPanel13.SuspendLayout();
             SuspendLayout();
             // 
             // buttonSimulate
@@ -138,6 +134,47 @@
             resources.ApplyResources(groupBoxInputParameters, "groupBoxInputParameters");
             groupBoxInputParameters.Name = "groupBoxInputParameters";
             groupBoxInputParameters.TabStop = false;
+            // 
+            // flowLayoutPanel13
+            // 
+            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
+            flowLayoutPanel13.Controls.Add(label13);
+            flowLayoutPanel13.Controls.Add(comboBoxSolver);
+            flowLayoutPanel13.Controls.Add(numericBoxThread);
+            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
+            // 
+            // comboBoxSolver
+            // 
+            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxSolver, "comboBoxSolver");
+            comboBoxSolver.FormattingEnabled = true;
+            comboBoxSolver.Items.AddRange(new object[] { resources.GetString("comboBoxSolver.Items"), resources.GetString("comboBoxSolver.Items1"), resources.GetString("comboBoxSolver.Items2"), resources.GetString("comboBoxSolver.Items3"), resources.GetString("comboBoxSolver.Items4") });
+            comboBoxSolver.Name = "comboBoxSolver";
+            toolTip.SetToolTip(comboBoxSolver, resources.GetString("comboBoxSolver.ToolTip"));
+            comboBoxSolver.SelectedIndexChanged += ComboBoxSolver_SelectedIndexChanged;
+            // 
+            // numericBoxThread
+            // 
+            numericBoxThread.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThread.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxThread, "numericBoxThread");
+            numericBoxThread.Maximum = 128D;
+            numericBoxThread.Minimum = 1D;
+            numericBoxThread.Name = "numericBoxThread";
+            numericBoxThread.RadianValue = 0.069813170079773182D;
+            numericBoxThread.ShowUpDown = true;
+            numericBoxThread.SmartIncrement = true;
+            numericBoxThread.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
+            numericBoxThread.Value = 4D;
+            numericBoxThread.ValueBoxWidth = 25;
+            numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // flowLayoutPanel6
             // 
@@ -182,8 +219,8 @@
             // 
             // numericBoxMaxNumOfG
             // 
-            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
@@ -193,6 +230,7 @@
             numericBoxMaxNumOfG.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
             numericBoxMaxNumOfG.Value = 64D;
+            numericBoxMaxNumOfG.ValueBoxWidth = 40;
             numericBoxMaxNumOfG.ValueFontSize = 9F;
             numericBoxMaxNumOfG.ValueChanged += numericBoxMaxNumOfG_ValueChanged;
             // 
@@ -209,6 +247,7 @@
             numericBoxAlphaMax.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
             numericBoxAlphaMax.Value = 6D;
+            numericBoxAlphaMax.ValueBoxWidth = 40;
             numericBoxAlphaMax.ValueFontSize = 9F;
             numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
             // 
@@ -233,6 +272,7 @@
             numericBoxDiskResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
             numericBoxDiskResolution.Value = 0.1D;
+            numericBoxDiskResolution.ValueBoxWidth = 45;
             numericBoxDiskResolution.ValueFontSize = 9F;
             numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
             // 
@@ -249,7 +289,7 @@
             label2.BackColor = System.Drawing.Color.Transparent;
             label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             label2.Name = "label2";
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // labelDivisionNumber
             // 
@@ -257,7 +297,7 @@
             labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
             labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             labelDivisionNumber.Name = "labelDivisionNumber";
-            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip"));
             // 
             // flowLayoutPanel2
             // 
@@ -269,8 +309,8 @@
             // 
             // numericBoxWholeThicknessStart
             // 
-            resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
             numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
             numericBoxWholeThicknessStart.Maximum = 1000D;
             numericBoxWholeThicknessStart.Minimum = 1D;
             numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
@@ -280,13 +320,14 @@
             numericBoxWholeThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
             numericBoxWholeThicknessStart.Value = 20D;
+            numericBoxWholeThicknessStart.ValueBoxWidth = 40;
             numericBoxWholeThicknessStart.ValueFontSize = 9F;
             numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessEnd
             // 
-            resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
             numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.Minimum = 1D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
@@ -296,13 +337,14 @@
             numericBoxThicknessEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 200D;
+            numericBoxThicknessEnd.ValueBoxWidth = 40;
             numericBoxThicknessEnd.ValueFontSize = 9F;
             numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessStep
             // 
-            resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
             numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
@@ -312,35 +354,9 @@
             numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 20D;
+            numericBoxThicknessStep.ValueBoxWidth = 40;
             numericBoxThicknessStep.ValueFontSize = 9F;
             numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
-            // 
-            // comboBoxSolver
-            // 
-            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(comboBoxSolver, "comboBoxSolver");
-            comboBoxSolver.FormattingEnabled = true;
-            comboBoxSolver.Items.AddRange(new object[] { resources.GetString("comboBoxSolver.Items"), resources.GetString("comboBoxSolver.Items1"), resources.GetString("comboBoxSolver.Items2"), resources.GetString("comboBoxSolver.Items3"), resources.GetString("comboBoxSolver.Items4") });
-            comboBoxSolver.Name = "comboBoxSolver";
-            toolTip.SetToolTip(comboBoxSolver, resources.GetString("comboBoxSolver.ToolTip"));
-            comboBoxSolver.SelectedIndexChanged += ComboBoxSolver_SelectedIndexChanged;
-            // 
-            // numericBoxThread
-            // 
-            resources.ApplyResources(numericBoxThread, "numericBoxThread");
-            numericBoxThread.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxThread.DecimalPlaces = 0;
-            numericBoxThread.Maximum = 128D;
-            numericBoxThread.Minimum = 1D;
-            numericBoxThread.Name = "numericBoxThread";
-            numericBoxThread.RadianValue = 0.069813170079773182D;
-            numericBoxThread.ShowUpDown = true;
-            numericBoxThread.SmartIncrement = true;
-            numericBoxThread.ThousandsSeparator = true;
-            // toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip1")); // (260531Ch) 旧キー
-            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip")); // (260531Ch)
-            numericBoxThread.Value = 4D;
-            numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // buttonStop
             // 
@@ -351,12 +367,6 @@
             toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip"));
             buttonStop.UseVisualStyleBackColor = false;
             buttonStop.Click += buttonStop_Click;
-            // 
-            // label13
-            // 
-            resources.ApplyResources(label13, "label13");
-            label13.Name = "label13";
-            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // (260531Ch)
             // 
             // groupBoxOutput
             // 
@@ -383,7 +393,7 @@
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // comboBoxGradient
             // 
@@ -399,7 +409,7 @@
             // 
             resources.ApplyResources(label11, "label11");
             label11.Name = "label11";
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
             // 
             // comboBoxScale
             // 
@@ -422,7 +432,7 @@
             // 
             resources.ApplyResources(labelGamma, "labelGamma");
             labelGamma.Name = "labelGamma";
-            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip"));
             // 
             // trackBarGamma
             // 
@@ -446,7 +456,7 @@
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // flowLayoutPanel9
             // 
@@ -461,7 +471,7 @@
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // trackBarIntensityBrightnessMin
             // 
@@ -478,7 +488,7 @@
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // trackBarIntensityBrightnessMax
             // 
@@ -505,7 +515,7 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // radioButtonAllDisks
             // 
@@ -538,20 +548,20 @@
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // textBoxThickness
             // 
             resources.ApplyResources(textBoxThickness, "textBoxThickness");
             textBoxThickness.Name = "textBoxThickness";
             textBoxThickness.ReadOnly = true;
-            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // trackBarOutputThickness
             // 
@@ -589,13 +599,12 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
-            // flowLayoutPanel13
+            // toolTip
             // 
-            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
-            flowLayoutPanel13.Controls.Add(label13);
-            flowLayoutPanel13.Controls.Add(comboBoxSolver);
-            flowLayoutPanel13.Controls.Add(numericBoxThread);
-            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // FormDiffractionSimulatorCBED
             // 
@@ -614,16 +623,20 @@
             VisibleChanged += FormDiffractionSimulatorCBED_VisibleChanged;
             groupBoxInputParameters.ResumeLayout(false);
             groupBoxInputParameters.PerformLayout();
+            flowLayoutPanel13.ResumeLayout(false);
+            flowLayoutPanel13.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             groupBoxOutput.ResumeLayout(false);
             groupBoxOutput.PerformLayout();
             flowLayoutPanel12.ResumeLayout(false);
@@ -644,8 +657,6 @@
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
             statusStrip2.ResumeLayout(false);
             statusStrip2.PerformLayout();
-            flowLayoutPanel13.ResumeLayout(false);
-            flowLayoutPanel13.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

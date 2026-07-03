@@ -87,8 +87,8 @@ eixo de visão (normal à tela) para o vídeo.</value>
 eixo vertical da tela para o vídeo.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Gera o vídeo de rotação com a direção, a velocidade
-e a duração escolhidas, salvando-o como arquivo MP4.</value>
+    <value>Gera o vídeo (rotação e/ou translação) com as
+configurações escolhidas, salvando-o como arquivo MP4.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Inclina a vista para a direita em torno do
@@ -119,13 +119,18 @@ isto aparece apenas na caixa de progresso e já
 não afeta a codificação real.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Duração do vídeo em segundos (a taxa de quadros é de 30 fps).</value>
+    <value>Duração do vídeo em segundos.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Velocidade de rotação da vista em graus por segundo (°/s).</value>
+    <value>Velocidade de rotação da vista em graus por segundo
+(°/s, -360 a 360). Valores negativos invertem o
+sentido da rotação.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Define o eixo de rotação usando um índice de direção cristalina [uvw].</value>
+    <value>Define o eixo de rotação usando um índice de direção
+cristalina [uvw]. Quando a translação está habilitada,
+[uvw] também define a direção da translação
+(o único modo disponível).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Gira em torno da projeção (orientação)
@@ -143,10 +148,45 @@ de inclinação com os botões de seta.</value>
     <value>Define o eixo de rotação como a
 normal de um plano reticular (hkl).</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Insira os índices que definem o eixo de rotação:
 uma direção [uvw] no modo de índice de direção,
 ou um plano reticular (hkl) (rotação em torno
-da sua normal) no modo de plano reticular.</value>
+da sua normal) no modo de plano reticular.
+Quando a translação está habilitada, [uvw]
+também define a direção da translação.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Taxa de quadros do vídeo em quadros por segundo
+(1-120). Valores mais altos produzem um movimento
+mais suave, mas aumentam o número de quadros e o
+tamanho do arquivo.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>Qualidade do codificador MP4 (1-100). Valores mais
+altos usam uma taxa de bits alvo maior e aumentam
+o tamanho do arquivo.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Velocidade com que o centro de projeção se move ao
+longo do índice de direção [uvw], em períodos de rede
+por segundo (periods/s) por unidade de índice
+(escalonada pelos valores dos índices). Valores
+negativos invertem a direção.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Adiciona um quadro extra em t = Duration para que o
+vídeo termine exatamente na orientação/posição final.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Gira a vista durante o vídeo. Desmarque para criar
+um vídeo apenas de translação (pelo menos uma das
+opções, rotação ou translação, deve estar habilitada).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Translada o centro de projeção durante o vídeo.
+A direção é dada pelo índice de direção [uvw]
+(o único modo de direção enquanto esta opção
+está habilitada).</value>
   </data>
 </root>

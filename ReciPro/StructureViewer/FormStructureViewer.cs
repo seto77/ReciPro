@@ -74,6 +74,7 @@ public partial class FormStructureViewer : FormBase
     private ToolStripMenuItem enableDDPToolStripMenuItem = null;
     private bool ddpDeveloperModeEnabled = false;
     private bool updatingTransparencyModeItems = false;
+    //private bool updatingProjWidthBox = false; // (260629Ch) → 260703Cl 削除: 既存の SkipEvent イディオムに一本化
 
     #endregion
 
@@ -188,6 +189,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainZsort.SuspendLayout();
         glControlMainZsort.MouseDown += glControlMain_MouseDown;
         glControlMainZsort.MouseMove += glControlMain_MouseMove;
+        glControlMainZsort.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加: ズーム操作(右ドラッグ/ホイール)で numericBoxProjWidth を同期
 
         // glControlMainDDP
         glControlMainDDP = new GLControlAlpha(GLControlAlpha.FragShaders.DDP) // (260319Ch) DDP を StructureViewer の比較対象へ追加
@@ -210,6 +212,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainDDP.SuspendLayout();
         glControlMainDDP.MouseDown += glControlMain_MouseDown;
         glControlMainDDP.MouseMove += glControlMain_MouseMove;
+        glControlMainDDP.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
         glControlMainDDP.Visible = false;
 
         #region ARM64環境の対応待ちのため、PPLLは一旦コメントアウト (2025/12/10)
@@ -236,6 +239,7 @@ public partial class FormStructureViewer : FormBase
         glControlMainPPLL.SuspendLayout();
         glControlMainPPLL.MouseDown += glControlMain_MouseDown;
         glControlMainPPLL.MouseMove += glControlMain_MouseMove;
+        glControlMainPPLL.ProjWidthChanged += glControlMain_ProjWidthChanged; // 260703Cl 追加
         glControlMainPPLL.Visible = false;
         #endregion
 
@@ -256,7 +260,8 @@ public partial class FormStructureViewer : FormBase
         glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
         glControlLight.ProjWidth = 2.2;
         glControlAxes.ProjWidth = 2.6;
-        glControlMain.ProjWidth = 3f;
+        glControlMain.ProjWidth = 3f; // (260629Ch) numericBoxProjWidth と同期する基準値 (260703Cl set 時の ProjWidthChanged イベントで同期される)
+        //UpdateProjWidthBoxFromProjection(); // (260629Ch) → 260703Cl 削除: ProjWidthChanged イベントに一本化
 
         glControlMainZsort.ToolTip = "Main viewer\r\n" +
             "  Left drag: Rotate objects\r\n" +
@@ -1200,6 +1205,8 @@ public partial class FormStructureViewer : FormBase
             var rot = getRotation(e, glControlMain.ClientSize, lastPosMain, false);
             formMain.Rotate((rot.X, rot.Y, rot.Z), rot.W);
         }
+        //if (e.Button == MouseButtons.Right && IsHandleCreated && !IsDisposed)
+        //    BeginInvoke(new Action(UpdateProjWidthBoxFromProjection)); // (260629Ch) → 260703Cl 削除: ジェスチャ単位の同期をやめ、GLControlAlpha.ProjWidthChanged イベント(状態変化単位)に一本化 (ホイールズームの同期漏れも解消)
         lastPosMain = new Point(e.X, e.Y);
     }
 
@@ -1954,6 +1961,7 @@ public partial class FormStructureViewer : FormBase
         splitContainer1.Panel1.Controls.Add(gNew);
         flowLayoutPanelLegend.SendToBack();
         gNew.Visible = true;
+        //UpdateProjWidthBoxFromProjection(); // (260629Ch) → 260703Cl 削除: swap() が ProjWidth を旧コントロールから複製するため box は既に一致している
 
         checkBoxDepthCueing_CheckedChanged(sender, e);
 
@@ -1976,6 +1984,28 @@ public partial class FormStructureViewer : FormBase
     {
         var x = Math.Pow(51.0, 1.0 / 100.0);
         glControlMain.SetPerspectiveDistance(Math.Pow(x, trackBarPerspective.Value) - 1);
+    }
+
+    private void numericBoxProjWidth_ValueChanged(object sender, EventArgs e) // 260629Ch 追加
+    {
+        //if (SkipEvent || updatingProjWidthBox || glControlMain == null) // (260629Ch) → 260703Cl updatingProjWidthBox を SkipEvent に一本化
+        if (SkipEvent || glControlMain == null)
+            return;
+
+        glControlMain.ProjWidth = Math.Max(numericBoxProjWidth.Value, 0.01); // (260629Ch)
+    }
+
+    //260703Cl 変更前: UpdateProjWidthBoxFromProjection() を MouseMove(右ドラッグ)から BeginInvoke で呼んでいた。
+    //          GLControlAlpha.ProjWidthChanged イベント購読(状態変化単位)に変更し、ホイールズームでも同期されるようにした。
+    private void glControlMain_ProjWidthChanged(object sender, EventArgs e) // 260703Cl 追加
+    {
+        if (!ReferenceEquals(sender, glControlMain))
+            return; // 透明モード切替の swap 中など、非アクティブな GL コントロールからの通知は無視
+
+        var skipEvent = SkipEvent;
+        SkipEvent = true;
+        numericBoxProjWidth.Value = glControlMain.ProjWidth;
+        SkipEvent = skipEvent;
     }
 
     #endregion
@@ -2100,8 +2130,47 @@ public partial class FormStructureViewer : FormBase
     #endregion
 
     #region 投影中心
+    /// <summary>現在の投影中心 (分率座標)。</summary>
+    public (double X, double Y, double Z) ProjectionCenter => (numericBoxProjectionCenterX.Value, numericBoxProjectionCenterY.Value, numericBoxProjectionCenterZ.Value); // (260628Ch) 追加
+
+    /// <summary>投影中心を分率座標で設定する (各成分は [-0.5, 0.5] に折り畳まれる)。ラジオボタンを Custom に切り替え、CellTranslation の更新と GL オブジェクト再構築を伴う。FormMovie の平行移動動画から毎フレーム呼ばれる。</summary>
+    public void SetProjectionCenter(double x, double y, double z) // 260628Ch 追加
+    {
+        x = WrapProjectionCenterValue(x); // (260628Ch)
+        y = WrapProjectionCenterValue(y); // (260628Ch)
+        z = WrapProjectionCenterValue(z); // (260628Ch)
+
+        //260703Cl 変更前: radioButton 3個のイベント脱着 + CellTranslation 写像 (0.5-x) と SetGLObjects の複製を行っていた。
+        //          radioButtonScreenCenter1_CheckedChanged に SkipEvent ガードを追加し、既存の SkipEvent イディオムに一本化。
+        var skipEvent = SkipEvent;
+        SkipEvent = true;
+        radioButtonProjectionCenterCustom.Checked = true;
+        flowLayoutPanelProjectionCenter.Enabled = true;
+        numericBoxProjectionCenterX.Value = x;
+        numericBoxProjectionCenterY.Value = y;
+        numericBoxProjectionCenterZ.Value = z;
+        SkipEvent = skipEvent;
+
+        numericBoxProjectionCenterX_ValueChanged(this, EventArgs.Empty); // CellTranslation への写像 + SetGLObjects はこちらが担う
+    }
+
+    //260703Cl 変更前: NaN/±Inf の個別分岐 + while ループによる折り畳みを自前実装していた
+    //private static double WrapProjectionCenterValue(double value)
+    //{
+    //    if (double.IsNaN(value)) return 0;
+    //    if (double.IsPositiveInfinity(value)) return 0.5;
+    //    if (double.IsNegativeInfinity(value)) return -0.5;
+    //    while (value > 0.5) value -= 1.0;
+    //    while (value < -0.5) value += 1.0;
+    //    return value;
+    //}
+    private static double WrapProjectionCenterValue(double value) =>
+        double.IsFinite(value) ? SymmetryElementsTable.CenterMod1(value) : 0; // 260703Cl 既存の [-0.5, 0.5] 折り畳み helper を再利用
+
     private void radioButtonScreenCenter1_CheckedChanged(object sender, EventArgs e)
     {
+        if (SkipEvent) return; // 260703Cl 追加: SetProjectionCenter からの Checked 変更で発火しないように (兄弟ハンドラと同じ流儀)
+
         flowLayoutPanelProjectionCenter.Enabled = radioButtonProjectionCenterCustom.Checked;
 
         SkipEvent = true;

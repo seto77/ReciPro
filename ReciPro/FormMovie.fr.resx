@@ -87,8 +87,8 @@ l'axe de visée (normale à l'écran) pour la vidéo.</value>
 vertical de l'écran pour la vidéo.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Génère la vidéo de rotation selon la direction, la
-vitesse et la durée choisies, et l'enregistre en MP4.</value>
+    <value>Génère la vidéo (rotation et/ou translation) avec les
+réglages choisis et l'enregistre dans un fichier MP4.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Incline la vue vers la droite autour de l'axe
@@ -119,13 +119,18 @@ elle n'apparaît que dans la boîte de progression et
 n'a plus aucun effet sur l'encodage réel.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Durée de la vidéo en secondes (la fréquence d'images est de 30 fps).</value>
+    <value>Durée de la vidéo en secondes.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Vitesse de rotation de la vue en degrés par seconde (°/s).</value>
+    <value>Vitesse de rotation de la vue en degrés par seconde
+(°/s, -360 à 360). Les valeurs négatives inversent le
+sens de rotation.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Définit l'axe de rotation à l'aide d'un indice de direction cristalline [uvw].</value>
+    <value>Définit l'axe de rotation à l'aide d'un indice de
+direction cristalline [uvw]. Lorsque Translation est
+activée, [uvw] donne aussi la direction de translation
+(seul mode disponible).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Fait pivoter autour de la projection (orientation)
@@ -143,10 +148,46 @@ d'inclinaison avec les boutons fléchés.</value>
     <value>Définit l'axe de rotation comme la
 normale à un plan réticulaire (hkl).</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Saisissez les indices qui définissent l'axe de
 rotation : une direction [uvw] en mode Indice de
 direction, ou un plan réticulaire (hkl) (rotation
-autour de sa normale) en mode Plan réticulaire.</value>
+autour de sa normale) en mode Plan réticulaire.
+Lorsque Translation est activée, [uvw] définit
+aussi la direction de translation.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Fréquence d'images de la vidéo en images par seconde
+(1-120). Des valeurs plus élevées donnent un mouvement
+plus fluide mais augmentent le nombre d'images et la
+taille du fichier.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>Qualité de l'encodeur MP4 (1-100). Des valeurs plus
+élevées utilisent un débit cible plus élevé et
+augmentent la taille du fichier.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Vitesse à laquelle le centre de projection se déplace
+le long de l'indice de direction [uvw], en périodes
+du réseau par seconde (periods/s) par unité d'indice
+(proportionnelle aux valeurs des indices). Les
+valeurs négatives inversent le sens.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Ajoute une image supplémentaire à t = Duration
+afin que la vidéo se termine exactement à
+l'orientation/position finale.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Fait pivoter la vue pendant la vidéo. Décochez pour
+créer une vidéo de translation seule (au moins l'une
+des options Rotation et Translation doit être activée).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Translate le centre de projection pendant la vidéo.
+La direction est donnée par l'indice de direction
+[uvw] (seul mode de direction disponible lorsque
+cette option est activée).</value>
   </data>
 </root>

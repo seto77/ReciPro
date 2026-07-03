@@ -87,8 +87,8 @@
 оси экрана для видеоролика.</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Создать видеоролик вращения с выбранными направлением,
-скоростью и длительностью и сохранить его в файл MP4.</value>
+    <value>Создать видеоролик (вращение и/или трансляция)
+с выбранными настройками и сохранить его в файл MP4.</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Наклон вида вправо вокруг вертикальной
@@ -119,13 +119,18 @@
 влияет на фактическое кодирование.</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Длительность видеоролика в секундах (частота кадров — 30 fps).</value>
+    <value>Длительность видеоролика в секундах.</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Скорость вращения вида в градусах в секунду (°/s).</value>
+    <value>Скорость вращения вида в градусах в секунду
+(°/s, от -360 до 360). Отрицательные значения
+меняют направление вращения на обратное.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Задать ось вращения с помощью индекса кристаллографического направления [uvw].</value>
+    <value>Задать ось вращения с помощью индекса
+кристаллографического направления [uvw].
+Если включена Translation, [uvw] задаёт также
+направление трансляции (единственный доступный режим).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Вращение относительно отображаемой в данный момент
@@ -143,10 +148,45 @@
     <value>Задать ось вращения как нормаль
 к плоскости решётки (hkl).</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Введите индексы, задающие ось вращения: направление
 [uvw] в режиме индексов направления или плоскость
-решётки (hkl) (вращение вокруг её нормали)
-в режиме плоскости решётки.</value>
+решётки (hkl) (вращение вокруг её нормали) в режиме
+плоскости решётки. Если включена Translation, [uvw]
+задаёт также направление трансляции.</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Частота кадров видеоролика в кадрах в секунду (1-120).
+Большие значения делают движение более плавным,
+но увеличивают число кадров и размер файла.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>Качество кодирования MP4 (1-100). Большие значения
+используют более высокий целевой битрейт
+и увеличивают размер файла.</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Скорость перемещения центра проекции вдоль
+направления [uvw] в периодах решётки в секунду
+(periods/s) на единицу индекса (масштабируется
+значениями индексов). Отрицательные значения
+меняют направление на обратное.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Добавить один дополнительный кадр при t = Duration,
+чтобы видеоролик заканчивался точно в конечной
+ориентации/позиции.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Вращать вид во время видеоролика. Снимите флажок,
+чтобы создать видеоролик только с трансляцией
+(должен быть включён хотя бы один из режимов
+Rotation и Translation).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Перемещать центр проекции во время видеоролика.
+Направление задаётся индексом направления [uvw]
+(единственный доступный режим направления,
+пока эта опция включена).</value>
   </data>
 </root>

@@ -881,4 +881,9 @@
 지정합니다. 지정한 점이 화면의
 중심에 배치됩니다.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>투영된 메인 뷰의 너비를 nm 단위로 설정합니다.
+값이 작을수록 확대됩니다. 뷰에서의 마우스
+오른쪽 드래그/휠 확대·축소와 동기화됩니다.</value>
+  </data>
 </root>

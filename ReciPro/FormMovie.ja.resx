@@ -134,8 +134,8 @@
     <value>動画で垂直な画面軸のまわりに左向きへ傾けながら回転させます。</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>設定した方向・速度・長さで回転動画を
-生成し、MP4 ファイルに保存します。</value>
+    <value>設定した内容で動画 (回転・平行移動) を生成し、
+MP4 ファイルに保存します。</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>動画で垂直な画面軸のまわりに右向き
@@ -157,20 +157,24 @@
 現行の Media Foundation エンコーダでは進捗表示に
 使われるのみで、実際のエンコードには影響しません。</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>回転軸を定める指数を入力します。方向指数モード
 では方向 [uvw]、格子面モードでは格子面 (hkl)
-(その法線まわりに回転) として解釈されます。</value>
+(その法線まわりに回転) として解釈されます。
+Translation が ON のときは [uvw] が平行移動の
+方向も定めます。</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>生成する動画の長さ (秒) を設定し
-ます (フレームレートは 30 fps)。</value>
+    <value>生成する動画の長さ (秒) を設定します。</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>視点の回転速度を度毎秒 (°/s) で設定します。</value>
+    <value>視点の回転速度を度毎秒 (°/s、-360〜360) で
+指定します。負の値では逆回転になります。</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>回転軸を結晶の方向指数 [uvw] で指定します。</value>
+    <value>回転軸を結晶の方向指数 [uvw] で指定します。
+Translation が ON のときは [uvw] が平行移動の
+方向も定めます (唯一選べるモード)。</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>現在表示中の投影方位を基準に回転しま
@@ -190,5 +194,36 @@
     <value>エンコード速度プリセット (ultrafast…veryslow)。注:
 現行の Media Foundation エンコーダでは進捗表示に
 使われるのみで、実際のエンコードには影響しません。</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>動画のフレームレート (1-120 fps)。大きいほど
+滑らかになりますが、フレーム数とファイル
+サイズが増えます。</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>MP4 エンコード品質 (1-100)。大きいほど目標
+ビットレートが高くなり、高品質で大きな
+ファイルになります。</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>投影中心を方向指数 [uvw] に沿って動かす速さを
+1 秒あたりの格子周期数 (periods/s、指数 1 あたり。
+指数の値に比例) で指定します。負の値では
+逆方向に動きます。</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>t = Duration の最終姿勢を末尾フレームとして
+1 枚追加し、動画が終了姿勢・位置で終わる
+ようにします。</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>動画中に視点を回転させます。オフにすると
+平行移動のみの動画になります (Rotation と
+Translation の少なくとも一方が必要)。</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>動画中に投影中心を平行移動させます。移動方向は
+方向指数 [uvw] で指定します (ON の間は他の
+方向モードは選べません)。</value>
   </data>
 </root>

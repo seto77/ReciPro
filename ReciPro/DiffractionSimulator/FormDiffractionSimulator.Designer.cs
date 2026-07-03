@@ -754,7 +754,7 @@
             numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip1"));
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip"));
             numericBoxKikuchiThresholdOfLength.Value = 10D;
             numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
@@ -1001,14 +1001,15 @@
             colorControl3D_SpotsNear.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_SpotsNear.Color = System.Drawing.Color.FromArgb(255, 255, 0);
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
-            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
+            //toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1")); // 260703Cl 変更前: EN resx 内の日本語文言 (.ToolTip1) を参照し英語 UI で日本語チップが出ていた
+            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip")); // 260703Cl 正キーへ統一
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBox3D_SpotRadius
             // 
-            resources.ApplyResources(numericBox3D_SpotRadius, "numericBox3D_SpotRadius");
             numericBox3D_SpotRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBox3D_SpotRadius.DecimalPlaces = 4;
+            resources.ApplyResources(numericBox3D_SpotRadius, "numericBox3D_SpotRadius");
             numericBox3D_SpotRadius.Maximum = 1D;
             numericBox3D_SpotRadius.Minimum = 0.01D;
             numericBox3D_SpotRadius.Name = "numericBox3D_SpotRadius";
@@ -1017,7 +1018,7 @@
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
             numericBox3D_SpotRadius.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip1"));
+            toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip"));
             numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
             numericBox3D_SpotRadius.Value = 0.2D;
             numericBox3D_SpotRadius.ValueFontSize = 9F;
@@ -1078,9 +1079,9 @@
             // 
             // numericBoxReciprocalThreshold
             // 
-            resources.ApplyResources(numericBoxReciprocalThreshold, "numericBoxReciprocalThreshold");
             numericBoxReciprocalThreshold.BackColor = System.Drawing.SystemColors.Control;
             numericBoxReciprocalThreshold.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxReciprocalThreshold, "numericBoxReciprocalThreshold");
             numericBoxReciprocalThreshold.Maximum = 100D;
             numericBoxReciprocalThreshold.Minimum = 0D;
             numericBoxReciprocalThreshold.Name = "numericBoxReciprocalThreshold";
@@ -1088,7 +1089,7 @@
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
             numericBoxReciprocalThreshold.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip1"));
+            toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip"));
             numericBoxReciprocalThreshold.Value = 1D;
             numericBoxReciprocalThreshold.ValueFontSize = 9F;
             numericBoxReciprocalThreshold.ValueChanged += numericBoxReciprocalThreshold_ValueChanged;
@@ -1211,8 +1212,8 @@
             // 
             // numericBoxStep
             // 
-            resources.ApplyResources(numericBoxStep, "numericBoxStep");
             numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxStep, "numericBoxStep");
             numericBoxStep.Maximum = 360D;
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
@@ -1220,7 +1221,7 @@
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
             numericBoxStep.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip1"));
+            toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
             numericBoxStep.Value = 10D;
             numericBoxStep.ValueFontSize = 9F;
             // 
@@ -1290,7 +1291,8 @@
             colorControl3D_lText.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_lText.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControl3D_lText.Name = "colorControl3D_lText";
-            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
+            //toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1")); // 260703Cl 変更前: EN resx 内の日本語文言 (.ToolTip1) を参照し英語 UI で日本語チップが出ていた
+            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip")); // 260703Cl 正キーへ統一
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_DirectionGuide
@@ -1528,7 +1530,6 @@
             resources.ApplyResources(sizeControl1, "sizeControl1");
             sizeControl1.Maximum = 2000;
             sizeControl1.Name = "sizeControl1";
-            sizeControl1.Value = new System.Drawing.Size(1, 1);
             sizeControl1.ValueChanged += sizeControl1_ValueChanged;
             // 
             // flowLayoutPanelResolutionUnit
@@ -1541,9 +1542,9 @@
             // 
             // numericBoxResolution
             // 
-            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.DecimalPlaces = 6;
+            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.Maximum = 10D;
             numericBoxResolution.Minimum = 1E-05D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -1553,6 +1554,7 @@
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.08D;
+            numericBoxResolution.ValueBoxWidth = 60;
             numericBoxResolution.ValueChanged += numericUpDownResolution_ValueChanged;
             // 
             // radioButtonResoUnitMilliMeter
@@ -1642,6 +1644,7 @@
             numericBoxCameraLength2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
             numericBoxCameraLength2.Value = 1000D;
+            numericBoxCameraLength2.ValueBoxWidth = 55;
             numericBoxCameraLength2.ValueChanged += numericBoxCamaraLength2_ValueChanged;
             // 
             // buttonDetailedGeometry
@@ -1664,8 +1667,8 @@
             // 
             // numericBoxDev
             // 
-            resources.ApplyResources(numericBoxDev, "numericBoxDev");
             numericBoxDev.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxDev, "numericBoxDev");
             numericBoxDev.Name = "numericBoxDev";
             numericBoxDev.RadianValue = 0.023911010752322315D;
             numericBoxDev.SkipEventDuringInput = false;
@@ -1683,8 +1686,8 @@
             // 
             // numericBoxAcc
             // 
-            resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
             numericBoxAcc.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
             numericBoxAcc.Name = "numericBoxAcc";
             numericBoxAcc.RadianValue = 216.42082724729684D;
             numericBoxAcc.SkipEventDuringInput = false;
@@ -1997,7 +2000,7 @@
             checkBoxAnomalousDispersion.Checked = true;
             checkBoxAnomalousDispersion.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxAnomalousDispersion.Name = "checkBoxAnomalousDispersion";
-            toolTip.SetToolTip(checkBoxAnomalousDispersion, resources.GetString("checkBoxAnomalousDispersion.ToolTip"));// 260606Cl ツールチップ配線
+            toolTip.SetToolTip(checkBoxAnomalousDispersion, resources.GetString("checkBoxAnomalousDispersion.ToolTip"));
             checkBoxAnomalousDispersion.UseVisualStyleBackColor = true;
             checkBoxAnomalousDispersion.CheckedChanged += checkBoxAnomalousDispersion_CheckedChanged;
             // 
@@ -2053,8 +2056,8 @@
             // 
             // numericBoxPED_Semiangle
             // 
-            resources.ApplyResources(numericBoxPED_Semiangle, "numericBoxPED_Semiangle");
             numericBoxPED_Semiangle.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxPED_Semiangle, "numericBoxPED_Semiangle");
             numericBoxPED_Semiangle.Maximum = 500D;
             numericBoxPED_Semiangle.Minimum = 0.1D;
             numericBoxPED_Semiangle.Name = "numericBoxPED_Semiangle";
@@ -2068,9 +2071,9 @@
             // 
             // numericBoxPED_Step
             // 
-            resources.ApplyResources(numericBoxPED_Step, "numericBoxPED_Step");
             numericBoxPED_Step.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPED_Step.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPED_Step, "numericBoxPED_Step");
             numericBoxPED_Step.Maximum = 1080D;
             numericBoxPED_Step.Minimum = 2D;
             numericBoxPED_Step.Name = "numericBoxPED_Step";
@@ -2100,8 +2103,8 @@
             // 
             // numericBoxNumOfBlochWave
             // 
-            resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
             numericBoxNumOfBlochWave.Maximum = 1000D;
             numericBoxNumOfBlochWave.Minimum = 8D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
@@ -2115,9 +2118,9 @@
             // 
             // numericBoxThickness
             // 
-            resources.ApplyResources(numericBoxThickness, "numericBoxThickness");
             numericBoxThickness.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThickness.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxThickness, "numericBoxThickness");
             numericBoxThickness.Maximum = 10000D;
             numericBoxThickness.Minimum = 0.01D;
             numericBoxThickness.Name = "numericBoxThickness";
@@ -2205,9 +2208,9 @@
             // 
             // numericBoxSpotRadius
             // 
-            resources.ApplyResources(numericBoxSpotRadius, "numericBoxSpotRadius");
             numericBoxSpotRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSpotRadius.DecimalPlaces = 4;
+            resources.ApplyResources(numericBoxSpotRadius, "numericBoxSpotRadius");
             numericBoxSpotRadius.Maximum = 1D;
             numericBoxSpotRadius.Minimum = 0.01D;
             numericBoxSpotRadius.Name = "numericBoxSpotRadius";

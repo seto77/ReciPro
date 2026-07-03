@@ -107,11 +107,11 @@
             numericBoxCellTranslationA = new NumericBox();
             checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
             checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
-            numericBoxSubCellB = new Crystallography.Controls.NumericBox();
+            numericBoxSubCellB = new NumericBox();
             label10 = new System.Windows.Forms.Label();
             checkBoxCellShowPlane = new System.Windows.Forms.CheckBox();
-            numericBoxSubCellC = new Crystallography.Controls.NumericBox();
-            numericBoxSubCellA = new Crystallography.Controls.NumericBox();
+            numericBoxSubCellC = new NumericBox();
+            numericBoxSubCellA = new NumericBox();
             label17 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
@@ -127,14 +127,15 @@
             labelOpenGLversion = new System.Windows.Forms.Label();
             tabPageProjection = new System.Windows.Forms.TabPage();
             groupBoxProjectionCenter = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonProjectionCenter1 = new System.Windows.Forms.RadioButton();
+            radioButtonProjectionCenter2 = new System.Windows.Forms.RadioButton();
+            radioButtonProjectionCenterCustom = new System.Windows.Forms.RadioButton();
             flowLayoutPanelProjectionCenter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxProjectionCenterX = new NumericBox();
             numericBoxProjectionCenterY = new NumericBox();
             numericBoxProjectionCenterZ = new NumericBox();
             label9 = new System.Windows.Forms.Label();
-            radioButtonProjectionCenterCustom = new System.Windows.Forms.RadioButton();
-            radioButtonProjectionCenter1 = new System.Windows.Forms.RadioButton();
-            radioButtonProjectionCenter2 = new System.Windows.Forms.RadioButton();
             groupBoxProjection = new System.Windows.Forms.GroupBox();
             comboBoxProjectionMode = new System.Windows.Forms.ComboBox();
             trackBarPerspective = new System.Windows.Forms.TrackBar();
@@ -216,10 +217,11 @@
             cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            sizeControl1 = new SizeControl();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             panelTop = new System.Windows.Forms.Panel();
-            sizeControl1 = new SizeControl();
+            numericBoxProjWidth = new NumericBox(); // (260629Ch)
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabelInitialization = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelRendering = new System.Windows.Forms.ToolStripStatusLabel();
@@ -252,6 +254,7 @@
             flowLayoutPanelGraphicsInfo.SuspendLayout();
             tabPageProjection.SuspendLayout();
             groupBoxProjectionCenter.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             flowLayoutPanelProjectionCenter.SuspendLayout();
             groupBoxProjection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPerspective).BeginInit();
@@ -469,9 +472,9 @@
             // 
             // numericBoxCRange
             // 
-            resources.ApplyResources(numericBoxCRange, "numericBoxCRange");
             numericBoxCRange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCRange.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCRange, "numericBoxCRange");
             numericBoxCRange.Maximum = 10D;
             numericBoxCRange.Minimum = 0D;
             numericBoxCRange.Name = "numericBoxCRange";
@@ -479,16 +482,16 @@
             numericBoxCRange.ShowFraction = true;
             numericBoxCRange.ShowUpDown = true;
             numericBoxCRange.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCRange, resources.GetString("numericBoxCRange.ToolTip1"));
+            toolTip.SetToolTip(numericBoxCRange, resources.GetString("numericBoxCRange.ToolTip"));
             numericBoxCRange.UpDown_Increment = 0.25D;
             numericBoxCRange.Value = 0.5D;
             numericBoxCRange.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // numericBoxBRange
             // 
-            resources.ApplyResources(numericBoxBRange, "numericBoxBRange");
             numericBoxBRange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBRange.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxBRange, "numericBoxBRange");
             numericBoxBRange.Maximum = 10D;
             numericBoxBRange.Minimum = 0D;
             numericBoxBRange.Name = "numericBoxBRange";
@@ -496,16 +499,16 @@
             numericBoxBRange.ShowFraction = true;
             numericBoxBRange.ShowUpDown = true;
             numericBoxBRange.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxBRange, resources.GetString("numericBoxBRange.ToolTip1"));
+            toolTip.SetToolTip(numericBoxBRange, resources.GetString("numericBoxBRange.ToolTip"));
             numericBoxBRange.UpDown_Increment = 0.25D;
             numericBoxBRange.Value = 0.5D;
             numericBoxBRange.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // numericBoxARange
             // 
-            resources.ApplyResources(numericBoxARange, "numericBoxARange");
             numericBoxARange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxARange.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxARange, "numericBoxARange");
             numericBoxARange.Maximum = 10D;
             numericBoxARange.Minimum = 0D;
             numericBoxARange.Name = "numericBoxARange";
@@ -513,79 +516,79 @@
             numericBoxARange.ShowFraction = true;
             numericBoxARange.ShowUpDown = true;
             numericBoxARange.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxARange, resources.GetString("numericBoxARange.ToolTip1"));
+            toolTip.SetToolTip(numericBoxARange, resources.GetString("numericBoxARange.ToolTip"));
             numericBoxARange.UpDown_Increment = 0.25D;
             numericBoxARange.Value = 0.5D;
             numericBoxARange.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // numericBoxCCenter
             // 
-            resources.ApplyResources(numericBoxCCenter, "numericBoxCCenter");
             numericBoxCCenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCCenter.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCCenter, "numericBoxCCenter");
             numericBoxCCenter.Maximum = 10D;
             numericBoxCCenter.Minimum = 0D;
             numericBoxCCenter.Name = "numericBoxCCenter";
             numericBoxCCenter.ShowFraction = true;
             numericBoxCCenter.ShowUpDown = true;
             numericBoxCCenter.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCCenter, resources.GetString("numericBoxCCenter.ToolTip1"));
+            toolTip.SetToolTip(numericBoxCCenter, resources.GetString("numericBoxCCenter.ToolTip"));
             numericBoxCCenter.UpDown_Increment = 0.25D;
             numericBoxCCenter.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // numericBoxBCenter
             // 
-            resources.ApplyResources(numericBoxBCenter, "numericBoxBCenter");
             numericBoxBCenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBCenter.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxBCenter, "numericBoxBCenter");
             numericBoxBCenter.Maximum = 10D;
             numericBoxBCenter.Minimum = 0D;
             numericBoxBCenter.Name = "numericBoxBCenter";
             numericBoxBCenter.ShowFraction = true;
             numericBoxBCenter.ShowUpDown = true;
             numericBoxBCenter.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxBCenter, resources.GetString("numericBoxBCenter.ToolTip1"));
+            toolTip.SetToolTip(numericBoxBCenter, resources.GetString("numericBoxBCenter.ToolTip"));
             numericBoxBCenter.UpDown_Increment = 0.25D;
             numericBoxBCenter.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // numericBoxACenter
             // 
-            resources.ApplyResources(numericBoxACenter, "numericBoxACenter");
             numericBoxACenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxACenter.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxACenter, "numericBoxACenter");
             numericBoxACenter.Maximum = 10D;
             numericBoxACenter.Minimum = 0D;
             numericBoxACenter.Name = "numericBoxACenter";
             numericBoxACenter.ShowFraction = true;
             numericBoxACenter.ShowUpDown = true;
             numericBoxACenter.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxACenter, resources.GetString("numericBoxACenter.ToolTip1"));
+            toolTip.SetToolTip(numericBoxACenter, resources.GetString("numericBoxACenter.ToolTip"));
             numericBoxACenter.UpDown_Increment = 0.25D;
             numericBoxACenter.ValueChanged += numericBoxCMax_ValueChanged;
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // tabPageBoundPlane
             // 
@@ -612,9 +615,9 @@
             // 
             // numericBoxBoundPlanesOpacity
             // 
-            resources.ApplyResources(numericBoxBoundPlanesOpacity, "numericBoxBoundPlanesOpacity");
             numericBoxBoundPlanesOpacity.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBoundPlanesOpacity.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxBoundPlanesOpacity, "numericBoxBoundPlanesOpacity");
             numericBoxBoundPlanesOpacity.Maximum = 1D;
             numericBoxBoundPlanesOpacity.Minimum = 0D;
             numericBoxBoundPlanesOpacity.Name = "numericBoxBoundPlanesOpacity";
@@ -794,9 +797,9 @@
             // 
             // numericBoxCellPlaneAlpha
             // 
-            resources.ApplyResources(numericBoxCellPlaneAlpha, "numericBoxCellPlaneAlpha");
             numericBoxCellPlaneAlpha.BackColor = System.Drawing.Color.Transparent;
             numericBoxCellPlaneAlpha.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxCellPlaneAlpha, "numericBoxCellPlaneAlpha");
             numericBoxCellPlaneAlpha.Maximum = 1D;
             numericBoxCellPlaneAlpha.Minimum = 0D;
             numericBoxCellPlaneAlpha.Name = "numericBoxCellPlaneAlpha";
@@ -883,8 +886,8 @@
             // label8
             // 
             resources.ApplyResources(label8, "label8");
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // trackBarCellEdgeWidth
             // 
@@ -899,43 +902,43 @@
             // 
             // numericBoxCellTranslationC
             // 
-            resources.ApplyResources(numericBoxCellTranslationC, "numericBoxCellTranslationC");
             numericBoxCellTranslationC.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationC.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCellTranslationC, "numericBoxCellTranslationC");
             numericBoxCellTranslationC.Maximum = 10D;
             numericBoxCellTranslationC.Minimum = -10D;
             numericBoxCellTranslationC.Name = "numericBoxCellTranslationC";
             numericBoxCellTranslationC.ShowUpDown = true;
             numericBoxCellTranslationC.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTranslationC, resources.GetString("numericBoxCellTranslationC.ToolTip1"));
+            toolTip.SetToolTip(numericBoxCellTranslationC, resources.GetString("numericBoxCellTranslationC.ToolTip"));
             numericBoxCellTranslationC.UpDown_Increment = 0.1D;
             numericBoxCellTranslationC.ValueChanged += unitCell_PropertyChanged;
             // 
             // numericBoxCellTranslationB
             // 
-            resources.ApplyResources(numericBoxCellTranslationB, "numericBoxCellTranslationB");
             numericBoxCellTranslationB.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationB.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCellTranslationB, "numericBoxCellTranslationB");
             numericBoxCellTranslationB.Maximum = 10D;
             numericBoxCellTranslationB.Minimum = -10D;
             numericBoxCellTranslationB.Name = "numericBoxCellTranslationB";
             numericBoxCellTranslationB.ShowUpDown = true;
             numericBoxCellTranslationB.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTranslationB, resources.GetString("numericBoxCellTranslationB.ToolTip1"));
+            toolTip.SetToolTip(numericBoxCellTranslationB, resources.GetString("numericBoxCellTranslationB.ToolTip"));
             numericBoxCellTranslationB.UpDown_Increment = 0.1D;
             numericBoxCellTranslationB.ValueChanged += unitCell_PropertyChanged;
             // 
             // numericBoxCellTranslationA
             // 
-            resources.ApplyResources(numericBoxCellTranslationA, "numericBoxCellTranslationA");
             numericBoxCellTranslationA.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationA.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCellTranslationA, "numericBoxCellTranslationA");
             numericBoxCellTranslationA.Maximum = 10D;
             numericBoxCellTranslationA.Minimum = -10D;
             numericBoxCellTranslationA.Name = "numericBoxCellTranslationA";
             numericBoxCellTranslationA.ShowUpDown = true;
             numericBoxCellTranslationA.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTranslationA, resources.GetString("numericBoxCellTranslationA.ToolTip1"));
+            toolTip.SetToolTip(numericBoxCellTranslationA, resources.GetString("numericBoxCellTranslationA.ToolTip"));
             numericBoxCellTranslationA.UpDown_Increment = 0.1D;
             numericBoxCellTranslationA.ValueChanged += unitCell_PropertyChanged;
             // 
@@ -960,21 +963,23 @@
             // 
             // numericBoxSubCellB
             // 
+            numericBoxSubCellB.BackColor = System.Drawing.Color.Transparent;
+            numericBoxSubCellB.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxSubCellB, "numericBoxSubCellB");
-            toolTip.SetToolTip(numericBoxSubCellB, resources.GetString("numericBoxSubCellB.ToolTip")); // 260531Cl
             numericBoxSubCellB.Maximum = 10D;
             numericBoxSubCellB.Minimum = 1D;
             numericBoxSubCellB.Name = "numericBoxSubCellB";
-            numericBoxSubCellB.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellB.RadianValue = 0.017453292519943295D;
             numericBoxSubCellB.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxSubCellB, resources.GetString("numericBoxSubCellB.ToolTip"));
             numericBoxSubCellB.Value = 1D;
             numericBoxSubCellB.ValueChanged += unitCell_PropertyChanged;
             // 
             // label10
             // 
             resources.ApplyResources(label10, "label10");
-            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Name = "label10";
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
             // 
             // checkBoxCellShowPlane
             // 
@@ -986,45 +991,49 @@
             // 
             // numericBoxSubCellC
             // 
+            numericBoxSubCellC.BackColor = System.Drawing.Color.Transparent;
+            numericBoxSubCellC.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxSubCellC, "numericBoxSubCellC");
-            toolTip.SetToolTip(numericBoxSubCellC, resources.GetString("numericBoxSubCellC.ToolTip")); // 260531Cl
             numericBoxSubCellC.Maximum = 10D;
             numericBoxSubCellC.Minimum = 1D;
             numericBoxSubCellC.Name = "numericBoxSubCellC";
-            numericBoxSubCellC.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellC.RadianValue = 0.017453292519943295D;
             numericBoxSubCellC.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxSubCellC, resources.GetString("numericBoxSubCellC.ToolTip"));
             numericBoxSubCellC.Value = 1D;
             numericBoxSubCellC.ValueChanged += unitCell_PropertyChanged;
             // 
             // numericBoxSubCellA
             // 
+            numericBoxSubCellA.BackColor = System.Drawing.Color.Transparent;
+            numericBoxSubCellA.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxSubCellA, "numericBoxSubCellA");
-            toolTip.SetToolTip(numericBoxSubCellA, resources.GetString("numericBoxSubCellA.ToolTip")); // 260531Cl
             numericBoxSubCellA.Maximum = 10D;
             numericBoxSubCellA.Minimum = 1D;
             numericBoxSubCellA.Name = "numericBoxSubCellA";
-            numericBoxSubCellA.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellA.RadianValue = 0.017453292519943295D;
             numericBoxSubCellA.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxSubCellA, resources.GetString("numericBoxSubCellA.ToolTip"));
             numericBoxSubCellA.Value = 1D;
             numericBoxSubCellA.ValueChanged += unitCell_PropertyChanged;
             // 
             // label17
             // 
             resources.ApplyResources(label17, "label17");
-            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip")); // 260531Cl
             label17.Name = "label17";
+            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip"));
             // 
             // label16
             // 
             resources.ApplyResources(label16, "label16");
-            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Name = "label16";
+            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip"));
             // 
             // label12
             // 
             resources.ApplyResources(label12, "label12");
-            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
             label12.Name = "label12";
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip"));
             // 
             // tabPageLatticePlane
             // 
@@ -1042,8 +1051,8 @@
             // 
             // numericBoxLatticePlaneOpacity
             // 
-            resources.ApplyResources(numericBoxLatticePlaneOpacity, "numericBoxLatticePlaneOpacity");
             numericBoxLatticePlaneOpacity.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxLatticePlaneOpacity, "numericBoxLatticePlaneOpacity");
             numericBoxLatticePlaneOpacity.Maximum = 1D;
             numericBoxLatticePlaneOpacity.Minimum = 0D;
             numericBoxLatticePlaneOpacity.Name = "numericBoxLatticePlaneOpacity";
@@ -1115,84 +1124,20 @@
             // 
             // groupBoxProjectionCenter
             // 
-            groupBoxProjectionCenter.Controls.Add(flowLayoutPanelProjectionCenter);
-            groupBoxProjectionCenter.Controls.Add(label9);
-            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenterCustom);
-            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenter1);
-            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenter2);
             resources.ApplyResources(groupBoxProjectionCenter, "groupBoxProjectionCenter");
+            groupBoxProjectionCenter.Controls.Add(flowLayoutPanel1);
+            groupBoxProjectionCenter.Controls.Add(label9);
             groupBoxProjectionCenter.Name = "groupBoxProjectionCenter";
             groupBoxProjectionCenter.TabStop = false;
             // 
-            // flowLayoutPanelProjectionCenter
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(flowLayoutPanelProjectionCenter, "flowLayoutPanelProjectionCenter");
-            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterX);
-            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterY);
-            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterZ);
-            flowLayoutPanelProjectionCenter.Name = "flowLayoutPanelProjectionCenter";
-            // 
-            // numericBoxProjectionCenterX
-            // 
-            resources.ApplyResources(numericBoxProjectionCenterX, "numericBoxProjectionCenterX");
-            numericBoxProjectionCenterX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterX.DecimalPlaces = 2;
-            numericBoxProjectionCenterX.Maximum = 1D;
-            numericBoxProjectionCenterX.Minimum = -1D;
-            numericBoxProjectionCenterX.Name = "numericBoxProjectionCenterX";
-            numericBoxProjectionCenterX.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterX.ShowUpDown = true;
-            numericBoxProjectionCenterX.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxProjectionCenterX, resources.GetString("numericBoxProjectionCenterX.ToolTip"));
-            numericBoxProjectionCenterX.UpDown_Increment = 0.1D;
-            numericBoxProjectionCenterX.Value = 0.5D;
-            numericBoxProjectionCenterX.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
-            // 
-            // numericBoxProjectionCenterY
-            // 
-            resources.ApplyResources(numericBoxProjectionCenterY, "numericBoxProjectionCenterY");
-            numericBoxProjectionCenterY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterY.DecimalPlaces = 2;
-            numericBoxProjectionCenterY.Maximum = 1D;
-            numericBoxProjectionCenterY.Minimum = -1D;
-            numericBoxProjectionCenterY.Name = "numericBoxProjectionCenterY";
-            numericBoxProjectionCenterY.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterY.ShowUpDown = true;
-            numericBoxProjectionCenterY.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxProjectionCenterY, resources.GetString("numericBoxProjectionCenterY.ToolTip"));
-            numericBoxProjectionCenterY.UpDown_Increment = 0.1D;
-            numericBoxProjectionCenterY.Value = 0.5D;
-            numericBoxProjectionCenterY.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
-            // 
-            // numericBoxProjectionCenterZ
-            // 
-            resources.ApplyResources(numericBoxProjectionCenterZ, "numericBoxProjectionCenterZ");
-            numericBoxProjectionCenterZ.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterZ.DecimalPlaces = 2;
-            numericBoxProjectionCenterZ.Maximum = 1D;
-            numericBoxProjectionCenterZ.Minimum = -1D;
-            numericBoxProjectionCenterZ.Name = "numericBoxProjectionCenterZ";
-            numericBoxProjectionCenterZ.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterZ.ShowUpDown = true;
-            numericBoxProjectionCenterZ.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxProjectionCenterZ, resources.GetString("numericBoxProjectionCenterZ.ToolTip"));
-            numericBoxProjectionCenterZ.UpDown_Increment = 0.1D;
-            numericBoxProjectionCenterZ.Value = 0.5D;
-            numericBoxProjectionCenterZ.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
-            // 
-            // label9
-            // 
-            resources.ApplyResources(label9, "label9");
-            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
-            label9.Name = "label9";
-            // 
-            // radioButtonProjectionCenterCustom
-            // 
-            resources.ApplyResources(radioButtonProjectionCenterCustom, "radioButtonProjectionCenterCustom");
-            radioButtonProjectionCenterCustom.Name = "radioButtonProjectionCenterCustom";
-            toolTip.SetToolTip(radioButtonProjectionCenterCustom, resources.GetString("radioButtonProjectionCenterCustom.ToolTip"));
-            radioButtonProjectionCenterCustom.UseVisualStyleBackColor = true;
-            radioButtonProjectionCenterCustom.CheckedChanged += radioButtonScreenCenter1_CheckedChanged;
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(radioButtonProjectionCenter1);
+            flowLayoutPanel1.Controls.Add(radioButtonProjectionCenter2);
+            flowLayoutPanel1.Controls.Add(radioButtonProjectionCenterCustom);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanelProjectionCenter);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // radioButtonProjectionCenter1
             // 
@@ -1211,6 +1156,76 @@
             toolTip.SetToolTip(radioButtonProjectionCenter2, resources.GetString("radioButtonProjectionCenter2.ToolTip"));
             radioButtonProjectionCenter2.UseVisualStyleBackColor = true;
             radioButtonProjectionCenter2.CheckedChanged += radioButtonScreenCenter1_CheckedChanged;
+            // 
+            // radioButtonProjectionCenterCustom
+            // 
+            resources.ApplyResources(radioButtonProjectionCenterCustom, "radioButtonProjectionCenterCustom");
+            radioButtonProjectionCenterCustom.Name = "radioButtonProjectionCenterCustom";
+            toolTip.SetToolTip(radioButtonProjectionCenterCustom, resources.GetString("radioButtonProjectionCenterCustom.ToolTip"));
+            radioButtonProjectionCenterCustom.UseVisualStyleBackColor = true;
+            radioButtonProjectionCenterCustom.CheckedChanged += radioButtonScreenCenter1_CheckedChanged;
+            // 
+            // flowLayoutPanelProjectionCenter
+            // 
+            resources.ApplyResources(flowLayoutPanelProjectionCenter, "flowLayoutPanelProjectionCenter");
+            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterX);
+            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterY);
+            flowLayoutPanelProjectionCenter.Controls.Add(numericBoxProjectionCenterZ);
+            flowLayoutPanelProjectionCenter.Name = "flowLayoutPanelProjectionCenter";
+            // 
+            // numericBoxProjectionCenterX
+            // 
+            numericBoxProjectionCenterX.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxProjectionCenterX.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxProjectionCenterX, "numericBoxProjectionCenterX");
+            numericBoxProjectionCenterX.Maximum = 1D;
+            numericBoxProjectionCenterX.Minimum = -1D;
+            numericBoxProjectionCenterX.Name = "numericBoxProjectionCenterX";
+            numericBoxProjectionCenterX.RadianValue = 0.0087266462599716477D;
+            numericBoxProjectionCenterX.ShowUpDown = true;
+            numericBoxProjectionCenterX.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxProjectionCenterX, resources.GetString("numericBoxProjectionCenterX.ToolTip"));
+            numericBoxProjectionCenterX.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterX.Value = 0.5D;
+            numericBoxProjectionCenterX.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
+            // 
+            // numericBoxProjectionCenterY
+            // 
+            numericBoxProjectionCenterY.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxProjectionCenterY.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxProjectionCenterY, "numericBoxProjectionCenterY");
+            numericBoxProjectionCenterY.Maximum = 1D;
+            numericBoxProjectionCenterY.Minimum = -1D;
+            numericBoxProjectionCenterY.Name = "numericBoxProjectionCenterY";
+            numericBoxProjectionCenterY.RadianValue = 0.0087266462599716477D;
+            numericBoxProjectionCenterY.ShowUpDown = true;
+            numericBoxProjectionCenterY.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxProjectionCenterY, resources.GetString("numericBoxProjectionCenterY.ToolTip"));
+            numericBoxProjectionCenterY.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterY.Value = 0.5D;
+            numericBoxProjectionCenterY.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
+            // 
+            // numericBoxProjectionCenterZ
+            // 
+            numericBoxProjectionCenterZ.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxProjectionCenterZ.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxProjectionCenterZ, "numericBoxProjectionCenterZ");
+            numericBoxProjectionCenterZ.Maximum = 1D;
+            numericBoxProjectionCenterZ.Minimum = -1D;
+            numericBoxProjectionCenterZ.Name = "numericBoxProjectionCenterZ";
+            numericBoxProjectionCenterZ.RadianValue = 0.0087266462599716477D;
+            numericBoxProjectionCenterZ.ShowUpDown = true;
+            numericBoxProjectionCenterZ.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxProjectionCenterZ, resources.GetString("numericBoxProjectionCenterZ.ToolTip"));
+            numericBoxProjectionCenterZ.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterZ.Value = 0.5D;
+            numericBoxProjectionCenterZ.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip"));
             // 
             // groupBoxProjection
             // 
@@ -1357,10 +1372,10 @@
             // checkBoxSymElems_Inversions
             // 
             resources.ApplyResources(checkBoxSymElems_Inversions, "checkBoxSymElems_Inversions");
-            toolTip.SetToolTip(checkBoxSymElems_Inversions, resources.GetString("checkBoxSymElems_Inversions.ToolTip")); // 260531Cl
             checkBoxSymElems_Inversions.Checked = true;
             checkBoxSymElems_Inversions.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Inversions.Name = "checkBoxSymElems_Inversions";
+            toolTip.SetToolTip(checkBoxSymElems_Inversions, resources.GetString("checkBoxSymElems_Inversions.ToolTip"));
             checkBoxSymElems_Inversions.UseVisualStyleBackColor = true;
             checkBoxSymElems_Inversions.CheckedChanged += symmetryElement_PropertyChanged;
             // 
@@ -1368,12 +1383,12 @@
             // 
             numericBoxInversionSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxInversionSymbolSize, "numericBoxInversionSymbolSize");
-            toolTip.SetToolTip(numericBoxInversionSymbolSize, resources.GetString("numericBoxInversionSymbolSize.ToolTip")); // 260531Cl
             numericBoxInversionSymbolSize.Maximum = 500D;
             numericBoxInversionSymbolSize.Minimum = 20D;
             numericBoxInversionSymbolSize.Name = "numericBoxInversionSymbolSize";
             numericBoxInversionSymbolSize.RadianValue = 1.7453292519943295D;
             numericBoxInversionSymbolSize.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxInversionSymbolSize, resources.GetString("numericBoxInversionSymbolSize.ToolTip"));
             numericBoxInversionSymbolSize.UpDown_Increment = 20D;
             numericBoxInversionSymbolSize.Value = 100D;
             numericBoxInversionSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
@@ -1401,10 +1416,10 @@
             // checkBoxSymElems_Glides
             // 
             resources.ApplyResources(checkBoxSymElems_Glides, "checkBoxSymElems_Glides");
-            toolTip.SetToolTip(checkBoxSymElems_Glides, resources.GetString("checkBoxSymElems_Glides.ToolTip")); // 260531Cl
             checkBoxSymElems_Glides.Checked = true;
             checkBoxSymElems_Glides.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Glides.Name = "checkBoxSymElems_Glides";
+            toolTip.SetToolTip(checkBoxSymElems_Glides, resources.GetString("checkBoxSymElems_Glides.ToolTip"));
             checkBoxSymElems_Glides.UseVisualStyleBackColor = true;
             checkBoxSymElems_Glides.CheckedChanged += symmetryElement_PropertyChanged;
             // 
@@ -1412,12 +1427,12 @@
             // 
             numericBoxPlaneSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxPlaneSymbolSize, "numericBoxPlaneSymbolSize");
-            toolTip.SetToolTip(numericBoxPlaneSymbolSize, resources.GetString("numericBoxPlaneSymbolSize.ToolTip")); // 260531Cl
             numericBoxPlaneSymbolSize.Maximum = 500D;
             numericBoxPlaneSymbolSize.Minimum = 20D;
             numericBoxPlaneSymbolSize.Name = "numericBoxPlaneSymbolSize";
             numericBoxPlaneSymbolSize.RadianValue = 1.7453292519943295D;
             numericBoxPlaneSymbolSize.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPlaneSymbolSize, resources.GetString("numericBoxPlaneSymbolSize.ToolTip"));
             numericBoxPlaneSymbolSize.UpDown_Increment = 20D;
             numericBoxPlaneSymbolSize.Value = 100D;
             numericBoxPlaneSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
@@ -1427,12 +1442,12 @@
             numericBoxPlaneLineWidth.BackColor = System.Drawing.Color.Transparent;
             numericBoxPlaneLineWidth.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxPlaneLineWidth, "numericBoxPlaneLineWidth");
-            toolTip.SetToolTip(numericBoxPlaneLineWidth, resources.GetString("numericBoxPlaneLineWidth.ToolTip")); // 260531Cl
             numericBoxPlaneLineWidth.Maximum = 10D;
             numericBoxPlaneLineWidth.Minimum = 0.5D;
             numericBoxPlaneLineWidth.Name = "numericBoxPlaneLineWidth";
             numericBoxPlaneLineWidth.RadianValue = 0.034906585039886591D;
             numericBoxPlaneLineWidth.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPlaneLineWidth, resources.GetString("numericBoxPlaneLineWidth.ToolTip"));
             numericBoxPlaneLineWidth.UpDown_Increment = 0.5D;
             numericBoxPlaneLineWidth.Value = 2D;
             numericBoxPlaneLineWidth.ValueChanged += symmetryElement_PropertyChanged;
@@ -1440,10 +1455,10 @@
             // checkBoxSymElems_Mirrors
             // 
             resources.ApplyResources(checkBoxSymElems_Mirrors, "checkBoxSymElems_Mirrors");
-            toolTip.SetToolTip(checkBoxSymElems_Mirrors, resources.GetString("checkBoxSymElems_Mirrors.ToolTip")); // 260531Cl
             checkBoxSymElems_Mirrors.Checked = true;
             checkBoxSymElems_Mirrors.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Mirrors.Name = "checkBoxSymElems_Mirrors";
+            toolTip.SetToolTip(checkBoxSymElems_Mirrors, resources.GetString("checkBoxSymElems_Mirrors.ToolTip"));
             checkBoxSymElems_Mirrors.UseVisualStyleBackColor = true;
             checkBoxSymElems_Mirrors.CheckedChanged += symmetryElement_PropertyChanged;
             // 
@@ -1471,10 +1486,10 @@
             // checkBoxSymElems_Rotation
             // 
             resources.ApplyResources(checkBoxSymElems_Rotation, "checkBoxSymElems_Rotation");
-            toolTip.SetToolTip(checkBoxSymElems_Rotation, resources.GetString("checkBoxSymElems_Rotation.ToolTip")); // 260531Cl
             checkBoxSymElems_Rotation.Checked = true;
             checkBoxSymElems_Rotation.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Rotation.Name = "checkBoxSymElems_Rotation";
+            toolTip.SetToolTip(checkBoxSymElems_Rotation, resources.GetString("checkBoxSymElems_Rotation.ToolTip"));
             checkBoxSymElems_Rotation.UseVisualStyleBackColor = true;
             checkBoxSymElems_Rotation.CheckedChanged += symmetryElement_PropertyChanged;
             // 
@@ -1482,12 +1497,12 @@
             // 
             numericBoxAxisSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxAxisSymbolSize, "numericBoxAxisSymbolSize");
-            toolTip.SetToolTip(numericBoxAxisSymbolSize, resources.GetString("numericBoxAxisSymbolSize.ToolTip")); // 260531Cl
             numericBoxAxisSymbolSize.Maximum = 500D;
             numericBoxAxisSymbolSize.Minimum = 20D;
             numericBoxAxisSymbolSize.Name = "numericBoxAxisSymbolSize";
             numericBoxAxisSymbolSize.RadianValue = 1.7453292519943295D;
             numericBoxAxisSymbolSize.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxAxisSymbolSize, resources.GetString("numericBoxAxisSymbolSize.ToolTip"));
             numericBoxAxisSymbolSize.UpDown_Increment = 20D;
             numericBoxAxisSymbolSize.Value = 100D;
             numericBoxAxisSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
@@ -1497,12 +1512,12 @@
             numericBoxAxisLineWidth.BackColor = System.Drawing.Color.Transparent;
             numericBoxAxisLineWidth.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxAxisLineWidth, "numericBoxAxisLineWidth");
-            toolTip.SetToolTip(numericBoxAxisLineWidth, resources.GetString("numericBoxAxisLineWidth.ToolTip")); // 260531Cl
             numericBoxAxisLineWidth.Maximum = 10D;
             numericBoxAxisLineWidth.Minimum = 0.5D;
             numericBoxAxisLineWidth.Name = "numericBoxAxisLineWidth";
             numericBoxAxisLineWidth.RadianValue = 0.034906585039886591D;
             numericBoxAxisLineWidth.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxAxisLineWidth, resources.GetString("numericBoxAxisLineWidth.ToolTip"));
             numericBoxAxisLineWidth.UpDown_Increment = 0.5D;
             numericBoxAxisLineWidth.Value = 2D;
             numericBoxAxisLineWidth.ValueChanged += symmetryElement_PropertyChanged;
@@ -1510,20 +1525,20 @@
             // checkBoxSymElems_Rotinversions
             // 
             resources.ApplyResources(checkBoxSymElems_Rotinversions, "checkBoxSymElems_Rotinversions");
-            toolTip.SetToolTip(checkBoxSymElems_Rotinversions, resources.GetString("checkBoxSymElems_Rotinversions.ToolTip")); // 260531Cl
             checkBoxSymElems_Rotinversions.Checked = true;
             checkBoxSymElems_Rotinversions.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Rotinversions.Name = "checkBoxSymElems_Rotinversions";
+            toolTip.SetToolTip(checkBoxSymElems_Rotinversions, resources.GetString("checkBoxSymElems_Rotinversions.ToolTip"));
             checkBoxSymElems_Rotinversions.UseVisualStyleBackColor = true;
             checkBoxSymElems_Rotinversions.CheckedChanged += symmetryElement_PropertyChanged;
             // 
             // checkBoxSymElems_Screws
             // 
             resources.ApplyResources(checkBoxSymElems_Screws, "checkBoxSymElems_Screws");
-            toolTip.SetToolTip(checkBoxSymElems_Screws, resources.GetString("checkBoxSymElems_Screws.ToolTip")); // 260531Cl
             checkBoxSymElems_Screws.Checked = true;
             checkBoxSymElems_Screws.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Screws.Name = "checkBoxSymElems_Screws";
+            toolTip.SetToolTip(checkBoxSymElems_Screws, resources.GetString("checkBoxSymElems_Screws.ToolTip"));
             checkBoxSymElems_Screws.UseVisualStyleBackColor = true;
             checkBoxSymElems_Screws.CheckedChanged += symmetryElement_PropertyChanged;
             // 
@@ -1539,8 +1554,8 @@
             // checkBoxShowSymmetryElements
             // 
             resources.ApplyResources(checkBoxShowSymmetryElements, "checkBoxShowSymmetryElements");
-            toolTip.SetToolTip(checkBoxShowSymmetryElements, resources.GetString("checkBoxShowSymmetryElements.ToolTip")); // 260531Cl
             checkBoxShowSymmetryElements.Name = "checkBoxShowSymmetryElements";
+            toolTip.SetToolTip(checkBoxShowSymmetryElements, resources.GetString("checkBoxShowSymmetryElements.ToolTip"));
             checkBoxShowSymmetryElements.UseVisualStyleBackColor = true;
             checkBoxShowSymmetryElements.CheckedChanged += checkBoxShowSymmetryElements_CheckedChanged;
             // 
@@ -1569,11 +1584,12 @@
             // colorControlLabelColor
             // 
             resources.ApplyResources(colorControlLabelColor, "colorControlLabelColor");
-            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip")); // 260531Cl
             colorControlLabelColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControlLabelColor.Name = "colorControlLabelColor";
+            //toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip1")); // 260703Cl 変更前: 再シリアライズでこれのみ .ToolTip1 に逆行していた
+            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip")); // 260703Cl 他コントロールと同じ .ToolTip キーに統一
             colorControlLabelColor.ColorChanged += numericBoxLabelSize_ValueChanged;
             // 
             // checkBoxShowLabel
@@ -1603,9 +1619,9 @@
             // 
             // numericBoxLabelSize
             // 
-            resources.ApplyResources(numericBoxLabelSize, "numericBoxLabelSize");
             numericBoxLabelSize.BackColor = System.Drawing.Color.Transparent;
             numericBoxLabelSize.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxLabelSize, "numericBoxLabelSize");
             numericBoxLabelSize.Maximum = 200D;
             numericBoxLabelSize.Minimum = 0D;
             numericBoxLabelSize.Name = "numericBoxLabelSize";
@@ -1613,7 +1629,7 @@
             numericBoxLabelSize.ShowUpDown = true;
             numericBoxLabelSize.SmartIncrement = true;
             numericBoxLabelSize.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip1"));
+            toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip"));
             numericBoxLabelSize.Value = 12D;
             numericBoxLabelSize.ValueFontSize = 9F;
             numericBoxLabelSize.ValueChanged += numericBoxLabelSize_ValueChanged;
@@ -1670,9 +1686,9 @@
             // 
             // numericBoxLegendSize
             // 
-            resources.ApplyResources(numericBoxLegendSize, "numericBoxLegendSize");
             numericBoxLegendSize.BackColor = System.Drawing.Color.Transparent;
             numericBoxLegendSize.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxLegendSize, "numericBoxLegendSize");
             numericBoxLegendSize.Maximum = 200D;
             numericBoxLegendSize.Minimum = 0D;
             numericBoxLegendSize.Name = "numericBoxLegendSize";
@@ -1680,16 +1696,16 @@
             numericBoxLegendSize.ShowUpDown = true;
             numericBoxLegendSize.SmartIncrement = true;
             numericBoxLegendSize.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip1"));
+            toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip"));
             numericBoxLegendSize.Value = 50D;
             numericBoxLegendSize.ValueFontSize = 9F;
             numericBoxLegendSize.ValueChanged += numericBoxLegendSize_ValueChanged;
             // 
             // numericBoxAxesSize
             // 
-            resources.ApplyResources(numericBoxAxesSize, "numericBoxAxesSize");
             numericBoxAxesSize.BackColor = System.Drawing.Color.Transparent;
             numericBoxAxesSize.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxAxesSize, "numericBoxAxesSize");
             numericBoxAxesSize.Maximum = 200D;
             numericBoxAxesSize.Minimum = 0D;
             numericBoxAxesSize.Name = "numericBoxAxesSize";
@@ -1697,16 +1713,16 @@
             numericBoxAxesSize.ShowUpDown = true;
             numericBoxAxesSize.SmartIncrement = true;
             numericBoxAxesSize.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip1"));
+            toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip"));
             numericBoxAxesSize.Value = 80D;
             numericBoxAxesSize.ValueFontSize = 9F;
             numericBoxAxesSize.ValueChanged += numericBoxAxesSize_ValueChanged;
             // 
             // numericBoxLightSize
             // 
-            resources.ApplyResources(numericBoxLightSize, "numericBoxLightSize");
             numericBoxLightSize.BackColor = System.Drawing.Color.Transparent;
             numericBoxLightSize.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxLightSize, "numericBoxLightSize");
             numericBoxLightSize.Maximum = 200D;
             numericBoxLightSize.Minimum = 0D;
             numericBoxLightSize.Name = "numericBoxLightSize";
@@ -1714,7 +1730,7 @@
             numericBoxLightSize.ShowUpDown = true;
             numericBoxLightSize.SmartIncrement = true;
             numericBoxLightSize.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip1"));
+            toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip"));
             numericBoxLightSize.Value = 80D;
             numericBoxLightSize.ValueFontSize = 9F;
             numericBoxLightSize.ValueChanged += numericBoxLightSize_ValueChanged;
@@ -1965,6 +1981,14 @@
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
+            // sizeControl1
+            // 
+            resources.ApplyResources(sizeControl1, "sizeControl1");
+            sizeControl1.Maximum = 4000;
+            sizeControl1.Name = "sizeControl1";
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
+            sizeControl1.ValueChanged += sizeControl1_ValueChanged;
+            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -1978,18 +2002,23 @@
             // panelTop
             // 
             resources.ApplyResources(panelTop, "panelTop");
+            panelTop.Controls.Add(numericBoxProjWidth); // (260629Ch)
             panelTop.Controls.Add(menuStrip1);
             panelTop.Controls.Add(sizeControl1);
             panelTop.Name = "panelTop";
             // 
-            // sizeControl1
+            // numericBoxProjWidth
             // 
-            resources.ApplyResources(sizeControl1, "sizeControl1");
-            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip")); // 260531Cl
-            sizeControl1.Maximum = 4000;
-            sizeControl1.Name = "sizeControl1";
-            sizeControl1.Value = new System.Drawing.Size(1, 1);
-            sizeControl1.ValueChanged += sizeControl1_ValueChanged;
+            numericBoxProjWidth.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxProjWidth, "numericBoxProjWidth");
+            numericBoxProjWidth.Minimum = 0.01D;
+            numericBoxProjWidth.Name = "numericBoxProjWidth";
+            numericBoxProjWidth.ShowUpDown = true;
+            numericBoxProjWidth.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxProjWidth, resources.GetString("numericBoxProjWidth.ToolTip")); // 260703Cl 追加
+            numericBoxProjWidth.Value = 3D; // (260629Ch) StructureViewer main view の初期 ProjWidth
+            numericBoxProjWidth.ValueBoxWidth = 50;
+            numericBoxProjWidth.ValueChanged += numericBoxProjWidth_ValueChanged; // (260629Ch)
             // 
             // statusStrip1
             // 
@@ -2077,6 +2106,8 @@
             tabPageProjection.PerformLayout();
             groupBoxProjectionCenter.ResumeLayout(false);
             groupBoxProjectionCenter.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             flowLayoutPanelProjectionCenter.ResumeLayout(false);
             groupBoxProjection.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)trackBarPerspective).EndInit();
@@ -2296,5 +2327,7 @@
         private NumericBox numericBoxPlaneLineWidth;
         private ColorControl colorControlPlane;
         private SizeControl sizeControl1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private NumericBox numericBoxProjWidth; // (260629Ch)
     }
 }

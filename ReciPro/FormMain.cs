@@ -581,7 +581,13 @@ public partial class FormMain : FormBase
         // 260612Cl 変更: += の 2 段階追記だと、1 回目の代入直後に FormBase が末尾へ付ける "(F1: Help)" 案内の
         // 後ろに追記する形になり、案内が中間に残ったまま末尾へ二重付与される (StripHelpSuffix は末尾一致のみ)。
         // タイトルは一括で組み立てて 1 回だけ代入する (3D 無効モード = Mac/Wine や CI smoke で発症していた)
-        Text = "ReciPro  " + Version.VersionAndDate + (glControlAxes == null ? "  (3D rendering disable mode)" : "");
+        //Text = "ReciPro  " + Version.VersionAndDate + (glControlAxes == null ? "  (3D rendering disable mode)" : ""); // 260703Cl 変更前
+        // 260703Cl 変更: どの配布版が動いているか特定できるよう、タイトルにアーキテクチャ (x64/arm64) と配布形態 (msi/zip) を付記する。
+        //   例: "ReciPro  ver4.942(2026/07/01, x64msi)"。配布形態は README-PORTABLE.txt の有無で判定
+        //   (portable ZIP のみ同梱・MSI staging は release.yml の leak 検査で排除済み。上の Check Updates 非表示判定と同じ方法)。
+        var arch = RuntimeInformation.ProcessArchitecture.ToString().ToLowerInvariant(); // "x64" / "arm64"
+        var package = File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")) ? "zip" : "msi";
+        Text = "ReciPro  " + Version.VersionAndDate[..^1] + $",{arch}{package})" + (glControlAxes == null ? "  (3D rendering disable mode)" : "");
 
         commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
         if (commonDialog.AutomaticallyClose)

@@ -866,4 +866,10 @@ prédéfinie de chaque axe de la maille élémentaire.</value>
 fractionnaire de la maille élémentaire ; le point
 choisi est placé au centre de la vue.</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Largeur de la vue principale projetée en nm.
+Des valeurs plus petites correspondent à un zoom avant.
+Synchronisée avec le zoom par glisser du bouton droit
+ou à la molette sur la vue.</value>
+  </data>
 </root>

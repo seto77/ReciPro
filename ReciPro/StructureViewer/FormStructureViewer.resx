@@ -664,17 +664,8 @@
   <data name="&gt;&gt;buttonSetRange1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="numericBoxCRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -708,11 +699,6 @@
 the c-axis, in fractional coordinates;
 atoms within Center ± Range are drawn.</value>
   </data>
-  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
-    <value>Half-width of the displayed region along
-the c-axis, in fractional coordinates;
-atoms within Center ± Range are drawn.</value>
-  </data>
   <data name="&gt;&gt;numericBoxCRange.Name" xml:space="preserve">
     <value>numericBoxCRange</value>
   </data>
@@ -725,17 +711,8 @@ atoms within Center ± Range are drawn.</value>
   <data name="&gt;&gt;numericBoxCRange.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="numericBoxBRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxBRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxBRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxBRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -769,11 +746,6 @@ atoms within Center ± Range are drawn.</value>
 the b-axis, in fractional coordinates;
 atoms within Center ± Range are drawn.</value>
   </data>
-  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
-    <value>Half-width of the displayed region along
-the b-axis, in fractional coordinates;
-atoms within Center ± Range are drawn.</value>
-  </data>
   <data name="&gt;&gt;numericBoxBRange.Name" xml:space="preserve">
     <value>numericBoxBRange</value>
   </data>
@@ -786,17 +758,8 @@ atoms within Center ± Range are drawn.</value>
   <data name="&gt;&gt;numericBoxBRange.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="numericBoxARange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxARange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxARange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxARange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -830,11 +793,6 @@ atoms within Center ± Range are drawn.</value>
 the a-axis, in fractional coordinates;
 atoms within Center ± Range are drawn.</value>
   </data>
-  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
-    <value>Half-width of the displayed region along
-the a-axis, in fractional coordinates;
-atoms within Center ± Range are drawn.</value>
-  </data>
   <data name="&gt;&gt;numericBoxARange.Name" xml:space="preserve">
     <value>numericBoxARange</value>
   </data>
@@ -847,17 +805,8 @@ atoms within Center ± Range are drawn.</value>
   <data name="&gt;&gt;numericBoxARange.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="numericBoxCCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -891,11 +840,6 @@ atoms within Center ± Range are drawn.</value>
 fractional coordinates; combined with Range it sets
 the min/max bounding planes of the drawn structure.</value>
   </data>
-  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Center of the displayed region along the c-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
-  </data>
   <data name="&gt;&gt;numericBoxCCenter.Name" xml:space="preserve">
     <value>numericBoxCCenter</value>
   </data>
@@ -908,17 +852,8 @@ the min/max bounding planes of the drawn structure.</value>
   <data name="&gt;&gt;numericBoxCCenter.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="numericBoxBCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxBCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxBCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxBCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxBCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -952,11 +887,6 @@ the min/max bounding planes of the drawn structure.</value>
 fractional coordinates; combined with Range it sets
 the min/max bounding planes of the drawn structure.</value>
   </data>
-  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Center of the displayed region along the b-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
-  </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
   </data>
@@ -969,17 +899,8 @@ the min/max bounding planes of the drawn structure.</value>
   <data name="&gt;&gt;numericBoxBCenter.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="numericBoxACenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxACenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxACenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1009,11 +930,6 @@ the min/max bounding planes of the drawn structure.</value>
     <value>0</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region along the a-axis, in
-fractional coordinates; combined with Range it sets
-the min/max bounding planes of the drawn structure.</value>
-  </data>
-  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
     <value>Center of the displayed region along the a-axis, in
 fractional coordinates; combined with Range it sets
 the min/max bounding planes of the drawn structure.</value>
@@ -1051,6 +967,10 @@ the min/max bounding planes of the drawn structure.</value>
   <data name="label2.Text" xml:space="preserve">
     <value>Range</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Half-width of the displayed region (fractional
+coordinates) along each unit-cell axis.</value>
+  </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
@@ -1083,6 +1003,10 @@ the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Set range to</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Set the display range to a preset
+fraction of each unit-cell axis.</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1117,6 +1041,9 @@ the min/max bounding planes of the drawn structure.</value>
   <data name="label3.Text" xml:space="preserve">
     <value>Set center to</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Set the display center to a preset fractional position.</value>
+  </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
@@ -1149,6 +1076,10 @@ the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Center</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Center of the displayed region (fractional
+coordinates) along each unit-cell axis.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -1294,17 +1225,8 @@ the min/max bounding planes of the drawn structure.</value>
   <data name="&gt;&gt;checkBoxShowBoundPlanes.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxBoundPlanesOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxBoundPlanesOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1334,9 +1256,6 @@ the min/max bounding planes of the drawn structure.</value>
     <value>1</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
-    <value>Opacity of the bounding planes (0=transparent, 1=opaque)</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
     <value>Opacity of the bounding planes (0=transparent, 1=opaque)</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Name" xml:space="preserve">
@@ -1735,20 +1654,8 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellPlane.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlane.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 3</value>
@@ -1825,20 +1732,8 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneA.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellPlaneA.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneA.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlaneA.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -1884,20 +1779,8 @@ a-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneB.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellPlaneB.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneB.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlaneB.HeaderText" xml:space="preserve">
     <value>b</value>
@@ -1943,20 +1826,8 @@ b-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneC.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellPlaneC.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellPlaneC.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderText" xml:space="preserve">
     <value>c</value>
@@ -1993,17 +1864,8 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="&gt;&gt;colorControlCellPlaneC.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="numericBoxCellPlaneAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellPlaneAlpha.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2033,9 +1895,6 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>7</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value>Opacity of cell planes (1: opaque, 0: transparent)</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
     <value>Opacity of cell planes (1: opaque, 0: transparent)</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Name" xml:space="preserve">
@@ -2122,20 +1981,8 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdge.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellEdge.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdge.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 3</value>
@@ -2212,20 +2059,8 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeA.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellEdgeA.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeA.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellEdgeA.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -2271,20 +2106,8 @@ a-axis (used when 'Each edge' is selected).</value>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeB.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellEdgeB.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeB.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellEdgeB.HeaderText" xml:space="preserve">
     <value>b</value>
@@ -2330,20 +2153,8 @@ b-axis (used when 'Each edge' is selected).</value>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeC.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlCellEdgeC.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdgeC.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellEdgeC.HeaderText" xml:space="preserve">
     <value>c</value>
@@ -2403,6 +2214,9 @@ c-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Edge width</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Line width of the unit-cell edges (1-5)</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -2470,17 +2284,8 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="&gt;&gt;flowLayoutPanelCellEdgeColors.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxCellTranslationC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellTranslationC.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCellTranslationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2512,9 +2317,6 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
-  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
-  </data>
   <data name="&gt;&gt;numericBoxCellTranslationC.Name" xml:space="preserve">
     <value>numericBoxCellTranslationC</value>
   </data>
@@ -2527,17 +2329,8 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="&gt;&gt;numericBoxCellTranslationC.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxCellTranslationB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellTranslationB.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCellTranslationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2569,9 +2362,6 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
-  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
-  </data>
   <data name="&gt;&gt;numericBoxCellTranslationB.Name" xml:space="preserve">
     <value>numericBoxCellTranslationB</value>
   </data>
@@ -2584,17 +2374,8 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="&gt;&gt;numericBoxCellTranslationB.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxCellTranslationA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellTranslationA.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxCellTranslationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2624,9 +2405,6 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>5</value>
   </data>
   <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
-  </data>
-  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTranslationA.Name" xml:space="preserve">
@@ -2725,8 +2503,11 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellB.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxSubCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+  <data name="numericBoxSubCellB.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxSubCellB.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSubCellB.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 184</value>
@@ -2734,11 +2515,22 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="numericBoxSubCellB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numericBoxSubCellB.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
   <data name="numericBoxSubCellB.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 25</value>
   </data>
   <data name="numericBoxSubCellB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the b-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellB.Name" xml:space="preserve">
     <value>numericBoxSubCellB</value>
@@ -2772,6 +2564,10 @@ c-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Translation</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Translate the unit-cell frame along the
+a, b, c axes (fractional coordinates).</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -2827,8 +2623,11 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxSubCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+  <data name="numericBoxSubCellC.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxSubCellC.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSubCellC.Location" type="System.Drawing.Point, System.Drawing">
     <value>278, 183</value>
@@ -2836,11 +2635,22 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="numericBoxSubCellC.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numericBoxSubCellC.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
   <data name="numericBoxSubCellC.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 25</value>
   </data>
   <data name="numericBoxSubCellC.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the c-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellC.Name" xml:space="preserve">
     <value>numericBoxSubCellC</value>
@@ -2857,8 +2667,11 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellA.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxSubCellA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+  <data name="numericBoxSubCellA.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxSubCellA.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSubCellA.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 184</value>
@@ -2866,11 +2679,22 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="numericBoxSubCellA.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numericBoxSubCellA.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
   <data name="numericBoxSubCellA.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 25</value>
   </data>
   <data name="numericBoxSubCellA.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the a-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellA.Name" xml:space="preserve">
     <value>numericBoxSubCellA</value>
@@ -2908,6 +2732,9 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="label17.Text" xml:space="preserve">
     <value>c</value>
   </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>c-axis row of the unit-cell options.</value>
+  </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
@@ -2944,6 +2771,9 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="label16.Text" xml:space="preserve">
     <value>b</value>
   </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>b-axis row of the unit-cell options.</value>
+  </data>
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
   </data>
@@ -2979,6 +2809,9 @@ c-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>a</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>a-axis row of the unit-cell options.</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -3058,17 +2891,8 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="flowLayoutPanelLatticePlaneOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxLatticePlaneOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxLatticePlaneOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -3098,9 +2922,6 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>3</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
-    <value>Opacity of lattice planes (0=transparent, 1=opaque)</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
     <value>Opacity of lattice planes (0=transparent, 1=opaque)</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Name" xml:space="preserve">
@@ -3388,23 +3209,128 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="groupBoxProjectionCenter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.Text" xml:space="preserve">
+    <value>(0 0 0)</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
+    <value>Set projection center to origin</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter1.Name" xml:space="preserve">
+    <value>radioButtonProjectionCenter1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 4</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.Text" xml:space="preserve">
+    <value>(½ ½ ½)</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
+    <value>Set projection center to (1/2, 1/2, 1/2)</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter2.Name" xml:space="preserve">
+    <value>radioButtonProjectionCenter2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenter2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 4</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
+    <value>Use custom projection center coordinates</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Name" xml:space="preserve">
+    <value>radioButtonProjectionCenterCustom</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonProjectionCenterCustom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="flowLayoutPanelProjectionCenter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxProjectionCenterX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxProjectionCenterX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3435,11 +3361,6 @@ c-axis (used when 'Each edge' is selected).</value>
 center; this point is placed at the center of the
 view (equivalently it translates the unit cell).</value>
   </data>
-  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
-    <value>a-axis fractional coordinate of the projection
-center; this point is placed at the center of the
-view (equivalently it translates the unit cell).</value>
-  </data>
   <data name="&gt;&gt;numericBoxProjectionCenterX.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterX</value>
   </data>
@@ -3452,17 +3373,8 @@ view (equivalently it translates the unit cell).</value>
   <data name="&gt;&gt;numericBoxProjectionCenterX.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxProjectionCenterY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxProjectionCenterY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3493,11 +3405,6 @@ view (equivalently it translates the unit cell).</value>
 center; this point is placed at the center of the
 view (equivalently it translates the unit cell).</value>
   </data>
-  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
-    <value>b-axis fractional coordinate of the projection
-center; this point is placed at the center of the
-view (equivalently it translates the unit cell).</value>
-  </data>
   <data name="&gt;&gt;numericBoxProjectionCenterY.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterY</value>
   </data>
@@ -3510,17 +3417,8 @@ view (equivalently it translates the unit cell).</value>
   <data name="&gt;&gt;numericBoxProjectionCenterY.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxProjectionCenterZ.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxProjectionCenterZ.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3551,11 +3449,6 @@ view (equivalently it translates the unit cell).</value>
 center; this point is placed at the center of the
 view (equivalently it translates the unit cell).</value>
   </data>
-  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
-    <value>c-axis fractional coordinate of the projection
-center; this point is placed at the center of the
-view (equivalently it translates the unit cell).</value>
-  </data>
   <data name="&gt;&gt;numericBoxProjectionCenterZ.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterZ</value>
   </data>
@@ -3572,7 +3465,10 @@ view (equivalently it translates the unit cell).</value>
     <value>False</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 38</value>
+    <value>211, 4</value>
+  </data>
+  <data name="flowLayoutPanelProjectionCenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 25</value>
@@ -3587,19 +3483,49 @@ view (equivalently it translates the unit cell).</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelProjectionCenter.Parent" xml:space="preserve">
-    <value>groupBoxProjectionCenter</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelProjectionCenter.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 38</value>
+  </data>
+  <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>406, 29</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBoxProjectionCenter</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 21</value>
+    <value>3, 21</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 17</value>
@@ -3609,6 +3535,11 @@ view (equivalently it translates the unit cell).</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Set the projection center to the fractional coordinates</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Set the projection center as a fractional
+coordinate of the unit cell; the chosen
+point is placed at the center of the view.</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -3622,119 +3553,11 @@ view (equivalently it translates the unit cell).</value>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="radioButtonProjectionCenterCustom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 38</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 21</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.Text" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
-    <value>Use custom projection center coordinates</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Name" xml:space="preserve">
-    <value>radioButtonProjectionCenterCustom</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenterCustom.Parent" xml:space="preserve">
-    <value>groupBoxProjectionCenter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenterCustom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 38</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 21</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.Text" xml:space="preserve">
-    <value>(0 0 0)</value>
-  </data>
-  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
-    <value>Set projection center to origin</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter1.Name" xml:space="preserve">
-    <value>radioButtonProjectionCenter1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter1.Parent" xml:space="preserve">
-    <value>groupBoxProjectionCenter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 38</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 21</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.Text" xml:space="preserve">
-    <value>(½ ½ ½)</value>
-  </data>
-  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
-    <value>Set projection center to (1/2, 1/2, 1/2)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter2.Name" xml:space="preserve">
-    <value>radioButtonProjectionCenter2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter2.Parent" xml:space="preserve">
-    <value>groupBoxProjectionCenter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonProjectionCenter2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="groupBoxProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 135</value>
   </data>
   <data name="groupBoxProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 66</value>
+    <value>412, 70</value>
   </data>
   <data name="groupBoxProjectionCenter.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -4004,17 +3827,8 @@ more accurate transparency, but renders more slowly.</value>
   <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterText" xml:space="preserve">
     <value>Å</value>
-  </data>
-  <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedDepthCueingNear.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="trackBarAdvancedDepthCueingNear.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 47</value>
@@ -4085,17 +3899,8 @@ depth fade to fully transparent (-30 to 30)</value>
   <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterText" xml:space="preserve">
     <value>Å</value>
-  </data>
-  <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedDepthCueingFar.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 18</value>
@@ -4233,6 +4038,11 @@ than this depth stay fully opaque (-30 to 30)</value>
     <value>Inversion Cneters
 </value>
   </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value>Show/hide inversion centers (points where
+the structure maps onto itself under x to
+-x) among the displayed symmetry elements.</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Inversions.Name" xml:space="preserve">
     <value>checkBoxSymElems_Inversions</value>
   </data>
@@ -4245,17 +4055,11 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="&gt;&gt;checkBoxSymElems_Inversions.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxInversionSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxInversionSymbolSize.FooterText" xml:space="preserve">
     <value>%</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxInversionSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4281,6 +4085,10 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="numericBoxInversionSymbolSize.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>Size of the inversion-center symbols,
+as a percentage (100% = default size).</value>
+  </data>
   <data name="&gt;&gt;numericBoxInversionSymbolSize.Name" xml:space="preserve">
     <value>numericBoxInversionSymbolSize</value>
   </data>
@@ -4302,20 +4110,8 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="colorControlInversion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlInversion.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlInversion.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlInversion.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlInversion.HeaderText" xml:space="preserve">
     <value>Color</value>
@@ -4395,6 +4191,10 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
     <value>Glides</value>
   </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value>Show glide-plane symbols (reflection
+combined with translation) of the space group</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Glides.Name" xml:space="preserve">
     <value>checkBoxSymElems_Glides</value>
   </data>
@@ -4407,17 +4207,11 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="&gt;&gt;checkBoxSymElems_Glides.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterText" xml:space="preserve">
     <value>%</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4443,6 +4237,10 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="numericBoxPlaneSymbolSize.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>Display size of the symmetry-plane
+symbols, in percent (20-500%)</value>
+  </data>
   <data name="&gt;&gt;numericBoxPlaneSymbolSize.Name" xml:space="preserve">
     <value>numericBoxPlaneSymbolSize</value>
   </data>
@@ -4455,14 +4253,8 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="&gt;&gt;numericBoxPlaneSymbolSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxPlaneLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4487,6 +4279,9 @@ than this depth stay fully opaque (-30 to 30)</value>
   </data>
   <data name="numericBoxPlaneLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the symmetry-plane symbols (0.5-10)</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneLineWidth.Name" xml:space="preserve">
     <value>numericBoxPlaneLineWidth</value>
@@ -4521,6 +4316,9 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
     <value>Mirrors</value>
   </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value>Show mirror-plane symbols of the space group</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Mirrors.Name" xml:space="preserve">
     <value>checkBoxSymElems_Mirrors</value>
   </data>
@@ -4542,20 +4340,8 @@ than this depth stay fully opaque (-30 to 30)</value>
   <data name="colorControlPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlPlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlPlane.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlPlane.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlPlane.HeaderText" xml:space="preserve">
     <value>Color</value>
@@ -4636,6 +4422,10 @@ symbols (mirror and glide planes).</value>
   <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
     <value>Rotations</value>
   </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value>Show rotation-axis symbols (2-,
+3-, 4-, 6-fold) of the space group</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Rotation.Name" xml:space="preserve">
     <value>checkBoxSymElems_Rotation</value>
   </data>
@@ -4648,17 +4438,11 @@ symbols (mirror and glide planes).</value>
   <data name="&gt;&gt;checkBoxSymElems_Rotation.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAxisSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAxisSymbolSize.FooterText" xml:space="preserve">
     <value>%</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxisSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4684,6 +4468,10 @@ symbols (mirror and glide planes).</value>
   <data name="numericBoxAxisSymbolSize.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>Display size of the symmetry-axis
+symbols, in percent (20-500%)</value>
+  </data>
   <data name="&gt;&gt;numericBoxAxisSymbolSize.Name" xml:space="preserve">
     <value>numericBoxAxisSymbolSize</value>
   </data>
@@ -4696,14 +4484,8 @@ symbols (mirror and glide planes).</value>
   <data name="&gt;&gt;numericBoxAxisSymbolSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAxisLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -4728,6 +4510,9 @@ symbols (mirror and glide planes).</value>
   </data>
   <data name="numericBoxAxisLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the symmetry-axis symbols (0.5-10)</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisLineWidth.Name" xml:space="preserve">
     <value>numericBoxAxisLineWidth</value>
@@ -4762,6 +4547,10 @@ symbols (mirror and glide planes).</value>
   <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
     <value>Rotinversions</value>
   </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value>Show rotoinversion-axis symbols (rotation
+followed by inversion) of the space group</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Rotinversions.Name" xml:space="preserve">
     <value>checkBoxSymElems_Rotinversions</value>
   </data>
@@ -4795,6 +4584,10 @@ symbols (mirror and glide planes).</value>
   <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
     <value>Screws</value>
   </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value>Show screw-axis symbols (rotation combined
+with translation) of the space group</value>
+  </data>
   <data name="&gt;&gt;checkBoxSymElems_Screws.Name" xml:space="preserve">
     <value>checkBoxSymElems_Screws</value>
   </data>
@@ -4816,20 +4609,8 @@ symbols (mirror and glide planes).</value>
   <data name="colorControlAxisColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlAxisColor.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlAxisColor.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlAxisColor.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
     <value>Color</value>
@@ -4907,6 +4688,11 @@ symbols (rotation, screw, and rotoinversion axes).</value>
   <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
     <value>Show Symmetry Elements</value>
   </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value>Overlay the crystal's symmetry elements
+(rotation axes, mirror/glide planes,
+inversion centers) on the 3-D view.</value>
+  </data>
   <data name="&gt;&gt;checkBoxShowSymmetryElements.Name" xml:space="preserve">
     <value>checkBoxShowSymmetryElements</value>
   </data>
@@ -4955,20 +4741,8 @@ symbols (rotation, screw, and rotoinversion axes).</value>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlLabelColor.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlLabelColor.FooterText" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlLabelColor.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlLabelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 88</value>
@@ -4981,6 +4755,14 @@ symbols (rotation, screw, and rotoinversion axes).</value>
   </data>
   <data name="colorControlLabelColor.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>Fixed color applied to atom labels (used
+when 'Use fixed color' is selected)</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Fixed color applied to atom labels (used
+when 'Use fixed color' is selected)</value>
   </data>
   <data name="&gt;&gt;colorControlLabelColor.Name" xml:space="preserve">
     <value>colorControlLabelColor</value>
@@ -5093,17 +4875,8 @@ symbols (rotation, screw, and rotoinversion axes).</value>
   <data name="&gt;&gt;radioButtonLabelUseFixedColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxLabelSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLabelSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxLabelSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLabelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLabelSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5133,9 +4906,6 @@ symbols (rotation, screw, and rotoinversion axes).</value>
     <value>0</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
-    <value>Font size of the atom labels (0–200).</value>
-  </data>
-  <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
     <value>Font size of the atom labels (0–200).</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelSize.Name" xml:space="preserve">
@@ -5345,17 +5115,8 @@ the boundaries</value>
   <data name="&gt;&gt;checkBoxGroupByElement.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxLegendSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLegendSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLegendSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5387,9 +5148,6 @@ the boundaries</value>
   <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
     <value>Displayed size of legends (right)</value>
   </data>
-  <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
-    <value>Displayed size of legends (right)</value>
-  </data>
   <data name="&gt;&gt;numericBoxLegendSize.Name" xml:space="preserve">
     <value>numericBoxLegendSize</value>
   </data>
@@ -5402,17 +5160,8 @@ the boundaries</value>
   <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAxesSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5444,9 +5193,6 @@ the boundaries</value>
   <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
     <value>Displayed size of crystal axes (lower-left)</value>
   </data>
-  <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
-    <value>Displayed size of crystal axes (lower-left)</value>
-  </data>
   <data name="&gt;&gt;numericBoxAxesSize.Name" xml:space="preserve">
     <value>numericBoxAxesSize</value>
   </data>
@@ -5459,17 +5205,8 @@ the boundaries</value>
   <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxLightSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxLightSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLightSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5499,9 +5236,6 @@ the boundaries</value>
     <value>0</value>
   </data>
   <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
-    <value>Displayed size of light ball (upper-left)</value>
-  </data>
-  <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
     <value>Displayed size of light ball (upper-left)</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Name" xml:space="preserve">
@@ -5747,6 +5481,11 @@ the boundaries</value>
   <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
     <value>Like Vesta</value>
   </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>Reset atom radii, colors, and bonds to
+VESTA-style defaults (VESTA is a widely used
+crystal-structure visualization program).</value>
+  </data>
   <data name="toolStripButtonResetRotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5771,6 +5510,9 @@ the boundaries</value>
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
     <value>Reset Rotation</value>
   </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>Reset the model orientation to the default (no rotation).</value>
+  </data>
   <data name="toolStripButtonAtomObjects.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5790,6 +5532,9 @@ the boundaries</value>
   </data>
   <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
     <value>Atoms</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>Show/hide the atom spheres in the 3D model.</value>
   </data>
   <data name="toolStripButtonAtomLabels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5811,6 +5556,10 @@ the boundaries</value>
   <data name="toolStripButtonAtomLabels.Text" xml:space="preserve">
     <value>Labels</value>
   </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>Show/hide atom labels (element
+symbols) overlaid on each atom.</value>
+  </data>
   <data name="toolStripButtonUnitCell.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5831,6 +5580,9 @@ the boundaries</value>
   <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
     <value>Unit Cell</value>
   </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>Show/hide the unit-cell frame and faces.</value>
+  </data>
   <data name="toolStripButtonSymmetryElements.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5850,6 +5602,10 @@ the boundaries</value>
   </data>
   <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
     <value>Sym. Elems.</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>Show/hide the crystallographic symmetry elements
+(rotation axes, mirror planes, screw axes, etc.).</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 733</value>
@@ -5879,7 +5635,7 @@ the boundaries</value>
     <value>157, 17</value>
   </metadata>
   <data name="menuStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>None</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -6032,7 +5788,7 @@ the boundaries</value>
     <value>7, 3, 0, 3</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>398, 27</value>
+    <value>200, 27</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6050,7 +5806,56 @@ the boundaries</value>
     <value>panelTop</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="sizeControl1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="sizeControl1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="sizeControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="sizeControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>Size (W×H)</value>
+  </data>
+  <data name="sizeControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="sizeControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>388, 0</value>
+  </data>
+  <data name="sizeControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="sizeControl1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="sizeControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 27</value>
+  </data>
+  <data name="sizeControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Set the rendered image size (width × height)
+in pixels; the window resizes to match.</value>
+  </data>
+  <data name="&gt;&gt;sizeControl1.Name" xml:space="preserve">
+    <value>sizeControl1</value>
+  </data>
+  <data name="&gt;&gt;sizeControl1.Type" xml:space="preserve">
+    <value>Crystallography.Controls.SizeControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;sizeControl1.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;sizeControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="printPreviewDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>771, 17</value>
@@ -6255,51 +6060,47 @@ the boundaries</value>
   <data name="panelTop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="sizeControl1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="sizeControl1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="sizeControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxProjWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="sizeControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxProjWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="sizeControl1.HeaderText" xml:space="preserve">
-    <value>Size (W×H)</value>
+  <data name="numericBoxProjWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="sizeControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+  <data name="numericBoxProjWidth.HeaderText" xml:space="preserve">
+    <value>ProjWidth</value>
   </data>
-  <data name="sizeControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 0</value>
+  <data name="numericBoxProjWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 0</value>
   </data>
-  <data name="sizeControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxProjWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="sizeControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 27</value>
+  <data name="numericBoxProjWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
   </data>
-  <data name="sizeControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
+  <data name="numericBoxProjWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
   </data>
-  <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>Set the rendered image size (width × height)
-in pixels; the window resizes to match.</value>
+  <data name="numericBoxProjWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 27</value>
   </data>
-  <data name="&gt;&gt;sizeControl1.Name" xml:space="preserve">
-    <value>sizeControl1</value>
+  <data name="numericBoxProjWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
   </data>
-  <data name="&gt;&gt;sizeControl1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.SizeControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;numericBoxProjWidth.Name" xml:space="preserve">
+    <value>numericBoxProjWidth</value>
   </data>
-  <data name="&gt;&gt;sizeControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxProjWidth.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxProjWidth.Parent" xml:space="preserve">
     <value>panelTop</value>
   </data>
-  <data name="&gt;&gt;sizeControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;numericBoxProjWidth.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -6699,128 +6500,9 @@ in pixels; the window resizes to match.</value>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
-    <value>Show glide-plane symbols (reflection
-combined with translation) of the space group</value>
-  </data>
-  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
-    <value>Show/hide inversion centers (points where
-the structure maps onto itself under x to
--x) among the displayed symmetry elements.</value>
-  </data>
-  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
-    <value>Show mirror-plane symbols of the space group</value>
-  </data>
-  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
-    <value>Show rotation-axis symbols (2-,
-3-, 4-, 6-fold) of the space group</value>
-  </data>
-  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
-    <value>Show rotoinversion-axis symbols (rotation
-followed by inversion) of the space group</value>
-  </data>
-  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
-    <value>Show screw-axis symbols (rotation combined
-with translation) of the space group</value>
-  </data>
-  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
-    <value>Fixed color applied to atom labels (used
-when 'Use fixed color' is selected)</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
-    <value>Line width of the symmetry-axis symbols (0.5-10)</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
-    <value>Display size of the symmetry-axis
-symbols, in percent (20-500%)</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
-    <value>Size of the inversion-center symbols,
-as a percentage (100% = default size).</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
-    <value>Line width of the symmetry-plane symbols (0.5-10)</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
-    <value>Display size of the symmetry-plane
-symbols, in percent (20-500%)</value>
-  </data>
-  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
-    <value>Number of subdivisions of the unit cell along
-the a-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
-  </data>
-  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
-    <value>Number of subdivisions of the unit cell along
-the b-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
-  </data>
-  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
-    <value>Number of subdivisions of the unit cell along
-the c-axis (integer, 1-10) for the sub-cell
-grid shown when 'Show Subcell' is enabled.</value>
-  </data>
-  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
-    <value>Show/hide atom labels (element
-symbols) overlaid on each atom.</value>
-  </data>
-  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
-    <value>Show/hide the atom spheres in the 3D model.</value>
-  </data>
-  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
-    <value>Reset atom radii, colors, and bonds to
-VESTA-style defaults (VESTA is a widely used
-crystal-structure visualization program).</value>
-  </data>
-  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
-    <value>Reset the model orientation to the default (no rotation).</value>
-  </data>
-  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
-    <value>Show/hide the crystallographic symmetry elements
-(rotation axes, mirror planes, screw axes, etc.).</value>
-  </data>
-  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
-    <value>Show/hide the unit-cell frame and faces.</value>
-  </data>
-  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
-    <value>Overlay the crystal's symmetry elements
-(rotation axes, mirror/glide planes,
-inversion centers) on the 3-D view.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Center of the displayed region (fractional
-coordinates) along each unit-cell axis.</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value>Translate the unit-cell frame along the
-a, b, c axes (fractional coordinates).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>a-axis row of the unit-cell options.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>b-axis row of the unit-cell options.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>c-axis row of the unit-cell options.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Half-width of the displayed region (fractional
-coordinates) along each unit-cell axis.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Set the display center to a preset fractional position.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Set the display range to a preset
-fraction of each unit-cell axis.</value>
-  </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value>Line width of the unit-cell edges (1-5)</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value>Set the projection center as a fractional
-coordinate of the unit cell; the chosen
-point is placed at the center of the view.</value>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Width of the projected main view in nm.
+Smaller values zoom in. Synchronized with
+right-drag / wheel zooming on the view.</value>
   </data>
 </root>

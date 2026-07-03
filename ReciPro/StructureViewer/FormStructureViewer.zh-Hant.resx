@@ -881,4 +881,9 @@ VESTA 風格的預設值 (VESTA 是廣泛使用的
 所選的點會被放置在
 視圖的中心。</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>主視圖的投影寬度（nm）。數值越小，
+放大倍率越高。與視圖上的滑鼠右鍵拖曳
+及滾輪縮放連動。</value>
+  </data>
 </root>

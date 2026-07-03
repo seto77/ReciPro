@@ -189,9 +189,9 @@
             // numericBoxFootX
             // 
             numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootX.FooterText = "px";
-            numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootX.HeaderText = "Foot:  fx";
             numericBoxFootX.Location = new System.Drawing.Point(204, 0);
             numericBoxFootX.Margin = new System.Windows.Forms.Padding(0);
@@ -200,44 +200,46 @@
             numericBoxFootX.Name = "numericBoxFootX";
             numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootX.RadianValue = 8.9360857702109673D;
-            numericBoxFootX.Size = new System.Drawing.Size(134, 25);
+            numericBoxFootX.Size = new System.Drawing.Size(137, 25);
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
             numericBoxFootX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxFootX, "Sets the X pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
             numericBoxFootX.Value = 512D;
+            numericBoxFootX.ValueBoxWidth = 60;
             numericBoxFootX.ValueFontSize = 9F;
             // 
             // numericBoxFootY
             // 
             numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootY.FooterText = "px";
-            numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootY.HeaderText = "fy";
-            numericBoxFootY.Location = new System.Drawing.Point(338, 0);
+            numericBoxFootY.Location = new System.Drawing.Point(341, 0);
             numericBoxFootY.Margin = new System.Windows.Forms.Padding(0);
             numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxFootY.Name = "numericBoxFootY";
             numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootY.RadianValue = 8.9360857702109673D;
-            numericBoxFootY.Size = new System.Drawing.Size(103, 25);
+            numericBoxFootY.Size = new System.Drawing.Size(100, 25);
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
             numericBoxFootY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxFootY, "Sets the Y pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
             numericBoxFootY.Value = 512D;
+            numericBoxFootY.ValueBoxWidth = 60;
             numericBoxFootY.ValueFontSize = 9F;
             // 
             // numericBoxPixelSize
             // 
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
-            numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.HeaderText = "pix. size";
             numericBoxPixelSize.Location = new System.Drawing.Point(441, 0);
             numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);
@@ -246,13 +248,14 @@
             numericBoxPixelSize.Name = "numericBoxPixelSize";
             numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxPixelSize.RadianValue = 0.0017453292519943296D;
-            numericBoxPixelSize.Size = new System.Drawing.Size(119, 27);
+            numericBoxPixelSize.Size = new System.Drawing.Size(124, 27);
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
             numericBoxPixelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPixelSize, "Sets the physical size of one detector pixel in millimeters.");
             numericBoxPixelSize.Value = 0.1D;
+            numericBoxPixelSize.ValueBoxWidth = 40;
             numericBoxPixelSize.ValueFontSize = 9F;
             // 
             // sizeControl1
@@ -414,13 +417,14 @@
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             numericBoxCameraLength2.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxCameraLength2.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength2.Size = new System.Drawing.Size(220, 25);
+            numericBoxCameraLength2.Size = new System.Drawing.Size(194, 25);
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
             numericBoxCameraLength2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCameraLength2, "Sets the camera length to the detector plane in millimeters.");
             numericBoxCameraLength2.Value = 1000D;
+            numericBoxCameraLength2.ValueBoxWidth = 60;
             numericBoxCameraLength2.ValueChanged += numericBoxCameraLength2_ValueChanged;
             // 
             // numericBoxPhi
@@ -437,12 +441,13 @@
             numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPhi.Size = new System.Drawing.Size(87, 25);
+            numericBoxPhi.Size = new System.Drawing.Size(92, 25);
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
             numericBoxPhi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPhi, "Sets the azimuthal angle phi of\r\nthe detector tilt axis in degrees.");
+            numericBoxPhi.ValueBoxWidth = 60;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
             // 
             // numericBoxTau
@@ -461,12 +466,13 @@
             numericBoxTau.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTau.Name = "numericBoxTau";
             numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxTau.Size = new System.Drawing.Size(87, 25);
+            numericBoxTau.Size = new System.Drawing.Size(89, 25);
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
             numericBoxTau.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTau, "Sets the detector tilt angle tau\r\nabout the tilt axis in degrees.");
+            numericBoxTau.ValueBoxWidth = 60;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;
             // 
             // label4

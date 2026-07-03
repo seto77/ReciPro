@@ -87,7 +87,7 @@
 向左倾斜旋转视图。</value>
   </data>
   <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>按设定的方向、速度和时长生成旋转影片，
+    <value>按所选设置生成影片（旋转和/或平移），
 并保存为 MP4 文件。</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
@@ -117,13 +117,16 @@
 于进度对话框中，已不再影响实际编码。</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>设置生成影片的时长（秒，帧率为 30 fps）。</value>
+    <value>影片的时长（秒）。</value>
   </data>
   <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>以度每秒（°/s）设置视点的旋转速度。</value>
+    <value>视图的旋转速度，单位为度每秒
+（°/s，-360 至 360）。负值反转旋转方向。</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>用晶体方向指数 [uvw] 指定旋转轴。</value>
+    <value>用晶体方向指数 [uvw] 指定旋转轴。启用
+Translation 时，[uvw] 同时给出平移方向
+（此时为唯一可用模式）。</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>以当前显示的投影方位（取向）
@@ -141,9 +144,37 @@
     <value>将旋转轴设为某晶面 (hkl)
 的法线方向。</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>输入定义旋转轴的指数：在方向指数模式下
 为方向 [uvw]，在晶面模式下为晶面 (hkl)
-（绕其法线旋转）。</value>
+（绕其法线旋转）。启用 Translation 时，
+[uvw] 还将设定平移方向。</value>
+  </data>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>影片的帧率，单位为帧每秒（1-120）。
+数值越大，画面越流畅，但帧数增多，
+文件体积也随之增大。</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>MP4 编码器质量（1-100）。数值越大，
+目标码率越高，文件体积也越大。</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>投影中心沿方向指数 [uvw] 移动的速度，
+单位为每单位指数每秒的晶格周期数
+（periods/s，按指数值成比例缩放）。
+负值反转移动方向。</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>在 t = Duration 处追加一帧，使影片恰好
+结束于最终的方位/位置。</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>在影片中旋转视图。取消勾选可生成仅平移的影片
+（Rotation 与 Translation 至少需启用其一）。</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>在影片中平移投影中心。平移方向由方向指数
+[uvw] 给出（启用本项时为唯一可用的方向模式）。</value>
   </data>
 </root>

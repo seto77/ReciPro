@@ -120,78 +120,85 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="indexControl1.Values" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
-        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
-        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
-        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
-        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAAAAAAAAAAAAAAAA
-        Cw==
-</value>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>157, 17</value>
+  </metadata>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Generate the movie (rotation and/or translation)
+with the chosen settings and save it as an MP4 file.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close this dialog without creating a movie.</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the view in degrees per second
+(°/s, -360 to 360). Negative values reverse the
+rotation direction.</value>
   </data>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>Rotate the view counter-clockwise about the
 viewing axis (screen normal) for the movie.</value>
   </data>
-  <data name="buttonBottom.ToolTip" xml:space="preserve">
-    <value>Tilt the view downward about the
-horizontal screen axis for the movie.</value>
-  </data>
-  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
-    <value>Tilt the view toward the lower-left about the
-corresponding in-plane axis for the movie.</value>
-  </data>
-  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
-    <value>Tilt the view toward the lower-right about
-the corresponding in-plane axis for the movie.</value>
-  </data>
-  <data name="buttonCancel.ToolTip" xml:space="preserve">
-    <value>Close this dialog without creating a movie.</value>
-  </data>
   <data name="buttonClock.ToolTip" xml:space="preserve">
     <value>Rotate the view clockwise about the
 viewing axis (screen normal) for the movie.</value>
-  </data>
-  <data name="buttonLeft.ToolTip" xml:space="preserve">
-    <value>Tilt the view to the left about the
-vertical screen axis for the movie.</value>
-  </data>
-  <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value>Generate the rotation movie with the chosen direction,
-speed and duration, and save it as an MP4 file.</value>
-  </data>
-  <data name="buttonRight.ToolTip" xml:space="preserve">
-    <value>Tilt the view to the right about the
-vertical screen axis for the movie (default).</value>
-  </data>
-  <data name="buttonTop.ToolTip" xml:space="preserve">
-    <value>Tilt the view upward about the
-horizontal screen axis for the movie.</value>
   </data>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
     <value>Tilt the view toward the upper-left about the
 corresponding in-plane axis for the movie.</value>
   </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Tilt the view to the left about the
+vertical screen axis for the movie.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the lower-left about the
+corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Tilt the view downward about the
+horizontal screen axis for the movie.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the lower-right about
+the corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Tilt the view upward about the
+horizontal screen axis for the movie.</value>
+  </data>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
     <value>Tilt the view toward the upper-right about
 the corresponding in-plane axis for the movie.</value>
   </data>
-  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Encode-speed preset label (ultrafast…veryslow).
-Note: with the current Media Foundation encoder
-this only appears in the progress dialog and no
-longer affects the actual encoding.</value>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Tilt the view to the right about the
+vertical screen axis for the movie (default).</value>
   </data>
   <data name="numericBoxDuration.ToolTip" xml:space="preserve">
-    <value>Length of the movie in seconds (frame rate is 30 fps).</value>
+    <value>Length of the movie in seconds.</value>
   </data>
-  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the view in degrees per second (°/s).</value>
+  <data name="numericBoxFps.ToolTip" xml:space="preserve">
+    <value>Frame rate of the movie in frames per second (1-120).
+Higher values give smoother motion but increase the
+number of frames and the file size.</value>
+  </data>
+  <data name="checkBoxIncludeFinalFrame.ToolTip" xml:space="preserve">
+    <value>Add one extra frame at t = Duration so the movie
+ends exactly at the final orientation/position.</value>
+  </data>
+  <data name="numericBoxQuality.ToolTip" xml:space="preserve">
+    <value>MP4 encoder quality (1-100). Higher values use a
+higher target bitrate and increase the file size.</value>
   </data>
   <data name="radioButtonAxis.ToolTip" xml:space="preserve">
-    <value>Set the rotation axis using a crystal direction index [uvw].</value>
+    <value>Set the rotation axis using a crystal direction index
+[uvw]. When Translation is enabled, [uvw] also gives
+the translation direction (the only available mode).</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>Set the rotation axis to the
+normal of a lattice plane (hkl).</value>
   </data>
   <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
     <value>Rotate about the currently displayed
@@ -205,9 +212,11 @@ tilt direction with the arrow buttons.</value>
     <value>Encode the movie with the H.265 (HEVC) video codec
 (better compression; requires a HEVC encoder).</value>
   </data>
-  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
-    <value>Set the rotation axis to the
-normal of a lattice plane (hkl).</value>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Encode-speed preset label (ultrafast…veryslow).
+Note: with the current Media Foundation encoder
+this only appears in the progress dialog and no
+longer affects the actual encoding.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Encode-speed preset label (ultrafast…veryslow).
@@ -215,10 +224,28 @@ Note: with the current Media Foundation encoder
 this only appears in the progress dialog and no
 longer affects the actual encoding.</value>
   </data>
-  <data name="indexControl1.ToolTip" xml:space="preserve">
+  <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Enter the indices that define the rotation
 axis: a direction [uvw] in Direction-index
 mode, or a lattice plane (hkl) (rotation
-about its normal) in Lattice-plane mode.</value>
+about its normal) in Lattice-plane mode.
+When Translation is enabled, [uvw] also
+sets the translation direction.</value>
+  </data>
+  <data name="checkBoxRotation.ToolTip" xml:space="preserve">
+    <value>Rotate the view during the movie. Uncheck to make
+a translation-only movie (at least one of Rotation
+and Translation must be enabled).</value>
+  </data>
+  <data name="checkBoxTranslation.ToolTip" xml:space="preserve">
+    <value>Translate the projection center during the movie.
+The direction is given by the direction index [uvw]
+(the only direction mode while this is enabled).</value>
+  </data>
+  <data name="numericBoxTranslationSpeed.ToolTip" xml:space="preserve">
+    <value>Speed at which the projection center moves along the
+direction index [uvw], in lattice periods per second
+(periods/s) per unit index (scaled by the index
+values). Negative values reverse the direction.</value>
   </data>
 </root>
