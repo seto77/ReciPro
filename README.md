@@ -54,6 +54,12 @@ You may also cite the software repository itself when appropriate:
 * On some Windows systems, Microsoft Defender SmartScreen or Smart App Control may display a warning before the installer is executed. This may happen for newly built or narrowly distributed research software, and the warning itself does not necessarily mean that the installer is malicious.
 * If you would like to verify the downloaded installer yourself, you may scan it with a multi-engine service such as VirusTotal.
 
+## Code signing policy
+
+Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
+
+Since v.4.942, release artifacts (the *ReciPro-setup.msi* installer and the portable *ReciPro.exe*) are signed with Windows Authenticode as part of the automated release pipeline, and each signing request is reviewed and manually approved by the maintainer before publication. See [CODE_SIGNING.md](CODE_SIGNING.md) for the full policy, including the signing scope, how to verify an installer, and how to report suspicious artifacts.
+
 ## Privacy
 
 *ReciPro* is a local desktop application. It does **not** collect, store, or transmit any personal or usage data, and it contains no telemetry or analytics. After installation it runs fully offline.

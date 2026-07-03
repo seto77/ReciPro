@@ -4,9 +4,9 @@ This document describes the code-signing policy for ReciPro release artifacts.
 
 ## Current status
 
-ReciPro has been accepted into the **SignPath Foundation** free code-signing program for open-source projects, and a production signing certificate was issued to the ReciPro SignPath organization on 2026-06-29. Signing is being integrated into the automated release pipeline.
+ReciPro has been accepted into the **SignPath Foundation** free code-signing program for open-source projects, and a production signing certificate was issued to the ReciPro SignPath organization on 2026-06-29. Since **v.4.942** (released 2026-07-01), release artifacts are signed as part of the automated release pipeline.
 
-Unless a GitHub Release explicitly states that `ReciPro-setup.msi` (named `ReciProSetup.msi` up to v.4.939) is digitally signed, users should not assume that the installer is signed.
+Releases up to v.4.941 predate code signing: unless a GitHub Release explicitly states that `ReciPro-setup.msi` (named `ReciProSetup.msi` up to v.4.939) is digitally signed, users should not assume that the installer is signed.
 
 ## Official downloads
 
