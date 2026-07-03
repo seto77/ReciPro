@@ -217,6 +217,8 @@ Définissez l'espèce, la position, le facteur de température et le facteur de 
 | X, Y, Z | Coordonnées fractionnaires (0–1). Des fractions telles que 1/2 ou 2/3 peuvent être saisies. |
 | Occ | Taux d'occupation (0–1). |
 
+Faites un clic droit sur une ligne d'atome et choisissez **Afficher les positions atomiques équivalentes** pour ouvrir une petite fenêtre listant toutes les positions générées par les opérations de symétrie du groupe d'espace ; son bouton **Copy** copie la liste sous forme de texte séparé par des tabulations (p. ex. pour un collage dans un tableur).
+
 **Origin shift** : décale l'origine de toutes les coordonnées atomiques. Utilisez les boutons prédéfinis (**+** / **−**) pour les décalages standard, ou **Apply custom shift** pour une valeur arbitraire.
 
 **Facteur de Debye–Waller (facteur de température)** :

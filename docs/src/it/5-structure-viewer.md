@@ -33,6 +33,7 @@ Anche le scorciatoie <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> valide per tutta l'applica
 
 Struttura cristallina 3D con sorgente luminosa, assi cristallografici e legenda degli atomi.
 > Il riquadro **Size (W×H)** in alto a destra nella finestra imposta la dimensione in pixel utilizzata quando si salva o si copia l'immagine renderizzata.
+> Il riquadro **ProjWidth** accanto ad esso mostra la larghezza della vista proiettata in nm. Modifica il valore per zoomare numericamente — resta sincronizzato con lo zoom tramite trascinamento con il tasto destro / rotellina sulla vista.
 
 ---
 
@@ -44,7 +45,12 @@ Struttura cristallina 3D con sorgente luminosa, assi cristallografici e legenda 
 
 Salva immagine, copia negli appunti (Ctrl+Shift+C), salva filmato (MP4).
 
-**Salva filmato** apre la finestra di dialogo delle impostazioni del filmato mostrata sotto: imposta la velocità di rotazione, la durata della registrazione e la direzione (proiezione corrente, un indice di direzione o un piano reticolare), il codec (H.264 / H.265) e la velocità di codifica, quindi premi **OK** per generare un file MP4.
+**Salva filmato** apre la finestra di dialogo delle impostazioni del filmato mostrata sotto. Un filmato può ruotare la vista, traslare il centro di proiezione o fare entrambe le cose contemporaneamente — seleziona **Rotation** e/o **Translation**:
+
+- **Rotation**: ruota la vista alla velocità **Speed** (°/s; i valori negativi invertono il senso di rotazione) attorno all'asse scelto sotto — **Proiezione corrente** (direzione di inclinazione scelta con i pulsanti freccia), un **Indice di direzione** [uvw] o la normale di un **Piano reticolare** (hkl).
+- **Translation**: sposta il centro di proiezione lungo l'indice di direzione [uvw] alla velocità **Speed** (periodi reticolari al secondo). Questa opzione compare solo quando la finestra di dialogo viene aperta dal Visualizzatore struttura e, finché è attiva, **Indice di direzione** è l'unica modalità di direzione disponibile.
+
+Imposta la lunghezza del filmato (**Duration**), la frequenza dei fotogrammi (**FPS**, 1–120) e la qualità di codifica (**Quality**, 1–100; valori più alti usano un bitrate maggiore e producono un file più grande), scegli il codec (**H264** / **H265**) e premi **OK** per generare un file MP4. **Include final frame** aggiunge un fotogramma extra a t = Duration, così il filmato termina esattamente nell'orientamento/posizione finale. (L'elenco della velocità di codifica serve ormai solo come etichetta nella visualizzazione dell'avanzamento e non influisce più sulla codifica effettiva.)
 
 ![Finestra di dialogo delle impostazioni del filmato](../assets/cap-it-auto/FormMovie.png)
 
@@ -231,7 +237,7 @@ Dissolve gli oggetti distanti nella direzione della profondità. Gli oggetti pi�
 
 #### Centro di proiezione
 
-Imposta il centro della proiezione sulle coordinate specificate. Attiva **Custom** per inserire coordinate arbitrarie.
+Imposta il centro della proiezione sulle coordinate specificate. Attiva **Personalizzato** per inserire coordinate arbitrarie. Ogni coordinata viene ricondotta all'intervallo da −0.5 a +0.5 (un periodo reticolare). Un filmato **Translation** (vedi il [Menu File](#menu-file)) controlla automaticamente questi valori.
 
 #### Qualità di rendering
 
@@ -289,5 +295,3 @@ Per ciascuna classe puoi regolare la dimensione del simbolo, lo spessore della l
 - [Informazioni di simmetria](2-symmetry-information.md)
 - [Simulatore di diffrazione](7-diffraction-simulator/index.md)
 - [Scorciatoie da tastiera e mouse](21-shortcuts.md)
-</content>
-</invoke>

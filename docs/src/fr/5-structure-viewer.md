@@ -33,6 +33,7 @@ Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> valables dans toute l'applicatio
 
 Structure cristalline 3D avec source de lumière, axes cristallins et légende des atomes.
 > La boîte **Size (W×H)** en haut à droite de la fenêtre définit la taille en pixels utilisée lors de l'enregistrement ou de la copie de l'image rendue.
+> La boîte **ProjWidth** juste à côté affiche la largeur de la vue projetée en nm. Modifiez la valeur pour zoomer numériquement — elle reste synchronisée avec le zoom par glisser-droite / molette dans la vue.
 
 ---
 
@@ -45,7 +46,12 @@ Structure cristalline 3D avec source de lumière, axes cristallins et légende d
 
 Enregistrer l'image, copier dans le presse-papiers (Ctrl+Shift+C), enregistrer le film (MP4).
 
-**Enregistrer le film** ouvre la boîte de dialogue de réglage du film ci-dessous : définissez la vitesse de rotation, la durée d'enregistrement et la direction (projection actuelle, un indice de direction ou un plan réticulaire), le codec (H.264 / H.265) et la vitesse d'encodage, puis appuyez sur **OK** pour générer un fichier MP4.
+**Enregistrer le film** ouvre la boîte de dialogue de réglage du film ci-dessous. Un film peut faire pivoter la vue, translater le centre de projection, ou faire les deux à la fois — cochez **Rotation** et/ou **Translation** :
+
+- **Rotation** : fait pivoter la vue à la vitesse **Speed** (°/s ; les valeurs négatives inversent le sens) autour de l'axe choisi en dessous — **Projection actuelle** (direction d'inclinaison choisie avec les boutons fléchés), un **Indice de direction** [uvw], ou la normale d'un **Plan réticulaire** (hkl).
+- **Translation** : déplace le centre de projection le long de l'indice de direction [uvw] à la vitesse **Speed** (périodes du réseau par seconde). Cette option n'apparaît que lorsque la boîte de dialogue est ouverte depuis le Visualiseur de structure, et tant qu'elle est activée, **Indice de direction** est le seul mode de direction disponible.
+
+Réglez la longueur du film (**Duration**), la fréquence d'images (**FPS**, 1–120) et la qualité d'encodage (**Quality**, 1–100 ; des valeurs plus élevées utilisent un débit plus élevé et donnent un fichier plus volumineux), choisissez le codec (**H264** / **H265**), puis appuyez sur **OK** pour générer un fichier MP4. **Include final frame** ajoute une image supplémentaire à t = Duration afin que le film se termine exactement à l'orientation/position finale. (La liste de vitesse d'encodage ne sert plus qu'à étiqueter l'affichage de la progression et n'affecte plus l'encodage réel.)
 
 ![Boîte de dialogue de réglage du film](../assets/cap-fr-auto/FormMovie.png)
 
@@ -233,7 +239,7 @@ Atténue les objets éloignés dans la direction de la profondeur. Les objets pl
 
 #### Centre de projection
 
-Définit le centre de projection sur les coordonnées spécifiées. Activez **Custom** pour saisir des coordonnées arbitraires.
+Définit le centre de projection sur les coordonnées spécifiées. Activez **Personnalisé** pour saisir des coordonnées arbitraires. Chaque coordonnée est repliée dans l'intervalle −0.5 à +0.5 (une période du réseau). Un film **Translation** (voir le [menu Fichier](#menu-fichier)) pilote ces valeurs automatiquement.
 
 #### Qualité de rendu
 

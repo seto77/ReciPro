@@ -33,6 +33,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 
 3D crystal structure with light source, crystal axes, and atom legend.
 > The **Size (W×H)** box at the top right of the window sets the pixel size used when saving or copying the rendered image.
+> The **ProjWidth** box next to it shows the width of the projected view in nm. Edit the value to zoom numerically — it stays synchronized with right-drag / wheel zooming on the view.
 
 ---
 
@@ -45,7 +46,12 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 
 Save image, copy to clipboard (Ctrl+Shift+C), save movie (MP4).
 
-**Save movie** opens the Movie setting dialog below: set the rotation speed, recording duration, and direction (current projection, a direction index, or a lattice plane), the codec (H.264 / H.265) and encode speed, then press **OK** to generate an MP4 file.
+**Save movie** opens the Movie setting dialog below. A movie can rotate the view, translate the projection center, or do both at once — tick **Rotation** and/or **Translation**:
+
+- **Rotation**: rotates the view at **Speed** (°/s; negative values reverse the direction) about the axis chosen below — **Current projection** (tilt direction picked with the arrow buttons), a **Direction index** [uvw], or the normal of a **Lattice plane** (hkl).
+- **Translation**: moves the projection center along the direction index [uvw] at **Speed** (lattice periods per second). This option appears only when the dialog is opened from the Structure Viewer, and while it is enabled **Direction index** is the only direction mode.
+
+Set the movie length (**Duration**), the frame rate (**FPS**, 1–120), and the encoder quality (**Quality**, 1–100; higher values use a higher bitrate and give a larger file), choose the codec (**H264** / **H265**), and press **OK** to generate an MP4 file. **Include final frame** appends one extra frame at t = Duration so the movie ends exactly at the final orientation/position. (The encode-speed list only labels the progress display and no longer affects the actual encoding.)
 
 ![Movie setting dialog](../assets/cap-en-auto/FormMovie.png)
 
@@ -233,7 +239,7 @@ Fades distant objects in the depth direction. Objects farther than **Far** are f
 
 #### Projection center
 
-Sets the centre of projection to the specified coordinates. Turn on **Custom** to enter arbitrary coordinates.
+Sets the centre of projection to the specified coordinates. Turn on **Custom** to enter arbitrary coordinates. Each coordinate is folded into the range −0.5 to +0.5 (one lattice period). A **Translation** movie (see the [File menu](#file-menu)) drives these values automatically.
 
 #### Rendering quality
 

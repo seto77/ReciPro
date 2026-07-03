@@ -33,6 +33,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 
 3D-Kristallstruktur mit Lichtquelle, Kristallachsen und Atomlegende.
 > Die Box **Größe (B×H)** oben rechts im Fenster legt die Pixelgröße fest, die beim Speichern oder Kopieren des gerenderten Bildes verwendet wird.
+> Die Box **ProjWidth** daneben zeigt die Breite der projizierten Ansicht in nm an. Bearbeiten Sie den Wert, um numerisch zu zoomen — er bleibt mit dem Zoomen per Rechtsziehen / Mausrad in der Ansicht synchronisiert.
 
 ---
 
@@ -45,7 +46,12 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 
 Bild speichern, in die Zwischenablage kopieren (Ctrl+Shift+C), Film speichern (MP4).
 
-**Film speichern** öffnet den unten gezeigten Dialog zur Filmeinstellung: Stellen Sie die Rotationsgeschwindigkeit, die Aufnahmedauer und die Richtung (aktuelle Projektion, ein Richtungsindex oder eine Netzebene), den Codec (H.264 / H.265) und die Encodiergeschwindigkeit ein und drücken Sie dann **OK**, um eine MP4-Datei zu erzeugen.
+**Film speichern** öffnet den unten gezeigten Dialog zur Filmeinstellung. Ein Film kann die Ansicht drehen, das Projektionszentrum verschieben oder beides gleichzeitig tun — aktivieren Sie **Rotation** und/oder **Translation**:
+
+- **Rotation**: dreht die Ansicht mit **Speed** (°/s; negative Werte kehren die Richtung um) um die darunter gewählte Achse — **Aktuelle Projektion** (Kipprichtung, mit den Pfeil-Schaltflächen gewählt), ein **Richtungsindex** [uvw] oder die Normale einer **Gitterebene** (hkl).
+- **Translation**: verschiebt das Projektionszentrum entlang des Richtungsindex [uvw] mit **Speed** (Gitterperioden pro Sekunde). Diese Option erscheint nur, wenn der Dialog aus der Strukturansicht geöffnet wurde, und solange sie aktiviert ist, ist **Richtungsindex** der einzige Richtungsmodus.
+
+Legen Sie die Filmlänge (**Duration**), die Bildrate (**FPS**, 1–120) und die Encoder-Qualität (**Quality**, 1–100; höhere Werte verwenden eine höhere Bitrate und ergeben eine größere Datei) fest, wählen Sie den Codec (**H264** / **H265**) und drücken Sie **OK**, um eine MP4-Datei zu erzeugen. **Include final frame** hängt einen zusätzlichen Frame bei t = Duration an, sodass der Film exakt mit der endgültigen Orientierung/Position endet. (Die Liste der Encodiergeschwindigkeit beschriftet nur noch die Fortschrittsanzeige und beeinflusst die eigentliche Encodierung nicht mehr.)
 
 ![Dialog zur Filmeinstellung](../assets/cap-de-auto/FormMovie.png)
 
@@ -233,7 +239,7 @@ Blendet entfernte Objekte in der Tiefenrichtung aus. Objekte weiter als **Far** 
 
 #### Projektionszentrum
 
-Setzt das Zentrum der Projektion auf die angegebenen Koordinaten. Aktivieren Sie **Benutzerdefiniert**, um beliebige Koordinaten einzugeben.
+Setzt das Zentrum der Projektion auf die angegebenen Koordinaten. Aktivieren Sie **Benutzerdefiniert**, um beliebige Koordinaten einzugeben. Jede Koordinate wird in den Bereich −0.5 bis +0.5 (eine Gitterperiode) zurückgefaltet. Ein **Translation**-Film (siehe [Menü „Datei“](#menü-datei)) steuert diese Werte automatisch an.
 
 #### Renderqualität
 

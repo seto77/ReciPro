@@ -217,6 +217,8 @@ Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. 
 | X, Y, Z | Fraktionelle Koordinaten (0–1). Brüche wie 1/2 oder 2/3 können eingegeben werden. |
 | Occ | Besetzung (0–1). |
 
+Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äquivalente Atompositionen anzeigen**, um ein kleines Fenster zu öffnen, das alle durch die Symmetrieoperationen der Raumgruppe erzeugten Positionen auflistet; die Schaltfläche **Copy** kopiert die Liste als tabulatorgetrennten Text (z. B. zum Einfügen in eine Tabellenkalkulation).
+
 **Ursprungsverschiebung**: verschiebt den Ursprung aller Atomkoordinaten. Verwenden Sie die voreingestellten Schaltflächen (**+** / **−**) für Standardverschiebungen oder **Apply custom shift** für einen beliebigen Betrag.
 
 **Debye–Waller-Faktor (Temperaturfaktor)**:

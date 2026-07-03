@@ -33,6 +33,7 @@ Los atajos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda la aplicación de la [ventan
 
 Estructura cristalina 3D con fuente de luz, ejes cristalinos y leyenda de átomos.
 > La caja **Size (W×H)** en la parte superior derecha de la ventana establece el tamaño en píxeles utilizado al guardar o copiar la imagen renderizada.
+> La caja **ProjWidth** situada a su lado muestra el ancho de la vista proyectada en nm. Edite el valor para hacer zoom numéricamente — permanece sincronizado con el zoom por arrastre con el botón derecho / rueda del ratón sobre la vista.
 
 ---
 
@@ -45,7 +46,12 @@ Estructura cristalina 3D con fuente de luz, ejes cristalinos y leyenda de átomo
 
 Guardar imagen, copiar al portapapeles (Ctrl+Shift+C), guardar película (MP4).
 
-**Guardar película** abre el cuadro de diálogo de configuración de película que se muestra a continuación: establezca la velocidad de rotación, la duración de la grabación y la dirección (proyección actual, un índice de dirección o un plano reticular), el códec (H.264 / H.265) y la velocidad de codificación, y luego pulse **OK** para generar un archivo MP4.
+**Guardar película** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotation** y/o **Translation**:
+
+- **Rotation**: rota la vista a la velocidad **Speed** (°/s; los valores negativos invierten el sentido) alrededor del eje elegido debajo — **Proyección actual** (dirección de inclinación elegida con los botones de flecha), un **Índice de dirección** [uvw], o la normal de un **Plano reticular** (hkl).
+- **Translation**: mueve el centro de proyección a lo largo del índice de dirección [uvw] a la velocidad **Speed** (periodos de red por segundo). Esta opción solo aparece cuando el cuadro de diálogo se abre desde el Visor de estructura y, mientras está habilitada, **Índice de dirección** es el único modo de dirección disponible.
+
+Establezca la duración de la película (**Duration**), la frecuencia de fotogramas (**FPS**, 1–120) y la calidad del codificador (**Quality**, 1–100; los valores más altos usan una tasa de bits mayor y producen un archivo más grande), elija el códec (**H264** / **H265**) y pulse **OK** para generar un archivo MP4. **Include final frame** añade un fotograma adicional en t = Duration para que la película termine exactamente en la orientación/posición final. (La lista de velocidad de codificación solo etiqueta la indicación de progreso y ya no afecta a la codificación real.)
 
 ![Cuadro de diálogo de configuración de película](../assets/cap-es-auto/FormMovie.png)
 
@@ -233,7 +239,7 @@ Atenúa los objetos lejanos en la dirección de profundidad. Los objetos más le
 
 #### Centro de proyección
 
-Establece el centro de proyección en las coordenadas especificadas. Active **Custom** para introducir coordenadas arbitrarias.
+Establece el centro de proyección en las coordenadas especificadas. Active **Personalizado** para introducir coordenadas arbitrarias. Cada coordenada se pliega al intervalo de −0.5 a +0.5 (un periodo de red). Una película de **Translation** (véase el [Menú Archivo](#menú-archivo)) controla estos valores automáticamente.
 
 #### Calidad de renderizado
 

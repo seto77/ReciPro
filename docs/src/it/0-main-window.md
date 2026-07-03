@@ -217,6 +217,8 @@ Imposta la specie, la posizione, il fattore di temperatura e il fattore di diffu
 | X, Y, Z | Coordinate frazionarie (0–1). Si possono immettere frazioni come 1/2 o 2/3. |
 | Occ | Occupazione (0–1). |
 
+Fai clic con il tasto destro su una riga di atomo e scegli **Mostra posizioni atomiche equivalenti** per aprire una piccola finestra che elenca tutte le posizioni generate dalle operazioni di simmetria del gruppo spaziale; il pulsante **Copy** copia l'elenco come testo separato da tabulazioni (ad esempio per incollarlo in un foglio di calcolo).
+
 **Origin shift**: sposta l'origine di tutte le coordinate atomiche. Usa i pulsanti preimpostati (**+** / **−**) per gli spostamenti standard, oppure **Apply custom shift** per un valore arbitrario.
 
 **Fattore di Debye–Waller (fattore di temperatura)**:

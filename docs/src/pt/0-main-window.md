@@ -217,6 +217,8 @@ Defina a espécie, a posição, o fator de temperatura e o fator de espalhamento
 | X, Y, Z | Coordenadas fracionárias (0–1). Frações como 1/2 ou 2/3 podem ser inseridas. |
 | Occ | Ocupação (0–1). |
 
+Clique com o botão direito em uma linha de átomo e escolha **Mostrar posições equivalentes do átomo** para abrir uma pequena janela que lista todas as posições geradas pelas operações de simetria do grupo espacial; seu botão **Copy** copia a lista como texto separado por tabulações (por exemplo, para colar em uma planilha).
+
 **Origin shift**: desloca a origem de todas as coordenadas atômicas. Use os botões predefinidos (**+** / **−**) para deslocamentos padrão, ou **Apply custom shift** para um valor arbitrário.
 
 **Fator de Debye–Waller (fator de temperatura)**:

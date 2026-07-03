@@ -171,5 +171,3 @@
 - [晶體資料庫](1-crystal-database.md) — 定義要計算交互作用的晶體。
 - [繞射模擬器](7-diffraction-simulator/index.md) — 使用結構因子模擬繞射圖樣。
 - [附錄 A2. 電子束交互作用 (固體物理背景)](appendix/a2-beam-interaction/index.md) — 每個索引標籤背後的散射與固體物理。
-</content>
-</invoke>
