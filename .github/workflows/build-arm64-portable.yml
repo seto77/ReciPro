@@ -245,7 +245,9 @@ jobs:
           # portable 判定して Check Updates メニューを隠すため (codex レビュー指摘)
           Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
           Copy-Item "LICENSE.md" $publishDir -Force
-          Copy-Item "README-PORTABLE-ARM64.txt" (Join-Path $publishDir "README-PORTABLE.txt") -Force
+          # 260703Cl リポジトリトップページの整理のため README-PORTABLE*.txt を .github/ へ移動 (配布 ZIP 内の名前は不変)
+          # 旧: Copy-Item "README-PORTABLE-ARM64.txt" (Join-Path $publishDir "README-PORTABLE.txt") -Force
+          Copy-Item ".github/README-PORTABLE-ARM64.txt" (Join-Path $publishDir "README-PORTABLE.txt") -Force
 
           # 260611Cl 自前の ZIP 化はしない: Actions artifact はダウンロード時に GitHub が必ず ZIP で包むため、
           # ここで ZIP を作ると二重 ZIP (2 回解凍) になる (Surface 検証で指摘)。フォルダのまま artifact に渡し、

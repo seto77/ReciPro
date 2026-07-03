@@ -296,7 +296,9 @@ jobs:
           foreach ($n in $natives) { Copy-Item $n.FullName $publishDir -Force; Write-Host "Bundled native: $($n.Name)" }
 
           Copy-Item "LICENSE.md" $publishDir -Force
-          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          # 260703Cl リポジトリトップページの整理のため README-PORTABLE*.txt を .github/ へ移動 (配布 ZIP 内の名前は不変)
+          # 旧: Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          Copy-Item ".github/README-PORTABLE.txt" $publishDir -Force
 
           # 260602Cl 参照ライブラリの分離 pdb を配布物から除去 (ReciPro 本体は embedded のため元々 pdb なし)。
           Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
