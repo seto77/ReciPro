@@ -114,7 +114,7 @@ Lo stato di rotazione del cristallo è condiviso dal simulatore di diffrazione, 
 
 ### Orientazione corrente
 
-![Orientazione corrente](../assets/cap-it-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
+![Orientazione attuale](../assets/cap-it-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
 
 Mostra l'orientazione del cristallo. Trascina per ruotare. Assi: rosso = *a*, verde = *b*, blu = *c*.
 
@@ -141,7 +141,7 @@ Ruota dell'angolo Step. Spunta Animation per la rotazione continua.
 
 ### Visualizza lungo
 
-![Visualizza lungo](../assets/cap-it-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![Vista lungo](../assets/cap-it-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Allinea un asse di zona [*uvw*] o un piano reticolare (*hkl*) perpendicolarmente allo schermo.
 

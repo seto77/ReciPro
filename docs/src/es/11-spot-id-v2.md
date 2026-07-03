@@ -38,7 +38,7 @@ Abrir/guardar una imagen de difracción. Se admite la misma carga mediante arras
 
 ## Óptica
 
-![Optics](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Óptica](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Fuente incidente
 
@@ -52,7 +52,7 @@ La longitud de cámara (mm) y el tamaño de píxel del detector (mm o nm⁻¹). 
 
 ## Información de la reflexión
 
-![Spot information](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Información del punto](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: Detección automática de reflexiones mediante máximos locales y sustracción del fondo.
 - **Number**: El número máximo de reflexiones que se detectarán.

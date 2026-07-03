@@ -252,10 +252,10 @@ détecteur annulaire</value>
     <value>Taille</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>réflexions à l'intérieur</value>
+    <value>taches à l'intérieur</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>Info réflexion</value>
+    <value>Info tache</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Le contour du diaphragme
@@ -875,7 +875,7 @@ Start/Step/Num mais modifiable directement.</value>
   </data>
   <data name="checkBoxPreset.ToolTip" xml:space="preserve">
     <value>Afficher ou masquer la fenêtre des préréglages, qui
-enregistre et rappelle les conditions d'imagerie TEM.</value>
+enregistre et rappelle les conditions d'imagerie MET.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Demi-angles de collecte interne/externe (mrad)

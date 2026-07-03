@@ -1,15 +1,15 @@
 # 結構因子
 
-原子散射因子描述單一原子；**結構因子**則描述晶胞中所有原子如何*共同*散射。它是 **Reflections** 索引標籤所列出的量（`F_real`、`F_inv`、$\lvert F\rvert$、$F^2$），也是連結上一頁原子物理與繞射強度之間的橋梁。
+原子散射因子描述單一原子；**結構因子**則描述晶胞中所有原子如何*共同*散射。它是 **繞射** 索引標籤所列出的量（`F_real`、`F_inv`、$\lvert F\rvert$、$F^2$），也是連結上一頁原子物理與繞射強度之間的橋梁。
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-reflections.png)
+    ![繞射 — X-ray](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-reflections.png)
+    ![繞射 — electron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-reflections.png)
+    ![繞射 — neutron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ $$T_j = \exp\!\left(-2\pi^2\,\mathbf g^{\mathsf T}\!\mathbf U_j\,\mathbf g\right
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-因此 $B$ 隨溫度上升，並對重原子減小。ReciPro 直接採用表列或輸入的 $B_j$，而不計算此式。由於 $T_j$ 與散射因子相乘，**Scattering factors** 索引標籤可以對所繪曲線套用相同的 $e^{-Bs^2}$ 阻尼。阻尼隨溫度與 $s$ 增大，這正是熱漫散射（從同調布拉格束流中移除並重新分配至漫散背景的強度）在動力學理論中供給吸收位能的原因（[附錄 A3](../a3-bloch-wave/index.md)）。
+因此 $B$ 隨溫度上升，並對重原子減小。ReciPro 直接採用表列或輸入的 $B_j$，而不計算此式。由於 $T_j$ 與散射因子相乘，**散射因子** 索引標籤可以對所繪曲線套用相同的 $e^{-Bs^2}$ 阻尼。阻尼隨溫度與 $s$ 增大，這正是熱漫散射（從同調布拉格束流中移除並重新分配至漫散背景的強度）在動力學理論中供給吸收位能的原因（[附錄 A3](../a3-bloch-wave/index.md)）。
 
 ---
 
@@ -54,7 +54,7 @@ $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\fra
 
 反射可能因兩種不同的原因而**缺失**：
 
-- **系統性（空間群）缺失。** 點陣中心化以及帶有平移分量的對稱元素（螺旋軸、滑移面）使整類反射*精確地*消失，對該空間群中的每個晶體皆然，與原子組成無關。這些就是 **Hide prohibited planes** 背後的規則。
+- **系統性（空間群）缺失。** 點陣中心化以及帶有平移分量的對稱元素（螺旋軸、滑移面）使整類反射*精確地*消失，對該空間群中的每個晶體皆然，與原子組成無關。這些就是 **隱藏禁制晶面** 背後的規則。
 - **偶然性的近消光。** 當原子貢獻對某特定結構恰好抵消時，強度雖小卻非對稱性所禁止，且若組成或位置改變便可能重新出現。這些*不會*被消光規則移除。
 
 系統性缺失是晶胞之對稱相關副本之間的相位抵消。對於中心化平移 $\mathbf t_\alpha$，結構因子帶有一個公因子
@@ -96,14 +96,14 @@ $$\lvert F_{\mathbf g}\rvert^2 - \lvert F_{-\mathbf g}\rvert^2 = -4\,\operatorna
 
 ## 從結構因子到粉末強度
 
-開啟 **Powder Diffraction Intensities (Bragg–Brentano)** 會將隨機取向多晶體的幾何納入考量，把 $\lvert F\rvert^2$ 轉換為相對粉末強度：
+開啟 **粉末繞射強度（Bragg-Brentano 光路）** 會將隨機取向多晶體的幾何納入考量，把 $\lvert F\rvert^2$ 轉換為相對粉末強度：
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
-- $m_{hkl}$ : **多重度** — 在同一 $2\theta$ 處重疊的對稱等價晶面數目（表格中的 *Multi.* 欄）。
+- $m_{hkl}$ : **多重度** — 在同一 $2\theta$ 處重疊的對稱等價晶面數目（表格中的 *多重度* 欄）。
 - $Lp(\theta)$ : Bragg-Brentano 光學的 **勞侖茲-偏振**因子，$Lp = \dfrac{1+\cos^2 2\theta}{\sin^2\theta\,\cos\theta}$，會強烈增強低角度的波峰。
 
-由於在此模式下等價晶面會被合併為單一條譜線，ReciPro 也會強制開啟 *Hide equivalent planes* 與 *Hide prohibited planes*。
+由於在此模式下等價晶面會被合併為單一條譜線，ReciPro 也會強制開啟 *隱藏等效晶面* 與 *隱藏禁制晶面*。
 
 ---
 
@@ -111,5 +111,5 @@ $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
 - [原子散射因子](scattering-factor.md) — 進入總和的 $f_j$。
 - [衰減與傳輸](attenuation-transport.md) — 散射事件之間束流會發生什麼。
-- [3. 電子束交互作用 → Reflections 索引標籤](../../3-beam-interaction.md#reflections-tab)
+- [3. 電子束交互作用 → 繞射 索引標籤](../../3-beam-interaction.md#reflections-tab)
 - [附錄 A3. 動力學繞射](../a3-bloch-wave/index.md) — 當 $\lvert F\rvert^2$（運動學）已不再足夠時。

@@ -10,7 +10,7 @@ Praktische Beispiele für ReciPro-Makros. Die ersten paar sind einsteigerfreundl
 
 ### A. Grundlegende Schleife
 
-Der einfachste Weg, den Editor kennenzulernen. Führen Sie dies mit **Step by step** aus und beobachten Sie, wie sich `i` und `sq` im Debug-Bereich ändern — das ist die ReciPro-Art, Werte „auszugeben" (`print()` funktioniert nicht).
+Der einfachste Weg, den Editor kennenzulernen. Führen Sie dies mit **Step by step** aus und beobachten Sie, wie sich `i` und `sq` im Debug-Panel ändern — das ist die ReciPro-Art, Werte „auszugeben" (`print()` funktioniert nicht).
 
 ```python
 # Loop 10 times and compute the squares.
@@ -146,7 +146,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 ## Tipps
 
-- **Werte inspizieren**: `print()` funktioniert in dieser Umgebung nicht (keine Konsole). Verwenden Sie die Ausführung **Step by step** und beobachten Sie den Debug-Bereich, der die lokalen Variablen in jeder Zeile auflistet.
+- **Werte inspizieren**: `print()` funktioniert in dieser Umgebung nicht (keine Konsole). Verwenden Sie die Ausführung **Step by step** und beobachten Sie das Debug-Panel, das die lokalen Variablen in jeder Zeile auflistet.
 - **`math` ist vorab importiert**: `math.sqrt(x)`, `math.sin(x)`, `math.pi`, `math.radians(deg)` sind ohne `import math` verfügbar.
 - **Stapel-Beschleunigung**: Setzen Sie `ReciPro.DifSim.SkipRendering = True` während enger Schleifen und setzen Sie es danach auf `False` zurück.
 - **Auf das Rendering warten**: Rufen Sie `ReciPro.Sleep(ms)` auf, um die Ausführung anzuhalten, wenn die GUI nachkommen muss.

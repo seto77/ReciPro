@@ -206,7 +206,7 @@
     <value>Размер символа</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
     <value>Отражения</value>
@@ -224,7 +224,7 @@
     <value>Размер символа</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
     <value>Инверсионные повороты</value>
@@ -264,7 +264,7 @@
 чтобы настроить его отдельно)</value>
   </data>
   <data name="groupBoxLabel.Text" xml:space="preserve">
-    <value>Подпись</value>
+    <value>Метка</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
     <value>Показывать связанные атомы, 
@@ -782,7 +782,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 с трансляцией) пространственной группы</value>
   </data>
   <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
-    <value>Фиксированный цвет, применяемый к меткам атомов (используется
+    <value>Фиксированный цвет, применяемый к подписям атомов (используется
 при выборе «Use fixed color»)</value>
   </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
@@ -819,7 +819,7 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
 отображаемой при включённой опции «Show Subcell».</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
-    <value>Показать/скрыть метки атомов (символы
+    <value>Показать/скрыть подписи атомов (символы
 элементов), наложенные на каждый атом.</value>
   </data>
   <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">

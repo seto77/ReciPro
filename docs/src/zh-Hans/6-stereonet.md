@@ -45,7 +45,7 @@
 
 ## Mode
 
-![Mode](../assets/cap-zh-Hans-auto/FormStereonet.panel3.groupBoxMode.png)
+![模式](../assets/cap-zh-Hans-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### 投影目标
 
@@ -77,7 +77,7 @@
 
 ## Indices
 
-![Indices](../assets/cap-zh-Hans-auto/FormStereonet.panel3.groupBoxIndices.png)
+![指数](../assets/cap-zh-Hans-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 设置要绘制哪些晶面 / 轴。
 
@@ -107,7 +107,7 @@
 
 ### Appearance
 
-![Appearance tab](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage1.png)
+![外观选项卡](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
@@ -126,13 +126,13 @@
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage2.png)
+![大圆选项卡](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage2.png)
 
 绘制大圆和小圆。可通过 **zone-axis index** \([uvw]\)（由该轴所属晶带形成的大圆）指定，或通过共享同一晶带轴的 **two crystal-plane indices** 指定。圆的线宽同样可通过轨道滑块配置。
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage4.png)
+![波选项卡](../assets/cap-zh-Hans-auto/FormStereonet.tabControl.tabPage4.png)
 
 仅当选择 **Planes** 或 **Kikuchi line pairs** 作为投影目标时可用。设置波源（X-ray / electron / neutron）以及计算晶体结构因子所需的波长或能量，这些结构因子用于 [Mode](#mode) 中的 **structure-factor weighting** 选项。
 

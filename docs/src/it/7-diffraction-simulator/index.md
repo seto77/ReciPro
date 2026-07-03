@@ -116,7 +116,7 @@ Le informazioni corrispondenti alla posizione del cursore (cursore *q*, *d*, 2θ
 
 ### Preset {#toolbar}
 
-![Menu Preset](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Menu Preimpostazioni](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Salvare e richiamare una configurazione completa del simulatore — lunghezza d'onda, geometria del rivelatore, impostazioni delle schede, proprietà dei riflessi e così via — come preset. Utile per passare rapidamente tra strumenti / modalità di acquisizione.
 
@@ -159,7 +159,7 @@ Salvare e richiamare una configurazione completa del simulatore — lunghezza d'
 
 ### Misc
 
-![Misc](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Varie](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** : Quantità di rotazione del cristallo per pixel di trascinamento del mouse.
 - **TEM holder simulation** : Apre la finestra di simulazione collegata al portacampioni (vedi sotto).
@@ -178,7 +178,7 @@ Apre una finestra che collega il pattern di diffrazione a un **TEM holder** a do
 
 ### General
 
-![Scheda General](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![Scheda Generale](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 Imposta i colori dei riflessi, delle etichette, delle linee di Kikuchi, degli anelli di Debye e di altri overlay. Le impostazioni qui si applicano a tutte le modalità di rendering.
 
@@ -203,7 +203,7 @@ Attiva quando gli anelli di Debye sono abilitati nella barra degli strumenti.
 
 ### Scale
 
-![Scheda Scale](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Scheda Scala](../../assets/cap-it-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Attiva quando le linee di scala sono abilitate nella barra degli strumenti.
 

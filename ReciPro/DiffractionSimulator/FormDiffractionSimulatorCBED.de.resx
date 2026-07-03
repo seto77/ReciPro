@@ -140,7 +140,7 @@ Geschwindigkeit unterscheidet sich; verwenden Sie Auto, außer beim Benchmarking
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
     <value>Anzahl der CPU-Threads für die Bloch-Wellen-Berechnung
 der CBED (Convergent-Beam Electron Diffraction),
-1-128. Deaktiviert, wenn der Solver auf Auto steht.</value>
+1-128. Deaktiviert, wenn der Löser auf Auto steht.</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>Anzahl der CPU-Threads für die Bloch-Wellen-Berechnung

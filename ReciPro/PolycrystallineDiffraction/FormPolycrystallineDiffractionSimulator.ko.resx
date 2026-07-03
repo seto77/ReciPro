@@ -84,18 +84,18 @@
 위로 올라가면 피팅을 자동으로 정지합니다.</value>
   </data>
   <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
-    <value>빔 중심 오프셋을 피팅의 자유 파라미터로 포함하여,
+    <value>빔 중심 오프셋을 피팅의 자유 매개변수로 포함하여,
 패턴의 중심 위치를 참조 이미지에 가장 잘
 맞도록 정밀화합니다.</value>
   </data>
   <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
-    <value>빔 수렴 각도를 피팅의 자유 파라미터로
+    <value>빔 수렴 각도를 피팅의 자유 매개변수로
 포함합니다(입사 빔이 얼마나 수렴하는지를
 정밀화합니다).</value>
   </data>
   <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
     <value>필름/검출기 흐림(각 스폿의 점상
-확산 넓힘)을 피팅의 자유 파라미터로
+확산에 의한 퍼짐)을 피팅의 자유 매개변수로
 포함합니다.</value>
   </data>
   <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
@@ -104,8 +104,8 @@
 (끌 수 없음).</value>
   </data>
   <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
-    <value>잔류 응력(링을 이동/확장시키는 격자
-변형)을 피팅의 자유 파라미터로
+    <value>잔류 응력(링을 이동시키거나 폭을 넓히는
+격자 변형)을 피팅의 자유 매개변수로
 포함합니다.</value>
   </data>
   <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
@@ -120,7 +120,7 @@ Ry(ω 끄덕임) 동작에 걸쳐 패턴을 적분하여,
 연속 회전시킵니다.</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>강도 표시의 농담 방향입니다.
+    <value>강도 표시의 계조 방향입니다.
 Positive는 고강도를 밝게 표시하고,
 Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
   </data>
@@ -150,7 +150,7 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 됩니다.</value>
   </data>
   <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
-    <value>'Num per Step'의 임계값(%)입니다. 파라미터가
+    <value>'Num per Step'의 임계값(%)입니다. 매개변수가
 이 수준 아래로 어닐링되면 피팅이 정지합니다.</value>
   </data>
   <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
@@ -160,7 +160,7 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 됩니다.</value>
   </data>
   <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
-    <value>'Directional density'의 임계값(°)입니다. 파라미터가
+    <value>'Directional density'의 임계값(°)입니다. 매개변수가
 이 수준 아래로 어닐링되면 피팅이 정지합니다.</value>
   </data>
   <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
@@ -170,7 +170,7 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 수렴합니다.</value>
   </data>
   <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
-    <value>'Inheritability'의 임계값(%)입니다. 파라미터가
+    <value>'Inheritability'의 임계값(%)입니다. 매개변수가
 이 수준 위로 올라가면 피팅이 정지합니다.</value>
   </data>
   <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
@@ -180,19 +180,19 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
   </data>
   <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
     <value>Ry(ω) 축의 진동(끄덕임) 범위로,
-중심에 대해 ± 도 단위로 지정합니다.</value>
+중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label47.ToolTip" xml:space="preserve">
     <value>Ry(ω) 축의 진동(끄덕임) 범위로,
-중심에 대해 ± 도 단위로 지정합니다.</value>
+중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label50.ToolTip" xml:space="preserve">
     <value>Ry(ω) 축의 진동(끄덕임) 범위로,
-중심에 대해 ± 도 단위로 지정합니다.</value>
+중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label55.ToolTip" xml:space="preserve">
     <value>Ry(ω) 축의 진동(끄덕임) 범위로,
-중심에 대해 ± 도 단위로 지정합니다.</value>
+중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
     <value>Ry(ω) 끄덕임 축의
@@ -212,21 +212,21 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 세밀해지지만 시뮬레이션은 느려집니다.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 축의 진동(흔들림) 범위입니다. 중심을
+    <value>Rz (θ) 축의 진동(스윙) 범위입니다. 중심을
 기준으로 ±° 로 지정하며, 시료는 −값과 +값
 사이를 왕복합니다.</value>
   </data>
   <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 흔들림 축의 모터
-속도입니다 (°/s).</value>
+    <value>Rz (θ) 스윙 축의 모터
+속도(°/s)입니다.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 흔들림 축의 모터
-속도입니다 (°/s).</value>
+    <value>Rz (θ) 스윙 축의 모터
+속도(°/s)입니다.</value>
   </data>
   <data name="label59.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 흔들림 축의 모터
-속도입니다 (°/s).</value>
+    <value>Rz (θ) 스윙 축의 모터
+속도(°/s)입니다.</value>
   </data>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
     <value>지그재그 스캔 순서입니다. θ (Rz)를 정방향과 역방향으로
@@ -290,24 +290,24 @@ Negative는 반전하여 고강도를 어둡게 표시합니다.</value>
 잔차(%) 및 S 값을 표시합니다.</value>
   </data>
   <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
-    <value>회절 패턴에 기여하지 않는 결정자 방위를
+    <value>회절 패턴에 기여하지 않는 결정립 방위를
 반복적으로 찾아 제거하고, 기여하는
 방위만 남깁니다.</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
-    <value>강도 표시의 농담 방향입니다. Positive는 높은 강도를
+    <value>강도 표시의 계조 방향입니다. Positive는 높은 강도를
 밝게, Negative는 반전하여 표시합니다.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+    <value>Rz (θ) 축의 진동(스윙) 범위입니다.
 중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+    <value>Rz (θ) 축의 진동(스윙) 범위입니다.
 중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 축의 진동(흔들림) 범위입니다.
+    <value>Rz (θ) 축의 진동(스윙) 범위입니다.
 중심을 기준으로 ±° 로 지정합니다.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">

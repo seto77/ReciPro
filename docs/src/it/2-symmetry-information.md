@@ -49,9 +49,9 @@ Elenca ogni posizione di Wyckoff con la sua molteplicità, la sua lettera di Wyc
 
 ---
 
-## Condizioni di estinzione
+## Condizioni
 
-![Condizioni di estinzione](../assets/cap-it-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
+![Condizioni](../assets/cap-it-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
 
 Le condizioni di riflessione derivanti dalla centratura del reticolo e dagli operatori di simmetria di slittamento/elicoidali.
 

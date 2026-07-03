@@ -66,7 +66,7 @@ própria estrutura cristalina permanece inalterada.</value>
   </data>
   <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
     <value>Raio de exibição da esfera do átomo, em angstroms (0–9.9
-Å). Afeta apenas a renderização, não o fator de dispersão.</value>
+Å). Afeta apenas a renderização, não o fator de espalhamento.</value>
   </data>
   <data name="radioButtonAllSameElement.ToolTip" xml:space="preserve">
     <value>Aplica as alterações de cor, material e raio

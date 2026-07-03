@@ -126,9 +126,9 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | <kbd>CTRL</kbd> + Mittelziehen | Das Detektorzentrum verschieben (wenn der Detektorbereich angezeigt wird) |
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
 | Rechts-Doppelklick auf eine aktive Ebenen-Schaltfläche (Spots / Kikuchi / Debye / Scale) | Diese Ebene blinken lassen |
-| Links-Doppelklick auf das Stereonetz — Fenster **TEM holder** | Die Halterkippung auf diesen Punkt setzen |
-| Pfeiltasten — Fenster **TEM holder** | Die Halterkippung schrittweise ändern (zuvor **Arrow keys** anhaken) |
-| `.prm`/Bild ablegen — **Detector geometry**, oder `.txt` — **Dynamic compression** | Diese Daten laden |
+| Links-Doppelklick auf das Stereonetz — Fenster **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
+| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Arrow keys** anhaken) |
+| `.prm`/Bild ablegen — **Detektorgeometrie**, oder `.txt` — **Dynamische Kompression** | Diese Daten laden |
 
 ### 8. Elektronenbahnen
 [Seite öffnen →](8-electron-trajectory.md) — eine [3-D-Ansicht](#3d) mit deaktiviertem Verschieben.

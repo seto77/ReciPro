@@ -264,7 +264,7 @@
     <value>계산 스폿에 마커 기호를 표시</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
-    <value>운동학적으로는 금지되지만 다중(동력학) 회절로
+    <value>운동학적으로는 금지되지만 다중(동역학) 회절로
 나타날 수 있는 반사를 계산 패턴에서
 제외합니다.</value>
   </data>
@@ -308,13 +308,13 @@ mrad)입니다.</value>
     <value>현재 계산을 중지</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>관측 스폿의 목록 표입니다. 'Direct'를 체크하면
-직접 빔 스폿을 지정하고, 행의 'Fit'을 클릭하면
+    <value>관측 스폿의 목록 표입니다. '직접'을 체크하면
+직접 빔 스폿을 지정하고, 행의 '피팅'을 클릭하면
 해당 피크를 피팅하며, 행을 선택하면 패턴 위에서 강조됩니다</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
-    <value>동력학적 두께/방향 정밀화에 포함하는
-회절빔(블로흐 파)의 최대 개수입니다.
+    <value>동역학적 두께/방향 정밀화에 포함하는
+회절빔(블로흐파)의 최대 개수입니다.
 많을수록 정밀도가 높아지지만 계산은
 느려집니다(1–2048).</value>
   </data>
@@ -346,7 +346,7 @@ mrad)입니다.</value>
     <value>위 정보를 클립보드에 복사합니다.</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
-    <value>계산 스폿에 인덱스 라벨을 표시</value>
+    <value>계산 스폿에 지수 레이블을 표시</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
     <value>피크 피팅에 사용하는 각 스폿 주위 원형 영역의
@@ -360,14 +360,14 @@ mrad)입니다.</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>현재 선택한 스폿을 목록에서 삭제합니다
-(모두 삭제하려면 Clear 버튼을 사용하세요).</value>
+(모두 삭제하려면 '모든 스폿 지우기' 버튼을 사용하세요).</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>발견된 지수 부여 후보의 목록입니다. 행을
 선택하면 그 결정립 방위가 아래에 표시됩니다.</value>
   </data>
   <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
-    <value>회절 패턴에 가이드 원을 표시</value>
+    <value>회절 패턴에 안내 원을 표시</value>
   </data>
   <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
     <value>선택한 후보에 포함된 결정립 방위의
@@ -376,7 +376,7 @@ mrad)입니다.</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
     <value>선택한 결정립에 대해 관측 스폿 강도를
-동력학(블로흐 파) CBED 계산과 대조하여
+동역학(블로흐파) CBED 계산과 대조하여
 시료 두께(nm)와 빔 방향을 정밀화합니다
 (전자 회절 전용).</value>
   </data>
@@ -413,7 +413,7 @@ mrad)입니다.</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
     <value>모든 스폿의 피팅 반지름을 현재
-'Fitting range' 값(px)으로 맞춥니다.</value>
+'피팅 범위' 값(px)으로 맞춥니다.</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>픽셀 크기 단위: nm⁻¹</value>

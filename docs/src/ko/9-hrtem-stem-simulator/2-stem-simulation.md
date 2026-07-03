@@ -86,7 +86,7 @@
 
 ## 영상 모드 (single / serial)
 
-![영상 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![단일/연속 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** : 현재 두께에서 STEM 영상 하나를 계산합니다.
 - **Serial image** : 두께 / 디포커스를 단계적으로 변화시킨 영상 시리즈를 생성합니다(**Start / Step / Num**으로 설정하며, 아래의 목록을 직접 편집할 수도 있습니다).
@@ -95,7 +95,7 @@
 
 ## 영상 속성
 
-![영상 속성](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![이미지 속성](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** : 주사된 영상의 픽셀 수 (기본값 512×512). STEM에서는 이것이 주사점의 수와 같으며 계산 시간을 선형으로 비례시킵니다.
 - **Resolution** : 샘플링 분해능 (pm/px).
@@ -112,7 +112,7 @@
 
 ## STEM 표시 대상 (결과 측)
 
-![STEM 영상](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+![STEM 이미지](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 창의 왼쪽 아래에 있는 표시 스위치는 이미 계산된 STEM 영상의 어떤 산란 성분을 보여줄지 선택합니다(재계산 없이 전환 가능).
 

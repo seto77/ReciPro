@@ -259,8 +259,7 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>光阑轮廓显示于
-"Diffraction
-Simulator"</value>
+"衍射模拟器"</value>
   </data>
   <data name="groupBoxHREMoption1.Text" xml:space="preserve">
     <value>物镜光阑 (HRTEM 选项)</value>
@@ -269,7 +268,7 @@ Simulator"</value>
     <value>将欠焦设为 0 nm</value>
   </data>
   <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>将欠焦设为 Scherzer 值</value>
+    <value>将欠焦设为谢尔策值</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
     <value>将所有像差设为零</value>
@@ -284,7 +283,7 @@ Simulator"</value>
     <value>加速电压 (kV)</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Scherzer
+    <value>谢尔策
  欠焦</value>
   </data>
   <data name="groupBoxTEMConditions.Text" xml:space="preserve">
@@ -397,23 +396,23 @@ Simulator"</value>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
     <value>在 STEM 像中同时显示弹性散射电子
 和 TDS（thermal diffuse scattering，
-非弹性）电子。</value>
+热漫散射，非弹性）电子。</value>
   </data>
   <data name="colorControlScale.ToolTip" xml:space="preserve">
-    <value>刻度条的颜色</value>
+    <value>比例尺的颜色</value>
   </data>
   <data name="colorControlScale.ToolTip1" xml:space="preserve">
     <value>刻度条的颜色</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
-    <value>刻度条的长度（nm）</value>
+    <value>比例尺的长度（nm）</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
     <value>刻度条的长度（nm）</value>
   </data>
   <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
-    <value>在模拟图像上显示或隐藏刻度条；
-其长度和颜色由相邻的刻度
+    <value>在模拟图像上显示或隐藏比例尺；
+其长度和颜色由相邻的比例尺
 控件设置。</value>
   </data>
   <data name="colorControlLabel.ToolTip" xml:space="preserve">
@@ -545,7 +544,7 @@ Simulator"</value>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV：电子束能量展宽的半高全宽
 （FWHM），单位 eV；它与色差系数 Cc 一起
-决定色差焦散（图像模糊）。</value>
+决定色差引起的焦点扩展（图像模糊）。</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
     <value>ΔV：电子束能量展宽的半高全宽
@@ -624,8 +623,8 @@ microscopy，高分辨率透射电子显微术）：针对所选
 环形探测器设置模拟扫描探针像。</value>
   </data>
   <data name="radioButton1.ToolTip" xml:space="preserve">
-    <value>STEM-EDX（扫描透射电子显微术结合 energy-dispersive
-X-ray spectroscopy，能量色散 X 射线谱）：使用 STEM
+    <value>STEM-EDX（扫描透射电子显微术结合能量色散
+X 射线谱）：使用 STEM
 计算控件模拟 STEM-EDX 输出。</value>
   </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
@@ -635,7 +634,7 @@ X-ray spectroscopy，能量色散 X 射线谱）：使用 STEM
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>样品厚度。
-当选择“Serial image”模式时，此值将被忽略。</value>
+当选择“连续图像”模式时，此值将被忽略。</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value>样品厚度。
@@ -765,12 +764,12 @@ U'g）显示为实部和虚部图像。</value>
 自动更新。只读。</value>
   </data>
   <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
-    <value>在连续图像网格的水平轴方向排列离焦量
+    <value>在连续图像网格的水平轴方向排列欠焦量
 （厚度沿竖直方向排列）。</value>
   </data>
   <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
     <value>在连续图像网格的水平轴方向排列
-厚度（离焦量沿竖直方向排列）。</value>
+厚度（欠焦量沿竖直方向排列）。</value>
   </data>
   <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
     <value>将检测器内角换算为倒易空间半径 sin(theta)/lambda
@@ -849,7 +848,7 @@ code（高速 C++/Eigen 原生代码）或 Managed code
 厚度（图像）数量。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>连续图像厚度序列的起始试样厚度（nm）。
+    <value>连续图像厚度序列的起始样品厚度（nm）。
 与 Step 和 Num 结合，生成下方的厚度列表。</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
@@ -857,7 +856,7 @@ code（高速 C++/Eigen 原生代码）或 Managed code
 的厚度增量（nm）。</value>
   </data>
   <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
-    <value>要模拟的试样厚度（nm）列表，每行一个值。
+    <value>要模拟的样品厚度（nm）列表，每行一个值。
 由 Start/Step/Num 自动填充，
 但也可直接编辑。</value>
   </data>
@@ -870,7 +869,7 @@ code（高速 C++/Eigen 原生代码）或 Managed code
 收集半角（mrad）。</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
-    <value>用于将图像强度映射为颜色的色阶（灰度或寒暖）。</value>
+    <value>用于将图像强度映射为颜色的色阶（灰度或冷暖）。</value>
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>STEM 入射探针的会聚半角 α（mrad）。</value>
@@ -880,11 +879,11 @@ code（高速 C++/Eigen 原生代码）或 Managed code
 用于模拟 STEM 探针的有限光源模糊。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>试样厚度（nm）。当选择“连续图像”
+    <value>样品厚度（nm）。当选择“连续图像”
 模式时，此值将被忽略。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>选择沿连续图像网格水平轴方向
-变化的量（离焦量或厚度）。</value>
+变化的量（欠焦量或厚度）。</value>
   </data>
 </root>

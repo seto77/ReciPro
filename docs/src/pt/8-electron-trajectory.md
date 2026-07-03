@@ -67,7 +67,7 @@ Largura de classe do histograma angular e o mapa de cores usado para a exibiçã
 
 ## Estatísticas
 
-![Statistics](../assets/cap-pt-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![Estatísticas](../assets/cap-pt-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Resumo da execução.
 
@@ -80,7 +80,7 @@ Resumo da execução.
 
 ## Distribuição de direção dos BSE
 
-![BSE direction distribution](../assets/cap-pt-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![Distribuição direcional dos BSE (o centro do estereograma corresponde à direção normal à superfície)](../assets/cap-pt-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Distribuição angular dos elétrons retroespalhados (o centro da estereonete corresponde à direção normal à superfície). O contorno amarelo/laranja (quando presente) marca a região subtendida pelo detector EBSD.
 

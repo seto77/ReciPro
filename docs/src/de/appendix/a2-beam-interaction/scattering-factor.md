@@ -1,6 +1,6 @@
 # Atomformfaktoren
 
-Der **Atomformfaktor** (oder *Streufaktor*) misst, wie stark ein einzelnes Atom den einfallenden Strahl als Funktion der Streuvariablen $s=\sin\theta/\lambda$ streut. Die drei Strahlungsarten wechselwirken mit völlig unterschiedlichen Teilen des Atoms, sodass ihre Streufaktoren unterschiedliche Größenordnungen, Einheiten und Winkelabhängigkeiten aufweisen. Dies ist der wichtigste Grund dafür, dass die Registerkarte **Scattering factors** zwischen Röntgen-, Elektronen- und Neutronenstrahl so unterschiedlich aussieht.
+Der **Atomformfaktor** (oder *Streufaktor*) misst, wie stark ein einzelnes Atom den einfallenden Strahl als Funktion der Streuvariablen $s=\sin\theta/\lambda$ streut. Die drei Strahlungsarten wechselwirken mit völlig unterschiedlichen Teilen des Atoms, sodass ihre Streufaktoren unterschiedliche Größenordnungen, Einheiten und Winkelabhängigkeiten aufweisen. Dies ist der wichtigste Grund dafür, dass die Registerkarte **Streufaktoren** zwischen Röntgen-, Elektronen- und Neutronenstrahl so unterschiedlich aussieht.
 
 === "X-ray"
     ![Streufaktoren — Röntgen](../../../assets/cap-de-auto/FormBeamInteraction-xray-scattering.png)
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-Da der Streuer punktförmig ist, ist $b$ **unabhängig von $s$** — es gibt keinen Formfaktor-Abfall, weshalb die Registerkarte **Scattering factors** für Neutronen keine Kurve zeichnet und stattdessen eine Tabelle der Streulängen zeigt.
+Da der Streuer punktförmig ist, ist $b$ **unabhängig von $s$** — es gibt keinen Formfaktor-Abfall, weshalb die Registerkarte **Streufaktoren** für Neutronen keine Kurve zeichnet und stattdessen eine Tabelle der Streulängen zeigt.
 
 - $b$ ist eine Eigenschaft des **Nuklids**, nicht der Elektronenkonfiguration. Sie variiert unregelmäßig von Element zu Element (und zwischen Isotopen), kann **negativ** sein (z. B. ¹H, Ti, Mn) und steht in keinem monotonen Zusammenhang mit $Z$. Dies ist die Grundlage des Neutronenkontrasts (leichte Atome nahe schweren, Isotopenmarkierung).
 - **Kohärent vs. inkohärent.** Ein reales Element ist eine Mischung aus Isotopen und Kernspinzuständen mit unterschiedlichem $b$. Die Aufspaltung $b = \langle b\rangle + \delta b$ ergibt einen kohärenten Anteil (aus dem Mittelwert) und einen inkohärenten Anteil (aus der Streuung):
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [Index — Geometrie und die Variable $s$](index.md)
 - [Strukturfaktor](structure-factor.md) — wie sich diese Faktoren über eine Elementarzelle kombinieren.
-- [3. Strahl-Wechselwirkung → Registerkarte Scattering factors](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. Strahl-Wechselwirkung → Registerkarte Streufaktoren](../../3-beam-interaction.md#scattering-factors-tab)

@@ -1,6 +1,6 @@
 # 原子散射因子
 
-**原子散射因子**（或稱*形狀因子*）量度單一原子對入射束的散射強度如何隨散射變數 $s=\sin\theta/\lambda$ 變化。這三種輻射與原子中完全不同的部分發生交互作用，因此它們的散射因子在量級、單位與角度相依性上各不相同。這正是 **Scattering factors** 索引標籤在 X 光、電子與中子束之間看起來如此不同的最主要原因。
+**原子散射因子**（或稱*形狀因子*）量度單一原子對入射束的散射強度如何隨散射變數 $s=\sin\theta/\lambda$ 變化。這三種輻射與原子中完全不同的部分發生交互作用，因此它們的散射因子在量級、單位與角度相依性上各不相同。這正是 **散射因子** 索引標籤在 X 光、電子與中子束之間看起來如此不同的最主要原因。
 
 === "X-ray"
     ![散射因子 — X 光](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-scattering.png)
@@ -80,7 +80,7 @@ ReciPro 提供 $f_e(s)$ 的三種參數化：
 - **Kirkland** ：混合 Lorentzian + 高斯擬合，$f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$。**其自變數為 $q = 2s = 1/d$，而非 $s$** — 這是比較模型時常見的因子二錯誤來源（$q$ 以 Å⁻¹ 計，擬合係數 $a_i,b_i,c_i,d_i$ 以對應單位計）。
 - **8-Gaussians** ：八項擬合，於較寬的 $s$ 範圍內有效。
 
-**選擇其一。** 三者皆擬合同一個底層 $f_e(s)$，並在低 $s$ 處密切吻合；它們主要的差異在於適用範圍以及原子核如何表示。**Peng**（中性原子與常見離子，精確至 $s\approx2\text{–}6$ Å⁻¹）是 SAED／CBED 結構因子的常用預設；**Kirkland** 以一個 Lorentzian 核項延伸至更高的 $s$，適用於 HRTEM/STEM（記得 $q=2s$）；**8-Gaussians** 則用於達到極高 $s$ 的反射。對於輕元素，三者幾乎無法區分；差異會在重元素的大角度處顯現。
+**選擇其一。** 三者皆擬合同一個底層 $f_e(s)$，並在低 $s$ 處密切吻合；它們主要的差異在於適用範圍以及原子內層電子如何表示。**Peng**（中性原子與常見離子，精確至 $s\approx2\text{–}6$ Å⁻¹）是 SAED／CBED 結構因子的常用預設；**Kirkland** 以一個 Lorentzian 核項延伸至更高的 $s$，適用於 HRTEM/STEM（記得 $q=2s$）；**8-Gaussians** 則用於達到極高 $s$ 的反射。對於輕元素，三者幾乎無法區分；差異會在重元素的大角度處顯現。
 
 ---
 
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-由於散射體為點狀，$b$ **與 $s$ 無關** — 並無形狀因子衰減，這正是 **Scattering factors** 索引標籤對中子不繪製曲線，而改為顯示散射長度表的原因。
+由於散射體為點狀，$b$ **與 $s$ 無關** — 並無形狀因子衰減，這正是 **散射因子** 索引標籤對中子不繪製曲線，而改為顯示散射長度表的原因。
 
 - $b$ 是**核種**的性質，而非電子組態的性質。它在元素之間（以及同位素之間）不規則地變化，可以為**負值**（例如 ¹H、Ti、Mn），且與 $Z$ 並無單調關係。這正是中子襯度的基礎（重原子旁的輕原子、同位素標記）。
 - **同調與非同調。** 真實元素是具有不同 $b$ 的同位素與核自旋態的混合。將 $b = \langle b\rangle + \delta b$ 拆分後，可得一個同調部分（來自平均值）與一個非同調部分（來自分散）：
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [索引 — 幾何與變數 $s$](index.md)
 - [結構因子](structure-factor.md) — 這些因子如何在晶胞上組合。
-- [3. 電子束交互作用 → Scattering factors 索引標籤](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. 電子束交互作用 → 散射因子 索引標籤](../../3-beam-interaction.md#scattering-factors-tab)

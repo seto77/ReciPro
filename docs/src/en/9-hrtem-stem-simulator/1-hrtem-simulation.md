@@ -36,7 +36,7 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [HR
 
 ### Intrinsic parameters
 
-![Intrinsic parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Intrinsic parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parameter | Description | Typical |
 |-----------|-------------|---------|

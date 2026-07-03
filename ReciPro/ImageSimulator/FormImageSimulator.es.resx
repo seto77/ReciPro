@@ -312,7 +312,7 @@ Simulator"</value>
     <value>como Imagen (formato TIFF)</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>como Metarchivo (EMF)</value>
+    <value>como metarchivo (EMF)</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   Guardar individualmente en modo de imagen en serie </value>
@@ -324,7 +324,7 @@ Simulator"</value>
     <value>como Imagen</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>como Metarchivo (EMF)</value>
+    <value>como metarchivo (EMF)</value>
   </data>
   <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar imagen</value>
@@ -381,7 +381,7 @@ normaliza individualmente para cada imagen.</value>
     <value>Intensidad máxima de la imagen simulada.</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>Muestra únicamente los electrones TDS (dispersión difusa térmica,
+    <value>Muestra únicamente los electrones TDS (dispersión térmica difusa,
 inelástica) en la imagen STEM.</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
@@ -390,7 +390,7 @@ elásticamente en la imagen STEM.</value>
   </data>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
     <value>Muestra tanto los electrones elásticos como los TDS
-(dispersión difusa térmica,
+(dispersión térmica difusa,
 inelástica) en la imagen STEM.</value>
   </data>
   <data name="colorControlScale.ToolTip" xml:space="preserve">
@@ -450,7 +450,7 @@ STEM con más detalle pero ralentizan el cálculo.</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>Espesor de rebanada (nm) usado al calcular
-la intensidad de electrones TDS (dispersión difusa térmica,
+la intensidad de electrones TDS (dispersión térmica difusa,
 inelástica). Valores menores mejoran la
 precisión pero ralentizan el cálculo.</value>
   </data>

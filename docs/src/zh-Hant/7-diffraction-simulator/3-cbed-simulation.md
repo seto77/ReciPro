@@ -2,17 +2,17 @@
 
 **CBED（會聚束電子繞射，Convergent-Beam Electron Diffraction）模擬** 使用布洛赫波法（Bethe）計算並顯示會聚束繞射圖樣。CBED 圖樣顯示的是繞射盤而非繞射斑點，並含有關於晶體對稱性、厚度與結構的豐富資訊。
 
-> 本頁列出在 [繞射模擬器](index.md) 中選擇 **Wavelength = Electron** 與 **Incident beam = Convergence (CBED, electron only)** 時所開啟之專用視窗的所有設定。將入射束切換為會聚時，**Intensity calculation** 會自動設為 **Dynamical**，並開啟此 CBED 設定視窗。關於繞射圖樣的繪製與儲存，以及繞射模擬器共通的其他操作，請參閱 [概觀頁面](index.md)。
+> 本頁列出在 [繞射模擬器](index.md) 中選擇 **Wavelength = Electron** 與 **Incident beam = Convergence (CBED, electron only)** 時所開啟之專用視窗的所有設定。將入射束切換為會聚時，**Intensity calculation** 會自動設為 **Dynamical**，並開啟此 CBED 設定視窗。關於繞射圖樣的繪製與儲存，以及繞射模擬器共通的其他操作，請參閱 [總覽頁面](index.md)。
 
 GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electron only) · Intensity calculation = Dynamical（自動）
 
-![CBED Simulation](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.png)
+![CBED 模擬](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.png)
 
 ---
 
 ## 輸入參數
 
-![Input parameters](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
+![輸入參數](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
 | 參數 | 說明 | 預設 / 典型值 |
 |-----------|-------------|-------------------|
@@ -27,7 +27,7 @@ GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electr
 
 ---
 
-## Run / Stop
+## 執行 / 停止
 
 - **Start**：以目前的輸入參數開始 CBED 模擬。
 - **Stop**：取消執行中的計算。
@@ -36,7 +36,7 @@ GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electr
 
 ## 輸出參數
 
-![Output parameters](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![輸出參數](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 計算完成後，輸出參數即可使用。所有這些參數都只改變顯示，而不會重新計算。
 
@@ -61,7 +61,7 @@ GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electr
 
 ## 另請參閱
 
-- [繞射模擬器（概觀）](index.md)
+- [繞射模擬器（總覽）](index.md)
 - [SAED 模擬](1-saed-simulation.md)
 - [PED 模擬](2-ped-simulation.md)
 - [CBED 計算](../appendix/a3-bloch-wave/cbed.md)

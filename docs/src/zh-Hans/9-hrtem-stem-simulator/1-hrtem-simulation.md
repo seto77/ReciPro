@@ -36,7 +36,7 @@
 
 ### 固有参数
 
-![固有参数](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![固有参数](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | 参数 | 说明 | 典型值 |
 |-----------|-------------|---------|
@@ -63,7 +63,7 @@
 
 ## 物镜光阑
 
-![物镜光阑](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![物镜光阑 (HRTEM 选项)](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 设置光阑尺寸（mrad）和位置。**Open aperture** 将其移除。所考虑的布洛赫波数目取决于光阑条件。
 
@@ -71,7 +71,7 @@
 
 ## 部分相干模型
 
-![部分相干模型](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![HRTEM 选项](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 | 模型 | 说明 |
 |-------|-------------|
@@ -82,7 +82,7 @@
 
 ## 模拟模式
 
-![模拟模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![单幅/序列模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 | 模式 | 说明 |
 |------|-------------|

@@ -1,6 +1,6 @@
-# 動力學計算（共通內核）
+# 動力學計算（共通核心）
 
-ReciPro 的繞射模擬器與成像模擬器共用一個共通的**布洛赫波（Bethe）動力學散射內核**，本頁對其進行說明（晶體位能、Debye–Waller 因子與吸收項、本徵值問題、透射係數以及強度）。各方法專用的流程均建立在此內核之上：
+ReciPro 的繞射模擬器與成像模擬器共用一個共通的**布洛赫波（Bethe）動力學散射核心**，本頁對其進行說明（晶體位能、Debye–Waller 因子與吸收項、本徵值問題、透射係數以及強度）。各方法專用的流程均建立在此內核之上：
 
 - [平行束 SAED](#parallel-beam-saed)
 - [HRTEM 成像](hrtem.md)
@@ -169,6 +169,6 @@ $$\Delta I_N=\frac{|I_N-I_{N-\Delta N}|}{I_N}$$
 ## 參見
 
 - [附錄 A3. 布洛赫波法動力學繞射](index.md)
-- [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
+- [7.2. SAED 模擬](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.4. CBED 模擬](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. 繞射模擬器](../../7-diffraction-simulator/index.md)

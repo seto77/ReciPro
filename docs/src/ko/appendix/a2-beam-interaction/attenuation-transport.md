@@ -1,15 +1,15 @@
 # 감쇠 및 수송
 
-산란 인자는 단일 산란 사건을 기술하지만, 이 페이지는 빔이 고체를 통과하면서 **전체로서** 어떤 일이 일어나는지를 다룹니다 — 얼마나 빠르게 제거되는지, 얼마나 깊이 침투하는지, 그리고 (전자의 경우) 어떻게 감속되는지입니다. 관련 물리는 세 가지 빔에 대해 완전히 다르며, 그래서 **Attenuations & Transport** 탭은 복사선에 따라 그래프와 표를 그토록 크게 바꿉니다.
+산란 인자는 단일 산란 사건을 기술하지만, 이 페이지는 빔이 고체를 통과하면서 **전체로서** 어떤 일이 일어나는지를 다룹니다 — 얼마나 빠르게 제거되는지, 얼마나 깊이 침투하는지, 그리고 (전자의 경우) 어떻게 감속되는지입니다. 관련 물리는 세 가지 빔에 대해 완전히 다르며, 그래서 **감쇠 & 수송** 탭은 복사선에 따라 그래프와 표를 그토록 크게 바꿉니다.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-ko-auto/FormBeamInteraction-xray-attenuations.png)
+    ![감쇠 & 수송 — X-ray](../../../assets/cap-ko-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-ko-auto/FormBeamInteraction-electron-attenuations.png)
+    ![감쇠 & 수송 — electron](../../../assets/cap-ko-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-ko-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![감쇠 & 수송 — neutron](../../../assets/cap-ko-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -47,7 +47,7 @@ $$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\varphi),$$
 
   따라서 Compton 사건은 광자를 단색 빔에서 제거합니다 (비탄성 손실).
 
-**흡수단**은 광자 에너지가 어떤 각(殻) ($K$, $L_3$, …)의 결합 에너지를 넘어 새로운 이온화 채널을 열 때 나타나는 $\tau$ 의 급격한 상승입니다. **점프비**는 흡수단을 가로질러 $\mu/\rho$ 가 증가하는 배수이며, ReciPro 는 $K$ 및 $L_3$ 흡수단 에너지와 점프를 나열합니다. **질량 에너지 흡수 계수** $\mu_\text{en}/\rho$ 는 $\mu/\rho$ 중에서 에너지를 국소적으로 침착시키는 부분입니다 (산란 및 형광 광자가 운반해 가는 에너지는 제외).
+**흡수단**은 광자 에너지가 어떤 전자각 ($K$, $L_3$, …)의 결합 에너지를 넘어 새로운 이온화 채널을 열 때 나타나는 $\tau$ 의 급격한 상승입니다. **점프비**는 흡수단을 가로질러 $\mu/\rho$ 가 증가하는 배수이며, ReciPro 는 $K$ 및 $L_3$ 흡수단 에너지와 점프를 나열합니다. **질량 에너지 흡수 계수** $\mu_\text{en}/\rho$ 는 $\mu/\rho$ 중에서 에너지를 국소적으로 침착시키는 부분입니다 (산란 및 형광 광자가 운반해 가는 에너지는 제외).
 
 ### 굴절, 임계각, 그리고 SLD
 
@@ -143,5 +143,5 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 - [원자 산란 인자](scattering-factor.md) — Rayleigh/Compton 뒤의 $F(q)$/$S(q)$ 분할, 그리고 Mott 단면적.
 - [형광](fluorescence.md) — X선 광흡수 뒤에 이어지는 완화.
-- [3. 빔 상호작용](../../3-beam-interaction.md) — *Attenuations & Transport* 탭.
+- [3. 빔 상호작용](../../3-beam-interaction.md) — *감쇠 & 수송* 탭.
 - [8. 전자 궤적](../../8-electron-trajectory.md) · [12. EBSD 시뮬레이션](../../12-ebsd-simulation.md) — 전자 비정거리가 사용되는 곳.

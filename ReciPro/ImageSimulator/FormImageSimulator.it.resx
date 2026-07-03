@@ -339,7 +339,7 @@ Simulator"</value>
     <value>Libreria di calcolo</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>Guida</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Arresta</value>
@@ -440,7 +440,7 @@ incidente (mrad). Valori più piccoli campionano la sonda
 STEM più finemente ma rallentano il calcolo.</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
-    <value>Spessore della fetta (nm) usato nel calcolo dell'intensità
+    <value>Spessore della sezione (nm) usato nel calcolo dell'intensità
 degli elettroni TDS (thermal diffuse scattering,
 anelastici). Valori più piccoli migliorano l'accuratezza
 ma rallentano il calcolo.</value>
@@ -458,7 +458,7 @@ per i quali vale l'approssimazione di oggetto a fase debole.
 </value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
-    <value>Modello a coefficiente di trasmissione incrociata (TCC) ad alto costo computazionale.
+    <value>Modello a coefficiente di trasmissione incrociato (TCC) ad alto costo computazionale.
 Questo modello va usato per oggetti a forte diffusione che
 eccitano molti fasci diffratti intensi.
 </value>
@@ -627,7 +627,7 @@ gli effetti di trasferimento dell'immagine TEM/STEM.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Spessore del campione.
-Questo valore viene ignorato quando è selezionata la modalità "Serial image".</value>
+Questo valore viene ignorato quando è selezionata la modalità "Immagine seriale".</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value>Spessore del campione.
@@ -859,7 +859,7 @@ un valore per riga. Compilato automaticamente da
 Start/Step/Num ma modificabile direttamente.</value>
   </data>
   <data name="checkBoxPreset.ToolTip" xml:space="preserve">
-    <value>Mostra o nasconde la finestra delle impostazioni predefinite,
+    <value>Mostra o nasconde la finestra delle preimpostazioni,
 che memorizza e richiama le condizioni di imaging TEM.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
@@ -878,7 +878,7 @@ modella la sfocatura da sorgente finita della sonda STEM.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Spessore del campione (nm). Questo valore viene ignorato
-quando è selezionata la modalità "Serial image".</value>
+quando è selezionata la modalità "Immagine seriale".</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Scegli quale grandezza (defocus o spessore) varia

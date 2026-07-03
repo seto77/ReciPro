@@ -151,19 +151,19 @@
     <value>單張/序列模式</value>
   </data>
   <data name="radioButtonPotentialModeMagAndPhase.Text" xml:space="preserve">
-    <value>大小與相位</value>
+    <value>振幅與相位</value>
   </data>
   <data name="radioButtonPotentialShowMagAndPhase.Text" xml:space="preserve">
     <value>兩者</value>
   </data>
   <data name="radioButtonPotentialShowMag.Text" xml:space="preserve">
-    <value>僅大小</value>
+    <value>僅振幅</value>
   </data>
   <data name="radioButtonPotentialShowPhase.Text" xml:space="preserve">
     <value>僅相位</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>相位比例</value>
+    <value>相位刻度</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.Text" xml:space="preserve">
     <value>實部與虛部</value>
@@ -259,8 +259,7 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>光圈輪廓顯示於
-「Diffraction
-Simulator」</value>
+「繞射模擬器」</value>
   </data>
   <data name="groupBoxHREMoption1.Text" xml:space="preserve">
     <value>物鏡光圈 (HRTEM 選項)</value>
@@ -275,7 +274,7 @@ Simulator」</value>
     <value>將所有像差設為零</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
-    <value>對比轉移函數 (CTF)</value>
+    <value>對比傳遞函數 (CTF)</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>散焦 Δf</value>
@@ -300,7 +299,7 @@ Simulator」</value>
     <value>厚度</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
-    <value>樣品</value>
+    <value>試樣</value>
   </data>
   <data name="checkBoxPreset.Text" xml:space="preserve">
     <value>預設設定</value>
@@ -388,7 +387,7 @@ Simulator」</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
     <value>在 STEM 影像中僅顯示 TDS（thermal diffuse
-scattering, 熱散漫散射、非彈性）電子。</value>
+scattering, 熱漫散射、非彈性）電子。</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
     <value>在 STEM 影像中僅顯示
@@ -397,23 +396,23 @@ scattering, 熱散漫散射、非彈性）電子。</value>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
     <value>在 STEM 影像中同時顯示彈性電子與
 TDS（thermal diffuse scattering,
-熱散漫散射、非彈性）電子。</value>
+熱漫散射、非彈性）電子。</value>
   </data>
   <data name="colorControlScale.ToolTip" xml:space="preserve">
-    <value>刻度尺的顏色</value>
+    <value>比例尺的顏色</value>
   </data>
   <data name="colorControlScale.ToolTip1" xml:space="preserve">
     <value>刻度尺的顏色</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
-    <value>刻度尺的長度 (nm)</value>
+    <value>比例尺的長度 (nm)</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
     <value>刻度尺的長度 (nm)</value>
   </data>
   <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
-    <value>在模擬影像上顯示或隱藏刻度尺；
-長度與顏色由相鄰的刻度控制項
+    <value>在模擬影像上顯示或隱藏比例尺；
+長度與顏色由相鄰的比例尺控制項
 設定。</value>
   </data>
   <data name="colorControlLabel.ToolTip" xml:space="preserve">
@@ -456,7 +455,7 @@ TDS（thermal diffuse scattering,
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>計算 TDS（thermal diffuse scattering,
-熱散漫散射、非彈性）電子強度時所用的
+熱漫散射、非彈性）電子強度時所用的
 切片厚度 (nm)。數值越小精度越高，
 但會使計算變慢。</value>
   </data>
@@ -488,7 +487,7 @@ TDS（thermal diffuse scattering,
     <value>模擬影像的解析度（皮米/像素）</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>Bethe 法中所使用的 Bloch 波最大數目。
+    <value>Bethe 法中所使用的布洛赫波最大數目。
 數值越大計算速度越慢，但精度越高。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
@@ -636,24 +635,24 @@ X-ray spectroscopy, 能量散佈 X 射線光譜術）：使用
 STEM 計算控制項模擬 STEM-EDX 輸出。</value>
   </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
-    <value>電位模式：計算投影結晶電位，
+    <value>電位模式：計算投影晶體位能，
 而不套用 TEM/STEM 的影像傳遞
 效果。</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>試樣厚度。
-當選取「Serial image」模式時，此值將被忽略。</value>
+當選取「連續影像」模式時，此值將被忽略。</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value>試樣厚度。
 當選取「Serial image」模式時，此值將被忽略。</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
-    <value>勾選時，影像會隨結晶的旋轉
+    <value>勾選時，影像會隨晶體的旋轉
 而即時計算。</value>
   </data>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>以目前的結晶、顯微鏡、厚度、散焦與顯示
+    <value>以目前的晶體、顯微鏡、厚度、散焦與顯示
 設定執行影像模擬。</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
@@ -662,7 +661,7 @@ STEM 計算控制項模擬 STEM-EDX 輸出。</value>
   </data>
   <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
     <value>在所儲存的影像上疊印晶胞、
-標籤與刻度尺。</value>
+標籤與比例尺。</value>
   </data>
   <data name="checkBoxCTF.ToolTip" xml:space="preserve">
     <value>顯示對比傳遞函數 (CTF: Contrast Transfer
@@ -688,11 +687,11 @@ Function) 的繪圖視窗，繪製透鏡像差與散焦
   </data>
   <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
     <value>顯示 Ug 的像，即負責彈性散射的
-結晶（靜電）電位。</value>
+晶體（靜電）位能。</value>
   </data>
   <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
     <value>顯示 U'g 的像，即由 TDS（Thermal Diffuse
-Scattering, 熱散漫散射）所產生的虛（吸收）電位。</value>
+Scattering, 熱散漫散射）所產生的虛（吸收）位能。</value>
   </data>
   <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
     <value>選擇用於顯示影像的色階：
@@ -723,11 +722,11 @@ Scattering, 熱散漫散射）所產生的虛（吸收）電位。</value>
 （用於傾斜/暗場成像）。</value>
   </data>
   <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
-    <value>將結晶電位 (Ug / U'g) 顯示為
+    <value>將晶體位能 (Ug / U'g) 顯示為
 大小與相位影像。</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
-    <value>將結晶電位 (Ug / U'g) 顯示為
+    <value>將晶體位能 (Ug / U'g) 顯示為
 實部與虛部影像。</value>
   </data>
   <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
@@ -798,7 +797,7 @@ sin(theta)/lambda (nm^-1) 表示；
   </data>
   <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
     <value>同時顯示複數晶體位能(Ug)的
-強度與相位。</value>
+大小與相位。</value>
   </data>
   <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
     <value>僅顯示複數晶體位能(Ug)的相位。</value>
@@ -859,7 +858,7 @@ sin(theta)/lambda (nm^-1) 表示；
 個數。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>連續影像厚度序列的起始試料厚度 (nm)。
+    <value>連續影像厚度序列的起始試樣厚度 (nm)。
 與 Step 和 Num 組合以建立下方的
 厚度清單。</value>
   </data>
@@ -868,30 +867,30 @@ sin(theta)/lambda (nm^-1) 表示；
 厚度增量 (nm)。</value>
   </data>
   <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
-    <value>要模擬的試料厚度 (nm) 清單,
+    <value>要模擬的試樣厚度 (nm) 清單,
 每行一個數值。由 Start/Step/Num 自動填入,
 但也可直接編輯。</value>
   </data>
   <data name="checkBoxPreset.ToolTip" xml:space="preserve">
     <value>切換預設設定視窗的顯示/隱藏,
-該視窗可儲存與叫回 TEM 攝影條件。</value>
+該視窗可儲存與叫回 TEM 成像條件。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>環狀暗視野(ADF)偵測器的內側/外側
 集光半角 (mrad)。</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
-    <value>用於將影像強度對應至顏色的色階(灰階或寒暖)。</value>
+    <value>用於將影像強度對應至顏色的色階(灰階或冷暖)。</value>
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
-    <value>STEM 入射探束的收斂半角 α (mrad)。</value>
+    <value>STEM 入射探束的會聚半角 α (mrad)。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>有效電子源尺寸 (σs, 半高全寬, 單位 pm);
 用以模擬 STEM 探束的有限光源模糊。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>試料厚度 (nm)。當選擇「Serial image」
+    <value>試樣厚度 (nm)。當選擇「連續影像」
 模式時,此值會被忽略。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">

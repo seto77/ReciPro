@@ -4,7 +4,7 @@ La **Interacción del haz** describe cómo el cristal seleccionado interactúa c
 
 ![Interacción del haz](../assets/cap-es-auto/FormBeamInteraction.png)
 
-El haz incidente se selecciona en la banda situada en la parte superior de la ventana; las cuatro pestañas inferiores — **Reflections**, **Attenuations & Transport**, **Scattering factors** y **Fluorescence** — muestran los distintos aspectos de la interacción. Cada sección de pestaña a continuación muestra la pestaña bajo los haces **X-ray / Electron / Neutron** (use las pestañas de cada figura); el contenido cambia notablemente según el haz.
+El haz incidente se selecciona en la banda situada en la parte superior de la ventana; las cuatro pestañas inferiores — **Reflexiones**, **Atenuación & Transporte**, **Factores de dispersión** y **Fluorescencia** — muestran los distintos aspectos de la interacción. Cada sección de pestaña a continuación muestra la pestaña bajo los haces **X-ray / Electron / Neutron** (use las pestañas de cada figura); el contenido cambia notablemente según el haz.
 
 !!! tip "Fundamentos de estado sólido (Apéndice A2)"
     La dispersión y la física del estado sólido detrás de estas cuatro pestañas — los factores de dispersión atómica, el factor de estructura, la atenuación y el transporte del haz, y la fluorescencia — se explican en **[Apéndice A2. Interacción del haz (fundamentos de estado sólido)](appendix/a2-beam-interaction/index.md)**.
@@ -16,7 +16,7 @@ El haz incidente se selecciona en la banda situada en la parte superior de la ve
 
 ## Atajos de teclado y ratón
 
-Esta ventana no tiene combinaciones de teclas especiales. <kbd>F1</kbd> abre esta página del manual. En la pestaña **Scattering factors** se puede **arrastrar** la línea vertical del cursor para leer el factor de dispersión de cada elemento en esa posición, y cada pestaña tiene un botón **Copy** que exporta su tabla como texto pegable en una hoja de cálculo.
+Esta ventana no tiene combinaciones de teclas especiales. <kbd>F1</kbd> abre esta página del manual. En la pestaña **Factores de dispersión** se puede **arrastrar** la línea vertical del cursor para leer el factor de dispersión de cada elemento en esa posición, y cada pestaña tiene un botón **Copy** que exporta su tabla como texto pegable en una hoja de cálculo.
 
 → Consulte **[21. Atajos de teclado y ratón](21-shortcuts.md)** para ver todas las ventanas de un vistazo.
 
@@ -30,33 +30,33 @@ La banda superior es un **Wave Length Control** compartido con los demás simula
 
 - **X-ray / Electron / Neutron** : los factores de dispersión atómica y la física de la interacción difieren según el tipo de haz incidente, por lo que se conmutan aquí.
 - Para **X-ray**, elegir el **Element** (material del ánodo) y la línea característica (Kα, etc.) fija automáticamente la longitud de onda de ese rayo X característico.
-- **Energy (keV)** y **Wavelength (Å)** están enlazados; al fijar uno se actualiza el otro, y ambos determinan el 2θ usado en la tabla **Reflections**.
+- **Energy (keV)** y **Wavelength (Å)** están enlazados; al fijar uno se actualiza el otro, y ambos determinan el 2θ usado en la tabla **Reflexiones**.
 - **Unit (Å / nm)** cambia la unidad de longitud usada para los espaciados d y magnitudes similares.
 
 El haz elegido también decide qué pestañas y curvas tienen sentido:
 
-| Haz | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Haz | Reflexiones | Atenuación & Transporte | Factores de dispersión | Fluorescencia |
 |------|------|------|------|------|
 | **X-ray** | factores de estructura incl. dispersión anómala | µ/ρ, µ, transmisión + bordes de absorción (frente a energía) | $f(s)$ o $F(q)+S(q)$ | líneas características + barras EDX |
 | **Electron** | factores de estructura electrónicos | σ, MFP, \|dE/ds\|, IMFP, alcance (frente a energía) | Peng / Kirkland / 8-Gaussians | — (oculta) |
 | **Neutron** | factores de estructura nucleares | longitudes de dispersión y secciones eficaces (sin curva de energía) | longitudes de dispersión (sin dependencia de *s*) | — (oculta) |
 
-La pestaña **Fluorescence** es exclusiva de rayos X y desaparece para los haces de electrones y neutrones. Para neutrones, las gráficas dependientes de la energía en **Attenuations & Transport** y **Scattering factors** se sustituyen por tablas de elementos, porque la longitud de dispersión nuclear no depende del ángulo de dispersión ni de la energía.
+La pestaña **Fluorescencia** es exclusiva de rayos X y desaparece para los haces de electrones y neutrones. Para neutrones, las gráficas dependientes de la energía en **Atenuación & Transporte** y **Factores de dispersión** se sustituyen por tablas de elementos, porque la longitud de dispersión nuclear no depende del ángulo de dispersión ni de la energía.
 
 ---
 
-## Pestaña Reflections
+## Pestaña Reflexiones
 
 Enumera los planos cristalinos permitidos (reflexiones) del cristal y el **factor de estructura** y la intensidad de difracción de cada uno. Para rayos X, el factor de estructura ahora incluye los términos de **dispersión anómala** $f'/f''$ a la energía actual, de modo que `F_inv` (la parte imaginaria) es en general distinta de cero cerca de un borde de absorción. La disposición es la misma para todos los haces; solo cambian los valores del factor de estructura y el 2θ de cada reflexión.
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexiones — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-es-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexiones — electron](../assets/cap-es-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexiones — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@ Cada fila es una reflexión (o un grupo de planos equivalentes por simetría):
 
 ---
 
-## Pestaña Attenuations & Transport
+## Pestaña Atenuación & Transporte
 
 Hasta qué profundidad penetra el haz en el material y cómo pierde energía. El contenido depende del haz.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atenuación & Transporte — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-es-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atenuación & Transporte — electron](../assets/cap-es-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atenuación & Transporte — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -130,18 +130,18 @@ La interacción del neutrón se fija mediante secciones eficaces nucleares en lu
 
 ---
 
-## Pestaña Scattering factors {#fluorescence-tab}
+## Pestaña Factores de dispersión {#fluorescence-tab}
 
 El factor de dispersión atómica de cada elemento constituyente, representado frente a $s = \sin\theta/\lambda$ (Å⁻¹). Cada elemento se dibuja en su propio color, y se puede arrastrar la **línea vertical del cursor** para leer el factor de dispersión de cada elemento en esa posición en la tabla de la izquierda.
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-scattering.png)
+    ![Factores de dispersión — X-ray](../assets/cap-es-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-es-auto/FormBeamInteraction-electron-scattering.png)
+    ![Factores de dispersión — electron](../assets/cap-es-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-scattering.png)
+    ![Factores de dispersión — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** ofrece dos modos **Model**: **f(s)** representa el factor de dispersión atómica de rayos X convencional (en unidades de electrón); **F(q)+S(q)** representa el factor de forma **coherente** de Rayleigh $F(q)$ junto con la función de dispersión **incoherente** de Compton $S(q)$ (de xraylib). La tabla también enumera los términos de dispersión anómala **f'(E)** y **f''(E)** a la energía actual.
 - **Electron** ofrece tres parametrizaciones del factor de dispersión electrónico: **Peng**, **Kirkland** y **8-Gaussians**. La tabla muestra $f_e(s)$ (nm) y qué **model** lo produjo.
@@ -150,11 +150,11 @@ El factor de dispersión atómica de cada elemento constituyente, representado f
 
 ---
 
-## Pestaña Fluorescence
+## Pestaña Fluorescencia
 
 Para un haz de rayos X, la emisión de **fluorescencia** característica de la muestra. (Esta pestaña está oculta para los haces de electrones y neutrones.)
 
-![Fluorescence (X-ray)](../assets/cap-es-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluorescencia (X-ray)](../assets/cap-es-auto/FormBeamInteraction-xray-fluorescence.png)
 
 La gráfica **EDX emission lines** dibuja las líneas características (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) de cada elemento como barras a sus energías de fotón, con la altura proporcional a fracción atómica × tasa radiativa × rendimiento de fluorescencia (una vista previa cualitativa de estilo EDX; no se modelan la sección eficaz de excitación ni la eficiencia del detector). La tabla inferior enumera, por línea, el elemento, el nombre de la línea, la energía **E keV**, la intensidad relativa **Rel.I** y el rendimiento de fluorescencia **ω**. La tabla escalar indica el rendimiento de la capa K **ω_K** de cada elemento y la **strongest line** del espectro.
 

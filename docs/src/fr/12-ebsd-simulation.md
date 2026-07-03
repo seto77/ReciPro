@@ -1,6 +1,6 @@
 # Simulation EBSD
 
-Le **Simulateur EBSD** simule les figures de diffraction — figures de Kikuchi — obtenues par diffraction d'électrons rétrodiffusés (EBSD) dans un microscope électronique à balayage (MEB), à l'aide de calculs de théorie dynamique. Il calcule la distribution angulaire/en énergie/en profondeur des électrons rétrodiffusés (BSE) au moyen d'une simulation Monte-Carlo, construit un **master pattern** dynamique (ondes de Bloch) du cristal et le projette sur le détecteur pour l'orientation actuelle du cristal.
+Le **Simulateur EBSD** simule les figures de diffraction d'électrons rétrodiffusés (EBSD) — figures de Kikuchi — obtenues dans un microscope électronique à balayage (MEB), à l'aide de calculs de théorie dynamique. Il calcule la distribution angulaire/en énergie/en profondeur des électrons rétrodiffusés (BSE) au moyen d'une simulation Monte-Carlo, construit un **master pattern** dynamique (ondes de Bloch) du cristal et le projette sur le détecteur pour l'orientation actuelle du cristal.
 
 ![Simulateur EBSD](../assets/cap-fr-auto/FormEBSD.png)
 
@@ -74,7 +74,7 @@ La plaque grise est l'échantillon, le cylindre/cône vert est le détecteur, et
 
 ## BSE Distribution
 
-![BSE Distribution](../assets/cap-fr-auto/FormEBSD.tabControl1.tabPage2.png)
+![Distribution BSE](../assets/cap-fr-auto/FormEBSD.tabControl1.tabPage2.png)
 
 L'onglet **BSE Distribution** affiche les distributions Monte-Carlo des électrons rétrodiffusés. Utilisez **Simulate** pour les recalculer.
 
@@ -129,7 +129,7 @@ Le master pattern est l'intensité de diffraction rétrodiffusée sur toutes les
 
 ## Figure EBSD
 
-![Figure EBSD](../assets/cap-fr-auto/FormEBSD.groupBoxEBSDPattern.png)
+![Motif EBSD](../assets/cap-fr-auto/FormEBSD.groupBoxEBSDPattern.png)
 
 Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientation actuelle du cristal.
 

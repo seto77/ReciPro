@@ -36,9 +36,9 @@ Apre / salva un'immagine di diffrazione. È supportato lo stesso caricamento tra
 
 ---
 
-## Optics
+## Ottica
 
-![Optics](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Ottica](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Sorgente incidente
 
@@ -52,7 +52,7 @@ La lunghezza di camera (mm) e la dimensione del pixel del rivelatore (mm o nm⁻
 
 ## Informazioni sullo spot
 
-![Spot information](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Informazioni spot](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: Rilevamento automatico degli spot mediante massimi locali e sottrazione del fondo.
 - **Number**: Il numero massimo di spot da rilevare.

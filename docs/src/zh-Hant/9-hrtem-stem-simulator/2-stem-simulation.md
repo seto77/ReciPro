@@ -95,7 +95,7 @@
 
 ## 影像內容
 
-![影像內容](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![影像屬性](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** : 掃描影像的像素數（預設 512×512）。在 STEM 中此值等於掃描點數，並使計算時間線性增加。
 - **Resolution** : 取樣解析度 (pm/px)。

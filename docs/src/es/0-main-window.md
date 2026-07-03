@@ -141,7 +141,7 @@ Rota por el ángulo Step. Active Animation para una rotación continua.
 
 ### Ver a lo largo de
 
-![Ver a lo largo de](../assets/cap-es-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![Ver según](../assets/cap-es-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Alinea un eje de zona [*uvw*] o un plano cristalino (*hkl*) perpendicular a la pantalla.
 
@@ -254,7 +254,7 @@ Haga clic derecho en un área vacía del control para estas acciones principales
 | Revert cell constants | Restaura las constantes de celda a los valores cargados inicialmente. |
 | Convert to P1 spacegroup | Expande la estructura al grupo espacial P1. |
 | Convert to a superstructure | Convierte en una superestructura con múltiplos enteros de a, b, c (diálogo de tamaño). |
-| Convert to an equivalent space group | Convierte en un grupo espacial equivalente (una orientación de ejes diferente). |
+| Convert to an equivalent space group | Convierte en un grupo espacial equivalente (una configuración de ejes diferente). |
 
 ---
 

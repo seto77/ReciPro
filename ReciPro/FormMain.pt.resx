@@ -69,7 +69,7 @@
     <value>Subir</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
-    <value>  Estereograma</value>
+    <value>  Estereonete</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>Dicas</value>
@@ -367,7 +367,7 @@ rotação que define a orientação do cristal.</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
     <value>Índices do plano cristalino (h k l) para visualizar ao longo. Clique
-em 'Plane' para girar o cristal de modo que a normal deste plano
+em 'Plano' para girar o cristal de modo que a normal deste plano
 aponte para você (para fora da tela).</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
@@ -393,7 +393,7 @@ edite para definir a orientação diretamente.</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
     <value>Índices do eixo de zona [u v w] para visualizar ao longo. Clique
-em 'Axis' para girar o cristal de modo que esta direção
+em 'Eixo' para girar o cristal de modo que esta direção
 aponte para você (para fora da tela).</value>
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
@@ -419,7 +419,7 @@ aponte para você (para fora da tela).</value>
 mostram índices de Miller-Bravais de quatro índices.</value>
   </data>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
-    <value>Define a normal do eixo cristalino especificado para a tela.
+    <value>Orienta o eixo cristalino especificado perpendicularmente à tela (apontando para fora).
 Se um índice de plano também for especificado, essa direção de plano é mostrada para cima.</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
@@ -436,7 +436,7 @@ Se um índice de plano também for especificado, essa direção de plano é most
 rápidos. Baixa ~55MB no primeiro uso.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
-    <value>Usa fatores de dispersão de elétrons iônicos (Peng completo) nos cálculos
+    <value>Usa fatores de espalhamento de elétrons iônicos (Peng completo) nos cálculos
 dinâmicos em vez de átomos neutros. Off = IAM de átomos neutros (padrão).</value>
   </data>
   <data name="buttonDuplicate.ToolTip" xml:space="preserve">
@@ -444,10 +444,10 @@ dinâmicos em vez de átomos neutros. Off = IAM de átomos neutros (padrão).</v
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>A lista de cristais é exibida aqui.
-Para adicionar um novo cristal, defina seus dados no painel 'Crystal Information' abaixo e clique em 'Add'.
-Para modificar um cristal, selecione-o, atualize seus dados no painel 'Crystal Information' e clique em 'Replace'.
-Para remover um cristal da lista, selecione-o e clique em 'Delete'.
-Para remover todos os cristais da lista, clique em 'Clear All'.</value>
+Para adicionar um novo cristal, defina seus dados no painel 'Informação do cristal' abaixo e clique em 'Adicionar'.
+Para modificar um cristal, selecione-o, atualize seus dados no painel 'Informação do cristal' e clique em 'Substituir'.
+Para remover um cristal da lista, selecione-o e clique em 'Excluir'.
+Para remover todos os cristais da lista, clique em 'Limpar todos os cristais'.</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>Orientação atual do cristal selecionado.</value>

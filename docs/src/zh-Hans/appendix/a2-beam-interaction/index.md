@@ -9,7 +9,7 @@
 1. **[Atomic scattering factors](scattering-factor.md)** — *单个原子* 如何散射每一种射束。
 2. **[Structure factor](structure-factor.md)** — *晶胞* 中的原子如何干涉，包括德拜-沃勒因子和消光规则。
 3. **[Attenuation & transport](attenuation-transport.md)** — 射束在穿过材料的过程中如何被 *移除和减速*。
-4. **[Fluorescence](fluorescence.md)** — 内壳层电离之后产生的特征 X 射线发射。
+4. **[荧光](fluorescence.md)** — 内壳层电离之后产生的特征 X 射线发射。
 
 ---
 
@@ -19,17 +19,17 @@
 
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
-- $\theta$ ：布拉格角 — 总散射角的 *一半*。Reflections 表中列出的是全角 $2\theta$。
-- $s = \dfrac{\sin\theta}{\lambda}$（Å⁻¹）：**Scattering factors** 选项卡所对应的横轴变量。它是每一个原子形状因子的自然变量。
+- $\theta$ ：布拉格角 — 总散射角的 *一半*。衍射 表中列出的是全角 $2\theta$。
+- $s = \dfrac{\sin\theta}{\lambda}$（Å⁻¹）：**散射因子** 选项卡所对应的横轴变量。它是每一个原子形状因子的自然变量。
 - $d$ ：面间距。在布拉格条件 $\lambda = 2d\sin\theta$ 下，$s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$，其中 $\mathbf g$ 是倒易点阵矢量，满足 $|\mathbf g| = 1/d$。
 
 这三种约定描述的是同一几何关系，只是标度不同。由于本窗口同时使用了其中不止一种，因此值得把它们的对应关系理清楚：
 
 | 窗口中的量 | 符号 | 关系 |
 |---|---|---|
-| Reflections 表 | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
-| Reflections 表 | $2\theta$ | 全散射角，$\sin\theta = \lambda s$ |
-| Scattering factors 选项卡 | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| 衍射 表 | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
+| 衍射 表 | $2\theta$ | 全散射角，$\sin\theta = \lambda s$ |
+| 散射因子 选项卡 | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | 衍射峰图 | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "单位"
@@ -55,7 +55,7 @@ ReciPro 采用晶体学相位约定来构建结构因子
 
 $$F_{\mathbf g} = \sum_j \dots \exp\!\left(-2\pi i\,\mathbf g\cdot\mathbf r_j\right),$$
 
-即指数中带 **负** 号。这一选择确定了结构因子虚部（Reflections 表中的 `F_inv`）的符号，以及开启反常色散后弗里德尔对之间的关系。这里只陈述一次，并在整个附录中作为前提；其推论将在 [Structure factor](structure-factor.md) 中展开。
+即指数中带 **负** 号。这一选择确定了结构因子虚部（衍射 表中的 `F_inv`）的符号，以及开启反常色散后弗里德尔对之间的关系。这里只陈述一次，并在整个附录中作为前提；其推论将在 [Structure factor](structure-factor.md) 中展开。
 
 ---
 
@@ -90,6 +90,6 @@ $$A_{\mathbf g}(t) \;\propto\; F_{\mathbf g}\int_0^t e^{\,2\pi i S_{\mathbf g} z
 ## 另请参阅
 
 - [3. Beam interaction](../../3-beam-interaction.md) — 本附录所解释的 GUI。
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [荧光](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — 使用这些散射因子的多重散射理论。

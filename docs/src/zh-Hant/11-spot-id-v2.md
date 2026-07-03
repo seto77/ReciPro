@@ -38,7 +38,7 @@
 
 ## 光學
 
-![Optics](../assets/cap-zh-Hant-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![光學](../assets/cap-zh-Hant-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### 入射源
 
@@ -52,7 +52,7 @@
 
 ## 繞射點資訊
 
-![Spot information](../assets/cap-zh-Hant-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![繞射點資訊](../assets/cap-zh-Hant-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**：使用局部極大值與背景扣除的自動繞射點偵測。
 - **Number**：要偵測的繞射點最大數量。

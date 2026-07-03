@@ -1,6 +1,6 @@
 # 동역학적 계산 (공통 코어)
 
-ReciPro의 회절 및 결상 시뮬레이터는 공통 **블로흐파(Bethe) 동역학적 산란 코어**를 공유하며, 이 페이지에서 이를 설명한다 (결정 퍼텐셜, Debye–Waller 항과 흡수 항, 고유값 문제, 투과 계수, 강도). 각 방법별 프로토콜은 이 코어를 기반으로 한다:
+ReciPro의 회절 및 결상 시뮬레이터는 공통 **블로흐파(Bethe) 동역학적 산란 코어**를 공유하며, 이 페이지에서 이를 설명한다 (결정 퍼텐셜, 디바이-월러 항과 흡수 항, 고유값 문제, 투과 계수, 강도). 각 방법별 프로토콜은 이 코어를 기반으로 한다:
 
 - [평행빔 SAED](#parallel-beam-saed)
 - [HRTEM 결상](hrtem.md)
@@ -32,7 +32,7 @@ $$U_{\mathbf g}^{C} = \gamma\,\frac{1}{\pi\Omega}\sum_k f_k(\mathbf g)\,\exp\!\l
 
 $$f_k(\mathbf g) = \sum_i a_i\exp\!\left[-b_i\,\frac{|\mathbf g|^2}{4}\right]$$
 
-$T_k$는 **Debye–Waller (온도) 인자**이다. 등방성 온도 인자 $M_k$의 경우,
+$T_k$는 **디바이-월러 (온도) 인자**이다. 등방성 온도 인자 $M_k$의 경우,
 
 $$T_k(\mathbf g, M_k) = \exp\!\left[-M_k\,\frac{|\mathbf g|^2}{4}\right]$$
 
@@ -63,7 +63,7 @@ $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
 
-이다. 여기서 전치 인자 $2h/(\beta m_0 c)$의 $h$는 **플랑크 상수**이다 (빔 지수가 아님). 계수 $U^{C}$와 $U'$는 [부록 A3](index.md)의 구조 행렬 $\mathbf A$의 원소이다.
+이다. 여기서 전인자 $2h/(\beta m_0 c)$의 $h$는 **플랑크 상수**이다 (빔 지수가 아님). 계수 $U^{C}$와 $U'$는 [부록 A3](index.md)의 구조 행렬 $\mathbf A$의 원소이다.
 
 ---
 
@@ -154,7 +154,7 @@ $$R_{\mathbf g}=|\mathbf g|\,Q_{\mathbf g}^{\,2}$$
 | 고유값 방법 | 구조 행렬 $\mathbf A$를 대각화하여 고유값 $\lambda^{(j)}$와 고유벡터 $C_{\mathbf g}^{(j)}$를 얻는다. 두께 의존성은 그 후 $e^{2\pi i\lambda^{(j)}t}$를 통해 평가된다. | 많은 깊이나 에너지를 주사하는 두께 시리즈, CBED, EBSD 계산 |
 | 행렬 지수 방법 | 고유분해를 명시적으로 사용하지 않고 산란 행렬 $\exp(2\pi i\mathbf A t)$를 직접 평가한다. | 단일 두께 STEM 계산 및 슬라이스 적분 계산 |
 
-두 방법 모두 동일한 Bethe 방정식을 푼다. 구현에서, 코드는 빔의 개수, 두께 배열, 그리고 네이티브 라이브러리의 가용 여부에 따라 eigenvalue method, matrix-exponential method, 관리되는 .NET 루틴, 네이티브 Eigen 라이브러리 중에서 선택한다.
+두 방법 모두 동일한 Bethe 방정식을 푼다. 구현에서, 코드는 빔의 개수, 두께 배열, 그리고 네이티브 라이브러리의 가용 여부에 따라 고유값 방법, 행렬 지수 방법, 관리되는 .NET 루틴, 네이티브 Eigen 라이브러리 중에서 선택한다.
 
 ---
 
@@ -164,7 +164,7 @@ $$R_{\mathbf g}=|\mathbf g|\,Q_{\mathbf g}^{\,2}$$
 
 $$\Delta I_N=\frac{|I_N-I_{N-\Delta N}|}{I_N}$$
 
-STEM의 경우, 이를 검출기 각도 설정과 함께 점검하라. CBED의 경우, 디스크 내부와 HOLZ 선을 살펴보라. EBSD의 경우, master pattern에서 Kikuchi 밴드 폭과 배경을 추가로 비교하라. 이는 수치적 수렴을 시뮬레이션 결과에서 보이는 물리적 특징과 연결한다.
+STEM의 경우, 이를 검출기 각도 설정과 함께 점검하라. CBED의 경우, 디스크 내부와 HOLZ 선을 살펴보라. EBSD의 경우, master pattern에서 키쿠치 밴드 폭과 배경을 추가로 비교하라. 이는 수치적 수렴을 시뮬레이션 결과에서 보이는 물리적 특징과 연결한다.
 
 ---
 

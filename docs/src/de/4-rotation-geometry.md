@@ -30,7 +30,7 @@ In den kleinen Ansichten *Axes* und *Objects* sind Zoomen und Verschieben deakti
 Die obere Hälfte des Fensters zeigt den Rotationszustand im "ReciPro-Koordinatensystem".
 
 - Die Werte **Φ, θ, Ψ** sind mit den im Hauptfenster eingestellten Eulerwinkeln synchronisiert.
-- **Rotation matrix** zeigt die 3×3-Matrix an, die dem aktuellen Rotationszustand entspricht.
+- **Rotationsmatrix** zeigt die 3×3-Matrix an, die dem aktuellen Rotationszustand entspricht.
 
 ### Φ, θ, Ψ (Z–X–Z-Eulerwinkel)
 
@@ -42,9 +42,9 @@ Die Kristallorientierung wird durch drei Rotationen parametrisiert, die in diese
 
 Jedes Zahlenfeld ist editierbar; eine Wertänderung hier aktualisiert das Hauptfenster und jeden verknüpften Simulator.
 
-### Rotation matrix
+### Rotationsmatrix
 
-Die 3 × 3-Matrix, die aus dem aktuellen (Φ, θ, Ψ) erzeugt wird. Verwenden Sie **Copy to Excel** / **Paste from Excel**, um die Matrix über eine Tabellenkalkulation hin und zurück zu übertragen.
+Die 3 × 3-Matrix, die aus dem aktuellen (Φ, θ, Ψ) erzeugt wird. Verwenden Sie **Kopieren** / **Aus Excel einfügen**, um die Matrix über eine Tabellenkalkulation hin und zurück zu übertragen.
 
 ### OpenGL-Fenster
 
@@ -66,10 +66,10 @@ Die graue Kugel im Zentrum stellt die Probe dar; die roten/grünen/blauen Kugeln
 
 | Schaltfläche | Aktion |
 |--------|--------|
-| Copy to Excel | Die 3×3-Rotationsmatrix im tabulatorgetrennten Format kopieren |
-| Paste from Excel | Rotationsmatrix aus der Zwischenablage setzen (tabulatorgetrennt 3×3) |
-| View along beam | An die Projektion des Hauptfensters anpassen (Z-Achse senkrecht zum Bildschirm) |
-| Isometric | Zur isometrischen Projektion wechseln |
+| Kopieren | Die 3×3-Rotationsmatrix im tabulatorgetrennten Format kopieren |
+| Aus Excel einfügen | Rotationsmatrix aus der Zwischenablage setzen (tabulatorgetrennt 3×3) |
+| Ansicht entlang Strahl | An die Projektion des Hauptfensters anpassen (Z-Achse senkrecht zum Bildschirm) |
+| Isometrische Ansicht | Zur isometrischen Projektion wechseln |
 
 ---
 
@@ -85,16 +85,16 @@ Die Eulerwinkel für jede Achse werden in den zugehörigen farbigen Textfeldern 
 
 ---
 
-## Link
+## Verknüpfen
 
-Wenn **Link** aktiviert ist, sind das ReciPro-Koordinatensystem und das experimentelle Koordinatensystem gekoppelt: Ihre Eulerwinkel werden so angepasst, dass die Objektorientierung zwischen beiden Systemen konsistent bleibt.
+Wenn **Verknüpfen** aktiviert ist, sind das ReciPro-Koordinatensystem und das experimentelle Koordinatensystem gekoppelt: Ihre Eulerwinkel werden so angepasst, dass die Objektorientierung zwischen beiden Systemen konsistent bleibt.
 
 ### Beispiel-Arbeitsablauf
 
 1. Stellen Sie im Labor ein Goniometer so ein, dass die *a*-Achse eines Kristalls mit der Einfallsrichtung der Röntgenstrahlung ausgerichtet ist und die *b*-Achse horizontal liegt.
 2. Geben Sie die Eulerwinkel des Labor-Goniometers im experimentellen Koordinatensystem ein.
 3. Drehen Sie den Kristall im Hauptfenster so, dass die *a*-Achse zur Bildschirmnormalen und die *b*-Achse horizontal weist.
-4. Aktivieren Sie **Link** — jetzt werden, sobald Sie den Kristall im Hauptfenster auf eine andere Orientierung ausrichten, automatisch die erforderlichen Goniometerwinkel angezeigt.
+4. Aktivieren Sie **Verknüpfen** — jetzt werden, sobald Sie den Kristall im Hauptfenster auf eine andere Orientierung ausrichten, automatisch die erforderlichen Goniometerwinkel angezeigt.
 
 ---
 

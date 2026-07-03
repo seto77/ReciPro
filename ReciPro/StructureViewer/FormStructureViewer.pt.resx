@@ -442,7 +442,7 @@ do eixo a, em coordenadas fracionárias;
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo c, em
 coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+os planos delimitadores mín/máx da estrutura desenhada.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo c, em
@@ -452,7 +452,7 @@ os planos limítrofes mín/máx da estrutura desenhada.</value>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo b, em
 coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+os planos delimitadores mín/máx da estrutura desenhada.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo b, em
@@ -462,7 +462,7 @@ os planos limítrofes mín/máx da estrutura desenhada.</value>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo a, em
 coordenadas fracionárias; combinado com Intervalo define
-os planos limítrofes mín/máx da estrutura desenhada.</value>
+os planos delimitadores mín/máx da estrutura desenhada.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
     <value>Centro da região exibida ao longo do eixo a, em
@@ -470,16 +470,16 @@ coordenadas fracionárias; combinado com Intervalo define
 os planos limítrofes mín/máx da estrutura desenhada.</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
-    <value>Mostra/oculta os planos limítrofes do cristal</value>
+    <value>Mostra/oculta os planos delimitadores do cristal</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
-    <value>Opacidade dos planos limítrofes (0=transparente, 1=opaco)</value>
+    <value>Opacidade dos planos delimitadores (0=transparente, 1=opaco)</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
     <value>Opacidade dos planos limítrofes (0=transparente, 1=opaco)</value>
   </data>
   <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
-    <value>Recorta átomos e ligações nos planos limítrofes</value>
+    <value>Recorta átomos e ligações nos planos delimitadores</value>
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
     <value>Se marcado, os limites de desenho são
@@ -506,7 +506,7 @@ com base nos planos cristalinos da seguinte forma</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
-eixo a (usada quando 'Each plane' está selecionado).</value>
+eixo a (usada quando 'Cada plano' está selecionado).</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
@@ -514,7 +514,7 @@ eixo a (usada quando 'Each plane' está selecionado).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
-eixo b (usada quando 'Each plane' está selecionado).</value>
+eixo b (usada quando 'Cada plano' está selecionado).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
@@ -522,7 +522,7 @@ eixo b (usada quando 'Each plane' está selecionado).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
-eixo c (usada quando 'Each plane' está selecionado).</value>
+eixo c (usada quando 'Cada plano' está selecionado).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>Cor da face da célula unitária normal ao
@@ -548,7 +548,7 @@ eixo c (usada quando 'Each plane' está selecionado).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
-eixo a (usada quando 'Each edge' está selecionado).</value>
+eixo a (usada quando 'Cada aresta' está selecionada).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
@@ -556,7 +556,7 @@ eixo a (usada quando 'Each edge' está selecionado).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
-eixo b (usada quando 'Each edge' está selecionado).</value>
+eixo b (usada quando 'Cada aresta' está selecionada).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
@@ -564,7 +564,7 @@ eixo b (usada quando 'Each edge' está selecionado).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
-eixo c (usada quando 'Each edge' está selecionado).</value>
+eixo c (usada quando 'Cada aresta' está selecionada).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>Cor das arestas da célula unitária ao longo do
@@ -665,7 +665,7 @@ Per-Pixel Linked List, que exigem OpenGL mais recente).</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
     <value>Ativa o depth cueing (névoa): objetos
-mais distantes do observador desaparecem; o
+mais distantes do observador esmaecem; o
 intervalo próximo/distante abaixo torna-se ativo.</value>
   </data>
   <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">

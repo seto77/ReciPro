@@ -281,7 +281,7 @@
     <value>圖例大小</value>
   </data>
   <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
-    <value>座標軸大小</value>
+    <value>晶軸大小</value>
   </data>
   <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
     <value>光球大小</value>
@@ -293,7 +293,7 @@
     <value>其他</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Text" xml:space="preserve">
-    <value>座標軸</value>
+    <value>晶軸</value>
   </data>
   <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
     <value>光</value>
@@ -371,7 +371,7 @@
     <value>CTRL+SHIFT+c：  複製主影像至剪貼簿</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
-    <value>CTRL+ 滑鼠右鍵雙按：  切換透視 &lt;=&gt; 正交投影</value>
+    <value>CTRL+ 滑鼠右鍵雙擊：  切換透視 &lt;=&gt; 正交投影</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
     <value>CTRL+ 滑鼠右鍵上/下：  變更透視程度</value>
@@ -506,7 +506,7 @@
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
     <value>垂直於 a 軸之晶胞面的顏色
-（選取「Each plane」時使用）。</value>
+（選取「各面」時使用）。</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>垂直於 a 軸之晶胞面的顏色
@@ -514,7 +514,7 @@
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
     <value>垂直於 b 軸之晶胞面的顏色
-（選取「Each plane」時使用）。</value>
+（選取「各面」時使用）。</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>垂直於 b 軸之晶胞面的顏色
@@ -522,7 +522,7 @@
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
     <value>垂直於 c 軸之晶胞面的顏色
-（選取「Each plane」時使用）。</value>
+（選取「各面」時使用）。</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>垂直於 c 軸之晶胞面的顏色
@@ -548,7 +548,7 @@
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
     <value>沿 a 軸方向之晶胞稜邊的顏色
-（選取「Each edge」時使用）。</value>
+（選取「各邊」時使用）。</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>沿 a 軸方向之晶胞稜邊的顏色
@@ -556,7 +556,7 @@
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
     <value>沿 b 軸方向之晶胞稜邊的顏色
-（選取「Each edge」時使用）。</value>
+（選取「各邊」時使用）。</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>沿 b 軸方向之晶胞稜邊的顏色
@@ -564,7 +564,7 @@
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
     <value>沿 c 軸方向之晶胞稜邊的顏色
-（選取「Each edge」時使用）。</value>
+（選取「各邊」時使用）。</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>沿 c 軸方向之晶胞稜邊的顏色
@@ -692,7 +692,7 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
 對象保持完全不透明（-30 至 30）</value>
   </data>
   <data name="colorControlInversion.ToolTip" xml:space="preserve">
-    <value>設定反轉中心符號的顯示顏色。</value>
+    <value>設定反演中心符號的顯示顏色。</value>
   </data>
   <data name="colorControlPlane.ToolTip" xml:space="preserve">
     <value>設定對稱面符號
@@ -759,10 +759,10 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
   </data>
   <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
     <value>顯示空間群的滑移面符號 (鏡射
-結合並進)</value>
+結合平移)</value>
   </data>
   <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
-    <value>在顯示的對稱要素中切換反轉中心 (將結構
+    <value>在顯示的對稱要素中切換反演中心 (將結構
 依 x 映射至 -x 而與自身重合的點)
 的顯示/隱藏。</value>
   </data>
@@ -779,11 +779,11 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
   </data>
   <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
     <value>顯示空間群的螺旋軸符號 (旋轉結合
-並進)</value>
+平移)</value>
   </data>
   <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
     <value>套用於原子標籤的固定顏色 (選取
-「Use fixed color」時使用)</value>
+「使用固定顏色」時使用)</value>
   </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>對稱軸符號的線寬 (0.5-10)</value>
@@ -793,7 +793,7 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
 (20-500%)</value>
   </data>
   <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
-    <value>反轉中心符號的大小，以百分比表示
+    <value>反演中心符號的大小，以百分比表示
 (100% = 標準尺寸)。</value>
   </data>
   <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
@@ -805,17 +805,17 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
   </data>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value>繪製子晶胞格線時，晶胞沿 a 軸方向的
-細分數 (整數，1-10)。啟用「Show Subcell」
+細分數 (整數，1-10)。啟用「顯示子晶胞」
 時會顯示此格線。</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value>繪製子晶胞格線時，晶胞沿 b 軸方向的
-細分數 (整數，1-10)。啟用「Show Subcell」
+細分數 (整數，1-10)。啟用「顯示子晶胞」
 時會顯示此格線。</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value>繪製子晶胞格線時，晶胞沿 c 軸方向的
-細分數 (整數，1-10)。啟用「Show Subcell」
+細分數 (整數，1-10)。啟用「顯示子晶胞」
 時會顯示此格線。</value>
   </data>
   <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
@@ -828,7 +828,7 @@ Per-Pixel Linked List，需要較新的 OpenGL）。</value>
   <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
     <value>將原子半徑、顏色與鍵結重設為
 VESTA 風格的預設值 (VESTA 是廣泛使用的
-結晶結構視覺化程式)。</value>
+晶體結構視覺化程式)。</value>
   </data>
   <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
     <value>將模型方位重設為預設值 (無旋轉)。</value>
@@ -843,7 +843,7 @@ VESTA 風格的預設值 (VESTA 是廣泛使用的
   <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
     <value>在 3D 視圖上疊加繪製結晶的對稱要素
 (旋轉軸、鏡面/滑移面、
-反轉中心)。</value>
+反演中心)。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>顯示區域沿各晶胞軸方向的中心

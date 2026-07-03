@@ -107,7 +107,7 @@ Contrôle la superposition du net 3D (sphère) — opacité de la sphère, indic
 
 ### Appearance
 
-![Appearance tab](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage1.png)
+![Onglet Apparence](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
@@ -126,13 +126,13 @@ Manière dont le contour du stéréonet est tracé — le cercle de délimitatio
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage2.png)
+![Onglet Grand cercle](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage2.png)
 
 Tracez des grands cercles et des petits cercles. Spécifiez-les soit par **zone-axis index** \([uvw]\) (le grand cercle formé par la zone de cet axe), soit par **two crystal-plane indices** qui partagent l'axe de zone. L'épaisseur des traits des cercles est également configurable au moyen d'un curseur.
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage4.png)
+![Onglet Onde](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage4.png)
 
 Disponible uniquement lorsque **Planes** ou **Kikuchi line pairs** est sélectionné comme cible de projection. Définit la source d'onde (X-ray / electron / neutron) ainsi que la longueur d'onde ou l'énergie nécessaires au calcul des facteurs de structure cristalline utilisés pour l'option **structure-factor weighting** dans [Mode](#mode).
 

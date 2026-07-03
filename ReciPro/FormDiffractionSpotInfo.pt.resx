@@ -73,7 +73,7 @@ mais rápida em tabelas grandes.</value>
     <value>Resultados por reflexão do cálculo dinâmico de
 difração (método de Bethe):
 índices hkl, distância interplanar, vetor recíproco g,
-potencial do cristal Ug/Vg, erro de excitação Sg
+potencial cristalino Ug/Vg, erro de excitação Sg
 (distância do ponto recíproco em relação à
 esfera de Ewald) e amplitude da onda difratada Φ.</value>
   </data>
@@ -88,7 +88,7 @@ estão em nanômetros (nm), não em Ångströms;
 números de onda estão em 1/nm, não em 2π/nm.</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value>Legenda das colunas da tabela: Vg/Ug = potencial do cristal
+    <value>Legenda das colunas da tabela: Vg/Ug = potencial cristalino
 para espalhamento elástico; V'g/U'g = potencial imaginário
 (de absorção) para espalhamento térmico difuso;
 Φ = amplitude da onda difratada na superfície de saída.</value>

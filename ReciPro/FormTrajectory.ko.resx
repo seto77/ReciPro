@@ -101,7 +101,7 @@
     <value>궤적 시뮬레이션</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>제동능 (dE/ds)</value>
+    <value>저지능 (dE/ds)</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
     <value>보조원 그리기</value>
@@ -158,8 +158,8 @@ X축 방향으로 설정합니다.</value>
 즉 입사 빔 방향으로 설정합니다.</value>
   </data>
   <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
-    <value>3D 표시에서 후방 산란된 전자뿐 아니라, 시료
-내에 흡수된(후방 산란하지 않은) 전자의
+    <value>3D 표시에서 후방산란된 전자뿐 아니라, 시료
+내에 흡수된(후방산란하지 않은) 전자의
 궤적도 함께 그립니다.</value>
   </data>
   <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
@@ -167,7 +167,7 @@ X축 방향으로 설정합니다.</value>
 (보라) 좌표축을 표시합니다.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>후방 산란 전자의 탈출 방향에 대한 입체 투영도
+    <value>후방산란 전자의 탈출 방향에 대한 입체 투영도
 (극점도) 위에 ±X / ±Y / ±Z 축의 위치를
 겹쳐 표시합니다.</value>
   </data>
@@ -177,25 +177,25 @@ X축 방향으로 설정합니다.</value>
 nm/µm 단위로 표시).</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
-    <value>3D 표시에서 각 후방 산란 전자의 경로를 표면
+    <value>3D 표시에서 각 후방산란 전자의 경로를 표면
 바깥으로 연장하여 그 탈출 방향을
 나타냅니다 (탈출 에너지로 색 구분).</value>
   </data>
   <data name="labelBSEenergy.ToolTip" xml:space="preserve">
-    <value>시료 표면에서 탈출하는 후방 산란 전자(BSE)의
+    <value>시료 표면에서 탈출하는 후방산란 전자(BSE)의
 평균 탈출 에너지 (keV).</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>시료 표면에서 탈출하는 후방 산란 전자(BSE)의
+    <value>시료 표면에서 탈출하는 후방산란 전자(BSE)의
 평균 탈출 에너지 (keV).</value>
   </data>
   <data name="labelBSEratio.ToolTip" xml:space="preserve">
-    <value>후방 산란 계수 η: 입사 전자 중 표면에서 후방 산란
+    <value>후방산란 계수 η: 입사 전자 중 표면에서 후방산란
 전자(BSE)로 재방출되는 비율로, 몬테카를로
 시뮬레이션으로 구한 값입니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>후방 산란 계수 η: 입사 전자 중 표면에서 후방 산란
+    <value>후방산란 계수 η: 입사 전자 중 표면에서 후방산란
 전자(BSE)로 재방출되는 비율로, 몬테카를로
 시뮬레이션으로 구한 값입니다.</value>
   </data>
@@ -247,21 +247,21 @@ nm/µm 단위로 표시).</value>
   <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
     <value>입사 빔에 대한 시료 표면의 경사각
 (0~-90°). 0°=표면 법선이 빔과 평행. 기울이면
-후방 산란 전자의 수율과 방향 분포가
+후방산란 전자의 수율과 방향 분포가
 변화합니다.</value>
   </data>
   <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
-    <value>입체 투영도를 각 방향으로 탈출한 후방 산란
+    <value>입체 투영도를 각 방향으로 탈출한 후방산란
 전자의 평균 탈출 에너지 (keV)로
 착색합니다.</value>
   </data>
   <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
     <value>입체 투영도를 빈도, 즉 각 방향으로 탈출한
-후방 산란 전자의 수로
+후방산란 전자의 수로
 착색합니다.</value>
   </data>
   <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
-    <value>입체 투영도를 각 방향으로 탈출한 후방 산란
+    <value>입체 투영도를 각 방향으로 탈출한 후방산란
 전자의 탈출 에너지 표준 편차로
 착색합니다.</value>
   </data>

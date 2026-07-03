@@ -88,6 +88,6 @@ $$I_{\mathrm{STEM}}^{\mathrm{TDS}}(\mathbf R_0)=
 
 ## 另请参阅
 
-- [动力学计算（公共核心）](calculation.md)
+- [动力学计算（公共内核）](calculation.md)
 - [附录 A3. 用布洛赫波法处理动力学衍射](index.md)
 - [9.2. STEM 模拟](../../9-hrtem-stem-simulator/2-stem-simulation.md)

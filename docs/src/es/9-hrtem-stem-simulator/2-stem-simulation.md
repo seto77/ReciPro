@@ -86,7 +86,7 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 
 ## Modo de imagen (single / serial)
 
-![Modo de imagen](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Modo único/en serie](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** : calcula una imagen STEM al espesor actual.
 - **Serial image** : genera una serie de imágenes con el espesor / desenfoque escalonado por etapas (definido mediante **Start / Step / Num**; la lista de abajo también se puede editar directamente).

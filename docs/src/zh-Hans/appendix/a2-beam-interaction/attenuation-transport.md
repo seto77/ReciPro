@@ -1,15 +1,15 @@
 # 衰减与输运
 
-散射因子描述的是单次散射事件；而本页关注的是射束**作为整体**穿过固体时会发生什么——它被移除得有多快、能穿透多深，以及（对于电子而言）它如何减速。这三种射束所涉及的物理过程完全不同，正因如此，**Attenuations & Transport** 选项卡才会随辐射类型如此剧烈地改变其图表和表格。
+散射因子描述的是单次散射事件；而本页关注的是射束**作为整体**穿过固体时会发生什么——它被移除得有多快、能穿透多深，以及（对于电子而言）它如何减速。这三种射束所涉及的物理过程完全不同，正因如此，**衰减 & 输运** 选项卡才会随辐射类型如此剧烈地改变其图表和表格。
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-attenuations.png)
+    ![衰减 & 输运 — X-ray](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-attenuations.png)
+    ![衰减 & 输运 — electron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![衰减 & 输运 — neutron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 - [原子散射因子](scattering-factor.md) —— 瑞利/康普顿背后的 $F(q)$/$S(q)$ 划分，以及 Mott 截面。
 - [荧光](fluorescence.md) —— 跟随 X 射线光电吸收而来的弛豫。
-- [3. 射束相互作用](../../3-beam-interaction.md) —— *Attenuations & Transport* 选项卡。
+- [3. 射束相互作用](../../3-beam-interaction.md) —— *衰减 & 输运* 选项卡。
 - [8. 电子轨迹](../../8-electron-trajectory.md) · [12. EBSD 模拟](../../12-ebsd-simulation.md) —— 电子射程被用到的地方。

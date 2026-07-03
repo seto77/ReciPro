@@ -67,7 +67,7 @@ Largeur de classe de l'histogramme angulaire et carte de couleurs utilisée pour
 
 ## Statistiques
 
-![Statistics](../assets/cap-fr-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![Statistiques](../assets/cap-fr-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Résumé de l'exécution.
 
@@ -80,7 +80,7 @@ Résumé de l'exécution.
 
 ## Distribution directionnelle des BSE
 
-![BSE direction distribution](../assets/cap-fr-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![Distribution directionnelle des BSE](../assets/cap-fr-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Distribution angulaire des électrons rétrodiffusés (le centre du stéréonet correspond à la direction de la normale à la surface). Le contour jaune/orange (lorsqu'il est présent) marque la région sous-tendue par le détecteur EBSD.
 

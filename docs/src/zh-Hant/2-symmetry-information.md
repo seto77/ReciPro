@@ -45,7 +45,7 @@
 
 ![維科夫位置](../assets/cap-zh-Hant-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
 
-列出每個維科夫位置及其多重度、維科夫字母、座位對稱性，以及其為一般位置或特殊位置。對於有心點陣，點陣平移向量會顯示於標題列中。
+列出每個維科夫位置及其多重度、維科夫字母、位置對稱性，以及其為一般位置或特殊位置。對於有心點陣，點陣平移向量會顯示於標題列中。
 
 ---
 

@@ -198,7 +198,7 @@ Translada o plano reticular desenhado por um múltiplo inteiro de sua distância
 
 ### Coordenação
 
-![Aba Coordenadas](../assets/cap-pt-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
+![Aba Coordenação](../assets/cap-pt-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
 Tabela e gráfico de coordenação em torno do átomo-alvo.
 

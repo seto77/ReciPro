@@ -19,7 +19,7 @@ title: Diffraction Simulator
 
 | 模式 | 內容 | 頁面 |
 |------|----------|------|
-| **X 光（與中子）繞射** | 單晶 X 光 / 中子繞射圖樣（平行、進動 X 光、Back Laue） | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
+| **X 光（與中子）繞射** | 單晶 X 光 / 中子繞射圖樣（平行、進動 X 光、背反射勞厄） | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
 | **SAED** | 平行束電子繞射（選區電子繞射） | [SAED 模擬](1-saed-simulation.md) |
 | **PED** | 進動電子繞射 | [PED 模擬](2-ped-simulation.md) |
 | **CBED** | 會聚束電子繞射 | [CBED 模擬](3-cbed-simulation.md) |
@@ -37,10 +37,10 @@ title: Diffraction Simulator
 | 電子 | 會聚（CBED） | CBED | [CBED 模擬](3-cbed-simulation.md) |
 | X 光 | 平行 | X 光繞射 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
 | X 光 | 進動（X 光） | 進動 X 光（進動相機） | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
-| X 光 | Back Laue | 背反射勞厄 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
+| X 光 | 背反射勞厄（X 光） | 背反射勞厄 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
 | 中子 | 平行 | 中子繞射 | [X 光繞射模擬的中子章節](4-x-ray-neutron-diffraction.md) |
 
-> **Note**：入射束的選項會隨波長而變。電子：**平行、進動（電子 = PED）、會聚（CBED）**；X 光：**平行、進動（X 光）、Back Laue**；中子：僅**平行**。選取**進動（電子 = PED）**或**會聚（CBED）**時，強度計算會自動切換為 **Dynamical**。
+> **Note**：入射束的選項會隨波長而變。電子：**平行、進動（電子 = PED）、會聚（CBED）**；X 光：**平行、進動（X 光）、背反射勞厄**；中子：僅**平行**。選取**進動（電子 = PED）**或**會聚（CBED）**時，強度計算會自動切換為 **Dynamical**。
 
 ---
 
@@ -59,7 +59,7 @@ title: Diffraction Simulator
 | 右鍵點按 | 縮小 |
 | 右鍵拖曳出方框 | 放大至所選區域 |
 | 右鍵雙擊狀態列 | 複製目前設定的文字摘要 |
-| 右鍵雙擊已點亮的圖層按鈕（Spots / Kikuchi / Debye / Scale） | 使該圖層閃爍開關 |
+| 右鍵雙擊已點亮的圖層按鈕（繞射點 / 菊池線 / 德拜環 / 比例尺） | 使該圖層閃爍開關 |
 
 從此處開啟的輔助視窗另外增加了幾項：
 
@@ -84,7 +84,7 @@ title: Diffraction Simulator
 | 產生單晶 X 光繞射 | 將 **Wavelength** 切換為 X 光 / 同步輻射 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
 | 產生進動電子繞射（PED） | 將 **Incident beam** 設為 **Precession (electron)**，再設定半角與步階 | [PED 模擬](2-ped-simulation.md) |
 | 產生會聚束電子繞射（CBED） | 將 **Incident beam** 設為 **Convergence (CBED, electron only)**，並在 CBED 視窗中設定條件 | [CBED 模擬](3-cbed-simulation.md)、[CBED 計算](../appendix/a3-bloch-wave/cbed.md) |
-| 檢視動力學計算所得的反射清單 | 選取 **Dynamical** 並開啟 **Spot Details** 或 **Details** | [動力學計算（共用核心）](../appendix/a3-bloch-wave/calculation.md) |
+| 檢視動力學計算所得的反射清單 | 選取 **Dynamical** 並開啟 **繞射點詳情** 或 **Details** | [動力學計算（共用核心）](../appendix/a3-bloch-wave/calculation.md) |
 | 將偵測器幾何與實驗影像比對 | 從 **Details** 開啟偵測器幾何設定，並使用疊加影像 | [偵測器座標系](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -103,9 +103,9 @@ title: Diffraction Simulator
 
 ---
 
-## File 選單
+## 檔案選單
 
-![File 選單](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![檔案選單](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | 選單項目 | 說明 |
 |-----------|-------------|
@@ -114,9 +114,9 @@ title: Diffraction Simulator
 | **Copy** | 將顯示的影像複製到剪貼簿。 |
 | **Copy detector area** | 僅複製偵測器區域的裁切。 |
 
-### Preset {#toolbar}
+### 預設組合 {#toolbar}
 
-![Preset 選單](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![預設組合選單](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 將完整的模擬器組態——波長、偵測器幾何、索引標籤設定、反射性質等——存成預設集並隨時叫回。可用於在不同儀器 / 擷取模式之間快速切換。
 
@@ -128,11 +128,11 @@ title: Diffraction Simulator
 
 | 按鈕 | 說明 |
 |--------|-------------|
-| Spots | 顯示 / 隱藏繞射斑點圖層 |
-| Kikuchi | 顯示 / 隱藏菊池線圖層 |
-| Debye | 顯示 / 隱藏德拜環圖層 |
-| Scale | 顯示 / 隱藏刻度線圖層 |
-| Index / d / Distance / Excitation error / Structure factor | 選擇附加於每個斑點的標籤 |
+| 繞射點 | 顯示 / 隱藏繞射斑點圖層 |
+| 菊池線 | 顯示 / 隱藏菊池線圖層 |
+| 德拜環 | 顯示 / 隱藏德拜環圖層 |
+| 比例尺 | 顯示 / 隱藏刻度線圖層 |
+| Index / d / 距離 / 激發誤差 / Structure factor | 選擇附加於每個斑點的標籤 |
 
 ---
 
@@ -159,32 +159,32 @@ title: Diffraction Simulator
 
 ### Misc
 
-![Misc](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![其他](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** ：滑鼠每拖曳一像素的晶體旋轉量。
-- **TEM holder simulation** ：開啟與試樣台連動的模擬視窗（見下文）。
+- **TEM 試樣台模擬** ：開啟與試樣台連動的模擬視窗（見下文）。
 
 ---
 
-## TEM holder 模擬 {#drawing-overlay-tabs}
+## TEM 試樣台模擬 {#drawing-overlay-tabs}
 
-![TEM holder 模擬](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorHolder.png)
+![TEM 試樣台模擬](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorHolder.png)
 
-開啟一個將繞射圖樣與雙傾（或旋轉）**TEM holder** 連動的視窗。設定試樣台傾斜角會更新圖樣與晶體取向，且可達的取向可在極網上顯示（v4.914 新增）。在極網上左鍵雙擊會將試樣台傾斜設為該點，而勾選 **Arrow keys** 可讓方向鍵逐步調整傾斜。
+開啟一個將繞射圖樣與雙傾（或旋轉）**TEM 試樣台** 連動的視窗。設定試樣台傾斜角會更新圖樣與晶體取向，且可達的取向可在極網上顯示（v4.914 新增）。在極網上左鍵雙擊會將試樣台傾斜設為該點，而勾選 **Arrow keys** 可讓方向鍵逐步調整傾斜。
 
 ---
 
 ## 繪圖疊加層索引標籤
 
-### General
+### 一般
 
-![General 索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![一般索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 設定斑點、標籤、菊池線、德拜環及其他疊加層的顏色。此處的設定適用於所有繪製模式。
 
 ### 菊池線
 
-![Kikuchi 索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![菊池線索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 於工具列啟用菊池線時生效。
 
@@ -194,16 +194,16 @@ title: Diffraction Simulator
 
 ### 德拜環
 
-![Debye 索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![德拜環索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 於工具列啟用德拜環時生效。
 
 - **Ignore diffraction intensity** ：若勾選，所有德拜環以相同顏色與強度繪製（忽略晶體結構因子）。可用於純幾何比較。
 - **Show index label** ：若勾選，(*hkl*) 會出現在每個環附近。
 
-### Scale
+### 比例尺
 
-![Scale 索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![比例尺索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 於工具列啟用刻度線時生效。
 
@@ -222,7 +222,7 @@ title: Diffraction Simulator
 
 ## 繞射斑點資訊
 
-列出以布洛赫波法（Dynamical 計算）所算得的逐反射詳細資訊。以 **Spot Details** 按鈕（強度計算面板）或 **Details** 核取方塊開啟。
+列出以布洛赫波法（Dynamical 計算）所算得的逐反射詳細資訊。以 **繞射點詳情** 按鈕（強度計算面板）或 **Details** 核取方塊開啟。
 
 ![繞射斑點資訊](../../assets/cap-zh-Hant-auto/FormDiffractionSpotInfo.png)
 
@@ -272,7 +272,7 @@ title: Diffraction Simulator
 
 ![偵測器幾何設定](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
-指定反射幾何，例如相機長度與偵測器傾斜（**Tau / Phi**）。對於 Back Laue（背反射勞厄），請在此設定將偵測器置於射源側的幾何。
+指定反射幾何，例如相機長度與偵測器傾斜（**Tau / Phi**）。對於背反射勞厄（Back Laue），請在此設定將偵測器置於射源側的幾何。
 
 ### 偵測器區域與疊加影像
 

@@ -88,6 +88,6 @@ Dans ReciPro, le STEM se comprend le plus simplement ainsi : on part de la même
 
 ## Voir aussi
 
-- [Calcul dynamique (noyau commun)](calculation.md)
+- [Calcul dynamique (cœur commun)](calculation.md)
 - [Annexe A3. Diffraction dynamique par la méthode des ondes de Bloch](index.md)
 - [9.2. Simulation STEM](../../9-hrtem-stem-simulator/2-stem-simulation.md)

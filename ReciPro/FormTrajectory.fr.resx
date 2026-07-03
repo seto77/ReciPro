@@ -69,7 +69,7 @@
     <value>Énergie BSE moyenne</value>
   </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
-    <value>Distribution directionnelle des BSE (le centre du stéréogramme correspond à la direction de la normale à la surface)</value>
+    <value>Distribution directionnelle des BSE </value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
     <value>Normale de surface</value>

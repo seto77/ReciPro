@@ -1,8 +1,8 @@
 # Fluoreszenz
 
-Wenn die **Photoabsorption** von Röntgenstrahlung ein Elektron einer inneren Schale herausschlägt (siehe [Abschwächung & Transport](attenuation-transport.md)), hinterlässt sie eine Leerstelle in einem tief liegenden Niveau. Das Atom relaxiert, indem ein äußeres Elektron in das Loch fällt, und die freigesetzte Energie tritt entweder als **charakteristisches Röntgenphoton** (Fluoreszenz) aus oder durch das Herausschlagen eines zweiten Elektrons (der **Auger**-Prozess). Die Registerkarte **Fluorescence** zeigt eine Vorschau des Kanals der charakteristischen Photonen; sie gilt nur für Röntgenstrahlung und ist für Elektronen- und Neutronenstrahlen ausgeblendet.
+Wenn die **Photoabsorption** von Röntgenstrahlung ein Elektron einer inneren Schale herausschlägt (siehe [Abschwächung & Transport](attenuation-transport.md)), hinterlässt sie eine Leerstelle in einem tief liegenden Niveau. Das Atom relaxiert, indem ein äußeres Elektron in das Loch fällt, und die freigesetzte Energie tritt entweder als **charakteristisches Röntgenphoton** (Fluoreszenz) aus oder durch das Herausschlagen eines zweiten Elektrons (der **Auger**-Prozess). Die Registerkarte **Fluoreszenz** zeigt eine Vorschau des Kanals der charakteristischen Photonen; sie gilt nur für Röntgenstrahlung und ist für Elektronen- und Neutronenstrahlen ausgeblendet.
 
-![Fluorescence (X-ray)](../../../assets/cap-de-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluoreszenz (X-ray)](../../../assets/cap-de-auto/FormBeamInteraction-xray-fluorescence.png)
 
 ---
 
@@ -79,4 +79,4 @@ mit $C_i$ als Konzentration, $\Phi_0$ als einfallendem Fluss, $\sigma_\text{ion}
 
 - [Abschwächung & Transport](attenuation-transport.md) — Photoabsorption, die Kante, die die Leerstelle erzeugt.
 - [Atomare Streufaktoren](scattering-factor.md) — dieselben gebundenen Elektronen, gesehen in der Streuung.
-- [3. Strahl-Wechselwirkung → Registerkarte Fluorescence](../../3-beam-interaction.md#fluorescence-tab)
+- [3. Strahl-Wechselwirkung → Registerkarte Fluoreszenz](../../3-beam-interaction.md#fluorescence-tab)

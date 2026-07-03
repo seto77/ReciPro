@@ -105,7 +105,7 @@ Les informations correspondant à la position du curseur (curseur *q*, *d*, 2θ,
 
 ## Menu File
 
-![Menu File](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![Menu Fichier](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | Élément de menu | Description |
 |-----------|-------------|
@@ -116,7 +116,7 @@ Les informations correspondant à la position du curseur (curseur *q*, *d*, 2θ,
 
 ### Preset {#toolbar}
 
-![Menu Preset](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Menu Préréglages](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Enregistrer et rappeler une configuration complète du simulateur — longueur d'onde, géométrie du détecteur, réglages des onglets, propriétés des réflexions, etc. — sous forme de preset. Utile pour passer rapidement d'un instrument / mode d'acquisition à l'autre.
 
@@ -140,7 +140,7 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 
 ### Écran
 
-![Écran](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Paramètres d'affichage](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | Élément | Description |
 |------|-------------|
@@ -152,14 +152,14 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 
 ### Détecteur (longueur de caméra)
 
-![Détecteur (longueur de caméra)](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Géométrie détecteur & image superposée](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **Camera length** : Distance de l'échantillon au détecteur (mm).
 - **Details** : Ouvre la fenêtre des réglages de géométrie du détecteur (voir [Géométrie du détecteur](#detector-geometry) ci-dessous).
 
 ### Misc
 
-![Misc](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Divers](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** : Amplitude de la rotation du cristal par pixel de glissement de la souris.
 - **TEM holder simulation** : Ouvre la fenêtre de simulation liée au porte-objet (voir ci-dessous).
@@ -178,13 +178,13 @@ Ouvre une fenêtre qui lie le diagramme de diffraction à un **TEM holder** à d
 
 ### General
 
-![Onglet General](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![Onglet Général](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 Définit les couleurs des réflexions, des étiquettes, des lignes de Kikuchi, des anneaux de Debye et des autres superpositions. Les réglages effectués ici s'appliquent à tous les modes de rendu.
 
 ### Lignes de Kikuchi
 
-![Onglet Kikuchi](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![Onglet Lignes de Kikuchi](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 
@@ -194,7 +194,7 @@ Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 
 ### Anneaux de Debye
 
-![Onglet Debye](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![Onglet Anneaux de Debye](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 Actif lorsque les anneaux de Debye sont activés dans la barre d'outils.
 
@@ -203,7 +203,7 @@ Actif lorsque les anneaux de Debye sont activés dans la barre d'outils.
 
 ### Scale
 
-![Onglet Scale](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Onglet Échelle](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Actif lorsque les lignes d'échelle sont activées dans la barre d'outils.
 

@@ -30,7 +30,7 @@ Impostare la sorgente di radiazione su **Electron**. Inserire l'energia (keV) o 
 
 Impostare la geometria del fascio incidente su **Parallel**. Questa è la geometria standard a onda piana usata per SAED e per la diffrazione a raggi X.
 
-> **Note**: Per gli elettroni è possibile scegliere **Parallel / Precession (electron = PED) / Convergence (CBED)**. La scelta di **Precession** dà una [simulazione PED](2-ped-simulation.md) e la scelta di **Convergence** dà una [simulazione CBED](3-cbed-simulation.md); in entrambi i casi il calcolo dell'intensità passa automaticamente a Dynamical.
+> **Nota**: Per gli elettroni è possibile scegliere **Parallel / Precession (electron = PED) / Convergence (CBED)**. La scelta di **Precession** dà una [simulazione PED](2-ped-simulation.md) e la scelta di **Convergence** dà una [simulazione CBED](3-cbed-simulation.md); in entrambi i casi il calcolo dell'intensità passa automaticamente a Dynamical.
 
 ---
 
@@ -50,9 +50,9 @@ Oltre all'errore di eccitazione, nel calcolo dell'intensità viene incluso il fa
 
 ### Dinamica (metodo delle onde di Bloch, solo elettroni)
 
-Un calcolo dinamico rigoroso con il metodo delle onde di Bloch (metodo di Bethe). Riproduce lo scattering multiplo e la variazione dell'intensità in funzione dello spessore, ed è necessario per campioni spessi o per diffrazione forte. Disponibile solo quando è selezionato Electron. Per la teoria, vedere [Appendice A3. Metodo delle onde di Bloch](../appendix/a3-bloch-wave/calculation.md).
+Un calcolo dinamico rigoroso con il metodo delle onde di Bloch (metodo di Bethe). Riproduce la diffusione multipla e la variazione dell'intensità in funzione dello spessore, ed è necessario per campioni spessi o per diffrazione forte. Disponibile solo quando è selezionato Electron. Per la teoria, vedere [Appendice A3. Metodo delle onde di Bloch](../appendix/a3-bloch-wave/calculation.md).
 
-> **Note**: Quando è selezionato **Dynamical**, sotto compare un pannello **Bloch wave settings**.
+> **Nota**: Quando è selezionato **Dynamical**, sotto compare un pannello **Bloch wave settings**.
 
 ---
 

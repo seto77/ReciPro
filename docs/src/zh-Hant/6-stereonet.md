@@ -45,15 +45,15 @@
 
 ## Mode
 
-![Mode](../assets/cap-zh-Hant-auto/FormStereonet.panel3.groupBoxMode.png)
+![模式](../assets/cap-zh-Hant-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### 投影目標
 
 選擇要投影到網上的內容。
 
-- **Axes** — 投影方向指數 \([uvw]\)。
-- **Planes** — 投影晶面法線 \((hkl)\)。
-- **Kikuchi line pairs** — 投影菊池線對。
+- **軸** — 投影方向指數 \([uvw]\)。
+- **晶面** — 投影晶面法線 \((hkl)\)。
+- **菊池線對** — 投影菊池線對。
 
 ### 投影方法
 
@@ -64,7 +64,7 @@
 
 ### 半球
 
-選擇 **Upper** 或 **Lower** 半球作為投影來源 — 切換球面可見的一面是最靠近觀察者或離觀察者最遠的那一面。
+選擇 **上半** 或 **下半** 半球作為投影來源 — 切換球面可見的一面是最靠近觀察者或離觀察者最遠的那一面。
 
 ### 顯示選項
 
@@ -77,7 +77,7 @@
 
 ## Indices
 
-![Indices](../assets/cap-zh-Hant-auto/FormStereonet.panel3.groupBoxIndices.png)
+![指數](../assets/cap-zh-Hant-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 設定要繪製哪些晶面／軸。
 
@@ -87,11 +87,11 @@
 
 ### 指定模式
 
-逐一指定特定的軸或面。輸入一個指數，按 **Add** 將其登錄，或按 **Remove** 將其刪除。當勾選 **include equivalent indices** 時，所有結晶學上等價的指數也會被繪製。
+逐一指定特定的軸或面。輸入一個指數，按 **新增** 將其登錄，或按 **移除** 將其刪除。當勾選 **包含等效指數** 時，所有結晶學上等價的指數也會被繪製。
 
 ### Colour / Size
 
-設定所繪點的 **colour** 與 **size**。勾選 **Change colour automatically**，可為每一組等價軸／面以不同顏色編碼 — 對於在多指數圖上區分各族系很有用。
+設定所繪點的 **顏色** 與 **大小**。勾選 **循環顏色**，可為每一組等價軸／面以不同顏色編碼 — 對於在多指數圖上區分各族系很有用。
 
 ---
 
@@ -107,32 +107,32 @@
 
 ### Appearance
 
-![Appearance tab](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage1.png)
+![外觀索引標籤](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
-極網外框的繪製方式 — 邊界圓以及選用的大圓緯度／經度格線。選擇 **Equator** 或 **Pole**，切換 **1° Lines** 與 **Background** 填色，設定 **90° / 10° / 1°** 格線顏色，並以軌道列調整 **Line width**。
+極網外框的繪製方式 — 邊界圓以及選用的大圓緯度／經度格線。選擇 **赤道** 或 **極**，切換 **1° 線** 與 **背景** 填色，設定 **90° / 10° / 1°** 格線顏色，並以軌道列調整 **線寬**。
 
 #### Index labels
 
 - **Size** — 指數標籤的大小。
-- **Specify color** — 為所有指數標籤使用單一固定顏色，取代各斑點各自的顏色；當各點已以顏色編碼，但您希望所有標籤採用同一種顏色以利閱讀時很有用。
-- **Delimiter** — 置於各標籤指數之間的字元：**None**（例如 100）、**Space**（1 0 0）或 **Comma**（1,0,0）。
+- **指定顏色** — 為所有指數標籤使用單一固定顏色，取代各斑點各自的顏色；當各點已以顏色編碼，但您希望所有標籤採用同一種顏色以利閱讀時很有用。
+- **分隔符** — 置於各標籤指數之間的字元：**無**（例如 100）、**空格**（1 0 0）或 **逗號**（1,0,0）。
 
 #### Kikuchi line mode
 
-- **Point size** — 所繪點的大小。
-- **Point** / **Label** — 點與其標籤的顏色。
+- **點大小** — 所繪點的大小。
+- **點** / **標籤** — 點與其標籤的顏色。
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage2.png)
+![大圓索引標籤](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage2.png)
 
 繪製大圓與小圓。可透過 **zone-axis index** \([uvw]\)（由該軸的晶帶所形成的大圓）指定，或透過共用該晶帶軸的 **two crystal-plane indices** 指定。圓的線寬同樣可透過軌道列設定。
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage4.png)
+![波索引標籤](../assets/cap-zh-Hant-auto/FormStereonet.tabControl.tabPage4.png)
 
 僅在選取 **Planes** 或 **Kikuchi line pairs** 作為投影目標時可用。設定波源（X-ray / electron / neutron）以及計算晶體結構因子所需的波長或能量，這些結構因子用於 [Mode](#mode) 中的 **structure-factor weighting** 選項。
 

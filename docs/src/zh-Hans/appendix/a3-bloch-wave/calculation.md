@@ -169,6 +169,6 @@ $$\Delta I_N=\frac{|I_N-I_{N-\Delta N}|}{I_N}$$
 ## 参见
 
 - [附录 A3. 布洛赫波法动力学衍射](index.md)
-- [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
+- [7.2. SAED 模拟](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.4. CBED 模拟](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. 衍射模拟器](../../7-diffraction-simulator/index.md)

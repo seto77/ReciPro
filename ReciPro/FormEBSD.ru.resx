@@ -87,7 +87,7 @@
     <value>Центр детектора</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Структурный фактор</value>
@@ -331,7 +331,7 @@ End и Step задают слои по толщине для расчёта.</va
 [u v w], введённая справа, была обращена к наблюдателю.</value>
   </data>
   <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
-    <value>Запустить моделирование методом Монте-Карло траекторий BSE (обратно
+    <value>Запустить моделирование методом Монте-Карло траекторий ОРЭ (обратно
 рассеянных электронов) для расчёта распределений энергии выхода и
 глубины, используемых для взвешивания картины EBSD.</value>
   </data>
@@ -352,7 +352,7 @@ End и Step задают слои по толщине для расчёта.</va
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>Наложить кристаллографические/опорные оси на стереосетку
-(стереографическую проекцию распределения BSE).</value>
+(стереографическую проекцию распределения ОРЭ).</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>Наложить контур детектора
@@ -413,7 +413,7 @@ End и Step задают слои по толщине для расчёта.</va
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Отображать картину EBSD, взвешенную по смоделированному
-распределению энергии и глубины BSE (обратно рассеянных
+распределению энергии и глубины ОРЭ (обратно рассеянных
 электронов), интегрируя по всем слоям вместо
 показа одного слоя по энергии/глубине. Сначала запустите
 Simulate, чтобы получить распределение.</value>

@@ -1,15 +1,15 @@
 # Facteur de structure
 
-Le facteur de diffusion atomique décrit un seul atome ; le **facteur de structure** décrit comment tous les atomes de la maille diffusent *ensemble*. C'est la grandeur que l'onglet **Reflections** tabule (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), et il constitue le lien entre la physique atomique de la page précédente et les intensités diffractées.
+Le facteur de diffusion atomique décrit un seul atome ; le **facteur de structure** décrit comment tous les atomes de la maille diffusent *ensemble*. C'est la grandeur que l'onglet **Réflexions** tabule (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), et il constitue le lien entre la physique atomique de la page précédente et les intensités diffractées.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-fr-auto/FormBeamInteraction-xray-reflections.png)
+    ![Réflexions — X-ray](../../../assets/cap-fr-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-fr-auto/FormBeamInteraction-electron-reflections.png)
+    ![Réflexions — electron](../../../assets/cap-fr-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-fr-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Réflexions — neutron](../../../assets/cap-fr-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ avec $\mathbf U_j$ le tenseur de déplacement et $\mathbf g$ le vecteur du rése
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-de sorte que $B$ croît avec la température et décroît pour les atomes lourds. ReciPro utilise directement les valeurs $B_j$ tabulées ou saisies plutôt que de calculer ceci. Comme $T_j$ multiplie le facteur de diffusion, l'onglet **Scattering factors** peut appliquer le même amortissement $e^{-Bs^2}$ aux courbes tracées. L'amortissement croît avec la température et avec $s$, ce qui explique pourquoi la diffusion thermique diffuse (intensité retirée des faisceaux de Bragg cohérents et redistribuée dans un fond diffus) alimente le potentiel absorptif dans la théorie dynamique ([Annexe A3](../a3-bloch-wave/index.md)).
+de sorte que $B$ croît avec la température et décroît pour les atomes lourds. ReciPro utilise directement les valeurs $B_j$ tabulées ou saisies plutôt que de calculer ceci. Comme $T_j$ multiplie le facteur de diffusion, l'onglet **Facteurs de diffusion** peut appliquer le même amortissement $e^{-Bs^2}$ aux courbes tracées. L'amortissement croît avec la température et avec $s$, ce qui explique pourquoi la diffusion thermique diffuse (intensité retirée des faisceaux de Bragg cohérents et redistribuée dans un fond diffus) alimente le potentiel absorptif dans la théorie dynamique ([Annexe A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -111,5 +111,5 @@ Comme les plans équivalents sont fusionnés en une seule raie dans ce mode, Rec
 
 - [Facteurs de diffusion atomiques](scattering-factor.md) — les $f_j$ qui entrent dans la somme.
 - [Atténuation & transport](attenuation-transport.md) — ce qu'il advient du faisceau entre les événements de diffusion.
-- [3. Interaction du faisceau → onglet Reflections](../../3-beam-interaction.md#reflections-tab)
+- [3. Interaction du faisceau → onglet Réflexions](../../3-beam-interaction.md#reflections-tab)
 - [Annexe A3. Diffraction dynamique](../a3-bloch-wave/index.md) — lorsque $\lvert F\rvert^2$ (cinématique) ne suffit plus.

@@ -227,11 +227,11 @@ Negative 反转（高强度显示为暗）。</value>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
     <value>Z 字形扫描顺序：往复扫掠 θ (Rz)，
 同时每往复一次推进 ω (Ry)，使测角仪
-在方位空间中描绘出 Z 字形路径。</value>
+在取向空间中描绘出 Z 字形路径。</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>调试测试：为所选晶体生成单个随机
-方位的衍射图样并显示。</value>
+取向的衍射图样并显示。</value>
   </data>
   <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
     <value>为所选晶体模拟多晶的德拜环
@@ -239,16 +239,16 @@ Negative 反转（高强度显示为暗）。</value>
 选项卡中显示。</value>
   </data>
   <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
-    <value>载入此前保存的方位拟合
+    <value>载入此前保存的取向拟合
 设置（.setting 文件）。</value>
   </data>
   <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
-    <value>将当前方位拟合设置（晶体、
+    <value>将当前取向拟合设置（晶体、
 各参数及残差历史）
 保存到 .setting 文件。</value>
   </data>
   <data name="buttonSearch.ToolTip" xml:space="preserve">
-    <value>开始或停止拟合晶体方位分布
+    <value>开始或停止拟合晶体取向分布
 （LPO，晶格择优取向），
 使模拟图样与参考图样最佳匹配。
 再次点击即可停止。</value>
@@ -287,8 +287,8 @@ Negative 反转（高强度显示为暗）。</value>
   </data>
   <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
     <value>反复查找并剔除对衍射图样无贡献的
-晶粒方位，仅保留有贡献的
-方位。</value>
+晶粒取向，仅保留有贡献的
+取向。</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>强度显示的明暗方向：Positive 将高强度
@@ -307,7 +307,7 @@ Negative 反转（高强度显示为暗）。</value>
 以相对中心的 ±° 指定。</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">
-    <value>Ry (ω) 摆动的角度步长 (°)；越小则方位
+    <value>Ry (ω) 摆动的角度步长 (°)；越小则取向
 采样越精细，但模拟越慢。</value>
   </data>
   <data name="label52.ToolTip" xml:space="preserve">

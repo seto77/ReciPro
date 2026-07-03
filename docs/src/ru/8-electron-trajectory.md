@@ -67,7 +67,7 @@
 
 ## Статистика
 
-![Statistics](../assets/cap-ru-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![Статистика](../assets/cap-ru-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Сводка по запуску.
 
@@ -80,7 +80,7 @@
 
 ## Распределение направлений BSE
 
-![BSE direction distribution](../assets/cap-ru-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![Распределение направлений ОРЭ](../assets/cap-ru-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Угловое распределение обратно рассеянных электронов (центр стереосети соответствует направлению нормали к поверхности). Жёлтая/оранжевая обводка (если присутствует) отмечает область, охватываемую детектором EBSD.
 

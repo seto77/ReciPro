@@ -67,7 +67,7 @@
 
 ## 통계
 
-![Statistics](../assets/cap-ko-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![통계](../assets/cap-ko-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 실행 결과 요약.
 
@@ -80,7 +80,7 @@
 
 ## BSE 방향 분포
 
-![BSE direction distribution](../assets/cap-ko-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![BSE 방향 분포](../assets/cap-ko-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 후방산란 전자의 각도 분포 (스테레오넷 중심이 표면 법선 방향에 해당). 노란색/주황색 윤곽선은(있는 경우) EBSD 검출기가 차지하는 영역을 표시합니다.
 

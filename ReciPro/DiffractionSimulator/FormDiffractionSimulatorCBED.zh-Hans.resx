@@ -155,12 +155,12 @@ Auto 时此项不可用。</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
     <value>CBED（会聚束电子衍射）模式：
-每个布拉格衍射变为一个盘，其内部
+每个布拉格反射都变为一个盘，其内部
 强度随入射束倾斜而变化。</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
     <value>LACBED（大角度会聚束电子衍射）模式：
-使用更大的会聚角，使一个衍射在更大的
+使用更大的会聚角，使一个反射在更大的
 角度范围内被记录。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
@@ -170,7 +170,7 @@ Auto 时此项不可用。</value>
 但计算越慢。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
-    <value>最大半会聚角（mrad）</value>
+    <value>最大会聚半角（mrad）</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip1" xml:space="preserve">
     <value>最大半会聚角（mrad）</value>

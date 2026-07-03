@@ -8,7 +8,7 @@ Simula imagens de franjas de rede de TEM de alta resolução. O modo principal d
 
 1. **Método de ondas de Bloch**: calcula a propagação da onda eletrônica através do potencial do cristal; obtém a amplitude e a fase da onda de saída
 2. **Função da lente**: aplica as aberrações da lente objetiva (aberração esférica $C_s$, desfocagem $\Delta f$)
-3. **Coerência parcial**: leva em conta o tamanho finito da fonte (coerência espacial) e a largura de energia (coerência temporal)
+3. **Coerência parcial**: leva em conta o tamanho finito da fonte (coerência espacial) e a dispersão de energia (coerência temporal)
 4. **Formação da imagem**: calcula a intensidade $|\psi(\mathbf{r})|^2$
 
 ---
@@ -36,7 +36,7 @@ Simula imagens de franjas de rede de TEM de alta resolução. O modo principal d
 
 ### Parâmetros intrínsecos
 
-![Parâmetros intrínsecos](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Parâmetros intrínsecos](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parâmetro | Descrição | Típico |
 |-----------|-------------|---------|

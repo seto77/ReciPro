@@ -1,15 +1,15 @@
 # 衰減與傳輸
 
-散射因子描述的是單一散射事件；本頁討論的則是電子束**作為整體**穿過固體時所發生的事——它被移除的速度有多快、穿透得有多深，以及（對電子而言）如何被減速。對於三種射線而言，相關的物理機制完全不同，這正是 **Attenuations & Transport** 索引標籤的圖表與表格會隨射線種類而大幅變化的原因。
+散射因子描述的是單一散射事件；本頁討論的則是射束**作為整體**穿過固體時所發生的事——它被移除的速度有多快、穿透得有多深，以及（對電子而言）如何被減速。對於三種射線而言，相關的物理機制完全不同，這正是 **衰減 & 輸運** 索引標籤的圖表與表格會隨射線種類而大幅變化的原因。
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-attenuations.png)
+    ![衰減 & 輸運 — X-ray](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-attenuations.png)
+    ![衰減 & 輸運 — electron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![衰減 & 輸運 — neutron](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -113,7 +113,7 @@ $$R_\text{KO}\,[\mu\text{m}] = 0.0276\,\frac{A\,E_0^{1.67}}{\rho\,Z^{0.89}}, \qq
 
 ## 中子——巨觀截面與 1/v 定律
 
-對於中子並沒有與能量相關的衰減曲線；其交互作用由**核截面**所固定。電子束透過巨觀總截面而衰減，後者本身即同調、非同調與吸收三部分之和：
+對於中子並沒有與能量相關的衰減曲線；其交互作用由**核截面**所固定。中子束透過巨觀總截面而衰減，後者本身即同調、非同調與吸收三部分之和：
 
 $$\Sigma_\text{total} = \sum_i n_i\,\sigma_{\text{total},i}, \qquad \sigma_\text{total} = \sigma_\text{coh} + \sigma_\text{inc} + \sigma_\text{abs}(\lambda), \qquad T = e^{-\Sigma_\text{total} t},$$
 
@@ -143,5 +143,5 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 - [原子散射因子](scattering-factor.md) ——Rayleigh/Compton 背後的 $F(q)$/$S(q)$ 拆分，以及 Mott 截面。
 - [螢光](fluorescence.md) ——X 射線光吸收之後的弛豫。
-- [3. 電子束交互作用](../../3-beam-interaction.md) —— *Attenuations & Transport* 索引標籤。
+- [3. 電子束交互作用](../../3-beam-interaction.md) —— *衰減 & 輸運* 索引標籤。
 - [8. 電子軌跡](../../8-electron-trajectory.md) · [12. EBSD 模擬](../../12-ebsd-simulation.md) ——電子射程被使用之處。

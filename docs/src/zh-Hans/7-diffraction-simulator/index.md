@@ -59,7 +59,7 @@ title: Diffraction Simulator
 | 右键单击 | 缩小 |
 | 右键拖出选框 | 放大到所选区域 |
 | 在状态栏右键双击 | 复制当前设置的文本摘要 |
-| 在已点亮的图层按钮（Spots / Kikuchi / Debye / Scale）上右键双击 | 让该图层闪烁开关 |
+| 在已点亮的图层按钮（衍射斑点 / 菊池线 / 德拜环 / 标尺）上右键双击 | 让该图层闪烁开关 |
 
 从此处打开的辅助窗口还增加了几项：
 
@@ -80,11 +80,11 @@ title: Diffraction Simulator
 
 | 目标 | 从何处开始 | 参考 |
 |------|------------|-----------|
-| 生成平行束电子衍射（SAED） | 将 **Incident beam** 设为 **Parallel**，**Wavelength** 设为电子 | [SAED 模拟](1-saed-simulation.md)、[平行束 SAED 计算](../appendix/a3-bloch-wave/calculation.md) |
-| 生成单晶 X 射线衍射 | 将 **Wavelength** 切换为 X 射线 / 同步辐射 | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
-| 生成进动电子衍射（PED） | 将 **Incident beam** 设为 **Precession (electron)**，然后设置半角和步长 | [PED 模拟](2-ped-simulation.md) |
-| 生成会聚束电子衍射（CBED） | 将 **Incident beam** 设为 **Convergence (CBED, electron only)**，并在 CBED 窗口中设置条件 | [CBED 模拟](3-cbed-simulation.md)、[CBED 计算](../appendix/a3-bloch-wave/cbed.md) |
-| 查看动力学计算得到的反射列表 | 选择 **Dynamical** 并打开 **Spot Details** 或 **Details** | [动力学计算（共享内核）](../appendix/a3-bloch-wave/calculation.md) |
+| 生成平行束电子衍射（SAED） | 将 **入射束** 设为 **平行**，**波长** 设为电子 | [SAED 模拟](1-saed-simulation.md)、[平行束 SAED 计算](../appendix/a3-bloch-wave/calculation.md) |
+| 生成单晶 X 射线衍射 | 将 **波长** 切换为 X 射线 / 同步辐射 | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
+| 生成进动电子衍射（PED） | 将 **入射束** 设为 **进动（电子）**，然后设置半角和步长 | [PED 模拟](2-ped-simulation.md) |
+| 生成会聚束电子衍射（CBED） | 将 **入射束** 设为 **会聚（CBED，仅限电子）**，并在 CBED 窗口中设置条件 | [CBED 模拟](3-cbed-simulation.md)、[CBED 计算](../appendix/a3-bloch-wave/cbed.md) |
+| 查看动力学计算得到的反射列表 | 选择 **动力学理论** 并打开 **斑点详情** 或 **Details** | [动力学计算（共享内核）](../appendix/a3-bloch-wave/calculation.md) |
 | 将探测器几何与实验图像对照 | 通过 **Details** 打开探测器几何设置并使用叠加图像 | [探测器坐标系](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -103,20 +103,20 @@ title: Diffraction Simulator
 
 ---
 
-## File 菜单
+## 文件菜单
 
-![File 菜单](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![文件菜单](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | 菜单项 | 说明 |
 |-----------|-------------|
-| **Save** | 将显示的衍射图样保存到文件。 |
-| **Save detector area** | 仅保存探测器区域的裁剪。 |
-| **Copy** | 将显示的图像复制到剪贴板。 |
-| **Copy detector area** | 仅复制探测器区域的裁剪。 |
+| **保存图像** | 将显示的衍射图样保存到文件。 |
+| **保存探测器区域** | 仅保存探测器区域的裁剪。 |
+| **复制** | 将显示的图像复制到剪贴板。 |
+| **复制探测器区域** | 仅复制探测器区域的裁剪。 |
 
-### Preset {#toolbar}
+### 预设 {#toolbar}
 
-![Preset 菜单](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![预设菜单](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 将完整的模拟器配置——波长、探测器几何、选项卡设置、衍射斑点属性等——保存并以预设形式调用。便于在不同仪器 / 采集模式之间快速切换。
 
@@ -128,10 +128,10 @@ title: Diffraction Simulator
 
 | 按钮 | 说明 |
 |--------|-------------|
-| Spots | 显示 / 隐藏衍射斑点图层 |
-| Kikuchi | 显示 / 隐藏菊池线图层 |
-| Debye | 显示 / 隐藏德拜环图层 |
-| Scale | 显示 / 隐藏刻度线图层 |
+| 衍射斑点 | 显示 / 隐藏衍射斑点图层 |
+| 菊池线 | 显示 / 隐藏菊池线图层 |
+| 德拜环 | 显示 / 隐藏德拜环图层 |
+| 标尺 | 显示 / 隐藏刻度线图层 |
 | Index / d / Distance / Excitation error / Structure factor | 选择附加到每个斑点的标签 |
 
 ---
@@ -140,29 +140,29 @@ title: Diffraction Simulator
 
 ### 屏幕
 
-![屏幕](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![显示设置](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | 项目 | 说明 |
 |------|-------------|
-| **Resolution** | 一个像素的尺寸（mm）。它不必等于探测器实际的像素尺寸；它被视为显示比例，并在你用鼠标缩放时自动更新。 |
-| **Size (W×H)** | 绘制区的像素宽度和高度。取决于你的显示分辨率，过大的值可能无法设置。 |
-| **Set centre / Fix centre** | 将图样中心设为绘制区内任意像素，并在需要时将其固定。固定后，中心无法通过鼠标平移移动。 |
-| **Horizontal flip / Vertical flip / Negative image** | 对显示图样进行几何翻转（水平 / 垂直）和对比度反转。用它来匹配实验图像的取向或对比度。 |
-| **Reciprocal space** | 在图样上叠加埃瓦尔德球和倒易点阵矢量，可视化哪些反射被激发。 |
+| **分辨率** | 一个像素的尺寸（mm）。它不必等于探测器实际的像素尺寸；它被视为显示比例，并在你用鼠标缩放时自动更新。 |
+| **尺寸 (宽×高)** | 绘制区的像素宽度和高度。取决于你的显示分辨率，过大的值可能无法设置。 |
+| **将中心设为 / 固定** | 将图样中心设为绘制区内任意像素，并在需要时将其固定。固定后，中心无法通过鼠标平移移动。 |
+| **水平翻转 / 垂直翻转 / 负像** | 对显示图样进行几何翻转（水平 / 垂直）和对比度反转。用它来匹配实验图像的取向或对比度。 |
+| **倒易空间** | 在图样上叠加埃瓦尔德球和倒易点阵矢量，可视化哪些反射被激发。 |
 
 ### 探测器（相机长度）
 
-![探测器（相机长度）](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![探测器几何 & 叠加图像](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **Camera length** : 从样品到探测器的距离（mm）。
 - **Details** : 打开探测器几何设置窗口（见下文 [探测器几何](#detector-geometry)）。
 
-### Misc
+### 其他
 
-![Misc](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![其他](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
-- **Rotation sensitivity** : 鼠标每拖动一个像素时晶体旋转的幅度。
-- **TEM holder simulation** : 打开与样品台联动的模拟窗口（见下文）。
+- **旋转灵敏度** : 鼠标每拖动一个像素时晶体旋转的幅度。
+- **TEM 样品台模拟** : 打开与样品台联动的模拟窗口（见下文）。
 
 ---
 
@@ -176,41 +176,41 @@ title: Diffraction Simulator
 
 ## 绘制叠加层选项卡
 
-### General
+### 通用
 
-![General 选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![通用选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 设置斑点、标签、菊池线、德拜环及其他叠加层的颜色。此处的设置适用于所有渲染模式。
 
 ### 菊池线
 
-![Kikuchi 选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![菊池线选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 在工具栏启用菊池线时生效。
 
-- **Reflection selection** : 选择由哪些反射生成菊池线。可选 **structure factor**（按 $\lvert F_{hkl}\rvert$ 排名靠前的 *N* 个反射）或 **1/d cutoff**（所有 1/d 低于阈值（nm⁻¹）的反射）。
-- **Line appearance** : 设置线宽、菊池线颜色以及 **Draw with kinematical intensity**（按反射的运动学强度缩放线条暗度）。
-- **Threshold** : 一个遗留参数。仅对 *d* 大于指定值的反射运行菊池线计算（为兼容性而保留）。
+- **反射选择** : 选择由哪些反射生成菊池线。可选 **结构因子**（按 $\lvert F_{hkl}\rvert$ 排名靠前的 *N* 个反射）或 **1/d 截止**（所有 1/d 低于阈值（nm⁻¹）的反射）。
+- **线条外观** : 设置线宽、菊池线颜色以及 **对菊池线应用运动学强度**（按反射的运动学强度缩放线条暗度）。
+- **阈值** : 一个遗留参数。仅对 *d* 大于指定值的反射运行菊池线计算（为兼容性而保留）。
 
 ### 德拜环
 
-![Debye 选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![德拜环选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 在工具栏启用德拜环时生效。
 
-- **Ignore diffraction intensity** : 若勾选，所有德拜环都以相同的颜色和强度绘制（忽略晶体结构因子）。用于纯几何比较。
-- **Show index label** : 若勾选，(*hkl*) 会出现在每个环附近。
+- **忽略衍射强度** : 若勾选，所有德拜环都以相同的颜色和强度绘制（忽略晶体结构因子）。用于纯几何比较。
+- **显示指数标签** : 若勾选，(*hkl*) 会出现在每个环附近。
 
-### Scale
+### 标尺
 
-![Scale 选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![标尺选项卡](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 在工具栏启用刻度线时生效。
 
-- **2θ / Azimuth scale lines** : **2θ** 表示等散射角（同心圆），**Azimuth** 表示等方位角（从中心发出的径向线）。两者颜色可独立配置。
-- **Line width** : 刻度线的粗细。
-- **Division** : 相邻刻度线之间的角度间隔。
-- **Show scale labels** : 是否在刻度线上绘制数字标签。
+- **2θ / 方位角刻度线** : **2θ** 表示等散射角（同心圆），**方位角** 表示等方位角（从中心发出的径向线）。两者颜色可独立配置。
+- **线宽** : 刻度线的粗细。
+- **分度** : 相邻刻度线之间的角度间隔。
+- **显示标尺标签** : 是否在刻度线上绘制数字标签。
 
 ### Misc {#diffraction-spot-information}
 
@@ -222,7 +222,7 @@ title: Diffraction Simulator
 
 ## 衍射斑点信息
 
-列出用布洛赫波法（Dynamical 计算）计算的逐反射详情。用 **Spot Details** 按钮（强度计算面板）或 **Details** 复选框打开它。
+列出用布洛赫波法（动力学计算）计算的逐反射详情。用 **斑点详情** 按钮（强度计算面板）或 **Details** 复选框打开它。
 
 ![衍射斑点信息](../../assets/cap-zh-Hans-auto/FormDiffractionSpotInfo.png)
 

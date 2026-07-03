@@ -202,19 +202,19 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
 결정합니다.</value>
   </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>회절 도형의 카메라 길이(mm)입니다. 측정한 스폿
-간 거리(mm)를 역격자 면간 거리로 환산하여
+    <value>회절 패턴의 카메라 길이(mm)입니다. 측정한 스폿
+간 거리(mm)를 역격자 간격으로 환산하여
 지수 부여에 사용합니다.</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
-    <value>회절 도형의 카메라 길이(mm)입니다. 측정한 스폿
-간 거리(mm)를 역격자 면간 거리로 환산하여
+    <value>회절 패턴의 카메라 길이(mm)입니다. 측정한 스폿
+간 거리(mm)를 역격자 간격으로 환산하여
 지수 부여에 사용합니다.</value>
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Pattern 1의 두 역격자 벡터 L1과 L2가 이루는
-각 θ(도)입니다. 'Two Sides and an Angle' 모드
-에서는 입력하고, 'Three Sides' 모드에서는 L1/L2/L3
+각 θ(도)입니다. '두 변과 한 각' 모드
+에서는 입력하고, '세 변' 모드에서는 L1/L2/L3
 으로부터 계산되어 읽기 전용으로 표시됩니다.</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -230,8 +230,8 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Pattern 2의 두 역격자 벡터 L1과 L2가 이루는
-각 θ(도)입니다. 'Two Sides and an Angle' 모드
-에서는 입력하고, 'Three Sides' 모드에서는 L1/L2/L3
+각 θ(도)입니다. '두 변과 한 각' 모드
+에서는 입력하고, '세 변' 모드에서는 L1/L2/L3
 으로부터 계산되어 읽기 전용으로 표시됩니다.</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
@@ -247,8 +247,8 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Photo 3의 두 회절 벡터 L1과 L2가 이루는 각 θ(도)입니다.
-'Three Sides' 모드에서는 세 변으로부터 계산되어 읽기
-전용이며, 'Two Sides and an Angle' 모드에서는
+'세 변' 모드에서는 세 변으로부터 계산되어 읽기
+전용이며, '두 변과 한 각' 모드에서는
 직접 입력합니다.</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
@@ -289,13 +289,13 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 1의 L3에 대한 탐색 허용 오차로, 길이에 대한
-백분율(0–50%, 기본값 5)입니다. 'Three Sides' 모드에서만
+백분율(0–50%, 기본값 5)입니다. '세 변' 모드에서만
 사용되며, 입력한 L3에서 이 비율 이내인 후보가
 일치로 인정됩니다.</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 1의 각 θ에 대한 탐색 허용 오차(도, 0–30, 기본값
-3)입니다. 'Two Sides and an Angle' 모드에서만 사용되며,
+3)입니다. '두 변과 한 각' 모드에서만 사용되며,
 각도가 이 도수까지 벗어나는 정대축도 일치로
 인정됩니다.</value>
   </data>
@@ -323,13 +323,13 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 2의 L3에 대한 탐색 허용 오차로, 길이에 대한
-백분율(0–50%, 기본값 5)입니다. 'Three Sides' 모드에서만
+백분율(0–50%, 기본값 5)입니다. '세 변' 모드에서만
 사용되며, L3에서 이 비율 이내인 후보가
 일치로 인정됩니다.</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 2의 각 θ에 대한 탐색 허용 오차(도, 0–30,
-기본값 3)입니다. 'Two Sides and an Angle' 모드에서만
+기본값 3)입니다. '두 변과 한 각' 모드에서만
 사용되며, 이 도수 이내의 각도가 일치로
 인정됩니다.</value>
   </data>
@@ -355,12 +355,12 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Photo 3의 제3변 L3 길이에 대한 탐색 허용 오차(%,
-0–50)입니다. 'Three Sides' 모드에서만 사용됩니다.</value>
+0–50)입니다. '세 변' 모드에서만 사용됩니다.</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Photo 3의 각도 θ에 대한 탐색 허용 오차(도, 0–30)
-입니다. 계산된 각도가 이 양까지 벗어나는 후보가
-일치로 인정됩니다. 'Two Sides and an Angle' 모드
+입니다. 계산된 각도가 이 값까지 벗어나는 후보가
+일치로 인정됩니다. '두 변과 한 각' 모드
 에서만 사용됩니다.</value>
   </data>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
@@ -436,7 +436,7 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3: Pattern 1의 제3 역격자 벡터의 길이(사진상 mm)
-입니다. 'Three Sides' 모드에서 스폿 삼각형을
+입니다. '세 변' 모드에서 스폿 삼각형을
 정의하는 데 사용됩니다.</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
@@ -469,7 +469,7 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>퍼센트: Pattern 2의 L3 탐색 허용 오차의 단위입니다
-(0–50%, 기본값 5, 'Three Sides' 모드에서 사용).</value>
+(0–50%, 기본값 5, '세 변' 모드에서 사용).</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1: Pattern 2의 첫 번째 역격자
@@ -484,16 +484,16 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
 사이의 각 θ(도).</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
-    <value>L3: Pattern 2의 세 번째
-역격자 벡터의 길이(사진상 mm).
-'Three Sides' 모드에서 사용됩니다.</value>
+    <value>L3: Pattern 2의 제3 역격자 벡터의
+길이(사진상 mm)입니다.
+'세 변' 모드에서 사용됩니다.</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>도: Pattern 2의 L1과 L2 사이 각 θ의 단위.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 L2에 대한 검색 허용 오차이며,
-길이에 대한 백분율입니다(0-50%, 기본값 5).</value>
+    <value>Pattern 1의 L2에 대한 탐색 허용 오차로,
+길이에 대한 백분율(0–50%, 기본값 5)입니다.</value>
   </data>
   <data name="label47.ToolTip" xml:space="preserve">
     <value>Photo 3의 첫 번째 회절 벡터의 측정 길이 L1이며,
@@ -507,50 +507,48 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
     <value>Photo 3의 벡터 L1과 L2 사이의 각 θ(도).</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
-    <value>Photo 3의 패턴 삼각형 세 번째 변의 길이 L3이며,
-mm 단위입니다('Three Sides' 모드에서 사용).</value>
+    <value>Photo 3의 패턴 삼각형 제3변의 길이 L3이며,
+mm 단위입니다('세 변' 모드에서 사용).</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Photo 2를 촬영했을 때의 고니오미터 홀더
-첫 번째 기울기각(Tilt 1, 도).</value>
+    <value>Photo 2를 촬영할 때의 고니오미터 홀더
+제1 경사각(Tilt 1, 도)입니다.</value>
   </data>
   <data name="label69.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 L1에 적용되는 ± 검색
+    <value>Pattern 1의 L1에 적용되는 ± 탐색
 허용 오차(길이에 대한 백분율).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Photo 2를 촬영했을 때의 고니오미터 홀더
-두 번째 기울기각(Tilt 2, 도).</value>
+    <value>Photo 2를 촬영할 때의 고니오미터 홀더
+제2 경사각(Tilt 2, 도)입니다.</value>
   </data>
   <data name="label70.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 L2에 적용되는 ± 검색
+    <value>Pattern 1의 L2에 적용되는 ± 탐색
 허용 오차(길이에 대한 백분율).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 L3에 적용되는 ± 검색 허용 오차
-(길이에 대한 백분율, 'Three Sides' 모드에서 사용).</value>
+    <value>Pattern 1의 L3에 적용되는 ± 탐색 허용 오차
+(길이에 대한 백분율, '세 변' 모드에서 사용).</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 각 θ에 적용되는 ± 검색 허용 오차
-(도, 'Two Sides and an Angle'
-모드에서 사용).</value>
+    <value>Pattern 1의 각 θ에 적용되는 ± 탐색 허용 오차
+(도, '두 변과 한 각' 모드에서 사용).</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
-    <value>Pattern 2의 L1에 적용되는 ± 검색
+    <value>Pattern 2의 L1에 적용되는 ± 탐색
 허용 오차(길이에 대한 백분율).</value>
   </data>
   <data name="label77.ToolTip" xml:space="preserve">
-    <value>Pattern 2의 L2에 적용되는 ± 검색
+    <value>Pattern 2의 L2에 적용되는 ± 탐색
 허용 오차(길이에 대한 백분율).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
-    <value>Pattern 2의 L3에 적용되는 ± 검색 허용 오차
-(길이에 대한 백분율, 'Three Sides' 모드에서 사용).</value>
+    <value>Pattern 2의 L3에 적용되는 ± 탐색 허용 오차
+(길이에 대한 백분율, '세 변' 모드에서 사용).</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
-    <value>Pattern 2의 각 θ에 적용되는 ± 검색 허용 오차
-(도, 'Two Sides and an Angle'
-모드에서 사용).</value>
+    <value>Pattern 2의 각 θ에 적용되는 ± 탐색 허용 오차
+(도, '두 변과 한 각' 모드에서 사용).</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Pattern 1의 역격자 벡터 L1과 L2
@@ -560,12 +558,12 @@ mm 단위입니다('Three Sides' 모드에서 사용).</value>
     <value>도: Pattern 1의 L1과 L2 사이 각 θ의 단위.</value>
   </data>
   <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
-    <value>도: Pattern 1의 각 θ에 대한 검색 허용
-오차의 단위(0-30, 기본값 3).</value>
+    <value>도: Pattern 1의 θ에 대한 각도 탐색
+허용 오차의 단위입니다(0–30, 기본값 3).</value>
   </data>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
-    <value>Pattern 1의 L3에 대한 검색 허용 오차이며,
-길이에 대한 백분율입니다(0-50%,
-기본값 5, 'Three Sides' 모드에서 사용).</value>
+    <value>Pattern 1의 L3에 대한 탐색 허용 오차로,
+길이에 대한 백분율(0–50%, 기본값 5,
+'세 변' 모드에서 사용)입니다.</value>
   </data>
 </root>

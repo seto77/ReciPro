@@ -513,7 +513,7 @@ perpendicular trazada desde la muestra.</value>
     <value>Mostrar la posición del pie de la perpendicular</value>
   </data>
   <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
-    <value>Mostrar la posición del haz directo</value>
+    <value>Mostrar la posición del punto directo</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Establece el color de fondo</value>

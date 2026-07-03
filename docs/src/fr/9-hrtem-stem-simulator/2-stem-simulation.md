@@ -86,7 +86,7 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ## Mode d'image (single / serial)
 
-![Mode d'image](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Mode unique/série](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** : calcule une seule image STEM à l'épaisseur courante.
 - **Serial image** : génère une série d'images avec l'épaisseur / la défocalisation variées par paliers (définies via **Start / Step / Num** ; la liste ci-dessous peut aussi être modifiée directement).

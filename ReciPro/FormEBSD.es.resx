@@ -348,7 +348,7 @@ del eje Z (la dirección del haz de electrones).</value>
     <value>Fija la vista de geometría 3D a un punto de vista oblicuo a vista de pájaro.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>Superpone los ejes cristalinos/de referencia en la estereored
+    <value>Superpone los ejes cristalinos/de referencia en el estereograma
 (proyección estereográfica de la distribución de BSE).</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
@@ -578,7 +578,7 @@ negro/blanco) de la imagen EBSD mostrada.</value>
 de los electrones retrodispersados simulados.</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
-    <value>En esta estereored, el centro
+    <value>En este estereograma, el centro
 corresponde a la normal a la superficie de la muestra.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">

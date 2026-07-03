@@ -169,6 +169,6 @@ Para STEM, compruébelo junto con el ajuste del ángulo del detector. Para CBED,
 ## Véase también
 
 - [Apéndice A3. Difracción dinámica por el método de ondas de Bloch](index.md)
-- [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
+- [7.2. Simulación SAED](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.4. Simulación CBED](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. Simulador de difracción](../../7-diffraction-simulator/index.md)

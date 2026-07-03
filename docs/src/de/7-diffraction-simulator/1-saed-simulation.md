@@ -24,7 +24,7 @@ Stellen Sie die Strahlungsquelle auf **Electron**. Geben Sie die Energie (keV) o
 
 ---
 
-## Incident beam mode
+## Modus des einfallenden Strahls
 
 ![Incident beam mode](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
@@ -34,7 +34,7 @@ Stellen Sie die Geometrie des einfallenden Strahls auf **Parallel**. Dies ist di
 
 ---
 
-## Intensity calculation
+## Intensitätsberechnung
 
 ![Intensity calculation](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
 
@@ -52,11 +52,11 @@ Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{
 
 Eine strenge dynamische Berechnung mit der Bloch-Wellen-Methode (Bethe-Methode). Sie reproduziert die Mehrfachstreuung und die dickenabhängige Variation der Intensität und ist für dicke Proben oder starke Beugung erforderlich. Nur verfügbar, wenn Electron gewählt ist. Zur Theorie siehe [Anhang A3. Bloch-Wellen-Methode](../appendix/a3-bloch-wave/calculation.md).
 
-> **Hinweis**: Wenn **Dynamical** gewählt ist, erscheint unten ein Bereich **Bloch wave settings**.
+> **Hinweis**: Wenn **Dynamical** gewählt ist, erscheint unten ein Bereich **Bloch-Wellen-Einstellungen**.
 
 ---
 
-## Bloch wave settings (dynamische Theorie)
+## Bloch-Wellen-Einstellungen (dynamische Theorie)
 
 ![Bloch wave parameters](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
@@ -69,7 +69,7 @@ Nur aktiv, wenn **Intensity calculation = Dynamical**.
 
 ---
 
-## Spot appearance
+## Darstellung der Spots
 
 ![Appearance](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
@@ -86,7 +86,7 @@ Steuert, wie jeder Beugungsspot dargestellt wird.
 
 ---
 
-## Spot labels
+## Reflex-Beschriftungen
 
 Die über den Spots eingeblendeten Beschriftungen werden in der [Symbolleiste](index.md#toolbar) ausgewählt.
 

@@ -1,13 +1,13 @@
-# 電子束交互作用
+# 射束交互作用
 
-**電子束交互作用 (Beam Interaction)** 描述所選晶體如何與入射的 **X 射線、電子或中子** 束相互作用。對於選定的一種輻射，它會計算允許的反射及其結構因子、電子束穿過材料時的衰減與傳輸、各元素的原子散射因子，以及 (對 X 射線而言) 特徵螢光譜線。在頂端切換輻射類型會重新計算所有內容，因此可將同一晶體在繞射與光譜技術之間進行比較。
+**射束交互作用 (Beam Interaction)** 描述所選晶體如何與入射的 **X 射線、電子或中子** 束相互作用。對於選定的一種輻射，它會計算允許的反射及其結構因子、射束穿過材料時的衰減與傳輸、各元素的原子散射因子，以及 (對 X 射線而言) 特徵螢光譜線。在頂端切換輻射類型會重新計算所有內容，因此可將同一晶體在繞射與光譜技術之間進行比較。
 
 ![Beam Interaction](../assets/cap-zh-Hant-auto/FormBeamInteraction.png)
 
-入射束在視窗頂端的條帶中選取；下方的四個索引標籤 — **Reflections**、**Attenuations & Transport**、**Scattering factors** 與 **Fluorescence** — 顯示交互作用的不同面向。下方每個索引標籤小節都在 **X-ray / Electron / Neutron** 束下顯示該索引標籤 (請使用各圖中的索引標籤)；內容會隨電子束而有顯著變化。
+入射束在視窗頂端的條帶中選取；下方的四個索引標籤 — **繞射**、**衰減 & 輸運**、**散射因子** 與 **螢光** — 顯示交互作用的不同面向。下方每個索引標籤小節都在 **X-ray / Electron / Neutron** 束下顯示該索引標籤 (請使用各圖中的索引標籤)；內容會隨射束而有顯著變化。
 
 !!! tip "固體物理背景 (附錄 A2)"
-    這四個索引標籤背後的散射與固體物理 — 原子散射因子、結構因子、電子束衰減與傳輸，以及螢光 — 在 **[附錄 A2. 電子束交互作用 (固體物理背景)](appendix/a2-beam-interaction/index.md)** 中說明。
+    這四個索引標籤背後的散射與固體物理 — 原子散射因子、結構因子、射束衰減與傳輸，以及螢光 — 在 **[附錄 A2. 電子束交互作用 (固體物理背景)](appendix/a2-beam-interaction/index.md)** 中說明。
 
 !!! note "X 射線資料與隨附的 xraylib 函式庫"
     許多 X 射線量 (異常色散 $f'/f''$、$F(q)+S(q)$ 散射分解、質量衰減的光電 / Rayleigh / Compton 分解、吸收邊跳躍以及螢光產率) 都是以隨附的 **[xraylib](https://github.com/tschoonj/xraylib)** 函式庫評估的。若 xraylib 無法使用，ReciPro 會退回其內部資料表 (僅光電吸收衰減、僅特徵譜線能量)，受影響的儲存格會顯示 **N/A**。每個表格的 **source** 列說明使用了哪一組資料。
@@ -16,13 +16,13 @@
 
 ## 鍵盤與滑鼠快捷鍵
 
-此視窗沒有特殊的按鍵組合。<kbd>F1</kbd> 會開啟此手冊頁面。在 **Scattering factors** 索引標籤上，可**拖曳**垂直游標線以讀取各元素在該位置的散射因子，而且每個索引標籤都有一個 **Copy** 按鈕，可將其表格匯出為可貼入試算表的文字。
+此視窗沒有特殊的按鍵組合。<kbd>F1</kbd> 會開啟此手冊頁面。在 **散射因子** 索引標籤上，可**拖曳**垂直游標線以讀取各元素在該位置的散射因子，而且每個索引標籤都有一個 **Copy** 按鈕，可將其表格匯出為可貼入試算表的文字。
 
 → 請參閱 **[21. 鍵盤與滑鼠快捷鍵](21-shortcuts.md)** 以一覽各視窗。
 
 ---
 
-## 電子束與波長 {#reflections-tab}
+## 射束與波長 {#reflections-tab}
 
 頂端的條帶是一個與其他模擬器共用的 **Wave Length Control**。
 
@@ -30,33 +30,33 @@
 
 - **X-ray / Electron / Neutron** : 原子散射因子與交互作用物理會因入射束的類型而異，因此在此處切換。
 - 對於 **X-ray**，選擇 **Element** (陽極材料) 與特徵譜線 (Kα 等) 會自動設定該特徵 X 射線的波長。
-- **Energy (keV)** 與 **Wavelength (Å)** 互相連動；設定其中一者會更新另一者，且兩者都會驅動 **Reflections** 表中使用的 2θ。
+- **Energy (keV)** 與 **Wavelength (Å)** 互相連動；設定其中一者會更新另一者，且兩者都會驅動 **繞射** 表中使用的 2θ。
 - **Unit (Å / nm)** 會切換用於 d 間距及類似量的長度單位。
 
-所選電子束也決定了哪些索引標籤與曲線有意義：
+所選射束也決定了哪些索引標籤與曲線有意義：
 
-| 電子束 | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| 射束 | 繞射 | 衰減 & 輸運 | 散射因子 | 螢光 |
 |------|------|------|------|------|
 | **X-ray** | 含異常色散的結構因子 | µ/ρ、µ、透射率 + 吸收邊 (對能量) | $f(s)$ 或 $F(q)+S(q)$ | 特徵譜線 + EDX 棒狀圖 |
 | **Electron** | 電子結構因子 | σ、MFP、\|dE/ds\|、IMFP、射程 (對能量) | Peng / Kirkland / 8-Gaussians | —(隱藏) |
 | **Neutron** | 核結構因子 | 散射長度與截面 (無能量曲線) | 散射長度 (無 *s* 相依性) | —(隱藏) |
 
-**Fluorescence** 索引標籤僅適用於 X 射線，並在電子束與中子束下消失。對於中子，**Attenuations & Transport** 與 **Scattering factors** 中與能量相依的圖會替換為元素表，因為核散射長度不依賴於散射角或能量。
+**螢光** 索引標籤僅適用於 X 射線，並在電子束與中子束下消失。對於中子，**衰減 & 輸運** 與 **散射因子** 中與能量相依的圖會替換為元素表，因為核散射長度不依賴於散射角或能量。
 
 ---
 
-## Reflections 索引標籤
+## 繞射 索引標籤
 
-列出晶體允許的晶面 (反射)，以及每個反射的**結構因子**與繞射強度。對於 X 射線，結構因子現在包含當前能量下的**異常色散**項 $f'/f''$，因此 `F_inv` (虛部) 在吸收邊附近一般不為零。每種電子束的版面配置相同；只有結構因子值與各反射的 2θ 會改變。
+列出晶體允許的晶面 (反射)，以及每個反射的**結構因子**與繞射強度。對於 X 射線，結構因子現在包含當前能量下的**異常色散**項 $f'/f''$，因此 `F_inv` (虛部) 在吸收邊附近一般不為零。每種射束的版面配置相同；只有結構因子值與各反射的 2θ 會改變。
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-reflections.png)
+    ![繞射 — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-reflections.png)
+    ![繞射 — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-reflections.png)
+    ![繞射 — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@
 
 ---
 
-## Attenuations & Transport 索引標籤
+## 衰減 & 輸運 索引標籤
 
-電子束穿透材料的深度，以及它如何損失能量。內容取決於電子束。
+射束穿透材料的深度，以及它如何損失能量。內容取決於射束。
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-attenuations.png)
+    ![衰減 & 輸運 — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-attenuations.png)
+    ![衰減 & 輸運 — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![衰減 & 輸運 — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -130,18 +130,18 @@
 
 ---
 
-## Scattering factors 索引標籤 {#fluorescence-tab}
+## 散射因子 索引標籤 {#fluorescence-tab}
 
 各組成元素的原子散射因子，對 $s = \sin\theta/\lambda$ (Å⁻¹) 繪製。每個元素以其自身的顏色繪製，而且可拖曳**垂直游標線**以將每個元素在該位置的散射因子讀入左側的表格中。
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-scattering.png)
+    ![散射因子 — X-ray](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-scattering.png)
+    ![散射因子 — electron](../assets/cap-zh-Hant-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-scattering.png)
+    ![散射因子 — neutron](../assets/cap-zh-Hant-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** 提供兩種 **Model** 模式：**f(s)** 繪製傳統的 X 射線原子散射因子 (以電子單位)；**F(q)+S(q)** 繪製 Rayleigh **同調**形狀因子 $F(q)$ 連同 Compton **非同調**散射函數 $S(q)$ (來自 xraylib)。表格還列出當前能量下的異常色散項 **f'(E)** 與 **f''(E)**。
 - **Electron** 提供電子散射因子的三種參數化：**Peng**、**Kirkland** 與 **8-Gaussians**。表格顯示 $f_e(s)$ (nm) 及產生它的 **model**。
@@ -150,11 +150,11 @@
 
 ---
 
-## Fluorescence 索引標籤
+## 螢光 索引標籤
 
 對於 X 射線束，試樣的特徵**螢光**發射。(此索引標籤在電子束與中子束下隱藏。)
 
-![Fluorescence (X-ray)](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-fluorescence.png)
+![螢光 (X-ray)](../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-fluorescence.png)
 
 **EDX emission lines** 圖將每個元素的特徵譜線 (Kα1、Kα2、Kβ1、Lα1、Lα2、Lβ1) 繪製為位於其光子能量處的棒狀圖，高度與原子分數 × 輻射率 × 螢光產率成正比 (一種定性的 EDX 式預覽；激發截面與偵測器效率未建模)。下方的表格逐譜線列出元素、譜線名稱、能量 **E keV**、相對強度 **Rel.I** 與螢光產率 **ω**。純量表報告各元素的 K 殼層產率 **ω_K** 與光譜中的**strongest line**。
 

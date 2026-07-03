@@ -12,7 +12,7 @@ Conditions GUI : Wave Length = Electron · Incident beam = Convergence (CBED, el
 
 ## Paramètres d'entrée
 
-![Input parameters](../../assets/cap-fr-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
+![Paramètres d'entrée](../../assets/cap-fr-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
 | Paramètre | Description | Par défaut / Typique |
 |-----------|-------------|-------------------|
@@ -36,7 +36,7 @@ Conditions GUI : Wave Length = Electron · Incident beam = Convergence (CBED, el
 
 ## Paramètres de sortie
 
-![Output parameters](../../assets/cap-fr-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![Paramètres de sortie](../../assets/cap-fr-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 Une fois le calcul terminé, les paramètres de sortie deviennent disponibles. Tous modifient uniquement l'affichage sans recalculer.
 

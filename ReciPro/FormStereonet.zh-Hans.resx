@@ -264,7 +264,7 @@
     <value>结构因子</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
-    <value>最大</value>
+    <value>上限</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
     <value>将结构因子
@@ -321,7 +321,7 @@
 </value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>选择放在 Miller 指数之间的
+    <value>选择放在米勒指数之间的
 分隔字符。</value>
   </data>
   <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
@@ -385,7 +385,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>设置 1° 网格线（细线，仅在启用
-“1° Lines”时显示）的颜色。</value>
+“1° 线”时显示）的颜色。</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>设置 1° 网格线（细线，仅在启用
@@ -431,12 +431,12 @@
 （[uvw] 或 (hkl)）。</value>
   </data>
   <data name="radioButtonAxes.ToolTip" xml:space="preserve">
-    <value>将晶轴（晶带方向）投影到极射赤面网上
+    <value>将晶带轴（晶带方向）投影到极射赤面网上
 并标注为 [u v w]。</value>
   </data>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
     <value>将晶面法线投影到极射赤面网上
-并标注为 Miller 指数 (h k l)。</value>
+并标注为米勒指数 (h k l)。</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
     <value>绘制菊池线对，即非弹性散射电子
@@ -520,12 +520,12 @@
 它们的公共晶带轴（叉积）确定该圆。</value>
   </data>
   <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
-    <value>晶带对中第一个晶面指数 (hkl)；晶面 1 与
+    <value>该对晶面中第一个晶面指数 (hkl)；晶面 1 与
 晶面 2 的公共交线定义了绘制在极射赤面
 网上的晶带轴大圆</value>
   </data>
   <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
-    <value>晶带对中第二个晶面指数 (hkl)；它与晶面 1
+    <value>该对晶面中第二个晶面指数 (hkl)；它与晶面 1
 的叉积定义了极射赤面网上的晶带轴大圆</value>
   </data>
   <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
@@ -537,7 +537,7 @@
 所选极点并记录其极射赤面投影轨迹。</value>
   </data>
   <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
-    <value>回转扫描模式：在固定半径下扫描倾斜
+    <value>旋转扫描模式：在固定半径下扫描倾斜
 （θ²+ω²=常数），在极射赤面网上
 画出一个圆。</value>
   </data>
@@ -594,7 +594,7 @@
     <value>以秒为单位设置扫描的总时长。</value>
   </data>
   <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
-    <value>以度每秒（°/s）设置回转扫描
+    <value>以度每秒（°/s）设置旋转扫描
 的角速度。</value>
   </data>
   <data name="numericBoxAngularSpeed.ToolTip1" xml:space="preserve">
@@ -629,7 +629,7 @@
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>设置用于计算结构因子强度以及极射赤面投影网上所示
-埃瓦尔德球衍射列表的辐射源（电子/X射线等）
+埃瓦尔德球反射列表的辐射源
 和波长</value>
   </data>
   <data name="radioButtonRange.ToolTip" xml:space="preserve">
@@ -644,7 +644,7 @@
   <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
     <value>按结构因子强度显示排名最高的晶面指数；
 结构因子越大，通常对应越强的
-衍射。</value>
+反射。</value>
   </data>
   <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
     <value>投影到极射赤面投影网上的用户指定指数列表；
@@ -672,7 +672,7 @@
 所选的单一颜色。</value>
   </data>
   <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
-    <value>要显示的衍射数量，取自结构因子
+    <value>要显示的反射数量，取自结构因子
 排名的前列（1–1000）。</value>
   </data>
   <data name="numericBoxHighStructureFactor.ToolTip1" xml:space="preserve">

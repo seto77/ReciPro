@@ -49,7 +49,7 @@ Die kartesischen Komponenten von $\mathbf g$ ergeben sich aus den reziproken Bas
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    Die in der Tabelle **Details** des Beugungssimulators angezeigten $U_{\mathbf g}$-Werte sind die Rohwerte *vor* Anwendung des relativistischen Faktors $\gamma$.
+    Die in der Tabelle **Reflexdetails** des Beugungssimulators angezeigten $U_{\mathbf g}$-Werte sind die Rohwerte *vor* Anwendung des relativistischen Faktors $\gamma$.
 
 ---
 

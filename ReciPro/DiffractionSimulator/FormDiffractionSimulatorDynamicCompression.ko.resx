@@ -196,12 +196,12 @@
 θ, φ 퍼짐을 포함).</value>
   </data>
   <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
-    <value>3차 Birch-Murnaghan 상태 방정식의
-체적 탄성률 K0(GPa)입니다.</value>
+    <value>3차 Birch–Murnaghan 상태 방정식의
+부피 탄성률 K0(GPa)입니다.</value>
   </data>
   <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
-    <value>3차 Birch-Murnaghan 상태 방정식의
-체적 탄성률의 압력 미분 K'0입니다.</value>
+    <value>3차 Birch–Murnaghan 상태 방정식의
+부피 탄성률의 압력 미분 K'0입니다.</value>
   </data>
   <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
     <value>각 층을 통과하며 강도를 감쇠시키는 데 사용하는

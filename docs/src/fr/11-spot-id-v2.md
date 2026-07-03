@@ -38,7 +38,7 @@ Ouvrir / enregistrer une image de diffraction. Le même chargement par glisser-d
 
 ## Optique
 
-![Optics](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Optique](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Source incidente
 
@@ -52,7 +52,7 @@ La longueur de caméra (mm) et la taille de pixel du détecteur (mm ou nm⁻¹).
 
 ## Informations sur la tache
 
-![Spot information](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Informations sur la tache](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots** : Détection automatique des taches à l'aide des maxima locaux et de la soustraction du fond.
 - **Number** : Le nombre maximal de taches à détecter.

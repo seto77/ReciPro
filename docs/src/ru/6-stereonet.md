@@ -37,7 +37,7 @@
 
 ---
 
-## Меню File
+## Меню «Файл»
 
 Сохранение или копирование в растровом или векторном формате. Векторный формат позволяет редактировать шрифт/толщину линий в PowerPoint или других векторных редакторах.
 
@@ -45,7 +45,7 @@
 
 ## Mode
 
-![Mode](../assets/cap-ru-auto/FormStereonet.panel3.groupBoxMode.png)
+![Режим](../assets/cap-ru-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### Цель проекции
 
@@ -77,7 +77,7 @@
 
 ## Indices
 
-![Indices](../assets/cap-ru-auto/FormStereonet.panel3.groupBoxIndices.png)
+![Индексы](../assets/cap-ru-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 Задаёт, какие кристаллические плоскости / оси отображаются.
 
@@ -107,7 +107,7 @@
 
 ### Appearance
 
-![Appearance tab](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage1.png)
+![Вкладка «Вид»](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
@@ -126,13 +126,13 @@
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage2.png)
+![Вкладка «Большой круг»](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage2.png)
 
 Рисование больших и малых кругов. Задайте их либо по **zone-axis index** \([uvw]\) (большой круг, образованный зоной этой оси), либо по **two crystal-plane indices**, которые имеют общую ось зоны. Толщина линий кругов также настраивается с помощью ползунка.
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage4.png)
+![Вкладка «Волна»](../assets/cap-ru-auto/FormStereonet.tabControl.tabPage4.png)
 
 Доступно только когда в качестве цели проекции выбрано **Planes** или **Kikuchi line pairs**. Задаёт источник волны (X-ray / electron / neutron), а также длину волны или энергию, необходимые для вычисления структурных факторов кристалла, используемых для параметра **structure-factor weighting** в разделе [Mode](#mode).
 

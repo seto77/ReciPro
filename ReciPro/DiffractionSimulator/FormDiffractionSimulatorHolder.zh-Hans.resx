@@ -77,7 +77,7 @@
     <value>TEM 专用设置</value>
   </data>
   <data name="groupBoxLink.Text" xml:space="preserve">
-    <value>链接</value>
+    <value>联动</value>
   </data>
   <data name="buttonRotate180.Text" xml:space="preserve">
     <value>↻ 旋转 180°</value>
@@ -106,7 +106,7 @@
     <value>显示指数标签</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
-    <value>极射网属性</value>
+    <value>极网属性</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>包含等效指数</value>
@@ -142,7 +142,7 @@
     <value>极网绘制区域的背景颜色。</value>
   </data>
   <data name="colorControlHolder.ToolTip" xml:space="preserve">
-    <value>极网上绘制的试样夹持器轮廓的颜色。</value>
+    <value>极网上绘制的样品台轮廓的颜色。</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
     <value>极网的 90° 主网格线
@@ -164,54 +164,54 @@
 （[100]、[010]、[001] 以外的轴）</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
-    <value>Tilt-X（主轴）方向箭头的颜色
-（勾选“显示倾斜方向”时显示）</value>
+    <value>倾转-X（主轴）方向箭头的颜色
+（勾选“显示倾转方向”时显示）</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
-    <value>Tilt-Y（副轴）方向箭头
-的颜色（勾选“显示倾斜方向”时显示）</value>
+    <value>倾转-Y（副轴）方向箭头
+的颜色（勾选“显示倾转方向”时显示）</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>勾选后，方向键可倾斜夹持器：
-左/右按箭头步长改变 Tilt X，
-上/下按箭头步长改变 Tilt Y。</value>
+左/右按箭头步长改变倾转 X，
+上/下按箭头步长改变倾转 Y。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>每次按方向键所施加的
 倾斜角增量（度）。</value>
   </data>
   <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
-    <value>绕主轴（Tilt X）的
+    <value>绕主轴（倾转 X）的
 夹持器倾斜角（度）。</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>绕主轴（Tilt X）的
+    <value>绕主轴（倾转 X）的
 夹持器倾斜角（度）。</value>
   </data>
   <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
-    <value>绕副轴（Tilt Y）的
+    <value>绕副轴（倾转 Y）的
 夹持器倾斜角（度）。</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>绕副轴（Tilt Y）的
+    <value>绕副轴（倾转 Y）的
 夹持器倾斜角（度）。</value>
   </data>
   <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
-    <value>极网上 Tilt X（主轴）的
+    <value>极网上倾转 X（主轴）的
 方位方向（度）。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>极网上 Tilt X（主轴）的
+    <value>极网上倾转 X（主轴）的
 方位方向（度）。</value>
   </data>
   <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
-    <value>对 Tilt Y（副轴）使用负极性。</value>
+    <value>对倾转 Y（副轴）使用负极性。</value>
   </data>
   <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
-    <value>对 Tilt Y（副轴）使用正极性。</value>
+    <value>对倾转 Y（副轴）使用正极性。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Tilt Y（副轴）的极性（符号）；
+    <value>倾转 Y（副轴）的极性（符号）；
 请与您的 TEM 测角台约定保持一致。</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
@@ -227,19 +227,19 @@
     <value>晶带轴指数标签的字体大小。</value>
   </data>
   <data name="buttonLink.ToolTip" xml:space="preserve">
-    <value>将当前夹持器倾斜设置为 Link 的
-Tilt X/Y 值，并将由此得到的
+    <value>将当前夹持器倾斜设置为“链接”的
+倾转 X/Y 值，并将由此得到的
 取向用作中立方向。</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
     <value>使晶体绕电子束（[001]）轴旋转 180°。</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
-    <value>按下 Link 按钮时施加于 Tilt X 的
+    <value>按下“链接”按钮时施加于倾转 X 的
 目标倾斜角（度）。</value>
   </data>
   <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
-    <value>按下 Link 按钮时施加于 Tilt Y 的
+    <value>按下“链接”按钮时施加于倾转 Y 的
 目标倾斜角（度）。</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
@@ -252,14 +252,14 @@ Tilt X/Y 值，并将由此得到的
   </data>
   <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
     <value>勾选后，在极网上绘制箭头
-以显示 Tilt-X 和 Tilt-Y 方向。</value>
+以显示倾转-X 和倾转-Y 方向。</value>
   </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
     <value>要显示的极网区域的半角（度）；
 值越小放大倍率越高。</value>
   </data>
   <data name="graphicsBox.ToolTip" xml:space="preserve">
-    <value>倾斜方向极网。双击某一点
+    <value>倾转方向极网。双击某一点
 可使夹持器朝该方向倾斜。</value>
   </data>
   <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
@@ -270,7 +270,7 @@ Tilt X/Y 值，并将由此得到的
     <value>背景</value>
   </data>
   <data name="colorControlHolder.FooterText" xml:space="preserve">
-    <value>样品杆</value>
+    <value>样品台</value>
   </data>
   <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
     <value>一般轴</value>

@@ -93,7 +93,7 @@
     <value>안내원 그리기</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>그라데이션</value>
+    <value>계조</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>색</value>
@@ -108,7 +108,7 @@
     <value>시뮬레이션</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
-    <value>중지</value>
+    <value>정지</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
     <value>출력 매개변수</value>
@@ -132,21 +132,21 @@
     <value>각 회절 디스크의 경계를 나타내는 원을 그립니다</value>
   </data>
   <data name="comboBoxSolver.ToolTip" xml:space="preserve">
-    <value>블로흐 파동 방정식을 푸는 방법(고유값 문제
+    <value>블로흐파 방정식을 푸는 방법(고유값 문제
 또는 행렬 지수; Eigen 또는 MKL 라이브러리)을
 선택합니다. 결과는 동일하지만 속도가 다릅니다.
 벤치마킹이 아니라면 Auto를 사용하세요.</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>블로흐 파동 방정식을 푸는 방법(고유값 문제
+    <value>블로흐파 방정식을 푸는 방법(고유값 문제
 또는 행렬 지수; Eigen 또는 MKL 라이브러리)을
 선택합니다. 결과는 동일하지만 속도가 다릅니다.
 벤치마킹이 아니라면 Auto를 사용하세요.</value>
   </data>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
-    <value>CBED(수렴 전자 회절)의 블로흐 파동
+    <value>CBED(수렴빔 전자 회절)의 블로흐파
 계산에 사용하는 CPU 스레드 수(1~128)를
-설정합니다. Solver가 Auto일 때는 비활성화됩니다.</value>
+설정합니다. 솔버가 Auto일 때는 비활성화됩니다.</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>CBED(수렴 전자 회절)의 블로흐 파동
@@ -154,18 +154,18 @@
 설정합니다. Solver가 Auto일 때는 비활성화됩니다.</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
-    <value>CBED(수렴 전자 회절) 모드:
-각 브래그 반사가 입사 빔 기울임에 따라 내부
+    <value>CBED(수렴빔 전자 회절) 모드:
+각 브래그 반사가 입사빔 기울기에 따라 내부
 강도가 변하는 디스크로 표시됩니다.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED(대각도 수렴 전자 회절) 모드:
+    <value>LACBED(대각도 수렴빔 전자 회절) 모드:
 더 넓은 수렴각을 사용하여 하나의 반사를 더
 넓은 각도 범위에 걸쳐 기록합니다.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>동역학적 다중 산란 계산에 포함되는
-회절파(블로흐 파동)의 개수(1~2048)입니다.
+회절파(블로흐파)의 개수(1~2048)입니다.
 파동 수가 많을수록 정확도는 높아지지만
 계산은 느려집니다.</value>
   </data>
@@ -188,19 +188,19 @@
 더 정밀해지지만 계산은 길어집니다.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
-    <value>시료 두께의 범위와 단계를 설정합니다</value>
+    <value>시료 두께의 범위와 간격을 설정합니다</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
     <value>시료 두께의 범위와 단계를 설정합니다</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>시료 두께의 범위와 단계를 설정합니다</value>
+    <value>시료 두께의 범위와 간격을 설정합니다</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
     <value>시료 두께의 범위와 단계를 설정합니다</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>시료 두께의 범위와 단계를 설정합니다</value>
+    <value>시료 두께의 범위와 간격을 설정합니다</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
     <value>시료 두께의 범위와 단계를 설정합니다</value>

@@ -1,6 +1,6 @@
 # Fluorescência
 
-Quando a **fotoabsorção** de raios X ejeta um elétron de uma camada interna (consulte [atenuação e transporte](attenuation-transport.md)), ela deixa uma vacância em um nível profundo. O átomo relaxa fazendo um elétron externo cair no buraco, e a energia liberada sai ou como um **fóton de raios X característico** (fluorescência) ou pela ejeção de um segundo elétron (o processo **Auger**). A aba **Fluorescence** mostra uma prévia do canal de fótons característicos; ela vale apenas para raios X e fica oculta para feixes de elétrons e de nêutrons.
+Quando a **fotoabsorção** de raios X ejeta um elétron de uma camada interna (consulte [atenuação e transporte](attenuation-transport.md)), ela deixa uma vacância em um nível profundo. O átomo relaxa fazendo um elétron externo cair no buraco, e a energia liberada sai ou como um **fóton de raios X característico** (fluorescência) ou pela ejeção de um segundo elétron (o processo **Auger**). A aba **Fluorescência** mostra uma prévia do canal de fótons característicos; ela vale apenas para raios X e fica oculta para feixes de elétrons e de nêutrons.
 
 ![Fluorescência (raios X)](../../../assets/cap-pt-auto/FormBeamInteraction-xray-fluorescence.png)
 
@@ -79,4 +79,4 @@ com $C_i$ sendo a concentração, $\Phi_0$ o fluxo incidente, $\sigma_\text{ion}
 
 - [Atenuação e transporte](attenuation-transport.md) — fotoabsorção, a borda que cria a vacância.
 - [Fatores de espalhamento atômico](scattering-factor.md) — os mesmos elétrons ligados, vistos no espalhamento.
-- [3. Interação do feixe → aba Fluorescence](../../3-beam-interaction.md#fluorescence-tab)
+- [3. Interação do feixe → aba Fluorescência](../../3-beam-interaction.md#fluorescence-tab)

@@ -30,7 +30,7 @@ Defina a fonte de radiação como **Electron**. Insira a energia (keV) ou o comp
 
 Defina a geometria do feixe incidente como **Parallel**. Esta é a geometria de onda plana padrão usada para SAED e difração de raios X.
 
-> **Note**: Para elétrons você pode escolher **Parallel / Precession (electron = PED) / Convergence (CBED)**. A escolha de **Precession** resulta em uma [simulação PED](2-ped-simulation.md), e a escolha de **Convergence** resulta em uma [simulação CBED](3-cbed-simulation.md); em ambos os casos o cálculo de intensidade muda automaticamente para Dynamical.
+> **Nota**: Para elétrons você pode escolher **Parallel / Precession (electron = PED) / Convergence (CBED)**. A escolha de **Precession** resulta em uma [simulação PED](2-ped-simulation.md), e a escolha de **Convergence** resulta em uma [simulação CBED](3-cbed-simulation.md); em ambos os casos o cálculo de intensidade muda automaticamente para Dynamical.
 
 ---
 
@@ -52,7 +52,7 @@ Além do erro de excitação, o fator de estrutura cinemático $\lvert F_{hkl} \
 
 Um cálculo dinâmico rigoroso pelo método de ondas de Bloch (método de Bethe). Ele reproduz o espalhamento múltiplo e a variação da intensidade dependente da espessura, e é necessário para amostras espessas ou difração forte. Disponível apenas quando Electron está selecionado. Para a teoria, consulte [Apêndice A3. Método de ondas de Bloch](../appendix/a3-bloch-wave/calculation.md).
 
-> **Note**: Quando **Dynamical** está selecionado, um painel **Bloch wave settings** aparece abaixo.
+> **Nota**: Quando **Dynamical** está selecionado, um painel **Bloch wave settings** aparece abaixo.
 
 ---
 

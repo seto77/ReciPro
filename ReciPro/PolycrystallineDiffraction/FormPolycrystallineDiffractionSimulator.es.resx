@@ -95,7 +95,7 @@ cuánto converge el haz incidente).</value>
   </data>
   <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
     <value>Incluye el difuminado de la película/detector
-(ensanchamiento por dispersión de punto de cada
+(ensanchamiento por función de dispersión de punto de cada
 punto) como parámetro libre en el ajuste.</value>
   </data>
   <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
@@ -212,20 +212,20 @@ incremento por avance de ω durante el barrido; menor da
 un muestreo de orientación más fino pero una simulación más lenta.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Rango de oscilación (balanceo) del eje
+    <value>Rango de oscilación (vaivén) del eje
 Rz (θ), en ± grados respecto al centro; la
 muestra oscila entre −valor y +valor.</value>
   </data>
   <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
-    <value>Velocidad del motor del eje de balanceo
+    <value>Velocidad del motor del eje de vaivén
 Rz (θ), en grados por segundo (°/s).</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
-    <value>Velocidad del motor del eje de balanceo
+    <value>Velocidad del motor del eje de vaivén
 Rz (θ), en grados por segundo (°/s).</value>
   </data>
   <data name="label59.ToolTip" xml:space="preserve">
-    <value>Velocidad del motor del eje de balanceo
+    <value>Velocidad del motor del eje de vaivén
 Rz (θ), en grados por segundo (°/s).</value>
   </data>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
@@ -299,15 +299,15 @@ conservando solo las que sí contribuyen.</value>
 muestra la intensidad alta en tono brillante, Negative la invierte.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Rango de oscilación (balanceo) del eje Rz
+    <value>Rango de oscilación (vaivén) del eje Rz
 (θ), en ± grados respecto al centro.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Rango de oscilación (balanceo) del eje Rz
+    <value>Rango de oscilación (vaivén) del eje Rz
 (θ), en ± grados respecto al centro.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Rango de oscilación (balanceo) del eje Rz
+    <value>Rango de oscilación (vaivén) del eje Rz
 (θ), en ± grados respecto al centro.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">

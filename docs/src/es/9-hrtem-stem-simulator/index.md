@@ -68,18 +68,18 @@ La mitad izquierda de la ventana muestra la imagen simulada. La barra de estado 
 
 ## Image mode / Sample
 
-![Image mode](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
+![Modo de imagen](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
 HRTEM, Potential o STEM.<div style="clear: both;"></div>
 
-![Sample](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+![Muestra](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
 Establece el espesor de la muestra.<div style="clear: both;"></div>
 
 ## Optical property { style="clear: both" }
 
 ### TEM conditions
 
-![TEM conditions](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Condiciones TEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 Voltaje de aceleración, desenfoque (se muestra el de Scherzer).
 
@@ -89,7 +89,7 @@ Voltaje de aceleración del microscopio electrónico. Cambiarlo actualiza la lon
 
 #### Defocus
 
-Valor de desenfoque de la lente objetivo. El desenfoque de Scherzer (el valor que maximiza el transfer de contraste de fase en la aproximación de objeto de fase débil) se muestra debajo como referencia.
+Valor de desenfoque de la lente objetivo. El desenfoque de Scherzer (el valor que maximiza la transferencia de contraste de fase en la aproximación de objeto de fase débil) se muestra debajo como referencia.
 
 ### Inherent property (HRTEM optical aberrations)
 
@@ -110,7 +110,7 @@ Diagramas de la función de lente. Ajustar el límite superior de *u* cambia el 
 
 ### Objective aperture (HRTEM option)
 
-![Objective aperture (HRTEM option)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Apertura de objetivo (opción HRTEM)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Cs, Cc, beta, delta-E, PCTF, envolventes de coherencia espacial/temporal, diafragma objetivo.
 
@@ -128,7 +128,7 @@ Abre la lista detallada de reflexiones (intensidad, amplitud compleja, etc.) par
 
 ### STEM options (optical)
 
-![STEM options (optical)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
+![Opciones STEM (óptica)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
 
 #### Convergence semi-angle
 
@@ -148,7 +148,7 @@ Campo de visión de barrido y tamaño de píxel para la imagen STEM.
 
 ### HRTEM options
 
-![HRTEM options](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![Opciones HRTEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 Max Bloch waves, píxeles/resolución de imagen, coherencia parcial (quasi-coherent / TCC), modo Single/Serial.
 
@@ -176,7 +176,7 @@ Véase [Apéndice A3.2 — Formación de la imagen HRTEM](../appendix/a3-bloch-w
 
 ### STEM options (simulation)
 
-![STEM options (simulation)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+![Opciones STEM (simulación)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Bloch wave count** — mismo papel que en HRTEM, aplicado por posición de sonda.
 - **Angular resolution** — número de puntos de muestreo en la integración sobre la dirección de la sonda.
@@ -184,7 +184,7 @@ Véase [Apéndice A3.2 — Formación de la imagen HRTEM](../appendix/a3-bloch-w
 
 ### Potential options
 
-![Potential option](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Opciones de potencial](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Se muestra cuando **Image mode = Potential**.
 
@@ -193,11 +193,11 @@ Se muestra cuando **Image mode = Potential**.
 
 ### Image properties
 
-![Image properties](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Propiedades de imagen](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 ### Diffracted waves
 
-![Diffracted waves](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondas difractadas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 ---
 
@@ -211,23 +211,23 @@ Se muestra cuando **Image mode = Potential**.
 
 ### Adjust
 
-![Adjust](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![Ajuste](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 Brillo mín./máx., escala de color, desenfoque gaussiano.
 
 ### Normalization
 
-![Normalization](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
+![Normalización](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
 ### Display
 
-![Display](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+![Visualización](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
 
 Etiqueta (espesor/desenfoque), barra de escala, superposición de la celda elemental.
 
 ### STEM image
 
-![STEM image](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+![Imagen STEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 ---
 

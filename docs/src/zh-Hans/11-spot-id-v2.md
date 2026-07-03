@@ -36,9 +36,9 @@
 
 ---
 
-## 光学系统
+## 光学
 
-![Optics](../assets/cap-zh-Hans-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![光学](../assets/cap-zh-Hans-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### 入射源
 
@@ -50,9 +50,9 @@
 
 ---
 
-## 衍射斑点信息
+## 衍射点信息
 
-![Spot information](../assets/cap-zh-Hans-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![衍射点信息](../assets/cap-zh-Hans-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**：使用局部极大值和背景扣除进行自动衍射斑点检测。
 - **Number**：要检测的衍射斑点的最大数量。

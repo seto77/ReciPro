@@ -138,7 +138,7 @@ Rayon, couleur et matériau par atome.
 
 ### Liaisons et polyèdres
 
-![Onglet Liaisons](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
+![Onglet Liaisons & Polyèdres](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 Seuils de longueur de liaison, affichage des polyèdres, arêtes.
 
@@ -166,7 +166,7 @@ Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez 
 
 ### Maille
 
-![Onglet Maille](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
+![Onglet Maille élémentaire](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
 Translation, plans de la maille, arêtes.
 
@@ -208,7 +208,7 @@ Liste les atomes qui entourent l'atome cible sélectionné et à quelle distance
 
 #### Graphe (côté droit)
 
-Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Bar width** jusqu'à ce que les barres séparent nettement les couches de coordination — cela donne une estimation visuelle du nombre de coordination.
+Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Bar width** jusqu'à ce que les barres séparent nettement les sphères de coordination — cela donne une estimation visuelle du nombre de coordination.
 
 ### Information
 

@@ -114,7 +114,7 @@ UI 언어를 영어와 일본어 사이에서 전환합니다. 변경 사항은 
 
 ### 현재 방향
 
-![현재 방향](../assets/cap-ko-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
+![현재 방위](../assets/cap-ko-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
 
 결정 방향을 표시합니다. 드래그하여 회전합니다. 축: 빨강 = *a*, 초록 = *b*, 파랑 = *c*.
 
@@ -137,17 +137,17 @@ UI 언어를 영어와 일본어 사이에서 전환합니다. 변경 사항은 
 
 ![화살표](../assets/cap-ko-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-각도 Step만큼 회전합니다. 연속 회전은 Animation을 체크하십시오.
+각도 스텝만큼 회전합니다. 연속 회전은 Animation을 체크하십시오.
 
-### 따라 보기
+### 보는 방향
 
-![따라 보기](../assets/cap-ko-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![보는 방향](../assets/cap-ko-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 정대축 [*uvw*] 또는 결정면 (*hkl*)을 화면에 수직으로 정렬합니다.
 
-- **Fix**: 체크하면, 지정된 정대축 또는 면이 이후의 회전 작업 동안 공간적으로 고정됩니다.
-- **Axis**: 입력한 정대축 \([uvw]\)을 화면에 수직으로 배치합니다. **Plane**도 설정된 경우, 그 방향이 화면에서 위쪽을 향합니다.
-- **Plane**: 입력한 결정면 \((hkl)\)의 법선을 화면에 수직으로 배치합니다. **Axis**도 설정된 경우, 그 방향이 화면에서 위쪽을 향합니다.
+- **고정**: 체크하면, 지정된 정대축 또는 면이 이후의 회전 작업 동안 공간적으로 고정됩니다.
+- **축**: 입력한 정대축 \([uvw]\)을 화면에 수직으로 배치합니다. **면**도 설정된 경우, 그 방향이 화면에서 위쪽을 향합니다.
+- **면**: 입력한 결정면 \((hkl)\)의 법선을 화면에 수직으로 배치합니다. **축**도 설정된 경우, 그 방향이 화면에서 위쪽을 향합니다.
 
 ### 방향을 설정하는 기본 방법
 
@@ -155,8 +155,8 @@ UI 언어를 영어와 일본어 사이에서 전환합니다. 변경 사항은 
 |--------|----------|-------|
 | 마우스 드래그 | 결정 축을 보면서 자유롭게 회전하고 싶을 때. | **현재 방향** 패널 |
 | 화살표 버튼 | 작고 반복 가능한 회전을 원할 때. | **화살표** 패널 |
-| 정대축 | \([001]\) 또는 \([110]\)과 같은 관찰 방향을 알고 있을 때. | **따라 보기** / 정대축 입력 |
-| 면 법선 | 결정면 \((hkl)\)을 화면에 수직으로 두고 싶을 때. | **따라 보기** / 면 입력 |
+| 정대축 | \([001]\) 또는 \([110]\)과 같은 관찰 방향을 알고 있을 때. | **보는 방향** / 정대축 입력 |
+| 면 법선 | 결정면 \((hkl)\)을 화면에 수직으로 두고 싶을 때. | **보는 방향** / 면 입력 |
 | 오일러 각도 | 재현 가능한 수치적 방향이 필요할 때. | **오일러 각도 (Z-X-Z)** |
 
 회전 행렬과 좌표 규약은 [회전 기하학](4-rotation-geometry.md) 및 [부록 A1. 좌표계](appendix/a1-coordinate-system/1-orientation.md)를 참조하십시오.

@@ -417,11 +417,11 @@ en el hemisferio inferior de la red estereográfica.</value>
     <value>Proyectar direcciones mediante la red de Wulff (método equiangular)</value>
   </data>
   <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
-    <value>Proyectar direcciones mediante la red de Schmidt (método equiareal)</value>
+    <value>Proyectar direcciones mediante la red de Schmidt (método equiárea)</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
     <value>Escala el tamaño de cada punto según su factor de
-estructura (la amplitud dispersada por una celda unidad),
+estructura (la amplitud dispersada por una celda elemental),
 de modo que las reflexiones más fuertes se ven más grandes.</value>
   </data>
   <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">

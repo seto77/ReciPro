@@ -349,7 +349,7 @@ feste Farbe anstelle der Spotfarbe.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Legt die feste Farbe fest, die für die Indexbeschriftungen
-verwendet wird, wenn „Farbe angeben“ aktiviert ist.</value>
+verwendet wird, wenn „Farbe wählen“ aktiviert ist.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Legt die feste Farbe fest, die für die Indexbeschriftungen
@@ -665,7 +665,7 @@ der Liste der angegebenen Indizes.</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Legt die Plotfarbe für den hinzugefügten oder aktuell
-ausgewählten Index fest (verwendet, wenn 'Rotate color' aus ist).</value>
+ausgewählten Index fest (verwendet, wenn 'Farbe rotieren' aus ist).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Legt die Plotfarbe für den hinzugefügten oder aktuell
@@ -686,7 +686,7 @@ vorderen Rängen der Strukturfaktor-Rangfolge (1–1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Geben Sie den zu plottenden Index ein — ein einzelnes [uvw]/(hkl) im
-Modus 'Specified' oder die maximalen h,k,l im Modus 'Range'.</value>
+Modus 'Angegeben' oder die maximalen h,k,l im Modus 'Bereich'.</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Plottet zusätzlich alle symmetrieäquivalenten Indizes (die

@@ -1,6 +1,6 @@
 # 附錄 A3. 布洛赫波法的動力學繞射
 
-本附錄概述 ReciPro 的 **繞射模擬器**、**CBED** 與 **HRTEM/STEM** 模擬器所採用的動力學電子繞射理論。ReciPro 遵循 **Bethe / 布洛赫波** 的表述方式。逐步的計算流程（光學位能、透射係數、強度）在 [動力學計算（共通核心）](calculation.md) 中說明。
+本附錄概述 ReciPro 的 **繞射模擬器**、**CBED** 與 **HRTEM/STEM** 模擬器所採用的動力學電子繞射理論。ReciPro 遵循 **Bethe / 布洛赫波** 的表述方式。逐步的計算流程（光學位能、透射係數、強度）在 [動力學計算（共用核心）](calculation.md) 中說明。
 
 ---
 
@@ -68,7 +68,7 @@ $$\mathbf{A}\,\mathbf{C} = \mathbf{C}\,\boldsymbol{\Lambda}, \qquad
 A_{gh} = \frac{U^C_{\,g-h} + i\,U'_{g,h}}{P_g}\;\;(g\neq h), \qquad
 A_{gg} = \frac{Q_g + i\,U'_{g,g}}{P_g}$$
 
-- $\mathbf{C}$ 的各行即本徵向量 $C^{(j)}_*$（布洛赫波振幅）。
+- $\mathbf{C}$ 的各列即本徵向量 $C^{(j)}_*$（布洛赫波振幅）。
 - $\boldsymbol{\Lambda}=\mathrm{diag}\!\left(\lambda^{(1)}, \lambda^{(2)}, \dots\right)$ 包含本徵值 $\lambda^{(j)} = \gamma^{(j)}$。
 
 顯式寫出 —— 將射束按透射束 $0$、隨後 $g$, $h$, $\dots$ 的順序排列 —— 即為：
@@ -103,13 +103,13 @@ C^{(1)}_h & C^{(2)}_h & C^{(3)}_h & \cdots \\
 \end{aligned}
 $$
 
-將 $\mathbf{A}$ 對角化即可一次性得到 **所有** 布洛赫波向量與振幅。繞射束的振幅 —— 進而其強度 —— 隨後由入射面與出射面處的邊界條件以及試樣厚度確定。這些步驟、光學（複）位能、德拜-沃勒因子以及透射係數 $T_{\mathbf g}$ 均在 [動力學計算（共通核心）](calculation.md) 中說明。
+將 $\mathbf{A}$ 對角化即可一次性得到 **所有** 布洛赫波向量與振幅。繞射束的振幅 —— 進而其強度 —— 隨後由入射面與出射面處的邊界條件以及試樣厚度確定。這些步驟、光學（複）位能、德拜-沃勒因子以及透射係數 $T_{\mathbf g}$ 均在 [動力學計算（共用核心）](calculation.md) 中說明。
 
 > **註:** 繞射模擬器的 **Details** 表中所顯示的 $V_{\mathbf g}$ 值為套用相對論修正因子*之前*的原始值。
 
 ---
 
-## 另見
+## 另請參閱
 
 - [7. 繞射模擬器](../../7-diffraction-simulator/index.md) —— 動力學繞射圖樣
 - [9. HRTEM/STEM 模擬器](../../9-hrtem-stem-simulator/index.md)

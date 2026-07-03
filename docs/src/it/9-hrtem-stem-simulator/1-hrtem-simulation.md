@@ -36,7 +36,7 @@ Simula immagini TEM ad alta risoluzione con frange reticolari. La modalità prin
 
 ### Parametri intrinseci
 
-![Parametri intrinseci](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Parametri intrinseci](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parametro | Descrizione | Tipico |
 |-----------|-------------|---------|

@@ -36,7 +36,7 @@
 
 ### 고유 파라미터
 
-![고유 파라미터](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![고유 파라미터](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parameter | 설명 | 일반값 |
 |-----------|-------------|---------|
@@ -63,7 +63,7 @@ Scherzer 디포커스: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -
 
 ## 대물 조리개
 
-![대물 조리개](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![대물 조리개 (HRTEM 옵션)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 조리개 크기(mrad)와 위치를 설정합니다. **Open aperture** 는 조리개를 제거합니다. 고려되는 블로흐파의 수는 조리개 조건에 따라 달라집니다.
 
@@ -71,7 +71,7 @@ Scherzer 디포커스: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -
 
 ## 부분 가간섭성 모델
 
-![부분 가간섭성 모델](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![HRTEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 | Model | 설명 |
 |-------|-------------|
@@ -82,7 +82,7 @@ Scherzer 디포커스: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -
 
 ## 시뮬레이션 모드
 
-![시뮬레이션 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![단일/연속 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 | Mode | 설명 |
 |------|-------------|

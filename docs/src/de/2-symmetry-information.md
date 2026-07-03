@@ -72,7 +72,7 @@ Die beiden Felder unten geben die schematischen Symmetriediagramme der Raumgrupp
 Bedienelemente unterhalb der Diagramme:
 
 - **Direction** (`a` / `b` / `c`) : Wählen Sie die Kristallachse, entlang der projiziert werden soll.
-- **Copy** jedes Diagramm als Vektorbild (**EMF**) oder Rasterbild (**BMP**) in die Zwischenablage; EMF kann in PowerPoint gruppiert aufgelöst und bearbeitet werden.
+- **Copy** jedes Diagramm als Vektorbild (**EMF**) oder Rasterbild (**BMP**) in die Zwischenablage; Die Gruppierung des EMF kann in PowerPoint aufgelöst werden, sodass es bearbeitet werden kann.
 
 ---
 

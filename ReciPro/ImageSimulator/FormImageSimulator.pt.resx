@@ -390,7 +390,7 @@ normalizada para cada imagem individualmente.</value>
     <value>Intensidade máxima da imagem simulada.</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>Exibe apenas os elétrons TDS (espalhamento difuso térmico,
+    <value>Exibe apenas os elétrons TDS (espalhamento térmico difuso,
 inelástico) na imagem STEM.</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
@@ -399,7 +399,7 @@ elasticamente na imagem STEM.</value>
   </data>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
     <value>Exibe tanto os elétrons elásticos quanto os elétrons TDS
-(espalhamento difuso térmico,
+(espalhamento térmico difuso,
 inelástico) na imagem STEM.</value>
   </data>
   <data name="colorControlScale.ToolTip" xml:space="preserve">
@@ -445,7 +445,7 @@ o contraste da imagem com a rede cristalina.</value>
     <value>Cria uma série de imagens com diferentes espessuras</value>
   </data>
   <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
-    <value>Cria uma série de imagens com diferentes valores de desfocagem</value>
+    <value>Cria uma série de imagens com diferentes valores de desfoco</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
     <value>Resolução de amostragem angular das direções da sonda
@@ -459,7 +459,7 @@ STEM mais finamente, mas tornam o cálculo mais lento.</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>Espessura da fatia (nm) usada ao calcular a
-intensidade dos elétrons TDS (espalhamento difuso térmico,
+intensidade dos elétrons TDS (espalhamento térmico difuso,
 inelástico). Valores menores melhoram a
 precisão, mas tornam o cálculo mais lento.</value>
   </data>
@@ -581,7 +581,7 @@ aumentam o borrão devido à dispersão de energia do feixe.</value>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
     <value>Coeficiente de aberração esférica Cs da
 lente objetiva (mm); molda a CTF (função de transferência
-de contraste) e a desfocagem de Scherzer.</value>
+de contraste) e o desfoco de Scherzer.</value>
   </data>
   <data name="numericBoxCs.ToolTip1" xml:space="preserve">
     <value>Coeficiente de aberração esférica Cs da
@@ -589,8 +589,8 @@ lente objetiva (mm); molda a CTF (função de transferência
 de contraste) e a desfocagem de Scherzer.</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
-    <value>Desfocagem da lente objetiva (nm). Alterar
-a desfocagem desloca a CTF (função de transferência
+    <value>Desfoco da lente objetiva (nm). Alterar
+o desfoco desloca a CTF (função de transferência
 de contraste) e o contraste da imagem.</value>
   </data>
   <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
@@ -609,18 +609,18 @@ de transmissão), em kV; isto altera
 o comprimento de onda dos elétrons e o contraste da imagem.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Desfocagem de Scherzer (nm), a desfocagem próxima à
-condição ótima de contraste de fase calculada a partir do
+    <value>Desfoco de Scherzer (nm), o desfoco próximo à
+condição ótima de contraste de fase calculado a partir do
 comprimento de onda atual e da aberração esférica Cs.</value>
   </data>
   <data name="textBoxScherzer.ToolTip" xml:space="preserve">
-    <value>Desfocagem de Scherzer (nm), a desfocagem próxima à
-condição ótima de contraste de fase calculada a partir do
+    <value>Desfoco de Scherzer (nm), o desfoco próximo à
+condição ótima de contraste de fase calculado a partir do
 comprimento de onda atual e da aberração esférica Cs.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Desfocagem de Scherzer (nm), a desfocagem próxima à
-condição ótima de contraste de fase calculada a partir do
+    <value>Desfoco de Scherzer (nm), o desfoco próximo à
+condição ótima de contraste de fase calculado a partir do
 comprimento de onda atual e da aberração esférica Cs.</value>
   </data>
   <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">

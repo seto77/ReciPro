@@ -1,15 +1,15 @@
 # Fator de estrutura
 
-O fator de espalhamento atômico descreve um único átomo; o **fator de estrutura** descreve como todos os átomos da célula unitária espalham *em conjunto*. É a grandeza que a aba **Reflections** tabula (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), e é a ponte entre a física atômica da página anterior e as intensidades difratadas.
+O fator de espalhamento atômico descreve um único átomo; o **fator de estrutura** descreve como todos os átomos da célula unitária espalham *em conjunto*. É a grandeza que a aba **Reflexões** tabula (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), e é a ponte entre a física atômica da página anterior e as intensidades difratadas.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-pt-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexões — X-ray](../../../assets/cap-pt-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-pt-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexões — electron](../../../assets/cap-pt-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-pt-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexões — neutron](../../../assets/cap-pt-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ com $\mathbf U_j$ o tensor de deslocamento e $\mathbf g$ o vetor da rede recípr
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-de modo que $B$ aumenta com a temperatura e diminui para átomos pesados. O ReciPro usa diretamente os $B_j$ tabulados ou informados, em vez de calculá-los. Como $T_j$ multiplica o fator de espalhamento, a aba **Scattering factors** pode aplicar o mesmo amortecimento $e^{-Bs^2}$ às curvas plotadas. O amortecimento cresce com a temperatura e com $s$, razão pela qual o espalhamento térmico difuso (intensidade retirada dos feixes de Bragg coerentes e redistribuída em um fundo difuso) alimenta o potencial absortivo na teoria dinâmica ([Apêndice A3](../a3-bloch-wave/index.md)).
+de modo que $B$ aumenta com a temperatura e diminui para átomos pesados. O ReciPro usa diretamente os $B_j$ tabulados ou informados, em vez de calculá-los. Como $T_j$ multiplica o fator de espalhamento, a aba **Fatores de dispersão** pode aplicar o mesmo amortecimento $e^{-Bs^2}$ às curvas plotadas. O amortecimento cresce com a temperatura e com $s$, razão pela qual o espalhamento térmico difuso (intensidade retirada dos feixes de Bragg coerentes e redistribuída em um fundo difuso) alimenta o potencial absortivo na teoria dinâmica ([Apêndice A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -111,5 +111,5 @@ Como os planos equivalentes são mesclados em uma única linha nesse modo, o Rec
 
 - [Fatores de espalhamento atômico](scattering-factor.md) — os $f_j$ que entram na soma.
 - [Atenuação & transporte](attenuation-transport.md) — o que acontece com o feixe entre os eventos de espalhamento.
-- [3. Interação do feixe → aba Reflections](../../3-beam-interaction.md#reflections-tab)
+- [3. Interação do feixe → aba Reflexões](../../3-beam-interaction.md#reflections-tab)
 - [Apêndice A3. Difração dinâmica](../a3-bloch-wave/index.md) — quando $\lvert F\rvert^2$ (cinemática) já não é suficiente.

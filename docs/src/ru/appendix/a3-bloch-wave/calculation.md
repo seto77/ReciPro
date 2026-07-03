@@ -169,6 +169,6 @@ $$\Delta I_N=\frac{|I_N-I_{N-\Delta N}|}{I_N}$$
 ## См. также
 
 - [Приложение A3. Динамическая дифракция методом блоховских волн](index.md)
-- [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
+- [7.2. Моделирование SAED](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.4. Моделирование CBED](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. Симулятор дифракции](../../7-diffraction-simulator/index.md)

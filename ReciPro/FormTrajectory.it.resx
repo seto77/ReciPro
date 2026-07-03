@@ -101,7 +101,7 @@ da calcolare</value>
     <value>Simula traiettorie</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Potere di arresto (dE/ds)</value>
+    <value>Potere frenante (dE/ds)</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
     <value>Disegna cerchi guida</value>
@@ -210,12 +210,12 @@ per la diffusione elastica all'energia incidente;
 valori maggiori indicano diffusione più frequente (nm²).</value>
   </data>
   <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
-    <value>Cammino libero medio elastico λ: distanza media percorsa
+    <value>Libero cammino medio elastico λ: distanza media percorsa
 dall'elettrone tra eventi di diffusione elastica,
 all'energia incidente (nm).</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Cammino libero medio elastico λ: distanza media percorsa
+    <value>Libero cammino medio elastico λ: distanza media percorsa
 dall'elettrone tra eventi di diffusione elastica,
 all'energia incidente (nm).</value>
   </data>
@@ -273,7 +273,7 @@ e il rendering 3D dell'ultima simulazione.</value>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>Energia degli elettroni incidenti (tensione di accelerazione) in
 keV. Imposta l'energia del fascio usata per il calcolo delle traiettorie,
-della sezione d'urto, del cammino libero medio e del potere frenante;
+della sezione d'urto, del libero cammino medio e del potere frenante;
 un'energia maggiore dà una penetrazione più profonda.</value>
   </data>
 </root>

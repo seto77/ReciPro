@@ -18,7 +18,7 @@
 
 ## Условия ПЭМ
 
-![TEM conditions](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Условия ПЭМ](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — ускоряющее напряжение. Оно задаёт длину волны электрона и используется для вычисления коэффициентов Фурье $U_g$ потенциала.
 
@@ -28,7 +28,7 @@
 
 ## Параметры потенциала
 
-![Potential options](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Параметры потенциала](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Выбирает, какой потенциал отображается и как он представляется.
 
@@ -52,7 +52,7 @@ $U_g$ и $U'_g$ можно отображать одновременно (для
 
 ## Свойства изображения
 
-![Image property](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Свойства изображения](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — размеры генерируемого изображения в пикселях (по умолчанию 512×512).
 - **Resolution** — разрешение дискретизации (pm/px).
@@ -61,7 +61,7 @@ $U_g$ и $U'_g$ можно отображать одновременно (для
 
 ## Дифрагированные волны
 
-![Diffracted waves](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Дифрагированные волны](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — максимальное число блоховских волн (коэффициентов Фурье), включаемых в фурье-синтез потенциала (по умолчанию 80). Большие значения включают более высокие пространственные частоты и воспроизводят более тонкие детали потенциала.
 

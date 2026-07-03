@@ -212,7 +212,7 @@ intensità relativa</value>
   </data>
   <data name="buttonHolderSimulation.Text" xml:space="preserve">
     <value>Simulazione
- porta-campione TEM</value>
+ portacampioni TEM</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Sensibilità di rotazione</value>
@@ -338,7 +338,7 @@ intensità relativa</value>
     <value>Concetto base del metodo di Bethe</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>Guida</value>
   </data>
   <data name="radioButtonIntensityDynamical.Text" xml:space="preserve">
     <value>Teoria dinamica</value>
@@ -487,7 +487,7 @@ indica generalmente una riflessione più intensa.</value>
     <value>Imposta la dimensione delle stringhe</value>
   </data>
   <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
-    <value>Imposta la dimensione dei caratteri</value>
+    <value>Imposta la dimensione delle stringhe</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>Imposta il colore delle stringhe</value>

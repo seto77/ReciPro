@@ -66,18 +66,18 @@ title: HRTEM / STEM Simulator
 
 ## Image mode / Sample
 
-![Image mode](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
+![Режим изображения](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
 HRTEM, Potential или STEM.<div style="clear: both;"></div>
 
-![Sample](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+![Образец](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
 Задаёт толщину образца.<div style="clear: both;"></div>
 
 ## Optical property { style="clear: both" }
 
 ### TEM conditions
 
-![TEM conditions](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Условия ПЭМ](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 Ускоряющее напряжение, дефокусировка (показан Scherzer).
 
@@ -108,7 +108,7 @@ HRTEM, Potential или STEM.<div style="clear: both;"></div>
 
 ### Objective aperture (HRTEM option)
 
-![Objective aperture (HRTEM option)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Объективная апертура (опция HRTEM)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Cs, Cc, beta, delta-E, PCTF, огибающие пространственной/временной когерентности, апертура объектива.
 
@@ -126,7 +126,7 @@ Cs, Cc, beta, delta-E, PCTF, огибающие пространственной
 
 ### STEM options (optical)
 
-![STEM options (optical)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
+![Параметры STEM (оптические)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
 
 #### Convergence semi-angle
 
@@ -146,7 +146,7 @@ Cs, Cc, beta, delta-E, PCTF, огибающие пространственной
 
 ### HRTEM options
 
-![HRTEM options](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![Параметры HRTEM](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 Max Bloch waves, пиксели/разрешение изображения, частичная когерентность (quasi-coherent / TCC), режим Single/Serial.
 
@@ -174,7 +174,7 @@ Max Bloch waves, пиксели/разрешение изображения, ч�
 
 ### STEM options (simulation)
 
-![STEM options (simulation)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+![Параметры STEM (моделирование)](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Bloch wave count** — та же роль, что и для HRTEM, применяется для каждой позиции зонда.
 - **Angular resolution** — число точек выборки при интегрировании по направлению зонда.
@@ -182,7 +182,7 @@ Max Bloch waves, пиксели/разрешение изображения, ч�
 
 ### Potential options
 
-![Potential option](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Параметры потенциала](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Отображается, когда **Image mode = Potential**.
 
@@ -191,11 +191,11 @@ Max Bloch waves, пиксели/разрешение изображения, ч�
 
 ### Image properties
 
-![Image properties](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Свойства изображения](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 ### Diffracted waves
 
-![Diffracted waves](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Дифрагированные волны](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 ---
 
@@ -209,23 +209,23 @@ Max Bloch waves, пиксели/разрешение изображения, ч�
 
 ### Adjust
 
-![Adjust](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![Настройка](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 Мин./макс. яркость, цветовая шкала, размытие по Гауссу.
 
 ### Normalization
 
-![Normalization](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
+![Нормировка](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
 ### Display
 
-![Display](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+![Отображение](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
 
 Подпись (толщина/дефокусировка), шкала масштаба, наложение элементарной ячейки.
 
 ### STEM image
 
-![STEM image](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+![STEM-изображение](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 ---
 

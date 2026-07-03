@@ -100,7 +100,7 @@
     <value>Corte 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Topo</value>
+    <value>Máx.</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Tamanho do texto</value>
@@ -302,7 +302,7 @@ de Start até End por este incremento.</value>
     <value>Copia a imagem do padrão EBSD simulado para a área de transferência.</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
-    <value>Constrói o padrão mestre EBSD (o mapa de intensidade
+    <value>Constrói o master pattern EBSD (o mapa de intensidade
 de retroespalhamento dinâmico da esfera completa) via Monte Carlo
 e então difração dinâmica de ondas de Bloch (Bethe).</value>
   </data>
@@ -316,15 +316,15 @@ com interpolação PCHIP e gera o código-fonte resultante.</value>
 do eixo X (o eixo de rotação da amostra).</value>
   </data>
   <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
-    <value>Copia a imagem do padrão mestre 2D
+    <value>Copia a imagem do master pattern 2D
 (projeção de Lambert) para a área de transferência.</value>
   </data>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
-    <value>Copia a pré-visualização do padrão mestre
+    <value>Copia a pré-visualização do master pattern
 3D (esférico) para a área de transferência.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
-    <value>Gira o padrão mestre 3D de modo que o eixo de zona
+    <value>Gira o master pattern 3D de modo que o eixo de zona
 [u v w] inserido à direita fique voltado para o observador.</value>
   </data>
   <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
@@ -333,7 +333,7 @@ Retroespalhados) para calcular as distribuições de energia de saída e
 profundidade usadas para ponderar o padrão EBSD.</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value>Interrompe o cálculo de padrão mestre
+    <value>Interrompe o cálculo de master pattern
 (Monte Carlo / ondas de Bloch) em execução.</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
@@ -359,29 +359,29 @@ o grupo de opções de contorno do detector.</value>
   <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
     <value>Pondera cada linha de Kikuchi pelo seu fator
 de estrutura (intensidade de difração cinemática =
-amplitude dispersada por uma célula unitária),
+amplitude espalhada por uma célula unitária),
 mesclando a cor da linha em direção ao fundo
 de modo que reflexões mais fortes apareçam mais escuras.</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
     <value>Mostra a inserção com as setas dos eixos
-do cristal (a, b, c) na vista do padrão mestre 3D.</value>
+do cristal (a, b, c) na vista do master pattern 3D.</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
     <value>Mostra o texto dos rótulos dos eixos a, b, c
-na vista do padrão mestre 3D.</value>
+na vista do master pattern 3D.</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
     <value>Usa o modelo de absorção não local (potencial óptico
 complexo que contabiliza o espalhamento térmico difuso)
-ao construir o padrão mestre.</value>
+ao construir o master pattern.</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
     <value>Desenha o círculo que marca o contorno do detector sobre o padrão.</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>Mostra o padrão EBSD dinâmico (Difração de Elétrons
-Retroespalhados) projetado a partir do padrão mestre;
+Retroespalhados) projetado a partir do master pattern;
 desmarcado deixa um fundo simples.</value>
   </data>
   <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
@@ -406,7 +406,7 @@ interseções das bandas de Kikuchi.</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
     <value>Inclui a intensidade de fundo do TDS (Espalhamento
-Térmico Difuso) no padrão mestre.</value>
+Térmico Difuso) no master pattern.</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Renderiza o padrão EBSD ponderado pela distribuição
@@ -424,15 +424,15 @@ para a intensidade do padrão.</value>
   </data>
   <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
     <value>Escolha qual hemisfério (+Z ou -Z) do
-padrão mestre é mostrado na vista 2D.</value>
+master pattern é mostrado na vista 2D.</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
     <value>Escolha qual hemisfério (+Z ou -Z) do
-padrão mestre é mostrado na vista 2D.</value>
+master pattern é mostrado na vista 2D.</value>
   </data>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Resolução (pixels por lado) da grade
-quadrada de Lambert do padrão mestre
+quadrada de Lambert do master pattern
 (64–2048); maior é mais fina mas mais lenta.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
@@ -441,7 +441,7 @@ cor (Gray, Cold-Warm, Spectrum ou Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Insira os índices do eixo de zona [u v w] usados pelo
-botão 'View Along' para orientar o padrão mestre 3D.</value>
+botão 'View Along' para orientar o master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra a profundidade (nm) da fatia do padrão
@@ -474,20 +474,20 @@ EBSD atualmente renderizada (modo de fatia única).</value>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>Número das reflexões mais fortes (Top N,
 classificadas pelo fator de estrutura = amplitude
-dispersada por uma célula unitária) a desenhar como
+espalhada por uma célula unitária) a desenhar como
 linhas de Kikuchi. Valores maiores mostram mais linhas.</value>
   </data>
   <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
-    <value>Mostra a profundidade (nm) da fatia do padrão mestre
+    <value>Mostra a profundidade (nm) da fatia do master pattern
 atualmente selecionada pelo controle deslizante de profundidade para pré-visualização.</value>
   </data>
   <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
     <value>Mostra a energia do elétron (keV) da fatia
-do padrão mestre atualmente selecionada
+do master pattern atualmente selecionada
 pelo controle deslizante de energia para pré-visualização.</value>
   </data>
   <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
-    <value>Ângulo de inclinação da amostra no MEV, em graus
+    <value>Ângulo de inclinação da amostra no SEM, em graus
 (-90 a 0; tipicamente -70 para EBSD); define
 a geometria de projeção do retroespalhamento.</value>
   </data>
@@ -537,11 +537,11 @@ usada para desenhar as linhas de Kikuchi.</value>
 usada para desenhar as linhas de Kikuchi.</value>
   </data>
   <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
-    <value>Seleciona qual fatia de profundidade (nm) do padrão mestre
+    <value>Seleciona qual fatia de profundidade (nm) do master pattern
 pré-visualizar; o valor é mostrado na caixa Depth.</value>
   </data>
   <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
-    <value>Seleciona qual fatia de energia (keV) do padrão mestre
+    <value>Seleciona qual fatia de energia (keV) do master pattern
 pré-visualizar; o valor é mostrado na caixa Energy.</value>
   </data>
   <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
@@ -596,7 +596,7 @@ Spectrum, Fire) usada para mapear a intensidade para cor.</value>
   </data>
   <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Resolução (pixels por lado) da grade quadrada
-de Lambert do padrão mestre (64–2048).</value>
+de Lambert do master pattern (64–2048).</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
     <value>Cor</value>

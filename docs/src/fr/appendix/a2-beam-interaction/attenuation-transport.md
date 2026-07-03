@@ -1,15 +1,15 @@
 # Atténuation & transport
 
-Les facteurs de diffusion décrivent un événement de diffusion unique ; cette page traite de ce qui arrive au faisceau **dans son ensemble** lorsqu'il traverse le solide — à quelle vitesse il est retiré, à quelle profondeur il pénètre et (pour les électrons) comment il est ralenti. La physique pertinente est entièrement différente pour les trois faisceaux, ce qui explique pourquoi l'onglet **Attenuations & Transport** modifie aussi radicalement ses graphiques et ses tableaux selon le rayonnement.
+Les facteurs de diffusion décrivent un événement de diffusion unique ; cette page traite de ce qui arrive au faisceau **dans son ensemble** lorsqu'il traverse le solide — à quelle vitesse il est retiré, à quelle profondeur il pénètre et (pour les électrons) comment il est ralenti. La physique pertinente est entièrement différente pour les trois faisceaux, ce qui explique pourquoi l'onglet **Atténuations & transport** modifie aussi radicalement ses graphiques et ses tableaux selon le rayonnement.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-fr-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atténuations & transport — X-ray](../../../assets/cap-fr-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-fr-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atténuations & transport — electron](../../../assets/cap-fr-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-fr-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atténuations & transport — neutron](../../../assets/cap-fr-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ Les mêmes échelles de longueur expliquent pourquoi les électrons exigent des 
 
 - [Facteurs de diffusion atomique](scattering-factor.md) — la séparation $F(q)$/$S(q)$ derrière Rayleigh/Compton, et les sections efficaces de Mott.
 - [Fluorescence](fluorescence.md) — la relaxation qui suit la photoabsorption des rayons X.
-- [3. Interaction du faisceau](../../3-beam-interaction.md) — l'onglet *Attenuations & Transport*.
+- [3. Interaction du faisceau](../../3-beam-interaction.md) — l'onglet *Atténuations & transport*.
 - [8. Trajectoire électronique](../../8-electron-trajectory.md) · [12. Simulation EBSD](../../12-ebsd-simulation.md) — où les portées électroniques sont utilisées.

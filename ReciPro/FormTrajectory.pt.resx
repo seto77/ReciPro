@@ -210,12 +210,12 @@ para espalhamento elástico na energia incidente;
 valores maiores significam espalhamento mais frequente (nm²).</value>
   </data>
   <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
-    <value>Caminho livre médio elástico λ: distância média que o
+    <value>Livre caminho médio elástico λ: distância média que o
 elétron percorre entre eventos de espalhamento
 elástico, na energia incidente (nm).</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Caminho livre médio elástico λ: distância média que o
+    <value>Livre caminho médio elástico λ: distância média que o
 elétron percorre entre eventos de espalhamento
 elástico, na energia incidente (nm).</value>
   </data>

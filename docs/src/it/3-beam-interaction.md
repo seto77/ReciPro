@@ -4,7 +4,7 @@ L'**Interazione del fascio** descrive come il cristallo selezionato interagisce 
 
 ![Interazione del fascio](../assets/cap-it-auto/FormBeamInteraction.png)
 
-Il fascio incidente si seleziona nella banda in cima alla finestra; le quattro schede sottostanti — **Reflections**, **Attenuations & Transport**, **Scattering factors** e **Fluorescence** — mostrano i diversi aspetti dell'interazione. Ciascuna sezione di scheda qui sotto mostra la scheda sotto i fasci **X-ray / Electron / Neutron** (usa le schede in ogni figura); il contenuto cambia notevolmente con il fascio.
+Il fascio incidente si seleziona nella banda in cima alla finestra; le quattro schede sottostanti — **Riflessioni**, **Attenuazioni & trasporto**, **Fattori di diffusione** e **Fluorescenza** — mostrano i diversi aspetti dell'interazione. Ciascuna sezione di scheda qui sotto mostra la scheda sotto i fasci **X-ray / Electron / Neutron** (usa le schede in ogni figura); il contenuto cambia notevolmente con il fascio.
 
 !!! tip "Background di fisica dello stato solido (Appendice A2)"
     La diffusione e la fisica dello stato solido alla base di queste quattro schede — fattori di diffusione atomici, fattore di struttura, attenuazione e trasporto del fascio, e fluorescenza — sono spiegate nell'**[Appendice A2. Interazione del fascio (background di fisica dello stato solido)](appendix/a2-beam-interaction/index.md)**.
@@ -16,7 +16,7 @@ Il fascio incidente si seleziona nella banda in cima alla finestra; le quattro s
 
 ## Scorciatoie da tastiera e mouse
 
-Questa finestra non ha combinazioni di tasti speciali. <kbd>F1</kbd> apre questa pagina del manuale. Nella scheda **Scattering factors** la linea verticale del cursore può essere **trascinata** per leggere il fattore di diffusione di ciascun elemento in quella posizione, e ogni scheda ha un pulsante **Copy** che esporta la sua tabella come testo incollabile in un foglio di calcolo.
+Questa finestra non ha combinazioni di tasti speciali. <kbd>F1</kbd> apre questa pagina del manuale. Nella scheda **Fattori di diffusione** la linea verticale del cursore può essere **trascinata** per leggere il fattore di diffusione di ciascun elemento in quella posizione, e ogni scheda ha un pulsante **Copy** che esporta la sua tabella come testo incollabile in un foglio di calcolo.
 
 → Vedi **[21. Scorciatoie da tastiera e mouse](21-shortcuts.md)** per tutte le finestre a colpo d'occhio.
 
@@ -30,33 +30,33 @@ La banda superiore è un **Wave Length Control** condiviso con gli altri simulat
 
 - **X-ray / Electron / Neutron** : i fattori di diffusione atomici e la fisica dell'interazione differiscono a seconda del tipo di fascio incidente, quindi vengono commutati qui.
 - Per **X-ray**, la scelta dell'**Element** (materiale dell'anodo) e della riga caratteristica (Kα, ecc.) imposta automaticamente la lunghezza d'onda di quel raggio X caratteristico.
-- **Energy (keV)** e **Wavelength (Å)** sono collegati; impostando l'uno si aggiorna l'altro, ed entrambi determinano il 2θ usato nella tabella **Reflections**.
+- **Energy (keV)** e **Wavelength (Å)** sono collegati; impostando l'uno si aggiorna l'altro, ed entrambi determinano il 2θ usato nella tabella **Riflessioni**.
 - **Unit (Å / nm)** cambia l'unità di lunghezza usata per le distanze interplanari e per grandezze simili.
 
 Il fascio scelto decide anche quali schede e curve sono significative:
 
-| Fascio | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Fascio | Riflessioni | Attenuazioni & trasporto | Fattori di diffusione | Fluorescenza |
 |------|------|------|------|------|
 | **X-ray** | fattori di struttura incl. dispersione anomala | µ/ρ, µ, trasmissione + bordi di assorbimento (vs energia) | $f(s)$ o $F(q)+S(q)$ | righe caratteristiche + barre EDX |
 | **Electron** | fattori di struttura elettronici | σ, MFP, \|dE/ds\|, IMFP, range (vs energia) | Peng / Kirkland / 8-Gaussians | — (nascosta) |
 | **Neutron** | fattori di struttura nucleari | lunghezze di diffusione e sezioni d'urto (nessuna curva in energia) | lunghezze di diffusione (nessuna dipendenza da *s*) | — (nascosta) |
 
-La scheda **Fluorescence** è solo per i raggi X e scompare per i fasci di elettroni e di neutroni. Per i neutroni i grafici dipendenti dall'energia in **Attenuations & Transport** e **Scattering factors** sono sostituiti da tabelle per elemento, perché la lunghezza di diffusione nucleare non dipende dall'angolo di diffusione né dall'energia.
+La scheda **Fluorescenza** è solo per i raggi X e scompare per i fasci di elettroni e di neutroni. Per i neutroni i grafici dipendenti dall'energia in **Attenuazioni & trasporto** e **Fattori di diffusione** sono sostituiti da tabelle per elemento, perché la lunghezza di diffusione nucleare non dipende dall'angolo di diffusione né dall'energia.
 
 ---
 
-## Scheda Reflections
+## Scheda Riflessioni
 
 Elenca i piani cristallini permessi (riflessioni) del cristallo e il **fattore di struttura** e l'intensità di diffrazione di ciascuno. Per i raggi X il fattore di struttura include ora i termini di **dispersione anomala** $f'/f''$ all'energia corrente, così `F_inv` (la parte immaginaria) è in genere diversa da zero in prossimità di un bordo di assorbimento. Il layout è lo stesso per ogni fascio; cambiano solo i valori del fattore di struttura e il 2θ di ciascuna riflessione.
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-reflections.png)
+    ![Riflessioni — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-it-auto/FormBeamInteraction-electron-reflections.png)
+    ![Riflessioni — electron](../assets/cap-it-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Riflessioni — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@ Ogni riga è una riflessione (o un gruppo di piani simmetricamente equivalenti):
 
 ---
 
-## Scheda Attenuations & Transport
+## Scheda Attenuazioni & trasporto
 
 Quanto a fondo il fascio penetra nel materiale e come perde energia. Il contenuto dipende dal fascio.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Attenuazioni & trasporto — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-it-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Attenuazioni & trasporto — electron](../assets/cap-it-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Attenuazioni & trasporto — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -130,18 +130,18 @@ L'interazione neutronica è determinata dalle sezioni d'urto nucleari piuttosto 
 
 ---
 
-## Scheda Scattering factors {#fluorescence-tab}
+## Scheda Fattori di diffusione {#fluorescence-tab}
 
 Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato in funzione di $s = \sin\theta/\lambda$ (Å⁻¹). Ogni elemento è disegnato con il proprio colore, e la **linea verticale del cursore** può essere trascinata per leggere il fattore di diffusione di ogni elemento in quella posizione nella tabella a sinistra.
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-scattering.png)
+    ![Fattori di diffusione — X-ray](../assets/cap-it-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-it-auto/FormBeamInteraction-electron-scattering.png)
+    ![Fattori di diffusione — electron](../assets/cap-it-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-scattering.png)
+    ![Fattori di diffusione — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** offre due modalità di **Model**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente.
 - **Electron** offre tre parametrizzazioni del fattore di diffusione elettronico: **Peng**, **Kirkland** e **8-Gaussians**. La tabella mostra $f_e(s)$ (nm) e quale **model** lo ha prodotto.
@@ -150,11 +150,11 @@ Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato 
 
 ---
 
-## Scheda Fluorescence
+## Scheda Fluorescenza
 
 Per un fascio di raggi X, l'emissione di **fluorescenza** caratteristica del campione. (Questa scheda è nascosta per i fasci di elettroni e di neutroni.)
 
-![Fluorescence (X-ray)](../assets/cap-it-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluorescenza (X-ray)](../assets/cap-it-auto/FormBeamInteraction-xray-fluorescence.png)
 
 Il grafico **EDX emission lines** disegna le righe caratteristiche (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) di ogni elemento come barre alle loro energie fotoniche, con l'altezza proporzionale a frazione atomica × tasso radiativo × resa di fluorescenza (un'anteprima qualitativa in stile EDX; la sezione d'urto di eccitazione e l'efficienza del rivelatore non sono modellate). La tabella inferiore elenca, per riga, l'elemento, il nome della riga, l'energia **E keV**, l'intensità relativa **Rel.I** e la resa di fluorescenza **ω**. La tabella scalare riporta la resa di guscio K **ω_K** di ciascun elemento e la **strongest line** nello spettro.
 

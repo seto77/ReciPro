@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="checkBox2.ToolTip" xml:space="preserve">
-    <value>Active l'axe Rz (θ) : oscillation de « balayage »
+    <value>Active l'axe Rz (θ) : oscillation de « balancement »
 latéral de l'échantillon, définie par sa vitesse
 de moteur (°/s) et sa plage d'oscillation (±°) ci-dessous.</value>
   </data>
@@ -111,7 +111,7 @@ anneaux) comme paramètre libre dans l'ajustement.</value>
   <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
     <value>Simule un goniomètre oscillant (« type Yusa ») :
 intègre le diagramme sur les mouvements Rx (rotation Φ),
-Rz (balayage θ) et Ry (tangage ω) définis ci-dessous,
+Rz (balancement θ) et Ry (tangage ω) définis ci-dessous,
 imitant une véritable mesure de poudre/texture.</value>
   </data>
   <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
@@ -212,7 +212,7 @@ par avance de ω pendant le balayage ; plus petit donne un
 échantillonnage d'orientation plus fin mais une simulation plus lente.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Amplitude d'oscillation (balancement) de l'axe Rz (θ),
+    <value>Plage d'oscillation (balancement) de l'axe Rz (θ),
 en ± degrés autour du centre ; l'échantillon oscille
 entre −valeur et +valeur.</value>
   </data>
@@ -299,15 +299,15 @@ en ne conservant que celles qui y contribuent.</value>
 les fortes intensités en clair, Negative inverse cet affichage.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Amplitude d'oscillation (balancement) de l'axe Rz (θ),
+    <value>Plage d'oscillation (balancement) de l'axe Rz (θ),
 en ± degrés autour du centre.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Amplitude d'oscillation (balancement) de l'axe Rz (θ),
+    <value>Plage d'oscillation (balancement) de l'axe Rz (θ),
 en ± degrés autour du centre.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Amplitude d'oscillation (balancement) de l'axe Rz (θ),
+    <value>Plage d'oscillation (balancement) de l'axe Rz (θ),
 en ± degrés autour du centre.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">

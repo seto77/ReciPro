@@ -97,7 +97,7 @@
     <value>기쿠치 선에 운동학적 강도 적용</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>1/d 차단값</value>
+    <value>1/d 컷오프</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>상위</value>
@@ -372,7 +372,7 @@
     <value>간격</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>블로흐 파 설정</value>
+    <value>블로흐파 설정</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
     <value>회절파 개수</value>
@@ -451,10 +451,10 @@
     <value>회절 시뮬레이터</value>
   </data>
   <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
-    <value>체크하면 회절 점이 시뮬레이션됩니다.</value>
+    <value>체크하면 반사점이 시뮬레이션됩니다.</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
-    <value>체크하면 키쿠치 선(비탄성 산란된 전자가
+    <value>체크하면 기쿠치 선(비탄성 산란된 전자가
 이후 브래그 회절하여 생기는 띠)을
 시뮬레이션합니다.</value>
   </data>
@@ -490,13 +490,13 @@ g 벡터의 길이)가 표시됩니다</value>
 일반적으로 더 강한 반사를 의미합니다.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>문자열 크기를 설정합니다</value>
+    <value>문자 크기를 설정합니다</value>
   </data>
   <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
     <value>문자 크기를 설정합니다</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>문자열의 색을 설정합니다</value>
+    <value>글자 색을 설정합니다</value>
   </data>
   <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>문자열의 색을 설정합니다</value>
@@ -569,7 +569,7 @@ g 벡터의 길이)가 표시됩니다</value>
     <value>키쿠치 선의 선 너비를 설정합니다</value>
   </data>
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
-    <value>키쿠치 선</value>
+    <value>키쿠치</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
     <value>디바이 링의 색을 설정합니다</value>
@@ -821,7 +821,7 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
     <value>모니터 중심을 다음 점으로 고정합니다</value>
   </data>
   <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>시뮬레이션 패턴의 픽셀 크기를 설정합니다</value>
+    <value>시뮬레이션 패턴의 크기를 픽셀 단위로 설정합니다</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value>시뮬레이션 패턴의 해상도를 설정합니다</value>
@@ -872,7 +872,7 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
 설정합니다.</value>
   </data>
   <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
-    <value>이 모드에서는 블로흐 파 방법으로 세기를 계산합니다.
+    <value>이 모드에서는 블로흐파 방법으로 세기를 계산합니다.
 전자 선원의 경우에만 유효합니다.</value>
   </data>
   <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
@@ -915,12 +915,12 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
 원뿔을 더 매끄럽게 샘플링하지만 계산은 느려집니다.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>블로흐 파(동역학) 회절 계산에
+    <value>블로흐파(동역학) 회절 계산에
 관한 설정</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>동역학적 다중 산란 계산에 포함되는 회절파(블로흐 파)
-의 수입니다. 파의 수가 많을수록 정확도는 높아지지만
+    <value>동역학적 다중 산란 계산에 포함되는 회절파(블로흐 파)의
+수입니다. 파의 수가 많을수록 정확도는 높아지지만
 계산은 느려집니다.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
@@ -987,7 +987,7 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
 로그 스케일로 표시됩니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>일반 반사와 계통적 소멸(중심화 / 나선축 /
+    <value>일반 반사와 계통적 소광(중심화 / 나선축 /
 글라이드) 반사에 대한 회절 점의 그리기
 색을 설정합니다.</value>
   </data>
@@ -998,20 +998,20 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
     <value>일반 점의 색을 설정합니다</value>
   </data>
   <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
-    <value>소멸 점(나선축 또는 글라이드)의 색을 설정합니다</value>
+    <value>소광 점(나선축 또는 글라이드)의 색을 설정합니다</value>
   </data>
   <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
     <value>소멸 점(나선축 또는 글라이드)의 색을 설정합니다</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
-    <value>소멸 점(격자 중심화)의 색을 설정합니다</value>
+    <value>소광 점(격자 중심화)의 색을 설정합니다</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
     <value>소멸 점(격자 중심화)의 색을 설정합니다</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>회절 점의 세기를 계산하는 방법(동역학적
-블로흐 파, 운동학적, 또는 여기 오차만)을
+블로흐파, 운동학적, 또는 여기 오차만)을
 선택합니다.</value>
   </data>
   <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
@@ -1027,7 +1027,7 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
     <value>조사 광학계(평행/SAED, 수렴/CBED,
-세차/PED, 백-라우에)를 선택합니다.</value>
+세차/PED, 후방 라우에)를 선택합니다.</value>
   </data>
   <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
     <value>평행 빔 모드(즉, SAED 모드)</value>
@@ -1089,9 +1089,9 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
     <value>일반 점</value>
   </data>
   <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
-    <value>소멸 점(나선축/글라이드)</value>
+    <value>소광 점(나선축/글라이드)</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
-    <value>소멸 점(격자 중심화)</value>
+    <value>소광 점(격자 중심화)</value>
   </data>
 </root>

@@ -149,7 +149,7 @@
     <value>標籤</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
-    <value>使遠離艾瓦德球的
+    <value>使遠離 Ewald 球的
 繞射點透明</value>
   </data>
   <data name="numericBoxStep.HeaderText" xml:space="preserve">
@@ -166,10 +166,10 @@
 的閾值</value>
   </data>
   <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
-    <value>方向輔助</value>
+    <value>方向導引</value>
   </data>
   <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
-    <value>艾瓦德球</value>
+    <value>Ewald 球</value>
   </data>
   <data name="groupBoxOptions.Text" xml:space="preserve">
     <value>選項</value>
@@ -214,7 +214,7 @@
     <value>顯示設定</value>
   </data>
   <data name="buttonHolderSimulation.Text" xml:space="preserve">
-    <value>TEM 樣品台
+    <value>TEM 試樣台
  模擬</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
@@ -363,7 +363,7 @@
  而禁制的繞射</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>歲差性質</value>
+    <value>進動性質</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
     <value>半角</value>
@@ -372,7 +372,7 @@
     <value>步進</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Bloch 波設定</value>
+    <value>布洛赫波設定</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
     <value>繞射波數目</value>
@@ -430,7 +430,7 @@
     <value>平行束</value>
   </data>
   <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
-    <value>歲差 (電子)</value>
+    <value>進動 (電子)</value>
   </data>
   <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
     <value>會聚 (電子)</value>
@@ -439,7 +439,7 @@
     <value>背反射勞厄 (X射線)</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
-    <value>歲差 (X射線, ZOLZ)</value>
+    <value>進動 (X射線, ZOLZ)</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>波源</value>
@@ -457,7 +457,7 @@
     <value>消光斑點 (螺旋或滑移)</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
-    <value>消光斑點 (點陣帶心)</value>
+    <value>消光斑點 (晶格心化)</value>
   </data>
   <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
     <value>勾選後，將模擬繞射斑點。</value>
@@ -554,8 +554,8 @@ Ewald 球的程度。</value>
 截止值選擇用於菊池線的繞射。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>設定依結構因子（相對強度）由大到小
-排序、用於繪製菊池線的繞射數量。</value>
+    <value>設定依結構因子由大到小
+排序、用於繪製菊池線的最強繞射數量。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>僅對 1/d（倒晶格長度）小於此值
@@ -852,7 +852,7 @@ Beam/Top/Right 方向導引箭頭。</value>
     <value>設定滑鼠操作的旋轉速度</value>
   </data>
   <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
-    <value>開啟 TEM 試料臺的模擬視窗。</value>
+    <value>開啟 TEM 樣品台的模擬視窗。</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
     <value>設定相機長度 2，即試料
@@ -1035,22 +1035,22 @@ Beam/Top/Right 方向導引箭頭。</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
     <value>選擇照射光學系統（平行/SAED、
-收束/CBED、進動/PED、背向勞厄）。</value>
+會聚/CBED、進動/PED、背反射勞厄）。</value>
   </data>
   <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
     <value>平行束模式（即 SAED 模式）</value>
   </data>
   <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
-    <value>歲差光束模式（即 PED 模式）</value>
+    <value>進動光束模式（即 PED 模式）</value>
   </data>
   <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
     <value>會聚光束模式（即 CBED 模式）</value>
   </data>
   <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
-    <value>後方反射勞厄模式（白色 X射線）。</value>
+    <value>背反射勞厄模式（白色 X射線）。</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
-    <value>X射線歲差模式（ZOLZ，零次勞厄帶）：
+    <value>X射線進動模式（ZOLZ，零次勞厄帶）：
 以極投影顯示零層的倒晶格面，
 與電子 PED 模式不同。</value>
   </data>

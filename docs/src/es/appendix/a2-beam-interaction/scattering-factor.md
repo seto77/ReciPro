@@ -1,6 +1,6 @@
 # Factores de dispersión atómica
 
-El **factor de dispersión atómica** (o *factor de forma*) mide la intensidad con la que un solo átomo dispersa el haz incidente en función de la variable de dispersión $s=\sin\theta/\lambda$. Las tres radiaciones interactúan con partes completamente distintas del átomo, de modo que sus factores de dispersión tienen magnitudes, unidades y dependencia angular diferentes. Esta es la razón principal por la que la pestaña **Scattering factors** se ve tan distinta entre los haces de rayos X, de electrones y de neutrones.
+El **factor de dispersión atómica** (o *factor de forma*) mide la intensidad con la que un solo átomo dispersa el haz incidente en función de la variable de dispersión $s=\sin\theta/\lambda$. Las tres radiaciones interactúan con partes completamente distintas del átomo, de modo que sus factores de dispersión tienen magnitudes, unidades y dependencia angular diferentes. Esta es la razón principal por la que la pestaña **Factores de dispersión** se ve tan distinta entre los haces de rayos X, de electrones y de neutrones.
 
 === "X-ray"
     ![Factores de dispersión — rayos X](../../../assets/cap-es-auto/FormBeamInteraction-xray-scattering.png)
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-Como el dispersor es puntual, $b$ es **independiente de $s$** — no hay decaimiento de factor de forma, razón por la cual la pestaña **Scattering factors** no dibuja ninguna curva para los neutrones y muestra en su lugar una tabla de longitudes de dispersión.
+Como el dispersor es puntual, $b$ es **independiente de $s$** — no hay decaimiento de factor de forma, razón por la cual la pestaña **Factores de dispersión** no dibuja ninguna curva para los neutrones y muestra en su lugar una tabla de longitudes de dispersión.
 
 - $b$ es una propiedad del **núclido**, no de la configuración electrónica. Varía de forma irregular de un elemento a otro (y entre isótopos), puede ser **negativa** (p. ej. ¹H, Ti, Mn), y no guarda ninguna relación monótona con $Z$. Esta es la base del contraste de neutrones (átomos ligeros cerca de pesados, marcado isotópico).
 - **Coherente frente a incoherente.** Un elemento real es una mezcla de isótopos y estados de espín nuclear con $b$ diferentes. Separando $b = \langle b\rangle + \delta b$ se obtiene una parte coherente (del valor medio) y una parte incoherente (de la dispersión de valores):
@@ -101,7 +101,7 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
   La parte coherente produce la difracción de Bragg (es lo que entra en el factor de estructura); la parte incoherente es un fondo plano e isótropo (grande para ¹H, la razón de la deuteración).
 
-!!! note "Tabulated values"
+!!! note "Valores tabulados"
     ReciPro lee $b_\text{coh}$ y las secciones eficaces de una tabla de núclidos en lugar de calcularlos. Para los núclidos resonantes el $\sigma_\text{coh}$ listado no tiene por qué ser igual al ingenuo $4\pi b^2$, así que los valores de la tabla son los que prevalecen. La dispersión magnética de neutrones (por espines electrónicos no apareados, que *sí* tiene un factor de forma dependiente de $s$) no se modela aquí.
 
 ---
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [Índice — geometría y la variable $s$](index.md)
 - [Factor de estructura](structure-factor.md) — cómo se combinan estos factores sobre una celda elemental.
-- [3. Interacción del haz → pestaña Scattering factors](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. Interacción del haz → pestaña Factores de dispersión](../../3-beam-interaction.md#scattering-factors-tab)

@@ -412,7 +412,7 @@ der Grenzen liegen</value>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
 der c-Achse, in fraktionellen Koordinaten;
-Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
+Atome innerhalb von Zentrum ± Bereich werden gezeichnet.</value>
   </data>
   <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
@@ -422,7 +422,7 @@ Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
 der b-Achse, in fraktionellen Koordinaten;
-Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
+Atome innerhalb von Zentrum ± Bereich werden gezeichnet.</value>
   </data>
   <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
@@ -432,7 +432,7 @@ Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
 der a-Achse, in fraktionellen Koordinaten;
-Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
+Atome innerhalb von Zentrum ± Bereich werden gezeichnet.</value>
   </data>
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
     <value>Halbe Breite des angezeigten Bereichs entlang
@@ -441,7 +441,7 @@ Atome innerhalb von Zentrum ± Range werden gezeichnet.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value>Zentrum des angezeigten Bereichs entlang der c-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
+fraktionellen Koordinaten; zusammen mit dem Bereich legt es
 die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
@@ -451,7 +451,7 @@ die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>Zentrum des angezeigten Bereichs entlang der b-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
+fraktionellen Koordinaten; zusammen mit dem Bereich legt es
 die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
@@ -461,7 +461,7 @@ die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value>Zentrum des angezeigten Bereichs entlang der a-Achse, in
-fraktionellen Koordinaten; zusammen mit Range legt es
+fraktionellen Koordinaten; zusammen mit dem Bereich legt es
 die minimalen/maximalen Begrenzungsebenen der gezeichneten Struktur fest.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
@@ -506,7 +506,7 @@ wie folgt auf Basis von Kristallebenen definiert</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
-a-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
+a-Achse (verwendet, wenn 'Jede Ebene' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
@@ -514,7 +514,7 @@ a-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
-b-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
+b-Achse (verwendet, wenn 'Jede Ebene' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
@@ -522,7 +522,7 @@ b-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
-c-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
+c-Achse (verwendet, wenn 'Jede Ebene' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenfläche senkrecht zur
@@ -548,7 +548,7 @@ c-Achse (verwendet, wenn 'Each plane' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
-a-Achse (verwendet, wenn 'Each edge' ausgewählt ist).</value>
+a-Achse (verwendet, wenn 'Jede Kante' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
@@ -556,7 +556,7 @@ a-Achse (verwendet, wenn 'Each edge' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
-b-Achse (verwendet, wenn 'Each edge' ausgewählt ist).</value>
+b-Achse (verwendet, wenn 'Jede Kante' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
@@ -564,7 +564,7 @@ b-Achse (verwendet, wenn 'Each edge' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
-c-Achse (verwendet, wenn 'Each edge' ausgewählt ist).</value>
+c-Achse (verwendet, wenn 'Jede Kante' ausgewählt ist).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>Farbe der Elementarzellenkanten entlang der
@@ -783,7 +783,7 @@ mit Translation) der Raumgruppe an</value>
   </data>
   <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
     <value>Feste Farbe für die Atom-Beschriftungen (wird
-verwendet, wenn 'Use fixed color' ausgewählt ist)</value>
+verwendet, wenn 'Feste Farbe verwenden' ausgewählt ist)</value>
   </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Linienbreite der Symmetrieachsen-Symbole (0,5-10)</value>

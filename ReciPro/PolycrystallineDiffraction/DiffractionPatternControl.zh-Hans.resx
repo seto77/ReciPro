@@ -85,7 +85,7 @@
 以模拟检测器/胶片的弥散。</value>
   </data>
   <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
-    <value>蒙版模式：选取选定衍射峰（hkl 衍射）
+    <value>蒙版模式：选取选定衍射峰（hkl 反射）
 周围的像素进行屏蔽；与其他蒙版模式
 互斥。</value>
   </data>
@@ -283,19 +283,19 @@ IPA 图像文件（*.ipa），包含
 畸变为椭圆。</value>
   </data>
   <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
-    <value>勾选峰列表中的每一个衍射（hkl），
+    <value>勾选峰列表中的每一个反射（hkl），
 一次性选中所有峰。</value>
   </data>
   <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
-    <value>取消勾选峰列表中的每一个衍射
+    <value>取消勾选峰列表中的每一个反射
 （hkl），清除选择。</value>
   </data>
   <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
-    <value>选取已勾选衍射（hkl）的环周围的
+    <value>选取已勾选反射（hkl）的环周围的
 图像区域，以便对其进行屏蔽。</value>
   </data>
   <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
-    <value>衍射指数（hkl）列表；勾选你想要
+    <value>反射指数（hkl）列表；勾选你想要
 选取其周围环区域进行屏蔽的
 那些峰。</value>
   </data>
@@ -359,7 +359,7 @@ Delta-lambda / lambda），单位 %。
   <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
     <value>衍射信息的只读摘要：
 参与衍射的晶粒数量
-以及每个衍射（hkl）的占比。</value>
+以及每个反射（hkl）的占比。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>每次鼠标单击时绘制的手动斑点

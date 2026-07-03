@@ -41,17 +41,17 @@
 
 ---
 
-## 威科夫位置
+## Wyckoff 位置
 
-![威科夫位置](../assets/cap-zh-Hans-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
+![Wyckoff 位置](../assets/cap-zh-Hans-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
 
 列出每一个威科夫位置及其多重性、威科夫字母、位置对称性，以及它是一般位置还是特殊位置。对于带心点阵，点阵平移矢量会显示在表头行中。
 
 ---
 
-## 消光条件
+## 衍射条件
 
-![消光条件](../assets/cap-zh-Hans-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
+![衍射条件](../assets/cap-zh-Hans-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
 
 由点阵带心以及滑移/螺旋对称操作所产生的反射条件。
 

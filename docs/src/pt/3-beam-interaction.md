@@ -4,7 +4,7 @@ A **Interação do feixe** descreve como o cristal selecionado interage com um f
 
 ![Interação do feixe](../assets/cap-pt-auto/FormBeamInteraction.png)
 
-O feixe incidente é selecionado na faixa no topo da janela; as quatro abas abaixo — **Reflections**, **Attenuations & Transport**, **Scattering factors** e **Fluorescence** — mostram os diferentes aspectos da interação. Cada seção de aba abaixo mostra a aba sob os feixes **X-ray / Electron / Neutron** (use as abas em cada figura); o conteúdo muda acentuadamente com o feixe.
+O feixe incidente é selecionado na faixa no topo da janela; as quatro abas abaixo — **Reflexões**, **Atenuação & Transporte**, **Fatores de dispersão** e **Fluorescência** — mostram os diferentes aspectos da interação. Cada seção de aba abaixo mostra a aba sob os feixes **X-ray / Electron / Neutron** (use as abas em cada figura); o conteúdo muda acentuadamente com o feixe.
 
 !!! tip "Fundamentos de física do estado sólido (Apêndice A2)"
     O espalhamento e a física do estado sólido por trás dessas quatro abas — fatores de espalhamento atômico, o fator de estrutura, a atenuação e o transporte do feixe e a fluorescência — são explicados no **[Apêndice A2. Interação do feixe (fundamentos de física do estado sólido)](appendix/a2-beam-interaction/index.md)**.
@@ -16,7 +16,7 @@ O feixe incidente é selecionado na faixa no topo da janela; as quatro abas abai
 
 ## Atalhos de teclado e mouse
 
-Esta janela não possui combinações de teclas especiais. <kbd>F1</kbd> abre esta página do manual. Na aba **Scattering factors**, a linha vertical do cursor pode ser **arrastada** para ler o fator de espalhamento de cada elemento naquela posição, e cada aba tem um botão **Copy** que exporta sua tabela como texto colável em planilhas.
+Esta janela não possui combinações de teclas especiais. <kbd>F1</kbd> abre esta página do manual. Na aba **Fatores de dispersão**, a linha vertical do cursor pode ser **arrastada** para ler o fator de espalhamento de cada elemento naquela posição, e cada aba tem um botão **Copy** que exporta sua tabela como texto colável em planilhas.
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para ver cada janela de relance.
 
@@ -30,33 +30,33 @@ A faixa superior é um **Wave Length Control** compartilhado com os outros simul
 
 - **X-ray / Electron / Neutron** : os fatores de espalhamento atômico e a física da interação diferem conforme o tipo de feixe incidente, por isso são alternados aqui.
 - Para **X-ray**, escolher o **Element** (material do anodo) e a linha característica (Kα, etc.) define automaticamente o comprimento de onda desse raio X característico.
-- **Energy (keV)** e **Wavelength (Å)** estão vinculados; definir um atualiza o outro, e ambos determinam o 2θ usado na tabela **Reflections**.
+- **Energy (keV)** e **Wavelength (Å)** estão vinculados; definir um atualiza o outro, e ambos determinam o 2θ usado na tabela **Reflexões**.
 - **Unit (Å / nm)** alterna a unidade de comprimento usada para o espaçamento d e grandezas semelhantes.
 
 O feixe escolhido também decide quais abas e curvas são significativas:
 
-| Feixe | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Feixe | Reflexões | Atenuação & Transporte | Fatores de dispersão | Fluorescência |
 |------|------|------|------|------|
 | **X-ray** | fatores de estrutura incl. dispersão anômala | µ/ρ, µ, transmissão + bordas de absorção (vs energia) | $f(s)$ ou $F(q)+S(q)$ | linhas características + traços EDX |
 | **Electron** | fatores de estrutura de elétrons | σ, MFP, \|dE/ds\|, IMFP, alcance (vs energia) | Peng / Kirkland / 8-Gaussians | — (oculto) |
 | **Neutron** | fatores de estrutura nucleares | comprimentos de espalhamento e seções de choque (sem curva de energia) | comprimentos de espalhamento (sem dependência de *s*) | — (oculto) |
 
-A aba **Fluorescence** existe apenas para raios X e desaparece para feixes de elétrons e de nêutrons. Para nêutrons, os gráficos dependentes da energia em **Attenuations & Transport** e **Scattering factors** são substituídos por tabelas de elementos, pois o comprimento de espalhamento nuclear não depende do ângulo de espalhamento nem da energia.
+A aba **Fluorescência** existe apenas para raios X e desaparece para feixes de elétrons e de nêutrons. Para nêutrons, os gráficos dependentes da energia em **Atenuação & Transporte** e **Fatores de dispersão** são substituídos por tabelas de elementos, pois o comprimento de espalhamento nuclear não depende do ângulo de espalhamento nem da energia.
 
 ---
 
-## Aba Reflections
+## Aba Reflexões
 
 Lista os planos cristalinos permitidos (reflexões) do cristal e o **fator de estrutura** e a intensidade de difração de cada um. Para raios X, o fator de estrutura agora inclui os termos de **dispersão anômala** $f'/f''$ na energia atual, de modo que `F_inv` (a parte imaginária) é geralmente não nulo próximo a uma borda de absorção. O layout é o mesmo para cada feixe; apenas os valores do fator de estrutura e o 2θ de cada reflexão mudam.
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexões — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexões — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexões — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@ Cada linha é uma reflexão (ou um grupo de planos simetricamente equivalentes):
 
 ---
 
-## Aba Attenuations & Transport
+## Aba Atenuação & Transporte
 
 Quão profundamente o feixe penetra no material e como ele perde energia. O conteúdo depende do feixe.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atenuação & Transporte — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atenuação & Transporte — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atenuação & Transporte — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -122,7 +122,7 @@ O seletor de grandeza escolhe o que é plotado em função da energia do feixe (
 - **IMFP (nm)** — livre caminho médio inelástico: a distância média entre colisões com perda de energia.
 - **Range CSDA (µm)** — o comprimento total do trajeto que o elétron percorre antes de parar.
 
-A tabela escalar lista o **wavelength** do elétron, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, a **Plasma E** e a energia média de excitação **J**, dois **ranges** de elétrons (a estimativa de penetração de Kanaya–Okayama e o comprimento de trajeto integrado CSDA) e o **Z, A** médio. A tabela por elemento fornece a fração atômica e a seção de choque elástica σ de cada elemento. As seções de choque elásticas usam os dados **NIST Mott** (50 eV–36 keV) e recorrem ao **screened Rutherford** acima de 36 keV.
+A tabela escalar lista o **wavelength** do elétron, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, a **Plasma E** e a energia média de excitação **J**, dois **alcances** de elétrons (a estimativa de penetração de Kanaya–Okayama e o comprimento de trajeto integrado CSDA) e o **Z, A** médio. A tabela por elemento fornece a fração atômica e a seção de choque elástica σ de cada elemento. As seções de choque elásticas usam os dados **NIST Mott** (50 eV–36 keV) e recorrem ao **screened Rutherford** acima de 36 keV.
 
 ### Neutron {#scattering-factors-tab}
 
@@ -130,18 +130,18 @@ A interação de nêutrons é definida por seções de choque nucleares em vez d
 
 ---
 
-## Aba Scattering factors {#fluorescence-tab}
+## Aba Fatores de dispersão {#fluorescence-tab}
 
 O fator de espalhamento atômico de cada elemento constituinte, plotado em função de $s = \sin\theta/\lambda$ (Å⁻¹). Cada elemento é desenhado em sua própria cor, e a **linha vertical do cursor** pode ser arrastada para ler o fator de espalhamento de cada elemento naquela posição na tabela à esquerda.
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-scattering.png)
+    ![Fatores de dispersão — X-ray](../assets/cap-pt-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-scattering.png)
+    ![Fatores de dispersão — electron](../assets/cap-pt-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-scattering.png)
+    ![Fatores de dispersão — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** oferece dois modos de **Model**: **f(s)** plota o fator de espalhamento atômico de raios X convencional (em unidades de elétron); **F(q)+S(q)** plota o fator de forma **coerente** de Rayleigh $F(q)$ junto com a função de espalhamento **incoerente** de Compton $S(q)$ (do xraylib). A tabela também lista os termos de dispersão anômala **f'(E)** e **f''(E)** na energia atual.
 - **Electron** oferece três parametrizações do fator de espalhamento de elétrons: **Peng**, **Kirkland** e **8-Gaussians**. A tabela mostra $f_e(s)$ (nm) e qual **model** o produziu.
@@ -150,11 +150,11 @@ O fator de espalhamento atômico de cada elemento constituinte, plotado em funç
 
 ---
 
-## Aba Fluorescence
+## Aba Fluorescência
 
 Para um feixe de raios X, a emissão de **fluorescência** característica da amostra. (Esta aba fica oculta para feixes de elétrons e de nêutrons.)
 
-![Fluorescence (X-ray)](../assets/cap-pt-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluorescência (X-ray)](../assets/cap-pt-auto/FormBeamInteraction-xray-fluorescence.png)
 
 O gráfico **EDX emission lines** desenha as linhas características (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) de cada elemento como traços em suas energias de fóton, com a altura proporcional à fração atômica × taxa radiativa × rendimento de fluorescência (uma prévia qualitativa no estilo EDX; a seção de choque de excitação e a eficiência do detector não são modeladas). A tabela inferior lista, por linha, o elemento, o nome da linha, a energia **E keV**, a intensidade relativa **Rel.I** e o rendimento de fluorescência **ω**. A tabela escalar reporta o rendimento da camada K **ω_K** de cada elemento e a **strongest line** no espectro.
 

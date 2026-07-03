@@ -98,7 +98,7 @@
 
 ---
 
-## 관련 항목
+## 함께 보기
 
 - [메인 창](0-main-window.md)
 - [대칭 정보](2-symmetry-information.md)

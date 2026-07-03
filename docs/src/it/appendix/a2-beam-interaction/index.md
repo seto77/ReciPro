@@ -9,7 +9,7 @@ La finestra ha quattro schede, e la teoria si legge meglio nell'ordine in cui un
 1. **[Atomic scattering factors](scattering-factor.md)** — come un *singolo atomo* diffonde ciascun tipo di fascio.
 2. **[Structure factor](structure-factor.md)** — come gli atomi in una *cella elementare* interferiscono, incluso il fattore di Debye–Waller e le regole di estinzione.
 3. **[Attenuation & transport](attenuation-transport.md)** — come il fascio viene *rimosso e rallentato* mentre attraversa il materiale.
-4. **[Fluorescence](fluorescence.md)** — l'emissione caratteristica di raggi X che segue la ionizzazione di una shell interna.
+4. **[Fluorescenza](fluorescence.md)** — l'emissione caratteristica di raggi X che segue la ionizzazione di una shell interna.
 
 ---
 
@@ -20,7 +20,7 @@ Ogni grandezza di diffusione in questa finestra è funzione di quanto cambia la 
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
 - $\theta$ : l'angolo di Bragg — la *metà* dell'angolo di diffusione totale. La tabella delle riflessioni riporta l'angolo completo $2\theta$.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variabile rispetto alla quale viene tracciata la scheda **Scattering factors**. È l'argomento naturale di ogni fattore di forma atomico.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variabile rispetto alla quale viene tracciata la scheda **Fattori di diffusione**. È l'argomento naturale di ogni fattore di forma atomico.
 - $d$ : la distanza interplanare. Alla condizione di Bragg $\lambda = 2d\sin\theta$, quindi $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, dove $\mathbf g$ è il vettore del reticolo reciproco con $|\mathbf g| = 1/d$.
 
 Queste tre convenzioni descrivono la stessa geometria; differisce solo la scala. Vale la pena tenere chiara la corrispondenza, dato che la finestra ne usa più di una:
@@ -29,7 +29,7 @@ Queste tre convenzioni descrivono la stessa geometria; differisce solo la scala.
 |---|---|---|
 | Tabella delle riflessioni | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
 | Tabella delle riflessioni | $2\theta$ | angolo di diffusione completo, $\sin\theta = \lambda s$ |
-| Scheda Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Scheda Fattori di diffusione | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Diagramma del picco di diffrazione | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unità"
@@ -90,6 +90,6 @@ Questi contrasti ricorrono lungo le pagine seguenti, ciascuno riconducibile al m
 ## Vedi anche
 
 - [3. Beam interaction](../../3-beam-interaction.md) — la GUI che questa appendice spiega.
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescenza](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — la teoria della diffusione multipla che usa questi fattori di diffusione.

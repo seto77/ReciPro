@@ -13,7 +13,7 @@
 
 定义了三个坐标系：
 
-- <span class="rp-steel">**实坐标** ($X$, $Y$, $Z$)</span> ：以 mm 为单位的三维笛卡儿坐标，以<span class="rp-steel">**样品**</span>为原点。<span class="rp-steel">$Z$</span> 平行于束流；沿 <span class="rp-steel">$Z$</span> 方向观察时，<span class="rp-steel">$X$</span> 指向右，<span class="rp-steel">$Y$</span> 指向下。当探测器垂直于束流时，<span class="rp-steel">$X$ / $Y$</span> 平行于 <span class="rp-brown">$X'$ / $Y'$</span>。
+- <span class="rp-steel">**实坐标** ($X$, $Y$, $Z$)</span> ：以 mm 为单位的三维笛卡尔坐标，以<span class="rp-steel">**样品**</span>为原点。<span class="rp-steel">$Z$</span> 平行于束流；沿 <span class="rp-steel">$Z$</span> 方向观察时，<span class="rp-steel">$X$</span> 指向右，<span class="rp-steel">$Y$</span> 指向下。当探测器垂直于束流时，<span class="rp-steel">$X$ / $Y$</span> 平行于 <span class="rp-brown">$X'$ / $Y'$</span>。
 - <span class="rp-brown">**探测器坐标** ($X'$, $Y'$)</span> ：探测器平面上以 mm 为单位的二维坐标，以 <span class="rp-brown">**foot**</span> 为原点。<span class="rp-brown">$X'$ / $Y'$</span> 在探测器上分别指向右 / 下，并平行于 <span class="rp-cyan">$X''$ / $Y''$</span>。
 - <span class="rp-cyan">**像素坐标** ($X''$, $Y''$)</span> ：以像素为单位的二维坐标，以探测器的<span class="rp-cyan">**左上角**</span>为原点，沿探测器的像素行列排布。
 

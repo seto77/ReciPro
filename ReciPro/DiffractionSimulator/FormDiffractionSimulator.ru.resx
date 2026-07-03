@@ -103,7 +103,7 @@
     <value>Верх</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="tabPageKikuchi.Text" xml:space="preserve">
     <value>Линии Кикучи</value>
@@ -116,7 +116,7 @@
 </value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="tabPageDebye.Text" xml:space="preserve">
     <value>Кольца Дебая</value>
@@ -128,7 +128,7 @@
     <value>Деление</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Ширина линии</value>
+    <value>Толщина линии</value>
   </data>
   <data name="radioButtonScaleDivisionFine.Text" xml:space="preserve">
     <value>Мелкое</value>
@@ -146,7 +146,7 @@
     <value>Радиус рефлекса</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
-    <value>Подпись</value>
+    <value>Метка</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
     <value>Делать рефлексы вдали от 
@@ -181,13 +181,13 @@
     <value>Положение мыши:</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>Координаты реального пространства в мм (начало: кристалл):</value>
+    <value>Координаты реального пространства в mm (начало: кристалл):</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Координаты обратного пространства в nm⁻¹:</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Коорд. детектора в мм (начало: основание):</value>
+    <value>Коорд. детектора в mm (начало: основание):</value>
   </data>
   <data name="checkBoxFlipHorizontally.Text" xml:space="preserve">
     <value>Отразить по горизонтали</value>

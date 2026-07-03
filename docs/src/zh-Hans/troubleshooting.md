@@ -193,7 +193,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 可以——有两条途径：
 
-- **原生 ARM64 软件包（实验性，推荐）**：从 v4.938 起，[发布页面](https://github.com/seto77/ReciPro/releases/latest) 上发布了一个实验性的原生 ARM64 portable 软件包（`ReciPro-v.X_arm64.zip`；在 v.4.939 之前命名为 `ReciPro-v.X-arm64.zip`）。它是 self-contained 的，因此无需安装 .NET Runtime——将 ZIP 解压到一个用户可写的文件夹并运行 `ReciPro.exe`。如果 Windows 阻止了下载的 ZIP（Mark of the Web），请在解压*之前*右键单击该 ZIP → **属性** → 勾选**解除锁定** → **确定**（或在 PowerShell 中运行 `Unblock-File .\ReciPro-*arm64.zip`）。详情见随附的 `README-PORTABLE.txt`。
+- **原生 ARM64 软件包（实验性，推荐）**：从 v4.938 起，[发布页面](https://github.com/seto77/ReciPro/releases/latest) 上发布了一个实验性的原生 ARM64 portable 软件包（`ReciPro-v.X_arm64.zip`；v.4.939 及之前的版本中命名为 `ReciPro-v.X-arm64.zip`）。它是 self-contained 的，因此无需安装 .NET Runtime——将 ZIP 解压到一个用户可写的文件夹并运行 `ReciPro.exe`。如果 Windows 阻止了下载的 ZIP（Mark of the Web），请在解压*之前*右键单击该 ZIP → **属性** → 勾选**解除锁定** → **确定**（或在 PowerShell 中运行 `Unblock-File .\ReciPro-*arm64.zip`）。详情见随附的 `README-PORTABLE.txt`。
 - **在模拟下运行的 x64 软件包**：常规的 MSI 安装程序和 win-x64 portable ZIP 在安装了 .NET Desktop Runtime（x64）后，也可通过内置的 x64 模拟在 ARM64 Windows 上运行（约从 v4.913 配合 .NET 10 起确认可行）。繁重的计算运行起来比原生构建慢。（Issue [#47](https://github.com/seto77/ReciPro/issues/47)）
 
 关于原生 ARM64 软件包的说明：

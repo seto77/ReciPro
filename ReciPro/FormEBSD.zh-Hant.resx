@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>樣品傾角</value>
+    <value>試片傾角</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>鳥瞰視角</value>
@@ -181,13 +181,13 @@
     <value>EBSD 幾何</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp;&amp; 樣品條件</value>
+    <value>SEM &amp;&amp; 試片條件</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>幾何</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>立體投影網中心為表面法線方向</value>
+    <value>立體網中心為表面法線方向</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>BSE 分布</value>
@@ -265,7 +265,7 @@
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>倒晶格間距 1/d (nm^-1) 的截止值。只繪製其 1/d
 低於此值的菊池線，因此較低的值僅保留
-晶面間距較大的繞射。</value>
+晶面間距較大的反射。</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
     <value>試片厚度掃描的步階大小，單位為
@@ -331,7 +331,7 @@ keV；能量自 Start 向下以此增量計算至 End。</value>
   </data>
   <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
     <value>以蒙地卡羅法模擬 BSE（背向散射電子）的
-飛程，計算用以對 EBSD 圖樣加權的
+軌跡，計算用以對 EBSD 圖樣加權的
 出射能量分佈與深度分佈。</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
@@ -361,7 +361,7 @@ keV；能量自 Start 向下以此增量計算至 End。</value>
     <value>以結構因子（運動學繞射強度 =
 單一晶胞所散射的振幅）對各菊池線
 加權，將線條顏色朝背景混合，
-使較強的繞射顯得較暗。</value>
+使較強的反射顯得較暗。</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
     <value>在 3D 主圖樣視圖上顯示晶體軸
@@ -436,7 +436,7 @@ Negative（反轉）灰階。</value>
 （Gray、Cold-Warm、Spectrum 或 Fire）。</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>輸入 'View Along' 按鈕用以定向 3D 主圖樣的
+    <value>輸入「沿軸觀看」按鈕用以定向 3D 主圖樣的
 晶帶軸指數 [u v w]。</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
@@ -466,7 +466,7 @@ Negative（反轉）灰階。</value>
 電子能量 (keV)（單一切片模式）。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>繪製為菊池線的最強繞射數目（前 N 個，
+    <value>繪製為菊池線的最強反射數目（前 N 個，
 依結構因子 = 單一晶胞所散射的振幅
 排序）。值越大顯示越多線條。</value>
   </data>
@@ -494,11 +494,11 @@ Negative（反轉）灰階。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>以倒晶格間距 (1/d) 截止值
-選取菊池線所用的繞射。</value>
+選取菊池線所用的反射。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>依結構因子排序取最強者，
-選取菊池線所用的繞射。</value>
+選取菊池線所用的反射。</value>
   </data>
   <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
     <value>以強度範圍的比例設定所顯示 EBSD 影像的

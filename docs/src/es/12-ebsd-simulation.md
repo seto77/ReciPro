@@ -104,7 +104,7 @@ La pestaña **Overlays** configura las anotaciones dibujadas sobre el patrón EB
 
 ## Master pattern
 
-![Master pattern](../assets/cap-es-auto/FormEBSD.groupBoxMasterPattern.png)
+![Patrón maestro](../assets/cap-es-auto/FormEBSD.groupBoxMasterPattern.png)
 
 El master pattern es la intensidad de difracción de retrodispersión sobre todas las direcciones, calculada de antemano por la teoría dinámica con **Build Master Pattern**.
 

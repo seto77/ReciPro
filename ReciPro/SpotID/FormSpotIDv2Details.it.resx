@@ -62,21 +62,21 @@
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Profilo lineare dell'intensità attraverso lo
 spot nella direzione Nord-Sud
-(osservato vs. interpolato vs. fondo).</value>
+(osservato vs. adattato vs. fondo).</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Profilo lineare dell'intensità attraverso lo
 spot nella direzione Ovest-Est
-(osservato vs. interpolato vs. fondo).</value>
+(osservato vs. adattato vs. fondo).</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Profilo lineare dell'intensità attraverso lo
 spot nella direzione diagonale SO-NE
-(osservato vs. interpolato vs. fondo).</value>
+(osservato vs. adattato vs. fondo).</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Profilo lineare dell'intensità attraverso lo
 spot nella direzione diagonale NO-SE
-(osservato vs. interpolato vs. fondo).</value>
+(osservato vs. adattato vs. fondo).</value>
   </data>
 </root>

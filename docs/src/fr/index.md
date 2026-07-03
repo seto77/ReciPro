@@ -24,7 +24,7 @@
 | Comprendre les équations de la diffraction dynamique | [Annexe A3. Méthode des ondes de Bloch](appendix/a3-bloch-wave/index.md) | [Calcul dynamique](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
 
 ## Fonctionnalités
-* **Full GUI** : Toutes les opérations s'effectuent via une interface graphique. La plupart des entrées/sorties de fichiers prennent en charge le glisser-déposer.
+* **Interface graphique complète** : Toutes les opérations s'effectuent via une interface graphique. La plupart des entrées/sorties de fichiers prennent en charge le glisser-déposer.
 * **Liste des cristaux** : Gérer plusieurs cristaux à la fois ; pas besoin d'ouvrir une fenêtre distincte pour chaque cristal.
 * **Base de données de groupes d'espace** : Base de données intégrée couvrant les 230 groupes d'espace des International Tables Volume A, plus 530 symboles de Hall, avec éléments de symétrie, positions de Wyckoff et règles d'extinction. Les éléments de symétrie et les positions générales peuvent être dessinés sous forme de diagrammes schématiques dans le style des *International Tables* Vol. A (voir [2. Informations de symétrie](2-symmetry-information.md)).
 * **Informations atomiques** : Facteurs de diffusion (rayons X, électron, neutron), énergies de rayons X caractéristiques, rapports isotopiques, etc. pour les éléments H (1) – Cf (98).

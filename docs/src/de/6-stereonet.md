@@ -45,15 +45,15 @@ Speichern oder Kopieren im Raster- oder Vektorformat. Das Vektorformat ermöglic
 
 ## Mode
 
-![Mode](../assets/cap-de-auto/FormStereonet.panel3.groupBoxMode.png)
+![Modus](../assets/cap-de-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### Projektionsziel
 
 Wählen Sie aus, was auf das Netz projiziert werden soll.
 
-- **Axes** — projiziert die Richtungsindizes \([uvw]\).
-- **Planes** — projiziert die Kristallebenennormalen \((hkl)\).
-- **Kikuchi line pairs** — projiziert Kikuchi-Linienpaare.
+- **Achsen** — projiziert die Richtungsindizes \([uvw]\).
+- **Ebenen** — projiziert die Kristallebenennormalen \((hkl)\).
+- **Kikuchi-Linienpaare** — projiziert Kikuchi-Linienpaare.
 
 ### Projektionsmethode
 
@@ -64,7 +64,7 @@ Wählen Sie aus, was auf das Netz projiziert werden soll.
 
 ### Hemisphäre
 
-Wählen Sie die **Upper** oder **Lower** Hemisphäre als Projektionsquelle — dies schaltet um, ob die sichtbare Seite der Kugel diejenige ist, die dem Betrachter am nächsten oder am weitesten von ihm entfernt liegt.
+Wählen Sie die **Obere** oder **Untere** Hemisphäre als Projektionsquelle — dies schaltet um, ob die sichtbare Seite der Kugel diejenige ist, die dem Betrachter am nächsten oder am weitesten von ihm entfernt liegt.
 
 ### Anzeigeoptionen
 
@@ -77,7 +77,7 @@ Wählen Sie die **Upper** oder **Lower** Hemisphäre als Projektionsquelle — d
 
 ## Indices
 
-![Indices](../assets/cap-de-auto/FormStereonet.panel3.groupBoxIndices.png)
+![Indizes](../assets/cap-de-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 Legt fest, welche Kristallebenen / Achsen gezeichnet werden.
 
@@ -87,11 +87,11 @@ Geben Sie einen Bereich von \([uvw]\)- oder \((hkl)\)-Indizes an. ReciPro zählt
 
 ### Spezifizierter Modus
 
-Legt bestimmte Achsen oder Ebenen einzeln fest. Geben Sie einen Index ein, drücken Sie **Add**, um ihn zu registrieren, oder **Remove**, um ihn zu löschen. Wenn **include equivalent indices** aktiviert ist, werden auch alle kristallographisch äquivalenten Indizes gezeichnet.
+Legt bestimmte Achsen oder Ebenen einzeln fest. Geben Sie einen Index ein, drücken Sie **Hinzufügen**, um ihn zu registrieren, oder **Entfernen**, um ihn zu löschen. Wenn **Äquivalente Indizes einschließen** aktiviert ist, werden auch alle kristallographisch äquivalenten Indizes gezeichnet.
 
 ### Colour / Size
 
-Legen Sie **colour** und **size** der eingezeichneten Punkte fest. Aktivieren Sie **Change colour automatically**, um jeden Satz äquivalenter Achsen/Ebenen unterschiedlich farblich zu codieren — nützlich, um Familien in einer Mehrindex-Darstellung zu unterscheiden.
+Legen Sie **Farbe** und **Größe** der eingezeichneten Punkte fest. Aktivieren Sie **Farbe rotieren**, um jeden Satz äquivalenter Achsen/Ebenen unterschiedlich farblich zu codieren — nützlich, um Familien in einer Mehrindex-Darstellung zu unterscheiden.
 
 ---
 
@@ -107,32 +107,32 @@ Steuert die 3D-Netz-Überlagerung (Kugel) — Deckkraft der Kugel, Achsenanzeige
 
 ### Appearance
 
-![Appearance tab](../assets/cap-de-auto/FormStereonet.tabControl.tabPage1.png)
+![Registerkarte Darstellung](../assets/cap-de-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
-Wie der Umriss des Stereonetzes gezeichnet wird — der Begrenzungskreis und das optionale Großkreis-Längen-/Breitengrad-Gitter. Wählen Sie **Equator** oder **Pole**, schalten Sie **1° Lines** und die **Background**-Füllung um, legen Sie die Gitterfarben **90° / 10° / 1°** fest und passen Sie die **Line width** mit dem Schieberegler an.
+Wie der Umriss des Stereonetzes gezeichnet wird — der Begrenzungskreis und das optionale Großkreis-Längen-/Breitengrad-Gitter. Wählen Sie **Äquator** oder **Pol**, schalten Sie **1°-Linien** und die **Hintergrund**-Füllung um, legen Sie die Gitterfarben **90° / 10° / 1°** fest und passen Sie die **Linienbreite** mit dem Schieberegler an.
 
 #### Index labels
 
 - **Size** — Größe der Indexbeschriftungen.
-- **Specify color** — verwendet eine einzige feste Farbe für alle Indexbeschriftungen anstelle der punktbezogenen Farbe; nützlich, wenn die Punkte farblich codiert sind, Sie aber alle Beschriftungen zur besseren Lesbarkeit in einer einzigen Farbe wünschen.
-- **Delimiter** — Zeichen, das zwischen den Indizes jeder Beschriftung gesetzt wird: **None** (z. B. 100), **Space** (1 0 0) oder **Comma** (1,0,0).
+- **Farbe wählen** — verwendet eine einzige feste Farbe für alle Indexbeschriftungen anstelle der punktbezogenen Farbe; nützlich, wenn die Punkte farblich codiert sind, Sie aber alle Beschriftungen zur besseren Lesbarkeit in einer einzigen Farbe wünschen.
+- **Trennzeichen** — Zeichen, das zwischen den Indizes jeder Beschriftung gesetzt wird: **Keine** (z. B. 100), **Leerzeichen** (1 0 0) oder **Komma** (1,0,0).
 
 #### Kikuchi line mode
 
-- **Point size** — Größe der eingezeichneten Punkte.
-- **Point** / **Label** — Farben der Punkte und ihrer Beschriftungen.
+- **Punktgröße** — Größe der eingezeichneten Punkte.
+- **Punkt** / **Beschriftung** — Farben der Punkte und ihrer Beschriftungen.
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-de-auto/FormStereonet.tabControl.tabPage2.png)
+![Registerkarte Großkreis](../assets/cap-de-auto/FormStereonet.tabControl.tabPage2.png)
 
 Zeichnen Sie Großkreise und Kleinkreise. Geben Sie diese entweder über den **zone-axis index** \([uvw]\) an (der Großkreis, der von der Zone dieser Achse gebildet wird) oder über **two crystal-plane indices**, die sich die Zonenachse teilen. Die Linienstärke der Kreise ist ebenfalls über einen Schieberegler konfigurierbar.
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-de-auto/FormStereonet.tabControl.tabPage4.png)
+![Registerkarte Welle](../assets/cap-de-auto/FormStereonet.tabControl.tabPage4.png)
 
 Nur verfügbar, wenn **Planes** oder **Kikuchi line pairs** als Projektionsziel ausgewählt ist. Legt die Wellenquelle (X-ray / electron / neutron) sowie die Wellenlänge oder Energie fest, die zur Berechnung der Kristallstrukturfaktoren benötigt werden, die für die Option **structure-factor weighting** in [Mode](#mode) verwendet werden.
 

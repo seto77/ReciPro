@@ -67,7 +67,7 @@
 
 ## 統計
 
-![Statistics](../assets/cap-zh-Hant-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![統計](../assets/cap-zh-Hant-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 執行結果的摘要。
 
@@ -80,7 +80,7 @@
 
 ## BSE 方向分布
 
-![BSE direction distribution](../assets/cap-zh-Hant-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![BSE方向分佈（極網中心對應於表面法線方向）](../assets/cap-zh-Hant-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 背向散射電子的角度分布（極網中心對應於表面法線方向）。黃色／橙色輪廓（若存在）標示 EBSD 偵測器所涵蓋的區域。
 

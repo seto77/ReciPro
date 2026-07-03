@@ -50,7 +50,7 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 ### Condições do MEV e da amostra
 
-![Condições do MEV e da amostra](../assets/cap-pt-auto/FormEBSD.tabControl1.tabPage1.groupBoxSampleCondition.png)
+![Condições do SEM & da amostra](../assets/cap-pt-auto/FormEBSD.tabControl1.tabPage1.groupBoxSampleCondition.png)
 
 - **Energy** : tensão de aceleração do feixe incidente (keV).
 - **Wavelength** : comprimento de onda do elétron (Å), vinculado a Energy.

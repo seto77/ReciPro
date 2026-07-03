@@ -106,7 +106,7 @@
     <value>顯示指數標籤</value>
   </data>
   <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
-    <value>立體投影網屬性</value>
+    <value>立體網屬性</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>包含等效指數</value>
@@ -142,7 +142,7 @@
     <value>立體網繪製區的背景顏色。</value>
   </data>
   <data name="colorControlHolder.ToolTip" xml:space="preserve">
-    <value>繪製於立體網上之試樣固定座外框的顏色。</value>
+    <value>繪製於立體網上之試樣台外框的顏色。</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
     <value>立體網之 90° 主格線
@@ -154,7 +154,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>1 度線的顏色
-勾選「Show 1° Lines」時有效</value>
+勾選「顯示1°線」時有效</value>
   </data>
   <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
     <value>[100]、[010]、[001] 軸標籤的顏色</value>
@@ -164,54 +164,54 @@
 （[100]、[010]、[001] 以外的軸）</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
-    <value>Tilt-X（主軸）方向箭頭的顏色
-（勾選「Show tilt directions」時顯示）</value>
+    <value>傾斜X（主軸）方向箭頭的顏色
+（勾選「顯示傾斜方向」時顯示）</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
-    <value>Tilt-Y（副軸）方向箭頭的顏色
-（勾選「Show tilt directions」時顯示）</value>
+    <value>傾斜Y（副軸）方向箭頭的顏色
+（勾選「顯示傾斜方向」時顯示）</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>勾選時，方向鍵會傾斜固定座：
-左/右改變 Tilt X，上/下依方向鍵
-步距改變 Tilt Y。</value>
+左/右改變傾斜X，上/下依方向鍵
+步距改變傾斜Y。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>每次按下方向鍵所套用的
 傾斜角增量（以度為單位）。</value>
   </data>
   <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
-    <value>固定座繞主軸（Tilt X）
+    <value>固定座繞主軸（傾斜X）
 的傾斜角，以度為單位。</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>固定座繞主軸（Tilt X）
+    <value>固定座繞主軸（傾斜X）
 的傾斜角，以度為單位。</value>
   </data>
   <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
-    <value>固定座繞副軸（Tilt Y）
+    <value>固定座繞副軸（傾斜Y）
 的傾斜角，以度為單位。</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>固定座繞副軸（Tilt Y）
+    <value>固定座繞副軸（傾斜Y）
 的傾斜角，以度為單位。</value>
   </data>
   <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
-    <value>立體網上 Tilt X（主軸）的
+    <value>立體網上傾斜X（主軸）的
 方位方向（以度為單位）。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>立體網上 Tilt X（主軸）的
+    <value>立體網上傾斜X（主軸）的
 方位方向（以度為單位）。</value>
   </data>
   <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
-    <value>對 Tilt Y（副軸）使用負極性。</value>
+    <value>對傾斜Y（副軸）使用負極性。</value>
   </data>
   <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
-    <value>對 Tilt Y（副軸）使用正極性。</value>
+    <value>對傾斜Y（副軸）使用正極性。</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Tilt Y（副軸）的極性（符號）；
+    <value>傾斜Y（副軸）的極性（符號）；
 請與您的 TEM 測角器慣例一致。</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
@@ -227,20 +227,20 @@
     <value>晶帶軸指數標籤的字體大小。</value>
   </data>
   <data name="buttonLink.ToolTip" xml:space="preserve">
-    <value>將目前的固定座傾斜設為 Link 的
-Tilt X/Y 值，並以所得姿態
+    <value>將目前的固定座傾斜設為「連結」的
+傾斜X/Y值，並以所得姿態
 作為中立方向。</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
     <value>將晶體繞光束（[001]）軸旋轉 180°。</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
-    <value>按下 Link 按鈕時所套用的
-目標 Tilt X 角（以度為單位）。</value>
+    <value>按下「連結」按鈕時所套用的
+目標傾斜X角（以度為單位）。</value>
   </data>
   <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
-    <value>按下 Link 按鈕時所套用的
-目標 Tilt Y 角（以度為單位）。</value>
+    <value>按下「連結」按鈕時所套用的
+目標傾斜Y角（以度為單位）。</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
     <value>勾選時，於立體網上繪製 1° 間隔線
@@ -252,7 +252,7 @@ Tilt X/Y 值，並以所得姿態
   </data>
   <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
     <value>勾選時，於立體網上繪製箭頭
-以顯示 Tilt-X 與 Tilt-Y 方向。</value>
+以顯示傾斜X與傾斜Y方向。</value>
   </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
     <value>要顯示之立體網區域的半角（以度為
@@ -270,7 +270,7 @@ Tilt X/Y 值，並以所得姿態
     <value>背景</value>
   </data>
   <data name="colorControlHolder.FooterText" xml:space="preserve">
-    <value>樣品桿</value>
+    <value>試樣台</value>
   </data>
   <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
     <value>一般軸</value>

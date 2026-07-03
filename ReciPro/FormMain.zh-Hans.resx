@@ -156,7 +156,7 @@
     <value>当前取向</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>生成副本</value>
+    <value>复制</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>功能</value>
@@ -368,7 +368,7 @@ STEM 为扫描透射电子显微镜。</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
     <value>要沿其观察的晶面指数 (h k l)。点击
-'Plane' 可旋转晶体，使该晶面的
+“晶面”可旋转晶体，使该晶面的
 法线指向您（朝屏幕外）。</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
@@ -394,7 +394,7 @@ STEM 为扫描透射电子显微镜。</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
     <value>要沿其观察的晶带轴指数 [u v w]。点击
-'Axis' 可旋转晶体，使该方向
+“轴”可旋转晶体，使该方向
 指向您（朝屏幕外）。</value>
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
@@ -445,10 +445,10 @@ STEM 为扫描透射电子显微镜。</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>此处显示晶体列表。
-要添加新晶体，请在下方的 'Crystal Information' 面板中设置其数据并点击 'Add'。
-要修改晶体，请选中它，在 'Crystal Information' 面板中更新其数据，然后点击 'Replace'。
-要从列表中移除某个晶体，请选中它并点击 'Delete'。
-要从列表中移除所有晶体，请点击 'Clear All'。</value>
+要添加新晶体，请在下方的“晶体信息”面板中设置其数据并点击“添加”。
+要修改晶体，请选中它，在“晶体信息”面板中更新其数据，然后点击“替换”。
+要从列表中移除某个晶体，请选中它并点击“删除”。
+要从列表中移除所有晶体，请点击“清除所有晶体”。</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>选定晶体的当前取向。</value>
@@ -476,9 +476,9 @@ STEM 为扫描透射电子显微镜。</value>
 上方选定的晶体。</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>打开立体网（立体投影／吴氏网）。</value>
+    <value>打开极射赤平网（极射赤平投影／吴氏网）。</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
-    <value>打开“斑点 ID v2”功能</value>
+    <value>打开 Spot ID v2</value>
   </data>
 </root>

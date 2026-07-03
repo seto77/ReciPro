@@ -9,7 +9,7 @@ Das Fenster hat vier Registerkarten, und die Theorie liest sich am besten in der
 1. **[Atomic scattering factors](scattering-factor.md)** — wie ein *einzelnes Atom* jede Art von Strahl streut.
 2. **[Structure factor](structure-factor.md)** — wie die Atome in einer *Elementarzelle* interferieren, einschließlich des Debye–Waller-Faktors und der Auslöschungsregeln.
 3. **[Attenuation & transport](attenuation-transport.md)** — wie der Strahl beim Durchlaufen des Materials *entfernt und verlangsamt* wird.
-4. **[Fluorescence](fluorescence.md)** — die charakteristische Röntgenemission, die der Ionisation einer inneren Schale folgt.
+4. **[Fluoreszenz](fluorescence.md)** — die charakteristische Röntgenemission, die der Ionisation einer inneren Schale folgt.
 
 ---
 
@@ -20,7 +20,7 @@ Jede Streugröße in diesem Fenster ist eine Funktion davon, wie stark sich die 
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
 - $\theta$ : der Bragg-Winkel — die *Hälfte* des gesamten Streuwinkels. Die Reflextabelle führt den vollen Winkel $2\theta$ auf.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : die Variable, gegen die die Registerkarte **Scattering factors** aufgetragen wird. Sie ist das natürliche Argument jedes Atomformfaktors.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : die Variable, gegen die die Registerkarte **Streufaktoren** aufgetragen wird. Sie ist das natürliche Argument jedes Atomformfaktors.
 - $d$ : der Netzebenenabstand. Bei der Bragg-Bedingung $\lambda = 2d\sin\theta$ gilt $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, wobei $\mathbf g$ der reziproke Gittervektor mit $|\mathbf g| = 1/d$ ist.
 
 Diese drei Konventionen beschreiben dieselbe Geometrie; nur die Skala unterscheidet sich. Es lohnt sich, die Entsprechung klar zu halten, da das Fenster mehr als eine davon verwendet:
@@ -29,7 +29,7 @@ Diese drei Konventionen beschreiben dieselbe Geometrie; nur die Skala unterschei
 |---|---|---|
 | Reflextabelle | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
 | Reflextabelle | $2\theta$ | voller Streuwinkel, $\sin\theta = \lambda s$ |
-| Registerkarte Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Registerkarte Streufaktoren | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Beugungspeak-Diagramm | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Einheiten"
@@ -90,6 +90,6 @@ Diese Gegensätze kehren auf den folgenden Seiten immer wieder, jeder zurückfü
 ## Siehe auch
 
 - [3. Beam interaction](../../3-beam-interaction.md) — die GUI, die dieser Anhang erklärt.
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluoreszenz](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — die Mehrfachstreutheorie, die diese Streufaktoren verwendet.

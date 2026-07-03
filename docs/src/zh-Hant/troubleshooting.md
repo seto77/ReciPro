@@ -18,7 +18,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 1. 開啟**工作管理員**。
 2. 在行程清單中找到 **ReciPro**。
-3. 對它按右鍵並選擇**最大化**。
+3. 右鍵點按它並選擇**最大化**。
 
 視窗將被帶到主顯示器上。請注意，**切換到**、**移到最上層**與**最小化**都*無濟於事*——只有**最大化**有效。
 
@@ -29,7 +29,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 **解決方法**（按順序嘗試）：
 
 1. **停用 OpenGL**：啟動 ReciPro 時按住 **Ctrl** 鍵，以停用 OpenGL 的方式啟動。較新的版本（v4.925 及以後）強化了 OpenGL 初始化，因此即使 OpenGL 失敗應用程式也能啟動——在這種情況下 3D 功能被停用，但應用程式的其餘部分可正常運作。
-2. **重設設定**：在登錄檔編輯器中刪除機碼 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然後重新啟動。（等同於 **Option → Reset registry**。）
+2. **重設設定**：在登錄檔編輯器中刪除機碼 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然後重新啟動。（等同於 **選項 → 重設登錄檔**。）
 3. **乾淨重新安裝**：解除安裝 ReciPro，刪除以下資料夾（如果存在，將 `<user>` 替換為你的帳戶名稱），然後重新安裝：
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 **解決方法**：
 
-1. 前往 **Option → Disable OpenGL (needs restart)**（或在啟動時按住 **Ctrl**）。
+1. 前往 **選項 → 停用 OpenGL（需重新啟動）**（或在啟動時按住 **Ctrl**）。
 2. 重新啟動 ReciPro。
 3. 結構檢視器和部分 3D 功能將使用軟體算繪。
 
@@ -143,7 +143,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 - 檢查 CIF 檔案是否格式良好
 - 嘗試將檔案拖放到**晶體資訊**區域
-- 某些非標準的 CIF 擴充功能可能不受支援
+- 某些非標準的 CIF 擴充規格可能不受支援
 
 ### 症狀：dm3/dm4 檔案無法載入，或出現 "unable to cast … 'System.Single' to 'System.Double'"
 
@@ -161,7 +161,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 如果設定變得損壞：
 
-1. **Option → Reset registry (after restart)**
+1. **選項 → 重設登錄檔（重新啟動後）**
 2. 重新啟動 ReciPro——視窗位置、波長、相機長度等將被重設為預設值
 
 ---
@@ -193,7 +193,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 可以——有兩條途徑：
 
-- **原生 ARM64 套件（實驗性，建議）**：從 v4.938 起，[發布頁面](https://github.com/seto77/ReciPro/releases/latest) 上發布了一個實驗性的原生 ARM64 portable 套件（`ReciPro-v.X_arm64.zip`；在 v.4.939 之前命名為 `ReciPro-v.X-arm64.zip`）。它是 self-contained 的，因此無需安裝 .NET Runtime——將 ZIP 解壓縮到一個使用者可寫入的資料夾並執行 `ReciPro.exe`。如果 Windows 封鎖了下載的 ZIP（Mark of the Web），請在解壓縮*之前*對該 ZIP 按右鍵 → **內容** → 勾選**解除封鎖** → **確定**（或在 PowerShell 中執行 `Unblock-File .\ReciPro-*arm64.zip`）。詳情見隨附的 `README-PORTABLE.txt`。
+- **原生 ARM64 套件（實驗性，建議）**：從 v4.938 起，[發布頁面](https://github.com/seto77/ReciPro/releases/latest) 上發布了一個實驗性的原生 ARM64 portable 套件（`ReciPro-v.X_arm64.zip`；在 v.4.939 之前命名為 `ReciPro-v.X-arm64.zip`）。它是 self-contained 的，因此無需安裝 .NET Runtime——將 ZIP 解壓縮到一個使用者可寫入的資料夾並執行 `ReciPro.exe`。如果 Windows 封鎖了下載的 ZIP（Mark of the Web），請在解壓縮*之前*右鍵點按該 ZIP → **內容** → 勾選**解除封鎖** → **確定**（或在 PowerShell 中執行 `Unblock-File .\ReciPro-*arm64.zip`）。詳情見隨附的 `README-PORTABLE.txt`。
 - **在模擬下執行的 x64 套件**：常規的 MSI 安裝程式和 win-x64 portable ZIP 在安裝了 .NET Desktop Runtime（x64）後，也可透過內建的 x64 模擬在 ARM64 Windows 上執行（約從 v4.913 配合 .NET 10 起確認可行）。繁重的計算執行起來比原生組建慢。（Issue [#47](https://github.com/seto77/ReciPro/issues/47)）
 
 關於原生 ARM64 套件的說明：

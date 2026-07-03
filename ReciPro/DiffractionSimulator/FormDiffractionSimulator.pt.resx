@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
-    <value>Reflexões</value>
+    <value>Pontos</value>
   </data>
   <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
     <value>Linhas de Kikuchi</value>
@@ -100,7 +100,7 @@ a partir da amostra</value>
     <value>Corte de 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Topo</value>
+    <value>Máx.</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Largura da linha</value>
@@ -236,7 +236,7 @@ intensidade relativa</value>
     <value>como Imagem (formato PNG)</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar imagem</value>
@@ -245,7 +245,7 @@ intensidade relativa</value>
     <value>como Imagem  (formato PNG)</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar área do detector</value>
@@ -269,7 +269,7 @@ intensidade relativa</value>
     <value>como Imagem</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar</value>
@@ -278,7 +278,7 @@ intensidade relativa</value>
     <value>como Imagem</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar área do detector</value>
@@ -421,7 +421,7 @@ raio</value>
     <value>Cinemático &amp;&amp; erro de excitação</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>Detalhes das reflexões</value>
+    <value>Detalhes dos pontos</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Óptica</value>
@@ -455,7 +455,7 @@ raio</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
     <value>Quando marcado, as linhas de Kikuchi (faixas produzidas
-por elétrons dispersos inelasticamente que
+por elétrons espalhados inelasticamente que
 são então difratados por Bragg) são simuladas.</value>
   </data>
   <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
@@ -845,10 +845,10 @@ comprimento no espaço recíproco por pixel (nm⁻¹/px).</value>
     <value>Define a velocidade de rotação pela operação do mouse</value>
   </data>
   <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
-    <value>Abra a janela de simulação do porta-amostras do TEM.</value>
+    <value>Abra a janela de simulação do suporte TEM.</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
-    <value>Define o Comprimento de Câmera 2, ou seja, a distância
+    <value>Define o comprimento de câmera 2, ou seja, a distância
 da amostra até o detector (monitor).</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">

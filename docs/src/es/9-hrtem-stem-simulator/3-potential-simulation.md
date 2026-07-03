@@ -18,7 +18,7 @@ Los electrones dentro de un cristal son dispersados por el potencial del cristal
 
 ## Condiciones TEM
 
-![TEM conditions](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Condiciones TEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — tensión de aceleración. Determina la longitud de onda del electrón y se utiliza para calcular los coeficientes de Fourier $U_g$ del potencial.
 
@@ -28,7 +28,7 @@ Los electrones dentro de un cristal son dispersados por el potencial del cristal
 
 ## Opciones de potencial
 
-![Potential options](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Opciones de potencial](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Selecciona qué potencial se muestra y cómo se representa.
 
@@ -52,7 +52,7 @@ $U_g$ y $U'_g$ pueden mostrarse al mismo tiempo (se añade un panel por cada uno
 
 ## Propiedad de la imagen
 
-![Image property](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Propiedades de imagen](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — dimensiones en píxeles de la imagen generada (predeterminado 512×512).
 - **Resolution** — resolución de muestreo (pm/px).
@@ -61,7 +61,7 @@ $U_g$ y $U'_g$ pueden mostrarse al mismo tiempo (se añade un panel por cada uno
 
 ## Ondas difractadas
 
-![Diffracted waves](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondas difractadas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — número máximo de ondas de Bloch (coeficientes de Fourier) incluidas en la síntesis de Fourier del potencial (predeterminado 80). Valores mayores incluyen frecuencias espaciales más altas y reproducen detalles más finos del potencial.
 

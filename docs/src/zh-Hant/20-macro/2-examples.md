@@ -107,7 +107,7 @@ for i in range(90):
     ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 1)
 ```
 
-### 3. 設定尤拉角
+### 3. 設定歐拉角
 
 ```python
 # Euler angles in degrees

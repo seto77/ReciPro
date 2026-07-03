@@ -36,7 +36,7 @@ Simuliert hochauflösende TEM-Gitterstreifenbilder. Der primäre Modus des [HRTE
 
 ### Intrinsische Parameter
 
-![Intrinsische Parameter](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Intrinsische Parameter](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parameter | Beschreibung | Typisch |
 |-----------|-------------|---------|
@@ -63,9 +63,9 @@ Scherzer-Defokus: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -1.155
 
 ## Objektivblende
 
-![Objektivblende](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Objektivblende (HRTEM-Option)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-Legen Sie Blendengröße (mrad) und Position fest. **Open aperture** entfernt sie. Die Anzahl der berücksichtigten Bloch-Wellen hängt von den Blendenbedingungen ab.
+Legen Sie Blendengröße (mrad) und Position fest. **Blende offen** entfernt sie. Die Anzahl der berücksichtigten Bloch-Wellen hängt von den Blendenbedingungen ab.
 
 ---
 
@@ -75,19 +75,19 @@ Legen Sie Blendengröße (mrad) und Position fest. **Open aperture** entfernt si
 
 | Modell | Beschreibung |
 |-------|-------------|
-| **Quasi-coherent (linear image)** | Schnell. Gültig unter der Schwachphasen-Näherung |
-| **TCC (Transmission Cross Coefficient)** | Genauer; längere Rechenzeit |
+| **Lineares Bild (Quasi-coherent)** | Schnell. Gültig unter der Schwachphasen-Näherung |
+| **Transmissions-Kreuzkoeffizient (TCC)** | Genauer; längere Rechenzeit |
 
 ---
 
 ## Simulationsmodi
 
-![Simulationsmodi](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Einzel-/Serienmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 | Modus | Beschreibung |
 |------|-------------|
-| **Single image** | Ein Bild bei aktueller Dicke und Defokus |
-| **Serial image** | Matrix von Bildern über Dicken- × Defokusbereiche (Start / Step / Num) |
+| **Einzelbild (Single image)** | Ein Bild bei aktueller Dicke und Defokus |
+| **Serienbild (Serial image)** | Matrix von Bildern über Dicken- × Defokusbereiche (Start / Step / Num) |
 
 ---
 
@@ -98,10 +98,10 @@ Legen Sie Blendengröße (mrad) und Position fest. **Open aperture** entfernt si
 | Einstellung | Beschreibung |
 |---------|-------------|
 | **Min / Max** | Anzeigebereich (Schieberegler zur Bildanpassung) |
-| **Colour** | Graustufen oder Cold-Warm |
-| **Gaussian blur (FWHM)** | Wendet einen Gauß-Filter an |
-| **Unit cell** | Überlagert ein Elementarzellengitter |
-| **Scale** | Zeigt einen Maßstabsbalken an |
+| **Farbe** | Graustufen oder Cold-Warm |
+| **Gauß-Unschärfe (FWHM)** | Wendet einen Gauß-Filter an |
+| **Elementarzelle** | Überlagert ein Elementarzellengitter |
+| **Maßstabsbalken** | Zeigt einen Maßstabsbalken an |
 
 ---
 

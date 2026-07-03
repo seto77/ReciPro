@@ -148,7 +148,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **값 확인하기**: 이 환경에서는 `print()`가 동작하지 않습니다 (콘솔 없음). **Step by step** 실행을 사용하고, 각 줄의 지역 변수를 나열하는 디버그 패널을 관찰하세요.
 - **`math`는 미리 임포트됨**: `math.sqrt(x)`, `math.sin(x)`, `math.pi`, `math.radians(deg)`는 `import math` 없이 사용할 수 있습니다.
-- **일괄 처리 가속**: 긴밀한 루프 동안에는 `ReciPro.DifSim.SkipRendering = True`로 설정하고, 이후에 `False`로 되돌리세요.
+- **일괄 처리 가속**: 반복 횟수가 많은 루프에서는 `ReciPro.DifSim.SkipRendering = True`로 설정하고, 이후에 `False`로 되돌리세요.
 - **렌더링 대기**: GUI가 따라잡아야 할 때는 `ReciPro.Sleep(ms)`를 호출하여 실행을 일시 정지하세요.
 - **자동 완성**: 팝업은 전체 `ReciPro.Class.Member` 형식을 표시합니다. 몇 글자를 입력하고 `Enter` 또는 `Tab`으로 확정하세요.
 

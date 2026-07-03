@@ -67,7 +67,7 @@ erano attive all'apertura di questa finestra.</value>
     <value>Mantiene le impostazioni attualmente applicate e chiude la finestra.</value>
   </data>
   <data name="checkBoxManageList.ToolTip" xml:space="preserve">
-    <value>Attiva la modalità di gestione delle impostazioni predefinite: mostra
+    <value>Attiva/disattiva la modalità di gestione delle impostazioni predefinite: mostra
 Aggiungi/Sostituisci/Rinomina/Elimina e il campo nome
 (selezionare un elemento non lo applica più).</value>
   </data>

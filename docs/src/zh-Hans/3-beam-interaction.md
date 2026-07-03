@@ -4,7 +4,7 @@
 
 ![射束相互作用](../assets/cap-zh-Hans-auto/FormBeamInteraction.png)
 
-入射束在窗口顶部的横栏中选择；其下方的四个选项卡 — **Reflections**、**Attenuations & Transport**、**Scattering factors** 和 **Fluorescence** — 显示相互作用的不同方面。下面每个选项卡小节都展示该选项卡在 **X-ray / Electron / Neutron** 各射束下的情形（请使用每幅图中的选项卡）；其内容随射束而显著变化。
+入射束在窗口顶部的横栏中选择；其下方的四个选项卡 — **衍射**、**衰减 & 输运**、**散射因子** 和 **荧光** — 显示相互作用的不同方面。下面每个选项卡小节都展示该选项卡在 **X-ray / Electron / Neutron** 各射束下的情形（请使用每幅图中的选项卡）；其内容随射束而显著变化。
 
 !!! tip "固体物理背景（附录 A2）"
     这四个选项卡背后的散射与固体物理 — 原子散射因子、结构因子、射束的衰减与输运以及荧光 — 在 **[附录 A2. 射束相互作用（固体物理背景）](appendix/a2-beam-interaction/index.md)** 中进行了说明。
@@ -16,7 +16,7 @@
 
 ## 键盘与鼠标快捷键
 
-此窗口没有特殊的组合键。<kbd>F1</kbd> 打开本手册页。在 **Scattering factors** 选项卡上，可以 **拖动** 垂直光标线以读出该位置处每个元素的散射因子，并且每个选项卡都有一个 **Copy** 按钮，可将其表格导出为可粘贴到电子表格的文本。
+此窗口没有特殊的组合键。<kbd>F1</kbd> 打开本手册页。在 **散射因子** 选项卡上，可以 **拖动** 垂直光标线以读出该位置处每个元素的散射因子，并且每个选项卡都有一个 **Copy** 按钮，可将其表格导出为可粘贴到电子表格的文本。
 
 → 请参阅 **[21. 键盘与鼠标快捷键](21-shortcuts.md)** 以一览所有窗口。
 
@@ -30,33 +30,33 @@
 
 - **X-ray / Electron / Neutron** : 原子散射因子与相互作用物理因入射束类型而异，因此在此切换。
 - 对于 **X-ray**，选择 **Element**（阳极材料）和特征线（Kα 等）会自动设定该特征 X 射线的波长。
-- **Energy (keV)** 与 **Wavelength (Å)** 相互关联；设定其一会更新另一个，二者都决定 **Reflections** 表中使用的 2θ。
+- **Energy (keV)** 与 **Wavelength (Å)** 相互关联；设定其一会更新另一个，二者都决定 **衍射** 表中使用的 2θ。
 - **Unit (Å / nm)** 切换用于面间距及类似量的长度单位。
 
 所选射束还决定哪些选项卡和曲线有意义：
 
-| 射束 | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| 射束 | 衍射 | 衰减 & 输运 | 散射因子 | 荧光 |
 |------|------|------|------|------|
 | **X-ray** | 含反常色散的结构因子 | µ/ρ、µ、透射 + 吸收边（随能量） | $f(s)$ 或 $F(q)+S(q)$ | 特征线 + EDX 谱线棒 |
 | **Electron** | 电子结构因子 | σ、MFP、\|dE/ds\|、IMFP、射程（随能量） | Peng / Kirkland / 8-Gaussians | —（隐藏） |
 | **Neutron** | 核结构因子 | 散射长度与截面（无能量曲线） | 散射长度（无 *s* 依赖） | —（隐藏） |
 
-**Fluorescence** 选项卡仅适用于 X 射线，在电子和中子射束下会消失。对于中子，**Attenuations & Transport** 和 **Scattering factors** 中随能量变化的图被元素表所取代，因为核散射长度不依赖于散射角或能量。
+**荧光** 选项卡仅适用于 X 射线，在电子和中子射束下会消失。对于中子，**衰减 & 输运** 和 **散射因子** 中随能量变化的图被元素表所取代，因为核散射长度不依赖于散射角或能量。
 
 ---
 
-## Reflections 选项卡
+## 衍射 选项卡
 
 列出晶体允许的晶面（反射）以及每个反射的 **结构因子** 和衍射强度。对于 X 射线，结构因子现在包含当前能量下的 **反常色散** 项 $f'/f''$，因此在吸收边附近 `F_inv`（虚部）通常不为零。每种射束的布局相同；只有结构因子值和每个反射的 2θ 会变化。
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-reflections.png)
+    ![衍射 — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-reflections.png)
+    ![衍射 — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-reflections.png)
+    ![衍射 — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@
 
 ---
 
-## Attenuations & Transport 选项卡
+## 衰减 & 输运 选项卡
 
 射束穿透材料的深度以及它如何损失能量。内容取决于射束。
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-attenuations.png)
+    ![衰减 & 输运 — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-attenuations.png)
+    ![衰减 & 输运 — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![衰减 & 输运 — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -130,18 +130,18 @@
 
 ---
 
-## Scattering factors 选项卡 {#fluorescence-tab}
+## 散射因子 选项卡 {#fluorescence-tab}
 
 每种组成元素的原子散射因子，相对于 $s = \sin\theta/\lambda$（Å⁻¹）绘制。每个元素以其自身的颜色绘制，可以拖动 **垂直光标线** 将该位置处每个元素的散射因子读入左侧的表中。
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-scattering.png)
+    ![散射因子 — X-ray](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-scattering.png)
+    ![散射因子 — electron](../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-scattering.png)
+    ![散射因子 — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** 提供两种 **Model** 模式：**f(s)** 绘制常规的 X 射线原子散射因子（以电子为单位）；**F(q)+S(q)** 绘制 Rayleigh **相干** 形状因子 $F(q)$ 以及 Compton **非相干** 散射函数 $S(q)$（来自 xraylib）。该表还列出当前能量下的反常色散项 **f'(E)** 和 **f''(E)**。
 - **Electron** 提供电子散射因子的三种参数化：**Peng**、**Kirkland** 和 **8-Gaussians**。表中显示 $f_e(s)$（nm）以及产生它的 **model**。
@@ -150,11 +150,11 @@
 
 ---
 
-## Fluorescence 选项卡
+## 荧光 选项卡
 
 对于 X 射线束，显示样品的特征 **荧光** 发射。（此选项卡在电子和中子射束下隐藏。）
 
-![Fluorescence (X-ray)](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-fluorescence.png)
+![荧光 (X-ray)](../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-fluorescence.png)
 
 **EDX emission lines** 图将每个元素的特征线（Kα1、Kα2、Kβ1、Lα1、Lα2、Lβ1）绘制为位于其光子能量处的谱线棒，高度正比于 原子分数 × 辐射率 × 荧光产额（一种定性的 EDX 风格预览；未对激发截面和探测器效率建模）。下方的表逐线列出元素、线名、能量 **E keV**、相对强度 **Rel.I** 以及荧光产额 **ω**。标量表报告每个元素的 K 壳层产额 **ω_K** 以及谱中的 **strongest line**。
 

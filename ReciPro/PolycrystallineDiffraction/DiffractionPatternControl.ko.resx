@@ -358,7 +358,7 @@ A/H/R 슬라이더를 활성화합니다.</value>
   </data>
   <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
     <value>회절에 대한 읽기 전용 요약입니다.
-기여한 결정립 수와 각 반사(hkl)의
+기여한 결정자 수와 각 반사(hkl)의
 비율을 표시합니다.</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">

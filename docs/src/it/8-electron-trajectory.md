@@ -67,7 +67,7 @@ Ampiezza delle classi dell'istogramma angolare e mappa dei colori utilizzata per
 
 ## Statistiche
 
-![Statistics](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![Statistiche](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Riepilogo dell'esecuzione.
 
@@ -80,7 +80,7 @@ Riepilogo dell'esecuzione.
 
 ## Distribuzione direzionale BSE
 
-![BSE direction distribution](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![Distribuzione direzionale BSE](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Distribuzione angolare degli elettroni retrodiffusi (il centro dello stereogramma corrisponde alla direzione della normale alla superficie). Il contorno giallo/arancione (quando presente) delimita la regione sottesa dal rivelatore EBSD.
 

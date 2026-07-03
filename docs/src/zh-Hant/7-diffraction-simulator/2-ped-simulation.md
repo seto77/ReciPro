@@ -15,7 +15,7 @@ GUI 條件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 在 PED 中，電子束會在繞光軸的錐面上進動，並將進動錐面上每個束方向所得到的繞射圖樣加以積分。與傳統的 SAED 相比，這提供了以下優點：
 
 - 動力學效應被平均掉，產生接近運動學強度比的強度資料
-- 較清楚地觀察到較高階勞厄帶 (HOLZ) 反射
+- 較清楚地觀察到高階勞厄區 (HOLZ) 反射
 - 可獲得適用於結構分析的強度資料
 
 ---
@@ -98,6 +98,6 @@ GUI 條件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 ## 另請參閱
 
 - [繞射模擬器（總覽）](index.md)
-- [X 射線繞射模擬](4-x-ray-neutron-diffraction.md)
+- [X 光繞射模擬](4-x-ray-neutron-diffraction.md)
 - [SAED 模擬](1-saed-simulation.md)
 - [動力學計算（布洛赫波法）](../appendix/a3-bloch-wave/calculation.md)

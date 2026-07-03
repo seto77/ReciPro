@@ -27,7 +27,7 @@
 
 ### Условия TEM
 
-![Условия TEM](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Условия ПЭМ](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Параметр | Описание |
 |-----------|-------------|
@@ -36,7 +36,7 @@
 
 ### Внутренние параметры
 
-![Внутренние параметры](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Внутренние параметры](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Параметр | Описание | Типично |
 |-----------|-------------|---------|

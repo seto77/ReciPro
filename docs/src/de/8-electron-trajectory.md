@@ -67,7 +67,7 @@ Klassenbreite des Winkelhistogramms und die für die Dichteanzeige verwendete Fa
 
 ## Statistik
 
-![Statistics](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![Statistik](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 Zusammenfassung des Laufs.
 
@@ -80,7 +80,7 @@ Zusammenfassung des Laufs.
 
 ## BSE-Richtungsverteilung
 
-![BSE direction distribution](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![BSE-Richtungsverteilung (das Stereonetz-Zentrum entspricht der Oberflächennormalen-Richtung)](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 Winkelverteilung der rückgestreuten Elektronen (das Zentrum des Stereonetzes entspricht der Richtung der Oberflächennormalen). Die gelbe/orange Umrandung (sofern vorhanden) markiert den vom EBSD-Detektor erfassten Bereich.
 

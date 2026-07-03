@@ -4,7 +4,7 @@ title: HRTEM / STEM Simulator
 
 # HRTEM / STEM Simulator
 
-Der **HRTEM/STEM-Simulator** simuliert TEM-Gitterstreifenbilder (HRTEM), STEM-Bilder und projizierte Potentiale. Klicken Sie auf **Simulate**, um die Berechnung zu starten.
+Der **HRTEM/STEM-Simulator** simuliert TEM-Gitterstreifenbilder (HRTEM), STEM-Bilder und projizierte Potentiale. Klicken Sie auf **Simulieren**, um die Berechnung zu starten.
 
 ![HRTEM/STEM-Simulator](../../assets/cap-de-auto/FormImageSimulator.png)
 
@@ -68,18 +68,18 @@ Die linke Hälfte des Fensters zeigt das simulierte Bild. Die Statusleiste am ob
 
 ## Image mode / Sample
 
-![Image mode](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
+![Bildmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
 HRTEM, Potential oder STEM.<div style="clear: both;"></div>
 
-![Sample](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+![Probe](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
 Legt die Probendicke fest.<div style="clear: both;"></div>
 
 ## Optical property { style="clear: both" }
 
 ### TEM conditions
 
-![TEM conditions](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![TEM-Bedingungen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 Beschleunigungsspannung, Defokus (Scherzer angezeigt).
 
@@ -110,7 +110,7 @@ Diagramme der Linsenfunktion. Eine Anpassung der oberen Grenze von *u* ändert d
 
 ### Objective aperture (HRTEM option)
 
-![Objective aperture (HRTEM option)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Objektivblende (HRTEM-Option)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Cs, Cc, beta, delta-E, PCTF, räumliche/zeitliche Kohärenz-Hüllkurven, Objektivblende.
 
@@ -128,7 +128,7 @@ Horizontale Verschiebung der Blende in mrad — dient zur Nachbildung einer vers
 
 ### STEM options (optical)
 
-![STEM options (optical)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
+![STEM-Optionen (optisch)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
 
 #### Convergence semi-angle
 
@@ -148,7 +148,7 @@ Abtastbereich (Sichtfeld) und Pixelgröße für das STEM-Bild.
 
 ### HRTEM options
 
-![HRTEM options](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![HRTEM-Optionen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 Max Bloch waves, Bildpixel/Auflösung, Teilkohärenz (quasi-coherent / TCC), Single/Serial-Modus.
 
@@ -176,7 +176,7 @@ Siehe [Anhang A3.2 — HRTEM-Bildentstehung](../appendix/a3-bloch-wave/hrtem.md)
 
 ### STEM options (simulation)
 
-![STEM options (simulation)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+![STEM-Optionen (Simulation)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Bloch wave count** — gleiche Rolle wie bei HRTEM, angewendet pro Sondenposition.
 - **Angular resolution** — Anzahl der Stützstellen bei der Integration über die Sondenrichtung.
@@ -193,11 +193,11 @@ Wird angezeigt, wenn **Image mode = Potential**.
 
 ### Image properties
 
-![Image properties](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Bildeigenschaften](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 ### Diffracted waves
 
-![Diffracted waves](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Gebeugte Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 ---
 
@@ -211,23 +211,23 @@ Wird angezeigt, wenn **Image mode = Potential**.
 
 ### Adjust
 
-![Adjust](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![Anpassen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 Min-/Max-Helligkeit, Farbskala, Gauß-Unschärfe.
 
 ### Normalization
 
-![Normalization](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
+![Normierung](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
 ### Display
 
-![Display](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+![Anzeige](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
 
 Beschriftung (Dicke/Defokus), Maßstabsbalken, Elementarzellen-Überlagerung.
 
 ### STEM image
 
-![STEM image](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+![STEM-Bild](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 ---
 

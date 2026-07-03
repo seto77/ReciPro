@@ -105,7 +105,7 @@ La información correspondiente a la posición del cursor (cursor *q*, *d*, 2θ,
 
 ## Menú File
 
-![Menú File](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![Menú Archivo](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | Elemento de menú | Descripción |
 |-----------|-------------|
@@ -116,7 +116,7 @@ La información correspondiente a la posición del cursor (cursor *q*, *d*, 2θ,
 
 ### Preset {#toolbar}
 
-![Menú Preset](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Menú Preajustes](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Guarde y recupere una configuración completa del simulador — longitud de onda, geometría del detector, ajustes de las pestañas, propiedades de los reflejos, etc. — como un preset. Útil para alternar rápidamente entre instrumentos / modos de adquisición.
 
@@ -140,7 +140,7 @@ Guarde y recupere una configuración completa del simulador — longitud de onda
 
 ### Pantalla
 
-![Pantalla](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Ajustes de visualización](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | Elemento | Descripción |
 |------|-------------|
@@ -152,14 +152,14 @@ Guarde y recupere una configuración completa del simulador — longitud de onda
 
 ### Detector (longitud de cámara)
 
-![Detector (longitud de cámara)](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Geometría del detector y imagen superpuesta](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **Camera length** : Distancia de la muestra al detector (mm).
 - **Details** : Abre la ventana de ajustes de geometría del detector (consulte [Geometría del detector](#detector-geometry) más abajo).
 
 ### Misc
 
-![Misc](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Varios](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** : Cantidad de rotación del cristal por píxel de arrastre del ratón.
 - **TEM holder simulation** : Abre la ventana de simulación vinculada al portamuestras (consulte más abajo).
@@ -184,7 +184,7 @@ Establece los colores de los reflejos, las etiquetas, las líneas de Kikuchi, lo
 
 ### Líneas de Kikuchi
 
-![Pestaña Kikuchi](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![Pestaña Líneas de Kikuchi](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 Activa cuando las líneas de Kikuchi están habilitadas en la barra de herramientas.
 
@@ -194,7 +194,7 @@ Activa cuando las líneas de Kikuchi están habilitadas en la barra de herramien
 
 ### Anillos de Debye
 
-![Pestaña Debye](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![Pestaña Anillos de Debye](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 Activa cuando los anillos de Debye están habilitados en la barra de herramientas.
 
@@ -203,7 +203,7 @@ Activa cuando los anillos de Debye están habilitados en la barra de herramienta
 
 ### Scale
 
-![Pestaña Scale](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Pestaña Escala](../../assets/cap-es-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Activa cuando las líneas de escala están habilitadas en la barra de herramientas.
 
@@ -256,7 +256,7 @@ El esquema (arriba a la izquierda) muestra los vectores sobre la esfera de Ewald
 ### Unidades de potencial y otros controles
 
 - **Unit of potential** : Cambia el potencial mostrado entre **Vg [eV]** (potencial electrostático, eV) y **Ug [nm⁻²]** (la magnitud escalada $U_g = (2 m_0/h^2)\, V_g$ que entra en las ecuaciones de ondas de Bloch). Los encabezados de columna cambian en consecuencia entre *Vg / V'g* y *Ug / U'g*.
-- Sobre la tabla se muestran la tensión de aceleración, la longitud de onda ($\lambda = 1/k_\text{vac}$), la relación de masa relativista $m/m_0$, la relación de velocidad $v/c$, el volumen de la red, el espesor de la muestra y (en modo CBED) el semiángulo máximo del haz de electrones.
+- Sobre la tabla se muestran el voltaje de aceleración, la longitud de onda ($\lambda = 1/k_\text{vac}$), la relación de masa relativista $m/m_0$, la relación de velocidad $v/c$, el volumen de la red, el espesor de la muestra y (en modo CBED) el semiángulo máximo del haz de electrones.
 - **Note 1:** la unidad de longitud es **nm**, no Å. **Note 2:** la unidad de número de onda es **1/nm**, no 2π/nm.
 - **Effective digit** : número de cifras significativas mostradas en la tabla. **Auto resize row width** : ajustar automáticamente el ancho de las columnas. **Copy to clipboard** : exporta la tabla como texto que puede pegarse en una hoja de cálculo. (Este formulario se muestra en inglés incluso con una interfaz en japonés.)
 

@@ -69,7 +69,7 @@
     <value>上移</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
-    <value>  極射赤平投影</value>
+    <value>  極網</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>提示</value>
@@ -141,7 +141,7 @@
     <value>說明</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>歐拉角</value>
+    <value>尤拉角</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>匯出為 CIF</value>
@@ -414,7 +414,7 @@
   </data>
   <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
     <value>啟用時，六方／三方（六方軸）晶體會
-以四指數米勒-布拉菲指數顯示。</value>
+以四指數米勒-布拉維指數顯示。</value>
   </data>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
     <value>將指定的晶體軸設定為朝向螢幕。
@@ -427,7 +427,7 @@
     <value>將選取的晶體上移</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>開啟「射束交互作用」</value>
+    <value>開啟「電子束交互作用」</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>啟用 Intel MKL 以加速矩陣計算。
@@ -442,10 +442,10 @@
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>此處顯示晶體清單。
-若要新增晶體，請於下方的「Crystal Information」面板設定其資料，並按一下「Add」。
-若要修改晶體，請選取它，於「Crystal Information」面板更新其資料，並按一下「Replace」。
-若要從清單移除某個晶體，請選取它並按一下「Delete」。
-若要從清單移除所有晶體，請按一下「Clear All」。</value>
+若要新增晶體，請於下方的「晶體資訊」面板設定其資料，並按一下「新增」。
+若要修改晶體，請選取它，於「晶體資訊」面板更新其資料，並按一下「取代」。
+若要從清單移除某個晶體，請選取它並按一下「刪除」。
+若要從清單移除所有晶體，請按一下「清除所有晶體」。</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>選取晶體的目前方位。</value>
@@ -473,7 +473,7 @@
 上方選取的晶體。</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>開啟立體網（立體投影／吳爾夫網）。</value>
+    <value>開啟極網（立體投影／吳爾夫網）。</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>開啟「Spot ID v2」功能</value>

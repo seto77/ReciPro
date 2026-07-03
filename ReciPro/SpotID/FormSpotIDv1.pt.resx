@@ -202,7 +202,7 @@ eletrônico de transmissão; define o comprimento de onda dos elétrons
 usado para interpretar os padrões de difração.</value>
   </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Comprimento de câmara (mm) do padrão de difração;
+    <value>Comprimento de câmera (mm) do padrão de difração;
 converte as distâncias medidas entre pontos (mm) em
 espaçamentos da rede recíproca para indexação.</value>
   </data>
@@ -213,8 +213,8 @@ espaçamentos da rede recíproca para indexação.</value>
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Ângulo θ (graus) entre os dois vetores recíprocos
-L1 e L2 do Pattern 1. Editável no modo 'Two
-Sides and an Angle'; no modo 'Three Sides'
+L1 e L2 do Pattern 1. Editável no modo 'Dois
+Lados e um Ângulo'; no modo 'Três Lados'
 é calculado a partir de L1/L2/L3 e mostrado como somente leitura.</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -230,9 +230,9 @@ procurar eixos de zona a partir de várias fotos.</value>
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Ângulo θ (graus) entre os dois vetores recíprocos
-L1 e L2 do Pattern 2. Editável no modo 'Two
-Sides and an Angle'; calculado a partir de L1/L2/L3
-e mostrado como somente leitura no modo 'Three Sides'.</value>
+L1 e L2 do Pattern 2. Editável no modo 'Dois
+Lados e um Ângulo'; calculado a partir de L1/L2/L3
+e mostrado como somente leitura no modo 'Três Lados'.</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
     <value>Primeiro ângulo de inclinação do porta-amostras do goniômetro (Tilt 1,
@@ -248,8 +248,8 @@ procurar eixos de zona a partir de várias fotos.</value>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Ângulo theta (graus) entre os dois vetores de difração
 L1 e L2 da Photo 3. Somente leitura e
-calculado a partir dos três lados no modo 'Three Sides';
-editável no modo 'Two Sides and an Angle'.</value>
+calculado a partir dos três lados no modo 'Três Lados';
+editável no modo 'Dois Lados e um Ângulo'.</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
     <value>Ângulo de inclinação (graus) do primeiro eixo do porta-amostras
@@ -290,13 +290,13 @@ essa fração ainda são aceitos como coincidências.</value>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para L3 do Pattern 1, como
 porcentagem de seu comprimento (0-50%, padrão 5).
-Usada apenas no modo 'Three Sides'; coincidências dentro
+Usada apenas no modo 'Três Lados'; coincidências dentro
 dessa fração do L3 inserido são aceitas.</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para o ângulo θ do Pattern 1, em
-graus (0-30, padrão 3). Usada apenas no modo 'Two Sides
-and an Angle'; eixos de zona cujo ângulo difere em
+graus (0-30, padrão 3). Usada apenas no modo 'Dois Lados
+e um Ângulo'; eixos de zona cujo ângulo difere em
 até esse número de graus ainda são aceitos como coincidências.</value>
   </data>
   <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
@@ -324,13 +324,13 @@ essa fração ainda são aceitos como coincidências.</value>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para L3 do Pattern 2, como
 porcentagem de seu comprimento (0-50%, padrão 5).
-Usada apenas no modo 'Three Sides'; coincidências
+Usada apenas no modo 'Três Lados'; coincidências
 dentro dessa fração do L3 são aceitas.</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para o ângulo θ do Pattern
 2, em graus (0-30, padrão 3). Usada apenas no
-modo 'Two Sides and an Angle'; ângulos dentro
+modo 'Dois Lados e um Ângulo'; ângulos dentro
 desse número de graus são aceitos como coincidências.</value>
   </data>
   <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
@@ -355,13 +355,13 @@ em até essa quantidade são aceitos como coincidências.</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para o comprimento do terceiro lado L3 da Photo 3,
-em porcentagem (0-50). Usada apenas no modo 'Three Sides'.</value>
+em porcentagem (0-50). Usada apenas no modo 'Três Lados'.</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para o ângulo theta da Photo 3, em
 graus (0-30). Candidatos cujo ângulo calculado
 difere em até essa quantidade são aceitos. Usada
-apenas no modo 'Two Sides and an Angle'.</value>
+apenas no modo 'Dois Lados e um Ângulo'.</value>
   </data>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
     <value>Tolerância (± graus, 0-10) sobre o ângulo Tilt 1
@@ -437,7 +437,7 @@ a partir da tensão de aceleração (somente leitura).</value>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>L3: comprimento (mm na foto) do terceiro
 vetor da rede recíproca do Pattern 1, usado para
-definir o triângulo de pontos no modo 'Three Sides'.</value>
+definir o triângulo de pontos no modo 'Três Lados'.</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value>L2: comprimento (mm na foto) do segundo
@@ -456,20 +456,20 @@ porcentagem de seu comprimento (0-50%, padrão 5).</value>
 vetor da rede recíproca do Pattern 1.</value>
   </data>
   <data name="label22.ToolTip" xml:space="preserve">
-    <value>Percent: unidade da tolerância de busca de L1
+    <value>Porcentagem: unidade da tolerância de busca de L1
 do Pattern 2 (0-50%, padrão 5).</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
-    <value>Degrees: unidade da tolerância de busca de ângulo
+    <value>Graus: unidade da tolerância de busca de ângulo
 para θ do Pattern 2 (0-30, padrão 3).</value>
   </data>
   <data name="label24.ToolTip" xml:space="preserve">
-    <value>Percent: unidade da tolerância de busca de L2
+    <value>Porcentagem: unidade da tolerância de busca de L2
 do Pattern 2 (0-50%, padrão 5).</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
-    <value>Percent: unidade da tolerância de busca de L3 do Pattern
-2 (0-50%, padrão 5; usada no modo 'Three Sides').</value>
+    <value>Porcentagem: unidade da tolerância de busca de L3 do Pattern
+2 (0-50%, padrão 5; usada no modo 'Três Lados').</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1: comprimento (mm na foto) do primeiro
@@ -486,7 +486,7 @@ recíprocos L1 e L2 do Pattern 2.</value>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3: comprimento (mm na foto) do
 terceiro vetor da rede recíproca do
-Pattern 2, usado no modo 'Three Sides'.</value>
+Pattern 2, usado no modo 'Três Lados'.</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>Graus: unidade do ângulo θ entre L1 e L2 do Pattern 2.</value>
@@ -508,10 +508,10 @@ difração da Photo 3, em mm no meio de registro.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Comprimento L3 do terceiro lado do triângulo
-da Photo 3, em mm (usado no modo 'Three Sides').</value>
+da Photo 3, em mm (usado no modo 'Três Lados').</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Primeiro ângulo de inclinação do porta-amostra do goniômetro
+    <value>Primeiro ângulo de inclinação do porta-amostras do goniômetro
 (Tilt 1, graus) em que a Photo 2 foi obtida.</value>
   </data>
   <data name="label69.ToolTip" xml:space="preserve">
@@ -519,7 +519,7 @@ da Photo 3, em mm (usado no modo 'Three Sides').</value>
 do Pattern 1 (percentual do seu comprimento).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Segundo ângulo de inclinação do porta-amostra do goniômetro
+    <value>Segundo ângulo de inclinação do porta-amostras do goniômetro
 (Tilt 2, graus) em que a Photo 2 foi obtida.</value>
   </data>
   <data name="label70.ToolTip" xml:space="preserve">
@@ -528,12 +528,12 @@ do Pattern 1 (percentual do seu comprimento).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>Tolerância de busca ± aplicada a L3 do Pattern 1
-(percentual do seu comprimento; usada no modo 'Three Sides').</value>
+(percentual do seu comprimento; usada no modo 'Três Lados').</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Tolerância de busca ± aplicada ao
 ângulo θ do Pattern 1 (graus; usada no
-modo 'Two Sides and an Angle').</value>
+modo 'Dois Lados e um Ângulo').</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>Tolerância de busca ± aplicada a L1
@@ -545,12 +545,12 @@ do Pattern 2 (percentual do seu comprimento).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>Tolerância de busca ± aplicada a L3 do Pattern 2
-(percentual do seu comprimento; usada no modo 'Three Sides').</value>
+(percentual do seu comprimento; usada no modo 'Três Lados').</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Tolerância de busca ± aplicada ao
 ângulo θ do Pattern 2 (graus; usada no
-modo 'Two Sides and an Angle').</value>
+modo 'Dois Lados e um Ângulo').</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Ângulo θ (graus) entre os vetores
@@ -566,6 +566,6 @@ recíprocos L1 e L2 do Pattern 1.</value>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Tolerância de busca para L3 do Pattern 1,
 como percentual do seu comprimento (0-50%,
-padrão 5; usada no modo 'Three Sides').</value>
+padrão 5; usada no modo 'Três Lados').</value>
   </data>
 </root>

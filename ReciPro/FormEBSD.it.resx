@@ -87,7 +87,7 @@
     <value>Centro del rivelatore</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>Larghezza linea</value>
+    <value>Spessore linea</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Fattore di struttura</value>
@@ -100,7 +100,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Soglia 1/d</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>Più alti</value>
+    <value>Max</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Dimensione testo</value>
@@ -145,7 +145,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Luminosità</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Parametri di uscita</value>
+    <value>Parametri di output</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Mostra overlay</value>
@@ -348,7 +348,7 @@ l'asse Z (la direzione del fascio elettronico).</value>
     <value>Imposta la vista geometrica 3D su un punto di vista a volo d'uccello obliquo.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>Sovrappone gli assi cristallini/di riferimento sullo stereonet
+    <value>Sovrappone gli assi cristallini/di riferimento sullo stereogramma
 (proiezione stereografica della distribuzione dei BSE).</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
@@ -412,7 +412,7 @@ Scattering, diffusione termica diffusa) nel master pattern.</value>
     <value>Genera il pattern EBSD pesato in base alla distribuzione di energia
 e profondità dei BSE (BackScattered Electron, elettroni retrodiffusi) simulati,
 integrando su tutte le sezioni anziché mostrare una singola sezione
-di energia/profondità. Esegui prima Simulate
+di energia/profondità. Esegui prima Simula
 per ottenere la distribuzione.</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
@@ -441,7 +441,7 @@ colore (Gray, Cold-Warm, Spectrum o Fire).</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>Inserisci gli indici dell'asse di zona [u v w] usati dal
-pulsante 'View Along' per orientare il master pattern 3D.</value>
+pulsante 'Vista lungo' per orientare il master pattern 3D.</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra la profondità (nm) della sezione del
@@ -538,21 +538,21 @@ usata per disegnare le linee di Kikuchi.</value>
   </data>
   <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
     <value>Seleziona quale sezione di profondità (nm) del master pattern
-visualizzare in anteprima; il valore è mostrato nel campo Depth.</value>
+visualizzare in anteprima; il valore è mostrato nel campo Profondità.</value>
   </data>
   <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
     <value>Seleziona quale sezione di energia (keV) del master pattern
-visualizzare in anteprima; il valore è mostrato nel campo Energy.</value>
+visualizzare in anteprima; il valore è mostrato nel campo Energia.</value>
   </data>
   <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
     <value>Seleziona quale sezione di energia (keV) del
 pattern EBSD renderizzare in modalità a sezione
-singola; il valore è mostrato nel campo Energy.</value>
+singola; il valore è mostrato nel campo Energia.</value>
   </data>
   <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
     <value>Seleziona quale sezione di profondità (nm) del pattern
 EBSD renderizzare in modalità a sezione singola;
-il valore è mostrato nel campo Depth.</value>
+il valore è mostrato nel campo Profondità.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Regola la dimensione del carattere del testo degli indici in sovrapposizione.</value>
@@ -578,7 +578,7 @@ dell'immagine EBSD visualizzata.</value>
 degli elettroni retrodiffusi simulati.</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
-    <value>In questo stereonet, il centro
+    <value>In questo stereogramma, il centro
 corrisponde alla normale alla superficie del campione.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">

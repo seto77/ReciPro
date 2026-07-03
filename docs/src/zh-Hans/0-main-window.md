@@ -141,7 +141,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ### 沿向观察
 
-![沿向观察](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![观察方向](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 将晶带轴 [*uvw*] 或晶面 (*hkl*) 对准垂直于屏幕的方向。
 

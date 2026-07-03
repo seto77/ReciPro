@@ -164,12 +164,12 @@ Aktiv, wenn "1°-Linien anzeigen" aktiviert ist</value>
 -Beschriftungen (andere Achsen als [100], [010], [001])</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
-    <value>Farbe des Richtungspfeils Tilt-X (Hauptachse)
-(angezeigt, wenn "Neigungsrichtungen anzeigen" aktiviert ist)</value>
+    <value>Farbe des Richtungspfeils Kippung X (Hauptachse)
+(angezeigt, wenn "Kipprichtungen anzeigen" aktiviert ist)</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
-    <value>Farbe des Richtungspfeils Tilt-Y (Nebenachse)
-(angezeigt, wenn "Neigungsrichtungen anzeigen" aktiviert ist)</value>
+    <value>Farbe des Richtungspfeils Kippung Y (Nebenachse)
+(angezeigt, wenn "Kipprichtungen anzeigen" aktiviert ist)</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Wenn aktiviert, neigen die Pfeiltasten den
@@ -181,37 +181,37 @@ Hoch/Runter ändern Tilt Y um den Pfeilschritt.</value>
 das pro Pfeiltastendruck angewendet wird.</value>
   </data>
   <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
-    <value>Halterneigungswinkel um die
-Hauptachse (Tilt X), in Grad.</value>
+    <value>Halterkippwinkel um die
+Hauptachse (Kippung X), in Grad.</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>Halterneigungswinkel um die
-Hauptachse (Tilt X), in Grad.</value>
+    <value>Halterkippwinkel um die
+Hauptachse (Kippung X), in Grad.</value>
   </data>
   <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
-    <value>Halterneigungswinkel um die
-Nebenachse (Tilt Y), in Grad.</value>
+    <value>Halterkippwinkel um die
+Nebenachse (Kippung Y), in Grad.</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>Halterneigungswinkel um die
-Nebenachse (Tilt Y), in Grad.</value>
+    <value>Halterkippwinkel um die
+Nebenachse (Kippung Y), in Grad.</value>
   </data>
   <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
     <value>Azimutale Richtung (in Grad) der
-Tilt-X- (Haupt-) Achse auf dem Stereonetz.</value>
+Kippung-X- (Haupt-) Achse auf dem Stereonetz.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Azimutale Richtung (in Grad) der
-Tilt-X- (Haupt-) Achse auf dem Stereonetz.</value>
+Kippung-X- (Haupt-) Achse auf dem Stereonetz.</value>
   </data>
   <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
-    <value>Negative Polarität für die Tilt-Y- (Neben-) Achse verwenden.</value>
+    <value>Negative Polarität für die Kippung-Y- (Neben-) Achse verwenden.</value>
   </data>
   <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
-    <value>Positive Polarität für die Tilt-Y- (Neben-) Achse verwenden.</value>
+    <value>Positive Polarität für die Kippung-Y- (Neben-) Achse verwenden.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Polarität (Vorzeichen) der Tilt-Y- (Neben-) Achse;
+    <value>Polarität (Vorzeichen) der Kippung-Y- (Neben-) Achse;
 passen Sie sie an die Konvention Ihres TEM-Goniometers an.</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
@@ -235,11 +235,11 @@ Orientierung als neutrale Richtung verwenden.</value>
     <value>Den Kristall um 180° um die Strahlachse ([001]) drehen.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
-    <value>Ziel-Neigungswinkel Tilt X (in Grad),
+    <value>Ziel-Kippwinkel Kippung X (in Grad),
 der beim Drücken der Link-Schaltfläche angewendet wird.</value>
   </data>
   <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
-    <value>Ziel-Neigungswinkel Tilt Y (in Grad),
+    <value>Ziel-Kippwinkel Kippung Y (in Grad),
 der beim Drücken der Link-Schaltfläche angewendet wird.</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
@@ -252,7 +252,7 @@ beschriftung neben jedem Zonenachsen-Punkt angezeigt.</value>
   </data>
   <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
     <value>Wenn aktiviert, werden Pfeile auf dem Stereonetz gezeichnet,
-die die Tilt-X- und Tilt-Y-Richtungen anzeigen.</value>
+die die Richtungen von Kippung X und Kippung Y anzeigen.</value>
   </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
     <value>Halbwinkel (in Grad) des anzuzeigenden Stereonetz-

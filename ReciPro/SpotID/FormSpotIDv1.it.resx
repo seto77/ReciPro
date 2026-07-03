@@ -148,39 +148,39 @@ tolleranze; le corrispondenze sono elencate in una finestra dei risultati.</valu
   </data>
   <data name="buttonSearchPhoto3.ToolTip" xml:space="preserve">
     <value>Cerca gli assi di zona dei cristalli che corrispondono al solo
-pattern di diffrazione della Photo 3 (vettori L1, L2 e
+pattern di diffrazione della Foto 3 (vettori L1, L2 e
 l'angolo/terzo lato), usando tutti i cristalli caricati.</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L1Photo2L1.ToolTip" xml:space="preserve">
-    <value>Tratta la riflessione L1 di Photo 1 e Photo 2 come lo
+    <value>Tratta la riflessione L1 di Foto 1 e Foto 2 come lo
 stesso spot (la riflessione comune condivisa lungo l'asse di
-inclinazione); blocca la lunghezza L1 di Photo 2 al valore di Photo 1.</value>
+inclinazione); blocca la lunghezza L1 di Foto 2 al valore di Foto 1.</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L2Photo2L2.ToolTip" xml:space="preserve">
-    <value>Tratta la riflessione L2 di Photo 1 e Photo 2 come lo
+    <value>Tratta la riflessione L2 di Foto 1 e Foto 2 come lo
 stesso spot (la riflessione comune condivisa lungo l'asse di
-inclinazione); blocca la lunghezza L2 di Photo 2 al valore di Photo 1.</value>
+inclinazione); blocca la lunghezza L2 di Foto 2 al valore di Foto 1.</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L1Photo3L1.ToolTip" xml:space="preserve">
-    <value>Tratta la riflessione L1 di Photo 2 e Photo 3 come lo
+    <value>Tratta la riflessione L1 di Foto 2 e Foto 3 come lo
 stesso spot (la riflessione comune condivisa lungo l'asse di
-inclinazione); blocca la lunghezza L1 di Photo 3 al valore di Photo 2.</value>
+inclinazione); blocca la lunghezza L1 di Foto 3 al valore di Foto 2.</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L2Photo3L2.ToolTip" xml:space="preserve">
-    <value>Tratta la riflessione L2 di Photo 2 e Photo 3 come lo
+    <value>Tratta la riflessione L2 di Foto 2 e Foto 3 come lo
 stesso spot (la riflessione comune condivisa lungo l'asse di
-inclinazione); blocca la lunghezza L2 di Photo 3 al valore di Photo 2.</value>
+inclinazione); blocca la lunghezza L2 di Foto 3 al valore di Foto 2.</value>
   </data>
   <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
-    <value>Abilita un secondo pattern di diffrazione (Photo 2):
+    <value>Abilita un secondo pattern di diffrazione (Foto 2):
 mostra i suoi campi di immissione, così gli assi di zona possono essere cercati
 da due pattern e dalla loro inclinazione relativa del portacampione.</value>
   </data>
   <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
-    <value>Abilita un terzo pattern di diffrazione (Photo
+    <value>Abilita un terzo pattern di diffrazione (Foto
 3): mostra i suoi campi di immissione, così gli assi di zona possono
 essere cercati da tre pattern e dalle loro inclinazioni
-relative del portacampione (richiede Photo 2).</value>
+relative del portacampione (richiede Foto 2).</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
     <value>Tensione di accelerazione (kV) del microscopio
@@ -204,8 +204,8 @@ distanze del reticolo reciproco per l'indicizzazione.</value>
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Angolo θ (gradi) tra i due vettori reciproci
-L1 e L2 del Pattern 1. Modificabile in modalità 'Two
-Sides and an Angle'; in modalità 'Three Sides'
+L1 e L2 del Pattern 1. Modificabile in modalità 'Due lati
+e un angolo'; in modalità 'Tre lati'
 è calcolato da L1/L2/L3 e mostrato in sola lettura.</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -221,9 +221,9 @@ si cercano gli assi di zona da più foto.</value>
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Angolo θ (gradi) tra i due vettori reciproci
-L1 e L2 del Pattern 2. Modificabile in modalità 'Two
-Sides and an Angle'; calcolato da L1/L2/L3
-e mostrato in sola lettura in modalità 'Three Sides'.</value>
+L1 e L2 del Pattern 2. Modificabile in modalità 'Due lati
+e un angolo'; calcolato da L1/L2/L3
+e mostrato in sola lettura in modalità 'Tre lati'.</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
     <value>Primo angolo di inclinazione del portacampione del goniometro (Tilt 1,
@@ -238,9 +238,9 @@ si cercano gli assi di zona da più foto.</value>
   </data>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Angolo θ (gradi) tra i due vettori di diffrazione
-L1 e L2 di Photo 3. In sola lettura e
-calcolato dai tre lati in modalità 'Three Sides';
-modificabile in modalità 'Two Sides and an Angle'.</value>
+L1 e L2 di Foto 3. In sola lettura e
+calcolato dai tre lati in modalità 'Tre lati';
+modificabile in modalità 'Due lati e un angolo'.</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
     <value>Angolo di inclinazione (gradi) del primo asse del portacampione
@@ -281,13 +281,13 @@ fino a questa frazione vengono comunque accettati come corrispondenze.</value>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca per L3 del Pattern 1, come
 percentuale della sua lunghezza (0-50%, predefinito 5).
-Usata solo in modalità 'Three Sides'; le corrispondenze entro
+Usata solo in modalità 'Tre lati'; le corrispondenze entro
 questa frazione del valore L3 inserito vengono accettate.</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca per l'angolo θ del Pattern 1, in
-gradi (0-30, predefinito 3). Usata solo in modalità 'Two Sides
-and an Angle'; gli assi di zona il cui angolo si discosta
+gradi (0-30, predefinito 3). Usata solo in modalità 'Due lati
+e un angolo'; gli assi di zona il cui angolo si discosta
 fino a questo numero di gradi vengono comunque accettati come corrispondenze.</value>
   </data>
   <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
@@ -315,13 +315,13 @@ questa frazione vengono comunque accettati come corrispondenze.</value>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca per L3 del Pattern 2, come
 percentuale della sua lunghezza (0-50%, predefinito 5).
-Usata solo in modalità 'Three Sides'; le corrispondenze
+Usata solo in modalità 'Tre lati'; le corrispondenze
 entro questa frazione di L3 vengono accettate.</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca per l'angolo θ del Pattern
 2, in gradi (0-30, predefinito 3). Usata solo in
-modalità 'Two Sides and an Angle'; gli angoli entro
+modalità 'Due lati e un angolo'; gli angoli entro
 questi gradi vengono accettati come corrispondenze.</value>
   </data>
   <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
@@ -345,24 +345,24 @@ percentuale (0-50). I candidati il cui L2 calcolato si discosta
 fino a questa quantità vengono accettati come corrispondenze.</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
-    <value>Tolleranza di ricerca per la lunghezza del terzo lato L3 di Photo 3,
-in percentuale (0-50). Usata solo in modalità 'Three Sides'.</value>
+    <value>Tolleranza di ricerca per la lunghezza del terzo lato L3 di Foto 3,
+in percentuale (0-50). Usata solo in modalità 'Tre lati'.</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
-    <value>Tolleranza di ricerca per l'angolo θ di Photo 3, in
+    <value>Tolleranza di ricerca per l'angolo θ di Foto 3, in
 gradi (0-30). I candidati il cui angolo calcolato
 si discosta fino a questa quantità vengono accettati. Usata
-solo in modalità 'Two Sides and an Angle'.</value>
+solo in modalità 'Due lati e un angolo'.</value>
   </data>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
     <value>Tolleranza (± gradi, 0-10) sull'angolo Tilt 1
-di Photo 3, usata per accettare i candidati di asse
+di Foto 3, usata per accettare i candidati di asse
 di zona il cui angolo inter-pattern del portacampione
 corrisponde entro questo intervallo.</value>
   </data>
   <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
     <value>Tolleranza (± gradi, 0-10) sull'angolo Tilt 2
-di Photo 3, usata per accettare i candidati di asse
+di Foto 3, usata per accettare i candidati di asse
 di zona il cui angolo inter-pattern del portacampione
 corrisponde entro questo intervallo.</value>
   </data>
@@ -400,17 +400,17 @@ terzo lato L3 viene quindi calcolato automaticamente.</value>
   </data>
   <data name="textBoxAngleBetween12.ToolTip" xml:space="preserve">
     <value>Angolo (gradi) tra le impostazioni di inclinazione del
-portacampione di Photo 1 e Photo 2, calcolato
+portacampione di Foto 1 e Foto 2, calcolato
 dai loro valori Tilt 1 / Tilt 2 (sola lettura).</value>
   </data>
   <data name="textBoxAngleBetween23.ToolTip" xml:space="preserve">
     <value>Angolo (gradi) tra le impostazioni di inclinazione del
-portacampione di Photo 2 e Photo 3, calcolato
+portacampione di Foto 2 e Foto 3, calcolato
 dai loro valori Tilt 1 / Tilt 2 (sola lettura).</value>
   </data>
   <data name="textBoxAngleBetween31.ToolTip" xml:space="preserve">
     <value>Angolo (gradi) tra le impostazioni di inclinazione del
-portacampione di Photo 3 e Photo 1, calcolato
+portacampione di Foto 3 e Foto 1, calcolato
 dai loro valori Tilt 1 / Tilt 2 (sola lettura).</value>
   </data>
   <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
@@ -460,7 +460,7 @@ del Pattern 2 (0-50%, predefinito 5).</value>
   </data>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>Percentuale: unità della tolleranza di ricerca su L3 del Pattern
-2 (0-50%, predefinito 5; usata in modalità 'Three Sides').</value>
+2 (0-50%, predefinito 5; usata in modalità 'Tre lati').</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
     <value>L1: lunghezza (mm sulla foto) del primo
@@ -477,7 +477,7 @@ L1 e L2 del Pattern 2.</value>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>L3: lunghezza (mm sulla foto) del
 terzo vettore del reticolo reciproco del
-Pattern 2, usato nella modalità 'Three Sides'.</value>
+Pattern 2, usato nella modalità 'Tre lati'.</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>Gradi: unità dell'angolo θ tra L1 e L2 del Pattern 2.</value>
@@ -499,7 +499,7 @@ diffrazione della Photo 3, in mm sul supporto di registrazione.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Lunghezza L3 del terzo lato del triangolo
-della Photo 3, in mm (usata nella modalità 'Three Sides').</value>
+della Foto 3, in mm (usata nella modalità 'Tre lati').</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Primo angolo di inclinazione del portacampione del goniometro
@@ -519,12 +519,12 @@ del Pattern 1 (percentuale della sua lunghezza).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca più/meno applicata a L3 del Pattern 1
-(percentuale della sua lunghezza; usata nella modalità 'Three Sides').</value>
+(percentuale della sua lunghezza; usata nella modalità 'Tre lati').</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca più/meno applicata
 all'angolo θ del Pattern 1 (gradi;
-usata nella modalità 'Two Sides and an Angle').</value>
+usata nella modalità 'Due lati e un angolo').</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca più/meno applicata a L1
@@ -536,12 +536,12 @@ del Pattern 2 (percentuale della sua lunghezza).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca più/meno applicata a L3 del Pattern 2
-(percentuale della sua lunghezza; usata nella modalità 'Three Sides').</value>
+(percentuale della sua lunghezza; usata nella modalità 'Tre lati').</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca più/meno applicata
 all'angolo θ del Pattern 2 (gradi;
-usata nella modalità 'Two Sides and an Angle').</value>
+usata nella modalità 'Due lati e un angolo').</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Angolo θ (gradi) tra i vettori reciproci
@@ -557,6 +557,6 @@ per θ del Pattern 1 (0-30, predefinito 3).</value>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Tolleranza di ricerca per L3 del Pattern 1,
 come percentuale della sua lunghezza (0-50%,
-predefinito 5; usata nella modalità 'Three Sides').</value>
+predefinito 5; usata nella modalità 'Tre lati').</value>
   </data>
 </root>

@@ -305,8 +305,8 @@ fusionnés pour qu'une même tache ne soit pas comptée deux fois.</value>
     <value>Arrêter le calcul en cours</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>Tableau des taches observées ; cochez 'Direct' pour définir la
-tache du faisceau direct, cliquez sur le 'Fit' d'une ligne pour ajuster son
+    <value>Tableau des taches observées ; cochez « Direct » pour définir la
+tache du faisceau direct, cliquez sur « Ajust. » d'une ligne pour ajuster son
 pic, ou sélectionnez une ligne pour la surligner sur le cliché</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
@@ -357,7 +357,7 @@ de ce cercle sont ajustés avec la fonction pseudo-Voigt.</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>Supprime la tache actuellement sélectionnée de la
-liste (utilisez le bouton Clear pour supprimer toutes les taches).</value>
+liste (utilisez le bouton « Effacer toutes les taches » pour supprimer toutes les taches).</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>Liste des candidats d'indexation trouvés ; sélectionnez une
@@ -410,7 +410,7 @@ observées aux réflexions candidates (0,1-10%).</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
     <value>Régler le rayon d'ajustement de chaque tache à la
-valeur actuelle de 'Fitting range' (px).</value>
+valeur actuelle de « Plage d'ajustement (rayon) » (px).</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>Unité de la taille de pixel : nanomètres inverses</value>

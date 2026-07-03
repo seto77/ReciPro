@@ -340,8 +340,8 @@ Fit passt. Schließt sich mit Simulation gegenseitig aus.</value>
   </data>
   <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
     <value>Überlagert das simulierte Muster über dem
-experimentellen Bild, eingeblendet über den Opacity-
-Schieber. Schließt sich mit Residual gegenseitig aus.</value>
+experimentellen Bild, eingeblendet über den Deckkraft-
+Regler. Schließt sich mit Residual gegenseitig aus.</value>
   </data>
   <data name="trackBarOpacity.ToolTip" xml:space="preserve">
     <value>Überblend-Deckkraft (0-100%) des simulierten Musters

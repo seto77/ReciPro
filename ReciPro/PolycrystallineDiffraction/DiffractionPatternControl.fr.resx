@@ -292,7 +292,7 @@ la liste des pics, annulant la sélection.</value>
   </data>
   <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
     <value>Sélectionne la zone d'image autour des anneaux des
-réflexions cochées (hkl) afin de pouvoir la masquer.</value>
+réflexions cochées (hkl) afin de pouvoir les masquer.</value>
   </data>
   <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
     <value>Liste des indices de réflexion (hkl) ;

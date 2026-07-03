@@ -69,7 +69,7 @@
     <value>Средняя энергия ОРЭ</value>
   </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
-    <value>Распределение направлений ОРЭ (центр стереосетки соответствует направлению нормали к поверхности)</value>
+    <value>Распределение направлений ОРЭ</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
     <value>От нормали к поверхности</value>
@@ -173,7 +173,7 @@
   </data>
   <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
     <value>Выводит на поверхности образца в трёхмерном изображении
-концентрические шкальные окружности как ориентир расстояния
+концентрические масштабные окружности как ориентир расстояния
 (шаг масштабируется автоматически, подписи в nm/µm).</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">

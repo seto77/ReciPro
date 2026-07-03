@@ -40,7 +40,7 @@ title: Diffraction Simulator
 | Рентген | Back Laue | Лауэ на отражение | [Моделирование рентгеновской дифракции](4-x-ray-neutron-diffraction.md) |
 | Нейтрон | Параллельный | Нейтронная дифракция | [раздел о нейтронах в моделировании рентгеновской дифракции](4-x-ray-neutron-diffraction.md) |
 
-> **Note**: Варианты выбора падающего пучка меняются вместе с длиной волны. Для электронов: **Parallel, Precession (electron = PED), Convergence (CBED)**; для рентгеновских лучей: **Parallel, Precession (X-ray), Back Laue**; для нейтронов: только **Parallel**. Выбор **Precession (electron = PED)** или **Convergence (CBED)** автоматически переключает расчёт интенсивности на **Dynamical**.
+> **Примечание**: Варианты выбора падающего пучка меняются вместе с длиной волны. Для электронов: **Parallel, Precession (electron = PED), Convergence (CBED)**; для рентгеновских лучей: **Parallel, Precession (X-ray), Back Laue**; для нейтронов: только **Parallel**. Выбор **Precession (electron = PED)** или **Convergence (CBED)** автоматически переключает расчёт интенсивности на **Dynamical**.
 
 ---
 
@@ -65,8 +65,8 @@ title: Diffraction Simulator
 
 | Сочетание | Действие |
 |----------|--------|
-| Двойной щелчок левой кнопкой по стереосети — **TEM holder** | Установить наклон держателя в эту точку |
-| Клавиши-стрелки — **TEM holder** | Пошагово изменять наклон держателя (сначала отметьте **Arrow keys**) |
+| Двойной щелчок левой кнопкой по стереосети — **держатель ПЭМ** | Установить наклон держателя в эту точку |
+| Клавиши-стрелки — **держатель ПЭМ** | Пошагово изменять наклон держателя (сначала отметьте **Arrow keys**) |
 | Перетаскивание файла `.prm` или изображения — **Detector geometry** | Загрузить геометрию детектора / накладываемое изображение |
 | Перетаскивание профиля `.txt` — **Dynamic compression** | Загрузить профиль давление/время (перетаскивайте красную линию на графике для прокрутки) |
 
@@ -105,18 +105,18 @@ title: Diffraction Simulator
 
 ## Меню File
 
-![Меню File](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![Меню «Файл»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | Пункт меню | Описание |
 |-----------|-------------|
-| **Save** | Сохранить отображаемую дифракционную картину в файл. |
-| **Save detector area** | Сохранить только обрезок области детектора. |
-| **Copy** | Скопировать отображаемое изображение в буфер обмена. |
-| **Copy detector area** | Скопировать только обрезок области детектора. |
+| **Сохранить изображение** | Сохранить отображаемую дифракционную картину в файл. |
+| **Сохранить область детектора** | Сохранить только обрезок области детектора. |
+| **Копировать** | Скопировать отображаемое изображение в буфер обмена. |
+| **Копировать область детектора** | Скопировать только обрезок области детектора. |
 
 ### Preset {#toolbar}
 
-![Меню Preset](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Меню «Предустановки»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Сохранение и вызов полной конфигурации симулятора — длины волны, геометрии детектора, настроек вкладок, свойств рефлексов и т. д. — в виде предустановки. Удобно для быстрого переключения между приборами / режимами съёмки.
 
@@ -128,10 +128,10 @@ title: Diffraction Simulator
 
 | Кнопка | Описание |
 |--------|-------------|
-| Spots | Показать / скрыть слой дифракционных рефлексов |
-| Kikuchi | Показать / скрыть слой линий Кикучи |
-| Debye | Показать / скрыть слой колец Дебая |
-| Scale | Показать / скрыть слой линий шкалы |
+| Рефлексы | Показать / скрыть слой дифракционных рефлексов |
+| Линии Кикучи | Показать / скрыть слой линий Кикучи |
+| Кольца Дебая | Показать / скрыть слой колец Дебая |
+| Масштаб | Показать / скрыть слой линий шкалы |
 | Index / d / Distance / Excitation error / Structure factor | Выбор подписи, прикрепляемой к каждому рефлексу |
 
 ---
@@ -140,26 +140,26 @@ title: Diffraction Simulator
 
 ### Экран
 
-![Экран](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Настройки отображения](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | Элемент | Описание |
 |------|-------------|
-| **Resolution** | Размер одного пикселя (мм). Он не обязан совпадать с фактическим размером пикселя детектора; он трактуется как масштаб отображения и автоматически обновляется при масштабировании мышью. |
-| **Size (W×H)** | Ширина и высота области построения в пикселях. В зависимости от разрешения вашего дисплея очень большие значения могут оказаться недоступными для установки. |
+| **Разрешение** | Размер одного пикселя (мм). Он не обязан совпадать с фактическим размером пикселя детектора; он трактуется как масштаб отображения и автоматически обновляется при масштабировании мышью. |
+| **Размер (Ш×В)** | Ширина и высота области построения в пикселях. В зависимости от разрешения вашего дисплея очень большие значения могут оказаться недоступными для установки. |
 | **Set centre / Fix centre** | Установить центр картины на любой пиксель области построения и при необходимости зафиксировать его. При фиксации центр нельзя переместить панорамированием мышью. |
 | **Horizontal flip / Vertical flip / Negative image** | Геометрические отражения (по горизонтали / по вертикали) и инверсия контраста отображаемой картины. Используйте их для согласования ориентации или контраста с экспериментальным изображением. |
 | **Reciprocal space** | Накладывает сферу Эвальда и векторы обратной решётки на картину, визуализируя, какие рефлексы возбуждены. |
 
 ### Детектор (длина камеры)
 
-![Детектор (длина камеры)](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Геометрия детектора & наложение](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **Camera length** : Расстояние от образца до детектора (мм).
+- **Длина камеры 2** : Расстояние от образца до детектора (мм).
 - **Details** : Открывает окно настроек геометрии детектора (см. [Геометрия детектора](#detector-geometry) ниже).
 
 ### Misc
 
-![Misc](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Прочее](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** : Величина поворота кристалла на пиксель перетаскивания мышью.
 - **TEM holder simulation** : Открывает окно моделирования, связанное с держателем (см. ниже).
@@ -178,13 +178,13 @@ title: Diffraction Simulator
 
 ### General
 
-![Вкладка General](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![Вкладка «Общие»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 Задаёт цвета рефлексов, подписей, линий Кикучи, колец Дебая и других наложений. Заданные здесь настройки применяются ко всем режимам отображения.
 
 ### Линии Кикучи
 
-![Вкладка Kikuchi](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![Вкладка «Линии Кикучи»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 Активна, когда линии Кикучи включены на панели инструментов.
 
@@ -194,7 +194,7 @@ title: Diffraction Simulator
 
 ### Кольца Дебая
 
-![Вкладка Debye](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![Вкладка «Кольца Дебая»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 Активна, когда кольца Дебая включены на панели инструментов.
 
@@ -203,7 +203,7 @@ title: Diffraction Simulator
 
 ### Scale
 
-![Вкладка Scale](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Вкладка «Масштаб»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Активна, когда линии шкалы включены на панели инструментов.
 

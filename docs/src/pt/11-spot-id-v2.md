@@ -38,7 +38,7 @@ Abrir / salvar uma imagem de difração. O mesmo carregamento por arrastar e sol
 
 ## Óptica
 
-![Optics](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Óptica](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Fonte incidente
 
@@ -52,7 +52,7 @@ O comprimento de câmera (mm) e o tamanho do pixel do detector (mm ou nm⁻¹). 
 
 ## Informação do spot
 
-![Spot information](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Informação do spot](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: Detecção automática de spots usando máximos locais e subtração de fundo.
 - **Number**: O número máximo de spots a detectar.
@@ -67,7 +67,7 @@ O comprimento de câmera (mm) e o tamanho do pixel do detector (mm ou nm⁻¹). 
 
 ---
 
-## Índice
+## Index
 
 ![Index](../assets/cap-pt-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 

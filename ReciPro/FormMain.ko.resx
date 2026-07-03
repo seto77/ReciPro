@@ -153,7 +153,7 @@
     <value>보는 방향</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
-    <value>현재 방향</value>
+    <value>현재 방위</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>복제</value>
@@ -324,10 +324,10 @@
 각 Φ(도)를 설정/표시합니다.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>선택한 결정을 위의 리스트에 추가합니다.</value>
+    <value>선택한 결정을 위의 목록에 추가합니다.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
-    <value>대칭성 정보 열기</value>
+    <value>대칭 정보 열기</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>HRTEM/STEM 영상 시뮬레이터를 엽니다. HRTEM은
@@ -335,7 +335,7 @@
 STEM은 주사 투과 전자현미경법입니다.</value>
   </data>
   <data name="buttonSetPlane.ToolTip" xml:space="preserve">
-    <value>지정한 결정면을 화면에 수직으로 설정합니다.
+    <value>지정한 결정면의 법선이 사용자 쪽(화면 밖)을 향하도록 설정합니다.
 축 지수도 함께 지정되어 있으면, 그 축 방향이 위쪽으로 표시됩니다.</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
@@ -369,7 +369,7 @@ STEM은 주사 투과 전자현미경법입니다.</value>
     <value>결정 데이터베이스 열기</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
-    <value>시선 방향으로 향하게 할 결정면 지수 (h k l)입니다. 'Plane'을
+    <value>시선 방향으로 향하게 할 결정면 지수 (h k l)입니다. '면'을
 클릭하면 이 면의 법선이 사용자 쪽(화면 밖)을
 향하도록 결정이 회전합니다.</value>
   </data>
@@ -384,7 +384,7 @@ STEM은 주사 투과 전자현미경법입니다.</value>
 속도(도/초)로 사용됩니다.</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>스트럭처 뷰어(3차원 결정 구조)를 엽니다.</value>
+    <value>구조 뷰어(3차원 결정 구조)를 엽니다.</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>결정의 현재 3차원 회전을 나타내는 오일러
@@ -395,7 +395,7 @@ STEM은 주사 투과 전자현미경법입니다.</value>
     <value>Spot ID v1 열기</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
-    <value>시선 방향으로 향하게 할 정대축의 지수 [u v w]입니다. 'Axis'를
+    <value>시선 방향으로 향하게 할 정대축의 지수 [u v w]입니다. '축'을
 클릭하면 이 방향이 사용자 쪽(화면 밖)을
 향하도록 결정이 회전합니다.</value>
   </data>
@@ -409,7 +409,7 @@ STEM은 주사 투과 전자현미경법입니다.</value>
     <value>선택한 결정을 아래로 이동합니다</value>
   </data>
   <data name="buttonReset.ToolTip" xml:space="preserve">
-    <value>회전 상태를 초기 방위로 리셋합니다</value>
+    <value>회전 상태를 초기 방위로 초기화합니다</value>
   </data>
   <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
     <value>체크하면, 지정한 축이 공간 내에 고정됩니다.</value>
@@ -426,7 +426,7 @@ STEM은 주사 투과 전자현미경법입니다.</value>
 면 지수도 함께 지정되어 있으면, 그 면 방향이 위쪽으로 표시됩니다.</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
-    <value>회전 기하 도구를 엽니다.</value>
+    <value>회전 기하학 도구를 엽니다.</value>
   </data>
   <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>선택한 결정을 위로 이동합니다</value>
@@ -439,24 +439,24 @@ STEM은 주사 투과 전자현미경법입니다.</value>
 최초 사용 시 약 55MB를 다운로드합니다.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
-    <value>동력학 계산에서 중성 원자 대신 이온(완전 Peng) 전자 산란
+    <value>동역학적 계산에서 중성 원자 대신 이온(완전 Peng) 전자 산란
 인자를 사용합니다. OFF = 중성 원자 IAM(기본값).</value>
   </data>
   <data name="buttonDuplicate.ToolTip" xml:space="preserve">
     <value>선택한 결정을 복제합니다.</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
-    <value>결정 리스트가 여기에 표시됩니다.
-새 결정을 추가하려면, 아래 'Crystal Information' 패널에서 데이터를 설정하고 'Add'를 클릭하십시오.
-결정을 수정하려면, 결정을 선택하고 'Crystal Information' 패널에서 데이터를 갱신한 후 'Replace'를 클릭하십시오.
-결정을 리스트에서 제거하려면, 결정을 선택하고 'Delete'를 클릭하십시오.
-모든 결정을 리스트에서 제거하려면, 'Clear All'을 클릭하십시오.</value>
+    <value>결정 목록이 여기에 표시됩니다.
+새 결정을 추가하려면, 아래 '결정 정보' 패널에서 데이터를 설정하고 '추가'를 클릭하십시오.
+결정을 수정하려면, 결정을 선택하고 '결정 정보' 패널에서 데이터를 갱신한 후 '교체'를 클릭하십시오.
+결정을 목록에서 제거하려면, 결정을 선택하고 '삭제'를 클릭하십시오.
+모든 결정을 목록에서 제거하려면, '모든 결정 지우기'를 클릭하십시오.</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>선택한 결정의 현재 방위입니다.</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>궤도 시뮬레이터를 엽니다.</value>
+    <value>궤적 시뮬레이터를 엽니다.</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
     <value>체크하면, 위의 버튼을 클릭했을 때
@@ -471,7 +471,7 @@ EBSD(전자 후방산란 회절) 시뮬레이터를
 엽니다.</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
-    <value>모든 결정을 삭제합니다</value>
+    <value>모든 결정을 지웁니다</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>위에서 선택한 결정을
@@ -481,6 +481,6 @@ EBSD(전자 후방산란 회절) 시뮬레이터를
     <value>스테레오넷(스테레오 투영 / 울프 네트)을 엽니다.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
-    <value>「스폿 ID v2」 기능을 엽니다.</value>
+    <value>Spot ID v2 열기</value>
   </data>
 </root>

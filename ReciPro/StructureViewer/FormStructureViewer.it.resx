@@ -206,7 +206,7 @@
     <value>Dim. simbolo</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
-    <value>Larghezza linea</value>
+    <value>Spessore linea</value>
   </data>
   <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
     <value>Specchi</value>
@@ -224,7 +224,7 @@
     <value>Dim. simbolo</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
-    <value>Larghezza linea</value>
+    <value>Spessore linea</value>
   </data>
   <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
     <value>Rotoinversioni</value>
@@ -409,7 +409,7 @@ dai limiti</value>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
 l'asse c, in coordinate frazionarie;
-vengono disegnati gli atomi entro Centro ± Range.</value>
+vengono disegnati gli atomi entro Centro ± Intervallo.</value>
   </data>
   <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
@@ -419,7 +419,7 @@ vengono disegnati gli atomi entro Centro ± Range.</value>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
 l'asse b, in coordinate frazionarie;
-vengono disegnati gli atomi entro Centro ± Range.</value>
+vengono disegnati gli atomi entro Centro ± Intervallo.</value>
   </data>
   <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
@@ -429,7 +429,7 @@ vengono disegnati gli atomi entro Centro ± Range.</value>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
 l'asse a, in coordinate frazionarie;
-vengono disegnati gli atomi entro Centro ± Range.</value>
+vengono disegnati gli atomi entro Centro ± Intervallo.</value>
   </data>
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata lungo
@@ -438,7 +438,7 @@ vengono disegnati gli atomi entro Centro ± Range.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value>Centro della regione visualizzata lungo l'asse c, in
-coordinate frazionarie; combinato con Range imposta
+coordinate frazionarie; combinato con Intervallo imposta
 i piani di delimitazione min/max della struttura disegnata.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
@@ -448,7 +448,7 @@ i piani di delimitazione min/max della struttura disegnata.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>Centro della regione visualizzata lungo l'asse b, in
-coordinate frazionarie; combinato con Range imposta
+coordinate frazionarie; combinato con Intervallo imposta
 i piani di delimitazione min/max della struttura disegnata.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
@@ -458,7 +458,7 @@ i piani di delimitazione min/max della struttura disegnata.</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value>Centro della regione visualizzata lungo l'asse a, in
-coordinate frazionarie; combinato con Range imposta
+coordinate frazionarie; combinato con Intervallo imposta
 i piani di delimitazione min/max della struttura disegnata.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
@@ -503,7 +503,7 @@ in base ai piani cristallini come segue</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
-all'asse a (usato quando è selezionato 'Each plane').</value>
+all'asse a (usato quando è selezionato 'Ogni piano').</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
@@ -511,7 +511,7 @@ all'asse a (usato quando è selezionato 'Each plane').</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
-all'asse b (usato quando è selezionato 'Each plane').</value>
+all'asse b (usato quando è selezionato 'Ogni piano').</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
@@ -519,7 +519,7 @@ all'asse b (usato quando è selezionato 'Each plane').</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
-all'asse c (usato quando è selezionato 'Each plane').</value>
+all'asse c (usato quando è selezionato 'Ogni piano').</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>Colore della faccia della cella elementare normale
@@ -545,7 +545,7 @@ all'asse c (usato quando è selezionato 'Each plane').</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
-l'asse a (usato quando è selezionato 'Each edge').</value>
+l'asse a (usato quando è selezionato 'Ogni spigolo').</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
@@ -553,7 +553,7 @@ l'asse a (usato quando è selezionato 'Each edge').</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
-l'asse b (usato quando è selezionato 'Each edge').</value>
+l'asse b (usato quando è selezionato 'Ogni spigolo').</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
@@ -561,7 +561,7 @@ l'asse b (usato quando è selezionato 'Each edge').</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
-l'asse c (usato quando è selezionato 'Each edge').</value>
+l'asse c (usato quando è selezionato 'Ogni spigolo').</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>Colore degli spigoli della cella elementare lungo
@@ -693,7 +693,7 @@ di questa profondità restano completamente opachi (-30 a 30)</value>
   </data>
   <data name="colorControlPlane.ToolTip" xml:space="preserve">
     <value>Imposta il colore di visualizzazione dei simboli
-dei piani di simmetria (piani speculari e di scorrimento).</value>
+dei piani di simmetria (piani di riflessione e di scorrimento).</value>
   </data>
   <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
     <value>Imposta il colore di visualizzazione dei simboli

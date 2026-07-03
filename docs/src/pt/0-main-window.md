@@ -141,7 +141,7 @@ Gira pelo ângulo Step. Marque Animation para uma rotação contínua.
 
 ### Visualizar ao longo de
 
-![Visualizar ao longo de](../assets/cap-pt-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![Ver ao longo](../assets/cap-pt-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Alinha um eixo de zona [*uvw*] ou um plano cristalino (*hkl*) perpendicular à tela.
 

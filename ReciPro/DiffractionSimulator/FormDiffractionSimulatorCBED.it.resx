@@ -146,12 +146,12 @@ cambia; usare Auto salvo nel benchmarking.</value>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
     <value>Numero di thread CPU usati per il calcolo delle onde di Bloch
 nel CBED (diffrazione elettronica a fascio convergente), 1-128.
-Disabilitato quando il Solver è impostato su Auto.</value>
+Disabilitato quando il Risolutore è impostato su Auto.</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>Numero di thread CPU usati per il calcolo delle onde di Bloch
 nel CBED (diffrazione elettronica a fascio convergente), 1-128.
-Disabilitato quando il Solver è impostato su Auto.</value>
+Disabilitato quando il Risolutore è impostato su Auto.</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
     <value>Modalità CBED (diffrazione elettronica a fascio convergente):

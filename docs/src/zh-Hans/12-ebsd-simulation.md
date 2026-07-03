@@ -104,7 +104,7 @@
 
 ## Master pattern
 
-![Master pattern](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxMasterPattern.png)
+![主花样](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxMasterPattern.png)
 
 master pattern 是所有方向上的背散射衍射强度，由动力学理论通过 **Build Master Pattern** 预先计算。
 

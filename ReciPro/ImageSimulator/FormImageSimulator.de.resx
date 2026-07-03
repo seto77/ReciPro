@@ -645,7 +645,7 @@ Bildübertragungseffekte anzuwenden.</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Probendicke.
-Dieser Wert wird ignoriert, wenn der Modus "Serial image" ausgewählt ist.</value>
+Dieser Wert wird ignoriert, wenn der Modus "Serienbild" ausgewählt ist.</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value>Probendicke.
@@ -734,12 +734,12 @@ U'g) als Betrags- und Phasenbilder an.</value>
 U'g) als Real- und Imaginärteil-Bilder an.</value>
   </data>
   <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
-    <value>Serien-Modus: erzeugt eine Bildserie unter
+    <value>Serienbild: erzeugt eine Bildserie unter
 schrittweiser Änderung von Defokus und/oder Probendicke
 (Durchfokus- / Durchdicken-Serie).</value>
   </data>
   <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
-    <value>Einzel-Modus: erzeugt ein Bild bei den
+    <value>Einzelbild: erzeugt ein Bild bei den
 aktuellen Einstellungen für Defokus und Dicke.</value>
   </data>
   <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
@@ -885,7 +885,7 @@ das TEM-Abbildungsbedingungen speichert und abruft.</value>
 des ringförmigen Dunkelfeld-Detektors.</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
-    <value>Farbskala zur Abbildung der Bildintensität (Grau oder Kalt-Warm).</value>
+    <value>Farbskala zur Abbildung der Bildintensität (Grau oder Cold-Warm).</value>
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>Konvergenz-Halbwinkel α (mrad) der einfallenden STEM-Sonde.</value>
@@ -896,7 +896,7 @@ modelliert die Unschärfe der STEM-Sonde durch die endliche Quellgröße.</value
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Probendicke (nm). Dieser Wert wird ignoriert,
-wenn der Modus "Serial image" gewählt ist.</value>
+wenn der Modus "Serienbild" gewählt ist.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Wählt, welche Größe (Defokus oder Dicke) entlang

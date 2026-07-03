@@ -106,7 +106,7 @@
     <value>Размер</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Подпись</value>
+    <value>Метка</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
     <value>Элементарная ячейка</value>
@@ -523,7 +523,7 @@ TDS (термическое диффузное рассеяние).</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Внутренний полуугол сбора кольцевого STEM-детектора
-(mrad); сигналы внутри этого угла исключаются.</value>
+(mrad); сигналы ниже этого угла исключаются.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Внутренний полуугол сбора кольцевого STEM-детектора
@@ -875,7 +875,7 @@ U'g) как изображения действительной и мнимой 
   </data>
   <data name="checkBoxPreset.ToolTip" xml:space="preserve">
     <value>Показать или скрыть окно предустановок, в котором
-сохраняются и вызываются условия съёмки TEM.</value>
+сохраняются и вызываются условия съёмки ПЭМ.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Внутренний/внешний полуугол сбора (mrad)

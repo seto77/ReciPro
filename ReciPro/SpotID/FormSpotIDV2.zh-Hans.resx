@@ -66,7 +66,7 @@
     <value>透射</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Text" xml:space="preserve">
-    <value>忽略禁戒衍射</value>
+    <value>忽略禁戒反射</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
     <value>衍射点信息</value>
@@ -246,7 +246,7 @@
     <value>在观测斑点上显示标记符号</value>
   </data>
   <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
-    <value>识别斑点
+    <value>识别衍射点
 （需要在主窗口中选择合适的晶体）</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
@@ -270,7 +270,7 @@
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
     <value>在厚度/方位精修过程中搜索入射束方向
-所覆盖的角度半范围（半收敛角，
+所覆盖的角度半范围（半会聚角，
 单位 mrad）。</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
@@ -308,9 +308,9 @@
     <value>停止当前计算</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>观测斑点的列表；勾选 'Direct' 以设定直接
-束斑点，点击某行的 'Fit' 以拟合其峰，
-或选择某行以在图样上高亮该斑点</value>
+    <value>观测衍射点的列表；勾选 '透射' 以设定透射
+点，点击某行的 '拟合' 以拟合其峰，
+或选择某行以在图样上高亮该衍射点</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
     <value>动力学厚度/方向精修中纳入的衍射波
@@ -359,15 +359,15 @@
 以伪 Voigt 函数进行拟合。</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
-    <value>从列表中删除当前所选的斑点
-（使用 Clear 按钮可删除所有斑点）。</value>
+    <value>从列表中删除当前所选的衍射点
+（如需删除全部衍射点，请使用 '清除所有衍射点' 按钮）。</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>找到的标定候选列表；选择某行
 即可在下方显示其晶粒方位。</value>
   </data>
   <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
-    <value>在衍射图样上显示引导圆</value>
+    <value>在衍射图样上显示参考圆</value>
   </data>
   <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
     <value>所选候选中包含的晶粒方位；选择某行
@@ -390,7 +390,7 @@
     <value>在观测斑点上显示编号</value>
   </data>
   <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
-    <value>显示所选斑点的详细信息</value>
+    <value>显示所选衍射点的详细信息</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
     <value>将观测斑点与候选反射匹配时允许的
@@ -406,14 +406,14 @@
     <value>搜索单个晶粒的方位</value>
   </data>
   <data name="buttonClearSpots.ToolTip" xml:space="preserve">
-    <value>清除所有斑点</value>
+    <value>清除所有衍射点</value>
   </data>
   <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
     <value>保存上述信息</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>将每个斑点的拟合半径都设为当前
-'Fitting range' 的值 (px)。</value>
+    <value>将每个衍射点的拟合半径都设为当前
+'拟合范围' 的值 (px)。</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>像素尺寸单位：倒纳米 (nm⁻¹)</value>

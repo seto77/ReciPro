@@ -86,7 +86,7 @@
 
 ## 图像模式（single / serial）
 
-![图像模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![单幅/序列模式](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** ：在当前厚度下计算一张 STEM 图像。
 - **Serial image** ：生成一系列图像，厚度 / 欠焦量按阶梯变化（由 **Start / Step / Num** 设置；下方的列表也可直接编辑）。

@@ -187,7 +187,7 @@ Sind die Schriftarten nicht installiert, behält ReciPro seine Standard-Schrifta
 **Ausblick für diesen Weg – zwei ehrliche Hinweise:**
 
 - Das experimentelle **win-arm64**-ZIP läuft auf aktuellen Macs **nicht**, auch nicht auf Apple Silicon: Die heutigen macOS-Wine-Builds (einschließlich Sikarugir) führen x86_64-Windows-Binärdateien über Rosetta 2 aus und haben keinen Mechanismus, um ARM64-Windows-Binärdateien auszuführen. Verwenden Sie auf einem Mac immer das **win-x64** Portable ZIP.
-- Apple stellt Rosetta 2 schrittweise ein. macOS 27 (Herbst 2026) ist als letzte Version mit voller Rosetta-2-Unterstützung angekündigt, sodass der derzeitige Weg über x64 + Rosetta voraussichtlich ab macOS 28 (Herbst 2027) nicht mehr funktioniert. Ein natives ARM64-Wine für macOS wird stromaufwärts entwickelt; falls es zustande kommt, könnte das win-arm64-ZIP der Nachfolger auf dem Mac werden, das lässt sich aber noch nicht versprechen.
+- Apple stellt Rosetta 2 schrittweise ein. macOS 27 (Herbst 2026) ist als letzte Version mit voller Rosetta-2-Unterstützung angekündigt, sodass der derzeitige Weg über x64 + Rosetta voraussichtlich ab macOS 28 (Herbst 2027) nicht mehr funktioniert. Ein natives ARM64-Wine für macOS wird im Upstream-Projekt entwickelt; falls es zustande kommt, könnte das win-arm64-ZIP der Nachfolger auf dem Mac werden, das lässt sich aber noch nicht versprechen.
 
 ### Läuft ReciPro unter Windows on ARM (ARM64)? {#windows-on-arm}
 

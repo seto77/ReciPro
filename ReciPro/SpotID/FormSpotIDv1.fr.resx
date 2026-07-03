@@ -457,100 +457,100 @@ du Pattern 2 (0-50%, par défaut 5).</value>
 2 (0-50%, par défaut 5 ; utilisée en mode 'Three Sides').</value>
   </data>
   <data name="label27.ToolTip" xml:space="preserve">
-    <value>L1 : longueur (mm sur le cliché) du premier
-vecteur du réseau réciproque du Motif 2.</value>
+    <value>L1 : longueur (mm sur la photo) du premier
+vecteur du réseau réciproque du Pattern 2.</value>
   </data>
   <data name="label28.ToolTip" xml:space="preserve">
-    <value>L2 : longueur (mm sur le cliché) du deuxième
-vecteur du réseau réciproque du Motif 2.</value>
+    <value>L2 : longueur (mm sur la photo) du deuxième
+vecteur du réseau réciproque du Pattern 2.</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
     <value>Angle θ (degrés) entre les vecteurs
-réciproques L1 et L2 du Motif 2.</value>
+réciproques L1 et L2 du Pattern 2.</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
-    <value>L3 : longueur (mm sur le cliché) du
+    <value>L3 : longueur (mm sur la photo) du
 troisième vecteur du réseau réciproque du
-Motif 2, utilisée en mode « Three Sides ».</value>
+Pattern 2, utilisée en mode 'Three Sides'.</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
-    <value>Degrés : unité de l'angle θ entre L1 et L2 du Motif 2.</value>
+    <value>Degrés : unité de l'angle θ entre L1 et L2 du Pattern 2.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Tolérance de recherche pour L2 du Motif 1, en
-pourcentage de sa longueur (0-50 %, défaut 5).</value>
+    <value>Tolérance de recherche pour L2 du Pattern 1, en
+pourcentage de sa longueur (0-50%, par défaut 5).</value>
   </data>
   <data name="label47.ToolTip" xml:space="preserve">
     <value>Longueur mesurée L1 du premier vecteur de diffraction
-du Cliché 3, en mm sur le support d'enregistrement.</value>
+de Photo 3, en mm sur le support d'enregistrement.</value>
   </data>
   <data name="label52.ToolTip" xml:space="preserve">
     <value>Longueur mesurée L2 du deuxième vecteur de
-diffraction du Cliché 3, en mm sur le support d'enregistrement.</value>
+diffraction de Photo 3, en mm sur le support d'enregistrement.</value>
   </data>
   <data name="label55.ToolTip" xml:space="preserve">
-    <value>Angle thêta (degrés) entre les vecteurs L1 et L2 du Cliché 3.</value>
+    <value>Angle theta (degrés) entre les vecteurs L1 et L2 de Photo 3.</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
     <value>Longueur L3 du troisième côté du triangle
-du Cliché 3, en mm (utilisée en mode « Three Sides »).</value>
+de Photo 3, en mm (utilisée en mode « Three Sides »).</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Premier angle d'inclinaison du porte-objet du goniomètre
-(Tilt 1, degrés) lors de la prise du Cliché 2.</value>
+(Tilt 1, degrés) lors de la prise de Photo 2.</value>
   </data>
   <data name="label69.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à L1
-du Motif 1 (pourcentage de sa longueur).</value>
+du Pattern 1 (pourcentage de sa longueur).</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>Deuxième angle d'inclinaison du porte-objet du goniomètre
-(Tilt 2, degrés) lors de la prise du Cliché 2.</value>
+(Tilt 2, degrés) lors de la prise de Photo 2.</value>
   </data>
   <data name="label70.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à L2
-du Motif 1 (pourcentage de sa longueur).</value>
+du Pattern 1 (pourcentage de sa longueur).</value>
   </data>
   <data name="label71.ToolTip" xml:space="preserve">
-    <value>Tolérance de recherche plus/moins appliquée à L3 du Motif 1
+    <value>Tolérance de recherche plus/moins appliquée à L3 du Pattern 1
 (pourcentage de sa longueur ; utilisée en mode « Three Sides »).</value>
   </data>
   <data name="label75.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à
-l'angle θ du Motif 1 (degrés ;
+l'angle θ du Pattern 1 (degrés ;
 utilisée en mode « Two Sides and an Angle »).</value>
   </data>
   <data name="label76.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à L1
-du Motif 2 (pourcentage de sa longueur).</value>
+du Pattern 2 (pourcentage de sa longueur).</value>
   </data>
   <data name="label77.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à L2
-du Motif 2 (pourcentage de sa longueur).</value>
+du Pattern 2 (pourcentage de sa longueur).</value>
   </data>
   <data name="label78.ToolTip" xml:space="preserve">
-    <value>Tolérance de recherche plus/moins appliquée à L3 du Motif 2
+    <value>Tolérance de recherche plus/moins appliquée à L3 du Pattern 2
 (pourcentage de sa longueur ; utilisée en mode « Three Sides »).</value>
   </data>
   <data name="label79.ToolTip" xml:space="preserve">
     <value>Tolérance de recherche plus/moins appliquée à
-l'angle θ du Motif 2 (degrés ;
+l'angle θ du Pattern 2 (degrés ;
 utilisée en mode « Two Sides and an Angle »).</value>
   </data>
   <data name="labelPhoto1Mode1_1.ToolTip" xml:space="preserve">
     <value>Angle θ (degrés) entre les vecteurs
-réciproques L1 et L2 du Motif 1.</value>
+réciproques L1 et L2 du Pattern 1.</value>
   </data>
   <data name="labelPhoto1Mode1_3.ToolTip" xml:space="preserve">
-    <value>Degrés : unité de l'angle θ entre L1 et L2 du Motif 1.</value>
+    <value>Degrés : unité de l'angle θ entre L1 et L2 du Pattern 1.</value>
   </data>
   <data name="labelPhoto1Mode1_4.ToolTip" xml:space="preserve">
     <value>Degrés : unité de la tolérance de recherche d'angle
-pour θ du Motif 1 (0-30, défaut 3).</value>
+pour θ du Pattern 1 (0-30, par défaut 3).</value>
   </data>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
-    <value>Tolérance de recherche pour L3 du Motif 1,
-en pourcentage de sa longueur (0-50 %,
-défaut 5 ; utilisée en mode « Three Sides »).</value>
+    <value>Tolérance de recherche pour L3 du Pattern 1,
+en pourcentage de sa longueur (0-50%,
+par défaut 5 ; utilisée en mode « Three Sides »).</value>
   </data>
 </root>

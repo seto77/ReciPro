@@ -213,8 +213,8 @@ reziproke Gitterabstände für die Indizierung um.</value>
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Winkel θ (Grad) zwischen den beiden reziproken
-Vektoren L1 und L2 von Pattern 1. Im Modus 'Two
-Sides and an Angle' editierbar; im Modus 'Three Sides'
+Vektoren L1 und L2 von Pattern 1. Im Modus 'Zwei
+Seiten und ein Winkel' editierbar; im Modus 'Drei Seiten'
 wird er aus L1/L2/L3 berechnet und schreibgeschützt angezeigt.</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -230,8 +230,8 @@ wenn Zonenachsen aus mehreren Fotos gesucht werden.</value>
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Winkel θ (Grad) zwischen den beiden reziproken
-Vektoren L1 und L2 von Pattern 2. Im Modus 'Two
-Sides and an Angle' editierbar; im Modus 'Three Sides'
+Vektoren L1 und L2 von Pattern 2. Im Modus 'Zwei
+Seiten und ein Winkel' editierbar; im Modus 'Drei Seiten'
 aus L1/L2/L3 berechnet und schreibgeschützt angezeigt.</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
@@ -247,9 +247,9 @@ wenn Zonenachsen aus mehreren Fotos gesucht werden.</value>
   </data>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Winkel theta (Grad) zwischen den beiden Beugungs-
-vektoren L1 und L2 von Photo 3. Im Modus 'Three Sides'
+vektoren L1 und L2 von Photo 3. Im Modus 'Drei Seiten'
 schreibgeschützt und aus den drei Seiten berechnet;
-im Modus 'Two Sides and an Angle' editierbar.</value>
+im Modus 'Zwei Seiten und ein Winkel' editierbar.</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
     <value>Kippwinkel (Grad) der ersten Halterachse,
@@ -290,13 +290,13 @@ bis zu diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</val
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für L3 von Pattern 1, als
 Prozentsatz seiner Länge (0-50 %, Standard 5).
-Nur im Modus 'Three Sides' verwendet; Übereinstimmungen innerhalb
+Nur im Modus 'Drei Seiten' verwendet; Übereinstimmungen innerhalb
 dieses Anteils des eingegebenen L3 werden akzeptiert.</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für den Winkel θ von Pattern 1, in
-Grad (0-30, Standard 3). Nur im Modus 'Two Sides
-and an Angle' verwendet; Zonenachsen, deren Winkel um
+Grad (0-30, Standard 3). Nur im Modus 'Zwei Seiten
+und ein Winkel' verwendet; Zonenachsen, deren Winkel um
 bis zu so viele Grad abweicht, werden noch als Übereinstimmung akzeptiert.</value>
   </data>
   <data name="numericBoxPhoto1Tilt1Err.ToolTip" xml:space="preserve">
@@ -324,13 +324,13 @@ diesen Anteil abweicht, werden noch als Übereinstimmung akzeptiert.</value>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für L3 von Pattern 2, als
 Prozentsatz seiner Länge (0-50 %, Standard 5).
-Nur im Modus 'Three Sides' verwendet; Übereinstimmungen
+Nur im Modus 'Drei Seiten' verwendet; Übereinstimmungen
 innerhalb dieses Anteils von L3 werden akzeptiert.</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für den Winkel θ von Pattern
 2, in Grad (0-30, Standard 3). Nur im Modus
-'Two Sides and an Angle' verwendet; Winkel innerhalb
+'Zwei Seiten und ein Winkel' verwendet; Winkel innerhalb
 so vieler Grad werden als Übereinstimmung akzeptiert.</value>
   </data>
   <data name="numericBoxPhoto2Tilt1Err.ToolTip" xml:space="preserve">
@@ -355,13 +355,13 @@ bis zu diesen Betrag abweicht, werden als Übereinstimmung akzeptiert.</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für die Länge der dritten Seite L3 von Photo 3,
-in Prozent (0-50). Nur im Modus 'Three Sides' verwendet.</value>
+in Prozent (0-50). Nur im Modus 'Drei Seiten' verwendet.</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Suchtoleranz für den Winkel theta von Photo 3, in
 Grad (0-30). Kandidaten, deren berechneter Winkel um
 bis zu diesen Betrag abweicht, werden akzeptiert. Nur
-im Modus 'Two Sides and an Angle' verwendet.</value>
+im Modus 'Zwei Seiten und ein Winkel' verwendet.</value>
   </data>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
     <value>Toleranz (± Grad, 0-10) für den Tilt 1-

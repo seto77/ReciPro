@@ -110,7 +110,7 @@ Ouvre la fenêtre [Macro](20-macro/index.md) pour automatiser les opérations de
 
 ## Contrôle de l'orientation du cristal
 
-L'état de rotation du cristal est partagé par le simulateur de diffraction, le Visualiseur de structure, le Stéréonet, le Simulateur HRTEM/STEM, le Simulateur EBSD et d'autres fenêtres. Ce n'est pas seulement un réglage d'affichage — il définit la direction du faisceau incident et la relation entre les coordonnées du cristal utilisée par les simulations. Un court tutoriel vidéo est disponible sur la page [Mode d'emploi](appendix/a0-how-to-use.md).
+L'état de rotation du cristal est partagé par le simulateur de diffraction, le Visualiseur de structure, le Stéréonet, le Simulateur HRTEM/STEM, le Simulateur EBSD et d'autres fenêtres. Ce n'est pas seulement un réglage d'affichage — il définit la direction du faisceau incident et la relation avec le système de coordonnées du cristal utilisée par les simulations. Un court tutoriel vidéo est disponible sur la page [Mode d'emploi](appendix/a0-how-to-use.md).
 
 ### Orientation actuelle
 

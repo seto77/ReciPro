@@ -12,7 +12,7 @@ GUI 조건: Wave Length = Electron · Incident beam = Convergence (CBED, electro
 
 ## 입력 매개변수
 
-![Input parameters](../../assets/cap-ko-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
+![입력 매개변수](../../assets/cap-ko-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
 | 매개변수 | 설명 | 기본값 / 일반값 |
 |-----------|-------------|-------------------|
@@ -36,7 +36,7 @@ GUI 조건: Wave Length = Electron · Incident beam = Convergence (CBED, electro
 
 ## 출력 매개변수
 
-![Output parameters](../../assets/cap-ko-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![출력 매개변수](../../assets/cap-ko-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 계산이 완료되면 출력 매개변수를 사용할 수 있게 됩니다. 이들은 모두 재계산 없이 표시만 변경합니다.
 
@@ -59,7 +59,7 @@ CBED에서는 입사빔을 서로 다른 방향을 가진 평면파의 원뿔로
 
 ---
 
-## 같이 보기
+## 관련 항목
 
 - [회절 시뮬레이터 (개요)](index.md)
 - [SAED 시뮬레이션](1-saed-simulation.md)

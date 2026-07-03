@@ -69,13 +69,13 @@
     <value>Ignorar reflexiones prohibidas</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
-    <value>Información de la reflexión</value>
+    <value>Información del punto</value>
   </data>
   <data name="Range.HeaderText" xml:space="preserve">
     <value>Rango (radio)</value>
   </data>
   <data name="AssignedSpots.HeaderText" xml:space="preserve">
-    <value>Reflexiones asignadas</value>
+    <value>Puntos asignados</value>
   </data>
   <data name="numericBoxSemiangle.HeaderText" xml:space="preserve">
     <value>Rango angular de búsqueda</value>
@@ -126,7 +126,7 @@
     <value>Número</value>
   </data>
   <data name="buttonFindSpots.Text" xml:space="preserve">
-    <value>Detectar &amp;&amp; ajustar reflex.</value>
+    <value>Detectar &amp;&amp; ajustar puntos</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Clic derecho : Alejar</value>
@@ -153,7 +153,7 @@
     <value>Eliminar</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Borrar todas las reflex.</value>
+    <value>Borrar todos los puntos</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
     <value>Mostrar símbolos</value>
@@ -183,7 +183,7 @@
     <value>Detalles de la función de ajuste</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Detalles de la reflexión</value>
+    <value>Detalles del punto</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>Rango de ajuste (radio)</value>
@@ -198,7 +198,7 @@
     <value>A (intensidad)</value>
   </data>
   <data name="assignedSpotsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Reflexiones asignadas</value>
+    <value>Puntos asignados</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
     <value>como Imagen (formato PNG)</value>

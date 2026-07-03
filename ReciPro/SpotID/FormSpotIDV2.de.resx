@@ -96,7 +96,7 @@
     <value>Mehrere Körner</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Metafile (EMF)</value>
+    <value>als Metadatei (EMF)</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>Beschriftung anzeigen</value>
@@ -174,7 +174,7 @@
     <value>Kristallname</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>als Metafile (EMF)</value>
+    <value>als Metadatei (EMF)</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
     <value>Einzelkorn</value>
@@ -406,7 +406,7 @@ Kandidatenreflexen zulässig ist (0,1–10 %).</value>
     <value>Orientierung eines einzelnen Kristallkorns suchen</value>
   </data>
   <data name="buttonClearSpots.ToolTip" xml:space="preserve">
-    <value>Alle Spots löschen</value>
+    <value>Alle Reflexe leeren</value>
   </data>
   <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
     <value>Die obigen Informationen speichern</value>

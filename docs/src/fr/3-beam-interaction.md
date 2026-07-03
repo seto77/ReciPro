@@ -4,7 +4,7 @@ L'**Interaction du faisceau** décrit comment le cristal sélectionné interagit
 
 ![Interaction du faisceau](../assets/cap-fr-auto/FormBeamInteraction.png)
 
-Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Reflections**, **Attenuations & Transport**, **Scattering factors** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
+Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Réflexions**, **Atténuations & transport**, **Facteurs de diffusion** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
 
 !!! tip "Contexte de physique du solide (Annexe A2)"
     La diffusion et la physique du solide sous-jacentes à ces quatre onglets — facteurs de diffusion atomiques, facteur de structure, atténuation et transport du faisceau, et fluorescence — sont expliquées dans **[Annexe A2. Interaction du faisceau (contexte de physique du solide)](appendix/a2-beam-interaction/index.md)**.
@@ -16,7 +16,7 @@ Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; 
 
 ## Raccourcis clavier et souris
 
-Cette fenêtre n'a pas de combinaisons de touches spéciales. <kbd>F1</kbd> ouvre cette page du manuel. Dans l'onglet **Scattering factors**, la ligne de curseur verticale peut être **glissée** pour lire le facteur de diffusion de chaque élément à cette position, et chaque onglet possède un bouton **Copy** qui exporte son tableau sous forme de texte collable dans un tableur.
+Cette fenêtre n'a pas de combinaisons de touches spéciales. <kbd>F1</kbd> ouvre cette page du manuel. Dans l'onglet **Facteurs de diffusion**, la ligne de curseur verticale peut être **glissée** pour lire le facteur de diffusion de chaque élément à cette position, et chaque onglet possède un bouton **Copier** qui exporte son tableau sous forme de texte collable dans un tableur.
 
 → Voir **[21. Raccourcis clavier et souris](21-shortcuts.md)** pour toutes les fenêtres en un coup d'œil.
 
@@ -30,39 +30,39 @@ Le bandeau supérieur est un **Wave Length Control** partagé avec les autres si
 
 - **X-ray / Electron / Neutron** : les facteurs de diffusion atomiques et la physique de l'interaction diffèrent selon le type de faisceau incident, ils sont donc commutés ici.
 - Pour les **X-ray**, le choix de l'**Element** (matériau de l'anode) et de la raie caractéristique (Kα, etc.) fixe automatiquement la longueur d'onde de ce rayonnement X caractéristique.
-- **Energy (keV)** et **Wavelength (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Reflections**.
+- **Energy (keV)** et **Wavelength (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Réflexions**.
 - **Unit (Å / nm)** change l'unité de longueur utilisée pour les distances d et les grandeurs similaires.
 
 Le faisceau choisi détermine aussi quels onglets et quelles courbes ont un sens :
 
-| Faisceau | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Faisceau | Réflexions | Atténuations & transport | Facteurs de diffusion | Fluorescence |
 |------|------|------|------|------|
 | **X-ray** | facteurs de structure incl. dispersion anomale | µ/ρ, µ, transmission + seuils d'absorption (vs énergie) | $f(s)$ ou $F(q)+S(q)$ | raies caractéristiques + bâtons EDX |
 | **Electron** | facteurs de structure électroniques | σ, MFP, \|dE/ds\|, IMFP, parcours (vs énergie) | Peng / Kirkland / 8-Gaussians | — (masqué) |
 | **Neutron** | facteurs de structure nucléaires | longueurs de diffusion & sections efficaces (pas de courbe d'énergie) | longueurs de diffusion (pas de dépendance en *s*) | — (masqué) |
 
-L'onglet **Fluorescence** est réservé aux rayons X et disparaît pour les faisceaux d'électrons et de neutrons. Pour les neutrons, les graphiques dépendant de l'énergie dans **Attenuations & Transport** et **Scattering factors** sont remplacés par des tableaux d'éléments, car la longueur de diffusion nucléaire ne dépend ni de l'angle de diffusion ni de l'énergie.
+L'onglet **Fluorescence** est réservé aux rayons X et disparaît pour les faisceaux d'électrons et de neutrons. Pour les neutrons, les graphiques dépendant de l'énergie dans **Atténuations & transport** et **Facteurs de diffusion** sont remplacés par des tableaux d'éléments, car la longueur de diffusion nucléaire ne dépend ni de l'angle de diffusion ni de l'énergie.
 
 ---
 
-## Onglet Reflections
+## Onglet Réflexions
 
 Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **facteur de structure** et l'intensité de diffraction de chacun. Pour les rayons X, le facteur de structure inclut désormais les termes de **dispersion anomale** $f'/f''$ à l'énergie actuelle, de sorte que `F_inv` (la partie imaginaire) est généralement non nul près d'un seuil d'absorption. La disposition est la même pour chaque faisceau ; seules les valeurs du facteur de structure et le 2θ de chaque réflexion changent.
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-reflections.png)
+    ![Réflexions — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-reflections.png)
+    ![Réflexions — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Réflexions — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), incluant la multiplicité et le facteur de Lorentz–polarisation. Lorsqu'elle est désactivée, l'intensité du facteur de structure est affichée. L'activer force également *Hide equivalent planes* et *Hide prohibited planes*.
-- **Hide equivalent planes** : regroupe les plans cristallographiquement équivalents en une seule entrée.
-- **Hide prohibited planes** : exclut les plans dont l'intensité est nulle d'après les règles d'extinction.
+- **Intensités de diffraction des poudres (optique de Bragg-Brentano)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), incluant la multiplicité et le facteur de Lorentz–polarisation. Lorsqu'elle est désactivée, l'intensité du facteur de structure est affichée. L'activer force également *Masquer les plans équivalents* et *Masquer les plans interdits*.
+- **Masquer les plans équivalents** : regroupe les plans cristallographiquement équivalents en une seule entrée.
+- **Masquer les plans interdits** : exclut les plans dont l'intensité est nulle d'après les règles d'extinction.
 - **d-Spacing Cutoff >** : exclut les réflexions dont la distance d est inférieure à cette valeur (l'unité de longueur suit la sélection **Unit**).
 
 Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents par symétrie) :
@@ -88,18 +88,18 @@ Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents
 
 ---
 
-## Onglet Attenuations & Transport
+## Onglet Atténuations & transport
 
 À quelle profondeur le faisceau pénètre dans le matériau et comment il perd de l'énergie. Le contenu dépend du faisceau.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atténuations & transport — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atténuations & transport — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atténuations & transport — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -115,12 +115,12 @@ Les lignes verticales marquent l'énergie actuelle et les **seuils d'absorption*
 
 Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du faisceau (1–30 keV) :
 
-- **All (normalized)** — superpose les trois courbes ci-dessous, chacune remise à l'échelle de son propre maximum afin que les formes puissent être comparées sur un seul graphique (lire les valeurs absolues dans le tableau).
-- **σ elastic (nm²)** — section efficace de diffusion élastique : la probabilité qu'un seul atome dévie l'électron.
-- **Elastic MFP (nm)** — libre parcours moyen : la distance moyenne que l'électron parcourt entre deux événements de diffusion élastique.
+- **Tous (normalisés)** — superpose les trois courbes ci-dessous, chacune remise à l'échelle de son propre maximum afin que les formes puissent être comparées sur un seul graphique (lire les valeurs absolues dans le tableau).
+- **σ élastique (nm²)** — section efficace de diffusion élastique : la probabilité qu'un seul atome dévie l'électron.
+- **LPM élastique (nm)** — libre parcours moyen : la distance moyenne que l'électron parcourt entre deux événements de diffusion élastique.
 - **|dE/ds| (keV/nm)** — norme du pouvoir d'arrêt : l'énergie que l'électron perd par nanomètre parcouru.
 - **IMFP (nm)** — libre parcours moyen inélastique : la distance moyenne entre les collisions avec perte d'énergie.
-- **Range CSDA (µm)** — la longueur totale du trajet que l'électron parcourt avant de s'arrêter.
+- **Portée CSDA (µm)** — la longueur totale du trajet que l'électron parcourt avant de s'arrêter.
 
 Le tableau scalaire liste la **wavelength** de l'électron, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** et l'énergie d'excitation moyenne **J**, deux **ranges** électroniques (l'estimation de profondeur de pénétration de Kanaya–Okayama et la longueur de trajet intégrée CSDA) et les **Z, A** moyens. Le tableau par élément donne, pour chaque élément, la fraction atomique et la section efficace élastique σ. Les sections efficaces élastiques utilisent les données **NIST Mott** (50 eV–36 keV) et se rabattent sur le **screened Rutherford** au-dessus de 36 keV.
 
@@ -130,21 +130,21 @@ L'interaction des neutrons est déterminée par les sections efficaces nucléair
 
 ---
 
-## Onglet Scattering factors {#fluorescence-tab}
+## Onglet Facteurs de diffusion {#fluorescence-tab}
 
 Le facteur de diffusion atomique de chaque élément constitutif, tracé en fonction de $s = \sin\theta/\lambda$ (Å⁻¹). Chaque élément est dessiné dans sa propre couleur, et la **ligne de curseur verticale** peut être glissée pour lire le facteur de diffusion de chaque élément à cette position dans le tableau de gauche.
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-scattering.png)
+    ![Facteurs de diffusion — X-ray](../assets/cap-fr-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-scattering.png)
+    ![Facteurs de diffusion — electron](../assets/cap-fr-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-scattering.png)
+    ![Facteurs de diffusion — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** propose deux modes **Model** : **f(s)** trace le facteur de diffusion atomique des rayons X conventionnel (en unités d'électron) ; **F(q)+S(q)** trace le facteur de forme **cohérent** Rayleigh $F(q)$ avec la fonction de diffusion **incohérente** Compton $S(q)$ (depuis xraylib). Le tableau liste aussi les termes de dispersion anomale **f'(E)** et **f''(E)** à l'énergie actuelle.
-- **Electron** propose trois paramétrisations du facteur de diffusion électronique : **Peng**, **Kirkland** et **8-Gaussians**. Le tableau montre $f_e(s)$ (nm) et quel **model** l'a produit.
+- **X-ray** propose deux modes **Modèle** : **f(s)** trace le facteur de diffusion atomique des rayons X conventionnel (en unités d'électron) ; **F(q)+S(q)** trace le facteur de forme **cohérent** Rayleigh $F(q)$ avec la fonction de diffusion **incohérente** Compton $S(q)$ (depuis xraylib). Le tableau liste aussi les termes de dispersion anomale **f'(E)** et **f''(E)** à l'énergie actuelle.
+- **Electron** propose trois paramétrisations du facteur de diffusion électronique : **Peng**, **Kirkland** et **8-Gaussians**. Le tableau montre $f_e(s)$ (nm) et quel **modèle** l'a produit.
 - Les longueurs de diffusion **Neutron** ne dépendent pas de $s$, aussi aucune courbe n'est tracée ; le tableau liste, pour chaque élément, la longueur de diffusion cohérente **b_coh** et ses sections efficaces cohérente / incohérente.
 - **Debye-Waller** multiplie chaque facteur par l'amortissement thermique $e^{-B s^2}$ en utilisant le paramètre de déplacement isotrope de chaque atome.
 
@@ -162,7 +162,7 @@ Le diagramme **EDX emission lines** trace les raies caractéristiques (Kα1, Kα
 
 ## Copier dans le presse-papiers
 
-Chaque onglet possède un bouton **Copy** qui copie son tableau dans le presse-papiers sous forme de texte pouvant être collé dans un tableur tel qu'Excel.
+Chaque onglet possède un bouton **Copier** qui copie son tableau dans le presse-papiers sous forme de texte pouvant être collé dans un tableur tel qu'Excel.
 
 ---
 

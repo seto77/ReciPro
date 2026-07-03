@@ -9,7 +9,7 @@ A janela tem quatro abas, e a teoria é mais bem lida na ordem em que uma grande
 1. **[Atomic scattering factors](scattering-factor.md)** — como um *único átomo* espalha cada tipo de feixe.
 2. **[Structure factor](structure-factor.md)** — como os átomos em uma *célula unitária* interferem, incluindo o fator de Debye–Waller e as regras de extinção.
 3. **[Attenuation & transport](attenuation-transport.md)** — como o feixe é *removido e desacelerado* ao atravessar o material.
-4. **[Fluorescence](fluorescence.md)** — a emissão de raios X característicos que segue a ionização de uma camada interna.
+4. **[Fluorescência](fluorescence.md)** — a emissão de raios X característicos que segue a ionização de uma camada interna.
 
 ---
 
@@ -19,20 +19,20 @@ Toda grandeza de espalhamento nesta janela é uma função de quanto a direção
 
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
-- $\theta$ : o ângulo de Bragg — a *metade* do ângulo total de espalhamento. A tabela Reflections lista o ângulo completo $2\theta$.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : a variável em função da qual a aba **Scattering factors** é traçada. É o argumento natural de todo fator de forma atômico.
+- $\theta$ : o ângulo de Bragg — a *metade* do ângulo total de espalhamento. A tabela Reflexões lista o ângulo completo $2\theta$.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : a variável em função da qual a aba **Fatores de dispersão** é traçada. É o argumento natural de todo fator de forma atômico.
 - $d$ : o espaçamento interplanar. Na condição de Bragg $\lambda = 2d\sin\theta$, de modo que $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, onde $\mathbf g$ é o vetor da rede recíproca com $|\mathbf g| = 1/d$.
 
 Essas três convenções descrevem a mesma geometria; apenas a escala difere. Vale a pena manter a correspondência clara, pois a janela usa mais de uma delas:
 
 | Na janela | Símbolo | Relação |
 |---|---|---|
-| Tabela Reflections | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
-| Tabela Reflections | $2\theta$ | ângulo total de espalhamento, $\sin\theta = \lambda s$ |
-| Aba Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Tabela Reflexões | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
+| Tabela Reflexões | $2\theta$ | ângulo total de espalhamento, $\sin\theta = \lambda s$ |
+| Aba Fatores de dispersão | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Gráfico do pico de difração | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
-!!! note "Units"
+!!! note "Unidades"
     As parametrizações publicadas dos fatores de forma usam $s$ em Å⁻¹ (logo $s^2$ em Å⁻²), enquanto o ReciPro carrega $s^2$ internamente em nm⁻². As duas diferem por um fator $100$ em $s^2$; as curvas e tabelas são apresentadas nas unidades indicadas no cabeçalho de cada tabela. Um modelo — **Kirkland** — é tabelado em função de $q = 2s = 1/d$ em vez de $s$; veja [Atomic scattering factors](scattering-factor.md).
 
 ### Bragg, Laue e a esfera de Ewald {#phase-convention}
@@ -55,7 +55,7 @@ O ReciPro constrói os fatores de estrutura com a convenção de fase cristalogr
 
 $$F_{\mathbf g} = \sum_j \dots \exp\!\left(-2\pi i\,\mathbf g\cdot\mathbf r_j\right),$$
 
-isto é, um sinal de **menos** no expoente. Essa escolha fixa o sinal da parte imaginária do fator de estrutura (`F_inv` na tabela Reflections) e a relação entre pares de Friedel uma vez que a dispersão anômala é ativada. Ela é enunciada aqui uma vez e pressuposta em todo o apêndice; as consequências são desenvolvidas em [Structure factor](structure-factor.md).
+isto é, um sinal de **menos** no expoente. Essa escolha fixa o sinal da parte imaginária do fator de estrutura (`F_inv` na tabela Reflexões) e a relação entre pares de Friedel uma vez que a dispersão anômala é ativada. Ela é enunciada aqui uma vez e pressuposta em todo o apêndice; as consequências são desenvolvidas em [Structure factor](structure-factor.md).
 
 ---
 
@@ -90,6 +90,6 @@ Esses contrastes reaparecem ao longo das páginas seguintes, cada um rastreável
 ## Veja também
 
 - [3. Beam interaction](../../3-beam-interaction.md) — a GUI que este apêndice explica.
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescência](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — a teoria de espalhamento múltiplo que usa esses fatores de espalhamento.

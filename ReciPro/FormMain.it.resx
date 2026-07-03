@@ -144,7 +144,7 @@
     <value>Vista lungo</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
-    <value>Orientamento attuale</value>
+    <value>Orientazione attuale</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>Duplica</value>
@@ -315,10 +315,10 @@ rotazione che definisce l'orientazione del cristallo.</value>
 rotazione che definisce l'orientazione del cristallo.</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Aggiunge il cristallo selezionato alla lista soprastante.</value>
+    <value>Aggiunge il cristallo selezionato all'elenco soprastante.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
-    <value>Apri Informazioni sulla simmetria</value>
+    <value>Apri Informazioni di simmetria</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>Apri il simulatore di immagini HRTEM/STEM. HRTEM è
@@ -361,7 +361,7 @@ rotazione che definisce l'orientazione del cristallo.</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
     <value>Indici del piano cristallino (h k l) lungo cui guardare. Fai clic su
-'Plane' per ruotare il cristallo in modo che la normale a questo piano
+'Piano' per ruotare il cristallo in modo che la normale a questo piano
 punti verso di te (fuori dallo schermo).</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
@@ -387,7 +387,7 @@ modificali per impostare direttamente l'orientazione.</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
     <value>Indici dell'asse di zona [u v w] lungo cui guardare. Fai clic su
-'Axis' per ruotare il cristallo in modo che questa direzione
+'Asse' per ruotare il cristallo in modo che questa direzione
 punti verso di te (fuori dallo schermo).</value>
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
@@ -413,7 +413,7 @@ punti verso di te (fuori dallo schermo).</value>
 mostrano gli indici di Miller-Bravais a quattro indici.</value>
   </data>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
-    <value>Imposta la normale all'asse cristallino specificato verso lo schermo.
+    <value>Imposta l'asse cristallino specificato perpendicolare allo schermo.
 Se è specificato anche un indice di piano, quella direzione di piano è mostrata verso l'alto.</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
@@ -437,11 +437,11 @@ dinamici invece degli atomi neutri. Off = IAM ad atomi neutri (predefinito).</va
     <value>Duplica il cristallo selezionato.</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
-    <value>Qui viene visualizzata la lista dei cristalli.
-Per aggiungere un nuovo cristallo, imposta i suoi dati nel pannello 'Crystal Information' sottostante e fai clic su 'Add'.
-Per modificare un cristallo, selezionalo, aggiorna i suoi dati nel pannello 'Crystal Information' e fai clic su 'Replace'.
-Per rimuovere un cristallo dalla lista, selezionalo e fai clic su 'Delete'.
-Per rimuovere tutti i cristalli dalla lista, fai clic su 'Clear All'.</value>
+    <value>Qui viene visualizzato l'elenco dei cristalli.
+Per aggiungere un nuovo cristallo, imposta i suoi dati nel pannello 'Informazioni sul cristallo' sottostante e fai clic su 'Aggiungi'.
+Per modificare un cristallo, selezionalo, aggiorna i suoi dati nel pannello 'Informazioni sul cristallo' e fai clic su 'Sostituisci'.
+Per rimuovere un cristallo dall'elenco, selezionalo e fai clic su 'Elimina'.
+Per rimuovere tutti i cristalli dall'elenco, fai clic su 'Cancella tutti i cristalli'.</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>Orientazione attuale del cristallo selezionato.</value>
@@ -462,16 +462,16 @@ per i pattern di diffrazione da elettroni retrodiffusi
 a partire dall'orientazione del cristallo.</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
-    <value>Elimina tutti i cristalli</value>
+    <value>Cancella tutti i cristalli</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Sostituisci il cristallo selezionato
 sopra con il nuovo cristallo sottostante.</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>Apri lo stereonet (proiezione stereografica / reticolo di Wulff).</value>
+    <value>Apri lo Stereogramma (proiezione stereografica / reticolo di Wulff).</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
-    <value>Apre la funzione «Spot ID v2»</value>
+    <value>Apri Spot ID v2</value>
   </data>
 </root>

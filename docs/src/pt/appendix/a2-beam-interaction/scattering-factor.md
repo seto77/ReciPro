@@ -1,6 +1,6 @@
 # Fatores de espalhamento atômico
 
-O **fator de espalhamento atômico** (ou *fator de forma*) mede quão intensamente um único átomo espalha o feixe incidente em função da variável de espalhamento $s=\sin\theta/\lambda$. As três radiações interagem com partes completamente diferentes do átomo, de modo que seus fatores de espalhamento têm magnitudes, unidades e dependência angular distintas. Esta é a razão mais importante pela qual a aba **Scattering factors** parece tão diferente entre os feixes de raios X, de elétrons e de nêutrons.
+O **fator de espalhamento atômico** (ou *fator de forma*) mede quão intensamente um único átomo espalha o feixe incidente em função da variável de espalhamento $s=\sin\theta/\lambda$. As três radiações interagem com partes completamente diferentes do átomo, de modo que seus fatores de espalhamento têm magnitudes, unidades e dependência angular distintas. Esta é a razão mais importante pela qual a aba **Fatores de dispersão** parece tão diferente entre os feixes de raios X, de elétrons e de nêutrons.
 
 === "X-ray"
     ![Fatores de espalhamento — raios X](../../../assets/cap-pt-auto/FormBeamInteraction-xray-scattering.png)
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-Como o centro espalhador é pontual, $b$ é **independente de $s$** — não há decaimento do fator de forma, razão pela qual a aba **Scattering factors** não desenha nenhuma curva para nêutrons e, em vez disso, exibe uma tabela de comprimentos de espalhamento.
+Como o centro espalhador é pontual, $b$ é **independente de $s$** — não há decaimento do fator de forma, razão pela qual a aba **Fatores de dispersão** não desenha nenhuma curva para nêutrons e, em vez disso, exibe uma tabela de comprimentos de espalhamento.
 
 - $b$ é uma propriedade do **nuclídeo**, não da configuração eletrônica. Varia irregularmente de elemento para elemento (e entre isótopos), pode ser **negativo** (por exemplo, ¹H, Ti, Mn) e não guarda relação monotônica com $Z$. Esta é a base do contraste de nêutrons (átomos leves próximos a pesados, marcação isotópica).
 - **Coerente vs. incoerente.** Um elemento real é uma mistura de isótopos e estados de spin nuclear com diferentes $b$. A separação $b = \langle b\rangle + \delta b$ resulta em uma parte coerente (da média) e uma parte incoerente (da dispersão):
@@ -101,7 +101,7 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
   A parte coerente produz a difração de Bragg (é o que entra no fator de estrutura); a parte incoerente é um fundo plano e isotrópico (grande para ¹H, a razão da deuteração).
 
-!!! note "Tabulated values"
+!!! note "Valores tabelados"
     O ReciPro lê $b_\text{coh}$ e as seções de choque de uma tabela de nuclídeos em vez de calculá-los. Para nuclídeos ressonantes, o $\sigma_\text{coh}$ listado não precisa ser igual ao $4\pi b^2$ ingênuo, de modo que os valores da tabela são os que prevalecem. O espalhamento magnético de nêutrons (por spins eletrônicos desemparelhados, que *de fato* tem um fator de forma dependente de $s$) não é modelado aqui.
 
 ---
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [Índice — geometria e a variável $s$](index.md)
 - [Fator de estrutura](structure-factor.md) — como esses fatores se combinam ao longo de uma célula unitária.
-- [3. Interação do feixe → aba Scattering factors](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. Interação do feixe → aba Fatores de dispersão](../../3-beam-interaction.md#scattering-factors-tab)

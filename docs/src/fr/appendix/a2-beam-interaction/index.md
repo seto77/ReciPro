@@ -20,7 +20,7 @@ Toute grandeur de diffusion dans cette fenêtre est fonction de l'ampleur du cha
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
 - $\theta$ : l'angle de Bragg — la *moitié* de l'angle de diffusion total. La table des réflexions indique l'angle complet $2\theta$.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variable en fonction de laquelle est tracé l'onglet **Scattering factors**. C'est l'argument naturel de tout facteur de forme atomique.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variable en fonction de laquelle est tracé l'onglet **Facteurs de diffusion**. C'est l'argument naturel de tout facteur de forme atomique.
 - $d$ : la distance interréticulaire. À la condition de Bragg $\lambda = 2d\sin\theta$, on a donc $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, où $\mathbf g$ est le vecteur du réseau réciproque avec $|\mathbf g| = 1/d$.
 
 Ces trois conventions décrivent la même géométrie ; seule l'échelle diffère. Il vaut la peine de garder la correspondance claire, car la fenêtre en utilise plus d'une :
@@ -29,7 +29,7 @@ Ces trois conventions décrivent la même géométrie ; seule l'échelle diffèr
 |---|---|---|
 | Table des réflexions | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
 | Table des réflexions | $2\theta$ | angle de diffusion complet, $\sin\theta = \lambda s$ |
-| Onglet Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Onglet Facteurs de diffusion | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Tracé du pic de diffraction | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unités"

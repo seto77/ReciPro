@@ -9,7 +9,7 @@ La ventana tiene cuatro pestañas, y la teoría se lee mejor en el orden en que 
 1. **[Atomic scattering factors](scattering-factor.md)** — cómo un *único átomo* dispersa cada tipo de haz.
 2. **[Structure factor](structure-factor.md)** — cómo interfieren los átomos de una *celda elemental*, incluyendo el factor de Debye–Waller y las reglas de extinción.
 3. **[Attenuation & transport](attenuation-transport.md)** — cómo el haz es *eliminado y frenado* a medida que atraviesa el material.
-4. **[Fluorescence](fluorescence.md)** — la emisión de rayos X característicos que sigue a la ionización de una capa interna.
+4. **[Fluorescencia](fluorescence.md)** — la emisión de rayos X característicos que sigue a la ionización de una capa interna.
 
 ---
 
@@ -20,7 +20,7 @@ Toda magnitud de dispersión en esta ventana es función de cuánto cambia la di
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
 - $\theta$ : el ángulo de Bragg — *la mitad* del ángulo de dispersión total. La tabla de reflexiones indica el ángulo completo $2\theta$.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variable frente a la que se representa la pestaña **Scattering factors**. Es el argumento natural de todo factor de forma atómico.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : la variable frente a la que se representa la pestaña **Factores de dispersión**. Es el argumento natural de todo factor de forma atómico.
 - $d$ : el espaciado interplanar. En la condición de Bragg $\lambda = 2d\sin\theta$, de modo que $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, donde $\mathbf g$ es el vector de la red recíproca con $|\mathbf g| = 1/d$.
 
 Estas tres convenciones describen la misma geometría; solo difiere la escala. Conviene tener clara la correspondencia, porque la ventana utiliza más de una de ellas:
@@ -29,7 +29,7 @@ Estas tres convenciones describen la misma geometría; solo difiere la escala. C
 |---|---|---|
 | Tabla de reflexiones | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
 | Tabla de reflexiones | $2\theta$ | ángulo de dispersión completo, $\sin\theta = \lambda s$ |
-| Pestaña Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Pestaña Factores de dispersión | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Gráfico de picos de difracción | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unidades"
@@ -90,6 +90,6 @@ Estos contrastes reaparecen a lo largo de las páginas siguientes, cada uno rast
 ## Véase también
 
 - [3. Beam interaction](../../3-beam-interaction.md) — la GUI que explica este apéndice.
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescencia](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — la teoría de dispersión múltiple que utiliza estos factores de dispersión.

@@ -264,7 +264,7 @@
     <value>구조 인자</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
-    <value>최대</value>
+    <value>상위</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
     <value>구조 인자를
@@ -334,21 +334,21 @@
     <value>지수 출력의 구분 문자로 쉼표를 사용</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>투영된 지수 라벨(축은 [u v w], 면은 (h k l))의
+    <value>투영된 지수 레이블(축은 [u v w], 면은 (h k l))의
 글자 크기를 설정합니다. 최솟값에서는
-라벨을 숨깁니다.</value>
+레이블을 숨깁니다.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>투영된 지수 라벨(축은 [u v w], 면은 (h k l))의
+    <value>투영된 지수 레이블(축은 [u v w], 면은 (h k l))의
 글자 크기를 설정합니다. 최솟값에서는
-라벨을 숨깁니다.</value>
+레이블을 숨깁니다.</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
-    <value>지수 라벨을 스폿 색이 아닌
+    <value>지수 레이블을 스폿 색이 아닌
 고정색으로 그립니다.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
-    <value>'색 지정'이 활성화되었을 때 지수 라벨에
+    <value>'색 지정'이 활성화되었을 때 지수 레이블에
 사용할 고정색을 설정합니다.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
@@ -356,13 +356,13 @@
 사용할 고정색을 설정합니다.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>극점도 윤곽(격자)선의 너비를 설정합니다 (1~20).</value>
+    <value>스테레오넷 외곽선(격자선)의 너비를 설정합니다 (1~20).</value>
   </data>
   <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
-    <value>극점도 윤곽(격자)선의 너비를 설정합니다 (1~20).</value>
+    <value>스테레오넷 외곽선(격자선)의 너비를 설정합니다 (1~20).</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>극점도 그리기 영역의 배경색을 설정합니다.</value>
+    <value>스테레오넷 그리기 영역의 배경색을 설정합니다.</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
     <value>극점도 그리기 영역의 배경색을 설정합니다.</value>
@@ -376,7 +376,7 @@
 선)의 색을 설정합니다.</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>극점도의 10° 격자선(10°마다의 위선·경선)의
+    <value>스테레오넷의 10° 격자선(10°마다의 위선·경선)의
 색을 설정합니다.</value>
   </data>
   <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
@@ -384,7 +384,7 @@
 색을 설정합니다.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>1° 격자선(가는 선, '1° Lines'가 활성화되었을
+    <value>1° 격자선(가는 선, '1° 선'이 활성화되었을
 때만 표시)의 색을 설정합니다.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
@@ -400,27 +400,27 @@
 투영합니다.</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
-    <value>체크하면 극점도에 1° 간격의 가는 격자선을
+    <value>체크하면 스테레오넷에 1° 간격의 가는 격자선을
 추가합니다. 해제하면 더 성긴 격자만
 표시합니다.</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
-    <value>극점도 위에 투영하는 방향점
+    <value>스테레오넷 위에 투영하는 방향점
 또는 면 법선점의 반지름을 설정합니다.</value>
   </data>
   <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
-    <value>극점도의 상반구 쪽에 있는 투영된
+    <value>스테레오넷의 상반구 쪽에 있는 투영된
 방향 또는 면 법선을 표시합니다.</value>
   </data>
   <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
-    <value>극점도의 하반구 쪽에 있는 투영된
+    <value>스테레오넷의 하반구 쪽에 있는 투영된
 방향 또는 면 법선을 표시합니다.</value>
   </data>
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
     <value>울프 망(등각법)으로 방위를 투영</value>
   </data>
   <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
-    <value>슈미트 망(등면적법)으로 방위를 투영</value>
+    <value>슈미트 망(등적법)으로 방위를 투영</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
     <value>각 스폿의 크기를 그 구조 인자(단위 격자
@@ -428,16 +428,16 @@
 크게 표시합니다.</value>
   </data>
   <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
-    <value>그려진 각 점 옆에 지수 라벨([uvw] 또는
+    <value>그려진 각 점 옆에 지수 레이블([uvw] 또는
 (hkl))을 그립니다.</value>
   </data>
   <data name="radioButtonAxes.ToolTip" xml:space="preserve">
-    <value>결정 축(정대 방향)을 극점도에
-투영하여 [u v w]로 라벨을 표시합니다.</value>
+    <value>결정 축(정대 방향)을 스테레오넷에
+투영하여 [u v w]로 레이블을 표시합니다.</value>
   </data>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
-    <value>결정면의 법선을 극점도에 투영하여
-밀러 지수 (h k l)로 라벨을 표시합니다.</value>
+    <value>결정면의 법선을 스테레오넷에 투영하여
+밀러 지수 (h k l)로 레이블을 표시합니다.</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
     <value>기쿠치선 쌍을 그립니다. 기쿠치선은 비탄성
@@ -445,15 +445,15 @@
 띠입니다.</value>
   </data>
   <data name="labelXYpos.ToolTip" xml:space="preserve">
-    <value>극점도 상의 커서 위치에서의 기울기
+    <value>스테레오넷 상의 커서 위치에서의 기울기
 각·방위각(도)을 표시합니다.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>극점도 상의 커서 위치에서의 기울기
+    <value>스테레오넷 상의 커서 위치에서의 기울기
 각·방위각(도)을 표시합니다.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>극점도 위에 투영하는 지수점의 반지름을 설정합니다.</value>
+    <value>스테레오넷 위에 투영하는 지수점의 반지름을 설정합니다.</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
     <value>기쿠치선 쌍에 대해 그리는 정대축
@@ -472,7 +472,7 @@
 선의 색을 설정합니다.</value>
   </data>
   <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
-    <value>기쿠치선 모드에서의 정대축 라벨의 색을
+    <value>기쿠치선 모드에서의 정대축 레이블의 색을
 설정합니다 (기쿠치선=비탄성 산란 전자에 의한
 회절 띠).</value>
   </data>
@@ -515,7 +515,7 @@
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
     <value>정대축 방향 [uvw]를 지정합니다. 이 축에
-수직인 대원(정대원)이 극점도에
+수직인 대원(정대원)이 스테레오넷에
 추가됩니다.</value>
   </data>
   <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
@@ -524,12 +524,12 @@
   </data>
   <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
     <value>쌍을 이루는 첫 번째 결정면 지수 (hkl)입니다.
-면 1과 면 2에 공통인 교선이 극점도에
+면 1과 면 2에 공통인 교선이 스테레오넷에
 그려지는 정대축 대원을 정의합니다.</value>
   </data>
   <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
     <value>쌍을 이루는 두 번째 결정면 지수 (hkl)입니다.
-면 1과의 외적이 극점도 상의 정대축
+면 1과의 외적이 스테레오넷 상의 정대축
 대원을 정의합니다.</value>
   </data>
   <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
@@ -543,7 +543,7 @@
   </data>
   <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
     <value>회전 스캔 방식: 일정한 반지름(θ²+ω²=일정)에서
-기울기를 휩쓸어, 극점도 위에 원을
+기울기를 연속적으로 변화시켜, 스테레오넷 위에 원을
 그립니다.</value>
   </data>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
@@ -607,7 +607,7 @@
 초당 도(°/s)로 설정합니다.</value>
   </data>
   <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
-    <value>증분당 Ry 축(ω) 스캔의 각도 단계를 도 단위로 설정합니다.</value>
+    <value>증분당 Ry 축(ω) 스캔의 각도 스텝을 도 단위로 설정합니다.</value>
   </data>
   <data name="numericBoxRyStep.ToolTip1" xml:space="preserve">
     <value>증분당 Ry 축(ω) 스캔의 각도 단계를 도 단위로 설정합니다.</value>
@@ -634,12 +634,12 @@
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>입체 투영도에 표시되는 구조 인자 강도와
-Ewald 구 반사 목록을 계산하는 데 사용할
+에발트 구 반사 목록을 계산하는 데 사용할
 선원(전자/X선 등)과 파장을 설정합니다</value>
   </data>
   <data name="radioButtonRange.ToolTip" xml:space="preserve">
     <value>아래에 입력한 범위 내의 지수를 모두 표시합니다.
-축의 경우 [u v w]를, 면의 경우 Miller 지수
+축의 경우 [u v w]를, 면의 경우 밀러 지수
 (h k l)을 대상으로 합니다.</value>
   </data>
   <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
@@ -665,7 +665,7 @@ Ewald 구 반사 목록을 계산하는 데 사용할
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>추가 중이거나 현재 선택된 지수의 플롯 색을 설정합니다
-('Rotate color'가 꺼져 있을 때 사용됩니다).</value>
+('색 회전'이 꺼져 있을 때 사용됩니다).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>추가 중이거나 현재 선택된 지수의 플롯 색을 설정합니다
@@ -685,8 +685,8 @@ Ewald 구 반사 목록을 계산하는 데 사용할
 반사 개수입니다 (1~1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
-    <value>플롯할 지수를 입력합니다 — 'Specified' 모드에서는
-하나의 [uvw]/(hkl), 'Range' 모드에서는 최대 h,k,l 값입니다.</value>
+    <value>플롯할 지수를 입력합니다 — '지정' 모드에서는
+하나의 [uvw]/(hkl), '범위' 모드에서는 최대 h,k,l 값입니다.</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>입력한 지수뿐 아니라, 대칭 등가 지수(전체
@@ -709,7 +709,7 @@ Ewald 구 반사 목록을 계산하는 데 사용할
 점만 플롯합니다.</value>
   </data>
   <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
-    <value>3D 표시에서 평평한 입체 투영 원판(투영면)과
+    <value>3D 표시에서 평평한 스테레오넷 원판(투영면)과
 그 위에 투영된 점들을 겹쳐 그립니다.</value>
   </data>
   <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
@@ -717,7 +717,7 @@ Ewald 구 반사 목록을 계산하는 데 사용할
 와이어프레임)을 그립니다.</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
-    <value>3D 표시에서 구면 위의 각 극점과 입체 투영
+    <value>3D 표시에서 구면 위의 각 극점과 스테레오넷
 원판 위에 플롯된 점을 잇는
 투영선을 그립니다.</value>
   </data>

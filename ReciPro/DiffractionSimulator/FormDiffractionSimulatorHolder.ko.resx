@@ -161,16 +161,16 @@
 이외의 축)의 색입니다</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
-    <value>Tilt-X(주축) 방향 화살표의 색입니다
-("기울임 방향 표시"가 선택되어 있을 때 표시)</value>
+    <value>기울기 X(주축) 방향 화살표의 색입니다
+("기울기 방향 표시"가 선택되어 있을 때 표시)</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
-    <value>Tilt-Y(부축) 방향 화살표의 색입니다
-("기울임 방향 표시"가 선택되어 있을 때 표시)</value>
+    <value>기울기 Y(부축) 방향 화살표의 색입니다
+("기울기 방향 표시"가 선택되어 있을 때 표시)</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>선택하면 화살표 키로 홀더를 기울입니다.
-좌/우는 Tilt X를, 상/하는 Tilt Y를
+좌/우는 기울기 X를, 상/하는 기울기 Y를
 화살표 단계만큼 변화시킵니다.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
@@ -178,37 +178,37 @@
 적용되는 기울임 각도 증분(도)입니다.</value>
   </data>
   <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
-    <value>주축(Tilt X)을 중심으로 한
-홀더 기울임 각도(도)입니다.</value>
+    <value>주축(기울기 X)을 중심으로 한
+홀더 기울기 각도(도)입니다.</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>주축(Tilt X)을 중심으로 한
-홀더 기울임 각도(도)입니다.</value>
+    <value>주축(기울기 X)을 중심으로 한
+홀더 기울기 각도(도)입니다.</value>
   </data>
   <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
-    <value>부축(Tilt Y)을 중심으로 한
-홀더 기울임 각도(도)입니다.</value>
+    <value>부축(기울기 Y)을 중심으로 한
+홀더 기울기 각도(도)입니다.</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>부축(Tilt Y)을 중심으로 한
-홀더 기울임 각도(도)입니다.</value>
+    <value>부축(기울기 Y)을 중심으로 한
+홀더 기울기 각도(도)입니다.</value>
   </data>
   <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
-    <value>스테레오넷 상에서 Tilt X(주축)의
-방위 방향(도)입니다.</value>
+    <value>스테레오넷 상에서 기울기 X(주축)의
+방위각(도)입니다.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>스테레오넷 상에서 Tilt X(주축)의
-방위 방향(도)입니다.</value>
+    <value>스테레오넷 상에서 기울기 X(주축)의
+방위각(도)입니다.</value>
   </data>
   <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
-    <value>Tilt Y(부축) 축의 극성을 음(−)으로 사용합니다.</value>
+    <value>기울기 Y(부축)의 극성을 음(−)으로 사용합니다.</value>
   </data>
   <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
-    <value>Tilt Y(부축) 축의 극성을 양(+)으로 사용합니다.</value>
+    <value>기울기 Y(부축)의 극성을 양(+)으로 사용합니다.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Tilt Y(부축) 축의 극성(부호)입니다.
+    <value>기울기 Y(부축)의 극성(부호)입니다.
 사용하는 TEM 고니오미터 규약에 맞추세요.</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
@@ -224,7 +224,7 @@
     <value>정대축 지수 레이블의 문자 크기입니다.</value>
   </data>
   <data name="buttonLink.ToolTip" xml:space="preserve">
-    <value>현재 홀더 기울임을 Link Tilt X/Y 값으로
+    <value>현재 홀더 기울기를 "연결"의 기울기 X/Y 값으로
 설정하고, 그 결과로 얻어지는 방위를
 중립 방향으로 사용합니다.</value>
   </data>
@@ -232,12 +232,12 @@
     <value>결정을 빔([001]) 축을 중심으로 180° 회전합니다.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
-    <value>Link 버튼을 눌렀을 때 적용되는
-목표 Tilt X 각도(도)입니다.</value>
+    <value>"현재 방향에 연결" 버튼을 눌렀을 때 적용되는
+목표 기울기 X 각도(도)입니다.</value>
   </data>
   <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
-    <value>Link 버튼을 눌렀을 때 적용되는
-목표 Tilt Y 각도(도)입니다.</value>
+    <value>"현재 방향에 연결" 버튼을 눌렀을 때 적용되는
+목표 기울기 Y 각도(도)입니다.</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
     <value>선택하면 스테레오넷에 1° 간격 선을 그립니다
@@ -248,7 +248,7 @@
 [u v w] 지수 레이블을 표시합니다.</value>
   </data>
   <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
-    <value>선택하면 스테레오넷에 Tilt-X와 Tilt-Y
+    <value>선택하면 스테레오넷에 기울기 X와 기울기 Y
 방향을 나타내는 화살표를 그립니다.</value>
   </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">

@@ -154,7 +154,7 @@ et du cercle externe du stéréogramme.</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Couleur des lignes à 1 degré
-Active lorsque « Show 1° Lines » est cochée</value>
+Active lorsque « Afficher les lignes 1° » est cochée</value>
   </data>
   <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
     <value>Couleur des étiquettes des axes [100], [010], [001]</value>
@@ -165,11 +165,11 @@ Active lorsque « Show 1° Lines » est cochée</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
     <value>Couleur de la flèche de direction Tilt-X (axe primaire)
-(affichée lorsque « Show tilt directions » est cochée)</value>
+(affichée lorsque « Afficher les directions d'inclinaison » est cochée)</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
     <value>Couleur de la flèche de direction Tilt-Y (axe secondaire)
-(affichée lorsque « Show tilt directions » est cochée)</value>
+(affichée lorsque « Afficher les directions d'inclinaison » est cochée)</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Lorsque cette case est cochée, les touches fléchées inclinent
@@ -212,7 +212,7 @@ Tilt X (primaire) sur le stéréogramme.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>Polarité (signe) de l'axe Tilt Y (secondaire) ; faites-la
-correspondre à la convention de votre goniomètre TEM.</value>
+correspondre à la convention de votre goniomètre MET.</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
     <value>Rayon des points des axes de zone tracés sur le stéréogramme.</value>

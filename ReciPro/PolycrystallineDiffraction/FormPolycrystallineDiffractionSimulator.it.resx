@@ -212,20 +212,20 @@ per ogni avanzamento di ω durante la scansione; valori minori danno
 un campionamento di orientazione più fine ma una simulazione più lenta.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Intervallo di oscillazione (basculamento) dell'asse
+    <value>Intervallo di oscillazione (swing) dell'asse
 Rz (θ), espresso in ± gradi rispetto al centro; il
 campione oscilla tra −valore e +valore.</value>
   </data>
   <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
-    <value>Velocità del motore dell'asse di basculamento
+    <value>Velocità del motore dell'asse di swing
 Rz (θ), in gradi al secondo (°/s).</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
-    <value>Velocità del motore dell'asse di basculamento
+    <value>Velocità del motore dell'asse di swing
 Rz (θ), in gradi al secondo (°/s).</value>
   </data>
   <data name="label59.ToolTip" xml:space="preserve">
-    <value>Velocità del motore dell'asse di basculamento
+    <value>Velocità del motore dell'asse di swing
 Rz (θ), in gradi al secondo (°/s).</value>
   </data>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
@@ -299,15 +299,15 @@ mantenendo solo quelle che vi contribuiscono.</value>
 mostra le intensità elevate in chiaro, Negative inverte la scala.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Intervallo di oscillazione (basculamento) dell'asse
+    <value>Intervallo di oscillazione (swing) dell'asse
 Rz (θ), espresso in ± gradi rispetto al centro.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Intervallo di oscillazione (basculamento) dell'asse
+    <value>Intervallo di oscillazione (swing) dell'asse
 Rz (θ), espresso in ± gradi rispetto al centro.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Intervallo di oscillazione (basculamento) dell'asse
+    <value>Intervallo di oscillazione (swing) dell'asse
 Rz (θ), espresso in ± gradi rispetto al centro.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">

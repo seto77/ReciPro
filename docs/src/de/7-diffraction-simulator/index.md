@@ -40,7 +40,7 @@ Suchen Sie die benötigte Seite anhand der Kombination aus **Wellenlänge (Quell
 | Röntgen | Back Laue | Rückstrahl-Laue | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
 | Neutron | Parallel | Neutronenbeugung | [Neutronen-Abschnitt der Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
 
-> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl ändern sich mit der Wellenlänge. Für Elektronen: **Parallel, Präzession (Elektron = PED), Konvergenz (CBED)**; für Röntgenstrahlen: **Parallel, Präzession (Röntgen), Back Laue**; für Neutronen: nur **Parallel**. Die Auswahl von **Präzession (Elektron = PED)** oder **Konvergenz (CBED)** schaltet die Intensitätsberechnung automatisch auf **Dynamical** um.
+> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl ändern sich mit der Wellenlänge. Für Elektronen: **Parallel, Präzession (Elektron = PED), Konvergenz (CBED)**; für Röntgenstrahlen: **Parallel, Präzession (Röntgen), Back Laue**; für Neutronen: nur **Parallel**. Die Auswahl von **Präzession (Elektron = PED)** oder **Konvergenz (CBED)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um.
 
 ---
 
@@ -84,7 +84,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle des Hauptfenst
 | Einkristall-Röntgenbeugung erzeugen | **Wavelength** auf Röntgen / Synchrotron umschalten | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
 | Präzessions-Elektronenbeugung (PED) erzeugen | **Incident beam** auf **Precession (electron)** setzen, dann Halbwinkel und Schritt festlegen | [PED-Simulation](2-ped-simulation.md) |
 | Konvergente Elektronenbeugung (CBED) erzeugen | **Incident beam** auf **Convergence (CBED, electron only)** setzen und die Bedingungen im CBED-Fenster festlegen | [CBED-Simulation](3-cbed-simulation.md), [CBED-Berechnung](../appendix/a3-bloch-wave/cbed.md) |
-| Die Reflexliste aus der dynamischen Berechnung prüfen | **Dynamical** auswählen und **Spot Details** oder **Details** öffnen | [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md) |
+| Die Reflexliste aus der dynamischen Berechnung prüfen | **Dynamische Theorie** auswählen und **Reflexdetails** oder **Details** öffnen | [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md) |
 | Die Detektorgeometrie mit einem experimentellen Bild abgleichen | Die Detektorgeometrie-Einstellungen über **Details** öffnen und das Overlay-Bild verwenden | [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -105,18 +105,18 @@ Die zur Cursorposition gehörenden Informationen (Cursor-*q*, *d*, 2θ, Azimut u
 
 ## Menü "File"
 
-![File-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![Datei-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| **Save** | Das angezeigte Beugungsmuster in einer Datei speichern. |
-| **Save detector area** | Nur den Ausschnitt des Detektorbereichs speichern. |
-| **Copy** | Das angezeigte Bild in die Zwischenablage kopieren. |
-| **Copy detector area** | Nur den Ausschnitt des Detektorbereichs kopieren. |
+| **Bild speichern** | Das angezeigte Beugungsmuster in einer Datei speichern. |
+| **Detektorbereich speichern** | Nur den Ausschnitt des Detektorbereichs speichern. |
+| **Kopieren** | Das angezeigte Bild in die Zwischenablage kopieren. |
+| **Detektorbereich kopieren** | Nur den Ausschnitt des Detektorbereichs kopieren. |
 
 ### Preset {#toolbar}
 
-![Preset-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Voreinstellungen-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlänge, Detektorgeometrie, Registerkarten-Einstellungen, Reflexeigenschaften usw. — als Preset. Nützlich für den schnellen Wechsel zwischen Geräten / Aufnahmemodi.
 
@@ -128,11 +128,11 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 | Schaltfläche | Beschreibung |
 |--------|-------------|
-| Spots | Die Ebene der Beugungsreflexe ein-/ausblenden |
-| Kikuchi | Die Ebene der Kikuchi-Linien ein-/ausblenden |
-| Debye | Die Ebene der Debye-Ringe ein-/ausblenden |
-| Scale | Die Ebene der Skalenlinien ein-/ausblenden |
-| Index / d / Distance / Excitation error / Structure factor | Auswahl der Beschriftung, die an jeden Reflex angehängt wird |
+| Reflexe | Die Ebene der Beugungsreflexe ein-/ausblenden |
+| Kikuchi-Linien | Die Ebene der Kikuchi-Linien ein-/ausblenden |
+| Debye-Ringe | Die Ebene der Debye-Ringe ein-/ausblenden |
+| Maßstab | Die Ebene der Skalenlinien ein-/ausblenden |
+| Index / d / Abstand / Anregungsfehler / Strukturfaktor | Auswahl der Beschriftung, die an jeden Reflex angehängt wird |
 
 ---
 
@@ -140,29 +140,29 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ### Schirm
 
-![Schirm](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Anzeigeeinstellungen](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | Element | Beschreibung |
 |------|-------------|
-| **Resolution** | Die Größe eines Pixels (mm). Sie muss nicht der tatsächlichen Detektor-Pixelgröße entsprechen; sie wird als Anzeigemaßstab behandelt und automatisch aktualisiert, wenn Sie mit der Maus zoomen. |
+| **Auflösung** | Die Größe eines Pixels (mm). Sie muss nicht der tatsächlichen Detektor-Pixelgröße entsprechen; sie wird als Anzeigemaßstab behandelt und automatisch aktualisiert, wenn Sie mit der Maus zoomen. |
 | **Size (W×H)** | Pixelbreite und -höhe des Zeichenbereichs. Je nach Bildschirmauflösung sind sehr große Werte möglicherweise nicht einstellbar. |
-| **Set centre / Fix centre** | Das Musterzentrum auf einen beliebigen Pixel im Zeichenbereich setzen und es bei Bedarf fixieren. Wenn fixiert, kann das Zentrum nicht durch Verschieben mit der Maus bewegt werden. |
-| **Horizontal flip / Vertical flip / Negative image** | Geometrische Spiegelungen (horizontal / vertikal) und Kontrastumkehr des angezeigten Musters. Verwenden Sie diese, um die Orientierung oder den Kontrast eines experimentellen Bildes anzupassen. |
-| **Reciprocal space** | Überlagert die Ewald-Kugel und reziproke Gittervektoren über dem Muster und visualisiert, welche Reflexe angeregt sind. |
+| **Zentrum setzen / Fixieren** | Das Musterzentrum auf einen beliebigen Pixel im Zeichenbereich setzen und es bei Bedarf fixieren. Wenn fixiert, kann das Zentrum nicht durch Verschieben mit der Maus bewegt werden. |
+| **Horizontal spiegeln / Vertikal spiegeln / Negativbild** | Geometrische Spiegelungen (horizontal / vertikal) und Kontrastumkehr des angezeigten Musters. Verwenden Sie diese, um die Orientierung oder den Kontrast eines experimentellen Bildes anzupassen. |
+| **Reziproker Raum** | Überlagert die Ewald-Kugel und reziproke Gittervektoren über dem Muster und visualisiert, welche Reflexe angeregt sind. |
 
 ### Detektor (Kameralänge)
 
-![Detektor (Kameralänge)](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Detektorgeometrie & Überlagerungsbild](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **Camera length** : Abstand von der Probe zum Detektor (mm).
 - **Details** : Öffnet das Fenster der Detektorgeometrie-Einstellungen (siehe [Detektorgeometrie](#detector-geometry) unten).
 
 ### Misc
 
-![Misc](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Sonstiges](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
-- **Rotation sensitivity** : Betrag der Kristalldrehung pro Pixel des Mausziehens.
-- **TEM holder simulation** : Öffnet das halterverknüpfte Simulationsfenster (siehe unten).
+- **Rotationssensitivität** : Betrag der Kristalldrehung pro Pixel des Mausziehens.
+- **TEM-Halter-Simulation** : Öffnet das halterverknüpfte Simulationsfenster (siehe unten).
 
 ---
 
@@ -178,39 +178,39 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ### General
 
-![Registerkarte General](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![Registerkarte Allgemein](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 Legt die Farben von Reflexen, Beschriftungen, Kikuchi-Linien, Debye-Ringen und anderen Overlays fest. Die hier vorgenommenen Einstellungen gelten für alle Rendermodi.
 
 ### Kikuchi-Linien
 
-![Registerkarte Kikuchi](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![Registerkarte Kikuchi-Linien](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 Aktiv, wenn Kikuchi-Linien in der Symbolleiste aktiviert sind.
 
-- **Reflection selection** : Wählt aus, welche Reflexe die Kikuchi-Linien erzeugen. Entweder **structure factor** (die obersten *N* Reflexe nach $\lvert F_{hkl}\rvert$) oder **1/d cutoff** (alle Reflexe, deren 1/d unterhalb des Schwellenwerts (nm⁻¹) liegt).
+- **Auswahl der Reflexe** : Wählt aus, welche Reflexe die Kikuchi-Linien erzeugen. Entweder **Strukturfaktor** (die obersten *N* Reflexe nach $\lvert F_{hkl}\rvert$) oder **1/d-Grenzwert** (alle Reflexe, deren 1/d unterhalb des Schwellenwerts (nm⁻¹) liegt).
 - **Line appearance** : Legt die Linienbreite, die Farbe der Kikuchi-Linien und **Draw with kinematical intensity** fest (skaliert die Linienhelligkeit mit der kinematischen Intensität des Reflexes).
 - **Threshold** : Ein Altparameter. Führt die Kikuchi-Linien-Berechnung nur für Reflexe mit einem *d* größer als der angegebene Wert aus (aus Kompatibilitätsgründen beibehalten).
 
 ### Debye-Ringe
 
-![Registerkarte Debye](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![Registerkarte Debye-Ringe](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 Aktiv, wenn Debye-Ringe in der Symbolleiste aktiviert sind.
 
-- **Ignore diffraction intensity** : Falls angehakt, werden alle Debye-Ringe mit derselben Farbe und Intensität gezeichnet (unter Vernachlässigung des Strukturfaktors des Kristalls). Verwenden Sie dies für einen rein geometrischen Vergleich.
-- **Show index label** : Falls angehakt, erscheint das (*hkl*) in der Nähe jedes Rings.
+- **Beugungsintensität ignorieren** : Falls angehakt, werden alle Debye-Ringe mit derselben Farbe und Intensität gezeichnet (unter Vernachlässigung des Strukturfaktors des Kristalls). Verwenden Sie dies für einen rein geometrischen Vergleich.
+- **Index-Beschriftungen anzeigen** : Falls angehakt, erscheint das (*hkl*) in der Nähe jedes Rings.
 
 ### Scale
 
-![Registerkarte Scale](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Registerkarte Maßstab](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Aktiv, wenn die Skalenlinien in der Symbolleiste aktiviert sind.
 
 - **2θ / Azimuth scale lines** : **2θ** stellt einen konstanten Streuwinkel dar (konzentrische Kreise), **Azimuth** stellt einen konstanten Azimutwinkel dar (radiale Linien vom Zentrum aus). Die Farben sind unabhängig voneinander konfigurierbar.
-- **Line width** : Dicke der Skalenlinien.
-- **Division** : Winkelabstand zwischen benachbarten Skalenlinien.
-- **Show scale labels** : Ob numerische Beschriftungen auf die Skalenlinien gezeichnet werden.
+- **Linienbreite** : Dicke der Skalenlinien.
+- **Teilung** : Winkelabstand zwischen benachbarten Skalenlinien.
+- **Maßstabsbeschriftungen anzeigen** : Ob numerische Beschriftungen auf die Skalenlinien gezeichnet werden.
 
 ### Misc {#diffraction-spot-information}
 
@@ -222,7 +222,7 @@ Verschiedene Einstellungen wie die Mausrotationsempfindlichkeit.
 
 ## Beugungsreflex-Informationen
 
-Listet die per Reflex berechneten Details auf, die mit der Bloch-Wellen-Methode (Dynamical-Berechnung) ermittelt wurden. Öffnen Sie es mit der Schaltfläche **Spot Details** (Intensitätsberechnungsbereich) oder dem Kontrollkästchen **Details**.
+Listet die per Reflex berechneten Details auf, die mit der Bloch-Wellen-Methode (Dynamical-Berechnung) ermittelt wurden. Öffnen Sie es mit der Schaltfläche **Reflexdetails** (Intensitätsberechnungsbereich) oder dem Kontrollkästchen **Details**.
 
 ![Beugungsreflex-Informationen](../../assets/cap-de-auto/FormDiffractionSpotInfo.png)
 

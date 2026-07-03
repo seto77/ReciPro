@@ -40,15 +40,15 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 
 选择如何计算斑点强度。
 
-### Only excitation error
+### 仅激发误差
 
 强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $s_g$）决定。$\lvert s_g \rvert$ 越小，强度越高；在 **Radius** 所设定的值处达到最大，当 $\lvert s_g \rvert$ 超过 Radius 时降为零。由于忽略了晶体结构因子，这是最快的模式，适合检查衍射斑点的位置。
 
-### Kinematical
+### 运动学
 
 在偏离矢量之外，还将运动学结构因子 $\lvert F_{hkl} \rvert^2$ 计入强度。消光规则得到正确反映，因此该模式适合薄样品或弱衍射。
 
-### Dynamical（布洛赫波法，仅限电子）
+### 动力学（布洛赫波法，仅限电子）
 
 采用布洛赫波法（Bethe 法）进行严格的动力学计算。它再现多重散射以及强度随厚度的变化，对于厚样品或强衍射是必需的。仅当选择 Electron 时可用。关于理论，请参见 [附录 A3. 布洛赫波法](../appendix/a3-bloch-wave/calculation.md)。
 

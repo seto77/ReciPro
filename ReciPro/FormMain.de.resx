@@ -370,7 +370,7 @@ Rotation, die die Kristallorientierung definiert.</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
     <value>Kristallebenenindizes (h k l), entlang derer geblickt werden soll. Klicken Sie
-auf 'Plane', um den Kristall so zu drehen, dass die Normale dieser Ebene
+auf 'Ebene', um den Kristall so zu drehen, dass die Normale dieser Ebene
 zu Ihnen zeigt (aus dem Bildschirm heraus).</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
@@ -396,7 +396,7 @@ bearbeiten, um die Orientierung direkt zu setzen.</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
     <value>Zonenachsenindizes [u v w], entlang derer geblickt werden soll. Klicken Sie
-auf 'Axis', um den Kristall so zu drehen, dass diese Richtung
+auf 'Achse', um den Kristall so zu drehen, dass diese Richtung
 zu Ihnen zeigt (aus dem Bildschirm heraus).</value>
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
@@ -426,7 +426,7 @@ Kristalle mit vierindizierten Miller-Bravais-Indizes angezeigt.</value>
 Wenn zusätzlich ein Ebenenindex angegeben ist, wird diese Ebenenrichtung nach oben gezeigt.</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
-    <value>Öffnet das Werkzeug Rotation Geometry.</value>
+    <value>Öffnet das Werkzeug Rotationsgeometrie.</value>
   </data>
   <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>Verschiebt den ausgewählten Kristall nach oben</value>
@@ -447,10 +447,10 @@ anstelle neutraler Atome. Aus = IAM mit neutralen Atomen (Standard).</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>Hier wird die Kristallliste angezeigt.
-Um einen neuen Kristall hinzuzufügen, legen Sie seine Daten im Panel 'Crystal Information' unten fest und klicken auf 'Add'.
-Um einen Kristall zu ändern, wählen Sie ihn aus, aktualisieren seine Daten im Panel 'Crystal Information' und klicken auf 'Replace'.
-Um einen Kristall aus der Liste zu entfernen, wählen Sie ihn aus und klicken auf 'Delete'.
-Um alle Kristalle aus der Liste zu entfernen, klicken Sie auf 'Clear All'.</value>
+Um einen neuen Kristall hinzuzufügen, legen Sie seine Daten im Panel 'Kristallinformation' unten fest und klicken auf 'Hinzufügen'.
+Um einen Kristall zu ändern, wählen Sie ihn aus, aktualisieren seine Daten im Panel 'Kristallinformation' und klicken auf 'Ersetzen'.
+Um einen Kristall aus der Liste zu entfernen, wählen Sie ihn aus und klicken auf 'Löschen'.
+Um alle Kristalle aus der Liste zu entfernen, klicken Sie auf 'Alle Kristalle leeren'.</value>
   </data>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>Aktuelle Orientierung des ausgewählten Kristalls.</value>
@@ -471,7 +471,7 @@ für Rückstreu-Elektronenbeugungsmuster
 auf Basis der Kristallorientierung.</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
-    <value>Alle Kristalle löschen</value>
+    <value>Alle Kristalle leeren</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Ersetzt den oben ausgewählten

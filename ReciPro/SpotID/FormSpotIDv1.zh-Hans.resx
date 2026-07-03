@@ -204,17 +204,17 @@ L1/L2/L3 及 θ）匹配的晶带轴；
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
     <value>衍射图样的相机长度 (mm)；它将测得的斑点
 间距 (mm) 换算为用于标定的
-倒易点阵面间距。</value>
+倒易点阵矢量长度。</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>衍射图样的相机长度 (mm)；它将测得的斑点
 间距 (mm) 换算为用于标定的
-倒易点阵面间距。</value>
+倒易点阵矢量长度。</value>
   </data>
   <data name="numericBoxP1Theta.ToolTip" xml:space="preserve">
     <value>Pattern 1 的两个倒易矢量 L1 与 L2 之间的
-夹角 θ（度）。在 'Two Sides and an Angle'
-模式下可编辑；在 'Three Sides' 模式下由
+夹角 θ（度）。在“两边一角”
+模式下可编辑；在“三边”模式下由
 L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxP1Tilt1.ToolTip" xml:space="preserve">
@@ -230,8 +230,8 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxP2Theta.ToolTip" xml:space="preserve">
     <value>Pattern 2 的两个倒易矢量 L1 与 L2 之间的
-夹角 θ（度）。在 'Two Sides and an Angle'
-模式下可编辑；在 'Three Sides' 模式下由
+夹角 θ（度）。在“两边一角”
+模式下可编辑；在“三边”模式下由
 L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxP2Tilt1.ToolTip" xml:space="preserve">
@@ -247,8 +247,8 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxP3Theta.ToolTip" xml:space="preserve">
     <value>Photo 3 的两个衍射矢量 L1 与 L2 之间的
-夹角 θ（度）。在 'Three Sides' 模式下由三边
-计算并为只读；在 'Two Sides and an Angle'
+夹角 θ（度）。在“三边”模式下由三边
+计算并为只读；在“两边一角”
 模式下可编辑。</value>
   </data>
   <data name="numericBoxP3Tilt1.ToolTip" xml:space="preserve">
@@ -289,13 +289,13 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxPhoto1L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 1 的 L3 的搜索容差，以其长度的
-百分比表示（0-50%，默认 5）。仅在 'Three Sides'
+百分比表示（0-50%，默认 5）。仅在“三边”
 模式下使用；与输入 L3 之差在此比例内的
 候选被接受为匹配。</value>
   </data>
   <data name="numericBoxPhoto1ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 1 的角 θ 的搜索容差，单位为度
-（0-30，默认 3）。仅在 'Two Sides and an Angle'
+（0-30，默认 3）。仅在“两边一角”
 模式下使用；夹角之差不超过此度数的晶带轴
 仍被接受为匹配。</value>
   </data>
@@ -323,13 +323,13 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxPhoto2L3Err.ToolTip" xml:space="preserve">
     <value>Pattern 2 的 L3 的搜索容差，以其长度的
-百分比表示（0-50%，默认 5）。仅在 'Three Sides'
+百分比表示（0-50%，默认 5）。仅在“三边”
 模式下使用；L3 之差在此比例内的
 候选被接受为匹配。</value>
   </data>
   <data name="numericBoxPhoto2ThetaErr.ToolTip" xml:space="preserve">
     <value>Pattern 2 的角 θ 的搜索容差，单位为度
-（0-30，默认 3）。仅在 'Two Sides and an Angle'
+（0-30，默认 3）。仅在“两边一角”
 模式下使用；夹角之差在此度数内的
 候选被接受为匹配。</value>
   </data>
@@ -355,12 +355,12 @@ L1/L2/L3 计算并以只读形式显示。</value>
   </data>
   <data name="numericBoxPhoto3L3Err.ToolTip" xml:space="preserve">
     <value>Photo 3 的第三边 L3 长度的搜索容差，单位为
-百分比（0-50）。仅在 'Three Sides' 模式下使用。</value>
+百分比（0-50）。仅在“三边”模式下使用。</value>
   </data>
   <data name="numericBoxPhoto3ThetaErr.ToolTip" xml:space="preserve">
     <value>Photo 3 的角度 θ 的搜索容差，单位为度
 （0-30）。计算夹角之差不超过此值的候选
-被接受。仅在 'Two Sides and an Angle'
+被接受。仅在“两边一角”
 模式下使用。</value>
   </data>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
@@ -509,7 +509,7 @@ L2，记录介质上的 mm。</value>
 单位 mm（用于 "Three Sides" 模式）。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>拍摄 Photo 2 时测角台样品架的第一倾斜角
+    <value>拍摄 Photo 2 时测角仪样品台的第一倾斜角
 （Tilt 1，度）。</value>
   </data>
   <data name="label69.ToolTip" xml:space="preserve">
@@ -517,7 +517,7 @@ L2，记录介质上的 mm。</value>
 （以其长度的百分比表示）。</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>拍摄 Photo 2 时测角台样品架的第二倾斜角
+    <value>拍摄 Photo 2 时测角仪样品台的第二倾斜角
 （Tilt 2，度）。</value>
   </data>
   <data name="label70.ToolTip" xml:space="preserve">
@@ -564,6 +564,6 @@ L2 之间的夹角 θ（度）。</value>
   <data name="labelPhoto1Mode2_6.ToolTip" xml:space="preserve">
     <value>Pattern 1 的 L3 搜索容差，以其长度的
 百分比表示（0–50%，
-默认 5；用于 "Three Sides" 模式）。</value>
+默认 5；用于“三边”模式）。</value>
   </data>
 </root>

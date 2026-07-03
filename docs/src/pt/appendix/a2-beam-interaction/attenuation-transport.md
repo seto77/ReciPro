@@ -1,15 +1,15 @@
 # Atenuação & Transporte
 
-Os fatores de espalhamento descrevem um único evento de espalhamento; esta página trata do que acontece com o feixe **como um todo** à medida que ele atravessa o sólido — quão rapidamente ele é removido, quão profundamente ele penetra e (no caso dos elétrons) como ele é desacelerado. A física relevante é completamente diferente para os três feixes, razão pela qual a aba **Attenuations & Transport** altera de forma tão drástica seus gráficos e tabelas conforme a radiação.
+Os fatores de espalhamento descrevem um único evento de espalhamento; esta página trata do que acontece com o feixe **como um todo** à medida que ele atravessa o sólido — quão rapidamente ele é removido, quão profundamente ele penetra e (no caso dos elétrons) como ele é desacelerado. A física relevante é completamente diferente para os três feixes, razão pela qual a aba **Atenuação & Transporte** altera de forma tão drástica seus gráficos e tabelas conforme a radiação.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-pt-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atenuação & Transporte — X-ray](../../../assets/cap-pt-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-pt-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atenuação & Transporte — electron](../../../assets/cap-pt-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-pt-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atenuação & Transporte — neutron](../../../assets/cap-pt-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ As mesmas escalas de comprimento explicam por que os elétrons exigem amostras u
 
 - [Fatores de espalhamento atômico](scattering-factor.md) — a separação $F(q)$/$S(q)$ por trás de Rayleigh/Compton, e as seções de choque de Mott.
 - [Fluorescência](fluorescence.md) — a relaxação que se segue à fotoabsorção de raios X.
-- [3. Interação do feixe](../../3-beam-interaction.md) — a aba *Attenuations & Transport*.
+- [3. Interação do feixe](../../3-beam-interaction.md) — a aba *Atenuação & Transporte*.
 - [8. Trajetórias eletrônicas](../../8-electron-trajectory.md) · [12. Simulação EBSD](../../12-ebsd-simulation.md) — onde os alcances dos elétrons são usados.

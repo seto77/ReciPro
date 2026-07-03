@@ -62,11 +62,11 @@
   <data name="checkBox2.ToolTip" xml:space="preserve">
     <value>Включить ось Rz (θ): покачивание образца из стороны
 в сторону, задаваемое его скоростью двигателя
-(°/s) и диапазоном колебаний (±°) ниже.</value>
+(°/с) и диапазоном колебаний (±°) ниже.</value>
   </data>
   <data name="checkBox3.ToolTip" xml:space="preserve">
     <value>Включить ось Ry (ω): «кивающее» колебание
-образца, задаваемое его скоростью двигателя (°/s),
+образца, задаваемое его скоростью двигателя (°/с),
 диапазоном колебаний (±°) и шагом (°) ниже.</value>
   </data>
   <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
@@ -117,7 +117,7 @@ Rz(покачивание θ) и Ry(кивок ω), заданным ниже,
   <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
     <value>Включить ось Rx (Φ): непрерывное вращение
 образца вокруг нормали к его поверхности со
-скоростью двигателя, заданной справа (°/s).</value>
+скоростью двигателя, заданной справа (°/с).</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Направление градиента отображения интенсивности:
@@ -175,7 +175,7 @@ Orientation). Больше = крупнее шаги; значение
   </data>
   <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
     <value>Скорость двигателя оси вращения Rx (Φ), в
-градусах в секунду (°/s). Более быстрое вращение
+градусах в секунду (°/с). Более быстрое вращение
 усредняет по большему числу ориентаций в плоскости.</value>
   </data>
   <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
@@ -196,15 +196,15 @@ Orientation). Больше = крупнее шаги; значение
   </data>
   <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
     <value>Скорость двигателя кивающей оси Ry
-(ω), в градусах в секунду (°/s).</value>
+(ω), в градусах в секунду (°/с).</value>
   </data>
   <data name="label54.ToolTip" xml:space="preserve">
     <value>Скорость двигателя кивающей оси Ry
-(ω), в градусах в секунду (°/s).</value>
+(ω), в градусах в секунду (°/с).</value>
   </data>
   <data name="label58.ToolTip" xml:space="preserve">
     <value>Скорость двигателя кивающей оси Ry
-(ω), в градусах в секунду (°/s).</value>
+(ω), в градусах в секунду (°/с).</value>
   </data>
   <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
     <value>Угловой шаг (°) колебания Ry (ω): приращение
@@ -212,7 +212,7 @@ Orientation). Больше = крупнее шаги; значение
 более тонкую выборку ориентаций, но более медленное моделирование.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Диапазон осцилляции (качания) оси Rz (θ),
+    <value>Диапазон колебаний (качания) оси Rz (θ),
 в ± градусах относительно центра; образец
 качается между −значением и +значением.</value>
   </data>
@@ -280,9 +280,9 @@ Orientation). Больше = крупнее шаги; значение
   </data>
   <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
     <value>Порог (0-1) для автоматического уменьшения параметров
-подгонки. Когда отношение наклона недавней невязки к более
-раннему (Rwp) падает ниже этого значения, параметры
-уменьшаются в 0,8 раза.</value>
+подгонки. Когда отношение наклона недавней невязки (Rwp) к более
+раннему падает ниже этого значения, параметры
+умножаются на 0,8.</value>
   </data>
   <data name="textBox1.ToolTip" xml:space="preserve">
     <value>Журнал подгонки только для чтения: прошедшее время, скорость
@@ -299,19 +299,19 @@ Orientation). Больше = крупнее шаги; значение
 показывает высокую интенсивность ярко, Negative инвертирует.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Диапазон осцилляции (качания) оси Rz (θ),
+    <value>Диапазон колебаний (качания) оси Rz (θ),
 в ± градусах относительно центра.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Диапазон осцилляции (качания) оси Rz (θ),
+    <value>Диапазон колебаний (качания) оси Rz (θ),
 в ± градусах относительно центра.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Диапазон осцилляции (качания) оси Rz (θ),
+    <value>Диапазон колебаний (качания) оси Rz (θ),
 в ± градусах относительно центра.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">
-    <value>Угловой шаг (°) осцилляции Ry (ω); меньшее значение даёт более
+    <value>Угловой шаг (°) колебания Ry (ω); меньшее значение даёт более
 тонкую выборку ориентаций, но замедляет моделирование.</value>
   </data>
   <data name="label52.ToolTip" xml:space="preserve">

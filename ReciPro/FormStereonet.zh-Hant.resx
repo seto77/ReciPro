@@ -66,22 +66,22 @@
     <value>檔案</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存為影像</value>
+    <value>影像</value>
   </data>
   <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
     <value>另存為影像 (PNG 格式)</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存為中繼檔 (EMF)</value>
+    <value>中繼檔 (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>另存為中繼檔 (EMF)</value>
+    <value>中繼檔 (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存影像</value>
   </data>
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
-    <value>頁面設定</value>
+    <value>版面設定</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>預覽列印</value>
@@ -321,7 +321,7 @@
 </value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>選擇置於密勒指數之間的
+    <value>選擇置於米勒指數之間的
 分隔字元。</value>
   </data>
   <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
@@ -345,7 +345,7 @@
   </data>
   <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
     <value>指數標籤使用固定顏色，
-而非繞射點的顏色繪製。</value>
+而非該點的顏色繪製。</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>設定啟用「指定顏色」時指數
@@ -385,7 +385,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>設定 1° 格線（細線，僅在啟用
-「1° Lines」時顯示）的顏色。</value>
+「1° 線」時顯示）的顏色。</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>設定 1° 格線（細線，僅在啟用
@@ -420,7 +420,7 @@
     <value>以吳氏網（等角法）投影方位</value>
   </data>
   <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
-    <value>以施密特網（等面積法）投影方位</value>
+    <value>以施密特網（等積法）投影方位</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
     <value>依各繞射點的結構因子（單一晶胞所
@@ -437,7 +437,7 @@
   </data>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
     <value>將晶面法線投影至極網，
-並標示為密勒指數 (h k l)。</value>
+並標示為米勒指數 (h k l)。</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
     <value>繪製菊池線對，即晶面對非彈性
@@ -665,7 +665,7 @@ Ewald 球繞射列表的輻射源（電子/X射線等）
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>設定正在新增或目前選取之指數的繪製顏色
-（於「Rotate color」關閉時使用）。</value>
+（於「循環顏色」關閉時使用）。</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>設定正在新增或目前選取之指數的繪製顏色
@@ -685,15 +685,15 @@ Ewald 球繞射列表的輻射源（電子/X射線等）
 的最前端 (1–1000)。</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
-    <value>輸入欲繪製的指數——在「Specified」模式下為
-單一 [uvw]/(hkl)，在「Range」模式下為最大的 h,k,l。</value>
+    <value>輸入欲繪製的指數——在「指定」模式下為
+單一 [uvw]/(hkl)，在「範圍」模式下為最大的 h,k,l。</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>同時繪製所有對稱等效指數（完整的
 {hkl} 或 &lt;uvw&gt; 族），而不僅是所輸入的那一個。</value>
   </data>
   <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
-    <value>在立體投影旁同時顯示結晶的
+    <value>在立體投影旁同時顯示晶體的
 3D (OpenGL) 視圖；未勾選時
 僅顯示 2D 極圖</value>
   </data>

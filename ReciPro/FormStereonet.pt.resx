@@ -72,10 +72,10 @@
     <value>como Imagem (formato PNG)</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>como Metaarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
-    <value>como Metaarquivo (EMF)</value>
+    <value>como metarquivo (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar Imagem</value>
@@ -385,7 +385,7 @@ externo e eixos principais, as linhas mais espessas).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Define a cor das linhas de grade de 1° (linhas
-finas, exibidas apenas quando '1° Lines' está ativado).</value>
+finas, exibidas apenas quando 'Linhas de 1°' está ativado).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Define a cor das linhas de grade de 1° (linhas
@@ -424,7 +424,7 @@ no hemisfério inferior da rede estereográfica.</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
     <value>Dimensiona o tamanho de cada ponto pelo seu fator
-de estrutura (a amplitude dispersada por uma célula
+de estrutura (a amplitude espalhada por uma célula
 unitária), de modo que reflexões mais fortes aparecem maiores.</value>
   </data>
   <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
@@ -442,7 +442,7 @@ estereográfica e as rotula como índices de Miller (h k l).</value>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
     <value>Desenha pares de linhas de Kikuchi, as bandas pareadas
 produzidas quando um plano cristalino difrata
-elétrons dispersados inelasticamente.</value>
+elétrons espalhados inelasticamente.</value>
   </data>
   <data name="labelXYpos.ToolTip" xml:space="preserve">
     <value>Ângulos de inclinação e azimute (em graus) na
@@ -474,7 +474,7 @@ linhas desenhados no modo de linhas de Kikuchi.</value>
   <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
     <value>Define a cor dos rótulos de eixo de zona no modo
 de linhas de Kikuchi (linhas de Kikuchi: bandas de
-difração de elétrons dispersados inelasticamente).</value>
+difração de elétrons espalhados inelasticamente).</value>
   </data>
   <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
     <value>Define a cor dos rótulos de eixo de zona no modo
@@ -635,7 +635,7 @@ do centro) da varredura rotacional, em graus.</value>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>Define a fonte de radiação e o comprimento de onda usados para
 calcular as intensidades do fator de estrutura e a lista de
-reflexões da esfera de Ewald mostrada na figura de polos</value>
+reflexões da esfera de Ewald mostrada na estereonete</value>
   </data>
   <data name="radioButtonRange.ToolTip" xml:space="preserve">
     <value>Exibe todos os índices dentro do intervalo inserido
@@ -653,7 +653,7 @@ mais fortes correspondem a reflexões mais fortes.</value>
   </data>
   <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
     <value>Lista dos índices especificados pelo usuário projetados na
-figura de polos; selecione linhas para recolori-las ou removê-las</value>
+estereonete; selecione linhas para recolori-las ou removê-las</value>
   </data>
   <data name="buttonAddIndex.ToolTip" xml:space="preserve">
     <value>Adiciona o índice inserido acima à lista
@@ -665,7 +665,7 @@ lista de índices especificados.</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Define a cor de plotagem para o índice que está sendo adicionado ou
-atualmente selecionado (usada quando 'Rotate color' está desativado).</value>
+atualmente selecionado (usada quando 'Alternar cor' está desativado).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Define a cor de plotagem para o índice que está sendo adicionado ou
@@ -686,7 +686,7 @@ topo da classificação por fator de estrutura (1–1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Insira o índice a plotar — um único [uvw]/(hkl) no
-modo 'Specified', ou os valores máximos de h,k,l no modo 'Range'.</value>
+modo 'Especificado', ou os valores máximos de h,k,l no modo 'Intervalo'.</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Plota também todos os índices simetricamente equivalentes (a
@@ -695,7 +695,7 @@ família completa {hkl} ou &lt;uvw&gt;), não apenas o inserido.</value>
   <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
     <value>Mostra a visualização 3D (OpenGL) do cristal
 junto com a projeção estereográfica;
-desmarcado mostra apenas a figura de polos 2D</value>
+desmarcado mostra apenas a estereonete 2D</value>
   </data>
   <data name="button3D_reset.ToolTip" xml:space="preserve">
     <value>Restaura a visualização 3D à sua orientação e zoom padrão.</value>
@@ -709,7 +709,7 @@ desmarcado mostra apenas a figura de polos 2D</value>
 superior (Z&gt;0) em vez de toda a esfera.</value>
   </data>
   <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
-    <value>Na visualização 3D, desenha também o disco plano da figura de polos
+    <value>Na visualização 3D, desenha também o disco plano da estereonete
 (o plano de projeção) com os pontos projetados sobre ele.</value>
   </data>
   <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
@@ -719,7 +719,7 @@ de latitude/longitude) da esfera de referência.</value>
   <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
     <value>Na visualização 3D, desenha os raios de projeção
 que conectam cada polo na esfera ao seu
-ponto plotado no disco da figura de polos.</value>
+ponto plotado no disco da estereonete.</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
     <value>Ajusta o realce de profundidade: a intensidade com que os objetos
@@ -731,11 +731,11 @@ desvanecem com a distância (profundidade) na visualização 3D.</value>
   </data>
   <data name="labelAxisPlane.ToolTip" xml:space="preserve">
     <value>Eixo de zona [uvw] e plano reticular (hkl)
-mais próximos da posição do cursor na figura de polos.</value>
+mais próximos da posição do cursor na estereonete.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Eixo de zona [uvw] e plano reticular (hkl)
-mais próximos da posição do cursor na figura de polos.</value>
+mais próximos da posição do cursor na estereonete.</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>Fundo</value>

@@ -1,15 +1,15 @@
 # Atenuación y transporte
 
-Los factores de dispersión describen un único evento de dispersión; esta página trata de lo que le sucede al haz **en su conjunto** mientras atraviesa el sólido: con qué rapidez se elimina, cuánto penetra y (en el caso de los electrones) cómo se frena. La física relevante es completamente distinta para los tres haces, razón por la cual la pestaña **Attenuations & Transport** cambia sus gráficas y tablas de forma tan drástica según la radiación.
+Los factores de dispersión describen un único evento de dispersión; esta página trata de lo que le sucede al haz **en su conjunto** mientras atraviesa el sólido: con qué rapidez se elimina, cuánto penetra y (en el caso de los electrones) cómo se frena. La física relevante es completamente distinta para los tres haces, razón por la cual la pestaña **Atenuación & Transporte** cambia sus gráficas y tablas de forma tan drástica según la radiación.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-es-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Atenuación & Transporte — X-ray](../../../assets/cap-es-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-es-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Atenuación & Transporte — electron](../../../assets/cap-es-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-es-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Atenuación & Transporte — neutron](../../../assets/cap-es-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ Las mismas escalas de longitud explican por qué los electrones exigen muestras 
 
 - [Factores de dispersión atómicos](scattering-factor.md) — la separación $F(q)$/$S(q)$ detrás de Rayleigh/Compton, y las secciones eficaces de Mott.
 - [Fluorescencia](fluorescence.md) — la relajación que sigue a la fotoabsorción de rayos X.
-- [3. Interacción del haz](../../3-beam-interaction.md) — la pestaña *Attenuations & Transport*.
+- [3. Interacción del haz](../../3-beam-interaction.md) — la pestaña *Atenuación & Transporte*.
 - [8. Trayectorias electrónicas](../../8-electron-trajectory.md) · [12. Simulación EBSD](../../12-ebsd-simulation.md) — donde se usan los alcances electrónicos.

@@ -38,7 +38,7 @@
 
 ## Оптика
 
-![Optics](../assets/cap-ru-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Оптика](../assets/cap-ru-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Источник излучения
 
@@ -50,9 +50,9 @@
 
 ---
 
-## Сведения о рефлексе
+## Информация о рефлексе
 
-![Spot information](../assets/cap-ru-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Информация о рефлексе](../assets/cap-ru-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: Автоматическое обнаружение рефлексов с использованием локальных максимумов и вычитания фона.
 - **Number**: Максимальное число обнаруживаемых рефлексов.

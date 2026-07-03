@@ -38,7 +38,7 @@ Ein Beugungsbild öffnen/speichern. Das gleiche Laden per Drag & Drop wie bei [S
 
 ## Optik
 
-![Optics](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Optik](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ### Strahlungsquelle
 
@@ -52,7 +52,7 @@ Die Kameralänge (mm) und die Detektor-Pixelgröße (mm oder nm⁻¹). Wenn eine
 
 ## Reflexinformation
 
-![Spot information](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Reflexinformation](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: Automatische Reflexerkennung mittels lokaler Maxima und Untergrundabzug.
 - **Number**: Die maximale Anzahl der zu erkennenden Reflexe.

@@ -138,7 +138,7 @@ Radio, color y material por átomo.
 
 ### Enlaces y poliedros
 
-![Pestaña Enlaces](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
+![Pestaña Enlaces y poliedros](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 Umbrales de longitud de enlace, visualización de poliedros, aristas.
 
@@ -166,7 +166,7 @@ Todas las reglas de enlace/poliedro registradas para el cristal. Use **Add / Rep
 
 ### Celda elemental
 
-![Pestaña Celda elemental](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
+![Pestaña Celda unidad](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
 Traslación, planos de la celda, aristas.
 
@@ -198,7 +198,7 @@ Traslada el plano reticular dibujado en un múltiplo entero de su distancia inte
 
 ### Coordinación
 
-![Pestaña Coordenadas](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
+![Pestaña Coordinación](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
 Tabla y gráfico de coordinación alrededor del átomo objetivo.
 
@@ -258,7 +258,7 @@ Para cada clase puede ajustar el tamaño del símbolo, el ancho de línea y el c
 
 ### Misceláneos
 
-![Pestaña Misceláneos](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
+![Pestaña Varios](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
 - **Accessory controls**: establece los tamaños de visualización (esfera de luz, ejes, leyenda). **Group by element** alterna la visualización de la leyenda.
 - **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** sigue dibujando los átomos enlazados a átomos dentro del intervalo de dibujo, incluso cuando quedan fuera de él.

@@ -1,6 +1,6 @@
 # Fluorescencia
 
-Cuando la **fotoabsorción** de rayos X expulsa un electrón de una capa interna (véase [atenuación y transporte](attenuation-transport.md)), deja una vacante en un nivel profundo. El átomo se relaja al caer un electrón externo en el hueco, y la energía liberada se emite o bien como un **fotón de rayos X característico** (fluorescencia) o bien expulsando un segundo electrón (el proceso **Auger**). La pestaña **Fluorescence** muestra una vista previa del canal de fotones característicos; solo se aplica a los rayos X y está oculta para los haces de electrones y de neutrones.
+Cuando la **fotoabsorción** de rayos X expulsa un electrón de una capa interna (véase [atenuación y transporte](attenuation-transport.md)), deja una vacante en un nivel profundo. El átomo se relaja al caer un electrón externo en el hueco, y la energía liberada se emite o bien como un **fotón de rayos X característico** (fluorescencia) o bien expulsando un segundo electrón (el proceso **Auger**). La pestaña **Fluorescencia** muestra una vista previa del canal de fotones característicos; solo se aplica a los rayos X y está oculta para los haces de electrones y de neutrones.
 
 ![Fluorescencia (rayos X)](../../../assets/cap-es-auto/FormBeamInteraction-xray-fluorescence.png)
 
@@ -79,4 +79,4 @@ con $C_i$ la concentración, $\Phi_0$ el flujo incidente, $\sigma_\text{ion}$ la
 
 - [Atenuación y transporte](attenuation-transport.md) — fotoabsorción, el borde que crea la vacante.
 - [Factores de dispersión atómica](scattering-factor.md) — los mismos electrones ligados, vistos en la dispersión.
-- [3. Interacción del haz → pestaña Fluorescence](../../3-beam-interaction.md#fluorescence-tab)
+- [3. Interacción del haz → pestaña Fluorescencia](../../3-beam-interaction.md#fluorescence-tab)

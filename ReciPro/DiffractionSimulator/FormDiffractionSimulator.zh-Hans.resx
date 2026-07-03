@@ -166,7 +166,7 @@
 阈值</value>
   </data>
   <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
-    <value>方向导引</value>
+    <value>方向引导</value>
   </data>
   <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
     <value>埃瓦尔德球</value>
@@ -236,7 +236,7 @@
     <value>为图像（PNG 格式）</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>为元文件（EMF）</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>保存图像</value>
@@ -245,7 +245,7 @@
     <value>为图像  （PNG 格式）</value>
   </data>
   <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>为元文件（EMF）</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>保存探测器区域</value>
@@ -269,7 +269,7 @@
     <value>为图像</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>为元文件（EMF）</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>复制</value>
@@ -278,7 +278,7 @@
     <value>为图像</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>为元文件（EMF）</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
     <value>复制探测器区域</value>
@@ -457,7 +457,7 @@
     <value>消光斑点 (螺旋或滑移)</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
-    <value>消光斑点 (点阵带心)</value>
+    <value>消光斑点 (点阵心化)</value>
   </data>
   <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
     <value>勾选后，模拟衍射斑点。</value>
@@ -501,7 +501,7 @@ Ewald 球的程度。</value>
     <value>设置字符串的大小</value>
   </data>
   <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
-    <value>设置字符大小</value>
+    <value>设置字符串的大小</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>设置字符串的颜色</value>
@@ -744,7 +744,7 @@ Ewald 球的程度。</value>
     <value>设置 Top（上）方向引导箭头的颜色。</value>
   </data>
   <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
-    <value>设置射束方向引导箭头的颜色。</value>
+    <value>设置 Beam（射束）方向引导箭头的颜色。</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
     <value>设置 3D 视图中指数/标签文字的颜色。</value>
@@ -826,7 +826,7 @@ mm（原点：图样垂足）。</value>
   </data>
   <data name="comboBoxCenter.ToolTip" xml:space="preserve">
     <value>选择用作显示器中心的基准点
-（直接斑点、垂足或检测器中心）。</value>
+（透射斑点、垂足或检测器中心）。</value>
   </data>
   <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
     <value>将显示器中心固定到以下点</value>
@@ -1015,7 +1015,7 @@ mm（原点：图样垂足）。</value>
     <value>设置消光斑点（螺旋或滑移）的颜色</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
-    <value>设置消光斑点（点阵心化）的颜色</value>
+    <value>设置消光斑点（点阵带心）的颜色</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
     <value>设置消光斑点（点阵心化）的颜色</value>
@@ -1054,14 +1054,14 @@ mm（原点：图样垂足）。</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
     <value>X射线进动模式（ZOLZ，零阶劳厄带）：
-以极投影方式显示零层倒易点阵平面，
+以极坐标投影方式显示零层倒易点阵平面，
 与电子 PED 模式不同。</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
     <value>文字</value>
   </data>
   <data name="colorControlOrigin.FooterText" xml:space="preserve">
-    <value>直射斑点位置</value>
+    <value>透射斑点位置</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景</value>
@@ -1079,10 +1079,10 @@ mm（原点：图样垂足）。</value>
     <value>2θ 刻度线</value>
   </data>
   <data name="colorControl3D_SpotsNear.FooterText" xml:space="preserve">
-    <value>靠近 Ewald 球的斑点</value>
+    <value>靠近埃瓦尔德球的斑点</value>
   </data>
   <data name="colorControl3D_SpotsFar.FooterText" xml:space="preserve">
-    <value>远离 Ewald 球的斑点</value>
+    <value>远离埃瓦尔德球的斑点</value>
   </data>
   <data name="colorControl3D_Background.FooterText" xml:space="preserve">
     <value>背景</value>

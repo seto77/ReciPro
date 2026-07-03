@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="dataGridView1.ToolTip" xml:space="preserve">
-    <value>單一圖案的候選指標化解一覽（晶帶軸、繞射指標、
+    <value>單一圖案的候選指標化解一覽（晶帶軸、繞射指數、
 附誤差 % 的晶面間距、晶面間夾角）。
 雙擊某列即可將晶體旋轉至
 該方位。</value>

@@ -1,6 +1,6 @@
 # Facteurs de diffusion atomique
 
-Le **facteur de diffusion atomique** (ou *facteur de forme*) mesure l'intensité avec laquelle un atome isolé diffuse le faisceau incident en fonction de la variable de diffusion $s=\sin\theta/\lambda$. Les trois rayonnements interagissent avec des parties complètement différentes de l'atome, de sorte que leurs facteurs de diffusion ont des ordres de grandeur, des unités et des dépendances angulaires différents. C'est la principale raison pour laquelle l'onglet **Scattering factors** a un aspect si différent entre les faisceaux de rayons X, d'électrons et de neutrons.
+Le **facteur de diffusion atomique** (ou *facteur de forme*) mesure l'intensité avec laquelle un atome isolé diffuse le faisceau incident en fonction de la variable de diffusion $s=\sin\theta/\lambda$. Les trois rayonnements interagissent avec des parties complètement différentes de l'atome, de sorte que leurs facteurs de diffusion ont des ordres de grandeur, des unités et des dépendances angulaires différents. C'est la principale raison pour laquelle l'onglet **Facteurs de diffusion** a un aspect si différent entre les faisceaux de rayons X, d'électrons et de neutrons.
 
 === "X-ray"
     ![Facteurs de diffusion — rayons X](../../../assets/cap-fr-auto/FormBeamInteraction-xray-scattering.png)
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-Comme le diffuseur est ponctuel, $b$ est **indépendant de $s$** — il n'y a pas de décroissance de type facteur de forme, ce qui explique pourquoi l'onglet **Scattering factors** ne trace aucune courbe pour les neutrons et affiche à la place un tableau de longueurs de diffusion.
+Comme le diffuseur est ponctuel, $b$ est **indépendant de $s$** — il n'y a pas de décroissance de type facteur de forme, ce qui explique pourquoi l'onglet **Facteurs de diffusion** ne trace aucune courbe pour les neutrons et affiche à la place un tableau de longueurs de diffusion.
 
 - $b$ est une propriété du **nucléide**, et non de la configuration électronique. Elle varie de façon irrégulière d'un élément à l'autre (et entre isotopes), peut être **négative** (par ex. ¹H, Ti, Mn) et n'a aucune relation monotone avec $Z$. C'est la base du contraste neutronique (atomes légers près d'atomes lourds, marquage isotopique).
 - **Cohérent vs incohérent.** Un élément réel est un mélange d'isotopes et d'états de spin nucléaire avec des $b$ différents. La décomposition $b = \langle b\rangle + \delta b$ donne une partie cohérente (provenant de la moyenne) et une partie incohérente (provenant de la dispersion) :
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [Index — géométrie et la variable $s$](index.md)
 - [Facteur de structure](structure-factor.md) — comment ces facteurs se combinent sur une maille.
-- [3. Interaction du faisceau → onglet Scattering factors](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. Interaction du faisceau → onglet Facteurs de diffusion](../../3-beam-interaction.md#scattering-factors-tab)

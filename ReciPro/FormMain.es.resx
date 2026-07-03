@@ -324,7 +324,7 @@ rotación que define la orientación del cristal.</value>
     <value>Añade el cristal seleccionado a la lista de arriba.</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
-    <value>Abrir Información de Simetría</value>
+    <value>Abrir Información de simetría</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>Abre el simulador de imágenes HRTEM/STEM. HRTEM es
@@ -336,7 +336,7 @@ STEM es microscopía electrónica de transmisión de barrido.</value>
 Si también se especifica un índice de eje, esa dirección del eje se muestra hacia arriba.</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
-    <value>Abrir Difracción de Polvo</value>
+    <value>Abrir Difracción de polvo</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Fija/muestra el ángulo de Euler θ (grados), la segunda
@@ -363,7 +363,7 @@ rotación que define la orientación del cristal.</value>
 rotación que define la orientación del cristal.</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
-    <value>Abrir Base de Datos de Cristales</value>
+    <value>Abrir Base de datos de cristales</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
     <value>Índices del plano cristalino (h k l) hacia el que mirar. Haga clic
@@ -412,7 +412,7 @@ apunte hacia usted (fuera de la pantalla).</value>
     <value>Cuando está marcado, el eje especificado queda fijo en el espacio.</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
-    <value>Abrir Simulador de Difracción</value>
+    <value>Abrir Simulador de difracción</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
     <value>Cuando está habilitado, los cristales hexagonales / trigonales (ejes
@@ -429,7 +429,7 @@ Si también se especifica un índice de plano, esa dirección del plano se muest
     <value>Subir el cristal seleccionado</value>
   </data>
   <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
-    <value>Abrir Interacción del Haz</value>
+    <value>Abrir Interacción del haz</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Habilita Intel MKL para cálculos matriciales
@@ -468,14 +468,14 @@ para patrones de difracción de electrones retrodispersados
 a partir de la orientación del cristal.</value>
   </data>
   <data name="buttonClearAllCrystals.ToolTip" xml:space="preserve">
-    <value>Eliminar todos los cristales</value>
+    <value>Borrar todos los cristales</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Reemplaza el cristal seleccionado
 arriba por el nuevo cristal de abajo.</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>Abre la estereored (proyección estereográfica / red de Wulff).</value>
+    <value>Abre el estereograma (proyección estereográfica / red de Wulff).</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Abrir Spot ID v2</value>

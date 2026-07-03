@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
-    <value>Réflexions</value>
+    <value>Taches</value>
   </data>
   <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
     <value>Lignes de Kikuchi</value>
@@ -134,13 +134,13 @@ de l'échantillon</value>
     <value>Échelle</value>
   </data>
   <data name="numericBox3D_SpotRadius.HeaderText" xml:space="preserve">
-    <value>Rayon de réflexion</value>
+    <value>Rayon de tache</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
     <value>Étiquette</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
-    <value>Rendre transparentes les réflexions 
+    <value>Rendre transparentes les taches 
 éloignées de la sphère d'Ewald</value>
   </data>
   <data name="numericBoxStep.HeaderText" xml:space="preserve">
@@ -190,7 +190,7 @@ l'intensité relative</value>
     <value>Définir le centre à</value>
   </data>
   <data name="checkBoxFixCenter.Text" xml:space="preserve">
-    <value>Fixe</value>
+    <value>Fixer</value>
   </data>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Taille (L×H)</value>
@@ -378,10 +378,10 @@ l'intensité relative</value>
     <value>Opacité</value>
   </data>
   <data name="numericBoxSpotRadius.HeaderText" xml:space="preserve">
-    <value>Rayon de réflexion</value>
+    <value>Rayon de tache</value>
   </data>
   <data name="checkBoxDrawSameSize.Text" xml:space="preserve">
-    <value>Dessiner toutes les réflexions avec le même 
+    <value>Dessiner toutes les taches avec le même 
 rayon</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
@@ -394,7 +394,7 @@ rayon</value>
     <value>Échelle log</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Couleur de réflexion</value>
+    <value>Couleur de tache</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Calcul d'intensité</value>
@@ -406,7 +406,7 @@ rayon</value>
     <value>Cinématique &amp;&amp; erreur d'excitation</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>Détails des réflexions</value>
+    <value>Détails des taches</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Optique</value>
@@ -831,7 +831,7 @@ longueur en espace réciproque par pixel (nm⁻¹/px).</value>
     <value>Définir la vitesse de rotation par manipulation de la souris</value>
   </data>
   <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
-    <value>Ouvrir la fenêtre de simulation du porte-échantillon TEM.</value>
+    <value>Ouvrir la fenêtre de simulation du porte-objet MET.</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
     <value>Définir la longueur de caméra 2, c'est-à-dire la distance

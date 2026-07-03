@@ -64,8 +64,8 @@
 
 在此模式中，晶胞的 *a*、*b*、*c* 軸是繪製範圍的單位。
 
-- **Center**：繪製體積的中心分數座標。
-- **Range**：*a*、*b*、*c* 各軸的上限／下限。
+- **中心**：繪製體積的中心分數座標。
+- **範圍**：*a*、*b*、*c* 各軸的上限／下限。
 - 右側的**預設按鈕**提供常用值（例如 1×1×1 晶胞、2×2×2 晶胞）。
 
 ### 由晶面定義的邊界
@@ -90,7 +90,7 @@
 
 #### 顯示邊界平面 / 不透明度
 
-顯示或隱藏邊界平面本身。顯示時，**Opacity** 設定透明度（0 = 透明，1 = 不透明）。
+顯示或隱藏邊界平面本身。顯示時，**不透明度** 設定透明度（0 = 透明，1 = 不透明）。
 
 #### 以邊界平面裁剪物件
 
@@ -104,7 +104,7 @@
 
 ![原子索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-座標、元素、佔有率、半徑、顏色、材質。**Apply to same elements**。
+座標、元素、佔有率、半徑、顏色、材質。**套用至相同元素**。
 
 #### 原子清單
 
@@ -114,7 +114,7 @@
 
 #### 元素與位置
 
-- **Label**：原子的自由文字標籤（用於圖例與工具提示）。
+- **標籤**：原子的自由文字標籤（用於圖例與工具提示）。
 - **Element**：化學元素／離子化狀態。
 - **X, Y, Z**：分數座標。0–1 之間的實數，或如 `1/2` 或 `2/3` 之類的分數。
 - **Occ**：佔有率，0–1 之間的實數。
@@ -132,13 +132,13 @@
 每個原子的半徑、顏色與材質。
 
 - **Radius**：繪製的原子半徑。
-- **Atom color**：表面顏色。
+- **顏色**：表面顏色。
 - **Material**：OpenGL 著色器所使用的紋理／材質屬性。
-- **Apply to same elements**：將目前的半徑與顏色套用至同一元素種類的每個原子。
+- **套用至相同元素**：將目前的半徑與顏色套用至同一元素種類的每個原子。
 
 ### 鍵與多面體
 
-![鍵索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
+![鍵 & 多面體索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 鍵長閾值、多面體顯示、邊。
 
@@ -148,21 +148,21 @@
 
 #### 鍵屬性
 
-- **Bonding Atom (center)**：用作鍵／多面體中心原子的元素種類。
-- **Bonding Atom (vertex)**：用作頂點（另一端）的元素種類。
-- **Length between … and …**：下限與上限距離閾值。超出此範圍的原子對不會被繪製。
+- **成鍵原子（中心）**：用作鍵／多面體中心原子的元素種類。
+- **成鍵原子（頂點）**：用作頂點（另一端）的元素種類。
+- **鍵長範圍**：下限與上限距離閾值。超出此範圍的原子對不會被繪製。
 - **Bond Radius**：繪製的鍵粗細（圓柱半徑）。
-- **Alpha**：鍵的透明度（0 = 透明，1 = 不透明）。
+- **不透明度**：鍵的透明度（0 = 透明，1 = 不透明）。
 
 #### 多面體屬性
 
-- **Show Polyhedron**：勾選時，繪製由目前的鍵所定義的多面體（僅在中心／頂點集合幾何上有效時）。
-- **Inner Bonds**：顯示／隱藏多面體內部的鍵。
-- **Center Atom**：顯示／隱藏中心原子。
-- **Vertex Atoms**：顯示／隱藏頂點原子。
-- **Color** / **Alpha**：面的顏色與透明度。
-- **Show Edge**：繪製連接頂點的邊。
-- **Edge Color** / **Width**：邊的顏色與線寬。
+- **顯示多面體**：勾選時，繪製由目前的鍵所定義的多面體（僅在中心／頂點集合幾何上有效時）。
+- **顯示內部鍵**：顯示／隱藏多面體內部的鍵。
+- **顯示中心原子**：顯示／隱藏中心原子。
+- **顯示頂點原子**：顯示／隱藏頂點原子。
+- **Color** / **不透明度**：面的顏色與透明度。
+- **顯示稜邊**：繪製連接頂點的邊。
+- **Edge Color** / **寬度**：邊的顏色與線寬。
 
 ### 晶胞
 
@@ -198,7 +198,7 @@
 
 ### 配位
 
-![座標索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
+![配位索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
 目標原子周圍的配位表與圖。
 
@@ -233,7 +233,7 @@
 
 #### 投影中心
 
-將投影中心設定至指定的座標。開啟 **Custom** 以輸入任意座標。
+將投影中心設定至指定的座標。開啟 **自訂** 以輸入任意座標。
 
 #### 算繪品質
 
@@ -260,9 +260,9 @@
 
 ![其他索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
-- **Accessory controls**：設定顯示尺寸（光球、軸、圖例）。**Group by element** 切換圖例顯示。
-- **Bonded atoms**：**Show bonded atoms even if they are outside the boundaries** 會持續繪製與繪製範圍內原子成鍵的原子，即使它們落在範圍之外。
-- **Label**：設定原子標籤的字型大小、顏色與其他屬性。
+- **輔助元件**：設定顯示尺寸（光球、軸、圖例）。**依元素分組** 切換圖例顯示。
+- **成鍵原子**：**顯示成鍵原子，即使位於邊界之外** 會持續繪製與繪製範圍內原子成鍵的原子，即使它們落在範圍之外。
+- **標籤**：設定原子標籤的字型大小、顏色與其他屬性。
 
 ---
 

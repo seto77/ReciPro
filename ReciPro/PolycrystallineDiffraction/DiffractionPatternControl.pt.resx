@@ -141,7 +141,7 @@ os picos (resolução do detector/filme).</value>
   <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
     <value>Tamanho de pixel do detector da imagem de origem em
 mm/pixel; junto com o comprimento de câmera, converte o
-ângulo de dispersão em raio do anel em pixels.</value>
+ângulo de espalhamento em raio do anel em pixels.</value>
   </data>
   <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
     <value>Resolução de exibição na tela em mm/pixel;
@@ -405,11 +405,11 @@ Free permite inserir o ângulo manualmente.</value>
   </data>
   <data name="label31.ToolTip" xml:space="preserve">
     <value>Tamanho de pixel do detector da imagem de origem em
-mm/pixel; converte o ângulo de dispersão em raio do anel.</value>
+mm/pixel; converte o ângulo de espalhamento em raio do anel.</value>
   </data>
   <data name="label32.ToolTip" xml:space="preserve">
     <value>Tamanho de pixel do detector da imagem de origem em
-mm/pixel; converte o ângulo de dispersão em raio do anel.</value>
+mm/pixel; converte o ângulo de espalhamento em raio do anel.</value>
   </data>
   <data name="label33.ToolTip" xml:space="preserve">
     <value>Coordenada X em pixels do centro do feixe

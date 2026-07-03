@@ -86,11 +86,11 @@
   <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
     <value>將光束中心偏移納入擬合作為自由
 參數,精修圖樣的中心位置以最佳
-吻合參考像。</value>
+吻合參考圖樣。</value>
   </data>
   <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
     <value>將光束收斂角納入擬合作為
-自由參數(精修入射光束的
+自由參數(精修入射束的
 收斂程度)。</value>
   </data>
   <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
@@ -212,30 +212,30 @@ Negative 則反轉(高強度顯示為暗)。</value>
 但模擬越慢。</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 軸的擺動（搖頭）範圍，
+    <value>Rz (θ) 軸的擺動範圍，
 以中心為基準指定 ±°；試樣在
 −值與 +值之間往復擺動。</value>
   </data>
   <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 搖頭軸的馬達速度，
+    <value>Rz (θ) 擺動軸的馬達速度，
 以每秒度數 (°/s) 表示。</value>
   </data>
   <data name="label56.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 搖頭軸的馬達速度，
+    <value>Rz (θ) 擺動軸的馬達速度，
 以每秒度數 (°/s) 表示。</value>
   </data>
   <data name="label59.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 搖頭軸的馬達速度，
+    <value>Rz (θ) 擺動軸的馬達速度，
 以每秒度數 (°/s) 表示。</value>
   </data>
   <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
     <value>鋸齒形掃描順序：在 ω (Ry) 每往復一次前進的同時
 讓 θ (Rz) 往復掃描，使測角儀
-以鋸齒形路徑掃過方位空間。</value>
+以鋸齒形路徑掃過取向空間。</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>除錯測試：對選取的結晶產生單一隨機
-方位的繞射圖樣並顯示。</value>
+取向的繞射圖樣並顯示。</value>
   </data>
   <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
     <value>對選取的結晶模擬多晶的德拜環
@@ -243,17 +243,17 @@ Negative 則反轉(高強度顯示為暗)。</value>
 分頁中顯示。</value>
   </data>
   <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
-    <value>載入先前儲存的方位擬合
+    <value>載入先前儲存的取向擬合
 設定（.setting 檔案）。</value>
   </data>
   <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
-    <value>將目前的方位擬合設定
+    <value>將目前的取向擬合設定
 （結晶、各項參數與殘差歷程）
 儲存為 .setting 檔案。</value>
   </data>
   <data name="buttonSearch.ToolTip" xml:space="preserve">
-    <value>開始或停止擬合結晶方位分布
-（LPO，晶格優選方位），
+    <value>開始或停止擬合結晶取向分布
+（LPO，晶格擇優取向），
 使模擬圖樣與參考圖樣達到最佳吻合。
 再次按下即可停止。</value>
   </data>
@@ -279,7 +279,7 @@ Negative 則反轉(高強度顯示為暗)。</value>
 （目前固定為啟用。）</value>
   </data>
   <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
-    <value>擬合參數自動縮小的門檻值（0-1）。
+    <value>擬合參數自動縮小的閾值（0-1）。
 當近期殘差（Rwp）斜率與較早期斜率
 的比值低於此值時，各項參數會
 縮小為 0.8 倍。</value>
@@ -291,27 +291,27 @@ Negative 則反轉(高強度顯示為暗)。</value>
   </data>
   <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
     <value>反覆尋找並移除對繞射圖樣
-沒有貢獻的晶粒方位，
-只保留有貢獻的方位。</value>
+沒有貢獻的結晶子取向，
+只保留有貢獻的取向。</value>
   </data>
   <data name="label30.ToolTip" xml:space="preserve">
     <value>強度顯示的濃淡方向：Positive 將高強度
 顯示為亮，Negative 則反轉顯示。</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 軸的擺動（搖頭）範圍，
+    <value>Rz (θ) 軸的擺動範圍，
 以中心為基準指定 ±°。</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 軸的擺動（搖頭）範圍，
+    <value>Rz (θ) 軸的擺動範圍，
 以中心為基準指定 ±°。</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Rz (θ) 軸的擺動（搖頭）範圍，
+    <value>Rz (θ) 軸的擺動範圍，
 以中心為基準指定 ±°。</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">
-    <value>Ry (ω) 擺動的角度步進 (°)；越小方位取樣
+    <value>Ry (ω) 振盪的角度步進 (°)；越小取向取樣
 越精細，但模擬速度越慢。</value>
   </data>
   <data name="label52.ToolTip" xml:space="preserve">
@@ -323,6 +323,6 @@ Negative 則反轉(高強度顯示為暗)。</value>
 以每秒度數 (°/s) 表示。</value>
   </data>
   <data name="label53.ToolTip" xml:space="preserve">
-    <value>Ry (ω) 擺動的角度步進 (°)。</value>
+    <value>Ry (ω) 振盪的角度步進 (°)。</value>
   </data>
 </root>

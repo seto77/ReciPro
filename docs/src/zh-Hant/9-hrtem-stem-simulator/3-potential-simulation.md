@@ -18,17 +18,17 @@
 
 ## TEM 條件
 
-![TEM conditions](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![TEM 條件](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — 加速電壓。它決定電子波長，並用於計算位能的傅立葉係數 $U_g$。
 
-> **Defocus、Cs、Cc、β、ΔE 與 PCTF 在位能模式下為非作用狀態**（不套用任何成像光學），並顯示為灰階。
+> **Defocus、Cs、Cc、β、ΔE 與 PCTF 在位能模式下為非作用狀態**（不套用任何成像光學），並顯示為灰色。
 
 ---
 
 ## 位能選項
 
-![Potential options](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![位能選項](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 選擇要顯示哪一種位能以及如何顯示。
 
@@ -36,8 +36,8 @@
 
 | 類型 | 說明 |
 |------|-------------|
-| **$U_g$ — elastic scattering potential** | 負責彈性散射的（靜電）晶體位能。代表散射強度 |
-| **$U'_g$ — absorption potential** | 由熱漫散射（TDS）產生的虛部（吸收）位能。代表彈性通道的損失 |
+| **$U_g$ — 彈性散射位能** | 負責彈性散射的（靜電）晶體位能。代表散射強度 |
+| **$U'_g$ — 吸收位能** | 由熱漫散射（TDS）產生的虛部（吸收）位能。代表彈性通道的損失 |
 
 $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格）。
 
@@ -45,14 +45,14 @@ $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格
 
 | 模式 | 選項 |
 |------|---------|
-| **Magnitude and phase** | **Both** / **Magnitude only** / **Phase only**（相位以色環呈現，下方並顯示相位刻度） |
-| **Real and imaginary part** | **Both** / **Real only** / **Imaginary only** |
+| **大小與相位** | **兩者** / **僅大小** / **僅相位**（相位以色環呈現，下方並顯示相位刻度） |
+| **實部與虛部** | **兩者** / **僅實部** / **僅虛部** |
 
 ---
 
 ## 影像屬性
 
-![Image property](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![影像屬性](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — 產生影像的像素尺寸（預設 512×512）。
 - **Resolution** — 取樣解析度（pm/px）。
@@ -61,7 +61,7 @@ $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格
 
 ## 繞射波
 
-![Diffracted waves](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — 納入位能傅立葉合成中的布洛赫波（傅立葉係數）的最大數目（預設 80）。數值越大，納入的空間頻率越高，並能重現位能更細緻的細節。
 

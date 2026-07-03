@@ -36,7 +36,7 @@ Simula imágenes de franjas reticulares de TEM de alta resolución. El modo prin
 
 ### Parámetros intrínsecos
 
-![Parámetros intrínsecos](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Parámetros intrínsecos](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Parámetro | Descripción | Típico |
 |-----------|-------------|---------|
@@ -71,7 +71,7 @@ Establezca el tamaño del diafragma (mrad) y su posición. **Open aperture** lo 
 
 ## Modelos de coherencia parcial
 
-![Modelos de coherencia parcial](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![Opciones HRTEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 | Modelo | Descripción |
 |-------|-------------|
@@ -82,7 +82,7 @@ Establezca el tamaño del diafragma (mrad) y su posición. **Open aperture** lo 
 
 ## Modos de simulación
 
-![Modos de simulación](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Modo único/en serie](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 | Modo | Descripción |
 |------|-------------|

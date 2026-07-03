@@ -1,15 +1,15 @@
 # Abschwächung & Transport
 
-Streufaktoren beschreiben ein einzelnes Streuereignis; auf dieser Seite geht es darum, was mit dem Strahl **als Ganzes** geschieht, während er den Festkörper durchläuft – wie schnell er entfernt wird, wie tief er eindringt und (bei Elektronen) wie er abgebremst wird. Die maßgebliche Physik ist für die drei Strahlungsarten völlig verschieden, weshalb die Registerkarte **Attenuations & Transport** ihre Diagramme und Tabellen je nach Strahlung so drastisch ändert.
+Streufaktoren beschreiben ein einzelnes Streuereignis; auf dieser Seite geht es darum, was mit dem Strahl **als Ganzes** geschieht, während er den Festkörper durchläuft – wie schnell er entfernt wird, wie tief er eindringt und (bei Elektronen) wie er abgebremst wird. Die maßgebliche Physik ist für die drei Strahlungsarten völlig verschieden, weshalb die Registerkarte **Schwächung & Transport** ihre Diagramme und Tabellen je nach Strahlung so drastisch ändert.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-de-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Schwächung & Transport — X-ray](../../../assets/cap-de-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-de-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Schwächung & Transport — electron](../../../assets/cap-de-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-de-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Schwächung & Transport — neutron](../../../assets/cap-de-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -143,5 +143,5 @@ Dieselben Längenskalen erklären, warum Elektronen ultradünne Proben und dynam
 
 - [Atomare Streufaktoren](scattering-factor.md) — die $F(q)$/$S(q)$-Aufteilung hinter Rayleigh/Compton sowie die Mott-Wirkungsquerschnitte.
 - [Fluoreszenz](fluorescence.md) — die Relaxation, die auf die Röntgen-Photoabsorption folgt.
-- [3. Strahl-Wechselwirkung](../../3-beam-interaction.md) — die Registerkarte *Attenuations & Transport*.
+- [3. Strahl-Wechselwirkung](../../3-beam-interaction.md) — die Registerkarte *Schwächung & Transport*.
 - [8. Elektronenbahnen](../../8-electron-trajectory.md) · [12. EBSD-Simulation](../../12-ebsd-simulation.md) — wo die Elektronenreichweiten verwendet werden.

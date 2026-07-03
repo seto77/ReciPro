@@ -197,11 +197,11 @@ issu du produit vectoriel du plan de glissement et
 du plan de compression, avec dispersion θ,φ).</value>
   </data>
   <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
-    <value>Module d'incompressibilité K0 (GPa) pour l'équation
+    <value>Module de compressibilité K0 (GPa) pour l'équation
 d'état de Birch–Murnaghan du troisième ordre.</value>
   </data>
   <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
-    <value>Dérivée en pression du module d'incompressibilité K'0 pour
+    <value>Dérivée en pression du module de compressibilité K'0 pour
 l'équation d'état de Birch–Murnaghan du troisième ordre.</value>
   </data>
   <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">

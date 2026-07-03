@@ -66,7 +66,7 @@
     <value>直接</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Text" xml:space="preserve">
-    <value>忽略禁制繞射</value>
+    <value>忽略禁制反射</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
     <value>繞射點資訊</value>
@@ -153,7 +153,7 @@
     <value>刪除</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>清除所有繞射點</value>
+    <value>清除所有斑點</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
     <value>顯示符號</value>
@@ -201,7 +201,7 @@
     <value>已指派繞射點</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
-    <value>另存為影像（PNG 格式）</value>
+    <value>另存為影像 (PNG 格式)</value>
   </data>
   <data name="groupBoxOptics.Text" xml:space="preserve">
     <value>光學</value>
@@ -243,25 +243,25 @@
     <value>顯示編號</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
-    <value>在觀測斑點上顯示標記符號</value>
+    <value>在觀測繞射點上顯示標記符號</value>
   </data>
   <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
-    <value>標定斑點
+    <value>辨識繞射點
 （您需要在主視窗中選取適當的結晶）</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
-    <value>重新擬合所有偵測到的斑點的位置與強度</value>
+    <value>重新擬合所有偵測到的繞射點的位置與強度</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
     <value>像素大小的單位：毫米</value>
   </data>
   <data name="buttonFindSpots.ToolTip" xml:space="preserve">
-    <value>偵測載入影像中的繞射斑點並以選取的函數加以擬合。
-請在右側的方塊中指定要搜尋的斑點數、斑點間的最小距離
+    <value>偵測載入影像中的繞射點並以選取的函數加以擬合。
+請在右側的方塊中指定要搜尋的繞射點數、繞射點間的最小距離
 以及擬合範圍。</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
-    <value>在計算斑點上顯示標記符號</value>
+    <value>在計算繞射點上顯示標記符號</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
     <value>排除那些在運動學上禁制、但可經由多重
@@ -274,7 +274,7 @@
 以 mrad 表示）。</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
-    <value>對所有斑點位置執行整體擬合（實驗性）</value>
+    <value>對所有繞射點位置執行全域擬合（實驗性）</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
     <value>偵測斑點之間允許的最小間隔 (px)；
@@ -282,9 +282,9 @@
 以避免同一斑點被重複計算。</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
-    <value>偵測斑點之間允許的最小間隔 (px)；
+    <value>偵測繞射點之間允許的最小間隔 (px)；
 比此值更接近的峰會被合併，
-以避免同一斑點被重複計算。</value>
+以避免同一繞射點被重複計算。</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
     <value>搜尋多個晶粒方位</value>
@@ -308,8 +308,8 @@
     <value>中止目前的計算</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>觀測斑點的清單表；勾選「Direct」可設定
-直接束斑點，按某列的「Fit」可擬合其
+    <value>觀測繞射點的清單表；勾選「直接」可設定
+直射點，按某列的「擬合」可擬合其
 峰，或選取某列以在圖樣上突顯它</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
@@ -325,9 +325,8 @@
 但計算越慢（1-2048）。</value>
   </data>
   <data name="numericBoxDonut.ToolTip" xml:space="preserve">
-    <value>甜甜圈形背景扣除中，每個斑點外側用作
-局部背景的環狀區域寬度 (px)。
-以此環的平均值作為局部背景扣除（1-100）。</value>
+    <value>甜甜圈形背景扣除中，每個繞射點外側用作
+局部背景的環狀區域寬度 (px，1-100)。</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
     <value>單一偵測器像素的大小；單位（mm 或 nm⁻¹）
@@ -346,10 +345,10 @@
     <value>將上述資訊複製到剪貼簿。</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
-    <value>在計算斑點上顯示指標標籤</value>
+    <value>在計算繞射點上顯示指標標籤</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
-    <value>用於峰擬合的每個斑點周圍圓形區域的半徑
+    <value>用於峰擬合的每個繞射點周圍圓形區域的半徑
 （以像素計，0–100）；此圓內的像素
 會以準佛克特（pseudo-Voigt）函數加以擬合。</value>
   </data>
@@ -359,8 +358,8 @@
 會以準佛克特（pseudo-Voigt）函數加以擬合。</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
-    <value>從清單中刪除目前選取的斑點
-（使用 Clear 按鈕可移除所有斑點）。</value>
+    <value>從清單中刪除目前選取的繞射點
+（使用「清除所有繞射點」按鈕可移除所有繞射點）。</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>找到的指標化候選清單；選取某列
@@ -371,29 +370,29 @@
   </data>
   <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
     <value>選取候選中所含的晶粒方位；
-選取某列會疊加其計算斑點，
-並為觀測斑點指派 hkl 指標。</value>
+選取某列會疊加其計算繞射點，
+並為觀測繞射點指派 hkl 指標。</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
-    <value>對選取的晶粒，將觀測斑點強度
+    <value>對選取的晶粒，將觀測繞射點強度
 與動力學（布洛赫波）CBED 計算進行比對，
 藉以精修試樣厚度 (nm) 與束方向
 （僅限電子繞射）。</value>
   </data>
   <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
-    <value>指定要偵測的斑點數目</value>
+    <value>指定要偵測的繞射點數目</value>
   </data>
   <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
     <value>指定要偵測的斑點數目</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
-    <value>在觀測斑點上顯示編號</value>
+    <value>在觀測繞射點上顯示編號</value>
   </data>
   <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
-    <value>顯示選取斑點的詳細資訊</value>
+    <value>顯示選取繞射點的詳細資訊</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
-    <value>將觀測斑點與候選反射進行比對時所允許的
+    <value>將觀測繞射點與候選反射進行比對時所允許的
 最大相對長度（晶面間距）容差，以 % 表示
 （0.1–10%）。</value>
   </data>
@@ -406,14 +405,14 @@
     <value>搜尋單一晶粒方位</value>
   </data>
   <data name="buttonClearSpots.ToolTip" xml:space="preserve">
-    <value>清除所有斑點</value>
+    <value>清除所有繞射點</value>
   </data>
   <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
     <value>儲存上述資訊</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>將所有斑點的擬合半徑設為目前的
-「Fitting range」值 (px)。</value>
+    <value>將所有繞射點的擬合半徑設為目前的
+「擬合範圍」值 (px)。</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>像素大小的單位：奈米倒數</value>

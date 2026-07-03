@@ -24,7 +24,7 @@ En PED, le faisceau électronique est mis en précession sur un cône autour de 
 
 ![Longueur d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Puisque la PED est une diffraction électronique, sélectionnez **Electron beam** comme source. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (nm) calcule la longueur d'onde corrigée relativiste.
+Puisque la PED est une diffraction électronique, sélectionnez **Electron beam** comme source. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (nm) calcule la longueur d'onde corrigée relativistement.
 
 ---
 

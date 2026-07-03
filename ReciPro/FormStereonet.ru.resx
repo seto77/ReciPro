@@ -155,7 +155,7 @@
 проекции</value>
   </data>
   <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
-    <value>Подпись</value>
+    <value>Метка</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
     <value>Глубинное затухание</value>
@@ -345,11 +345,11 @@
   </data>
   <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
     <value>Использовать для меток индексов фиксированный
-цвет вместо цвета рефлекса.</value>
+цвет вместо цвета точки.</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
     <value>Задать фиксированный цвет, используемый для меток
-индексов, когда включён режим «Указать цвет».</value>
+индексов, когда включён режим «Задать цвет».</value>
   </data>
   <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
     <value>Задать фиксированный цвет, используемый для меток
@@ -385,7 +385,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Задать цвет линий сетки 1° (тонкие линии,
-отображаются только при включённом «1° Lines»).</value>
+отображаются только при включённом «Линии 1°»).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Задать цвет линий сетки 1° (тонкие линии,
@@ -744,7 +744,7 @@
     <value>Точка</value>
   </data>
   <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
-    <value>Подпись</value>
+    <value>Метка</value>
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Цвет</value>

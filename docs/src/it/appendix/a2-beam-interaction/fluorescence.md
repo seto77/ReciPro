@@ -1,8 +1,8 @@
 # Fluorescenza
 
-Quando la **fotoassorbimento** dei raggi X espelle un elettrone di una shell interna (vedi [attenuazione & trasporto](attenuation-transport.md)), lascia una lacuna in un livello profondo. L'atomo si rilassa facendo cadere un elettrone esterno nella lacuna, e l'energia rilasciata esce o come **fotone X caratteristico** (fluorescenza) o espellendo un secondo elettrone (il processo **Auger**). La scheda **Fluorescence** mostra un'anteprima del canale dei fotoni caratteristici; vale solo per i raggi X ed è nascosta per i fasci di elettroni e di neutroni.
+Quando il **fotoassorbimento** dei raggi X espelle un elettrone di una shell interna (vedi [attenuazione & trasporto](attenuation-transport.md)), lascia una lacuna in un livello profondo. L'atomo si rilassa facendo cadere un elettrone esterno nella lacuna, e l'energia rilasciata esce o come **fotone X caratteristico** (fluorescenza) o espellendo un secondo elettrone (il processo **Auger**). La scheda **Fluorescenza** mostra un'anteprima del canale dei fotoni caratteristici; vale solo per i raggi X ed è nascosta per i fasci di elettroni e di neutroni.
 
-![Fluorescence (X-ray)](../../../assets/cap-it-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluorescenza (X-ray)](../../../assets/cap-it-auto/FormBeamInteraction-xray-fluorescence.png)
 
 ---
 
@@ -79,4 +79,4 @@ con $C_i$ la concentrazione, $\Phi_0$ il flusso incidente, $\sigma_\text{ion}$ l
 
 - [Attenuazione & trasporto](attenuation-transport.md) — fotoassorbimento, il bordo che crea la lacuna.
 - [Fattori di diffusione atomica](scattering-factor.md) — gli stessi elettroni legati, visti nella diffusione.
-- [3. Interazione del fascio → scheda Fluorescence](../../3-beam-interaction.md#fluorescence-tab)
+- [3. Interazione del fascio → scheda Fluorescenza](../../3-beam-interaction.md#fluorescence-tab)

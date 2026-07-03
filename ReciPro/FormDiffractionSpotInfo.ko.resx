@@ -73,7 +73,7 @@
     <value>동역학적(Bethe 법) 회절 계산에 의한 각 반사의
 결과입니다. 지수 hkl, 면간 거리, 역격자 벡터 g,
 결정 퍼텐셜 Ug/Vg, 여기 오차 Sg(역격자점이
-Ewald 구에서 벗어난 거리), 회절파 진폭 Φ를
+에발트 구에서 벗어난 거리), 회절파 진폭 Φ를
 표시합니다.</value>
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
@@ -88,7 +88,7 @@ Vg [eV] × 10¹⁸. 위의 라디오 버튼으로
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
     <value>표 열 기호의 범례: Vg/Ug = 탄성 산란의 결정
-퍼텐셜; V'g/U'g = 열 산만 산란의 허수(흡수)
+퍼텐셜; V'g/U'g = 열 확산 산란의 허수(흡수)
 퍼텐셜; Φ = 출사면에서의 회절파 진폭.</value>
   </data>
   <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">

@@ -1,8 +1,8 @@
 # 螢光
 
-當 X 射線的**光吸收**將內殼層電子擊出（參見[衰減與傳輸](attenuation-transport.md)）時，會在深層能階留下一個空缺。原子藉由將外層電子落入此電洞而弛豫，釋放出的能量會以**特徵 X 射線光子**（螢光）的形式逸出，或是擊出第二個電子（即 **Auger** 過程）。**Fluorescence** 索引標籤預覽特徵光子通道；它僅適用於 X 射線，對於電子束與中子束則隱藏。
+當 X 射線的**光吸收**將內殼層電子擊出（參見[衰減與傳輸](attenuation-transport.md)）時，會在深層能階留下一個空缺。原子藉由將外層電子落入此電洞而弛豫，釋放出的能量會以**特徵 X 射線光子**（螢光）的形式逸出，或是擊出第二個電子（即 **Auger** 過程）。**螢光** 索引標籤預覽特徵光子通道；它僅適用於 X 射線，對於電子束與中子束則隱藏。
 
-![Fluorescence (X-ray)](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-fluorescence.png)
+![螢光 (X-ray)](../../../assets/cap-zh-Hant-auto/FormBeamInteraction-xray-fluorescence.png)
 
 ---
 
@@ -79,4 +79,4 @@ $$I_\ell \;\propto\; C_i\,\Phi_0\,\sigma_{\text{ion},X,i}(E_0)\,\omega_{X,i}\,p_
 
 - [衰減與傳輸](attenuation-transport.md) — 光吸收，即產生空缺的吸收邊。
 - [原子散射因子](scattering-factor.md) — 同樣的束縛電子，從散射的角度來看。
-- [3. 電子束交互作用 → Fluorescence 索引標籤](../../3-beam-interaction.md#fluorescence-tab)
+- [3. 電子束交互作用 → 螢光 索引標籤](../../3-beam-interaction.md#fluorescence-tab)

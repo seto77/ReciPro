@@ -18,7 +18,7 @@ Elektronen innerhalb eines Kristalls werden am Kristallpotential gestreut. Seine
 
 ## TEM-Bedingungen
 
-![TEM conditions](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![TEM-Bedingungen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — Beschleunigungsspannung. Sie legt die Elektronenwellenlänge fest und wird zur Berechnung der Fourier-Koeffizienten $U_g$ des Potentials verwendet.
 
@@ -28,7 +28,7 @@ Elektronen innerhalb eines Kristalls werden am Kristallpotential gestreut. Seine
 
 ## Potential-Optionen
 
-![Potential options](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Potential-Optionen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Wählt, welches Potential angezeigt wird und wie es dargestellt wird.
 
@@ -36,8 +36,8 @@ Wählt, welches Potential angezeigt wird und wie es dargestellt wird.
 
 | Typ | Beschreibung |
 |------|-------------|
-| **$U_g$ — elastic scattering potential** | Das (elektrostatische) Kristallpotential, das für die elastische Streuung verantwortlich ist. Stellt die Streustärke dar |
-| **$U'_g$ — absorption potential** | Das imaginäre (Absorptions-)Potential, das aus der thermisch diffusen Streuung (TDS) entsteht. Stellt den Verlust aus dem elastischen Kanal dar |
+| **$U_g$ — Potential der elastischen Streuung** | Das (elektrostatische) Kristallpotential, das für die elastische Streuung verantwortlich ist. Stellt die Streustärke dar |
+| **$U'_g$ — Absorptionspotential** | Das imaginäre (Absorptions-)Potential, das aus der thermisch diffusen Streuung (TDS) entsteht. Stellt den Verlust aus dem elastischen Kanal dar |
 
 $U_g$ und $U'_g$ können gleichzeitig angezeigt werden (für jedes angekreuzte wird ein Bereich hinzugefügt).
 
@@ -45,14 +45,14 @@ $U_g$ und $U'_g$ können gleichzeitig angezeigt werden (für jedes angekreuzte w
 
 | Modus | Optionen |
 |------|---------|
-| **Magnitude and phase** | **Both** / **Magnitude only** / **Phase only** (die Phase wird mit einem Farbkreis dargestellt, und darunter wird eine Phasenskala gezeigt) |
-| **Real and imaginary part** | **Both** / **Real only** / **Imaginary only** |
+| **Betrag und Phase** | **Beide** / **Nur Betrag** / **Nur Phase** (die Phase wird mit einem Farbkreis dargestellt, und darunter wird eine Phasenskala gezeigt) |
+| **Real- und Imaginärteil** | **Beide** / **Nur Realteil** / **Nur Imaginärteil** |
 
 ---
 
 ## Bildeigenschaft
 
-![Image property](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Bildeigenschaften](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — Pixelabmessungen des erzeugten Bildes (Standard 512×512).
 - **Resolution** — Abtastauflösung (pm/px).
@@ -61,7 +61,7 @@ $U_g$ und $U'_g$ können gleichzeitig angezeigt werden (für jedes angekreuzte w
 
 ## Gebeugte Wellen
 
-![Diffracted waves](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Gebeugte Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — maximale Anzahl der Bloch-Wellen (Fourier-Koeffizienten), die in die Fourier-Synthese des Potentials einbezogen werden (Standard 80). Größere Werte beziehen höhere Raumfrequenzen ein und geben feinere Details des Potentials wieder.
 

@@ -36,7 +36,7 @@ Simule des images de franges de réseau en TEM haute résolution. Le mode princi
 
 ### Paramètres intrinsèques
 
-![Paramètres intrinsèques](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Paramètres intrinsèques](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | Paramètre | Description | Typique |
 |-----------|-------------|---------|
@@ -63,7 +63,7 @@ Défocus de Scherzer : $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -
 
 ## Diaphragme objectif
 
-![Diaphragme objectif](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![Diaphragme objectif (option HRTEM)](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Définissez la taille du diaphragme (mrad) et sa position. **Open aperture** le supprime. Le nombre d'ondes de Bloch prises en compte dépend des conditions du diaphragme.
 
@@ -71,7 +71,7 @@ Définissez la taille du diaphragme (mrad) et sa position. **Open aperture** le 
 
 ## Modèles de cohérence partielle
 
-![Modèles de cohérence partielle](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![Options HRTEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 | Modèle | Description |
 |-------|-------------|
@@ -82,7 +82,7 @@ Définissez la taille du diaphragme (mrad) et sa position. **Open aperture** le 
 
 ## Modes de simulation
 
-![Modes de simulation](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Mode unique/série](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 | Mode | Description |
 |------|-------------|

@@ -8,7 +8,7 @@ ReciPro enthält ein **IronPython**-basiertes Makrosystem, um Kristalloperatione
 
 ![Makro-Editor](../../assets/cap-de-auto/FormMacro.png)
 
-Im obigen Screenshot ist **Show samples** aktiviert, sodass die integrierten Beispielmakros angezeigt werden. Die Makroliste befindet sich links, der Code-Editor rechts und eine Hilfetabelle der integrierten Funktionen unten.
+Im obigen Screenshot ist **Beispiele anzeigen** aktiviert, sodass die integrierten Beispielmakros angezeigt werden. Die Makroliste befindet sich links, der Code-Editor rechts und eine Hilfetabelle der integrierten Funktionen unten.
 
 ---
 
@@ -55,7 +55,7 @@ Die Titelleiste zeigt **`Macro*`** (mit Sternchen), solange es ungespeicherte Ä
 
 ### Beispielmakros
 
-Wenn Sie **Show samples** (oben links) aktivieren, wird Ihre Makroliste vorübergehend durch die integrierten Beispielmakros ersetzt (einfache Schleifen und Bedingungen, mathematische Funktionen, Rotation/Ausrichtung, Durchlaufen der Kristallliste, Beugungs-/Bildsimulation, Kipp-/Energieserien, Reflex-Informationen und mehr). Die Beispiele sind schreibgeschützt und werden in der aktuellen UI-Sprache angezeigt; nutzen Sie sie zum Lernen oder als Ausgangspunkt zum Kopieren. Beim Deaktivieren werden Ihre eigenen Makros wiederhergestellt.
+Wenn Sie **Beispiele anzeigen** (oben links) aktivieren, wird Ihre Makroliste vorübergehend durch die integrierten Beispielmakros ersetzt (einfache Schleifen und Bedingungen, mathematische Funktionen, Rotation/Ausrichtung, Durchlaufen der Kristallliste, Beugungs-/Bildsimulation, Kipp-/Energieserien, Reflex-Informationen und mehr). Die Beispiele sind schreibgeschützt und werden in der aktuellen UI-Sprache angezeigt; nutzen Sie sie zum Lernen oder als Ausgangspunkt zum Kopieren. Beim Deaktivieren werden Ihre eigenen Makros wiederhergestellt.
 
 ---
 

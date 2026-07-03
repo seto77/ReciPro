@@ -9,7 +9,7 @@
 1. **[Atomic scattering factors](scattering-factor.md)** — как *отдельный атом* рассеивает каждый вид пучка.
 2. **[Structure factor](structure-factor.md)** — как атомы в *элементарной ячейке* интерферируют, включая фактор Дебая–Валлера и правила погасания.
 3. **[Attenuation & transport](attenuation-transport.md)** — как пучок *удаляется и замедляется* при прохождении через материал.
-4. **[Fluorescence](fluorescence.md)** — характеристическое рентгеновское излучение, следующее за ионизацией внутренней оболочки.
+4. **[Флуоресценция](fluorescence.md)** — характеристическое рентгеновское излучение, следующее за ионизацией внутренней оболочки.
 
 ---
 
@@ -20,7 +20,7 @@
 $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\pi\sin\theta}{\lambda} = 4\pi s .$$
 
 - $\theta$ : угол Брэгга — *половина* полного угла рассеяния. Таблица рефлексов приводит полный угол $2\theta$.
-- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : переменная, относительно которой строится вкладка **Scattering factors**. Это естественный аргумент любого атомного форм-фактора.
+- $s = \dfrac{\sin\theta}{\lambda}$ (Å⁻¹) : переменная, относительно которой строится вкладка **Факторы рассеяния**. Это естественный аргумент любого атомного форм-фактора.
 - $d$ : межплоскостное расстояние. При условии Брэгга $\lambda = 2d\sin\theta$ выполняется $s = \dfrac{1}{2d} = \dfrac{|\mathbf g|}{2}$, где $\mathbf g$ — вектор обратной решётки с $|\mathbf g| = 1/d$.
 
 Эти три соглашения описывают одну и ту же геометрию; различается только масштаб. Стоит держать это соответствие ясным, поскольку окно использует более одного из них:
@@ -29,7 +29,7 @@ $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\
 |---|---|---|
 | Таблица рефлексов | $q = 2\pi/d$ | $q = 2\pi\lvert\mathbf g\rvert = Q = 4\pi s$ |
 | Таблица рефлексов | $2\theta$ | полный угол рассеяния, $\sin\theta = \lambda s$ |
-| Вкладка Scattering factors | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
+| Вкладка Факторы рассеяния | $s = \sin\theta/\lambda$ | $s = q/4\pi = 1/(2d)$ |
 | Диаграмма дифракционных пиков | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Единицы"
@@ -90,6 +90,6 @@ $$A_{\mathbf g}(t) \;\propto\; F_{\mathbf g}\int_0^t e^{\,2\pi i S_{\mathbf g} z
 ## См. также
 
 - [3. Beam interaction](../../3-beam-interaction.md) — GUI, который объясняет это приложение.
-- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Fluorescence](fluorescence.md)
+- [Atomic scattering factors](scattering-factor.md) · [Structure factor](structure-factor.md) · [Attenuation & transport](attenuation-transport.md) · [Флуоресценция](fluorescence.md)
 - [Appendix A1. Coordinate systems](../a1-coordinate-system/1-orientation.md)
 - [Appendix A3. Dynamical diffraction (Bloch-wave method)](../a3-bloch-wave/index.md) — теория многократного рассеяния, использующая эти факторы рассеяния.

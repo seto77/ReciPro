@@ -40,7 +40,7 @@ title: Diffraction Simulator
 | X선 | Back Laue | 후방반사 라우에 | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
 | 중성자 | 평행 | 중성자 회절 | [X선 회절 시뮬레이션의 중성자 절](4-x-ray-neutron-diffraction.md) |
 
-> **Note**: 입사빔 선택지는 파장에 따라 달라집니다. 전자의 경우: **평행, 세차(전자 = PED), 수렴(CBED)**, X선의 경우: **평행, 세차(X선), Back Laue**, 중성자의 경우: **평행**만. **세차(전자 = PED)** 또는 **수렴(CBED)**을 선택하면 강도 계산이 자동으로 **Dynamical**로 전환됩니다.
+> **Note**: 입사빔 선택지는 파장에 따라 달라집니다. 전자의 경우: **평행, 세차(전자 = PED), 수렴(CBED)**, X선의 경우: **평행, 세차(X선), Back Laue**, 중성자의 경우: **평행**만. **세차(전자 = PED)** 또는 **수렴(CBED)**을 선택하면 강도 계산이 자동으로 **동역학 이론**으로 전환됩니다.
 
 ---
 
@@ -84,7 +84,7 @@ title: Diffraction Simulator
 | 단결정 X선 회절 생성 | **Wavelength**를 X선 / Synchrotron으로 전환 | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
 | 세차 전자 회절(PED) 생성 | **Incident beam**을 **Precession (electron)**으로 설정한 다음, 반각과 스텝을 설정 | [PED 시뮬레이션](2-ped-simulation.md) |
 | 수렴빔 전자 회절(CBED) 생성 | **Incident beam**을 **Convergence (CBED, electron only)**로 설정하고 CBED 창에서 조건을 설정 | [CBED 시뮬레이션](3-cbed-simulation.md), [CBED 계산](../appendix/a3-bloch-wave/cbed.md) |
-| 동역학적 계산의 반사 목록 검사 | **Dynamical**을 선택하고 **Spot Details** 또는 **Details**를 열기 | [동역학적 계산(공유 코어)](../appendix/a3-bloch-wave/calculation.md) |
+| 동역학적 계산의 반사 목록 검사 | **동역학 이론**을 선택하고 **반사점 세부정보** 또는 **Details**를 열기 | [동역학적 계산(공유 코어)](../appendix/a3-bloch-wave/calculation.md) |
 | 검출기 기하학을 실험 이미지와 대조 | **Details**에서 검출기 기하학 설정을 열고 오버레이 이미지를 사용 | [검출기 좌표계](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -105,18 +105,18 @@ title: Diffraction Simulator
 
 ## File 메뉴
 
-![File 메뉴](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![파일 메뉴](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | 메뉴 항목 | 설명 |
 |-----------|-------------|
-| **Save** | 표시된 회절 패턴을 파일로 저장합니다. |
-| **Save detector area** | 검출기 영역 부분만 저장합니다. |
-| **Copy** | 표시된 이미지를 클립보드에 복사합니다. |
-| **Copy detector area** | 검출기 영역 부분만 복사합니다. |
+| **이미지 저장** | 표시된 회절 패턴을 파일로 저장합니다. |
+| **검출기 영역 저장** | 검출기 영역 부분만 저장합니다. |
+| **복사** | 표시된 이미지를 클립보드에 복사합니다. |
+| **검출기 영역 복사** | 검출기 영역 부분만 복사합니다. |
 
 ### Preset {#toolbar}
 
-![Preset 메뉴](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![프리셋 메뉴](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 파장, 검출기 기하학, 탭 설정, 스폿 속성 등 시뮬레이터 구성 전체를 프리셋으로 저장하고 불러옵니다. 장비 / 취득 모드 간을 빠르게 전환할 때 유용합니다.
 
@@ -128,10 +128,10 @@ title: Diffraction Simulator
 
 | 버튼 | 설명 |
 |--------|-------------|
-| Spots | 회절 스폿 레이어 표시 / 숨김 |
-| Kikuchi | 키쿠치 선 레이어 표시 / 숨김 |
-| Debye | 디바이 링 레이어 표시 / 숨김 |
-| Scale | 축척 선 레이어 표시 / 숨김 |
+| 반사점 | 회절 스폿 레이어 표시 / 숨김 |
+| 기쿠치 선 | 기쿠치 선 레이어 표시 / 숨김 |
+| 디바이 링 | 디바이 링 레이어 표시 / 숨김 |
+| 축척 | 축척 선 레이어 표시 / 숨김 |
 | Index / d / Distance / Excitation error / Structure factor | 각 스폿에 붙는 레이블 선택 |
 
 ---
@@ -140,29 +140,29 @@ title: Diffraction Simulator
 
 ### 화면
 
-![화면](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![표시 설정](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 | 항목 | 설명 |
 |------|-------------|
-| **Resolution** | 픽셀 하나의 크기(mm)입니다. 실제 검출기 픽셀 크기와 같을 필요는 없으며, 표시 배율로 취급되고 마우스로 확대/축소할 때 자동으로 갱신됩니다. |
+| **해상도** | 픽셀 하나의 크기(mm)입니다. 실제 검출기 픽셀 크기와 같을 필요는 없으며, 표시 배율로 취급되고 마우스로 확대/축소할 때 자동으로 갱신됩니다. |
 | **Size (W×H)** | 그리기 영역의 픽셀 너비와 높이입니다. 디스플레이 해상도에 따라 매우 큰 값은 설정할 수 없을 수 있습니다. |
-| **Set centre / Fix centre** | 패턴 중심을 그리기 영역의 임의 픽셀로 설정하고, 필요하면 고정합니다. 고정하면 마우스 이동으로 중심을 옮길 수 없습니다. |
-| **Horizontal flip / Vertical flip / Negative image** | 표시된 패턴의 기하학적 뒤집기(수평 / 수직)와 명암 반전입니다. 실험 이미지의 방향이나 명암에 맞출 때 사용하십시오. |
-| **Reciprocal space** | 에발트 구와 역격자 벡터를 패턴 위에 겹쳐, 어떤 반사가 여기되는지 시각화합니다. |
+| **중심 설정 / 고정** | 패턴 중심을 그리기 영역의 임의 픽셀로 설정하고, 필요하면 고정합니다. 고정하면 마우스 이동으로 중심을 옮길 수 없습니다. |
+| **좌우 반전 / 상하 반전 / 음화 이미지** | 표시된 패턴의 기하학적 뒤집기(수평 / 수직)와 명암 반전입니다. 실험 이미지의 방향이나 명암에 맞출 때 사용하십시오. |
+| **역공간** | 에발트 구와 역격자 벡터를 패턴 위에 겹쳐, 어떤 반사가 여기되는지 시각화합니다. |
 
 ### 검출기(카메라 길이)
 
-![검출기(카메라 길이)](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![검출기 기하 & 오버레이 이미지](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **Camera length** : 시료에서 검출기까지의 거리(mm).
 - **Details** : 검출기 기하학 설정 창을 엽니다(아래 [검출기 기하학](#detector-geometry) 참조).
 
-### Misc
+### 기타
 
-![Misc](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![기타](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
-- **Rotation sensitivity** : 마우스 드래그 픽셀당 결정 회전량.
-- **TEM holder simulation** : 홀더 연동 시뮬레이션 창을 엽니다(아래 참조).
+- **회전 감도** : 마우스 드래그 픽셀당 결정 회전량.
+- **TEM 홀더 시뮬레이션** : 홀더 연동 시뮬레이션 창을 엽니다(아래 참조).
 
 ---
 
@@ -176,41 +176,41 @@ title: Diffraction Simulator
 
 ## 그리기 오버레이 탭
 
-### General
+### 일반
 
-![General 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![일반 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 스폿, 레이블, 키쿠치 선, 디바이 링 및 기타 오버레이의 색상을 설정합니다. 여기서 한 설정은 모든 렌더링 모드에 적용됩니다.
 
 ### 키쿠치 선
 
-![Kikuchi 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![기쿠치 선 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 도구 모음에서 키쿠치 선이 활성화되어 있을 때 활성화됩니다.
 
-- **Reflection selection** : 어떤 반사가 키쿠치 선을 생성하는지 선택합니다. **structure factor**($\lvert F_{hkl}\rvert$ 기준 상위 *N*개 반사) 또는 **1/d cutoff**(1/d가 임계값(nm⁻¹) 미만인 모든 반사) 중 하나입니다.
+- **반사 선택** : 어떤 반사가 키쿠치 선을 생성하는지 선택합니다. **구조 인자**($\lvert F_{hkl}\rvert$ 기준 상위 *N*개 반사) 또는 **1/d 차단값**(1/d가 임계값(nm⁻¹) 미만인 모든 반사) 중 하나입니다.
 - **Line appearance** : 선 너비, 키쿠치 선 색상, 그리고 **Draw with kinematical intensity**(반사의 운동학적 강도에 따라 선 진하기를 조정)를 설정합니다.
 - **Threshold** : 레거시 파라미터입니다. 지정한 값보다 *d*가 큰 반사에 대해서만 키쿠치 선 계산을 실행합니다(호환성을 위해 유지됨).
 
 ### 디바이 링
 
-![Debye 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![디바이 링 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 도구 모음에서 디바이 링이 활성화되어 있을 때 활성화됩니다.
 
-- **Ignore diffraction intensity** : 체크하면 모든 디바이 링이 동일한 색상과 강도로 그려집니다(결정 구조 인자 무시). 순전히 기하학적인 비교에 사용하십시오.
-- **Show index label** : 체크하면 각 링 근처에 (*hkl*)이 나타납니다.
+- **회절 강도 무시** : 체크하면 모든 디바이 링이 동일한 색상과 강도로 그려집니다(결정 구조 인자 무시). 순전히 기하학적인 비교에 사용하십시오.
+- **지수 레이블 표시** : 체크하면 각 링 근처에 (*hkl*)이 나타납니다.
 
-### Scale
+### 축척
 
-![Scale 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![축척 탭](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 도구 모음에서 축척 선이 활성화되어 있을 때 활성화됩니다.
 
 - **2θ / Azimuth scale lines** : **2θ**는 일정한 산란각(동심원)을, **Azimuth**는 일정한 방위각(중심에서 방사형 선)을 나타냅니다. 색상은 독립적으로 구성할 수 있습니다.
-- **Line width** : 축척 선의 두께.
-- **Division** : 인접한 축척 선 사이의 각도 간격.
-- **Show scale labels** : 축척 선에 숫자 레이블을 그릴지 여부.
+- **선 너비** : 축척 선의 두께.
+- **분할** : 인접한 축척 선 사이의 각도 간격.
+- **축척 라벨 표시** : 축척 선에 숫자 레이블을 그릴지 여부.
 
 ### Misc {#diffraction-spot-information}
 
@@ -222,7 +222,7 @@ title: Diffraction Simulator
 
 ## 회절 스폿 정보
 
-블로흐파 방법(Dynamical 계산)으로 계산된 반사별 상세 정보를 나열합니다. **Spot Details** 버튼(강도 계산 패널) 또는 **Details** 확인란으로 엽니다.
+블로흐파 방법(Dynamical 계산)으로 계산된 반사별 상세 정보를 나열합니다. **반사점 세부정보** 버튼(강도 계산 패널) 또는 **Details** 확인란으로 엽니다.
 
 ![회절 스폿 정보](../../assets/cap-ko-auto/FormDiffractionSpotInfo.png)
 

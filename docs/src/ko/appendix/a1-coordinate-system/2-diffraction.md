@@ -45,7 +45,7 @@
 | <span class="rp-steel">**시료 (Sample)**</span> | 입사빔을 산란시키는 물질; 실제 좌표의 원점 |
 | <span class="rp-steel">**실제 좌표** ($X$, $Y$, $Z$)</span> | 실험 장치의 3D 좌표 (mm); 원점은 시료, <span class="rp-steel">$Z$</span>는 항상 빔에 평행 |
 | <span class="rp-red">**Direct spot**</span> | 입사빔과 검출기의 교점 |
-| <span class="rp-brown">**Foot**</span> | 시료로부터 검출기 평면에 내린 수선의 발; 검출기 좌표의 원점. 검출기가 빔에 수직일 때만 direct spot과 일치합니다. 중첩 영상 모드에서는 foot의 위치를 픽셀 좌표로 설정합니다 |
+| <span class="rp-brown">**Foot**</span> | 시료로부터 검출기 평면에 내린 수선의 발; 검출기 좌표의 원점. 검출기가 빔에 수직일 때만 direct spot과 일치합니다. 오버레이 이미지 모드에서는 foot의 위치를 픽셀 좌표로 설정합니다 |
 | <span class="rp-brown">**검출기 좌표** ($X'$, $Y'$)</span> | 검출기 평면상의 2D 좌표 (mm); 원점은 foot |
 | <span class="rp-cyan">**픽셀 좌표** ($X''$, $Y''$)</span> | 검출기 평면상의 2D 좌표 (픽셀); 원점은 좌측 상단 모서리 |
 | <span class="rp-red">**Camera length 1** ($C_1$)</span> | 시료로부터 direct spot까지의 거리 (mm) |

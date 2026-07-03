@@ -33,7 +33,7 @@ $$A(\mathbf u) = \begin{cases} 1 & (\mathbf u\ \text{inside the objective apertu
 
 ## Modello quasi-coerente
 
-Un'approssimazione rapida: ogni fascio diffratto viene modulato dalla trasmissione della lente e smorzato dagli inviluppi di coerenza, quindi sommato coerentemente.
+Un'approssimazione rapida: ogni fascio diffratto viene modulato dal trasferimento della lente e smorzato dagli inviluppi di coerenza, quindi sommato coerentemente.
 
 $$I(\mathbf R) = |\psi(\mathbf R)|^2$$
 

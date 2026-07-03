@@ -45,7 +45,7 @@ Guardar o copiar en formato ráster o vectorial. El formato vectorial permite ed
 
 ## Mode
 
-![Mode](../assets/cap-es-auto/FormStereonet.panel3.groupBoxMode.png)
+![Modo](../assets/cap-es-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### Objetivo de proyección
 
@@ -77,7 +77,7 @@ Elija el hemisferio **Upper** o **Lower** como fuente de proyección — esto al
 
 ## Indices
 
-![Indices](../assets/cap-es-auto/FormStereonet.panel3.groupBoxIndices.png)
+![Índices](../assets/cap-es-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 Establece qué planos cristalinos / ejes se dibujan.
 
@@ -107,7 +107,7 @@ Controla la superposición de la red 3D (esfera) — opacidad de la esfera, indi
 
 ### Appearance
 
-![Appearance tab](../assets/cap-es-auto/FormStereonet.tabControl.tabPage1.png)
+![Pestaña Apariencia](../assets/cap-es-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
@@ -126,13 +126,13 @@ Cómo se dibuja el contorno del estereograma — el círculo delimitador y la ma
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-es-auto/FormStereonet.tabControl.tabPage2.png)
+![Pestaña Círculo máximo](../assets/cap-es-auto/FormStereonet.tabControl.tabPage2.png)
 
 Dibuje círculos máximos y círculos menores. Especifíquelos mediante el **zone-axis index** \([uvw]\) (el círculo máximo formado por la zona de ese eje) o mediante **two crystal-plane indices** que comparten el eje de zona. El grosor de línea de los círculos también se puede configurar con la barra deslizante.
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-es-auto/FormStereonet.tabControl.tabPage4.png)
+![Pestaña Onda](../assets/cap-es-auto/FormStereonet.tabControl.tabPage4.png)
 
 Disponible solo cuando se selecciona **Planes** o **Kikuchi line pairs** como objetivo de proyección. Establece la fuente de onda (X-ray / electron / neutron) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que se usan en la opción **structure-factor weighting** de [Mode](#mode).
 

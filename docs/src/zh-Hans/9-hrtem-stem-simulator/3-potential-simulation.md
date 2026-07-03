@@ -18,7 +18,7 @@
 
 ## TEM 条件
 
-![TEM conditions](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![TEM 条件](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — 加速电压。它确定电子波长，并用于计算势的傅里叶系数 $U_g$。
 
@@ -28,7 +28,7 @@
 
 ## 势选项
 
-![Potential options](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![势选项](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 选择显示哪种势以及如何显示。
 
@@ -52,7 +52,7 @@ $U_g$ 与 $U'_g$ 可以同时显示（每勾选一项就会增加一个窗格）
 
 ## 图像属性
 
-![Image property](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![图像属性](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — 生成图像的像素尺寸（默认 512×512）。
 - **Resolution** — 采样分辨率（pm/px）。
@@ -61,7 +61,7 @@ $U_g$ 与 $U'_g$ 可以同时显示（每勾选一项就会增加一个窗格）
 
 ## 衍射波
 
-![Diffracted waves](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![衍射波](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — 在势的傅里叶合成中纳入的布洛赫波（傅里叶系数）的最大数量（默认 80）。数值越大，纳入的空间频率越高，越能再现势的细节。
 

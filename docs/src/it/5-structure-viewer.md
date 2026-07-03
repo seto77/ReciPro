@@ -196,7 +196,7 @@ Trasla il piano reticolare disegnato di un multiplo intero della sua distanza in
 
 ### Coordinazione
 
-![Scheda Coordinate](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
+![Scheda Coordinazione](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
 Tabella e grafico di coordinazione attorno all'atomo bersaglio.
 

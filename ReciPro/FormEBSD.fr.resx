@@ -112,7 +112,7 @@
     <value>Nombre d'ondes diffractées</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Utiliser le modèle d'absorption non local</value>
+    <value>Utiliser le modèle d'absorption non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
     <value>Inclure les intensités de fond TDS</value>
@@ -187,7 +187,7 @@
     <value>Géométrie</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>Le centre du stéréogramme est la direction de la normale à la surface</value>
+    <value>Le centre du stéréonet est la direction de la normale à la surface</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Distribution BSE</value>
@@ -348,7 +348,7 @@ de l'axe Z (la direction du faisceau d'électrons).</value>
     <value>Oriente la vue géométrique 3D vers un point de vue oblique en vue aérienne.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>Superpose les axes cristallins / de référence sur la figure stéréographique
+    <value>Superpose les axes cristallins / de référence sur le stéréonet
 (projection stéréographique de la distribution des BSE).</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
@@ -578,7 +578,7 @@ noir/blanc) de l'image EBSD affichée.</value>
 des électrons rétrodiffusés simulés.</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
-    <value>Dans cette figure stéréographique, le centre
+    <value>Dans ce stéréonet, le centre
 correspond à la normale à la surface de l'échantillon.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">

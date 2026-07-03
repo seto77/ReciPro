@@ -1,15 +1,15 @@
 # 구조 인자
 
-원자 산란 인자는 하나의 원자를 기술하지만, **구조 인자**는 단위 격자 안의 모든 원자가 어떻게 *함께* 산란하는지를 기술한다. 이것은 **Reflections** 탭이 표로 정리하는 양이며(`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), 앞 페이지의 원자 물리와 회절 강도를 잇는 다리이다.
+원자 산란 인자는 하나의 원자를 기술하지만, **구조 인자**는 단위 격자 안의 모든 원자가 어떻게 *함께* 산란하는지를 기술한다. 이것은 **반사** 탭이 표로 정리하는 양이며(`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), 앞 페이지의 원자 물리와 회절 강도를 잇는 다리이다.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-ko-auto/FormBeamInteraction-xray-reflections.png)
+    ![반사 — X-ray](../../../assets/cap-ko-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-ko-auto/FormBeamInteraction-electron-reflections.png)
+    ![반사 — electron](../../../assets/cap-ko-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-ko-auto/FormBeamInteraction-neutron-reflections.png)
+    ![반사 — neutron](../../../assets/cap-ko-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ $$T_j = \exp\!\left(-2\pi^2\,\mathbf g^{\mathsf T}\!\mathbf U_j\,\mathbf g\right
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-그래서 $B$ 는 온도에 따라 증가하고 무거운 원자에서는 감소한다. ReciPro는 이를 계산하기보다 표로 주어진 또는 입력된 $B_j$ 를 직접 사용한다. $T_j$ 가 산란 인자에 곱해지므로 **Scattering factors** 탭은 동일한 $e^{-Bs^2}$ 감쇠를 그려진 곡선에 적용할 수 있다. 감쇠는 온도와 $s$ 에 따라 커지며, 이것이 열 확산 산란(결맞은 브래그 빔에서 제거되어 확산 배경으로 재분배되는 강도)이 동역학 이론에서 흡수 퍼텐셜을 공급하는 이유이다([부록 A3](../a3-bloch-wave/index.md)).
+그래서 $B$ 는 온도에 따라 증가하고 무거운 원자에서는 감소한다. ReciPro는 이를 계산하기보다 표로 주어진 또는 입력된 $B_j$ 를 직접 사용한다. $T_j$ 가 산란 인자에 곱해지므로 **산란 인자** 탭은 동일한 $e^{-Bs^2}$ 감쇠를 그려진 곡선에 적용할 수 있다. 감쇠는 온도와 $s$ 에 따라 커지며, 이것이 열 확산 산란(결맞은 브래그 빔에서 제거되어 확산 배경으로 재분배되는 강도)이 동역학 이론에서 흡수 퍼텐셜을 공급하는 이유이다([부록 A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -57,7 +57,7 @@ $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\fra
 - **체계적(공간군) 부재.** 격자 중심화와 병진 성분을 갖는 대칭 요소(나선축, 미끄럼면)는 그 공간군의 모든 결정에 대해 원자 내용물과 무관하게 반사의 전체 부류를 *정확히* 사라지게 한다. 이것이 **Hide prohibited planes** 뒤에 있는 규칙이다.
 - **우연적 준소광.** 특정 구조에서 원자 기여가 우연히 상쇄되면, 강도는 작지만 대칭적으로 금지된 것은 아니며, 조성이나 위치가 바뀌면 다시 나타날 수 있다. 이것들은 소광 규칙으로 *제거되지 않는다*.
 
-체계적 부재는 격자의 대칭 관련 사본들 사이의 위상 상쇄이다. 중심화 병진 $\mathbf t_\alpha$ 에 대해 구조 인자는 공통 인자를 갖는다
+체계적 부재는 단위 격자의 대칭 관련 사본들 사이의 위상 상쇄이다. 중심화 병진 $\mathbf t_\alpha$ 에 대해 구조 인자는 공통 인자를 갖는다
 
 $$F_{\mathbf g} \propto \sum_\alpha e^{-2\pi i\,\mathbf g\cdot\mathbf t_\alpha},$$
 
@@ -71,7 +71,7 @@ $$1 + e^{-\pi i (h+k+l)} = 0 \quad\Longleftrightarrow\quad h+k+l \ \text{odd}.$$
 |---|---|---|
 | $I$ (체심) | $h+k+l$ 홀수 | 모든 $hkl$ |
 | $F$ (면심) | $h,k,l$ 혼합 패리티 | 모든 $hkl$ |
-| $C$ (C-중심) | $h+k$ 홀수 | 모든 $hkl$ |
+| $C$ (저심) | $h+k$ 홀수 | 모든 $hkl$ |
 | $2_1$ 나선축 $\parallel b$ | $k$ 홀수 | $0k0$ |
 | $a$-미끄럼면 $\perp b$ | $h$ 홀수 | $h0l$ |
 | $c$-미끄럼면 $\perp b$ | $l$ 홀수 | $h0l$ |
@@ -90,7 +90,7 @@ $$F_{-\mathbf g} = \sum_j f_j\, e^{+2\pi i\,\mathbf g\cdot\mathbf r_j} = \left(\
 
 $$\lvert F_{\mathbf g}\rvert^2 - \lvert F_{-\mathbf g}\rvert^2 = -4\,\operatorname{Im}\!\left(A_{\mathbf g}\, B_{\mathbf g}^{*}\right),$$
 
-정상부와 이상부의 위상이 다를 때에만 0이 아니다 — 즉, 화학적으로 구별되는 이상 산란체가 비중심대칭 자리를 차지할 때이다. (이 차이는 중심대칭 구조, 단일 원소, 또는 모든 원자가 동일한 복소 인자를 갖는 어떤 경우에 대해서도 사라진다.) 이것이 비중심대칭 결정의 절대 구조(손대칭성)를 결정할 수 있게 해주며, 흡수단 근처의 X선 에너지를 선택하면 ReciPro가 프리델 쌍에 대해 0이 아닌 `F_inv` 와 서로 다른 $\lvert F\rvert$ 를 보고하는 물리적 이유이다.
+정상부와 이상부의 위상이 다를 때에만 0이 아니다 — 즉, 화학적으로 구별되는 이상 산란체가 비중심대칭 자리를 차지할 때이다. (이 차이는 중심대칭 구조, 단일 원소, 또는 모든 원자가 동일한 복소 인자를 갖는 어떤 경우에 대해서도 사라진다.) 이것이 비중심대칭 결정의 절대 구조(카이랄성)를 결정할 수 있게 해주며, 흡수단 근처의 X선 에너지를 선택하면 ReciPro가 프리델 쌍에 대해 0이 아닌 `F_inv` 와 서로 다른 $\lvert F\rvert$ 를 보고하는 물리적 이유이다.
 
 ---
 
@@ -111,5 +111,5 @@ $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
 - [원자 산란 인자](scattering-factor.md) — 합에 들어가는 $f_j$.
 - [감쇠 & 수송](attenuation-transport.md) — 산란 사건 사이에 빔에 무슨 일이 일어나는가.
-- [3. 빔 상호작용 → Reflections 탭](../../3-beam-interaction.md#reflections-tab)
+- [3. 빔 상호작용 → 반사 탭](../../3-beam-interaction.md#reflections-tab)
 - [부록 A3. 동역학적 회절](../a3-bloch-wave/index.md) — $\lvert F\rvert^2$ (운동학적)으로 더 이상 충분하지 않을 때.

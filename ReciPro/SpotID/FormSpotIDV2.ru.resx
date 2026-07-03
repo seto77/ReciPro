@@ -299,7 +299,7 @@
     <value>Длина камеры для дифракционной картины (мм)</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
-    <value>Длина камеры для дифракционной картины (мм)</value>
+    <value>Длина камеры для дифракционной картины (mm)</value>
   </data>
   <data name="buttonDonut.ToolTip" xml:space="preserve">
     <value>Применить вычитание фона в форме бублика (экспериментально)</value>
@@ -308,9 +308,9 @@
     <value>Остановить текущее вычисление</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>Таблица наблюдаемых рефлексов; отметьте 'Direct', чтобы задать
-рефлекс прямого пучка, нажмите 'Fit' в строке для подгонки её
-пика, или выберите строку для подсветки её на картине</value>
+    <value>Таблица наблюдаемых рефлексов; отметьте 'Пря- мой', чтобы задать
+рефлекс прямого пучка, нажмите 'Подг.' в строке для подгонки
+его пика, или выберите строку для подсветки её на картине</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
     <value>Максимальное число дифрагированных пучков (блоховских волн),
@@ -335,7 +335,7 @@
 пространства для межплоскостных расстояний и индицирования.</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value>Размер одного пикселя детектора; единица (мм или nm⁻¹)
+    <value>Размер одного пикселя детектора; единица (mm или nm⁻¹)
 следует за переключателями справа. Задаёт масштаб обратного
 пространства для межплоскостных расстояний и индицирования.</value>
   </data>
@@ -360,7 +360,7 @@
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>Удалить из списка только текущий выбранный рефлекс
-(для удаления всех рефлексов используйте кнопку Clear).</value>
+(для удаления всех рефлексов используйте кнопку 'Очистить все рефлексы').</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>Список найденных кандидатов индицирования; выберите
@@ -413,7 +413,7 @@
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
     <value>Установить радиус подгонки каждого рефлекса равным
-текущему значению 'Fitting range' (пикс).</value>
+текущему значению 'Диапазон подгонки (радиус)' (пикс).</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>Единица размера пикселя: обратные нанометры</value>

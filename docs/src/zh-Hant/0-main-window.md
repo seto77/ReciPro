@@ -29,7 +29,7 @@
 | 連按兩下 <kbd>CTRL</kbd> | 開啟 / 關閉**計算機** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 切換所選晶體的 **Reserved** 標記 |
 | ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（圖形問題的復原方式） |
-| 以左鍵拖曳方位小工具（左下方，*Current Direction* 之下） | 旋轉晶體 |
+| 以左鍵拖曳方位小工具（左下方，*目前方位* 之下） | 旋轉晶體 |
 | 在方位小工具上右鍵連按兩下 | 將小工具影像複製到剪貼簿 |
 | 單擊功能按鈕 | 開啟 / 關閉該視窗 |
 | 雙擊功能按鈕 | 強制顯示該視窗並使其置於最前 |
@@ -46,7 +46,7 @@
 如果您初次使用 ReciPro，請參考以下步驟：
 
 1. 在**晶體清單**中選擇目標晶體。若要使用 CIF/AMC 檔案，請將其拖放到**晶體資訊**中。
-2. 若您編輯了點陣參數或原子位置，請按 **Add** 或 **Replace**，將變更寫回晶體清單。
+2. 若您編輯了點陣參數或原子位置，請按 **↑ 新增 ↑** 或 **↑ 取代 ↑**，將變更寫回晶體清單。
 3. 在**旋轉控制**中，使用晶帶軸、晶面、Euler 角或滑鼠拖曳來設定晶體方位。
 4. 從**功能**開啟所需工具。繞射、HRTEM/STEM、EBSD 及其他計算視窗會使用目前所選的晶體與方位。
 
@@ -114,7 +114,7 @@
 
 ### 目前方位
 
-![Current orientation](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
+![目前方位](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
 
 顯示晶體方位。拖曳以旋轉。軸：紅 = *a*，綠 = *b*，藍 = *c*。
 
@@ -135,19 +135,19 @@
 
 ### 箭頭
 
-![Arrows](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
+![箭頭](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
 依角度 Step 旋轉。勾選 Animation 可進行連續旋轉。
 
-### 沿向檢視
+### 視線方向
 
-![View along](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![視線方向](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 將晶帶軸 [*uvw*] 或晶面 (*hkl*) 對齊為垂直於螢幕。
 
-- **Fix**：勾選時，在後續的旋轉操作中將指定的晶帶軸或晶面在空間中保持固定。
-- **Axis**：將輸入的晶帶軸 \([uvw]\) 置於垂直於螢幕。若同時設定了 **Plane**，則該方向會在螢幕上朝上。
-- **Plane**：將輸入晶面 \((hkl)\) 的法線置於垂直於螢幕。若同時設定了 **Axis**，則該方向會在螢幕上朝上。
+- **固定**：勾選時，在後續的旋轉操作中將指定的晶帶軸或晶面在空間中保持固定。
+- **軸**：將輸入的晶帶軸 \([uvw]\) 置於垂直於螢幕。若同時設定了 **晶面**，則該方向會在螢幕上朝上。
+- **晶面**：將輸入晶面 \((hkl)\) 的法線置於垂直於螢幕。若同時設定了 **軸**，則該方向會在螢幕上朝上。
 
 ### 設定方位的基本方式
 
@@ -155,8 +155,8 @@
 |--------|----------|-------|
 | 滑鼠拖曳 | 您想一邊觀察晶軸一邊自由旋轉。 | **目前方位**面板 |
 | 箭頭按鈕 | 您想要小幅且可重複的旋轉。 | **箭頭**面板 |
-| 晶帶軸 | 您已知檢視方向，例如 \([001]\) 或 \([110]\)。 | **沿向檢視** / 晶帶軸輸入 |
-| 晶面法線 | 您想讓某晶面 \((hkl)\) 垂直於螢幕。 | **沿向檢視** / 晶面輸入 |
+| 晶帶軸 | 您已知檢視方向，例如 \([001]\) 或 \([110]\)。 | **視線方向** / 晶帶軸輸入 |
+| 晶面法線 | 您想讓某晶面 \((hkl)\) 垂直於螢幕。 | **視線方向** / 晶面輸入 |
 | Euler 角 | 您需要可重現的數值方位。 | **Euler 角 (Z-X-Z)** |
 
 旋轉矩陣與座標慣例請參閱[旋轉幾何](4-rotation-geometry.md)與[附錄 A1. 座標系](appendix/a1-coordinate-system/1-orientation.md)。
@@ -165,18 +165,18 @@
 
 ## 晶體清單
 
-![Crystal List](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
+![晶體清單](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-預設安裝約有 80 個晶體。選擇即可檢視詳細資訊並設定用於計算。在晶體清單中**右鍵點按某晶體**可開啟內容功能表：*Rename*、*Export as CIF*、*Duplicate*、*Delete*。
+預設安裝約有 80 個晶體。選擇即可檢視詳細資訊並設定用於計算。在晶體清單中**右鍵點按某晶體**可開啟內容功能表：*重新命名*、*匯出為 CIF*、*複製*、*刪除*。
 
 ![Crystal edit buttons](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
 | 按鈕 | 動作 |
 |--------|--------|
-| Up / Down | 重新排序 |
-| Duplicate | 複製所選晶體 |
-| Delete / All clear | 移除晶體 |
-| Add / Replace | 加入清單或取代所選項目 |
+| 上移 / 下移 | 重新排序 |
+| 複製 | 複製所選晶體 |
+| 刪除 / 清除所有晶體 | 移除晶體 |
+| ↑ 新增 ↑ / ↑ 取代 ↑ | 加入清單或取代所選項目 |
 
 ---
 
@@ -184,13 +184,13 @@
 
 編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSmanager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
 
-> **重要**：請按 **Add** 或 **Replace** 以儲存變更。
+> **重要**：請按 **↑ 新增 ↑** 或 **↑ 取代 ↑** 以儲存變更。
 
 ![Crystal Control](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
 面板頂端固定顯示 **Name**（晶體名稱）、**Formula**（化學式，由原子清單計算得出）與 **Reset**（清空所有欄位）。
 
-### Basic Info 索引標籤
+### 基本資訊 索引標籤
 
 ![Basic Info](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
@@ -204,7 +204,7 @@
 | Molar Volume / Molar Mass / Z / Density | 莫耳體積、莫耳質量、每個晶胞的化學式單位數（Z）與密度。**僅在已輸入原子時**顯示。 |
 | Color of Profile | 繪製此晶體繞射輪廓時所使用的顏色。 |
 
-### Atom 索引標籤
+### 原子資訊 索引標籤
 
 ![Atom](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
@@ -217,9 +217,9 @@
 | X, Y, Z | 分數座標（0–1）。可輸入諸如 1/2 或 2/3 之類的分數。 |
 | Occ | 佔有率（0–1）。 |
 
-**Origin shift**：平移所有原子座標的原點。使用預設按鈕（**+** / **−**）進行標準位移，或使用 **Apply custom shift** 進行任意量的位移。
+**原點平移**：平移所有原子座標的原點。使用預設按鈕（**+** / **−**）進行標準位移，或使用 **Apply custom shift** 進行任意量的位移。
 
-**Debye–Waller 因子（溫度因子）**：
+**德拜-沃勒因子（溫度因子）**：
 
 | 項目 | 說明 |
 |------|------|
@@ -227,7 +227,7 @@
 | Model | 等向性或非等向性。 |
 | B##, U## | 非等向性情況下，輸入各分量（B11、…）。 |
 
-**Scattering factor**：選擇每個原子所使用的散射因子。
+**散射因子**：選擇每個原子所使用的散射因子。
 
 | Radiation | 來源 / 設定 |
 |-----------|------|
@@ -235,11 +235,11 @@
 | Electron | 電子散射因子（Peng 1998, Acta Cryst. A54, 481–485）。 |
 | Neutron | 中子散射長度。選擇 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素組成）。 |
 
-### Reference 索引標籤
+### 文獻 索引標籤
 
 ![Reference](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
-記錄結構的來源：**Note**、**Authors**、**Journal** 與 **Title**。
+記錄結構的來源：**Note**、**作者**、**期刊** 與 **標題**。
 
 ### 內容功能表（右鍵）
 

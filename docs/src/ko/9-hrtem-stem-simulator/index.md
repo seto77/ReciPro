@@ -68,18 +68,18 @@ title: HRTEM / STEM Simulator
 
 ## Image mode / Sample
 
-![Image mode](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
+![이미지 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
 HRTEM, Potential 또는 STEM.<div style="clear: both;"></div>
 
-![Sample](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+![시료](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
 시료 두께를 설정합니다.<div style="clear: both;"></div>
 
 ## Optical property { style="clear: both" }
 
 ### TEM conditions
 
-![TEM conditions](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![TEM 조건](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 가속 전압, 디포커스(Scherzer 표시).
 
@@ -110,7 +110,7 @@ HRTEM, Potential 또는 STEM.<div style="clear: both;"></div>
 
 ### Objective aperture (HRTEM option)
 
-![Objective aperture (HRTEM option)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![대물 조리개 (HRTEM 옵션)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Cs, Cc, beta, delta-E, PCTF, 공간/시간 가간섭성 포락선, 대물 조리개.
 
@@ -128,7 +128,7 @@ Cs, Cc, beta, delta-E, PCTF, 공간/시간 가간섭성 포락선, 대물 조리
 
 ### STEM options (optical)
 
-![STEM options (optical)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
+![STEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
 
 #### Convergence semi-angle
 
@@ -148,7 +148,7 @@ STEM 이미지의 스캔 시야와 픽셀 크기.
 
 ### HRTEM options
 
-![HRTEM options](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+![HRTEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent / TCC), Single/Serial 모드.
 
@@ -176,7 +176,7 @@ Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent 
 
 ### STEM options (simulation)
 
-![STEM options (simulation)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+![STEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Bloch wave count** — HRTEM에서와 동일한 역할이며, 프로브 위치마다 적용됩니다.
 - **Angular resolution** — 프로브 방향 적분에서의 표본점 개수.
@@ -184,7 +184,7 @@ Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent 
 
 ### Potential options
 
-![Potential option](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![퍼텐셜 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 **Image mode = Potential**일 때 표시됩니다.
 
@@ -193,11 +193,11 @@ Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent 
 
 ### Image properties
 
-![Image properties](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![이미지 속성](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 ### Diffracted waves
 
-![Diffracted waves](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![회절파](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 ---
 
@@ -211,23 +211,23 @@ Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent 
 
 ### Adjust
 
-![Adjust](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![조정](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 최소/최대 밝기, 색상 척도, 가우시안 흐림.
 
 ### Normalization
 
-![Normalization](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
+![정규화](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
 ### Display
 
-![Display](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+![표시](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
 
 레이블(두께/디포커스), 축척 막대, 단위 격자 오버레이.
 
 ### STEM image
 
-![STEM image](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+![STEM 이미지](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 ---
 

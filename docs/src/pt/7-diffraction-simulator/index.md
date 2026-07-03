@@ -105,7 +105,7 @@ As informações correspondentes à posição do cursor (cursor *q*, *d*, 2θ, a
 
 ## Menu File
 
-![Menu File](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
+![Menu Arquivo](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.fileToolStripMenuItem.png)
 
 | Item de menu | Descrição |
 |-----------|-------------|
@@ -116,7 +116,7 @@ As informações correspondentes à posição do cursor (cursor *q*, *d*, 2θ, a
 
 ### Preset {#toolbar}
 
-![Menu Preset](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
+![Menu Predefinições](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
 Salvar e recuperar uma configuração completa do simulador — comprimento de onda, geometria do detector, configurações das abas, propriedades dos reflexos, etc. — como um preset. Útil para alternar rapidamente entre instrumentos / modos de aquisição.
 
@@ -159,7 +159,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 
 ### Misc
 
-![Misc](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Diversos](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **Rotation sensitivity** : Quantidade de rotação do cristal por pixel de arrasto do mouse.
 - **TEM holder simulation** : Abre a janela de simulação vinculada ao suporte (veja abaixo).
@@ -170,7 +170,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 
 ![Simulação do suporte TEM](../../assets/cap-pt-auto/FormDiffractionSimulatorHolder.png)
 
-Abre uma janela que vincula o padrão de difração a um **TEM holder** de duplo tilt (ou de rotação). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Arrow keys** permite que as teclas de seta avancem a inclinação passo a passo.
+Abre uma janela que vincula o padrão de difração a um **TEM holder** de dupla inclinação (ou de rotação). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Arrow keys** permite que as teclas de seta avancem a inclinação passo a passo.
 
 ---
 
@@ -178,7 +178,7 @@ Abre uma janela que vincula o padrão de difração a um **TEM holder** de duplo
 
 ### General
 
-![Aba General](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![Aba Geral](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 Define as cores dos reflexos, rótulos, linhas de Kikuchi, anéis de Debye e outros overlays. As configurações feitas aqui se aplicam a todos os modos de renderização.
 
@@ -203,7 +203,7 @@ Ativa quando os anéis de Debye estão habilitados na barra de ferramentas.
 
 ### Scale
 
-![Aba Scale](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Aba Escala](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 Ativa quando as linhas de escala estão habilitadas na barra de ferramentas.
 

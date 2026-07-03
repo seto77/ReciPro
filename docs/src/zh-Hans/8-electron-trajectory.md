@@ -2,13 +2,13 @@
 
 **轨迹模拟器** 使用 **蒙特卡罗法** 计算电子在样品内部的轨迹：入射电子经历弹性和非弹性散射，由此得到的背散射电子分布（方向、能量、穿透深度）被累加统计。这些分布还为 [12. EBSD 模拟](12-ebsd-simulation.md) 所用的方位/能量/深度加权提供数据。
 
-![Electron Trajectory](../assets/cap-zh-Hans-auto/FormTrajectory.png)
+![电子轨迹](../assets/cap-zh-Hans-auto/FormTrajectory.png)
 
 ---
 
 ## 键盘和鼠标快捷键
 
-轨迹显示在 3D OpenGL 视图中。它采用 ReciPro 的标准 [视图操作](21-shortcuts.md)，但 **平移已被禁用** — 请使用视图预设按钮跳转到标准取向。
+轨迹显示在 3D OpenGL 视图中。它采用 ReciPro 的标准 [视图导航](21-shortcuts.md)，但 **平移已被禁用** — 请使用视图预设按钮跳转到标准取向。
 
 | 快捷键 | 操作 |
 |----------|--------|
@@ -67,7 +67,7 @@
 
 ## 统计信息
 
-![Statistics](../assets/cap-zh-Hans-auto/FormTrajectory.panel2.groupBoxStatistics.png)
+![统计信息](../assets/cap-zh-Hans-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 运行结果的摘要。
 
@@ -80,7 +80,7 @@
 
 ## BSE 方向分布
 
-![BSE direction distribution](../assets/cap-zh-Hans-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![BSE 方向分布](../assets/cap-zh-Hans-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 背散射电子的角度分布（极射赤平投影中心对应表面法线方向）。黄色/橙色轮廓（若存在）标示 EBSD 探测器所张成的区域。
 
@@ -88,7 +88,7 @@
 
 ## 剖面图
 
-![Profiles](../assets/cap-zh-Hans-auto/FormTrajectory.flowLayoutPanelProfiles.png)
+![剖面图](../assets/cap-zh-Hans-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
 模拟电子的深度和能量剖面图。
 

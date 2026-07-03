@@ -32,7 +32,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 ## Hauptbereich
 
 3D-Kristallstruktur mit Lichtquelle, Kristallachsen und Atomlegende.
-> Die Box **Size (W×H)** oben rechts im Fenster legt die Pixelgröße fest, die beim Speichern oder Kopieren des gerenderten Bildes verwendet wird.
+> Die Box **Größe (B×H)** oben rechts im Fenster legt die Pixelgröße fest, die beim Speichern oder Kopieren des gerenderten Bildes verwendet wird.
 
 ---
 
@@ -76,7 +76,7 @@ In diesem Modus wird der Zeichenbereich durch eine Reihe von Kristallebenen begr
 
 #### Grenzenliste
 
-Alle für den aktuellen Kristall registrierten Begrenzungsebenen. Verwenden Sie **Add / Replace / Delete**, um die Liste zu bearbeiten; das Kontrollkästchen ganz links deaktiviert eine Ebene vorübergehend, ohne sie zu löschen.
+Alle für den aktuellen Kristall registrierten Begrenzungsebenen. Verwenden Sie **Hinzufügen / Ersetzen / Löschen**, um die Liste zu bearbeiten; das Kontrollkästchen ganz links deaktiviert eine Ebene vorübergehend, ohne sie zu löschen.
 
 > Um die Änderungen dauerhaft zu speichern, müssen Sie außerdem **Add** oder **Replace** im **Hauptfenster** drücken. Andernfalls gehen die Änderungen verloren, sobald Sie die Auswahl in der Hauptkristallliste das nächste Mal ändern.
 
@@ -104,7 +104,7 @@ Wenn aktiviert, werden alle Atome, Bindungen und Polyeder ausgeblendet — nütz
 
 ![Tab „Atome“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Koordinaten, Element, Besetzung, Radius, Farbe, Material. **Apply to same elements**.
+Koordinaten, Element, Besetzung, Radius, Farbe, Material. **Auf gleiches Element anwenden**.
 
 #### Atomliste
 
@@ -125,20 +125,20 @@ Die Liste der Atome im Kristall. Verwenden Sie **Add / Replace / Delete**, um di
 
 Verschiebt jedes Atom um denselben fraktionellen Versatz. Drücken Sie eine Voreinstellungs-Schaltfläche (zum Beispiel, um zwischen Ursprungswahl 1 / 2 für dieselbe Raumgruppe zu wechseln) oder geben Sie ein benutzerdefiniertes (Δx, Δy, Δz) ein und drücken Sie **Apply custom shift**.
 
-#### Erscheinungsbild
+#### Darstellung
 
 ![Erscheinungsbild](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageAppearance.png)
 
 Radius, Farbe und Material pro Atom.
 
 - **Radius**: gezeichneter Atomradius.
-- **Atom color**: Oberflächenfarbe.
+- **Farbe**: Oberflächenfarbe.
 - **Material**: Textur- / Materialeigenschaften, die vom OpenGL-Shader verwendet werden.
-- **Apply to same elements**: wendet den aktuellen Radius und die aktuelle Farbe auf jedes Atom derselben Elementart an.
+- **Auf gleiches Element anwenden**: wendet den aktuellen Radius und die aktuelle Farbe auf jedes Atom derselben Elementart an.
 
 ### Bindungen & Polyeder
 
-![Tab „Bindungen“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
+![Tab „Bindungen & Polyeder“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 Schwellenwerte für die Bindungslänge, Polyederdarstellung, Kanten.
 
@@ -148,20 +148,20 @@ Alle für den Kristall registrierten Bindungs-/Polyederregeln. Verwenden Sie **A
 
 #### Bindungseigenschaft
 
-- **Bonding Atom (center)**: Elementart, die als Zentralatom der Bindung / des Polyeders verwendet wird.
-- **Bonding Atom (vertex)**: Elementart, die als Eckpunkt (das andere Ende) verwendet wird.
-- **Length between … and …**: untere und obere Abstandsschwelle. Atompaare außerhalb dieses Bereichs werden nicht gezeichnet.
+- **Bindungsatome (Zentrum)**: Elementart, die als Zentralatom der Bindung / des Polyeders verwendet wird.
+- **Bindungsatome (Ecke)**: Elementart, die als Eckpunkt (das andere Ende) verwendet wird.
+- **Länge zwischen … und …**: untere und obere Abstandsschwelle. Atompaare außerhalb dieses Bereichs werden nicht gezeichnet.
 - **Bond Radius**: gezeichnete Bindungsdicke (Zylinderradius).
 - **Alpha**: Bindungstransparenz (0 = transparent, 1 = undurchsichtig).
 
 #### Polyedereigenschaft
 
-- **Show Polyhedron**: wenn aktiviert, wird das durch die aktuelle Bindung definierte Polyeder gezeichnet (nur wenn der Zentrum/Eckpunkt-Satz geometrisch gültig ist).
-- **Inner Bonds**: blendet die Bindungen innerhalb des Polyeders ein/aus.
-- **Center Atom**: blendet das Zentralatom ein/aus.
-- **Vertex Atoms**: blendet die Eckatome ein/aus.
+- **Polyeder anzeigen**: wenn aktiviert, wird das durch die aktuelle Bindung definierte Polyeder gezeichnet (nur wenn der Zentrum/Eckpunkt-Satz geometrisch gültig ist).
+- **Innere Bindungen anzeigen**: blendet die Bindungen innerhalb des Polyeders ein/aus.
+- **Zentralatom anzeigen**: blendet das Zentralatom ein/aus.
+- **Eckatome anzeigen**: blendet die Eckatome ein/aus.
 - **Color** / **Alpha**: Flächenfarbe und Transparenz.
-- **Show Edge**: zeichnet die Kanten, die die Eckpunkte verbinden.
+- **Kanten anzeigen**: zeichnet die Kanten, die die Eckpunkte verbinden.
 - **Edge Color** / **Width**: Farbe und Linienbreite der Kanten.
 
 ### Elementarzelle
@@ -182,9 +182,9 @@ Ob die sechs Flächen gezeichnet werden, die die Elementarzelle begrenzen. Wenn 
 
 Ob die Kanten der Elementarzelle gezeichnet werden. Die Kantenfarbe ist konfigurierbar.
 
-### Netzebenen
+### Gitterebenen
 
-![Tab „Netzebenen“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
+![Tab „Gitterebenen“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
 Angabe des Miller-Index mit kristallografischen Äquivalenten.
 
@@ -198,7 +198,7 @@ Verschiebt die gezeichnete Netzebene um ein ganzzahliges Vielfaches ihres *d*-We
 
 ### Koordination
 
-![Tab „Koordinaten“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
+![Tab „Koordination“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
 Koordinationstabelle und -graph um das Zielatom.
 
@@ -233,7 +233,7 @@ Blendet entfernte Objekte in der Tiefenrichtung aus. Objekte weiter als **Far** 
 
 #### Projektionszentrum
 
-Setzt das Zentrum der Projektion auf die angegebenen Koordinaten. Aktivieren Sie **Custom**, um beliebige Koordinaten einzugeben.
+Setzt das Zentrum der Projektion auf die angegebenen Koordinaten. Aktivieren Sie **Benutzerdefiniert**, um beliebige Koordinaten einzugeben.
 
 #### Renderqualität
 
@@ -248,7 +248,7 @@ Algorithmus für durchscheinende Atome und Polyeder.
 
 ### Symmetrieelemente
 
-Der Tab **Symmetry Elements** zeichnet die Symmetrieoperatoren der Raumgruppe direkt auf das 3D-Modell (umschalten mit der Symbolleisten-Schaltfläche **Symmetry Elements**). Jede Klasse von Elementen kann unabhängig ein-/ausgeblendet werden:
+Der Tab **Sym.-Elem.** zeichnet die Symmetrieoperatoren der Raumgruppe direkt auf das 3D-Modell (umschalten mit der Symbolleisten-Schaltfläche **Sym.-Elem.**). Jede Klasse von Elementen kann unabhängig ein-/ausgeblendet werden:
 
 - **Drehachsen** und **Schraubenachsen**
 - **Spiegelebenen** und **Gleitspiegelebenen**
@@ -272,15 +272,15 @@ Für jede Klasse können Sie die Symbolgröße, Linienbreite und Farbe anpassen.
 
 | Schaltfläche | Beschreibung |
 |--------|-------------|
-| Axes | Achsenorientierung anzeigen (Größe = Gitterkonstante) |
-| Light | Lichtrichtung einstellen |
-| Legend | Atomlegende |
-| Atoms | Atomobjekte umschalten |
-| Labels | Atombeschriftungen umschalten |
-| Unit Cell | Kanten der Elementarzelle umschalten |
-| Sym. Elems. | Überlagerung der Symmetrieelemente umschalten (siehe oben) |
-| Reset Rotation | Zur Ausgangsorientierung zurückkehren |
-| Like Vesta | Erscheinungsbild im Vesta-Stil |
+| Achsen | Achsenorientierung anzeigen (Größe = Gitterkonstante) |
+| Licht | Lichtrichtung einstellen |
+| Legende | Atomlegende |
+| Atome | Atomobjekte umschalten |
+| Beschriftungen | Atombeschriftungen umschalten |
+| Elementarzelle | Kanten der Elementarzelle umschalten |
+| Sym.-Elem. | Überlagerung der Symmetrieelemente umschalten (siehe oben) |
+| Rotation zurücksetzen | Zur Ausgangsorientierung zurückkehren |
+| Wie Vesta | Erscheinungsbild im Vesta-Stil |
 
 ---
 

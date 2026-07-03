@@ -148,15 +148,15 @@ e₀E/m₀c²（無因次），由加速電壓
 立方奈米 (nm³)。唯讀。</value>
   </data>
   <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
-    <value>CBED（收斂束電子繞射）模式下電子束的
+    <value>CBED（會聚束電子繞射）模式下電子束的
 最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
-    <value>CBED（收斂束電子繞射）模式下電子束的
+    <value>CBED（會聚束電子繞射）模式下電子束的
 最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
-    <value>CBED（收斂束電子繞射）模式下電子束的
+    <value>CBED（會聚束電子繞射）模式下電子束的
 最大收斂半角，單位為毫弧度 (mrad)。唯讀。</value>
   </data>
   <data name="textBoxThickness.ToolTip" xml:space="preserve">

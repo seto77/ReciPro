@@ -63,7 +63,7 @@
     <value>Parámetros de entrada</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Solucionador</value>
+    <value>Solver</value>
   </data>
   <data name="numericBoxThread.HeaderText" xml:space="preserve">
     <value>Hilos</value>

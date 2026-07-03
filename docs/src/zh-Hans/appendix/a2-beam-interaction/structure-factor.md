@@ -1,15 +1,15 @@
 # 结构因子
 
-原子散射因子描述单个原子;而**结构因子**描述晶胞内的所有原子如何*共同*散射。它是 **Reflections** 选项卡所列出的量(`F_real`、`F_inv`、$\lvert F\rvert$、$F^2$),并且是连接上一页原子物理与衍射强度之间的桥梁。
+原子散射因子描述单个原子;而**结构因子**描述晶胞内的所有原子如何*共同*散射。它是 **衍射** 选项卡所列出的量(`F_real`、`F_inv`、$\lvert F\rvert$、$F^2$),并且是连接上一页原子物理与衍射强度之间的桥梁。
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-reflections.png)
+    ![衍射 — X-ray](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-reflections.png)
+    ![衍射 — electron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-reflections.png)
+    ![衍射 — neutron](../../../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ $$T_j = \exp\!\left(-2\pi^2\,\mathbf g^{\mathsf T}\!\mathbf U_j\,\mathbf g\right
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-因此 $B$ 随温度升高而增大,对于重原子则减小。ReciPro 直接使用列表值或输入的 $B_j$,而不计算此式。由于 $T_j$ 与散射因子相乘,**Scattering factors** 选项卡可以将同样的 $e^{-Bs^2}$ 衰减应用于所绘曲线。该衰减随温度和 $s$ 增大,这正是热漫散射(从相干布拉格束中移除并重新分配到漫散背景中的强度)在动力学理论中给出吸收势的原因([附录 A3](../a3-bloch-wave/index.md))。
+因此 $B$ 随温度升高而增大,对于重原子则减小。ReciPro 直接使用列表值或输入的 $B_j$,而不计算此式。由于 $T_j$ 与散射因子相乘,**散射因子** 选项卡可以将同样的 $e^{-Bs^2}$ 衰减应用于所绘曲线。该衰减随温度和 $s$ 增大,这正是热漫散射(从相干布拉格束中移除并重新分配到漫散背景中的强度)在动力学理论中给出吸收势的原因([附录 A3](../a3-bloch-wave/index.md))。
 
 ---
 
@@ -90,7 +90,7 @@ $$F_{-\mathbf g} = \sum_j f_j\, e^{+2\pi i\,\mathbf g\cdot\mathbf r_j} = \left(\
 
 $$\lvert F_{\mathbf g}\rvert^2 - \lvert F_{-\mathbf g}\rvert^2 = -4\,\operatorname{Im}\!\left(A_{\mathbf g}\, B_{\mathbf g}^{*}\right),$$
 
-只有当正常部分与反常部分具有不同相位时它才不为零 — 也就是说,当化学上不同的反常散射体占据非中心对称的位点时。(对于中心对称结构、单一元素,或每个原子都带有相同复数因子的任何情形,该差值都为零。)这正是能够确定非中心对称晶体绝对结构(手性)的依据,也是当选取靠近吸收边的 X 射线能量时,ReciPro 会对 Friedel 对报告非零 `F_inv` 和不同 $\lvert F\rvert$ 的物理原因。
+只有当正常部分与反常部分具有不同相位时它才不为零 — 也就是说,当化学上不同的反常散射体占据非中心对称的位点时。(对于中心对称结构、单一元素,或每个原子都带有相同复数因子的任何情形,该差值都为零。)这正是能够确定非中心对称晶体绝对结构(手性)的依据,也是当选取靠近吸收边的 X 射线能量时,ReciPro 会对弗里德尔对报告非零 `F_inv` 和不同 $\lvert F\rvert$ 的物理原因。
 
 ---
 
@@ -111,5 +111,5 @@ $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 
 - [原子散射因子](scattering-factor.md) — 进入求和的 $f_j$。
 - [衰减与输运](attenuation-transport.md) — 在散射事件之间射束会发生什么。
-- [3. 射束相互作用 → Reflections 选项卡](../../3-beam-interaction.md#reflections-tab)
+- [3. 射束相互作用 → 衍射 选项卡](../../3-beam-interaction.md#reflections-tab)
 - [附录 A3. 动力学衍射](../a3-bloch-wave/index.md) — 当 $\lvert F\rvert^2$(运动学)不再足够时。

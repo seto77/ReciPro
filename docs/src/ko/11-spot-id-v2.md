@@ -36,11 +36,11 @@
 
 ---
 
-## Optics
+## 광학계
 
-![Optics](../assets/cap-ko-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![광학계](../assets/cap-ko-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
-### Incident source
+### 입사선원
 
 방사선 종류(X선 / 전자 / 중성자)를 선택하고 에너지 또는 파장을 설정합니다.
 
@@ -52,7 +52,7 @@
 
 ## 스폿 정보
 
-![Spot information](../assets/cap-ko-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![스폿 정보](../assets/cap-ko-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Detect & Fit Spots**: 국소 극대값과 배경 차감을 이용한 자동 스폿 검출.
 - **Number**: 검출할 스폿의 최대 개수.

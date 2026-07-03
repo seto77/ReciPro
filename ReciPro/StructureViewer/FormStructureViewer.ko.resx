@@ -411,8 +411,8 @@
   </data>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value>c축 방향 표시 영역의 반폭이며, 분율
-좌표로 나타냅니다. 중심 ± Range 범위
-내의 원자가 그려집니다.</value>
+좌표로 나타냅니다. 중심 ± 범위 내의
+원자가 그려집니다.</value>
   </data>
   <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
     <value>c축 방향 표시 영역의 반폭이며, 분율
@@ -421,8 +421,8 @@
   </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
     <value>b축 방향 표시 영역의 반폭이며, 분율
-좌표로 나타냅니다. 중심 ± Range 범위
-내의 원자가 그려집니다.</value>
+좌표로 나타냅니다. 중심 ± 범위 내의
+원자가 그려집니다.</value>
   </data>
   <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
     <value>b축 방향 표시 영역의 반폭이며, 분율
@@ -431,8 +431,8 @@
   </data>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value>a축 방향 표시 영역의 반폭이며, 분율
-좌표로 나타냅니다. 중심 ± Range 범위
-내의 원자가 그려집니다.</value>
+좌표로 나타냅니다. 중심 ± 범위 내의
+원자가 그려집니다.</value>
   </data>
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
     <value>a축 방향 표시 영역의 반폭이며, 분율
@@ -441,7 +441,7 @@
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value>c축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
+나타냅니다. 범위와 결합하여 그려지는 구조의
 최소/최대 경계면을 결정합니다.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
@@ -451,7 +451,7 @@
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>b축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
+나타냅니다. 범위와 결합하여 그려지는 구조의
 최소/최대 경계면을 결정합니다.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
@@ -461,7 +461,7 @@
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value>a축 방향 표시 영역의 중심이며, 분율 좌표로
-나타냅니다. Range와 결합하여 그려지는 구조의
+나타냅니다. 범위와 결합하여 그려지는 구조의
 최소/최대 경계면을 결정합니다.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
@@ -493,78 +493,78 @@
     <value>단위 격자의 모서리를 3D 구조에 겹쳐 표시합니다.</value>
   </data>
   <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
-    <value>모든 셀 면의 색을 설정</value>
+    <value>모든 단위 격자 면의 색을 설정</value>
   </data>
   <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
-    <value>모든 셀 면의 색을 설정</value>
+    <value>모든 단위 격자 면의 색을 설정</value>
   </data>
   <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
     <value>모든 셀 면의 색을 설정</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
-    <value>셀 면의 색을 개별적으로 설정</value>
+    <value>단위 격자 면의 색을 개별적으로 설정</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
-    <value>a축에 수직인 단위 격자 면의 색('Each plane'
-선택 시 사용).</value>
+    <value>a축에 수직인 단위 격자 면의 색
+('각 면' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>a축에 수직인 단위 격자 면의 색('Each plane'
 선택 시 사용).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
-    <value>b축에 수직인 단위 격자 면의 색('Each plane'
-선택 시 사용).</value>
+    <value>b축에 수직인 단위 격자 면의 색
+('각 면' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>b축에 수직인 단위 격자 면의 색('Each plane'
 선택 시 사용).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
-    <value>c축에 수직인 단위 격자 면의 색('Each plane'
-선택 시 사용).</value>
+    <value>c축에 수직인 단위 격자 면의 색
+('각 면' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>c축에 수직인 단위 격자 면의 색('Each plane'
 선택 시 사용).</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value>셀 면의 불투명도(1: 불투명, 0: 투명)</value>
+    <value>단위 격자 면의 불투명도(1: 불투명, 0: 투명)</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
     <value>셀 면의 불투명도(1: 불투명, 0: 투명)</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
-    <value>모든 셀 모서리의 색을 설정</value>
+    <value>모든 단위 격자 모서리의 색을 설정</value>
   </data>
   <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
-    <value>모든 셀 모서리의 색을 설정</value>
+    <value>모든 단위 격자 모서리의 색을 설정</value>
   </data>
   <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
     <value>모든 셀 모서리의 색을 설정</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
-    <value>셀 모서리의 색을 개별적으로 설정</value>
+    <value>단위 격자 모서리의 색을 개별적으로 설정</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
-    <value>a축 방향 단위 격자 모서리의 색('Each edge'
-선택 시 사용).</value>
+    <value>a축 방향 단위 격자 모서리의 색
+('각 모서리' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>a축 방향 단위 격자 모서리의 색('Each edge'
 선택 시 사용).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
-    <value>b축 방향 단위 격자 모서리의 색('Each edge'
-선택 시 사용).</value>
+    <value>b축 방향 단위 격자 모서리의 색
+('각 모서리' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>b축 방향 단위 격자 모서리의 색('Each edge'
 선택 시 사용).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
-    <value>c축 방향 단위 격자 모서리의 색('Each edge'
-선택 시 사용).</value>
+    <value>c축 방향 단위 격자 모서리의 색
+('각 모서리' 선택 시 사용).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>c축 방향 단위 격자 모서리의 색('Each edge'
@@ -595,10 +595,10 @@
     <value>단위 격자 내부의 분할 표시</value>
   </data>
   <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
-    <value>셀 모서리 표시</value>
+    <value>단위 격자 모서리 표시</value>
   </data>
   <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
-    <value>셀 면 표시</value>
+    <value>단위 격자 면 표시</value>
   </data>
   <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
     <value>단위 격자 표시 설정 구성</value>
@@ -703,22 +703,22 @@
 표시 색을 설정합니다.</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>범례에 라벨 표시</value>
+    <value>범례에 레이블 표시</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
-    <value>재질 색을 라벨 색으로 사용 </value>
+    <value>재질 색을 레이블 색으로 사용 </value>
   </data>
   <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
-    <value>고정 색을 라벨 색으로 사용 </value>
+    <value>고정 색을 레이블 색으로 사용 </value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
-    <value>원자 라벨의 글자 크기(0–200).</value>
+    <value>원자 레이블의 글자 크기(0–200).</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
     <value>원자 라벨의 글자 크기(0–200).</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>체크하면 범례 라벨에 흰색 윤곽선이 붙습니다.</value>
+    <value>체크하면 범례 레이블에 흰색 윤곽선이 붙습니다.</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>경계 밖에 있더라도 결합된 원자를 표시</value>
@@ -778,12 +778,12 @@
 반전) 기호를 표시합니다</value>
   </data>
   <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
-    <value>공간군의 나선축 (회전과 병진이
+    <value>공간군의 나사축 (회전과 병진이
 결합된 대칭) 기호를 표시합니다</value>
   </data>
   <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
     <value>원자 라벨에 적용되는 고정 색
-('Use fixed color' 선택 시 사용)</value>
+('고정 색 사용' 선택 시 사용)</value>
   </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>대칭축 기호의 선 너비 (0.5~10)</value>
@@ -804,17 +804,17 @@
 백분율로 설정합니다 (20~500%)</value>
   </data>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
-    <value>'Show Subcell' 활성화 시 표시되는 부분 격자
+    <value>'부분 격자 표시' 활성화 시 표시되는 부분 격자
 그리드를 위한 a축 방향의 단위 격자 분할 수
 (정수, 1~10)입니다.</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
-    <value>'Show Subcell' 활성화 시 표시되는 부분 격자
+    <value>'부분 격자 표시' 활성화 시 표시되는 부분 격자
 그리드를 위한 b축 방향의 단위 격자 분할 수
 (정수, 1~10)입니다.</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
-    <value>'Show Subcell' 활성화 시 표시되는 부분 격자
+    <value>'부분 격자 표시' 활성화 시 표시되는 부분 격자
 그리드를 위한 c축 방향의 단위 격자 분할 수
 (정수, 1~10)입니다.</value>
   </data>
@@ -834,7 +834,7 @@
     <value>모델의 방향을 기본값 (회전 없음)으로 재설정합니다.</value>
   </data>
   <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
-    <value>결정의 대칭 요소 (회전축, 거울면, 나선축 등)의
+    <value>결정의 대칭 요소 (회전축, 거울면, 나사축 등)의
 표시/숨김을 전환합니다.</value>
   </data>
   <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">

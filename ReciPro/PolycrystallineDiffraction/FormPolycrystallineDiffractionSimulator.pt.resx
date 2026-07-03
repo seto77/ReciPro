@@ -212,7 +212,7 @@ incremento por avanço de ω durante a varredura; menor dá uma
 amostragem de orientação mais fina, mas simulação mais lenta.</value>
   </data>
   <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
-    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+    <value>Faixa de oscilação (balanço) do eixo Rz (θ),
 em ± graus em torno do centro; a amostra
 oscila entre −valor e +valor.</value>
   </data>
@@ -299,15 +299,15 @@ mantendo apenas as que contribuem.</value>
 mostra a alta intensidade em claro, Negative inverte para escuro.</value>
   </data>
   <data name="label48.ToolTip" xml:space="preserve">
-    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+    <value>Faixa de oscilação (balanço) do eixo Rz (θ),
 em ± graus em torno do centro.</value>
   </data>
   <data name="label51.ToolTip" xml:space="preserve">
-    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+    <value>Faixa de oscilação (balanço) do eixo Rz (θ),
 em ± graus em torno do centro.</value>
   </data>
   <data name="label57.ToolTip" xml:space="preserve">
-    <value>Amplitude de oscilação (balanço) do eixo Rz (θ),
+    <value>Faixa de oscilação (balanço) do eixo Rz (θ),
 em ± graus em torno do centro.</value>
   </data>
   <data name="label49.ToolTip" xml:space="preserve">

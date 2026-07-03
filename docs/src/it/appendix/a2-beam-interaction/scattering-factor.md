@@ -1,6 +1,6 @@
 # Fattori di diffusione atomici
 
-Il **fattore di diffusione atomico** (o *fattore di forma*) misura quanto fortemente un singolo atomo diffonde il fascio incidente in funzione della variabile di diffusione $s=\sin\theta/\lambda$. Le tre radiazioni interagiscono con parti completamente diverse dell'atomo, perciò i loro fattori di diffusione hanno grandezze, unità e dipendenza angolare differenti. Questo è il motivo più importante per cui la scheda **Scattering factors** appare così diversa tra fascio di raggi X, di elettroni e di neutroni.
+Il **fattore di diffusione atomico** (o *fattore di forma*) misura quanto fortemente un singolo atomo diffonde il fascio incidente in funzione della variabile di diffusione $s=\sin\theta/\lambda$. Le tre radiazioni interagiscono con parti completamente diverse dell'atomo, perciò i loro fattori di diffusione hanno grandezze, unità e dipendenza angolare differenti. Questo è il motivo più importante per cui la scheda **Fattori di diffusione** appare così diversa tra fascio di raggi X, di elettroni e di neutroni.
 
 === "X-ray"
     ![Fattori di diffusione — raggi X](../../../assets/cap-it-auto/FormBeamInteraction-xray-scattering.png)
@@ -92,7 +92,7 @@ $$V(\mathbf r) = \frac{2\pi\hbar^2}{m_n}\,b\,\delta(\mathbf r)
 \qquad\Longrightarrow\qquad
 \frac{d\sigma}{d\Omega} = |b|^2 .$$
 
-Poiché il diffusore è puntiforme, $b$ è **indipendente da $s$** — non c'è alcun decadimento del fattore di forma, ed è per questo che la scheda **Scattering factors** non traccia alcuna curva per i neutroni e mostra invece una tabella delle lunghezze di diffusione.
+Poiché il diffusore è puntiforme, $b$ è **indipendente da $s$** — non c'è alcun decadimento del fattore di forma, ed è per questo che la scheda **Fattori di diffusione** non traccia alcuna curva per i neutroni e mostra invece una tabella delle lunghezze di diffusione.
 
 - $b$ è una proprietà del **nuclide**, non della configurazione elettronica. Varia in modo irregolare da elemento a elemento (e tra gli isotopi), può essere **negativa** (ad es. ¹H, Ti, Mn), e non ha alcuna relazione monotòna con $Z$. Questa è la base del contrasto neutronico (atomi leggeri vicino a quelli pesanti, marcatura isotopica).
 - **Coerente vs incoerente.** Un elemento reale è una miscela di isotopi e stati di spin nucleare con $b$ differente. La separazione $b = \langle b\rangle + \delta b$ dà una parte coerente (dalla media) e una parte incoerente (dalla dispersione):
@@ -101,7 +101,7 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
   La parte coerente produce diffrazione di Bragg (è ciò che entra nel fattore di struttura); la parte incoerente è un fondo piatto e isotropo (grande per ¹H, la ragione della deuterazione).
 
-!!! note "Tabulated values"
+!!! note "Valori tabulati"
     ReciPro legge $b_\text{coh}$ e le sezioni d'urto da una tabella dei nuclidi anziché calcolarle. Per i nuclidi risonanti il $\sigma_\text{coh}$ elencato non deve necessariamente essere uguale al valore ingenuo $4\pi b^2$, perciò i valori della tabella sono autoritativi. La diffusione neutronica magnetica (dovuta agli spin elettronici spaiati, che *ha* effettivamente un fattore di forma dipendente da $s$) non è modellata qui.
 
 ---
@@ -122,4 +122,4 @@ $$\sigma_\text{coh} = 4\pi\,|\langle b\rangle|^2, \qquad \sigma_\text{inc} = 4\p
 
 - [Indice — geometria e la variabile $s$](index.md)
 - [Fattore di struttura](structure-factor.md) — come questi fattori si combinano su una cella elementare.
-- [3. Interazione del fascio → scheda Scattering factors](../../3-beam-interaction.md#scattering-factors-tab)
+- [3. Interazione del fascio → scheda Fattori di diffusione](../../3-beam-interaction.md#scattering-factors-tab)

@@ -27,7 +27,7 @@ Affiche l'image de diffraction à titre de référence. Chargez les images par g
 
 | Réglage | Description |
 |---------|-------------|
-| Min / Max | Plage de luminosité (réglable aussi via la barre de défilement) |
+| Min / Max | Plage de luminosité (réglable aussi via le curseur) |
 | Gradient | Positif ou Négatif |
 | Scale | Linéaire ou Log |
 | Colour | Niveaux de gris ou Cold-Warm |

@@ -6,7 +6,7 @@ Der **EBSD-Simulator** simuliert die mittels Elektronenrückstreubeugung (EBSD) 
 
 Das Fenster besitzt drei Spalten.
 
-- **Links** : Simulationsbedingungen. Die Registerkarten wählen **Geometry** (Proben-/Detektorgeometrie und eine 3D-Ansicht), **BSE Distribution** (Verteilungen der rückgestreuten Elektronen) und **Overlays** (Kikuchi-Linien und weitere Beschriftungen).
+- **Links** : Simulationsbedingungen. Die Registerkarten wählen **Geometrie** (Proben-/Detektorgeometrie und eine 3D-Ansicht), **BSE-Verteilung** (Verteilungen der rückgestreuten Elektronen) und **Overlays** (Kikuchi-Linien und weitere Beschriftungen).
 - **Mitte** : das EBSD-(Kikuchi-)Muster für die aktuelle Kristallorientierung.
 - **Rechts** : das orientierungsunabhängige Master-Muster (2D-Projektion und 3D-Kugel).
 
@@ -35,7 +35,7 @@ Die 3D-Ansichten verwenden die standardmäßige [Ansichtsnavigation](21-shortcut
 
 ## Arbeitsablauf
 
-Das Drücken von **Build Master Pattern** führt die folgenden Schritte der Reihe nach aus.
+Das Drücken von **Master-Pattern erstellen** führt die folgenden Schritte der Reihe nach aus.
 
 1. **Monte-Carlo-BSE-Simulation** : Anhand der aktuellen Kristallzusammensetzung, Dichte, Beschleunigungsspannung und Probenkippung werden etwa 2,5 Millionen Elektronen innerhalb der Probe verfolgt (elastische Streuung: Mott/NIST-Wirkungsquerschnitte; inelastische Streuung: Modell der dielektrischen Antwort). Dies liefert die gemeinsame Verteilung von *Eindringtiefe × Austrittsrichtung × Austrittsenergie* der rückgestreuten Elektronen.
 2. **Automatische Bereichswahl** : Aus dieser Verteilung werden der Energiebereich (von der Einfallsenergie bis etwa zum 80. Perzentil des Energieverlusts) und der Tiefenbereich (bis etwa zum 99. Perzentil der Eindringtiefe), die in der dynamischen Berechnung verwendet werden, automatisch festgelegt.
@@ -48,9 +48,9 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ## REM-EBSD-Einstellungen
 
-### REM- & Probenbedingungen
+### SEM- & Probenbedingungen
 
-![REM- & Probenbedingungen](../assets/cap-de-auto/FormEBSD.tabControl1.tabPage1.groupBoxSampleCondition.png)
+![SEM- & Probenbedingungen](../assets/cap-de-auto/FormEBSD.tabControl1.tabPage1.groupBoxSampleCondition.png)
 
 - **Energy** : Beschleunigungsspannung des einfallenden Strahls (keV).
 - **Wavelength** : Elektronenwellenlänge (Å), gekoppelt an Energy.
@@ -60,15 +60,15 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ![EBSD-Geometrie](../assets/cap-de-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
 
-- **Detector tilt** : Kippung des Detektors (Leuchtschirm).
-- **Detector radius** : Radius des Detektors (mm); legt das Winkelsichtfeld des gezeichneten Musters fest.
-- **Detector center** : Position (Y, Z) der Detektormitte relativ zum Strahlauftreffpunkt (mm).
+- **Detektorkippung** : Kippung des Detektors (Leuchtschirm).
+- **Detektorradius** : Radius des Detektors (mm); legt das Winkelsichtfeld des gezeichneten Musters fest.
+- **Detektorzentrum** : Position (Y, Z) der Detektormitte relativ zum Strahlauftreffpunkt (mm).
 
-Die Geometrie lässt sich in der 3D-Ansicht auf der Registerkarte **Geometry** inspizieren.
+Die Geometrie lässt sich in der 3D-Ansicht auf der Registerkarte **Geometrie** inspizieren.
 
 ![3D-Geometrie](../assets/cap-de-auto/FormEBSD.tabControl1.tabPage1.panelGeometry.png)
 
-Die graue Platte ist die Probe, der grüne Zylinder/Kegel ist der Detektor, und das violette **+Z (=beam)** ist der einfallende Strahl. Die Kristallachsen **a / b / c** (fest mit der Probe verbunden) werden ebenfalls angezeigt. Die Schaltflächen **Bird's-Eye View**, **Surface Normal**, **X Axis (Rotation Axis)** und **Z Axis (Beam Direction)** richten die Ansicht an Standardrichtungen aus. Siehe [Anhang A1. Koordinatensysteme](appendix/a1-coordinate-system/2-diffraction.md) für die Definitionen der Koordinatensysteme.
+Die graue Platte ist die Probe, der grüne Zylinder/Kegel ist der Detektor, und das violette **+Z (=beam)** ist der einfallende Strahl. Die Kristallachsen **a / b / c** (fest mit der Probe verbunden) werden ebenfalls angezeigt. Die Schaltflächen **Vogelperspektive**, **Flächennormale**, **X-Achse (Drehachse)** und **Z-Achse (Strahlrichtung)** richten die Ansicht an Standardrichtungen aus. Siehe [Anhang A1. Koordinatensysteme](appendix/a1-coordinate-system/2-diffraction.md) für die Definitionen der Koordinatensysteme.
 
 ---
 
@@ -76,9 +76,9 @@ Die graue Platte ist die Probe, der grüne Zylinder/Kegel ist der Detektor, und 
 
 ![BSE-Verteilung](../assets/cap-de-auto/FormEBSD.tabControl1.tabPage2.png)
 
-Die Registerkarte **BSE Distribution** zeigt die Monte-Carlo-Verteilungen der rückgestreuten Elektronen. Verwenden Sie **Simulate**, um sie neu zu berechnen.
+Die Registerkarte **BSE-Verteilung** zeigt die Monte-Carlo-Verteilungen der rückgestreuten Elektronen. Verwenden Sie **Simulieren**, um sie neu zu berechnen.
 
-- **Stereonet** : Winkelverteilung (Histogramm der Austrittsrichtungen) der rückgestreuten Elektronen. Die Mitte ist die Oberflächennormalenrichtung, und die gelb/orangefarbene Umrandung markiert den vom Detektor aufgespannten Bereich. **Draw axes** überlagert die Kristallachsen, und die Farbskala (Min/Max, Auflösung, Farbe) ist einstellbar.
+- **Stereonet** : Winkelverteilung (Histogramm der Austrittsrichtungen) der rückgestreuten Elektronen. Die Mitte ist die Oberflächennormalenrichtung, und die gelb/orangefarbene Umrandung markiert den vom Detektor aufgespannten Bereich. **Achsen zeichnen** überlagert die Kristallachsen, und die Farbskala (Min/Max, Auflösung, Farbe) ist einstellbar.
 - **ΔE (keV)** : Energieverlustverteilung der rückgestreuten Elektronen.
 - **Depth (nm)** : Verteilung der endgültigen Austrittstiefe der rückgestreuten Elektronen.
 
@@ -93,37 +93,37 @@ Diese Verteilungen werden von derselben Monte-Carlo-Engine wie bei [Elektronenba
 Die Registerkarte **Overlays** konfiguriert die auf dem EBSD-Muster gezeichneten Beschriftungen.
 
 - **Background color** : Hintergrundfarbe.
-- **Detector outline** : die Detektorumrandung. **Show circle** (Umfang) / **Show mesh** (Gitter).
-- **Show Kikuchi lines** : Kikuchi-Linien zeichnen. **Line Width** / **Color** sowie **Apply structure factors to Kikuchi line intensity**.
-- **Show Kikuchi line indices** : Indizes der Kikuchi-Linien (Bänder) anzeigen.
-- **Show zone axis indices** : Zonenachsenindizes anzeigen.
-- **Kikuchi line criteria** : welche Kikuchi-Linien gezeichnet werden: **Structure factor** (die obersten *N* nach Strukturfaktor) oder **1/d Cutoff** (jene mit 1/d unterhalb eines Schwellenwerts).
-- **Text settings** : **Text Size** / **Color** der Indexbeschriftungen.
+- **Detektorumriss** : die Detektorumrandung. **Kreis anzeigen** (Umfang) / **Raster anzeigen** (Gitter).
+- **Kikuchi-Linien anzeigen** : Kikuchi-Linien zeichnen. **Linienbreite** / **Farbe** sowie **Strukturfaktoren auf Kikuchi-Linien-Intensität anwenden**.
+- **Kikuchi-Linien-Indizes anzeigen** : Indizes der Kikuchi-Linien (Bänder) anzeigen.
+- **Zonenachsen-Indizes anzeigen** : Zonenachsenindizes anzeigen.
+- **Kikuchi-Linien-Kriterien** : welche Kikuchi-Linien gezeichnet werden: **Strukturfaktor** (die obersten *N* nach Strukturfaktor) oder **1/d-Grenzwert** (jene mit 1/d unterhalb eines Schwellenwerts).
+- **Texteinstellungen** : **Textgröße** / **Farbe** der Indexbeschriftungen.
 
 ---
 
 ## Master-Muster
 
-![Master-Muster](../assets/cap-de-auto/FormEBSD.groupBoxMasterPattern.png)
+![Master-Pattern](../assets/cap-de-auto/FormEBSD.groupBoxMasterPattern.png)
 
 Das Master-Muster ist die Rückstreubeugungsintensität über alle Richtungen, im Voraus durch die dynamische Theorie mit **Build Master Pattern** berechnet.
 
-- **2D-Ansicht** (links) : flächentreue Projektion einer Halbkugel. **Hemisphere** wählt die projizierte Halbkugel (+Z / −Z).
-- **3D-Ansicht** (rechts) : eine Kugel mit darauf abgebildeter Intensität. Sie kann mit der Maus gedreht werden, und ein Einschub oben rechts zeigt die synchronisierten Kristallachsen (a/b/c). **Axis Labels** / **Axis Arrows** schalten die Beschriftungen/Pfeile um, und **View Along** blickt entlang einer gewählten Zonenachse [u v w].
+- **2D-Ansicht** (links) : flächentreue Projektion einer Halbkugel. **Halbkugel** wählt die projizierte Halbkugel (+Z / −Z).
+- **3D-Ansicht** (rechts) : eine Kugel mit darauf abgebildeter Intensität. Sie kann mit der Maus gedreht werden, und ein Einschub oben rechts zeigt die synchronisierten Kristallachsen (a/b/c). **Achsenbeschriftungen** / **Achsenpfeile** schalten die Beschriftungen/Pfeile um, und **Blick entlang** blickt entlang einer gewählten Zonenachse [u v w].
 - **Min / Max, Polarity, Color** : angezeigter Intensitätsbereich, Polarität und Farbskala.
 - **Energy / Depth**-Schieberegler : wählen die anzuzeigende Energie-/Tiefenscheibe.
-- Jede Ansicht kann mit **Copy** in die Zwischenablage übertragen werden.
+- Jede Ansicht kann mit **Kopieren** in die Zwischenablage übertragen werden.
 
 ### Parameter der dynamischen Simulation
 
 ![Parameter der dynamischen Simulation](../assets/cap-de-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : Anzahl der in die Bloch-Wellen-Berechnung einbezogenen gebeugten Strahlen (Wellen). Mehr Wellen sind genauer, aber langsamer.
-- **Grid** : Auflösung des Master-Muster-Gitters (Standard 256).
+- **Raster** : Auflösung des Master-Muster-Gitters (Standard 256).
 - **Energy from … to … with step of …** : integrierter Energiebereich und Schrittweite (keV); aus dem Monte-Carlo-Ergebnis automatisch festgelegt.
 - **Thickness from … to … with step of …** : integrierter Tiefenbereich und Schrittweite (nm); ebenfalls automatisch festgelegt.
-- **Use non-local absorption model** : die nicht-lokale Absorptionsform verwenden.
-- **Include TDS background intensities** : den Untergrund der thermisch-diffusen Streuung (TDS) einbeziehen.
+- **Nicht-lokales Absorptionsmodell verwenden** : die nicht-lokale Absorptionsform verwenden.
+- **TDS-Hintergrund einbeziehen** : den Untergrund der thermisch-diffusen Streuung (TDS) einbeziehen.
 
 ---
 
@@ -133,13 +133,13 @@ Das Master-Muster ist die Rückstreubeugungsintensität über alle Richtungen, i
 
 Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristallorientierung.
 
-- **Show Dynamical EBSD Pattern (Master Pattern Required)** : projiziert das erstellte Master-Muster auf den Detektor.
-- **Show overlays** : zeichnet die Overlays (unten), etwa Kikuchi-Linien und Indizes.
-- **Output parameters**
-  - **Show image with BSE angular/energy distributions** : ist diese Option aktiviert, wird das Muster durch Gewichtung mit der BSE-Verteilung (Energie, Tiefe, Richtung) statt einer einzelnen Scheibe zusammengesetzt.
+- **Dynamisches EBSD-Muster anzeigen (Master-Pattern erforderlich)** : projiziert das erstellte Master-Muster auf den Detektor.
+- **Overlays anzeigen** : zeichnet die Overlays (unten), etwa Kikuchi-Linien und Indizes.
+- **Ausgabeparameter**
+  - **Bild mit BSE-Winkel-/Energieverteilungen anzeigen** : ist diese Option aktiviert, wird das Muster durch Gewichtung mit der BSE-Verteilung (Energie, Tiefe, Richtung) statt einer einzelnen Scheibe zusammengesetzt.
   - **Energy / Depth** : ist das Obige deaktiviert, wählt dies die anzuzeigende Energie-/Tiefenscheibe.
   - **Brightness (Min/Max), Polarity, Color** : Helligkeitsbereich, Polarität und Farbskala.
-- **Copy** : kopiert das Muster in die Zwischenablage.
+- **Kopieren** : kopiert das Muster in die Zwischenablage.
 
 ---
 

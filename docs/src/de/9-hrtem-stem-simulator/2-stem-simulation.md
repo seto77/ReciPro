@@ -4,7 +4,7 @@ Die **STEM-Simulation (Scanning Transmission Electron Microscopy)** berechnet Bi
 
 ![Simulator im STEM-Modus](../../assets/cap-de-auto/FormImageSimulator-stem.png)
 
-> Diese Seite listet alle Einstellungen auf, die rechts erscheinen, wenn **Image mode = STEM** gewählt ist. Für die Steuerelemente links zur Ergebnisanzeige, Helligkeit und Normierung siehe die [Übersichtsseite](index.md). Nur das STEM-spezifische **Anzeigeziel** wird unten wiederholt.
+> Diese Seite listet alle Einstellungen auf, die rechts erscheinen, wenn **Bildmodus = STEM** gewählt ist. Für die Steuerelemente links zur Ergebnisanzeige, Helligkeit und Normierung siehe die [Übersichtsseite](index.md). Nur das STEM-spezifische **Anzeigeziel** wird unten wiederholt.
 
 ---
 
@@ -86,10 +86,10 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ## Bildmodus (single / serial)
 
-![Bildmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Einzel-/Serienmodus](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : berechnet ein STEM-Bild bei der aktuellen Dicke.
-- **Serial image** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Step / Num**; die Liste darunter kann auch direkt bearbeitet werden).
+- **Einzelbild** : berechnet ein STEM-Bild bei der aktuellen Dicke.
+- **Serienbild** : erzeugt eine Bildserie mit schrittweise variierter Dicke / Defokus (festgelegt über **Start / Step / Num**; die Liste darunter kann auch direkt bearbeitet werden).
 
 ---
 
@@ -97,7 +97,7 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ![Bildeigenschaften](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** : Anzahl der Pixel im gerasterten Bild (Standard 512×512). In STEM entspricht dies der Anzahl der Rasterpunkte und skaliert die Rechenzeit linear.
+- **Größe (B×H)** : Anzahl der Pixel im gerasterten Bild (Standard 512×512). In STEM entspricht dies der Anzahl der Rasterpunkte und skaliert die Rechenzeit linear.
 - **Resolution** : Abtastauflösung (pm/px).
 
 ---
@@ -118,9 +118,9 @@ Der Anzeigeschalter unten links im Fenster wählt aus, welche Streukomponente de
 
 | Anzeigeziel | Beschreibung |
 |----------------|-------------|
-| **Elastic** | Bild nur aus elastischer Streuung |
+| **Elastisch** | Bild nur aus elastischer Streuung |
 | **TDS** | Bild nur aus thermisch-diffuser Streuung |
-| **Elastic & TDS** | Summe aus elastisch + TDS |
+| **Elastisch & TDS** | Summe aus elastisch + TDS |
 
 ---
 

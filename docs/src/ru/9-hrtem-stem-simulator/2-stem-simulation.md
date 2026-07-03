@@ -86,7 +86,7 @@
 
 ## Режим изображения (single / serial)
 
-![Режим изображения](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Одиночный/серийный режим](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** : вычислить одно STEM-изображение при текущей толщине.
 - **Serial image** : сформировать серию изображений с пошаговым изменением толщины / дефокусировки (задаётся через **Start / Step / Num**; список ниже также можно редактировать напрямую).

@@ -28,7 +28,7 @@ Dieses Fenster hat keine Tastenkombinationen mit Modifizierertasten; es wird dur
 | Kurzbefehl | Aktion |
 |----------|--------|
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
-| <kbd>ENTER</kbd> in einem beliebigen Suchfeld | Die Datenbanksuche ausführen (entspricht der Schaltfläche **Search**) |
+| <kbd>ENTER</kbd> in einem beliebigen Suchfeld | Die Datenbanksuche ausführen (entspricht der Schaltfläche **Suchen**) |
 | Auf eine Zeile in der Ergebnistabelle klicken | Diesen Kristall in das Hauptfenster laden |
 | Auf ein Element im Popup **Periodic table** klicken | Seinen Filter durchschalten: *ignore* → *must include* → *must exclude* |
 
@@ -48,17 +48,17 @@ Zeigt Kristalle an, die den Suchkriterien entsprechen. Wählen Sie einen Kristal
 
 ![Suchoptionen](../assets/cap-de-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.png)
 
-Geben Sie unten die Suchkriterien ein und drücken Sie die Schaltfläche **Search** oder die **Enter**-Taste.
+Geben Sie unten die Suchkriterien ein und drücken Sie die Schaltfläche **Suchen** oder die **Enter**-Taste.
 
 | Kriterium | Beschreibung |
 |-----------|-------------|
 | **Name** | Kristallname |
 | **Element** | Periodensystem-Auswahl (darf/muss/darf nicht enthalten) |
-| **Reference** | Titel, Zeitschrift, Autor |
-| **Crystal system** | Kristallsystem auswählen |
-| **Cell Param** | Gitterkonstanten und Fehler |
+| **Literatur** | Titel, Zeitschrift, Autor |
+| **Kristallsystem** | Kristallsystem auswählen |
+| **Gitterkonst.** | Gitterkonstanten und Fehler |
 | **d-spacing** | d-Werte des stärksten Reflexes und Fehler |
-| **Density** | Dichte und Fehler |
+| **Dichte** | Dichte und Fehler |
 
 ### Name
 
@@ -74,11 +74,11 @@ Drücken Sie die Schaltfläche **Periodic Table**, um die Elementauswahl zu öff
 
 Die drei Schaltflächen oben im Fenster setzen mit einem Klick jedes Element auf einen der drei Zustände zurück.
 
-### Reference
+### Literatur
 
 Freitext-Abgleich gegen die Publikationsmetadaten: Titel der Arbeit, Name der Zeitschrift und Autorenliste.
 
-### Crystal system
+### Kristallsystem
 
 Beschränkt die Suche auf ein bestimmtes Kristallsystem (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
 
@@ -92,7 +92,7 @@ Geben Sie die gewünschten Gitterkonstanten *a*, *b*, *c*, *α*, *β*, *γ* und 
 
 Geben Sie den *d*-Wert (d-spacing) des stärksten Reflexes (oder mehrerer starker Reflexe) und einen zulässigen Fehler ein. Nützlich, wenn aus einem Experiment nur die Positionen der Beugungspeaks bekannt sind.
 
-### Density
+### Dichte
 
 Filtern nach Massendichte (g/cm³) innerhalb eines zulässigen Fehlerbandes.
 

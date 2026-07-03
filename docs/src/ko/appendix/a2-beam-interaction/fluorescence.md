@@ -1,6 +1,6 @@
 # 형광
 
-X선 **광흡수**가 내각 전자를 방출시키면([감쇠 및 수송](attenuation-transport.md) 참조), 깊은 준위에 공공이 남는다. 원자는 외각 전자가 그 구멍으로 떨어지면서 완화되고, 방출된 에너지는 **특성 X선 광자**(형광)로 나오거나 두 번째 전자를 방출하는 방식(**오제**(Auger) 과정)으로 나온다. **Fluorescence** 탭은 특성 광자 채널을 미리 보여 준다. 이 탭은 X선 전용이며 전자선과 중성자선에서는 숨겨진다.
+X선 **광흡수**가 내각 전자를 방출시키면([감쇠 및 수송](attenuation-transport.md) 참조), 깊은 준위에 공공이 남는다. 원자는 외각 전자가 그 구멍으로 떨어지면서 완화되고, 방출된 에너지는 **특성 X선 광자**(형광)로 나오거나 두 번째 전자를 방출하는 방식(**오제**(Auger) 과정)으로 나온다. **형광** 탭은 특성 광자 채널을 미리 보여 준다. 이 탭은 X선 전용이며 전자선과 중성자선에서는 숨겨진다.
 
 ![형광 (X선)](../../../assets/cap-ko-auto/FormBeamInteraction-xray-fluorescence.png)
 
@@ -79,4 +79,4 @@ $$I_\ell \;\propto\; C_i\,\Phi_0\,\sigma_{\text{ion},X,i}(E_0)\,\omega_{X,i}\,p_
 
 - [감쇠 및 수송](attenuation-transport.md) — 광흡수, 공공을 생성하는 흡수단.
 - [원자 산란 인자](scattering-factor.md) — 산란에서 보이는, 동일한 속박 전자.
-- [3. 빔 상호작용 → Fluorescence 탭](../../3-beam-interaction.md#fluorescence-tab)
+- [3. 빔 상호작용 → 형광 탭](../../3-beam-interaction.md#fluorescence-tab)

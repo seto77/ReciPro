@@ -198,11 +198,11 @@
   </data>
   <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
     <value>三階 Birch–Murnaghan 狀態方程的
-體積彈性模數 K0（GPa）。</value>
+體積模數 K0（GPa）。</value>
   </data>
   <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
     <value>三階 Birch–Murnaghan 狀態方程之
-體積彈性模數的壓力導數 K'0。</value>
+體積模數的壓力導數 K'0。</value>
   </data>
   <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
     <value>試樣的質量吸收係數（cm²/g），

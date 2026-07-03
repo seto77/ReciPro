@@ -1,15 +1,15 @@
 # Strukturfaktor
 
-Der Atomformfaktor beschreibt ein einzelnes Atom; der **Strukturfaktor** beschreibt, wie alle Atome der Elementarzelle *gemeinsam* streuen. Es ist die Größe, die die Registerkarte **Reflections** tabelliert (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), und sie ist das Bindeglied zwischen der atomaren Physik der vorigen Seite und den gebeugten Intensitäten.
+Der Atomformfaktor beschreibt ein einzelnes Atom; der **Strukturfaktor** beschreibt, wie alle Atome der Elementarzelle *gemeinsam* streuen. Es ist die Größe, die die Registerkarte **Reflexe** tabelliert (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), und sie ist das Bindeglied zwischen der atomaren Physik der vorigen Seite und den gebeugten Intensitäten.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-de-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexe — X-ray](../../../assets/cap-de-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-de-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexe — electron](../../../assets/cap-de-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-de-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexe — neutron](../../../assets/cap-de-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -38,7 +38,7 @@ Atome schwingen um ihre Gleichgewichtslagen, wodurch die Streudichte verschmiert
 
 $$T_j = \exp\!\left(-B_j\, s^2\right), \qquad B_j = 8\pi^2\langle u_j^2\rangle,$$
 
-wobei $\langle u_j^2\rangle$ die mittlere quadratische Auslenkung entlang der Streurichtung ist und $B_j$ der isotrope Auslenkungsparameter (Å²). Anisotrope Bewegung verallgemeinert dies zu
+wobei $\langle u_j^2\rangle$ die mittlere quadratische Auslenkung entlang der Streurichtung ist und $B_j$ der isotrope Auslenkungsparameter (Å²) ist. Anisotrope Bewegung verallgemeinert dies zu
 
 $$T_j = \exp\!\left(-2\pi^2\,\mathbf g^{\mathsf T}\!\mathbf U_j\,\mathbf g\right),$$
 
@@ -46,7 +46,7 @@ mit $\mathbf U_j$ als Auslenkungstensor und $\mathbf g$ als reziprokem Gittervek
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-sodass $B$ mit der Temperatur ansteigt und für schwere Atome abnimmt. ReciPro verwendet die tabellierten oder eingegebenen $B_j$ direkt, anstatt diese zu berechnen. Da $T_j$ den Streufaktor multipliziert, kann die Registerkarte **Scattering factors** dieselbe $e^{-Bs^2}$-Dämpfung auf die dargestellten Kurven anwenden. Die Dämpfung wächst mit der Temperatur und mit $s$, weshalb die thermisch diffuse Streuung (Intensität, die den kohärenten Bragg-Strahlen entzogen und in einen diffusen Untergrund umverteilt wird) das absorptive Potential in der dynamischen Theorie speist ([Anhang A3](../a3-bloch-wave/index.md)).
+sodass $B$ mit der Temperatur ansteigt und für schwere Atome abnimmt. ReciPro verwendet die tabellierten oder eingegebenen $B_j$ direkt, anstatt diese zu berechnen. Da $T_j$ den Streufaktor multipliziert, kann die Registerkarte **Streufaktoren** dieselbe $e^{-Bs^2}$-Dämpfung auf die dargestellten Kurven anwenden. Die Dämpfung wächst mit der Temperatur und mit $s$, weshalb die thermisch diffuse Streuung (Intensität, die den kohärenten Bragg-Strahlen entzogen und in einen diffusen Untergrund umverteilt wird) das absorptive Potential in der dynamischen Theorie speist ([Anhang A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -111,5 +111,5 @@ Da äquivalente Ebenen in diesem Modus zu einer einzigen Linie zusammengefasst w
 
 - [Atomare Streufaktoren](scattering-factor.md) — die $f_j$, die in die Summe eingehen.
 - [Abschwächung & Transport](attenuation-transport.md) — was mit dem Strahl zwischen den Streuereignissen geschieht.
-- [3. Strahl-Wechselwirkung → Registerkarte Reflections](../../3-beam-interaction.md#reflections-tab)
+- [3. Strahl-Wechselwirkung → Registerkarte Reflexe](../../3-beam-interaction.md#reflections-tab)
 - [Anhang A3. Dynamische Beugung](../a3-bloch-wave/index.md) — wenn $\lvert F\rvert^2$ (kinematisch) nicht mehr ausreicht.

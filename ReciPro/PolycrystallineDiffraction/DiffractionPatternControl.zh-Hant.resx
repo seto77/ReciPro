@@ -85,7 +85,7 @@
 以模擬偵測器/底片的暈染。</value>
   </data>
   <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
-    <value>遮罩模式:選取所選繞射峰(hkl 繞射)
+    <value>遮罩模式:選取所選繞射峰(hkl 反射)
 周圍的像素以進行遮罩;
 與其他遮罩模式互斥。</value>
   </data>
@@ -119,7 +119,7 @@
 遮罩半徑(像素,1–128)。</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
-    <value>相機長度(試料至偵測器距離)
+    <value>相機長度(試樣至偵測器距離)
 單位 mm;用以縮放偵測器上模擬
 繞射環的半徑。</value>
   </data>
@@ -263,41 +263,41 @@ Start 與 End 半徑之間的像素會被選取以
 進行遮罩。</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
-    <value>試料/偵測器傾斜軸的方位角(phi),單位度。
+    <value>試樣/偵測器傾斜軸的方位角(phi),單位度。
 設定圖樣傾斜所繞之軸的方向,影響繞射環
 變形的方位。</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
-    <value>試料/偵測器傾斜軸的方位角(phi),單位度。
+    <value>試樣/偵測器傾斜軸的方位角(phi),單位度。
 設定圖樣傾斜所繞之軸的方向,影響繞射環
 變形的方位。</value>
   </data>
   <data name="numericBoxTau.ToolTip" xml:space="preserve">
-    <value>試料/偵測器繞 phi 軸傾斜的大小
+    <value>試樣/偵測器繞 phi 軸傾斜的大小
 (tau),單位度。數值越大,
 德拜環越從正圓變形為橢圓。</value>
   </data>
   <data name="label28.ToolTip" xml:space="preserve">
-    <value>試料/偵測器繞 phi 軸傾斜的大小
+    <value>試樣/偵測器繞 phi 軸傾斜的大小
 (tau),單位度。數值越大,
 德拜環越從正圓變形為橢圓。</value>
   </data>
   <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
-    <value>勾選峰清單中的每一個繞射(hkl)項目,
+    <value>勾選峰清單中的每一個反射(hkl)項目,
 一次選取所有峰。</value>
   </data>
   <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
-    <value>取消勾選峰清單中的每一個繞射(hkl)
+    <value>取消勾選峰清單中的每一個反射(hkl)
 項目,清除選取。</value>
   </data>
   <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
-    <value>選取已勾選繞射(hkl)之繞射環周圍的
+    <value>選取已勾選反射(hkl)之繞射環周圍的
 影像區域,以便進行遮罩。</value>
   </data>
   <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
-    <value>繞射指數(hkl)清單;勾選其周圍繞射環
-區域你想選取以進行遮罩的
-峰。</value>
+    <value>反射指數(hkl)清單;若要選取某峰
+周圍的繞射環區域以進行遮罩,
+請勾選該峰。</value>
   </data>
   <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
     <value>入射輻射的光束收斂(半角),單位度。
@@ -359,7 +359,7 @@ Delta-lambda / lambda),單位 %。
   <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
     <value>繞射資訊的唯讀摘要欄:顯示
 貢獻繞射的結晶子數目以及
-各繞射(hkl)的比例。</value>
+各反射(hkl)的比例。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>每次滑鼠點按所塗畫的手動點狀
@@ -382,11 +382,11 @@ Delta-lambda / lambda),單位 %。
 設定所顯示圖樣的縮放倍率。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>相機長度(試料至偵測器距離)
+    <value>相機長度(試樣至偵測器距離)
 單位 mm;用以縮放繞射環半徑。</value>
   </data>
   <data name="label39.ToolTip" xml:space="preserve">
-    <value>相機長度(試料至偵測器距離)
+    <value>相機長度(試樣至偵測器距離)
 單位 mm;用以縮放繞射環半徑。</value>
   </data>
   <data name="label22.ToolTip" xml:space="preserve">

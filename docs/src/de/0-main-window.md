@@ -29,7 +29,7 @@ Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleibe
 | Doppeltipp <kbd>CTRL</kbd> | **Rechner** öffnen / schließen |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Das Kennzeichen **Reserved** des ausgewählten Kristalls umschalten |
 | <kbd>CTRL</kbd> beim Start von ReciPro halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
-| Mit links das Orientierungs-Widget ziehen (unten links, unter *Current Direction*) | Den Kristall drehen |
+| Mit links das Orientierungs-Widget ziehen (unten links, unter *Aktuelle Orientierung*) | Den Kristall drehen |
 | Rechts-Doppelklick auf das Orientierungs-Widget | Das Widget-Bild in die Zwischenablage kopieren |
 | Einfachklick auf eine Funktionsschaltfläche | Das betreffende Fenster öffnen / schließen |
 | Doppelklick auf eine Funktionsschaltfläche | Das Fenster sichtbar erzwingen und in den Vordergrund holen |
@@ -46,7 +46,7 @@ Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleibe
 Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 1. Wählen Sie den gewünschten Kristall in der **Kristallliste**. Um eine CIF/AMC-Datei zu verwenden, ziehen Sie sie per Drag & Drop in die **Kristallinformation**.
-2. Wenn Sie Gitterparameter oder Atompositionen bearbeiten, drücken Sie **Add** oder **Replace**, damit die Änderungen in die Kristallliste zurückgeschrieben werden.
+2. Wenn Sie Gitterparameter oder Atompositionen bearbeiten, drücken Sie **↑ Hinzufügen ↑** oder **↑ Ersetzen ↑**, damit die Änderungen in die Kristallliste zurückgeschrieben werden.
 3. Stellen Sie die Kristallorientierung in der **Rotationssteuerung** über eine Zonenachse, eine Kristallebene, Euler-Winkel oder durch Ziehen mit der Maus ein.
 4. Öffnen Sie das gewünschte Werkzeug aus den **Funktionen**. Die Rechenfenster für Beugung, HRTEM/STEM, EBSD und andere verwenden den aktuell ausgewählten Kristall und dessen Orientierung.
 
@@ -137,7 +137,7 @@ Die Drehungen werden in der Reihenfolge \(\Psi \to \Theta \to \Phi\) angewendet.
 
 ![Pfeile](../assets/cap-de-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-Dreht um den Winkel Step. Aktivieren Sie Animation für kontinuierliche Drehung.
+Dreht um den Winkel Schritt. Aktivieren Sie Animation für kontinuierliche Drehung.
 
 ### Blick entlang
 
@@ -145,9 +145,9 @@ Dreht um den Winkel Step. Aktivieren Sie Animation für kontinuierliche Drehung.
 
 Richtet eine Zonenachse [*uvw*] oder eine Kristallebene (*hkl*) senkrecht zum Bildschirm aus.
 
-- **Fix**: Wenn aktiviert, wird die angegebene Zonenachse oder Ebene während nachfolgender Rotationsoperationen räumlich fixiert gehalten.
-- **Axis**: Stellt die eingegebene Zonenachse \([uvw]\) senkrecht zum Bildschirm. Wenn zusätzlich **Plane** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
-- **Plane**: Stellt die Normale der eingegebenen Kristallebene \((hkl)\) senkrecht zum Bildschirm. Wenn zusätzlich **Axis** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
+- **Fest**: Wenn aktiviert, wird die angegebene Zonenachse oder Ebene während nachfolgender Rotationsoperationen räumlich fixiert gehalten.
+- **Achse**: Stellt die eingegebene Zonenachse \([uvw]\) senkrecht zum Bildschirm. Wenn zusätzlich **Ebene** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
+- **Ebene**: Stellt die Normale der eingegebenen Kristallebene \((hkl)\) senkrecht zum Bildschirm. Wenn zusätzlich **Achse** gesetzt ist, wird diese Richtung auf dem Bildschirm nach oben ausgerichtet.
 
 ### Grundlegende Möglichkeiten zur Festlegung der Orientierung
 
@@ -173,24 +173,24 @@ Siehe [Rotationsgeometrie](4-rotation-geometry.md) und [Anhang A1. Koordinatensy
 
 | Schaltfläche | Aktion |
 |--------|--------|
-| Up / Down | Reihenfolge ändern |
+| Auf / Ab | Reihenfolge ändern |
 | Duplicate | Den ausgewählten Kristall kopieren |
-| Delete / All clear | Kristalle entfernen |
-| Add / Replace | Zur Liste hinzufügen oder den ausgewählten Eintrag ersetzen |
+| Löschen / Alle Kristalle leeren | Kristalle entfernen |
+| ↑ Hinzufügen ↑ / ↑ Ersetzen ↑ | Zur Liste hinzufügen oder den ausgewählten Eintrag ersetzen |
 
 ---
 
 ## Kristallinformation
 
-Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSmanager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten Basic Info, Atom und Reference (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
+Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSmanager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten Basisinfo, Atominfo und Lit. (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
 
-> **Wichtig**: Drücken Sie **Add** oder **Replace**, um Änderungen zu speichern.
+> **Wichtig**: Drücken Sie **↑ Hinzufügen ↑** oder **↑ Ersetzen ↑**, um Änderungen zu speichern.
 
 ![Crystal Control](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
 Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Formula** (chemische Formel, aus der Atomliste berechnet) und **Reset** (alle Felder leeren).
 
-### Registerkarte Basic Info
+### Registerkarte Basisinfo
 
 ![Basic Info](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
@@ -204,11 +204,11 @@ Gitterparameter, Symmetrie und daraus abgeleitete Größen.
 | Molar Volume / Molar Mass / Z / Density | Molvolumen, molare Masse, Anzahl der Formeleinheiten pro Elementarzelle (Z) und Dichte. Wird **nur angezeigt, wenn Atome eingegeben wurden**. |
 | Color of Profile | Farbe, die beim Auftragen des Beugungsprofils dieses Kristalls verwendet wird. |
 
-### Registerkarte Atom
+### Registerkarte Atominfoinfo
 
 ![Atom](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
-Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. Bearbeiten Sie die Atomliste mit **Add**, **Replace** (die ausgewählte Zeile ersetzen), **Up/Down** (Reihenfolge ändern) und **Delete**. Jedes Atom hat:
+Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. Bearbeiten Sie die Atomliste mit **Hinzufügen**, **Ersetzen** (die ausgewählte Zeile ersetzen), **Hoch/Runter** (Reihenfolge ändern) und **Löschen**. Jedes Atom hat:
 
 | Element | Beschreibung |
 |------|------|
@@ -217,14 +217,14 @@ Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. 
 | X, Y, Z | Fraktionelle Koordinaten (0–1). Brüche wie 1/2 oder 2/3 können eingegeben werden. |
 | Occ | Besetzung (0–1). |
 
-**Origin shift**: verschiebt den Ursprung aller Atomkoordinaten. Verwenden Sie die voreingestellten Schaltflächen (**+** / **−**) für Standardverschiebungen oder **Apply custom shift** für einen beliebigen Betrag.
+**Ursprungsverschiebung**: verschiebt den Ursprung aller Atomkoordinaten. Verwenden Sie die voreingestellten Schaltflächen (**+** / **−**) für Standardverschiebungen oder **Apply custom shift** für einen beliebigen Betrag.
 
 **Debye–Waller-Faktor (Temperaturfaktor)**:
 
 | Element | Beschreibung |
 |------|------|
 | Notation | Die U- oder B-Notation verwenden. |
-| Model | Isotrop oder anisotrop. |
+| Modell | Isotrop oder anisotrop. |
 | B##, U## | Für den anisotropen Fall jede Komponente eingeben (B11, …). |
 
 **Scattering factor**: Wählen Sie den für jedes Atom verwendeten Streufaktor.
@@ -235,11 +235,11 @@ Legen Sie Spezies, Position, Temperaturfaktor und Streufaktor jedes Atoms fest. 
 | Electron | Elektronen-Streufaktoren (Peng 1998, Acta Cryst. A54, 481–485). |
 | Neutron | Neutronen-Streulängen. Wählen Sie **Natural isotope abundance** oder **Custom isotope abundance** (eine beliebige Isotopenzusammensetzung). |
 
-### Registerkarte Reference
+### Registerkarte Lit.
 
 ![Reference](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
-Erfassen Sie die Quelle der Struktur: **Note**, **Authors**, **Journal** und **Title**.
+Erfassen Sie die Quelle der Struktur: **Note**, **Autoren**, **Zeitschrift** und **Titel**.
 
 ### Kontextmenü (Rechtsklick)
 

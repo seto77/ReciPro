@@ -4,7 +4,7 @@ Die **Strahl-Wechselwirkung** beschreibt, wie der ausgewählte Kristall mit eine
 
 ![Strahl-Wechselwirkung](../assets/cap-de-auto/FormBeamInteraction.png)
 
-Der einfallende Strahl wird im Band am oberen Rand des Fensters ausgewählt; die vier Registerkarten darunter — **Reflections**, **Attenuations & Transport**, **Scattering factors** und **Fluorescence** — zeigen die verschiedenen Aspekte der Wechselwirkung. Jeder Registerkarten-Abschnitt unten zeigt die Registerkarte unter den Strahlen **X-ray / Electron / Neutron** (verwenden Sie die Registerkarten in jeder Abbildung); der Inhalt ändert sich deutlich mit dem Strahl.
+Der einfallende Strahl wird im Band am oberen Rand des Fensters ausgewählt; die vier Registerkarten darunter — **Reflexe**, **Schwächung & Transport**, **Streufaktoren** und **Fluoreszenz** — zeigen die verschiedenen Aspekte der Wechselwirkung. Jeder Registerkarten-Abschnitt unten zeigt die Registerkarte unter den Strahlen **X-ray / Electron / Neutron** (verwenden Sie die Registerkarten in jeder Abbildung); der Inhalt ändert sich deutlich mit dem Strahl.
 
 !!! tip "Festkörperphysikalischer Hintergrund (Anhang A2)"
     Die Streuung und Festkörperphysik hinter diesen vier Registerkarten — Atomformfaktoren, der Strukturfaktor, die Strahlabschwächung und der Transport sowie die Fluoreszenz — werden in **[Anhang A2. Strahl-Wechselwirkung (festkörperphysikalischer Hintergrund)](appendix/a2-beam-interaction/index.md)** erläutert.
@@ -16,7 +16,7 @@ Der einfallende Strahl wird im Band am oberen Rand des Fensters ausgewählt; die
 
 ## Tastatur- & Maus-Kurzbefehle
 
-Dieses Fenster hat keine speziellen Tastenkombinationen. <kbd>F1</kbd> öffnet diese Handbuchseite. Auf der Registerkarte **Scattering factors** kann die vertikale Cursorlinie **gezogen** werden, um den Streufaktor jedes Elements an dieser Position abzulesen, und jede Registerkarte besitzt eine **Copy**-Schaltfläche, die ihre Tabelle als in Tabellenkalkulationen einfügbaren Text exportiert.
+Dieses Fenster hat keine speziellen Tastenkombinationen. <kbd>F1</kbd> öffnet diese Handbuchseite. Auf der Registerkarte **Streufaktoren** kann die vertikale Cursorlinie **gezogen** werden, um den Streufaktor jedes Elements an dieser Position abzulesen, und jede Registerkarte besitzt eine **Copy**-Schaltfläche, die ihre Tabelle als in Tabellenkalkulationen einfügbaren Text exportiert.
 
 → Siehe **[21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)** für jedes Fenster auf einen Blick.
 
@@ -30,33 +30,33 @@ Das obere Band ist ein **Wave Length Control**, das mit den anderen Simulatoren 
 
 - **X-ray / Electron / Neutron** : Die Atomformfaktoren und die Wechselwirkungsphysik unterscheiden sich je nach Typ des einfallenden Strahls, daher werden sie hier umgeschaltet.
 - Bei **X-ray** legt die Wahl des **Element** (Anodenmaterial) und der charakteristischen Linie (Kα usw.) automatisch die Wellenlänge dieser charakteristischen Röntgenstrahlung fest.
-- **Energy (keV)** und **Wavelength (Å)** sind verknüpft; das Setzen des einen aktualisiert das andere, und beide bestimmen das 2θ, das in der Tabelle **Reflections** verwendet wird.
+- **Energy (keV)** und **Wavelength (Å)** sind verknüpft; das Setzen des einen aktualisiert das andere, und beide bestimmen das 2θ, das in der Tabelle **Reflexe** verwendet wird.
 - **Unit (Å / nm)** schaltet die Längeneinheit um, die für d-Abstände und ähnliche Größen verwendet wird.
 
 Der gewählte Strahl entscheidet auch, welche Registerkarten und Kurven sinnvoll sind:
 
-| Strahl | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
+| Strahl | Reflexe | Schwächung & Transport | Streufaktoren | Fluoreszenz |
 |------|------|------|------|------|
 | **X-ray** | Strukturfaktoren inkl. anomaler Dispersion | µ/ρ, µ, Transmission + Absorptionskanten (gegen Energie) | $f(s)$ oder $F(q)+S(q)$ | charakteristische Linien + EDX-Striche |
 | **Electron** | Elektronen-Strukturfaktoren | σ, MFP, \|dE/ds\|, IMFP, Reichweite (gegen Energie) | Peng / Kirkland / 8-Gaussians | — (ausgeblendet) |
 | **Neutron** | nukleare Strukturfaktoren | Streulängen & Wirkungsquerschnitte (keine Energiekurve) | Streulängen (keine *s*-Abhängigkeit) | — (ausgeblendet) |
 
-Die Registerkarte **Fluorescence** gilt nur für Röntgenstrahlen und verschwindet bei Elektronen- und Neutronenstrahlen. Bei Neutronen werden die energieabhängigen Diagramme in **Attenuations & Transport** und **Scattering factors** durch Elementtabellen ersetzt, da die nukleare Streulänge nicht vom Streuwinkel oder der Energie abhängt.
+Die Registerkarte **Fluoreszenz** gilt nur für Röntgenstrahlen und verschwindet bei Elektronen- und Neutronenstrahlen. Bei Neutronen werden die energieabhängigen Diagramme in **Schwächung & Transport** und **Streufaktoren** durch Elementtabellen ersetzt, da die nukleare Streulänge nicht vom Streuwinkel oder der Energie abhängt.
 
 ---
 
-## Registerkarte Reflections
+## Registerkarte Reflexe
 
 Listet die erlaubten Kristallebenen (Reflexe) des Kristalls sowie den **Strukturfaktor** und die Beugungsintensität jedes Reflexes auf. Bei Röntgenstrahlen enthält der Strukturfaktor nun die Terme der **anomalen Dispersion** $f'/f''$ bei der aktuellen Energie, sodass `F_inv` (der Imaginärteil) in der Nähe einer Absorptionskante im Allgemeinen ungleich null ist. Das Layout ist für jeden Strahl gleich; nur die Strukturfaktor-Werte und das 2θ jedes Reflexes ändern sich.
 
 === "X-ray"
-    ![Reflections — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexe — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../assets/cap-de-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexe — electron](../assets/cap-de-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexe — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -88,18 +88,18 @@ Jede Zeile ist ein Reflex (oder eine Gruppe symmetrieäquivalenter Ebenen):
 
 ---
 
-## Registerkarte Attenuations & Transport
+## Registerkarte Schwächung & Transport
 
 Wie tief der Strahl in das Material eindringt und wie er Energie verliert. Der Inhalt hängt vom Strahl ab.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Schwächung & Transport — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../assets/cap-de-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Schwächung & Transport — electron](../assets/cap-de-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Schwächung & Transport — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -130,18 +130,18 @@ Die Neutronenwechselwirkung wird durch nukleare Wirkungsquerschnitte und nicht d
 
 ---
 
-## Registerkarte Scattering factors {#fluorescence-tab}
+## Registerkarte Streufaktoren {#fluorescence-tab}
 
 Der Atomformfaktor jedes beteiligten Elements, dargestellt gegen $s = \sin\theta/\lambda$ (Å⁻¹). Jedes Element wird in seiner eigenen Farbe gezeichnet, und die **vertikale Cursorlinie** kann gezogen werden, um den Streufaktor jedes Elements an dieser Position in die Tabelle links abzulesen.
 
 === "X-ray"
-    ![Scattering factors — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-scattering.png)
+    ![Streufaktoren — X-ray](../assets/cap-de-auto/FormBeamInteraction-xray-scattering.png)
 
 === "Electron"
-    ![Scattering factors — electron](../assets/cap-de-auto/FormBeamInteraction-electron-scattering.png)
+    ![Streufaktoren — electron](../assets/cap-de-auto/FormBeamInteraction-electron-scattering.png)
 
 === "Neutron"
-    ![Scattering factors — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-scattering.png)
+    ![Streufaktoren — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** bietet zwei **Model**-Modi: **f(s)** stellt den konventionellen Röntgen-Atomformfaktor dar (in Elektroneneinheiten); **F(q)+S(q)** stellt den Rayleigh-**kohärenten** Formfaktor $F(q)$ zusammen mit der Compton-**inkohärenten** Streufunktion $S(q)$ dar (aus xraylib). Die Tabelle listet außerdem die anomalen Dispersionsterme **f'(E)** und **f''(E)** bei der aktuellen Energie auf.
 - **Electron** bietet drei Parametrisierungen des Elektronen-Streufaktors: **Peng**, **Kirkland** und **8-Gaussians**. Die Tabelle zeigt $f_e(s)$ (nm) und welches **model** ihn erzeugt hat.
@@ -150,11 +150,11 @@ Der Atomformfaktor jedes beteiligten Elements, dargestellt gegen $s = \sin\theta
 
 ---
 
-## Registerkarte Fluorescence
+## Registerkarte Fluoreszenz
 
 Für einen Röntgenstrahl die charakteristische **Fluoreszenz**-Emission der Probe. (Diese Registerkarte ist bei Elektronen- und Neutronenstrahlen ausgeblendet.)
 
-![Fluorescence (X-ray)](../assets/cap-de-auto/FormBeamInteraction-xray-fluorescence.png)
+![Fluoreszenz (X-ray)](../assets/cap-de-auto/FormBeamInteraction-xray-fluorescence.png)
 
 Das Diagramm **EDX emission lines** zeichnet die charakteristischen Linien (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) jedes Elements als Striche bei ihren Photonenenergien, wobei die Höhe proportional zu Atomanteil × Strahlungsrate × Fluoreszenzausbeute ist (eine qualitative Vorschau im EDX-Stil; Anregungsquerschnitt und Detektoreffizienz werden nicht modelliert). Die untere Tabelle listet pro Linie das Element, den Liniennamen, die Energie **E keV**, die relative Intensität **Rel.I** und die Fluoreszenzausbeute **ω** auf. Die Skalartabelle gibt die K-Schalen-Ausbeute **ω_K** jedes Elements und die **strongest line** im Spektrum an.
 

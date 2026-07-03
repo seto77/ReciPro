@@ -36,7 +36,7 @@ Zeigt das Beugungsbild zur Referenz an. Bilder werden per Drag & Drop oder über
 
 ---
 
-## Optics
+## Optik
 
 Geben Sie die einfallende Quelle, Energie/Wellenlänge, Kameralänge und Detektor-Pixelgröße ein.
 
@@ -87,13 +87,13 @@ Drücken Sie **Identify spots**, um erkannte Reflexe gegen den im Hauptfenster a
 
 ## Zonenachsensuche aus der Reflexgeometrie (früher TEM ID)
 
-Wenn Sie kein Bild zum Laden haben, können Sie dennoch nach Kandidaten-Zonenachsen suchen, indem Sie die Geometrie eines Feinbereichs-Elektronenbeugungsmusters (SAED) von Hand eingeben. Geben Sie die TEM-Beobachtungsbedingungen und die Reflexgeometrie ein und drücken Sie dann **Search zone axes**, um Kandidaten für die Kristallorientierung zu finden.
+Wenn Sie kein Bild zum Laden haben, können Sie dennoch nach Kandidaten-Zonenachsen suchen, indem Sie die Geometrie eines Feinbereichs-Elektronenbeugungsmusters (SAED) von Hand eingeben. Geben Sie die TEM-Beobachtungsbedingungen und die Reflexgeometrie ein und drücken Sie dann **Zonenachsen aus drei Mustern suchen**, um Kandidaten für die Kristallorientierung zu finden.
 
-### TEM condition
+### TEM-Bedingung
 
 Geben Sie die TEM-Beobachtungsbedingungen ein (Beschleunigungsspannung, Kameralänge usw.).
 
-### Photo 1, 2, 3
+### Foto 1, 2, 3
 
 Geben Sie die Geometrie der Beugungsreflexe ein.
 

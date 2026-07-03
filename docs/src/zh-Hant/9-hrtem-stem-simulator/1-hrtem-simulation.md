@@ -36,7 +36,7 @@
 
 ### 固有參數
 
-![固有參數](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![固有參數](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 | 參數 | 說明 | 典型值 |
 |-----------|-------------|---------|
@@ -63,7 +63,7 @@ Scherzer 欠焦：$\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -1.155
 
 ## 物鏡光闌
 
-![物鏡光闌](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+![物鏡光圈 (HRTEM 選項)](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 設定光闌尺寸（mrad）與位置。**Open aperture** 會將其移除。所考量的布洛赫波數目取決於光闌條件。
 

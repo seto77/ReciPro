@@ -12,7 +12,7 @@
 
 ## Входные параметры
 
-![Input parameters](../../assets/cap-ru-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
+![Входные параметры](../../assets/cap-ru-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
 | Параметр | Описание | По умолчанию / Типично |
 |-----------|-------------|-------------------|
@@ -36,7 +36,7 @@
 
 ## Выходные параметры
 
-![Output parameters](../../assets/cap-ru-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![Выходные параметры](../../assets/cap-ru-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 После завершения расчёта выходные параметры становятся доступными. Все они изменяют только отображение без повторного расчёта.
 

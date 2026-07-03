@@ -206,7 +206,7 @@
     <value>Anchura de línea</value>
   </data>
   <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
-    <value>Reflexiones</value>
+    <value>Espejos</value>
   </data>
   <data name="groupBoxPlanes.Text" xml:space="preserve">
     <value>Planos</value>
@@ -497,7 +497,7 @@ en función de los planos cristalinos de la siguiente manera</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
-eje a (usado cuando se selecciona 'Each plane').</value>
+eje a (usado cuando se selecciona 'Cada plano').</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
@@ -505,7 +505,7 @@ eje a (usado cuando se selecciona 'Each plane').</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
-eje b (usado cuando se selecciona 'Each plane').</value>
+eje b (usado cuando se selecciona 'Cada plano').</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
@@ -513,7 +513,7 @@ eje b (usado cuando se selecciona 'Each plane').</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
-eje c (usado cuando se selecciona 'Each plane').</value>
+eje c (usado cuando se selecciona 'Cada plano').</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>Color de la cara de la celda unidad normal al
@@ -539,7 +539,7 @@ eje c (usado cuando se selecciona 'Each plane').</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del
-eje a (usado cuando se selecciona 'Each edge').</value>
+eje a (usado cuando se selecciona 'Cada arista').</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del
@@ -547,7 +547,7 @@ eje a (usado cuando se selecciona 'Each edge').</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del
-eje b (usado cuando se selecciona 'Each edge').</value>
+eje b (usado cuando se selecciona 'Cada arista').</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del
@@ -555,7 +555,7 @@ eje b (usado cuando se selecciona 'Each edge').</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del
-eje c (usado cuando se selecciona 'Each edge').</value>
+eje c (usado cuando se selecciona 'Cada arista').</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>Color de las aristas de la celda unidad a lo largo del

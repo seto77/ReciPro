@@ -18,7 +18,7 @@ Les électrons à l'intérieur d'un cristal sont diffusés par le potentiel cris
 
 ## Conditions MET
 
-![TEM conditions](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+![Conditions TEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
 - **Acc. voltage (kV)** — tension d'accélération. Elle définit la longueur d'onde des électrons et sert à calculer les coefficients de Fourier $U_g$ du potentiel.
 
@@ -28,7 +28,7 @@ Les électrons à l'intérieur d'un cristal sont diffusés par le potentiel cris
 
 ## Options du potentiel
 
-![Potential options](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Options de potentiel](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 Sélectionne quel potentiel afficher et comment l'afficher.
 
@@ -36,8 +36,8 @@ Sélectionne quel potentiel afficher et comment l'afficher.
 
 | Type | Description |
 |------|-------------|
-| **$U_g$ — elastic scattering potential** | Le potentiel cristallin (électrostatique) responsable de la diffusion élastique. Représente la force de diffusion |
-| **$U'_g$ — absorption potential** | Le potentiel imaginaire (d'absorption) issu de la diffusion thermique diffuse (TDS). Représente la perte du canal élastique |
+| **$U_g$ — potentiel de diffusion élastique** | Le potentiel cristallin (électrostatique) responsable de la diffusion élastique. Représente la force de diffusion |
+| **$U'_g$ — potentiel d'absorption** | Le potentiel imaginaire (d'absorption) issu de la diffusion thermique diffuse (TDS). Représente la perte du canal élastique |
 
 $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pour chaque case cochée).
 
@@ -52,7 +52,7 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 ## Propriété de l'image
 
-![Image property](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+![Propriétés de l'image](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
 - **Size (W×H)** — dimensions en pixels de l'image générée (512×512 par défaut).
 - **Resolution** — résolution d'échantillonnage (pm/px).
@@ -61,7 +61,7 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 ## Ondes diffractées
 
-![Diffracted waves](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondes diffractées](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — nombre maximal d'ondes de Bloch (coefficients de Fourier) inclus dans la synthèse de Fourier du potentiel (80 par défaut). Des valeurs plus grandes incluent des fréquences spatiales plus élevées et reproduisent des détails plus fins du potentiel.
 

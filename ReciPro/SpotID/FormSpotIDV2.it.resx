@@ -60,7 +60,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + clic destro : rimuovi la riflessione</value>
+    <value>Ctrl + clic destro : rimuovi lo spot</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>Di- retto</value>
@@ -69,13 +69,13 @@
     <value>Ignora riflessioni proibite</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
-    <value>Informazioni riflessione</value>
+    <value>Informazioni spot</value>
   </data>
   <data name="Range.HeaderText" xml:space="preserve">
     <value>Intervallo (raggio)</value>
   </data>
   <data name="AssignedSpots.HeaderText" xml:space="preserve">
-    <value>Riflessioni assegnate</value>
+    <value>Spot assegnati</value>
   </data>
   <data name="numericBoxSemiangle.HeaderText" xml:space="preserve">
     <value>Intervallo angolo di ricerca</value>
@@ -123,7 +123,7 @@
     <value>Numero</value>
   </data>
   <data name="buttonFindSpots.Text" xml:space="preserve">
-    <value>Rileva &amp;&amp; adatta riflessioni</value>
+    <value>Rileva &amp;&amp; adatta spot</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Clic destro : riduci zoom</value>
@@ -135,7 +135,7 @@
     <value>Trascina destro: aumenta zoom</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + doppio clic sinistro : aggiungi la riflessione diretta</value>
+    <value>Ctrl + doppio clic sinistro : aggiungi lo spot diretto</value>
   </data>
   <data name="checkBoxGuideCircles.Text" xml:space="preserve">
     <value>Mostra cerchi guida</value>
@@ -147,7 +147,7 @@
     <value>Elimina</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Cancella tutte le riflessioni</value>
+    <value>Cancella tutti gli spot</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
     <value>Mostra simboli</value>
@@ -177,7 +177,7 @@
     <value>Dettagli della funzione di adattamento</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Dettagli della riflessione</value>
+    <value>Dettagli dello spot</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>Intervallo di adattamento (raggio)</value>
@@ -192,7 +192,7 @@
     <value>A (intensità)</value>
   </data>
   <data name="assignedSpotsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Riflessioni assegnate</value>
+    <value>Spot assegnati</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
     <value>come Immagine (formato PNG)</value>
@@ -207,7 +207,7 @@
     <value>Donut  (sperimentale)</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
-    <value>Identifica riflessioni</value>
+    <value>Identifica spot</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
     <value>Carica</value>
@@ -219,7 +219,7 @@
     <value>Salva</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Clic sinistro : seleziona una riflessione</value>
+    <value>Clic sinistro : seleziona uno spot</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>Mostra simbolo</value>
@@ -228,7 +228,7 @@
     <value>Copia</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Doppio clic sinistro : aggiungi una riflessione</value>
+    <value>Doppio clic sinistro : aggiungi uno spot</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Copia</value>
@@ -244,15 +244,15 @@
 (è necessario selezionare un cristallo appropriato nella finestra principale)</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
-    <value>Riesegue il fitting di posizioni e intensità di tutti gli spot rilevati</value>
+    <value>Riesegue l'adattamento di posizioni e intensità di tutti gli spot rilevati</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
     <value>Unità della dimensione dei pixel: millimetri</value>
   </data>
   <data name="buttonFindSpots.ToolTip" xml:space="preserve">
-    <value>Rileva gli spot di diffrazione nell'immagine caricata e ne esegue il fitting con la funzione selezionata.
+    <value>Rileva gli spot di diffrazione nell'immagine caricata e ne esegue l'adattamento con la funzione selezionata.
 Specifica il numero di spot da cercare, la distanza minima tra gli spot
-e l'intervallo di fitting nella casella a destra.</value>
+e l'intervallo di adattamento nella casella a destra.</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
     <value>Mostra i simboli marcatori sugli spot calcolati</value>
@@ -268,7 +268,7 @@ in mrad) entro cui vengono cercate le direzioni del fascio
 incidente durante l'affinamento di spessore/orientazione.</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
-    <value>Esegue il fitting globale di tutte le posizioni degli spot (sperimentale)</value>
+    <value>Esegue l'adattamento globale di tutte le posizioni degli spot (sperimentale)</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
     <value>Separazione minima (px) consentita tra gli
@@ -302,9 +302,9 @@ uniti, così uno stesso spot non viene conteggiato due volte.</value>
     <value>Arresta il calcolo in corso</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value>Tabella degli spot osservati; spunta 'Direct' per impostare lo
-spot del fascio diretto, fai clic su 'Fit' di una riga per eseguire il
-fitting del suo picco, oppure seleziona una riga per evidenziarla sul pattern</value>
+    <value>Tabella degli spot osservati; spunta 'Diretto' per impostare lo
+spot del fascio diretto, fai clic su 'Adatta' di una riga per eseguire
+l'adattamento del suo picco, oppure seleziona una riga per evidenziarla sul pattern</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
     <value>Numero massimo di fasci diffratti (onde di
@@ -344,8 +344,8 @@ spazio reciproco usata per la distanza interplanare e l'indicizzazione.</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
     <value>Raggio (in pixel, 0–100) della regione circolare
-attorno a ciascuno spot usata per il fitting del picco; i pixel interni
-a questo cerchio vengono fittati con la funzione pseudo-Voigt.</value>
+attorno a ciascuno spot usata per l'adattamento del picco; i pixel interni
+a questo cerchio vengono adattati con la funzione pseudo-Voigt.</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
     <value>Raggio (in pixel, 0–100) della regione circolare
@@ -354,7 +354,7 @@ a questo cerchio vengono fittati con la funzione pseudo-Voigt.</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
     <value>Elimina lo spot attualmente selezionato
-dall'elenco (usa il pulsante Clear per rimuovere tutti gli spot).</value>
+dall'elenco (usa il pulsante Cancella per rimuovere tutti gli spot).</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
     <value>Elenco dei candidati di indicizzazione trovati; seleziona una
@@ -406,8 +406,8 @@ riflessioni candidate (0,1–10%).</value>
     <value>Salva le informazioni sopra</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>Imposta il raggio di fitting di ogni spot al
-valore corrente di 'Fitting range' (px).</value>
+    <value>Imposta il raggio di adattamento di ogni spot al
+valore corrente di 'Intervallo di adattamento' (px).</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>Unità della dimensione dei pixel: nanometri inversi</value>
@@ -421,6 +421,6 @@ l'indicizzazione (predefinito: elettroni, 200 kV).</value>
     <value>Sovrappone gli anelli di Debye-Scherrer sul pattern</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
-    <value>Mostra i parametri dettagliati della funzione di fitting</value>
+    <value>Mostra i parametri dettagliati della funzione di adattamento</value>
   </data>
 </root>

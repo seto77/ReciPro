@@ -261,7 +261,7 @@ da due piani</value>
     <value>Fattore di struttura</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
-    <value>Max.</value>
+    <value>Max</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
     <value>Applica fattori di struttura
@@ -382,11 +382,11 @@ e assi principali, le linee più spesse).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Imposta il colore delle linee di griglia a 1° (linee
-fini, mostrate solo quando «1° Lines» è abilitato).</value>
+fini, mostrate solo quando «Linee 1°» è abilitato).</value>
   </data>
   <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Imposta il colore delle linee di griglia a 1° (linee
-fini, mostrate solo quando «1° Lines» è abilitato).</value>
+fini, mostrate solo quando «Linee 1°» è abilitato).</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Proietta le linee di latitudine e longitudine
@@ -662,7 +662,7 @@ lista degli indici specificati.</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
     <value>Imposta il colore di tracciamento per l'indice in fase di aggiunta o
-attualmente selezionato (usato quando 'Rotate color' è disattivato).</value>
+attualmente selezionato (usato quando 'Ruota colore' è disattivato).</value>
   </data>
   <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Imposta il colore di tracciamento per l'indice in fase di aggiunta o
@@ -683,7 +683,7 @@ cima della classifica dei fattori di struttura (1–1000).</value>
   </data>
   <data name="indexControlDrawing.ToolTip" xml:space="preserve">
     <value>Inserisci l'indice da tracciare — un singolo [uvw]/(hkl) in
-modalità 'Specified', oppure il massimo h,k,l in modalità 'Range'.</value>
+modalità 'Specificati', oppure il massimo h,k,l in modalità 'Intervallo'.</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
     <value>Traccia anche tutti gli indici simmetricamente equivalenti (l'intera

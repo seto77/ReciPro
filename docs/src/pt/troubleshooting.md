@@ -20,7 +20,7 @@ O ReciPro inicia (ele fica visível no Gerenciador de Tarefas), mas sua janela n
 2. Encontre o **ReciPro** na lista de processos.
 3. Clique nele com o botão direito e escolha **Maximizar**.
 
-A janela será trazida para a sua tela principal. Observe que **Mudar para**, **Trazer para a frente** e **Minimizar** *não* ajudam — apenas **Maximizar** funciona.
+A janela será trazida para a sua tela principal. Observe que **Alternar para**, **Trazer para a frente** e **Minimizar** *não* ajudam — apenas **Maximizar** funciona.
 
 ### Sintoma: O ReciPro não inicia, trava ou congela na inicialização
 

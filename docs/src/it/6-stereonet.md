@@ -45,7 +45,7 @@ Salva o copia in formato raster o vettoriale. Il formato vettoriale consente di 
 
 ## Mode
 
-![Mode](../assets/cap-it-auto/FormStereonet.panel3.groupBoxMode.png)
+![Modalità](../assets/cap-it-auto/FormStereonet.panel3.groupBoxMode.png)
 
 ### Bersaglio di proiezione
 
@@ -77,7 +77,7 @@ Scegli l'emisfero **Upper** o **Lower** come sorgente di proiezione — commuta 
 
 ## Indices
 
-![Indices](../assets/cap-it-auto/FormStereonet.panel3.groupBoxIndices.png)
+![Indici](../assets/cap-it-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 Imposta quali piani / assi cristallini vengono disegnati.
 
@@ -107,7 +107,7 @@ Controlla la sovrapposizione della rete 3D (sfera) — opacità della sfera, ind
 
 ### Appearance
 
-![Appearance tab](../assets/cap-it-auto/FormStereonet.tabControl.tabPage1.png)
+![Aspetto](../assets/cap-it-auto/FormStereonet.tabControl.tabPage1.png)
 
 #### Outline
 
@@ -126,13 +126,13 @@ Come viene disegnato il contorno dello stereogramma — il cerchio di delimitazi
 
 ### Great and Small Circle
 
-![Great Circle tab](../assets/cap-it-auto/FormStereonet.tabControl.tabPage2.png)
+![Cerchio massimo](../assets/cap-it-auto/FormStereonet.tabControl.tabPage2.png)
 
 Disegna cerchi massimi e cerchi minori. Specificali tramite l'**zone-axis index** \([uvw]\) (il cerchio massimo formato dalla zona di quell'asse) oppure tramite **two crystal-plane indices** che condividono l'asse di zona. Anche lo spessore delle linee dei cerchi è configurabile tramite cursore.
 
 ### Wave {#wave}
 
-![Wave tab](../assets/cap-it-auto/FormStereonet.tabControl.tabPage4.png)
+![Onda](../assets/cap-it-auto/FormStereonet.tabControl.tabPage4.png)
 
 Disponibile solo quando come bersaglio di proiezione è selezionato **Planes** o **Kikuchi line pairs**. Imposta la sorgente d'onda (X-ray / electron / neutron) e la lunghezza d'onda o l'energia necessarie per calcolare i fattori di struttura del cristallo usati per l'opzione **structure-factor weighting** in [Mode](#mode).
 

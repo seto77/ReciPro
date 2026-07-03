@@ -1,15 +1,15 @@
 # Attenuazione e trasporto
 
-I fattori di diffusione descrivono un singolo evento di diffusione; questa pagina riguarda ciò che accade al fascio **nel suo insieme** mentre attraversa il solido — quanto rapidamente viene rimosso, quanto in profondità penetra e (per gli elettroni) come viene rallentato. La fisica rilevante è del tutto diversa per i tre fasci, ed è per questo che la scheda **Attenuations & Transport** modifica così drasticamente i suoi grafici e le sue tabelle a seconda della radiazione.
+I fattori di diffusione descrivono un singolo evento di diffusione; questa pagina riguarda ciò che accade al fascio **nel suo insieme** mentre attraversa il solido — quanto rapidamente viene rimosso, quanto in profondità penetra e (per gli elettroni) come viene rallentato. La fisica rilevante è del tutto diversa per i tre fasci, ed è per questo che la scheda **Attenuazioni & trasporto** modifica così drasticamente i suoi grafici e le sue tabelle a seconda della radiazione.
 
 === "X-ray"
-    ![Attenuations & Transport — X-ray](../../../assets/cap-it-auto/FormBeamInteraction-xray-attenuations.png)
+    ![Attenuazioni & trasporto — X-ray](../../../assets/cap-it-auto/FormBeamInteraction-xray-attenuations.png)
 
 === "Electron"
-    ![Attenuations & Transport — electron](../../../assets/cap-it-auto/FormBeamInteraction-electron-attenuations.png)
+    ![Attenuazioni & trasporto — electron](../../../assets/cap-it-auto/FormBeamInteraction-electron-attenuations.png)
 
 === "Neutron"
-    ![Attenuations & Transport — neutron](../../../assets/cap-it-auto/FormBeamInteraction-neutron-attenuations.png)
+    ![Attenuazioni & trasporto — neutron](../../../assets/cap-it-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ---
 
@@ -89,7 +89,7 @@ dove qui $s$ è la **lunghezza del cammino** lungo la traiettoria (la variabile 
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; ReciPro valuta una forma corretta/empirica (del tipo Joy–Luo) che rimane ben condizionata alle basse energie. L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
+con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; ReciPro valuta una forma corretta/empirica (del tipo Joy–Luo) che si mantiene regolare alle basse energie. L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -143,5 +143,5 @@ Le stesse scale di lunghezza spiegano perché gli elettroni richiedono campioni 
 
 - [Fattori di diffusione atomici](scattering-factor.md) — la separazione $F(q)$/$S(q)$ dietro Rayleigh/Compton, e le sezioni d'urto di Mott.
 - [Fluorescenza](fluorescence.md) — la rilassazione che segue il fotoassorbimento dei raggi X.
-- [3. Interazione del fascio](../../3-beam-interaction.md) — la scheda *Attenuations & Transport*.
+- [3. Interazione del fascio](../../3-beam-interaction.md) — la scheda *Attenuazioni & trasporto*.
 - [8. Traiettorie elettroniche](../../8-electron-trajectory.md) · [12. Simulazione EBSD](../../12-ebsd-simulation.md) — dove si usano le portate degli elettroni.

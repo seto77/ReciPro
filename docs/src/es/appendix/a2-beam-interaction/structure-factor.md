@@ -1,15 +1,15 @@
 # Factor de estructura
 
-El factor de dispersión atómico describe un solo átomo; el **factor de estructura** describe cómo todos los átomos de la celda elemental dispersan *en conjunto*. Es la magnitud que tabula la pestaña **Reflections** (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), y constituye el puente entre la física atómica de la página anterior y las intensidades difractadas.
+El factor de dispersión atómico describe un solo átomo; el **factor de estructura** describe cómo todos los átomos de la celda elemental dispersan *en conjunto*. Es la magnitud que tabula la pestaña **Reflexiones** (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), y constituye el puente entre la física atómica de la página anterior y las intensidades difractadas.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-es-auto/FormBeamInteraction-xray-reflections.png)
+    ![Reflexiones — X-ray](../../../assets/cap-es-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-es-auto/FormBeamInteraction-electron-reflections.png)
+    ![Reflexiones — electron](../../../assets/cap-es-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-es-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Reflexiones — neutron](../../../assets/cap-es-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ con $\mathbf U_j$ el tensor de desplazamiento y $\mathbf g$ el vector de la red 
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-de modo que $B$ aumenta con la temperatura y disminuye para los átomos pesados. ReciPro emplea directamente los $B_j$ tabulados o introducidos en lugar de calcularlos. Dado que $T_j$ multiplica al factor de dispersión, la pestaña **Scattering factors** puede aplicar el mismo amortiguamiento $e^{-Bs^2}$ a las curvas representadas. El amortiguamiento crece con la temperatura y con $s$, razón por la cual la dispersión térmica difusa (intensidad sustraída de los haces de Bragg coherentes y redistribuida en un fondo difuso) alimenta el potencial absortivo en la teoría dinámica ([Apéndice A3](../a3-bloch-wave/index.md)).
+de modo que $B$ aumenta con la temperatura y disminuye para los átomos pesados. ReciPro emplea directamente los $B_j$ tabulados o introducidos en lugar de calcularlos. Dado que $T_j$ multiplica al factor de dispersión, la pestaña **Factores de dispersión** puede aplicar el mismo amortiguamiento $e^{-Bs^2}$ a las curvas representadas. El amortiguamiento crece con la temperatura y con $s$, razón por la cual la dispersión térmica difusa (intensidad sustraída de los haces de Bragg coherentes y redistribuida en un fondo difuso) alimenta el potencial absortivo en la teoría dinámica ([Apéndice A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -111,5 +111,5 @@ Dado que en este modo los planos equivalentes se fusionan en una sola línea, Re
 
 - [Factores de dispersión atómicos](scattering-factor.md) — los $f_j$ que entran en la suma.
 - [Atenuación y transporte](attenuation-transport.md) — qué le ocurre al haz entre eventos de dispersión.
-- [3. Interacción del haz → pestaña Reflections](../../3-beam-interaction.md#reflections-tab)
+- [3. Interacción del haz → pestaña Reflexiones](../../3-beam-interaction.md#reflections-tab)
 - [Apéndice A3. Difracción dinámica](../a3-bloch-wave/index.md) — cuando $\lvert F\rvert^2$ (cinemática) ya no es suficiente.

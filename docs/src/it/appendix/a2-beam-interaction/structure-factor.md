@@ -1,15 +1,15 @@
 # Fattore di struttura
 
-Il fattore di diffusione atomico descrive un singolo atomo; il **fattore di struttura** descrive come tutti gli atomi della cella elementare diffondono *insieme*. È la grandezza che la scheda **Reflections** riporta in tabella (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), ed è il collegamento tra la fisica atomica della pagina precedente e le intensità diffratte.
+Il fattore di diffusione atomico descrive un singolo atomo; il **fattore di struttura** descrive come tutti gli atomi della cella elementare diffondono *insieme*. È la grandezza che la scheda **Riflessioni** riporta in tabella (`F_real`, `F_inv`, $\lvert F\rvert$, $F^2$), ed è il collegamento tra la fisica atomica della pagina precedente e le intensità diffratte.
 
 === "X-ray"
-    ![Reflections — X-ray](../../../assets/cap-it-auto/FormBeamInteraction-xray-reflections.png)
+    ![Riflessioni — X-ray](../../../assets/cap-it-auto/FormBeamInteraction-xray-reflections.png)
 
 === "Electron"
-    ![Reflections — electron](../../../assets/cap-it-auto/FormBeamInteraction-electron-reflections.png)
+    ![Riflessioni — electron](../../../assets/cap-it-auto/FormBeamInteraction-electron-reflections.png)
 
 === "Neutron"
-    ![Reflections — neutron](../../../assets/cap-it-auto/FormBeamInteraction-neutron-reflections.png)
+    ![Riflessioni — neutron](../../../assets/cap-it-auto/FormBeamInteraction-neutron-reflections.png)
 
 ---
 
@@ -46,7 +46,7 @@ con $\mathbf U_j$ il tensore di spostamento e $\mathbf g$ il vettore del reticol
 
 $$\langle u^2\rangle = \frac{3\hbar^2}{M k_B \Theta_D}\left[\frac14 + \left(\frac{T}{\Theta_D}\right)^2\!\int_0^{\Theta_D/T}\frac{x}{e^x-1}\,dx\right],$$
 
-cosicché $B$ cresce con la temperatura e diminuisce per gli atomi pesanti. ReciPro utilizza direttamente i $B_j$ tabulati o inseriti, anziché calcolarli. Poiché $T_j$ moltiplica il fattore di diffusione, la scheda **Scattering factors** può applicare lo stesso smorzamento $e^{-Bs^2}$ alle curve tracciate. Lo smorzamento cresce con la temperatura e con $s$, ed è per questo che la diffusione termica diffusa (intensità sottratta ai fasci di Bragg coerenti e ridistribuita in un fondo diffuso) alimenta il potenziale assorbitivo nella teoria dinamica ([Appendice A3](../a3-bloch-wave/index.md)).
+cosicché $B$ cresce con la temperatura e diminuisce per gli atomi pesanti. ReciPro utilizza direttamente i $B_j$ tabulati o inseriti, anziché calcolarli. Poiché $T_j$ moltiplica il fattore di diffusione, la scheda **Fattori di diffusione** può applicare lo stesso smorzamento $e^{-Bs^2}$ alle curve tracciate. Lo smorzamento cresce con la temperatura e con $s$, ed è per questo che la diffusione termica diffusa (intensità sottratta ai fasci di Bragg coerenti e ridistribuita in un fondo diffuso) alimenta il potenziale assorbitivo nella teoria dinamica ([Appendice A3](../a3-bloch-wave/index.md)).
 
 ---
 
@@ -111,5 +111,5 @@ Poiché in questa modalità i piani equivalenti vengono fusi in un'unica linea, 
 
 - [Fattori di diffusione atomici](scattering-factor.md) — gli $f_j$ che entrano nella somma.
 - [Attenuazione & trasporto](attenuation-transport.md) — cosa accade al fascio tra un evento di diffusione e l'altro.
-- [3. Interazione del fascio → scheda Reflections](../../3-beam-interaction.md#reflections-tab)
+- [3. Interazione del fascio → scheda Riflessioni](../../3-beam-interaction.md#reflections-tab)
 - [Appendice A3. Diffrazione dinamica](../a3-bloch-wave/index.md) — quando $\lvert F\rvert^2$ (cinematica) non è più sufficiente.
