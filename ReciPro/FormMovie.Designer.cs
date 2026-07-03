@@ -670,7 +670,7 @@ partial class FormMovie
         AcceptButton = buttonOK;
         AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-        AutoSize = true; // 260703Cl 復元: 再シリアライズで消失 (Rotation+Translation 両 ON 時のクリップ防止)
+        //AutoSize = true; // 260703Cl 復元 → 同日撤回: 新レイアウト (FlowLayoutPanel 構成) では幅が 122px まで縮みフォームが壊れる (キャプチャ実測)。Ch 設計の固定 ClientSize (176,542) を維持
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         CancelButton = buttonCancel;
         captureExtender.SetCapture(this, true);
