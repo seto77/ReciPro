@@ -94,7 +94,10 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 |-------|---------|
 | **Index** | 밀러 지수 $(hkl)$ |
 | **d** | 면간 거리 $d$ |
+| **1/d** | 면간 거리의 역수 $1/d$ |
 | **Distance** | 검출기 상의 스폿 간 거리 |
+| **2θ** | 산란각 $2\theta$ (2θ 눈금의 동심원과 같은 정의) |
+| **χ** | 방위각 $\chi$. 화면 위쪽(12시 방향)을 0°로 하여 시계 방향이 양수 (방위각 눈금의 방사선과 같은 정의) |
 | **Excit. Err.** | 여기 오차 $s_g$ |
 | **\|Fg\|** | 구조 인자의 절댓값 $\lvert F_{hkl} \rvert$ |
 

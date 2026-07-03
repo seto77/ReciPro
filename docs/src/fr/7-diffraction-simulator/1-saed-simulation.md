@@ -94,7 +94,10 @@ Les étiquettes superposées aux taches sont sélectionnées dans la [barre d'ou
 |-------|---------|
 | **Index** | indices de Miller $(hkl)$ |
 | **d** | distance interréticulaire $d$ |
+| **1/d** | inverse de la distance interréticulaire $1/d$ |
 | **Distance** | distance de tache à tache sur le détecteur |
+| **2θ** | angle de diffusion $2\theta$ (même définition que les cercles concentriques de l'échelle 2θ) |
+| **χ** | angle azimutal $\chi$, mesuré depuis la direction vers le haut (12 heures), positif dans le sens horaire (même définition que les lignes radiales de l'échelle azimutale) |
 | **Excit. Err.** | erreur d'excitation $s_g$ |
 | **\|Fg\|** | valeur absolue du facteur de structure $\lvert F_{hkl} \rvert$ |
 

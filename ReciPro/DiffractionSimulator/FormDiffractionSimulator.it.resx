@@ -473,6 +473,18 @@ da polveri prodotti da cristalliti orientati casualmente).</value>
     <value>Se selezionato, vengono visualizzate le distanze (mm) dagli
 spot allo spot diretto</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, viene visualizzato l'angolo di
+diffusione 2θ (in gradi) per ogni spot (stessa
+definizione dei cerchi concentrici della scala 2θ)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>Se selezionato, viene visualizzato l'angolo azimutale
+χ (in gradi) per ogni spot. χ è misurato dalla
+direzione verso l'alto (ore 12), positivo in senso
+orario, nell'intervallo da -180° a +180° (stessa
+definizione delle linee radiali della scala azimutale)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>Se selezionato, per ogni spot viene visualizzato l'errore di eccitazione s_g,
 che indica quanto il punto del reticolo reciproco

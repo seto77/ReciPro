@@ -473,6 +473,20 @@ interplanar (es decir, la longitud del vector g)</value>
     <value>Cuando está marcado, se muestran las distancias (mm)
 desde los puntos hasta el punto directo</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>Cuando está marcado, se muestra el
+ángulo de dispersión 2θ (en grados) para
+cada punto (misma definición que los
+círculos concéntricos de la escala 2θ)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>Cuando está marcado, se muestra el ángulo
+azimutal χ (en grados) para cada punto. χ se
+mide desde la dirección hacia arriba (las 12
+en punto), positivo en sentido horario, en el
+rango de -180° a +180° (misma definición que
+las líneas radiales de la escala azimutal)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>Cuando está marcado, se muestra el error de excitación s_g de cada
 punto, indicando cuánto se aleja el punto de la red recíproca de

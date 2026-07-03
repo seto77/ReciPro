@@ -464,6 +464,20 @@ produits par des cristallites orientées aléatoirement) sont simulés.</value>
     <value>Lorsque cette case est cochée, les distances (mm) entre
 les taches et la tache directe sont affichées</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>Lorsque cette case est cochée, l'angle de
+diffusion 2θ (en degrés) est affiché pour
+chaque tache (même définition que les
+cercles concentriques de l'échelle 2θ)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>Lorsque cette case est cochée, l'angle azimutal
+χ (en degrés) est affiché pour chaque tache. χ
+est mesuré depuis la direction vers le haut (12
+heures), positif dans le sens horaire, dans la
+plage de -180° à +180° (même définition que les
+lignes radiales de l'échelle azimutale)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>Lorsque cette case est cochée, l'erreur d'excitation s_g est affichée
 pour chaque tache, indiquant l'écart entre le nœud du

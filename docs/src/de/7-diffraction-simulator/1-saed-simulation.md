@@ -94,7 +94,10 @@ Die über den Spots eingeblendeten Beschriftungen werden in der [Symbolleiste](i
 |-------|---------|
 | **Index** | Miller-Indizes $(hkl)$ |
 | **d** | Netzebenenabstand $d$ |
+| **1/d** | Kehrwert des Netzebenenabstands $1/d$ |
 | **Distance** | Spot-zu-Spot-Abstand auf dem Detektor |
+| **2θ** | Streuwinkel $2\theta$ (gleiche Definition wie die konzentrischen 2θ-Skalenkreise) |
+| **χ** | Azimutwinkel $\chi$, von der 12-Uhr-Richtung aus gemessen, positiv im Uhrzeigersinn (gleiche Definition wie die radialen Azimut-Skalenlinien) |
 | **Excit. Err.** | Anregungsfehler $s_g$ |
 | **\|Fg\|** | Betrag des Strukturfaktors $\lvert F_{hkl} \rvert$ |
 

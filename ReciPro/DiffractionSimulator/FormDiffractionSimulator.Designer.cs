@@ -67,6 +67,8 @@
             toolStripButtonDspacing = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDistance = new System.Windows.Forms.ToolStripButton();
+            toolStripButton2Theta = new System.Windows.Forms.ToolStripButton();//260703Cl 追加
+            toolStripButtonAzimuth = new System.Windows.Forms.ToolStripButton();//260703Cl 追加
             toolStripButtonExcitationError = new System.Windows.Forms.ToolStripButton();
             toolStripButtonFg = new System.Windows.Forms.ToolStripButton();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -467,7 +469,7 @@
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = System.Drawing.SystemColors.Control;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButtonExcitationError, toolStripButtonFg });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButton2Theta, toolStripButtonAzimuth, toolStripButtonExcitationError, toolStripButtonFg });//260703Cl 2θ・方位角χボタン追加
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -508,6 +510,24 @@
             resources.ApplyResources(toolStripButtonDistance, "toolStripButtonDistance");
             toolStripButtonDistance.Name = "toolStripButtonDistance";
             toolStripButtonDistance.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButton2Theta  260703Cl 追加 (issue #64)
+            // 
+            toolStripButton2Theta.CheckOnClick = true;
+            toolStripButton2Theta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButton2Theta.ForeColor = System.Drawing.Color.Salmon;
+            resources.ApplyResources(toolStripButton2Theta, "toolStripButton2Theta");
+            toolStripButton2Theta.Name = "toolStripButton2Theta";
+            toolStripButton2Theta.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonAzimuth  260703Cl 追加 (issue #64)
+            // 
+            toolStripButtonAzimuth.CheckOnClick = true;
+            toolStripButtonAzimuth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonAzimuth.ForeColor = System.Drawing.Color.Salmon;
+            resources.ApplyResources(toolStripButtonAzimuth, "toolStripButtonAzimuth");
+            toolStripButtonAzimuth.Name = "toolStripButtonAzimuth";
+            toolStripButtonAzimuth.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonExcitationError
             // 
@@ -2686,6 +2706,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonDistance;
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripButton toolStripButtonKikuchiLines;
+        private System.Windows.Forms.ToolStripButton toolStripButton2Theta;//260703Cl 追加: 散乱角2θラベル (issue #64)
+        private System.Windows.Forms.ToolStripButton toolStripButtonAzimuth;//260703Cl 追加: 方位角χラベル (issue #64)
         private System.Windows.Forms.ToolStripButton toolStripButtonExcitationError;
         private System.Windows.Forms.ToolStripButton toolStripButtonFg;
         private System.Windows.Forms.GroupBox groupBoxDetectorGeometry;

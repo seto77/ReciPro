@@ -401,6 +401,30 @@ from randomly oriented crystallites) are simulated.</value>
     <value>When checked, distances (mm) from
 spots to the direct spot are displayed</value>
   </data>
+  <data name="toolStripButton2Theta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 22</value>
+  </data>
+  <data name="toolStripButton2Theta.Text" xml:space="preserve">
+    <value>2θ</value>
+  </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>When checked, the scattering angle 2θ (in
+degrees) is displayed for each spot (same
+definition as the concentric 2θ scale circles)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonAzimuth.Text" xml:space="preserve">
+    <value>χ</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>When checked, the azimuth angle χ (in degrees)
+is displayed for each spot. χ is measured from
+the upward (12 o'clock) direction, positive
+clockwise, in the range -180° to +180° (same
+definition as the radial azimuth scale lines)</value>
+  </data>
   <data name="toolStripButtonExcitationError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -8142,6 +8166,18 @@ accelerating voltage (wavelength).</value>
     <value>toolStripButtonDistance</value>
   </data>
   <data name="&gt;&gt;toolStripButtonDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButton2Theta.Name" xml:space="preserve">
+    <value>toolStripButton2Theta</value>
+  </data>
+  <data name="&gt;&gt;toolStripButton2Theta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonAzimuth.Name" xml:space="preserve">
+    <value>toolStripButtonAzimuth</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonAzimuth.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButtonExcitationError.Name" xml:space="preserve">

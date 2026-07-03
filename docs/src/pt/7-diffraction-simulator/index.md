@@ -132,7 +132,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 | Kikuchi | Mostrar / ocultar a camada de linhas de Kikuchi |
 | Debye | Mostrar / ocultar a camada de anéis de Debye |
 | Scale | Mostrar / ocultar a camada de linhas de escala |
-| Index / d / Distance / Excitation error / Structure factor | Escolha do rótulo anexado a cada reflexo |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Escolha do rótulo anexado a cada reflexo |
 
 ---
 

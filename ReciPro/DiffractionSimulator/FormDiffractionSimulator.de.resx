@@ -479,6 +479,18 @@ zufällig orientierter Kristallite) simuliert.</value>
     <value>Wenn aktiviert, werden die Abstände (mm) von
 den Reflexen zum direkten Reflex angezeigt</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, wird für jeden Reflex der
+Streuwinkel 2θ (in Grad) angezeigt (gleiche
+Definition wie die konzentrischen 2θ-Skalenkreise)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>Wenn aktiviert, wird für jeden Reflex der Azimutwinkel
+χ (in Grad) angezeigt. χ wird von der 12-Uhr-Richtung
+aus gemessen, positiv im Uhrzeigersinn, im Bereich von
+-180° bis +180° (gleiche Definition wie die radialen
+Azimut-Skalenlinien)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>Wenn aktiviert, wird der Anregungsfehler s_g für jeden
 Reflex angezeigt, der angibt, wie weit der reziproke

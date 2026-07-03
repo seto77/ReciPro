@@ -94,7 +94,10 @@ GUI 條件：Wave Length = Electron、Incident beam mode = Parallel、Intensity 
 |-------|---------|
 | **Index** | 米勒指數 $(hkl)$ |
 | **d** | 晶面間距 $d$ |
+| **1/d** | 晶面間距的倒數 $1/d$ |
 | **Distance** | 偵測器上光點與光點之間的距離 |
+| **2θ** | 散射角 $2\theta$ (與 2θ 刻度的同心圓定義相同) |
+| **χ** | 方位角 $\chi$，以畫面正上方 (12 點鐘方向) 為 0°，順時針為正 (與方位角刻度的放射線定義相同) |
 | **Excit. Err.** | 偏離向量 $s_g$ |
 | **\|Fg\|** | 結構因子的絕對值 $\lvert F_{hkl} \rvert$ |
 

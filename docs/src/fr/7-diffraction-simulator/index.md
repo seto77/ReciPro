@@ -132,7 +132,7 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 | Kikuchi | Afficher / masquer la couche des lignes de Kikuchi |
 | Debye | Afficher / masquer la couche des anneaux de Debye |
 | Scale | Afficher / masquer la couche des lignes d'échelle |
-| Index / d / Distance / Excitation error / Structure factor | Choix de l'étiquette attachée à chaque réflexion |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Choix de l'étiquette attachée à chaque réflexion |
 
 ---
 

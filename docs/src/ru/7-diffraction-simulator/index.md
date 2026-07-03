@@ -132,7 +132,7 @@ title: Diffraction Simulator
 | Линии Кикучи | Показать / скрыть слой линий Кикучи |
 | Кольца Дебая | Показать / скрыть слой колец Дебая |
 | Масштаб | Показать / скрыть слой линий шкалы |
-| Index / d / Distance / Excitation error / Structure factor | Выбор подписи, прикрепляемой к каждому рефлексу |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Выбор подписи, прикрепляемой к каждому рефлексу |
 
 ---
 

@@ -1185,6 +1185,20 @@ public partial class FormDiffractionSimulator : FormBase
         if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
         if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
         if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
+        if (toolStripButton2Theta.Checked || toolStripButtonAzimuth.Checked)//260703Cl 追加: 散乱角2θと方位角χのラベル (issue #64)。スケール(同心円/放射線)と同じ定義になるよう実空間座標から算出
+        {
+            var real = convertDetectorToReal(pt);
+            //if (toolStripButton2Theta.Checked) sb.AppendLine($"2θ {Math.Acos(real.Z / real.Length) / Math.PI * 180:0.###}°");
+            if (toolStripButton2Theta.Checked)//260703Cl X線プリセッション時はスケール同心円(get2ThetaRangeと同じ) 2θ=2·asin(r/2/CL2) の定義に合わせる
+            {
+                var twoTheta = radioButtonBeamPrecessionXray.Checked ? 2 * Math.Asin(Math.Sqrt(real.X2Y2) / CameraLength2 / 2) : Math.Acos(real.Z / real.Length);
+                if (!double.IsNaN(twoTheta))//260703Cl プリセッション時、r > 2·CL2 の定義域外スポット(スケール円が届かない領域)では NaN になるので省略
+                    sb.AppendLine($"2θ {twoTheta / Math.PI * 180:0.###}°");
+            }
+            //if (toolStripButtonAzimuth.Checked && real.X * real.X + real.Y * real.Y > 1E-20)//直接スポット(000)では方位角が定義できないので省略
+            if (toolStripButtonAzimuth.Checked && real.X2Y2 > 1E-20)//260703Cl 既存プロパティX2Y2を利用。直接スポット(000)では方位角が定義できないので省略
+                sb.AppendLine($"χ {Math.Atan2(real.X, -real.Y) / Math.PI * 180:0.##}°");//画面上向きが0°、時計回りが正 (方位角スケール線と同じ定義)
+        }
         if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
 
         if (toolStripButtonFg.Checked)
@@ -1419,8 +1433,12 @@ public partial class FormDiffractionSimulator : FormBase
 
                         foreach (var (pt, index) in crossList)
                         {
-                            double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
-                            var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");
+                            //double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
+                            //var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");
+                            //double xx = pt.X - originSrc.X, yy = pt.Y - originSrc.Y;//260703Cl yyがX成分を参照していたコピペミスを修正
+                            //var str = (xx > 1E-6) || (xx > -1E-6 && yy < -1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");//260703Cl 垂直線(n=0)の上端が-180°ではなく0°と表示されるよう条件を修正
+                            var rl = convertDetectorToReal(pt);//260703Cl 旧コードはyyがX成分を参照するコピペミス。スケール線の平面 cos n·X + sin n·Y = 0 は実空間で定義されるので、端点の側の判定も実空間座標で行う (検出器チルト時に検出器座標では逆転し得る)
+                            var str = (rl.X > 1E-6) || (rl.X > -1E-6 && rl.Y < -1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");//260703Cl χ=n の方向は実空間で (X,Y)∝(sin n, -cos n)。n∈(0,180)ではX>0側、n=0では上端(Y<0)側が n、逆側が n-180
                             var shiftX = (!FlipHorizontally && index == 1) || (FlipHorizontally && index == 3) ? -3 * font.Size : 0;
                             var shiftY = (!FlipVertically && index == 2) || (FlipVertically && index == 0) ? -2 * font.Size : 0;
 

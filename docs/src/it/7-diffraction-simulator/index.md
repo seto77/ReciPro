@@ -132,7 +132,7 @@ Salvare e richiamare una configurazione completa del simulatore — lunghezza d'
 | Kikuchi | Mostrare / nascondere il livello delle linee di Kikuchi |
 | Debye | Mostrare / nascondere il livello degli anelli di Debye |
 | Scale | Mostrare / nascondere il livello delle linee di scala |
-| Index / d / Distance / Excitation error / Structure factor | Scelta dell'etichetta associata a ciascun riflesso |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Scelta dell'etichetta associata a ciascun riflesso |
 
 ---
 

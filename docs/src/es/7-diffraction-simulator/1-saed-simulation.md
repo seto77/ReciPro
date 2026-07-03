@@ -94,7 +94,10 @@ Las etiquetas superpuestas sobre los spots se seleccionan desde la [barra de her
 |-------|---------|
 | **Index** | índices de Miller $(hkl)$ |
 | **d** | distancia interplanar $d$ |
+| **1/d** | inverso de la distancia interplanar $1/d$ |
 | **Distance** | distancia spot a spot en el detector |
+| **2θ** | ángulo de dispersión $2\theta$ (misma definición que los círculos concéntricos de la escala 2θ) |
+| **χ** | ángulo azimutal $\chi$, medido desde la dirección hacia arriba (las 12 en punto), positivo en sentido horario (misma definición que las líneas radiales de la escala azimutal) |
 | **Excit. Err.** | error de excitación $s_g$ |
 | **\|Fg\|** | valor absoluto del factor de estructura $\lvert F_{hkl} \rvert$ |
 

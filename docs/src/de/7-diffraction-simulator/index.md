@@ -132,7 +132,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 | Kikuchi-Linien | Die Ebene der Kikuchi-Linien ein-/ausblenden |
 | Debye-Ringe | Die Ebene der Debye-Ringe ein-/ausblenden |
 | Maßstab | Die Ebene der Skalenlinien ein-/ausblenden |
-| Index / d / Abstand / Anregungsfehler / Strukturfaktor | Auswahl der Beschriftung, die an jeden Reflex angehängt wird |
+| Index / d / 1/d / Abstand / 2θ / χ / Anregungsfehler / Strukturfaktor | Auswahl der Beschriftung, die an jeden Reflex angehängt wird |
 
 ---
 

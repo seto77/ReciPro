@@ -198,6 +198,15 @@
     <value>チェックすると、各スポットから
 透過スポットまでの距離(mm)が表示されます</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>チェックすると、各スポットの散乱角2θ(°)が表示されます
+(2θスケールの同心円と同じ定義です)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>チェックすると、各スポットの方位角χ(°)が表示されます。
+χは画面の上方向(12時方向)を0°として時計回りが正、範囲は
+-180°〜+180°です (方位角スケールの放射線と同じ定義です)</value>
+  </data>
   <data name="toolStripButtonExcitationError.Text" xml:space="preserve">
     <value>励起誤差</value>
   </data>

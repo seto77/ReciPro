@@ -487,6 +487,15 @@
     <value>勾選後，將顯示各斑點
 到直射斑點的距離 (mm)</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>勾選後，將顯示各斑點的散射角 2θ (度)
+(與 2θ 刻度的同心圓定義相同)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>勾選後，將顯示各斑點的方位角 χ (度)。
+χ 以畫面正上方 (12 點鐘方向) 為 0°，順時針為正，
+範圍為 -180°～+180° (與方位角刻度的放射線定義相同)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>勾選後，將為每個斑點顯示激發誤差 s_g，
 表示倒晶格點偏離嚴格 Bragg 條件 /

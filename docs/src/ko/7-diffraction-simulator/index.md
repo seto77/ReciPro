@@ -132,7 +132,7 @@ title: Diffraction Simulator
 | 기쿠치 선 | 기쿠치 선 레이어 표시 / 숨김 |
 | 디바이 링 | 디바이 링 레이어 표시 / 숨김 |
 | 축척 | 축척 선 레이어 표시 / 숨김 |
-| Index / d / Distance / Excitation error / Structure factor | 각 스폿에 붙는 레이블 선택 |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | 각 스폿에 붙는 레이블 선택 |
 
 ---
 

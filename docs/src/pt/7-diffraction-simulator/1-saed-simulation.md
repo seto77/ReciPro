@@ -94,7 +94,10 @@ Os rótulos sobrepostos aos spots são selecionados na [barra de ferramentas](in
 |-------|---------|
 | **Index** | índices de Miller $(hkl)$ |
 | **d** | distância interplanar $d$ |
+| **1/d** | inverso da distância interplanar $1/d$ |
 | **Distance** | distância de spot a spot no detector |
+| **2θ** | ângulo de espalhamento $2\theta$ (mesma definição dos círculos concêntricos da escala 2θ) |
+| **χ** | ângulo azimutal $\chi$, medido a partir da direção para cima (12 horas), positivo no sentido horário (mesma definição das linhas radiais da escala azimutal) |
 | **Excit. Err.** | erro de excitação $s_g$ |
 | **\|Fg\|** | valor absoluto do fator de estrutura $\lvert F_{hkl} \rvert$ |
 

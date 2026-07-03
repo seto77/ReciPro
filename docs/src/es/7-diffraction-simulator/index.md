@@ -132,7 +132,7 @@ Guarde y recupere una configuración completa del simulador — longitud de onda
 | Kikuchi | Mostrar / ocultar la capa de líneas de Kikuchi |
 | Debye | Mostrar / ocultar la capa de anillos de Debye |
 | Scale | Mostrar / ocultar la capa de líneas de escala |
-| Index / d / Distance / Excitation error / Structure factor | Elección de la etiqueta asociada a cada reflejo |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Elección de la etiqueta asociada a cada reflejo |
 
 ---
 

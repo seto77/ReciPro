@@ -132,7 +132,7 @@ Save and recall a complete simulator configuration — wavelength, detector geom
 | Kikuchi | Show / hide the Kikuchi-line layer |
 | Debye | Show / hide the Debye-ring layer |
 | Scale | Show / hide the scale-line layer |
-| Index / d / Distance / Excitation error / Structure factor | Choice of label attached to each spot |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | Choice of label attached to each spot |
 
 ---
 

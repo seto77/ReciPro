@@ -479,6 +479,18 @@ de cristalitos orientados aleatoriamente) são simulados.</value>
     <value>Quando marcado, as distâncias (mm) dos
 pontos até o ponto direto são exibidas</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>Quando marcado, o ângulo de espalhamento 2θ (em
+graus) é exibido para cada ponto (mesma
+definição dos círculos concêntricos da escala 2θ)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>Quando marcado, o ângulo azimutal χ (em graus) é
+exibido para cada ponto. χ é medido a partir da
+direção para cima (12 horas), positivo no sentido
+horário, no intervalo de -180° a +180° (mesma
+definição das linhas radiais da escala azimutal)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>Quando marcado, o erro de excitação s_g é exibido
 para cada ponto, mostrando o quão distante o ponto da

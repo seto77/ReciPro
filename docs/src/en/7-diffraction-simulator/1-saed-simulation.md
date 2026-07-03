@@ -94,7 +94,10 @@ The labels overlaid on the spots are selected from the [toolbar](index.md#toolba
 |-------|---------|
 | **Index** | Miller indices $(hkl)$ |
 | **d** | interplanar spacing $d$ |
+| **1/d** | reciprocal of the interplanar spacing $1/d$ |
 | **Distance** | spot-to-spot distance on the detector |
+| **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
+| **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
 | **Excit. Err.** | excitation error $s_g$ |
 | **\|Fg\|** | absolute value of the structure factor $\lvert F_{hkl} \rvert$ |
 

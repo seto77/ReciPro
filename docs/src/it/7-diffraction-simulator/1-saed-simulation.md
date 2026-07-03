@@ -94,7 +94,10 @@ Le etichette sovrapposte agli spot vengono selezionate dalla [barra degli strume
 |-------|---------|
 | **Index** | indici di Miller $(hkl)$ |
 | **d** | distanza interplanare $d$ |
+| **1/d** | reciproco della distanza interplanare $1/d$ |
 | **Distance** | distanza spot-spot sul rivelatore |
+| **2θ** | angolo di diffusione $2\theta$ (stessa definizione dei cerchi concentrici della scala 2θ) |
+| **χ** | angolo azimutale $\chi$, misurato dalla direzione verso l'alto (ore 12), positivo in senso orario (stessa definizione delle linee radiali della scala azimutale) |
 | **Excit. Err.** | errore di eccitazione $s_g$ |
 | **\|Fg\|** | valore assoluto del fattore di struttura $\lvert F_{hkl} \rvert$ |
 

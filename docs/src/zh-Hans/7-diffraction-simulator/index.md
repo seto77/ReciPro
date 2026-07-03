@@ -132,7 +132,7 @@ title: Diffraction Simulator
 | 菊池线 | 显示 / 隐藏菊池线图层 |
 | 德拜环 | 显示 / 隐藏德拜环图层 |
 | 标尺 | 显示 / 隐藏刻度线图层 |
-| Index / d / Distance / Excitation error / Structure factor | 选择附加到每个斑点的标签 |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Structure factor | 选择附加到每个斑点的标签 |
 
 ---
 

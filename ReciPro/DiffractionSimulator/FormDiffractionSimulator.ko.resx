@@ -479,6 +479,16 @@ g 벡터의 길이)가 표시됩니다</value>
     <value>체크하면 각 점에서 투과 점까지의
 거리(mm)가 표시됩니다</value>
   </data>
+  <data name="toolStripButton2Theta.ToolTipText" xml:space="preserve">
+    <value>체크하면 각 점의 산란각 2θ(°)가 표시됩니다
+(2θ 눈금의 동심원과 같은 정의입니다)</value>
+  </data>
+  <data name="toolStripButtonAzimuth.ToolTipText" xml:space="preserve">
+    <value>체크하면 각 점의 방위각 χ(°)가 표시됩니다.
+χ는 화면 위쪽(12시 방향)을 0°로 하여 시계
+방향이 양수이며, 범위는 -180°~+180°입니다
+(방위각 눈금의 방사선과 같은 정의입니다)</value>
+  </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
     <value>체크하면 각 점에 대해 여기 오차 s_g가 표시되며,
 역격자점이 정확한 브래그 조건/에발트 구 조건에서
