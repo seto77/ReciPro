@@ -165,7 +165,7 @@ Tutte le regole di legame/poliedro registrate per il cristallo. Usa **Add / Repl
 - **Center Atom**: mostra/nasconde l'atomo centrale.
 - **Vertex Atoms**: mostra/nasconde gli atomi ai vertici.
 - **Color** / **Alpha**: colore della faccia e trasparenza.
-- **Show Edge**: disegna gli spigoli che collegano i vertici.
+- **Mostra spigoli**: disegna gli spigoli che collegano i vertici.
 - **Edge Color** / **Width**: colore e spessore della linea degli spigoli.
 
 ### Cella elementare
@@ -212,7 +212,7 @@ Elenca quali atomi circondano l'atomo bersaglio selezionato e a quale distanza. 
 
 #### Grafico (lato destro)
 
-Istogramma del numero di vicini in funzione della distanza, derivato dagli stessi dati della tabella. Regola **Bar width** finché le barre non separano chiaramente i gusci di coordinazione — questo fornisce una stima visiva del numero di coordinazione.
+Istogramma del numero di vicini in funzione della distanza, derivato dagli stessi dati della tabella. Regola **Bar Width** finché le barre non separano chiaramente i gusci di coordinazione — questo fornisce una stima visiva del numero di coordinazione.
 
 ### Informazioni
 

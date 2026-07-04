@@ -214,7 +214,7 @@ Lists which atoms surround the selected target atom and at what distance. The ta
 
 #### Graph (right side)
 
-Histogram of neighbour count versus distance, derived from the same data as the table. Adjust **Bar width** until the bars cleanly separate the coordination shells — this gives a visual estimate of the coordination number.
+Histogram of neighbour count versus distance, derived from the same data as the table. Adjust **Bar Width** until the bars cleanly separate the coordination shells — this gives a visual estimate of the coordination number.
 
 ### Information
 

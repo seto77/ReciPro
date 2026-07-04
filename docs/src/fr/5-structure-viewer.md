@@ -167,7 +167,7 @@ Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez 
 - **Center Atom** : affiche/masque l'atome central.
 - **Vertex Atoms** : affiche/masque les atomes sommets.
 - **Color** / **Alpha** : couleur de face et transparence.
-- **Show Edge** : dessine les arêtes reliant les sommets.
+- **Afficher les arêtes** : dessine les arêtes reliant les sommets.
 - **Edge Color** / **Width** : couleur et épaisseur de ligne des arêtes.
 
 ### Maille
@@ -214,7 +214,7 @@ Liste les atomes qui entourent l'atome cible sélectionné et à quelle distance
 
 #### Graphe (côté droit)
 
-Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Bar width** jusqu'à ce que les barres séparent nettement les sphères de coordination — cela donne une estimation visuelle du nombre de coordination.
+Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Bar Width** jusqu'à ce que les barres séparent nettement les sphères de coordination — cela donne une estimation visuelle du nombre de coordination.
 
 ### Information
 

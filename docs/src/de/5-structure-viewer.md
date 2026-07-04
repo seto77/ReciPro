@@ -214,7 +214,7 @@ Listet auf, welche Atome das ausgewählte Zielatom umgeben und in welchem Abstan
 
 #### Graph (rechte Seite)
 
-Histogramm der Nachbaranzahl in Abhängigkeit vom Abstand, abgeleitet aus denselben Daten wie die Tabelle. Passen Sie **Bar width** an, bis sich die Balken sauber in die Koordinationsschalen trennen — dies liefert eine visuelle Abschätzung der Koordinationszahl.
+Histogramm der Nachbaranzahl in Abhängigkeit vom Abstand, abgeleitet aus denselben Daten wie die Tabelle. Passen Sie **Bar Width** an, bis sich die Balken sauber in die Koordinationsschalen trennen — dies liefert eine visuelle Abschätzung der Koordinationszahl.
 
 ### Information
 

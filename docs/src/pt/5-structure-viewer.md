@@ -167,7 +167,7 @@ Todas as regras de ligação/poliedro registradas para o cristal. Use **Add / Re
 - **Center Atom**: mostra/oculta o átomo central.
 - **Vertex Atoms**: mostra/oculta os átomos dos vértices.
 - **Color** / **Alpha**: cor da face e transparência.
-- **Show Edge**: desenha as arestas que conectam os vértices.
+- **Mostrar arestas**: desenha as arestas que conectam os vértices.
 - **Edge Color** / **Width**: cor e largura de linha das arestas.
 
 ### Célula unitária
@@ -214,7 +214,7 @@ Lista quais átomos cercam o átomo-alvo selecionado e a que distância. O átom
 
 #### Gráfico (lado direito)
 
-Histograma da contagem de vizinhos em função da distância, derivado dos mesmos dados da tabela. Ajuste **Bar width** até que as barras separem nitidamente as camadas de coordenação — isso fornece uma estimativa visual do número de coordenação.
+Histograma da contagem de vizinhos em função da distância, derivado dos mesmos dados da tabela. Ajuste **Bar Width** até que as barras separem nitidamente as camadas de coordenação — isso fornece uma estimativa visual do número de coordenação.
 
 ### Informação
 
