@@ -1441,6 +1441,10 @@ public partial class FormMain : FormBase
             yield break;
         if (crystalControl.FormSymmetryInformation != null)
             yield return crystalControl.FormSymmetryInformation;
+        // 260705Cl 追加: group-subgroup 関係ブラウザ (Phase 2)。FormSymmetryInformation の「Group Relations...」ボタンと
+        // 同じ経路 (ShowGroupRelations) でインスタンスを用意し、reflection 単独生成 (親結晶なし) を回避する。
+        if (crystalControl.FormSymmetryInformation?.ShowGroupRelations() is { } groupRelations)
+            yield return groupRelations;
         if (crystalControl.FormBeamInteraction != null)
             yield return crystalControl.FormBeamInteraction;
         // 260524Cl 追加: FormStructureViewer は reflection 単独生成だと formMain=null で結晶が無く、原子タブ等が空で

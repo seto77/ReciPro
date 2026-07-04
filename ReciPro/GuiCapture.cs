@@ -251,6 +251,11 @@ internal static partial class GuiCapture
         if (form is Crystallography.Controls.FormBeamInteraction beamInteractionForModeShots)
             CaptureBeamInteractionModeShots(beamInteractionForModeShots, name, outDir, trace);
 
+        // 260705Cl 追加: FormGroupRelations は既定 (未選択) だとプレースホルダ表示のみなので、代表の部分群を選んだ
+        // 詳細タブと Diagram タブ (Bärnighausen グラフ) を追加でクロップ撮影する。
+        if (form is Crystallography.Controls.FormGroupRelations groupRelationsForModeShots)
+            CaptureGroupRelationsDiagramShot(groupRelationsForModeShots, name, outDir, trace);
+
         if (closeAfterCapture)
         {
             form.TopMost = false; // (260524Cl) 後続フォームの最前面化を妨げないよう閉じる前に解除
@@ -388,6 +393,32 @@ internal static partial class GuiCapture
             catch (System.Exception ex) { trace($"{baseName}-{beamSuffix}\tWARN\tbeam mode: {ex.GetType().Name}: {ex.Message}"); }
         }
         try { form.SetCaptureBeam(Crystallography.WaveSource.Xray); } catch { /* 撮影後 close 前に既定 (X線) へ戻す */ }
+    }
+
+    /// <summary>260705Cl 追加: FormGroupRelations の残りの詳細タブ (既定選択の Matrix は全体画像で撮れている) を
+    /// クロップ撮影する。PrepareCaptureForGuiAudit (代表部分群の選択) は PrepareSpecialCaptureState 側で既に実行済み。</summary>
+    private static void CaptureGroupRelationsDiagramShot(Crystallography.Controls.FormGroupRelations form, string baseName, string outDir, Action<string> trace)
+    {
+        try
+        {
+            var tc = form.CaptureTabControl;
+            foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram" })
+            {
+                var tab = tc.TabPages.Cast<TabPage>().FirstOrDefault(t => t.Name == tabName);
+                if (tab == null) { trace($"{baseName}-{tabName}\tWARN\t{tabName} not found"); continue; }
+                tc.SelectedTab = tab;
+                Settle(form, TabSwitchSettleMs, trace);
+                BringToFront(form);
+                Settle(form, TabSwitchSettleMs, trace);
+                var name = baseName + "-" + tabName;
+                var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);
+                if (bmp != null)
+                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                else
+                    trace($"{name}\tWARN\t{tabName} capture failed");
+            }
+        }
+        catch (System.Exception ex) { trace($"{baseName}-diagram\tWARN\tdiagram shot: {ex.GetType().Name}: {ex.Message}"); }
     }
 
     /// <summary>TabPage 名 → ファイル名サフィックス。260608Cl 追加。</summary>
@@ -974,6 +1005,12 @@ internal static partial class GuiCapture
                     TryShowMacroSamples(macroForm, trace);
                     Application.DoEvents();
                     trace($"{form.GetType().Name}\tINFO\tprepared macro editor (samples)");
+                    break;
+                case Crystallography.Controls.FormGroupRelations groupRelations:
+                    // 260705Cl 追加: 既定 (未選択) はプレースホルダのみなので、最初の t-部分群を選んだ代表状態で撮る。
+                    groupRelations.PrepareCaptureForGuiAudit();
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tselected first t-subgroup for detail tabs");
                     break;
             }
         }
