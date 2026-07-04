@@ -201,9 +201,6 @@
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>穿透交叉係數</value>
   </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>部分同調模型</value>
-  </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>HRTEM 選項</value>
   </data>
@@ -221,9 +218,6 @@
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>模擬設定</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>有效光源大小 (σs,  FWHM)</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>α（入射束
@@ -537,12 +531,6 @@ TDS（thermal diffuse scattering,
     <value>物鏡光圈半角 (mrad)。光圈越小會切除
 高角度的繞射束，並使高解析度的
 影像細部變平滑。</value>
-  </data>
-  <data name="label35.ToolTip" xml:space="preserve">
-    <value>ΔV：電子束能量散佈的半高全寬 (FWHM)，
-單位 eV；與色像差係數 Cc 一起決定
-色像差所造成的焦點散佈
-（影像模糊）。</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV：電子束能量散佈的半高全寬 (FWHM)，
@@ -884,10 +872,6 @@ sin(theta)/lambda (nm^-1) 表示；
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>STEM 入射探束的會聚半角 α (mrad)。</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>有效電子源尺寸 (σs, 半高全寬, 單位 pm);
-用以模擬 STEM 探束的有限光源模糊。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>試樣厚度 (nm)。當選擇「連續影像」

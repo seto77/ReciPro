@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Achsen zeichnen</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Detektorzentrum</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Linienbreite</value>
   </data>
@@ -171,12 +168,6 @@ Kikuchi-Linien-Intensität anwenden</value>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Detektorumriss</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Detektorkippung</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Detektorradius</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>EBSD-Geometrie</value>
   </data>
@@ -258,7 +249,14 @@ Kikuchi-Linien-Intensität anwenden</value>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Legt eine Hintergrundfarbe fest</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Legt eine Hintergrundfarbe fest</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Legt die Farbe des Überlagerungstexts fest, einschließlich
+der Beschriftungen für Kikuchi-Linien- und Zonenachsenindizes.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Legt die Farbe des Überlagerungstexts fest, einschließlich
 der Beschriftungen für Kikuchi-Linien- und Zonenachsenindizes.</value>
   </data>
@@ -421,6 +419,9 @@ zuerst Simulate aus, um die Verteilung zu erhalten.</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>Legt die Farbe zum Zeichnen der Kikuchi-Linien fest.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>Legt die Farbe zum Zeichnen der Kikuchi-Linien fest.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Wählt für die Musterintensität eine positive oder
 negative (invertierte) Graustufendarstellung.</value>
@@ -455,17 +456,7 @@ EBSD-Musterscheibe an (Einzelscheiben-Modus).</value>
 in mm fest. Dies bestimmt den erfassten Raumwinkel und die
 Schirmauflösung (mm/Pixel) des simulierten Musters.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Legt den Radius des EBSD-Detektors (Phosphorschirm)
-in mm fest. Dies bestimmt den erfassten Raumwinkel und die
-Schirmauflösung (mm/Pixel) des simulierten Musters.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Legt den Neigungswinkel der Detektorebene in Grad
-relativ zur Strahlachse (Z) fest. Dies beeinflusst die Kameralänge
-und die projizierte Form der Kikuchi-Bänder.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>Legt den Neigungswinkel der Detektorebene in Grad
 relativ zur Strahlachse (Z) fest. Dies beeinflusst die Kameralänge
 und die projizierte Form der Kikuchi-Bänder.</value>
@@ -583,11 +574,6 @@ der simulierten rückgestreuten Elektronen.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>In diesem Stereonetz entspricht das Zentrum
 der Probenoberflächennormalen.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Position des Detektorzentrums
-relativ zur Probe, angegeben als Y
-(lateral) und Z (entlang des Strahls) in mm.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Wählt für das angezeigte Bild eine normale oder

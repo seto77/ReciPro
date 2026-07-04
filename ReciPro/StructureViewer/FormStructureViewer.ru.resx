@@ -785,6 +785,10 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
     <value>Фиксированный цвет, применяемый к подписям атомов (используется
 при выборе «Use fixed color»)</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Фиксированный цвет, применяемый к подписям атомов (используется
+при выборе «Use fixed color»)</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Толщина линий символов осей симметрии (0.5–10)</value>
   </data>
@@ -852,15 +856,6 @@ Per-Pixel Linked List, требующие более нового OpenGL).</valu
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Сместить каркас элементарной ячейки вдоль
 осей a, b, c (дробные координаты).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Строка оси a в параметрах элементарной ячейки.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Строка оси b в параметрах элементарной ячейки.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Строка оси c в параметрах элементарной ячейки.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Полуширина отображаемой области (дробные

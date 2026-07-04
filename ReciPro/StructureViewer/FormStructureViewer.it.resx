@@ -782,6 +782,10 @@ con traslazione) del gruppo spaziale</value>
     <value>Colore fisso applicato alle etichette degli atomi (usato
 quando è selezionato 'Use fixed color')</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Colore fisso applicato alle etichette degli atomi (usato
+quando è selezionato 'Use fixed color')</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Spessore della linea dei simboli degli assi di simmetria (0.5-10)</value>
   </data>
@@ -849,15 +853,6 @@ lungo ciascun asse della cella elementare.</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Trasla il telaio della cella elementare lungo gli
 assi a, b, c (coordinate frazionarie).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Riga dell'asse a delle opzioni della cella elementare.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Riga dell'asse b delle opzioni della cella elementare.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Riga dell'asse c delle opzioni della cella elementare.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Semilarghezza della regione visualizzata (coordinate

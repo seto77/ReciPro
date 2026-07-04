@@ -94,9 +94,6 @@
     <value>Réinitialiser
 les angles</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Matrice de rotation</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>Système de coordonnées ReciPro (ZXZ)</value>
   </data>
@@ -258,11 +255,6 @@ numericBoxExp1, est appliquée autour de lui).</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Réinitialise tous les angles à zéro</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Matrice d'orientation (rotation) 3x3 du système
-de coordonnées ReciPro, calculée à partir des
-angles d'Euler ZXZ (lecture seule).</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>Élément (ligne 1, col 1) de la matrice d'orientation
 ReciPro (lecture seule, sans dimension), calculé à partir
@@ -307,21 +299,6 @@ calculé à partir des angles d'Euler ZXZ.</value>
     <value>Élément (ligne 3, col 3) de la matrice
 d'orientation ReciPro (lecture seule, sans dimension),
 calculé à partir des angles d'Euler ZXZ.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Deuxième angle d'Euler Theta (deg) du système de
-coordonnées ReciPro selon la convention ZXZ
-(rotation autour de X) ; définit l'orientation du cristal.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Troisième angle d'Euler Psi (deg) du système de
-coordonnées ReciPro selon la convention ZXZ (dernière
-rotation autour de Z) ; définit l'orientation du cristal.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Premier angle d'Euler Phi (deg) du système de
-coordonnées ReciPro selon la convention ZXZ ; définit
-l'orientation du cristal et la matrice de rotation.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Angle de rotation (deg, -180 à 180) autour du 1er axe

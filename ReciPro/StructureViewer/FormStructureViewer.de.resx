@@ -785,6 +785,10 @@ mit Translation) der Raumgruppe an</value>
     <value>Feste Farbe für die Atom-Beschriftungen (wird
 verwendet, wenn 'Feste Farbe verwenden' ausgewählt ist)</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Feste Farbe für die Atom-Beschriftungen (wird
+verwendet, wenn 'Feste Farbe verwenden' ausgewählt ist)</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Linienbreite der Symmetrieachsen-Symbole (0,5-10)</value>
   </data>
@@ -852,15 +856,6 @@ Koordinaten) entlang jeder Elementarzellenachse.</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Verschiebt den Rahmen der Elementarzelle entlang der
 a-, b-, c-Achse (fraktionelle Koordinaten).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Zeile der a-Achse in den Optionen der Elementarzelle.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Zeile der b-Achse in den Optionen der Elementarzelle.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Zeile der c-Achse in den Optionen der Elementarzelle.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Halbe Breite des dargestellten Bereichs (fraktionelle

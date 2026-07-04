@@ -329,7 +329,7 @@ the clipboard in Excel format.</value>
     <value>1</value>
   </data>
   <data name="numericBoxPsi.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxPsi.FooterText" xml:space="preserve">
     <value>°</value>
@@ -338,7 +338,7 @@ the clipboard in Excel format.</value>
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
   <data name="numericBoxPsi.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxPsi.HeaderText" xml:space="preserve">
     <value>Ψ</value>
@@ -382,7 +382,7 @@ rotation about Z); sets the crystal orientation.</value>
     <value>0</value>
   </data>
   <data name="numericBoxTheta.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTheta.FooterText" xml:space="preserve">
     <value>°</value>
@@ -391,7 +391,7 @@ rotation about Z); sets the crystal orientation.</value>
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
   <data name="numericBoxTheta.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxTheta.HeaderText" xml:space="preserve">
     <value>Θ</value>
@@ -436,7 +436,7 @@ about X); sets the crystal orientation.</value>
     <value>11</value>
   </data>
   <data name="numericBoxPhi.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxPhi.FooterText" xml:space="preserve">
     <value>°</value>
@@ -445,7 +445,7 @@ about X); sets the crystal orientation.</value>
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
   <data name="numericBoxPhi.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxPhi.HeaderText" xml:space="preserve">
     <value>Φ</value>
@@ -490,13 +490,13 @@ the crystal orientation (rotation matrix).</value>
     <value>10</value>
   </data>
   <data name="numericBoxExp1.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp1.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxExp1.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp1.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 20</value>
@@ -514,7 +514,7 @@ the crystal orientation (rotation matrix).</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxExp1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 27</value>
+    <value>90, 27</value>
   </data>
   <data name="numericBoxExp1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -537,13 +537,13 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
     <value>11</value>
   </data>
   <data name="numericBoxExp2.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp2.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxExp2.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp2.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 50</value>
@@ -561,7 +561,7 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxExp2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 27</value>
+    <value>90, 27</value>
   </data>
   <data name="numericBoxExp2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -584,13 +584,13 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
     <value>10</value>
   </data>
   <data name="numericBoxExp3.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp3.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxExp3.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxExp3.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 80</value>
@@ -608,7 +608,7 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxExp3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 27</value>
+    <value>90, 27</value>
   </data>
   <data name="numericBoxExp3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1714,27 +1714,6 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
   <data name="panelViewOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="panelViewOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 3</value>
-  </data>
-  <data name="panelViewOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 82</value>
-  </data>
-  <data name="panelViewOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="&gt;&gt;panelViewOptions.Name" xml:space="preserve">
-    <value>panelViewOptions</value>
-  </data>
-  <data name="&gt;&gt;panelViewOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelViewOptions.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;panelViewOptions.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 14</value>
   </data>
@@ -1755,6 +1734,27 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="panelViewOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 3</value>
+  </data>
+  <data name="panelViewOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 82</value>
+  </data>
+  <data name="panelViewOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="&gt;&gt;panelViewOptions.Name" xml:space="preserve">
+    <value>panelViewOptions</value>
+  </data>
+  <data name="&gt;&gt;panelViewOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelViewOptions.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;panelViewOptions.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1876,36 +1876,6 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
   <data name="&gt;&gt;groupBoxReciProCoordinate.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBoxExperimentalCoordinate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxExperimentalCoordinate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 3</value>
-  </data>
-  <data name="groupBoxExperimentalCoordinate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 384</value>
-  </data>
-  <data name="groupBoxExperimentalCoordinate.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
-    <value>Experimental coordinate system</value>
-  </data>
-  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Name" xml:space="preserve">
-    <value>groupBoxExperimentalCoordinate</value>
-  </data>
-  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;groupBoxExperimentalCoordinate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="flowLayoutPanelFirstAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2001,6 +1971,36 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelThirdAxis.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>537, 3</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 384</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
+    <value>Experimental coordinate system</value>
+  </data>
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Name" xml:space="preserve">
+    <value>groupBoxExperimentalCoordinate</value>
+  </data>
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>

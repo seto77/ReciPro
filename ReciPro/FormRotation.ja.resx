@@ -190,9 +190,6 @@ Exp1 がこの軸まわりに適用されます）。</value>
   <data name="$this.Text" xml:space="preserve">
     <value>回転ジオメトリ</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>回転行列</value>
-  </data>
   <data name="buttonViewAlongBeam.Text" xml:space="preserve">
     <value>ビーム軸方向</value>
   </data>
@@ -210,10 +207,6 @@ Exp1 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="checkBoxEnable3rd.Text" xml:space="preserve">
     <value>第3軸</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の3×3回転（方位）行列。ZXZオイラー
-角から算出される読取専用の表示です。</value>
   </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>ReciPro座標系の回転（方位）行列の(1,1)成分（読取専用
@@ -250,18 +243,6 @@ Exp1 がこの軸まわりに適用されます）。</value>
   <data name="numericBox33.ToolTip" xml:space="preserve">
     <value>ReciPro座標系の回転（方位）行列の(3,3)成分（読取
 専用・無次元）。ZXZオイラー角から算出されます。</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系（ZXZ規約）の第2オイラー角Θ（度、
-X軸まわりの回転）。結晶方位を決めます。</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系（ZXZ規約）の第3オイラー角Ψ（度、
-最後のZ軸まわりの回転）。結晶方位を決めます。</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系（ZXZ規約）の第1オイラー
-角Φ（度）。結晶方位と回転行列を決めます。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、

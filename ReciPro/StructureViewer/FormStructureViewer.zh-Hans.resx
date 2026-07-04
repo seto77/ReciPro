@@ -778,6 +778,10 @@ x 映射到 -x 的变换下与自身重合的
     <value>应用于原子标签的固定颜色（在选中
 “使用固定颜色”时使用）</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>应用于原子标签的固定颜色（在选中
+“使用固定颜色”时使用）</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>对称轴符号的线宽 (0.5-10)</value>
   </data>
@@ -845,15 +849,6 @@ VESTA 风格的默认值（VESTA 是一款广泛使用的
   <data name="label10.ToolTip" xml:space="preserve">
     <value>沿 a、b、c 轴平移晶胞框架
 （分数坐标）。</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>晶胞选项中 a 轴所在的行。</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>晶胞选项中 b 轴所在的行。</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>晶胞选项中 c 轴所在的行。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>显示区域沿各晶胞轴的半宽

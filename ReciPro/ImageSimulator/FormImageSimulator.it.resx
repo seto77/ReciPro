@@ -189,9 +189,6 @@
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>Coef. di trasmissione incrociato</value>
   </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>Modello di coerenza parziale</value>
-  </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Opzioni HRTEM</value>
   </data>
@@ -209,9 +206,6 @@
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Impostazioni di simulazione</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Dimensione effettiva sorgente (σs,  FWHM)</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>α (angolo di convergenza
@@ -523,12 +517,6 @@ attenua il dettaglio ad alta risoluzione dell'immagine.</value>
     <value>Semiangolo dell'apertura obiettivo (mrad). Un'apertura
 più piccola taglia i fasci diffratti ad alto angolo e
 attenua il dettaglio ad alta risoluzione dell'immagine.</value>
-  </data>
-  <data name="label35.ToolTip" xml:space="preserve">
-    <value>ΔV: la larghezza a metà altezza (FWHM)
-della dispersione di energia del fascio elettronico, in eV;
-insieme all'aberrazione cromatica Cc determina
-lo sparpagliamento cromatico del fuoco (sfocatura dell'immagine).</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV: la larghezza a metà altezza (FWHM)
@@ -871,10 +859,6 @@ del rivelatore anulare in campo scuro.</value>
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>Semiangolo di convergenza α (mrad) della sonda STEM incidente.</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>Dimensione effettiva della sorgente di elettroni (σs, FWHM, in pm);
-modella la sfocatura da sorgente finita della sonda STEM.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Spessore del campione (nm). Questo valore viene ignorato

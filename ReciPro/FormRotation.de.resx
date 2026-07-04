@@ -94,9 +94,6 @@
     <value>Winkel
 zurücksetzen</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Rotationsmatrix</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro-Koordinatensystem (ZXZ)</value>
   </data>
@@ -258,11 +255,6 @@ Rotation, numericBoxExp1, wird um sie angewendet).</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Setzt alle Winkel auf null zurück</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>3x3-Orientierungsmatrix (Rotationsmatrix) des
-ReciPro-Koordinatensystems, berechnet aus den
-ZXZ-Euler-Winkeln (schreibgeschützt).</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>Element (Zeile 1, Spalte 1) der ReciPro-
 Orientierungsmatrix (schreibgeschützt, dimensionslos),
@@ -307,21 +299,6 @@ berechnet aus den ZXZ-Euler-Winkeln.</value>
     <value>Element (Zeile 3, Spalte 3) der ReciPro-
 Orientierungsmatrix (schreibgeschützt, dimensionslos),
 berechnet aus den ZXZ-Euler-Winkeln.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Zweiter Euler-Winkel Theta (Grad) des ReciPro-
-Koordinatensystems in der ZXZ-Konvention
-(Rotation um X); legt die Kristallorientierung fest.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Dritter Euler-Winkel Psi (Grad) des ReciPro-
-Koordinatensystems in der ZXZ-Konvention (letzte
-Rotation um Z); legt die Kristallorientierung fest.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Erster Euler-Winkel Phi (Grad) des ReciPro-
-Koordinatensystems in der ZXZ-Konvention; legt die
-Kristallorientierung und die Rotationsmatrix fest.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Rotationswinkel (Grad, -180..180) um die 1.

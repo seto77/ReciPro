@@ -534,6 +534,9 @@ labels instead of the spot color.</value>
   <data name="colorControlIndexLabel.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
+  <data name="colorControlIndexLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="colorControlIndexLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>243, 3</value>
   </data>
@@ -734,6 +737,9 @@ labels when 'Specify color' is enabled.</value>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>Background</value>
   </data>
@@ -777,6 +783,9 @@ labels when 'Specify color' is enabled.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl90DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControl90DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl90DegLine.FooterText" xml:space="preserve">
@@ -826,6 +835,9 @@ circle and principal axes, the thickest lines).</value>
   <data name="colorControl10DegLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControl10DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControl10DegLine.FooterText" xml:space="preserve">
     <value>10°</value>
   </data>
@@ -871,6 +883,9 @@ circle and principal axes, the thickest lines).</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl1DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControl1DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl1DegLine.FooterText" xml:space="preserve">
@@ -1961,8 +1976,14 @@ drawn for Kikuchi-line pairs.</value>
   <data name="colorControlKikuchiPoints.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlKikuchiPoints.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlKikuchiPoints.FooterText" xml:space="preserve">
     <value>Point</value>
+  </data>
+  <data name="colorControlKikuchiPoints.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlKikuchiPoints.Location" type="System.Drawing.Point, System.Drawing">
     <value>138, 6</value>
@@ -2005,8 +2026,14 @@ lines drawn in Kikuchi-line mode.</value>
   <data name="colorControlKikuchiLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlKikuchiLabel.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
     <value>Label</value>
+  </data>
+  <data name="colorControlKikuchiLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlKikuchiLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 6</value>
@@ -2142,7 +2169,7 @@ bands from inelastically scattered electrons).</value>
     <value>3, 3</value>
   </data>
   <data name="checkedListBoxCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
+    <value>199, 144</value>
   </data>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2231,7 +2258,7 @@ lattice planes) to the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 0</value>
+    <value>0, 27</value>
   </data>
   <data name="buttonDeleteCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2276,8 +2303,11 @@ from the stereographic projection.</value>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Color</value>
   </data>
+  <data name="colorControlGreatCircle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="colorControlGreatCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 4</value>
+    <value>4, 58</value>
   </data>
   <data name="colorControlGreatCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 0, 0</value>
@@ -2316,7 +2346,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 4</value>
+    <value>3, 82</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 0</value>
@@ -2352,7 +2382,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 0</value>
+    <value>3, 99</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -2388,10 +2418,10 @@ from the stereographic projection.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-116, 3</value>
+    <value>202, 3</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 0</value>
+    <value>72, 144</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2488,7 +2518,7 @@ zone circle) is added to the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
+    <value>114, 3</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 25</value>
@@ -2518,7 +2548,7 @@ zone circle) is added to the stereonet</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonCircleByPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 59</value>
+    <value>3, 34</value>
   </data>
   <data name="radioButtonCircleByPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 34</value>
@@ -2659,7 +2689,7 @@ the zone-axis great circle on the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 0</value>
+    <value>0, 25</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2689,13 +2719,13 @@ the zone-axis great circle on the stereonet</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 96</value>
+    <value>104, 31</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 25</value>
+    <value>140, 50</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -2716,10 +2746,10 @@ the zone-axis great circle on the stereonet</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, -20</value>
+    <value>3, 147</value>
   </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 88</value>
+    <value>271, 88</value>
   </data>
   <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2743,7 +2773,7 @@ the zone-axis great circle on the stereonet</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 238</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3591,7 +3621,7 @@ center) of the rotational scan, in degrees.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 238</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3665,7 +3695,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 238</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4099,6 +4129,9 @@ the list of specified indices.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlIndex.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="colorControlIndex.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlIndex.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">

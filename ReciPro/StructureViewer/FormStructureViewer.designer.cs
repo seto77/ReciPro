@@ -112,9 +112,6 @@
             checkBoxCellShowPlane = new System.Windows.Forms.CheckBox();
             numericBoxSubCellC = new NumericBox();
             numericBoxSubCellA = new NumericBox();
-            label17 = new System.Windows.Forms.Label();
-            label16 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
             tabPageLatticePlane = new System.Windows.Forms.TabPage();
             flowLayoutPanelLatticePlaneOpacity = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxLatticePlaneOpacity = new NumericBox();
@@ -180,7 +177,6 @@
             groupBoxBondedAtoms = new System.Windows.Forms.GroupBox();
             checkBoxShowBondedAtoms = new System.Windows.Forms.CheckBox();
             groupBoxAccessoryControls = new System.Windows.Forms.GroupBox();
-            checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             numericBoxLegendSize = new NumericBox();
             numericBoxAxesSize = new NumericBox();
             numericBoxLightSize = new NumericBox();
@@ -218,15 +214,22 @@
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
             sizeControl1 = new SizeControl();
+            numericBoxProjWidth = new NumericBox();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             panelTop = new System.Windows.Forms.Panel();
-            numericBoxProjWidth = new NumericBox(); // (260629Ch)
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabelInitialization = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelRendering = new System.Windows.Forms.ToolStripStatusLabel();
             printDialog1 = new System.Windows.Forms.PrintDialog();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
@@ -273,6 +276,12 @@
             menuStrip1.SuspendLayout();
             panelTop.SuspendLayout();
             statusStrip1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer2
@@ -717,9 +726,6 @@
             groupBoxShowUnitCell.Controls.Add(checkBoxCellShowPlane);
             groupBoxShowUnitCell.Controls.Add(numericBoxSubCellC);
             groupBoxShowUnitCell.Controls.Add(numericBoxSubCellA);
-            groupBoxShowUnitCell.Controls.Add(label17);
-            groupBoxShowUnitCell.Controls.Add(label16);
-            groupBoxShowUnitCell.Controls.Add(label12);
             resources.ApplyResources(groupBoxShowUnitCell, "groupBoxShowUnitCell");
             groupBoxShowUnitCell.Name = "groupBoxShowUnitCell";
             groupBoxShowUnitCell.TabStop = false;
@@ -810,6 +816,7 @@
             toolTip.SetToolTip(numericBoxCellPlaneAlpha, resources.GetString("numericBoxCellPlaneAlpha.ToolTip"));
             numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
             numericBoxCellPlaneAlpha.Value = 0.3D;
+            numericBoxCellPlaneAlpha.ValueBoxWidth = 50;
             numericBoxCellPlaneAlpha.ValueChanged += unitCell_PropertyChanged;
             // 
             // flowLayoutPanelCellEdgeColors
@@ -821,8 +828,7 @@
             flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeA);
             flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeB);
             flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeC);
-            flowLayoutPanelCellEdgeColors.Controls.Add(label8);
-            flowLayoutPanelCellEdgeColors.Controls.Add(trackBarCellEdgeWidth);
+            flowLayoutPanelCellEdgeColors.Controls.Add(flowLayoutPanel2);
             flowLayoutPanelCellEdgeColors.Name = "flowLayoutPanelCellEdgeColors";
             // 
             // radioButtonCellEdgeColorAll
@@ -973,6 +979,7 @@
             numericBoxSubCellB.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxSubCellB, resources.GetString("numericBoxSubCellB.ToolTip"));
             numericBoxSubCellB.Value = 1D;
+            numericBoxSubCellB.ValueBoxWidth = 20;
             numericBoxSubCellB.ValueChanged += unitCell_PropertyChanged;
             // 
             // label10
@@ -1001,6 +1008,7 @@
             numericBoxSubCellC.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxSubCellC, resources.GetString("numericBoxSubCellC.ToolTip"));
             numericBoxSubCellC.Value = 1D;
+            numericBoxSubCellC.ValueBoxWidth = 20;
             numericBoxSubCellC.ValueChanged += unitCell_PropertyChanged;
             // 
             // numericBoxSubCellA
@@ -1015,25 +1023,8 @@
             numericBoxSubCellA.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxSubCellA, resources.GetString("numericBoxSubCellA.ToolTip"));
             numericBoxSubCellA.Value = 1D;
+            numericBoxSubCellA.ValueBoxWidth = 20;
             numericBoxSubCellA.ValueChanged += unitCell_PropertyChanged;
-            // 
-            // label17
-            // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip"));
-            // 
-            // label16
-            // 
-            resources.ApplyResources(label16, "label16");
-            label16.Name = "label16";
-            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip"));
-            // 
-            // label12
-            // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
-            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip"));
             // 
             // tabPageLatticePlane
             // 
@@ -1185,8 +1176,9 @@
             numericBoxProjectionCenterX.ShowUpDown = true;
             numericBoxProjectionCenterX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterX, resources.GetString("numericBoxProjectionCenterX.ToolTip"));
-            numericBoxProjectionCenterX.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterX.UpDown_Increment = 0.05D;
             numericBoxProjectionCenterX.Value = 0.5D;
+            numericBoxProjectionCenterX.ValueBoxWidth = 40;
             numericBoxProjectionCenterX.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
             // 
             // numericBoxProjectionCenterY
@@ -1201,8 +1193,9 @@
             numericBoxProjectionCenterY.ShowUpDown = true;
             numericBoxProjectionCenterY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterY, resources.GetString("numericBoxProjectionCenterY.ToolTip"));
-            numericBoxProjectionCenterY.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterY.UpDown_Increment = 0.05D;
             numericBoxProjectionCenterY.Value = 0.5D;
+            numericBoxProjectionCenterY.ValueBoxWidth = 40;
             numericBoxProjectionCenterY.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
             // 
             // numericBoxProjectionCenterZ
@@ -1217,8 +1210,9 @@
             numericBoxProjectionCenterZ.ShowUpDown = true;
             numericBoxProjectionCenterZ.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterZ, resources.GetString("numericBoxProjectionCenterZ.ToolTip"));
-            numericBoxProjectionCenterZ.UpDown_Increment = 0.1D;
+            numericBoxProjectionCenterZ.UpDown_Increment = 0.05D;
             numericBoxProjectionCenterZ.Value = 0.5D;
+            numericBoxProjectionCenterZ.ValueBoxWidth = 40;
             numericBoxProjectionCenterZ.ValueChanged += numericBoxProjectionCenterX_ValueChanged;
             // 
             // label9
@@ -1570,13 +1564,9 @@
             // 
             // groupBoxLabel
             // 
-            groupBoxLabel.Controls.Add(colorControlLabelColor);
-            groupBoxLabel.Controls.Add(checkBoxShowLabel);
-            groupBoxLabel.Controls.Add(radioButtonUseMaterialColor);
-            groupBoxLabel.Controls.Add(radioButtonLabelUseFixedColor);
-            groupBoxLabel.Controls.Add(numericBoxLabelSize);
-            groupBoxLabel.Controls.Add(checkBoxLabelWhiteEdge);
-            groupBoxLabel.Controls.Add(label7);
+            groupBoxLabel.Controls.Add(flowLayoutPanel5);
+            groupBoxLabel.Controls.Add(flowLayoutPanel6);
+            groupBoxLabel.Controls.Add(flowLayoutPanel7);
             resources.ApplyResources(groupBoxLabel, "groupBoxLabel");
             groupBoxLabel.Name = "groupBoxLabel";
             groupBoxLabel.TabStop = false;
@@ -1588,8 +1578,7 @@
             colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControlLabelColor.Name = "colorControlLabelColor";
-            //toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip1")); // 260703Cl 変更前: 再シリアライズでこれのみ .ToolTip1 に逆行していた
-            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip")); // 260703Cl 他コントロールと同じ .ToolTip キーに統一
+            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip1"));
             colorControlLabelColor.ColorChanged += numericBoxLabelSize_ValueChanged;
             // 
             // checkBoxShowLabel
@@ -1631,6 +1620,7 @@
             numericBoxLabelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip"));
             numericBoxLabelSize.Value = 12D;
+            numericBoxLabelSize.ValueBoxWidth = 30;
             numericBoxLabelSize.ValueFontSize = 9F;
             numericBoxLabelSize.ValueChanged += numericBoxLabelSize_ValueChanged;
             // 
@@ -1668,21 +1658,11 @@
             // 
             // groupBoxAccessoryControls
             // 
-            groupBoxAccessoryControls.Controls.Add(checkBoxGroupByElement);
-            groupBoxAccessoryControls.Controls.Add(numericBoxLegendSize);
-            groupBoxAccessoryControls.Controls.Add(numericBoxAxesSize);
-            groupBoxAccessoryControls.Controls.Add(numericBoxLightSize);
+            groupBoxAccessoryControls.Controls.Add(flowLayoutPanel4);
+            groupBoxAccessoryControls.Controls.Add(flowLayoutPanel3);
             resources.ApplyResources(groupBoxAccessoryControls, "groupBoxAccessoryControls");
             groupBoxAccessoryControls.Name = "groupBoxAccessoryControls";
             groupBoxAccessoryControls.TabStop = false;
-            // 
-            // checkBoxGroupByElement
-            // 
-            resources.ApplyResources(checkBoxGroupByElement, "checkBoxGroupByElement");
-            checkBoxGroupByElement.Name = "checkBoxGroupByElement";
-            toolTip.SetToolTip(checkBoxGroupByElement, resources.GetString("checkBoxGroupByElement.ToolTip"));
-            checkBoxGroupByElement.UseVisualStyleBackColor = true;
-            checkBoxGroupByElement.CheckedChanged += numericBoxLegendSize_ValueChanged;
             // 
             // numericBoxLegendSize
             // 
@@ -1698,7 +1678,7 @@
             numericBoxLegendSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip"));
             numericBoxLegendSize.Value = 50D;
-            numericBoxLegendSize.ValueFontSize = 9F;
+            numericBoxLegendSize.ValueBoxWidth = 32;
             numericBoxLegendSize.ValueChanged += numericBoxLegendSize_ValueChanged;
             // 
             // numericBoxAxesSize
@@ -1715,7 +1695,7 @@
             numericBoxAxesSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip"));
             numericBoxAxesSize.Value = 80D;
-            numericBoxAxesSize.ValueFontSize = 9F;
+            numericBoxAxesSize.ValueBoxWidth = 32;
             numericBoxAxesSize.ValueChanged += numericBoxAxesSize_ValueChanged;
             // 
             // numericBoxLightSize
@@ -1732,7 +1712,7 @@
             numericBoxLightSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip"));
             numericBoxLightSize.Value = 80D;
-            numericBoxLightSize.ValueFontSize = 9F;
+            numericBoxLightSize.ValueBoxWidth = 32;
             numericBoxLightSize.ValueChanged += numericBoxLightSize_ValueChanged;
             // 
             // toolStrip1
@@ -1989,6 +1969,20 @@
             toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
             sizeControl1.ValueChanged += sizeControl1_ValueChanged;
             // 
+            // numericBoxProjWidth
+            // 
+            numericBoxProjWidth.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxProjWidth, "numericBoxProjWidth");
+            numericBoxProjWidth.Minimum = 0.01D;
+            numericBoxProjWidth.Name = "numericBoxProjWidth";
+            numericBoxProjWidth.RadianValue = 0.052359877559829883D;
+            numericBoxProjWidth.ShowUpDown = true;
+            numericBoxProjWidth.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxProjWidth, resources.GetString("numericBoxProjWidth.ToolTip"));
+            numericBoxProjWidth.Value = 3D;
+            numericBoxProjWidth.ValueBoxWidth = 50;
+            numericBoxProjWidth.ValueChanged += numericBoxProjWidth_ValueChanged;
+            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -2002,23 +1996,10 @@
             // panelTop
             // 
             resources.ApplyResources(panelTop, "panelTop");
-            panelTop.Controls.Add(numericBoxProjWidth); // (260629Ch)
+            panelTop.Controls.Add(numericBoxProjWidth);
             panelTop.Controls.Add(menuStrip1);
             panelTop.Controls.Add(sizeControl1);
             panelTop.Name = "panelTop";
-            // 
-            // numericBoxProjWidth
-            // 
-            numericBoxProjWidth.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxProjWidth, "numericBoxProjWidth");
-            numericBoxProjWidth.Minimum = 0.01D;
-            numericBoxProjWidth.Name = "numericBoxProjWidth";
-            numericBoxProjWidth.ShowUpDown = true;
-            numericBoxProjWidth.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxProjWidth, resources.GetString("numericBoxProjWidth.ToolTip")); // 260703Cl 追加
-            numericBoxProjWidth.Value = 3D; // (260629Ch) StructureViewer main view の初期 ProjWidth
-            numericBoxProjWidth.ValueBoxWidth = 50;
-            numericBoxProjWidth.ValueChanged += numericBoxProjWidth_ValueChanged; // (260629Ch)
             // 
             // statusStrip1
             // 
@@ -2044,6 +2025,57 @@
             // pageSetupDialog1
             // 
             pageSetupDialog1.Document = printDocument1;
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(label8);
+            flowLayoutPanel2.Controls.Add(trackBarCellEdgeWidth);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // checkBoxGroupByElement
+            // 
+            resources.ApplyResources(checkBoxGroupByElement, "checkBoxGroupByElement");
+            checkBoxGroupByElement.Name = "checkBoxGroupByElement";
+            toolTip.SetToolTip(checkBoxGroupByElement, resources.GetString("checkBoxGroupByElement.ToolTip"));
+            checkBoxGroupByElement.UseVisualStyleBackColor = true;
+            checkBoxGroupByElement.CheckedChanged += numericBoxLegendSize_ValueChanged;
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(numericBoxLightSize);
+            flowLayoutPanel3.Controls.Add(numericBoxAxesSize);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(numericBoxLegendSize);
+            flowLayoutPanel4.Controls.Add(checkBoxGroupByElement);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(radioButtonUseMaterialColor);
+            flowLayoutPanel5.Controls.Add(radioButtonLabelUseFixedColor);
+            flowLayoutPanel5.Controls.Add(colorControlLabelColor);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(numericBoxLabelSize);
+            flowLayoutPanel6.Controls.Add(checkBoxLabelWhiteEdge);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // flowLayoutPanel7
+            // 
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
+            flowLayoutPanel7.Controls.Add(checkBoxShowLabel);
+            flowLayoutPanel7.Controls.Add(label7);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
             // 
             // FormStructureViewer
             // 
@@ -2109,6 +2141,7 @@
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanelProjectionCenter.ResumeLayout(false);
+            flowLayoutPanelProjectionCenter.PerformLayout();
             groupBoxProjection.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)trackBarPerspective).EndInit();
             groupBoxTransparency.ResumeLayout(false);
@@ -2138,6 +2171,18 @@
             panelTop.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2239,9 +2284,6 @@
         private System.Windows.Forms.CheckBox checkBoxCellShowPlane;
         private Crystallography.Controls.NumericBox numericBoxSubCellC;
         private Crystallography.Controls.NumericBox numericBoxSubCellA;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TabPage tabPageLatticePlane;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLatticePlaneOpacity;
         private NumericBox numericBoxLatticePlaneOpacity;
@@ -2292,7 +2334,6 @@
         private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBoxAccessoryControls;
-        private System.Windows.Forms.CheckBox checkBoxGroupByElement;
         private NumericBox numericBoxLegendSize;
         private NumericBox numericBoxAxesSize;
         private NumericBox numericBoxLightSize;
@@ -2329,5 +2370,12 @@
         private SizeControl sizeControl1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private NumericBox numericBoxProjWidth; // (260629Ch)
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.CheckBox checkBoxGroupByElement;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }

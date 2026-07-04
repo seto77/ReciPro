@@ -201,9 +201,6 @@
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>Перекр. коэф. передачи</value>
   </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>Модель частичной когерентности</value>
-  </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Параметры HRTEM</value>
   </data>
@@ -221,9 +218,6 @@
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Настройки моделирования</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Эффективный размер источника (σs,  FWHM)</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>α (угол сходимости
@@ -538,12 +532,6 @@ TDS (термическое диффузное рассеяние).</value>
     <value>Полуугол объективной апертуры (mrad). Меньшая
 апертура отсекает высокоугловые дифрагированные
 пучки и сглаживает мелкие детали изображения высокого разрешения.</value>
-  </data>
-  <data name="label35.ToolTip" xml:space="preserve">
-    <value>ΔV: полная ширина на половине высоты (FWHM)
-разброса энергии электронного пучка, в eV;
-вместе с хроматической аберрацией Cc она
-задаёт хроматический разброс фокуса (размытие изображения).</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV: полная ширина на половине высоты (FWHM)
@@ -886,10 +874,6 @@ U'g) как изображения действительной и мнимой 
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>Полуугол сходимости α (mrad) падающего STEM-зонда.</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>Эффективный размер источника электронов (σs, FWHM, в pm);
-моделирует размытие STEM-зонда из-за конечного размера источника.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Толщина образца (nm). Это значение игнорируется,

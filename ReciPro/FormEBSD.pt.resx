@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Desenhar eixos</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Centro do detector</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Largura da linha</value>
   </data>
@@ -171,12 +168,6 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Contorno do detector</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Inclinação do detector</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Raio do detector</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>Geometria EBSD</value>
   </data>
@@ -255,7 +246,14 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Define a cor de fundo</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Define a cor de fundo</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Define a cor do texto de sobreposição, incluindo
+os rótulos de índices das linhas de Kikuchi e dos eixos de zona.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Define a cor do texto de sobreposição, incluindo
 os rótulos de índices das linhas de Kikuchi e dos eixos de zona.</value>
   </data>
@@ -418,6 +416,9 @@ Simulate primeiro para obter a distribuição.</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>Define a cor usada para desenhar as linhas de Kikuchi.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>Define a cor usada para desenhar as linhas de Kikuchi.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Escolha tons de cinza Positive ou Negative (invertido)
 para a intensidade do padrão.</value>
@@ -452,17 +453,7 @@ EBSD atualmente renderizada (modo de fatia única).</value>
 em mm. Isso define o ângulo sólido capturado e a
 resolução de tela (mm/pixel) do padrão simulado.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Define o raio do detector EBSD (tela de fósforo)
-em mm. Isso define o ângulo sólido capturado e a
-resolução de tela (mm/pixel) do padrão simulado.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Define o ângulo de inclinação do plano do detector em graus
-em relação ao eixo do feixe (Z). Isso afeta o comprimento de
-câmara e a forma projetada das bandas de Kikuchi.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>Define o ângulo de inclinação do plano do detector em graus
 em relação ao eixo do feixe (Z). Isso afeta o comprimento de
 câmara e a forma projetada das bandas de Kikuchi.</value>
@@ -580,11 +571,6 @@ dos elétrons retroespalhados simulados.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>Nesta rede estereográfica, o centro
 corresponde à normal à superfície da amostra.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Posição do centro do detector
-em relação à amostra, dada como Y
-(lateral) e Z (ao longo do feixe) em mm.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Seleciona polaridade de níveis de cinza normal ou

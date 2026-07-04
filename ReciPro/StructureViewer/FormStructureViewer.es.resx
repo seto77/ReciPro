@@ -776,6 +776,10 @@ con traslación) del grupo espacial</value>
     <value>Color fijo aplicado a las etiquetas de los átomos (se usa
 cuando está seleccionado 'Use fixed color')</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Color fijo aplicado a las etiquetas de los átomos (se usa
+cuando está seleccionado 'Use fixed color')</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Anchura de línea de los símbolos de los ejes de simetría (0.5-10)</value>
   </data>
@@ -843,15 +847,6 @@ fraccionarias) a lo largo de cada eje de la celda unidad.</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Traslada el armazón de la celda unidad a lo largo de los
 ejes a, b, c (coordenadas fraccionarias).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Fila del eje a de las opciones de la celda unidad.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Fila del eje b de las opciones de la celda unidad.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Fila del eje c de las opciones de la celda unidad.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Semianchura de la región mostrada (coordenadas

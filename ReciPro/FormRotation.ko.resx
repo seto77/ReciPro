@@ -94,9 +94,6 @@
     <value>각도
 초기화</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>회전 행렬</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro 좌표계 (ZXZ)</value>
   </data>
@@ -254,11 +251,6 @@ numericBoxExp1이 이 축을 중심으로 적용됩니다).</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>모든 각도를 0으로 초기화합니다.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>ReciPro 좌표계의 3×3 방위(회전) 행렬.
-ZXZ 오일러 각으로부터 계산되는
-읽기 전용 표시입니다.</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>ReciPro 방위(회전) 행렬의 (1행, 1열) 성분(읽기
 전용·무차원). ZXZ 오일러 각 Φ·Θ·Ψ로부터
@@ -295,19 +287,6 @@ ZXZ 오일러 각으로부터 계산되는
   <data name="numericBox33.ToolTip" xml:space="preserve">
     <value>ReciPro 방위(회전) 행렬의 (3행, 3열) 성분(읽기
 전용·무차원). ZXZ 오일러 각으로부터 계산됩니다.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>ZXZ 규약에서 ReciPro 좌표계의 두 번째 오일러 각
-Θ(도, X축 둘레의 회전). 결정 방위를 결정합니다.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>ZXZ 규약에서 ReciPro 좌표계의 세 번째 오일러 각
-Ψ(도, 마지막 Z축 둘레의 회전). 결정 방위를
-결정합니다.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>ZXZ 규약에서 ReciPro 좌표계의 첫 번째 오일러 각
-Φ(도). 결정 방위와 회전 행렬을 결정합니다.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>실험 좌표계의 첫 번째 고니오미터 축을 중심으로 한

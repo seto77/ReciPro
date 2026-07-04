@@ -421,15 +421,6 @@
     <value>サブセル格子を描く際の a 軸方向の分割数(整数、
 1〜10)。'Show Subcell' 有効時に表示されます。</value>
   </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>単位胞オプションの c 軸の行。</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>単位胞オプションの b 軸の行。</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>単位胞オプションの a 軸の行。</value>
-  </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>格子面</value>
   </data>
@@ -1133,15 +1124,6 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">

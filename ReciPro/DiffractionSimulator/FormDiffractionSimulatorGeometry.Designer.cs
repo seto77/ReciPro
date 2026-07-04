@@ -189,9 +189,9 @@
             // numericBoxFootX
             // 
             numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxFootX.FooterText = "px";
-            numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxFootX.HeaderText = "Foot:  fx";
             numericBoxFootX.Location = new System.Drawing.Point(204, 0);
             numericBoxFootX.Margin = new System.Windows.Forms.Padding(0);
@@ -213,9 +213,9 @@
             // numericBoxFootY
             // 
             numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxFootY.FooterText = "px";
-            numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxFootY.HeaderText = "fy";
             numericBoxFootY.Location = new System.Drawing.Point(341, 0);
             numericBoxFootY.Margin = new System.Windows.Forms.Padding(0);
@@ -237,9 +237,9 @@
             // numericBoxPixelSize
             // 
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
-            numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPixelSize.HeaderText = "pix. size";
             numericBoxPixelSize.Location = new System.Drawing.Point(441, 0);
             numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);

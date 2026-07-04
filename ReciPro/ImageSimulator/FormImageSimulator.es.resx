@@ -192,9 +192,6 @@
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>Coef. cruzado de transmisión</value>
   </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>Modelo de coherencia parcial</value>
-  </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Opciones HRTEM</value>
   </data>
@@ -212,9 +209,6 @@
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Ajustes de simulación</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Tamaño efectivo de la fuente (σs,  FWHM)</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>α (ángulo de convergencia
@@ -532,12 +526,6 @@ apertura menor recorta los haces difractados de alto
     <value>Semiángulo de la apertura del objetivo (mrad). Una
 apertura menor recorta los haces difractados de alto
 ángulo y suaviza el detalle de la imagen de alta resolución.</value>
-  </data>
-  <data name="label35.ToolTip" xml:space="preserve">
-    <value>ΔV: la anchura total a media altura (FWHM) de
-la dispersión de energía del haz de electrones, en eV;
-junto con la aberración cromática Cc determina
-la dispersión cromática de foco (desenfoque de imagen).</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV: la anchura total a media altura (FWHM) de
@@ -880,10 +868,6 @@ del detector anular de campo oscuro.</value>
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>Semiángulo de convergencia α (mrad) de la sonda STEM incidente.</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>Tamaño efectivo de la fuente de electrones (σs, FWHM, en pm);
-modela el difuminado por fuente finita de la sonda STEM.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Espesor de la muestra (nm). Este valor se ignora

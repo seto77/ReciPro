@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>축 그리기</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>검출기 중심</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>선 너비</value>
   </data>
@@ -171,12 +168,6 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>검출기 윤곽</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>검출기 기울기</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>검출기 반지름</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>EBSD 기하구조</value>
   </data>
@@ -258,7 +249,14 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>배경색을 설정합니다</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>배경색을 설정합니다</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>기쿠치 선 지수 및 정대축 지수 레이블을 포함한
+오버레이 문자의 색을 설정합니다.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>기쿠치 선 지수 및 정대축 지수 레이블을 포함한
 오버레이 문자의 색을 설정합니다.</value>
   </data>
@@ -421,6 +419,9 @@ BSE(후방산란 전자)의 에너지 및 깊이 분포로 가중하여
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>기쿠치 선을 그리는 데 사용하는 색을 설정합니다.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>기쿠치 선을 그리는 데 사용하는 색을 설정합니다.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>패턴 강도의 계조를 Positive 또는
 Negative(흑백 반전) 중에서 선택합니다.</value>
@@ -455,19 +456,9 @@ Cold-Warm, Spectrum 또는 Fire)을 선택합니다.</value>
 이는 포착되는 입체각과 시뮬레이션된 패턴의
 스크린 분해능(mm/픽셀)을 결정합니다.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>EBSD 검출기(형광 스크린)의 반지름을 mm 단위로 설정합니다.
-이는 포착되는 입체각과 시뮬레이션된 패턴의
-스크린 분해능(mm/픽셀)을 결정합니다.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로
 설정합니다. 이는 카메라 길이와 기쿠치 밴드의
-투영 형상에 영향을 줍니다.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로
-설정합니다. 이는 카메라 길이와 키쿠치 밴드의
 투영 형상에 영향을 줍니다.</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
@@ -583,11 +574,6 @@ mm 단위로 설정합니다. Y와 함께
   <data name="label15.ToolTip" xml:space="preserve">
     <value>이 스테레오넷에서는 중심이
 시료 표면의 법선 방향에 대응합니다.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>시료를 기준으로 한 검출기 중심의 위치를,
-Y(횡방향)와 Z(전자선 방향)의 mm로
-지정합니다.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>표시 영상의 그레이 레벨 극성을 정상 또는

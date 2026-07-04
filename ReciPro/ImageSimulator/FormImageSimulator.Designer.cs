@@ -1341,6 +1341,7 @@ namespace ReciPro
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 2D;
+            numericBoxResolution.ValueBoxWidth = 60;
             numericBoxResolution.ValueFontSize = 9F;
             // 
             // sizeControl1

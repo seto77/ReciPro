@@ -94,9 +94,6 @@
     <value>Сброс
 углов</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Матрица вращения</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>Система координат ReciPro (ZXZ)</value>
   </data>
@@ -256,11 +253,6 @@ numericBoxExp1, применяется вокруг неё).</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Сбросить все углы в ноль</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Матрица ориентации (поворота) 3×3 системы
-координат ReciPro, вычисляемая из углов Эйлера
-ZXZ (только для чтения).</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>Элемент (строка 1, столбец 1) матрицы ориентации
 ReciPro (только для чтения, безразмерный), вычисляемый
@@ -305,21 +297,6 @@ ReciPro (только для чтения, безразмерный),
     <value>Элемент (строка 3, столбец 3) матрицы ориентации
 ReciPro (только для чтения, безразмерный),
 вычисляемый из углов Эйлера ZXZ.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Второй угол Эйлера Theta (град.) системы координат
-ReciPro в соглашении ZXZ (поворот вокруг X);
-задаёт ориентацию кристалла.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Третий угол Эйлера Psi (град.) системы координат
-ReciPro в соглашении ZXZ (последний поворот вокруг Z);
-задаёт ориентацию кристалла.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Первый угол Эйлера Phi (град.) системы координат
-ReciPro в соглашении ZXZ; задаёт ориентацию
-кристалла и матрицу поворота.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Угол поворота (град., -180..180) вокруг 1-й оси

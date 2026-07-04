@@ -67,8 +67,8 @@
             toolStripButtonDspacing = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDistance = new System.Windows.Forms.ToolStripButton();
-            toolStripButton2Theta = new System.Windows.Forms.ToolStripButton();//260703Cl 追加
-            toolStripButtonAzimuth = new System.Windows.Forms.ToolStripButton();//260703Cl 追加
+            toolStripButton2Theta = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonAzimuth = new System.Windows.Forms.ToolStripButton();
             toolStripButtonExcitationError = new System.Windows.Forms.ToolStripButton();
             toolStripButtonFg = new System.Windows.Forms.ToolStripButton();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -469,7 +469,7 @@
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = System.Drawing.SystemColors.Control;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButton2Theta, toolStripButtonAzimuth, toolStripButtonExcitationError, toolStripButtonFg });//260703Cl 2θ・方位角χボタン追加
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButton2Theta, toolStripButtonAzimuth, toolStripButtonExcitationError, toolStripButtonFg });
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -511,22 +511,22 @@
             toolStripButtonDistance.Name = "toolStripButtonDistance";
             toolStripButtonDistance.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
-            // toolStripButton2Theta  260703Cl 追加 (issue #64)
+            // toolStripButton2Theta
             // 
             toolStripButton2Theta.CheckOnClick = true;
             toolStripButton2Theta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             toolStripButton2Theta.ForeColor = System.Drawing.Color.Salmon;
-            resources.ApplyResources(toolStripButton2Theta, "toolStripButton2Theta");
             toolStripButton2Theta.Name = "toolStripButton2Theta";
+            resources.ApplyResources(toolStripButton2Theta, "toolStripButton2Theta");
             toolStripButton2Theta.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
-            // toolStripButtonAzimuth  260703Cl 追加 (issue #64)
+            // toolStripButtonAzimuth
             // 
             toolStripButtonAzimuth.CheckOnClick = true;
             toolStripButtonAzimuth.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             toolStripButtonAzimuth.ForeColor = System.Drawing.Color.Salmon;
-            resources.ApplyResources(toolStripButtonAzimuth, "toolStripButtonAzimuth");
             toolStripButtonAzimuth.Name = "toolStripButtonAzimuth";
+            resources.ApplyResources(toolStripButtonAzimuth, "toolStripButtonAzimuth");
             toolStripButtonAzimuth.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonExcitationError
@@ -757,6 +757,7 @@
             numericBoxKikuchiThresholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThresholdOfStructureFactor.Minimum = 1D;
             numericBoxKikuchiThresholdOfStructureFactor.Name = "numericBoxKikuchiThresholdOfStructureFactor";
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip")); // 260704Cl 追加: NumericBox 独自 ToolTip プロパティ非シリアライズ化で VS 再保存時に resx キーごと消えたため、標準 extender 経路へ統一
             numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
             numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
@@ -1021,8 +1022,7 @@
             colorControl3D_SpotsNear.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_SpotsNear.Color = System.Drawing.Color.FromArgb(255, 255, 0);
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
-            //toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1")); // 260703Cl 変更前: EN resx 内の日本語文言 (.ToolTip1) を参照し英語 UI で日本語チップが出ていた
-            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip")); // 260703Cl 正キーへ統一
+            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBox3D_SpotRadius
@@ -1311,8 +1311,7 @@
             colorControl3D_lText.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_lText.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControl3D_lText.Name = "colorControl3D_lText";
-            //toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1")); // 260703Cl 変更前: EN resx 内の日本語文言 (.ToolTip1) を参照し英語 UI で日本語チップが出ていた
-            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip")); // 260703Cl 正キーへ統一
+            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_DirectionGuide
@@ -1550,6 +1549,7 @@
             resources.ApplyResources(sizeControl1, "sizeControl1");
             sizeControl1.Maximum = 2000;
             sizeControl1.Name = "sizeControl1";
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip")); // 260704Cl 追加: SizeControl 独自 ToolTip プロパティ経路が VS 再保存で resx キーごと消えたため、標準 extender 経路へ統一
             sizeControl1.ValueChanged += sizeControl1_ValueChanged;
             // 
             // flowLayoutPanelResolutionUnit
@@ -2087,6 +2087,7 @@
             numericBoxPED_Semiangle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             numericBoxPED_Semiangle.Value = 50D;
+            numericBoxPED_Semiangle.ValueBoxWidth = 45;
             numericBoxPED_Semiangle.ValueChanged += Draw;
             // 
             // numericBoxPED_Step
@@ -2103,6 +2104,7 @@
             numericBoxPED_Step.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             numericBoxPED_Step.Value = 36D;
+            numericBoxPED_Step.ValueBoxWidth = 40;
             numericBoxPED_Step.ValueChanged += Draw;
             // 
             // flowLayoutPanelBethe
@@ -2151,6 +2153,7 @@
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.UpDown_Increment = 10D;
             numericBoxThickness.Value = 50D;
+            numericBoxThickness.ValueBoxWidth = 55;
             numericBoxThickness.ValueChanged += Draw;
             // 
             // flowLayoutPanelAppearance
@@ -2241,6 +2244,7 @@
             toolTip.SetToolTip(numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip"));
             numericBoxSpotRadius.UpDown_Increment = 0.01D;
             numericBoxSpotRadius.Value = 0.2D;
+            numericBoxSpotRadius.ValueBoxWidth = 55;
             numericBoxSpotRadius.ValueChanged += Draw;
             // 
             // checkBoxDrawSameSize

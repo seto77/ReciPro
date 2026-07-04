@@ -73,24 +73,24 @@
             panelViewOptions = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
             groupBoxReciProCoordinate = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxExperimentalCoordinate = new System.Windows.Forms.GroupBox();
             flowLayoutPanelFirstAxis = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSecondAxis = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelThirdAxis = new System.Windows.Forms.FlowLayoutPanel();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             panelViewOptions.SuspendLayout();
             groupBoxReciProCoordinate.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBoxExperimentalCoordinate.SuspendLayout();
             flowLayoutPanelFirstAxis.SuspendLayout();
             flowLayoutPanelSecondAxis.SuspendLayout();
             flowLayoutPanelThirdAxis.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // toolTip
@@ -193,6 +193,7 @@
             numericBoxExp1.SkipEventDuringInput = false;
             numericBoxExp1.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp1, resources.GetString("numericBoxExp1.ToolTip"));
+            numericBoxExp1.ValueBoxWidth = 60;
             numericBoxExp1.ValueFontSize = 9F;
             numericBoxExp1.ValueChanged += NumericBoxExp_ValueChanged;
             // 
@@ -206,6 +207,7 @@
             numericBoxExp2.SkipEventDuringInput = false;
             numericBoxExp2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp2, resources.GetString("numericBoxExp2.ToolTip"));
+            numericBoxExp2.ValueBoxWidth = 60;
             numericBoxExp2.ValueFontSize = 9F;
             numericBoxExp2.ValueChanged += NumericBoxExp_ValueChanged;
             // 
@@ -219,6 +221,7 @@
             numericBoxExp3.SkipEventDuringInput = false;
             numericBoxExp3.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxExp3, resources.GetString("numericBoxExp3.ToolTip"));
+            numericBoxExp3.ValueBoxWidth = 60;
             numericBoxExp3.ValueFontSize = 9F;
             numericBoxExp3.ValueChanged += NumericBoxExp_ValueChanged;
             // 
@@ -521,6 +524,13 @@
             groupBoxReciProCoordinate.Name = "groupBoxReciProCoordinate";
             groupBoxReciProCoordinate.TabStop = false;
             // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(tableLayoutPanel1);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
@@ -537,6 +547,13 @@
             tableLayoutPanel1.Controls.Add(numericBoxPhi, 0, 0);
             tableLayoutPanel1.Controls.Add(numericBoxTheta, 0, 1);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(buttonCopy);
+            flowLayoutPanel2.Controls.Add(buttonPaste);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // groupBoxExperimentalCoordinate
             // 
@@ -589,20 +606,6 @@
             tableLayoutPanel2.Controls.Add(panelViewOptions, 1, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(tableLayoutPanel1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(buttonCopy);
-            flowLayoutPanel2.Controls.Add(buttonPaste);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
             // FormRotationMatrix
             // 
             resources.ApplyResources(this, "$this");
@@ -616,8 +619,12 @@
             panelViewOptions.ResumeLayout(false);
             panelViewOptions.PerformLayout();
             groupBoxReciProCoordinate.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             groupBoxExperimentalCoordinate.ResumeLayout(false);
             groupBoxExperimentalCoordinate.PerformLayout();
             flowLayoutPanelFirstAxis.ResumeLayout(false);
@@ -628,10 +635,6 @@
             flowLayoutPanelThirdAxis.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>绘制坐标轴</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>探测器中心</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>线宽</value>
   </data>
@@ -171,12 +168,6 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>探测器轮廓</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>探测器倾斜</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>探测器半径</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>EBSD几何</value>
   </data>
@@ -258,7 +249,14 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>设置背景颜色</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>设置背景颜色</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>设置叠加文字的颜色，包括
+菊池线和晶带轴指数标签。</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>设置叠加文字的颜色，包括
 菊池线和晶带轴指数标签。</value>
   </data>
@@ -417,6 +415,9 @@ a、b、c 轴标签文字。</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>设置绘制菊池线所用的颜色。</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>设置绘制菊池线所用的颜色。</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>为图案强度选择 Positive 或
 Negative（反相）灰度。</value>
@@ -451,17 +452,7 @@ Negative（反相）灰度。</value>
 这决定了所捕获的立体角以及模拟图案的
 屏幕分辨率 (mm/像素)。</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>以 mm 为单位设置 EBSD 探测器（荧光屏）的半径。
-这决定了所捕获的立体角以及模拟图案的
-屏幕分辨率 (mm/像素)。</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>以度为单位设置探测器平面相对于电子束 (Z) 轴的
-倾斜角。它会影响相机长度以及菊池带的
-投影形状。</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>以度为单位设置探测器平面相对于电子束 (Z) 轴的
 倾斜角。它会影响相机长度以及菊池带的
 投影形状。</value>
@@ -578,11 +569,6 @@ EBSD 图案能量切片 (keV)；
   <data name="label15.ToolTip" xml:space="preserve">
     <value>在此立体网中，中心
 对应于试样表面法线方向。</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>探测器中心相对于试样的位置，
-以 mm 为单位给出 Y（横向）
-和 Z（沿电子束方向）。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>为所显示图像选择正常或反相（负片）

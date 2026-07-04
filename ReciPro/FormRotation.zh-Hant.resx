@@ -94,9 +94,6 @@
     <value>重設
 角度</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>旋轉矩陣</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro 座標系 (ZXZ)</value>
   </data>
@@ -256,11 +253,6 @@ numericBoxExp1 會繞其進行）。</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>將所有角度重設為零</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>ReciPro 座標系統的 3x3 方位（旋轉）
-矩陣，由 ZXZ 歐拉角計算而得
-（唯讀）。</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>ReciPro 方位矩陣的 (列 1, 行 1) 元素
 （唯讀、無因次），由 ZXZ 歐拉角
@@ -305,21 +297,6 @@ numericBoxExp1 會繞其進行）。</value>
     <value>ReciPro 方位矩陣的 (列 3, 行 3) 元素
 （唯讀、無因次），由 ZXZ 歐拉角
 計算而得。</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>ReciPro 座標系統在 ZXZ 慣例下的第二歐拉角
-Theta（度，繞 X 軸的旋轉）；
-設定晶體方位。</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>ReciPro 座標系統在 ZXZ 慣例下的第三歐拉角
-Psi（度，繞 Z 軸的最後一次旋轉）；
-設定晶體方位。</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>ReciPro 座標系統在 ZXZ 慣例下的第一歐拉角
-Phi（度）；設定晶體方位
-與旋轉矩陣。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>繞實驗座標系統第 1 測角儀軸的

@@ -383,7 +383,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 72</value>
+    <value>339, 74</value>
   </data>
   <data name="buttonSetRange2.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -422,7 +422,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 125</value>
+    <value>339, 127</value>
   </data>
   <data name="buttonSetRange4.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -458,7 +458,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 98</value>
+    <value>339, 100</value>
   </data>
   <data name="buttonSetRange3.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -494,7 +494,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetCenter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 20</value>
+    <value>187, 19</value>
   </data>
   <data name="buttonSetCenter1.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 26</value>
@@ -530,7 +530,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonCenter2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 46</value>
+    <value>187, 45</value>
   </data>
   <data name="buttonCenter2.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 26</value>
@@ -566,7 +566,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetCenter3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 72</value>
+    <value>187, 71</value>
   </data>
   <data name="buttonSetCenter3.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 26</value>
@@ -602,7 +602,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 20</value>
+    <value>339, 22</value>
   </data>
   <data name="buttonSetRange0.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -638,7 +638,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 46</value>
+    <value>339, 48</value>
   </data>
   <data name="buttonSetRange1.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -1127,7 +1127,7 @@ coordinates) along each unit-cell axis.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 160</value>
+    <value>557, 158</value>
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1654,6 +1654,9 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1732,6 +1735,9 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1779,6 +1785,9 @@ a-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1824,6 +1833,9 @@ b-axis (used when 'Each plane' is selected).</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlCellPlaneC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -1889,7 +1901,7 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
+    <value>50, 25</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1916,7 +1928,7 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="flowLayoutPanelCellPlaneColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 48</value>
+    <value>346, 48</value>
   </data>
   <data name="flowLayoutPanelCellPlaneColors.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1979,6 +1991,9 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -2059,6 +2074,9 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2104,6 +2122,9 @@ a-axis (used when 'Each edge' is selected).</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -2153,6 +2174,9 @@ b-axis (used when 'Each edge' is selected).</value>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2191,6 +2215,12 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="&gt;&gt;colorControlCellEdgeC.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2201,10 +2231,10 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 26</value>
+    <value>15, 0</value>
   </data>
   <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 3, 3, 0</value>
+    <value>15, 0, 3, 0</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -2225,10 +2255,10 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>flowLayoutPanelCellEdgeColors</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="trackBarCellEdgeWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2237,7 +2267,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>NoControl</value>
   </data>
   <data name="trackBarCellEdgeWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 26</value>
+    <value>94, 3</value>
   </data>
   <data name="trackBarCellEdgeWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 20</value>
@@ -2255,10 +2285,34 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;trackBarCellEdgeWidth.Parent" xml:space="preserve">
-    <value>flowLayoutPanelCellEdgeColors</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;trackBarCellEdgeWidth.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 26</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>flowLayoutPanelCellEdgeColors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 121</value>
@@ -2267,7 +2321,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 49</value>
+    <value>349, 49</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2509,8 +2563,11 @@ c-axis (used when 'Each edge' is selected).</value>
   <data name="numericBoxSubCellB.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
+  <data name="numericBoxSubCellB.HeaderText" xml:space="preserve">
+    <value>b</value>
+  </data>
   <data name="numericBoxSubCellB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 184</value>
+    <value>190, 183</value>
   </data>
   <data name="numericBoxSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2522,7 +2579,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>10, 20</value>
   </data>
   <data name="numericBoxSubCellB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 25</value>
+    <value>20, 25</value>
   </data>
   <data name="numericBoxSubCellB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2629,8 +2686,11 @@ a, b, c axes (fractional coordinates).</value>
   <data name="numericBoxSubCellC.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
+  <data name="numericBoxSubCellC.HeaderText" xml:space="preserve">
+    <value>c</value>
+  </data>
   <data name="numericBoxSubCellC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 183</value>
+    <value>249, 183</value>
   </data>
   <data name="numericBoxSubCellC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2642,7 +2702,7 @@ a, b, c axes (fractional coordinates).</value>
     <value>10, 20</value>
   </data>
   <data name="numericBoxSubCellC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 25</value>
+    <value>20, 25</value>
   </data>
   <data name="numericBoxSubCellC.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2673,6 +2733,9 @@ grid shown when 'Show Subcell' is enabled.</value>
   <data name="numericBoxSubCellA.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
+  <data name="numericBoxSubCellA.HeaderText" xml:space="preserve">
+    <value>a</value>
+  </data>
   <data name="numericBoxSubCellA.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 184</value>
   </data>
@@ -2686,7 +2749,7 @@ grid shown when 'Show Subcell' is enabled.</value>
     <value>10, 20</value>
   </data>
   <data name="numericBoxSubCellA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 25</value>
+    <value>20, 25</value>
   </data>
   <data name="numericBoxSubCellA.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2707,123 +2770,6 @@ grid shown when 'Show Subcell' is enabled.</value>
   </data>
   <data name="&gt;&gt;numericBoxSubCellA.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 186</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 17</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>c</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>c-axis row of the unit-cell options.</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label16.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 186</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>b</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>b-axis row of the unit-cell options.</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 186</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 17</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>a</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>a-axis row of the unit-cell options.</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>14</value>
   </data>
   <data name="groupBoxShowUnitCell.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3351,7 +3297,7 @@ grid shown when 'Show Subcell' is enabled.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxProjectionCenterX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 25</value>
+    <value>40, 25</value>
   </data>
   <data name="numericBoxProjectionCenterX.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -3380,7 +3326,7 @@ view (equivalently it translates the unit cell).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 0</value>
+    <value>40, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3395,7 +3341,7 @@ view (equivalently it translates the unit cell).</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 25</value>
+    <value>40, 25</value>
   </data>
   <data name="numericBoxProjectionCenterY.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3424,7 +3370,7 @@ view (equivalently it translates the unit cell).</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 0</value>
+    <value>80, 0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3439,7 +3385,7 @@ view (equivalently it translates the unit cell).</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 25</value>
+    <value>40, 25</value>
   </data>
   <data name="numericBoxProjectionCenterZ.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3471,7 +3417,7 @@ view (equivalently it translates the unit cell).</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 25</value>
+    <value>120, 25</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4110,6 +4056,9 @@ as a percentage (100% = default size).</value>
   <data name="colorControlInversion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4338,6 +4287,9 @@ symbols, in percent (20-500%)</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -4609,6 +4561,9 @@ with translation) of the space group</value>
   <data name="colorControlAxisColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4732,6 +4687,78 @@ inversion centers) on the 3-D view.</value>
   <data name="&gt;&gt;tabPageSymElems.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 21</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
+    <value>Use material color</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
+    <value>Use the material color as the label color </value>
+  </data>
+  <data name="&gt;&gt;radioButtonUseMaterialColor.Name" xml:space="preserve">
+    <value>radioButtonUseMaterialColor</value>
+  </data>
+  <data name="&gt;&gt;radioButtonUseMaterialColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonUseMaterialColor.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;radioButtonUseMaterialColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 6</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 21</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
+    <value>Use fixed color</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
+    <value>Use the fixed color as the label color </value>
+  </data>
+  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Name" xml:space="preserve">
+    <value>radioButtonLabelUseFixedColor</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLabelUseFixedColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="colorControlLabelColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4741,14 +4768,17 @@ inversion centers) on the 3-D view.</value>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
+  <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlLabelColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 88</value>
+    <value>259, 7</value>
   </data>
   <data name="colorControlLabelColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="colorControlLabelColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -4771,121 +4801,55 @@ when 'Use fixed color' is selected)</value>
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlLabelColor.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
+    <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;colorControlLabelColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 78</value>
+  </data>
+  <data name="flowLayoutPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 30</value>
+  </data>
+  <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
+    <value>groupBoxLabel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBoxShowLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxShowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
-  </data>
-  <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
-  </data>
-  <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Show label</value>
-  </data>
-  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Show labels in legends</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowLabel.Name" xml:space="preserve">
-    <value>checkBoxShowLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowLabel.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 84</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 21</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
-    <value>Use material color</value>
-  </data>
-  <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
-    <value>Use the material color as the label color </value>
-  </data>
-  <data name="&gt;&gt;radioButtonUseMaterialColor.Name" xml:space="preserve">
-    <value>radioButtonUseMaterialColor</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUseMaterialColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUseMaterialColor.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUseMaterialColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 86</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 21</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
-    <value>Use fixed color</value>
-  </data>
-  <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
-    <value>Use the fixed color as the label color </value>
-  </data>
-  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Name" xml:space="preserve">
-    <value>radioButtonLabelUseFixedColor</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLabelUseFixedColor.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLabelUseFixedColor.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxLabelSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxLabelSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxLabelSize.HeaderText" xml:space="preserve">
     <value>Font size</value>
   </data>
   <data name="numericBoxLabelSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 56</value>
+    <value>0, 3</value>
   </data>
   <data name="numericBoxLabelSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4900,7 +4864,7 @@ when 'Use fixed color' is selected)</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLabelSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
+    <value>106, 25</value>
   </data>
   <data name="numericBoxLabelSize.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4915,10 +4879,10 @@ when 'Use fixed color' is selected)</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelSize.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
+    <value>flowLayoutPanel6</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelSize.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4927,7 +4891,7 @@ when 'Use fixed color' is selected)</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 59</value>
+    <value>109, 6</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -4948,10 +4912,79 @@ when 'Use fixed color' is selected)</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxLabelWhiteEdge.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
+    <value>flowLayoutPanel6</value>
   </data>
   <data name="&gt;&gt;checkBoxLabelWhiteEdge.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="flowLayoutPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 30</value>
+  </data>
+  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="flowLayoutPanel6.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
+    <value>groupBoxLabel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxShowLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>Show label</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Show labels in legends</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowLabel.Name" xml:space="preserve">
+    <value>checkBoxShowLabel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowLabel.Parent" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4963,7 +4996,7 @@ when 'Use fixed color' is selected)</value>
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 20</value>
+    <value>99, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 26</value>
@@ -4982,16 +5015,43 @@ adjust it individually)</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBoxLabel</value>
+    <value>flowLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 27</value>
+  </data>
+  <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="flowLayoutPanel7.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Parent" xml:space="preserve">
+    <value>groupBoxLabel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="groupBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 83</value>
+    <value>8, 88</value>
   </data>
   <data name="groupBoxLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 116</value>
+    <value>294, 116</value>
   </data>
   <data name="groupBoxLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5056,10 +5116,10 @@ the boundaries</value>
     <value>0</value>
   </data>
   <data name="groupBoxBondedAtoms.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 0</value>
+    <value>308, 3</value>
   </data>
   <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
+    <value>205, 79</value>
   </data>
   <data name="groupBoxBondedAtoms.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5079,6 +5139,57 @@ the boundaries</value>
   <data name="&gt;&gt;groupBoxBondedAtoms.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
+    <value>Legend size</value>
+  </data>
+  <data name="numericBoxLegendSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="numericBoxLegendSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLegendSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxLegendSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxLegendSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxLegendSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 25</value>
+  </data>
+  <data name="numericBoxLegendSize.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
+    <value>Displayed size of legends (right)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLegendSize.Name" xml:space="preserve">
+    <value>numericBoxLegendSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLegendSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLegendSize.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="checkBoxGroupByElement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5086,10 +5197,10 @@ the boundaries</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGroupByElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 49</value>
+    <value>131, 6</value>
   </data>
   <data name="checkBoxGroupByElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>5, 3, 0, 0</value>
   </data>
   <data name="checkBoxGroupByElement.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -5110,100 +5221,46 @@ the boundaries</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxGroupByElement.Parent" xml:space="preserve">
-    <value>groupBoxAccessoryControls</value>
+    <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;checkBoxGroupByElement.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
-    <value>Legend size</value>
-  </data>
-  <data name="numericBoxLegendSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 23</value>
-  </data>
-  <data name="numericBoxLegendSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxLegendSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxLegendSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxLegendSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxLegendSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 25</value>
-  </data>
-  <data name="numericBoxLegendSize.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
-    <value>Displayed size of legends (right)</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLegendSize.Name" xml:space="preserve">
-    <value>numericBoxLegendSize</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLegendSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLegendSize.Parent" xml:space="preserve">
-    <value>groupBoxAccessoryControls</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 46</value>
+  </data>
+  <data name="flowLayoutPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 28</value>
   </data>
-  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
-    <value>Axes size</value>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 50</value>
+  <data name="flowLayoutPanel4.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="numericBoxAxesSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
   </data>
-  <data name="numericBoxAxesSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxAxesSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxAxesSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 25</value>
-  </data>
-  <data name="numericBoxAxesSize.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
-    <value>Displayed size of crystal axes (lower-left)</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Name" xml:space="preserve">
-    <value>numericBoxAxesSize</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
     <value>groupBoxAccessoryControls</value>
   </data>
-  <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxLightSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5215,7 +5272,7 @@ the boundaries</value>
     <value>Light ball size</value>
   </data>
   <data name="numericBoxLightSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 23</value>
+    <value>0, 0</value>
   </data>
   <data name="numericBoxLightSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5230,7 +5287,7 @@ the boundaries</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLightSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 25</value>
+    <value>136, 25</value>
   </data>
   <data name="numericBoxLightSize.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5245,16 +5302,88 @@ the boundaries</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Parent" xml:space="preserve">
-    <value>groupBoxAccessoryControls</value>
+    <value>flowLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
+  </data>
+  <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
+    <value>Axes size</value>
+  </data>
+  <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxAxesSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxAxesSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
+  </data>
+  <data name="numericBoxAxesSize.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
+    <value>Displayed size of crystal axes (lower-left)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Name" xml:space="preserve">
+    <value>numericBoxAxesSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 25</value>
+  </data>
+  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel3.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+    <value>groupBoxAccessoryControls</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupBoxAccessoryControls.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
   <data name="groupBoxAccessoryControls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 82</value>
+    <value>299, 82</value>
   </data>
   <data name="groupBoxAccessoryControls.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5857,6 +5986,53 @@ in pixels; the window resizes to match.</value>
   <data name="&gt;&gt;sizeControl1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="numericBoxProjWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="numericBoxProjWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxProjWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxProjWidth.HeaderText" xml:space="preserve">
+    <value>ProjWidth</value>
+  </data>
+  <data name="numericBoxProjWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 0</value>
+  </data>
+  <data name="numericBoxProjWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxProjWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numericBoxProjWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="numericBoxProjWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 27</value>
+  </data>
+  <data name="numericBoxProjWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>Width of the projected main view in nm.
+Smaller values zoom in. Synchronized with
+right-drag / wheel zooming on the view.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxProjWidth.Name" xml:space="preserve">
+    <value>numericBoxProjWidth</value>
+  </data>
+  <data name="&gt;&gt;numericBoxProjWidth.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxProjWidth.Parent" xml:space="preserve">
+    <value>panelTop</value>
+  </data>
+  <data name="&gt;&gt;numericBoxProjWidth.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="printPreviewDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>771, 17</value>
   </metadata>
@@ -6059,48 +6235,6 @@ in pixels; the window resizes to match.</value>
   </data>
   <data name="panelTop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="numericBoxProjWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="numericBoxProjWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxProjWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxProjWidth.HeaderText" xml:space="preserve">
-    <value>ProjWidth</value>
-  </data>
-  <data name="numericBoxProjWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 0</value>
-  </data>
-  <data name="numericBoxProjWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxProjWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 100</value>
-  </data>
-  <data name="numericBoxProjWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="numericBoxProjWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 27</value>
-  </data>
-  <data name="numericBoxProjWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;numericBoxProjWidth.Name" xml:space="preserve">
-    <value>numericBoxProjWidth</value>
-  </data>
-  <data name="&gt;&gt;numericBoxProjWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxProjWidth.Parent" xml:space="preserve">
-    <value>panelTop</value>
-  </data>
-  <data name="&gt;&gt;numericBoxProjWidth.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="panelTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -6499,10 +6633,5 @@ in pixels; the window resizes to match.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
-    <value>Width of the projected main view in nm.
-Smaller values zoom in. Synchronized with
-right-drag / wheel zooming on the view.</value>
   </data>
 </root>

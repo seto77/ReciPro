@@ -770,6 +770,10 @@ suivie d'une inversion) du groupe d'espace</value>
     <value>Couleur fixe appliquée aux étiquettes des atomes (utilisée
 lorsque « Use fixed color » est sélectionné)</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Couleur fixe appliquée aux étiquettes des atomes (utilisée
+lorsque « Use fixed color » est sélectionné)</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Largeur du trait des symboles d'axes de symétrie (0,5-10)</value>
   </data>
@@ -837,15 +841,6 @@ fractionnaires) le long de chaque axe de la maille.</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Translate le cadre de la maille élémentaire le long
 des axes a, b, c (coordonnées fractionnaires).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Ligne de l'axe a des options de la maille élémentaire.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Ligne de l'axe b des options de la maille élémentaire.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Ligne de l'axe c des options de la maille élémentaire.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Demi-largeur de la région affichée (coordonnées

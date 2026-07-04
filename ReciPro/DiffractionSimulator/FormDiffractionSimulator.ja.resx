@@ -456,6 +456,9 @@
   <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
     <value>エワルド球近傍の逆格子点の色を設定します。</value>
   </data>
+  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
+    <value>エワルド球近傍の逆格子点の色を設定します。</value>
+  </data>
   <data name="numericBox3D_SpotRadius.HeaderText" xml:space="preserve">
     <value>スポット半径</value>
   </data>
@@ -592,6 +595,9 @@
     <value>文字色</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
+    <value>3D ビューの指数ラベル文字の色を設定します。</value>
+  </data>
+  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
     <value>3D ビューの指数ラベル文字の色を設定します。</value>
   </data>
   <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">

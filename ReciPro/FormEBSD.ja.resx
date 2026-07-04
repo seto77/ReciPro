@@ -129,10 +129,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>軸を描画</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>検出器の
-中心位置</value>
-  </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
     <value>色</value>
   </data>
@@ -300,7 +296,14 @@
     <value>オーバーレイの指数文字（菊池線指数・
 晶帯軸指数など）の色を設定します。</value>
   </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>オーバーレイの指数文字（菊池線指数・
+晶帯軸指数など）の色を設定します。</value>
+  </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>背景色を設定します。</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
     <value>背景色を設定します。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
@@ -446,6 +449,9 @@ a/b/c の軸ラベル文字を表示します。</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>菊池線の描画色を設定します。</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>菊池線の描画色を設定します。</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>パターン強度の階調を Positive または
 Negative(白黒反転)から選択します。</value>
@@ -572,10 +578,6 @@ EBSDパターンの深さスライス(nm)を選択し
   <data name="label15.ToolTip" xml:space="preserve">
     <value>このステレオネットでは、中心が
 試料表面の法線方向に対応します。</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>試料を基準とした検出器中心の位置を、
-Y(横方向)とZ(電子線方向)のmmで指定します。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>表示像の階調を通常か反転(ネガ)かを選択します。</value>

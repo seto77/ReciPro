@@ -166,6 +166,10 @@
     <value>「色を指定」が有効なときに指数ラベル
 へ用いる固定色を設定します。</value>
   </data>
+  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
+    <value>「色を指定」が有効なときに指数ラベル
+へ用いる固定色を設定します。</value>
+  </data>
   <data name="groupBoxOutline.Text" xml:space="preserve">
     <value>輪郭</value>
   </data>
@@ -184,13 +188,26 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>ステレオネット描画領域の背景色を設定します。</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>ステレオネット描画領域の背景色を設定します。</value>
+  </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>90度線(最外周の基準円と主軸線、最も太い線)の色を設定します。</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
     <value>90度線(最外周の基準円と主軸線、最も太い線)の色を設定します。</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
     <value>ステレオネットの10度刻みの線(緯線・経線)の色を設定します。</value>
   </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value>ステレオネットの10度刻みの線(緯線・経線)の色を設定します。</value>
+  </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1度刻みの細線の色を設定します
+（「1° Lines」有効時のみ描画）。</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>1度刻みの細線の色を設定します
 （「1° Lines」有効時のみ描画）。</value>
   </data>
@@ -329,10 +346,17 @@ Miller 指数 (h k l) としてラベル表示します。</value>
   <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
     <value>菊池線モードでの極(点)と線の色を設定します。</value>
   </data>
+  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
+    <value>菊池線モードでの極(点)と線の色を設定します。</value>
+  </data>
   <data name="colorControlKikuchiLabel.FooterText" xml:space="preserve">
     <value>ラベル</value>
   </data>
   <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>菊池線モードでの晶帯軸ラベルの色を設定しま
+す(菊池線=非弾性散乱電子による回折バンド)。</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
     <value>菊池線モードでの晶帯軸ラベルの色を設定しま
 す(菊池線=非弾性散乱電子による回折バンド)。</value>
   </data>
@@ -360,6 +384,9 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>色</value>
   </data>
   <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>大円の描画色を設定します。</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
     <value>大円の描画色を設定します。</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
@@ -529,6 +556,10 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>色</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>追加または選択中の指数のプロット色を設定し
+ます（「Rotate color」オフ時に使用）。</value>
+  </data>
+  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>追加または選択中の指数のプロット色を設定し
 ます（「Rotate color」オフ時に使用）。</value>
   </data>

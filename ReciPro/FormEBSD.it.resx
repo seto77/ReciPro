@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Disegna assi</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Centro del rivelatore</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Spessore linea</value>
   </data>
@@ -171,12 +168,6 @@ all'intensità delle linee di Kikuchi</value>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Contorno del rivelatore</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Inclinazione rivelatore</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Raggio rivelatore</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>Geometria EBSD</value>
   </data>
@@ -255,7 +246,14 @@ all'intensità delle linee di Kikuchi</value>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Imposta un colore di sfondo</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Imposta un colore di sfondo</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Imposta il colore del testo in sovrapposizione, comprese
+le etichette degli indici delle linee di Kikuchi e degli assi di zona.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Imposta il colore del testo in sovrapposizione, comprese
 le etichette degli indici delle linee di Kikuchi e degli assi di zona.</value>
   </data>
@@ -418,6 +416,9 @@ per ottenere la distribuzione.</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>Imposta il colore usato per disegnare le linee di Kikuchi.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>Imposta il colore usato per disegnare le linee di Kikuchi.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Scegli la scala di grigi Positive o Negative (invertita)
 per l'intensità del pattern.</value>
@@ -452,17 +453,7 @@ pattern EBSD attualmente renderizzata (modalità a sezione singola).</value>
 in mm. Questo imposta l'angolo solido catturato e la
 risoluzione dello schermo (mm/pixel) del pattern simulato.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Imposta il raggio del rivelatore EBSD (schermo fosforescente)
-in mm. Questo imposta l'angolo solido catturato e la
-risoluzione dello schermo (mm/pixel) del pattern simulato.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Imposta l'angolo di inclinazione del piano del rivelatore in gradi
-rispetto all'asse del fascio (Z). Questo influisce sulla lunghezza
-di camera e sulla forma proiettata delle bande di Kikuchi.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>Imposta l'angolo di inclinazione del piano del rivelatore in gradi
 rispetto all'asse del fascio (Z). Questo influisce sulla lunghezza
 di camera e sulla forma proiettata delle bande di Kikuchi.</value>
@@ -580,11 +571,6 @@ degli elettroni retrodiffusi simulati.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>In questo stereogramma, il centro
 corrisponde alla normale alla superficie del campione.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Posizione del centro del rivelatore
-rispetto al campione, data come Y
-(laterale) e Z (lungo il fascio) in mm.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Seleziona la polarità dei livelli di grigio normale o invertita

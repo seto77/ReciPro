@@ -167,7 +167,7 @@ All bond/polyhedron rules registered for the crystal. Use **Add / Replace / Dele
 - **Center Atom**: show/hide the centre atom.
 - **Vertex Atoms**: show/hide the vertex atoms.
 - **Color** / **Alpha**: face colour and transparency.
-- **Show Edge**: draw the edges connecting the vertices.
+- **Show Edges**: draw the edges connecting the vertices.
 - **Edge Color** / **Width**: colour and line width of the edges.
 
 ### Unit Cell

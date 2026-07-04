@@ -201,9 +201,6 @@
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>투과 교차 계수</value>
   </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>부분 가간섭성 모델</value>
-  </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>HRTEM 옵션</value>
   </data>
@@ -221,9 +218,6 @@
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>시뮬레이션 설정</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>유효 광원 크기 (σs,  FWHM)</value>
   </data>
   <data name="label34.Text" xml:space="preserve">
     <value>α (입사 빔의
@@ -538,12 +532,6 @@ scattering, 열 확산 산란에 의한 비탄성)
     <value>대물 조리개의 반각(mrad)입니다. 조리개가
 작을수록 고각 회절 빔을 차단하여 고분해능
 이미지 디테일을 매끄럽게 만듭니다.</value>
-  </data>
-  <data name="label35.ToolTip" xml:space="preserve">
-    <value>ΔV: 전자 빔 에너지 폭의 반값 전폭(FWHM)으로,
-단위는 eV입니다. 색수차 계수 Cc와 함께
-색수차에 의한 초점 퍼짐(이미지 흐림)을
-결정합니다.</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV: 전자 빔 에너지 폭의 반값 전폭(FWHM)으로,
@@ -885,10 +873,6 @@ Step 및 Num과 조합하여 아래의
   </data>
   <data name="label34.ToolTip" xml:space="preserve">
     <value>STEM 입사 프로브의 수렴 반각 α(mrad)입니다.</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>유효 전자원 크기(σs, FWHM, 단위 pm)이며,
-STEM 프로브의 유한 광원 흐림을 모델링합니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>시료 두께(nm)입니다. "연속 이미지" 모드가

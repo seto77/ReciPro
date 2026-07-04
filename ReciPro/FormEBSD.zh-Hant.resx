@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>繪製座標軸</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>偵測器中心</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>線寬</value>
   </data>
@@ -171,12 +168,6 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>偵測器輪廓</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>偵測器傾角</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>偵測器半徑</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>EBSD 幾何</value>
   </data>
@@ -258,7 +249,14 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>設定背景顏色</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>設定背景顏色</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>設定疊加文字的顏色，包括
+菊池線與晶帶軸指數標籤。</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>設定疊加文字的顏色，包括
 菊池線與晶帶軸指數標籤。</value>
   </data>
@@ -414,6 +412,9 @@ Simulate 以取得該分佈。</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>設定繪製菊池線所用的顏色。</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>設定繪製菊池線所用的顏色。</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>為圖樣強度選擇 Positive 或
 Negative（反轉）灰階。</value>
@@ -448,16 +449,7 @@ Negative（反轉）灰階。</value>
 此設定決定所捕捉的立體角與模擬圖樣的
 螢幕解析度 (mm/像素)。</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>以 mm 設定 EBSD 偵測器（螢光屏）的半徑。
-此設定決定所捕捉的立體角與模擬圖樣的
-螢幕解析度 (mm/像素)。</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
-角。此會影響相機長度與菊池帶的投影形狀。</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜
 角。此會影響相機長度與菊池帶的投影形狀。</value>
   </data>
@@ -569,11 +561,6 @@ Depth 欄。</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>在此立體網中，中心
 對應於試片表面法線方向。</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>偵測器中心相對於試片的位置，
-以 Y（橫向）與 Z（沿電子束方向）
-的 mm 表示。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>為所顯示影像選擇正常或反轉（負片）

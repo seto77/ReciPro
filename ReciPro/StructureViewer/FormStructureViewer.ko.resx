@@ -785,6 +785,10 @@
     <value>원자 라벨에 적용되는 고정 색
 ('고정 색 사용' 선택 시 사용)</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>원자 라벨에 적용되는 고정 색
+('고정 색 사용' 선택 시 사용)</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>대칭축 기호의 선 너비 (0.5~10)</value>
   </data>
@@ -852,15 +856,6 @@
   <data name="label10.ToolTip" xml:space="preserve">
     <value>단위 격자 프레임을 a, b, c 축 방향으로
 병진 이동시킵니다 (분율 좌표).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>단위 격자 옵션의 a축 행입니다.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>단위 격자 옵션의 b축 행입니다.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>단위 격자 옵션의 c축 행입니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>각 단위 격자 축 방향을 따라 표시 영역의

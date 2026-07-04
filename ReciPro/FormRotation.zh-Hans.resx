@@ -94,9 +94,6 @@
     <value>重置
 角度</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>旋转矩阵</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro 坐标系 (ZXZ)</value>
   </data>
@@ -250,11 +247,6 @@ X 轴（第 1 次实验旋转 numericBoxExp1
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>将所有角度重置为零</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>ReciPro 坐标系的 3×3 取向（旋转）
-矩阵，由 ZXZ 欧拉角计算得出
-（只读）。</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>ReciPro 取向矩阵的 (1,1) 元素（只读、无量纲），
 由 ZXZ 欧拉角 Φ、Θ、Ψ 计算得出。</value>
@@ -298,18 +290,6 @@ X 轴（第 1 次实验旋转 numericBoxExp1
     <value>ReciPro 取向矩阵的 (3,3) 元素
 （只读、无量纲），由 ZXZ 欧拉
 角计算得出。</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>ZXZ 约定下 ReciPro 坐标系的第 2 欧拉角 Θ
-（度，绕 X 轴的旋转）；用于设定晶体取向。</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>ZXZ 约定下 ReciPro 坐标系的第 3 欧拉角 Ψ（度，
-最后一次绕 Z 轴的旋转）；用于设定晶体取向。</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>ZXZ 约定下 ReciPro 坐标系的第 1 欧拉角 Φ（度）；
-用于设定晶体取向和旋转矩阵。</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>绕实验坐标系第 1 测角仪轴的旋转角

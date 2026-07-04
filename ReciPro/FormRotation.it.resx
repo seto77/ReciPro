@@ -94,9 +94,6 @@
     <value>Reimposta
 angoli</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Matrice di rotazione</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>Sistema di coordinate ReciPro (ZXZ)</value>
   </data>
@@ -258,11 +255,6 @@ numericBoxExp1, viene applicata attorno ad esso).</value>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Reimposta tutti gli angoli a zero</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Matrice di orientazione (rotazione) 3x3 del sistema
-di coordinate di ReciPro, calcolata dagli angoli
-di Eulero ZXZ (sola lettura).</value>
-  </data>
   <data name="numericBox11.ToolTip" xml:space="preserve">
     <value>Elemento (riga 1, col 1) della matrice di orientazione di
 ReciPro (sola lettura, adimensionale), calcolato dagli
@@ -307,21 +299,6 @@ calcolato dagli angoli di Eulero ZXZ.</value>
     <value>Elemento (riga 3, col 3) della matrice di orientazione
 di ReciPro (sola lettura, adimensionale),
 calcolato dagli angoli di Eulero ZXZ.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Secondo angolo di Eulero Theta (gradi) del sistema di coordinate
-di ReciPro nella convenzione ZXZ (rotazione attorno a X);
-imposta l'orientazione del cristallo.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Terzo angolo di Eulero Psi (gradi) del sistema di coordinate
-di ReciPro nella convenzione ZXZ (rotazione finale attorno a Z);
-imposta l'orientazione del cristallo.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Primo angolo di Eulero Phi (gradi) del sistema di coordinate
-di ReciPro nella convenzione ZXZ; imposta l'orientazione
-del cristallo e la matrice di rotazione.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Angolo di rotazione (gradi, da -180 a 180) attorno al 1° asse

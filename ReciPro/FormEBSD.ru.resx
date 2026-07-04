@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Рисовать оси</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Центр детектора</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Толщина линии</value>
   </data>
@@ -171,12 +168,6 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Контур детектора</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Наклон детектора</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Радиус детектора</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>Геометрия EBSD</value>
   </data>
@@ -258,7 +249,14 @@
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Задать цвет фона</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Задать цвет фона</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Задаёт цвет наложенного текста, включая
+подписи индексов линий Кикучи и осей зон.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Задаёт цвет наложенного текста, включая
 подписи индексов линий Кикучи и осей зон.</value>
   </data>
@@ -421,6 +419,9 @@ Simulate, чтобы получить распределение.</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>Задаёт цвет, используемый для рисования линий Кикучи.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>Задаёт цвет, используемый для рисования линий Кикучи.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Выберите Positive или Negative (инвертированные)
 оттенки серого для интенсивности картины.</value>
@@ -455,17 +456,7 @@ Simulate, чтобы получить распределение.</value>
 в mm. Это задаёт захватываемый телесный угол и
 разрешение экрана (mm/пиксель) смоделированной картины.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Задаёт радиус детектора EBSD (люминофорного экрана)
-в mm. Это задаёт захватываемый телесный угол и
-разрешение экрана (mm/пиксель) смоделированной картины.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Задаёт угол наклона плоскости детектора в градусах
-относительно оси пучка (Z). Это влияет на длину камеры
-и проецируемую форму полос Кикучи.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>Задаёт угол наклона плоскости детектора в градусах
 относительно оси пучка (Z). Это влияет на длину камеры
 и проецируемую форму полос Кикучи.</value>
@@ -583,11 +574,6 @@ Simulate, чтобы получить распределение.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>На этой стереосетке центр
 соответствует нормали к поверхности образца.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Положение центра детектора
-относительно образца, заданное как Y
-(боковое) и Z (вдоль пучка) в mm.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Выберите обычную или инвертированную (негативную)

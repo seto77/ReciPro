@@ -785,6 +785,10 @@ com translação) do grupo espacial</value>
     <value>Cor fixa aplicada aos rótulos dos átomos (usada
 quando 'Use fixed color' está selecionado)</value>
   </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>Cor fixa aplicada aos rótulos dos átomos (usada
+quando 'Use fixed color' está selecionado)</value>
+  </data>
   <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
     <value>Largura de linha dos símbolos de eixos de simetria (0.5-10)</value>
   </data>
@@ -852,15 +856,6 @@ ao longo de cada eixo da célula unitária.</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Translada o contorno da célula unitária ao longo dos
 eixos a, b, c (coordenadas fracionárias).</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value>Linha do eixo a das opções da célula unitária.</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Linha do eixo b das opções da célula unitária.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>Linha do eixo c das opções da célula unitária.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>Semilargura da região exibida (coordenadas fracionárias)

@@ -83,9 +83,6 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Dibujar ejes</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Centro del detector</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Anchura de línea</value>
   </data>
@@ -168,12 +165,6 @@ a la intensidad de las líneas de Kikuchi</value>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Contorno del detector</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Inclinación del detector</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Radio del detector</value>
-  </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
     <value>Geometría EBSD</value>
   </data>
@@ -255,7 +246,14 @@ a la intensidad de las líneas de Kikuchi</value>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Establece el color de fondo</value>
   </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Establece el color de fondo</value>
+  </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>Fija el color del texto superpuesto, incluidas
+las etiquetas de índices de líneas de Kikuchi y de ejes de zona.</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Fija el color del texto superpuesto, incluidas
 las etiquetas de índices de líneas de Kikuchi y de ejes de zona.</value>
   </data>
@@ -418,6 +416,9 @@ primero Simular para obtener la distribución.</value>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>Fija el color usado para dibujar las líneas de Kikuchi.</value>
   </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>Fija el color usado para dibujar las líneas de Kikuchi.</value>
+  </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Elija escala de grises Positiva o Negativa (invertida)
 para la intensidad del patrón.</value>
@@ -452,17 +453,7 @@ patrón EBSD renderizada actualmente (modo de sección única).</value>
 en mm. Esto establece el ángulo sólido captado y la
 resolución de pantalla (mm/píxel) del patrón simulado.</value>
   </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value>Fija el radio del detector EBSD (pantalla de fósforo)
-en mm. Esto establece el ángulo sólido captado y la
-resolución de pantalla (mm/píxel) del patrón simulado.</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
-    <value>Fija el ángulo de inclinación del plano del detector en grados
-respecto al eje del haz (Z). Afecta a la longitud de cámara
-y a la forma proyectada de las bandas de Kikuchi.</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
     <value>Fija el ángulo de inclinación del plano del detector en grados
 respecto al eje del haz (Z). Afecta a la longitud de cámara
 y a la forma proyectada de las bandas de Kikuchi.</value>
@@ -580,11 +571,6 @@ de los electrones retrodispersados simulados.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>En este estereograma, el centro
 corresponde a la normal a la superficie de la muestra.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Posición del centro del detector
-respecto a la muestra, dada como Y
-(lateral) y Z (a lo largo del haz) en mm.</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>Selecciona polaridad de niveles de gris normal o invertida
