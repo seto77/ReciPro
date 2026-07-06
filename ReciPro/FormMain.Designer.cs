@@ -56,6 +56,7 @@
             buttonAdd = new System.Windows.Forms.Button();
             buttonReplace = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
+            labelLaTex4 = new LabelLaTeX();
             groupBoxProjectAlong = new System.Windows.Forms.GroupBox();
             indexControlPlane = new IndexControl();
             flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
@@ -403,6 +404,7 @@
             // panel1
             // 
             captureExtender.SetCapture(panel1, true);
+            panel1.Controls.Add(labelLaTex4);
             panel1.Controls.Add(groupBoxProjectAlong);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(groupBoxArrows);
@@ -411,6 +413,11 @@
             panel1.Controls.Add(label8);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
+            // 
+            // labelLaTex4
+            // 
+            resources.ApplyResources(labelLaTex4, "labelLaTex4");
+            labelLaTex4.Name = "labelLaTex4";
             // 
             // groupBoxProjectAlong
             // 
@@ -615,7 +622,6 @@
             numericBoxStep.Maximum = 360D;
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
-            numericBoxStep.RadianValue = 0.17453292519943295D;
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
             numericBoxStep.ThousandsSeparator = true;
@@ -761,7 +767,6 @@
             numericBoxMaxUVW.Maximum = 100D;
             numericBoxMaxUVW.Minimum = 1D;
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";
-            numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
             numericBoxMaxUVW.ShowUpDown = true;
             numericBoxMaxUVW.SkipEventDuringInput = false;
             numericBoxMaxUVW.ThousandsSeparator = true;
@@ -1479,5 +1484,6 @@
         private IndexControl indexControlAxis;
         private IndexControl indexControlPlane;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
+        private LabelLaTeX labelLaTex4;
     }
 }

@@ -1127,7 +1127,7 @@ coordinates) along each unit-cell axis.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 158</value>
+    <value>557, 160</value>
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1654,9 +1654,6 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1673,9 +1670,6 @@ based on crystal planes as follows</value>
     <value>6</value>
   </data>
   <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
-    <value>Set the color for all cell planes</value>
-  </data>
-  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
     <value>Set the color for all cell planes</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Name" xml:space="preserve">
@@ -1735,9 +1729,6 @@ based on crystal planes as follows</value>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1757,10 +1748,6 @@ based on crystal planes as follows</value>
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell face normal to the
-a-axis (used when 'Each plane' is selected).</value>
-  </data>
-  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell face normal to the
 a-axis (used when 'Each plane' is selected).</value>
   </data>
@@ -1785,9 +1772,6 @@ a-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1807,10 +1791,6 @@ a-axis (used when 'Each plane' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell face normal to the
-b-axis (used when 'Each plane' is selected).</value>
-  </data>
-  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell face normal to the
 b-axis (used when 'Each plane' is selected).</value>
   </data>
@@ -1835,9 +1815,6 @@ b-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellPlaneC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -1857,10 +1834,6 @@ b-axis (used when 'Each plane' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell face normal to the
-c-axis (used when 'Each plane' is selected).</value>
-  </data>
-  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell face normal to the
 c-axis (used when 'Each plane' is selected).</value>
   </data>
@@ -1993,9 +1966,6 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2012,9 +1982,6 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
-    <value>Set the color for all cell edges</value>
-  </data>
-  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
     <value>Set the color for all cell edges</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Name" xml:space="preserve">
@@ -2074,9 +2041,6 @@ c-axis (used when 'Each plane' is selected).</value>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2096,10 +2060,6 @@ c-axis (used when 'Each plane' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell edges along the
-a-axis (used when 'Each edge' is selected).</value>
-  </data>
-  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell edges along the
 a-axis (used when 'Each edge' is selected).</value>
   </data>
@@ -2124,9 +2084,6 @@ a-axis (used when 'Each edge' is selected).</value>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2146,10 +2103,6 @@ a-axis (used when 'Each edge' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell edges along the
-b-axis (used when 'Each edge' is selected).</value>
-  </data>
-  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell edges along the
 b-axis (used when 'Each edge' is selected).</value>
   </data>
@@ -2174,9 +2127,6 @@ b-axis (used when 'Each edge' is selected).</value>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -2196,10 +2146,6 @@ b-axis (used when 'Each edge' is selected).</value>
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
-    <value>Color of the unit-cell edges along the
-c-axis (used when 'Each edge' is selected).</value>
-  </data>
-  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
     <value>Color of the unit-cell edges along the
 c-axis (used when 'Each edge' is selected).</value>
   </data>
@@ -4056,9 +4002,6 @@ as a percentage (100% = default size).</value>
   <data name="colorControlInversion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4076,9 +4019,6 @@ as a percentage (100% = default size).</value>
   </data>
   <data name="colorControlInversion.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="colorControlInversion.ToolTip" xml:space="preserve">
-    <value>Set the display color of the inversion-center symbols.</value>
   </data>
   <data name="&gt;&gt;colorControlInversion.Name" xml:space="preserve">
     <value>colorControlInversion</value>
@@ -4289,9 +4229,6 @@ symbols, in percent (20-500%)</value>
   <data name="colorControlPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4309,10 +4246,6 @@ symbols, in percent (20-500%)</value>
   </data>
   <data name="colorControlPlane.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="colorControlPlane.ToolTip" xml:space="preserve">
-    <value>Set the display color of the symmetry-plane
-symbols (mirror and glide planes).</value>
   </data>
   <data name="&gt;&gt;colorControlPlane.Name" xml:space="preserve">
     <value>colorControlPlane</value>
@@ -4561,9 +4494,6 @@ with translation) of the space group</value>
   <data name="colorControlAxisColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4581,10 +4511,6 @@ with translation) of the space group</value>
   </data>
   <data name="colorControlAxisColor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
-    <value>Set the display color of the symmetry-axis
-symbols (rotation, screw, and rotoinversion axes).</value>
   </data>
   <data name="&gt;&gt;colorControlAxisColor.Name" xml:space="preserve">
     <value>colorControlAxisColor</value>
@@ -4768,9 +4694,6 @@ inversion centers) on the 3-D view.</value>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
@@ -4787,10 +4710,6 @@ inversion centers) on the 3-D view.</value>
     <value>3</value>
   </data>
   <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
-    <value>Fixed color applied to atom labels (used
-when 'Use fixed color' is selected)</value>
-  </data>
-  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
     <value>Fixed color applied to atom labels (used
 when 'Use fixed color' is selected)</value>
   </data>
@@ -4999,14 +4918,14 @@ when 'Use fixed color' is selected)</value>
     <value>99, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 26</value>
+    <value>173, 26</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>(Click a legend entry to
-adjust it individually)</value>
+    <value>(Click a legend entry to adjust it 
+individually)</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -5048,7 +4967,7 @@ adjust it individually)</value>
     <value>2</value>
   </data>
   <data name="groupBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 88</value>
+    <value>8, 85</value>
   </data>
   <data name="groupBoxLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 116</value>
@@ -5071,6 +4990,12 @@ adjust it individually)</value>
   <data name="&gt;&gt;groupBoxLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="groupBoxBondedAtoms.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxBondedAtoms.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="checkBoxShowBondedAtoms.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5081,7 +5006,7 @@ adjust it individually)</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
+    <value>6, 18</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -5119,7 +5044,7 @@ the boundaries</value>
     <value>308, 3</value>
   </data>
   <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 79</value>
+    <value>189, 94</value>
   </data>
   <data name="groupBoxBondedAtoms.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5146,10 +5071,10 @@ the boundaries</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
     <value>Legend size</value>
@@ -5263,10 +5188,10 @@ the boundaries</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxLightSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLightSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
     <value>Light ball size</value>
@@ -5308,10 +5233,10 @@ the boundaries</value>
     <value>0</value>
   </data>
   <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
     <value>Axes size</value>
