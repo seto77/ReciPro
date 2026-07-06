@@ -22,6 +22,7 @@
 | Simulate EBSD patterns | [EBSD simulation](12-ebsd-simulation.md) | [Electron trajectory](8-electron-trajectory.md), [Appendix A3. EBSD calculation](appendix/a3-bloch-wave/ebsd.md) |
 | Index experimental diffraction spots | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Diffraction simulator](7-diffraction-simulator/index.md) |
 | Understand the dynamical-diffraction equations | [Appendix A3. Bloch-wave method](appendix/a3-bloch-wave/index.md) | [Dynamical calculation](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| Understand space-group symbols and group–subgroup relations | [2. Symmetry information](2-symmetry-information.md) | [Appendix A4. Symmetry and Space Groups](appendix/a4-symmetry-space-groups/index.md), [Space-group symbols and diagrams](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [Group–subgroup relations](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## Features
 * **Full GUI** : All operations are performed through a graphical interface. Most file I/O supports drag & drop.

@@ -1,0 +1,116 @@
+# A4.2. Group–Subgroup Relations
+
+**Group Relations…** is a browser for the maximal-subgroup / minimal-supergroup relations of the 230 space-group types, opened from the **Options** panel of [Symmetry Information](../../2-symmetry-information.md). Unlike a static table, every relation it shows is computed at run time directly from the current space group's own symmetry operations (see [A4.1](symbols-and-diagrams.md#symmetry-operations-operations-tab)), so it can be cross-checked operation by operation rather than only trusted as a transcription of *International Tables*, Vol. A1.
+
+This page explains the group-theory vocabulary the browser uses, and then walks through each of its tabs.
+
+---
+
+## Hermann's theorem: *t*-, *k*-, and isomorphic subgroups
+
+A subgroup $H<G$ is **maximal** if no subgroup of $G$ lies strictly between $H$ and $G$. A theorem due to Carl Hermann (1929) says that, for the 3-dimensional space groups tabulated here, every maximal subgroup of a space group $G$ is one of two kinds:
+
+- **translationengleiche (*t*-) subgroup** — "translations-equal": $H$ keeps *all* of $G$'s translations (the same lattice, the same cell), but a smaller point group. The index $[G:H]$ (the number of cosets of $H$ in $G$) equals the point-group index $[P_G:P_H]$.
+- **klassengleiche (*k*-) subgroup** — "class-equal": $H$ keeps the *same geometric crystal class* (point-group type) as $G$, but only a sublattice of $G$'s translations — a larger conventional cell, and/or fewer centring vectors. The index equals the translation-lattice index $[T_G:T_H]$.
+
+**Isomorphic subgroups** are the special, important case of *k*-subgroups where $H$ is additionally of the *same space-group type* as $G$ itself (only a larger cell — a relationship that repeats indefinitely, so isomorphic subgroups form an infinite series indexed by cell size, unlike the finitely many *t*- and non-isomorphic *k*-subgroups of a given $G$). For a *maximal* isomorphic subgroup the index is always a prime power ($p$, and in three dimensions occasionally $p^2$ or $p^3$); which power occurs depends on how the finite quotient lattice decomposes as a module under the point group. Note also that a sublattice's basis change can carry a genuine change of basis vectors and an origin shift, not merely a uniform enlargement of the cell along one axis.
+
+Because every finite-index subgroup relation (maximal or not) can be reached as a chain of maximal steps, listing only the maximal subgroups (and, in the other direction, the minimal supergroups) is enough to describe the complete network of finite-index subgroup relations — which is exactly why ITA Vol. A1, and this browser, tabulate maximal/minimal relations only.
+
+!!! note "Only two kinds — isomorphic is a subclass, not a third"
+    It is common shorthand to speak of "*t*-, *k*-, and isomorphic subgroups" as if there were three peers, and the tree in this browser is indeed organised into three branches for convenience. Formally, though, Hermann's theorem is a **two**-way split (*t* vs. *k*); isomorphic subgroups are simply the *k*-subgroups that happen to reproduce $G$'s own space-group type.
+
+### Index, as a coset count
+
+Because space groups are infinite (they contain translations), "index" here always means **the number of cosets of $H$ in $G$**, not an order ratio $|G|/|H|$ (both orders are infinite) — for finite groups the two notions coincide, but for space groups only the coset-counting definition makes sense. The tree and the Matrix tab both display this index as e.g. `t, index 2` or `k, index 3`.
+
+### Conjugate subgroups and conjugacy class
+
+A given abstract subgroup relation can often be realised inside $G$ in more than one geometrically distinct way — related by orientation or location rather than by type — for instance a mirror plane's mirror image, or a screw axis along a differently-oriented but symmetry-equivalent direction. Two such realisations $H$ and $H'$ are conjugate **within $G$** if $H' = gHg^{-1}$ for some $g\in G$; the browser groups all such $G$-conjugate copies of one relation into a single entry and reports how many there are as the *conjugacy class* size. This is a strictly finer notion than grouping subgroups by the (coarser) equivalence under $G$'s Euclidean or affine normalizer — a classification ITA itself sometimes uses instead — so subgroups sharing the same type and index do not automatically belong to one conjugacy class; they can split into several.
+
+---
+
+## Navigating the browser
+
+- **Tree** (left pane) has two roots, **Maximal subgroups** and **Minimal supergroups**, each split into a **`t — translationengleiche`** branch, a **`k — klassengleiche`** branch, and (under Maximal subgroups only) an **`isomorphic (series)`** branch.
+- **Diagram** tab draws a simplified Bärnighausen-style skeleton: the current group in the middle (highlighted), up to 6 supergroups above it and all of its maximal *t*-subgroups below, connected by lines labelled with the index (e.g. `t2`, `t4`). This shows the group-theoretic skeleton only — a full Bärnighausen tree in the structural-relationship sense also carries cell transformations, Wyckoff-splitting, and atom-coordinate correlations at each edge, which live in the other tabs described below rather than on the diagram itself. **Only *t*-relations are drawn on this graph**; *k*-relations appear in the tree but not here.
+- **Single-click** (a tree node, or a Diagram node) selects a relation and populates the detail tabs below. **Double-click** *navigates*: it re-roots the whole browser at that space group, so you can walk step by step from group to subgroup to subgroup.
+- **Back / Forward / Home** step through your navigation history; **Home** always returns to the space group of the crystal you actually opened the browser from.
+- The **breadcrumb** (top) shows the space group currently displayed (`HM symbol (No. n)`); the **context banner** below it turns green ("Viewing the current crystal's space group.") when that matches your crystal, or amber ("Viewing … — not the current crystal (…).") when you have navigated elsewhere — a reminder that browsing a subgroup does *not* change your crystal.
+
+---
+
+## Matrix tab
+
+Shows the basis change and origin shift between the parent setting and the child setting, using ITA's convention: the new basis vectors are $(\mathbf a',\mathbf b',\mathbf c')=(\mathbf a,\mathbf b,\mathbf c)\cdot P$, and a point's parent-setting coordinates are $\mathbf x_{\text{parent}} = P\,\mathbf x_{\text{child}} + \mathbf p$. The $3\times3$ matrix $P$ and the origin shift $\mathbf p$ are printed as fractions.
+
+- When you reached this relation from **Maximal subgroups**, $P$ and $\mathbf p$ are shown directly (parent → child direction).
+- When you reached it from **Minimal supergroups** instead, the tab shows $P^{-1}$ (and the correspondingly inverted shift), captioned as *"derived from the supergroup's own subgroup table"* — the browser always stores a relation from the larger group's point of view and inverts it on demand, rather than maintaining two independent copies.
+- **Conjugate subgroups in this class: $n$** reports the size of the conjugacy class described above.
+- A generators table lists every coset representative, tagged **retained** (still present in $H$) or **lost** (present in $G$ but not in $H$ — these are exactly the operations responsible for the symmetry breaking), each with its Seitz symbol and geometric-type description from [A4.1](symbols-and-diagrams.md#symmetry-operations-operations-tab).
+- If a candidate relation's target space-group type could not be identified against ReciPro's catalogue, the tab says so plainly instead of guessing, and shows only the point-group symbol.
+
+---
+
+## Orbit splitting tab
+
+Shows how each of the *parent* group's Wyckoff positions splits when the symmetry is lowered to $H$: one row per parent position, listing the parent's multiplicity/letter/site-symmetry, the resulting child multiplicities/letters (joined with `+` if the orbit splits into more than one), how many pieces it split into, and the distinct child site symmetries.
+
+This is computed by actually substituting **one fixed, generic sample point** into both groups' operations and comparing the resulting orbits — a numerically *sampled* splitting, not the fully symbolic Wyckoff-splitting formalism (as used by tools such as WYCKSPLIT); it is deliberately labelled "Orbit splitting", not "Wyckoff splitting", for this reason — a fully symbolic treatment could in principle track every special-parameter coincidence, while this sampled approach reports only the splitting seen at one generic point and would not by itself flag a coincidence that occurs only for special values of $x,y,z$. It is only available for *t*-relations today (see **Current limitations**, below).
+
+---
+
+## Domains & Twins tab
+
+When a crystal transforms from $G$ to a subgroup $H$, each of the $[G:H]$ cosets of $H$ in $G$ corresponds to one possible **domain state**: the reference state is the identity coset, and each other coset — represented by one "lost" operation from the Matrix tab — generates one more domain state related to the reference by that operation.
+
+For a ***t*-subgroup** specifically, the translation lattice is unchanged ($T_G=T_H$), so there is, group-theoretically, no such thing as an **antiphase (translation) domain** here — every domain state differs from the reference by a genuine point-group operation, never by a bare shift. The tab therefore always reports `antiphase = 1` and `orientation = total`, i.e. all $[G:H]$ domain states are **orientation domains**. (Antiphase/translation domains become possible only for *k*-subgroup transitions, where translations genuinely are lost — see **Current limitations**.)
+
+The **twin law** for a pair of orientation domains is the lost operation's matrix part — a rotation or reflection, expressed as acting on the direct or reciprocal lattice — that maps one domain's lattice orientation onto the other's. For a *t*-subgroup transition, this operation is by construction a symmetry of the *parent* group $G$'s lattice, so if the low-symmetry structure's actual metric still has that lattice symmetry, the two domains' reciprocal lattices coincide exactly after the twin operation and their diffraction patterns overlap completely — the idealised case of *merohedral* twinning that this tab describes. In a real transition the low-symmetry phase typically develops a small spontaneous strain that only approximately keeps the parent's metric, so in practice the overlap is often only approximate (*pseudo-merohedral* twinning); this tab reports the group-theoretical, exact-metric twin law, not a measurement of how closely a particular real crystal approaches it.
+
+Only available for *t*-relations today (see **Current limitations**, below); with no lost operations (index 1 is never shown, but a degenerate case with an empty coset list is reported as `(single domain)`).
+
+---
+
+## New reflections tab
+
+For a *t*-subgroup transition, lists the reflections (searched up to $|h|,|k|,|l|\le4$) that become symmetry-allowed in $H$ although they were systematically absent in $G$ — i.e. reflections for which the parent's reflection conditions (from the [Conditions](../../2-symmetry-information.md) tab) forbid them, but $H$'s do not.
+
+Because a *t*-subgroup never enlarges the unit cell, these are **not** superstructure/fractional-index reflections — they remain integer $(h,k,l)$ of the parent cell, and only become *allowed* because a glide plane or screw axis that used to force them to vanish is no longer present. (Genuine superstructure reflections at fractional parent indices are only possible once the cell itself enlarges, which happens for a *k*-subgroup, not a *t*-subgroup. In general a *k*-subgroup can release *both* kinds at once — fractional-index reflections from the larger cell, and further integer-index reflections from losing some of the parent's centring translations, similar in spirit to this tab's *t*-only case — but this tab does not yet compute either kind for *k*-relations; see below.) A reflection appearing here is only symmetry-*permitted*; whether it is actually observed still depends on the structure factor of the real, lower-symmetry structure.
+
+Only available for *t*-relations today (see **Current limitations**, below).
+
+---
+
+## Current limitations
+
+The browser's *t*-subgroup and *t*-supergroup engine, and its *k*-subgroup engine, are fully implemented and independently verified against the space-group operation tables. A few branches are still placeholders, and are shown as such rather than silently omitted:
+
+- **Isomorphic subgroups** (their own tree branch) and ***k*-supergroups** (the *k* branch under Minimal supergroups) are not yet computed; the tree shows a greyed-out placeholder node in both cases.
+- **Orbit splitting**, **Domains & Twins**, and **New reflections** are implemented for *t*-relations only. Selecting a *k*-relation shows an explanatory message in place of a table on all three tabs, because the sampled-point / mod-1 logic written for an unchanged translation lattice would give wrong answers if reused for a *k*-relation's coarser lattice — a dedicated *k*-specific implementation (including the three-way "fractional / released / retained" reflection classification that only makes sense once the cell can enlarge) is planned for a later phase.
+- The **Diagram** tab draws *t*-relations only; *k*-relations are visible in the tree but have no graph representation yet.
+- The reflection search window is fixed at $|h|,|k|,|l|\le4$ and is not user-adjustable in the current version.
+
+---
+
+## Glossary
+
+| Term | Meaning |
+|---|---|
+| Maximal subgroup / minimal supergroup | A subgroup (supergroup) with no other subgroup relation strictly between it and $G$ |
+| Index $[G:H]$ | The number of cosets of $H$ in $G$ |
+| *translationengleiche* (*t*-) | Same translation lattice, smaller point group; index = point-group index |
+| *klassengleiche* (*k*-) | Same point-group type, sublattice of translations (larger cell); index = lattice index |
+| Isomorphic subgroup | A *k*-subgroup that is additionally of the same space-group type as $G$ |
+| Conjugacy class (within $G$) | The set of $G$-conjugate ($gHg^{-1}$) realisations of one subgroup relation |
+| Orientation domain | A domain state related to the reference by a point-group operation |
+| Antiphase (translation) domain | A domain state related to the reference by a lost translation only (possible for *k*-, not *t*-, transitions) |
+| Twin law | The matrix part of a lost operation, mapping one orientation domain's lattice onto another's |
+
+---
+
+## See also
+
+- [2. Symmetry information](../../2-symmetry-information.md) — the GUI guide this appendix explains.
+- [A4.1. Space-group symbols and symmetry diagrams](symbols-and-diagrams.md) — the Seitz-symbol/geometric-type vocabulary used throughout the Matrix and Domains & Twins tabs.
+- [Appendix A4. Symmetry and Space Groups](index.md)

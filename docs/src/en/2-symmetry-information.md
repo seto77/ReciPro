@@ -6,6 +6,9 @@
 
 The window is divided into a space-group identity area (top left), a calculation/table area with tabs (top right), and two schematic diagrams (bottom).
 
+!!! tip "Symmetry theory (Appendix A4)"
+    What a Hermann–Mauguin/Hall/Schoenflies symbol actually encodes, the group-theoretical classifications on the **Properties** tab (centrosymmetric, Sohncke, symmorphic, polar, …), the meaning of the symmetry-element/general-position diagrams below, and the group–subgroup relations shown by **Group Relations…** are all explained in **[Appendix A4. Symmetry and Space Groups](appendix/a4-symmetry-space-groups/index.md)**.
+
 ---
 
 ## Keyboard & mouse shortcuts
@@ -57,6 +60,28 @@ The reflection conditions arising from the lattice centring and from the glide/s
 
 ---
 
+## Operations
+
+Lists every symmetry operation of the general position (lattice-centring translations already expanded in) as a coordinate triplet, a Seitz symbol, and a plain-language geometric type (e.g. *"3-fold rotation"*, *"c-glide plane"*, *"screw axis"*). **Copy (CIF)** copies the full list to the clipboard as a CIF `_space_group_symop_operation_xyz` loop.
+
+→ See **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-operations-operations-tab)** for how to read these three notations.
+
+---
+
+## Properties
+
+Reports group-theoretical classifications of the current space group (general-position multiplicity, point-group order, centrosymmetric, Sohncke, symmorphic, polar direction, enantiomorphic partner, crystal family/lattice system/Bravais type, arithmetic crystal class, Patterson symmetry) and which macroscopic physical properties (pyroelectric/ferroelectric, piezoelectric, second-harmonic generation, optical activity) are allowed by that symmetry.
+
+→ See **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#group-theoretical-classification-properties-tab)** for what each term means.
+
+---
+
+## Settings
+
+Lists every tabulated origin/axis-setting choice sharing the current space group's IT number, each with its HM and Hall symbol, for reference; the currently displayed setting is marked. Selecting a row does not change the crystal.
+
+---
+
 ## Symmetry-element & general-position diagrams
 
 ![Symmetry-element & general-position diagrams](../assets/cap-en-auto/FormSymmetryInformation.tableLayoutPanel1.png)
@@ -73,6 +98,7 @@ Controls below the diagrams:
 
 - **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along.
 - **Copy** each diagram to the clipboard as a vector image (**EMF**) or raster image (**BMP**); EMF can be ungrouped and edited in PowerPoint.
+- **Group Relations…** opens a browser for the maximal-subgroup/minimal-supergroup relations of the current space group. See [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) for how to read it.
 
 ---
 
@@ -83,3 +109,4 @@ Controls below the diagrams:
 - [Stereonet](6-stereonet.md)
 - [Rotation geometry](4-rotation-geometry.md)
 - [Main window](0-main-window.md)
+- [Appendix A4. Symmetry and Space Groups](appendix/a4-symmetry-space-groups/index.md) — the crystallographic and group-theoretical background behind every tab and diagram on this page.

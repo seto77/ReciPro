@@ -112,6 +112,9 @@ plugins:
             "Appendix A3. Dynamical diffraction (Bloch-wave method)": Appendix A3. 動力学回折（Bloch波法）
             A3.1. Dynamical calculation: A3.1. 動力学計算
             A3.2. HRTEM image formation: A3.2. HRTEM 像形成
+            Appendix A4. Symmetry and Space Groups: Appendix A4. 対称性と空間群
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. 空間群記号と対称性模式図
+            A4.2. Group-subgroup relations: A4.2. 群・部分群の関係
             Troubleshooting: トラブルシューティング
         # 260622Cl: Phase 1 = de パイロット。nav_translations は GUI の de.resx 実ラベルに用語を揃える
         #   (Stereonetz/Rotationsgeometrie/Strahl-Wechselwirkung/Strukturansicht/Beugungssimulator/
@@ -682,4 +685,8 @@ nav:
           - A3.3. CBED: appendix/a3-bloch-wave/cbed.md
           - A3.4. STEM: appendix/a3-bloch-wave/stem.md
           - A3.5. EBSD: appendix/a3-bloch-wave/ebsd.md
+      - Appendix A4. Symmetry and Space Groups:
+          - appendix/a4-symmetry-space-groups/index.md
+          - A4.1. Space-group symbols and symmetry diagrams: appendix/a4-symmetry-space-groups/symbols-and-diagrams.md
+          - A4.2. Group-subgroup relations: appendix/a4-symmetry-space-groups/group-subgroup-relations.md
   - Troubleshooting: troubleshooting.md

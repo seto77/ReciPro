@@ -8,6 +8,9 @@
 
 > 上の画像は英語表示ですが、模式図の記号は言語に依存しません。
 
+!!! tip "対称性の理論的背景 (Appendix A4)"
+    ヘルマン・モーガン/Hall/シェーンフリース記号が実際に何を表しているか、**Properties**（群の性質）タブの群論的分類（中心対称・Sohncke・Symmorphic・極性、…）、下部の対称要素・一般位置模式図の意味、そして **Group Relations...**（群の関係）が示す群・部分群の関係は、すべて **[Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)** で説明しています。
+
 ---
 
 ## キーボード・マウスショートカット
@@ -59,6 +62,28 @@
 
 ---
 
+## Operations（対称操作）
+
+一般位置のすべての対称操作（格子心付けの並進は展開済み）を、座標トリプレット・Seitz記号・平易な幾何学的種類（例: 「3-fold rotation」「c-glide plane」「screw axis」）で一覧表示します。**コピー (CIF)** で全リストをCIFの `_space_group_symop_operation_xyz` ループとしてクリップボードにコピーできます。
+
+→ この3通りの表記の読み方は **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#対称操作対称操作タブ)** を参照してください。
+
+---
+
+## Properties（群の性質）
+
+現在の空間群の群論的分類（一般位置の多重度、点群の位数、中心対称、Sohncke、Symmorphic、極性、掌性対の相手、結晶族・格子系・ブラベー型、算術結晶類、Patterson対称）と、その対称性で許容される巨視的物性（焦電性/強誘電性、圧電性、第二高調波発生、旋光性）を表示します。
+
+→ 各用語の意味は **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#群論的分類群の性質タブ)** を参照してください。
+
+---
+
+## Settings（設定一覧）
+
+現在の空間群と同じIT番号を共有するすべての収録済み原点・軸設定の選択を、それぞれのHM記号・Hall記号とともに参考として一覧表示します。現在表示中の設定にはマークが付きます。行を選んでも結晶は変更されません。
+
+---
+
 ## 対称要素・一般位置の模式図
 
 ![対称要素・一般位置の模式図](../assets/cap-ja-auto/FormSymmetryInformation.tableLayoutPanel1.png)
@@ -77,6 +102,7 @@
 
 - **Direction**（`a` / `b` / `c`） : 投影する結晶軸を選択します。
 - 各模式図を **EMF**（ベクター画像）または **BMP**（ラスター画像）でクリップボードにコピーできます。EMFはPowerPointでグループ解除して編集できます。
+- **Group Relations...**（群の関係） : 現在の空間群の極大部分群／極小超群の関係を閲覧するブラウザを開きます。読み方は [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) を参照してください。
 
 ---
 
@@ -87,3 +113,4 @@
 - [ステレオネット](6-stereonet.md)
 - [回転ジオメトリ](4-rotation-geometry.md)
 - [メインウィンドウ](0-main-window.md)
+- [Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md) — このページの各タブ・模式図の背後にある結晶学・群論の理論的背景。

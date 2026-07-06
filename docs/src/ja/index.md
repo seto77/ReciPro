@@ -22,6 +22,7 @@
 | EBSDパターンを計算したい | [EBSDシミュレーション](12-ebsd-simulation.md) | [電子飛程](8-electron-trajectory.md)、[Appendix A3. EBSD の計算](appendix/a3-bloch-wave/ebsd.md) |
 | 実験回折像を指数付けしたい | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [回折シミュレータ](7-diffraction-simulator/index.md) |
 | 動力学計算の式を確認したい | [Appendix A3. Bloch波法](appendix/a3-bloch-wave/index.md) | [動力学計算](appendix/a3-bloch-wave/calculation.md)、[CBED](appendix/a3-bloch-wave/cbed.md)、[STEM](appendix/a3-bloch-wave/stem.md)、[EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| 空間群記号や群・部分群の関係を理解したい | [2. 対称性情報](2-symmetry-information.md) | [Appendix A4. 対称性と空間群](appendix/a4-symmetry-space-groups/index.md)、[空間群記号と模式図](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)、[群・部分群の関係](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## 主な機能
 * **Full GUI** : すべての操作はグラフィカルインターフェースで行います。ファイルの入出力はドラッグ＆ドロップに対応。
