@@ -13,7 +13,7 @@ The window is divided into a space-group identity area (top left), a calculation
 
 ## Keyboard & mouse shortcuts
 
-This window has no special key or mouse combinations. <kbd>F1</kbd> opens this manual page, and the two **Copy** buttons place the symmetry-element diagram and the general-position diagram on the clipboard (as a bitmap, or as a vector EMF when **EMF** is ticked).
+This window has no special key or mouse combinations. <kbd>F1</kbd> opens this manual page, and the two **Copy** buttons place the symmetry-element diagram and the general-position diagram on the clipboard (as vector **emf** or raster **bmp**, chosen with **Copy format**).
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
@@ -32,7 +32,7 @@ The top-left panel lists, for the current space group:
 
 ## Geometrics Calculation
 
-![Geometrics Calculation](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageGeometrics.png)
+![Geometrics Calculation](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageGeometrics.png)
 
 Enter two crystal planes \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) or two direction indices \([u_1, v_1, w_1]\), \([u_2, v_2, w_2]\) to obtain:
 
@@ -46,7 +46,7 @@ These calculations respect the metric of the current unit cell.
 
 ## Wyckoff Positions
 
-![Wyckoff Positions](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
+![Wyckoff Positions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
 Lists every Wyckoff position with its multiplicity, Wyckoff letter, site symmetry, and whether it is a general or special position. For centred lattices, the lattice translation vectors are shown in the header row.
 
@@ -54,13 +54,15 @@ Lists every Wyckoff position with its multiplicity, Wyckoff letter, site symmetr
 
 ## Conditions
 
-![Conditions](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
+![Conditions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 The reflection conditions arising from the lattice centring and from the glide/screw symmetry operators.
 
 ---
 
 ## Operations
+
+![Operations](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageOperations.png)
 
 Lists every symmetry operation of the general position (lattice-centring translations already expanded in) as a coordinate triplet, a Seitz symbol, and a plain-language geometric type (e.g. *"3-fold rotation"*, *"c-glide plane"*, *"screw axis"*). **Copy (CIF)** copies the full list to the clipboard as a CIF `_space_group_symop_operation_xyz` loop.
 
@@ -70,6 +72,8 @@ Lists every symmetry operation of the general position (lattice-centring transla
 
 ## Properties
 
+![Properties](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageProperties.png)
+
 Reports group-theoretical classifications of the current space group (general-position multiplicity, point-group order, centrosymmetric, Sohncke, symmorphic, polar direction, enantiomorphic partner, crystal family/lattice system/Bravais type, arithmetic crystal class, Patterson symmetry) and which macroscopic physical properties (pyroelectric/ferroelectric, piezoelectric, second-harmonic generation, optical activity) are allowed by that symmetry.
 
 → See **[Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#group-theoretical-classification-properties-tab)** for what each term means.
@@ -78,13 +82,15 @@ Reports group-theoretical classifications of the current space group (general-po
 
 ## Settings
 
+![Settings](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageSettings.png)
+
 Lists every tabulated origin/axis-setting choice sharing the current space group's IT number, each with its HM and Hall symbol, for reference; the currently displayed setting is marked. Selecting a row does not change the crystal.
 
 ---
 
 ## Symmetry-element & general-position diagrams
 
-![Symmetry-element & general-position diagrams](../assets/cap-en-auto/FormSymmetryInformation.tableLayoutPanel1.png)
+![Symmetry-element & general-position diagrams](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 
 The two panels at the bottom reproduce the schematic symmetry diagrams of the space group in the notation of *International Tables for Crystallography* Vol. A.
 
@@ -97,7 +103,7 @@ The two panels at the bottom reproduce the schematic symmetry diagrams of the sp
 Controls below the diagrams:
 
 - **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along.
-- **Copy** each diagram to the clipboard as a vector image (**EMF**) or raster image (**BMP**); EMF can be ungrouped and edited in PowerPoint.
+- **Copy** : copies each diagram to the clipboard in the format selected with **Copy format** (vector **emf** / raster **bmp**); emf can be ungrouped and edited in PowerPoint.
 - **Group Relations…** opens a browser for the maximal-subgroup/minimal-supergroup relations of the current space group. See [Appendix A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) for how to read it.
 
 ---

@@ -116,7 +116,7 @@ Lists every tabulated origin/axis-setting choice that shares the current space g
 
 ## Symmetry-element diagram
 
-![Symmetry-element & general-position diagrams](../../../assets/cap-en-auto/FormSymmetryInformation.tableLayoutPanel1.png)
+![Symmetry-element & general-position diagrams](../../../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 
 The left-hand diagram reproduces the ITA Vol. A schematic symmetry diagram for the current setting, projected along the axis chosen with the **Direction** (`a`/`b`/`c`) control.
 

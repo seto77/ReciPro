@@ -32,11 +32,15 @@ A given abstract subgroup relation can often be realised inside $G$ in more than
 
 ## Navigating the browser
 
-- **Tree** (left pane) has two roots, **Maximal subgroups** and **Minimal supergroups**, each split into a **`t — translationengleiche`** branch, a **`k — klassengleiche`** branch, and (under Maximal subgroups only) an **`isomorphic (series)`** branch.
-- **Diagram** tab draws a simplified Bärnighausen-style skeleton: the current group in the middle (highlighted), up to 6 supergroups above it and all of its maximal *t*-subgroups below, connected by lines labelled with the index (e.g. `t2`, `t4`). This shows the group-theoretic skeleton only — a full Bärnighausen tree in the structural-relationship sense also carries cell transformations, Wyckoff-splitting, and atom-coordinate correlations at each edge, which live in the other tabs described below rather than on the diagram itself. **Only *t*-relations are drawn on this graph**; *k*-relations appear in the tree but not here.
+![Group Relations browser](../../../assets/cap-en-auto/FormGroupRelations.png)
+
+- **Tree** (left pane) has two roots, **Maximal subgroups** and **Minimal supergroups**, each split into a **`t — translationengleiche`** branch, a **`k — klassengleiche`** branch, and (under Maximal subgroups only) an **`isomorphic (series)`** branch. Non-conjugate classes that share the same child type and index would otherwise get identical labels, so they are distinguished by a `· class n` suffix.
+- **Diagram** tab draws a simplified Bärnighausen-style skeleton: the current group in the middle (highlighted), up to 6 supergroups above it and all of its maximal *t*-subgroups below, connected by lines labelled with the index (e.g. `t2`, `t4`). Node symbols are typeset as proper crystallographic symbols — subscripts for screw axes, overbars for rotoinversions. This shows the group-theoretic skeleton only — a full Bärnighausen tree in the structural-relationship sense also carries cell transformations, Wyckoff-splitting, and atom-coordinate correlations at each edge, which live in the other tabs described below rather than on the diagram itself. **Only *t*-relations are drawn on this graph**; *k*-relations appear in the tree but not here.
 - **Single-click** (a tree node, or a Diagram node) selects a relation and populates the detail tabs below. **Double-click** *navigates*: it re-roots the whole browser at that space group, so you can walk step by step from group to subgroup to subgroup.
 - **Back / Forward / Home** step through your navigation history; **Home** always returns to the space group of the crystal you actually opened the browser from.
 - The **breadcrumb** (top) shows the space group currently displayed (`HM symbol (No. n)`); the **context banner** below it turns green ("Viewing the current crystal's space group.") when that matches your crystal, or amber ("Viewing … — not the current crystal (…).") when you have navigated elsewhere — a reminder that browsing a subgroup does *not* change your crystal.
+
+![Diagram tab](../../../assets/cap-en-auto/FormGroupRelations-tabDiagram.png)
 
 ---
 
@@ -56,7 +60,11 @@ Shows the basis change and origin shift between the parent setting and the child
 
 Shows how each of the *parent* group's Wyckoff positions splits when the symmetry is lowered to $H$: one row per parent position, listing the parent's multiplicity/letter/site-symmetry, the resulting child multiplicities/letters (joined with `+` if the orbit splits into more than one), how many pieces it split into, and the distinct child site symmetries.
 
-This is computed by actually substituting **one fixed, generic sample point** into both groups' operations and comparing the resulting orbits — a numerically *sampled* splitting, not the fully symbolic Wyckoff-splitting formalism (as used by tools such as WYCKSPLIT); it is deliberately labelled "Orbit splitting", not "Wyckoff splitting", for this reason — a fully symbolic treatment could in principle track every special-parameter coincidence, while this sampled approach reports only the splitting seen at one generic point and would not by itself flag a coincidence that occurs only for special values of $x,y,z$. It is only available for *t*-relations today (see **Current limitations**, below).
+This is computed by actually substituting **one fixed, generic sample point** into both groups' operations and comparing the resulting orbits — a numerically *sampled* splitting, not the fully symbolic Wyckoff-splitting formalism (as used by tools such as WYCKSPLIT); it is deliberately labelled "Orbit splitting", not "Wyckoff splitting", for this reason — a fully symbolic treatment could in principle track every special-parameter coincidence, while this sampled approach reports only the splitting seen at one generic point and would not by itself flag a coincidence that occurs only for special values of $x,y,z$.
+
+For a ***k*- or isomorphic relation** the same sampled approach is applied to the coarser translation lattice: the tab shows how each parent orbit splits as lattice translations are lost, and the child multiplicities are counted **in the enlarged subgroup cell** (so for an index-$n$ cell enlargement the multiplicities of the pieces sum to $n$ times the parent multiplicity).
+
+![Orbit splitting tab](../../../assets/cap-en-auto/FormGroupRelations-tabOrbit.png)
 
 ---
 
@@ -64,11 +72,15 @@ This is computed by actually substituting **one fixed, generic sample point** in
 
 When a crystal transforms from $G$ to a subgroup $H$, each of the $[G:H]$ cosets of $H$ in $G$ corresponds to one possible **domain state**: the reference state is the identity coset, and each other coset — represented by one "lost" operation from the Matrix tab — generates one more domain state related to the reference by that operation.
 
-For a ***t*-subgroup** specifically, the translation lattice is unchanged ($T_G=T_H$), so there is, group-theoretically, no such thing as an **antiphase (translation) domain** here — every domain state differs from the reference by a genuine point-group operation, never by a bare shift. The tab therefore always reports `antiphase = 1` and `orientation = total`, i.e. all $[G:H]$ domain states are **orientation domains**. (Antiphase/translation domains become possible only for *k*-subgroup transitions, where translations genuinely are lost — see **Current limitations**.)
+For a ***t*-subgroup** specifically, the translation lattice is unchanged ($T_G=T_H$), so there is, group-theoretically, no such thing as an **antiphase (translation) domain** here — every domain state differs from the reference by a genuine point-group operation, never by a bare shift. The tab therefore always reports `antiphase = 1` and `orientation = total`, i.e. all $[G:H]$ domain states are **orientation domains**.
+
+For a ***k*- or isomorphic** transition the situation is exactly reversed: the point group is unchanged, so there is only **one orientation state**, and the lost lattice translations generate **antiphase (translation) domains** — the tab reports `orientation = 1` and `antiphase = total`. Each lost translation is listed as a pure-translation Seitz symbol together with the corresponding antiphase vector expressed in the subgroup cell. Because all antiphase domains share the same orientation, their fundamental reflections coincide exactly; only the superlattice reflections (see the **New reflections** tab) carry a phase difference across an antiphase boundary.
 
 The **twin law** for a pair of orientation domains is the lost operation's matrix part — a rotation or reflection, expressed as acting on the direct or reciprocal lattice — that maps one domain's lattice orientation onto the other's. For a *t*-subgroup transition, this operation is by construction a symmetry of the *parent* group $G$'s lattice, so if the low-symmetry structure's actual metric still has that lattice symmetry, the two domains' reciprocal lattices coincide exactly after the twin operation and their diffraction patterns overlap completely — the idealised case of *merohedral* twinning that this tab describes. In a real transition the low-symmetry phase typically develops a small spontaneous strain that only approximately keeps the parent's metric, so in practice the overlap is often only approximate (*pseudo-merohedral* twinning); this tab reports the group-theoretical, exact-metric twin law, not a measurement of how closely a particular real crystal approaches it.
 
-Only available for *t*-relations today (see **Current limitations**, below); with no lost operations (index 1 is never shown, but a degenerate case with an empty coset list is reported as `(single domain)`).
+A degenerate case with an empty coset list is reported as `(single domain)` (index 1 is never shown as a relation).
+
+![Domains & Twins tab](../../../assets/cap-en-auto/FormGroupRelations-tabDomains.png)
 
 ---
 
@@ -76,18 +88,23 @@ Only available for *t*-relations today (see **Current limitations**, below); wit
 
 For a *t*-subgroup transition, lists the reflections (searched up to $|h|,|k|,|l|\le4$) that become symmetry-allowed in $H$ although they were systematically absent in $G$ — i.e. reflections for which the parent's reflection conditions (from the [Conditions](../../2-symmetry-information.md) tab) forbid them, but $H$'s do not.
 
-Because a *t*-subgroup never enlarges the unit cell, these are **not** superstructure/fractional-index reflections — they remain integer $(h,k,l)$ of the parent cell, and only become *allowed* because a glide plane or screw axis that used to force them to vanish is no longer present. (Genuine superstructure reflections at fractional parent indices are only possible once the cell itself enlarges, which happens for a *k*-subgroup, not a *t*-subgroup. In general a *k*-subgroup can release *both* kinds at once — fractional-index reflections from the larger cell, and further integer-index reflections from losing some of the parent's centring translations, similar in spirit to this tab's *t*-only case — but this tab does not yet compute either kind for *k*-relations; see below.) A reflection appearing here is only symmetry-*permitted*; whether it is actually observed still depends on the structure factor of the real, lower-symmetry structure.
+Because a *t*-subgroup never enlarges the unit cell, these are **not** superstructure/fractional-index reflections — they remain integer $(h,k,l)$ of the parent cell, and only become *allowed* because a glide plane or screw axis that used to force them to vanish is no longer present. (Genuine superstructure reflections at fractional parent indices are only possible once the cell itself enlarges, which happens for a *k*-subgroup, not a *t*-subgroup.) A reflection appearing here is only symmetry-*permitted*; whether it is actually observed still depends on the structure factor of the real, lower-symmetry structure.
 
-Only available for *t*-relations today (see **Current limitations**, below).
+For a ***k*- or isomorphic relation** the tab lists the new reflections **indexed on the enlarged subgroup cell** (again up to $|h'|,|k'|,|l'|\le4$) and classifies each one in the last column:
+
+- **superlattice reflections** map to *fractional* parent indices, shown in parentheses (e.g. `(1/2 0 1)`) — they appear purely because the cell enlarged;
+- **released reflections** are integer in the parent cell but were forbidden by a parent reflection condition that the subgroup lifts — the lifted parent rule is shown instead (this includes the loss of centring translations, e.g. an $I$-centred parent losing its $h+k+l$ even condition).
+
+Reflections allowed in both parent and child (fundamental reflections) are not listed. If the child's space-group type could not be identified, the child's reflection conditions are unknown and the tab says the prediction is not possible.
 
 ---
 
 ## Current limitations
 
-The browser's *t*-subgroup and *t*-supergroup engine, and its *k*-subgroup engine, are fully implemented and independently verified against the space-group operation tables. A few branches are still placeholders, and are shown as such rather than silently omitted:
+The browser's *t*- and *k*-subgroup engines, the *t*- and *k*-supergroup reverse lookups, and the isomorphic (IIc) classification are fully implemented and independently verified against the space-group operation tables, and the **Orbit splitting**, **Domains & Twins**, and **New reflections** tabs are live for every relation kind. The remaining limitations are shown as such rather than silently omitted:
 
-- **Isomorphic subgroups** (their own tree branch) and ***k*-supergroups** (the *k* branch under Minimal supergroups) are not yet computed; the tree shows a greyed-out placeholder node in both cases.
-- **Orbit splitting**, **Domains & Twins**, and **New reflections** are implemented for *t*-relations only. Selecting a *k*-relation shows an explanatory message in place of a table on all three tabs, because the sampled-point / mod-1 logic written for an unchanged translation lattice would give wrong answers if reused for a *k*-relation's coarser lattice — a dedicated *k*-specific implementation (including the three-way "fractional / released / retained" reflection classification that only makes sense once the cell can enlarge) is planned for a later phase.
+- **Isomorphic subgroups are enumerated only up to index ≤ 4.** An isomorphic series continues indefinitely to higher indices (for a cubic group, already $a'=3a$ is index 27), so the tree marks the branch with a greyed-out *"index ≤ 4 only — isomorphic series continue to higher indices"* note rather than pretending the list is complete.
+- ***k*-supergroups** are computed in the background on first use (the reverse lookup needs the *k*-subgroup tables of every type in the same crystal class); the tree briefly shows a greyed-out *"computing…"* node until it is ready.
 - The **Diagram** tab draws *t*-relations only; *k*-relations are visible in the tree but have no graph representation yet.
 - The reflection search window is fixed at $|h|,|k|,|l|\le4$ and is not user-adjustable in the current version.
 
