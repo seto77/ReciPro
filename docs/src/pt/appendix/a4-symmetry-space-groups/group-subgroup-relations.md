@@ -1,0 +1,132 @@
+# A4.2. Relações grupo–subgrupo
+
+**Relações de grupo...** é um navegador das relações de subgrupos maximais / supergrupos minimais dos 230 tipos de grupos espaciais, aberto a partir do painel **Opções** de [Informação de simetria](../../2-symmetry-information.md). Ao contrário de uma tabela estática, cada relação mostrada é calculada em tempo de execução diretamente a partir das operações de simetria do próprio grupo espacial atual (ver [A4.1](symbols-and-diagrams.md#operações-de-simetria-aba-operações)), de modo que pode ser conferida operação por operação, em vez de apenas aceita como uma transcrição das *International Tables*, Vol. A1.
+
+Esta página explica o vocabulário de teoria de grupos que o navegador usa e, em seguida, percorre cada uma de suas abas.
+
+---
+
+## O teorema de Hermann: subgrupos *t*, *k* e isomorfos
+
+Um subgrupo $H<G$ é **maximal** se nenhum subgrupo de $G$ está estritamente entre $H$ e $G$. Um teorema devido a Carl Hermann (1929) diz que, para os grupos espaciais tridimensionais aqui tabulados, todo subgrupo maximal de um grupo espacial $G$ é de um de dois tipos:
+
+- **subgrupo *translationengleiche* (*t*-)** — "de translações iguais": $H$ mantém *todas* as translações de $G$ (a mesma rede, a mesma célula), mas um grupo pontual menor. O índice $[G:H]$ (o número de classes laterais de $H$ em $G$) é igual ao índice dos grupos pontuais $[P_G:P_H]$.
+- **subgrupo *klassengleiche* (*k*-)** — "de classe igual": $H$ mantém a *mesma classe cristalina geométrica* (tipo de grupo pontual) de $G$, mas apenas uma sub-rede das translações de $G$ — uma célula convencional maior e/ou menos vetores de centragem. O índice é igual ao índice da rede de translações $[T_G:T_H]$.
+
+Os **subgrupos isomorfos** são o caso especial e importante dos subgrupos *k* em que $H$ é, além disso, do *mesmo tipo de grupo espacial* que o próprio $G$ (apenas com uma célula maior — uma relação que se repete indefinidamente, de modo que os subgrupos isomorfos formam uma série infinita indexada pelo tamanho da célula, ao contrário dos subgrupos *t* e *k* não isomorfos de um dado $G$, que são em número finito). Para um subgrupo isomorfo *maximal*, o índice é sempre uma potência de primo ($p$ e, em três dimensões, ocasionalmente $p^2$ ou $p^3$); qual potência ocorre depende de como a rede quociente finita se decompõe como módulo sob o grupo pontual. Note também que a mudança de base de uma sub-rede pode envolver uma troca genuína dos vetores de base e um deslocamento de origem, e não apenas uma ampliação uniforme da célula ao longo de um eixo.
+
+Como toda relação de subgrupo de índice finito (maximal ou não) pode ser alcançada como uma cadeia de passos maximais, listar apenas os subgrupos maximais (e, na direção oposta, os supergrupos minimais) é suficiente para descrever a rede completa de relações de subgrupo de índice finito — exatamente por isso as ITA Vol. A1, e este navegador, tabulam apenas as relações maximais/minimais.
+
+!!! note "Apenas dois tipos — isomorfo é uma subclasse, não um terceiro tipo"
+    É um atalho comum falar de "subgrupos *t*, *k* e isomorfos" como se fossem três categorias no mesmo nível, e a árvore deste navegador está, de fato, organizada em três ramos por conveniência. Formalmente, porém, o teorema de Hermann é uma divisão em **duas** vias (*t* vs. *k*); os subgrupos isomorfos são simplesmente os subgrupos *k* que por acaso reproduzem o próprio tipo de grupo espacial de $G$.
+
+### O índice como contagem de classes laterais
+
+Como os grupos espaciais são infinitos (eles contêm translações), "índice" aqui significa sempre **o número de classes laterais de $H$ em $G$**, e não uma razão de ordens $|G|/|H|$ (ambas as ordens são infinitas) — para grupos finitos as duas noções coincidem, mas para grupos espaciais apenas a definição por contagem de classes laterais faz sentido. A árvore e a aba Matriz exibem esse índice como, p. ex., `t, index 2` ou `k, index 3`.
+
+### Subgrupos conjugados e classe de conjugação
+
+Uma dada relação abstrata de subgrupo pode, com frequência, ser realizada dentro de $G$ de mais de uma maneira geometricamente distinta — relacionadas por orientação ou posição, e não por tipo — por exemplo, a imagem especular de um plano de espelho, ou um eixo de parafuso ao longo de uma direção orientada de outro modo, mas equivalente por simetria. Duas dessas realizações $H$ e $H'$ são conjugadas **dentro de $G$** se $H' = gHg^{-1}$ para algum $g\in G$; o navegador agrupa todas essas cópias $G$-conjugadas de uma relação em uma única entrada e informa quantas são como o tamanho da *classe de conjugação*. Essa é uma noção estritamente mais fina do que agrupar subgrupos pela equivalência (mais grosseira) sob o normalizador euclidiano ou afim de $G$ — uma classificação que as próprias ITA às vezes usam em seu lugar —, de modo que subgrupos com o mesmo tipo e o mesmo índice não pertencem automaticamente a uma única classe de conjugação; eles podem se dividir em várias.
+
+---
+
+## Navegação no navegador
+
+![Navegador de Relações de grupo](../../../assets/cap-pt-auto/FormGroupRelations.png)
+
+- A **árvore** (painel esquerdo) tem duas raízes, **Subgrupos maximais** e **Supergrupos minimais**, cada uma dividida em um ramo **`t — translationengleiche`**, um ramo **`k — klassengleiche`** e um ramo **`isomorfos (série)`**. Classes não conjugadas que compartilham o mesmo tipo e índice do filho receberiam rótulos idênticos, por isso são distinguidas por um sufixo `· classe n`.
+- A aba **Diagrama** desenha um esqueleto simplificado no estilo de Bärnighausen: o grupo atual no centro (em destaque), seus supergrupos minimais acima e seus subgrupos maximais abaixo — **relações *t*, *k* e isomorfas igualmente**, já que cada uma é um "passo maximal". Cada aresta é rotulada com seu tipo e índice (`t2`, `k3`, `i3`), com código de cores: azul para *t*, verde-azulado para *k* e laranja para isomorfo. Os símbolos dos nós são compostos como símbolos cristalográficos de verdade — subscritos para eixos de parafuso, barras superiores para rotoinversões. Classes não conjugadas que compartilham o mesmo tipo de destino, o mesmo tipo de relação e o mesmo índice são fundidas em um único nó, cuja aresta carrega uma contagem de classes (p. ex. `k2 ·2 cl.`) — a árvore continua sendo o lugar para inspecionar cada classe individualmente. Quando uma fileira contém mais relações do que cabe na largura da janela, os nós encolhem um passo e o restante é reunido em um nó tracejado `+N` (não clicável — use a árvore para a lista completa); um pequeno lembrete `i: apenas índice ≤ 4` aparece no canto sempre que arestas isomorfas são mostradas, e `k: calculando…` enquanto a consulta inversa de supergrupos *k* ainda está sendo construída. O que se mostra aqui é apenas o esqueleto de teoria de grupos — uma árvore de Bärnighausen completa, no sentido de relações estruturais, também carrega em cada aresta as transformações de célula, a divisão das posições de Wyckoff e as correlações de coordenadas atômicas, que vivem nas outras abas descritas abaixo, e não no próprio diagrama.
+- **Um clique** (em um nó da árvore ou em um nó do Diagrama) seleciona uma relação e preenche as abas de detalhe abaixo. **Duplo clique** *navega*: ele reancora todo o navegador naquele grupo espacial, permitindo caminhar passo a passo de grupo para subgrupo para subgrupo.
+- **Voltar / Avançar / Início** percorrem o seu histórico de navegação; **Início** retorna sempre ao grupo espacial do cristal a partir do qual você realmente abriu o navegador.
+- A **trilha de navegação** (parte superior) mostra o grupo espacial exibido no momento (`símbolo HM (No. n)`); a **faixa de contexto** logo abaixo fica verde ("Mostrando o grupo espacial do cristal atual.") quando ele coincide com o do seu cristal, ou âmbar ("Mostrando … — não é o cristal atual (…).") quando você navegou para outro lugar — um lembrete de que navegar por um subgrupo *não* altera o seu cristal.
+
+![Aba Diagrama](../../../assets/cap-pt-auto/FormGroupRelations-tabDiagram.png)
+
+---
+
+## Aba Matriz
+
+Mostra a mudança de base e o deslocamento de origem entre a configuração do pai e a configuração do filho, usando a convenção das ITA: os novos vetores de base são $(\mathbf a',\mathbf b',\mathbf c')=(\mathbf a,\mathbf b,\mathbf c)\cdot P$, e as coordenadas de um ponto na configuração do pai são $\mathbf x_{\text{parent}} = P\,\mathbf x_{\text{child}} + \mathbf p$. A matriz $3\times3$ $P$ e o deslocamento de origem $\mathbf p$ são impressos como frações.
+
+- Quando você chegou a esta relação a partir de **Subgrupos maximais**, $P$ e $\mathbf p$ são mostrados diretamente (direção pai → filho).
+- Quando, em vez disso, você chegou a ela a partir de **Supergrupos minimais**, a aba mostra $P^{-1}$ (e o deslocamento correspondentemente invertido), com a legenda *"derivada da tabela de subgrupos do próprio supergrupo"* — o navegador sempre armazena a relação do ponto de vista do grupo maior e a inverte sob demanda, em vez de manter duas cópias independentes.
+- **Subgrupos conjugados desta classe: $n$** informa o tamanho da classe de conjugação descrita acima.
+- Uma tabela de geradores lista cada representante de classe lateral, marcado como **mantido** (ainda presente em $H$) ou **perdido** (presente em $G$, mas não em $H$ — estas são exatamente as operações responsáveis pela quebra de simetria), cada um com seu símbolo de Seitz e sua descrição de tipo geométrico de [A4.1](symbols-and-diagrams.md#operações-de-simetria-aba-operações).
+- Se o tipo de grupo espacial de destino de uma relação candidata não pôde ser identificado no catálogo do ReciPro, a aba o declara claramente em vez de adivinhar, e mostra apenas o símbolo do grupo pontual.
+
+---
+
+## Aba Divisão de órbita
+
+Mostra como cada posição de Wyckoff do grupo *pai* se divide quando a simetria é reduzida a $H$: uma linha por posição do pai, listando multiplicidade/letra/simetria de sítio do pai, as multiplicidades/letras resultantes do filho (unidas com `+` se a órbita se divide em mais de uma), em quantas partes ela se dividiu e as simetrias de sítio distintas do filho.
+
+Isso é calculado substituindo de fato **um único ponto de amostra genérico e fixo** nas operações de ambos os grupos e comparando as órbitas resultantes — uma divisão *amostrada* numericamente, e não o formalismo totalmente simbólico de divisão de Wyckoff (como o usado por ferramentas como o WYCKSPLIT); é deliberadamente por essa razão que a aba se chama "Divisão de órbita", e não "Divisão de Wyckoff" — um tratamento totalmente simbólico poderia, em princípio, rastrear toda coincidência de parâmetros especiais, enquanto esta abordagem amostrada relata apenas a divisão vista em um ponto genérico e não sinalizaria, por si só, uma coincidência que ocorre apenas para valores especiais de $x,y,z$.
+
+Para uma **relação *k* ou isomorfa**, a mesma abordagem amostrada é aplicada à rede de translações mais grosseira: a aba mostra como cada órbita do pai se divide à medida que translações da rede são perdidas, e as multiplicidades do filho são contadas **na célula ampliada do subgrupo** (de modo que, para uma ampliação de célula de índice $n$, as multiplicidades das partes somam $n$ vezes a multiplicidade do pai).
+
+![Aba Divisão de órbita](../../../assets/cap-pt-auto/FormGroupRelations-tabOrbit.png)
+
+---
+
+## Aba Domínios e geminações
+
+Quando um cristal se transforma de $G$ para um subgrupo $H$, cada uma das $[G:H]$ classes laterais de $H$ em $G$ corresponde a um **estado de domínio** possível: o estado de referência é a classe lateral da identidade, e cada uma das outras classes laterais — representada por uma operação "perdida" da aba Matriz — gera mais um estado de domínio relacionado à referência por essa operação.
+
+Para um **subgrupo *t*** especificamente, a rede de translações não muda ($T_G=T_H$); portanto, do ponto de vista da teoria de grupos, não existe aqui um **domínio de antifase (de translação)** — cada estado de domínio difere da referência por uma operação genuína de grupo pontual, nunca por um mero deslocamento. A aba, portanto, informa sempre `antifase = 1` e `orientação = total`, isto é, todos os $[G:H]$ estados de domínio são **domínios de orientação**.
+
+Para uma transição ***k* ou isomorfa**, a situação se inverte exatamente: o grupo pontual não muda, então há apenas **um estado de orientação**, e as translações de rede perdidas geram **domínios de antifase (de translação)** — a aba informa `orientação = 1` e `antifase = total`. Cada translação perdida é listada como um símbolo de Seitz de translação pura, junto com o vetor de antifase correspondente expresso na célula do subgrupo. Como todos os domínios de antifase compartilham a mesma orientação, suas reflexões fundamentais coincidem exatamente; apenas as reflexões de superestrutura (veja a aba **Novas reflexões**) carregam uma diferença de fase através de uma fronteira de antifase.
+
+A **lei de geminação** para um par de domínios de orientação é a parte matricial da operação perdida — uma rotação ou reflexão, expressa como agindo sobre a rede direta ou recíproca — que leva a orientação da rede de um domínio à do outro. Para uma transição a um subgrupo *t*, essa operação é, por construção, uma simetria da rede do grupo *pai* $G$; portanto, se a métrica real da estrutura de baixa simetria ainda tiver aquela simetria de rede, as redes recíprocas dos dois domínios coincidem exatamente após a operação de geminação e seus padrões de difração se sobrepõem por completo — o caso idealizado de geminação *meroédrica* que esta aba descreve. Em uma transição real, a fase de baixa simetria tipicamente desenvolve uma pequena deformação espontânea que só mantém a métrica do pai de forma aproximada; na prática, portanto, a sobreposição costuma ser apenas aproximada (geminação *pseudomeroédrica*) — esta aba informa a lei de geminação exata da teoria de grupos, de métrica exata, e não uma medida de quão perto dela chega um cristal real particular.
+
+Um caso degenerado, com lista vazia de classes laterais, é informado como `(domínio único)` (o índice 1 nunca é mostrado como relação).
+
+![Aba Domínios e geminações](../../../assets/cap-pt-auto/FormGroupRelations-tabDomains.png)
+
+---
+
+## Aba Novas reflexões
+
+Para uma transição a um subgrupo *t*, lista as reflexões (buscadas até $|h|,|k|,|l|\le4$) que se tornam permitidas por simetria em $H$ embora fossem sistematicamente ausentes em $G$ — isto é, reflexões que as condições de reflexão do pai (da aba [Condições](../../2-symmetry-information.md)) proíbem, mas as de $H$ não.
+
+Como um subgrupo *t* nunca amplia a célula unitária, estas **não** são reflexões de superestrutura/de índice fracionário — elas permanecem com $(h,k,l)$ inteiros da célula do pai, e apenas se tornam *permitidas* porque um plano de deslizamento ou um eixo de parafuso que as obrigava a desaparecer já não está presente. (Reflexões de superestrutura genuínas, com índices fracionários do pai, só são possíveis quando a própria célula se amplia, o que acontece para um subgrupo *k*, não para um subgrupo *t*.) Uma reflexão que aparece aqui é apenas *permitida* pela simetria; se ela é de fato observada ainda depende do fator de estrutura da estrutura real de baixa simetria.
+
+Para uma **relação *k* ou isomorfa**, a aba lista as novas reflexões **indexadas na célula ampliada do subgrupo** (novamente até $|h'|,|k'|,|l'|\le4$) e classifica cada uma na última coluna:
+
+- **reflexões de superestrutura** correspondem a índices *fracionários* do pai, mostrados entre parênteses (p. ex. `(1/2 0 1)`) — elas aparecem puramente porque a célula se ampliou;
+- **reflexões liberadas** são inteiras na célula do pai, mas eram proibidas por uma condição de reflexão do pai que o subgrupo levanta — em vez dos índices do pai, mostra-se a regra do pai levantada (isso inclui a perda de translações de centragem, p. ex. um pai centrado em $I$ que perde sua condição $h+k+l$ par).
+
+Reflexões permitidas tanto no pai quanto no filho (reflexões fundamentais) não são listadas. Se o tipo de grupo espacial do filho não pôde ser identificado, as condições de reflexão do filho são desconhecidas e a aba informa que a previsão não é possível.
+
+---
+
+## Limitações atuais
+
+Os mecanismos de subgrupos *t* e *k* do navegador, as consultas inversas de supergrupos *t* e *k* e a classificação isomorfa (IIc) estão totalmente implementados e verificados de forma independente contra as tabelas de operações dos grupos espaciais, e as abas **Divisão de órbita**, **Domínios e geminações** e **Novas reflexões** funcionam para todos os tipos de relação. As limitações remanescentes são mostradas como tais, em vez de silenciosamente omitidas:
+
+- **Os subgrupos isomorfos são enumerados apenas até índice ≤ 4.** Uma série isomorfa continua indefinidamente para índices maiores (para um grupo cúbico, já $a'=3a$ é índice 27), então a árvore marca o ramo com uma nota acinzentada *"apenas índice ≤ 4 — as séries isomorfas continuam em índices maiores"*, em vez de fingir que a lista está completa.
+- **Os supergrupos *k*** são calculados em segundo plano no primeiro uso (a consulta inversa precisa das tabelas de subgrupos *k* de todos os tipos da mesma classe cristalina); a árvore mostra brevemente um nó acinzentado *"calculando…"* (e o Diagrama, uma nota de canto *"k: calculando…"*) até que esteja pronta.
+- A janela de busca de reflexões é fixa em $|h|,|k|,|l|\le4$ e não é ajustável pelo usuário na versão atual.
+
+---
+
+## Glossário
+
+| Termo | Significado |
+|---|---|
+| Subgrupo maximal / supergrupo minimal | Um subgrupo (supergrupo) sem nenhuma outra relação de subgrupo estritamente entre ele e $G$ |
+| Índice $[G:H]$ | O número de classes laterais de $H$ em $G$ |
+| *translationengleiche* (*t*-) | Mesma rede de translações, grupo pontual menor; índice = índice dos grupos pontuais |
+| *klassengleiche* (*k*-) | Mesmo tipo de grupo pontual, sub-rede de translações (célula maior); índice = índice da rede |
+| Subgrupo isomorfo | Um subgrupo *k* que é, além disso, do mesmo tipo de grupo espacial que $G$ |
+| Classe de conjugação (dentro de $G$) | O conjunto das realizações $G$-conjugadas ($gHg^{-1}$) de uma relação de subgrupo |
+| Domínio de orientação | Um estado de domínio relacionado à referência por uma operação de grupo pontual |
+| Domínio de antifase (de translação) | Um estado de domínio relacionado à referência apenas por uma translação perdida (possível em transições *k*, não *t*) |
+| Lei de geminação | A parte matricial de uma operação perdida, que leva a rede de um domínio de orientação à de outro |
+
+---
+
+## Veja também
+
+- [2. Informação de simetria](../../2-symmetry-information.md) — o guia da GUI que este apêndice explica.
+- [A4.1. Símbolos de grupos espaciais e diagramas de simetria](symbols-and-diagrams.md) — o vocabulário de símbolos de Seitz/tipos geométricos usado ao longo das abas Matriz e Domínios e geminações.
+- [Apêndice A4. Simetria e grupos espaciais](index.md)

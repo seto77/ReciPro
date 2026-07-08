@@ -165,6 +165,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Anhang A4. Symmetrie und Raumgruppen
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Raumgruppensymbole und Symmetriediagramme
+            A4.2. Group-subgroup relations: A4.2. Gruppe-Untergruppe-Beziehungen
             Troubleshooting: Fehlerbehebung
         # 260622Cl: 波A 先頭 = fr。nav_translations は GUI の fr.resx 実ラベルに用語を揃える
         #   (Stéréonet/Géométrie de rotation/Interaction du faisceau/Visualiseur de structure/
@@ -215,6 +218,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Annexe A4. Symétrie et groupes d'espace
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Symboles des groupes d'espace et diagrammes de symétrie
+            A4.2. Group-subgroup relations: A4.2. Relations groupe–sous-groupe
             Troubleshooting: Dépannage
         # 260622Cl: 波A es。nav_translations は GUI es.resx 実ラベルに一致
         #   (Estereograma/Geometría de rotación/Interacción del haz/Visor de estructura/
@@ -264,6 +270,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Apéndice A4. Simetría y grupos espaciales
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Símbolos de grupos espaciales y diagramas de simetría
+            A4.2. Group-subgroup relations: A4.2. Relaciones grupo-subgrupo
             Troubleshooting: Solución de problemas
         # 260622Cl: 波A it。nav_translations は GUI it.resx 実ラベルに一致
         #   (Stereogramma/Geometria di rotazione/Interazione del fascio/Visualizzatore struttura/
@@ -313,6 +322,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Appendice A4. Simmetria e gruppi spaziali
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Simboli dei gruppi spaziali e diagrammi di simmetria
+            A4.2. Group-subgroup relations: A4.2. Relazioni gruppo-sottogruppo
             Troubleshooting: Risoluzione dei problemi
         # 260622Cl: 波A ru (Cyrillic)。nav_translations は GUI ru.resx 実ラベルに一致
         #   (Стереосеть/Геометрия вращения/Взаимодействие пучка/Просмотр структуры/
@@ -362,6 +374,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Приложение A4. Симметрия и пространственные группы
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Символы пространственных групп и диаграммы симметрии
+            A4.2. Group-subgroup relations: A4.2. Отношения группа–подгруппа
             Troubleshooting: Устранение неполадок
         # 260622Cl: 波B zh-Hans (簡体字)。partial alias = overrides/partials/languages/zh-Hans.html (Phase0設置済)。
         #   lunr は zh-Hans 非対応 → search から自動除外 (情報ログ)。nav は GUI zh-Hans.resx 実ラベルに一致
@@ -411,6 +426,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: 附录 A4. 对称性与空间群
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. 空间群符号与对称性示意图
+            A4.2. Group-subgroup relations: A4.2. 群-子群关系
             Troubleshooting: 故障排除
         # 260622Cl: 波B zh-Hant (繁体字・台湾)。Material 内蔵 zh-Hant partial で動作 (alias 不要)。lunr 非対応で検索除外。
         #   ★zh-Hans の単純変換でなく GUI zh-Hant.resx の台湾用語に一致 (繞射/極網/巨集/檢視器/資訊/視窗/交互作用 等)。
@@ -459,6 +477,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: 附錄 A4. 對稱性與空間群
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. 空間群符號與對稱性示意圖
+            A4.2. Group-subgroup relations: A4.2. 群與子群的關係
             Troubleshooting: 疑難排解
         # 260622Cl: 波B ko。Material 内蔵 ko partial。lunr 非対応で検索除外。260623Cl Released=true(作者判断・要ネイティブ校閲)。
         #   IUCr 未収録のため用語は GUI ko.resx 実ラベル拠 (회절/스테레오넷/회전 기하학/구조 뷰어/매크로/결정 목록 等)。
@@ -507,6 +528,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: 부록 A4. 대칭과 공간군
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. 공간군 기호와 대칭 다이어그램
+            A4.2. Group-subgroup relations: A4.2. 군-부분군 관계
             Troubleshooting: 문제 해결
         # 260622Cl: pt (pt-BR 寄り綴り要ネイティブ校閲)。260623Cl Released=true(作者判断)。nav は GUI pt.resx 実ラベルに一致
         #   (Estereonete/Geometria de rotação/Interação do feixe/Visualizador de estrutura/Simulador de difração 等)。
@@ -555,6 +579,9 @@ plugins:
             A3.3. CBED: A3.3. CBED
             A3.4. STEM: A3.4. STEM
             A3.5. EBSD: A3.5. EBSD
+            Appendix A4. Symmetry and Space Groups: Apêndice A4. Simetria e grupos espaciais
+            A4.1. Space-group symbols and symmetry diagrams: A4.1. Símbolos de grupos espaciais e diagramas de simetria
+            A4.2. Group-subgroup relations: A4.2. Relações grupo-subgrupo
             Troubleshooting: Solução de problemas
   # 260622Cl: 日本語ページのリネーム/移動履歴の redirect。JA は /ja/ 配下のままなので value (ja/新.md) が
   #   正しいルート URL に解決される。英語 (/en/) 系は legacy_en_redirects.py フックが担当するため入れない。
