@@ -86,11 +86,11 @@ Un cas dégénéré, avec une liste de classes latérales vide, est rapporté co
 
 ## Onglet Nouvelles réflexions
 
-Pour une transition vers un sous-groupe *t*-, liste les réflexions (recherchées jusqu'à $|h|,|k|,|l|\le4$) qui deviennent autorisées par la symétrie dans $H$ alors qu'elles étaient systématiquement absentes dans $G$ — c'est-à-dire les réflexions que les conditions de réflexion du parent (onglet [Conditions](../../2-symmetry-information.md)) interdisent, mais pas celles de $H$.
+Pour une transition vers un sous-groupe *t*-, liste les réflexions qui deviennent autorisées par la symétrie dans $H$ alors qu'elles étaient systématiquement absentes dans $G$ — c'est-à-dire les réflexions que les conditions de réflexion du parent (onglet [Conditions](../../2-symmetry-information.md)) interdisent, mais pas celles de $H$. La fenêtre de recherche se règle avec le compteur **Fenêtre de recherche** de l'onglet : $|h|,|k|,|l|\le4$ par défaut, ajustable de 2 à 8 (des bornes plus grandes peuvent lister beaucoup plus de réflexions).
 
 Comme un sous-groupe *t*- n'agrandit jamais la maille, il ne s'agit **pas** de réflexions de surstructure/à indices fractionnaires — elles restent des $(h,k,l)$ entiers de la maille parent, et deviennent seulement *autorisées* parce qu'un plan de glissement ou un axe hélicoïdal qui les forçait à s'annuler n'est plus présent. (De véritables réflexions de surstructure à indices parent fractionnaires ne deviennent possibles que lorsque la maille elle-même s'agrandit, ce qui se produit pour un sous-groupe *k*-, pas pour un sous-groupe *t*-.) Une réflexion qui apparaît ici est seulement *permise* par la symétrie ; qu'elle soit réellement observée dépend encore du facteur de structure de la structure réelle, de plus basse symétrie.
 
-Pour une relation ***k*- ou isomorphe**, l'onglet liste les nouvelles réflexions **indexées sur la maille agrandie du sous-groupe** (là encore jusqu'à $|h'|,|k'|,|l'|\le4$) et classe chacune d'elles dans la dernière colonne :
+Pour une relation ***k*- ou isomorphe**, l'onglet liste les nouvelles réflexions **indexées sur la maille agrandie du sous-groupe** (là encore dans la fenêtre de recherche) et classe chacune d'elles dans la dernière colonne :
 
 - les **réflexions de surstructure** correspondent à des indices parent *fractionnaires*, affichés entre parenthèses (par ex. `(1/2 0 1)`) — elles apparaissent uniquement parce que la maille s'est agrandie ;
 - les **réflexions libérées** sont entières dans la maille parent, mais étaient interdites par une condition de réflexion du parent que le sous-groupe lève — la règle parent levée est affichée à la place (cela inclut la perte de translations de centrage, par ex. un parent centré $I$ perdant sa condition $h+k+l$ pair).
@@ -105,7 +105,6 @@ Les moteurs de sous-groupes *t*- et *k*- du navigateur, les recherches inverses 
 
 - **Les sous-groupes isomorphes ne sont énumérés que jusqu'à l'indice ≤ 4.** Une série isomorphe continue indéfiniment vers des indices supérieurs (pour un groupe cubique, $a'=3a$ est déjà d'indice 27) ; l'arbre marque donc la branche d'une note grisée *« index ≤ 4 uniquement — les séries isomorphes continuent aux indices supérieurs »* plutôt que de prétendre que la liste est complète.
 - **Les supergroupes *k*-** sont calculés en arrière-plan à la première utilisation (la recherche inverse a besoin des tables de sous-groupes *k*- de chaque type de la même classe cristalline) ; l'arbre affiche brièvement un nœud grisé *« calcul en cours… »* (et le Diagramme une note de coin *« k: calcul en cours… »*) jusqu'à ce qu'elle soit prête.
-- La fenêtre de recherche des réflexions est fixée à $|h|,|k|,|l|\le4$ et n'est pas réglable par l'utilisateur dans la version actuelle.
 
 ---
 

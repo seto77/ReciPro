@@ -86,11 +86,11 @@ A degenerate case with an empty coset list is reported as `(single domain)` (ind
 
 ## New reflections tab
 
-For a *t*-subgroup transition, lists the reflections (searched up to $|h|,|k|,|l|\le4$) that become symmetry-allowed in $H$ although they were systematically absent in $G$ — i.e. reflections for which the parent's reflection conditions (from the [Conditions](../../2-symmetry-information.md) tab) forbid them, but $H$'s do not.
+For a *t*-subgroup transition, lists the reflections that become symmetry-allowed in $H$ although they were systematically absent in $G$ — i.e. reflections for which the parent's reflection conditions (from the [Conditions](../../2-symmetry-information.md) tab) forbid them, but $H$'s do not. The search window is set by the **Search window** spinner on the tab: $|h|,|k|,|l|\le4$ by default, adjustable from 2 to 8 (larger bounds can list many more reflections).
 
 Because a *t*-subgroup never enlarges the unit cell, these are **not** superstructure/fractional-index reflections — they remain integer $(h,k,l)$ of the parent cell, and only become *allowed* because a glide plane or screw axis that used to force them to vanish is no longer present. (Genuine superstructure reflections at fractional parent indices are only possible once the cell itself enlarges, which happens for a *k*-subgroup, not a *t*-subgroup.) A reflection appearing here is only symmetry-*permitted*; whether it is actually observed still depends on the structure factor of the real, lower-symmetry structure.
 
-For a ***k*- or isomorphic relation** the tab lists the new reflections **indexed on the enlarged subgroup cell** (again up to $|h'|,|k'|,|l'|\le4$) and classifies each one in the last column:
+For a ***k*- or isomorphic relation** the tab lists the new reflections **indexed on the enlarged subgroup cell** (again within the search window) and classifies each one in the last column:
 
 - **superlattice reflections** map to *fractional* parent indices, shown in parentheses (e.g. `(1/2 0 1)`) — they appear purely because the cell enlarged;
 - **released reflections** are integer in the parent cell but were forbidden by a parent reflection condition that the subgroup lifts — the lifted parent rule is shown instead (this includes the loss of centring translations, e.g. an $I$-centred parent losing its $h+k+l$ even condition).
@@ -105,7 +105,6 @@ The browser's *t*- and *k*-subgroup engines, the *t*- and *k*-supergroup reverse
 
 - **Isomorphic subgroups are enumerated only up to index ≤ 4.** An isomorphic series continues indefinitely to higher indices (for a cubic group, already $a'=3a$ is index 27), so the tree marks the branch with a greyed-out *"index ≤ 4 only — isomorphic series continue to higher indices"* note rather than pretending the list is complete.
 - ***k*-supergroups** are computed in the background on first use (the reverse lookup needs the *k*-subgroup tables of every type in the same crystal class); the tree briefly shows a greyed-out *"computing…"* node (and the Diagram a *"k: computing…"* corner note) until it is ready.
-- The reflection search window is fixed at $|h|,|k|,|l|\le4$ and is not user-adjustable in the current version.
 
 ---
 

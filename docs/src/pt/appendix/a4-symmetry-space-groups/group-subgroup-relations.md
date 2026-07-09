@@ -86,11 +86,11 @@ Um caso degenerado, com lista vazia de classes laterais, é informado como `(dom
 
 ## Aba Novas reflexões
 
-Para uma transição a um subgrupo *t*, lista as reflexões (buscadas até $|h|,|k|,|l|\le4$) que se tornam permitidas por simetria em $H$ embora fossem sistematicamente ausentes em $G$ — isto é, reflexões que as condições de reflexão do pai (da aba [Condições](../../2-symmetry-information.md)) proíbem, mas as de $H$ não.
+Para uma transição a um subgrupo *t*, lista as reflexões que se tornam permitidas por simetria em $H$ embora fossem sistematicamente ausentes em $G$ — isto é, reflexões que as condições de reflexão do pai (da aba [Condições](../../2-symmetry-information.md)) proíbem, mas as de $H$ não. A janela de busca é definida pelo seletor **Janela de busca** da aba: $|h|,|k|,|l|\le4$ por padrão, ajustável de 2 a 8 (limites maiores podem listar muitas mais reflexões).
 
 Como um subgrupo *t* nunca amplia a célula unitária, estas **não** são reflexões de superestrutura/de índice fracionário — elas permanecem com $(h,k,l)$ inteiros da célula do pai, e apenas se tornam *permitidas* porque um plano de deslizamento ou um eixo de parafuso que as obrigava a desaparecer já não está presente. (Reflexões de superestrutura genuínas, com índices fracionários do pai, só são possíveis quando a própria célula se amplia, o que acontece para um subgrupo *k*, não para um subgrupo *t*.) Uma reflexão que aparece aqui é apenas *permitida* pela simetria; se ela é de fato observada ainda depende do fator de estrutura da estrutura real de baixa simetria.
 
-Para uma **relação *k* ou isomorfa**, a aba lista as novas reflexões **indexadas na célula ampliada do subgrupo** (novamente até $|h'|,|k'|,|l'|\le4$) e classifica cada uma na última coluna:
+Para uma **relação *k* ou isomorfa**, a aba lista as novas reflexões **indexadas na célula ampliada do subgrupo** (novamente dentro da janela de busca) e classifica cada uma na última coluna:
 
 - **reflexões de superestrutura** correspondem a índices *fracionários* do pai, mostrados entre parênteses (p. ex. `(1/2 0 1)`) — elas aparecem puramente porque a célula se ampliou;
 - **reflexões liberadas** são inteiras na célula do pai, mas eram proibidas por uma condição de reflexão do pai que o subgrupo levanta — em vez dos índices do pai, mostra-se a regra do pai levantada (isso inclui a perda de translações de centragem, p. ex. um pai centrado em $I$ que perde sua condição $h+k+l$ par).
@@ -105,7 +105,6 @@ Os mecanismos de subgrupos *t* e *k* do navegador, as consultas inversas de supe
 
 - **Os subgrupos isomorfos são enumerados apenas até índice ≤ 4.** Uma série isomorfa continua indefinidamente para índices maiores (para um grupo cúbico, já $a'=3a$ é índice 27), então a árvore marca o ramo com uma nota acinzentada *"apenas índice ≤ 4 — as séries isomorfas continuam em índices maiores"*, em vez de fingir que a lista está completa.
 - **Os supergrupos *k*** são calculados em segundo plano no primeiro uso (a consulta inversa precisa das tabelas de subgrupos *k* de todos os tipos da mesma classe cristalina); a árvore mostra brevemente um nó acinzentado *"calculando…"* (e o Diagrama, uma nota de canto *"k: calculando…"*) até que esteja pronta.
-- A janela de busca de reflexões é fixa em $|h|,|k|,|l|\le4$ e não é ajustável pelo usuário na versão atual.
 
 ---
 

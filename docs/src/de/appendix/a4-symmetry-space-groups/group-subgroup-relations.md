@@ -86,11 +86,11 @@ Ein entarteter Fall mit leerer Nebenklassenliste wird als `(Einzeldomäne)` geme
 
 ## Registerkarte Neue Reflexe
 
-Listet für einen Übergang in eine *t*-Untergruppe die Reflexe (gesucht bis $|h|,|k|,|l|\le4$), die in $H$ symmetrieerlaubt werden, obwohl sie in $G$ systematisch ausgelöscht waren — d. h. Reflexe, die die Reflexionsbedingungen der Elterngruppe (von der Registerkarte [Bedingungen](../../2-symmetry-information.md)) verbieten, die von $H$ aber nicht.
+Listet für einen Übergang in eine *t*-Untergruppe die Reflexe, die in $H$ symmetrieerlaubt werden, obwohl sie in $G$ systematisch ausgelöscht waren — d. h. Reflexe, die die Reflexionsbedingungen der Elterngruppe (von der Registerkarte [Bedingungen](../../2-symmetry-information.md)) verbieten, die von $H$ aber nicht. Das Suchfenster wird mit dem **Suchfenster**-Drehfeld auf der Registerkarte eingestellt: standardmäßig $|h|,|k|,|l|\le4$, einstellbar von 2 bis 8 (größere Grenzen können deutlich mehr Reflexe auflisten).
 
 Weil eine *t*-Untergruppe die Elementarzelle nie vergrößert, sind dies **keine** Überstruktur-/Bruchindex-Reflexe — sie bleiben ganzzahlige $(h,k,l)$ der Elternzelle und werden nur deshalb *erlaubt*, weil eine Gleitspiegelebene oder Schraubenachse, die sie bisher zum Verschwinden zwang, nicht mehr vorhanden ist. (Echte Überstrukturreflexe bei gebrochenen Elternindizes sind erst möglich, wenn sich die Zelle selbst vergrößert, was bei einer *k*-Untergruppe geschieht, nicht bei einer *t*-Untergruppe.) Ein hier erscheinender Reflex ist nur symmetrie*erlaubt*; ob er tatsächlich beobachtet wird, hängt weiterhin vom Strukturfaktor der realen, niedersymmetrischen Struktur ab.
 
-Für eine ***k*- oder isomorphe Beziehung** listet die Registerkarte die neuen Reflexe **indiziert auf die vergrößerte Untergruppenzelle** (wieder bis $|h'|,|k'|,|l'|\le4$) und klassifiziert jeden in der letzten Spalte:
+Für eine ***k*- oder isomorphe Beziehung** listet die Registerkarte die neuen Reflexe **indiziert auf die vergrößerte Untergruppenzelle** (wieder innerhalb des Suchfensters) und klassifiziert jeden in der letzten Spalte:
 
 - **Überstrukturreflexe** entsprechen *gebrochenen* Elternindizes, die in Klammern gezeigt werden (z. B. `(1/2 0 1)`) — sie erscheinen allein deshalb, weil die Zelle vergrößert wurde;
 - **freigegebene Reflexe** sind in der Elternzelle ganzzahlig, waren aber durch eine Reflexionsbedingung der Elterngruppe verboten, die die Untergruppe aufhebt — stattdessen wird die aufgehobene Elternregel gezeigt (das schließt den Verlust von Zentrierungstranslationen ein, z. B. wenn eine $I$-zentrierte Elterngruppe ihre Bedingung „$h+k+l$ gerade“ verliert).
@@ -105,7 +105,6 @@ Die *t*- und *k*-Untergruppen-Engines des Browsers, die Rückwärtssuchen der *t
 
 - **Isomorphe Untergruppen werden nur bis zum Index ≤ 4 aufgezählt.** Eine isomorphe Serie setzt sich unbegrenzt zu höheren Indizes fort (bei einer kubischen Gruppe hat schon $a'=3a$ den Index 27), daher versieht der Baum den Zweig mit dem ausgegrauten Hinweis *„nur Index ≤ 4 — isomorphe Serien setzen sich zu höheren Indizes fort“*, statt Vollständigkeit der Liste vorzutäuschen.
 - ***k*-Obergruppen** werden bei der ersten Verwendung im Hintergrund berechnet (die Rückwärtssuche benötigt die *k*-Untergruppentabellen jedes Typs derselben Kristallklasse); der Baum zeigt kurzzeitig einen ausgegrauten Knoten *„wird berechnet…“* (und das Diagramm den Eckhinweis *„k: wird berechnet…“*), bis sie bereitstehen.
-- Das Suchfenster für Reflexe ist auf $|h|,|k|,|l|\le4$ festgelegt und in der aktuellen Version nicht vom Benutzer einstellbar.
 
 ---
 

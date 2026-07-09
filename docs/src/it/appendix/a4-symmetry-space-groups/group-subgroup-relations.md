@@ -86,11 +86,11 @@ Un caso degenere con l'elenco delle classi laterali vuoto viene riportato come `
 
 ## Scheda Nuove riflessioni
 
-Per una transizione a sottogruppo *t*-, elenca le riflessioni (cercate fino a $|h|,|k|,|l|\le4$) che diventano permesse dalla simmetria in $H$ pur essendo sistematicamente assenti in $G$ — cioè le riflessioni che le condizioni di riflessione del genitore (dalla scheda [Condizioni](../../2-symmetry-information.md)) vietano, ma quelle di $H$ no.
+Per una transizione a sottogruppo *t*-, elenca le riflessioni che diventano permesse dalla simmetria in $H$ pur essendo sistematicamente assenti in $G$ — cioè le riflessioni che le condizioni di riflessione del genitore (dalla scheda [Condizioni](../../2-symmetry-information.md)) vietano, ma quelle di $H$ no. La finestra di ricerca si imposta con il selettore **Finestra di ricerca** della scheda: $|h|,|k|,|l|\le4$ per impostazione predefinita, regolabile da 2 a 8 (limiti maggiori possono elencare molte più riflessioni).
 
 Poiché un sottogruppo *t*- non ingrandisce mai la cella elementare, queste **non** sono riflessioni di superstruttura/a indici frazionari — restano $(h,k,l)$ interi della cella del genitore, e diventano *permesse* soltanto perché un piano di slittamento o un asse elicoidale che le obbligava ad annullarsi non è più presente. (Autentiche riflessioni di superstruttura a indici frazionari del genitore diventano possibili solo quando la cella stessa si ingrandisce, il che accade per un sottogruppo *k*-, non per un sottogruppo *t*-.) Una riflessione che compare qui è soltanto *permessa* dalla simmetria; che sia effettivamente osservata dipende comunque dal fattore di struttura della struttura reale a simmetria più bassa.
 
-Per una **relazione *k*- o isomorfa** la scheda elenca le nuove riflessioni **indicizzate sulla cella ingrandita del sottogruppo** (di nuovo fino a $|h'|,|k'|,|l'|\le4$) e classifica ciascuna nell'ultima colonna:
+Per una **relazione *k*- o isomorfa** la scheda elenca le nuove riflessioni **indicizzate sulla cella ingrandita del sottogruppo** (di nuovo entro la finestra di ricerca) e classifica ciascuna nell'ultima colonna:
 
 - le **riflessioni di superstruttura** corrispondono a indici *frazionari* del genitore, mostrati tra parentesi (es. `(1/2 0 1)`) — compaiono unicamente perché la cella si è ingrandita;
 - le **riflessioni liberate** sono intere nella cella del genitore, ma erano vietate da una condizione di riflessione del genitore che il sottogruppo rimuove — al loro posto è mostrata la regola del genitore rimossa (rientra qui anche la perdita di traslazioni di centratura, es. un genitore centrato $I$ che perde la sua condizione $h+k+l$ pari).
@@ -105,7 +105,6 @@ I motori del browser per i sottogruppi *t*- e *k*-, le ricerche inverse dei supe
 
 - **I sottogruppi isomorfi sono enumerati solo fino a indice ≤ 4.** Una serie isomorfa continua indefinitamente verso indici più alti (per un gruppo cubico, già $a'=3a$ è di indice 27), quindi l'albero contrassegna il ramo con una nota in grigio *"solo indice ≤ 4 — le serie isomorfe continuano a indici superiori"*, invece di fingere che l'elenco sia completo.
 - I **supergruppi *k*-** vengono calcolati in background al primo utilizzo (la ricerca inversa richiede le tabelle dei sottogruppi *k*- di ogni tipo della stessa classe cristallina); l'albero mostra per breve tempo un nodo in grigio *"calcolo in corso…"* (e il Diagramma una nota d'angolo *"k: calcolo in corso…"*) finché non è pronta.
-- La finestra di ricerca delle riflessioni è fissata a $|h|,|k|,|l|\le4$ e nella versione attuale non è regolabile dall'utente.
 
 ---
 

@@ -86,11 +86,11 @@ Un caso degenerado con la lista de clases laterales vacía se informa como `(dom
 
 ## Pestaña Nuevas reflexiones
 
-Para una transición a un subgrupo *t*, enumera las reflexiones (buscadas hasta $|h|,|k|,|l|\le4$) que pasan a estar permitidas por la simetría en $H$ aunque estaban sistemáticamente ausentes en $G$ — es decir, reflexiones que las condiciones de reflexión del padre (de la pestaña [Condiciones](../../2-symmetry-information.md)) prohíben, pero las de $H$ no.
+Para una transición a un subgrupo *t*, enumera las reflexiones que pasan a estar permitidas por la simetría en $H$ aunque estaban sistemáticamente ausentes en $G$ — es decir, reflexiones que las condiciones de reflexión del padre (de la pestaña [Condiciones](../../2-symmetry-information.md)) prohíben, pero las de $H$ no. La ventana de búsqueda se ajusta con el selector **Ventana de búsqueda** de la pestaña: $|h|,|k|,|l|\le4$ por defecto, ajustable de 2 a 8 (límites mayores pueden listar muchas más reflexiones).
 
 Como un subgrupo *t* nunca amplía la celda elemental, estas **no** son reflexiones de superestructura ni de índice fraccionario: siguen siendo $(h,k,l)$ enteros de la celda del padre, y solo pasan a estar *permitidas* porque el plano de deslizamiento o el eje helicoidal que antes las obligaba a anularse ya no está presente. (Las verdaderas reflexiones de superestructura con índices fraccionarios del padre solo son posibles cuando la propia celda se amplía, lo que ocurre para un subgrupo *k*, no para un subgrupo *t*.) Una reflexión que aparece aquí está solo *permitida* por la simetría; que se observe realmente sigue dependiendo del factor de estructura de la estructura real de menor simetría.
 
-Para una relación ***k* o isomorfa**, la pestaña enumera las nuevas reflexiones **indexadas en la celda ampliada del subgrupo** (de nuevo hasta $|h'|,|k'|,|l'|\le4$) y clasifica cada una en la última columna:
+Para una relación ***k* o isomorfa**, la pestaña enumera las nuevas reflexiones **indexadas en la celda ampliada del subgrupo** (de nuevo dentro de la ventana de búsqueda) y clasifica cada una en la última columna:
 
 - las **reflexiones de superestructura** corresponden a índices *fraccionarios* del padre, mostrados entre paréntesis (p. ej. `(1/2 0 1)`) — aparecen puramente porque la celda se amplió;
 - las **reflexiones liberadas** son enteras en la celda del padre, pero estaban prohibidas por una condición de reflexión del padre que el subgrupo levanta — en su lugar se muestra la regla del padre levantada (esto incluye la pérdida de traslaciones de centrado, p. ej. un padre centrado $I$ que pierde su condición de $h+k+l$ par).
@@ -105,7 +105,6 @@ Los motores de subgrupos *t* y *k* del explorador, las búsquedas inversas de su
 
 - **Los subgrupos isomorfos se enumeran solo hasta índice ≤ 4.** Una serie isomorfa continúa indefinidamente hacia índices mayores (para un grupo cúbico, ya $a'=3a$ es índice 27), así que el árbol marca la rama con una nota atenuada en gris *"solo índice ≤ 4 — las series isomorfas continúan en índices mayores"* en lugar de aparentar que la lista es completa.
 - **Los supergrupos *k*** se calculan en segundo plano la primera vez que se usan (la búsqueda inversa necesita las tablas de subgrupos *k* de todos los tipos de la misma clase cristalina); el árbol muestra brevemente un nodo atenuado *"calculando…"* (y el Diagrama, una nota de esquina *"k: calculando…"*) hasta que está listo.
-- La ventana de búsqueda de reflexiones está fijada en $|h|,|k|,|l|\le4$ y no es ajustable por el usuario en la versión actual.
 
 ---
 
