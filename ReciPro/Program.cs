@@ -27,6 +27,12 @@ internal static class Program
     [STAThread]
     private static void Main(string[] args)
     {
+        // 260711Cl 追加 (作者仕様): MathNet provider の一元初期化。MKL native DLL がダウンロード済みなら内側スレッド数 1 で
+        // ロードし、大きい bLen の STEM で自動的に MKL EVD が使われる (BetheMethod.MklStemBlenThreshold)。未ダウンロードなら
+        // managed を明示。旧: 各 static ctor の無条件 probe が「Use MKL」メニュー状態と食い違っていた (codex 調査)
+        // 260712Cl 変更 (codex 指摘): --capture/--diagnose も通常起動と同じ provider 条件になるよう Main 冒頭へ移動
+        MathNetProviderManager.Initialize(useMkl: MathNetProviderManager.MklNativeFilesExist());
+
         // 260612Cl 追加: CI 用の起動 smoke。NativeWrapper/Xraylib はロード失敗時に黙って Enabled=false へ
         // フォールバックする型のため、配布前検査として明示的に検査し、結果をファイルへ書き出す
         // (OutputType=WinExe のためコンソール出力は使えない)。GUI は一切起動しない。
@@ -115,12 +121,6 @@ internal static class Program
             // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
             Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
         }
-
-        // 260711Cl 追加 (作者仕様): MathNet provider の一元初期化。MKL native DLL がダウンロード済みなら内側スレッド数 1 で
-        // ロードし、大きい bLen の STEM で自動的に MKL EVD が使われる (BetheMethod.MklStemBlenThreshold)。未ダウンロードなら
-        // managed を明示。旧: 各 static ctor の無条件 probe が「Use MKL」メニュー状態と食い違い、MKL 内部スレッド数も
-        // 既定 MaxDoP のままロードされてオーバーサブスクリプションを起こしていた (codex 調査)
-        MathNetProviderManager.Initialize(useMkl: MathNetProviderManager.MklNativeFilesExist());
 
         Application.Run(new FormMain());
     }

@@ -326,7 +326,10 @@ public partial class FormMain : FormBase
         //Use MKL メニューを非表示にする。
         //260711Cl 変更 (作者仕様): 「Download MKL」化に伴い、ダウンロード済み環境でもメニューを非表示にする
         //(provider は Program.cs 起動時の MathNetProviderManager.Initialize が一元管理し、大 bLen の STEM で自動使用)
-        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 || MklFilesExist())
+        //260712Cl 変更 (codex 指摘): 判定を「ファイル存在」でなく「実ロード成功 (MklActive)」に変更。
+        //DLL が存在してもロードに失敗した環境ではメニューを残し、再ダウンロード (修復) の導線とする
+        //if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 || MklFilesExist()) //260712Cl 変更前
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 || MathNetProviderManager.MklActive || MathNetProviderManager.MklDisabledByEnvironment)
             toolStripMenuItemUseMKL.Visible = false;
 
 
@@ -2031,23 +2034,21 @@ public partial class FormMain : FormBase
     private static bool MklFilesExist() => MklFileNames.All(f => File.Exists(Path.Combine(MklDirectory, f)));
 
     //260711Cl 変更 (作者仕様): 「Use MKL」(CheckOnClick トグル) → 「Download MKL」(クリック=ダウンロード実行) へ。
-    //DL 成功後は provider を有効化してメニューを非表示にする (以後は起動時の MathNetProviderManager.Initialize が
-    //自動有効化し、大 bLen の STEM で自動使用される)。旧 CheckedChanged ハンドラは git 履歴参照
+    //260712Cl 変更 (codex レビュー反映): DL 直後の provider 即時切替を廃止し「次回起動から有効」方式に。
+    //provider は process-global のため、他フォームの計算 (BackgroundWorker) が走っている最中の切替は危険。
+    //起動時の MathNetProviderManager.Initialize (Program.cs) が次回から自動有効化する。
+    //DL 済みだがロード失敗している環境ではメニューが残る (可視性判定が MklActive ベース) ので、再 DL = 修復の導線になる
     private async void toolStripMenuItemUseMKL_Click(object sender, EventArgs e)
     {
-        if (MklFilesExist())//通常は DL 済みならメニュー非表示のため到達しない (念のため)
-        {
-            MathNetProviderManager.Initialize(useMkl: true);
-            toolStripMenuItemUseMKL.Visible = false;
-            return;
-        }
-
+        var repair = MklFilesExist();//存在するのにここへ来た = 前回ロード失敗 → 再ダウンロードで修復
         var result = MessageBox.Show(
-            "Download Intel MKL native library (~55 MB)?\r\nOnce downloaded, MKL will be used automatically for large computations.",
+            repair ? "MKL files exist but failed to load. Re-download Intel MKL native library (~55 MB)?"
+                   : "Download Intel MKL native library (~55 MB)?\r\nOnce downloaded, MKL will be used automatically for large computations (from the next launch).",
             "Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (result != DialogResult.Yes)
             return;
 
+        toolStripMenuItemUseMKL.Enabled = false;//260712Cl 追加 (codex 指摘: 二重クリックによる多重ダウンロード防止)
         toolStripProgressBar.Visible = true;
         sw.Restart();
         try
@@ -2055,23 +2056,21 @@ public partial class FormMain : FormBase
             var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
             await DownloadAndExtractMklAsync(progress);
             toolStripProgressBar.Visible = false;
+            //260712Cl: 即時有効化はしない (上記コメント参照)。次回起動時に Program.cs の Initialize が有効化する
+            toolStripStatusLabel.Text = "MKL library downloaded. It will be used automatically from the next launch.";
+            MessageBox.Show("MKL library was downloaded.\r\nIt will be used automatically for large computations from the next launch.",
+                "Download MKL Library", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            toolStripMenuItemUseMKL.Visible = false;
         }
         catch (Exception ex)
         {
             toolStripProgressBar.Visible = false;
             MessageBox.Show($"Failed to download MKL library.\r\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
         }
-
-        //ダウンロード直後に有効化 (この時点まで MKL は未ロードのため、MathNetProviderManager が内側スレッド数 1 で初回ロードする)
-        MathNetProviderManager.Initialize(useMkl: true);
-        if (MathNetProviderManager.MklActive)
+        finally
         {
-            toolStripStatusLabel.Text = "MKL library downloaded and enabled.";
-            toolStripMenuItemUseMKL.Visible = false;
+            toolStripMenuItemUseMKL.Enabled = true;
         }
-        else
-            MessageBox.Show("MKL library was downloaded but failed to load.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
     private static readonly System.Net.Http.HttpClient mklHttpClient = new();
