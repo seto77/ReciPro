@@ -116,6 +116,12 @@ internal static class Program
             Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
         }
 
+        // 260711Cl 追加 (作者仕様): MathNet provider の一元初期化。MKL native DLL がダウンロード済みなら内側スレッド数 1 で
+        // ロードし、大きい bLen の STEM で自動的に MKL EVD が使われる (BetheMethod.MklStemBlenThreshold)。未ダウンロードなら
+        // managed を明示。旧: 各 static ctor の無条件 probe が「Use MKL」メニュー状態と食い違い、MKL 内部スレッド数も
+        // 既定 MaxDoP のままロードされてオーバーサブスクリプションを起こしていた (codex 調査)
+        MathNetProviderManager.Initialize(useMkl: MathNetProviderManager.MklNativeFilesExist());
+
         Application.Run(new FormMain());
     }
 

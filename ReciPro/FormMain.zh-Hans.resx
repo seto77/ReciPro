@@ -207,7 +207,7 @@
     <value>保存晶体列表</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>使用 MKL 库</value>
+    <value>下载 MKL 库</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>使用离子散射因子</value>
@@ -433,8 +433,8 @@ STEM 为扫描透射电子显微镜。</value>
     <value>打开射束相互作用</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>启用 Intel MKL 以加快矩阵
-计算。首次使用时下载约 55MB。</value>
+    <value>下载 Intel MKL 原生库（约 55MB）。
+下载后将在大规模矩阵计算中自动使用。</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>在动力学计算中使用离子（完整 Peng）电子散射因子，

@@ -207,7 +207,7 @@
     <value>Kristallliste speichern</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>MKL-Bibliothek verwenden</value>
+    <value>MKL-Bibliothek herunterladen</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>Ionische Streufaktoren verwenden</value>
@@ -435,8 +435,8 @@ Wenn zusätzlich ein Ebenenindex angegeben ist, wird diese Ebenenrichtung nach o
     <value>Beam Interaction öffnen</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Aktiviert Intel MKL für schnellere Matrix-
-berechnungen. Lädt bei der ersten Verwendung ca. 55 MB herunter.</value>
+    <value>Lädt die native Intel-MKL-Bibliothek (ca. 55 MB) herunter.
+Nach dem Download wird MKL bei großen Matrixberechnungen automatisch verwendet.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>Verwendet in dynamischen Rechnungen ionische (vollständige Peng) Elektronen-Streufaktoren

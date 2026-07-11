@@ -204,7 +204,7 @@
     <value>Guardar lista de cristales</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Usar biblioteca MKL</value>
+    <value>Descargar biblioteca MKL</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>Usar factores de dispersión iónicos</value>
@@ -432,8 +432,8 @@ Si también se especifica un índice de plano, esa dirección del plano se muest
     <value>Abrir Interacción del haz</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Habilita Intel MKL para cálculos matriciales
-más rápidos. Descarga ~55MB en el primer uso.</value>
+    <value>Descarga la biblioteca nativa Intel MKL (~55MB).
+Una vez descargada, MKL se usa automáticamente en cálculos matriciales grandes.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>Usa factores de dispersión de electrones iónicos (Peng completo) en los cálculos

@@ -151,11 +151,13 @@ public partial class FormMain : FormBase
         set => toolStripMenuItemDisableNative.Checked = value;
     }
     //260405Cl 追加
-    public bool UseMKL
-    {
-        get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
-        set => toolStripMenuItemUseMKL.Checked = value;
-    }
+    //260711Cl 廃止 (作者仕様): 「Use MKL」トグル → 「Download MKL」化に伴い、チェック状態という概念自体を廃止
+    //(DL 済み = 使う意思。provider は Program.cs の MathNetProviderManager.Initialize が一元管理)
+    //public bool UseMKL
+    //{
+    //    get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
+    //    set => toolStripMenuItemUseMKL.Checked = value;
+    //}
 
     // 260428Cl 追加: ダークモード切替。Application.SetColorMode は Application.Run より前に呼ぶ必要があるため、
     // 永続化は Program.ReadDarkMode/WriteDarkMode (DWORD レジストリ) 側で行う。Reg.RW 経路は使わない。
@@ -321,9 +323,10 @@ public partial class FormMain : FormBase
         }
 
         //260611Cl 追加: ARM64 には MKL ネイティブが存在しない (x86/x64 専用、ダウンロード先 nupkg も x64 固定) ため
-        //Use MKL メニューを非表示にする。レジストリに残った UseMKL=true (同一マシンの x64 エミュ実行が保存し得る) は
-        //起動時の既存フォールバック (DLL 不在 → チェック解除) が無害化する
-        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+        //Use MKL メニューを非表示にする。
+        //260711Cl 変更 (作者仕様): 「Download MKL」化に伴い、ダウンロード済み環境でもメニューを非表示にする
+        //(provider は Program.cs 起動時の MathNetProviderManager.Initialize が一元管理し、大 bLen の STEM で自動使用)
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 || MklFilesExist())
             toolStripMenuItemUseMKL.Visible = false;
 
 
@@ -332,22 +335,24 @@ public partial class FormMain : FormBase
 
         //MainWindowの場所を読み込むため (InitializeComponentの後に読み込む)
         //260405Cl 起動時はUseMKLのCheckedChangedを抑制 (ip未初期化、ダウンロードダイアログ抑制のため)
-        toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
+        //260711Cl 廃止: CheckedChanged 自体を廃止 (Click=ダウンロードのみ) したため抑制も不要
+        //toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
         Registry(Reg.Mode.Read); //260524Cl: 強制カルチャ (--capture) の再適用は Registry() 内に集約済み (全 Read 呼び出しを一括カバー)
-        toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+        //toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
 
         //260405Cl 起動時: UseMKLがチェックされていてDLLが存在する場合のみMKLを有効化
-        if (toolStripMenuItemUseMKL.Checked && MklFilesExist())
-        {
-            if (MathNet.Numerics.Control.TryUseNativeMKL())
-                BetheMethod.MklEnabled = true;
-            else
-                toolStripMenuItemUseMKL.Checked = false; //ロード失敗時はチェックを外す
-        }
-        else if (toolStripMenuItemUseMKL.Checked && !MklFilesExist())
-        {
-            toolStripMenuItemUseMKL.Checked = false; //DLLがない場合はチェックを外す
-        }
+        //260711Cl 廃止: provider 初期化は Program.cs (MathNetProviderManager.Initialize) へ移動 (メニュー状態非依存)
+        //if (toolStripMenuItemUseMKL.Checked && MklFilesExist())
+        //{
+        //    if (MathNet.Numerics.Control.TryUseNativeMKL())
+        //        BetheMethod.MklEnabled = true;
+        //    else
+        //        toolStripMenuItemUseMKL.Checked = false; //ロード失敗時はチェックを外す
+        //}
+        //else if (toolStripMenuItemUseMKL.Checked && !MklFilesExist())
+        //{
+        //    toolStripMenuItemUseMKL.Checked = false; //DLLがない場合はチェックを外す
+        //}
 
         sw.Restart();
 
@@ -707,8 +712,9 @@ public partial class FormMain : FormBase
             //rw(() => UseMKL);
             //260611Cl ARM64 (メニュー非表示) では保存しない: 同一マシンの x64 エミュ実行が保存した UseMKL 設定を
             //arm64 実行が false で上書きしないため (DisableNative の交差汚染と同類の対策)。読込は従来通り
-            if (mode == Reg.Mode.Read || toolStripMenuItemUseMKL.Visible)
-                rw(() => UseMKL);
+            //260711Cl 廃止 (作者仕様): 「Download MKL」化に伴い UseMKL のチェック状態も永続化も廃止 (既存レジストリ値は放置で無害)
+            //if (mode == Reg.Mode.Read || toolStripMenuItemUseMKL.Visible)
+            //    rw(() => UseMKL);
 
             //260421Cl Miller-Bravais (4指数) 表記を使うかどうか
             rw(() => UseMillerBravais);
@@ -2024,65 +2030,48 @@ public partial class FormMain : FormBase
 
     private static bool MklFilesExist() => MklFileNames.All(f => File.Exists(Path.Combine(MklDirectory, f)));
 
-    private async void toolStripMenuItemUseMKL_CheckedChanged(object sender, EventArgs e)
+    //260711Cl 変更 (作者仕様): 「Use MKL」(CheckOnClick トグル) → 「Download MKL」(クリック=ダウンロード実行) へ。
+    //DL 成功後は provider を有効化してメニューを非表示にする (以後は起動時の MathNetProviderManager.Initialize が
+    //自動有効化し、大 bLen の STEM で自動使用される)。旧 CheckedChanged ハンドラは git 履歴参照
+    private async void toolStripMenuItemUseMKL_Click(object sender, EventArgs e)
     {
-        if (toolStripMenuItemUseMKL.Checked)
+        if (MklFilesExist())//通常は DL 済みならメニュー非表示のため到達しない (念のため)
         {
-            if (!MklFilesExist())
-            {
-                var result = MessageBox.Show(
-                    "MKL library is not found.\r\nDownload Intel MKL native library (~55 MB)?",
-                    "Use MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            MathNetProviderManager.Initialize(useMkl: true);
+            toolStripMenuItemUseMKL.Visible = false;
+            return;
+        }
 
-                if (result != DialogResult.Yes)
-                {
-                    toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
-                    toolStripMenuItemUseMKL.Checked = false;
-                    toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
-                    return;
-                }
+        var result = MessageBox.Show(
+            "Download Intel MKL native library (~55 MB)?\r\nOnce downloaded, MKL will be used automatically for large computations.",
+            "Download MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        if (result != DialogResult.Yes)
+            return;
 
-                toolStripProgressBar.Visible = true;
-                sw.Restart();
-                try
-                {
-                    var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
-                    await DownloadAndExtractMklAsync(progress);
-                    toolStripProgressBar.Visible = false;
-                    toolStripStatusLabel.Text = "MKL library downloaded successfully.";
-                }
-                catch (Exception ex)
-                {
-                    toolStripProgressBar.Visible = false;
-                    toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
-                    toolStripMenuItemUseMKL.Checked = false;
-                    toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
-                    MessageBox.Show($"Failed to download MKL library.\r\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+        toolStripProgressBar.Visible = true;
+        sw.Restart();
+        try
+        {
+            var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
+            await DownloadAndExtractMklAsync(progress);
+            toolStripProgressBar.Visible = false;
+        }
+        catch (Exception ex)
+        {
+            toolStripProgressBar.Visible = false;
+            MessageBox.Show($"Failed to download MKL library.\r\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
 
-            // MKLを有効化
-            if (MathNet.Numerics.Control.TryUseNativeMKL())
-            {
-                BetheMethod.MklEnabled = true;
-                toolStripStatusLabel.Text = "MKL library enabled.";
-            }
-            else
-            {
-                toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
-                toolStripMenuItemUseMKL.Checked = false;
-                toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
-                MessageBox.Show("Failed to load MKL library.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        //ダウンロード直後に有効化 (この時点まで MKL は未ロードのため、MathNetProviderManager が内側スレッド数 1 で初回ロードする)
+        MathNetProviderManager.Initialize(useMkl: true);
+        if (MathNetProviderManager.MklActive)
+        {
+            toolStripStatusLabel.Text = "MKL library downloaded and enabled.";
+            toolStripMenuItemUseMKL.Visible = false;
         }
         else
-        {
-            // MKLを無効化 (managed実装にフォールバック)
-            MathNet.Numerics.Control.UseManaged();
-            BetheMethod.MklEnabled = false;
-            toolStripStatusLabel.Text = "MKL library disabled. Using managed implementation.";
-        }
+            MessageBox.Show("MKL library was downloaded but failed to load.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
     private static readonly System.Net.Http.HttpClient mklHttpClient = new();

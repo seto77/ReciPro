@@ -445,11 +445,11 @@ v2</value>
     <value>OpenGLによるテキストレンダリングを無効化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>MKL ライブラリを使用</value>
+    <value>MKL ライブラリをダウンロード</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Intel MKL を有効化し行列計算を高速化しま
-す。初回使用時に約55MBダウンロードします。</value>
+    <value>Intel MKL ネイティブライブラリ (約55MB) をダウンロードします。
+ダウンロード後は大規模な行列計算で自動的に使用されます。</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>イオン散乱因子を使用</value>

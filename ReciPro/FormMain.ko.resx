@@ -207,7 +207,7 @@
     <value>결정 목록 저장</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>MKL 라이브러리 사용</value>
+    <value>MKL 라이브러리 다운로드</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>이온 산란 인자 사용</value>
@@ -435,8 +435,8 @@ STEM은 주사 투과 전자현미경법입니다.</value>
     <value>빔 상호작용 열기</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Intel MKL을 활성화하여 행렬 계산을 고속화합니다.
-최초 사용 시 약 55MB를 다운로드합니다.</value>
+    <value>Intel MKL 네이티브 라이브러리(약 55MB)를 다운로드합니다.
+다운로드 후에는 대규모 행렬 계산에 자동으로 사용됩니다.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>동역학적 계산에서 중성 원자 대신 이온(완전 Peng) 전자 산란

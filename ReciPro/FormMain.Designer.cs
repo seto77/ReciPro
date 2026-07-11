@@ -1073,13 +1073,14 @@
             toolStripMenuItemIonicScattering.Name = "toolStripMenuItemIonicScattering";
             resources.ApplyResources(toolStripMenuItemIonicScattering, "toolStripMenuItemIonicScattering");
             toolStripMenuItemIonicScattering.CheckedChanged += toolStripMenuItemIonicScattering_CheckedChanged;
-            // 
+            //
             // toolStripMenuItemUseMKL
-            // 
-            toolStripMenuItemUseMKL.CheckOnClick = true;
+            //
+            //toolStripMenuItemUseMKL.CheckOnClick = true;//260711Cl 廃止 (作者仕様): トグルではなくダウンロード実行ボタン化
             toolStripMenuItemUseMKL.Name = "toolStripMenuItemUseMKL";
             resources.ApplyResources(toolStripMenuItemUseMKL, "toolStripMenuItemUseMKL");
-            toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+            //toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;//260711Cl 変更前
+            toolStripMenuItemUseMKL.Click += toolStripMenuItemUseMKL_Click;//260711Cl 変更
             // 
             // toolStripSeparatorCapture
             // 

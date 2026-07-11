@@ -207,7 +207,7 @@
     <value>儲存晶體清單</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>使用 MKL 程式庫</value>
+    <value>下載 MKL 程式庫</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>使用離子散射因子</value>
@@ -430,8 +430,8 @@
     <value>開啟「電子束交互作用」</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>啟用 Intel MKL 以加速矩陣計算。
-首次使用時會下載約 55MB。</value>
+    <value>下載 Intel MKL 原生程式庫（約 55MB）。
+下載後將在大規模矩陣計算中自動使用。</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>在動力學計算中使用離子（完整 Peng）電子散射因子，

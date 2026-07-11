@@ -201,7 +201,7 @@
     <value>Enregistrer la liste des cristaux</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Utiliser la bibliothèque MKL</value>
+    <value>Télécharger la bibliothèque MKL</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>Utiliser les facteurs de diffusion ioniques</value>
@@ -429,8 +429,8 @@ Si un indice de plan est également spécifié, cette direction de plan est affi
     <value>Ouvre l'interaction du faisceau</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Active Intel MKL pour accélérer les calculs
-matriciels. Télécharge ~55 Mo à la première utilisation.</value>
+    <value>Télécharge la bibliothèque native Intel MKL (~55 Mo).
+Une fois téléchargée, MKL est utilisée automatiquement pour les grands calculs matriciels.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>Utilise les facteurs de diffusion électronique ioniques (Peng complet) dans les calculs

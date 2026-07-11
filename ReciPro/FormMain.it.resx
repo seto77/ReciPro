@@ -198,7 +198,7 @@
     <value>Salva elenco cristalli</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Usa libreria MKL</value>
+    <value>Scarica libreria MKL</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>Usa fattori di diffusione ionici</value>
@@ -426,8 +426,8 @@ Se è specificato anche un indice di piano, quella direzione di piano è mostrat
     <value>Apri Interazione del fascio</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Abilita Intel MKL per calcoli matriciali più
-veloci. Scarica circa 55MB al primo utilizzo.</value>
+    <value>Scarica la libreria nativa Intel MKL (~55MB).
+Una volta scaricata, MKL viene usata automaticamente per i calcoli matriciali di grandi dimensioni.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>Usa i fattori di diffusione elettronica ionici (Peng completo) nei calcoli

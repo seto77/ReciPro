@@ -3524,11 +3524,11 @@ calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
     <value>397, 22</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Use MKL Library</value>
+    <value>Download MKL Library</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Enable Intel MKL for faster matrix
-calculations. Downloads ~55MB on first use.</value>
+    <value>Download the Intel MKL native library (~55MB).
+Once downloaded, MKL is used automatically for large matrix calculations.</value>
   </data>
   <data name="toolStripSeparatorCapture.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 6</value>

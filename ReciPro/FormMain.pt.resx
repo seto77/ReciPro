@@ -204,7 +204,7 @@
     <value>Salvar lista de cristais</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
-    <value>Usar biblioteca MKL</value>
+    <value>Baixar biblioteca MKL</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
     <value>Usar fatores de dispersão iônicos</value>
@@ -432,8 +432,8 @@ Se um índice de plano também for especificado, essa direção de plano é most
     <value>Abrir Interação do Feixe</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Ativa o Intel MKL para cálculos de matriz mais
-rápidos. Baixa ~55MB no primeiro uso.</value>
+    <value>Baixa a biblioteca nativa Intel MKL (~55MB).
+Depois de baixada, o MKL é usado automaticamente em cálculos de matriz grandes.</value>
   </data>
   <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
     <value>Usa fatores de espalhamento de elétrons iônicos (Peng completo) nos cálculos
