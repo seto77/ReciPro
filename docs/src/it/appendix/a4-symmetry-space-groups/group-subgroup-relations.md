@@ -99,6 +99,20 @@ Le riflessioni permesse sia nel genitore sia nel figlio (riflessioni fondamental
 
 ---
 
+## Scheda Gruppi puntuali
+
+Mentre il resto del browser cammina fra gruppi *spaziali*, questa scheda mostra la mappa più ampia su cui vivono quei percorsi: il **diagramma di Hasse dei 32 tipi di gruppi puntuali cristallografici** (le classi cristalline geometriche) — l'ordine parziale che stabilisce quale tipo compare come sottogruppo di quale altro. Ogni nodo è un tipo di gruppo puntuale; l'asse verticale è l'ordine del gruppo (1 in basso, 48 in alto, in scala logaritmica), con la famiglia esagonale/trigonale che forma la torre di sinistra e la torre cubico–tetragonale–ortorombica a destra. Un arco è una relazione di sottogruppo *massimale* (di copertura) — nessun terzo tipo si colloca strettamente fra i due — e fra i 32 tipi esistono esattamente 80 archi di questo genere. Il diagramma è un ordine parziale ma *non* un reticolo in senso matematico: ha due elementi massimali, $m\bar3m$ e $6/mmm$, che non sono confrontabili.
+
+- Il gruppo puntuale del gruppo spaziale che stai sfogliando porta un alone azzurro tenue (come il nodo corrente della scheda Diagramma) ed è, per impostazione predefinita, il tipo *messo a fuoco*.
+- **Fai clic** su un nodo qualsiasi per mettere a fuoco quello: i suoi **tipi di sottogruppi si evidenziano in blu**, i suoi **tipi di supergruppi in arancione**, e i numeri sugli archi del nodo messo a fuoco sono l'**indice** (rapporto fra gli ordini) di quel passo massimale. I tipi non legati al fuoco restano grigi. Un clic sullo spazio vuoto riporta il fuoco al gruppo puntuale corrente. (Il clic non naviga mai da nessuna parte — un tipo di gruppo puntuale corrisponde a molti gruppi spaziali, non a uno solo.)
+- La didascalia in alto riassume il tipo messo a fuoco: i simboli di Hermann–Mauguin e di Schoenflies, l'ordine del gruppo $|G|$, quanti dei 230 tipi di gruppi spaziali gli appartengono e le dimensioni dei suoi insiemi di sottogruppi/supergruppi.
+
+Questo diagramma è l'ombra, a livello di gruppi puntuali, del teorema di Hermann: un passo di sottogruppo *t*- nell'albero scende qui esattamente di un arco (l'indice fra i gruppi spaziali di un passo *t*- è uguale all'indice dei gruppi puntuali sull'arco), mentre i passi *k*- e isomorfi restano sullo stesso nodo.
+
+![Scheda Gruppi puntuali](../../../assets/cap-it-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Limitazioni attuali
 
 I motori del browser per i sottogruppi *t*- e *k*-, le ricerche inverse dei supergruppi *t*- e *k*- e la classificazione isomorfa (IIc) sono pienamente implementati e verificati in modo indipendente rispetto alle tabelle delle operazioni dei gruppi spaziali, e le schede **Suddivisione orbita**, **Domini e geminazioni** e **Nuove riflessioni** sono operative per ogni tipo di relazione. Le limitazioni residue sono mostrate come tali, anziché omesse in silenzio:

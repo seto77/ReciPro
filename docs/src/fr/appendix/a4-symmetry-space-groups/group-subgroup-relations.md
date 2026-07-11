@@ -99,6 +99,20 @@ Les réflexions autorisées à la fois dans le parent et dans le fils (réflexio
 
 ---
 
+## Onglet Groupes ponctuels
+
+Tandis que le reste du navigateur chemine entre groupes *d'espace*, cet onglet montre la carte plus large sur laquelle se déroulent ces cheminements : le **diagramme de Hasse des 32 types de groupes ponctuels cristallographiques** (classes cristallines géométriques) — l'ordre partiel indiquant quel type apparaît comme sous-groupe de quel autre. Chaque nœud est un type de groupe ponctuel ; l'axe vertical est l'ordre du groupe (1 en bas, 48 en haut, sur une échelle logarithmique), la famille hexagonale/trigonale formant la tour de gauche et la tour cubique–quadratique–orthorhombique celle de droite. Une arête est une relation de sous-groupe *maximale* (de couverture) — aucun troisième type ne s'intercale strictement entre les deux — et il existe exactement 80 arêtes de ce genre parmi les 32 types. Le diagramme est un ordre partiel mais *pas* un treillis au sens mathématique : il possède deux éléments maximaux, $m\bar3m$ et $6/mmm$, qui ne sont pas comparables.
+
+- Le groupe ponctuel du groupe d'espace que vous parcourez porte un halo bleu pâle (comme le nœud actuel de l'onglet Diagramme) et constitue par défaut le type *sélectionné*.
+- **Cliquez** sur n'importe quel nœud pour le sélectionner à sa place : ses **types de sous-groupes sont mis en évidence en bleu**, ses **types de supergroupes en orange**, et les nombres portés par les arêtes propres du nœud sélectionné sont l'**indice** (rapport des ordres) de cette étape maximale. Les types sans relation avec la sélection restent gris. Cliquer sur un espace vide ramène la sélection sur le groupe ponctuel actuel. (Cliquer ne navigue jamais nulle part — un type de groupe ponctuel correspond à de nombreux groupes d'espace, pas à un seul.)
+- La légende en haut résume le type sélectionné : les symboles de Hermann–Mauguin et de Schoenflies, l'ordre du groupe $|G|$, le nombre de types de groupes d'espace, parmi les 230, qui lui appartiennent, et les tailles de ses ensembles de types de sous-groupes/supergroupes.
+
+Ce diagramme est l'ombre, côté groupes ponctuels, du théorème de Hermann : une étape de sous-groupe *t*- dans l'arbre descend ici exactement d'une arête (l'indice de groupe d'espace d'une étape *t*- est égal à l'indice des groupes ponctuels porté par l'arête), tandis que les étapes *k*- et isomorphes restent sur le même nœud.
+
+![Onglet Groupes ponctuels](../../../assets/cap-fr-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Limitations actuelles
 
 Les moteurs de sous-groupes *t*- et *k*- du navigateur, les recherches inverses de supergroupes *t*- et *k*-, ainsi que la classification isomorphe (IIc), sont entièrement implémentés et vérifiés de manière indépendante contre les tables d'opérations des groupes d'espace, et les onglets **Éclatement d'orbite**, **Domaines & Macles** et **Nouvelles réflexions** sont opérationnels pour tous les types de relation. Les limitations restantes sont affichées comme telles plutôt que passées sous silence :

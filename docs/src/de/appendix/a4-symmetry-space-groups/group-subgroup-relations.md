@@ -99,6 +99,20 @@ Reflexe, die in Eltern- und Kindgruppe gleichermaßen erlaubt sind (Grundreflexe
 
 ---
 
+## Registerkarte Punktgruppen
+
+Während der übrige Browser zwischen *Raum*gruppen wandert, zeigt diese Registerkarte die größere Landkarte, auf der diese Wanderungen stattfinden: das **Hasse-Diagramm der 32 kristallographischen Punktgruppentypen** (geometrische Kristallklassen) — die Halbordnung, welcher Typ als Untergruppe welches anderen auftritt. Jeder Knoten ist ein Punktgruppentyp; die vertikale Achse ist die Gruppenordnung (1 unten, 48 oben, auf logarithmischer Skala), wobei die hexagonale/trigonale Familie den linken Turm bildet und der kubisch–tetragonal–orthorhombische Turm rechts steht. Eine Kante ist eine *maximale* (überdeckende) Untergruppenbeziehung — kein dritter Typ liegt strikt dazwischen —, und es gibt unter den 32 Typen genau 80 solche Kanten. Das Diagramm ist eine Halbordnung, aber *kein* Verband im mathematischen Sinn: Es hat zwei maximale Elemente, $m\bar3m$ und $6/mmm$, die nicht vergleichbar sind.
+
+- Die Punktgruppe der gerade durchstöberten Raumgruppe trägt einen blassblauen Halo (wie der aktuelle Knoten der Registerkarte Diagramm) und ist standardmäßig der *fokussierte* Typ.
+- **Klicken** Sie auf einen beliebigen Knoten, um stattdessen ihn zu fokussieren: Seine **Untergruppentypen werden blau hervorgehoben**, seine **Obergruppentypen orange**, und die Zahlen an den eigenen Kanten des fokussierten Knotens sind der **Index** (das Ordnungsverhältnis) dieses maximalen Schritts. Typen ohne Beziehung zum Fokus bleiben grau. Ein Klick auf leere Fläche setzt den Fokus auf die aktuelle Punktgruppe zurück. (Ein Klick navigiert nie irgendwohin — ein Punktgruppentyp entspricht vielen Raumgruppen, nicht einer einzigen.)
+- Die Beschriftung oben fasst den fokussierten Typ zusammen: Hermann–Mauguin- und Schoenflies-Symbol, die Gruppenordnung $|G|$, wie viele der 230 Raumgruppentypen zu ihm gehören, und die Größen seiner Mengen von Untergruppen- und Obergruppentypen.
+
+Dieses Diagramm ist der Punktgruppen-Schatten des Satzes von Hermann: Ein *t*-Untergruppenschritt im Baum steigt hier genau eine Kante hinab (der Raumgruppenindex eines *t*-Schritts ist gleich dem Punktgruppenindex an der Kante), während *k*- und isomorphe Schritte auf demselben Knoten bleiben.
+
+![Registerkarte Punktgruppen](../../../assets/cap-de-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Aktuelle Einschränkungen
 
 Die *t*- und *k*-Untergruppen-Engines des Browsers, die Rückwärtssuchen der *t*- und *k*-Obergruppen und die isomorphe (IIc-)Klassifikation sind vollständig implementiert und unabhängig gegen die Operationstabellen der Raumgruppen verifiziert, und die Registerkarten **Bahnaufspaltung**, **Domänen & Zwillinge** und **Neue Reflexe** sind für jede Beziehungsart aktiv. Die verbleibenden Einschränkungen werden als solche angezeigt statt stillschweigend weggelassen:

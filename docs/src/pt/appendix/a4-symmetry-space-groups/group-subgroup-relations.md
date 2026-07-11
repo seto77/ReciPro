@@ -99,6 +99,20 @@ Reflexões permitidas tanto no pai quanto no filho (reflexões fundamentais) nã
 
 ---
 
+## Aba Grupos pontuais
+
+Enquanto o restante do navegador caminha entre grupos *espaciais*, esta aba mostra o mapa mais amplo em que esses passeios se inscrevem: o **diagrama de Hasse dos 32 tipos de grupos pontuais cristalográficos** (classes cristalinas geométricas) — a ordem parcial de qual tipo ocorre como subgrupo de qual. Cada nó é um tipo de grupo pontual; o eixo vertical é a ordem do grupo (1 embaixo, 48 no topo, em escala logarítmica), com a família hexagonal/trigonal formando a torre da esquerda e a torre cúbica–tetragonal–ortorrômbica à direita. Uma aresta é uma relação de subgrupo *maximal* (de cobertura) — nenhum terceiro tipo cabe estritamente entre os dois — e existem exatamente 80 dessas arestas entre os 32 tipos. O diagrama é uma ordem parcial, mas *não* um reticulado no sentido matemático: ele tem dois elementos maximais, $m\bar3m$ e $6/mmm$, que não são comparáveis.
+
+- O grupo pontual do grupo espacial que você está navegando carrega um halo azul-claro (como o nó atual da aba Diagrama) e é o tipo *em foco* por padrão.
+- **Clique** em qualquer nó para focá-lo em seu lugar: seus **tipos de subgrupos são realçados em azul**, seus **tipos de supergrupos em laranja**, e os números nas arestas do próprio nó em foco são o **índice** (razão de ordens) daquele passo maximal. Tipos sem relação com o foco permanecem cinza. Clicar no espaço vazio devolve o foco ao grupo pontual atual. (Clicar nunca navega para lugar nenhum — um tipo de grupo pontual corresponde a muitos grupos espaciais, não a um só.)
+- A legenda no topo resume o tipo em foco: os símbolos de Hermann–Mauguin e de Schoenflies, a ordem do grupo $|G|$, quantos dos 230 tipos de grupos espaciais pertencem a ele e os tamanhos de seus conjuntos de subgrupos/supergrupos.
+
+Este diagrama é a sombra em grupos pontuais do teorema de Hermann: um passo de subgrupo *t* na árvore desce exatamente uma aresta aqui (o índice do grupo espacial de um passo *t* é igual ao índice dos grupos pontuais na aresta), enquanto os passos *k* e isomorfos permanecem no mesmo nó.
+
+![Aba Grupos pontuais](../../../assets/cap-pt-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Limitações atuais
 
 Os mecanismos de subgrupos *t* e *k* do navegador, as consultas inversas de supergrupos *t* e *k* e a classificação isomorfa (IIc) estão totalmente implementados e verificados de forma independente contra as tabelas de operações dos grupos espaciais, e as abas **Divisão de órbita**, **Domínios e geminações** e **Novas reflexões** funcionam para todos os tipos de relação. As limitações remanescentes são mostradas como tais, em vez de silenciosamente omitidas:

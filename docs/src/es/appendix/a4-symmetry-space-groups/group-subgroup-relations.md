@@ -99,6 +99,20 @@ Las reflexiones permitidas tanto en el padre como en la hija (reflexiones fundam
 
 ---
 
+## Pestaña Grupos puntuales
+
+Mientras que el resto del explorador camina entre grupos *espaciales*, esta pestaña muestra el mapa más amplio en el que viven esos recorridos: el **diagrama de Hasse de los 32 tipos de grupos puntuales cristalográficos** (las clases cristalinas geométricas) — el orden parcial de qué tipo aparece como subgrupo de cuál. Cada nodo es un tipo de grupo puntual; el eje vertical es el orden del grupo (1 abajo, 48 arriba, en escala logarítmica), con la familia hexagonal/trigonal formando la torre izquierda y la torre cúbica–tetragonal–ortorrómbica a la derecha. Una arista es una relación de subgrupo *maximal* (de cobertura) — ningún tercer tipo cabe estrictamente entre ambos — y hay exactamente 80 de esas aristas entre los 32 tipos. El diagrama es un orden parcial pero *no* un retículo en el sentido matemático: tiene dos elementos maximales, $m\bar3m$ y $6/mmm$, que no son comparables.
+
+- El grupo puntual del grupo espacial que está explorando lleva un halo azul pálido (como el nodo actual de la pestaña Diagrama) y es el tipo *enfocado* por defecto.
+- **Haga clic** en cualquier nodo para enfocarlo en su lugar: sus **tipos de subgrupos se resaltan en azul**, sus **tipos de supergrupos en naranja**, y los números sobre las aristas propias del nodo enfocado son el **índice** (cociente de órdenes) de ese paso maximal. Los tipos sin relación con el foco permanecen en gris. Hacer clic en el espacio vacío devuelve el foco al grupo puntual actual. (Hacer clic nunca navega a ninguna parte — un tipo de grupo puntual corresponde a muchos grupos espaciales, no a uno solo.)
+- El rótulo de la parte superior resume el tipo enfocado: los símbolos de Hermann–Mauguin y Schoenflies, el orden del grupo $|G|$, cuántos de los 230 tipos de grupos espaciales le pertenecen y los tamaños de sus conjuntos de subgrupos/supergrupos.
+
+Este diagrama es la sombra en los grupos puntuales del teorema de Hermann: un paso de subgrupo *t* en el árbol desciende aquí exactamente una arista (el índice de grupos espaciales de un paso *t* es igual al índice de grupos puntuales de la arista), mientras que los pasos *k* e isomorfos permanecen en el mismo nodo.
+
+![Pestaña Grupos puntuales](../../../assets/cap-es-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Limitaciones actuales
 
 Los motores de subgrupos *t* y *k* del explorador, las búsquedas inversas de supergrupos *t* y *k* y la clasificación isomorfa (IIc) están completamente implementados y verificados de forma independiente contra las tablas de operaciones de los grupos espaciales, y las pestañas **División de órbita**, **Dominios y maclas** y **Nuevas reflexiones** funcionan para todos los tipos de relación. Las limitaciones restantes se muestran como tales, en lugar de omitirse en silencio:

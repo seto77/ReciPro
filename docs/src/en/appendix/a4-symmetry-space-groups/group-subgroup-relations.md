@@ -99,6 +99,20 @@ Reflections allowed in both parent and child (fundamental reflections) are not l
 
 ---
 
+## Point groups tab
+
+While the rest of the browser walks between *space* groups, this tab shows the wider map those walks live on: the **Hasse diagram of the 32 crystallographic point-group types** (geometric crystal classes) — the partial order of which type occurs as a subgroup of which. Each node is one point-group type; the vertical axis is the group order (1 at the bottom, 48 at the top, on a logarithmic scale), with the hexagonal/trigonal family forming the left tower and the cubic–tetragonal–orthorhombic tower on the right. An edge is a *maximal* (covering) subgroup relation — no third type fits strictly in between — and there are exactly 80 such edges among the 32 types. The diagram is a partial order but *not* a lattice in the mathematical sense: it has two maximal elements, $m\bar3m$ and $6/mmm$, which are not comparable.
+
+- The point group of the space group you are browsing carries a pale-blue halo (like the current node of the Diagram tab) and is the *focused* type by default.
+- **Click** any node to focus it instead: its **subgroup types highlight blue**, its **supergroup types orange**, and the numbers on the focused node's own edges are the **index** (order ratio) of that maximal step. Types unrelated to the focus stay grey. Clicking empty space returns the focus to the current point group. (Clicking never navigates anywhere — a point-group type corresponds to many space groups, not to one.)
+- The caption at the top summarises the focused type: Hermann–Mauguin and Schoenflies symbols, the group order $|G|$, how many of the 230 space-group types belong to it, and the sizes of its subgroup/supergroup sets.
+
+This diagram is the point-group shadow of Hermann's theorem: one *t*-subgroup step in the tree moves down exactly one edge here (the space-group index of a *t*-step equals the point-group index on the edge), while *k*- and isomorphic steps stay on the same node.
+
+![Point groups tab](../../../assets/cap-en-auto/FormGroupRelations-tabPointGroups.png)
+
+---
+
 ## Current limitations
 
 The browser's *t*- and *k*-subgroup engines, the *t*- and *k*-supergroup reverse lookups, and the isomorphic (IIc) classification are fully implemented and independently verified against the space-group operation tables, and the **Orbit splitting**, **Domains & Twins**, and **New reflections** tabs are live for every relation kind. The remaining limitations are shown as such rather than silently omitted:

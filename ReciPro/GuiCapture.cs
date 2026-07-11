@@ -402,7 +402,8 @@ internal static partial class GuiCapture
         try
         {
             var tc = form.CaptureTabControl;
-            foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram" })
+            //foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram" })
+            foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram", "tabPointGroups" }) // 260712Cl: 点群 Hasse 図タブ追加 (③-4)
             {
                 var tab = tc.TabPages.Cast<TabPage>().FirstOrDefault(t => t.Name == tabName);
                 if (tab == null) { trace($"{baseName}-{tabName}\tWARN\t{tabName} not found"); continue; }
