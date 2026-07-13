@@ -113,6 +113,20 @@ Questo diagramma è l'ombra, a livello di gruppi puntuali, del teorema di Herman
 
 ---
 
+## Scheda Elementi
+
+Laddove la scheda **Matrice** elenca le operazioni mantenute e perse sotto forma di tabella, questa scheda mostra la stessa informazione in modo *geometrico*, sovrapposta al [diagramma degli elementi di simmetria](symbols-and-diagrams.md#symmetry-element-diagram) del genitore (la figura in stile ITA Vol. A con assi, piani e centri di inversione). Risponde alla domanda "quali elementi di simmetria sopravvivono, e quali si rompono, quando il cristallo si trasforma da $G$ al sottogruppo $H$" — a colpo d'occhio, nella stessa immagine che i cristallografi già leggono.
+
+- **Gli elementi mantenuti in $H$ sono disegnati in nero; gli elementi perduti sono disegnati in rosso.** La direzione di proiezione (⟂ *a*, *b* o *c*) è scelta automaticamente per il sistema cristallino del genitore, e l'intestazione indica la relazione e la proiezione.
+- Un elemento di simmetria che degrada a uno di ordine inferiore è mostrato alla lettera: ad es. un asse di ordine 4 che diventa di ordine 2 appare come un **simbolo rosso di ordine 4 con sopra disegnato un simbolo nero di ordine 2** — il rosso dice "l'ordine 4 è scomparso", il nero dice "qui resta un ordine 2".
+- La sovrapposizione è costruita disegnando il diagramma completo del genitore (come base di riferimento dei *perduti*) e ridisegnando poi sopra di esso gli elementi di simmetria ricostruiti direttamente dall'insieme di operazioni di $H$ stesso — così gli elementi mantenuti sono esattamente quelli che ricompaiono in $H$, senza doverli indovinare simbolo per simbolo.
+
+Questa scheda è fornita **solo per i sottogruppi *translationengleiche* (*t*-)**, dove $H$ conserva il reticolo di traslazione del genitore ($T_H=T_G$), cosicché gli elementi di entrambi i gruppi vivono nella stessa cella. Per le relazioni *k*- e isomorfe la cella si ingrandisce e l'immagine è rimandata a una versione futura; la scheda mostra una breve nota che rimanda alle schede **Domini e geminazioni** e **Nuove riflessioni**, che già contengono l'informazione sulla simmetria reticolare perduta per quei casi.
+
+![Scheda Elementi](../../../assets/cap-it-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Limitazioni attuali
 
 I motori del browser per i sottogruppi *t*- e *k*-, le ricerche inverse dei supergruppi *t*- e *k*- e la classificazione isomorfa (IIc) sono pienamente implementati e verificati in modo indipendente rispetto alle tabelle delle operazioni dei gruppi spaziali, e le schede **Suddivisione orbita**, **Domini e geminazioni** e **Nuove riflessioni** sono operative per ogni tipo di relazione. Le limitazioni residue sono mostrate come tali, anziché omesse in silenzio:

@@ -114,7 +114,7 @@ Lists every tabulated origin/axis-setting choice that shares the current space g
 
 ---
 
-## Symmetry-element diagram
+## Symmetry-element diagram {#symmetry-element-diagram}
 
 ![Symmetry-element & general-position diagrams](../../../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

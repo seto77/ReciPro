@@ -114,7 +114,7 @@ $432$ — единственная нецентросимметричная то
 
 ---
 
-## Диаграмма элементов симметрии
+## Диаграмма элементов симметрии {#symmetry-element-diagram}
 
 ![Диаграммы элементов симметрии и общих положений](../../../assets/cap-ru-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

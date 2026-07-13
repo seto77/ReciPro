@@ -114,7 +114,7 @@ Liste tous les choix d'origine/setting d'axes tabulés qui partagent le numéro 
 
 ---
 
-## Diagramme des éléments de symétrie
+## Diagramme des éléments de symétrie {#symmetry-element-diagram}
 
 ![Diagrammes des éléments de symétrie et des positions générales](../../../assets/cap-fr-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

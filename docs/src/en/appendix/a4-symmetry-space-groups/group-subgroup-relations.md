@@ -113,6 +113,20 @@ This diagram is the point-group shadow of Hermann's theorem: one *t*-subgroup st
 
 ---
 
+## Elements tab
+
+Where the **Matrix** tab lists the retained and lost operations as a table, this tab shows the same information *geometrically*, overlaid on the parent's [symmetry-element diagram](symbols-and-diagrams.md#symmetry-element-diagram) (the ITA Vol. A style figure with axes, planes and inversion centres). It answers "which symmetry elements survive, and which break, when the crystal transforms from $G$ to the subgroup $H$" — at a glance, in the same picture crystallographers already read.
+
+- **Elements retained in $H$ are drawn in black; elements that are lost are drawn in red.** The projection direction (⟂ *a*, *b* or *c*) is chosen automatically for the parent's crystal system, and the header names the relation and projection.
+- A symmetry element degrading to a lower one is shown literally: e.g. a 4-fold axis that becomes a 2-fold appears as a **red 4-fold symbol with a black 2-fold drawn on top of it** — the red says "the 4-fold is gone", the black says "a 2-fold remains here".
+- The overlay is built by drawing the full parent diagram (as the *lost* baseline) and then re-drawing, on top, the symmetry elements reconstructed directly from $H$'s own operation set — so retained elements are precisely those that reappear in $H$, with no symbol-by-symbol guessing.
+
+This tab is provided for ***translationengleiche* (*t*-) subgroups only**, where $H$ keeps the parent's translation lattice ($T_H=T_G$) so both groups' elements live in the same cell. For *k*- and isomorphic relations the cell enlarges and the picture is deferred to a later version; the tab shows a short note pointing to the **Domains & Twins** and **New reflections** tabs, which already carry the lost-lattice-symmetry information for those cases.
+
+![Elements tab](../../../assets/cap-en-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Current limitations
 
 The browser's *t*- and *k*-subgroup engines, the *t*- and *k*-supergroup reverse lookups, and the isomorphic (IIc) classification are fully implemented and independently verified against the space-group operation tables, and the **Orbit splitting**, **Domains & Twins**, and **New reflections** tabs are live for every relation kind. The remaining limitations are shown as such rather than silently omitted:

@@ -114,7 +114,7 @@ Enumera todas las elecciones tabuladas de origen/configuración de ejes que comp
 
 ---
 
-## Diagrama de elementos de simetría
+## Diagrama de elementos de simetría {#symmetry-element-diagram}
 
 ![Diagramas de elementos de simetría y de posiciones generales](../../../assets/cap-es-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

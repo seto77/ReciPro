@@ -114,7 +114,7 @@ Elenca tutte le scelte tabulate di origine e di setting degli assi che condivido
 
 ---
 
-## Diagramma degli elementi di simmetria
+## Diagramma degli elementi di simmetria {#symmetry-element-diagram}
 
 ![Diagrammi degli elementi di simmetria e delle posizioni generali](../../../assets/cap-it-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

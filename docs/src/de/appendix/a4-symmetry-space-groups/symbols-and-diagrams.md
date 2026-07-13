@@ -114,7 +114,7 @@ Listet jede tabellierte Ursprungs-/Achsenaufstellung, die die IT-Nummer der aktu
 
 ---
 
-## Symmetrieelement-Diagramm
+## Symmetrieelement-Diagramm {#symmetry-element-diagram}
 
 ![Diagramme der Symmetrieelemente & der allgemeinen Lagen](../../../assets/cap-de-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

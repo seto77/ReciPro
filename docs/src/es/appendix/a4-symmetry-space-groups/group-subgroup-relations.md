@@ -113,6 +113,20 @@ Este diagrama es la sombra en los grupos puntuales del teorema de Hermann: un pa
 
 ---
 
+## Pestaña Elementos
+
+Mientras que la pestaña **Matriz** enumera las operaciones conservadas y perdidas en forma de tabla, esta pestaña muestra la misma información *geométricamente*, superpuesta sobre el [diagrama de elementos de simetría](symbols-and-diagrams.md#symmetry-element-diagram) del padre (la figura al estilo de las ITA Vol. A con ejes, planos y centros de inversión). Responde a «qué elementos de simetría sobreviven, y cuáles se rompen, cuando el cristal se transforma de $G$ al subgrupo $H$» — de un vistazo, en la misma imagen que los cristalógrafos ya saben leer.
+
+- **Los elementos conservados en $H$ se dibujan en negro; los elementos que se pierden se dibujan en rojo.** La dirección de proyección (⟂ *a*, *b* o *c*) se elige automáticamente según el sistema cristalino del padre, y el encabezado indica la relación y la proyección.
+- Un elemento de simetría que se degrada a otro de orden menor se muestra literalmente: p. ej., un eje de orden 4 que pasa a ser de orden 2 aparece como un **símbolo rojo de orden 4 con un símbolo negro de orden 2 dibujado encima** — el rojo dice «el eje de orden 4 ha desaparecido», el negro dice «aquí queda un eje de orden 2».
+- La superposición se construye dibujando el diagrama completo del padre (como base de referencia de lo *perdido*) y volviendo a dibujar encima los elementos de simetría reconstruidos directamente a partir del propio conjunto de operaciones de $H$ — de modo que los elementos conservados son exactamente los que reaparecen en $H$, sin conjeturas símbolo por símbolo.
+
+Esta pestaña se ofrece **solo para subgrupos *translationengleiche* (*t*-)**, en los que $H$ conserva la red de traslaciones del padre ($T_H=T_G$), de modo que los elementos de ambos grupos viven en la misma celda. Para las relaciones *k* e isomorfas la celda se amplía y la figura se pospone a una versión posterior; la pestaña muestra una breve nota que remite a las pestañas **Dominios y maclas** y **Nuevas reflexiones**, que ya contienen la información de la simetría de red perdida para esos casos.
+
+![Pestaña Elementos](../../../assets/cap-es-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Limitaciones actuales
 
 Los motores de subgrupos *t* y *k* del explorador, las búsquedas inversas de supergrupos *t* y *k* y la clasificación isomorfa (IIc) están completamente implementados y verificados de forma independiente contra las tablas de operaciones de los grupos espaciales, y las pestañas **División de órbita**, **Dominios y maclas** y **Nuevas reflexiones** funcionan para todos los tipos de relación. Las limitaciones restantes se muestran como tales, en lugar de omitirse en silencio:

@@ -113,6 +113,20 @@ Dieses Diagramm ist der Punktgruppen-Schatten des Satzes von Hermann: Ein *t*-Un
 
 ---
 
+## Registerkarte Elemente
+
+Wo die Registerkarte **Matrix** die erhaltenen und verlorenen Operationen als Tabelle auflistet, zeigt diese Registerkarte dieselbe Information *geometrisch*, überlagert auf dem [Symmetrieelement-Diagramm](symbols-and-diagrams.md#symmetry-element-diagram) der Elterngruppe (der Abbildung im Stil der ITA Vol. A mit Achsen, Ebenen und Inversionszentren). Sie beantwortet die Frage „welche Symmetrieelemente überleben und welche brechen, wenn der Kristall von $G$ in die Untergruppe $H$ übergeht" — auf einen Blick, in demselben Bild, das Kristallographen ohnehin schon lesen.
+
+- **In $H$ erhaltene Elemente werden schwarz gezeichnet; verlorene Elemente werden rot gezeichnet.** Die Projektionsrichtung (⟂ *a*, *b* oder *c*) wird für das Kristallsystem der Elterngruppe automatisch gewählt, und die Kopfzeile nennt die Beziehung und die Projektion.
+- Ein Symmetrieelement, das zu einem niedrigeren herabsinkt, wird buchstäblich dargestellt: z. B. erscheint eine 4-zählige Achse, die zu einer 2-zähligen wird, als **rotes 4-zähliges Symbol mit einem darüber gezeichneten schwarzen 2-zähligen** — das Rot sagt „die 4-Zähligkeit ist weg", das Schwarz sagt „hier bleibt eine 2-Zähligkeit erhalten".
+- Die Überlagerung entsteht, indem das vollständige Elterndiagramm gezeichnet wird (als *verlorene* Grundlinie) und darüber die Symmetrieelemente neu gezeichnet werden, die direkt aus dem eigenen Operationssatz von $H$ rekonstruiert wurden — erhaltene Elemente sind also genau diejenigen, die in $H$ wieder auftauchen, ganz ohne Raten Symbol für Symbol.
+
+Diese Registerkarte wird **nur für *translationengleiche* (*t*-) Untergruppen** bereitgestellt, bei denen $H$ das Translationsgitter der Elterngruppe behält ($T_H=T_G$), sodass die Elemente beider Gruppen in derselben Zelle liegen. Bei *k*- und isomorphen Beziehungen vergrößert sich die Zelle, und die Abbildung bleibt einer späteren Version vorbehalten; die Registerkarte zeigt einen kurzen Hinweis, der auf die Registerkarten **Domänen & Zwillinge** und **Neue Reflexe** verweist, welche die Information über die verlorene Gittersymmetrie für diese Fälle bereits tragen.
+
+![Registerkarte Elemente](../../../assets/cap-de-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Aktuelle Einschränkungen
 
 Die *t*- und *k*-Untergruppen-Engines des Browsers, die Rückwärtssuchen der *t*- und *k*-Obergruppen und die isomorphe (IIc-)Klassifikation sind vollständig implementiert und unabhängig gegen die Operationstabellen der Raumgruppen verifiziert, und die Registerkarten **Bahnaufspaltung**, **Domänen & Zwillinge** und **Neue Reflexe** sind für jede Beziehungsart aktiv. Die verbleibenden Einschränkungen werden als solche angezeigt statt stillschweigend weggelassen:

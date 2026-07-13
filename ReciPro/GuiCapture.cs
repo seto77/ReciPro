@@ -403,7 +403,7 @@ internal static partial class GuiCapture
         {
             var tc = form.CaptureTabControl;
             //foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram" })
-            foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram", "tabPointGroups" }) // 260712Cl: 点群 Hasse 図タブ追加 (③-4)
+            foreach (var tabName in new[] { "tabOrbit", "tabDomains", "tabReflections", "tabDiagram", "tabPointGroups", "tabElements" }) // 260712Cl: 点群 Hasse 図タブ (③-4)、260713Cl: 対称要素タブ (③-2)
             {
                 var tab = tc.TabPages.Cast<TabPage>().FirstOrDefault(t => t.Name == tabName);
                 if (tab == null) { trace($"{baseName}-{tabName}\tWARN\t{tabName} not found"); continue; }
@@ -412,6 +412,16 @@ internal static partial class GuiCapture
                 BringToFront(form);
                 Settle(form, TabSwitchSettleMs, trace);
                 var name = baseName + "-" + tabName;
+                // 260713Cl: tabElements は 2 パス重ね描き (透明ビットマップ×2 + ColorMatrix) で GDI 負荷が高く、
+                // RDP の CopyFromScreen が「ハンドル作成エラー (Win32Exception)」で失敗しやすい。pictureBox の
+                // Image を直接クローン保存すれば screen-capture 依存を外せて確実 (プログラム描画なので画素も厳密)。
+                if (tabName == "tabElements" && tab.Controls.Find("pictureBoxElements", true).FirstOrDefault() is PictureBox pbElem && pbElem.Image != null)
+                {
+                    using var clone = new Bitmap(pbElem.Image);
+                    clone.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                    trace($"{name}\tOK\tdirect image {pbElem.Image.Width}x{pbElem.Image.Height}");
+                    continue;
+                }
                 var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);
                 if (bmp != null)
                     using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);

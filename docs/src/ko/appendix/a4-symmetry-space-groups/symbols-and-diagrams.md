@@ -114,7 +114,7 @@ $432$는 압전/SHG 응답이 *없는* 유일한 비중심대칭 점군입니다
 
 ---
 
-## 대칭 요소 다이어그램
+## 대칭 요소 다이어그램 {#symmetry-element-diagram}
 
 ![대칭 요소 & 일반 위치 다이어그램](../../../assets/cap-ko-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 

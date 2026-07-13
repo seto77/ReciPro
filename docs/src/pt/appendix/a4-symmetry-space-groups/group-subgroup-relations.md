@@ -113,6 +113,20 @@ Este diagrama é a sombra em grupos pontuais do teorema de Hermann: um passo de 
 
 ---
 
+## Aba Elementos
+
+Enquanto a aba **Matriz** lista as operações mantidas e perdidas como uma tabela, esta aba mostra a mesma informação *geometricamente*, sobreposta ao [diagrama de elementos de simetria](symbols-and-diagrams.md#symmetry-element-diagram) do pai (a figura no estilo das ITA Vol. A com eixos, planos e centros de inversão). Ela responde "quais elementos de simetria sobrevivem, e quais se quebram, quando o cristal se transforma de $G$ para o subgrupo $H$" — de relance, na mesma figura que os cristalógrafos já leem.
+
+- **Os elementos mantidos em $H$ são desenhados em preto; os elementos que são perdidos são desenhados em vermelho.** A direção de projeção (⟂ *a*, *b* ou *c*) é escolhida automaticamente para o sistema cristalino do pai, e o cabeçalho nomeia a relação e a projeção.
+- Um elemento de simetria que se degrada em outro de ordem menor é mostrado literalmente: p. ex. um eixo de ordem 4 que se torna de ordem 2 aparece como um **símbolo de ordem 4 vermelho com um de ordem 2 preto desenhado sobre ele** — o vermelho diz "o de ordem 4 desapareceu", o preto diz "um de ordem 2 permanece aqui".
+- A sobreposição é construída desenhando o diagrama completo do pai (como a linha de base *perdida*) e então redesenhando, por cima, os elementos de simetria reconstruídos diretamente a partir do próprio conjunto de operações de $H$ — de modo que os elementos mantidos são exatamente aqueles que reaparecem em $H$, sem qualquer adivinhação símbolo a símbolo.
+
+Esta aba é fornecida **apenas para subgrupos *translationengleiche* (*t*-)**, onde $H$ mantém a rede de translações do pai ($T_H=T_G$), de modo que os elementos de ambos os grupos vivem na mesma célula. Para relações *k* e isomorfas, a célula se amplia e a figura é adiada para uma versão posterior; a aba mostra uma breve nota apontando para as abas **Domínios e geminações** e **Novas reflexões**, que já carregam a informação de simetria de rede perdida para esses casos.
+
+![Aba Elementos](../../../assets/cap-pt-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Limitações atuais
 
 Os mecanismos de subgrupos *t* e *k* do navegador, as consultas inversas de supergrupos *t* e *k* e a classificação isomorfa (IIc) estão totalmente implementados e verificados de forma independente contra as tabelas de operações dos grupos espaciais, e as abas **Divisão de órbita**, **Domínios e geminações** e **Novas reflexões** funcionam para todos os tipos de relação. As limitações remanescentes são mostradas como tais, em vez de silenciosamente omitidas:

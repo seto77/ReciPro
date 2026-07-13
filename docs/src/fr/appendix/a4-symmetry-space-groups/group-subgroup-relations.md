@@ -113,6 +113,20 @@ Ce diagramme est l'ombre, côté groupes ponctuels, du théorème de Hermann : u
 
 ---
 
+## Onglet Éléments
+
+Là où l'onglet **Matrice** liste les opérations conservées et perdues sous forme de table, cet onglet montre la même information *géométriquement*, superposée au [diagramme des éléments de symétrie](symbols-and-diagrams.md#symmetry-element-diagram) du parent (la figure de style ITA Vol. A avec axes, plans et centres d'inversion). Il répond à la question « quels éléments de symétrie subsistent, et lesquels se brisent, lorsque le cristal se transforme de $G$ vers le sous-groupe $H$ » — d'un coup d'œil, dans l'image même que les cristallographes savent déjà lire.
+
+- **Les éléments conservés dans $H$ sont dessinés en noir ; les éléments perdus sont dessinés en rouge.** La direction de projection (⟂ *a*, *b* ou *c*) est choisie automatiquement selon le système cristallin du parent, et l'en-tête indique la relation et la projection.
+- Un élément de symétrie qui se dégrade en un élément d'ordre inférieur est représenté littéralement : par exemple, un axe d'ordre 4 qui devient un axe d'ordre 2 apparaît comme un **symbole d'ordre 4 rouge surmonté d'un symbole d'ordre 2 noir** — le rouge signifie « l'axe d'ordre 4 a disparu », le noir signifie « un axe d'ordre 2 subsiste ici ».
+- La superposition est construite en dessinant le diagramme complet du parent (comme référence *perdue*) puis en redessinant par-dessus les éléments de symétrie reconstruits directement à partir du propre ensemble d'opérations de $H$ — de sorte que les éléments conservés sont précisément ceux qui réapparaissent dans $H$, sans devoir deviner symbole par symbole.
+
+Cet onglet est fourni **pour les sous-groupes *translationengleiche* (*t*-) uniquement**, où $H$ conserve le réseau de translation du parent ($T_H=T_G$), de sorte que les éléments des deux groupes vivent dans la même maille. Pour les relations *k*- et isomorphes, la maille s'agrandit et la figure est reportée à une version ultérieure ; l'onglet affiche alors une brève note renvoyant aux onglets **Domaines & Macles** et **Nouvelles réflexions**, qui portent déjà l'information sur la symétrie de réseau perdue pour ces cas.
+
+![Onglet Éléments](../../../assets/cap-fr-auto/FormGroupRelations-tabElements.png)
+
+---
+
 ## Limitations actuelles
 
 Les moteurs de sous-groupes *t*- et *k*- du navigateur, les recherches inverses de supergroupes *t*- et *k*-, ainsi que la classification isomorphe (IIc), sont entièrement implémentés et vérifiés de manière indépendante contre les tables d'opérations des groupes d'espace, et les onglets **Éclatement d'orbite**, **Domaines & Macles** et **Nouvelles réflexions** sont opérationnels pour tous les types de relation. Les limitations restantes sont affichées comme telles plutôt que passées sous silence :

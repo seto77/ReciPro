@@ -114,7 +114,7 @@ Lista todas as escolhas tabuladas de origem/configuração de eixos que comparti
 
 ---
 
-## Diagrama dos elementos de simetria
+## Diagrama dos elementos de simetria {#symmetry-element-diagram}
 
 ![Diagramas dos elementos de simetria e das posições gerais](../../../assets/cap-pt-auto/FormSymmetryInformation.splitContainer1.tableLayoutPanel1.png)
 
