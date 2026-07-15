@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.943(2026/07/15)  Added a 'Group Relations' function to explore group–subgroup relations of space groups (maximal subgroups/supergroups, Bärnighausen trees, and symmetry-element diagrams), and further accelerated STEM simulations with optional Intel MKL support." +
         "\r\n ver4.942(2026/07/01)  Enabled digital code signing of the installer and portable executable, provided free by SignPath Foundation." +
         "\r\n ver4.941(2026/06/23)  Added multi-language UI support and fixed many bugs." +
         "\r\n ver4.940(2026/06/14)  Improved the accuracy of ionic elastic scattering factor calculations, and reorganized the distribution package formats." +
