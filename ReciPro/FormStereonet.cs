@@ -1176,9 +1176,10 @@ public partial class FormStereonet : FormBase
         else//構造因子順の場合
         {
             indexControlDrawing.Visible = false;
-            numericBoxHighStructureFactor.Visible = true;
             buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
             checkBoxIncludingEquivalentPlanes.Visible = false;
+            numericBoxHighStructureFactor.SendToBack();
+            numericBoxHighStructureFactor.Visible = true;
         }
         setVector();
         Draw();

@@ -356,7 +356,7 @@ namespace ReciPro
             colorControlIndexLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
             colorControlIndexLabel.Name = "colorControlIndexLabel";
             colorControlIndexLabel.TabStop = false;
-            toolTip.SetToolTip(colorControlIndexLabel, resources.GetString("colorControlIndexLabel.ToolTip1"));
+            toolTip.SetToolTip(colorControlIndexLabel, resources.GetString("colorControlIndexLabel.ToolTip"));
             colorControlIndexLabel.ColorChanged += colorControl_ColorChanged;
             // 
             // groupBoxOutline
@@ -409,7 +409,7 @@ namespace ReciPro
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
             colorControlBackGround.Name = "colorControlBackGround";
             colorControlBackGround.TabStop = false;
-            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
+            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl90DegLine
@@ -420,7 +420,7 @@ namespace ReciPro
             colorControl90DegLine.Color = System.Drawing.Color.FromArgb(60, 60, 255);
             colorControl90DegLine.Name = "colorControl90DegLine";
             colorControl90DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
+            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
             colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl10DegLine
@@ -431,7 +431,7 @@ namespace ReciPro
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(138, 138, 255);
             colorControl10DegLine.Name = "colorControl10DegLine";
             colorControl10DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
+            toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
@@ -442,7 +442,7 @@ namespace ReciPro
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.Name = "colorControl1DegLine";
             colorControl1DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip1"));
+            toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
             colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // flowLayoutPanel13
@@ -703,7 +703,7 @@ namespace ReciPro
             colorControlKikuchiPoints.Color = System.Drawing.Color.FromArgb(0, 0, 128);
             colorControlKikuchiPoints.Name = "colorControlKikuchiPoints";
             colorControlKikuchiPoints.TabStop = false;
-            toolTip.SetToolTip(colorControlKikuchiPoints, resources.GetString("colorControlKikuchiPoints.ToolTip1"));
+            toolTip.SetToolTip(colorControlKikuchiPoints, resources.GetString("colorControlKikuchiPoints.ToolTip"));
             colorControlKikuchiPoints.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlKikuchiLabel
@@ -714,7 +714,7 @@ namespace ReciPro
             colorControlKikuchiLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
             colorControlKikuchiLabel.Name = "colorControlKikuchiLabel";
             colorControlKikuchiLabel.TabStop = false;
-            toolTip.SetToolTip(colorControlKikuchiLabel, resources.GetString("colorControlKikuchiLabel.ToolTip1"));
+            toolTip.SetToolTip(colorControlKikuchiLabel, resources.GetString("colorControlKikuchiLabel.ToolTip"));
             colorControlKikuchiLabel.ColorChanged += colorControl_ColorChanged;
             // 
             // tabPage2
@@ -772,7 +772,7 @@ namespace ReciPro
             colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
             colorControlGreatCircle.Name = "colorControlGreatCircle";
-            toolTip.SetToolTip(colorControlGreatCircle, resources.GetString("colorControlGreatCircle.ToolTip1"));
+            toolTip.SetToolTip(colorControlGreatCircle, resources.GetString("colorControlGreatCircle.ToolTip"));
             colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
             // 
             // label5
@@ -966,7 +966,6 @@ namespace ReciPro
             numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRxSpeed, "numericBoxRxSpeed");
             numericBoxRxSpeed.Name = "numericBoxRxSpeed";
-            numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
             numericBoxRxSpeed.ThousandsSeparator = true;
@@ -979,7 +978,6 @@ namespace ReciPro
             numericBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRySpeed, "numericBoxRySpeed");
             numericBoxRySpeed.Name = "numericBoxRySpeed";
-            numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
             numericBoxRySpeed.ThousandsSeparator = true;
@@ -992,7 +990,6 @@ namespace ReciPro
             numericBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRzSpeed, "numericBoxRzSpeed");
             numericBoxRzSpeed.Name = "numericBoxRzSpeed";
-            numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
             numericBoxRzSpeed.ThousandsSeparator = true;
@@ -1005,7 +1002,6 @@ namespace ReciPro
             numericBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxTotalTime, "numericBoxTotalTime");
             numericBoxTotalTime.Name = "numericBoxTotalTime";
-            numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
             numericBoxTotalTime.ThousandsSeparator = true;
@@ -1018,7 +1014,6 @@ namespace ReciPro
             numericBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxAngularSpeed, "numericBoxAngularSpeed");
             numericBoxAngularSpeed.Name = "numericBoxAngularSpeed";
-            numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
             numericBoxAngularSpeed.ThousandsSeparator = true;
@@ -1031,7 +1026,6 @@ namespace ReciPro
             numericBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRyStep, "numericBoxRyStep");
             numericBoxRyStep.Name = "numericBoxRyStep";
-            numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
             numericBoxRyStep.ThousandsSeparator = true;
@@ -1044,7 +1038,6 @@ namespace ReciPro
             numericBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRadialAngle, "numericBoxRadialAngle");
             numericBoxRadialAngle.Name = "numericBoxRadialAngle";
-            numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
             numericBoxRadialAngle.ThousandsSeparator = true;
@@ -1057,7 +1050,6 @@ namespace ReciPro
             numericBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRyOscillation, "numericBoxRyOscillation");
             numericBoxRyOscillation.Name = "numericBoxRyOscillation";
-            numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
             numericBoxRyOscillation.ThousandsSeparator = true;
@@ -1070,7 +1062,6 @@ namespace ReciPro
             numericBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxRzOscillation, "numericBoxRzOscillation");
             numericBoxRzOscillation.Name = "numericBoxRzOscillation";
-            numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
             numericBoxRzOscillation.ThousandsSeparator = true;
@@ -1265,7 +1256,7 @@ namespace ReciPro
             colorControlIndex.BoxSize = new System.Drawing.Size(20, 20);
             colorControlIndex.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlIndex.Name = "colorControlIndex";
-            toolTip.SetToolTip(colorControlIndex, resources.GetString("colorControlIndex.ToolTip1"));
+            toolTip.SetToolTip(colorControlIndex, resources.GetString("colorControlIndex.ToolTip"));
             colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
             // 
             // checkBoxRotateColor
@@ -1283,7 +1274,6 @@ namespace ReciPro
             numericBoxHighStructureFactor.Maximum = 1000D;
             numericBoxHighStructureFactor.Minimum = 1D;
             numericBoxHighStructureFactor.Name = "numericBoxHighStructureFactor";
-            numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxHighStructureFactor.ShowUpDown = true;
             numericBoxHighStructureFactor.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip"));

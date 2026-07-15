@@ -553,10 +553,6 @@ labels instead of the spot color.</value>
     <value>Set the fixed color used for index
 labels when 'Specify color' is enabled.</value>
   </data>
-  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
-    <value>Set the fixed color used for index
-labels when 'Specify color' is enabled.</value>
-  </data>
   <data name="&gt;&gt;colorControlIndexLabel.Name" xml:space="preserve">
     <value>colorControlIndexLabel</value>
   </data>
@@ -761,9 +757,6 @@ labels when 'Specify color' is enabled.</value>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Set the background color of the stereonet drawing area.</value>
   </data>
-  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>Set the background color of the stereonet drawing area.</value>
-  </data>
   <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
     <value>colorControlBackGround</value>
   </data>
@@ -807,10 +800,6 @@ labels when 'Specify color' is enabled.</value>
     <value>50</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>Set the color of the 90° lines (outer primitive
-circle and principal axes, the thickest lines).</value>
-  </data>
-  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
     <value>Set the color of the 90° lines (outer primitive
 circle and principal axes, the thickest lines).</value>
   </data>
@@ -860,10 +849,6 @@ circle and principal axes, the thickest lines).</value>
     <value>Set the color of the 10° grid lines
 (latitude/longitude every 10°) of the stereonet.</value>
   </data>
-  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
-    <value>Set the color of the 10° grid lines
-(latitude/longitude every 10°) of the stereonet.</value>
-  </data>
   <data name="&gt;&gt;colorControl10DegLine.Name" xml:space="preserve">
     <value>colorControl10DegLine</value>
   </data>
@@ -907,10 +892,6 @@ circle and principal axes, the thickest lines).</value>
     <value>50</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>Set the color of the 1° grid lines (fine
-lines, shown only when '1° Lines' is enabled).</value>
-  </data>
-  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
     <value>Set the color of the 1° grid lines (fine
 lines, shown only when '1° Lines' is enabled).</value>
   </data>
@@ -2001,10 +1982,6 @@ drawn for Kikuchi-line pairs.</value>
     <value>Set the color of the poles and
 lines drawn in Kikuchi-line mode.</value>
   </data>
-  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
-    <value>Set the color of the poles and
-lines drawn in Kikuchi-line mode.</value>
-  </data>
   <data name="&gt;&gt;colorControlKikuchiPoints.Name" xml:space="preserve">
     <value>colorControlKikuchiPoints</value>
   </data>
@@ -2048,11 +2025,6 @@ lines drawn in Kikuchi-line mode.</value>
     <value>50</value>
   </data>
   <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
-    <value>Set the color of the zone-axis labels in
-Kikuchi-line mode (Kikuchi lines: diffraction
-bands from inelastically scattered electrons).</value>
-  </data>
-  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
     <value>Set the color of the zone-axis labels in
 Kikuchi-line mode (Kikuchi lines: diffraction
 bands from inelastically scattered electrons).</value>
@@ -2169,7 +2141,7 @@ bands from inelastically scattered electrons).</value>
     <value>3, 3</value>
   </data>
   <data name="checkedListBoxCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 144</value>
+    <value>0, 0</value>
   </data>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2258,7 +2230,7 @@ lattice planes) to the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+    <value>42, 0</value>
   </data>
   <data name="buttonDeleteCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2307,7 +2279,7 @@ from the stereographic projection.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlGreatCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 58</value>
+    <value>111, 4</value>
   </data>
   <data name="colorControlGreatCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 0, 0</value>
@@ -2319,9 +2291,6 @@ from the stereographic projection.</value>
     <value>52</value>
   </data>
   <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
-    <value>Set the drawing color of the great circles.</value>
-  </data>
-  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
     <value>Set the drawing color of the great circles.</value>
   </data>
   <data name="&gt;&gt;colorControlGreatCircle.Name" xml:space="preserve">
@@ -2346,7 +2315,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 82</value>
+    <value>170, 4</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 0</value>
@@ -2382,7 +2351,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 99</value>
+    <value>242, 0</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -2418,10 +2387,10 @@ from the stereographic projection.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 3</value>
+    <value>-116, 3</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 144</value>
+    <value>305, 0</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2518,7 +2487,7 @@ zone circle) is added to the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 3</value>
+    <value>3, 28</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 25</value>
@@ -2548,7 +2517,7 @@ zone circle) is added to the stereonet</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonCircleByPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 34</value>
+    <value>3, 59</value>
   </data>
   <data name="radioButtonCircleByPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 34</value>
@@ -2689,7 +2658,7 @@ the zone-axis great circle on the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>140, 0</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2719,13 +2688,13 @@ the zone-axis great circle on the stereonet</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 31</value>
+    <value>0, 96</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 50</value>
+    <value>280, 25</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -2746,10 +2715,10 @@ the zone-axis great circle on the stereonet</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 147</value>
+    <value>3, -20</value>
   </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 88</value>
+    <value>186, 88</value>
   </data>
   <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2773,7 +2742,7 @@ the zone-axis great circle on the stereonet</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 238</value>
+    <value>192, 71</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3621,7 +3590,7 @@ center) of the rotational scan, in degrees.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 238</value>
+    <value>192, 71</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3695,7 +3664,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 238</value>
+    <value>192, 71</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4156,10 +4125,6 @@ the list of specified indices.</value>
     <value>55</value>
   </data>
   <data name="colorControlIndex.ToolTip" xml:space="preserve">
-    <value>Set the plot color for the index being added or
-currently selected (used when 'Rotate color' is off).</value>
-  </data>
-  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
     <value>Set the plot color for the index being added or
 currently selected (used when 'Rotate color' is off).</value>
   </data>

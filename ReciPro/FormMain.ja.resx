@@ -542,9 +542,6 @@ v2</value>
   <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="labelLaTex4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 13pt</value>
-  </data>
   <data name="indexControlPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
