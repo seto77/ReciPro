@@ -1,0 +1,29 @@
+name: GitHub Traffic Collector
+
+on:
+  schedule:
+    - cron: '17 16 * * *'  # 毎日 JST 1:17 (UTC 16:17)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Collect traffic data
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python3 scripts/github_traffic.py
+      - name: Commit traffic.md if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add traffic.md
+          git diff --cached --quiet || git commit -m "chore: update traffic stats"
+          git push
