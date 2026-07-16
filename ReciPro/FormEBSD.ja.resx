@@ -795,4 +795,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
     <value>エネルギー</value>
   </data>
+  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
+    <value>開発: PCHIP圧縮</value>
+  </data>
 </root>

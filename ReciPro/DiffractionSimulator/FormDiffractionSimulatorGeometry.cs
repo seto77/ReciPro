@@ -160,7 +160,8 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     private void buttonLoadPicture_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" };
+        //var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" }; // 旧: ダイアログを解放していなかった
+        using var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" }; // (260715Ch)
         if (dlg.ShowDialog() == DialogResult.OK)
             ReadImage(dlg.FileName);
     }
@@ -203,8 +204,8 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                 if (pseudBitmap != null && (pseudBitmap.Width != DetectorWidth || pseudBitmap.Height != DetectorHeight))//既に読み込んでいる画像のサイズと異なっていたら
                 {
                     textBoxFileName.Text = "";
-                    pseudBitmap = null;
-                    OverlappedImage = null;
+                    //pseudBitmap.Dispose(); pseudBitmap = null; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
+                    SetPseudoBitmap(null); // 260716Cl キャッシュ Bitmap を含む所有リソースを破棄してから参照を外す
                 }
 
                 FootX = Convert.ToDouble(prm.FootX);
@@ -224,7 +225,8 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
             //    FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
 
             //}
-            DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0;
+            //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0; // 旧: Y 方向のピクセル寸法を無視
+            DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch)
 
             ShowDetectorArea = true;
             FormDiffractionSimulator.SkipDrawing = false;
@@ -242,11 +244,20 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     public void FormDiffractionSimulatorGeometry_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
+    // 260716Cl 追加: pseudBitmap 差し替え時の不変条件 (旧インスタンスの破棄と、旧インスタンス由来 OverlappedImage の無効化) を集約。
+    // 引数の新インスタンス生成は呼び出し前に評価されるため、コンストラクタ失敗時も旧画像は有効なまま保たれる。
+    private void SetPseudoBitmap(PseudoBitmap value)
+    {
+        pseudBitmap?.Dispose();
+        pseudBitmap = value;
+        OverlappedImage = null;
+    }
+
     private void buttonClearPicture_Click(object sender, EventArgs e)
     {
         textBoxFileName.Text = "";
-        pseudBitmap = null;
-        OverlappedImage = null;
+        //pseudBitmap?.Dispose(); pseudBitmap = null; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
+        SetPseudoBitmap(null); // 260716Cl 読み込んだ画像と生成済み Bitmap を解放する
         FormDiffractionSimulator.Draw();
     }
 
@@ -307,43 +318,58 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
             if (ext == "ipa")
             {
-                ImageIO.IPAImage ipa = ImageIO.GetIPA_Object(filename);
-                pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
+                //ImageIO.IPAImage ipa = ImageIO.GetIPA_Object(filename); // 旧: 同じ XML を後続の ReadImage でもう一度解析していた
+                // 旧: ここでは Ring を更新せず、後続の汎用画像分岐へ偶然フォールスルーして IPA を再読込していた
+                if (!ImageIO.ReadImage(filename))
+                    return false; // (260715Ch) PseudoBitmap 作成前に IPA 強度を Ring へ確実に展開する
+                //pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width); // 旧: 既存画像を解放せず差し替えていた
+                //var loadedPseudoBitmap = new PseudoBitmap(...); pseudBitmap?.Dispose(); pseudBitmap = loadedPseudoBitmap; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
+                SetPseudoBitmap(new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width)); // 260716Cl
 
-                FormDiffractionSimulator.waveLengthControl.Property = ipa.WaveProperty;
+                //FormDiffractionSimulator.waveLengthControl.Property = ipa.WaveProperty; // 旧: 別途 Deserialize したオブジェクトから取得
+                FormDiffractionSimulator.waveLengthControl.Property = Ring.IP.WaveProperty; // (260715Ch) ReadImage が設定した同一メタデータを再利用
 
                 DetectorWidth = pseudBitmap.Width;
                 DetectorHeight = pseudBitmap.Height;
-                DetectorPixelSize = ipa.Resolution; FootX = ipa.Center.X; FootY = ipa.Center.Y;
-                CameraLength2 = ipa.CameraLength;
+                //DetectorPixelSize = ipa.Resolution; FootX = ipa.Center.X; FootY = ipa.Center.Y; CameraLength2 = ipa.CameraLength; // 旧
+                DetectorPixelSize = Ring.IP.PixSizeX; FootX = Ring.IP.CenterX; FootY = Ring.IP.CenterY; // (260715Ch)
+                CameraLength2 = Ring.IP.FilmDistance; // (260715Ch)
             }
-            if (ext == "dm3" || ext == "dm4")
+            //if (ext == "dm3" || ext == "dm4") // 旧: 独立 if のため IPA が後続の汎用画像分岐にも入り、二重に PseudoBitmap を生成していた
+            else if (ext == "dm3" || ext == "dm4") // (260715Ch)
             {
-                if (ImageIO.ReadImage(filename))
-                {
-                    //DigitalMicroGraphデータであればスケールの情報などを取得
-                    if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
-                    {
-                        pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
+                //if (ImageIO.ReadImage(filename)) // 旧: 読み込み失敗や非逆空間 DM でも古い画像を再利用して後続処理へ進み得た
+                if (!ImageIO.ReadImage(filename))
+                    return false; // (260715Ch)
 
-                        FormDiffractionSimulator.waveLengthControl.WaveSource = Crystallography.WaveSource.Electron;
-                        FormDiffractionSimulator.waveLengthControl.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
-                        DetectorPixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
-                        CameraLength2 = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(FormDiffractionSimulator.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
-                        Tau = 0;
-                        if (DetectorWidth != pseudBitmap.Width || DetectorHeight != pseudBitmap.Height)
-                        {
-                            DetectorWidth = pseudBitmap.Width;
-                            DetectorHeight = pseudBitmap.Height;
-                            FootX = DetectorWidth / 2;
-                            FootY = DetectorHeight / 2;
-                        }
+                //DigitalMicroGraphデータであればスケールの情報などを取得
+                if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
+                {
+                    //pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width); // 旧: 既存画像を解放せず差し替えていた
+                    //var loadedPseudoBitmap = new PseudoBitmap(...); pseudBitmap?.Dispose(); pseudBitmap = loadedPseudoBitmap; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
+                    SetPseudoBitmap(new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width)); // 260716Cl
+
+                    FormDiffractionSimulator.waveLengthControl.WaveSource = Crystallography.WaveSource.Electron;
+                    FormDiffractionSimulator.waveLengthControl.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
+                    DetectorPixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
+                    CameraLength2 = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(FormDiffractionSimulator.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
+                    Tau = 0;
+                    if (DetectorWidth != pseudBitmap.Width || DetectorHeight != pseudBitmap.Height)
+                    {
+                        DetectorWidth = pseudBitmap.Width;
+                        DetectorHeight = pseudBitmap.Height;
+                        FootX = DetectorWidth / 2;
+                        FootY = DetectorHeight / 2;
                     }
                 }
+                else
+                    return false; // (260715Ch) 実空間 DM を回折像として扱わず、古い画像の流用を防ぐ
             }
             else if (ext == "bmp" || ext == "jpg" || ext == "tif" || ext == "tiff" || ImageIO.IsReadable(ext))
             {
-                ImageIO.ReadImage(filename);
+                //ImageIO.ReadImage(filename); // 旧: 読み込み失敗後も古い Ring データで成功扱いにし得た
+                if (!ImageIO.ReadImage(filename))
+                    return false; // (260715Ch)
 
                 //tifの場合は上下反転(理由は不明)
                 /*for (int y = 0; y < Ring.SrcImgSize.Height / 2; y++)
@@ -356,7 +382,9 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                     }
                 }*/
 
-                pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
+                //pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width); // 旧: 既存画像を解放せず差し替えていた
+                //var loadedPseudoBitmap = new PseudoBitmap(...); pseudBitmap?.Dispose(); pseudBitmap = loadedPseudoBitmap; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
+                SetPseudoBitmap(new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width)); // 260716Cl
                 DetectorWidth = pseudBitmap.Width;
                 DetectorHeight = pseudBitmap.Height;
                 trackBarMaxInt_ValueChanged(new object(), new EventArgs());

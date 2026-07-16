@@ -149,7 +149,8 @@
     <value>272, 17</value>
   </metadata>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>Execute a CBED simulation</value>
+    <value>Simulate a convergent-beam electron diffraction
+(CBED) pattern for the current settings.</value>
   </data>
   <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
     <value>buttonSimulate</value>

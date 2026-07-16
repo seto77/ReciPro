@@ -539,6 +539,7 @@ namespace ReciPro
             flowLayoutPanel2.Controls.Add(buttonDonut);
             flowLayoutPanel2.Controls.Add(numericBoxDonut);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.WrapContents = false; // 260715Ch: ローカライズ時も操作ボタンを縦に折り返さない。
             // 
             // buttonGlobalFit
             // 

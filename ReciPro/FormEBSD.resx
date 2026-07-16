@@ -440,7 +440,7 @@ depth distributions used to weight the EBSD pattern.</value>
     <value>10</value>
   </data>
   <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
-    <value>Dev: PCHIP圧縮</value>
+    <value>Dev: PCHIP compression</value>
   </data>
   <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
     <value>Developer tool: compress the NIST

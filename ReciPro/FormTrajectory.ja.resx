@@ -331,7 +331,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="poleFigureControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>ステレオ投影図の中心は表面法線方向に対応します。</value>
   </data>
   <data name="flowLayoutPanelViewAlong.ToolTip" xml:space="preserve">
     <value />

@@ -276,4 +276,7 @@ nm/µm 단위로 표시).</value>
 사용되는 빔 에너지를 설정하며, 에너지가
 높을수록 시료에 더 깊이 침투합니다.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>극점도의 중심은 표면 법선 방향에 해당합니다.</value>
+  </data>
 </root>

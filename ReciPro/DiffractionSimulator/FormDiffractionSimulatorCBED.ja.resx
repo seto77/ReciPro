@@ -112,7 +112,8 @@
     <value>開始</value>
   </data>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>CBEDシミュレーションを実行</value>
+    <value>現在の設定で収束電子回折 (CBED) パターンを
+シミュレートします。</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

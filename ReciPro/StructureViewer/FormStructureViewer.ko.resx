@@ -382,7 +382,7 @@
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>크기 (W×H)</value>
   </data>
-  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+  <data name="saveImageToolStripMenuItem1.ToolTipText" xml:space="preserve">
     <value>현재 이미지를 파일로 저장합니다</value>
   </data>
   <data name="buttonSetRange2.ToolTip" xml:space="preserve">

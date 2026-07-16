@@ -1131,7 +1131,8 @@ in the 3-D view (coloured by exit energy).</value>
     <value>104</value>
   </data>
   <data name="poleFigureControl.ToolTip" xml:space="preserve">
-    <value>the stereonet center corresponds to the surface normal direction</value>
+    <value>The stereonet center corresponds to the
+surface-normal direction.</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Name" xml:space="preserve">
     <value>poleFigureControl</value>

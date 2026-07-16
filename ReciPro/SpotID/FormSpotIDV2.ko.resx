@@ -168,7 +168,7 @@
     <value>이미지</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>전역 피팅  (실험적)</value>
+    <value>전역 피팅</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>결정 이름</value>
@@ -210,7 +210,7 @@
     <value>디바이 링 표시</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>도넛  (실험적)</value>
+    <value>도넛</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>스폿 식별</value>

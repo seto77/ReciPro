@@ -276,4 +276,8 @@ keV. Define a energia do feixe usada no cálculo de trajetórias,
 seção de choque, caminho livre médio e poder de
 freamento; maior energia resulta em penetração mais profunda.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>O centro do estereograma corresponde à direção normal
+à superfície.</value>
+  </data>
 </root>

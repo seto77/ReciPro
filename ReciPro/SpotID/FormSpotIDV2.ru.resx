@@ -168,7 +168,7 @@
     <value>как изображение</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Глобальная подгонка  (экспериментально)</value>
+    <value>Глобальная подгонка</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Название кристалла</value>
@@ -210,7 +210,7 @@
     <value>Показать кольца Дебая</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>Donut  (экспериментально)</value>
+    <value>Donut</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>Идентифицировать рефлексы</value>

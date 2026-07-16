@@ -168,7 +168,7 @@
     <value>como Imagen</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Ajuste global  (experimental)</value>
+    <value>Ajuste global</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Nombre del cristal</value>

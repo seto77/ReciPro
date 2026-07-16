@@ -168,7 +168,7 @@
     <value>複製為影像</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>全域擬合  （實驗性）</value>
+    <value>全域擬合</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>晶體名稱</value>
@@ -210,7 +210,7 @@
     <value>顯示德拜環</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>甜甜圈  （實驗性）</value>
+    <value>甜甜圈</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>辨識繞射點</value>

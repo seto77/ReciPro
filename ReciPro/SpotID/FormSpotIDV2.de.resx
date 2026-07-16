@@ -168,7 +168,7 @@
     <value>als Bild</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Globale Anpassung  (experimentell)</value>
+    <value>Globale Anpassung</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Kristallname</value>
@@ -210,7 +210,7 @@
     <value>Debye-Ringe anzeigen</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>Donut  (experimentell)</value>
+    <value>Donut</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>Reflexe identifizieren</value>

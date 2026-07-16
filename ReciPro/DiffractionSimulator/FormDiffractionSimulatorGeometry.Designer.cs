@@ -9,10 +9,12 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            //if (disposing && (components != null)) // 旧: components が null なら画像を解放せず、画像未読込時は pseudBitmap.Dispose() で例外
+            if (disposing) // (260715Ch)
             {
-                components.Dispose();
-                pseudBitmap.Dispose();
+                components?.Dispose(); // (260715Ch)
+                //pseudBitmap.Dispose(); // 旧: 画像未読込または Clear 後は null
+                pseudBitmap?.Dispose(); // (260715Ch)
             }
             base.Dispose(disposing);
         }

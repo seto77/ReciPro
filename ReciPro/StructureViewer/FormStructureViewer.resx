@@ -5787,7 +5787,7 @@ symbols) overlaid on each atom.</value>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+  <data name="saveImageToolStripMenuItem1.ToolTipText" xml:space="preserve">
     <value>Save the current image to a file</value>
   </data>
   <data name="iLikeVESTAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">

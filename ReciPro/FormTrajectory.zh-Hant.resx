@@ -276,4 +276,7 @@ Z＝束方向（紫）的座標軸。</value>
 阻止本領計算的束能量；能量越高，
 穿透越深。</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>極網中心對應於表面法線方向。</value>
+  </data>
 </root>

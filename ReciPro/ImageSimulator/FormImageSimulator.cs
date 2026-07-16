@@ -1234,26 +1234,12 @@ public partial class FormImageSimulator : FormBase
                 }
             });
 
-            //メタファイルをセーブしたりコピーしたりするときのアクション
+            //メタファイルをセーブしたりコピーしたりするときのアクション (filename が "" の時はコピー)
+            // 260716Cl 旧: using var grfx = CreateGraphics(); ipHdc = grfx.GetHdc(); using var ms = new MemoryStream();
+            //   try { mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual); } finally { grfx.ReleaseHdc(ipHdc); } using (mf) { draw → PutEnhMetafileOnClipboard or FileStream 書き出し }
+            //   と HDC→Metafile 定型を自前実装していた (260715Ch)。同型が 3 箇所に複製されていたため ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile へ集約。
             var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>
-            {
-                //var grfx = CreateGraphics(); // (260611Ch) 旧: 明示 Dispose を using var へ整理
-                using var grfx = CreateGraphics(); // (260611Ch)
-                var ipHdc = grfx.GetHdc();
-                var ms = new MemoryStream();
-                var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-                grfx.ReleaseHdc(ipHdc);
-                //grfx.Dispose(); // (260611Ch) using var へ移行
-                //var g = Graphics.FromImage(mf); // (260611Ch) 旧: 手動 Dispose
-                using (var g = Graphics.FromImage(mf)) // (260611Ch) EMF 内容を確定してから clipboard/file へ渡す
-                    draw(g, p);
-
-                if (filename.Length == 0)//finenameが""の時はコピー
-                    ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
-                else
-                    using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))
-                        fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-            });
+                ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => draw(g, p), filename)); // 260716Cl
 
             //ここから、実際の処理
 
@@ -1262,7 +1248,8 @@ public partial class FormImageSimulator : FormBase
 
             if (_filename == null && action == ActionEnum.Save)
             {
-                var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } };
+                //var dlg = new SaveFileDialog { Filter = ... }; // 旧: ダイアログが未解放
+                using var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } }; // (260715Ch)
                 if (dlg.ShowDialog() == DialogResult.OK)
                     filename = dlg.FileName;
                 else
@@ -1271,13 +1258,19 @@ public partial class FormImageSimulator : FormBase
             //
             if (action == ActionEnum.Save)
             {
-                if (!Path.Exists(Path.GetDirectoryName(filename)))
+                if (string.IsNullOrWhiteSpace(filename))
+                    return; // (260715Ch) プログラム呼出しで空名が渡された場合も GetFullPath 例外にしない
+                //if (!Path.Exists(Path.GetDirectoryName(filename))) // 旧: 相対ファイル名は DirectoryName が空になり、保存せず無言 return
+                filename = Path.GetFullPath(filename); // (260715Ch) 相対指定も現在ディレクトリ基準の保存先として扱う
+                if (!Directory.Exists(Path.GetDirectoryName(filename))) // (260715Ch)
                     return;
-                if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png"))
+                //if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png")) // 旧: CurrentCulture 依存
+                if (format == FormatEnum.PNG && !filename.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
                     filename += ".png";
-                else if (format == FormatEnum.TIFF && !filename.ToLower().EndsWith(".tif"))
+                else if (format == FormatEnum.TIFF && !filename.EndsWith(".tif", StringComparison.OrdinalIgnoreCase)
+                    && !filename.EndsWith(".tiff", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
                     filename += ".tif";
-                else if (format == FormatEnum.Meta && !filename.ToLower().EndsWith(".emf"))
+                else if (format == FormatEnum.Meta && !filename.EndsWith(".emf", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
                     filename += ".emf";
             }
 
@@ -1287,12 +1280,15 @@ public partial class FormImageSimulator : FormBase
                 //個別保存の時
                 if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
                 {
+                    var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
                     for (int r = 0; r < row; r++)
                         for (int c = 0; c < col; c++)
                             if (pseudo[r, c].Width != 0)
                             {
                                 var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                var fn = filename.Replace(".emf", " (" + text + ").emf");
+                                //var fn = filename.Replace(".emf", " (" + text + ").emf"); // 旧: 大文字拡張子では置換できず同じファイルを上書き
+                                //var fn = Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).emf"); // (260715Ch) 260716Cl 旧: 毎セル再計算
+                                var fn = Path.Combine(dir, $"{stem} ({text}).emf"); // 260716Cl
                                 actionForMetafile(pseudo[r, c], fn);
                             }
                 }
@@ -1310,6 +1306,7 @@ public partial class FormImageSimulator : FormBase
                 //個別保存の時
                 if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
                 {
+                    var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
                     for (int r = 0; r < row; r++)
                         for (int c = 0; c < col; c++)
                             if (pseudo[r, c].Width != 0)
@@ -1319,32 +1316,42 @@ public partial class FormImageSimulator : FormBase
                                 using (var g = Graphics.FromImage(bmp)) // (260611Ch)
                                     draw(g, pseudo[r, c]);
                                 var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                bmp.Save(filename.Replace(".png", " (" + text + ").png"), ImageFormat.Png);
+                                //bmp.Save(filename.Replace(".png", " (" + text + ").png"), ImageFormat.Png); // 旧: 大文字拡張子では個別名を作れない
+                                //var fn = Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).png"); // (260715Ch) 260716Cl 旧: 毎セル再計算
+                                var fn = Path.Combine(dir, $"{stem} ({text}).png"); // 260716Cl
+                                bmp.Save(fn, ImageFormat.Png); // (260715Ch)
                             }
                 }
                 else//全体保存 or 全体コピー
                 {
-                    var bmp = new Bitmap(col * width, row * height);
+                    //var bmp = new Bitmap(col * width, row * height); // 旧: Clipboard コピー時に Bitmap が未解放
+                    using var bmp = new Bitmap(col * width, row * height); // (260715Ch)
                     //draw(Graphics.FromImage(bmp), null); // (260611Ch) 旧: Graphics が未解放
                     using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
                         draw(g, null);
                     if (action == ActionEnum.Save)
                     {
                         bmp.Save(filename, ImageFormat.Png);
-                        bmp.Dispose(); // (260611Ch) 保存だけで完結する Bitmap はここで解放
+                        //bmp.Dispose(); // (260611Ch) 旧: 保存時だけ手動解放。現在は全経路を using var が所有する
                     }
                     else
-                        Clipboard.SetDataObject(bmp);
+                    {
+                        //Clipboard.SetDataObject(bmp); // 旧: 非永続参照のため Bitmap を解放できなかった
+                        Clipboard.SetDataObject(bmp, true); // (260715Ch) 永続コピー完了後に using で解放
+                    }
                 }
             }
             else if (format == FormatEnum.TIFF)//Tiff形式 個別保存のみ
             {
+                var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
                 for (int r = 0; r < row; r++)
                     for (int c = 0; c < col; c++)
                         if (pseudo[r, c].Width != 0)
                         {
                             var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                            var fn = pseudo.Length == 1 ? filename : filename.Replace(".tif", " (" + text + ").tif");
+                            //var fn = pseudo.Length == 1 ? filename : filename.Replace(".tif", " (" + text + ").tif"); // 旧: 大文字拡張子では個別名を作れない
+                            //var fn = pseudo.Length == 1 ? filename : Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).tif"); // (260715Ch) 260716Cl 旧: 毎セル再計算
+                            var fn = pseudo.Length == 1 ? filename : Path.Combine(dir, $"{stem} ({text}).tif"); // 260716Cl
                             Tiff.Writer(fn, pseudo[r, c].SrcValuesGray, 3, width);
                         }
             }

@@ -445,7 +445,8 @@ internal static class Version
         ;
 
     public static string VersionAndDate => History[10..][..20];
-    public static double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]);
+    //public static double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]); //260715Ch 変更前: 実行環境の小数点記号に依存する
+    public static double VersionValue => double.Parse(VersionAndDate[3..^12], System.Globalization.CultureInfo.InvariantCulture); //260715Ch バージョン表記は常にドット区切りとして解析する
 
     /// <summary>はじめに</summary>
     public const string Introduction =

@@ -1729,6 +1729,7 @@
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, presetToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
+            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
             // 
             // fileToolStripMenuItem
             // 

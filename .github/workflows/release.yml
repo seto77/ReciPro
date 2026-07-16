@@ -1,4 +1,4 @@
-# 260405Cl Version.cs の History 先頭行が変わったら自動でインストーラをビルド・リリースする
+﻿# 260405Cl Version.cs の History 先頭行が変わったら自動でインストーラをビルド・リリースする
 # 260602Cl portable ZIP も同じリリースに添付。MSI を主配布のまま (管理 PC 向けの代替として self-contained ZIP を追加)
 # 260623Cl Phase 3 (ARM64化方針 §6 = 完全 inline 統合): 単一 job を 5 job (prepare/build-x64/build-arm64/smoke-arm64/release)
 #   に再編し、arm64 (ZIP+MSI) を同一 run でビルド・実機 smoke して x64 と一緒に 1 回の gh release create で原子的に公開する。
@@ -92,6 +92,25 @@ jobs:
             Write-Host "Release $tag already exists. Skipping."
             "needed=false" >> $env:GITHUB_OUTPUT
             return
+          }
+
+          # 260715Ch: release が無いのに同名 tag だけ残っている場合、gh release create の --target は
+          #   既存 tag には効かない。別 commit の孤立 tag を黙って再利用すると、公開バイナリと source tag が
+          #   不一致になるため、先に tag の commit を検査する。同じ GITHUB_SHA なら安全な復旧として許可する。
+          if (-not $releaseExists) {
+            $checkRef = "refs/release-check/${tag}"
+            git fetch origin "refs/tags/${tag}:${checkRef}" --depth=1 2>$null
+            $tagExists = ($LASTEXITCODE -eq 0)
+            $global:LASTEXITCODE = 0
+            if ($tagExists) {
+              $tagSha = (git rev-parse "${checkRef}^{commit}").Trim()
+              if ($tagSha -ne $env:GITHUB_SHA) {
+                $message = "Tag $tag already exists at $tagSha, but this build is $($env:GITHUB_SHA). Refusing to publish mismatched artifacts."
+                if ($dryRun) { Write-Warning $message } else { throw $message }
+              } else {
+                Write-Host "Tag $tag already exists at this build commit; it is safe to create the missing release."
+              }
+            }
           }
           # 旧 force 処理 (260530Cl 廃止):
           #   if ($releaseExists) {

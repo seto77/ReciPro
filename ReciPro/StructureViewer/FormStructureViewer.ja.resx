@@ -815,7 +815,7 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
-  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+  <data name="saveImageToolStripMenuItem1.ToolTipText" xml:space="preserve">
     <value>現在の画像をファイルに保存</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">

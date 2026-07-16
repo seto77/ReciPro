@@ -2125,6 +2125,7 @@ namespace ReciPro
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
+            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
             // 
             // fileToolStripMenuItem
             // 

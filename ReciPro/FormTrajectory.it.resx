@@ -276,4 +276,8 @@ keV. Imposta l'energia del fascio usata per il calcolo delle traiettorie,
 della sezione d'urto, del libero cammino medio e del potere frenante;
 un'energia maggiore dà una penetrazione più profonda.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>Il centro della rete stereografica corrisponde alla
+direzione normale alla superficie.</value>
+  </data>
 </root>

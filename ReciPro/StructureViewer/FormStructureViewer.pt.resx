@@ -382,7 +382,7 @@ dos limites</value>
   <data name="sizeControl1.HeaderText" xml:space="preserve">
     <value>Tamanho (L×A)</value>
   </data>
-  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+  <data name="saveImageToolStripMenuItem1.ToolTipText" xml:space="preserve">
     <value>Salve a imagem atual em um arquivo</value>
   </data>
   <data name="buttonSetRange2.ToolTip" xml:space="preserve">

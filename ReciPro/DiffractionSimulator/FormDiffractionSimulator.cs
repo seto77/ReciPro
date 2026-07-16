@@ -2859,65 +2859,57 @@ public partial class FormDiffractionSimulator : FormBase
     {
         if (isImage)
         {
-            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            //var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // 旧: 保存・永続コピー後も Bitmap が未解放
+            using var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260715Ch)
             //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
             using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
                 Draw(g, true, drawOverlappedImage);
-            if (bmp != null)
-            {
-                if (save)
-                {
-                    if (filename == "")
-                    {
-                        SaveFileDialog dlg = new() { Filter = "*.png|*.png" };
-                        if (dlg.ShowDialog() == DialogResult.OK)
-                            filename = dlg.FileName;
-                    }
-
-                    if (!filename.EndsWith(".png"))
-                        filename += ".png";
-
-                    if (Path.Exists(Path.GetDirectoryName(filename)))
-                        bmp.Save(filename, ImageFormat.Png);
-                }
-                else
-                {
-                    Clipboard.SetDataObject(bmp);
-                }
-            }
-        }
-        else
-        {
-            using Graphics grfx = CreateGraphics();
-            IntPtr ipHdc = grfx.GetHdc();
-            MemoryStream ms = new();
-            Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
-            grfx.ReleaseHdc(ipHdc);
-            grfx.Dispose();
-            //var g = Graphics.FromImage(mf); Draw(g, true, drawOverlappedImage); g.Dispose(); // (260611Ch) 旧: 手動 Dispose
-            using (var g = Graphics.FromImage(mf)) // (260611Ch)
-            {
-                Draw(g, true, drawOverlappedImage);
-            }
-
             if (save)
             {
                 if (filename == "")
                 {
-                    SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                        filename = dlg.FileName;
+                    //SaveFileDialog dlg = new() { Filter = "*.png|*.png" }; // 旧: ダイアログが未解放
+                    using SaveFileDialog dlg = new() { Filter = "*.png|*.png" }; // (260715Ch)
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                        return; // (260715Ch) キャンセル後に空ファイル名を処理しない
+                    filename = dlg.FileName;
                 }
-                if (filename.EndsWith(".emf"))
-                    filename += ".emf";
 
-                FileStream fsm = new(filename, FileMode.Create, FileAccess.Write);
-                fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                fsm.Close();
+                //if (!filename.EndsWith(".png")) // 旧: 大文字拡張子を重複付加
+                if (!filename.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
+                    filename += ".png";
 
+                //if (Path.Exists(Path.GetDirectoryName(filename))) // 旧: 相対ファイル名は DirectoryName が空になり保存されない
+                if (Directory.Exists(Path.GetDirectoryName(Path.GetFullPath(filename)))) // (260715Ch)
+                    bmp.Save(filename, ImageFormat.Png);
             }
             else
-                ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+            {
+                //Clipboard.SetDataObject(bmp); // 旧: Bitmap の寿命を Clipboard 任せにして未解放
+                Clipboard.SetDataObject(bmp, true); // (260715Ch) 永続コピー完了後に using で安全に解放
+            }
+        }
+        else
+        {
+            // 260716Cl 旧: using Graphics grfx = CreateGraphics(); using MemoryStream ms = new(); ipHdc = grfx.GetHdc();
+            //   try { mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual); } finally { grfx.ReleaseHdc(ipHdc); } using (mf) { Draw → 保存 or PutEnhMetafileOnClipboard }
+            //   と HDC→Metafile 定型を自前実装していた (260715Ch)。同型が 3 箇所に複製されていたため
+            //   ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile へ集約し、ファイル名確定 (ダイアログ) を録画より先に行う (キャンセル時に無駄な録画をしない)。
+            if (save)
+            {
+                if (filename == "")
+                {
+                    //SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" }; // 旧: ダイアログが未解放、キャンセル後も空名で続行
+                    using SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" }; // (260715Ch)
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                        return; // (260715Ch)
+                    filename = dlg.FileName;
+                }
+                //if (filename.EndsWith(".emf")) filename += ".emf"; // 旧: 正しい拡張子に .emf を重複付加
+                if (!filename.EndsWith(".emf", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
+                    filename += ".emf";
+            }
+            ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => Draw(g, true, drawOverlappedImage), save ? filename : ""); // 260716Cl
         }
     }
 

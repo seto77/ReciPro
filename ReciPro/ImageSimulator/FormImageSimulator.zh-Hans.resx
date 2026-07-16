@@ -311,7 +311,7 @@
     <value>为图像 (TIFF 格式)</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>为元文件 (EMF)</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   序列图像模式下单独保存 </value>
@@ -323,7 +323,7 @@
     <value>为图像</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>为元文件 (EMF)</value>
+    <value>为图元文件 (EMF)</value>
   </data>
   <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
     <value>复制图像</value>

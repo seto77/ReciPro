@@ -695,7 +695,7 @@ list (use the Clear button to remove all spots).</value>
     <value>12</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Global fit  (experimental)</value>
+    <value>Global fit</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
     <value>Perform global fitting of all spot positions (experimental)</value>
@@ -737,7 +737,7 @@ list (use the Clear button to remove all spots).</value>
     <value>13</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>Donut  (experimental)</value>
+    <value>Donut</value>
   </data>
   <data name="buttonDonut.ToolTip" xml:space="preserve">
     <value>Apply donut-shaped background subtraction (experimental)</value>

@@ -168,7 +168,7 @@
     <value>图像</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>全局拟合  (实验性)</value>
+    <value>全局拟合</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>晶体名称</value>
@@ -210,7 +210,7 @@
     <value>显示德拜环</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>环状  (实验性)</value>
+    <value>环状</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>识别衍射点</value>

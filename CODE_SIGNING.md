@@ -1,10 +1,10 @@
-# Code signing policy
+﻿# Code signing policy
 
 This document describes the code-signing policy for ReciPro release artifacts.
 
 ## Current status
 
-ReciPro has been accepted into the **SignPath Foundation** free code-signing program for open-source projects, and a production signing certificate was issued to the ReciPro SignPath organization on 2026-06-29. Since **v.4.942** (released 2026-07-01), release artifacts are signed as part of the automated release pipeline.
+ReciPro has been accepted into the **SignPath Foundation** free code-signing program for open-source projects, and a production signing certificate was issued to the ReciPro SignPath organization on 2026-06-29. Since **v.4.942** (released 2026-07-01), the x64 installer and the x64 portable executable are signed as part of the automated release pipeline. The experimental Arm64 assets remain unsigned. <!-- 260715Ch: match the active release.yml signing scope -->
 
 Releases up to v.4.941 predate code signing: unless a GitHub Release explicitly states that `ReciPro-setup.msi` (named `ReciProSetup.msi` up to v.4.939) is digitally signed, users should not assume that the installer is signed.
 
@@ -16,19 +16,20 @@ Official release artifacts are published only from the ReciPro GitHub Releases p
 
 Users should avoid downloading ReciPro installers from unofficial mirrors or third-party redistribution sites.
 
-## Intended signing model
+## Active signing model
 
 Free code signing on Windows provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
 
-Once enabled for a given release, release artifacts are signed using Windows Authenticode signing before being published to GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer. Because SignPath Foundation signing requires a maintainer to manually approve each signing request, there may be a delay between a new version being pushed and the corresponding GitHub Release appearing, while the signing request awaits approval.
+The x64 installer package and the x64 portable `ReciPro.exe` are signed using Windows Authenticode before they are published to GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer. Because SignPath Foundation signing requires a maintainer to manually approve each signing request, there may be a delay between a new version being pushed and the corresponding GitHub Release appearing, while the signing request awaits approval. <!-- 260715Ch -->
 
 ## Scope of signing
 
-The intended signing scope is:
+The current signing scope is: <!-- 260715Ch: verified against release.yml and the v.4.943 artifacts -->
 
-- `ReciPro-setup.msi` and `ReciPro-setup_arm64.msi` (including the legacy-named copy `ReciProSetup.msi`, which is the identical x64 installer kept for auto-update compatibility with older versions)
-- ReciPro executable files built from this repository, including the single-file `ReciPro.exe` inside the portable ZIP packages (win-x64; the experimental win-arm64 package may remain unsigned until it graduates from experimental status)
-- ReciPro libraries built from this repository
+- `ReciPro-setup.msi` and its identical legacy-named copy `ReciProSetup.msi` (x64)
+- the single-file `ReciPro.exe` inside the x64 portable ZIP
+
+The framework-dependent `ReciPro.exe` and DLLs stored inside the signed MSI are not individually Authenticode-signed; their integrity is covered by the signed MSI container. The loose `Crystallography.Native*.dll` files in the x64 portable ZIP are also not individually signed. The experimental Arm64 MSI, portable executable, and native DLLs remain unsigned until Arm64 graduates into the production signing scope.
 
 Third-party binaries should not be re-signed as if they were maintained by ReciPro unless their provenance and redistribution terms explicitly permit that use. See `THIRD-PARTY-NOTICES.md` for bundled or referenced third-party components and data.
 

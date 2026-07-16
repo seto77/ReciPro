@@ -295,7 +295,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void setImagePixelSize()
     {
         //以下の二つのパラメータはγ値の調整のところで使う。（あまり意味のないパラメータなので、廃止したい）
-        AngleResolution = Math.Acos(Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]) / 2);
+        //AngleResolution = Math.Acos(Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]) / 2);// (260715Ch) 旧: 既に radian の角度へ回転行列 trace 用 acos を二重適用していた
+        AngleResolution = Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]);// (260715Ch)
         ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
     }
 

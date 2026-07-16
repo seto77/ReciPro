@@ -270,4 +270,7 @@ Z=束方向（紫）坐标轴。</value>
 轨迹、截面、平均自由程和阻止本领计算的
 束能量；能量越高，穿透越深。</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>极射网中心对应于表面法线方向。</value>
+  </data>
 </root>

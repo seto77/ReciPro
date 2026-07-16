@@ -1206,7 +1206,8 @@
             groupBoxAppearance.Margin = new System.Windows.Forms.Padding(4);
             groupBoxAppearance.Name = "groupBoxAppearance";
             groupBoxAppearance.Padding = new System.Windows.Forms.Padding(4);
-            groupBoxAppearance.Size = new System.Drawing.Size(650, 60);
+            // groupBoxAppearance.Size = new System.Drawing.Size(650, 60); // 260715Ch 旧: 長い多言語ラベル用の余白が不足
+            groupBoxAppearance.Size = new System.Drawing.Size(680, 60); // 260715Ch: Scale 1 以降を30px右へ移動できる幅を確保
             groupBoxAppearance.TabIndex = 130;
             groupBoxAppearance.TabStop = false;
             groupBoxAppearance.Text = "Appearance";
@@ -1219,7 +1220,8 @@
             comboBoxScale2.Items.AddRange(new object[] {
             "Gray scale",
             "Cold-Warm scale"});
-            comboBoxScale2.Location = new System.Drawing.Point(498, 22);
+            // comboBoxScale2.Location = new System.Drawing.Point(498, 22); // 260715Ch 旧
+            comboBoxScale2.Location = new System.Drawing.Point(528, 22); // 260715Ch: Scale 1 ラベルの多言語幅を確保
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             comboBoxScale2.Name = "comboBoxScale2";
             toolTip.SetToolTip(comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip")); // 260531Cl
@@ -1231,7 +1233,8 @@
             // 
             label26.AutoSize = true;
             label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label26.Location = new System.Drawing.Point(432, 26);
+            // label26.Location = new System.Drawing.Point(432, 26); // 260715Ch 旧
+            label26.Location = new System.Drawing.Point(462, 26); // 260715Ch: 後続コントロールを揃えて移動
             label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label26.Name = "label26";
             toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip")); // 260531Cl
@@ -1275,7 +1278,8 @@
             comboBoxScale1.Items.AddRange(new object[] {
             "Log Scale",
             "Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
-            comboBoxScale1.Location = new System.Drawing.Point(289, 22);
+            // comboBoxScale1.Location = new System.Drawing.Point(289, 22); // 260715Ch 旧: 翻訳後の label28 と衝突
+            comboBoxScale1.Location = new System.Drawing.Point(319, 22); // 260715Ch: Scale 1 ラベル右側に余白を確保
             comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             comboBoxScale1.Name = "comboBoxScale1";
             toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl

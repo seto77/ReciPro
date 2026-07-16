@@ -2870,8 +2870,9 @@ farther from the Ewald sphere more transparent.</value>
     <value>33</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
-    <value>逆格子点を表示する相対強度のしきい値(%)を設定し
-ます。これより弱いスポットは非表示になります。</value>
+    <value>Set the relative-intensity threshold (%) for displaying
+reciprocal-lattice points. Spots below this threshold
+are hidden.</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>

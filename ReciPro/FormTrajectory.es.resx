@@ -276,4 +276,8 @@ keV. Fija la energía del haz usada en el cálculo de trayectorias,
 sección eficaz, recorrido libre medio y poder de frenado;
 mayor energía produce mayor penetración.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>El centro de la proyección estereográfica corresponde
+a la dirección normal a la superficie.</value>
+  </data>
 </root>

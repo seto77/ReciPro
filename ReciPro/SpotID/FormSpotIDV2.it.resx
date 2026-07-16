@@ -162,7 +162,7 @@
     <value>come Immagine</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Adattamento globale  (sperimentale)</value>
+    <value>Adattamento globale</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Nome cristallo</value>
@@ -204,7 +204,7 @@
     <value>Mostra anelli di Debye</value>
   </data>
   <data name="buttonDonut.Text" xml:space="preserve">
-    <value>Donut  (sperimentale)</value>
+    <value>Donut</value>
   </data>
   <data name="buttonIdentifySpots.Text" xml:space="preserve">
     <value>Identifica spot</value>

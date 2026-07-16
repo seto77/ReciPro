@@ -276,4 +276,8 @@ keV. Sie legt die Strahlenergie für die Berechnung von Trajektorie,
 Streuquerschnitt, mittlerer freier Weglänge und Bremsvermögen
 fest; höhere Energie ergibt tiefere Eindringtiefe.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>Das Zentrum des Stereonetzes entspricht der Richtung
+der Oberflächennormalen.</value>
+  </data>
 </root>

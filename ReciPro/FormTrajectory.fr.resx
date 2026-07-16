@@ -276,4 +276,8 @@ keV. Elle définit l'énergie du faisceau utilisée pour le calcul des
 trajectoires, de la section efficace, du libre parcours moyen et du
 pouvoir d'arrêt ; une énergie plus élevée donne une pénétration plus profonde.</value>
   </data>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value>Le centre de la projection stéréographique correspond
+à la direction normale à la surface.</value>
+  </data>
 </root>
