@@ -56,11 +56,13 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 
 - **Detect & Fit Spots**: Automatic spot detection using local maxima and background subtraction.
 - **Number**: The maximum number of spots to detect.
-- **Nearest neighbour**: The minimum separation (px) allowed between detected spots. Peaks closer than this are merged, preventing double-detection of the same spot.
+- **Nearest neighbor**: The minimum separation (px) allowed between detected spots. Peaks closer than this are merged, preventing double-detection of the same spot.
 - **Fitting range (radius)**: The radius (px) of the circular region used to fit each spot's peak. Pixels inside this circle are fitted with a pseudo-Voigt function.
 - **Apply to All**: Sets the fitting radius of every spot to the current **Fitting range (radius)** value.
-- **Delete spot / Clear spots**: Remove individual or all detected spots.
-- **Copy to clipboard**: Copy spot positions and intensities to the clipboard.
+- **Delete / Clear all spots**: Remove the selected spot, or all detected spots.
+- **Copy**: Copy spot positions and intensities to the clipboard.
+- **Global fit**: Perform a global fit of all spot positions at once (experimental).
+- **Donut**: Apply donut-shaped background subtraction (experimental); the adjacent box sets the width (px) of the annular ring around each spot whose average is subtracted as the local background.
 - **Details of the spot**: When checked, opens a window showing detailed information about the currently selected spot.
 
 ![Details of the spot](../assets/cap-en-auto/FormSpotIDv2Details.png)
