@@ -4,7 +4,10 @@ GitHub Traffic Collector — single-repository version for GitHub Actions.
 
 Collects traffic statistics (views, clones, referrers, popular paths,
 release downloads, stars/forks/open issues/watchers) for the repository
-given by GITHUB_REPOSITORY and records them in ./traffic.md.
+given by GITHUB_REPOSITORY and records them in {repo}/traffic.md
+(the app folder named after the repository, e.g. ReciPro/traffic.md —
+same location as the historical gist-collected file, so existing data
+is merged and carried forward).
 
 260716Cl 追加: https://gist.github.com/seto77/91b025f9091b5e1d5d5b39adcc597a5d
 (github_traffic.py) からの移植。全リポジトリ横断処理 (/users/{USER}/repos) と
@@ -18,7 +21,7 @@ Env:
   GH_TOKEN           GitHub token (required; GITHUB_TOKEN or PAT with 'repo')
   GITHUB_REPOSITORY  'owner/repo' (set automatically by GitHub Actions; required)
   TRAFFIC_DRY_RUN    '1' to skip writing traffic.md and print summary only
-  TRAFFIC_OUTPUT     output file path (default: traffic.md)
+  TRAFFIC_OUTPUT     output file path (default: {repo}/traffic.md)
 """
 
 import datetime as dt
@@ -40,7 +43,8 @@ if not TOKEN:
     print("ERROR: GH_TOKEN env var is required", file=sys.stderr)
     sys.exit(2)
 DRY_RUN = os.environ.get("TRAFFIC_DRY_RUN") == "1"
-OUT_PATH = os.environ.get("TRAFFIC_OUTPUT", "traffic.md")
+# OUT_PATH = os.environ.get("TRAFFIC_OUTPUT", "traffic.md")
+OUT_PATH = os.environ.get("TRAFFIC_OUTPUT")  # 260716Cl 既定をリポ直下→{repo}/traffic.mdへ変更(旧Gist収集の履歴と統合)。main()で確定
 TODAY = dt.date.today()
 TODAY_STR = TODAY.isoformat()
 
@@ -553,6 +557,9 @@ def main():
         print("ERROR: GITHUB_REPOSITORY env var ('owner/repo') is required", file=sys.stderr)
         sys.exit(2)
     owner, repo = gh_repo.split("/", 1)
+    global OUT_PATH
+    if not OUT_PATH:
+        OUT_PATH = os.path.join(repo, "traffic.md")
     print(f"GitHub Traffic Collector — repo={owner}/{repo} today={TODAY_STR} dry_run={DRY_RUN} out={OUT_PATH}")
 
     try:
