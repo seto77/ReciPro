@@ -181,6 +181,13 @@ internal static partial class GuiCapture
                     continue;
                 try
                 {
+                    // 260717Cl 追加: FormSymmetryInformation / FormGroupRelations は spinel (Fd-3m) だと対称要素図・
+                    // 一般位置図が複雑すぎて判読しづらい (ユーザー指示) ため、この 2 フォームだけ代表結晶を
+                    // rutile (P4_2/mnm) に切り替えて撮る。他の結晶依存フォームは従来どおり spinel。
+                    bool wantsRutile = child is Crystallography.Controls.FormSymmetryInformation or Crystallography.Controls.FormGroupRelations;
+                    var selected = captureFormMain.PrepareCaptureCrystalSelection(wantsRutile ? "rutile" : "spinel");
+                    Trace($"{child.GetType().Name}\tINFO\tcapture crystal={(selected ? captureFormMain.Crystal?.Name : "not found")}");
+                    Application.DoEvents();
                     CaptureForm(child, child.GetType().Name, outDir, Trace, closeAfterCapture: true);
                     ok++;
                 }
@@ -190,6 +197,7 @@ internal static partial class GuiCapture
                     Trace($"{child.GetType().Name}\tFAIL\t{ex.GetType().Name}: {ex.Message}");
                 }
             }
+            captureFormMain.PrepareCaptureCrystalSelection(); // 260717Cl: ループ後は既定の spinel に戻す
         }
 
         try { captureFormMain?.Close(); captureFormMain?.Dispose(); } catch { /* 破棄時例外は無視 */ } // (260523Ch)
@@ -415,11 +423,25 @@ internal static partial class GuiCapture
                 // 260713Cl: tabElements は 2 パス重ね描き (透明ビットマップ×2 + ColorMatrix) で GDI 負荷が高く、
                 // RDP の CopyFromScreen が「ハンドル作成エラー (Win32Exception)」で失敗しやすい。pictureBox の
                 // Image を直接クローン保存すれば screen-capture 依存を外せて確実 (プログラム描画なので画素も厳密)。
+                // 260717Cl: 既定フォームサイズだと左右分割後の各図が小さく、立方晶 (spinel) の要素/一般位置が
+                // 判読不能になるため、この direct-image 撮影の間だけフォームを一時拡大する (他タブの CopyFromScreen
+                // 撮影サイズは従来どおり)。
                 if (tabName == "tabElements" && tab.Controls.Find("pictureBoxElements", true).FirstOrDefault() is PictureBox pbElem && pbElem.Image != null)
                 {
-                    using var clone = new Bitmap(pbElem.Image);
-                    clone.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-                    trace($"{name}\tOK\tdirect image {pbElem.Image.Width}x{pbElem.Image.Height}");
+                    var originalSize = form.Size; // 260717Cl 追加 (一時拡大)
+                    try
+                    {
+                        form.Size = new Size(1250, 860);
+                        Settle(form, TabSwitchSettleMs, trace); // SizeChanged → RenderElements 再描画を反映
+                        using var clone = new Bitmap(pbElem.Image);
+                        clone.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                        trace($"{name}\tOK\tdirect image {pbElem.Image.Width}x{pbElem.Image.Height}");
+                    }
+                    finally
+                    {
+                        form.Size = originalSize;
+                        Settle(form, TabSwitchSettleMs, trace);
+                    }
                     continue;
                 }
                 var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);

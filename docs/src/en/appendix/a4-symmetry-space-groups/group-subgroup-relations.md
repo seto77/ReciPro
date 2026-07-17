@@ -113,21 +113,26 @@ This diagram is the point-group shadow of Hermann's theorem: one *t*-subgroup st
 
 ---
 
-## Elements tab
+## Elements & Positions tab
 
-Where the **Matrix** tab lists the retained and lost operations as a table, this tab shows the same information *geometrically*, overlaid on the parent's [symmetry-element diagram](symbols-and-diagrams.md#symmetry-element-diagram) (the ITA Vol. A style figure with axes, planes and inversion centres). It answers "which symmetry elements survive, and which break, when the crystal transforms from $G$ to the subgroup $H$" — at a glance, in the same picture crystallographers already read.
+Where the **Matrix** tab lists the retained and lost operations as a table, this tab shows the same information *geometrically*, in the two figures crystallographers already read side by side in ITA Vol. A: on the left, the parent's [symmetry-element diagram](symbols-and-diagrams.md#symmetry-element-diagram) (axes, planes and inversion centres); on the right, the parent's **general-position diagram**. Both follow one colour rule — **what survives in $H$ is black, what is lost is yellow**, with the unit cell drawn in blue underneath — so the tab answers at a glance: which symmetry elements break, and how the general-position orbit splits, when the crystal transforms from $G$ to the subgroup $H$. The projection direction (⟂ *a*, *b* or *c*) is chosen automatically for the parent's crystal system, and the header names the relation, its kind and index, and the projection.
 
-- **Elements retained in $H$ are drawn in black; elements that are lost are drawn in red.** The projection direction (⟂ *a*, *b* or *c*) is chosen automatically for the parent's crystal system, and the header names the relation and projection.
-- A symmetry element degrading to a lower one is shown literally: e.g. a 4-fold axis that becomes a 2-fold appears as a **red 4-fold symbol with a black 2-fold drawn on top of it** — the red says "the 4-fold is gone", the black says "a 2-fold remains here".
-- The overlay is built by drawing the full parent diagram (as the *lost* baseline) and then re-drawing, on top, the symmetry elements reconstructed directly from $H$'s own operation set — so retained elements are precisely those that reappear in $H$, with no symbol-by-symbol guessing.
+**Left — symmetry elements.**
 
-The tab handles three situations, according to how the subgroup's cell relates to the parent's:
+- The overlay draws the symmetry elements reconstructed directly from $H$'s own operation set in black, over the parent's elements that are lost in yellow — so retained elements are precisely those that reappear in $H$, with no symbol-by-symbol guessing.
+- A symmetry element degrading to a lower one is shown by the surviving symbol alone: where a 4-fold axis keeps only its 2-fold, just the **black 2-fold symbol** appears. A lost element is printed in yellow only where nothing survives at its geometric locus, so the surviving symmetry stays legible.
 
-- **Same conventional cell** — *translationengleiche* (*t*-) subgroups, and *klassengleiche* (*k*-) subgroups that only remove centring vectors ($\det$ of the sublattice basis $= 1$). Here $H$'s elements live in the parent's cell, so the overlay is a single parent-cell diagram. (A centring-removing *k*- relation, e.g. $I$- or $F$-centred $\to$ primitive, shows the centring-generated screw axes and glide planes turning red.)
-- **In-plane cell enlargement** — *k*- or isomorphic relations whose enlargement lies in the *a*–*b* plane ($a'=n_a a$, $b'=n_b b$, with *c* unchanged) in an orthorhombic, tetragonal or cubic parent. The enlarged cell is drawn (projected ⟂ *c*) as an $n_a\times n_b$ grid of parent-cell tiles, and **each tile is coloured independently**: a symmetry element retained in $H$ appears black in the tiles where that copy survives and red where the cell enlargement has removed it — so cell doubling shows up directly as every-other copy turning red.
+The left figure handles three situations, according to how the subgroup's cell relates to the parent's:
+
+- **Same conventional cell** — *translationengleiche* (*t*-) subgroups, and *klassengleiche* (*k*-) subgroups that only remove centring vectors ($\det$ of the sublattice basis $= 1$). Here $H$'s elements live in the parent's cell, so the overlay is a single parent-cell diagram. (A centring-removing *k*- relation, e.g. $I$- or $F$-centred $\to$ primitive, shows the centring-generated screw axes and glide planes turning yellow.)
+- **In-plane cell enlargement** — *k*- or isomorphic relations whose enlargement lies in the *a*–*b* plane ($a'=n_a a$, $b'=n_b b$, with *c* unchanged) in an orthorhombic, tetragonal or cubic parent. The enlarged cell is drawn (projected ⟂ *c*) as an $n_a\times n_b$ grid of parent-cell tiles, and **each tile is coloured independently**: a symmetry element retained in $H$ appears black in the tiles where that copy survives and yellow where the cell enlargement has removed it — so cell doubling shows up directly as every-other copy turning yellow.
 - **Otherwise** (enlargement along the viewing axis $c$, oblique/non-orthogonal cell changes, hexagonal/trigonal/monoclinic parents) the lost symmetry cannot be drawn unambiguously in a 2-D projection, so the tab shows a short note pointing to the **Domains & Twins** and **New reflections** tabs, which already carry the lost-lattice-symmetry information for those cases.
 
-![Elements tab](../../../assets/cap-en-auto/FormGroupRelations-tabElements.png)
+**Right — general positions.** Under $G$ all drawn points form a single orbit (one general position); under $H$ that orbit splits into $[G:H]$ sub-orbits (compare the **Orbit splitting** tab). The sub-orbit containing the representative point — the set that remains one general position of $H$ — is drawn **black**; the points of the other sub-orbits, no longer equivalent to it once the symmetry is lowered, are **yellow**. Where the projection makes two equivalent points coincide, the standard ITA *split circle* is used: a circle divided by a vertical line, with a comma marking the mirror-image half and a height label (`+`, `½−`, …) beside each half. **If one half survives in $H$ and the other is lost, the dividing line and the lost half's comma and height label are drawn in yellow**, so a half-lost position can be read directly off the figure. The orbit colouring is shown for same-cell relations (*t*-, and centring-removing *k*-); for cell-enlarging relations the right panel shows a short note instead.
+
+For R space groups displayed in the rhombohedral-axes (Rho) setting, neither figure can be drawn in this projection; the tab shows a note instead, and both diagrams are available in the hexagonal-axes (Hex) setting of the same R space group.
+
+![Elements & Positions tab](../../../assets/cap-en-auto/FormGroupRelations-tabElements.png)
 
 ---
 
