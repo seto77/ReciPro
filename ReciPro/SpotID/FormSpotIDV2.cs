@@ -603,9 +603,11 @@ public partial class FormSpotIDV2 : FormBase
             //260718Cl 変更: 半減 List を繰り返し再生成せず、必要な 2 の累乗 stride で一度に間引く (残る要素は旧実装と同一)
             if (pixelsBGList.Count > 50000)
             {
+                //260718Cl 修正 (codex 指摘): 停止判定は「間引き後の要素数 = ceil(count/stride)」で見る。
+                //旧 `count / stride`(切り捨て=floor)だと 50001 で止まり旧実装(半減の繰り返し=2の累乗stride)と集合が食い違っていた。
                 int stride = 1;
-                while (pixelsBGList.Count / stride > 50000) stride *= 2;
-                var reduced = new List<(double[] x, double y, double w)>(pixelsBGList.Count / stride + 1);
+                while ((pixelsBGList.Count - 1) / stride + 1 > 50000) stride *= 2;
+                var reduced = new List<(double[] x, double y, double w)>((pixelsBGList.Count - 1) / stride + 1);
                 for (int i = 0; i < pixelsBGList.Count; i += stride)
                     reduced.Add(pixelsBGList[i]);
                 pixelsBGList = reduced;
@@ -1452,7 +1454,7 @@ public partial class FormSpotIDV2 : FormBase
         //Bethe.Disk中のインデックスと、g.Indicesの対応付け
         //260718Cl 変更: index ごとの disk 全走査 + spots.Max の反復を、(H,K,L)→index 辞書 (重複キーは旧挙動どおり不採用) と maxA の一次計算に
         var disks = FormMain.Crystal.Bethe.Disks;
-        var maxA = spots.Max(s => s.A);
+        var maxA = spots.Count > 0 ? spots.Max(s => s.A) : 1.0;//260718Cl (codex 指摘): 旧は foreach 内で呼ぶため空 spots で Max が走らなかった。ループ前 hoist に伴い空ガード
         var diskIndex = new Dictionary<(int H, int K, int L), int>();
         for (int i = 0; i < disks[0].Length; i++)
             if (!diskIndex.TryAdd((disks[0][i].H, disks[0][i].K, disks[0][i].L), i))
