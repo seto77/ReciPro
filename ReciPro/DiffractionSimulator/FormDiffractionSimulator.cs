@@ -346,7 +346,22 @@ public partial class FormDiffractionSimulator : FormBase
     public bool CancelSetVector { get; set; } = false;
     #endregion
 
-    private Font font => new("Segoe UI", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
+    //260717Cl 変更: 呼び出しごとに new Font を生成し Dispose されず GDI リークしていたため、サイズ不変時は再利用するキャッシュに
+    //旧: private Font font => new("Segoe UI", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
+    private Font fontCache;
+    private Font font
+    {
+        get
+        {
+            var size = (float)(trackBarStrSize.Value / 8.0);
+            if (fontCache == null || fontCache.Size != size)
+            {
+                fontCache?.Dispose();
+                fontCache = new("Segoe UI", size);
+            }
+            return fontCache;
+        }
+    }
     public bool DynamicCompressionMode { get; set; } = false;
     public List<double[]> DynamicCompression_SpotInformation = [];
 
@@ -658,9 +673,9 @@ public partial class FormDiffractionSimulator : FormBase
         {
             foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null))
             {
-                start = disk.Center - disk.Size / 2;
-                end = disk.Center + disk.Size / 2; ;
-                var dest = new PointF[] { start.ToPointF(), new((float)end.X, (float)start.Y), new((float)start.X, (float)end.Y) };//左上、右上、左下の順番
+                //260717Cl 変更: 外側の start/end を上書きしていたためローカル変数化 (後続の検出器枠線での再計算も不要に)
+                PointD diskStart = disk.Center - disk.Size / 2, diskEnd = disk.Center + disk.Size / 2;
+                var dest = new PointF[] { diskStart.ToPointF(), new((float)diskEnd.X, (float)diskStart.Y), new((float)diskStart.X, (float)diskEnd.Y) };//左上、右上、左下の順番
                 g.DrawImage(disk.Bitmap, dest, new RectangleF(0, 0, disk.PixelSize.Width, disk.PixelSize.Width), GraphicsUnit.Pixel);
             }
         }
@@ -683,9 +698,7 @@ public partial class FormDiffractionSimulator : FormBase
         //検出器の枠線
         if (fdsg.ShowDetectorArea)
         {
-            start = new PointD(-fdsg.DetectorPixelSize * fdsg.FootX, -fdsg.DetectorPixelSize * fdsg.FootY);
-            end = new PointD(fdsg.DetectorPixelSize * (fdsg.DetectorWidth - fdsg.FootX), fdsg.DetectorPixelSize * (fdsg.DetectorHeight - fdsg.FootY));
-            //var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch) 旧: Pen が未解放
+            //260717Cl: start/end はメソッド冒頭の計算値がそのまま有効 (CBED ループの上書きをローカル化したため再計算を削除)
             using var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch)
             g.DrawRectangle(pen, (float)Math.Min(start.X, end.X), (float)Math.Min(start.Y, end.Y), (float)Math.Abs(start.X - end.X), (float)Math.Abs(start.Y - end.Y));
         }
@@ -1259,7 +1272,7 @@ public partial class FormDiffractionSimulator : FormBase
             {
                 // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
                 double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                var pts = new List<PointD>();
+                var pts = new List<PointD>(1001);//260717Cl 容量指定 (ループ上限 = 1000 分割 + 1)
                 for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                 {
                     double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
@@ -1278,7 +1291,7 @@ public partial class FormDiffractionSimulator : FormBase
                     if (toolStripButtonIndexLabels.Checked)
                     {
                         //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
-                        var original = graphics.Transform;
+                        using var original = graphics.Transform;//260717Cl 追加: Transform getter が返す Matrix コピーを復元後に解放 (線ごとにリークしていた)
                         var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
                         if (-Math.PI / 2 < θ && θ < Math.PI / 2)
                         {
@@ -1477,8 +1490,9 @@ public partial class FormDiffractionSimulator : FormBase
         }
         //分割幅をきめる　ここまで
 
-        int startN = (int)(min2Theta / stepInteger / Math.Pow(10, stepPow));
-        int endN = (int)(max2Theta / stepInteger / Math.Pow(10, stepPow)) + 1;
+        var stepScale = Math.Pow(10, stepPow);//260717Cl 追加: 確定した stepPow の Math.Pow を一度だけ計算 (旧: startN/endN/ループ内 twoTheta で計3+N回)
+        int startN = (int)(min2Theta / stepInteger / stepScale);
+        int endN = (int)(max2Theta / stepInteger / stepScale) + 1;
 
         //pen.Brush = new SolidBrush(colorControlScale2Theta.Color); // (260611Ch) 旧: 差し替え SolidBrush が未解放
         using var twoThetaPen = new Pen(colorControlScale2Theta.Color, (float)(trackBarScaleLineWidth.Value * Resolution / 2f)); // (260611Ch)
@@ -1488,11 +1502,18 @@ public partial class FormDiffractionSimulator : FormBase
 
         for (double n = Math.Max(1, startN); n < endN; n++)
         {
-            var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
+            var twoTheta = n * stepInteger * stepScale;
             if (twoTheta == 180) break;
             var ptsArray = Geometry.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
-                ptsArray = [[.. Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI)))],];
+            {
+                //260717Cl 変更: Enumerable.Range+Select+展開を、半径を一次受けした直接 for に (3600 点の同心円)
+                var ringR = 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI);
+                var circle = new PointD[3600];
+                for (int i = 0; i < circle.Length; i++)
+                    circle[i] = ringR * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI));
+                ptsArray = [[.. circle]];
+            }
 
             foreach (var pts in ptsArray)
                 g.DrawLines(twoThetaPen, pts.ToArray()); // (260611Ch)
@@ -1746,25 +1767,26 @@ public partial class FormDiffractionSimulator : FormBase
         var originInverseSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
         var originInverseInside = IsScreenArea(originInverseSrc);//逆空間原点と反対向きの点が検出器内にいるか
 
-        var edges = new List<Vector3DBase>();
-        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
-        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, height)));
-        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(0, h)));
-        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(width, h)));
+        //260717Cl 変更: 4 辺 2×(width+height) 点の List 構築 + LINQ 複数走査を、単一ループの min/max 同時更新に
+        //(座標変換もエッジ点あたり 1 回に半減。NaN の扱いは旧 LINQ Min/Max と同じ: min 側は NaN 伝播、max 側は NaN 無視)
+        var precession = radioButtonBeamPrecessionXray.Checked;
+        double minT = double.PositiveInfinity, maxT = double.NegativeInfinity;
+        var anyNaN = false;
+        void accumulate(int x, int y)
+        {
+            var p = convertScreenToReal(x, y);
+            var t = precession ? 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2) : Math.Atan2(Math.Sqrt(p.X2Y2), p.Z);
+            if (double.IsNaN(t)) { anyNaN = true; return; }
+            if (t < minT) minT = t;
+            if (t > maxT) maxT = t;
+        }
+        for (int w = 0; w < width; w++) { accumulate(w, 0); accumulate(w, height); }
+        for (int h = 0; h < height; h++) { accumulate(0, h); accumulate(width, h); }
 
-        double min2Theta, max2Theta;
-        if (radioButtonBeamPrecessionXray.Checked)
-        {
-            min2Theta = originInside ? 0 : edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Min();
-            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Max();
-        }
-        else
-        {
-            min2Theta = originInside ? 0 : edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min();
-            max2Theta = originInverseInside ? Math.PI : edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max();
-        }
+        var min2Theta = originInside ? 0 : anyNaN ? double.NaN : minT;
+        var max2Theta = !precession && originInverseInside ? Math.PI : maxT;
         if (double.IsNaN(min2Theta)) min2Theta = 0;
-        if (double.IsNaN(max2Theta)) max2Theta = 175 / 180.0 * Math.PI;
+        if (double.IsNaN(max2Theta) || double.IsInfinity(max2Theta)) max2Theta = 175 / 180.0 * Math.PI;
         return (min2Theta, max2Theta);
     }
 
@@ -1962,11 +1984,12 @@ public partial class FormDiffractionSimulator : FormBase
 
                 //最も方向が近くて、逆格子原点からも近い点を表示
                 #region 最大θを検索
-                var L = new double[]{
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length}.Max();
+                //260717Cl 変更: 一時配列 + LINQ Max を Math.Max ネストに
+                var L = Math.Max(
+                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length),
+                    Math.Max(convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
+                             convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length));
                 var maxTwoTheta = Math.Atan(L / CameraLength2);
                 var minCosTheta = Math.Cos(maxTwoTheta / 2);
                 #endregion
@@ -2268,7 +2291,7 @@ public partial class FormDiffractionSimulator : FormBase
             var text = button.Text;
             if (text.Contains("Spot"))
                 groupBoxSpotProperty.Enabled = button.Checked;
-            else if (text.Contains("Kikuchi") || text.Contains("Kikuchi") || text.Contains("Scale"))
+            else if (text.Contains("Kikuchi") || text.Contains("Debye") || text.Contains("Scale"))//260717Cl 修正: 2 つ目の条件が "Kikuchi" の重複で、Debye Ring ボタンでタブが自動選択されなかった
             {
                 TabPage page;
                 if (button.Name.Contains("Kikuchi"))
@@ -2472,8 +2495,7 @@ public partial class FormDiffractionSimulator : FormBase
             flowLayoutPanelPED.Visible = false;
             FormDiffractionSimulatorCBED.Visible = false;
 
-            flowLayoutPanelBethe.Enabled = true;
-            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;//260717Cl: 直前の flowLayoutPanelBethe.Enabled = true と重複していたため 1 行に
 
             numericBoxSpotRadius.FooterText = "nm⁻¹";
         }
@@ -3003,10 +3025,10 @@ public partial class FormDiffractionSimulator : FormBase
             Draw(g, false, false);
             var gray = BitmapConverter.ToByteGray(bmp);
 
-            var temp = gray.Select(intensity => intensity * step / Math.Sqrt(2.0 * Math.PI) * Math.Exp(-s * s / 2)).ToArray();
-
+            //260717Cl 変更: Select+ToArray の一時配列を除き、画素不変の Gaussian 係数を先に計算して直接加算
+            var coeff = step / Math.Sqrt(2.0 * Math.PI) * Math.Exp(-s * s / 2);
             for (int i = 0; i < sum.Length; i++)
-                sum[i] += temp[i];
+                sum[i] += gray[i] * coeff;
         }
         var destBmp = BitmapConverter.FromArrayToBitmap([.. sum.Select(s => (byte)Math.Min(s, 255))], graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
         // graphicsBox.ClearGraphicsLayer(); // (260322Ch) GraphicBox2 仮名時点の説明
@@ -3139,7 +3161,8 @@ public partial class FormDiffractionSimulator : FormBase
             Color colScrewOrGlide = colorControlScrewGlide.Color, colLattice = colorControlForbiddenLattice.Color, colGeneral = colorControlNoCondition.Color;
 
             var transCoef = trackBar3D_Transparency.Value * trackBar3D_Transparency.Value;
-            Parallel.ForEach(gVector.Where(g => g.Length2 < maxG * maxG && (g.Flag1 || radioButtonIntensityExcitation.Checked)), new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
+            //260717Cl 変更: MaxDegreeOfParallelism=1 の Parallel.ForEach (実質逐次) を通常の foreach にし、不要になった lock と重複した BlendColor 判定を除去
+            foreach (var g in gVector.Where(g => g.Length2 < maxG * maxG && (g.Flag1 || radioButtonIntensityExcitation.Checked)))
             {
                 var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
                 double dev = precession ? Math.Abs(vec.Z) : Math.Abs((vec - ewaldCenter).Length - r);
@@ -3147,9 +3170,9 @@ public partial class FormDiffractionSimulator : FormBase
                 //スポット強度。励起誤差モードの時は、中心からの距離に比例。kinematicalモードの時は構造因子の二乗
                 var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1, maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
                 if (F2 < maxF * thredshold || F2 == 0)
-                    return;
+                    continue;
 
-                var col = colFar; ;
+                var col = colFar;
                 if (radioButtonIntensityExcitation.Checked)
                 {
                     if (g.ExtinctionRule is null)//260605Cl 旧: g.Extinction.Length == 0
@@ -3157,13 +3180,13 @@ public partial class FormDiffractionSimulator : FormBase
                     else if (g.ExtinctionRule.Length == 1)//260605Cl 旧: g.Extinction[0].Length == 1
                     {
                         if (checkBoxExtinctionLattice.Checked)
-                            return;
+                            continue;
                         col = colLattice;
                     }
                     else
                     {
                         if (checkBoxExtinctionAll.Checked)
-                            return;
+                            continue;
                         col = colScrewOrGlide;
                     }
                 }
@@ -3173,20 +3196,14 @@ public partial class FormDiffractionSimulator : FormBase
 
                 var trans = dev / spotRadius > 1 && checkBox3D_MakeSpotsTransparent.Checked ? Math.Min(1 - dev / r * transCoef / 100.0, 1.0) : 1.0;
                 if (trans <= 0)
-                    return;
-
-                if (checkBox3D_EwaldSphere.Checked && dev < spotRadius)
-                    col = Miscellaneous.BlendColor(colFar, colNear, dev / spotRadius);
+                    continue;
 
                 var radius = Math.Pow(F2 / maxF, 1.0 / 3.0) * spotRadius; //逆格子点（構造因子の二乗の1/3状の半径）
-                var spot = new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces);
-                lock (lockObj)
-                    spotList.Add(spot);
+                spotList.Add(new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces));
 
                 if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
-                    lock (lockObj)
-                        textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
-            });
+                    textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
+            }
             glObjects.AddRange(spotList);
             glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat, glControl)));
         }
