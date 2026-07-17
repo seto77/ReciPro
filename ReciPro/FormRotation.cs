@@ -307,7 +307,7 @@ public partial class FormRotationMatrix : FormBase
         if (checkBoxEnable3rd.Checked)
             numericBoxExp3.RadianValue = angles[2];
         skip = false;
-        NumericBoxExp_ValueChanged(new object(), new EventArgs());
+        NumericBoxExp_ValueChanged(this, EventArgs.Empty);
     }
 
     /// <summary>角度をセット.</summary>
@@ -421,11 +421,12 @@ public partial class FormRotationMatrix : FormBase
         var obj = new List<GLObject>();
 
         var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
+        var isReciPro = gl.Name.Contains("ReciPro");//260718Cl 追加: 同一判定が 3 箇所で反復されていたため一次受け
 
         //1st
         var mat = new Material(new C4(0.8f, 0.8f, 0f, 1f));
         obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-        obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat, gl));
+        obj.Add(new TextObject(isReciPro ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat, gl));
 
         if (!checkBoxEnable2nd.Checked)//2ndが存在しない時
         {
@@ -444,7 +445,7 @@ public partial class FormRotationMatrix : FormBase
             mat = new Material(new C4(0f, 0.8f, 0.8f, 1f));
             var n = rot[0] * dir[1];
             obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-            obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Θ" : "2nd", 12, n * 2.0 + n.Normalized() * 0.01, 0.05, true, mat, gl));
+            obj.Add(new TextObject(isReciPro ? "Θ" : "2nd", 12, n * 2.0 + n.Normalized() * 0.01, 0.05, true, mat, gl));
 
             if (!checkBoxEnable3rd.Checked)
             {
@@ -464,7 +465,7 @@ public partial class FormRotationMatrix : FormBase
                 n = rot[0] * rot[1] * dir[2];
                 obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
                 obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-                obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Ψ" : "3rd", 12, n * 1.45 + n.Normalized() * 0.01, 0.05, true, mat, gl));
+                obj.Add(new TextObject(isReciPro ? "Ψ" : "3rd", 12, n * 1.45 + n.Normalized() * 0.01, 0.05, true, mat, gl));
 
                 if (dir[2].Z == 0)
                     obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
@@ -545,84 +546,37 @@ public partial class FormRotationMatrix : FormBase
         if (!(sender as RadioButton).Checked)
             return;
         var name = (sender as RadioButton).Name;
+
+        //260718Cl 統合: 選んだ軸 (X/Y/Z) と同名の下位軸を無効化し、それがチェック中なら次の軸 (X→Y→Z→X) へチェックを移す
+        //処理が 1st→2nd と 2nd→3rd で完全に同一だったため共通化。
+        static void updateDependentAxis(char axis, RadioButton x, RadioButton y, RadioButton z)
+        {
+            x.Enabled = axis != 'X';
+            y.Enabled = axis != 'Y';
+            z.Enabled = axis != 'Z';
+            if (axis == 'X' && x.Checked) y.Checked = true;
+            else if (axis == 'Y' && y.Checked) z.Checked = true;
+            else if (axis == 'Z' && z.Checked) x.Checked = true;
+        }
+
+        var axis = name.Contains('X') ? 'X' : name.Contains('Y') ? 'Y' : 'Z';
         if (name.Contains("1st"))
-        {
-            if (name.Contains('X'))
-            {
-                radioButton2ndX.Enabled = false;
-                radioButton2ndY.Enabled = true;
-                radioButton2ndZ.Enabled = true;
-                if (radioButton2ndX.Checked)
-                    radioButton2ndY.Checked = true;
-            }
-            else if (name.Contains('Y'))
-            {
-                radioButton2ndX.Enabled = true;
-                radioButton2ndY.Enabled = false;
-                radioButton2ndZ.Enabled = true;
-                if (radioButton2ndY.Checked)
-                    radioButton2ndZ.Checked = true;
-            }
-            else
-            {
-                radioButton2ndX.Enabled = true;
-                radioButton2ndY.Enabled = true;
-                radioButton2ndZ.Enabled = false;
-                if (radioButton2ndZ.Checked)
-                    radioButton2ndX.Checked = true;
-            }
-        }
+            updateDependentAxis(axis, radioButton2ndX, radioButton2ndY, radioButton2ndZ);
         else if (name.Contains("2nd"))
-        {
-            if (name.Contains('X'))
-            {
-                radioButton3rdX.Enabled = false;
-                radioButton3rdY.Enabled = true;
-                radioButton3rdZ.Enabled = true;
-                if (radioButton3rdX.Checked)
-                    radioButton3rdY.Checked = true;
-            }
-            else if (name.Contains('Y'))
-            {
-                radioButton3rdX.Enabled = true;
-                radioButton3rdY.Enabled = false;
-                radioButton3rdZ.Enabled = true;
-                if (radioButton3rdY.Checked)
-                    radioButton3rdZ.Checked = true;
-            }
-            else
-            {
-                radioButton3rdX.Enabled = true;
-                radioButton3rdY.Enabled = true;
-                radioButton3rdZ.Enabled = false;
-                if (radioButton3rdZ.Checked)
-                    radioButton3rdX.Checked = true;
-            }
-        }
+            updateDependentAxis(axis, radioButton3rdX, radioButton3rdY, radioButton3rdZ);
         SetRotation(false);
     }
 
     private V3[] getExpDirections()
     {
-        var v1 = new V3(1, 0, 0);
-        if (radioButton1stY.Checked)
-            v1 = new V3(0, 1, 0);
-        else if (radioButton1stZ.Checked)
-            v1 = new V3(0, 0, 1);
-
-        var v2 = new V3(1, 0, 0);
-        if (radioButton2ndY.Checked)
-            v2 = new V3(0, 1, 0);
-        else if (radioButton2ndZ.Checked)
-            v2 = new V3(0, 0, 1);
-
-        var v3 = new V3(1, 0, 0);
-        if (radioButton3rdY.Checked)
-            v3 = new V3(0, 1, 0);
-        else if (radioButton3rdZ.Checked)
-            v3 = new V3(0, 0, 1);
-
-        return [v1, v2, v3];
+        //260718Cl 統合: 軸選択 (X 既定 / Y / Z) を X/Y/Z の 3 軸で共通化 (旧: 同じ if/else 連鎖を 3 度展開)
+        static V3 axisOf(RadioButton y, RadioButton z) => y.Checked ? new V3(0, 1, 0) : z.Checked ? new V3(0, 0, 1) : new V3(1, 0, 0);
+        return
+        [
+            axisOf(radioButton1stY, radioButton1stZ),
+            axisOf(radioButton2ndY, radioButton2ndZ),
+            axisOf(radioButton3rdY, radioButton3rdZ),
+        ];
     }
 
     private void GlControlReciProAxes_WorldMatrixChanged(object sender, EventArgs e)
