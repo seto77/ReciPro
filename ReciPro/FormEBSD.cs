@@ -1035,6 +1035,21 @@ public partial class FormEBSD : FormBase
         }
     }
 
+    /// <summary>260718Cl 追加: 全 energy×depth の plane 参照をピクセルループ外で一括取得する (Weighted 3 モデル共通)。
+    /// 旧実装はピクセル×energy×depth 回 GetPlane を呼んでいた。</summary>
+    private static (float[][] pos, float[][] neg) GetAllPlanes(MasterPattern mp, int eLen, int dLen)
+    {
+        var pos = new float[eLen * dLen][];
+        var neg = new float[eLen * dLen][];
+        for (int ei = 0; ei < eLen; ei++)
+            for (int di = 0; di < dLen; di++)
+            {
+                pos[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di);
+                neg[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+            }
+        return (pos, neg);
+    }
+
     /// <summary>
     /// 構築済みルックアップテーブルと MC フィッティング結果を使い、
     /// 全エネルギー・深さの加重平均 EBSD パターンを計算する。260325Cl 追加
@@ -1045,6 +1060,7 @@ public partial class FormEBSD : FormBase
         var dist = mcDistribution;
         int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
         int binCount = dist.BinCount, gs = ebsdLookupGridSize;
+        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
         Array.Clear(values);
 
@@ -1101,9 +1117,7 @@ public partial class FormEBSD : FormBase
                                 int wIdx = ei * dLen + di;
                                 double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
                                 sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
                             }
@@ -1121,9 +1135,7 @@ public partial class FormEBSD : FormBase
                                 int wIdx = ei * dLen + di;
                                 double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
                                 sum += weight * intensity;
@@ -1239,6 +1251,7 @@ public partial class FormEBSD : FormBase
         int binCount = dist.BinCount;
         var gs = ebsdLookupGridSize;
         var planeScaleFactors = masterPatternGlobalNormalizationFactors;
+        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
         Array.Clear(values);
 
@@ -1284,7 +1297,7 @@ public partial class FormEBSD : FormBase
                                 if (weight < 1e-15) continue;
                                 double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
                                 if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di) : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
                                 sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
                             }
@@ -1305,7 +1318,7 @@ public partial class FormEBSD : FormBase
                                 if (weight < 1e-15) continue;
                                 double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
                                 if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di) : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
                                                  + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
@@ -1397,6 +1410,7 @@ public partial class FormEBSD : FormBase
         int totalPixels = width * height;
         int binCount = dist.BinCount;
         var gs = ebsdLookupGridSize;
+        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
         Array.Clear(values);
 
@@ -1440,15 +1454,9 @@ public partial class FormEBSD : FormBase
                                 int wIdx = ei * dLen + di;
                                 double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
-                                var planePrevious = di > 0
-                                    ? posZ
-                                        ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di - 1)
-                                        : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di - 1)
-                                    : null;
+                                var planePrevious = di > 0 ? posZ ? posPlanes[wIdx - 1] : negPlanes[wIdx - 1] : null;//260718Cl 事前展開した配列を参照 (di>0 なら wIdx-1 = 同 energy の di-1)
                                 double intensity = hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2];
                                 if (planePrevious != null && planePrevious.Length > 0)
                                     intensity -= hw0 * planePrevious[hIdx0] + hw1 * planePrevious[hIdx1] + hw2 * planePrevious[hIdx2];
@@ -1469,15 +1477,9 @@ public partial class FormEBSD : FormBase
                                 double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
                                               + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
                                 if (plane == null || plane.Length == 0) continue;
-                                var planePrevious = di > 0
-                                    ? posZ
-                                        ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di - 1)
-                                        : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di - 1)
-                                    : null;
+                                var planePrevious = di > 0 ? posZ ? posPlanes[wIdx - 1] : negPlanes[wIdx - 1] : null;//260718Cl 事前展開した配列を参照 (di>0 なら wIdx-1 = 同 energy の di-1)
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
                                                  + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
                                 if (planePrevious != null && planePrevious.Length > 0)
@@ -1495,12 +1497,19 @@ public partial class FormEBSD : FormBase
 
     public void DrawEBSD()
     {
-        if (MasterPattern == null || skipEBSD_Rendering)         return;
+        if (MasterPattern == null || skipEBSD_Rendering) return;
 
         int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
-        if (width <= 0 || height <= 0)  return; 
+        if (width <= 0 || height <= 0) return;
 
+        //260717Cl 変更: 例外時に skipEBSD_Rendering が true のまま残り以後の描画が止まるため、本体を try/finally で保護
         skipEBSD_Rendering = true;
+        try { DrawEBSDCore(width, height); }
+        finally { skipEBSD_Rendering = false; }
+    }
+
+    private void DrawEBSDCore(int width, int height)
+    {
         sw1.Restart();
 
         // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
@@ -1541,10 +1550,7 @@ public partial class FormEBSD : FormBase
             var energyIndex = trackBarOutputEnergy.Value;
             var depthIndex = trackBarOutputThickness.Value;
             if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
-            {
-                skipEBSD_Rendering = false;
-                return;
-            }
+                return;//260717Cl: skipEBSD_Rendering の復元は DrawEBSD 側の finally に集約
 
             var mp = MasterPattern;
             var posPlane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex);
@@ -1578,7 +1584,10 @@ public partial class FormEBSD : FormBase
         if (Pbmp == null || ebsdCachedSize.Width != width || ebsdCachedSize.Height != height)
         {
             Pbmp?.Dispose();
-            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. Enumerable.Repeat((byte)255, totalPixels)] };
+            //260717Cl 変更: Enumerable.Repeat の逐次列挙を Array.Fill + 一括コピーに
+            var alpha = new byte[totalPixels];
+            Array.Fill(alpha, (byte)255);
+            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. alpha] };
             ebsdCachedSize = (width, height);
             groupBoxOutput.Enabled = true;
         }
@@ -1603,7 +1612,8 @@ public partial class FormEBSD : FormBase
         var maxRatio = (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;
         var minRatio = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
 
-        double max = Pbmp.SrcValuesGray.Max(), min = Pbmp.SrcValuesGray.Min(), dev = max - min;
+        var (min, max) = Pbmp.SrcValuesGray.MinMax();//260717Cl 変更: Max()+Min() の 2 走査を 1 走査に
+        var dev = max - min;
 
         Pbmp.MaxValue = dev * maxRatio + min;
         Pbmp.MinValue = dev * minRatio + min;
@@ -1624,8 +1634,6 @@ public partial class FormEBSD : FormBase
         // toolStripStatusLabel1.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
         toolStripStatusLabel2.Text = "EBSD rendering";
         toolStripStatusLabel3.Text = statusText;
-
-        skipEBSD_Rendering = false;
     }
 
     #endregion
@@ -1737,7 +1745,7 @@ public partial class FormEBSD : FormBase
                             if (checkBoxShowGIndices.Checked) // 260331Cl checkBoxShowGIndices で制御
                             {
                                 //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
-                                var original = graphics.Transform;
+                                using var original = graphics.Transform;//260717Cl 追加: Transform getter が返す Matrix コピーを復元後に解放
                                 var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
                                 if (-Math.PI / 2 < θ && θ < Math.PI / 2)
                                 {
@@ -1795,8 +1803,7 @@ public partial class FormEBSD : FormBase
                         if (gcd > 1) { bestU /= gcd; bestV /= gcd; bestW /= gcd; }
                         if (bestU < 0 || (bestU == 0 && bestV < 0) || (bestU == 0 && bestV == 0 && bestW < 0))
                         { bestU = -bestU; bestV = -bestV; bestW = -bestW; }
-                        if (drawnZoneAxes.Contains((bestU, bestV, bestW))) continue;
-                        drawnZoneAxes.Add((bestU, bestV, bestW));
+                        if (!drawnZoneAxes.Add((bestU, bestV, bestW))) continue;//260717Cl: Contains+Add を Add 戻り値判定に一本化
 
                         // 晶帯軸方向を検出器座標に投影（実空間ベクトルを使用）
                         var zoneAxisReal = bestU * Crystal.A_Axis + bestV * Crystal.B_Axis + bestW * Crystal.C_Axis;
@@ -1963,21 +1970,13 @@ public partial class FormEBSD : FormBase
         if (FormMain == null) return;
         var sw = new Stopwatch();
         sw.Start();
-        int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
 
         var crystal = FormMain.Crystal;
         crystal.SetVectorOfG(0, 2 / WaveLength, waveLengthControl.WaveSource);
 
-        var latticeType = crystal.Symmetry.LatticeTypeStr;
-
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule is null))//260605Cl 旧: g.Extinction.Length == 0
-            gtemp.Flag1 = true;
-
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule != null && g.ExtinctionRule == latticeType))//260605Cl 旧: g.Extinction.Length > 0 && g.Extinction[0] == latticeType
-            gtemp.Flag1 = false;
-
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule != null && g.ExtinctionRule != latticeType))//260605Cl 旧: g.Extinction.Length > 0 && g.Extinction[0] != latticeType
-            gtemp.Flag1 = false;
+        //260717Cl 変更: 3 本の Where 走査 (ExtinctionRule の null / lattice 一致 / 不一致で結局 null 以外は全て false) を単一 foreach に。未使用の width/height も削除
+        foreach (var gtemp in crystal.VectorOfG)
+            gtemp.Flag1 = gtemp.ExtinctionRule is null;
 
         if (radioButtonKikuchiThresholdOfLength.Checked)
         {
