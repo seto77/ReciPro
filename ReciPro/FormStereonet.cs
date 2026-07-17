@@ -19,7 +19,6 @@ public partial class FormStereonet : FormBase
     #region フィールド、プロパティ
     public FormMain formMain;
 
-    private Font strFont;
     private float pointSize;
     private Point MouseRangeStart, MouseRangeEnd = new(-1, -1);
     private bool MouseRangingMode = false;
@@ -846,7 +845,7 @@ public partial class FormStereonet : FormBase
     #region Appearanceタブ関連
     private void trackBarStrSize_Scroll(object sender, EventArgs e)
     {
-        strFont = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / 9f); //260610Cl Wine時フォント切替
+        //260718Cl 削除: strFont は代入されるだけでどこからも描画に使われておらず、変更のたびに旧 Font がリークしていた
         pointSize = trackBarPointSize.Value;
         Draw();
     }
@@ -1003,15 +1002,12 @@ public partial class FormStereonet : FormBase
         using var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260611Ch)
         using (var g = Graphics.FromImage(bmp)) // (260611Ch)
             Draw(g);
-        if (bmp != null)
+        using var dialog = new SaveFileDialog() { Filter = "Picture File[*.png]|*.png;" };//260718Cl using 化 (bmp の null 判定は using var のため不要)
+        if (dialog.ShowDialog() == DialogResult.OK)
         {
-            var dialog = new SaveFileDialog() { Filter = "Picture File[*.png]|*.png;" };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                var filename = dialog.FileName;
-                if (!filename.EndsWith(".png")) filename += ".png";
-                bmp.Save(filename, ImageFormat.Png);
-            }
+            var filename = dialog.FileName;
+            if (!filename.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) filename += ".png";//260718Cl 大文字拡張子の二重付加を防止
+            bmp.Save(filename, ImageFormat.Png);
         }
     }
 
@@ -1026,20 +1022,8 @@ public partial class FormStereonet : FormBase
     }
 
     private void copyMetafileToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var grfx = CreateGraphics();
-        var ipHdc = grfx.GetHdc();
-        var ms = new MemoryStream();
-        var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-        grfx.ReleaseHdc(ipHdc);
-        grfx.Dispose();
-        //var g = Graphics.FromImage(mf); Draw(g); g.Dispose(); // (260611Ch) 旧: 手動 Dispose
-        using (var g = Graphics.FromImage(mf)) // (260611Ch)
-        {
-            Draw(g);
-        }
-        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
-    }
+        //260718Cl 変更: HDC→Metafile の自前定型 (MemoryStream/Metafile が未解放だった) を、FormDiffractionSimulator と同じ共通ヘルパーへ集約
+        => ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => Draw(g), "");
 
     private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -1341,68 +1325,34 @@ public partial class FormStereonet : FormBase
                                 ProjectedObjects.Add(new IndexInfo(indices, 0));
                             }
                 #region 結晶系に従ってソート
+                //260718Cl 変更: |x|+|y|+|z| 合計 → 軸優先順のタイブレークという同一骨格の比較ラムダが 4 つ複製されていたため、
+                //軸の優先順 (0=X, 1=Y, 2=Z) を引数に取る共通比較に統合。monoclinic で MainAxis が a/b/c 以外の場合に
+                //ソートしない旧挙動も nullable で維持
                 var sysNum = formMain.Crystal.Symmetry.CrystalSystemNumber;
-                if (sysNum == 4 || sysNum == 5 || sysNum == 6)//tetragonal x>=y>=z
+                (int first, int second, int third)? axisOrder = sysNum switch
+                {
+                    4 or 5 or 6 => (2, 0, 1),//tetragonal 系: Z → X → Y
+                    2 => formMain.Crystal.Symmetry.MainAxis switch//monoclinic: 主軸から順に
+                    {
+                        "a" => (0, 1, 2),
+                        "b" => (1, 2, 0),
+                        "c" => (2, 0, 1),
+                        _ => ((int, int, int)?)null,
+                    },
+                    _ => (0, 1, 2),//その他: X → Y → Z
+                };
+                if (axisOrder is { } order)
                     ProjectedObjects.Sort((a, b) =>
                     {
                         var (X1, Y1, Z1) = a.Indices[0];
                         var (X2, Y2, Z2) = b.Indices[0];
-                        if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                        else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                        else if (X1 != X2) return X1.CompareTo(X2);
-                        else return Y1.CompareTo(Y2);
+                        int sum1 = Abs(X1) + Abs(Y1) + Abs(Z1), sum2 = Abs(X2) + Abs(Y2) + Abs(Z2);
+                        if (sum1 != sum2) return sum1.CompareTo(sum2);
+                        Span<int> v1 = [X1, Y1, Z1], v2 = [X2, Y2, Z2];
+                        if (v1[order.first] != v2[order.first]) return v1[order.first].CompareTo(v2[order.first]);
+                        if (v1[order.second] != v2[order.second]) return v1[order.second].CompareTo(v2[order.second]);
+                        return v1[order.third].CompareTo(v2[order.third]);
                     });
-                else if (sysNum == 2)//tetragonal x>=y>=z
-                {
-                    switch (formMain.Crystal.Symmetry.MainAxis)
-                    {
-                        case "a":
-                            ProjectedObjects.Sort((a, b) =>
-                            {
-                                var (X1, Y1, Z1) = a.Indices[0];
-                                var (X2, Y2, Z2) = b.Indices[0];
-                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                                else if (X1 != X2) return X1.CompareTo(X2);
-                                else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                                else return Z1.CompareTo(Z2);
-                            });
-                            break;
-                        case "b":
-                            ProjectedObjects.Sort((a, b) =>
-                            {
-                                var (X1, Y1, Z1) = a.Indices[0];
-                                var (X2, Y2, Z2) = b.Indices[0];
-                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                                else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                                else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                                else return X1.CompareTo(X2);
-                            });
-                            break;
-                        case "c":
-                            ProjectedObjects.Sort((a, b) =>
-                            {
-                                var (X1, Y1, Z1) = a.Indices[0];
-                                var (X2, Y2, Z2) = b.Indices[0];
-                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                                else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                                else if (X1 != X2) return X1.CompareTo(X2);
-                                else return Y1.CompareTo(Y2);
-                            });
-                            break;
-                    }
-                }
-                else
-                {
-                    ProjectedObjects.Sort((a, b) =>
-                    {
-                        var (X1, Y1, Z1) = a.Indices[0];
-                        var (X2, Y2, Z2) = b.Indices[0];
-                        if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                        else if (X1 != X2) return X1.CompareTo(X2);
-                        else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                        else return Z1.CompareTo(Z2);
-                    });
-                }
                 #endregion
 
                 for (int i = 0; i < ProjectedObjects.Count; i++)

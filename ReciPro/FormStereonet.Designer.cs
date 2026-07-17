@@ -15,8 +15,6 @@ namespace ReciPro
             {
                 components.Dispose();
             }
-            if (strFont != null)
-                strFont.Dispose();
             base.Dispose(disposing);
         }
 
