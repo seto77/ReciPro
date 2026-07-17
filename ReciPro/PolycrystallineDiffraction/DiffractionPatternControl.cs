@@ -405,7 +405,7 @@ public partial class DiffractionPatternControl : UserControlBase
                     if (frequency.TryGetValue(j, out int value))
                         frequency[j] += temp[j];
                     else
-                        frequency.Add(j, value);
+                        frequency.Add(j, temp[j]);//260717Cl 修正: 初出キーの度数が out 既定値 0 で登録されていた
             }
         });
         Profile p = new Profile();

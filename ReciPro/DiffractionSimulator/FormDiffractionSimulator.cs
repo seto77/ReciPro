@@ -84,7 +84,7 @@ public partial class FormDiffractionSimulator : FormBase
         {
             if (radioButtonBeamParallel.Checked) return BeamModes.Parallel;
             else if (radioButtonBeamPrecessionElectron.Checked) return BeamModes.PrecessionElectron;
-            else if (radioButtonBeamPrecessionXray.Checked) return BeamModes.PrecessionElectron;
+            else if (radioButtonBeamPrecessionXray.Checked) return BeamModes.PrecessionXray;//260717Cl 修正: コピペミスで PrecessionElectron を返していた
             else return BeamModes.Convergence;
         }
         set

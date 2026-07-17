@@ -205,7 +205,8 @@ public partial class FormMain : FormBase
 
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
-    public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }
+    //260717Cl 修正: setter が value ではなく Crystal (getter) を自己代入していた
+    public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = value; }
 
     public Crystal[] Crystals
     {
