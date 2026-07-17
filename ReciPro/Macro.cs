@@ -28,31 +28,33 @@ public class Macro : MacroBase
     {
         main = _main;
 
+        //260718Cl 統合: サブクラスごとに繰り返していた GenerateHelpText+ForEach を addHelp に集約 (### 置換は該当テキストが無ければ no-op なので一律適用しても無害)。
+        //型付き field への代入だけ個別に残す。
+        void addHelp(Type type, string name) => help.AddRange(HelpAttribute.GenerateHelpText(type, name).Select(s => s.Replace("###", name)));
+
         File = new FileClass(this);
-        HelpAttribute.GenerateHelpText(File.GetType(), nameof(File)).ForEach(s => help.Add(s));
+        addHelp(File.GetType(), nameof(File));
 
         Dir = new DirectionClass(this);
-        HelpAttribute.GenerateHelpText(Dir.GetType(), nameof(Dir)).ForEach(s => help.Add(s));
+        addHelp(Dir.GetType(), nameof(Dir));
 
         DifSim = new DifSimClass(this);
-        HelpAttribute.GenerateHelpText(DifSim.GetType(), nameof(DifSim)).ForEach(s => help.Add(s));
+        addHelp(DifSim.GetType(), nameof(DifSim));
 
         Crystal = new CrystalClass(this);
-        HelpAttribute.GenerateHelpText(Crystal.GetType(), nameof(Crystal)).ForEach(s => help.Add(s));
-
+        addHelp(Crystal.GetType(), nameof(Crystal));
 
         CrystalList = new CrystalListClass(this);
-        HelpAttribute.GenerateHelpText(CrystalList.GetType(), nameof(CrystalList)).ForEach(s => help.Add(s));
+        addHelp(CrystalList.GetType(), nameof(CrystalList));
 
         STEM = new STEMClass(this);
-        HelpAttribute.GenerateHelpText(STEM.GetType(), nameof(STEM)).ForEach(s => help.Add(s.Replace("###", nameof(STEM))));
+        addHelp(STEM.GetType(), nameof(STEM));
 
         HRTEM = new HRTEMClass(this);
-        HelpAttribute.GenerateHelpText(HRTEM.GetType(), nameof(HRTEM)).ForEach(s => help.Add(s.Replace("###", nameof(HRTEM))));
+        addHelp(HRTEM.GetType(), nameof(HRTEM));
 
         Potential = new PotentialClass(this);
-        HelpAttribute.GenerateHelpText(Potential.GetType(), nameof(Potential)).ForEach(s => help.Add(s.Replace("###", nameof(Potential))));
-
+        addHelp(Potential.GetType(), nameof(Potential));
     }
 
     // (260414Ch) Help text revised throughout this file to match the implementation and improve English.
