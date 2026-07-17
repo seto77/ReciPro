@@ -20,14 +20,12 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
     private (byte R, byte G, byte B)[] scale;
     private bool isNegative, isGray;
 
-    private List<DiffractionPatternControl> diffractionPatternControl = new List<DiffractionPatternControl>();
-    private List<TabPage> tabPage = new List<TabPage>();
+    private readonly List<DiffractionPatternControl> diffractionPatternControl = [];//260718Cl 現代化: new List<T>() → collection expression
+    private readonly List<TabPage> tabPage = [];
 
-    private Stopwatch sw = new Stopwatch();
+    private readonly Stopwatch sw = new();
 
     public string currentPath = "";
-
-    private delegate void callBack();
 
     public string CurrentStatus
     {
@@ -35,7 +33,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
-                this.Invoke(new callBack(delegate { CurrentStatus = value; }));
+                this.Invoke(() => CurrentStatus = value);//260718Cl 現代化: callBack delegate → lambda
                 return;
             }
             toolStripStatusLabel.Text = value;
@@ -54,7 +52,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
-                this.Invoke(new callBack(delegate { CurrentProgress = value; }));
+                this.Invoke(() => CurrentProgress = value);
                 return;
             }
             toolStripStatusLabelProgress.Text = value;
@@ -68,7 +66,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         {
             if (this.InvokeRequired)//別スレッドから呼び出されたとき
             {
-                this.Invoke(new callBack(delegate { ProgressBarVisible = value; }));
+                this.Invoke(() => ProgressBarVisible = value);
                 return;
             }
             toolStripProgressBar.Visible = value;
@@ -145,100 +143,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         this.Visible = false;
     }
 
-    public object lockThis = new object();
-    /*  unsafe private void buttonGenerateRandomOrientations_Click(object sender, EventArgs e)
-      {
-          sw.Restart();
-          Random rn = new Random(System.Environment.TickCount);
-
-          double grainSize = (double)numericUpDownCrystallineSize.Value;
-          int crystalNumber = (int)numericUpDownCrystalliteNum.Value;
-
-          Crystallite[] crystallites = new Crystallite[crystalNumber];
-
-          for (int i = 0; i < crystalNumber; i++)
-              crystallites[i] = new Crystallite(Matrix3D.GenerateRamdomRotationMatrix(rn.NextDouble(), rn.NextDouble(), rn.NextDouble()));
-
-          textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " s";
-
-          PolyCrystal polyCrystal
-              = new PolyCrystal(formMain.crystal, crystallites,grainSize, (double)numericUpDownCamaraLength.Value, waveLengthControl.WaveLength, waveLengthControl.WaveSource, Strain, Stress, HillCoefficient);
-          sw.Reset();
-          sw.Restart();
-          poleFigureControl1.PolyCrystal = polyCrystal;
-          textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " s";
-      }
-      */
-
-    /*
-    private void buttonSimulateDebyeRing_Click(object sender, EventArgs e)
-    {
-        if (poleFigureControl1.PolyCrystal == null) return;
-
-        int width = (int)numericUpDownImageWidth.Value;
-        int height = (int)numericUpDownImageHeight.Value;
-        double res = (double)numericUpDownResolution.Value;
-        double centerX = numericBoxCenterX.Value;
-        double centerY = numericBoxCenterY.Value;
-        double cameraLength = (double)numericUpDownCamaraLength.Value;
-
-        DiffractionPatternControl dpc;
-        if (tabControl1.SelectedIndex == 0)
-        {
-            dpc = diffractionPatternControlSimulation;
-            dpc.SetImage(new double[width * height], width, new PointD(centerX, centerY), res, scaleR, scaleG, scaleB);
-        }
-        else
-            dpc = diffractionPatternControl[tabControl1.SelectedIndex - 1];
-
-        poleFigureControl1.PolyCrystal.SetGVector(width, height, new PointD(centerX, centerY), res);
-        dpc.PolyCrystal = poleFigureControl1.PolyCrystal;
-
-        dpc.FilmBlur = (double)numericUpDownFilmBlur.Value;
-        dpc.Convergence =  (double)numericUpDownConvergentAngle.Value / 180 * Math.PI;
-        dpc.Monochromaticity = (double)numericUpDownMonochromaticity.Value/100.0;
-
-        YusaGonio gonio = new YusaGonio();
-        if (checkBoxYusaGonioScan.Checked)
-        {
-            gonio.Valid = true;
-            gonio.Rx = checkBoxYusaGonio_ValidRx.Checked;
-            gonio.Ry_OscillationRange = numericBoxYusaGonioRyOscillation.Value;
-            gonio.Rz_OscillationRange = numericBoxYusaGonioRzOscillation.Value;
-        }
-
-        sw.Restart();
-        if (dpc.PolyCrystal.Crysatallites[0].index != null)
-            dpc.Simulate(false, false, false, true, gonio);
-        else
-            dpc.Simulate(true, true, true, true, gonio);
-
-        textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " s";
-
-        sw.Reset(); sw.Start();
-        if (tabControl1.SelectedIndex != 0)
-            dpc.RefineBackGround();
-
-        dpc.ScaleFactor = 100000.0;
-        if (tabControl1.SelectedIndex != 0)
-            dpc.RefineScaleFactor();
-
-        double max = Math.Max( dpc.DiffractionPixels.Max()*dpc.ScaleFactor ,dpc.SrcPixels.Max());
-        if (max < 2) max = 2;
-
-        dpc.numericUpDownMaxInt.Maximum = (decimal)max;
-        dpc.numericUpDownMaxInt.Value = (decimal)max;
-        dpc.numericUpDownMinInt.Maximum = (decimal)max-1;
-        dpc.numericUpDownMinInt.Value = (decimal)1;
-
-        setScale();
-        dpc.checkBoxSimulation.Checked = true;
-        dpc.setSimulatedPixels();
-        dpc.DiffractionInformation();
-
-        textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " s";
-    }
-     */
 
     #region View関連
 
@@ -386,8 +290,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
     {
         if (buttonSearch.Text != "Stop!" && backgroundWorkerMain.IsBusy == false)
         {
-            sw = new Stopwatch();
-            sw.Start();
+            sw.Restart();//260718Cl 変更: new Stopwatch()+Start() の再代入を Restart に (readonly 化に伴う)
 
             if (setting == null || graphControlResidual.Profile == null || graphControlResidual.Profile.Pt.Count == 0)
                 graphControlResidual.Profile = new Profile();
@@ -459,8 +362,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
 
         List<double> dev = new List<double>();
 
-        double[][] tempDensity = new double[Crystals.Count][];
-        double[][] tempPixels = new double[diffractionPatternControl.Count][];
 
         int beforeSuccessTime = 0;
         int beforeSuccessStep = -1;
@@ -473,64 +374,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             //setting.RefineStress = checkBoxRefineStress.Checked;
             beforeSuccessTime = setting.LPO_SuccessTime;
 
-            #region マルチスレッド化しようと思ったがあまり早くならないのでボツ
-            /*
-            Dictionary<int, double>[] density =new Dictionary<int,double>[processorCount];
-            double[] residualDifference = new double[processorCount];
-            Parallel.For(0, processorCount, thread =>
-            {
-                //ランダムに一つの方位を選ぶ
-                int seed = rn.Next(Crystals[0].Crystallites.TotalCrystalline);
-
-                //一定の確率で、平均値(=1)より高い密度のところを採用する
-                if (setting.Inheritability > rn.NextDouble())
-                {
-                    double sum = rn.NextDouble() * Crystals[0].Crystallites.Density.Sum();
-                    double temp = 0;
-                    for (seed = 0; seed < Crystals[0].Crystallites.Density.Length; seed++)
-                    {
-                        temp += Crystals[0].Crystallites.Density[seed];
-                        if (sum <= temp)
-                            break;
-                    }
-                }
-                //新しい方位密度分布を作成
-                density[thread] = Crystals[0].Crystallites.GetBiasedDirection(seed, directionalDensity, ratio);
-
-                residualDifference[thread] = 0;
-                for (int i = 0; i < diffractionPatternControl.Count; i++)
-                    residualDifference[thread] += diffractionPatternControl[i].GetResidualPartially(0, density[thread], ratio, true);
-
-                if (residualDifference[thread] < 0)//残差に改善があれば
-                    dev.Add(residualDifference[thread]);//改善度を保存
-            });
-
-           for (int thread = 0; thread < processorCount; thread++)
-               if (/*dev.Count > setting.SuccessTime + 1 || dev.Count > 8)
-                    {
-                        if (residualDifference[thread] < dev.Average())
-                        {
-                            foreach (int i in density[thread].Keys)
-                                Crystals[0].Crystallites.Density[i] += density[thread][i];
-                            setting.SuccessTime++;
-                        }
-               }
-           if (beforeSuccessTime != setting.SuccessTime)
-           {
-               double coeff = Crystals[0].Crystallites.TotalCrystalline / Crystals[0].Crystallites.Density.Sum();
-               for (int i = 0; i < Crystals[0].Crystallites.Density.Length; i++) //足すだけで引かないバージョン
-                   Crystals[0].Crystallites.Density[i] *= coeff;
-
-               diffractionPatternControl[0].Simulate(false, false, false, true);
-               //diffractionPatternControl[0].ApplySimulationTempolary();
-               residualCurrent = diffractionPatternControl[0].Residual();
-               //成功回数を増やす
-           }
-           while (dev.Count > 8)
-               dev.RemoveAt(0);
-
-            */
-            #endregion マルチスレッド化しようと思ったがあまり早くならないのでボツ
 
             CurrentStatus = "Now refining LPO...";
 
@@ -590,11 +433,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
                 }
             }
 
-            /*     if(setting.RefineStress)
-                     if ((setting.SuccessTime > 0 && setting.SuccessTime != beforeSuccessTime && setting.SuccessTime % ratio == 0) || (setting.SuccessTime > 1 && setting.TotalStep % 100 == 0))
-                         if (setting.RefineStress)
-                             residualCurrent = refineStress(polyCrystal);
-            */
 
             //LPOの変化が通算50%分増加したらBackGroundを再計算
             if (setting.LPO_SuccessTime != beforeSuccessTime && setting.LPO_SuccessTime % ((int)(0.50 / setting.LPO_Ratio)) == 0)
@@ -658,14 +496,11 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
     }
 
     private int beforeStep = -1;
-    private int beforeSuccesTime = -1;
     private long beforeSecond = 0;
     private long beforeRenewSecond = 0;
 
-    //long beforeSaveSecond = 0;
     private int beforeParameterChangedStep = 0;
 
-    //int beforeParameterChangedSuccesTime = 0;
     private double S = 0, residual = 0;
 
     private List<long> beforeSeconds = new List<long>();
@@ -711,7 +546,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         foreach (var crystalControl in CrystalContlols)
             crystalControl.DrawPoleFigure();
 
-        // if (beforeSuccesTime != successTime)
         for (int i = 0; i < diffractionPatternControl.Count; i++)
         {
             diffractionPatternControl[i].Simulate(false, false, false, true);
@@ -720,7 +554,6 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         graphControlResidual.AddPoint(0, new PointD(step, residual * 100));
         graphControlResidual.SetDrawingRangeXandExpandY(new RectangleD(graphControlResidual.Profile.Pt[0].X - 1, 0, graphControlResidual.Profile.Pt[0].X + step + 2, 0));
 
-        beforeSuccesTime = successTime;
 
         //加工率の調整
         double thresholdStep = 1 / numericBoxCrystalNumPerStep.Value * 200;
@@ -753,100 +586,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         }
 
         // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
-        /*
-                    Stress= polyCrystal.Stress;
-
-                    for (int i = 0; i < diffractionPatternControl.Count; i++)
-                        diffractionPatternControl[i].RefreshProperty();
-
-                    //中間ファイルの生成
-                    if (currentSecond - beforeSaveSecond > 600000)
-                    {
-                        for (int i = 0; i < diffractionPatternControl.Count; i++)
-                            diffractionPatternControl[i].setSimulatedPixels();
-                        string currentFile = ((string)listBoxReferrence.SelectedItem).Substring(((string)listBoxReferrence.SelectedItem).IndexOf(' ')+1);
-                        saveSettngFile(currentPath + "\\" + currentFile + ".setting");
-                        beforeSecond = currentSecond;
-                    }
-         */
     }
 
-    #region stressの部分
-
-    //double stressStep = 0.01;
-    private double refineStress(Crystal crystal) =>
-        /*            Random rn = new Random();
-Matrix3D stressOriginal = new Matrix3D(Stress);
-Matrix3D stressBest = new Matrix3D(Stress);
-double residualBest = 0;
-double residual = 0;
-for (int i = 0; i < diffractionPatternControl.Count; i++)
-residualBest += diffractionPatternControl[i].Residual();
-stressStep = 0.1;//最大10%変動させる
-for (int n = 0; n < 10; n++)
-{
-residual = 0;
-for (int j = 0; j < 6; j++)
-{
-int targetElement = rn.Next(6);
-double variation = (rn.NextDouble() * 2 - 1) * stressStep;
-switch (targetElement)
-{
-case 0:
-polyCrystal.Stress.E11 = Math.Abs(polyCrystal.Stress.E11) > stressStep ? polyCrystal.Stress.E11 * (1+variation) : polyCrystal.Stress.E11 + variation; break;
-case 1:
-polyCrystal.Stress.E22 = Math.Abs(polyCrystal.Stress.E22) > stressStep ? polyCrystal.Stress.E22 * (1+variation) : polyCrystal.Stress.E22 + variation; break;
-case 2:
-polyCrystal.Stress.E33 = Math.Abs(polyCrystal.Stress.E33) > stressStep ? polyCrystal.Stress.E33 * (1+variation) : polyCrystal.Stress.E33 + variation; break;
-case 3:
-polyCrystal.Stress.E12 = Math.Abs(polyCrystal.Stress.E12) > stressStep ? polyCrystal.Stress.E12 * (1+variation) : polyCrystal.Stress.E12 + variation;
-polyCrystal.Stress.E21 = Math.Abs(polyCrystal.Stress.E21) > stressStep ? polyCrystal.Stress.E21 * (1+variation) : polyCrystal.Stress.E21 + variation; break;
-// polyCrystal.Stress.E12 += variation * 0.1; polyCrystal.Stress.E21 += variation * 0.1; break;
-case 4:
-polyCrystal.Stress.E23 = Math.Abs(polyCrystal.Stress.E23) > stressStep ? polyCrystal.Stress.E23 * (1+variation) : polyCrystal.Stress.E23 + variation;
-polyCrystal.Stress.E32 = Math.Abs(polyCrystal.Stress.E32) > stressStep ? polyCrystal.Stress.E32 * (1+variation) : polyCrystal.Stress.E32 + variation; break;
-//polyCrystal.Stress.E23 += variation * 0.1; polyCrystal.Stress.E32 += variation * 0.1; break;
-case 5:
-polyCrystal.Stress.E31 = Math.Abs(polyCrystal.Stress.E31) > stressStep ? polyCrystal.Stress.E31 * (1+variation) : polyCrystal.Stress.E31 + variation;
-polyCrystal.Stress.E13 = Math.Abs(polyCrystal.Stress.E13) > stressStep ? polyCrystal.Stress.E13 * (1+variation) : polyCrystal.Stress.E13 + variation; break;
-//polyCrystal.Stress.E31 += variation * 0.1; polyCrystal.Stress.E13 += variation * 0.1; break;
-//case 0: polyCrystal.Stress.E11 += variation; polyCrystal.Stress.E33 += variation; break;
-//case 1: polyCrystal.Stress.E22 += variation; break;
-}
-}
-for (int i = 0; i < diffractionPatternControl.Count; i++){
-diffractionPatternControl[i].Simulate(true, false, false, true);
-diffractionPatternControl[i].RefineScaleFactor();
-residual += diffractionPatternControl[i].Residual();
-}
-if (residualBest > residual)
-{
-residualBest = residual;
-stressBest = new Matrix3D(polyCrystal.Stress);
-}
-polyCrystal.Stress = stressOriginal;
-}
-
-//変化がなければ
-if (stressBest.E11 == stressOriginal.E11 && stressBest.E22 == stressOriginal.E22 && stressBest.E33 == stressOriginal.E33
-&& stressBest.E12 == stressOriginal.E12 && stressBest.E23 == stressOriginal.E23 && stressBest.E31 == stressOriginal.E31)
-polyCrystal.Stress = stressOriginal;
-//変化があれば
-else
-polyCrystal.Stress = stressBest;
-
-residual = 0;
-for (int i = 0; i < diffractionPatternControl.Count; i++)
-{
-diffractionPatternControl[i].Simulate(true, false, false, true);
-diffractionPatternControl[i].RefineScaleFactor();
-residual += diffractionPatternControl[i].Residual();
-}
-return residual;
-*/
-        0;
-
-    #endregion stressの部分
 
     private void backgroundWorkerMain_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
@@ -906,56 +647,6 @@ return residual;
 
     private void buttonLoadSetting_Click(object sender, EventArgs e)
     {
-        /*           OpenFileDialog dlg = new OpenFileDialog();
-                   dlg.Filter = "*.setting|*.setting";
-                   if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                   {
-                       try
-                       {
-                           using (Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
-                           {
-                               System.Runtime.Serialization.IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                               setting = (RefinmentSetting)formatter.Deserialize(stream);
-                           }
-                           numericUpDownCrystalliteNum.Value = setting.CrystalNumber;
-                           numericUpDownCrystallineSize.Value = (decimal)setting.GrainSize;
-                           numericUpDownCrystallineSizeSigma.Value = (decimal)setting.GrainSizeSigma;
-                           numericUpDownCrystalNumPerStep.Value = (decimal)(Math.Max(0.1,setting.CrystallineRatioPerStep * 100));
-                           numericUpDownDirectionalDensity.Value = (decimal)(setting.DirectionalDensity / Math.PI * 180);
-                           numericUpDownInheritabiliry.Value = (decimal)(setting.Inheritability * 100);
-                           numericUpDownFilmBlur.Value = (decimal)setting.FilmBlur;
-                           numericUpDownConvergentAngle.Value = (decimal)(setting.BeamConvergence / Math.PI * 180);
-                           numericUpDownMonochromaticity.Value = (decimal)(setting.BeamMonochromaticity * 100.0);
-                           Stress = setting.Stress;
-                           Strain = setting.Strain;
-                           HillCoefficient = setting.Hill;
-                           S = setting.S;
-                           residual = setting.Residual;
-                           for (int i = 0; i < diffractionPatternControl.Count && i < setting.ImageCenter.Length; i++)
-                           {
-                               diffractionPatternControl[i].Center = setting.ImageCenter[i];
-                               diffractionPatternControl[i].beforeParameter = setting.BackGround[i];
-                               diffractionPatternControl[i].Filter =  setting.Mask[i];
-                               diffractionPatternControl[i].scalablePictureBox.PseudoBitmap.Filter1 = new List<bool>(setting.Mask[i]);
-                               diffractionPatternControl[i].ScaleFactor = setting.ScaleFactor[i];
-                               diffractionPatternControl[i].setBackgroundPixels();
-                               diffractionPatternControl[i].setSimulatedPixels();
-                           }
-                           Crystallite[] crystallites = new Crystallite[setting.size.Length];
-                           for (int i = 0; i < crystallites.Length; i++)
-                               crystallites[i] = new Crystallite(Euler.SetEulerAngle(setting.euler1[i], setting.euler2[i], setting.euler3[i]));
-
-                           poleFigureControl1.PolyCrystal = new PolyCrystal(formMain.crystal, crystallites, GrainSize,Cameralength, Wavelength, WaveSource, Strain, Stress, HillCoefficient);
-                           graphControlResidual.Profile = setting.ResidualProfile;
-                           textBoxResult.Text =
-                       "Step: " + setting.TotalStep.ToString() + "\r\n" +
-                       "Success: " + setting.SuccessTime.ToString() + "\r\n" +
-                       "Residual: " + (residual * 100).ToString("f2") + "%\r\n" +
-                       "S: " + S.ToString("f2");
-                       }
-                       catch { }
-                   }
-         */
     }
 
     private void setRefinmentSetting()
@@ -1002,105 +693,6 @@ return residual;
 
     private void buttonSearchUnrelatedOrientations_Click(object sender, EventArgs e)
     {
-        /*            Random rn = new Random(System.Environment.TickCount);
-                    if (poleFigureControl1.PolyCrystal == null)
-                    {
-                        double grainSize = (double)numericUpDownCrystallineSize.Value;
-                        int crystalNumber = (int)numericUpDownCrystalliteNum.Value;
-
-                        Crystallite[] crystallites = new Crystallite[crystalNumber];
-
-                        for (int i = 0; i < crystalNumber; i++)
-                            crystallites[i] = new Crystallite(Matrix3D.GenerateRamdomRotationMatrix(rn.NextDouble(), rn.NextDouble(), rn.NextDouble()));
-
-                        PolyCrystal polyCrystal
-                            = new PolyCrystal(formMain.crystal, crystallites, grainSize, (double)numericUpDownCamaraLength.Value, waveLengthControl.WaveLength, waveLengthControl.WaveSource, Strain, Stress, HillCoefficient);
-                        poleFigureControl1.PolyCrystal = polyCrystal;
-                    }
-
-                    int width = (int)numericUpDownImageWidth.Value;
-                    int height = (int)numericUpDownImageHeight.Value;
-                    double res = (double)numericUpDownResolution.Value;
-                    double centerX = numericBoxCenterX.Value;
-                    double centerY = numericBoxCenterY.Value;
-                    double cameraLength = (double)numericUpDownCamaraLength.Value;
-
-                    DiffractionPatternControl dpc;
-                    if (tabControl1.SelectedIndex == 0)
-                    {
-                        dpc = diffractionPatternControlSimulation;
-                        dpc.SetImage(new double[width * height], width, new PointD(centerX, centerY), res, scaleR, scaleG, scaleB);
-                    }
-                    else
-                        dpc = diffractionPatternControl[tabControl1.SelectedIndex - 1];
-
-                    dpc.FilmBlur = (double)numericUpDownFilmBlur.Value;
-                    dpc.Convergence = (double)numericUpDownConvergentAngle.Value / 180 * Math.PI;
-                    dpc.Monochromaticity = (double)numericUpDownMonochromaticity.Value / 100.0;
-
-                    poleFigureControl1.PolyCrystal.SetGVector(width, height, new PointD(centerX, centerY), res);
-                    bool[] related = new bool[poleFigureControl1.PolyCrystal.Crysatallites.Length];
-
-                    poleFigureControl1.PolyCrystal.GrainSize = (double)numericUpDownCrystallineSize.Value;
-
-                    int n = 0;
-                    for (int j = 0; j < 100; j++)
-                    {
-                        poleFigureControl1.PolyCrystal.GetSimulatedPattern(dpc.Rotation, width, height, res, new PointD(centerX, centerY), dpc.Convergence, dpc.Monochromaticity,j==0?true: false, false, false);
-
-                        for (int i = 0; i < poleFigureControl1.PolyCrystal.Crysatallites.Length; i++)
-                        {
-                            if (!related[i] && poleFigureControl1.PolyCrystal.Crysatallites[i].index.Count != 0)
-                            {
-                                poleFigureControl1.PolyCrystal.Crysatallites[i].index = new List<int>();
-                                related[i] = true;
-                                n++;
-                            }
-                        }
-                        if (n == poleFigureControl1.PolyCrystal.Crysatallites.Length)
-                            break;
-                        for (int i = 0; i < related.Length; i++)
-                        {
-                            if (!related[i])
-                            {
-                                poleFigureControl1.PolyCrystal.Crysatallites[i].Mat = Matrix3D.GenerateRamdomRotationMatrix(rn.NextDouble(), rn.NextDouble(), rn.NextDouble());
-                                poleFigureControl1.PolyCrystal.Crysatallites[i].index = null;
-                            }
-                        }
-                    }
-                    poleFigureControl1.Draw(true);
-                    dpc.PolyCrystal = poleFigureControl1.PolyCrystal;
-
-                    if (dpc.PolyCrystal.Crysatallites[0].index != null)
-                        dpc.Simulate(false, false, false, true);
-                    else
-                        dpc.Simulate(true, true, true, true);
-
-                    if (tabControl1.SelectedIndex != 0)
-                        dpc.RefineBackGround();
-
-                    dpc.ScaleFactor = 100000.0;
-                    if (tabControl1.SelectedIndex != 0)
-                        dpc.RefineScaleFactor();
-
-                    double max = double.NegativeInfinity;
-                    for (int i = 0; i < dpc.DiffractionPixels.Length; i++)
-                    {
-                        max = Math.Max(dpc.DiffractionPixels[i] * dpc.ScaleFactor, max);
-                        max = Math.Max(dpc.SrcPixels[i], max);
-                    }
-
-                    if (double.IsNaN(max) || max < 2) max = 2;
-                    dpc.numericUpDownMaxInt.Maximum = (decimal)max;
-                    dpc.numericUpDownMaxInt.Value = (decimal)max;
-                    dpc.numericUpDownMinInt.Maximum = (decimal)max - 1;
-                    dpc.numericUpDownMinInt.Value = (decimal)1;
-
-                    setScale();
-                    dpc.checkBoxSimulation.Checked = true;
-                    dpc.setSimulatedPixels();
-                    dpc.DiffractionInformation();
-         */
     }
 
     #endregion
@@ -1108,21 +700,8 @@ return residual;
     private void listView1_DragDrop(object sender, DragEventArgs e)
     {
         Crystal c = (Crystal)e.Data.GetData(typeof(Crystal).ToString(), true);
-        /*    if (fileName.Length == 1 && (fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out")))
-            {
-                DialogResult dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
-                    "Option", MessageBoxButtons.YesNoCancel);
-                if (dr == DialogResult.Cancel)
-                    return;
-                else if (dr == DialogResult.Yes)
-                    readCrystalList(fileName[0], true, true);
-                else
-                    readCrystalList(fileName[0], true, false);
-            }*/
         if (c != null)
         {
-            // listView1.Items.Add(c.ToString());
-            // listView1.Items[listView1.Items.Count - 1].Tag = c;
         }
     }
 
@@ -1208,9 +787,7 @@ return residual;
         for (int i = 0; i < dpc.Crystals.Count; i++)
         //if (dpc.Crystals[i].Crystallites == null)
         {
-            double[] density = new double[dpc.Crystals[i].Crystallites.TotalCrystalline];
-            for (int j = 0; j < density.Length; j++)
-                density[j] = 0;
+            double[] density = new double[dpc.Crystals[i].Crystallites.TotalCrystalline];//260718Cl: 冗長なゼロ埋めループを削除 (new で全 0)
             density[rn.Next(density.Length)] = 1;
 
             //dpc.Crystals[i].SetCrystallites(density);
@@ -1226,14 +803,11 @@ return residual;
 
     private void checkBoxCrystalNumPerStepThreshold_CheckedChanged(object sender, EventArgs e) => numericBoxCrystalNumPerStepThreshold.Visible = checkBoxCrystalNumPerStepThreshold.Checked;
 
-    private delegate void dpc_ProgressChangedCallBack(object sender, ProgressChangedEventArgs e);
-
     public void dpc_ProgressChanged(object sender, ProgressChangedEventArgs e)
     {
         if (this.InvokeRequired)
         {
-            dpc_ProgressChangedCallBack d = new dpc_ProgressChangedCallBack(dpc_ProgressChanged);
-            this.Invoke(d, new object[] { sender, e });
+            this.Invoke(() => dpc_ProgressChanged(sender, e));//260718Cl 現代化: 専用 delegate → lambda
         }
         else
         {

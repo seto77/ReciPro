@@ -355,24 +355,14 @@ public partial class DiffractionPatternControl : UserControlBase
         }
     }
 
-    //private delegate SortedList<uint, int> calcFreqDelegate(int start, int end);
-
     private readonly Lock lockObj = new();
 
     /// <summary>Frequencyを計算</summary>
-    /// <param name="pixels"></param>
-    /// <returns></returns>
-
     private Profile setFrequencyProfile(double[] pixels)
     {
-        SortedList<uint, int> frequency = new SortedList<uint, int>();
         if (pixels == null || pixels.Length == 0) return null;
-        frequency.Clear();
+        var frequency = new SortedList<uint, int>();//260718Cl: 旧 BeginInvoke 実装の残骸コメントと new 直後の Clear() を掃除
         int thread = 16;
-        //var calcFreqThread = new calcFreqDelegate[thread];
-
-        //for (int i = 0; i < thread; i++)
-        //    calcFreqThread[i] = new calcFreqDelegate((start, end) =>
         SortedList<uint, int> calcFreqDelegate(int start, int end)
         {
             var freq = new SortedList<uint, int>();
@@ -392,12 +382,8 @@ public partial class DiffractionPatternControl : UserControlBase
             }
             return freq;
         };
-        //var ar = new IAsyncResult[thread];
-        //for (int i = 0; i < thread; i++)
-        //    ar[i] = calcFreqThread[i].BeginInvoke(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length), null, null);
         Parallel.For(0, thread, i =>
         {
-            //var temp = calcFreqThread[i].EndInvoke(ar[i]);
             var temp = calcFreqDelegate(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length));
             lock (lockObj)
             {
@@ -728,11 +714,10 @@ public partial class DiffractionPatternControl : UserControlBase
 
     private void setCircleMask()
     {
-        scalablePictureBox.PseudoBitmap.Filter3 = new List<bool>(new bool[SrcPixels.Length]);
+        scalablePictureBox.PseudoBitmap.Filter3 = new List<bool>(new bool[SrcPixels.Length]);//260718Cl: 同一初期化が 2 回あったため 1 回に
 
         double CenterX = Center.X;
         double CenterY = Center.Y;
-        scalablePictureBox.PseudoBitmap.Filter3 = new List<bool>(new bool[SrcPixels.Length]);
         double start = (double)numericBoxCircleStart.Value;
         double end = (double)numericBoxCircleEnd.Value;
 
@@ -938,58 +923,6 @@ public partial class DiffractionPatternControl : UserControlBase
 
     private void buttonUnmaskSelectedPeaks_Click(object sender, EventArgs e)
     {
-        /*   if (checkedListBoxPlaneList.CheckedItems.Count <= 0)
-               return;
-
-           List<Vector3D> temporalVectorOfG = new List<Vector3D>();
-           List<Vector3D> originalVectorOfG = new List<Vector3D>(polyCrystal.BaseCrystal.VectorOfG.ToArray());
-           List<int> validIndex = new List<int>();
-           for (int i = 0; i < checkedListBoxPlaneList.CheckedItems.Count; i++)
-           {
-               string[] index = ((string)(checkedListBoxPlaneList.CheckedItems[i])).Split(' ');
-               double d = (Convert.ToInt32(index[0]) * this.polyCrystal.BaseCrystal.A_Star + Convert.ToInt32(index[1]) * this.polyCrystal.BaseCrystal.B_Star + Convert.ToInt32(index[2]) * this.polyCrystal.BaseCrystal.C_Star).Length();
-               for (int n = 0; n < originalVectorOfG.Count; n++)
-                   if (originalVectorOfG[n].Length() < d * 1.0001 && originalVectorOfG[n].Length() > d * 0.9999 && !validIndex.Contains(n))
-                   {
-                       validIndex.Add(n);
-                       temporalVectorOfG.Add(originalVectorOfG[n]);
-                   }
-           }
-           polyCrystal.BaseCrystal.VectorOfG = temporalVectorOfG;
-           int maxIndex = validIndex[validIndex.Count - 1];
-           List<int> temporalIndex = new List<int>();
-           int[][] originalIndex = new int[polyCrystal.Crysatallites.Length][];
-           for (int i = 0; i < polyCrystal.Crysatallites.Length; i++)
-           {
-               int length = polyCrystal.Crysatallites[i].index.Count;
-               if (length > 0)
-               {
-                   originalIndex[i] = new int[length];
-                   polyCrystal.Crysatallites[i].index.CopyTo(originalIndex[i], 0);
-                   temporalIndex.Clear();
-                   for (int j = 0; j < length && originalIndex[i][j] <= maxIndex; j++)
-                   {
-                       int n = validIndex.IndexOf(originalIndex[i][j]);
-                       if (n >= 0) temporalIndex.Add(n);
-                   }
-                   polyCrystal.Crysatallites[i].index = new List<int>(temporalIndex.ToArray());
-               }
-               else
-                   originalIndex[i] = new int[0];
-           }
-
-           double[] pixel = this.polyCrystal.GetSimulatedPattern(Rotation, ImageWidth, ImageHeight, Resolution, Center, Convergence, Monochromaticity, false, false, true, polyCrystal.Crysatallites, ReciprocalVector, ReciprocalArea);
-           pixel = convoluteInstrumentsFunction(pixel, filmBlur * 1.5);
-           for (int i = 0; i < scalablePictureBox.PseudoBitmap.Filter3.Count; i++)
-               if (pixel[i] != 0)
-                   scalablePictureBox.PseudoBitmap.Filter3[i] = true;// Filter[i] = false;
-           graphControlFrequency.ReplaceProfile(0, setFrequencyProfile(SrcPixels));
-           scalablePictureBox.drawPictureBox();
-
-           polyCrystal.BaseCrystal.VectorOfG = originalVectorOfG;
-           for (int i = 0; i < polyCrystal.Crysatallites.Length; i++)
-               polyCrystal.Crysatallites[i].index = new List<int>(originalIndex[i].ToArray());
-           */
     }
 
     #endregion Mask関連
@@ -1134,15 +1067,6 @@ public partial class DiffractionPatternControl : UserControlBase
             DiffractionPixels = convoluteInstrumentsFunction(DiffractionPixels, FilmBlur);
     }
 
-    /* public double[] GetPartialDiffractionPixels(int CrystalIndex, Dictionary<int, double> density, bool doFilter)
-     {
-         double[] temp = Crystals[CrystalIndex].Crystallites.GetSimulatedPattern(DetectorProperty, density);
-         if (doFilter)
-             temp = convoluteInstrumentsFunction(temp, FilmBlur);
-         return temp;
-     }
-     */
-
     private double lpo_residual;
 
     /// <summary>指定された</summary>
@@ -1205,15 +1129,6 @@ public partial class DiffractionPatternControl : UserControlBase
         });
     }
 
-    /*
-    internal void ApplySimulationTempolary()
-    {
-        for (int i = 0; i < DiffractionPixelsTemp.Length; i++)
-            if (DiffractionPixelsTemp[i] != 0)
-                DiffractionPixels[i] += DiffractionPixelsTemp[i];
-    }
-    */
-
     private double[] blur = Array.Empty<double>();
 
     /// <summary>画像を指定したfilmBlur量でにじませる</summary>
@@ -1228,20 +1143,17 @@ public partial class DiffractionPatternControl : UserControlBase
         if (limit == 1)
         {
             double[] pixelsFilmBlur2 = new double[ImageWidth * ImageHeight];
-            for (int i = 0; i < pixels.Length; i++) pixelsFilmBlur2[i] = pixels[i];
+            pixels.AsSpan().CopyTo(pixelsFilmBlur2);//260718Cl 変更: 手書きコピーを Span.CopyTo に
             return pixelsFilmBlur2;
         }
         else
         {
-            //  if (blur.Length != limit)
-            {
-                blur = new double[limit];
-                for (int h = 0; h < limit; h++)
-                    blur[h] = Math.Exp(-(h - center) * (h - center) / filmBlurPixel / filmBlurPixel * Math.Log(2));
-                double sum = blur.Sum();
-                for (int i = 0; i < blur.Length; i++)
-                    blur[i] /= sum;
-            }
+            blur = new double[limit];
+            for (int h = 0; h < limit; h++)
+                blur[h] = Math.Exp(-(h - center) * (h - center) / filmBlurPixel / filmBlurPixel * Math.Log(2));
+            double sum = blur.Sum();
+            for (int i = 0; i < blur.Length; i++)
+                blur[i] /= sum;
 
             double[] pixelsFilmBlur1 = new double[ImageWidth * ImageHeight];
 
@@ -1261,7 +1173,6 @@ public partial class DiffractionPatternControl : UserControlBase
                         for (int n = Math.Max(0, center - w); n < Math.Min(blur.Length, ImageWidth - w + center); n++)
                             pixelsFilmBlur2[h * ImageWidth + w - center + n] += blur[n] * pixelsFilmBlur1[h * ImageWidth + w];
             });
-            pixelsFilmBlur1 = null;
 
             return pixelsFilmBlur2;
         }
@@ -1288,8 +1199,6 @@ public partial class DiffractionPatternControl : UserControlBase
             }
         });
         ScaleFactor = product.Sum() / squareSum.Sum();
-        product = null;
-        squareSum = null;
         return Residual();
     }
 
@@ -1312,31 +1221,6 @@ public partial class DiffractionPatternControl : UserControlBase
         });
         return residual.Sum();
     }
-
-    /*
-    /// <summary>現在のシミュレーション画像と生画像の残差を得る</summary>
-    /// <returns></returns>
-    public double ResidualOfDiffractionPixels(double[] diffractionPixels = null)
-    {
-        if (diffractionPixels == null)
-            diffractionPixels = DiffractionPixels;
-
-        double[] residual = new double[ImageHeight];
-        Parallel.For(10, ImageHeight - 10, y =>
-        {
-            for (int x = 10; x < ImageWidth - 10; x++)
-            {
-                int i = y * ImageWidth + x;
-                if (!Filter[i] && diffractionPixels[i] != 0)
-                {
-                    double temp = diffractionPixels[i] * ScaleFactor + BackgroundPixels[i] - SrcPixels[i];
-                    residual[y] += temp * temp * Weight[i];
-                }
-            }
-        });
-        return residual.Sum();
-    }
-     */
 
     /// <summary>生画像の二乗和を得る</summary>
     /// <returns></returns>
@@ -1408,8 +1292,6 @@ public partial class DiffractionPatternControl : UserControlBase
 
     public double RefineBackGround() => RefineBackGround(beforeParameter);
 
-    private delegate Matrix[] RefineBackGroundDelegate(int start, int end);
-
     /// <summary>バックグラウンドパラメータとスケールファクターを最適化し、最適化後の残差を返す</summary>
     /// <param name="prm"></param>
     /// <returns></returns>
@@ -1440,10 +1322,10 @@ public partial class DiffractionPatternControl : UserControlBase
                 }
 
         int threadTotal = 16;
-        var thread = new RefineBackGroundDelegate[threadTotal];
-        for (int t = 0; t < threadTotal; t++)
-            thread[t] = new RefineBackGroundDelegate((start, end) =>
-            {
+        //260718Cl 変更: delegate.BeginInvoke/EndInvoke は .NET Core 以降 PlatformNotSupportedException を投げるため
+        //(このメソッドは .NET 移行後、呼ばれると必ず例外死していた)、ローカル関数 + Parallel.For に置換 (パーティション分割は従来と同一)
+        Matrix[] calcAlphaBeta(int start, int end)
+        {
                 for (int y = start; y < end; y++)
                     for (int x = 10, pos = y * ImageWidth + x; x < ImageWidth - 10; x++, pos++)
                         if (BackgroundArea[pos])
@@ -1474,23 +1356,23 @@ public partial class DiffractionPatternControl : UserControlBase
                                 for (int l = k; l < prmNum; l++)
                                     alpha[k, l] += diff[k][pos] * diff[l][pos] * Weight[pos];
                             }
-                return new Matrix[] { alpha, beta };
-            });
+                return [alpha, beta];
+            }
 
-        IAsyncResult[] ar = new IAsyncResult[threadTotal];
         double ramda = 1;
         int count = 0;
         var Alpha = new DenseMatrix(prmNum, prmNum);
         var Beta = new DenseMatrix(prmNum, 1);
         int eachHeight = (ImageHeight - 20) / threadTotal + 1;
+        var partial = new Matrix[threadTotal][];//260718Cl: 各パーティションの (alpha, beta)
         while (ramda < 1000 && count++ < 100)
         {
-            for (int t = 0; t < threadTotal; t++)
-                ar[t] = thread[t].BeginInvoke(Math.Max(10, eachHeight * t), Math.Min(eachHeight * (t + 1), ImageHeight - 10), null, null);
+            Parallel.For(0, threadTotal, t =>
+                partial[t] = calcAlphaBeta(Math.Max(10, eachHeight * t), Math.Min(eachHeight * (t + 1), ImageHeight - 10)));
 
             for (int t = 0; t < threadTotal; t++)
             {
-                Matrix[] m = thread[t].EndInvoke(ar[t]);
+                Matrix[] m = partial[t];
                 for (int k = 0; k < prmNum; k++)
                 {
                     Beta[k, 0] += m[1][k, 0];
@@ -1509,7 +1391,7 @@ public partial class DiffractionPatternControl : UserControlBase
             if (alphaInv == null)
                 break;
 
-            var delta = Alpha.TryInverse() * Beta;
+            var delta = alphaInv * Beta;//260718Cl 変更: TryInverse を二重計算していた (1 回目の結果を利用)
 
             prmNew.A = prm.A + delta[0, 0] > 1 ? prm.A + delta[0, 0] : prm.A;
             prmNew.H = prm.H + delta[1, 0] > 0.001 && prm.H + delta[1, 0] < ImageWidth ? prm.H + delta[1, 0] : prm.H;
@@ -1564,7 +1446,7 @@ public partial class DiffractionPatternControl : UserControlBase
     /// <returns></returns>
     public double RefineFilmBlur()
     {
-        double[] src = GetDiffractionPixels(false, false, false); ;
+        double[] src = GetDiffractionPixels(false, false, false);
 
         double residualMinimul = double.MaxValue;
         double residual;
@@ -1605,11 +1487,8 @@ public partial class DiffractionPatternControl : UserControlBase
 
         //一旦Originalをコピー
         DiffractionPixels = GetDiffractionPixels(false, false, false);
-        double[] originalDiffractionPixels = new double[DiffractionPixels.Length];
-        for (int i = 0; i < originalDiffractionPixels.Length; i++)
-            originalDiffractionPixels[i] = DiffractionPixels[i];
+        var originalDiffractionPixels = (double[])DiffractionPixels.Clone();//260718Cl 変更: 手書きコピーを Clone に
 
-        List<double> residuals = new List<double>();
         ProgressChanged(this, new ProgressChangedEventArgs(0, new object[] { (double)0, "" }));
 
         for (double j = -offsetSearchRange; j <= offsetSearchRange; j++)
@@ -1649,11 +1528,11 @@ public partial class DiffractionPatternControl : UserControlBase
                 });
 
                 DiffractionPixels = convoluteInstrumentsFunction(tempDiffractionPixels2, FilmBlur);
-                residuals.Add(RefineScaleFactor());
+                var residual = RefineScaleFactor();//260718Cl 変更: 最後の値しか使わない residuals List をスカラー化
 
-                if (residuals[^1] < residualMinimul)
+                if (residual < residualMinimul)
                 {
-                    residualMinimul = residuals[^1];
+                    residualMinimul = residual;
                     bestCenter = new PointD(Center.X - xDiv, Center.Y - yDiv);
                 }
             }
@@ -1871,50 +1750,6 @@ public partial class DiffractionPatternControl : UserControlBase
 
     private void scalablePictureBox_Paint2(object sender, PaintEventArgs e)
     {
-        /*
-        if (checkedListBoxPlaneList.Items.Count>0 && polyCrystal.BaseCrystal!=null)
-        {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Font font = new Font(WineCompat.Resolve("Tahoma"), 10); //260610Cl Wine時フォント切替
-            Color stringColor = Color.Green, lineColor = Color.Green;
-            PointD centerSrc = scalablePictureBox.ConvertToClientPt(Center);
-            double phi = Math.Atan2(scalablePictureBox.Height / 2.0 - centerSrc.Y, scalablePictureBox.Width / 2.0 - centerSrc.X);
-
-            List<PointD> lastPosition = new List<PointD>();
-            for (int i = 0; i < checkedListBoxPlaneList.Items.Count; i++)
-            {
-                string[] index = ((string)(checkedListBoxPlaneList.Items[i])).Split(' ');
-                double d = (Convert.ToInt32(index[0]) * this.polyCrystal.BaseCrystal.A_Star + Convert.ToInt32(index[1]) * this.polyCrystal.BaseCrystal.B_Star + Convert.ToInt32(index[2]) * this.polyCrystal.BaseCrystal.C_Star).Length();
-                double r = polyCrystal.CameraLength * Math.Tan(2 * Math.Asin(polyCrystal.WaveLength * d / 2)) / Resolution;
-
-                double tempPhi = phi;
-                PointD stringPosiiton = scalablePictureBox.ConvertToClientPt(center + new PointD(r * Math.Cos(tempPhi), r * Math.Sin(tempPhi)));
-
-                if (lastPosition.Count!=0)
-                {
-                    double step = 15 / r / scalablePictureBox.Zoom;
-                    bool flag = true;
-                    do
-                    {
-                        flag = false;
-                        foreach (PointD pos in lastPosition)
-                            if (Math.Abs(pos.X - stringPosiiton.X) < 30 && Math.Abs(pos.Y - stringPosiiton.Y) < 30)
-                                flag = true;
-                        if (flag)
-                        {
-                            tempPhi += step;
-                            stringPosiiton = scalablePictureBox.ConvertToClientPt(center + new PointD(r * Math.Cos(tempPhi), r * Math.Sin(tempPhi)));
-                        }
-                    } while (flag);
-                }
-                e.Graphics.DrawString((string)checkedListBoxPlaneList.Items[i], font, new SolidBrush(stringColor), new PointF((float)stringPosiiton.X, (float)stringPosiiton.Y));
-                e.Graphics.DrawLine(new Pen(lineColor,2f),
-                    new PointF((float)(stringPosiiton.X - 10 * Math.Cos(tempPhi - Math.PI / 2)), (float)(stringPosiiton.Y - 10 * Math.Sin(tempPhi - Math.PI / 2))),
-                    new PointF((float)(stringPosiiton.X + 10 * Math.Cos(tempPhi - Math.PI / 2)), (float)(stringPosiiton.Y + 10 * Math.Sin(tempPhi - Math.PI / 2))));
-                lastPosition.Add(new PointD(stringPosiiton));
-                if (lastPosition.Count > 5) lastPosition.RemoveAt(0);
-            }
-        }*/
     }
 
     private void buttonCheckAllIndices_Click(object sender, EventArgs e)
@@ -1932,43 +1767,6 @@ public partial class DiffractionPatternControl : UserControlBase
     /// <summary>回折に寄与した結晶数と面指数の情報を表示する</summary>
     public void DiffractionInformation()
     {
-        /*   if (PolyCrystal == null) return;
-
-           int n = 0;
-           List<PlaneIndex> index= new List<PlaneIndex>();
-           Dictionary<PlaneIndex, int> counter = new Dictionary<PlaneIndex, int>();
-           for (int i = 0; i < PolyCrystal.BaseCrystal.VectorOfG.Count; i++)
-           {
-               Vector3D g = PolyCrystal.BaseCrystal.VectorOfG[i];
-               PlaneIndex rootIndex = SymmetryStatic.GetRootPlaneIndex(new PlaneIndex(g.h, g.k, g.l), PolyCrystal.BaseCrystal.Symmetry);
-               //260317Cl 変更: ContainsKey+Add → TryAdd
-               if (counter.TryAdd(rootIndex, 0))
-                   index.Add(rootIndex);
-           }
-
-           for (int i = 0; i < PolyCrystal.Crysatallites.Length; i++)
-           {
-               if (polyCrystal.Crysatallites[i].index != null)
-               {
-                   n += PolyCrystal.Crysatallites[i].index.Count;
-                   for (int j = 0; j < PolyCrystal.Crysatallites[i].index.Count; j++)
-                   {
-                       Vector3D g = PolyCrystal.BaseCrystal.VectorOfG[PolyCrystal.Crysatallites[i].index[j]];
-                       PlaneIndex rootIndex = SymmetryStatic.GetRootPlaneIndex(new PlaneIndex(g.h, g.k, g.l), PolyCrystal.BaseCrystal.Symmetry);
-                       counter[rootIndex]++;
-                   }
-               }
-           }
-
-           string str = "";
-           for (int i = 0; i < counter.Count; i++)
-               str +=  index[i].h.ToString() +" " + index[i].k.ToString() + " " + index[i].l.ToString() + ": " +
-                   counter[index[i]].ToString() + "(" + ((double)counter[index[i]]/PolyCrystal.Crysatallites.Length*100.0).ToString("f2")+"%)\r\n";
-
-           textBoxDiffractionInformation.Text =
-               "Crystallite number contoributing to diffraction: " + n.ToString() + "(" + ((double)n / PolyCrystal.Crysatallites.Length * 100.0).ToString("f2") + "%)\r\n"
-                +str  ;
-           */
     }
 
     /// <summary>画像保存ボタンを押したときの動作</summary>
