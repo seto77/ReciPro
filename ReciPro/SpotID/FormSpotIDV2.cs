@@ -332,37 +332,6 @@ public partial class FormSpotIDV2 : FormBase
 
         toolStripStatusLabelIdentifySpot.Text = $" Search time ({spots.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}   ";
         sw.Restart();
-        #region テストコード
-        /*
-        var coeff1 = new double[] { 0.5, 0.002, 0.004, 0.006, 0.008, 0.01, 0.012, 0.014, 0.016};
-        var coeff2 = new double[] { 1.5, 2 , 3, 4, 5, 6, 7, 8, 9, 10};
-        var sb = new StringBuilder();
-        for (int k = 0; k < coeff2.Length; k++)
-            sb.Append("\t" + coeff2[k].ToString());
-
-        for (int j = 0; j < coeff1.Length; j++)
-        {
-            sb.Append("\r\n");
-            for (int k = 0; k < coeff2.Length; k++)
-            {
-                Marquardt.RambdaCoeff1 = coeff1[j];
-                Marquardt.RambdaCoeff2 = coeff2[k];
-                sw.Restart();
-                for (int i = 0; i < spots.Count; i++)
-                {
-                    var r = fit(new PointD(spots[i].X, spots[i].Y));
-                }
-                sw.Stop();
-
-                if (k == 0)
-                    sb.Append(coeff1[j].ToString());
-                sb.Append("\t" + sw.ElapsedMilliseconds.ToString());
-            }
-        }
-        Clipboard.SetDataObject(sb.ToString());
-        MessageBox.Show("OK");
-        */
-        #endregion テストコード
 
         bindingSourceObsSpots.DataMember = "";
 
@@ -409,8 +378,7 @@ public partial class FormSpotIDV2 : FormBase
     /// <summary>スポットをフィッティングする。スポット位置のみが指定された場合。</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private (double[] PrmsPv, double[] PrmsBg, double R) fit(PointD pt, double radius = 0)
+    private (double[] PrmsPv, double[] PrmsBg, double R) fit(PointD pt, double radius = 0)//260718Cl: 実質効果のない AggressiveInlining を除去
     {
         //画像が読み込まれているか、チェック。
         if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray == null)
@@ -425,9 +393,9 @@ public partial class FormSpotIDV2 : FormBase
     // 260428Cl 追加: UI 非依存の純粋計算版。Task.Run でバックグラウンドから呼べる。
     private static (double[] PrmsPv, double[] PrmsBg, double R) fitCore(PointD pt, double radius, int width, int height, double[] srcValues)
     {
-        //外れすぎていないかをチェックするfunc
-        var exclude = new Func<double, double, bool>((x, y) => Math.Abs(pt.X - x) > 1000 || Math.Abs(pt.Y - y) > 1000 ||
-                (pt.X - x) * (pt.X - x) + (pt.Y - y) * (pt.Y - y) > radius * radius);
+        //外れすぎていないかをチェック (260718Cl: Func 生成をローカル関数に)
+        bool exclude(double x, double y) => Math.Abs(pt.X - x) > 1000 || Math.Abs(pt.Y - y) > 1000 ||
+                (pt.X - x) * (pt.X - x) + (pt.Y - y) * (pt.Y - y) > radius * radius;
 
         //検索対象のピクセルを粗く設定
         var margin = 5.0;
@@ -459,7 +427,6 @@ public partial class FormSpotIDV2 : FormBase
     }
 
     /// <summary>検索対象のピクセルを設定する</summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static (double[] x, double y, double w)[] getPixels(IEnumerable<(double[] x, double y)> src, double radius, double cX, double cY)
     {
         var rMax = (radius + Math.Sqrt(0.5)) * (radius + Math.Sqrt(0.5));
@@ -582,7 +549,7 @@ public partial class FormSpotIDV2 : FormBase
         //まず、現在のスポットのパラメータを取得 && 検索対象のエリアの合計を抽出
         var prmsList = new List<(bool Direct, int No, double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)>();
         var functions = new List<MQ.Function>();
-        var excludedArea = new List<int>();
+        var excludedArea = new bool[width * height];//260718Cl 変更: 重複可能な List<int>+Except を bool マスクに
         for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
         {
             var prms = dataSet.DataTableSpot.GetPrms(i);
@@ -590,7 +557,7 @@ public partial class FormSpotIDV2 : FormBase
             for (int y = Math.Max(0, (int)(prms.Y0 - prms.Range - 1)); y < Math.Min(height, (int)(prms.Y0 + prms.Range + 2)); y++)
                 for (int x = Math.Max(0, (int)(prms.X0 - prms.Range - 1)); x < Math.Min(width, (int)(prms.X0 + prms.Range + 2)); x++)
                     if ((x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0) < prms.Range * prms.Range)
-                        excludedArea.Add(x + y * width);
+                        excludedArea[x + y * width] = true;
 
             if (prms.Direct)
             {
@@ -622,19 +589,27 @@ public partial class FormSpotIDV2 : FormBase
 
         var intensities = await Task.Run(() =>
         {
-            var includedArea = ValueEnumerable.Range(0, width * height).Except(excludedArea).ToList();
-
+            //260718Cl 変更: Except による included 集合の構築をやめ、マスクを直接走査
             var pixelsBGList = new List<(double[] x, double y, double w)>();
-            foreach (var index in includedArea)
+            for (int index = 0; index < excludedArea.Length; index++)
             {
+                if (excludedArea[index]) continue;
                 int x = index % width, y = index / width;
                 if (x > fittingRange && x < width - fittingRange && y > fittingRange && y < height - fittingRange)
                     pixelsBGList.Add((new double[] { x, y }, srcValues[index], 1));
             }
 
             //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
-            while (pixelsBGList.Count > 50000)
-                pixelsBGList = [.. pixelsBGList.Where((b, i) => i % 2 == 0)];
+            //260718Cl 変更: 半減 List を繰り返し再生成せず、必要な 2 の累乗 stride で一度に間引く (残る要素は旧実装と同一)
+            if (pixelsBGList.Count > 50000)
+            {
+                int stride = 1;
+                while (pixelsBGList.Count / stride > 50000) stride *= 2;
+                var reduced = new List<(double[] x, double y, double w)>(pixelsBGList.Count / stride + 1);
+                for (int i = 0; i < pixelsBGList.Count; i += stride)
+                    reduced.Add(pixelsBGList[i]);
+                pixelsBGList = reduced;
+            }
 
             var r = MQ.Solve([.. pixelsBGList], [.. functions], MQ.Precision.Low);
 
@@ -1286,110 +1261,6 @@ public partial class FormSpotIDV2 : FormBase
     }
     #endregion
 
-    #region お蔵入り
-
-    /// <summary>観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。</summary>
-    /// <param name="gVectors"></param>
-    /// <param name="obsSpotsReciprocal"></param>
-    /// <returns></returns>
-    private List<Matrix3D> getRotationCandidatesFrom2Spots(Vector3DBase[] obsSpotsReciprocal, double toleranceLength, double toleranceAngle)
-    {
-        //maxNum個数のobsSpotに対する候補となるgVectorsを定義しておく
-        int maxNum = 10;
-        var gVectors = new List<List<Vector3D>>();
-        for (int i = 0; i < maxNum && i < obsSpotsReciprocal.Length; i++)
-        {
-            gVectors.Add(new List<Vector3D>());
-            //indexで指定されたd_spacingに近いg_vectorを探す
-            var d = dataSet.DataTableSpot.Dscacing[i];
-            gVectors[i].AddRange(FormMain.Crystal.VectorOfG.Where(g => g.d > d * (1 - toleranceLength) && g.d < d * (1 + toleranceLength)).ToArray());
-        }
-
-        var mList = new List<Matrix3D>();
-        for (int i = 0; i < gVectors.Count - 1; i++)
-        {
-            foreach (Vector3D vec1 in gVectors[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
-            {
-                for (int j = i + 1; j < gVectors.Count; j++)
-                {
-                    double angle = Vector3D.AngleBetVectors(obsSpotsReciprocal[i], obsSpotsReciprocal[j]);//i番目のスポットと、j番目のスポットのなす角度
-                    if (angle > 60.0 / 180.0 * Math.PI && angle < 120.0 / 180.0 * Math.PI)
-                    {
-                        var vX1 = Vector3DBase.VectorProduct(obsSpotsReciprocal[i], obsSpotsReciprocal[j]).Normarize();
-                        var vY1 = (obsSpotsReciprocal[i].Normarize() + obsSpotsReciprocal[j].Normarize()).Normarize();
-                        Matrix3D m1 = new Matrix3D(vX1, vY1, Vector3DBase.VectorProduct(vX1, vY1));
-                        foreach (Vector3D vec2 in gVectors[j].Where(g => Math.Abs(angle - Vector3D.AngleBetVectors(g, vec1)) < toleranceAngle))
-                        {
-                            var vX2 = Vector3DBase.VectorProduct(vec1, vec2).Normarize();
-                            var vY2 = (vec1.Normarize() + vec2.Normarize()).Normarize();
-                            mList.Add(m1 * new Matrix3D(vX2, vY2, Vector3DBase.VectorProduct(vX2, vY2)).Inverse());
-                        }
-                    }
-                }
-            }
-        }
-        return mList;
-    }
-
-    #endregion
-
-    #region お蔵入り
-
-    private double evaluate(AreaDetector detector, Matrix3D initialRot, Vector3DBase[] obsSpots, Vector3DBase[] calSpots, double toleranceLength, double toleranceAngle, ref Matrix3D optimizedRot)
-    {
-        var dic = new Dictionary<int, int>();
-        var residual = new List<double>();
-        var obsPoints = obsSpots.Select(s => (new PointD(s.X, s.Y) - DirectSpot)).ToArray();
-        var calPoints = calSpots.Select(s => (new PointD(s.X, s.Y) - DirectSpot)).ToArray();
-        double bestRot = double.NaN, bestScale = double.NaN, bestResidual = double.PositiveInfinity;
-        //まず最初に拡大量と回転角度の微調節量を計算する
-        for (double rot = -toleranceAngle; rot < toleranceAngle; rot += toleranceAngle / 3.0)
-            for (double scale = 1 - toleranceLength; scale < 1 + toleranceLength; scale += toleranceLength / 3.0)
-            {
-                dic = new Dictionary<int, int>();
-                residual = new List<double>();
-                var obsPoints2 = obsPoints.Select(p => new PointD(Math.Cos(rot) * p.X - Math.Sin(rot) * p.Y, Math.Sin(rot) * p.X + Math.Cos(rot) * p.Y) * scale).ToArray();
-
-                for (int i = 0; i < obsPoints2.Length; i++)
-                {
-                    PointD obs = obsPoints2[i];
-                    int index = -1;
-                    double dev = double.MaxValue;
-                    for (int j = 0; j < calPoints.Length; j++)
-                    {
-                        if (!dic.ContainsValue(j))
-                        {
-                            double tempDev = (obs - calPoints[j]).Length / obs.Length;
-                            if (tempDev < toleranceLength && tempDev < dev)
-                            {
-                                index = j;
-                                dev = tempDev;
-                            }
-                        }
-                    }
-                    if (index != -1)
-                    {
-                        dic.Add(i, index);
-                        residual.Add(dev * Math.Pow(1.01, i));
-                    }
-                    else
-                        residual.Add(toleranceLength * 2 * Math.Pow(1.01, i));
-                }
-                if (bestResidual > residual.Sum())
-                {
-                    bestRot = rot;
-                    bestScale = scale;
-                    bestResidual = residual.Sum();
-                }
-            }
-
-        optimizedRot = 1 / bestScale * Matrix3D.Rot(new Vector3DBase(0, 0, 1), bestRot) * initialRot;
-        // optimizedRot = initialRot;
-        return bestResidual;
-    }
-
-    #endregion
-
     #region 候補情報テーブルのイベント
 
     private void bindingSourceCandidates_CurrentChanged(object sender, EventArgs e)
@@ -1526,27 +1397,7 @@ public partial class FormSpotIDV2 : FormBase
     {
         if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width == 0)
             return;
-        /*
-        for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
-            if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle)
-                scalablePictureBoxAdvanced.Symbols.RemoveAt(i--);
-        var c = FormMain.Crystal;
-
-        //最小のd値を決める
-        double width = scalablePictureBoxAdvanced.PseudoBitmap.Width;
-        double height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
-        double maxL = new double[] { DirectSpot.Length(), (DirectSpot - new PointD(width, height)).Length(), (DirectSpot - new PointD(0, height)).Length(), (DirectSpot - new PointD(width, 0)).Length() }.Max() * PixelSize;
-        double minD = waveLengthControl1.WaveLength / 2.0 / Math.Sin(Math.Atan(maxL / CameraLength) / 2);
-        FormMain.Crystal.SetPlanes(double.MaxValue, minD, true, true, true, true, HorizontalAxis.d, 0.0001, 0);
-        foreach ( var p in FormMain.Crystal.Plane)
-        {
-            var radius = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength / 2 / p.d)) / PixelSize;
-            var symbol = new ScalablePictureBox.Symbol(p.strHKL, DirectSpot, radius, Color.Yellow);
-            symbol.SymbolVisible = checkBoxShowDebyeRing.Checked;
-            scalablePictureBoxAdvanced.Symbols.Add(symbol);
-        }
-        scalablePictureBoxAdvanced.Refresh();
-        */
+        //260718Cl: 全体がコメントアウトされていた Debye リング描画の旧実装を削除 (履歴は git 参照)
     }
 
     private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
@@ -1599,15 +1450,17 @@ public partial class FormSpotIDV2 : FormBase
         var grain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
 
         //Bethe.Disk中のインデックスと、g.Indicesの対応付け
+        //260718Cl 変更: index ごとの disk 全走査 + spots.Max の反復を、(H,K,L)→index 辞書 (重複キーは旧挙動どおり不採用) と maxA の一次計算に
         var disks = FormMain.Crystal.Bethe.Disks;
-        var tempDisk = disks[0].Select((disk, index) => (disk, index));
+        var maxA = spots.Max(s => s.A);
+        var diskIndex = new Dictionary<(int H, int K, int L), int>();
+        for (int i = 0; i < disks[0].Length; i++)
+            if (!diskIndex.TryAdd((disks[0][i].H, disks[0][i].K, disks[0][i].L), i))
+                diskIndex[(disks[0][i].H, disks[0][i].K, disks[0][i].L)] = -1;//重複 HKL は対応付け対象外
         var corrTable = new List<(int index, double intensity)>();
         foreach (var (No, H, K, L) in grain.Indices)
-        {
-            var temp = tempDisk.Where(o => H == o.disk.H && K == o.disk.K && L == o.disk.L).ToArray();
-            if (temp.Length == 1)
-                corrTable.Add((temp[0].index, spots[No].A / spots.Max(s => s.A)));
-        }
+            if (diskIndex.TryGetValue((H, K, L), out var di) && di >= 0)
+                corrTable.Add((di, spots[No].A / maxA));
 
         var bestResidual = double.PositiveInfinity;
         var bestThickness = 0.0;
