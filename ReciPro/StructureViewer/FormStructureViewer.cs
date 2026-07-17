@@ -286,7 +286,8 @@ public partial class FormStructureViewer : FormBase
         //labelOpenGLversion.Text += GLControlAlpha.VersionStr;
         labelOpenGLversion.Text += $"{GLControlAlpha.VersionStr} (required {GLControlAlpha.VersionForZsortStr}+)"; // (260319Ch) 通常描画の下限を UI 上でも明示
 
-        if (GLControlAlpha.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
+        //260718Cl 変更: ToLower の一時文字列列を作らず OrdinalIgnoreCase 比較に
+        if (GLControlAlpha.GraphicsInfo.Any(g => g.Product.Contains("nvidia", StringComparison.OrdinalIgnoreCase) || g.Product.Contains("amd", StringComparison.OrdinalIgnoreCase)))
             comboBoxRenderingQuality.SelectedIndex = 1;
         else
             comboBoxRenderingQuality.SelectedIndex = 0;
@@ -331,7 +332,7 @@ public partial class FormStructureViewer : FormBase
         // comboBoxTransparency.SelectedIndex = 0;
         rebuildTransparencyModeItems(TransparencyModes.ZSORT); // (260319Ch) DDP/PPLL 可否に応じて透明描画モード一覧を組み立て直す
 
-        checkBoxDepthCueing_CheckedChanged(new object(), new EventArgs());
+        checkBoxDepthCueing_CheckedChanged(this, EventArgs.Empty);
 
         #endregion
 
@@ -588,15 +589,16 @@ public partial class FormStructureViewer : FormBase
         var threshold = -0.001;
         if (checkBoxShowBondedAtoms.Checked)
         {
-            var bonds = bondControl.GetAll().Where(b => b.Enabled);
-            threshold = bonds.Any() ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
+            var bonds = bondControl.GetAll().Where(b => b.Enabled).ToArray();//260718Cl 変更: Any()+Max() の二重列挙を一度の materialize に
+            threshold = bonds.Length > 0 ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
             threshold = Math.Max(-0.5, threshold);
         }
 
         //原子を追加
         List<V3> dirs = [new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1)];
         List<V3> outer = [new(0, 0, 0)];
-        List<V3> whole = [];
+        HashSet<V3> whole = [];//260718Cl 変更: List.Contains の線形検索 (最大1万要素で O(n²)) を HashSet に
+        var boundsPrm = bounds.Select(b => b.prm).ToArray();//260718Cl 追加: ホットループ内の LINQ Min 用に境界面パラメータを一次配列化
 
         while (outer.Count != 0 && whole.Count < 10000)
         {
@@ -605,15 +607,20 @@ public partial class FormStructureViewer : FormBase
                 foreach (var dir in whole.Count == 0 ? [new V3(0, 0, 0)] : dirs)
                 {
                     var cell = baseCell + dir;
-                    if (!whole.Contains(cell))
+                    if (whole.Add(cell))
                     {
-                        whole.Add(cell);
-
                         var spheres = new List<Sphere>();
                         enabledAtomsP.ForAll(o =>
                         {
                             var pos = axes * (cell + o.Pos) - shift;
-                            var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
+                            //260718Cl 変更: LINQ Min (ラムダ呼び出し) を直接ループに (原子×セル数のホットパス)
+                            var p4 = new V4(pos, 1);
+                            var min = double.MaxValue;
+                            foreach (var prm in boundsPrm)
+                            {
+                                var d = V4.Dot(p4, prm);
+                                if (d < min) min = d;
+                            }
                             if (min > threshold)
                             {
                                 var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces)
@@ -951,11 +958,10 @@ public partial class FormStructureViewer : FormBase
     {
         sw.Restart();
 
-        while (GLObjects.Any(obj => obj.Tag is cellID))
-        {
-            glControlMain.DeleteObjects(GLObjects.First(obj => obj.Tag is cellID));
-            GLObjects.Remove(GLObjects.First(obj => obj.Tag is cellID));
-        }
+        //260718Cl 変更: while(Any)+First+Remove の反復全走査を、1 回の列挙 + RemoveAll に
+        foreach (var obj in GLObjects.Where(obj => obj.Tag is cellID))
+            glControlMain.DeleteObjects(obj);
+        GLObjects.RemoveAll(obj => obj.Tag is cellID);
 
         var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift;
         V3 zero = new(0), c0 = axes.Column0, c1 = axes.Column1, c2 = axes.Column2;
@@ -1020,11 +1026,10 @@ public partial class FormStructureViewer : FormBase
     {
         sw.Restart();
 
-        while (GLObjects.Any(obj => obj.Tag is latticeID))
-        {
-            glControlMain.DeleteObjects(GLObjects.First(obj => obj.Tag is latticeID));
-            GLObjects.Remove(GLObjects.First(obj => obj.Tag is latticeID));
-        }
+        //260718Cl 変更: while(Any)+First+Remove の反復全走査を、1 回の列挙 + RemoveAll に
+        foreach (var obj in GLObjects.Where(obj => obj.Tag is latticeID))
+            glControlMain.DeleteObjects(obj);
+        GLObjects.RemoveAll(obj => obj.Tag is latticeID);
 
         var latticePlanes = new List<((double X, double Y, double Z, double D), double t, Color color)>();
         foreach (var p in latticePlaneControl.GetAll().Where(p => p.Enabled && p.Index != (0, 0, 0)))
@@ -1269,7 +1274,7 @@ public partial class FormStructureViewer : FormBase
 
                 List<string> result = [];
                 var atom = GLObjects[index] as Sphere;
-                var label = enabledAtoms[(atom.Tag as atomID).Index].Label.TrimStart().TrimEnd();
+                var label = enabledAtoms[(atom.Tag as atomID).Index].Label.Trim();
 
                 result.Add($"\r\n--------------------------------------------------------------\r\n");
                 result.Add($"Selected Atom: {label} ({atom.Origin.X * 10:f3}, {atom.Origin.Y * 10:f3}, {atom.Origin.Z * 10:f3}) \t・・・0\r\n\r\n");
@@ -1281,7 +1286,7 @@ public partial class FormStructureViewer : FormBase
                         tmp.RemoveAt(i--);
 
 
-                tmp = tmp.Select(t => (t.X * 10, t.Y * 10, t.Z * 10, t.Distance * 10, t.Label.TrimStart().TrimEnd())).ToList();
+                tmp = tmp.Select(t => (t.X * 10, t.Y * 10, t.Z * 10, t.Distance * 10, t.Label.Trim())).ToList();
                 result.Add("(The following coordinates are relative to the selected atom)\r\n");
 
                 int n = 1;//0番目は自分自身なので、1からはじめる
@@ -1322,130 +1327,6 @@ public partial class FormStructureViewer : FormBase
             }
 
         }
-        #region お蔵入り ?
-
-        /*
-        //原子選択
-        if ((e.Button == MouseButtons.Left && e.Clicks == 2) || (e.Button == MouseButtons.Right && e.Clicks == 1))
-        {
-            double[] A = BoudaryTest(matrix, mouse.X, mouse.Y);
-            int selectedAtom = -1;
-            double selectedAtomZ = double.PositiveInfinity;
-            for (int i = atoms.Count - 1; i >= 0; i--)
-                if (atoms[i].IsDraw)
-                {
-                    double Ax = atoms[i].position.X, Ay = atoms[i].position.Y, Az = atoms[i].position.Z;
-                    double z = (matrix * generateMat(new double[] { Ax, Ay, Az, 1 }, 4, 1))[2, 0];
-                    if (selectedAtomZ > z)
-                    {
-                        double[] a = new double[] { Ax * Ax, Ay * Ay, Az * Az, Ax * Ay, Ay * Az, Az * Ax, Ax, Ay, Az };
-                        if (atoms[i].radius * atoms[i].radius > a[0] * A[0] + a[1] * A[1] + a[2] * A[2] + a[3] * A[3] + a[4] * A[4] + a[5] * A[5] + a[6] * A[6] + a[7] * A[7] + a[8] * A[8] + A[9])
-                        {
-                            selectedAtom = i;
-                            selectedAtomZ = z;
-                            atomCoordinateTable1.Atom = crystal.Atoms[atoms[selectedAtom].MainID];
-                        }
-                    }
-                }
-            if (e.Button == MouseButtons.Left && selectedAtom < 0)
-            {
-                for (int i = atoms.Count - 1; i >= 0; i--)
-                    atoms[i].selectedNo = 0;
-                selectedAtomCount = 0;
-            }
-            else if (e.Button == MouseButtons.Left && selectedAtom >= 0 && atoms[selectedAtom].selectedNo != 0)
-            {
-                int n = 0;
-                if (atoms[selectedAtom].selectedNo == 1)
-                    for (int i = atoms.Count - 1; i >= 0 && n < 2; i--)
-                    {
-                        if (atoms[i].selectedNo == 2) { atoms[i].selectedNo = 1; n++; }
-                        else if (atoms[i].selectedNo == 3) { atoms[i].selectedNo = 2; n++; }
-                    }
-                if (atoms[selectedAtom].selectedNo == 2)
-                    for (int i = atoms.Count - 1; i >= 0; i--)
-                        if (atoms[i].selectedNo == 3) { atoms[i].selectedNo = 2; break; }
-                atoms[selectedAtom].selectedNo = 0;
-                selectedAtomCount--;
-            }
-            else if (e.Button == MouseButtons.Left && selectedAtom >= 0 && atoms[selectedAtom].selectedNo == 0)
-            {
-                selectedAtomCount++;
-                if (selectedAtomCount == 4)
-                {
-                    for (int i = atoms.Count - 1; i >= 0; i--)
-                        atoms[i].selectedNo = 0;
-                    selectedAtomCount = 1;
-                    atoms[selectedAtom].selectedNo = 1;
-                }
-                else
-                    atoms[selectedAtom].selectedNo = selectedAtomCount;
-            }
-            else if (e.Button == MouseButtons.Right && selectedAtom >= 0 && atoms[selectedAtom].selectedNo != 0)
-            {
-                formAtom.SkipChange = true;
-                formAtom.Location = new Point(this.Location.X + splitContainer1.Location.X + e.X + 20, this.Location.Y + splitContainer1.Location.Y + e.Y + 50);
-                formAtom.StartPosition = FormStartPosition.Manual;
-                formAtom.pictureBoxAtomColor.BackColor = Color.FromArgb(atoms[selectedAtom].colorSource);
-                // 260522Cl 変更: NumericUpDown → NumericBox (Value は double のため (decimal) キャスト撤去)
-                formAtom.numericBoxAtomTransparency.Value = atoms[selectedAtom].matSource[0];
-                formAtom.numericBoxAtomAmbient.Value = atoms[selectedAtom].matSource[1];
-                formAtom.numericBoxAtomDiffusion.Value = atoms[selectedAtom].matSource[2];
-                formAtom.numericBoxAtomSpecular.Value = atoms[selectedAtom].matSource[3];
-                formAtom.numericBoxAtomEmmision.Value = atoms[selectedAtom].matSource[4];
-                formAtom.numericBoxAtomShininess.Value = atoms[selectedAtom].matSource[5];
-                formAtom.numericBoxAtomRadius.Value = atoms[selectedAtom].radius;
-                formAtom.selectedAtom = selectedAtom;
-
-                formAtom.checkBoxIsDraw.Checked = atoms[selectedAtom].IsDraw;
-                formAtom.SkipChange = false;
-                formAtom.SetOriginal();
-                formAtom.ShowDialog();
-            }
-
-            textBoxInformation.Text = "";
-            if (selectedAtomCount > 0)
-            {
-                atom[] a = new atom[3];
-                string str = "";
-                int[] list = new int[] { 0, 0, 0 };
-                for (int i = atoms.Count - 1; i >= 0; i--)
-                    if (atoms[i].selectedNo == 1) a[0] = atoms[i];
-                    else if (atoms[i].selectedNo == 2) a[1] = atoms[i];
-                    else if (atoms[i].selectedNo == 3) a[2] = atoms[i];
-                if (a[0] != null)
-                    str += "Atom 1:  " + "label: " + a[0].Label + "  element: " + a[0].element + "  ID: " + a[0].MainID.ToString() + "-" + a[0].SubID.ToString() +
-                    "  Pos.: " + "(" + a[0].position.X.ToString("f3") + "," + a[0].position.Y.ToString("f3") + "," + a[0].position.Z.ToString("f3") + ")[Å] " +
-                    "(" + a[0].positionRatio.X.ToString("f3") + "," + a[0].positionRatio.Y.ToString("f3") + "," + a[0].positionRatio.Z.ToString("f3") + ")[Cell]\r\n";
-                if (a[1] != null)
-                    str += "Atom 2:  " + "label: " + a[1].Label + "  element: " + a[1].element + "  ID: " + a[1].MainID.ToString() + "-" + a[1].SubID.ToString() +
-                    "  Pos.: " + "(" + a[1].position.X.ToString("f3") + "," + a[1].position.Y.ToString("f3") + "," + a[1].position.Z.ToString("f3") + ")[Å] " +
-                    "(" + a[1].positionRatio.X.ToString("f3") + "," + a[1].positionRatio.Y.ToString("f3") + "," + a[1].positionRatio.Z.ToString("f3") + ")[Cell]\r\n";
-                if (a[2] != null)
-                    str += "Atom 3:  " + "label: " + a[2].Label + "  element: " + a[2].element + "  ID: " + a[2].MainID.ToString() + "-" + a[2].SubID.ToString() +
-                    "  Pos.: " + "(" + a[2].position.X.ToString("f3") + "," + a[2].position.Y.ToString("f3") + "," + a[2].position.Z.ToString("f3") + ")[Å] " +
-                    "(" + a[2].positionRatio.X.ToString("f3") + "," + a[2].positionRatio.Y.ToString("f3") + "," + a[2].positionRatio.Z.ToString("f3") + ")[Cell]\r\n";
-
-                if (a[2] != null)
-                {
-                    str += "Distance[Å]:" +
-                        "     Atom 1-2:  " + ((Vector3D)(a[0].position - a[1].position)).Length().ToString("f4") +
-                        "     Atom 2-3:  " + ((Vector3D)(a[1].position - a[2].position)).Length().ToString("f4") +
-                        "     Atom 3-1:  " + ((Vector3D)(a[2].position - a[0].position)).Length().ToString("f4") + "\r\n";
-                    str += "Angle[°]:" +
-                        "     Atom 1-2-3:  " + (Vector3D.AngleBetVectors(a[0].position - a[1].position, a[2].position - a[1].position) / Math.PI * 180).ToString("f4") +
-                        "     Atom 2-3-1:  " + (Vector3D.AngleBetVectors(a[1].position - a[2].position, a[0].position - a[2].position) / Math.PI * 180).ToString("f4") +
-                        "     Atom 3-1-2:  " + (Vector3D.AngleBetVectors(a[2].position - a[0].position, a[1].position - a[0].position) / Math.PI * 180).ToString("f4");
-                }
-                else if (a[1] != null)
-                    str += "Distance[Å]:" + "     Atom 1 to 2:  " + ((Vector3D)(a[0].position - a[1].position)).Length().ToString("f4") + "\r\n";
-
-                textBoxInformation.Text = str;
-            }
-            Draw();
-        }
-        */
-        #endregion
     }
 
     private int SearchAtom(int X, int Y)
@@ -1746,9 +1627,14 @@ public partial class FormStructureViewer : FormBase
 
             if (checkBoxGroupByElement.Checked)
             {
-                foreach (var num in atoms.Select(a => a.AtomicNumber).Distinct().ToList())
-                    while (atoms.Count(a => a.AtomicNumber == num) > 1)
-                        atoms.Remove(atoms.First(a => a.AtomicNumber == num));
+                //260718Cl 変更: 元素ごとの Count+First+Remove 反復 (O(n²)) を、元順序で最後の 1 つだけ残す RemoveAll に
+                //(旧コードは First を繰り返し削除するため、各元素の「最後」の原子が残る挙動。lastIndex 判定で同じ結果になる)
+                var lastIndex = new Dictionary<int, int>();
+                for (int i = 0; i < atoms.Count; i++)
+                    lastIndex[atoms[i].AtomicNumber] = i;
+                var keep = new HashSet<int>(lastIndex.Values);
+                var index = 0;
+                atoms.RemoveAll(_ => !keep.Contains(index++));
             }
 
             //コントロールが足りなかったら追加
