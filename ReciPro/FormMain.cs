@@ -29,27 +29,6 @@ public partial class FormMain : FormBase
     private static extern short GetAsyncKeyState(int nVirtKey);
     #endregion
 
-    #region WebClientの派生クラス
-    //private static readonly HttpClient httpClient = new();
-
-    //private async Task DownloadAsync(string url, string filename)
-    //{
-    //    using (var request = new HttpRequestMessage(HttpMethod.Get, new Uri(url)))
-    //    using (var response = await httpClient.SendAsync(request))
-    //    {
-    //        if (response.StatusCode == HttpStatusCode.OK)
-    //        {
-    //            using (var content = response.Content)
-    //            using (var stream = await content.ReadAsStreamAsync())
-    //            using (var fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
-    //            {
-    //                stream.CopyTo(fileStream);
-    //            }
-    //        }
-    //    }
-    //}
-    #endregion
-
     #region クリップボード監視
 
     private IntPtr NextHandle;
@@ -70,9 +49,10 @@ public partial class FormMain : FormBase
         switch (msg.Msg)
         {
             case WM_DRAWCLIPBOARD:
-                if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])))
+                //260717Cl 変更: Clipboard.GetDataObject() の二重呼び出しを一次受け (null 応答にも防御)
+                if (Clipboard.GetDataObject() is { } dataObj && dataObj.GetDataPresent(typeof(byte[])))
                 {
-                    var bytes = (byte[])Clipboard.GetDataObject().GetData(typeof(byte[]));
+                    var bytes = (byte[])dataObj.GetData(typeof(byte[]));
                     if (bytes[0] == Crystal2.ID)
                     {
                         var c2 = Crystal2.Deserialize(bytes[1..]);
@@ -80,14 +60,14 @@ public partial class FormMain : FormBase
                     }
                 }
 
-                if ((int)NextHandle != 0)
+                if (NextHandle != IntPtr.Zero)
                     SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
                 break;
 
             case WM_CHANGECBCHAIN:
                 if (msg.WParam == NextHandle)
                     NextHandle = msg.LParam;
-                else if ((int)NextHandle != 0)
+                else if (NextHandle != IntPtr.Zero)
                     SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
                 break;
         }
@@ -196,9 +176,6 @@ public partial class FormMain : FormBase
     //旧: public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "ja" ? Languages.Japanese : Languages.English;
     // 260519Cl 変更: NumericUpDown → NumericBox に伴い RadianValue で簡略化
-    //public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
-    //public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
-    //public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Phi { get => numericBoxEulerPhi.RadianValue; set => numericBoxEulerPhi.RadianValue = value; }
     public double Theta { get => numericBoxEulerTheta.RadianValue; set => numericBoxEulerTheta.RadianValue = value; }
     public double Psi { get => numericBoxEulerPsi.RadianValue; set => numericBoxEulerPsi.RadianValue = value; }
@@ -244,38 +221,6 @@ public partial class FormMain : FormBase
     /// <summary>コンストラクタ</summary>
     public FormMain()
     {
-
-        // var endmembers = new[] { "A5X2", "A3Y4", "B5X2", "B3Y4" };
-        // var space = new CompositionSpace(endmembers);
-
-        // var groups = new[]
-        // {
-        //     new SiteGroup("Cation", new[]{"A","B"}),
-        //     new SiteGroup("Anion",  new[]{"X","Y"})
-        // };
-
-        //var model = new SiteBasedParameterization(space, groups, maxExtentSubsetSize: 1);
-
-        //Console.WriteLine($"AffineDim={space.AffineDim}, ParamDim={model.ParameterDim}");
-        //Console.WriteLine("Symbolic formula:");
-        //Console.WriteLine(model.BuildSymbolicFormula());
-
-        // 任意混合の組成
-        //var w = MathNet.Numerics.LinearAlgebra.Double.DenseVector.OfArray(new double[] { 0.2, 0.1, 0.3, 0.4 });
-        //var c = space.ComposeFromWeights(w);
-
-        //var p = model.ToParameters(c);
-        //Console.WriteLine("Parameters:");
-        //foreach (var kv in p) Console.WriteLine($"  {kv.Key} = {kv.Value}");
-
-        //var c2 = model.FromParameters(p);
-        //Console.WriteLine($"Reconstruction L2 error = {(c - c2).L2Norm()}");
-
-
-
-
-        //var test = SymmetryStatic.IsRootAxis((-1, 3, 5), new Symmetry(460), out var indices);
-
         //カルチャーを決めるため、レジストリ読込 (InitializeComponentの前に読み込む)
         if (!DesignMode)
             Registry(Reg.Mode.Read);
@@ -338,36 +283,14 @@ public partial class FormMain : FormBase
             return;
 
         //MainWindowの場所を読み込むため (InitializeComponentの後に読み込む)
-        //260405Cl 起動時はUseMKLのCheckedChangedを抑制 (ip未初期化、ダウンロードダイアログ抑制のため)
-        //260711Cl 廃止: CheckedChanged 自体を廃止 (Click=ダウンロードのみ) したため抑制も不要
-        //toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
+        //260711Cl: MKL 関連の初期化はここから撤去済み (provider は Program.cs の MathNetProviderManager.Initialize が一元管理)
         Registry(Reg.Mode.Read); //260524Cl: 強制カルチャ (--capture) の再適用は Registry() 内に集約済み (全 Read 呼び出しを一括カバー)
-        //toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
-
-        //260405Cl 起動時: UseMKLがチェックされていてDLLが存在する場合のみMKLを有効化
-        //260711Cl 廃止: provider 初期化は Program.cs (MathNetProviderManager.Initialize) へ移動 (メニュー状態非依存)
-        //if (toolStripMenuItemUseMKL.Checked && MklFilesExist())
-        //{
-        //    if (MathNet.Numerics.Control.TryUseNativeMKL())
-        //        BetheMethod.MklEnabled = true;
-        //    else
-        //        toolStripMenuItemUseMKL.Checked = false; //ロード失敗時はチェックを外す
-        //}
-        //else if (toolStripMenuItemUseMKL.Checked && !MklFilesExist())
-        //{
-        //    toolStripMenuItemUseMKL.Checked = false; //DLLがない場合はチェックを外す
-        //}
 
         sw.Restart();
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
-        //this.SetStyle(ControlStyles.ResizeRedraw, true); //20250804にコメントアウト (浜根氏の問題に対処)
-        // ダブルバッファリング
-        //this.SetStyle(ControlStyles.DoubleBuffer, true);//20250804にコメントアウト (浜根氏の問題に対処)
-        //this.SetStyle(ControlStyles.UserPaint, true);//20250804にコメントアウト (浜根氏の問題に対処)
-        //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);//20250804にコメントアウト (浜根氏の問題に対処)
-
+        //SetStyle(ResizeRedraw/DoubleBuffer/UserPaint/AllPaintingInWmPaint) は 20250804 にコメントアウトの後、削除 (浜根氏の問題に対処)
     }
 
     /// <summary>フォームロード時</summary>
@@ -482,29 +405,29 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.", 0.18);
         FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
-        FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
+        FormStructureViewer.KeyDown += FormMain_KeyDown;
+        FormStructureViewer.KeyUp += FormMain_KeyUp;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.", 0.25);
         FormStereonet = new FormStereonet { formMain = this, Visible = false };
-        FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
+        FormStereonet.KeyDown += FormMain_KeyDown;
+        FormStereonet.KeyUp += FormMain_KeyUp;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.30);
         FormCrystalDatabase = new FormCrystalDatabase { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.", 0.35);
         FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
-        FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
-        FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
+        FormDiffractionSimulator.KeyDown += FormMain_KeyDown;
+        FormDiffractionSimulator.KeyUp += FormMain_KeyUp;
+        FormDiffractionSimulator.VisibleChanged += multiSelectionForms_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.40);
         FormImageSimulator = new FormImageSimulator { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.45);
         FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
-        FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
+        FormPolycrystallineDiffractionSimulator.VisibleChanged += multiSelectionForms_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.5);
         FormMovie = new FormMovie() { FormMain = this, Visible = false };
@@ -517,19 +440,19 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormSpotIDv1 = new FormSpotIDv1 { formMain = this, Visible = false };
-        FormSpotIDv1.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormSpotIDv1.KeyUp += new KeyEventHandler(FormMain_KeyUp);
+        FormSpotIDv1.KeyDown += FormMain_KeyDown;
+        FormSpotIDv1.KeyUp += FormMain_KeyUp;
         FormSpotIDv1.Visible = false;
-        FormSpotIDv1.VisibleChanged += FormTEMID_VisibleChanged;
+        FormSpotIDv1.VisibleChanged += multiSelectionForms_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
         FormSpotIDv2 = new FormSpotIDV2 { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
         FormCalculator = new FormCalculator { Owner = this, Visible = false };
-        FormCalculator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
-        FormCalculator.FormClosing += new FormClosingEventHandler(formCalculator_FormClosing);
+        FormCalculator.KeyDown += FormMain_KeyDown;
+        FormCalculator.KeyUp += FormMain_KeyUp;
+        FormCalculator.FormClosing += formCalculator_FormClosing;
 
         commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.75);
         NextHandle = SetClipboardViewer(this.Handle);
@@ -544,7 +467,6 @@ public partial class FormMain : FormBase
         // 通常配置でも exe のフォルダを返す
         var appPath = AppContext.BaseDirectory;
         //default.xmlをinitial.xmlとしてコピー
-        //if (!File.Exists(UserAppDataPath + "initial.xml"))
         File.Copy(appPath + "initial.xml", UserAppDataPath + "initial.xml", true);
 
         //ユーザーパスにdefault.xmlが存在しない場合、あるいは壊れている場合は、実行フォルダのinitial.xmlをdefault.xmlとしてユーザーパスにコピー
@@ -574,7 +496,6 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
 
-        //ReadInitialRegistry();
         Registry(Reg.Mode.Read);
 
         //260613Cl イオン散乱因子: Registry 復元後に static モデルを確定させ、以降のユーザー操作では Σq 警告を出す (起動復元では出さない)。
@@ -584,13 +505,7 @@ public partial class FormMain : FormBase
         // 260420Cl 追加: レジストリから復元した Bounds が画面外 (モニタ構成変更や最小化 Bounds=-32000 の残存) の場合にプライマリ画面へ再配置する (#55 関連)。
         WindowLocation.EnsureVisible(this);
 
-        //Text = "ReciPro  " + Version.VersionAndDate; // 260612Cl 変更前
-        //if (glControlAxes == null)
-        //    Text += "  (3D rendering disable mode)";
-        // 260612Cl 変更: += の 2 段階追記だと、1 回目の代入直後に FormBase が末尾へ付ける "(F1: Help)" 案内の
-        // 後ろに追記する形になり、案内が中間に残ったまま末尾へ二重付与される (StripHelpSuffix は末尾一致のみ)。
-        // タイトルは一括で組み立てて 1 回だけ代入する (3D 無効モード = Mac/Wine や CI smoke で発症していた)
-        //Text = "ReciPro  " + Version.VersionAndDate + (glControlAxes == null ? "  (3D rendering disable mode)" : ""); // 260703Cl 変更前
+        // 260612Cl 変更: タイトルは一括で組み立てて 1 回だけ代入する (+= の 2 段階追記だと FormBase の "(F1: Help)" 案内が中間に残り二重付与される)
         // 260703Cl 変更: どの配布版が動いているか特定できるよう、タイトルにアーキテクチャ (x64/arm64) と配布形態 (msi/zip) を付記する。
         //   例: "ReciPro  ver4.942(2026/07/01, x64msi)"。配布形態は README-PORTABLE.txt の有無で判定
         //   (portable ZIP のみ同梱・MSI staging は release.yml の leak 検査で排除済み。上の Check Updates 非表示判定と同じ方法)。
@@ -615,25 +530,22 @@ public partial class FormMain : FormBase
 
         //コマンドライン引数の解釈
         var args = Environment.GetCommandLineArgs();
-        if (args != null)
+        if (args.Contains("/m"))//mをつけるとマクロ
         {
-            if (args.Contains("/m"))//mをつけるとマクロ
+            //260717Cl 変更: First→FirstOrDefault (旧コードは .mcr 不在時に例外死。null 判定も到達不能だった)。StreamReader 未破棄も File.ReadAllText に置換
+            var filename = args.FirstOrDefault(a => a.EndsWith(".mcr") && File.Exists(a));
+            if (filename != null)
             {
-                var filename = args.First(a => a.EndsWith(".mcr") && File.Exists(a));
-                if (filename != null)
-                {
-                    this.Visible = true;
-                    // 260428Cl Thread.Sleep + Application.DoEvents の二重待機を Refresh + 短時間 Sleep に整理
-                    this.Refresh();
-                    Thread.Sleep(100);
-                    var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
-                    FormMacro.RunMacro(reader.ReadToEnd());
-                }
+                Visible = true;
+                // 260428Cl Thread.Sleep + Application.DoEvents の二重待機を Refresh + 短時間 Sleep に整理
+                Refresh();
+                Thread.Sleep(100);
+                FormMacro.RunMacro(File.ReadAllText(filename, Encoding.UTF8));
             }
-
-            if (args.Contains("/x"))//xがあると、実行後に閉じる
-                Close();
         }
+
+        if (args.Contains("/x"))//xがあると、実行後に閉じる
+            Close();
     }
 
     /// <summary>クローズ時</summary>
@@ -641,26 +553,19 @@ public partial class FormMain : FormBase
     /// <param name="e"></param>
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
     {
-        //FormCalculator.Close();
-        //FormStereonet.Close();
-        //FormStructureViewer.Close();
-        //FormDiffractionSimulator.Close();
         e.Cancel = false;
         // 260420Cl 追加: 最小化状態で閉じると Bounds = {-32000, -32000, ...} が保存されて次回起動時に画面外になる (#55 関連)。
         // 最小化/最大化時は WindowState を一旦 Normal に戻し、RestoreBounds 相当を保存する。
         if (WindowState != FormWindowState.Normal)
             WindowState = FormWindowState.Normal;
-        //SaveInitialRegistry();
         Registry(Reg.Mode.Write);
 
         Properties.Settings.Default.Save();
 
         ChangeClipboardChain(this.Handle, NextHandle);
 
-        var cry = new List<Crystal>();
-        for (int i = 0; i < listBox.Items.Count; i++)
-            cry.Add((Crystal)listBox.Items[i]);
-        ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
+        //260717Cl 変更: List 経由の二段構築を Cast().ToArray() に短縮
+        ConvertCrystalData.SaveCrystalListXml(listBox.Items.Cast<Crystal>().ToArray(), UserAppDataPath + "default.xml");
     }
     #endregion
 
@@ -704,21 +609,13 @@ public partial class FormMain : FormBase
                 rw(() => DisableNative);
                 BetheMethod.EigenEnabled = !toolStripMenuItemDisableNative.Checked;
             }
-            //else if (mode == Reg.Mode.Write)
-            //    rw(() => DisableNative);
             //260611Cl ロード失敗時 (メニュー無効+強制チェック) の状態をユーザー設定として永続化しない。
             //         native 欠落ビルドを一度起動すると DisableNative=true が保存され、以後 DLL が正常な起動でも
             //         EigenEnabled=false (CBED の Auto が Eigen_MKL=MathNet 経路に倒れる) が再現する事故が WoA 検証で発生
             else if (mode == Reg.Mode.Write && toolStripMenuItemDisableNative.Enabled)
                 rw(() => DisableNative);
 
-            //260405Cl MKLライブラリを使うかどうか
-            //rw(() => UseMKL);
-            //260611Cl ARM64 (メニュー非表示) では保存しない: 同一マシンの x64 エミュ実行が保存した UseMKL 設定を
-            //arm64 実行が false で上書きしないため (DisableNative の交差汚染と同類の対策)。読込は従来通り
-            //260711Cl 廃止 (作者仕様): 「Download MKL」化に伴い UseMKL のチェック状態も永続化も廃止 (既存レジストリ値は放置で無害)
-            //if (mode == Reg.Mode.Read || toolStripMenuItemUseMKL.Visible)
-            //    rw(() => UseMKL);
+            //260711Cl 廃止 (作者仕様): UseMKL のチェック状態の永続化は廃止 (既存レジストリ値は放置で無害)
 
             //260421Cl Miller-Bravais (4指数) 表記を使うかどうか
             rw(() => UseMillerBravais);
@@ -786,10 +683,8 @@ public partial class FormMain : FormBase
         }
         finally
         {
-            key.Close();
-            key.Dispose();
+            key.Close();//260717Cl: Dispose は using var に委譲 (旧: finally 内で Close+Dispose の二重呼び出し)
         }
-
     }
     #endregion レジストリ操作
 
@@ -808,7 +703,7 @@ public partial class FormMain : FormBase
         if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
             return;
 
-        var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
+        var max = Math.Max(Crystal.A, Math.Max(Crystal.B, Crystal.C));//260717Cl 変更: 一時配列+LINQ を Math.Max に
         var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
         var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
         var label = new[] { "a", "b", "c" };
@@ -878,7 +773,8 @@ public partial class FormMain : FormBase
             return;
         }
 
-        for (int i = 0; i < Crystals.Length; i++)
+        var crystals = Crystals;//260717Cl 追加: Crystals getter は呼ぶたびに listBox から配列を再構築するため一次受け (旧コードはループ内で毎回呼んでいた)
+        for (int i = 0; i < crystals.Length; i++)
         {
             Matrix3D rot;
             if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
@@ -888,16 +784,16 @@ public partial class FormMain : FormBase
                 var (u, v, w) = indexControlAxis.Values;
                 var (h, k, l) = indexControlPlane.Values;
                 var newAxis = checkBoxFixAxis.Checked ?
-                     Crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
-                     Crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
+                     crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+                     crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
                 if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                     rot = Matrix3D.Rot(newAxis, angle);
                 else
                     rot = Matrix3D.Rot(newAxis, -angle);
             }
-            Crystals[i].RotationMatrix = rot * Crystals[i].RotationMatrix;
+            crystals[i].RotationMatrix = rot * crystals[i].RotationMatrix;
         }
-        SetRotation(Crystals[0].RotationMatrix);
+        SetRotation(crystals[0].RotationMatrix);
     }
 
     /// <summary>回転行列を指定して、全フォームの回転状態をセットする</summary>
@@ -918,7 +814,6 @@ public partial class FormMain : FormBase
 
         if (FormDiffractionSimulator.Visible)
             FormDiffractionSimulator.RotationChanged();
-        //FormDiffractionSimulator.Draw();
 
         if (FormImageSimulator.Visible)
             FormImageSimulator.RotationChanged();
@@ -936,9 +831,6 @@ public partial class FormMain : FormBase
             var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
             // 260519Cl 変更: NumericUpDown → NumericBox (RadianValue setter で簡略化)
-            //numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            //numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            //numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
             numericBoxEulerPhi.RadianValue = euler.Phi;
             numericBoxEulerTheta.RadianValue = euler.Theta;
             numericBoxEulerPsi.RadianValue = euler.Psi;
@@ -1036,8 +928,8 @@ public partial class FormMain : FormBase
 
     public void SetPlane(int h, int k, int l) => indexControlPlane.Values = (h, k, l);
     public void SetAxis(int u, int v, int w) => indexControlAxis.Values = (u, v, w);
-    public void ProjectAlongAxis() => buttonSetVector_Click(buttonSetAxis, new EventArgs());
-    public void ProjectAlongPlane() => buttonSetVector_Click(buttonSetPlane, new EventArgs());
+    public void ProjectAlongAxis() => buttonSetVector_Click(buttonSetAxis, EventArgs.Empty);
+    public void ProjectAlongPlane() => buttonSetVector_Click(buttonSetPlane, EventArgs.Empty);
 
     private void buttonSetVector_Click(object sender, EventArgs e)
     {
@@ -1151,19 +1043,8 @@ public partial class FormMain : FormBase
     {
         new Crystallography.Controls.FormCaptureGUI { Owner = this }.Show(); // 260521Cl Phase6: Owner統一(§2.7)
     }
-    private void FormTEMID_VisibleChanged(object sender, EventArgs e)
-    {
-        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
-    }
-
-    private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
-    {
-        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
-    }
-
-    private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
+    //260717Cl 統合: FormTEMID_VisibleChanged / FormElectronDiffraction_VisibleChanged / formPolycrystallineDiffractionSimulator_VisibleChanged の 3 ハンドラが同一本体だったため 1 つに
+    private void multiSelectionForms_VisibleChanged(object sender, EventArgs e)
     {
         listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
             SelectionMode.MultiExtended : SelectionMode.One;
@@ -1178,34 +1059,24 @@ public partial class FormMain : FormBase
     /// <param name="e"></param>
     public void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
     {
-        var button = sender as ToolStripButton;
-        Form form;
-        if (button.Name.Contains("Structure"))
-            form = FormStructureViewer;
-        else if (button.Name.Contains("Database"))
-            form = FormCrystalDatabase;
-        else if (button.Name.Contains("Symmetry"))
-            form = crystalControl.FormSymmetryInformation;
-        else if (button.Name.Contains("BeamInteraction"))
-            form = crystalControl.FormBeamInteraction;
-        else if (button.Name.Contains("Rotation"))
-            form = FormRotation;
-        else if (button.Name.Contains("Stereonet"))
-            form = FormStereonet;
-        else if (button.Name.Contains("DiffractionSingle"))
-            form = FormDiffractionSimulator;
-        else if (button.Name.Contains("ImageSimulator"))
-            form = FormImageSimulator;
-        else if (button.Name.Contains("SpotIDv1"))
-            form = FormSpotIDv1;
-        else if (button.Name.Contains("SpotIDv2"))
-            form = FormSpotIDv2;
-        else if (button.Name.Contains("Trajectory"))
-            form = FormTrajectory;
-        else if (button.Name.Contains("EBSD"))
-            form = FormEBSD;
-        else
-            form = FormPolycrystallineDiffractionSimulator;
+        var button = (ToolStripButton)sender;
+        //260717Cl 変更: if-else 連鎖を switch 式に (判定は従来どおり Name の部分一致・同順)
+        Form form = button.Name switch
+        {
+            var n when n.Contains("Structure") => FormStructureViewer,
+            var n when n.Contains("Database") => FormCrystalDatabase,
+            var n when n.Contains("Symmetry") => crystalControl.FormSymmetryInformation,
+            var n when n.Contains("BeamInteraction") => crystalControl.FormBeamInteraction,
+            var n when n.Contains("Rotation") => FormRotation,
+            var n when n.Contains("Stereonet") => FormStereonet,
+            var n when n.Contains("DiffractionSingle") => FormDiffractionSimulator,
+            var n when n.Contains("ImageSimulator") => FormImageSimulator,
+            var n when n.Contains("SpotIDv1") => FormSpotIDv1,
+            var n when n.Contains("SpotIDv2") => FormSpotIDv2,
+            var n when n.Contains("Trajectory") => FormTrajectory,
+            var n when n.Contains("EBSD") => FormEBSD,
+            _ => FormPolycrystallineDiffractionSimulator
+        };
 
         if (e.Clicks == 1)
         {
@@ -1252,9 +1123,6 @@ public partial class FormMain : FormBase
             var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
             // 260519Cl 変更: NumericUpDown → NumericBox (RadianValue setter で簡略化)
-            //numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            //numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            //numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
             numericBoxEulerPhi.RadianValue = euler.Phi;
             numericBoxEulerTheta.RadianValue = euler.Theta;
             numericBoxEulerPsi.RadianValue = euler.Psi;
@@ -1518,8 +1386,8 @@ public partial class FormMain : FormBase
                 BackColor = Color.LightYellow,
                 Size = new Size(listBox.ColumnWidth + 2, listBox.ItemHeight),
             };
-            renameTextBox.Leave += (s, ev) => renameTextBox_Leave(s, ev);
-            renameTextBox.KeyDown += (s, ev) => renameTextBox_KeyDown(s, ev);
+            renameTextBox.Leave += renameTextBox_Leave;
+            renameTextBox.KeyDown += renameTextBox_KeyDown;
         }
         renameTextBox.Location = new Point(listBox.Location.X + pos.X, listBox.Location.Y + pos.Y);
         renameTextBox.Text = listBox.SelectedItem.ToString();
@@ -1559,21 +1427,20 @@ public partial class FormMain : FormBase
     {
         if (fileName == "")
         {
-            var dlg = new OpenFileDialog { Filter = "xml|*.xml" };
+            using var dlg = new OpenFileDialog { Filter = "xml|*.xml" };//260717Cl using 化
             if (dlg.ShowDialog() == DialogResult.OK)
                 fileName = dlg.FileName;
             else
                 return;
         }
 
-        var cry = new List<Crystal>();
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
         if (list == null)
             return;
-        cry.AddRange(list);
+        var cry = new List<Crystal>(list);//260717Cl 変更: 空 List+AddRange の二段構築を集約
         if (showSelectionDialog)
         {
-            var formCrystalSelection = new FormCrystalSelection { LoadMode = true };
+            using var formCrystalSelection = new FormCrystalSelection { LoadMode = true };//260717Cl using 化
             formCrystalSelection.SetCrystalList(cry);
             formCrystalSelection.Location = new Point(this.Location.X + this.Width / 2 - formCrystalSelection.Width / 2, this.Location.Y + this.Height / 2 - formCrystalSelection.Height / 2);
             if (formCrystalSelection.ShowDialog() == DialogResult.OK)
@@ -1599,15 +1466,13 @@ public partial class FormMain : FormBase
 
     private void SaveCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var cry = new List<Crystal>();
-        for (int i = 0; i < listBox.Items.Count; i++)
-            cry.Add((Crystal)listBox.Items[i]);
+        var cry = listBox.Items.Cast<Crystal>().ToList();//260717Cl 変更: for ループ構築を Cast().ToList() に
 
-        var formCrystalSelection = new FormCrystalSelection { LoadMode = false };
+        using var formCrystalSelection = new FormCrystalSelection { LoadMode = false };//260717Cl using 化
         formCrystalSelection.SetCrystalList(cry);
         if (formCrystalSelection.ShowDialog() == DialogResult.OK)
         {
-            var Dlg = new System.Windows.Forms.SaveFileDialog { Filter = "xml|*.xml" };
+            using var Dlg = new SaveFileDialog { Filter = "xml|*.xml" };//260717Cl using 化
             try
             {
                 if (Dlg.ShowDialog() == DialogResult.OK)
@@ -1632,7 +1497,7 @@ public partial class FormMain : FormBase
     {
         if (fileName == "")
         {
-            var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };
+            using var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };//260717Cl using 化
             if (dlg.ShowDialog() == DialogResult.OK)
                 fileName = dlg.FileName;
             else
@@ -1644,14 +1509,14 @@ public partial class FormMain : FormBase
 
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+        using var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };//260717Cl using 化
         if (dlg.ShowDialog() == DialogResult.OK)
             ReadCrystalList(dlg.FileName, true, true);
     }
 
     private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+        using var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };//260717Cl using 化
         if (dlg.ShowDialog() == DialogResult.OK)
             ReadCrystalList(dlg.FileName, true, false);
     }
@@ -1674,22 +1539,6 @@ public partial class FormMain : FormBase
         //           GitHub Pages のマニュアルを UI 言語別に開くよう変更。
         // 260622Cl: ja/en 二値判定を HelpBaseUrl() (SupportedCultures.HelpCulture 駆動) に統一。
         Process.Start(new ProcessStartInfo(HelpBaseUrl()) { UseShellExecute = true });
-        // 260602Cl 旧コード (コメントアウト保存):
-        //Process.Start(new ProcessStartInfo(
-        //    Thread.CurrentThread.CurrentUICulture.Name == "ja"
-        //        ? "https://seto77.github.io/ReciPro/ja/"
-        //        : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
-
-        // 260602Cl 旧コード (コメントアウト保存):
-        //if (Language != Languages.English)
-        //    Process.Start(new ProcessStartInfo("https://yseto.net/soft/recipro/") { UseShellExecute = true });
-        //else
-        //{
-        //    var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
-        //    var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        //    var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
-        //    f.Show();
-        //}
     }
     private void hintToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -1719,7 +1568,7 @@ public partial class FormMain : FormBase
     {
         if (filename == "")
         {
-            var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };
+            using var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };//260717Cl using 化
             if (dlg.ShowDialog() == DialogResult.OK)
                 filename = dlg.FileName;
             else
@@ -1732,11 +1581,6 @@ public partial class FormMain : FormBase
     private void languageToolStripMenuItem_Click(object sender, EventArgs e)
     {
         // 260617Cl 変更: english/japanese 二択固定から、項目の Tag (CultureInfo 名) 駆動の N 言語対応へ (Phase 0)。
-        // 切替は CurrentUICulture を更新するのみ (構築済みフォームは再ローカライズしない=従来通り再起動方式)。
-        // 旧:
-        //   englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
-        //   japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
-        //   Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
         // 260623Cl 変更: 「再起動が必要」の手動再起動から自動再起動方式へ (作者承認・方針 §4-E)。
         //   構築済みフォームの live re-localize は ApplyResources/コード側 Loc/フォント/AutoScale の全再適用が要り
         //   投資対効果が悪いため採らない。代わりに、選択カルチャを CurrentUICulture へ入れてから Application.Restart()
@@ -1765,9 +1609,7 @@ public partial class FormMain : FormBase
 
         Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
         UpdateLanguageMenuChecks(culture.Name);
-        RestartApplicationForLanguageChange(); // 260625Ch Application.Restart() に頼らず、先に新プロセスを起動してから終了する
-        //Application.Restart(); // 260625Ch 旧: FormClosing→Registry(Write) 頼みだと終了後に新プロセスが起動しない環境があった
-        // 旧 (260617Cl): 再起動せず CurrentUICulture を更新するのみ → 構築済みフォームは英語のままで手動再起動が必要だった。
+        RestartApplicationForLanguageChange(); // 260625Ch Application.Restart() に頼らず、先に新プロセスを起動してから終了する (Restart は新プロセスが起動しない環境があった)
     }
 
     private void RestartApplicationForLanguageChange()
@@ -1906,30 +1748,26 @@ public partial class FormMain : FormBase
         //方向キーの制御　　Left = 37,Up = 38,Right = 39,Down = 40,
         if (e.Control && e.Shift)
         {
-            //if (formStructureViewer.panelMain.Focused || formStructureViewer.panelAxes.Focused
-            //    || formStereonet.panel.Focused || formElectronDiffraction.panel.Focused)
-            {
-                bool left = GetAsyncKeyState(37) != 0;
-                bool up = GetAsyncKeyState(38) != 0;
-                bool right = GetAsyncKeyState(39) != 0;
-                bool down = GetAsyncKeyState(40) != 0;
-                if (up && left)
-                    buttonTopLeft.PerformClick();
-                else if (up && right)
-                    buttonTopRight.PerformClick();
-                else if (down && left)
-                    buttonBottomLeft.PerformClick();
-                else if (down && right)
-                    buttonBottomRight.PerformClick();
-                else if (up)
-                    buttonTop.PerformClick();
-                else if (down)
-                    buttonBottom.PerformClick();
-                else if (right)
-                    buttonRight.PerformClick();
-                else if (left)
-                    buttonLeft.PerformClick();
-            }
+            bool left = GetAsyncKeyState(37) != 0;
+            bool up = GetAsyncKeyState(38) != 0;
+            bool right = GetAsyncKeyState(39) != 0;
+            bool down = GetAsyncKeyState(40) != 0;
+            if (up && left)
+                buttonTopLeft.PerformClick();
+            else if (up && right)
+                buttonTopRight.PerformClick();
+            else if (down && left)
+                buttonBottomLeft.PerformClick();
+            else if (down && right)
+                buttonBottomRight.PerformClick();
+            else if (up)
+                buttonTop.PerformClick();
+            else if (down)
+                buttonBottom.PerformClick();
+            else if (right)
+                buttonRight.PerformClick();
+            else if (left)
+                buttonLeft.PerformClick();
         }
     }
 
@@ -1997,12 +1835,9 @@ public partial class FormMain : FormBase
     {
         toolStripProgressBar.Visible = true;
 
-        //260613Cl arm64 ビルドはアーキ専用インストーラを取得する (WiX 移行 Phase C)。x64 (エミュ実行含む) は従来どおり ReciProSetup.msi
-        //(var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
         //260613Cl アセット改名 (作者決定): 新クライアントは新名称 (ReciPro-setup.msi / ReciPro-setup_arm64.msi) を明示参照する。
         //         旧名 ReciProSetup.msi は旧クライアント (installerAsset 空 = ProgramUpdates 既定の {software}Setup.msi) の
         //         自動更新互換のため release に同一バイトのコピーとして数年間併置される (release.yml)
-        //var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciProSetup-arm64.msi" : "";
         var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciPro-setup_arm64.msi" : "ReciPro-setup.msi";
         (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset);
 
@@ -2124,43 +1959,22 @@ public partial class FormMain : FormBase
         }
     }
 
-    /// <summary>進捗状況を更新</summary>
-    /// <param name="current"></param>
-    /// <param name="total"></param>
-    /// <param name="elapsedMilliseconds">経過時間</param>
-    /// <param name="message">メッセージ</param>
-    /// <param name="interval">何回に一回更新するか</param>
-    /// <param name="sleep"></param>
-    /// <param name="showPercentage"></param>
-    /// <param name="showElapsedTime"></param>
-    /// <param name="showRemainTime"></param>
-    // 260520Cl digit 引数を廃止 (SetProgress の正準書式に移行し未使用化。呼び出し元はタプル overload のみで未指定)
-    // 旧シグネチャ: private void reportProgress(long current, long total, long elapsedMilliseconds, string message, int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true, int digit = 1)
-    private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
-        int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true)
+    /// <summary>進捗状況を更新 (Progress&lt;T&gt; 経由で UI スレッドから呼ばれる)</summary>
+    // 260520Cl digit 引数を廃止 (SetProgress の正準書式に移行し未使用化)
+    // 260717Cl 変更: 常に既定値だった sleep/showPercentage/showElapsedTime/showRemainTime 引数と long 版シグネチャを廃し、唯一の呼び出し形であるタプル版に一本化
+    // 旧シグネチャ: private void reportProgress(long current, long total, long elapsedMilliseconds, string message, int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true)
+    private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
     {
-        if (SkipProgressEvent || current > total)
+        if (SkipProgressEvent || o.current > o.total)
             return;
         SkipProgressEvent = true;
         try
         {
-            // 260520Cl StatusBarHelper.SetProgress に集約 (旧実装は pct/elapsed/remaining を手書き連結。digit 引数→正準書式へ移行)
-            //toolStripProgressBar.Maximum = int.MaxValue;
-            //var ratio = (double)current / total;
-            //toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
-            //var elapsedSec = elapsedMilliseconds / 1000.0;
-            //var format = $"f{digit}";
-            //if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-            //if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s";
-            //if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s";
-            //toolStripStatusLabel.Text = message;
-            var ratio = total > 0 ? (double)current / total : 0;
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel, ratio, message,
-                showElapsedTime ? TimeSpan.FromMilliseconds(elapsedMilliseconds) : (TimeSpan?)null,
-                showRemaining: showRemainTime, showPercent: showPercentage);
+            // 260520Cl StatusBarHelper.SetProgress に集約 (旧実装は pct/elapsed/remaining を手書き連結)
+            var ratio = o.total > 0 ? (double)o.current / o.total : 0;
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel, ratio, o.message,
+                TimeSpan.FromMilliseconds(o.elapsedMilliseconds), showRemaining: true, showPercent: true);
             // 260428Cl Application.DoEvents() を削除 (Progress<T> 経由で UI スレッドにポストされるため不要、再入の元)
-
-            if (sleep != 0) Thread.Sleep(sleep);
         }
         catch (Exception e)
         {
@@ -2169,8 +1983,6 @@ public partial class FormMain : FormBase
         }
         SkipProgressEvent = false;
     }
-    private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
-        => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
     #endregion
 
@@ -2190,17 +2002,9 @@ public partial class FormMain : FormBase
             for (int v = -limit + Math.Abs(u); v <= limit - Math.Abs(u); v++)
                 for (int w = -limit + Math.Abs(u) + Math.Abs(v); w <= limit - Math.Abs(u) - Math.Abs(v); w++)
                 {
-                    //既約かどうかチェック
-                    bool flag = true;
-                    for (int i = 2; i <= limit / 2; i++)
-                        if (u % i == 0 && v % i == 0 && w % i == 0)
-                        {
-                            flag = false;
-                            break;
-                        }
-                    if ((u == 0 && v == 0 && Math.Abs(w) != 1) || (Math.Abs(u) != 1 && v == 0 && w == 0) || (u == 0 && Math.Abs(v) != 1 && w == 0))
-                        flag = false;
-                    if (flag)
+                    //既約 (gcd(u,v,w)==1) のみ採用。260717Cl 変更: 2〜limit/2 の全数割り切り判定 + 単軸別条件を Euclid の互除法に集約 (gcd(0,0,0)=0 で原点も除外)
+                    static int Gcd(int a, int b) { while (b != 0) (a, b) = (b, a % b); return a; }
+                    if (Gcd(Gcd(Math.Abs(u), Math.Abs(v)), Math.Abs(w)) == 1)
                         uvwIndices.Add((u, v, w, (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis).Length));
                 }
         SetNearestUVW();
@@ -2215,7 +2019,7 @@ public partial class FormMain : FormBase
             Crystal.SetAxis();
 
         if (uvwIndices.Count == 0)
-            numericBoxMaxUVW_ValueChanged(new object(), new EventArgs());
+            numericBoxMaxUVW_ValueChanged(this, EventArgs.Empty);
         else
         {
             double aZ = (Crystal.RotationMatrix * Crystal.A_Axis).Z, bZ = (Crystal.RotationMatrix * Crystal.B_Axis).Z, cZ = (Crystal.RotationMatrix * Crystal.C_Axis).Z;
