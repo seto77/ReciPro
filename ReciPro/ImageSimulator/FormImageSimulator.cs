@@ -300,17 +300,21 @@ public partial class FormImageSimulator : FormBase
     {
         toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
 
+        //260718Cl 変更: 小さな UI スケール画像 2 枚の生成に ParallelEnumerable は過剰なため、単純 for に
+        static double[] gradient(int width, int height)
+        {
+            var values = new double[width * height];
+            for (int n = 0; n < values.Length; n++)
+                values[n] = (double)(n % width) / width;
+            return values;
+        }
         var width = pictureBoxPhaseScale.ClientRectangle.Width;
-        var height = pictureBoxPhaseScale.ClientRectangle.Height;
-        var temp = ParallelEnumerable.Range(0, width * height).Select(n => (double)(n % width) / width).ToArray();
-        scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
+        scaleImage = new PseudoBitmap(gradient(width, pictureBoxPhaseScale.ClientRectangle.Height), width) { MaxValue = 1, MinValue = 0 };
         scaleImage.SetScaleRotation();
         pictureBoxPhaseScale.Image = scaleImage.GetImage();
 
         width = pictureBoxScaleOfIntensity.ClientRectangle.Width;
-        height = pictureBoxScaleOfIntensity.ClientRectangle.Height;
-        temp = ParallelEnumerable.Range(0, width * height).Select(n => (double)(n % width) / width).ToArray();
-        scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
+        scaleImage = new PseudoBitmap(gradient(width, pictureBoxScaleOfIntensity.ClientRectangle.Height), width) { MaxValue = 1, MinValue = 0 };
         scaleImage.SetScaleGray();
         pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
 
@@ -397,25 +401,23 @@ public partial class FormImageSimulator : FormBase
         if (ThicknessArray == null || DefocusArray == null) return;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
-        var directions = new List<Vector3DBase>();
-
-        // 収束角を1.05倍にしておく
-        var division = (int)Math.Ceiling(numericBoxSTEM_ConvergenceAngle.Value * 2 * 1.05 / numericBoxSTEM_AngleResolution.Value);
+        //260718Cl 変更: List+spread を固定長配列に、円内ピクセル数 (stemDirectionTotal) も同じループで数える (旧: inside ローカル関数で全 index を再走査)
+        var division = (int)Math.Ceiling(numericBoxSTEM_ConvergenceAngle.Value * 2 * 1.05 / numericBoxSTEM_AngleResolution.Value);// 収束角を1.05倍にしておく
         var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);
 
         var radius = division / 2.0;
+        var directions = new Vector3DBase[division * division];
+        stemDirectionTotal = 0;
         for (int h = 0; h < division; h++)
             for (int w = 0; w < division; w++)
             {
                 var x = (w - radius + 0.5) / (radius - 0.5) * sin;
                 var y = -(h - radius + 0.5) / (radius - 0.5) * sin;//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
 
-                directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
+                directions[h * division + w] = new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y));
+                if ((w - radius + 0.5) * (w - radius + 0.5) + (h - radius + 0.5) * (h - radius + 0.5) <= radius * radius)
+                    stemDirectionTotal++;
             }
-
-        bool inside(int i) => (i % division - radius + 0.5) * (i % division - radius + 0.5) + (i / division - radius + 0.5) * (i / division - radius + 0.5) <= radius * radius;
-
-        stemDirectionTotal = Enumerable.Range(0, division * division).Count(i => inside(i));
 
         toolStripProgressBar.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
@@ -433,7 +435,7 @@ public partial class FormImageSimulator : FormBase
             FormMain.Crystal.RotationMatrix,
             ThicknessArray,
             DefocusArray,
-            [.. directions],
+            directions,
             STEM_ConvergenceAngle,
             STEM_DetectorInnerAngle,
             STEM_DetectorOuterAngle
@@ -854,8 +856,8 @@ public partial class FormImageSimulator : FormBase
             tableLayoutPanel.Controls.Clear();
             tableLayoutPanel.RowCount = row;
             tableLayoutPanel.ColumnCount = col;
-            Enumerable.Range(0, row).ToList().ForEach(r => tableLayoutPanel.RowStyles[r].Height = 1f);
-            Enumerable.Range(0, col).ToList().ForEach(c => tableLayoutPanel.ColumnStyles[c].Width = 1f);
+            for (int r = 0; r < row; r++) tableLayoutPanel.RowStyles[r].Height = 1f;//260718Cl Range().ToList().ForEach → for
+            for (int c = 0; c < col; c++) tableLayoutPanel.ColumnStyles[c].Width = 1f;
 
             for (int r = 0; r < row; r++)
                 for (int c = 0; c < col; c++)
@@ -1156,7 +1158,7 @@ public partial class FormImageSimulator : FormBase
         //ユニットセル
         if (checkBoxShowUnitcell.Checked)
         {
-            Pen penA = new(Color.Red, 1), penB = new(Color.Green, 1), penC = new(Color.Blue, 1);
+            using Pen penA = new(Color.Red, 1), penB = new(Color.Green, 1), penC = new(Color.Blue, 1);//260718Cl using 化 (描画ごとにリークしていた)
             var zero = new PointD(0, 0);
             var a = new PointD(imageInfo.A.X, -imageInfo.A.Y) / reso * zoom;
             var b = new PointD(imageInfo.B.X, -imageInfo.B.Y) / reso * zoom;
