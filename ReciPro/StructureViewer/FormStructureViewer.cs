@@ -1906,7 +1906,7 @@ public partial class FormStructureViewer : FormBase
     }
     private bool trackBarAdvanced2_ValueChanged(object sender, double value)
     {
-        checkBoxDepthCueing_CheckedChanged(sender, new EventArgs());
+        checkBoxDepthCueing_CheckedChanged(sender, EventArgs.Empty);
         return false;
     }
 

@@ -489,12 +489,12 @@ internal static partial class GuiCapture
     {
         try { form.Refresh(); } catch { /* Refresh 時例外は無視 */ }
         RenderOpenGlControls(form, trace);
-        var until = Environment.TickCount + Math.Max(ms, 0);
+        var until = Environment.TickCount64 + Math.Max(ms, 0);//260718Cl TickCount→TickCount64 (32bit の ~24.9 日ラップ回避)
         do
         {
             Application.DoEvents();
             System.Threading.Thread.Sleep(15);
-        } while (Environment.TickCount < until);
+        } while (Environment.TickCount64 < until);
     }
 
     // 260623Cl 追加: --capture は Application.Run を回さず DoEvents で描画を進めるため、CurrentUICulture を
@@ -1111,8 +1111,8 @@ internal static partial class GuiCapture
         {
             for (var poll = 1; poll <= StabilizeMaxPolls; poll++)
             {
-                var until = Environment.TickCount + StabilizePollMs; // StabilizePollMs ぶん描画を進める
-                do { Application.DoEvents(); System.Threading.Thread.Sleep(30); } while (Environment.TickCount < until);
+                var until = Environment.TickCount64 + StabilizePollMs; // StabilizePollMs ぶん描画を進める //260718Cl TickCount→TickCount64
+                do { Application.DoEvents(); System.Threading.Thread.Sleep(30); } while (Environment.TickCount64 < until);
                 RenderOpenGlControls(form, trace); // GL 結果 (EBSD MasterPattern3D 等) を可視バッファへ反映
 
                 var current = CaptureScreen(GetWindowVisualBounds(form));

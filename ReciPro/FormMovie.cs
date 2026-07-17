@@ -134,20 +134,12 @@ public partial class FormMovie : FormBase
             return;
         }
 
-        var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };
+        using var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };//260718Cl using 化
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             FormMain.Enabled = Caller.Enabled = false;
 
             // 260530Cl ffmpeg(GPL) の動的ロードを廃止。Media Foundation は OS 内蔵のため初期化不要。
-            //          旧コード:
-            //          if (!ffmpegLoaded) {
-            //              var ffmpegDir = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "ffmpeg");
-            //              foreach (var name in new[] { "libwinpthread-1", "libgcc_s_seh-1", "libstdc++-6", "zlib1",
-            //                  "libx264-165", "libx265", "avutil-59", "swresample-5", "avcodec-61", "avformat-61", "swscale-8" })
-            //                  NativeLibrary.Load(Path.Combine(ffmpegDir, name + ".dll"));
-            //              FFmpegLoader.FFmpegPath = ffmpegDir; ffmpegLoaded = true;
-            //          }
 
             //var framerate = 30; // (260629Ch) 変更前: 30 fps 固定
             var framerate = Math.Max(1, Framerate); // (260629Ch)

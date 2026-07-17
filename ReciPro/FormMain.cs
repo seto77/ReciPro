@@ -1805,7 +1805,9 @@ public partial class FormMain : FormBase
         var fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
         if (fileName.Length == 1)
         {
-            if ((fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out") || fileName[0].ToLower().EndsWith("cdb2")))
+            //260718Cl 変更: ToLower().EndsWith を拡張子の OrdinalIgnoreCase 判定に (CurrentCulture 非依存・一時文字列削減)
+            var ext = Path.GetExtension(fileName[0]);
+            if (ext.Equals(".xml", StringComparison.OrdinalIgnoreCase) || ext.Equals(".out", StringComparison.OrdinalIgnoreCase) || ext.Equals(".cdb2", StringComparison.OrdinalIgnoreCase))
             {
                 var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
                     "Option", MessageBoxButtons.YesNoCancel);
@@ -1816,7 +1818,7 @@ public partial class FormMain : FormBase
                 else
                     ReadCrystalList(fileName[0], true, false);
             }
-            else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
+            else if (ext.Equals(".cif", StringComparison.OrdinalIgnoreCase) || ext.Equals(".amc", StringComparison.OrdinalIgnoreCase))
             {
                 crystalControl.FormCrystal_DragDrop(sender, e);
             }

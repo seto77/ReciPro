@@ -178,7 +178,7 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     public void FormDiffractionSimulatorGeometry_DragDrop(object sender, DragEventArgs e)
     {
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-        if (fileName.Length == 1 && fileName[0].ToLower().EndsWith("prm"))
+        if (fileName.Length == 1 && fileName[0].EndsWith("prm", StringComparison.OrdinalIgnoreCase))//260718Cl ToLower→OrdinalIgnoreCase
         {
             var prm = DiffractionOptics.Read(fileName[0]);
             FormDiffractionSimulator.SkipDrawing = true;
