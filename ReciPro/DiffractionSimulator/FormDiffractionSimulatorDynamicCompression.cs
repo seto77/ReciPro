@@ -27,14 +27,15 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
     /// <param name="e"></param>
     private void buttonPaste_Click(object sender, EventArgs e)
     {
-        if (Clipboard.GetDataObject().GetDataPresent(typeof(string)))
+        //260717Cl 変更: Clipboard.GetDataObject() の二重呼び出しを一次受け (null 応答にも防御)
+        if (Clipboard.GetDataObject() is { } dataObj && dataObj.GetDataPresent(typeof(string)))
         {
             try
             {
                 graphControl.Profile = new Profile();
                 graphControl.VerticalLines = null;
 
-                var str1 = (string)Clipboard.GetDataObject().GetData(typeof(string));
+                var str1 = (string)dataObj.GetData(typeof(string));
 
                 var str2 = str1.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -275,7 +276,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 }
             }
             var sum = rotationList.Sum(r => r.weight);
-            rotationList = rotationList.Select(r => (r.rot, r.weight / sum)).ToList();
+            for (int k = 0; k < rotationList.Count; k++)//260717Cl 変更: Select+ToList の再構築を in-place 正規化に
+                rotationList[k] = (rotationList[k].rot, rotationList[k].weight / sum);
 
             //ここから、圧縮による格子定数の変化
             Matrix3D newAxes = originalAxes;
@@ -341,7 +343,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             Application.DoEvents();
         }//メインループここまで
 
-        compiledImage = compiledImage.Select(intensity => intensity * 1E6).ToArray();
+        for (int j = 0; j < compiledImage.Length; j++)//260717Cl 変更: Select+ToArray の再確保を in-place スケールに
+            compiledImage[j] *= 1E6;
         PseudoBitmap pseud = new(compiledImage, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
 
         Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
@@ -418,13 +421,11 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
     private void FormDiffractionSimulatorDynamicCompression_DragDrop(object sender, DragEventArgs e)
     {
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-        if (fileName.Length == 1 && fileName[0].ToLower().EndsWith("txt"))
+        if (fileName.Length == 1 && fileName[0].EndsWith("txt", StringComparison.OrdinalIgnoreCase))//260717Cl ToLower を OrdinalIgnoreCase に
         {
-            var sr = new StreamReader(fileName[0]);
-            string line;
             Profiles = new Dictionary<double, Profile>();
 
-            while ((line = sr.ReadLine()) != null)
+            foreach (var line in File.ReadLines(fileName[0]))//260717Cl 変更: 未破棄だった StreamReader を File.ReadLines に
             {
                 var values = line.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 if (values.Length == 3 &&
@@ -432,9 +433,9 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                     double.TryParse(values[1], out double time) &&
                     double.TryParse(values[2], out double pressure))
                 {
-                    if (!Profiles.ContainsKey(time))
-                        Profiles.Add(time, new Profile());
-                    Profiles[time].Pt.Add(new PointD(pos, pressure));
+                    if (!Profiles.TryGetValue(time, out var profile))//260717Cl ContainsKey+indexer → TryGetValue
+                        Profiles.Add(time, profile = new Profile());
+                    profile.Pt.Add(new PointD(pos, pressure));
                 }
             }
             if (Profiles.Count > 1)

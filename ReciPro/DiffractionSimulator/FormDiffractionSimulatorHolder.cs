@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Security.Policy;
 using System.Windows.Forms;
-//using Windows.Devices.Radios; //260405Cl 未使用のWinRT参照を削除
-#endregion 
+#endregion
 
 namespace ReciPro;
 
@@ -156,7 +154,6 @@ public partial class FormDiffractionSimulatorHolder : FormBase
             g.DrawLine(penTiltY, 0f, sign * 50 / mag, 5 / mag, sign * 40 / mag);
             g.DrawLine(penTiltY, 0f, sign * 50 / mag, -5 / mag, sign * 40 / mag);
         }
-        //g.DrawLine()
     }
 
     /// <summary>ステレオネットに晶帯軸を描く</summary>
@@ -239,7 +236,7 @@ public partial class FormDiffractionSimulatorHolder : FormBase
             numericBoxTiltX.RadianValue = tiltX;
             numericBoxTiltY.RadianValue = tiltY;
             skipEventFromThis = false;
-            numericBoxTilt_ValueChanged(sender, new EventArgs());
+            numericBoxTilt_ValueChanged(sender, EventArgs.Empty);
         }
     }
 

@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ReciPro;
 
@@ -36,7 +35,6 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     public Matrix3D DetectorRotationInv { get; set; } = new Matrix3D();
 
 
-    //public double CameraLength1 { set { numericBoxCameraLength1.Value = value; } get { return numericBoxCameraLength1.Value; } }
     public double CameraLength2 { set => numericBoxCameraLength2.Value = value; get => numericBoxCameraLength2.Value; }
 
     // 260521Cl: numericBoxPixelWidth/Height → sizeControl1 へ置換
@@ -48,8 +46,6 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     public double FootY { set => numericBoxFootY.Value = value; get => numericBoxFootY.Value; }
 
     public bool ShowDetectorArea { get => checkBoxDetectorSizePosition.Checked; set => checkBoxDetectorSizePosition.Checked = value; }
-
-    //public bool Precession { get { return checkBoxPrecession.Checked; } set { checkBoxPrecession.Checked = value; } }
 
     public float ImageOpacity => (float)trackBarPictureOpacity1.Value / trackBarPictureOpacity1.Maximum;
 
@@ -83,9 +79,6 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     private void numericBoxCameraLength2_ValueChanged(object sender, EventArgs e)
     {
-        //var cosTau = Math.Cos(numericBoxTau.RadianValue);
-        //numericBoxCameraLength1.Value = cosTau > 0.0000001 ? numericBoxCameraLength2.Value / cosTau : double.PositiveInfinity;
-
         if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時)
             FormDiffractionSimulator.CameraLength2 = CameraLength2;
 
@@ -169,8 +162,7 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     private double trackbarConstantA = 0, trackbarConstantB = 1;
 
     private double convertTrackbarIntensityToRealIntensity(int trackbarPosition) => trackbarConstantA + Math.Exp(trackbarPosition / trackbarConstantB);
-
-    private double convertRealIntensityToTrackbarIntensity(double intensity) => (int)(trackbarConstantB * Math.Log(intensity - trackbarConstantA));
+    //260717Cl 削除: 逆変換 convertRealIntensityToTrackbarIntensity は未使用だった
 
     private void trackBarMaxInt_ValueChanged(object sender, EventArgs e)
     {
@@ -190,7 +182,6 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         {
             var prm = DiffractionOptics.Read(fileName[0]);
             FormDiffractionSimulator.SkipDrawing = true;
-           // if (prm.FootMode == "True")
             {
                 FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray;
                 FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -214,17 +205,6 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                 Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
                 CameraLength2 = Convert.ToDouble(prm.CameraLength2);
             }
-            //else
-            //{
-            //    FootX = Convert.ToDouble(prm.DirectSpotX);
-            //    FootY = Convert.ToDouble(prm.DirectSpotY);
-
-            //    FormDiffractionSimulator.waveLengthControl.WaveSource = (WaveSource)Convert.ToInt32(prm.waveSource);
-            //    FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = Convert.ToInt32(prm.xRayElement);
-            //    FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine = (XrayLine)Convert.ToInt32(prm.xRayLine);
-            //    FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
-
-            //}
             //DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0; // 旧: Y 方向のピクセル寸法を無視
             DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeY)) / 2.0; // (260715Ch)
 
@@ -371,23 +351,12 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                 if (!ImageIO.ReadImage(filename))
                     return false; // (260715Ch)
 
-                //tifの場合は上下反転(理由は不明)
-                /*for (int y = 0; y < Ring.SrcImgSize.Height / 2; y++)
-                {
-                    for (int x = 0; x < Ring.SrcImgSize.Width; x++)
-                    {
-                        double temp = Ring.Intensity[x + y * Ring.SrcImgSize.Width];
-                        Ring.Intensity[x + y * Ring.SrcImgSize.Width] = Ring.Intensity[x + (Ring.SrcImgSize.Height - y - 1) * Ring.SrcImgSize.Width];
-                        Ring.Intensity[x + (Ring.SrcImgSize.Height - y - 1) * Ring.SrcImgSize.Width] = temp;
-                    }
-                }*/
-
                 //pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width); // 旧: 既存画像を解放せず差し替えていた
                 //var loadedPseudoBitmap = new PseudoBitmap(...); pseudBitmap?.Dispose(); pseudBitmap = loadedPseudoBitmap; OverlappedImage = null; // (260715Ch) 260716Cl 旧: 差し替え3点セットを直書き
                 SetPseudoBitmap(new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width)); // 260716Cl
                 DetectorWidth = pseudBitmap.Width;
                 DetectorHeight = pseudBitmap.Height;
-                trackBarMaxInt_ValueChanged(new object(), new EventArgs());
+                trackBarMaxInt_ValueChanged(this, EventArgs.Empty);
             }
             else
                 return false;
@@ -395,10 +364,10 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
             textBoxFileName.Text = filename;
 
             Ring.CalcFreq();
-            trackbarConstantA = Ring.Intensity.Min() - 1;
-            trackbarConstantB = trackBarMaxInt.Maximum / Math.Log(Ring.Intensity.Max() - trackbarConstantA);
+            var (min, max) = Ring.Intensity.MinMax();//260717Cl 変更: Min()/Max()/MinMax() の 3 走査を MinMax() 1 回に
+            trackbarConstantA = min - 1;
+            trackbarConstantB = trackBarMaxInt.Maximum / Math.Log(max - trackbarConstantA);
 
-            var (min, max) = Ring.Intensity.MinMax();
             pseudBitmap.MaxValue = max;
             pseudBitmap.MinValue = min;
 

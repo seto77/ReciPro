@@ -29,28 +29,6 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private int _divisionNumberCache = -1;
     private int _divisionNumberCacheKey = -1;
 
-    //public int DivisionNumber
-    //{
-    //    get
-    //    {
-    //        int count = 0;
-    //        double radius = Division / 2.0;
-    //        if (radius > 3000)
-    //            return -1;
-    //        double radius2 = radius * radius;
-    //        Parallel.For(0, Division, h =>
-    //        {
-    //            double pY = h - radius + 0.5, pY2 = pY * pY;
-    //            for (int w = 0; w < Division; w++)
-    //            {
-    //                double pX = w - radius + 0.5;
-    //                if (pX * pX + pY2 <= radius2)
-    //                    Interlocked.Increment(ref count);
-    //            }
-    //        });
-    //        return count;
-    //    }
-    //}
     public int DivisionNumber
     {
         get
@@ -87,8 +65,6 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     public double ResolutionInverse { get; set; }
     public double ResolutionReal { get; set; }
 
-    //public double Defocus { get { return numericBoxDefocus.Value; } }
-    //public double Cs { get { return numericBoxCs.Value; } }
     public double AlphaMax => numericBoxAlphaMax.Value / 1000.0;
 
     public bool DrawGuideCircles => checkBoxDrawGuideCircles.Checked;
@@ -131,7 +107,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         InitializeComponent();
         //HelpPage = "7-diffraction-simulator/4-cbed-simulation"; //260529Cl 追加 (旧: 実ページは 3-cbed-simulation、4- は x-ray-neutron)
         HelpPage = "7-diffraction-simulator/3-cbed-simulation"; //260623Cl: 実ページ名へ修正 (HelpCulture flip で 9 言語に 404 波及するため)
-        NumericBoxDivision_ValueChanged(new object(), new EventArgs());
+        NumericBoxDivision_ValueChanged(this, EventArgs.Empty);
 
         //260611Cl 追加: ARM64 には MKL ネイティブが存在しない (x86/x64 専用) ため、MKL の選択肢自体を出さない
         if (System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture == System.Runtime.InteropServices.Architecture.Arm64)
@@ -141,8 +117,6 @@ public partial class FormDiffractionSimulatorCBED : FormBase
 
         if (!BetheMethod.EigenEnabled)
         {
-            //comboBoxSolver.Items.RemoveAt(3);
-            //comboBoxSolver.Items.RemoveAt(1);
             //260611Cl 固定インデックスは ARM64 の MKL 項目除去後にずれるため、内容ベースの除去に変更
             for (var i = comboBoxSolver.Items.Count - 1; i >= 0; i--)
                 if ($"{comboBoxSolver.Items[i]}".Contains("Eigen lib"))
@@ -174,29 +148,16 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
-        var directions = new List<Vector3DBase>();
-        //var side = 2.0 / Division;
-        //var max = (int)(1 / side) + 1;
-        //var max = Division % 2 == 0 ? Division / 2 : (Division + 1) / 2;
-        //for (int h = -max; h <= max; h++)
-        //    for (int w = -max; w <= max; w++)
-        //            rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
-
-
+        //260717Cl 変更: List+spread を固定長配列の直接構築に (要素数 = Division² で既知)
         var radius = Division / 2.0;
+        Directions = new Vector3DBase[Division * Division];
         for (int h = 0; h < Division; h++)
             for (int w = 0; w < Division; w++)
             {
-                //double x = w - radius + 0.5, y = -(h - radius + 0.5);
-                //directions.Add(Matrix3D.Rot(new Vector3DBase(y, -x, 0), Math.Atan(Math.Sqrt(x * x + y * y) / radius * Math.Tan(AlphaMax)))*new Vector3DBase(0,0,-1));
-
-                //2022/10/04 以下に変更
                 var x = (w - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);
                 var y = -(h - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
-                directions.Add(new Vector3DBase(x, y, -Math.Sqrt(1 - x * x - y * y)));
+                Directions[h * Division + w] = new Vector3DBase(x, y, -Math.Sqrt(1 - x * x - y * y));
             }
-
-        Directions = [.. directions];
 
 
         BetheMethod.Solver solver;
@@ -452,7 +413,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e)
     {
         numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
-        numericBoxThread.Value = comboBoxSolver.Text.Contains("MKL") ? Math.Max(1, Environment.ProcessorCount / 4) : numericBoxThread.Value = Environment.ProcessorCount;
+        numericBoxThread.Value = comboBoxSolver.Text.Contains("MKL") ? Math.Max(1, Environment.ProcessorCount / 4) : Environment.ProcessorCount;//260717Cl: 冗長な二重代入 (…: numericBoxThread.Value = …) を整理
     }
     #endregion
 

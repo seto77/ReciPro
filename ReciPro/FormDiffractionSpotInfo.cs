@@ -27,13 +27,8 @@ public partial class FormDiffractionSpotInfo : FormBase
     {
         InitializeComponent();
 
-        //DataGridViewの画面ちらつきをおさえるため、DoubleBufferedを有効にする
-        // DataGirdViewのTypeを取得
-        var dgvtype = typeof(DataGridView);
-        // プロパティ設定の取得
-        var dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-        // 対象のDataGridViewにtrueをセットする
-        dgvPropertyInfo.SetValue(dataGridView, true, null);
+        //DataGridViewの画面ちらつきをおさえるため、DoubleBufferedを有効にする (non-public プロパティのため reflection)
+        //260717Cl: 同一の SetValue が 2 回実行されていたため 1 回に
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
     }
 
