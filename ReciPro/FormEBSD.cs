@@ -883,7 +883,8 @@ public partial class FormEBSD : FormBase
         double yCoeffPy = ebsdYCoeffPy, zCoeffPy = ebsdZCoeffPy, yConst = ebsdYConst, zConst = ebsdZConst;
 
         var Ri = Crystal.RotationMatrix.Inverse();
-        double ax = -Ri.E11, ay = -Ri.E21, az = -Ri.E31, bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
+        double xm = DetectorXMirror; // 260718Cl: 左右反転トグル (既定 +1)。X 方向のみ符号を掛ける
+        double ax = -xm * Ri.E11, ay = -xm * Ri.E21, az = -xm * Ri.E31, bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
         double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy, bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
         double cx = Ri.E12 * yConst + Ri.E13 * zConst, cy = Ri.E22 * yConst + Ri.E23 * zConst, cz = Ri.E32 * yConst + Ri.E33 * zConst;
 
@@ -1058,6 +1059,7 @@ public partial class FormEBSD : FormBase
     {
         var mp = MasterPattern;
         var dist = mcDistribution;
+        double xm = DetectorXMirror; // 260718Cl: 左右反転。Parallel.For 前に UI スレッドで捕捉 (ワーカーから checkbox 直読は不可)
         int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
         int binCount = dist.BinCount, gs = ebsdLookupGridSize;
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
@@ -1087,7 +1089,7 @@ public partial class FormEBSD : FormBase
                     int i = h * width + w;
 
                     // 検出器 X 座標
-                    double detNormX = -(2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用)
+                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用) / 260718Cl: 左右反転 xm を掛ける
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1246,6 +1248,7 @@ public partial class FormEBSD : FormBase
     {
         var mp = MasterPattern;
         var dist = mcDistribution;
+        double xm = DetectorXMirror; // 260718Cl: 左右反転 (UI スレッドで捕捉)
         int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
         int totalPixels = width * height;
         int binCount = dist.BinCount;
@@ -1273,7 +1276,7 @@ public partial class FormEBSD : FormBase
                 for (int w = 0; w < width; w++)
                 {
                     int i = h * width + w;
-                    double detNormX = -(2.0 * w + 1 - width) / (double)width;
+                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1406,6 +1409,7 @@ public partial class FormEBSD : FormBase
     {
         var mp = MasterPattern;
         var dist = mcDistribution;
+        double xm = DetectorXMirror; // 260718Cl: 左右反転 (UI スレッドで捕捉)
         int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
         int totalPixels = width * height;
         int binCount = dist.BinCount;
@@ -1432,7 +1436,7 @@ public partial class FormEBSD : FormBase
                 for (int w = 0; w < width; w++)
                 {
                     int i = h * width + w;
-                    double detNormX = -(2.0 * w + 1 - width) / (double)width;
+                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1670,8 +1674,10 @@ public partial class FormEBSD : FormBase
         }
         //グラフィックスボックスに描画する場合
         graphics ??= graphicsBox.Graphics;
-        if (!SetProjection(graphics)) 
+        if (!SetProjection(graphics))
             return;
+
+        double xm = DetectorXMirror; // 260718Cl: 左右反転。オーバーレイ (ゾーン軸ラベル・菊池線) の X 投影へパターンと一貫して掛ける
 
 
         if (!checkBoxShowDyanmicalEBSD.Checked || Pbmp == null)
@@ -1724,7 +1730,7 @@ public partial class FormEBSD : FormBase
                         for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                         {
                             double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
-                            var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+                            var pt = new PointD(xm * (cosPsi * x - sinPsi * (y - Y)), sinPsi * x + cosPsi * (y - Y)); // 260718Cl: 左右反転 xm を X に
 
                             if (IsScreenArea(pt))
                                 pts.Add(pt);
@@ -1812,7 +1818,7 @@ public partial class FormEBSD : FormBase
                         if (dir.Z < 1e-15) continue;
 
                         // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
-                        double detX = -CameraLength2 * dir.X / dir.Z;
+                        double detX = -xm * CameraLength2 * dir.X / dir.Z; // 260718Cl: 左右反転 xm
                         double detY2 = CameraLength2 * dir.Y / dir.Z;
 
                         var ptZA = new PointD(detX, detY2);
@@ -3059,6 +3065,12 @@ public partial class FormEBSD : FormBase
         flowLayoutPanelOutputRange.Enabled = !checkBoxWithBSEDistribution.Checked;
         DrawEBSD(); // (260327Ch) BSE 分布つき合成と単一スライス表示を即座に切り替える
     }
+
+    /// <summary>260718Cl 追加: 検出器を背面から見た左右反転の X 符号。未チェック(既定)=+1=現状(試料側から見た図)、チェック=-1=左右反転。
+    /// パターン(BuildEbsdLookupTable の ax)・輝度(detNormX)・オーバーレイ(ゾーン軸 detX・菊池線 pt.X)の全 X 投影へ一貫して掛ける。</summary>
+    private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? -1.0 : 1.0;
+
+    private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) => DrawEBSD(); // 260718Cl 追加: パターン再描画→Paint 経由でオーバーレイも反転反映
 
     private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
     {

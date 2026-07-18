@@ -92,6 +92,7 @@
             label14 = new System.Windows.Forms.Label();
             checkBoxShowDyanmicalEBSD = new System.Windows.Forms.CheckBox();
             checkBoxDrawDetectorOutline = new System.Windows.Forms.CheckBox();
+            checkBoxFlipDetectorLeftRight = new System.Windows.Forms.CheckBox(); // 260718Cl 追加
             label15 = new System.Windows.Forms.Label();
             checkBoxShowKikuchiLines = new System.Windows.Forms.CheckBox();
             checkBoxShowGIndices = new System.Windows.Forms.CheckBox();
@@ -628,6 +629,17 @@
             toolTip.SetToolTip(checkBoxWithBSEDistribution, resources.GetString("checkBoxWithBSEDistribution.ToolTip"));
             checkBoxWithBSEDistribution.UseVisualStyleBackColor = true;
             checkBoxWithBSEDistribution.CheckedChanged += checkBoxWithBSEDistribution_CheckedChanged;
+            //
+            // checkBoxFlipDetectorLeftRight   260718Cl 追加: 検出器を背面から見た左右反転トグル (既定 OFF = 試料側から見た現状)
+            //
+            checkBoxFlipDetectorLeftRight.AutoSize = true;
+            checkBoxFlipDetectorLeftRight.Location = new System.Drawing.Point(338, 20);
+            checkBoxFlipDetectorLeftRight.Name = "checkBoxFlipDetectorLeftRight";
+            checkBoxFlipDetectorLeftRight.Size = new System.Drawing.Size(140, 21);
+            checkBoxFlipDetectorLeftRight.TabIndex = 200;
+            checkBoxFlipDetectorLeftRight.Text = "Flip L-R (from back)";
+            checkBoxFlipDetectorLeftRight.UseVisualStyleBackColor = true;
+            checkBoxFlipDetectorLeftRight.CheckedChanged += checkBoxFlipDetectorLeftRight_CheckedChanged;
             // 
             // comboBoxGradient
             // 
@@ -1025,6 +1037,7 @@
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
             groupBoxOutput.Controls.Add(checkBoxWithBSEDistribution);
+            groupBoxOutput.Controls.Add(checkBoxFlipDetectorLeftRight); // 260718Cl 追加
             groupBoxOutput.Controls.Add(comboBoxGradient);
             groupBoxOutput.Controls.Add(comboBoxScale);
             groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMax);
@@ -1553,6 +1566,7 @@
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
         private System.Windows.Forms.CheckBox checkBoxWithBSEDistribution;
+        private System.Windows.Forms.CheckBox checkBoxFlipDetectorLeftRight; // 260718Cl 追加: 検出器を背面から見た左右反転
         private System.Windows.Forms.GroupBox groupBoxLatticePlanes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOutputRange;
         private System.Windows.Forms.Panel panelMasterPattern3D;
