@@ -119,6 +119,11 @@ internal static partial class GuiCapture
         FormMain captureFormMain = null; // (260523Ch) FormTrajectory の --capture 用 Simulate が Crystal を参照できるよう FormMain を保持する
         foreach (var type in types)
         {
+            // 260718Cl: FormSpotIDv2Details は親 (FormSpotIDV2) 未配線の単独生成だと空表示 (スポット未選択で画像・グラフ無し) に
+            // なるため、標準列挙ではスキップし、下の FormSpotIDV2 撮影後に配線済みインスタンスを代表状態 (スポット選択済み) で撮る。
+            if (type == typeof(FormSpotIDv2Details))
+                continue;
+
             Form form = null;
             try
             {
@@ -145,6 +150,20 @@ internal static partial class GuiCapture
                     {
                         try { CaptureForm(captureFormMain.FormMacro, "FormMacro", outDir, Trace, closeAfterCapture: true); ok++; }
                         catch (Exception ex) { fail++; Trace($"FormMacro\tFAIL\t{ex.GetType().Name}: {ex.Message}"); }
+                    }
+
+                    // 260718Cl 追加: FormSpotIDv2Details は FormSpotIDV2 が Load で生成・配線した子フォーム。画像読込+スポット
+                    // 検出まで済んだこの時点で、非ダイレクトのスポットを1つ選び「画像+4方向プロファイルグラフ表示」状態にして撮る。
+                    if (form is FormSpotIDV2 spotIDForDetails && spotIDForDetails.FormSpotDetails != null && ShouldCapture("FormSpotIDv2Details"))
+                    {
+                        try
+                        {
+                            spotIDForDetails.PrepareDetailsCaptureForGuiAudit();
+                            Application.DoEvents();
+                            CaptureForm(spotIDForDetails.FormSpotDetails, "FormSpotIDv2Details", outDir, Trace, closeAfterCapture: true);
+                            ok++;
+                        }
+                        catch (Exception ex) { fail++; Trace($"FormSpotIDv2Details\tFAIL\t{ex.GetType().Name}: {ex.Message}"); }
                     }
                 }
                 else if (ReferenceEquals(form, captureFormMain))

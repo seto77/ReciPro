@@ -315,6 +315,33 @@ public partial class FormSpotIDV2 : FormBase
         buttonFindSpots_Click(buttonFindSpots, EventArgs.Empty); // スポット検出を起動 (async、完了は画面安定待ちで判定)
     }
 
+    /// <summary>
+    /// 260718Cl 追加: --capture 用。詳細フォーム (FormSpotDetails) を「スポット選択済み・画像＋プロファイルグラフ表示」の
+    /// 代表状態にする。<see cref="PrepareCaptureForGuiAudit(string)"/> + 画面安定待ちでスポット検出が完了した後に呼ぶこと。
+    /// ダイレクト(000, 1個目)は強度が飽和しプロファイルが潰れる (ユーザー指示) ため避け、2個目以降 = 最初の非ダイレクト
+    /// スポットを選ぶ。呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareDetailsCaptureForGuiAudit()
+    {
+        var spots = dataSet.DataTableSpot.Spots;
+        if (spots == null || spots.Count == 0) return;
+
+        int selNo = -1;
+        for (int i = 0; i < spots.Count; i++)
+        {
+            var p = dataSet.DataTableSpot.GetPrms(i);
+            if (p.Direct) continue; // 1個目 (飽和したダイレクト) を避ける
+            selNo = p.No;           // 2個目以降の最初 (= 最初の非ダイレクトスポット)
+            break;
+        }
+        if (selNo < 0) selNo = dataSet.DataTableSpot.GetPrms(0).No; // 全てダイレクトなら先頭
+
+        checkBoxDetailsOfSpot.Checked = true;                 // FormSpotDetails.Visible=true → VisibleChanged → SetData()
+        var pos = bindingSourceObsSpots.Find("No", selNo);
+        if (pos >= 0) bindingSourceObsSpots.Position = pos;   // CurrentChanged → SetData(false) + 選択スポットへズーム
+        FormSpotDetails.SetData();                            // 画像 + 4方向プロファイルグラフを確実に生成
+    }
+
     private async void buttonFindSpots_Click(object sender, EventArgs e)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
