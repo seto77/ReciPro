@@ -2311,7 +2311,7 @@ public partial class FormEBSD : FormBase
                 progress.Report((95, "Fitting Monte Carlo distribution"));
                 var distribution = new EbsdMonteCarloDistribution(
                     bseRaw, energy,
-                    sampleTilt, detectorTilt, detectorY, detectorZ, detectorR,
+                    detectorTilt, detectorY, detectorZ, detectorR, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要)
                     grid.energies, grid.depths);
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
