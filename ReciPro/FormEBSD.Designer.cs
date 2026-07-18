@@ -633,6 +633,7 @@
             // checkBoxFlipDetectorLeftRight   260718Cl 追加: 検出器を背面から見た左右反転トグル (既定 OFF = 試料側から見た現状)
             //
             checkBoxFlipDetectorLeftRight.AutoSize = true;
+            checkBoxFlipDetectorLeftRight.Font = new System.Drawing.Font("Segoe UI", 9.75F); // 260718Cl: 親 groupBoxOutput が Bold のため、兄弟 checkBoxWithBSEDistribution と同じ通常ウェイトを明示
             checkBoxFlipDetectorLeftRight.Location = new System.Drawing.Point(338, 20);
             checkBoxFlipDetectorLeftRight.Name = "checkBoxFlipDetectorLeftRight";
             checkBoxFlipDetectorLeftRight.Size = new System.Drawing.Size(140, 21);
