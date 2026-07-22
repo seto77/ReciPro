@@ -1609,6 +1609,10 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>136</value>
   </metadata>
+  <data name="buttonSaveAsFile.ToolTip" xml:space="preserve">
+    <value>Save the entire reflection table (visible
+columns, comma-separated) as a CSV file.</value>
+  </data>
   <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
     <value>Copy the entire reflection table (visible
 columns, tab-separated) to the clipboard

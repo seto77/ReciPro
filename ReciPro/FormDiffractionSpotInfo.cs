@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO; // 260723Cl 追加 (CSV 保存用)
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -215,14 +216,33 @@ public partial class FormDiffractionSpotInfo : FormBase
                     sb.Append(spaceSep[i] ? headers[i] : $"{headers[i]}\t");
             sb.Append("\r\n");
 
+            // 260723Cl 追加: buttonSaveAsFile からも共用し、sender 名でクリップボード/CSV ファイル保存に分岐 (FormSpotIDV2 と同型)。
+            //   クリップボードは従来どおり現在のカルチャ (Excel 等へのペースト用)、ファイルは InvariantCulture (小数点=ピリオド) で
+            //   出力し、小数点=カンマのロケールでも CSV が壊れないようにする (codex 指摘)。
+            var toClipboard = (sender as Button).Name.Contains("Clipboard");
+            var inv = System.Globalization.CultureInfo.InvariantCulture;
+
             for (int j = 0; j < dataGridView.Rows.Count; j++)
             {
                 for (int i = 0; i < colCount; i++)
                     if (visible[i])
-                        sb.Append(spaceSep[i] ? $"{dataGridView[i, j].Value} " : $"{dataGridView[i, j].Value}\t");
+                    {
+                        //sb.Append(spaceSep[i] ? $"{dataGridView[i, j].Value} " : $"{dataGridView[i, j].Value}\t"); // 260723Cl 旧
+                        var value = toClipboard ? $"{dataGridView[i, j].Value}" : Convert.ToString(dataGridView[i, j].Value, inv);
+                        sb.Append(spaceSep[i] ? $"{value} " : $"{value}\t");
+                    }
                 sb.Append("\r\n");
             }
-            Clipboard.SetDataObject(sb.ToString());
+            //Clipboard.SetDataObject(sb.ToString()); // 260723Cl 旧: クリップボードコピーのみ
+            if (toClipboard)
+                Clipboard.SetDataObject(sb.ToString());
+            else
+            {
+                var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    using (var sw = new StreamWriter(dlg.FileName, false, Encoding.UTF8))
+                        sw.Write(sb.ToString().Replace('\t', ','));
+            }
         }
     }
 

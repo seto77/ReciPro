@@ -113,6 +113,10 @@
 クリップボードにコピーします。Excel や
 テキストエディタに貼り付けられます。</value>
   </data>
+  <data name="buttonSaveAsFile.ToolTip" xml:space="preserve">
+    <value>反射表全体(表示中の列、カンマ区切り)を
+CSV ファイルとして保存します。</value>
+  </data>
   <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
     <value>チェックすると各列の幅を表示中の内容に合わせ
 て自動調整します。大きな表ではスクロールが

@@ -146,9 +146,11 @@ namespace ReciPro
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            saveCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260723Cl 追加: 候補方位リストの CSV 保存
             copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260723Cl 追加: 候補方位リストの TSV コピー
             shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1149,7 +1151,8 @@ namespace ReciPro
             // 
             // saveToolStripMenuItem
             // 
-            saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1 });
+            //saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1 }); // 260723Cl 旧
+            saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1, saveCandidateListToolStripMenuItem });
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             // 
@@ -1158,16 +1161,24 @@ namespace ReciPro
             saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
             resources.ApplyResources(saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
             saveAsMetafileToolStripMenuItem.Click += saveAsMetafileToolStripMenuItem_Click;
-            // 
+            //
             // saveAsBitmapToolStripMenuItem1
-            // 
+            //
             saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
             resources.ApplyResources(saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
             saveAsBitmapToolStripMenuItem1.Click += saveAsBitmapToolStripMenuItem1_Click;
+            //
+            // saveCandidateListToolStripMenuItem
+            //
+            // 260723Cl 追加: 候補方位リスト (候補×grain の方位・残差・スポット割当) の CSV 保存
+            saveCandidateListToolStripMenuItem.Name = "saveCandidateListToolStripMenuItem";
+            resources.ApplyResources(saveCandidateListToolStripMenuItem, "saveCandidateListToolStripMenuItem");
+            saveCandidateListToolStripMenuItem.Click += copyOrSaveCandidateListToolStripMenuItem_Click;
             // 
             // copyToolStripMenuItem
             // 
-            copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem });
+            //copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem }); // 260723Cl 旧
+            copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem, copyCandidateListToolStripMenuItem });
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             // 
@@ -1176,12 +1187,19 @@ namespace ReciPro
             copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
             resources.ApplyResources(copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
             copyAsMetafileToolStripMenuItem.Click += copyAsMetafileToolStripMenuItem_Click;
-            // 
+            //
             // copyAsBitmapToolStripMenuItem
-            // 
+            //
             copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
             resources.ApplyResources(copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
             copyAsBitmapToolStripMenuItem.Click += copyAsBitmapToolStripMenuItem_Click;
+            //
+            // copyCandidateListToolStripMenuItem
+            //
+            // 260723Cl 追加: 候補方位リストの TSV クリップボードコピー
+            copyCandidateListToolStripMenuItem.Name = "copyCandidateListToolStripMenuItem";
+            resources.ApplyResources(copyCandidateListToolStripMenuItem, "copyCandidateListToolStripMenuItem");
+            copyCandidateListToolStripMenuItem.Click += copyOrSaveCandidateListToolStripMenuItem_Click;
             // 
             // shortcutHintsToolStripMenuItem
             // 
@@ -1444,6 +1462,8 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsBitmapToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem saveCandidateListToolStripMenuItem; // 260723Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem copyCandidateListToolStripMenuItem; // 260723Cl 追加
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsBitmapToolStripMenuItem;

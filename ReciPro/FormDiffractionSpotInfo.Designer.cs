@@ -44,6 +44,7 @@
             label2 = new System.Windows.Forms.Label();
             textBoxWaveLength = new System.Windows.Forms.TextBox();
             buttonCopyToClipboard = new System.Windows.Forms.Button();
+            buttonSaveAsFile = new System.Windows.Forms.Button(); // 260723Cl 追加: 反射表の CSV ファイル保存
             textBoxGamma = new System.Windows.Forms.TextBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -161,6 +162,20 @@
             buttonCopyToClipboard.Text = "Copy to clipboard";
             buttonCopyToClipboard.UseVisualStyleBackColor = true;
             buttonCopyToClipboard.Click += buttonCopyToClipboard_Click;
+            //
+            // buttonSaveAsFile
+            //
+            // 260723Cl 追加: 反射表を CSV ファイルに保存 (ハンドラは buttonCopyToClipboard_Click と共用し、sender 名で分岐)
+            buttonSaveAsFile.AutoSize = true;
+            buttonSaveAsFile.Font = new System.Drawing.Font("Segoe UI", 10F);
+            buttonSaveAsFile.Location = new System.Drawing.Point(820, 267);
+            buttonSaveAsFile.Name = "buttonSaveAsFile";
+            toolTip.SetToolTip(buttonSaveAsFile, resources.GetString("buttonSaveAsFile.ToolTip"));
+            buttonSaveAsFile.Size = new System.Drawing.Size(110, 30);
+            buttonSaveAsFile.TabIndex = 6;
+            buttonSaveAsFile.Text = "Save as CSV";
+            buttonSaveAsFile.UseVisualStyleBackColor = true;
+            buttonSaveAsFile.Click += buttonCopyToClipboard_Click;
             // 
             // textBoxGamma
             // 
@@ -815,6 +830,7 @@
             Controls.Add(flowLayoutPanelVoltageWaveLength);
             Controls.Add(button1);
             Controls.Add(buttonCopyToClipboard);
+            Controls.Add(buttonSaveAsFile); // 260723Cl 追加
             Controls.Add(label16);
             Controls.Add(label9);
             Controls.Add(numericBoxEffectiveDigit);
@@ -852,6 +868,7 @@
         private Crystallography.Controls.NumericBox numericBoxEffectiveDigit;
         private System.Windows.Forms.TextBox textBoxWaveLength;
         private System.Windows.Forms.Button buttonCopyToClipboard;
+        private System.Windows.Forms.Button buttonSaveAsFile; // 260723Cl 追加
         private System.Windows.Forms.TextBox textBoxGamma;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

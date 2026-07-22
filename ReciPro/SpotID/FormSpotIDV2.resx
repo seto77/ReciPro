@@ -2775,6 +2775,12 @@ row to show its grain orientation(s) below.</value>
   <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
     <value>as Image (PNG format)</value>
   </data>
+  <data name="saveCandidateListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Candidate list (CSV)...</value>
+  </data>
+  <data name="copyCandidateListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Candidate list (TSV)</value>
+  </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 22</value>
   </data>

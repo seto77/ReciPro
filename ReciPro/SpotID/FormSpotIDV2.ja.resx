@@ -471,6 +471,12 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
     <value>イメージファイル (png) として</value>
   </data>
+  <data name="saveCandidateListToolStripMenuItem.Text" xml:space="preserve">
+    <value>候補方位リスト (CSV)...</value>
+  </data>
+  <data name="copyCandidateListToolStripMenuItem.Text" xml:space="preserve">
+    <value>候補方位リスト (TSV)</value>
+  </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>ショートカットヒント</value>
   </data>

@@ -917,6 +917,52 @@ public partial class FormSpotIDV2 : FormBase
         }
     }
 
+    /// <summary>260723Cl 追加: 候補方位リスト (全候補×全grain の結晶名・オイラー角(Z-X-Z)・回転行列・残差・スポット割当) を
+    /// TSV でクリップボードにコピー、または CSV でファイルに保存する (File メニューの Copy/Save 配下)。
+    /// 数値は InvariantCulture (小数点=ピリオド)、CSV は引用符エスケープ付きで外部ツール交換に耐える形式とする (codex 指摘)。</summary>
+    private void copyOrSaveCandidateListToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (dataSet.DataTableCandidate.Rows.Count == 0)
+            return;
+
+        var inv = System.Globalization.CultureInfo.InvariantCulture;
+        var rows = new List<string[]>
+        {
+            new[] { "CandidateRank", "GrainIndex", "Crystal", "EulerZXZ_phi(deg)", "EulerZXZ_theta(deg)", "EulerZXZ_psi(deg)",
+                    "R11", "R12", "R13", "R21", "R22", "R23", "R31", "R32", "R33",
+                    "ResidualMeanSquared(nm^-2)", "AssignedSpots", "Assignments (spotNo: h k l)" }
+        };
+        for (int i = 0; i < dataSet.DataTableCandidate.Rows.Count; i++)
+        {
+            var grains = (List<Grain>)dataSet.DataTableCandidate.Rows[i]["Candidate"];
+            for (int j = 0; j < grains.Count; j++)
+            {
+                var g = grains[j];
+                var (phi, theta, psi) = Euler.FromMatrix(g.Rotation);
+                var m = g.Rotation;
+                rows.Add([i.ToString(inv), j.ToString(inv), g.CrystalName ?? "",
+                    (phi / Math.PI * 180).ToString(inv), (theta / Math.PI * 180).ToString(inv), (psi / Math.PI * 180).ToString(inv),
+                    m.E11.ToString(inv), m.E12.ToString(inv), m.E13.ToString(inv),
+                    m.E21.ToString(inv), m.E22.ToString(inv), m.E23.ToString(inv),
+                    m.E31.ToString(inv), m.E32.ToString(inv), m.E33.ToString(inv),
+                    g.Residual.ToString(inv), g.Indices.Length.ToString(inv),
+                    string.Join("; ", g.Indices.Select(index => $"{index.No}: {index.H} {index.K} {index.L}"))]);
+            }
+        }
+
+        if ((sender as ToolStripMenuItem).Name.Contains("copy"))
+            Clipboard.SetDataObject(string.Join("\r\n", rows.Select(r => string.Join("\t", r))) + "\r\n");
+        else
+        {
+            //カンマ・引用符・改行を含むフィールド (結晶名等) は RFC 4180 流に引用符で囲む
+            var esc = new Func<string, string>(s => s.Contains(',') || s.Contains('"') || s.Contains('\n') ? $"\"{s.Replace("\"", "\"\"")}\"" : s);
+            var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                using (var sw = new StreamWriter(dlg.FileName, false, Encoding.UTF8))
+                    sw.Write(string.Join("\r\n", rows.Select(r => string.Join(",", r.Select(esc)))) + "\r\n");
+        }
+    }
+
     private void readCSV(string filename)
     {
         if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray == null)
