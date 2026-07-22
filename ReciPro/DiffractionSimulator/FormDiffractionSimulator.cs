@@ -77,6 +77,10 @@ public partial class FormDiffractionSimulator : FormBase
 
     #region 光学モード
     public enum BeamModes { Parallel, PrecessionElectron, PrecessionXray, Convergence }
+
+    /// <summary>260723Cl 追加: Back Laue モードかどうか (BeamModes 列挙に含まれず BeamMode getter では判別できないため。マクロ SpotInfo の未対応ガード用)</summary>
+    public bool IsBackLaue => radioButtonBeamBackLaue.Checked;
+
     /// <summary>光学系を取得/設定</summary>
     public BeamModes BeamMode
     {
@@ -316,7 +320,7 @@ public partial class FormDiffractionSimulator : FormBase
             if (comboBoxCenter.SelectedIndex == 0)//direct spot
                 return new PointD(0, 0);
             else if (comboBoxCenter.SelectedIndex == 1)//foot of perpendicular from sample
-                return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+                return -ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             else//検出器の中心
             {
                 var fdsg = FormDiffractionSimulatorGeometry;
@@ -956,7 +960,7 @@ public partial class FormDiffractionSimulator : FormBase
                 }
 
                 //ダイレクトスポットの描画
-                var origin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+                var origin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
                 if (IsScreenArea(origin))
                 {
                     //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
@@ -1040,7 +1044,7 @@ public partial class FormDiffractionSimulator : FormBase
                     //if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
                     //(vec.X, -vec.Y, -vec.Z + EwaldRadius) と(SinPhi*SinTau, -CosPhi*sinTau, cosTau) の内積が0より大きい = 前方散乱)
                     {
-                        var pt = convertReciprocalToDetector(vec);
+                        var pt = ConvertReciprocalToDetector(vec);
 
                         if (IsScreenArea(pt))
                         {
@@ -1147,7 +1151,7 @@ public partial class FormDiffractionSimulator : FormBase
         //ダイレクトスポットの描画
         if (checkBoxShowDirectPosition.Checked)
         {
-            var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            var ptOrigin = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             if (IsScreenArea(ptOrigin))
             {
                 //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
@@ -1347,7 +1351,7 @@ public partial class FormDiffractionSimulator : FormBase
             (cornerDetector[0], cornerDetector[3]) = (cornerDetector[3], cornerDetector[0]);
         }
 
-        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+        var originSrc = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
 
         int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
         int ringR = colorControlDebyeRing.Color.R, ringG = colorControlDebyeRing.Color.G, ringB = colorControlDebyeRing.Color.B;
@@ -1406,7 +1410,7 @@ public partial class FormDiffractionSimulator : FormBase
             (cornerReals[0], cornerReals[3]) = (cornerReals[3], cornerReals[0]);
         }
 
-        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+        var originSrc = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));
         var originInside = IsScreenArea(originSrc);
 
         //Azimuthのスケールライン ここから
@@ -1498,7 +1502,7 @@ public partial class FormDiffractionSimulator : FormBase
         using var twoThetaPen = new Pen(colorControlScale2Theta.Color, (float)(trackBarScaleLineWidth.Value * Resolution / 2f)); // (260611Ch)
 
         if (originSrc.IsNaN)
-            originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));
+            originSrc = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));
 
         for (double n = Math.Max(1, startN); n < endN; n++)
         {
@@ -1653,7 +1657,7 @@ public partial class FormDiffractionSimulator : FormBase
         //最大、最小のd値を決定
         double minD, maxD;
         //180°散乱が画面内に含まれる場合
-        if (IsScreenArea(convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius))))
+        if (IsScreenArea(ConvertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius))))
             minD = WaveLength / 2;
         else
             minD = 1 / (new[] {
@@ -1664,7 +1668,7 @@ public partial class FormDiffractionSimulator : FormBase
             }.Max());
 
         //ダイレクトスポットが画面内に含まれる場合
-        if (IsScreenArea(convertReciprocalToDetector(new Vector3DBase(0, 0, 0))))
+        if (IsScreenArea(ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0))))
             maxD = double.PositiveInfinity;
         else
             maxD = 1 / (new[] {
@@ -1761,10 +1765,10 @@ public partial class FormDiffractionSimulator : FormBase
         if (width == 0 || height == 0)
             return (0, 0);
 
-        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));//逆空間原点の検出器座標
+        var originSrc = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 0));//逆空間原点の検出器座標
         var originInside = IsScreenArea(originSrc);//逆空間原点が検出器内にいるか
 
-        var originInverseSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
+        var originInverseSrc = ConvertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
         var originInverseInside = IsScreenArea(originInverseSrc);//逆空間原点と反対向きの点が検出器内にいるか
 
         //260717Cl 変更: 4 辺 2×(width+height) 点の List 構築 + LINQ 複数走査を、単一ループの min/max 同時更新に
@@ -1896,10 +1900,11 @@ public partial class FormDiffractionSimulator : FormBase
 
     // return p * d / (a * p.X + b * p.Y + c * p.Z);
 
-    /// <summary>逆空間座標を検出器座標に変換。　 逆空間座標のy,zの符号を反転することに注意</summary>
+    /// <summary>逆空間座標を検出器座標(mm, Foot原点)に変換。　 逆空間座標のy,zの符号を反転することに注意</summary>
     /// <param name="g"></param>
     /// <returns></returns>
-    private PointD convertReciprocalToDetector(Vector3DBase g)
+    //private PointD convertReciprocalToDetector(Vector3DBase g) // 260723Cl 旧シグネチャ (マクロ SpotInfo から検出器座標を出力するため public 化)
+    public PointD ConvertReciprocalToDetector(Vector3DBase g)
     {
         if (radioButtonBeamPrecessionXray.Checked)//X線プリセッション。　検出器の傾きは考慮しない。
         {

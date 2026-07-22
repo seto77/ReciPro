@@ -1,4 +1,4 @@
-﻿#region using 
+﻿#region using
 using Crystallography;
 using MathNet.Numerics;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static System.FormattableString; // 260723Cl 追加: SpotInfo() の CSV をカルチャ非依存 (小数点=ピリオド) で出力するため
 namespace ReciPro;
 #endregion
 
@@ -670,10 +671,17 @@ public class Macro : MacroBase
 
 
 
-        [Help("Returns spot information for the current dynamical calculation as CSV text.")]
+        // 260723Cl Help文言更新 (旧: "Returns spot information for the current dynamical calculation as CSV text.")
+        //   Kinematical/Excitation モード対応と検出器座標列 (detX, detY) の追加に伴い記述を拡張。
+        [Help("Returns spot information for the current calculation as CSV text. Units: d in nm, g and Sg in nm^-1, detX/detY in mm (detector coordinates; origin = foot of the perpendicular from the sample). In dynamical mode, dynamical quantities (Ug/Vg, Sg, φ) are included; in kinematical/excitation mode, |F|^2 and relative intensity are included for reflections whose excitation error is within the spot radius.")]
         public string SpotInfo() => (Execute(() => spotInfo()));
         private string spotInfo()
         {
+            // 260723Cl 追加: Back Laue は ConvertReciprocalToDetector が常に (0,0) を返し無効データになるため明示的に未対応とする (codex 指摘)
+            if (difSim.IsBackLaue)
+                return "Error: SpotInfo() does not support the Back Laue mode.";
+
+            // 260723Cl 数値は全て InvariantCulture (小数点=ピリオド) で出力する (codex 指摘: 小数点=カンマのロケールで CSV が壊れる)
             var gamma = 1 + UniversalConstants.e0 * Energy * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
             double coeff;
             var sb = new StringBuilder();
@@ -681,12 +689,14 @@ public class Macro : MacroBase
             {
                 if (difSim.FormDiffractionBeamTable.UnitOfPotential == FormDiffractionSpotInfo.UnitOfPotentialEnum.Vg)
                 {
-                    sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Vg_re, Vg_im, V'g_re, V'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n");
+                    //sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Vg_re, Vg_im, V'g_re, V'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n"); // 260723Cl 旧: 検出器座標なし・区切り後空白あり
+                    sb.Append("No.,R,H,K,L,d(nm),gX(1/nm),gY(1/nm),gZ(1/nm),|g|=1/d(1/nm),Vg_re,Vg_im,V'g_re,V'g_im,Sg(1/nm),Pg,Qg,φ_re,φ_im,|φ|^2,detX(mm),detY(mm)\n");
                     coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
                 }
                 else
                 {
-                    sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Ug_re, Ug_im, U'g_re, U'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n");
+                    //sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Ug_re, Ug_im, U'g_re, U'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n"); // 260723Cl 旧: 検出器座標なし・区切り後空白あり
+                    sb.Append("No.,R,H,K,L,d(nm),gX(1/nm),gY(1/nm),gZ(1/nm),|g|=1/d(1/nm),Ug_re,Ug_im,U'g_re,U'g_im,Sg(1/nm),Pg,Qg,φ_re,φ_im,|φ|^2,detX(mm),detY(mm)\n");
                     coeff = 1 / gamma;
                 }
 
@@ -694,20 +704,40 @@ public class Macro : MacroBase
                 foreach (var b in c.Bethe.Beams)
                 {
                     var g = b.Vec.Length;
-                    sb.Append(value: $"{n++},{b.Rating},{b.H},{b.K},{b.L},{1 / g},");
-                    sb.Append($"{b.Vec.X},{b.Vec.Y},{b.Vec.Z},{g},");
-                    sb.Append($"{b.Ureal.Real * coeff},{b.Ureal.Imaginary * coeff},{b.Uimag.Real * coeff},{b.Uimag.Imaginary * coeff},");
-                    sb.Append($"{b.S},{b.P},{b.Q},");
-                    sb.Append($"{b.Psi.Real},{b.Psi.Imaginary},{b.Psi.MagnitudeSquared()}");
+                    sb.Append(Invariant($"{n++},{b.Rating},{b.H},{b.K},{b.L},{1 / g},"));
+                    sb.Append(Invariant($"{b.Vec.X},{b.Vec.Y},{b.Vec.Z},{g},"));
+                    sb.Append(Invariant($"{b.Ureal.Real * coeff},{b.Ureal.Imaginary * coeff},{b.Uimag.Real * coeff},{b.Uimag.Imaginary * coeff},"));
+                    sb.Append(Invariant($"{b.S},{b.P},{b.Q},"));
+                    sb.Append(Invariant($"{b.Psi.Real},{b.Psi.Imaginary},{b.Psi.MagnitudeSquared()}"));
+                    var pt = difSim.ConvertReciprocalToDetector(b.Vec); // 260723Cl 追加: 検出器座標 (mm)
+                    sb.Append(Invariant($",{pt.X},{pt.Y}"));
                     sb.Append('\n');
                 }
                 return sb.ToString();
             }
-            else
+            else // 260723Cl 追加: Kinematical / Excitation モード (旧: 未実装で空文字を返していた)
             {
-
+                //描画ループ (FormDiffractionSimulator.Draw) と同じ規約で、結晶回転後の逆格子ベクトルから励起誤差 Sg を求め、
+                //|Sg| が Spot radius (ExcitationError) 以内の反射のみ出力する (描画される集合とは点広がり表示等で厳密には一致しない)。
+                sb.Append("No.,H,K,L,d(nm),gX(1/nm),gY(1/nm),gZ(1/nm),|g|=1/d(1/nm),Sg(1/nm),|F|^2,RelativeIntensity,detX(mm),detY(mm)\n");
+                int n = 0;
+                double ewald = difSim.EwaldRadius;
+                var precessionX = difSim.BeamMode == FormDiffractionSimulator.BeamModes.PrecessionXray;
+                foreach (var g in c.VectorOfG.Where(g => g.Flag1))
+                {
+                    var vec = c.RotationMatrix * g;
+                    var dev = precessionX ? -vec.Z : ewald - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (-vec.Z + ewald) * (-vec.Z + ewald));
+                    if (Math.Abs(dev) < difSim.ExcitationError)
+                    {
+                        var pt = difSim.ConvertReciprocalToDetector(vec);
+                        sb.Append(Invariant($"{n++},{g.Index.h},{g.Index.k},{g.Index.l},{g.d},"));
+                        sb.Append(Invariant($"{vec.X},{vec.Y},{vec.Z},{1 / g.d},{dev},"));
+                        sb.Append(Invariant($"{g.RawIntensity},{g.RelativeIntensity},{pt.X},{pt.Y}\n"));
+                    }
+                }
+                return sb.ToString();
             }
-            return "";
+            //return ""; // 260723Cl 旧: else 分岐が未実装だったときの到達コード
         }
 
     }
