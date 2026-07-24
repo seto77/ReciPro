@@ -98,6 +98,7 @@ plugins:
             20. Macro: 20. マクロ
             20.1. Built-in functions: 20.1. 組み込み関数一覧
             20.2. Examples: 20.2. マクロの使用例
+            20.3. External control: 20.3. 外部制御 (CLI・Named Pipe)
             21. Keyboard & mouse shortcuts: 21. キーボード・マウスショートカット
             Appendix: 付録
             How to use (videos): How to use（動画）
@@ -148,6 +149,7 @@ plugins:
             20. Macro: 20. Makro
             20.1. Built-in functions: 20.1. Integrierte Funktionen
             20.2. Examples: 20.2. Beispiele
+            20.3. External control: 20.3. Externe Steuerung (CLI・Named Pipe)
             21. Keyboard & mouse shortcuts: 21. Tastatur- & Maus-Kurzbefehle
             Appendix: Anhang
             How to use (videos): Bedienung (Videos)
@@ -201,6 +203,7 @@ plugins:
             20. Macro: 20. Macro
             20.1. Built-in functions: 20.1. Fonctions intégrées
             20.2. Examples: 20.2. Exemples
+            20.3. External control: 20.3. Contrôle externe (CLI・named pipe)
             21. Keyboard & mouse shortcuts: 21. Raccourcis clavier et souris
             Appendix: Annexe
             How to use (videos): Utilisation (vidéos)
@@ -253,6 +256,7 @@ plugins:
             20. Macro: 20. Macro
             20.1. Built-in functions: 20.1. Funciones integradas
             20.2. Examples: 20.2. Ejemplos
+            20.3. External control: 20.3. Control externo (CLI・named pipe)
             21. Keyboard & mouse shortcuts: 21. Atajos de teclado y ratón
             Appendix: Apéndice
             How to use (videos): Uso (vídeos)
@@ -305,6 +309,7 @@ plugins:
             20. Macro: 20. Macro
             20.1. Built-in functions: 20.1. Funzioni integrate
             20.2. Examples: 20.2. Esempi
+            20.3. External control: 20.3. Controllo esterno (CLI・named pipe)
             21. Keyboard & mouse shortcuts: 21. Scorciatoie da tastiera e mouse
             Appendix: Appendice
             How to use (videos): Utilizzo (video)
@@ -357,6 +362,7 @@ plugins:
             20. Macro: 20. Макрос
             20.1. Built-in functions: 20.1. Встроенные функции
             20.2. Examples: 20.2. Примеры
+            20.3. External control: 20.3. Внешнее управление (CLI・именованный канал)
             21. Keyboard & mouse shortcuts: 21. Сочетания клавиш и мыши
             Appendix: Приложение
             How to use (videos): Использование (видео)
@@ -409,6 +415,7 @@ plugins:
             20. Macro: 20. 宏
             20.1. Built-in functions: 20.1. 内置函数
             20.2. Examples: 20.2. 示例
+            20.3. External control: 20.3. 外部控制（命令行・命名管道）
             21. Keyboard & mouse shortcuts: 21. 键盘和鼠标快捷键
             Appendix: 附录
             How to use (videos): 使用方法（视频）
@@ -460,6 +467,7 @@ plugins:
             20. Macro: 20. 巨集
             20.1. Built-in functions: 20.1. 內建函式
             20.2. Examples: 20.2. 範例
+            20.3. External control: 20.3. 外部控制（命令列・具名管道）
             21. Keyboard & mouse shortcuts: 21. 鍵盤與滑鼠快速鍵
             Appendix: 附錄
             How to use (videos): 使用方法（影片）
@@ -511,6 +519,7 @@ plugins:
             20. Macro: 20. 매크로
             20.1. Built-in functions: 20.1. 내장 함수
             20.2. Examples: 20.2. 예제
+            20.3. External control: 20.3. 외부 제어 (CLI・명명된 파이프)
             21. Keyboard & mouse shortcuts: 21. 키보드 및 마우스 단축키
             Appendix: 부록
             How to use (videos): 사용법 (동영상)
@@ -562,6 +571,7 @@ plugins:
             20. Macro: 20. Macro
             20.1. Built-in functions: 20.1. Funções integradas
             20.2. Examples: 20.2. Exemplos
+            20.3. External control: 20.3. Controle externo (CLI・named pipe)
             21. Keyboard & mouse shortcuts: 21. Atalhos de teclado e mouse
             Appendix: Apêndice
             How to use (videos): Como usar (vídeos)
@@ -693,6 +703,7 @@ nav:
       - 20-macro/index.md
       - 20.1. Built-in functions: 20-macro/1-built-in-functions.md
       - 20.2. Examples: 20-macro/2-examples.md
+      - 20.3. External control: 20-macro/3-external-control.md
   - 21. Keyboard & mouse shortcuts: 21-shortcuts.md
   - Appendix:
       - How to use (videos): appendix/a0-how-to-use.md

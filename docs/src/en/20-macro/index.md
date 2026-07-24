@@ -112,7 +112,7 @@ These basics are pre-registered in the autocomplete popup, so you can discover t
 
 ### NOT usable
 
-- **`print()`** : there is no console window; output goes nowhere. Use **Step by step** and look at the debug panel to inspect values.
+- **`print()`** : there is no console window; output goes nowhere. Use **Step by step** and look at the debug panel to inspect values. (Exception: when the macro is run from outside — command-line `/o` or the [named pipe](3-external-control.md) — `print()` output *is* captured and returned.)
 - **`input()`** : no stdin.
 - **File I/O** (`open`, `with open`) : not intended for macros. Use `ReciPro.File.*` helpers instead.
 - **C-extension packages**: `numpy`, `scipy`, `pandas`, `matplotlib` — not compatible with IronPython.
@@ -159,3 +159,4 @@ The editor automatically selects the line reported in the traceback (the innermo
 
 - [20.1. Built-in functions](1-built-in-functions.md)
 - [20.2. Examples](2-examples.md)
+- [20.3. External control (command line & named pipe)](3-external-control.md)
