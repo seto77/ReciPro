@@ -186,6 +186,8 @@
             tabControl2 = new System.Windows.Forms.TabControl();
             tabPageOutputParameter = new System.Windows.Forms.TabPage();
             tabPageExperimentalImage = new System.Windows.Forms.TabPage();
+            radioButtonIndexingRadon = new System.Windows.Forms.RadioButton(); //260724Cl 追加: 方位探索エンジン切替 (作者指示)
+            radioButtonIndexingDictionary = new System.Windows.Forms.RadioButton(); //260724Cl 追加
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxResolution = new NumericBox();
             sizeControl = new SizeControl();
@@ -1608,13 +1610,29 @@
             tabPageExperimentalImage.Controls.Add(dataGridViewEbsdCandidates);
             tabPageExperimentalImage.Controls.Add(flowLayoutPanelExpOpacity);
             tabPageExperimentalImage.Controls.Add(flowLayoutPanelExperimentalImage);
+            tabPageExperimentalImage.Controls.Add(radioButtonIndexingRadon); //260724Cl 追加
+            tabPageExperimentalImage.Controls.Add(radioButtonIndexingDictionary); //260724Cl 追加
             tabPageExperimentalImage.Controls.Add(buttonCalibrateGeometry);
             tabPageExperimentalImage.Controls.Add(buttonFindOrientation);
             resources.ApplyResources(tabPageExperimentalImage, "tabPageExperimentalImage");
             tabPageExperimentalImage.Name = "tabPageExperimentalImage";
-            // 
+            //
+            // radioButtonIndexingRadon
+            //
+            resources.ApplyResources(radioButtonIndexingRadon, "radioButtonIndexingRadon");
+            radioButtonIndexingRadon.Checked = true;
+            radioButtonIndexingRadon.Name = "radioButtonIndexingRadon";
+            radioButtonIndexingRadon.TabStop = true;
+            radioButtonIndexingRadon.UseVisualStyleBackColor = true;
+            //
+            // radioButtonIndexingDictionary
+            //
+            resources.ApplyResources(radioButtonIndexingDictionary, "radioButtonIndexingDictionary");
+            radioButtonIndexingDictionary.Name = "radioButtonIndexingDictionary";
+            radioButtonIndexingDictionary.UseVisualStyleBackColor = true;
+            //
             // flowLayoutPanel1
-            // 
+            //
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Controls.Add(buttonCopyImage);
             flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
@@ -1941,6 +1959,8 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPageOutputParameter;
         private System.Windows.Forms.TabPage tabPageExperimentalImage;
+        private System.Windows.Forms.RadioButton radioButtonIndexingRadon; //260724Cl 追加: 方位探索エンジン切替 (Radon template matching)
+        private System.Windows.Forms.RadioButton radioButtonIndexingDictionary; //260724Cl 追加: 同 (Dictionary indexing)
     }
 }
 

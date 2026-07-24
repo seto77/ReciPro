@@ -591,4 +591,10 @@ Lambert-Master-Pattern-Gitters (64–2048).</value>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>Hintergrundfarbe</value>
   </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon-Suche</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>Wörterbuchsuche</value>
+  </data>
 </root>

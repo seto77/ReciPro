@@ -4794,6 +4794,60 @@ detector center
   <data name="&gt;&gt;buttonCalibrateGeometry.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="radioButtonIndexingRadon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonIndexingRadon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 35</value>
+  </data>
+  <data name="radioButtonIndexingRadon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 19</value>
+  </data>
+  <data name="radioButtonIndexingRadon.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon search</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingRadon.Name" xml:space="preserve">
+    <value>radioButtonIndexingRadon</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingRadon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingRadon.Parent" xml:space="preserve">
+    <value>tabPageExperimentalImage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingRadon.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 35</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 19</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>Dictionary search</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingDictionary.Name" xml:space="preserve">
+    <value>radioButtonIndexingDictionary</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingDictionary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingDictionary.Parent" xml:space="preserve">
+    <value>tabPageExperimentalImage</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndexingDictionary.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="groupBoxSimulationParameters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>

@@ -586,4 +586,10 @@ EBSD 图案能量切片 (keV)；
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景色</value>
   </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon 搜索</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>字典搜索</value>
+  </data>
 </root>

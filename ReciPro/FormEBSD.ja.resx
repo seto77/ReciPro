@@ -818,4 +818,10 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon 探索</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>辞書探索</value>
+  </data>
 </root>

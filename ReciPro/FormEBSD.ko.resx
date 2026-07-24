@@ -591,4 +591,10 @@ Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>배경색</value>
   </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>라돈 탐색</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>사전 탐색</value>
+  </data>
 </root>

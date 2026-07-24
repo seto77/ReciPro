@@ -75,6 +75,13 @@ public partial class FormEBSD
             MessageBox.Show(this, "Load an experimental image first (drag && drop an image file).", "Find orientation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
+        //260724Cl 追加: Dictionary indexing (Primary) は MasterPattern 由来の辞書パターンと総当たり比較するため生成済みが必須
+        bool useDictionary = radioButtonIndexingDictionary.Checked;
+        if (useDictionary && MasterPattern == null)
+        {
+            MessageBox.Show(this, "Dictionary search requires the dynamical master pattern. Build it first, or use Radon search.", "Find orientation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
         if (!TryBeginIndexing()) return;
         toolStripStatusLabel2.Text = "Searching orientation candidates...";
         try
@@ -110,7 +117,17 @@ public partial class FormEBSD
             {
                 const double SatCap = 8, ZnccCoef = 0.5; //260724Cl: EbsdIndexCheck ハーネスの係数スイープで決定 (プラトー 0.4-1.0 の中央寄り)
                 var map = EbsdBandDetector.ComputeRadonMap(values, iw, ih);
-                var cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0);
+                //260724Cl 追加: 探索エンジン切替 (ラジオボタン、作者指示)。Dictionary = MasterPattern 辞書の総当たり ZNCC (Primary indexing)。
+                //候補には Radon z を後付けし、以降の複合ランク+ガード付きトップ精密化は両エンジン共通
+                List<EbsdOrientationCandidate> cands;
+                if (useDictionary)
+                {
+                    cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10);
+                    foreach (var c in cands)
+                        c.Score = EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, c.Rotation, SatCap);
+                }
+                else
+                    cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0);
                 if (refineByZncc && cands.Count > 0)
                 {
                     var projector = new EbsdPatternProjector(ctx.Geom, ctx.Rw, ctx.Rh);
@@ -165,7 +182,8 @@ public partial class FormEBSD
             orientationCandidates = candidates;
             FillCandidateGrid();
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
-            toolStripStatusLabel2.Text = $"Orientation search: {candidates.Count} candidates" + (refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)");
+            toolStripStatusLabel2.Text = $"Orientation search: {candidates.Count} candidates" +
+                (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
             toolStripStatusLabel3.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
         }
         catch (Exception ex)

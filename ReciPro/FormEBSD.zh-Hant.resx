@@ -578,4 +578,10 @@ Depth 欄。</value>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景色</value>
   </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon 搜尋</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>字典搜尋</value>
+  </data>
 </root>
