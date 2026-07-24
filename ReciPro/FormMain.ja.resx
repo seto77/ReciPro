@@ -438,6 +438,14 @@ v2</value>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Crystallography.Native.dll を無効化 (要再起動)</value>
   </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>外部からのマクロ命令を受け付ける (Named Pipe)</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.ToolTipText" xml:space="preserve">
+    <value>Named Pipe 'ReciPro.Macro.v1' で待ち受け、外部プログラムから送られた IronPython マクロを実行します。
+リクエスト: UTF-8 のマクロ文字列 + 終端 NUL。レスポンス: JSON {"output","error"} (EOF まで)。
+注意: 有効にすると、同一ユーザーの任意のプロセスが ReciPro 内でマクロを実行できます。</value>
+  </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>OpenGLによる全てのレンダリングを無効化 (要再起動)</value>
   </data>

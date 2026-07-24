@@ -3518,6 +3518,17 @@ Once downloaded, MKL is used automatically for large matrix calculations.</value
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Disable Crystallography.Native library (requires restart)</value>
   </data>
+  <data name="toolStripMenuItemMacroPipeListener.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 22</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Accept external macro commands (named pipe)</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.ToolTipText" xml:space="preserve">
+    <value>Listen on the named pipe 'ReciPro.Macro.v1' and execute IronPython macros sent by external programs.
+Request: UTF-8 macro text terminated by a NUL byte. Response: JSON {"output","error"} until EOF.
+Note: when enabled, any process of the same user can execute macro code in ReciPro.</value>
+  </data>
   <data name="disableOpneGLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 22</value>
   </data>
@@ -4362,6 +4373,12 @@ Once downloaded, MKL is used automatically for large matrix calculations.</value
     <value>toolStripMenuItemDisableNative</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemDisableNative.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Name" xml:space="preserve">
+    <value>toolStripMenuItemMacroPipeListener</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;disableOpneGLToolStripMenuItem.Name" xml:space="preserve">

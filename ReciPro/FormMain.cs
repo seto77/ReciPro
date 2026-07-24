@@ -130,6 +130,16 @@ public partial class FormMain : FormBase
         get => toolStripMenuItemDisableNative != null && toolStripMenuItemDisableNative.Checked;
         set => toolStripMenuItemDisableNative.Checked = value;
     }
+
+    // 260723Cl 追加: 外部マクロ命令の Named Pipe リスナー (MacroPipeListener.cs)。既定 OFF・レジストリ永続化
+    private MacroPipeListener macroPipeListener;
+    // Load 中の Registry(Read) による Checked 復元で CheckedChanged が発火しても開始しないためのガード (Load 末尾で許可)
+    private bool macroPipeListenerStartAllowed = false;
+    public bool MacroPipeListenerEnabled
+    {
+        get => toolStripMenuItemMacroPipeListener != null && toolStripMenuItemMacroPipeListener.Checked;
+        set => toolStripMenuItemMacroPipeListener.Checked = value;
+    }
     //260405Cl 追加
     //260711Cl 廃止 (作者仕様): 「Use MKL」トグル → 「Download MKL」化に伴い、チェック状態という概念自体を廃止
     //(DL 済み = 使う意思。provider は Program.cs の MathNetProviderManager.Initialize が一元管理)
@@ -532,17 +542,53 @@ public partial class FormMain : FormBase
         var args = Environment.GetCommandLineArgs();
         if (args.Contains("/m"))//mをつけるとマクロ
         {
-            //260717Cl 変更: First→FirstOrDefault (旧コードは .mcr 不在時に例外死。null 判定も到達不能だった)。StreamReader 未破棄も File.ReadAllText に置換
-            var filename = args.FirstOrDefault(a => a.EndsWith(".mcr") && File.Exists(a));
-            if (filename != null)
+            // 260723Cl 追加: /o <出力ファイル> 指定時は quiet 実行し、マクロの stdout/stderr とエラーをファイルへ書き出す。
+            //   例: ReciPro.exe /m macro.mcr /o result.txt /x   (バッチ利用は /x 併用。失敗時は ExitCode=1)
+            var oIndex = Array.IndexOf(args, "/o");
+            // 値なし /o (次要素が無い・既知スイッチ) は通常実行に化けさせず失敗終了 (codex 指摘)
+            var outFile = oIndex >= 0 && oIndex + 1 < args.Length && args[oIndex + 1] is not ("/m" or "/o" or "/x") ? args[oIndex + 1] : null;
+            if (oIndex >= 0 && outFile == null)
             {
-                Visible = true;
-                // 260428Cl Thread.Sleep + Application.DoEvents の二重待機を Refresh + 短時間 Sleep に整理
-                Refresh();
-                Thread.Sleep(100);
-                FormMacro.RunMacro(File.ReadAllText(filename, Encoding.UTF8));
+                Environment.ExitCode = 1;
+            }
+            else
+            {
+                //260717Cl 変更: First→FirstOrDefault (旧コードは .mcr 不在時に例外死。null 判定も到達不能だった)。StreamReader 未破棄も File.ReadAllText に置換
+                //var filename = args.FirstOrDefault(a => a.EndsWith(".mcr") && File.Exists(a)); // 260723Cl 旧: /o の値 (出力ファイル名) を .mcr と誤認し得るため検索から除外
+                var filename = args.Where((a, i) => outFile == null || i != oIndex + 1).FirstOrDefault(a => a.EndsWith(".mcr") && File.Exists(a));
+                if (filename != null)
+                {
+                    Visible = true;
+                    // 260428Cl Thread.Sleep + Application.DoEvents の二重待機を Refresh + 短時間 Sleep に整理
+                    Refresh();
+                    Thread.Sleep(100);
+                    if (outFile == null)
+                        FormMacro.RunMacro(File.ReadAllText(filename, Encoding.UTF8));
+                    else // 260723Cl 追加: quiet 実行 + 結果ファイル書き出し
+                    {
+                        string output = "", error = "";
+                        try { (output, error) = FormMacro.RunMacro(File.ReadAllText(filename, Encoding.UTF8), quiet: true); }
+                        catch (Exception ex) { error = ex.Message; } // マクロファイルの読み込み失敗など
+                        var text = error.Length == 0 ? output : $"{output}{(output.Length == 0 || output.EndsWith('\n') ? "" : Environment.NewLine)}{error}";
+                        try { File.WriteAllText(outFile, text); }
+                        catch { error = "failed to write the result file"; } // 書き込み失敗も失敗終了にする (codex 指摘)
+                        if (error.Length != 0) Environment.ExitCode = 1;
+                    }
+                }
+                else if (outFile != null) // 260723Cl 追加: quiet 実行なのに .mcr 未発見なら無音成功にせず失敗終了 (codex 指摘)
+                {
+                    try { File.WriteAllText(outFile, "Error: no existing .mcr file was found in the command line arguments."); } catch { }
+                    Environment.ExitCode = 1;
+                }
             }
         }
+
+        // 260723Cl 追加: 外部マクロ命令の Named Pipe リスナー (既定 OFF)。ここで初めて開始を許可する
+        // (Registry(Read) の Checked 復元時は FormMacro 未生成のため CheckedChanged では開始しない)。
+        // --capture/--diagnose の特殊起動では開始しない (GuiCapture が FormMain を生成するため)。/x のワンショット実行も不要。
+        macroPipeListenerStartAllowed = !args.Contains("--capture") && !args.Contains("--diagnose");
+        if (macroPipeListenerStartAllowed && !args.Contains("/x") && MacroPipeListenerEnabled)
+            (macroPipeListener = new MacroPipeListener(this)).Start();
 
         if (args.Contains("/x"))//xがあると、実行後に閉じる
             Close();
@@ -554,6 +600,9 @@ public partial class FormMain : FormBase
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = false;
+        // 260723Cl 追加: Named Pipe リスナー停止 (Join しないのでデッドロックしない)。
+        // 設定保存より前に止め、終了処理中に新しいリクエストを受け付けない (codex 指摘)
+        macroPipeListener?.Stop();
         // 260420Cl 追加: 最小化状態で閉じると Bounds = {-32000, -32000, ...} が保存されて次回起動時に画面外になる (#55 関連)。
         // 最小化/最大化時は WindowState を一旦 Normal に戻し、RestoreBounds 相当を保存する。
         if (WindowState != FormWindowState.Normal)
@@ -622,6 +671,9 @@ public partial class FormMain : FormBase
 
             //260613Cl 動力学計算でイオン散乱因子 (Peng IonFull) を使うかどうか
             rw(() => UseIonicScattering);
+
+            //260723Cl 外部マクロ命令の Named Pipe リスナーを有効にするか (commonDialog 生成後 = メニュー構築後のみ到達)
+            rw(() => MacroPipeListenerEnabled);
 
             //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
             rw(() => commonDialog.AutomaticallyClose);
@@ -1721,6 +1773,21 @@ public partial class FormMain : FormBase
     {
         Program.WriteDarkMode(DarkMode);
         Application.SetColorMode(DarkMode ? SystemColorMode.Dark : SystemColorMode.Classic);
+    }
+
+    // 260723Cl 追加: 外部マクロ命令の Named Pipe リスナーの ON/OFF (Load 中の Registry 復元では発火させず Load 末尾で一括開始)。
+    // リスナーは 1 インスタンス = 1 回の Start の使い捨て (新旧スレッドで stopping フラグを共有しないため, codex 指摘)
+    private void toolStripMenuItemMacroPipeListener_CheckedChanged(object sender, EventArgs e)
+    {
+        if (!macroPipeListenerStartAllowed) return;
+        if (MacroPipeListenerEnabled)
+            (macroPipeListener = new MacroPipeListener(this)).Start();
+        else
+        {
+            var old = macroPipeListener;
+            macroPipeListener = null;
+            old?.Stop();
+        }
     }
 
     #endregion FileMenu
