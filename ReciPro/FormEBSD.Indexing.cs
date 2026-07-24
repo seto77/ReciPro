@@ -254,15 +254,34 @@ public partial class FormEBSD
         return Matrix3D.Rot((wx / len, wy / len, wz / len), len) * r0;
     }
 
+    /// <summary>MC 重み合成パターンのキャッシュ (MasterPattern と mcDistribution の組が同一なら再利用、合成は ~100ms)。260724Cl 追加</summary>
+    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
+
     /// <summary>ZNCC 系操作に必要な状態を UI スレッド上でスナップショットする (ワーカーからコントロールを読まないため)。260724Cl 追加</summary>
     private (EbsdDetectorGeometry Geom, MasterPattern Mp, float[] Pos, float[] Neg, double[] Ref, int Rw, int Rh, Matrix3D R0) SnapshotMatchingContext()
     {
         var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
         var mp = MasterPattern;
-        int eIdx = Math.Clamp(trackBarOutputEnergy.Value, 0, mp.Energies.Length - 1);
-        int dIdx = Math.Clamp(trackBarOutputThickness.Value, 0, mp.Depths.Length - 1);
-        var pos = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, eIdx, dIdx);
-        var neg = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, eIdx, dIdx);
+        float[] pos, neg;
+        //260724Cl 改訂 (作者指示「エネルギー 1 点はまずい」): MC 分布があれば全ビン平均重みの微分合成パターン
+        //(実稼働の表示合成 model 2 のグローバル近似) を ZNCC 比較に使う。単一スライスより実測との相関が上がることをハーネスで実証。
+        //MC 未実行 (通常は MasterPattern build 前段で必ず走る) 時のみ旧来の trackBar 選択単一スライスへフォールバック
+        if (mcDistribution != null)
+        {
+            if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution))
+            {
+                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp);
+                composedPatternCache = (mp, mcDistribution, p, n);
+            }
+            (pos, neg) = (composedPatternCache.Pos, composedPatternCache.Neg);
+        }
+        else
+        {
+            int eIdx = Math.Clamp(trackBarOutputEnergy.Value, 0, mp.Energies.Length - 1);
+            int dIdx = Math.Clamp(trackBarOutputThickness.Value, 0, mp.Depths.Length - 1);
+            pos = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, eIdx, dIdx);
+            neg = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, eIdx, dIdx);
+        }
         var (refData, rw, rh) = EbsdPatternScorer.PrepareReference(expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, 160);
         return (geom, mp, pos, neg, refData, rw, rh, new Matrix3D(Crystal.RotationMatrix));
     }
