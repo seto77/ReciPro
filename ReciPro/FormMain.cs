@@ -728,6 +728,21 @@ public partial class FormMain : FormBase
             rw(() => FormSpotIDv2.ToleranceLength);
             #endregion
 
+            #region EBSD 260724Cl 追加: 検出器幾何 (中心座標・傾き・ピクセル定義)・試料傾斜・Flip L-R の永続化
+            if (FormEBSD != null)
+            {
+                rw(() => FormEBSD.DetectorTiltDegree);
+                rw(() => FormEBSD.DetectorX);
+                rw(() => FormEBSD.DetectorY);
+                rw(() => FormEBSD.DetectorZ);
+                rw(() => FormEBSD.DetectorPixelWidth);
+                rw(() => FormEBSD.DetectorPixelHeight);
+                rw(() => FormEBSD.DetectorPixelSize);
+                rw(() => FormEBSD.SampleTiltDegree);
+                rw(() => FormEBSD.FlipDetectorLeftRight);
+            }
+            #endregion
+
             if (mode == Reg.Mode.Read)
                 FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
             else
