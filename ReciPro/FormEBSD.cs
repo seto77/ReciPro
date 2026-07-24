@@ -3578,7 +3578,10 @@ public partial class FormEBSD : FormBase
 
     /// <summary>260718Cl 追加: 検出器を背面から見た左右反転の X 符号。未チェック(既定)=+1=現状(試料側から見た図)、チェック=-1=左右反転。
     /// パターン(BuildEbsdLookupTable の ax)・輝度(detNormX)・オーバーレイ(ゾーン軸 detX・菊池線 pt.X)の全 X 投影へ一貫して掛ける。</summary>
-    private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? -1.0 : 1.0;
+    //260724Cl 定義反転 (作者指示): 未チェック (既定) = 検出器から試料を見る視線ベクトル (自然なカメラ画像) = 旧チェック状態 (xm=−1) と等価。
+    //チェック時のみ左右反転 (試料側から見た向き、xm=+1)。⚠レジストリに旧定義のチェック状態が保存されている場合は意味が逆になるので一度チェックを外すこと。
+    //旧: private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? -1.0 : 1.0;
+    private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? 1.0 : -1.0;
 
     // private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) => DrawEBSD(); // 260718Cl 追加: パターン再描画→Paint 経由でオーバーレイも反転反映
     private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) { DrawEBSD(); DrawOverlays(); } // 260723Cl 変更: 画面配置が DrawOverlays へ移ったため、ラスター再計算後に表示も更新する

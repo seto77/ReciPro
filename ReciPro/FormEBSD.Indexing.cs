@@ -122,7 +122,9 @@ public partial class FormEBSD
                 List<EbsdOrientationCandidate> cands;
                 if (useDictionary)
                 {
-                    cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10);
+                    //260724Cl: thoroughCoarse=true (粗段も 96px 完全 robust 総当たり、~60s)。作者方針=辞書はパワープレーで精度優先。
+                    //ベンチ (正しい共通幾何+MC 合成): 3 画像とも辞書トップ=正解系 (14/20・13/15・11/14、5-2_22 では Radon 経路を上回る)
+                    cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true);
                     foreach (var c in cands)
                         c.Score = EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, c.Rotation, SatCap);
                 }
