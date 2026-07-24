@@ -97,40 +97,75 @@ public partial class FormEBSD
             int iw = expPbmp.Width, ih = expPbmp.Height;
             double wl = WaveLength; //nm (pair-angle シードの幅尤度用)
 
-            //動力学 MasterPattern が生成済みなら ZNCC 精密化を自動連結 (旧 Optimize orientation ボタン相当。260724Cl 作者指示)
+            //動力学 MasterPattern が生成済みなら ZNCC 複合ランクを自動連結 (旧 Optimize orientation ボタン相当。260724Cl 作者指示)
+            //260724Cl 改訂 (ベンチ+Codex 裁定、指示書 §2.1): 生 ZNCC の再ランクは有害 (シミュレーションの heavy-tailed 生強度が支配し正解方位が偽方位に負ける) と実測で判明。
+            //  ① Radon 採点は複合前提のとき証拠飽和 cap=8 (少数強リッジ支配の抑制。単独では 5-2_22 のトップが劣化するため複合とセットでのみ使う)
+            //  ② 実測・シミュレーション両方に RobustPreprocess を掛けた ZNCC を候補集合内で標準化し、combo = zRadon + 0.5·clip(z,±2) で再ランク
+            //  ③ ZNCC 精密化は複合トップ 1 件のみ ±0.25° (ガード: Radon z 低下 >0.2 で棄却)。ベンチ 3 画像で複合トップ全勝 (12/20, 5/15, 11/14)
             bool refineByZncc = MasterPattern != null;
             var ctx = refineByZncc ? SnapshotMatchingContext() : default;
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var candidates = await Task.Run(() =>
             {
+                const double SatCap = 8, ZnccCoef = 0.5; //260724Cl: EbsdIndexCheck ハーネスの係数スイープで決定 (プラトー 0.4-1.0 の中央寄り)
                 var map = EbsdBandDetector.ComputeRadonMap(values, iw, ih);
-                var cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10);
+                var cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0);
                 if (refineByZncc && cands.Count > 0)
                 {
                     var projector = new EbsdPatternProjector(ctx.Geom, ctx.Rw, ctx.Rh);
                     var buf = new double[ctx.Rw * ctx.Rh];
-                    foreach (var c in cands.Take(5)) //ZNCC は上位 5 候補のみ (1 候補 ~250 評価)
+                    var (refRobust, _, _) = EbsdPatternScorer.PrepareReferenceRobust(values, iw, ih, 160);
+                    foreach (var c in cands) //全候補の robust ZNCC (未精密化 — 精密化はどの方位でも ZNCC を伸ばすため判別には使えない)
                     {
-                        double Score(double[] v)
-                        {
-                            projector.Project(ctx.Mp, PerturbRotation(c.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
-                            return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
-                        }
-                        var (b1, _, _) = EbsdPatternScorer.NelderMead(Score, [0, 0, 0], [1.0, 1.0, 1.0], 150);
-                        var (b2, v2, _) = EbsdPatternScorer.NelderMead(Score, b1, [0.25, 0.25, 0.25], 100);
-                        c.Rotation = PerturbRotation(c.Rotation, b2[0], b2[1], b2[2]);
-                        c.Zncc = -v2;
+                        projector.Project(ctx.Mp, c.Rotation, ctx.Pos, ctx.Neg, buf);
+                        c.Zncc = EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
                     }
-                    cands = [.. cands.OrderByDescending(c => double.IsNaN(c.Zncc) ? double.MinValue : c.Zncc)];
+                    //候補集合内で ZNCC を標準化 → 複合ランク (Radon の幾何証拠を主、ZNCC は ±2σ クリップの補助)
+                    double mZ = cands.Average(c => c.Zncc);
+                    double sZ = Math.Sqrt(Math.Max(cands.Average(c => (c.Zncc - mZ) * (c.Zncc - mZ)), 1E-12));
+                    cands = [.. cands.OrderByDescending(c => c.Score + ZnccCoef * Math.Clamp((c.Zncc - mZ) / sZ, -2, 2))];
+                    //複合トップのみ ZNCC 精密化 (±0.25°)。Radon z が 0.2 超劣化する精密化は棄却 (誤収束ガード)
+                    var top = cands[0];
+                    double Score(double[] v)
+                    {
+                        projector.Project(ctx.Mp, PerturbRotation(top.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
+                        return -EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
+                    }
+                    var (b2, v2, _) = EbsdPatternScorer.NelderMead(Score, [0, 0, 0], [0.25, 0.25, 0.25], 120);
+                    var rFin = PerturbRotation(top.Rotation, b2[0], b2[1], b2[2]);
+                    if (EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, rFin, SatCap) >=
+                        EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, top.Rotation, SatCap) - 0.2)
+                    { top.Rotation = rFin; top.Zncc = -v2; }
                 }
+                #region お蔵入り //260724Cl: 旧 ZNCC 連結 (上位 5 候補を ±1° 精密化して ZNCC 降順に再ランク)。精密化 ZNCC は誤方位ほど伸び正解を落とすため廃止
+                //if (refineByZncc && cands.Count > 0)
+                //{
+                //    var projector = new EbsdPatternProjector(ctx.Geom, ctx.Rw, ctx.Rh);
+                //    var buf = new double[ctx.Rw * ctx.Rh];
+                //    foreach (var c in cands.Take(5)) //ZNCC は上位 5 候補のみ (1 候補 ~250 評価)
+                //    {
+                //        double Score(double[] v)
+                //        {
+                //            projector.Project(ctx.Mp, PerturbRotation(c.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
+                //            return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
+                //        }
+                //        var (b1, _, _) = EbsdPatternScorer.NelderMead(Score, [0, 0, 0], [1.0, 1.0, 1.0], 150);
+                //        var (b2, v2, _) = EbsdPatternScorer.NelderMead(Score, b1, [0.25, 0.25, 0.25], 100);
+                //        c.Rotation = PerturbRotation(c.Rotation, b2[0], b2[1], b2[2]);
+                //        c.Zncc = -v2;
+                //    }
+                //    cands = [.. cands.OrderByDescending(c => double.IsNaN(c.Zncc) ? double.MinValue : c.Zncc)];
+                //}
+                #endregion
                 return cands;
             });
             sw.Stop();
 
             orientationCandidates = candidates;
             FillCandidateGrid();
-            toolStripStatusLabel2.Text = $"Orientation search: {candidates.Count} candidates" + (refineByZncc ? " (ZNCC refined)" : "");
+            //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
+            toolStripStatusLabel2.Text = $"Orientation search: {candidates.Count} candidates" + (refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)");
             toolStripStatusLabel3.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
         }
         catch (Exception ex)
