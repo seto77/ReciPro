@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEM &amp;&amp; 試片條件</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>幾何</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>立體網中心為表面法線方向</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>BSE 分布</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>顯示網格</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>顯示圓</value>
+    <value>顯示邊框</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>文字設定</value>
@@ -443,11 +443,6 @@ Negative（反轉）灰階。</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>顯示目前繪製的 EBSD 圖樣切片的
 深度 (nm)（單一切片模式）。</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>以 mm 設定 EBSD 偵測器（螢光屏）的半徑。
-此設定決定所捕捉的立體角與模擬圖樣的
-螢幕解析度 (mm/像素)。</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>以度設定偵測器平面相對於電子束 (Z) 軸的傾斜

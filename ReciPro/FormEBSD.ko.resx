@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEM &amp;&amp; 시료 조건</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>기하구조</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>스테레오넷 중심은 표면 법선 방향입니다</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>BSE 분포</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>메시 표시</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>원 표시</value>
+    <value>테두리 표시</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>텍스트 설정</value>
@@ -450,11 +450,6 @@ Cold-Warm, Spectrum 또는 Fire)을 선택합니다.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>현재 렌더링 중인 EBSD 패턴 슬라이스의
 깊이(nm)를 표시합니다(단일 슬라이스 모드).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>EBSD 검출기(형광 스크린)의 반지름을 mm 단위로 설정합니다.
-이는 포착되는 입체각과 시뮬레이션된 패턴의
-스크린 분해능(mm/픽셀)을 결정합니다.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>검출기면의 기울기 각을 전자선(Z) 축에 대해 도 단위로

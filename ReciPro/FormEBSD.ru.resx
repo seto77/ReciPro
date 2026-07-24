@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>Условия РЭМ &amp;&amp; образца</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Геометрия</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Центр стереограммы — направление нормали к поверхности</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>Распределение ОРЭ</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Показать сетку</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Показать окружность</value>
+    <value>Показать рамку</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Настройки текста</value>
@@ -450,11 +450,6 @@ Simulate, чтобы получить распределение.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Показывает глубину (nm) слоя картины EBSD,
 отображаемого в данный момент (режим одного слоя).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Задаёт радиус детектора EBSD (люминофорного экрана)
-в mm. Это задаёт захватываемый телесный угол и
-разрешение экрана (mm/пиксель) смоделированной картины.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Задаёт угол наклона плоскости детектора в градусах

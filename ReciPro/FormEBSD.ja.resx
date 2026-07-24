@@ -223,7 +223,7 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>検出器の輪郭</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>SEM-EBSD設定</value>
   </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
@@ -232,17 +232,17 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEMのセッティング</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>BSE分布</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
+  <data name="tabPageOverlays.Text" xml:space="preserve">
     <value>補助図形</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>メッシュを表示</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>円を表示</value>
+    <value>外枠を表示</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>文字設定</value>
@@ -476,10 +476,6 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>現在レンダリングしているEBSDパターンの深さ
 スライス(nm)を表示します(単一スライス表示時)。</value>
   </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>EBSD検出器(蛍光スクリーン)の半径をmm単位で設定しま
-す。捕捉する立体角と像の分解能(mm/画素)が決まります。</value>
-  </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>検出器面の傾き角を度単位で設定します(電子線=Z軸に対す
 る傾き)。カメラ長や菊池バンドの投影形状に影響します。</value>
@@ -603,6 +599,24 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>正方Lambertマスターパターングリッドの
 分解能(1辺あたりのピクセル数、64～2048)。</value>
   </data>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>検出器の傾き</value>
+  </data>
+  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
+    <value>深さ</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>エネルギー</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
+    <value>深さ</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
+    <value>エネルギー</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
+    <value>開発: PCHIP圧縮</value>
+  </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -670,10 +684,10 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -682,7 +696,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -729,6 +743,9 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="checkBoxFlipDetectorLeftRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -742,18 +759,24 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="tabPageBseDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
@@ -761,6 +784,21 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -771,31 +809,13 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="sizeControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
   <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxDetRadius.HeaderText" xml:space="preserve">
-    <value>検出器の半径</value>
-  </data>
-  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
-    <value>検出器の傾き</value>
-  </data>
-  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
-    <value>深さ</value>
-  </data>
-  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
-    <value>エネルギー</value>
-  </data>
-  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
-    <value>深さ</value>
-  </data>
-  <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
-    <value>エネルギー</value>
-  </data>
-  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
-    <value>開発: PCHIP圧縮</value>
   </data>
 </root>

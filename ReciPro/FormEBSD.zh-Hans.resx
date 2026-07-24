@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEM &amp;&amp; 样品条件</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>几何</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>极射赤平投影中心为表面法向方向</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>BSE分布</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>显示网格</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>显示圆</value>
+    <value>显示边框</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>文字设置</value>
@@ -446,11 +446,6 @@ Negative（反相）灰度。</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>显示当前渲染的 EBSD 花样
 深度切片 (nm)（单切片模式）。</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>以 mm 为单位设置 EBSD 探测器（荧光屏）的半径。
-这决定了所捕获的立体角以及模拟图案的
-屏幕分辨率 (mm/像素)。</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>以度为单位设置探测器平面相对于电子束 (Z) 轴的

@@ -174,20 +174,20 @@ Kikuchi-Linien-Intensität anwenden</value>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEM &amp;&amp; Probenbedingungen</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Geometrie</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Das Stereonetz-Zentrum ist die Flächennormalenrichtung</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>BSE-Verteilung</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Raster anzeigen</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Kreis anzeigen</value>
+    <value>Rahmen anzeigen</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Texteinstellungen</value>
@@ -450,11 +450,6 @@ Schaltfläche 'View Along' zur Ausrichtung des 3D-Master-Patterns verwendet werd
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Zeigt die Tiefe (nm) der aktuell dargestellten
 EBSD-Musterscheibe an (Einzelscheiben-Modus).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Legt den Radius des EBSD-Detektors (Phosphorschirm)
-in mm fest. Dies bestimmt den erfassten Raumwinkel und die
-Schirmauflösung (mm/Pixel) des simulierten Musters.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Legt den Neigungswinkel der Detektorebene in Grad

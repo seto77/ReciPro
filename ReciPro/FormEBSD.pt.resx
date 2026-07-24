@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>Condições do SEM &amp;&amp; da amostra</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Geometria</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>O centro do estereograma é a direção normal à superfície</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>Distribuição BSE</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Mostrar malha</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Mostrar círculo</value>
+    <value>Mostrar contorno</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Configurações de texto</value>
@@ -447,11 +447,6 @@ botão 'View Along' para orientar o master pattern 3D.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra a profundidade (nm) da fatia do padrão
 EBSD atualmente renderizada (modo de fatia única).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Define o raio do detector EBSD (tela de fósforo)
-em mm. Isso define o ângulo sólido capturado e a
-resolução de tela (mm/pixel) do padrão simulado.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Define o ângulo de inclinação do plano do detector em graus

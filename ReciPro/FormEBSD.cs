@@ -13,6 +13,7 @@ using M4 = OpenTK.Mathematics.Matrix4d;
 using C4 = OpenTK.Mathematics.Color4;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging; // 260724Cl 追加: 実測 EBSD 画像の透明度合成 (ImageAttributes/ColorMatrix) 用
 using System.Text;
 using System.Threading.Tasks;
 using ZLinq;
@@ -47,7 +48,7 @@ public partial class FormEBSD : FormBase
     #endregion
 
     #region フィールド、プロパティ
-    
+
 
     /// <summary>
     /// 
@@ -90,9 +91,33 @@ public partial class FormEBSD : FormBase
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
 
     public double DetTilt => numericBoxDetTilt.RadianValue;
-    public double DetR => numericBoxDetRadius.Value;
+    // public double DetR => numericBoxDetRadius.Value; // 260723Cl 廃止: 円形検出器 (半径 mm) → 矩形検出器 (Width/Height px × Resolution mm/px) へ移行
+    /// <summary>検出器の横ピクセル数。260723Cl 追加</summary>
+    public int DetPixelWidth => Math.Max(1, numericBoxDetWidth.ValueInteger);
+    /// <summary>検出器の縦ピクセル数。260723Cl 追加</summary>
+    public int DetPixelHeight => Math.Max(1, numericBoxDetHeight.ValueInteger);
+    /// <summary>検出器のピクセルサイズ (mm/px)。260723Cl 追加</summary>
+    public double DetPixelSize => Math.Max(1E-6, numericBoxDetResolution.Value);
+    /// <summary>検出器の物理半幅 (mm)。260723Cl 追加</summary>
+    public double DetHalfWidth => DetPixelWidth * DetPixelSize * 0.5;
+    /// <summary>検出器の物理半高 (mm)。260723Cl 追加</summary>
+    public double DetHalfHeight => DetPixelHeight * DetPixelSize * 0.5;
+    /// <summary>検出器中心の X 座標 (mm)。260723Cl 追加</summary>
+    public double DetX => numericBoxXofDet.Value;
     public double DetY => numericBoxYofDet.Value;
     public double DetZ => numericBoxZofDet.Value;
+
+    #region レジストリ保存用プロパティ (FormMain.Registry の rw() から get/set される) 260724Cl 追加
+    public double DetectorTiltDegree { get => numericBoxDetTilt.Value; set => numericBoxDetTilt.Value = value; }
+    public double DetectorX { get => numericBoxXofDet.Value; set => numericBoxXofDet.Value = value; }
+    public double DetectorY { get => numericBoxYofDet.Value; set => numericBoxYofDet.Value = value; }
+    public double DetectorZ { get => numericBoxZofDet.Value; set => numericBoxZofDet.Value = value; }
+    public int DetectorPixelWidth { get => numericBoxDetWidth.ValueInteger; set => numericBoxDetWidth.Value = value; }
+    public int DetectorPixelHeight { get => numericBoxDetHeight.ValueInteger; set => numericBoxDetHeight.Value = value; }
+    public double DetectorPixelSize { get => numericBoxDetResolution.Value; set => numericBoxDetResolution.Value = value; }
+    public double SampleTiltDegree { get => numericBoxSampleTilt.Value; set => numericBoxSampleTilt.Value = value; }
+    public bool FlipDetectorLeftRight { get => checkBoxFlipDetectorLeftRight.Checked; set => checkBoxFlipDetectorLeftRight.Checked = value; }
+    #endregion
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
 
@@ -108,26 +133,53 @@ public partial class FormEBSD : FormBase
     {
         get
         {
-            //垂線の足の実空間座標座標
+            // 260723Cl 変更: 検出器中心の X オフセット (DetX) 対応のため、YZ 平面の 2D 同次変換 + ±len 分岐を 3D ベクトル式へ書き換え。
+            // 検出器中心 C=(DetX,-DetY,-DetZ)、法線 n=(0,sinΘd,-cosΘd)、面内基底 ex=(1,0,0), ey=n×ex として
+            // 垂線の足 F=(n・C)n から Foot=((F-C)・ex, (F-C)・ey)=(-DetX, -(DetY cosΘd + DetZ sinΘd))。通常配置で旧実装と等価。
+            // 注: ここでの ey=n×ex=(0,-cosΘd,-sinΘd) は「表示の下向き Y」基底。DrawGeometry/CalcStatistics の f1 基底
+            // eyGeometry=RotX(-Θd)・(0,1,0)=(0,cosΘd,sinΘd) はその逆向き (同一面内)。セル式の Y 符号はこの差を吸収済み (Codex 検証済)。
             var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
-            var f = new V3(-CameraLength2 * sinDetTilt, CameraLength2 * cosDetTilt, 1);
-            //検出器の中心座標
-            var c = new V3(DetY, DetZ, 1);
+            return new PointD(-DetX, -(DetY * cosDetTilt + DetZ * sinDetTilt));
+            #region 旧実装 (260723Cl 変更前)
+            ////垂線の足の実空間座標座標
+            //var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
+            //var f = new V3(-CameraLength2 * sinDetTilt, CameraLength2 * cosDetTilt, 1);
+            ////検出器の中心座標
+            //var c = new V3(DetY, DetZ, 1);
 
-            var len = (f - c).Length;
-            var (sin, cos) = Math.SinCos(-DetTilt);// double cos = Math.Cos(-DetTilt), sin = Math.Sin(-DetTilt);
+            //var len = (f - c).Length;
+            //var (sin, cos) = Math.SinCos(-DetTilt);// double cos = Math.Cos(-DetTilt), sin = Math.Sin(-DetTilt);
 
-            var rot = new M3(cos, -sin, DetY - DetY * cos + DetZ * sin,
-                             sin, cos, DetZ - DetY * sin - DetZ * cos,
-                             0, 0, 1);
+            //var rot = new M3(cos, -sin, DetY - DetY * cos + DetZ * sin,
+            //                 sin, cos, DetZ - DetY * sin - DetZ * cos,
+            //                 0, 0, 1);
 
-            return (rot * f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
+            //return (rot * f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
+            #endregion
         }
     }
 
     /// <summary>画面解像度 mm/pix</summary>
-    public double Resolution => 2.0 * numericBoxDetRadius.Value / graphicsBox.ClientRectangle.Width;
+    // public double Resolution => 2.0 * numericBoxDetRadius.Value / graphicsBox.ClientRectangle.Width; // 260723Cl 変更前: 画面幅=検出器直径の固定表示
+    public double Resolution => Math.Max(1E-6, numericBoxResolution.Value); // 260723Cl 変更: 表示解像度 (ズーム) は numericBoxResolution が保持
     public float ResolutionF => (float)Resolution;
+
+    #region 表示ビュー状態 (ズーム・パン) 260723Cl 追加
+    // 表示パターン座標系: 垂線の足 (PC) を原点とし、X は左右反転トグル (DetectorXMirror) 適用後の mm 座標。
+    // 菊池線・晶帯軸ラベルなどのオーバーレイと検出器矩形はこの座標系で描画され、SetProjection が画面へ変換する。
+
+    /// <summary>中ドラッグによる平行移動量 (表示パターン座標 mm)。260723Cl 追加</summary>
+    private PointD viewPan = new(0, 0);
+
+    /// <summary>マウス操作から numericBoxResolution / sizeControl を書き戻すときの再入抑止。260723Cl 追加</summary>
+    private bool skipViewEvent = false;
+
+    /// <summary>検出器中心の表示パターン座標 (mm)。X は表示反転 (xm) を適用。260723Cl 追加</summary>
+    private PointD DetectorCenterView => new(DetectorXMirror * DetX, -Foot.Y);
+
+    /// <summary>画面中心に表示する表示パターン座標 (mm)。既定 (viewPan=0) は検出器中心。260723Cl 追加</summary>
+    private PointD ViewCenter => new(DetectorCenterView.X + viewPan.X, DetectorCenterView.Y + viewPan.Y);
+    #endregion
 
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
@@ -143,6 +195,35 @@ public partial class FormEBSD : FormBase
     }
 
     private PseudoBitmap Pbmp = null;
+
+    /// <summary>EBSD パターン画像 (現在の視野全体をカバーするラスター)。DrawEBSDCore が更新し DrawOverlays が画面へ配置する。260723Cl 追加
+    /// 実体は Pbmp.GetImage が返す PseudoBitmap 内部キャッシュ (destBmp) への参照。所有権は Pbmp 側にあり、ここで Dispose してはいけない (260724Cl)。</summary>
+    private Bitmap patternBitmap = null;
+
+    /// <summary>patternBitmap が表す表示パターン座標 (mm) の矩形 (生成時の視野)。260724Cl 追加</summary>
+    private RectangleD patternBitmapRect;
+
+    #region 実測 EBSD 画像のフィールド (D&D で読み込み、検出器矩形へ重ねて表示) 260724Cl 追加。FormDiffractionSimulatorGeometry の OverlappedImage と同じ流儀
+
+    /// <summary>実測 EBSD 画像の生強度。所有権はこのフォーム (差し替え時に Dispose)。260724Cl 追加</summary>
+    private PseudoBitmap expPbmp = null;
+
+    /// <summary>expPbmp.GetImage() が返す表示用 Bitmap への借用参照 (内部キャッシュ destBmp。Dispose 禁止)。260724Cl 追加</summary>
+    private Bitmap expImage = null;
+
+    /// <summary>輝度 (Max intensity) トラックバー値→実強度の対数変換係数。260724Cl 追加 (FormDiffractionSimulatorGeometry と同形)</summary>
+    private double expTrackbarConstantA = 0, expTrackbarConstantB = 1;
+
+    /// <summary>expPbmp 差し替え時の不変条件 (旧インスタンス破棄と旧由来 expImage の無効化) を集約。260724Cl 追加</summary>
+    private void SetExpPseudoBitmap(PseudoBitmap value)
+    {
+        expPbmp?.Dispose();
+        expPbmp = value;
+        expImage = null;
+        InvalidateIndexingResults(); //260724Cl: 旧画像の方位候補を失効させる (FormEBSD.Indexing.cs)。バンド検出廃止で引数レス化
+    }
+
+    #endregion
 
     private double[] EnergyArray
     {
@@ -168,6 +249,11 @@ public partial class FormEBSD : FormBase
 
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
+
+        // 260724Cl 追加: 表示チェックが ON になったら対応する設定タブを前面に出す
+        checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControl2.SelectedTab = tabPageOutputParameter; };
+        checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControl2.SelectedTab = tabPageExperimentalImage; };
+        checkBoxShowOverlays.CheckedChanged += (_, _) => { if (checkBoxShowOverlays.Checked) tabControl1.SelectedTab = tabPageOverlays; };
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -603,6 +689,8 @@ public partial class FormEBSD : FormBase
     /// <summary>試料と電子線が交差する位置は常に(0,0,0)</summary>
     public void DrawGeometry(int i = -1, int j = -1)
     {
+        // 260724Cl 追加: FormMain 未代入 (初期化中) や glControlGeo 生成前 (FormEBSD_Load 前) は描画しない
+        if (FormMain == null || glControlGeo == null) return;
         #region OpenGLによる3D描画
         var glObjects = new List<GLObject>();
 
@@ -614,7 +702,14 @@ public partial class FormEBSD : FormBase
 
         //検出器の傾き
         var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
-        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0, sinDetTilt, -cosDetTilt), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
+        // var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0, sinDetTilt, -cosDetTilt), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180); // 260723Cl 変更前: 円盤 (半径 DetR)
+        // 260723Cl 変更: 矩形検出器 (halfW×halfH) を薄い直方体で描画。面内基底は縁描画と同じ RotX(-DetTilt) を使う
+        double halfW = DetHalfWidth, halfH = DetHalfHeight;
+        var detRotGeo = M3.CreateRotationX(-DetTilt);
+        var detCenter = new V3(DetX, -DetY, -DetZ);
+        V3 detEx = detRotGeo * new V3(1, 0, 0), detEy = detRotGeo * new V3(0, 1, 0), detEz = detRotGeo * new V3(0, 0, 1);
+        var detector = new Parallelepiped(detCenter - halfW * detEx - halfH * detEy - 0.25 * detEz,
+            2 * halfW * detEx, 2 * halfH * detEy, 0.5 * detEz, new Material(C4.GreenYellow, 0.7), DrawingMode.SurfacesAndEdges);
         glObjects.Add(detector);
 
         //XYZ軸
@@ -632,12 +727,12 @@ public partial class FormEBSD : FormBase
         glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple), glControlGeo));
 
         //照射点から検出器の縁への黄色線
-        glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
+        // 260723Cl 変更: 円周 30 点 → 矩形周 32 点 (RectPerimeter)
+        glObjects.AddRange(Enumerable.Range(0, 32).Select(e =>
         {
-            var θ = e / 15.0 * Math.PI;
-            var (sinθ, cosθ) = Math.SinCos(θ);
-            var p = M3.CreateRotationX(-DetTilt) * (DetR * new V3(-sinθ, cosθ, 0));
-            return new Lines([new V3(0, 0, 0), new(p.X, p.Y - DetY, p.Z - DetZ)], 1f, new Material(C4.Yellow, 0.7));
+            var (x, y) = RectPerimeter(e / 32.0 * 4);
+            var p = detRotGeo * new V3(halfW * x, halfH * y, 0);
+            return new Lines([new V3(0, 0, 0), new(p.X + DetX, p.Y - DetY, p.Z - DetZ)], 1f, new Material(C4.Yellow, 0.7));
         }));
 
         //電子線方向を示す矢印
@@ -666,13 +761,15 @@ public partial class FormEBSD : FormBase
 
         var lines = new List<(PointD[], double, Color)>();
         M3 samRot2 = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
+        // 260723Cl 変更: DetR*(x,y,0) → (halfW·x, halfH·y, 0) + 中心 X オフセット (DetX)。x,y は ±1 の検出器正規化座標
         var f1 = new Func<double, double, PointD>((x, y)
-            => Stereonet.ConvertVectorToSchmidt(samRot2 * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+            => Stereonet.ConvertVectorToSchmidt(samRot2 * (detRot * new V3(halfW * x, halfH * y, 0) + new V3(DetX, -DetY, -DetZ))));
 
         var step = 60;
         var range = Enumerable.Range(0, step + 1).Select(e => (double)e);
+        // 260723Cl 変更: 検出器輪郭を円周 → 矩形周へ
         lines.Add((
-            range.Select(n => 2.0 * Math.PI * n / step).Select(Θ => f1(Math.Sin(Θ), Math.Cos(Θ))).ToArray(),
+            range.Select(n => 4.0 * n / step).Select(t => { var (x, y) = RectPerimeter(t); return f1(x, y); }).ToArray(),
             2, Color.Yellow));
 
         int div = DetectorDivision;
@@ -699,6 +796,13 @@ public partial class FormEBSD : FormBase
         poleFigureControl.Draw();
         #endregion ステレオネット上に検出器の輪郭を描画 ここまで
 
+    }
+
+    /// <summary>矩形周 (±1 正規化) 上の点を周回パラメータ t∈[0,4) から返す。260723Cl 追加 (OpenGL 縁線・ステレオネット輪郭・CalcStatistics で共用)</summary>
+    private static (double x, double y) RectPerimeter(double t)
+    {
+        t = (t % 4 + 4) % 4;
+        return t < 1 ? (2 * t - 1, -1) : t < 2 ? (1, 2 * (t - 1) - 1) : t < 3 ? (1 - 2 * (t - 2), 1) : (-1, 1 - 2 * (t - 3));
     }
     #endregion
 
@@ -777,23 +881,67 @@ public partial class FormEBSD : FormBase
     /// <summary>FormMainから、結晶が変更されたときに呼び出される</summary>
     public void SetCrystal()
     {
+        // 260724Cl 追加: 結晶が変わると旧結晶の MasterPattern は無効なので、build 中なら停止したうえで破棄し、依存 UI も無効化する
+        if (masterPatternEbsd.IsBuilding)
+            masterPatternEbsd.CancelMasterPatternBuild();
+        masterPatternEbsd.ClearMasterPattern();
+        tabPageOutputParameter.Enabled = false;
+        checkBoxShowDyanmicalEBSD.Enabled = false;
+        UpdateMasterPatternSelectors();
+        DrawMasterPattern2D(); // 3D キャッシュのクリア (ResetMasterPattern3DCache) と placeholder 描画もここで行われる
+
         SetVector();
         ResetMasterPattern3DAxes(); // (260322Ch) 結晶変更時は MasterPattern3D axes inset も描き直す
         Draw();
     }
 
+    /// <summary>実測画像読み込みで DetWidth/DetHeight を連続設定する際の再入抑止。260724Cl 追加</summary>
+    private bool skipDetectorGeometryEvent = false;
+
     /// <summary>サンプルや検出器の幾何学条件が変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void numericBoxDetRadius_ValueChanged(object sender, EventArgs e)
+    // private void numericBoxDetRadius_ValueChanged(object sender, EventArgs e) // 260723Cl 旧名: numericBoxDetRadius 廃止に伴い改名
+    private void numericBoxDetectorGeometry_ValueChanged(object sender, EventArgs e)
     {
+        if (skipDetectorGeometryEvent) return; // 260724Cl 追加
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を再計算
-        DrawGeometry();
+        RebinMcDistribution(); // 260723Cl 追加: 検出器ジオメトリ変更を BSE 重み分布 (8×8 ビン) にも反映
+        InvalidateIndexingResults(); // 260724Cl 追加: 幾何が変わったら方位候補を失効させる (バンド検出廃止で引数レス化)
+        // DrawGeometry(); // 260723Cl 削除: 直後の Draw() 内でも DrawGeometry() が呼ばれ二重描画だった
         Draw();
+    }
+
+    /// <summary>試料傾斜が変更されたとき。260723Cl 追加
+    /// BSEs は MC 生成時の試料傾斜を織り込み済みのため再ビニングでは反映できない (厳密には MC 再実行が必要。既存挙動どおり stale のまま描画のみ更新)。</summary>
+    private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e)
+    {
+        UpdateEbsdTiltCoeffs();
+        Draw();
+    }
+
+    /// <summary>検出器ジオメトリ変更時に、保存済み BSE を新しい検出器へ再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加</summary>
+    private void RebinMcDistribution()
+    {
+        if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0)
+            return;
+        var bseRaw = BSEs.Select(e => (
+            monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
+                ? e.LastInelasticDepth
+                : e.Depth,
+                e.Vec, e.Energy)).ToArray();
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths);
     }
 
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
     {
+        // 260723Cl 追加: sizeControl を graphicsBox の現在サイズで初期化 (FormDiffractionSimulator と同方式)
+        if (Visible && graphicsBox.ClientSize.Width > 0 && graphicsBox.ClientSize.Height > 0)
+        {
+            skipViewEvent = true;
+            try { sizeControl.Value = graphicsBox.ClientSize; }
+            finally { skipViewEvent = false; }
+        }
         SetVector();
         ResetMasterPattern3DAxes(); // (260322Ch) 再表示時に MasterPattern3D axes inset も現在の結晶へ合わせる
         DrawGeometry();
@@ -870,7 +1018,8 @@ public partial class FormEBSD : FormBase
         // 260331Cl: 六方格子は 3 idx + 3 wt/pixel、正方格子は 1 idx + 2 wt/pixel
         var idxCount = isHexGrid ? totalPixels * 3 : totalPixels;
         var wtCount = isHexGrid ? totalPixels * 3 : totalPixels * 2;
-        if (ebsdLookupIdx.Length != idxCount)
+        // if (ebsdLookupIdx.Length != idxCount) // 260724Cl 変更前: idx 長のみで判定。六方⇔正方切替とラスター画素数変化の組合せで wt/posZ 長だけが不整合になり、unsafe ループが境界外へ書く恐れがあった
+        if (ebsdLookupIdx.Length != idxCount || ebsdLookupWt.Length != wtCount || ebsdLookupPosZ.Length != totalPixels) // 260724Cl
         {
             //ebsdLookupIdx = new int[idxCount]; // 260402Cl 変更前
             //ebsdLookupWt = new float[wtCount]; // 260402Cl 変更前
@@ -886,9 +1035,18 @@ public partial class FormEBSD : FormBase
         double xm = DetectorXMirror; // 260718Cl: 左右反転トグル (既定 +1)。X 方向のみ符号を掛ける
         double ax = -xm * Ri.E11, ay = -xm * Ri.E21, az = -xm * Ri.E31, bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
         double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy, bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
-        double cx = Ri.E12 * yConst + Ri.E13 * zConst, cy = Ri.E22 * yConst + Ri.E23 * zConst, cz = Ri.E32 * yConst + Ri.E33 * zConst;
+        // 260723Cl 変更: 検出器中心 X オフセット (DetX) を定数項に追加。視線ベクトルの X 成分は (ピクセル項) - DetX
+        // (既存の Y/Z 定数項 +yConst/+zConst が検出器中心 -C 由来なのと同じ規約。lab X は試料/検出器傾斜 (X 軸回転) で不変なので Ri の第 1 列に掛かる)
+        // double cx = Ri.E12 * yConst + Ri.E13 * zConst, cy = Ri.E22 * yConst + Ri.E23 * zConst, cz = Ri.E32 * yConst + Ri.E33 * zConst; // 260723Cl 変更前
+        double cx = Ri.E12 * yConst + Ri.E13 * zConst - Ri.E11 * DetX, cy = Ri.E22 * yConst + Ri.E23 * zConst - Ri.E21 * DetX, cz = Ri.E32 * yConst + Ri.E33 * zConst - Ri.E31 * DetX;
 
-        double scaleW = DetR / width, scaleH = DetR / height;
+        // double scaleW = DetR / width, scaleH = DetR / height; // 260723Cl 変更前: 画面幅=検出器直径 (2·DetR) 前提
+        // double scaleW = DetHalfWidth / width, scaleH = DetHalfHeight / height; // 260723Cl 変更: ラスター全域=検出器の物理サイズ // 260724Cl 変更前
+        // 260724Cl 変更: ラスター全域=現在の視野 (ClientSize×Resolution)。視野中心のずれ (viewPan) は定数項へ ax/bx 系数経由で加算
+        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height);
+        cx += ax * viewOffX + bx * viewOffY;
+        cy += ay * viewOffX + by * viewOffY;
+        cz += az * viewOffX + bz * viewOffY;
         double ax2 = ax * scaleW, ay2 = ay * scaleW, az2 = az * scaleW;
         double bx2 = bx * scaleH, by2 = by * scaleH, bz2 = bz * scaleH;
 
@@ -1062,6 +1220,8 @@ public partial class FormEBSD : FormBase
         double xm = DetectorXMirror; // 260718Cl: 左右反転。Parallel.For 前に UI スレッドで捕捉 (ワーカーから checkbox 直読は不可)
         int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
         int binCount = dist.BinCount, gs = ebsdLookupGridSize;
+        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加: ラスター=視野全体化に伴い、検出器正規化±1 は物理位置から算出
+        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
         Array.Clear(values);
@@ -1079,7 +1239,8 @@ public partial class FormEBSD : FormBase
             {
                 // この行のピクセルの検出器 Y 座標 (ビン補間用)
                 // 260325Cl: スクリーン h=0 → pyFactor≈-DetR (検出器底) → detNormY≈-1, 符号反転しない
-                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前: ラスター=検出器全面が前提
+                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: 物理位置/halfH (検出器外は端ビンへクランプ外挿)
                 double by = (1 - detNormY) * 0.5 * binCount - 0.5;
                 int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
                 double fy = Math.Clamp(by - bj0, 0, 1);
@@ -1089,7 +1250,8 @@ public partial class FormEBSD : FormBase
                     int i = h * width + w;
 
                     // 検出器 X 座標
-                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用) / 260718Cl: 左右反転 xm を掛ける
+                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用) / 260718Cl: 左右反転 xm を掛ける // 260724Cl 変更前
+                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl: 物理位置/halfW
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1253,6 +1415,8 @@ public partial class FormEBSD : FormBase
         int totalPixels = width * height;
         int binCount = dist.BinCount;
         var gs = ebsdLookupGridSize;
+        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加
+        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var planeScaleFactors = masterPatternGlobalNormalizationFactors;
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
@@ -1268,7 +1432,8 @@ public partial class FormEBSD : FormBase
 
             Parallel.For(0, height, h =>
             {
-                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前
+                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: ラスター=視野全体化 (物理位置/halfH)
                 double by = (1 - detNormY) * 0.5 * binCount - 0.5;
                 int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
                 double fy = Math.Clamp(by - bj0, 0, 1);
@@ -1276,7 +1441,8 @@ public partial class FormEBSD : FormBase
                 for (int w = 0; w < width; w++)
                 {
                     int i = h * width + w;
-                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm
+                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm // 260724Cl 変更前
+                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1414,6 +1580,8 @@ public partial class FormEBSD : FormBase
         int totalPixels = width * height;
         int binCount = dist.BinCount;
         var gs = ebsdLookupGridSize;
+        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加
+        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
         Array.Clear(values);
@@ -1428,7 +1596,8 @@ public partial class FormEBSD : FormBase
 
             Parallel.For(0, height, h =>
             {
-                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前
+                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: ラスター=視野全体化 (物理位置/halfH)
                 double by = (1 - detNormY) * 0.5 * binCount - 0.5;
                 int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
                 double fy = Math.Clamp(by - bj0, 0, 1);
@@ -1436,7 +1605,8 @@ public partial class FormEBSD : FormBase
                 for (int w = 0; w < width; w++)
                 {
                     int i = h * width + w;
-                    double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm
+                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm // 260724Cl 変更前
+                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl
                     double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
@@ -1499,11 +1669,40 @@ public partial class FormEBSD : FormBase
     }
     #endregion
 
+    /// <summary>EBSD パターン計算に使うラスターサイズ。260723Cl 追加
+    /// 260724Cl 変更: 検出器ピクセル数 → graphicsBox の画面ピクセル数 (パターンを検出器矩形でなく視野全体に描くため)。
+    /// メモリ・速度保護のため最大辺 MaxPatternRasterSize にアスペクト比を保ってクランプする。</summary>
+    private const int MaxPatternRasterSize = 2048;
+    private (int Width, int Height) PatternRasterSize
+    {
+        get
+        {
+            // double w = DetPixelWidth, h = DetPixelHeight; // 260724Cl 変更前: 検出器固有ピクセル
+            double w = graphicsBox.ClientSize.Width, h = graphicsBox.ClientSize.Height;
+            if (w <= 0 || h <= 0) return (0, 0);
+            var max = Math.Max(w, h);
+            if (max > MaxPatternRasterSize) { w *= MaxPatternRasterSize / max; h *= MaxPatternRasterSize / max; }
+            return (Math.Max(1, (int)Math.Round(w)), Math.Max(1, (int)Math.Round(h)));
+        }
+    }
+
+    /// <summary>ラスター (width×height) のピクセル中心を表示パターン座標 (mm、検出器中心基準) へ写す係数。260724Cl 追加
+    /// px_view = (2w+1-width)·ScaleW + OffX (= viewPan.X)。ラスターは現在の視野 (ClientSize×Resolution、中心 ViewCenter) 全体をカバーする。
+    /// BuildEbsdLookupTable と Weighted 3 モデルの detNorm 計算で共用。</summary>
+    private (double ScaleW, double ScaleH, double OffX, double OffY) GetRasterToViewParams(int width, int height)
+        => (graphicsBox.ClientSize.Width * Resolution / (2.0 * width),
+            graphicsBox.ClientSize.Height * Resolution / (2.0 * height),
+            viewPan.X, viewPan.Y);
+
     public void DrawEBSD()
     {
-        if (MasterPattern == null || skipEBSD_Rendering) return;
+        // 260724Cl 追加: 検出器面が試料原点を通る退化配置 (CameraLength2≈0) では視線方向が定義できない (ゼロ長ベクトル→NaN)。
+        // その場合は古いパターン画像も隠す (patternBitmap は Pbmp 借用参照なので Dispose しない)
+        if (MasterPattern == null || CameraLength2 <= 1E-6) { patternBitmap = null; return; }
+        if (skipEBSD_Rendering) return;
 
-        int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
+        // int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height; // 260723Cl 変更前: 画面ピクセル=計算ピクセル (固定表示)
+        var (width, height) = PatternRasterSize; // 260723Cl 変更: クランプ付きラスターで計算し、画面への配置は DrawOverlays が担う // 260724Cl: ラスター=現在の視野全体
         if (width <= 0 || height <= 0) return;
 
         //260717Cl 変更: 例外時に skipEBSD_Rendering が true のまま残り以後の描画が止まるため、本体を try/finally で保護
@@ -1593,7 +1792,7 @@ public partial class FormEBSD : FormBase
             Array.Fill(alpha, (byte)255);
             Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. alpha] };
             ebsdCachedSize = (width, height);
-            groupBoxOutput.Enabled = true;
+            // tabPageOutputParameter.Enabled = true; // 260724Cl 削除: 有効化は MasterPattern 構築完了時 (MasterPatternCompleted ハンドラ) に一本化
         }
         else
             Pbmp.SrcValuesGray = Pbmp.SrcValuesGrayOriginal = ebsdValues;
@@ -1624,15 +1823,30 @@ public partial class FormEBSD : FormBase
 
         #endregion
 
-        if (checkBoxShowDyanmicalEBSD.Checked && Pbmp != null)
-        {
-            var graphics = graphicsBox.Graphics;
-            graphics.SmoothingMode = SmoothingMode.None;
-            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-            graphics.PixelOffsetMode = PixelOffsetMode.Half;
+        // 260723Cl 変更: ここでは画面へ直接描かず、1:1 の検出器ビットマップを更新するだけにする。
+        // 画面への配置 (ズーム・パン・検出器矩形位置) は DrawOverlays 側の DrawImage が担う。
+        //if (checkBoxShowDyanmicalEBSD.Checked && Pbmp != null)
+        //{
+        //    var graphics = graphicsBox.Graphics;
+        //    graphics.SmoothingMode = SmoothingMode.None;
+        //    graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+        //    graphics.PixelOffsetMode = PixelOffsetMode.Half;
 
-            var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
-            graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
+        //    var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
+        //    graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
+        //}
+        if (Pbmp != null)
+        {
+            // patternBitmap?.Dispose(); // 260724Cl 削除: GetImage は Pbmp 内部キャッシュ (destBmp) と同一インスタンスを返すため、
+            //   ここで破棄すると次回 GetImage の destBmp.Width 参照が ArgumentException (Parameter is not valid) になる。
+            //   所有権は PseudoBitmap 側 (Pbmp.Dispose() が解放) にあり、呼び出し側は参照を保持するだけにする。
+            patternBitmap = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), new Size(width, height));
+            // 260724Cl 追加: このビットマップが表す表示パターン座標 (mm) の矩形 = 生成時の視野を記録。
+            // パン中は再計算せず旧視野の矩形へ貼ることで、画像がマウスに追従する (露出部は背景色、確定時に再計算)。
+            var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height);
+            patternBitmapRect = new RectangleD(
+                DetectorCenterView.X + viewOffX - scaleW * width, DetectorCenterView.Y + viewOffY - scaleH * height,
+                2 * scaleW * width, 2 * scaleH * height);
         }
 
         // toolStripStatusLabel1.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
@@ -1650,10 +1864,11 @@ public partial class FormEBSD : FormBase
             try
             {
                 //g.Transform = new Matrix(...); // (260611Ch) 旧: Matrix が未解放
+                // 260723Cl 変更: 平行移動項を Foot 固定 (+Foot/Res) から ViewCenter (ズーム・パン対応。既定は検出器中心=旧挙動) へ
                 using var transform = new Matrix( // (260611Ch)
                 (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
-                (float)(graphicsBox.ClientSize.Width / 2.0 + Foot.X / Resolution),
-                (float)(graphicsBox.ClientSize.Height / 2.0 + Foot.Y / Resolution));
+                (float)(graphicsBox.ClientSize.Width / 2.0 - ViewCenter.X / Resolution),
+                (float)(graphicsBox.ClientSize.Height / 2.0 - ViewCenter.Y / Resolution));
                 g.Transform = transform; // (260611Ch)
             }
             catch { return false; }
@@ -1667,6 +1882,8 @@ public partial class FormEBSD : FormBase
     /// <param name="graphics"></param>
     private void DrawOverlays(Graphics graphics = null, int i = -1, int j = -1)
     {
+        // 260724Cl 追加: InitializeComponent 中 (graphicsBox.Resize 発火時) は FormMain 未代入のため描画しない (Crystal => FormMain.Crystal が NRE)
+        if (FormMain == null) return;
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
             Invoke(new Action(() => DrawOverlays(graphics, i, j)), null);
@@ -1678,10 +1895,40 @@ public partial class FormEBSD : FormBase
             return;
 
         double xm = DetectorXMirror; // 260718Cl: 左右反転。オーバーレイ (ゾーン軸ラベル・菊池線) の X 投影へパターンと一貫して掛ける
+        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260723Cl 追加
+        double detCx = DetectorCenterView.X, detCy = DetectorCenterView.Y; // 260723Cl 追加: 検出器矩形の表示中心
 
+        // if (!checkBoxShowDyanmicalEBSD.Checked || Pbmp == null)
+        //     graphics.Clear(colorControlBackGround.Color); // 260723Cl 変更前: EBSD 画像が全画面を覆う前提でクリアを省略していた
+        // 260723Cl 変更: パン中などで画像が画面全体を覆うとは限らないため常に背景をクリアしてから配置する
+        graphics.Clear(colorControlBackGround.Color);
+        if (checkBoxShowDyanmicalEBSD.Checked && patternBitmap != null)
+        {
+            graphics.SmoothingMode = SmoothingMode.None;
+            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            graphics.PixelOffsetMode = PixelOffsetMode.Half;
+            // graphics.DrawImage(patternBitmap, new RectangleD(detCx - halfW, detCy - halfH, halfW * 2, halfH * 2)); // 260724Cl 変更前: 検出器矩形にのみ描画
+            graphics.DrawImage(patternBitmap, patternBitmapRect); // 260724Cl 変更: パターンは視野全体に描画 (矩形は生成時の視野)
+        }
 
-        if (!checkBoxShowDyanmicalEBSD.Checked || Pbmp == null)
-            graphics.Clear(colorControlBackGround.Color);
+        // 260724Cl 追加: 実測 EBSD 画像を検出器矩形へ重ねる (シミュレーションの上、菊池線等オーバーレイの下)。
+        // 左右反転 (xm) は実測画像のピクセル順には適用しない (実測が基準で、シミュレーション側を xm で合わせる思想)。
+        // Show overlays チェックとは独立した画像レイヤーとして扱う。
+        if (checkBoxShowExperimentalImage.Checked && expImage != null)
+        {
+            graphics.SmoothingMode = SmoothingMode.None;
+            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            graphics.PixelOffsetMode = PixelOffsetMode.Half;
+            using var ia = new ImageAttributes();
+            ia.SetColorMatrix(new ColorMatrix { Matrix33 = trackBarExpImageOpacity.Value / (float)trackBarExpImageOpacity.Maximum });
+            var dest = new PointF[] { // 左上、右上、左下の順 (mm 座標。Graphics.Transform が画面へ写す)
+                new((float)(detCx - halfW), (float)(detCy - halfH)),
+                new((float)(detCx + halfW), (float)(detCy - halfH)),
+                new((float)(detCx - halfW), (float)(detCy + halfH)) };
+            graphics.DrawImage(expImage, dest, new RectangleF(0, 0, expImage.Width, expImage.Height), GraphicsUnit.Pixel, ia);
+        }
+
+        //DrawDetectedBands(graphics); //260724Cl 廃止: バンド検出と中心線オーバーレイの撤廃 (作者指示。方位探索は Radon テンプレート照合へ一本化)
 
         if (checkBoxShowOverlays.Checked)
         {
@@ -1834,12 +2081,12 @@ public partial class FormEBSD : FormBase
             #region 検出器のアウトラインを表示
             if (checkBoxDrawDetectorOutline.Checked)
             {
-                //検出器を示す円を描画
+                //検出器を示す外枠を描画 // 260723Cl 変更: 円 (DrawArc) → 矩形 (halfW×halfH)
                 if (checkBoxShowCircle.Checked)
                 {
-                    //graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360); // (260611Ch) 旧: Pen が未解放
-                    using var circlePen = new Pen(Color.Yellow, ResolutionF * 2); // (260611Ch)
-                    graphics.DrawArc(circlePen, -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+                    using var outlinePen = new Pen(Color.Yellow, ResolutionF * 2); // (260611Ch)
+                    // graphics.DrawArc(outlinePen, -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360); // 260723Cl 変更前
+                    graphics.DrawRectangle(outlinePen, (float)(detCx - halfW), (float)(detCy - halfH), (float)(halfW * 2), (float)(halfH * 2));
                 }
                 //検出器の分割線
                 if (checkBoxShowMesh.Checked)
@@ -1848,17 +2095,17 @@ public partial class FormEBSD : FormBase
                     for (int n = 0; n < DetectorDivision; n++)
                     {
                         var x = 2.0 * n / DetectorDivision - 1;
-                        //graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y); // (260611Ch) 旧: ループ内 Pen が未解放
-                        graphics.DrawLine(meshPen, -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y); // (260611Ch)
-                        graphics.DrawLine(meshPen, x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y); // (260611Ch)
+                        // graphics.DrawLine(meshPen, -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y); // 260723Cl 変更前: DetR 正方形基準
+                        graphics.DrawLine(meshPen, detCx - halfW, detCy + x * halfH, detCx + halfW, detCy + x * halfH); // 260723Cl
+                        graphics.DrawLine(meshPen, detCx + x * halfW, detCy - halfH, detCx + x * halfW, detCy + halfH); // 260723Cl
                     }
                     if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
                     {
                         double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
 
-                        //graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision); // (260611Ch) 旧: SolidBrush が未解放
                         using var selectedCellBrush = new SolidBrush(Color.FromArgb(32, Color.Orange)); // (260611Ch)
-                        graphics.FillRectangle(selectedCellBrush, DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+                        // graphics.FillRectangle(selectedCellBrush, DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision); // 260723Cl 変更前
+                        graphics.FillRectangle(selectedCellBrush, detCx + halfW * x, detCy + halfH * y, 2 * halfW / DetectorDivision, 2 * halfH / DetectorDivision); // 260723Cl
                     }
                 }
             }
@@ -1902,8 +2149,11 @@ public partial class FormEBSD : FormBase
     /// <returns></returns>
     private PointD convertDetectorToScreen(in double x, in double y)
     {
-        double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
-        double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
+        // 260723Cl 変更: +Foot 固定 → ViewCenter (ズーム・パン対応。SetProjection の Transform と同一の変換)
+        // double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0; // 260723Cl 変更前
+        // double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0; // 260723Cl 変更前
+        double px = (x - ViewCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
+        double py = (y - ViewCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
         return new(px, py);
     }
 
@@ -1911,30 +2161,102 @@ public partial class FormEBSD : FormBase
     /// <param name="pt"></param>
     /// <returns></returns>
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
+
+    /// <summary>画面(Screen)上の点(pixel)を表示パターン座標 (mm) に変換 (convertDetectorToScreen の逆変換)。260723Cl 追加</summary>
+    private PointD convertScreenToDetector(in PointD pt)
+        => new((pt.X - graphicsBox.ClientSize.Width / 2.0) * Resolution + ViewCenter.X,
+               (pt.Y - graphicsBox.ClientSize.Height / 2.0) * Resolution + ViewCenter.Y);
     #endregion
 
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
+    // 260723Cl 追加: 右ドラッグ=拡大 (ラバーバンド)・右クリック=縮小・中ドラッグ=平行移動 (ScalablePictureBox と同じ操作系) のための状態
+    private bool mouseRangeMode = false;
+    private Point mouseRangeStart, mouseRangeEnd;
+    private Point panLastPoint;
+
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
-        if (e.Clicks == 2)
+        // 260723Cl 追加: 右ボタン=ズーム操作開始、中ボタン=平行移動開始
+        if (e.Button == MouseButtons.Right && e.Clicks == 1)
         {
-            var size = graphicsBox.ClientSize;
-            var i = e.Location.X * DetectorDivision / size.Width;
-            var j = e.Location.Y * DetectorDivision / size.Height;
+            mouseRangeMode = true;
+            mouseRangeStart = mouseRangeEnd = e.Location;
+            return;
+        }
+        if (e.Button == MouseButtons.Middle)
+        {
+            panLastPoint = e.Location;
+            return;
+        }
+
+        if (e.Button == MouseButtons.Left && e.Clicks == 2) // 260723Cl 変更: 左ボタンに限定 (旧: ボタン不問)
+        {
+            // 260723Cl 変更: ズーム・パン対応のため、画面ピクセル比ではなく画面→表示パターン座標→検出器矩形内セルの逆変換で求める
+            //var size = graphicsBox.ClientSize;
+            //var i = e.Location.X * DetectorDivision / size.Width;
+            //var j = e.Location.Y * DetectorDivision / size.Height;
+            var det = convertScreenToDetector(new PointD(e.X, e.Y));
+            double halfW = DetHalfWidth, halfH = DetHalfHeight;
+            var i = (int)Math.Floor((det.X - DetectorCenterView.X + halfW) / (2 * halfW) * DetectorDivision);
+            var j = (int)Math.Floor((det.Y - DetectorCenterView.Y + halfH) / (2 * halfH) * DetectorDivision);
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
             {
-                //
+                // 260723Cl 追加: i は表示セル。左右反転 (xm=-1) 時、物理検出器 (DrawGeometry/CalcStatistics の f1 座標) では X が逆順になる
+                var iPhysical = DetectorXMirror > 0 ? i : DetectorDivision - 1 - i;
                 DrawOverlays(null, i, j);
-                DrawGeometry(i, j);
-                CalcStatistics(i, j);
+                DrawGeometry(iPhysical, j);
+                CalcStatistics(iPhysical, j);
             }
         }
     }
 
     private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
     {
+        // 260723Cl 追加: 右ボタン確定 — 微小移動なら縮小、十分な矩形なら拡大 (閾値は ScalablePictureBox と同じ)
+        if (mouseRangeMode && e.Button == MouseButtons.Right)
+        {
+            mouseRangeMode = false;
+            mouseRangeEnd = e.Location;
+            int dx = Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), dy = Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y);
+            if (dx < 3 && dy < 3)
+                //縮小: クリック点を新しい画面中心にして表示解像度 (mm/px) を 2 倍
+                SetView(convertScreenToDetector(new PointD(e.X, e.Y)), Resolution * 2);
+            else if (dx > 10 && dy > 10)
+            {
+                //拡大: 選択矩形全体が画面に収まる解像度へ (縦横比は保持)
+                var center = convertScreenToDetector(new PointD((mouseRangeStart.X + mouseRangeEnd.X) / 2.0, (mouseRangeStart.Y + mouseRangeEnd.Y) / 2.0));
+                SetView(center, Resolution * Math.Max((double)dx / graphicsBox.ClientSize.Width, (double)dy / graphicsBox.ClientSize.Height));
+            }
+            else
+                graphicsBox.Invalidate(); //ラバーバンド消去のみ
+            return;
+        }
+        // if (e.Button == MouseButtons.Middle) return; // 260723Cl 追加: パンは MouseMove で描画済み // 260724Cl 変更前
+        if (e.Button == MouseButtons.Middle) { DrawEBSD(); DrawOverlays(); return; } // 260724Cl 変更: パン確定時に新しい視野でパターンを再計算 (ドラッグ中は旧視野の画像が追従)
+
         Draw();
+    }
+
+    /// <summary>表示中心 (表示パターン座標 mm) と表示解像度 (mm/px) を設定し、numericBoxResolution へ書き戻して再描画する。260723Cl 追加</summary>
+    private void SetView(PointD centerView, double resolution)
+    {
+        resolution = Math.Clamp(resolution, numericBoxResolution.Minimum > 0 ? numericBoxResolution.Minimum : 1E-4, numericBoxResolution.Maximum);
+        viewPan = new PointD(centerView.X - DetectorCenterView.X, centerView.Y - DetectorCenterView.Y);
+        skipViewEvent = true;
+        try { numericBoxResolution.Value = resolution; }
+        finally { skipViewEvent = false; }
+        // DrawOverlays(); // 260724Cl 変更前
+        DrawEBSD(); DrawOverlays(); // 260724Cl 変更: パターンは視野依存になったため、ズーム確定時に再計算する
+    }
+
+    /// <summary>ラバーバンド矩形 (右ドラッグのズーム範囲) を描画バッファより手前に描画する。260723Cl 追加</summary>
+    private void graphicsBox_PaintOverlay(object sender, PaintEventArgs e)
+    {
+        if (!mouseRangeMode) return;
+        using var pen = new Pen(Color.Pink) { DashStyle = DashStyle.Dash };
+        e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
+            Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
     }
 
     private PointD lastMousePos = new();
@@ -1942,10 +2264,29 @@ public partial class FormEBSD : FormBase
     private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
     {
         var mousePos = new PointD(e.X, e.Y);
-        
+
+        // 260723Cl 追加: 右ドラッグ中はラバーバンド更新のみ
+        if (mouseRangeMode)
+        {
+            mouseRangeEnd = e.Location;
+            graphicsBox.Invalidate();
+            lastMousePos = mousePos;
+            return;
+        }
+        // 260723Cl 追加: 中ドラッグで平行移動 (画像内容がマウスに追従)。パターン再計算は不要なので DrawOverlays のみ
+        if (e.Button == MouseButtons.Middle)
+        {
+            viewPan = new PointD(viewPan.X - (e.X - panLastPoint.X) * Resolution, viewPan.Y - (e.Y - panLastPoint.Y) * Resolution);
+            panLastPoint = e.Location;
+            DrawOverlays();
+            lastMousePos = mousePos;
+            return;
+        }
+
         //左ボタンが押されながらマウスが動いたとき
         if (e.Button == MouseButtons.Left)
         {
+            double xm = DetectorXMirror; // 260724Cl 追加: 左右反転表示 (Flip L-R) 時はドラッグ X 成分と回転向きも反転しないと操作が逆になる
             var center = new PointD(graphicsBox.ClientSize.Width / 2.0, graphicsBox.ClientSize.Height / 2.0);
             if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
                 < Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * 0.18)
@@ -1954,19 +2295,175 @@ public partial class FormEBSD : FormBase
                 {
                     var devPos = mousePos - lastMousePos;
                     var devAngle = Math.Atan((mousePos - lastMousePos).Length * Resolution / CameraLength2);
-                    FormMain.Rotate((-1 * devPos.Y, -Math.Cos(SmpTilt - DetTilt) * devPos.X, Math.Sin(SmpTilt - DetTilt) * devPos.X), devAngle);
+                    // FormMain.Rotate((-1 * devPos.Y, -Math.Cos(SmpTilt - DetTilt) * devPos.X, Math.Sin(SmpTilt - DetTilt) * devPos.X), devAngle); // 260724Cl 変更前: xm 未適用
+                    FormMain.Rotate((-1 * devPos.Y, -Math.Cos(SmpTilt - DetTilt) * xm * devPos.X, Math.Sin(SmpTilt - DetTilt) * xm * devPos.X), devAngle); // 260724Cl
                 }
             }
             else
-                FormMain.Rotate((0, Math.Sin(SmpTilt - DetTilt), Math.Cos(SmpTilt - DetTilt)), -Math.Atan2(lastMousePos.X - center.X, lastMousePos.Y - center.Y) + Math.Atan2(mousePos.X - center.X, mousePos.Y - center.Y));
+                // FormMain.Rotate((0, Math.Sin(SmpTilt - DetTilt), Math.Cos(SmpTilt - DetTilt)), -Math.Atan2(lastMousePos.X - center.X, lastMousePos.Y - center.Y) + Math.Atan2(mousePos.X - center.X, mousePos.Y - center.Y)); // 260724Cl 変更前: xm 未適用
+                FormMain.Rotate((0, Math.Sin(SmpTilt - DetTilt), Math.Cos(SmpTilt - DetTilt)), xm * (-Math.Atan2(lastMousePos.X - center.X, lastMousePos.Y - center.Y) + Math.Atan2(mousePos.X - center.X, mousePos.Y - center.Y))); // 260724Cl
             //Draw関数は、FormMain.Rotateを呼び出した後、FormMainから呼ばれる
         }
         lastMousePos = mousePos;
     }
 
-    private void graphicsBox_Resize(object sender, EventArgs e) => Draw();
+    // private void graphicsBox_Resize(object sender, EventArgs e) => Draw(); // 260723Cl 変更前 (Designer 未接続のデッドコードだった)
+    // 260723Cl 変更: sizeControl へ書き戻し、表示のみ更新 (パターンラスターは画面サイズ非依存になったため再計算不要)
+    private void graphicsBox_Resize(object sender, EventArgs e)
+    {
+        if (graphicsBox.ClientSize.Width <= 0 || graphicsBox.ClientSize.Height <= 0) return; //最小化時など
+        skipViewEvent = true;
+        try { sizeControl.Value = graphicsBox.ClientSize; }
+        finally { skipViewEvent = false; }
+        // DrawOverlays(); // 260724Cl 変更前
+        DrawEBSD(); DrawOverlays(); // 260724Cl 変更: ラスター=視野全体のためリサイズで再計算する
+    }
+
+    /// <summary>表示解像度 (ズーム) の numericBox が変更されたとき。260723Cl 追加
+    /// 260724Cl 変更: パターンは視野依存になったため再計算も行う。</summary>
+    private void numericBoxResolution_ValueChanged(object sender, EventArgs e)
+    {
+        if (skipViewEvent) return;
+        DrawEBSD(); DrawOverlays();
+    }
+
+    /// <summary>sizeControl → graphicsBox サイズ同期。Dock=Fill を維持したままフォームサイズを差分調整する (FormDiffractionSimulator と同方式)。260723Cl 追加</summary>
+    private void sizeControl_ValueChanged(object sender, EventArgs e)
+    {
+        if (skipViewEvent) return;
+        var dW = sizeControl.ImageWidth - graphicsBox.ClientSize.Width;
+        var dH = sizeControl.ImageHeight - graphicsBox.ClientSize.Height;
+        Size = new Size(Size.Width + dW, Size.Height + dH);
+    }
 
     #endregion graphicsBoxのイベント
+
+    #region 実測 EBSD 画像の読み込み (D&D) と表示調整 260724Cl 追加
+
+    /// <summary>D&amp;D で受け付ける実測画像の拡張子 (要件: tiff/png/bmp/jpg)。260724Cl 追加</summary>
+    private static bool IsExperimentalImageFile(string path)
+        => Path.GetExtension(path).ToLower() is ".tif" or ".tiff" or ".png" or ".bmp" or ".jpg" or ".jpeg";
+
+    private void FormEBSD_DragEnter(object sender, DragEventArgs e)
+        => e.Effect = e.Data?.GetData(DataFormats.FileDrop) is string[] files && files.Any(IsExperimentalImageFile)
+            ? DragDropEffects.Copy : DragDropEffects.None;
+
+    private void FormEBSD_DragDrop(object sender, DragEventArgs e)
+    {
+        // 複数ファイル時はドロップ順で最初の対応画像だけを読む
+        if (e.Data?.GetData(DataFormats.FileDrop) is string[] files && files.FirstOrDefault(IsExperimentalImageFile) is string file)
+            ReadExperimentalImage(file);
+    }
+
+    /// <summary>実測 EBSD 画像を読み込み、検出器のピクセル数 (DetWidth/DetHeight) を画像サイズに合わせ、検出器全体が収まる表示にして再描画する。260724Cl 追加
+    /// 読み込みは FormSpotIDV2/FormDiffractionSimulatorGeometry と同じ ImageIO.ReadImage (16bit tiff 対応)。DetResolution (mm/px) は変更しない。</summary>
+    public void ReadExperimentalImage(string fileName)
+    {
+        //読み込み〜新 PseudoBitmap の完全な準備までを try 内で行い、成功が確定してから旧画像と交換する (途中失敗では旧画像を保持)
+        PseudoBitmap loaded = null;
+        double min, max;
+        int width, height;
+        try
+        {
+            // ImageIO は Ring (グローバル) へ展開するため、成功直後に UI スレッド上でローカルへスナップショットする。
+            // 第 2 引数 false: tiff の正規化確認ダイアログを抑止し生強度のまま読む
+            if (!ImageIO.ReadImage(fileName, false) || Ring.Intensity == null || Ring.SrcImgSize.IsEmpty)
+            {
+                MessageBox.Show(this, $"Failed to read the image:\r\n{fileName}", "Experimental image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            width = Ring.SrcImgSize.Width; height = Ring.SrcImgSize.Height;
+            if (width <= 0 || height <= 0 || Ring.Intensity.LongLength != (long)width * height)
+            {
+                MessageBox.Show(this, $"Inconsistent image data:\r\n{fileName}", "Experimental image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (width > numericBoxDetWidth.Maximum || height > numericBoxDetHeight.Maximum)
+            {
+                MessageBox.Show(this, $"The image ({width} x {height}) exceeds the maximum detector size ({numericBoxDetWidth.Maximum:g0} px).", "Experimental image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var values = (double[])Ring.Intensity.Clone();
+
+            //有限画素だけからレンジを求め、非有限画素 (NaN/Inf) は min へ置換する
+            min = double.MaxValue; max = double.MinValue;
+            foreach (var v in values)
+                if (double.IsFinite(v)) { if (v < min) min = v; if (v > max) max = v; }
+            if (min > max) //全画素が非有限
+            {
+                MessageBox.Show(this, $"The image contains no finite pixel values:\r\n{fileName}", "Experimental image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (max <= min) max = min + 1; //単色画像で PseudoBitmap の表示レンジ分母が 0 になるのを防ぐ
+            for (int i = 0; i < values.Length; i++)
+                if (!double.IsFinite(values[i])) values[i] = min;
+
+            loaded = new PseudoBitmap(values, width);
+            loaded.SetScaleGray();
+            loaded.MinValue = min;
+            loaded.MaxValue = max;
+            if (loaded.GetImage() == null)
+                throw new InvalidOperationException("Failed to generate the display bitmap.");
+        }
+        catch (Exception ex)
+        {
+            loaded?.Dispose();
+            MessageBox.Show(this, $"Failed to read the image:\r\n{fileName}\r\n\r\n{ex.Message}", "Experimental image", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        SetExpPseudoBitmap(loaded);
+
+        //輝度 (Max intensity) トラックバーの対数変換係数を実レンジから設定 (FormDiffractionSimulatorGeometry と同形)
+        expTrackbarConstantA = min - 1;
+        expTrackbarConstantB = trackBarExpImageMaxInt.Maximum / Math.Log(max - expTrackbarConstantA);
+        skipViewEvent = true;
+        try
+        {
+            trackBarExpImageMaxInt.Value = trackBarExpImageMaxInt.Maximum; //標準表示 (=データ最大値) へリセット
+            trackBarExpImageMinInt.Value = trackBarExpImageMinInt.Minimum; //260724Cl: Min はデータ最小値 (v=0 → A+e⁰ = min)
+        }
+        finally { skipViewEvent = false; }
+        expImage = expPbmp.GetImage();
+
+        checkBoxShowExperimentalImage.Enabled = trackBarExpImageOpacity.Enabled = trackBarExpImageMaxInt.Enabled = trackBarExpImageMinInt.Enabled = true;
+        tabPageExperimentalImage.Enabled = true; // 260724Cl 追加: 実測画像が読み込まれたら Experimental image タブを解禁
+
+        //検出器ピクセル数を画像サイズへ反映 (DetResolution は不変)。ValueChanged の二重再計算は skip フラグで束ねる
+        skipDetectorGeometryEvent = true;
+        try
+        {
+            numericBoxDetWidth.Value = width;
+            numericBoxDetHeight.Value = height;
+        }
+        finally { skipDetectorGeometryEvent = false; }
+        RebinMcDistribution();
+        DrawGeometry();
+
+        //検出器全体 (=画像全体) が graphicsBox に収まるように表示をフィットし、パターンも再計算する
+        var fitResolution = Math.Max(DetHalfWidth * 2 / Math.Max(1, graphicsBox.ClientSize.Width), DetHalfHeight * 2 / Math.Max(1, graphicsBox.ClientSize.Height)) * 1.05;
+        SetView(DetectorCenterView, fitResolution);
+    }
+
+    /// <summary>実測画像の表示 ON/OFF。260724Cl 追加</summary>
+    private void checkBoxShowExperimentalImage_CheckedChanged(object sender, EventArgs e) => DrawOverlays();
+
+    /// <summary>実測画像の透明度。表示合成 (ColorMatrix) のみ変わるため再配置だけ行う。260724Cl 追加</summary>
+    private void trackBarExpImageOpacity_ValueChanged(object sender, EventArgs e) => DrawOverlays();
+
+    /// <summary>実測画像の輝度 (表示下限/上限強度)。対数スケールで Min/MaxValue を変え、表示用 Bitmap を作り直す。260724Cl 追加
+    /// (旧名 trackBarExpImageMaxInt_ValueChanged。Min トラックバー追加に伴い両対応の共通ハンドラへ改名。FormDiffractionSimulatorGeometry.trackBarMaxInt_ValueChanged と同形)</summary>
+    private void trackBarExpImageIntensity_ValueChanged(object sender, EventArgs e)
+    {
+        if (skipViewEvent || expPbmp == null) return;
+        expPbmp.MaxValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMaxInt.Value / expTrackbarConstantB);
+        expPbmp.MinValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMinInt.Value / expTrackbarConstantB);
+        expImage = expPbmp.GetImage();
+        DrawOverlays();
+    }
+
+    #endregion 実測 EBSD 画像
 
     #region 菊池線を初期化。最後にDraw()も呼び出す。
     /// <summary>菊池線を初期化。最後にDraw()も呼び出す。</summary>
@@ -2027,7 +2524,7 @@ public partial class FormEBSD : FormBase
 
         Parallel.For(0, loop,
             new ParallelOptions { CancellationToken = cancellationToken }, // 260406Cl 追加: キャンセル対応
-            // () => new List<(...)>(256), // 260603Cl 旧: thread-local は List のみ
+                                                                           // () => new List<(...)>(256), // 260603Cl 旧: thread-local は List のみ
             () => (list: new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256), pending: 0), // 260603Cl thread-local に進捗カウンタ pending を同梱
             (index, state, local) =>
             {
@@ -2115,8 +2612,9 @@ public partial class FormEBSD : FormBase
             #region 検出器の範囲内におさまるbseを抽出し、変数bseに格納
             PointD[] area = [];
             var areaStep = 120;
+            // 260723Cl 変更: DetR*(x,y,0) → (halfW·x, halfH·y, 0) + 中心 X オフセット (DetX)。DrawGeometry の f1 と同じ矩形検出器写像
             var f = new Func<double, double, PointD>((x, y)
-                => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+                => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * new V3(DetHalfWidth * x, DetHalfHeight * y, 0) + new V3(DetX, -DetY, -DetZ))));
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
             {
                 var div = DetectorDivision;
@@ -2130,7 +2628,8 @@ public partial class FormEBSD : FormBase
                 ];
             }
             else
-                area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
+                // area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))]; // 260723Cl 変更前: 円周
+                area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 4.0 * n / areaStep).Select(t => { var (x, y) = RectPerimeter(t); return f(x, y); })]; // 260723Cl 変更: 矩形周
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
@@ -2138,6 +2637,13 @@ public partial class FormEBSD : FormBase
             #endregion
 
             var count = bse2.Length;
+            // 260723Cl 追加: 矩形化・DetX 移動で検出器 (セル) 内の BSE が 0 件になり得る (旧: 0 除算と depths.Max() で例外)
+            if (count == 0)
+            {
+                graphControlEnergyProfile.ClearProfile();
+                graphControlDepthProfile.ClearProfile();
+                return;
+            }
             //エネルギー分布を描画 ここから
             //if(false)
             {
@@ -2190,7 +2696,7 @@ public partial class FormEBSD : FormBase
 
     #endregion
 
-   private bool skipProgressChangedEvent = false;
+    private bool skipProgressChangedEvent = false;
 
 
     #region 画像出力パラメータのイベント
@@ -2275,7 +2781,8 @@ public partial class FormEBSD : FormBase
         //    cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
         var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
         double rho = cry.Density;
-        double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorY = DetY, detectorZ = DetZ, detectorR = DetR, energyThreshold = EnergyThreshold;
+        // double energy = Voltage, ..., detectorR = DetR, ...; // 260723Cl 変更前: 円形検出器 (半径)
+        double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorX = DetX, detectorY = DetY, detectorZ = DetZ, detectorHalfW = DetHalfWidth, detectorHalfH = DetHalfHeight, energyThreshold = EnergyThreshold; // 260723Cl 変更: 矩形検出器 (半幅・半高) + 中心 X
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
         var monteCarloStopwatch = Stopwatch.StartNew();
@@ -2317,7 +2824,8 @@ public partial class FormEBSD : FormBase
                 progress.Report((95, "Fitting Monte Carlo distribution"));
                 var distribution = new EbsdMonteCarloDistribution(
                     bseRaw, energy,
-                    detectorTilt, detectorY, detectorZ, detectorR, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要)
+                    // detectorTilt, detectorY, detectorZ, detectorR, // 260723Cl 変更前: 円形検出器 (半径)
+                    detectorTilt, detectorX, detectorY, detectorZ, detectorHalfW, detectorHalfH, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要) // 260723Cl: 矩形検出器 (半幅・半高) + 中心 X
                     grid.energies, grid.depths);
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
@@ -2532,7 +3040,8 @@ public partial class FormEBSD : FormBase
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
         // 260325Cl 追加: MasterPattern 完了時に groupBoxOutput を有効化し、trackbar を同期する
-        groupBoxOutput.Enabled = true;
+        tabPageOutputParameter.Enabled = true;
+        checkBoxShowDyanmicalEBSD.Enabled = true; // 260724Cl 追加: dynamical EBSD の表示切替も MasterPattern 構築後に解禁
         trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
         trackBarOutputThickness.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
         trackBarOutputEnergy.Value = trackBarOutputThickness.Value = 0;
@@ -3063,14 +3572,16 @@ public partial class FormEBSD : FormBase
     private void checkBoxWithBSEDistribution_CheckedChanged(object sender, EventArgs e)
     {
         flowLayoutPanelOutputRange.Enabled = !checkBoxWithBSEDistribution.Checked;
-        DrawEBSD(); // (260327Ch) BSE 分布つき合成と単一スライス表示を即座に切り替える
+        // DrawEBSD(); // (260327Ch) BSE 分布つき合成と単一スライス表示を即座に切り替える
+        DrawEBSD(); DrawOverlays(); // 260723Cl 変更: DrawEBSD は patternBitmap 更新のみになったため、画面反映に DrawOverlays が必要
     }
 
     /// <summary>260718Cl 追加: 検出器を背面から見た左右反転の X 符号。未チェック(既定)=+1=現状(試料側から見た図)、チェック=-1=左右反転。
     /// パターン(BuildEbsdLookupTable の ax)・輝度(detNormX)・オーバーレイ(ゾーン軸 detX・菊池線 pt.X)の全 X 投影へ一貫して掛ける。</summary>
     private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? -1.0 : 1.0;
 
-    private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) => DrawEBSD(); // 260718Cl 追加: パターン再描画→Paint 経由でオーバーレイも反転反映
+    // private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) => DrawEBSD(); // 260718Cl 追加: パターン再描画→Paint 経由でオーバーレイも反転反映
+    private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) { DrawEBSD(); DrawOverlays(); } // 260723Cl 変更: 画面配置が DrawOverlays へ移ったため、ラスター再計算後に表示も更新する
 
     private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
     {
@@ -3082,6 +3593,11 @@ public partial class FormEBSD : FormBase
     {
         flowLayoutPanel1KikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
         Draw();
+    }
+
+    private void colorControlExcessLine_Load(object sender, EventArgs e)
+    {
+
     }
 }
 

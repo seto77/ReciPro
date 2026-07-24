@@ -174,20 +174,20 @@
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>Conditions SEM &amp;&amp; échantillon</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Géométrie</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Le centre du stéréonet est la direction de la normale à la surface</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>Distribution BSE</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Afficher le maillage</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Afficher le cercle</value>
+    <value>Afficher le cadre</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Paramètres de texte</value>
@@ -447,11 +447,6 @@ bouton « View Along » pour orienter le master pattern 3D.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Affiche la profondeur (nm) de la tranche du diagramme
 EBSD actuellement rendue (mode tranche unique).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Définit le rayon du détecteur EBSD (écran phosphorescent)
-en mm. Cela fixe l'angle solide capté et la
-résolution d'écran (mm/pixel) du diagramme simulé.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Définit l'angle d'inclinaison du plan du détecteur en degrés

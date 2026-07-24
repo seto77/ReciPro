@@ -174,20 +174,20 @@ all'intensità delle linee di Kikuchi</value>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>Condizioni SEM &amp;&amp; campione</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Geometria</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Il centro dello stereonet è la direzione normale alla superficie</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>Distribuzione BSE</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Mostra griglia</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Mostra cerchio</value>
+    <value>Mostra riquadro</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Impostazioni testo</value>
@@ -447,11 +447,6 @@ pulsante 'Vista lungo' per orientare il master pattern 3D.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Mostra la profondità (nm) della sezione del
 pattern EBSD attualmente renderizzata (modalità a sezione singola).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Imposta il raggio del rivelatore EBSD (schermo fosforescente)
-in mm. Questo imposta l'angolo solido catturato e la
-risoluzione dello schermo (mm/pixel) del pattern simulato.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Imposta l'angolo di inclinazione del piano del rivelatore in gradi

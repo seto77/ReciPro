@@ -171,20 +171,20 @@ a la intensidad de las líneas de Kikuchi</value>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>Condiciones de SEM &amp;&amp; muestra</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Geometría</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>El centro del estereograma es la dirección normal a la superficie</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
     <value>Distribución BSE</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Mostrar malla</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>Mostrar círculo</value>
+    <value>Mostrar marco</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Ajustes de texto</value>
@@ -447,11 +447,6 @@ botón 'View Along' para orientar el patrón maestro 3D.</value>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>Muestra la profundidad (nm) de la sección del
 patrón EBSD renderizada actualmente (modo de sección única).</value>
-  </data>
-  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
-    <value>Fija el radio del detector EBSD (pantalla de fósforo)
-en mm. Esto establece el ángulo sólido captado y la
-resolución de pantalla (mm/píxel) del patrón simulado.</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>Fija el ángulo de inclinación del plano del detector en grados
