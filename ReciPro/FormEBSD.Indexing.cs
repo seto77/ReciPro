@@ -46,6 +46,11 @@ public partial class FormEBSD
     /// 両者で同じ値を使う — 目的関数だけでなくステップも揃えないと、Find と Calibrate を繰り返したときに方位が微妙に往復する</summary>
     private const double OrientationPolishStepDeg = 0.1;
 
+    /// <summary>較正の最後に行う 6 変数 (PC_u, PC_v, lnDD, 方位 3) 同時最適化の評価上限。260726Cl 追加。
+    /// 6 次元なので交互法の 3 変数段 (120-150) より多く要る。1 評価ごとに projector を作り直す重い段だが、
+    /// 交互法では下れない斜めの谷をここで下る</summary>
+    private const int JointPolishMaxEval = 600;
+
     /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
     /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
     /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
@@ -469,7 +474,7 @@ public partial class FormEBSD
                 //260725Cl: 進捗は ZNCC 評価回数 / 予算 (最大ラウンド × (方位 150 + 幾何 120) + 仕上げ 100)。
                 //soft bounds に弾かれた評価は投影しないうえ、収束すれば途中で打ち切るので実際は予算より早く終わる → 完了時に 100% で締める
                 int evalsDone = 0;
-                const int EvalBudget = MaxCalibrationRounds * (150 + 120) + 100;
+                const int EvalBudget = MaxCalibrationRounds * (150 + 120) + 100 + JointPolishMaxEval; //260726Cl: 同時最適化ぶんを加算
 
                 EbsdDetectorGeometry MakeGeom(double u, double v, double ld)
                 {
@@ -520,7 +525,28 @@ public partial class FormEBSD
                     [0, 0, 0], [OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], 100);
                 r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
-                return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal, Rounds: roundsUsed, Converged: converged);
+                //260726Cl 追加 (作者要望): 6 変数 (PC_u, PC_v, lnDD, 方位 3) の同時最適化を仕上げに 1 段。
+                //交互法は変数を片方ずつしか動かせないので、相関のある谷では斜め方向に下れずジグザグして止まる。
+                //実機報告でも初期 DetX/Y/Z を変えると最終スコアが 20.0〜20.3 程度ばらついていた。
+                //開始点 (増分ゼロ) が初期シンプレックスの頂点 0 で、NelderMead は最良頂点を返すので、この段で悪化することはない。
+                //ソフト境界は交互法の②と同じ判定を増分に対して掛ける (この段の増分は小さいので通常は発火しない)。
+                var rBase = r0;
+                double fuBase = fu, fvBase = fv, lnDdBase = lnDd;
+                double ScoreJoint(double[] v)
+                {
+                    if (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
+                        return 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2]);
+                    return ScoreWith(new EbsdPatternProjector(MakeGeom(fuBase + v[0], fvBase + v[1], lnDdBase + v[2]), ctx.Rw, ctx.Rh),
+                        EbsdIndexer.PerturbRotation(rBase, v[3], v[4], v[5]));
+                }
+                //幾何側は交互法②の半分のステップ (もう最適点の近くにいる)、方位側は仕上げと同じ 0.1°
+                var (bj, vj, ej) = EbsdPatternScorer.NelderMead(ScoreJoint, [0, 0, 0, 0, 0, 0],
+                    [physW * 0.005, physH * 0.005, 0.01, OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], JointPolishMaxEval);
+                fu = fuBase + bj[0]; fv = fvBase + bj[1]; lnDd = lnDdBase + bj[2];
+                r0 = EbsdIndexer.PerturbRotation(rBase, bj[3], bj[4], bj[5]); evalTotal += ej;
+
+                return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vj, ZnccStart: startZncc, Evals: evalTotal, Rounds: roundsUsed, Converged: converged,
+                    JointGain: -vj - -vf); //260726Cl: 同時最適化が交互法の到達点からどれだけ伸ばしたか
             }, cancel); //260725Ch
             sw.Stop();
 
@@ -551,7 +577,8 @@ public partial class FormEBSD
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
             //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
             toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
-                $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
+                $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), " +
+                $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."; //260726Cl: 同時最適化の伸びを表示
         }
         catch (OperationCanceledException) //260725Ch
         {
