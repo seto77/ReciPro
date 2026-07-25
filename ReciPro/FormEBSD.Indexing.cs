@@ -95,17 +95,9 @@ public partial class FormEBSD
     /// <summary>進捗行に添える段の名前 (較正の "start 3/10" など)。260726Cl 追加</summary>
     private string indexingStage = "";
 
-    /// <summary>指数付け・較正の結果メッセージを描画パスに上書きさせない期限 (Environment.TickCount64)。260726Cl 追加。
-    /// DrawEBSDCore は描画のたびに Summary/Detail を書き換えるので、完了直後の結果表示が読む前に消えていた (作者報告)</summary>
-    private long statusPinnedUntilTick;
-
-    /// <summary>指数付け・較正の結果を、しばらく描画に上書きされない形で表示する。260726Cl 追加</summary>
-    private void SetPinnedStatus(string summary, string detail, int seconds = 120)
-    {
-        toolStripStatusLabelSummary.Text = summary;
-        toolStripStatusLabelDetail.Text = detail;
-        statusPinnedUntilTick = Environment.TickCount64 + seconds * 1000L;
-    }
+    //260726Cl 削除 (作者指示「2 分タイマーなど必要ない。常に最新の情報が出ていればよい」):
+    //一時的なピン留め (statusPinnedUntilTick / SetPinnedStatus) は廃止。代わりに DrawEBSD 側で、
+    //パターンの中身が変わらない再描画ではステータスを書き換えないようにした (FormEBSD.cs の lastEbsdRenderStatusKey)
 
     /// <summary>
     /// 探索・較正の進捗と経過時間をステータスバーへ出す (MasterPattern/MC と同じ canonical 進捗行)。260725Cl 追加
@@ -329,10 +321,9 @@ public partial class FormEBSD
             FillCandidateGrid();
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
-            //260726Cl: 描画パスに潰されないようピン留めして表示する
-            SetPinnedStatus($"Orientation search: {candidates.Count} candidates" +
-                (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"), //260724Cl: Dictionary モード表示追加
-                $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."); //260724Cl (/simplify): 表示値を定数から導出
+            toolStripStatusLabelSummary.Text = $"Orientation search: {candidates.Count} candidates" +
+                (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
+            toolStripStatusLabelDetail.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
         }
         catch (OperationCanceledException) //260725Ch: 入力変更による正常な中止を失敗表示にしない
         {
@@ -627,13 +618,12 @@ public partial class FormEBSD
             FormMain.SetRotation(result.Rot); //Draw は SetRotation → FormMain 経由で走る
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
 
-            //260726Cl: 描画パスに潰されないようピン留めして表示する (作者報告: 完了直後に結果が消えて読めない)
-            SetPinnedStatus($"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}",
-                //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
-                $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
+            toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
+            //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
+            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
                 $"best of {result.Starts} starts (#{result.BestIndex}, spread {result.Spread:f4}), " + //260726Cl: 多点開始。spread が大きいほど局所解が深い
                 $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), " +
-                $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."); //260726Cl: 同時最適化の伸びを表示
+                $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."; //260726Cl: 同時最適化の伸びを表示
         }
         catch (OperationCanceledException) //260725Ch
         {

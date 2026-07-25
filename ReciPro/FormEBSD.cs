@@ -1029,6 +1029,10 @@ public partial class FormEBSD : FormBase
     #region MasterPattern から EBSD パターンを生成、描画
 
     bool skipEBSD_Rendering = false;
+
+    /// <summary>直近に表示した EBSD 描画ステータス (経過時間を除いた部分)。260726Cl 追加:
+    /// 同じ内容の再描画でステータスバーを書き換えないための鍵。パン・ズーム・回転が完了メッセージを潰さないようにする</summary>
+    string lastEbsdRenderStatusKey = null;
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
@@ -1922,10 +1926,15 @@ public partial class FormEBSD : FormBase
         }
 
         // toolStripStatusLabelProgress.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
-        //260726Cl 追加 (作者報告: 較正結果の文字が読めない): 指数付け・較正の結果を表示している間は描画側で潰さない。
-        //ここは描画のたびに Summary/Detail を書き換えるため、完了直後に再描画が走ると結果が消えていた
-        if (Environment.TickCount64 >= statusPinnedUntilTick)
+        //260726Cl 変更 (作者報告: 較正・指数付けの結果が読めない): 旧コードは描画のたびに Summary/Detail を書いていたため、
+        //パン・ズーム・リサイズ・回転で走る再描画が、完了メッセージを即座に潰していた。パターンの中身 (モデル・エネルギー・深さ) が
+        //変わったときだけ書く = 表示は常に最新の「出来事」になる。
+        //旧: toolStripStatusLabelSummary.Text = "EBSD rendering"; toolStripStatusLabelDetail.Text = statusText;
+        int elapsedSeparator = statusText.LastIndexOf(','); //末尾の経過時間は毎回変わるので鍵から外す
+        string statusKey = elapsedSeparator > 0 ? statusText[..elapsedSeparator] : statusText;
+        if (statusKey != lastEbsdRenderStatusKey)
         {
+            lastEbsdRenderStatusKey = statusKey;
             toolStripStatusLabelSummary.Text = "EBSD rendering";
             toolStripStatusLabelDetail.Text = statusText;
         }
