@@ -42,6 +42,10 @@ public partial class FormEBSD
     /// <summary>1 ラウンドの ZNCC 改善がこれ未満なら収束とみなして較正を打ち切る。260725Cl 追加</summary>
     private const double CalibrationZnccTolerance = 1E-4;
 
+    /// <summary>方位仕上げ (Find のトップ候補・較正の最終段) の Nelder-Mead 初期ステップ [°]。260725Cl 追加: 0.2 → 0.1 (作者指示)。
+    /// 両者で同じ値を使う — 目的関数だけでなくステップも揃えないと、Find と Calibrate を繰り返したときに方位が微妙に往復する</summary>
+    private const double OrientationPolishStepDeg = 0.1;
+
     /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
     /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
     /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
@@ -244,7 +248,8 @@ public partial class FormEBSD
                         return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
                     }
                     var (p1, _, _) = EbsdPatternScorer.NelderMead(ScoreRaw, [0, 0, 0], [0.7, 0.7, 0.7], 150);
-                    var (p2, _, _) = EbsdPatternScorer.NelderMead(ScoreRaw, p1, [0.2, 0.2, 0.2], 100);
+                    //260725Cl 変更: 仕上げステップ 0.2 → OrientationPolishStepDeg (0.1、作者指示)。較正の最終段と同じ値を使う
+                    var (p2, _, _) = EbsdPatternScorer.NelderMead(ScoreRaw, p1, [OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], 100);
                     var rPolished = EbsdIndexer.PerturbRotation(top.Rotation, p2[0], p2[1], p2[2]);
                     //仕上げでも同じ誤収束ガード (Radon の幾何証拠を 0.2 超失うなら採用しない)
                     var guardPolish = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [rPolished, top.Rotation], SatCap);
@@ -509,9 +514,10 @@ public partial class FormEBSD
                     if (zncc - prevZncc < CalibrationZnccTolerance) { converged = true; break; }
                     prevZncc = zncc;
                 }
-                //仕上げの方位微調整 (0.2°)
+                //仕上げの方位微調整。260725Cl 変更: 0.2° → OrientationPolishStepDeg (0.1°、作者指示)。Find の仕上げ段と同じ値
                 var projFinal = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
-                var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.2, 0.2, 0.2], 100);
+                var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])),
+                    [0, 0, 0], [OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], 100);
                 r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
                 return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal, Rounds: roundsUsed, Converged: converged);
