@@ -4,8 +4,17 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.7.25.0146</AssemblyVersion>
-    <FileVersion>2026.7.25.0146</FileVersion>
+    <!-- 260725Cl 削除: <AssemblyVersion>/<FileVersion> の静的値 (旧値 2026.7.25.0146)。
+         VS 拡張 Automatic Versions がビルド毎に書き換えるだけの行で、出荷物には一切使われていなかった:
+         ① release.yml / build-arm64-portable.yml / validate-wix-msi.yml の全 managed publish が
+            -p:AssemblyVersion=<UTCタイムスタンプ> -p:FileVersion=<同> を注入し、この値を必ず上書きする
+            (ProjectReference にも伝播することを実測確認: 4 アセンブリすべてが注入値になる)
+         ② AssemblyVersion / FileVersion を読む C# コードは存在しない (バージョン表示・更新チェックは
+            Version.cs の History 由来。ProgramUpdates は GitHub の Version.cs を raw 取得して比較)
+         ③ WiX が使うのは Version.cs 由来の ProductVersion のみ
+         ⚠CI 側の FileVersion 注入は廃止不可 — 欠くと MSI のファイルバージョン規則で自前アセンブリの
+           FileCopy が costing 段階で省略され、アップグレード時にファイルが欠落する (release.yml の実証記録)。
+         この行が復活していたら Automatic Versions が再インストールされている。 -->
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
