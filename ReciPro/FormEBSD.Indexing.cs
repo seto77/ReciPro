@@ -28,12 +28,8 @@ public partial class FormEBSD
     private bool candidateGridInitialized = false;
     private bool skipCandidateSelectionEvent = false;
 
-    /// <summary>探索・較正の実行状態 (実行中フラグ・世代番号・キャンセル要求)。260726Cl: UI から切り離して単体検証できるようにした
-    /// (旧: indexingBusy / indexingGeneration / indexingCts の 3 フィールドを直接操作。正本 §6 P1)</summary>
-    private readonly EbsdIndexingSession indexingSession = new();
-
-    /// <summary>解析系ボタンの相互排他 (実行中の二重起動・stale 結果の適用を防ぐ)。260724Cl 追加。260726Cl: session へ委譲</summary>
-    private bool indexingBusy => indexingSession.Busy;
+    /// <summary>解析系ボタンの相互排他 (実行中の二重起動・stale 結果の適用を防ぐ)。260724Cl 追加</summary>
+    private bool indexingBusy = false;
 
     /// <summary>指数付け用反射リストの d 下限 (nm)。260724Cl (/simplify) 追加: 反射生成とステータス表示に二重ハードコードされていた値を一元化 (将来 UI 化候補)</summary>
     private const double KikuchiDLimit = 0.15;
@@ -87,10 +83,13 @@ public partial class FormEBSD
     /// 交互法では下れない斜めの谷をここで下る</summary>
     private const int JointPolishMaxEval = 600;
 
-    //260725Cl: 世代番号は「indexingBusy が Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&D や
-    //検出器幾何の変更で失効させたはずの候補が探索完了後に復活していた」問題への対策。
-    //260726Cl 削除: 世代番号 indexingGeneration とキャンセル要求 indexingCts は EbsdIndexingSession へ移した
-    //(失効の規則を UI から切り離して EbsdCheck で検証できるようにするため。正本 §6 P1)。ここには表示とグリッド操作だけが残る
+    /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
+    /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
+    /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
+    private int indexingGeneration = 0;
+
+    /// <summary>画像・幾何変更で不要になった探索/較正のCPU処理を停止する。260725Ch 追加</summary>
+    private System.Threading.CancellationTokenSource indexingCts;
 
     //260724Cl シグネチャ変更: バンド検出廃止に伴い clearBands 引数を削除。旧: private void InvalidateIndexingResults(bool clearBands)
     //260725Cl シグネチャ変更: announceCancel 追加。旧: private void InvalidateIndexingResults()
@@ -98,11 +97,11 @@ public partial class FormEBSD
     /// <param name="announceCancel">実行中なら中止要求をステータスバーへ出す。較正が自分の書き戻し後に呼ぶ場合だけ false</param>
     private void InvalidateIndexingResults(bool announceCancel = true)
     {
+        indexingGeneration++; // 260725Cl 追加: 実行中の探索結果を失効させる
         //260725Cl 追加 (作者実機指摘): 探索中に幾何などを変えても画面が無反応に見えたので、中止要求を出した時点で表示する
         //(実際の停止はワーカーが次の中止チェックに到達するまで数十 ms 遅れる)
         if (announceCancel && indexingBusy) toolStripStatusLabelSummary.Text = "Canceling...";
-        //260726Cl: 世代を進めて実行中の探索・較正も止める (旧: indexingGeneration++ と indexingCts?.Cancel() を直接操作)
-        indexingSession.Invalidate();
+        indexingCts?.Cancel(); //260725Ch: 結果を捨てるだけでなく、辞書/Radon探索と較正の残CPU処理も停止
         orientationCandidates = null;
         if (candidateGridInitialized)
         {
@@ -150,20 +149,24 @@ public partial class FormEBSD
         }
     }
 
-    //260726Cl シグネチャ変更: 世代番号とトークンを out で返す (旧: 呼び出し側が indexingGeneration / indexingCts.Token を直読み)
-    private bool TryBeginIndexing(out System.Threading.CancellationToken cancel, out int generation)
+    private bool TryBeginIndexing()
     {
-        if (!indexingSession.TryBegin(out cancel, out generation)) return false;
+        if (indexingBusy) return false;
+        indexingBusy = true;
         lastIndexingProgressMs = 0; //260725Cl
         indexingStage = ""; //260726Cl
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true); //260725Cl
+        indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
+        indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = false; //260724Cl: 廃止 2 ボタンを除去
         return true;
     }
 
     private void EndIndexing()
     {
-        indexingSession.End(); //260726Cl: CTS の破棄と実行中フラグの解除
+        indexingCts?.Dispose(); //260725Ch
+        indexingCts = null;
+        indexingBusy = false;
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = true; //260724Cl: 廃止 2 ボタンを除去
     }
 
@@ -190,8 +193,9 @@ public partial class FormEBSD
             MessageBox.Show(this, "Dictionary search requires the dynamical master pattern. Build it first, or use Radon search.", "Find orientation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
-        //260725Cl: generation = await 中に画像・幾何が変わったら結果を捨てるための世代番号、cancel = 無効化時に実計算も止めるトークン
-        if (!TryBeginIndexing(out var cancel, out int generation)) return; //260726Cl: session から受け取る
+        if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に画像・幾何が変わったら結果を捨てる
+        var cancel = indexingCts.Token; //260725Ch: 無効化時に実計算も停止する
         toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
         var sw = System.Diagnostics.Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
         try
@@ -329,7 +333,7 @@ public partial class FormEBSD
             sw.Stop();
 
             //260725Cl 追加: 探索中に実測画像の差し替えや検出器幾何の変更があった場合、この結果は既に失効しているので適用しない
-            if (!indexingSession.IsCurrent(generation)) //260726Cl: session へ委譲
+            if (generation != indexingGeneration)
             {
                 toolStripStatusLabelSummary.Text = "Orientation search discarded (the image or geometry changed)";
                 FinishIndexingProgress(sw, "Canceled"); //260725Cl
@@ -345,7 +349,7 @@ public partial class FormEBSD
         }
         catch (OperationCanceledException) //260725Ch: 入力変更による正常な中止を失敗表示にしない
         {
-            toolStripStatusLabelSummary.Text = indexingSession.IsCurrent(generation) ? "Orientation search canceled" : "Orientation search discarded (the image or geometry changed)";
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Orientation search canceled" : "Orientation search discarded (the image or geometry changed)";
             toolStripStatusLabelDetail.Text = "";
             FinishIndexingProgress(sw, "Canceled"); //260725Cl
         }
@@ -487,8 +491,9 @@ public partial class FormEBSD
     private async void buttonCalibrateGeometry_Click(object sender, EventArgs e)
     {
         if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;
-        //260725Cl: generation = await 中に実測画像・幾何が変わったら較正結果を書き戻さないための世代番号 (旧画像に合わせた幾何の誤適用防止)
-        if (!TryBeginIndexing(out var cancel, out int generation)) return; //260726Cl: session から受け取る
+        if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に実測画像・幾何が変わったら較正結果を書き戻さない (旧画像に合わせた幾何の誤適用防止)
+        var cancel = indexingCts.Token; //260725Ch
         toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
         var sw = System.Diagnostics.Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
         try
@@ -635,7 +640,7 @@ public partial class FormEBSD
             sw.Stop();
 
             //260725Cl 追加: 較正中に実測画像の差し替えや幾何の変更があった場合、この結果は失効しているので書き戻さない
-            if (!indexingSession.IsCurrent(generation)) //260726Cl: session へ委譲
+            if (generation != indexingGeneration)
             {
                 toolStripStatusLabelSummary.Text = "Geometry calibration discarded (the image or geometry changed)";
                 FinishIndexingProgress(sw, "Canceled"); //260725Cl
@@ -671,7 +676,7 @@ public partial class FormEBSD
         }
         catch (OperationCanceledException) //260725Ch
         {
-            toolStripStatusLabelSummary.Text = indexingSession.IsCurrent(generation) ? "Geometry calibration canceled" : "Geometry calibration discarded (the image or geometry changed)";
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Geometry calibration canceled" : "Geometry calibration discarded (the image or geometry changed)";
             toolStripStatusLabelDetail.Text = "";
             FinishIndexingProgress(sw, "Canceled"); //260725Cl
         }
