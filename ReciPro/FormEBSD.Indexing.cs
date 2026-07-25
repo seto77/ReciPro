@@ -83,7 +83,7 @@ public partial class FormEBSD
             return;
         }
         if (!TryBeginIndexing()) return;
-        toolStripStatusLabel2.Text = "Searching orientation candidates...";
+        toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
         try
         {
             var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
@@ -111,6 +111,7 @@ public partial class FormEBSD
             //  ③ ZNCC 精密化は複合トップ 1 件のみ ±0.25° (ガード: Radon z 低下 >0.2 で棄却)。ベンチ 3 画像で複合トップ全勝 (12/20, 5/15, 11/14)
             bool refineByZncc = MasterPattern != null;
             var ctx = refineByZncc ? SnapshotMatchingContext() : default;
+            var properSyms = useDictionary ? EbsdDictionaryIndexer.GetProperRotations(crystal) : null; //260725Cl: UI スレッドで結晶状態をスナップショット
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var candidates = await Task.Run(() =>
@@ -122,9 +123,12 @@ public partial class FormEBSD
                 List<EbsdOrientationCandidate> cands;
                 if (useDictionary)
                 {
-                    //260724Cl: thoroughCoarse=true (粗段も 96px 完全 robust 総当たり、~60s)。作者方針=辞書はパワープレーで精度優先。
+                    //260724Cl: thoroughCoarse=true (粗段も 96px 完全 robust 総当たり)。作者方針=辞書はパワープレーで精度優先。
                     //ベンチ (正しい共通幾何+MC 合成): 3 画像とも辞書トップ=正解系 (14/20・13/15・11/14、5-2_22 では Radon 経路を上回る)
-                    cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true);
+                    //260725Cl: properSymmetries (点群 proper 回転の FZ 除外) + 面内分解プロジェクションで 12.5s→4.3s/画像 (結果は同一、C2 重複候補も解消)
+                    //cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true); //260725Cl 変更前
+                    cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true,
+                        properSymmetries: properSyms);
                     foreach (var c in cands)
                         c.Score = EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, c.Rotation, SatCap);
                 }
@@ -184,14 +188,14 @@ public partial class FormEBSD
             orientationCandidates = candidates;
             FillCandidateGrid();
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
-            toolStripStatusLabel2.Text = $"Orientation search: {candidates.Count} candidates" +
+            toolStripStatusLabelSummary.Text = $"Orientation search: {candidates.Count} candidates" +
                 (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
-            toolStripStatusLabel3.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
+            toolStripStatusLabelDetail.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
         }
         catch (Exception ex)
         {
-            toolStripStatusLabel2.Text = "Orientation search failed";
-            toolStripStatusLabel3.Text = ex.Message;
+            toolStripStatusLabelSummary.Text = "Orientation search failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
         }
         finally { EndIndexing(); }
     }
@@ -314,7 +318,7 @@ public partial class FormEBSD
     {
         if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;
         if (!TryBeginIndexing()) return;
-        toolStripStatusLabel2.Text = "Calibrating detector geometry (PC/DD + orientation)...";
+        toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
         try
         {
             var ctx = SnapshotMatchingContext();
@@ -323,7 +327,7 @@ public partial class FormEBSD
             var (footU0, footV0) = ctx.Geom.PatternCenterMm; //260724Cl (/simplify): PC 式の手書き重複 (-DetX, -(DetY cosδ+DetZ sinδ)) を幾何オブジェクトへ一元化
             double dd0 = ctx.Geom.CameraLength;
             double physW = DetHalfWidth * 2, physH = DetHalfHeight * 2;
-            if (dd0 < 1E-3) { toolStripStatusLabel2.Text = "Invalid camera length"; EndIndexing(); return; }
+            if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; EndIndexing(); return; }
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var result = await Task.Run(() =>
@@ -385,13 +389,13 @@ public partial class FormEBSD
             RebinMcDistribution();
             FormMain.SetRotation(result.Rot); //Draw は SetRotation → FormMain 経由で走る
 
-            toolStripStatusLabel2.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
-            toolStripStatusLabel3.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
+            toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
+            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
         }
         catch (Exception ex)
         {
-            toolStripStatusLabel2.Text = "Geometry calibration failed";
-            toolStripStatusLabel3.Text = ex.Message;
+            toolStripStatusLabelSummary.Text = "Geometry calibration failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
         }
         finally { EndIndexing(); }
     }
