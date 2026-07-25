@@ -42,11 +42,16 @@ public partial class FormEBSD
     /// <summary>画像・幾何変更で不要になった探索/較正のCPU処理を停止する。260725Ch 追加</summary>
     private System.Threading.CancellationTokenSource indexingCts;
 
-    /// <summary>画像/幾何の変更で方位候補を失効させる。260724Cl 追加 (Codex 指摘: stale 結果の誤適用防止)</summary>
     //260724Cl シグネチャ変更: バンド検出廃止に伴い clearBands 引数を削除。旧: private void InvalidateIndexingResults(bool clearBands)
-    private void InvalidateIndexingResults()
+    //260725Cl シグネチャ変更: announceCancel 追加。旧: private void InvalidateIndexingResults()
+    /// <summary>画像/幾何の変更で方位候補を失効させる。260724Cl 追加 (Codex 指摘: stale 結果の誤適用防止)</summary>
+    /// <param name="announceCancel">実行中なら中止要求をステータスバーへ出す。較正が自分の書き戻し後に呼ぶ場合だけ false</param>
+    private void InvalidateIndexingResults(bool announceCancel = true)
     {
         indexingGeneration++; // 260725Cl 追加: 実行中の探索結果を失効させる
+        //260725Cl 追加 (作者実機指摘): 探索中に幾何などを変えても画面が無反応に見えたので、中止要求を出した時点で表示する
+        //(実際の停止はワーカーが次の中止チェックに到達するまで数十 ms 遅れる)
+        if (announceCancel && indexingBusy) toolStripStatusLabelSummary.Text = "Canceling...";
         indexingCts?.Cancel(); //260725Ch: 結果を捨てるだけでなく、辞書/Radon探索と較正の残CPU処理も停止
         orientationCandidates = null;
         if (candidateGridInitialized)
@@ -57,10 +62,41 @@ public partial class FormEBSD
         }
     }
 
+    /// <summary>直近に進捗行を書き換えた時刻 (探索開始からの ms)。UI 更新の間引きに使う。260725Cl 追加</summary>
+    private long lastIndexingProgressMs;
+
+    /// <summary>
+    /// 探索・較正の進捗と経過時間をステータスバーへ出す (MasterPattern/MC と同じ canonical 進捗行)。260725Cl 追加
+    /// (作者実機指摘: 探索中にプログレスバーが動かず、経過時間も出ていなかった)。
+    /// ワーカースレッドから呼ばれるが、コントロールへの反映は StatusBarHelper 側が自動 Invoke する。
+    /// </summary>
+    private void ReportIndexingProgress(double ratio, System.Diagnostics.Stopwatch sw)
+    {
+        if (!indexingBusy) return; //完了後に遅れて届いた通知で最終表示を壊さない
+        long now = sw.ElapsedMilliseconds;
+        if (ratio < 1 && now - lastIndexingProgressMs < 200) return; //UI 更新は毎秒 5 回まで
+        lastIndexingProgressMs = now;
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, ratio, "", sw.Elapsed, showRemaining: true);
+    }
+
+    /// <summary>探索・較正の終了を進捗行へ書く。完了は 100%、中止・失敗はバーを戻して理由と経過時間だけ残す。260725Cl 追加</summary>
+    private void FinishIndexingProgress(System.Diagnostics.Stopwatch sw, string canceledOrFailed = null)
+    {
+        if (canceledOrFailed == null)
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", sw.Elapsed);
+        else
+        {
+            toolStripProgressBar.Value = 0;
+            toolStripStatusLabelProgress.Text = $"{canceledOrFailed} after {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
+        }
+    }
+
     private bool TryBeginIndexing()
     {
         if (indexingBusy) return false;
         indexingBusy = true;
+        lastIndexingProgressMs = 0; //260725Cl
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true); //260725Cl
         indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
         indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = false; //260724Cl: 廃止 2 ボタンを除去
@@ -102,6 +138,7 @@ public partial class FormEBSD
         int generation = indexingGeneration; // 260725Cl 追加: await 中に画像・幾何が変わったら結果を捨てる
         var cancel = indexingCts.Token; //260725Ch: 無効化時に実計算も停止する
         toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
+        var sw = System.Diagnostics.Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
         try
         {
             var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
@@ -133,7 +170,7 @@ public partial class FormEBSD
             //cubic/hex 等の高対称系は pruning on/off の候補一致を検証するまで安全側で無効化する (Codex 裁定 260725。実測パターンが揃ったら解除)
             var properSyms = useDictionary && EbsdDictionaryIndexer.GetProperRotations(crystal) is { Length: 1 } syms ? syms : null;
 
-            var sw = System.Diagnostics.Stopwatch.StartNew();
+            void Report(double r) => ReportIndexingProgress(r, sw); //260725Cl: 粗探索から進捗と経過時間を受ける
             var candidates = await Task.Run(() =>
             {
                 const double SatCap = 8, ZnccCoef = 0.5; //260724Cl: EbsdIndexCheck ハーネスの係数スイープで決定 (プラトー 0.4-1.0 の中央寄り)
@@ -149,14 +186,14 @@ public partial class FormEBSD
                     //12.5s→**2.4〜2.8s/画像** (結果は同一、C2 重複候補も解消)。260725Cl 訂正: 旧コメントの「→4.3s」は中間段階の値
                     //cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true); //260725Cl 変更前
                     cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true,
-                        properSymmetries: properSyms, cancel: cancel); //260725Ch
+                        properSymmetries: properSyms, cancel: cancel, progress: Report); //260725Ch (progress は 260725Cl)
                     //260725Cl (/simplify): 候補ごとの ScoreOrientation はカタログを毎回組み直していた → 一括版で 1 回に (スコアは同一)
                     var radonZ = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [.. cands.Select(c => c.Rotation)], SatCap);
                     for (int i = 0; i < cands.Count; i++)
                         cands[i].Score = radonZ[i];
                 }
                 else
-                    cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0, cancel: cancel); //260725Ch
+                    cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0, cancel: cancel, progress: Report); //260725Ch (progress は 260725Cl)
                 if (refineByZncc && cands.Count > 0)
                 {
                     var projector = new EbsdPatternProjector(ctx.Geom, ctx.Rw, ctx.Rh);
@@ -215,10 +252,12 @@ public partial class FormEBSD
             if (generation != indexingGeneration)
             {
                 toolStripStatusLabelSummary.Text = "Orientation search discarded (the image or geometry changed)";
+                FinishIndexingProgress(sw, "Canceled"); //260725Cl
                 return;
             }
             orientationCandidates = candidates;
             FillCandidateGrid();
+            FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
             toolStripStatusLabelSummary.Text = $"Orientation search: {candidates.Count} candidates" +
                 (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
@@ -228,11 +267,13 @@ public partial class FormEBSD
         {
             toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Orientation search canceled" : "Orientation search discarded (the image or geometry changed)";
             toolStripStatusLabelDetail.Text = "";
+            FinishIndexingProgress(sw, "Canceled"); //260725Cl
         }
         catch (Exception ex)
         {
             toolStripStatusLabelSummary.Text = "Orientation search failed";
             toolStripStatusLabelDetail.Text = ex.Message;
+            FinishIndexingProgress(sw, "Failed"); //260725Cl
         }
         finally { EndIndexing(); }
     }
@@ -370,6 +411,7 @@ public partial class FormEBSD
         int generation = indexingGeneration; // 260725Cl 追加: await 中に実測画像・幾何が変わったら較正結果を書き戻さない (旧画像に合わせた幾何の誤適用防止)
         var cancel = indexingCts.Token; //260725Ch
         toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
+        var sw = System.Diagnostics.Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
         try
         {
             var ctx = SnapshotMatchingContext();
@@ -381,13 +423,16 @@ public partial class FormEBSD
             //if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; EndIndexing(); return; } //260725Ch 変更前: finally でも二重に EndIndexing していた
             if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; return; } //260725Ch
 
-            var sw = System.Diagnostics.Stopwatch.StartNew();
             var result = await Task.Run(() =>
             {
                 var r0 = ctx.R0;
                 double fu = footU0, fv = footV0, lnDd = Math.Log(dd0);
                 var buf = new double[ctx.Rw * ctx.Rh];
                 int evalTotal = 0;
+                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (2 ラウンド × (方位 150 + 幾何 120) + 仕上げ 100)。
+                //soft bounds に弾かれた評価は投影しないので実際は予算より早く終わる → 完了時に 100% で締める
+                int evalsDone = 0;
+                const int EvalBudget = 2 * (150 + 120) + 100;
 
                 EbsdDetectorGeometry MakeGeom(double u, double v, double ld)
                 {
@@ -397,6 +442,7 @@ public partial class FormEBSD
                 double ScoreWith(EbsdPatternProjector proj, Matrix3D rot)
                 {
                     cancel.ThrowIfCancellationRequested(); //260725Ch: 各評価の投影前に中止を反映
+                    ReportIndexingProgress(Math.Min(0.99, (double)++evalsDone / EvalBudget), sw); //260725Cl (NM は逐次なので単純加算で足りる)
                     proj.Project(ctx.Mp, rot, ctx.Pos, ctx.Neg, buf);
                     return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
                 }
@@ -433,6 +479,7 @@ public partial class FormEBSD
             if (generation != indexingGeneration)
             {
                 toolStripStatusLabelSummary.Text = "Geometry calibration discarded (the image or geometry changed)";
+                FinishIndexingProgress(sw, "Canceled"); //260725Cl
                 return;
             }
 
@@ -448,8 +495,9 @@ public partial class FormEBSD
             finally { skipDetectorGeometryEvent = false; }
             UpdateEbsdTiltCoeffs();
             RebinMcDistribution();
-            InvalidateIndexingResults(); //260725Ch: 較正前の幾何で得た候補を残さず、実行世代も進める
+            InvalidateIndexingResults(announceCancel: false); //260725Ch: 較正前の幾何で得た候補を残さず、実行世代も進める (260725Cl: これは自分の書き戻しなので "Canceling..." は出さない)
             FormMain.SetRotation(result.Rot); //Draw は SetRotation → FormMain 経由で走る
+            FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
 
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
             toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
@@ -458,11 +506,13 @@ public partial class FormEBSD
         {
             toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Geometry calibration canceled" : "Geometry calibration discarded (the image or geometry changed)";
             toolStripStatusLabelDetail.Text = "";
+            FinishIndexingProgress(sw, "Canceled"); //260725Cl
         }
         catch (Exception ex)
         {
             toolStripStatusLabelSummary.Text = "Geometry calibration failed";
             toolStripStatusLabelDetail.Text = ex.Message;
+            FinishIndexingProgress(sw, "Failed"); //260725Cl
         }
         finally { EndIndexing(); }
     }
