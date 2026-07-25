@@ -24,14 +24,28 @@
         /// </summary>
         // (260323Ch) renamed numeric container controls:
         // groupBox1 -> groupBoxSimulationParameters
-        // groupBox2 -> groupBoxLatticePlanes
+        // groupBoxTextSettings -> groupBoxLatticePlanes
         // groupBox3 -> groupBoxMasterPattern
         // groupBox4 -> groupBoxSampleCondition
         // groupBox5 -> groupBoxEBSDGeometry
         // groupBox6 -> groupBoxEBSDPattern
-        // flowLayoutPanel1 -> flowLayoutPanelViewAlong
-        // flowLayoutPanel4 -> flowLayoutPanelOutputRange
+        // flowLayoutPanelPatternBar -> flowLayoutPanelViewAlong
+        // flowLayoutPanelMasterPattern3DCopy -> flowLayoutPanelOutputRange
         // (260520Cl) typo fix: numericBoxKikuchiThreadSholdOfStructureFactor -> numericBoxKikuchiThresholdOfStructureFactor (旧 typo "ThreadShold")
+        // (260725Cl) renamed all remaining default-named controls (author request):
+        //   flowLayoutPanel1..34 -> flowLayoutPanel{PatternBar, MaxNumOfGAndGrid, MasterPatternButtons, MasterPattern3DCopy,
+        //     MasterPattern2DControls, ThicknessRange, EnergyRange, AbsorptionOptions, SimulationParameters, Overlays,
+        //     DetectorGeometry, SampleCondition, ThresholdStructureFactor, ThresholdLength, TextSettings, DetectorPosition,
+        //     DetectorSizeTilt, WithBseDistribution, Brightness, ColorScale, IndexingButtons, ExperimentalImageTab,
+        //     ShowCheckBoxes, ViewSettings, Copy, ResolutionFlip, CopyOptions, MasterPatternDepth, MasterPatternControls,
+        //     CopyRange, CopyButton, CopyFormat, CopyRadios}
+        //   flowLayoutPanel1DetectorOutline -> flowLayoutPanelDetectorOutline / flowLayoutPanel1KikuchiLines -> flowLayoutPanelKikuchiLines
+        //   label1..15 -> label{TextSize, DetectorCenter, Polarity, Color, DetectorSizeTilt, DetectorResolution, BrightnessMin,
+        //     BrightnessMax, ExpBrightness, Brightness, LineWidth, BseDepth, BseDeltaE, BseStereonetNote}
+        //   groupBox2 -> groupBoxTextSettings / panel1,3,4 -> panelSpacer{Left,Right,Bottom} / statusStrip1 -> statusStripMain
+        //   tabControl1,2,3 -> tabControl{Settings, PatternSettings, MasterPattern} / tabPage1,2 -> tabPageMasterPattern{2D,3D}
+        //   toolStripStatusLabel1,2,3 -> toolStripStatusLabel{Progress, Summary, Detail}
+        //   radioButton1 -> radioButtonCopyEmf
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -52,7 +66,7 @@
             trackBarStrSize = new System.Windows.Forms.TrackBar();
             colorControlExcessLine = new ColorControl();
             trackBarLineWidth = new System.Windows.Forms.TrackBar();
-            label11 = new System.Windows.Forms.Label();
+            labelLineWidth = new System.Windows.Forms.Label();
             colorControlString = new ColorControl();
             colorControlBackGround = new ColorControl();
             radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
@@ -60,7 +74,7 @@
             radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
             numericBoxKikuchiThresholdOfStructureFactor = new NumericBox();
             numericBoxKikuchiThresholdOfLength = new NumericBox();
-            label1 = new System.Windows.Forms.Label();
+            labelTextSize = new System.Windows.Forms.Label();
             numericBoxThicknessStep = new NumericBox();
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
@@ -72,26 +86,26 @@
             trackBarOutputEnergy = new System.Windows.Forms.TrackBar();
             numericBoxDepth = new NumericBox();
             trackBarOutputThickness = new System.Windows.Forms.TrackBar();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
+            labelPolarity = new System.Windows.Forms.Label();
+            labelColor = new System.Windows.Forms.Label();
             checkBoxWithBSEDistribution = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
             trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
             trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
-            label8 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
+            labelBrightnessMax = new System.Windows.Forms.Label();
+            labelBrightnessMin = new System.Windows.Forms.Label();
+            labelBrightness = new System.Windows.Forms.Label();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
             buttonCopyImage = new System.Windows.Forms.Button();
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
             numericBoxEnergyStep = new NumericBox();
-            label13 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
+            labelBseDepth = new System.Windows.Forms.Label();
+            labelBseDeltaE = new System.Windows.Forms.Label();
             checkBoxShowDyanmicalEBSD = new System.Windows.Forms.CheckBox();
             checkBoxDrawDetectorOutline = new System.Windows.Forms.CheckBox();
-            label15 = new System.Windows.Forms.Label();
+            labelBseStereonetNote = new System.Windows.Forms.Label();
             checkBoxShowKikuchiLines = new System.Windows.Forms.CheckBox();
             checkBoxShowGIndices = new System.Windows.Forms.CheckBox();
             checkBoxShowZoneAxisIndices = new System.Windows.Forms.CheckBox();
@@ -107,11 +121,12 @@
             buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
             buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
             checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
-            checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
             buttonMasterPattern3DViewAlong = new System.Windows.Forms.Button();
             indexControl = new IndexControl();
             checkBoxShowMesh = new System.Windows.Forms.CheckBox();
             checkBoxShowCircle = new System.Windows.Forms.CheckBox();
+            labelExpBrightness = new System.Windows.Forms.Label();
+            checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
             checkBoxFlipDetectorLeftRight = new System.Windows.Forms.CheckBox();
             panelGeometry = new System.Windows.Forms.Panel();
             flowLayoutPanelViewAlong = new System.Windows.Forms.FlowLayoutPanel();
@@ -119,35 +134,35 @@
             poleFigureControl = new PoleFigureControl2();
             graphControlEnergyProfile = new GraphControl();
             graphicsBox = new GraphicsBox(components);
-            flowLayoutPanel20 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel19 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelColorScale = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelBrightness = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelOutputRange = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel18 = new System.Windows.Forms.FlowLayoutPanel();
-            tabControl1 = new System.Windows.Forms.TabControl();
+            flowLayoutPanelWithBseDistribution = new System.Windows.Forms.FlowLayoutPanel();
+            tabControlSettings = new System.Windows.Forms.TabControl();
             tabPageGeometry = new System.Windows.Forms.TabPage();
             groupBoxEBSDGeometry = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel17 = new System.Windows.Forms.FlowLayoutPanel();
-            label5 = new System.Windows.Forms.Label();
+            flowLayoutPanelDetectorGeometry = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelDetectorSizeTilt = new System.Windows.Forms.FlowLayoutPanel();
+            labelDetectorSizeTilt = new System.Windows.Forms.Label();
             numericBoxDetWidth = new NumericBox();
             numericBoxDetHeight = new NumericBox();
-            label6 = new System.Windows.Forms.Label();
+            labelDetectorResolution = new System.Windows.Forms.Label();
             numericBoxDetResolution = new NumericBox();
-            flowLayoutPanel16 = new System.Windows.Forms.FlowLayoutPanel();
-            label2 = new System.Windows.Forms.Label();
+            flowLayoutPanelDetectorPosition = new System.Windows.Forms.FlowLayoutPanel();
+            labelDetectorCenter = new System.Windows.Forms.Label();
             numericBoxXofDet = new NumericBox();
             groupBoxSampleCondition = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSampleCondition = new System.Windows.Forms.FlowLayoutPanel();
             tabPageBseDistribution = new System.Windows.Forms.TabPage();
             tabPageOverlays = new System.Windows.Forms.TabPage();
-            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel1DetectorOutline = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel1KikuchiLines = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelOverlays = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelDetectorOutline = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelKikuchiLines = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxLatticePlanes = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelThresholdLength = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelThresholdStructureFactor = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxTextSettings = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelTextSettings = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxShowExperimentalImage = new System.Windows.Forms.CheckBox();
             flowLayoutPanelExperimentalImage = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExpMinInt = new System.Windows.Forms.FlowLayoutPanel();
@@ -159,41 +174,63 @@
             flowLayoutPanelExpOpacity = new System.Windows.Forms.FlowLayoutPanel();
             labelExpOpacity = new System.Windows.Forms.Label();
             trackBarExpImageOpacity = new System.Windows.Forms.TrackBar();
+            radioButtonIndexingRadon = new System.Windows.Forms.RadioButton();
+            radioButtonIndexingDictionary = new System.Windows.Forms.RadioButton();
             buttonFindOrientation = new System.Windows.Forms.Button();
             dataGridViewEbsdCandidates = new System.Windows.Forms.DataGridView();
             buttonCalibrateGeometry = new System.Windows.Forms.Button();
             groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            flowLayoutPanelSimulationParameters = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelMaxNumOfGAndGrid = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelEnergyRange = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelThicknessRange = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelAbsorptionOptions = new System.Windows.Forms.FlowLayoutPanel();
+            statusStripMain = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelSummary = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
             scalablePictureBoxAdvancedMasterPattern2D = new ScalablePictureBoxAdvanced();
             flowLayoutPanelMasterPatternSelectors = new System.Windows.Forms.FlowLayoutPanel();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
             groupBoxMasterPattern = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            tabControlMasterPattern = new System.Windows.Forms.TabControl();
+            tabPageMasterPattern2D = new System.Windows.Forms.TabPage();
+            flowLayoutPanelMasterPattern2DControls = new System.Windows.Forms.FlowLayoutPanel();
+            tabPageMasterPattern3D = new System.Windows.Forms.TabPage();
+            flowLayoutPanelMasterPattern3DCopy = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelMasterPattern3DViewAlong = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelMasterPatternControls = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelMasterPatternDepth = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelMasterPatternButtons = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxEBSDPattern = new System.Windows.Forms.GroupBox();
-            tabControl2 = new System.Windows.Forms.TabControl();
+            tabControlPatternSettings = new System.Windows.Forms.TabControl();
             tabPageOutputParameter = new System.Windows.Forms.TabPage();
             tabPageExperimentalImage = new System.Windows.Forms.TabPage();
-            radioButtonIndexingRadon = new System.Windows.Forms.RadioButton(); //260724Cl 追加: 方位探索エンジン切替 (作者指示)
-            radioButtonIndexingDictionary = new System.Windows.Forms.RadioButton(); //260724Cl 追加
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelExperimentalImageTab = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIndexingButtons = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelPatternBar = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCopy = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCopyOptions = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCopyButton = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxMatchDetectorResolution = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelCopyRadios = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCopyRange = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonCopyCurrent = new System.Windows.Forms.RadioButton();
+            radioButtonDetector = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelCopyFormat = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonCopyEmf = new System.Windows.Forms.RadioButton();
+            radioButtonCopyBmp = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelViewSettings = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelResolutionFlip = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxResolution = new NumericBox();
             sizeControl = new SizeControl();
-            panel1 = new System.Windows.Forms.Panel();
-            panel3 = new System.Windows.Forms.Panel();
-            panel4 = new System.Windows.Forms.Panel();
+            flowLayoutPanelShowCheckBoxes = new System.Windows.Forms.FlowLayoutPanel();
+            panelSpacerLeft = new System.Windows.Forms.Panel();
+            panelSpacerRight = new System.Windows.Forms.Panel();
+            panelSpacerBottom = new System.Windows.Forms.Panel();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).BeginInit();
@@ -204,28 +241,28 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
-            flowLayoutPanel20.SuspendLayout();
-            flowLayoutPanel19.SuspendLayout();
+            flowLayoutPanelColorScale.SuspendLayout();
+            flowLayoutPanelBrightness.SuspendLayout();
             flowLayoutPanelOutputRange.SuspendLayout();
-            flowLayoutPanel18.SuspendLayout();
-            tabControl1.SuspendLayout();
+            flowLayoutPanelWithBseDistribution.SuspendLayout();
+            tabControlSettings.SuspendLayout();
             tabPageGeometry.SuspendLayout();
             groupBoxEBSDGeometry.SuspendLayout();
-            flowLayoutPanel11.SuspendLayout();
-            flowLayoutPanel17.SuspendLayout();
-            flowLayoutPanel16.SuspendLayout();
+            flowLayoutPanelDetectorGeometry.SuspendLayout();
+            flowLayoutPanelDetectorSizeTilt.SuspendLayout();
+            flowLayoutPanelDetectorPosition.SuspendLayout();
             groupBoxSampleCondition.SuspendLayout();
-            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanelSampleCondition.SuspendLayout();
             tabPageBseDistribution.SuspendLayout();
             tabPageOverlays.SuspendLayout();
-            flowLayoutPanel10.SuspendLayout();
-            flowLayoutPanel1DetectorOutline.SuspendLayout();
-            flowLayoutPanel1KikuchiLines.SuspendLayout();
+            flowLayoutPanelOverlays.SuspendLayout();
+            flowLayoutPanelDetectorOutline.SuspendLayout();
+            flowLayoutPanelKikuchiLines.SuspendLayout();
             groupBoxLatticePlanes.SuspendLayout();
-            flowLayoutPanel14.SuspendLayout();
-            flowLayoutPanel13.SuspendLayout();
-            groupBox2.SuspendLayout();
-            flowLayoutPanel15.SuspendLayout();
+            flowLayoutPanelThresholdLength.SuspendLayout();
+            flowLayoutPanelThresholdStructureFactor.SuspendLayout();
+            groupBoxTextSettings.SuspendLayout();
+            flowLayoutPanelTextSettings.SuspendLayout();
             flowLayoutPanelExperimentalImage.SuspendLayout();
             flowLayoutPanelExpMinInt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarExpImageMinInt).BeginInit();
@@ -235,24 +272,41 @@
             ((System.ComponentModel.ISupportInitialize)trackBarExpImageOpacity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).BeginInit();
             groupBoxSimulationParameters.SuspendLayout();
-            flowLayoutPanel9.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            flowLayoutPanel7.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
-            flowLayoutPanel8.SuspendLayout();
-            statusStrip1.SuspendLayout();
+            flowLayoutPanelSimulationParameters.SuspendLayout();
+            flowLayoutPanelMaxNumOfGAndGrid.SuspendLayout();
+            flowLayoutPanelEnergyRange.SuspendLayout();
+            flowLayoutPanelThicknessRange.SuspendLayout();
+            flowLayoutPanelAbsorptionOptions.SuspendLayout();
+            statusStripMain.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             panelMasterPattern3D.SuspendLayout();
             groupBoxMasterPattern.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            tabControlMasterPattern.SuspendLayout();
+            tabPageMasterPattern2D.SuspendLayout();
+            flowLayoutPanelMasterPattern2DControls.SuspendLayout();
+            tabPageMasterPattern3D.SuspendLayout();
+            flowLayoutPanelMasterPattern3DCopy.SuspendLayout();
             flowLayoutPanelMasterPattern3DViewAlong.SuspendLayout();
+            flowLayoutPanelMasterPatternControls.SuspendLayout();
+            flowLayoutPanelMasterPatternDepth.SuspendLayout();
+            flowLayoutPanelMasterPatternButtons.SuspendLayout();
             groupBoxEBSDPattern.SuspendLayout();
-            tabControl2.SuspendLayout();
+            tabControlPatternSettings.SuspendLayout();
             tabPageOutputParameter.SuspendLayout();
             tabPageExperimentalImage.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanelExperimentalImageTab.SuspendLayout();
+            flowLayoutPanelIndexingButtons.SuspendLayout();
+            flowLayoutPanelPatternBar.SuspendLayout();
+            flowLayoutPanelCopy.SuspendLayout();
+            flowLayoutPanelCopyOptions.SuspendLayout();
+            flowLayoutPanelCopyButton.SuspendLayout();
+            flowLayoutPanelCopyRadios.SuspendLayout();
+            flowLayoutPanelCopyRange.SuspendLayout();
+            flowLayoutPanelCopyFormat.SuspendLayout();
+            flowLayoutPanelViewSettings.SuspendLayout();
+            flowLayoutPanelResolutionFlip.SuspendLayout();
+            flowLayoutPanelShowCheckBoxes.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // toolTip
@@ -365,27 +419,29 @@
             // numericBoxZofDet
             // 
             numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
+            numericBoxZofDet.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxZofDet, "numericBoxZofDet");
             numericBoxZofDet.Maximum = 1000D;
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.Name = "numericBoxZofDet";
             numericBoxZofDet.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxZofDet, resources.GetString("numericBoxZofDet.ToolTip"));
-            numericBoxZofDet.Value = 27D;
-            numericBoxZofDet.ValueBoxWidth = 55;
+            numericBoxZofDet.Value = 30D;
+            numericBoxZofDet.ValueBoxWidth = 52;
             numericBoxZofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxYofDet
             // 
             numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
+            numericBoxYofDet.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxYofDet, "numericBoxYofDet");
             numericBoxYofDet.Maximum = 1000D;
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.Name = "numericBoxYofDet";
             numericBoxYofDet.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxYofDet, resources.GetString("numericBoxYofDet.ToolTip"));
-            numericBoxYofDet.Value = -36D;
-            numericBoxYofDet.ValueBoxWidth = 55;
+            numericBoxYofDet.Value = -35D;
+            numericBoxYofDet.ValueBoxWidth = 52;
             numericBoxYofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // trackBarStrSize
@@ -424,11 +480,11 @@
             trackBarLineWidth.Value = 1;
             trackBarLineWidth.ValueChanged += colorControlExcessLine_ColorChanged;
             // 
-            // label11
+            // labelLineWidth
             // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
+            resources.ApplyResources(labelLineWidth, "labelLineWidth");
+            labelLineWidth.Name = "labelLineWidth";
+            toolTip.SetToolTip(labelLineWidth, resources.GetString("labelLineWidth.ToolTip"));
             // 
             // colorControlString
             // 
@@ -503,11 +559,11 @@
             numericBoxKikuchiThresholdOfLength.Value = 10D;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiThresholdOfStructureFactor_ValueChanged;
             // 
-            // label1
+            // labelTextSize
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            resources.ApplyResources(labelTextSize, "labelTextSize");
+            labelTextSize.Name = "labelTextSize";
+            toolTip.SetToolTip(labelTextSize, resources.GetString("labelTextSize.ToolTip"));
             // 
             // numericBoxThicknessStep
             // 
@@ -522,7 +578,7 @@
             numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 1D;
-            numericBoxThicknessStep.ValueBoxWidth = 40;
+            numericBoxThicknessStep.ValueBoxWidth = 38;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxMaxNumOfG
@@ -566,7 +622,7 @@
             numericBoxThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.Value = 1D;
-            numericBoxThicknessStart.ValueBoxWidth = 40;
+            numericBoxThicknessStart.ValueBoxWidth = 38;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessEnd
@@ -630,17 +686,17 @@
             toolTip.SetToolTip(trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
             trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
             // 
-            // label3
+            // labelPolarity
             // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
+            resources.ApplyResources(labelPolarity, "labelPolarity");
+            labelPolarity.Name = "labelPolarity";
+            toolTip.SetToolTip(labelPolarity, resources.GetString("labelPolarity.ToolTip"));
             // 
-            // label4
+            // labelColor
             // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
+            resources.ApplyResources(labelColor, "labelColor");
+            labelColor.Name = "labelColor";
+            toolTip.SetToolTip(labelColor, resources.GetString("labelColor.ToolTip"));
             // 
             // checkBoxWithBSEDistribution
             // 
@@ -696,23 +752,23 @@
             toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
             trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // label8
+            // labelBrightnessMax
             // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
+            resources.ApplyResources(labelBrightnessMax, "labelBrightnessMax");
+            labelBrightnessMax.Name = "labelBrightnessMax";
+            toolTip.SetToolTip(labelBrightnessMax, resources.GetString("labelBrightnessMax.ToolTip"));
             // 
-            // label7
+            // labelBrightnessMin
             // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            resources.ApplyResources(labelBrightnessMin, "labelBrightnessMin");
+            labelBrightnessMin.Name = "labelBrightnessMin";
+            toolTip.SetToolTip(labelBrightnessMin, resources.GetString("labelBrightnessMin.ToolTip"));
             // 
-            // label10
+            // labelBrightness
             // 
-            resources.ApplyResources(label10, "label10");
-            label10.Name = "label10";
-            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
+            resources.ApplyResources(labelBrightness, "labelBrightness");
+            labelBrightness.Name = "labelBrightness";
+            toolTip.SetToolTip(labelBrightness, resources.GetString("labelBrightness.ToolTip"));
             // 
             // checkBoxShowOverlays
             // 
@@ -745,7 +801,7 @@
             numericBoxEnergyEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyEnd, resources.GetString("numericBoxEnergyEnd.ToolTip"));
             numericBoxEnergyEnd.Value = 15D;
-            numericBoxEnergyEnd.ValueBoxWidth = 45;
+            numericBoxEnergyEnd.ValueBoxWidth = 42;
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStart
@@ -762,7 +818,7 @@
             toolTip.SetToolTip(numericBoxEnergyStart, resources.GetString("numericBoxEnergyStart.ToolTip"));
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyStart.ValueBoxWidth = 45;
+            numericBoxEnergyStart.ValueBoxWidth = 42;
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStep
@@ -778,22 +834,22 @@
             numericBoxEnergyStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyStep, resources.GetString("numericBoxEnergyStep.ToolTip"));
             numericBoxEnergyStep.Value = 1D;
-            numericBoxEnergyStep.ValueBoxWidth = 40;
+            numericBoxEnergyStep.ValueBoxWidth = 38;
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
-            // label13
+            // labelBseDepth
             // 
-            resources.ApplyResources(label13, "label13");
-            label13.BackColor = System.Drawing.Color.White;
-            label13.Name = "label13";
-            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
+            resources.ApplyResources(labelBseDepth, "labelBseDepth");
+            labelBseDepth.BackColor = System.Drawing.SystemColors.Control;
+            labelBseDepth.Name = "labelBseDepth";
+            toolTip.SetToolTip(labelBseDepth, resources.GetString("labelBseDepth.ToolTip"));
             // 
-            // label14
+            // labelBseDeltaE
             // 
-            resources.ApplyResources(label14, "label14");
-            label14.BackColor = System.Drawing.Color.White;
-            label14.Name = "label14";
-            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip"));
+            resources.ApplyResources(labelBseDeltaE, "labelBseDeltaE");
+            labelBseDeltaE.BackColor = System.Drawing.SystemColors.Control;
+            labelBseDeltaE.Name = "labelBseDeltaE";
+            toolTip.SetToolTip(labelBseDeltaE, resources.GetString("labelBseDeltaE.ToolTip"));
             // 
             // checkBoxShowDyanmicalEBSD
             // 
@@ -815,12 +871,12 @@
             checkBoxDrawDetectorOutline.UseVisualStyleBackColor = true;
             checkBoxDrawDetectorOutline.CheckedChanged += checkBoxDrawDetectorOutline_CheckedChanged;
             // 
-            // label15
+            // labelBseStereonetNote
             // 
-            resources.ApplyResources(label15, "label15");
-            label15.BackColor = System.Drawing.Color.White;
-            label15.Name = "label15";
-            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip"));
+            resources.ApplyResources(labelBseStereonetNote, "labelBseStereonetNote");
+            labelBseStereonetNote.BackColor = System.Drawing.Color.White;
+            labelBseStereonetNote.Name = "labelBseStereonetNote";
+            toolTip.SetToolTip(labelBseStereonetNote, resources.GetString("labelBseStereonetNote.ToolTip"));
             // 
             // checkBoxShowKikuchiLines
             // 
@@ -934,6 +990,7 @@
             buttonMasterPattern2DCopy.Name = "buttonMasterPattern2DCopy";
             toolTip.SetToolTip(buttonMasterPattern2DCopy, resources.GetString("buttonMasterPattern2DCopy.ToolTip"));
             buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
+            buttonMasterPattern2DCopy.Click += buttonMasterPattern2DCopy_Click; // 260725Cl 追加: 配線漏れでボタンが無反応だった
             // 
             // buttonMasterPattern3DCopy
             // 
@@ -941,6 +998,7 @@
             buttonMasterPattern3DCopy.Name = "buttonMasterPattern3DCopy";
             toolTip.SetToolTip(buttonMasterPattern3DCopy, resources.GetString("buttonMasterPattern3DCopy.ToolTip"));
             buttonMasterPattern3DCopy.UseVisualStyleBackColor = true;
+            buttonMasterPattern3DCopy.Click += buttonMasterPattern3DCopy_Click; // 260725Cl 追加: 配線漏れでボタンが無反応だった
             // 
             // checkBoxMasterPattern3DAxisLabel
             // 
@@ -951,16 +1009,6 @@
             toolTip.SetToolTip(checkBoxMasterPattern3DAxisLabel, resources.GetString("checkBoxMasterPattern3DAxisLabel.ToolTip"));
             checkBoxMasterPattern3DAxisLabel.UseVisualStyleBackColor = true;
             checkBoxMasterPattern3DAxisLabel.CheckedChanged += checkBoxMasterPattern3DAxisLabel_CheckedChanged;
-            // 
-            // checkBoxMasterPattern3DAxisArrows
-            // 
-            resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
-            checkBoxMasterPattern3DAxisArrows.Checked = true;
-            checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
-            toolTip.SetToolTip(checkBoxMasterPattern3DAxisArrows, resources.GetString("checkBoxMasterPattern3DAxisArrows.ToolTip"));
-            checkBoxMasterPattern3DAxisArrows.UseVisualStyleBackColor = true;
-            checkBoxMasterPattern3DAxisArrows.CheckedChanged += checkBoxMasterPattern3DAxisArrows_CheckedChanged;
             // 
             // buttonMasterPattern3DViewAlong
             // 
@@ -995,10 +1043,27 @@
             checkBoxShowCircle.UseVisualStyleBackColor = true;
             checkBoxShowCircle.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
+            // labelExpBrightness
+            // 
+            resources.ApplyResources(labelExpBrightness, "labelExpBrightness");
+            labelExpBrightness.Name = "labelExpBrightness";
+            toolTip.SetToolTip(labelExpBrightness, resources.GetString("labelExpBrightness.ToolTip"));
+            // 
+            // checkBoxMasterPattern3DAxisArrows
+            // 
+            resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
+            checkBoxMasterPattern3DAxisArrows.Checked = true;
+            checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
+            toolTip.SetToolTip(checkBoxMasterPattern3DAxisArrows, resources.GetString("checkBoxMasterPattern3DAxisArrows.ToolTip"));
+            checkBoxMasterPattern3DAxisArrows.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisArrows.CheckedChanged += checkBoxMasterPattern3DAxisArrows_CheckedChanged;
+            // 
             // checkBoxFlipDetectorLeftRight
             // 
             resources.ApplyResources(checkBoxFlipDetectorLeftRight, "checkBoxFlipDetectorLeftRight");
             checkBoxFlipDetectorLeftRight.Name = "checkBoxFlipDetectorLeftRight";
+            toolTip.SetToolTip(checkBoxFlipDetectorLeftRight, resources.GetString("checkBoxFlipDetectorLeftRight.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             checkBoxFlipDetectorLeftRight.UseVisualStyleBackColor = true;
             checkBoxFlipDetectorLeftRight.CheckedChanged += checkBoxFlipDetectorLeftRight_CheckedChanged;
             // 
@@ -1049,24 +1114,24 @@
             graphicsBox.MouseUp += graphicsBox_MouseUp;
             graphicsBox.Resize += graphicsBox_Resize;
             // 
-            // flowLayoutPanel20
+            // flowLayoutPanelColorScale
             // 
-            resources.ApplyResources(flowLayoutPanel20, "flowLayoutPanel20");
-            flowLayoutPanel20.Controls.Add(label3);
-            flowLayoutPanel20.Controls.Add(comboBoxGradient);
-            flowLayoutPanel20.Controls.Add(label4);
-            flowLayoutPanel20.Controls.Add(comboBoxScale);
-            flowLayoutPanel20.Name = "flowLayoutPanel20";
+            resources.ApplyResources(flowLayoutPanelColorScale, "flowLayoutPanelColorScale");
+            flowLayoutPanelColorScale.Controls.Add(labelPolarity);
+            flowLayoutPanelColorScale.Controls.Add(comboBoxGradient);
+            flowLayoutPanelColorScale.Controls.Add(labelColor);
+            flowLayoutPanelColorScale.Controls.Add(comboBoxScale);
+            flowLayoutPanelColorScale.Name = "flowLayoutPanelColorScale";
             // 
-            // flowLayoutPanel19
+            // flowLayoutPanelBrightness
             // 
-            resources.ApplyResources(flowLayoutPanel19, "flowLayoutPanel19");
-            flowLayoutPanel19.Controls.Add(label10);
-            flowLayoutPanel19.Controls.Add(label7);
-            flowLayoutPanel19.Controls.Add(trackBarIntensityBrightnessMin);
-            flowLayoutPanel19.Controls.Add(label8);
-            flowLayoutPanel19.Controls.Add(trackBarIntensityBrightnessMax);
-            flowLayoutPanel19.Name = "flowLayoutPanel19";
+            resources.ApplyResources(flowLayoutPanelBrightness, "flowLayoutPanelBrightness");
+            flowLayoutPanelBrightness.Controls.Add(labelBrightness);
+            flowLayoutPanelBrightness.Controls.Add(labelBrightnessMin);
+            flowLayoutPanelBrightness.Controls.Add(trackBarIntensityBrightnessMin);
+            flowLayoutPanelBrightness.Controls.Add(labelBrightnessMax);
+            flowLayoutPanelBrightness.Controls.Add(trackBarIntensityBrightnessMax);
+            flowLayoutPanelBrightness.Name = "flowLayoutPanelBrightness";
             // 
             // flowLayoutPanelOutputRange
             // 
@@ -1077,22 +1142,22 @@
             flowLayoutPanelOutputRange.Controls.Add(trackBarOutputThickness);
             flowLayoutPanelOutputRange.Name = "flowLayoutPanelOutputRange";
             // 
-            // flowLayoutPanel18
+            // flowLayoutPanelWithBseDistribution
             // 
-            flowLayoutPanel18.Controls.Add(checkBoxWithBSEDistribution);
-            resources.ApplyResources(flowLayoutPanel18, "flowLayoutPanel18");
-            flowLayoutPanel18.Name = "flowLayoutPanel18";
+            flowLayoutPanelWithBseDistribution.Controls.Add(checkBoxWithBSEDistribution);
+            resources.ApplyResources(flowLayoutPanelWithBseDistribution, "flowLayoutPanelWithBseDistribution");
+            flowLayoutPanelWithBseDistribution.Name = "flowLayoutPanelWithBseDistribution";
             // 
-            // tabControl1
+            // tabControlSettings
             // 
-            tabControl1.Controls.Add(tabPageGeometry);
-            tabControl1.Controls.Add(tabPageBseDistribution);
-            tabControl1.Controls.Add(tabPageOverlays);
-            resources.ApplyResources(tabControl1, "tabControl1");
-            tabControl1.HotTrack = true;
-            tabControl1.Multiline = true;
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
+            tabControlSettings.Controls.Add(tabPageGeometry);
+            tabControlSettings.Controls.Add(tabPageBseDistribution);
+            tabControlSettings.Controls.Add(tabPageOverlays);
+            resources.ApplyResources(tabControlSettings, "tabControlSettings");
+            tabControlSettings.HotTrack = true;
+            tabControlSettings.Multiline = true;
+            tabControlSettings.Name = "tabControlSettings";
+            tabControlSettings.SelectedIndex = 0;
             // 
             // tabPageGeometry
             // 
@@ -1108,32 +1173,32 @@
             // 
             resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
             captureExtender.SetCapture(groupBoxEBSDGeometry, true);
-            groupBoxEBSDGeometry.Controls.Add(flowLayoutPanel11);
+            groupBoxEBSDGeometry.Controls.Add(flowLayoutPanelDetectorGeometry);
             groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
             groupBoxEBSDGeometry.TabStop = false;
             // 
-            // flowLayoutPanel11
+            // flowLayoutPanelDetectorGeometry
             // 
-            resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
-            flowLayoutPanel11.Controls.Add(flowLayoutPanel17);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanel16);
-            flowLayoutPanel11.Name = "flowLayoutPanel11";
+            resources.ApplyResources(flowLayoutPanelDetectorGeometry, "flowLayoutPanelDetectorGeometry");
+            flowLayoutPanelDetectorGeometry.Controls.Add(flowLayoutPanelDetectorSizeTilt);
+            flowLayoutPanelDetectorGeometry.Controls.Add(flowLayoutPanelDetectorPosition);
+            flowLayoutPanelDetectorGeometry.Name = "flowLayoutPanelDetectorGeometry";
             // 
-            // flowLayoutPanel17
+            // flowLayoutPanelDetectorSizeTilt
             // 
-            resources.ApplyResources(flowLayoutPanel17, "flowLayoutPanel17");
-            flowLayoutPanel17.Controls.Add(label5);
-            flowLayoutPanel17.Controls.Add(numericBoxDetTilt);
-            flowLayoutPanel17.Controls.Add(numericBoxDetWidth);
-            flowLayoutPanel17.Controls.Add(numericBoxDetHeight);
-            flowLayoutPanel17.Controls.Add(label6);
-            flowLayoutPanel17.Controls.Add(numericBoxDetResolution);
-            flowLayoutPanel17.Name = "flowLayoutPanel17";
+            resources.ApplyResources(flowLayoutPanelDetectorSizeTilt, "flowLayoutPanelDetectorSizeTilt");
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(labelDetectorSizeTilt);
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetTilt);
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetWidth);
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetHeight);
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(labelDetectorResolution);
+            flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetResolution);
+            flowLayoutPanelDetectorSizeTilt.Name = "flowLayoutPanelDetectorSizeTilt";
             // 
-            // label5
+            // labelDetectorSizeTilt
             // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
+            resources.ApplyResources(labelDetectorSizeTilt, "labelDetectorSizeTilt");
+            labelDetectorSizeTilt.Name = "labelDetectorSizeTilt";
             // 
             // numericBoxDetWidth
             // 
@@ -1145,7 +1210,7 @@
             numericBoxDetWidth.ShowUpDown = true;
             numericBoxDetWidth.UpDown_Increment = 10D;
             numericBoxDetWidth.Value = 400D;
-            numericBoxDetWidth.ValueBoxWidth = 40;
+            numericBoxDetWidth.ValueBoxWidth = 36;
             numericBoxDetWidth.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxDetHeight
@@ -1158,80 +1223,77 @@
             numericBoxDetHeight.ShowUpDown = true;
             numericBoxDetHeight.UpDown_Increment = 10D;
             numericBoxDetHeight.Value = 400D;
-            numericBoxDetHeight.ValueBoxWidth = 40;
+            numericBoxDetHeight.ValueBoxWidth = 36;
             numericBoxDetHeight.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
-            // label6
+            // labelDetectorResolution
             // 
-            resources.ApplyResources(label6, "label6");
-            label6.Name = "label6";
+            resources.ApplyResources(labelDetectorResolution, "labelDetectorResolution");
+            labelDetectorResolution.Name = "labelDetectorResolution";
             // 
             // numericBoxDetResolution
             // 
             numericBoxDetResolution.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDetResolution.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxDetResolution, "numericBoxDetResolution");
             numericBoxDetResolution.Maximum = 10D;
             numericBoxDetResolution.Minimum = 0.0001D;
             numericBoxDetResolution.Name = "numericBoxDetResolution";
-            numericBoxDetResolution.ShowUpDown = true;
             numericBoxDetResolution.UpDown_Increment = 0.01D;
             numericBoxDetResolution.Value = 0.1D;
             numericBoxDetResolution.ValueBoxWidth = 50;
             numericBoxDetResolution.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
-            // flowLayoutPanel16
+            // flowLayoutPanelDetectorPosition
             // 
-            resources.ApplyResources(flowLayoutPanel16, "flowLayoutPanel16");
-            flowLayoutPanel16.Controls.Add(label2);
-            flowLayoutPanel16.Controls.Add(numericBoxXofDet);
-            flowLayoutPanel16.Controls.Add(numericBoxYofDet);
-            flowLayoutPanel16.Controls.Add(numericBoxZofDet);
-            flowLayoutPanel16.Name = "flowLayoutPanel16";
+            resources.ApplyResources(flowLayoutPanelDetectorPosition, "flowLayoutPanelDetectorPosition");
+            flowLayoutPanelDetectorPosition.Controls.Add(labelDetectorCenter);
+            flowLayoutPanelDetectorPosition.Controls.Add(numericBoxXofDet);
+            flowLayoutPanelDetectorPosition.Controls.Add(numericBoxYofDet);
+            flowLayoutPanelDetectorPosition.Controls.Add(numericBoxZofDet);
+            flowLayoutPanelDetectorPosition.Name = "flowLayoutPanelDetectorPosition";
             // 
-            // label2
+            // labelDetectorCenter
             // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
+            resources.ApplyResources(labelDetectorCenter, "labelDetectorCenter");
+            labelDetectorCenter.Name = "labelDetectorCenter";
             // 
             // numericBoxXofDet
             // 
             numericBoxXofDet.BackColor = System.Drawing.Color.Transparent;
+            numericBoxXofDet.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxXofDet, "numericBoxXofDet");
             numericBoxXofDet.Maximum = 1000D;
             numericBoxXofDet.Minimum = -1000D;
             numericBoxXofDet.Name = "numericBoxXofDet";
             numericBoxXofDet.ShowUpDown = true;
-            numericBoxXofDet.Value = 1D;
-            numericBoxXofDet.ValueBoxWidth = 55;
+            numericBoxXofDet.ValueBoxWidth = 52;
             numericBoxXofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // groupBoxSampleCondition
             // 
             resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
             captureExtender.SetCapture(groupBoxSampleCondition, true);
-            groupBoxSampleCondition.Controls.Add(flowLayoutPanel12);
+            groupBoxSampleCondition.Controls.Add(flowLayoutPanelSampleCondition);
             groupBoxSampleCondition.Name = "groupBoxSampleCondition";
             groupBoxSampleCondition.TabStop = false;
             // 
-            // flowLayoutPanel12
+            // flowLayoutPanelSampleCondition
             // 
-            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
-            flowLayoutPanel12.Controls.Add(waveLengthControl);
-            flowLayoutPanel12.Controls.Add(numericBoxSampleTilt);
-            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            resources.ApplyResources(flowLayoutPanelSampleCondition, "flowLayoutPanelSampleCondition");
+            flowLayoutPanelSampleCondition.Controls.Add(waveLengthControl);
+            flowLayoutPanelSampleCondition.Controls.Add(numericBoxSampleTilt);
+            flowLayoutPanelSampleCondition.Name = "flowLayoutPanelSampleCondition";
             // 
             // tabPageBseDistribution
             // 
             tabPageBseDistribution.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageBseDistribution, true);
-            tabPageBseDistribution.Controls.Add(label15);
+            tabPageBseDistribution.Controls.Add(tableLayoutPanel1);
+            tabPageBseDistribution.Controls.Add(labelBseStereonetNote);
             tabPageBseDistribution.Controls.Add(buttonSimulateBSE);
-            tabPageBseDistribution.Controls.Add(label13);
             tabPageBseDistribution.Controls.Add(checkBoxDrawAxesInStereonet);
-            tabPageBseDistribution.Controls.Add(label14);
             tabPageBseDistribution.Controls.Add(poleFigureControl);
-            tabPageBseDistribution.Controls.Add(graphControlDepthProfile);
-            tabPageBseDistribution.Controls.Add(graphControlEnergyProfile);
             resources.ApplyResources(tabPageBseDistribution, "tabPageBseDistribution");
             tabPageBseDistribution.Name = "tabPageBseDistribution";
             // 
@@ -1239,78 +1301,78 @@
             // 
             tabPageOverlays.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageOverlays, true);
-            tabPageOverlays.Controls.Add(flowLayoutPanel10);
+            tabPageOverlays.Controls.Add(flowLayoutPanelOverlays);
             resources.ApplyResources(tabPageOverlays, "tabPageOverlays");
             tabPageOverlays.Name = "tabPageOverlays";
             // 
-            // flowLayoutPanel10
+            // flowLayoutPanelOverlays
             // 
-            flowLayoutPanel10.Controls.Add(colorControlBackGround);
-            flowLayoutPanel10.Controls.Add(checkBoxDrawDetectorOutline);
-            flowLayoutPanel10.Controls.Add(flowLayoutPanel1DetectorOutline);
-            flowLayoutPanel10.Controls.Add(checkBoxShowKikuchiLines);
-            flowLayoutPanel10.Controls.Add(flowLayoutPanel1KikuchiLines);
-            flowLayoutPanel10.Controls.Add(groupBoxLatticePlanes);
-            flowLayoutPanel10.Controls.Add(checkBoxShowGIndices);
-            flowLayoutPanel10.Controls.Add(checkBoxShowZoneAxisIndices);
-            flowLayoutPanel10.Controls.Add(groupBox2);
-            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
-            flowLayoutPanel10.Name = "flowLayoutPanel10";
+            flowLayoutPanelOverlays.Controls.Add(colorControlBackGround);
+            flowLayoutPanelOverlays.Controls.Add(checkBoxDrawDetectorOutline);
+            flowLayoutPanelOverlays.Controls.Add(flowLayoutPanelDetectorOutline);
+            flowLayoutPanelOverlays.Controls.Add(checkBoxShowKikuchiLines);
+            flowLayoutPanelOverlays.Controls.Add(flowLayoutPanelKikuchiLines);
+            flowLayoutPanelOverlays.Controls.Add(groupBoxLatticePlanes);
+            flowLayoutPanelOverlays.Controls.Add(checkBoxShowGIndices);
+            flowLayoutPanelOverlays.Controls.Add(checkBoxShowZoneAxisIndices);
+            flowLayoutPanelOverlays.Controls.Add(groupBoxTextSettings);
+            resources.ApplyResources(flowLayoutPanelOverlays, "flowLayoutPanelOverlays");
+            flowLayoutPanelOverlays.Name = "flowLayoutPanelOverlays";
             // 
-            // flowLayoutPanel1DetectorOutline
+            // flowLayoutPanelDetectorOutline
             // 
-            resources.ApplyResources(flowLayoutPanel1DetectorOutline, "flowLayoutPanel1DetectorOutline");
-            flowLayoutPanel1DetectorOutline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowLayoutPanel1DetectorOutline.Controls.Add(checkBoxShowCircle);
-            flowLayoutPanel1DetectorOutline.Controls.Add(checkBoxShowMesh);
-            flowLayoutPanel1DetectorOutline.Name = "flowLayoutPanel1DetectorOutline";
+            resources.ApplyResources(flowLayoutPanelDetectorOutline, "flowLayoutPanelDetectorOutline");
+            flowLayoutPanelDetectorOutline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            flowLayoutPanelDetectorOutline.Controls.Add(checkBoxShowCircle);
+            flowLayoutPanelDetectorOutline.Controls.Add(checkBoxShowMesh);
+            flowLayoutPanelDetectorOutline.Name = "flowLayoutPanelDetectorOutline";
             // 
-            // flowLayoutPanel1KikuchiLines
+            // flowLayoutPanelKikuchiLines
             // 
-            resources.ApplyResources(flowLayoutPanel1KikuchiLines, "flowLayoutPanel1KikuchiLines");
-            flowLayoutPanel1KikuchiLines.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            flowLayoutPanel1KikuchiLines.Controls.Add(label11);
-            flowLayoutPanel1KikuchiLines.Controls.Add(trackBarLineWidth);
-            flowLayoutPanel1KikuchiLines.Controls.Add(colorControlExcessLine);
-            flowLayoutPanel1KikuchiLines.Controls.Add(checkBoxKikuchiLine_Kinematical);
-            flowLayoutPanel1KikuchiLines.Name = "flowLayoutPanel1KikuchiLines";
+            resources.ApplyResources(flowLayoutPanelKikuchiLines, "flowLayoutPanelKikuchiLines");
+            flowLayoutPanelKikuchiLines.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            flowLayoutPanelKikuchiLines.Controls.Add(labelLineWidth);
+            flowLayoutPanelKikuchiLines.Controls.Add(trackBarLineWidth);
+            flowLayoutPanelKikuchiLines.Controls.Add(colorControlExcessLine);
+            flowLayoutPanelKikuchiLines.Controls.Add(checkBoxKikuchiLine_Kinematical);
+            flowLayoutPanelKikuchiLines.Name = "flowLayoutPanelKikuchiLines";
             // 
             // groupBoxLatticePlanes
             // 
             resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
-            groupBoxLatticePlanes.Controls.Add(flowLayoutPanel14);
-            groupBoxLatticePlanes.Controls.Add(flowLayoutPanel13);
+            groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdLength);
+            groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdStructureFactor);
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
             groupBoxLatticePlanes.TabStop = false;
             // 
-            // flowLayoutPanel14
+            // flowLayoutPanelThresholdLength
             // 
-            resources.ApplyResources(flowLayoutPanel14, "flowLayoutPanel14");
-            flowLayoutPanel14.Controls.Add(radioButtonKikuchiThresholdOfLength);
-            flowLayoutPanel14.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            flowLayoutPanel14.Name = "flowLayoutPanel14";
+            resources.ApplyResources(flowLayoutPanelThresholdLength, "flowLayoutPanelThresholdLength");
+            flowLayoutPanelThresholdLength.Controls.Add(radioButtonKikuchiThresholdOfLength);
+            flowLayoutPanelThresholdLength.Controls.Add(numericBoxKikuchiThresholdOfLength);
+            flowLayoutPanelThresholdLength.Name = "flowLayoutPanelThresholdLength";
             // 
-            // flowLayoutPanel13
+            // flowLayoutPanelThresholdStructureFactor
             // 
-            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
-            flowLayoutPanel13.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
-            flowLayoutPanel13.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
-            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            resources.ApplyResources(flowLayoutPanelThresholdStructureFactor, "flowLayoutPanelThresholdStructureFactor");
+            flowLayoutPanelThresholdStructureFactor.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
+            flowLayoutPanelThresholdStructureFactor.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
+            flowLayoutPanelThresholdStructureFactor.Name = "flowLayoutPanelThresholdStructureFactor";
             // 
-            // groupBox2
+            // groupBoxTextSettings
             // 
-            groupBox2.Controls.Add(flowLayoutPanel15);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            groupBoxTextSettings.Controls.Add(flowLayoutPanelTextSettings);
+            resources.ApplyResources(groupBoxTextSettings, "groupBoxTextSettings");
+            groupBoxTextSettings.Name = "groupBoxTextSettings";
+            groupBoxTextSettings.TabStop = false;
             // 
-            // flowLayoutPanel15
+            // flowLayoutPanelTextSettings
             // 
-            resources.ApplyResources(flowLayoutPanel15, "flowLayoutPanel15");
-            flowLayoutPanel15.Controls.Add(label1);
-            flowLayoutPanel15.Controls.Add(trackBarStrSize);
-            flowLayoutPanel15.Controls.Add(colorControlString);
-            flowLayoutPanel15.Name = "flowLayoutPanel15";
+            resources.ApplyResources(flowLayoutPanelTextSettings, "flowLayoutPanelTextSettings");
+            flowLayoutPanelTextSettings.Controls.Add(labelTextSize);
+            flowLayoutPanelTextSettings.Controls.Add(trackBarStrSize);
+            flowLayoutPanelTextSettings.Controls.Add(colorControlString);
+            flowLayoutPanelTextSettings.Name = "flowLayoutPanelTextSettings";
             // 
             // checkBoxShowExperimentalImage
             // 
@@ -1318,13 +1380,13 @@
             checkBoxShowExperimentalImage.Checked = true;
             checkBoxShowExperimentalImage.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowExperimentalImage.Name = "checkBoxShowExperimentalImage";
+            toolTip.SetToolTip(checkBoxShowExperimentalImage, resources.GetString("checkBoxShowExperimentalImage.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             checkBoxShowExperimentalImage.UseVisualStyleBackColor = true;
             checkBoxShowExperimentalImage.CheckedChanged += checkBoxShowExperimentalImage_CheckedChanged;
             // 
             // flowLayoutPanelExperimentalImage
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImage, "flowLayoutPanelExperimentalImage");
-            flowLayoutPanelExperimentalImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMinInt);
             flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMaxInt);
             flowLayoutPanelExperimentalImage.Name = "flowLayoutPanelExperimentalImage";
@@ -1332,6 +1394,7 @@
             // flowLayoutPanelExpMinInt
             // 
             resources.ApplyResources(flowLayoutPanelExpMinInt, "flowLayoutPanelExpMinInt");
+            flowLayoutPanelExpMinInt.Controls.Add(labelExpBrightness);
             flowLayoutPanelExpMinInt.Controls.Add(labelExpMinInt);
             flowLayoutPanelExpMinInt.Controls.Add(trackBarExpImageMinInt);
             flowLayoutPanelExpMinInt.Name = "flowLayoutPanelExpMinInt";
@@ -1340,6 +1403,7 @@
             // 
             resources.ApplyResources(labelExpMinInt, "labelExpMinInt");
             labelExpMinInt.Name = "labelExpMinInt";
+            toolTip.SetToolTip(labelExpMinInt, resources.GetString("labelExpMinInt.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             // 
             // trackBarExpImageMinInt
             // 
@@ -1347,6 +1411,7 @@
             trackBarExpImageMinInt.LargeChange = 50;
             trackBarExpImageMinInt.Maximum = 1000;
             trackBarExpImageMinInt.Name = "trackBarExpImageMinInt";
+            toolTip.SetToolTip(trackBarExpImageMinInt, resources.GetString("trackBarExpImageMinInt.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             trackBarExpImageMinInt.TickStyle = System.Windows.Forms.TickStyle.None;
             trackBarExpImageMinInt.ValueChanged += trackBarExpImageIntensity_ValueChanged;
             // 
@@ -1361,6 +1426,7 @@
             // 
             resources.ApplyResources(labelExpMaxInt, "labelExpMaxInt");
             labelExpMaxInt.Name = "labelExpMaxInt";
+            toolTip.SetToolTip(labelExpMaxInt, resources.GetString("labelExpMaxInt.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             // 
             // trackBarExpImageMaxInt
             // 
@@ -1369,6 +1435,7 @@
             trackBarExpImageMaxInt.Maximum = 1000;
             trackBarExpImageMaxInt.Minimum = 1;
             trackBarExpImageMaxInt.Name = "trackBarExpImageMaxInt";
+            toolTip.SetToolTip(trackBarExpImageMaxInt, resources.GetString("trackBarExpImageMaxInt.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             trackBarExpImageMaxInt.TickStyle = System.Windows.Forms.TickStyle.None;
             trackBarExpImageMaxInt.Value = 1000;
             trackBarExpImageMaxInt.ValueChanged += trackBarExpImageIntensity_ValueChanged;
@@ -1378,12 +1445,15 @@
             resources.ApplyResources(flowLayoutPanelExpOpacity, "flowLayoutPanelExpOpacity");
             flowLayoutPanelExpOpacity.Controls.Add(labelExpOpacity);
             flowLayoutPanelExpOpacity.Controls.Add(trackBarExpImageOpacity);
+            flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingRadon);
+            flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingDictionary);
             flowLayoutPanelExpOpacity.Name = "flowLayoutPanelExpOpacity";
             // 
             // labelExpOpacity
             // 
             resources.ApplyResources(labelExpOpacity, "labelExpOpacity");
             labelExpOpacity.Name = "labelExpOpacity";
+            toolTip.SetToolTip(labelExpOpacity, resources.GetString("labelExpOpacity.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             // 
             // trackBarExpImageOpacity
             // 
@@ -1391,14 +1461,32 @@
             trackBarExpImageOpacity.LargeChange = 10;
             trackBarExpImageOpacity.Maximum = 100;
             trackBarExpImageOpacity.Name = "trackBarExpImageOpacity";
+            toolTip.SetToolTip(trackBarExpImageOpacity, resources.GetString("trackBarExpImageOpacity.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             trackBarExpImageOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
             trackBarExpImageOpacity.Value = 100;
             trackBarExpImageOpacity.ValueChanged += trackBarExpImageOpacity_ValueChanged;
-            //
+            // 
+            // radioButtonIndexingRadon
+            // 
+            resources.ApplyResources(radioButtonIndexingRadon, "radioButtonIndexingRadon");
+            radioButtonIndexingRadon.Checked = true;
+            radioButtonIndexingRadon.Name = "radioButtonIndexingRadon";
+            radioButtonIndexingRadon.TabStop = true;
+            toolTip.SetToolTip(radioButtonIndexingRadon, resources.GetString("radioButtonIndexingRadon.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonIndexingRadon.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonIndexingDictionary
+            // 
+            resources.ApplyResources(radioButtonIndexingDictionary, "radioButtonIndexingDictionary");
+            radioButtonIndexingDictionary.Name = "radioButtonIndexingDictionary";
+            toolTip.SetToolTip(radioButtonIndexingDictionary, resources.GetString("radioButtonIndexingDictionary.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonIndexingDictionary.UseVisualStyleBackColor = true;
+            // 
             // buttonFindOrientation
             // 
             resources.ApplyResources(buttonFindOrientation, "buttonFindOrientation");
             buttonFindOrientation.Name = "buttonFindOrientation";
+            toolTip.SetToolTip(buttonFindOrientation, resources.GetString("buttonFindOrientation.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             buttonFindOrientation.UseVisualStyleBackColor = true;
             buttonFindOrientation.Click += buttonFindOrientation_Click;
             // 
@@ -1407,11 +1495,13 @@
             dataGridViewEbsdCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(dataGridViewEbsdCandidates, "dataGridViewEbsdCandidates");
             dataGridViewEbsdCandidates.Name = "dataGridViewEbsdCandidates";
-            //
+            toolTip.SetToolTip(dataGridViewEbsdCandidates, resources.GetString("dataGridViewEbsdCandidates.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            // 
             // buttonCalibrateGeometry
             // 
             resources.ApplyResources(buttonCalibrateGeometry, "buttonCalibrateGeometry");
             buttonCalibrateGeometry.Name = "buttonCalibrateGeometry";
+            toolTip.SetToolTip(buttonCalibrateGeometry, resources.GetString("buttonCalibrateGeometry.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
             buttonCalibrateGeometry.UseVisualStyleBackColor = true;
             buttonCalibrateGeometry.Click += buttonCalibrateGeometry_Click;
             // 
@@ -1419,83 +1509,86 @@
             // 
             resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
             captureExtender.SetCapture(groupBoxSimulationParameters, true);
-            groupBoxSimulationParameters.Controls.Add(flowLayoutPanel9);
+            groupBoxSimulationParameters.Controls.Add(flowLayoutPanelSimulationParameters);
             groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
             groupBoxSimulationParameters.TabStop = false;
             // 
-            // flowLayoutPanel9
+            // flowLayoutPanelSimulationParameters
             // 
-            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
-            flowLayoutPanel9.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel9.Controls.Add(flowLayoutPanel7);
-            flowLayoutPanel9.Controls.Add(flowLayoutPanel6);
-            flowLayoutPanel9.Controls.Add(flowLayoutPanel8);
-            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            resources.ApplyResources(flowLayoutPanelSimulationParameters, "flowLayoutPanelSimulationParameters");
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMaxNumOfGAndGrid);
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelEnergyRange);
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelThicknessRange);
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelAbsorptionOptions);
+            flowLayoutPanelSimulationParameters.Name = "flowLayoutPanelSimulationParameters";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelMaxNumOfGAndGrid
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(numericBoxMaxNumOfG);
-            flowLayoutPanel2.Controls.Add(labelMasterPatternGrid);
-            flowLayoutPanel2.Controls.Add(comboBoxMasterPatternGrid);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelMaxNumOfGAndGrid, "flowLayoutPanelMaxNumOfGAndGrid");
+            flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(numericBoxMaxNumOfG);
+            flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(labelMasterPatternGrid);
+            flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(comboBoxMasterPatternGrid);
+            flowLayoutPanelMaxNumOfGAndGrid.Name = "flowLayoutPanelMaxNumOfGAndGrid";
             // 
-            // flowLayoutPanel7
+            // flowLayoutPanelEnergyRange
             // 
-            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
-            flowLayoutPanel7.Controls.Add(numericBoxEnergyStart);
-            flowLayoutPanel7.Controls.Add(numericBoxEnergyEnd);
-            flowLayoutPanel7.Controls.Add(numericBoxEnergyStep);
-            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            resources.ApplyResources(flowLayoutPanelEnergyRange, "flowLayoutPanelEnergyRange");
+            flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyStart);
+            flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyEnd);
+            flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyStep);
+            flowLayoutPanelEnergyRange.Name = "flowLayoutPanelEnergyRange";
             // 
-            // flowLayoutPanel6
+            // flowLayoutPanelThicknessRange
             // 
-            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
-            flowLayoutPanel6.Controls.Add(numericBoxThicknessStart);
-            flowLayoutPanel6.Controls.Add(numericBoxThicknessEnd);
-            flowLayoutPanel6.Controls.Add(numericBoxThicknessStep);
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            resources.ApplyResources(flowLayoutPanelThicknessRange, "flowLayoutPanelThicknessRange");
+            flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessStart);
+            flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessEnd);
+            flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessStep);
+            flowLayoutPanelThicknessRange.Name = "flowLayoutPanelThicknessRange";
             // 
-            // flowLayoutPanel8
+            // flowLayoutPanelAbsorptionOptions
             // 
-            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
-            flowLayoutPanel8.Controls.Add(checkBoxNonLocalAbsorption);
-            flowLayoutPanel8.Controls.Add(checkBoxTDSBackground);
-            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            resources.ApplyResources(flowLayoutPanelAbsorptionOptions, "flowLayoutPanelAbsorptionOptions");
+            flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxNonLocalAbsorption);
+            flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxTDSBackground);
+            flowLayoutPanelAbsorptionOptions.Name = "flowLayoutPanelAbsorptionOptions";
             // 
-            // statusStrip1
+            // statusStripMain
             // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
-            statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
-            statusStrip1.Name = "statusStrip1";
+            resources.ApplyResources(statusStripMain, "statusStripMain");
+            statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelProgress, toolStripStatusLabelSummary, toolStripStatusLabelDetail });
+            statusStripMain.Name = "statusStripMain";
             // 
             // toolStripProgressBar
             // 
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabelProgress
             // 
-            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(toolStripStatusLabelProgress, "toolStripStatusLabelProgress");
+            toolStripStatusLabelProgress.Name = "toolStripStatusLabelProgress";
             // 
-            // toolStripStatusLabel2
+            // toolStripStatusLabelSummary
             // 
-            resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
-            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            resources.ApplyResources(toolStripStatusLabelSummary, "toolStripStatusLabelSummary");
+            toolStripStatusLabelSummary.Name = "toolStripStatusLabelSummary";
             // 
-            // toolStripStatusLabel3
+            // toolStripStatusLabelDetail
             // 
-            resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
-            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            resources.ApplyResources(toolStripStatusLabelDetail, "toolStripStatusLabelDetail");
+            toolStripStatusLabelDetail.Name = "toolStripStatusLabelDetail";
             // 
             // scalablePictureBoxAdvancedMasterPattern2D
             // 
+            scalablePictureBoxAdvancedMasterPattern2D.BackColor = System.Drawing.SystemColors.Control;
             scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ColorVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
             resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.GradiaentVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilterVisible = false;
@@ -1503,9 +1596,13 @@
             scalablePictureBoxAdvancedMasterPattern2D.MaximumIntensity = 1D;
             scalablePictureBoxAdvancedMasterPattern2D.MousePositionLabelVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.Name = "scalablePictureBoxAdvancedMasterPattern2D";
+            scalablePictureBoxAdvancedMasterPattern2D.PolarityVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ScaleVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ShowGradiaent = false;
             scalablePictureBoxAdvancedMasterPattern2D.StatusVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.TrackBarVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.UpperIntensity = 1D;
+            scalablePictureBoxAdvancedMasterPattern2D.VisibleGradient = false;
             scalablePictureBoxAdvancedMasterPattern2D.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern2D_BrightnessAndColorChanged;
             // 
             // flowLayoutPanelMasterPatternSelectors
@@ -1513,8 +1610,6 @@
             resources.ApplyResources(flowLayoutPanelMasterPatternSelectors, "flowLayoutPanelMasterPatternSelectors");
             flowLayoutPanelMasterPatternSelectors.Controls.Add(numericBoxMasterPatternEnergy);
             flowLayoutPanelMasterPatternSelectors.Controls.Add(trackBarMasterPatternEnergy);
-            flowLayoutPanelMasterPatternSelectors.Controls.Add(numericBoxMasterPatternDepth);
-            flowLayoutPanelMasterPatternSelectors.Controls.Add(trackBarMasterPatternDepth);
             flowLayoutPanelMasterPatternSelectors.Name = "flowLayoutPanelMasterPatternSelectors";
             // 
             // panelMasterPattern3D
@@ -1533,74 +1628,109 @@
             // groupBoxMasterPattern
             // 
             captureExtender.SetCapture(groupBoxMasterPattern, true);
-            groupBoxMasterPattern.Controls.Add(flowLayoutPanel5);
-            groupBoxMasterPattern.Controls.Add(flowLayoutPanel4);
-            groupBoxMasterPattern.Controls.Add(flowLayoutPanel3);
-            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
+            groupBoxMasterPattern.Controls.Add(tabControlMasterPattern);
+            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternControls);
             groupBoxMasterPattern.Controls.Add(groupBoxSimulationParameters);
-            groupBoxMasterPattern.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
-            groupBoxMasterPattern.Controls.Add(panelMasterPattern3D);
-            groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
-            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
+            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternButtons);
             resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
             // 
-            // flowLayoutPanel5
+            // tabControlMasterPattern
             // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(buttonMasterPattern2DCopy);
-            flowLayoutPanel5.Controls.Add(labelMasterPattern2DHemisphere);
-            flowLayoutPanel5.Controls.Add(comboBoxMasterPattern2DHemisphere);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            tabControlMasterPattern.Controls.Add(tabPageMasterPattern2D);
+            tabControlMasterPattern.Controls.Add(tabPageMasterPattern3D);
+            resources.ApplyResources(tabControlMasterPattern, "tabControlMasterPattern");
+            tabControlMasterPattern.Name = "tabControlMasterPattern";
+            tabControlMasterPattern.SelectedIndex = 0;
             // 
-            // flowLayoutPanel4
+            // tabPageMasterPattern2D
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(buttonMasterPattern3DCopy);
-            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisLabel);
-            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisArrows);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            tabPageMasterPattern2D.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
+            tabPageMasterPattern2D.Controls.Add(flowLayoutPanelMasterPattern2DControls);
+            resources.ApplyResources(tabPageMasterPattern2D, "tabPageMasterPattern2D");
+            tabPageMasterPattern2D.Name = "tabPageMasterPattern2D";
+            tabPageMasterPattern2D.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelMasterPattern2DControls
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(buttonCreateMasterPattern);
-            flowLayoutPanel3.Controls.Add(buttonStop);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelMasterPattern2DControls, "flowLayoutPanelMasterPattern2DControls");
+            flowLayoutPanelMasterPattern2DControls.Controls.Add(buttonMasterPattern2DCopy);
+            flowLayoutPanelMasterPattern2DControls.Controls.Add(labelMasterPattern2DHemisphere);
+            flowLayoutPanelMasterPattern2DControls.Controls.Add(comboBoxMasterPattern2DHemisphere);
+            flowLayoutPanelMasterPattern2DControls.Name = "flowLayoutPanelMasterPattern2DControls";
+            // 
+            // tabPageMasterPattern3D
+            // 
+            tabPageMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
+            tabPageMasterPattern3D.Controls.Add(panelMasterPattern3D);
+            tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DCopy);
+            tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
+            resources.ApplyResources(tabPageMasterPattern3D, "tabPageMasterPattern3D");
+            tabPageMasterPattern3D.Name = "tabPageMasterPattern3D";
+            // 
+            // flowLayoutPanelMasterPattern3DCopy
+            // 
+            resources.ApplyResources(flowLayoutPanelMasterPattern3DCopy, "flowLayoutPanelMasterPattern3DCopy");
+            flowLayoutPanelMasterPattern3DCopy.Controls.Add(buttonMasterPattern3DCopy);
+            flowLayoutPanelMasterPattern3DCopy.Name = "flowLayoutPanelMasterPattern3DCopy";
             // 
             // flowLayoutPanelMasterPattern3DViewAlong
             // 
             resources.ApplyResources(flowLayoutPanelMasterPattern3DViewAlong, "flowLayoutPanelMasterPattern3DViewAlong");
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(buttonMasterPattern3DViewAlong);
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(indexControl);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(checkBoxMasterPattern3DAxisLabel);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(checkBoxMasterPattern3DAxisArrows);
             flowLayoutPanelMasterPattern3DViewAlong.Name = "flowLayoutPanelMasterPattern3DViewAlong";
+            // 
+            // flowLayoutPanelMasterPatternControls
+            // 
+            resources.ApplyResources(flowLayoutPanelMasterPatternControls, "flowLayoutPanelMasterPatternControls");
+            flowLayoutPanelMasterPatternControls.Controls.Add(flowLayoutPanelMasterPatternSelectors);
+            flowLayoutPanelMasterPatternControls.Controls.Add(flowLayoutPanelMasterPatternDepth);
+            flowLayoutPanelMasterPatternControls.Name = "flowLayoutPanelMasterPatternControls";
+            // 
+            // flowLayoutPanelMasterPatternDepth
+            // 
+            resources.ApplyResources(flowLayoutPanelMasterPatternDepth, "flowLayoutPanelMasterPatternDepth");
+            flowLayoutPanelMasterPatternDepth.Controls.Add(numericBoxMasterPatternDepth);
+            flowLayoutPanelMasterPatternDepth.Controls.Add(trackBarMasterPatternDepth);
+            flowLayoutPanelMasterPatternDepth.Name = "flowLayoutPanelMasterPatternDepth";
+            // 
+            // flowLayoutPanelMasterPatternButtons
+            // 
+            resources.ApplyResources(flowLayoutPanelMasterPatternButtons, "flowLayoutPanelMasterPatternButtons");
+            flowLayoutPanelMasterPatternButtons.Controls.Add(buttonCreateMasterPattern);
+            flowLayoutPanelMasterPatternButtons.Controls.Add(buttonStop);
+            flowLayoutPanelMasterPatternButtons.Controls.Add(buttonFitNistElasticSampler);
+            flowLayoutPanelMasterPatternButtons.Name = "flowLayoutPanelMasterPatternButtons";
             // 
             // groupBoxEBSDPattern
             // 
             captureExtender.SetCapture(groupBoxEBSDPattern, true);
             groupBoxEBSDPattern.Controls.Add(graphicsBox);
-            groupBoxEBSDPattern.Controls.Add(tabControl2);
-            groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
+            groupBoxEBSDPattern.Controls.Add(tabControlPatternSettings);
+            groupBoxEBSDPattern.Controls.Add(flowLayoutPanelPatternBar);
             resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
             // 
-            // tabControl2
+            // tabControlPatternSettings
             // 
-            tabControl2.Controls.Add(tabPageOutputParameter);
-            tabControl2.Controls.Add(tabPageExperimentalImage);
-            resources.ApplyResources(tabControl2, "tabControl2");
-            tabControl2.Name = "tabControl2";
-            tabControl2.SelectedIndex = 0;
+            tabControlPatternSettings.Controls.Add(tabPageOutputParameter);
+            tabControlPatternSettings.Controls.Add(tabPageExperimentalImage);
+            resources.ApplyResources(tabControlPatternSettings, "tabControlPatternSettings");
+            tabControlPatternSettings.Name = "tabControlPatternSettings";
+            tabControlPatternSettings.SelectedIndex = 0;
             // 
             // tabPageOutputParameter
             // 
             tabPageOutputParameter.BackColor = System.Drawing.SystemColors.Control;
-            tabPageOutputParameter.Controls.Add(flowLayoutPanel20);
-            tabPageOutputParameter.Controls.Add(flowLayoutPanel19);
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelColorScale);
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelBrightness);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelOutputRange);
-            tabPageOutputParameter.Controls.Add(flowLayoutPanel18);
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelWithBseDistribution);
             resources.ApplyResources(tabPageOutputParameter, "tabPageOutputParameter");
             tabPageOutputParameter.Name = "tabPageOutputParameter";
             // 
@@ -1608,44 +1738,131 @@
             // 
             tabPageExperimentalImage.BackColor = System.Drawing.SystemColors.Control;
             tabPageExperimentalImage.Controls.Add(dataGridViewEbsdCandidates);
-            tabPageExperimentalImage.Controls.Add(flowLayoutPanelExpOpacity);
-            tabPageExperimentalImage.Controls.Add(flowLayoutPanelExperimentalImage);
-            tabPageExperimentalImage.Controls.Add(radioButtonIndexingRadon); //260724Cl 追加
-            tabPageExperimentalImage.Controls.Add(radioButtonIndexingDictionary); //260724Cl 追加
-            tabPageExperimentalImage.Controls.Add(buttonCalibrateGeometry);
-            tabPageExperimentalImage.Controls.Add(buttonFindOrientation);
+            tabPageExperimentalImage.Controls.Add(flowLayoutPanelExperimentalImageTab);
             resources.ApplyResources(tabPageExperimentalImage, "tabPageExperimentalImage");
             tabPageExperimentalImage.Name = "tabPageExperimentalImage";
-            //
-            // radioButtonIndexingRadon
-            //
-            resources.ApplyResources(radioButtonIndexingRadon, "radioButtonIndexingRadon");
-            radioButtonIndexingRadon.Checked = true;
-            radioButtonIndexingRadon.Name = "radioButtonIndexingRadon";
-            radioButtonIndexingRadon.TabStop = true;
-            radioButtonIndexingRadon.UseVisualStyleBackColor = true;
-            //
-            // radioButtonIndexingDictionary
-            //
-            resources.ApplyResources(radioButtonIndexingDictionary, "radioButtonIndexingDictionary");
-            radioButtonIndexingDictionary.Name = "radioButtonIndexingDictionary";
-            radioButtonIndexingDictionary.UseVisualStyleBackColor = true;
-            //
-            // flowLayoutPanel1
-            //
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonCopyImage);
-            flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
-            flowLayoutPanel1.Controls.Add(checkBoxShowDyanmicalEBSD);
-            flowLayoutPanel1.Controls.Add(checkBoxShowExperimentalImage);
-            flowLayoutPanel1.Controls.Add(checkBoxFlipDetectorLeftRight);
-            flowLayoutPanel1.Controls.Add(numericBoxResolution);
-            flowLayoutPanel1.Controls.Add(sizeControl);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // flowLayoutPanelExperimentalImageTab
+            // 
+            resources.ApplyResources(flowLayoutPanelExperimentalImageTab, "flowLayoutPanelExperimentalImageTab");
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExperimentalImage);
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpOpacity);
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelIndexingButtons);
+            flowLayoutPanelExperimentalImageTab.Name = "flowLayoutPanelExperimentalImageTab";
+            // 
+            // flowLayoutPanelIndexingButtons
+            // 
+            resources.ApplyResources(flowLayoutPanelIndexingButtons, "flowLayoutPanelIndexingButtons");
+            flowLayoutPanelIndexingButtons.Controls.Add(buttonFindOrientation);
+            flowLayoutPanelIndexingButtons.Controls.Add(buttonCalibrateGeometry);
+            flowLayoutPanelIndexingButtons.Name = "flowLayoutPanelIndexingButtons";
+            // 
+            // flowLayoutPanelPatternBar
+            // 
+            resources.ApplyResources(flowLayoutPanelPatternBar, "flowLayoutPanelPatternBar");
+            flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelCopy);
+            flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelViewSettings);
+            flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelShowCheckBoxes);
+            flowLayoutPanelPatternBar.Name = "flowLayoutPanelPatternBar";
+            // 
+            // flowLayoutPanelCopy
+            // 
+            resources.ApplyResources(flowLayoutPanelCopy, "flowLayoutPanelCopy");
+            flowLayoutPanelCopy.Controls.Add(flowLayoutPanelCopyOptions);
+            flowLayoutPanelCopy.Name = "flowLayoutPanelCopy";
+            // 
+            // flowLayoutPanelCopyOptions
+            // 
+            resources.ApplyResources(flowLayoutPanelCopyOptions, "flowLayoutPanelCopyOptions");
+            flowLayoutPanelCopyOptions.Controls.Add(flowLayoutPanelCopyButton);
+            flowLayoutPanelCopyOptions.Controls.Add(flowLayoutPanelCopyRadios);
+            flowLayoutPanelCopyOptions.Name = "flowLayoutPanelCopyOptions";
+            // 
+            // flowLayoutPanelCopyButton
+            // 
+            resources.ApplyResources(flowLayoutPanelCopyButton, "flowLayoutPanelCopyButton");
+            flowLayoutPanelCopyButton.Controls.Add(buttonCopyImage);
+            flowLayoutPanelCopyButton.Controls.Add(checkBoxMatchDetectorResolution);
+            flowLayoutPanelCopyButton.Name = "flowLayoutPanelCopyButton";
+            // 
+            // checkBoxMatchDetectorResolution
+            // 
+            resources.ApplyResources(checkBoxMatchDetectorResolution, "checkBoxMatchDetectorResolution");
+            checkBoxMatchDetectorResolution.Name = "checkBoxMatchDetectorResolution";
+            toolTip.SetToolTip(checkBoxMatchDetectorResolution, resources.GetString("checkBoxMatchDetectorResolution.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            checkBoxMatchDetectorResolution.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelCopyRadios
+            // 
+            resources.ApplyResources(flowLayoutPanelCopyRadios, "flowLayoutPanelCopyRadios");
+            flowLayoutPanelCopyRadios.Controls.Add(flowLayoutPanelCopyRange);
+            flowLayoutPanelCopyRadios.Controls.Add(flowLayoutPanelCopyFormat);
+            flowLayoutPanelCopyRadios.Name = "flowLayoutPanelCopyRadios";
+            // 
+            // flowLayoutPanelCopyRange
+            // 
+            resources.ApplyResources(flowLayoutPanelCopyRange, "flowLayoutPanelCopyRange");
+            flowLayoutPanelCopyRange.Controls.Add(radioButtonCopyCurrent);
+            flowLayoutPanelCopyRange.Controls.Add(radioButtonDetector);
+            flowLayoutPanelCopyRange.Name = "flowLayoutPanelCopyRange";
+            // 
+            // radioButtonCopyCurrent
+            // 
+            resources.ApplyResources(radioButtonCopyCurrent, "radioButtonCopyCurrent");
+            radioButtonCopyCurrent.Checked = true;
+            radioButtonCopyCurrent.Name = "radioButtonCopyCurrent";
+            radioButtonCopyCurrent.TabStop = true;
+            toolTip.SetToolTip(radioButtonCopyCurrent, resources.GetString("radioButtonCopyCurrent.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonCopyCurrent.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDetector
+            // 
+            resources.ApplyResources(radioButtonDetector, "radioButtonDetector");
+            radioButtonDetector.Name = "radioButtonDetector";
+            toolTip.SetToolTip(radioButtonDetector, resources.GetString("radioButtonDetector.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonDetector.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelCopyFormat
+            // 
+            resources.ApplyResources(flowLayoutPanelCopyFormat, "flowLayoutPanelCopyFormat");
+            flowLayoutPanelCopyFormat.Controls.Add(radioButtonCopyEmf);
+            flowLayoutPanelCopyFormat.Controls.Add(radioButtonCopyBmp);
+            flowLayoutPanelCopyFormat.Name = "flowLayoutPanelCopyFormat";
+            // 
+            // radioButtonCopyEmf
+            // 
+            resources.ApplyResources(radioButtonCopyEmf, "radioButtonCopyEmf");
+            radioButtonCopyEmf.Checked = true;
+            radioButtonCopyEmf.Name = "radioButtonCopyEmf";
+            radioButtonCopyEmf.TabStop = true;
+            toolTip.SetToolTip(radioButtonCopyEmf, resources.GetString("radioButtonCopyEmf.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonCopyEmf.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCopyBmp
+            // 
+            resources.ApplyResources(radioButtonCopyBmp, "radioButtonCopyBmp");
+            radioButtonCopyBmp.Name = "radioButtonCopyBmp";
+            toolTip.SetToolTip(radioButtonCopyBmp, resources.GetString("radioButtonCopyBmp.ToolTip")); // 260725Cl 追加: ツールチップの表示経路
+            radioButtonCopyBmp.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelViewSettings
+            // 
+            resources.ApplyResources(flowLayoutPanelViewSettings, "flowLayoutPanelViewSettings");
+            flowLayoutPanelViewSettings.Controls.Add(flowLayoutPanelResolutionFlip);
+            flowLayoutPanelViewSettings.Controls.Add(sizeControl);
+            flowLayoutPanelViewSettings.Name = "flowLayoutPanelViewSettings";
+            // 
+            // flowLayoutPanelResolutionFlip
+            // 
+            resources.ApplyResources(flowLayoutPanelResolutionFlip, "flowLayoutPanelResolutionFlip");
+            flowLayoutPanelResolutionFlip.Controls.Add(numericBoxResolution);
+            flowLayoutPanelResolutionFlip.Controls.Add(checkBoxFlipDetectorLeftRight);
+            flowLayoutPanelResolutionFlip.Name = "flowLayoutPanelResolutionFlip";
             // 
             // numericBoxResolution
             // 
             numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
+            numericBoxResolution.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.Maximum = 10D;
             numericBoxResolution.Minimum = 0.0001D;
@@ -1660,20 +1877,37 @@
             sizeControl.Name = "sizeControl";
             sizeControl.ValueChanged += sizeControl_ValueChanged;
             // 
-            // panel1
+            // flowLayoutPanelShowCheckBoxes
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Name = "panel1";
+            resources.ApplyResources(flowLayoutPanelShowCheckBoxes, "flowLayoutPanelShowCheckBoxes");
+            flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowOverlays);
+            flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowDyanmicalEBSD);
+            flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowExperimentalImage);
+            flowLayoutPanelShowCheckBoxes.Name = "flowLayoutPanelShowCheckBoxes";
             // 
-            // panel3
+            // panelSpacerLeft
             // 
-            resources.ApplyResources(panel3, "panel3");
-            panel3.Name = "panel3";
+            resources.ApplyResources(panelSpacerLeft, "panelSpacerLeft");
+            panelSpacerLeft.Name = "panelSpacerLeft";
             // 
-            // panel4
+            // panelSpacerRight
             // 
-            resources.ApplyResources(panel4, "panel4");
-            panel4.Name = "panel4";
+            resources.ApplyResources(panelSpacerRight, "panelSpacerRight");
+            panelSpacerRight.Name = "panelSpacerRight";
+            // 
+            // panelSpacerBottom
+            // 
+            resources.ApplyResources(panelSpacerBottom, "panelSpacerBottom");
+            panelSpacerBottom.Name = "panelSpacerBottom";
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(graphControlDepthProfile, 0, 3);
+            tableLayoutPanel1.Controls.Add(graphControlEnergyProfile, 0, 1);
+            tableLayoutPanel1.Controls.Add(labelBseDeltaE, 0, 0);
+            tableLayoutPanel1.Controls.Add(labelBseDepth, 0, 2);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // FormEBSD
             // 
@@ -1682,12 +1916,12 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(groupBoxEBSDPattern);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            Controls.Add(panelSpacerRight);
+            Controls.Add(panelSpacerLeft);
             Controls.Add(groupBoxMasterPattern);
-            Controls.Add(tabControl1);
-            Controls.Add(panel4);
-            Controls.Add(statusStrip1);
+            Controls.Add(tabControlSettings);
+            Controls.Add(panelSpacerBottom);
+            Controls.Add(statusStripMain);
             Name = "FormEBSD";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
@@ -1704,47 +1938,47 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
             flowLayoutPanelViewAlong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
-            flowLayoutPanel20.ResumeLayout(false);
-            flowLayoutPanel20.PerformLayout();
-            flowLayoutPanel19.ResumeLayout(false);
-            flowLayoutPanel19.PerformLayout();
+            flowLayoutPanelColorScale.ResumeLayout(false);
+            flowLayoutPanelColorScale.PerformLayout();
+            flowLayoutPanelBrightness.ResumeLayout(false);
+            flowLayoutPanelBrightness.PerformLayout();
             flowLayoutPanelOutputRange.ResumeLayout(false);
-            flowLayoutPanel18.ResumeLayout(false);
-            flowLayoutPanel18.PerformLayout();
-            tabControl1.ResumeLayout(false);
+            flowLayoutPanelWithBseDistribution.ResumeLayout(false);
+            flowLayoutPanelWithBseDistribution.PerformLayout();
+            tabControlSettings.ResumeLayout(false);
             tabPageGeometry.ResumeLayout(false);
             tabPageGeometry.PerformLayout();
             groupBoxEBSDGeometry.ResumeLayout(false);
             groupBoxEBSDGeometry.PerformLayout();
-            flowLayoutPanel11.ResumeLayout(false);
-            flowLayoutPanel11.PerformLayout();
-            flowLayoutPanel17.ResumeLayout(false);
-            flowLayoutPanel17.PerformLayout();
-            flowLayoutPanel16.ResumeLayout(false);
-            flowLayoutPanel16.PerformLayout();
+            flowLayoutPanelDetectorGeometry.ResumeLayout(false);
+            flowLayoutPanelDetectorGeometry.PerformLayout();
+            flowLayoutPanelDetectorSizeTilt.ResumeLayout(false);
+            flowLayoutPanelDetectorSizeTilt.PerformLayout();
+            flowLayoutPanelDetectorPosition.ResumeLayout(false);
+            flowLayoutPanelDetectorPosition.PerformLayout();
             groupBoxSampleCondition.ResumeLayout(false);
             groupBoxSampleCondition.PerformLayout();
-            flowLayoutPanel12.ResumeLayout(false);
-            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanelSampleCondition.ResumeLayout(false);
+            flowLayoutPanelSampleCondition.PerformLayout();
             tabPageBseDistribution.ResumeLayout(false);
             tabPageBseDistribution.PerformLayout();
             tabPageOverlays.ResumeLayout(false);
-            flowLayoutPanel10.ResumeLayout(false);
-            flowLayoutPanel10.PerformLayout();
-            flowLayoutPanel1DetectorOutline.ResumeLayout(false);
-            flowLayoutPanel1DetectorOutline.PerformLayout();
-            flowLayoutPanel1KikuchiLines.ResumeLayout(false);
-            flowLayoutPanel1KikuchiLines.PerformLayout();
+            flowLayoutPanelOverlays.ResumeLayout(false);
+            flowLayoutPanelOverlays.PerformLayout();
+            flowLayoutPanelDetectorOutline.ResumeLayout(false);
+            flowLayoutPanelDetectorOutline.PerformLayout();
+            flowLayoutPanelKikuchiLines.ResumeLayout(false);
+            flowLayoutPanelKikuchiLines.PerformLayout();
             groupBoxLatticePlanes.ResumeLayout(false);
             groupBoxLatticePlanes.PerformLayout();
-            flowLayoutPanel14.ResumeLayout(false);
-            flowLayoutPanel14.PerformLayout();
-            flowLayoutPanel13.ResumeLayout(false);
-            flowLayoutPanel13.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            flowLayoutPanel15.ResumeLayout(false);
-            flowLayoutPanel15.PerformLayout();
+            flowLayoutPanelThresholdLength.ResumeLayout(false);
+            flowLayoutPanelThresholdLength.PerformLayout();
+            flowLayoutPanelThresholdStructureFactor.ResumeLayout(false);
+            flowLayoutPanelThresholdStructureFactor.PerformLayout();
+            groupBoxTextSettings.ResumeLayout(false);
+            groupBoxTextSettings.PerformLayout();
+            flowLayoutPanelTextSettings.ResumeLayout(false);
+            flowLayoutPanelTextSettings.PerformLayout();
             flowLayoutPanelExperimentalImage.ResumeLayout(false);
             flowLayoutPanelExperimentalImage.PerformLayout();
             flowLayoutPanelExpMinInt.ResumeLayout(false);
@@ -1759,39 +1993,71 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).EndInit();
             groupBoxSimulationParameters.ResumeLayout(false);
             groupBoxSimulationParameters.PerformLayout();
-            flowLayoutPanel9.ResumeLayout(false);
-            flowLayoutPanel9.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            flowLayoutPanel7.ResumeLayout(false);
-            flowLayoutPanel7.PerformLayout();
-            flowLayoutPanel6.ResumeLayout(false);
-            flowLayoutPanel6.PerformLayout();
-            flowLayoutPanel8.ResumeLayout(false);
-            flowLayoutPanel8.PerformLayout();
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
+            flowLayoutPanelSimulationParameters.ResumeLayout(false);
+            flowLayoutPanelSimulationParameters.PerformLayout();
+            flowLayoutPanelMaxNumOfGAndGrid.ResumeLayout(false);
+            flowLayoutPanelMaxNumOfGAndGrid.PerformLayout();
+            flowLayoutPanelEnergyRange.ResumeLayout(false);
+            flowLayoutPanelEnergyRange.PerformLayout();
+            flowLayoutPanelThicknessRange.ResumeLayout(false);
+            flowLayoutPanelThicknessRange.PerformLayout();
+            flowLayoutPanelAbsorptionOptions.ResumeLayout(false);
+            flowLayoutPanelAbsorptionOptions.PerformLayout();
+            statusStripMain.ResumeLayout(false);
+            statusStripMain.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
             panelMasterPattern3D.ResumeLayout(false);
             groupBoxMasterPattern.ResumeLayout(false);
             groupBoxMasterPattern.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
+            tabControlMasterPattern.ResumeLayout(false);
+            tabPageMasterPattern2D.ResumeLayout(false);
+            tabPageMasterPattern2D.PerformLayout();
+            flowLayoutPanelMasterPattern2DControls.ResumeLayout(false);
+            flowLayoutPanelMasterPattern2DControls.PerformLayout();
+            tabPageMasterPattern3D.ResumeLayout(false);
+            tabPageMasterPattern3D.PerformLayout();
+            flowLayoutPanelMasterPattern3DCopy.ResumeLayout(false);
+            flowLayoutPanelMasterPattern3DCopy.PerformLayout();
             flowLayoutPanelMasterPattern3DViewAlong.ResumeLayout(false);
             flowLayoutPanelMasterPattern3DViewAlong.PerformLayout();
+            flowLayoutPanelMasterPatternControls.ResumeLayout(false);
+            flowLayoutPanelMasterPatternControls.PerformLayout();
+            flowLayoutPanelMasterPatternDepth.ResumeLayout(false);
+            flowLayoutPanelMasterPatternButtons.ResumeLayout(false);
+            flowLayoutPanelMasterPatternButtons.PerformLayout();
             groupBoxEBSDPattern.ResumeLayout(false);
             groupBoxEBSDPattern.PerformLayout();
-            tabControl2.ResumeLayout(false);
+            tabControlPatternSettings.ResumeLayout(false);
             tabPageOutputParameter.ResumeLayout(false);
             tabPageOutputParameter.PerformLayout();
             tabPageExperimentalImage.ResumeLayout(false);
             tabPageExperimentalImage.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanelExperimentalImageTab.ResumeLayout(false);
+            flowLayoutPanelExperimentalImageTab.PerformLayout();
+            flowLayoutPanelIndexingButtons.ResumeLayout(false);
+            flowLayoutPanelIndexingButtons.PerformLayout();
+            flowLayoutPanelPatternBar.ResumeLayout(false);
+            flowLayoutPanelPatternBar.PerformLayout();
+            flowLayoutPanelCopy.ResumeLayout(false);
+            flowLayoutPanelCopy.PerformLayout();
+            flowLayoutPanelCopyOptions.ResumeLayout(false);
+            flowLayoutPanelCopyOptions.PerformLayout();
+            flowLayoutPanelCopyButton.ResumeLayout(false);
+            flowLayoutPanelCopyButton.PerformLayout();
+            flowLayoutPanelCopyRadios.ResumeLayout(false);
+            flowLayoutPanelCopyRadios.PerformLayout();
+            flowLayoutPanelCopyRange.ResumeLayout(false);
+            flowLayoutPanelCopyRange.PerformLayout();
+            flowLayoutPanelCopyFormat.ResumeLayout(false);
+            flowLayoutPanelCopyFormat.PerformLayout();
+            flowLayoutPanelViewSettings.ResumeLayout(false);
+            flowLayoutPanelViewSettings.PerformLayout();
+            flowLayoutPanelResolutionFlip.ResumeLayout(false);
+            flowLayoutPanelResolutionFlip.PerformLayout();
+            flowLayoutPanelShowCheckBoxes.ResumeLayout(false);
+            flowLayoutPanelShowCheckBoxes.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1820,7 +2086,7 @@
         private System.Windows.Forms.TrackBar trackBarStrSize;
         public ColorControl colorControlExcessLine;
         private System.Windows.Forms.TrackBar trackBarLineWidth;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelLineWidth;
         public ColorControl colorControlString;
         public ColorControl colorControlBackGround;
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfStructureFactor;
@@ -1828,22 +2094,22 @@
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfLength;
         private NumericBox numericBoxKikuchiThresholdOfStructureFactor;
         private NumericBox numericBoxKikuchiThresholdOfLength;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTextSize;
         private NumericBox numericBoxThicknessStep;
         private NumericBox numericBoxMaxNumOfG;
         private NumericBox numericBoxThicknessStart;
         private NumericBox numericBoxThicknessEnd;
         private System.Windows.Forms.Button buttonStop;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelPolarity;
+        private System.Windows.Forms.Label labelColor;
         public System.Windows.Forms.ComboBox comboBoxGradient;
         public System.Windows.Forms.ComboBox comboBoxScale;
         public System.Windows.Forms.TrackBar trackBarOutputThickness;
         private System.Windows.Forms.TrackBar trackBarIntensityBrightnessMax;
         private System.Windows.Forms.TrackBar trackBarIntensityBrightnessMin;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelBrightnessMax;
+        private System.Windows.Forms.Label labelBrightnessMin;
+        private System.Windows.Forms.Label labelBrightness;
         private System.Windows.Forms.CheckBox checkBoxShowOverlays;
         private System.Windows.Forms.Button buttonCopyImage;
         private GraphControl graphControlEnergyProfile;
@@ -1853,19 +2119,19 @@
         private NumericBox numericBoxEnergyStart;
         private NumericBox numericBoxEnergyStep;
         private System.Windows.Forms.Button buttonViewQuarter;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelBseDepth;
+        private System.Windows.Forms.Label labelBseDeltaE;
         private System.Windows.Forms.CheckBox checkBoxShowDyanmicalEBSD;
         private System.Windows.Forms.CheckBox checkBoxDrawDetectorOutline;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlSettings;
         private System.Windows.Forms.TabPage tabPageGeometry;
         private System.Windows.Forms.TabPage tabPageBseDistribution;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelBseStereonetNote;
         private System.Windows.Forms.GroupBox groupBoxSimulationParameters;
         private System.Windows.Forms.TabPage tabPageOverlays;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.StatusStrip statusStripMain;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProgress;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelSummary;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
@@ -1890,57 +2156,56 @@
         private System.Windows.Forms.GroupBox groupBoxSampleCondition;
         private System.Windows.Forms.GroupBox groupBoxEBSDGeometry;
         private System.Windows.Forms.GroupBox groupBoxEBSDPattern;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelSpacerLeft;
+        private System.Windows.Forms.Panel panelSpacerRight;
+        private System.Windows.Forms.Panel panelSpacerBottom;
         private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisLabel;
-        private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisArrows;
         private System.Windows.Forms.Panel panelMasterPattern3DAxes;
         private System.Windows.Forms.Button buttonMasterPattern3DViewAlong;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern3DViewAlong;
         // 260517Cl 削除: IndexControl 化により [u v w] のブラケット表示は IndexControl 内部 (labelLaTexStart/End) が担うため、外側ラベルは不要に。
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDetail;
         private System.Windows.Forms.CheckBox checkBoxShowGIndices;
         private System.Windows.Forms.CheckBox checkBoxShowZoneAxisIndices;
         private System.Windows.Forms.CheckBox checkBoxShowKikuchiLines;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBoxTextSettings;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPatternBar;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternButtons;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern2DControls;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern3DCopy;
         private IndexControl indexControl;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSimulationParameters;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMaxNumOfGAndGrid;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergyRange;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThicknessRange;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAbsorptionOptions;
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
         private NumericBox numericBoxEnergy;
         private NumericBox numericBoxDepth;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1DetectorOutline;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOverlays;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDetectorOutline;
         private System.Windows.Forms.CheckBox checkBoxShowCircle;
         private System.Windows.Forms.CheckBox checkBoxShowMesh;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1KikuchiLines;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel15;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiLines;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDetectorGeometry;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSampleCondition;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThresholdLength;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThresholdStructureFactor;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTextSettings;
         private NumericBox numericBoxXofDet;
         private SizeControl sizeControl;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel16;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel17;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelDetectorCenter;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDetectorPosition;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDetectorSizeTilt;
+        private System.Windows.Forms.Label labelDetectorSizeTilt;
         private NumericBox numericBoxDetWidth;
         private NumericBox numericBoxDetHeight;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel18;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel20;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel19;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWithBseDistribution;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColorScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBrightness;
         private NumericBox numericBoxResolution;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelDetectorResolution;
         private NumericBox numericBoxDetResolution;
         private System.Windows.Forms.CheckBox checkBoxShowExperimentalImage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExperimentalImage;
@@ -1956,11 +2221,37 @@
         private System.Windows.Forms.Button buttonFindOrientation;
         private System.Windows.Forms.Button buttonCalibrateGeometry;
         private System.Windows.Forms.DataGridView dataGridViewEbsdCandidates;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl tabControlPatternSettings;
         private System.Windows.Forms.TabPage tabPageOutputParameter;
         private System.Windows.Forms.TabPage tabPageExperimentalImage;
         private System.Windows.Forms.RadioButton radioButtonIndexingRadon; //260724Cl 追加: 方位探索エンジン切替 (Radon template matching)
         private System.Windows.Forms.RadioButton radioButtonIndexingDictionary; //260724Cl 追加: 同 (Dictionary indexing)
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexingButtons;
+        private System.Windows.Forms.Label labelExpBrightness;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExperimentalImageTab;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopy;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelViewSettings;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelShowCheckBoxes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelResolutionFlip;
+        //private System.Windows.Forms.CheckBox checkBox1; //260724Cl デザイナのリネーム不整合を修正 (InitializeComponent側は新名)
+        //private System.Windows.Forms.RadioButton radioButton1; //260724Cl 同上
+        private System.Windows.Forms.CheckBox checkBoxMatchDetectorResolution; //260724Cl 追加
+        private System.Windows.Forms.RadioButton radioButtonDetector; //260724Cl 追加
+        private System.Windows.Forms.RadioButton radioButtonCopyCurrent;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyOptions;
+        private System.Windows.Forms.TabControl tabControlMasterPattern;
+        private System.Windows.Forms.TabPage tabPageMasterPattern2D;
+        private System.Windows.Forms.TabPage tabPageMasterPattern3D;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternDepth;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternControls;
+        private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisArrows;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyRange;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyButton;
+        private System.Windows.Forms.RadioButton radioButtonCopyEmf; //260725Cl リネーム radioButton1 -> radioButtonCopyEmf (作者依頼)
+        private System.Windows.Forms.RadioButton radioButtonCopyBmp;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyFormat;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyRadios;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

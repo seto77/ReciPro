@@ -83,7 +83,7 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>축 그리기</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelLineWidth.Text" xml:space="preserve">
     <value>선 너비</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
@@ -99,7 +99,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>상위</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="labelTextSize.Text" xml:space="preserve">
     <value>텍스트 크기</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
@@ -112,7 +112,7 @@
     <value>비국소 흡수 모델 사용</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS 배경 강도 포함</value>
+    <value>TDS 배경 포함</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>두께 시작</value>
@@ -129,23 +129,23 @@
   <data name="numericBoxDepth.HeaderText" xml:space="preserve">
     <value>깊이</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="labelPolarity.Text" xml:space="preserve">
     <value>극성</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labelColor.Text" xml:space="preserve">
     <value>색</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>BSE 각도/에너지 분포와 함께 이미지 표시</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="labelBrightness.Text" xml:space="preserve">
     <value>밝기</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
     <value>출력 매개변수</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>오버레이 표시</value>
+    <value>오버레이</value>
   </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>복사</value>
@@ -159,11 +159,11 @@
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>스텝 간격</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
+  <data name="labelBseDepth.Text" xml:space="preserve">
     <value>깊이 (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>동역학적 EBSD 패턴 표시 (마스터 패턴 필요)</value>
+    <value>동역학적 EBSD</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>검출기 윤곽</value>
@@ -177,7 +177,7 @@
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>기하구조</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
     <value>스테레오넷 중심은 표면 법선 방향입니다</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
@@ -189,7 +189,7 @@
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>테두리 표시</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
     <value>텍스트 설정</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
@@ -247,10 +247,14 @@
     <value>EBSD 시뮬레이터</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>배경색을 설정합니다</value>
+    <value>EBSD 패턴 표시의 배경색을 설정합니다.
+"Apply structure factors"가 켜져 있을 때
+약한 기쿠치 선이 이 색으로 흐려집니다.</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>배경색을 설정합니다</value>
+    <value>EBSD 패턴 표시의 배경색을 설정합니다.
+"Apply structure factors"가 켜져 있을 때
+약한 기쿠치 선이 이 색으로 흐려집니다.</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>기쿠치 선 지수 및 정대축 지수 레이블을 포함한
@@ -300,7 +304,9 @@
 에너지를 계산합니다.</value>
   </data>
   <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>시뮬레이션한 EBSD 패턴 이미지를 클립보드에 복사합니다.</value>
+    <value>여기서 선택한 범위·해상도·형식으로 패턴
+표시를 클립보드에 복사합니다(기쿠치 선과
+지수 오버레이도 표시된 대로 포함됩니다).</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Monte-Carlo에 이어 블로흐파(Bethe) 동역학적 회절
@@ -349,8 +355,10 @@
     <value>3D 기하 뷰의 시점을 비스듬한 위에서의 조감 시점으로 설정합니다.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>스테레오넷(BSE 분포의 입체 투영도) 위에
-결정축/참조축을 겹쳐서 표시합니다.</value>
+    <value>스테레오넷(BSE 분포의 입체 투영도) 위에 결정의
+a축(빨강)·b축(초록)·c축(파랑)을 ± 양방향
+라벨과 함께 겹쳐서 표시합니다. 스테레오넷의
+중심은 시료 표면의 법선 방향입니다.</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>검출기(형광 스크린)의 윤곽을 패턴 위에
@@ -378,7 +386,9 @@
 사용합니다.</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>검출기 윤곽을 나타내는 원을 패턴 위에 그립니다.</value>
+    <value>검출기(형광 스크린)의 외형을 나타내는 노란색
+사각형을 패턴 위에 그립니다. Detector 범위를 복사할
+때는 복사 경계와 일치하므로 그려지지 않습니다.</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>마스터 패턴으로부터 투영한 동역학적 EBSD(전자
@@ -481,8 +491,10 @@ EBSD에서는 일반적으로 -70)입니다.
 후방산란 투영 기하를 결정합니다.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>검출기 중심의 Y 좌표(시료로부터의
-횡방향 위치)를 mm 단위로 설정합니다.</value>
+    <value>검출기 중심의 Y 좌표를 mm 단위로 설정합니다(시료
+표면 내에서 회전축 X에 수직인, 시료에서 스크린을
+향하는 방향). Z와 검출기 경사와 함께 카메라 길이가
+결정됩니다. 좌우 방향의 어긋남은 X로 설정합니다.</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>검출기 중심의 Z 좌표(전자선 방향의 위치)를
@@ -502,7 +514,7 @@ mm 단위로 설정합니다. Y와 함께
 대한 비율로 설정합니다. 이 값 이상인 픽셀이
 흰색으로 매핑됩니다.</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
     <value>표시 EBSD 영상의 밝기 상한(흰색 클립) 레벨을 강도 범위에
 대한 비율로 설정합니다. 이 값 이상인 픽셀이
 흰색으로 매핑됩니다.</value>
@@ -512,7 +524,7 @@ mm 단위로 설정합니다. Y와 함께
 대한 비율로 설정합니다. 이 값 이하인 픽셀이
 검은색으로 매핑됩니다.</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
     <value>표시 EBSD 영상의 밝기 하한(검은색 클립) 레벨을 강도 범위에
 대한 비율로 설정합니다. 이 값 이하인 픽셀이
 검은색으로 매핑됩니다.</value>
@@ -521,7 +533,7 @@ mm 단위로 설정합니다. Y와 함께
     <value>기쿠치 선을 그리는 데 사용하는 선 너비(펜
 두께)를 설정합니다.</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>기쿠치 선을 그리는 데 사용하는 선 너비(펜
 두께)를 설정합니다.</value>
   </data>
@@ -546,7 +558,7 @@ mm 단위로 설정합니다. Y와 함께
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>오버레이 지수 문자의 글꼴 크기를 조정합니다.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>오버레이 지수 문자의 글꼴 크기를 조정합니다.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
@@ -554,27 +566,29 @@ mm 단위로 설정합니다. Y와 함께
 (EBSD 시뮬레이션의 일차 전자 에너지)을
 설정합니다.</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
+  <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>표시 EBSD 영상의 밝기(검은색/흰색
 클립) 범위를 조정합니다.</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value>시뮬레이션한 후방산란 전자의 최대 침투
-깊이(nm) 분포입니다.</value>
+  <data name="labelBseDepth.ToolTip" xml:space="preserve">
+    <value>검출된 후방산란 전자가 마지막으로 비탄성
+산란을 일으킨 깊이(nm)의 분포입니다(비탄성
+산란이 없는 전자는 최대 침입 깊이). 마스터
+패턴의 가중에 사용하는 깊이와 같은 정의입니다.</value>
   </data>
-  <data name="label14.ToolTip" xml:space="preserve">
+  <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>시뮬레이션한 후방산란 전자의 에너지
 손실 ΔE(keV) 분포입니다.</value>
   </data>
-  <data name="label15.ToolTip" xml:space="preserve">
+  <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>이 스테레오넷에서는 중심이
 시료 표면의 법선 방향에 대응합니다.</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
     <value>표시 영상의 그레이 레벨 극성을 정상 또는
 반전(네거티브)으로 선택합니다.</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
+  <data name="labelColor.ToolTip" xml:space="preserve">
     <value>강도를 색으로 매핑하는 데 사용하는 컬러 스케일(Gray,
 Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
   </data>
@@ -596,5 +610,175 @@ Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
   </data>
   <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
     <value>사전 탐색</value>
+  </data>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>기하 보정</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>방위 후보 탐색</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>좌우 반전</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>검출기 해상도에 맞춤</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>실험 이미지</value>
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>실험 이미지</value>
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>검출기 중심 좌표</value>
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>해상도</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>크기 및 기울기</value>
+  </data>
+  <data name="labelExpBrightness.Text" xml:space="preserve">
+    <value>밝기</value>
+  </data>
+  <data name="labelExpMaxInt.Text" xml:space="preserve">
+    <value>최대</value>
+  </data>
+  <data name="labelExpMinInt.Text" xml:space="preserve">
+    <value>최소</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>불투명도</value>
+  </data>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>현재 보기</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>검출기</value>
+  </data>
+  <data name="labelBrightnessMax.Text" xml:space="preserve">
+    <value>최대</value>
+  </data>
+  <data name="labelBrightnessMin.Text" xml:space="preserve">
+    <value>최소</value>
+  </data>
+  <data name="tabPageOverlays.Text" xml:space="preserve">
+    <value>오버레이</value>
+  </data>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>검출기 기하(패턴 중심 PC와 검출기 거리 DD)를
+방위와 교대로 최적화하여, 시뮬레이션 패턴과
+실험 패턴의 ZNCC를 최대화합니다. 마스터 패턴이
+필요합니다. 검출기 경사는 고정되며, 결과는
+검출기 중심의 X/Y/Z 입력란에 반영됩니다.</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>불러온 실험 패턴을 가장 잘 설명하는 방위를
+위에서 선택한 엔진으로 탐색합니다. 후보는
+최대 10건이 아래 표에 표시되며, 마스터 패턴이
+있으면 최상위 후보가 ±0.25°까지 정밀화됩니다.</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
+    <value>패턴과 모든 오버레이를 좌우 반전합니다. 선택하지
+않은 상태(기본)는 검출기에서 시료를 보는 방향, 즉
+EBSD 카메라가 기록하는 자연스러운 이미지입니다.
+실험 이미지의 좌우가 반대인 경우에만 선택하십시오.</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>검출기 자체의 픽셀 크기로 복사합니다(이미지 1 px =
+검출기 1 px). 범위 "검출기"와 함께 사용하면 출력이
+검출기 픽셀 수와 정확히 일치합니다. 긴 변은 4096 px로
+제한됩니다. 선택하지 않으면 화면 해상도를 사용합니다.</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
+    <value>이 창에 드래그 앤 드롭한 실험 EBSD 이미지를
+검출기 영역에 겹쳐서 표시합니다(시뮬레이션
+패턴 위, 기쿠치 선 오버레이 아래).</value>
+  </data>
+  <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
+    <value>직전 탐색에서 얻은 방위 후보(좋은 순). Score =
+Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
+상관, Bands·(hkl) = 일치한 밴드(Radon 탐색만).
+행을 클릭하면 그 방위가 프로그램 전체에 적용됩니다.</value>
+  </data>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지(시뮬레이션 패턴이 아님)의 흑·백
+클립 범위를 오른쪽의 최소·최대 슬라이더로 조정합니다.</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 백색 기준을 해당 이미지의
+강도 범위에 대한 비율로 설정합니다(슬라이더
+는 대수). 이 값 이상의 화소는 하얗게 됩니다.</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 흑색 기준을 해당 이미지의
+강도 범위에 대한 비율로 설정합니다(슬라이더
+는 대수). 이 값 이하의 화소는 검게 됩니다.</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 불투명도(0 = 투명 ~ 100 % =
+불투명). 낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
+  </data>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>비트맵(bmp) 래스터 이미지로 복사합니다. 기쿠치 선과
+라벨을 포함한 전체가 고정 해상도로 래스터화됩니다.
+메타파일을 붙여넣을 수 없는 프로그램용입니다.</value>
+  </data>
+  <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
+    <value>패턴 표시가 현재 보여주는 범위를 이동·확대
+상태 그대로 복사합니다(노란색 검출기
+외곽선도 표시되어 있으면 포함됩니다).</value>
+  </data>
+  <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
+    <value>확장 메타파일(emf) 벡터 이미지로 복사합니다(기본).
+기쿠치 선과 지수 라벨은 벡터로 유지되어 확대해도
+열화되지 않습니다(패턴 이미지만 래스터로 삽입됩니다).</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>현재의 이동·확대와 무관하게 검출기(형광 스크린)
+영역만 복사합니다. 노란색 검출기 외곽선은 포함되지
+않으므로 이미지는 검출기 가장자리에서 정확히 끝납니다.</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>동역학적 마스터 패턴에서 전 방위의 사전
+패턴을 생성하여 robust ZNCC로 전수 비교해
+방위를 탐색합니다. 마스터 패턴이 필요하고
+수 초가 걸리지만 Radon 탐색보다 확실합니다.</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>실험 이미지의 Radon 변환(직선 검출) 맵에
+운동학적 기쿠치 밴드 템플릿을 정합하여
+방위를 탐색합니다. 마스터 패턴이 없어도
+동작하며, 있으면 robust ZNCC(평균을 제거한
+정규화 상호상관)로 후보를 재정렬합니다.</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 백색 기준을 해당 이미지의
+강도 범위에 대한 비율로 설정합니다(슬라이더
+는 대수). 이 값 이상의 화소는 하얗게 됩니다.</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 흑색 기준을 해당 이미지의
+강도 범위에 대한 비율로 설정합니다(슬라이더
+는 대수). 이 값 이하의 화소는 검게 됩니다.</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>겹친 실험 이미지의 불투명도(0 = 투명 ~ 100 % =
+불투명). 낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
+  </data>
+  <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
+    <value>폭</value>
+  </data>
+  <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
+    <value>높이</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>해상도</value>
+  </data>
+  <data name="sizeControl.HeaderText" xml:space="preserve">
+    <value>크기 (W×H)</value>
+  </data>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>경사</value>
   </data>
 </root>

@@ -132,7 +132,7 @@
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
     <value>色</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelLineWidth.Text" xml:space="preserve">
     <value>線の太さ</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
@@ -154,7 +154,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>上位</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="labelTextSize.Text" xml:space="preserve">
     <value>サイズ</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
@@ -167,7 +167,7 @@
     <value>非局所形式の吸収モデルを使う</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>熱散漫散乱 (TDS) 由来のバックグラウンドを含める</value>
+    <value>TDS バックグラウンドを含める</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>深さ範囲</value>
@@ -178,29 +178,29 @@
   <data name="buttonStop.Text" xml:space="preserve">
     <value>停止</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
     <value>出力パラメータ</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="labelPolarity.Text" xml:space="preserve">
     <value>ネガ/ポジ</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labelColor.Text" xml:space="preserve">
     <value>カラー</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>後方散乱電子のエネルギー・方位分布を考慮して画像を合成</value>
   </data>
-  <data name="label8.Text" xml:space="preserve">
+  <data name="labelBrightnessMax.Text" xml:space="preserve">
     <value>最大</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
+  <data name="labelBrightnessMin.Text" xml:space="preserve">
     <value>最小</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="labelBrightness.Text" xml:space="preserve">
     <value>明るさ</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>補助図形を表示</value>
+    <value>補助図形</value>
   </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>コピー</value>
@@ -214,11 +214,11 @@
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>ステップ</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
+  <data name="labelBseDepth.Text" xml:space="preserve">
     <value>深さ (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>動力学EBSDパターンを表示 (要マスターパターン構築)</value>
+    <value>動力学EBSD</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>検出器の輪郭</value>
@@ -244,7 +244,7 @@
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>外枠を表示</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
     <value>文字設定</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
@@ -301,10 +301,14 @@
 晶帯軸指数など）の色を設定します。</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>背景色を設定します。</value>
+    <value>EBSD パターン表示の背景色を設定します。
+「Apply structure factors」がオンのと
+き、弱い菊池線がこの色へ溶け込みます。</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>背景色を設定します。</value>
+    <value>EBSD パターン表示の背景色を設定します。
+「Apply structure factors」がオンのと
+き、弱い菊池線がこの色へ溶け込みます。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>逆格子長 1/d (nm^-1) のしきい値です。この値未満の 1/d
@@ -340,8 +344,9 @@ End、Step で計算する厚みの列を決めます。</value>
 す。Start から End へこの増分で下げながら計算します。</value>
   </data>
   <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>シミュレートしたEBSDパターン画像を
-クリップボードにコピーします。</value>
+    <value>ここで選んだ範囲・解像度・形式で、パターン
+表示をクリップボードにコピーします (菊池線や
+指数のオーバーレイも表示どおり含まれます)。</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Monte-Carloに続くBloch波(Bethe)動力学
@@ -386,8 +391,10 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
     <value>3D幾何ビューの視点を、斜め上からの鳥瞰に設定します。</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>ステレオネット(BSE分布の立体投影図)上に
-結晶軸・参照軸を重ねて表示します。</value>
+    <value>ステレオネット (BSE 分布の立体投影図) 上に、
+結晶の a 軸 (赤)・b 軸 (緑)・c 軸 (青) を ±
+両方向のラベル付きで重ねて表示します。
+ステレオネットの中心は試料表面の法線方向です。</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>検出器(蛍光スクリーン)の輪郭をパターン上に重ねて
@@ -411,7 +418,9 @@ a/b/c の軸ラベル文字を表示します。</value>
 含む複素ポテンシャル吸収項)を使用します。</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>検出器のアウトラインを示す円をパターン上に描画します。</value>
+    <value>検出器 (蛍光スクリーン) の外形を示す黄色の矩形を
+パターン上に描画します。Detector 範囲のコピー
+時は、コピー縁と一致するため描かれません。</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>マスターパターンから投影した動力学EBSD(後方散乱電子
@@ -504,8 +513,10 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
 通常-70)。後方散乱投影の幾何を決めます。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>検出器中心のY座標(試料からの
-横方向位置)をmm単位で設定します。</value>
+    <value>検出器中心の Y 座標を mm 単位で設定します
+(試料表面内で回転軸 X に垂直な、試料からスクリーン
+へ向かう方向)。Z と検出器傾斜とあわせてカメラ長が
+決まります。左右方向のずれは X で設定します。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>検出器中心のZ座標(電子線方向の位置)をmm単位で
@@ -554,40 +565,41 @@ EBSDパターンの深さスライス(nm)を選択し
     <value>入射電子の加速電圧/電子波長(EBSDシミュレーション
 の一次電子エネルギー)を設定します。</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
+  <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>表示EBSD像の明るさ(黒・白クリップ)範囲を調整します。</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value>シミュレーションした後方散乱電子の
-最大侵入深さ(nm)の分布です。</value>
+  <data name="labelBseDepth.ToolTip" xml:space="preserve">
+    <value>検出された後方散乱電子が最後に非弾性散乱を起こした深さ
+(nm) の分布です (非弾性散乱が無い電子は最大侵入深さ)。
+マスターパターンの重み付けに使う深さと同じ定義です。</value>
   </data>
-  <data name="label14.ToolTip" xml:space="preserve">
+  <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>シミュレーションした後方散乱電子の
 エネルギー損失ΔE(keV)の分布です。</value>
   </data>
-  <data name="label15.ToolTip" xml:space="preserve">
+  <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>このステレオネットでは、中心が
 試料表面の法線方向に対応します。</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
     <value>表示像の階調を通常か反転(ネガ)かを選択します。</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
+  <data name="labelColor.ToolTip" xml:space="preserve">
     <value>強度を色に変換するカラースケール(Gray /
 Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
     <value>表示EBSD像の明るさ下限(黒つぶれの
 位置)を強度レンジに対する比率で設定し
 ます。この値以下の画素が黒になります。</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
     <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
 る比率で設定します。この値以上の画素が白になります。</value>
   </data>
@@ -638,7 +650,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelLineWidth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
@@ -647,7 +659,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelTextSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
@@ -659,10 +671,10 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
@@ -674,13 +686,13 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
@@ -689,10 +701,10 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBseDepth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBseDeltaE.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
@@ -701,7 +713,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelBseStereonetNote.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
@@ -761,13 +773,13 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelDetectorSizeTilt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelDetectorResolution.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelDetectorCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
@@ -779,25 +791,25 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="statusStripMain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripStatusLabel1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripStatusLabelProgress.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripStatusLabelSummary.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripStatusLabel3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
@@ -823,5 +835,178 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
     <value>辞書探索</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EBSDシミュレータ</value>
+  </data>
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
+    <value>ステレオネットの中心は試料表面の法線方向</value>
+  </data>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>幾何を較正</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>方位候補を探索</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>左右反転</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>検出器の解像度に合わせる</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>実測画像</value>
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>実測画像</value>
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>検出器中心の座標</value>
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>解像度</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>サイズと傾斜</value>
+  </data>
+  <data name="labelExpBrightness.Text" xml:space="preserve">
+    <value>明るさ</value>
+  </data>
+  <data name="labelExpMaxInt.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="labelExpMinInt.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>現在の表示</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>検出器</value>
+  </data>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>検出器幾何 (パターンセンター PC と検出器距離 DD)
+を方位と交互に最適化し、シミュレーションと
+実測パターンの ZNCC を最大化します。
+マスターパターンが必須です。検出器の傾斜は固定で、
+結果は検出器中心の X/Y/Z 欄へ書き戻されます。</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>読み込んだ実測パターンを最もよく説明する方位を、
+上で選んだエンジンで探索します。候補は最大 10
+件が下の表に並び、マスターパターンが有る場合は
+トップ候補が ±0.25° まで精密化されます。</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
+    <value>パターンとオーバーレイを左右反転します。
+未チェック (既定) は検出器から試料を見る向き =
+EBSD カメラが記録する自然な画像です。実測画像の
+左右が逆の場合にのみチェックしてください。</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>検出器のピクセルサイズでコピーします (画像 1 px =
+検出器 1 px)。範囲「検出器」と併用すると出力は
+検出器のピクセル数と厳密に一致します。長辺は 4096 px
+でクランプされます。未チェック時は画面の解像度です。</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
+    <value>このウィンドウにドラッグ＆ドロップした
+実測 EBSD 画像を、検出器エリアへ重ねて
+表示します (シミュレーションパターンの
+上、菊池線オーバーレイの下)。</value>
+  </data>
+  <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
+    <value>直前の探索で得られた方位候補 (良い順)。Score =
+Radon バンド証拠の z 値、ZNCC =
+シミュレーションパターンとの相関、Bands・(hkl)
+= 一致したバンド (Radon 探索のみ)。行をクリック
+すると、その方位がアプリ全体に適用されます。</value>
+  </data>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像 (シミュレーションパターン
+ではありません) の黒・白クリップ範囲を、
+右の最小・最大スライダーで調整します。</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の白レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以上の画素は白になります。</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の黒レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以下の画素は黒になります。</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
+下げると下のシミュレーションパターンが見えます。</value>
+  </data>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>ビットマップ (bmp) のラスター画像としてコピーします。
+菊池線やラベルも含め全体が固定解像度でラスター化され
+ます。メタファイルを貼り付けられないソフト向けです。</value>
+  </data>
+  <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
+    <value>パターン表示が現在映している範囲を、
+パン・ズームしたままコピーします (黄色い
+検出器の外枠も、表示されていれば含まれます)。</value>
+  </data>
+  <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
+    <value>拡張メタファイル (emf) のベクター画像として
+コピーします (既定)。菊池線や指数ラベルは
+ベクターのまま保持され、拡大しても劣化しません
+(パターン画像のみラスターとして埋め込まれます)。</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>現在のパン・ズームに関係なく、検出器 (蛍光スクリーン)
+エリアのみをコピーします。黄色い検出器の外枠は含まれな
+いため、画像は検出器の縁でちょうど終わります。</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>動力学マスターパターンから全方位の辞書パターン
+を生成し、robust ZNCC で総当たり比較して方位を
+探索します。マスターパターンが必須で数秒かかり
+ますが、Radon 探索より確実です。</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>実測画像の Radon 変換 (直線検出) マップに運動学的な
+菊池バンドのテンプレートを照合して方位を探索します。
+マスターパターン無しでも動作し、有る場合は robust ZNCC
+(平均を除いた正規化相互相関) で候補を再ランクします。</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の白レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以上の画素は白になります。</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の黒レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以下の画素は黒になります。</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
+下げると下のシミュレーションパターンが見えます。</value>
+  </data>
+  <data name="labelExpBrightness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>解像度</value>
+  </data>
+  <data name="sizeControl.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H)</value>
+  </data>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>試料傾斜</value>
   </data>
 </root>

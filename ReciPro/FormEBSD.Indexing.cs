@@ -10,7 +10,9 @@ namespace ReciPro;
 
 /// <summary>
 /// 260724Cl 追加: 実測 EBSD パターンの指数付け UI (方位候補の探索と適用)。
-/// コントロールは Overlays タブに仮置き (後で適切な場所へ移動予定)。設計正本 = .project-guidance/ReciPro_EBSD物理・幾何レビュー.md §7。
+/// 260725Cl 訂正: コントロールの置き場は確定済み — 中央列 EBSD pattern 配下の tabControlPatternSettings →
+/// Experimental image タブ (探索エンジンのラジオ・Find/Calibrate ボタン・候補 DataGridView)。旧 doc の「Overlays タブに仮置き」は解消。
+/// 設計正本 = .project-guidance/ReciPro_EBSD物理・幾何レビュー.md §7。
 /// 260724Cl 方針転換 (作者指示): バンドの離散検出 (Detect bands) と中心線表示・Optimize orientation ボタンを廃止し、
 /// 「Find orientation candidates」に一本化。裏で Radon 証拠マップへの運動学的テンプレート照合 (EbsdRadonIndexer) で方位を直接探索し、
 /// 動力学 MasterPattern が生成済みなら上位候補へ ZNCC 精密化を自動連結する。
@@ -32,10 +34,16 @@ public partial class FormEBSD
     /// <summary>指数付け用反射リストの d 下限 (nm)。260724Cl (/simplify) 追加: 反射生成とステータス表示に二重ハードコードされていた値を一元化 (将来 UI 化候補)</summary>
     private const double KikuchiDLimit = 0.15;
 
+    /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
+    /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
+    /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
+    private int indexingGeneration = 0;
+
     /// <summary>画像/幾何の変更で方位候補を失効させる。260724Cl 追加 (Codex 指摘: stale 結果の誤適用防止)</summary>
     //260724Cl シグネチャ変更: バンド検出廃止に伴い clearBands 引数を削除。旧: private void InvalidateIndexingResults(bool clearBands)
     private void InvalidateIndexingResults()
     {
+        indexingGeneration++; // 260725Cl 追加: 実行中の探索結果を失効させる
         orientationCandidates = null;
         if (candidateGridInitialized)
         {
@@ -83,6 +91,7 @@ public partial class FormEBSD
             return;
         }
         if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に画像・幾何が変わったら結果を捨てる
         toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
         try
         {
@@ -111,7 +120,9 @@ public partial class FormEBSD
             //  ③ ZNCC 精密化は複合トップ 1 件のみ ±0.25° (ガード: Radon z 低下 >0.2 で棄却)。ベンチ 3 画像で複合トップ全勝 (12/20, 5/15, 11/14)
             bool refineByZncc = MasterPattern != null;
             var ctx = refineByZncc ? SnapshotMatchingContext() : default;
-            var properSyms = useDictionary ? EbsdDictionaryIndexer.GetProperRotations(crystal) : null; //260725Cl: UI スレッドで結晶状態をスナップショット
+            //260725Cl: UI スレッドで結晶状態をスナップショット。FZ 除外は proper 回転 1 個 (monoclinic C2) のみ実測検証済みなので、
+            //cubic/hex 等の高対称系は pruning on/off の候補一致を検証するまで安全側で無効化する (Codex 裁定 260725。実測パターンが揃ったら解除)
+            var properSyms = useDictionary && EbsdDictionaryIndexer.GetProperRotations(crystal) is { Length: 1 } syms ? syms : null;
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var candidates = await Task.Run(() =>
@@ -125,12 +136,15 @@ public partial class FormEBSD
                 {
                     //260724Cl: thoroughCoarse=true (粗段も 96px 完全 robust 総当たり)。作者方針=辞書はパワープレーで精度優先。
                     //ベンチ (正しい共通幾何+MC 合成): 3 画像とも辞書トップ=正解系 (14/20・13/15・11/14、5-2_22 では Radon 経路を上回る)
-                    //260725Cl: properSymmetries (点群 proper 回転の FZ 除外) + 面内分解プロジェクションで 12.5s→4.3s/画像 (結果は同一、C2 重複候補も解消)
+                    //260725Cl: properSymmetries (点群 proper 回転の FZ 除外) + 面内分解プロジェクション + SIMD 前処理で
+                    //12.5s→**2.4〜2.8s/画像** (結果は同一、C2 重複候補も解消)。260725Cl 訂正: 旧コメントの「→4.3s」は中間段階の値
                     //cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true); //260725Cl 変更前
                     cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true,
                         properSymmetries: properSyms);
-                    foreach (var c in cands)
-                        c.Score = EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, c.Rotation, SatCap);
+                    //260725Cl (/simplify): 候補ごとの ScoreOrientation はカタログを毎回組み直していた → 一括版で 1 回に (スコアは同一)
+                    var radonZ = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [.. cands.Select(c => c.Rotation)], SatCap);
+                    for (int i = 0; i < cands.Count; i++)
+                        cands[i].Score = radonZ[i];
                 }
                 else
                     cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0);
@@ -152,13 +166,14 @@ public partial class FormEBSD
                     var top = cands[0];
                     double Score(double[] v)
                     {
-                        projector.Project(ctx.Mp, PerturbRotation(top.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
+                        projector.Project(ctx.Mp, EbsdIndexer.PerturbRotation(top.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
                         return -EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
                     }
                     var (b2, v2, _) = EbsdPatternScorer.NelderMead(Score, [0, 0, 0], [0.25, 0.25, 0.25], 120);
-                    var rFin = PerturbRotation(top.Rotation, b2[0], b2[1], b2[2]);
-                    if (EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, rFin, SatCap) >=
-                        EbsdRadonIndexer.ScoreOrientation(map, geom, reflections, top.Rotation, SatCap) - 0.2)
+                    var rFin = EbsdIndexer.PerturbRotation(top.Rotation, b2[0], b2[1], b2[2]);
+                    //260725Cl (/simplify): ガードの 2 回採点も一括版へ (旧: ScoreOrientation ×2 でカタログを 2 回構築)
+                    var guard = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [rFin, top.Rotation], SatCap);
+                    if (guard[0] >= guard[1] - 0.2)
                     { top.Rotation = rFin; top.Zncc = -v2; }
                 }
                 #region お蔵入り //260724Cl: 旧 ZNCC 連結 (上位 5 候補を ±1° 精密化して ZNCC 降順に再ランク)。精密化 ZNCC は誤方位ほど伸び正解を落とすため廃止
@@ -185,6 +200,12 @@ public partial class FormEBSD
             });
             sw.Stop();
 
+            //260725Cl 追加: 探索中に実測画像の差し替えや検出器幾何の変更があった場合、この結果は既に失効しているので適用しない
+            if (generation != indexingGeneration)
+            {
+                toolStripStatusLabelSummary.Text = "Orientation search discarded (the image or geometry changed)";
+                return;
+            }
             orientationCandidates = candidates;
             FillCandidateGrid();
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
@@ -212,12 +233,18 @@ public partial class FormEBSD
         g.MultiSelect = false;
         g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
         //260724Cl: Radon 方位探索用に列を再構成 (Score=SNR z 値、Bands=強い証拠を持つ予測バンド/視野内予測バンド、RMS° 列は廃止)
+        //260725Cl 変更: 幅を DPI 換算 + 最終列を Fill に。旧実装は 96 DPI 前提の生ピクセル固定だったため、
+        //フォントだけ DPI で拡大して高 DPI でヘッダが文字切れし、かつ固定合計幅がグリッド実幅を超えて常時横スクロールになっていた
+        //(BeamInteraction 4 表の [project_minitable_readonly_grid] と同型の問題)
+        int Dpi(int px96) => (int)Math.Round(px96 * DeviceDpi / 96.0);
+        //旧: Width = 24 / 46 / 44 / 48 / 284 (px 固定)
         g.Columns.AddRange(
-            new DataGridViewTextBoxColumn { HeaderText = "#", Width = 24 },
-            new DataGridViewTextBoxColumn { HeaderText = "Score", Width = 46 },
-            new DataGridViewTextBoxColumn { HeaderText = "Bands", Width = 44 },
-            new DataGridViewTextBoxColumn { HeaderText = "ZNCC", Width = 48 },
-            new DataGridViewTextBoxColumn { HeaderText = "Strong bands (hkl)", Width = 284 });
+            new DataGridViewTextBoxColumn { HeaderText = "#", Width = Dpi(28) },
+            new DataGridViewTextBoxColumn { HeaderText = "Score", Width = Dpi(52) },
+            new DataGridViewTextBoxColumn { HeaderText = "Bands", Width = Dpi(52) },
+            new DataGridViewTextBoxColumn { HeaderText = "ZNCC", Width = Dpi(52) },
+            //残り幅を最終列が吸収する (hkl 列は内容が可変長なので Fill が自然。横スクロールバーも出なくなる)
+            new DataGridViewTextBoxColumn { HeaderText = "Strong bands (hkl)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill, MinimumWidth = Dpi(120) });
         g.SelectionChanged += dataGridViewEbsdCandidates_SelectionChanged;
     }
 
@@ -231,7 +258,9 @@ public partial class FormEBSD
             g.Rows.Clear();
             if (orientationCandidates != null)
                 foreach (var (c, i) in orientationCandidates.Select((c, i) => (c, i)))
-                    g.Rows.Add(i, $"{c.Score:f1}", $"{c.AssignedBands}/{c.TotalBands}",
+                    //260725Cl: Score も非有限ガード (辞書経路は ScoreOrientations の double.MinValue センチネル
+                    //= 視野内予測バンドが 4 本未満のとき をそのまま入れるため、309 桁の数値がセルに出るのを防ぐ)
+                    g.Rows.Add(i, double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}",
                         double.IsNaN(c.Zncc) ? "-" : $"{c.Zncc:f3}", c.HklText); //260724Cl: AssignmentText (band:hkl) → HklText
             g.ClearSelection();
         }
@@ -251,14 +280,16 @@ public partial class FormEBSD
 
     #region ZNCC ヘルパ・検出器幾何較正 (動力学 MasterPattern 必須)
 
-    /// <summary>方位摂動: R(ω) = Rot(ω̂,|ω|)·R0 (試料系左摂動、単位 deg)。FormMain.Rotate の左乗算と同じ規約</summary>
-    private static Matrix3D PerturbRotation(Matrix3D r0, double wxDeg, double wyDeg, double wzDeg)
-    {
-        double wx = wxDeg * Math.PI / 180, wy = wyDeg * Math.PI / 180, wz = wzDeg * Math.PI / 180;
-        double len = Math.Sqrt(wx * wx + wy * wy + wz * wz);
-        if (len < 1E-12) return r0;
-        return Matrix3D.Rot((wx / len, wy / len, wz / len), len) * r0;
-    }
+    //260725Cl (/simplify): ローカル PerturbRotation は EbsdIndexer.PerturbRotation へ統合 (Crystallography 側の
+    //EbsdDictionaryIndexer.Perturb・EbsdRadonIndexer.Perturb と 3 重複していた。式・演算順・規約 (試料系左摂動) は同一)。旧:
+    ///// <summary>方位摂動: R(ω) = Rot(ω̂,|ω|)·R0 (試料系左摂動、単位 deg)。FormMain.Rotate の左乗算と同じ規約</summary>
+    //private static Matrix3D PerturbRotation(Matrix3D r0, double wxDeg, double wyDeg, double wzDeg)
+    //{
+    //    double wx = wxDeg * Math.PI / 180, wy = wyDeg * Math.PI / 180, wz = wzDeg * Math.PI / 180;
+    //    double len = Math.Sqrt(wx * wx + wy * wy + wz * wz);
+    //    if (len < 1E-12) return r0;
+    //    return Matrix3D.Rot((wx / len, wy / len, wz / len), len) * r0;
+    //}
 
     /// <summary>MC 重み合成パターンのキャッシュ (MasterPattern と mcDistribution の組が同一なら再利用、合成は ~100ms)。260724Cl 追加</summary>
     private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
@@ -318,6 +349,7 @@ public partial class FormEBSD
     {
         if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;
         if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に実測画像・幾何が変わったら較正結果を書き戻さない (旧画像に合わせた幾何の誤適用防止)
         toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
         try
         {
@@ -353,8 +385,8 @@ public partial class FormEBSD
                 {
                     //① 幾何固定で方位 (粗 0.7°)
                     var projFixed = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
-                    var (bo, _, eo) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFixed, PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.7, 0.7, 0.7], 150);
-                    r0 = PerturbRotation(r0, bo[0], bo[1], bo[2]); evalTotal += eo;
+                    var (bo, _, eo) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFixed, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.7, 0.7, 0.7], 150);
+                    r0 = EbsdIndexer.PerturbRotation(r0, bo[0], bo[1], bo[2]); evalTotal += eo;
 
                     //② 方位固定で幾何 (dU, dV [mm], dlnDD)。ステップ = 検出器幅/高の 1%、lnDD 0.02
                     //260724Cl: 単一パターンの PC-DD-方位縮退で非物理領域へ流れないよう soft bounds (初期値から W/H の 25%・DD ±40% でペナルティ)
@@ -368,12 +400,19 @@ public partial class FormEBSD
                 }
                 //仕上げの方位微調整 (0.2°)
                 var projFinal = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
-                var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.2, 0.2, 0.2], 100);
-                r0 = PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
+                var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.2, 0.2, 0.2], 100);
+                r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
                 return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal);
             });
             sw.Stop();
+
+            //260725Cl 追加: 較正中に実測画像の差し替えや幾何の変更があった場合、この結果は失効しているので書き戻さない
+            if (generation != indexingGeneration)
+            {
+                toolStripStatusLabelSummary.Text = "Geometry calibration discarded (the image or geometry changed)";
+                return;
+            }
 
             //DetX/DetY/DetZ へ逆変換して書き戻し (DetTilt 固定)。numericBox の範囲へクランプ (260724Cl)
             var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.Fu, result.Fv, result.Dd, detTilt);

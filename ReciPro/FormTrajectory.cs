@@ -267,7 +267,8 @@ public partial class FormTrajectory : FormBase
         //ステレオネット内にXYZ軸を描画
         if (checkBoxDrawAxesInStereonet.Checked)
             poleFigureControl.Circles = [
-                (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(-1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
+                // (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(-1, 0,0)), 0.02, Color.OrangeRed, true, "+X"), // 260725Ch 変更前: PoleFigureControl2の旧X反転を補償
+                (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(1, 0,0)), 0.02, Color.OrangeRed, true, "+X"), // 260725Ch: FormStereonet準拠の+X=右へ
                 (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
                 (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
                 (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, 0, -1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z"),

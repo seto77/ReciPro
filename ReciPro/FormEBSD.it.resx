@@ -83,7 +83,7 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Disegna assi</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelLineWidth.Text" xml:space="preserve">
     <value>Spessore linea</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
@@ -99,7 +99,7 @@ all'intensità delle linee di Kikuchi</value>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>Max</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="labelTextSize.Text" xml:space="preserve">
     <value>Dimensione testo</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
@@ -112,7 +112,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Usa modello di assorbimento non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Includi intensità di fondo TDS</value>
+    <value>Includi il fondo TDS</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Spessore da</value>
@@ -129,23 +129,23 @@ all'intensità delle linee di Kikuchi</value>
   <data name="numericBoxDepth.HeaderText" xml:space="preserve">
     <value>Profondità</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="labelPolarity.Text" xml:space="preserve">
     <value>Polarità</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labelColor.Text" xml:space="preserve">
     <value>Colore</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>Mostra immagine con distribuzioni angolari/energetiche BSE</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="labelBrightness.Text" xml:space="preserve">
     <value>Luminosità</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
     <value>Parametri di output</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>Mostra overlay</value>
+    <value>Overlay</value>
   </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copia</value>
@@ -159,11 +159,11 @@ all'intensità delle linee di Kikuchi</value>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>con passo di</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
+  <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Profondità (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>Mostra pattern EBSD dinamico (master pattern richiesto)</value>
+    <value>EBSD dinamico</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Contorno del rivelatore</value>
@@ -177,7 +177,7 @@ all'intensità delle linee di Kikuchi</value>
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Geometria</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
     <value>Il centro dello stereonet è la direzione normale alla superficie</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
@@ -189,7 +189,7 @@ all'intensità delle linee di Kikuchi</value>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>Mostra riquadro</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
     <value>Impostazioni testo</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
@@ -244,10 +244,16 @@ all'intensità delle linee di Kikuchi</value>
     <value>Simulatore EBSD</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>Imposta un colore di sfondo</value>
+    <value>Imposta il colore di sfondo della vista
+del pattern EBSD. È anche il colore verso
+cui sfumano le linee di Kikuchi deboli
+quando "Apply structure factors" è attivo.</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>Imposta un colore di sfondo</value>
+    <value>Imposta il colore di sfondo della vista
+del pattern EBSD. È anche il colore verso
+cui sfumano le linee di Kikuchi deboli
+quando "Apply structure factors" è attivo.</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>Imposta il colore del testo in sovrapposizione, comprese
@@ -297,7 +303,10 @@ elettroni retrodiffusi, in keV; le energie sono calcolate
 da Start fino a End con questo incremento.</value>
   </data>
   <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>Copia l'immagine del pattern EBSD simulato negli appunti.</value>
+    <value>Copia la vista del pattern negli appunti con
+l'intervallo, la risoluzione e il formato
+selezionati qui (le sovrapposizioni delle linee di
+Kikuchi e degli indici sono incluse come disegnate).</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Costruisce il master pattern EBSD (la mappa dinamica
@@ -346,8 +355,11 @@ l'asse Z (la direzione del fascio elettronico).</value>
     <value>Imposta la vista geometrica 3D su un punto di vista a volo d'uccello obliquo.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>Sovrappone gli assi cristallini/di riferimento sullo stereogramma
-(proiezione stereografica della distribuzione dei BSE).</value>
+    <value>Sovrappone gli assi cristallini a (rosso), b (verde) e
+c (blu) sullo stereogramma (proiezione stereografica
+della distribuzione dei BSE), etichettando le
+direzioni + e -. Il centro dello stereogramma è la
+normale alla superficie del campione.</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>Sovrappone il contorno del rivelatore
@@ -375,7 +387,10 @@ ottico complesso che tiene conto della diffusione termica diffusa)
 nella costruzione del master pattern.</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>Disegna il cerchio che segna il contorno del rivelatore sul pattern.</value>
+    <value>Disegna il rettangolo giallo che segna il contorno del
+rivelatore (schermo al fosforo) sul pattern. Viene
+omesso quando si copia l'intervallo "Rivelatore",
+poiché il bordo della copia coincide già con esso.</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>Mostra il pattern EBSD dinamico (Electron BackScatter
@@ -478,8 +493,12 @@ dal cursore di energia per l'anteprima.</value>
 la geometria di proiezione della retrodiffusione.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Imposta la coordinata Y (posizione laterale rispetto
-al campione) del centro del rivelatore, in mm.</value>
+    <value>Imposta la coordinata Y del centro del rivelatore, in
+mm: lo scostamento dal campione allo schermo nel piano
+della superficie del campione, perpendicolare all'asse
+di rotazione X. Insieme a Z e all'inclinazione del
+rivelatore determina la lunghezza di camera. (Lo
+scostamento sinistra-destra si imposta con X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Imposta la coordinata Z (lungo la direzione del fascio)
@@ -499,7 +518,7 @@ le più forti ordinate per fattore di struttura.</value>
 EBSD visualizzata come frazione dell'intervallo di intensità;
 i pixel pari o superiori a questo vengono mappati a bianco.</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
     <value>Imposta il livello superiore di luminosità (white-clip) dell'immagine
 EBSD visualizzata come frazione dell'intervallo di intensità;
 i pixel pari o superiori a questo vengono mappati a bianco.</value>
@@ -509,7 +528,7 @@ i pixel pari o superiori a questo vengono mappati a bianco.</value>
 EBSD visualizzata come frazione dell'intervallo di intensità;
 i pixel pari o inferiori a questo vengono mappati a nero.</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
     <value>Imposta il livello inferiore di luminosità (black-clip) dell'immagine
 EBSD visualizzata come frazione dell'intervallo di intensità;
 i pixel pari o inferiori a questo vengono mappati a nero.</value>
@@ -518,7 +537,7 @@ i pixel pari o inferiori a questo vengono mappati a nero.</value>
     <value>Imposta la larghezza della linea (spessore della penna)
 usata per disegnare le linee di Kikuchi.</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>Imposta la larghezza della linea (spessore della penna)
 usata per disegnare le linee di Kikuchi.</value>
   </data>
@@ -543,7 +562,7 @@ il valore è mostrato nel campo Profondità.</value>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Regola la dimensione del carattere del testo degli indici in sovrapposizione.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>Regola la dimensione del carattere del testo degli indici in sovrapposizione.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
@@ -551,27 +570,31 @@ il valore è mostrato nel campo Profondità.</value>
 elettronica del fascio incidente (l'energia degli
 elettroni primari per la simulazione EBSD).</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
+  <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>Regola l'intervallo di luminosità (clip nero/bianco)
 dell'immagine EBSD visualizzata.</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value>Distribuzione della profondità di penetrazione massima
-(nm) degli elettroni retrodiffusi simulati.</value>
+  <data name="labelBseDepth.ToolTip" xml:space="preserve">
+    <value>Distribuzione della profondità (nm) alla quale
+gli elettroni retrodiffusi rilevati hanno
+subito l'ultimo evento di diffusione anelastica
+(o la profondità massima di penetrazione in
+assenza di essi). È la stessa definizione di
+profondità usata per pesare il master pattern.</value>
   </data>
-  <data name="label14.ToolTip" xml:space="preserve">
+  <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Distribuzione della perdita di energia ΔE (keV)
 degli elettroni retrodiffusi simulati.</value>
   </data>
-  <data name="label15.ToolTip" xml:space="preserve">
+  <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>In questo stereogramma, il centro
 corrisponde alla normale alla superficie del campione.</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
     <value>Seleziona la polarità dei livelli di grigio normale o invertita
 (negativa) per l'immagine visualizzata.</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
+  <data name="labelColor.ToolTip" xml:space="preserve">
     <value>Seleziona la scala di colori (Gray, Cold-Warm,
 Spectrum, Fire) usata per mappare l'intensità sul colore.</value>
   </data>
@@ -593,5 +616,187 @@ quadrata di Lambert del master pattern (64–2048).</value>
   </data>
   <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
     <value>Ricerca a dizionario</value>
+  </data>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>Calibra geometria</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>Trova candidati di orientazione</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>Inverti S-D</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>Adatta alla risoluzione del rivelatore</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>Immagine sperimentale</value>
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>Immagine sperimentale</value>
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>Coordinate del
+centro del rivelatore</value>
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>Risoluzione</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>Dimensioni e inclinazione</value>
+  </data>
+  <data name="labelExpBrightness.Text" xml:space="preserve">
+    <value>Luminosità</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>Opacità</value>
+  </data>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>Vista corrente</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>Rivelatore</value>
+  </data>
+  <data name="tabPageOverlays.Text" xml:space="preserve">
+    <value>Overlay</value>
+  </data>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>Raffina la geometria del rivelatore - centro del
+pattern (PC) e distanza del rivelatore (DD) -
+insieme all'orientazione, massimizzando la ZNCC
+tra i pattern simulato e sperimentale. Richiede
+il master pattern. L'inclinazione del rivelatore
+resta fissa e il risultato viene riscritto nei
+campi X/Y/Z del centro del rivelatore.</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>Cerca le orientazioni che spiegano meglio il pattern
+sperimentale caricato, con il motore selezionato
+sopra. Nella tabella sottostante sono elencati fino
+a 10 candidati; il migliore viene raffinato a ±0,25°
+se è disponibile il master pattern.</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
+    <value>Specchia il pattern e tutte le sovrapposizioni
+da sinistra a destra. Non selezionato
+(predefinito) è la vista dal rivelatore verso
+il campione, cioè il pattern come lo registra
+una telecamera EBSD; selezionare solo se
+l'immagine sperimentale ha la chiralità opposta.</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>Copia alla dimensione di pixel propria del
+rivelatore, cioè un pixel immagine = un pixel del
+rivelatore. Insieme all'intervallo "Rivelatore"
+l'uscita corrisponde esattamente al numero di pixel
+del rivelatore; il lato maggiore è limitato a 4096
+px. Non selezionato, si usa la risoluzione a schermo.</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
+    <value>Sovrappone l'immagine EBSD sperimentale
+(trascinata in questa finestra) sull'area del
+rivelatore, sopra il pattern simulato e sotto
+le sovrapposizioni delle linee di Kikuchi.</value>
+  </data>
+  <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
+    <value>Candidati di orientazione dell'ultima ricerca, il
+migliore per primo. Score = valore z dell'evidenza
+delle bande di Radon, ZNCC = correlazione con il
+pattern simulato, Bands e (hkl) = bande corrispondenti
+(solo ricerca di Radon). Fare clic su una riga per
+applicare quell'orientazione a tutto il programma.</value>
+  </data>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>Regola l'intervallo di clipping bianco/nero
+dell'immagine sperimentale sovrapposta (non del
+pattern simulato) con i cursori Min e Max a destra.</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>Punto di bianco dell'immagine sperimentale
+sovrapposta, come frazione del suo intervallo
+di intensità (cursore logaritmico). I pixel
+pari o superiori diventano bianchi.</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>Punto di nero dell'immagine sperimentale sovrapposta,
+come frazione del suo intervallo di intensità (cursore
+logaritmico). I pixel pari o inferiori diventano neri.</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>Opacità dell'immagine sperimentale sovrapposta,
+da 0 (invisibile) a 100 % (opaca). Riducila per
+vedere il pattern simulato sottostante.</value>
+  </data>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>Copia come immagine raster bitmap (bmp). Tutto,
+comprese le linee di Kikuchi e le etichette, viene
+rasterizzato a risoluzione fissa. Da usare per i
+programmi che non possono incollare i metafile.</value>
+  </data>
+  <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
+    <value>Copia l'area attualmente mostrata nella
+vista del pattern, così come è spostata
+e ingrandita (il contorno giallo del
+rivelatore è incluso se visualizzato).</value>
+  </data>
+  <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
+    <value>Copia come immagine vettoriale Enhanced Metafile
+(emf) (predefinito). Le linee di Kikuchi e le
+etichette degli indici restano vettoriali e si
+ingrandiscono senza pixelatura; solo il pattern
+stesso è incorporato come raster.</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>Copia solo l'area del rivelatore (schermo al
+fosforo), indipendentemente da spostamento e
+ingrandimento attuali. Il contorno giallo del
+rivelatore viene omesso, quindi l'immagine
+termina esattamente al bordo del rivelatore.</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>Cerca le orientazioni generando pattern di
+dizionario dal master pattern dinamico per tutte le
+orientazioni e confrontandoli tutti tramite ZNCC
+robusta. Richiede il master pattern e impiega alcuni
+secondi, ma è più affidabile della ricerca di Radon.</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>Cerca le orientazioni confrontando modelli
+cinematici di bande di Kikuchi con la mappa di Radon
+(rilevamento di linee) dell'immagine sperimentale.
+Funziona senza master pattern; con esso i candidati
+vengono riordinati tramite ZNCC robusta
+(correlazione incrociata normalizzata a media nulla).</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>Punto di bianco dell'immagine sperimentale
+sovrapposta, come frazione del suo intervallo
+di intensità (cursore logaritmico). I pixel
+pari o superiori diventano bianchi.</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>Punto di nero dell'immagine sperimentale sovrapposta,
+come frazione del suo intervallo di intensità (cursore
+logaritmico). I pixel pari o inferiori diventano neri.</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>Opacità dell'immagine sperimentale sovrapposta,
+da 0 (invisibile) a 100 % (opaca). Riducila per
+vedere il pattern simulato sottostante.</value>
+  </data>
+  <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
+    <value>Larghezza</value>
+  </data>
+  <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
+    <value>Altezza</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>Risoluzione</value>
+  </data>
+  <data name="sizeControl.HeaderText" xml:space="preserve">
+    <value>Dimensioni (L×A)</value>
+  </data>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>Inclinazione</value>
   </data>
 </root>

@@ -83,7 +83,7 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>繪製座標軸</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelLineWidth.Text" xml:space="preserve">
     <value>線寬</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
@@ -99,7 +99,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>上限</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="labelTextSize.Text" xml:space="preserve">
     <value>文字大小</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
@@ -112,7 +112,7 @@
     <value>使用非局域吸收模型</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>納入 TDS 背景強度</value>
+    <value>納入 TDS 背景</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>厚度自</value>
@@ -129,23 +129,23 @@
   <data name="numericBoxDepth.HeaderText" xml:space="preserve">
     <value>深度</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="labelPolarity.Text" xml:space="preserve">
     <value>極性</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labelColor.Text" xml:space="preserve">
     <value>顏色</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>顯示含 BSE 角度／能量分布的影像</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="labelBrightness.Text" xml:space="preserve">
     <value>亮度</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
     <value>輸出參數</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>顯示疊加層</value>
+    <value>疊加層</value>
   </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>複製</value>
@@ -159,11 +159,11 @@
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>步距</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
+  <data name="labelBseDepth.Text" xml:space="preserve">
     <value>深度 (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>顯示動力學 EBSD 圖樣（需主圖樣）</value>
+    <value>動力學 EBSD</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>偵測器輪廓</value>
@@ -177,7 +177,7 @@
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>幾何</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
     <value>立體網中心為表面法線方向</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
@@ -189,7 +189,7 @@
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>顯示邊框</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
     <value>文字設定</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
@@ -247,10 +247,12 @@
     <value>EBSD 模擬器</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>設定背景顏色</value>
+    <value>設定 EBSD 圖樣顯示的背景色。啟用「Apply
+structure factors」時，弱菊池線會融入此顏色。</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>設定背景顏色</value>
+    <value>設定 EBSD 圖樣顯示的背景色。啟用「Apply
+structure factors」時，弱菊池線會融入此顏色。</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>設定疊加文字的顏色，包括
@@ -299,7 +301,8 @@ End 與 Step 決定要計算的厚度切片。</value>
 keV；能量自 Start 向下以此增量計算至 End。</value>
   </data>
   <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>將模擬的 EBSD 圖樣影像複製到剪貼簿。</value>
+    <value>依此處選擇的範圍、解析度與格式，將圖樣檢視複製到剪
+貼簿（菊池線與指數疊加層也依顯示內容一併複製）。</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>透過蒙地卡羅法接續布洛赫波（Bethe）動力學
@@ -348,8 +351,9 @@ keV；能量自 Start 向下以此增量計算至 End。</value>
     <value>將 3D 幾何視圖的視點設定為斜上方的鳥瞰視角。</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>在立體網（BSE 分佈的立體投影圖）上
-疊加顯示晶體軸／參考軸。</value>
+    <value>在立體網（BSE 分佈的立體投影圖）上疊加顯示晶體
+的 a 軸（紅）、b 軸（綠）、c 軸（藍），並標註
+± 兩個方向。投影圖中心對應試片表面法線方向。</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>在圖樣上疊加顯示偵測器（螢光屏）的
@@ -374,7 +378,8 @@ a, b, c 軸標籤文字。</value>
 （計入熱漫散射的複數光學位能）。</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>在圖樣上繪製標示偵測器輪廓的圓。</value>
+    <value>在圖樣上繪製標示偵測器（螢光幕）外形的黃色矩形。
+複製「偵測器」範圍時不繪製，因為複製邊緣已與其重合。</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>顯示自主圖樣投影而來的動力學 EBSD（電子背向
@@ -471,8 +476,9 @@ Negative（反轉）灰階。</value>
 背向散射投影的幾何。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>以 mm 設定偵測器中心的 Y 座標
-（相對於試片的橫向位置）。</value>
+    <value>以 mm 為單位設定偵測器中心的 Y 座標（在試片表面內、
+與旋轉軸 X 垂直、由試片指向螢幕的方向）。與 Z
+及偵測器傾角共同決定相機長度。左右方向的偏移由 X 設定。</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>以 mm 設定偵測器中心的 Z 座標
@@ -492,7 +498,7 @@ Negative（反轉）灰階。</value>
 亮度上限（白色截止）位準；位於此值或以上的
 像素對應為白色。</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
     <value>以強度範圍的比例設定所顯示 EBSD 影像的
 亮度上限（白色截止）位準；位於此值或以上的
 像素對應為白色。</value>
@@ -502,7 +508,7 @@ Negative（反轉）灰階。</value>
 亮度下限（黑色截止）位準；位於此值或以下的
 像素對應為黑色。</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
     <value>以強度範圍的比例設定所顯示 EBSD 影像的
 亮度下限（黑色截止）位準；位於此值或以下的
 像素對應為黑色。</value>
@@ -510,7 +516,7 @@ Negative（反轉）灰階。</value>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>設定繪製菊池線所用的線寬（畫筆粗細）。</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>設定繪製菊池線所用的線寬（畫筆粗細）。</value>
   </data>
   <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
@@ -534,34 +540,35 @@ Depth 欄。</value>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>調整疊加指數文字的字型大小。</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>調整疊加指數文字的字型大小。</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>設定入射束的加速電壓／電子波長
 （EBSD 模擬的一次電子能量）。</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
+  <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>調整所顯示 EBSD 影像的亮度
 （黑／白截止）範圍。</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value>模擬的背向散射電子最大穿透
-深度 (nm) 的分佈。</value>
+  <data name="labelBseDepth.ToolTip" xml:space="preserve">
+    <value>被偵測到的背向散射電子最後一次發生非彈性散射
+的深度 (nm) 分佈（若無非彈性散射則取最大侵入
+深度）。與用於為主圖樣加權的深度定義相同。</value>
   </data>
-  <data name="label14.ToolTip" xml:space="preserve">
+  <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>模擬的背向散射電子能量損失 ΔE (keV)
 的分佈。</value>
   </data>
-  <data name="label15.ToolTip" xml:space="preserve">
+  <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>在此立體網中，中心
 對應於試片表面法線方向。</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
     <value>為所顯示影像選擇正常或反轉（負片）
 的灰階極性。</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
+  <data name="labelColor.ToolTip" xml:space="preserve">
     <value>選擇將強度對應至顏色所用的色彩刻度
 （Gray、Cold-Warm、Spectrum、Fire）。</value>
   </data>
@@ -583,5 +590,159 @@ Depth 欄。</value>
   </data>
   <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
     <value>字典搜尋</value>
+  </data>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>校準幾何</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>搜尋取向候選</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>左右翻轉</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>符合偵測器解析度</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>實驗影像</value>
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>實驗影像</value>
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>偵測器中心座標</value>
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>解析度</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>尺寸與傾斜</value>
+  </data>
+  <data name="labelExpBrightness.Text" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="labelExpMaxInt.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="labelExpMinInt.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>目前檢視</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>偵測器</value>
+  </data>
+  <data name="labelBrightnessMax.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="labelBrightnessMin.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="tabPageOverlays.Text" xml:space="preserve">
+    <value>疊加層</value>
+  </data>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>透過最大化模擬圖樣與實驗圖樣的 ZNCC，將偵測器幾何（圖樣
+中心 PC 與偵測器距離 DD）與取向交替最佳化。需要主圖樣。
+偵測器傾角保持固定，結果會寫回偵測器中心的 X/Y/Z 欄。</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>以上方選擇的引擎搜尋最能解釋已載入實驗圖
+樣的取向。下表最多列出 10 個候選；若已有
+主圖樣，最佳候選會精修至 ±0.25°。</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
+    <value>將圖樣及其全部疊加層左右鏡像。未勾選（預設）為
+從偵測器看向試片的方向，即 EBSD 相機記錄的自然
+影像；僅當實驗影像左右相反時才勾選。</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>依偵測器本身的像素尺寸複製（影像 1 px = 偵測器 1
+px）。與範圍「偵測器」搭配使用時，輸出與偵測器像素數嚴
+格一致；長邊限制為 4096 px。未勾選時使用螢幕解析度。</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
+    <value>將拖放到本視窗的實驗 EBSD 影像疊加到偵測器區
+域（位於模擬圖樣之上、菊池線疊加層之下）。</value>
+  </data>
+  <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
+    <value>上次搜尋所得的取向候選（由優到劣）。Score =
+Radon 帶證據的 z 值，ZNCC = 與模擬圖樣的相關
+性，Bands 與 (hkl) = 匹配的帶（僅 Radon
+搜尋）。點擊某列即可將該取向套用到整個程式。</value>
+  </data>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>用右側的最小/最大滑桿調整疊加實驗影
+像（而非模擬圖樣）的黑白截斷範圍。</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>以疊加實驗影像自身強度範圍的比例設定其白場（滑
+桿為對數）。高於或等於此值的像素會變為白色。</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>以疊加實驗影像自身強度範圍的比例設定其黑場（滑
+桿為對數）。低於或等於此值的像素會變為黑色。</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>疊加的實驗影像的不透明度（0 = 透明 ~ 100 %
+= 不透明）。降低此值可看到下方的模擬圖樣。</value>
+  </data>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>以點陣圖 (bmp) 光柵影像複製。包括菊池線與標籤在內的全部
+內容都以固定解析度光柵化。適用於無法貼上中繼檔的程式。</value>
+  </data>
+  <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
+    <value>依目前的平移與縮放狀態，複製圖樣檢視正在顯示的
+範圍（若顯示了黃色偵測器輪廓，也會一併複製）。</value>
+  </data>
+  <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
+    <value>以增強型中繼檔 (emf) 向量圖形複製（預
+設）。菊池線與指數標籤保持向量，
+放大不會出現鋸齒；僅圖樣本身以點陣圖嵌入。</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>無論目前的平移與縮放如何，僅複製偵測器（螢光幕）區域。
+不含黃色偵測器輪廓，因此影像正好在偵測器邊緣處結束。</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>從動力學主圖樣產生涵蓋全部取向的字典圖樣，以
+robust ZNCC 逐一比較來搜尋取向。
+需要主圖樣且耗時數秒，但比 Radon 搜尋更可靠。</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>將運動學菊池帶模板與實驗影像的 Radon 變換（直線檢測）
+圖進行比對以搜尋取向。無主圖樣時亦可運作；有主圖樣時會
+以 robust ZNCC（零均值正規化互相關）對候選重新排序。</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>以疊加實驗影像自身強度範圍的比例設定其白場（滑
+桿為對數）。高於或等於此值的像素會變為白色。</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>以疊加實驗影像自身強度範圍的比例設定其黑場（滑
+桿為對數）。低於或等於此值的像素會變為黑色。</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>疊加的實驗影像的不透明度（0 = 透明 ~ 100 %
+= 不透明）。降低此值可看到下方的模擬圖樣。</value>
+  </data>
+  <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
+    <value>寬度</value>
+  </data>
+  <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>解析度</value>
+  </data>
+  <data name="sizeControl.HeaderText" xml:space="preserve">
+    <value>尺寸 (寬×高)</value>
+  </data>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>傾角</value>
   </data>
 </root>

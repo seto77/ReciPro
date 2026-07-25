@@ -83,7 +83,7 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Рисовать оси</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelLineWidth.Text" xml:space="preserve">
     <value>Толщина линии</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
@@ -99,7 +99,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>Верх</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="labelTextSize.Text" xml:space="preserve">
     <value>Размер текста</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
@@ -129,23 +129,23 @@
   <data name="numericBoxDepth.HeaderText" xml:space="preserve">
     <value>Глубина</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="labelPolarity.Text" xml:space="preserve">
     <value>Полярность</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labelColor.Text" xml:space="preserve">
     <value>Цвет</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>Показать изображение с угловыми/энергетическими распределениями ОРЭ</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="labelBrightness.Text" xml:space="preserve">
     <value>Яркость</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
     <value>Параметры вывода</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>Показать наложения</value>
+    <value>Наложения</value>
   </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Копировать</value>
@@ -159,11 +159,11 @@
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>с шагом</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
+  <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Глубина (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>Показать динамическую картину EBSD (требуется мастер-картина)</value>
+    <value>Динамический EBSD</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>Контур детектора</value>
@@ -177,7 +177,7 @@
   <data name="tabPageGeometry.Text" xml:space="preserve">
     <value>Геометрия</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
     <value>Центр стереограммы — направление нормали к поверхности</value>
   </data>
   <data name="tabPageBseDistribution.Text" xml:space="preserve">
@@ -189,7 +189,7 @@
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>Показать рамку</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
     <value>Настройки текста</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
@@ -247,10 +247,14 @@
     <value>Симулятор EBSD</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>Задать цвет фона</value>
+    <value>Задать цвет фона вида картины EBSD. Это также
+цвет, в который сливаются слабые линии Кикучи,
+когда включено "Apply structure factors".</value>
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>Задать цвет фона</value>
+    <value>Задать цвет фона вида картины EBSD. Это также
+цвет, в который сливаются слабые линии Кикучи,
+когда включено "Apply structure factors".</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
     <value>Задаёт цвет наложенного текста, включая
@@ -300,7 +304,10 @@ End и Step задают слои по толщине для расчёта.</va
 от Start до End с этим приращением.</value>
   </data>
   <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>Копировать смоделированное изображение картины EBSD в буфер обмена.</value>
+    <value>Копировать вид картины в буфер обмена с
+выбранными здесь диапазоном, разрешением и
+форматом (наложения линий Кикучи и индексов
+включаются так, как они нарисованы).</value>
   </data>
   <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
     <value>Построить мастер-картину EBSD (полносферную
@@ -349,8 +356,11 @@ End и Step задают слои по толщине для расчёта.</va
     <value>Установить вид 3D-геометрии в наклонный ракурс с высоты птичьего полёта.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
-    <value>Наложить кристаллографические/опорные оси на стереосетку
-(стереографическую проекцию распределения ОРЭ).</value>
+    <value>Наложить кристаллографические оси a (красная),
+b (зелёная) и c (синяя) на стереосетку
+(стереографическую проекцию распределения ОРЭ)
+с подписями направлений + и -. Центр
+стереосетки - нормаль к поверхности образца.</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
     <value>Наложить контур детектора
@@ -378,7 +388,10 @@ End и Step задают слои по толщине для расчёта.</va
 рассеяние) при построении мастер-картины.</value>
   </data>
   <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>Рисовать окружность, обозначающую контур детектора, на картине.</value>
+    <value>Рисовать жёлтый прямоугольник, обозначающий контур
+детектора (люминофорного экрана), на картине. При
+копировании диапазона "Детектор" он не рисуется,
+так как край копии уже совпадает с ним.</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
     <value>Показывать динамическую картину EBSD (дифракция обратно
@@ -481,8 +494,11 @@ Simulate, чтобы получить распределение.</value>
 геометрию проекции обратного рассеяния.</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
-    <value>Задаёт координату Y (боковое положение от
-образца) центра детектора в mm.</value>
+    <value>Задать координату Y центра детектора в мм - смещение
+от образца к экрану в плоскости поверхности образца,
+перпендикулярно оси вращения X. Вместе с Z и
+наклоном детектора определяет камерную длину.
+(Смещение влево-вправо задаётся через X.)</value>
   </data>
   <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
     <value>Задаёт координату Z (вдоль направления пучка)
@@ -502,7 +518,7 @@ Simulate, чтобы получить распределение.</value>
 отображаемого изображения EBSD как долю диапазона
 интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
     <value>Задаёт верхний уровень яркости (отсечка по белому)
 отображаемого изображения EBSD как долю диапазона
 интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
@@ -512,7 +528,7 @@ Simulate, чтобы получить распределение.</value>
 отображаемого изображения EBSD как долю диапазона
 интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
     <value>Задаёт нижний уровень яркости (отсечка по чёрному)
 отображаемого изображения EBSD как долю диапазона
 интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
@@ -521,7 +537,7 @@ Simulate, чтобы получить распределение.</value>
     <value>Задаёт ширину линии (толщину пера),
 используемую для рисования линий Кикучи.</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
     <value>Задаёт ширину линии (толщину пера),
 используемую для рисования линий Кикучи.</value>
   </data>
@@ -546,7 +562,7 @@ Simulate, чтобы получить распределение.</value>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Регулирует размер шрифта наложенного текста индексов.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
     <value>Регулирует размер шрифта наложенного текста индексов.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
@@ -554,27 +570,31 @@ Simulate, чтобы получить распределение.</value>
 электронов падающего пучка (энергию
 первичных электронов для моделирования EBSD).</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
+  <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>Регулирует диапазон яркости (отсечка по чёрному/белому)
 отображаемого изображения EBSD.</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value>Распределение максимальной глубины проникновения
-(nm) смоделированных обратно рассеянных электронов.</value>
+  <data name="labelBseDepth.ToolTip" xml:space="preserve">
+    <value>Распределение глубины (нм), на которой у
+зарегистрированных обратно рассеянных электронов
+произошло последнее неупругое рассеяние (при его
+отсутствии - максимальная глубина
+проникновения). Это то же определение глубины,
+что используется для взвешивания мастер-картины.</value>
   </data>
-  <data name="label14.ToolTip" xml:space="preserve">
+  <data name="labelBseDeltaE.ToolTip" xml:space="preserve">
     <value>Распределение потери энергии ΔE (keV)
 смоделированных обратно рассеянных электронов.</value>
   </data>
-  <data name="label15.ToolTip" xml:space="preserve">
+  <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>На этой стереосетке центр
 соответствует нормали к поверхности образца.</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
     <value>Выберите обычную или инвертированную (негативную)
 полярность уровней серого для отображаемого изображения.</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
+  <data name="labelColor.ToolTip" xml:space="preserve">
     <value>Выберите цветовую шкалу (Gray, Cold-Warm,
 Spectrum, Fire), используемую для отображения интенсивности в цвет.</value>
   </data>
@@ -596,5 +616,196 @@ Spectrum, Fire), используемую для отображения инте
   </data>
   <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
     <value>Словарный поиск</value>
+  </data>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>Калибровка геометрии</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>Поиск кандидатов ориентации</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>Отразить Л-П</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>По разрешению детектора</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>Экспериментальное изображение</value>
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>Экспериментальное изображение</value>
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>Координаты
+центра детектора</value>
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>Разрешение</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>Размер и наклон</value>
+  </data>
+  <data name="labelExpBrightness.Text" xml:space="preserve">
+    <value>Яркость</value>
+  </data>
+  <data name="labelExpMaxInt.Text" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="labelExpMinInt.Text" xml:space="preserve">
+    <value>Мин</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>Непрозрачность</value>
+  </data>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>Текущий вид</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>Детектор</value>
+  </data>
+  <data name="labelBrightnessMax.Text" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="labelBrightnessMin.Text" xml:space="preserve">
+    <value>Мин</value>
+  </data>
+  <data name="tabPageOverlays.Text" xml:space="preserve">
+    <value>Наложения</value>
+  </data>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>Уточнить геометрию детектора - центр картины (PC) и
+расстояние до детектора (DD) - вместе с ориентацией,
+максимизируя ZNCC между смоделированной и
+экспериментальной картинами. Требует мастер-картину.
+Наклон детектора остаётся фиксированным, результат
+записывается в поля X/Y/Z центра детектора.</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>Искать ориентации, наилучшим образом объясняющие
+загруженную экспериментальную картину, выбранным выше
+методом. В таблице ниже выводится до 10 кандидатов;
+лучший уточняется до ±0,25° при наличии мастер-картины.</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
+    <value>Отразить картину и все наложения слева направо. Снятый
+флажок (по умолчанию) - вид от детектора к образцу, то
+есть картина так, как её записывает камера EBSD;
+установите флажок только если ваше экспериментальное
+изображение имеет обратную хиральность.</value>
+  </data>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>Копировать с собственным размером пикселя
+детектора, то есть один пиксель изображения = один
+пиксель детектора. Вместе с диапазоном "Детектор"
+вывод точно соответствует числу пикселей
+детектора; длинная сторона ограничена 4096 px. Без
+флажка используется экранное разрешение.</value>
+  </data>
+  <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
+    <value>Наложить экспериментальное изображение EBSD
+(перетащенное в это окно) на область детектора, поверх
+смоделированной картины и под наложениями линий Кикучи.</value>
+  </data>
+  <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
+    <value>Кандидаты ориентации последнего поиска, лучшие
+сверху. Score = z-значение доказательства полос
+по Радону, ZNCC = корреляция со смоделированной
+картиной, Bands и (hkl) = сопоставленные полосы
+(только поиск по Радону). Щёлкните строку, чтобы
+применить эту ориентацию во всей программе.</value>
+  </data>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>Настроить диапазон отсечения чёрного/белого
+наложенного экспериментального изображения (а не
+смоделированной картины) ползунками Мин и Макс справа.</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>Точка белого наложенного экспериментального
+изображения, как доля его собственного диапазона
+интенсивности (логарифмический ползунок).
+Пиксели на этом уровне и выше становятся белыми.</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>Точка чёрного наложенного экспериментального
+изображения, как доля его собственного диапазона
+интенсивности (логарифмический ползунок).
+Пиксели на этом уровне и ниже становятся чёрными.</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность наложенного экспериментального
+изображения, от 0 (невидимо) до 100 %
+(непрозрачно). Уменьшите, чтобы увидеть
+смоделированную картину под ним.</value>
+  </data>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>Копировать как растровое изображение bitmap
+(bmp). Всё, включая линии Кикучи и подписи,
+растрируется с фиксированным разрешением.
+Для программ, не умеющих вставлять метафайлы.</value>
+  </data>
+  <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
+    <value>Копировать область, отображаемую сейчас в виде
+картины, с текущим сдвигом и масштабом (жёлтый
+контур детектора включается, если он показан).</value>
+  </data>
+  <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
+    <value>Копировать как векторное изображение Enhanced Metafile
+(emf) (по умолчанию). Линии Кикучи и подписи индексов
+остаются векторными и масштабируются без пикселизации;
+только сама картина внедряется как растр.</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>Копировать только область детектора (люминофорного
+экрана), независимо от текущего сдвига и масштаба.
+Жёлтый контур детектора не включается, поэтому
+изображение заканчивается точно на краю детектора.</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>Искать ориентации, создавая словарные картины
+из динамической мастер-картины для всех
+ориентаций и сравнивая их все по устойчивой
+ZNCC. Требует мастер-картину и занимает
+несколько секунд, но надёжнее поиска по Радону.</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>Искать ориентации сопоставлением кинематических
+шаблонов полос Кикучи с картой Радона (детектирование
+линий) экспериментального изображения. Работает без
+мастер-картины; при её наличии кандидаты
+переупорядочиваются по устойчивой ZNCC (нормированной
+кросс-корреляции с нулевым средним).</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>Точка белого наложенного экспериментального
+изображения, как доля его собственного диапазона
+интенсивности (логарифмический ползунок).
+Пиксели на этом уровне и выше становятся белыми.</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>Точка чёрного наложенного экспериментального
+изображения, как доля его собственного диапазона
+интенсивности (логарифмический ползунок).
+Пиксели на этом уровне и ниже становятся чёрными.</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность наложенного экспериментального
+изображения, от 0 (невидимо) до 100 %
+(непрозрачно). Уменьшите, чтобы увидеть
+смоделированную картину под ним.</value>
+  </data>
+  <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
+  <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>Разрешение</value>
+  </data>
+  <data name="sizeControl.HeaderText" xml:space="preserve">
+    <value>Размер (Ш×В)</value>
+  </data>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>Наклон</value>
   </data>
 </root>

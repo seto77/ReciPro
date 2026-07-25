@@ -125,8 +125,16 @@ public partial class FormEBSD : FormBase
 
     public Crystal Crystal => FormMain.Crystal;
 
+    /// <summary>検出器法線を Z 軸へ合わせた座標での検出器面の符号付き Z 位置。260725Cl 追加 (/simplify):
+    /// 晶帯軸ラベルの表示方向判定が同じ三角関数式を手書きで持っていたため、CameraLength2 と式を 1 箇所に統合した。
+    /// 標準配置 (DetTilt=90°, DetY&lt;0) では **−CameraLength2** になる — EbsdDetectorGeometry.FromPatternCenter の
+    /// 「標準配置 signed L = −DD」と同一規約 (260725Cl 訂正: 当初 +CameraLength2 と書いていたが既定値 DetY=−35/DetZ=30/δ=90° で −35 = −CameraLength2)。
+    /// 利用側は相対符号のみを見る (晶帯軸の表示向き判定) ので、この符号自体が挙動を左右することはない。</summary>
+    private double SignedCameraLength => DetY * Math.Sin(DetTilt) - DetZ * Math.Cos(DetTilt); // 260725Cl: public → private (外部参照なし)
+
     /// <summary>試料から検出器までの距離</summary>
-    public double CameraLength2 => Math.Abs(DetY * Math.Sin(DetTilt) - DetZ * Math.Cos(DetTilt));
+    // public double CameraLength2 => Math.Abs(DetY * Math.Sin(DetTilt) - DetZ * Math.Cos(DetTilt)); // 260725Cl 変更前
+    public double CameraLength2 => Math.Abs(SignedCameraLength); // 260725Cl 変更
 
     /// <summary>画像の中心。検出器(Detector)座標系(Foot原点)で表現</summary>
     public PointD Foot
@@ -161,7 +169,8 @@ public partial class FormEBSD : FormBase
 
     /// <summary>画面解像度 mm/pix</summary>
     // public double Resolution => 2.0 * numericBoxDetRadius.Value / graphicsBox.ClientRectangle.Width; // 260723Cl 変更前: 画面幅=検出器直径の固定表示
-    public double Resolution => Math.Max(1E-6, numericBoxResolution.Value); // 260723Cl 変更: 表示解像度 (ズーム) は numericBoxResolution が保持
+    // public double Resolution => Math.Max(1E-6, numericBoxResolution.Value); // 260723Cl 変更: 表示解像度 (ズーム) は numericBoxResolution が保持 // 260725Cl 変更前
+    public double Resolution => renderResolutionOverride ?? Math.Max(1E-6, numericBoxResolution.Value); // 260725Cl 変更: Copy 用オフスクリーン描画中は上書き値を優先
     public float ResolutionF => (float)Resolution;
 
     #region 表示ビュー状態 (ズーム・パン) 260723Cl 追加
@@ -179,6 +188,16 @@ public partial class FormEBSD : FormBase
 
     /// <summary>画面中心に表示する表示パターン座標 (mm)。既定 (viewPan=0) は検出器中心。260723Cl 追加</summary>
     private PointD ViewCenter => new(DetectorCenterView.X + viewPan.X, DetectorCenterView.Y + viewPan.Y);
+
+    /// <summary>Copy 用オフスクリーン描画時のキャンバスサイズ・表示解像度の一時上書き (RenderViewTo が設定)。260725Cl 追加
+    /// (260725Cl 訂正: 旧 doc は改名前の RenderViewToBitmap を参照していた)</summary>
+    private Size? renderCanvasOverride = null;
+    private double? renderResolutionOverride = null;
+    //260725Cl (/simplify): 検出器外枠の抑止は描画コンテキストではなく単発の表示オプションなので、
+    //可変フィールド (set→finally で復元) をやめ DrawOverlays の引数にした。旧: private bool renderSuppressDetectorOutline = false;
+
+    /// <summary>描画キャンバスのピクセルサイズ。通常は graphicsBox、Copy 時はオフスクリーンビットマップ。260725Cl 追加</summary>
+    private Size CanvasSize => renderCanvasOverride ?? graphicsBox.ClientSize;
     #endregion
 
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
@@ -249,11 +268,16 @@ public partial class FormEBSD : FormBase
 
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
+        checkBoxDrawAxesInStereonet.CheckedChanged += (_, _) => DrawGeometry(); // 260725Ch: 結晶軸表示の切替をステレオネットへ即時反映
+
+        dataGridViewEbsdCandidates.Font = new Font(dataGridViewEbsdCandidates.Font.FontFamily, Math.Max(7f, dataGridViewEbsdCandidates.Font.Size - 1f), dataGridViewEbsdCandidates.Font.Style, dataGridViewEbsdCandidates.Font.Unit); // 260725Ch: 候補一覧を小さい文字にして表示行数を増やす
+        dataGridViewEbsdCandidates.RowTemplate.Height = dataGridViewEbsdCandidates.Font.Height + 3; // 260725Ch: フォントに合わせて行高も詰める
+        dataGridViewEbsdCandidates.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // 260725Ch: 候補は行全体を選択
 
         // 260724Cl 追加: 表示チェックが ON になったら対応する設定タブを前面に出す
-        checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControl2.SelectedTab = tabPageOutputParameter; };
-        checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControl2.SelectedTab = tabPageExperimentalImage; };
-        checkBoxShowOverlays.CheckedChanged += (_, _) => { if (checkBoxShowOverlays.Checked) tabControl1.SelectedTab = tabPageOverlays; };
+        checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControlPatternSettings.SelectedTab = tabPageOutputParameter; };
+        checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; };
+        checkBoxShowOverlays.CheckedChanged += (_, _) => { if (checkBoxShowOverlays.Checked) tabControlSettings.SelectedTab = tabPageOverlays; };
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -288,18 +312,18 @@ public partial class FormEBSD : FormBase
 
         buttonFitNistElasticSampler.Enabled = false;
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "NIST elastic compression";
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
-        toolStripStatusLabel3.Text = "";
+        toolStripStatusLabelSummary.Text = "NIST elastic compression";
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
+        toolStripStatusLabelDetail.Text = "";
 
         var stopwatch = Stopwatch.StartNew();
         var progress = new Progress<NistElasticCompressionProgress>(state =>
         {
             var progressValue = Math.Clamp((int)Math.Round(100.0 * state.OverallProgress), 0, 100);
             toolStripProgressBar.Value = progressValue;
-            toolStripStatusLabel2.Text = $"NIST elastic compression: Z={state.AtomicNumber}, block {state.BlockIndex}/{state.BlockCount}, {state.Phase}";
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, progressValue / 100.0, "", stopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化
-            toolStripStatusLabel3.Text = $"File {state.FileIndex}/{state.FileCount}: {Path.GetFileName(state.SourcePath)}";
+            toolStripStatusLabelSummary.Text = $"NIST elastic compression: Z={state.AtomicNumber}, block {state.BlockIndex}/{state.BlockCount}, {state.Phase}";
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, progressValue / 100.0, "", stopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化
+            toolStripStatusLabelDetail.Text = $"File {state.FileIndex}/{state.FileCount}: {Path.GetFileName(state.SourcePath)}";
         });
 
         try
@@ -307,9 +331,9 @@ public partial class FormEBSD : FormBase
             var compressionResult = await Task.Run(() => NistElasticSamplerPchipGenerator.GenerateCompressedSourcesToRepository(openFileDialog.FileNames, repositoryRoot, progress)); // (260401Ch) 実処理は Crystallography.Atom.NistElastic 側の API を呼ぶ
             stopwatch.Stop();
             toolStripProgressBar.Value = 100;
-            toolStripStatusLabel2.Text = "NIST elastic compression completed";
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 1.0, "", stopwatch.Elapsed);// 260520Cl SetProgress化 (完了)
-            toolStripStatusLabel3.Text = $"{compressionResult.SourceFileCount} file(s) processed, {compressionResult.OutputPaths.Count} output file(s).";
+            toolStripStatusLabelSummary.Text = "NIST elastic compression completed";
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", stopwatch.Elapsed);// 260520Cl SetProgress化 (完了)
+            toolStripStatusLabelDetail.Text = $"{compressionResult.SourceFileCount} file(s) processed, {compressionResult.OutputPaths.Count} output file(s).";
             MessageBox.Show(this,
                 $"Finished compressing {compressionResult.SourceFileCount} file(s).\r\n" +
                 // $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "Generated")}\r\n" +
@@ -322,9 +346,9 @@ public partial class FormEBSD : FormBase
         }
         catch (Exception ex)
         {
-            toolStripStatusLabel2.Text = "NIST elastic compression failed";
-            toolStripStatusLabel1.Text = $"Failed after {StatusBarHelper.FormatElapsed(stopwatch.Elapsed)}";
-            toolStripStatusLabel3.Text = ex.Message;
+            toolStripStatusLabelSummary.Text = "NIST elastic compression failed";
+            toolStripStatusLabelProgress.Text = $"Failed after {StatusBarHelper.FormatElapsed(stopwatch.Elapsed)}";
+            toolStripStatusLabelDetail.Text = ex.Message;
             MessageBox.Show(this, ex.ToString(), "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
@@ -378,9 +402,9 @@ public partial class FormEBSD : FormBase
         buttonFitNistElasticSampler.Enabled = false;
         buttonBenchmarkNistElasticSampler.Enabled = false;
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "NIST elastic MC benchmark";
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
-        toolStripStatusLabel3.Text = "";
+        toolStripStatusLabelSummary.Text = "NIST elastic MC benchmark";
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
+        toolStripStatusLabelDetail.Text = "";
 
         var originalSamplerTextDirectory = MonteCarlo.NistElasticSamplerTextDirectory;
         MonteCarlo.NistElasticSamplerTextDirectory = originalTextDirectory; // (260401Ch) benchmark 中は source tree の original TXT を使う
@@ -391,9 +415,9 @@ public partial class FormEBSD : FormBase
             var progress = new Progress<(int Progress, string Message, string Detail)>(state =>
             {
                 toolStripProgressBar.Value = Math.Clamp(state.Progress, 0, 100);
-                toolStripStatusLabel2.Text = $"NIST elastic MC benchmark: {state.Message}";
-                StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, state.Progress / 100.0, "", stopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化 (コントロール値の読み戻しをやめ source=state.Progress から ratio を計算)
-                toolStripStatusLabel3.Text = state.Detail;
+                toolStripStatusLabelSummary.Text = $"NIST elastic MC benchmark: {state.Message}";
+                StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, state.Progress / 100.0, "", stopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化 (コントロール値の読み戻しをやめ source=state.Progress から ratio を計算)
+                toolStripStatusLabelDetail.Text = state.Detail;
             });
 
             var runs = await Task.Run(() => RunElasticSamplerSourceBenchmark(
@@ -405,9 +429,9 @@ public partial class FormEBSD : FormBase
 
             stopwatch.Stop();
             toolStripProgressBar.Value = 100;
-            toolStripStatusLabel2.Text = "NIST elastic MC benchmark completed";
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 1.0, "", stopwatch.Elapsed);// 260520Cl SetProgress化 (完了)
-            toolStripStatusLabel3.Text = Path.GetFileName(summaryPath);
+            toolStripStatusLabelSummary.Text = "NIST elastic MC benchmark completed";
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", stopwatch.Elapsed);// 260520Cl SetProgress化 (完了)
+            toolStripStatusLabelDetail.Text = Path.GetFileName(summaryPath);
             MessageBox.Show(this,
                 $"Benchmark finished.\r\n" +
                 $"Summary: {summaryPath}\r\n" +
@@ -419,9 +443,9 @@ public partial class FormEBSD : FormBase
         }
         catch (Exception ex)
         {
-            toolStripStatusLabel2.Text = "NIST elastic MC benchmark failed";
-            toolStripStatusLabel1.Text = $"Failed after {StatusBarHelper.FormatElapsed(stopwatch.Elapsed)}";
-            toolStripStatusLabel3.Text = ex.Message;
+            toolStripStatusLabelSummary.Text = "NIST elastic MC benchmark failed";
+            toolStripStatusLabelProgress.Text = $"Failed after {StatusBarHelper.FormatElapsed(stopwatch.Elapsed)}";
+            toolStripStatusLabelDetail.Text = ex.Message;
             MessageBox.Show(this, ex.ToString(), "NIST elastic MC benchmark", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
@@ -765,6 +789,23 @@ public partial class FormEBSD : FormBase
         var f1 = new Func<double, double, PointD>((x, y)
             => Stereonet.ConvertVectorToSchmidt(samRot2 * (detRot * new V3(halfW * x, halfH * y, 0) + new V3(DetX, -DetY, -DetZ))));
 
+        if (checkBoxDrawAxesInStereonet.Checked)
+        {
+            var axisA = samRot * (Crystal.RotationMatrix * Crystal.A_Axis);
+            var axisB = samRot * (Crystal.RotationMatrix * Crystal.B_Axis);
+            var axisC = samRot * (Crystal.RotationMatrix * Crystal.C_Axis);
+            poleFigureControl.Circles = [
+                (Stereonet.ConvertVectorToSchmidt(axisA), 0.02, Color.Red, true, "a"),
+                (Stereonet.ConvertVectorToSchmidt(-axisA), 0.02, Color.Red, true, "-a"),
+                (Stereonet.ConvertVectorToSchmidt(axisB), 0.02, Color.Green, true, "b"),
+                (Stereonet.ConvertVectorToSchmidt(-axisB), 0.02, Color.Green, true, "-b"),
+                (Stereonet.ConvertVectorToSchmidt(axisC), 0.02, Color.Blue, true, "c"),
+                (Stereonet.ConvertVectorToSchmidt(-axisC), 0.02, Color.Blue, true, "-c")
+                ]; // 260725Ch: 3D幾何表示と同じ結晶a/b/c軸を上半球側の符号で重ねる
+        }
+        else
+            poleFigureControl.Circles = []; // 260725Ch
+
         var step = 60;
         var range = Enumerable.Range(0, step + 1).Select(e => (double)e);
         // 260723Cl 変更: 検出器輪郭を円周 → 矩形周へ
@@ -825,12 +866,12 @@ public partial class FormEBSD : FormBase
         var zoneAxis = u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis; // (260322Ch) 結晶学的 [u v w] を実空間ベクトルへ変換する
         if (zoneAxis.Length2 < 1e-12)
         {
-            toolStripStatusLabel2.Text = "Zone axis [u v w] cannot be [0 0 0]."; // 260517Cl 旧挙動を復元: zone axis (0,0,0) を明示的に通知
+            toolStripStatusLabelSummary.Text = "Zone axis [u v w] cannot be [0 0 0]."; // 260517Cl 旧挙動を復元: zone axis (0,0,0) を明示的に通知
             return;
         }
 
         glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationFromZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) zone axis が viewer の +Z 方向を向くように回転する
-        toolStripStatusLabel2.Text = $"MasterPattern3D view: [{u} {v} {w}]"; // (260322Ch) // 260406Cl Label1→Label2: 進捗専用に整理
+        toolStripStatusLabelSummary.Text = $"MasterPattern3D view: [{u} {v} {w}]"; // (260322Ch) // 260406Cl Label1→Label2: 進捗専用に整理
     }
 
     #endregion
@@ -931,6 +972,7 @@ public partial class FormEBSD : FormBase
                 : e.Depth,
                 e.Vec, e.Energy)).ToArray();
         mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths);
+        composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
@@ -1678,7 +1720,8 @@ public partial class FormEBSD : FormBase
         get
         {
             // double w = DetPixelWidth, h = DetPixelHeight; // 260724Cl 変更前: 検出器固有ピクセル
-            double w = graphicsBox.ClientSize.Width, h = graphicsBox.ClientSize.Height;
+            // double w = graphicsBox.ClientSize.Width, h = graphicsBox.ClientSize.Height; // 260725Cl 変更前
+            double w = CanvasSize.Width, h = CanvasSize.Height; // 260725Cl 変更: Copy 用オフスクリーン描画に対応 (通常は graphicsBox と同値)
             if (w <= 0 || h <= 0) return (0, 0);
             var max = Math.Max(w, h);
             if (max > MaxPatternRasterSize) { w *= MaxPatternRasterSize / max; h *= MaxPatternRasterSize / max; }
@@ -1690,8 +1733,10 @@ public partial class FormEBSD : FormBase
     /// px_view = (2w+1-width)·ScaleW + OffX (= viewPan.X)。ラスターは現在の視野 (ClientSize×Resolution、中心 ViewCenter) 全体をカバーする。
     /// BuildEbsdLookupTable と Weighted 3 モデルの detNorm 計算で共用。</summary>
     private (double ScaleW, double ScaleH, double OffX, double OffY) GetRasterToViewParams(int width, int height)
-        => (graphicsBox.ClientSize.Width * Resolution / (2.0 * width),
-            graphicsBox.ClientSize.Height * Resolution / (2.0 * height),
+        //=> (graphicsBox.ClientSize.Width * Resolution / (2.0 * width), // 260725Cl 変更前
+        //    graphicsBox.ClientSize.Height * Resolution / (2.0 * height),
+        => (CanvasSize.Width * Resolution / (2.0 * width), // 260725Cl 変更: Copy 用オフスクリーン描画に対応
+            CanvasSize.Height * Resolution / (2.0 * height),
             viewPan.X, viewPan.Y);
 
     public void DrawEBSD()
@@ -1849,9 +1894,9 @@ public partial class FormEBSD : FormBase
                 2 * scaleW * width, 2 * scaleH * height);
         }
 
-        // toolStripStatusLabel1.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
-        toolStripStatusLabel2.Text = "EBSD rendering";
-        toolStripStatusLabel3.Text = statusText;
+        // toolStripStatusLabelProgress.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
+        toolStripStatusLabelSummary.Text = "EBSD rendering";
+        toolStripStatusLabelDetail.Text = statusText;
     }
 
     #endregion
@@ -1860,15 +1905,18 @@ public partial class FormEBSD : FormBase
     /// <summary>プロジェクション行列の設定を行う。</summary>
     public bool SetProjection(Graphics g = null)
     {
-        if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
+        // if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0) // 260725Cl 変更前
+        if (g != null && CanvasSize.Width != 0 && CanvasSize.Height != 0) // 260725Cl 変更: Copy 用オフスクリーン描画に対応
             try
             {
                 //g.Transform = new Matrix(...); // (260611Ch) 旧: Matrix が未解放
                 // 260723Cl 変更: 平行移動項を Foot 固定 (+Foot/Res) から ViewCenter (ズーム・パン対応。既定は検出器中心=旧挙動) へ
                 using var transform = new Matrix( // (260611Ch)
                 (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
-                (float)(graphicsBox.ClientSize.Width / 2.0 - ViewCenter.X / Resolution),
-                (float)(graphicsBox.ClientSize.Height / 2.0 - ViewCenter.Y / Resolution));
+                //(float)(graphicsBox.ClientSize.Width / 2.0 - ViewCenter.X / Resolution), // 260725Cl 変更前
+                //(float)(graphicsBox.ClientSize.Height / 2.0 - ViewCenter.Y / Resolution));
+                (float)(CanvasSize.Width / 2.0 - ViewCenter.X / Resolution), // 260725Cl 変更
+                (float)(CanvasSize.Height / 2.0 - ViewCenter.Y / Resolution));
                 g.Transform = transform; // (260611Ch)
             }
             catch { return false; }
@@ -1880,13 +1928,15 @@ public partial class FormEBSD : FormBase
 
     /// <summary></summary>
     /// <param name="graphics"></param>
-    private void DrawOverlays(Graphics graphics = null, int i = -1, int j = -1)
+    //260725Cl シグネチャ変更 (suppressDetectorOutline 追加: Detector 範囲コピー時は黄色い検出器外枠がコピー縁と一致するため描かない。作者指示)。
+    //旧: private void DrawOverlays(Graphics graphics = null, int i = -1, int j = -1)
+    private void DrawOverlays(Graphics graphics = null, int i = -1, int j = -1, bool suppressDetectorOutline = false)
     {
         // 260724Cl 追加: InitializeComponent 中 (graphicsBox.Resize 発火時) は FormMain 未代入のため描画しない (Crystal => FormMain.Crystal が NRE)
         if (FormMain == null) return;
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => DrawOverlays(graphics, i, j)), null);
+            Invoke(new Action(() => DrawOverlays(graphics, i, j, suppressDetectorOutline)), null); // 260725Cl: 引数を引き継ぐ
             return;
         }
         //グラフィックスボックスに描画する場合
@@ -1937,7 +1987,8 @@ public partial class FormEBSD : FormBase
 
             //var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
             using var penExcess = new Pen(colorControlExcessLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
-            var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
+            // var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2; // 260725Cl 変更前
+            var diag = Resolution * Math.Sqrt(CanvasSize.Width * CanvasSize.Width + CanvasSize.Height * CanvasSize.Height) / 2; // 260725Cl 変更: Copy 用オフスクリーン描画に対応
             //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
             using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
             using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
@@ -2019,10 +2070,13 @@ public partial class FormEBSD : FormBase
             #endregion
 
             #region 晶帯軸ラベルをバンド交点に表示
-            if (checkBoxShowZoneAxisIndices.Checked && checkBoxShowOverlays.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2)
+            // if (checkBoxShowZoneAxisIndices.Checked && checkBoxShowOverlays.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2) // 260725Ch 変更前
+            if (checkBoxShowZoneAxisIndices.Checked && checkBoxShowOverlays.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2 && CameraLength2 > 1E-6) // 260725Ch: 退化配置で全ラベルが原点へ重なるのを防ぐ
             {
                 var rot = Crystal.RotationMatrix;
                 var rotTau = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau);
+                // double detectorPlaneZ = DetY * Math.Sin(DetTilt) - DetZ * Math.Cos(DetTilt); // 260725Ch // 260725Cl 変更前: CameraLength2 と同一式の手書き
+                double detectorPlaneZ = SignedCameraLength; // 260725Ch: 検出器法線をZ軸へ合わせた座標での検出器面の符号付きZ位置 // 260725Cl: プロパティ化
 
                 var drawnZoneAxes = new HashSet<(int, int, int)>();
                 var gList = Crystal.VectorOfG_KikuchiLine;
@@ -2030,29 +2084,34 @@ public partial class FormEBSD : FormBase
                     for (int jj = ii + 1; jj < gList.Count; jj++)
                     {
                         var g1 = gList[ii]; var g2 = gList[jj];
-                        // g ベクトルの外積 → 晶帯軸方向（直交座標系、回転前）
-                        var cross = Vector3DBase.VectorProduct(g1, g2);
-                        if (cross.Length2 < 1e-20) continue;
+                        #region 260725Ch 変更前: 実数外積を最大指数12までの整数へ近似していたため、高指数の晶帯軸を誤る場合があった
+                        //// g ベクトルの外積 → 晶帯軸方向（直交座標系、回転前）
+                        //var cross = Vector3DBase.VectorProduct(g1, g2);
+                        //if (cross.Length2 < 1e-20) continue;
 
-                        // 指数 [uvw] を求める: cross (直交座標) = u*A_Axis + v*B_Axis + w*C_Axis
-                        // → (u,v,w) = MatrixReal⁻¹ * cross = MatrixInverse * cross
-                        var uvwVec = Crystal.MatrixInverse * cross;
-                        double maxComp = Math.Max(Math.Max(Math.Abs(uvwVec.X), Math.Abs(uvwVec.Y)), Math.Abs(uvwVec.Z));
-                        if (maxComp < 1e-10) continue;
-                        double scale = 1.0 / maxComp;
-                        int bestU = 0, bestV = 0, bestW = 0;
-                        double bestError = double.MaxValue;
-                        for (int m = 1; m <= 12; m++)
-                        {
-                            double su = uvwVec.X * scale * m, sv = uvwVec.Y * scale * m, sw = uvwVec.Z * scale * m;
-                            int ru2 = (int)Math.Round(su), rv2 = (int)Math.Round(sv), rw2 = (int)Math.Round(sw);
-                            double err = Math.Abs(su - ru2) + Math.Abs(sv - rv2) + Math.Abs(sw - rw2);
-                            if (err < bestError) { bestError = err; bestU = ru2; bestV = rv2; bestW = rw2; }
-                            if (err < 0.05) break;
-                        }
+                        //// 指数 [uvw] を求める: cross (直交座標) = u*A_Axis + v*B_Axis + w*C_Axis
+                        //// → (u,v,w) = MatrixReal⁻¹ * cross = MatrixInverse * cross
+                        //var uvwVec = Crystal.MatrixInverse * cross;
+                        //double maxComp = Math.Max(Math.Max(Math.Abs(uvwVec.X), Math.Abs(uvwVec.Y)), Math.Abs(uvwVec.Z));
+                        //if (maxComp < 1e-10) continue;
+                        //double scale = 1.0 / maxComp;
+                        //int bestU = 0, bestV = 0, bestW = 0;
+                        //double bestError = double.MaxValue;
+                        //for (int m = 1; m <= 12; m++)
+                        //{
+                        //    double su = uvwVec.X * scale * m, sv = uvwVec.Y * scale * m, sw = uvwVec.Z * scale * m;
+                        //    int ru2 = (int)Math.Round(su), rv2 = (int)Math.Round(sv), rw2 = (int)Math.Round(sw);
+                        //    double err = Math.Abs(su - ru2) + Math.Abs(sv - rv2) + Math.Abs(sw - rw2);
+                        //    if (err < bestError) { bestError = err; bestU = ru2; bestV = rv2; bestW = rw2; }
+                        //    if (err < 0.05) break;
+                        //}
+                        #endregion
+
+                        var (h1, k1, l1) = g1.Index; var (h2, k2, l2) = g2.Index;
+                        int bestU = k1 * l2 - l1 * k2, bestV = l1 * h2 - h1 * l2, bestW = h1 * k2 - k1 * h2; // 260725Ch: Stereonet と同じ整数外積で晶帯軸を厳密に算出
                         if (bestU == 0 && bestV == 0 && bestW == 0) continue;
-                        static int Gcd(int a, int b) { a = Math.Abs(a); b = Math.Abs(b); while (b != 0) { (a, b) = (b, a % b); } return a; }
-                        int gcd = Gcd(Gcd(Math.Abs(bestU), Math.Abs(bestV)), Math.Abs(bestW));
+                        // static int Gcd(int a, int b) { ... } / int gcd = Gcd(Gcd(|u|,|v|), |w|); // 260725Cl 変更前: 自前 gcd
+                        int gcd = Algebra.Irreducible(bestU, bestV, bestW); // 260725Cl 変更 (/simplify): 約分は既存の正典ヘルパへ (FormStereonet の整数外積と同じ組み合わせ)
                         if (gcd > 1) { bestU /= gcd; bestV /= gcd; bestW /= gcd; }
                         if (bestU < 0 || (bestU == 0 && bestV < 0) || (bestU == 0 && bestV == 0 && bestW < 0))
                         { bestU = -bestU; bestV = -bestV; bestW = -bestW; }
@@ -2061,8 +2120,12 @@ public partial class FormEBSD : FormBase
                         // 晶帯軸方向を検出器座標に投影（実空間ベクトルを使用）
                         var zoneAxisReal = bestU * Crystal.A_Axis + bestV * Crystal.B_Axis + bestW * Crystal.C_Axis;
                         var dir = rotTau * (rot * zoneAxisReal);
-                        if (dir.Z < 0) dir = -dir; // 検出器に向く方を選択
-                        if (dir.Z < 1e-15) continue;
+                        if (Math.Abs(dir.Z) < 1e-15) continue;
+
+                        // 260725Ch: 重複排除用の正規化指数 (bestU/V/W) とは別に、正の交点パラメータで検出器面へ到達する物理方向をラベルに出す
+                        // 260725Cl 変更 (/simplify): displayU/V/W の 3 変数+if ブロックを符号 1 個に集約し、
+                        // 続く「if (dir.Z < 0) dir = -dir;」を削除 — 下の投影式は dir.X/dir.Z と dir.Y/dir.Z のみで dir→−dir に不変 (完全な no-op だった)
+                        int sgn = detectorPlaneZ * dir.Z < 0 ? -1 : 1;
 
                         // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
                         double detX = -xm * CameraLength2 * dir.X / dir.Z; // 260718Cl: 左右反転 xm
@@ -2071,7 +2134,8 @@ public partial class FormEBSD : FormBase
                         var ptZA = new PointD(detX, detY2);
                         if (!IsScreenArea(ptZA, -20)) continue;
 
-                        string label = $"[{bestU} {bestV} {bestW}]";
+                        // string label = $"[{bestU} {bestV} {bestW}]"; // 260725Ch 変更前
+                        string label = $"[{sgn * bestU} {sgn * bestV} {sgn * bestW}]"; // 260725Ch // 260725Cl: displayU/V/W → sgn
                         var size = graphics.MeasureString(label, font);
                         graphics.DrawString(label, font, brush, new PointF((float)ptZA.X - size.Width / 2, (float)ptZA.Y - size.Height / 2));
                     }
@@ -2082,7 +2146,8 @@ public partial class FormEBSD : FormBase
             if (checkBoxDrawDetectorOutline.Checked)
             {
                 //検出器を示す外枠を描画 // 260723Cl 変更: 円 (DrawArc) → 矩形 (halfW×halfH)
-                if (checkBoxShowCircle.Checked)
+                // if (checkBoxShowCircle.Checked) // 260725Cl 変更前
+                if (checkBoxShowCircle.Checked && !suppressDetectorOutline) //260725Cl 変更: Detector 範囲コピーでは外枠がコピー縁と一致するため含めない
                 {
                     using var outlinePen = new Pen(Color.Yellow, ResolutionF * 2); // (260611Ch)
                     // graphics.DrawArc(outlinePen, -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360); // 260723Cl 変更前
@@ -2139,8 +2204,10 @@ public partial class FormEBSD : FormBase
     {
         var clientPt = convertDetectorToScreen(pt);
         return clientPt.X > margin && clientPt.Y > margin
-            && clientPt.X < graphicsBox.ClientRectangle.Width - margin
-            && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
+            //&& clientPt.X < graphicsBox.ClientRectangle.Width - margin // 260725Cl 変更前
+            //&& clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
+            && clientPt.X < CanvasSize.Width - margin // 260725Cl 変更: Copy 用オフスクリーン描画に対応
+            && clientPt.Y < CanvasSize.Height - margin;
     }
 
     /// <summary>フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換</summary>
@@ -2152,8 +2219,10 @@ public partial class FormEBSD : FormBase
         // 260723Cl 変更: +Foot 固定 → ViewCenter (ズーム・パン対応。SetProjection の Transform と同一の変換)
         // double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0; // 260723Cl 変更前
         // double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0; // 260723Cl 変更前
-        double px = (x - ViewCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
-        double py = (y - ViewCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
+        // double px = (x - ViewCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0; // 260725Cl 変更前
+        // double py = (y - ViewCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
+        double px = (x - ViewCenter.X) / Resolution + CanvasSize.Width / 2.0; // 260725Cl 変更: Copy 用オフスクリーン描画に対応
+        double py = (y - ViewCenter.Y) / Resolution + CanvasSize.Height / 2.0;
         return new(px, py);
     }
 
@@ -2163,9 +2232,11 @@ public partial class FormEBSD : FormBase
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
 
     /// <summary>画面(Screen)上の点(pixel)を表示パターン座標 (mm) に変換 (convertDetectorToScreen の逆変換)。260723Cl 追加</summary>
+    // 260725Cl 変更: 基準を graphicsBox.ClientSize → CanvasSize へ (順変換 convertDetectorToScreen 側だけがオフスクリーン対応になり規約が割れていた。
+    // 呼び出しはマウスハンドラのみでオフスクリーン描画中は発火しないため挙動は不変だが、対を成す 2 メソッドの基準を揃える)
     private PointD convertScreenToDetector(in PointD pt)
-        => new((pt.X - graphicsBox.ClientSize.Width / 2.0) * Resolution + ViewCenter.X,
-               (pt.Y - graphicsBox.ClientSize.Height / 2.0) * Resolution + ViewCenter.Y);
+        => new((pt.X - CanvasSize.Width / 2.0) * Resolution + ViewCenter.X,
+               (pt.Y - CanvasSize.Height / 2.0) * Resolution + ViewCenter.Y);
     #endregion
 
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
@@ -2429,6 +2500,7 @@ public partial class FormEBSD : FormBase
 
         checkBoxShowExperimentalImage.Enabled = trackBarExpImageOpacity.Enabled = trackBarExpImageMaxInt.Enabled = trackBarExpImageMinInt.Enabled = true;
         tabPageExperimentalImage.Enabled = true; // 260724Cl 追加: 実測画像が読み込まれたら Experimental image タブを解禁
+        tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; // 260725Ch: D&Dした画像の設定をすぐ操作できるよう前面へ
 
         //検出器ピクセル数を画像サイズへ反映 (DetResolution は不変)。ValueChanged の二重再計算は skip フラグで束ねる
         skipDetectorGeometryEvent = true;
@@ -2564,8 +2636,8 @@ public partial class FormEBSD : FormBase
     {
         if (masterPatternEbsd.IsBuilding)
         {
-            // toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop."; // 260406Cl Label1→Label2: 進捗専用に整理
-            toolStripStatusLabel2.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
+            // toolStripStatusLabelProgress.Text = "MasterPattern is running. Wait for it to finish or press Stop."; // 260406Cl Label1→Label2: 進捗専用に整理
+            toolStripStatusLabelSummary.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
             return;
         }
 
@@ -2575,9 +2647,9 @@ public partial class FormEBSD : FormBase
         monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "Calc BSE: MonteCarlo";
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
-        toolStripStatusLabel3.Text = "";
+        toolStripStatusLabelSummary.Text = "Calc BSE: MonteCarlo";
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
+        toolStripStatusLabelDetail.Text = "";
         // labelMasterPatternInfo.Text = "Calculating BSE by Monte Carlo..."; // 260406Cl 廃止: Label2 "Calc BSE: MonteCarlo" で代替
 
         try
@@ -2716,10 +2788,129 @@ public partial class FormEBSD : FormBase
     #endregion
 
     // 260520Cl 改名: buttonSaveImage → buttonCopyImage (実体はクリップボードへコピー。Text="Copy"・兄弟の buttonCopyEnergyProfile と命名統一)
+    // 260725Cl 変更: コピー範囲 (Current view / Detector) と Match detector resolution オプションに対応
     private void buttonCopyImage_Click(object sender, EventArgs e)
     {
-        if (Pbmp != null)
-            Clipboard.SetDataObject(Pbmp.GetImage());
+        //if (Pbmp != null)
+        //    Clipboard.SetDataObject(Pbmp.GetImage()); // 260725Cl 変更前: パターン計算ラスターをそのままコピー (範囲・解像度の指定不可)
+
+        // コピー解像度 (mm/px): Match detector resolution 時は検出器ピクセルと 1:1
+        var resolution = checkBoxMatchDetectorResolution.Checked ? DetPixelSize : Resolution;
+        PointD center;
+        int w, h;
+        if (radioButtonDetector.Checked)
+        {
+            //検出器エリアのみ (Match 時は DetPixelWidth × DetPixelHeight に一致)
+            center = DetectorCenterView;
+            w = (int)Math.Round(DetHalfWidth * 2 / resolution);
+            h = (int)Math.Round(DetHalfHeight * 2 / resolution);
+        }
+        else //radioButtonCopyCurrent: graphicsBox が表示している範囲
+        {
+            center = ViewCenter;
+            w = (int)Math.Round(graphicsBox.ClientSize.Width * Resolution / resolution);
+            h = (int)Math.Round(graphicsBox.ClientSize.Height * Resolution / resolution);
+        }
+        if (w <= 0 || h <= 0) return;
+
+        //極端なズームアウト + Match 時の巨大ビットマップ保護: 最大辺 4096 にクランプ (mm 範囲は維持し解像度を粗くする)
+        //260725Cl 注記: パターン本体のラスターは別に MaxPatternRasterSize (2048) でクランプされる (PatternRasterSize)。
+        //検出器が 2048 px を超える場合、"Match detector resolution" でもパターン画像は 2048 から拡大されたものになる (オーバーレイのみ実解像度)
+        const int maxCopyPixel = 4096;
+        if (Math.Max(w, h) > maxCopyPixel)
+        {
+            var scale = (double)maxCopyPixel / Math.Max(w, h);
+            resolution /= scale;
+            w = Math.Max(1, (int)(w * scale));
+            h = Math.Max(1, (int)(h * scale));
+        }
+
+        // 260725Cl 変更: コピー形式ラジオ (radioButtonCopyEmf / radioButtonCopyBmp) に対応
+        if (radioButtonCopyEmf.Checked)
+        {
+            //拡張メタファイル: 菊池線・指数ラベル等のオーバーレイをベクトルのまま保持 (パターン画像のみラスター埋め込み)
+            ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(Handle, g =>
+            {
+                g.SetClip(new Rectangle(0, 0, w, h)); //メタファイルは画面やビットマップと違い自然な境界クリップが無いため明示 (Transform 設定前=デバイス座標)
+                // RenderViewTo(g, new Size(w, h), center, resolution); // 260725Cl 変更前
+                RenderViewTo(g, new Size(w, h), center, resolution, suppressDetectorOutline: radioButtonDetector.Checked); //260725Cl 変更: Detector 範囲は外枠を含めない
+            });
+        }
+        else //radioButtonCopyBmp: ビットマップ形式
+        {
+            using var bmp = new Bitmap(w, h);
+            using (var g = Graphics.FromImage(bmp))
+                // RenderViewTo(g, new Size(w, h), center, resolution); // 260725Cl 変更前
+                RenderViewTo(g, new Size(w, h), center, resolution, suppressDetectorOutline: radioButtonDetector.Checked); //260725Cl 変更: Detector 範囲は外枠を含めない
+            Clipboard.SetDataObject(bmp, true); //copy=true: bmp は直後に Dispose するため実体コピーで渡す
+        }
+    }
+
+    // 260725Cl 追加: MasterPattern 2D / 3D プレビューのクリップボードコピー。
+    // Designer にボタン (buttonMasterPattern2DCopy / 3DCopy) とツールチップ文案は元からあったが Click ハンドラが未配線で、
+    // 画面に見えているのに押しても無反応だった (Copy ボタンをコピーして作った際の配線漏れ)。
+    private void buttonMasterPattern2DCopy_Click(object sender, EventArgs e)
+    {
+        if (masterPattern2DBitmap == null) return;
+        //GetImage() は PseudoBitmap 内部キャッシュの借用参照なので Dispose せず、copy=true で実体をクリップボードへ渡す
+        Clipboard.SetDataObject(masterPattern2DBitmap.GetImage(), true);
+        toolStripStatusLabelSummary.Text = "MasterPattern 2D copied to the clipboard";
+    }
+
+    private void buttonMasterPattern3DCopy_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            //GL の back buffer へ描き直してから ReadPixels する (OpenGL 無効時・サイズ 0 では null が返る)
+            using var bmp = glControlMasterPattern3D?.GenerateBitmap(renderBeforeRead: true);
+            if (bmp == null) { toolStripStatusLabelSummary.Text = "MasterPattern 3D copy failed (OpenGL unavailable)"; return; }
+            Clipboard.SetDataObject(bmp, true); //copy=true: bmp は直後に Dispose するため実体コピーで渡す
+            toolStripStatusLabelSummary.Text = "MasterPattern 3D copied to the clipboard";
+        }
+        catch (Exception ex) //GL バックエンド (ARM の GLOn12 等) での ReadPixels 失敗でアプリを落とさない
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern 3D copy failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+        }
+    }
+
+    /// <summary>指定した中心 (表示パターン座標 mm)・解像度 (mm/px)・キャンバス (px) でパターン+オーバーレイを g へオフスクリーン描画する。260725Cl 追加
+    /// 画面用と同じ描画パイプライン (DrawEBSD/DrawOverlays) を CanvasSize/Resolution/viewPan の一時上書きで流用し、終了後に画面用の状態を復元する。
+    /// Bitmap だけでなく Metafile の Graphics へも描けるよう、描画先生成は呼び出し側が担う (旧 RenderViewToBitmap を一般化)。
+    /// 260725Cl 追記: 要求ビューが画面と完全一致するとき (既定の Current view + Match 解像度なし) は高速パスへ分岐し、
+    /// 上書き・パターン再計算・復元をいずれも行わず、画面の patternBitmap を再利用して DrawOverlays だけで描く。</summary>
+    //260725Cl シグネチャ変更 (suppressDetectorOutline 追加)。旧: private void RenderViewTo(Graphics g, Size canvas, PointD centerView, double resolution)
+    private void RenderViewTo(Graphics g, Size canvas, PointD centerView, double resolution, bool suppressDetectorOutline = false)
+    {
+        //260725Cl 追加 (/simplify): 要求ビューが画面と完全一致するとき (既定の Current view + Match 解像度なし) は
+        //上書きも再計算も不要 — 画面の patternBitmap をそのまま使って g へ描くだけで同じ絵になる。
+        //これで最頻ケースの重いパターン再計算 2 回 (往路+復路) がゼロになる
+        //(canvas/resolution/center は Current view かつ Match 未チェックのとき画面の値がそのまま渡るので、比較は厳密一致で足りる)
+        if (canvas == graphicsBox.ClientSize && resolution == Resolution
+            && centerView.X == ViewCenter.X && centerView.Y == ViewCenter.Y
+            && (patternBitmap != null || !checkBoxShowDyanmicalEBSD.Checked)) //パターンを描かない設定なら未計算でもよい
+        {
+            DrawOverlays(g, -1, -1, suppressDetectorOutline);
+            return;
+        }
+
+        var originalPan = viewPan;
+        renderCanvasOverride = canvas;
+        renderResolutionOverride = resolution;
+        viewPan = new PointD(centerView.X - DetectorCenterView.X, centerView.Y - DetectorCenterView.Y);
+        try
+        {
+            DrawEBSD(); //対象視野・解像度でパターンを再計算 (Pbmp/patternBitmap を一時的に上書き)
+            DrawOverlays(g, -1, -1, suppressDetectorOutline); //260725Cl: 外枠抑止はフィールドでなく引数で渡す
+        }
+        finally
+        {
+            renderCanvasOverride = null;
+            renderResolutionOverride = null;
+            viewPan = originalPan;
+            DrawEBSD(); //画面用のパターン (Pbmp/patternBitmap/patternBitmapRect) を復元
+            DrawOverlays();
+        }
     }
 
 
@@ -2790,8 +2981,8 @@ public partial class FormEBSD : FormBase
         {
             var progressValue = Math.Clamp(state.Progress, 0, 100);
             toolStripProgressBar.Value = progressValue;
-            toolStripStatusLabel2.Text = $"{statusPrefix}: {state.Message}"; // (260401Ch) Calc BSE も同じ MC helper を共有する
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, progressValue / 100.0, "", monteCarloStopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化
+            toolStripStatusLabelSummary.Text = $"{statusPrefix}: {state.Message}"; // (260401Ch) Calc BSE も同じ MC helper を共有する
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, progressValue / 100.0, "", monteCarloStopwatch.Elapsed, showRemaining: true);// 260520Cl SetProgress化
             // labelMasterPatternInfo.Text = $"{progressInfoText} {progressValue}%"; // (260401Ch) // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
         });
 
@@ -2835,11 +3026,12 @@ public partial class FormEBSD : FormBase
                 masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch)
                 BSEs = [];
                 mcDistribution = null;
+                composedPatternCache = default; // 260725Cl 追加 (/simplify): MC 合成キャッシュも失効させる
                 toolStripProgressBar.Value = 0;
-                toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
-                StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.FromMilliseconds(masterPatternMonteCarloElapsedMilliseconds), showRemaining: true);// 260520Cl SetProgress化
-                // toolStripStatusLabel3.Text = ""; // 260406Cl 旧: 空文字→noResultInfoText に変更
-                toolStripStatusLabel3.Text = noResultInfoText; // 260406Cl labelMasterPatternInfo廃止: 結果なし理由をLabel3へ移動
+                toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
+                StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.FromMilliseconds(masterPatternMonteCarloElapsedMilliseconds), showRemaining: true);// 260520Cl SetProgress化
+                // toolStripStatusLabelDetail.Text = ""; // 260406Cl 旧: 空文字→noResultInfoText に変更
+                toolStripStatusLabelDetail.Text = noResultInfoText; // 260406Cl labelMasterPatternInfo廃止: 結果なし理由をLabel3へ移動
                 return false;
             }
 
@@ -2851,6 +3043,7 @@ public partial class FormEBSD : FormBase
             numericBoxThicknessEnd.Value = result.depthEnd;
             numericBoxThicknessStep.Value = result.depthStep;
             mcDistribution = result.Distribution;
+            composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布・旧 MasterPattern を掴んだままにしない
 
             poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
             var poleFigureRotation = M3.CreateRotationX(sampleTilt);
@@ -2859,19 +3052,19 @@ public partial class FormEBSD : FormBase
 
             masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
             toolStripProgressBar.Value = 100;
-            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 1.0, "", TimeSpan.FromMilliseconds(masterPatternMonteCarloElapsedMilliseconds));// 260520Cl SetProgress化 (完了)
+            toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromMilliseconds(masterPatternMonteCarloElapsedMilliseconds));// 260520Cl SetProgress化 (完了)
             // labelMasterPatternInfo.Text = completedInfoText; // (260401Ch) // 260406Cl 廃止
-            toolStripStatusLabel3.Text = completedInfoText; // 260406Cl labelMasterPatternInfo廃止: 完了メッセージをLabel3へ移動
+            toolStripStatusLabelDetail.Text = completedInfoText; // 260406Cl labelMasterPatternInfo廃止: 完了メッセージをLabel3へ移動
             return true;
         }
         catch (OperationCanceledException) // 260406Cl 追加: Stop ボタンで MC がキャンセルされた場合
         {
             masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds;
             toolStripProgressBar.Value = 0;
-            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo cancelled";
-            toolStripStatusLabel1.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
-            toolStripStatusLabel3.Text = "";
+            toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo cancelled";
+            toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(monteCarloStopwatch.Elapsed)}";
+            toolStripStatusLabelDetail.Text = "";
             return false;
         }
     }
@@ -2898,7 +3091,7 @@ public partial class FormEBSD : FormBase
         #region お蔵入り // (260327Ch) 旧 bwEBSD 実行中チェックは ebsdNew 本命化に伴い退避
         //if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
         //{
-        //    toolStripStatusLabel1.Text = "The regular EBSD solver is running. Wait for it to finish first.";
+        //    toolStripStatusLabelProgress.Text = "The regular EBSD solver is running. Wait for it to finish first.";
         //    return;
         //}
         #endregion
@@ -2910,9 +3103,9 @@ public partial class FormEBSD : FormBase
         monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "MasterPattern: MonteCarlo";
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
-        toolStripStatusLabel3.Text = ""; // (260327Ch) 前回の完了時間表示をクリア
+        toolStripStatusLabelSummary.Text = "MasterPattern: MonteCarlo";
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
+        toolStripStatusLabelDetail.Text = ""; // (260327Ch) 前回の完了時間表示をクリア
         // labelMasterPatternInfo.Text = "Preparing MasterPattern by Monte Carlo..."; // 260406Cl 廃止: Label2 "MasterPattern: MonteCarlo" で代替
         sw2.Restart(); // (260327Ch) MasterPattern 全体の経過時間
         masterPatternMonteCarloElapsedMilliseconds = 0;
@@ -2964,11 +3157,11 @@ public partial class FormEBSD : FormBase
         trackBarMasterPatternEnergy.Enabled = trackBarMasterPatternDepth.Enabled = false;
         // buttonStop.Visible = true; // 260406Cl 旧: MC 開始時から表示済みなのでここでは不要 (Bethe 開始時点で既に表示中)
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "MasterPattern: Starting Bethe calculation";
+        toolStripStatusLabelSummary.Text = "MasterPattern: Starting Bethe calculation";
         // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(request.Hemisphere)} master grid ({request.GridSize} x {request.GridSize})..."; // (260321Ch) 旧案: 単一半球計算を前提にしていた
         // labelMasterPatternInfo.Text = $"Building full sphere master grid ({request.GridSize} x {request.GridSize})..."; // 260406Cl 廃止: Label3へ移動
-        toolStripStatusLabel3.Text = $"Full sphere, grid {request.GridSize} x {request.GridSize}"; // 260406Cl labelMasterPatternInfo廃止: グリッド情報をLabel3へ
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行) // (260327Ch)
+        toolStripStatusLabelDetail.Text = $"Full sphere, grid {request.GridSize} x {request.GridSize}"; // 260406Cl labelMasterPatternInfo廃止: グリッド情報をLabel3へ
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行) // (260327Ch)
         sw1.Restart();
     }
 
@@ -2984,8 +3177,8 @@ public partial class FormEBSD : FormBase
             var sec = sw1.ElapsedMilliseconds / 1000.0;
             var progress = Math.Clamp(e.ProgressPercentage, 0, 100);
             toolStripProgressBar.Value = progress;
-            toolStripStatusLabel2.Text = $"MasterPattern: {e.UserState}";
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, progress / 100.0, "", TimeSpan.FromSeconds(sec), showRemaining: true);// 260520Cl SetProgress化
+            toolStripStatusLabelSummary.Text = $"MasterPattern: {e.UserState}";
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, progress / 100.0, "", TimeSpan.FromSeconds(sec), showRemaining: true);// 260520Cl SetProgress化
             // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(e.Request.Hemisphere)} master grid... {progress}%"; // (260321Ch) 旧案: 単一半球計算を前提にしていた
             // labelMasterPatternInfo.Text = $"Building full sphere master grid... {progress}%"; // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
             // Application.DoEvents(); // (260327Ch) ProgressChanged 再入の原因になるため停止
@@ -3006,9 +3199,9 @@ public partial class FormEBSD : FormBase
 
         if (e.Error != null)
         {
-            toolStripStatusLabel2.Text = "MasterPattern failed";
-            toolStripStatusLabel1.Text = $"Failed after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
-            toolStripStatusLabel3.Text = "";
+            toolStripStatusLabelSummary.Text = "MasterPattern failed";
+            toolStripStatusLabelProgress.Text = $"Failed after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
+            toolStripStatusLabelDetail.Text = "";
             // labelMasterPatternInfo.Text = "MasterPattern build failed."; // 260406Cl 廃止: Label2 "MasterPattern failed" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
@@ -3017,9 +3210,9 @@ public partial class FormEBSD : FormBase
 
         if (e.Cancelled || e.MasterPattern == null)
         {
-            toolStripStatusLabel2.Text = "MasterPattern cancelled";
-            toolStripStatusLabel1.Text = $"Stopped after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
-            toolStripStatusLabel3.Text = "";
+            toolStripStatusLabelSummary.Text = "MasterPattern cancelled";
+            toolStripStatusLabelProgress.Text = $"Stopped after {StatusBarHelper.FormatElapsed(sw2.Elapsed)}";
+            toolStripStatusLabelDetail.Text = "";
             // labelMasterPatternInfo.Text = "MasterPattern build was cancelled."; // 260406Cl 廃止: Label2 "MasterPattern cancelled" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
@@ -3027,20 +3220,22 @@ public partial class FormEBSD : FormBase
         }
 
         UpdateMasterPatternSelectors();
+        trackBarMasterPatternDepth.Value = MasterPattern.Depths.Length / 2; // 260725Ch: build直後は低コントラストな最小depthではなく中央付近を初期表示
         DrawMasterPattern2D();
         Draw(); // (260327Ch) 描画更新で他ラベルが書き換わる前に済ませ、最後に MasterPattern 用の status を上書きする
         toolStripProgressBar.Value = 100;
-        toolStripStatusLabel2.Text = "MasterPattern completed";
+        toolStripStatusLabelSummary.Text = "MasterPattern completed";
         var totalSec = sw2.ElapsedMilliseconds / 1000.0;
         var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了)
-        // toolStripStatusLabel3.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
-        toolStripStatusLabel3.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了)
+        // toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
+        toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
         // 260325Cl 追加: MasterPattern 完了時に groupBoxOutput を有効化し、trackbar を同期する
         tabPageOutputParameter.Enabled = true;
+        tabControlPatternSettings.SelectedTab = tabPageOutputParameter; // 260725Ch: build直後は出力設定を前面へ
         checkBoxShowDyanmicalEBSD.Enabled = true; // 260724Cl 追加: dynamical EBSD の表示切替も MasterPattern 構築後に解禁
         trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
         trackBarOutputThickness.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
@@ -3058,15 +3253,15 @@ public partial class FormEBSD : FormBase
         if (monteCarloCts != null && !monteCarloCts.IsCancellationRequested)
         {
             monteCarloCts.Cancel();
-            toolStripStatusLabel2.Text = "MonteCarlo cancel requested";
+            toolStripStatusLabelSummary.Text = "MonteCarlo cancel requested";
             return;
         }
 
         if (masterPatternEbsd.IsBuilding)
         {
             masterPatternEbsd.CancelMasterPatternBuild();
-            toolStripStatusLabel2.Text = "MasterPattern cancel requested";
-            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel1, toolStripProgressBar.Value / 100.0, "", sw2.Elapsed, showRemaining: true);// 260520Cl SetProgress化
+            toolStripStatusLabelSummary.Text = "MasterPattern cancel requested";
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, toolStripProgressBar.Value / 100.0, "", sw2.Elapsed, showRemaining: true);// 260520Cl SetProgress化
             return;
         }
 
@@ -3074,8 +3269,8 @@ public partial class FormEBSD : FormBase
         //if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
         //{
         //    Crystal.Bethe.CancelEBSD();
-        //    toolStripStatusLabel2.Text = "EBSD cancel requested";
-        //    toolStripStatusLabel1.Text = "Stopping EBSD...";
+        //    toolStripStatusLabelSummary.Text = "EBSD cancel requested";
+        //    toolStripStatusLabelProgress.Text = "Stopping EBSD...";
         //    return;
         //}
         #endregion
@@ -3163,7 +3358,7 @@ public partial class FormEBSD : FormBase
         {
             int selectedGridSize = GetSelectedMasterPatternGridSize(); // (260322Ch) 未作成時も selector に合わせた正方格子サイズを使う
             // labelMasterPatternInfo.Text = "MasterPattern preview is empty."; // 260406Cl 廃止: Label2へ移動
-            toolStripStatusLabel2.Text = "MasterPattern preview is empty.";
+            toolStripStatusLabelSummary.Text = "MasterPattern preview is empty.";
             ResetMasterPattern3DCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
             // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260322Ch) 旧実装: helper が新規配列を返していた
             SetMasterPattern2DBitmap(new double[selectedGridSize * selectedGridSize], selectedGridSize); // (260322Ch) helper を介さず空の placeholder 配列をその場で生成する
@@ -3206,8 +3401,8 @@ public partial class FormEBSD : FormBase
         var energy = MasterPattern.Energies[selectedEnergyIndex];
         var depth = MasterPattern.Depths[selectedDepthIndex];
         // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // 260406Cl 廃止: Label2+Label3へ分割
-        toolStripStatusLabel2.Text = "MasterPattern preview";
-        toolStripStatusLabel3.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位)
+        toolStripStatusLabelSummary.Text = "MasterPattern preview";
+        toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位)
         masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
         masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ
@@ -3588,13 +3783,13 @@ public partial class FormEBSD : FormBase
 
     private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
     {
-        flowLayoutPanel1DetectorOutline.Enabled = checkBoxDrawDetectorOutline.Checked;
+        flowLayoutPanelDetectorOutline.Enabled = checkBoxDrawDetectorOutline.Checked;
         Draw();
     }
 
     private void checkBoxShowKikuchiLines_CheckedChanged(object sender, EventArgs e)
     {
-        flowLayoutPanel1KikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
+        flowLayoutPanelKikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
         Draw();
     }
 

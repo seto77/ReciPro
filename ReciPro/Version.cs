@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.944(2026/07/25)  Added indexing of experimental EBSD patterns (orientation search and detector calibration), added external macro control via a named pipe and unattended command-line execution, added table (CSV) export to 'Spot ID' and diffraction spot information, and improved performance and fixed many bugs across the application." + // 260725Cl 追加
         "\r\n ver4.943(2026/07/15)  Added a 'Group Relations' function to explore group–subgroup relations of space groups (maximal subgroups/supergroups, Bärnighausen trees, and symmetry-element diagrams), and further accelerated STEM simulations with optional Intel MKL support." +
         "\r\n ver4.942(2026/07/01)  Enabled digital code signing of the installer and portable executable, provided free by SignPath Foundation." +
         "\r\n ver4.941(2026/06/23)  Added multi-language UI support and fixed many bugs." +
