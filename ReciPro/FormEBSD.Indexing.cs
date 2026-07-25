@@ -34,6 +34,14 @@ public partial class FormEBSD
     /// <summary>指数付け用反射リストの d 下限 (nm)。260724Cl (/simplify) 追加: 反射生成とステータス表示に二重ハードコードされていた値を一元化 (将来 UI 化候補)</summary>
     private const double KikuchiDLimit = 0.15;
 
+    /// <summary>幾何較正の交互最適化 (方位 ⇄ PC/DD) の最大ラウンド数。260725Cl: 2 固定 → 10 (作者指示)。
+    /// PC・DD・方位は単一パターンで強く相関しており、交互法は谷底でジグザグするため 2 ラウンドでは収束の保証が無かった。
+    /// 実際には CalibrationZnccTolerance で早期終了するので、上限まで回るのは収束が遅い配置のときだけ</summary>
+    private const int MaxCalibrationRounds = 10;
+
+    /// <summary>1 ラウンドの ZNCC 改善がこれ未満なら収束とみなして較正を打ち切る。260725Cl 追加</summary>
+    private const double CalibrationZnccTolerance = 1E-4;
+
     /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
     /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
     /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
@@ -429,10 +437,10 @@ public partial class FormEBSD
                 double fu = footU0, fv = footV0, lnDd = Math.Log(dd0);
                 var buf = new double[ctx.Rw * ctx.Rh];
                 int evalTotal = 0;
-                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (2 ラウンド × (方位 150 + 幾何 120) + 仕上げ 100)。
-                //soft bounds に弾かれた評価は投影しないので実際は予算より早く終わる → 完了時に 100% で締める
+                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (最大ラウンド × (方位 150 + 幾何 120) + 仕上げ 100)。
+                //soft bounds に弾かれた評価は投影しないうえ、収束すれば途中で打ち切るので実際は予算より早く終わる → 完了時に 100% で締める
                 int evalsDone = 0;
-                const int EvalBudget = 2 * (150 + 120) + 100;
+                const int EvalBudget = MaxCalibrationRounds * (150 + 120) + 100;
 
                 EbsdDetectorGeometry MakeGeom(double u, double v, double ld)
                 {
@@ -448,7 +456,12 @@ public partial class FormEBSD
                 }
                 double startZncc = -ScoreWith(new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh), r0);
 
-                for (int round = 0; round < 2; round++)
+                //260725Cl 変更 (作者指示): 旧 for (int round = 0; round < 2; round++) — 2 ラウンド固定で収束判定なし。
+                //PC・DD・方位の相関で交互法はジグザグするため、改善が止まるまで最大 MaxCalibrationRounds 回まわす
+                int roundsUsed = 0;
+                bool converged = false;
+                double prevZncc = startZncc;
+                for (int round = 0; round < MaxCalibrationRounds; round++)
                 {
                     cancel.ThrowIfCancellationRequested(); //260725Ch
                     //① 幾何固定で方位 (粗 0.7°)
@@ -459,19 +472,25 @@ public partial class FormEBSD
                     //② 方位固定で幾何 (dU, dV [mm], dlnDD)。ステップ = 検出器幅/高の 1%、lnDD 0.02
                     //260724Cl: 単一パターンの PC-DD-方位縮退で非物理領域へ流れないよう soft bounds (初期値から W/H の 25%・DD ±40% でペナルティ)
                     var rFixed = r0;
-                    var (bg, _, eg) = EbsdPatternScorer.NelderMead(
+                    var (bg, vg, eg) = EbsdPatternScorer.NelderMead(
                         v => (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
                             ? 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2])
                             : ScoreWith(new EbsdPatternProjector(MakeGeom(fu + v[0], fv + v[1], lnDd + v[2]), ctx.Rw, ctx.Rh), rFixed),
                         [0, 0, 0], [physW * 0.01, physH * 0.01, 0.02], 120);
                     fu += bg[0]; fv += bg[1]; lnDd += bg[2]; evalTotal += eg;
+                    roundsUsed = round + 1;
+
+                    //260725Cl: このラウンドの ZNCC 到達点で収束判定 (soft bounds のペナルティ値が返った場合は改善なしとして扱われる)
+                    double zncc = -vg;
+                    if (zncc - prevZncc < CalibrationZnccTolerance) { converged = true; break; }
+                    prevZncc = zncc;
                 }
                 //仕上げの方位微調整 (0.2°)
                 var projFinal = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
                 var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.2, 0.2, 0.2], 100);
                 r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
-                return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal);
+                return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal, Rounds: roundsUsed, Converged: converged);
             }, cancel); //260725Ch
             sw.Stop();
 
@@ -500,7 +519,9 @@ public partial class FormEBSD
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
 
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
-            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
+            //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
+            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
+                $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
         }
         catch (OperationCanceledException) //260725Ch
         {
