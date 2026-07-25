@@ -1656,6 +1656,9 @@ public partial class FormEBSD : FormBase
         var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加
         double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
+        //260726Cl 追加 (正本 §1.4): plane は累積 M(t) なので隣接差は区間積分。区間平均 R̄=ΔM/Δt にするため区間幅で割る
+        //(MC 側の重みは区間質量なので割らない)。等間隔グリッドでは全体が定数倍だが、不等間隔では区間ごとの重み比が変わる
+        var depthWidths = mp.DepthIntervals;
 
         //Array.Clear(values); //260725Ch: 全画素上書きのため不要
 
@@ -1707,7 +1710,7 @@ public partial class FormEBSD : FormBase
                                 double intensity = hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2];
                                 if (planePrevious != null && planePrevious.Length > 0)
                                     intensity -= hw0 * planePrevious[hIdx0] + hw1 * planePrevious[hIdx1] + hw2 * planePrevious[hIdx2];
-                                sum += weight * Math.Max(0.0, intensity);
+                                sum += weight * Math.Max(0.0, intensity) / depthWidths[di]; //260726Cl: 区間平均 ΔM/Δt
                             }
                     }
                     else
@@ -1732,7 +1735,7 @@ public partial class FormEBSD : FormBase
                                 if (planePrevious != null && planePrevious.Length > 0)
                                     intensity -= (mpW0 * planePrevious[idx] + mpW1 * planePrevious[idx + 1]) * mpFh1
                                              + (mpW0 * planePrevious[idx + gs] + mpW1 * planePrevious[idx + gs + 1]) * mpFh;
-                                sum += weight * Math.Max(0.0, intensity);
+                                sum += weight * Math.Max(0.0, intensity) / depthWidths[di]; //260726Cl: 区間平均 ΔM/Δt
                             }
                     }
                     pVal0[i] = sum;
