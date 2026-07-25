@@ -46,9 +46,9 @@ public partial class FormEBSD
     /// 両者で同じ値を使う — 目的関数だけでなくステップも揃えないと、Find と Calibrate を繰り返したときに方位が微妙に往復する</summary>
     private const double OrientationPolishStepDeg = 0.1;
 
-    /// <summary>較正の多点開始の点数。260726Cl: 10 → 200 (作者指示: 10 点では速すぎて経過が見えない)。
-    /// 1 点あたり 0.2 秒程度なので全体で 40 秒強かかる</summary>
-    private const int CalibrationStartCount = 200;
+    /// <summary>較正の多点開始の点数。260726Cl: 10 → 200 → 40 (作者指示)。
+    /// 1 点あたり 0.2 秒程度なので全体で 8 秒前後。200 点で ±8% を探しても最良は現在の幾何のままだったので、日常はこの点数で足りる</summary>
+    private const int CalibrationStartCount = 40;
 
     /// <summary>多点開始の振れ幅。PC は検出器幅・高さに対する割合、DD は lnDD の絶対値 (0.08 ≈ 8%)。260726Cl 追加。
     /// 当初の PC ±1%・lnDD ±0.02 では実機で 200 点すべてが同じ谷に落ち (best #0、200 within 1E-3、spread 0.0007)、
@@ -511,11 +511,15 @@ public partial class FormEBSD
             {
                 var buf = new double[ctx.Rw * ctx.Rh];
                 int evalTotal = 0;
-                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (開始点数 × (最大ラウンド × (方位 150 + 幾何 120) + 仕上げ 100 + 同時最適化))。
-                //soft bounds に弾かれた評価は投影しないうえ、収束すれば途中で打ち切るので実際は予算より早く終わる → 完了時に 100% で締める
+                //260726Cl 変更 (作者報告「プログレスバーの挙動がおかしい」): 旧実装は「評価回数 / 静的な予算」で進捗を出していたが、
+                //予算は最大ラウンド (20) を使い切る前提なのに実際は 1-2 ラウンドで収束するため、バーは 3 割ほどで止まって最後に 100% へ飛んでいた
+                //(実測 334,551 評価 / 予算 1,220,000)。**完了した開始点の数**を主軸にし、実行中の開始点の内側だけを
+                //「これまでの 1 点あたり実測平均」で按分する。1 点目だけは実測が無いので静的な予算で見積もる。
+                //旧: int evalBudget = CalibrationStartOffsets.Length * PerStartBudget; ratio = evalsDone / evalBudget
                 int evalsDone = 0;
-                const int PerStartBudget = MaxCalibrationRounds * (150 + 120) + 100 + JointPolishMaxEval; //260726Cl: 同時最適化ぶんを加算
-                int evalBudget = CalibrationStartOffsets.Length * PerStartBudget; //260726Cl: 多点開始
+                const int PerStartBudget = MaxCalibrationRounds * (150 + 120) + 100 + JointPolishMaxEval;
+                int completedStarts = 0, evalsAtStartBegin = 0;
+                double avgEvalsPerStart = PerStartBudget;
 
                 EbsdDetectorGeometry MakeGeom(double u, double v, double ld)
                 {
@@ -525,7 +529,10 @@ public partial class FormEBSD
                 double ScoreWith(EbsdPatternProjector proj, Matrix3D rot)
                 {
                     cancel.ThrowIfCancellationRequested(); //260725Ch: 各評価の投影前に中止を反映
-                    ReportIndexingProgress(Math.Min(0.99, (double)++evalsDone / evalBudget), sw); //260725Cl (NM は逐次なので単純加算で足りる)
+                    //260726Cl: 完了した開始点 + 実行中の開始点の按分。NM は逐次なので単純加算で足りる
+                    evalsDone++;
+                    double inCurrentStart = Math.Min(0.99, (evalsDone - evalsAtStartBegin) / Math.Max(1, avgEvalsPerStart));
+                    ReportIndexingProgress(Math.Min(0.99, (completedStarts + inCurrentStart) / CalibrationStartOffsets.Length), sw);
                     proj.Project(ctx.Mp, rot, ctx.Pos, ctx.Neg, buf);
                     return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
                 }
@@ -600,25 +607,35 @@ public partial class FormEBSD
                 (double Zncc, double Fu, double Fv, double LnDd, Matrix3D Rot, int Rounds, bool Converged, double JointGain) bestRun = default;
                 int bestIndex = -1;
                 double worstZncc = double.MaxValue;
-                var allZncc = new double[CalibrationStartOffsets.Length]; //260726Cl: 最良解へ到達した開始点の数を数えるため
+                var runs = new (double Zncc, double Fu, double Fv, double Dd)[CalibrationStartOffsets.Length]; //260726Cl: 最良解へ到達した点の数と、その幾何の広がりを見るため
                 for (int s = 0; s < CalibrationStartOffsets.Length; s++)
                 {
                     cancel.ThrowIfCancellationRequested();
-                    ReportIndexingProgress(Math.Min(0.99, (double)evalsDone / evalBudget), sw, $"start {s + 1}/{CalibrationStartOffsets.Length}"); //260726Cl
+                    ReportIndexingProgress(Math.Min(0.99, (double)s / CalibrationStartOffsets.Length), sw, $"start {s + 1}/{CalibrationStartOffsets.Length}"); //260726Cl
                     var (ou, ov, od) = CalibrationStartOffsets[s];
                     //260726Cl 変更: 振れ幅を定数化 (旧 physW*0.01 / physH*0.01 / 0.02 は狭すぎて全点が同じ谷に落ちていた)
                     var run = RunFrom(footU0 + ou * physW * CalibrationStartSpreadPc, footV0 + ov * physH * CalibrationStartSpreadPc,
                         Math.Log(dd0) + od * CalibrationStartSpreadLnDd);
-                    allZncc[s] = run.Zncc;
+                    runs[s] = (run.Zncc, run.Fu, run.Fv, Math.Exp(run.LnDd));
                     worstZncc = Math.Min(worstZncc, run.Zncc);
                     if (bestIndex < 0 || run.Zncc > bestRun.Zncc) { bestRun = run; bestIndex = s; }
+                    //260726Cl: 進捗の按分に使う「1 点あたりの実測評価数」を更新する
+                    completedStarts = s + 1;
+                    avgEvalsPerStart = (double)evalsDone / completedStarts;
+                    evalsAtStartBegin = evalsDone;
                 }
                 //最良から 1E-3 以内に入った開始点の数 = 最良解の basin の広さ。spread (最良−最悪) だけだと外れ値に引きずられる
-                int nearBest = allZncc.Count(z => z >= bestRun.Zncc - 1E-3);
+                var near = runs.Where(r => r.Zncc >= bestRun.Zncc - 1E-3).ToArray();
+                //260726Cl 追加 (作者要望): その集団の PC・DD の広がり (半値幅) = ZNCC で幾何がどこまで決まっているか。
+                //ZNCC 1E-3 以内で PC が数 mm 動くなら、単一パターンでは幾何がその精度までしか決まっていない (正本 §2.4)
+                double flatU = (near.Max(r => r.Fu) - near.Min(r => r.Fu)) / 2;
+                double flatV = (near.Max(r => r.Fv) - near.Min(r => r.Fv)) / 2;
+                double flatDd = (near.Max(r => r.Dd) - near.Min(r => r.Dd)) / 2;
 
                 return (Rot: bestRun.Rot, Fu: bestRun.Fu, Fv: bestRun.Fv, Dd: Math.Exp(bestRun.LnDd), Zncc: bestRun.Zncc, ZnccStart: startZncc,
                     Evals: evalTotal, Rounds: bestRun.Rounds, Converged: bestRun.Converged, JointGain: bestRun.JointGain,
-                    Starts: CalibrationStartOffsets.Length, BestIndex: bestIndex, Spread: bestRun.Zncc - worstZncc, NearBest: nearBest); //260726Cl: 局所解のばらつきを可視化
+                    Starts: CalibrationStartOffsets.Length, BestIndex: bestIndex, Spread: bestRun.Zncc - worstZncc, NearBest: near.Length, //260726Cl: 局所解のばらつきを可視化
+                    FlatU: flatU, FlatV: flatV, FlatDd: flatDd); //260726Cl: ZNCC が同等な解の集団における PC・DD の広がり (半値幅、mm)
             }, cancel); //260725Ch
             sw.Stop();
 
@@ -652,9 +669,10 @@ public partial class FormEBSD
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}" +
                 $" (best #{result.BestIndex}/{result.Starts}, {result.NearBest} within 1E-3)"; //260726Cl: 多点開始。within が少ないほど局所解が深い
             //260725Cl: 交互最適化のラウンド数と収束可否 (上限に張り付くなら未収束の疑い)。260726Cl: evals と傾斜の注記は冗長なので削除
-            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}), DD {dd0:f2}→{result.Dd:f2} mm, " +
-                $"{result.Rounds}/{MaxCalibrationRounds} rounds{(result.Converged ? "" : " (limit)")}, " +
-                $"joint {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, spread {result.Spread:f3}, {sw.Elapsed.TotalSeconds:f1} s";
+            //260726Cl: flat = ZNCC が最良と 1E-3 以内で並ぶ解の集団における PC・DD の広がり (半値幅)。単一パターンで幾何がどこまで決まるかの実測値
+            toolStripStatusLabelDetail.Text = $"ΔPC ({result.Fu - footU0:+0.00;-0.00},{result.Fv - footV0:+0.00;-0.00}), ΔDD {result.Dd - dd0:+0.00;-0.00} mm; " +
+                $"flat ±{result.FlatU:f2}/±{result.FlatV:f2} PC, ±{result.FlatDd:f2} DD; " +
+                $"{result.Rounds}/{MaxCalibrationRounds} rounds{(result.Converged ? "" : " (limit)")}, joint {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {sw.Elapsed.TotalSeconds:f1} s";
         }
         catch (OperationCanceledException) //260725Ch
         {
