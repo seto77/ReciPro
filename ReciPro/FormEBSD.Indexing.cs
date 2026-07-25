@@ -39,11 +39,15 @@ public partial class FormEBSD
     /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
     private int indexingGeneration = 0;
 
+    /// <summary>画像・幾何変更で不要になった探索/較正のCPU処理を停止する。260725Ch 追加</summary>
+    private System.Threading.CancellationTokenSource indexingCts;
+
     /// <summary>画像/幾何の変更で方位候補を失効させる。260724Cl 追加 (Codex 指摘: stale 結果の誤適用防止)</summary>
     //260724Cl シグネチャ変更: バンド検出廃止に伴い clearBands 引数を削除。旧: private void InvalidateIndexingResults(bool clearBands)
     private void InvalidateIndexingResults()
     {
         indexingGeneration++; // 260725Cl 追加: 実行中の探索結果を失効させる
+        indexingCts?.Cancel(); //260725Ch: 結果を捨てるだけでなく、辞書/Radon探索と較正の残CPU処理も停止
         orientationCandidates = null;
         if (candidateGridInitialized)
         {
@@ -57,12 +61,16 @@ public partial class FormEBSD
     {
         if (indexingBusy) return false;
         indexingBusy = true;
+        indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
+        indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = false; //260724Cl: 廃止 2 ボタンを除去
         return true;
     }
 
     private void EndIndexing()
     {
+        indexingCts?.Dispose(); //260725Ch
+        indexingCts = null;
         indexingBusy = false;
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = true; //260724Cl: 廃止 2 ボタンを除去
     }
@@ -92,6 +100,7 @@ public partial class FormEBSD
         }
         if (!TryBeginIndexing()) return;
         int generation = indexingGeneration; // 260725Cl 追加: await 中に画像・幾何が変わったら結果を捨てる
+        var cancel = indexingCts.Token; //260725Ch: 無効化時に実計算も停止する
         toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
         try
         {
@@ -140,14 +149,14 @@ public partial class FormEBSD
                     //12.5s→**2.4〜2.8s/画像** (結果は同一、C2 重複候補も解消)。260725Cl 訂正: 旧コメントの「→4.3s」は中間段階の値
                     //cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true); //260725Cl 変更前
                     cands = EbsdDictionaryIndexer.Index(ctx.Mp, ctx.Pos, ctx.Neg, ctx.Geom, values, iw, ih, coarseStepDeg: 3, maxCandidates: 10, thoroughCoarse: true,
-                        properSymmetries: properSyms);
+                        properSymmetries: properSyms, cancel: cancel); //260725Ch
                     //260725Cl (/simplify): 候補ごとの ScoreOrientation はカタログを毎回組み直していた → 一括版で 1 回に (スコアは同一)
                     var radonZ = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [.. cands.Select(c => c.Rotation)], SatCap);
                     for (int i = 0; i < cands.Count; i++)
                         cands[i].Score = radonZ[i];
                 }
                 else
-                    cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0);
+                    cands = EbsdRadonIndexer.Index(map, geom, reflections, wl, maxCandidates: 10, saturateCap: refineByZncc ? SatCap : 0, cancel: cancel); //260725Ch
                 if (refineByZncc && cands.Count > 0)
                 {
                     var projector = new EbsdPatternProjector(ctx.Geom, ctx.Rw, ctx.Rh);
@@ -155,6 +164,7 @@ public partial class FormEBSD
                     var (refRobust, _, _) = EbsdPatternScorer.PrepareReferenceRobust(values, iw, ih, 160);
                     foreach (var c in cands) //全候補の robust ZNCC (未精密化 — 精密化はどの方位でも ZNCC を伸ばすため判別には使えない)
                     {
+                        cancel.ThrowIfCancellationRequested(); //260725Ch
                         projector.Project(ctx.Mp, c.Rotation, ctx.Pos, ctx.Neg, buf);
                         c.Zncc = EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
                     }
@@ -166,6 +176,7 @@ public partial class FormEBSD
                     var top = cands[0];
                     double Score(double[] v)
                     {
+                        cancel.ThrowIfCancellationRequested(); //260725Ch: Nelder-Mead の評価境界で停止
                         projector.Project(ctx.Mp, EbsdIndexer.PerturbRotation(top.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
                         return -EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
                     }
@@ -197,7 +208,7 @@ public partial class FormEBSD
                 //}
                 #endregion
                 return cands;
-            });
+            }, cancel); //260725Ch
             sw.Stop();
 
             //260725Cl 追加: 探索中に実測画像の差し替えや検出器幾何の変更があった場合、この結果は既に失効しているので適用しない
@@ -212,6 +223,11 @@ public partial class FormEBSD
             toolStripStatusLabelSummary.Text = $"Orientation search: {candidates.Count} candidates" +
                 (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
             toolStripStatusLabelDetail.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
+        }
+        catch (OperationCanceledException) //260725Ch: 入力変更による正常な中止を失敗表示にしない
+        {
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Orientation search canceled" : "Orientation search discarded (the image or geometry changed)";
+            toolStripStatusLabelDetail.Text = "";
         }
         catch (Exception ex)
         {
@@ -260,8 +276,10 @@ public partial class FormEBSD
                 foreach (var (c, i) in orientationCandidates.Select((c, i) => (c, i)))
                     //260725Cl: Score も非有限ガード (辞書経路は ScoreOrientations の double.MinValue センチネル
                     //= 視野内予測バンドが 4 本未満のとき をそのまま入れるため、309 桁の数値がセルに出るのを防ぐ)
-                    g.Rows.Add(i, double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}",
-                        double.IsNaN(c.Zncc) ? "-" : $"{c.Zncc:f3}", c.HklText); //260724Cl: AssignmentText (band:hkl) → HklText
+                    //g.Rows.Add(i, double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}", //260725Ch 変更前: double.MinValue は finite なので 309 桁表示になっていた
+                    //    double.IsNaN(c.Zncc) ? "-" : $"{c.Zncc:f3}", c.HklText);
+                    g.Rows.Add(i, c.Score != double.MinValue && double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}", //260725Ch
+                        double.IsFinite(c.Zncc) ? $"{c.Zncc:f3}" : "-", c.HklText); //260724Cl: AssignmentText (band:hkl) → HklText
             g.ClearSelection();
         }
         finally { skipCandidateSelectionEvent = false; }
@@ -350,6 +368,7 @@ public partial class FormEBSD
         if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;
         if (!TryBeginIndexing()) return;
         int generation = indexingGeneration; // 260725Cl 追加: await 中に実測画像・幾何が変わったら較正結果を書き戻さない (旧画像に合わせた幾何の誤適用防止)
+        var cancel = indexingCts.Token; //260725Ch
         toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
         try
         {
@@ -359,7 +378,8 @@ public partial class FormEBSD
             var (footU0, footV0) = ctx.Geom.PatternCenterMm; //260724Cl (/simplify): PC 式の手書き重複 (-DetX, -(DetY cosδ+DetZ sinδ)) を幾何オブジェクトへ一元化
             double dd0 = ctx.Geom.CameraLength;
             double physW = DetHalfWidth * 2, physH = DetHalfHeight * 2;
-            if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; EndIndexing(); return; }
+            //if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; EndIndexing(); return; } //260725Ch 変更前: finally でも二重に EndIndexing していた
+            if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; return; } //260725Ch
 
             var sw = System.Diagnostics.Stopwatch.StartNew();
             var result = await Task.Run(() =>
@@ -376,6 +396,7 @@ public partial class FormEBSD
                 }
                 double ScoreWith(EbsdPatternProjector proj, Matrix3D rot)
                 {
+                    cancel.ThrowIfCancellationRequested(); //260725Ch: 各評価の投影前に中止を反映
                     proj.Project(ctx.Mp, rot, ctx.Pos, ctx.Neg, buf);
                     return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
                 }
@@ -383,6 +404,7 @@ public partial class FormEBSD
 
                 for (int round = 0; round < 2; round++)
                 {
+                    cancel.ThrowIfCancellationRequested(); //260725Ch
                     //① 幾何固定で方位 (粗 0.7°)
                     var projFixed = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
                     var (bo, _, eo) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFixed, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.7, 0.7, 0.7], 150);
@@ -404,7 +426,7 @@ public partial class FormEBSD
                 r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
                 return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vf, ZnccStart: startZncc, Evals: evalTotal);
-            });
+            }, cancel); //260725Ch
             sw.Stop();
 
             //260725Cl 追加: 較正中に実測画像の差し替えや幾何の変更があった場合、この結果は失効しているので書き戻さない
@@ -426,10 +448,16 @@ public partial class FormEBSD
             finally { skipDetectorGeometryEvent = false; }
             UpdateEbsdTiltCoeffs();
             RebinMcDistribution();
+            InvalidateIndexingResults(); //260725Ch: 較正前の幾何で得た候補を残さず、実行世代も進める
             FormMain.SetRotation(result.Rot); //Draw は SetRotation → FormMain 経由で走る
 
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
             toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge).";
+        }
+        catch (OperationCanceledException) //260725Ch
+        {
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Geometry calibration canceled" : "Geometry calibration discarded (the image or geometry changed)";
+            toolStripStatusLabelDetail.Text = "";
         }
         catch (Exception ex)
         {

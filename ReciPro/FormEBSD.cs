@@ -922,6 +922,8 @@ public partial class FormEBSD : FormBase
     /// <summary>FormMainから、結晶が変更されたときに呼び出される</summary>
     public void SetCrystal()
     {
+        InvalidateIndexingResults(); //260725Ch: 旧結晶または実行中探索の方位候補を新結晶へ適用させない
+        composedPatternCache = default; //260725Ch: 旧結晶の MasterPattern をキャッシュ経由で保持し続けない
         // 260724Cl 追加: 結晶が変わると旧結晶の MasterPattern は無効なので、build 中なら停止したうえで破棄し、依存 UI も無効化する
         if (masterPatternEbsd.IsBuilding)
             masterPatternEbsd.CancelMasterPatternBuild();
@@ -958,13 +960,15 @@ public partial class FormEBSD : FormBase
     private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e)
     {
         UpdateEbsdTiltCoeffs();
+        InvalidateIndexingResults(); //260725Ch: SampleTilt は指数付けの lab↔sample 変換を変えるため、候補と実行中結果を失効させる
         Draw();
     }
 
     /// <summary>検出器ジオメトリ変更時に、保存済み BSE を新しい検出器へ再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加</summary>
     private void RebinMcDistribution()
     {
-        if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0)
+        //if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0) //260725Ch 変更前: 空Depthsだけがctorへ到達
+        if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0 || MasterPattern.Depths.Length == 0) //260725Ch
             return;
         var bseRaw = BSEs.Select(e => (
             monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
@@ -1003,7 +1007,12 @@ public partial class FormEBSD : FormBase
 
     private void colorControlExcessLine_ColorChanged(object sender, EventArgs e) => Draw();
 
-    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
+    //private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector(); //260725Ch 変更前
+    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
+    {
+        SetVector();
+        InvalidateIndexingResults(); //260725Ch: 波長は反射カタログとpair-angle幅尤度を変えるため旧候補を失効
+    }
 
     #endregion
 
@@ -1053,7 +1062,12 @@ public partial class FormEBSD : FormBase
     /// </summary>
     private unsafe void BuildEbsdLookupTable(int width, int height) // 260325Cl: unsafe 化
     {
-        var totalPixels = width * height;
+        if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width), "EBSD raster width must be positive."); //260725Ch: unsafe 配列長と除算の前提を入口で保証
+        if (height <= 0) throw new ArgumentOutOfRangeException(nameof(height), "EBSD raster height must be positive."); //260725Ch
+        var gridSize = MasterPattern.GridSize; //260725Ch: 1×1 以下では正方格子の gridMax-1 と bilinear の idx+1 が成立しない
+        if (gridSize < 2) throw new InvalidOperationException("MasterPattern.GridSize must be at least 2."); //260725Ch
+        //var totalPixels = width * height; //260725Ch 変更前
+        var totalPixels = checked(width * height); //260725Ch: 将来ラスター上限が変わっても unsafe 配列長の整数オーバーフローを許さない
         ebsdLookupGridType = MasterPattern.GridType; // 260331Cl
         var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
@@ -1092,7 +1106,7 @@ public partial class FormEBSD : FormBase
         double ax2 = ax * scaleW, ay2 = ay * scaleW, az2 = az * scaleW;
         double bx2 = bx * scaleH, by2 = by * scaleH, bz2 = bz * scaleH;
 
-        var gridSize = MasterPattern.GridSize;
+        //var gridSize = MasterPattern.GridSize; //260725Ch 変更前: unsafe 前提検証のためメソッド先頭へ移動
         ebsdLookupGridSize = gridSize; // 260325Cl: Apply 用にキャッシュ
         var startPxFactor = 1 - width; // (260325Ch) 列方向は等間隔なので、旧 pxFactor 再計算を増分更新へ置き換える
         double dxStep = 2.0 * ax2, dyStep = 2.0 * ay2, dzStep = 2.0 * az2; // (260325Ch)
@@ -1191,9 +1205,10 @@ public partial class FormEBSD : FormBase
     /// <summary>構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel0(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
     {
-        if (posPlane == null && negPlane == null) return;
-
         var gs = ebsdLookupGridSize;
+        int requiredPlaneLength = checked(gs * gs); //260725Ch: unsafe 補間が参照する最大範囲
+        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 直前フレームの values が残り、欠損スライスで古い像を表示した
+        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
         var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
@@ -1205,8 +1220,9 @@ public partial class FormEBSD : FormBase
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
             var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
-            var hasPos = posPlane != null && posPlane.Length > 0;
-            var hasNeg = negPlane != null && negPlane.Length > 0;
+            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
+            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch: 短い非空配列の unsafe 境界外参照を防ぐ
+            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
 
             if (isHexGrid) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
             {
@@ -1242,11 +1258,17 @@ public partial class FormEBSD : FormBase
     {
         var pos = new float[eLen * dLen][];
         var neg = new float[eLen * dLen][];
+        int requiredPlaneLength = checked(mp.GridSize * mp.GridSize); //260725Ch
         for (int ei = 0; ei < eLen; ei++)
             for (int di = 0; di < dLen; di++)
             {
-                pos[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di);
-                neg[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                //pos[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di); //260725Ch 変更前
+                //neg[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                int index = ei * dLen + di;
+                var plane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di);
+                pos[index] = plane != null && plane.Length >= requiredPlaneLength ? plane : null; //260725Ch: weighted unsafe 経路へ短い plane を渡さない
+                plane = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                neg[index] = plane != null && plane.Length >= requiredPlaneLength ? plane : null;
             }
         return (pos, neg);
     }
@@ -1266,7 +1288,7 @@ public partial class FormEBSD : FormBase
         double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
-        Array.Clear(values);
+        //Array.Clear(values); //260725Ch: 下の Parallel.For が全画素を必ず代入するため、描画前の全配列ゼロクリアは不要
 
         // ピクセルごとの加重合計を並列で計算
         fixed (int* pIdx = ebsdLookupIdx)
@@ -1398,9 +1420,10 @@ public partial class FormEBSD : FormBase
     /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから、単一スライスの EBSD パターンを描く。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel1(double[] values, int totalPixels, float[] posPlane, float[] negPlane, double planeScaleFactor = 1.0)
     {
-        if (posPlane == null && negPlane == null) return;
-
         var gs = ebsdLookupGridSize;
+        int requiredPlaneLength = checked(gs * gs); //260725Ch
+        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 欠損スライスで古い values を保持
+        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
         var scaleFactor = planeScaleFactor;
         var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
@@ -1413,8 +1436,9 @@ public partial class FormEBSD : FormBase
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
             var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
-            var hasPos = posPlane != null && posPlane.Length > 0;
-            var hasNeg = negPlane != null && negPlane.Length > 0;
+            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
+            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch
+            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
 
             if (isHexGrid) // 260331Cl
             {
@@ -1462,7 +1486,7 @@ public partial class FormEBSD : FormBase
         var planeScaleFactors = masterPatternGlobalNormalizationFactors;
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
-        Array.Clear(values);
+        //Array.Clear(values); //260725Ch: 全画素上書きのため不要
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1547,9 +1571,10 @@ public partial class FormEBSD : FormBase
     /// <summary>Model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel2(double[] values, int totalPixels, float[] posPlane, float[] negPlane, float[] posPlanePrevious = null, float[] negPlanePrevious = null)
     {
-        if (posPlane == null && negPlane == null) return;
-
         var gs = ebsdLookupGridSize;
+        int requiredPlaneLength = checked(gs * gs); //260725Ch
+        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 欠損スライスで古い values を保持
+        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
         var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
@@ -1563,10 +1588,12 @@ public partial class FormEBSD : FormBase
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
             var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg; var pPosPrev0 = pPosPrev; var pNegPrev0 = pNegPrev;
-            var hasPos = posPlane != null && posPlane.Length > 0;
-            var hasNeg = negPlane != null && negPlane.Length > 0;
-            var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length > 0;
-            var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length > 0;
+            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
+            //var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length > 0; var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length > 0;
+            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch
+            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
+            var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length >= requiredPlaneLength;
+            var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length >= requiredPlaneLength;
 
             if (isHexGrid) // 260331Cl
             {
@@ -1626,7 +1653,7 @@ public partial class FormEBSD : FormBase
         double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
         var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
 
-        Array.Clear(values);
+        //Array.Clear(values); //260725Ch: 全画素上書きのため不要
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -2776,11 +2803,13 @@ public partial class FormEBSD : FormBase
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
         numericBoxDepth.Value = ThicknessArray[trackBarOutputThickness.Value];
+        if (mcDistribution == null && MasterPattern != null) InvalidateIndexingResults(); //260725Ch: 単一スライス fallback が存在するときだけ失効
         Draw();
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
         numericBoxEnergy.Value = EnergyArray[trackBarOutputEnergy.Value];
+        if (mcDistribution == null && MasterPattern != null) InvalidateIndexingResults(); //260725Ch: Radon-only時に無関係な候補を消さない
         Draw();
     }
     private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw();
@@ -3027,6 +3056,7 @@ public partial class FormEBSD : FormBase
                 BSEs = [];
                 mcDistribution = null;
                 composedPatternCache = default; // 260725Cl 追加 (/simplify): MC 合成キャッシュも失効させる
+                InvalidateIndexingResults(); //260725Ch: 旧 MC 合成で採点した候補を残さない
                 toolStripProgressBar.Value = 0;
                 toolStripStatusLabelSummary.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
                 StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.FromMilliseconds(masterPatternMonteCarloElapsedMilliseconds), showRemaining: true);// 260520Cl SetProgress化
@@ -3044,6 +3074,7 @@ public partial class FormEBSD : FormBase
             numericBoxThicknessStep.Value = result.depthStep;
             mcDistribution = result.Distribution;
             composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布・旧 MasterPattern を掴んだままにしない
+            InvalidateIndexingResults(); //260725Ch: ZNCC 辞書の重みが変わるため候補と実行中結果を失効させる
 
             poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
             var poleFigureRotation = M3.CreateRotationX(sampleTilt);
@@ -3219,6 +3250,8 @@ public partial class FormEBSD : FormBase
             return;
         }
 
+        composedPatternCache = default; //260725Ch: 完成前の MasterPattern を保持するキャッシュを明示的に破棄
+        InvalidateIndexingResults(); //260725Ch: 新しい MasterPattern に対して旧候補・実行中探索を適用させない
         UpdateMasterPatternSelectors();
         trackBarMasterPatternDepth.Value = MasterPattern.Depths.Length / 2; // 260725Ch: build直後は低コントラストな最小depthではなく中央付近を初期表示
         DrawMasterPattern2D();
@@ -3779,7 +3812,13 @@ public partial class FormEBSD : FormBase
     private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? 1.0 : -1.0;
 
     // private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) => DrawEBSD(); // 260718Cl 追加: パターン再描画→Paint 経由でオーバーレイも反転反映
-    private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) { DrawEBSD(); DrawOverlays(); } // 260723Cl 変更: 画面配置が DrawOverlays へ移ったため、ラスター再計算後に表示も更新する
+    //private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e) { DrawEBSD(); DrawOverlays(); } // 260723Cl 変更: 画面配置が DrawOverlays へ移ったため、ラスター再計算後に表示も更新する
+    private void checkBoxFlipDetectorLeftRight_CheckedChanged(object sender, EventArgs e)
+    {
+        InvalidateIndexingResults(); //260725Ch: XMirror は指数付けの検出器座標系を変えるため、候補と実行中結果を失効させる
+        DrawEBSD();
+        DrawOverlays();
+    }
 
     private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
     {
