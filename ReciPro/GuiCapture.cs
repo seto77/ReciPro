@@ -1018,6 +1018,12 @@ internal static partial class GuiCapture
                     ebsd.PrepareCaptureForGuiAudit(); // 260524Cl: Build MasterPattern を起動
                     trace($"{form.GetType().Name}\tINFO\ttriggered EBSD master pattern build");
                     WaitUntilScreenStable(form, trace); // 重く非同期なので「画面が変化しなくなったら完了」で待つ
+                    // 260725Cl 追加: MasterPattern 構築 (MC/Bethe の非同期完了が ThreadPool スレッドで GL に触れ、WGL
+                    // "make context current" 失敗を起こす) の後、3D 幾何ビュー (glControlGeo) が白紙のまま残ることがある。
+                    // RenderOpenGlControls の Render() は既存オブジェクトを描き直すだけで復旧しないため、
+                    // ここで DrawGeometry() を呼び GL オブジェクトを再送出する。
+                    ebsd.DrawGeometry();
+                    Application.DoEvents();
                     break;
                 case FormImageSimulator imageSimulator:
                     imageSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: Simulate を起動

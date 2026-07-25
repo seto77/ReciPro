@@ -1737,6 +1737,7 @@
             // tabPageExperimentalImage
             // 
             tabPageExperimentalImage.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageExperimentalImage, true); // 260725Cl 追加: マニュアル用に実測画像タブを自動キャプチャ対象へ (既定選択タブでないため全体図に写らない)
             tabPageExperimentalImage.Controls.Add(dataGridViewEbsdCandidates);
             tabPageExperimentalImage.Controls.Add(flowLayoutPanelExperimentalImageTab);
             resources.ApplyResources(tabPageExperimentalImage, "tabPageExperimentalImage");
