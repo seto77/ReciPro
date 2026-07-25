@@ -46,6 +46,16 @@ public partial class FormEBSD
     /// 両者で同じ値を使う — 目的関数だけでなくステップも揃えないと、Find と Calibrate を繰り返したときに方位が微妙に往復する</summary>
     private const double OrientationPolishStepDeg = 0.1;
 
+    /// <summary>較正の多点開始オフセット。単位は PC が検出器幅・高さの 1%、DD が lnDD 0.02 (≈2%)。260726Cl 追加 (作者要望: 10 点)。
+    /// 乱数を使わず決定的にする (同じ入力なら同じ結果)。[0] は現在の幾何そのもの、以降は軸方向 6 点と対角 3 点。
+    /// 局所解が多く (初期 DetX/Y/Z で最終スコアが 0.3 程度ばらつく)、同時最適化でも壁は越えられないので、開始点を変えて拾う</summary>
+    private static readonly (double U, double V, double D)[] CalibrationStartOffsets =
+    [
+        (0, 0, 0),
+        (+1, 0, 0), (-1, 0, 0), (0, +1, 0), (0, -1, 0), (0, 0, +1), (0, 0, -1),
+        (+0.7, +0.7, +0.7), (-0.7, -0.7, +0.7), (+0.7, -0.7, -0.7),
+    ];
+
     /// <summary>較正の最後に行う 6 変数 (PC_u, PC_v, lnDD, 方位 3) 同時最適化の評価上限。260726Cl 追加。
     /// 6 次元なので交互法の 3 変数段 (120-150) より多く要る。1 評価ごとに projector を作り直す重い段だが、
     /// 交互法では下れない斜めの谷をここで下る</summary>
@@ -82,18 +92,23 @@ public partial class FormEBSD
     /// <summary>直近に進捗行を書き換えた時刻 (探索開始からの ms)。UI 更新の間引きに使う。260725Cl 追加</summary>
     private long lastIndexingProgressMs;
 
+    /// <summary>進捗行に添える段の名前 (較正の "start 3/10" など)。260726Cl 追加</summary>
+    private string indexingStage = "";
+
     /// <summary>
     /// 探索・較正の進捗と経過時間をステータスバーへ出す (MasterPattern/MC と同じ canonical 進捗行)。260725Cl 追加
     /// (作者実機指摘: 探索中にプログレスバーが動かず、経過時間も出ていなかった)。
     /// ワーカースレッドから呼ばれるが、コントロールへの反映は StatusBarHelper 側が自動 Invoke する。
     /// </summary>
-    private void ReportIndexingProgress(double ratio, System.Diagnostics.Stopwatch sw)
+    //260726Cl シグネチャ変更: stage 追加 (較正の多点開始で "start 3/10" を出す)。旧: ReportIndexingProgress(double, Stopwatch)
+    private void ReportIndexingProgress(double ratio, System.Diagnostics.Stopwatch sw, string stage = null)
     {
         if (!indexingBusy) return; //完了後に遅れて届いた通知で最終表示を壊さない
+        if (stage != null) indexingStage = stage;
         long now = sw.ElapsedMilliseconds;
-        if (ratio < 1 && now - lastIndexingProgressMs < 200) return; //UI 更新は毎秒 5 回まで
+        if (stage == null && ratio < 1 && now - lastIndexingProgressMs < 200) return; //UI 更新は毎秒 5 回まで (段が変わったときは間引かない)
         lastIndexingProgressMs = now;
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, ratio, "", sw.Elapsed, showRemaining: true);
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, ratio, indexingStage, sw.Elapsed, showRemaining: true);
     }
 
     /// <summary>探索・較正の終了を進捗行へ書く。完了は 100%、中止・失敗はバーを戻して理由と経過時間だけ残す。260725Cl 追加</summary>
@@ -113,6 +128,7 @@ public partial class FormEBSD
         if (indexingBusy) return false;
         indexingBusy = true;
         lastIndexingProgressMs = 0; //260725Cl
+        indexingStage = ""; //260726Cl
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true); //260725Cl
         indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
         indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
@@ -467,14 +483,13 @@ public partial class FormEBSD
 
             var result = await Task.Run(() =>
             {
-                var r0 = ctx.R0;
-                double fu = footU0, fv = footV0, lnDd = Math.Log(dd0);
                 var buf = new double[ctx.Rw * ctx.Rh];
                 int evalTotal = 0;
-                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (最大ラウンド × (方位 150 + 幾何 120) + 仕上げ 100)。
+                //260725Cl: 進捗は ZNCC 評価回数 / 予算 (開始点数 × (最大ラウンド × (方位 150 + 幾何 120) + 仕上げ 100 + 同時最適化))。
                 //soft bounds に弾かれた評価は投影しないうえ、収束すれば途中で打ち切るので実際は予算より早く終わる → 完了時に 100% で締める
                 int evalsDone = 0;
-                const int EvalBudget = MaxCalibrationRounds * (150 + 120) + 100 + JointPolishMaxEval; //260726Cl: 同時最適化ぶんを加算
+                const int PerStartBudget = MaxCalibrationRounds * (150 + 120) + 100 + JointPolishMaxEval; //260726Cl: 同時最適化ぶんを加算
+                int evalBudget = CalibrationStartOffsets.Length * PerStartBudget; //260726Cl: 多点開始
 
                 EbsdDetectorGeometry MakeGeom(double u, double v, double ld)
                 {
@@ -484,69 +499,94 @@ public partial class FormEBSD
                 double ScoreWith(EbsdPatternProjector proj, Matrix3D rot)
                 {
                     cancel.ThrowIfCancellationRequested(); //260725Ch: 各評価の投影前に中止を反映
-                    ReportIndexingProgress(Math.Min(0.99, (double)++evalsDone / EvalBudget), sw); //260725Cl (NM は逐次なので単純加算で足りる)
+                    ReportIndexingProgress(Math.Min(0.99, (double)++evalsDone / evalBudget), sw); //260725Cl (NM は逐次なので単純加算で足りる)
                     proj.Project(ctx.Mp, rot, ctx.Pos, ctx.Neg, buf);
                     return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
                 }
-                double startZncc = -ScoreWith(new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh), r0);
+                double startZncc = -ScoreWith(new EbsdPatternProjector(MakeGeom(footU0, footV0, Math.Log(dd0)), ctx.Rw, ctx.Rh), ctx.R0);
 
-                //260725Cl 変更 (作者指示): 旧 for (int round = 0; round < 2; round++) — 2 ラウンド固定で収束判定なし。
-                //PC・DD・方位の相関で交互法はジグザグするため、改善が止まるまで最大 MaxCalibrationRounds 回まわす
-                int roundsUsed = 0;
-                bool converged = false;
-                double prevZncc = startZncc;
-                for (int round = 0; round < MaxCalibrationRounds; round++)
+                //260726Cl 追加 (作者要望): 1 開始点ぶんの較正 (交互法 → 方位仕上げ → 6 変数同時) を関数化し、多点開始から呼ぶ
+                (double Zncc, double Fu, double Fv, double LnDd, Matrix3D Rot, int Rounds, bool Converged, double JointGain) RunFrom(double fu, double fv, double lnDd)
                 {
-                    cancel.ThrowIfCancellationRequested(); //260725Ch
-                    //① 幾何固定で方位 (粗 0.7°)
-                    var projFixed = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
-                    var (bo, _, eo) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFixed, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.7, 0.7, 0.7], 150);
-                    r0 = EbsdIndexer.PerturbRotation(r0, bo[0], bo[1], bo[2]); evalTotal += eo;
+                    var r0 = ctx.R0;
+                    //260725Cl 変更 (作者指示): 旧 for (int round = 0; round < 2; round++) — 2 ラウンド固定で収束判定なし。
+                    //PC・DD・方位の相関で交互法はジグザグするため、改善が止まるまで最大 MaxCalibrationRounds 回まわす
+                    int roundsUsed = 0;
+                    bool converged = false;
+                    double prevZncc = -ScoreWith(new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh), r0);
+                    for (int round = 0; round < MaxCalibrationRounds; round++)
+                    {
+                        cancel.ThrowIfCancellationRequested(); //260725Ch
+                        //① 幾何固定で方位 (粗 0.7°)
+                        var projFixed = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
+                        var (bo, _, eo) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFixed, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])), [0, 0, 0], [0.7, 0.7, 0.7], 150);
+                        r0 = EbsdIndexer.PerturbRotation(r0, bo[0], bo[1], bo[2]); evalTotal += eo;
 
-                    //② 方位固定で幾何 (dU, dV [mm], dlnDD)。ステップ = 検出器幅/高の 1%、lnDD 0.02
-                    //260724Cl: 単一パターンの PC-DD-方位縮退で非物理領域へ流れないよう soft bounds (初期値から W/H の 25%・DD ±40% でペナルティ)
-                    var rFixed = r0;
-                    var (bg, vg, eg) = EbsdPatternScorer.NelderMead(
-                        v => (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
-                            ? 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2])
-                            : ScoreWith(new EbsdPatternProjector(MakeGeom(fu + v[0], fv + v[1], lnDd + v[2]), ctx.Rw, ctx.Rh), rFixed),
-                        [0, 0, 0], [physW * 0.01, physH * 0.01, 0.02], 120);
-                    fu += bg[0]; fv += bg[1]; lnDd += bg[2]; evalTotal += eg;
-                    roundsUsed = round + 1;
+                        //② 方位固定で幾何 (dU, dV [mm], dlnDD)。ステップ = 検出器幅/高の 1%、lnDD 0.02
+                        //260724Cl: 単一パターンの PC-DD-方位縮退で非物理領域へ流れないよう soft bounds (初期値から W/H の 25%・DD ±40% でペナルティ)
+                        var rFixed = r0;
+                        var (bg, vg, eg) = EbsdPatternScorer.NelderMead(
+                            v => (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
+                                ? 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2])
+                                : ScoreWith(new EbsdPatternProjector(MakeGeom(fu + v[0], fv + v[1], lnDd + v[2]), ctx.Rw, ctx.Rh), rFixed),
+                            [0, 0, 0], [physW * 0.01, physH * 0.01, 0.02], 120);
+                        fu += bg[0]; fv += bg[1]; lnDd += bg[2]; evalTotal += eg;
+                        roundsUsed = round + 1;
 
-                    //260725Cl: このラウンドの ZNCC 到達点で収束判定 (soft bounds のペナルティ値が返った場合は改善なしとして扱われる)
-                    double zncc = -vg;
-                    if (zncc - prevZncc < CalibrationZnccTolerance) { converged = true; break; }
-                    prevZncc = zncc;
+                        //260725Cl: このラウンドの ZNCC 到達点で収束判定 (soft bounds のペナルティ値が返った場合は改善なしとして扱われる)
+                        double zncc = -vg;
+                        if (zncc - prevZncc < CalibrationZnccTolerance) { converged = true; break; }
+                        prevZncc = zncc;
+                    }
+                    //仕上げの方位微調整。260725Cl 変更: 0.2° → OrientationPolishStepDeg (0.1°、作者指示)。Find の仕上げ段と同じ値
+                    var projFinal = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
+                    var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])),
+                        [0, 0, 0], [OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], 100);
+                    r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
+
+                    //260726Cl 追加 (作者要望): 6 変数 (PC_u, PC_v, lnDD, 方位 3) の同時最適化を仕上げに 1 段。
+                    //交互法は変数を片方ずつしか動かせないので、相関のある谷では斜め方向に下れずジグザグして止まる。
+                    //実機報告でも初期 DetX/Y/Z を変えると最終スコアが 20.0〜20.3 程度ばらついていた。
+                    //開始点 (増分ゼロ) が初期シンプレックスの頂点 0 で、NelderMead は最良頂点を返すので、この段で悪化することはない。
+                    //ソフト境界は交互法の②と同じ判定を増分に対して掛ける (この段の増分は小さいので通常は発火しない)。
+                    var rBase = r0;
+                    double fuBase = fu, fvBase = fv, lnDdBase = lnDd;
+                    double ScoreJoint(double[] v)
+                    {
+                        if (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
+                            return 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2]);
+                        return ScoreWith(new EbsdPatternProjector(MakeGeom(fuBase + v[0], fvBase + v[1], lnDdBase + v[2]), ctx.Rw, ctx.Rh),
+                            EbsdIndexer.PerturbRotation(rBase, v[3], v[4], v[5]));
+                    }
+                    //幾何側は交互法②の半分のステップ (もう最適点の近くにいる)、方位側は仕上げと同じ 0.1°
+                    var (bj, vj, ej) = EbsdPatternScorer.NelderMead(ScoreJoint, [0, 0, 0, 0, 0, 0],
+                        [physW * 0.005, physH * 0.005, 0.01, OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], JointPolishMaxEval);
+                    fu = fuBase + bj[0]; fv = fvBase + bj[1]; lnDd = lnDdBase + bj[2];
+                    r0 = EbsdIndexer.PerturbRotation(rBase, bj[3], bj[4], bj[5]); evalTotal += ej;
+
+                    return (Zncc: -vj, Fu: fu, Fv: fv, LnDd: lnDd, Rot: r0, Rounds: roundsUsed, Converged: converged,
+                        JointGain: -vj - -vf); //260726Cl: 同時最適化が交互法の到達点からどれだけ伸ばしたか
                 }
-                //仕上げの方位微調整。260725Cl 変更: 0.2° → OrientationPolishStepDeg (0.1°、作者指示)。Find の仕上げ段と同じ値
-                var projFinal = new EbsdPatternProjector(MakeGeom(fu, fv, lnDd), ctx.Rw, ctx.Rh);
-                var (bf, vf, ef) = EbsdPatternScorer.NelderMead(v => ScoreWith(projFinal, EbsdIndexer.PerturbRotation(r0, v[0], v[1], v[2])),
-                    [0, 0, 0], [OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], 100);
-                r0 = EbsdIndexer.PerturbRotation(r0, bf[0], bf[1], bf[2]); evalTotal += ef;
 
-                //260726Cl 追加 (作者要望): 6 変数 (PC_u, PC_v, lnDD, 方位 3) の同時最適化を仕上げに 1 段。
-                //交互法は変数を片方ずつしか動かせないので、相関のある谷では斜め方向に下れずジグザグして止まる。
-                //実機報告でも初期 DetX/Y/Z を変えると最終スコアが 20.0〜20.3 程度ばらついていた。
-                //開始点 (増分ゼロ) が初期シンプレックスの頂点 0 で、NelderMead は最良頂点を返すので、この段で悪化することはない。
-                //ソフト境界は交互法の②と同じ判定を増分に対して掛ける (この段の増分は小さいので通常は発火しない)。
-                var rBase = r0;
-                double fuBase = fu, fvBase = fv, lnDdBase = lnDd;
-                double ScoreJoint(double[] v)
+                //260726Cl 追加 (作者要望): 多点開始。局所解が多く、初期 DetX/Y/Z を変えると最終スコアが 0.3 程度ばらつくため、
+                //現在の幾何と、そこから決定的に振った開始点から同じ較正を走らせ、最も ZNCC の高い解を採る。
+                //同時最適化は交互法の停滞は解消するが局所解の壁は越えないので、壁の向こう側は開始点を変えて拾うしかない
+                (double Zncc, double Fu, double Fv, double LnDd, Matrix3D Rot, int Rounds, bool Converged, double JointGain) bestRun = default;
+                int bestIndex = -1;
+                double worstZncc = double.MaxValue;
+                for (int s = 0; s < CalibrationStartOffsets.Length; s++)
                 {
-                    if (Math.Abs(v[0]) > physW * 0.25 || Math.Abs(v[1]) > physH * 0.25 || Math.Abs(v[2]) > 0.35)
-                        return 10 + Math.Abs(v[0]) / physW + Math.Abs(v[1]) / physH + Math.Abs(v[2]);
-                    return ScoreWith(new EbsdPatternProjector(MakeGeom(fuBase + v[0], fvBase + v[1], lnDdBase + v[2]), ctx.Rw, ctx.Rh),
-                        EbsdIndexer.PerturbRotation(rBase, v[3], v[4], v[5]));
+                    cancel.ThrowIfCancellationRequested();
+                    ReportIndexingProgress(Math.Min(0.99, (double)evalsDone / evalBudget), sw, $"start {s + 1}/{CalibrationStartOffsets.Length}"); //260726Cl
+                    var (ou, ov, od) = CalibrationStartOffsets[s];
+                    var run = RunFrom(footU0 + ou * physW * 0.01, footV0 + ov * physH * 0.01, Math.Log(dd0) + od * 0.02);
+                    worstZncc = Math.Min(worstZncc, run.Zncc);
+                    if (bestIndex < 0 || run.Zncc > bestRun.Zncc) { bestRun = run; bestIndex = s; }
                 }
-                //幾何側は交互法②の半分のステップ (もう最適点の近くにいる)、方位側は仕上げと同じ 0.1°
-                var (bj, vj, ej) = EbsdPatternScorer.NelderMead(ScoreJoint, [0, 0, 0, 0, 0, 0],
-                    [physW * 0.005, physH * 0.005, 0.01, OrientationPolishStepDeg, OrientationPolishStepDeg, OrientationPolishStepDeg], JointPolishMaxEval);
-                fu = fuBase + bj[0]; fv = fvBase + bj[1]; lnDd = lnDdBase + bj[2];
-                r0 = EbsdIndexer.PerturbRotation(rBase, bj[3], bj[4], bj[5]); evalTotal += ej;
 
-                return (Rot: r0, Fu: fu, Fv: fv, Dd: Math.Exp(lnDd), Zncc: -vj, ZnccStart: startZncc, Evals: evalTotal, Rounds: roundsUsed, Converged: converged,
-                    JointGain: -vj - -vf); //260726Cl: 同時最適化が交互法の到達点からどれだけ伸ばしたか
+                return (Rot: bestRun.Rot, Fu: bestRun.Fu, Fv: bestRun.Fv, Dd: Math.Exp(bestRun.LnDd), Zncc: bestRun.Zncc, ZnccStart: startZncc,
+                    Evals: evalTotal, Rounds: bestRun.Rounds, Converged: bestRun.Converged, JointGain: bestRun.JointGain,
+                    Starts: CalibrationStartOffsets.Length, BestIndex: bestIndex, Spread: bestRun.Zncc - worstZncc); //260726Cl: 局所解のばらつきを可視化
             }, cancel); //260725Ch
             sw.Stop();
 
@@ -577,6 +617,7 @@ public partial class FormEBSD
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
             //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
             toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
+                $"best of {result.Starts} starts (#{result.BestIndex}, spread {result.Spread:f4}), " + //260726Cl: 多点開始。spread が大きいほど局所解が深い
                 $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), " +
                 $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."; //260726Cl: 同時最適化の伸びを表示
         }
