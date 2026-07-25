@@ -34,10 +34,10 @@ public partial class FormEBSD
     /// <summary>指数付け用反射リストの d 下限 (nm)。260724Cl (/simplify) 追加: 反射生成とステータス表示に二重ハードコードされていた値を一元化 (将来 UI 化候補)</summary>
     private const double KikuchiDLimit = 0.15;
 
-    /// <summary>幾何較正の交互最適化 (方位 ⇄ PC/DD) の最大ラウンド数。260725Cl: 2 固定 → 10 (作者指示)。
+    /// <summary>幾何較正の交互最適化 (方位 ⇄ PC/DD) の最大ラウンド数。260725Cl: 2 固定 → 10 → 20 (作者指示: 10 でも十分速い)。
     /// PC・DD・方位は単一パターンで強く相関しており、交互法は谷底でジグザグするため 2 ラウンドでは収束の保証が無かった。
     /// 実際には CalibrationZnccTolerance で早期終了するので、上限まで回るのは収束が遅い配置のときだけ</summary>
-    private const int MaxCalibrationRounds = 10;
+    private const int MaxCalibrationRounds = 20;
 
     /// <summary>1 ラウンドの ZNCC 改善がこれ未満なら収束とみなして較正を打ち切る。260725Cl 追加</summary>
     private const double CalibrationZnccTolerance = 1E-4;
