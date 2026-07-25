@@ -231,6 +231,30 @@ public partial class FormEBSD
                     var guard = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [rFin, top.Rotation], SatCap);
                     if (guard[0] >= guard[1] - 0.2)
                     { top.Rotation = rFin; top.Zncc = -v2; }
+
+                    //260725Cl 追加 (作者指示): ここまでは「候補の順位付け」のための保守的な微調整 (robust ZNCC を ±0.25° だけ)。
+                    //順位が確定したあとの最終方位は、Calibrate geometry と同じ目的関数 (素の前処理での ZNCC = ctx.Ref) と
+                    //同じステップ (0.7°→0.2°) で仕上げ直す。両者の目的関数が違うと「Find→トップ選択→Calibrate→再び Find」を
+                    //繰り返したときに方位が 2 値を約 1° で往復して収束しない (作者の実機報告)。順位付けの保護 (±0.25°+ガード) は
+                    //誤候補を ZNCC で押し上げないためのもので、最終方位の精度のためのものではない、という切り分け。
+                    double ScoreRaw(double[] v)
+                    {
+                        cancel.ThrowIfCancellationRequested();
+                        projector.Project(ctx.Mp, EbsdIndexer.PerturbRotation(top.Rotation, v[0], v[1], v[2]), ctx.Pos, ctx.Neg, buf);
+                        return -EbsdPatternScorer.Zncc(ctx.Ref, buf);
+                    }
+                    var (p1, _, _) = EbsdPatternScorer.NelderMead(ScoreRaw, [0, 0, 0], [0.7, 0.7, 0.7], 150);
+                    var (p2, _, _) = EbsdPatternScorer.NelderMead(ScoreRaw, p1, [0.2, 0.2, 0.2], 100);
+                    var rPolished = EbsdIndexer.PerturbRotation(top.Rotation, p2[0], p2[1], p2[2]);
+                    //仕上げでも同じ誤収束ガード (Radon の幾何証拠を 0.2 超失うなら採用しない)
+                    var guardPolish = EbsdRadonIndexer.ScoreOrientations(map, geom, reflections, [rPolished, top.Rotation], SatCap);
+                    if (guardPolish[0] >= guardPolish[1] - 0.2)
+                    {
+                        top.Rotation = rPolished;
+                        //表示中の ZNCC 列は順位付けに使った robust 値なので、仕上げ後の方位で取り直して列と方位の意味を一致させる
+                        projector.Project(ctx.Mp, top.Rotation, ctx.Pos, ctx.Neg, buf);
+                        top.Zncc = EbsdPatternScorer.Zncc(refRobust, EbsdPatternScorer.RobustPreprocess(buf, ctx.Rw, ctx.Rh));
+                    }
                 }
                 #region お蔵入り //260724Cl: 旧 ZNCC 連結 (上位 5 候補を ±1° 精密化して ZNCC 降順に再ランク)。精密化 ZNCC は誤方位ほど伸び正解を落とすため廃止
                 //if (refineByZncc && cands.Count > 0)
