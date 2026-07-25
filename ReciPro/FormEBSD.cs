@@ -1922,8 +1922,13 @@ public partial class FormEBSD : FormBase
         }
 
         // toolStripStatusLabelProgress.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
-        toolStripStatusLabelSummary.Text = "EBSD rendering";
-        toolStripStatusLabelDetail.Text = statusText;
+        //260726Cl 追加 (作者報告: 較正結果の文字が読めない): 指数付け・較正の結果を表示している間は描画側で潰さない。
+        //ここは描画のたびに Summary/Detail を書き換えるため、完了直後に再描画が走ると結果が消えていた
+        if (Environment.TickCount64 >= statusPinnedUntilTick)
+        {
+            toolStripStatusLabelSummary.Text = "EBSD rendering";
+            toolStripStatusLabelDetail.Text = statusText;
+        }
     }
 
     #endregion
