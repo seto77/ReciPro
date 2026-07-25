@@ -258,7 +258,7 @@ title: Diffraction Simulator
 - **Unit of potential** : 在 **Vg [eV]**（静电势，eV）与 **Ug [nm⁻²]**（进入布洛赫波方程的缩放量 $U_g = (2 m_0/h^2)\, V_g$）之间切换显示的势。列标题也相应地在 *Vg / V'g* 与 *Ug / U'g* 之间变化。
 - 表格上方显示加速电压、波长（$\lambda = 1/k_\text{vac}$）、相对论质量比 $m/m_0$、速度比 $v/c$、点阵体积、样品厚度，以及（在 CBED 模式下）电子束的最大半角。
 - **Note 1:** 长度单位为 **nm**，而非 Å。**Note 2:** 波数单位为 **1/nm**，而非 2π/nm。
-- **Effective digit** : 表中显示的有效数字位数。**Auto resize row width** : 自动适配列宽。**Copy to clipboard** : 将表格导出为可粘贴到电子表格中的文本。（即使在日文界面下，此窗体也以英文显示。）
+- **Effective digit** : 表中显示的有效数字位数。**Auto resize row width** : 自动适配列宽。**Copy to clipboard** : 将表格导出为可粘贴到电子表格中的文本。**Save as CSV** : 将同一表格（可见列）写入 CSV 文件；小数点始终为句点，因此在以逗号作小数点的区域设置下文件仍然有效。（即使在日文界面下，此窗体也以英文显示。）
 
 ---
 

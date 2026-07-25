@@ -72,16 +72,18 @@ Se você é novo no ReciPro, siga estes passos:
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| Show Tooltips | Alternar a exibição das dicas de ferramenta |
-| Use Miller-Bravais (hkil) index | Usar a notação de 4 índices para os sistemas trigonal/hexagonal em todo o aplicativo |
-| Reset registry settings on exit (effective after restart) | Redefinir as configurações na próxima reinicialização |
-| Disable Crystallography.Native library (requires restart) | Voltar ao código gerenciado caso a biblioteca nativa (C++) não consiga ser carregada |
-| Disable all OpenGL rendering (requires restart) | Para GPUs mais antigas / área de trabalho remota |
-| Disable OpenGL text rendering (requires restart) | Solução alternativa para problemas de renderização de texto em algumas GPUs |
-| Use MKL Library | Usar o Intel MKL para as rotinas numéricas |
-| Dark mode | Alternar entre os temas de cores claro e escuro |
-| Powder diffraction function (under development) | Ativar a janela de difração policristalina (de pó) |
-| Capture GUI Components… | Ferramenta de desenvolvedor para salvar capturas de tela da GUI |
+| Mostrar dicas | Alternar a exibição das dicas de ferramenta |
+| Modo escuro | Alternar entre os temas de cores claro e escuro |
+| Usar índice de Miller-Bravais (hkil) | Usar a notação de 4 índices para os sistemas trigonal/hexagonal em todo o aplicativo |
+| Usar fatores de dispersão iônicos | Incluir o termo de carga iônica nos fatores de dispersão atômica usados nos cálculos |
+| Baixar biblioteca MKL | Baixar a biblioteca nativa Intel MKL (~55 MB); depois de instalada é usada automaticamente em cálculos grandes |
+| Accept external macro commands (named pipe) | Escutar no pipe nomeado `ReciPro.Macro.v1` e executar macros enviadas por programas externos — ver [Controle externo](20-macro/3-external-control.md) |
+| Redefinir configurações do registro ao sair (efetivo após reiniciar) | Redefinir as configurações na próxima reinicialização |
+| Desativar biblioteca Crystallography.Native (requer reinício) | Voltar ao código gerenciado caso a biblioteca nativa (C++) não consiga ser carregada |
+| Desativar toda a renderização OpenGL (requer reinício) | Para GPUs mais antigas / área de trabalho remota |
+| Desativar renderização de texto OpenGL (requer reinício) | Solução alternativa para problemas de renderização de texto em algumas GPUs |
+| Capturar componentes da GUI... | Ferramenta de desenvolvedor para salvar capturas de tela da GUI |
+| Função de difração de pó (em desenvolvimento) | Ativar a janela de difração policristalina (de pó) |
 
 ### Help
 
@@ -280,7 +282,7 @@ A faixa vertical de botões à direita inicia as janelas de análise e simulaç�
 | Spot ID v1 | Indexação de padrões SAED (antigo "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Detecção e indexação de pontos | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | Simulação de padrões EBSD | [12. Simulação EBSD](12-ebsd-simulation.md) |
-| Powder Diffraction | Difração policristalina (de pó) — ativar via **Option ▸ Powder diffraction function** | - |
+| Powder Diffraction | Difração policristalina (de pó) — ativar via **Opções ▸ Função de difração de pó (em desenvolvimento)** | - |
 
 ---
 

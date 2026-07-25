@@ -34,6 +34,8 @@ Na janela principal, <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> abre/fecha es
 
 Abrir / salvar uma imagem de difração. O mesmo carregamento por arrastar e soltar do [Spot ID v1](10-spot-id.md) é suportado, e os metadados Gatan DM3/DM4 (comprimento de câmera, comprimento de onda, tamanho do pixel) são respeitados automaticamente.
 
+**Salvar ▸ Candidate list (CSV)...** exporta os candidatos de orientação encontrados pela indexação e **Copiar ▸ Candidate list (TSV)** coloca a mesma tabela na área de transferência: uma linha por candidato × grão, com o posto, o índice do grão, o nome do cristal, os ângulos de Euler ZXZ (°), os nove elementos da matriz de rotação, o resíduo quadrático médio (nm⁻²), o número de pontos atribuídos e as atribuições ponto → (hkl). O CSV usa sempre o ponto como separador decimal; o TSV pode ser colado diretamente numa planilha.
+
 ---
 
 ## Óptica

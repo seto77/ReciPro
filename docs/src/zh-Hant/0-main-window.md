@@ -72,16 +72,18 @@
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| Show Tooltips | 切換工具提示的顯示 |
-| Use Miller-Bravais (hkil) index | 在整個應用程式中對三方/六方晶系使用 4 指數記法 |
-| Reset registry settings on exit (effective after restart) | 在下次重新啟動時重設設定 |
-| Disable Crystallography.Native library (requires restart) | 若原生（C++）程式庫載入失敗，則退回使用受控碼 |
-| Disable all OpenGL rendering (requires restart) | 適用於較舊的 GPU / 遠端桌面 |
-| Disable OpenGL text rendering (requires restart) | 用於某些 GPU 上文字繪製問題的因應措施 |
-| Use MKL Library | 使用 Intel MKL 進行數值運算 |
-| Dark mode | 在淺色與深色配色佈景主題間切換 |
-| Powder diffraction function (under development) | 啟用多晶（粉末）繞射視窗 |
-| Capture GUI Components… | 用於儲存 GUI 螢幕擷取的開發者工具 |
+| 顯示工具提示 | 切換工具提示的顯示 |
+| 深色模式 | 在淺色與深色配色佈景主題間切換 |
+| 使用米勒-布拉維 (hkil) 指數 | 在整個應用程式中對三方/六方晶系使用 4 指數記法 |
+| 使用離子散射因子 | 在計算所用的原子散射因子中納入離子電荷項 |
+| 下載 MKL 程式庫 | 下載 Intel MKL 原生程式庫（約 55 MB）；安裝後會自動用於大規模計算 |
+| Accept external macro commands (named pipe) | 在具名管道 `ReciPro.Macro.v1` 上接聽並執行外部程式傳送的巨集 — 參見[外部控制](20-macro/3-external-control.md) |
+| 結束時重設登錄設定（重新啟動後生效） | 在下次重新啟動時重設設定 |
+| 停用 Crystallography.Native 程式庫（需重新啟動） | 若原生（C++）程式庫載入失敗，則退回使用受控碼 |
+| 停用所有 OpenGL 算繪（需重新啟動） | 適用於較舊的 GPU / 遠端桌面 |
+| 停用 OpenGL 文字算繪（需重新啟動） | 用於某些 GPU 上文字繪製問題的因應措施 |
+| 擷取 GUI 元件... | 用於儲存 GUI 螢幕擷取的開發者工具 |
+| 粉末繞射功能（開發中） | 啟用多晶（粉末）繞射視窗 |
 
 ### Help
 
@@ -280,7 +282,7 @@
 | Spot ID v1 | SAED 圖案指標化（舊稱「TEM ID」） | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 斑點偵測與指標化 | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD 圖案模擬 | [12. EBSD 模擬](12-ebsd-simulation.md) |
-| Powder Diffraction | 多晶（粉末）繞射——透過 **Option ▸ Powder diffraction function** 啟用 | - |
+| Powder Diffraction | 多晶（粉末）繞射——透過 **選項 ▸ 粉末繞射功能（開發中）** 啟用 | - |
 
 ---
 

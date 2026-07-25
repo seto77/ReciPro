@@ -258,7 +258,7 @@ O esquema (canto superior esquerdo) mostra os vetores na esfera de Ewald e defin
 - **Unit of potential** : Alterna o potencial exibido entre **Vg [eV]** (potencial eletrostático, eV) e **Ug [nm⁻²]** (a grandeza escalonada $U_g = (2 m_0/h^2)\, V_g$ que entra nas equações de ondas de Bloch). Os cabeçalhos das colunas mudam de acordo entre *Vg / V'g* e *Ug / U'g*.
 - Acima da tabela são exibidos a tensão de aceleração, o comprimento de onda ($\lambda = 1/k_\text{vac}$), a razão de massa relativística $m/m_0$, a razão de velocidade $v/c$, o volume da rede, a espessura da amostra e (no modo CBED) o semiângulo máximo do feixe de elétrons.
 - **Note 1:** a unidade de comprimento é **nm**, não Å. **Note 2:** a unidade de número de onda é **1/nm**, não 2π/nm.
-- **Effective digit** : número de algarismos significativos mostrados na tabela. **Auto resize row width** : ajustar automaticamente as larguras das colunas. **Copy to clipboard** : exporta a tabela como texto que pode ser colado em uma planilha. (Este formulário é exibido em inglês mesmo em uma interface em japonês.)
+- **Effective digit** : número de algarismos significativos mostrados na tabela. **Auto resize row width** : ajustar automaticamente as larguras das colunas. **Copy to clipboard** : exporta a tabela como texto que pode ser colado em uma planilha. **Save as CSV** : grava a mesma tabela (as colunas visíveis) em um arquivo CSV; o separador decimal é sempre o ponto, de modo que o arquivo continua válido em locales com vírgula decimal. (Este formulário é exibido em inglês mesmo em uma interface em japonês.)
 
 ---
 

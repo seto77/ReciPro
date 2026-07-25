@@ -72,16 +72,18 @@ Se è la prima volta che usi ReciPro, segui questi passaggi:
 
 | Voce di menu | Descrizione |
 |-----------|-------------|
-| Show Tooltips | Commuta la visualizzazione dei tooltip |
-| Use Miller-Bravais (hkil) index | Usa la notazione a 4 indici per i sistemi trigonale/esagonale in tutta l'applicazione |
-| Reset registry settings on exit (effective after restart) | Reimposta le impostazioni al prossimo riavvio |
-| Disable Crystallography.Native library (requires restart) | Ricade sul codice gestito se la libreria nativa (C++) non si carica |
-| Disable all OpenGL rendering (requires restart) | Per GPU più datate / desktop remoto |
-| Disable OpenGL text rendering (requires restart) | Soluzione alternativa per problemi di resa del testo su alcune GPU |
-| Use MKL Library | Usa Intel MKL per le routine numeriche |
-| Dark mode | Alterna tra tema chiaro e scuro |
-| Powder diffraction function (under development) | Abilita la finestra di diffrazione policristallina (polveri) |
-| Capture GUI Components… | Strumento per sviluppatori per salvare screenshot della GUI |
+| Mostra suggerimenti | Commuta la visualizzazione dei tooltip |
+| Modalità scura | Alterna tra tema chiaro e scuro |
+| Usa indici di Miller-Bravais (hkil) | Usa la notazione a 4 indici per i sistemi trigonale/esagonale in tutta l'applicazione |
+| Usa fattori di diffusione ionici | Includere il termine di carica ionica nei fattori di diffusione atomica usati dai calcoli |
+| Scarica libreria MKL | Scarica la libreria nativa Intel MKL (~55 MB); una volta installata viene usata automaticamente per i calcoli pesanti |
+| Accept external macro commands (named pipe) | Restare in ascolto sulla named pipe `ReciPro.Macro.v1` ed eseguire le macro inviate da programmi esterni — vedi [Controllo esterno](20-macro/3-external-control.md) |
+| Reimposta le impostazioni del registro all'uscita (attivo dopo il riavvio) | Reimposta le impostazioni al prossimo riavvio |
+| Disabilita la libreria Crystallography.Native (richiede il riavvio) | Ricade sul codice gestito se la libreria nativa (C++) non si carica |
+| Disabilita tutto il rendering OpenGL (richiede il riavvio) | Per GPU più datate / desktop remoto |
+| Disabilita il rendering del testo OpenGL (richiede il riavvio) | Soluzione alternativa per problemi di resa del testo su alcune GPU |
+| Cattura componenti GUI... | Strumento per sviluppatori per salvare screenshot della GUI |
+| Funzione di diffrazione da polveri (in sviluppo) | Abilita la finestra di diffrazione policristallina (polveri) |
 
 ### Help
 
@@ -280,7 +282,7 @@ La barra verticale di pulsanti a destra avvia le finestre di analisi e simulazio
 | Spot ID v1 | Indicizzazione di pattern SAED (precedentemente "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Rilevamento e indicizzazione degli spot | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | Simulazione di pattern EBSD | [12. Simulazione EBSD](12-ebsd-simulation.md) |
-| Powder Diffraction | Diffrazione policristallina (polveri) — abilitala tramite **Option ▸ Powder diffraction function** | - |
+| Powder Diffraction | Diffrazione policristallina (polveri) — abilitala tramite **Opzioni ▸ Funzione di diffrazione da polveri (in sviluppo)** | - |
 
 ---
 

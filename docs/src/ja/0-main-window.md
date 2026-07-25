@@ -75,15 +75,17 @@ ReciProを起動すると、メインウィンドウが表示されます。こ�
 | メニュー項目 | 説明 |
 |-------------|------|
 | ツールチップを表示 | ツールチップの表示/非表示を切り替え |
+| ダークモード | ライト／ダークのカラーテーマを切り替え |
 | Use Miller-Bravais (hkil) index | 三方晶・六方晶系で面指数をプログラム全体で4指数  \((hkil)\) 表記にする |
+| イオン散乱因子を使用 | 計算に用いる原子散乱因子にイオンの電荷項を取り入れる |
+| MKL ライブラリをダウンロード | Intel MKL ネイティブライブラリ（約55 MB）をダウンロード。導入後は大きな計算で自動的に使用される |
+| 外部からのマクロ命令を受け付ける (Named Pipe) | Named Pipe `ReciPro.Macro.v1` で待ち受け、外部プログラムから送られたマクロを実行 — [外部制御](20-macro/3-external-control.md) を参照 |
 | レジストリを初期化 (要再起動) | 次回起動時にウィンドウサイズ・波長・カメラ長等の設定をリセット |
 | Crystallography.Native.dll を無効化 (要再起動) | ネイティブ(C++)ライブラリの読込に失敗する場合にマネージドコードで代替 |
 | OpenGLによる全てのレンダリングを無効化 (要再起動) | 古いGPU/リモートデスクトップ環境向け |
 | OpenGLによるテキストレンダリングを無効化 (要再起動) | 一部GPUでの文字描画不具合への対処 |
-| MKL ライブラリを使用 | 数値計算にIntel MKLを使用 |
-| ダークモード | ライト／ダークのカラーテーマを切り替え |
-| Powder diffraction function (under development) | 多結晶（粉末）回折ウィンドウを有効化 |
-| Capture GUI Components… | GUIスクリーンショットを保存する開発者向けツール |
+| (experimental) Capture GUI Components | GUIスクリーンショットを保存する開発者向けツール |
+| (experimental) Powder diffraction function | 多結晶（粉末）回折ウィンドウを有効化 |
 
 ### ヘルプ
 
@@ -287,7 +289,7 @@ UI 言語を英語または日本語に切り替えます。変更は再起動�
 | スポットID v1 | 制限視野回折パターンの指数付け（旧「TEM ID」） | [Spot ID v1](10-spot-id.md) |
 | スポットID v2 | 回折スポットの検出・指数付け | [Spot ID v2](11-spot-id-v2.md) |
 | EBSDシミュレータ | EBSDパターンシミュレーション | [EBSDシミュレーション](12-ebsd-simulation.md) |
-| 粉末回折 | 多結晶（粉末）回折。**オプション ▸ Powder diffraction function** で有効化 | — |
+| 粉末回折 | 多結晶（粉末）回折。**オプション ▸ (experimental) Powder diffraction function** で有効化 | — |
 
 ---
 

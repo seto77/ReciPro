@@ -258,7 +258,7 @@ Das Schema (oben links) zeigt die Vektoren auf der Ewald-Kugel und definiert die
 - **Unit of potential** : Schaltet das angezeigte Potential zwischen **Vg [eV]** (elektrostatisches Potential, eV) und **Ug [nm⁻²]** um (die skalierte Größe $U_g = (2 m_0/h^2)\, V_g$, die in die Bloch-Wellen-Gleichungen eingeht). Die Spaltenüberschriften wechseln entsprechend zwischen *Vg / V'g* und *Ug / U'g*.
 - Über der Tabelle werden die Beschleunigungsspannung, die Wellenlänge ($\lambda = 1/k_\text{vac}$), das relativistische Massenverhältnis $m/m_0$, das Geschwindigkeitsverhältnis $v/c$, das Gittervolumen, die Probendicke und (im CBED-Modus) der maximale Halbwinkel des Elektronenstrahls angezeigt.
 - **Note 1:** Die Längeneinheit ist **nm**, nicht Å. **Note 2:** Die Wellenzahleinheit ist **1/nm**, nicht 2π/nm.
-- **Effective digit** : Anzahl der in der Tabelle angezeigten signifikanten Stellen. **Auto resize row width** : Spaltenbreiten automatisch anpassen. **Copy to clipboard** : exportiert die Tabelle als Text, der in eine Tabellenkalkulation eingefügt werden kann. (Dieses Formular wird auch unter einer japanischen Oberfläche auf Englisch angezeigt.)
+- **Effective digit** : Anzahl der in der Tabelle angezeigten signifikanten Stellen. **Auto resize row width** : Spaltenbreiten automatisch anpassen. **Copy to clipboard** : exportiert die Tabelle als Text, der in eine Tabellenkalkulation eingefügt werden kann. **Save as CSV** : schreibt dieselbe Tabelle (die sichtbaren Spalten) in eine CSV-Datei; das Dezimaltrennzeichen ist stets ein Punkt, sodass die Datei auch in Gebietsschemata mit Dezimalkomma gültig bleibt. (Dieses Formular wird auch unter einer japanischen Oberfläche auf Englisch angezeigt.)
 
 ---
 

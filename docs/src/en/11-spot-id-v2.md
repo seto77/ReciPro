@@ -34,6 +34,8 @@ The main-window <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> opens/closes this 
 
 Open / save a diffraction image. The same drag-and-drop loading as [Spot ID v1](10-spot-id.md) is supported, and Gatan DM3/DM4 metadata (camera length, wavelength, pixel size) is honoured automatically.
 
+**Save ▸ Candidate list (CSV)...** exports the orientation candidates found by the indexing, and **Copy ▸ Candidate list (TSV)** puts the same table on the clipboard: one row per candidate × grain, with the rank, the grain index, the crystal name, the ZXZ Euler angles (°), the nine rotation-matrix elements, the mean-squared residual (nm⁻²), the number of assigned spots and the spot → (hkl) assignments. The CSV always uses a period as the decimal separator; the TSV can be pasted straight into a spreadsheet.
+
 ---
 
 ## Optics

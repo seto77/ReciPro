@@ -72,16 +72,18 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 
 | Élément de menu | Description |
 |-----------|-------------|
-| Show Tooltips | Basculer l'affichage des info-bulles |
-| Use Miller-Bravais (hkil) index | Utiliser la notation à 4 indices pour les systèmes trigonaux/hexagonaux dans toute l'application |
-| Reset registry settings on exit (effective after restart) | Réinitialiser les paramètres au prochain redémarrage |
-| Disable Crystallography.Native library (requires restart) | Revenir au code managé si la bibliothèque native (C++) ne peut pas être chargée |
-| Disable all OpenGL rendering (requires restart) | Pour les GPU plus anciens / le bureau à distance |
-| Disable OpenGL text rendering (requires restart) | Solution de contournement pour les problèmes de rendu de texte sur certains GPU |
-| Use MKL Library | Utiliser Intel MKL pour les routines numériques |
-| Dark mode | Basculer entre les thèmes de couleur clair et sombre |
-| Powder diffraction function (under development) | Activer la fenêtre de diffraction polycristalline (sur poudre) |
-| Capture GUI Components… | Outil de développeur pour enregistrer des captures d'écran de l'interface |
+| Afficher les info-bulles | Basculer l'affichage des info-bulles |
+| Mode sombre | Basculer entre les thèmes de couleur clair et sombre |
+| Utiliser l'indice de Miller-Bravais (hkil) | Utiliser la notation à 4 indices pour les systèmes trigonaux/hexagonaux dans toute l'application |
+| Utiliser les facteurs de diffusion ioniques | Inclure le terme de charge ionique dans les facteurs de diffusion atomique utilisés par les calculs |
+| Télécharger la bibliothèque MKL | Télécharger la bibliothèque native Intel MKL (~55 Mo) ; une fois installée, elle est utilisée automatiquement pour les gros calculs |
+| Accept external macro commands (named pipe) | Écouter sur le tube nommé `ReciPro.Macro.v1` et exécuter les macros envoyées par des programmes externes — voir [Contrôle externe](20-macro/3-external-control.md) |
+| Réinitialiser les réglages du registre à la fermeture (effectif après redémarrage) | Réinitialiser les paramètres au prochain redémarrage |
+| Désactiver la bibliothèque Crystallography.Native (redémarrage requis) | Revenir au code managé si la bibliothèque native (C++) ne peut pas être chargée |
+| Désactiver tout le rendu OpenGL (redémarrage requis) | Pour les GPU plus anciens / le bureau à distance |
+| Désactiver le rendu de texte OpenGL (redémarrage requis) | Solution de contournement pour les problèmes de rendu de texte sur certains GPU |
+| Capturer les composants de l'interface... | Outil de développeur pour enregistrer des captures d'écran de l'interface |
+| Fonction de diffraction sur poudre (en développement) | Activer la fenêtre de diffraction polycristalline (sur poudre) |
 
 ### Help
 
@@ -280,7 +282,7 @@ La barre verticale de boutons à droite lance les fenêtres d'analyse et de simu
 | Spot ID v1 | Indexation de clichés SAED (anciennement « TEM ID ») | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Détection et indexation des taches | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | Simulation de clichés EBSD | [12. Simulation EBSD](12-ebsd-simulation.md) |
-| Powder Diffraction | Diffraction polycristalline (sur poudre) — activer via **Option ▸ Powder diffraction function** | - |
+| Powder Diffraction | Diffraction polycristalline (sur poudre) — activer via **Options ▸ Fonction de diffraction sur poudre (en développement)** | - |
 
 ---
 

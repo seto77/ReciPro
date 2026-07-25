@@ -72,16 +72,18 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 | 菜单项 | 说明 |
 |-----------|-------------|
-| Show Tooltips | 切换工具提示的显示 |
-| Use Miller-Bravais (hkil) index | 在整个应用程序中对三方/六方晶系使用 4 指数标记 |
-| Reset registry settings on exit (effective after restart) | 在下次重启时重置设置 |
-| Disable Crystallography.Native library (requires restart) | 如果本机 (C++) 库加载失败，则回退到托管代码 |
-| Disable all OpenGL rendering (requires restart) | 用于较旧的 GPU / 远程桌面 |
-| Disable OpenGL text rendering (requires restart) | 针对某些 GPU 上文本渲染问题的变通方法 |
-| Use MKL Library | 对数值例程使用 Intel MKL |
-| Dark mode | 在浅色和深色配色主题之间切换 |
-| Powder diffraction function (under development) | 启用多晶（粉末）衍射窗口 |
-| Capture GUI Components… | 用于保存 GUI 截图的开发者工具 |
+| 显示工具提示 | 切换工具提示的显示 |
+| 深色模式 | 在浅色和深色配色主题之间切换 |
+| 使用米勒-布拉维 (hkil) 指数 | 在整个应用程序中对三方/六方晶系使用 4 指数标记 |
+| 使用离子散射因子 | 在计算所用的原子散射因子中计入离子电荷项 |
+| 下载 MKL 库 | 下载 Intel MKL 本机库（约 55 MB）；安装后将自动用于大规模计算 |
+| Accept external macro commands (named pipe) | 在命名管道 `ReciPro.Macro.v1` 上侦听并执行外部程序发送的宏 — 参见[外部控制](20-macro/3-external-control.md) |
+| 退出时重置注册表设置（重启后生效） | 在下次重启时重置设置 |
+| 禁用 Crystallography.Native 库（需要重启） | 如果本机 (C++) 库加载失败，则回退到托管代码 |
+| 禁用全部 OpenGL 渲染（需要重启） | 用于较旧的 GPU / 远程桌面 |
+| 禁用 OpenGL 文本渲染（需要重启） | 针对某些 GPU 上文本渲染问题的变通方法 |
+| 捕获 GUI 组件... | 用于保存 GUI 截图的开发者工具 |
+| 粉末衍射功能（开发中） | 启用多晶（粉末）衍射窗口 |
 
 ### Help
 
@@ -280,7 +282,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | Spot ID v1 | SAED 花样标定（原称 "TEM ID"） | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 衍射斑检测与标定 | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD 花样模拟 | [12. EBSD 模拟](12-ebsd-simulation.md) |
-| Powder Diffraction | 多晶（粉末）衍射——通过 **Option ▸ Powder diffraction function** 启用 | - |
+| Powder Diffraction | 多晶（粉末）衍射——通过 **选项 ▸ 粉末衍射功能（开发中）** 启用 | - |
 
 ---
 

@@ -34,6 +34,8 @@ Le raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> de la fenêtre princi
 
 Ouvrir / enregistrer une image de diffraction. Le même chargement par glisser-déposer que [Spot ID v1](10-spot-id.md) est pris en charge, et les métadonnées Gatan DM3/DM4 (longueur de caméra, longueur d'onde, taille de pixel) sont prises en compte automatiquement.
 
+**Enregistrer ▸ Candidate list (CSV)...** exporte les orientations candidates trouvées par l'indexation, et **Copier ▸ Candidate list (TSV)** place le même tableau dans le presse-papiers : une ligne par candidat × grain, avec le rang, l'indice de grain, le nom du cristal, les angles d'Euler ZXZ (°), les neuf éléments de la matrice de rotation, le résidu quadratique moyen (nm⁻²), le nombre de taches attribuées et les attributions tache → (hkl). Le CSV utilise toujours le point comme séparateur décimal ; le TSV se colle directement dans un tableur.
+
 ---
 
 ## Optique

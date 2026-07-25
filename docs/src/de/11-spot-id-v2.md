@@ -34,6 +34,8 @@ Mit <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> im Hauptfenster wird dieses Fe
 
 Ein Beugungsbild öffnen/speichern. Das gleiche Laden per Drag & Drop wie bei [Spot ID v1](10-spot-id.md) wird unterstützt, und Gatan-DM3/DM4-Metadaten (Kameralänge, Wellenlänge, Pixelgröße) werden automatisch berücksichtigt.
 
+**Speichern ▸ Candidate list (CSV)...** exportiert die durch die Indizierung gefundenen Orientierungskandidaten, **Kopieren ▸ Candidate list (TSV)** legt dieselbe Tabelle in die Zwischenablage: eine Zeile je Kandidat × Korn mit Rang, Kornindex, Kristallname, ZXZ-Eulerwinkeln (°), den neun Elementen der Rotationsmatrix, dem mittleren quadratischen Residuum (nm⁻²), der Zahl der zugeordneten Reflexe und den Zuordnungen Reflex → (hkl). Die CSV-Datei verwendet stets den Punkt als Dezimaltrennzeichen; die TSV-Fassung lässt sich direkt in eine Tabellenkalkulation einfügen.
+
 ---
 
 ## Optik

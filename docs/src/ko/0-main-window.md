@@ -72,16 +72,18 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 
 | 메뉴 항목 | 설명 |
 |-----------|-------------|
-| Show Tooltips | 툴팁 표시 전환 |
-| Use Miller-Bravais (hkil) index | 응용 프로그램 전체에서 삼방/육방 결정계에 4-지수 표기법 사용 |
-| Reset registry settings on exit (effective after restart) | 다음 재시작 시 설정 초기화 |
-| Disable Crystallography.Native library (requires restart) | 네이티브(C++) 라이브러리를 불러오지 못할 경우 관리 코드로 대체 |
-| Disable all OpenGL rendering (requires restart) | 구형 GPU / 원격 데스크톱용 |
-| Disable OpenGL text rendering (requires restart) | 일부 GPU의 텍스트 렌더링 문제에 대한 임시 해결책 |
-| Use MKL Library | 수치 루틴에 Intel MKL 사용 |
-| Dark mode | 밝은 색상 테마와 어두운 색상 테마 간 전환 |
-| Powder diffraction function (under development) | 다결정(분말) 회절 창 활성화 |
-| Capture GUI Components… | GUI 스크린샷 저장용 개발자 도구 |
+| 툴팁 표시 | 툴팁 표시 전환 |
+| 다크 모드 | 밝은 색상 테마와 어두운 색상 테마 간 전환 |
+| 밀러-브라베 (hkil) 지수 사용 | 응용 프로그램 전체에서 삼방/육방 결정계에 4-지수 표기법 사용 |
+| 이온 산란 인자 사용 | 계산에 사용하는 원자 산란 인자에 이온 전하 항을 포함 |
+| MKL 라이브러리 다운로드 | Intel MKL 네이티브 라이브러리(약 55 MB)를 다운로드. 설치 후에는 큰 계산에 자동으로 사용됨 |
+| Accept external macro commands (named pipe) | 명명된 파이프 `ReciPro.Macro.v1` 에서 대기하며 외부 프로그램이 보낸 매크로를 실행 — [외부 제어](20-macro/3-external-control.md) 참조 |
+| 종료 시 레지스트리 설정 초기화 (재시작 후 적용) | 다음 재시작 시 설정 초기화 |
+| Crystallography.Native 라이브러리 사용 안 함 (재시작 필요) | 네이티브(C++) 라이브러리를 불러오지 못할 경우 관리 코드로 대체 |
+| 모든 OpenGL 렌더링 사용 안 함 (재시작 필요) | 구형 GPU / 원격 데스크톱용 |
+| OpenGL 텍스트 렌더링 사용 안 함 (재시작 필요) | 일부 GPU의 텍스트 렌더링 문제에 대한 임시 해결책 |
+| GUI 구성 요소 캡처... | GUI 스크린샷 저장용 개발자 도구 |
+| 분말 회절 기능 (개발 중) | 다결정(분말) 회절 창 활성화 |
 
 ### Help
 
@@ -280,7 +282,7 @@ UI 언어를 영어와 일본어 사이에서 전환합니다. 변경 사항은 
 | Spot ID v1 | SAED 패턴 지수화 (이전 명칭 "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | 스폿 검출 & 지수화 | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD 패턴 시뮬레이션 | [12. EBSD 시뮬레이션](12-ebsd-simulation.md) |
-| Powder Diffraction | 다결정(분말) 회절 — **Option ▸ Powder diffraction function**으로 활성화 | - |
+| Powder Diffraction | 다결정(분말) 회절 — **옵션 ▸ 분말 회절 기능 (개발 중)**으로 활성화 | - |
 
 ---
 

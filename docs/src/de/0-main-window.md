@@ -72,16 +72,18 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| Show Tooltips | Anzeige der Tooltips umschalten |
-| Use Miller-Bravais (hkil) index | In der gesamten Anwendung die 4-Index-Notation für trigonale/hexagonale Systeme verwenden |
-| Reset registry settings on exit (effective after restart) | Einstellungen beim nächsten Neustart zurücksetzen |
-| Disable Crystallography.Native library (requires restart) | Auf verwalteten Code zurückfallen, falls die native (C++) Bibliothek nicht geladen werden kann |
-| Disable all OpenGL rendering (requires restart) | Für ältere GPUs / Remotedesktop |
-| Disable OpenGL text rendering (requires restart) | Behelfslösung für Textdarstellungsprobleme auf manchen GPUs |
-| Use MKL Library | Intel MKL für numerische Routinen verwenden |
-| Dark mode | Zwischen hellem und dunklem Farbdesign umschalten |
-| Powder diffraction function (under development) | Das Fenster für polykristalline (Pulver-) Beugung aktivieren |
-| Capture GUI Components… | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
+| Tooltips anzeigen | Anzeige der Tooltips umschalten |
+| Dunkler Modus | Zwischen hellem und dunklem Farbdesign umschalten |
+| Miller-Bravais-Index (hkil) verwenden | In der gesamten Anwendung die 4-Index-Notation für trigonale/hexagonale Systeme verwenden |
+| Ionische Streufaktoren verwenden | Den Ionenladungsterm in die für die Berechnungen verwendeten atomaren Streufaktoren einbeziehen |
+| MKL-Bibliothek herunterladen | Die native Intel-MKL-Bibliothek (~55 MB) herunterladen; nach der Installation wird sie automatisch für große Berechnungen verwendet |
+| Accept external macro commands (named pipe) | Auf der Named Pipe `ReciPro.Macro.v1` lauschen und von externen Programmen gesendete Makros ausführen — siehe [Externe Steuerung](20-macro/3-external-control.md) |
+| Registrierungseinstellungen beim Beenden zurücksetzen (wirksam nach Neustart) | Einstellungen beim nächsten Neustart zurücksetzen |
+| Crystallography.Native-Bibliothek deaktivieren (Neustart erforderlich) | Auf verwalteten Code zurückfallen, falls die native (C++) Bibliothek nicht geladen werden kann |
+| Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich) | Für ältere GPUs / Remotedesktop |
+| OpenGL-Textrendering deaktivieren (Neustart erforderlich) | Behelfslösung für Textdarstellungsprobleme auf manchen GPUs |
+| GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
+| Pulverbeugungsfunktion (in Entwicklung) | Das Fenster für polykristalline (Pulver-) Beugung aktivieren |
 
 ### Help
 
@@ -280,7 +282,7 @@ Die senkrechte Schaltflächenleiste rechts startet die Analyse- und Simulationsf
 | Spot ID v1 | SAED-Musterindizierung (früher „TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Reflexerkennung & Indizierung | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD-Mustersimulation | [12. EBSD-Simulation](12-ebsd-simulation.md) |
-| Powder Diffraction | Polykristalline (Pulver-) Beugung — über **Option ▸ Powder diffraction function** aktivieren | - |
+| Powder Diffraction | Polykristalline (Pulver-) Beugung — über **Optionen ▸ Pulverbeugungsfunktion (in Entwicklung)** aktivieren | - |
 
 ---
 

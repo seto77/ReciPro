@@ -258,7 +258,7 @@ Lo schema (in alto a sinistra) mostra i vettori sulla sfera di Ewald e definisce
 - **Unit of potential** : Commuta il potenziale visualizzato tra **Vg [eV]** (potenziale elettrostatico, eV) e **Ug [nm⁻²]** (la grandezza scalata $U_g = (2 m_0/h^2)\, V_g$ che entra nelle equazioni delle onde di Bloch). Le intestazioni delle colonne cambiano di conseguenza tra *Vg / V'g* e *Ug / U'g*.
 - Sopra la tabella sono mostrati la tensione di accelerazione, la lunghezza d'onda ($\lambda = 1/k_\text{vac}$), il rapporto di massa relativistico $m/m_0$, il rapporto di velocità $v/c$, il volume del reticolo, lo spessore del campione e (in modalità CBED) il semiangolo massimo del fascio elettronico.
 - **Note 1:** l'unità di lunghezza è **nm**, non Å. **Note 2:** l'unità di numero d'onda è **1/nm**, non 2π/nm.
-- **Effective digit** : numero di cifre significative mostrate nella tabella. **Auto resize row width** : adatta automaticamente le larghezze delle colonne. **Copy to clipboard** : esporta la tabella come testo che può essere incollato in un foglio di calcolo. (Questo modulo è mostrato in inglese anche con un'interfaccia giapponese.)
+- **Effective digit** : numero di cifre significative mostrate nella tabella. **Auto resize row width** : adatta automaticamente le larghezze delle colonne. **Copy to clipboard** : esporta la tabella come testo che può essere incollato in un foglio di calcolo. **Save as CSV** : scrive la stessa tabella (le colonne visibili) in un file CSV; il separatore decimale è sempre il punto, così il file resta valido anche nelle localizzazioni con la virgola decimale. (Questo modulo è mostrato in inglese anche con un'interfaccia giapponese.)
 
 ---
 

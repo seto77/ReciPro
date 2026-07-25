@@ -258,7 +258,7 @@ Le schéma (en haut à gauche) montre les vecteurs sur la sphère d'Ewald et dé
 - **Unit of potential** : Bascule le potentiel affiché entre **Vg [eV]** (potentiel électrostatique, eV) et **Ug [nm⁻²]** (la grandeur mise à l'échelle $U_g = (2 m_0/h^2)\, V_g$ qui entre dans les équations des ondes de Bloch). Les en-têtes de colonnes changent en conséquence entre *Vg / V'g* et *Ug / U'g*.
 - Au-dessus du tableau sont affichés la tension d'accélération, la longueur d'onde ($\lambda = 1/k_\text{vac}$), le rapport de masse relativiste $m/m_0$, le rapport de vitesse $v/c$, le volume de la maille, l'épaisseur de l'échantillon et (en mode CBED) le demi-angle maximal du faisceau d'électrons.
 - **Note 1 :** l'unité de longueur est le **nm**, pas l'Å. **Note 2 :** l'unité de nombre d'onde est le **1/nm**, pas le 2π/nm.
-- **Effective digit** : nombre de chiffres significatifs affichés dans le tableau. **Auto resize row width** : ajustement automatique des largeurs de colonnes. **Copy to clipboard** : exporte le tableau sous forme de texte pouvant être collé dans un tableur. (Ce formulaire est affiché en anglais même sous une interface en japonais.)
+- **Effective digit** : nombre de chiffres significatifs affichés dans le tableau. **Auto resize row width** : ajustement automatique des largeurs de colonnes. **Copy to clipboard** : exporte le tableau sous forme de texte pouvant être collé dans un tableur. **Save as CSV** : écrit la même table (les colonnes visibles) dans un fichier CSV ; le séparateur décimal est toujours le point, de sorte que le fichier reste valide dans les paramètres régionaux à virgule décimale. (Ce formulaire est affiché en anglais même sous une interface en japonais.)
 
 ---
 

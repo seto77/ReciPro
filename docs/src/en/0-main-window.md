@@ -73,15 +73,17 @@ If you are new to ReciPro, refer to the following steps:
 | Menu item | Description |
 |-----------|-------------|
 | Show Tooltips | Toggle tooltip display |
+| Dark mode | Switch between light and dark colour themes |
 | Use Miller-Bravais (hkil) index | Use 4-index notation for trigonal/hexagonal systems throughout the app |
+| Use ionic scattering factors | Include the ionic charge term in the atomic scattering factors used by the calculations |
+| Download MKL Library | Download the Intel MKL native library (~55 MB); once installed it is used automatically for large computations |
+| Accept external macro commands (named pipe) | Listen on the named pipe `ReciPro.Macro.v1` and run macros sent by external programs — see [External control](20-macro/3-external-control.md) |
 | Reset registry settings on exit (effective after restart) | Reset settings on next restart |
 | Disable Crystallography.Native library (requires restart) | Fall back to managed code if the native (C++) library fails to load |
 | Disable all OpenGL rendering (requires restart) | For older GPUs / remote desktop |
 | Disable OpenGL text rendering (requires restart) | Workaround for text-rendering issues on some GPUs |
-| Use MKL Library | Use Intel MKL for numerical routines |
-| Dark mode | Switch between light and dark colour themes |
-| Powder diffraction function (under development) | Enable the polycrystalline (powder) diffraction window |
-| Capture GUI Components… | Developer tool for saving GUI screenshots |
+| (experimental) Capture GUI Components | Developer tool for saving GUI screenshots |
+| (experimental) Powder diffraction function | Enable the polycrystalline (powder) diffraction window |
 
 ### Help
 
@@ -280,7 +282,7 @@ The vertical button strip on the right launches the analysis and simulation wind
 | Spot ID v1 | SAED pattern indexing (formerly "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](12-ebsd-simulation.md) |
-| Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Option ▸ Powder diffraction function** | - |
+| Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Options ▸ (experimental) Powder diffraction function** | - |
 
 ---
 
