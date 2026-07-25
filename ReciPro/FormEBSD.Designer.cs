@@ -9,6 +9,14 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            //260725Cl 追加: フォームが所有する PseudoBitmap を解放する (アプリ終了時のみ到達。FormClosing は Hide のため)。
+            //patternBitmap / expImage は各 PseudoBitmap 内部キャッシュ (destBmp) への借用参照なので、ここでは Dispose せず参照だけ切る。
+            if (disposing)
+            {
+                indexingCts?.Cancel(); //260725Cl: 探索・較正の実行中に実 Dispose された場合、解放後の状態を触らせない (Codex 指摘)
+                Pbmp?.Dispose(); Pbmp = null; patternBitmap = null;
+                expPbmp?.Dispose(); expPbmp = null; expImage = null;
+            }
             if (disposing && (components != null))
             {
                 components.Dispose();
