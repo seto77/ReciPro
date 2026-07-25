@@ -46,15 +46,31 @@ public partial class FormEBSD
     /// 両者で同じ値を使う — 目的関数だけでなくステップも揃えないと、Find と Calibrate を繰り返したときに方位が微妙に往復する</summary>
     private const double OrientationPolishStepDeg = 0.1;
 
-    /// <summary>較正の多点開始オフセット。単位は PC が検出器幅・高さの 1%、DD が lnDD 0.02 (≈2%)。260726Cl 追加 (作者要望: 10 点)。
-    /// 乱数を使わず決定的にする (同じ入力なら同じ結果)。[0] は現在の幾何そのもの、以降は軸方向 6 点と対角 3 点。
-    /// 局所解が多く (初期 DetX/Y/Z で最終スコアが 0.3 程度ばらつく)、同時最適化でも壁は越えられないので、開始点を変えて拾う</summary>
-    private static readonly (double U, double V, double D)[] CalibrationStartOffsets =
-    [
-        (0, 0, 0),
-        (+1, 0, 0), (-1, 0, 0), (0, +1, 0), (0, -1, 0), (0, 0, +1), (0, 0, -1),
-        (+0.7, +0.7, +0.7), (-0.7, -0.7, +0.7), (+0.7, -0.7, -0.7),
-    ];
+    /// <summary>較正の多点開始の点数。260726Cl: 10 → 200 (作者指示: 10 点では速すぎて経過が見えない)。
+    /// 1 点あたり 0.2 秒程度なので全体で 40 秒強かかる</summary>
+    private const int CalibrationStartCount = 200;
+
+    /// <summary>較正の多点開始オフセット。単位は PC が検出器幅・高さの 1%、DD が lnDD 0.02 (≈2%)。260726Cl 追加 (作者要望)。
+    /// 乱数を使わず決定的にする (同じ入力なら同じ結果)。[0] は現在の幾何そのもの、以降は Halton 列で [-1,1]³ を準一様に埋める。
+    /// 局所解が多く (初期 DetX/Y/Z で最終スコアが 0.3 程度ばらつく)、同時最適化でも壁は越えられないので、開始点を変えて拾う。
+    /// 260726Cl 変更: 旧は軸方向 6 点+対角 3 点の手書き 10 点。点数を増やすには系統的な列が要る</summary>
+    private static readonly (double U, double V, double D)[] CalibrationStartOffsets = BuildCalibrationStartOffsets(CalibrationStartCount);
+
+    private static (double U, double V, double D)[] BuildCalibrationStartOffsets(int count)
+    {
+        //Halton 列 (基数 2,3,5) を [0,1) → [-1,1] へ。低食い違い列なので、点数を増やすほど隙間なく埋まる
+        static double Halton(int index, int b)
+        {
+            double f = 1, r = 0;
+            for (int i = index; i > 0; i /= b) { f /= b; r += f * (i % b); }
+            return r;
+        }
+        var offsets = new (double U, double V, double D)[count];
+        offsets[0] = (0, 0, 0); //現在の幾何そのもの
+        for (int i = 1; i < count; i++)
+            offsets[i] = (2 * Halton(i, 2) - 1, 2 * Halton(i, 3) - 1, 2 * Halton(i, 5) - 1);
+        return offsets;
+    }
 
     /// <summary>較正の最後に行う 6 変数 (PC_u, PC_v, lnDD, 方位 3) 同時最適化の評価上限。260726Cl 追加。
     /// 6 次元なので交互法の 3 変数段 (120-150) より多く要る。1 評価ごとに projector を作り直す重い段だが、
@@ -578,19 +594,23 @@ public partial class FormEBSD
                 (double Zncc, double Fu, double Fv, double LnDd, Matrix3D Rot, int Rounds, bool Converged, double JointGain) bestRun = default;
                 int bestIndex = -1;
                 double worstZncc = double.MaxValue;
+                var allZncc = new double[CalibrationStartOffsets.Length]; //260726Cl: 最良解へ到達した開始点の数を数えるため
                 for (int s = 0; s < CalibrationStartOffsets.Length; s++)
                 {
                     cancel.ThrowIfCancellationRequested();
                     ReportIndexingProgress(Math.Min(0.99, (double)evalsDone / evalBudget), sw, $"start {s + 1}/{CalibrationStartOffsets.Length}"); //260726Cl
                     var (ou, ov, od) = CalibrationStartOffsets[s];
                     var run = RunFrom(footU0 + ou * physW * 0.01, footV0 + ov * physH * 0.01, Math.Log(dd0) + od * 0.02);
+                    allZncc[s] = run.Zncc;
                     worstZncc = Math.Min(worstZncc, run.Zncc);
                     if (bestIndex < 0 || run.Zncc > bestRun.Zncc) { bestRun = run; bestIndex = s; }
                 }
+                //最良から 1E-3 以内に入った開始点の数 = 最良解の basin の広さ。spread (最良−最悪) だけだと外れ値に引きずられる
+                int nearBest = allZncc.Count(z => z >= bestRun.Zncc - 1E-3);
 
                 return (Rot: bestRun.Rot, Fu: bestRun.Fu, Fv: bestRun.Fv, Dd: Math.Exp(bestRun.LnDd), Zncc: bestRun.Zncc, ZnccStart: startZncc,
                     Evals: evalTotal, Rounds: bestRun.Rounds, Converged: bestRun.Converged, JointGain: bestRun.JointGain,
-                    Starts: CalibrationStartOffsets.Length, BestIndex: bestIndex, Spread: bestRun.Zncc - worstZncc); //260726Cl: 局所解のばらつきを可視化
+                    Starts: CalibrationStartOffsets.Length, BestIndex: bestIndex, Spread: bestRun.Zncc - worstZncc, NearBest: nearBest); //260726Cl: 局所解のばらつきを可視化
             }, cancel); //260725Ch
             sw.Stop();
 
@@ -621,7 +641,7 @@ public partial class FormEBSD
             toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
             //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
             toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
-                $"best of {result.Starts} starts (#{result.BestIndex}, spread {result.Spread:f4}), " + //260726Cl: 多点開始。spread が大きいほど局所解が深い
+                $"best of {result.Starts} starts (#{result.BestIndex}, {result.NearBest} within 1E-3, spread {result.Spread:f4}), " + //260726Cl: 多点開始。spread が大きく within が少ないほど局所解が深い
                 $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), " +
                 $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."; //260726Cl: 同時最適化の伸びを表示
         }
