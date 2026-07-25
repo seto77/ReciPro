@@ -50,6 +50,12 @@ public partial class FormEBSD
     /// 1 点あたり 0.2 秒程度なので全体で 40 秒強かかる</summary>
     private const int CalibrationStartCount = 200;
 
+    /// <summary>多点開始の振れ幅。PC は検出器幅・高さに対する割合、DD は lnDD の絶対値 (0.08 ≈ 8%)。260726Cl 追加。
+    /// 当初の PC ±1%・lnDD ±0.02 では実機で 200 点すべてが同じ谷に落ち (best #0、200 within 1E-3、spread 0.0007)、
+    /// 多点開始が機能していなかった。作者が観測した別の谷はもっと離れているので広げる。
+    /// 較正のソフト境界 (初期値から W/H の 25%、lnDD 0.35) の内側に収めること</summary>
+    private const double CalibrationStartSpreadPc = 0.08, CalibrationStartSpreadLnDd = 0.08;
+
     /// <summary>較正の多点開始オフセット。単位は PC が検出器幅・高さの 1%、DD が lnDD 0.02 (≈2%)。260726Cl 追加 (作者要望)。
     /// 乱数を使わず決定的にする (同じ入力なら同じ結果)。[0] は現在の幾何そのもの、以降は Halton 列で [-1,1]³ を準一様に埋める。
     /// 局所解が多く (初期 DetX/Y/Z で最終スコアが 0.3 程度ばらつく)、同時最適化でも壁は越えられないので、開始点を変えて拾う。
@@ -600,7 +606,9 @@ public partial class FormEBSD
                     cancel.ThrowIfCancellationRequested();
                     ReportIndexingProgress(Math.Min(0.99, (double)evalsDone / evalBudget), sw, $"start {s + 1}/{CalibrationStartOffsets.Length}"); //260726Cl
                     var (ou, ov, od) = CalibrationStartOffsets[s];
-                    var run = RunFrom(footU0 + ou * physW * 0.01, footV0 + ov * physH * 0.01, Math.Log(dd0) + od * 0.02);
+                    //260726Cl 変更: 振れ幅を定数化 (旧 physW*0.01 / physH*0.01 / 0.02 は狭すぎて全点が同じ谷に落ちていた)
+                    var run = RunFrom(footU0 + ou * physW * CalibrationStartSpreadPc, footV0 + ov * physH * CalibrationStartSpreadPc,
+                        Math.Log(dd0) + od * CalibrationStartSpreadLnDd);
                     allZncc[s] = run.Zncc;
                     worstZncc = Math.Min(worstZncc, run.Zncc);
                     if (bestIndex < 0 || run.Zncc > bestRun.Zncc) { bestRun = run; bestIndex = s; }
@@ -638,12 +646,15 @@ public partial class FormEBSD
             FormMain.SetRotation(result.Rot); //Draw は SetRotation → FormMain 経由で走る
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
 
-            toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}";
-            //260725Cl: 交互最適化のラウンド数と収束可否を表示 (上限に張り付くなら 2 ラウンド時代と同じく未収束の疑い)
-            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}) mm, DD {dd0:f2}→{result.Dd:f2} mm, " +
-                $"best of {result.Starts} starts (#{result.BestIndex}, {result.NearBest} within 1E-3, spread {result.Spread:f4}), " + //260726Cl: 多点開始。spread が大きく within が少ないほど局所解が深い
-                $"{result.Rounds}/{MaxCalibrationRounds} rounds ({(result.Converged ? "converged" : "round limit reached")}), " +
-                $"joint 6-var {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {result.Evals} evals, {sw.Elapsed.TotalMilliseconds:f0} ms. Tilt is kept fixed (single-pattern gauge)."; //260726Cl: 同時最適化の伸びを表示
+            //260726Cl 変更 (作者報告「最後に消える」の真因): StatusStrip はフォーム幅 (1424px) に収まらない項目を描画しないので、
+            //長い文字列を入れると書いた瞬間に見えなくなる。旧 Detail は 220 文字あった。表示は 2 ラベル合計 160 文字程度に収める。
+            //旧 Detail: "PC (...)→(...) mm, DD ...→... mm, best of N starts (#k, m within 1E-3, spread ...), r/R rounds (...), joint 6-var ..., E evals, T ms. Tilt is kept fixed (single-pattern gauge)."
+            toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}" +
+                $" (best #{result.BestIndex}/{result.Starts}, {result.NearBest} within 1E-3)"; //260726Cl: 多点開始。within が少ないほど局所解が深い
+            //260725Cl: 交互最適化のラウンド数と収束可否 (上限に張り付くなら未収束の疑い)。260726Cl: evals と傾斜の注記は冗長なので削除
+            toolStripStatusLabelDetail.Text = $"PC ({footU0:f2},{footV0:f2})→({result.Fu:f2},{result.Fv:f2}), DD {dd0:f2}→{result.Dd:f2} mm, " +
+                $"{result.Rounds}/{MaxCalibrationRounds} rounds{(result.Converged ? "" : " (limit)")}, " +
+                $"joint {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, spread {result.Spread:f3}, {sw.Elapsed.TotalSeconds:f1} s";
         }
         catch (OperationCanceledException) //260725Ch
         {
