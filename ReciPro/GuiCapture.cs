@@ -940,7 +940,28 @@ internal static partial class GuiCapture
             control.BringToFront();
             control.PerformLayout();
             Settle(form, TabSwitchSettleMs, trace);
-            return CaptureScreen(new Rectangle(GetScreenLocation(control), control.Size), form, trace, control.Name);
+
+            var rect = new Rectangle(GetScreenLocation(control), control.Size);
+            // 260726Cl 追加: モード依存の groupBox (例 POTENTIAL モードでのみ表示される groupBoxPotentialOption) は、
+            // 可視化してもフォームの表示領域からはみ出す位置に置かれることがある。そのまま CopyFromScreen すると
+            // はみ出した部分に背後のウィンドウ (FormMain 等) が写り込む。画面上に収まらないときだけ、コントロール
+            // 自身に描かせる (DrawToBitmap) 方式へ切り替える。収まるときは従来どおり CopyFromScreen のままにして、
+            // 既存クロップ (GL コントロール等 DrawToBitmap が苦手なもの) の見た目を変えない。
+            if (!GetWindowVisualBounds(form).Contains(rect))
+            {
+                try
+                {
+                    var rendered = new Bitmap(control.Width, control.Height);
+                    control.DrawToBitmap(rendered, new Rectangle(Point.Empty, control.Size));
+                    trace($"{control.Name}\tINFO\toff-screen control rendered with DrawToBitmap");
+                    return rendered;
+                }
+                catch (Exception ex)
+                {
+                    trace($"{control.Name}\tWARN\tDrawToBitmap: {ex.GetType().Name}: {ex.Message}"); // 失敗したら従来方式へ
+                }
+            }
+            return CaptureScreen(rect, form, trace, control.Name);
         }
         finally
         {
