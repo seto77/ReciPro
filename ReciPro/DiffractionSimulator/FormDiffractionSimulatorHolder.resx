@@ -1034,7 +1034,7 @@ Direction</value>
     <value>9, 24</value>
   </data>
   <data name="flowLayoutPanelStereonetColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 86</value>
+    <value>162, 114</value>
   </data>
   <data name="flowLayoutPanelStereonetColor.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>

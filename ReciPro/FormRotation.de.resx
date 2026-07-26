@@ -79,20 +79,21 @@
     <value>2. Achse</value>
   </data>
   <data name="checkBoxFix1st.Text" xml:space="preserve">
-    <value>Fixieren</value>
+    <value>Fest</value>
   </data>
   <data name="checkBoxFix2nd.Text" xml:space="preserve">
-    <value>Fixieren</value>
+    <value>Fest</value>
   </data>
   <data name="checkBoxFix3rd.Text" xml:space="preserve">
-    <value>Fixieren</value>
+    <value>Fest</value>
   </data>
   <data name="checkBoxEnable3rd.Text" xml:space="preserve">
     <value>3. Achse</value>
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
     <value>Winkel
-zurücksetzen</value>
+zurück-
+setzen</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro-Koordinatensystem (ZXZ)</value>

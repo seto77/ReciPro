@@ -78,13 +78,13 @@
     <value>Centro</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Mostrar planos delimitadores</value>
+    <value>Mostrar planos</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>Opacidade</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Cortar objetos pelos planos delimitadores</value>
+    <value>Cortar objetos</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Limites definidos pela célula unitária</value>

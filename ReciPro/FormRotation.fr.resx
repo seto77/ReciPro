@@ -91,8 +91,8 @@
     <value>3e axe</value>
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
-    <value>Réinitialiser
-les angles</value>
+    <value>Réinit.
+angles</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>Système de coordonnées ReciPro (ZXZ)</value>

@@ -103,19 +103,19 @@
     <value>Размер текста</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>с шагом</value>
+    <value>шаг</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Число дифрагированных волн</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Использовать нелокальную модель поглощения</value>
+    <value>Нелокальное поглощение</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Учитывать фон ТДР</value>
+    <value>Фон ТДР</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Толщина от</value>
+    <value>Толщина</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>до</value>
@@ -154,10 +154,10 @@
     <value>до</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Энергия от</value>
+    <value>Энергия</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>с шагом</value>
+    <value>шаг</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Глубина (nm)</value>

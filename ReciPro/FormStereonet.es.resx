@@ -105,7 +105,7 @@
     <value>Objeto de proyección</value>
   </data>
   <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
-    <value>Tipo de proyección</value>
+    <value>Tipo proyección</value>
   </data>
   <data name="groupBoxSphere.Text" xml:space="preserve">
     <value>Esfera</value>
@@ -179,7 +179,7 @@ proyección</value>
     <value>Etiquetas de índices</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Definir color</value>
+    <value>Color</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Tamaño</value>
@@ -197,7 +197,7 @@ proyección</value>
     <value>Tamaño de punto</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Separador</value>
+    <value>Separ.</value>
   </data>
   <data name="radioButtonDelimiterComma.Text" xml:space="preserve">
     <value>Coma</value>
@@ -206,7 +206,7 @@ proyección</value>
     <value>Espacio</value>
   </data>
   <data name="radioButtonDelimiterNone.Text" xml:space="preserve">
-    <value>Ninguno</value>
+    <value>Nada</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Líneas de 1°</value>
@@ -255,7 +255,7 @@ por dos planos</value>
     <value>Modo de líneas de Kikuchi</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.Text" xml:space="preserve">
-    <value>Pares de líneas de Kikuchi</value>
+    <value>Pares de Kikuchi</value>
   </data>
   <data name="radioButtonHighStructureFactor.Text" xml:space="preserve">
     <value>Factor de estructura</value>
@@ -264,8 +264,8 @@ por dos planos</value>
     <value>Máx.</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
-    <value>Aplicar factores de estructura
-a la intensidad</value>
+    <value>Factores de estructura
+en la intensidad</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>Dispersión anómala</value>

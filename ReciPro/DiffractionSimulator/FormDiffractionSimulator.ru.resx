@@ -78,7 +78,7 @@
     <value>Ошиб. возб.</value>
   </data>
   <data name="groupBoxStringSize.Text" xml:space="preserve">
-    <value>Размер текста</value>
+    <value>Разм. текста</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Осн. перпендикуляра
@@ -350,7 +350,7 @@
     <value>Динамическая теория</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>Использовать назначенный цвет для каждого кристалла</value>
+    <value>Цвет по кристаллу</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>Аномальная дисперсия (f', f'')</value>
@@ -415,10 +415,10 @@
     <value>Расчёт интенсивности</value>
   </data>
   <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
-    <value>Только ошибка возбуждения</value>
+    <value>Только ошибка возб.</value>
   </data>
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
-    <value>Кинематическая &amp;&amp; ошибка возбуждения</value>
+    <value>Кинемат. &amp;&amp; ошибка возб.</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
     <value>Детали рефлексов</value>

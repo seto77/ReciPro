@@ -153,7 +153,7 @@
     <value>Вид вдоль</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
-    <value>Текущая ориентация</value>
+    <value>Ориентация</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>Дублировать</value>

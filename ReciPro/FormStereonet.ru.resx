@@ -179,7 +179,7 @@
     <value>Подписи индексов</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Задать цвет</value>
+    <value>Цвет</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Размер</value>
@@ -197,7 +197,7 @@
     <value>Размер точки</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Разделитель</value>
+    <value>Раздел.</value>
   </data>
   <data name="radioButtonDelimiterComma.Text" xml:space="preserve">
     <value>Запятая</value>
@@ -267,7 +267,7 @@
     <value>Макс.</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
-    <value>Применять структурные факторы
+    <value>Структурные факторы
 к интенсивности</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">

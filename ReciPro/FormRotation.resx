@@ -1217,7 +1217,7 @@ rotation, numericBoxExp1, is applied about it).</value>
     <value>NoControl</value>
   </data>
   <data name="buttonResetExpEuler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>342, 66</value>
+    <value>336, 66</value>
   </data>
   <data name="buttonResetExpEuler.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 40</value>
@@ -2070,5 +2070,11 @@ tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonResetExpEuler.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>56, 0</value>
   </data>
 </root>

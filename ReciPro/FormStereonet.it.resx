@@ -176,10 +176,10 @@ proiezione</value>
     <value>Disegna etichette indici</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Imposta colore</value>
+    <value>Colore</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Dimensione</value>
+    <value>Dim.</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Dimensione</value>
@@ -194,7 +194,7 @@ proiezione</value>
     <value>Dimensione punto</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Separatore</value>
+    <value>Separat.</value>
   </data>
   <data name="radioButtonDelimiterComma.Text" xml:space="preserve">
     <value>Virgola</value>
@@ -255,7 +255,7 @@ da due piani</value>
     <value>Modalità linee di Kikuchi</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.Text" xml:space="preserve">
-    <value>Coppie di linee di Kikuchi</value>
+    <value>Coppie di Kikuchi</value>
   </data>
   <data name="radioButtonHighStructureFactor.Text" xml:space="preserve">
     <value>Fattore di struttura</value>
@@ -264,8 +264,8 @@ da due piani</value>
     <value>Max</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
-    <value>Applica fattori di struttura
-all'intensità</value>
+    <value>Fattori di struttura
+sull’intensità</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>Dispersione anomala</value>

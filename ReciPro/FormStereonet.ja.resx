@@ -120,7 +120,7 @@
     <value>指数ラベル</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>区切り文字</value>
+    <value>区切り</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value>ミラー指数の間に置く区切り文字を選択します。</value>
@@ -157,7 +157,7 @@
 ます。最小値ではラベルを非表示にします。</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>指定色</value>
+    <value>色指定</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
     <value>指数ラベルをスポット色ではなく固定色で描画します。</value>

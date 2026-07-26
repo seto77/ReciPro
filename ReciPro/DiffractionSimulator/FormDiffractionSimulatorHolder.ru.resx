@@ -94,7 +94,7 @@
     <value>Цвет и размер</value>
   </data>
   <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
-    <value>Область построения</value>
+    <value>Область</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
     <value>Направления наклона</value>

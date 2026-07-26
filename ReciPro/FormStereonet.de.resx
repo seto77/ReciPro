@@ -179,7 +179,7 @@ linien</value>
     <value>Indexbeschriftung</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
-    <value>Farbe wählen</value>
+    <value>Farbe</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Größe</value>
@@ -197,16 +197,16 @@ linien</value>
     <value>Punktgröße</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Trennzeichen</value>
+    <value>Trenner</value>
   </data>
   <data name="radioButtonDelimiterComma.Text" xml:space="preserve">
     <value>Komma</value>
   </data>
   <data name="radioButtonDelimiterSpace.Text" xml:space="preserve">
-    <value>Leerzeichen</value>
+    <value>Leer</value>
   </data>
   <data name="radioButtonDelimiterNone.Text" xml:space="preserve">
-    <value>Keine</value>
+    <value>Kein</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>1°-Linien</value>

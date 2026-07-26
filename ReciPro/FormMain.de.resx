@@ -147,13 +147,13 @@
     <value>Als CIF exportieren</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
-    <value>Rotation zurücksetzen</value>
+    <value>Zurücksetzen</value>
   </data>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>Blick entlang</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
-    <value>Aktuelle Orientierung</value>
+    <value>Orientierung</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>Duplizieren</value>

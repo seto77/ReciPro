@@ -344,7 +344,7 @@ intensità relativa</value>
     <value>Teoria dinamica</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>Usa il colore assegnato a ciascun cristallo</value>
+    <value>Colore per cristallo</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>Dispersione anomala (f', f'')</value>
@@ -409,10 +409,10 @@ raggio</value>
     <value>Calcolo intensità</value>
   </data>
   <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
-    <value>Solo errore di eccitazione</value>
+    <value>Solo errore di ecc.</value>
   </data>
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
-    <value>Cinematica &amp;&amp; errore di eccitazione</value>
+    <value>Cinematica &amp;&amp; err. ecc.</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
     <value>Dettagli riflessi</value>

@@ -962,7 +962,7 @@ generally means a stronger reflection.</value>
     <value>0, 2</value>
   </data>
   <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
+    <value>9, 3</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>423, 114</value>
@@ -4466,7 +4466,7 @@ panel at the cursor position opens.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxMonitor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 137</value>
+    <value>302, 172</value>
   </data>
   <data name="groupBoxMonitor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5808,7 +5808,7 @@ Only valid for an electron source.</value>
     <value>0</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>Use Assigned Color for Each Crystal</value>
+    <value>Color per crystal</value>
   </data>
   <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
     <value>When checked, diffraction spots are drawn
@@ -6927,7 +6927,7 @@ kinematical, or excitation-error only).</value>
     <value>1</value>
   </data>
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
-    <value>Kinematical &amp;&amp; excitation error</value>
+    <value>Kinematical &amp;&amp; exc. error</value>
   </data>
   <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
     <value>In this mode, the intensity is calculated from

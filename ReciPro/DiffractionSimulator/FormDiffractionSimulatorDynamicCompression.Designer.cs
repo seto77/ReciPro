@@ -477,7 +477,8 @@ namespace ReciPro
             // buttonSimulate
             // 
             buttonSimulate.AutoSize = true;
-            buttonSimulate.Location = new System.Drawing.Point(472, 740);
+            //buttonSimulate.Location = new System.Drawing.Point(472, 740); // 260726Cl 旧: ru「Моделировать」が右端 (client 556) をはみ出していた
+            buttonSimulate.Location = new System.Drawing.Point(450, 740); // 260726Cl: AutoSize の伸びしろを 106px 確保
             buttonSimulate.Name = "buttonSimulate";
             buttonSimulate.Size = new System.Drawing.Size(75, 27);
             buttonSimulate.TabIndex = 7;

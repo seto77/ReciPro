@@ -194,7 +194,8 @@
             buttonCancel.Margin = new System.Windows.Forms.Padding(0);
             buttonCancel.Name = "buttonCancel";
             toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
-            buttonCancel.Size = new System.Drawing.Size(75, 25);
+            //buttonCancel.Size = new System.Drawing.Size(75, 25); // 260726Cl 旧: de「Abbrechen」が 8px 切れていた
+            buttonCancel.Size = new System.Drawing.Size(90, 25); // 260726Cl
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;

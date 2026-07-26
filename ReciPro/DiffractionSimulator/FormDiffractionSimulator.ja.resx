@@ -849,7 +849,7 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
 電子線源の場合のみ有効です。</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>結晶毎の指定色で描画</value>
+    <value>結晶毎の指定色</value>
   </data>
   <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
     <value>チェックすると、回折スポットの描画色が結晶の色に設定されます</value>

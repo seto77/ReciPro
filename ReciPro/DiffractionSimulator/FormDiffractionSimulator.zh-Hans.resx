@@ -350,7 +350,7 @@
     <value>动力学理论</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>为每个晶体使用指定颜色</value>
+    <value>按晶体指定颜色</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>反常色散 (f', f'')</value>

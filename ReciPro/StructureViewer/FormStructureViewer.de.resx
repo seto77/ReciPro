@@ -78,13 +78,13 @@
     <value>Zentrum</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Begrenzungsebenen anzeigen</value>
+    <value>Ebenen anzeigen</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>Deckkraft</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Objekte an Begrenzungsebenen abschneiden</value>
+    <value>Objekte abschneiden</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Grenzen durch Elementarzelle definiert</value>

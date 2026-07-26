@@ -105,13 +105,13 @@
     <value>Применить ко всем</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
-    <value>Заново подогнать все</value>
+    <value>Подогнать все</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Файл</value>
   </data>
   <data name="buttonSaveToFile.Text" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Сохр.</value>
   </data>
   <data name="numericBoxDiffractedWaves.HeaderText" xml:space="preserve">
     <value>Дифрагированные волны</value>
@@ -153,10 +153,10 @@
     <value>Удалить</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Очистить все рефлексы</value>
+    <value>Очистить все</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Показать символы</value>
+    <value>Символы</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Подсказки по сочетаниям клавиш</value>
@@ -168,7 +168,7 @@
     <value>как изображение</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Глобальная подгонка</value>
+    <value>Глоб. подг.</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Название кристалла</value>
@@ -180,13 +180,13 @@
     <value>Одно зерно</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Детали функции подгонки</value>
+    <value>Детали функции</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
     <value>Детали рефлекса</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
-    <value>Диапазон подгонки (радиус)</value>
+    <value>Радиус подгонки</value>
   </data>
   <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
     <value>Показать ось зоны</value>
@@ -237,10 +237,10 @@
     <value>Двойной левый клик : добавить рефлекс</value>
   </data>
   <data name="buttonCopyToClipboard.Text" xml:space="preserve">
-    <value>Копировать</value>
+    <value>Копир.</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Показать номера</value>
+    <value>Номера</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
     <value>Показывать символы маркеров на наблюдаемых рефлексах</value>

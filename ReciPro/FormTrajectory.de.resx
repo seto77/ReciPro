@@ -69,7 +69,7 @@
     <value>Mittlere BSE-Energie</value>
   </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
-    <value>BSE-Richtungsverteilung (das Stereonetz-Zentrum entspricht der Oberflächennormalen-Richtung)</value>
+    <value>BSE-Richtungsverteilung</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
     <value>Flächennormale</value>

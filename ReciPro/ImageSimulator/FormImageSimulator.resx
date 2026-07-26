@@ -659,7 +659,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScaleColorScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 23</value>
+    <value>90, 23</value>
   </data>
   <data name="comboBoxScaleColorScale.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2133,7 +2133,7 @@ from Start/Step/Num but editable by hand.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThicknessNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>89, 27</value>
   </data>
   <data name="numericBoxThicknessNum.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2185,7 +2185,7 @@ generated in the serial-image series.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>89, 27</value>
   </data>
   <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2237,7 +2237,7 @@ images in the serial-image series.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>89, 27</value>
   </data>
   <data name="numericBoxThicknessStart.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2278,7 +2278,7 @@ Step and Num to build the thickness list below.</value>
     <value>Vertical</value>
   </data>
   <data name="textBoxThicknessList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 92</value>
+    <value>48, 92</value>
   </data>
   <data name="textBoxThicknessList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4203,7 +4203,7 @@ excite many strong diffracted beams.
     <value>54</value>
   </data>
   <data name="flowLayoutPanel10.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel10.Name" xml:space="preserve">
     <value>flowLayoutPanel10</value>
@@ -4471,7 +4471,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>7</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Diffracted waves</value>
+    <value>Waves</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.Name" xml:space="preserve">
     <value>groupBoxDiffractedWaves</value>

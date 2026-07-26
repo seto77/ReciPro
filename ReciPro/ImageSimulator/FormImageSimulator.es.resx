@@ -72,7 +72,7 @@
     <value>Ajuste</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>Para cada imagen</value>
+    <value>Por imagen</value>
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Normalización</value>
@@ -88,19 +88,19 @@
     <value>Imagen STEM</value>
   </data>
   <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
-    <value>Longitud</value>
+    <value>Long.</value>
   </data>
   <data name="checkBoxShowScale.Text" xml:space="preserve">
-    <value>Barra de escala</value>
+    <value>Escala</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
     <value>Tamaño</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Etiqueta</value>
+    <value>Texto</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
-    <value>Celda unidad</value>
+    <value>Celda</value>
   </data>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Visualización</value>
@@ -190,7 +190,7 @@
     <value>Imagen lineal</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Coef. cruzado de transmisión</value>
+    <value>Coef. cruz. de transm.</value>
   </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Opciones HRTEM</value>
@@ -205,7 +205,7 @@
     <value>Propiedades de imagen</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Ondas difract.</value>
+    <value>Ondas</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Ajustes de simulación</value>
@@ -291,10 +291,10 @@ Simulator"</value>
     <value>Muestra</value>
   </data>
   <data name="checkBoxPreset.Text" xml:space="preserve">
-    <value>Configuración predefinida</value>
+    <value>Predefinidos</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Simulación en tiempo real</value>
+    <value>Tiempo real</value>
   </data>
   <data name="buttonSimulate.Text" xml:space="preserve">
     <value>Simular</value>

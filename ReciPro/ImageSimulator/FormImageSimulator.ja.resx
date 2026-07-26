@@ -325,7 +325,7 @@
     <value>シミュレーション画像の分解能 (pm/pixel)</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>回折波の数</value>
+    <value>波の数</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>ベーテ法で使用するブロッホ波の最大数。

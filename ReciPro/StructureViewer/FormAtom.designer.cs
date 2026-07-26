@@ -261,7 +261,7 @@
             // 
             radioButtonApplyEquivalentAtoms.AutoSize = true;
             radioButtonApplyEquivalentAtoms.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radioButtonApplyEquivalentAtoms.Location = new System.Drawing.Point(107, 143);
+            radioButtonApplyEquivalentAtoms.Location = new System.Drawing.Point(107, 143); // 260726Cl 21px ピッチ (122/143/164)
             radioButtonApplyEquivalentAtoms.Name = "radioButtonApplyEquivalentAtoms";
             radioButtonApplyEquivalentAtoms.Size = new System.Drawing.Size(151, 19);
             radioButtonApplyEquivalentAtoms.TabIndex = 97;
@@ -273,7 +273,7 @@
             // 
             radioButtonApplyThis.AutoSize = true;
             radioButtonApplyThis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radioButtonApplyThis.Location = new System.Drawing.Point(107, 159);
+            radioButtonApplyThis.Location = new System.Drawing.Point(107, 164); // 260726Cl 旧 159
             radioButtonApplyThis.Name = "radioButtonApplyThis";
             radioButtonApplyThis.Size = new System.Drawing.Size(133, 19);
             radioButtonApplyThis.TabIndex = 97;
@@ -285,7 +285,7 @@
             // 
             buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonCancel.Location = new System.Drawing.Point(180, 184);
+            buttonCancel.Location = new System.Drawing.Point(180, 190); // 260726Cl 旧 184 (ラジオ 3 段目と重なるため下げた)
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new System.Drawing.Size(72, 24);
             buttonCancel.TabIndex = 100;
@@ -296,7 +296,7 @@
             // 
             buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonOK.Location = new System.Drawing.Point(101, 184);
+            buttonOK.Location = new System.Drawing.Point(101, 190); // 260726Cl 旧 184
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new System.Drawing.Size(72, 24);
             buttonOK.TabIndex = 99;
@@ -322,7 +322,7 @@
             radioButtonAllSameElement.AutoSize = true;
             radioButtonAllSameElement.Checked = true;
             radioButtonAllSameElement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radioButtonAllSameElement.Location = new System.Drawing.Point(107, 126);
+            radioButtonAllSameElement.Location = new System.Drawing.Point(107, 122); // 260726Cl 旧 126 (ラジオ 3 段が 2〜3px 重なっていた)
             radioButtonAllSameElement.Name = "radioButtonAllSameElement";
             radioButtonAllSameElement.Size = new System.Drawing.Size(153, 19);
             radioButtonAllSameElement.TabIndex = 97;
@@ -337,7 +337,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = buttonCancel;
-            ClientSize = new System.Drawing.Size(467, 213);
+            ClientSize = new System.Drawing.Size(467, 220); // 260726Cl 旧 (467, 213)
             ControlBox = false;
             Controls.Add(checkBoxIsDraw);
             Controls.Add(buttonCancel);

@@ -97,7 +97,7 @@
     <value>Länge</value>
   </data>
   <data name="checkBoxShowScale.Text" xml:space="preserve">
-    <value>Maßstabsbalken</value>
+    <value>Maßstab</value>
   </data>
   <data name="colorControlLabel.HeaderText" xml:space="preserve">
     <value>Farbe</value>
@@ -106,10 +106,10 @@
     <value>Größe</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Beschriftung</value>
+    <value>Text</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
-    <value>Elementarzelle</value>
+    <value>Zelle</value>
   </data>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Anzeige</value>
@@ -214,7 +214,7 @@
     <value>Bildeigenschaften</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Gebeugte Wellen</value>
+    <value>Wellen</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Simulationseinstellungen</value>

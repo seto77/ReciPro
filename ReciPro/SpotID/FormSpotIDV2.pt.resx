@@ -153,10 +153,10 @@
     <value>Excluir</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Limpar todos os spots</value>
+    <value>Limpar tudo</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Mostrar símbolos</value>
+    <value>Símbolos</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Dicas de atalhos</value>
@@ -180,10 +180,10 @@
     <value>Grão único</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Detalhes da função de ajuste</value>
+    <value>Detalhes função</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Detalhes do spot</value>
+    <value>Detalhes spot</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>Intervalo de ajuste (raio)</value>
@@ -237,7 +237,7 @@
     <value>Copiar</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Mostrar números</value>
+    <value>Números</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
     <value>Exibir símbolos de marcador nos spots observados</value>

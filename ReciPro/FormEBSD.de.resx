@@ -103,19 +103,19 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>Textgröße</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>mit Schritt von</value>
+    <value>Schritt</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Anzahl gebeugter Wellen</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Nicht-lokales Absorptionsmodell verwenden</value>
+    <value>Nicht-lokale Absorption</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS-Hintergrund einbeziehen</value>
+    <value>TDS-Hintergrund</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Dicke von</value>
+    <value>Dicke</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>bis</value>
@@ -154,10 +154,10 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>bis</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Energie von</value>
+    <value>Energie</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>mit Schritt von</value>
+    <value>Schritt</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Tiefe (nm)</value>

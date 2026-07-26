@@ -105,7 +105,7 @@
     <value>Auf alle anwenden</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
-    <value>Alle neu anpassen</value>
+    <value>Alle anpassen</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Datei</value>
@@ -153,10 +153,10 @@
     <value>Löschen</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Alle Reflexe leeren</value>
+    <value>Alle leeren</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Symbole anzeigen</value>
+    <value>Symbole</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Tastenkürzel-Hinweise</value>
@@ -168,7 +168,7 @@
     <value>als Bild</value>
   </data>
   <data name="buttonGlobalFit.Text" xml:space="preserve">
-    <value>Globale Anpassung</value>
+    <value>Globale Anp.</value>
   </data>
   <data name="CrystalName.HeaderText" xml:space="preserve">
     <value>Kristallname</value>
@@ -180,13 +180,13 @@
     <value>Einzelkorn</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Details der Anpassungsfunktion</value>
+    <value>Funktions-Details</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Details des Reflexes</value>
+    <value>Reflex-Details</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
-    <value>Anpassungsbereich (Radius)</value>
+    <value>Anpassungsradius</value>
   </data>
   <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
     <value>Zonenachse anzeigen</value>
@@ -240,7 +240,7 @@
     <value>Kopieren</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Nummern anzeigen</value>
+    <value>Nummern</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
     <value>Markersymbole an beobachteten Spots anzeigen</value>

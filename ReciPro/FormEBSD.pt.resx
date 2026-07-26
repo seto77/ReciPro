@@ -103,19 +103,19 @@
     <value>Tamanho do texto</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>com passo de</value>
+    <value>passo</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Número de ondas difratadas</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Usar modelo de absorção não local</value>
+    <value>Absorção não local</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Incluir fundo TDS</value>
+    <value>Fundo TDS</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Espessura de</value>
+    <value>Espessura</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>até</value>
@@ -154,10 +154,10 @@
     <value>até</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Energia de</value>
+    <value>Energia</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>com passo de</value>
+    <value>passo</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Profundidade (nm)</value>

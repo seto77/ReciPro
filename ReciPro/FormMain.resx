@@ -4543,4 +4543,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="buttonReset.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>138, 0</value>
+  </data>
 </root>

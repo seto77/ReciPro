@@ -76,6 +76,10 @@ public partial class FormRotationMatrix : FormBase
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
+            // 260726Cl: 一旦 S(262) へ 11px 左寄せしたが、同じ groupBox 内の glControl*Gonio (Location 5, Size 264
+            //   = 右端 269) と 7px 重なることが判明したため差し戻した。Gonio は Add 順で最背面なので、
+            //   重ねると Gonio の右端 7px×130px が常時覆われる。273 は 273+130=403 で groupBox クライアント幅 404 に
+            //   ちょうど収まる設計値。左に余地を作るなら Gonio 側の Size を縮めること。
             Location = new Point(S(273), S(248)),
             Margin = new Padding(0),
             Name = "glControlReciProObjects",
@@ -94,6 +98,7 @@ public partial class FormRotationMatrix : FormBase
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
+            // 260726Cl: S(262) への 11px 左寄せは glControl*Gonio (右端 269) と 7px 重なるため差し戻し (上記参照)。
             Location = new Point(S(273), S(114)),
             Margin = new Padding(0),
             Name = "glControlReciProAxes",
@@ -128,6 +133,10 @@ public partial class FormRotationMatrix : FormBase
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
+            // 260726Cl: 一旦 S(262) へ 11px 左寄せしたが、同じ groupBox 内の glControl*Gonio (Location 5, Size 264
+            //   = 右端 269) と 7px 重なることが判明したため差し戻した。Gonio は Add 順で最背面なので、
+            //   重ねると Gonio の右端 7px×130px が常時覆われる。273 は 273+130=403 で groupBox クライアント幅 404 に
+            //   ちょうど収まる設計値。左に余地を作るなら Gonio 側の Size を縮めること。
             Location = new Point(S(273), S(248)),
             Margin = new Padding(0),
             Name = "glControlExpObjects",
@@ -144,6 +153,7 @@ public partial class FormRotationMatrix : FormBase
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
+            // 260726Cl: S(262) への 11px 左寄せは glControl*Gonio (右端 269) と 7px 重なるため差し戻し (上記参照)。
             Location = new Point(S(273), S(114)),
             Margin = new System.Windows.Forms.Padding(0),
             Name = "glControlExpAxes",

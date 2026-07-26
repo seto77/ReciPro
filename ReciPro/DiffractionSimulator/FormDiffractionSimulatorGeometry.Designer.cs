@@ -93,7 +93,8 @@
             comboBoxGradient.Location = new System.Drawing.Point(212, 0);
             comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
-            comboBoxGradient.Size = new System.Drawing.Size(94, 25);
+            //comboBoxGradient.Size = new System.Drawing.Size(94, 25); // 260726Cl 旧: 「Negative Film」が 6px 切れていた
+            comboBoxGradient.Size = new System.Drawing.Size(106, 25); // 260726Cl
             comboBoxGradient.TabIndex = 95;
             toolTip.SetToolTip(comboBoxGradient, "Selects positive or negative film\r\ngradient (negative inverts the displayed\r\nintensity scale of the overlapped image).");
             comboBoxGradient.SelectedIndexChanged += toolStripComboBoxGradient_SelectedIndexChanged;
@@ -487,7 +488,8 @@
             label4.Size = new System.Drawing.Size(62, 15);
             label4.TabIndex = 101;
             label4.Text = "Brightness";
-            toolTip.SetToolTip(label4, "Sets the upper intensity limit for\r\ndisplaying the overlapped image.");
+            //toolTip.SetToolTip(label4, "Sets the upper intensity limit for\r\ndisplaying the overlapped image."); // 260726Cl 旧: label1 (Max int.) 用チップの丸写しで、label4 は Min/Max 両方を束ねる見出しなのに下限の説明が欠けていた
+            toolTip.SetToolTip(label4, "Adjusts the displayed brightness of the overlapped\r\nimage by setting its black point (Min int.) and\r\nwhite point (Max int.)."); // 260726Cl
             // 
             // checkBoxDetectorSizePosition
             // 
@@ -513,7 +515,12 @@
             groupBoxDetectorAndOverlappedImage.Location = new System.Drawing.Point(7, 3);
             groupBoxDetectorAndOverlappedImage.Name = "groupBoxDetectorAndOverlappedImage";
             groupBoxDetectorAndOverlappedImage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(623, 166);
+            // 260726Cl: es/it/de で上段パネルが 1 行増え、Dock=Fill の flowLayoutPanel4 が 26px へ潰れて「Max int.」行が
+            //   切れていた。固定高さ (旧 623,166) を増やすと英語で余白が余るので、groupBox と flowLayoutPanel4 を
+            //   AutoSize にして必要な高さだけ伸ばす (親 panelDetectorAreaAndOverlappedImage が AutoSize なので吸収される)。
+            groupBoxDetectorAndOverlappedImage.AutoSize = true; // 260726Cl
+            groupBoxDetectorAndOverlappedImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly; // 260726Cl (GrowAndShrink だと設計幅 623 より縮んで内部レイアウトが総崩れになる)
+            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(623, 192); // 260726Cl 旧 (623, 166)
             groupBoxDetectorAndOverlappedImage.TabIndex = 5;
             groupBoxDetectorAndOverlappedImage.TabStop = false;
             // 
@@ -523,7 +530,10 @@
             flowLayoutPanel4.Controls.Add(trackBarMinInt);
             flowLayoutPanel4.Controls.Add(label1);
             flowLayoutPanel4.Controls.Add(trackBarMaxInt);
-            flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            //flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill; // 260726Cl 旧: 残り高さに潰されて 2 行目が切れた
+            flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top; // 260726Cl
+            flowLayoutPanel4.AutoSize = true; // 260726Cl
+            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly; // 260726Cl
             flowLayoutPanel4.Location = new System.Drawing.Point(65, 110);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new System.Drawing.Size(555, 51);

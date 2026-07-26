@@ -273,7 +273,7 @@ differs; use Auto unless benchmarking.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 21</value>
+    <value>176, 21</value>
   </data>
   <data name="comboBoxSolver.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1938,7 +1938,7 @@ disk pattern currently displayed.</value>
     <value>439, -1</value>
   </data>
   <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 180</value>
+    <value>373, 215</value>
   </data>
   <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

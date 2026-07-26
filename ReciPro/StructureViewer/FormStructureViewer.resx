@@ -383,10 +383,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 74</value>
+    <value>339, 60</value>
   </data>
   <data name="buttonSetRange2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+    <value>128, 24</value>
   </data>
   <data name="buttonSetRange2.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -422,10 +422,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 127</value>
+    <value>339, 108</value>
   </data>
   <data name="buttonSetRange4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+    <value>128, 24</value>
   </data>
   <data name="buttonSetRange4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -458,10 +458,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 100</value>
+    <value>339, 84</value>
   </data>
   <data name="buttonSetRange3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+    <value>128, 24</value>
   </data>
   <data name="buttonSetRange3.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -602,10 +602,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 22</value>
+    <value>339, 12</value>
   </data>
   <data name="buttonSetRange0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+    <value>128, 24</value>
   </data>
   <data name="buttonSetRange0.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -638,10 +638,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 48</value>
+    <value>339, 36</value>
   </data>
   <data name="buttonSetRange1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+    <value>128, 24</value>
   </data>
   <data name="buttonSetRange1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -6558,5 +6558,8 @@ right-drag / wheel zooming on the view.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tabControl.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
 </root>

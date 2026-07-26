@@ -108,287 +108,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>試料傾斜</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>SEM内での試料の傾斜角(°、-90～0、EBSDでは
+通常-70)。後方散乱投影の幾何を決めます。</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>入射電子の加速電圧/電子波長(EBSDシミュレーション
+の一次電子エネルギー)を設定します。</value>
+  </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>鳥瞰図</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、斜め上からの鳥瞰に設定します。</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
     <value>表面法線方向</value>
   </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、試料表面の法線方向に設定します。</value>
+  </data>
   <data name="buttonFromX.Text" xml:space="preserve">
     <value>X軸 (試料回転軸) </value>
-  </data>
-  <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>Z軸 (電子線入射方向) </value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonSimulateBSE.Text" xml:space="preserve">
-    <value>分布を計算</value>
-  </data>
-  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
-    <value>軸を描画</value>
-  </data>
-  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>色</value>
-  </data>
-  <data name="labelLineWidth.Text" xml:space="preserve">
-    <value>線の太さ</value>
-  </data>
-  <data name="colorControlString.FooterText" xml:space="preserve">
-    <value>色</value>
-  </data>
-  <data name="colorControlBackGround.FooterText" xml:space="preserve">
-    <value>背景色</value>
-  </data>
-  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
-    <value>構造因子</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>構造因子を線の色に反映</value>
-  </data>
-  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>1/dの閾値</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
-    <value>上位</value>
-  </data>
-  <data name="labelTextSize.Text" xml:space="preserve">
-    <value>サイズ</value>
-  </data>
-  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>ステップ</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>計算に取り入れる波の数</value>
-  </data>
-  <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>非局所形式の吸収モデルを使う</value>
-  </data>
-  <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS バックグラウンドを含める</value>
-  </data>
-  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>深さ範囲</value>
-  </data>
-  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
-    <value>～</value>
-  </data>
-  <data name="buttonStop.Text" xml:space="preserve">
-    <value>停止</value>
-  </data>
-  <data name="tabPageOutputParameter.Text" xml:space="preserve">
-    <value>出力パラメータ</value>
-  </data>
-  <data name="labelPolarity.Text" xml:space="preserve">
-    <value>ネガ/ポジ</value>
-  </data>
-  <data name="labelColor.Text" xml:space="preserve">
-    <value>カラー</value>
-  </data>
-  <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
-    <value>後方散乱電子のエネルギー・方位分布を考慮して画像を合成</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>最小</value>
-  </data>
-  <data name="labelBrightness.Text" xml:space="preserve">
-    <value>明るさ</value>
-  </data>
-  <data name="checkBoxShowOverlays.Text" xml:space="preserve">
-    <value>補助図形</value>
-  </data>
-  <data name="buttonCopyImage.Text" xml:space="preserve">
-    <value>コピー</value>
-  </data>
-  <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
-    <value>～</value>
-  </data>
-  <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>エネルギー範囲</value>
-  </data>
-  <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>ステップ</value>
-  </data>
-  <data name="labelBseDepth.Text" xml:space="preserve">
-    <value>深さ (nm)</value>
-  </data>
-  <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>動力学EBSD</value>
-  </data>
-  <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
-    <value>検出器の輪郭</value>
-  </data>
-  <data name="tabPageGeometry.Text" xml:space="preserve">
-    <value>SEM-EBSD設定</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSDのセッティング</value>
-  </data>
-  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEMのセッティング</value>
-  </data>
-  <data name="tabPageBseDistribution.Text" xml:space="preserve">
-    <value>BSE分布</value>
-  </data>
-  <data name="tabPageOverlays.Text" xml:space="preserve">
-    <value>補助図形</value>
-  </data>
-  <data name="checkBoxShowMesh.Text" xml:space="preserve">
-    <value>メッシュを表示</value>
-  </data>
-  <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>外枠を表示</value>
-  </data>
-  <data name="groupBoxTextSettings.Text" xml:space="preserve">
-    <value>文字設定</value>
-  </data>
-  <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
-    <value>菊池線を表示</value>
-  </data>
-  <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
-    <value>菊池線の範囲</value>
-  </data>
-  <data name="checkBoxShowGIndices.Text" xml:space="preserve">
-    <value>菊池線の指数を表示</value>
-  </data>
-  <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
-    <value>晶帯軸の指数を表示</value>
-  </data>
-  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>動力学計算のパラメータ</value>
-  </data>
-  <data name="labelMasterPatternGrid.Text" xml:space="preserve">
-    <value>グリッド</value>
-  </data>
-  <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
-    <value>半球</value>
-  </data>
-  <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
-    <value>マスターパターンを構築</value>
-  </data>
-  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
-    <value>マスターパターン</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
-    <value>コピー</value>
-  </data>
-  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
-    <value>コピー</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
-    <value>結晶軸のラベル</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
-    <value>結晶軸の3D表示</value>
-  </data>
-  <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
-    <value>指定軸から投影</value>
-  </data>
-  <data name="groupBoxEBSDPattern.Text" xml:space="preserve">
-    <value>EBSDパターン</value>
-  </data>
-  <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>オーバーレイの指数文字（菊池線指数・
-晶帯軸指数など）の色を設定します。</value>
-  </data>
-  <data name="colorControlString.ToolTip1" xml:space="preserve">
-    <value>オーバーレイの指数文字（菊池線指数・
-晶帯軸指数など）の色を設定します。</value>
-  </data>
-  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>EBSD パターン表示の背景色を設定します。
-「Apply structure factors」がオンのと
-き、弱い菊池線がこの色へ溶け込みます。</value>
-  </data>
-  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>EBSD パターン表示の背景色を設定します。
-「Apply structure factors」がオンのと
-き、弱い菊池線がこの色へ溶け込みます。</value>
-  </data>
-  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value>逆格子長 1/d (nm^-1) のしきい値です。この値未満の 1/d
-をもつ菊池線（面間隔 d が大きい反射）だけを描画します。</value>
-  </data>
-  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャンのステップ幅 (nm) です。
-Start から End までをこの増分で計算します。</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Bloch 波動力学計算に含める回折波（g
-ベクトル）の本数 (1-2048) を設定します。多い
-ほど精度は上がりますが計算は遅くなります。</value>
-  </data>
-  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャン範囲の開始値 (nm) です。Start、
-End、Step で計算する厚みの列を決めます。</value>
-  </data>
-  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>試料厚みスキャン範囲の終端値 (nm) です。Start、
-End、Step で計算する厚みの列を決めます。</value>
-  </data>
-  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
-    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
-エネルギー範囲の終端（下限）値 (keV) です。</value>
-  </data>
-  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
-    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
-エネルギー範囲の開始（上限）値 (keV) です。</value>
-  </data>
-  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
-    <value>後方散乱電子のエネルギースキャンのステップ幅 (keV) で
-す。Start から End へこの増分で下げながら計算します。</value>
-  </data>
-  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
-    <value>ここで選んだ範囲・解像度・形式で、パターン
-表示をクリップボードにコピーします (菊池線や
-指数のオーバーレイも表示どおり含まれます)。</value>
-  </data>
-  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
-    <value>Monte-Carloに続くBloch波(Bethe)動力学
-回折計算でEBSDマスターパターン(全球の
-後方散乱強度マップ)を構築します。</value>
-  </data>
-  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
-    <value>開発者用: NIST弾性散乱断面積テーブル(E_*.TXT)を
-PCHIP補間で圧縮し、生成ソースを出力します。</value>
   </data>
   <data name="buttonFromX.ToolTip" xml:space="preserve">
     <value>3D幾何ビューの視点を、X軸(試料の回転軸)方向に設定します。</value>
   </data>
-  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
-    <value>2D(Lambert投影)マスターパターン
-画像をクリップボードにコピーします。</value>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z軸 (電子線入射方向) </value>
   </data>
-  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
-    <value>3D(球面)マスターパターンプレビュー
-をクリップボードにコピーします。</value>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、Z軸(電子線方向)に設定します。</value>
   </data>
-  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
-    <value>右の[u v w]で指定した晶帯軸が視線方向を
-向くよう3Dマスターパターンを回転します。</value>
+  <data name="buttonSimulateBSE.Text" xml:space="preserve">
+    <value>分布を計算</value>
   </data>
   <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
     <value>モンテカルロ法でBSE(後方散乱電子)の飛程を
 シミュレーションし、EBSDパターンの重み付けに
 使う脱出エネルギー分布・深さ分布を計算します。</value>
   </data>
-  <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value>実行中のマスターパターン(Monte-Carlo
-/ Bloch波)計算を中断します。</value>
+  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
+    <value>開発: PCHIP圧縮</value>
   </data>
-  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
-    <value>3D幾何ビューの視点を、試料表面の法線方向に設定します。</value>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>開発者用: NIST弾性散乱断面積テーブル(E_*.TXT)を
+PCHIP補間で圧縮し、生成ソースを出力します。</value>
   </data>
-  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
-    <value>3D幾何ビューの視点を、Z軸(電子線方向)に設定します。</value>
-  </data>
-  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
-    <value>3D幾何ビューの視点を、斜め上からの鳥瞰に設定します。</value>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>軸を描画</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>ステレオネット (BSE 分布の立体投影図) 上に、
@@ -396,121 +168,16 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
 両方向のラベル付きで重ねて表示します。
 ステレオネットの中心は試料表面の法線方向です。</value>
   </data>
-  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
-    <value>検出器(蛍光スクリーン)の輪郭をパターン上に重ねて
-表示します。輪郭オプション群が有効になります。</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>各菊池線の濃さを構造因子(運動学的回折
-強度=単位胞1個が散乱する振幅)で重み付け
-します。強い反射ほど濃く表示されます。</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
-    <value>3Dマスターパターンビューに結晶軸
-a/b/c の矢印インセットを表示します。</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
-    <value>3Dマスターパターンビュー上に
-a/b/c の軸ラベル文字を表示します。</value>
-  </data>
-  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
-    <value>マスターパターン構築時に非局所吸収モデル(熱散漫散乱を
-含む複素ポテンシャル吸収項)を使用します。</value>
-  </data>
-  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
-    <value>検出器 (蛍光スクリーン) の外形を示す黄色の矩形を
-パターン上に描画します。Detector 範囲のコピー
-時は、コピー縁と一致するため描かれません。</value>
-  </data>
-  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
-    <value>マスターパターンから投影した動力学EBSD(後方散乱電子
-回折)パターンを表示します。オフでは背景のみになります。</value>
-  </data>
-  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
-    <value>各菊池線(菊池バンド)に対応する
-反射指数(h k l)のラベルを表示します。</value>
-  </data>
-  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
-    <value>菊池線(非弾性散乱した電子が作る帯状の回折線)を
-表示します。菊池線オプション群が有効になります。</value>
-  </data>
-  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
-    <value>検出器面の分割メッシュ(格子線)をパターン上に描画します。</value>
-  </data>
-  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
-    <value>パターン上に菊池線・指数・晶帯軸・
-検出器アウトラインを重ねて表示します。</value>
-  </data>
-  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
-    <value>菊池バンドの交点(晶帯軸)に晶帯軸指数
-[u v w] のラベルを表示します。</value>
-  </data>
-  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>TDS(熱散漫散乱)バックグラウンド
-強度をマスターパターンに含めます。</value>
-  </data>
-  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
-    <value>単一のエネルギー・深さスライスではなく、
-シミュレーションで得たBSE(後方散乱電子)のエネルギー・
-深さ分布で重み付けして全スライスを積算したEBSDパターン
-を表示します。先にSimulateで分布を計算してください。</value>
-  </data>
-  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>菊池線の描画色を設定します。</value>
-  </data>
-  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
-    <value>菊池線の描画色を設定します。</value>
-  </data>
-  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>パターン強度の階調を Positive または
-Negative(白黒反転)から選択します。</value>
-  </data>
-  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
-    <value>2Dビューに表示するマスターパターン
-の半球(+Z または -Z)を選択します。</value>
-  </data>
-  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
-    <value>正方Lambertマスターパターングリッドの分解能(1辺あたりの
-ピクセル数、64～2048)。大きいほど高精細ですが低速です。</value>
-  </data>
-  <data name="comboBoxScale.ToolTip" xml:space="preserve">
-    <value>強度を色に対応させるカラースケール(Gray /
-Cold-Warm / Spectrum / Fire)を選択します。</value>
-  </data>
-  <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>'View Along' ボタンで3Dマスターパターンを
-向ける晶帯軸指数 [u v w] を入力します。</value>
-  </data>
-  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
-    <value>現在レンダリングしているEBSDパターンの深さ
-スライス(nm)を表示します(単一スライス表示時)。</value>
+  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
+    <value>傾斜</value>
   </data>
   <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
     <value>検出器面の傾き角を度単位で設定します(電子線=Z軸に対す
 る傾き)。カメラ長や菊池バンドの投影形状に影響します。</value>
   </data>
-  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>現在レンダリングしているEBSDパターン
-のエネルギースライス(keV)を表示しま
-す(単一スライス表示時)。</value>
-  </data>
-  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>構造因子(単位胞1個が散乱する振幅)の大きい
-上位N本の反射を菊池線として描画する本数を
-設定します。大きいほど多くの線を表示します。</value>
-  </data>
-  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
-    <value>プレビュー用にスライダーで選択中のマスターパターン
-深さスライスの値(nm)を表示します。</value>
-  </data>
-  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
-    <value>プレビュー用にスライダーで選択中の
-マスターパターンエネルギースライス
-の値(keV)を表示します。</value>
-  </data>
-  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
-    <value>SEM内での試料の傾斜角(°、-90～0、EBSDでは
-通常-70)。後方散乱投影の幾何を決めます。</value>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>検出器中心のZ座標(電子線方向の位置)をmm単位で
+設定します。Yとあわせてカメラ長が決まります。</value>
   </data>
   <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
     <value>検出器中心の Y 座標を mm 単位で設定します
@@ -518,15 +185,181 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
 へ向かう方向)。Z と検出器傾斜とあわせてカメラ長が
 決まります。左右方向のずれは X で設定します。</value>
   </data>
-  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
-    <value>検出器中心のZ座標(電子線方向の位置)をmm単位で
-設定します。Yとあわせてカメラ長が決まります。</value>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>菊池線の描画色を設定します。</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  </data>
+  <data name="labelLineWidth.Text" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="labelLineWidth.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>オーバーレイの指数文字（菊池線指数・
+晶帯軸指数など）の色を設定します。</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>EBSD パターン表示の背景色を設定します。
+「Apply structure factors」がオンのと
+き、弱い菊池線がこの色へ溶け込みます。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>構造因子</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>菊池線に描く反射を、構造因子の大きい上位N本で選別します。</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>構造因子を線の色に反映</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>各菊池線の濃さを構造因子(運動学的回折
+強度=単位胞1個が散乱する振幅)で重み付け
+します。強い反射ほど濃く表示されます。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/dの閾値</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>菊池線に描く反射を、逆格子長 1/d のしきい値で選別します。</value>
   </data>
-  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>菊池線に描く反射を、構造因子の大きい上位N本で選別します。</value>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>上位</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>構造因子(単位胞1個が散乱する振幅)の大きい
+上位N本の反射を菊池線として描画する本数を
+設定します。大きいほど多くの線を表示します。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>逆格子長 1/d (nm^-1) のしきい値です。この値未満の 1/d
+をもつ菊池線（面間隔 d が大きい反射）だけを描画します。</value>
+  </data>
+  <data name="labelTextSize.Text" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="labelTextSize.ToolTip" xml:space="preserve">
+    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャンのステップ幅 (nm) です。
+Start から End までをこの増分で計算します。</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>計算に取り入れる波の数</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Bloch 波動力学計算に含める回折波（g
+ベクトル）の本数 (1-2048) を設定します。多い
+ほど精度は上がりますが計算は遅くなります。</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
+    <value>非局所吸収モデル</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>マスターパターン構築時に非局所吸収モデル(熱散漫散乱を
+含む複素ポテンシャル吸収項)を使用します。</value>
+  </data>
+  <data name="checkBoxTDSBackground.Text" xml:space="preserve">
+    <value>TDS バックグラウンド</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>TDS(熱散漫散乱)バックグラウンド
+強度をマスターパターンに含めます。</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>深さ範囲</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャン範囲の開始値 (nm) です。Start、
+End、Step で計算する厚みの列を決めます。</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>～</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャン範囲の終端値 (nm) です。Start、
+End、Step で計算する厚みの列を決めます。</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>実行中のマスターパターン(Monte-Carlo
+/ Bloch波)計算を中断します。</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>エネルギー</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>現在レンダリングしているEBSDパターン
+のエネルギースライス(keV)を表示しま
+す(単一スライス表示時)。</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>単一スライス表示時に、レンダリングする
+EBSDパターンのエネルギースライス(keV)を
+選択します。値はEnergy欄に表示されます。</value>
+  </data>
+  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
+    <value>深さ</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>現在レンダリングしているEBSDパターンの深さ
+スライス(nm)を表示します(単一スライス表示時)。</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>単一スライス表示時に、レンダリングする
+EBSDパターンの深さスライス(nm)を選択し
+ます。値はDepth欄に表示されます。</value>
+  </data>
+  <data name="labelPolarity.Text" xml:space="preserve">
+    <value>ネガ/ポジ</value>
+  </data>
+  <data name="labelPolarity.ToolTip" xml:space="preserve">
+    <value>表示像の階調を通常か反転(ネガ)かを選択します。</value>
+  </data>
+  <data name="labelColor.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="labelColor.ToolTip" xml:space="preserve">
+    <value>強度を色に変換するカラースケール(Gray /
+Cold-Warm / Spectrum / Fire)を選択します。</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
+    <value>後方散乱電子のエネルギー・方位分布を考慮して画像を合成</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>単一のエネルギー・深さスライスではなく、
+シミュレーションで得たBSE(後方散乱電子)のエネルギー・
+深さ分布で重み付けして全スライスを積算したEBSDパターン
+を表示します。先にSimulateで分布を計算してください。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>パターン強度の階調を Positive または
+Negative(白黒反転)から選択します。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>強度を色に対応させるカラースケール(Gray /
+Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
     <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
@@ -537,42 +370,65 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
 位置)を強度レンジに対する比率で設定し
 ます。この値以下の画素が黒になります。</value>
   </data>
-  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  <data name="labelBrightnessMax.Text" xml:space="preserve">
+    <value>最大</value>
   </data>
-  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
-    <value>プレビューするマスターパターンの深さスライス
-(nm)を選択します。値はDepth欄に表示されます。</value>
+  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
+る比率で設定します。この値以上の画素が白になります。</value>
   </data>
-  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
-    <value>プレビューするマスターパターンのエネルギースライス
-(keV)を選択します。値はEnergy欄に表示されます。</value>
+  <data name="labelBrightnessMin.Text" xml:space="preserve">
+    <value>最小</value>
   </data>
-  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
-    <value>単一スライス表示時に、レンダリングする
-EBSDパターンのエネルギースライス(keV)を
-選択します。値はEnergy欄に表示されます。</value>
+  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ下限(黒つぶれの
+位置)を強度レンジに対する比率で設定し
+ます。この値以下の画素が黒になります。</value>
   </data>
-  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
-    <value>単一スライス表示時に、レンダリングする
-EBSDパターンの深さスライス(nm)を選択し
-ます。値はDepth欄に表示されます。</value>
-  </data>
-  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
-  </data>
-  <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value>入射電子の加速電圧/電子波長(EBSDシミュレーション
-の一次電子エネルギー)を設定します。</value>
-  </data>
-  <data name="labelTextSize.ToolTip" xml:space="preserve">
-    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
+  <data name="labelBrightness.Text" xml:space="preserve">
+    <value>明るさ</value>
   </data>
   <data name="labelBrightness.ToolTip" xml:space="preserve">
     <value>表示EBSD像の明るさ(黒・白クリップ)範囲を調整します。</value>
   </data>
-  <data name="labelLineWidth.ToolTip" xml:space="preserve">
-    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  <data name="checkBoxShowOverlays.Text" xml:space="preserve">
+    <value>補助図形</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>パターン上に菊池線・指数・晶帯軸・
+検出器アウトラインを重ねて表示します。</value>
+  </data>
+  <data name="buttonCopyImage.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>ここで選んだ範囲・解像度・形式で、パターン
+表示をクリップボードにコピーします (菊池線や
+指数のオーバーレイも表示どおり含まれます)。</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
+    <value>～</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
+エネルギー範囲の終端（下限）値 (keV) です。</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
+    <value>エネルギー範囲</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
+エネルギー範囲の開始（上限）値 (keV) です。</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>後方散乱電子のエネルギースキャンのステップ幅 (keV) で
+す。Start から End へこの増分で下げながら計算します。</value>
+  </data>
+  <data name="labelBseDepth.Text" xml:space="preserve">
+    <value>深さ (nm)</value>
   </data>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>検出された後方散乱電子が最後に非弾性散乱を起こした深さ
@@ -583,322 +439,164 @@ EBSDパターンの深さスライス(nm)を選択し
     <value>シミュレーションした後方散乱電子の
 エネルギー損失ΔE(keV)の分布です。</value>
   </data>
+  <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
+    <value>動力学EBSD</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>マスターパターンから投影した動力学EBSD(後方散乱電子
+回折)パターンを表示します。オフでは背景のみになります。</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
+    <value>検出器の輪郭</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>検出器(蛍光スクリーン)の輪郭をパターン上に重ねて
+表示します。輪郭オプション群が有効になります。</value>
+  </data>
+  <data name="labelBseStereonetNote.Text" xml:space="preserve">
+    <value>ステレオネットの中心は試料表面の法線方向</value>
+  </data>
   <data name="labelBseStereonetNote.ToolTip" xml:space="preserve">
     <value>このステレオネットでは、中心が
 試料表面の法線方向に対応します。</value>
   </data>
-  <data name="labelPolarity.ToolTip" xml:space="preserve">
-    <value>表示像の階調を通常か反転(ネガ)かを選択します。</value>
+  <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
+    <value>菊池線を表示</value>
   </data>
-  <data name="labelColor.ToolTip" xml:space="preserve">
-    <value>強度を色に変換するカラースケール(Gray /
-Cold-Warm / Spectrum / Fire)を選択します。</value>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>菊池線(非弾性散乱した電子が作る帯状の回折線)を
+表示します。菊池線オプション群が有効になります。</value>
   </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ下限(黒つぶれの
-位置)を強度レンジに対する比率で設定し
-ます。この値以下の画素が黒になります。</value>
+  <data name="checkBoxShowGIndices.Text" xml:space="preserve">
+    <value>菊池線の指数を表示</value>
   </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
-る比率で設定します。この値以上の画素が白になります。</value>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>各菊池線(菊池バンド)に対応する
+反射指数(h k l)のラベルを表示します。</value>
   </data>
-  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
-    <value>2Dビューに表示するマスターパターン
-の半球(+Z または -Z)を選択します。</value>
+  <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
+    <value>晶帯軸の指数を表示</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>菊池バンドの交点(晶帯軸)に晶帯軸指数
+[u v w] のラベルを表示します。</value>
+  </data>
+  <data name="labelMasterPatternGrid.Text" xml:space="preserve">
+    <value>グリッド</value>
   </data>
   <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>正方Lambertマスターパターングリッドの
 分解能(1辺あたりのピクセル数、64～2048)。</value>
   </data>
-  <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
-    <value>検出器の傾き</value>
-  </data>
-  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
-    <value>深さ</value>
-  </data>
-  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
-    <value>エネルギー</value>
-  </data>
-  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
-    <value>深さ</value>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>正方Lambertマスターパターングリッドの分解能(1辺あたりの
+ピクセル数、64～2048)。大きいほど高精細ですが低速です。</value>
   </data>
   <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
     <value>エネルギー</value>
   </data>
-  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
-    <value>開発: PCHIP圧縮</value>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>プレビュー用にスライダーで選択中の
+マスターパターンエネルギースライス
+の値(keV)を表示します。</value>
   </data>
-  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>プレビューするマスターパターンのエネルギースライス
+(keV)を選択します。値はEnergy欄に表示されます。</value>
   </data>
-  <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
+    <value>深さ</value>
   </data>
-  <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>プレビュー用にスライダーで選択中のマスターパターン
+深さスライスの値(nm)を表示します。</value>
   </data>
-  <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>プレビューするマスターパターンの深さスライス
+(nm)を選択します。値はDepth欄に表示されます。</value>
   </data>
-  <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
+    <value>半球</value>
   </data>
-  <data name="buttonFitNistElasticSampler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2Dビューに表示するマスターパターン
+の半球(+Z または -Z)を選択します。</value>
   </data>
-  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2Dビューに表示するマスターパターン
+の半球(+Z または -Z)を選択します。</value>
   </data>
-  <data name="labelLineWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
+    <value>マスターパターンを構築</value>
   </data>
-  <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Monte-Carloに続くBloch波(Bethe)動力学
+回折計算でEBSDマスターパターン(全球の
+後方散乱強度マップ)を構築します。</value>
   </data>
-  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
   </data>
-  <data name="labelTextSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>2D(Lambert投影)マスターパターン
+画像をクリップボードにコピーします。</value>
   </data>
-  <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
   </data>
-  <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>3D(球面)マスターパターンプレビュー
+をクリップボードにコピーします。</value>
   </data>
-  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
+    <value>結晶軸のラベル</value>
   </data>
-  <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>3Dマスターパターンビュー上に
+a/b/c の軸ラベル文字を表示します。</value>
   </data>
-  <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
+    <value>指定軸から投影</value>
   </data>
-  <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>右の[u v w]で指定した晶帯軸が視線方向を
+向くよう3Dマスターパターンを回転します。</value>
   </data>
-  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>'View Along' ボタンで3Dマスターパターンを
+向ける晶帯軸指数 [u v w] を入力します。</value>
   </data>
-  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="checkBoxShowMesh.Text" xml:space="preserve">
+    <value>メッシュを表示</value>
   </data>
-  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>検出器面の分割メッシュ(格子線)をパターン上に描画します。</value>
   </data>
-  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="checkBoxShowCircle.Text" xml:space="preserve">
+    <value>外枠を表示</value>
   </data>
-  <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBseDepth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBseDeltaE.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBseStereonetNote.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxFlipDetectorLeftRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelDetectorSizeTilt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelDetectorResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelDetectorCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabPageBseDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="statusStripMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripStatusLabelProgress.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripStatusLabelSummary.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelMasterPatternSelectors.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="sizeControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
-    <value>Radon 探索</value>
-  </data>
-  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
-    <value>辞書探索</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>EBSDシミュレータ</value>
-  </data>
-  <data name="labelBseStereonetNote.Text" xml:space="preserve">
-    <value>ステレオネットの中心は試料表面の法線方向</value>
-  </data>
-  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
-    <value>幾何を較正</value>
-  </data>
-  <data name="buttonFindOrientation.Text" xml:space="preserve">
-    <value>方位候補を探索</value>
-  </data>
-  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
-    <value>左右反転</value>
-  </data>
-  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
-    <value>検出器の解像度に合わせる</value>
-  </data>
-  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
-    <value>実測画像</value>
-  </data>
-  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
-    <value>実測画像</value>
-  </data>
-  <data name="labelDetectorCenter.Text" xml:space="preserve">
-    <value>検出器中心の座標</value>
-  </data>
-  <data name="labelDetectorResolution.Text" xml:space="preserve">
-    <value>解像度</value>
-  </data>
-  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
-    <value>サイズと傾斜</value>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>検出器 (蛍光スクリーン) の外形を示す黄色の矩形を
+パターン上に描画します。Detector 範囲のコピー
+時は、コピー縁と一致するため描かれません。</value>
   </data>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>明るさ</value>
   </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>最大</value>
+  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像 (シミュレーションパターン
+ではありません) の黒・白クリップ範囲を、
+右の最小・最大スライダーで調整します。</value>
   </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>最小</value>
+  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
+    <value>結晶軸の3D表示</value>
   </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>不透明度</value>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>3Dマスターパターンビューに結晶軸
+a/b/c の矢印インセットを表示します。</value>
   </data>
-  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
-    <value>現在の表示</value>
-  </data>
-  <data name="radioButtonDetector.Text" xml:space="preserve">
-    <value>検出器</value>
-  </data>
-  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
-    <value>検出器幾何 (パターンセンター PC と検出器距離 DD)
-を方位と交互に最適化し、シミュレーションと
-実測パターンの ZNCC を最大化します。
-マスターパターンが必須です。検出器の傾斜は固定で、
-結果は検出器中心の X/Y/Z 欄へ書き戻されます。</value>
-  </data>
-  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
-    <value>読み込んだ実測パターンを最もよく説明する方位を、
-上で選んだエンジンで探索します。候補は最大 10
-件が下の表に並び、マスターパターンが有る場合は
-トップ候補が ±0.25° まで精密化されます。</value>
+  <data name="checkBoxFlipDetectorLeftRight.Text" xml:space="preserve">
+    <value>左右反転</value>
   </data>
   <data name="checkBoxFlipDetectorLeftRight.ToolTip" xml:space="preserve">
     <value>パターンとオーバーレイを左右反転します。
@@ -906,17 +604,78 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
 EBSD カメラが記録する自然な画像です。実測画像の
 左右が逆の場合にのみチェックしてください。</value>
   </data>
-  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
-    <value>検出器のピクセルサイズでコピーします (画像 1 px =
-検出器 1 px)。範囲「検出器」と併用すると出力は
-検出器のピクセル数と厳密に一致します。長辺は 4096 px
-でクランプされます。未チェック時は画面の解像度です。</value>
+  <data name="checkBoxShowExperimentalImage.Text" xml:space="preserve">
+    <value>実測画像</value>
   </data>
   <data name="checkBoxShowExperimentalImage.ToolTip" xml:space="preserve">
     <value>このウィンドウにドラッグ＆ドロップした
 実測 EBSD 画像を、検出器エリアへ重ねて
 表示します (シミュレーションパターンの
 上、菊池線オーバーレイの下)。</value>
+  </data>
+  <data name="labelExpMinInt.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の黒レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以下の画素は黒になります。</value>
+  </data>
+  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の黒レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以下の画素は黒になります。</value>
+  </data>
+  <data name="labelExpMaxInt.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の白レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以上の画素は白になります。</value>
+  </data>
+  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の白レベルを、その画像の
+強度レンジに対する比率で設定します (スライダー
+は対数)。この値以上の画素は白になります。</value>
+  </data>
+  <data name="labelExpOpacity.Text" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
+下げると下のシミュレーションパターンが見えます。</value>
+  </data>
+  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
+下げると下のシミュレーションパターンが見えます。</value>
+  </data>
+  <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
+    <value>Radon 探索</value>
+  </data>
+  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
+    <value>実測画像の Radon 変換 (直線検出) マップに運動学的な
+菊池バンドのテンプレートを照合して方位を探索します。
+マスターパターン無しでも動作し、有る場合は robust ZNCC
+(平均を除いた正規化相互相関) で候補を再ランクします。</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.Text" xml:space="preserve">
+    <value>辞書探索</value>
+  </data>
+  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
+    <value>動力学マスターパターンから全方位の辞書パターン
+を生成し、robust ZNCC で総当たり比較して方位を
+探索します。マスターパターンが必須で数秒かかり
+ますが、Radon 探索より確実です。</value>
+  </data>
+  <data name="buttonFindOrientation.Text" xml:space="preserve">
+    <value>方位候補を探索</value>
+  </data>
+  <data name="buttonFindOrientation.ToolTip" xml:space="preserve">
+    <value>読み込んだ実測パターンを最もよく説明する方位を、
+上で選んだエンジンで探索します。候補は最大 10
+件が下の表に並び、マスターパターンが有る場合は
+トップ候補が ±0.25° まで精密化されます。</value>
   </data>
   <data name="dataGridViewEbsdCandidates.ToolTip" xml:space="preserve">
     <value>直前の探索で得られた方位候補 (良い順)。Score =
@@ -925,34 +684,40 @@ Radon バンド証拠の z 値、ZNCC =
 = 一致したバンド (Radon 探索のみ)。行をクリック
 すると、その方位がアプリ全体に適用されます。</value>
   </data>
-  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像 (シミュレーションパターン
-ではありません) の黒・白クリップ範囲を、
-右の最小・最大スライダーで調整します。</value>
+  <data name="buttonCalibrateGeometry.Text" xml:space="preserve">
+    <value>幾何を較正</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の白レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以上の画素は白になります。</value>
+  <data name="buttonCalibrateGeometry.ToolTip" xml:space="preserve">
+    <value>検出器幾何 (パターンセンター PC と検出器距離 DD)
+を方位と交互に最適化し、シミュレーションと
+実測パターンの ZNCC を最大化します。
+マスターパターンが必須です。検出器の傾斜は固定で、
+結果は検出器中心の X/Y/Z 欄へ書き戻されます。</value>
   </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の黒レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以下の画素は黒になります。</value>
+  <data name="checkBoxMatchDetectorResolution.Text" xml:space="preserve">
+    <value>検出器の解像度に合わせる</value>
   </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
-下げると下のシミュレーションパターンが見えます。</value>
+  <data name="checkBoxMatchDetectorResolution.ToolTip" xml:space="preserve">
+    <value>検出器のピクセルサイズでコピーします (画像 1 px =
+検出器 1 px)。範囲「検出器」と併用すると出力は
+検出器のピクセル数と厳密に一致します。長辺は 4096 px
+でクランプされます。未チェック時は画面の解像度です。</value>
   </data>
-  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
-    <value>ビットマップ (bmp) のラスター画像としてコピーします。
-菊池線やラベルも含め全体が固定解像度でラスター化され
-ます。メタファイルを貼り付けられないソフト向けです。</value>
+  <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
+    <value>現在の表示</value>
   </data>
   <data name="radioButtonCopyCurrent.ToolTip" xml:space="preserve">
     <value>パターン表示が現在映している範囲を、
 パン・ズームしたままコピーします (黄色い
 検出器の外枠も、表示されていれば含まれます)。</value>
+  </data>
+  <data name="radioButtonDetector.Text" xml:space="preserve">
+    <value>検出器</value>
+  </data>
+  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
+    <value>現在のパン・ズームに関係なく、検出器 (蛍光スクリーン)
+エリアのみをコピーします。黄色い検出器の外枠は含まれな
+いため、画像は検出器の縁でちょうど終わります。</value>
   </data>
   <data name="radioButtonCopyEmf.ToolTip" xml:space="preserve">
     <value>拡張メタファイル (emf) のベクター画像として
@@ -960,53 +725,534 @@ Radon バンド証拠の z 値、ZNCC =
 ベクターのまま保持され、拡大しても劣化しません
 (パターン画像のみラスターとして埋め込まれます)。</value>
   </data>
-  <data name="radioButtonDetector.ToolTip" xml:space="preserve">
-    <value>現在のパン・ズームに関係なく、検出器 (蛍光スクリーン)
-エリアのみをコピーします。黄色い検出器の外枠は含まれな
-いため、画像は検出器の縁でちょうど終わります。</value>
+  <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
+    <value>ビットマップ (bmp) のラスター画像としてコピーします。
+菊池線やラベルも含め全体が固定解像度でラスター化され
+ます。メタファイルを貼り付けられないソフト向けです。</value>
   </data>
-  <data name="radioButtonIndexingDictionary.ToolTip" xml:space="preserve">
-    <value>動力学マスターパターンから全方位の辞書パターン
-を生成し、robust ZNCC で総当たり比較して方位を
-探索します。マスターパターンが必須で数秒かかり
-ますが、Radon 探索より確実です。</value>
+  <data name="panelGeometry.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="radioButtonIndexingRadon.ToolTip" xml:space="preserve">
-    <value>実測画像の Radon 変換 (直線検出) マップに運動学的な
-菊池バンドのテンプレートを照合して方位を探索します。
-マスターパターン無しでも動作し、有る場合は robust ZNCC
-(平均を除いた正規化相互相関) で候補を再ランクします。</value>
+  <data name="flowLayoutPanelViewAlong.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の白レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以上の画素は白になります。</value>
+  <data name="graphControlDepthProfile.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の黒レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以下の画素は黒になります。</value>
+  <data name="poleFigureControl.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
-下げると下のシミュレーションパターンが見えます。</value>
+  <data name="graphControlEnergyProfile.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="labelExpBrightness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelColorScale.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelBrightness.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelOutputRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelWithBseDistribution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelDetectorPosition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelDetectorGeometry.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSDのセッティング</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelSampleCondition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
+    <value>SEMのセッティング</value>
+  </data>
+  <data name="groupBoxSampleCondition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageGeometry.Text" xml:space="preserve">
+    <value>SEM-EBSD設定</value>
+  </data>
+  <data name="tabPageGeometry.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageBseDistribution.Text" xml:space="preserve">
+    <value>BSE分布</value>
+  </data>
+  <data name="tabPageBseDistribution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageOverlays.Text" xml:space="preserve">
+    <value>補助図形</value>
+  </data>
+  <data name="tabPageOverlays.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
+    <value>検出器のサイズと傾斜</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>幅</value>
   </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
     <value>高さ</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelDetectorResolution.Text" xml:space="preserve">
+    <value>解像度</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelDetectorCenter.Text" xml:space="preserve">
+    <value>検出器中心の座標</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelOverlays.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelDetectorOutline.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelKikuchiLines.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
+    <value>菊池線の範囲</value>
+  </data>
+  <data name="groupBoxLatticePlanes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelThresholdLength.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelThresholdStructureFactor.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxTextSettings.Text" xml:space="preserve">
+    <value>文字設定</value>
+  </data>
+  <data name="groupBoxTextSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelTextSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelExperimentalImage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelExpMinInt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelExpMaxInt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelExpOpacity.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
+    <value>動力学計算のパラメータ</value>
+  </data>
+  <data name="groupBoxSimulationParameters.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelSimulationParameters.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMaxNumOfGAndGrid.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelEnergyRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelThicknessRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelAbsorptionOptions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="statusStripMain.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="scalablePictureBoxAdvancedMasterPattern2D.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelMasterPattern3D.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelMasterPattern3DAxes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
+    <value>マスターパターン</value>
+  </data>
+  <data name="groupBoxMasterPattern.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlMasterPattern.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageMasterPattern2D.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPattern2DControls.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageMasterPattern3D.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPatternControls.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelMasterPatternButtons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxEBSDPattern.Text" xml:space="preserve">
+    <value>EBSDパターン</value>
+  </data>
+  <data name="groupBoxEBSDPattern.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlPatternSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageOutputParameter.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
+  </data>
+  <data name="tabPageOutputParameter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageExperimentalImage.Text" xml:space="preserve">
+    <value>実測画像</value>
+  </data>
+  <data name="tabPageExperimentalImage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelExperimentalImageTab.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelIndexingButtons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelPatternBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopy.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopyOptions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopyButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopyRadios.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopyRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelCopyFormat.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelViewSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelResolutionFlip.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>解像度</value>
   </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="sizeControl.HeaderText" xml:space="preserve">
     <value>サイズ (W×H)</value>
   </data>
-  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>試料傾斜</value>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelShowCheckBoxes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelSpacerLeft.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelSpacerRight.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelSpacerBottom.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EBSDシミュレータ</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelTextSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="statusStripMain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelLineWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBseStereonetNote.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageBseDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelDetectorCenter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="sizeControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripStatusLabelProgress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelDetectorResolution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelBseDepth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripStatusLabelSummary.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelExpBrightness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBseDeltaE.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>オーバーレイの指数文字（菊池線指数・
+晶帯軸指数など）の色を設定します。</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>EBSD パターン表示の背景色を設定します。
+「Apply structure factors」がオンのと
+き、弱い菊池線がこの色へ溶け込みます。</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value>菊池線の描画色を設定します。</value>
   </data>
 </root>

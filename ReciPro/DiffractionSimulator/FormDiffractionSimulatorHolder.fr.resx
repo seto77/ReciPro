@@ -74,7 +74,7 @@ l'inclinaison X</value>
 l'inclinaison Y</value>
   </data>
   <data name="groupBoxTEMSettings.Text" xml:space="preserve">
-    <value>Réglages propres au MET</value>
+    <value>Réglages MET</value>
   </data>
   <data name="groupBoxLink.Text" xml:space="preserve">
     <value>Liaison</value>

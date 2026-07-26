@@ -153,10 +153,10 @@
     <value>Eliminar</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Borrar todos los puntos</value>
+    <value>Borrar todo</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Mostrar símbolos</value>
+    <value>Símbolos</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Atajos de teclado</value>
@@ -180,10 +180,10 @@
     <value>Grano único</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Detalles de la función de ajuste</value>
+    <value>Detalles función</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Detalles del punto</value>
+    <value>Detalles punto</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>Rango de ajuste (radio)</value>
@@ -237,7 +237,7 @@
     <value>Copiar</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Mostrar números</value>
+    <value>Números</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
     <value>Mostrar símbolos marcadores en los puntos observados</value>

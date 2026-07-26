@@ -103,19 +103,19 @@ all'intensità delle linee di Kikuchi</value>
     <value>Dimensione testo</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>con passo di</value>
+    <value>passo</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Numero di onde diffratte</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Usa modello di assorbimento non locale</value>
+    <value>Assorbimento non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Includi il fondo TDS</value>
+    <value>Fondo TDS</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Spessore da</value>
+    <value>Spessore</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -154,10 +154,10 @@ all'intensità delle linee di Kikuchi</value>
     <value>a</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Energia da</value>
+    <value>Energia</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>con passo di</value>
+    <value>passo</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Profondità (nm)</value>
@@ -636,8 +636,8 @@ quadrata di Lambert del master pattern (64–2048).</value>
     <value>Immagine sperimentale</value>
   </data>
   <data name="labelDetectorCenter.Text" xml:space="preserve">
-    <value>Coordinate del
-centro del rivelatore</value>
+    <value>Coord. centro
+rivelatore</value>
   </data>
   <data name="labelDetectorResolution.Text" xml:space="preserve">
     <value>Risoluzione</value>

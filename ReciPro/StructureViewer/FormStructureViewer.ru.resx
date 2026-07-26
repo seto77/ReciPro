@@ -78,13 +78,13 @@
     <value>Центр</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Показать ограничивающие плоскости</value>
+    <value>Показать плоскости</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>Непрозрачность</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Обрезать объекты по ограничивающим плоскостям</value>
+    <value>Обрезать объекты</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Границы по элементарной ячейке</value>

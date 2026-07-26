@@ -103,19 +103,19 @@
     <value>Taille du texte</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>par pas de</value>
+    <value>pas</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Nombre d'ondes diffractées</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Utiliser le modèle d'absorption non locale</value>
+    <value>Absorption non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Inclure le fond TDS</value>
+    <value>Fond TDS</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Épaisseur de</value>
+    <value>Épaisseur</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>à</value>
@@ -154,10 +154,10 @@
     <value>à</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Énergie de</value>
+    <value>Énergie</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>par pas de</value>
+    <value>pas</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Profondeur (nm)</value>
@@ -637,7 +637,7 @@ de Lambert du master pattern (64–2048).</value>
   </data>
   <data name="labelDetectorCenter.Text" xml:space="preserve">
     <value>Coordonnées du
-centre du détecteur</value>
+centre détecteur</value>
   </data>
   <data name="labelDetectorResolution.Text" xml:space="preserve">
     <value>Résolution</value>

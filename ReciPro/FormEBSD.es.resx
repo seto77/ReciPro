@@ -103,19 +103,19 @@ a la intensidad de las líneas de Kikuchi</value>
     <value>Tamaño de texto</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>con paso de</value>
+    <value>paso</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Número de ondas difractadas</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
-    <value>Usar modelo de absorción no local</value>
+    <value>Absorción no local</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Incluir fondo TDS</value>
+    <value>Fondo TDS</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
-    <value>Espesor desde</value>
+    <value>Espesor</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>hasta</value>
@@ -151,10 +151,10 @@ a la intensidad de las líneas de Kikuchi</value>
     <value>hasta</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
-    <value>Energía desde</value>
+    <value>Energía</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
-    <value>con paso de</value>
+    <value>paso</value>
   </data>
   <data name="labelBseDepth.Text" xml:space="preserve">
     <value>Profundidad (nm)</value>

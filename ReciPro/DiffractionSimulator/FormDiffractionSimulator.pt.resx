@@ -78,7 +78,7 @@
     <value>Erro excit.</value>
   </data>
   <data name="groupBoxStringSize.Text" xml:space="preserve">
-    <value>Tamanho texto</value>
+    <value>Tam. texto</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Pé da perpendicular
@@ -350,7 +350,7 @@ intensidade relativa</value>
     <value>Teoria dinâmica</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>Usar cor atribuída para cada cristal</value>
+    <value>Cor por cristal</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>Dispersão anômala (f', f'')</value>
@@ -415,10 +415,10 @@ raio</value>
     <value>Cálculo de intensidade</value>
   </data>
   <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
-    <value>Apenas erro de excitação</value>
+    <value>Apenas erro de exc.</value>
   </data>
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
-    <value>Cinemático &amp;&amp; erro de excitação</value>
+    <value>Cinemático &amp;&amp; erro exc.</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
     <value>Detalhes dos pontos</value>

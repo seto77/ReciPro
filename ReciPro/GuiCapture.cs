@@ -219,7 +219,11 @@ internal static partial class GuiCapture
             captureFormMain.PrepareCaptureCrystalSelection(); // 260717Cl: ループ後は既定の spinel に戻す
         }
 
-        try { captureFormMain?.Close(); captureFormMain?.Dispose(); } catch { /* 破棄時例外は無視 */ } // (260523Ch)
+        // try { captureFormMain?.Close(); captureFormMain?.Dispose(); } catch { /* 破棄時例外は無視 */ } // (260523Ch) 260726Cl 旧
+        // 260726Cl: Close() は FormMain_FormClosing → Registry(Reg.Mode.Write) を発火させ、--capture で強制した
+        //   カルチャ (ru 等) を UI 言語としてレジストリへ焼き付けてしまう (11 言語ぶん撮ると最後の言語で
+        //   普段の ReciPro が起動する)。default.xml の上書きも同様。Dispose は FormClosing を発火しない。
+        try { captureFormMain?.Dispose(); } catch { /* 破棄時例外は無視 */ }
 
         Trace($"done: ok={ok} fail={fail}");
         File.WriteAllLines(Path.Combine(outDir, "_capture-log.tsv"), log);

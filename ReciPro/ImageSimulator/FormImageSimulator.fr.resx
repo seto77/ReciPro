@@ -75,7 +75,7 @@
     <value>Ajuster</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>Pour chaque image</value>
+    <value>Par image</value>
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Normalisation</value>
@@ -94,10 +94,10 @@
     <value>Couleur</value>
   </data>
   <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
-    <value>Longueur</value>
+    <value>Long.</value>
   </data>
   <data name="checkBoxShowScale.Text" xml:space="preserve">
-    <value>Barre d'échelle</value>
+    <value>Échelle</value>
   </data>
   <data name="colorControlLabel.HeaderText" xml:space="preserve">
     <value>Couleur</value>
@@ -106,22 +106,22 @@
     <value>Taille</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Étiquette</value>
+    <value>Texte</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
-    <value>Maille élémentaire</value>
+    <value>Maille</value>
   </data>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Affichage</value>
   </data>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
-    <value>Nbre</value>
+    <value>N</value>
   </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Pas</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
-    <value>Nbre</value>
+    <value>N</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Pas</value>
@@ -199,7 +199,7 @@
     <value>Image linéaire</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Coef. de transmission croisée</value>
+    <value>Coef. transm. croisée</value>
   </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Options HRTEM</value>
@@ -214,7 +214,7 @@
     <value>Propriétés de l'image</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Ondes diffractées</value>
+    <value>Ondes</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Paramètres de simulation</value>
@@ -300,7 +300,7 @@ est affiché dans le
     <value>Préréglages</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Simulation en temps réel</value>
+    <value>Temps réel</value>
   </data>
   <data name="buttonSimulate.Text" xml:space="preserve">
     <value>Simuler</value>

@@ -69,7 +69,7 @@
     <value>Energia média de BSE</value>
   </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
-    <value>Distribuição direcional dos BSE (o centro do estereograma corresponde à direção normal à superfície)</value>
+    <value>Distribuição direcional dos BSE</value>
   </data>
   <data name="buttonSurfaceNormal.Text" xml:space="preserve">
     <value>Da normal à superfície</value>

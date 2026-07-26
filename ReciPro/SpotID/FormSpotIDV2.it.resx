@@ -147,10 +147,10 @@
     <value>Elimina</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Cancella tutti gli spot</value>
+    <value>Cancella tutto</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Mostra simboli</value>
+    <value>Simboli</value>
   </data>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Suggerimenti scorciatoie</value>
@@ -174,13 +174,13 @@
     <value>Grano singolo</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Dettagli della funzione di adattamento</value>
+    <value>Dettagli funzione</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Dettagli dello spot</value>
+    <value>Dettagli spot</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
-    <value>Intervallo di adattamento (raggio)</value>
+    <value>Raggio adattam.</value>
   </data>
   <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
     <value>Mostra asse di zona</value>
@@ -234,7 +234,7 @@
     <value>Copia</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Mostra numeri</value>
+    <value>Numeri</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
     <value>Mostra i simboli marcatori sugli spot osservati</value>

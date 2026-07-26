@@ -84,7 +84,7 @@
     <value>Opacidad</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Recortar objetos por planos límite</value>
+    <value>Recortar objetos</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Límites definidos por la celda unidad</value>

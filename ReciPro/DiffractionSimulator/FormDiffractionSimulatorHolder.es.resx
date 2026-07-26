@@ -74,7 +74,7 @@ Inclinación X</value>
 Inclinación Y</value>
   </data>
   <data name="groupBoxTEMSettings.Text" xml:space="preserve">
-    <value>Ajustes propios de TEM</value>
+    <value>Ajustes de TEM</value>
   </data>
   <data name="groupBoxLink.Text" xml:space="preserve">
     <value>Vínculo</value>

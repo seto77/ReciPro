@@ -350,7 +350,7 @@
     <value>동역학 이론</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>각 결정에 지정된 색 사용</value>
+    <value>결정별 지정 색</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
     <value>이상 분산 (f', f'')</value>

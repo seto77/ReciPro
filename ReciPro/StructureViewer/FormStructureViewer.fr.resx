@@ -78,13 +78,13 @@
     <value>Centre</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Afficher les plans de délimitation</value>
+    <value>Afficher les plans</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>Opacité</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
-    <value>Découper les objets selon les plans de délimitation</value>
+    <value>Découper les objets</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Limites définies par la maille élémentaire</value>

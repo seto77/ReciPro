@@ -75,7 +75,7 @@
     <value>Настройка</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>Для каждого изображения</value>
+    <value>По кадру</value>
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Нормировка</value>
@@ -97,7 +97,7 @@
     <value>Длина</value>
   </data>
   <data name="checkBoxShowScale.Text" xml:space="preserve">
-    <value>Масштабная линейка</value>
+    <value>Линейка</value>
   </data>
   <data name="colorControlLabel.HeaderText" xml:space="preserve">
     <value>Цвет</value>
@@ -109,19 +109,19 @@
     <value>Метка</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
-    <value>Элементарная ячейка</value>
+    <value>Ячейка</value>
   </data>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Отображение</value>
   </data>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
-    <value>Кол.</value>
+    <value>N</value>
   </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
-    <value>Кол.</value>
+    <value>N</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
@@ -196,10 +196,10 @@
     <value>Параметры STEM</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
-    <value>Линейное изображение</value>
+    <value>Линейное изобр.</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>Перекр. коэф. передачи</value>
+    <value>Перекр. коэф.</value>
   </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
     <value>Параметры HRTEM</value>
@@ -214,7 +214,7 @@
     <value>Свойства изображения</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Дифр. волны</value>
+    <value>Волны</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Настройки моделирования</value>
