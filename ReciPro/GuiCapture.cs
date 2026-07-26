@@ -745,6 +745,24 @@ internal static partial class GuiCapture
                 Application.DoEvents();
                 System.Threading.Thread.Sleep(150); // ドロップダウンが画面へ出るまで待つ
 
+                // 260726Cl 追加: 待機中に背後の再描画 (FormImageSimulator の非同期 Simulate 完了など) でドロップダウンが
+                // 閉じられることがある。閉じたまま撮ると、その座標にある背後のフォームが写った PNG が
+                // 「それらしい見た目」で保存されてしまう (実例: FormImageSimulator の File メニューにシミュレーション像が
+                // 写っていた。CaptureScreen の再試行は全面単色のときしか効かないので検出できない)。開き直して確認する。
+                for (var retry = 0; retry < 3 && host is ToolStripDropDown && !host.Visible; retry++)
+                {
+                    host = EnsureToolStripCaptureHostVisible(item);
+                    if (host == null || host.IsDisposed) break;
+                    host.Refresh();
+                    Application.DoEvents();
+                    System.Threading.Thread.Sleep(250);
+                }
+                if (host is ToolStripDropDown && !host.Visible)
+                {
+                    trace($"{name}\tWARN\tmenu-crop {item.Name}: drop-down dismissed before capture"); // 誤った画像は保存しない
+                    continue;
+                }
+
                 var crop = CaptureScreen(new Rectangle(host.PointToScreen(Point.Empty), host.Size), form, trace, $"{name}.{item.Name}");
                 if (crop != null)
                     using (crop)
