@@ -23,9 +23,7 @@
 
 ## 計算条件
 
-![計算条件](../assets/cap-ja-auto/FormTrajectory.panelCalculationConditions.png)
-
-ビームエネルギー、入射電子数、試料・物質、その他のモンテカルロパラメータ。
+ビームエネルギー、入射電子数、試料・物質、その他のモンテカルロパラメータ（上の全体図を参照）。
 
 ### ビームエネルギー
 
@@ -51,9 +49,7 @@
 
 ## ステレオネットオプション
 
-![ステレオネットオプション](../assets/cap-ja-auto/FormTrajectory.panelDrawingOptions.png)
-
-ステレオネット投影に描画する角度分布の表示オプション。
+ステレオネット投影に描画する角度分布の表示オプション（上の全体図を参照）。
 
 ### 投影法
 
@@ -71,7 +67,7 @@
 
 ## 統計情報
 
-![統計情報](../assets/cap-ja-auto/FormTrajectory.groupBoxStatistics.png)
+![統計情報](../assets/cap-ja-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
 計算結果の要約。
 
@@ -84,7 +80,7 @@
 
 ## 後方散乱電子の方位分布
 
-![後方散乱電子の方位分布](../assets/cap-ja-auto/FormTrajectory.groupBoxDirectionDistribution.png)
+![後方散乱電子の方位分布](../assets/cap-ja-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
 後方散乱電子の角度分布（ステレオネット中心は表面法線方向）。黄/橙の縁取りがある場合は、EBSD検出器の見込み領域を示します。
 
