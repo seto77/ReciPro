@@ -12,7 +12,7 @@
 #     JA が /ja/ のままなので従来どおり mkdocs-redirects が担当する (mkdocs.yml の redirect_maps)。
 #
 # 本フックの責務は「過去の英語 URL 互換の静的 meta-refresh stub 生成」だけ。i18n/fallback/build は
-# プラグインに任せる。詳細は .project-guidance/ReciPro_Pages多言語化計画.md §3.2。
+# プラグインに任せる。詳細は .project-guidance/ReciPro/ReciPro_Pages編集方針.md §3.2。
 
 from pathlib import Path
 import html

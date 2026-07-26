@@ -12,7 +12,7 @@ namespace ReciPro;
 /// 260724Cl 追加: 実測 EBSD パターンの指数付け UI (方位候補の探索と適用)。
 /// 260725Cl 訂正: コントロールの置き場は確定済み — 中央列 EBSD pattern 配下の tabControlPatternSettings →
 /// Experimental image タブ (探索エンジンのラジオ・Find/Calibrate ボタン・候補 DataGridView)。旧 doc の「Overlays タブに仮置き」は解消。
-/// 設計正本 = .project-guidance/ReciPro_EBSD物理・幾何レビュー.md §7。
+/// 設計正本 = .project-guidance/ReciPro/ReciPro_EBSD総合設計・実装・高速化・引継ぎ.md §7。
 /// 260724Cl 方針転換 (作者指示): バンドの離散検出 (Detect bands) と中心線表示・Optimize orientation ボタンを廃止し、
 /// 「Find orientation candidates」に一本化。裏で Radon 証拠マップへの運動学的テンプレート照合 (EbsdRadonIndexer) で方位を直接探索し、
 /// 動力学 MasterPattern が生成済みなら上位候補へ ZNCC 精密化を自動連結する。

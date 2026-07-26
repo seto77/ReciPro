@@ -3,7 +3,7 @@
 #   - en を default locale としてサイトルート (/ReciPro/) へ、ja を /ReciPro/ja/ へ出力。
 #   - 未訳ページは fallback_to_default で英語本文をローカライズ URL に自動生成 (ページ単位の増分公開)。
 #   - 言語切替は reconfigure_material が Material のセレクタを現在ページ基準で自動構成 (旧 language_switch.js は廃止)。
-#   詳細・設計判断は .project-guidance/ReciPro_Pages多言語化計画.md。
+#   詳細・設計判断は .project-guidance/ReciPro/ReciPro_Pages編集方針.md。
 site_name: ReciPro Manual
 site_description: ReciPro user manual
 site_url: https://seto77.github.io/ReciPro/

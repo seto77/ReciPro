@@ -192,7 +192,7 @@ jobs:
           if (Test-Path $log) { Get-Content $log }
           if ($LASTEXITCODE -ne 0) { throw "Crystallography.Native build failed (exit $LASTEXITCODE)." }
 
-      # 260613Cl vdproj→WiX 移行 (Phase B、計画書 .project-guidance/ReciPro_WiX移行計画.md):
+      # 260613Cl vdproj→WiX 移行 (Phase B、計画書 .project-guidance/ReciPro/ReciPro_配布・リリース運用.md):
       #   旧「Build managed application」(dotnet build → bin\Release を vdproj が直接参照) を、
       #   MSI 専用 staging への framework-dependent publish に置換。bin\Release 共有による
       #   「publish は MSI 後」順序制約はこれで解消 (vdproj の SourcePath 参照が消えたため)。
@@ -268,7 +268,7 @@ jobs:
           # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish は bin\Release を
           #          ランタイム同梱の内容で汚染し (AppendRuntimeIdentifierToOutputPath=false で publish と build が
           #          bin\Release を共有するため)、MSI ビルドより前に走らせると framework-dependent であるべき MSI に
-          #          ランタイムが紛れ込む。詳細は .project-guidance\ReciPro_MSI+PortableZip構築方針.md §4。
+          #          ランタイムが紛れ込む。詳細は .project-guidance\archive\2026\release\ReciPro_MSI+PortableZip構築方針.md §4。
           # 260613Cl ↑の順序制約は WiX 移行で解消済み (MSI は専用 staging から作り bin\Release を参照しない)。
           #          位置は当面維持 (変更を最小にするため)。
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-portable\ReciPro"

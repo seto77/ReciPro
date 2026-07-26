@@ -1,7 +1,7 @@
 # 260611Cl 追加: win-arm64 用ネイティブ依存 DLL (xraylib / GLFW) を windows-11-arm ランナーでソースからビルドする。
 # workflow_dispatch 専用。成果物 (libxrl-11.dll / glfw3.dll / glfw3.LICENSE.txt / *.PROVENANCE.txt) を
 # Actions artifact として取得し、ReciPro\native\win-arm64\ にコミットして使う。
-# 方針: .project-guidance/ReciPro_ARM64化方針.md §4-§5 (このワークフロー自体が再現可能な手順書を兼ねる)。
+# 方針: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §4-§5 (このワークフロー自体が再現可能な手順書を兼ねる)。
 # 静的 CRT (/MT): WoA 素環境に arm64 VC redist が無くても動くようにするため (方針 §3.5)。
 name: Build ARM64 native deps (xraylib + GLFW)
 

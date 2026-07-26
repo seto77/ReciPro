@@ -6,7 +6,7 @@
 #     これに伴い本ワークフローの workflow_run 自動トリガは廃止し、手動 (workflow_dispatch) の
 #     復旧/backfill 専用に降格した: inline 統合で arm64 が失敗して x64 のみ公開された release への後付け添付、
 #     または arm64 基盤導入前の旧 release への backfill に使う。reusable な build (build-arm64-portable.yml) は共用のまま。
-# 設計の要点 (方針 .project-guidance/ReciPro_ARM64化方針.md):
+# 設計の要点 (方針 .project-guidance/ReciPro/ReciPro_配布・リリース運用.md):
 #   - tag は作らない: 既存 release tag へ gh release upload するだけなので、v* tag 削除禁止 ruleset と
 #     原子的 release 設計 (260530Cl) に一切干渉しない。x64 配布物にも触れない
 #   - smoke は upload の前 (windows-11-arm = arm64 ネイティブランナー): 想定故障モードが全て

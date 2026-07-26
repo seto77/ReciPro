@@ -4,7 +4,7 @@
 #   段階 2 = attach-arm64-experimental.yml で既存 release へ後付け添付 (実機検証の安定後)
 #   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
 # x64 リリース (release.yml) とは完全に独立。bin\Release は共有しない (csproj/vcxproj 側で出力分離済み、方針 §3.2)。
-# 方針: .project-guidance/ReciPro_ARM64化方針.md §6
+# 方針: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §6
 name: Build ARM64 portable ZIP and MSI (experimental, artifact only)
 
 on:
@@ -261,7 +261,7 @@ jobs:
           name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
           path: ${{ steps.portable.outputs.root }}
 
-      # ---- 260613Cl Phase C: arm64 MSI (WiX、計画書 .project-guidance/ReciPro_WiX移行計画.md §5.2) ----
+      # ---- 260613Cl Phase C: arm64 MSI (WiX、計画書 .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §5.2) ----
       # MSI は x64 と同じ framework-dependent (portable ZIP の self-contained と役割分担)。
       # 検査セットは validate-wix-msi.yml の arm64 staging と同一
       - name: Stage arm64 MSI payload (framework-dependent publish)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 260612Cl 追加: vdproj (ReciProSetup.vdproj) の WiX v7 等価再現。
-     仕様の根拠と設計判断は .project-guidance/ReciPro_WiX移行計画.md を参照。
+     仕様の根拠と設計判断は .project-guidance/ReciPro/ReciPro_配布・リリース運用.md を参照。
      不可侵: UpgradeCode / per-user (LocalAppData) / framework-dependent / 出力名 ReciProSetup.msi (x64) -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
