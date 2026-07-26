@@ -978,6 +978,19 @@ public partial class FormEBSD : FormBase
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
+    /// <summary>BSE 重みを使う前に、mcDistribution の (energy × depth) 格子を現在の MasterPattern へ揃える。260727Cl 追加。
+    /// MC は MasterPattern 構築とは別のタイミングでも走る (Calc BSE / 検出器幾何変更時の再ビニング / build 中止) ので、
+    /// 両者の格子はずれ得る。ずれたまま weighted 合成へ渡すと添字 wIdx = ei*dLen + di が別スライスの重みを指し、
+    /// 例外も警告も出さずに物理的に誤ったパターンを描く (dLen が増える方向なら IndexOutOfRange)。
+    /// 保存済み BSE から再ビニングして揃え、揃えられなければ false を返す (呼び出し側は BSE 重みを使わない)。</summary>
+    private bool EnsureMcDistributionMatchesMasterPattern()
+    {
+        if (mcDistribution == null || MasterPattern == null) return false;
+        if (mcDistribution.MatchesGridOf(MasterPattern)) return true;
+        RebinMcDistribution();
+        return mcDistribution != null && mcDistribution.MatchesGridOf(MasterPattern);
+    }
+
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
     {
         // 260723Cl 追加: sizeControl を graphicsBox の現在サイズで初期化 (FormDiffractionSimulator と同方式)
@@ -1106,7 +1119,8 @@ public partial class FormEBSD : FormBase
 
         string statusText;
 
-        var useBseDistribution = checkBoxWithBSEDistribution.Checked && mcDistribution != null; // (260327Ch) チェック時だけ BSE 分布つき合成を表示する
+        // var useBseDistribution = checkBoxWithBSEDistribution.Checked && mcDistribution != null; // (260327Ch) // 260727Cl 変更前: 格子一致を見ておらず、MasterPattern を作り直すと別スライスの重みで合成し得た
+        var useBseDistribution = checkBoxWithBSEDistribution.Checked && EnsureMcDistributionMatchesMasterPattern(); // 260727Cl
 
         // 260325Cl: BSE 分布を使う場合は加重平均、そうでなければ単一スライス
         if (useBseDistribution)
@@ -3386,7 +3400,8 @@ public partial class FormEBSD : FormBase
         //260724Cl 改訂 (作者指示「エネルギー 1 点はまずい」): MC 分布があれば全ビン平均重みの微分合成パターン
         //(実稼働の表示合成 model 2 のグローバル近似) を ZNCC 比較に使う。単一スライスより実測との相関が上がることをハーネスで実証。
         //MC 未実行 (通常は MasterPattern build 前段で必ず走る) 時のみ旧来の trackBar 選択単一スライスへフォールバック
-        if (mcDistribution != null)
+        //if (mcDistribution != null) // 260727Cl 変更前: 格子一致を見ておらず、ずれた重みで合成した参照パターンで採点し得た
+        if (EnsureMcDistributionMatchesMasterPattern()) // 260727Cl
         {
             if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution))
             {
