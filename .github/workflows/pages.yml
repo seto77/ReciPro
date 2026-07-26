@@ -43,6 +43,11 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        # 260726Cl: リポジトリ設定で Pages が未有効だと "Get Pages site failed / Not Found" で
+        #   ビルドごと落ちる (PressureCalculator の初回 push で実際に発生)。enablement: true なら
+        #   ワークフロー自身が Actions ビルドとして有効化するので、設定を手で入れ忘れても通る。
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
