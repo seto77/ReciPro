@@ -138,6 +138,8 @@ Sets the items overlaid on the image.
 
 ## File menu
 
+![File menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
+
 - **Save Image** : save as **as Image (PNG format)**, **as Image (TIFF format)**, or **as Metafile (EMF)**. **Save individually for serial image mode** writes the images of a serial run one by one.
 - **Copy image** : copy to the clipboard **as Image** or **as Metafile (EMF)**.
 - **Overprint symbols** : burns the unit cell, labels, and scale bar into the saved image.
