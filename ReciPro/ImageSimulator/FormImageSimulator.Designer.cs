@@ -877,7 +877,8 @@ namespace ReciPro
             numericBoxThicknessNum.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxThicknessNum, "numericBoxThicknessNum");
             numericBoxThicknessNum.Maximum = 20D;
-            numericBoxThicknessNum.Minimum = 0.1D;
+            //numericBoxThicknessNum.Minimum = 0.1D; // 260726Cl 旧: DecimalPlaces=0 で「0」と表示されるのに最小値が 0.1 で不整合 (隣の DefocusNum は 1)
+            numericBoxThicknessNum.Minimum = 1D; // 260726Cl
             numericBoxThicknessNum.Name = "numericBoxThicknessNum";
             numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
             numericBoxThicknessNum.ShowUpDown = true;
@@ -1370,6 +1371,7 @@ namespace ReciPro
             // 
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
+            numericBoxNumOfBlochWave.DecimalPlaces = 0; // 260726Cl 追加: ブロッホ波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxNumOfBlochWave.Maximum = 1024D;
             numericBoxNumOfBlochWave.Minimum = 2D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";

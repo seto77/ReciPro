@@ -758,6 +758,7 @@
             // 
             numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxMaxUVW, "numericBoxMaxUVW");
+            numericBoxMaxUVW.DecimalPlaces = 0; // 260726Cl 追加: 晶帯軸指数の上限 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxMaxUVW.Maximum = 100D;
             numericBoxMaxUVW.Minimum = 1D;
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";

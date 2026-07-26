@@ -221,6 +221,7 @@
             // 
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
+            numericBoxMaxNumOfG.DecimalPlaces = 0; // 260726Cl 追加: 回折波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";

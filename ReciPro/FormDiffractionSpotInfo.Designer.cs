@@ -785,6 +785,7 @@
             numericBoxEffectiveDigit.HeaderText = "Effective digit";
             numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
             numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxEffectiveDigit.DecimalPlaces = 0; // 260726Cl 追加: 有効桁数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxEffectiveDigit.Maximum = 16D;
             numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxEffectiveDigit.Minimum = 1D;

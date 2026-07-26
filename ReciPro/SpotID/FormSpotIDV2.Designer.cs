@@ -860,6 +860,7 @@ namespace ReciPro
             // 
             numericBoxDiffractedWaves.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxDiffractedWaves, "numericBoxDiffractedWaves");
+            numericBoxDiffractedWaves.DecimalPlaces = 0; // 260726Cl 追加: 回折波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxDiffractedWaves.Maximum = 2048D;
             numericBoxDiffractedWaves.Minimum = 1D;
             numericBoxDiffractedWaves.Name = "numericBoxDiffractedWaves";
@@ -869,7 +870,8 @@ namespace ReciPro
             numericBoxDiffractedWaves.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiffractedWaves, resources.GetString("numericBoxDiffractedWaves.ToolTip"));
             numericBoxDiffractedWaves.Value = 400D;
-            numericBoxDiffractedWaves.ValueBoxWidth = 36;
+            //numericBoxDiffractedWaves.ValueBoxWidth = 36; // 260726Cl 旧: zh-Hans で最長値「2048」が 3px 入らなかった
+            numericBoxDiffractedWaves.ValueBoxWidth = 42; // 260726Cl
             // 
             // numericBoxSemiangle
             // 
@@ -957,8 +959,10 @@ namespace ReciPro
             // 
             numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
+            numericBoxMaxGrainNum.DecimalPlaces = 0; // 260726Cl 追加: 探索する結晶粒の最大個数 (ループ上限に使う整数)
             numericBoxMaxGrainNum.Maximum = 10D;
-            numericBoxMaxGrainNum.Minimum = 0.1D;
+            //numericBoxMaxGrainNum.Minimum = 0.1D; // 260726Cl 旧: 個数なのに 0.1 が入力でき、ループが 1 回も回らなかった
+            numericBoxMaxGrainNum.Minimum = 1D; // 260726Cl
             numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
             numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
             numericBoxMaxGrainNum.ShowUpDown = true;
@@ -966,7 +970,8 @@ namespace ReciPro
             numericBoxMaxGrainNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxGrainNum, resources.GetString("numericBoxMaxGrainNum.ToolTip"));
             numericBoxMaxGrainNum.Value = 2D;
-            numericBoxMaxGrainNum.ValueBoxWidth = 20;
+            //numericBoxMaxGrainNum.ValueBoxWidth = 20; // 260726Cl 旧: zh-Hans で最長値「10」が 3px 入らなかった
+            numericBoxMaxGrainNum.ValueBoxWidth = 26; // 260726Cl
             // 
             // flowLayoutPanel4
             // 

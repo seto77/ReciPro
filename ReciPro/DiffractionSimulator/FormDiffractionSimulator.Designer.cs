@@ -2128,6 +2128,7 @@
             // 
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
+            numericBoxNumOfBlochWave.DecimalPlaces = 0; // 260726Cl 追加: ブロッホ波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxNumOfBlochWave.Maximum = 1000D;
             numericBoxNumOfBlochWave.Minimum = 8D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";

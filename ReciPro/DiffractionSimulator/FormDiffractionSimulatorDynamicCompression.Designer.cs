@@ -167,7 +167,6 @@ namespace ReciPro
             // numericBoxCompressedThetaB
             // 
                        numericBoxCompressedThetaB.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCompressedThetaB.DecimalPlaces = -2;
                         numericBoxCompressedThetaB.FooterText = "°/ns";
                         numericBoxCompressedThetaB.HeaderText = "b";
             numericBoxCompressedThetaB.Location = new System.Drawing.Point(17, 104);
@@ -189,7 +188,6 @@ namespace ReciPro
             // numericBoxCompressedOmega
             // 
                        numericBoxCompressedOmega.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCompressedOmega.DecimalPlaces = -2;
                         numericBoxCompressedOmega.FooterText = "°/ns";
                         numericBoxCompressedOmega.HeaderText = "ω";
             numericBoxCompressedOmega.Location = new System.Drawing.Point(14, 21);
@@ -211,7 +209,6 @@ namespace ReciPro
             // numericBoxCompressedThetaA
             // 
                        numericBoxCompressedThetaA.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCompressedThetaA.DecimalPlaces = -2;
                         numericBoxCompressedThetaA.FooterText = "°";
                         numericBoxCompressedThetaA.HeaderText = "a";
             numericBoxCompressedThetaA.Location = new System.Drawing.Point(18, 77);
@@ -231,7 +228,6 @@ namespace ReciPro
             // numericBoxCompressedOmegaSigma
             // 
                        numericBoxCompressedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCompressedOmegaSigma.DecimalPlaces = -2;
                         numericBoxCompressedOmegaSigma.FooterText = "°/ns";
                         numericBoxCompressedOmegaSigma.HeaderText = "σ_ω";
             numericBoxCompressedOmegaSigma.Location = new System.Drawing.Point(2, 49);
@@ -266,7 +262,6 @@ namespace ReciPro
             // numericBoxReleasedThetaB
             // 
                        numericBoxReleasedThetaB.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxReleasedThetaB.DecimalPlaces = -2;
                         numericBoxReleasedThetaB.FooterText = "°/ns";
                         numericBoxReleasedThetaB.HeaderText = "b";
             numericBoxReleasedThetaB.Location = new System.Drawing.Point(18, 104);
@@ -288,7 +283,6 @@ namespace ReciPro
             // numericBoxReleasedOmegaSigma
             // 
                        numericBoxReleasedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxReleasedOmegaSigma.DecimalPlaces = -2;
                         numericBoxReleasedOmegaSigma.FooterText = "°/ns";
                         numericBoxReleasedOmegaSigma.HeaderText = "σ_ω";
             numericBoxReleasedOmegaSigma.Location = new System.Drawing.Point(4, 49);
@@ -310,7 +304,6 @@ namespace ReciPro
             // numericBoxReleasedOmega
             // 
                        numericBoxReleasedOmega.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxReleasedOmega.DecimalPlaces = -2;
                         numericBoxReleasedOmega.FooterText = "°/ns";
                         numericBoxReleasedOmega.HeaderText = "ω";
             numericBoxReleasedOmega.Location = new System.Drawing.Point(16, 21);
@@ -332,7 +325,6 @@ namespace ReciPro
             // numericBoxReleasedThetaA
             // 
                        numericBoxReleasedThetaA.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxReleasedThetaA.DecimalPlaces = -2;
                         numericBoxReleasedThetaA.FooterText = "°";
                         numericBoxReleasedThetaA.HeaderText = "a";
             numericBoxReleasedThetaA.Location = new System.Drawing.Point(20, 77);
@@ -363,7 +355,6 @@ namespace ReciPro
             // numericBoxEOS_K0
             // 
                        numericBoxEOS_K0.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxEOS_K0.DecimalPlaces = -2;
                         numericBoxEOS_K0.FooterText = "GPa";
                         numericBoxEOS_K0.HeaderText = "K0";
             numericBoxEOS_K0.Location = new System.Drawing.Point(14, 18);
@@ -385,7 +376,6 @@ namespace ReciPro
             // numericBoxEOS_Kprime
             // 
                        numericBoxEOS_Kprime.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxEOS_Kprime.DecimalPlaces = -2;
                                                 numericBoxEOS_Kprime.HeaderText = "K\'0";
             numericBoxEOS_Kprime.Location = new System.Drawing.Point(12, 44);
             numericBoxEOS_Kprime.Margin = new System.Windows.Forms.Padding(0);
@@ -419,7 +409,7 @@ namespace ReciPro
             // numericBoxShockedPlaneH
             // 
                        numericBoxShockedPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxShockedPlaneH.DecimalPlaces = -2;
+            numericBoxShockedPlaneH.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                                                 numericBoxShockedPlaneH.HeaderText = "(";
             numericBoxShockedPlaneH.Location = new System.Drawing.Point(3, 33);
             numericBoxShockedPlaneH.Margin = new System.Windows.Forms.Padding(0);
@@ -440,7 +430,7 @@ namespace ReciPro
             // numericBoxShockedPlaneK
             // 
                        numericBoxShockedPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxShockedPlaneK.DecimalPlaces = -2;
+            numericBoxShockedPlaneK.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
             numericBoxShockedPlaneK.Location = new System.Drawing.Point(53, 33);
             numericBoxShockedPlaneK.Margin = new System.Windows.Forms.Padding(0);
             numericBoxShockedPlaneK.Maximum = 10D;
@@ -458,13 +448,15 @@ namespace ReciPro
             // numericBoxShockedPlaneL
             // 
                        numericBoxShockedPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxShockedPlaneL.DecimalPlaces = -2;
+            numericBoxShockedPlaneL.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                         numericBoxShockedPlaneL.FooterText = ")";
             numericBoxShockedPlaneL.Location = new System.Drawing.Point(91, 33);
             numericBoxShockedPlaneL.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxShockedPlaneL.Maximum = 1000D;
+            //numericBoxShockedPlaneL.Maximum = 1000D; // 260726Cl 旧: ミラー指数 l だけ上限が桁違いだった (h/k は -10〜10)
+            numericBoxShockedPlaneL.Maximum = 10D; // 260726Cl
             numericBoxShockedPlaneL.MaximumSize = new System.Drawing.Size(1000, 25);
-            numericBoxShockedPlaneL.Minimum = 0D;
+            //numericBoxShockedPlaneL.Minimum = 0D; // 260726Cl 旧: ミラー指数 l だけ負が入力できなかった (h/k は -10〜10)
+            numericBoxShockedPlaneL.Minimum = -10D; // 260726Cl
             numericBoxShockedPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
                        numericBoxShockedPlaneL.Name = "numericBoxShockedPlaneL";
             numericBoxShockedPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
@@ -560,7 +552,6 @@ namespace ReciPro
             // numericBoxUp
             // 
                        numericBoxUp.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxUp.DecimalPlaces = -2;
                         numericBoxUp.FooterText = "km/s";
                         numericBoxUp.HeaderText = "Us";
             numericBoxUp.Location = new System.Drawing.Point(7, 24);
@@ -605,7 +596,6 @@ namespace ReciPro
             // numericBoxUr
             // 
                        numericBoxUr.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxUr.DecimalPlaces = -2;
                         numericBoxUr.FooterText = "km/s";
                         numericBoxUr.HeaderText = "Ur";
             numericBoxUr.Location = new System.Drawing.Point(7, 24);
@@ -652,7 +642,6 @@ namespace ReciPro
             // numericBoxMassAbsorption
             // 
                        numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMassAbsorption.DecimalPlaces = -2;
                         numericBoxMassAbsorption.FooterText = "cm^2/g";
             numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
             numericBoxMassAbsorption.Margin = new System.Windows.Forms.Padding(0);
@@ -839,7 +828,7 @@ namespace ReciPro
             // numericBoxDivisionOfRotationAngle
             // 
                        numericBoxDivisionOfRotationAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDivisionOfRotationAngle.DecimalPlaces = -2;
+            numericBoxDivisionOfRotationAngle.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                                                 numericBoxDivisionOfRotationAngle.HeaderText = "rotation speed";
             numericBoxDivisionOfRotationAngle.Location = new System.Drawing.Point(203, 21);
             numericBoxDivisionOfRotationAngle.Margin = new System.Windows.Forms.Padding(0);
@@ -861,7 +850,7 @@ namespace ReciPro
             // numericBoxDivisionOfRotationAxis
             // 
                        numericBoxDivisionOfRotationAxis.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDivisionOfRotationAxis.DecimalPlaces = -2;
+            numericBoxDivisionOfRotationAxis.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                                                 numericBoxDivisionOfRotationAxis.HeaderText = "Division of rotation axis";
             numericBoxDivisionOfRotationAxis.Location = new System.Drawing.Point(6, 21);
             numericBoxDivisionOfRotationAxis.Margin = new System.Windows.Forms.Padding(0);
@@ -1004,7 +993,7 @@ namespace ReciPro
             // numericBoxSlipPlaneH
             // 
                        numericBoxSlipPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxSlipPlaneH.DecimalPlaces = -2;
+            numericBoxSlipPlaneH.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                                                 numericBoxSlipPlaneH.HeaderText = "(";
             numericBoxSlipPlaneH.Location = new System.Drawing.Point(3, 33);
             numericBoxSlipPlaneH.Margin = new System.Windows.Forms.Padding(0);
@@ -1025,7 +1014,7 @@ namespace ReciPro
             // numericBoxSlipPlaneK
             // 
                        numericBoxSlipPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxSlipPlaneK.DecimalPlaces = -2;
+            numericBoxSlipPlaneK.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
             numericBoxSlipPlaneK.Location = new System.Drawing.Point(53, 33);
             numericBoxSlipPlaneK.Margin = new System.Windows.Forms.Padding(0);
             numericBoxSlipPlaneK.Maximum = 10D;
@@ -1043,13 +1032,15 @@ namespace ReciPro
             // numericBoxSlipPlaneL
             // 
                        numericBoxSlipPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxSlipPlaneL.DecimalPlaces = -2;
+            numericBoxSlipPlaneL.DecimalPlaces = 0; // 260726Cl: 整数 (ミラー指数/分割数)。旧 -2 は既定 -1 と同義で general 書式だった
                         numericBoxSlipPlaneL.FooterText = ")";
             numericBoxSlipPlaneL.Location = new System.Drawing.Point(91, 33);
             numericBoxSlipPlaneL.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxSlipPlaneL.Maximum = 1000D;
+            //numericBoxSlipPlaneL.Maximum = 1000D; // 260726Cl 旧: ミラー指数 l だけ上限が桁違いだった (h/k は -10〜10)
+            numericBoxSlipPlaneL.Maximum = 10D; // 260726Cl
             numericBoxSlipPlaneL.MaximumSize = new System.Drawing.Size(1000, 25);
-            numericBoxSlipPlaneL.Minimum = 0D;
+            //numericBoxSlipPlaneL.Minimum = 0D; // 260726Cl 旧: ミラー指数 l だけ負が入力できなかった (h/k は -10〜10)
+            numericBoxSlipPlaneL.Minimum = -10D; // 260726Cl
             numericBoxSlipPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
                        numericBoxSlipPlaneL.Name = "numericBoxSlipPlaneL";
             numericBoxSlipPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
