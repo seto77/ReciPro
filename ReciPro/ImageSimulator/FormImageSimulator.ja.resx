@@ -1154,4 +1154,64 @@ CTF（contrast transfer function, コントラスト
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>画像として (PNG形式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>画像として (TIFF形式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   シリーズ画像モードで個別に保存 </value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>     記号を重ね印刷</value>
+  </data>
+  <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEMパラメータを読み込み</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEMパラメータを保存</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>HRTEMシミュレーションの基本概念</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>計算ライブラリ</value>
+  </data>
+  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
+    <value>収差をすべて0に設定</value>
+  </data>
+  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>デフォーカスをシェルツァー値に設定</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>スポット数</value>
+  </data>
+  <data name="labelMousePositionValue.Text" xml:space="preserve">
+    <value>値: </value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
+    <value>線形イメージ</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
+    <value>透過交差係数</value>
+  </data>
 </root>
