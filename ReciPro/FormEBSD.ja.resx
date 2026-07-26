@@ -809,37 +809,51 @@ Radon バンド証拠の z 値、ZNCC =
     <value>検出器のサイズと傾斜</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器スクリーンの形状: ビーム軸に対する傾斜角 (度) と、
+ピクセル数 (幅 × 高さ)。</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>幅</value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器の水平方向のピクセル数 (1〜4096)。
+物理的な幅は この値 × Resolution (mm/pixel) です。
+実測画像を読み込むと、その画像の幅に設定されます。</value>
   </data>
   <data name="numericBoxDetHeight.HeaderText" xml:space="preserve">
     <value>高さ</value>
   </data>
   <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器の垂直方向のピクセル数 (1〜4096)。
+物理的な高さは この値 × Resolution (mm/pixel) です。
+実測画像を読み込むと、その画像の高さに設定されます。</value>
   </data>
   <data name="labelDetectorResolution.Text" xml:space="preserve">
     <value>解像度</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器 1 ピクセルの物理サイズ (mm 単位、0.0001〜10)。
+検出器の大きさは 幅 × 高さ (ピクセル) × この値 です。
+表示倍率ではありません (表示側は表示設定の Resolution)。</value>
   </data>
   <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器 1 ピクセルの物理サイズ (mm 単位、0.0001〜10)。
+検出器の大きさは 幅 × 高さ (ピクセル) × この値 です。
+表示倍率ではありません (表示側は表示設定の Resolution)。</value>
   </data>
   <data name="labelDetectorCenter.Text" xml:space="preserve">
     <value>検出器中心の座標</value>
   </data>
   <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器中心の位置を mm 単位 (X, Y, Z) で指定します
+(ビームが試料に当たる点が原点)。カメラ長は Y・Z と
+傾斜角で決まり、左右のずれは X で決まります。</value>
   </data>
   <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器中心の X 座標を mm 単位で設定します
+(試料の傾斜軸に沿った、スクリーンの左右方向のずれ)。
+面内のずれとカメラ長は Y と Z で決まります。
+(範囲 -1000〜1000)</value>
   </data>
   <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
     <value />
@@ -1013,13 +1027,18 @@ Radon バンド証拠の z 値、ZNCC =
     <value>解像度</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>パターン表示の解像度 (画面 1 ピクセルあたりの mm、
+0.0001〜10)。小さいほど拡大されます。表示だけに効き、
+検出器自体のピクセルサイズは検出器幾何の Resolution で
+設定します。</value>
   </data>
   <data name="sizeControl.HeaderText" xml:space="preserve">
     <value>サイズ (W×H)</value>
   </data>
   <data name="sizeControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>パターン表示の大きさを画面ピクセル (幅 × 高さ) で
+指定します。変更するとウィンドウがリサイズされます。
+検出器自体のピクセル数は変わりません。</value>
   </data>
   <data name="flowLayoutPanelShowCheckBoxes.ToolTip" xml:space="preserve">
     <value />

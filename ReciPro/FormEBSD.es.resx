@@ -798,4 +798,57 @@ para ver el patrón simulado que hay debajo.</value>
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
     <value>Inclinación</value>
   </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value>Coordenada X del centro del detector, en mm: el
+desplazamiento lateral (izquierda-derecha) de la pantalla
+a lo largo del eje de inclinación de la muestra. Y y Z
+dan el desplazamiento en el plano y la longitud de cámara.
+(Intervalo -1000 a 1000.)</value>
+  </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value>Número de píxeles del detector en dirección horizontal
+(1 a 4096). La anchura física es este valor por la
+resolución (mm/píxel). Al cargar una imagen experimental
+se ajusta a la anchura de esa imagen.</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value>Número de píxeles del detector en dirección vertical
+(1 a 4096). La altura física es este valor por la
+resolución (mm/píxel). Al cargar una imagen experimental
+se ajusta a la altura de esa imagen.</value>
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value>Tamaño físico de un píxel del detector, en mm
+(0,0001 a 10). El área del detector es anchura x altura
+(píxeles) por este valor. No es el zoom de visualización:
+ese es Resolución en los ajustes de vista.</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value>Tamaño físico de un píxel del detector, en mm
+(0,0001 a 10). El área del detector es anchura x altura
+(píxeles) por este valor. No es el zoom de visualización:
+ese es Resolución en los ajustes de vista.</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value>Geometría de la pantalla del detector: ángulo de
+inclinación en grados respecto al eje del haz y tamaño
+en píxeles (anchura x altura).</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value>Posición del centro del detector en mm (X, Y, Z), medida
+desde el punto donde el haz incide en la muestra. Y y Z
+junto con la inclinación dan la longitud de cámara;
+X es el desplazamiento lateral.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Resolución de visualización de la vista del patrón, en mm
+por píxel de pantalla (0,0001 a 10). Valores menores
+amplían. Solo afecta a la vista: el tamaño de píxel del
+detector se ajusta en la geometría del detector.</value>
+  </data>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value>Tamaño de la vista del patrón en píxeles de pantalla
+(anchura x altura). Cambiarlo redimensiona la ventana.
+El número de píxeles del detector no se ve afectado.</value>
+  </data>
 </root>

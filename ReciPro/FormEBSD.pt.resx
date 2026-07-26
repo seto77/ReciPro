@@ -793,4 +793,56 @@ para ver o padrão simulado por baixo.</value>
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
     <value>Inclinação</value>
   </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value>Coordenada X do centro do detector, em mm: o deslocamento
+lateral (esquerda-direita) da tela ao longo do eixo de
+inclinação da amostra. Y e Z definem o deslocamento no
+plano e o comprimento de câmara. (Faixa -1000 a 1000.)</value>
+  </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value>Número de pixels do detector na direção horizontal
+(1 a 4096). A largura física é este valor vezes a
+resolução (mm/pixel). Ao carregar uma imagem experimental,
+ele é ajustado para a largura dessa imagem.</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value>Número de pixels do detector na direção vertical
+(1 a 4096). A altura física é este valor vezes a
+resolução (mm/pixel). Ao carregar uma imagem experimental,
+ele é ajustado para a altura dessa imagem.</value>
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value>Tamanho físico de um pixel do detector, em mm
+(0,0001 a 10). A área do detector é largura x altura
+(pixels) vezes este valor. Não é o zoom de exibição:
+esse é Resolução nas configurações de visualização.</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value>Tamanho físico de um pixel do detector, em mm
+(0,0001 a 10). A área do detector é largura x altura
+(pixels) vezes este valor. Não é o zoom de exibição:
+esse é Resolução nas configurações de visualização.</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value>Geometria da tela do detector: ângulo de inclinação em
+graus em relação ao eixo do feixe e tamanho em pixels
+(largura x altura).</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value>Posição do centro do detector em mm (X, Y, Z), medida a
+partir do ponto onde o feixe atinge a amostra. Y e Z com a
+inclinação determinam o comprimento de câmara;
+X é o deslocamento lateral.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Resolução de exibição da vista do padrão, em mm por pixel
+de tela (0,0001 a 10). Valores menores ampliam. Afeta
+apenas a vista: o tamanho de pixel do detector é definido
+na geometria do detector.</value>
+  </data>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value>Tamanho da vista do padrão em pixels de tela
+(largura x altura). Alterá-lo redimensiona a janela.
+A contagem de pixels do detector não é afetada.</value>
+  </data>
 </root>

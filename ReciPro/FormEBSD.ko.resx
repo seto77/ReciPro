@@ -781,4 +781,48 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
     <value>경사</value>
   </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value>검출기 중심의 X 좌표 (mm) — 시료 경사축을 따른
+화면의 좌우 (측방향) 오프셋입니다. 면내 오프셋과
+카메라 길이는 Y와 Z로 결정됩니다. (범위 -1000〜1000)</value>
+  </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value>검출기의 수평 방향 픽셀 수 (1〜4096).
+물리적 너비는 이 값 × Resolution (mm/pixel) 입니다.
+실측 이미지를 불러오면 그 이미지의 너비로 설정됩니다.</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value>검출기의 수직 방향 픽셀 수 (1〜4096).
+물리적 높이는 이 값 × Resolution (mm/pixel) 입니다.
+실측 이미지를 불러오면 그 이미지의 높이로 설정됩니다.</value>
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value>검출기 1픽셀의 물리적 크기 (mm, 0.0001〜10).
+검출기 크기는 폭 × 높이 (픽셀) × 이 값입니다.
+표시 배율이 아닙니다 (표시 배율은 보기 설정의 Resolution).</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value>검출기 1픽셀의 물리적 크기 (mm, 0.0001〜10).
+검출기 크기는 폭 × 높이 (픽셀) × 이 값입니다.
+표시 배율이 아닙니다 (표시 배율은 보기 설정의 Resolution).</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value>검출기 스크린의 형상: 빔 축에 대한 경사각 (도)과
+픽셀 수 (폭 × 높이).</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value>검출기 중심의 위치를 mm 단위 (X, Y, Z)로 지정합니다
+(빔이 시료에 닿는 점이 원점). 카메라 길이는 Y·Z와
+경사각으로, 좌우 오프셋은 X로 결정됩니다.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>패턴 표시의 해상도 (화면 1픽셀당 mm, 0.0001〜10).
+작을수록 확대됩니다. 표시에만 적용되며, 검출기 자체의
+픽셀 크기는 검출기 형상의 Resolution에서 설정합니다.</value>
+  </data>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value>패턴 표시의 크기를 화면 픽셀 (폭 × 높이)로 지정합니다.
+변경하면 창 크기가 조정됩니다.
+검출기 자체의 픽셀 수는 변하지 않습니다.</value>
+  </data>
 </root>

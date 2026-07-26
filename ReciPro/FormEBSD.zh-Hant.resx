@@ -745,4 +745,48 @@ robust ZNCC 逐一比較來搜尋取向。
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
     <value>傾角</value>
   </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value>偵測器中心的 X 座標 (mm)：螢幕沿試樣傾斜軸的
+左右 (橫向) 偏移。面內偏移與相機長度由 Y 和 Z 決定。
+(範圍 -1000〜1000)</value>
+  </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value>偵測器水平方向的像素數 (1〜4096)。
+物理寬度 = 該值 × 解析度 (mm/pixel)。
+載入實測影像時會設為該影像的寬度。</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value>偵測器垂直方向的像素數 (1〜4096)。
+物理高度 = 該值 × 解析度 (mm/pixel)。
+載入實測影像時會設為該影像的高度。</value>
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value>偵測器單一像素的物理尺寸 (mm，0.0001〜10)。
+偵測器大小 = 寬 × 高 (像素) × 該值。
+這不是顯示縮放 (顯示縮放在顯示設定的 Resolution)。</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value>偵測器單一像素的物理尺寸 (mm，0.0001〜10)。
+偵測器大小 = 寬 × 高 (像素) × 該值。
+這不是顯示縮放 (顯示縮放在顯示設定的 Resolution)。</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value>偵測器螢幕的幾何: 相對於束軸的傾斜角 (度)，
+以及像素數 (寬 × 高)。</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value>偵測器中心的位置 (X, Y, Z，單位 mm)，以束流射到試樣的
+位置為原點。相機長度由 Y、Z 和傾斜角決定，
+左右偏移由 X 決定。</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>圖樣顯示的解析度 (每個螢幕像素對應的 mm，0.0001〜10)。
+值越小越放大。只影響顯示，偵測器本身的像素尺寸
+在偵測器幾何的 Resolution 中設定。</value>
+  </data>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value>圖樣顯示的大小 (螢幕像素，寬 × 高)。
+變更後視窗會隨之調整大小。
+偵測器本身的像素數不受影響。</value>
+  </data>
 </root>

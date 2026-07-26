@@ -1571,7 +1571,10 @@ then Bloch-wave (Bethe) dynamical diffraction.</value>
     <value>112, 25</value>
   </data>
   <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>Physical size of one detector pixel, in mm
+(0.0001 to 10). The detector area is Width x Height pixels
+times this value. This is not the display zoom - that is
+the Resolution box in the view settings.</value>
   </data>
   <data name="&gt;&gt;numericBoxSampleTilt.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3098,7 +3101,10 @@ to preview; the value is shown in the Energy box.</value>
     <value>1536</value>
   </data>
   <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
-    <value />
+    <value>Number of detector pixels along the vertical direction
+(1 to 4096). The physical height is this value times
+Resolution (mm/pixel). Loading an experimental image sets
+it to the height of that image.</value>
   </data>
   <data name="radioButtonCopyEmf.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 21</value>
@@ -3547,7 +3553,9 @@ preview to the clipboard.</value>
     <value>268, 110</value>
   </data>
   <data name="sizeControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>Size of the pattern view in screen pixels (width x height).
+Changing it resizes the window. The detector's own pixel
+count is not affected.</value>
   </data>
   <data name="&gt;&gt;groupBoxEBSDPattern.Name" xml:space="preserve">
     <value>groupBoxEBSDPattern</value>
@@ -3660,7 +3668,9 @@ labeling each Kikuchi line (band).</value>
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
-    <value />
+    <value>Geometry of the detector screen: its tilt angle in degrees
+relative to the beam axis, and its size in pixels
+(Width x Height).</value>
   </data>
   <data name="dataGridViewEbsdCandidates.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4104,7 +4114,10 @@ slider). Pixels at or below this become black.</value>
     <value>127</value>
   </data>
   <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the X coordinate of the detector center, in mm -
+the left-right (lateral) offset of the screen along the
+sample tilt axis. Y and Z set the in-plane offset and
+the camera length. (Range -1000 to 1000.)</value>
   </data>
   <data name="indexControl.TabIndex" type="System.Int32, mscorlib">
     <value>155</value>
@@ -4170,7 +4183,10 @@ slider). Pixels at or below this become black.</value>
     <value>   </value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
-    <value />
+    <value>Number of detector pixels along the horizontal direction
+(1 to 4096). The physical width is this value times
+Resolution (mm/pixel). Loading an experimental image sets
+it to the width of that image.</value>
   </data>
   <data name="&gt;&gt;trackBarExpImageMinInt.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -5389,7 +5405,10 @@ currently selected by the depth slider for preview.</value>
     <value>0</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>Physical size of one detector pixel, in mm
+(0.0001 to 10). The detector area is Width x Height pixels
+times this value. This is not the display zoom - that is
+the Resolution box in the view settings.</value>
   </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 401</value>
@@ -5426,7 +5445,10 @@ pixel count exactly; the longer side is clamped to
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
-    <value />
+    <value>Position of the detector center in mm (X, Y, Z), measured
+from the point where the beam hits the sample. Y and Z
+together with the tilt determine the camera length;
+X is the left-right offset.</value>
   </data>
   <data name="buttonCalibrateGeometry.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
@@ -6525,7 +6547,10 @@ Kikuchi-line and index overlays are included as drawn).</value>
     <value>110, 18</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>Display resolution of the pattern view, in mm per screen
+pixel (0.0001 to 10). Smaller values zoom in. This affects
+the view only - the detector's own pixel size is set by
+Resolution on the detector geometry side.</value>
   </data>
   <data name="labelLineWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>

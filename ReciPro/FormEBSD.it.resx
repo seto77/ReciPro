@@ -799,4 +799,57 @@ vedere il pattern simulato sottostante.</value>
   <data name="numericBoxDetTilt.HeaderText" xml:space="preserve">
     <value>Inclinazione</value>
   </data>
+  <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
+    <value>Coordinata X del centro del rivelatore, in mm: lo
+scostamento laterale (destra-sinistra) dello schermo lungo
+l'asse di inclinazione del campione. Y e Z danno lo
+scostamento nel piano e la lunghezza di camera.
+(Intervallo da -1000 a 1000.)</value>
+  </data>
+  <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
+    <value>Numero di pixel del rivelatore in direzione orizzontale
+(da 1 a 4096). La larghezza fisica è questo valore per la
+risoluzione (mm/pixel). Caricando un'immagine sperimentale
+viene impostato sulla larghezza di quell'immagine.</value>
+  </data>
+  <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
+    <value>Numero di pixel del rivelatore in direzione verticale
+(da 1 a 4096). L'altezza fisica è questo valore per la
+risoluzione (mm/pixel). Caricando un'immagine sperimentale
+viene impostato sull'altezza di quell'immagine.</value>
+  </data>
+  <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
+    <value>Dimensione fisica di un pixel del rivelatore, in mm
+(da 0,0001 a 10). L'area del rivelatore è larghezza x
+altezza (pixel) per questo valore. Non è lo zoom di
+visualizzazione (vedi Risoluzione nelle impostazioni).</value>
+  </data>
+  <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
+    <value>Dimensione fisica di un pixel del rivelatore, in mm
+(da 0,0001 a 10). L'area del rivelatore è larghezza x
+altezza (pixel) per questo valore. Non è lo zoom di
+visualizzazione (vedi Risoluzione nelle impostazioni).</value>
+  </data>
+  <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
+    <value>Geometria dello schermo del rivelatore: angolo di
+inclinazione in gradi rispetto all'asse del fascio e
+dimensione in pixel (larghezza x altezza).</value>
+  </data>
+  <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
+    <value>Posizione del centro del rivelatore in mm (X, Y, Z),
+misurata dal punto in cui il fascio colpisce il campione.
+Y e Z con l'inclinazione danno la lunghezza di camera;
+X è lo scostamento laterale.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Risoluzione di visualizzazione della vista del pattern, in
+mm per pixel dello schermo (da 0,0001 a 10). Valori minori
+ingrandiscono. Agisce solo sulla vista: la dimensione dei
+pixel del rivelatore si imposta nella geometria.</value>
+  </data>
+  <data name="sizeControl.ToolTip" xml:space="preserve">
+    <value>Dimensione della vista del pattern in pixel dello schermo
+(larghezza x altezza). Modificandola si ridimensiona la
+finestra. Il numero di pixel del rivelatore non cambia.</value>
+  </data>
 </root>
