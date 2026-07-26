@@ -128,8 +128,8 @@ Le master pattern est l'intensité de diffraction rétrodiffusée sur toutes les
 - **Grille** : résolution de la grille du master pattern (par défaut 256).
 - **Energy from … to … with step of …** : plage d'énergie et pas intégrés (keV) ; déterminés automatiquement à partir du résultat Monte-Carlo.
 - **Thickness from … to … with step of …** : plage de profondeur et pas intégrés (nm) ; déterminés également automatiquement.
-- **Utiliser le modèle d'absorption non locale** : utiliser la forme d'absorption non locale.
-- **Inclure le fond TDS** : inclure le fond de diffusion thermique diffuse (TDS).
+- **Absorption non locale** : utiliser la forme d'absorption non locale.
+- **Fond TDS** : inclure le fond de diffusion thermique diffuse (TDS).
 
 ---
 

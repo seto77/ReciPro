@@ -59,9 +59,9 @@ $U_g$ and $U'_g$ can be shown at the same time (one pane is added for each one t
 
 ---
 
-## Diffracted waves
+## Waves
 
-![Diffracted waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — maximum number of Bloch waves (Fourier coefficients) included in the Fourier synthesis of the potential (default 80). Larger values include higher spatial frequencies and reproduce finer detail of the potential.
 

@@ -128,8 +128,8 @@ O master pattern é a intensidade da difração retroespalhada em todas as dire�
 - **Grade** : resolução da grade do master pattern (padrão 256).
 - **Energy from … to … with step of …** : faixa de energia e passo integrados (keV); definidos automaticamente a partir do resultado de Monte Carlo.
 - **Thickness from … to … with step of …** : faixa de profundidade e passo integrados (nm); também definidos automaticamente.
-- **Usar modelo de absorção não local** : usar a forma de absorção não local.
-- **Incluir fundo TDS** : incluir o fundo do espalhamento térmico difuso (TDS).
+- **Absorção não local** : usar a forma de absorção não local.
+- **Fundo TDS** : incluir o fundo do espalhamento térmico difuso (TDS).
 
 ---
 

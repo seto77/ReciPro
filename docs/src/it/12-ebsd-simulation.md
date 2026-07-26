@@ -128,8 +128,8 @@ Il master pattern è l'intensità di diffrazione retrodiffusa su tutte le direzi
 - **Griglia** : risoluzione della griglia del master pattern (predefinito 256).
 - **Energy from … to … with step of …** : intervallo di energia e passo su cui si integra (keV); impostato automaticamente dal risultato Monte-Carlo.
 - **Thickness from … to … with step of …** : intervallo di profondità e passo su cui si integra (nm); impostato anch'esso automaticamente.
-- **Usa modello di assorbimento non locale** : usa la forma di assorbimento non locale.
-- **Includi il fondo TDS** : include il fondo da diffusione termica diffusa (TDS).
+- **Assorbimento non locale** : usa la forma di assorbimento non locale.
+- **Fondo TDS** : include il fondo da diffusione termica diffusa (TDS).
 
 ---
 

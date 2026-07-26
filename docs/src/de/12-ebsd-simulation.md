@@ -128,8 +128,8 @@ Das Master-Muster ist die Rückstreubeugungsintensität über alle Richtungen, i
 - **Raster** : Auflösung des Master-Muster-Gitters (Standard 256).
 - **Energy from … to … with step of …** : integrierter Energiebereich und Schrittweite (keV); aus dem Monte-Carlo-Ergebnis automatisch festgelegt.
 - **Thickness from … to … with step of …** : integrierter Tiefenbereich und Schrittweite (nm); ebenfalls automatisch festgelegt.
-- **Nicht-lokales Absorptionsmodell verwenden** : die nicht-lokale Absorptionsform verwenden.
-- **TDS-Hintergrund einbeziehen** : den Untergrund der thermisch-diffusen Streuung (TDS) einbeziehen.
+- **Nicht-lokale Absorption** : die nicht-lokale Absorptionsform verwenden.
+- **TDS-Hintergrund** : den Untergrund der thermisch-diffusen Streuung (TDS) einbeziehen.
 
 ---
 

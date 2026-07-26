@@ -128,8 +128,8 @@ El master pattern es la intensidad de difracción de retrodispersión sobre toda
 - **Rejilla** : resolución de la rejilla del master pattern (predeterminado 256).
 - **Energy from … to … with step of …** : rango de energía y paso integrados (keV); fijado automáticamente a partir del resultado de Monte-Carlo.
 - **Thickness from … to … with step of …** : rango de profundidad y paso integrados (nm); fijado igualmente de forma automática.
-- **Usar modelo de absorción no local** : usar la forma de absorción no local.
-- **Incluir fondo TDS** : incluir el fondo de dispersión térmica difusa (TDS).
+- **Absorción no local** : usar la forma de absorción no local.
+- **Fondo TDS** : incluir el fondo de dispersión térmica difusa (TDS).
 
 ---
 

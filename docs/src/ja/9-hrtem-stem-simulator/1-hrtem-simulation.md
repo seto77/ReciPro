@@ -76,7 +76,7 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 ![対物絞り (HRTEM オプション)](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-対物絞りを通過させる回折波を制限します。絞りで切る回折波の数によって、ブロッホ波計算に含めるスポット数も変わります（上限は **回折波の数** の最大ブロッホ波数）。
+対物絞りを通過させる回折波を制限します。絞りで切る回折波の数によって、ブロッホ波計算に含めるスポット数も変わります（上限は **波の数** の最大ブロッホ波数）。
 
 - **絞り半径** : 対物絞りの半角 (mrad)。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。逆空間半径 $\sin\theta/\lambda$ への換算値 (nm⁻¹) が表示されます。
 - **シフト X / Y** : 対物絞り中心のシフト量 (mrad)。暗視野・傾斜結像に使います。
@@ -129,9 +129,9 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 ---
 
-## 回折波の数
+## 波の数
 
-![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **最大ブロッホ波数** : ベーテ法（Dynamical 計算）で使用するブロッホ波の最大数（既定 80）。多くするほど精度が上がりますが、固有値問題の解法時間が $O(N^3)$ で増加します。
 

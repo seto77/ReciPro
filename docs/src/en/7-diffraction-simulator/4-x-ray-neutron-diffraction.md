@@ -71,7 +71,7 @@ Selects the method used to compute spot intensities. Two modes are available for
 
 Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $s_g$). Smaller $\lvert s_g \rvert$ gives higher intensity, peaking at the value set by **Radius**, and falling to zero when $\lvert s_g \rvert$ exceeds Radius. The structure factor is ignored.
 
-### Kinematical & excitation error
+### Kinematical && exc. error
 
 In addition to the excitation error, the Kinematical structure factor $\lvert F_{hkl} \rvert^2$ is folded into the intensity. Extinction rules are strictly obeyed. The Lorentz and polarization factors are not included (this is a simulation of the geometric pattern).
 

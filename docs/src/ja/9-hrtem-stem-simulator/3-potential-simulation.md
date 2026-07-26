@@ -59,9 +59,9 @@ $U_g$ と $U'_g$ は同時に表示できます（チェックした分だけペ
 
 ---
 
-## 回折波の数
+## 波の数
 
-![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **最大ブロッホ波数** : ポテンシャルのフーリエ合成に含めるブロッホ波（フーリエ係数）の最大数（既定 80）。多くするほど高い空間周波数まで含まれ、ポテンシャルの細部が再現されます。
 
