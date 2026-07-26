@@ -811,25 +811,25 @@ dans le plan et la longueur de caméra. (De -1000 à 1000.)</value>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
     <value>Nombre de pixels du détecteur dans la direction
 horizontale (1 à 4096). La largeur physique vaut cette
-valeur multipliée par la résolution (mm/pixel). Charger une
-image expérimentale la règle sur la largeur de l'image.</value>
+valeur multipliée par la résolution (mm/pixel). Le chargement d'une
+image expérimentale l'ajuste à la largeur de l'image.</value>
   </data>
   <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
     <value>Nombre de pixels du détecteur dans la direction verticale
 (1 à 4096). La hauteur physique vaut cette valeur
-multipliée par la résolution (mm/pixel). Charger une image
-expérimentale la règle sur la hauteur de l'image.</value>
+multipliée par la résolution (mm/pixel). Le chargement d'une image
+expérimentale l'ajuste à la hauteur de l'image.</value>
   </data>
   <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
     <value>Taille physique d'un pixel du détecteur, en mm
-(0,0001 à 10). La surface du détecteur vaut largeur x
-hauteur (pixels) multiplié par cette valeur. Ce n'est pas
+(0,0001 à 10). L'aire du détecteur est le produit de largeur x
+hauteur (pixels) par cette valeur. Ce n'est pas
 le zoom d'affichage (voir Résolution dans l'affichage).</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
     <value>Taille physique d'un pixel du détecteur, en mm
-(0,0001 à 10). La surface du détecteur vaut largeur x
-hauteur (pixels) multiplié par cette valeur. Ce n'est pas
+(0,0001 à 10). L'aire du détecteur est le produit de largeur x
+hauteur (pixels) par cette valeur. Ce n'est pas
 le zoom d'affichage (voir Résolution dans l'affichage).</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">

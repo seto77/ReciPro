@@ -815,13 +815,13 @@ ele é ajustado para a altura dessa imagem.</value>
     <value>Tamanho físico de um pixel do detector, em mm
 (0,0001 a 10). A área do detector é largura x altura
 (pixels) vezes este valor. Não é o zoom de exibição:
-esse é Resolução nas configurações de visualização.</value>
+esse é o campo Resolução das configurações de visualização.</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
     <value>Tamanho físico de um pixel do detector, em mm
 (0,0001 a 10). A área do detector é largura x altura
 (pixels) vezes este valor. Não é o zoom de exibição:
-esse é Resolução nas configurações de visualização.</value>
+esse é o campo Resolução das configurações de visualização.</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
     <value>Geometria da tela do detector: ângulo de inclinação em

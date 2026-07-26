@@ -809,26 +809,26 @@ Ebene und die Kameralänge. (Bereich -1000 bis 1000.)</value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
     <value>Anzahl der Detektorpixel in horizontaler Richtung
-(1 bis 4096). Die physikalische Breite ist dieser Wert mal
-Auflösung (mm/Pixel). Beim Laden eines gemessenen Bildes
+(1 bis 4096). Die physikalische Breite ist dieser Wert multipliziert
+mit der Auflösung (mm/Pixel). Beim Laden eines gemessenen Bildes
 wird sie auf dessen Breite gesetzt.</value>
   </data>
   <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
     <value>Anzahl der Detektorpixel in vertikaler Richtung
-(1 bis 4096). Die physikalische Höhe ist dieser Wert mal
-Auflösung (mm/Pixel). Beim Laden eines gemessenen Bildes
+(1 bis 4096). Die physikalische Höhe ist dieser Wert multipliziert
+mit der Auflösung (mm/Pixel). Beim Laden eines gemessenen Bildes
 wird sie auf dessen Höhe gesetzt.</value>
   </data>
   <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
     <value>Physikalische Größe eines Detektorpixels in mm
 (0,0001 bis 10). Die Detektorfläche ist Breite x Höhe
-(Pixel) mal diesem Wert. Dies ist nicht der Anzeigezoom -
+(Pixel) multipliziert mit diesem Wert. Dies ist nicht der Anzeigezoom -
 das ist die Auflösung in den Anzeigeeinstellungen.</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
     <value>Physikalische Größe eines Detektorpixels in mm
 (0,0001 bis 10). Die Detektorfläche ist Breite x Höhe
-(Pixel) mal diesem Wert. Dies ist nicht der Anzeigezoom -
+(Pixel) multipliziert mit diesem Wert. Dies ist nicht der Anzeigezoom -
 das ist die Auflösung in den Anzeigeeinstellungen.</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">

@@ -754,47 +754,47 @@ robust ZNCC 逐一比较以搜索取向。
     <value>倾角</value>
   </data>
   <data name="numericBoxXofDet.ToolTip" xml:space="preserve">
-    <value>检测器中心的 X 坐标 (mm)：屏幕沿样品倾斜轴的
+    <value>探测器中心的 X 坐标 (mm)：屏幕沿试样倾斜轴的
 左右 (横向) 偏移。面内偏移和相机长度由 Y 和 Z 决定。
 (范围 -1000〜1000)</value>
   </data>
   <data name="numericBoxDetWidth.ToolTip" xml:space="preserve">
-    <value>检测器水平方向的像素数 (1〜4096)。
+    <value>探测器水平方向的像素数 (1〜4096)。
 物理宽度 = 该值 × 分辨率 (mm/pixel)。
 载入实测图像时会设为该图像的宽度。</value>
   </data>
   <data name="numericBoxDetHeight.ToolTip" xml:space="preserve">
-    <value>检测器垂直方向的像素数 (1〜4096)。
+    <value>探测器垂直方向的像素数 (1〜4096)。
 物理高度 = 该值 × 分辨率 (mm/pixel)。
 载入实测图像时会设为该图像的高度。</value>
   </data>
   <data name="numericBoxDetResolution.ToolTip" xml:space="preserve">
-    <value>检测器单个像素的物理尺寸 (mm，0.0001〜10)。
-检测器大小 = 宽 × 高 (像素) × 该值。
+    <value>探测器单个像素的物理尺寸 (mm，0.0001〜10)。
+探测器大小 = 宽 × 高 (像素) × 该值。
 这不是显示缩放 (显示缩放在显示设置的 Resolution)。</value>
   </data>
   <data name="labelDetectorResolution.ToolTip" xml:space="preserve">
-    <value>检测器单个像素的物理尺寸 (mm，0.0001〜10)。
-检测器大小 = 宽 × 高 (像素) × 该值。
+    <value>探测器单个像素的物理尺寸 (mm，0.0001〜10)。
+探测器大小 = 宽 × 高 (像素) × 该值。
 这不是显示缩放 (显示缩放在显示设置的 Resolution)。</value>
   </data>
   <data name="labelDetectorSizeTilt.ToolTip" xml:space="preserve">
-    <value>检测器屏幕的几何: 相对于束轴的倾斜角 (度)，
+    <value>探测器屏幕的几何: 相对于束轴的倾斜角 (度)，
 以及像素数 (宽 × 高)。</value>
   </data>
   <data name="labelDetectorCenter.ToolTip" xml:space="preserve">
-    <value>检测器中心的位置 (X, Y, Z，单位 mm)，以束流射到样品的
+    <value>探测器中心的位置 (X, Y, Z，单位 mm)，以束流射到试样的
 位置为原点。相机长度由 Y、Z 和倾斜角决定，
 左右偏移由 X 决定。</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value>图样显示的分辨率 (每个屏幕像素对应的 mm，0.0001〜10)。
-值越小越放大。只影响显示，检测器本身的像素尺寸
-在检测器几何的 Resolution 中设置。</value>
+值越小越放大。只影响显示，探测器本身的像素尺寸
+在探测器几何的 Resolution 中设置。</value>
   </data>
   <data name="sizeControl.ToolTip" xml:space="preserve">
     <value>图样显示的大小 (屏幕像素，宽 × 高)。
 更改后窗口会随之调整大小。
-检测器本身的像素数不受影响。</value>
+探测器本身的像素数不受影响。</value>
   </data>
 </root>
