@@ -1,0 +1,66 @@
+# 260726Cl 追加: push / PR ごとの最小 CI。
+#   これまで push/PR で走る workflow は i18n-resx-check.yml だけで、しかもそれは
+#   tools/ (メインリポから exclude された独立ローカルリポ) が checkout に入らないため
+#   3 検査すべてをスキップして緑になる no-op だった。つまり **通常の C# 変更は一度も
+#   ビルドされずに master へ入っていた**。ここを埋めるのが本 workflow の目的。
+#
+# 意図的にやらないこと (リリース系は release.yml が担当):
+#   - Crystallography.Native (C++) のビルド … devenv が要るので PR 単位では回さない
+#   - arm64 / WiX MSI / SignPath 署名 / 実機 smoke
+#   ここでは「managed が壊れていないか」だけを速く見る。
+name: CI
+
+on:
+  push:
+  pull_request:
+
+# 同一 ref の古い run は打ち切る (PR 連続 push でランナーを食い潰さない)
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-x64:
+    name: Build (managed, x64 Release)
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive # 共有 lib は git submodule (Crystallography / .Controls / .OpenGL / .Native)
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore ReciPro\ReciPro.csproj -p:Platform=x64
+
+      # 260726Cl: TreatWarningsAsErrors は付けない。現状 0 警告だが、
+      #   ここで警告を落とすと外部要因 (SDK 更新等) で PR が止まりうる。警告数はログで見る。
+      - name: Build
+        run: dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
+
+  resx-conventions:
+    name: resx conventions (text-only / no baked language / font tiers)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive # Controls の culture resx と Crystallography の SupportedCultures.cs が要る
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      # 検出専用。修復 (--fix) はローカルの tools/ が担当する (公開リポには出さない方針)。
+      # culture 一覧が読めなければ exit 2 で落ちる (黙って一部だけ検査しない)。
+      - name: Check resx conventions
+        run: python .github/scripts/check_resx_conventions.py

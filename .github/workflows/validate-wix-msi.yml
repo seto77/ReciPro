@@ -1,9 +1,15 @@
-# 260612Cl WiX 移行 Phase A 検証ワークフロー (計画書 .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §6 Phase A / §7)
-#   - WiX v7 で x64/arm64 両 MSI をビルドし、旧 vdproj MSI (最新 release) と内容 diff
-#   - クリーンランナー上で「vdproj 旧版 install → WiX 新版で Major Upgrade → uninstall」の連鎖テスト
-#   - release には一切触れない (artifact のみ・contents: read)。Phase B で release.yml に置換するまでの並行検証用
-#   - x64⇔arm64 cross-grade テストは windows-11-arm が必要なため Phase C の smoke で実施 (ここでは不可)
-name: Validate WiX MSI (Phase A)
+# 260612Cl 追加 (WiX 移行の検証用) / 260726Cl 現況へ改稿:
+#   vdproj → WiX の移行そのものは完了済みで、release.yml が WiX で本番 MSI を出している。
+#   本 workflow は移行検証の遺物ではなく、**MSI のアップグレード連鎖を壊していないかを
+#   手動で確かめるための現役ツール**として残す (release.yml では毎回は回せないため)。
+#   - WiX v7 で x64/arm64 両 MSI をビルドする
+#   - クリーンランナー上で「旧版 install → 新版で Major Upgrade → uninstall」の連鎖を通す
+#   - release には一切触れない (artifact のみ・contents: read)
+#   - x64⇔arm64 の cross-grade は windows-11-arm が要るのでここでは扱えない (release.yml の arm64 smoke が担当)
+#   ⚠ 旧 vdproj MSI との内容 diff ステップは移行当時の比較対象が前提。vdproj は撤去済みなので、
+#     そのステップは現在意味を持たない (実行前に確認すること)。
+#   正本: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md
+name: Validate WiX MSI (upgrade chain)
 
 on:
   workflow_dispatch:
