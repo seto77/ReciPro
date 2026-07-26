@@ -225,7 +225,18 @@ internal static partial class GuiCapture
         //   普段の ReciPro が起動する)。default.xml の上書きも同様。Dispose は FormClosing を発火しない。
         try { captureFormMain?.Dispose(); } catch { /* 破棄時例外は無視 */ }
 
-        Trace($"done: ok={ok} fail={fail}");
+        // 260726Cl 追加: --diagnose と同じ「中央訳テーブルの未解決エントリ」報告。
+        //   capture はクロップ時に祖先 TabPage を選択するので、未選択タブ上の UserControl も OnLoad が走る。
+        //   つまり diagnose より観測範囲が広く、こちらでしか見えない未解決がある
+        //   (実例: AtomCoordinateTable は tabPageCoordinateInformation 上にあり diagnose では素通りする)。
+        var unresolved = CodeLocalizer.UnresolvedEntries;
+        if (unresolved.Count > 0)
+        {
+            Trace($"CodeLocalizer: 未解決エントリ {unresolved.Count} 件 (訳テーブルにあるがコントロールに当たらない)");
+            foreach (var u in unresolved)
+                Trace($"  未解決\t{u}");
+        }
+        Trace($"done: ok={ok} fail={fail}, unresolved localization entries={unresolved.Count}");
         File.WriteAllLines(Path.Combine(outDir, "_capture-log.tsv"), log);
     }
 
