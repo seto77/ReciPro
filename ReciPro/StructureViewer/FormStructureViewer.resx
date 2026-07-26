@@ -132,7 +132,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Courier New, 8.25pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 17</value>

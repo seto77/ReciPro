@@ -1024,8 +1024,13 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
     <value>光源球の表示サイズ (左上)</value>
   </data>
+  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
+    <value>投影ビューの横幅 (nm)。小さいほど拡大表示に
+なります。ビュー上の右ドラッグ/ホイールに
+よるズームと連動します。</value>
+  </data>
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
+    <value>Courier New, 8.25pt</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1179,10 +1184,5 @@ List、新しい OpenGL が必要）かを選びます。</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxProjWidth.ToolTip" xml:space="preserve">
-    <value>投影ビューの横幅 (nm)。小さいほど拡大表示に
-なります。ビュー上の右ドラッグ/ホイールに
-よるズームと連動します。</value>
   </data>
 </root>

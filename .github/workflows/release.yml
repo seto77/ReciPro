@@ -83,7 +83,13 @@ jobs:
           # 同じバージョンのリリースが既にあれば常にスキップ
           # 260530Cl force モードを廃止: v* tag 削除禁止 ruleset と非整合で、
           #          既存 release を消した後にタグを再作成できず壊すため。
-          #          リリースに失敗したら Version.cs を進めて新しい tag で出し直す運用とする。
+          # 260726Cl 復旧可否の判定表 (旧コメントは「失敗したら常に Version.cs を進める」だったが、下の 260715Ch 検査と不整合だった):
+          #          | release も tag も無い              | 同じ version で再実行してよい                        |
+          #          | release 無し・tag が同じ SHA        | 同じ version で再実行してよい (安全な復旧として続行)   |
+          #          | tag が別 commit                    | ここで throw。Version.cs を進めて出し直す             |
+          #          | release が既にある                  | 通常 run は skip (dry_run は続行)                    |
+          #          | arm64 だけ失敗                     | x64 のみ †付きで公開 → attach ワークフローで backfill |
+          #          正本: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §7
           # 260623Cl dry_run は検証目的なので既存 release でも続行する (gh release create は最終 job でスキップする)。
           gh release view $tag 2>&1 | Out-Null
           $releaseExists = ($LASTEXITCODE -eq 0)

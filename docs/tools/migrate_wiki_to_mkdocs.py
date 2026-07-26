@@ -152,7 +152,41 @@ def clean_generated_pages() -> None:
             path.unlink()
 
 
+# 260726Cl 追加: 誤実行防止ガード。
+#   このスクリプトは初期移行 (Wiki → MkDocs, 2026-05-25) 専用で、Wiki 凍結後は再実行してはならない。
+#   clean_generated_pages() が docs/src/{index.md,en,ja} を削除し、copy_assets() が
+#   docs/src/assets/cap-* を Wiki の内容で上書きするため、再実行すると
+#   「その後 1 年ぶんの手編集と、全 11 言語ぶんの新規キャプチャ」がまとめて消える。
+#   保管理由は「初期移行をどう行ったか」の記録。実行しないこと。
+#   正本: .project-guidance/ReciPro/ReciPro_Pages編集方針.md §1
+ARM_FLAG = "--yes-destroy-docs-src"
+
+WARNING = f"""\
+REFUSING TO RUN.
+
+  docs/tools/migrate_wiki_to_mkdocs.py is a one-shot migration script from
+  2026-05-25. The GitHub Wiki has been frozen since then and docs/src is the
+  canonical manual.
+
+  Running it would:
+    - delete {DOCS_SRC / 'index.md'}
+    - delete {DOCS_SRC / 'en'} and {DOCS_SRC / 'ja'} (recursively)
+    - overwrite docs/src/assets/cap-* with the Wiki's stale screenshots
+
+  That destroys every hand edit made since the migration and every screenshot
+  captured for the eleven UI languages. The script is kept only as a record of
+  how the migration was done.
+
+  If you genuinely intend this (you almost certainly do not), re-run with:
+      python docs/tools/migrate_wiki_to_mkdocs.py {ARM_FLAG}
+"""
+
+
 def migrate() -> int:
+    if ARM_FLAG not in sys.argv[1:]:
+        print(WARNING, file=sys.stderr)
+        return 2
+
     if not WIKI_ROOT.exists():
         print(f"Wiki repository was not found: {WIKI_ROOT}", file=sys.stderr)
         return 1
