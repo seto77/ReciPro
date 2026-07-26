@@ -534,21 +534,20 @@ internal static partial class GuiCapture
                 // 数字は翻訳されないので inflate は掛けない (擬似ローカライズでも実寸で測る)。
                 // TextBox の内側余白は左右 1px 程度 + キャレット 1px を見込む。
                 int needValue = NeededRaw(widest, box.Font, 1.0) + 3;
-                Report(rows, culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
-                    box.ClientSize.Width, needValue, "ValueBoxClipped");
-
-                // 260726Cl 追加: 逆に「取り得る最長値に対して数値欄が広すぎる」ケース。隣のヘッダに回せる幅が
-                //   死んでいる (訳語が伸びる言語ほど効く) ので余りも報告する。ただし桁数が有界なときだけ:
-                //   DecimalPlaces < 0 かつ FormatSpecifier 未指定 = general 書式は文字数が青天井なので、
-                //   今たまたま短いだけの値を根拠に縮めると、後で計算値が入ったときに切れる。
-                //   Error/Warning ではなく Info なので既存のトリアージ (Error 集計) には混ざらない。
-                int slack = box.ClientSize.Width - needValue;
                 //   桁数が有界 = 小数部が固定 (DecimalPlaces>=0 か FormatSpecifier 指定) かつ
                 //   Maximum/Minimum が両方とも有限であること。既定は ±∞ なので、範囲を設定していない
                 //   コントロール (計算結果を表示するだけの欄やグラフ軸) は「今表示している値」しか根拠が無く、
-                //   別の結晶・別の軸範囲になれば桁が伸びる。そこを縮めると後で切れるので対象外にする。
+                //   別の結晶・別の軸範囲になれば桁が伸びる。Reason に出して、幅の増減を判断できるようにする。
                 bool bounded = (nb.DecimalPlaces >= 0 || !string.IsNullOrEmpty(nb.FormatSpecifier))
                     && double.IsFinite(nb.Maximum) && double.IsFinite(nb.Minimum);
+                Report(rows, culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
+                    box.ClientSize.Width, needValue, bounded ? "ValueBoxClipped(bounded)" : "ValueBoxClipped(open)");
+
+                // 260726Cl 追加: 逆に「取り得る最長値に対して数値欄が広すぎる」ケース。隣のヘッダに回せる幅が
+                //   死んでいる (訳語が伸びる言語ほど効く) ので余りも報告する。縮小提案は bounded のときだけ:
+                //   開いた範囲を「今たまたま短い値」を根拠に縮めると、後で計算値が入ったときに切れる。
+                //   Error/Warning ではなく Info なので既存のトリアージ (Error 集計) には混ざらない。
+                int slack = box.ClientSize.Width - needValue;
                 if (bounded && slack > ValueBoxSlackPx)
                     rows.Add(Row(culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
                         box.ClientSize.Width, needValue, slack, "Info", $"ValueBoxOversized(w={nb.ValueBoxWidth})"));

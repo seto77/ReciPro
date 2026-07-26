@@ -173,7 +173,8 @@
             numericBoxThread.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
             numericBoxThread.Value = 4D;
-            numericBoxThread.ValueBoxWidth = 25;
+            //numericBoxThread.ValueBoxWidth = 25; // 260726Cl 旧: 最長値「128」が zh-Hans で 6px 入らず切れていた
+            numericBoxThread.ValueBoxWidth = 25; // 260726Cl: 37px へ広げるとflowLayoutPanel13 が zh-Hans/Hant で groupBoxInputParameters をはみ出すため、切れを承知で据え置き
             numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // flowLayoutPanel6
@@ -248,7 +249,8 @@
             numericBoxAlphaMax.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
             numericBoxAlphaMax.Value = 6D;
-            numericBoxAlphaMax.ValueBoxWidth = 40;
+            //numericBoxAlphaMax.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「2000.0」が ko で 5px 入らず切れていた
+            numericBoxAlphaMax.ValueBoxWidth = 51; // 260726Cl
             numericBoxAlphaMax.ValueFontSize = 9F;
             numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
             // 
@@ -273,7 +275,8 @@
             numericBoxDiskResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
             numericBoxDiskResolution.Value = 0.1D;
-            numericBoxDiskResolution.ValueBoxWidth = 45;
+            //numericBoxDiskResolution.ValueBoxWidth = 45; // 260726Cl 旧: 最長値「100.000」が ko で 7px 入らず切れていた
+            numericBoxDiskResolution.ValueBoxWidth = 58; // 260726Cl
             numericBoxDiskResolution.ValueFontSize = 9F;
             numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
             // 

@@ -449,7 +449,8 @@
             toolTip.SetToolTip(numericBoxZofDet, resources.GetString("numericBoxZofDet.ToolTip"));
             numericBoxZofDet.Value = 30D;
             //numericBoxZofDet.ValueBoxWidth = 52; // 260726Cl 旧: CJK フォントだと「-35.000」の末尾が切れる
-            numericBoxZofDet.ValueBoxWidth = 62; // 260726Cl
+            //numericBoxZofDet.ValueBoxWidth = 62; // 260726Cl // 260726Cl 旧: 最長値「-1000.000」が zh-Hans で 10px 入らず切れていた
+            numericBoxZofDet.ValueBoxWidth = 78; // 260726Cl
             numericBoxZofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxYofDet
@@ -464,7 +465,8 @@
             toolTip.SetToolTip(numericBoxYofDet, resources.GetString("numericBoxYofDet.ToolTip"));
             numericBoxYofDet.Value = -35D;
             //numericBoxYofDet.ValueBoxWidth = 52; // 260726Cl 旧: CJK フォントだと「-35.000」の末尾が切れる
-            numericBoxYofDet.ValueBoxWidth = 62; // 260726Cl
+            //numericBoxYofDet.ValueBoxWidth = 62; // 260726Cl // 260726Cl 旧: 最長値「-1000.000」が zh-Hans で 10px 入らず切れていた
+            numericBoxYofDet.ValueBoxWidth = 78; // 260726Cl
             numericBoxYofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // trackBarStrSize
@@ -601,7 +603,8 @@
             numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 1D;
-            numericBoxThicknessStep.ValueBoxWidth = 38;
+            //numericBoxThicknessStep.ValueBoxWidth = 38; // 260726Cl 旧: 最長値「10.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxThicknessStep.ValueBoxWidth = 48; // 260726Cl
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxMaxNumOfG
@@ -647,7 +650,8 @@
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.Value = 1D;
             //numericBoxThicknessStart.ValueBoxWidth = 38; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
-            numericBoxThicknessStart.ValueBoxWidth = 54; // 260726Cl
+            //numericBoxThicknessStart.ValueBoxWidth = 54; // 260726Cl // 260726Cl 旧: 最長値「1000.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxThicknessStart.ValueBoxWidth = 64; // 260726Cl
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessEnd
@@ -664,7 +668,8 @@
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 50D;
             //numericBoxThicknessEnd.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
-            numericBoxThicknessEnd.ValueBoxWidth = 54; // 260726Cl
+            //numericBoxThicknessEnd.ValueBoxWidth = 54; // 260726Cl // 260726Cl 旧: 最長値「1000.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxThicknessEnd.ValueBoxWidth = 64; // 260726Cl
             numericBoxThicknessEnd.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // buttonStop
@@ -828,7 +833,8 @@
             toolTip.SetToolTip(numericBoxEnergyEnd, resources.GetString("numericBoxEnergyEnd.ToolTip"));
             numericBoxEnergyEnd.Value = 15D;
             //numericBoxEnergyEnd.ValueBoxWidth = 42; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
-            numericBoxEnergyEnd.ValueBoxWidth = 54; // 260726Cl
+            //numericBoxEnergyEnd.ValueBoxWidth = 54; // 260726Cl // 260726Cl 旧: 最長値「1000.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxEnergyEnd.ValueBoxWidth = 64; // 260726Cl
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStart
@@ -846,7 +852,8 @@
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
             //numericBoxEnergyStart.ValueBoxWidth = 42; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
-            numericBoxEnergyStart.ValueBoxWidth = 54; // 260726Cl
+            //numericBoxEnergyStart.ValueBoxWidth = 54; // 260726Cl // 260726Cl 旧: 最長値「1000.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxEnergyStart.ValueBoxWidth = 64; // 260726Cl
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStep
@@ -862,7 +869,8 @@
             numericBoxEnergyStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyStep, resources.GetString("numericBoxEnergyStep.ToolTip"));
             numericBoxEnergyStep.Value = 1D;
-            numericBoxEnergyStep.ValueBoxWidth = 38;
+            //numericBoxEnergyStep.ValueBoxWidth = 38; // 260726Cl 旧: 最長値「10.00」が zh-Hans で 4px 入らず切れていた
+            numericBoxEnergyStep.ValueBoxWidth = 48; // 260726Cl
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // labelBseDepth
@@ -1396,7 +1404,8 @@
             numericBoxDetWidth.UpDown_Increment = 10D;
             numericBoxDetWidth.Value = 400D;
             //numericBoxDetWidth.ValueBoxWidth = 36; // 260726Cl 旧: 隣のヘッダに幅を回すため縮小。Maximum=4096 (4桁) なので要実機確認
-            numericBoxDetWidth.ValueBoxWidth = 34; // 260726Cl
+            //numericBoxDetWidth.ValueBoxWidth = 34; // 260726Cl // 260726Cl 旧: 最長値「4096」が zh-Hans で 5px 入らず切れていた
+            numericBoxDetWidth.ValueBoxWidth = 45; // 260726Cl
             numericBoxDetWidth.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxDetHeight
@@ -1412,7 +1421,8 @@
             numericBoxDetHeight.UpDown_Increment = 10D;
             numericBoxDetHeight.Value = 400D;
             //numericBoxDetHeight.ValueBoxWidth = 36; // 260726Cl 旧: 隣のヘッダに幅を回すため縮小。Maximum=4096 (4桁) なので要実機確認
-            numericBoxDetHeight.ValueBoxWidth = 34; // 260726Cl
+            //numericBoxDetHeight.ValueBoxWidth = 34; // 260726Cl // 260726Cl 旧: 最長値「4096」が zh-Hans で 5px 入らず切れていた
+            numericBoxDetHeight.ValueBoxWidth = 45; // 260726Cl
             numericBoxDetHeight.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // labelDetectorResolution
@@ -1464,7 +1474,8 @@
             numericBoxXofDet.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxXofDet, resources.GetString("numericBoxXofDet.ToolTip"));
             //numericBoxXofDet.ValueBoxWidth = 52; // 260726Cl 旧: CJK フォントだと「-35.000」の末尾が切れる
-            numericBoxXofDet.ValueBoxWidth = 62; // 260726Cl
+            //numericBoxXofDet.ValueBoxWidth = 62; // 260726Cl // 260726Cl 旧: 最長値「-1000.000」が zh-Hans で 10px 入らず切れていた
+            numericBoxXofDet.ValueBoxWidth = 78; // 260726Cl
             numericBoxXofDet.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // groupBoxSampleCondition

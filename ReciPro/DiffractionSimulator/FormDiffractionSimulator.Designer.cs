@@ -1574,7 +1574,8 @@
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.08D;
-            numericBoxResolution.ValueBoxWidth = 60;
+            //numericBoxResolution.ValueBoxWidth = 60; // 260726Cl 旧: 最長値「10.000000」が zh-Hans で 14px 入らず切れていた
+            numericBoxResolution.ValueBoxWidth = 80; // 260726Cl
             numericBoxResolution.ValueChanged += numericUpDownResolution_ValueChanged;
             // 
             // radioButtonResoUnitMilliMeter
@@ -1655,6 +1656,7 @@
             // numericBoxCameraLength2
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.Color.Transparent;
+            numericBoxCameraLength2.Maximum = 10000D; // 260726Cl 追加: 上限未設定 (既定 +∞) で最長値が定まらなかった
             numericBoxCameraLength2.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxCameraLength2, "numericBoxCameraLength2");
             numericBoxCameraLength2.Minimum = 0D;

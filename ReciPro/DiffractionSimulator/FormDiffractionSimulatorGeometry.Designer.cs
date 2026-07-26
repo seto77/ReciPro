@@ -413,8 +413,10 @@
             numericBoxCameraLength2.HeaderText = "Camera length 2";
             numericBoxCameraLength2.Location = new System.Drawing.Point(0, 0);
             numericBoxCameraLength2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxCameraLength2.Maximum = 1000000D;
+            //numericBoxCameraLength2.Maximum = 1000000D; // 260726Cl 旧: 上限 1000000 は過大で 7 桁が数値欄に入らなかった
+            numericBoxCameraLength2.Maximum = 10000D; // 260726Cl
             numericBoxCameraLength2.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxCameraLength2.DecimalPlaces = 2; // 260726Cl 追加: 6 (FormDiffractionSimulator 側) と同設定に揃える。桁数未指定だと general 書式で青天井のまま
             numericBoxCameraLength2.Minimum = 1D;
             numericBoxCameraLength2.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";

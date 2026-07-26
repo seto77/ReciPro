@@ -1658,7 +1658,8 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperX, resources.GetString("numericBoxHRTEM_ObjAperX.ToolTip"));
             numericBoxHRTEM_ObjAperX.UpDown_Increment = 0.5D;
-            numericBoxHRTEM_ObjAperX.ValueBoxWidth = 33;
+            //numericBoxHRTEM_ObjAperX.ValueBoxWidth = 33; // 260726Cl 旧: 最長値「-100.0」が ko で 10px 入らず切れていた
+            numericBoxHRTEM_ObjAperX.ValueBoxWidth = 49; // 260726Cl
             numericBoxHRTEM_ObjAperX.ValueFontSize = 9F;
             numericBoxHRTEM_ObjAperX.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1675,7 +1676,8 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperY, resources.GetString("numericBoxHRTEM_ObjAperY.ToolTip"));
             numericBoxHRTEM_ObjAperY.UpDown_Increment = 0.5D;
-            numericBoxHRTEM_ObjAperY.ValueBoxWidth = 33;
+            //numericBoxHRTEM_ObjAperY.ValueBoxWidth = 33; // 260726Cl 旧: 最長値「-100.0」が ko で 10px 入らず切れていた
+            numericBoxHRTEM_ObjAperY.ValueBoxWidth = 49; // 260726Cl
             numericBoxHRTEM_ObjAperY.ValueFontSize = 9F;
             numericBoxHRTEM_ObjAperY.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1718,7 +1720,8 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
             numericBoxObjAperRadius.UpDown_Increment = 0.5D;
             numericBoxObjAperRadius.Value = 12D;
-            numericBoxObjAperRadius.ValueBoxWidth = 32;
+            //numericBoxObjAperRadius.ValueBoxWidth = 32; // 260726Cl 旧: 最長値「500.0」が ko で 6px 入らず切れていた
+            numericBoxObjAperRadius.ValueBoxWidth = 44; // 260726Cl
             numericBoxObjAperRadius.ValueFontSize = 9F;
             numericBoxObjAperRadius.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1849,7 +1852,8 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
             numericBoxCs.UpDown_Increment = 0.1D;
             numericBoxCs.Value = 1D;
-            numericBoxCs.ValueBoxWidth = 36;
+            //numericBoxCs.ValueBoxWidth = 36; // 260726Cl 旧: 最長値「-20.00」が ko で 7px 入らず切れていた
+            numericBoxCs.ValueBoxWidth = 36; // 260726Cl: 49px へ広げるとflowLayoutPanel5 が全11言語で 2 行に折り返すため、切れを承知で据え置き
             numericBoxCs.ValueFontSize = 9F;
             numericBoxCs.ValueChanged += NumericBoxCs_ValueChanged;
             // 
@@ -1886,7 +1890,8 @@ namespace ReciPro
             numericBoxHRTEM_BetaAgnle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip"));
             numericBoxHRTEM_BetaAgnle.UpDown_Increment = 0.05D;
-            numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 36;
+            //numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 36; // 260726Cl 旧: 最長値「100.00」が ko で 9px 入らず切れていた
+            numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 36; // 260726Cl: 51px へ広げるとflowLayoutPanel5 が全11言語で 2 行に折り返すため、切れを承知で据え置き
             numericBoxHRTEM_BetaAgnle.ValueFontSize = 9F;
             numericBoxHRTEM_BetaAgnle.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
@@ -1911,7 +1916,8 @@ namespace ReciPro
             numericBoxDefocus.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
             numericBoxDefocus.Value = -57.8D;
-            numericBoxDefocus.ValueBoxWidth = 40;
+            //numericBoxDefocus.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「-1000.00」が ko で 17px 入らず切れていた
+            numericBoxDefocus.ValueBoxWidth = 63; // 260726Cl
             numericBoxDefocus.ValueFontSize = 9F;
             numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
             // 
