@@ -1,107 +1,139 @@
 # HRTEM Simulation
 
-Simulates high-resolution TEM lattice-fringe images. The primary mode of the [HRTEM/STEM simulator](index.md).
+**HRTEM (High-Resolution Transmission Electron Microscopy)** simulation calculates high-resolution TEM lattice-fringe images. It is the primary mode of the [HRTEM/STEM simulator](index.md).
+
+![Simulator in HRTEM mode](../../assets/cap-en-auto/FormImageSimulator-hrtem.png)
+
+> This page covers every setting that appears on the right side when **Image mode = HRTEM**. For the controls on the left side — displaying the result and adjusting its brightness — see the [overview page](index.md#displaying-and-adjusting-results-left-panel).
 
 ---
 
-## Calculation flow
+## Overview
 
-1. **Bloch-wave method**: compute electron wave propagation through the crystal potential; obtain exit-wave amplitude and phase
-2. **Lens function**: apply objective-lens aberrations (spherical aberration $C_s$, defocus $\Delta f$)
-3. **Partial coherence**: account for finite source size (spatial coherence) and energy spread (temporal coherence)
-4. **Image formation**: compute intensity $|\psi(\mathbf{r})|^2$
+An HRTEM image is formed when the electron wave transmitted through the specimen is imaged under the influence of the objective-lens aberrations. ReciPro computes the propagation of the electron wave inside the specimen with the Bloch-wave method (dynamical calculation) and generates the HRTEM image through the phase-contrast transfer function (PCTF).
 
----
+### Calculation flow
 
-## Specimen parameters
+1. **Bloch-wave method**: compute the electron wave propagation in the crystal potential and obtain the amplitude and phase of the exit wave
+2. **Lens function**: apply the objective-lens aberrations (spherical aberration $C_s$, defocus $\Delta f$)
+3. **Partial coherence**: account for the finite source size (spatial coherence) and the energy fluctuation (temporal coherence)
+4. **Image formation**: compute the intensity distribution $|\psi(\mathbf{r})|^2$
 
-![Specimen parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
-
-| Parameter | Description |
-|-----------|-------------|
-| **Thickness** | Specimen thickness (nm). HRTEM images are strongly thickness-dependent |
+For the theory, see [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md).
 
 ---
 
-## Optical parameters
+## Sample
 
-### TEM conditions
+![Sample](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
+
+- **Thickness** : specimen thickness (nm). HRTEM images depend strongly on thickness. In **Serial image** mode this value is ignored and the thickness list described below is used instead.
+
+---
+
+## TEM conditions
 
 ![TEM conditions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-| Parameter | Description |
-|-----------|-------------|
-| **Acc. Vol.** | Accelerating voltage (kV). Relativistically corrected wavelength shown alongside |
-| **Defocus** | Defocus value (nm). Scherzer defocus displayed as reference |
+Sets the imaging conditions of the objective lens.
 
-### Intrinsic parameters
+| Parameter | Description | Default / typical |
+|-----------|-------------|-------------------|
+| **Acc. Voltage (kV)** | Accelerating voltage. The relativistically corrected electron wavelength is shown to the right | 200 kV |
+| **Defocus Δf** | Defocus of the objective lens (nm). The reference **Scherzer defocus** value is shown below it | −57.8 nm |
+| **Cs** | Spherical aberration coefficient (mm). Affects the CTF and the Scherzer defocus | 0.5–1.0 (conventional), < 0.01 (Cs-corrected) |
+| **Cc** | Chromatic aberration coefficient (mm). Determines the image blur caused by the energy spread | 1.0–2.0 mm |
+| **β** | Illumination semi-angle (mrad). Represents the finite-source-size effect (spatial coherence) | 0.1–1.0 mrad |
+| **ΔV** | Full width at half maximum of the electron energy spread (eV). Together with Cc it determines the focus spread due to chromatic aberration | 0.5–2.0 eV |
 
-![Intrinsic parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+> **Right-click menu**: on the TEM conditions panel you can apply **Set all aberrations to zero** / **Set defocus to Scherzer value** / **Set Defocus to 0 nm** with a single click. Condition presets (300kV ARM300F, 200kV 2100F, and so on) are available from **Preset settings** at the lower left.
 
-| Parameter | Description | Typical |
-|-----------|-------------|---------|
-| **Cs** | Spherical aberration (mm) | 0.5–1.0 (conventional); < 0.01 (Cs-corrected) |
-| **Cc** | Chromatic aberration (mm) | 1.0–2.0 |
-| **β** | Illumination semiangle (mrad) | 0.1–1.0 |
-| **ΔE** | Energy spread 1/*e* width (eV) | 0.5–2.0 |
+### Scherzer defocus
 
----
+The defocus value near which the phase contrast is optimal, calculated from the current wavelength and spherical aberration $C_s$ (shown for reference).
 
-## Phase Contrast Transfer Function (PCTF)
+$$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\approx -1.155\,\sqrt{C_s \lambda}\right)$$
 
-![Phase Contrast Transfer Function (PCTF)](../../assets/cap-en-auto/FormCTF.png)
-
-Displayed in the lens-function tab:
-
-- $\sin\chi(u)$: phase contrast transfer function ($\chi(u)$ is the lens aberration function)
-- $E_\text{s}(u)$: spatial coherence envelope
-- $E_\text{c}(u)$: temporal coherence envelope
-
-Scherzer defocus: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -1.155\,\sqrt{C_s \lambda})$, the condition giving a broad negative PCTF band (dark contrast = atom positions). ReciPro uses this original Scherzer value — derived by setting the minimum of the aberration phase $\chi$ to $-2\pi/3$ — and the value shown in the GUI follows this formula; some references instead use the *extended Scherzer* value $-1.2\sqrt{C_s\lambda}$.
+Under this condition the PCTF is negative over a wide range of spatial frequencies, so atomic positions appear as dark contrast. ReciPro adopts this original Scherzer value (derived by setting the minimum of the aberration phase $\chi$ to $-2\pi/3$), and the value shown in the GUI follows this formula. Note that some references instead use the *extended Scherzer* value $-1.2\sqrt{C_s\lambda}$, which broadens the transfer band further.
 
 ---
 
-## Objective aperture
+## Lens function / Contrast Transfer Function (CTF)
 
-![Objective aperture](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+Checking **Contrast Transfer Function (CTF)** opens a window that plots how the lens aberrations and defocus transfer the image contrast at each spatial frequency.
 
-Set aperture size (mrad) and position. **Open aperture** removes it. The number of Bloch waves considered depends on aperture conditions.
+![Contrast Transfer Function (CTF)](../../assets/cap-en-auto/FormCTF.png)
 
----
+- $\sin\chi(u)$ : phase-contrast transfer function ($\chi(u)$ is the aberration function of the lens)
+- $E_\text{s}(u)$ : spatial-coherence envelope function; the damping due to the finite source size ($\beta$)
+- $E_\text{c}(u)$ : temporal-coherence envelope function; the damping due to the energy fluctuation ($C_c$, $\Delta V$)
 
-## Partial coherence models
-
-![Partial coherence models](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
-
-| Model | Description |
-|-------|-------------|
-| **Quasi-coherent (linear image)** | Fast. Valid under the weak-phase approximation |
-| **TCC (Transmission Cross Coefficient)** | More accurate; longer computation |
+Changing the upper limit of the horizontal axis $u$ (spatial frequency) changes the plotted range.
 
 ---
 
-## Simulation modes
+## Objective aperture (HRTEM option)
 
-![Simulation modes](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+![Objective aperture (HRTEM option)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-| Mode | Description |
+Restricts the diffracted waves that pass through the objective aperture. The number of diffracted waves cut by the aperture also changes the number of spots included in the Bloch-wave calculation (the upper bound is the maximum number of Bloch waves set in **Waves**).
+
+- **Size** : semi-angle of the objective aperture (mrad). The smaller it is, the more high-angle diffracted waves are cut, and the smoother the high-resolution detail becomes. The equivalent reciprocal-space radius $\sin\theta/\lambda$ (nm⁻¹) is displayed.
+- **Shift X** / **Y** : shift of the objective-aperture center (mrad). Used for dark-field and tilted imaging.
+- **Open aperture** : opens the objective aperture (infinite), so that all diffracted waves are used for imaging.
+- **spots inside** : the number of diffracted beams (spots) that fall inside the aperture (read-only).
+- **Spot info** : opens a table listing the diffracted beams inside the aperture (intensity, complex amplitude, and so on).
+
+> The size of the objective aperture is also shown in the **Diffraction Simulator**.
+
+---
+
+## HRTEM options (partial coherency model)
+
+![HRTEM options (partial coherency model)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+
+Selects the interference model used when integrating the contributions from all incident-beam directions.
+
+- **Linear image** : computationally cheap. Suited to thin specimens where the weak-phase-object approximation holds; it multiplies the PCTF by the spatial- and temporal-coherence envelopes.
+- **Transmission cross coefficient** : computationally expensive but more accurate. It integrates the full transmission cross coefficient, and is the model to use for strong scatterers that excite many strong diffracted waves.
+
+For details, see [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md).
+
+---
+
+## Single/serial mode
+
+![Single/serial mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+
+- **Single image** : calculates one HRTEM image at the current thickness and defocus.
+- **Serial image** : generates a set of images with the thickness and defocus varied stepwise (a through-thickness / through-focus series). Useful for finding the condition that best matches an experimental image.
+
+For a serial image, set the following.
+
+| Item | Description |
 |------|-------------|
-| **Single image** | One image at current thickness and defocus |
-| **Serial image** | Matrix of images over thickness × defocus ranges (Start / Step / Num) |
+| **Thickness (nm)** / **Defocus (nm)** | Which quantity to sweep (both are allowed) |
+| **Start / Step / Num** | Start value, step width, and number of images. They are expanded into the list box below, which can also be edited directly |
+| **Horizontal direction:** | When both thickness and defocus are swept, the quantity laid out along the horizontal direction of the grid (**Defocus** or **Thickness**) |
+
+Sweeping both thickness and defocus produces a row × column matrix of images.
 
 ---
 
-## Image adjustment
+## Image properties
 
-![Image adjustment](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![Image properties](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-| Setting | Description |
-|---------|-------------|
-| **Min / Max** | Display range (image-adjustment trackbars) |
-| **Colour** | Greyscale or Cold-Warm |
-| **Gaussian blur (FWHM)** | Apply a Gaussian filter |
-| **Unit cell** | Overlay unit-cell grid |
-| **Scale** | Show scale bar |
+- **Size (W×H)** : number of pixels of the simulated image (512×512 by default).
+- **Resolution** : sampling resolution (pm/px). A smaller value resolves finer lattice fringes, but the FFT time grows proportionally.
+
+---
+
+## Waves
+
+![Waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+
+- Maximum number of Bloch waves used in the Bethe method (dynamical calculation), 80 by default. A larger number improves accuracy, but the eigenvalue problem takes $O(N^3)$ time to solve.
 
 ---
 

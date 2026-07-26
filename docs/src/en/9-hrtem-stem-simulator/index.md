@@ -4,9 +4,24 @@ title: HRTEM / STEM Simulator
 
 # HRTEM / STEM Simulator
 
-The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM images, and projected potentials. Click **Simulate** to run.
+The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM images, and projected crystal potentials for the selected crystal and orientation. Click **Simulate** to run.
 
 ![HRTEM/STEM Simulator](../../assets/cap-en-auto/FormImageSimulator.png)
+
+The window is split into two halves. The **left side** displays the simulation result and controls its appearance (image panes, brightness, color, scale bar, and so on); the **right side** holds the calculation conditions (**Optical properties** and **Simulation settings**).
+
+---
+
+## This page and the mode pages
+
+- **This page (overview)**: the operations common to every mode, together with the **result display and adjustment controls on the left side**.
+- **Mode pages**: every setting that appears on the **right side** for that mode, covered so that each page is self-contained (some settings therefore appear on more than one page).
+
+| Mode | Contents | Page |
+|------|----------|------|
+| **HRTEM** | High-resolution TEM lattice-fringe images | [HRTEM simulation](1-hrtem-simulation.md) |
+| **STEM** | Scanning transmission electron microscope images (BF / ABF / LAADF / HAADF) | [STEM simulation](2-stem-simulation.md) |
+| **Potential** | Projected crystal potential ($U_g$ / $U'_g$) | [Potential simulation](3-potential-simulation.md) |
 
 ---
 
@@ -23,228 +38,117 @@ Results are shown as one or more image panes. They use ReciPro's standard [image
 | Right-drag a box | Zoom in to the selected region |
 | Right-click / Right double-click | Zoom out (×0.5) |
 | <kbd>CTRL</kbd> + Right-drag a box | Select a rectangular area |
-| Left double-click a pane | Maximise that pane / restore the grid (multi-pane layouts) |
+| Left double-click a pane | Maximize that pane / restore the grid (multi-pane layouts) |
 | Move the mouse (no button) | Read the position (pm) and pixel value at the cursor |
 
 → See **[21. Keyboard & mouse shortcuts](../21-shortcuts.md)** for every window at a glance.
 
 ---
 
-## Quick Routes by Goal
+## Quick routes by goal
 
 | Goal | Start from | Reference |
 |------|------------|-----------|
-| Calculate one HRTEM image | Set **Image mode** to **HRTEM**, then set accelerating voltage and defocus in **TEM conditions** | [HRTEM simulation](1-hrtem-simulation.md), [HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md) |
-| Calculate a STEM image | Set **Image mode** to **STEM**, then set convergence angle and detector in **STEM options** | [STEM simulation](2-stem-simulation.md), [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
-| View projected potential | Set **Image mode** to **Potential** | [Potential simulation](3-potential-simulation.md) |
-| Generate a thickness / defocus series | Configure **Single / Serial** and the image conditions in **HRTEM options** | [HRTEM simulation](1-hrtem-simulation.md) |
-| Use HAADF-STEM with TDS | Set non-zero atomic temperature factors and use an LAADF / HAADF detector | [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
+| Calculate one HRTEM image | Set **Image mode** to **HRTEM**, then set the accelerating voltage and defocus in **TEM conditions** | [HRTEM simulation](1-hrtem-simulation.md), [HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md) |
+| Calculate a STEM image | Set **Image mode** to **STEM**, then set the convergence angle and detector in **STEM options** | [STEM simulation](2-stem-simulation.md), [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
+| View the projected potential | Set **Image mode** to **Potential** | [Potential simulation](3-potential-simulation.md) |
+| Generate a thickness / defocus series | In HRTEM, configure **Single/serial mode** and the image conditions | [HRTEM simulation](1-hrtem-simulation.md) |
+| Use HAADF-STEM with TDS | Set non-zero atomic temperature factors and move the STEM detector to LAADF / HAADF | [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
 
 ---
 
-## Basic Workflow
+## Basic workflow
 
-1. Select the crystal and orientation in the main window, then open this simulator.
+1. Select the crystal and orientation in the main window, then open this window.
 2. Choose HRTEM, STEM, or Potential in **Image mode**.
-3. Set accelerating voltage, defocus, aberrations, apertures, and STEM convergence settings in **Optical property**.
-4. Set thickness, image size, resolution, Bloch-wave count, and partial-coherence model in **Simulation property**.
-5. Click **Simulate**, then adjust brightness, normalisation, scale bar, and labels in **Display settings**.
+3. Set the accelerating voltage, defocus, aberrations, aperture, STEM convergence angle, and so on in **Optical properties** (see the mode pages).
+4. Set the thickness, image size, resolution, Bloch-wave count, partial-coherence model, and so on in **Simulation settings** (see the mode pages).
+5. Click **Simulate**, then tune the appearance with **Adjust**, **Normalization**, and **Display** on the left as needed.
 
 ---
 
-## Image area
+## Selecting the image mode
 
-The left half of the window shows the simulated image. The status bar across the top reports the cursor position (**X:**, **Y:**) and the image **Value:** (intensity) under the cursor, next to a **Low → High** intensity scale that reflects the current colour map and brightness range.
+![Image mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){ align=left }
 
----
+**Image mode** at the top right selects the kind of calculation. The panels on the right (**Optical properties** and **Simulation settings**) change to match the mode you choose.<div style="clear: both;"></div>
 
-## File menu
-
-
-### Help menu
-
-
----
-
-## Image mode / Sample
-
-![Image mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
-
-HRTEM, Potential, or STEM.<div style="clear: both;"></div>
-
-![Sample](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
-Sets the sample thickness.<div style="clear: both;"></div>
-
-## Optical property { style="clear: both" }
-
-### TEM conditions
-
-![TEM conditions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
-
-Acc. voltage, defocus (Scherzer shown).
-
-#### Acc. voltage
-
-Accelerating voltage of the electron microscope. Changing this updates the relativistically-corrected wavelength (displayed beside the field) and, together with **Cs**, the suggested **Scherzer defocus** value shown below.
-
-#### Defocus
-
-Defocus value of the objective lens. The Scherzer defocus (the value that maximises the phase-contrast transfer in the weak-phase-object approximation) is shown below as a reference.
-
-### Inherent property (HRTEM optical aberrations)
-
-Microscope-specific aberration parameters used by the lens-function calculation.
-
-- **Cs** — spherical aberration coefficient.
-- **Cc** — chromatic aberration coefficient.
-- **β** — illumination semi-angle (finite-source effect).
-- **ΔE** — 1/e width of the electron-energy fluctuation.
-
-### Lens function
-
-Plots of the lens function. Adjusting the upper limit of *u* changes the drawing range.
-
-- **sin[χ(u)]** — phase-contrast transfer function (PCTF).
-- **E_s(u)** — spatial-coherence envelope function.
-- **E_c(u)** — temporal-coherence envelope function.
-
-### Objective aperture (HRTEM option)
-
-![Objective aperture (HRTEM option)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
-
-Cs, Cc, beta, delta-E, PCTF, spatial/temporal coherence envelopes, objective aperture.
-
-#### Size
-
-Objective aperture size in mrad. Tick **Open aperture** to remove the aperture. The number of diffraction spots taken into the Bloch-wave calculation depends on the aperture; the maximum is bounded by the **Max Bloch waves** value in **Simulation property**.
-
-#### Shift
-
-Horizontal displacement of the aperture in mrad — used to mimic an offset objective aperture in HRTEM.
-
-#### Spot info
-
-Opens the detailed spot list (intensity, complex amplitude, etc.) for the reflections passing through the aperture. Convenient when the Diffraction Simulator is also open for comparison.
-
-### STEM options (optical)
-
-![STEM options (optical)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
-
-#### Convergence semi-angle
-
-Half-angle of the convergent probe (mrad). Controls the size of the STEM probe and the spatial resolution of the simulated image.
-
-#### Detector geometry
-
-Inner / outer collection angles of the annular detector (mrad). Choose between BF (small inner angle), ABF, LAADF, HAADF (large inner angle).
-
-#### Scan area / step
-
-Scan field of view and pixel size for the STEM image.
+- **HRTEM** — high-resolution TEM lattice-fringe images → [HRTEM simulation](1-hrtem-simulation.md)
+- **STEM** — scanning transmission electron microscope images → [STEM simulation](2-stem-simulation.md)
+- **STEM-EDX** — handles STEM-EDX output using the STEM calculation conditions (a variant of STEM)
+- **Potential** — projected crystal potential → [Potential simulation](3-potential-simulation.md)
 
 ---
 
-## Simulation property
+## Image area (left side)
 
-### HRTEM options
+The left half of the window shows the simulated image. The status bar across the top reports the cursor position (**X:**, **Y:**) and the image **Value:** (intensity) under the cursor, next to a **Low → High** intensity scale that reflects the current color map and brightness range.
 
-![HRTEM options](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
-
-Max Bloch waves, image pixels/resolution, partial coherence (quasi-coherent / TCC), Single/Serial mode.
-
-#### Max Bloch waves
-
-Maximum number of Bloch waves used in the dynamical calculation. Increasing this improves accuracy at the cost of *O*(*N*³) eigenvalue solving time.
-
-#### Image property (pixels & resolution)
-
-Pixel dimensions and sampling resolution of the simulated image. Higher resolution gives a finer fringe pattern but proportionally longer FFT time per slice.
-
-#### Partial-coherent model
-
-How wave interference is treated when combining the contributions from all incident-beam directions.
-
-- **Quasi-coherent** — fast, approximate model that multiplies the phase-contrast transfer function by spatial- and temporal-coherence envelopes.
-- **Transmission cross coefficient (TCC)** — more accurate model that integrates over the full transmission cross coefficient. Slower but exact in the linear-imaging regime.
-
-See [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md).
-
-#### Single / Serial mode
-
-- **Single image** — simulates a single image at the thickness set in **Sample property** and the defocus set in **Optical property**.
-- **Serial image** — generates a thickness × defocus matrix according to **Start / Step / Num** for each. Useful for finding the best matching condition against an experimental image.
-
-### STEM options (simulation)
-
-![STEM options (simulation)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
-
-- **Bloch wave count** — same role as for HRTEM, applied per probe position.
-- **Angular resolution** — number of sample points in the probe-direction integration.
-- **TDS treatment** — whether to include thermal-diffuse scattering via temperature factors *B*. Required for LAADF/HAADF.
-
-### Potential options
-
-![Potential option](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
-
-Displayed when **Image mode = Potential**.
-
-- **Target potential** — choose **U_g** (elastic) or **U′_g** (absorption / TDS).
-- **Display method** — **Magnitude and phase**, or **Real and imaginary part**.
-
-### Image properties
-
-![Image properties](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
-
-### Waves
-
-![Waves](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+When several images are produced (a serial image, or the magnitude/phase of a potential) they are tiled in a grid, and all panes zoom and pan together.
 
 ---
 
-## Simulate
+## Displaying and adjusting results (left panel)
 
-![Simulation actions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelSimulationActions.png)
-
----
-
-## Display settings
+The panel at the lower left adjusts how the result looks — brightness, color, normalization, and overlays. These apply to every mode and take effect without recalculating.
 
 ### Adjust
 
 ![Adjust](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
-Min/Max brightness, colour scale, Gaussian blur.
+- **Min** / **Max** : lower (black) and upper (white) ends of the displayed intensity range. Use the trackbars to adjust the contrast.
+- **Color** : color scale of the image — **Gray scale** or **Cold-Warm** (blue to red).
+- **Gaussian Blur (FWHM)** : when checked, applies a Gaussian blur with the full width at half maximum (pm) given on the right, approximating a finite resolution (point-spread function).
 
 ### Normalization
 
 ![Normalization](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
 
-### Display
-
-![Display](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
-
-Label (thickness/defocus), scale bar, unit cell overlay.
+- **For Each Image** : when checked, normalizes each image separately (when unchecked, the whole series shares a common scale).
+- **Min** / **Max** : fixes the lower / upper end of the normalization to the value given on the right instead of the minimum / maximum of the image.
 
 ### STEM image
 
 ![STEM image](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
+Shown in STEM mode only. Selects which scattering component of the calculated STEM image is displayed (**Elastic**, **TDS**, or **Elastic & TDS**). Because it is specific to STEM, it is also described on the [STEM simulation](2-stem-simulation.md) page.
+
+### Display
+
+![Display](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+
+Sets the items overlaid on the image.
+
+- **Unit cell** : overlays the outline of the projected unit cell, so you can relate the image contrast to the crystal lattice.
+- **Label** : overlays labels such as thickness, defocus, and indices. **Size** (font size) and **Color** can be specified.
+- **Scale bar** : overlays a scale bar. **Length** (nm) and **Color** can be specified.
+
 ---
 
-## STEM simulation
+## Running the simulation
 
-Computation depends on: convergence angle, Bloch wave count, angular resolution.
+![Simulation actions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelSimulationActions.png)
 
-| Detector | Contribution |
-|----------|-------------|
-| BF, ABF | Elastic |
-| LAADF, HAADF | Inelastic (TDS) |
+- **Simulate** : runs the calculation with the current crystal, microscope conditions, thickness, defocus, and display settings.
+- **Stop** : aborts the running calculation (shown only while calculating).
+- **Real-Time Simulation** : when checked, recalculates immediately as the crystal is rotated (hidden in STEM mode).
+- **Preset settings** : toggles the preset window, which stores and recalls TEM imaging conditions.
 
-> Set temperature factors non-zero for TDS (B = 0.5 Å² if unsure). HAADF intensity $\propto Z^2$.
+---
 
-![STEM simulation comparison: Dr. Probe vs ReciPro](../../assets/references/STEM_DrProbe_comparison.png)
+## File menu
 
-A more detailed report is available as a PDF: [Comparison of STEM simulations by Dr. Probe GUI (v1.10) and ReciPro (v4.854)](https://github.com/seto77/ReciPro/files/10976084/ComparisonSTEMsimulations.pdf). See [STEM simulation](2-stem-simulation.md) for details.
+- **Save Image** : save as **as Image (PNG format)**, **as Image (TIFF format)**, or **as Metafile (EMF)**. **Save individually for serial image mode** writes the images of a serial run one by one.
+- **Copy image** : copy to the clipboard **as Image** or **as Metafile (EMF)**.
+- **Overprint symbols** : burns the unit cell, labels, and scale bar into the saved image.
+- **Load TEM parameters** / **Save TEM parameters** : save the optical conditions (accelerating voltage, aberrations, and so on) to a file and restore them.
+
+## Help menu
+
+![Help menu](../../assets/cap-en-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
+
+- **Basic concept of HRTEM simulation** : opens the explanation of HRTEM image formation ([Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)).
+- **Calculation library** : selects the calculation library — **Native code** (fast C++/Eigen) or **Managed code** (.NET). Native is normally faster.
 
 ---
 
