@@ -127,12 +127,26 @@ internal static partial class GuiCapture
         //   (直後に Program.cs が Environment.Exit(0) するため、通常終了処理は不要)。
         try { main?.Dispose(); } catch { /* 破棄時例外は無視 */ }
 
+        // 260726Cl 追加: 中央訳テーブル (LocalizationData) のうち、どのコントロールにも当てられなかった
+        //   エントリを報告する。HeaderText 23 件が「訳は書いてあるのに UI は英語のまま」で 1 か月以上
+        //   気づかれなかったのは、CodeLocalizer の失敗が完全に無言だったため。全フォームを構築する
+        //   この診断が唯一の網羅的な観測点なので、ここで表に出す。
+        //   (CodeLocalizer.Apply は各フォームの OnLoad で走るので、ここに来た時点で全件試行済み)
+        var unresolved = CodeLocalizer.UnresolvedEntries;
+        if (unresolved.Count > 0)
+        {
+            Trace($"CodeLocalizer: 未解決エントリ {unresolved.Count} 件 (訳テーブルにあるがコントロールに当たらない)");
+            foreach (var u in unresolved)
+                Trace($"  未解決\t{u}");
+        }
+
         var full = System.IO.Path.GetFullPath(outFile);
         System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(full));
         System.IO.File.WriteAllLines(full, rows);
         int findings = rows.Count - 1;
         int errors = rows.Skip(1).Count(r => r.Contains("\tError\t"));
-        Trace($"diagnose done: {forms} forms, {findings} findings ({errors} error) -> {full}");
+        Trace($"diagnose done: {forms} forms, {findings} findings ({errors} error), "
+            + $"{unresolved.Count} unresolved localization entries -> {full}");
     }
 
     private static void ShowOffScreen(Form form, Action<string> trace)
