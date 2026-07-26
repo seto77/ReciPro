@@ -97,7 +97,7 @@ title: HRTEM/STEMシミュレータ
 ![画像調整](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min / Max** : 表示する輝度レンジの下限（黒）と上限（白）。トラックバーでコントラストを調整します。
-- **Color** : 画像のカラースケール。**Gray scale**（グレースケール）または **Cold-Warm**（青〜赤）。
+- **カラー** : 画像のカラースケール。**Gray scale**（グレースケール）または **Cold-Warm**（青〜赤）。
 - **ガウシアンぼかし(FWHM)** : チェックすると、右の半値全幅 (pm) でガウシアンぼかしを適用し、有限分解能（点像分布）を近似します。
 
 ### 強度の規格化
@@ -140,17 +140,17 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 
 ![ファイルメニュー](../../assets/cap-ja-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-- **画像を保存** : PNG / TIFF / メタファイル (EMF) で保存。**Save individually for serial image mode** はシリーズ画像を1枚ずつ保存します。
-- **画像をコピー** : 画像 または メタファイル (EMF) としてクリップボードへコピー。
-- **Overprint symbols** : 保存画像に単位胞・ラベル・スケールバーを焼き込みます。
-- **Load TEM parameters** / **Save TEM parameters** : 加速電圧・収差などの光学条件をファイルに保存・復元します。
+- **画像を保存** : **画像として (PNG形式)** / **画像として (TIFF形式)** / **メタファイルとして (EMF)** で保存。**シリーズ画像モードで個別に保存** はシリーズ画像を1枚ずつ保存します。
+- **画像をコピー** : **画像として** または **メタファイルとして (EMF)** クリップボードへコピー。
+- **記号を重ね印刷** : 保存画像に単位胞・ラベル・スケールバーを焼き込みます。
+- **TEMパラメータを読み込み** / **TEMパラメータを保存** : 加速電圧・収差などの光学条件をファイルに保存・復元します。
 
 ## ヘルプメニュー
 
 ![ヘルプメニュー](../../assets/cap-ja-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
-- **Basic concept of HRTEM simulation** : HRTEM像形成の解説（[Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)）を開きます。
-- **Calculation library** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。
+- **HRTEMシミュレーションの基本概念** : HRTEM像形成の解説（[Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)）を開きます。
+- **計算ライブラリ** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。
 
 ---
 
