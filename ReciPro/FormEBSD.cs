@@ -50,11 +50,8 @@ public partial class FormEBSD : FormBase
     #region フィールド、プロパティ
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    const double Inv_PI = 1 / Math.PI;
-    const double Half_PI = 0.5 * Math.PI;
+    //260727Cl (/simplify): 唯一の利用者だった BuildEbsdLookupTable が EbsdPatternComposer へ移設されて未参照になったので削除
+    //旧: const double Inv_PI = 1 / Math.PI; / const double Half_PI = 0.5 * Math.PI;
 
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
@@ -121,7 +118,9 @@ public partial class FormEBSD : FormBase
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
 
-    (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] BSEs = []; // (260331Ch) 最後の非弾性散乱情報も保持する
+    //260726Cl 型変更: 10 要素タプル → EbsdBackscatteredElectron (Crystallography 側の record struct。メンバー名は同一なので参照側は不変)。
+    //旧: (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] BSEs = [];
+    EbsdBackscatteredElectron[] BSEs = []; // (260331Ch) 最後の非弾性散乱情報も保持する
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -239,7 +238,7 @@ public partial class FormEBSD : FormBase
         expPbmp?.Dispose();
         expPbmp = value;
         expImage = null;
-        InvalidateIndexingResults(); //260724Cl: 旧画像の方位候補を失効させる (FormEBSD.Indexing.cs)。バンド検出廃止で引数レス化
+        InvalidateIndexingResults(); //260724Cl: 旧画像の方位候補を失効させる (下の指数付け region)。バンド検出廃止で引数レス化 //260727Cl: FormEBSD.Indexing.cs は本ファイルへ統合済みなので参照先を訂正
     }
 
     #endregion
@@ -1037,713 +1036,13 @@ public partial class FormEBSD : FormBase
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
 
-    // 260325Cl 追加: ピクセルごとの MasterPattern 参照テーブル (エネルギー・深さに依存しない)
-    // 正方格子: idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
-    // 六方格子: idx[i*3..i*3+2] = 3近傍インデックス, wt[i*3..i*3+2] = バリセントリック重み (260331Cl)
-    private int[] ebsdLookupIdx = [];
-    private float[] ebsdLookupWt = [];
-    private bool[] ebsdLookupPosZ = [];
-    private int ebsdLookupGridSize; // 260325Cl: Apply で idx+gridSize の復元に使用
-    private MasterPattern.Types ebsdLookupGridType; // 260331Cl: 六方格子モードかどうか
-
-    // 260325Cl 追加: DetTilt/SmpTilt 由来の回転係数キャッシュ (tilt 変更時のみ再計算)
-    private double ebsdYCoeffPy, ebsdZCoeffPy, ebsdYConst, ebsdZConst;
-
-    /// <summary>DetTilt/SmpTilt から回転係数を再計算する。260325Cl 追加</summary>
-    private void UpdateEbsdTiltCoeffs()
-    {
-        var (sinDet, cosDet) = Math.SinCos(DetTilt);
-        var (sinSmp, cosSmp) = Math.SinCos(SmpTilt);
-        ebsdYCoeffPy = cosSmp * cosDet + sinSmp * sinDet;
-        ebsdZCoeffPy = -sinSmp * cosDet + cosSmp * sinDet;
-        ebsdYConst = cosSmp * DetY + sinSmp * DetZ;
-        ebsdZConst = -sinSmp * DetY + cosSmp * DetZ;
-    }
-
-    /// <summary>
-    /// 検出器ジオメトリと結晶方位から、ピクセルごとの MasterPattern 参照テーブルを構築する。260325Cl 追加
-    /// エネルギー・深さに依存しないため、畳み込み時は 1 回だけ呼べばよい。
-    /// </summary>
-    private unsafe void BuildEbsdLookupTable(int width, int height) // 260325Cl: unsafe 化
-    {
-        if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width), "EBSD raster width must be positive."); //260725Ch: unsafe 配列長と除算の前提を入口で保証
-        if (height <= 0) throw new ArgumentOutOfRangeException(nameof(height), "EBSD raster height must be positive."); //260725Ch
-        var gridSize = MasterPattern.GridSize; //260725Ch: 1×1 以下では正方格子の gridMax-1 と bilinear の idx+1 が成立しない
-        if (gridSize < 2) throw new InvalidOperationException("MasterPattern.GridSize must be at least 2."); //260725Ch
-        //var totalPixels = width * height; //260725Ch 変更前
-        var totalPixels = checked(width * height); //260725Ch: 将来ラスター上限が変わっても unsafe 配列長の整数オーバーフローを許さない
-        ebsdLookupGridType = MasterPattern.GridType; // 260331Cl
-        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-        // 260331Cl: 六方格子は 3 idx + 3 wt/pixel、正方格子は 1 idx + 2 wt/pixel
-        var idxCount = isHexGrid ? totalPixels * 3 : totalPixels;
-        var wtCount = isHexGrid ? totalPixels * 3 : totalPixels * 2;
-        // if (ebsdLookupIdx.Length != idxCount) // 260724Cl 変更前: idx 長のみで判定。六方⇔正方切替とラスター画素数変化の組合せで wt/posZ 長だけが不整合になり、unsafe ループが境界外へ書く恐れがあった
-        if (ebsdLookupIdx.Length != idxCount || ebsdLookupWt.Length != wtCount || ebsdLookupPosZ.Length != totalPixels) // 260724Cl
-        {
-            //ebsdLookupIdx = new int[idxCount]; // 260402Cl 変更前
-            //ebsdLookupWt = new float[wtCount]; // 260402Cl 変更前
-            ebsdLookupIdx = GC.AllocateUninitializedArray<int>(idxCount); // 260402Cl 直後に全要素上書きされるため未初期化で確保
-            ebsdLookupWt = GC.AllocateUninitializedArray<float>(wtCount); // 260402Cl
-            ebsdLookupPosZ = GC.AllocateUninitializedArray<bool>(totalPixels); // 260402Cl
-        }
-
-        // 260325Cl: tilt 係数はキャッシュ済み (UpdateEbsdTiltCoeffs で更新)
-        double yCoeffPy = ebsdYCoeffPy, zCoeffPy = ebsdZCoeffPy, yConst = ebsdYConst, zConst = ebsdZConst;
-
-        var Ri = Crystal.RotationMatrix.Inverse();
-        double xm = DetectorXMirror; // 260718Cl: 左右反転トグル (既定 +1)。X 方向のみ符号を掛ける
-        double ax = -xm * Ri.E11, ay = -xm * Ri.E21, az = -xm * Ri.E31, bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
-        double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy, bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
-        // 260723Cl 変更: 検出器中心 X オフセット (DetX) を定数項に追加。視線ベクトルの X 成分は (ピクセル項) - DetX
-        // (既存の Y/Z 定数項 +yConst/+zConst が検出器中心 -C 由来なのと同じ規約。lab X は試料/検出器傾斜 (X 軸回転) で不変なので Ri の第 1 列に掛かる)
-        // double cx = Ri.E12 * yConst + Ri.E13 * zConst, cy = Ri.E22 * yConst + Ri.E23 * zConst, cz = Ri.E32 * yConst + Ri.E33 * zConst; // 260723Cl 変更前
-        double cx = Ri.E12 * yConst + Ri.E13 * zConst - Ri.E11 * DetX, cy = Ri.E22 * yConst + Ri.E23 * zConst - Ri.E21 * DetX, cz = Ri.E32 * yConst + Ri.E33 * zConst - Ri.E31 * DetX;
-
-        // double scaleW = DetR / width, scaleH = DetR / height; // 260723Cl 変更前: 画面幅=検出器直径 (2·DetR) 前提
-        // double scaleW = DetHalfWidth / width, scaleH = DetHalfHeight / height; // 260723Cl 変更: ラスター全域=検出器の物理サイズ // 260724Cl 変更前
-        // 260724Cl 変更: ラスター全域=現在の視野 (ClientSize×Resolution)。視野中心のずれ (viewPan) は定数項へ ax/bx 系数経由で加算
-        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height);
-        cx += ax * viewOffX + bx * viewOffY;
-        cy += ay * viewOffX + by * viewOffY;
-        cz += az * viewOffX + bz * viewOffY;
-        double ax2 = ax * scaleW, ay2 = ay * scaleW, az2 = az * scaleW;
-        double bx2 = bx * scaleH, by2 = by * scaleH, bz2 = bz * scaleH;
-
-        //var gridSize = MasterPattern.GridSize; //260725Ch 変更前: unsafe 前提検証のためメソッド先頭へ移動
-        ebsdLookupGridSize = gridSize; // 260325Cl: Apply 用にキャッシュ
-        var startPxFactor = 1 - width; // (260325Ch) 列方向は等間隔なので、旧 pxFactor 再計算を増分更新へ置き換える
-        double dxStep = 2.0 * ax2, dyStep = 2.0 * ay2, dzStep = 2.0 * az2; // (260325Ch)
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
-
-            if (isHexGrid) // 六方格子パス
-            {
-                var gs = gridSize; // Parallel.For のキャプチャ用ローカル
-                Parallel.For(0, height, h =>
-                {
-                    double pyFactor = 2 * h + 1 - height;
-                    double rowBx = bx2 * pyFactor + cx, rowBy = by2 * pyFactor + cy, rowBz = bz2 * pyFactor + cz;
-                    int rowOffset = h * width;
-                    double dx = ax2 * startPxFactor + rowBx, dy = ay2 * startPxFactor + rowBy, dz = az2 * startPxFactor + rowBz;
-
-                    for (int w = 0; w < width; w++)
-                    {
-                        int i = rowOffset + w;
-                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
-                        double nx = dx * invLen, ny = dy * invLen, nz = dz * invLen;
-                        pPosZ0[i] = nz >= 0;
-
-                        // 球面→六方格子
-                        var (hx, hy) = MasterPattern.SphereToRoscaLambertHex(nx, ny, Math.Abs(nz));
-                        MasterPattern.GetHexBarycentricLookup(hx, hy, gs, out int idx0, out int idx1, out int idx2, out float bw0, out float bw1, out float bw2);
-
-                        int i3 = i * 3;
-                        pIdx0[i3] = idx0; pIdx0[i3 + 1] = idx1; pIdx0[i3 + 2] = idx2;
-                        pWt0[i3] = bw0; pWt0[i3 + 1] = bw1; pWt0[i3 + 2] = bw2;
-
-                        dx += dxStep; dy += dyStep; dz += dzStep;
-                    }
-                });
-            }
-            else // 正方格子パス 
-            {
-                var sqLim = MasterPattern.SquareLimit;
-                var invStep = gridSize / (2.0 * sqLim);
-                var gridMax = gridSize - 1;
-
-                Parallel.For(0, height, h =>
-                {
-                    double pyFactor = 2 * h + 1 - height;
-                    double rowBx = bx2 * pyFactor + cx, rowBy = by2 * pyFactor + cy, rowBz = bz2 * pyFactor + cz;
-                    int rowOffset = h * width;
-                    double dx = ax2 * startPxFactor + rowBx, dy = ay2 * startPxFactor + rowBy, dz = az2 * startPxFactor + rowBz;
-
-                    for (int w = 0; w < width; w++)
-                    {
-                        int i = rowOffset + w;
-                        double absDx = Math.Abs(dx), absDy = Math.Abs(dy);
-                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz), absDzNorm = Math.Abs(dz) * invLen;
-                        pPosZ0[i] = dz >= 0;
-
-                        double a, b;
-                        if (absDx < 1e-15 && absDy < 1e-15) { a = 0; b = 0; }
-                        else
-                        {
-                            double edgeRadius = Math.Sqrt(Math.Max(0.0, Half_PI * (1.0 - absDzNorm)));
-                            if (absDx >= absDy)
-                            {
-                                a = dx >= 0 ? edgeRadius : -edgeRadius;
-                                b = 4.0 * a * Inv_PI * Math.Atan(dy / dx);
-                            }
-                            else
-                            {
-                                b = dy >= 0 ? edgeRadius : -edgeRadius;
-                                a = 4.0 * b * Inv_PI * Math.Atan(dx / dy);
-                            }
-                        }
-
-                        double gw = (a + sqLim) * invStep - 0.5, gh = (sqLim - b) * invStep - 0.5;
-                        int w0 = (int)Math.Floor(gw), h0 = (int)Math.Floor(gh);
-                        double fw = gw - w0, fh = gh - h0;
-                        if (w0 < 0) { w0 = 0; fw = 0; } else if (w0 >= gridMax) { w0 = gridMax - 1; fw = 1; }
-                        if (h0 < 0) { h0 = 0; fh = 0; } else if (h0 >= gridMax) { h0 = gridMax - 1; fh = 1; }
-
-                        pIdx0[i] = h0 * gridSize + w0;
-                        int i2 = i * 2;
-                        pWt0[i2] = (float)fw;
-                        pWt0[i2 + 1] = (float)fh;
-
-                        dx += dxStep; dy += dyStep; dz += dzStep;
-                    }
-                });
-            }
-        }
-    }
-
-    #region masterPatternCombinationModel 0 — current
-    /// <summary>構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加</summary>
-    private unsafe void ApplyEbsdLookupSingleSliceModel0(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
-    {
-        var gs = ebsdLookupGridSize;
-        int requiredPlaneLength = checked(gs * gs); //260725Ch: unsafe 補間が参照する最大範囲
-        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 直前フレームの values が残り、欠損スライスで古い像を表示した
-        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
-        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        fixed (float* pPos = posPlane ?? [])
-        fixed (float* pNeg = negPlane ?? [])
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
-            var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
-            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
-            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch: 短い非空配列の unsafe 境界外参照を防ぐ
-            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
-
-            if (isHexGrid) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int i3 = i * 3;
-                    pVal0[i] = pWt0[i3] * plane[pIdx0[i3]] + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]] + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
-                });
-            }
-            else // 正方格子パス (既存)
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                    float w0 = 1 - fw, w1 = fw;
-                    pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh) + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
-                });
-            }
-        }
-    }
-
-    /// <summary>260718Cl 追加: 全 energy×depth の plane 参照をピクセルループ外で一括取得する (Weighted 3 モデル共通)。
-    /// 旧実装はピクセル×energy×depth 回 GetPlane を呼んでいた。</summary>
-    private static (float[][] pos, float[][] neg) GetAllPlanes(MasterPattern mp, int eLen, int dLen)
-    {
-        var pos = new float[eLen * dLen][];
-        var neg = new float[eLen * dLen][];
-        int requiredPlaneLength = checked(mp.GridSize * mp.GridSize); //260725Ch
-        for (int ei = 0; ei < eLen; ei++)
-            for (int di = 0; di < dLen; di++)
-            {
-                //pos[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di); //260725Ch 変更前
-                //neg[ei * dLen + di] = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                int index = ei * dLen + di;
-                var plane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di);
-                pos[index] = plane != null && plane.Length >= requiredPlaneLength ? plane : null; //260725Ch: weighted unsafe 経路へ短い plane を渡さない
-                plane = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                neg[index] = plane != null && plane.Length >= requiredPlaneLength ? plane : null;
-            }
-        return (pos, neg);
-    }
-
-    /// <summary>
-    /// 構築済みルックアップテーブルと MC フィッティング結果を使い、
-    /// 全エネルギー・深さの加重平均 EBSD パターンを計算する。260325Cl 追加
-    /// </summary>
-    private unsafe void ApplyEbsdLookupWeightedModel0(double[] values, int width, int height)
-    {
-        var mp = MasterPattern;
-        var dist = mcDistribution;
-        double xm = DetectorXMirror; // 260718Cl: 左右反転。Parallel.For 前に UI スレッドで捕捉 (ワーカーから checkbox 直読は不可)
-        int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
-        int binCount = dist.BinCount, gs = ebsdLookupGridSize;
-        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加: ラスター=視野全体化に伴い、検出器正規化±1 は物理位置から算出
-        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
-        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
-
-        //Array.Clear(values); //260725Ch: 下の Parallel.For が全画素を必ず代入するため、描画前の全配列ゼロクリアは不要
-
-        // ピクセルごとの加重合計を並列で計算
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-            Parallel.For(0, height, h =>
-            {
-                // この行のピクセルの検出器 Y 座標 (ビン補間用)
-                // 260325Cl: スクリーン h=0 → pyFactor≈-DetR (検出器底) → detNormY≈-1, 符号反転しない
-                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前: ラスター=検出器全面が前提
-                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: 物理位置/halfH (検出器外は端ビンへクランプ外挿)
-                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
-                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
-                double fy = Math.Clamp(by - bj0, 0, 1);
-
-                for (int w = 0; w < width; w++)
-                {
-                    int i = h * width + w;
-
-                    // 検出器 X 座標
-                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用) / 260718Cl: 左右反転 xm を掛ける // 260724Cl 変更前
-                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl: 物理位置/halfW
-                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
-                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
-                    double fx = Math.Clamp(bx - bi0, 0, 1);
-
-                    // ビン重みのバイリニア補間係数
-                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
-
-                    var bw00 = dist.BinWeights[bi0, bj0];
-                    var bw10 = dist.BinWeights[bi0 + 1, bj0];
-                    var bw01 = dist.BinWeights[bi0, bj0 + 1];
-                    var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
-
-                    // ルックアップテーブルからマスターパターン補間パラメータ取得
-                    bool posZ = pPosZ0[i];
-
-                    // 全エネルギー・深さで加重合計
-                    double sum = 0;
-
-                    if (isHexGrid) // 260331Cl: 六方格子
-                    {
-                        int i3 = i * 3;
-                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
-                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
-                            }
-                    }
-                    else // 正方格子
-                    {
-                        int idx = pIdx0[i];
-                        int i2 = i * 2;
-                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                        float mpFh1 = 1 - mpFh;
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                                sum += weight * intensity;
-                            }
-                    }
-                    pVal0[i] = sum;
-                }
-            });
-        }
-    }
-    #endregion
-
-    #region masterPatternCombinationModel 1 — globally normalized master
-    private double[] masterPatternGlobalNormalizationFactors = []; // (260325Ch) model 1 用。各 energy/depth slice の全球積算強度を 1 にそろえる係数
-    private MasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
-
-    /// <summary>model 1 用に、各 energy/depth slice の全球積算強度 ((+Z) + (-Z)) を 1 にそろえる係数を準備する。260325Ch 追加</summary>
-    private void EnsureMasterPatternGlobalNormalizationFactorsModel1()
-    {
-        var mp = MasterPattern;
-        if (mp == null)
-        {
-            masterPatternGlobalNormalizationFactors = [];
-            masterPatternGlobalNormalizationSource = null;
-            return;
-        }
-
-        if (ReferenceEquals(masterPatternGlobalNormalizationSource, mp)
-            && masterPatternGlobalNormalizationFactors.Length == mp.PlaneCount)
-            return;
-
-        var factors = new double[mp.PlaneCount];
-        for (int planeIndex = 0; planeIndex < mp.PlaneCount; planeIndex++)
-        {
-            double globalSum = 0.0;
-
-            var positivePlane = (uint)planeIndex < (uint)mp.PositivePlanes.Length ? mp.PositivePlanes[planeIndex] : null;
-            if (positivePlane != null)
-                for (int i = 0; i < positivePlane.Length; i++)
-                    globalSum += positivePlane[i];
-
-            var negativePlane = (uint)planeIndex < (uint)mp.NegativePlanes.Length ? mp.NegativePlanes[planeIndex] : null;
-            if (negativePlane != null)
-                for (int i = 0; i < negativePlane.Length; i++)
-                    globalSum += negativePlane[i];
-
-            factors[planeIndex] = globalSum > 1e-30 ? 1.0 / globalSum : 0.0; // (260325Ch) 全球積算強度が 0 の slice は 0 扱いにする
-        }
-
-        masterPatternGlobalNormalizationFactors = factors;
-        masterPatternGlobalNormalizationSource = mp;
-    }
-
-    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから、単一スライスの EBSD パターンを描く。260325Ch 追加</summary>
-    private unsafe void ApplyEbsdLookupSingleSliceModel1(double[] values, int totalPixels, float[] posPlane, float[] negPlane, double planeScaleFactor = 1.0)
-    {
-        var gs = ebsdLookupGridSize;
-        int requiredPlaneLength = checked(gs * gs); //260725Ch
-        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 欠損スライスで古い values を保持
-        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
-        var scaleFactor = planeScaleFactor;
-        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        fixed (float* pPos = posPlane ?? [])
-        fixed (float* pNeg = negPlane ?? [])
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
-            var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
-            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
-            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch
-            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
-
-            if (isHexGrid) // 260331Cl
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int i3 = i * 3;
-                    pVal0[i] = scaleFactor * (pWt0[i3] * plane[pIdx0[i3]]
-                             + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
-                             + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]]);
-                });
-            }
-            else
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                    float w0 = (1 - fw), w1 = fw;
-                    pVal0[i] = scaleFactor * ((w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                             + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh);
-                });
-            }
-        }
-    }
-
-    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから weighted 合成する。260325Ch 追加</summary>
-    private unsafe void ApplyEbsdLookupWeightedModel1(double[] values, int width, int height)
-    {
-        var mp = MasterPattern;
-        var dist = mcDistribution;
-        double xm = DetectorXMirror; // 260718Cl: 左右反転 (UI スレッドで捕捉)
-        int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
-        int totalPixels = width * height;
-        int binCount = dist.BinCount;
-        var gs = ebsdLookupGridSize;
-        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加
-        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
-        var planeScaleFactors = masterPatternGlobalNormalizationFactors;
-        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
-
-        //Array.Clear(values); //260725Ch: 全画素上書きのため不要
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-            Parallel.For(0, height, h =>
-            {
-                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前
-                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: ラスター=視野全体化 (物理位置/halfH)
-                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
-                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
-                double fy = Math.Clamp(by - bj0, 0, 1);
-
-                for (int w = 0; w < width; w++)
-                {
-                    int i = h * width + w;
-                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm // 260724Cl 変更前
-                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl
-                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
-                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
-                    double fx = Math.Clamp(bx - bi0, 0, 1);
-
-                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
-
-                    double[] bw00 = dist.BinWeights[bi0, bj0], bw10 = dist.BinWeights[bi0 + 1, bj0], bw01 = dist.BinWeights[bi0, bj0 + 1], bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
-                    bool posZ = pPosZ0[i];
-
-                    double sum = 0;
-                    if (isHexGrid) // 260331Cl
-                    {
-                        int i3 = i * 3;
-                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
-                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
-                                if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
-                            }
-                    }
-                    else
-                    {
-                        int idx = pIdx0[i];
-                        int i2 = i * 2;
-                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                        float mpFh1 = 1 - mpFh;
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
-                                if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                                sum += weight * intensity * planeScaleFactor;
-                            }
-                    }
-                    pVal0[i] = sum;
-                }
-            });
-        }
-    }
-    #endregion
-
-    #region masterPatternCombinationModel 2 — absolute MC x differential master
-    /// <summary>Model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加</summary>
-    private unsafe void ApplyEbsdLookupSingleSliceModel2(double[] values, int totalPixels, float[] posPlane, float[] negPlane, float[] posPlanePrevious = null, float[] negPlanePrevious = null)
-    {
-        var gs = ebsdLookupGridSize;
-        int requiredPlaneLength = checked(gs * gs); //260725Ch
-        //if (posPlane == null && negPlane == null) return; //260725Ch 変更前: 欠損スライスで古い values を保持
-        if ((posPlane?.Length ?? 0) < requiredPlaneLength && (negPlane?.Length ?? 0) < requiredPlaneLength) { Array.Clear(values); return; } //260725Ch
-        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        fixed (float* pPos = posPlane ?? [])
-        fixed (float* pNeg = negPlane ?? [])
-        fixed (float* pPosPrev = posPlanePrevious ?? [])
-        fixed (float* pNegPrev = negPlanePrevious ?? [])
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
-            var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg; var pPosPrev0 = pPosPrev; var pNegPrev0 = pNegPrev;
-            //var hasPos = posPlane != null && posPlane.Length > 0; var hasNeg = negPlane != null && negPlane.Length > 0; //260725Ch 変更前
-            //var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length > 0; var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length > 0;
-            var hasPos = posPlane != null && posPlane.Length >= requiredPlaneLength; //260725Ch
-            var hasNeg = negPlane != null && negPlane.Length >= requiredPlaneLength;
-            var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length >= requiredPlaneLength;
-            var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length >= requiredPlaneLength;
-
-            if (isHexGrid) // 260331Cl
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    float* planePrev = pPosZ0[i] ? pPosPrev0 : pNegPrev0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    bool hasPlanePrev = pPosZ0[i] ? hasPosPrev : hasNegPrev;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int i3 = i * 3;
-                    double intensity = pWt0[i3] * plane[pIdx0[i3]]
-                                     + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
-                                     + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
-                    if (hasPlanePrev)
-                        intensity -= pWt0[i3] * planePrev[pIdx0[i3]]
-                                   + pWt0[i3 + 1] * planePrev[pIdx0[i3 + 1]]
-                                   + pWt0[i3 + 2] * planePrev[pIdx0[i3 + 2]];
-                    pVal0[i] = Math.Max(0.0, intensity);
-                });
-            }
-            else
-            {
-                Parallel.For(0, totalPixels, i =>
-                {
-                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                    float* planePrev = pPosZ0[i] ? pPosPrev0 : pNegPrev0;
-                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                    bool hasPlanePrev = pPosZ0[i] ? hasPosPrev : hasNegPrev;
-                    if (!hasPlane) { pVal0[i] = 0; return; }
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                    float w0 = (1 - fw), w1 = fw;
-                    double intensity = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                                     + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
-                    if (hasPlanePrev)
-                        intensity -= (w0 * planePrev[idx] + w1 * planePrev[idx + 1]) * (1 - fh)
-                                   + (w0 * planePrev[idx + gs] + w1 * planePrev[idx + gs + 1]) * fh;
-                    pVal0[i] = Math.Max(0.0, intensity);
-                });
-            }
-        }
-    }
-
-    /// <summary>model 2: absolute MC 重みと differential MasterPattern を掛け合わせて weighted 合成する。260325Ch 追加</summary>
-    private unsafe void ApplyEbsdLookupWeightedModel2(double[] values, int width, int height)
-    {
-        var mp = MasterPattern;
-        var dist = mcDistribution;
-        double xm = DetectorXMirror; // 260718Cl: 左右反転 (UI スレッドで捕捉)
-        int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
-        int totalPixels = width * height;
-        int binCount = dist.BinCount;
-        var gs = ebsdLookupGridSize;
-        var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height); // 260724Cl 追加
-        double halfW = DetHalfWidth, halfH = DetHalfHeight; // 260724Cl 追加
-        var (posPlanes, negPlanes) = GetAllPlanes(mp, eLen, dLen);//260718Cl
-        //260726Cl 追加 (正本 §1.4): plane は累積 M(t) なので隣接差は区間積分。区間平均 R̄=ΔM/Δt にするため区間幅で割る
-        //(MC 側の重みは区間質量なので割らない)。等間隔グリッドでは全体が定数倍だが、不等間隔では区間ごとの重み比が変わる
-        var depthWidths = mp.DepthIntervals;
-
-        //Array.Clear(values); //260725Ch: 全画素上書きのため不要
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-            Parallel.For(0, height, h =>
-            {
-                // double detNormY = (2.0 * h + 1 - height) / (double)height; // 260724Cl 変更前
-                double detNormY = ((2.0 * h + 1 - height) * scaleH + viewOffY) / halfH; // 260724Cl: ラスター=視野全体化 (物理位置/halfH)
-                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
-                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
-                double fy = Math.Clamp(by - bj0, 0, 1);
-
-                for (int w = 0; w < width; w++)
-                {
-                    int i = h * width + w;
-                    // double detNormX = -xm * (2.0 * w + 1 - width) / (double)width; // 260718Cl: 左右反転 xm // 260724Cl 変更前
-                    double detNormX = -xm * ((2.0 * w + 1 - width) * scaleW + viewOffX) / halfW; // 260724Cl
-                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
-                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
-                    double fx = Math.Clamp(bx - bi0, 0, 1);
-
-                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
-
-                    double[] bw00 = dist.BinAbsoluteSliceWeights[bi0, bj0], bw10 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0], bw01 = dist.BinAbsoluteSliceWeights[bi0, bj0 + 1], bw11 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0 + 1];
-                    bool posZ = pPosZ0[i];
-
-                    double sum = 0;
-                    if (isHexGrid) // 260331Cl
-                    {
-                        int i3 = i * 3;
-                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
-                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                var planePrevious = di > 0 ? posZ ? posPlanes[wIdx - 1] : negPlanes[wIdx - 1] : null;//260718Cl 事前展開した配列を参照 (di>0 なら wIdx-1 = 同 energy の di-1)
-                                double intensity = hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2];
-                                if (planePrevious != null && planePrevious.Length > 0)
-                                    intensity -= hw0 * planePrevious[hIdx0] + hw1 * planePrevious[hIdx1] + hw2 * planePrevious[hIdx2];
-                                sum += weight * Math.Max(0.0, intensity) / depthWidths[di]; //260726Cl: 区間平均 ΔM/Δt
-                            }
-                    }
-                    else
-                    {
-                        int idx = pIdx0[i];
-                        int i2 = i * 2;
-                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                        float mpFh1 = 1 - mpFh;
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ ? posPlanes[wIdx] : negPlanes[wIdx];//260718Cl 事前展開した配列を参照
-                                if (plane == null || plane.Length == 0) continue;
-                                var planePrevious = di > 0 ? posZ ? posPlanes[wIdx - 1] : negPlanes[wIdx - 1] : null;//260718Cl 事前展開した配列を参照 (di>0 なら wIdx-1 = 同 energy の di-1)
-                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                                if (planePrevious != null && planePrevious.Length > 0)
-                                    intensity -= (mpW0 * planePrevious[idx] + mpW1 * planePrevious[idx + 1]) * mpFh1
-                                             + (mpW0 * planePrevious[idx + gs] + mpW1 * planePrevious[idx + gs + 1]) * mpFh;
-                                sum += weight * Math.Max(0.0, intensity) / depthWidths[di]; //260726Cl: 区間平均 ΔM/Δt
-                            }
-                    }
-                    pVal0[i] = sum;
-                }
-            });
-        }
-    }
-    #endregion
+    /// <summary>MasterPattern → 表示ラスターの合成器 (ピクセルごとの参照テーブル + 3 つの合成モデル)。260726Cl 追加:
+    /// ルックアップテーブル構築と 6 つの合成カーネルは Crystallography/EBSD/EbsdPatternComposer.cs へ移設した
+    /// (GUI 非依存の純計算。ここに残るのは UI 値の読み取りと表示だけ)</summary>
+    private readonly EbsdPatternComposer patternComposer = new();
+
+    /// <summary>DetTilt/SmpTilt から回転係数を再計算する。260325Cl 追加 (260726Cl: 本体は EbsdPatternComposer へ移設)</summary>
+    private void UpdateEbsdTiltCoeffs() => patternComposer.UpdateTiltCoefficients(DetTilt, SmpTilt, DetY, DetZ);
 
     /// <summary>EBSD パターン計算に使うラスターサイズ。260723Cl 追加
     /// 260724Cl 変更: 検出器ピクセル数 → graphicsBox の画面ピクセル数 (パターンを検出器矩形でなく視野全体に描くため)。
@@ -1765,7 +1064,7 @@ public partial class FormEBSD : FormBase
 
     /// <summary>ラスター (width×height) のピクセル中心を表示パターン座標 (mm、検出器中心基準) へ写す係数。260724Cl 追加
     /// px_view = (2w+1-width)·ScaleW + OffX (= viewPan.X)。ラスターは現在の視野 (ClientSize×Resolution、中心 ViewCenter) 全体をカバーする。
-    /// BuildEbsdLookupTable と Weighted 3 モデルの detNorm 計算で共用。</summary>
+    /// EbsdPatternComposer の BuildLookupTable と Weighted 3 モデルの detNorm 計算で共用 (EbsdRasterView として渡す)。260726Cl: 旧名 BuildEbsdLookupTable</summary>
     private (double ScaleW, double ScaleH, double OffX, double OffY) GetRasterToViewParams(int width, int height)
         //=> (graphicsBox.ClientSize.Width * Resolution / (2.0 * width), // 260725Cl 変更前
         //    graphicsBox.ClientSize.Height * Resolution / (2.0 * height),
@@ -1795,7 +1094,11 @@ public partial class FormEBSD : FormBase
         sw1.Restart();
 
         // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
-        BuildEbsdLookupTable(width, height);
+        //260726Cl 変更: 本体を EbsdPatternComposer へ移設。UI から読む値 (視野・検出器サイズ・左右反転) はここでまとめて渡す。
+        //旧: BuildEbsdLookupTable(width, height);
+        var (rasterScaleW, rasterScaleH, rasterOffX, rasterOffY) = GetRasterToViewParams(width, height);
+        var rasterView = new EbsdRasterView(rasterScaleW, rasterScaleH, rasterOffX, rasterOffY, DetHalfWidth, DetHalfHeight, DetectorXMirror, DetX);
+        patternComposer.BuildLookupTable(MasterPattern, Crystal.RotationMatrix, width, height, rasterView);
 
         var totalPixels = width * height;
         if (ebsdValues.Length != totalPixels)
@@ -1812,16 +1115,16 @@ public partial class FormEBSD : FormBase
             switch (masterPatternCombinationModel)
             {
                 case 1:
-                    EnsureMasterPatternGlobalNormalizationFactorsModel1();
-                    ApplyEbsdLookupWeightedModel1(ebsdValues, width, height);
+                    //260726Cl: 規格化係数の準備 (旧 EnsureMasterPatternGlobalNormalizationFactorsModel1) は合成器の内部で行う
+                    patternComposer.ApplyWeightedModel1(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
                     statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 case 2:
-                    ApplyEbsdLookupWeightedModel2(ebsdValues, width, height);
+                    patternComposer.ApplyWeightedModel2(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
                     statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 default://0
-                    ApplyEbsdLookupWeightedModel0(ebsdValues, width, height);
+                    patternComposer.ApplyWeightedModel0(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
                     statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
             }
@@ -1842,21 +1145,21 @@ public partial class FormEBSD : FormBase
             switch (masterPatternCombinationModel)
             {
                 case 1:
-                    EnsureMasterPatternGlobalNormalizationFactorsModel1();
                     var planeIndex = energyIndex * mp.Depths.Length + depthIndex; // (260325Ch) model 1 の規格化係数参照用
-                    var planeScaleFactor = (uint)planeIndex < (uint)masterPatternGlobalNormalizationFactors.Length ? masterPatternGlobalNormalizationFactors[planeIndex] : 0.0; // (260325Ch)
-                    ApplyEbsdLookupSingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
+                    //260726Cl: 係数配列の保持と範囲外ガードは合成器側へ (旧 masterPatternGlobalNormalizationFactors の直参照)
+                    var planeScaleFactor = patternComposer.GetGlobalNormalizationFactorModel1(mp, planeIndex);
+                    patternComposer.ApplySingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
                     statusText = $"EBSD from MasterPattern (model=1): E={energy:g} keV, depth={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 case 2:
                     var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
                     var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
-                    ApplyEbsdLookupSingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
+                    patternComposer.ApplySingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
                     statusText = $"EBSD from MasterPattern (model=2): E={energy:g} keV, depth slice={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 default:
                     // ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane); // (260325Ch) 旧実装
-                    ApplyEbsdLookupSingleSliceModel0(ebsdValues, totalPixels, posPlane, negPlane);
+                    patternComposer.ApplySingleSliceModel0(ebsdValues, totalPixels, posPlane, negPlane);
                     statusText = $"EBSD from MasterPattern (model=0): E={energy:g} keV, depth={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
             }
@@ -1922,10 +1225,10 @@ public partial class FormEBSD : FormBase
             patternBitmap = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), new Size(width, height));
             // 260724Cl 追加: このビットマップが表す表示パターン座標 (mm) の矩形 = 生成時の視野を記録。
             // パン中は再計算せず旧視野の矩形へ貼ることで、画像がマウスに追従する (露出部は背景色、確定時に再計算)。
-            var (scaleW, scaleH, viewOffX, viewOffY) = GetRasterToViewParams(width, height);
+            //260726Cl: メソッド先頭で作った rasterView と同じ値なので再計算しない (旧: GetRasterToViewParams をここでもう一度呼んでいた)
             patternBitmapRect = new RectangleD(
-                DetectorCenterView.X + viewOffX - scaleW * width, DetectorCenterView.Y + viewOffY - scaleH * height,
-                2 * scaleW * width, 2 * scaleH * height);
+                DetectorCenterView.X + rasterOffX - rasterScaleW * width, DetectorCenterView.Y + rasterOffY - rasterScaleH * height,
+                2 * rasterScaleW * width, 2 * rasterScaleH * height);
         }
 
         // toolStripStatusLabelProgress.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
@@ -2171,7 +1474,7 @@ public partial class FormEBSD : FormBase
                         // 続く「if (dir.Z < 0) dir = -dir;」を削除 — 下の投影式は dir.X/dir.Z と dir.Y/dir.Z のみで dir→−dir に不変 (完全な no-op だった)
                         int sgn = detectorPlaneZ * dir.Z < 0 ? -1 : 1;
 
-                        // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
+                        // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (EbsdPatternComposer.BuildLookupTable の ax = -Ri.E11 と整合)
                         double detX = -xm * CameraLength2 * dir.X / dir.Z; // 260718Cl: 左右反転 xm
                         double detY2 = CameraLength2 * dir.Y / dir.Z;
 
@@ -2621,58 +1924,8 @@ public partial class FormEBSD : FormBase
     #endregion
 
     #region モンテカルロ法による飛程シミュレーション
-    /// <summary>モンテカルロによる飛程シミュレーション</summary>
-    // private static ... RunBackscatterMonteCarlo(..., Action<int, int> reportProgress = null) // 260406Cl 旧シグネチャ: CancellationToken なし
-    private static (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] RunBackscatterMonteCarlo(
-        MonteCarlo monte, int loop, double energyThreshold, M3 sampleRotation, Action<int, int> reportProgress = null, System.Threading.CancellationToken cancellationToken = default) // 260406Cl CancellationToken 追加
-    {
-        var bseLists = new System.Collections.Concurrent.ConcurrentBag<List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>>(); // (260331Ch) 最後の非弾性散乱情報も保持する
-        var reportStep = reportProgress == null ? int.MaxValue : Math.Max(1, loop / 100); // (260327Ch) UI へは 1% ごとにだけ流す
-        int completed = 0;
-        const int progressBatch = 1024; // 260603Cl 追加: 共有カウンタの Interlocked を worker ごとにまとめ、毎電子の cache-line 競合を解消する
-
-        // 260603Cl 追加: バッチ加算後の進捗通知 (本体と localFinally の共通処理)。reportStep(~1%) 境界を跨いだ時だけ通知し、微妙な境界判定を一元化する
-        void notifyProgress(int delta, int current)
-        {
-            if (reportProgress != null && (current >= loop || current / reportStep != (current - delta) / reportStep))
-                reportProgress(Math.Min(current, loop), loop); // (260327Ch) MasterPattern 前処理時だけ進捗を通知する
-        }
-
-        Parallel.For(0, loop,
-            new ParallelOptions { CancellationToken = cancellationToken }, // 260406Cl 追加: キャンセル対応
-                                                                           // () => new List<(...)>(256), // 260603Cl 旧: thread-local は List のみ
-            () => (list: new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256), pending: 0), // 260603Cl thread-local に進捗カウンタ pending を同梱
-            (index, state, local) =>
-            {
-                var electron = monte.GetBackscatteredElectronDetail();
-                if (electron.Energy > energyThreshold)
-                    local.list.Add((electron.Depth, electron.Direction, Stereonet.ConvertVectorToSchmidt(sampleRotation * electron.Direction), electron.Energy,
-                        electron.TotalEnergyLoss, electron.HasLastInelasticEvent, electron.LastInelasticDepth, electron.LastInelasticEnergyBeforeLoss, electron.LastInelasticEnergyAfterLoss, electron.LastInelasticDirection)); // (260331Ch)
-
-                // 260603Cl 旧: 毎電子で共有カウンタを Interlocked.Increment (全 worker が同一 cache-line を叩く)
-                // var current = System.Threading.Interlocked.Increment(ref completed);
-                // if (reportProgress != null && (current == loop || current % reportStep == 0))
-                //     reportProgress(current, loop);
-                if (++local.pending >= progressBatch) // 260603Cl progressBatch 電子貯めてから 1 回だけ共有カウンタへ加算
-                {
-                    int delta = local.pending;
-                    local.pending = 0;
-                    notifyProgress(delta, System.Threading.Interlocked.Add(ref completed, delta));
-                }
-                return local;
-            },
-            // localList => { if (localList.Count > 0) bseLists.Add(localList); }, // 260603Cl 旧
-            local =>
-            {
-                if (local.pending > 0) // 260603Cl worker 終了時に端数電子を共有カウンタへ反映
-                    notifyProgress(local.pending, System.Threading.Interlocked.Add(ref completed, local.pending));
-                if (local.list.Count > 0)
-                    bseLists.Add(local.list);
-            });
-
-        return [.. bseLists.SelectMany(localList => localList)];
-    }
-
+    //260726Cl 移設: RunBackscatterMonteCarlo (大量電子の並列 MC 実行と脱出電子の収集) は GUI 非依存の計算なので
+    //Crystallography/EBSD/EbsdBackscatterSimulator.cs へ移した。呼び出しは EbsdBackscatterSimulator.Run。
     /// <summary>モンテカルロによる飛程シミュレーション</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -3043,7 +2296,7 @@ public partial class FormEBSD : FormBase
                     inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
                     valenceElectronCount: valenceElectronCount,
                     atoms: cry.Atoms); // (260331Ch)
-                var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
+                var bses = EbsdBackscatterSimulator.Run(monte, loop, energyThreshold, sampleRotation, (completed, total) => //260726Cl: 本体は Crystallography/EBSD へ移設
                     progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo")), cancellationToken); // (260327Ch) fitting 分を残して 90% まで使う // 260406Cl cancellationToken 追加
                 if (bses.Length == 0)
                     return (Bses: bses, Distribution: (EbsdMonteCarloDistribution)null, Energies: [], Depths: [],
@@ -3822,7 +3075,7 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>260718Cl 追加: 検出器を背面から見た左右反転の X 符号。未チェック(既定)=+1=現状(試料側から見た図)、チェック=-1=左右反転。
-    /// パターン(BuildEbsdLookupTable の ax)・輝度(detNormX)・オーバーレイ(ゾーン軸 detX・菊池線 pt.X)の全 X 投影へ一貫して掛ける。</summary>
+    /// パターン(EbsdPatternComposer.BuildLookupTable の ax)・輝度(detNormX)・オーバーレイ(ゾーン軸 detX・菊池線 pt.X)の全 X 投影へ一貫して掛ける。</summary>
     //260724Cl 定義反転 (作者指示): 未チェック (既定) = 検出器から試料を見る視線ベクトル (自然なカメラ画像) = 旧チェック状態 (xm=−1) と等価。
     //チェック時のみ左右反転 (試料側から見た向き、xm=+1)。⚠レジストリに旧定義のチェック状態が保存されている場合は意味が逆になるので一度チェックを外すこと。
     //旧: private double DetectorXMirror => checkBoxFlipDetectorLeftRight.Checked ? -1.0 : 1.0;
@@ -3853,6 +3106,404 @@ public partial class FormEBSD : FormBase
     {
 
     }
+
+    #region 実測 EBSD パターンの指数付け (方位候補の探索と検出器幾何較正)
+    //260726Cl 統合: 独立ファイルだった FormEBSD.Indexing.cs (partial) をここへ取り込み、探索・較正のアルゴリズム本体は
+    //Crystallography/EBSD/ (EbsdOrientationSearch・EbsdGeometryCalibrator) へ分離した。このリージョンに残るのは UI orchestration のみ。
+    //260725Cl: コントロールの置き場 — 中央列 EBSD pattern 配下の tabControlPatternSettings → Experimental image タブ
+    //(探索エンジンのラジオ・Find/Calibrate ボタン・候補 DataGridView)。設計正本 = .project-guidance/ReciPro/ReciPro_EBSD総合設計・実装・高速化・引継ぎ.md §7。
+    //260724Cl 方針転換 (作者指示): バンドの離散検出 (Detect bands) と中心線表示・Optimize orientation ボタンを廃止し、
+    //「Find orientation candidates」に一本化。裏で Radon 証拠マップへの運動学的テンプレート照合 (EbsdRadonIndexer) で方位を直接探索し、
+    //動力学 MasterPattern が生成済みなら上位候補へ ZNCC 精密化を自動連結する。
+
+    //260724Cl 廃止: private List<EbsdBand> detectedBands (バンド離散検出の撤廃に伴い、中心線オーバーレイ表示ごと削除)
+
+    /// <summary>指数付け候補 (スコア降順)</summary>
+    private List<EbsdOrientationCandidate> orientationCandidates = null;
+
+    private bool candidateGridInitialized = false;
+    private bool skipCandidateSelectionEvent = false;
+
+    /// <summary>解析系ボタンの相互排他 (実行中の二重起動・stale 結果の適用を防ぐ)。260724Cl 追加</summary>
+    private bool indexingBusy = false;
+
+    /// <summary>指数付け用反射リストの d 下限 (nm)。260724Cl (/simplify) 追加: 反射生成とステータス表示に二重ハードコードされていた値を一元化 (将来 UI 化候補)</summary>
+    private const double KikuchiDLimit = 0.15;
+
+    /// <summary>指数付け結果の世代番号。InvalidateIndexingResults で進み、await 跨ぎで失効した結果の適用を弾く。260725Cl 追加:
+    /// indexingBusy は Find/Calibrate ボタンしか無効化しないため、await 中の画像 D&amp;D や検出器幾何の変更で失効させたはずの
+    /// 候補が、探索完了後に無条件で復活していた (誤データ表示。クラッシュはしない)</summary>
+    private int indexingGeneration = 0;
+
+    /// <summary>画像・幾何変更で不要になった探索/較正のCPU処理を停止する。260725Ch 追加</summary>
+    private System.Threading.CancellationTokenSource indexingCts;
+
+    //260724Cl シグネチャ変更: バンド検出廃止に伴い clearBands 引数を削除。旧: private void InvalidateIndexingResults(bool clearBands)
+    //260725Cl シグネチャ変更: announceCancel 追加。旧: private void InvalidateIndexingResults()
+    /// <summary>画像/幾何の変更で方位候補を失効させる。260724Cl 追加 (Codex 指摘: stale 結果の誤適用防止)</summary>
+    /// <param name="announceCancel">実行中なら中止要求をステータスバーへ出す。較正が自分の書き戻し後に呼ぶ場合だけ false</param>
+    private void InvalidateIndexingResults(bool announceCancel = true)
+    {
+        indexingGeneration++; // 260725Cl 追加: 実行中の探索結果を失効させる
+        //260725Cl 追加 (作者実機指摘): 探索中に幾何などを変えても画面が無反応に見えたので、中止要求を出した時点で表示する
+        //(実際の停止はワーカーが次の中止チェックに到達するまで数十 ms 遅れる)
+        if (announceCancel && indexingBusy) toolStripStatusLabelSummary.Text = "Canceling...";
+        indexingCts?.Cancel(); //260725Ch: 結果を捨てるだけでなく、辞書/Radon探索と較正の残CPU処理も停止
+        orientationCandidates = null;
+        if (candidateGridInitialized)
+        {
+            skipCandidateSelectionEvent = true;
+            try { dataGridViewEbsdCandidates.Rows.Clear(); }
+            finally { skipCandidateSelectionEvent = false; }
+        }
+    }
+
+    /// <summary>直近に進捗行を書き換えた時刻 (探索開始からの ms)。UI 更新の間引きに使う。260725Cl 追加</summary>
+    private long lastIndexingProgressMs;
+
+    /// <summary>進捗行に添える段の名前 (較正の "start 3/40" など)。260726Cl 追加</summary>
+    private string indexingStage = "";
+
+    //260726Cl 削除 (作者指示「2 分タイマーなど必要ない。常に最新の情報が出ていればよい」):
+    //一時的なピン留め (statusPinnedUntilTick / SetPinnedStatus) は廃止。代わりに DrawEBSD 側で、
+    //パターンの中身が変わらない再描画ではステータスを書き換えないようにした (lastEbsdRenderStatusKey)
+
+    /// <summary>
+    /// 探索・較正の進捗と経過時間をステータスバーへ出す (MasterPattern/MC と同じ canonical 進捗行)。260725Cl 追加
+    /// (作者実機指摘: 探索中にプログレスバーが動かず、経過時間も出ていなかった)。
+    /// ワーカースレッドから呼ばれるが、コントロールへの反映は StatusBarHelper 側が自動 Invoke する。
+    /// </summary>
+    //260726Cl シグネチャ変更: stage 追加 (較正の多点開始で "start 3/40" を出す)。旧: ReportIndexingProgress(double, Stopwatch)
+    private void ReportIndexingProgress(double ratio, Stopwatch sw, string stage = null)
+    {
+        if (!indexingBusy) return; //完了後に遅れて届いた通知で最終表示を壊さない
+        if (stage != null) indexingStage = stage;
+        long now = sw.ElapsedMilliseconds;
+        if (stage == null && ratio < 1 && now - lastIndexingProgressMs < 200) return; //UI 更新は毎秒 5 回まで (段が変わったときは間引かない)
+        lastIndexingProgressMs = now;
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, ratio, indexingStage, sw.Elapsed, showRemaining: true);
+    }
+
+    /// <summary>探索・較正の終了を進捗行へ書く。完了は 100%、中止・失敗はバーを戻して理由と経過時間だけ残す。260725Cl 追加</summary>
+    private void FinishIndexingProgress(Stopwatch sw, string canceledOrFailed = null)
+    {
+        if (canceledOrFailed == null)
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", sw.Elapsed);
+        else
+        {
+            toolStripProgressBar.Value = 0;
+            toolStripStatusLabelProgress.Text = $"{canceledOrFailed} after {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
+        }
+    }
+
+    private bool TryBeginIndexing()
+    {
+        if (indexingBusy) return false;
+        indexingBusy = true;
+        lastIndexingProgressMs = 0; //260725Cl
+        indexingStage = ""; //260726Cl
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true); //260725Cl
+        indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
+        indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
+        buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = false; //260724Cl: 廃止 2 ボタンを除去
+        return true;
+    }
+
+    private void EndIndexing()
+    {
+        indexingCts?.Dispose(); //260725Ch
+        indexingCts = null;
+        indexingBusy = false;
+        buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = true; //260724Cl: 廃止 2 ボタンを除去
+    }
+
+    /// <summary>現在の UI 値から、実測画像のピクセルグリッドを基準にした検出器幾何スナップショットを作る</summary>
+    private EbsdDetectorGeometry BuildDetectorGeometry(int imageWidth, int imageHeight)
+        => new(DetTilt, DetX, DetY, DetZ, DetHalfWidth * 2 / imageWidth, imageWidth, imageHeight, DetectorXMirror, SmpTilt);
+
+    //260724Cl 廃止: buttonDetectBands_Click / DrawDetectedBands (バンド離散検出とその中心線・縁点オーバーレイの撤廃。
+    //検出パイプライン自体は EbsdBandDetector.Detect として Crystallography 側に残置 — 検証ハーネスが使用)
+
+    #region 方位候補の探索 (Radon テンプレート照合 + ZNCC 自動精密化)
+
+    private async void buttonFindOrientation_Click(object sender, EventArgs e)
+    {
+        if (expPbmp == null)
+        {
+            MessageBox.Show(this, "Load an experimental image first (drag && drop an image file).", "Find orientation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        //260724Cl 追加: Dictionary indexing (Primary) は MasterPattern 由来の辞書パターンと総当たり比較するため生成済みが必須
+        bool useDictionary = radioButtonIndexingDictionary.Checked;
+        if (useDictionary && MasterPattern == null)
+        {
+            MessageBox.Show(this, "Dictionary search requires the dynamical master pattern. Build it first, or use Radon search.", "Find orientation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に画像・幾何が変わったら結果を捨てる
+        var cancel = indexingCts.Token; //260725Ch: 無効化時に実計算も停止する
+        toolStripStatusLabelSummary.Text = "Searching orientation candidates...";
+        var sw = Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
+        try
+        {
+            var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
+            var crystal = Crystal;
+
+            //指数付け用の反射リスト (d>1.5Å) を UI スレッド上で一時生成し、表示用 VectorOfG_KikuchiLine は退避→復元する
+            //(描画スレッドと共有される crystal 状態をワーカーから書き換えないため。生成は数十 ms。例外時も finally で必ず復元)
+            var backup = crystal.VectorOfG_KikuchiLine;
+            Vector3D[] reflections;
+            try
+            {
+                crystal.SetVectorOfG_KikuchiLine(KikuchiDLimit, waveLengthControl.WaveSource);
+                reflections = [.. crystal.VectorOfG_KikuchiLine];
+            }
+            finally { crystal.VectorOfG_KikuchiLine = backup; }
+
+            var values = expPbmp.SrcValuesGray;
+            int iw = expPbmp.Width, ih = expPbmp.Height;
+            double wl = WaveLength; //nm (pair-angle シードの幅尤度用)
+
+            //動力学 MasterPattern が生成済みなら ZNCC 複合ランクを自動連結 (旧 Optimize orientation ボタン相当。260724Cl 作者指示)。
+            //複合ランクの設計根拠 (生 ZNCC 再ランクが有害な理由・証拠飽和 cap・トップのみ精密化) は EbsdOrientationSearch のクラスコメント参照
+            bool refineByZncc = MasterPattern != null;
+            var ctx = refineByZncc ? SnapshotMatchingContext() : null;
+            //260725Cl: UI スレッドで結晶状態をスナップショット。FZ 除外は proper 回転 1 個 (monoclinic C2) のみ実測検証済みなので、
+            //cubic/hex 等の高対称系は pruning on/off の候補一致を検証するまで安全側で無効化する (Codex 裁定 260725。実測パターンが揃ったら解除)
+            var properSyms = useDictionary && EbsdDictionaryIndexer.GetProperRotations(crystal) is { Length: 1 } syms ? syms : null;
+
+            void Report(double r) => ReportIndexingProgress(r, sw); //260725Cl: 粗探索から進捗と経過時間を受ける
+            //260726Cl: 探索本体は Crystallography/EBSD/EbsdOrientationSearch.cs へ分離 (旧はこの Task.Run の中に直書きしていた)
+            var candidates = await Task.Run(() => EbsdOrientationSearch.Run(values, iw, ih, geom, reflections, wl, useDictionary, ctx,
+                properSymmetries: properSyms, maxCandidates: 10, cancel: cancel, progress: Report), cancel); //260725Ch
+            sw.Stop();
+
+            //260725Cl 追加: 探索中に実測画像の差し替えや検出器幾何の変更があった場合、この結果は既に失効しているので適用しない
+            if (generation != indexingGeneration)
+            {
+                toolStripStatusLabelSummary.Text = "Orientation search discarded (the image or geometry changed)";
+                FinishIndexingProgress(sw, "Canceled"); //260725Cl
+                return;
+            }
+            orientationCandidates = candidates;
+            FillCandidateGrid();
+            FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める
+            //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
+            toolStripStatusLabelSummary.Text = $"Orientation search: {candidates.Count} candidates" +
+                (useDictionary ? " (Dictionary + ZNCC combo)" : refineByZncc ? " (Radon + ZNCC combo)" : " (Radon only)"); //260724Cl: Dictionary モード表示追加
+            toolStripStatusLabelDetail.Text = $"{sw.Elapsed.TotalMilliseconds:f0} ms, {reflections.Length} reflections (d>{KikuchiDLimit * 10:0.#}A). Click a row to apply the orientation."; //260724Cl (/simplify): 表示値を定数から導出
+        }
+        catch (OperationCanceledException) //260725Ch: 入力変更による正常な中止を失敗表示にしない
+        {
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Orientation search canceled" : "Orientation search discarded (the image or geometry changed)";
+            toolStripStatusLabelDetail.Text = "";
+            FinishIndexingProgress(sw, "Canceled"); //260725Cl
+        }
+        catch (Exception ex)
+        {
+            toolStripStatusLabelSummary.Text = "Orientation search failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+            FinishIndexingProgress(sw, "Failed"); //260725Cl
+        }
+        finally { EndIndexing(); }
+    }
+
+    private void EnsureCandidateGridColumns()
+    {
+        if (candidateGridInitialized) return;
+        candidateGridInitialized = true;
+        var g = dataGridViewEbsdCandidates;
+        g.AllowUserToAddRows = false;
+        g.ReadOnly = true;
+        g.RowHeadersVisible = false;
+        g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        g.MultiSelect = false;
+        g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+        //260724Cl: Radon 方位探索用に列を再構成 (Score=SNR z 値、Bands=強い証拠を持つ予測バンド/視野内予測バンド、RMS° 列は廃止)
+        //260725Cl 変更: 幅を DPI 換算 + 最終列を Fill に。旧実装は 96 DPI 前提の生ピクセル固定だったため、
+        //フォントだけ DPI で拡大して高 DPI でヘッダが文字切れし、かつ固定合計幅がグリッド実幅を超えて常時横スクロールになっていた
+        //(BeamInteraction 4 表の [project_minitable_readonly_grid] と同型の問題)
+        int Dpi(int px96) => (int)Math.Round(px96 * DeviceDpi / 96.0);
+        //旧: Width = 24 / 46 / 44 / 48 / 284 (px 固定)
+        g.Columns.AddRange(
+            new DataGridViewTextBoxColumn { HeaderText = "#", Width = Dpi(28) },
+            new DataGridViewTextBoxColumn { HeaderText = "Score", Width = Dpi(52) },
+            new DataGridViewTextBoxColumn { HeaderText = "Bands", Width = Dpi(52) },
+            new DataGridViewTextBoxColumn { HeaderText = "ZNCC", Width = Dpi(52) },
+            //残り幅を最終列が吸収する (hkl 列は内容が可変長なので Fill が自然。横スクロールバーも出なくなる)
+            new DataGridViewTextBoxColumn { HeaderText = "Strong bands (hkl)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill, MinimumWidth = Dpi(120) });
+        g.SelectionChanged += dataGridViewEbsdCandidates_SelectionChanged;
+    }
+
+    private void FillCandidateGrid()
+    {
+        EnsureCandidateGridColumns();
+        var g = dataGridViewEbsdCandidates;
+        skipCandidateSelectionEvent = true;
+        try
+        {
+            g.Rows.Clear();
+            if (orientationCandidates != null)
+                foreach (var (c, i) in orientationCandidates.Select((c, i) => (c, i)))
+                    //260725Cl: Score も非有限ガード (辞書経路は ScoreOrientations の double.MinValue センチネル
+                    //= 視野内予測バンドが 4 本未満のとき をそのまま入れるため、309 桁の数値がセルに出るのを防ぐ)
+                    //g.Rows.Add(i, double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}", //260725Ch 変更前: double.MinValue は finite なので 309 桁表示になっていた
+                    //    double.IsNaN(c.Zncc) ? "-" : $"{c.Zncc:f3}", c.HklText);
+                    g.Rows.Add(i, c.Score != double.MinValue && double.IsFinite(c.Score) ? $"{c.Score:f1}" : "-", $"{c.AssignedBands}/{c.TotalBands}", //260725Ch
+                        double.IsFinite(c.Zncc) ? $"{c.Zncc:f3}" : "-", c.HklText); //260724Cl: AssignmentText (band:hkl) → HklText
+            g.ClearSelection();
+        }
+        finally { skipCandidateSelectionEvent = false; }
+    }
+
+    /// <summary>候補行の選択で方位を全アプリへ適用 (シミュレーションが実測に重なって描画される)</summary>
+    private void dataGridViewEbsdCandidates_SelectionChanged(object sender, EventArgs e)
+    {
+        if (skipCandidateSelectionEvent || orientationCandidates == null || dataGridViewEbsdCandidates.SelectedRows.Count == 0) return;
+        int idx = dataGridViewEbsdCandidates.SelectedRows[0].Index;
+        if ((uint)idx < (uint)orientationCandidates.Count)
+            FormMain.SetRotation(orientationCandidates[idx].Rotation);
+    }
+
+    #endregion
+
+    #region ZNCC 用スナップショット・検出器幾何較正 (動力学 MasterPattern 必須)
+
+    //260725Cl (/simplify): ローカル PerturbRotation は EbsdIndexer.PerturbRotation へ統合 (Crystallography 側の
+    //EbsdDictionaryIndexer.Perturb・EbsdRadonIndexer.Perturb と 3 重複していた。式・演算順・規約 (試料系左摂動) は同一)
+
+    /// <summary>MC 重み合成パターンのキャッシュ (MasterPattern と mcDistribution の組が同一なら再利用、合成は ~100ms)。260724Cl 追加</summary>
+    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
+
+    /// <summary>ZNCC 系操作に必要な状態を UI スレッド上でスナップショットする (ワーカーからコントロールを読まないため)。260724Cl 追加</summary>
+    //260726Cl 戻り値変更: 匿名タプル → EbsdMatchingContext (Crystallography 側の record。探索・較正の両方へそのまま渡せる)
+    private EbsdMatchingContext SnapshotMatchingContext()
+    {
+        var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
+        var mp = MasterPattern;
+        float[] pos, neg;
+        //260724Cl 改訂 (作者指示「エネルギー 1 点はまずい」): MC 分布があれば全ビン平均重みの微分合成パターン
+        //(実稼働の表示合成 model 2 のグローバル近似) を ZNCC 比較に使う。単一スライスより実測との相関が上がることをハーネスで実証。
+        //MC 未実行 (通常は MasterPattern build 前段で必ず走る) 時のみ旧来の trackBar 選択単一スライスへフォールバック
+        if (mcDistribution != null)
+        {
+            if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution))
+            {
+                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp);
+                composedPatternCache = (mp, mcDistribution, p, n);
+            }
+            (pos, neg) = (composedPatternCache.Pos, composedPatternCache.Neg);
+        }
+        else
+        {
+            int eIdx = Math.Clamp(trackBarOutputEnergy.Value, 0, mp.Energies.Length - 1);
+            int dIdx = Math.Clamp(trackBarOutputThickness.Value, 0, mp.Depths.Length - 1);
+            pos = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, eIdx, dIdx);
+            neg = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, eIdx, dIdx);
+        }
+        var (refData, rw, rh) = EbsdPatternScorer.PrepareReference(expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, 160);
+        return new EbsdMatchingContext(geom, mp, pos, neg, refData, rw, rh, new Matrix3D(Crystal.RotationMatrix));
+    }
+
+    private bool CheckMatchingPrerequisites(string title)
+    {
+        if (expPbmp == null)
+        {
+            MessageBox.Show(this, "Load an experimental image first (drag && drop an image file).", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+        if (MasterPattern == null)
+        {
+            MessageBox.Show(this, "Build the dynamical master pattern first (this function compares simulated and experimental patterns pixel by pixel).", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+        return true;
+    }
+
+    //260724Cl 廃止: buttonOptimizeOrientation_Click (Find orientation candidates の ZNCC 自動連結へ統合。作者指示)
+
+    /// <summary>
+    /// 検出器のパターンセンター (PC) と検出器距離 (DD) を較正する (方位も交互に微調整)。DetTilt は固定。260724Cl 追加
+    /// 単一パターンでは DetTilt と方位 X 回転がゲージ自由度になるため Tilt は較正しない (設計正本 §7.2 / Codex 裁定)。
+    /// 最適化の中身 (交互法 → 方位仕上げ → 6 変数同時最適化 × 多点開始) は EbsdGeometryCalibrator を参照。
+    /// 結果は DetX/DetY/DetZ へ逆変換して書き戻す。
+    /// </summary>
+    private async void buttonCalibrateGeometry_Click(object sender, EventArgs e)
+    {
+        if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;
+        if (!TryBeginIndexing()) return;
+        int generation = indexingGeneration; // 260725Cl 追加: await 中に実測画像・幾何が変わったら較正結果を書き戻さない (旧画像に合わせた幾何の誤適用防止)
+        var cancel = indexingCts.Token; //260725Ch
+        toolStripStatusLabelSummary.Text = "Calibrating detector geometry (PC/DD + orientation)...";
+        var sw = Stopwatch.StartNew(); //260725Cl: 中止・失敗時にも経過時間を出すので try の外で開始する
+        try
+        {
+            var ctx = SnapshotMatchingContext();
+            var (footU0, footV0) = ctx.Geometry.PatternCenterMm; //260724Cl (/simplify): PC 式の手書き重複 (-DetX, -(DetY cosδ+DetZ sinδ)) を幾何オブジェクトへ一元化
+            double dd0 = ctx.Geometry.CameraLength;
+            double physW = DetHalfWidth * 2, physH = DetHalfHeight * 2;
+            //if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; EndIndexing(); return; } //260725Ch 変更前: finally でも二重に EndIndexing していた
+            if (dd0 < 1E-3) { toolStripStatusLabelSummary.Text = "Invalid camera length"; return; } //260725Ch
+
+            void Report(double r, string stage) => ReportIndexingProgress(r, sw, stage); //260726Cl: 多点開始の段名も受ける
+            //260726Cl: 較正本体は Crystallography/EBSD/EbsdGeometryCalibrator.cs へ分離 (旧はこの Task.Run の中に直書きしていた)
+            var result = await Task.Run(() => EbsdGeometryCalibrator.Run(ctx, physW, physH, cancel, Report), cancel); //260725Ch
+            sw.Stop();
+
+            //260725Cl 追加: 較正中に実測画像の差し替えや幾何の変更があった場合、この結果は失効しているので書き戻さない
+            if (generation != indexingGeneration)
+            {
+                toolStripStatusLabelSummary.Text = "Geometry calibration discarded (the image or geometry changed)";
+                FinishIndexingProgress(sw, "Canceled"); //260725Cl
+                return;
+            }
+
+            //DetX/DetY/DetZ へ逆変換して書き戻し (DetTilt 固定)。numericBox の範囲へクランプ (260724Cl)
+            var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.PatternCenterU, result.PatternCenterV, result.CameraLength, ctx.Geometry.DetTilt);
+            skipDetectorGeometryEvent = true;
+            try
+            {
+                numericBoxXofDet.Value = Math.Clamp(detX, numericBoxXofDet.Minimum, numericBoxXofDet.Maximum);
+                numericBoxYofDet.Value = Math.Clamp(detY, numericBoxYofDet.Minimum, numericBoxYofDet.Maximum);
+                numericBoxZofDet.Value = Math.Clamp(detZ, numericBoxZofDet.Minimum, numericBoxZofDet.Maximum);
+            }
+            finally { skipDetectorGeometryEvent = false; }
+            UpdateEbsdTiltCoeffs();
+            RebinMcDistribution();
+            InvalidateIndexingResults(announceCancel: false); //260725Ch: 較正前の幾何で得た候補を残さず、実行世代も進める (260725Cl: これは自分の書き戻しなので "Canceling..." は出さない)
+            FormMain.SetRotation(result.Rotation); //Draw は SetRotation → FormMain 経由で走る
+            FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
+
+            //260726Cl 変更 (作者報告「最後に消える」の真因): StatusStrip はフォーム幅 (1424px) に収まらない項目を描画しないので、
+            //長い文字列を入れると書いた瞬間に見えなくなる。旧 Detail は 220 文字あった。表示は 2 ラベル合計 160 文字程度に収める。
+            //旧 Detail: "PC (...)→(...) mm, DD ...→... mm, best of N starts (#k, m within 1E-3, spread ...), r/R rounds (...), joint 6-var ..., E evals, T ms. Tilt is kept fixed (single-pattern gauge)."
+            toolStripStatusLabelSummary.Text = $"Geometry calibrated: ZNCC {result.ZnccStart:f3} → {result.Zncc:f3}" +
+                $" (best #{result.BestIndex}/{result.Starts}, {result.NearBest} within 1E-3)"; //260726Cl: 多点開始。within が少ないほど局所解が深い
+            //260725Cl: 交互最適化のラウンド数と収束可否 (上限に張り付くなら未収束の疑い)。260726Cl: evals と傾斜の注記は冗長なので削除
+            //260726Cl: flat = ZNCC が最良と 1E-3 以内で並ぶ解の集団における PC・DD の広がり (半値幅)。単一パターンで幾何がどこまで決まるかの実測値
+            toolStripStatusLabelDetail.Text = $"ΔPC ({result.PatternCenterU - footU0:+0.00;-0.00},{result.PatternCenterV - footV0:+0.00;-0.00}), ΔDD {result.CameraLength - dd0:+0.00;-0.00} mm; " +
+                $"flat ±{result.FlatU:f2}/±{result.FlatV:f2} PC, ±{result.FlatDd:f2} DD; " +
+                $"{result.Rounds}/{EbsdGeometryCalibrator.MaxRounds} rounds{(result.Converged ? "" : " (limit)")}, joint {(result.JointGain > 0 ? "+" : "")}{result.JointGain:f4}, {sw.Elapsed.TotalSeconds:f1} s";
+        }
+        catch (OperationCanceledException) //260725Ch
+        {
+            toolStripStatusLabelSummary.Text = generation == indexingGeneration ? "Geometry calibration canceled" : "Geometry calibration discarded (the image or geometry changed)";
+            toolStripStatusLabelDetail.Text = "";
+            FinishIndexingProgress(sw, "Canceled"); //260725Cl
+        }
+        catch (Exception ex)
+        {
+            toolStripStatusLabelSummary.Text = "Geometry calibration failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+            FinishIndexingProgress(sw, "Failed"); //260725Cl
+        }
+        finally { EndIndexing(); }
+    }
+
+    #endregion
+
+    #endregion
 }
 
 

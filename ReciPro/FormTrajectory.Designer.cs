@@ -148,7 +148,7 @@
             numericBoxSampleTilt.ShowUpDown = true;
             toolTip.SetToolTip(numericBoxSampleTilt, resources.GetString("numericBoxSampleTilt.ToolTip"));
             numericBoxSampleTilt.UpDown_Increment = 10D;
-            numericBoxSampleTilt.ValueBoxWidth = 50;
+            numericBoxSampleTilt.ValueBoxWidth = 36;
             // 
             // buttonViewFromX
             // 
@@ -174,13 +174,11 @@
             numericBoxCalcNum.Maximum = 1000000D;
             numericBoxCalcNum.Minimum = 100D;
             numericBoxCalcNum.Name = "numericBoxCalcNum";
-            numericBoxCalcNum.RadianValue = 1745.3292519943295D;
             numericBoxCalcNum.ShowUpDown = true;
             numericBoxCalcNum.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxCalcNum, resources.GetString("numericBoxCalcNum.ToolTip"));
             numericBoxCalcNum.Value = 100000D;
-            //numericBoxCalcNum.ValueBoxWidth = 60; // 260726Cl 旧: 最長値「1000000」が zh-Hans で 3px 入らず切れていた
-            numericBoxCalcNum.ValueBoxWidth = 69; // 260726Cl
+            numericBoxCalcNum.ValueBoxWidth = 60;
             // 
             // numericBoxDrawNum
             // 
@@ -190,13 +188,11 @@
             numericBoxDrawNum.Maximum = 100000D;
             numericBoxDrawNum.Minimum = 1D;
             numericBoxDrawNum.Name = "numericBoxDrawNum";
-            numericBoxDrawNum.RadianValue = 8.7266462599716466D;
             numericBoxDrawNum.ShowUpDown = true;
             numericBoxDrawNum.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxDrawNum, resources.GetString("numericBoxDrawNum.ToolTip"));
             numericBoxDrawNum.Value = 500D;
-            //numericBoxDrawNum.ValueBoxWidth = 44; // 260726Cl 旧: 最長値「100000」が zh-Hans で 11px 入らず切れていた
-            numericBoxDrawNum.ValueBoxWidth = 61; // 260726Cl
+            numericBoxDrawNum.ValueBoxWidth = 61;
             numericBoxDrawNum.ValueChanged += checkBoxDrawAxes_CheckedChanged;
             // 
             // checkBoxDrawAxes

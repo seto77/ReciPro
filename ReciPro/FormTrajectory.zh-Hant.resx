@@ -81,10 +81,6 @@
     <value>繪製
 座標軸</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>欲計算的
-軌跡數量</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>試樣傾角</value>
   </data>
@@ -230,11 +226,6 @@ Z＝束方向（紫）的座標軸。</value>
 所損失的能量 (eV/nm)。</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>欲模擬的電子軌跡數目 (100 至 1,000,000)。
-軌跡越多，統計越平滑，但計算所需時間
-越長。</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>欲模擬的電子軌跡數目 (100 至 1,000,000)。
 軌跡越多，統計越平滑，但計算所需時間
 越長。</value>

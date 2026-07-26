@@ -81,10 +81,6 @@
     <value>Disegna
 assi</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Numero di traiettorie
-da calcolare</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>Inclinazione campione</value>
   </data>
@@ -230,11 +226,6 @@ perde per unità di lunghezza di percorso a causa di
 collisioni anelastiche, all'energia incidente (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>Numero di traiettorie elettroniche da simulare
-(da 100 a 1.000.000). Più traiettorie danno
-statistiche più lisce ma richiedono più tempo di calcolo.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>Numero di traiettorie elettroniche da simulare
 (da 100 a 1.000.000). Più traiettorie danno
 statistiche più lisce ma richiedono più tempo di calcolo.</value>

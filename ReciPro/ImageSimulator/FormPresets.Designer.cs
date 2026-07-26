@@ -24,8 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPresets)); // 260531Cl
             components = new System.ComponentModel.Container();
+            // 260726Cl 復元: VS の再シリアライズで消えた宣言。ツールチップは 11 言語の
+            // FormPresets.<lang>.resx から resources.GetString で引くため、この行が無いと多言語化が切れる。
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPresets)); // 260531Cl
             listBox = new System.Windows.Forms.ListBox();
             textBoxPresetName = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
@@ -41,10 +43,6 @@
             panel2 = new System.Windows.Forms.Panel();
             checkBoxManageList = new System.Windows.Forms.CheckBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanelOkCancel.SuspendLayout();
             panelManageList.SuspendLayout();
@@ -61,6 +59,7 @@
             toolTip.SetToolTip(listBox, resources.GetString("listBox.ToolTip")); // 260531Cl
             listBox.Size = new System.Drawing.Size(233, 210);
             listBox.TabIndex = 1;
+            // toolTip.SetToolTip(listBox, "List of saved presets; selecting one\r\napplies its settings to the image\r\nsimulator (unless management mode is on)."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
             // 
             // textBoxPresetName
@@ -71,6 +70,7 @@
             toolTip.SetToolTip(textBoxPresetName, resources.GetString("textBoxPresetName.ToolTip")); // 260531Cl
             textBoxPresetName.Size = new System.Drawing.Size(190, 25);
             textBoxPresetName.TabIndex = 2;
+            // toolTip.SetToolTip(textBoxPresetName, "Name for the preset to add or rename."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             // 
             // label1
             // 
@@ -83,6 +83,7 @@
             label1.Size = new System.Drawing.Size(43, 20);
             label1.TabIndex = 3;
             label1.Text = "Name";
+            // toolTip.SetToolTip(label1, "Name for the preset to add or rename."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             // 
             // buttonDelete
             // 
@@ -96,10 +97,11 @@
             buttonDelete.Location = new System.Drawing.Point(171, 0);
             buttonDelete.Margin = new System.Windows.Forms.Padding(0);
             buttonDelete.Name = "buttonDelete";
+            toolTip.SetToolTip(buttonDelete, resources.GetString("buttonDelete.ToolTip")); // 260531Cl
             buttonDelete.Size = new System.Drawing.Size(55, 27);
             buttonDelete.TabIndex = 8;
             buttonDelete.Text = "Delete";
-            toolTip.SetToolTip(buttonDelete, resources.GetString("buttonDelete.ToolTip")); // 260531Cl
+            // toolTip.SetToolTip(buttonDelete, "Delete the selected preset from the list."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += buttonDelete_Click;
             // 
@@ -115,10 +117,11 @@
             buttonAdd.Location = new System.Drawing.Point(0, 0);
             buttonAdd.Margin = new System.Windows.Forms.Padding(0);
             buttonAdd.Name = "buttonAdd";
+            toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip")); // 260531Cl
             buttonAdd.Size = new System.Drawing.Size(42, 27);
             buttonAdd.TabIndex = 6;
             buttonAdd.Text = "Add";
-            toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip")); // 260531Cl
+            // toolTip.SetToolTip(buttonAdd, "Add the current image-simulation setting as a new preset."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click;
             // 
@@ -147,10 +150,11 @@
             buttonReplace.Location = new System.Drawing.Point(42, 0);
             buttonReplace.Margin = new System.Windows.Forms.Padding(0);
             buttonReplace.Name = "buttonReplace";
+            toolTip.SetToolTip(buttonReplace, resources.GetString("buttonReplace.ToolTip")); // 260531Cl
             buttonReplace.Size = new System.Drawing.Size(64, 27);
             buttonReplace.TabIndex = 6;
             buttonReplace.Text = "Replace";
-            toolTip.SetToolTip(buttonReplace, resources.GetString("buttonReplace.ToolTip")); // 260531Cl
+            // toolTip.SetToolTip(buttonReplace, "Overwrite the selected preset with the current setting."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonReplace.UseVisualStyleBackColor = false;
             buttonReplace.Click += buttonAdd_Click;
             // 
@@ -166,10 +170,11 @@
             buttonRename.Location = new System.Drawing.Point(106, 0);
             buttonRename.Margin = new System.Windows.Forms.Padding(0);
             buttonRename.Name = "buttonRename";
+            toolTip.SetToolTip(buttonRename, resources.GetString("buttonRename.ToolTip")); // 260531Cl
             buttonRename.Size = new System.Drawing.Size(65, 27);
             buttonRename.TabIndex = 6;
             buttonRename.Text = "Rename";
-            toolTip.SetToolTip(buttonRename, resources.GetString("buttonRename.ToolTip")); // 260531Cl
+            // toolTip.SetToolTip(buttonRename, "Rename the selected preset to the text in the Name box."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonRename.UseVisualStyleBackColor = false;
             buttonRename.Click += buttonRename_Click;
             // 
@@ -190,27 +195,28 @@
             // buttonCancel
             // 
             buttonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCancel.Location = new System.Drawing.Point(158, 0);
+            buttonCancel.Location = new System.Drawing.Point(143, 0);
             buttonCancel.Margin = new System.Windows.Forms.Padding(0);
             buttonCancel.Name = "buttonCancel";
             toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
-            //buttonCancel.Size = new System.Drawing.Size(75, 25); // 260726Cl 旧: de「Abbrechen」が 8px 切れていた
-            buttonCancel.Size = new System.Drawing.Size(90, 25); // 260726Cl
+            buttonCancel.Size = new System.Drawing.Size(90, 25);
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
+            // toolTip.SetToolTip(buttonCancel, "Close and restore the settings that\r\nwere active when this dialog opened."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonOK
             // 
             buttonOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonOK.Location = new System.Drawing.Point(83, 0);
+            buttonOK.Location = new System.Drawing.Point(68, 0);
             buttonOK.Margin = new System.Windows.Forms.Padding(0);
             buttonOK.Name = "buttonOK";
             toolTip.SetToolTip(buttonOK, resources.GetString("buttonOK.ToolTip")); // 260531Cl
             buttonOK.Size = new System.Drawing.Size(75, 25);
             buttonOK.TabIndex = 0;
             buttonOK.Text = "OK";
+            // toolTip.SetToolTip(buttonOK, "Keep the currently applied settings and close the dialog."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             buttonOK.UseVisualStyleBackColor = true;
             buttonOK.Click += buttonOK_Click;
             // 
@@ -246,8 +252,16 @@
             checkBoxManageList.Size = new System.Drawing.Size(233, 21);
             checkBoxManageList.TabIndex = 10;
             checkBoxManageList.Text = "Manage the preset list";
+            // toolTip.SetToolTip(checkBoxManageList, "Toggle preset-management mode: show\r\nAdd/Replace/Rename/Delete and the name box\r\n(selecting an item no longer applies it)."); // 260726Cl 変更前: VS が resx から英語を焼き込んだリテラル。上の resources.GetString 版へ戻した
             checkBoxManageList.UseVisualStyleBackColor = true;
             checkBoxManageList.CheckedChanged += checkBoxManageList_CheckedChanged;
+            // 
+            // toolTip
+            // 
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // FormPresets
             // 

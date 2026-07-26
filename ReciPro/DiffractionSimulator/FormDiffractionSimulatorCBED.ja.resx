@@ -336,6 +336,9 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
   <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -354,7 +357,7 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
   <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
@@ -399,11 +402,8 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
   <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

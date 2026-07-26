@@ -75,12 +75,6 @@
   <data name="label67.Text" xml:space="preserve">
     <value>Длина волны</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Длина камеры</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Уск. напряж.</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Условия ПЭМ</value>
   </data>
@@ -196,17 +190,7 @@
 микроскопа; задаёт длину волны электронов, используемую
 для интерпретации дифракционных картин.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Ускоряющее напряжение (кВ) просвечивающего электронного
-микроскопа; задаёт длину волны электронов, используемую
-для интерпретации дифракционных картин.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Длина камеры (мм) дифракционной картины; преобразует измеренные
-расстояния между рефлексами (мм) в межплоскостные расстояния
-обратной решётки для индицирования.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>Длина камеры (мм) дифракционной картины; преобразует измеренные
 расстояния между рефлексами (мм) в межплоскостные расстояния
 обратной решётки для индицирования.</value>
@@ -556,5 +540,11 @@ Pattern 2 (в процентах от её длины).</value>
     <value>Допуск поиска для L3 Pattern 1,
 в процентах от её длины (0–50%,
 по умолчанию 5; используется в режиме «Three Sides»).</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Длина камеры</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Уск. напряж.</value>
   </data>
 </root>

@@ -75,12 +75,6 @@
   <data name="label67.Text" xml:space="preserve">
     <value>波長</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>相機長度</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>加速電壓</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>TEM 條件</value>
   </data>
@@ -196,17 +190,7 @@ L2 長度鎖定為 Photo 2 的值。</value>
 決定用於解析繞射圖樣的
 電子波長。</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>穿透式電子顯微鏡的加速電壓 (kV)；
-決定用於解析繞射圖樣的
-電子波長。</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>繞射圖樣的相機長度 (mm)；
-將量測到的斑點距離 (mm) 換算為
-用於指標化的倒晶格間距。</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>繞射圖樣的相機長度 (mm)；
 將量測到的斑點距離 (mm) 換算為
 用於指標化的倒晶格間距。</value>
@@ -567,5 +551,11 @@ L2 之間的夾角 θ（度）。</value>
     <value>Pattern 1 之 L3 的搜尋容許誤差，以其長度的
 百分比表示（0-50%，
 預設 5；於「三邊」模式下使用）。</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>相機長度</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>加速電壓</value>
   </data>
 </root>

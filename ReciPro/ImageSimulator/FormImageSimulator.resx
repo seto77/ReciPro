@@ -659,7 +659,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScaleColorScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>77, 23</value>
   </data>
   <data name="comboBoxScaleColorScale.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -690,7 +690,7 @@ grayscale or a cold-warm (blue-red) color map.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGaussianBlur.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 6</value>
+    <value>123, 6</value>
   </data>
   <data name="checkBoxGaussianBlur.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 2, 2, 2</value>
@@ -740,7 +740,7 @@ finite resolution / point-spread.</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 4</value>
+    <value>270, 4</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1063,7 +1063,7 @@ value at right, instead of using the image minimum.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
+    <value>53, 23</value>
   </data>
   <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1149,7 +1149,7 @@ value at right, instead of using the image maximum.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
+    <value>53, 23</value>
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1441,6 +1441,9 @@ inelastic) electrons in the STEM image.</value>
   <data name="colorControlScale.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="colorControlScale.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
@@ -1463,9 +1466,6 @@ inelastic) electrons in the STEM image.</value>
     <value>60</value>
   </data>
   <data name="colorControlScale.ToolTip" xml:space="preserve">
-    <value>Color of scale bar</value>
-  </data>
-  <data name="colorControlScale.ToolTip1" xml:space="preserve">
     <value>Color of scale bar</value>
   </data>
   <data name="&gt;&gt;colorControlScale.Name" xml:space="preserve">
@@ -1596,6 +1596,9 @@ set by the adjacent scale controls.</value>
   <data name="colorControlLabel.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="colorControlLabel.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
@@ -1618,9 +1621,6 @@ set by the adjacent scale controls.</value>
     <value>60</value>
   </data>
   <data name="colorControlLabel.ToolTip" xml:space="preserve">
-    <value>Color of label</value>
-  </data>
-  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
     <value>Color of label</value>
   </data>
   <data name="&gt;&gt;colorControlLabel.Name" xml:space="preserve">
@@ -2121,7 +2121,7 @@ from Start/Step/Num but editable by hand.</value>
     <value>Num</value>
   </data>
   <data name="numericBoxThicknessNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 54</value>
+    <value>54, 54</value>
   </data>
   <data name="numericBoxThicknessNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2173,7 +2173,7 @@ generated in the serial-image series.</value>
     <value>Step</value>
   </data>
   <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 27</value>
+    <value>54, 27</value>
   </data>
   <data name="numericBoxThicknessStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2225,7 +2225,7 @@ images in the serial-image series.</value>
     <value>Start</value>
   </data>
   <data name="numericBoxThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 0</value>
+    <value>54, 0</value>
   </data>
   <data name="numericBoxThicknessStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4202,9 +4202,6 @@ excite many strong diffracted beams.
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="flowLayoutPanel10.WrapContents" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;flowLayoutPanel10.Name" xml:space="preserve">
     <value>flowLayoutPanel10</value>
   </data>
@@ -4293,7 +4290,7 @@ excite many strong diffracted beams.
     <value>1, 18</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 23</value>
+    <value>223, 23</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4335,7 +4332,7 @@ excite many strong diffracted beams.
     <value>3, 21</value>
   </data>
   <data name="sizeControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 25</value>
+    <value>223, 25</value>
   </data>
   <data name="sizeControl1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4359,10 +4356,10 @@ excite many strong diffracted beams.
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxImageProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 0</value>
+    <value>74, 0</value>
   </data>
   <data name="groupBoxImageProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 77</value>
+    <value>229, 77</value>
   </data>
   <data name="groupBoxImageProperty.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4386,7 +4383,7 @@ excite many strong diffracted beams.
     <value>Left</value>
   </data>
   <data name="panel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 0</value>
+    <value>68, 0</value>
   </data>
   <data name="panel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 77</value>
@@ -4419,7 +4416,7 @@ excite many strong diffracted beams.
     <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 46</value>
+    <value>12, 24</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4465,7 +4462,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxDiffractedWaves.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 77</value>
+    <value>68, 77</value>
   </data>
   <data name="groupBoxDiffractedWaves.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4678,7 +4675,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -4687,7 +4684,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -4702,7 +4699,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
+    <value>92, 23</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4728,7 +4725,7 @@ probe and change diffraction contrast.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="textBoxConvRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 3</value>
+    <value>98, 3</value>
   </data>
   <data name="textBoxConvRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4770,7 +4767,7 @@ STEM convergence angle. Read-only.</value>
     <value>NoControl</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 5</value>
+    <value>138, 5</value>
   </data>
   <data name="label36.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -4809,7 +4806,7 @@ STEM convergence angle. Read-only.</value>
     <value>60, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+    <value>171, 26</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -4879,7 +4876,7 @@ of the annular dark-field detector.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -4888,7 +4885,7 @@ of the annular dark-field detector.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Outer</value>
@@ -4906,7 +4903,7 @@ of the annular dark-field detector.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 23</value>
+    <value>129, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4931,7 +4928,7 @@ detector (mrad); signals above this angle are excluded.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="textBoxOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 3</value>
+    <value>132, 3</value>
   </data>
   <data name="textBoxOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4970,7 +4967,7 @@ detector outer collection angle. Read-only.</value>
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 3</value>
+    <value>172, 3</value>
   </data>
   <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5012,7 +5009,7 @@ detector outer collection angle. Read-only.</value>
     <value>60, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>205, 26</value>
   </data>
   <data name="flowLayoutPanelOuterRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -5039,7 +5036,7 @@ detector outer collection angle. Read-only.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5048,7 +5045,7 @@ detector outer collection angle. Read-only.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Inner</value>
@@ -5066,7 +5063,7 @@ detector outer collection angle. Read-only.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 23</value>
+    <value>126, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5091,7 +5088,7 @@ detector (mrad); signals below this angle are excluded.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="textBoxInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 3</value>
+    <value>129, 3</value>
   </data>
   <data name="textBoxInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -5132,7 +5129,7 @@ STEM detector inner angle. Read-only.</value>
     <value>NoControl</value>
   </data>
   <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 3</value>
+    <value>169, 3</value>
   </data>
   <data name="label37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5170,7 +5167,7 @@ STEM detector inner angle. Read-only.</value>
     <value>60, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 26</value>
+    <value>202, 26</value>
   </data>
   <data name="flowLayoutPanelInnerRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -5428,13 +5425,13 @@ blur the STEM probe and reduce fine image detail.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
     <value>Shift  X</value>
@@ -5452,7 +5449,7 @@ blur the STEM probe and reduce fine image detail.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 23</value>
+    <value>93, 23</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5477,7 +5474,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5486,13 +5483,13 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderText" xml:space="preserve">
     <value>Y</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 3</value>
+    <value>99, 3</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -5507,7 +5504,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 23</value>
+    <value>98, 23</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5532,7 +5529,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="textBoxNumOfSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 3</value>
+    <value>197, 3</value>
   </data>
   <data name="textBoxNumOfSpots.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -5572,7 +5569,7 @@ inside the objective aperture (read-only).</value>
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 5</value>
+    <value>228, 5</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -5636,7 +5633,7 @@ inside the objective aperture (read-only).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5645,7 +5642,7 @@ inside the objective aperture (read-only).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -5663,7 +5660,7 @@ inside the objective aperture (read-only).</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxObjAperRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
+    <value>123, 23</value>
   </data>
   <data name="numericBoxObjAperRadius.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5695,7 +5692,7 @@ beams and smooths high-resolution image detail.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxOpenAperture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 3</value>
+    <value>129, 3</value>
   </data>
   <data name="checkBoxOpenAperture.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 19</value>
@@ -5807,7 +5804,7 @@ beams pass the HRTEM objective aperture.</value>
     <value>1</value>
   </data>
   <data name="flowLayoutPanelObjectiveAperture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 0</value>
+    <value>234, 0</value>
   </data>
   <data name="flowLayoutPanelObjectiveAperture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5998,7 +5995,7 @@ transfer image contrast versus spatial frequency.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCs.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCs.FooterText" xml:space="preserve">
     <value>mm</value>
@@ -6007,7 +6004,7 @@ transfer image contrast versus spatial frequency.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCs.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCs.HeaderText" xml:space="preserve">
     <value>Cs</value>
@@ -6025,7 +6022,7 @@ transfer image contrast versus spatial frequency.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
+    <value>100, 23</value>
   </data>
   <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6051,7 +6048,7 @@ transfer function) and Scherzer defocus.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCc.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCc.FooterText" xml:space="preserve">
     <value>mm</value>
@@ -6060,13 +6057,13 @@ transfer function) and Scherzer defocus.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCc.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCc.HeaderText" xml:space="preserve">
     <value>Cc</value>
   </data>
   <data name="numericBoxCc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 0</value>
+    <value>100, 0</value>
   </data>
   <data name="numericBoxCc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6078,7 +6075,7 @@ transfer function) and Scherzer defocus.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 23</value>
+    <value>101, 23</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -6104,7 +6101,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -6113,13 +6110,13 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderText" xml:space="preserve">
     <value>β</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 0</value>
+    <value>201, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6131,7 +6128,7 @@ increase blur from beam energy spread.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
+    <value>100, 23</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -6183,7 +6180,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDefocus.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -6192,7 +6189,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDefocus.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>Defocus Δf</value>
@@ -6210,7 +6207,7 @@ increase blur from beam energy spread.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 23</value>
+    <value>157, 23</value>
   </data>
   <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6354,7 +6351,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelScherzer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 0</value>
+    <value>165, 0</value>
   </data>
   <data name="flowLayoutPanelScherzer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 0, 0, 0</value>
@@ -6408,7 +6405,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAccVol.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.FooterText" xml:space="preserve">
     <value>kV</value>
@@ -6417,7 +6414,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAccVol.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
     <value>Acc. Voltage (kV)</value>
@@ -6435,7 +6432,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 23</value>
+    <value>171, 23</value>
   </data>
   <data name="numericBoxAccVol.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6461,7 +6458,7 @@ electron wavelength and image contrast.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.FooterText" xml:space="preserve">
     <value>eV</value>
@@ -6470,13 +6467,13 @@ electron wavelength and image contrast.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 0, 0</value>
+    <value>5, 4, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.HeaderText" xml:space="preserve">
     <value>ΔV</value>
   </data>
   <data name="numericBoxDeltaV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 0</value>
+    <value>171, 0</value>
   </data>
   <data name="numericBoxDeltaV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6488,7 +6485,7 @@ electron wavelength and image contrast.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxDeltaV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>102, 23</value>
   </data>
   <data name="numericBoxDeltaV.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -6893,7 +6890,7 @@ when "Serial image" mode is selected.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxThickness.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -6902,7 +6899,7 @@ when "Serial image" mode is selected.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 19</value>
@@ -6917,7 +6914,7 @@ when "Serial image" mode is selected.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>90, 23</value>
   </data>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -6948,7 +6945,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>4, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 42</value>
+    <value>94, 42</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -7719,5 +7716,11 @@ code (fast C++/Eigen) or Managed code
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>Color of scale bar</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>Color of label</value>
   </data>
 </root>

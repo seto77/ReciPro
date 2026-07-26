@@ -78,10 +78,8 @@
             numericBoxTiltY = new NumericBox();
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
-            toolTip1.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip1.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip1.InitialDelay = 500; // 260601Cl 追加
-            toolTip1.ReshowDelay = 100; // 260601Cl 追加
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBoxTEMSettings.SuspendLayout();
             groupBoxLink.SuspendLayout();
@@ -92,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
             groupBoxHolderAngles.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // graphicsBox
@@ -101,7 +101,7 @@
             graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 9.75F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
-            toolTip1.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.MouseDown += graphicsBox_MouseDown;
             graphicsBox.MouseMove += graphicsBox_MouseMove;
             // 
@@ -109,7 +109,7 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // numericBoxTiltXDirection
             // 
@@ -119,7 +119,6 @@
             numericBoxTiltXDirection.Maximum = 180D;
             numericBoxTiltXDirection.Minimum = -180D;
             numericBoxTiltXDirection.Name = "numericBoxTiltXDirection";
-            numericBoxTiltXDirection.RadianValue = -0.50614548307835561D;
             numericBoxTiltXDirection.ShowUpDown = true;
             numericBoxTiltXDirection.Value = -29D;
             numericBoxTiltXDirection.ValueFontSize = 9F;
@@ -133,6 +132,7 @@
             numericBoxLinkTiltX.Maximum = 180D;
             numericBoxLinkTiltX.Minimum = -180D;
             numericBoxLinkTiltX.Name = "numericBoxLinkTiltX";
+            numericBoxLinkTiltX.ValueBoxWidth = 30;
             numericBoxLinkTiltX.ValueFontSize = 9F;
             // 
             // numericBoxLinkTiltY
@@ -143,13 +143,14 @@
             numericBoxLinkTiltY.Maximum = 180D;
             numericBoxLinkTiltY.Minimum = -180D;
             numericBoxLinkTiltY.Name = "numericBoxLinkTiltY";
+            numericBoxLinkTiltY.ValueBoxWidth = 30;
             numericBoxLinkTiltY.ValueFontSize = 9F;
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // groupBoxTEMSettings
             // 
@@ -169,7 +170,7 @@
             radioButtonTiltY_Plus.Checked = true;
             radioButtonTiltY_Plus.Name = "radioButtonTiltY_Plus";
             radioButtonTiltY_Plus.TabStop = true;
-            toolTip1.SetToolTip(radioButtonTiltY_Plus, resources.GetString("radioButtonTiltY_Plus.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(radioButtonTiltY_Plus, resources.GetString("radioButtonTiltY_Plus.ToolTip"));
             radioButtonTiltY_Plus.UseVisualStyleBackColor = true;
             radioButtonTiltY_Plus.CheckedChanged += numericBoxPrimaryAxisDirection_ValueChanged;
             // 
@@ -177,7 +178,7 @@
             // 
             resources.ApplyResources(radioButtonTiltY_Minus, "radioButtonTiltY_Minus");
             radioButtonTiltY_Minus.Name = "radioButtonTiltY_Minus";
-            toolTip1.SetToolTip(radioButtonTiltY_Minus, resources.GetString("radioButtonTiltY_Minus.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(radioButtonTiltY_Minus, resources.GetString("radioButtonTiltY_Minus.ToolTip"));
             radioButtonTiltY_Minus.UseVisualStyleBackColor = true;
             // 
             // groupBoxLink
@@ -195,7 +196,7 @@
             // 
             resources.ApplyResources(buttonRotate180, "buttonRotate180");
             buttonRotate180.Name = "buttonRotate180";
-            toolTip1.SetToolTip(buttonRotate180, resources.GetString("buttonRotate180.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(buttonRotate180, resources.GetString("buttonRotate180.ToolTip"));
             buttonRotate180.UseVisualStyleBackColor = true;
             buttonRotate180.Click += buttonRotate180_Click;
             // 
@@ -203,7 +204,7 @@
             // 
             resources.ApplyResources(buttonLink, "buttonLink");
             buttonLink.Name = "buttonLink";
-            toolTip1.SetToolTip(buttonLink, resources.GetString("buttonLink.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(buttonLink, resources.GetString("buttonLink.ToolTip"));
             buttonLink.UseVisualStyleBackColor = true;
             buttonLink.Click += buttonLink_Click;
             // 
@@ -222,8 +223,8 @@
             // 
             // groupBoxIndexRange
             // 
-            groupBoxIndexRange.Controls.Add(indexControl);
             groupBoxIndexRange.Controls.Add(checkBoxIncludingEquivalent);
+            groupBoxIndexRange.Controls.Add(indexControl);
             resources.ApplyResources(groupBoxIndexRange, "groupBoxIndexRange");
             groupBoxIndexRange.Name = "groupBoxIndexRange";
             groupBoxIndexRange.TabStop = false;
@@ -244,18 +245,16 @@
             checkBoxIncludingEquivalent.Checked = true;
             checkBoxIncludingEquivalent.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxIncludingEquivalent.Name = "checkBoxIncludingEquivalent";
-            toolTip1.SetToolTip(checkBoxIncludingEquivalent, resources.GetString("checkBoxIncludingEquivalent.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(checkBoxIncludingEquivalent, resources.GetString("checkBoxIncludingEquivalent.ToolTip"));
             checkBoxIncludingEquivalent.UseVisualStyleBackColor = true;
             checkBoxIncludingEquivalent.CheckedChanged += checkBoxIncludingEquivalent_CheckedChanged;
             // 
             // groupBoxColorAndSize
             // 
-            groupBoxColorAndSize.Controls.Add(flowLayoutPanelStereonetColor);
-            groupBoxColorAndSize.Controls.Add(label17);
-            groupBoxColorAndSize.Controls.Add(label18);
-            groupBoxColorAndSize.Controls.Add(trackBarStrSize);
-            groupBoxColorAndSize.Controls.Add(trackBarPointSize);
             resources.ApplyResources(groupBoxColorAndSize, "groupBoxColorAndSize");
+            groupBoxColorAndSize.Controls.Add(flowLayoutPanel2);
+            groupBoxColorAndSize.Controls.Add(flowLayoutPanel1);
+            groupBoxColorAndSize.Controls.Add(flowLayoutPanelStereonetColor);
             groupBoxColorAndSize.Name = "groupBoxColorAndSize";
             groupBoxColorAndSize.TabStop = false;
             // 
@@ -365,13 +364,13 @@
             // 
             resources.ApplyResources(label17, "label17");
             label17.Name = "label17";
-            toolTip1.SetToolTip(label17, resources.GetString("label17.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label17, resources.GetString("label17.ToolTip"));
             // 
             // label18
             // 
             resources.ApplyResources(label18, "label18");
             label18.Name = "label18";
-            toolTip1.SetToolTip(label18, resources.GetString("label18.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label18, resources.GetString("label18.ToolTip"));
             // 
             // trackBarStrSize
             // 
@@ -380,7 +379,7 @@
             trackBarStrSize.Minimum = 1;
             trackBarStrSize.Name = "trackBarStrSize";
             trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip1.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip"));
             trackBarStrSize.Value = 60;
             // 
             // trackBarPointSize
@@ -390,7 +389,7 @@
             trackBarPointSize.Minimum = 1;
             trackBarPointSize.Name = "trackBarPointSize";
             trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip1.SetToolTip(trackBarPointSize, resources.GetString("trackBarPointSize.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(trackBarPointSize, resources.GetString("trackBarPointSize.ToolTip"));
             trackBarPointSize.Value = 4;
             // 
             // numericBoxDrawingArea
@@ -400,7 +399,6 @@
             numericBoxDrawingArea.Maximum = 90D;
             numericBoxDrawingArea.Minimum = 1D;
             numericBoxDrawingArea.Name = "numericBoxDrawingArea";
-            numericBoxDrawingArea.RadianValue = 0.52359877559829882D;
             numericBoxDrawingArea.ShowUpDown = true;
             numericBoxDrawingArea.SmartIncrement = true;
             numericBoxDrawingArea.Value = 30D;
@@ -412,7 +410,7 @@
             checkBoxTiltDirections.Checked = true;
             checkBoxTiltDirections.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxTiltDirections.Name = "checkBoxTiltDirections";
-            toolTip1.SetToolTip(checkBoxTiltDirections, resources.GetString("checkBoxTiltDirections.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(checkBoxTiltDirections, resources.GetString("checkBoxTiltDirections.ToolTip"));
             checkBoxTiltDirections.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // checkBox1DegLine
@@ -421,7 +419,7 @@
             checkBox1DegLine.Checked = true;
             checkBox1DegLine.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBox1DegLine.Name = "checkBox1DegLine";
-            toolTip1.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip"));
             checkBox1DegLine.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // checkBoxShowIndexLabels
@@ -430,7 +428,7 @@
             checkBoxShowIndexLabels.Checked = true;
             checkBoxShowIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowIndexLabels.Name = "checkBoxShowIndexLabels";
-            toolTip1.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip"));
             checkBoxShowIndexLabels.UseVisualStyleBackColor = true;
             // 
             // label1MousePosition
@@ -460,10 +458,10 @@
             numericBoxArrowStep.Maximum = 2D;
             numericBoxArrowStep.Minimum = 0.1D;
             numericBoxArrowStep.Name = "numericBoxArrowStep";
-            numericBoxArrowStep.RadianValue = 0.0034906585039886592D;
             numericBoxArrowStep.ShowUpDown = true;
             numericBoxArrowStep.UpDown_Increment = 0.1D;
             numericBoxArrowStep.Value = 0.2D;
+            numericBoxArrowStep.ValueBoxWidth = 24;
             numericBoxArrowStep.ValueFontSize = 9F;
             numericBoxArrowStep.ValueChanged += numericBoxTilt_ValueChanged;
             // 
@@ -471,7 +469,7 @@
             // 
             resources.ApplyResources(label19, "label19");
             label19.Name = "label19";
-            toolTip1.SetToolTip(label19, resources.GetString("label19.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label19, resources.GetString("label19.ToolTip"));
             // 
             // numericBoxTiltX
             // 
@@ -482,6 +480,7 @@
             numericBoxTiltX.Minimum = -180D;
             numericBoxTiltX.Name = "numericBoxTiltX";
             numericBoxTiltX.ShowUpDown = true;
+            numericBoxTiltX.ValueBoxWidth = 36;
             numericBoxTiltX.ValueFontSize = 9F;
             numericBoxTiltX.ValueChanged += numericBoxTilt_ValueChanged;
             // 
@@ -489,7 +488,7 @@
             // 
             resources.ApplyResources(label20, "label20");
             label20.Name = "label20";
-            toolTip1.SetToolTip(label20, resources.GetString("label20.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(label20, resources.GetString("label20.ToolTip"));
             // 
             // numericBoxTiltY
             // 
@@ -500,6 +499,7 @@
             numericBoxTiltY.Minimum = -180D;
             numericBoxTiltY.Name = "numericBoxTiltY";
             numericBoxTiltY.ShowUpDown = true;
+            numericBoxTiltY.ValueBoxWidth = 36;
             numericBoxTiltY.ValueFontSize = 9F;
             numericBoxTiltY.ValueChanged += numericBoxTilt_ValueChanged;
             // 
@@ -507,9 +507,30 @@
             // 
             resources.ApplyResources(checkBoxEnableArrow, "checkBoxEnableArrow");
             checkBoxEnableArrow.Name = "checkBoxEnableArrow";
-            toolTip1.SetToolTip(checkBoxEnableArrow, resources.GetString("checkBoxEnableArrow.ToolTip")); // (260531Ch)
+            toolTip1.SetToolTip(checkBoxEnableArrow, resources.GetString("checkBoxEnableArrow.ToolTip"));
             checkBoxEnableArrow.UseVisualStyleBackColor = true;
             checkBoxEnableArrow.CheckedChanged += checkBoxEnableArrow_CheckedChanged;
+            // 
+            // toolTip1
+            // 
+            toolTip1.AutoPopDelay = 10000;
+            toolTip1.InitialDelay = 500;
+            toolTip1.IsBalloon = true;
+            toolTip1.ReshowDelay = 100;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label17);
+            flowLayoutPanel1.Controls.Add(trackBarStrSize);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(label18);
+            flowLayoutPanel2.Controls.Add(trackBarPointSize);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // FormDiffractionSimulatorHolder
             // 
@@ -544,6 +565,10 @@
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
             groupBoxHolderAngles.ResumeLayout(false);
             groupBoxHolderAngles.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -597,5 +622,7 @@
         private System.Windows.Forms.CheckBox checkBoxIncludingEquivalent;
         private System.Windows.Forms.GroupBox groupBoxIndexRange;
         private IndexControl indexControl;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

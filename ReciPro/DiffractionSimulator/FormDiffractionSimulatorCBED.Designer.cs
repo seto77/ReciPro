@@ -82,6 +82,7 @@
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            panel1 = new System.Windows.Forms.Panel();
             groupBoxInputParameters.SuspendLayout();
             flowLayoutPanel13.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
@@ -167,14 +168,12 @@
             numericBoxThread.Maximum = 128D;
             numericBoxThread.Minimum = 1D;
             numericBoxThread.Name = "numericBoxThread";
-            numericBoxThread.RadianValue = 0.069813170079773182D;
             numericBoxThread.ShowUpDown = true;
             numericBoxThread.SmartIncrement = true;
             numericBoxThread.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
             numericBoxThread.Value = 4D;
-            //numericBoxThread.ValueBoxWidth = 25; // 260726Cl 旧: 最長値「128」が zh-Hans で 6px 入らず切れていた
-            numericBoxThread.ValueBoxWidth = 25; // 260726Cl: 37px へ広げるとflowLayoutPanel13 が zh-Hans/Hant で groupBoxInputParameters をはみ出すため、切れを承知で据え置き
+            numericBoxThread.ValueBoxWidth = 25;
             numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // flowLayoutPanel6
@@ -221,12 +220,11 @@
             // numericBoxMaxNumOfG
             // 
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            numericBoxMaxNumOfG.DecimalPlaces = 0; // 260726Cl 追加: 回折波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
             numericBoxMaxNumOfG.ThousandsSeparator = true;
@@ -244,13 +242,11 @@
             numericBoxAlphaMax.Maximum = 2000D;
             numericBoxAlphaMax.Minimum = 0D;
             numericBoxAlphaMax.Name = "numericBoxAlphaMax";
-            numericBoxAlphaMax.RadianValue = 0.10471975511965977D;
             numericBoxAlphaMax.ShowUpDown = true;
             numericBoxAlphaMax.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
             numericBoxAlphaMax.Value = 6D;
-            //numericBoxAlphaMax.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「2000.0」が ko で 5px 入らず切れていた
-            numericBoxAlphaMax.ValueBoxWidth = 51; // 260726Cl
+            numericBoxAlphaMax.ValueBoxWidth = 51;
             numericBoxAlphaMax.ValueFontSize = 9F;
             numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
             // 
@@ -269,14 +265,12 @@
             numericBoxDiskResolution.Maximum = 100D;
             numericBoxDiskResolution.Minimum = 0.001D;
             numericBoxDiskResolution.Name = "numericBoxDiskResolution";
-            numericBoxDiskResolution.RadianValue = 0.0017453292519943296D;
             numericBoxDiskResolution.ShowUpDown = true;
             numericBoxDiskResolution.SmartIncrement = true;
             numericBoxDiskResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
             numericBoxDiskResolution.Value = 0.1D;
-            //numericBoxDiskResolution.ValueBoxWidth = 45; // 260726Cl 旧: 最長値「100.000」が ko で 7px 入らず切れていた
-            numericBoxDiskResolution.ValueBoxWidth = 58; // 260726Cl
+            numericBoxDiskResolution.ValueBoxWidth = 58;
             numericBoxDiskResolution.ValueFontSize = 9F;
             numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
             // 
@@ -318,7 +312,6 @@
             numericBoxWholeThicknessStart.Maximum = 1000D;
             numericBoxWholeThicknessStart.Minimum = 1D;
             numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
-            numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
             numericBoxWholeThicknessStart.ShowUpDown = true;
             numericBoxWholeThicknessStart.SmartIncrement = true;
             numericBoxWholeThicknessStart.ThousandsSeparator = true;
@@ -335,7 +328,6 @@
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.Minimum = 1D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
-            numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
             numericBoxThicknessEnd.ThousandsSeparator = true;
@@ -352,7 +344,6 @@
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
-            numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
             numericBoxThicknessStep.ThousandsSeparator = true;
@@ -610,6 +601,11 @@
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
+            // 
             // FormDiffractionSimulatorCBED
             // 
             resources.ApplyResources(this, "$this");
@@ -617,6 +613,7 @@
             captureExtender.SetCapture(this, true);
             ControlBox = false;
             Controls.Add(groupBoxOutput);
+            Controls.Add(panel1);
             Controls.Add(groupBoxInputParameters);
             Controls.Add(statusStrip2);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -720,5 +717,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
+        private System.Windows.Forms.Panel panel1;
     }
 }

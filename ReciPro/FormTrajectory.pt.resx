@@ -81,10 +81,6 @@
     <value>Desenhar
 eixos</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Número de trajetórias
-a calcular</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>Inclinação da amostra</value>
   </data>
@@ -230,11 +226,6 @@ perde por unidade de comprimento de trajeto em colisões
 inelásticas, na energia incidente (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>Número de trajetórias de elétrons a simular
-(100 a 1.000.000). Mais trajetórias dão
-estatísticas mais suaves, mas levam mais tempo para calcular.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>Número de trajetórias de elétrons a simular
 (100 a 1.000.000). Mais trajetórias dão
 estatísticas mais suaves, mas levam mais tempo para calcular.</value>

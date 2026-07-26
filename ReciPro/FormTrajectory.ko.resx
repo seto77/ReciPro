@@ -81,10 +81,6 @@
     <value>축
 그리기</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>계산할
-궤적 수</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>시료 기울기</value>
   </data>
@@ -230,11 +226,6 @@ nm/µm 단위로 표시).</value>
 에너지 (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>시뮬레이션할 전자 궤적의 개수 (100~1,000,000).
-궤적이 많을수록 통계는 매끄러워지지만
-계산 시간이 늘어납니다.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>시뮬레이션할 전자 궤적의 개수 (100~1,000,000).
 궤적이 많을수록 통계는 매끄러워지지만
 계산 시간이 늘어납니다.</value>

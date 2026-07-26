@@ -34,29 +34,20 @@
         // flowLayoutPanel1 -> flowLayoutPanelPhotos
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container(); // (260531Ch)
-            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1));
-            groupBoxPhoto1Pattern = new System.Windows.Forms.GroupBox();
+            toolTip = new System.Windows.Forms.ToolTip(components);
             buttonSearchPhoto1 = new System.Windows.Forms.Button();
             numericBoxP1Theta = new NumericBox();
-            pictureBoxPhoto1 = new System.Windows.Forms.PictureBox();
             radioButtonPhoto1Mode2 = new System.Windows.Forms.RadioButton();
             radioButtonPhoto1Mode1 = new System.Windows.Forms.RadioButton();
-            numericBoxPhoto1L1Err = new Crystallography.Controls.NumericBox();
-            inputBoxP1L3 = new InputBox();
-            numericBoxPhoto1L2Err = new Crystallography.Controls.NumericBox();
-            inputBoxP1L2 = new InputBox();
-            numericBoxPhoto1ThetaErr = new Crystallography.Controls.NumericBox();
-            inputBoxP1L1 = new InputBox();
+            numericBoxPhoto1L1Err = new NumericBox();
+            numericBoxPhoto1L2Err = new NumericBox();
+            numericBoxPhoto1ThetaErr = new NumericBox();
             label4 = new System.Windows.Forms.Label();
             labelPhoto1Mode1_4 = new System.Windows.Forms.Label();
             label131 = new System.Windows.Forms.Label();
-            numericBoxPhoto1L3Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto1L3Err = new NumericBox();
             labelPhoto1Mode2_6 = new System.Windows.Forms.Label();
             label20 = new System.Windows.Forms.Label();
             labelPhoto1Mode1_1 = new System.Windows.Forms.Label();
@@ -67,54 +58,30 @@
             label70 = new System.Windows.Forms.Label();
             label69 = new System.Windows.Forms.Label();
             labelPhoto1Mode1_3 = new System.Windows.Forms.Label();
-            groupBoxTEMCondition = new System.Windows.Forms.GroupBox();
             textBoxWaveLength = new System.Windows.Forms.TextBox();
             label67 = new System.Windows.Forms.Label();
-            numericBoxCamaraLength = new Crystallography.Controls.NumericBox();
-            label18 = new System.Windows.Forms.Label();
-            label15 = new System.Windows.Forms.Label();
-            numericBoxAccVol = new Crystallography.Controls.NumericBox();
-            label19 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label68 = new System.Windows.Forms.Label();
-            groupBoxPhoto1 = new System.Windows.Forms.GroupBox();
-            groupBoxPhoto1HolderCondition = new System.Windows.Forms.GroupBox();
+            numericBoxCamaraLength = new NumericBox();
+            numericBoxAccVol = new NumericBox();
             numericBoxP1Tilt2 = new NumericBox();
             numericBoxP1Tilt1 = new NumericBox();
             label14 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            numericBoxPhoto1Tilt1Err = new Crystallography.Controls.NumericBox();
-            label48 = new System.Windows.Forms.Label();
-            numericBoxPhoto1Tilt2Err = new Crystallography.Controls.NumericBox();
-            label49 = new System.Windows.Forms.Label();
-            label53 = new System.Windows.Forms.Label();
-            label54 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            panel4 = new System.Windows.Forms.Panel();
-            label59 = new System.Windows.Forms.Label();
+            numericBoxPhoto1Tilt1Err = new NumericBox();
+            numericBoxPhoto1Tilt2Err = new NumericBox();
             textBoxAngleBetween12 = new System.Windows.Forms.TextBox();
             textBoxAngleBetween31 = new System.Windows.Forms.TextBox();
-            label176 = new System.Windows.Forms.Label();
             textBoxAngleBetween23 = new System.Windows.Forms.TextBox();
-            panel2 = new System.Windows.Forms.Panel();
-            panel3 = new System.Windows.Forms.Panel();
-            groupBoxPhoto2Pattern = new System.Windows.Forms.GroupBox();
             buttonSearchPhoto2 = new System.Windows.Forms.Button();
             numericBoxP2Theta = new NumericBox();
-            pictureBoxPhoto2 = new System.Windows.Forms.PictureBox();
-            inputBoxP2L3 = new InputBox();
             radioButtonPhoto2Mode2 = new System.Windows.Forms.RadioButton();
-            inputBoxP2L2 = new InputBox();
             radioButtonPhoto2Mode1 = new System.Windows.Forms.RadioButton();
-            inputBoxP2L1 = new InputBox();
-            numericBoxPhoto2L1Err = new Crystallography.Controls.NumericBox();
-            numericBoxPhoto2L2Err = new Crystallography.Controls.NumericBox();
-            numericBoxPhoto2ThetaErr = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto2L1Err = new NumericBox();
+            numericBoxPhoto2L2Err = new NumericBox();
+            numericBoxPhoto2ThetaErr = new NumericBox();
             label22 = new System.Windows.Forms.Label();
             label23 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
-            numericBoxPhoto2L3Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto2L3Err = new NumericBox();
             label26 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
             label28 = new System.Windows.Forms.Label();
@@ -125,14 +92,64 @@
             label76 = new System.Windows.Forms.Label();
             label77 = new System.Windows.Forms.Label();
             label78 = new System.Windows.Forms.Label();
-            groupBoxPhoto2HolderCondition = new System.Windows.Forms.GroupBox();
             numericBoxP2Tilt2 = new NumericBox();
             numericBoxP2Tilt1 = new NumericBox();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
-            numericBoxPhoto2Tilt1Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto2Tilt1Err = new NumericBox();
+            numericBoxPhoto2Tilt2Err = new NumericBox();
+            numericBoxP3Theta = new NumericBox();
+            buttonSearchPhoto3 = new System.Windows.Forms.Button();
+            radioButtonPhoto3Mode2 = new System.Windows.Forms.RadioButton();
+            radioButtonPhoto3Mode1 = new System.Windows.Forms.RadioButton();
+            numericBoxPhoto3L1Err = new NumericBox();
+            numericBoxPhoto3L2Err = new NumericBox();
+            numericBoxPhoto3ThetaErr = new NumericBox();
+            numericBoxPhoto3L3Err = new NumericBox();
+            label47 = new System.Windows.Forms.Label();
+            label52 = new System.Windows.Forms.Label();
+            label55 = new System.Windows.Forms.Label();
+            label56 = new System.Windows.Forms.Label();
+            numericBoxP3Tilt2 = new NumericBox();
+            label34 = new System.Windows.Forms.Label();
+            numericBoxP3Tilt1 = new NumericBox();
+            label35 = new System.Windows.Forms.Label();
+            numericBoxPhoto3Tilt1Err = new NumericBox();
+            numericBoxPhoto3Tilt2Err = new NumericBox();
+            checkBoxPhoto2 = new System.Windows.Forms.CheckBox();
+            checkBoxPhoto3 = new System.Windows.Forms.CheckBox();
+            checkBoxEquivalentPhoto1L1Photo2L1 = new System.Windows.Forms.CheckBox();
+            checkBoxEquivalentPhoto2L1Photo3L1 = new System.Windows.Forms.CheckBox();
+            checkBoxEquivalentPhoto2L2Photo3L2 = new System.Windows.Forms.CheckBox();
+            buttonSearchAll = new System.Windows.Forms.Button();
+            checkBoxEquivalentPhoto1L2Photo2L2 = new System.Windows.Forms.CheckBox();
+            groupBoxPhoto1Pattern = new System.Windows.Forms.GroupBox();
+            pictureBoxPhoto1 = new System.Windows.Forms.PictureBox();
+            inputBoxP1L3 = new InputBox();
+            inputBoxP1L2 = new InputBox();
+            inputBoxP1L1 = new InputBox();
+            groupBoxTEMCondition = new System.Windows.Forms.GroupBox();
+            label68 = new System.Windows.Forms.Label();
+            groupBoxPhoto1 = new System.Windows.Forms.GroupBox();
+            groupBoxPhoto1HolderCondition = new System.Windows.Forms.GroupBox();
+            label48 = new System.Windows.Forms.Label();
+            label49 = new System.Windows.Forms.Label();
+            label53 = new System.Windows.Forms.Label();
+            label54 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            panel4 = new System.Windows.Forms.Panel();
+            label59 = new System.Windows.Forms.Label();
+            label176 = new System.Windows.Forms.Label();
+            panel2 = new System.Windows.Forms.Panel();
+            panel3 = new System.Windows.Forms.Panel();
+            groupBoxPhoto2Pattern = new System.Windows.Forms.GroupBox();
+            pictureBoxPhoto2 = new System.Windows.Forms.PictureBox();
+            inputBoxP2L3 = new InputBox();
+            inputBoxP2L2 = new InputBox();
+            inputBoxP2L1 = new InputBox();
+            groupBoxPhoto2HolderCondition = new System.Windows.Forms.GroupBox();
             label8 = new System.Windows.Forms.Label();
-            numericBoxPhoto2Tilt2Err = new Crystallography.Controls.NumericBox();
             label13 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
             label17 = new System.Windows.Forms.Label();
@@ -141,52 +158,27 @@
             groupBoxPhoto2 = new System.Windows.Forms.GroupBox();
             groupBoxPhoto3Pattern = new System.Windows.Forms.GroupBox();
             inputBoxP3L3 = new InputBox();
-            numericBoxP3Theta = new NumericBox();
             inputBoxP3L2 = new InputBox();
-            buttonSearchPhoto3 = new System.Windows.Forms.Button();
             inputBoxP3L1 = new InputBox();
             pictureBoxPhoto3 = new System.Windows.Forms.PictureBox();
-            radioButtonPhoto3Mode2 = new System.Windows.Forms.RadioButton();
-            radioButtonPhoto3Mode1 = new System.Windows.Forms.RadioButton();
-            numericBoxPhoto3L1Err = new Crystallography.Controls.NumericBox();
-            numericBoxPhoto3L2Err = new Crystallography.Controls.NumericBox();
-            numericBoxPhoto3ThetaErr = new Crystallography.Controls.NumericBox();
             label42 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
             label44 = new System.Windows.Forms.Label();
-            numericBoxPhoto3L3Err = new Crystallography.Controls.NumericBox();
             label46 = new System.Windows.Forms.Label();
-            label47 = new System.Windows.Forms.Label();
-            label52 = new System.Windows.Forms.Label();
-            label55 = new System.Windows.Forms.Label();
-            label56 = new System.Windows.Forms.Label();
             label57 = new System.Windows.Forms.Label();
             label101 = new System.Windows.Forms.Label();
             label100 = new System.Windows.Forms.Label();
             label99 = new System.Windows.Forms.Label();
             label98 = new System.Windows.Forms.Label();
             groupBoxPhoto3HolderCondition = new System.Windows.Forms.GroupBox();
-            numericBoxP3Tilt2 = new NumericBox();
-            label34 = new System.Windows.Forms.Label();
-            numericBoxP3Tilt1 = new NumericBox();
-            label35 = new System.Windows.Forms.Label();
-            numericBoxPhoto3Tilt1Err = new Crystallography.Controls.NumericBox();
             label36 = new System.Windows.Forms.Label();
-            numericBoxPhoto3Tilt2Err = new Crystallography.Controls.NumericBox();
             label37 = new System.Windows.Forms.Label();
             label38 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
             label32 = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             groupBoxPhoto3 = new System.Windows.Forms.GroupBox();
-            checkBoxPhoto2 = new System.Windows.Forms.CheckBox();
-            checkBoxPhoto3 = new System.Windows.Forms.CheckBox();
-            checkBoxEquivalentPhoto1L1Photo2L1 = new System.Windows.Forms.CheckBox();
-            checkBoxEquivalentPhoto2L1Photo3L1 = new System.Windows.Forms.CheckBox();
-            checkBoxEquivalentPhoto2L2Photo3L2 = new System.Windows.Forms.CheckBox();
-            buttonSearchAll = new System.Windows.Forms.Button();
             panel5 = new System.Windows.Forms.Panel();
-            checkBoxEquivalentPhoto1L2Photo2L2 = new System.Windows.Forms.CheckBox();
             label58 = new System.Windows.Forms.Label();
             flowLayoutPanelPhotos = new System.Windows.Forms.FlowLayoutPanel();
             panelPhoto2 = new System.Windows.Forms.Panel();
@@ -212,6 +204,768 @@
             panelPhoto2.SuspendLayout();
             panelPhoto3.SuspendLayout();
             SuspendLayout();
+            // 
+            // toolTip
+            // 
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
+            // 
+            // buttonSearchPhoto1
+            // 
+            buttonSearchPhoto1.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonSearchPhoto1, "buttonSearchPhoto1");
+            buttonSearchPhoto1.ForeColor = System.Drawing.Color.White;
+            buttonSearchPhoto1.Name = "buttonSearchPhoto1";
+            toolTip.SetToolTip(buttonSearchPhoto1, resources.GetString("buttonSearchPhoto1.ToolTip"));
+            buttonSearchPhoto1.UseVisualStyleBackColor = false;
+            buttonSearchPhoto1.Click += buttonSearch_Click;
+            // 
+            // numericBoxP1Theta
+            // 
+            numericBoxP1Theta.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP1Theta, "numericBoxP1Theta");
+            numericBoxP1Theta.Name = "numericBoxP1Theta";
+            numericBoxP1Theta.SkipEventDuringInput = false;
+            numericBoxP1Theta.SmartIncrement = true;
+            numericBoxP1Theta.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP1Theta, resources.GetString("numericBoxP1Theta.ToolTip"));
+            numericBoxP1Theta.ValueChanged += textBox_TextChanged;
+            numericBoxP1Theta.Click2 += numericBoxP1Theta_Click2;
+            // 
+            // radioButtonPhoto1Mode2
+            // 
+            resources.ApplyResources(radioButtonPhoto1Mode2, "radioButtonPhoto1Mode2");
+            radioButtonPhoto1Mode2.Name = "radioButtonPhoto1Mode2";
+            toolTip.SetToolTip(radioButtonPhoto1Mode2, resources.GetString("radioButtonPhoto1Mode2.ToolTip"));
+            radioButtonPhoto1Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
+            // 
+            // radioButtonPhoto1Mode1
+            // 
+            resources.ApplyResources(radioButtonPhoto1Mode1, "radioButtonPhoto1Mode1");
+            radioButtonPhoto1Mode1.Checked = true;
+            radioButtonPhoto1Mode1.Name = "radioButtonPhoto1Mode1";
+            radioButtonPhoto1Mode1.TabStop = true;
+            toolTip.SetToolTip(radioButtonPhoto1Mode1, resources.GetString("radioButtonPhoto1Mode1.ToolTip"));
+            // 
+            // numericBoxPhoto1L1Err
+            // 
+            numericBoxPhoto1L1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1L1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1L1Err, "numericBoxPhoto1L1Err");
+            numericBoxPhoto1L1Err.Maximum = 50D;
+            numericBoxPhoto1L1Err.Minimum = 0D;
+            numericBoxPhoto1L1Err.Name = "numericBoxPhoto1L1Err";
+            numericBoxPhoto1L1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1L1Err, resources.GetString("numericBoxPhoto1L1Err.ToolTip"));
+            numericBoxPhoto1L1Err.Value = 5D;
+            numericBoxPhoto1L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto1L2Err
+            // 
+            numericBoxPhoto1L2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1L2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1L2Err, "numericBoxPhoto1L2Err");
+            numericBoxPhoto1L2Err.Maximum = 50D;
+            numericBoxPhoto1L2Err.Minimum = 0D;
+            numericBoxPhoto1L2Err.Name = "numericBoxPhoto1L2Err";
+            numericBoxPhoto1L2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1L2Err, resources.GetString("numericBoxPhoto1L2Err.ToolTip"));
+            numericBoxPhoto1L2Err.Value = 5D;
+            numericBoxPhoto1L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto1ThetaErr
+            // 
+            numericBoxPhoto1ThetaErr.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1ThetaErr.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1ThetaErr, "numericBoxPhoto1ThetaErr");
+            numericBoxPhoto1ThetaErr.Maximum = 30D;
+            numericBoxPhoto1ThetaErr.Minimum = 0D;
+            numericBoxPhoto1ThetaErr.Name = "numericBoxPhoto1ThetaErr";
+            numericBoxPhoto1ThetaErr.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1ThetaErr, resources.GetString("numericBoxPhoto1ThetaErr.ToolTip"));
+            numericBoxPhoto1ThetaErr.Value = 3D;
+            numericBoxPhoto1ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
+            // 
+            // labelPhoto1Mode1_4
+            // 
+            resources.ApplyResources(labelPhoto1Mode1_4, "labelPhoto1Mode1_4");
+            labelPhoto1Mode1_4.Name = "labelPhoto1Mode1_4";
+            toolTip.SetToolTip(labelPhoto1Mode1_4, resources.GetString("labelPhoto1Mode1_4.ToolTip"));
+            // 
+            // label131
+            // 
+            resources.ApplyResources(label131, "label131");
+            label131.Name = "label131";
+            toolTip.SetToolTip(label131, resources.GetString("label131.ToolTip"));
+            // 
+            // numericBoxPhoto1L3Err
+            // 
+            numericBoxPhoto1L3Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1L3Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1L3Err, "numericBoxPhoto1L3Err");
+            numericBoxPhoto1L3Err.Maximum = 50D;
+            numericBoxPhoto1L3Err.Minimum = 0D;
+            numericBoxPhoto1L3Err.Name = "numericBoxPhoto1L3Err";
+            numericBoxPhoto1L3Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1L3Err, resources.GetString("numericBoxPhoto1L3Err.ToolTip"));
+            numericBoxPhoto1L3Err.Value = 5D;
+            numericBoxPhoto1L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelPhoto1Mode2_6
+            // 
+            resources.ApplyResources(labelPhoto1Mode2_6, "labelPhoto1Mode2_6");
+            labelPhoto1Mode2_6.Name = "labelPhoto1Mode2_6";
+            toolTip.SetToolTip(labelPhoto1Mode2_6, resources.GetString("labelPhoto1Mode2_6.ToolTip"));
+            // 
+            // label20
+            // 
+            resources.ApplyResources(label20, "label20");
+            label20.Name = "label20";
+            toolTip.SetToolTip(label20, resources.GetString("label20.ToolTip"));
+            // 
+            // labelPhoto1Mode1_1
+            // 
+            resources.ApplyResources(labelPhoto1Mode1_1, "labelPhoto1Mode1_1");
+            labelPhoto1Mode1_1.Name = "labelPhoto1Mode1_1";
+            toolTip.SetToolTip(labelPhoto1Mode1_1, resources.GetString("labelPhoto1Mode1_1.ToolTip"));
+            // 
+            // label12
+            // 
+            resources.ApplyResources(label12, "label12");
+            label12.Name = "label12";
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip"));
+            // 
+            // label75
+            // 
+            resources.ApplyResources(label75, "label75");
+            label75.Name = "label75";
+            toolTip.SetToolTip(label75, resources.GetString("label75.ToolTip"));
+            // 
+            // label71
+            // 
+            resources.ApplyResources(label71, "label71");
+            label71.Name = "label71";
+            toolTip.SetToolTip(label71, resources.GetString("label71.ToolTip"));
+            // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
+            // 
+            // label70
+            // 
+            resources.ApplyResources(label70, "label70");
+            label70.Name = "label70";
+            toolTip.SetToolTip(label70, resources.GetString("label70.ToolTip"));
+            // 
+            // label69
+            // 
+            resources.ApplyResources(label69, "label69");
+            label69.Name = "label69";
+            toolTip.SetToolTip(label69, resources.GetString("label69.ToolTip"));
+            // 
+            // labelPhoto1Mode1_3
+            // 
+            resources.ApplyResources(labelPhoto1Mode1_3, "labelPhoto1Mode1_3");
+            labelPhoto1Mode1_3.Name = "labelPhoto1Mode1_3";
+            toolTip.SetToolTip(labelPhoto1Mode1_3, resources.GetString("labelPhoto1Mode1_3.ToolTip"));
+            // 
+            // textBoxWaveLength
+            // 
+            resources.ApplyResources(textBoxWaveLength, "textBoxWaveLength");
+            textBoxWaveLength.Name = "textBoxWaveLength";
+            textBoxWaveLength.ReadOnly = true;
+            toolTip.SetToolTip(textBoxWaveLength, resources.GetString("textBoxWaveLength.ToolTip"));
+            // 
+            // label67
+            // 
+            resources.ApplyResources(label67, "label67");
+            label67.Name = "label67";
+            toolTip.SetToolTip(label67, resources.GetString("label67.ToolTip"));
+            // 
+            // numericBoxCamaraLength
+            // 
+            numericBoxCamaraLength.BackColor = System.Drawing.Color.Transparent;
+            numericBoxCamaraLength.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCamaraLength, "numericBoxCamaraLength");
+            numericBoxCamaraLength.Maximum = 10000D;
+            numericBoxCamaraLength.Minimum = 1D;
+            numericBoxCamaraLength.Name = "numericBoxCamaraLength";
+            numericBoxCamaraLength.ShowUpDown = true;
+            numericBoxCamaraLength.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCamaraLength, resources.GetString("numericBoxCamaraLength.ToolTip"));
+            numericBoxCamaraLength.UpDown_Increment = 10D;
+            numericBoxCamaraLength.Value = 1000D;
+            numericBoxCamaraLength.ValueBoxWidth = 64;
+            numericBoxCamaraLength.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxCamaraLength.ValueChanged += textBox_TextChanged;
+            // 
+            // numericBoxAccVol
+            // 
+            numericBoxAccVol.BackColor = System.Drawing.Color.Transparent;
+            numericBoxAccVol.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
+            numericBoxAccVol.Maximum = 10000D;
+            numericBoxAccVol.Minimum = 1D;
+            numericBoxAccVol.Name = "numericBoxAccVol";
+            numericBoxAccVol.ShowUpDown = true;
+            numericBoxAccVol.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
+            numericBoxAccVol.Value = 200D;
+            numericBoxAccVol.ValueBoxWidth = 45;
+            numericBoxAccVol.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAccVol.ValueChanged += numericBoxAccVol_ValueChanged;
+            // 
+            // numericBoxP1Tilt2
+            // 
+            numericBoxP1Tilt2.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP1Tilt2, "numericBoxP1Tilt2");
+            numericBoxP1Tilt2.Name = "numericBoxP1Tilt2";
+            numericBoxP1Tilt2.SkipEventDuringInput = false;
+            numericBoxP1Tilt2.SmartIncrement = true;
+            numericBoxP1Tilt2.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP1Tilt2, resources.GetString("numericBoxP1Tilt2.ToolTip"));
+            numericBoxP1Tilt2.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // numericBoxP1Tilt1
+            // 
+            numericBoxP1Tilt1.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP1Tilt1, "numericBoxP1Tilt1");
+            numericBoxP1Tilt1.Name = "numericBoxP1Tilt1";
+            numericBoxP1Tilt1.SkipEventDuringInput = false;
+            numericBoxP1Tilt1.SmartIncrement = true;
+            numericBoxP1Tilt1.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP1Tilt1, resources.GetString("numericBoxP1Tilt1.ToolTip"));
+            numericBoxP1Tilt1.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
+            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            // 
+            // numericBoxPhoto1Tilt1Err
+            // 
+            numericBoxPhoto1Tilt1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1Tilt1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1Tilt1Err, "numericBoxPhoto1Tilt1Err");
+            numericBoxPhoto1Tilt1Err.Maximum = 10D;
+            numericBoxPhoto1Tilt1Err.Minimum = 0D;
+            numericBoxPhoto1Tilt1Err.Name = "numericBoxPhoto1Tilt1Err";
+            numericBoxPhoto1Tilt1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1Tilt1Err, resources.GetString("numericBoxPhoto1Tilt1Err.ToolTip"));
+            numericBoxPhoto1Tilt1Err.Value = 3D;
+            numericBoxPhoto1Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto1Tilt2Err
+            // 
+            numericBoxPhoto1Tilt2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto1Tilt2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto1Tilt2Err, "numericBoxPhoto1Tilt2Err");
+            numericBoxPhoto1Tilt2Err.Maximum = 10D;
+            numericBoxPhoto1Tilt2Err.Minimum = 0D;
+            numericBoxPhoto1Tilt2Err.Name = "numericBoxPhoto1Tilt2Err";
+            numericBoxPhoto1Tilt2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto1Tilt2Err, resources.GetString("numericBoxPhoto1Tilt2Err.ToolTip"));
+            numericBoxPhoto1Tilt2Err.Value = 3D;
+            numericBoxPhoto1Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxAngleBetween12
+            // 
+            resources.ApplyResources(textBoxAngleBetween12, "textBoxAngleBetween12");
+            textBoxAngleBetween12.Name = "textBoxAngleBetween12";
+            textBoxAngleBetween12.ReadOnly = true;
+            textBoxAngleBetween12.TabStop = false;
+            toolTip.SetToolTip(textBoxAngleBetween12, resources.GetString("textBoxAngleBetween12.ToolTip"));
+            // 
+            // textBoxAngleBetween31
+            // 
+            resources.ApplyResources(textBoxAngleBetween31, "textBoxAngleBetween31");
+            textBoxAngleBetween31.Name = "textBoxAngleBetween31";
+            textBoxAngleBetween31.ReadOnly = true;
+            textBoxAngleBetween31.TabStop = false;
+            toolTip.SetToolTip(textBoxAngleBetween31, resources.GetString("textBoxAngleBetween31.ToolTip"));
+            // 
+            // textBoxAngleBetween23
+            // 
+            resources.ApplyResources(textBoxAngleBetween23, "textBoxAngleBetween23");
+            textBoxAngleBetween23.Name = "textBoxAngleBetween23";
+            textBoxAngleBetween23.ReadOnly = true;
+            textBoxAngleBetween23.TabStop = false;
+            toolTip.SetToolTip(textBoxAngleBetween23, resources.GetString("textBoxAngleBetween23.ToolTip"));
+            // 
+            // buttonSearchPhoto2
+            // 
+            buttonSearchPhoto2.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonSearchPhoto2, "buttonSearchPhoto2");
+            buttonSearchPhoto2.ForeColor = System.Drawing.Color.White;
+            buttonSearchPhoto2.Name = "buttonSearchPhoto2";
+            toolTip.SetToolTip(buttonSearchPhoto2, resources.GetString("buttonSearchPhoto2.ToolTip"));
+            buttonSearchPhoto2.UseVisualStyleBackColor = false;
+            buttonSearchPhoto2.Click += buttonSearch_Click;
+            // 
+            // numericBoxP2Theta
+            // 
+            numericBoxP2Theta.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP2Theta, "numericBoxP2Theta");
+            numericBoxP2Theta.Name = "numericBoxP2Theta";
+            numericBoxP2Theta.SkipEventDuringInput = false;
+            numericBoxP2Theta.SmartIncrement = true;
+            numericBoxP2Theta.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP2Theta, resources.GetString("numericBoxP2Theta.ToolTip"));
+            numericBoxP2Theta.ValueChanged += textBox_TextChanged;
+            numericBoxP2Theta.Click2 += numericBoxP2Theta_Click2;
+            // 
+            // radioButtonPhoto2Mode2
+            // 
+            resources.ApplyResources(radioButtonPhoto2Mode2, "radioButtonPhoto2Mode2");
+            radioButtonPhoto2Mode2.Name = "radioButtonPhoto2Mode2";
+            toolTip.SetToolTip(radioButtonPhoto2Mode2, resources.GetString("radioButtonPhoto2Mode2.ToolTip"));
+            radioButtonPhoto2Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
+            // 
+            // radioButtonPhoto2Mode1
+            // 
+            resources.ApplyResources(radioButtonPhoto2Mode1, "radioButtonPhoto2Mode1");
+            radioButtonPhoto2Mode1.Checked = true;
+            radioButtonPhoto2Mode1.Name = "radioButtonPhoto2Mode1";
+            radioButtonPhoto2Mode1.TabStop = true;
+            toolTip.SetToolTip(radioButtonPhoto2Mode1, resources.GetString("radioButtonPhoto2Mode1.ToolTip"));
+            // 
+            // numericBoxPhoto2L1Err
+            // 
+            numericBoxPhoto2L1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2L1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2L1Err, "numericBoxPhoto2L1Err");
+            numericBoxPhoto2L1Err.Maximum = 50D;
+            numericBoxPhoto2L1Err.Minimum = 0D;
+            numericBoxPhoto2L1Err.Name = "numericBoxPhoto2L1Err";
+            numericBoxPhoto2L1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2L1Err, resources.GetString("numericBoxPhoto2L1Err.ToolTip"));
+            numericBoxPhoto2L1Err.Value = 5D;
+            numericBoxPhoto2L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto2L2Err
+            // 
+            numericBoxPhoto2L2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2L2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2L2Err, "numericBoxPhoto2L2Err");
+            numericBoxPhoto2L2Err.Maximum = 50D;
+            numericBoxPhoto2L2Err.Minimum = 0D;
+            numericBoxPhoto2L2Err.Name = "numericBoxPhoto2L2Err";
+            numericBoxPhoto2L2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2L2Err, resources.GetString("numericBoxPhoto2L2Err.ToolTip"));
+            numericBoxPhoto2L2Err.Value = 5D;
+            numericBoxPhoto2L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto2ThetaErr
+            // 
+            numericBoxPhoto2ThetaErr.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2ThetaErr.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2ThetaErr, "numericBoxPhoto2ThetaErr");
+            numericBoxPhoto2ThetaErr.Maximum = 30D;
+            numericBoxPhoto2ThetaErr.Minimum = 0D;
+            numericBoxPhoto2ThetaErr.Name = "numericBoxPhoto2ThetaErr";
+            numericBoxPhoto2ThetaErr.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2ThetaErr, resources.GetString("numericBoxPhoto2ThetaErr.ToolTip"));
+            numericBoxPhoto2ThetaErr.Value = 3D;
+            numericBoxPhoto2ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(label22, "label22");
+            label22.Name = "label22";
+            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
+            // 
+            // label23
+            // 
+            resources.ApplyResources(label23, "label23");
+            label23.Name = "label23";
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
+            // 
+            // label24
+            // 
+            resources.ApplyResources(label24, "label24");
+            label24.Name = "label24";
+            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
+            // 
+            // numericBoxPhoto2L3Err
+            // 
+            numericBoxPhoto2L3Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2L3Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2L3Err, "numericBoxPhoto2L3Err");
+            numericBoxPhoto2L3Err.Maximum = 50D;
+            numericBoxPhoto2L3Err.Minimum = 0D;
+            numericBoxPhoto2L3Err.Name = "numericBoxPhoto2L3Err";
+            numericBoxPhoto2L3Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2L3Err, resources.GetString("numericBoxPhoto2L3Err.ToolTip"));
+            numericBoxPhoto2L3Err.Value = 5D;
+            numericBoxPhoto2L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label26
+            // 
+            resources.ApplyResources(label26, "label26");
+            label26.Name = "label26";
+            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip"));
+            // 
+            // label27
+            // 
+            resources.ApplyResources(label27, "label27");
+            label27.Name = "label27";
+            toolTip.SetToolTip(label27, resources.GetString("label27.ToolTip"));
+            // 
+            // label28
+            // 
+            resources.ApplyResources(label28, "label28");
+            label28.Name = "label28";
+            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip"));
+            // 
+            // label29
+            // 
+            resources.ApplyResources(label29, "label29");
+            label29.Name = "label29";
+            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip"));
+            // 
+            // label30
+            // 
+            resources.ApplyResources(label30, "label30");
+            label30.Name = "label30";
+            toolTip.SetToolTip(label30, resources.GetString("label30.ToolTip"));
+            // 
+            // label31
+            // 
+            resources.ApplyResources(label31, "label31");
+            label31.Name = "label31";
+            toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip"));
+            // 
+            // label79
+            // 
+            resources.ApplyResources(label79, "label79");
+            label79.Name = "label79";
+            toolTip.SetToolTip(label79, resources.GetString("label79.ToolTip"));
+            // 
+            // label76
+            // 
+            resources.ApplyResources(label76, "label76");
+            label76.Name = "label76";
+            toolTip.SetToolTip(label76, resources.GetString("label76.ToolTip"));
+            // 
+            // label77
+            // 
+            resources.ApplyResources(label77, "label77");
+            label77.Name = "label77";
+            toolTip.SetToolTip(label77, resources.GetString("label77.ToolTip"));
+            // 
+            // label78
+            // 
+            resources.ApplyResources(label78, "label78");
+            label78.Name = "label78";
+            toolTip.SetToolTip(label78, resources.GetString("label78.ToolTip"));
+            // 
+            // numericBoxP2Tilt2
+            // 
+            numericBoxP2Tilt2.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP2Tilt2, "numericBoxP2Tilt2");
+            numericBoxP2Tilt2.Name = "numericBoxP2Tilt2";
+            numericBoxP2Tilt2.SkipEventDuringInput = false;
+            numericBoxP2Tilt2.SmartIncrement = true;
+            numericBoxP2Tilt2.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP2Tilt2, resources.GetString("numericBoxP2Tilt2.ToolTip"));
+            numericBoxP2Tilt2.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // numericBoxP2Tilt1
+            // 
+            numericBoxP2Tilt1.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP2Tilt1, "numericBoxP2Tilt1");
+            numericBoxP2Tilt1.Name = "numericBoxP2Tilt1";
+            numericBoxP2Tilt1.SkipEventDuringInput = false;
+            numericBoxP2Tilt1.SmartIncrement = true;
+            numericBoxP2Tilt1.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP2Tilt1, resources.GetString("numericBoxP2Tilt1.ToolTip"));
+            numericBoxP2Tilt1.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            // 
+            // numericBoxPhoto2Tilt1Err
+            // 
+            numericBoxPhoto2Tilt1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2Tilt1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2Tilt1Err, "numericBoxPhoto2Tilt1Err");
+            numericBoxPhoto2Tilt1Err.Maximum = 10D;
+            numericBoxPhoto2Tilt1Err.Minimum = 0D;
+            numericBoxPhoto2Tilt1Err.Name = "numericBoxPhoto2Tilt1Err";
+            numericBoxPhoto2Tilt1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2Tilt1Err, resources.GetString("numericBoxPhoto2Tilt1Err.ToolTip"));
+            numericBoxPhoto2Tilt1Err.Value = 3D;
+            numericBoxPhoto2Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto2Tilt2Err
+            // 
+            numericBoxPhoto2Tilt2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto2Tilt2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto2Tilt2Err, "numericBoxPhoto2Tilt2Err");
+            numericBoxPhoto2Tilt2Err.Maximum = 10D;
+            numericBoxPhoto2Tilt2Err.Minimum = 0D;
+            numericBoxPhoto2Tilt2Err.Name = "numericBoxPhoto2Tilt2Err";
+            numericBoxPhoto2Tilt2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto2Tilt2Err, resources.GetString("numericBoxPhoto2Tilt2Err.ToolTip"));
+            numericBoxPhoto2Tilt2Err.Value = 3D;
+            numericBoxPhoto2Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxP3Theta
+            // 
+            numericBoxP3Theta.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP3Theta, "numericBoxP3Theta");
+            numericBoxP3Theta.Name = "numericBoxP3Theta";
+            numericBoxP3Theta.SkipEventDuringInput = false;
+            numericBoxP3Theta.SmartIncrement = true;
+            numericBoxP3Theta.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP3Theta, resources.GetString("numericBoxP3Theta.ToolTip"));
+            numericBoxP3Theta.ValueChanged += textBox_TextChanged;
+            numericBoxP3Theta.Click2 += numericBoxP3Theta_Click2;
+            // 
+            // buttonSearchPhoto3
+            // 
+            buttonSearchPhoto3.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonSearchPhoto3, "buttonSearchPhoto3");
+            buttonSearchPhoto3.ForeColor = System.Drawing.Color.White;
+            buttonSearchPhoto3.Name = "buttonSearchPhoto3";
+            toolTip.SetToolTip(buttonSearchPhoto3, resources.GetString("buttonSearchPhoto3.ToolTip"));
+            buttonSearchPhoto3.UseVisualStyleBackColor = false;
+            buttonSearchPhoto3.Click += buttonSearch_Click;
+            // 
+            // radioButtonPhoto3Mode2
+            // 
+            resources.ApplyResources(radioButtonPhoto3Mode2, "radioButtonPhoto3Mode2");
+            radioButtonPhoto3Mode2.Name = "radioButtonPhoto3Mode2";
+            toolTip.SetToolTip(radioButtonPhoto3Mode2, resources.GetString("radioButtonPhoto3Mode2.ToolTip"));
+            radioButtonPhoto3Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
+            // 
+            // radioButtonPhoto3Mode1
+            // 
+            resources.ApplyResources(radioButtonPhoto3Mode1, "radioButtonPhoto3Mode1");
+            radioButtonPhoto3Mode1.Checked = true;
+            radioButtonPhoto3Mode1.Name = "radioButtonPhoto3Mode1";
+            radioButtonPhoto3Mode1.TabStop = true;
+            toolTip.SetToolTip(radioButtonPhoto3Mode1, resources.GetString("radioButtonPhoto3Mode1.ToolTip"));
+            // 
+            // numericBoxPhoto3L1Err
+            // 
+            numericBoxPhoto3L1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3L1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3L1Err, "numericBoxPhoto3L1Err");
+            numericBoxPhoto3L1Err.Maximum = 50D;
+            numericBoxPhoto3L1Err.Minimum = 0D;
+            numericBoxPhoto3L1Err.Name = "numericBoxPhoto3L1Err";
+            numericBoxPhoto3L1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3L1Err, resources.GetString("numericBoxPhoto3L1Err.ToolTip"));
+            numericBoxPhoto3L1Err.Value = 5D;
+            numericBoxPhoto3L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto3L2Err
+            // 
+            numericBoxPhoto3L2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3L2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3L2Err, "numericBoxPhoto3L2Err");
+            numericBoxPhoto3L2Err.Maximum = 50D;
+            numericBoxPhoto3L2Err.Minimum = 0D;
+            numericBoxPhoto3L2Err.Name = "numericBoxPhoto3L2Err";
+            numericBoxPhoto3L2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3L2Err, resources.GetString("numericBoxPhoto3L2Err.ToolTip"));
+            numericBoxPhoto3L2Err.Value = 5D;
+            numericBoxPhoto3L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto3ThetaErr
+            // 
+            numericBoxPhoto3ThetaErr.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3ThetaErr.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3ThetaErr, "numericBoxPhoto3ThetaErr");
+            numericBoxPhoto3ThetaErr.Maximum = 30D;
+            numericBoxPhoto3ThetaErr.Minimum = 0D;
+            numericBoxPhoto3ThetaErr.Name = "numericBoxPhoto3ThetaErr";
+            numericBoxPhoto3ThetaErr.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3ThetaErr, resources.GetString("numericBoxPhoto3ThetaErr.ToolTip"));
+            numericBoxPhoto3ThetaErr.Value = 3D;
+            numericBoxPhoto3ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto3L3Err
+            // 
+            numericBoxPhoto3L3Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3L3Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3L3Err, "numericBoxPhoto3L3Err");
+            numericBoxPhoto3L3Err.Maximum = 50D;
+            numericBoxPhoto3L3Err.Minimum = 0D;
+            numericBoxPhoto3L3Err.Name = "numericBoxPhoto3L3Err";
+            numericBoxPhoto3L3Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3L3Err, resources.GetString("numericBoxPhoto3L3Err.ToolTip"));
+            numericBoxPhoto3L3Err.Value = 5D;
+            numericBoxPhoto3L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label47
+            // 
+            resources.ApplyResources(label47, "label47");
+            label47.Name = "label47";
+            toolTip.SetToolTip(label47, resources.GetString("label47.ToolTip"));
+            // 
+            // label52
+            // 
+            resources.ApplyResources(label52, "label52");
+            label52.Name = "label52";
+            toolTip.SetToolTip(label52, resources.GetString("label52.ToolTip"));
+            // 
+            // label55
+            // 
+            resources.ApplyResources(label55, "label55");
+            label55.Name = "label55";
+            toolTip.SetToolTip(label55, resources.GetString("label55.ToolTip"));
+            // 
+            // label56
+            // 
+            resources.ApplyResources(label56, "label56");
+            label56.Name = "label56";
+            toolTip.SetToolTip(label56, resources.GetString("label56.ToolTip"));
+            // 
+            // numericBoxP3Tilt2
+            // 
+            numericBoxP3Tilt2.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP3Tilt2, "numericBoxP3Tilt2");
+            numericBoxP3Tilt2.Name = "numericBoxP3Tilt2";
+            numericBoxP3Tilt2.SkipEventDuringInput = false;
+            numericBoxP3Tilt2.SmartIncrement = true;
+            numericBoxP3Tilt2.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP3Tilt2, resources.GetString("numericBoxP3Tilt2.ToolTip"));
+            numericBoxP3Tilt2.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // label34
+            // 
+            resources.ApplyResources(label34, "label34");
+            label34.Name = "label34";
+            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
+            // 
+            // numericBoxP3Tilt1
+            // 
+            numericBoxP3Tilt1.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxP3Tilt1, "numericBoxP3Tilt1");
+            numericBoxP3Tilt1.Name = "numericBoxP3Tilt1";
+            numericBoxP3Tilt1.SkipEventDuringInput = false;
+            numericBoxP3Tilt1.SmartIncrement = true;
+            numericBoxP3Tilt1.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxP3Tilt1, resources.GetString("numericBoxP3Tilt1.ToolTip"));
+            numericBoxP3Tilt1.ValueChanged += textBoxTilt_TextChanged;
+            // 
+            // label35
+            // 
+            resources.ApplyResources(label35, "label35");
+            label35.Name = "label35";
+            toolTip.SetToolTip(label35, resources.GetString("label35.ToolTip"));
+            // 
+            // numericBoxPhoto3Tilt1Err
+            // 
+            numericBoxPhoto3Tilt1Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3Tilt1Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3Tilt1Err, "numericBoxPhoto3Tilt1Err");
+            numericBoxPhoto3Tilt1Err.Maximum = 10D;
+            numericBoxPhoto3Tilt1Err.Minimum = 0D;
+            numericBoxPhoto3Tilt1Err.Name = "numericBoxPhoto3Tilt1Err";
+            numericBoxPhoto3Tilt1Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3Tilt1Err, resources.GetString("numericBoxPhoto3Tilt1Err.ToolTip"));
+            numericBoxPhoto3Tilt1Err.Value = 3D;
+            numericBoxPhoto3Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericBoxPhoto3Tilt2Err
+            // 
+            numericBoxPhoto3Tilt2Err.BackColor = System.Drawing.Color.Transparent;
+            numericBoxPhoto3Tilt2Err.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxPhoto3Tilt2Err, "numericBoxPhoto3Tilt2Err");
+            numericBoxPhoto3Tilt2Err.Maximum = 10D;
+            numericBoxPhoto3Tilt2Err.Minimum = 0D;
+            numericBoxPhoto3Tilt2Err.Name = "numericBoxPhoto3Tilt2Err";
+            numericBoxPhoto3Tilt2Err.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxPhoto3Tilt2Err, resources.GetString("numericBoxPhoto3Tilt2Err.ToolTip"));
+            numericBoxPhoto3Tilt2Err.Value = 3D;
+            numericBoxPhoto3Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBoxPhoto2
+            // 
+            resources.ApplyResources(checkBoxPhoto2, "checkBoxPhoto2");
+            checkBoxPhoto2.Name = "checkBoxPhoto2";
+            toolTip.SetToolTip(checkBoxPhoto2, resources.GetString("checkBoxPhoto2.ToolTip"));
+            checkBoxPhoto2.UseVisualStyleBackColor = true;
+            checkBoxPhoto2.CheckedChanged += checkBoxPhoto2_CheckedChanged;
+            // 
+            // checkBoxPhoto3
+            // 
+            resources.ApplyResources(checkBoxPhoto3, "checkBoxPhoto3");
+            checkBoxPhoto3.Name = "checkBoxPhoto3";
+            toolTip.SetToolTip(checkBoxPhoto3, resources.GetString("checkBoxPhoto3.ToolTip"));
+            checkBoxPhoto3.UseVisualStyleBackColor = true;
+            checkBoxPhoto3.CheckedChanged += checkBoxPhoto2_CheckedChanged;
+            // 
+            // checkBoxEquivalentPhoto1L1Photo2L1
+            // 
+            resources.ApplyResources(checkBoxEquivalentPhoto1L1Photo2L1, "checkBoxEquivalentPhoto1L1Photo2L1");
+            checkBoxEquivalentPhoto1L1Photo2L1.Name = "checkBoxEquivalentPhoto1L1Photo2L1";
+            toolTip.SetToolTip(checkBoxEquivalentPhoto1L1Photo2L1, resources.GetString("checkBoxEquivalentPhoto1L1Photo2L1.ToolTip"));
+            checkBoxEquivalentPhoto1L1Photo2L1.UseVisualStyleBackColor = true;
+            checkBoxEquivalentPhoto1L1Photo2L1.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
+            // 
+            // checkBoxEquivalentPhoto2L1Photo3L1
+            // 
+            resources.ApplyResources(checkBoxEquivalentPhoto2L1Photo3L1, "checkBoxEquivalentPhoto2L1Photo3L1");
+            checkBoxEquivalentPhoto2L1Photo3L1.Name = "checkBoxEquivalentPhoto2L1Photo3L1";
+            toolTip.SetToolTip(checkBoxEquivalentPhoto2L1Photo3L1, resources.GetString("checkBoxEquivalentPhoto2L1Photo3L1.ToolTip"));
+            checkBoxEquivalentPhoto2L1Photo3L1.UseVisualStyleBackColor = true;
+            checkBoxEquivalentPhoto2L1Photo3L1.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
+            // 
+            // checkBoxEquivalentPhoto2L2Photo3L2
+            // 
+            resources.ApplyResources(checkBoxEquivalentPhoto2L2Photo3L2, "checkBoxEquivalentPhoto2L2Photo3L2");
+            checkBoxEquivalentPhoto2L2Photo3L2.Name = "checkBoxEquivalentPhoto2L2Photo3L2";
+            toolTip.SetToolTip(checkBoxEquivalentPhoto2L2Photo3L2, resources.GetString("checkBoxEquivalentPhoto2L2Photo3L2.ToolTip"));
+            checkBoxEquivalentPhoto2L2Photo3L2.UseVisualStyleBackColor = true;
+            checkBoxEquivalentPhoto2L2Photo3L2.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
+            // 
+            // buttonSearchAll
+            // 
+            resources.ApplyResources(buttonSearchAll, "buttonSearchAll");
+            buttonSearchAll.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSearchAll.ForeColor = System.Drawing.Color.White;
+            buttonSearchAll.Name = "buttonSearchAll";
+            toolTip.SetToolTip(buttonSearchAll, resources.GetString("buttonSearchAll.ToolTip"));
+            buttonSearchAll.UseVisualStyleBackColor = false;
+            buttonSearchAll.Click += buttonSearchAll_Click;
+            // 
+            // checkBoxEquivalentPhoto1L2Photo2L2
+            // 
+            resources.ApplyResources(checkBoxEquivalentPhoto1L2Photo2L2, "checkBoxEquivalentPhoto1L2Photo2L2");
+            checkBoxEquivalentPhoto1L2Photo2L2.Name = "checkBoxEquivalentPhoto1L2Photo2L2";
+            toolTip.SetToolTip(checkBoxEquivalentPhoto1L2Photo2L2, resources.GetString("checkBoxEquivalentPhoto1L2Photo2L2.ToolTip"));
+            checkBoxEquivalentPhoto1L2Photo2L2.UseVisualStyleBackColor = true;
+            checkBoxEquivalentPhoto1L2Photo2L2.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
             // 
             // groupBoxPhoto1Pattern
             // 
@@ -244,28 +998,6 @@
             groupBoxPhoto1Pattern.Name = "groupBoxPhoto1Pattern";
             groupBoxPhoto1Pattern.TabStop = false;
             // 
-            // buttonSearchPhoto1
-            // 
-            resources.ApplyResources(buttonSearchPhoto1, "buttonSearchPhoto1");
-            toolTip.SetToolTip(buttonSearchPhoto1, resources.GetString("buttonSearchPhoto1.ToolTip")); // 260531Cl
-            buttonSearchPhoto1.Name = "buttonSearchPhoto1";
-            buttonSearchPhoto1.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            buttonSearchPhoto1.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            buttonSearchPhoto1.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            buttonSearchPhoto1.Click += buttonSearch_Click;
-            // 
-            // numericBoxP1Theta
-            // 
-            numericBoxP1Theta.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP1Theta, "numericBoxP1Theta");
-            toolTip.SetToolTip(numericBoxP1Theta, resources.GetString("numericBoxP1Theta.ToolTip")); // 260531Cl
-            numericBoxP1Theta.Name = "numericBoxP1Theta";
-            numericBoxP1Theta.SkipEventDuringInput = false;
-            numericBoxP1Theta.SmartIncrement = true;
-            numericBoxP1Theta.ThousandsSeparator = true;
-            numericBoxP1Theta.ValueChanged += textBox_TextChanged;
-            numericBoxP1Theta.Click2 += numericBoxP1Theta_Click2;
-            // 
             // pictureBoxPhoto1
             // 
             pictureBoxPhoto1.BackColor = System.Drawing.SystemColors.Window;
@@ -273,33 +1005,6 @@
             resources.ApplyResources(pictureBoxPhoto1, "pictureBoxPhoto1");
             pictureBoxPhoto1.Name = "pictureBoxPhoto1";
             pictureBoxPhoto1.TabStop = false;
-            // 
-            // radioButtonPhoto1Mode2
-            // 
-            resources.ApplyResources(radioButtonPhoto1Mode2, "radioButtonPhoto1Mode2");
-            toolTip.SetToolTip(radioButtonPhoto1Mode2, resources.GetString("radioButtonPhoto1Mode2.ToolTip")); // 260531Cl
-            radioButtonPhoto1Mode2.Name = "radioButtonPhoto1Mode2";
-            radioButtonPhoto1Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
-            // 
-            // radioButtonPhoto1Mode1
-            // 
-            resources.ApplyResources(radioButtonPhoto1Mode1, "radioButtonPhoto1Mode1");
-            toolTip.SetToolTip(radioButtonPhoto1Mode1, resources.GetString("radioButtonPhoto1Mode1.ToolTip")); // 260531Cl
-            radioButtonPhoto1Mode1.Checked = true;
-            radioButtonPhoto1Mode1.Name = "radioButtonPhoto1Mode1";
-            radioButtonPhoto1Mode1.TabStop = true;
-            // 
-            // numericBoxPhoto1L1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto1L1Err, "numericBoxPhoto1L1Err");
-            toolTip.SetToolTip(numericBoxPhoto1L1Err, resources.GetString("numericBoxPhoto1L1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto1L1Err.Maximum = 50D;
-            numericBoxPhoto1L1Err.Name = "numericBoxPhoto1L1Err";
-            numericBoxPhoto1L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center; // 260522Cl 追加: 旧 NumericUpDown.TextAlign=Center を ValueTextAlign で再現
-            numericBoxPhoto1L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定(Minimum=0,DecimalPlaces=0,スピンボタン表示)を保持
-            numericBoxPhoto1L1Err.DecimalPlaces = 0;
-            numericBoxPhoto1L1Err.ShowUpDown = true;
-            numericBoxPhoto1L1Err.Value = 5D;
             // 
             // inputBoxP1L3
             // 
@@ -311,18 +1016,6 @@
             inputBoxP1L3.ValueChanged += textBox_TextChanged;
             inputBoxP1L3.Click2 += inputBoxP1L3_Click;
             // 
-            // numericBoxPhoto1L2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto1L2Err, "numericBoxPhoto1L2Err");
-            toolTip.SetToolTip(numericBoxPhoto1L2Err, resources.GetString("numericBoxPhoto1L2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto1L2Err.Maximum = 50D;
-            numericBoxPhoto1L2Err.Name = "numericBoxPhoto1L2Err";
-            numericBoxPhoto1L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto1L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto1L2Err.DecimalPlaces = 0;
-            numericBoxPhoto1L2Err.ShowUpDown = true;
-            numericBoxPhoto1L2Err.Value = 5D;
-            // 
             // inputBoxP1L2
             // 
             resources.ApplyResources(inputBoxP1L2, "inputBoxP1L2");
@@ -331,18 +1024,6 @@
             inputBoxP1L2.Name = "inputBoxP1L2";
             inputBoxP1L2.WaveLength = 0D;
             inputBoxP1L2.ValueChanged += textBox_TextChanged;
-            // 
-            // numericBoxPhoto1ThetaErr
-            // 
-            resources.ApplyResources(numericBoxPhoto1ThetaErr, "numericBoxPhoto1ThetaErr");
-            toolTip.SetToolTip(numericBoxPhoto1ThetaErr, resources.GetString("numericBoxPhoto1ThetaErr.ToolTip")); // 260531Cl
-            numericBoxPhoto1ThetaErr.Maximum = 30D;
-            numericBoxPhoto1ThetaErr.Name = "numericBoxPhoto1ThetaErr";
-            numericBoxPhoto1ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto1ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto1ThetaErr.DecimalPlaces = 0;
-            numericBoxPhoto1ThetaErr.ShowUpDown = true;
-            numericBoxPhoto1ThetaErr.Value = 3D;
             // 
             // inputBoxP1L1
             // 
@@ -353,172 +1034,16 @@
             inputBoxP1L1.WaveLength = 0D;
             inputBoxP1L1.ValueChanged += textBox_TextChanged;
             // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
-            label4.Name = "label4";
-            // 
-            // labelPhoto1Mode1_4
-            // 
-            resources.ApplyResources(labelPhoto1Mode1_4, "labelPhoto1Mode1_4");
-            toolTip.SetToolTip(labelPhoto1Mode1_4, resources.GetString("labelPhoto1Mode1_4.ToolTip")); // 260531Cl
-            labelPhoto1Mode1_4.Name = "labelPhoto1Mode1_4";
-            // 
-            // label131
-            // 
-            resources.ApplyResources(label131, "label131");
-            toolTip.SetToolTip(label131, resources.GetString("label131.ToolTip")); // 260531Cl
-            label131.Name = "label131";
-            // 
-            // numericBoxPhoto1L3Err
-            // 
-            resources.ApplyResources(numericBoxPhoto1L3Err, "numericBoxPhoto1L3Err");
-            toolTip.SetToolTip(numericBoxPhoto1L3Err, resources.GetString("numericBoxPhoto1L3Err.ToolTip")); // 260531Cl
-            numericBoxPhoto1L3Err.Maximum = 50D;
-            numericBoxPhoto1L3Err.Name = "numericBoxPhoto1L3Err";
-            numericBoxPhoto1L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto1L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto1L3Err.DecimalPlaces = 0;
-            numericBoxPhoto1L3Err.ShowUpDown = true;
-            numericBoxPhoto1L3Err.Value = 5D;
-            // 
-            // labelPhoto1Mode2_6
-            // 
-            resources.ApplyResources(labelPhoto1Mode2_6, "labelPhoto1Mode2_6");
-            toolTip.SetToolTip(labelPhoto1Mode2_6, resources.GetString("labelPhoto1Mode2_6.ToolTip")); // 260531Cl
-            labelPhoto1Mode2_6.Name = "labelPhoto1Mode2_6";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(label20, "label20");
-            toolTip.SetToolTip(label20, resources.GetString("label20.ToolTip")); // 260531Cl
-            label20.Name = "label20";
-            // 
-            // labelPhoto1Mode1_1
-            // 
-            resources.ApplyResources(labelPhoto1Mode1_1, "labelPhoto1Mode1_1");
-            toolTip.SetToolTip(labelPhoto1Mode1_1, resources.GetString("labelPhoto1Mode1_1.ToolTip")); // 260531Cl
-            labelPhoto1Mode1_1.Name = "labelPhoto1Mode1_1";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(label12, "label12");
-            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
-            label12.Name = "label12";
-            // 
-            // label75
-            // 
-            resources.ApplyResources(label75, "label75");
-            toolTip.SetToolTip(label75, resources.GetString("label75.ToolTip")); // 260531Cl
-            label75.Name = "label75";
-            // 
-            // label71
-            // 
-            resources.ApplyResources(label71, "label71");
-            toolTip.SetToolTip(label71, resources.GetString("label71.ToolTip")); // 260531Cl
-            label71.Name = "label71";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(label11, "label11");
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
-            label11.Name = "label11";
-            // 
-            // label70
-            // 
-            resources.ApplyResources(label70, "label70");
-            toolTip.SetToolTip(label70, resources.GetString("label70.ToolTip")); // 260531Cl
-            label70.Name = "label70";
-            // 
-            // label69
-            // 
-            resources.ApplyResources(label69, "label69");
-            toolTip.SetToolTip(label69, resources.GetString("label69.ToolTip")); // 260531Cl
-            label69.Name = "label69";
-            // 
-            // labelPhoto1Mode1_3
-            // 
-            resources.ApplyResources(labelPhoto1Mode1_3, "labelPhoto1Mode1_3");
-            toolTip.SetToolTip(labelPhoto1Mode1_3, resources.GetString("labelPhoto1Mode1_3.ToolTip")); // 260531Cl
-            labelPhoto1Mode1_3.Name = "labelPhoto1Mode1_3";
-            // 
             // groupBoxTEMCondition
             // 
             groupBoxTEMCondition.Controls.Add(textBoxWaveLength);
             groupBoxTEMCondition.Controls.Add(label67);
             groupBoxTEMCondition.Controls.Add(numericBoxCamaraLength);
-            groupBoxTEMCondition.Controls.Add(label18);
-            groupBoxTEMCondition.Controls.Add(label15);
             groupBoxTEMCondition.Controls.Add(numericBoxAccVol);
-            groupBoxTEMCondition.Controls.Add(label19);
-            groupBoxTEMCondition.Controls.Add(label2);
             groupBoxTEMCondition.Controls.Add(label68);
             resources.ApplyResources(groupBoxTEMCondition, "groupBoxTEMCondition");
             groupBoxTEMCondition.Name = "groupBoxTEMCondition";
             groupBoxTEMCondition.TabStop = false;
-            // 
-            // textBoxWaveLength
-            // 
-            resources.ApplyResources(textBoxWaveLength, "textBoxWaveLength");
-            toolTip.SetToolTip(textBoxWaveLength, resources.GetString("textBoxWaveLength.ToolTip")); // 260531Cl
-            textBoxWaveLength.Name = "textBoxWaveLength";
-            textBoxWaveLength.ReadOnly = true;
-            // 
-            // label67
-            // 
-            resources.ApplyResources(label67, "label67");
-            toolTip.SetToolTip(label67, resources.GetString("label67.ToolTip")); // 260531Cl
-            label67.Name = "label67";
-            // 
-            // numericBoxCamaraLength
-            // 
-            numericBoxCamaraLength.DecimalPlaces = 2;
-            resources.ApplyResources(numericBoxCamaraLength, "numericBoxCamaraLength");
-            toolTip.SetToolTip(numericBoxCamaraLength, resources.GetString("numericBoxCamaraLength.ToolTip")); // 260531Cl
-            numericBoxCamaraLength.UpDown_Increment = 10D;
-            numericBoxCamaraLength.Maximum = 10000D;
-            numericBoxCamaraLength.Minimum = 1D;
-            numericBoxCamaraLength.Name = "numericBoxCamaraLength";
-            numericBoxCamaraLength.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxCamaraLength.ShowUpDown = true; // 260522Cl 変更: NumericUpDown → NumericBox (スピンボタン表示を保持)
-            numericBoxCamaraLength.Value = 1000D;
-            numericBoxCamaraLength.ValueChanged += textBox_TextChanged;
-            // 
-            // label18
-            // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(label15, "label15");
-            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip")); // 260531Cl
-            label15.Name = "label15";
-            // 
-            // numericBoxAccVol
-            // 
-            numericBoxAccVol.DecimalPlaces = 2;
-            resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
-            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip")); // 260531Cl
-            numericBoxAccVol.Maximum = 10000D;
-            numericBoxAccVol.Minimum = 1D;
-            numericBoxAccVol.Name = "numericBoxAccVol";
-            numericBoxAccVol.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxAccVol.ShowUpDown = true; // 260522Cl 追加: スピンボタン表示を保持
-            numericBoxAccVol.Value = 200D;
-            numericBoxAccVol.ValueChanged += numericBoxAccVol_ValueChanged;
-            // 
-            // label19
-            // 
-            resources.ApplyResources(label19, "label19");
-            label19.Name = "label19";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
-            label2.Name = "label2";
             // 
             // label68
             // 
@@ -551,68 +1076,10 @@
             groupBoxPhoto1HolderCondition.Name = "groupBoxPhoto1HolderCondition";
             groupBoxPhoto1HolderCondition.TabStop = false;
             // 
-            // numericBoxP1Tilt2
-            // 
-            numericBoxP1Tilt2.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP1Tilt2, "numericBoxP1Tilt2");
-            toolTip.SetToolTip(numericBoxP1Tilt2, resources.GetString("numericBoxP1Tilt2.ToolTip")); // 260531Cl
-            numericBoxP1Tilt2.Name = "numericBoxP1Tilt2";
-            numericBoxP1Tilt2.SkipEventDuringInput = false;
-            numericBoxP1Tilt2.SmartIncrement = true;
-            numericBoxP1Tilt2.ThousandsSeparator = true;
-            numericBoxP1Tilt2.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // numericBoxP1Tilt1
-            // 
-            numericBoxP1Tilt1.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP1Tilt1, "numericBoxP1Tilt1");
-            toolTip.SetToolTip(numericBoxP1Tilt1, resources.GetString("numericBoxP1Tilt1.ToolTip")); // 260531Cl
-            numericBoxP1Tilt1.Name = "numericBoxP1Tilt1";
-            numericBoxP1Tilt1.SkipEventDuringInput = false;
-            numericBoxP1Tilt1.SmartIncrement = true;
-            numericBoxP1Tilt1.ThousandsSeparator = true;
-            numericBoxP1Tilt1.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // label14
-            // 
-            resources.ApplyResources(label14, "label14");
-            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip")); // 260531Cl
-            label14.Name = "label14";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
-            label1.Name = "label1";
-            // 
-            // numericBoxPhoto1Tilt1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto1Tilt1Err, "numericBoxPhoto1Tilt1Err");
-            toolTip.SetToolTip(numericBoxPhoto1Tilt1Err, resources.GetString("numericBoxPhoto1Tilt1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto1Tilt1Err.Maximum = 10D;
-            numericBoxPhoto1Tilt1Err.Name = "numericBoxPhoto1Tilt1Err";
-            numericBoxPhoto1Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto1Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto1Tilt1Err.DecimalPlaces = 0;
-            numericBoxPhoto1Tilt1Err.ShowUpDown = true;
-            numericBoxPhoto1Tilt1Err.Value = 3D;
-            // 
             // label48
             // 
             resources.ApplyResources(label48, "label48");
             label48.Name = "label48";
-            // 
-            // numericBoxPhoto1Tilt2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto1Tilt2Err, "numericBoxPhoto1Tilt2Err");
-            toolTip.SetToolTip(numericBoxPhoto1Tilt2Err, resources.GetString("numericBoxPhoto1Tilt2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto1Tilt2Err.Maximum = 10D;
-            numericBoxPhoto1Tilt2Err.Name = "numericBoxPhoto1Tilt2Err";
-            numericBoxPhoto1Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto1Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto1Tilt2Err.DecimalPlaces = 0;
-            numericBoxPhoto1Tilt2Err.ShowUpDown = true;
-            numericBoxPhoto1Tilt2Err.Value = 3D;
             // 
             // label49
             // 
@@ -651,34 +1118,10 @@
             resources.ApplyResources(label59, "label59");
             label59.Name = "label59";
             // 
-            // textBoxAngleBetween12
-            // 
-            resources.ApplyResources(textBoxAngleBetween12, "textBoxAngleBetween12");
-            toolTip.SetToolTip(textBoxAngleBetween12, resources.GetString("textBoxAngleBetween12.ToolTip")); // 260531Cl
-            textBoxAngleBetween12.Name = "textBoxAngleBetween12";
-            textBoxAngleBetween12.ReadOnly = true;
-            textBoxAngleBetween12.TabStop = false;
-            // 
-            // textBoxAngleBetween31
-            // 
-            resources.ApplyResources(textBoxAngleBetween31, "textBoxAngleBetween31");
-            toolTip.SetToolTip(textBoxAngleBetween31, resources.GetString("textBoxAngleBetween31.ToolTip")); // 260531Cl
-            textBoxAngleBetween31.Name = "textBoxAngleBetween31";
-            textBoxAngleBetween31.ReadOnly = true;
-            textBoxAngleBetween31.TabStop = false;
-            // 
             // label176
             // 
             resources.ApplyResources(label176, "label176");
             label176.Name = "label176";
-            // 
-            // textBoxAngleBetween23
-            // 
-            resources.ApplyResources(textBoxAngleBetween23, "textBoxAngleBetween23");
-            toolTip.SetToolTip(textBoxAngleBetween23, resources.GetString("textBoxAngleBetween23.ToolTip")); // 260531Cl
-            textBoxAngleBetween23.Name = "textBoxAngleBetween23";
-            textBoxAngleBetween23.ReadOnly = true;
-            textBoxAngleBetween23.TabStop = false;
             // 
             // panel2
             // 
@@ -727,28 +1170,6 @@
             groupBoxPhoto2Pattern.Name = "groupBoxPhoto2Pattern";
             groupBoxPhoto2Pattern.TabStop = false;
             // 
-            // buttonSearchPhoto2
-            // 
-            resources.ApplyResources(buttonSearchPhoto2, "buttonSearchPhoto2");
-            toolTip.SetToolTip(buttonSearchPhoto2, resources.GetString("buttonSearchPhoto2.ToolTip")); // 260531Cl
-            buttonSearchPhoto2.Name = "buttonSearchPhoto2";
-            buttonSearchPhoto2.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            buttonSearchPhoto2.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            buttonSearchPhoto2.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            buttonSearchPhoto2.Click += buttonSearch_Click;
-            // 
-            // numericBoxP2Theta
-            // 
-            numericBoxP2Theta.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP2Theta, "numericBoxP2Theta");
-            toolTip.SetToolTip(numericBoxP2Theta, resources.GetString("numericBoxP2Theta.ToolTip")); // 260531Cl
-            numericBoxP2Theta.Name = "numericBoxP2Theta";
-            numericBoxP2Theta.SkipEventDuringInput = false;
-            numericBoxP2Theta.SmartIncrement = true;
-            numericBoxP2Theta.ThousandsSeparator = true;
-            numericBoxP2Theta.ValueChanged += textBox_TextChanged;
-            numericBoxP2Theta.Click2 += numericBoxP2Theta_Click2;
-            // 
             // pictureBoxPhoto2
             // 
             pictureBoxPhoto2.BackColor = System.Drawing.SystemColors.Window;
@@ -767,13 +1188,6 @@
             inputBoxP2L3.ValueChanged += textBox_TextChanged;
             inputBoxP2L3.Click2 += inputBoxP2L3_Click2;
             // 
-            // radioButtonPhoto2Mode2
-            // 
-            resources.ApplyResources(radioButtonPhoto2Mode2, "radioButtonPhoto2Mode2");
-            toolTip.SetToolTip(radioButtonPhoto2Mode2, resources.GetString("radioButtonPhoto2Mode2.ToolTip")); // 260531Cl
-            radioButtonPhoto2Mode2.Name = "radioButtonPhoto2Mode2";
-            radioButtonPhoto2Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
-            // 
             // inputBoxP2L2
             // 
             resources.ApplyResources(inputBoxP2L2, "inputBoxP2L2");
@@ -783,14 +1197,6 @@
             inputBoxP2L2.WaveLength = 0D;
             inputBoxP2L2.ValueChanged += textBox_TextChanged;
             // 
-            // radioButtonPhoto2Mode1
-            // 
-            resources.ApplyResources(radioButtonPhoto2Mode1, "radioButtonPhoto2Mode1");
-            toolTip.SetToolTip(radioButtonPhoto2Mode1, resources.GetString("radioButtonPhoto2Mode1.ToolTip")); // 260531Cl
-            radioButtonPhoto2Mode1.Checked = true;
-            radioButtonPhoto2Mode1.Name = "radioButtonPhoto2Mode1";
-            radioButtonPhoto2Mode1.TabStop = true;
-            // 
             // inputBoxP2L1
             // 
             resources.ApplyResources(inputBoxP2L1, "inputBoxP2L1");
@@ -799,132 +1205,6 @@
             inputBoxP2L1.Name = "inputBoxP2L1";
             inputBoxP2L1.WaveLength = 0D;
             inputBoxP2L1.ValueChanged += textBox_TextChanged;
-            // 
-            // numericBoxPhoto2L1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto2L1Err, "numericBoxPhoto2L1Err");
-            toolTip.SetToolTip(numericBoxPhoto2L1Err, resources.GetString("numericBoxPhoto2L1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto2L1Err.Maximum = 50D;
-            numericBoxPhoto2L1Err.Name = "numericBoxPhoto2L1Err";
-            numericBoxPhoto2L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2L1Err.DecimalPlaces = 0;
-            numericBoxPhoto2L1Err.ShowUpDown = true;
-            numericBoxPhoto2L1Err.Value = 5D;
-            // 
-            // numericBoxPhoto2L2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto2L2Err, "numericBoxPhoto2L2Err");
-            toolTip.SetToolTip(numericBoxPhoto2L2Err, resources.GetString("numericBoxPhoto2L2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto2L2Err.Maximum = 50D;
-            numericBoxPhoto2L2Err.Name = "numericBoxPhoto2L2Err";
-            numericBoxPhoto2L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2L2Err.DecimalPlaces = 0;
-            numericBoxPhoto2L2Err.ShowUpDown = true;
-            numericBoxPhoto2L2Err.Value = 5D;
-            // 
-            // numericBoxPhoto2ThetaErr
-            // 
-            resources.ApplyResources(numericBoxPhoto2ThetaErr, "numericBoxPhoto2ThetaErr");
-            toolTip.SetToolTip(numericBoxPhoto2ThetaErr, resources.GetString("numericBoxPhoto2ThetaErr.ToolTip")); // 260531Cl
-            numericBoxPhoto2ThetaErr.Maximum = 30D;
-            numericBoxPhoto2ThetaErr.Name = "numericBoxPhoto2ThetaErr";
-            numericBoxPhoto2ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2ThetaErr.DecimalPlaces = 0;
-            numericBoxPhoto2ThetaErr.ShowUpDown = true;
-            numericBoxPhoto2ThetaErr.Value = 3D;
-            // 
-            // label22
-            // 
-            resources.ApplyResources(label22, "label22");
-            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip")); // 260531Cl
-            label22.Name = "label22";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(label23, "label23");
-            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip")); // 260531Cl
-            label23.Name = "label23";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(label24, "label24");
-            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip")); // 260531Cl
-            label24.Name = "label24";
-            // 
-            // numericBoxPhoto2L3Err
-            // 
-            resources.ApplyResources(numericBoxPhoto2L3Err, "numericBoxPhoto2L3Err");
-            toolTip.SetToolTip(numericBoxPhoto2L3Err, resources.GetString("numericBoxPhoto2L3Err.ToolTip")); // 260531Cl
-            numericBoxPhoto2L3Err.Maximum = 50D;
-            numericBoxPhoto2L3Err.Name = "numericBoxPhoto2L3Err";
-            numericBoxPhoto2L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2L3Err.DecimalPlaces = 0;
-            numericBoxPhoto2L3Err.ShowUpDown = true;
-            numericBoxPhoto2L3Err.Value = 5D;
-            // 
-            // label26
-            // 
-            resources.ApplyResources(label26, "label26");
-            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip")); // 260531Cl
-            label26.Name = "label26";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(label27, "label27");
-            toolTip.SetToolTip(label27, resources.GetString("label27.ToolTip")); // 260531Cl
-            label27.Name = "label27";
-            // 
-            // label28
-            // 
-            resources.ApplyResources(label28, "label28");
-            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip")); // 260531Cl
-            label28.Name = "label28";
-            // 
-            // label29
-            // 
-            resources.ApplyResources(label29, "label29");
-            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip")); // 260531Cl
-            label29.Name = "label29";
-            // 
-            // label30
-            // 
-            resources.ApplyResources(label30, "label30");
-            toolTip.SetToolTip(label30, resources.GetString("label30.ToolTip")); // 260531Cl
-            label30.Name = "label30";
-            // 
-            // label31
-            // 
-            resources.ApplyResources(label31, "label31");
-            toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip")); // 260531Cl
-            label31.Name = "label31";
-            // 
-            // label79
-            // 
-            resources.ApplyResources(label79, "label79");
-            toolTip.SetToolTip(label79, resources.GetString("label79.ToolTip")); // 260531Cl
-            label79.Name = "label79";
-            // 
-            // label76
-            // 
-            resources.ApplyResources(label76, "label76");
-            toolTip.SetToolTip(label76, resources.GetString("label76.ToolTip")); // 260531Cl
-            label76.Name = "label76";
-            // 
-            // label77
-            // 
-            resources.ApplyResources(label77, "label77");
-            toolTip.SetToolTip(label77, resources.GetString("label77.ToolTip")); // 260531Cl
-            label77.Name = "label77";
-            // 
-            // label78
-            // 
-            resources.ApplyResources(label78, "label78");
-            toolTip.SetToolTip(label78, resources.GetString("label78.ToolTip")); // 260531Cl
-            label78.Name = "label78";
             // 
             // groupBoxPhoto2HolderCondition
             // 
@@ -944,68 +1224,10 @@
             groupBoxPhoto2HolderCondition.Name = "groupBoxPhoto2HolderCondition";
             groupBoxPhoto2HolderCondition.TabStop = false;
             // 
-            // numericBoxP2Tilt2
-            // 
-            numericBoxP2Tilt2.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP2Tilt2, "numericBoxP2Tilt2");
-            toolTip.SetToolTip(numericBoxP2Tilt2, resources.GetString("numericBoxP2Tilt2.ToolTip")); // 260531Cl
-            numericBoxP2Tilt2.Name = "numericBoxP2Tilt2";
-            numericBoxP2Tilt2.SkipEventDuringInput = false;
-            numericBoxP2Tilt2.SmartIncrement = true;
-            numericBoxP2Tilt2.ThousandsSeparator = true;
-            numericBoxP2Tilt2.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // numericBoxP2Tilt1
-            // 
-            numericBoxP2Tilt1.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP2Tilt1, "numericBoxP2Tilt1");
-            toolTip.SetToolTip(numericBoxP2Tilt1, resources.GetString("numericBoxP2Tilt1.ToolTip")); // 260531Cl
-            numericBoxP2Tilt1.Name = "numericBoxP2Tilt1";
-            numericBoxP2Tilt1.SkipEventDuringInput = false;
-            numericBoxP2Tilt1.SmartIncrement = true;
-            numericBoxP2Tilt1.ThousandsSeparator = true;
-            numericBoxP2Tilt1.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // label6
-            // 
-            resources.ApplyResources(label6, "label6");
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
-            label6.Name = "label6";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(label7, "label7");
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
-            label7.Name = "label7";
-            // 
-            // numericBoxPhoto2Tilt1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto2Tilt1Err, "numericBoxPhoto2Tilt1Err");
-            toolTip.SetToolTip(numericBoxPhoto2Tilt1Err, resources.GetString("numericBoxPhoto2Tilt1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto2Tilt1Err.Maximum = 10D;
-            numericBoxPhoto2Tilt1Err.Name = "numericBoxPhoto2Tilt1Err";
-            numericBoxPhoto2Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2Tilt1Err.DecimalPlaces = 0;
-            numericBoxPhoto2Tilt1Err.ShowUpDown = true;
-            numericBoxPhoto2Tilt1Err.Value = 3D;
-            // 
             // label8
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
-            // 
-            // numericBoxPhoto2Tilt2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto2Tilt2Err, "numericBoxPhoto2Tilt2Err");
-            toolTip.SetToolTip(numericBoxPhoto2Tilt2Err, resources.GetString("numericBoxPhoto2Tilt2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto2Tilt2Err.Maximum = 10D;
-            numericBoxPhoto2Tilt2Err.Name = "numericBoxPhoto2Tilt2Err";
-            numericBoxPhoto2Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto2Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto2Tilt2Err.DecimalPlaces = 0;
-            numericBoxPhoto2Tilt2Err.ShowUpDown = true;
-            numericBoxPhoto2Tilt2Err.Value = 3D;
             // 
             // label13
             // 
@@ -1080,18 +1302,6 @@
             inputBoxP3L3.WaveLength = 0D;
             inputBoxP3L3.ValueChanged += textBox_TextChanged;
             // 
-            // numericBoxP3Theta
-            // 
-            numericBoxP3Theta.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP3Theta, "numericBoxP3Theta");
-            toolTip.SetToolTip(numericBoxP3Theta, resources.GetString("numericBoxP3Theta.ToolTip")); // 260531Cl
-            numericBoxP3Theta.Name = "numericBoxP3Theta";
-            numericBoxP3Theta.SkipEventDuringInput = false;
-            numericBoxP3Theta.SmartIncrement = true;
-            numericBoxP3Theta.ThousandsSeparator = true;
-            numericBoxP3Theta.ValueChanged += textBox_TextChanged;
-            numericBoxP3Theta.Click2 += numericBoxP3Theta_Click2;
-            // 
             // inputBoxP3L2
             // 
             resources.ApplyResources(inputBoxP3L2, "inputBoxP3L2");
@@ -1100,16 +1310,6 @@
             inputBoxP3L2.Name = "inputBoxP3L2";
             inputBoxP3L2.WaveLength = 0D;
             inputBoxP3L2.ValueChanged += textBox_TextChanged;
-            // 
-            // buttonSearchPhoto3
-            // 
-            resources.ApplyResources(buttonSearchPhoto3, "buttonSearchPhoto3");
-            toolTip.SetToolTip(buttonSearchPhoto3, resources.GetString("buttonSearchPhoto3.ToolTip")); // 260531Cl
-            buttonSearchPhoto3.Name = "buttonSearchPhoto3";
-            buttonSearchPhoto3.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            buttonSearchPhoto3.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            buttonSearchPhoto3.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            buttonSearchPhoto3.Click += buttonSearch_Click;
             // 
             // inputBoxP3L1
             // 
@@ -1129,57 +1329,6 @@
             pictureBoxPhoto3.Name = "pictureBoxPhoto3";
             pictureBoxPhoto3.TabStop = false;
             // 
-            // radioButtonPhoto3Mode2
-            // 
-            resources.ApplyResources(radioButtonPhoto3Mode2, "radioButtonPhoto3Mode2");
-            toolTip.SetToolTip(radioButtonPhoto3Mode2, resources.GetString("radioButtonPhoto3Mode2.ToolTip")); // 260531Cl
-            radioButtonPhoto3Mode2.Name = "radioButtonPhoto3Mode2";
-            radioButtonPhoto3Mode2.CheckedChanged += radioButtonPhoto1Mode1_CheckedChanged;
-            // 
-            // radioButtonPhoto3Mode1
-            // 
-            resources.ApplyResources(radioButtonPhoto3Mode1, "radioButtonPhoto3Mode1");
-            toolTip.SetToolTip(radioButtonPhoto3Mode1, resources.GetString("radioButtonPhoto3Mode1.ToolTip")); // 260531Cl
-            radioButtonPhoto3Mode1.Checked = true;
-            radioButtonPhoto3Mode1.Name = "radioButtonPhoto3Mode1";
-            radioButtonPhoto3Mode1.TabStop = true;
-            // 
-            // numericBoxPhoto3L1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto3L1Err, "numericBoxPhoto3L1Err");
-            toolTip.SetToolTip(numericBoxPhoto3L1Err, resources.GetString("numericBoxPhoto3L1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto3L1Err.Maximum = 50D;
-            numericBoxPhoto3L1Err.Name = "numericBoxPhoto3L1Err";
-            numericBoxPhoto3L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3L1Err.DecimalPlaces = 0;
-            numericBoxPhoto3L1Err.ShowUpDown = true;
-            numericBoxPhoto3L1Err.Value = 5D;
-            // 
-            // numericBoxPhoto3L2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto3L2Err, "numericBoxPhoto3L2Err");
-            toolTip.SetToolTip(numericBoxPhoto3L2Err, resources.GetString("numericBoxPhoto3L2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto3L2Err.Maximum = 50D;
-            numericBoxPhoto3L2Err.Name = "numericBoxPhoto3L2Err";
-            numericBoxPhoto3L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3L2Err.DecimalPlaces = 0;
-            numericBoxPhoto3L2Err.ShowUpDown = true;
-            numericBoxPhoto3L2Err.Value = 5D;
-            // 
-            // numericBoxPhoto3ThetaErr
-            // 
-            resources.ApplyResources(numericBoxPhoto3ThetaErr, "numericBoxPhoto3ThetaErr");
-            toolTip.SetToolTip(numericBoxPhoto3ThetaErr, resources.GetString("numericBoxPhoto3ThetaErr.ToolTip")); // 260531Cl
-            numericBoxPhoto3ThetaErr.Maximum = 30D;
-            numericBoxPhoto3ThetaErr.Name = "numericBoxPhoto3ThetaErr";
-            numericBoxPhoto3ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3ThetaErr.DecimalPlaces = 0;
-            numericBoxPhoto3ThetaErr.ShowUpDown = true;
-            numericBoxPhoto3ThetaErr.Value = 3D;
-            // 
             // label42
             // 
             resources.ApplyResources(label42, "label42");
@@ -1195,46 +1344,10 @@
             resources.ApplyResources(label44, "label44");
             label44.Name = "label44";
             // 
-            // numericBoxPhoto3L3Err
-            // 
-            resources.ApplyResources(numericBoxPhoto3L3Err, "numericBoxPhoto3L3Err");
-            toolTip.SetToolTip(numericBoxPhoto3L3Err, resources.GetString("numericBoxPhoto3L3Err.ToolTip")); // 260531Cl
-            numericBoxPhoto3L3Err.Maximum = 50D;
-            numericBoxPhoto3L3Err.Name = "numericBoxPhoto3L3Err";
-            numericBoxPhoto3L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3L3Err.DecimalPlaces = 0;
-            numericBoxPhoto3L3Err.ShowUpDown = true;
-            numericBoxPhoto3L3Err.Value = 5D;
-            // 
             // label46
             // 
             resources.ApplyResources(label46, "label46");
             label46.Name = "label46";
-            // 
-            // label47
-            // 
-            resources.ApplyResources(label47, "label47");
-            toolTip.SetToolTip(label47, resources.GetString("label47.ToolTip")); // 260531Cl
-            label47.Name = "label47";
-            // 
-            // label52
-            // 
-            resources.ApplyResources(label52, "label52");
-            toolTip.SetToolTip(label52, resources.GetString("label52.ToolTip")); // 260531Cl
-            label52.Name = "label52";
-            // 
-            // label55
-            // 
-            resources.ApplyResources(label55, "label55");
-            toolTip.SetToolTip(label55, resources.GetString("label55.ToolTip")); // 260531Cl
-            label55.Name = "label55";
-            // 
-            // label56
-            // 
-            resources.ApplyResources(label56, "label56");
-            toolTip.SetToolTip(label56, resources.GetString("label56.ToolTip")); // 260531Cl
-            label56.Name = "label56";
             // 
             // label57
             // 
@@ -1279,68 +1392,10 @@
             groupBoxPhoto3HolderCondition.Name = "groupBoxPhoto3HolderCondition";
             groupBoxPhoto3HolderCondition.TabStop = false;
             // 
-            // numericBoxP3Tilt2
-            // 
-            numericBoxP3Tilt2.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP3Tilt2, "numericBoxP3Tilt2");
-            toolTip.SetToolTip(numericBoxP3Tilt2, resources.GetString("numericBoxP3Tilt2.ToolTip")); // 260531Cl
-            numericBoxP3Tilt2.Name = "numericBoxP3Tilt2";
-            numericBoxP3Tilt2.SkipEventDuringInput = false;
-            numericBoxP3Tilt2.SmartIncrement = true;
-            numericBoxP3Tilt2.ThousandsSeparator = true;
-            numericBoxP3Tilt2.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // label34
-            // 
-            resources.ApplyResources(label34, "label34");
-            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip")); // 260531Cl
-            label34.Name = "label34";
-            // 
-            // numericBoxP3Tilt1
-            // 
-            numericBoxP3Tilt1.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxP3Tilt1, "numericBoxP3Tilt1");
-            toolTip.SetToolTip(numericBoxP3Tilt1, resources.GetString("numericBoxP3Tilt1.ToolTip")); // 260531Cl
-            numericBoxP3Tilt1.Name = "numericBoxP3Tilt1";
-            numericBoxP3Tilt1.SkipEventDuringInput = false;
-            numericBoxP3Tilt1.SmartIncrement = true;
-            numericBoxP3Tilt1.ThousandsSeparator = true;
-            numericBoxP3Tilt1.ValueChanged += textBoxTilt_TextChanged;
-            // 
-            // label35
-            // 
-            resources.ApplyResources(label35, "label35");
-            toolTip.SetToolTip(label35, resources.GetString("label35.ToolTip")); // 260531Cl
-            label35.Name = "label35";
-            // 
-            // numericBoxPhoto3Tilt1Err
-            // 
-            resources.ApplyResources(numericBoxPhoto3Tilt1Err, "numericBoxPhoto3Tilt1Err");
-            toolTip.SetToolTip(numericBoxPhoto3Tilt1Err, resources.GetString("numericBoxPhoto3Tilt1Err.ToolTip")); // 260531Cl
-            numericBoxPhoto3Tilt1Err.Maximum = 10D;
-            numericBoxPhoto3Tilt1Err.Name = "numericBoxPhoto3Tilt1Err";
-            numericBoxPhoto3Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3Tilt1Err.DecimalPlaces = 0;
-            numericBoxPhoto3Tilt1Err.ShowUpDown = true;
-            numericBoxPhoto3Tilt1Err.Value = 3D;
-            // 
             // label36
             // 
             resources.ApplyResources(label36, "label36");
             label36.Name = "label36";
-            // 
-            // numericBoxPhoto3Tilt2Err
-            // 
-            resources.ApplyResources(numericBoxPhoto3Tilt2Err, "numericBoxPhoto3Tilt2Err");
-            toolTip.SetToolTip(numericBoxPhoto3Tilt2Err, resources.GetString("numericBoxPhoto3Tilt2Err.ToolTip")); // 260531Cl
-            numericBoxPhoto3Tilt2Err.Maximum = 10D;
-            numericBoxPhoto3Tilt2Err.Name = "numericBoxPhoto3Tilt2Err";
-            numericBoxPhoto3Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxPhoto3Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
-            numericBoxPhoto3Tilt2Err.DecimalPlaces = 0;
-            numericBoxPhoto3Tilt2Err.ShowUpDown = true;
-            numericBoxPhoto3Tilt2Err.Value = 3D;
             // 
             // label37
             // 
@@ -1375,56 +1430,6 @@
             groupBoxPhoto3.Name = "groupBoxPhoto3";
             groupBoxPhoto3.TabStop = false;
             // 
-            // checkBoxPhoto2
-            // 
-            resources.ApplyResources(checkBoxPhoto2, "checkBoxPhoto2");
-            toolTip.SetToolTip(checkBoxPhoto2, resources.GetString("checkBoxPhoto2.ToolTip")); // 260531Cl
-            checkBoxPhoto2.Name = "checkBoxPhoto2";
-            checkBoxPhoto2.UseVisualStyleBackColor = true;
-            checkBoxPhoto2.CheckedChanged += checkBoxPhoto2_CheckedChanged;
-            // 
-            // checkBoxPhoto3
-            // 
-            resources.ApplyResources(checkBoxPhoto3, "checkBoxPhoto3");
-            toolTip.SetToolTip(checkBoxPhoto3, resources.GetString("checkBoxPhoto3.ToolTip")); // 260531Cl
-            checkBoxPhoto3.Name = "checkBoxPhoto3";
-            checkBoxPhoto3.UseVisualStyleBackColor = true;
-            checkBoxPhoto3.CheckedChanged += checkBoxPhoto2_CheckedChanged;
-            // 
-            // checkBoxEquivalentPhoto1L1Photo2L1
-            // 
-            resources.ApplyResources(checkBoxEquivalentPhoto1L1Photo2L1, "checkBoxEquivalentPhoto1L1Photo2L1");
-            toolTip.SetToolTip(checkBoxEquivalentPhoto1L1Photo2L1, resources.GetString("checkBoxEquivalentPhoto1L1Photo2L1.ToolTip")); // 260531Cl
-            checkBoxEquivalentPhoto1L1Photo2L1.Name = "checkBoxEquivalentPhoto1L1Photo2L1";
-            checkBoxEquivalentPhoto1L1Photo2L1.UseVisualStyleBackColor = true;
-            checkBoxEquivalentPhoto1L1Photo2L1.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
-            // 
-            // checkBoxEquivalentPhoto2L1Photo3L1
-            // 
-            resources.ApplyResources(checkBoxEquivalentPhoto2L1Photo3L1, "checkBoxEquivalentPhoto2L1Photo3L1");
-            toolTip.SetToolTip(checkBoxEquivalentPhoto2L1Photo3L1, resources.GetString("checkBoxEquivalentPhoto2L1Photo3L1.ToolTip")); // 260531Cl
-            checkBoxEquivalentPhoto2L1Photo3L1.Name = "checkBoxEquivalentPhoto2L1Photo3L1";
-            checkBoxEquivalentPhoto2L1Photo3L1.UseVisualStyleBackColor = true;
-            checkBoxEquivalentPhoto2L1Photo3L1.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
-            // 
-            // checkBoxEquivalentPhoto2L2Photo3L2
-            // 
-            resources.ApplyResources(checkBoxEquivalentPhoto2L2Photo3L2, "checkBoxEquivalentPhoto2L2Photo3L2");
-            toolTip.SetToolTip(checkBoxEquivalentPhoto2L2Photo3L2, resources.GetString("checkBoxEquivalentPhoto2L2Photo3L2.ToolTip")); // 260531Cl
-            checkBoxEquivalentPhoto2L2Photo3L2.Name = "checkBoxEquivalentPhoto2L2Photo3L2";
-            checkBoxEquivalentPhoto2L2Photo3L2.UseVisualStyleBackColor = true;
-            checkBoxEquivalentPhoto2L2Photo3L2.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
-            // 
-            // buttonSearchAll
-            // 
-            resources.ApplyResources(buttonSearchAll, "buttonSearchAll");
-            toolTip.SetToolTip(buttonSearchAll, resources.GetString("buttonSearchAll.ToolTip")); // 260531Cl
-            buttonSearchAll.Name = "buttonSearchAll";
-            buttonSearchAll.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            buttonSearchAll.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            buttonSearchAll.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            buttonSearchAll.Click += buttonSearchAll_Click;
-            // 
             // panel5
             // 
             panel5.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -1432,14 +1437,6 @@
             resources.ApplyResources(panel5, "panel5");
             panel5.ForeColor = System.Drawing.SystemColors.GrayText;
             panel5.Name = "panel5";
-            // 
-            // checkBoxEquivalentPhoto1L2Photo2L2
-            // 
-            resources.ApplyResources(checkBoxEquivalentPhoto1L2Photo2L2, "checkBoxEquivalentPhoto1L2Photo2L2");
-            toolTip.SetToolTip(checkBoxEquivalentPhoto1L2Photo2L2, resources.GetString("checkBoxEquivalentPhoto1L2Photo2L2.ToolTip")); // 260531Cl
-            checkBoxEquivalentPhoto1L2Photo2L2.Name = "checkBoxEquivalentPhoto1L2Photo2L2";
-            checkBoxEquivalentPhoto1L2Photo2L2.UseVisualStyleBackColor = true;
-            checkBoxEquivalentPhoto1L2Photo2L2.CheckedChanged += checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged;
             // 
             // label58
             // 
@@ -1506,9 +1503,8 @@
             // 
             // FormSpotIDv1
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: None→Dpi, 96dpi基準に統一
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             resources.ApplyResources(this, "$this");
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(flowLayoutPanelPhotos);
             Controls.Add(textBoxAngleBetween31);
@@ -1570,11 +1566,7 @@
         private System.Windows.Forms.Label labelPhoto1Mode1_3;
         private System.Windows.Forms.GroupBox groupBoxTEMCondition;
         public Crystallography.Controls.NumericBox numericBoxCamaraLength;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label15;
         public Crystallography.Controls.NumericBox numericBoxAccVol;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBoxPhoto1;
         private System.Windows.Forms.GroupBox groupBoxPhoto1;
         private System.Windows.Forms.GroupBox groupBoxPhoto1HolderCondition;

@@ -75,12 +75,6 @@ de Zona</value>
   <data name="label67.Text" xml:space="preserve">
     <value>Comprimento de onda</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Comprimento de câmera</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Tensão acel.</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Condição do TEM</value>
   </data>
@@ -196,18 +190,8 @@ inclinações relativas do porta-amostras (requer Photo 2).</value>
 eletrônico de transmissão; define o comprimento de onda dos elétrons
 usado para interpretar os padrões de difração.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Tensão de aceleração (kV) do microscópio
-eletrônico de transmissão; define o comprimento de onda dos elétrons
-usado para interpretar os padrões de difração.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
     <value>Comprimento de câmera (mm) do padrão de difração;
-converte as distâncias medidas entre pontos (mm) em
-espaçamentos da rede recíproca para indexação.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
-    <value>Comprimento de câmara (mm) do padrão de difração;
 converte as distâncias medidas entre pontos (mm) em
 espaçamentos da rede recíproca para indexação.</value>
   </data>
@@ -567,5 +551,11 @@ recíprocos L1 e L2 do Pattern 1.</value>
     <value>Tolerância de busca para L3 do Pattern 1,
 como percentual do seu comprimento (0-50%,
 padrão 5; usada no modo 'Três Lados').</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Comprimento de câmera</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Tensão acel.</value>
   </data>
 </root>

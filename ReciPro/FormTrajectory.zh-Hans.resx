@@ -81,10 +81,6 @@
     <value>绘制
 坐标轴</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>待计算的
-轨迹数</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>样品倾斜</value>
   </data>
@@ -228,10 +224,6 @@ Z=束方向（紫）坐标轴。</value>
 能量（eV/nm）。</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>要模拟的电子轨迹数量（100 至 1,000,000）。
-轨迹越多，统计越平滑，但计算耗时越长。</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>要模拟的电子轨迹数量（100 至 1,000,000）。
 轨迹越多，统计越平滑，但计算耗时越长。</value>
   </data>

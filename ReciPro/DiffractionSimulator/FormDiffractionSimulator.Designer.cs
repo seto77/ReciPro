@@ -649,7 +649,7 @@
             colorControlString.BoxSize = new System.Drawing.Size(20, 20);
             colorControlString.Color = System.Drawing.Color.FromArgb(255, 255, 255);
             colorControlString.Name = "colorControlString";
-            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip1"));
+            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip"));
             colorControlString.ColorChanged += Draw;
             // 
             // label14
@@ -665,7 +665,7 @@
             colorControlOrigin.BoxSize = new System.Drawing.Size(20, 20);
             colorControlOrigin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlOrigin.Name = "colorControlOrigin";
-            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip1"));
+            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip"));
             colorControlOrigin.ColorChanged += Draw;
             // 
             // colorControlFoot
@@ -704,7 +704,7 @@
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(32, 32, 32);
             colorControlBackGround.Name = "colorControlBackGround";
-            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
+            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
             colorControlBackGround.ColorChanged += Draw;
             // 
             // tabPageKikuchi
@@ -757,11 +757,11 @@
             numericBoxKikuchiThresholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThresholdOfStructureFactor.Minimum = 1D;
             numericBoxKikuchiThresholdOfStructureFactor.Name = "numericBoxKikuchiThresholdOfStructureFactor";
-            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip")); // 260704Cl 追加: NumericBox 独自 ToolTip プロパティ非シリアライズ化で VS 再保存時に resx キーごと消えたため、標準 extender 経路へ統一
-            numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
             numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip"));
             numericBoxKikuchiThresholdOfStructureFactor.Value = 100D;
+            numericBoxKikuchiThresholdOfStructureFactor.ValueBoxWidth = 45;
             numericBoxKikuchiThresholdOfStructureFactor.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
@@ -772,11 +772,11 @@
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
             numericBoxKikuchiThresholdOfLength.Minimum = 0D;
             numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
-            numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip"));
             numericBoxKikuchiThresholdOfLength.Value = 10D;
+            numericBoxKikuchiThresholdOfLength.ValueBoxWidth = 36;
             numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
@@ -825,7 +825,7 @@
             colorControlDebyeRing.BoxSize = new System.Drawing.Size(20, 20);
             colorControlDebyeRing.Color = System.Drawing.Color.FromArgb(255, 255, 0);
             colorControlDebyeRing.Name = "colorControlDebyeRing";
-            toolTip.SetToolTip(colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip1"));
+            toolTip.SetToolTip(colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip"));
             colorControlDebyeRing.ColorChanged += Draw;
             // 
             // checkBoxDebyeRingLabel
@@ -948,7 +948,7 @@
             colorControlScaleAzimuth.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScaleAzimuth.Color = System.Drawing.Color.FromArgb(119, 68, 70);
             colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
-            toolTip.SetToolTip(colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip1"));
+            toolTip.SetToolTip(colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip"));
             colorControlScaleAzimuth.ColorChanged += Draw;
             // 
             // colorControlScale2Theta
@@ -958,7 +958,7 @@
             colorControlScale2Theta.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScale2Theta.Color = System.Drawing.Color.FromArgb(68, 68, 120);
             colorControlScale2Theta.Name = "colorControlScale2Theta";
-            toolTip.SetToolTip(colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip1"));
+            toolTip.SetToolTip(colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip"));
             colorControlScale2Theta.ColorChanged += Draw;
             // 
             // splitContainer1
@@ -1022,7 +1022,7 @@
             colorControl3D_SpotsNear.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_SpotsNear.Color = System.Drawing.Color.FromArgb(255, 255, 0);
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
-            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
+            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip"));
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBox3D_SpotRadius
@@ -1033,7 +1033,6 @@
             numericBox3D_SpotRadius.Maximum = 1D;
             numericBox3D_SpotRadius.Minimum = 0.01D;
             numericBox3D_SpotRadius.Name = "numericBox3D_SpotRadius";
-            numericBox3D_SpotRadius.RadianValue = 0.0034906585039886592D;
             numericBox3D_SpotRadius.ShowUpDown = true;
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
@@ -1094,7 +1093,7 @@
             colorControl3D_Background.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_Background.Color = System.Drawing.Color.FromArgb(255, 255, 255);
             colorControl3D_Background.Name = "colorControl3D_Background";
-            toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip1"));
+            toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip"));
             colorControl3D_Background.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBoxReciprocalThreshold
@@ -1105,7 +1104,6 @@
             numericBoxReciprocalThreshold.Maximum = 100D;
             numericBoxReciprocalThreshold.Minimum = 0D;
             numericBoxReciprocalThreshold.Name = "numericBoxReciprocalThreshold";
-            numericBoxReciprocalThreshold.RadianValue = 0.017453292519943295D;
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
             numericBoxReciprocalThreshold.ThousandsSeparator = true;
@@ -1237,7 +1235,6 @@
             numericBoxStep.Maximum = 360D;
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
-            numericBoxStep.RadianValue = 0.17453292519943295D;
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
             numericBoxStep.ThousandsSeparator = true;
@@ -1311,7 +1308,7 @@
             colorControl3D_lText.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_lText.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControl3D_lText.Name = "colorControl3D_lText";
-            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
+            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip"));
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_DirectionGuide
@@ -1549,7 +1546,7 @@
             resources.ApplyResources(sizeControl1, "sizeControl1");
             sizeControl1.Maximum = 2000;
             sizeControl1.Name = "sizeControl1";
-            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip")); // 260704Cl 追加: SizeControl 独自 ToolTip プロパティ経路が VS 再保存で resx キーごと消えたため、標準 extender 経路へ統一
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
             sizeControl1.ValueChanged += sizeControl1_ValueChanged;
             // 
             // flowLayoutPanelResolutionUnit
@@ -1568,14 +1565,12 @@
             numericBoxResolution.Maximum = 10D;
             numericBoxResolution.Minimum = 1E-05D;
             numericBoxResolution.Name = "numericBoxResolution";
-            numericBoxResolution.RadianValue = 0.0013962634015954637D;
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.08D;
-            //numericBoxResolution.ValueBoxWidth = 60; // 260726Cl 旧: 最長値「10.000000」が zh-Hans で 14px 入らず切れていた
-            numericBoxResolution.ValueBoxWidth = 80; // 260726Cl
+            numericBoxResolution.ValueBoxWidth = 60;
             numericBoxResolution.ValueChanged += numericUpDownResolution_ValueChanged;
             // 
             // radioButtonResoUnitMilliMeter
@@ -1656,12 +1651,11 @@
             // numericBoxCameraLength2
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCameraLength2.Maximum = 10000D; // 260726Cl 追加: 上限未設定 (既定 +∞) で最長値が定まらなかった
             numericBoxCameraLength2.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxCameraLength2, "numericBoxCameraLength2");
+            numericBoxCameraLength2.Maximum = 10000D;
             numericBoxCameraLength2.Minimum = 0D;
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
-            numericBoxCameraLength2.RadianValue = 17.453292519943293D;
             numericBoxCameraLength2.ShowUpDown = true;
             numericBoxCameraLength2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
@@ -1692,7 +1686,6 @@
             numericBoxDev.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxDev, "numericBoxDev");
             numericBoxDev.Name = "numericBoxDev";
-            numericBoxDev.RadianValue = 0.023911010752322315D;
             numericBoxDev.SkipEventDuringInput = false;
             numericBoxDev.SmartIncrement = true;
             numericBoxDev.ThousandsSeparator = true;
@@ -1711,7 +1704,6 @@
             numericBoxAcc.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
             numericBoxAcc.Name = "numericBoxAcc";
-            numericBoxAcc.RadianValue = 216.42082724729684D;
             numericBoxAcc.SkipEventDuringInput = false;
             numericBoxAcc.SmartIncrement = true;
             numericBoxAcc.ThousandsSeparator = true;
@@ -1731,7 +1723,7 @@
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, presetToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
+            menuStrip1.ShowItemToolTips = true;
             // 
             // fileToolStripMenuItem
             // 
@@ -2084,13 +2076,12 @@
             numericBoxPED_Semiangle.Maximum = 500D;
             numericBoxPED_Semiangle.Minimum = 0.1D;
             numericBoxPED_Semiangle.Name = "numericBoxPED_Semiangle";
-            numericBoxPED_Semiangle.RadianValue = 0.87266462599716477D;
             numericBoxPED_Semiangle.ShowUpDown = true;
             numericBoxPED_Semiangle.SmartIncrement = true;
             numericBoxPED_Semiangle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             numericBoxPED_Semiangle.Value = 50D;
-            numericBoxPED_Semiangle.ValueBoxWidth = 45;
+            numericBoxPED_Semiangle.ValueBoxWidth = 40;
             numericBoxPED_Semiangle.ValueChanged += Draw;
             // 
             // numericBoxPED_Step
@@ -2101,13 +2092,12 @@
             numericBoxPED_Step.Maximum = 1080D;
             numericBoxPED_Step.Minimum = 2D;
             numericBoxPED_Step.Name = "numericBoxPED_Step";
-            numericBoxPED_Step.RadianValue = 0.62831853071795862D;
             numericBoxPED_Step.ShowUpDown = true;
             numericBoxPED_Step.SmartIncrement = true;
             numericBoxPED_Step.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             numericBoxPED_Step.Value = 36D;
-            numericBoxPED_Step.ValueBoxWidth = 40;
+            numericBoxPED_Step.ValueBoxWidth = 36;
             numericBoxPED_Step.ValueChanged += Draw;
             // 
             // flowLayoutPanelBethe
@@ -2129,12 +2119,11 @@
             // numericBoxNumOfBlochWave
             // 
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxNumOfBlochWave.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
-            numericBoxNumOfBlochWave.DecimalPlaces = 0; // 260726Cl 追加: ブロッホ波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxNumOfBlochWave.Maximum = 1000D;
             numericBoxNumOfBlochWave.Minimum = 8D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
-            numericBoxNumOfBlochWave.RadianValue = 4.1887902047863905D;
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
             numericBoxNumOfBlochWave.ThousandsSeparator = true;
@@ -2150,14 +2139,13 @@
             numericBoxThickness.Maximum = 10000D;
             numericBoxThickness.Minimum = 0.01D;
             numericBoxThickness.Name = "numericBoxThickness";
-            numericBoxThickness.RadianValue = 0.87266462599716477D;
             numericBoxThickness.ShowUpDown = true;
             numericBoxThickness.SkipEventDuringInput = false;
             numericBoxThickness.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.UpDown_Increment = 10D;
             numericBoxThickness.Value = 50D;
-            numericBoxThickness.ValueBoxWidth = 55;
+            numericBoxThickness.ValueBoxWidth = 50;
             numericBoxThickness.ValueChanged += Draw;
             // 
             // flowLayoutPanelAppearance
@@ -2241,7 +2229,6 @@
             numericBoxSpotRadius.Maximum = 1D;
             numericBoxSpotRadius.Minimum = 0.01D;
             numericBoxSpotRadius.Name = "numericBoxSpotRadius";
-            numericBoxSpotRadius.RadianValue = 0.0034906585039886592D;
             numericBoxSpotRadius.ShowUpDown = true;
             numericBoxSpotRadius.SmartIncrement = true;
             numericBoxSpotRadius.ThousandsSeparator = true;
@@ -2350,7 +2337,7 @@
             colorControlNoCondition.BoxSize = new System.Drawing.Size(20, 20);
             colorControlNoCondition.Color = System.Drawing.Color.FromArgb(255, 255, 255);
             colorControlNoCondition.Name = "colorControlNoCondition";
-            toolTip.SetToolTip(colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip1"));
+            toolTip.SetToolTip(colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip"));
             colorControlNoCondition.ColorChanged += Draw;
             // 
             // colorControlScrewGlide
@@ -2360,7 +2347,7 @@
             colorControlScrewGlide.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScrewGlide.Color = System.Drawing.Color.FromArgb(255, 192, 192);
             colorControlScrewGlide.Name = "colorControlScrewGlide";
-            toolTip.SetToolTip(colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip1"));
+            toolTip.SetToolTip(colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip"));
             colorControlScrewGlide.ColorChanged += Draw;
             // 
             // colorControlForbiddenLattice
@@ -2370,7 +2357,7 @@
             colorControlForbiddenLattice.BoxSize = new System.Drawing.Size(20, 20);
             colorControlForbiddenLattice.Color = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControlForbiddenLattice.Name = "colorControlForbiddenLattice";
-            toolTip.SetToolTip(colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip1"));
+            toolTip.SetToolTip(colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip"));
             colorControlForbiddenLattice.ColorChanged += Draw;
             // 
             // flowLayoutPanelIntensity

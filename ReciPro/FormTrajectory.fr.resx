@@ -81,10 +81,6 @@
     <value>Tracer les
 axes</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Nombre de trajectoires
-à calculer</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>Inclinaison de l'échantillon</value>
   </data>
@@ -230,11 +226,6 @@ perd par unité de longueur de parcours lors des collisions
 inélastiques, à l'énergie incidente (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>Nombre de trajectoires d'électrons à simuler
-(100 à 1 000 000). Davantage de trajectoires donnent
-des statistiques plus lisses mais allongent le calcul.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>Nombre de trajectoires d'électrons à simuler
 (100 à 1 000 000). Davantage de trajectoires donnent
 des statistiques plus lisses mais allongent le calcul.</value>

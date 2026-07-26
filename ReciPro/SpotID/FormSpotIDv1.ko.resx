@@ -75,12 +75,6 @@
   <data name="label67.Text" xml:space="preserve">
     <value>파장</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>카메라 길이</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>가속 전압</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>TEM 조건</value>
   </data>
@@ -196,17 +190,7 @@ L2 길이를 Photo 2의 값으로 고정합니다.</value>
 회절 패턴 해석에 사용하는 전자 파장을
 결정합니다.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>투과 전자 현미경의 가속 전압(kV)입니다.
-회절 패턴 해석에 사용하는 전자 파장을
-결정합니다.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>회절 패턴의 카메라 길이(mm)입니다. 측정한 스폿
-간 거리(mm)를 역격자 간격으로 환산하여
-지수 부여에 사용합니다.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>회절 패턴의 카메라 길이(mm)입니다. 측정한 스폿
 간 거리(mm)를 역격자 간격으로 환산하여
 지수 부여에 사용합니다.</value>
@@ -565,5 +549,11 @@ mm 단위입니다('세 변' 모드에서 사용).</value>
     <value>Pattern 1의 L3에 대한 탐색 허용 오차로,
 길이에 대한 백분율(0–50%, 기본값 5,
 '세 변' 모드에서 사용)입니다.</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>카메라 길이</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>가속 전압</value>
   </data>
 </root>

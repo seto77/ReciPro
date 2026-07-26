@@ -354,9 +354,6 @@
   <data name="panelCalculationConditions.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelDrawingOptions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>

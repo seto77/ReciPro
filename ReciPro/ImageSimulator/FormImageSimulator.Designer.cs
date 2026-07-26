@@ -502,7 +502,6 @@ namespace ReciPro
             numericBoxGaussianBlurRadius.Maximum = 100D;
             numericBoxGaussianBlurRadius.Minimum = 0D;
             numericBoxGaussianBlurRadius.Name = "numericBoxGaussianBlurRadius";
-            numericBoxGaussianBlurRadius.RadianValue = 0.3490658503988659D;
             numericBoxGaussianBlurRadius.ShowUpDown = true;
             numericBoxGaussianBlurRadius.SkipEventDuringInput = false;
             numericBoxGaussianBlurRadius.SmartIncrement = true;
@@ -591,6 +590,7 @@ namespace ReciPro
             numericBoxIntensityMin.SmartIncrement = true;
             numericBoxIntensityMin.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMin, resources.GetString("numericBoxIntensityMin.ToolTip"));
+            numericBoxIntensityMin.ValueBoxWidth = 36;
             numericBoxIntensityMin.ValueFontSize = 9F;
             numericBoxIntensityMin.ValueChanged += checkBoxIntensityMin_CheckedChanged;
             // 
@@ -612,12 +612,12 @@ namespace ReciPro
             numericBoxIntensityMax.Maximum = 65535D;
             numericBoxIntensityMax.Minimum = 1D;
             numericBoxIntensityMax.Name = "numericBoxIntensityMax";
-            numericBoxIntensityMax.RadianValue = 0.017453292519943295D;
             numericBoxIntensityMax.ShowUpDown = true;
             numericBoxIntensityMax.SmartIncrement = true;
             numericBoxIntensityMax.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMax, resources.GetString("numericBoxIntensityMax.ToolTip"));
             numericBoxIntensityMax.Value = 1D;
+            numericBoxIntensityMax.ValueBoxWidth = 36;
             numericBoxIntensityMax.ValueFontSize = 9F;
             numericBoxIntensityMax.ValueChanged += checkBoxIntensityMin_CheckedChanged;
             // 
@@ -683,7 +683,7 @@ namespace ReciPro
             colorControlScale.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScale.Color = System.Drawing.Color.FromArgb(135, 205, 250);
             colorControlScale.Name = "colorControlScale";
-            toolTip.SetToolTip(colorControlScale, resources.GetString("colorControlScale.ToolTip1"));
+            toolTip.SetToolTip(colorControlScale, resources.GetString("colorControlScale.ToolTip"));
             colorControlScale.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 
             // numericBoxScaleLength
@@ -694,7 +694,6 @@ namespace ReciPro
             numericBoxScaleLength.Maximum = 100D;
             numericBoxScaleLength.Minimum = 0.2D;
             numericBoxScaleLength.Name = "numericBoxScaleLength";
-            numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
             numericBoxScaleLength.ShowUpDown = true;
             numericBoxScaleLength.SkipEventDuringInput = false;
             numericBoxScaleLength.ThousandsSeparator = true;
@@ -721,7 +720,7 @@ namespace ReciPro
             colorControlLabel.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabel.Color = System.Drawing.Color.FromArgb(173, 255, 47);
             colorControlLabel.Name = "colorControlLabel";
-            toolTip.SetToolTip(colorControlLabel, resources.GetString("colorControlLabel.ToolTip1"));
+            toolTip.SetToolTip(colorControlLabel, resources.GetString("colorControlLabel.ToolTip"));
             colorControlLabel.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 
             // numericBoxLabelFontSize
@@ -732,7 +731,6 @@ namespace ReciPro
             numericBoxLabelFontSize.Maximum = 20D;
             numericBoxLabelFontSize.Minimum = 1D;
             numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
-            numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
             numericBoxLabelFontSize.ShowUpDown = true;
             numericBoxLabelFontSize.SkipEventDuringInput = false;
             numericBoxLabelFontSize.ThousandsSeparator = true;
@@ -814,7 +812,6 @@ namespace ReciPro
             numericBoxDefocusNum.Maximum = 20D;
             numericBoxDefocusNum.Minimum = 1D;
             numericBoxDefocusNum.Name = "numericBoxDefocusNum";
-            numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
             numericBoxDefocusNum.ShowUpDown = true;
             numericBoxDefocusNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip"));
@@ -830,7 +827,6 @@ namespace ReciPro
             numericBoxDefocusStep.Maximum = 100D;
             numericBoxDefocusStep.Minimum = -100D;
             numericBoxDefocusStep.Name = "numericBoxDefocusStep";
-            numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
             numericBoxDefocusStep.ShowUpDown = true;
             numericBoxDefocusStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip"));
@@ -847,7 +843,6 @@ namespace ReciPro
             numericBoxDefocusStart.Maximum = 1000D;
             numericBoxDefocusStart.Minimum = -1000D;
             numericBoxDefocusStart.Name = "numericBoxDefocusStart";
-            numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
             numericBoxDefocusStart.ShowUpDown = true;
             numericBoxDefocusStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip"));
@@ -877,14 +872,13 @@ namespace ReciPro
             numericBoxThicknessNum.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxThicknessNum, "numericBoxThicknessNum");
             numericBoxThicknessNum.Maximum = 20D;
-            //numericBoxThicknessNum.Minimum = 0.1D; // 260726Cl 旧: DecimalPlaces=0 で「0」と表示されるのに最小値が 0.1 で不整合 (隣の DefocusNum は 1)
-            numericBoxThicknessNum.Minimum = 1D; // 260726Cl
+            numericBoxThicknessNum.Minimum = 1D;
             numericBoxThicknessNum.Name = "numericBoxThicknessNum";
-            numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
             numericBoxThicknessNum.ShowUpDown = true;
             numericBoxThicknessNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip"));
             numericBoxThicknessNum.Value = 4D;
+            numericBoxThicknessNum.ValueBoxWidth = -1;                                                                                                // 260726Cl 変更 (旧 38): Dock=Top のため従来は ValueBoxWidth が無視され数値欄が伸縮していた。>=0 が Dock 時に「フッタ伸縮」を意味する新仕様になったので、見た目維持のため -1 にする
             numericBoxThicknessNum.ValueFontSize = 9F;
             numericBoxThicknessNum.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -896,12 +890,12 @@ namespace ReciPro
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
-            numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.UpDown_Increment = 10D;
             numericBoxThicknessStep.Value = 20D;
+            numericBoxThicknessStep.ValueBoxWidth = -1;                                                                                               // 260726Cl 変更 (旧 38): 同上 (Dock=Top のため見た目維持で -1)
             numericBoxThicknessStep.ValueFontSize = 9F;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -913,12 +907,12 @@ namespace ReciPro
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.Minimum = 0.1D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
-            numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.UpDown_Increment = 10D;
             numericBoxThicknessStart.Value = 20D;
+            numericBoxThicknessStart.ValueBoxWidth = -1;                                                                                              // 260726Cl 変更 (旧 38): 同上 (Dock=Top のため見た目維持で -1)
             numericBoxThicknessStart.ValueFontSize = 9F;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -1254,7 +1248,6 @@ namespace ReciPro
             numericBoxSTEM_AngleResolution.Maximum = 1D;
             numericBoxSTEM_AngleResolution.Minimum = 0.001D;
             numericBoxSTEM_AngleResolution.Name = "numericBoxSTEM_AngleResolution";
-            numericBoxSTEM_AngleResolution.RadianValue = 0.0069813170079773184D;
             numericBoxSTEM_AngleResolution.ShowUpDown = true;
             numericBoxSTEM_AngleResolution.SmartIncrement = true;
             numericBoxSTEM_AngleResolution.ThousandsSeparator = true;
@@ -1271,7 +1264,6 @@ namespace ReciPro
             numericBoxSTEM_SliceThicknessForInelastic.Maximum = 10D;
             numericBoxSTEM_SliceThicknessForInelastic.Minimum = 0.1D;
             numericBoxSTEM_SliceThicknessForInelastic.Name = "numericBoxSTEM_SliceThicknessForInelastic";
-            numericBoxSTEM_SliceThicknessForInelastic.RadianValue = 0.017453292519943295D;
             numericBoxSTEM_SliceThicknessForInelastic.ShowUpDown = true;
             numericBoxSTEM_SliceThicknessForInelastic.SmartIncrement = true;
             numericBoxSTEM_SliceThicknessForInelastic.ThousandsSeparator = true;
@@ -1336,13 +1328,12 @@ namespace ReciPro
             numericBoxResolution.Maximum = 100D;
             numericBoxResolution.Minimum = 0.01D;
             numericBoxResolution.Name = "numericBoxResolution";
-            numericBoxResolution.RadianValue = 0.034906585039886591D;
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 2D;
-            numericBoxResolution.ValueBoxWidth = 60;
+            numericBoxResolution.ValueBoxWidth = -1;                                                                                                  // 260726Cl 変更 (旧 60): 同上 (Dock=Top のため見た目維持で -1)
             numericBoxResolution.ValueFontSize = 9F;
             // 
             // sizeControl1
@@ -1370,12 +1361,11 @@ namespace ReciPro
             // numericBoxNumOfBlochWave
             // 
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxNumOfBlochWave.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
-            numericBoxNumOfBlochWave.DecimalPlaces = 0; // 260726Cl 追加: ブロッホ波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxNumOfBlochWave.Maximum = 1024D;
             numericBoxNumOfBlochWave.Minimum = 2D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
-            numericBoxNumOfBlochWave.RadianValue = 1.3962634015954636D;
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
             numericBoxNumOfBlochWave.ThousandsSeparator = true;
@@ -1467,14 +1457,13 @@ namespace ReciPro
             numericBoxSTEM_ConvergenceAngle.Maximum = 1570D;
             numericBoxSTEM_ConvergenceAngle.Minimum = 0.1D;
             numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
-            numericBoxSTEM_ConvergenceAngle.RadianValue = 0.43633231299858238D;
             numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
             numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
             numericBoxSTEM_ConvergenceAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
             numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_ConvergenceAngle.Value = 25D;
-            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 50;
+            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 40;
             numericBoxSTEM_ConvergenceAngle.ValueFontSize = 9F;
             numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1517,14 +1506,13 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle.Maximum = 1570D;
             numericBoxSTEM_DetectorOuterAngle.Minimum = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Name = "numericBoxSTEM_DetectorOuterAngle";
-            numericBoxSTEM_DetectorOuterAngle.RadianValue = 0.3490658503988659D;
             numericBoxSTEM_DetectorOuterAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorOuterAngle.SmartIncrement = true;
             numericBoxSTEM_DetectorOuterAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_DetectorOuterAngle, resources.GetString("numericBoxSTEM_DetectorOuterAngle.ToolTip"));
             numericBoxSTEM_DetectorOuterAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Value = 20D;
-            numericBoxSTEM_DetectorOuterAngle.ValueBoxWidth = 50;
+            numericBoxSTEM_DetectorOuterAngle.ValueBoxWidth = 40;
             numericBoxSTEM_DetectorOuterAngle.ValueFontSize = 9F;
             numericBoxSTEM_DetectorOuterAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1565,7 +1553,7 @@ namespace ReciPro
             numericBoxSTEM_DetectorInnerAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_DetectorInnerAngle, resources.GetString("numericBoxSTEM_DetectorInnerAngle.ToolTip"));
             numericBoxSTEM_DetectorInnerAngle.UpDown_Increment = 0.5D;
-            numericBoxSTEM_DetectorInnerAngle.ValueBoxWidth = 50;
+            numericBoxSTEM_DetectorInnerAngle.ValueBoxWidth = 40;
             numericBoxSTEM_DetectorInnerAngle.ValueFontSize = 9F;
             numericBoxSTEM_DetectorInnerAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1593,7 +1581,6 @@ namespace ReciPro
             numericBoxSTEM_EffectiveSourceSize.Maximum = 1000D;
             numericBoxSTEM_EffectiveSourceSize.Minimum = 0D;
             numericBoxSTEM_EffectiveSourceSize.Name = "numericBoxSTEM_EffectiveSourceSize";
-            numericBoxSTEM_EffectiveSourceSize.RadianValue = 0.3490658503988659D;
             numericBoxSTEM_EffectiveSourceSize.RestrictLimitValue = false;
             numericBoxSTEM_EffectiveSourceSize.ShowUpDown = true;
             numericBoxSTEM_EffectiveSourceSize.SmartIncrement = true;
@@ -1658,8 +1645,7 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperX, resources.GetString("numericBoxHRTEM_ObjAperX.ToolTip"));
             numericBoxHRTEM_ObjAperX.UpDown_Increment = 0.5D;
-            //numericBoxHRTEM_ObjAperX.ValueBoxWidth = 33; // 260726Cl 旧: 最長値「-100.0」が ko で 10px 入らず切れていた
-            numericBoxHRTEM_ObjAperX.ValueBoxWidth = 49; // 260726Cl
+            numericBoxHRTEM_ObjAperX.ValueBoxWidth = 32;
             numericBoxHRTEM_ObjAperX.ValueFontSize = 9F;
             numericBoxHRTEM_ObjAperX.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1676,8 +1662,7 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperY, resources.GetString("numericBoxHRTEM_ObjAperY.ToolTip"));
             numericBoxHRTEM_ObjAperY.UpDown_Increment = 0.5D;
-            //numericBoxHRTEM_ObjAperY.ValueBoxWidth = 33; // 260726Cl 旧: 最長値「-100.0」が ko で 10px 入らず切れていた
-            numericBoxHRTEM_ObjAperY.ValueBoxWidth = 49; // 260726Cl
+            numericBoxHRTEM_ObjAperY.ValueBoxWidth = 32;
             numericBoxHRTEM_ObjAperY.ValueFontSize = 9F;
             numericBoxHRTEM_ObjAperY.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1713,15 +1698,13 @@ namespace ReciPro
             numericBoxObjAperRadius.Maximum = 500D;
             numericBoxObjAperRadius.Minimum = 0.5D;
             numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
-            numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
             numericBoxObjAperRadius.ShowUpDown = true;
             numericBoxObjAperRadius.SmartIncrement = true;
             numericBoxObjAperRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
             numericBoxObjAperRadius.UpDown_Increment = 0.5D;
             numericBoxObjAperRadius.Value = 12D;
-            //numericBoxObjAperRadius.ValueBoxWidth = 32; // 260726Cl 旧: 最長値「500.0」が ko で 6px 入らず切れていた
-            numericBoxObjAperRadius.ValueBoxWidth = 44; // 260726Cl
+            numericBoxObjAperRadius.ValueBoxWidth = 44;
             numericBoxObjAperRadius.ValueFontSize = 9F;
             numericBoxObjAperRadius.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1845,15 +1828,13 @@ namespace ReciPro
             numericBoxCs.Maximum = 20D;
             numericBoxCs.Minimum = -20D;
             numericBoxCs.Name = "numericBoxCs";
-            numericBoxCs.RadianValue = 0.017453292519943295D;
             numericBoxCs.ShowUpDown = true;
             numericBoxCs.SmartIncrement = true;
             numericBoxCs.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
             numericBoxCs.UpDown_Increment = 0.1D;
             numericBoxCs.Value = 1D;
-            //numericBoxCs.ValueBoxWidth = 36; // 260726Cl 旧: 最長値「-20.00」が ko で 7px 入らず切れていた
-            numericBoxCs.ValueBoxWidth = 36; // 260726Cl: 49px へ広げるとflowLayoutPanel5 が全11言語で 2 行に折り返すため、切れを承知で据え置き
+            numericBoxCs.ValueBoxWidth = 34;
             numericBoxCs.ValueFontSize = 9F;
             numericBoxCs.ValueChanged += NumericBoxCs_ValueChanged;
             // 
@@ -1865,7 +1846,6 @@ namespace ReciPro
             numericBoxCc.Maximum = 10D;
             numericBoxCc.Minimum = 0D;
             numericBoxCc.Name = "numericBoxCc";
-            numericBoxCc.RadianValue = 0.024434609527920613D;
             numericBoxCc.RestrictLimitValue = false;
             numericBoxCc.ShowUpDown = true;
             numericBoxCc.SmartIncrement = true;
@@ -1873,7 +1853,7 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
             numericBoxCc.UpDown_Increment = 0.1D;
             numericBoxCc.Value = 1.4D;
-            numericBoxCc.ValueBoxWidth = 36;
+            numericBoxCc.ValueBoxWidth = 34;
             numericBoxCc.ValueFontSize = 9F;
             numericBoxCc.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
@@ -1890,8 +1870,7 @@ namespace ReciPro
             numericBoxHRTEM_BetaAgnle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip"));
             numericBoxHRTEM_BetaAgnle.UpDown_Increment = 0.05D;
-            //numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 36; // 260726Cl 旧: 最長値「100.00」が ko で 9px 入らず切れていた
-            numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 36; // 260726Cl: 51px へ広げるとflowLayoutPanel5 が全11言語で 2 行に折り返すため、切れを承知で据え置き
+            numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 34;
             numericBoxHRTEM_BetaAgnle.ValueFontSize = 9F;
             numericBoxHRTEM_BetaAgnle.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
@@ -1910,14 +1889,12 @@ namespace ReciPro
             numericBoxDefocus.Maximum = 1000D;
             numericBoxDefocus.Minimum = -1000D;
             numericBoxDefocus.Name = "numericBoxDefocus";
-            numericBoxDefocus.RadianValue = -1.0088003076527223D;
             numericBoxDefocus.ShowUpDown = true;
             numericBoxDefocus.SmartIncrement = true;
             numericBoxDefocus.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
             numericBoxDefocus.Value = -57.8D;
-            //numericBoxDefocus.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「-1000.00」が ko で 17px 入らず切れていた
-            numericBoxDefocus.ValueBoxWidth = 63; // 260726Cl
+            numericBoxDefocus.ValueBoxWidth = 50;
             numericBoxDefocus.ValueFontSize = 9F;
             numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
             // 
@@ -1966,13 +1943,12 @@ namespace ReciPro
             numericBoxAccVol.Maximum = 1000D;
             numericBoxAccVol.Minimum = 1D;
             numericBoxAccVol.Name = "numericBoxAccVol";
-            numericBoxAccVol.RadianValue = 3.4906585039886591D;
             numericBoxAccVol.ShowUpDown = true;
             numericBoxAccVol.SmartIncrement = true;
             numericBoxAccVol.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
             numericBoxAccVol.Value = 200D;
-            numericBoxAccVol.ValueBoxWidth = 36;
+            numericBoxAccVol.ValueBoxWidth = 38;
             numericBoxAccVol.ValueFontSize = 9F;
             numericBoxAccVol.ValueChanged += NumericBoxAccVol_ValueChanged;
             // 
@@ -1984,7 +1960,6 @@ namespace ReciPro
             numericBoxDeltaV.Maximum = 10D;
             numericBoxDeltaV.Minimum = 0D;
             numericBoxDeltaV.Name = "numericBoxDeltaV";
-            numericBoxDeltaV.RadianValue = 0.013962634015954637D;
             numericBoxDeltaV.RestrictLimitValue = false;
             numericBoxDeltaV.ShowUpDown = true;
             numericBoxDeltaV.SmartIncrement = true;
@@ -1992,7 +1967,7 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
             numericBoxDeltaV.UpDown_Increment = 0.1D;
             numericBoxDeltaV.Value = 0.8D;
-            numericBoxDeltaV.ValueBoxWidth = 36;
+            numericBoxDeltaV.ValueBoxWidth = 38;
             numericBoxDeltaV.ValueFontSize = 9F;
             numericBoxDeltaV.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
@@ -2084,13 +2059,12 @@ namespace ReciPro
             numericBoxThickness.Maximum = 1000D;
             numericBoxThickness.Minimum = 0.001D;
             numericBoxThickness.Name = "numericBoxThickness";
-            numericBoxThickness.RadianValue = 0.3490658503988659D;
             numericBoxThickness.ShowUpDown = true;
             numericBoxThickness.SmartIncrement = true;
             numericBoxThickness.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.Value = 20D;
-            numericBoxThickness.ValueBoxWidth = 50;
+            numericBoxThickness.ValueBoxWidth = 48;
             numericBoxThickness.ValueFontSize = 9F;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
             // 
@@ -2133,7 +2107,7 @@ namespace ReciPro
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
+            menuStrip1.ShowItemToolTips = true;
             // 
             // fileToolStripMenuItem
             // 

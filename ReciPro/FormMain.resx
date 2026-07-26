@@ -2292,6 +2292,9 @@ edit to set the orientation directly.</value>
   <data name="buttonReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="buttonReset.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>138, 0</value>
+  </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 27</value>
   </data>
@@ -3503,6 +3506,17 @@ calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
     <value>Download the Intel MKL native library (~55MB).
 Once downloaded, MKL is used automatically for large matrix calculations.</value>
   </data>
+  <data name="toolStripMenuItemMacroPipeListener.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 22</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
+    <value>Accept external macro commands (named pipe)</value>
+  </data>
+  <data name="toolStripMenuItemMacroPipeListener.ToolTipText" xml:space="preserve">
+    <value>Listen on the named pipe 'ReciPro.Macro.v1' and execute IronPython macros sent by external programs.
+Request: UTF-8 macro text terminated by a NUL byte. Response: JSON {"output","error"} until EOF.
+Note: when enabled, any process of the same user can execute macro code in ReciPro.</value>
+  </data>
   <data name="toolStripSeparatorCapture.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 6</value>
   </data>
@@ -3517,17 +3531,6 @@ Once downloaded, MKL is used automatically for large matrix calculations.</value
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Disable Crystallography.Native library (requires restart)</value>
-  </data>
-  <data name="toolStripMenuItemMacroPipeListener.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 22</value>
-  </data>
-  <data name="toolStripMenuItemMacroPipeListener.Text" xml:space="preserve">
-    <value>Accept external macro commands (named pipe)</value>
-  </data>
-  <data name="toolStripMenuItemMacroPipeListener.ToolTipText" xml:space="preserve">
-    <value>Listen on the named pipe 'ReciPro.Macro.v1' and execute IronPython macros sent by external programs.
-Request: UTF-8 macro text terminated by a NUL byte. Response: JSON {"output","error"} until EOF.
-Note: when enabled, any process of the same user can execute macro code in ReciPro.</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 22</value>
@@ -4357,6 +4360,12 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
   <data name="&gt;&gt;toolStripMenuItemUseMKL.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Name" xml:space="preserve">
+    <value>toolStripMenuItemMacroPipeListener</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparatorCapture.Name" xml:space="preserve">
     <value>toolStripSeparatorCapture</value>
   </data>
@@ -4373,12 +4382,6 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>toolStripMenuItemDisableNative</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemDisableNative.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Name" xml:space="preserve">
-    <value>toolStripMenuItemMacroPipeListener</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItemMacroPipeListener.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;disableOpneGLToolStripMenuItem.Name" xml:space="preserve">
@@ -4542,8 +4545,5 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="buttonReset.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>138, 0</value>
   </data>
 </root>

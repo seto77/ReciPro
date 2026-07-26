@@ -72,12 +72,6 @@ di zona</value>
   <data name="label67.Text" xml:space="preserve">
     <value>Lunghezza d'onda</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Lunghezza di camera</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Tens. accel.</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Condizioni TEM</value>
   </data>
@@ -187,17 +181,7 @@ relative del portacampione (richiede Foto 2).</value>
 elettronico a trasmissione; imposta la lunghezza d'onda degli elettroni
 usata per interpretare i pattern di diffrazione.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Tensione di accelerazione (kV) del microscopio
-elettronico a trasmissione; imposta la lunghezza d'onda degli elettroni
-usata per interpretare i pattern di diffrazione.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Lunghezza di camera (mm) del pattern di diffrazione;
-converte le distanze misurate tra gli spot (mm) nelle
-distanze del reticolo reciproco per l'indicizzazione.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>Lunghezza di camera (mm) del pattern di diffrazione;
 converte le distanze misurate tra gli spot (mm) nelle
 distanze del reticolo reciproco per l'indicizzazione.</value>
@@ -558,5 +542,11 @@ per θ del Pattern 1 (0-30, predefinito 3).</value>
     <value>Tolleranza di ricerca per L3 del Pattern 1,
 come percentuale della sua lunghezza (0-50%,
 predefinito 5; usata nella modalità 'Tre lati').</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Lunghezza di camera</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Tens. accel.</value>
   </data>
 </root>

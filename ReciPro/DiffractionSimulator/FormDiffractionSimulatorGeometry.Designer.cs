@@ -93,8 +93,7 @@
             comboBoxGradient.Location = new System.Drawing.Point(212, 0);
             comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
-            //comboBoxGradient.Size = new System.Drawing.Size(94, 25); // 260726Cl 旧: 「Negative Film」が 6px 切れていた
-            comboBoxGradient.Size = new System.Drawing.Size(106, 25); // 260726Cl
+            comboBoxGradient.Size = new System.Drawing.Size(100, 25);
             comboBoxGradient.TabIndex = 95;
             toolTip.SetToolTip(comboBoxGradient, "Selects positive or negative film\r\ngradient (negative inverts the displayed\r\nintensity scale of the overlapped image).");
             comboBoxGradient.SelectedIndexChanged += toolStripComboBoxGradient_SelectedIndexChanged;
@@ -104,10 +103,10 @@
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.FormattingEnabled = true;
             comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" });
-            comboBoxScale1.Location = new System.Drawing.Point(363, 0);
+            comboBoxScale1.Location = new System.Drawing.Point(369, 0);
             comboBoxScale1.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale1.Name = "comboBoxScale1";
-            comboBoxScale1.Size = new System.Drawing.Size(94, 25);
+            comboBoxScale1.Size = new System.Drawing.Size(88, 25);
             comboBoxScale1.TabIndex = 96;
             toolTip.SetToolTip(comboBoxScale1, "Switches the intensity mapping of the overlapped\r\nimage between logarithmic and linear scale.");
             comboBoxScale1.SelectedIndexChanged += toolStripComboBoxScale_SelectedIndexChanged;
@@ -120,7 +119,7 @@
             comboBoxScale2.Location = new System.Drawing.Point(514, 0);
             comboBoxScale2.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale2.Name = "comboBoxScale2";
-            comboBoxScale2.Size = new System.Drawing.Size(93, 25);
+            comboBoxScale2.Size = new System.Drawing.Size(87, 25);
             comboBoxScale2.TabIndex = 97;
             toolTip.SetToolTip(comboBoxScale2, "Selects the color scale (Gray, Cold-Warm, Spectrum,\r\nor Fire) used to render the overlapped image.");
             comboBoxScale2.SelectedIndexChanged += toolStripComboBoxScale2_SelectedIndexChanged;
@@ -168,7 +167,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new System.Drawing.Point(306, 0);
+            label23.Location = new System.Drawing.Point(312, 0);
             label23.Margin = new System.Windows.Forms.Padding(0);
             label23.Name = "label23";
             label23.Padding = new System.Windows.Forms.Padding(8, 3, 0, 0);
@@ -202,7 +201,6 @@
             numericBoxFootX.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxFootX.Name = "numericBoxFootX";
             numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxFootX.RadianValue = 8.9360857702109673D;
             numericBoxFootX.Size = new System.Drawing.Size(137, 25);
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
@@ -226,7 +224,6 @@
             numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxFootY.Name = "numericBoxFootY";
             numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxFootY.RadianValue = 8.9360857702109673D;
             numericBoxFootY.Size = new System.Drawing.Size(100, 25);
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
@@ -250,7 +247,6 @@
             numericBoxPixelSize.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxPixelSize.Name = "numericBoxPixelSize";
             numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPixelSize.RadianValue = 0.0017453292519943296D;
             numericBoxPixelSize.Size = new System.Drawing.Size(124, 27);
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
@@ -407,21 +403,19 @@
             // numericBoxCameraLength2
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength2.DecimalPlaces = 2;
             numericBoxCameraLength2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxCameraLength2.FooterText = "mm";
             numericBoxCameraLength2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxCameraLength2.HeaderText = "Camera length 2";
             numericBoxCameraLength2.Location = new System.Drawing.Point(0, 0);
             numericBoxCameraLength2.Margin = new System.Windows.Forms.Padding(0);
-            //numericBoxCameraLength2.Maximum = 1000000D; // 260726Cl 旧: 上限 1000000 は過大で 7 桁が数値欄に入らなかった
-            numericBoxCameraLength2.Maximum = 10000D; // 260726Cl
+            numericBoxCameraLength2.Maximum = 10000D;
             numericBoxCameraLength2.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxCameraLength2.DecimalPlaces = 2; // 260726Cl 追加: 6 (FormDiffractionSimulator 側) と同設定に揃える。桁数未指定だと general 書式で青天井のまま
             numericBoxCameraLength2.Minimum = 1D;
             numericBoxCameraLength2.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             numericBoxCameraLength2.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxCameraLength2.RadianValue = 17.453292519943293D;
             numericBoxCameraLength2.Size = new System.Drawing.Size(194, 25);
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
@@ -490,8 +484,7 @@
             label4.Size = new System.Drawing.Size(62, 15);
             label4.TabIndex = 101;
             label4.Text = "Brightness";
-            //toolTip.SetToolTip(label4, "Sets the upper intensity limit for\r\ndisplaying the overlapped image."); // 260726Cl 旧: label1 (Max int.) 用チップの丸写しで、label4 は Min/Max 両方を束ねる見出しなのに下限の説明が欠けていた
-            toolTip.SetToolTip(label4, "Adjusts the displayed brightness of the overlapped\r\nimage by setting its black point (Min int.) and\r\nwhite point (Max int.)."); // 260726Cl
+            toolTip.SetToolTip(label4, "Adjusts the displayed brightness of the overlapped\r\nimage by setting its black point (Min int.) and\r\nwhite point (Max int.).");
             // 
             // checkBoxDetectorSizePosition
             // 
@@ -508,6 +501,7 @@
             // 
             // groupBoxDetectorAndOverlappedImage
             // 
+            groupBoxDetectorAndOverlappedImage.AutoSize = true;
             groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel4);
             groupBoxDetectorAndOverlappedImage.Controls.Add(label4);
             groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel3);
@@ -517,28 +511,21 @@
             groupBoxDetectorAndOverlappedImage.Location = new System.Drawing.Point(7, 3);
             groupBoxDetectorAndOverlappedImage.Name = "groupBoxDetectorAndOverlappedImage";
             groupBoxDetectorAndOverlappedImage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            // 260726Cl: es/it/de で上段パネルが 1 行増え、Dock=Fill の flowLayoutPanel4 が 26px へ潰れて「Max int.」行が
-            //   切れていた。固定高さ (旧 623,166) を増やすと英語で余白が余るので、groupBox と flowLayoutPanel4 を
-            //   AutoSize にして必要な高さだけ伸ばす (親 panelDetectorAreaAndOverlappedImage が AutoSize なので吸収される)。
-            groupBoxDetectorAndOverlappedImage.AutoSize = true; // 260726Cl
-            groupBoxDetectorAndOverlappedImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly; // 260726Cl (GrowAndShrink だと設計幅 623 より縮んで内部レイアウトが総崩れになる)
-            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(623, 192); // 260726Cl 旧 (623, 166)
+            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(623, 192);
             groupBoxDetectorAndOverlappedImage.TabIndex = 5;
             groupBoxDetectorAndOverlappedImage.TabStop = false;
             // 
             // flowLayoutPanel4
             // 
+            flowLayoutPanel4.AutoSize = true;
             flowLayoutPanel4.Controls.Add(label2);
             flowLayoutPanel4.Controls.Add(trackBarMinInt);
             flowLayoutPanel4.Controls.Add(label1);
             flowLayoutPanel4.Controls.Add(trackBarMaxInt);
-            //flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill; // 260726Cl 旧: 残り高さに潰されて 2 行目が切れた
-            flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top; // 260726Cl
-            flowLayoutPanel4.AutoSize = true; // 260726Cl
-            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly; // 260726Cl
+            flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             flowLayoutPanel4.Location = new System.Drawing.Point(65, 110);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(555, 51);
+            flowLayoutPanel4.Size = new System.Drawing.Size(555, 54);
             flowLayoutPanel4.TabIndex = 7;
             // 
             // flowLayoutPanel3
@@ -598,7 +585,7 @@
             panelDetectorAreaAndOverlappedImage.Location = new System.Drawing.Point(0, 655);
             panelDetectorAreaAndOverlappedImage.Margin = new System.Windows.Forms.Padding(0);
             panelDetectorAreaAndOverlappedImage.Name = "panelDetectorAreaAndOverlappedImage";
-            panelDetectorAreaAndOverlappedImage.Size = new System.Drawing.Size(1007, 172);
+            panelDetectorAreaAndOverlappedImage.Size = new System.Drawing.Size(1007, 198);
             panelDetectorAreaAndOverlappedImage.TabIndex = 57;
             // 
             // panelDetectorGeometry

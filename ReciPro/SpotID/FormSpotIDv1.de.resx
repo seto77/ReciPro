@@ -75,12 +75,6 @@ suchen</value>
   <data name="label67.Text" xml:space="preserve">
     <value>Wellenlänge</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Kameralänge</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Beschl.-Spannung</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>TEM-Bedingung</value>
   </data>
@@ -196,17 +190,7 @@ gesucht werden können (erfordert Photo 2).</value>
 Elektronenmikroskops; legt die Elektronenwellenlänge fest,
 die zur Auswertung der Beugungsbilder verwendet wird.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Beschleunigungsspannung (kV) des Transmissions-
-Elektronenmikroskops; legt die Elektronenwellenlänge fest,
-die zur Auswertung der Beugungsbilder verwendet wird.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Kameralänge (mm) des Beugungsbildes;
-rechnet die gemessenen Spot-Abstände (mm) in
-reziproke Gitterabstände für die Indizierung um.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>Kameralänge (mm) des Beugungsbildes;
 rechnet die gemessenen Spot-Abstände (mm) in
 reziproke Gitterabstände für die Indizierung um.</value>
@@ -567,5 +551,11 @@ für θ von Pattern 1 (0-30, Standard 3).</value>
     <value>Suchtoleranz für L3 von Pattern 1,
 als Prozentsatz seiner Länge (0-50 %,
 Standard 5; verwendet im Modus 'Three Sides').</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Kameralänge</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Beschl.-Spannung</value>
   </data>
 </root>

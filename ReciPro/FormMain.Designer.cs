@@ -149,6 +149,7 @@
             toolStripMenuItemUseMillerBravais = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemIonicScattering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemUseMKL = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemMacroPipeListener = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparatorCapture = new System.Windows.Forms.ToolStripSeparator();
             resetRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemDisableNative = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,7 +158,6 @@
             toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
             captureGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItemMacroPipeListener = new System.Windows.Forms.ToolStripMenuItem(); // 260723Cl 追加
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
@@ -757,8 +757,8 @@
             // numericBoxMaxUVW
             // 
             numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxUVW.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxMaxUVW, "numericBoxMaxUVW");
-            numericBoxMaxUVW.DecimalPlaces = 0; // 260726Cl 追加: 晶帯軸指数の上限 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxMaxUVW.Maximum = 100D;
             numericBoxMaxUVW.Minimum = 1D;
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";
@@ -951,7 +951,7 @@
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem, macroToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
+            menuStrip1.ShowItemToolTips = true;
             // 
             // fileToolStripMenuItem
             // 
@@ -1076,6 +1076,13 @@
             resources.ApplyResources(toolStripMenuItemUseMKL, "toolStripMenuItemUseMKL");
             toolStripMenuItemUseMKL.Click += toolStripMenuItemUseMKL_Click;
             // 
+            // toolStripMenuItemMacroPipeListener
+            // 
+            toolStripMenuItemMacroPipeListener.CheckOnClick = true;
+            toolStripMenuItemMacroPipeListener.Name = "toolStripMenuItemMacroPipeListener";
+            resources.ApplyResources(toolStripMenuItemMacroPipeListener, "toolStripMenuItemMacroPipeListener");
+            toolStripMenuItemMacroPipeListener.CheckedChanged += toolStripMenuItemMacroPipeListener_CheckedChanged;
+            // 
             // toolStripSeparatorCapture
             // 
             toolStripSeparatorCapture.Name = "toolStripSeparatorCapture";
@@ -1122,14 +1129,7 @@
             powderDiffractionFunctionToolStripMenuItem.Name = "powderDiffractionFunctionToolStripMenuItem";
             resources.ApplyResources(powderDiffractionFunctionToolStripMenuItem, "powderDiffractionFunctionToolStripMenuItem");
             powderDiffractionFunctionToolStripMenuItem.CheckedChanged += powderDiffractionFunctionsToolStripMenuItem_CheckedChanged;
-            //
-            // toolStripMenuItemMacroPipeListener
-            //
-            toolStripMenuItemMacroPipeListener.CheckOnClick = true;
-            toolStripMenuItemMacroPipeListener.Name = "toolStripMenuItemMacroPipeListener";
-            resources.ApplyResources(toolStripMenuItemMacroPipeListener, "toolStripMenuItemMacroPipeListener");
-            toolStripMenuItemMacroPipeListener.CheckedChanged += toolStripMenuItemMacroPipeListener_CheckedChanged;
-            //
+            // 
             // helpToolStripMenuItem
             // 
             captureExtender.SetCapture(helpToolStripMenuItem, true);

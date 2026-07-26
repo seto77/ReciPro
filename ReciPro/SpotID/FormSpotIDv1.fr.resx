@@ -75,12 +75,6 @@ de zone</value>
   <data name="label67.Text" xml:space="preserve">
     <value>Longueur d'onde</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Longueur de caméra</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Tension accél.</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Conditions du MET</value>
   </data>
@@ -181,17 +175,7 @@ du porte-objet (nécessite Photo 2).</value>
 en transmission ; définit la longueur d'onde des électrons
 utilisée pour interpréter les clichés de diffraction.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Tension d'accélération (kV) du microscope électronique
-en transmission ; définit la longueur d'onde des électrons
-utilisée pour interpréter les clichés de diffraction.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Longueur de caméra (mm) du cliché de diffraction ;
-convertit les distances mesurées entre taches (mm) en
-espacements du réseau réciproque pour l'indexation.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>Longueur de caméra (mm) du cliché de diffraction ;
 convertit les distances mesurées entre taches (mm) en
 espacements du réseau réciproque pour l'indexation.</value>
@@ -552,5 +536,11 @@ pour θ du Pattern 1 (0-30, par défaut 3).</value>
     <value>Tolérance de recherche pour L3 du Pattern 1,
 en pourcentage de sa longueur (0-50%,
 par défaut 5 ; utilisée en mode « Three Sides »).</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Longueur de caméra</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Tension accél.</value>
   </data>
 </root>

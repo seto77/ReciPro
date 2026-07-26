@@ -81,10 +81,6 @@
     <value>Рисовать
 оси</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Число рассчитываемых
-траекторий</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>Наклон образца</value>
   </data>
@@ -230,11 +226,6 @@
 столкновения, при энергии падения (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>Число моделируемых траекторий электронов
-(от 100 до 1 000 000). Больше траекторий даёт
-более гладкую статистику, но требует больше времени на расчёт.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>Число моделируемых траекторий электронов
 (от 100 до 1 000 000). Больше траекторий даёт
 более гладкую статистику, но требует больше времени на расчёт.</value>

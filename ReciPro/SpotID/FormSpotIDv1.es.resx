@@ -75,12 +75,6 @@ de zona</value>
   <data name="label67.Text" xml:space="preserve">
     <value>Longitud de onda</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Longitud de cámara</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Volt. acel.</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>Condición TEM</value>
   </data>
@@ -196,17 +190,7 @@ relativas del portamuestras (requiere Photo 2).</value>
 de transmisión; define la longitud de onda de los electrones
 usada para interpretar los patrones de difracción.</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Voltaje de aceleración (kV) del microscopio electrónico
-de transmisión; define la longitud de onda de los electrones
-usada para interpretar los patrones de difracción.</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>Longitud de cámara (mm) del patrón de difracción;
-convierte las distancias medidas entre puntos (mm) en
-distancias de la red recíproca para la indexación.</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>Longitud de cámara (mm) del patrón de difracción;
 convierte las distancias medidas entre puntos (mm) en
 distancias de la red recíproca para la indexación.</value>
@@ -567,5 +551,11 @@ para θ del Patrón 1 (0-30, predeterminado 3).</value>
     <value>Tolerancia de búsqueda para L3 del Patrón 1,
 como porcentaje de su longitud (0-50%,
 predeterminado 5; usado en el modo 'Three Sides').</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>Longitud de cámara</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Volt. acel.</value>
   </data>
 </root>

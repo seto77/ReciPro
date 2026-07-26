@@ -75,12 +75,6 @@
   <data name="label67.Text" xml:space="preserve">
     <value>波长</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>相机长度</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>加速电压</value>
-  </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
     <value>TEM 条件</value>
   </data>
@@ -196,17 +190,7 @@ L1/L2/L3 及 θ）匹配的晶带轴；
 它设定用于解析衍射图样的
 电子波长。</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>透射电子显微镜的加速电压 (kV)；
-它设定用于解析衍射图样的
-电子波长。</value>
-  </data>
   <data name="numericBoxCamaraLength.ToolTip" xml:space="preserve">
-    <value>衍射图样的相机长度 (mm)；它将测得的斑点
-间距 (mm) 换算为用于标定的
-倒易点阵矢量长度。</value>
-  </data>
-  <data name="label15.ToolTip" xml:space="preserve">
     <value>衍射图样的相机长度 (mm)；它将测得的斑点
 间距 (mm) 换算为用于标定的
 倒易点阵矢量长度。</value>
@@ -565,5 +549,11 @@ L2 之间的夹角 θ（度）。</value>
     <value>Pattern 1 的 L3 搜索容差，以其长度的
 百分比表示（0–50%，
 默认 5；用于“三边”模式）。</value>
+  </data>
+  <data name="numericBoxCamaraLength.HeaderText" xml:space="preserve">
+    <value>相机长度</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>加速电压</value>
   </data>
 </root>

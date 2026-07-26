@@ -81,10 +81,6 @@
     <value>Dibujar
 ejes</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Número de trayectorias
-a calcular</value>
-  </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>Inclinación de la muestra</value>
   </data>
@@ -230,11 +226,6 @@ pierde por unidad de longitud de trayectoria en
 colisiones inelásticas, a la energía incidente (eV/nm).</value>
   </data>
   <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
-    <value>Número de trayectorias de electrones a simular
-(100 a 1.000.000). Más trayectorias dan
-estadísticas más suaves pero tardan más en calcularse.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
     <value>Número de trayectorias de electrones a simular
 (100 a 1.000.000). Más trayectorias dan
 estadísticas más suaves pero tardan más en calcularse.</value>

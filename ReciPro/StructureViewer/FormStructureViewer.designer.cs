@@ -1379,6 +1379,7 @@
             toolTip.SetToolTip(numericBoxInversionSymbolSize, resources.GetString("numericBoxInversionSymbolSize.ToolTip"));
             numericBoxInversionSymbolSize.UpDown_Increment = 20D;
             numericBoxInversionSymbolSize.Value = 100D;
+            numericBoxInversionSymbolSize.ValueBoxWidth = 36;
             numericBoxInversionSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
             // 
             // colorControlInversion
@@ -1422,6 +1423,7 @@
             toolTip.SetToolTip(numericBoxPlaneSymbolSize, resources.GetString("numericBoxPlaneSymbolSize.ToolTip"));
             numericBoxPlaneSymbolSize.UpDown_Increment = 20D;
             numericBoxPlaneSymbolSize.Value = 100D;
+            numericBoxPlaneSymbolSize.ValueBoxWidth = 36;
             numericBoxPlaneSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
             // 
             // numericBoxPlaneLineWidth
@@ -1436,6 +1438,7 @@
             toolTip.SetToolTip(numericBoxPlaneLineWidth, resources.GetString("numericBoxPlaneLineWidth.ToolTip"));
             numericBoxPlaneLineWidth.UpDown_Increment = 0.5D;
             numericBoxPlaneLineWidth.Value = 2D;
+            numericBoxPlaneLineWidth.ValueBoxWidth = 30;
             numericBoxPlaneLineWidth.ValueChanged += symmetryElement_PropertyChanged;
             // 
             // checkBoxSymElems_Mirrors
@@ -1490,6 +1493,7 @@
             toolTip.SetToolTip(numericBoxAxisSymbolSize, resources.GetString("numericBoxAxisSymbolSize.ToolTip"));
             numericBoxAxisSymbolSize.UpDown_Increment = 20D;
             numericBoxAxisSymbolSize.Value = 100D;
+            numericBoxAxisSymbolSize.ValueBoxWidth = 36;
             numericBoxAxisSymbolSize.ValueChanged += symmetryElement_PropertyChanged;
             // 
             // numericBoxAxisLineWidth
@@ -1504,6 +1508,7 @@
             toolTip.SetToolTip(numericBoxAxisLineWidth, resources.GetString("numericBoxAxisLineWidth.ToolTip"));
             numericBoxAxisLineWidth.UpDown_Increment = 0.5D;
             numericBoxAxisLineWidth.Value = 2D;
+            numericBoxAxisLineWidth.ValueBoxWidth = 30;
             numericBoxAxisLineWidth.ValueChanged += symmetryElement_PropertyChanged;
             // 
             // checkBoxSymElems_Rotinversions
@@ -1863,7 +1868,7 @@
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.ShowItemToolTips = true; // 260715Ch: resx のドロップダウン項目ツールチップを表示する
+            menuStrip1.ShowItemToolTips = true;
             // 
             // saveImageToolStripMenuItem
             // 

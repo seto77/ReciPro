@@ -105,15 +105,22 @@ namespace ReciPro
             pictureBox1 = new System.Windows.Forms.PictureBox();
             panel1 = new System.Windows.Forms.Panel();
             groupBoxOptics = new System.Windows.Forms.GroupBox();
-            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
-            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxCameraLength = new NumericBox();
+            flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxPixelSize = new NumericBox();
+            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
+            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
             waveLengthControl1 = new WaveLengthControl();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
             checkBoxGuideCircles = new System.Windows.Forms.CheckBox();
             groupBoxIndex = new System.Windows.Forms.GroupBox();
+            dataGridViewCandidates = new DpiAwareDataGridView();
+            noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bindingSourceCandidates = new System.Windows.Forms.BindingSource(components);
             buttonIdentifySpots = new System.Windows.Forms.Button();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
@@ -136,21 +143,17 @@ namespace ReciPro
             CrystalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             bindingSourceGrains = new System.Windows.Forms.BindingSource(components);
-            dataGridViewCandidates = new DpiAwareDataGridView();
-            noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            bindingSourceCandidates = new System.Windows.Forms.BindingSource(components);
             menuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            saveCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260723Cl 追加: 候補方位リストの CSV 保存
+            saveCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            copyCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260723Cl 追加: 候補方位リストの TSV コピー
+            copyCandidateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,9 +170,6 @@ namespace ReciPro
             toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
             backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -189,21 +189,21 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             groupBoxOptics.SuspendLayout();
+            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanel14.SuspendLayout();
+            flowLayoutPanel13.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             groupBoxIndex.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).BeginInit();
             flowLayoutPanel11.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).BeginInit();
             menuStrip.SuspendLayout();
             statusStrip.SuspendLayout();
-            flowLayoutPanel12.SuspendLayout();
-            flowLayoutPanel13.SuspendLayout();
-            flowLayoutPanel14.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -541,7 +541,6 @@ namespace ReciPro
             flowLayoutPanel2.Controls.Add(buttonDonut);
             flowLayoutPanel2.Controls.Add(numericBoxDonut);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.WrapContents = false; // 260715Ch: ローカライズ時も操作ボタンを縦に折り返さない。
             // 
             // buttonGlobalFit
             // 
@@ -563,19 +562,17 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxDonut, "numericBoxDonut");
             numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDonut.DecimalPlaces = 0; // 260726Cl 追加: ドーナツ半径 (整数・最長 100)
+            numericBoxDonut.DecimalPlaces = 0;
             numericBoxDonut.Maximum = 100D;
             numericBoxDonut.Minimum = 1D;
             numericBoxDonut.Name = "numericBoxDonut";
-            numericBoxDonut.RadianValue = 0.087266462599716474D;
             numericBoxDonut.ShowUpDown = true;
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
             numericBoxDonut.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;
-            //numericBoxDonut.ValueBoxWidth = 20; // 260726Cl 旧: 最長値が入らず切れていた
-            numericBoxDonut.ValueBoxWidth = 32; // 260726Cl
+            numericBoxDonut.ValueBoxWidth = 32;
             numericBoxDonut.ValueFontSize = 8F;
             // 
             // flowLayoutPanel10
@@ -658,7 +655,6 @@ namespace ReciPro
             numericBoxNumberOfSpots.Maximum = 1000D;
             numericBoxNumberOfSpots.Minimum = 1D;
             numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
-            numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
             numericBoxNumberOfSpots.ShowUpDown = true;
             numericBoxNumberOfSpots.SkipEventDuringInput = false;
             numericBoxNumberOfSpots.SmartIncrement = true;
@@ -674,7 +670,6 @@ namespace ReciPro
             numericBoxNearestNeighbor.Maximum = 1000D;
             numericBoxNearestNeighbor.Minimum = 1D;
             numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
-            numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
             numericBoxNearestNeighbor.ShowUpDown = true;
             numericBoxNearestNeighbor.SkipEventDuringInput = false;
             numericBoxNearestNeighbor.SmartIncrement = true;
@@ -690,7 +685,6 @@ namespace ReciPro
             numericBoxFittingRange.Maximum = 100D;
             numericBoxFittingRange.Minimum = 0D;
             numericBoxFittingRange.Name = "numericBoxFittingRange";
-            numericBoxFittingRange.RadianValue = 0.3490658503988659D;
             numericBoxFittingRange.ShowUpDown = true;
             numericBoxFittingRange.SkipEventDuringInput = false;
             numericBoxFittingRange.SmartIncrement = true;
@@ -729,12 +723,56 @@ namespace ReciPro
             groupBoxOptics.Name = "groupBoxOptics";
             groupBoxOptics.TabStop = false;
             // 
-            // radioButtonPixelSizeUnitInverse
+            // flowLayoutPanel12
             // 
-            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
-            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
-            toolTip.SetToolTip(radioButtonPixelSizeUnitInverse, resources.GetString("radioButtonPixelSizeUnitInverse.ToolTip"));
-            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
+            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
+            flowLayoutPanel12.Controls.Add(numericBoxCameraLength);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanel14);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            // 
+            // numericBoxCameraLength
+            // 
+            numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
+            numericBoxCameraLength.Maximum = 10000D;
+            numericBoxCameraLength.Minimum = 0D;
+            numericBoxCameraLength.Name = "numericBoxCameraLength";
+            numericBoxCameraLength.SkipEventDuringInput = false;
+            numericBoxCameraLength.SmartIncrement = true;
+            numericBoxCameraLength.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip"));
+            numericBoxCameraLength.Value = 1000D;
+            numericBoxCameraLength.ValueBoxWidth = 80;
+            numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
+            // 
+            // flowLayoutPanel14
+            // 
+            resources.ApplyResources(flowLayoutPanel14, "flowLayoutPanel14");
+            flowLayoutPanel14.Controls.Add(numericBoxPixelSize);
+            flowLayoutPanel14.Controls.Add(flowLayoutPanel13);
+            flowLayoutPanel14.Name = "flowLayoutPanel14";
+            // 
+            // numericBoxPixelSize
+            // 
+            numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
+            numericBoxPixelSize.Maximum = 100D;
+            numericBoxPixelSize.Minimum = 0D;
+            numericBoxPixelSize.Name = "numericBoxPixelSize";
+            numericBoxPixelSize.SkipEventDuringInput = false;
+            numericBoxPixelSize.SmartIncrement = true;
+            numericBoxPixelSize.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
+            numericBoxPixelSize.Value = 0.05D;
+            numericBoxPixelSize.ValueBoxWidth = 65;
+            numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
+            // 
+            // flowLayoutPanel13
+            // 
+            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
+            flowLayoutPanel13.Controls.Add(radioButtonPixelSizeUnitReal);
+            flowLayoutPanel13.Controls.Add(radioButtonPixelSizeUnitInverse);
+            flowLayoutPanel13.Name = "flowLayoutPanel13";
             // 
             // radioButtonPixelSizeUnitReal
             // 
@@ -746,37 +784,12 @@ namespace ReciPro
             radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
             radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
             // 
-            // numericBoxCameraLength
+            // radioButtonPixelSizeUnitInverse
             // 
-            numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
-            numericBoxCameraLength.Maximum = 10000D;
-            numericBoxCameraLength.Minimum = 0D;
-            numericBoxCameraLength.Name = "numericBoxCameraLength";
-            numericBoxCameraLength.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength.SkipEventDuringInput = false;
-            numericBoxCameraLength.SmartIncrement = true;
-            numericBoxCameraLength.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip"));
-            numericBoxCameraLength.Value = 1000D;
-            numericBoxCameraLength.ValueBoxWidth = 80;
-            numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
-            // 
-            // numericBoxPixelSize
-            // 
-            numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
-            numericBoxPixelSize.Maximum = 100D;
-            numericBoxPixelSize.Minimum = 0D;
-            numericBoxPixelSize.Name = "numericBoxPixelSize";
-            numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-            numericBoxPixelSize.SkipEventDuringInput = false;
-            numericBoxPixelSize.SmartIncrement = true;
-            numericBoxPixelSize.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
-            numericBoxPixelSize.Value = 0.05D;
-            numericBoxPixelSize.ValueBoxWidth = 65;
-            numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
+            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
+            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
+            toolTip.SetToolTip(radioButtonPixelSizeUnitInverse, resources.GetString("radioButtonPixelSizeUnitInverse.ToolTip"));
+            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
             // 
             // waveLengthControl1
             // 
@@ -818,6 +831,7 @@ namespace ReciPro
             // groupBoxIndex
             // 
             captureExtender.SetCapture(groupBoxIndex, true);
+            groupBoxIndex.Controls.Add(dataGridViewCandidates);
             groupBoxIndex.Controls.Add(buttonIdentifySpots);
             groupBoxIndex.Controls.Add(flowLayoutPanel11);
             groupBoxIndex.Controls.Add(buttonStop);
@@ -825,10 +839,68 @@ namespace ReciPro
             groupBoxIndex.Controls.Add(flowLayoutPanel7);
             groupBoxIndex.Controls.Add(flowLayoutPanel4);
             groupBoxIndex.Controls.Add(dataGridViewGrains);
-            groupBoxIndex.Controls.Add(dataGridViewCandidates);
             resources.ApplyResources(groupBoxIndex, "groupBoxIndex");
             groupBoxIndex.Name = "groupBoxIndex";
             groupBoxIndex.TabStop = false;
+            // 
+            // dataGridViewCandidates
+            // 
+            dataGridViewCandidates.AllowUserToAddRows = false;
+            dataGridViewCandidates.AllowUserToDeleteRows = false;
+            dataGridViewCandidates.AllowUserToResizeRows = false;
+            dataGridViewCandidates.AutoGenerateColumns = false;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCandidates.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn1, AssignedSpots });
+            dataGridViewCandidates.DataSource = bindingSourceCandidates;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewCandidates.DefaultCellStyle = dataGridViewCellStyle17;
+            resources.ApplyResources(dataGridViewCandidates, "dataGridViewCandidates");
+            dataGridViewCandidates.MultiSelect = false;
+            dataGridViewCandidates.Name = "dataGridViewCandidates";
+            dataGridViewCandidates.ReadOnly = true;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCandidates.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCandidates.RowHeadersVisible = false;
+            dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridViewCandidates, resources.GetString("dataGridViewCandidates.ToolTip"));
+            // 
+            // noDataGridViewTextBoxColumn1
+            // 
+            noDataGridViewTextBoxColumn1.DataPropertyName = "No";
+            resources.ApplyResources(noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
+            noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
+            noDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // AssignedSpots
+            // 
+            AssignedSpots.DataPropertyName = "AssignedSpots";
+            resources.ApplyResources(AssignedSpots, "AssignedSpots");
+            AssignedSpots.Name = "AssignedSpots";
+            AssignedSpots.ReadOnly = true;
+            // 
+            // bindingSourceCandidates
+            // 
+            bindingSourceCandidates.DataMember = "DataTableCandidate";
+            bindingSourceCandidates.DataSource = dataSet;
+            bindingSourceCandidates.CurrentChanged += bindingSourceCandidates_CurrentChanged;
             // 
             // buttonIdentifySpots
             // 
@@ -861,19 +933,17 @@ namespace ReciPro
             // numericBoxDiffractedWaves
             // 
             numericBoxDiffractedWaves.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffractedWaves.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxDiffractedWaves, "numericBoxDiffractedWaves");
-            numericBoxDiffractedWaves.DecimalPlaces = 0; // 260726Cl 追加: 回折波の本数 (ValueInteger で消費する整数)。既定 -1 は general 書式で小数が表示され得る
             numericBoxDiffractedWaves.Maximum = 2048D;
             numericBoxDiffractedWaves.Minimum = 1D;
             numericBoxDiffractedWaves.Name = "numericBoxDiffractedWaves";
-            numericBoxDiffractedWaves.RadianValue = 6.9813170079773181D;
             numericBoxDiffractedWaves.ShowUpDown = true;
             numericBoxDiffractedWaves.SmartIncrement = true;
             numericBoxDiffractedWaves.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiffractedWaves, resources.GetString("numericBoxDiffractedWaves.ToolTip"));
             numericBoxDiffractedWaves.Value = 400D;
-            //numericBoxDiffractedWaves.ValueBoxWidth = 36; // 260726Cl 旧: zh-Hans で最長値「2048」が 3px 入らなかった
-            numericBoxDiffractedWaves.ValueBoxWidth = 42; // 260726Cl
+            numericBoxDiffractedWaves.ValueBoxWidth = 42;
             // 
             // numericBoxSemiangle
             // 
@@ -883,7 +953,6 @@ namespace ReciPro
             numericBoxSemiangle.Maximum = 10D;
             numericBoxSemiangle.Minimum = 1D;
             numericBoxSemiangle.Name = "numericBoxSemiangle";
-            numericBoxSemiangle.RadianValue = 0.034906585039886591D;
             numericBoxSemiangle.ShowUpDown = true;
             numericBoxSemiangle.SmartIncrement = true;
             numericBoxSemiangle.ThousandsSeparator = true;
@@ -911,20 +980,18 @@ namespace ReciPro
             // numericBoxAcceptableError
             // 
             numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcceptableError.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxAcceptableError, "numericBoxAcceptableError");
-            numericBoxAcceptableError.DecimalPlaces = 2; // 260726Cl 追加: 許容誤差 (最長 10.00)
             numericBoxAcceptableError.Maximum = 10D;
             numericBoxAcceptableError.Minimum = 0.1D;
             numericBoxAcceptableError.Name = "numericBoxAcceptableError";
-            numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
             numericBoxAcceptableError.ShowUpDown = true;
             numericBoxAcceptableError.SkipEventDuringInput = false;
             numericBoxAcceptableError.SmartIncrement = true;
             numericBoxAcceptableError.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAcceptableError, resources.GetString("numericBoxAcceptableError.ToolTip"));
             numericBoxAcceptableError.Value = 2D;
-            //numericBoxAcceptableError.ValueBoxWidth = 20; // 260726Cl 旧: 最長値が入らず切れていた
-            numericBoxAcceptableError.ValueBoxWidth = 40; // 260726Cl
+            numericBoxAcceptableError.ValueBoxWidth = 26;
             // 
             // checkBoxIgnoreMultipleDiffraction
             // 
@@ -962,20 +1029,17 @@ namespace ReciPro
             // numericBoxMaxGrainNum
             // 
             numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxGrainNum.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
-            numericBoxMaxGrainNum.DecimalPlaces = 0; // 260726Cl 追加: 探索する結晶粒の最大個数 (ループ上限に使う整数)
             numericBoxMaxGrainNum.Maximum = 10D;
-            //numericBoxMaxGrainNum.Minimum = 0.1D; // 260726Cl 旧: 個数なのに 0.1 が入力でき、ループが 1 回も回らなかった
-            numericBoxMaxGrainNum.Minimum = 1D; // 260726Cl
+            numericBoxMaxGrainNum.Minimum = 1D;
             numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
-            numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
             numericBoxMaxGrainNum.ShowUpDown = true;
             numericBoxMaxGrainNum.SkipEventDuringInput = false;
             numericBoxMaxGrainNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxGrainNum, resources.GetString("numericBoxMaxGrainNum.ToolTip"));
             numericBoxMaxGrainNum.Value = 2D;
-            //numericBoxMaxGrainNum.ValueBoxWidth = 20; // 260726Cl 旧: zh-Hans で最長値「10」が 3px 入らなかった
-            numericBoxMaxGrainNum.ValueBoxWidth = 26; // 260726Cl
+            numericBoxMaxGrainNum.ValueBoxWidth = 26;
             // 
             // flowLayoutPanel4
             // 
@@ -1018,35 +1082,35 @@ namespace ReciPro
             dataGridViewGrains.AllowUserToAddRows = false;
             dataGridViewGrains.AllowUserToDeleteRows = false;
             dataGridViewGrains.AllowUserToResizeRows = false;
-            resources.ApplyResources(dataGridViewGrains, "dataGridViewGrains");
             dataGridViewGrains.AutoGenerateColumns = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridViewGrains.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewGrains.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn2, CrystalName, assignedSpotsDataGridViewTextBoxColumn });
             dataGridViewGrains.DataSource = bindingSourceGrains;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dataGridViewGrains.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewGrains.DefaultCellStyle = dataGridViewCellStyle20;
+            resources.ApplyResources(dataGridViewGrains, "dataGridViewGrains");
             dataGridViewGrains.Name = "dataGridViewGrains";
             dataGridViewGrains.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridViewGrains.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewGrains.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             dataGridViewGrains.RowHeadersVisible = false;
             dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             toolTip.SetToolTip(dataGridViewGrains, resources.GetString("dataGridViewGrains.ToolTip"));
@@ -1078,65 +1142,6 @@ namespace ReciPro
             bindingSourceGrains.DataSource = dataSet;
             bindingSourceGrains.CurrentChanged += bindingSourceGrains_CurrentChanged;
             // 
-            // dataGridViewCandidates
-            // 
-            dataGridViewCandidates.AllowUserToAddRows = false;
-            dataGridViewCandidates.AllowUserToDeleteRows = false;
-            dataGridViewCandidates.AllowUserToResizeRows = false;
-            resources.ApplyResources(dataGridViewCandidates, "dataGridViewCandidates");
-            dataGridViewCandidates.AutoGenerateColumns = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridViewCandidates.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn1, AssignedSpots });
-            dataGridViewCandidates.DataSource = bindingSourceCandidates;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dataGridViewCandidates.DefaultCellStyle = dataGridViewCellStyle20;
-            dataGridViewCandidates.MultiSelect = false;
-            dataGridViewCandidates.Name = "dataGridViewCandidates";
-            dataGridViewCandidates.ReadOnly = true;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridViewCandidates.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            dataGridViewCandidates.RowHeadersVisible = false;
-            dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridViewCandidates, resources.GetString("dataGridViewCandidates.ToolTip"));
-            // 
-            // noDataGridViewTextBoxColumn1
-            // 
-            noDataGridViewTextBoxColumn1.DataPropertyName = "No";
-            resources.ApplyResources(noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
-            noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
-            noDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // AssignedSpots
-            // 
-            AssignedSpots.DataPropertyName = "AssignedSpots";
-            resources.ApplyResources(AssignedSpots, "AssignedSpots");
-            AssignedSpots.Name = "AssignedSpots";
-            AssignedSpots.ReadOnly = true;
-            // 
-            // bindingSourceCandidates
-            // 
-            bindingSourceCandidates.DataMember = "DataTableCandidate";
-            bindingSourceCandidates.DataSource = dataSet;
-            bindingSourceCandidates.CurrentChanged += bindingSourceCandidates_CurrentChanged;
-            // 
             // menuStrip
             // 
             menuStrip.GripMargin = new System.Windows.Forms.Padding(3, 3, 0, 3);
@@ -1160,7 +1165,6 @@ namespace ReciPro
             // 
             // saveToolStripMenuItem
             // 
-            //saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1 }); // 260723Cl 旧
             saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1, saveCandidateListToolStripMenuItem });
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
@@ -1170,23 +1174,21 @@ namespace ReciPro
             saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
             resources.ApplyResources(saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
             saveAsMetafileToolStripMenuItem.Click += saveAsMetafileToolStripMenuItem_Click;
-            //
+            // 
             // saveAsBitmapToolStripMenuItem1
-            //
+            // 
             saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
             resources.ApplyResources(saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
             saveAsBitmapToolStripMenuItem1.Click += saveAsBitmapToolStripMenuItem1_Click;
-            //
+            // 
             // saveCandidateListToolStripMenuItem
-            //
-            // 260723Cl 追加: 候補方位リスト (候補×grain の方位・残差・スポット割当) の CSV 保存
+            // 
             saveCandidateListToolStripMenuItem.Name = "saveCandidateListToolStripMenuItem";
             resources.ApplyResources(saveCandidateListToolStripMenuItem, "saveCandidateListToolStripMenuItem");
             saveCandidateListToolStripMenuItem.Click += copyOrSaveCandidateListToolStripMenuItem_Click;
             // 
             // copyToolStripMenuItem
             // 
-            //copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem }); // 260723Cl 旧
             copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem, copyCandidateListToolStripMenuItem });
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
@@ -1196,16 +1198,15 @@ namespace ReciPro
             copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
             resources.ApplyResources(copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
             copyAsMetafileToolStripMenuItem.Click += copyAsMetafileToolStripMenuItem_Click;
-            //
+            // 
             // copyAsBitmapToolStripMenuItem
-            //
+            // 
             copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
             resources.ApplyResources(copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
             copyAsBitmapToolStripMenuItem.Click += copyAsBitmapToolStripMenuItem_Click;
-            //
+            // 
             // copyCandidateListToolStripMenuItem
-            //
-            // 260723Cl 追加: 候補方位リストの TSV クリップボードコピー
+            // 
             copyCandidateListToolStripMenuItem.Name = "copyCandidateListToolStripMenuItem";
             resources.ApplyResources(copyCandidateListToolStripMenuItem, "copyCandidateListToolStripMenuItem");
             copyCandidateListToolStripMenuItem.Click += copyOrSaveCandidateListToolStripMenuItem_Click;
@@ -1299,27 +1300,6 @@ namespace ReciPro
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
-            // flowLayoutPanel12
-            // 
-            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
-            flowLayoutPanel12.Controls.Add(numericBoxCameraLength);
-            flowLayoutPanel12.Controls.Add(flowLayoutPanel14);
-            flowLayoutPanel12.Name = "flowLayoutPanel12";
-            // 
-            // flowLayoutPanel13
-            // 
-            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
-            flowLayoutPanel13.Controls.Add(radioButtonPixelSizeUnitReal);
-            flowLayoutPanel13.Controls.Add(radioButtonPixelSizeUnitInverse);
-            flowLayoutPanel13.Name = "flowLayoutPanel13";
-            // 
-            // flowLayoutPanel14
-            // 
-            resources.ApplyResources(flowLayoutPanel14, "flowLayoutPanel14");
-            flowLayoutPanel14.Controls.Add(numericBoxPixelSize);
-            flowLayoutPanel14.Controls.Add(flowLayoutPanel13);
-            flowLayoutPanel14.Name = "flowLayoutPanel14";
-            // 
             // FormSpotIDV2
             // 
             AllowDrop = true;
@@ -1366,10 +1346,18 @@ namespace ReciPro
             panel1.PerformLayout();
             groupBoxOptics.ResumeLayout(false);
             groupBoxOptics.PerformLayout();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanel14.ResumeLayout(false);
+            flowLayoutPanel14.PerformLayout();
+            flowLayoutPanel13.ResumeLayout(false);
+            flowLayoutPanel13.PerformLayout();
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             groupBoxIndex.ResumeLayout(false);
             groupBoxIndex.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).EndInit();
             flowLayoutPanel11.ResumeLayout(false);
             flowLayoutPanel11.PerformLayout();
             flowLayoutPanel8.ResumeLayout(false);
@@ -1380,18 +1368,10 @@ namespace ReciPro
             flowLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).EndInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).EndInit();
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
-            flowLayoutPanel12.ResumeLayout(false);
-            flowLayoutPanel12.PerformLayout();
-            flowLayoutPanel13.ResumeLayout(false);
-            flowLayoutPanel13.PerformLayout();
-            flowLayoutPanel14.ResumeLayout(false);
-            flowLayoutPanel14.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
