@@ -424,6 +424,7 @@
             // 
             resources.ApplyResources(numericBoxDetTilt, "numericBoxDetTilt");
             numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDetTilt.DecimalPlaces = 2; // 260726Cl 追加: 既定 -1 (general) だと桁数無制限で数値欄が切れる
             numericBoxDetTilt.Maximum = 180D;
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.Name = "numericBoxDetTilt";
@@ -432,7 +433,8 @@
             numericBoxDetTilt.UpDown_Increment = 10D;
             numericBoxDetTilt.Value = 90D;
             //numericBoxDetTilt.ValueBoxWidth = 50; // 260726Cl 旧: 隣のヘッダ (独/露の訳語) に幅を回すため縮小。Maximum=180 なので要実機確認
-            numericBoxDetTilt.ValueBoxWidth = 40; // 260726Cl
+            //numericBoxDetTilt.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「180.000」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxDetTilt.ValueBoxWidth = 54; // 260726Cl // 260726Cl
             numericBoxDetTilt.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxZofDet
@@ -643,7 +645,8 @@
             numericBoxThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.Value = 1D;
-            numericBoxThicknessStart.ValueBoxWidth = 38;
+            //numericBoxThicknessStart.ValueBoxWidth = 38; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxThicknessStart.ValueBoxWidth = 54; // 260726Cl
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessEnd
@@ -659,7 +662,8 @@
             numericBoxThicknessEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 50D;
-            numericBoxThicknessEnd.ValueBoxWidth = 40;
+            //numericBoxThicknessEnd.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxThicknessEnd.ValueBoxWidth = 54; // 260726Cl
             numericBoxThicknessEnd.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // buttonStop
@@ -822,7 +826,8 @@
             numericBoxEnergyEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyEnd, resources.GetString("numericBoxEnergyEnd.ToolTip"));
             numericBoxEnergyEnd.Value = 15D;
-            numericBoxEnergyEnd.ValueBoxWidth = 42;
+            //numericBoxEnergyEnd.ValueBoxWidth = 42; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxEnergyEnd.ValueBoxWidth = 54; // 260726Cl
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStart
@@ -839,7 +844,8 @@
             toolTip.SetToolTip(numericBoxEnergyStart, resources.GetString("numericBoxEnergyStart.ToolTip"));
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyStart.ValueBoxWidth = 42;
+            //numericBoxEnergyStart.ValueBoxWidth = 42; // 260726Cl 旧: 最長値「1000.00」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxEnergyStart.ValueBoxWidth = 54; // 260726Cl
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStep
@@ -1380,6 +1386,7 @@
             // 
             resources.ApplyResources(numericBoxDetWidth, "numericBoxDetWidth");
             numericBoxDetWidth.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDetWidth.DecimalPlaces = 0; // 260726Cl 追加: ピクセル数なので整数。既定 -1 (general) だと計算値がフル桁で入り得る
             numericBoxDetWidth.Maximum = 4096D;
             numericBoxDetWidth.Minimum = 1D;
             numericBoxDetWidth.Name = "numericBoxDetWidth";
@@ -1395,6 +1402,7 @@
             // 
             resources.ApplyResources(numericBoxDetHeight, "numericBoxDetHeight");
             numericBoxDetHeight.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDetHeight.DecimalPlaces = 0; // 260726Cl 追加: ピクセル数なので整数。既定 -1 (general) だと計算値がフル桁で入り得る
             numericBoxDetHeight.Maximum = 4096D;
             numericBoxDetHeight.Minimum = 1D;
             numericBoxDetHeight.Name = "numericBoxDetHeight";
@@ -1424,7 +1432,8 @@
             numericBoxDetResolution.UpDown_Increment = 0.01D;
             numericBoxDetResolution.Value = 0.1D;
             //numericBoxDetResolution.ValueBoxWidth = 50; // 260726Cl 旧: 隣のヘッダに幅を回すため縮小。Maximum=10・DecimalPlaces=3 (「10.000」) なので要実機確認
-            numericBoxDetResolution.ValueBoxWidth = 42; // 260726Cl
+            //numericBoxDetResolution.ValueBoxWidth = 42; // 260726Cl 旧: 最長値「10.000」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxDetResolution.ValueBoxWidth = 48; // 260726Cl // 260726Cl
             numericBoxDetResolution.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // flowLayoutPanelDetectorPosition
@@ -1974,7 +1983,8 @@
             numericBoxResolution.Name = "numericBoxResolution";
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.1D;
-            numericBoxResolution.ValueBoxWidth = 40;
+            //numericBoxResolution.ValueBoxWidth = 40; // 260726Cl 旧: 最長値「10.000」が数値欄に入らず切れていた (--diagnose ValueBoxClipped)
+            numericBoxResolution.ValueBoxWidth = 48; // 260726Cl
             numericBoxResolution.ValueChanged += numericBoxResolution_ValueChanged;
             // 
             // sizeControl

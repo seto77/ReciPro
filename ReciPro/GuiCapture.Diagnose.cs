@@ -510,6 +510,31 @@ internal static partial class GuiCapture
                             ts.ClientSize.Width, ts.ClientSize.Width + it.Width, it.Width, "Error", $"PushedToOverflow:{ts.Name}"));
                 break;
 
+            // 260726Cl 追加: NumericBox の数値欄 (ValueBoxWidth で固定した TextBox) に、取り得る最長の値が収まるか。
+            //   DiagnoseControl は NumericBox 内部を「自己管理」として除外しているが、隣のヘッダへ幅を回すために
+            //   ValueBoxWidth を手で詰めた箇所は実際に数字が切れる。デザイナ上は既定値 (例 400) しか出ないので
+            //   気付けず、Maximum を入れて初めて分かる ＝ 目視レビューでは絶対に落ちる種類の不具合。
+            //   翻訳とは無関係 (数字は全言語共通) だが、フォント差で ja/zh の方が広くなるため全カルチャで測る意味がある。
+            case NumericBox nb when nb.ValueBoxWidth >= 0:
+                var box = EnumerateControls(nb).OfType<TextBox>().FirstOrDefault();
+                if (box == null || box.ClientSize.Width <= 0) break;
+                // NumericBox.setText と同じ書式 (FormatSpecifier 優先、無ければ DecimalPlaces、それも無ければ general)。
+                var fmt = !string.IsNullOrEmpty(nb.FormatSpecifier) ? nb.FormatSpecifier
+                        : nb.DecimalPlaces >= 0 ? $"f{nb.DecimalPlaces}" : "";
+                string widest = "";
+                foreach (var v in new[] { nb.Maximum, nb.Minimum, nb.Value })
+                {
+                    string s;
+                    try { s = v.ToString(fmt, System.Globalization.CultureInfo.CurrentCulture); }
+                    catch (FormatException) { s = v.ToString(System.Globalization.CultureInfo.CurrentCulture); }
+                    if (NeededRaw(s, box.Font, 1.0) > NeededRaw(widest, box.Font, 1.0)) widest = s;
+                }
+                // 数字は翻訳されないので inflate は掛けない (擬似ローカライズでも実寸で測る)。
+                // TextBox の内側余白は左右 1px 程度 + キャレット 1px を見込む。
+                Report(rows, culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
+                    box.ClientSize.Width, NeededRaw(widest, box.Font, 1.0) + 3, "ValueBoxClipped");
+                break;
+
             case Label { AutoSize: false, AutoEllipsis: true } lbl when IsSelfManagedComposite(lbl):
                 Report(rows, culture, form, ParentPath(lbl), "Label(AutoEllipsis)", lbl.Text, lbl.Font,
                     lbl.Width - lbl.Padding.Horizontal, Needed(lbl.Text, lbl.Font, inflate, 0), "EllipsisClipped", inflate);
