@@ -21,6 +21,8 @@ internal static partial class GuiCapture
     private const int OverflowTolerancePx = 2;
     // Warning と Error の境 (不足ピクセル)。codex 合意の「2px 以内=丸め、3〜5px 超=error」に沿う。
     private const int OverflowErrorPx = 6;
+    // 260726Cl: 数値欄が「最長値に対して広すぎる」と見なす余り幅。1 文字ぶん強 (≒10px) を超えたら報告する。
+    private const int ValueBoxSlackPx = 10;
     // 260726Cl 旧: Dock 並びの合計はみ出し用のゆるい閾値。Margin を誤って合算していたぶんの偽陽性
     //   (子 1 個あたり数 px) を打ち消すために 20px も要っていた。Margin 加算をやめたので OverflowErrorPx に統一。
     // private const int DockOverflowTolerancePx = 20;
@@ -531,8 +533,25 @@ internal static partial class GuiCapture
                 }
                 // 数字は翻訳されないので inflate は掛けない (擬似ローカライズでも実寸で測る)。
                 // TextBox の内側余白は左右 1px 程度 + キャレット 1px を見込む。
+                int needValue = NeededRaw(widest, box.Font, 1.0) + 3;
                 Report(rows, culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
-                    box.ClientSize.Width, NeededRaw(widest, box.Font, 1.0) + 3, "ValueBoxClipped");
+                    box.ClientSize.Width, needValue, "ValueBoxClipped");
+
+                // 260726Cl 追加: 逆に「取り得る最長値に対して数値欄が広すぎる」ケース。隣のヘッダに回せる幅が
+                //   死んでいる (訳語が伸びる言語ほど効く) ので余りも報告する。ただし桁数が有界なときだけ:
+                //   DecimalPlaces < 0 かつ FormatSpecifier 未指定 = general 書式は文字数が青天井なので、
+                //   今たまたま短いだけの値を根拠に縮めると、後で計算値が入ったときに切れる。
+                //   Error/Warning ではなく Info なので既存のトリアージ (Error 集計) には混ざらない。
+                int slack = box.ClientSize.Width - needValue;
+                //   桁数が有界 = 小数部が固定 (DecimalPlaces>=0 か FormatSpecifier 指定) かつ
+                //   Maximum/Minimum が両方とも有限であること。既定は ±∞ なので、範囲を設定していない
+                //   コントロール (計算結果を表示するだけの欄やグラフ軸) は「今表示している値」しか根拠が無く、
+                //   別の結晶・別の軸範囲になれば桁が伸びる。そこを縮めると後で切れるので対象外にする。
+                bool bounded = (nb.DecimalPlaces >= 0 || !string.IsNullOrEmpty(nb.FormatSpecifier))
+                    && double.IsFinite(nb.Maximum) && double.IsFinite(nb.Minimum);
+                if (bounded && slack > ValueBoxSlackPx)
+                    rows.Add(Row(culture, form, ParentPath(nb), "NumericBox(value)", widest, box.Font,
+                        box.ClientSize.Width, needValue, slack, "Info", $"ValueBoxOversized(w={nb.ValueBoxWidth})"));
                 break;
 
             case Label { AutoSize: false, AutoEllipsis: true } lbl when IsSelfManagedComposite(lbl):

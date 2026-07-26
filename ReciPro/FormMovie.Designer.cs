@@ -352,7 +352,8 @@ partial class FormMovie
         toolTip.SetToolTip(numericBoxFps, resources.GetString("numericBoxFps.ToolTip")); // 260703Cl 多言語 resx へ復元 (260531Cl 方式)
         numericBoxFps.TrimEndZero = true;
         numericBoxFps.Value = 25D;
-        numericBoxFps.ValueBoxWidth = 45;
+        //numericBoxFps.ValueBoxWidth = 45; // 260726Cl 旧: 最長値「120」に対して広すぎ、隣のヘッダに回せる幅が死んでいた
+        numericBoxFps.ValueBoxWidth = 31; // 260726Cl
         numericBoxFps.ValueFontSize = 9F;
         // 
         // checkBoxIncludeFinalFrame

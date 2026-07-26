@@ -563,6 +563,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxDonut, "numericBoxDonut");
             numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDonut.DecimalPlaces = 0; // 260726Cl 追加: ドーナツ半径 (整数・最長 100)
             numericBoxDonut.Maximum = 100D;
             numericBoxDonut.Minimum = 1D;
             numericBoxDonut.Name = "numericBoxDonut";
@@ -573,7 +574,8 @@ namespace ReciPro
             numericBoxDonut.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;
-            numericBoxDonut.ValueBoxWidth = 20;
+            //numericBoxDonut.ValueBoxWidth = 20; // 260726Cl 旧: 最長値が入らず切れていた
+            numericBoxDonut.ValueBoxWidth = 32; // 260726Cl
             numericBoxDonut.ValueFontSize = 8F;
             // 
             // flowLayoutPanel10
@@ -910,6 +912,7 @@ namespace ReciPro
             // 
             numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxAcceptableError, "numericBoxAcceptableError");
+            numericBoxAcceptableError.DecimalPlaces = 2; // 260726Cl 追加: 許容誤差 (最長 10.00)
             numericBoxAcceptableError.Maximum = 10D;
             numericBoxAcceptableError.Minimum = 0.1D;
             numericBoxAcceptableError.Name = "numericBoxAcceptableError";
@@ -920,7 +923,8 @@ namespace ReciPro
             numericBoxAcceptableError.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAcceptableError, resources.GetString("numericBoxAcceptableError.ToolTip"));
             numericBoxAcceptableError.Value = 2D;
-            numericBoxAcceptableError.ValueBoxWidth = 20;
+            //numericBoxAcceptableError.ValueBoxWidth = 20; // 260726Cl 旧: 最長値が入らず切れていた
+            numericBoxAcceptableError.ValueBoxWidth = 40; // 260726Cl
             // 
             // checkBoxIgnoreMultipleDiffraction
             // 
