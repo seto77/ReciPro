@@ -190,7 +190,7 @@ Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia f
 
 ![Crystal Control](../assets/cap-it-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-La parte superiore del pannello mostra sempre **Name** (nome del cristallo), **Formula** (formula chimica, calcolata dall'elenco degli atomi) e **Reset** (cancella tutti i campi).
+La parte superiore del pannello mostra sempre **Name** (nome del cristallo), **Formula** (formula chimica, calcolata dall'elenco degli atomi) e **Z** (numero di unità di formula per cella elementare). I pulsanti **Info simmetria** e **Interazione del fascio** aprono le finestre [Informazioni di simmetria](2-symmetry-information.md) e [Interazione del fascio](3-beam-interaction.md).
 
 ### Scheda Basic Info
 
@@ -200,11 +200,12 @@ Parametri reticolari, simmetria e grandezze da essi derivate.
 
 | Voce | Descrizione |
 |------|------|
-| Cell constants | Parametri reticolari a, b, c (in Å = 10⁻¹⁰ m) e α, β, γ. La scelta di una simmetria li vincola automaticamente (ad es. a=b=c, α=β=γ=90° per il sistema cubico). |
-| Symmetry | Scegli il sistema cristallino, il gruppo puntuale e il gruppo spaziale. Digita nel campo **Search** per elencare i candidati corrispondenti (sensibile a maiuscole/minuscole). |
-| Cell Volume / Cell Mass | Volume e massa della cella elementare. |
-| Molar Volume / Molar Mass / Z / Density | Volume molare, massa molare, numero di unità di formula per cella elementare (Z) e densità. Mostrati **solo quando sono stati immessi degli atomi**. |
-| Color of Profile | Colore usato per tracciare il profilo di diffrazione di questo cristallo. |
+| Costanti di cella | Parametri reticolari a, b, c (**Unità**: Å = 10⁻¹⁰ m o nm) e α, β, γ. La scelta di una simmetria li vincola automaticamente (ad es. a=b=c, α=β=γ=90° per il sistema cubico). |
+| Simmetria | Scegli il **Sistema cristallino**, il **Gruppo puntuale** e il **Gruppo spaziale**. Digita nel campo **Cerca** per elencare i candidati corrispondenti (sensibile a maiuscole/minuscole). |
+| Volume di cella / Massa di cella | Volume e massa della cella elementare. Il volume è mostrato in Å³ / nm³ secondo la selezione **Unità**. |
+| Volume molare / Massa molare / Densità | Volume molare, massa molare e densità. Mostrati **solo quando sono stati immessi degli atomi**. |
+| Z medio (numero) / Z medio (massa) / A medio | Numero atomico medio pesato sul numero o sulla massa, e peso atomico medio per atomo. |
+| Densità atomica / Densità elettronica | Numero di atomi e di elettroni per volume di cella, mostrati in Å⁻³ / nm⁻³ secondo la selezione **Unità**. |
 
 ### Scheda Atom
 

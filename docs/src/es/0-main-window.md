@@ -190,7 +190,7 @@ Edite los parámetros de red, la simetría y los átomos; arrastre y suelte arch
 
 ![Crystal Control](../assets/cap-es-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-La parte superior del panel siempre muestra **Name** (nombre del cristal), **Formula** (fórmula química, calculada a partir de la lista de átomos) y **Reset** (borrar todos los campos).
+La parte superior del panel siempre muestra **Name** (nombre del cristal), **Fórmula** (fórmula química, calculada a partir de la lista de átomos) y **Z** (número de unidades fórmula por celda elemental). Los botones **Info. de simetría** e **Interacción del haz** abren las ventanas [Información de simetría](2-symmetry-information.md) e [Interacción del haz](3-beam-interaction.md).
 
 ### Pestaña Basic Info
 
@@ -200,11 +200,12 @@ Parámetros de red, simetría y magnitudes derivadas de ellos.
 
 | Elemento | Descripción |
 |------|------|
-| Cell constants | Parámetros de red a, b, c (en Å = 10⁻¹⁰ m) y α, β, γ. La elección de una simetría los restringe automáticamente (p. ej., a=b=c, α=β=γ=90° para cúbico). |
-| Symmetry | Elija el sistema cristalino, el grupo puntual y el grupo espacial. Escriba en el cuadro **Search** para listar los candidatos coincidentes (distingue mayúsculas y minúsculas). |
-| Cell Volume / Cell Mass | Volumen y masa de la celda elemental. |
-| Molar Volume / Molar Mass / Z / Density | Volumen molar, masa molar, número de unidades fórmula por celda elemental (Z) y densidad. Se muestra **solo cuando se han introducido átomos**. |
-| Color of Profile | Color utilizado al representar el perfil de difracción de este cristal. |
+| Constantes de celda | Parámetros de red a, b, c (**Unidad**: Å = 10⁻¹⁰ m o nm) y α, β, γ. La elección de una simetría los restringe automáticamente (p. ej., a=b=c, α=β=γ=90° para cúbico). |
+| Simetría | Elija el **Sistema cristalino**, el **Grupo puntual** y el **Grupo espacial**. Escriba en el cuadro **Buscar** para listar los candidatos coincidentes (distingue mayúsculas y minúsculas). |
+| Volumen de celda / Masa de celda | Volumen y masa de la celda elemental. El volumen se muestra en Å³ / nm³ según la selección de **Unidad**. |
+| Volumen molar / Masa molar / Densidad | Volumen molar, masa molar y densidad. Se muestran **solo cuando se han introducido átomos**. |
+| Z medio (número) / Z medio (masa) / A medio | Número atómico medio ponderado por número y por masa, y peso atómico medio por átomo. |
+| Densidad atómica / Densidad electrónica | Número de átomos y de electrones por volumen de celda, mostrados en Å⁻³ / nm⁻³ según la selección de **Unidad**. |
 
 ### Pestaña Atom
 

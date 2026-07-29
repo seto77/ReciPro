@@ -190,7 +190,7 @@ Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos 
 
 ![Crystal Control](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-A parte superior do painel sempre exibe **Name** (nome do cristal), **Formula** (fórmula química, calculada a partir da lista de átomos) e **Reset** (limpar todos os campos).
+A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos) e **Z** (número de unidades de fórmula por célula unitária). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md).
 
 ### Aba Basic Info
 
@@ -200,11 +200,12 @@ Parâmetros de rede, simetria e grandezas derivadas deles.
 
 | Item | Descrição |
 |------|------|
-| Cell constants | Parâmetros de rede a, b, c (em Å = 10⁻¹⁰ m) e α, β, γ. A escolha de uma simetria os restringe automaticamente (por exemplo, a=b=c, α=β=γ=90° para cúbico). |
-| Symmetry | Escolha o sistema cristalino, o grupo pontual e o grupo espacial. Digite na caixa **Search** para listar os candidatos correspondentes (diferencia maiúsculas de minúsculas). |
-| Cell Volume / Cell Mass | Volume e massa da célula unitária. |
-| Molar Volume / Molar Mass / Z / Density | Volume molar, massa molar, número de unidades de fórmula por célula unitária (Z) e densidade. Exibido **somente quando os átomos foram inseridos**. |
-| Color of Profile | Cor usada ao traçar o perfil de difração deste cristal. |
+| Parâmetros da célula | Parâmetros de rede a, b, c (**Unidade**: Å = 10⁻¹⁰ m ou nm) e α, β, γ. A escolha de uma simetria os restringe automaticamente (por exemplo, a=b=c, α=β=γ=90° para cúbico). |
+| Simetria | Escolha o **Sistema cristalino**, o **Grupo pontual** e o **Grupo espacial**. Digite na caixa **Pesquisar** para listar os candidatos correspondentes (diferencia maiúsculas de minúsculas). |
+| Volume da célula / Massa da célula | Volume e massa da célula unitária. O volume é exibido em Å³ / nm³ conforme a seleção de **Unidade**. |
+| Volume molar / Massa molar / Densidade | Volume molar, massa molar e densidade. Exibidos **somente quando os átomos foram inseridos**. |
+| Z médio (número) / Z médio (massa) / A médio | Número atômico médio ponderado por número e por massa, e peso atômico médio por átomo. |
+| Densidade atômica / Densidade eletrônica | Número de átomos e de elétrons por volume da célula, exibidos em Å⁻³ / nm⁻³ conforme a seleção de **Unidade**. |
 
 ### Aba Atom
 

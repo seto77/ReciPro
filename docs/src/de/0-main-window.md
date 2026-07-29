@@ -190,7 +190,7 @@ Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien 
 
 ![Crystal Control](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Formula** (chemische Formel, aus der Atomliste berechnet) und **Reset** (alle Felder leeren).
+Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Summenformel** (chemische Formel, aus der Atomliste berechnet) und **Z** (Anzahl der Formeleinheiten pro Elementarzelle). Die Schaltflächen **Symmetrieinfo** und **Strahlwechselwirkung** öffnen die Fenster [Symmetrieinformationen](2-symmetry-information.md) und [Strahl-Wechselwirkung](3-beam-interaction.md).
 
 ### Registerkarte Basisinfo
 
@@ -200,11 +200,12 @@ Gitterparameter, Symmetrie und daraus abgeleitete Größen.
 
 | Element | Beschreibung |
 |------|------|
-| Cell constants | Gitterparameter a, b, c (in Å = 10⁻¹⁰ m) und α, β, γ. Die Wahl einer Symmetrie schränkt sie automatisch ein (z. B. a=b=c, α=β=γ=90° für kubisch). |
-| Symmetry | Wählen Sie Kristallsystem, Punktgruppe und Raumgruppe. Geben Sie in das **Search**-Feld ein, um passende Kandidaten aufzulisten (Groß-/Kleinschreibung beachten). |
-| Cell Volume / Cell Mass | Volumen und Masse der Elementarzelle. |
-| Molar Volume / Molar Mass / Z / Density | Molvolumen, molare Masse, Anzahl der Formeleinheiten pro Elementarzelle (Z) und Dichte. Wird **nur angezeigt, wenn Atome eingegeben wurden**. |
-| Color of Profile | Farbe, die beim Auftragen des Beugungsprofils dieses Kristalls verwendet wird. |
+| Gitterkonstanten | Gitterparameter a, b, c (**Einheit**: Å = 10⁻¹⁰ m oder nm) und α, β, γ. Die Wahl einer Symmetrie schränkt sie automatisch ein (z. B. a=b=c, α=β=γ=90° für kubisch). |
+| Symmetrie | Wählen Sie **Kristallsystem**, **Punktgruppe** und **Raumgruppe**. Geben Sie in das Feld **Suchen** ein, um passende Kandidaten aufzulisten (Groß-/Kleinschreibung beachten). |
+| Zellvolumen / Zellmasse | Volumen und Masse der Elementarzelle. Das Volumen wird entsprechend der **Einheit**-Auswahl in Å³ / nm³ angezeigt. |
+| Molvolumen / Molmasse / Dichte | Molvolumen, molare Masse und Dichte. Wird **nur angezeigt, wenn Atome eingegeben wurden**. |
+| Mittleres Z (Anzahl) / Mittleres Z (Masse) / Mittleres A | Anzahl- bzw. massengewichtete mittlere Ordnungszahl und mittleres Atomgewicht pro Atom. |
+| Atomdichte / Elektronendichte | Anzahl der Atome bzw. Elektronen pro Zellvolumen, angezeigt in Å⁻³ / nm⁻³ entsprechend der **Einheit**-Auswahl. |
 
 ### Registerkarte Atominfoinfo
 

@@ -190,7 +190,7 @@ Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-dépose
 
 ![Crystal Control](../assets/cap-fr-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-Le haut du panneau affiche toujours **Name** (nom du cristal), **Formula** (formule chimique, calculée à partir de la liste des atomes) et **Reset** (effacer tous les champs).
+Le haut du panneau affiche toujours **Name** (nom du cristal), **Formule chimique** (calculée à partir de la liste des atomes) et **Z** (nombre d'unités formulaires par maille). Les boutons **Infos de symétrie** et **Interaction du faisceau** ouvrent les fenêtres [Informations de symétrie](2-symmetry-information.md) et [Interaction du faisceau](3-beam-interaction.md).
 
 ### Onglet Basic Info
 
@@ -200,11 +200,12 @@ Paramètres de maille, symétrie et grandeurs qui en découlent.
 
 | Élément | Description |
 |------|------|
-| Cell constants | Paramètres de maille a, b, c (en Å = 10⁻¹⁰ m) et α, β, γ. Le choix d'une symétrie les contraint automatiquement (p. ex. a=b=c, α=β=γ=90° pour le système cubique). |
-| Symmetry | Choisissez le système cristallin, le groupe ponctuel et le groupe d'espace. Saisissez du texte dans le champ **Search** pour lister les candidats correspondants (sensible à la casse). |
-| Cell Volume / Cell Mass | Volume et masse de la maille. |
-| Molar Volume / Molar Mass / Z / Density | Volume molaire, masse molaire, nombre d'unités formulaires par maille (Z) et densité. Affiché **uniquement lorsque des atomes ont été saisis**. |
-| Color of Profile | Couleur utilisée lors du tracé du profil de diffraction de ce cristal. |
+| Constantes de maille | Paramètres de maille a, b, c (**Unité** : Å = 10⁻¹⁰ m ou nm) et α, β, γ. Le choix d'une symétrie les contraint automatiquement (p. ex. a=b=c, α=β=γ=90° pour le système cubique). |
+| Symétrie | Choisissez le **Système cristallin**, le **Groupe ponctuel** et le **Groupe d'espace**. Saisissez du texte dans le champ **Rechercher** pour lister les candidats correspondants (sensible à la casse). |
+| Volume de maille / Masse de maille | Volume et masse de la maille. Le volume est affiché en Å³ / nm³ selon la sélection **Unité**. |
+| Volume molaire / Masse molaire / Densité | Volume molaire, masse molaire et densité. Affichés **uniquement lorsque des atomes ont été saisis**. |
+| Z moyen (nombre) / Z moyen (masse) / A moyen | Numéro atomique moyen pondéré par le nombre ou par la masse, et poids atomique moyen par atome. |
+| Densité atomique / Densité électronique | Nombre d'atomes et d'électrons par volume de maille, affichés en Å⁻³ / nm⁻³ selon la sélection **Unité**. |
 
 ### Onglet Atom
 
