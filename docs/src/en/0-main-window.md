@@ -190,7 +190,7 @@ Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load 
 
 ![Crystal Control](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), and **Reset** (clear all fields).
+The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), and **Z** (number of formula units per unit cell). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows.
 
 ### Basic Info tab
 
@@ -200,11 +200,12 @@ Lattice parameters, symmetry, and quantities derived from them.
 
 | Item | Description |
 |------|------|
-| Cell constants | Lattice parameters a, b, c (in Å = 10⁻¹⁰ m) and α, β, γ. Choosing a symmetry constrains them automatically (e.g. a=b=c, α=β=γ=90° for cubic). |
-| Symmetry | Choose the crystal system, point group, and space group. Type in the **Search** box to list matching candidates (case-sensitive). |
-| Cell Volume / Cell Mass | Volume and mass of the unit cell. |
-| Molar Volume / Molar Mass / Z / Density | Molar volume, molar mass, number of formula units per unit cell (Z), and density. Shown **only when atoms have been entered**. |
-| Color of Profile | Color used when plotting this crystal's diffraction profile. |
+| Cell constants | Lattice parameters a, b, c (**Unit**: Å = 10⁻¹⁰ m or nm) and α, β, γ. Choosing a symmetry constrains them automatically (e.g. a=b=c, α=β=γ=90° for cubic). |
+| Symmetry | Choose the **Crystal System**, **Point Group**, and **Space Group**. Type in the **Search** box to list matching candidates (case-sensitive). |
+| Cell Volume / Cell Mass | Volume and mass of the unit cell. The volume is shown in Å³ / nm³ following the **Unit** selection. |
+| Molar Volume / Molar Mass / Density | Molar volume, molar mass, and density. Shown **only when atoms have been entered**. |
+| Mean Z (number) / Mean Z (mass) / Mean A | Number- and mass-averaged atomic number, and the mean atomic weight per atom. |
+| Atom density / Electron density | Numbers of atoms and electrons per unit-cell volume, shown in Å⁻³ / nm⁻³ following the **Unit** selection. |
 
 ### Atom tab
 
