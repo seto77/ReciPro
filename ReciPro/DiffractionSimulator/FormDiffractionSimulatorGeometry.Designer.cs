@@ -205,7 +205,6 @@
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
-            numericBoxFootX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxFootX, "Sets the X pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
             numericBoxFootX.Value = 512D;
             numericBoxFootX.ValueBoxWidth = 60;
@@ -228,7 +227,6 @@
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
-            numericBoxFootY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxFootY, "Sets the Y pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
             numericBoxFootY.Value = 512D;
             numericBoxFootY.ValueBoxWidth = 60;
@@ -251,7 +249,6 @@
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
-            numericBoxPixelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPixelSize, "Sets the physical size of one detector pixel in millimeters.");
             numericBoxPixelSize.Value = 0.1D;
             numericBoxPixelSize.ValueBoxWidth = 40;
@@ -420,7 +417,6 @@
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
-            numericBoxCameraLength2.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCameraLength2, "Sets the camera length to the detector plane in millimeters.");
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueBoxWidth = 60;
@@ -444,7 +440,6 @@
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
-            numericBoxPhi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPhi, "Sets the azimuthal angle phi of\r\nthe detector tilt axis in degrees.");
             numericBoxPhi.ValueBoxWidth = 60;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
@@ -469,7 +464,6 @@
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
-            numericBoxTau.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTau, "Sets the detector tilt angle tau\r\nabout the tilt axis in degrees.");
             numericBoxTau.ValueBoxWidth = 60;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;

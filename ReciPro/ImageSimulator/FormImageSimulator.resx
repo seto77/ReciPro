@@ -1441,9 +1441,6 @@ inelastic) electrons in the STEM image.</value>
   <data name="colorControlScale.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
   <data name="colorControlScale.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
@@ -1594,9 +1591,6 @@ set by the adjacent scale controls.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlLabel.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlLabel.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -4675,7 +4669,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -4684,7 +4678,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -4876,7 +4870,7 @@ of the annular dark-field detector.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -4885,7 +4879,7 @@ of the annular dark-field detector.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Outer</value>
@@ -5036,7 +5030,7 @@ detector outer collection angle. Read-only.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5045,7 +5039,7 @@ detector outer collection angle. Read-only.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Inner</value>
@@ -5425,13 +5419,13 @@ blur the STEM probe and reduce fine image detail.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
     <value>Shift  X</value>
@@ -5474,7 +5468,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5483,7 +5477,7 @@ center, in mrad (for tilted/dark-field imaging).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderText" xml:space="preserve">
     <value>Y</value>
@@ -5633,7 +5627,7 @@ inside the objective aperture (read-only).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -5642,7 +5636,7 @@ inside the objective aperture (read-only).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -5995,7 +5989,7 @@ transfer image contrast versus spatial frequency.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCs.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCs.FooterText" xml:space="preserve">
     <value>mm</value>
@@ -6004,7 +5998,7 @@ transfer image contrast versus spatial frequency.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCs.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCs.HeaderText" xml:space="preserve">
     <value>Cs</value>
@@ -6048,7 +6042,7 @@ transfer function) and Scherzer defocus.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCc.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCc.FooterText" xml:space="preserve">
     <value>mm</value>
@@ -6057,7 +6051,7 @@ transfer function) and Scherzer defocus.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCc.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCc.HeaderText" xml:space="preserve">
     <value>Cc</value>
@@ -6101,7 +6095,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -6110,7 +6104,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderText" xml:space="preserve">
     <value>β</value>
@@ -6180,7 +6174,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDefocus.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -6189,7 +6183,7 @@ increase blur from beam energy spread.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDefocus.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>Defocus Δf</value>
@@ -6405,7 +6399,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAccVol.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.FooterText" xml:space="preserve">
     <value>kV</value>
@@ -6414,7 +6408,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAccVol.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
     <value>Acc. Voltage (kV)</value>
@@ -6458,7 +6452,7 @@ electron wavelength and image contrast.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.FooterText" xml:space="preserve">
     <value>eV</value>
@@ -6467,7 +6461,7 @@ electron wavelength and image contrast.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 4, 0, 0</value>
+    <value>5, 5, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.HeaderText" xml:space="preserve">
     <value>ΔV</value>
@@ -6890,7 +6884,7 @@ when "Serial image" mode is selected.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThickness.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -6899,7 +6893,7 @@ when "Serial image" mode is selected.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 19</value>
@@ -7716,6 +7710,12 @@ code (fast C++/Eigen) or Managed code
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlScale.ToolTip1" xml:space="preserve">
     <value>Color of scale bar</value>

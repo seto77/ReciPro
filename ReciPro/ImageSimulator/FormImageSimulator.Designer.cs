@@ -878,7 +878,6 @@ namespace ReciPro
             numericBoxThicknessNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip"));
             numericBoxThicknessNum.Value = 4D;
-            numericBoxThicknessNum.ValueBoxWidth = -1;                                                                                                // 260726Cl 変更 (旧 38): Dock=Top のため従来は ValueBoxWidth が無視され数値欄が伸縮していた。>=0 が Dock 時に「フッタ伸縮」を意味する新仕様になったので、見た目維持のため -1 にする
             numericBoxThicknessNum.ValueFontSize = 9F;
             numericBoxThicknessNum.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -895,7 +894,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.UpDown_Increment = 10D;
             numericBoxThicknessStep.Value = 20D;
-            numericBoxThicknessStep.ValueBoxWidth = -1;                                                                                               // 260726Cl 変更 (旧 38): 同上 (Dock=Top のため見た目維持で -1)
             numericBoxThicknessStep.ValueFontSize = 9F;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -912,7 +910,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.UpDown_Increment = 10D;
             numericBoxThicknessStart.Value = 20D;
-            numericBoxThicknessStart.ValueBoxWidth = -1;                                                                                              // 260726Cl 変更 (旧 38): 同上 (Dock=Top のため見た目維持で -1)
             numericBoxThicknessStart.ValueFontSize = 9F;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -1333,7 +1330,7 @@ namespace ReciPro
             numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 2D;
-            numericBoxResolution.ValueBoxWidth = -1;                                                                                                  // 260726Cl 変更 (旧 60): 同上 (Dock=Top のため見た目維持で -1)
+            numericBoxResolution.ValueBoxWidth = 45;
             numericBoxResolution.ValueFontSize = 9F;
             // 
             // sizeControl1

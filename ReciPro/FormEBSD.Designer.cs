@@ -337,6 +337,7 @@
             // numericBoxSampleTilt
             // 
             numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
+            numericBoxSampleTilt.DecimalPlaces = 2;
             resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
@@ -345,6 +346,7 @@
             toolTip.SetToolTip(numericBoxSampleTilt, resources.GetString("numericBoxSampleTilt.ToolTip"));
             numericBoxSampleTilt.UpDown_Increment = 10D;
             numericBoxSampleTilt.Value = -70D;
+            numericBoxSampleTilt.ValueBoxWidth = 45;
             numericBoxSampleTilt.ValueChanged += numericBoxSampleTilt_ValueChanged;
             // 
             // waveLengthControl
@@ -431,7 +433,7 @@
             toolTip.SetToolTip(numericBoxDetTilt, resources.GetString("numericBoxDetTilt.ToolTip"));
             numericBoxDetTilt.UpDown_Increment = 10D;
             numericBoxDetTilt.Value = 90D;
-            numericBoxDetTilt.ValueBoxWidth = 54;
+            numericBoxDetTilt.ValueBoxWidth = 45;
             numericBoxDetTilt.ValueChanged += numericBoxDetectorGeometry_ValueChanged;
             // 
             // numericBoxZofDet
@@ -593,7 +595,6 @@
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
-            numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 1D;
             numericBoxThicknessStep.ValueBoxWidth = 38;
@@ -609,7 +610,6 @@
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
-            numericBoxMaxNumOfG.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
             numericBoxMaxNumOfG.Value = 32D;
             numericBoxMaxNumOfG.ValueBoxWidth = 40;
@@ -638,7 +638,6 @@
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.SmartIncrement = true;
-            numericBoxThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.Value = 1D;
             numericBoxThicknessStart.ValueBoxWidth = 38;
@@ -654,7 +653,6 @@
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
-            numericBoxThicknessEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 50D;
             numericBoxThicknessEnd.ValueBoxWidth = 38;
@@ -817,7 +815,6 @@
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
             numericBoxEnergyEnd.ShowUpDown = true;
             numericBoxEnergyEnd.SmartIncrement = true;
-            numericBoxEnergyEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyEnd, resources.GetString("numericBoxEnergyEnd.ToolTip"));
             numericBoxEnergyEnd.Value = 15D;
             numericBoxEnergyEnd.ValueBoxWidth = 38;
@@ -833,7 +830,6 @@
             numericBoxEnergyStart.Name = "numericBoxEnergyStart";
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.SmartIncrement = true;
-            numericBoxEnergyStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyStart, resources.GetString("numericBoxEnergyStart.ToolTip"));
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
@@ -850,7 +846,6 @@
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";
             numericBoxEnergyStep.ShowUpDown = true;
             numericBoxEnergyStep.SmartIncrement = true;
-            numericBoxEnergyStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEnergyStep, resources.GetString("numericBoxEnergyStep.ToolTip"));
             numericBoxEnergyStep.Value = 1D;
             numericBoxEnergyStep.ValueBoxWidth = 38;
@@ -1166,9 +1161,11 @@
             // buttonFindOrientation
             // 
             resources.ApplyResources(buttonFindOrientation, "buttonFindOrientation");
+            buttonFindOrientation.BackColor = System.Drawing.Color.SteelBlue;
+            buttonFindOrientation.ForeColor = System.Drawing.Color.White;
             buttonFindOrientation.Name = "buttonFindOrientation";
             toolTip.SetToolTip(buttonFindOrientation, resources.GetString("buttonFindOrientation.ToolTip"));
-            buttonFindOrientation.UseVisualStyleBackColor = true;
+            buttonFindOrientation.UseVisualStyleBackColor = false;
             buttonFindOrientation.Click += buttonFindOrientation_Click;
             // 
             // dataGridViewEbsdCandidates
@@ -1181,6 +1178,7 @@
             // buttonCalibrateGeometry
             // 
             resources.ApplyResources(buttonCalibrateGeometry, "buttonCalibrateGeometry");
+            buttonCalibrateGeometry.ForeColor = System.Drawing.SystemColors.ControlText;
             buttonCalibrateGeometry.Name = "buttonCalibrateGeometry";
             toolTip.SetToolTip(buttonCalibrateGeometry, resources.GetString("buttonCalibrateGeometry.ToolTip"));
             buttonCalibrateGeometry.UseVisualStyleBackColor = true;

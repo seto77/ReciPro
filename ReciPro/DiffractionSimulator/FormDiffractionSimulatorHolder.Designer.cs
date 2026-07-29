@@ -48,9 +48,15 @@
             buttonLink = new System.Windows.Forms.Button();
             groupBoxStereonetProperties = new System.Windows.Forms.GroupBox();
             groupBoxIndexRange = new System.Windows.Forms.GroupBox();
-            indexControl = new IndexControl();
             checkBoxIncludingEquivalent = new System.Windows.Forms.CheckBox();
+            indexControl = new IndexControl();
             groupBoxColorAndSize = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            label18 = new System.Windows.Forms.Label();
+            trackBarPointSize = new System.Windows.Forms.TrackBar();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            label17 = new System.Windows.Forms.Label();
+            trackBarStrSize = new System.Windows.Forms.TrackBar();
             flowLayoutPanelStereonetColor = new System.Windows.Forms.FlowLayoutPanel();
             colorControlBackGround = new ColorControl();
             colorControlHolder = new ColorControl();
@@ -61,10 +67,6 @@
             colorControlGeneralAxis = new ColorControl();
             colorControlTiltX = new ColorControl();
             colorControlTiltY = new ColorControl();
-            label17 = new System.Windows.Forms.Label();
-            label18 = new System.Windows.Forms.Label();
-            trackBarStrSize = new System.Windows.Forms.TrackBar();
-            trackBarPointSize = new System.Windows.Forms.TrackBar();
             numericBoxDrawingArea = new NumericBox();
             checkBoxTiltDirections = new System.Windows.Forms.CheckBox();
             checkBox1DegLine = new System.Windows.Forms.CheckBox();
@@ -78,20 +80,22 @@
             numericBoxTiltY = new NumericBox();
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            panel1 = new System.Windows.Forms.Panel();
+            panel2 = new System.Windows.Forms.Panel();
+            panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBoxTEMSettings.SuspendLayout();
             groupBoxLink.SuspendLayout();
             groupBoxStereonetProperties.SuspendLayout();
             groupBoxIndexRange.SuspendLayout();
             groupBoxColorAndSize.SuspendLayout();
-            flowLayoutPanelStereonetColor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
-            groupBoxHolderAngles.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
+            flowLayoutPanelStereonetColor.SuspendLayout();
+            groupBoxHolderAngles.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // graphicsBox
@@ -211,12 +215,12 @@
             // groupBoxStereonetProperties
             // 
             captureExtender.SetCapture(groupBoxStereonetProperties, true);
-            groupBoxStereonetProperties.Controls.Add(groupBoxIndexRange);
             groupBoxStereonetProperties.Controls.Add(groupBoxColorAndSize);
-            groupBoxStereonetProperties.Controls.Add(numericBoxDrawingArea);
-            groupBoxStereonetProperties.Controls.Add(checkBoxTiltDirections);
             groupBoxStereonetProperties.Controls.Add(checkBox1DegLine);
+            groupBoxStereonetProperties.Controls.Add(checkBoxTiltDirections);
             groupBoxStereonetProperties.Controls.Add(checkBoxShowIndexLabels);
+            groupBoxStereonetProperties.Controls.Add(groupBoxIndexRange);
+            groupBoxStereonetProperties.Controls.Add(numericBoxDrawingArea);
             resources.ApplyResources(groupBoxStereonetProperties, "groupBoxStereonetProperties");
             groupBoxStereonetProperties.Name = "groupBoxStereonetProperties";
             groupBoxStereonetProperties.TabStop = false;
@@ -229,16 +233,6 @@
             groupBoxIndexRange.Name = "groupBoxIndexRange";
             groupBoxIndexRange.TabStop = false;
             // 
-            // indexControl
-            // 
-            resources.ApplyResources(indexControl, "indexControl");
-            indexControl.Mode = IndexControl.ModeEnum.Axis;
-            indexControl.Name = "indexControl";
-            indexControl.PlusMinus = true;
-            indexControl.UpDownWidth = 16;
-            indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
-            indexControl.ValueChanged += numericBoxU_ValueChanged;
-            // 
             // checkBoxIncludingEquivalent
             // 
             resources.ApplyResources(checkBoxIncludingEquivalent, "checkBoxIncludingEquivalent");
@@ -249,6 +243,17 @@
             checkBoxIncludingEquivalent.UseVisualStyleBackColor = true;
             checkBoxIncludingEquivalent.CheckedChanged += checkBoxIncludingEquivalent_CheckedChanged;
             // 
+            // indexControl
+            // 
+            resources.ApplyResources(indexControl, "indexControl");
+            indexControl.Mode = IndexControl.ModeEnum.Axis;
+            indexControl.Name = "indexControl";
+            indexControl.PlusMinus = true;
+            toolTip1.SetToolTip(indexControl, resources.GetString("indexControl.ToolTip")); // 260730Cl 追加: 文案だけあって配線が無かった (表示不能) のを解消
+            indexControl.UpDownWidth = 16;
+            indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
+            indexControl.ValueChanged += numericBoxU_ValueChanged;
+            // 
             // groupBoxColorAndSize
             // 
             resources.ApplyResources(groupBoxColorAndSize, "groupBoxColorAndSize");
@@ -257,6 +262,52 @@
             groupBoxColorAndSize.Controls.Add(flowLayoutPanelStereonetColor);
             groupBoxColorAndSize.Name = "groupBoxColorAndSize";
             groupBoxColorAndSize.TabStop = false;
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(label18);
+            flowLayoutPanel2.Controls.Add(trackBarPointSize);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(label18, "label18");
+            label18.Name = "label18";
+            toolTip1.SetToolTip(label18, resources.GetString("label18.ToolTip"));
+            // 
+            // trackBarPointSize
+            // 
+            resources.ApplyResources(trackBarPointSize, "trackBarPointSize");
+            trackBarPointSize.Maximum = 20;
+            trackBarPointSize.Minimum = 1;
+            trackBarPointSize.Name = "trackBarPointSize";
+            trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip1.SetToolTip(trackBarPointSize, resources.GetString("trackBarPointSize.ToolTip"));
+            trackBarPointSize.Value = 4;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label17);
+            flowLayoutPanel1.Controls.Add(trackBarStrSize);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(label17, "label17");
+            label17.Name = "label17";
+            toolTip1.SetToolTip(label17, resources.GetString("label17.ToolTip"));
+            // 
+            // trackBarStrSize
+            // 
+            resources.ApplyResources(trackBarStrSize, "trackBarStrSize");
+            trackBarStrSize.Maximum = 200;
+            trackBarStrSize.Minimum = 1;
+            trackBarStrSize.Name = "trackBarStrSize";
+            trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip1.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip"));
+            trackBarStrSize.Value = 60;
             // 
             // flowLayoutPanelStereonetColor
             // 
@@ -360,38 +411,6 @@
             colorControlTiltY.Name = "colorControlTiltY";
             colorControlTiltY.TabStop = false;
             // 
-            // label17
-            // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            toolTip1.SetToolTip(label17, resources.GetString("label17.ToolTip"));
-            // 
-            // label18
-            // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
-            toolTip1.SetToolTip(label18, resources.GetString("label18.ToolTip"));
-            // 
-            // trackBarStrSize
-            // 
-            resources.ApplyResources(trackBarStrSize, "trackBarStrSize");
-            trackBarStrSize.Maximum = 200;
-            trackBarStrSize.Minimum = 1;
-            trackBarStrSize.Name = "trackBarStrSize";
-            trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip1.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip"));
-            trackBarStrSize.Value = 60;
-            // 
-            // trackBarPointSize
-            // 
-            resources.ApplyResources(trackBarPointSize, "trackBarPointSize");
-            trackBarPointSize.Maximum = 20;
-            trackBarPointSize.Minimum = 1;
-            trackBarPointSize.Name = "trackBarPointSize";
-            trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip1.SetToolTip(trackBarPointSize, resources.GetString("trackBarPointSize.ToolTip"));
-            trackBarPointSize.Value = 4;
-            // 
             // numericBoxDrawingArea
             // 
             numericBoxDrawingArea.BackColor = System.Drawing.Color.Transparent;
@@ -402,6 +421,7 @@
             numericBoxDrawingArea.ShowUpDown = true;
             numericBoxDrawingArea.SmartIncrement = true;
             numericBoxDrawingArea.Value = 30D;
+            numericBoxDrawingArea.ValueBoxWidth = 45;
             numericBoxDrawingArea.ValueChanged += numericBoxDrawingArea_ValueChanged;
             // 
             // checkBoxTiltDirections
@@ -518,19 +538,25 @@
             toolTip1.IsBalloon = true;
             toolTip1.ReshowDelay = 100;
             // 
-            // flowLayoutPanel1
+            // panel1
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label17);
-            flowLayoutPanel1.Controls.Add(trackBarStrSize);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            panel1.Controls.Add(groupBoxTEMSettings);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(groupBoxLink);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(groupBoxHolderAngles);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
-            // flowLayoutPanel2
+            // panel2
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(label18);
-            flowLayoutPanel2.Controls.Add(trackBarPointSize);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Name = "panel2";
+            // 
+            // panel3
+            // 
+            resources.ApplyResources(panel3, "panel3");
+            panel3.Name = "panel3";
             // 
             // FormDiffractionSimulatorHolder
             // 
@@ -538,11 +564,9 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(graphicsBox);
-            Controls.Add(groupBoxHolderAngles);
-            Controls.Add(groupBoxLink);
-            Controls.Add(groupBoxTEMSettings);
-            Controls.Add(label1MousePosition);
             Controls.Add(groupBoxStereonetProperties);
+            Controls.Add(panel1);
+            Controls.Add(label1MousePosition);
             KeyPreview = true;
             Name = "FormDiffractionSimulatorHolder";
             FormClosing += FormDiffractionSimulatorHolder_FormClosing;
@@ -559,16 +583,17 @@
             groupBoxIndexRange.PerformLayout();
             groupBoxColorAndSize.ResumeLayout(false);
             groupBoxColorAndSize.PerformLayout();
-            flowLayoutPanelStereonetColor.ResumeLayout(false);
-            flowLayoutPanelStereonetColor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
-            groupBoxHolderAngles.ResumeLayout(false);
-            groupBoxHolderAngles.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
+            flowLayoutPanelStereonetColor.ResumeLayout(false);
+            flowLayoutPanelStereonetColor.PerformLayout();
+            groupBoxHolderAngles.ResumeLayout(false);
+            groupBoxHolderAngles.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -624,5 +649,8 @@
         private IndexControl indexControl;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

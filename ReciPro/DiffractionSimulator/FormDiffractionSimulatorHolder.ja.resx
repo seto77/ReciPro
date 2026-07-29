@@ -208,7 +208,8 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="indexControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>ステレオネットに描く晶帯軸指数 [u v w] の上限を
+設定します。この範囲内の晶帯軸が表示されます。</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TEMホルダーシミュレーション</value>

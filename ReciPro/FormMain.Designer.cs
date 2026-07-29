@@ -618,7 +618,6 @@
             numericBoxStep.Name = "numericBoxStep";
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
-            numericBoxStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
             numericBoxStep.Value = 10D;
             // 
@@ -764,7 +763,6 @@
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";
             numericBoxMaxUVW.ShowUpDown = true;
             numericBoxMaxUVW.SkipEventDuringInput = false;
-            numericBoxMaxUVW.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxUVW, resources.GetString("numericBoxMaxUVW.ToolTip"));
             numericBoxMaxUVW.Value = 30D;
             numericBoxMaxUVW.ValueChanged += numericBoxMaxUVW_ValueChanged;

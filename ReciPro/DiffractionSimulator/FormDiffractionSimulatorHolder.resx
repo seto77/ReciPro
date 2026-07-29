@@ -120,19 +120,26 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="graphicsBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="graphicsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
+    <value>0, 0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="graphicsBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 400</value>
+    <value>405, 352</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
@@ -195,7 +202,6 @@ Tilt X (primary) axis on the stereonet.</value>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxTiltXDirection.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
@@ -236,13 +242,13 @@ Tilt X (primary) axis on the stereonet.</value>
     <value>3</value>
   </data>
   <data name="numericBoxLinkTiltX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxLinkTiltX.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxLinkTiltX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxLinkTiltX.HeaderText" xml:space="preserve">
     <value>Tilt X</value>
@@ -278,13 +284,13 @@ Tilt X (primary) axis on the stereonet.</value>
     <value>2</value>
   </data>
   <data name="numericBoxLinkTiltY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxLinkTiltY.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxLinkTiltY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxLinkTiltY.HeaderText" xml:space="preserve">
     <value>Tilt Y</value>
@@ -417,14 +423,17 @@ match it to your TEM goniometer convention.</value>
   <data name="&gt;&gt;radioButtonTiltY_Minus.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="groupBoxTEMSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="groupBoxTEMSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxTEMSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 403</value>
+    <value>425, 0</value>
   </data>
   <data name="groupBoxTEMSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 105</value>
+    <value>168, 100</value>
   </data>
   <data name="groupBoxTEMSettings.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -439,10 +448,10 @@ match it to your TEM goniometer convention.</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMSettings.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMSettings.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="buttonRotate180.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -493,7 +502,7 @@ match it to your TEM goniometer convention.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonLink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 31</value>
+    <value>102, 25</value>
   </data>
   <data name="buttonLink.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -526,17 +535,20 @@ orientation as the neutral direction.</value>
   <data name="&gt;&gt;buttonLink.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="groupBoxLink.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="groupBoxLink.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxLink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 403</value>
+    <value>239, 0</value>
   </data>
   <data name="groupBoxLink.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 105</value>
+    <value>182, 100</value>
   </data>
   <data name="groupBoxLink.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -551,127 +563,10 @@ orientation as the neutral direction.</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxLink.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBoxLink.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 62</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 19</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.TabIndex" type="System.Int32, mscorlib">
-    <value>94</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>Include equivalent indices</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
-    <value>When checked, also generates
-symmetry-equivalent zone axes for each index.</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalent.Name" xml:space="preserve">
-    <value>checkBoxIncludingEquivalent</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalent.Parent" xml:space="preserve">
-    <value>groupBoxIndexRange</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="indexControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="indexControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="indexControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="indexControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="indexControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="indexControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 41</value>
-  </data>
-  <data name="indexControl.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="indexControl.Values" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
-        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
-        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
-        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
-        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAgAAAAIAAAACAAAA
-        Cw==
-</value>
-  </data>
-  <data name="&gt;&gt;indexControl.Name" xml:space="preserve">
-    <value>indexControl</value>
-  </data>
-  <data name="&gt;&gt;indexControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;indexControl.Parent" xml:space="preserve">
-    <value>groupBoxIndexRange</value>
-  </data>
-  <data name="&gt;&gt;indexControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBoxIndexRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxIndexRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 60</value>
-  </data>
-  <data name="groupBoxIndexRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 87</value>
-  </data>
-  <data name="groupBoxIndexRange.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <data name="groupBoxIndexRange.Text" xml:space="preserve">
-    <value>Index range</value>
-  </data>
-  <data name="&gt;&gt;groupBoxIndexRange.Name" xml:space="preserve">
-    <value>groupBoxIndexRange</value>
-  </data>
-  <data name="&gt;&gt;groupBoxIndexRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxIndexRange.Parent" xml:space="preserve">
-    <value>groupBoxStereonetProperties</value>
-  </data>
-  <data name="&gt;&gt;groupBoxIndexRange.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="groupBoxColorAndSize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -752,7 +647,7 @@ symmetry-equivalent zone axes for each index.</value>
     <value>3, 123</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
@@ -848,7 +743,7 @@ symmetry-equivalent zone axes for each index.</value>
     <value>3, 101</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>181, 22</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
@@ -1286,7 +1181,7 @@ symmetry-equivalent zone axes for each index.</value>
     <value>3, 21</value>
   </data>
   <data name="flowLayoutPanelStereonetColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 80</value>
+    <value>181, 80</value>
   </data>
   <data name="flowLayoutPanelStereonetColor.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
@@ -1303,14 +1198,17 @@ symmetry-equivalent zone axes for each index.</value>
   <data name="&gt;&gt;flowLayoutPanelStereonetColor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="groupBoxColorAndSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="groupBoxColorAndSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxColorAndSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 231</value>
+    <value>3, 196</value>
   </data>
   <data name="groupBoxColorAndSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 155</value>
+    <value>187, 148</value>
   </data>
   <data name="groupBoxColorAndSize.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
@@ -1328,92 +1226,13 @@ symmetry-equivalent zone axes for each index.</value>
     <value>groupBoxStereonetProperties</value>
   </data>
   <data name="&gt;&gt;groupBoxColorAndSize.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxDrawingArea.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxDrawingArea.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="numericBoxDrawingArea.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
-    <value>Drawing area</value>
-  </data>
-  <data name="numericBoxDrawingArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 25</value>
-  </data>
-  <data name="numericBoxDrawingArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxDrawingArea.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxDrawingArea.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 25</value>
-  </data>
-  <data name="numericBoxDrawingArea.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDrawingArea.Name" xml:space="preserve">
-    <value>numericBoxDrawingArea</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDrawingArea.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDrawingArea.Parent" xml:space="preserve">
-    <value>groupBoxStereonetProperties</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDrawingArea.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBoxTiltDirections.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxTiltDirections.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxTiltDirections.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxTiltDirections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 200</value>
-  </data>
-  <data name="checkBoxTiltDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxTiltDirections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 21</value>
-  </data>
-  <data name="checkBoxTiltDirections.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="checkBoxTiltDirections.Text" xml:space="preserve">
-    <value>Show tilt directions</value>
-  </data>
-  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
-    <value>When checked, draws arrows on the stereonet
-showing the Tilt-X and Tilt-Y directions.</value>
-  </data>
-  <data name="&gt;&gt;checkBoxTiltDirections.Name" xml:space="preserve">
-    <value>checkBoxTiltDirections</value>
-  </data>
-  <data name="&gt;&gt;checkBoxTiltDirections.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxTiltDirections.Parent" xml:space="preserve">
-    <value>groupBoxStereonetProperties</value>
-  </data>
-  <data name="&gt;&gt;checkBoxTiltDirections.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="checkBox1DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="checkBox1DegLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1422,13 +1241,16 @@ showing the Tilt-X and Tilt-Y directions.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBox1DegLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 156</value>
+    <value>3, 175</value>
   </data>
   <data name="checkBox1DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="checkBox1DegLine.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
   <data name="checkBox1DegLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 21</value>
+    <value>187, 21</value>
   </data>
   <data name="checkBox1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -1450,10 +1272,59 @@ stereonet (color set by the 1° color control).</value>
     <value>groupBoxStereonetProperties</value>
   </data>
   <data name="&gt;&gt;checkBox1DegLine.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
+  </data>
+  <data name="checkBoxTiltDirections.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTiltDirections.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxTiltDirections.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxTiltDirections.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTiltDirections.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 154</value>
+  </data>
+  <data name="checkBoxTiltDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxTiltDirections.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxTiltDirections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 21</value>
+  </data>
+  <data name="checkBoxTiltDirections.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="checkBoxTiltDirections.Text" xml:space="preserve">
+    <value>Show tilt directions</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>When checked, draws arrows on the stereonet
+showing the Tilt-X and Tilt-Y directions.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Name" xml:space="preserve">
+    <value>checkBoxTiltDirections</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Parent" xml:space="preserve">
+    <value>groupBoxStereonetProperties</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="checkBoxShowIndexLabels.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="checkBoxShowIndexLabels.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1462,10 +1333,13 @@ stereonet (color set by the 1° color control).</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowIndexLabels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 178</value>
+    <value>3, 133</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBoxShowIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
+    <value>187, 21</value>
   </data>
   <data name="checkBoxShowIndexLabels.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -1487,16 +1361,188 @@ label next to each zone-axis point.</value>
     <value>groupBoxStereonetProperties</value>
   </data>
   <data name="&gt;&gt;checkBoxShowIndexLabels.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 62</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 19</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
+    <value>Include equivalent indices</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>When checked, also generates
+symmetry-equivalent zone axes for each index.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Name" xml:space="preserve">
+    <value>checkBoxIncludingEquivalent</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Parent" xml:space="preserve">
+    <value>groupBoxIndexRange</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="indexControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="indexControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="indexControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="indexControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="indexControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="indexControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 41</value>
+  </data>
+  <data name="indexControl.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Upper limits of the zone-axis indices [u v w];
+zone axes up to these values are drawn on the stereonet.</value>
+  </data>
+  <data name="indexControl.Values" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
+        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
+        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAgAAAAIAAAACAAAA
+        Cw==
+</value>
+  </data>
+  <data name="&gt;&gt;indexControl.Name" xml:space="preserve">
+    <value>indexControl</value>
+  </data>
+  <data name="&gt;&gt;indexControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;indexControl.Parent" xml:space="preserve">
+    <value>groupBoxIndexRange</value>
+  </data>
+  <data name="&gt;&gt;indexControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBoxIndexRange.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBoxIndexRange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxIndexRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 46</value>
+  </data>
+  <data name="groupBoxIndexRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 87</value>
+  </data>
+  <data name="groupBoxIndexRange.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="groupBoxIndexRange.Text" xml:space="preserve">
+    <value>Index range</value>
+  </data>
+  <data name="&gt;&gt;groupBoxIndexRange.Name" xml:space="preserve">
+    <value>groupBoxIndexRange</value>
+  </data>
+  <data name="&gt;&gt;groupBoxIndexRange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxIndexRange.Parent" xml:space="preserve">
+    <value>groupBoxStereonetProperties</value>
+  </data>
+  <data name="&gt;&gt;groupBoxIndexRange.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericBoxDrawingArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericBoxDrawingArea.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxDrawingArea.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxDrawingArea.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
+    <value>Drawing area</value>
+  </data>
+  <data name="numericBoxDrawingArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="numericBoxDrawingArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxDrawingArea.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxDrawingArea.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 25</value>
+  </data>
+  <data name="numericBoxDrawingArea.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Name" xml:space="preserve">
+    <value>numericBoxDrawingArea</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Parent" xml:space="preserve">
+    <value>groupBoxStereonetProperties</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="groupBoxStereonetProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="groupBoxStereonetProperties.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxStereonetProperties.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 2</value>
+    <value>405, 0</value>
   </data>
   <data name="groupBoxStereonetProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 396</value>
+    <value>193, 352</value>
   </data>
   <data name="groupBoxStereonetProperties.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -1514,7 +1560,7 @@ label next to each zone-axis point.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxStereonetProperties.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="label1MousePosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1547,13 +1593,13 @@ label next to each zone-axis point.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1MousePosition.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="numericBoxArrowStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxArrowStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxArrowStep.FooterText" xml:space="preserve">
     <value>°)</value>
@@ -1562,7 +1608,7 @@ label next to each zone-axis point.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxArrowStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxArrowStep.HeaderText" xml:space="preserve">
     <value>(step </value>
@@ -1632,13 +1678,13 @@ primary (Tilt X) axis, in degrees.</value>
     <value>1</value>
   </data>
   <data name="numericBoxTiltX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTiltX.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxTiltX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTiltX.Location" type="System.Drawing.Point, System.Drawing">
     <value>166, 19</value>
@@ -1705,13 +1751,13 @@ secondary (Tilt Y) axis, in degrees.</value>
     <value>3</value>
   </data>
   <data name="numericBoxTiltY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTiltY.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxTiltY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTiltY.Location" type="System.Drawing.Point, System.Drawing">
     <value>166, 47</value>
@@ -1781,14 +1827,17 @@ Up/Down change Tilt Y by the arrow step.</value>
   <data name="&gt;&gt;checkBoxEnableArrow.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="groupBoxHolderAngles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="groupBoxHolderAngles.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxHolderAngles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 403</value>
+    <value>0, 0</value>
   </data>
   <data name="groupBoxHolderAngles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 105</value>
+    <value>235, 100</value>
   </data>
   <data name="groupBoxHolderAngles.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -1803,10 +1852,82 @@ Up/Down change Tilt Y by the arrow step.</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxHolderAngles.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBoxHolderAngles.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 100</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 100</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 352</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>598, 100</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1815,7 +1936,7 @@ Up/Down change Tilt Y by the arrow step.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>628, 513</value>
+    <value>598, 452</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
