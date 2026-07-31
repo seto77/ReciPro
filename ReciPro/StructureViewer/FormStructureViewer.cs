@@ -109,6 +109,10 @@ public partial class FormStructureViewer : FormBase
     {
         InitializeComponent();
         HelpPage = "5-structure-viewer"; //260529Cl 追加
+        // 260731Cl 追加: ダークモード時は凡例パネルの背景をフォーム背景 (SystemColors.Control = #202020) に合わせる。
+        // (Designer では White 固定。中の Label 文字色は ambient 継承でダーク時に白へ再マップされる)
+        if (Application.IsDarkModeEnabled)
+            flowLayoutPanelLegend.BackColor = SystemColors.Control;
         GLObjectsP = GLObjects.AsParallel();
 
         for (int a = -1; a < 2; a++)
@@ -590,8 +594,13 @@ public partial class FormStructureViewer : FormBase
         if (checkBoxShowBondedAtoms.Checked)
         {
             var bonds = bondControl.GetAll().Where(b => b.Enabled).ToArray();//260718Cl 変更: Any()+Max() の二重列挙を一度の materialize に
-            threshold = bonds.Length > 0 ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
-            threshold = Math.Max(-0.5, threshold);
+            //260731Cl 変更: 境界をまたぐ多面体(中心が境界のすぐ外・頂点はさらにその先)も完全に描けるよう、マージンを 2×MaxLength に拡大 (クランプも 0.5→1.0 nm)。
+            //ただし 2× が要るのは多面体表示の定義がある場合のみ (ボンドのみなら境界跨ぎ結合は 1×MaxLength で全て拾える) — 余分な殻のセル探索・Sphere 生成を避ける
+            var mag = bonds.Any(b => b.ShowPolyhedron) ? 2 : 1;
+            threshold = bonds.Length > 0 ? -bonds.Max(b => b.MaxLength) * mag * 1.01 : -0.1;
+            threshold = Math.Max(-0.5 * mag, threshold);
+            //threshold = bonds.Length > 0 ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
+            //threshold = Math.Max(-0.5, threshold);
         }
 
         //原子を追加
@@ -676,12 +685,15 @@ public partial class FormStructureViewer : FormBase
     #region Bonds(結合)とPolyhedra (配位多面体)オブジェクトの生成
 
     /// <summary>Bondの頂点を表すためのテンポラリーなクラス</summary>
-    private readonly struct bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
+    //260731Cl 変更: 描画範囲内かどうかの判定用に isInside を追加。旧シグネチャ:
+    //private readonly struct bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
+    private readonly struct bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat, in bool isInside)
     {
         public readonly int ObjIndex = objIndex, AtomIndex = atomIndex, Key = cellKey, Serial = serial;
         public readonly V3 O = origin;
         public readonly double R = r;
         public readonly Material BondMat = bondMat, PolyMat = polyMat;
+        public readonly bool IsInside = isInside;//260731Cl 追加
     }
 
     /// <summary>結合(Bonds)と配位多面体(Polyhera)オブジェクトを生成</summary>
@@ -691,6 +703,13 @@ public partial class FormStructureViewer : FormBase
         static bool within(double d, double max, double min) => d < max && d > min;
         var dic1 = new Dictionary<string, bondVertex[]>();
         var dicMaterial = new ConcurrentDictionary<int, Material>();
+        //260731Cl 追加: 中心原子(Serial)ごとに多面体頂点と付随ボンド(円柱)を全ボンド定義にわたって統合するための辞書 (例: Cu-O と Cu-Cl の両定義から一つの多面体を生成)
+        //構成原子(中心+頂点)がすべて描画範囲外の多面体は付随ボンドごと描かない (判定と原子の Rendered 設定は一括生成ループ側で行う)
+        var polyDic = new Dictionary<int, (bondVertex c, List<bondVertex> vertices, List<GLObject> bondObjs, DrawingMode mode)>();
+        //260731Cl 追加: 並列区間 (ForAll) 内の原子 Rendered 書込は、兄弟イテレーションの GLObjects.AddRange (lock 内) と並走する。
+        //List のインデクサ読取と Add の並走は arm64 の weak memory model では grow 時に理論上 null 読取の窓があるため、
+        //書込対象 (この時点で追加済みの Sphere。ObjIndex は追記オンリーで不変) のスナップショット配列経由でアクセスして競合を消す。
+        var glSnap = GLObjects.ToArray();
         bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
         {
             double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
@@ -717,7 +736,8 @@ public partial class FormStructureViewer : FormBase
                                 polyMat = new Material(s.Material.Color, polyTrans);
                                 dicMaterial.TryAdd(id.Index + 1000, polyMat);
                             }
-                            return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                            //return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                            return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat, id.IsInside);//260731Cl 変更: IsInsideを追加
                         }).OrderBy(o => o.Key),
                     ]);
             }
@@ -786,12 +806,12 @@ public partial class FormStructureViewer : FormBase
                 }
             });
 
-            //頂点のRenderedをTrueに変更
-            var dic2P = dic2.AsParallel();
-            dic2P.SelectMany(d => d.Value.Select(v2 => vArray[v2].ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
-            dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
+            //頂点のRenderedをTrueに変更 //260731Cl 変更前 (下 2 行は旧コード。現在は円柱生成ループ内で描画される結合の参加原子だけ設定)
+            //dic2P.SelectMany(d => d.Value.Select(v2 => vArray[v2].ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
+            //dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
             //bondsとpolyhedraを追加
+            var dic2P = dic2.AsParallel();
             dic2P.ForAll(d =>
             {
                 var c = cArray[d.Key];
@@ -802,33 +822,102 @@ public partial class FormStructureViewer : FormBase
                 foreach (var i in vIndices)
                 {
                     var v = vArray[i];
+                    //260731Cl 追加: ボンドのみ(多面体チェック無し)の定義では、両端とも描画範囲外の結合は描かず、
+                    //実際に描画される結合の参加原子だけ Rendered を立てる (スキップされた結合の範囲外原子にラベルだけが残るのを防ぐ)。
+                    //多面体チェック有りの定義は、統合後に描画可否が確定する一括生成ループ側で立てる。
+                    if (!bond.ShowPolyhedron)
+                    {
+                        if (!c.IsInside && !v.IsInside)
+                            continue;
+                        glSnap[c.ObjIndex].Rendered = glSnap[v.ObjIndex].Rendered = true;
+                    }
                     var vec = v.O - c.O;//中心間を結ぶベクトル
                     var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
                     var tag = new bondID(c.Serial, v.Serial);
                     objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
                     objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
                 }
-                lock (lockObj3)
-                    GLObjects.AddRange(objects);
+                //lock (lockObj3)
+                //    GLObjects.AddRange(objects);
 
-                if (bond.ShowPolyhedron && vIndices.Length > 2)
+                //260731Cl 変更: 多面体チェック有りの定義は、円柱もここでは GLObjects に追加せず、中心原子(Serial)ごとに polyDic へ統合蓄積し、
+                //全ボンド定義の処理後に「構成原子(中心+統合頂点)のいずれかが範囲内」の場合のみ多面体と一緒に一括描画する。
+                //ボンドのみの定義は従来通りここで追加 (上のループで結合単位のスキップ済み)。
+                //マージ時の PolyMat と mode (ShowEdges 由来) は先に処理された定義の値が勝つ (定義リスト順で決定的)。
+                if (bond.ShowPolyhedron)
                 {
-                    if (vIndices.Length == 3)
+                    var verts = vIndices.Select(i => vArray[i]).ToArray();//lock 保持中の LINQ 遅延評価を避けるため事前 materialize
+                    var bondSlice = objects[..n];
+                    lock (lockObj3)
                     {
-                        var poly = new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron };
-                        lock (lockObj3)
-                            GLObjects.Add(poly);
-                    }
-                    else
-                    {
-                        var poly = new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
-                        { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
-                        lock (lockObj3)
-                            GLObjects.AddRange(poly);
+                        if (!polyDic.TryGetValue(c.Serial, out var p))
+                            polyDic.Add(c.Serial, p = (c, [], [], polyhedronMode));
+                        p.vertices.AddRange(verts);
+                        p.bondObjs.AddRange(bondSlice);
                     }
                 }
+                else
+                    lock (lockObj3)
+                        GLObjects.AddRange(objects[..n]);
+                //if (bond.ShowPolyhedron && vIndices.Length > 2)
+                //{
+                //    if (vIndices.Length == 3)
+                //    {
+                //        var poly = new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron };
+                //        lock (lockObj3)
+                //            GLObjects.Add(poly);
+                //    }
+                //    else
+                //    {
+                //        var poly = new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
+                //        { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                //        lock (lockObj3)
+                //            GLObjects.AddRange(poly);
+                //    }
+                //}
 
             });
+        });
+
+        //260731Cl 追加: チェックボックスON時のみ、サイト(AtomIndex)ごとに統合後の頂点数(元素種は問わない)の最大値を集計し、
+        //描画範囲の端で頂点が欠けた不完全な多面体(最大値に満たない中心)をスキップする。OFF時は従来通りフィルタしない。
+        bool filterIncomplete = checkBoxShowBondedAtoms.Checked;
+        var maxVertexCount = new Dictionary<int, int>();
+        if (filterIncomplete)
+            foreach (var (c, vertices, _, _) in polyDic.Values)
+                if (!maxVertexCount.TryGetValue(c.AtomIndex, out int n) || n < vertices.Count)
+                    maxVertexCount[c.AtomIndex] = vertices.Count;
+
+        //260731Cl 追加: 完全性フィルタ(ON時)に満たない中心は、多面体だけでなく付随ボンドと中心原子の表示ごと消し (クランプやセル数上限で
+        //マージンが足りない極端な設定時に、境界際へ不完全な配位の房が現れるのを防ぐ)、それ以外で構成原子(中心+統合頂点)のいずれかが
+        //範囲内のエントリだけを描画対象 (drawn) に集める。非表示化を先に全て済ませておき、後段で頂点を兼ねる原子は表示が優先されるようにする。
+        //既知の制限: 不完全とした中心がボンドのみ定義の端点を兼ねる場合、その円柱は残るため原子の無いボンド断端が出得る (稀なので許容)。
+        var drawn = new List<(bondVertex c, List<bondVertex> vertices, List<GLObject> bondObjs, DrawingMode mode)>();
+        foreach (var e in polyDic.Values)
+            if (filterIncomplete && e.vertices.Count < maxVertexCount[e.c.AtomIndex])
+                glSnap[e.c.ObjIndex].Rendered = false;
+            else if (e.c.IsInside || e.vertices.Any(v => v.IsInside))
+                drawn.Add(e);
+
+        //260731Cl 追加: 描画が確定した中心原子ごとに、構成原子の表示化と、付随ボンド(円柱)+統合頂点から成る多面体の生成を並列実行
+        //(Polyhedron コンストラクタが重いので、旧コードの ForAll 内生成と同等の並列度を保つ。GLObjects への追加のみ lock)
+        drawn.AsParallel().ForAll(e =>
+        {
+            glSnap[e.c.ObjIndex].Rendered = true;
+            foreach (var v in e.vertices)
+                glSnap[v.ObjIndex].Rendered = true;
+            IEnumerable<GLObject> polys = e.vertices.Count switch
+            {
+                <= 2 => [],
+                3 => [new Polygon(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode) { Rendered = true }],
+                _ => new Polyhedron(e.vertices.Select(v => v.O), e.c.PolyMat, e.mode)
+                     { Rendered = true, ShowClippedSection = false }.ToPolygons()//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+            };
+            lock (lockObj3)
+            {
+                GLObjects.AddRange(e.bondObjs);
+                GLObjects.AddRange(polys);
+            }
         });
 
         textBoxCalcInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");

@@ -377,7 +377,7 @@
             tabControlBoundOption.Controls.Add(tabPageBoundUnitcell);
             tabControlBoundOption.Controls.Add(tabPageBoundPlane);
             tabControlBoundOption.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            tabControlBoundOption.Multiline = true;
+            //tabControlBoundOption.Multiline = true; //260731Cl 削除: 一行表示にするため (falseは既定値なので行ごと不要)
             tabControlBoundOption.Name = "tabControlBoundOption";
             tabControlBoundOption.SelectedIndex = 0;
             tabControlBoundOption.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;

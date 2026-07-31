@@ -401,7 +401,8 @@ public partial class FormMain : FormBase
             glControlAxes.Height = glControlAxes.Width + 20;
             glControlAxes.SendToBack();
 
-            labelCurrentIndex.BackColor = Color.White;
+            //labelCurrentIndex.BackColor = Color.White; //260731Cl 変更前
+            labelCurrentIndex.BackColor = CanvasBackColor; //260731Cl 変更: GL 背景 (ダーク時 #202020) と一致させる (FormBase の一元定義)
             labelCurrentIndex.BringToFront();
         }
         #endregion
@@ -697,7 +698,12 @@ public partial class FormMain : FormBase
             rw(() => FormDiffractionSimulator.ResolutionUnit);
             rw(() => FormDiffractionSimulator.FlipHorizontally);
             rw(() => FormDiffractionSimulator.FlipVertically);
-            rw(() => FormDiffractionSimulator.NegativeImage);
+            //rw(() => FormDiffractionSimulator.NegativeImage); //260731Cl 変更前
+            // 260731Cl 変更: カラーモード切替後の初回起動では、レジストリ保存された色関連情報を破棄して既定色に戻す方針。
+            // NegativeImage は復元時に ColorControl.Inversion 経由で 2D 実効背景色を変える唯一の保存済み色関連項目のため、
+            // 切替後初回の Read のみスキップして既定 (ネガ無し) に戻す (Write は常に現在値を保存)。
+            if (mode == Reg.Mode.Write || !Program.ColorModeChangedAtStartup)
+                rw(() => FormDiffractionSimulator.NegativeImage);
             rw(() => FormDiffractionSimulator.IsCenterFixed);
 
             rw(() => FormDiffractionSimulator.waveLengthControl.WaveSource);

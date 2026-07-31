@@ -12,6 +12,11 @@ internal static class Program
     // FormMain.Registry() の Reg.RW (MemoryPack+Brotli) 経路ではなく、独立した DWORD 値として保持する。
     private const string DarkModeRegPath = @"HKEY_CURRENT_USER\Software\Crystallography\ReciPro";
     private const string DarkModeRegName = "DarkMode";
+    private const string DarkModeLastAppliedRegName = "DarkModeLastApplied"; //260731Cl 追加: 前回起動時に実際に適用されたモード
+
+    /// <summary>260731Cl 追加: 今回の起動がカラーモード切替後の初回起動なら true。
+    /// レジストリ保存された色関連設定を既定色へ破棄する判定に使う (Main 内の SetColorMode 直後に確定)。</summary>
+    public static bool ColorModeChangedAtStartup { get; private set; }
 
     // 260523Cl 追加: GUI 監査用スクショ一括取得モードの起動引数 (Main 内で 2 箇所判定するため定数化)
     private const string CaptureArg = "--capture";
@@ -92,7 +97,15 @@ internal static class Program
         Application.SetCompatibleTextRenderingDefault(true);
         // 260428Cl 変更: OS追従ではなくレジストリ保存値による手動切替
         //Application.SetColorMode(SystemColorMode.System);
-        Application.SetColorMode(ReadDarkMode() ? SystemColorMode.Dark : SystemColorMode.Classic);
+        //Application.SetColorMode(ReadDarkMode() ? SystemColorMode.Dark : SystemColorMode.Classic); //260731Cl 変更前
+        var darkMode = ReadDarkMode(); //260731Cl 変更: 適用値を LastApplied と比較するため一時変数化
+        Application.SetColorMode(darkMode ? SystemColorMode.Dark : SystemColorMode.Classic);
+        // 260731Cl 追加: カラーモード切替後の「初回起動」判定。前回起動時に実際に適用されたモード (LastApplied) と
+        // 今回の適用値が異なる場合のみ true。レジストリ保存された色関連設定の破棄 (FormMain.Registry の Read ガード) に使う。
+        // ・ここ (適用点) で記録するので、再起動前にメニューをトグルして元へ戻したケースでは切替扱いにならない。
+        // ・LastApplied 未記録 (旧バージョンからの更新直後) は切替扱いにしない。
+        ColorModeChangedAtStartup = Registry.GetValue(DarkModeRegPath, DarkModeLastAppliedRegName, null) is int last && (last is 1) != darkMode;
+        Registry.SetValue(DarkModeRegPath, DarkModeLastAppliedRegName, darkMode ? 1 : 0, RegistryValueKind.DWord);
         // 260428Cl 追加: 言語別 UI フォント (Designer 未指定コントロール用のデフォルト)。
         // Designer/resx で明示指定されたコントロールには適用されない (それらは文字列置換で対応済み)。
         Application.SetDefaultFont(Crystallography.Controls.FontHelper.GetUIFont());

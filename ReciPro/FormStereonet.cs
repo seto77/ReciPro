@@ -73,6 +73,10 @@ public partial class FormStereonet : FormBase
     {
         InitializeComponent();
         HelpPage = "6-stereonet"; //260529Cl 追加
+        // 260731Cl 追加: ダークモード時は 2D ステレオネット背景の既定色をフォーム背景 (SystemColors.Control = #202020) に合わせる。
+        // 背景色はレジストリ非保存 (保存対象は Bounds のみ) なので毎起動ここで決まり、モード切替後の初回起動も自動的に既定色になる。
+        if (Application.IsDarkModeEnabled)
+            colorControlBackGround.Color = SystemColors.Control;
         this.SetStyle(ControlStyles.DoubleBuffer, true);
         this.SetStyle(ControlStyles.UserPaint, true);
         this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);

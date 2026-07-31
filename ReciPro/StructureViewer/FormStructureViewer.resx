@@ -5062,7 +5062,14 @@ even if they are outside
 the boundaries</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
-    <value>Show bonded atoms even if they are outside the boundaries</value>
+    <value>Show atoms outside the boundaries when they
+are bonded to atoms inside, so that bonds and
+coordination polyhedra crossing the boundary
+are drawn completely. Incomplete polyhedra at
+the edge (missing some vertices) are hidden
+together with their bonds. When unchecked,
+only atoms inside the boundaries are drawn
+and bonds and polyhedra are truncated there.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowBondedAtoms.Name" xml:space="preserve">
     <value>checkBoxShowBondedAtoms</value>
@@ -6594,8 +6601,5 @@ right-drag / wheel zooming on the view.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="tabControl.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
 </root>

@@ -741,7 +741,11 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>境界外ではあるが結合している原子を表示</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
-    <value>境界外の結合原子も表示</value>
+    <value>境界外の原子でも、境界内の原子と結合していれば表示します。
+境界をまたぐ結合や配位多面体が完全な形で描かれ、
+頂点が欠けた不完全な多面体は付随する結合ごと非表示になります。
+オフの場合は境界内の原子のみ描画され、
+結合・多面体は境界で途切れます。</value>
   </data>
   <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
     <value>光源, 結晶軸, 凡例の設定</value>

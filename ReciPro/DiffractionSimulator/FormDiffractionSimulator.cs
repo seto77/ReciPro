@@ -388,6 +388,10 @@ public partial class FormDiffractionSimulator : FormBase
     {
         InitializeComponent();
         HelpPage = "7-diffraction-simulator"; //260529Cl 追加
+        // 260731Cl 追加: ダークモード時は 3D 表示の背景既定色をフォーム背景 (SystemColors.Control = #202020) に合わせる。
+        // Draw3D が colorControl3D_Background.Color を glControl.BackgroundColor へ同期するため、色コントロール側の既定値を変える。
+        if (Application.IsDarkModeEnabled)
+            colorControl3D_Background.Color = SystemColors.Control;
         this.SetStyle(ControlStyles.DoubleBuffer, true);
         this.SetStyle(ControlStyles.UserPaint, true);
         this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -2382,7 +2386,10 @@ public partial class FormDiffractionSimulator : FormBase
         e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
         //背景の描画
         //if (tab.SelectedIndex == e.Index) e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds); else e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds); // (260611Ch) 旧: SolidBrush が未解放
-        using var backBrush = new SolidBrush(tab.SelectedIndex == e.Index ? Color.White : tabControl.BackColor); // (260611Ch)
+        //using var backBrush = new SolidBrush(tab.SelectedIndex == e.Index ? Color.White : tabControl.BackColor); // (260611Ch) //260731Cl 変更前
+        using var backBrush = new SolidBrush(tab.SelectedIndex == e.Index
+            ? (Application.IsDarkModeEnabled ? SystemColors.Window : Color.White) //260731Cl 変更: ダーク時の選択タブは白でなく明るめグレー (#323232)
+            : tabControl.BackColor);
         e.Graphics.FillRectangle(backBrush, e.Bounds);
 
         //文字色を設定
