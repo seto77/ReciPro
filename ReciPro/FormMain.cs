@@ -1682,10 +1682,13 @@ public partial class FormMain : FormBase
 
         Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
         UpdateLanguageMenuChecks(culture.Name);
-        RestartApplicationForLanguageChange(); // 260625Ch Application.Restart() に頼らず、先に新プロセスを起動してから終了する (Restart は新プロセスが起動しない環境があった)
+        RestartApplication(Crystallography.Localization.Loc(en: "Change language", ja: "言語の変更")); // 260625Ch Application.Restart() に頼らず、先に新プロセスを起動してから終了する (Restart は新プロセスが起動しない環境があった)
     }
 
-    private void RestartApplicationForLanguageChange()
+    //260731Cl 変更: ダークモード切替でも使うため RestartApplicationForLanguageChange → RestartApplication へ改名し、
+    //エラーダイアログのタイトルを引数化。旧シグネチャ:
+    //private void RestartApplicationForLanguageChange()
+    private void RestartApplication(string caption)
     {
         // 260625Ch 追加: 新プロセスが起動直後に新言語を読めるよう、FormClosing を待たずに言語値を先行保存する。
         // ここで CurrentUICulture は既に新言語へ切替済み。後続の FormClosing でも同じ値が保存されるため、言語値は競合しない。
@@ -1709,7 +1712,7 @@ public partial class FormMain : FormBase
                 Crystallography.Localization.Loc(
                     en: $"Failed to restart ReciPro.\n{ex.Message}",
                     ja: $"ReciPro の再起動に失敗しました。\n{ex.Message}"),
-                Crystallography.Localization.Loc(en: "Change language", ja: "言語の変更"),
+                caption, //260731Cl 変更: 呼び出し元のタイトルを使う (旧: Loc(en: "Change language", ja: "言語の変更"))
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
@@ -1790,10 +1793,25 @@ public partial class FormMain : FormBase
 
     // 260428Cl 追加: ダークモード切替ハンドラ。レジストリに保存し、再起動を促す。
     // Application.SetColorMode は Run 後にも呼べるが、既存コントロールの色は完全には更新されないため、再起動推奨。
+    // 260731Cl 変更: 手動再起動 (促すのみ) から言語切替と同じ自動再起動方式へ。確認の上、値を保存して新プロセス起動→Close。
+    // キャンセル時はチェックを元へ戻す (イベントを外してから戻すのは Load 時の復元 (328行) と同じ流儀)。
     private void toolStripMenuItemDarkMode_CheckedChanged(object sender, EventArgs e)
     {
+        //Program.WriteDarkMode(DarkMode); //260731Cl 変更前
+        //Application.SetColorMode(DarkMode ? SystemColorMode.Dark : SystemColorMode.Classic); //260731Cl 変更前
+        var caption = Crystallography.Localization.Loc(en: "Dark mode", ja: "ダークモード");
+        var msg = Crystallography.Localization.Loc(
+            en: $"Switching to {(DarkMode ? "dark" : "light")} mode requires restarting ReciPro.\nUnsaved work will be lost. Restart now?",
+            ja: $"{(DarkMode ? "ダーク" : "ライト")}モードへの切り替えには ReciPro の再起動が必要です。\n保存していない作業は失われます。今すぐ再起動しますか？");
+        if (MessageBox.Show(this, msg, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+        {
+            toolStripMenuItemDarkMode.CheckedChanged -= toolStripMenuItemDarkMode_CheckedChanged;
+            DarkMode = !DarkMode;
+            toolStripMenuItemDarkMode.CheckedChanged += toolStripMenuItemDarkMode_CheckedChanged;
+            return;
+        }
         Program.WriteDarkMode(DarkMode);
-        Application.SetColorMode(DarkMode ? SystemColorMode.Dark : SystemColorMode.Classic);
+        RestartApplication(caption);
     }
 
     // 260723Cl 追加: 外部マクロ命令の Named Pipe リスナーの ON/OFF (Load 中の Registry 復元では発火させず Load 末尾で一括開始)。
