@@ -264,6 +264,10 @@ public partial class FormEBSD : FormBase
     {
         InitializeComponent();
         HelpPage = "12-ebsd-simulation"; //260529Cl 追加
+        // 260731Cl 追加: ダークモード時、ステレオネット (PoleFigureControl) に重ねて配置したチェックボックスとラベルの
+        // 背景をキャンバス背景 (CanvasBackColor: ダーク時 #202020) に合わせる (Designer は White 固定)
+        if (Application.IsDarkModeEnabled)
+            checkBoxDrawAxesInStereonet.BackColor = labelBseStereonetNote.BackColor = CanvasBackColor;
 
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
