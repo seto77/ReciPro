@@ -386,7 +386,18 @@ jobs:
           # x64 portable ZIP (release.yml) と同じ構造 (ZIP 直下に ReciPro\ フォルダ) に合わせる
           # 260613Cl checksum (SHA256SUMS-arm64.txt) の生成を廃止
           $zip  = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.zip_name }}"
-          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          # 260731Cl release.yml と同方針で 7z -tzip -mx=9 化 (無ければ Compress-Archive フォールバック)
+          # 旧: Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          $src = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $sevenZip = "$env:ProgramFiles\7-Zip\7z.exe"
+          if (-not (Test-Path $sevenZip)) { $sevenZip = (Get-Command 7z.exe -ErrorAction SilentlyContinue)?.Source }
+          if ($sevenZip) {
+            & $sevenZip a -tzip -mx=9 $zip $src
+            if ($LASTEXITCODE -ne 0) { throw "7z (zip) failed (exit $LASTEXITCODE)." }
+          } else {
+            Write-Warning "7z.exe not found on windows-11-arm runner; falling back to Compress-Archive."
+            Compress-Archive -Path $src -DestinationPath $zip -Force
+          }
           "zip=$zip"   >> $env:GITHUB_OUTPUT
           # 260613Cl Phase C: smoke 済み MSI も添付対象に
           $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ needs.preflight.outputs.msi_name }}"

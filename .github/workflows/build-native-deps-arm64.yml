@@ -3,10 +3,25 @@
 # Actions artifact として取得し、ReciPro\native\win-arm64\ にコミットして使う。
 # 方針: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §4-§5 (このワークフロー自体が再現可能な手順書を兼ねる)。
 # 静的 CRT (/MT): WoA 素環境に arm64 VC redist が無くても動くようにするため (方針 §3.5)。
-name: Build ARM64 native deps (xraylib + GLFW)
+# 260731Cl x64/arm64 マトリクス化 + xraylib data trim を追加 (配布サイズ削減調査 §2-②):
+#   - x64 leg を追加し、従来 conda-forge 由来だった ReciPro\libxrl-11.dll も本ワークフローの自前ビルド品に置換する。
+#   - trim=true (既定) では meson setup 前に data/kissel_pe.dat・comptonprofiles.dat・auger_rates.dat を空 stub 化。
+#     prdata のローダは先頭 fscanf 失敗で即 break する構造のため、該当データが空配列になるだけで build は通る。
+#     これで DLL 14.8MB→~6MB (.data の 99% がデータで、Kissel 部分光電離 6.4MB+Compton プロファイル 0.8MB+Auger 1.0MB が落ちる)。
+#     死ぬ API は CS_Photo_Total/Partial (Kissel系)・ComptonProfile*・AugerRate/AugerYield のみで、ReciPro が使う
+#     14 関数 (Crystallography/Xraylib.cs の P/Invoke) はデータ無傷 = 数値ビット不変。将来 STEM-EDX v2 の
+#     CosKronTransProb も coskron.dat 由来なので影響しない。厳密XRF断面積が必要になったら trim=false で戻せる。
+#   - trim 時は upstream `meson test` が必ず落ちる (Kissel/Compton系テスト) ためスキップし、代わりに
+#     「リポジトリにコミット済みの現行 DLL と、使用 14 関数の全域数値パリティ」を CI ゲートとして課す。
+name: Build native deps (xraylib [trimmed] + GLFW)
 
 on:
   workflow_dispatch:
+    inputs:
+      trim:
+        description: "Trim unused xraylib datasets (kissel_pe / comptonprofiles / auger_rates). Set false for a full build."
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -18,13 +33,32 @@ env:
   GLFW_VERSION: "3.4"
   GLFW_URL: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
   GLFW_SHA256: B5EC004B2712FD08E8861DC271428F048775200A2DF719CCF575143BA749A3E9
+  TRIM: ${{ inputs.trim }}
 
 jobs:
   build:
-    runs-on: windows-11-arm
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 260731Cl x64 leg 追加。成果物は ReciPro\libxrl-11.dll (従来 conda-forge binary) を置換する。
+          #   GLFW は x64 では OpenTK.redist.glfw (NuGet) を使うためビルドしない。
+          - arch: x64
+            runner: windows-2025-vs2026
+            build_glfw: false
+            baseline: ReciPro\libxrl-11.dll
+          - arch: arm64
+            runner: windows-11-arm
+            build_glfw: true
+            baseline: ReciPro\native\win-arm64\libxrl-11.dll
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 40
 
     steps:
+      # 260731Cl 数値パリティゲート用にコミット済みの現行 DLL (baseline) が要るため checkout を追加
+      - name: Checkout (baseline DLL for numeric parity gate)
+        uses: actions/checkout@v5
+
       - name: Setup Python (meson/ninja 用)
         uses: actions/setup-python@v5
         with:
@@ -34,24 +68,41 @@ jobs:
         shell: pwsh
         run: pip install meson ninja
 
-      # ネイティブ arm64 ホスト上で MSVC ARM64 環境を有効化 (クロスではない)
-      - name: Setup MSVC ARM64 environment
+      # ネイティブホスト上で MSVC 環境を有効化 (クロスではない)
+      - name: Setup MSVC environment
         uses: ilammy/msvc-dev-cmd@v1
         with:
-          arch: arm64
+          arch: ${{ matrix.arch }}
 
       - name: Download and verify sources (SHA256 pin)
         shell: pwsh
         run: |
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest -Uri $env:XRAYLIB_URL -OutFile xraylib.tar.xz
-          Invoke-WebRequest -Uri $env:GLFW_URL -OutFile glfw.zip
           $xh = (Get-FileHash xraylib.tar.xz -Algorithm SHA256).Hash
-          $gh = (Get-FileHash glfw.zip -Algorithm SHA256).Hash
           if ($xh -ne $env:XRAYLIB_SHA256) { throw "xraylib SHA256 mismatch: $xh" }
-          if ($gh -ne $env:GLFW_SHA256) { throw "glfw SHA256 mismatch: $gh" }
           tar -xf xraylib.tar.xz
-          Expand-Archive glfw.zip -DestinationPath .
+          if ('${{ matrix.build_glfw }}' -eq 'true') {
+            Invoke-WebRequest -Uri $env:GLFW_URL -OutFile glfw.zip
+            $gh = (Get-FileHash glfw.zip -Algorithm SHA256).Hash
+            if ($gh -ne $env:GLFW_SHA256) { throw "glfw SHA256 mismatch: $gh" }
+            Expand-Archive glfw.zip -DestinationPath .
+          }
+
+      # 260731Cl data trim: ReciPro 未使用の 3 データセットを空 stub 化してから prdata に食わせる。
+      #   ファイル名が変わっていたら fail-loud (無言で trim されないままフルサイズが出るのを防ぐ)。
+      - name: Trim unused xraylib datasets (stub data files)
+        if: ${{ inputs.trim }}
+        shell: pwsh
+        run: |
+          $dataDir = "xraylib-$env:XRAYLIB_VERSION\data"
+          foreach ($f in @('kissel_pe.dat', 'comptonprofiles.dat', 'auger_rates.dat')) {
+            $p = Join-Path $dataDir $f
+            if (-not (Test-Path $p)) { throw "expected data file not found (xraylib layout changed?): $p" }
+            $orig = (Get-Item $p).Length
+            [IO.File]::WriteAllBytes($p, [byte[]]@())
+            Write-Host ("stubbed {0} ({1:N0} bytes -> 0)" -f $f, $orig)
+          }
 
       # 純 C ライブラリのみの最小ビルド (bindings 3 種 disabled)。データはビルド時に prdata が
       # xrayglob_inline.c を生成して DLL へ埋め込むため、成果物は自己完結 (実行時データファイル不要)
@@ -63,9 +114,126 @@ jobs:
             -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled `
             -Db_vscrt=static_from_buildtype
           ninja -C build
-          meson test -C build --print-errorlogs
+          # 260731Cl trim 時は upstream テストが必ず落ちる (Kissel/Compton/Auger 系) のでスキップし、
+          #   後続の「数値パリティゲート」ステップが keep 側 14 関数の等価性を保証する。
+          # 旧 (無条件): meson test -C build --print-errorlogs
+          if ($env:TRIM -ne 'true') { meson test -C build --print-errorlogs }
+
+      # 260731Cl 数値パリティゲート: コミット済み現行 DLL (baseline) と新 DLL で、ReciPro が使う全 14 関数を
+      #   Z=1..98 × エネルギー/q/殻/線の格子で全数比較する (相対許容 1e-9、実際はビット一致級のはず)。
+      #   trim 時はさらに (a) DLL サイズ < 9MB (trim が効かず 14.8MB のまま出るのを検出)、
+      #   (b) 除去対象 API (CS_Photo_Total / ComptonProfile) が 0 を返す (= データが本当に落ちた) こと、
+      #   (c) 非ゼロ一致サンプルが十分ある (全ゼロ同士の空振り合格を防ぐ) ことをゲートにする。
+      - name: Numeric parity gate vs committed baseline DLL
+        shell: pwsh
+        run: |
+          $work = Join-Path $env:RUNNER_TEMP "xrlcheck"
+          New-Item -ItemType Directory -Force $work | Out-Null
+          Copy-Item "${{ matrix.baseline }}" (Join-Path $work "xrl_base.dll")
+          Copy-Item "xraylib-$env:XRAYLIB_VERSION\build\src\xrl-11.dll" (Join-Path $work "xrl_new.dll")
+          $env:PATH = "$work;$env:PATH"
+
+          Add-Type -TypeDefinition @'
+          using System;
+          using System.Runtime.InteropServices;
+          public static class XrlBase {
+            const string D = "xrl_base.dll"; const CallingConvention C = CallingConvention.Cdecl;
+            [DllImport(D, CallingConvention = C)] public static extern double Fi(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double Fii(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double FF_Rayl(int Z, double q, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double SF_Compt(int Z, double q, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Total(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Photo(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Rayl(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Compt(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Energy(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double EdgeEnergy(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double JumpFactor(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double LineEnergy(int Z, int line, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double RadRate(int Z, int line, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double FluorYield(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Photo_Total(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double ComptonProfile(int Z, double pz, IntPtr e);
+          }
+          public static class XrlNew {
+            const string D = "xrl_new.dll"; const CallingConvention C = CallingConvention.Cdecl;
+            [DllImport(D, CallingConvention = C)] public static extern double Fi(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double Fii(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double FF_Rayl(int Z, double q, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double SF_Compt(int Z, double q, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Total(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Photo(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Rayl(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Compt(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Energy(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double EdgeEnergy(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double JumpFactor(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double LineEnergy(int Z, int line, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double RadRate(int Z, int line, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double FluorYield(int Z, int shell, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double CS_Photo_Total(int Z, double E, IntPtr e);
+            [DllImport(D, CallingConvention = C)] public static extern double ComptonProfile(int Z, double pz, IntPtr e);
+          }
+          public static class XrlParity {
+            public static int Bad, NonZeroMatches; public static double MaxRel; public static string Worst = "";
+            static void C(string name, int z, double p, double a, double b) {
+              if (a != 0 && a == b) NonZeroMatches++;
+              if (a == b) return;
+              double rel = Math.Abs(a - b) / Math.Max(Math.Abs(a), Math.Abs(b));
+              if (rel > MaxRel) { MaxRel = rel; Worst = name + "(Z=" + z + ", " + p + "): base=" + a.ToString("R") + " new=" + b.ToString("R"); }
+              if (rel > 1e-9) Bad++;
+            }
+            public static void Run() {
+              double[] es = { 1, 2, 3, 4, 5, 6, 8.048, 10, 12, 15, 17.44, 20, 25, 30, 40, 50, 60, 80, 100, 150, 200, 300, 400, 500, 800 };
+              double[] qs = { 0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 5, 7, 10 };
+              IntPtr n = IntPtr.Zero;
+              for (int z = 1; z <= 98; z++) {
+                foreach (double e in es) {
+                  C("Fi", z, e, XrlBase.Fi(z, e, n), XrlNew.Fi(z, e, n));
+                  C("Fii", z, e, XrlBase.Fii(z, e, n), XrlNew.Fii(z, e, n));
+                  C("CS_Total", z, e, XrlBase.CS_Total(z, e, n), XrlNew.CS_Total(z, e, n));
+                  C("CS_Photo", z, e, XrlBase.CS_Photo(z, e, n), XrlNew.CS_Photo(z, e, n));
+                  C("CS_Rayl", z, e, XrlBase.CS_Rayl(z, e, n), XrlNew.CS_Rayl(z, e, n));
+                  C("CS_Compt", z, e, XrlBase.CS_Compt(z, e, n), XrlNew.CS_Compt(z, e, n));
+                  C("CS_Energy", z, e, XrlBase.CS_Energy(z, e, n), XrlNew.CS_Energy(z, e, n));
+                }
+                foreach (double q in qs) {
+                  C("FF_Rayl", z, q, XrlBase.FF_Rayl(z, q, n), XrlNew.FF_Rayl(z, q, n));
+                  C("SF_Compt", z, q, XrlBase.SF_Compt(z, q, n), XrlNew.SF_Compt(z, q, n));
+                }
+                for (int s = 0; s <= 31; s++) {
+                  C("EdgeEnergy", z, s, XrlBase.EdgeEnergy(z, s, n), XrlNew.EdgeEnergy(z, s, n));
+                  C("JumpFactor", z, s, XrlBase.JumpFactor(z, s, n), XrlNew.JumpFactor(z, s, n));
+                  C("FluorYield", z, s, XrlBase.FluorYield(z, s, n), XrlNew.FluorYield(z, s, n));
+                }
+                for (int l = -1; l >= -200; l--) {
+                  C("LineEnergy", z, l, XrlBase.LineEnergy(z, l, n), XrlNew.LineEnergy(z, l, n));
+                  C("RadRate", z, l, XrlBase.RadRate(z, l, n), XrlNew.RadRate(z, l, n));
+                }
+              }
+            }
+          }
+          '@
+          [XrlParity]::Run()
+          Write-Host ("parity: nonZeroMatches={0:N0} bad(rel>1e-9)={1} maxRel={2:E3} worst={3}" -f `
+            [XrlParity]::NonZeroMatches, [XrlParity]::Bad, [XrlParity]::MaxRel, [XrlParity]::Worst)
+          if ([XrlParity]::NonZeroMatches -lt 10000) { throw "parity sweep hit too few non-zero values ($([XrlParity]::NonZeroMatches)) - sweep or DLL is broken" }
+          if ([XrlParity]::Bad -gt 0) { throw "$([XrlParity]::Bad) values differ beyond 1e-9 (max rel $([XrlParity]::MaxRel)): $([XrlParity]::Worst)" }
+
+          if ($env:TRIM -eq 'true') {
+            $sz = (Get-Item (Join-Path $work "xrl_new.dll")).Length
+            Write-Host ("new DLL size: {0:N0} bytes" -f $sz)
+            if ($sz -gt 9000000) { throw "trimmed DLL is unexpectedly large ($sz bytes) - trim did not take effect" }
+            # 除去対象 API がデータ喪失で 0 になっていること (baseline は非ゼロ) = trim の直接証拠
+            $bK = [XrlBase]::CS_Photo_Total(26, 10.0, [IntPtr]::Zero); $nK = [XrlNew]::CS_Photo_Total(26, 10.0, [IntPtr]::Zero)
+            $bC = [XrlBase]::ComptonProfile(26, 1.0, [IntPtr]::Zero);  $nC = [XrlNew]::ComptonProfile(26, 1.0, [IntPtr]::Zero)
+            Write-Host "CS_Photo_Total(26,10): base=$bK new=$nK / ComptonProfile(26,1): base=$bC new=$nC"
+            if ($nK -ne 0 -or $nC -ne 0) { throw "trimmed API still returns data - stubbing failed?" }
+            if ($bK -eq 0 -or $bC -eq 0) { Write-Warning "baseline already returns 0 for trimmed APIs (baseline is a trimmed build?)" }
+          }
 
       - name: Build GLFW (CMake + Ninja, shared DLL, /MT)
+        if: ${{ matrix.build_glfw }}
         shell: pwsh
         run: |
           cmake -S glfw-$env:GLFW_VERSION -B glfw-build -G Ninja `
@@ -80,60 +248,76 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force out | Out-Null
           Copy-Item "xraylib-$env:XRAYLIB_VERSION\build\src\xrl-11.dll" out\libxrl-11.dll
-          Copy-Item "glfw-build\src\glfw3.dll" out\glfw3.dll
-          Copy-Item "glfw-$env:GLFW_VERSION\LICENSE.md" out\glfw3.LICENSE.txt
+          if ('${{ matrix.build_glfw }}' -eq 'true') {
+            Copy-Item "glfw-build\src\glfw3.dll" out\glfw3.dll
+            Copy-Item "glfw-$env:GLFW_VERSION\LICENSE.md" out\glfw3.LICENSE.txt
+          }
 
           function Get-PEMachine([string]$path) {
             $b = [IO.File]::ReadAllBytes($path)
             $pe = [BitConverter]::ToInt32($b, 0x3C)
             return [BitConverter]::ToUInt16($b, $pe + 4)
           }
-          foreach ($f in @("out\libxrl-11.dll", "out\glfw3.dll")) {
-            $m = Get-PEMachine $f
-            "{0}: machine=0x{1:X4}" -f $f, $m
-            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          # 260731Cl arch 別の期待 machine: x64=0x8664 / arm64=0xAA64
+          $expected = if ('${{ matrix.arch }}' -eq 'x64') { 0x8664 } else { 0xAA64 }
+          foreach ($f in (Get-ChildItem out -Filter *.dll)) {
+            $m = Get-PEMachine $f.FullName
+            "{0}: machine=0x{1:X4}" -f $f.Name, $m
+            if ($m -ne $expected) { throw "$($f.Name) machine=0x$($m.ToString('X4')) != expected 0x$($expected.ToString('X4'))" }
           }
           # /MT 確認用に依存 DLL を表示 (KERNEL32 程度であること。VCRUNTIME140 が出たら /MT が効いていない)
           if (Get-Command dumpbin -ErrorAction SilentlyContinue) {
-            dumpbin /dependents out\libxrl-11.dll
-            dumpbin /dependents out\glfw3.dll
+            Get-ChildItem out -Filter *.dll | ForEach-Object { dumpbin /dependents $_.FullName }
           } else { "dumpbin not found - check dependents manually" }
 
           $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
           # 260611Cl cl のバージョン文字列は stderr 側 ("Compiler Version" 行)。初回 run は usage 行を拾ってしまった
           $clVer = ((& cl 2>&1 | Select-String "Compiler Version" | Select-Object -First 1) ?? "unknown") -replace '^\s+', ''
           $date = Get-Date -Format yyyy-MM-dd
+          $arch = '${{ matrix.arch }}'
+
+          # 260731Cl trim 内容を provenance に明記 (何が落ちていて、必要になったらどう戻すか)
+          $trimLines = if ($env:TRIM -eq 'true') { @(
+            "data trim (260731Cl): kissel_pe.dat / comptonprofiles.dat / auger_rates.dat stubbed to empty before build"
+            "  -> removed: Kissel partial photoionization, Compton profiles, Auger rates (~8.2MB of .data)"
+            "  -> dead xraylib APIs (unused by ReciPro): CS_Photo_Total/CS_Photo_Partial (Kissel), ComptonProfile*, AugerRate, AugerYield"
+            "  -> all 14 APIs used by ReciPro (Crystallography/Xraylib.cs) verified numerically identical to previous binary in-run"
+            "  -> to restore full data: re-run this workflow with trim=false"
+          ) } else { @("data trim: none (full build)") }
 
           @(
-            "xraylib $env:XRAYLIB_VERSION win-arm64 build provenance"
+            "xraylib $env:XRAYLIB_VERSION win-$arch build provenance"
             "date: $date"
             "source: $env:XRAYLIB_URL"
             "source sha256: $env:XRAYLIB_SHA256"
-            "compiler: $clVer (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)"
+            "compiler: $clVer (MSVC, $arch native, GitHub-hosted runner '${{ matrix.runner }}')"
             "build: meson setup build --buildtype=release -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled -Db_vscrt=static_from_buildtype (/MT)"
-            "output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with conda-forge win-64 binary)"
+          ) + $trimLines + @(
+            "output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with historical conda-forge win-64 binary)"
             "output sha256: $((Get-FileHash out\libxrl-11.dll -Algorithm SHA256).Hash)"
             "actions run: $runUrl"
             "license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)"
-          ) | Set-Content out\libxrl-11.arm64.PROVENANCE.txt
+          ) | Set-Content "out\libxrl-11.$arch.PROVENANCE.txt"
 
-          @(
-            "GLFW $env:GLFW_VERSION win-arm64 build provenance"
-            "date: $date"
-            "source: $env:GLFW_URL"
-            "source sha256: $env:GLFW_SHA256"
-            "compiler: $clVer (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)"
-            "build: cmake -G Ninja -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=ON -D USE_MSVC_RUNTIME_LIBRARY_DLL=OFF (/MT)"
-            "reason: OpenTK.redist.glfw has no win-arm64 runtime asset; GLFW provides no official arm64 binaries (glfw/glfw#2163)"
-            "output sha256: $((Get-FileHash out\glfw3.dll -Algorithm SHA256).Hash)"
-            "actions run: $runUrl"
-            "license: zlib/libpng (glfw3.LICENSE.txt)"
-          ) | Set-Content out\glfw3.arm64.PROVENANCE.txt
+          if ('${{ matrix.build_glfw }}' -eq 'true') {
+            @(
+              "GLFW $env:GLFW_VERSION win-arm64 build provenance"
+              "date: $date"
+              "source: $env:GLFW_URL"
+              "source sha256: $env:GLFW_SHA256"
+              "compiler: $clVer (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)"
+              "build: cmake -G Ninja -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=ON -D USE_MSVC_RUNTIME_LIBRARY_DLL=OFF (/MT)"
+              "reason: OpenTK.redist.glfw has no win-arm64 runtime asset; GLFW provides no official arm64 binaries (glfw/glfw#2163)"
+              "output sha256: $((Get-FileHash out\glfw3.dll -Algorithm SHA256).Hash)"
+              "actions run: $runUrl"
+              "license: zlib/libpng (glfw3.LICENSE.txt)"
+            ) | Set-Content out\glfw3.arm64.PROVENANCE.txt
+          }
 
-          Get-Content out\libxrl-11.arm64.PROVENANCE.txt, out\glfw3.arm64.PROVENANCE.txt
+          Get-ChildItem out -Filter *.PROVENANCE.txt | ForEach-Object { Get-Content $_.FullName }
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
-          name: native-deps-win-arm64
+          name: native-deps-win-${{ matrix.arch }}
           path: out/

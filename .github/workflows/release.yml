@@ -446,7 +446,20 @@ jobs:
           $portableDir = Join-Path $env:RUNNER_TEMP "portable-payload\ReciPro"
           Copy-Item $signedExe (Join-Path $portableDir "ReciPro.exe") -Force
           $zipPath = Join-Path $out "ReciPro-v.${{ needs.prepare.outputs.version }}.zip"
-          Compress-Archive -Path $portableDir -DestinationPath $zipPath -Force
+          # 260731Cl 圧縮器を Compress-Archive → 7z -tzip -mx=9 に置換 (中身は同じ標準 Deflate ZIP のまま実測 −5.7MB、
+          #   展開互換性は不変)。併せて .7z (LZMA2 -mx=9、実測 −26MB) も生成して併売する (ZIP が canonical、
+          #   .7z は 7-Zip / Win11 23H2+ ユーザー向けの小容量版)。7z.exe は windows-2025-vs2026 hosted image に
+          #   標準搭載。無ければ throw (無言で Compress-Archive に退化してサイズ回帰することを防ぐ fail-loud)。
+          #   調査正本: .project-guidance/ReciPro/ReciPro_配布サイズ削減調査.md §2-①
+          # 旧: Compress-Archive -Path $portableDir -DestinationPath $zipPath -Force
+          $sevenZip = "$env:ProgramFiles\7-Zip\7z.exe"
+          if (-not (Test-Path $sevenZip)) { $sevenZip = (Get-Command 7z.exe -ErrorAction SilentlyContinue)?.Source }
+          if (-not $sevenZip) { throw "7z.exe not found on runner (required for release packaging)." }
+          & $sevenZip a -tzip -mx=9 $zipPath $portableDir
+          if ($LASTEXITCODE -ne 0) { throw "7z (zip) failed (exit $LASTEXITCODE)." }
+          $sevenZPath = Join-Path $out "ReciPro-v.${{ needs.prepare.outputs.version }}.7z"
+          & $sevenZip a -t7z -mx=9 $sevenZPath $portableDir
+          if ($LASTEXITCODE -ne 0) { throw "7z (.7z) failed (exit $LASTEXITCODE)." }
 
           Get-ChildItem $out | ForEach-Object { Write-Host "x64 asset (signed): $($_.Name) ($($_.Length) bytes)" }
 
@@ -710,7 +723,19 @@ jobs:
           $out = Join-Path $env:RUNNER_TEMP "arm64-out"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
           $zip = Join-Path $out "${{ steps.names.outputs.zip_name }}"
-          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          # 260731Cl x64 と同方針で 7z -tzip -mx=9 化 (標準 Deflate ZIP のまま圧縮率改善)。windows-11-arm image に
+          #   7z.exe が無い場合は Compress-Archive へフォールバック (arm64 は best-effort tier: 資産欠落回避を優先)
+          # 旧: Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          $src = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $sevenZip = "$env:ProgramFiles\7-Zip\7z.exe"
+          if (-not (Test-Path $sevenZip)) { $sevenZip = (Get-Command 7z.exe -ErrorAction SilentlyContinue)?.Source }
+          if ($sevenZip) {
+            & $sevenZip a -tzip -mx=9 $zip $src
+            if ($LASTEXITCODE -ne 0) { throw "7z (zip) failed (exit $LASTEXITCODE)." }
+          } else {
+            Write-Warning "7z.exe not found on windows-11-arm runner; falling back to Compress-Archive."
+            Compress-Archive -Path $src -DestinationPath $zip -Force
+          }
           $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
           if (-not (Test-Path $msi)) { throw "MSI not found: $msi" }
           Copy-Item $msi $out
@@ -783,6 +808,7 @@ jobs:
             (Join-Path $x64 "ReciPro-setup.msi")
             (Join-Path $x64 "ReciProSetup.msi")
             (Join-Path $x64 "ReciPro-v.$ver.zip")
+            (Join-Path $x64 "ReciPro-v.$ver.7z") # 260731Cl .7z 併売 (sign-x64 job で生成)
           )
 
           # 260623Cl Download 表 (本文はアセット一覧の真上に表示されるため実質的な目次)。
@@ -810,6 +836,7 @@ jobs:
             "| **[ReciPro-setup.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
             "| [ReciPro-setup_arm64.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup_arm64.msi) | Installer for Windows on Arm: Snapdragon PCs such as some Surface models (Surface Pro X / Pro 11 / Laptop 7), or Apple Silicon Macs running Windows via Parallels, etc.$mark |"
             "| [ReciPro-v.$ver.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. May also run on macOS via a Wine wrapper (see [ReciPro_macOS_memo](https://github.com/Ryo-fkushima/ReciPro_macOS_memo)). |"
+            "| [ReciPro-v.$ver.7z](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.$ver.7z) | Same contents as the portable ZIP above, ~25% smaller download (7z format). Windows 11 (23H2 or later) opens it natively; Windows 10 needs [7-Zip](https://www.7-zip.org/). |" # 260731Cl
             "| [ReciPro-v.${ver}_arm64.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.${ver}_arm64.zip) | Portable for Windows on Arm: no installation, no administrator rights needed.$mark |"
             "| ReciProSetup.msi | Identical to ReciPro-setup.msi (legacy name for auto-update from older versions). |"
           ) + $footnote
