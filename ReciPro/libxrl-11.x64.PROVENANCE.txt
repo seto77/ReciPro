@@ -1,8 +1,8 @@
-xraylib 4.2.1 win-arm64 build provenance
+xraylib 4.2.1 win-x64 build provenance
 date: 2026-07-31
 source: https://github.com/tschoonj/xraylib/releases/download/xraylib-4.2.1/xraylib-4.2.1.tar.xz
 source sha256: 64F3FFDDB327F265C13F05D17B356125A85634D0295BE0F0D07BF4B7F9DAEB77
-compiler: Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35228 for ARM64 (MSVC, arm64 native, GitHub-hosted runner 'windows-11-arm')
+compiler: Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36252 for x64 (MSVC, x64 native, GitHub-hosted runner 'windows-2025-vs2026')
 build: meson setup build --buildtype=release -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled -Db_vscrt=static_from_buildtype (/MT)
 data trim (260731Cl): kissel_pe.dat / comptonprofiles.dat / auger_rates.dat stubbed to empty before build
   -> removed: Kissel partial photoionization, Compton profiles, Auger rates (~8.2MB of .data)
@@ -10,6 +10,6 @@ data trim (260731Cl): kissel_pe.dat / comptonprofiles.dat / auger_rates.dat stub
   -> all 14 APIs used by ReciPro (Crystallography/Xraylib.cs) verified numerically identical to previous binary in-run
   -> to restore full data: re-run this workflow with trim=false
 output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with historical conda-forge win-64 binary)
-output sha256: D363E4D71FF299803DDD9EC81E34738B560F59B6114C866230F769E7B5757774
+output sha256: 78A732624E7666A3155550266AD12C9B18332DD36B4571772BF311AD0F7096CB
 actions run: https://github.com/seto77/ReciPro/actions/runs/30630401605
 license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)
