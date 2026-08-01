@@ -116,37 +116,31 @@ namespace ReciPro
             }
         }
 
+        //260801Cl 修正: 結果行のダブルクリックが必ず NullReferenceException で落ちていた。
+        //このグリッド (dataGridView2) は 2〜3 枚モードの結果で、データは SetDataSet(double[], List<ZoneAxes>) が
+        //zoneAxes だけに入れる。zoneAxis (1 枚モード用の別リスト) は null のままなので、参照した時点で必ず落ちる。
+        //相 (Phase) は ZoneAxes の各晶帯軸が持っているので zoneAxes[i].Za1.Phase を見る。
+        //旧: if ((Crystal)formTEMID.formMain.listBox.Items[j] == zoneAxis[i].Phase)   ← 2 箇所とも zoneAxis は null
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = (int)((DataRowView)bindingSource2.Current).Row[0];
+
+            //260801Cl 変更: 二重になっていた相の選択ループを 1 つにまとめた (旧は if/else の両方に同じループを持っていた)
+            for (int j = 0; j < formTEMID.formMain.listBox.Items.Count; j++)
+            {
+                if ((Crystal)formTEMID.formMain.listBox.Items[j] == zoneAxes[i].Za1.Phase)
+                {
+                    formTEMID.formMain.listBox.SelectionMode = SelectionMode.One;
+                    formTEMID.formMain.listBox.SelectedIndex = j;
+                    formTEMID.formMain.listBox.SelectionMode = SelectionMode.MultiExtended;
+                    break;
+                }
+            }
+
             if (zoneAxes[i].IsTwoPhoho)
-            {
-                for (int j = 0; j < formTEMID.formMain.listBox.Items.Count; j++)
-                {
-                    if ((Crystal)formTEMID.formMain.listBox.Items[j] == zoneAxis[i].Phase)
-                    {
-                        formTEMID.formMain.listBox.SelectionMode = SelectionMode.One;
-                        formTEMID.formMain.listBox.SelectedIndex = j;
-                        formTEMID.formMain.listBox.SelectionMode = SelectionMode.MultiExtended;
-                        break;
-                    }
-                }
                 formTEMID.formMain.SetRotation(Euler.SerchEulerAngleFromZoneAxes(zoneAxes[i].Za1, zoneAxes[i].Za2, formTEMID.formMain.Crystal));
-            }
             else
-            {
-                for (int j = 0; j < formTEMID.formMain.listBox.Items.Count; j++)
-                {
-                    if ((Crystal)formTEMID.formMain.listBox.Items[j] == zoneAxis[i].Phase)
-                    {
-                        formTEMID.formMain.listBox.SelectionMode = SelectionMode.One;
-                        formTEMID.formMain.listBox.SelectedIndex = j;
-                        formTEMID.formMain.listBox.SelectionMode = SelectionMode.MultiExtended;
-                        break;
-                    }
-                }
                 formTEMID.formMain.SetRotation(Euler.SerchEulerAngleFromZoneAxes(zoneAxes[i].Za1, zoneAxes[i].Za2, zoneAxes[i].Za3, formTEMID.formMain.Crystal));
-            }
         }
     }
 }

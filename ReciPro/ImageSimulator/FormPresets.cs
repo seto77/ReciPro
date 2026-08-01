@@ -105,15 +105,31 @@ public partial class FormPresets : FormBase
     }
 
     #region OK, Cancel ボタン
-    private void buttonOK_Click(object sender, EventArgs e)
-    {
-        Visible = false;
-    }
+    //260801Cl 修正: 直接 Visible = false にすると FormImageSimulator の checkBoxPreset がチェックされたまま残り、
+    //次にプリセットを開くのにクリックが 2 回必要になっていた (checkBoxPreset → FormPresets.Visible の一方向同期のため)。
+    //×ボタン経路 (FormPresets_FormClosing) と同じく PresetVisible 経由で閉じて、状態を 1 系統に統一する。
+    //旧: private void buttonOK_Click(object sender, EventArgs e) { Visible = false; }
+    private void buttonOK_Click(object sender, EventArgs e) => FormImageSimulator.PresetVisible = false;
 
+    //旧: private void buttonCancel_Click(object sender, EventArgs e) { Visible = false; CurrentSetting.Apply(FormImageSimulator); }
     private void buttonCancel_Click(object sender, EventArgs e)
     {
-        Visible = false;
+        FormImageSimulator.PresetVisible = false;
         CurrentSetting.Apply(FormImageSimulator);
+    }
+
+    //260801Cl 追加: "Manage list" にチェックを入れると flowLayoutPanelOkCancel ごと OK/Cancel が非表示になり、
+    //非表示ボタンは PerformClick しても CanSelect を満たさず何も起きないため、そのモードでは Esc が完全に死んでいた。
+    //ProcessCmdKey は CancelButton を処理する ProcessDialogKey より前に呼ばれるので、両モードで同じ経路に揃う
+    //(通常モードで CancelButton と二重に走ることもない)。
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    {
+        if (keyData == Keys.Escape)
+        {
+            buttonCancel_Click(this, EventArgs.Empty);
+            return true;
+        }
+        return base.ProcessCmdKey(ref msg, keyData);
     }
     #endregion
 

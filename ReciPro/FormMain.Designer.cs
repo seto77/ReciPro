@@ -1286,7 +1286,6 @@
             DragDrop += FormMain_DragDrop;
             DragEnter += FormMain_DragEnter;
             KeyDown += FormMain_KeyDown;
-            KeyUp += FormMain_KeyUp;
             toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             toolStripContainer1.BottomToolStripPanel.PerformLayout();
             toolStripContainer1.ContentPanel.ResumeLayout(false);

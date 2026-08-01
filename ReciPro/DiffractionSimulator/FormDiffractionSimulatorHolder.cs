@@ -325,21 +325,59 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         Draw();
     }
 
+    //260731Cl 追加: 修飾キー無しの矢印キーは、WinForms の前処理 (ContainerControl の方向キーによるフォーカス移動) に
+    //消費されてしまい、KeyPreview = true でも Form の KeyDown まで届かない。とくに graphicsBox
+    //(Crystallography.Controls.GraphicsBox) は 260322 の自作コントロール化で ControlStyles.Selectable が付いたため、
+    //checkBoxEnableArrow_CheckedChanged の graphicsBox.Focus() 後は SelectNextControl が graphicsBox 自身を選び直して
+    //「処理済み」を返し、矢印キーが完全に握り潰されていた (v.4.919 までは動作、v.4.920 以降は無反応)。
+    //ProcessCmdKey は方向キーによるフォーカス移動よりも前に呼ばれるので、フォーカス位置によらず確実に拾える。
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    {
+        if (checkBoxEnableArrow.Checked && tiltByArrowKey(keyData))
+            return true;
+        return base.ProcessCmdKey(ref msg, keyData);
+    }
+
+    /// <summary>260731Cl 追加: 修飾キーの付かない矢印キーならホルダーを傾けて true を返す</summary>
+    private bool tiltByArrowKey(Keys keyData)
+    {
+        //Alt / Shift / Ctrl 併用時は keyData に修飾ビットが乗るため、ここの完全一致で弾かれる
+        switch (keyData)
+        {
+            case Keys.Left: numericBoxTiltX.Value -= numericBoxArrowStep.Value; return true;
+            case Keys.Right: numericBoxTiltX.Value += numericBoxArrowStep.Value; return true;
+            case Keys.Up: numericBoxTiltY.Value += numericBoxArrowStep.Value; return true;
+            case Keys.Down: numericBoxTiltY.Value -= numericBoxArrowStep.Value; return true;
+            default: return false;
+        }
+    }
+
+    //260731Cl 変更: 傾斜処理は tiltByArrowKey に集約し、ProcessCmdKey から呼ぶようにした。
+    //この KeyDown ハンドラ (Designer で配線済み) は通常 ProcessCmdKey が先に消費するので出番が無いが、配線を残したまま同じ処理へ委譲する。
+    //旧:
+    //private void FormDiffractionSimulatorHolder_KeyDown(object sender, KeyEventArgs e)
+    //{
+    //    if (checkBoxEnableArrow.Checked && !e.Alt && !e.Shift && !e.Control
+    //        && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+    //    {
+    //        e.SuppressKeyPress = true;
+    //        e.Handled = true;
+    //        if (e.KeyCode == Keys.Left)
+    //            numericBoxTiltX.Value -= numericBoxArrowStep.Value;
+    //        else if (e.KeyCode == Keys.Right)
+    //            numericBoxTiltX.Value += numericBoxArrowStep.Value;
+    //        else if (e.KeyCode == Keys.Up)
+    //            numericBoxTiltY.Value += numericBoxArrowStep.Value;
+    //        else if (e.KeyCode == Keys.Down)
+    //            numericBoxTiltY.Value -= numericBoxArrowStep.Value;
+    //    }
+    //}
     private void FormDiffractionSimulatorHolder_KeyDown(object sender, KeyEventArgs e)
     {
-        if (checkBoxEnableArrow.Checked && !e.Alt && !e.Shift && !e.Control
-            && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+        if (checkBoxEnableArrow.Checked && tiltByArrowKey(e.KeyData))
         {
             e.SuppressKeyPress = true;
             e.Handled = true;
-            if (e.KeyCode == Keys.Left)
-                numericBoxTiltX.Value -= numericBoxArrowStep.Value;
-            else if (e.KeyCode == Keys.Right)
-                numericBoxTiltX.Value += numericBoxArrowStep.Value;
-            else if (e.KeyCode == Keys.Up)
-                numericBoxTiltY.Value += numericBoxArrowStep.Value;
-            else if (e.KeyCode == Keys.Down)
-                numericBoxTiltY.Value -= numericBoxArrowStep.Value;
         }
     }
 

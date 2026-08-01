@@ -216,6 +216,9 @@ public partial class FormMain : FormBase
     public bool YusaGonioMode { get; set; }
 
     private readonly Stopwatch sw = new();
+    /// <summary>260801Cl 追加: ダウンロード進捗 (MSI 自動更新 / MKL) の経過時間専用。
+    /// 起動時間計測用の sw を使い回すと、ダウンロード中に走った別処理の Stop/Reset で残り時間表示が壊れる。</summary>
+    private readonly Stopwatch swDownload = new();
     public bool SkipDrawing { get; set; } = false;
 
     public string CurrentZoneAxis { get; set; } = "";
@@ -349,11 +352,13 @@ public partial class FormMain : FormBase
 
         //OpenGLがDisableかどうかを決めるためレジストリ読込
         Registry(Reg.Mode.Read);
+        //260801Cl 変更: Ctrl 押下起動による OpenGL 無効化をレジストリへ書かないようにした (今回の起動限りの緊急回避手段にする)。
+        //旧実装は Registry(Reg.Mode.Write) で永続化していたため、誤って Ctrl を押しながら起動すると次回以降も 3D が無効のままになり、
+        //Option メニューの Disable OpenGL を手で外すまで復帰しなかった (この挙動はメニューにもマニュアルにも案内が無い)。
+        //下の環境変数 CRYSTALLOGRAPHY_DISABLE_OPENGL も永続化しない方針なので、これで両者が揃う。
+        //旧: if ((ModifierKeys & Keys.Control) == Keys.Control) { DisableOpenGL = true; Registry(Reg.Mode.Write); }
         if ((ModifierKeys & Keys.Control) == Keys.Control)//Controlキーが押されていた場合は強制的にOpenGLをDisableに。
-        {
             DisableOpenGL = true;
-            Registry(Reg.Mode.Write);
-        }
         // 260612Cl 追加: CI の GUI 起動 smoke (attach-arm64-experimental.yml) 用に、環境変数でも 3D を無効化
         // できるようにする。GPU 無しの hosted runner では GL コンテキスト作成が WndProc 内で失敗して
         // ThreadExceptionDialog ("Microsoft .NET") がモーダル表示され、起動がブロックするため (run 27383602242)。
@@ -417,12 +422,10 @@ public partial class FormMain : FormBase
         commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.", 0.18);
         FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
         FormStructureViewer.KeyDown += FormMain_KeyDown;
-        FormStructureViewer.KeyUp += FormMain_KeyUp;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.", 0.25);
         FormStereonet = new FormStereonet { formMain = this, Visible = false };
         FormStereonet.KeyDown += FormMain_KeyDown;
-        FormStereonet.KeyUp += FormMain_KeyUp;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.30);
         FormCrystalDatabase = new FormCrystalDatabase { FormMain = this, Visible = false };
@@ -430,7 +433,6 @@ public partial class FormMain : FormBase
         commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.", 0.35);
         FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
         FormDiffractionSimulator.KeyDown += FormMain_KeyDown;
-        FormDiffractionSimulator.KeyUp += FormMain_KeyUp;
         FormDiffractionSimulator.VisibleChanged += multiSelectionForms_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.40);
@@ -452,7 +454,6 @@ public partial class FormMain : FormBase
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormSpotIDv1 = new FormSpotIDv1 { formMain = this, Visible = false };
         FormSpotIDv1.KeyDown += FormMain_KeyDown;
-        FormSpotIDv1.KeyUp += FormMain_KeyUp;
         FormSpotIDv1.Visible = false;
         FormSpotIDv1.VisibleChanged += multiSelectionForms_VisibleChanged;
 
@@ -462,7 +463,6 @@ public partial class FormMain : FormBase
         commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
         FormCalculator = new FormCalculator { Owner = this, Visible = false };
         FormCalculator.KeyDown += FormMain_KeyDown;
-        FormCalculator.KeyUp += FormMain_KeyUp;
         FormCalculator.FormClosing += formCalculator_FormClosing;
 
         commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.75);
@@ -1832,55 +1832,53 @@ public partial class FormMain : FormBase
     #endregion FileMenu
 
     #region キーストロークイベント
+    //260801Cl 変更: ウィンドウ開閉ショートカット (Ctrl+Shift+D/V/S/T) と Ctrl 二度押しの電卓表示を廃止 (作者判断)。
+    //D/V/S/T は toolStripButtonXxx.Checked を反転するだけで、それらのボタンには CheckedChanged が配線されておらず
+    //(開閉の実体は toolStripButtons_MouseDown 側にしかない)、ツールバーの点灯表示だけが実状態とズレる no-op だった。
+    //Ctrl 二度押しは判定が `else if (e.Control)` で Ctrl+C 等でも発火し、かつ起動時間計測・更新ダウンロードと
+    //Stopwatch を共有していてダウンロード中の進捗表示を壊していた。
+    //旧:
+    //    if (e.Control && e.Shift && e.KeyCode == Keys.D)
+    //        toolStripButtonDiffractionSingle.Checked = !toolStripButtonDiffractionSingle.Checked;
+    //    else if (e.Control && e.Shift && e.KeyCode == Keys.V)
+    //        toolStripButtonStructureViewer.Checked = !toolStripButtonStructureViewer.Checked;
+    //    else if (e.Control && e.Shift && e.KeyCode == Keys.S)
+    //        toolStripButtonStereonet.Checked = !toolStripButtonStereonet.Checked;
+    //    else if (e.Control && e.Shift && e.KeyCode == Keys.T)
+    //        toolStripButtonSpotIDv2.Checked = !toolStripButtonSpotIDv2.Checked;
+    //    else if (e.Control)//Ctrlを素早く2回おすと計算機をだす。
+    //        if (sw.IsRunning) { sw.Stop(); if (sw.ElapsedMilliseconds < 100) FormCalculator.Visible = !FormCalculator.Visible; sw.Reset(); }
     private void FormMain_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Control && e.Shift && e.KeyCode == Keys.D)
-            toolStripButtonDiffractionSingle.Checked = !toolStripButtonDiffractionSingle.Checked;
-        else if (e.Control && e.Shift && e.KeyCode == Keys.V)
-            toolStripButtonStructureViewer.Checked = !toolStripButtonStructureViewer.Checked;
-        else if (e.Control && e.Shift && e.KeyCode == Keys.S)
-            toolStripButtonStereonet.Checked = !toolStripButtonStereonet.Checked;
-        else if (e.Control && e.Shift && e.KeyCode == Keys.T)
-            toolStripButtonSpotIDv2.Checked = !toolStripButtonSpotIDv2.Checked;
-        else if (e.Control)//Ctrlを素早く2回おすと計算機をだす。
-            if (sw.IsRunning)
-            {
-                sw.Stop();
-                if (sw.ElapsedMilliseconds < 100)
-                    FormCalculator.Visible = !FormCalculator.Visible;
-                sw.Reset();
-            }
-
         //方向キーの制御　　Left = 37,Up = 38,Right = 39,Down = 40,
         if (e.Control && e.Shift)
         {
-            bool left = GetAsyncKeyState(37) != 0;
-            bool up = GetAsyncKeyState(38) != 0;
-            bool right = GetAsyncKeyState(39) != 0;
-            bool down = GetAsyncKeyState(40) != 0;
-            if (up && left)
-                buttonTopLeft.PerformClick();
-            else if (up && right)
-                buttonTopRight.PerformClick();
-            else if (down && left)
-                buttonBottomLeft.PerformClick();
-            else if (down && right)
-                buttonBottomRight.PerformClick();
-            else if (up)
-                buttonTop.PerformClick();
-            else if (down)
-                buttonBottom.PerformClick();
-            else if (right)
-                buttonRight.PerformClick();
-            else if (left)
-                buttonLeft.PerformClick();
-        }
-    }
+            //260801Cl 変更: GetAsyncKeyState の戻り値は最上位ビットが「今押されているか」で、最下位ビットは
+            //「前回の呼び出し以降に押されたか」という履歴。旧 `!= 0` は履歴ビットまで拾うため、既に離した矢印で誤って回転していた。
+            //旧: bool left = GetAsyncKeyState(37) != 0; (up/right/down も同様)
+            static bool pressed(int vk) => (GetAsyncKeyState(vk) & 0x8000) != 0;
+            bool left = pressed(37), up = pressed(38), right = pressed(39), down = pressed(40);
 
-    private void FormMain_KeyUp(object sender, KeyEventArgs e)
-    {
-        if (e.KeyValue == 17)
-            sw.Start();
+            var button = (up, down, left, right) switch
+            {
+                (true, _, true, _) => buttonTopLeft,
+                (true, _, _, true) => buttonTopRight,
+                (_, true, true, _) => buttonBottomLeft,
+                (_, true, _, true) => buttonBottomRight,
+                (true, _, _, _) => buttonTop,
+                (_, true, _, _) => buttonBottom,
+                (_, _, _, true) => buttonRight,
+                (_, _, true, _) => buttonLeft,
+                _ => null,
+            };
+            if (button != null)
+            {
+                button.PerformClick();
+                //260801Cl 追加: 抑止しないと、結晶名のリネーム入力中などに同じ打鍵で文字選択の拡張が同時に起きる
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
     }
     #endregion
 
@@ -1953,11 +1951,11 @@ public partial class FormMain : FormBase
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);
         else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
         {
-            sw.Restart();
+            swDownload.Restart(); //260801Cl 変更: 起動時間計測用の sw との共有をやめる (旧: sw.Restart())
             try
             {
                 var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
-                await ProgramUpdates.DownloadFileWithProgressAsync(URL, Path, progress, sw);
+                await ProgramUpdates.DownloadFileWithProgressAsync(URL, Path, progress, swDownload);
                 if (ProgramUpdates.Execute(Path))
                     Close();
                 else
@@ -1994,7 +1992,7 @@ public partial class FormMain : FormBase
 
         toolStripMenuItemUseMKL.Enabled = false;//260712Cl 追加 (codex 指摘: 二重クリックによる多重ダウンロード防止)
         toolStripProgressBar.Visible = true;
-        sw.Restart();
+        swDownload.Restart(); //260801Cl 変更: 起動時間計測用の sw との共有をやめる (旧: sw.Restart())
         try
         {
             var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
@@ -2042,7 +2040,7 @@ public partial class FormMain : FormBase
                     await fileStream.WriteAsync(buffer.AsMemory(0, read));
                     bytesRead += read;
                     if (counter++ % 10 == 0)
-                        progress?.Report(ProgramUpdates.ProgressMessage(bytesRead, totalBytes, sw));
+                        progress?.Report(ProgramUpdates.ProgressMessage(bytesRead, totalBytes, swDownload));
                 }
             }
 
