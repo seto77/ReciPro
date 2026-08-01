@@ -51,6 +51,7 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     public FormDiffractionSimulatorHolder()
     {
         InitializeComponent();
+        HelpPage = "7-diffraction-simulator"; //260801Cl 追加: 未設定だと F1 がマニュアルのトップページを開いてしまう
     }
 
     private void FormDiffractionSimulatorHolder_Load(object sender, EventArgs e)

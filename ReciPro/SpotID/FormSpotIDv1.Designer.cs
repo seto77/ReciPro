@@ -1301,6 +1301,7 @@
             inputBoxP3L3.Name = "inputBoxP3L3";
             inputBoxP3L3.WaveLength = 0D;
             inputBoxP3L3.ValueChanged += textBox_TextChanged;
+            inputBoxP3L3.Click2 += inputBoxP3L1_Click2; // 260801Cl 追加: Photo1/Photo2 は L3 に配線されているのに Photo3 だけ L1 だけだった (コピペ由来の抜け)
             // 
             // inputBoxP3L2
             // 

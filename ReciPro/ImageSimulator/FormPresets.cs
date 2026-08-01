@@ -37,6 +37,7 @@ public partial class FormPresets : FormBase
     public FormPresets()
     {
         InitializeComponent();
+        HelpPage = "9-hrtem-stem-simulator"; //260801Cl 追加: 未設定だと F1 がマニュアルのトップページを開いてしまう
     }
 
     private void FormPresets_FormClosing(object sender, FormClosingEventArgs e)

@@ -802,6 +802,7 @@
             // toolStripButtonDatabase
             // 
             resources.ApplyResources(toolStripButtonDatabase, "toolStripButtonDatabase");
+            toolStripButtonDatabase.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonDatabase.Name = "toolStripButtonDatabase";
             toolStripButtonDatabase.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -814,6 +815,7 @@
             // toolStripButtonSymmetryInformation
             // 
             resources.ApplyResources(toolStripButtonSymmetryInformation, "toolStripButtonSymmetryInformation");
+            toolStripButtonSymmetryInformation.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonSymmetryInformation.Name = "toolStripButtonSymmetryInformation";
             toolStripButtonSymmetryInformation.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -825,6 +827,7 @@
             // toolStripButtonBeamInteraction
             // 
             resources.ApplyResources(toolStripButtonBeamInteraction, "toolStripButtonBeamInteraction");
+            toolStripButtonBeamInteraction.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonBeamInteraction.Name = "toolStripButtonBeamInteraction";
             toolStripButtonBeamInteraction.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -836,6 +839,7 @@
             // toolStripButtonRotation
             // 
             resources.ApplyResources(toolStripButtonRotation, "toolStripButtonRotation");
+            toolStripButtonRotation.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonRotation.Name = "toolStripButtonRotation";
             toolStripButtonRotation.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -860,6 +864,7 @@
             // toolStripButtonStereonet
             // 
             resources.ApplyResources(toolStripButtonStereonet, "toolStripButtonStereonet");
+            toolStripButtonStereonet.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonStereonet.Name = "toolStripButtonStereonet";
             toolStripButtonStereonet.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -871,6 +876,7 @@
             // toolStripButtonDiffractionSingle
             // 
             resources.ApplyResources(toolStripButtonDiffractionSingle, "toolStripButtonDiffractionSingle");
+            toolStripButtonDiffractionSingle.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonDiffractionSingle.Name = "toolStripButtonDiffractionSingle";
             toolStripButtonDiffractionSingle.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -882,6 +888,7 @@
             // toolStripButtonTrajectorySimulator
             // 
             resources.ApplyResources(toolStripButtonTrajectorySimulator, "toolStripButtonTrajectorySimulator");
+            toolStripButtonTrajectorySimulator.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonTrajectorySimulator.Name = "toolStripButtonTrajectorySimulator";
             toolStripButtonTrajectorySimulator.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -893,6 +900,7 @@
             // toolStripButtonImageSimulator
             // 
             resources.ApplyResources(toolStripButtonImageSimulator, "toolStripButtonImageSimulator");
+            toolStripButtonImageSimulator.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonImageSimulator.Name = "toolStripButtonImageSimulator";
             toolStripButtonImageSimulator.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -904,6 +912,7 @@
             // toolStripButtonSpotIDv1
             // 
             resources.ApplyResources(toolStripButtonSpotIDv1, "toolStripButtonSpotIDv1");
+            toolStripButtonSpotIDv1.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonSpotIDv1.Name = "toolStripButtonSpotIDv1";
             toolStripButtonSpotIDv1.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -915,6 +924,7 @@
             // toolStripButtonSpotIDv2
             // 
             resources.ApplyResources(toolStripButtonSpotIDv2, "toolStripButtonSpotIDv2");
+            toolStripButtonSpotIDv2.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonSpotIDv2.Name = "toolStripButtonSpotIDv2";
             toolStripButtonSpotIDv2.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -926,6 +936,7 @@
             // toolStripButtonEBSD
             // 
             resources.ApplyResources(toolStripButtonEBSD, "toolStripButtonEBSD");
+            toolStripButtonEBSD.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonEBSD.Name = "toolStripButtonEBSD";
             toolStripButtonEBSD.MouseDown += toolStripButtons_MouseDown;
             // 
@@ -937,6 +948,7 @@
             // toolStripButtonDiffractionPoly
             // 
             resources.ApplyResources(toolStripButtonDiffractionPoly, "toolStripButtonDiffractionPoly");
+            toolStripButtonDiffractionPoly.DoubleClickEnabled = true; // 260801Cl 追加: false だとダブルクリックが 2 回のシングルクリック扱いになり、開いて即閉じるだけになる
             toolStripButtonDiffractionPoly.Name = "toolStripButtonDiffractionPoly";
             toolStripButtonDiffractionPoly.CheckedChanged += toolStripButtonPolycrystallineDiffraction_CheckedChanged;
             toolStripButtonDiffractionPoly.MouseDown += toolStripButtons_MouseDown;

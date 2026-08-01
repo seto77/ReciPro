@@ -414,7 +414,9 @@ public partial class FormMain : FormBase
 
         commonDialog.Progress = ("Now Loading...Initializing 'Macro' form.", 0.12);
         macro = new Macro(this);
-        FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false };
+        //260801Cl 変更: HelpPage を設定 (未設定だと F1 がマニュアルのトップページを開く)。FormMacro は共有ライブラリ側なので
+        //slug をあちらに書くと、同じフォームを使う姉妹アプリで存在しないページを開いて 404 になる。ホスト側で設定する。
+        FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false, HelpPage = "20-macro" };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.14);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };

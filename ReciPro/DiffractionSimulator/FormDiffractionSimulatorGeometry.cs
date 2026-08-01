@@ -54,7 +54,12 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     #endregion
 
-    public FormDiffractionSimulatorGeometry() => InitializeComponent();
+    //260801Cl 変更: HelpPage を設定 (未設定だと F1 がマニュアルのトップページを開いてしまう)。旧: => InitializeComponent();
+    public FormDiffractionSimulatorGeometry()
+    {
+        InitializeComponent();
+        HelpPage = "7-diffraction-simulator";
+    }
 
     private void FormDiffractionSimulatorGeometry_Load(object sender, EventArgs e)
     {

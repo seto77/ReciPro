@@ -18,7 +18,12 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
 
     private Dictionary<double, Profile> Profiles;
 
-    public FormDiffractionSimulatorDynamicCompression() => InitializeComponent();
+    //260801Cl 変更: HelpPage を設定 (未設定だと F1 がマニュアルのトップページを開いてしまう)。旧: => InitializeComponent();
+    public FormDiffractionSimulatorDynamicCompression()
+    {
+        InitializeComponent();
+        HelpPage = "7-diffraction-simulator";
+    }
 
     private void FormDiffractionSimulatorDynamicCompression_Load(object sender, EventArgs e) => CrystalControl = FormDiffractionSimulator.formMain.crystalControl;
 
