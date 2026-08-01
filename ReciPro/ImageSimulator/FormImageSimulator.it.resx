@@ -603,7 +603,7 @@ per il cristallo, lo spessore e il defocus selezionati.</value>
 simula un'immagine a sonda scansionata usando l'angolo
 di convergenza e le impostazioni del rivelatore anulare.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (microscopia elettronica a trasmissione a scansione
 con spettroscopia a dispersione di energia di raggi X): simula
 l'output STEM-EDX usando i controlli di calcolo STEM.</value>

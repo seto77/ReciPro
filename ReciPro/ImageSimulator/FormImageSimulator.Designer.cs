@@ -235,7 +235,7 @@ namespace ReciPro
             flowLayoutPanelImageType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
-            radioButton1 = new System.Windows.Forms.RadioButton();
+            radioButtonStemEDX = new System.Windows.Forms.RadioButton();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -1988,7 +1988,7 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanelImageType, "flowLayoutPanelImageType");
             flowLayoutPanelImageType.Controls.Add(radioButtonHRTEM);
             flowLayoutPanelImageType.Controls.Add(radioButtonSTEM);
-            flowLayoutPanelImageType.Controls.Add(radioButton1);
+            flowLayoutPanelImageType.Controls.Add(radioButtonStemEDX);
             flowLayoutPanelImageType.Controls.Add(radioButtonProjectedPotential);
             flowLayoutPanelImageType.Name = "flowLayoutPanelImageType";
             // 
@@ -2010,13 +2010,13 @@ namespace ReciPro
             radioButtonSTEM.UseVisualStyleBackColor = true;
             radioButtonSTEM.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
             // 
-            // radioButton1
+            // radioButtonStemEDX
             // 
-            resources.ApplyResources(radioButton1, "radioButton1");
-            radioButton1.Name = "radioButton1";
-            toolTip.SetToolTip(radioButton1, resources.GetString("radioButton1.ToolTip"));
-            radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
+            resources.ApplyResources(radioButtonStemEDX, "radioButtonStemEDX");
+            radioButtonStemEDX.Name = "radioButtonStemEDX";
+            toolTip.SetToolTip(radioButtonStemEDX, resources.GetString("radioButtonStemEDX.ToolTip"));
+            radioButtonStemEDX.UseVisualStyleBackColor = true;
+            radioButtonStemEDX.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
             // 
             // radioButtonProjectedPotential
             // 
@@ -2599,7 +2599,7 @@ namespace ReciPro
         // 260521Cl: numericBoxWidth/Height は sizeControl1 へ置換したため削除
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonStemEDX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         // 260521Cl: flowLayoutPanel2 は sizeControl1 へ置換したため削除

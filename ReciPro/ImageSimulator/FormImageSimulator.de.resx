@@ -621,7 +621,7 @@ für den ausgewählten Kristall, die Dicke und den Defokus.</value>
 simuliert ein Rastersonden-Bild unter Verwendung des
 Konvergenzwinkels und der Einstellungen des ringförmigen Detektors.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (scanning transmission electron microscopy
 mit energy-dispersive X-ray spectroscopy): simuliert
 die STEM-EDX-Ausgabe mit den STEM-Berechnungs-Bedienelementen.</value>

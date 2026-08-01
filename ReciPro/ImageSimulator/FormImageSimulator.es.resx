@@ -612,7 +612,7 @@ para el cristal, espesor y desenfoque seleccionados.</value>
 simula una imagen de sonda barrida usando el
 ángulo de convergencia y los ajustes del detector anular.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (microscopía electrónica de transmisión de barrido
 con espectroscopía de rayos X por dispersión de energía): simula
 la salida STEM-EDX usando los controles de cálculo STEM.</value>

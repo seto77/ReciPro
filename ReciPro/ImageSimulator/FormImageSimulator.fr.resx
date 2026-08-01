@@ -618,7 +618,7 @@ pour le cristal, l'épaisseur et la défocalisation sélectionnés.</value>
 simule une image à sonde balayée à l'aide de l'angle de
 convergence et des réglages du détecteur annulaire.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (microscopie électronique en transmission à balayage
 avec spectroscopie de rayons X à dispersion d'énergie) : simule
 la sortie STEM-EDX à l'aide des réglages de calcul STEM.</value>

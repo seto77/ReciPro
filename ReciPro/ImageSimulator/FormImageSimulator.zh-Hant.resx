@@ -617,7 +617,7 @@ microscopy, 高解析度穿透式電子顯微術）：以所
 掃描穿透式電子顯微術）：使用會聚角與環狀
 偵測器設定模擬掃描探束影像。</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX（掃描穿透式電子顯微術 + energy-dispersive
 X-ray spectroscopy, 能量散佈 X 射線光譜術）：使用
 STEM 計算控制項模擬 STEM-EDX 輸出。</value>

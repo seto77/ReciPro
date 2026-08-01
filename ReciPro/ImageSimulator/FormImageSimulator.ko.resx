@@ -618,7 +618,7 @@ microscopy, 고분해능 투과 전자 현미경): 선택한
 주사 투과 전자 현미경): 수렴각과 환형 검출기
 설정을 사용하여 주사 프로브 이미지를 시뮬레이션합니다.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX(scanning transmission electron microscopy
 with energy-dispersive X-ray spectroscopy): STEM
 계산 컨트롤을 사용하여 STEM-EDX 출력을 시뮬레이션합니다.</value>

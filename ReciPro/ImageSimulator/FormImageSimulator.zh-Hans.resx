@@ -611,7 +611,7 @@ microscopy，高分辨率透射电子显微术）：针对所选
 扫描透射电子显微术）：使用会聚角和
 环形探测器设置模拟扫描探针像。</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX（扫描透射电子显微术结合能量色散
 X 射线谱）：使用 STEM
 计算控件模拟 STEM-EDX 输出。</value>

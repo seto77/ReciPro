@@ -6686,48 +6686,48 @@ convergence angle and annular detector settings.</value>
   <data name="&gt;&gt;radioButtonSTEM.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="radioButton1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="radioButtonStemEDX.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonStemEDX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="radioButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="radioButtonStemEDX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="radioButton1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="radioButtonStemEDX.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 23</value>
   </data>
-  <data name="radioButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="radioButtonStemEDX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="radioButton1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="radioButtonStemEDX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="radioButtonStemEDX.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 23</value>
   </data>
-  <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="radioButtonStemEDX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="radioButton1.Text" xml:space="preserve">
+  <data name="radioButtonStemEDX.Text" xml:space="preserve">
     <value>STEM-EDX</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (scanning transmission electron microscopy
 with energy-dispersive X-ray spectroscopy): simulate
 STEM-EDX output using the STEM calculation controls.</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Name" xml:space="preserve">
-    <value>radioButton1</value>
+  <data name="&gt;&gt;radioButtonStemEDX.Name" xml:space="preserve">
+    <value>radioButtonStemEDX</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;radioButtonStemEDX.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;radioButtonStemEDX.Parent" xml:space="preserve">
     <value>flowLayoutPanelImageType</value>
   </data>
-  <data name="&gt;&gt;radioButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;radioButtonStemEDX.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="radioButtonProjectedPotential.AutoSize" type="System.Boolean, mscorlib">

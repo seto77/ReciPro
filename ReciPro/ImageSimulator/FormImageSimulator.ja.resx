@@ -459,7 +459,7 @@ microscopy, 高分解能透過電子顕微鏡）像を、選択した
 microscopy, 走査透過電子顕微鏡）像を、収束角と
 環状検出器の設定でシミュレートします。</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX（走査透過電子顕微鏡 + energy-dispersive
 X-ray spectroscopy, エネルギー分散型 X
 線分光）出力を、STEM 計算条件でシミュレートします。</value>
@@ -1115,7 +1115,7 @@ CTF（contrast transfer function, コントラスト
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="radioButton1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonStemEDX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">

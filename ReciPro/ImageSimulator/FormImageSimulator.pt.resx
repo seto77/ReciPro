@@ -621,7 +621,7 @@ para o cristal, espessura e desfocagem selecionados.</value>
 simula uma imagem de sonda varrida usando o
 ângulo de convergência e as configurações do detector anular.</value>
   </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
+  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
     <value>STEM-EDX (microscopia eletrônica de transmissão por varredura
 com espectroscopia de raios X por dispersão de energia): simula
 a saída STEM-EDX usando os controles de cálculo STEM.</value>
