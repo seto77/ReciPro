@@ -957,6 +957,9 @@ public partial class FormImageSimulator : FormBase
         numericBoxSTEM_ConvergenceAngle_ValueChanged(sender, e);
         NumericBoxObjAperRadius_ValueChanged(sender, e);
 
+        //260801Cl 追加: E0 は EDX の吸収端判定・過電圧・データ範囲 (30-400 kV) を左右するので候補表を作り直す
+        if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked)
+            RenewEdxChannelList();
     }
     /// <summary>球面収差が変更されたとき。シェルツァーフォーカス変更、レンズ関数描画</summary>
     /// <param name="sender"></param>
@@ -976,6 +979,11 @@ public partial class FormImageSimulator : FormBase
         textBoxInnerRadius.Text = (Sin(STEM_DetectorInnerAngle) / Lambda).ToString("f3");
         textBoxOuterRadius.Text = (Sin(STEM_DetectorOuterAngle) / Lambda).ToString("f3");
         FormCTF.Renew();
+
+        //260801Cl 追加: 収束角・角度分解能は probe grid の division を決めるので EDX の警告表示を更新
+        //(numericBoxSTEM_AngleResolution の ValueChanged も同じハンドラを購読している)
+        if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked)
+            RenewEdxSummary();
     }
 
 
@@ -1111,24 +1119,35 @@ public partial class FormImageSimulator : FormBase
 
     private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
     {
-        this.SuspendLayout();
-        numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
+        //260801Cl 追加: RadioButton の CheckedChanged は「外れた側」でも発火するので、外れた側の分を捨てて二重更新を避ける
+        if (sender is RadioButton { Checked: false }) return;
 
-        numericBoxHRTEM_BetaAgnle.Enabled = ImageMode == ImageModes.HRTEM;
+        this.SuspendLayout();
+        //260801Cl 追加: モード判定をローカルへ (STEM-EDX は独立モードでなく STEM 内オプション。設計書 §5.9.1-1)
+        var mode = ImageMode;
+        var isStem = mode == ImageModes.STEM;
+
+        numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL;
+
+        numericBoxHRTEM_BetaAgnle.Enabled = mode == ImageModes.HRTEM;
 
         numericBoxCs.Enabled = numericBoxCc.Enabled = numericBoxDeltaV.Enabled =
         groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
-               = groupBoxSerialImage.Visible = ImageMode != ImageModes.POTENTIAL;
+               = groupBoxSerialImage.Visible = mode != ImageModes.POTENTIAL;
 
-        checkBoxRealTimeSimulation.Visible = ImageMode != ImageModes.STEM;
+        checkBoxRealTimeSimulation.Visible = !isStem;
 
-        groupBoxPotentialOption.Visible = ImageMode == ImageModes.POTENTIAL;
-        groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = ImageMode == ImageModes.HRTEM;
-        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = ImageMode == ImageModes.STEM;
+        groupBoxPotentialOption.Visible = mode == ImageModes.POTENTIAL;
+        groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = mode == ImageModes.HRTEM;
+        //260801Cl 変更: option4 (EDX 要求) を STEM 系 GroupBox に追加。表の中身はチェック時のみ展開 (progressive disclosure)
+        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = groupBoxSTEMoption4.Visible = isStem;
+        panelEdxDetails.Visible = checkBoxCalculateEdx.Checked;
+        if (isStem && checkBoxCalculateEdx.Checked)
+            RenewEdxChannelList();
 
-        if (ImageMode == ImageModes.POTENTIAL)
+        if (mode == ImageModes.POTENTIAL)
             checkBoxCTF.Checked = false;
-        checkBoxCTF.Enabled = ImageMode != ImageModes.POTENTIAL;
+        checkBoxCTF.Enabled = mode != ImageModes.POTENTIAL;
 
         this.ResumeLayout(true);
 

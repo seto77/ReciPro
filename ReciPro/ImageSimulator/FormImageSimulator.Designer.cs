@@ -235,7 +235,23 @@ namespace ReciPro
             flowLayoutPanelImageType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
-            radioButtonStemEDX = new System.Windows.Forms.RadioButton();
+            //radioButtonStemEDX = new System.Windows.Forms.RadioButton();//260801Cl 削除 (設計書 §5.9.1-2)
+            //260801Cl 追加: STEM-EDX 要求 UI (設計書 §5.9.1-3)
+            groupBoxSTEMoption4 = new System.Windows.Forms.GroupBox();
+            checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
+            labelEdxSummary = new System.Windows.Forms.Label();
+            panelEdxDetails = new System.Windows.Forms.Panel();
+            dataGridViewEdxChannels = new Crystallography.Controls.DpiAwareDataGridView();
+            colEdxUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            colEdxElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            //colEdxShell = new System.Windows.Forms.DataGridViewTextBoxColumn();//260801Cl 削除 (殻は colEdxElement に統合)
+            colEdxEdge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdxU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdxStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            flowLayoutPanelEdxButtons = new System.Windows.Forms.FlowLayoutPanel();
+            buttonEdxSelectAvailable = new System.Windows.Forms.Button();
+            buttonEdxClear = new System.Windows.Forms.Button();
+            labelEdxProbeGrid = new System.Windows.Forms.Label();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -299,6 +315,10 @@ namespace ReciPro
             panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).BeginInit();
             flowLayoutPanelRealAndImaiginary.SuspendLayout();
+            groupBoxSTEMoption4.SuspendLayout();//260801Cl 追加
+            panelEdxDetails.SuspendLayout();//260801Cl 追加
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEdxChannels).BeginInit();//260801Cl 追加
+            flowLayoutPanelEdxButtons.SuspendLayout();//260801Cl 追加
             groupBoxSTEMoption2.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
             groupBoxHREMoption2.SuspendLayout();
@@ -772,10 +792,125 @@ namespace ReciPro
             resources.ApplyResources(panelModeOptions, "panelModeOptions");
             panelModeOptions.Controls.Add(groupBoxSerialImage);
             panelModeOptions.Controls.Add(groupBoxPotentialOption);
+            panelModeOptions.Controls.Add(groupBoxSTEMoption4);//260801Cl 追加: EDX 要求 UI は Dock.Top 逆順のため option2 の直前 (= 画面上は option2 の下、設計書 §5.9.1-3)
             panelModeOptions.Controls.Add(groupBoxSTEMoption2);
             panelModeOptions.Controls.Add(groupBoxHREMoption2);
             panelModeOptions.Controls.Add(panelImageProperties);
             panelModeOptions.Name = "panelModeOptions";
+            //
+            // groupBoxSTEMoption4 (260801Cl 追加: STEM-EDX 元素マップ要求。設計書 §5.9.1-3 progressive disclosure)
+            //
+            resources.ApplyResources(groupBoxSTEMoption4, "groupBoxSTEMoption4");
+            captureExtender.SetCapture(groupBoxSTEMoption4, true);
+            groupBoxSTEMoption4.Controls.Add(panelEdxDetails);
+            groupBoxSTEMoption4.Controls.Add(labelEdxSummary);
+            groupBoxSTEMoption4.Controls.Add(checkBoxCalculateEdx);
+            groupBoxSTEMoption4.Name = "groupBoxSTEMoption4";
+            groupBoxSTEMoption4.TabStop = false;
+            //
+            // checkBoxCalculateEdx
+            //
+            resources.ApplyResources(checkBoxCalculateEdx, "checkBoxCalculateEdx");
+            checkBoxCalculateEdx.Name = "checkBoxCalculateEdx";
+            toolTip.SetToolTip(checkBoxCalculateEdx, resources.GetString("checkBoxCalculateEdx.ToolTip"));
+            checkBoxCalculateEdx.UseVisualStyleBackColor = true;
+            checkBoxCalculateEdx.CheckedChanged += CheckBoxCalculateEdx_CheckedChanged;
+            //
+            // labelEdxSummary
+            //
+            resources.ApplyResources(labelEdxSummary, "labelEdxSummary");
+            labelEdxSummary.Name = "labelEdxSummary";
+            //
+            // panelEdxDetails
+            //
+            resources.ApplyResources(panelEdxDetails, "panelEdxDetails");
+            panelEdxDetails.Controls.Add(dataGridViewEdxChannels);
+            panelEdxDetails.Controls.Add(labelEdxProbeGrid);
+            panelEdxDetails.Controls.Add(flowLayoutPanelEdxButtons);
+            panelEdxDetails.Name = "panelEdxDetails";
+            //
+            // flowLayoutPanelEdxButtons
+            //
+            resources.ApplyResources(flowLayoutPanelEdxButtons, "flowLayoutPanelEdxButtons");
+            flowLayoutPanelEdxButtons.Controls.Add(buttonEdxSelectAvailable);
+            flowLayoutPanelEdxButtons.Controls.Add(buttonEdxClear);
+            flowLayoutPanelEdxButtons.Name = "flowLayoutPanelEdxButtons";
+            //
+            // buttonEdxSelectAvailable
+            //
+            resources.ApplyResources(buttonEdxSelectAvailable, "buttonEdxSelectAvailable");
+            buttonEdxSelectAvailable.Name = "buttonEdxSelectAvailable";
+            buttonEdxSelectAvailable.UseVisualStyleBackColor = true;
+            buttonEdxSelectAvailable.Click += ButtonEdxSelectAvailable_Click;
+            //
+            // buttonEdxClear
+            //
+            resources.ApplyResources(buttonEdxClear, "buttonEdxClear");
+            buttonEdxClear.Name = "buttonEdxClear";
+            buttonEdxClear.UseVisualStyleBackColor = true;
+            buttonEdxClear.Click += ButtonEdxClear_Click;
+            //
+            // labelEdxProbeGrid
+            //
+            resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
+            labelEdxProbeGrid.Name = "labelEdxProbeGrid";
+            //
+            // dataGridViewEdxChannels
+            //
+            dataGridViewEdxChannels.AllowUserToAddRows = false;
+            dataGridViewEdxChannels.AllowUserToDeleteRows = false;
+            dataGridViewEdxChannels.AllowUserToResizeRows = false;
+            dataGridViewEdxChannels.AutoGenerateColumns = false;
+            dataGridViewEdxChannels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;//ヘッダ文字切れ防止 (FormBeamInteraction の実績)
+            //260801Cl 変更: 元素と殻は 1 列 ("O (8) K") に統合。狭い panelModeOptions で 6 列だと Status 列が潰れるため (旧: colEdxElement, colEdxShell の 2 列)
+            dataGridViewEdxChannels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colEdxUse, colEdxElement, colEdxEdge, colEdxU, colEdxStatus });
+            resources.ApplyResources(dataGridViewEdxChannels, "dataGridViewEdxChannels");
+            dataGridViewEdxChannels.MultiSelect = false;
+            dataGridViewEdxChannels.Name = "dataGridViewEdxChannels";
+            dataGridViewEdxChannels.RowHeadersVisible = false;
+            dataGridViewEdxChannels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            dataGridViewEdxChannels.CurrentCellDirtyStateChanged += DataGridViewEdxChannels_CurrentCellDirtyStateChanged;
+            dataGridViewEdxChannels.CellValueChanged += DataGridViewEdxChannels_CellValueChanged;
+            //
+            // colEdxUse
+            //
+            colEdxUse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(colEdxUse, "colEdxUse");
+            colEdxUse.Name = "colEdxUse";
+            colEdxUse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            //
+            // colEdxElement
+            //
+            colEdxElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(colEdxElement, "colEdxElement");
+            colEdxElement.Name = "colEdxElement";
+            colEdxElement.ReadOnly = true;
+            colEdxElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            //260801Cl 削除: colEdxShell (殻は colEdxElement に統合)
+            //
+            // colEdxEdge
+            //
+            colEdxEdge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(colEdxEdge, "colEdxEdge");
+            colEdxEdge.Name = "colEdxEdge";
+            colEdxEdge.ReadOnly = true;
+            colEdxEdge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            //
+            // colEdxU
+            //
+            colEdxU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(colEdxU, "colEdxU");
+            colEdxU.Name = "colEdxU";
+            colEdxU.ReadOnly = true;
+            colEdxU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            //
+            // colEdxStatus
+            //
+            colEdxStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(colEdxStatus, "colEdxStatus");
+            colEdxStatus.Name = "colEdxStatus";
+            colEdxStatus.ReadOnly = true;
+            colEdxStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // groupBoxSerialImage
             // 
@@ -1252,6 +1387,7 @@ namespace ReciPro
             numericBoxSTEM_AngleResolution.Value = 0.4D;
             numericBoxSTEM_AngleResolution.ValueBoxWidth = 36;
             numericBoxSTEM_AngleResolution.ValueFontSize = 9F;
+            numericBoxSTEM_AngleResolution.ValueChanged += NumericBoxSTEM_AngleResolution_ValueChanged;//260801Cl 追加: probe grid の division 表示 (EDX 警告) を更新
             // 
             // numericBoxSTEM_SliceThicknessForInelastic
             // 
@@ -1988,7 +2124,7 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanelImageType, "flowLayoutPanelImageType");
             flowLayoutPanelImageType.Controls.Add(radioButtonHRTEM);
             flowLayoutPanelImageType.Controls.Add(radioButtonSTEM);
-            flowLayoutPanelImageType.Controls.Add(radioButtonStemEDX);
+            //flowLayoutPanelImageType.Controls.Add(radioButtonStemEDX);//260801Cl 削除: STEM-EDX は独立モードでなく STEM run の追加出力オプション (設計書 §5.9.1-2)
             flowLayoutPanelImageType.Controls.Add(radioButtonProjectedPotential);
             flowLayoutPanelImageType.Name = "flowLayoutPanelImageType";
             // 
@@ -2009,15 +2145,8 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonSTEM, resources.GetString("radioButtonSTEM.ToolTip"));
             radioButtonSTEM.UseVisualStyleBackColor = true;
             radioButtonSTEM.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
-            // 
-            // radioButtonStemEDX
-            // 
-            resources.ApplyResources(radioButtonStemEDX, "radioButtonStemEDX");
-            radioButtonStemEDX.Name = "radioButtonStemEDX";
-            toolTip.SetToolTip(radioButtonStemEDX, resources.GetString("radioButtonStemEDX.ToolTip"));
-            radioButtonStemEDX.UseVisualStyleBackColor = true;
-            radioButtonStemEDX.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
-            // 
+            //260801Cl 削除: radioButtonStemEDX の初期化ブロック (STEM-EDX の独立モード化を撤回。設計書 §5.9.1)
+            //
             // radioButtonProjectedPotential
             // 
             resources.ApplyResources(radioButtonProjectedPotential, "radioButtonProjectedPotential");
@@ -2327,6 +2456,14 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).EndInit();
             flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             flowLayoutPanelRealAndImaiginary.PerformLayout();
+            //260801Cl 追加: EDX 要求 UI (SuspendLayout と対)
+            groupBoxSTEMoption4.ResumeLayout(false);
+            groupBoxSTEMoption4.PerformLayout();
+            panelEdxDetails.ResumeLayout(false);
+            panelEdxDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEdxChannels).EndInit();
+            flowLayoutPanelEdxButtons.ResumeLayout(false);
+            flowLayoutPanelEdxButtons.PerformLayout();
             groupBoxSTEMoption2.ResumeLayout(false);
             groupBoxSTEMoption2.PerformLayout();
             flowLayoutPanel11.ResumeLayout(false);
@@ -2599,7 +2736,23 @@ namespace ReciPro
         // 260521Cl: numericBoxWidth/Height は sizeControl1 へ置換したため削除
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.RadioButton radioButtonStemEDX;
+        //private System.Windows.Forms.RadioButton radioButtonStemEDX;//260801Cl 削除 (設計書 §5.9.1-2)
+        //260801Cl 追加: STEM-EDX 要求 UI (設計書 §5.9.1-3)
+        private System.Windows.Forms.GroupBox groupBoxSTEMoption4;
+        private System.Windows.Forms.CheckBox checkBoxCalculateEdx;
+        private System.Windows.Forms.Label labelEdxSummary;
+        private System.Windows.Forms.Panel panelEdxDetails;
+        private Crystallography.Controls.DpiAwareDataGridView dataGridViewEdxChannels;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colEdxUse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxElement;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn colEdxShell;//260801Cl 削除 (殻は colEdxElement に統合)
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxEdge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxStatus;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEdxButtons;
+        private System.Windows.Forms.Button buttonEdxSelectAvailable;
+        private System.Windows.Forms.Button buttonEdxClear;
+        private System.Windows.Forms.Label labelEdxProbeGrid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         // 260521Cl: flowLayoutPanel2 は sizeControl1 へ置換したため削除

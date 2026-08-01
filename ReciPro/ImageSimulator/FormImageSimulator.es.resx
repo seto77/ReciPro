@@ -612,11 +612,6 @@ para el cristal, espesor y desenfoque seleccionados.</value>
 simula una imagen de sonda barrida usando el
 ángulo de convergencia y los ajustes del detector anular.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (microscopía electrónica de transmisión de barrido
-con espectroscopía de rayos X por dispersión de energía): simula
-la salida STEM-EDX usando los controles de cálculo STEM.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>Modo potencial: calcula el potencial cristalino
 proyectado en lugar de aplicar
@@ -876,5 +871,32 @@ cuando se selecciona el modo "Serial image".</value>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Elija qué magnitud (desenfoque o espesor) varía
 a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>Mapas elementales STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Calcular mapas STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Calcula mapas de ionización (EDX) para los canales elemento/capa seleccionados.&#xD;&#xA;La imagen STEM de referencia (ADF / elástica / TDS) siempre se calcula;&#xD;&#xA;cada canal EDX añade después una pasada de ionización adicional.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Seleccionar disponibles</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Usar</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Borde (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>Estado</value>
   </data>
 </root>

@@ -618,11 +618,6 @@ pour le cristal, l'épaisseur et la défocalisation sélectionnés.</value>
 simule une image à sonde balayée à l'aide de l'angle de
 convergence et des réglages du détecteur annulaire.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (microscopie électronique en transmission à balayage
-avec spectroscopie de rayons X à dispersion d'énergie) : simule
-la sortie STEM-EDX à l'aide des réglages de calcul STEM.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>Mode potentiel : calcule le potentiel
 cristallin projeté au lieu d'appliquer
@@ -882,5 +877,32 @@ lorsque le mode « Serial image » est sélectionné.</value>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Choisir quelle grandeur (défocalisation ou épaisseur) varie
 le long de l'axe horizontal de la grille d'images en série.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>Cartes élémentaires STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Calculer les cartes STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Calcule les cartes d'ionisation (EDX) pour les canaux élément/couche sélectionnés.&#xD;&#xA;L'image STEM de référence (ADF / élastique / TDS) est toujours calculée ;&#xD;&#xA;chaque canal EDX ajoute ensuite une passe d'ionisation supplémentaire.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Sélectionner les disponibles</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Utiliser</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Seuil (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>État</value>
   </data>
 </root>

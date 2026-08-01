@@ -621,11 +621,6 @@ para o cristal, espessura e desfocagem selecionados.</value>
 simula uma imagem de sonda varrida usando o
 ângulo de convergência e as configurações do detector anular.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (microscopia eletrônica de transmissão por varredura
-com espectroscopia de raios X por dispersão de energia): simula
-a saída STEM-EDX usando os controles de cálculo STEM.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>Modo de potencial: calcula o potencial cristalino
 projetado em vez de aplicar
@@ -885,5 +880,32 @@ quando o modo "Serial image" está selecionado.</value>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Escolhe qual grandeza (desfocagem ou espessura) varia
 ao longo do eixo horizontal da grade de imagens em série.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>Mapas elementares STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Calcular mapas STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Calcula mapas de ionização (EDX) para os canais elemento/camada selecionados.&#xD;&#xA;A imagem STEM de referência (ADF / elástica / TDS) é sempre calculada;&#xD;&#xA;cada canal EDX acrescenta depois uma passagem de ionização adicional.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Selecionar disponíveis</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Usar</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Borda (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>Estado</value>
   </data>
 </root>

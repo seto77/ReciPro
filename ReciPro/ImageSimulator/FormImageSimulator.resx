@@ -6686,50 +6686,6 @@ convergence angle and annular detector settings.</value>
   <data name="&gt;&gt;radioButtonSTEM.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="radioButtonStemEDX.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonStemEDX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonStemEDX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonStemEDX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 23</value>
-  </data>
-  <data name="radioButtonStemEDX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonStemEDX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="radioButtonStemEDX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="radioButtonStemEDX.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioButtonStemEDX.Text" xml:space="preserve">
-    <value>STEM-EDX</value>
-  </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (scanning transmission electron microscopy
-with energy-dispersive X-ray spectroscopy): simulate
-STEM-EDX output using the STEM calculation controls.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonStemEDX.Name" xml:space="preserve">
-    <value>radioButtonStemEDX</value>
-  </data>
-  <data name="&gt;&gt;radioButtonStemEDX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonStemEDX.Parent" xml:space="preserve">
-    <value>flowLayoutPanelImageType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonStemEDX.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="radioButtonProjectedPotential.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6772,7 +6728,7 @@ TEM/STEM image-transfer effects.</value>
     <value>flowLayoutPanelImageType</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectedPotential.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelImageType.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -7722,5 +7678,311 @@ code (fast C++/Eigen) or Managed code
   </data>
   <data name="colorControlLabel.ToolTip1" xml:space="preserve">
     <value>Color of label</value>
+  </data>
+  <data name="checkBoxCalculateEdx.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 19</value>
+  </data>
+  <data name="checkBoxCalculateEdx.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Calculate STEM-EDX maps</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Compute ionization (EDX) maps for the selected element/shell channels.&#xD;&#xA;The STEM reference image (ADF / elastic / TDS) is always computed;&#xD;&#xA;each EDX channel adds one extra ionization pass after it.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Name" xml:space="preserve">
+    <value>checkBoxCalculateEdx</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelEdxSummary.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEdxSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelEdxSummary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 38</value>
+  </data>
+  <data name="labelEdxSummary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 15</value>
+  </data>
+  <data name="labelEdxSummary.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelEdxSummary.Text" xml:space="preserve">
+    <value>No channel selected</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Name" xml:space="preserve">
+    <value>labelEdxSummary</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dataGridViewEdxChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewEdxChannels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dataGridViewEdxChannels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 116</value>
+  </data>
+  <data name="dataGridViewEdxChannels.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewEdxChannels.Name" xml:space="preserve">
+    <value>dataGridViewEdxChannels</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewEdxChannels.Type" xml:space="preserve">
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewEdxChannels.Parent" xml:space="preserve">
+    <value>panelEdxDetails</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewEdxChannels.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Use</value>
+  </data>
+  <data name="&gt;&gt;colEdxUse.Name" xml:space="preserve">
+    <value>colEdxUse</value>
+  </data>
+  <data name="&gt;&gt;colEdxUse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="&gt;&gt;colEdxElement.Name" xml:space="preserve">
+    <value>colEdxElement</value>
+  </data>
+  <data name="&gt;&gt;colEdxElement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Edge (keV)</value>
+  </data>
+  <data name="&gt;&gt;colEdxEdge.Name" xml:space="preserve">
+    <value>colEdxEdge</value>
+  </data>
+  <data name="&gt;&gt;colEdxEdge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colEdxU.HeaderText" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="&gt;&gt;colEdxU.Name" xml:space="preserve">
+    <value>colEdxU</value>
+  </data>
+  <data name="&gt;&gt;colEdxU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="&gt;&gt;colEdxStatus.Name" xml:space="preserve">
+    <value>colEdxStatus</value>
+  </data>
+  <data name="&gt;&gt;colEdxStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelEdxProbeGrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEdxProbeGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelEdxProbeGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 116</value>
+  </data>
+  <data name="labelEdxProbeGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 30</value>
+  </data>
+  <data name="labelEdxProbeGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelEdxProbeGrid.Text" xml:space="preserve">
+    <value>Probe grid</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Name" xml:space="preserve">
+    <value>labelEdxProbeGrid</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Parent" xml:space="preserve">
+    <value>panelEdxDetails</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelEdxButtons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelEdxButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="flowLayoutPanelEdxButtons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 146</value>
+  </data>
+  <data name="flowLayoutPanelEdxButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 28</value>
+  </data>
+  <data name="flowLayoutPanelEdxButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxButtons.Name" xml:space="preserve">
+    <value>flowLayoutPanelEdxButtons</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxButtons.Parent" xml:space="preserve">
+    <value>panelEdxDetails</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxButtons.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Select available</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxSelectAvailable.Name" xml:space="preserve">
+    <value>buttonEdxSelectAvailable</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxSelectAvailable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxSelectAvailable.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEdxButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxSelectAvailable.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonEdxClear.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonEdxClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 3</value>
+  </data>
+  <data name="buttonEdxClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 25</value>
+  </data>
+  <data name="buttonEdxClear.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxClear.Name" xml:space="preserve">
+    <value>buttonEdxClear</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxClear.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEdxButtons</value>
+  </data>
+  <data name="&gt;&gt;buttonEdxClear.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBoxSTEMoption4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxSTEMoption4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 235</value>
+  </data>
+  <data name="groupBoxSTEMoption4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX elemental maps</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Name" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Parent" xml:space="preserve">
+    <value>panelModeOptions</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelEdxDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelEdxDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 57</value>
+  </data>
+  <data name="panelEdxDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 205</value>
+  </data>
+  <data name="panelEdxDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="panelEdxDetails.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelEdxDetails.Name" xml:space="preserve">
+    <value>panelEdxDetails</value>
+  </data>
+  <data name="&gt;&gt;panelEdxDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelEdxDetails.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;panelEdxDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

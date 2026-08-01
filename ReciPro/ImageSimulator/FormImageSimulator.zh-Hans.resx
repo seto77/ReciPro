@@ -611,11 +611,6 @@ microscopy，高分辨率透射电子显微术）：针对所选
 扫描透射电子显微术）：使用会聚角和
 环形探测器设置模拟扫描探针像。</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX（扫描透射电子显微术结合能量色散
-X 射线谱）：使用 STEM
-计算控件模拟 STEM-EDX 输出。</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>电势模式：计算投影晶体电势，
 而不施加 TEM/STEM 的像传递
@@ -870,5 +865,32 @@ code（高速 C++/Eigen 原生代码）或 Managed code
   <data name="label6.ToolTip" xml:space="preserve">
     <value>选择沿连续图像网格水平轴方向
 变化的量（欠焦量或厚度）。</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 元素分布图</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>计算 STEM-EDX 分布图</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>计算所选元素/壳层通道的电离 (EDX) 分布图。&#xD;&#xA;STEM 参考像 (ADF / 弹性 / TDS) 始终会计算；&#xD;&#xA;每个 EDX 通道会在其后额外增加一次电离计算。</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>选择全部可用</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>通道</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>吸收边 (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>状态</value>
   </data>
 </root>

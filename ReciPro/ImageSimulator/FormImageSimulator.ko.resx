@@ -618,11 +618,6 @@ microscopy, 고분해능 투과 전자 현미경): 선택한
 주사 투과 전자 현미경): 수렴각과 환형 검출기
 설정을 사용하여 주사 프로브 이미지를 시뮬레이션합니다.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX(scanning transmission electron microscopy
-with energy-dispersive X-ray spectroscopy): STEM
-계산 컨트롤을 사용하여 STEM-EDX 출력을 시뮬레이션합니다.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>퍼텐셜 모드: TEM/STEM 이미지 전달 효과를
 적용하지 않고 투영된 결정
@@ -881,5 +876,32 @@ Step 및 Num과 조합하여 아래의
   <data name="label6.ToolTip" xml:space="preserve">
     <value>연속 이미지 그리드의 가로축을 따라 변하는
 양(디포커스 또는 두께)을 선택합니다.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 원소 맵</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>STEM-EDX 맵 계산</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>선택한 원소/껍질 채널의 이온화(EDX) 맵을 계산합니다.&#xD;&#xA;STEM 참조 이미지(ADF / 탄성 / TDS)는 항상 계산되며,&#xD;&#xA;EDX 채널마다 이온화 패스가 한 번씩 추가됩니다.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>사용 가능 모두 선택</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>해제</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>채널</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>흡수단 (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>상태</value>
   </data>
 </root>

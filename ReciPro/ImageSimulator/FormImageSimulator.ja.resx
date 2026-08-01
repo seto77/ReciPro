@@ -459,11 +459,6 @@ microscopy, 高分解能透過電子顕微鏡）像を、選択した
 microscopy, 走査透過電子顕微鏡）像を、収束角と
 環状検出器の設定でシミュレートします。</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX（走査透過電子顕微鏡 + energy-dispersive
-X-ray spectroscopy, エネルギー分散型 X
-線分光）出力を、STEM 計算条件でシミュレートします。</value>
-  </data>
   <data name="radioButtonProjectedPotential.Text" xml:space="preserve">
     <value>ポテンシャル</value>
   </data>
@@ -1115,9 +1110,6 @@ CTF（contrast transfer function, コントラスト
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="radioButtonStemEDX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1213,5 +1205,32 @@ CTF（contrast transfer function, コントラスト
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>透過交差係数</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 元素マップ</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>STEM-EDX マップを計算</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>利用可能をすべて選択</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>解除</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>チャネル</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>吸収端 (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>状態</value>
   </data>
 </root>

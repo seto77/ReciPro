@@ -315,19 +315,24 @@ internal static partial class GuiCapture
     /// </summary>
     private static void CaptureImageSimulatorModeShots(FormImageSimulator sim, string baseName, string outDir, Action<string> trace)
     {
+        //260801Cl 追加: STEM-EDX は独立モードではなく STEM 内の追加出力オプション (設計書 §5.9.1) なので、
+        //「STEM + EDX チェック ON」を 4 番目の見た目として撮る (元素×殻セレクタが埋まった状態がマニュアルに要る)
         var modes = new[]
         {
-            (FormImageSimulator.ImageModes.HRTEM, "hrtem"),
-            (FormImageSimulator.ImageModes.STEM, "stem"),
-            (FormImageSimulator.ImageModes.POTENTIAL, "potential"),
+            (FormImageSimulator.ImageModes.HRTEM, "hrtem", false),
+            (FormImageSimulator.ImageModes.STEM, "stem", false),
+            (FormImageSimulator.ImageModes.STEM, "stem-edx", true),
+            (FormImageSimulator.ImageModes.POTENTIAL, "potential", false),
         };
 
-        foreach (var (mode, suffix) in modes)
+        foreach (var (mode, suffix, edx) in modes)
         {
             var name = baseName + "-" + suffix; // 例: FormImageSimulator-stem
             try
             {
                 sim.ImageMode = mode;                  // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
+                sim.EdxEnabled = edx;                  // 260801Cl: EDX チェック (STEM 以外では getter が false を返すので実質 no-op)
+                if (edx) sim.SelectAvailableEdxChannels();// 260801Cl: 候補表を埋めた状態にする
                 Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
                 BringToFront(sim);
                 sim.PrepareCaptureForGuiAudit();       // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
@@ -340,6 +345,15 @@ internal static partial class GuiCapture
                     using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
                 else
                     trace($"{name}\tWARN\tmode full-form capture failed");
+
+                //260801Cl 追加: 元素×殻セレクタは panelModeOptions のスクロール下端に来て全体像には写らないので、
+                //選択済みの状態で GroupBox 単体も撮る (既定パスの crop は EDX OFF = 折りたたみ状態のもの)
+                if (edx)
+                {
+                    var panel = RenderHiddenControl(sim, sim.EdxOptionGroup, trace);
+                    if (panel != null)
+                        using (panel) panel.Save(Path.Combine(outDir, name + "-selector.png"), ImageFormat.Png);
+                }
             }
             catch (Exception ex)
             {

@@ -621,11 +621,6 @@ für den ausgewählten Kristall, die Dicke und den Defokus.</value>
 simuliert ein Rastersonden-Bild unter Verwendung des
 Konvergenzwinkels und der Einstellungen des ringförmigen Detektors.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (scanning transmission electron microscopy
-mit energy-dispersive X-ray spectroscopy): simuliert
-die STEM-EDX-Ausgabe mit den STEM-Berechnungs-Bedienelementen.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>Potential-Modus: berechnet das projizierte
 Kristallpotential, anstatt die TEM/STEM-
@@ -885,5 +880,32 @@ wenn der Modus "Serienbild" gewählt ist.</value>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Wählt, welche Größe (Defokus oder Dicke) entlang
 der horizontalen Achse des Bildserien-Gitters variiert.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX-Elementverteilungen</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>STEM-EDX-Karten berechnen</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Berechnet Ionisationskarten (EDX) für die ausgewählten Element-/Schalenkanäle.&#xD;&#xA;Das STEM-Referenzbild (ADF / elastisch / TDS) wird immer berechnet;&#xD;&#xA;jeder EDX-Kanal fügt danach einen weiteren Ionisationsdurchlauf hinzu.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Verfügbare auswählen</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Kanal</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Kante (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
   </data>
 </root>

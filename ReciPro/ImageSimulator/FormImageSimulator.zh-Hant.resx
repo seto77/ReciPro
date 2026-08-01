@@ -617,11 +617,6 @@ microscopy, 高解析度穿透式電子顯微術）：以所
 掃描穿透式電子顯微術）：使用會聚角與環狀
 偵測器設定模擬掃描探束影像。</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX（掃描穿透式電子顯微術 + energy-dispersive
-X-ray spectroscopy, 能量散佈 X 射線光譜術）：使用
-STEM 計算控制項模擬 STEM-EDX 輸出。</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>電位模式：計算投影晶體位能，
 而不套用 TEM/STEM 的影像傳遞
@@ -880,5 +875,32 @@ sin(theta)/lambda (nm^-1) 表示；
   <data name="label6.ToolTip" xml:space="preserve">
     <value>選擇沿連續影像格點水平方向變化的
 量(散焦或厚度)。</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 元素分布圖</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>計算 STEM-EDX 分布圖</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>計算所選元素/殼層通道的游離 (EDX) 分布圖。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>選擇全部可用</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>通道</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>吸收邊 (keV)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>狀態</value>
   </data>
 </root>

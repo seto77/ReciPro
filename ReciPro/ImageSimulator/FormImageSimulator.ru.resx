@@ -618,11 +618,6 @@ TDS (термическое диффузное рассеяние).</value>
 моделирует изображение сканирующего зонда с использованием
 угла сходимости и настроек кольцевого детектора.</value>
   </data>
-  <data name="radioButtonStemEDX.ToolTip" xml:space="preserve">
-    <value>STEM-EDX (сканирующая просвечивающая электронная микроскопия
-с энергодисперсионной рентгеновской спектроскопией): моделирует
-вывод STEM-EDX с использованием элементов управления расчётом STEM.</value>
-  </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
     <value>Режим потенциала: вычисляет проецированный
 потенциал кристалла вместо применения
@@ -882,5 +877,32 @@ U'g) как изображения действительной и мнимой 
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Выберите, какая величина (дефокусировка или толщина) меняется
 вдоль горизонтальной оси сетки серийных изображений.</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>Элементные карты STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Рассчитать карты STEM-EDX</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Рассчитывает карты ионизации (EDX) для выбранных каналов элемент/оболочка.&#xD;&#xA;Опорное STEM-изображение (ADF / упругое / TDS) вычисляется всегда;&#xD;&#xA;каждый канал EDX добавляет после него ещё один проход ионизации.</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>Выбрать доступные</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="colEdxUse.HeaderText" xml:space="preserve">
+    <value>Исп.</value>
+  </data>
+  <data name="colEdxElement.HeaderText" xml:space="preserve">
+    <value>Канал</value>
+  </data>
+  <data name="colEdxEdge.HeaderText" xml:space="preserve">
+    <value>Край (кэВ)</value>
+  </data>
+  <data name="colEdxStatus.HeaderText" xml:space="preserve">
+    <value>Статус</value>
   </data>
 </root>
