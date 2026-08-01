@@ -885,4 +885,16 @@ code（高速 C++/Eigen 原生代码）或 Managed code
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>清除</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX 共用</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>对所有 EDX 通道使用同一显示范围，切换通道时不会重新缩放。数值是模型计算的电离空穴量，而非实测 X 射线计数。</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>对象</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>选择亮度范围与色标作用于哪个窗格。STEM 参考像与 EDX 图始终各自保持独立的范围。</value>
+  </data>
 </root>

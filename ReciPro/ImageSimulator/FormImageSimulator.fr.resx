@@ -897,4 +897,16 @@ le long de l'axe horizontal de la grille d'images en série.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Effacer</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX commun</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>Utilise une seule plage d'affichage pour tous les canaux EDX, de sorte que changer de canal ne modifie pas l'échelle. Les valeurs sont des lacunes d'ionisation modélisées, pas des comptages de rayons X mesurés.</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>Choisit le volet auquel s'appliquent la plage d'intensité et l'échelle de couleurs. L'image de référence STEM et les cartes EDX conservent toujours leur propre plage.</value>
+  </data>
 </root>

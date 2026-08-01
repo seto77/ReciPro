@@ -139,7 +139,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 19</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -149,7 +149,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>573, 580</value>
+    <value>286, 561</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -161,7 +161,7 @@
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
+    <value>splitContainerImage.Panel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -902,7 +902,7 @@ to set the contrast floor of the shown image.</value>
     <value>3, 3</value>
   </data>
   <data name="groupBoxAdjust.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 105</value>
+    <value>351, 131</value>
   </data>
   <data name="groupBoxAdjust.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1212,7 +1212,7 @@ value at right, instead of using the image maximum.</value>
     <value>3, 0, 3, 2</value>
   </data>
   <data name="groupBoxNormalization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 105</value>
+    <value>114, 131</value>
   </data>
   <data name="groupBoxNormalization.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1817,7 +1817,7 @@ image contrast to the crystal lattice.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="panelDisplaySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>573, 156</value>
+    <value>573, 182</value>
   </data>
   <data name="panelDisplaySettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -7967,6 +7967,291 @@ code (fast C++/Eigen) or Managed code
     <value>panelEdxDetails</value>
   </data>
   <data name="&gt;&gt;checkedListBoxEdxChannels.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainerImage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainerImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="splitContainerImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>573, 580</value>
+  </data>
+  <data name="splitContainerImage.SplitterWidth" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="splitContainerImage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Name" xml:space="preserve">
+    <value>splitContainerImage</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel1.Name" xml:space="preserve">
+    <value>splitContainerImage.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerImage</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel2.Name" xml:space="preserve">
+    <value>splitContainerImage.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerImage</value>
+  </data>
+  <data name="&gt;&gt;splitContainerImage.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelPaneReference.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelPaneReference.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
+  <data name="labelPaneReference.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelPaneReference.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 0, 2</value>
+  </data>
+  <data name="labelPaneReference.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 19</value>
+  </data>
+  <data name="labelPaneReference.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelPaneReference.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelPaneReference.Name" xml:space="preserve">
+    <value>labelPaneReference</value>
+  </data>
+  <data name="&gt;&gt;labelPaneReference.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPaneReference.Parent" xml:space="preserve">
+    <value>splitContainerImage.Panel1</value>
+  </data>
+  <data name="&gt;&gt;labelPaneReference.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelPaneEdx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelPaneEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
+  <data name="labelPaneEdx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelPaneEdx.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 0, 2</value>
+  </data>
+  <data name="labelPaneEdx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 19</value>
+  </data>
+  <data name="labelPaneEdx.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelPaneEdx.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelPaneEdx.Name" xml:space="preserve">
+    <value>labelPaneEdx</value>
+  </data>
+  <data name="&gt;&gt;labelPaneEdx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPaneEdx.Parent" xml:space="preserve">
+    <value>splitContainerImage.Panel2</value>
+  </data>
+  <data name="&gt;&gt;labelPaneEdx.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanelEdx.ColumnCount" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="tableLayoutPanelEdx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanelEdx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 19</value>
+  </data>
+  <data name="tableLayoutPanelEdx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanelEdx.RowCount" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="tableLayoutPanelEdx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 561</value>
+  </data>
+  <data name="tableLayoutPanelEdx.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelEdx.Name" xml:space="preserve">
+    <value>tableLayoutPanelEdx</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelEdx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelEdx.Parent" xml:space="preserve">
+    <value>splitContainerImage.Panel2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanelEdx.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 25</value>
+  </data>
+  <data name="flowLayoutPanelAdjustTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAdjustTarget.Name" xml:space="preserve">
+    <value>flowLayoutPanelAdjustTarget</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAdjustTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAdjustTarget.Parent" xml:space="preserve">
+    <value>groupBoxAdjust</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelAdjustTarget.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelAdjustTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelAdjustTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 5</value>
+  </data>
+  <data name="labelAdjustTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="labelAdjustTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="labelAdjustTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="&gt;&gt;labelAdjustTarget.Name" xml:space="preserve">
+    <value>labelAdjustTarget</value>
+  </data>
+  <data name="&gt;&gt;labelAdjustTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAdjustTarget.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAdjustTarget</value>
+  </data>
+  <data name="&gt;&gt;labelAdjustTarget.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="comboBoxAdjustTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 3</value>
+  </data>
+  <data name="comboBoxAdjustTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxAdjustTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="comboBoxAdjustTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>Chooses which pane the intensity range and the colour scale apply to. The STEM reference image and the EDX maps always keep their own range.</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAdjustTarget.Name" xml:space="preserve">
+    <value>comboBoxAdjustTarget</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAdjustTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAdjustTarget.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAdjustTarget</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAdjustTarget.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 83</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 0, 0</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 19</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX: Common</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>Uses one display range for every calculated EDX channel, so that switching channels does not rescale the map. The values are modelled ionization vacancies, not measured X-ray counts.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxCommonScale.Name" xml:space="preserve">
+    <value>checkBoxEdxCommonScale</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxCommonScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxCommonScale.Parent" xml:space="preserve">
+    <value>groupBoxNormalization</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxCommonScale.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
 </root>

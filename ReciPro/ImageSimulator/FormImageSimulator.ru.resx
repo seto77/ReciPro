@@ -897,4 +897,16 @@ U'g) как изображения действительной и мнимой 
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Очистить</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>Общая EDX</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>Использует один диапазон отображения для всех каналов EDX, поэтому переключение канала не меняет масштаб. Значения — модельные ионизационные вакансии, а не измеренные счёты рентгеновских квантов.</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>Цель</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>Выбирает, к какой панели применяются диапазон яркости и цветовая шкала. Опорное STEM-изображение и карты EDX всегда имеют собственные диапазоны.</value>
+  </data>
 </root>

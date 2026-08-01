@@ -272,10 +272,19 @@ public partial class FormImageSimulator : FormBase
     /// <summary>ToolTip を出している項目 index (同じ項目で SetToolTip を繰り返すと点滅するため)</summary>
     private int edxToolTipIndex = -1;
 
-    /// <summary>STEM-EDX を計算するか (ImageMode==STEM が前提)。GUI 判定はすべてこの 1 か所を経由する</summary>
+    /// <summary>260802Cl 追加: 候補一覧をまだ作れない段階 (起動直後 = 結晶未ロード) で
+    /// プリセット・レジストリから復元された選択。候補が組めた時点で 1 度だけ消費する。
+    /// これが無いと、レジストリ復元が「候補 0 件 → 選択も 0 件」で必ず空振りしていた。</summary>
+    private (int Z, IonizationShell Shell)[] edxPendingChannels;
+
+    /// <summary>STEM-EDX マップを要求するチェックの状態。
+    /// 260802Cl 変更: getter から <c>ImageMode == ImageModes.STEM</c> の条件を外した (旧: 両方の AND)。
+    /// プリセットはこのプロパティを保存するので、モードを含めると「HRTEM 表示中に保存したプリセットは
+    /// EDX 要求を落とす」ことになり、§5.9.1-6 の「EdxEnabled とチャネル一覧は分離保持」に反していた。
+    /// 実際に EDX を計算するかの判定 (モードとの AND) は <see cref="BuildEdxRequests"/> 側に置く。</summary>
     public bool EdxEnabled
     {
-        get => ImageMode == ImageModes.STEM && checkBoxCalculateEdx.Checked;
+        get => checkBoxCalculateEdx.Checked;
         set => checkBoxCalculateEdx.Checked = value;
     }
 
@@ -287,29 +296,68 @@ public partial class FormImageSimulator : FormBase
         => [.. checkedListBoxEdxChannels.CheckedIndices.Cast<int>()
             .Where(i => i < edxCandidates.Length).Select(i => edxCandidates[i].Channel)];
 
+    /// <summary>260802Cl 追加: プリセット保存用の選択チャネル (設計書 §5.9.1-6)。EdxEnabled とは分離して持つので、
+    /// 一時的にチェックを外しても選択そのものは失われない。record ではなく (Z, Shell) の平坦なタプル配列にしてあるのは、
+    /// Crystallography の型に MemoryPack 属性を足さずに済ませるため (ValueTuple は MemoryPack 組み込み対応)。
+    /// set は「別の結晶・加速電圧へ適用したときは積集合だけ復元する」= 収録外・端以下になったものは黙って落とす
+    /// (勝手に別元素を選ばない。結果 0 件になったら実行前の ValidateEdxRequest が hard block する)。</summary>
+    public (int Z, IonizationShell Shell)[] EdxChannels
+    {
+        get => checkedListBoxEdxChannels is null ? [] : [.. CheckedEdxChannels.Select(s => (s.Z, s.Shell))];
+        set
+        {
+            if (checkedListBoxEdxChannels is null) return;
+            //復元するものも外すものも無いなら、候補列挙 (元素ごとの Inspect = リソース展開) を走らせない
+            if ((value is null || value.Length == 0) && checkedListBoxEdxChannels.CheckedIndices.Count == 0) return;
+            //実際の反映は RenewEdxChannelList に任せる。起動直後は結晶が未ロードで候補が 0 件になり得るので、
+            //その場合は保留しておき、候補が組めた時点 (= 結晶が入った時点) で消費する
+            edxPendingChannels = value ?? [];
+            RenewEdxChannelList();
+        }
+    }
+
     /// <summary>候補一覧を作り直す。結晶・加速電圧が変わったときだけ実際に組み直す。</summary>
     public void RenewEdxChannelList()
     {
         if (checkedListBoxEdxChannels is null) return;
         var key = (FormMain?.Crystal, AccVol);
-        if (edxCandidates.Length > 0 && key == edxListKey) { RenewEdxSummary(); return; }
-
-        //チェック状態は (Z,Shell) で覚えておく (項目の並びや表示文字列ではなく実体で復元する)
-        var previous = new HashSet<IonizationChannelSpec>(CheckedEdxChannels);
-        edxSkipEvent = true;
-        try
+        //260802Cl 変更: 早期 return を条件反転に (保留していたプリセット復元は、候補を組み直さない経路でも消費する必要がある)。
+        //旧: if (edxCandidates.Length > 0 && key == edxListKey) { RenewEdxSummary(); return; }
+        if (edxCandidates.Length == 0 || key != edxListKey)
         {
-            edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
-            edxListKey = key;
-            checkedListBoxEdxChannels.BeginUpdate();
-            checkedListBoxEdxChannels.Items.Clear();
-            foreach (var info in edxCandidates)
-                //以前チェックされていても、電圧変更などで選べなくなった候補は復元しない (ItemCheck の拒否と辻褄を合わせる)
-                checkedListBoxEdxChannels.Items.Add(info.ToListItemText(),
-                    info.Status == IonizationAvailability.Available && previous.Contains(info.Channel));
-            checkedListBoxEdxChannels.EndUpdate();
+            //チェック状態は (Z,Shell) で覚えておく (項目の並びや表示文字列ではなく実体で復元する)
+            var previous = new HashSet<IonizationChannelSpec>(CheckedEdxChannels);
+            edxSkipEvent = true;
+            try
+            {
+                edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
+                edxListKey = key;
+                checkedListBoxEdxChannels.BeginUpdate();
+                checkedListBoxEdxChannels.Items.Clear();
+                foreach (var info in edxCandidates)
+                    //以前チェックされていても、電圧変更などで選べなくなった候補は復元しない (ItemCheck の拒否と辻褄を合わせる)
+                    checkedListBoxEdxChannels.Items.Add(info.ToListItemText(),
+                        info.Status == IonizationAvailability.Available && previous.Contains(info.Channel));
+                checkedListBoxEdxChannels.EndUpdate();
+            }
+            finally { edxSkipEvent = false; }
         }
-        finally { edxSkipEvent = false; }
+
+        //260802Cl 追加: プリセット・レジストリからの復元を、候補が組めた時点で 1 度だけ反映する (設計書 §5.9.1-6)。
+        //収録外・端以下になったものは復元しない = 「別結晶へ適用したら積集合だけ」。空になったら実行前に hard block される
+        if (edxPendingChannels is not null && edxCandidates.Length > 0)
+        {
+            var wanted = new HashSet<IonizationChannelSpec>(edxPendingChannels.Select(v => new IonizationChannelSpec(v.Z, v.Shell)));
+            edxPendingChannels = null;
+            edxSkipEvent = true;
+            try
+            {
+                for (int i = 0; i < edxCandidates.Length; i++)
+                    checkedListBoxEdxChannels.SetItemChecked(i,
+                        edxCandidates[i].Status == IonizationAvailability.Available && wanted.Contains(edxCandidates[i].Channel));
+            }
+            finally { edxSkipEvent = false; }
+        }
         RenewEdxSummary();
     }
 
@@ -341,7 +389,9 @@ public partial class FormImageSimulator : FormBase
 
     /// <summary>選択チャネルを backend 要求へ変換する。EDX OFF なら null (= EDX なし run)。</summary>
     private StemIonizationRequest[] BuildEdxRequests()
-        => !EdxEnabled ? null : [.. CheckedEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
+        //260802Cl 変更: モード判定をここへ移した (EdxEnabled はチェック状態そのものになったため)
+        => ImageMode != ImageModes.STEM || !EdxEnabled ? null
+            : [.. CheckedEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
 
     /// <summary>run 開始前の検証 (§5.9.1-7: 判定は GUI のモードではなく「これから投げる要求」に対して行う)。
     /// 続行してよければ true。チャネル 0 件は hard block、div 不足は確認ダイアログ (実行自体は可能)。</summary>
@@ -407,15 +457,17 @@ public partial class FormImageSimulator : FormBase
 
     #region STEM-EDX 結果表示
 
-    /// <summary>表示中の EDX 信号 (ComboBox で参照像を選んでいる、または EDX 結果が無いときは null)。
-    /// **チェック状態ではなく公開済み結果から**引く (未計算チャネルや旧 run を誤表示しない契約、§5.9.1-5)。</summary>
+    /// <summary>右ペインに出す EDX 信号 (EDX 結果が無ければ null)。
+    /// **チェック状態ではなく公開済み結果から**引く (未計算チャネルや旧 run を誤表示しない契約、§5.9.1-5)。
+    /// 260802Cl 変更: 参照元を表示中 snapshot へ (旧: 都度 FormMain.Crystal.Bethe.ResultStem を見ていた) / index 0 = 先頭チャネル
+    /// (旧: index 0 = STEM 参照像。二ペインになったので「参照像だけ」という選択肢は ComboBox から外した)。</summary>
     private StemSignalMap SelectedEdxSignal
     {
         get
         {
-            var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+            var signals = displayedStemResult?.EdxSignals;
             if (signals is null || signals.Length == 0) return null;
-            var i = comboBoxEdxDisplay.SelectedIndex - 1;// index 0 = STEM 参照像
+            var i = comboBoxEdxDisplay.SelectedIndex;
             return i >= 0 && i < signals.Length ? signals[i] : null;
         }
     }
@@ -423,7 +475,7 @@ public partial class FormImageSimulator : FormBase
     /// <summary>ComboBox を「公開済み結果に含まれる EDX 信号」で作り直す。run 完了時に呼ぶ。</summary>
     private void RenewEdxDisplayList()
     {
-        var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+        var signals = displayedStemResult?.EdxSignals;
         var previous = comboBoxEdxDisplay.SelectedItem as string;
         edxSkipEvent = true;
         try
@@ -434,13 +486,10 @@ public partial class FormImageSimulator : FormBase
                 comboBoxEdxDisplay.Visible = false;
                 return;
             }
-            //先頭は STEM 参照像 (Both/Elastic/TDS ラジオが効く方)。元素セレクタと違い、ここは表示切替なので参照像も並べる
-            comboBoxEdxDisplay.Items.Add(Loc(en: "STEM reference", ja: "STEM 参照像", de: "STEM-Referenz", fr: "Référence STEM",
-                es: "Referencia STEM", pt: "Referência STEM", it: "Riferimento STEM", ru: "Опорное STEM",
-                zhHans: "STEM 参考像", zhHant: "STEM 參考影像", ko: "STEM 참조상"));
             foreach (var s in signals)
                 comboBoxEdxDisplay.Items.Add(s.Channel.ShortLabel);
             comboBoxEdxDisplay.Visible = true;
+            //前回と同じチャネルが今回の結果にもあれば維持、無ければ先頭 (= run 直後に二ペインが開く)
             var idx = previous is null ? -1 : comboBoxEdxDisplay.Items.IndexOf(previous);
             comboBoxEdxDisplay.SelectedIndex = idx >= 0 ? idx : 0;
         }
@@ -501,10 +550,30 @@ public partial class FormImageSimulator : FormBase
 
     private void ComboBoxEdxDisplay_SelectedIndexChanged(object sender, EventArgs e)
     {
+        //260802Cl 変更: Both/Elastic/TDS は常時有効 (左ペインを支配する。設計書 §5.9.1-5 案A)。
+        //旧: EDX チャネル選択中は 3 つとも Enabled=false にしていた (単一グリッド時代の名残)
         if (edxSkipEvent) return;
-        //参照像を選んでいるときだけ Both/Elastic/TDS が意味を持つ
-        radioButtonSTEM_target_both.Enabled = radioButtonSTEM_target_elas.Enabled = radioButtonSTEM_target_TDS.Enabled = SelectedEdxSignal is null;
         GeneratePseudBitmap();
+    }
+
+    /// <summary>260802Cl 追加: 輝度・カラースケールの作用先が変わったとき。トラックバーとカラー ComboBox を
+    /// 「その作用先ペインが今持っているレンジ・カラー」に合わせ直すだけで、画像には触らない。</summary>
+    private void ComboBoxAdjustTarget_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        var box = TargetBoxes().FirstOrDefault();
+        if (box is null) return;
+        SetAdjustRange(box.PseudoBitmap.MinValue, box.PseudoBitmap.MaxValue);
+        SkipEvent = true;
+        comboBoxScaleColorScale.SelectedIndex = box.PseudoBitmap.Scale == PseudoBitmap.Scales.ColdWarmLinear ? 1 : 0;
+        SkipEvent = false;
+    }
+
+    /// <summary>260802Cl 追加: ペイン見出しのクリックで作用先を切り替える (ヘッダを見れば今どちらを触っているか分かる)。</summary>
+    private void LabelPane_Click(object sender, EventArgs e)
+    {
+        if (!paneEdx.Active) return;
+        comboBoxAdjustTarget.SelectedIndex = sender == labelPaneEdx ? 1 : 0;
     }
 
     #endregion
@@ -530,14 +599,55 @@ public partial class FormImageSimulator : FormBase
     /// <summary>260801Cl 追加: 実行中の run を開始した BetheMethod (run 中に結晶が切り替わっても購読解除・結果取得が取り違えないよう snapshot)</summary>
     private BetheMethod stemBethe;
 
-    /// <summary>260801Cl 追加: 実行中の run の EDX チャネル数 (進捗配分に使う。GUI のチェック状態ではなく実行時の要求)</summary>
-    private int stemEdxChannelCount;
+    //260802Cl 削除: private int stemEdxChannelCount (実行中の run の EDX チャネル数)。
+    //StemProgressInfo.ChannelCount が全ステージに載るようになったので、GUI 側に run 状態を持たなくてよくなった
     //private static readonly double Pi2 = PI * PI;
 
-    private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
+    /// <summary>260802Cl 追加: 表示中の STEM 結果 (設計書 §5.9.1-5)。ComboBox・左像・右像・厚み/デフォーカスのラベルを
+    /// **すべて同じ 1 個の snapshot から**作るための参照。都度 <c>FormMain.Crystal.Bethe.ResultStem</c> を見に行くと、
+    /// 結晶を切り替えた後や失敗 run の後に「左は旧 run・右は新 run」といった食い違いが起こり得た (codex 22巡)。
+    /// 失敗・cancel した run では更新しない = 次の成功 run まで前回の表示を保つ、という §5.9.1-5 の契約もこれで表現される。</summary>
+    private StemSimulationResult displayedStemResult;
+
+    /// <summary>260802Cl 追加: 画像ペイン 1 枚分。二ペイン (左 = STEM 参照像 / 右 = 選択中 EDX チャネル) で
+    /// 同じ操作・同じ生成コードを使い回すための単位。1〜2 行 helper ではなく、8 箇所以上が共有する状態のまとまり。</summary>
+    private sealed class ImagePane(TableLayoutPanel grid, Label header, ImageRole role)
+    {
+        public readonly TableLayoutPanel Grid = grid;
+        public readonly Label Header = header;
+        public readonly ImageRole Role = role;
+        /// <summary>セル。折返しで空くセルは null になり得る</summary>
+        public ScalablePictureBox[,] Boxes = new ScalablePictureBox[0, 0];
+        /// <summary>このペインを表示しているか (EDX ペインは EDX 信号を含む結果のときだけ)</summary>
+        public bool Active;
+    }
+
+    private ImagePane paneReference, paneEdx;
+
+    /// <summary>表示中の全ペイン (EDX ペインは非表示なら含まない)</summary>
+    private IEnumerable<ImagePane> ActivePanes
+    {
+        get
+        {
+            if (paneReference is { Active: true }) yield return paneReference;
+            if (paneEdx is { Active: true }) yield return paneEdx;
+        }
+    }
+
+    /// <summary>表示中の全セル (折返しの空セル・PseudoBitmap 未設定は除く)</summary>
+    private IEnumerable<ScalablePictureBox> AllBoxes
+        => ActivePanes.SelectMany(p => p.Boxes.Cast<ScalablePictureBox>()).Where(b => b?.PseudoBitmap is not null);
+
+    /// <summary>輝度レンジ・カラースケールの作用先 (Adjust の Target)。設計書 §5.9-5「ADF と EDX は常に独立」</summary>
+    private ImageRole AdjustTarget => comboBoxAdjustTarget.SelectedIndex == 1 ? ImageRole.EdxSignal : ImageRole.Reference;
 
     private PseudoBitmap scaleImage;
     public enum ImageModes { HRTEM, POTENTIAL, STEM }
+
+    /// <summary>260802Cl 追加: 画像の表示上の役割。輝度レンジ・カラースケールをどの操作系が支配するかを決める。
+    /// 既存の <see cref="ImageInfo.LockIntensity"/> (ポテンシャルの位相像) とは別概念 — あちらは「一切変えない」で、
+    /// EDX は「参照像とは別の操作系に属する」。ぼかしは両方に効かせる (同じ実空間座標の表示フィルタなので)。</summary>
+    public enum ImageRole { Reference, EdxSignal }
 
     public enum HRTEM_Modes { Quasi, TCC }
 
@@ -550,6 +660,11 @@ public partial class FormImageSimulator : FormBase
     {
         InitializeComponent();
         HelpPage = "9-hrtem-stem-simulator"; //260529Cl 追加
+
+        //260802Cl 追加: 二ペイン (設計書 §5.9.1-5)。外枠・ヘッダ・2 本の TableLayoutPanel は Designer 側で静的に置いてあり、
+        //ここではそれらを 1 つの単位に束ねるだけ (セルの ScalablePictureBox だけは従来どおり実行時生成)
+        paneReference = new ImagePane(tableLayoutPanel, labelPaneReference, ImageRole.Reference) { Active = true };
+        paneEdx = new ImagePane(tableLayoutPanelEdx, labelPaneEdx, ImageRole.EdxSignal);
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
 
@@ -589,9 +704,23 @@ public partial class FormImageSimulator : FormBase
 
         comboBoxScaleColorScale.SelectedIndex = 0;
 
+        //260802Cl 追加: 輝度・カラーの作用先 (Adjust の Target)。項目名は 11 言語なのでコード側で入れる
+        comboBoxAdjustTarget.Items.AddRange([
+            Loc(en: "STEM reference", ja: "STEM 参照像", de: "STEM-Referenz", fr: "Référence STEM", es: "Referencia STEM",
+                pt: "Referência STEM", it: "Riferimento STEM", ru: "Опорное STEM", zhHans: "STEM 参考像",
+                zhHant: "STEM 參考影像", ko: "STEM 참조상"),
+            Loc(en: "EDX map", ja: "EDX マップ", de: "EDX-Karte", fr: "Carte EDX", es: "Mapa EDX", pt: "Mapa EDX",
+                it: "Mappa EDX", ru: "Карта EDX", zhHans: "EDX 图", zhHant: "EDX 圖", ko: "EDX 맵")]);
+        comboBoxAdjustTarget.SelectedIndex = 0;
+
         //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
         //11 言語 resx の numericBoxSTEM_Detector*Angle.ToolTip 本文へ直接書いた (Designer コントロールの静的な文は resx = 方式①。
         //コード側追記だと翻訳ツール・文字溢れ診断のどちらからも見えないうえ、ハンドル再生成で二重に付く)
+
+        //260802Cl 追加: EDX ペインは既定で畳んでおく。**Designer ではなくここで**畳むのが要点で、
+        //InitializeComponent の時点で Panel2.Visible=false にすると、そこへ Add した子がハンドルを持たないまま
+        //生成され、後で開いても最初の描画が来ない (実機で右ペインが真っ白になった)。Load ならハンドル生成済み
+        splitContainerImage.Panel2Collapsed = true;
 
         NumericBoxAccVol_ValueChanged(sender, e);
     }
@@ -606,6 +735,10 @@ public partial class FormImageSimulator : FormBase
             CalculateInsideSpotInfo();
             if (FormCTF.Visible)
                 FormCTF.Renew();
+            //260802Cl 追加: 非表示の間に結晶が変わっていても RotationChanged は来ない (Visible 時のみ呼ばれる) ので、
+            //表示に戻った時点で候補を突き合わせる (中身が同じなら実際の再構築は起きない)
+            if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked)
+                RenewEdxChannelList();
             FormMain.toolStripButtonImageSimulator.Checked = true;
         }
         else
@@ -617,7 +750,8 @@ public partial class FormImageSimulator : FormBase
     #endregion 起動、終了関連
 
     #region PseudoBitmapに格納する情報
-    public class ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity = false)
+    public class ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity = false,
+        ImageRole role = ImageRole.Reference, string signalKey = null)//260802Cl role/signalKey 追加
     {
         public int Width = width, Height = height;
         public double Resolution = resolution;
@@ -625,6 +759,10 @@ public partial class FormImageSimulator : FormBase
         public Matrix3D Mat = mat;
         public string Text = text;
         public bool LockIntensity = lockIntensity;
+        /// <summary>260802Cl 追加: 表示上の役割 (輝度・カラーの操作系をどちらに属させるか)</summary>
+        public ImageRole Role = role;
+        /// <summary>260802Cl 追加: 個別保存のファイル名に使う安定キー (翻訳文字列を使わない)。例 "Reference-Both" / "EDX-Z08-K"</summary>
+        public string SignalKey = signalKey;
     }
     #endregion PseudoBitmapに格納する情報
 
@@ -669,7 +807,9 @@ public partial class FormImageSimulator : FormBase
     int stemDirectionTotal = 0;
     private void simulateSTEM(bool sync = false)
     {
-        sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset();
+        //260802Cl 変更: sw5 も reset する (旧: sw1..sw4 のみ)。RunSTEM が同期 throw した run では StemCompleted が
+        //呼ばれず reset が走らないため、前回の EDX 時間が次の run の表示に混ざっていた
+        sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset(); sw5.Reset();
         sw1.Restart();
         if (ThicknessArray == null || DefocusArray == null) return;
 
@@ -700,7 +840,7 @@ public partial class FormImageSimulator : FormBase
 
         //260801Cl 追加: run 中に別の結晶へ切り替わっても購読解除・結果取得が同じインスタンスを指すよう snapshot する (codex 20巡)
         stemBethe = FormMain.Crystal.Bethe;
-        stemEdxChannelCount = edxRequests?.Length ?? 0;
+        //260802Cl 削除: stemEdxChannelCount = edxRequests?.Length ?? 0; (StemProgressInfo.ChannelCount が全ステージに載るため不要)
 
         toolStripProgressBar.Maximum = stemDirectionTotal;
         stemBethe.StemProgressChanged += stemProgressChanged;
@@ -745,7 +885,9 @@ public partial class FormImageSimulator : FormBase
 
         if (sync)
             // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
-            while (stemBethe.IsSTEM_Busy)
+            //260802Cl 変更: 待つ相手をローカルに退避する (旧: stemBethe.IsSTEM_Busy)。DoEvents 中に StemCompleted が
+            //走ると stemBethe は null になるので、次のループ条件で NullReferenceException になり得た
+            for (var running = stemBethe; running.IsSTEM_Busy;)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
@@ -768,88 +910,107 @@ public partial class FormImageSimulator : FormBase
     {
 
         if (skipProgressChangedEvent) return;
+        //260802Cl 追加: StemCompleted と同じ理由 (--capture は Application.Run 無し = 通知がスレッドプールで来る)
+        if (InvokeRequired) { BeginInvoke(() => stemProgressChanged(sender, e)); return; }
+        //260802Cl 変更: 文字列前方一致 (旧: var message = (string)e.UserState; message.StartsWith("Calculating I_EDX(Q)") …) を廃し
+        //型付き StemProgressInfo で分岐する (設計書 §5.9-8)。旧実装は Stage5 のチャネル番号を " (ch i/n)" から
+        //Substring でパースしており、書式が変わると負長で落ちる経路が残っていた。
+        if (e.UserState is not StemProgressInfo info) return;
+        //260802Cl 追加: 以降は必ず finally でフラグを戻す (途中で例外が出るとフラグが立ちっぱなしになり、
+        //以後の進捗表示が一切更新されなくなっていた。codex 22巡)
         skipProgressChangedEvent = true;
+        try
+        {
 
-        double current = e.ProgressPercentage;
         long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
 
-        var message = (string)e.UserState;
+        var current = info.Fraction;//ステージ内進捗 0-1 (旧: 0-1E6 の ProgressPercentage)
         //260801Cl 追加: Stage4 と Stage5 (EDX) の配分。EDX チャネル 1 本を Stage4 の 1/3 の重みとみなす (§5.9-8。
         //暫定係数で、実測 ETA モデルではない)。ch=0 なら Stage4 が従来どおり 20-100%
-        var edxCh = stemEdxChannelCount;
+        //260802Cl 変更: チャネル数は GUI のチェック状態 (旧 stemEdxChannelCount フィールド) ではなく run の要求そのものから取る
+        var edxCh = info.ChannelCount;
         var stage4Span = 0.80 * 3 / (3 + edxCh);
         var edxSpan = 0.80 / (3 + edxCh);
-        //残り時間は current==0 で 0 除算になるので、進捗が出るまでは「推定中」にする
-        string Remaining(double sec, double cur) => cur > 0 ? $"wait for more {sec * (1E6 - cur) / cur:f1} s" : "estimating…";
+        //残り時間は etaFrac==0 で 0 除算になるので、進捗が出るまでは「推定中」にする。
+        //260802Cl 変更: 残り時間の基準を「表示している %」と分けた。Stage5 の sw5 は全チャネル通算で進むので、
+        //チャネル内 Fraction で割ると 2 本目以降の残り時間が大幅な過大評価になる (codex 22巡)
+        double etaFrac = current;
+        string Remaining(double sec) => etaFrac > 0 ? $"wait for more {sec * (1 - etaFrac) / etaFrac:f1} s" : "estimating…";
 
-        if (message.StartsWith("Calculating I_EDX(Q)", StringComparison.Ordinal))
+        //ステージ表示・進捗バー・残り時間の組み立ては全ステージ共通なので、分岐では「どの時計を動かすか」と
+        //「バーの位置」と「ステージ文」だけを決める
+        double sec, totalsec, bar;
+        string stage;
+        switch (info.Stage)
         {
-            //260801Cl 追加: Stage 5 (STEM-EDX の別 q パス)。メッセージ末尾の " (ch i/n)" が現在のチャネル
-            //(GUI 側の型付き進捗への移行までの暫定プロトコル。前方一致部分は backend と厳密に一致させること)
-            if (sw1.IsRunning) sw1.Stop();
-            if (sw2.IsRunning) sw2.Stop();
-            if (sw3.IsRunning) sw3.Stop();
-            if (sw4.IsRunning) sw4.Stop();
-            if (!sw5.IsRunning) sw5.Restart();
-            var chIndex = 0;
-            var open = message.LastIndexOf("(ch ", StringComparison.Ordinal);
-            if (open >= 0 && int.TryParse(message.AsSpan(open + 4, message.IndexOf('/', open) - open - 4), out var oneBased))
-                chIndex = oneBased - 1;
-            var sec = sw5.ElapsedMilliseconds / 1000.0;
-            var totalsec = (s1 + s2 + s3 + s4) / 1000.0 + sec;
-            var frac = 0.20 + stage4Span + (chIndex + current / 1E6) * edxSpan;
-            toolStripProgressBar.Value = (int)(Math.Min(frac, 1.0) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 5: Calculating I_EDX(Q) {(edxCh > 1 ? $"({chIndex + 1}/{edxCh}) " : "")}. ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
+            case StemStage.IonizationQ://Stage 5 (STEM-EDX の別 q パス)
+                if (sw1.IsRunning) sw1.Stop();
+                if (sw2.IsRunning) sw2.Stop();
+                if (sw3.IsRunning) sw3.Stop();
+                if (sw4.IsRunning) sw4.Stop();
+                if (!sw5.IsRunning) sw5.Restart();
+                sec = sw5.ElapsedMilliseconds / 1000.0;
+                totalsec = (s1 + s2 + s3 + s4) / 1000.0 + sec;
+                etaFrac = edxCh > 0 ? (info.ChannelIndex + current) / edxCh : current;//sw5 は全チャネル通算なので分母も全チャネル
+                bar = Math.Min(0.20 + stage4Span + (info.ChannelIndex + current) * edxSpan, 1.0);
+                //260802Cl: 型付きになったのでチャネル名も出せる (旧: 番号だけ)
+                stage = $"Stage 5: Calculating I_EDX(Q) {info.Channel?.ShortLabel} {(edxCh > 1 ? $"({info.ChannelIndex + 1}/{edxCh}) " : "")}. ";
+                break;
+            case StemStage.InelasticQ:
+                if (sw1.IsRunning) sw1.Stop();
+                if (sw2.IsRunning) sw2.Stop();
+                if (sw3.IsRunning) sw3.Stop();
+                if (!sw4.IsRunning) sw4.Restart();
+                sec = s4 / 1000.0;
+                totalsec = sec + (s1 + s2 + s3) / 1000.0;
+                bar = current * stage4Span + 0.2;
+                stage = "Stage 4: Calculating I_inelastic(Q).  ";
+                break;
+            case StemStage.PotentialMatrix:
+                if (sw1.IsRunning) sw1.Stop();
+                if (sw2.IsRunning) sw2.Stop();
+                if (!sw3.IsRunning) sw3.Restart();
+                sec = s3 / 1000.0;
+                totalsec = sec + (s1 + s2) / 1000.0;
+                bar = current * 0.01 + 0.19;
+                stage = "Stage 3: Calculating U' matrix.  ";
+                break;
+            case StemStage.ElasticQ:
+                if (sw1.IsRunning) sw1.Stop();
+                if (!sw2.IsRunning) sw2.Restart();
+                sec = s2 / 1000.0;
+                totalsec = sec + s1 / 1000.0;
+                bar = current * 0.01 + 0.18;
+                stage = "Stage 2: Calculating I_elastic(Q).  ";
+                break;
+            case StemStage.EigenSolve:
+                sec = totalsec = s1 / 1000.0;
+                bar = current * 0.18;
+                stage = $"Stage 1: Calculating Tg for {stemDirectionTotal} directions ({info.SolverLabel}).";
+                break;
+            //260802Cl 変更: 未知のステージを Stage1 として表示しない (旧: default が EigenSolve 扱いだったので、
+            //将来ステージが増えたとき「Stage 1」と誤表示し、しかも sw1 を動かしてしまう。codex 22巡)
+            default:
+                return;
         }
-        else if (message.StartsWith("Calculating I_inelastic(Q)", StringComparison.Ordinal))
-        {
-            if (sw1.IsRunning) sw1.Stop();
-            if (sw2.IsRunning) sw2.Stop();
-            if (sw3.IsRunning) sw3.Stop();
-            if (!sw4.IsRunning) sw4.Restart();
-            var sec = s4 / 1000.0;
-            var totalsec = sec + (s1 + s2 + s3) / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * stage4Span + 0.2) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
-        }
-        else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
-        {
-            if (sw1.IsRunning) sw1.Stop();
-            if (sw2.IsRunning) sw2.Stop();
-            if (!sw3.IsRunning) sw3.Restart();
-            var sec = s3 / 1000.0;
-            var totalsec = sec + (s1 + s2) / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.19) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 3: Calculating U' matrix.  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
-        }
-        else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
-        {
-            if (sw1.IsRunning) sw1.Stop();
-            if (!sw2.IsRunning) sw2.Restart();
-            var sec = s2 / 1000.0;
-            var totalsec = sec + s1 / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.18) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 2: Calculating I_elastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
-        }
-        else
-        {
-            var sec = s1 / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.18 + 0.0) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {sec:f1} s  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
-        }
+        toolStripProgressBar.Value = (int)(bar * toolStripProgressBar.Maximum);
+        toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  {stage}";
+        toolStripStatusLabel2.Text = $"{current * 100:f1} % completed,  {Remaining(sec)}";
         // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
-        skipProgressChangedEvent = false;
+        }
+        finally { skipProgressChangedEvent = false; }
     }
     #endregion
 
     #region BackgroundWorkerからのstemCompleted
     private void StemCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
+        //260802Cl 追加: --capture は Application.Run を回さないため UI スレッドに SynchronizationContext が無く、
+        //BackgroundWorker の完了通知がスレッドプールで来る。そのまま UI を触ると「別スレッドで作られたコントロールは
+        //親にできない」で落ちたり、描画しても画面に反映されなかったりする (実機で両方踏んだ)。
+        //通常起動 (Application.Run あり) では InvokeRequired=false なので、この分岐は素通りする
+        if (InvokeRequired) { BeginInvoke(() => StemCompleted(sender, e)); return; }
+
         //260801Cl 変更: 購読解除は run を開始したインスタンスに対して行う (run 中に結晶が切り替わっても取り違えない)。
         //旧: FormMain.Crystal.Bethe を都度参照していた
         //260802Cl 変更: フォールバックを外す (run を開始したインスタンス以外から購読解除すると取り違える)
@@ -870,6 +1031,10 @@ public partial class FormImageSimulator : FormBase
         }
         else if (!e.Cancelled)
         {
+            //260802Cl 追加: 表示元をこの run の結果 1 個に固定する (設計書 §5.9.1-5)。
+            //失敗・cancel では更新しない = 次の成功 run まで前回の表示を保つ。以後 ComboBox も左右の像も
+            //厚み/デフォーカスのラベルも、すべてこの snapshot から作る
+            displayedStemResult = bethe?.ResultStem;
             //260801Cl 追加: 表示切替 ComboBox は「今回の run が公開した EdxSignals」から作る (GeneratePseudBitmap より先に)
             RenewEdxDisplayList();
             //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
@@ -1024,7 +1189,11 @@ public partial class FormImageSimulator : FormBase
             for (int c = 0; c < pseudo[0].Count; c++)
                 result[r, c] = pseudo[r][c];
 
-        SetPseudoBitamap(result);
+        //260802Cl 変更: ポテンシャルモードは常に左ペインだけを使う (右 = EDX ペインは畳む)
+        paneEdx.Active = false;
+        splitContainerImage.Panel2Collapsed = true;
+        labelPaneReference.Visible = false;
+        SetPseudoBitamap(paneReference, result);
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} ms";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
@@ -1032,98 +1201,186 @@ public partial class FormImageSimulator : FormBase
 
     #region 計算結果をPictureBoxにセット
 
-    /// <summary>PseudoBitmapを作成</summary>
-    /// <param name="tLen"></param>
-    /// <param name="dLen"></param>
-    /// <param name="images"></param>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
+    /// <summary>計算結果から PseudoBitmap を作り、ペインへ転送する。
+    /// 260802Cl 変更: 二ペイン化 (設計書 §5.9.1-5)。左 = STEM 参照像 (Both/Elastic/TDS の選択に追随)、
+    /// 右 = 選択中の EDX チャネル。表示に使う値はすべて <see cref="displayedStemResult"/> という 1 個の snapshot から取る
+    /// (旧実装は厚み・デフォーカスのラベルだけ現在の GUI 入力 ThicknessArray/DefocusArray を使っており、
+    /// 旧 run を表示したまま入力を変えると画像とラベルが食い違っていた)。</summary>
     public void GeneratePseudBitmap()
     {
         if (ImageMode == ImageModes.POTENTIAL)
             return;
 
         var bethe = FormMain.Crystal.Bethe;
-        int width, height;
-        double resolution;
-        double[] thicknesses, defocusses;
-        double[][][] images;
-        Matrix3D rot;
         if (ImageMode == ImageModes.STEM)
         {
-            if (bethe.ResultSTEM.ImageBoth == null)
+            var result = displayedStemResult;
+            if (result?.ImageBoth is null)
                 return;
+            var mat = result.Rotation * FormMain.Crystal.MatrixReal;
 
-            width = bethe.ResultSTEM.Size.Width;
-            height = bethe.ResultSTEM.Size.Height;
-            thicknesses = bethe.ResultSTEM.Thicknesses;
-            defocusses = bethe.ResultSTEM.Defocusses;
-            resolution = bethe.ResultSTEM.Resolution;
-            rot = bethe.ResultSTEM.rot;
-
-            //260801Cl 追加: ComboBox で EDX チャネルを選んでいればそれを表示 (§5.9.1-5)。
-            //Both/Elastic/TDS は「STEM 参照像」を選んでいるときの切替
+            //右ペイン = 選択中の EDX チャネル (公開済み結果から引く。チェック状態からではない)
             var edx = SelectedEdxSignal;
-            if (edx is not null)
-                //260802Cl 変更: GetPlane→ToArray の全画素コピーをやめ、他 3 分岐と同じく backing を参照で渡す
-                //(images は以降読むだけ。Normalize が必要な複製を自前で作る)
-                images = edx.Image.Planes;
-            else if (radioButtonSTEM_target_both.Checked)
-                images = bethe.ResultSTEM.ImageBoth;
-            else if (radioButtonSTEM_target_elas.Checked)
-                images = bethe.ResultSTEM.ImageEla;
-            else
-                images = bethe.ResultSTEM.ImageTDS;
+            paneEdx.Active = edx is not null;
 
+            //**レイアウトを先に確定させる**: ScalablePictureBox.drawPictureBox は幅 0 のとき何もせずに戻るので、
+            //畳んだままの Panel2 を先に埋めると EDX 側が真っ白のままになる (実機で踏んだ)。
+            //ヘッダも二ペインのときだけ意味がある (1 ペインなら画面を食うだけ)
+            labelPaneReference.Visible = paneEdx.Active;
+            splitContainerImage.Panel2Collapsed = !paneEdx.Active;
+            if (paneEdx.Active && splitContainerImage.Width > 40)
+                splitContainerImage.SplitterDistance = splitContainerImage.Width / 2;
+
+            //左ペイン = STEM 参照像。Both/Elastic/TDS は常に左に効く (EDX 表示中も無効化しない。§5.9.1-5 案A)
+            var (refPlanes, refName, refKey) =
+                radioButtonSTEM_target_both.Checked ? (result.ImageBoth.Planes, "Elastic + TDS", "Reference-Both") :
+                radioButtonSTEM_target_elas.Checked ? (result.ImageEla.Planes, "Elastic", "Reference-Elastic") :
+                                                      (result.ImageTDS.Planes, "TDS", "Reference-TDS");
+            labelPaneReference.Text = Loc(en: "STEM reference", ja: "STEM 参照像", de: "STEM-Referenz", fr: "Référence STEM",
+                es: "Referencia STEM", pt: "Referência STEM", it: "Riferimento STEM", ru: "Опорное STEM",
+                zhHans: "STEM 参考像", zhHant: "STEM 參考影像", ko: "STEM 참조상") + " — " + refName;
+            FillReferencePane(refPlanes, result.Size, result.Resolution, mat, result.Thicknesses, result.Defocusses, refKey);
+
+            if (edx is not null)
+            {
+                labelPaneEdx.Text = $"EDX — {edx.Channel.ShortLabel}   " +
+                    Loc(en: "ionization vacancies (model value)", ja: "イオン化空孔 (モデル値)",
+                        de: "Ionisationslücken (Modellwert)", fr: "lacunes d'ionisation (valeur du modèle)",
+                        es: "vacantes de ionización (valor del modelo)", pt: "lacunas de ionização (valor do modelo)",
+                        it: "lacune di ionizzazione (valore del modello)", ru: "ионизационные вакансии (модельное значение)",
+                        zhHans: "电离空穴（模型值）", zhHant: "游離空穴（模型值）", ko: "이온화 공공 (모델 값)");
+                FillEdxPane(edx, result, mat);
+            }
         }
         else if (ImageMode == ImageModes.HRTEM)
         {
-            if (FormMain.Crystal.Bethe.ResultHRTEM.Image == null)
+            if (bethe.ResultHRTEM.Image == null)
                 return;
-
-            width = bethe.ResultHRTEM.Size.Width;
-            height = bethe.ResultHRTEM.Size.Height;
-            thicknesses = bethe.ResultHRTEM.Thicknesses;
-            defocusses = bethe.ResultHRTEM.Defocusses;
-            resolution = bethe.ResultHRTEM.Resolution;
-            rot = bethe.ResultHRTEM.rot;
-
-            images = bethe.ResultHRTEM.Image;
+            paneEdx.Active = false;
+            splitContainerImage.Panel2Collapsed = true;
+            labelPaneReference.Visible = false;
+            var r = bethe.ResultHRTEM;
+            FillReferencePane(r.Image, r.Size, r.Resolution, r.rot * FormMain.Crystal.MatrixReal, r.Thicknesses, r.Defocusses, "HRTEM");
         }
-        else
-            return;
 
+        //260802Cl 追加: **レイアウトが確定してから**描く。SetPseudoBitamap の中で描くと、新規生成直後のセルは
+        //まだ 1x1 で ScalablePictureBox.drawPictureBox が何もせずに戻るため、そのペインが真っ白のままになる
+        //(EDX ペインを初めて開いた run で実際に踏んだ。左ペインは前 run のセルを使い回すので見えていた)
+        foreach (var b in AllBoxes)
+            b.drawPictureBox();
+        //260802Cl 追加: 二ペインでないときは EDX 専用の表示操作を出さない (HRTEM・ポテンシャル・EDX なし STEM)。
+        //Dock=Top + AutoSize なので、隠すと行ごと詰まってトラックバーに余白が戻る
+        flowLayoutPanelAdjustTarget.Visible = checkBoxEdxCommonScale.Visible = paneEdx.Active;
+        if (!paneEdx.Active && comboBoxAdjustTarget.SelectedIndex != 0)
+        {
+            SkipEvent = true;
+            comboBoxAdjustTarget.SelectedIndex = 0;//作用先が消えたら参照像へ戻す (見えない対象を操作させない)
+            SkipEvent = false;
+        }
+
+        //260802Cl 追加: 畳んでいた Panel2 を開いた直後は、レイアウトも描画内容も正しいのに画面が
+        //更新されないことがある (実機で確認: Bounds も Visible も子も正しいのに古い画素のまま)。明示的に再描画する
+        splitContainerImage.Refresh();
+    }
+
+    /// <summary>260802Cl 追加: 参照像ペイン (STEM 参照像 / HRTEM) の生成。従来どおり値そのものを Normalize してから
+    /// 1 本の表示レンジを与える (既存の輝度調整 UI の意味を変えない)。</summary>
+    private void FillReferencePane(double[][][] images, Size size, double resolution, Matrix3D mat,
+        double[] thicknesses, double[] defocusses, string signalKey)
+    {
         int tLen = thicknesses.Length, dLen = defocusses.Length;
-
         var _images = new double[tLen][][];
         for (int t = 0; t < tLen; t++)
             _images[t] = new double[dLen][];
 
-        //20241101 生成した画像が180度回転していることが発覚したため、ここで修正
-
-
-        //作成したイメージをPseudoBitmapに変換
-        var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
-        var mat = rot * FormMain.Crystal.MatrixReal;
-
         //全体でノーマライズ
         if (!checkBoxNormarizeIndividually.Checked)
             _images = Normalize(images, checkBoxIntensityMin.Checked, checkBoxIntensityMax.Checked);
-
-        for (int t = 0; t < tLen; t++)
-            for (var d = 0; d < dLen; d++)
-            {
-                //個別にノーマライズ
-                if (checkBoxNormarizeIndividually.Checked)
+        else
+            for (int t = 0; t < tLen; t++)
+                for (int d = 0; d < dLen; d++)
                     _images[t][d] = Normalize(images[t][d], checkBoxIntensityMin.Checked, checkBoxIntensityMax.Checked);
 
-                //PseudoBitmapを生成
-                pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t] = new PseudoBitmap(_images[t][d], width)
+        //260802Cl 変更: レンジを先に確定してからセルを作る (旧: 古いトラックバー値でセルを作り、最後に
+        //TrackBarAdvancedMin_ValueChanged で上書きしていた。二ペインでは「最後の一括上書き」が EDX 側を壊す)
+        double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max();
+        double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min();
+        if (max <= min) max = min + 1;//定数画像でも表示できるようにする (0 除算・全黒回避)
+
+        var scale = comboBoxScaleColorScale.SelectedIndex == 0 || AdjustTarget != ImageRole.Reference
+            ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear;
+        SetPseudoBitamap(paneReference, BuildPseudoGrid(_images, size, resolution, mat, thicknesses, defocusses,
+            ImageRole.Reference, signalKey, (_, _) => (min, max), scale));
+
+        if (AdjustTarget == ImageRole.Reference)
+            SetAdjustRange(min, max);
+    }
+
+    /// <summary>260802Cl 追加: EDX ペインの生成。**生値は変換しない** (設計書 §5.9-5・codex 22/23巡):
+    /// Normalize を通すとチャネル間の振幅情報が消え、TIFF 出力も「生成空孔量」でなくなる。表示レンジだけを与える。
+    /// 下限は 0 固定 (負値 clamp 済みの非負量。各マップの最小値を黒にすると背景の強弱の比較が壊れる)。
+    /// 上限は t/d 軸 (checkBoxNormarizeIndividually) × チャネル軸 (checkBoxEdxCommonScale) の 2 軸直交で決める。</summary>
+    private void FillEdxPane(StemSignalMap edx, StemSimulationResult result, Matrix3D mat)
+    {
+        var planes = edx.Image.Planes;
+        int tLen = result.Thicknesses.Length, dLen = result.Defocusses.Length;
+        //チャネル軸: 共通なら「表示していないチャネルも含めた」全 EDX 信号が母集団 (§5.9-5)
+        var scope = checkBoxEdxCommonScale.Checked ? result.EdxSignals : [edx];
+
+        double allMax = 0;
+        foreach (var s in scope)
+            foreach (var byT in s.Image.Planes)
+                foreach (var img in byT)
+                    for (int i = 0; i < img.Length; i++)
+                        if (img[i] > allMax) allMax = img[i];
+
+        double[,] tdMax = null;
+        if (checkBoxNormarizeIndividually.Checked)
+        {
+            tdMax = new double[tLen, dLen];
+            foreach (var s in scope)
+                for (int t = 0; t < tLen; t++)
+                    for (int d = 0; d < dLen; d++)
+                    {
+                        var img = s.Image.Planes[t][d];
+                        for (int i = 0; i < img.Length; i++)
+                            if (img[i] > tdMax[t, d]) tdMax[t, d] = img[i];
+                    }
+        }
+
+        var key = $"EDX-Z{edx.Channel.Z:d2}-{edx.Channel.Shell}";
+        SetPseudoBitamap(paneEdx, BuildPseudoGrid(planes, result.Size, result.Resolution, mat, result.Thicknesses, result.Defocusses,
+            ImageRole.EdxSignal, key,
+            (t, d) => (0, Math.Max(tdMax is null ? allMax : tdMax[t, d], double.Epsilon)),
+            //EDX 既定は Gray (非負量に ColdWarm は不適、§5.9-5)。ユーザーが Target=EDX で明示的に選んだときだけ従う
+            comboBoxScaleColorScale.SelectedIndex == 1 && AdjustTarget == ImageRole.EdxSignal
+                ? PseudoBitmap.Scales.ColdWarmLinear : PseudoBitmap.Scales.GrayLinear));
+
+        if (AdjustTarget == ImageRole.EdxSignal)
+            SetAdjustRange(0, Math.Max(allMax, double.Epsilon));
+    }
+
+    /// <summary>260802Cl 追加: [t][d][pix] からペイン用の PseudoBitmap 行列を組む (折返しを含む)。</summary>
+    private PseudoBitmap[,] BuildPseudoGrid(double[][][] images, Size size, double resolution, Matrix3D mat,
+        double[] thicknesses, double[] defocusses, ImageRole role, string signalKey,
+        Func<int, int, (double Min, double Max)> range, PseudoBitmap.Scales scale)
+    {
+        int tLen = thicknesses.Length, dLen = defocusses.Length;
+        var horizontalDefocus = radioButtonHorizontalDefocus.Checked;
+        var pseudo = horizontalDefocus ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
+
+        for (int t = 0; t < tLen; t++)
+            for (int d = 0; d < dLen; d++)
+            {
+                var (min, max) = range(t, d);
+                pseudo[horizontalDefocus ? t : d, horizontalDefocus ? d : t] = new PseudoBitmap(images[t][d], size.Width)
                 {
-                    Tag = new ImageInfo(width, height, resolution, mat, $"t={ThicknessArray[t]:f2}\r\nf={DefocusArray[d]:f2}"),
-                    MaxValue = trackBarAdvancedMax.Value,
-                    MinValue = trackBarAdvancedMin.Value,
-                    Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
+                    //ラベルは表示中 result の厚み・デフォーカス (旧: 現在の GUI 入力値 ThicknessArray/DefocusArray)
+                    Tag = new ImageInfo(size.Width, size.Height, resolution, mat,
+                        $"t={thicknesses[t]:f2}\r\nf={defocusses[d]:f2}", false, role, $"{signalKey} t{t:d3}-d{d:d3}"),
+                    MaxValue = max,
+                    MinValue = min,
+                    Scale = scale
                 };
             }
 
@@ -1139,19 +1396,17 @@ public partial class FormImageSimulator : FormBase
                     newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
             pseudo = newPseudo;
         }
+        return pseudo;
+    }
 
+    /// <summary>260802Cl 追加: 輝度トラックバーを「作用先ペインの現在レンジ」に合わせる (イベントは飛ばさない)。</summary>
+    private void SetAdjustRange(double min, double max)
+    {
         SkipEvent = true;
-        double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max();
-        double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min();
         trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = max;
         trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = min;
-        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
+        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (max - min) / 100.0;
         SkipEvent = false;
-
-        //ScalableBoxに転送
-        SetPseudoBitamap(pseudo);
-
-        TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
 
     #region normarize関数
@@ -1189,35 +1444,43 @@ public partial class FormImageSimulator : FormBase
     #endregion
 
     //作成したPseutoBitmapをscalablePictureBoxに転送
-    private void SetPseudoBitamap(PseudoBitmap[,] image)
+    //260802Cl 変更: ペイン単位にパラメタ化 (旧: tableLayoutPanel と pictureBoxes フィールドを直接触っていた)。
+    //セル数・折返しが変わったときだけ作り直すのは従来どおり。折返しで空くセル (null) も許容する。
+    private void SetPseudoBitamap(ImagePane pane, PseudoBitmap[,] image)
     {
         var row = image.GetLength(0);
         var col = image.GetLength(1);
+        var boxes = pane.Boxes;
 
-        if (pictureBoxes.GetLength(0) == row && pictureBoxes.GetLength(1) == col)
+        if (boxes.GetLength(0) == row && boxes.GetLength(1) == col)
         {
             for (int r = 0; r < row; r++)
                 for (int c = 0; c < col; c++)
                 {
-                    pictureBoxes[r, c].SkipEvent = true;
-                    pictureBoxes[r, c].PseudoBitmap = image[r, c];
-                    pictureBoxes[r, c].SkipEvent = false;
+                    boxes[r, c].SkipEvent = true;
+                    boxes[r, c].PseudoBitmap = image[r, c];
+                    boxes[r, c].SkipEvent = false;
                 }
         }
         else
         {
-            tableLayoutPanel.SuspendLayout();
-            pictureBoxes = new ScalablePictureBox[row, col];
-            tableLayoutPanel.Controls.Clear();
-            tableLayoutPanel.RowCount = row;
-            tableLayoutPanel.ColumnCount = col;
-            for (int r = 0; r < row; r++) tableLayoutPanel.RowStyles[r].Height = 1f;//260718Cl Range().ToList().ForEach → for
-            for (int c = 0; c < col; c++) tableLayoutPanel.ColumnStyles[c].Width = 1f;
+            pane.Grid.SuspendLayout();
+            boxes = pane.Boxes = new ScalablePictureBox[row, col];
+            pane.Grid.Controls.Clear();
+            pane.Grid.RowCount = row;
+            pane.Grid.ColumnCount = col;
+            //260802Cl 追加: RowCount/ColumnCount を増やしても Row/ColumnStyles は自動では増えない。
+            //Designer の LayoutSettings が持っている本数 (20) を超えると添字で落ちるので、足りない分をここで補う
+            //(EDX 側の grid は LayoutSettings を持たないので 0 本から。厚み 20 点超の既存 crash 経路もこれで塞がる)
+            while (pane.Grid.RowStyles.Count < row) pane.Grid.RowStyles.Add(new RowStyle(SizeType.Percent, 1f));
+            while (pane.Grid.ColumnStyles.Count < col) pane.Grid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1f));
+            for (int r = 0; r < row; r++) pane.Grid.RowStyles[r].Height = 1f;//260718Cl Range().ToList().ForEach → for
+            for (int c = 0; c < col; c++) pane.Grid.ColumnStyles[c].Width = 1f;
 
             for (int r = 0; r < row; r++)
                 for (int c = 0; c < col; c++)
                 {
-                    pictureBoxes[r, c] = new ScalablePictureBox
+                    boxes[r, c] = new ScalablePictureBox
                     {
                         SkipEvent = true,
                         Size = new Size(1, 1),
@@ -1226,19 +1489,26 @@ public partial class FormImageSimulator : FormBase
                         PseudoBitmap = image[r, c],
                         ZoomAndCenter = (0, new PointD(0, 0))
                     };
-                    tableLayoutPanel.Controls.Add(pictureBoxes[r, c], c, r);
-                    pictureBoxes[r, c].Dock = DockStyle.Fill;
-                    pictureBoxes[r, c].SkipEvent = false;
+                    pane.Grid.Controls.Add(boxes[r, c], c, r);
+                    boxes[r, c].Dock = DockStyle.Fill;
+                    boxes[r, c].SkipEvent = false;
 
-                    pictureBoxes[r, c].DrawingAreaChanged += PictureBox_DrawingAreaChanged;
-                    pictureBoxes[r, c].Paint2 += PictureBox_Paint2;
-                    pictureBoxes[r, c].MouseMove2 += FormImageSimulator_MouseMove2;
-                    pictureBoxes[r, c].MouseDown2 += FormImageSimulator_MouseDown2;
+                    boxes[r, c].DrawingAreaChanged += PictureBox_DrawingAreaChanged;
+                    boxes[r, c].Paint2 += PictureBox_Paint2;
+                    boxes[r, c].MouseMove2 += FormImageSimulator_MouseMove2;
+                    boxes[r, c].MouseDown2 += FormImageSimulator_MouseDown2;
                 }
-            tableLayoutPanel.ResumeLayout();
+            pane.Grid.ResumeLayout();
         }
 
-        pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
+        boxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
+
+        //260802Cl 追加: ScalablePictureBox.PseudoBitmap の setter は再描画しない。旧実装は呼び出し元が最後に
+        //TrackBarAdvancedMin_ValueChanged で全セルへ drawPictureBox() していたが、二ペインでは
+        //「最後に全セルへ一括適用」自体をやめた (それだと片方のペインのレンジが壊れる) ので、ここで描く
+        foreach (var b in boxes)
+            if (b?.PseudoBitmap is not null)
+                b.drawPictureBox();
     }
     #endregion
 
@@ -1247,49 +1517,49 @@ public partial class FormImageSimulator : FormBase
     private bool FormImageSimulator_MouseMove2(object sender, MouseEventArgs e, PointD pt)
     {
         var pseud = (sender as ScalablePictureBox).PseudoBitmap;
-        var info = pseud.Tag as ImageInfo;
+        if (pseud?.Tag is not ImageInfo info) return false;//260802Cl 追加: 折返しの空セルは Tag を持たない
         labelMousePositionX.Text = $"X: {(pt.X - info.Width / 2.0) * info.Resolution * 1000:f2} pm";
         labelMousePositionY.Text = $"Y: {(-pt.Y + info.Height / 2.0) * info.Resolution * 1000:f2} pm";
-        labelMousePositionValue.Text = $"Value: {pseud.GetPixelRawValue(pt):g6}";
+        //260802Cl 変更: EDX は「モデル上の生成空孔量」であって実測 X 線カウントではないので、値だけ出すと誤読される
+        labelMousePositionValue.Text = info.Role == ImageRole.EdxSignal
+            ? $"Value: {pseud.GetPixelRawValue(pt):g6} (model)"
+            : $"Value: {pseud.GetPixelRawValue(pt):g6}";
         return false;
     }
     private bool FormImageSimulator_MouseDown2(object sender, MouseEventArgs e, PointD pt)
     {
         if (e.Clicks == 2 && e.Button == MouseButtons.Left)
         {
-            int rows = pictureBoxes.GetLength(0), cols = pictureBoxes.GetLength(1);
-            if (rows == 1 && cols == 1)
-                return false;
-
-            for (int targetR = 0; targetR < rows; targetR++)
-                for (int targetC = 0; targetC < cols; targetC++)
-                    if ((sender as ScalablePictureBox) == pictureBoxes[targetR, targetC])//まずターゲットを見つける
-                    {
-                        List<int> rowsList = Enumerable.Range(0, rows).ToList(), colsList = Enumerable.Range(0, cols).ToList();
-
-                        tableLayoutPanel.SuspendLayout();
-
-                        SkipEvent = true;
-                        //rowsList.ForEach(row => colsList.ForEach(cos => pictureBoxes[row, cos].SkipEvent = true));
-
-                        if (tableLayoutPanel.RowStyles[targetR].Height == 100f)
+            //260802Cl 変更: 最大化は「どちらのペインでダブルクリックしても、両ペインの同じ (row, col) を最大化」する
+            //(設計書 §5.9.1-5 の「セル最大化・zoom/pan・t/d index を左右同期」)。旧: tableLayoutPanel 固定
+            foreach (var pane in ActivePanes)
+            {
+                int rows = pane.Boxes.GetLength(0), cols = pane.Boxes.GetLength(1);
+                for (int targetR = 0; targetR < rows; targetR++)
+                    for (int targetC = 0; targetC < cols; targetC++)
+                        if ((ScalablePictureBox)sender == pane.Boxes[targetR, targetC])//まずターゲットを見つける
                         {
-                            rowsList.ForEach(row => tableLayoutPanel.RowStyles[row].Height = 1f);
-                            colsList.ForEach(col => tableLayoutPanel.ColumnStyles[col].Width = 1f);
-                            pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
+                            if (rows == 1 && cols == 1)
+                                return false;
+                            var restore = pane.Grid.RowStyles[targetR].Height == 100f;
+                            SkipEvent = true;
+                            foreach (var p in ActivePanes)
+                            {
+                                //相手ペインの行列数が違う (通常は同じ) 場合は届く範囲だけ揃える
+                                int r2 = p.Boxes.GetLength(0), c2 = p.Boxes.GetLength(1);
+                                p.Grid.SuspendLayout();
+                                for (int row = 0; row < r2; row++)
+                                    p.Grid.RowStyles[row].Height = restore ? 1f : (targetR == row ? 100f : 0f);
+                                for (int col = 0; col < c2; col++)
+                                    p.Grid.ColumnStyles[col].Width = restore ? 1f : (targetC == col ? 100f : 0f);
+                                if (restore && r2 > 0 && c2 > 0 && p.Boxes[0, 0] is not null)
+                                    p.Boxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
+                                p.Grid.ResumeLayout();
+                            }
+                            SkipEvent = false;
+                            return false;
                         }
-                        else
-                        {
-                            rowsList.ForEach(row => tableLayoutPanel.RowStyles[row].Height = targetR == row ? 100f : 0f);
-                            colsList.ForEach(col => tableLayoutPanel.ColumnStyles[col].Width = targetC == col ? 100f : 0f);
-                        }
-
-                        //rowsList.ForEach(row => colsList.ForEach(col => pictureBoxes[row, col].SkipEvent = false));
-                        SkipEvent = false;
-
-                        tableLayoutPanel.ResumeLayout();
-                        return false;
-                    }
+            }
         }
         return false;
     }
@@ -1432,6 +1702,13 @@ public partial class FormImageSimulator : FormBase
 
         if (ImageMode == ImageModes.HRTEM)
             CalculateInsideSpotInfo();
+
+        //260802Cl 追加: FormMain はこのメソッドを結晶切替 (crystalControl_CrystalChanged) でも呼ぶ。
+        //EDX 候補は構成元素で決まるので、ここで作り直さないと前の結晶の元素が並んだままになり、
+        //その状態で Simulate すると「今の結晶に居ない元素」の要求が backend へ行ってしまう。
+        //候補の作り直しは (結晶, 加速電圧) が変わったときだけ実際に走るので、回転ドラッグ中の連打は素通りする
+        if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked)
+            RenewEdxChannelList();
     }
     #endregion
 
@@ -1468,7 +1745,7 @@ public partial class FormImageSimulator : FormBase
         colorControlLabel.Enabled = numericBoxLabelFontSize.Enabled = checkBoxShowLabel.Checked;
         colorControlScale.Enabled = numericBoxScaleLength.Enabled = checkBoxShowScale.Checked;
 
-        foreach (var box in pictureBoxes)
+        foreach (var box in AllBoxes)//260802Cl 変更: 両ペイン (旧: pictureBoxes)
             box.Refresh();
     }
 
@@ -1576,161 +1853,161 @@ public partial class FormImageSimulator : FormBase
     public enum ActionEnum { Save, Copy }
     public void Save(FormatEnum format, ActionEnum action, string _filename = null)
     {
-        if (pictureBoxes != null && pictureBoxes.Length != 0)
+        //260802Cl 変更: 二ペイン対応 (設計書 §5.9.1-5、codex 22巡 A-2)。既定は「表示中の左右を 1 枚に連結」。
+        //アクティブなペインだけ保存する案は、目立たないフォーカス状態で保存内容が変わるので採らない。
+        //旧: pictureBoxes (単一ペイン) の row×col を前提に組んでいた
+        var panes = ActivePanes.Where(p => p.Boxes.Length > 0).ToArray();
+        if (panes.Length == 0)
+            return;
+
+        //ペインごとの行列と、連結後の列オフセット
+        var grids = new PseudoBitmap[panes.Length][,];
+        var colOffset = new int[panes.Length];
+        int totalCol = 0, maxRow = 0, width = 0, height = 0;
+        for (int i = 0; i < panes.Length; i++)
         {
-            int row = pictureBoxes.GetLength(0), col = pictureBoxes.GetLength(1);
-            var pseudo = new PseudoBitmap[row, col];
-            for (int r = 0; r < row; r++)
-                for (int c = 0; c < col; c++)
-                    pseudo[r, c] = pictureBoxes[r, c].PseudoBitmap;
-            int width = pseudo[0, 0].Width, height = pseudo[0, 0].Height;
-
-            //イメージを生成するAction. RとCが無効の場合は全画像、有効な場合は1枚画像
-            var draw = new Action<Graphics, PseudoBitmap>((g, p) =>
-            {
-                if (p != null)
+            int r0 = panes[i].Boxes.GetLength(0), c0 = panes[i].Boxes.GetLength(1);
+            grids[i] = new PseudoBitmap[r0, c0];
+            for (int r = 0; r < r0; r++)
+                for (int c = 0; c < c0; c++)
                 {
-                    g.DrawImage(p.GetImage(), new Point(0, 0));
-                    if (toolStripMenuItemOverprintSymbols.Checked)
-                        drawSymbols(g, new Func<PointD, PointD>(pt => pt), 1, (ImageInfo)p.Tag);
+                    grids[i][r, c] = panes[i].Boxes[r, c]?.PseudoBitmap;
+                    if (width == 0 && grids[i][r, c] is { Width: > 0 } first)
+                        (width, height) = (first.Width, first.Height);
                 }
-                else
-                {
-                    for (int r = 0; r < row; r++)
-                        for (int c = 0; c < col; c++)
+            colOffset[i] = totalCol;
+            totalCol += c0;
+            maxRow = Math.Max(maxRow, r0);
+        }
+        if (width == 0 || height == 0)
+            return;
+
+        //ペイン見出しの帯 (二ペインのときだけ)。Overprint symbols を切っていても左右どちらの信号か分かるようにする
+        var headerHeight = panes.Length > 1 ? 18 : 0;
+        var cellCount = grids.Sum(g => g.Length);
+
+        //イメージを生成するAction. p が null の場合は全画像、非 null の場合は 1 枚画像
+        var draw = new Action<Graphics, PseudoBitmap>((g, p) =>
+        {
+            if (p != null)
+            {
+                g.DrawImage(p.GetImage(), new Point(0, 0));
+                if (toolStripMenuItemOverprintSymbols.Checked && p.Tag is ImageInfo one)
+                    drawSymbols(g, new Func<PointD, PointD>(pt => pt), 1, one);
+                return;
+            }
+            using var headerFont = new Font(WineCompat.Resolve("Segoe UI"), 9f);
+            for (int i = 0; i < panes.Length; i++)
+            {
+                int x0 = colOffset[i] * width;
+                if (headerHeight > 0)
+                    g.DrawString(panes[i].Header.Text, headerFont, Brushes.Black, new PointF(x0 + 2, 2));
+                int r0 = grids[i].GetLength(0), c0 = grids[i].GetLength(1);
+                for (int r = 0; r < r0; r++)
+                    for (int c = 0; c < c0; c++)
+                        if (grids[i][r, c] is { Width: > 0 } cell)
                         {
-                            if (pseudo[r, c].Width != 0)
-                            {
-                                g.DrawImage(pseudo[r, c].GetImage(), new Point(c * width, r * height));
-                                if (toolStripMenuItemOverprintSymbols.Checked)
-                                    drawSymbols(g, new Func<PointD, PointD>(pt => pt + new PointD(c * width, r * height)),
-                                        1, (ImageInfo)pseudo[r, c].Tag, true);
-                            }
-                        }
-                }
-            });
-
-            //メタファイルをセーブしたりコピーしたりするときのアクション (filename が "" の時はコピー)
-            // 260716Cl 旧: using var grfx = CreateGraphics(); ipHdc = grfx.GetHdc(); using var ms = new MemoryStream();
-            //   try { mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual); } finally { grfx.ReleaseHdc(ipHdc); } using (mf) { draw → PutEnhMetafileOnClipboard or FileStream 書き出し }
-            //   と HDC→Metafile 定型を自前実装していた (260715Ch)。同型が 3 箇所に複製されていたため ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile へ集約。
-            var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>
-                ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => draw(g, p), filename)); // 260716Cl
-
-            //ここから、実際の処理
-
-            //先にファイルダイアログの処理をしてしまう
-            var filename = _filename;
-
-            if (_filename == null && action == ActionEnum.Save)
-            {
-                //var dlg = new SaveFileDialog { Filter = ... }; // 旧: ダイアログが未解放
-                using var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } }; // (260715Ch)
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    filename = dlg.FileName;
-                else
-                    return;
-            }
-            //
-            if (action == ActionEnum.Save)
-            {
-                if (string.IsNullOrWhiteSpace(filename))
-                    return; // (260715Ch) プログラム呼出しで空名が渡された場合も GetFullPath 例外にしない
-                //if (!Path.Exists(Path.GetDirectoryName(filename))) // 旧: 相対ファイル名は DirectoryName が空になり、保存せず無言 return
-                filename = Path.GetFullPath(filename); // (260715Ch) 相対指定も現在ディレクトリ基準の保存先として扱う
-                if (!Directory.Exists(Path.GetDirectoryName(filename))) // (260715Ch)
-                    return;
-                //if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png")) // 旧: CurrentCulture 依存
-                if (format == FormatEnum.PNG && !filename.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
-                    filename += ".png";
-                else if (format == FormatEnum.TIFF && !filename.EndsWith(".tif", StringComparison.OrdinalIgnoreCase)
-                    && !filename.EndsWith(".tiff", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
-                    filename += ".tif";
-                else if (format == FormatEnum.Meta && !filename.EndsWith(".emf", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
-                    filename += ".emf";
-            }
-
-            //メタファイル形式の時
-            if (format == FormatEnum.Meta)
-            {
-                //個別保存の時
-                if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
-                {
-                    var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
-                    for (int r = 0; r < row; r++)
-                        for (int c = 0; c < col; c++)
-                            if (pseudo[r, c].Width != 0)
-                            {
-                                var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                //var fn = filename.Replace(".emf", " (" + text + ").emf"); // 旧: 大文字拡張子では置換できず同じファイルを上書き
-                                //var fn = Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).emf"); // (260715Ch) 260716Cl 旧: 毎セル再計算
-                                var fn = Path.Combine(dir, $"{stem} ({text}).emf"); // 260716Cl
-                                actionForMetafile(pseudo[r, c], fn);
-                            }
-                }
-                else//全体保存 or 全体コピー
-                {
-                    if (action == ActionEnum.Save)
-                        actionForMetafile(null, filename);
-                    else
-                        actionForMetafile(null, "");//filename を "" にすると、コピー
-                }
-            }
-            //Png形式の時
-            else if (format == FormatEnum.PNG)
-            {
-                //個別保存の時
-                if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
-                {
-                    var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
-                    for (int r = 0; r < row; r++)
-                        for (int c = 0; c < col; c++)
-                            if (pseudo[r, c].Width != 0)
-                            {
-                                //var bmp = new Bitmap(width, height); // (260611Ch) 旧: 保存後も Bitmap/Graphics が未解放
-                                using var bmp = new Bitmap(width, height); // (260611Ch)
-                                using (var g = Graphics.FromImage(bmp)) // (260611Ch)
-                                    draw(g, pseudo[r, c]);
-                                var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                //bmp.Save(filename.Replace(".png", " (" + text + ").png"), ImageFormat.Png); // 旧: 大文字拡張子では個別名を作れない
-                                //var fn = Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).png"); // (260715Ch) 260716Cl 旧: 毎セル再計算
-                                var fn = Path.Combine(dir, $"{stem} ({text}).png"); // 260716Cl
-                                bmp.Save(fn, ImageFormat.Png); // (260715Ch)
-                            }
-                }
-                else//全体保存 or 全体コピー
-                {
-                    //var bmp = new Bitmap(col * width, row * height); // 旧: Clipboard コピー時に Bitmap が未解放
-                    using var bmp = new Bitmap(col * width, row * height); // (260715Ch)
-                    //draw(Graphics.FromImage(bmp), null); // (260611Ch) 旧: Graphics が未解放
-                    using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
-                        draw(g, null);
-                    if (action == ActionEnum.Save)
-                    {
-                        bmp.Save(filename, ImageFormat.Png);
-                        //bmp.Dispose(); // (260611Ch) 旧: 保存時だけ手動解放。現在は全経路を using var が所有する
-                    }
-                    else
-                    {
-                        //Clipboard.SetDataObject(bmp); // 旧: 非永続参照のため Bitmap を解放できなかった
-                        Clipboard.SetDataObject(bmp, true); // (260715Ch) 永続コピー完了後に using で解放
-                    }
-                }
-            }
-            else if (format == FormatEnum.TIFF)//Tiff形式 個別保存のみ
-            {
-                var (dir, stem) = (Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename)); // 260716Cl ループ不変のパス演算を巻き上げ
-                for (int r = 0; r < row; r++)
-                    for (int c = 0; c < col; c++)
-                        if (pseudo[r, c].Width != 0)
-                        {
-                            var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                            //var fn = pseudo.Length == 1 ? filename : filename.Replace(".tif", " (" + text + ").tif"); // 旧: 大文字拡張子では個別名を作れない
-                            //var fn = pseudo.Length == 1 ? filename : Path.Combine(Path.GetDirectoryName(filename), $"{Path.GetFileNameWithoutExtension(filename)} ({text}).tif"); // (260715Ch) 260716Cl 旧: 毎セル再計算
-                            var fn = pseudo.Length == 1 ? filename : Path.Combine(dir, $"{stem} ({text}).tif"); // 260716Cl
-                            Tiff.Writer(fn, pseudo[r, c].SrcValuesGray, 3, width);
+                            var origin = new Point(x0 + c * width, headerHeight + r * height);
+                            g.DrawImage(cell.GetImage(), origin);
+                            if (toolStripMenuItemOverprintSymbols.Checked && cell.Tag is ImageInfo info)
+                                drawSymbols(g, new Func<PointD, PointD>(pt => pt + new PointD(origin.X, origin.Y)), 1, info, true);
                         }
             }
+        });
+
+        //メタファイルをセーブしたりコピーしたりするときのアクション (filename が "" の時はコピー)
+        // 260716Cl 旧: using var grfx = CreateGraphics(); ipHdc = grfx.GetHdc(); using var ms = new MemoryStream();
+        //   try { mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual); } finally { grfx.ReleaseHdc(ipHdc); } using (mf) { draw → PutEnhMetafileOnClipboard or FileStream 書き出し }
+        //   と HDC→Metafile 定型を自前実装していた (260715Ch)。同型が 3 箇所に複製されていたため ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile へ集約。
+        var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>
+            ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => draw(g, p), filename)); // 260716Cl
+
+        //260802Cl 追加: 個別保存の 1 枚分のファイル名。ImageInfo.SignalKey (翻訳されない安定キー + t/d index) を使う。
+        //旧は "t=..., f=..." だけだったので、二ペインでは参照像と EDX が同名になり後者が前者を上書きしていた
+        static string CellName(PseudoBitmap cell)
+            => cell.Tag is ImageInfo info
+                ? (info.SignalKey ?? info.Text.Replace("\r\n", ", ")) + ", " + info.Text.Replace("\r\n", ", ")
+                : "image";
+
+        //ここから、実際の処理
+
+        //先にファイルダイアログの処理をしてしまう
+        var filename = _filename;
+
+        if (_filename == null && action == ActionEnum.Save)
+        {
+            //var dlg = new SaveFileDialog { Filter = ... }; // 旧: ダイアログが未解放
+            using var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } }; // (260715Ch)
+            if (dlg.ShowDialog() == DialogResult.OK)
+                filename = dlg.FileName;
+            else
+                return;
+        }
+        //
+        if (action == ActionEnum.Save)
+        {
+            if (string.IsNullOrWhiteSpace(filename))
+                return; // (260715Ch) プログラム呼出しで空名が渡された場合も GetFullPath 例外にしない
+            //if (!Path.Exists(Path.GetDirectoryName(filename))) // 旧: 相対ファイル名は DirectoryName が空になり、保存せず無言 return
+            filename = Path.GetFullPath(filename); // (260715Ch) 相対指定も現在ディレクトリ基準の保存先として扱う
+            if (!Directory.Exists(Path.GetDirectoryName(filename))) // (260715Ch)
+                return;
+            //if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png")) // 旧: CurrentCulture 依存
+            if (format == FormatEnum.PNG && !filename.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
+                filename += ".png";
+            else if (format == FormatEnum.TIFF && !filename.EndsWith(".tif", StringComparison.OrdinalIgnoreCase)
+                && !filename.EndsWith(".tiff", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
+                filename += ".tif";
+            else if (format == FormatEnum.Meta && !filename.EndsWith(".emf", StringComparison.OrdinalIgnoreCase)) // (260715Ch)
+                filename += ".emf";
+        }
+
+        var individually = action == ActionEnum.Save && cellCount > 1 && toolStripMenuItemSaveIndividually.Checked;
+        var (dir, stem) = (Path.GetDirectoryName(filename ?? ""), Path.GetFileNameWithoutExtension(filename ?? "")); // 260716Cl ループ不変のパス演算を巻き上げ
+
+        //メタファイル形式の時
+        if (format == FormatEnum.Meta)
+        {
+            if (individually)
+                foreach (var cell in grids.SelectMany(g => g.Cast<PseudoBitmap>()).Where(c => c is { Width: > 0 }))
+                    actionForMetafile(cell, Path.Combine(dir, $"{stem} ({CellName(cell)}).emf"));
+            else//全体保存 or 全体コピー
+                actionForMetafile(null, action == ActionEnum.Save ? filename : "");//filename を "" にすると、コピー
+        }
+        //Png形式の時
+        else if (format == FormatEnum.PNG)
+        {
+            if (individually)
+                foreach (var cell in grids.SelectMany(g => g.Cast<PseudoBitmap>()).Where(c => c is { Width: > 0 }))
+                {
+                    //var bmp = new Bitmap(width, height); // (260611Ch) 旧: 保存後も Bitmap/Graphics が未解放
+                    using var bmp = new Bitmap(width, height); // (260611Ch)
+                    using (var g = Graphics.FromImage(bmp)) // (260611Ch)
+                        draw(g, cell);
+                    bmp.Save(Path.Combine(dir, $"{stem} ({CellName(cell)}).png"), ImageFormat.Png); // (260715Ch)
+                }
+            else//全体保存 or 全体コピー
+            {
+                //var bmp = new Bitmap(col * width, row * height); // 旧: Clipboard コピー時に Bitmap が未解放
+                using var bmp = new Bitmap(totalCol * width, maxRow * height + headerHeight); // (260715Ch) 260802Cl 二ペイン連結
+                //draw(Graphics.FromImage(bmp), null); // (260611Ch) 旧: Graphics が未解放
+                using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
+                {
+                    g.Clear(Color.White);//260802Cl 追加: 見出し帯・ペイン行数差で空く領域を白で埋める (旧は全面を画像が覆っていた)
+                    draw(g, null);
+                }
+                if (action == ActionEnum.Save)
+                    bmp.Save(filename, ImageFormat.Png);
+                else
+                    //Clipboard.SetDataObject(bmp); // 旧: 非永続参照のため Bitmap を解放できなかった
+                    Clipboard.SetDataObject(bmp, true); // (260715Ch) 永続コピー完了後に using で解放
+            }
+        }
+        else if (format == FormatEnum.TIFF)//Tiff形式 個別保存のみ。**表示レンジではなく生値**を書き出す契約は従来どおり
+        {
+            foreach (var cell in grids.SelectMany(g => g.Cast<PseudoBitmap>()).Where(c => c is { Width: > 0 }))
+                Tiff.Writer(cellCount == 1 ? filename : Path.Combine(dir, $"{stem} ({CellName(cell)}).tif"),
+                    cell.SrcValuesGray, 3, width);
         }
     }
 
@@ -1769,11 +2046,12 @@ public partial class FormImageSimulator : FormBase
         if (SkipEvent) return;
 
         var box = sender as ScalablePictureBox;
-        if (box.PseudoBitmap.Width == 0)
+        if (box.PseudoBitmap is null || box.PseudoBitmap.Width == 0)
             return;
 
-        foreach (var b in pictureBoxes)
-            if (b != null && b != (ScalablePictureBox)sender)
+        //260802Cl 変更: 左右ペインをまたいで同期する (設計書 §5.9.1-5)。旧: pictureBoxes (単一ペイン)
+        foreach (var b in AllBoxes)
+            if (b != (ScalablePictureBox)sender)
             {
                 b.DrawingAreaChanged -= PictureBox_DrawingAreaChanged;
                 b.ZoomAndCenter = (zoom, center);
@@ -1806,15 +2084,22 @@ public partial class FormImageSimulator : FormBase
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {
         if (SkipEvent) return false;
-        foreach (var box in pictureBoxes)
-            if (box.PseudoBitmap.Tag != null && !(box.PseudoBitmap.Tag as ImageInfo).LockIntensity)
-            {
-                box.PseudoBitmap.MaxValue = trackBarAdvancedMax.Value;
-                box.PseudoBitmap.MinValue = trackBarAdvancedMin.Value;
-                box.drawPictureBox();
-            }
+        //260802Cl 変更: 作用先 (Adjust の Target) のペインだけに効かせる。設計書 §5.9-5「ADF と EDX は常に独立」。
+        //旧: pictureBoxes 全走査。なお LockIntensity (ポテンシャルの位相像) は従来どおり対象外
+        foreach (var box in TargetBoxes())
+        {
+            box.PseudoBitmap.MaxValue = trackBarAdvancedMax.Value;
+            box.PseudoBitmap.MinValue = trackBarAdvancedMin.Value;
+            box.drawPictureBox();
+        }
         return false;
     }
+
+    /// <summary>260802Cl 追加: 輝度・カラースケールの作用先ペインのセル (LockIntensity のものは除く)。</summary>
+    private IEnumerable<ScalablePictureBox> TargetBoxes()
+        => ActivePanes.Where(p => p.Role == AdjustTarget)
+            .SelectMany(p => p.Boxes.Cast<ScalablePictureBox>())
+            .Where(b => b?.PseudoBitmap?.Tag is ImageInfo { LockIntensity: false });
 
     private void ComboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -1827,15 +2112,16 @@ public partial class FormImageSimulator : FormBase
             scaleImage.SetScaleColdWarm();
         pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
 
-        foreach (var box in pictureBoxes)
-            if (box.PseudoBitmap.Tag != null && !(box.PseudoBitmap.Tag as ImageInfo).LockIntensity)
-            {
-                if (comboBoxScaleColorScale.SelectedIndex == 0)
-                    box.PseudoBitmap.SetScaleGray();
-                else
-                    box.PseudoBitmap.SetScaleColdWarm();
-                box.drawPictureBox();
-            }
+        //260802Cl 変更: 作用先ペインだけ (旧: pictureBoxes 全走査)。EDX の既定は Gray だが、Target=EDX で
+        //明示的に選んだ場合まで禁止はしない (§5.9-5 は「既定 Gray」であって固定ではない)
+        foreach (var box in TargetBoxes())
+        {
+            if (comboBoxScaleColorScale.SelectedIndex == 0)
+                box.PseudoBitmap.SetScaleGray();
+            else
+                box.PseudoBitmap.SetScaleColdWarm();
+            box.drawPictureBox();
+        }
     }
     private void CheckBoxGaussianBlur_CheckedChanged(object sender, EventArgs e)
     {
@@ -1843,8 +2129,10 @@ public partial class FormImageSimulator : FormBase
 
         numericBoxGaussianBlurRadius.Enabled = checkBoxGaussianBlur.Checked;
 
-        foreach (var box in pictureBoxes)
-            if (box.PseudoBitmap.Tag != null && !(box.PseudoBitmap.Tag as ImageInfo).LockIntensity)
+        //260802Cl 変更: ぼかしは両ペインへ (同じ実空間座標に掛かる表示フィルタなので独立させる意味がない。codex 22/23巡)。
+        //旧: pictureBoxes 全走査 (単一ペイン)
+        foreach (var box in AllBoxes)
+            if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
             {
                 if (checkBoxGaussianBlur.Checked)
                     box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);

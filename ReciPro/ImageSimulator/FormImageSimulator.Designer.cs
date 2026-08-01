@@ -55,6 +55,14 @@ namespace ReciPro
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageSimulator));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
+            splitContainerImage = new System.Windows.Forms.SplitContainer();//260802Cl 追加: 左=STEM 参照像 / 右=EDX マップ の二ペイン (設計書 5.9.1-5)
+            labelPaneReference = new System.Windows.Forms.Label();//260802Cl 追加
+            labelPaneEdx = new System.Windows.Forms.Label();//260802Cl 追加
+            tableLayoutPanelEdx = new System.Windows.Forms.TableLayoutPanel();//260802Cl 追加
+            flowLayoutPanelAdjustTarget = new System.Windows.Forms.FlowLayoutPanel();//260802Cl 追加
+            labelAdjustTarget = new System.Windows.Forms.Label();//260802Cl 追加
+            comboBoxAdjustTarget = new System.Windows.Forms.ComboBox();//260802Cl 追加: 輝度・カラーの作用先 (作者決定)
+            checkBoxEdxCommonScale = new System.Windows.Forms.CheckBox();//260802Cl 追加: EDX チャネル間共通スケール (5.9-5)
             tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             panelImageStatus = new System.Windows.Forms.Panel();
             pictureBoxScaleOfIntensity = new System.Windows.Forms.PictureBox();
@@ -284,6 +292,11 @@ namespace ReciPro
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerImage).BeginInit();//260802Cl 追加
+            splitContainerImage.Panel1.SuspendLayout();//260802Cl 追加
+            splitContainerImage.Panel2.SuspendLayout();//260802Cl 追加
+            splitContainerImage.SuspendLayout();//260802Cl 追加
+            flowLayoutPanelAdjustTarget.SuspendLayout();//260802Cl 追加
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             panelImageStatus.SuspendLayout();
@@ -358,7 +371,8 @@ namespace ReciPro
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(tableLayoutPanel);
+            //260802Cl 変更: 画像領域を二ペイン化 (旧: splitContainer1.Panel1.Controls.Add(tableLayoutPanel))
+            splitContainer1.Panel1.Controls.Add(splitContainerImage);
             splitContainer1.Panel1.Controls.Add(panelImageStatus);
             splitContainer1.Panel1.Controls.Add(panelDisplaySettings);
             splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -371,6 +385,48 @@ namespace ReciPro
             splitContainer1.Panel2.Controls.Add(panelSimulationActions);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
+            // 
+            // splitContainerImage (260802Cl 追加: 左 = STEM 参照像 / 右 = 選択中 EDX チャネル。設計書 5.9.1-5)
+            // 
+            resources.ApplyResources(splitContainerImage, "splitContainerImage");
+            splitContainerImage.Name = "splitContainerImage";
+            // 
+            // splitContainerImage.Panel1
+            // 
+            splitContainerImage.Panel1.Controls.Add(tableLayoutPanel);
+            splitContainerImage.Panel1.Controls.Add(labelPaneReference);
+            // 
+            // splitContainerImage.Panel2
+            // 
+            splitContainerImage.Panel2.Controls.Add(tableLayoutPanelEdx);
+            splitContainerImage.Panel2.Controls.Add(labelPaneEdx);
+            //260802Cl: Panel2Collapsed は Designer では設定しない。ここで畳むと Panel2 の子がハンドルを
+            //持たないまま生成され、後で開いても最初の描画が来ない (実機で右ペインが真っ白になった)。
+            //ハンドル生成後 = FormImageSimulator_Load で畳む
+            // 
+            // labelPaneReference (表示文は実行時に Loc で組む = 選択中の信号に追随するため)
+            // 
+            resources.ApplyResources(labelPaneReference, "labelPaneReference");
+            labelPaneReference.BackColor = System.Drawing.SystemColors.ControlLight;
+            labelPaneReference.Name = "labelPaneReference";
+            labelPaneReference.Click += LabelPane_Click;
+            // 
+            // labelPaneEdx
+            // 
+            resources.ApplyResources(labelPaneEdx, "labelPaneEdx");
+            labelPaneEdx.BackColor = System.Drawing.SystemColors.ControlLight;
+            labelPaneEdx.Name = "labelPaneEdx";
+            labelPaneEdx.Click += LabelPane_Click;
+            // 
+            // tableLayoutPanelEdx
+            // 
+            resources.ApplyResources(tableLayoutPanelEdx, "tableLayoutPanelEdx");
+            tableLayoutPanelEdx.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            tableLayoutPanelEdx.CausesValidation = false;
+            tableLayoutPanelEdx.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            tableLayoutPanelEdx.Name = "tableLayoutPanelEdx";
+            tableLayoutPanelEdx.Enter += TableLayoutPanel_Enter;
+            tableLayoutPanelEdx.Leave += TableLayoutPanel_Leave;
             // 
             // tableLayoutPanel
             // 
@@ -471,9 +527,31 @@ namespace ReciPro
             groupBoxAdjust.Controls.Add(flowLayoutPanel2);
             groupBoxAdjust.Controls.Add(trackBarAdvancedMax);
             groupBoxAdjust.Controls.Add(trackBarAdvancedMin);
+            groupBoxAdjust.Controls.Add(flowLayoutPanelAdjustTarget);//260802Cl 追加 (Dock=Top の最後 = 一番上の行)
             resources.ApplyResources(groupBoxAdjust, "groupBoxAdjust");
             groupBoxAdjust.Name = "groupBoxAdjust";
             groupBoxAdjust.TabStop = false;
+            // 
+            // flowLayoutPanelAdjustTarget (260802Cl 追加: 輝度レンジ・カラースケールの作用先。設計書 5.9-5 の
+            // 「ADF と EDX は常に独立」を、トラックバーを二重化せずに満たすための切替 = 作者決定)
+            // 
+            resources.ApplyResources(flowLayoutPanelAdjustTarget, "flowLayoutPanelAdjustTarget");
+            flowLayoutPanelAdjustTarget.Controls.Add(labelAdjustTarget);
+            flowLayoutPanelAdjustTarget.Controls.Add(comboBoxAdjustTarget);
+            flowLayoutPanelAdjustTarget.Name = "flowLayoutPanelAdjustTarget";
+            // 
+            // labelAdjustTarget
+            // 
+            resources.ApplyResources(labelAdjustTarget, "labelAdjustTarget");
+            labelAdjustTarget.Name = "labelAdjustTarget";
+            // 
+            // comboBoxAdjustTarget (項目は実行時に Loc で入れる)
+            // 
+            comboBoxAdjustTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxAdjustTarget, "comboBoxAdjustTarget");
+            comboBoxAdjustTarget.FormattingEnabled = true;
+            comboBoxAdjustTarget.Name = "comboBoxAdjustTarget";
+            comboBoxAdjustTarget.SelectedIndexChanged += ComboBoxAdjustTarget_SelectedIndexChanged;
             // 
             // flowLayoutPanel2
             // 
@@ -558,10 +636,20 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBoxNormalization, "groupBoxNormalization");
             captureExtender.SetCapture(groupBoxNormalization, true);
+            groupBoxNormalization.Controls.Add(checkBoxEdxCommonScale);//260802Cl 追加 (Dock=Top の最初 = 一番下の行)
             groupBoxNormalization.Controls.Add(checkBoxNormarizeIndividually);
             groupBoxNormalization.Controls.Add(flowLayoutPanelIntensityRange);
             groupBoxNormalization.Name = "groupBoxNormalization";
             groupBoxNormalization.TabStop = false;
+            // 
+            // checkBoxEdxCommonScale (260802Cl 追加: EDX チャネル間の共通表示レンジ。設計書 5.9-5。
+            // 既存の checkBoxNormarizeIndividually は t/d 画像間の話なので軸を分けてある)
+            // 
+            resources.ApplyResources(checkBoxEdxCommonScale, "checkBoxEdxCommonScale");
+            checkBoxEdxCommonScale.Name = "checkBoxEdxCommonScale";
+            toolTip.SetToolTip(checkBoxEdxCommonScale, resources.GetString("checkBoxEdxCommonScale.ToolTip"));
+            checkBoxEdxCommonScale.UseVisualStyleBackColor = true;
+            checkBoxEdxCommonScale.CheckedChanged += checkBoxIntensityMin_CheckedChanged;
             // 
             // checkBoxNormarizeIndividually
             // 
@@ -2364,6 +2452,12 @@ namespace ReciPro
             Load += FormImageSimulator_Load;
             VisibleChanged += FormImageSimulator_VisibleChanged;
             KeyDown += FormImageSimulator_KeyDown;
+            splitContainerImage.Panel1.ResumeLayout(false);//260802Cl 追加
+            splitContainerImage.Panel2.ResumeLayout(false);//260802Cl 追加
+            ((System.ComponentModel.ISupportInitialize)splitContainerImage).EndInit();//260802Cl 追加
+            splitContainerImage.ResumeLayout(false);//260802Cl 追加
+            flowLayoutPanelAdjustTarget.ResumeLayout(false);//260802Cl 追加
+            flowLayoutPanelAdjustTarget.PerformLayout();//260802Cl 追加
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             splitContainer1.Panel2.PerformLayout();
@@ -2578,6 +2672,14 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonPotentialModeRealAndImag;
         private System.Windows.Forms.RadioButton radioButtonPotentialModeMagAndPhase;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.SplitContainer splitContainerImage;//260802Cl 追加
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelEdx;//260802Cl 追加
+        private System.Windows.Forms.Label labelPaneReference;//260802Cl 追加
+        private System.Windows.Forms.Label labelPaneEdx;//260802Cl 追加
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAdjustTarget;//260802Cl 追加
+        private System.Windows.Forms.Label labelAdjustTarget;//260802Cl 追加
+        private System.Windows.Forms.ComboBox comboBoxAdjustTarget;//260802Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxEdxCommonScale;//260802Cl 追加
         private System.Windows.Forms.PictureBox pictureBoxPhaseScale;
         private System.Windows.Forms.Panel panelPhaseScale;
         private System.Windows.Forms.Label label17;

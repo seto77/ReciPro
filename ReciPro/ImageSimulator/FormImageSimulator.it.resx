@@ -882,4 +882,16 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Cancella</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX comune</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>Usa un unico intervallo di visualizzazione per tutti i canali EDX, così cambiare canale non modifica la scala. I valori sono lacune di ionizzazione modellate, non conteggi di raggi X misurati.</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>Destinazione</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>Sceglie a quale riquadro si applicano l'intervallo di intensità e la scala di colori. L'immagine di riferimento STEM e le mappe EDX mantengono sempre il proprio intervallo.</value>
+  </data>
 </root>

@@ -895,4 +895,16 @@ sin(theta)/lambda (nm^-1) 表示；
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>清除</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX 共用</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>對所有 EDX 通道使用同一顯示範圍，切換通道時不會重新縮放。數值是模型計算的游離空穴量，而非實測 X 射線計數。</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>對象</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>選擇亮度範圍與色標作用於哪個窗格。STEM 參考影像與 EDX 圖始終各自保持獨立的範圍。</value>
+  </data>
 </root>

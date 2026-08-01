@@ -900,4 +900,16 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Limpar</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX comum</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>Utiliza um único intervalo de visualização para todos os canais EDX, de modo que mudar de canal não reescale o mapa. Os valores são lacunas de ionização modeladas, não contagens de raios X medidas.</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>Alvo</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>Escolhe a que painel se aplicam o intervalo de intensidade e a escala de cores. A imagem de referência STEM e os mapas EDX mantêm sempre o seu próprio intervalo.</value>
+  </data>
 </root>

@@ -191,6 +191,19 @@ public partial struct ImageSimulatorSetting
     public double ConvergenceAngle;
     public double SourceSize;
     public double SliceThicknessForInelastic;
+
+    //260802Cl 追加: STEM probe sampling と STEM-EDX の要求 (設計書 §5.9.1-6)。
+    //**必ず末尾に足すこと・既存フィールドの並べ替え禁止**: MemoryPack は非 unmanaged な型を
+    //「メンバ数 1 byte + 各メンバ」で書くため、旧 blob (メンバ数 24) を新型 (27) で読むと
+    //足りない分が既定値になる = 上位互換。順序を変えると型が食い違って壊れる (実測確認済み)。
+    //なお新 blob を旧版で読むと MemoryPackSerializationException になるが、Reg.RW が catch して
+    //既定値のままにするので、ダウングレード時はプリセットが復元されないだけで害はない。
+    /// <summary>収束ビームの角度分解能 (rad)。EDX 固有ではなく STEM 共通の probe sampling 値として保存する</summary>
+    public double AngularResolution;
+    /// <summary>STEM-EDX マップを計算するか。チャネル一覧とは分離して持つ (一時 OFF で選択を失わないため)</summary>
+    public bool EdxEnabled;
+    /// <summary>選択中の EDX チャネル。別結晶へ適用したときは積集合のみ復元される</summary>
+    public (int Z, IonizationShell Shell)[] EdxChannels;
     #endregion
 
     public override readonly string ToString() => Name;
@@ -233,6 +246,11 @@ public partial struct ImageSimulatorSetting
         ConvergenceAngle = f.STEM_ConvergenceAngle;
         SourceSize = f.STEM_SourceSizeFWHM;
         SliceThicknessForInelastic = f.STEM_SliceThickness;
+
+        //STEM probe sampling と STEM-EDX (260802Cl 追加)
+        AngularResolution = f.STEM_AngularResolution;
+        EdxEnabled = f.EdxEnabled;
+        EdxChannels = f.EdxChannels;
     }
 
     public readonly void Apply(FormImageSimulator f)
@@ -268,6 +286,14 @@ public partial struct ImageSimulatorSetting
         f.STEM_ConvergenceAngle = ConvergenceAngle;
         f.STEM_SourceSizeFWHM = SourceSize;
         f.STEM_SliceThickness = SliceThicknessForInelastic;
+
+        //STEM probe sampling と STEM-EDX (260802Cl 追加)。順序に意味がある:
+        //角度分解能 → EdxEnabled (候補一覧を作る) → チャネル復元 (積集合のみ)。
+        //旧 blob では AngularResolution が 0 になるので、その場合だけ現在値を保つ (0 は probe 分割数が 0 除算になる無効値)
+        if (AngularResolution > 0)
+            f.STEM_AngularResolution = AngularResolution;
+        f.EdxEnabled = EdxEnabled;
+        f.EdxChannels = EdxChannels;
     }
 }
 #endregion

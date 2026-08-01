@@ -826,6 +826,93 @@ CTF（contrast transfer function, コントラスト
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
     <value>実効光源サイズ (σs) (FWHM)</value>
   </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>画像として (PNG形式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>画像として (TIFF形式)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   シリーズ画像モードで個別に保存 </value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>画像として</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>メタファイルとして (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>     記号を重ね印刷</value>
+  </data>
+  <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEMパラメータを読み込み</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEMパラメータを保存</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>HRTEMシミュレーションの基本概念</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>計算ライブラリ</value>
+  </data>
+  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
+    <value>収差をすべて0に設定</value>
+  </data>
+  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>デフォーカスをシェルツァー値に設定</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>スポット数</value>
+  </data>
+  <data name="labelMousePositionValue.Text" xml:space="preserve">
+    <value>値: </value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
+    <value>線形イメージ</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
+    <value>透過交差係数</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 元素マップ</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>STEM-EDX マップを計算</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
+  </data>
+  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
+    <value>利用可能をすべて選択</value>
+  </data>
+  <data name="buttonEdxClear.Text" xml:space="preserve">
+    <value>解除</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX 共通</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>EDX の全チャネルで 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上のイオン化空孔量であって、実測 X 線カウントではありません。</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>対象</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>輝度レンジとカラースケールをどちらのペインに効かせるかを選びます。STEM 参照像と EDX マップは常に別々のレンジを持ちます。</value>
+  </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -1150,79 +1237,19 @@ CTF（contrast transfer function, コントラスト
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>画像として (PNG形式)</value>
+  <data name="labelPaneReference.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
   </data>
-  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>画像として (TIFF形式)</value>
+  <data name="labelPaneEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
   </data>
-  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
+  <data name="labelAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
-    <value>   シリーズ画像モードで個別に保存 </value>
+  <data name="comboBoxAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>画像として</value>
-  </data>
-  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>メタファイルとして (EMF)</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
-    <value>     記号を重ね印刷</value>
-  </data>
-  <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEMパラメータを読み込み</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEMパラメータを保存</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
-    <value>HRTEMシミュレーションの基本概念</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
-    <value>計算ライブラリ</value>
-  </data>
-  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>収差をすべて0に設定</value>
-  </data>
-  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>デフォーカスをシェルツァー値に設定</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>スポット数</value>
-  </data>
-  <data name="labelMousePositionValue.Text" xml:space="preserve">
-    <value>値: </value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>カラー</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>高</value>
-  </data>
-  <data name="label30.Text" xml:space="preserve">
-    <value>低</value>
-  </data>
-  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
-    <value>線形イメージ</value>
-  </data>
-  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>透過交差係数</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
-    <value>STEM-EDX 元素マップ</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>STEM-EDX マップを計算</value>
-  </data>
-  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
-  </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>利用可能をすべて選択</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>解除</value>
+  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
   </data>
 </root>

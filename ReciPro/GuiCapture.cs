@@ -73,7 +73,14 @@ internal static partial class GuiCapture
         // これをしないと WinForms 標準の未処理例外ダイアログ (モーダル) が出てハーネスがハングする
         // (例: FormCTF を親なしで構築すると get_ImageMode が NullReferenceException)。
         Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-        Application.ThreadException += (_, e) => Trace($"\tThreadException\t{e.Exception.GetType().Name}: {e.Exception.Message}");
+        //260802Cl 変更: 型名とメッセージだけでは発生箇所が分からず調査できなかったので、スタックの先頭数フレームも残す
+        //(旧: Trace($"\tThreadException\t{e.Exception.GetType().Name}: {e.Exception.Message}"))。
+        //GDI+ の "Parameter is not valid." のように、メッセージが完全に無情報な例外がここに来る
+        Application.ThreadException += (_, e) =>
+        {
+            var frames = (e.Exception.StackTrace ?? "").Split('\n').Take(6).Select(s => s.Trim());
+            Trace($"\tThreadException\t{e.Exception.GetType().Name}: {e.Exception.Message}\t{string.Join(" | ", frames)}");
+        };
 
         Trace($"capture start -> {outDir}");
 

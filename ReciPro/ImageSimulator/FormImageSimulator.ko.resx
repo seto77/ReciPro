@@ -896,4 +896,16 @@ Step 및 Num과 조합하여 아래의
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>해제</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX 공통</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>EDX 의 모든 채널에 하나의 표시 범위를 사용하여, 채널을 바꿔도 밝기 기준이 달라지지 않게 합니다. 값은 모델상의 이온화 공공량이며 실측 X 선 계수가 아닙니다.</value>
+  </data>
+  <data name="labelAdjustTarget.Text" xml:space="preserve">
+    <value>대상</value>
+  </data>
+  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
+    <value>밝기 범위와 색상 스케일을 어느 창에 적용할지 고릅니다. STEM 참조상과 EDX 맵은 항상 각자의 범위를 가집니다.</value>
+  </data>
 </root>
