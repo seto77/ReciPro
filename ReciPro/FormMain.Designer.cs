@@ -364,7 +364,6 @@
             // 
             crystalControl.AllowDrop = true;
             resources.ApplyResources(crystalControl, "crystalControl");
-            crystalControl.ColorControlVisible = false;
             crystalControl.Name = "crystalControl";
             crystalControl.VisibleBondsPolyhedraTab = false;
             crystalControl.VisibleElasticityTab = false;

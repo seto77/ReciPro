@@ -1007,7 +1007,8 @@ public partial class FormDiffractionSimulator : FormBase
                 //20220915以下に変更。合ってるかな。
                 gVector.ForEach(g => g.RelativeIntensity = g.RawIntensity / max);
 
-                if (formMain.Crystals.Length == 1)
+                //if (formMain.Crystals.Length == 1) // 260731Cl 変更前
+                if (formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked) // 260731Cl 変更: SetVector 側 (kinematical) と同条件にし、単結晶でも「結晶毎の指定色」を尊重する (GitHub issue #65)
                     foreach (var g in CollectionsMarshal.AsSpan(gVector))
                     {
                         var ext = crystal.Symmetry.CheckExtinctionRule(g.Index);
