@@ -275,6 +275,13 @@ public partial class FormRotationMatrix : FormBase
             skip = false;
 
             numericBox_ValueChanged(sender, e);
+
+            //260801Cl 追加: 貼り付けた行列で実際に結晶を回転させる。
+            //従来は 9 個のボックス (いずれも ReadOnly の表示専用) と Phi/Theta/Psi の表示を書き換えるだけで
+            //FormMain.SetRotation を呼んでおらず、貼り付けても結晶は回らないうえ、他の窓で回転した瞬間に
+            //SetRotation() がボックスを RotReciPro で上書きして貼り付け値が消えていた。
+            //列優先の並び (E11,E21,E31, E12,E22,E32, E13,E23,E33) は numericBox_ValueChanged と同じ。
+            FormMain.SetRotation(new Matrix3D(e11, e21, e31, e12, e22, e32, e13, e23, e33));
         }
     }
 
