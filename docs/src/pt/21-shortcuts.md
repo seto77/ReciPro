@@ -13,7 +13,6 @@ Estes são instalados pela [janela principal](0-main-window.md), mas permanecem 
 | Atalho | Ação |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas para uma diagonal) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capturar uma imagem da tela da GUI (ferramenta de desenvolvedor; ative **Capture GUI Components** primeiro) |
 | Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
 
 ---

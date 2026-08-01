@@ -13,7 +13,6 @@ ReciPro には、ボタンやメニューには現れない **キーの組み合
 | ショートカット | 動作 |
 |----------------|------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> ＋ 矢印キー | 結晶をその方向へ1ステップ回転（2つ同時押しで斜め方向） |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | GUI のスクリーンショットを取得（開発者向け。先に **Capture GUI Components** を有効化） |
 | 起動中に <kbd>CTRL</kbd> を押し続ける | OpenGL を無効にして起動（描画トラブルの回避） |
 
 ---

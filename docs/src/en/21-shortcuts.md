@@ -13,7 +13,6 @@ These are installed by the [main window](0-main-window.md) but stay active while
 | Shortcut | Action |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capture a screenshot of the GUI (developer tool; enable **Capture GUI Components** first) |
 | Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
 
 ---

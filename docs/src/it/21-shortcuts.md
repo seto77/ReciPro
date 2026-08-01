@@ -13,7 +13,6 @@ Queste vengono installate dalla [finestra principale](0-main-window.md) ma resta
 | Scorciatoia | Azione |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + tasti freccia | Ruota il cristallo di un passo in quella direzione (tieni premute due frecce per una diagonale) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Acquisisci uno screenshot della GUI (strumento per sviluppatori; attiva prima **Capture GUI Components**) |
 | Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici) |
 
 ---

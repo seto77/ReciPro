@@ -13,7 +13,6 @@ Estos se instalan desde la [ventana principal](0-main-window.md), pero permanece
 | Atajo | Acción |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de flecha | Girar el cristal un paso en esa dirección (mantenga dos flechas para una diagonal) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Hacer una captura de pantalla de la GUI (herramienta para desarrolladores; active primero **Capture GUI Components**) |
 | Mantener <kbd>CTRL</kbd> mientras se inicia ReciPro | Iniciar con OpenGL desactivado (recuperación ante problemas gráficos) |
 
 ---

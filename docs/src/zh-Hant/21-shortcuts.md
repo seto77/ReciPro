@@ -13,7 +13,6 @@ ReciPro 將許多功能繫結到 **組合鍵** 以及 **修飾鍵搭配滑鼠按
 | 快速鍵 | 操作 |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向鍵 | 將晶體沿該方向旋轉一步（同時按住兩個方向鍵可斜向旋轉） |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | 擷取 GUI 的螢幕擷圖（開發者工具；請先啟用 **Capture GUI Components**） |
 | ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（用於修復圖形問題） |
 
 ---

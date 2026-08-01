@@ -13,7 +13,6 @@ ReciPro는 버튼이나 메뉴에는 보이지 않는 많은 기능을 **키 조
 | 단축키 | 동작 |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 화살표 키 | 결정을 그 방향으로 한 단계 회전 (두 화살표를 동시에 누르면 대각선) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | GUI 스크린샷 캡처 (개발자 도구; 먼저 **GUI 구성 요소 캡처**를 활성화) |
 | ReciPro 시작 중 <kbd>CTRL</kbd> 누른 채로 유지 | OpenGL을 비활성화하고 시작 (그래픽 문제 복구용) |
 
 ---

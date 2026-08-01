@@ -13,7 +13,6 @@ Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent 
 | Raccourci | Action |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + touches fléchées | Faire tourner le cristal d'un pas dans cette direction (maintenez deux flèches pour une diagonale) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capturer une capture d'écran de l'interface (outil de développement ; activez d'abord **Capture GUI Components**) |
 | Maintenir <kbd>CTRL</kbd> pendant le démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques) |
 
 ---

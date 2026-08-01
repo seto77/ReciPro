@@ -13,7 +13,6 @@ Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber akt
 | Kurzbefehl | Aktion |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + Pfeiltasten | Den Kristall einen Schritt in diese Richtung drehen (zwei Pfeile gleichzeitig für eine Diagonale) |
-| <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Einen Screenshot der GUI aufnehmen (Entwicklerwerkzeug; zuerst **Capture GUI Components** aktivieren) |
 | <kbd>CTRL</kbd> beim Start von ReciPro gedrückt halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
 
 ---
