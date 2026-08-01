@@ -19,6 +19,7 @@ public class Macro : MacroBase
     public FileClass File;
     public DirectionClass Dir;
     public DifSimClass DifSim;
+    public SpotIDClass SpotID; // 260801Cl 追加
     public CrystalListClass CrystalList;
     public CrystalClass Crystal;
     public STEMClass STEM;
@@ -41,6 +42,9 @@ public class Macro : MacroBase
 
         DifSim = new DifSimClass(this);
         addHelp(DifSim.GetType(), nameof(DifSim));
+
+        SpotID = new SpotIDClass(this); // 260801Cl 追加
+        addHelp(SpotID.GetType(), nameof(SpotID));
 
         Crystal = new CrystalClass(this);
         addHelp(Crystal.GetType(), nameof(Crystal));
@@ -744,6 +748,87 @@ public class Macro : MacroBase
 
 
 
+    #endregion
+
+    #region SpotIDクラス
+    // 260801Cl 追加: Spot ID (v2) をマクロ/コマンドラインから駆動するためのクラス。
+    // 画像またはスポット一覧を読み込み → スポット検出 → 方位同定 → 候補リストの取得、までを無人で実行できる。
+    // FindSpots()/Identify() は完了を待って戻る (フォーム側で同期実行するように実装してある)。
+    public class SpotIDClass(Macro _p) : MacroSub(_p.main)
+    {
+        private FormSpotIDV2 spotID => _p.main.FormSpotIDv2;
+
+        [Help("Opens the Spot ID window.")]
+        public void Open() => Execute(new Action(() => { spotID.Visible = true; _p.main.toolStripButtonSpotIDv2.Checked = true; }));
+
+        [Help("Closes the Spot ID window.")]
+        public void Close() => Execute(new Action(() => { spotID.Visible = false; _p.main.toolStripButtonSpotIDv2.Checked = false; }));
+
+        [Help("Loads a file into the Spot ID window, as File > Load does: a '.csv' file is read as a spot list (an image must have been loaded first), and any other extension is read as a diffraction pattern image (dm3, dm4, mrc, ipa, tif, and other supported formats). If 'filename' is omitted, opens a file selection dialog.", "string filename")]
+        public void LoadFile(string filename = "") => Execute(() => spotID.LoadFile(filename));
+
+        [Help("Detects diffraction spots in the loaded image and fits them, as the 'Find spots' button does. Returns after the detection has finished.")]
+        public void FindSpots() => Execute(() => spotID.FindSpots());
+
+        [Help("Searches for orientations that explain the detected spots, as the 'Identify spots' button does, and returns the number of candidates found. The crystals to be tested are those selected in the crystal list of the main window (see CrystalList.SelectedIndex). Returns after the search has finished.")]
+        public int Identify() => Execute(() => spotID.Identify());
+
+        [Help("Returns the candidate orientation list as CSV text: crystal name, the Z-X-Z Euler angles (deg), the nine rotation-matrix elements R11-R33 (crystal frame to laboratory frame, applied to column vectors), the mean-squared residual (nm^-2), and the assignment of observed spots to hkl indices. The candidates are ordered by the total number of assigned spots (descending), then by the mean-squared residual (ascending). Numbers are written in invariant culture (decimal point = period).")]
+        public string CandidateList() => Execute(() => spotID.GetCandidateListText(','));
+
+        [Help("Returns the list of observed spots as CSV text, with the same columns as File > Save in the Spot ID window. Combine it with File.SaveText() to write the list to a file; the saved file can be read back with LoadFile().")]
+        public string SpotList() => Execute(() => spotID.GetSpotListText(','));
+
+        [Help("Gets the number of detected spots.")]
+        public int NumberOfDetectedSpots => spotID.NumberOfDetectedSpots;
+
+        [Help("Gets the number of candidates found by the last Identify() call.")]
+        public int NumberOfCandidates => spotID.NumberOfCandidates;
+
+        [Help("Sets the incident wave source to X-ray.")]
+        public void Source_Xray() => spotID.Source = WaveSource.Xray;
+
+        [Help("Sets the incident wave source to electrons.")]
+        public void Source_Electron() => spotID.Source = WaveSource.Electron;
+
+        [Help("Sets the incident wave source to neutrons.")]
+        public void Source_Neutron() => spotID.Source = WaveSource.Neutron;
+
+        [Help("Gets or sets the incident beam energy. Units: keV for X-rays and electrons, meV for neutrons.")]
+        public double Energy { get => spotID.Energy; set => spotID.Energy = value; }
+
+        [Help("Gets or sets the camera length in mm.")]
+        public double CameraLength { get => spotID.CameraLength; set => spotID.CameraLength = value; }
+
+        [Help("Gets or sets the pixel size of the image in mm. Reading or writing it also switches the pixel-size unit to mm.")]
+        public double PixelSizeInMM { get => spotID.PixelSizeInMM; set => spotID.PixelSizeInMM = value; }
+
+        [Help("Gets or sets the pixel size of the image in nm^-1. Reading or writing it also switches the pixel-size unit to nm^-1.")]
+        public double PixelSizeInNMinv { get => spotID.PixelSizeInNMinv; set => spotID.PixelSizeInNMinv = value; }
+
+        [Help("Gets or sets the maximum number of spots to be detected by FindSpots().")]
+        public int MaxNumberOfSpots { get => spotID.MaxNumberOfSpots; set => spotID.MaxNumberOfSpots = value; }
+
+        [Help("Gets or sets the minimum separation, in pixels, allowed between detected spots.")]
+        public int NearestNeighbor { get => spotID.NearestNeighbor; set => spotID.NearestNeighbor = value; }
+
+        [Help("Gets or sets the radius, in pixels, of the circular region around each spot used for peak fitting.")]
+        public double FittingRange { get => spotID.FittingRange; set => spotID.FittingRange = value; }
+
+        // 260801Cl: フォーム側の既存プロパティ ToleranceLength (比) をそのまま使い、ここで GUI 表示と同じ % に換算する
+        // (同じコントロールを指す重複プロパティをフォーム側に増やさないため)。
+        [Help("Gets or sets the tolerance, in %, of the relative d-spacing difference allowed when matching observed spots to candidate reflections.")]
+        public double AcceptableError { get => spotID.ToleranceLength * 100; set => spotID.ToleranceLength = value / 100; }
+
+        [Help("Gets or sets whether kinematically forbidden reflections, which can appear via multiple diffraction, are ignored.")]
+        public bool IgnoreProhibitedReflections { get => spotID.IgnoreProhibitedReflections; set => spotID.IgnoreProhibitedReflections = value; }
+
+        [Help("Gets or sets whether multiple grains are searched for. False means a single grain.")]
+        public bool MultiGrain { get => spotID.MultiGrain; set => spotID.MultiGrain = value; }
+
+        [Help("Gets or sets the maximum number of grain orientations searched for when MultiGrain is true.")]
+        public int MaxNumberOfGrains { get => spotID.MaxNumberOfGrains; set => spotID.MaxNumberOfGrains = value; }
+    }
     #endregion
 
     #region ImageSimulatorクラス (HRTEMandSTEMとPotentialの親クラス)

@@ -170,20 +170,27 @@ public partial class FormSpotIDV2 : FormBase
             FormSpotDetails.SetData();
     }
 
-    #region ファイルメニュー
-    private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+    /// <summary>260801Cl 追加: 回折図形の画像、またはスポット一覧の CSV を拡張子で振り分けて読み込む。
+    /// filename が空の場合はファイル選択ダイアログを開く。CSV は画像が未読み込みだと無視される (readCSV の仕様)。
+    /// File &gt; Load メニュー・ドラッグ＆ドロップ・マクロ SpotID.LoadFile() の共通入口
+    /// (旧: 同じ拡張子分岐がメニューとドラッグ＆ドロップに個別に書かれていた)。</summary>
+    public void LoadFile(string filename = "")
     {
-        var dlg = new OpenFileDialog();
-        if (dlg.ShowDialog() == DialogResult.OK)
+        if (string.IsNullOrEmpty(filename))//マクロから None (=null) が渡ることがあるので空文字だけでなく null も拾う
         {
-
-            if (dlg.FileName.EndsWith(".csv"))
-                readCSV(dlg.FileName);
-            else
-                readImage(dlg.FileName);
-
+            var dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+            filename = dlg.FileName;
         }
+
+        if (filename.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
+            readCSV(filename);
+        else
+            readImage(filename);
     }
+
+    #region ファイルメニュー
+    private void loadToolStripMenuItem_Click(object sender, EventArgs e) => LoadFile(); // 260801Cl 変更: 本体を LoadFile() へ集約
     #endregion
 
     #region DragDrop関連
@@ -193,12 +200,7 @@ public partial class FormSpotIDV2 : FormBase
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
         if (fileName.Length > 0)
-        {
-            if (fileName[0].EndsWith(".csv"))
-                readCSV(fileName[0]);
-            else
-                readImage(fileName[0]);
-        }
+            LoadFile(fileName[0]); // 260801Cl 変更: 拡張子分岐を LoadFile() へ集約
     }
 
     private void FormSpotID_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
@@ -342,7 +344,14 @@ public partial class FormSpotIDV2 : FormBase
         FormSpotDetails.SetData();                            // 画像 + 4方向プロファイルグラフを確実に生成
     }
 
-    private async void buttonFindSpots_Click(object sender, EventArgs e)
+    private async void buttonFindSpots_Click(object sender, EventArgs e) => await findSpots(false); // 260801Cl 変更: 本体を findSpots() へ (同期実行をマクロから使えるようにするため)
+
+    /// <summary>260801Cl 追加 (旧 buttonFindSpots_Click の本体): スポットを検出してフィッティングする。
+    /// sync=true ではワーカースレッドを使わず呼び出しスレッド上で実行するので、戻った時点で検出が完了している
+    /// (マクロ SpotID.FindSpots() / コマンドライン実行用)。sync=false は従来どおり Task.Run で非同期実行する。
+    /// ★ sync=true の経路には await を置かないこと。FindSpots() が UI スレッドから戻り値の Task を同期待ちするため、
+    ///    この経路で await が発生すると (継続が UI スレッドに戻れず) デッドロックする。</summary>
+    private async Task findSpots(bool sync)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         if (p == null || p.SrcValuesGray == null) return;
@@ -369,17 +378,24 @@ public partial class FormSpotIDV2 : FormBase
         var nearestNeighbor = numericBoxNearestNeighbor.Value;
         var spotsCount = spots.Count;
         var max = toolStripProgressBar.Maximum;
-        IProgress<int> progress = new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsCount);
+        // 260801Cl 変更: 同期実行では UI スレッドがこのメソッドの中にいるため、Progress<T>.Report の Post は
+        // 抜けるまで処理されず、最後に (完了済みの) プログレスバーを途中値へ巻き戻すだけの無駄になる。同期時は報告しない。
+        // 旧: IProgress<int> progress = new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsCount);
+        IProgress<int> progress = sync ? null : new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsCount);
 
-        var results = await Task.Run(() =>
+        // 260801Cl 変更: 同期実行 (sync=true) ではワーカースレッドに逃がさず、その場でフィッティングする。
+        // 旧: var results = await Task.Run(() => { ... }); (常に非同期)
+        var results = sync ? fitAll() : await Task.Run(fitAll);
+
+        List<(double[] PrmsPv, double[] PrmsBg, double R)> fitAll()
         {
             int counter = 0;
             return spots.Select(s =>
             {
-                progress.Report(counter++);
+                progress?.Report(counter++);
                 return fitCore(new PointD(s.X, s.Y), fittingRange, width, height, srcValues);
             }).ToList();
-        });
+        }
 
         for (int i = 0; i < results.Count; i++)
         {
@@ -889,32 +905,44 @@ public partial class FormSpotIDV2 : FormBase
     {
         if (dataSet.DataTableSpot.Rows.Count > 1)
         {
-            var sb = new StringBuilder();
-            sb.Append("Direct\t");
-            for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
-                if (dataGridViewSpots.Columns[i].Visible)
-                    sb.Append(dataGridViewSpots.Columns[i].HeaderText + "\t");
-            sb.Append("\r\n");
-
-            for (int j = 0; j < dataGridViewSpots.Rows.Count - 1; j++)
-            {
-                sb.Append(((bool)dataGridViewSpots[0, j].Value ? "*" : "") + "\t");
-                for (int i = 1; i < dataGridViewSpots.ColumnCount - 1; i++)
-                    if (dataGridViewSpots.Columns[i].Visible)
-                        sb.Append(dataGridViewSpots[i, j].Value.ToString() + "\t");
-                sb.Append("\r\n");
-            }
-
+            // 260801Cl 変更: テキスト生成を GetSpotListText() に移し、マクロ SpotID.SpotList() と同一内容にした。
+            // 旧: ここで StringBuilder に組み立て、CSV 保存時は sb.ToString().Replace('\t', ',') していた。
             if ((sender as Button).Name.Contains("Clipboard"))
-                Clipboard.SetDataObject(sb.ToString());
+                Clipboard.SetDataObject(GetSpotListText('\t'));
             else
             {
                 var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
                 if (dlg.ShowDialog() == DialogResult.OK)
                     using (var sw = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("UTF-8")))
-                        sw.Write(sb.ToString().Replace('\t', ','));
+                        sw.Write(GetSpotListText(','));
             }
         }
+    }
+
+    /// <summary>260801Cl 追加: 観測スポット表のテキストを生成して返す (delimiter が '\t' なら TSV, ',' なら CSV)。
+    /// 出力される列は dataGridViewSpots の表示列に従い、CSV は File &gt; Load / マクロ SpotID.LoadFile() で読み戻せる。
+    /// 数値の書式は GUI の表示 (現在のカルチャ) に従う点に注意 (読み戻し側 readCSV も同じ規約)。</summary>
+    public string GetSpotListText(char delimiter = ',')
+    {
+        var sb = new StringBuilder();
+        sb.Append("Direct" + delimiter);
+        for (int i = 1; i < dataGridViewSpots.Columns.Count - 1; i++)
+            if (dataGridViewSpots.Columns[i].Visible)
+                sb.Append(dataGridViewSpots.Columns[i].HeaderText + delimiter);
+        sb.Append("\r\n");
+
+        // 260801Cl 修正: 行ループの上限が Rows.Count - 1 で、末尾の 1 スポットが常に落ちていた
+        // (AllowUserToAddRows = false なので新規行プレースホルダは存在せず、-1 する理由が無い。Designer.cs L267)。
+        // 旧: for (int j = 0; j < dataGridViewSpots.Rows.Count - 1; j++)
+        for (int j = 0; j < dataGridViewSpots.Rows.Count; j++)
+        {
+            sb.Append(((bool)dataGridViewSpots[0, j].Value ? "*" : "") + delimiter);
+            for (int i = 1; i < dataGridViewSpots.ColumnCount - 1; i++)
+                if (dataGridViewSpots.Columns[i].Visible)
+                    sb.Append(dataGridViewSpots[i, j].Value.ToString() + delimiter);
+            sb.Append("\r\n");
+        }
+        return sb.ToString();
     }
 
     /// <summary>260723Cl 追加: 候補方位リスト (全候補×全grain の結晶名・オイラー角(Z-X-Z)・回転行列・残差・スポット割当) を
@@ -925,6 +953,23 @@ public partial class FormSpotIDV2 : FormBase
         if (dataSet.DataTableCandidate.Rows.Count == 0)
             return;
 
+        // 260801Cl 変更: 行生成を GetCandidateListText() に移し、マクロ SpotID.CandidateList() と同一内容を返すようにした。
+        if ((sender as ToolStripMenuItem).Name.Contains("copy"))
+            Clipboard.SetDataObject(GetCandidateListText('\t'));
+        else
+        {
+            var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                using (var sw = new StreamWriter(dlg.FileName, false, Encoding.UTF8))
+                    sw.Write(GetCandidateListText(','));
+        }
+    }
+
+    /// <summary>260801Cl 追加: 候補方位リストのテキストを生成して返す (delimiter が '\t' なら TSV, ',' なら CSV)。
+    /// GUI の File &gt; Copy/Save とマクロ SpotID.CandidateList() が完全に同じ内容を返すよう、行生成をここへ集約した。
+    /// 候補が存在しない場合はヘッダ行のみを返す。</summary>
+    public string GetCandidateListText(char delimiter = ',')
+    {
         var inv = System.Globalization.CultureInfo.InvariantCulture;
         var rows = new List<string[]>
         {
@@ -950,17 +995,9 @@ public partial class FormSpotIDV2 : FormBase
             }
         }
 
-        if ((sender as ToolStripMenuItem).Name.Contains("copy"))
-            Clipboard.SetDataObject(string.Join("\r\n", rows.Select(r => string.Join("\t", r))) + "\r\n");
-        else
-        {
-            //カンマ・引用符・改行を含むフィールド (結晶名等) は RFC 4180 流に引用符で囲む
-            var esc = new Func<string, string>(s => s.Contains(',') || s.Contains('"') || s.Contains('\n') ? $"\"{s.Replace("\"", "\"\"")}\"" : s);
-            var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
-            if (dlg.ShowDialog() == DialogResult.OK)
-                using (var sw = new StreamWriter(dlg.FileName, false, Encoding.UTF8))
-                    sw.Write(string.Join("\r\n", rows.Select(r => string.Join(",", r.Select(esc)))) + "\r\n");
-        }
+        //カンマ・引用符・改行を含むフィールド (結晶名等) は RFC 4180 流に引用符で囲む (TSV はタブ区切りのため対象外)
+        var esc = new Func<string, string>(s => delimiter == ',' && (s.Contains(',') || s.Contains('"') || s.Contains('\n')) ? $"\"{s.Replace("\"", "\"\"")}\"" : s);
+        return string.Join("\r\n", rows.Select(r => string.Join(delimiter, r.Select(esc)))) + "\r\n";
     }
 
     private void readCSV(string filename)
@@ -1016,11 +1053,8 @@ public partial class FormSpotIDV2 : FormBase
         FormMain.Enabled = false;
         buttonIdentifySpots.Visible = false;
         buttonStop.Visible = true;
-        var crystals = new List<Crystal>();
-        for (int j = 0; j < FormMain.listBox.SelectedItems.Count; j++)
-            crystals.Add((Crystal)FormMain.listBox.SelectedItems[j]);
-
-        backgroundWorkerSpotID.RunWorkerAsync(crystals);
+        //260801Cl 変更: 選択結晶の収集を Cast<Crystal>() に (旧: for ループで 1 件ずつ Add。Identify() と同じ処理が二重にあった)
+        backgroundWorkerSpotID.RunWorkerAsync(FormMain.listBox.SelectedItems.Cast<Crystal>().ToList());
     }
 
     private void buttonStop_Click(object sender, EventArgs e)
@@ -1033,18 +1067,24 @@ public partial class FormSpotIDV2 : FormBase
     {
         if (e.Result != null && e.Result is List<List<Grain>> candidates)
         {
-            dataSet.DataTableCandidate.Clear();
-            for (int i = 0; i < candidates.Count; i++)
-                dataSet.DataTableCandidate.Add(i, candidates[i]);
-            toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}";// 260520Cl 時間表記を統一
-
+            setCandidates(candidates); // 260801Cl 変更: 表への反映を setCandidates() へ (マクロの同期実行と共通化)
             MessageBox.Show(candidates.Count.ToString() + " candidates found.");
         }
 
         buttonIdentifySpots.Visible = true;
         buttonStop.Visible = false;
         FormMain.Enabled = true;
+    }
+
+    /// <summary>260801Cl 追加: 同定結果を候補テーブルへ反映する (GUI 実行とマクロ実行の共通処理)。
+    /// 完了メッセージボックスは呼び出し側 (GUI のみ) が出す。</summary>
+    private void setCandidates(List<List<Grain>> candidates)
+    {
+        dataSet.DataTableCandidate.Clear();
+        for (int i = 0; i < candidates.Count; i++)
+            dataSet.DataTableCandidate.Add(i, candidates[i]);
+        toolStripProgressBar.Value = toolStripProgressBar.Maximum;
+        toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}";// 260520Cl 時間表記を統一
     }
 
 
@@ -1102,8 +1142,14 @@ public partial class FormSpotIDV2 : FormBase
 
         var func = new Func<int, List<Vector3DBase>, int[], List<Grain>>((id, v2, exceptedIndices) =>
             {
-                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices)
-                                .OrderByDescending(c => c.Indices.Length).ToList();
+                // 260801Cl 変更: 探索は並列実行のため列挙順が実行ごとに変わり、割当スポット数だけを鍵にすると
+                // 同数の候補の順序、ひいては直後の近接方位の間引きでどの代表が残るかまで揺らいでいた。
+                // 完全同点まで解決する全順序 (compareGrain) で並べ替えて再現性を確保する。
+                // 旧: var cand = getRotationCandidatesFrom2Spots2(...).OrderByDescending(c => c.Indices.Length).ToList();
+                var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices);
+                if (cand == null)//260801Cl 追加: Stop 押下時は null が返る (旧実装はここで NullReferenceException になっていた)
+                    return [];
+                cand.Sort(compareGrain);
                 for (int j = 0; j < cand.Count; j++)
                 {
                     for (int k = j + 1; k < cand.Count; k++)
@@ -1154,14 +1200,63 @@ public partial class FormSpotIDV2 : FormBase
                 candidates = candidates2;
             }
         }
-        return candidates.OrderByDescending(c1 =>
+        // 260801Cl 変更: 決定論的な並べ替えに変更 (①割当スポット数の合計 降順 → ②平均二乗残差 昇順 → ③回転行列の辞書順)。
+        // 旧実装は割当スポット数の合計だけを鍵にしていたため、同数の候補どうしの順序が実行ごとに再現せず、
+        // 外部ツールとの突き合わせ (ベンチマーク) で候補番号が一致しなかった。
+        //旧:
+        //return candidates.OrderByDescending(c1 =>
+        //{
+        //    //var indices = new List<int>();
+        //    //foreach (var g in c1)
+        //    //    indices = indices.Union(g.Indices).ToList();
+        //    //return indices.Count();
+        //    return c1.Sum(g => g.Indices.Length);
+        //}).ToList();
+        candidates.Sort(compareCandidate);
+        return candidates;
+    }
+
+    /// <summary>260801Cl 追加: Grain の決定論的な比較。①割当スポット数 降順 → ②平均二乗残差 昇順 →
+    /// ③回転行列成分 (E11..E33 を行優先) の辞書順。③は対称等価な方位などで ①② が完全に同点になった場合の
+    /// 最終タイブレークで、これにより並列探索の列挙順によらず順序が一意に定まる。</summary>
+    private static int compareGrain(Grain a, Grain b)
+    {
+        int c = b.Indices.Length.CompareTo(a.Indices.Length);//割当スポット数は降順
+        if (c != 0) return c;
+        c = a.Residual.CompareTo(b.Residual);//平均二乗残差は昇順
+        if (c != 0) return c;
+
+        //回転行列成分を直接比較する (ToArrayRowMajorOrder() は比較のたびに double[9] を 2 本確保するので使わない)
+        var (m, n) = (a.Rotation, b.Rotation);
+        c = m.E11.CompareTo(n.E11); if (c != 0) return c;
+        c = m.E12.CompareTo(n.E12); if (c != 0) return c;
+        c = m.E13.CompareTo(n.E13); if (c != 0) return c;
+        c = m.E21.CompareTo(n.E21); if (c != 0) return c;
+        c = m.E22.CompareTo(n.E22); if (c != 0) return c;
+        c = m.E23.CompareTo(n.E23); if (c != 0) return c;
+        c = m.E31.CompareTo(n.E31); if (c != 0) return c;
+        c = m.E32.CompareTo(n.E32); if (c != 0) return c;
+        return m.E33.CompareTo(n.E33);
+    }
+
+    /// <summary>260801Cl 追加: 候補 (= grain のリスト) の決定論的な比較。①割当スポット数の合計 降順 →
+    /// ②候補全体の平均二乗残差 (grain 毎の残差を割当スポット数で重み付けした平均) 昇順 → ③grain 毎の compareGrain。
+    /// grain が 1 個だけの候補では ② はその grain の残差そのものになる。</summary>
+    private static int compareCandidate(List<Grain> a, List<Grain> b)
+    {
+        int nA = a.Sum(g => g.Indices.Length), nB = b.Sum(g => g.Indices.Length);
+        int c = nB.CompareTo(nA);//割当スポット数の合計は降順
+        if (c != 0) return c;
+
+        c = (a.Sum(g => g.Residual * g.Indices.Length) / nA).CompareTo(b.Sum(g => g.Residual * g.Indices.Length) / nB);
+        if (c != 0) return c;
+
+        for (int i = 0; i < Math.Min(a.Count, b.Count); i++)
         {
-            //var indices = new List<int>();
-            //foreach (var g in c1)
-            //    indices = indices.Union(g.Indices).ToList();
-            //return indices.Count();
-            return c1.Sum(g => g.Indices.Length);
-        }).ToList();
+            c = compareGrain(a[i], b[i]);
+            if (c != 0) return c;
+        }
+        return a.Count.CompareTo(b.Count);
     }
 
     /// <summary>観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。</summary>
@@ -1273,7 +1368,11 @@ public partial class FormSpotIDV2 : FormBase
             {
                 if (indices.Count > 1)
                     candidates.Add(new Grain(result.Inverse(), residual, indices.ToArray()));
-                if (counter++ % 10 == 0)
+                // 260801Cl 変更: IsBusy 判定を追加。マクロからの同期実行では BackgroundWorker が走っていないため、
+                // ReportProgress は AsyncOperation を介さず呼び出しスレッド (並列ワーカー) 上で直接発火し、
+                // ProgressChanged が UI コントロールへクロススレッドアクセスしてしまう。
+                // 旧: if (counter++ % 10 == 0)
+                if (counter++ % 10 == 0 && backgroundWorkerSpotID.IsBusy)
                     backgroundWorkerSpotID.ReportProgress((int)(1000000.0 / mList.Count * counter));
             }
         }
@@ -1310,7 +1409,7 @@ public partial class FormSpotIDV2 : FormBase
     #endregion
 
     #region Grain クラス
-    public class Grain : IComparable
+    public class Grain // 260801Cl 変更: IComparable の実装を撤去 (下記コメント参照)。旧: public class Grain : IComparable
     {
         public Matrix3D Rotation;
         public double Residual;
@@ -1324,7 +1423,9 @@ public partial class FormSpotIDV2 : FormBase
         public int ID;
         public string CrystalName;
 
-        public int CompareTo(object obj) => Residual.CompareTo(((Grain)obj).Residual);
+        // 260801Cl 削除: 呼び出し箇所ゼロで、かつ新しい compareGrain (割当スポット数優先) と矛盾する順序だったため。
+        // 残しておくと引数なしの Sort()/OrderBy() が意図と違う順序を黙って返す罠になる。
+        // 旧: public int CompareTo(object obj) => Residual.CompareTo(((Grain)obj).Residual);
 
         public Grain(Matrix3D rotation, double residual, (int No, int H, int K, int L)[] indices, int id = -1)
         {
@@ -1641,5 +1742,83 @@ public partial class FormSpotIDV2 : FormBase
     {
         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, 0));
     }
+
+    #region 260801Cl 追加: マクロ (ReciPro.SpotID クラス) 用の公開 API
+    // マクロは UI スレッド上で同期実行されるため、時間のかかる処理 (FindSpots / Identify) も
+    // BackgroundWorker を使わずその場で実行し、戻った時点で結果が確定しているようにする。
+
+    /// <summary>スポットを検出してフィッティングする (Find spots ボタン相当)。戻った時点で完了している。</summary>
+    public void FindSpots() => findSpots(true).GetAwaiter().GetResult();
+
+    /// <summary>結晶リストで選択されている結晶を対象に方位同定を実行し (Identify spots ボタン相当)、見つかった候補数を返す。
+    /// 結晶が 1 つも選択されていない場合は何もせず 0 を返す。</summary>
+    public int Identify()
+    {
+        //画像とスポットが揃っていない状態で呼ばれても落ちないようにする。
+        //スポットが 0 件だと DataTableSpot.ReciprocalVectors が null を返して同定処理が NullReferenceException になり、
+        //1 件でも方位は決まらない (getRotationCandidatesFrom2Spots2 は 2 スポットの組で回転を求める) ので閾値は 2。
+        if (scalablePictureBoxAdvanced.PseudoBitmap == null || dataSet.DataTableSpot.Rows.Count < 2)
+            return 0;
+
+        var crystals = FormMain.listBox.SelectedItems.Cast<Crystal>().ToList();
+        if (crystals.Count == 0)
+            return 0;
+
+        sw.Restart();
+        clearStatusLabel();
+        var candidates = identifySpots(crystals);
+        if (candidates == null)
+            return 0;
+        setCandidates(candidates);
+        return candidates.Count;
+    }
+
+    /// <summary>検出済みスポットの個数。</summary>
+    public int NumberOfDetectedSpots => dataSet.DataTableSpot.Rows.Count;
+
+    /// <summary>同定された候補の個数。</summary>
+    public int NumberOfCandidates => dataSet.DataTableCandidate.Rows.Count;
+
+    /// <summary>入射線のエネルギー。単位は X 線・電子線では keV、中性子線では meV。</summary>
+    public double Energy { get => waveLengthControl1.Energy; set => waveLengthControl1.Energy = value; }
+
+    /// <summary>入射線の種類。</summary>
+    public WaveSource Source { get => waveLengthControl1.WaveSource; set => waveLengthControl1.WaveSource = value; }
+
+    // 既存の PixelSize は「取得時は必ず mm へ換算、設定時は選択中の単位のまま」という非対称な仕様で
+    // (AreaDetector が mm を要求するため)、外部から読み書きすると値が往復しない。単位ごとに対称な入口を用意する。
+    // DifSim の ImageResolutionInMM / ImageResolutionInNMinv と同じ形。
+
+    /// <summary>ピクセルサイズを mm 単位で取得/設定する (単位表示も mm へ切り替わる)。</summary>
+    public double PixelSizeInMM
+    {
+        get { radioButtonPixelSizeUnitReal.Checked = true; return numericBoxPixelSize.Value; }
+        set { radioButtonPixelSizeUnitReal.Checked = true; numericBoxPixelSize.Value = value; }
+    }
+
+    /// <summary>ピクセルサイズを nm^-1 単位で取得/設定する (単位表示も nm^-1 へ切り替わる)。</summary>
+    public double PixelSizeInNMinv
+    {
+        get { radioButtonPixelSizeUnitInverse.Checked = true; return numericBoxPixelSize.Value; }
+        set { radioButtonPixelSizeUnitInverse.Checked = true; numericBoxPixelSize.Value = value; }
+    }
+
+    /// <summary>検出するスポットの最大個数。</summary>
+    public int MaxNumberOfSpots { get => numericBoxNumberOfSpots.ValueInteger; set => numericBoxNumberOfSpots.Value = value; }
+
+    /// <summary>多重回折で現れる消滅則違反の反射を無視するかどうか。</summary>
+    public bool IgnoreProhibitedReflections { get => checkBoxIgnoreMultipleDiffraction.Checked; set => checkBoxIgnoreMultipleDiffraction.Checked = value; }
+
+    /// <summary>複数グレインを探索するかどうか。false なら単一グレイン。</summary>
+    public bool MultiGrain
+    {
+        get => radioButtonMultiGrain.Checked;
+        set { radioButtonMultiGrain.Checked = value; radioButtonSingleGrain.Checked = !value; }
+    }
+
+    /// <summary>複数グレイン探索時に探すグレイン方位の最大個数。</summary>
+    public int MaxNumberOfGrains { get => numericBoxMaxGrainNum.ValueInteger; set => numericBoxMaxGrainNum.Value = value; }
+
+    #endregion
 }
 
