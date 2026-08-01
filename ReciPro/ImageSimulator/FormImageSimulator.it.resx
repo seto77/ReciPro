@@ -878,16 +878,4 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Cancella</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Usa</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Canale</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Soglia (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>Stato</value>
-  </data>
 </root>

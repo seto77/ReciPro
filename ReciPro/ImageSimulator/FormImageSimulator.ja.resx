@@ -1221,16 +1221,4 @@ CTF（contrast transfer function, コントラスト
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>解除</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>使用</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>チャネル</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>吸収端 (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>状態</value>
-  </data>
 </root>

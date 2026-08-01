@@ -896,16 +896,4 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Limpar</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Usar</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Canal</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Borda (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>Estado</value>
-  </data>
 </root>

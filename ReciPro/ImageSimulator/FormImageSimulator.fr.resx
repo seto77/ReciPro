@@ -893,16 +893,4 @@ le long de l'axe horizontal de la grille d'images en série.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Effacer</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Utiliser</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Canal</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Seuil (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>État</value>
-  </data>
 </root>

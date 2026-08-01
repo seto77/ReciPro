@@ -892,16 +892,4 @@ Step 및 Num과 조합하여 아래의
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>해제</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>사용</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>채널</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>흡수단 (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>상태</value>
-  </data>
 </root>

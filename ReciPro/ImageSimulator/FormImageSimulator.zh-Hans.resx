@@ -881,16 +881,4 @@ code（高速 C++/Eigen 原生代码）或 Managed code
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>清除</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>使用</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>通道</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>吸收边 (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>状态</value>
-  </data>
 </root>

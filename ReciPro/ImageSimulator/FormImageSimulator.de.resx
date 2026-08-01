@@ -896,16 +896,4 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Aktiv</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Kanal</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Kante (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>Status</value>
-  </data>
 </root>

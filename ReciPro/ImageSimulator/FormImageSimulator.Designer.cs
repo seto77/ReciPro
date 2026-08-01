@@ -241,13 +241,7 @@ namespace ReciPro
             checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
             labelEdxSummary = new System.Windows.Forms.Label();
             panelEdxDetails = new System.Windows.Forms.Panel();
-            dataGridViewEdxChannels = new Crystallography.Controls.DpiAwareDataGridView();
-            colEdxUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            colEdxElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //colEdxShell = new System.Windows.Forms.DataGridViewTextBoxColumn();//260801Cl 削除 (殻は colEdxElement に統合)
-            colEdxEdge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            colEdxU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            colEdxStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            checkedListBoxEdxChannels = new System.Windows.Forms.CheckedListBox();//260801Cl 変更 (作者指示): DGV+5列 -> CheckedListBox
             flowLayoutPanelEdxButtons = new System.Windows.Forms.FlowLayoutPanel();
             buttonEdxSelectAvailable = new System.Windows.Forms.Button();
             buttonEdxClear = new System.Windows.Forms.Button();
@@ -318,7 +312,6 @@ namespace ReciPro
             flowLayoutPanelRealAndImaiginary.SuspendLayout();
             groupBoxSTEMoption4.SuspendLayout();//260801Cl 追加
             panelEdxDetails.SuspendLayout();//260801Cl 追加
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEdxChannels).BeginInit();//260801Cl 追加
             flowLayoutPanelEdxButtons.SuspendLayout();//260801Cl 追加
             groupBoxSTEMoption2.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
@@ -834,7 +827,7 @@ namespace ReciPro
             // panelEdxDetails
             //
             resources.ApplyResources(panelEdxDetails, "panelEdxDetails");
-            panelEdxDetails.Controls.Add(dataGridViewEdxChannels);
+            panelEdxDetails.Controls.Add(checkedListBoxEdxChannels);
             panelEdxDetails.Controls.Add(labelEdxProbeGrid);
             panelEdxDetails.Controls.Add(flowLayoutPanelEdxButtons);
             panelEdxDetails.Name = "panelEdxDetails";
@@ -865,62 +858,17 @@ namespace ReciPro
             resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
             labelEdxProbeGrid.Name = "labelEdxProbeGrid";
             //
-            // dataGridViewEdxChannels
+            // checkedListBoxEdxChannels
+            // 260801Cl 変更 (作者指示): DpiAwareDataGridView + 5 列 → CheckedListBox。操作はチェックだけなので
+            // 表は過剰。吸収端・過電圧・利用不可の理由は項目テキストへ畳み、provenance は項目 ToolTip に出す
             //
-            dataGridViewEdxChannels.AllowUserToAddRows = false;
-            dataGridViewEdxChannels.AllowUserToDeleteRows = false;
-            dataGridViewEdxChannels.AllowUserToResizeRows = false;
-            dataGridViewEdxChannels.AutoGenerateColumns = false;
-            dataGridViewEdxChannels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;//ヘッダ文字切れ防止 (FormBeamInteraction の実績)
-            //260801Cl 変更: 元素と殻は 1 列 ("O (8) K") に統合。狭い panelModeOptions で 6 列だと Status 列が潰れるため (旧: colEdxElement, colEdxShell の 2 列)
-            dataGridViewEdxChannels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colEdxUse, colEdxElement, colEdxEdge, colEdxU, colEdxStatus });
-            resources.ApplyResources(dataGridViewEdxChannels, "dataGridViewEdxChannels");
-            dataGridViewEdxChannels.MultiSelect = false;
-            dataGridViewEdxChannels.Name = "dataGridViewEdxChannels";
-            dataGridViewEdxChannels.RowHeadersVisible = false;
-            dataGridViewEdxChannels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            dataGridViewEdxChannels.CurrentCellDirtyStateChanged += DataGridViewEdxChannels_CurrentCellDirtyStateChanged;
-            dataGridViewEdxChannels.CellValueChanged += DataGridViewEdxChannels_CellValueChanged;
-            //
-            // colEdxUse
-            //
-            colEdxUse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(colEdxUse, "colEdxUse");
-            colEdxUse.Name = "colEdxUse";
-            colEdxUse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            //
-            // colEdxElement
-            //
-            colEdxElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(colEdxElement, "colEdxElement");
-            colEdxElement.Name = "colEdxElement";
-            colEdxElement.ReadOnly = true;
-            colEdxElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            //260801Cl 削除: colEdxShell (殻は colEdxElement に統合)
-            //
-            // colEdxEdge
-            //
-            colEdxEdge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(colEdxEdge, "colEdxEdge");
-            colEdxEdge.Name = "colEdxEdge";
-            colEdxEdge.ReadOnly = true;
-            colEdxEdge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            //
-            // colEdxU
-            //
-            colEdxU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(colEdxU, "colEdxU");
-            colEdxU.Name = "colEdxU";
-            colEdxU.ReadOnly = true;
-            colEdxU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            //
-            // colEdxStatus
-            //
-            colEdxStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(colEdxStatus, "colEdxStatus");
-            colEdxStatus.Name = "colEdxStatus";
-            colEdxStatus.ReadOnly = true;
-            colEdxStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            resources.ApplyResources(checkedListBoxEdxChannels, "checkedListBoxEdxChannels");
+            checkedListBoxEdxChannels.CheckOnClick = true;
+            checkedListBoxEdxChannels.FormattingEnabled = true;
+            checkedListBoxEdxChannels.HorizontalScrollbar = true;
+            checkedListBoxEdxChannels.Name = "checkedListBoxEdxChannels";
+            checkedListBoxEdxChannels.ItemCheck += CheckedListBoxEdxChannels_ItemCheck;
+            checkedListBoxEdxChannels.MouseMove += CheckedListBoxEdxChannels_MouseMove;
             // 
             // groupBoxSerialImage
             // 
@@ -2471,7 +2419,6 @@ namespace ReciPro
             groupBoxSTEMoption4.PerformLayout();
             panelEdxDetails.ResumeLayout(false);
             panelEdxDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEdxChannels).EndInit();
             flowLayoutPanelEdxButtons.ResumeLayout(false);
             flowLayoutPanelEdxButtons.PerformLayout();
             groupBoxSTEMoption2.ResumeLayout(false);
@@ -2752,13 +2699,7 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxCalculateEdx;
         private System.Windows.Forms.Label labelEdxSummary;
         private System.Windows.Forms.Panel panelEdxDetails;
-        private Crystallography.Controls.DpiAwareDataGridView dataGridViewEdxChannels;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colEdxUse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxElement;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn colEdxShell;//260801Cl 削除 (殻は colEdxElement に統合)
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxEdge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEdxStatus;
+        private System.Windows.Forms.CheckedListBox checkedListBoxEdxChannels;//260801Cl 変更 (作者指示): DGV+5列 -> CheckedListBox
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEdxButtons;
         private System.Windows.Forms.Button buttonEdxSelectAvailable;
         private System.Windows.Forms.Button buttonEdxClear;

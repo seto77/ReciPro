@@ -887,16 +887,4 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
   <data name="buttonEdxClear.Text" xml:space="preserve">
     <value>Borrar</value>
   </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Usar</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Canal</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Borde (keV)</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>Estado</value>
-  </data>
 </root>

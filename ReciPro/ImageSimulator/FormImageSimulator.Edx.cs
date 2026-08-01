@@ -20,7 +20,13 @@ public partial class FormImageSimulator
     /// <summary>結晶変更・E0 変更をまたいでチェック状態を保つための選択集合 ((Z,Shell) で保持、表示文字列で照合しない)</summary>
     private readonly HashSet<IonizationChannelSpec> edxSelected = [];
 
+    /// <summary>項目 index → 候補。CheckedListBox の表示文字列は翻訳されるので、request はこちらから組む</summary>
+    private List<EdxCandidate> edxCandidates = [];
+
     private bool edxSkipEvent;
+
+    /// <summary>ToolTip を出している項目 index (同じ項目で SetToolTip を繰り返すと点滅するため)</summary>
+    private int edxToolTipIndex = -1;
 
     /// <summary>STEM-EDX を計算するか (ImageMode==STEM が前提)。GUI 判定はすべてこの 1 か所を経由する</summary>
     public bool EdxEnabled
@@ -136,10 +142,20 @@ public partial class FormImageSimulator
 
     private static string EdxShellText(IonizationShell shell) => shell == IonizationShell.LTotal ? "L (total)" : shell.ToString();
 
-    /// <summary>候補表を作り直す。結晶・加速電圧・収束角・角度分解能の変更時に呼ぶ。</summary>
+    /// <summary>1 項目の表示文。吸収端・過電圧・利用不可の理由を 1 行に畳む (CheckedListBox は列を持たないため)。</summary>
+    private static string EdxItemText(EdxCandidate c)
+    {
+        var text = $"{AtomStatic.AtomicName(c.Spec.Z)} ({c.Spec.Z}) {EdxShellText(c.Spec.Shell)}";
+        if (!double.IsNaN(c.Info.EdgeEnergyKeV)) text += $"   {c.Info.EdgeEnergyKeV:f3} keV";
+        if (!double.IsNaN(c.Info.Overvoltage)) text += $"   U = {c.Info.Overvoltage.ToString(c.Info.Overvoltage < 100 ? "f2" : "f0")}";
+        var status = EdxStatusText(c.Info);
+        return status.Length == 0 ? text : $"{text}   ({status})";
+    }
+
+    /// <summary>候補一覧を作り直す。結晶・加速電圧の変更時に呼ぶ。</summary>
     public void RenewEdxChannelList()
     {
-        if (dataGridViewEdxChannels is null) return;
+        if (checkedListBoxEdxChannels is null) return;
         edxSkipEvent = true;
         try
         {
@@ -147,29 +163,10 @@ public partial class FormImageSimulator
             //収録外になったチャネルは選択から落とす (別結晶へプリセット適用したときの積集合。§5.9.1-6)
             edxSelected.RemoveWhere(s => !candidates.Any(c => c.Spec == s));
 
-            dataGridViewEdxChannels.Rows.Clear();
+            edxCandidates = candidates;//項目 index → 候補 (翻訳済み表示文字列から request を復元しないため)
+            checkedListBoxEdxChannels.Items.Clear();
             foreach (var c in candidates)
-            {
-                //260801Cl: 元素+殻は 1 列 ("O (8) K")。列数を減らして Status 列の幅を確保するため
-                var idx = dataGridViewEdxChannels.Rows.Add(
-                    edxSelected.Contains(c.Spec),
-                    $"{AtomStatic.AtomicName(c.Spec.Z)} ({c.Spec.Z}) {EdxShellText(c.Spec.Shell)}",
-                    double.IsNaN(c.Info.EdgeEnergyKeV) ? "" : c.Info.EdgeEnergyKeV.ToString("f3"),
-                    double.IsNaN(c.Info.Overvoltage) ? "" : c.Info.Overvoltage.ToString(c.Info.Overvoltage < 100 ? "f2" : "f0"),
-                    EdxStatusText(c.Info));
-                var row = dataGridViewEdxChannels.Rows[idx];
-                row.Tag = c;
-                if (c.Info.Status != IonizationAvailability.Available)
-                {
-                    //選択不能行はチェックセルを ReadOnly + 灰色 (理由は Status 列とセル ToolTip)
-                    row.Cells[0].ReadOnly = true;
-                    row.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.GrayText;
-                }
-                else if (c.Info.Overvoltage < 1.2)
-                    //U<1.2 は選択可能な警告 (断面積の信頼度が落ちる領域)
-                    row.Cells[4].Style.ForeColor = System.Drawing.Color.DarkOrange;
-                row.Cells[4].ToolTipText = EdxStatusToolTip(c.Info);
-            }
+                checkedListBoxEdxChannels.Items.Add(EdxItemText(c), edxSelected.Contains(c.Spec));
         }
         finally { edxSkipEvent = false; }
         RenewEdxSummary();
@@ -180,10 +177,8 @@ public partial class FormImageSimulator
     {
         if (labelEdxSummary is null) return;
 
-        var names = new List<string>();
-        foreach (DataGridViewRow row in dataGridViewEdxChannels.Rows)
-            if (row.Tag is EdxCandidate c && edxSelected.Contains(c.Spec))
-                names.Add($"{AtomStatic.AtomicName(c.Spec.Z)}-{(c.Spec.Shell == IonizationShell.LTotal ? "L" : "K")}");
+        var names = edxCandidates.Where(c => edxSelected.Contains(c.Spec))
+            .Select(c => $"{AtomStatic.AtomicName(c.Spec.Z)}-{(c.Spec.Shell == IonizationShell.LTotal ? "L" : "K")}").ToList();
 
         labelEdxSummary.Text = names.Count == 0
             ? Loc(en: "No channel selected", ja: "チャネル未選択", de: "Kein Kanal ausgewählt", fr: "Aucun canal sélectionné",
@@ -359,23 +354,32 @@ public partial class FormImageSimulator
         RenewEdxSummary();
     }
 
-    private void DataGridViewEdxChannels_CurrentCellDirtyStateChanged(object sender, System.EventArgs e)
+    private void CheckedListBoxEdxChannels_ItemCheck(object sender, ItemCheckEventArgs e)
     {
-        //チェックボックス列は commit しないと CellValueChanged が来ない
-        if (dataGridViewEdxChannels.IsCurrentCellDirty)
-            dataGridViewEdxChannels.CommitEdit(DataGridViewDataErrorContexts.Commit);
-    }
-
-    private void DataGridViewEdxChannels_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-    {
-        if (edxSkipEvent || e.RowIndex < 0 || e.ColumnIndex != 0) return;
-        var row = dataGridViewEdxChannels.Rows[e.RowIndex];
-        if (row.Tag is not EdxCandidate c) return;
-        if (row.Cells[0].Value is true)
+        if (edxSkipEvent || e.Index < 0 || e.Index >= edxCandidates.Count) return;
+        var c = edxCandidates[e.Index];
+        if (c.Info.Status != IonizationAvailability.Available)
+        {
+            //利用不可のチャネルはチェックさせない (理由は項目テキストと ToolTip)
+            e.NewValue = CheckState.Unchecked;
+            return;
+        }
+        if (e.NewValue == CheckState.Checked)
             edxSelected.Add(c.Spec);
         else
             edxSelected.Remove(c.Spec);
-        RenewEdxSummary();
+        //ItemCheck は値が確定する前に来るので、要約更新は反映後へ回す
+        BeginInvoke(RenewEdxSummary);
+    }
+
+    private void CheckedListBoxEdxChannels_MouseMove(object sender, MouseEventArgs e)
+    {
+        //CheckedListBox は項目ごとの ToolTip を持たないので、ホバー中の項目に合わせて差し替える
+        var index = checkedListBoxEdxChannels.IndexFromPoint(e.Location);
+        if (index == edxToolTipIndex) return;
+        edxToolTipIndex = index;
+        toolTip.SetToolTip(checkedListBoxEdxChannels,
+            index >= 0 && index < edxCandidates.Count ? EdxStatusToolTip(edxCandidates[index].Info) : "");
     }
 
     private void ButtonEdxSelectAvailable_Click(object sender, System.EventArgs e) => SelectAvailableEdxChannels();
@@ -387,11 +391,11 @@ public partial class FormImageSimulator
         edxSkipEvent = true;
         try
         {
-            foreach (DataGridViewRow row in dataGridViewEdxChannels.Rows)
-                if (row.Tag is EdxCandidate c && c.Info.Status == IonizationAvailability.Available)
+            for (int i = 0; i < edxCandidates.Count; i++)
+                if (edxCandidates[i].Info.Status == IonizationAvailability.Available)
                 {
-                    edxSelected.Add(c.Spec);
-                    row.Cells[0].Value = true;
+                    edxSelected.Add(edxCandidates[i].Spec);
+                    checkedListBoxEdxChannels.SetItemChecked(i, true);
                 }
         }
         finally { edxSkipEvent = false; }
@@ -404,8 +408,8 @@ public partial class FormImageSimulator
         try
         {
             edxSelected.Clear();
-            foreach (DataGridViewRow row in dataGridViewEdxChannels.Rows)
-                if (!row.Cells[0].ReadOnly) row.Cells[0].Value = false;
+            for (int i = 0; i < checkedListBoxEdxChannels.Items.Count; i++)
+                checkedListBoxEdxChannels.SetItemChecked(i, false);
         }
         finally { edxSkipEvent = false; }
         RenewEdxSummary();

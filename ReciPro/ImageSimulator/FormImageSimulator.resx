@@ -7742,75 +7742,6 @@ code (fast C++/Eigen) or Managed code
   <data name="&gt;&gt;labelEdxSummary.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="dataGridViewEdxChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dataGridViewEdxChannels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dataGridViewEdxChannels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 116</value>
-  </data>
-  <data name="dataGridViewEdxChannels.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewEdxChannels.Name" xml:space="preserve">
-    <value>dataGridViewEdxChannels</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewEdxChannels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewEdxChannels.Parent" xml:space="preserve">
-    <value>panelEdxDetails</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewEdxChannels.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="colEdxUse.HeaderText" xml:space="preserve">
-    <value>Use</value>
-  </data>
-  <data name="&gt;&gt;colEdxUse.Name" xml:space="preserve">
-    <value>colEdxUse</value>
-  </data>
-  <data name="&gt;&gt;colEdxUse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colEdxElement.HeaderText" xml:space="preserve">
-    <value>Channel</value>
-  </data>
-  <data name="&gt;&gt;colEdxElement.Name" xml:space="preserve">
-    <value>colEdxElement</value>
-  </data>
-  <data name="&gt;&gt;colEdxElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colEdxEdge.HeaderText" xml:space="preserve">
-    <value>Edge (keV)</value>
-  </data>
-  <data name="&gt;&gt;colEdxEdge.Name" xml:space="preserve">
-    <value>colEdxEdge</value>
-  </data>
-  <data name="&gt;&gt;colEdxEdge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colEdxU.HeaderText" xml:space="preserve">
-    <value>U</value>
-  </data>
-  <data name="&gt;&gt;colEdxU.Name" xml:space="preserve">
-    <value>colEdxU</value>
-  </data>
-  <data name="&gt;&gt;colEdxU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="colEdxStatus.HeaderText" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="&gt;&gt;colEdxStatus.Name" xml:space="preserve">
-    <value>colEdxStatus</value>
-  </data>
-  <data name="&gt;&gt;colEdxStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="labelEdxProbeGrid.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -8010,6 +7941,30 @@ code (fast C++/Eigen) or Managed code
     <value>groupBoxSTEMoption3</value>
   </data>
   <data name="&gt;&gt;comboBoxEdxDisplay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkedListBoxEdxChannels.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkedListBoxEdxChannels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkedListBoxEdxChannels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 147</value>
+  </data>
+  <data name="checkedListBoxEdxChannels.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxEdxChannels.Name" xml:space="preserve">
+    <value>checkedListBoxEdxChannels</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxEdxChannels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxEdxChannels.Parent" xml:space="preserve">
+    <value>panelEdxDetails</value>
+  </data>
+  <data name="&gt;&gt;checkedListBoxEdxChannels.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
 </root>
