@@ -2055,6 +2055,21 @@ public partial class FormDiffractionSimulator : FormBase
         }
     }
 
+    //260801Cl 追加: ホイールで拡大縮小する。GraphicsBox はホイールで何も起きない唯一のエンジンだった
+    //(独自イベント MouseWheeled を公開しながら購読者がゼロ)。GraphicsBox 側は表示範囲を持たないので、
+    //MouseWheelZoom = true のときに上がってくる標準の MouseWheel をここで受けて自分の表示範囲を変える。
+    //増減量は ScalablePictureBox と同じ ×2 / ×0.5 (GraphicsBox.GetWheelZoomFactor)。ただし Resolution は
+    //「画面 1 画素あたりの検出器上の長さ」で倍率とは逆向きなので、割る。
+    //中心の扱いは右クリック縮小 (graphicsBox_MouseUp) と同じで、Fix center 指定時はそちらを優先する。
+    private void graphicsBox_MouseWheel(object sender, MouseEventArgs e)
+    {
+        if (e.Delta == 0) return;
+
+        Foot = checkBoxFixCenter.Checked ? FixedCenter : -convertScreenToDetector(e.X, e.Y);
+        Resolution /= GraphicsBox.GetWheelZoomFactor(e.Delta);
+        Draw();
+    }
+
     private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Middle)

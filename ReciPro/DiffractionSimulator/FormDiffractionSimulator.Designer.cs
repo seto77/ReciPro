@@ -983,11 +983,13 @@
             graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 11F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
+            graphicsBox.MouseWheelZoom = true; // 260801Cl 追加: このビューだけホイールでの拡大縮小を有効にする (GraphicsBox の既定は false)
             toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.ClientSizeChanged += graphicsBox_ClientSizeChanged;
             graphicsBox.MouseDown += graphicsBox_MouseDown;
             graphicsBox.MouseMove += graphicsBox_MouseMove;
             graphicsBox.MouseUp += graphicsBox_MouseUp;
+            graphicsBox.MouseWheel += graphicsBox_MouseWheel; // 260801Cl 追加
             graphicsBox.Move += Draw;
             graphicsBox.Resize += graphicsBox_Resize;
             // 
