@@ -2061,6 +2061,7 @@ public partial class FormDiffractionSimulator : FormBase
     //増減量は ScalablePictureBox と同じ ×2 / ×0.5 (GraphicsBox.GetWheelZoomFactor)。ただし Resolution は
     //「画面 1 画素あたりの検出器上の長さ」で倍率とは逆向きなので、割る。
     //中心の扱いは右クリック縮小 (graphicsBox_MouseUp) と同じで、Fix center 指定時はそちらを優先する。
+    //キーボード (+ / -) からの拡大縮小は入れない方針 (作者判断。GraphicsBox 側のコメント参照)。
     private void graphicsBox_MouseWheel(object sender, MouseEventArgs e)
     {
         if (e.Delta == 0) return;
