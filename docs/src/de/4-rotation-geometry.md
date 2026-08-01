@@ -17,7 +17,6 @@ Alle sechs 3D-Ansichten (die Felder für ReciPro und für das experimentelle Gon
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
 | Linksziehen in einer Ansicht | Modell drehen (alle sechs Ansichten drehen sich gemeinsam) |
 | Mausrad oder Rechtsziehen nach oben/unten | Zoomen (die großen Goniometeransichten) |
-| Mittelziehen | Verschieben (die großen Goniometeransichten) |
 | <kbd>CTRL</kbd> + Rechtsziehen nach oben/unten | Kameraabstand ändern (nur im perspektivischen Modus) |
 | <kbd>CTRL</kbd> + Rechtsdoppelklick | Zwischen orthografischer und perspektivischer Projektion umschalten |
 

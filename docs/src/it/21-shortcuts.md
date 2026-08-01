@@ -12,13 +12,7 @@ Queste vengono installate dalla [finestra principale](0-main-window.md) ma resta
 
 | Scorciatoia | Azione |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Attiva/disattiva il Simulatore di diffrazione |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Attiva/disattiva il Visualizzatore struttura |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Attiva/disattiva lo Stereogramma |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Attiva/disattiva Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + tasti freccia | Ruota il cristallo di un passo in quella direzione (tieni premute due frecce per una diagonale) |
-| Doppio tocco su <kbd>CTRL</kbd> | Attiva/disattiva la Calcolatrice |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Attiva/disattiva il contrassegno *Reserved* del cristallo selezionato |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Acquisisci uno screenshot della GUI (strumento per sviluppatori; attiva prima **Capture GUI Components**) |
 | Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici) |
 
@@ -127,7 +121,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Doppio clic destro sulla barra di stato | Copia un riepilogo testuale delle impostazioni correnti |
 | Doppio clic destro su un pulsante di livello attivo (Spots / Kikuchi / Debye / Scale) | Fai lampeggiare quel livello |
 | Doppio clic sinistro sullo stereogramma — finestra **TEM holder** | Imposta l'inclinazione del portacampioni su quel punto |
-| Tasti freccia — finestra **TEM holder** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Arrow keys**) |
+| Tasti freccia — finestra **TEM holder** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**) |
 | Rilascia `.prm` / immagine — **Detector geometry**, oppure `.txt` — **Dynamic compression** | Carica quei dati |
 
 ### 8. Traiettorie elettroniche

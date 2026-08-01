@@ -24,8 +24,6 @@ Você constrói a lista de spots diretamente sobre a imagem carregada. O painel 
 | Clique duplo direito | Afastar o zoom |
 | Clique duplo no cabeçalho da linha de um spot (tabela) | Aplicar zoom nesse spot (×2) |
 
-Na janela principal, <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> abre/fecha esta janela.
-
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para ver cada janela de relance.
 
 ---

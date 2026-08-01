@@ -21,13 +21,7 @@ The main window installs several **application-wide** shortcuts. They keep worki
 | Shortcut | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Open this page of the online manual |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Open / close the **Diffraction Simulator** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Open / close the **Structure Viewer** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Open / close the **Stereonet** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Open / close **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Double-tap <kbd>CTRL</kbd> | Open / close the **Calculator** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Toggle the **Reserved** flag of the selected crystal |
 | Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
 | Left-drag the orientation widget (bottom-left, under *Current Direction*) | Rotate the crystal |
 | Right double-click the orientation widget | Copy the widget image to the clipboard |

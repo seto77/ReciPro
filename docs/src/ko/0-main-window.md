@@ -21,13 +21,7 @@ ReciPro를 실행하면 메인 창이 나타납니다. 이 창에서 결정을 �
 | 단축키 | 동작 |
 |----------|--------|
 | <kbd>F1</kbd> | 온라인 매뉴얼의 이 페이지 열기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | **회절 시뮬레이터** 열기 / 닫기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | **구조 뷰어** 열기 / 닫기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | **스테레오넷** 열기 / 닫기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | **Spot ID** 열기 / 닫기 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 화살표 키 | 해당 방향으로 결정을 한 단계 회전 (두 개의 화살표를 함께 눌러 대각선) |
-| <kbd>CTRL</kbd> 두 번 두드리기 | **계산기** 열기 / 닫기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 선택한 결정의 **Reserved** 플래그 전환 |
 | ReciPro 시작 시 <kbd>CTRL</kbd> 누르고 있기 | OpenGL을 비활성화한 상태로 시작 (그래픽 문제 복구용) |
 | 방향 위젯을 왼쪽 드래그 (왼쪽 하단, *Current Direction* 아래) | 결정 회전 |
 | 방향 위젯을 오른쪽 더블 클릭 | 위젯 이미지를 클립보드에 복사 |

@@ -24,8 +24,6 @@ Die Reflexliste erstellen Sie direkt auf dem geladenen Bild. Der Bildbereich nut
 | Rechter Doppelklick | Herauszoomen |
 | Doppelklick auf den Zeilenkopf eines Reflexes (Tabelle) | Auf diesen Reflex zoomen (×2) |
 
-Mit <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> im Hauptfenster wird dieses Fenster geöffnet/geschlossen.
-
 → Siehe **[21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)** für jedes Fenster auf einen Blick.
 
 ---

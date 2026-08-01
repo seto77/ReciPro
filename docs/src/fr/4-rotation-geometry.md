@@ -17,7 +17,6 @@ Les six vues 3D (les panneaux pour ReciPro et pour le goniomètre expérimental 
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | Glisser-gauche dans une vue | Faire pivoter le modèle (les six vues pivotent ensemble) |
 | Molette de la souris, ou glisser-droit vers le haut/bas | Zoomer (les grandes vues du goniomètre) |
-| Glisser-milieu | Déplacer (les grandes vues du goniomètre) |
 | <kbd>CTRL</kbd> + glisser-droit vers le haut/bas | Modifier la distance de la caméra (mode perspective uniquement) |
 | <kbd>CTRL</kbd> + double-clic droit | Basculer entre projection orthographique et perspective |
 

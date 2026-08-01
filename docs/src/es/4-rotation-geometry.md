@@ -17,7 +17,6 @@ Las seis vistas 3D (los paneles de ReciPro y del goniómetro experimental / los 
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
 | Arrastrar con el botón izquierdo en una vista | Rotar el modelo (las seis vistas rotan juntas) |
 | Rueda del ratón, o arrastrar con el botón derecho arriba/abajo | Zoom (las vistas grandes del goniómetro) |
-| Arrastrar con el botón central | Desplazar (las vistas grandes del goniómetro) |
 | <kbd>CTRL</kbd> + arrastrar con el botón derecho arriba/abajo | Cambiar la distancia de la cámara (solo en modo perspectiva) |
 | <kbd>CTRL</kbd> + doble clic con el botón derecho | Alternar entre proyección ortográfica y perspectiva |
 

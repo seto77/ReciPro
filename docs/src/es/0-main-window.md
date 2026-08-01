@@ -21,13 +21,7 @@ La ventana principal instala varios atajos **de ámbito global de la aplicación
 | Atajo | Acción |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Abrir / cerrar el **Simulador de difracción** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Abrir / cerrar el **Visor de estructura** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Abrir / cerrar el **Estereograma** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Abrir / cerrar **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de flecha | Rotar el cristal un paso en esa dirección (mantenga dos flechas para una diagonal) |
-| Doble toque de <kbd>CTRL</kbd> | Abrir / cerrar la **Calculadora** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Alternar el indicador **Reserved** del cristal seleccionado |
 | Mantener <kbd>CTRL</kbd> mientras ReciPro arranca | Iniciar con OpenGL desactivado (recuperación ante problemas gráficos) |
 | Arrastrar con el botón izquierdo el widget de orientación (abajo a la izquierda, bajo *Current Direction*) | Rotar el cristal |
 | Doble clic derecho sobre el widget de orientación | Copiar la imagen del widget al portapapeles |

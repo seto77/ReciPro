@@ -21,13 +21,7 @@
 | 快速鍵 | 動作 |
 |----------|--------|
 | <kbd>F1</kbd> | 開啟線上手冊的本頁 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 開啟 / 關閉**繞射模擬器** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 開啟 / 關閉**結構檢視器** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | 開啟 / 關閉**極網** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | 開啟 / 關閉 **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向鍵 | 將晶體往該方向旋轉一步（同時按住兩個方向鍵可斜向旋轉） |
-| 連按兩下 <kbd>CTRL</kbd> | 開啟 / 關閉**計算機** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 切換所選晶體的 **Reserved** 標記 |
 | ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（圖形問題的復原方式） |
 | 以左鍵拖曳方位小工具（左下方，*目前方位* 之下） | 旋轉晶體 |
 | 在方位小工具上右鍵連按兩下 | 將小工具影像複製到剪貼簿 |

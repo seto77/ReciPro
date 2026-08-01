@@ -12,13 +12,7 @@ ReciPro는 버튼이나 메뉴에는 보이지 않는 많은 기능을 **키 조
 
 | 단축키 | 동작 |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 회절 시뮬레이터 켜기/끄기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 구조 뷰어 켜기/끄기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | 스테레오넷 켜기/끄기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Spot ID 켜기/끄기 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 화살표 키 | 결정을 그 방향으로 한 단계 회전 (두 화살표를 동시에 누르면 대각선) |
-| <kbd>CTRL</kbd> 빠르게 두 번 누르기 | 계산기 켜기/끄기 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 선택한 결정의 *Reserved* 플래그 전환 |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | GUI 스크린샷 캡처 (개발자 도구; 먼저 **GUI 구성 요소 캡처**를 활성화) |
 | ReciPro 시작 중 <kbd>CTRL</kbd> 누른 채로 유지 | OpenGL을 비활성화하고 시작 (그래픽 문제 복구용) |
 
@@ -127,7 +121,7 @@ ReciPro의 거의 모든 상호작용 뷰는 세 가지 계열 중 하나에 속
 | 상태 표시줄 오른쪽 더블 클릭 | 현재 설정의 텍스트 요약 복사 |
 | 켜진 레이어 버튼(Spots / Kikuchi / Debye / Scale) 오른쪽 더블 클릭 | 해당 레이어를 깜박이기 |
 | 스테레오넷 왼쪽 더블 클릭 — **TEM 홀더** 창 | 홀더 기울기를 그 지점으로 설정 |
-| 화살표 키 — **TEM 홀더** 창 | 홀더 기울기를 단계적으로 변경 (먼저 **Arrow keys** 체크) |
+| 화살표 키 — **TEM 홀더** 창 | 홀더 기울기를 단계적으로 변경 (먼저 **화살표 키 사용** 체크) |
 | `.prm` / 이미지 끌어다 놓기 — **검출기 기하학**, 또는 `.txt` — **동적 압축** | 해당 데이터 불러오기 |
 
 ### 8. 전자 궤적

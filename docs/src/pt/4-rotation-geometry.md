@@ -17,7 +17,6 @@ Todas as seis visualizações 3D (os painéis do ReciPro e do goniômetro experi
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | Arrastar com o botão esquerdo em uma visualização | Girar o modelo (todas as seis visualizações giram juntas) |
 | Roda do mouse, ou arrastar com o botão direito para cima/baixo | Zoom (as visualizações grandes do goniômetro) |
-| Arrastar com o botão do meio | Deslocar (as visualizações grandes do goniômetro) |
 | <kbd>CTRL</kbd> + arrastar com o botão direito para cima/baixo | Alterar a distância da câmera (apenas no modo de perspectiva) |
 | <kbd>CTRL</kbd> + clique duplo com o botão direito | Alternar entre projeção ortográfica e em perspectiva |
 

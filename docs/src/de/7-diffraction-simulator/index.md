@@ -66,7 +66,7 @@ Die von hier geöffneten Hilfsfenster fügen einige weitere hinzu:
 | Kurzbefehl | Aktion |
 |----------|--------|
 | Linksdoppelklick auf das Stereonetz — **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
-| Pfeiltasten — **TEM-Halter** | Die Halterkippung schrittweise ändern (zuerst **Arrow keys** anhaken) |
+| Pfeiltasten — **TEM-Halter** | Die Halterkippung schrittweise ändern (zuerst **Pfeiltasten aktivieren** anhaken) |
 | Eine `.prm`-Datei oder ein Bild ablegen — **Detektorgeometrie** | Detektorgeometrie / Overlay-Bild laden |
 | Ein `.txt`-Profil ablegen — **Dynamische Kompression** | Ein Druck-/Zeit-Profil laden (die rote Linie im Diagramm ziehen, um zu scrubben) |
 
@@ -170,7 +170,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ![TEM-Halter-Simulation](../../assets/cap-de-auto/FormDiffractionSimulatorHolder.png)
 
-Öffnet ein Fenster, das das Beugungsmuster mit einem Doppelkipp- (oder Rotations-) **TEM-Halter** verknüpft. Das Festlegen der Halterkippwinkel aktualisiert das Muster und die Kristallorientierung, und die erreichbaren Orientierungen können auf einem Stereonetz angezeigt werden (hinzugefügt in v4.914). Ein Linksdoppelklick auf das Stereonetz setzt die Halterkippung auf diesen Punkt, und das Anhaken von **Arrow keys** ermöglicht es den Pfeiltasten, die Kippung schrittweise zu ändern.
+Öffnet ein Fenster, das das Beugungsmuster mit einem Doppelkipp- (oder Rotations-) **TEM-Halter** verknüpft. Das Festlegen der Halterkippwinkel aktualisiert das Muster und die Kristallorientierung, und die erreichbaren Orientierungen können auf einem Stereonetz angezeigt werden (hinzugefügt in v4.914). Ein Linksdoppelklick auf das Stereonetz setzt die Halterkippung auf diesen Punkt, und das Anhaken von **Pfeiltasten aktivieren** ermöglicht es den Pfeiltasten, die Kippung schrittweise zu ändern.
 
 ---
 

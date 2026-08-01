@@ -12,13 +12,7 @@ Estos se instalan desde la [ventana principal](0-main-window.md), pero permanece
 
 | Atajo | Acción |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Activar/desactivar el Simulador de difracción |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Activar/desactivar el Visor de estructura |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Activar/desactivar el Estereograma |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Activar/desactivar Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de flecha | Girar el cristal un paso en esa dirección (mantenga dos flechas para una diagonal) |
-| Doble pulsación de <kbd>CTRL</kbd> | Activar/desactivar la Calculadora |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Conmutar el indicador *Reserved* del cristal seleccionado |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Hacer una captura de pantalla de la GUI (herramienta para desarrolladores; active primero **Capture GUI Components**) |
 | Mantener <kbd>CTRL</kbd> mientras se inicia ReciPro | Iniciar con OpenGL desactivado (recuperación ante problemas gráficos) |
 
@@ -127,7 +121,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Doble clic derecho en la barra de estado | Copiar un resumen de texto de los ajustes actuales |
 | Doble clic derecho en un botón de capa activa (Spots / Kikuchi / Debye / Scale) | Hacer parpadear esa capa |
 | Doble clic izquierdo en el estereograma — ventana **TEM holder** | Fijar la inclinación del portamuestras en ese punto |
-| Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Arrow keys**) |
+| Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**) |
 | Soltar `.prm` / imagen — **Detector geometry**, o `.txt` — **Dynamic compression** | Cargar esos datos |
 
 ### 8. Trayectorias electrónicas

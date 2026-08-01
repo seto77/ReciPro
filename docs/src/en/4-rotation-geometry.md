@@ -17,7 +17,6 @@ All six 3-D views (the ReciPro and experimental goniometer / axes / objects pane
 | <kbd>F1</kbd> | Open this page of the online manual |
 | Left-drag a view | Rotate the model (all six views rotate together) |
 | Mouse wheel, or Right-drag up/down | Zoom (the large goniometer views) |
-| Middle-drag | Pan (the large goniometer views) |
 | <kbd>CTRL</kbd> + Right-drag up/down | Change the camera distance (perspective mode only) |
 | <kbd>CTRL</kbd> + Right double-click | Toggle orthographic / perspective projection |
 

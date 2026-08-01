@@ -12,13 +12,7 @@ Estes são instalados pela [janela principal](0-main-window.md), mas permanecem 
 
 | Atalho | Ação |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Alternar o Simulador de difração |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Alternar o Visualizador de estrutura |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Alternar a Estereonete |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Alternar o Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas para uma diagonal) |
-| Tocar duas vezes em <kbd>CTRL</kbd> | Alternar a Calculadora |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Alternar o sinalizador *Reserved* do cristal selecionado |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capturar uma imagem da tela da GUI (ferramenta de desenvolvedor; ative **Capture GUI Components** primeiro) |
 | Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
 
@@ -127,7 +121,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Fazer essa camada piscar |
 | Clique duplo esquerdo na estereonete — janela **TEM holder** | Definir a inclinação do suporte para esse ponto |
-| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Arrow keys** antes) |
+| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes) |
 | Soltar `.prm` / imagem — **Detector geometry**, ou `.txt` — **Dynamic compression** | Carregar esses dados |
 
 ### 8. Trajetórias eletrônicas

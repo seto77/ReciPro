@@ -66,7 +66,7 @@ Las ventanas auxiliares que se abren desde aquí añaden algunos más:
 | Atajo | Acción |
 |----------|--------|
 | Doble clic izquierdo en el estereograma — **TEM holder** | Fijar la inclinación del portamuestras en ese punto |
-| Teclas de flecha — **TEM holder** | Cambiar la inclinación del portamuestras paso a paso (marque antes **Arrow keys**) |
+| Teclas de flecha — **TEM holder** | Cambiar la inclinación del portamuestras paso a paso (marque antes **Activar teclas de flecha**) |
 | Soltar un archivo `.prm` o una imagen — **Detector geometry** | Cargar la geometría del detector / imagen de superposición |
 | Soltar un perfil `.txt` — **Dynamic compression** | Cargar un perfil de presión/tiempo (arrastre la línea roja del gráfico para desplazarse) |
 
@@ -170,7 +170,7 @@ Guarde y recupere una configuración completa del simulador — longitud de onda
 
 ![Simulación del portamuestras TEM](../../assets/cap-es-auto/FormDiffractionSimulatorHolder.png)
 
-Abre una ventana que vincula el patrón de difracción a un **TEM holder** de doble inclinación (o de rotación). Establecer los ángulos de inclinación del portamuestras actualiza el patrón y la orientación del cristal, y las orientaciones alcanzables pueden mostrarse en un estereograma (añadido en v4.914). El doble clic izquierdo en el estereograma fija la inclinación del portamuestras en ese punto, y al marcar **Arrow keys** las teclas de flecha permiten cambiar la inclinación paso a paso.
+Abre una ventana que vincula el patrón de difracción a un **TEM holder** de doble inclinación (o de rotación). Establecer los ángulos de inclinación del portamuestras actualiza el patrón y la orientación del cristal, y las orientaciones alcanzables pueden mostrarse en un estereograma (añadido en v4.914). El doble clic izquierdo en el estereograma fija la inclinación del portamuestras en ese punto, y al marcar **Activar teclas de flecha** las teclas de flecha permiten cambiar la inclinación paso a paso.
 
 ---
 

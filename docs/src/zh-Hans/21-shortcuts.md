@@ -12,13 +12,7 @@ ReciPro 将许多功能绑定到 **组合键** 以及 **修饰键配合鼠标按
 
 | 快捷键 | 操作 |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 开关衍射模拟器 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 开关结构查看器 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | 开关极射赤平投影 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | 开关 Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向键 | 将晶体沿该方向旋转一步（同时按住两个方向键可斜向旋转） |
-| 快速双击 <kbd>CTRL</kbd> | 开关计算器 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 切换所选晶体的 *Reserved* 标志 |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | 截取 GUI 的屏幕截图（开发者工具；请先启用 **Capture GUI Components**） |
 | ReciPro 启动时按住 <kbd>CTRL</kbd> | 以禁用 OpenGL 的方式启动（用于恢复图形问题） |
 
@@ -127,7 +121,7 @@ ReciPro 中几乎每个可交互视图都属于三大系列之一。只要知道
 | 右键双击状态栏 | 复制当前设置的文本摘要 |
 | 右键双击点亮的图层按钮（Spots / Kikuchi / Debye / Scale） | 使该图层闪烁开关 |
 | 左键双击极射赤平投影 —— **TEM 样品台** 窗口 | 将样品台倾斜设到该点 |
-| 方向键 —— **TEM 样品台** 窗口 | 逐步调整样品台倾斜（请先勾选 **Arrow keys**） |
+| 方向键 —— **TEM 样品台** 窗口 | 逐步调整样品台倾斜（请先勾选 **启用方向键**） |
 | 拖放 `.prm` / 图像 —— **Detector geometry**，或 `.txt` —— **Dynamic compression** | 加载该数据 |
 
 ### 8. 电子轨迹

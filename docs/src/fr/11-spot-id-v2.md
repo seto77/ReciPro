@@ -24,8 +24,6 @@ Vous construisez la liste des taches directement sur l'image chargée. Le volet 
 | Double-clic droit | Dézoomer |
 | Double-clic sur l'en-tête de ligne d'une tache (tableau) | Zoomer sur cette tache (×2) |
 
-Le raccourci <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> de la fenêtre principale ouvre/ferme cette fenêtre.
-
 → Voir **[21. Raccourcis clavier et souris](21-shortcuts.md)** pour un aperçu de chaque fenêtre.
 
 ---

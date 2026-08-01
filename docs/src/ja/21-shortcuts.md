@@ -12,13 +12,7 @@ ReciPro には、ボタンやメニューには現れない **キーの組み合
 
 | ショートカット | 動作 |
 |----------------|------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 回折シミュレータの開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 結晶構造ビューアの開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | ステレオネットの開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Spot ID の開閉 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> ＋ 矢印キー | 結晶をその方向へ1ステップ回転（2つ同時押しで斜め方向） |
-| <kbd>CTRL</kbd> の素早い2回押し | 電卓の開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 選択中の結晶の *Reserved* フラグを切替 |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | GUI のスクリーンショットを取得（開発者向け。先に **Capture GUI Components** を有効化） |
 | 起動中に <kbd>CTRL</kbd> を押し続ける | OpenGL を無効にして起動（描画トラブルの回避） |
 
@@ -127,7 +121,7 @@ ReciPro の操作対象ビューは、ほぼ3つの系統のいずれかに属�
 | ステータスバーを右ダブルクリック | 現在の設定のテキスト要約をコピー |
 | 点灯中のレイヤーボタン（Spots / Kikuchi / Debye / Scale）を右ダブルクリック | そのレイヤーを点滅 |
 | ステレオネットを左ダブルクリック — **TEMホルダー** | ホルダー傾斜をその点に設定 |
-| 矢印キー — **TEMホルダー** | ホルダー傾斜をステップ送り（先に **Arrow keys** をチェック） |
+| 矢印キー — **TEMホルダー** | ホルダー傾斜をステップ送り（先に **矢印キーを有効化** をチェック） |
 | `.prm` / 画像をドロップ — **検出器ジオメトリ**、`.txt` — **動的圧縮** | そのデータを読込 |
 
 ### 8. 電子軌道

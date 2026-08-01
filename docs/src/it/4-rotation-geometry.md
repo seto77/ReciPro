@@ -17,7 +17,6 @@ Tutte e sei le viste 3D (i pannelli di ReciPro e del goniometro sperimentale / d
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
 | Trascinamento sinistro in una vista | Ruota il modello (tutte e sei le viste ruotano insieme) |
 | Rotellina del mouse, o trascinamento destro su/giù | Zoom (le viste grandi del goniometro) |
-| Trascinamento centrale | Spostamento (le viste grandi del goniometro) |
 | <kbd>CTRL</kbd> + trascinamento destro su/giù | Modifica la distanza della telecamera (solo in modalità prospettica) |
 | <kbd>CTRL</kbd> + doppio clic destro | Alterna tra proiezione ortografica e prospettica |
 

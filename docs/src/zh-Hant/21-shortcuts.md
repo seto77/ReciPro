@@ -12,13 +12,7 @@ ReciPro 將許多功能繫結到 **組合鍵** 以及 **修飾鍵搭配滑鼠按
 
 | 快速鍵 | 操作 |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 開關繞射模擬器 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 開關結構檢視器 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | 開關極網 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | 開關 Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向鍵 | 將晶體沿該方向旋轉一步（同時按住兩個方向鍵可斜向旋轉） |
-| 快速雙擊 <kbd>CTRL</kbd> | 開關計算機 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 切換所選晶體的 *Reserved* 標記 |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | 擷取 GUI 的螢幕擷圖（開發者工具；請先啟用 **Capture GUI Components**） |
 | ReciPro 啟動時按住 <kbd>CTRL</kbd> | 以停用 OpenGL 的方式啟動（用於修復圖形問題） |
 
@@ -127,7 +121,7 @@ ReciPro 中幾乎每個可互動檢視都屬於三大系列之一。只要知道
 | 右鍵雙擊狀態列 | 複製目前設定的文字摘要 |
 | 右鍵雙擊點亮的圖層按鈕（Spots / Kikuchi / Debye / Scale） | 使該圖層閃爍開關 |
 | 左鍵雙擊極網 —— **TEM holder** 視窗 | 將試樣台傾斜設到該點 |
-| 方向鍵 —— **TEM holder** 視窗 | 逐步調整試樣台傾斜（請先勾選 **Arrow keys**） |
+| 方向鍵 —— **TEM holder** 視窗 | 逐步調整試樣台傾斜（請先勾選 **啟用方向鍵**） |
 | 拖放 `.prm` / 影像 —— **Detector geometry**，或 `.txt` —— **Dynamic compression** | 載入該資料 |
 
 ### 8. 電子軌跡

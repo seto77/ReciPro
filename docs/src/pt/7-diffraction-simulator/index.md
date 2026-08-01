@@ -66,7 +66,7 @@ As janelas auxiliares abertas a partir daqui adicionam mais alguns:
 | Atalho | Ação |
 |----------|--------|
 | Clique duplo esquerdo na estereonete — **TEM holder** | Ajustar a inclinação do suporte para esse ponto |
-| Teclas de seta — **TEM holder** | Avançar a inclinação do suporte passo a passo (marque **Arrow keys** primeiro) |
+| Teclas de seta — **TEM holder** | Avançar a inclinação do suporte passo a passo (marque **Ativar teclas de seta** primeiro) |
 | Soltar um arquivo `.prm` ou uma imagem — **Detector geometry** | Carregar geometria do detector / imagem de overlay |
 | Soltar um perfil `.txt` — **Dynamic compression** | Carregar um perfil de pressão/tempo (arraste a linha vermelha no gráfico para percorrê-lo) |
 
@@ -170,7 +170,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 
 ![Simulação do suporte TEM](../../assets/cap-pt-auto/FormDiffractionSimulatorHolder.png)
 
-Abre uma janela que vincula o padrão de difração a um **TEM holder** de dupla inclinação (ou de rotação). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Arrow keys** permite que as teclas de seta avancem a inclinação passo a passo.
+Abre uma janela que vincula o padrão de difração a um **TEM holder** de dupla inclinação (ou de rotação). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Ativar teclas de seta** permite que as teclas de seta avancem a inclinação passo a passo.
 
 ---
 

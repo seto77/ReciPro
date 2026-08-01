@@ -21,13 +21,7 @@ La fenêtre principale installe plusieurs raccourcis **applicables à toute l'ap
 | Raccourci | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Ouvrir / fermer le **Simulateur de diffraction** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Ouvrir / fermer le **Visualiseur de structure** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Ouvrir / fermer le **Stéréonet** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Ouvrir / fermer **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + touches fléchées | Faire pivoter le cristal d'un pas dans cette direction (maintenez deux flèches pour une diagonale) |
-| Double-appui sur <kbd>CTRL</kbd> | Ouvrir / fermer la **Calculatrice** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Basculer l'indicateur **Reserved** du cristal sélectionné |
 | Maintenir <kbd>CTRL</kbd> au démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques) |
 | Glisser avec le bouton gauche le widget d'orientation (en bas à gauche, sous *Current Direction*) | Faire pivoter le cristal |
 | Double-clic droit sur le widget d'orientation | Copier l'image du widget dans le presse-papiers |

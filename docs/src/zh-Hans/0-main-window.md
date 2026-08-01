@@ -21,13 +21,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 快捷键 | 操作 |
 |----------|--------|
 | <kbd>F1</kbd> | 打开在线手册的本页 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | 打开 / 关闭**衍射模拟器** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | 打开 / 关闭**结构查看器** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | 打开 / 关闭**极射赤平投影** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | 打开 / 关闭 **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + 方向键 | 将晶体朝该方向旋转一步（同时按住两个方向键可斜向旋转） |
-| 双击 <kbd>CTRL</kbd> | 打开 / 关闭**计算器** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 切换所选晶体的 **Reserved** 标志 |
 | ReciPro 启动时按住 <kbd>CTRL</kbd> | 以禁用 OpenGL 的方式启动（用于在图形问题时恢复） |
 | 用左键拖动取向控件（左下方，*Current Direction* 下方） | 旋转晶体 |
 | 在取向控件上右键双击 | 将控件图像复制到剪贴板 |

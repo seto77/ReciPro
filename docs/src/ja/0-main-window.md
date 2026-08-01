@@ -23,13 +23,7 @@ ReciProを起動すると、メインウィンドウが表示されます。こ�
 | ショートカット | 動作 |
 |----------------|------|
 | <kbd>F1</kbd> | このページのオンラインマニュアルを開く |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | **回折シミュレータ** の開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | **結晶構造ビューア** の開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | **ステレオネット** の開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | **Spot ID** の開閉 |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> ＋ 矢印キー | 結晶をその方向へ1ステップ回転（2つ同時押しで斜め方向） |
-| <kbd>CTRL</kbd> の素早い2回押し | **電卓** の開閉 |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | 選択中の結晶の **Reserved** フラグを切替 |
 | 起動中に <kbd>CTRL</kbd> を押し続ける | OpenGL を無効にして起動（描画トラブルの回避） |
 | 左下の方位ウィジェット（*Current Direction* の軸表示）を左ドラッグ | 結晶を回転 |
 | 方位ウィジェットを右ダブルクリック | ウィジェットの画像をクリップボードにコピー |

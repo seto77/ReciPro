@@ -66,7 +66,7 @@ Le finestre ausiliarie aperte da qui aggiungono ancora qualche scorciatoia:
 | Scorciatoia | Azione |
 |----------|--------|
 | Doppio clic sinistro sullo stereogramma — **TEM holder** | Impostare l'inclinazione del portacampioni su quel punto |
-| Tasti freccia — **TEM holder** | Avanzare l'inclinazione del portacampioni a passi (spunta prima **Arrow keys**) |
+| Tasti freccia — **TEM holder** | Avanzare l'inclinazione del portacampioni a passi (spunta prima **Abilita tasti freccia**) |
 | Rilasciare un file `.prm` o un'immagine — **Detector geometry** | Caricare la geometria del rivelatore / l'immagine di overlay |
 | Rilasciare un profilo `.txt` — **Dynamic compression** | Caricare un profilo pressione/tempo (trascina la linea rossa nel grafico per scorrere) |
 
@@ -170,7 +170,7 @@ Salvare e richiamare una configurazione completa del simulatore — lunghezza d'
 
 ![Simulazione del portacampioni TEM](../../assets/cap-it-auto/FormDiffractionSimulatorHolder.png)
 
-Apre una finestra che collega il pattern di diffrazione a un **TEM holder** a doppia inclinazione (o a rotazione). L'impostazione degli angoli di inclinazione del portacampioni aggiorna il pattern e l'orientazione del cristallo, e le orientazioni raggiungibili possono essere mostrate su uno stereogramma (aggiunto in v4.914). Un doppio clic sinistro sullo stereogramma imposta l'inclinazione del portacampioni su quel punto, e spuntare **Arrow keys** consente ai tasti freccia di avanzare l'inclinazione a passi.
+Apre una finestra che collega il pattern di diffrazione a un **TEM holder** a doppia inclinazione (o a rotazione). L'impostazione degli angoli di inclinazione del portacampioni aggiorna il pattern e l'orientazione del cristallo, e le orientazioni raggiungibili possono essere mostrate su uno stereogramma (aggiunto in v4.914). Un doppio clic sinistro sullo stereogramma imposta l'inclinazione del portacampioni su quel punto, e spuntare **Abilita tasti freccia** consente ai tasti freccia di avanzare l'inclinazione a passi.
 
 ---
 

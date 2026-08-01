@@ -12,13 +12,7 @@ Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber akt
 
 | Kurzbefehl | Aktion |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Beugungssimulator ein-/ausschalten |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Strukturansicht ein-/ausschalten |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Stereonetz ein-/ausschalten |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Spot ID ein-/ausschalten |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + Pfeiltasten | Den Kristall einen Schritt in diese Richtung drehen (zwei Pfeile gleichzeitig für eine Diagonale) |
-| Doppeltippen auf <kbd>CTRL</kbd> | Rechner ein-/ausschalten |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Das *Reserved*-Kennzeichen des gewählten Kristalls umschalten |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Einen Screenshot der GUI aufnehmen (Entwicklerwerkzeug; zuerst **Capture GUI Components** aktivieren) |
 | <kbd>CTRL</kbd> beim Start von ReciPro gedrückt halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
 
@@ -127,7 +121,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
 | Rechts-Doppelklick auf eine aktive Ebenen-Schaltfläche (Spots / Kikuchi / Debye / Scale) | Diese Ebene blinken lassen |
 | Links-Doppelklick auf das Stereonetz — Fenster **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
-| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Arrow keys** anhaken) |
+| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Pfeiltasten aktivieren** anhaken) |
 | `.prm`/Bild ablegen — **Detektorgeometrie**, oder `.txt` — **Dynamische Kompression** | Diese Daten laden |
 
 ### 8. Elektronenbahnen

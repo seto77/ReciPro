@@ -12,13 +12,7 @@ Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent 
 
 | Raccourci | Action |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Activer/désactiver le Simulateur de diffraction |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Activer/désactiver le Visualiseur de structure |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Activer/désactiver le Stéréonet |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Activer/désactiver Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + touches fléchées | Faire tourner le cristal d'un pas dans cette direction (maintenez deux flèches pour une diagonale) |
-| Appui double sur <kbd>CTRL</kbd> | Activer/désactiver la Calculatrice |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Basculer l'indicateur *Reserved* du cristal sélectionné |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capturer une capture d'écran de l'interface (outil de développement ; activez d'abord **Capture GUI Components**) |
 | Maintenir <kbd>CTRL</kbd> pendant le démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques) |
 
@@ -127,7 +121,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
 | Double-clic droit sur un bouton de couche actif (Spots / Kikuchi / Debye / Scale) | Faire clignoter cette couche |
 | Double-clic gauche sur le stéréonet — fenêtre **TEM holder** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — fenêtre **TEM holder** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Arrow keys**) |
+| Touches fléchées — fenêtre **TEM holder** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées**) |
 | Déposer `.prm` / une image — **Detector geometry**, ou `.txt` — **Dynamic compression** | Charger ces données |
 
 ### 8. Trajectoires électroniques

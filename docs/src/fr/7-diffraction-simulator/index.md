@@ -66,7 +66,7 @@ Les fenêtres auxiliaires ouvertes d'ici en ajoutent quelques autres :
 | Raccourci | Action |
 |----------|--------|
 | Double-clic gauche sur le stéréonet — **TEM holder** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — **TEM holder** | Modifier l'inclinaison du porte-objet pas à pas (cocher d'abord **Arrow keys**) |
+| Touches fléchées — **TEM holder** | Modifier l'inclinaison du porte-objet pas à pas (cocher d'abord **Activer les touches fléchées**) |
 | Déposer un fichier `.prm` ou une image — **Detector geometry** | Charger la géométrie du détecteur / l'image de superposition |
 | Déposer un profil `.txt` — **Dynamic compression** | Charger un profil pression/temps (faire glisser la ligne rouge dans le graphique pour balayer) |
 
@@ -170,7 +170,7 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 
 ![Simulation du porte-objet MET](../../assets/cap-fr-auto/FormDiffractionSimulatorHolder.png)
 
-Ouvre une fenêtre qui lie le diagramme de diffraction à un **TEM holder** à double inclinaison (ou à rotation). Le réglage des angles d'inclinaison du porte-objet met à jour le diagramme et l'orientation du cristal, et les orientations accessibles peuvent être affichées sur un stéréonet (ajouté dans la v4.914). Un double-clic gauche sur le stéréonet règle l'inclinaison du porte-objet sur ce point, et cocher **Arrow keys** permet aux touches fléchées de modifier l'inclinaison pas à pas.
+Ouvre une fenêtre qui lie le diagramme de diffraction à un **TEM holder** à double inclinaison (ou à rotation). Le réglage des angles d'inclinaison du porte-objet met à jour le diagramme et l'orientation du cristal, et les orientations accessibles peuvent être affichées sur un stéréonet (ajouté dans la v4.914). Un double-clic gauche sur le stéréonet règle l'inclinaison du porte-objet sur ce point, et cocher **Activer les touches fléchées** permet aux touches fléchées de modifier l'inclinaison pas à pas.
 
 ---
 

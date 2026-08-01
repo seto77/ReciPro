@@ -24,8 +24,6 @@ La lista de reflexiones se construye directamente sobre la imagen cargada. El pa
 | Doble clic derecho | Alejar el zoom |
 | Doble clic en el encabezado de fila de una reflexión (tabla) | Hacer zoom a esa reflexión (×2) |
 
-Con <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> en la ventana principal se abre/cierra esta ventana.
-
 → Consulte **[21. Atajos de teclado y ratón](21-shortcuts.md)** para ver todas las ventanas de un vistazo.
 
 ---

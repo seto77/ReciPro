@@ -24,8 +24,6 @@ L'elenco degli spot si costruisce direttamente sull'immagine caricata. Il riquad
 | Doppio clic destro | Zoom indietro |
 | Doppio clic sull'intestazione di riga di uno spot (tabella) | Zoom su quello spot (×2) |
 
-Nella finestra principale, <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> apre/chiude questa finestra.
-
 → Vedi **[21. Scorciatoie da tastiera e mouse](21-shortcuts.md)** per una panoramica di ogni finestra.
 
 ---

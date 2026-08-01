@@ -12,13 +12,7 @@ These are installed by the [main window](0-main-window.md) but stay active while
 
 | Shortcut | Action |
 |----------|--------|
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Toggle the Diffraction Simulator |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Toggle the Structure Viewer |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Toggle the Stereonet |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Toggle Spot ID |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
-| Double-tap <kbd>CTRL</kbd> | Toggle the Calculator |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Toggle the selected crystal's *Reserved* flag |
 | <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Capture a screenshot of the GUI (developer tool; enable **Capture GUI Components** first) |
 | Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
 
@@ -127,7 +121,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Right double-click the status bar | Copy a text summary of the current settings |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 | Left double-click the stereonet — **TEM holder** window | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Arrow keys** first) |
+| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first) |
 | Drop `.prm` / image — **Detector geometry**, or `.txt` — **Dynamic compression** | Load that data |
 
 ### 8. Electron trajectory

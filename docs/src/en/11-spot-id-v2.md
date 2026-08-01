@@ -24,8 +24,6 @@ You build the spot list directly on the loaded image. The image pane uses ReciPr
 | Right double-click | Zoom out |
 | Double-click a spot's row header (table) | Zoom to that spot (×2) |
 
-The main-window <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> opens/closes this window.
-
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
 ---

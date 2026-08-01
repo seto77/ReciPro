@@ -21,13 +21,7 @@ A janela principal instala vários atalhos **válidos para todo o aplicativo**. 
 | Atalho | Ação |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Abrir / fechar o **Simulador de difração** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Abrir / fechar o **Visualizador de estrutura** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Abrir / fechar a **Estereonete** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Abrir / fechar o **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas pressionadas para uma diagonal) |
-| Toque duplo em <kbd>CTRL</kbd> | Abrir / fechar a **Calculadora** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Alternar o sinalizador **Reserved** do cristal selecionado |
 | Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
 | Arrastar com o botão esquerdo o widget de orientação (canto inferior esquerdo, abaixo de *Current Direction*) | Girar o cristal |
 | Clique duplo com o botão direito no widget de orientação | Copiar a imagem do widget para a área de transferência |

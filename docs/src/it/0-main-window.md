@@ -21,13 +21,7 @@ La finestra principale installa diverse scorciatoie **valide per l'intera applic
 | Scorciatoia | Azione |
 |----------|--------|
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Apre / chiude il **Simulatore di diffrazione** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Apre / chiude il **Visualizzatore struttura** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Apre / chiude lo **Stereogramma** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Apre / chiude **Spot ID** |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + tasti freccia | Ruota il cristallo di un passo in quella direzione (tieni premute due frecce per una diagonale) |
-| Doppio tocco di <kbd>CTRL</kbd> | Apre / chiude la **Calcolatrice** |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Commuta il contrassegno **Reserved** del cristallo selezionato |
 | Tieni premuto <kbd>CTRL</kbd> all'avvio di ReciPro | Avvia con OpenGL disabilitato (ripristino in caso di problemi grafici) |
 | Trascina con il tasto sinistro il widget di orientazione (in basso a sinistra, sotto *Current Direction*) | Ruota il cristallo |
 | Doppio clic destro sul widget di orientazione | Copia l'immagine del widget negli appunti |

@@ -66,7 +66,7 @@ The auxiliary windows opened from here add a few more:
 | Shortcut | Action |
 |----------|--------|
 | Left double-click the stereonet — **TEM holder** | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** | Step the holder tilt (tick **Arrow keys** first) |
+| Arrow keys — **TEM holder** | Step the holder tilt (tick **Enable arrow keys** first) |
 | Drop a `.prm` file or an image — **Detector geometry** | Load detector geometry / overlay image |
 | Drop a `.txt` profile — **Dynamic compression** | Load a pressure/time profile (drag the red line in the graph to scrub) |
 
@@ -170,7 +170,7 @@ Save and recall a complete simulator configuration — wavelength, detector geom
 
 ![TEM holder simulation](../../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
 
-Opens a window that links the diffraction pattern to a double-tilt (or rotation) **TEM holder**. Setting the holder tilt angles updates the pattern and the crystal orientation, and the reachable orientations can be shown on a stereonet (added in v4.914). Left double-click on the stereonet sets the holder tilt to that point, and ticking **Arrow keys** lets the arrow keys step the tilt.
+Opens a window that links the diffraction pattern to a double-tilt (or rotation) **TEM holder**. Setting the holder tilt angles updates the pattern and the crystal orientation, and the reachable orientations can be shown on a stereonet (added in v4.914). Left double-click on the stereonet sets the holder tilt to that point, and ticking **Enable arrow keys** lets the arrow keys step the tilt.
 
 ---
 

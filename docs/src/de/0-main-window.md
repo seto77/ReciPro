@@ -21,13 +21,7 @@ Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleibe
 | Kurzbefehl | Aktion |
 |----------|--------|
 | <kbd>F1</kbd> | Diese Seite des Online-Handbuchs öffnen |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | **Beugungssimulator** öffnen / schließen |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | **Strukturansicht** öffnen / schließen |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | **Stereonetz** öffnen / schließen |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | **Spot ID** öffnen / schließen |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + Pfeiltasten | Den Kristall einen Schritt in diese Richtung drehen (zwei Pfeile gleichzeitig für diagonal) |
-| Doppeltipp <kbd>CTRL</kbd> | **Rechner** öffnen / schließen |
-| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Das Kennzeichen **Reserved** des ausgewählten Kristalls umschalten |
 | <kbd>CTRL</kbd> beim Start von ReciPro halten | Mit deaktiviertem OpenGL starten (Wiederherstellung bei Grafikproblemen) |
 | Mit links das Orientierungs-Widget ziehen (unten links, unter *Aktuelle Orientierung*) | Den Kristall drehen |
 | Rechts-Doppelklick auf das Orientierungs-Widget | Das Widget-Bild in die Zwischenablage kopieren |

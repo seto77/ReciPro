@@ -337,7 +337,7 @@
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>ストラクチャビューア（結晶の三次元構造
-表示）を開きます。Ctrl+Shift+V でも切替。</value>
+表示）を開きます。</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
     <value>ステレオ
