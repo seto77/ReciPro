@@ -339,7 +339,8 @@
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定し
-ます。この角度より外側の信号は除外されます。</value>
+ます。この角度より外側の信号は除外されます。
+STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
@@ -354,7 +355,8 @@
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定し
-ます。この角度より内側の信号は除外されます。</value>
+ます。この角度より内側の信号は除外されます。
+STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>(環状)検出器
@@ -769,7 +771,8 @@ Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定し
-ます。この角度より外側の信号は除外されます。</value>
+ます。この角度より外側の信号は除外されます。
+STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
     <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
@@ -781,7 +784,8 @@ Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定し
-ます。この角度より内側の信号は除外されます。</value>
+ます。この角度より内側の信号は除外されます。
+STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
     <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の

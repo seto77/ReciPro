@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using static Crystallography.Localization;//260802Cl 追加: STEM-EDX の実行時文字列を 11 言語化 (方式②)
 using static System.Math;
 #endregion
 
@@ -228,6 +229,11 @@ public partial class FormImageSimulator : FormBase
     /// <summary>STEMモードの時のみ有効. 収束ビームを分解する角度. Rad単位 (表示上は mrad なので1000倍に変換される)</summary>
     public double STEM_AngularResolution { get => numericBoxSTEM_AngleResolution.Value / 1000; set => numericBoxSTEM_AngleResolution.Value = value * 1000; }
 
+    /// <summary>260802Cl 追加: プローブ方向グリッドの一辺の分割数。simulateSTEM が実際に使う値であり、
+    /// STEM-EDX の事前警告表示も同じここを参照する (収束角を 1.05 倍しておくのは既存仕様)。</summary>
+    private int StemProbeDivision()
+        => (int)Ceiling(numericBoxSTEM_ConvergenceAngle.Value * 2 * 1.05 / numericBoxSTEM_AngleResolution.Value);
+
     /// <summary>STEMモードの時のみ有効. TDS計算の際の、サンプルのスライス厚み.　(nm単位)</summary>
     public double STEM_SliceThickness { get => numericBoxSTEM_SliceThicknessForInelastic.Value; set => numericBoxSTEM_SliceThicknessForInelastic.Value = value; }
 
@@ -247,6 +253,262 @@ public partial class FormImageSimulator : FormBase
             else radioButtonSTEM_target_TDS.Checked = true;
         }
     }
+    #endregion
+
+    #region STEM-EDX (STEM モード内の追加出力オプション。設計書 §5.9.1)
+    //260801Cl 追加 / 260802Cl 変更: 当初 FormImageSimulator.Edx.cs に分けていたが、他フォームに partial を分割する例が
+    //無く ReciPro の慣習に合わないため本体へ統合 (作者指示)。ドメイン側 (候補列挙・11 言語の状態文・推奨分割数) は
+    //Crystallography の IonizationChannelInfo / IonizationDataProvider へ移した。ここに残るのは純粋に GUI の配線のみ。
+    //STEM-EDX は独立モードではないので、判定はすべて「ImageMode==STEM かつ checkBoxCalculateEdx.Checked」で行う。
+
+    /// <summary>項目 index → 候補。CheckedListBox の表示文字列は翻訳されるので、request は必ずこちらから組む</summary>
+    private IonizationChannelInfo[] edxCandidates = [];
+
+    /// <summary>候補一覧を作り直した最後の条件 (同じ結晶・同じ電圧での再構築を省く)</summary>
+    private (Crystal Crystal, double AccVol) edxListKey;
+
+    private bool edxSkipEvent;
+
+    /// <summary>ToolTip を出している項目 index (同じ項目で SetToolTip を繰り返すと点滅するため)</summary>
+    private int edxToolTipIndex = -1;
+
+    /// <summary>STEM-EDX を計算するか (ImageMode==STEM が前提)。GUI 判定はすべてこの 1 か所を経由する</summary>
+    public bool EdxEnabled
+    {
+        get => ImageMode == ImageModes.STEM && checkBoxCalculateEdx.Checked;
+        set => checkBoxCalculateEdx.Checked = value;
+    }
+
+    /// <summary>--capture 用: 元素×殻セレクタの GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
+    internal Control EdxOptionGroup => groupBoxSTEMoption4;
+
+    /// <summary>チェック済みチャネル。表示文字列ではなく候補配列から引く</summary>
+    private IonizationChannelSpec[] CheckedEdxChannels
+        => [.. checkedListBoxEdxChannels.CheckedIndices.Cast<int>()
+            .Where(i => i < edxCandidates.Length).Select(i => edxCandidates[i].Channel)];
+
+    /// <summary>候補一覧を作り直す。結晶・加速電圧が変わったときだけ実際に組み直す。</summary>
+    public void RenewEdxChannelList()
+    {
+        if (checkedListBoxEdxChannels is null) return;
+        var key = (FormMain?.Crystal, AccVol);
+        if (edxCandidates.Length > 0 && key == edxListKey) { RenewEdxSummary(); return; }
+
+        //チェック状態は (Z,Shell) で覚えておく (項目の並びや表示文字列ではなく実体で復元する)
+        var previous = new HashSet<IonizationChannelSpec>(CheckedEdxChannels);
+        edxSkipEvent = true;
+        try
+        {
+            edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
+            edxListKey = key;
+            checkedListBoxEdxChannels.BeginUpdate();
+            checkedListBoxEdxChannels.Items.Clear();
+            foreach (var info in edxCandidates)
+                //以前チェックされていても、電圧変更などで選べなくなった候補は復元しない (ItemCheck の拒否と辻褄を合わせる)
+                checkedListBoxEdxChannels.Items.Add(info.ToListItemText(),
+                    info.Status == IonizationAvailability.Available && previous.Contains(info.Channel));
+            checkedListBoxEdxChannels.EndUpdate();
+        }
+        finally { edxSkipEvent = false; }
+        RenewEdxSummary();
+    }
+
+    /// <summary>選択数・チャネル要約・probe grid 警告を更新する (実行時文字列)。</summary>
+    public void RenewEdxSummary()
+    {
+        if (labelEdxSummary is null) return;
+
+        var names = CheckedEdxChannels.Select(spec => spec.ShortLabel).ToArray();
+        labelEdxSummary.Text = names.Length == 0
+            ? Loc(en: "No channel selected", ja: "チャネル未選択", de: "Kein Kanal ausgewählt", fr: "Aucun canal sélectionné",
+                  es: "Ningún canal seleccionado", pt: "Nenhum canal selecionado", it: "Nessun canale selezionato",
+                  ru: "Канал не выбран", zhHans: "未选择通道", zhHant: "未選擇通道", ko: "채널이 선택되지 않음")
+            : Loc(en: "{0} map(s): {1}", ja: "{0} 個のマップ: {1}", de: "{0} Karte(n): {1}", fr: "{0} carte(s) : {1}",
+                  es: "{0} mapa(s): {1}", pt: "{0} mapa(s): {1}", it: "{0} mappa/e: {1}", ru: "{0} карт: {1}",
+                  zhHans: "{0} 张图: {1}", zhHant: "{0} 張圖: {1}", ko: "{0} 개 맵: {1}")
+              .Replace("{0}", names.Length.ToString()).Replace("{1}", string.Join(", ", names));
+
+        var division = StemProbeDivision();
+        var recommended = Loc(en: "Recommended for STEM-EDX: division >= 48", ja: "STEM-EDX 推奨: 分割数 48 以上",
+            de: "Empfohlen für STEM-EDX: Teilung >= 48", fr: "Recommandé pour STEM-EDX : division >= 48",
+            es: "Recomendado para STEM-EDX: división >= 48", pt: "Recomendado para STEM-EDX: divisão >= 48",
+            it: "Consigliato per STEM-EDX: divisione >= 48", ru: "Рекомендуется для STEM-EDX: деление >= 48",
+            zhHans: "STEM-EDX 建议：分割数 >= 48", zhHant: "STEM-EDX 建議：分割數 >= 48", ko: "STEM-EDX 권장: 분할 수 48 이상");
+        labelEdxProbeGrid.Text = $"Probe grid: {division} × {division}\r\n{recommended}";
+        labelEdxProbeGrid.ForeColor = division < StemIonizationRequest.RecommendedProbeDivision
+            ? Color.DarkOrange : SystemColors.ControlText;
+    }
+
+    /// <summary>選択チャネルを backend 要求へ変換する。EDX OFF なら null (= EDX なし run)。</summary>
+    private StemIonizationRequest[] BuildEdxRequests()
+        => !EdxEnabled ? null : [.. CheckedEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
+
+    /// <summary>run 開始前の検証 (§5.9.1-7: 判定は GUI のモードではなく「これから投げる要求」に対して行う)。
+    /// 続行してよければ true。チャネル 0 件は hard block、div 不足は確認ダイアログ (実行自体は可能)。</summary>
+    private static bool ValidateEdxRequest(StemIonizationRequest[] requests, int division)
+    {
+        if (requests is null) return true;// EDX なしの通常 STEM run
+
+        if (requests.Length == 0)
+        {
+            MessageBox.Show(
+                Loc(en: "STEM-EDX is enabled but no channel is selected. Select at least one element/shell, or clear the checkbox.",
+                    ja: "STEM-EDX が有効ですがチャネルが 1 つも選択されていません。元素・殻を選ぶか、チェックを外してください。",
+                    de: "STEM-EDX ist aktiviert, aber es ist kein Kanal ausgewählt. Wählen Sie mindestens ein Element/eine Schale oder deaktivieren Sie das Kontrollkästchen.",
+                    fr: "STEM-EDX est activé mais aucun canal n'est sélectionné. Choisissez au moins un élément/couche ou décochez la case.",
+                    es: "STEM-EDX está activado pero no hay ningún canal seleccionado. Elija al menos un elemento/capa o desmarque la casilla.",
+                    pt: "O STEM-EDX está ativado mas não há nenhum canal selecionado. Escolha pelo menos um elemento/camada ou desmarque a caixa.",
+                    it: "STEM-EDX è attivo ma non è selezionato alcun canale. Scegliere almeno un elemento/guscio oppure deselezionare la casella.",
+                    ru: "STEM-EDX включён, но не выбран ни один канал. Выберите хотя бы один элемент/оболочку или снимите флажок.",
+                    zhHans: "已启用 STEM-EDX，但未选择任何通道。请至少选择一个元素/壳层，或取消勾选。",
+                    zhHant: "已啟用 STEM-EDX，但未選擇任何通道。請至少選擇一個元素/殼層，或取消勾選。",
+                    ko: "STEM-EDX 가 활성화되어 있지만 선택된 채널이 없습니다. 원소/껍질을 하나 이상 선택하거나 체크를 해제하세요."),
+                "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (division < StemIonizationRequest.RecommendedProbeDivision)
+        {
+            //±q Hermitian 残差は div に対し O(h²) なので、粗いグリッドでは backend が §3.4 で hard fail する。
+            //ユーザーの角度分解能を黙って書き換えず、続行するかだけ尋ねる (§5.9.1-3)
+            var msg = Loc(
+                en: "The probe grid is {0} x {0}, below the {1} recommended for STEM-EDX.\r\nThe +/-q Hermitian residual may exceed the tolerance and abort the run.\r\nContinue anyway?",
+                ja: "プローブ分割数が {0} × {0} で、STEM-EDX の推奨値 {1} を下回っています。\r\n±q の Hermitian 残差が許容値を超え、計算が中断される可能性があります。\r\nこのまま続行しますか?",
+                de: "Das Sondenraster ist {0} x {0} und liegt unter den für STEM-EDX empfohlenen {1}.\r\nDas ±q-Hermitesche Residuum kann die Toleranz überschreiten und den Lauf abbrechen.\r\nTrotzdem fortfahren?",
+                fr: "La grille de sonde est {0} x {0}, en dessous de {1} recommandé pour STEM-EDX.\r\nLe résidu hermitien ±q peut dépasser la tolérance et interrompre le calcul.\r\nContinuer quand même ?",
+                es: "La rejilla de sonda es {0} x {0}, por debajo de {1} recomendado para STEM-EDX.\r\nEl residuo hermítico ±q puede superar la tolerancia y abortar el cálculo.\r\n¿Continuar de todos modos?",
+                pt: "A grelha de sonda é {0} x {0}, abaixo dos {1} recomendados para STEM-EDX.\r\nO resíduo hermitiano ±q pode exceder a tolerância e abortar o cálculo.\r\nContinuar mesmo assim?",
+                it: "La griglia della sonda è {0} x {0}, sotto i {1} consigliati per STEM-EDX.\r\nIl residuo hermitiano ±q può superare la tolleranza e interrompere il calcolo.\r\nContinuare comunque?",
+                ru: "Сетка зонда {0} x {0}, меньше рекомендованных для STEM-EDX {1}.\r\nЭрмитов остаток ±q может превысить допуск и прервать расчёт.\r\nВсё равно продолжить?",
+                zhHans: "探针网格为 {0} × {0}，低于 STEM-EDX 建议的 {1}。\r\n±q 厄米残差可能超出容差并中断计算。\r\n仍要继续吗？",
+                zhHant: "探針網格為 {0} × {0}，低於 STEM-EDX 建議的 {1}。\r\n±q 厄米殘差可能超出容差並中斷計算。\r\n仍要繼續嗎？",
+                ko: "프로브 격자가 {0} × {0} 로 STEM-EDX 권장값 {1} 보다 작습니다.\r\n±q 에르미트 잔차가 허용값을 초과하여 계산이 중단될 수 있습니다.\r\n계속하시겠습니까?")
+                .Replace("{0}", division.ToString()).Replace("{1}", StemIonizationRequest.RecommendedProbeDivision.ToString());
+            if (MessageBox.Show(msg, "STEM-EDX", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>利用可能な全チャネルを選択する (--capture / マクロからも使う)</summary>
+    internal void SelectAvailableEdxChannels()
+    {
+        //「すべて選択」ではなく「利用可能なものをすべて選択」(below-edge・範囲外は選ばない)
+        edxSkipEvent = true;
+        try
+        {
+            for (int i = 0; i < edxCandidates.Length; i++)
+                if (edxCandidates[i].Status == IonizationAvailability.Available)
+                    checkedListBoxEdxChannels.SetItemChecked(i, true);
+        }
+        finally { edxSkipEvent = false; }
+        RenewEdxSummary();
+    }
+
+    #region STEM-EDX 結果表示
+
+    /// <summary>表示中の EDX 信号 (ComboBox で参照像を選んでいる、または EDX 結果が無いときは null)。
+    /// **チェック状態ではなく公開済み結果から**引く (未計算チャネルや旧 run を誤表示しない契約、§5.9.1-5)。</summary>
+    private StemSignalMap SelectedEdxSignal
+    {
+        get
+        {
+            var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+            if (signals is null || signals.Length == 0) return null;
+            var i = comboBoxEdxDisplay.SelectedIndex - 1;// index 0 = STEM 参照像
+            return i >= 0 && i < signals.Length ? signals[i] : null;
+        }
+    }
+
+    /// <summary>ComboBox を「公開済み結果に含まれる EDX 信号」で作り直す。run 完了時に呼ぶ。</summary>
+    private void RenewEdxDisplayList()
+    {
+        var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+        var previous = comboBoxEdxDisplay.SelectedItem as string;
+        edxSkipEvent = true;
+        try
+        {
+            comboBoxEdxDisplay.Items.Clear();
+            if (signals is null || signals.Length == 0)
+            {
+                comboBoxEdxDisplay.Visible = false;
+                return;
+            }
+            //先頭は STEM 参照像 (Both/Elastic/TDS ラジオが効く方)。元素セレクタと違い、ここは表示切替なので参照像も並べる
+            comboBoxEdxDisplay.Items.Add(Loc(en: "STEM reference", ja: "STEM 参照像", de: "STEM-Referenz", fr: "Référence STEM",
+                es: "Referencia STEM", pt: "Referência STEM", it: "Riferimento STEM", ru: "Опорное STEM",
+                zhHans: "STEM 参考像", zhHant: "STEM 參考影像", ko: "STEM 참조상"));
+            foreach (var s in signals)
+                comboBoxEdxDisplay.Items.Add(s.Channel.ShortLabel);
+            comboBoxEdxDisplay.Visible = true;
+            var idx = previous is null ? -1 : comboBoxEdxDisplay.Items.IndexOf(previous);
+            comboBoxEdxDisplay.SelectedIndex = idx >= 0 ? idx : 0;
+        }
+        finally { edxSkipEvent = false; }
+    }
+
+    #endregion
+
+    #region STEM-EDX イベントハンドラ
+
+    private void NumericBoxSTEM_AngleResolution_ValueChanged(object sender, EventArgs e)
+    {
+        if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked) RenewEdxSummary();
+    }
+
+    private void CheckBoxCalculateEdx_CheckedChanged(object sender, EventArgs e)
+    {
+        panelEdxDetails.Visible = checkBoxCalculateEdx.Checked;
+        if (checkBoxCalculateEdx.Checked)
+            RenewEdxChannelList();
+        else
+            RenewEdxSummary();
+    }
+
+    private void CheckedListBoxEdxChannels_ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        if (edxSkipEvent || e.Index < 0 || e.Index >= edxCandidates.Length) return;
+        //利用不可のチャネルはチェックさせない (理由は項目テキストと ToolTip)
+        if (edxCandidates[e.Index].Status != IonizationAvailability.Available)
+            e.NewValue = CheckState.Unchecked;
+        //ItemCheck は値が確定する前に来るので、要約更新は反映後へ回す
+        BeginInvoke(RenewEdxSummary);
+    }
+
+    private void CheckedListBoxEdxChannels_MouseMove(object sender, MouseEventArgs e)
+    {
+        //CheckedListBox は項目ごとの ToolTip を持たないので、ホバー中の項目に合わせて差し替える
+        var index = checkedListBoxEdxChannels.IndexFromPoint(e.Location);
+        if (index == edxToolTipIndex) return;
+        edxToolTipIndex = index;
+        toolTip.SetToolTip(checkedListBoxEdxChannels,
+            index >= 0 && index < edxCandidates.Length ? edxCandidates[index].ToDescription() : "");
+    }
+
+    private void ButtonEdxSelectAvailable_Click(object sender, EventArgs e) => SelectAvailableEdxChannels();
+
+    private void ButtonEdxClear_Click(object sender, EventArgs e)
+    {
+        edxSkipEvent = true;
+        try
+        {
+            for (int i = 0; i < checkedListBoxEdxChannels.Items.Count; i++)
+                checkedListBoxEdxChannels.SetItemChecked(i, false);
+        }
+        finally { edxSkipEvent = false; }
+        RenewEdxSummary();
+    }
+
+    private void ComboBoxEdxDisplay_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (edxSkipEvent) return;
+        //参照像を選んでいるときだけ Both/Elastic/TDS が意味を持つ
+        radioButtonSTEM_target_both.Enabled = radioButtonSTEM_target_elas.Enabled = radioButtonSTEM_target_TDS.Enabled = SelectedEdxSignal is null;
+        GeneratePseudBitmap();
+    }
+
+    #endregion
+
     #endregion
 
     #endregion プロパティ
@@ -327,7 +589,9 @@ public partial class FormImageSimulator : FormBase
 
         comboBoxScaleColorScale.SelectedIndex = 0;
 
-        AppendDetectorAngleNote();//260801Cl 追加: 検出器角が STEM 参照像専用であることをツールチップに明示 (§5.9.1-4)
+        //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
+        //11 言語 resx の numericBoxSTEM_Detector*Angle.ToolTip 本文へ直接書いた (Designer コントロールの静的な文は resx = 方式①。
+        //コード側追記だと翻訳ツール・文字溢れ診断のどちらからも見えないうえ、ハンドル再生成で二重に付く)
 
         NumericBoxAccVol_ValueChanged(sender, e);
     }
@@ -411,7 +675,9 @@ public partial class FormImageSimulator : FormBase
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         //260718Cl 変更: List+spread を固定長配列に、円内ピクセル数 (stemDirectionTotal) も同じループで数える (旧: inside ローカル関数で全 index を再走査)
-        var division = (int)Math.Ceiling(numericBoxSTEM_ConvergenceAngle.Value * 2 * 1.05 / numericBoxSTEM_AngleResolution.Value);// 収束角を1.05倍にしておく
+        //260802Cl 変更: 式を StemProbeDivision() へ (旧: ここに直書き。EDX の警告表示が同じ式を別に持っていて、
+        //片方だけ編集すると「警告に出る分割数」と「実際に走る分割数」が食い違い得た)
+        var division = StemProbeDivision();
         var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);
 
         var radius = division / 2.0;
@@ -490,7 +756,9 @@ public partial class FormImageSimulator : FormBase
     {
         //260801Cl 変更: cancel 要求だけ出し、UI の復帰は StemCompleted に任せる (worker が止まる前に設定 UI を戻すと、
         //実行中の run と食い違う条件で再実行できてしまう。codex 20巡)。旧: ここで buttonSimulate/splitContainer を戻していた
-        (stemBethe ?? FormMain.Crystal.Bethe).CancelSTEM();
+        //260802Cl 変更: 旧 `stemBethe ?? FormMain.Crystal.Bethe` は「今の結晶」へ落ちるので snapshot の意味を打ち消していた
+        if (stemBethe is null) return;
+        stemBethe.CancelSTEM();
         buttonStop.Enabled = false;
     }
 
@@ -555,7 +823,7 @@ public partial class FormImageSimulator : FormBase
             var totalsec = sec + (s1 + s2) / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.19) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 3: Calculating U' matrix.  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
         }
         else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
         {
@@ -565,14 +833,14 @@ public partial class FormImageSimulator : FormBase
             var totalsec = sec + s1 / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.18) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 2: Calculating I_elastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
         }
         else
         {
             var sec = s1 / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.18 + 0.0) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Elapsed time : {sec:f1} s  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
         }
         // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
@@ -584,9 +852,13 @@ public partial class FormImageSimulator : FormBase
     {
         //260801Cl 変更: 購読解除は run を開始したインスタンスに対して行う (run 中に結晶が切り替わっても取り違えない)。
         //旧: FormMain.Crystal.Bethe を都度参照していた
-        var bethe = stemBethe ?? FormMain.Crystal.Bethe;
-        bethe.StemCompleted -= StemCompleted;
-        bethe.StemProgressChanged -= stemProgressChanged;
+        //260802Cl 変更: フォールバックを外す (run を開始したインスタンス以外から購読解除すると取り違える)
+        var bethe = stemBethe;
+        if (bethe is not null)
+        {
+            bethe.StemCompleted -= StemCompleted;
+            bethe.StemProgressChanged -= stemProgressChanged;
+        }
         long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds, s5 = sw5.ElapsedMilliseconds;
 
         //260801Cl 追加: e.Error を e.Cancelled より先に見る (旧実装は e.Error を確認しておらず、
@@ -793,8 +1065,9 @@ public partial class FormImageSimulator : FormBase
             //Both/Elastic/TDS は「STEM 参照像」を選んでいるときの切替
             var edx = SelectedEdxSignal;
             if (edx is not null)
-                images = [.. Enumerable.Range(0, edx.Image.ThicknessCount)
-                    .Select(t => Enumerable.Range(0, edx.Image.DefocusCount).Select(d => edx.Image.GetPlane(t, d).ToArray()).ToArray())];
+                //260802Cl 変更: GetPlane→ToArray の全画素コピーをやめ、他 3 分岐と同じく backing を参照で渡す
+                //(images は以降読むだけ。Normalize が必要な複製を自前で作る)
+                images = edx.Image.Planes;
             else if (radioButtonSTEM_target_both.Checked)
                 images = bethe.ResultSTEM.ImageBoth;
             else if (radioButtonSTEM_target_elas.Checked)

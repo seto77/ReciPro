@@ -494,11 +494,13 @@ Größere Werte führen zu langsamerer Berechnungsgeschwindigkeit, aber höherer
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Äußerer Sammel-Halbwinkel des ringförmigen STEM-
-Detektors (mrad); Signale oberhalb dieses Winkels werden ausgeschlossen.</value>
+Detektors (mrad); Signale oberhalb dieses Winkels werden ausgeschlossen.
+Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) - nicht für STEM-EDX-Karten.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Äußerer Sammel-Halbwinkel des ringförmigen STEM-
-Detektors (mrad); Signale oberhalb dieses Winkels werden ausgeschlossen.</value>
+Detektors (mrad); Signale oberhalb dieses Winkels werden ausgeschlossen.
+Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) - nicht für STEM-EDX-Karten.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Effektive Elektronenquellengröße (nm). Größere Werte
@@ -520,11 +522,13 @@ Sonde und ändern den Beugungskontrast.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Innerer Sammel-Halbwinkel des ringförmigen STEM-
-Detektors (mrad); Signale unterhalb dieses Winkels werden ausgeschlossen.</value>
+Detektors (mrad); Signale unterhalb dieses Winkels werden ausgeschlossen.
+Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) - nicht für STEM-EDX-Karten.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Innerer Sammel-Halbwinkel des ringförmigen STEM-
-Detektors (mrad); Signale unterhalb dieses Winkels werden ausgeschlossen.</value>
+Detektors (mrad); Signale unterhalb dieses Winkels werden ausgeschlossen.
+Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) - nicht für STEM-EDX-Karten.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Objektivblenden-Halbwinkel (mrad). Eine

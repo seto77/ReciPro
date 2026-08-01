@@ -485,11 +485,13 @@ Valores mayores resultan en un cálculo más lento pero mayor precisión.</value
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiángulo exterior de recolección del detector STEM
-anular (mrad); las señales por encima de este ángulo se excluyen.</value>
+anular (mrad); las señales por encima de este ángulo se excluyen.
+Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Semiángulo exterior de recolección del detector STEM
-anular (mrad); las señales por encima de este ángulo se excluyen.</value>
+anular (mrad); las señales por encima de este ángulo se excluyen.
+Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Tamaño efectivo de la fuente de electrones (nm). Valores mayores
@@ -511,11 +513,13 @@ más estrecha y cambian el contraste de difracción.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Semiángulo interior de recolección del detector STEM
-anular (mrad); las señales por debajo de este ángulo se excluyen.</value>
+anular (mrad); las señales por debajo de este ángulo se excluyen.
+Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Semiángulo interior de recolección del detector STEM
-anular (mrad); las señales por debajo de este ángulo se excluyen.</value>
+anular (mrad); las señales por debajo de este ángulo se excluyen.
+Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Semiángulo de la apertura del objetivo (mrad). Una

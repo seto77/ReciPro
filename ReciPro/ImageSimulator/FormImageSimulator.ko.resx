@@ -491,11 +491,13 @@ scattering, 열 확산 산란에 의한 비탄성)
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>환형 STEM 검출기의 외측 수집 반각(mrad)입니다.
-이 각도보다 바깥쪽의 신호는 제외됩니다.</value>
+이 각도보다 바깥쪽의 신호는 제외됩니다.
+STEM 참조 이미지(ADF / 탄성 / TDS)에만 적용되며 STEM-EDX 맵에는 사용되지 않습니다.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>환상 STEM 검출기의 외측 수집 반각(mrad)입니다.
-이 각도보다 바깥쪽의 신호는 제외됩니다.</value>
+이 각도보다 바깥쪽의 신호는 제외됩니다.
+STEM 참조 이미지(ADF / 탄성 / TDS)에만 적용되며 STEM-EDX 맵에는 사용되지 않습니다.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>유효 전자원 크기(nm)입니다. 값이 클수록 STEM
@@ -517,11 +519,13 @@ scattering, 열 확산 산란에 의한 비탄성)
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>환형 STEM 검출기의 내측 수집 반각(mrad)입니다.
-이 각도보다 안쪽의 신호는 제외됩니다.</value>
+이 각도보다 안쪽의 신호는 제외됩니다.
+STEM 참조 이미지(ADF / 탄성 / TDS)에만 적용되며 STEM-EDX 맵에는 사용되지 않습니다.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>환상 STEM 검출기의 내측 수집 반각(mrad)입니다.
-이 각도보다 안쪽의 신호는 제외됩니다.</value>
+이 각도보다 안쪽의 신호는 제외됩니다.
+STEM 참조 이미지(ADF / 탄성 / TDS)에만 적용되며 STEM-EDX 맵에는 사용되지 않습니다.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>대물 조리개의 반각(mrad)입니다. 조리개가

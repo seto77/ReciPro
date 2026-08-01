@@ -490,11 +490,13 @@ TDS（thermal diffuse scattering,
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>環狀 STEM 偵測器的外側收集半角 (mrad)；
-超出此角度的訊號將被排除。</value>
+超出此角度的訊號將被排除。
+僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>環狀 STEM 偵測器的外側收集半角 (mrad)；
-超出此角度的訊號將被排除。</value>
+超出此角度的訊號將被排除。
+僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>有效電子源尺寸 (nm)。數值越大會使 STEM
@@ -516,11 +518,13 @@ TDS（thermal diffuse scattering,
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>環狀 STEM 偵測器的內側收集半角 (mrad)；
-低於此角度的訊號將被排除。</value>
+低於此角度的訊號將被排除。
+僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>環狀 STEM 偵測器的內側收集半角 (mrad)；
-低於此角度的訊號將被排除。</value>
+低於此角度的訊號將被排除。
+僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>物鏡光圈半角 (mrad)。光圈越小會切除

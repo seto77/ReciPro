@@ -491,11 +491,13 @@ Des valeurs plus grandes ralentissent le calcul mais augmentent la précision.</
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Demi-angle de collecte externe du détecteur STEM
-annulaire (mrad) ; les signaux au-delà de cet angle sont exclus.</value>
+annulaire (mrad) ; les signaux au-delà de cet angle sont exclus.
+S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Demi-angle de collecte externe du détecteur STEM
-annulaire (mrad) ; les signaux au-delà de cet angle sont exclus.</value>
+annulaire (mrad) ; les signaux au-delà de cet angle sont exclus.
+S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Taille effective de la source d'électrons (nm). Des valeurs plus grandes
@@ -517,11 +519,13 @@ sonde et modifient le contraste de diffraction.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Demi-angle de collecte interne du détecteur STEM
-annulaire (mrad) ; les signaux en deçà de cet angle sont exclus.</value>
+annulaire (mrad) ; les signaux en deçà de cet angle sont exclus.
+S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Demi-angle de collecte interne du détecteur STEM
-annulaire (mrad) ; les signaux en deçà de cet angle sont exclus.</value>
+annulaire (mrad) ; les signaux en deçà de cet angle sont exclus.
+S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Demi-angle du diaphragme objectif (mrad). Un

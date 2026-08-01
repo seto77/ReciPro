@@ -494,11 +494,13 @@ Valores maiores resultam em menor velocidade de cálculo, porém maior precisão
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiângulo externo de coleta do detector anular STEM
-(mrad); sinais acima deste ângulo são excluídos.</value>
+(mrad); sinais acima deste ângulo são excluídos.
+Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Semiângulo externo de coleta do detector anular STEM
-(mrad); sinais acima deste ângulo são excluídos.</value>
+(mrad); sinais acima deste ângulo são excluídos.
+Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Tamanho efetivo da fonte de elétrons (nm). Valores maiores
@@ -520,11 +522,13 @@ e alteram o contraste de difração.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Semiângulo interno de coleta do detector anular STEM
-(mrad); sinais abaixo deste ângulo são excluídos.</value>
+(mrad); sinais abaixo deste ângulo são excluídos.
+Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Semiângulo interno de coleta do detector anular STEM
-(mrad); sinais abaixo deste ângulo são excluídos.</value>
+(mrad); sinais abaixo deste ângulo são excluídos.
+Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Semiângulo da abertura objetiva (mrad). Uma

@@ -4904,7 +4904,8 @@ of the annular dark-field detector.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Outer collection semi-angle of the annular STEM
-detector (mrad); signals above this angle are excluded.</value>
+detector (mrad); signals above this angle are excluded.
+Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorOuterAngle</value>
@@ -5064,7 +5065,8 @@ detector outer collection angle. Read-only.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Inner collection semi-angle of the annular STEM
-detector (mrad); signals below this angle are excluded.</value>
+detector (mrad); signals below this angle are excluded.
+Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorInnerAngle</value>

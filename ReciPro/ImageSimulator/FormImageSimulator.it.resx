@@ -476,11 +476,13 @@ Valori maggiori comportano un calcolo più lento ma una maggiore accuratezza.</v
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Semiangolo di raccolta esterno del rivelatore STEM
-anulare (mrad); i segnali oltre questo angolo sono esclusi.</value>
+anulare (mrad); i segnali oltre questo angolo sono esclusi.
+Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Semiangolo di raccolta esterno del rivelatore STEM
-anulare (mrad); i segnali oltre questo angolo sono esclusi.</value>
+anulare (mrad); i segnali oltre questo angolo sono esclusi.
+Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Dimensione efficace della sorgente di elettroni (nm). Valori maggiori
@@ -502,11 +504,13 @@ più stretta e cambiano il contrasto di diffrazione.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Semiangolo di raccolta interno del rivelatore STEM
-anulare (mrad); i segnali entro questo angolo sono esclusi.</value>
+anulare (mrad); i segnali entro questo angolo sono esclusi.
+Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Semiangolo di raccolta interno del rivelatore STEM
-anulare (mrad); i segnali entro questo angolo sono esclusi.</value>
+anulare (mrad); i segnali entro questo angolo sono esclusi.
+Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Semiangolo dell'apertura obiettivo (mrad). Un'apertura

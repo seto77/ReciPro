@@ -491,11 +491,13 @@ TDS (термическое диффузное рассеяние).</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Внешний полуугол сбора кольцевого STEM-детектора
-(mrad); сигналы за пределами этого угла исключаются.</value>
+(mrad); сигналы за пределами этого угла исключаются.
+Относится только к опорному STEM-изображению (ADF / упругое / TDS) - для карт STEM-EDX не используется.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Внешний полуугол сбора кольцевого STEM-детектора
-(mrad); сигналы за пределами этого угла исключаются.</value>
+(mrad); сигналы за пределами этого угла исключаются.
+Относится только к опорному STEM-изображению (ADF / упругое / TDS) - для карт STEM-EDX не используется.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Эффективный размер источника электронов (nm). Большие значения
@@ -517,11 +519,13 @@ TDS (термическое диффузное рассеяние).</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Внутренний полуугол сбора кольцевого STEM-детектора
-(mrad); сигналы ниже этого угла исключаются.</value>
+(mrad); сигналы ниже этого угла исключаются.
+Относится только к опорному STEM-изображению (ADF / упругое / TDS) - для карт STEM-EDX не используется.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Внутренний полуугол сбора кольцевого STEM-детектора
-(mrad); сигналы внутри этого угла исключаются.</value>
+(mrad); сигналы внутри этого угла исключаются.
+Относится только к опорному STEM-изображению (ADF / упругое / TDS) - для карт STEM-EDX не используется.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Полуугол объективной апертуры (mrad). Меньшая

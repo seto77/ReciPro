@@ -490,11 +490,13 @@
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>环形 STEM 探测器的外收集半角（mrad）；
-大于此角度的信号将被排除。</value>
+大于此角度的信号将被排除。
+仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>环形 STEM 探测器的外收集半角（mrad）；
-大于此角度的信号将被排除。</value>
+大于此角度的信号将被排除。
+仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>有效电子源尺寸（nm）。数值越大，STEM 探针
@@ -514,11 +516,13 @@
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>环形 STEM 探测器的内收集半角（mrad）；
-小于此角度的信号将被排除。</value>
+小于此角度的信号将被排除。
+仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>环形 STEM 探测器的内收集半角（mrad）；
-小于此角度的信号将被排除。</value>
+小于此角度的信号将被排除。
+仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>物镜光阑半角（mrad）。光阑越小，越能切除
