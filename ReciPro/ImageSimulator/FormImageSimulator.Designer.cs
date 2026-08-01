@@ -252,6 +252,7 @@ namespace ReciPro
             buttonEdxSelectAvailable = new System.Windows.Forms.Button();
             buttonEdxClear = new System.Windows.Forms.Button();
             labelEdxProbeGrid = new System.Windows.Forms.Label();
+            comboBoxEdxDisplay = new System.Windows.Forms.ComboBox();//260801Cl 追加
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -649,9 +650,18 @@ namespace ReciPro
             // groupBoxSTEMoption3
             // 
             captureExtender.SetCapture(groupBoxSTEMoption3, true);
+            groupBoxSTEMoption3.Controls.Add(comboBoxEdxDisplay);//260801Cl 追加: 計算済み EDX チャネルの表示切替 (設計書 §5.9.1-5)
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_TDS);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_elas);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_both);
+            //
+            // comboBoxEdxDisplay
+            //
+            resources.ApplyResources(comboBoxEdxDisplay, "comboBoxEdxDisplay");
+            comboBoxEdxDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxEdxDisplay.FormattingEnabled = true;
+            comboBoxEdxDisplay.Name = "comboBoxEdxDisplay";
+            comboBoxEdxDisplay.SelectedIndexChanged += ComboBoxEdxDisplay_SelectedIndexChanged;
             resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
             groupBoxSTEMoption3.Name = "groupBoxSTEMoption3";
             groupBoxSTEMoption3.TabStop = false;
@@ -2753,6 +2763,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonEdxSelectAvailable;
         private System.Windows.Forms.Button buttonEdxClear;
         private System.Windows.Forms.Label labelEdxProbeGrid;
+        private System.Windows.Forms.ComboBox comboBoxEdxDisplay;//260801Cl 追加
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         // 260521Cl: flowLayoutPanel2 は sizeControl1 へ置換したため削除

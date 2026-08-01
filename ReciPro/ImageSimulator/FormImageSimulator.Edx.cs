@@ -218,6 +218,130 @@ public partial class FormImageSimulator
     private StemIonizationRequest[] BuildEdxRequests()
         => !EdxEnabled ? null : [.. EdxChannels.Select(spec => new StemIonizationRequest(spec))];
 
+    /// <summary>run 開始前の検証 (§5.9.1-7: 判定は GUI のモードではなく「これから投げる要求」に対して行う)。
+    /// 続行してよければ true。チャネル 0 件は hard block、div 不足は確認ダイアログ (実行自体は可能)。</summary>
+    private bool ValidateEdxRequest(StemIonizationRequest[] requests, int division)
+    {
+        if (requests is null) return true;// EDX なしの通常 STEM run
+
+        if (requests.Length == 0)
+        {
+            MessageBox.Show(
+                Loc(en: "STEM-EDX is enabled but no channel is selected. Select at least one element/shell, or clear the checkbox.",
+                    ja: "STEM-EDX が有効ですがチャネルが 1 つも選択されていません。元素・殻を選ぶか、チェックを外してください。",
+                    de: "STEM-EDX ist aktiviert, aber es ist kein Kanal ausgewählt. Wählen Sie mindestens ein Element/eine Schale oder deaktivieren Sie das Kontrollkästchen.",
+                    fr: "STEM-EDX est activé mais aucun canal n'est sélectionné. Choisissez au moins un élément/couche ou décochez la case.",
+                    es: "STEM-EDX está activado pero no hay ningún canal seleccionado. Elija al menos un elemento/capa o desmarque la casilla.",
+                    pt: "O STEM-EDX está ativado mas não há nenhum canal selecionado. Escolha pelo menos um elemento/camada ou desmarque a caixa.",
+                    it: "STEM-EDX è attivo ma non è selezionato alcun canale. Scegliere almeno un elemento/guscio oppure deselezionare la casella.",
+                    ru: "STEM-EDX включён, но не выбран ни один канал. Выберите хотя бы один элемент/оболочку или снимите флажок.",
+                    zhHans: "已启用 STEM-EDX，但未选择任何通道。请至少选择一个元素/壳层，或取消勾选。",
+                    zhHant: "已啟用 STEM-EDX，但未選擇任何通道。請至少選擇一個元素/殼層，或取消勾選。",
+                    ko: "STEM-EDX 가 활성화되어 있지만 선택된 채널이 없습니다. 원소/껍질을 하나 이상 선택하거나 체크를 해제하세요."),
+                "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (division < EdxRecommendedDivision)
+        {
+            //±q Hermitian 残差は div に対し O(h²) なので、粗いグリッドでは backend が §3.4 で hard fail する。
+            //ユーザーの角度分解能を黙って書き換えず、続行するかだけ尋ねる (§5.9.1-3)
+            var msg = Loc(
+                en: "The probe grid is {0} x {0}, below the {1} recommended for STEM-EDX.\r\nThe +/-q Hermitian residual may exceed the tolerance and abort the run.\r\nContinue anyway?",
+                ja: "プローブ分割数が {0} × {0} で、STEM-EDX の推奨値 {1} を下回っています。\r\n±q の Hermitian 残差が許容値を超え、計算が中断される可能性があります。\r\nこのまま続行しますか?",
+                de: "Das Sondenraster ist {0} x {0} und liegt unter den für STEM-EDX empfohlenen {1}.\r\nDas ±q-Hermitesche Residuum kann die Toleranz überschreiten und den Lauf abbrechen.\r\nTrotzdem fortfahren?",
+                fr: "La grille de sonde est {0} x {0}, en dessous de {1} recommandé pour STEM-EDX.\r\nLe résidu hermitien ±q peut dépasser la tolérance et interrompre le calcul.\r\nContinuer quand même ?",
+                es: "La rejilla de sonda es {0} x {0}, por debajo de {1} recomendado para STEM-EDX.\r\nEl residuo hermítico ±q puede superar la tolerancia y abortar el cálculo.\r\n¿Continuar de todos modos?",
+                pt: "A grelha de sonda é {0} x {0}, abaixo dos {1} recomendados para STEM-EDX.\r\nO resíduo hermitiano ±q pode exceder a tolerância e abortar o cálculo.\r\nContinuar mesmo assim?",
+                it: "La griglia della sonda è {0} x {0}, sotto i {1} consigliati per STEM-EDX.\r\nIl residuo hermitiano ±q può superare la tolleranza e interrompere il calcolo.\r\nContinuare comunque?",
+                ru: "Сетка зонда {0} x {0}, меньше рекомендованных для STEM-EDX {1}.\r\nЭрмитов остаток ±q может превысить допуск и прервать расчёт.\r\nВсё равно продолжить?",
+                zhHans: "探针网格为 {0} × {0}，低于 STEM-EDX 建议的 {1}。\r\n±q 厄米残差可能超出容差并中断计算。\r\n仍要继续吗？",
+                zhHant: "探針網格為 {0} × {0}，低於 STEM-EDX 建議的 {1}。\r\n±q 厄米殘差可能超出容差並中斷計算。\r\n仍要繼續嗎？",
+                ko: "프로브 격자가 {0} × {0} 로 STEM-EDX 권장값 {1} 보다 작습니다.\r\n±q 에르미트 잔차가 허용값을 초과하여 계산이 중단될 수 있습니다.\r\n계속하시겠습니까?")
+                .Replace("{0}", division.ToString()).Replace("{1}", EdxRecommendedDivision.ToString());
+            if (MessageBox.Show(msg, "STEM-EDX", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return false;
+        }
+        return true;
+    }
+
+    #endregion
+
+    /// <summary>260801Cl 追加 (§5.9.1-4): 検出器内外角は STEM 参照像 (ADF/弾性/TDS) 専用で EDX マップには使われない。
+    /// EDX 時に無効化するのではなく、所属を静的に明示する (無効化すると Reference ADF を隠れた値で計算することになる)。
+    /// Designer 側のツールチップに 1 度だけ追記する (Load から呼ぶ)。</summary>
+    private void AppendDetectorAngleNote()
+    {
+        var note = Loc(
+            en: "Applies to the STEM reference image (ADF / elastic / TDS) only — not used for STEM-EDX maps.",
+            ja: "STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。",
+            de: "Gilt nur für das STEM-Referenzbild (ADF / elastisch / TDS) — nicht für STEM-EDX-Karten.",
+            fr: "S'applique uniquement à l'image STEM de référence (ADF / élastique / TDS), pas aux cartes STEM-EDX.",
+            es: "Se aplica solo a la imagen STEM de referencia (ADF / elástica / TDS); no se usa en los mapas STEM-EDX.",
+            pt: "Aplica-se apenas à imagem STEM de referência (ADF / elástica / TDS); não é usado nos mapas STEM-EDX.",
+            it: "Si applica solo all'immagine STEM di riferimento (ADF / elastica / TDS), non alle mappe STEM-EDX.",
+            ru: "Относится только к опорному STEM-изображению (ADF / упругое / TDS) — для карт STEM-EDX не используется.",
+            zhHans: "仅适用于 STEM 参考像 (ADF / 弹性 / TDS)，不用于 STEM-EDX 分布图。",
+            zhHant: "僅適用於 STEM 參考影像 (ADF / 彈性 / TDS)，不用於 STEM-EDX 分布圖。",
+            ko: "STEM 참조 이미지(ADF / 탄성 / TDS)에만 적용되며 STEM-EDX 맵에는 사용되지 않습니다.");
+        foreach (var c in new System.Windows.Forms.Control[] { numericBoxSTEM_DetectorInnerAngle, numericBoxSTEM_DetectorOuterAngle })
+        {
+            var current = toolTip.GetToolTip(c);
+            toolTip.SetToolTip(c, string.IsNullOrEmpty(current) ? note : current + "\r\n" + note);
+        }
+    }
+
+    #region 結果表示
+
+    /// <summary>表示中の EDX 信号 (ComboBox で「Reference」を選んでいる、または EDX 結果が無いときは null)。
+    /// **チェック状態ではなく公開済み結果から**引く (未計算チャネルや旧 run を誤表示しない契約、§5.9.1-5)。</summary>
+    private StemSignalMap SelectedEdxSignal
+    {
+        get
+        {
+            var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+            if (signals is null || signals.Length == 0) return null;
+            var i = comboBoxEdxDisplay.SelectedIndex - 1;// index 0 = STEM reference
+            return i >= 0 && i < signals.Length ? signals[i] : null;
+        }
+    }
+
+    /// <summary>ComboBox を「公開済み結果に含まれる EDX 信号」で作り直す。run 完了時に呼ぶ。</summary>
+    private void RenewEdxDisplayList()
+    {
+        var signals = FormMain?.Crystal?.Bethe?.ResultStem?.EdxSignals;
+        var previous = comboBoxEdxDisplay.SelectedItem as string;
+        edxSkipEvent = true;
+        try
+        {
+            comboBoxEdxDisplay.Items.Clear();
+            if (signals is null || signals.Length == 0)
+            {
+                comboBoxEdxDisplay.Visible = false;
+                return;
+            }
+            //先頭は STEM 参照像 (Both/Elastic/TDS ラジオが効く方)。元素セレクタと違い、ここは表示切替なので参照像も並べる
+            comboBoxEdxDisplay.Items.Add(Loc(en: "STEM reference", ja: "STEM 参照像", de: "STEM-Referenz", fr: "Référence STEM",
+                es: "Referencia STEM", pt: "Referência STEM", it: "Riferimento STEM", ru: "Опорное STEM",
+                zhHans: "STEM 参考像", zhHant: "STEM 參考影像", ko: "STEM 참조상"));
+            foreach (var s in signals)
+                comboBoxEdxDisplay.Items.Add($"{AtomStatic.AtomicName(s.Channel.Z)}-{(s.Channel.Shell == IonizationShell.LTotal ? "L" : "K")}");
+            comboBoxEdxDisplay.Visible = true;
+            var idx = previous is null ? -1 : comboBoxEdxDisplay.Items.IndexOf(previous);
+            comboBoxEdxDisplay.SelectedIndex = idx >= 0 ? idx : 0;
+        }
+        finally { edxSkipEvent = false; }
+    }
+
+    private void ComboBoxEdxDisplay_SelectedIndexChanged(object sender, System.EventArgs e)
+    {
+        if (edxSkipEvent) return;
+        //参照像を選んでいるときだけ Both/Elastic/TDS が意味を持つ
+        groupBoxSTEMoption3.Enabled = true;
+        radioButtonSTEM_target_both.Enabled = radioButtonSTEM_target_elas.Enabled = radioButtonSTEM_target_TDS.Enabled = SelectedEdxSignal is null;
+        GeneratePseudBitmap();
+    }
+
     #endregion
 
     #region イベントハンドラ

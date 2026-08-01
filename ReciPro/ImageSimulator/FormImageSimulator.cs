@@ -262,7 +262,14 @@ public partial class FormImageSimulator : FormBase
     public FormPresets FormPresets;
     public FormCTF FormCTF;
 
-    readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new();
+    //260801Cl 変更: sw5 = STEM-EDX の別 q パス (Stage 5) 用。旧: sw1..sw4
+    readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new(), sw5 = new();
+
+    /// <summary>260801Cl 追加: 実行中の run を開始した BetheMethod (run 中に結晶が切り替わっても購読解除・結果取得が取り違えないよう snapshot)</summary>
+    private BetheMethod stemBethe;
+
+    /// <summary>260801Cl 追加: 実行中の run の EDX チャネル数 (進捗配分に使う。GUI のチェック状態ではなく実行時の要求)</summary>
+    private int stemEdxChannelCount;
     //private static readonly double Pi2 = PI * PI;
 
     private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
@@ -319,6 +326,8 @@ public partial class FormImageSimulator : FormBase
         pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
 
         comboBoxScaleColorScale.SelectedIndex = 0;
+
+        AppendDetectorAngleNote();//260801Cl 追加: 検出器角が STEM 参照像専用であることをツールチップに明示 (§5.9.1-4)
 
         NumericBoxAccVol_ValueChanged(sender, e);
     }
@@ -419,27 +428,50 @@ public partial class FormImageSimulator : FormBase
                     stemDirectionTotal++;
             }
 
-        toolStripProgressBar.Maximum = stemDirectionTotal;
-        FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
-        FormMain.Crystal.Bethe.StemCompleted += StemCompleted;
+        //260801Cl 追加: EDX 要求は購読前に検証する (エラーで抜けるときに購読解除の後始末が要らない)
+        var edxRequests = BuildEdxRequests();
+        if (!ValidateEdxRequest(edxRequests, division)) return;
 
-        FormMain.Crystal.Bethe.RunSTEM(
-            BlochNum,
-            AccVol,
-            Cs,
-            Delta,
-            STEM_SliceThickness,
-            ImageSize,
-            ImageResolution,
-            STEM_SourceSizeFWHM,
-            FormMain.Crystal.RotationMatrix,
-            ThicknessArray,
-            DefocusArray,
-            directions,
-            STEM_ConvergenceAngle,
-            STEM_DetectorInnerAngle,
-            STEM_DetectorOuterAngle
-            );
+        //260801Cl 追加: run 中に別の結晶へ切り替わっても購読解除・結果取得が同じインスタンスを指すよう snapshot する (codex 20巡)
+        stemBethe = FormMain.Crystal.Bethe;
+        stemEdxChannelCount = edxRequests?.Length ?? 0;
+
+        toolStripProgressBar.Maximum = stemDirectionTotal;
+        stemBethe.StemProgressChanged += stemProgressChanged;
+        stemBethe.StemCompleted += StemCompleted;
+
+        try
+        {
+            stemBethe.RunSTEM(
+                BlochNum,
+                AccVol,
+                Cs,
+                Delta,
+                STEM_SliceThickness,
+                ImageSize,
+                ImageResolution,
+                STEM_SourceSizeFWHM,
+                FormMain.Crystal.RotationMatrix,
+                ThicknessArray,
+                DefocusArray,
+                directions,
+                STEM_ConvergenceAngle,
+                STEM_DetectorInnerAngle,
+                STEM_DetectorOuterAngle,
+                ionizations: edxRequests
+                );
+        }
+        catch (Exception ex)
+        {
+            //260801Cl 追加: RunSTEM は worker 起動前に同期 throw し得る (未収録 Z・E0 範囲外・重複チャネル)。
+            //購読したまま抜けると次の run で二重購読になるので、必ず解除して UI を戻す (codex 20巡)
+            stemBethe.StemProgressChanged -= stemProgressChanged;
+            stemBethe.StemCompleted -= StemCompleted;
+            stemBethe = null;
+            toolStripStatusLabel1.Text = ex.Message;
+            MessageBox.Show(ex.Message, "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
 
         this.buttonSimulate.Visible = false;
         this.buttonStop.Visible = true;
@@ -447,7 +479,7 @@ public partial class FormImageSimulator : FormBase
 
         if (sync)
             // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
-            while (FormMain.Crystal.Bethe.IsSTEM_Busy)
+            while (stemBethe.IsSTEM_Busy)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
@@ -456,10 +488,10 @@ public partial class FormImageSimulator : FormBase
 
     private void buttonStop_Click(object sender, EventArgs e)
     {
-        FormMain.Crystal.Bethe.CancelSTEM();
-        this.buttonSimulate.Visible = true;
-        this.buttonStop.Visible = false;
-        this.splitContainer1.Enabled = true;
+        //260801Cl 変更: cancel 要求だけ出し、UI の復帰は StemCompleted に任せる (worker が止まる前に設定 UI を戻すと、
+        //実行中の run と食い違う条件で再実行できてしまう。codex 20巡)。旧: ここで buttonSimulate/splitContainer を戻していた
+        (stemBethe ?? FormMain.Crystal.Bethe).CancelSTEM();
+        buttonStop.Enabled = false;
     }
 
     #region BackgroundWorkerからのProgressChanged
@@ -474,7 +506,35 @@ public partial class FormImageSimulator : FormBase
         long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
 
         var message = (string)e.UserState;
-        if (message.StartsWith("Calculating I_inelastic(Q)", StringComparison.Ordinal))
+        //260801Cl 追加: Stage4 と Stage5 (EDX) の配分。EDX チャネル 1 本を Stage4 の 1/3 の重みとみなす (§5.9-8。
+        //暫定係数で、実測 ETA モデルではない)。ch=0 なら Stage4 が従来どおり 20-100%
+        var edxCh = stemEdxChannelCount;
+        var stage4Span = 0.80 * 3 / (3 + edxCh);
+        var edxSpan = 0.80 / (3 + edxCh);
+        //残り時間は current==0 で 0 除算になるので、進捗が出るまでは「推定中」にする
+        string Remaining(double sec, double cur) => cur > 0 ? $"wait for more {sec * (1E6 - cur) / cur:f1} s" : "estimating…";
+
+        if (message.StartsWith("Calculating I_EDX(Q)", StringComparison.Ordinal))
+        {
+            //260801Cl 追加: Stage 5 (STEM-EDX の別 q パス)。メッセージ末尾の " (ch i/n)" が現在のチャネル
+            //(GUI 側の型付き進捗への移行までの暫定プロトコル。前方一致部分は backend と厳密に一致させること)
+            if (sw1.IsRunning) sw1.Stop();
+            if (sw2.IsRunning) sw2.Stop();
+            if (sw3.IsRunning) sw3.Stop();
+            if (sw4.IsRunning) sw4.Stop();
+            if (!sw5.IsRunning) sw5.Restart();
+            var chIndex = 0;
+            var open = message.LastIndexOf("(ch ", StringComparison.Ordinal);
+            if (open >= 0 && int.TryParse(message.AsSpan(open + 4, message.IndexOf('/', open) - open - 4), out var oneBased))
+                chIndex = oneBased - 1;
+            var sec = sw5.ElapsedMilliseconds / 1000.0;
+            var totalsec = (s1 + s2 + s3 + s4) / 1000.0 + sec;
+            var frac = 0.20 + stage4Span + (chIndex + current / 1E6) * edxSpan;
+            toolStripProgressBar.Value = (int)(Math.Min(frac, 1.0) * toolStripProgressBar.Maximum);
+            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 5: Calculating I_EDX(Q) {(edxCh > 1 ? $"({chIndex + 1}/{edxCh}) " : "")}. ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
+        }
+        else if (message.StartsWith("Calculating I_inelastic(Q)", StringComparison.Ordinal))
         {
             if (sw1.IsRunning) sw1.Stop();
             if (sw2.IsRunning) sw2.Stop();
@@ -482,9 +542,9 @@ public partial class FormImageSimulator : FormBase
             if (!sw4.IsRunning) sw4.Restart();
             var sec = s4 / 1000.0;
             var totalsec = sec + (s1 + s2 + s3) / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.8 + 0.2) * toolStripProgressBar.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * stage4Span + 0.2) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  {Remaining(sec, current)}";
         }
         else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
         {
@@ -522,30 +582,46 @@ public partial class FormImageSimulator : FormBase
     #region BackgroundWorkerからのstemCompleted
     private void StemCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        FormMain.Crystal.Bethe.StemCompleted -= StemCompleted;
-        FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
-        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
+        //260801Cl 変更: 購読解除は run を開始したインスタンスに対して行う (run 中に結晶が切り替わっても取り違えない)。
+        //旧: FormMain.Crystal.Bethe を都度参照していた
+        var bethe = stemBethe ?? FormMain.Crystal.Bethe;
+        bethe.StemCompleted -= StemCompleted;
+        bethe.StemProgressChanged -= stemProgressChanged;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds, s5 = sw5.ElapsedMilliseconds;
 
-        if (!e.Cancelled)
+        //260801Cl 追加: e.Error を e.Cancelled より先に見る (旧実装は e.Error を確認しておらず、
+        //worker が例外で落ちても「完了」として旧結果を再描画していた。codex 20巡)
+        if (e.Error is not null)
         {
+            toolStripStatusLabel1.Text = $"Failed: {e.Error.Message}";
+            MessageBox.Show(e.Error.Message, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        else if (!e.Cancelled)
+        {
+            //260801Cl 追加: 表示切替 ComboBox は「今回の run が公開した EdxSignals」から作る (GeneratePseudBitmap より先に)
+            RenewEdxDisplayList();
             //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             GeneratePseudBitmap();
 
 
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
+            toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} s  Stage 2: {s2 / 1000.0:f1} s  Stage 3: {s3 / 1000.0:f1} s  Stage 4: {s4 / 1000.0:f1} s";
+            if (s5 > 0) toolStripStatusLabel1.Text += $"  Stage 5 (EDX): {s5 / 1000.0:f1} s";//260801Cl 追加
 
         }
         else
         {
-            toolStripStatusLabel1.Text = $"Interrupted! Total elapsed time: {(s1 + s2 + s3) / 1000.0:f1} s"; // 260520Cl: typo fix (Interupted → Interrupted, ellapsed → elapsed)
+            toolStripStatusLabel1.Text = $"Interrupted! Total elapsed time: {(s1 + s2 + s3 + s4 + s5) / 1000.0:f1} s"; // 260520Cl: typo fix (Interupted → Interrupted, ellapsed → elapsed)
         }
         toolStripStatusLabel2.Text = "";
         this.buttonSimulate.Visible = true;
         this.buttonStop.Visible = false;
+        this.buttonStop.Enabled = true;//260801Cl 追加 (buttonStop_Click で無効化した分を戻す)
         this.splitContainer1.Enabled = true;
-        sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Reset(); sw3.Reset();
+        stemBethe = null;//260801Cl 追加
+        //260801Cl 修正: sw3 の Stop/Reset が 2 回書かれ sw4 が reset されていなかった (旧: sw3.Reset(); sw3.Reset();)
+        sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Stop(); sw3.Reset(); sw4.Stop(); sw4.Reset(); sw5.Stop(); sw5.Reset();
         // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
@@ -713,7 +789,13 @@ public partial class FormImageSimulator : FormBase
             resolution = bethe.ResultSTEM.Resolution;
             rot = bethe.ResultSTEM.rot;
 
-            if (radioButtonSTEM_target_both.Checked)
+            //260801Cl 追加: ComboBox で EDX チャネルを選んでいればそれを表示 (§5.9.1-5)。
+            //Both/Elastic/TDS は「STEM 参照像」を選んでいるときの切替
+            var edx = SelectedEdxSignal;
+            if (edx is not null)
+                images = [.. Enumerable.Range(0, edx.Image.ThicknessCount)
+                    .Select(t => Enumerable.Range(0, edx.Image.DefocusCount).Select(d => edx.Image.GetPlane(t, d).ToArray()).ToArray())];
+            else if (radioButtonSTEM_target_both.Checked)
                 images = bethe.ResultSTEM.ImageBoth;
             else if (radioButtonSTEM_target_elas.Checked)
                 images = bethe.ResultSTEM.ImageEla;

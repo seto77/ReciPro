@@ -1403,7 +1403,7 @@ inelastic) electrons in the STEM image.</value>
     <value>480, 3</value>
   </data>
   <data name="groupBoxSTEMoption3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 105</value>
+    <value>104, 132</value>
   </data>
   <data name="groupBoxSTEMoption3.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -7983,6 +7983,33 @@ code (fast C++/Eigen) or Managed code
     <value>groupBoxSTEMoption4</value>
   </data>
   <data name="&gt;&gt;panelEdxDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxEdxDisplay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="comboBoxEdxDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 105</value>
+  </data>
+  <data name="comboBoxEdxDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 23</value>
+  </data>
+  <data name="comboBoxEdxDisplay.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="comboBoxEdxDisplay.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDisplay.Name" xml:space="preserve">
+    <value>comboBoxEdxDisplay</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDisplay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDisplay.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDisplay.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
 </root>
