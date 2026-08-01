@@ -86,7 +86,7 @@
     <value>Фикс.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
+    <value>&amp;Файл</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Репозиторий GitHub</value>
@@ -98,7 +98,7 @@
     <value>Сбросить настройки реестра при выходе (вступает в силу после перезапуска)</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>Макрос</value>
+    <value>&amp;Макрос</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>Отключить весь рендеринг OpenGL (требуется перезапуск)</value>
@@ -126,7 +126,7 @@
     <value>↑ Добавить ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Параметры</value>
+    <value>&amp;Параметры</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>Проверить обновления</value>
@@ -138,7 +138,7 @@
     <value>Тёмная тема</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Справка</value>
+    <value>&amp;Справка</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Углы Эйлера</value>
@@ -168,7 +168,7 @@
     <value>Очистить все кристаллы</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Язык</value>
+    <value>&amp;Язык</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Время вычисления: </value>

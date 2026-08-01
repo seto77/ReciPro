@@ -396,7 +396,7 @@ v2</value>
     <value>粉末回折機能を開く</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
+    <value>ファイル(&amp;F)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを読込 (現在のリストを消去)</value>
@@ -423,7 +423,7 @@ v2</value>
     <value>閉じる</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>オプション</value>
+    <value>オプション(&amp;O)</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップを表示</value>
@@ -470,7 +470,7 @@ v2</value>
     <value>ダークモード</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ヘルプ</value>
+    <value>ヘルプ(&amp;H)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデート</value>
@@ -494,7 +494,7 @@ v2</value>
     <value>使い方 (WEB)</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>マクロ</value>
+    <value>マクロ(&amp;M)</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>編集</value>

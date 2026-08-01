@@ -86,7 +86,7 @@
     <value>固定</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>文件</value>
+    <value>文件(&amp;F)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>GitHub 仓库</value>
@@ -98,7 +98,7 @@
     <value>退出时重置注册表设置（重启后生效）</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>宏</value>
+    <value>宏(&amp;M)</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>禁用全部 OpenGL 渲染（需要重启）</value>
@@ -126,7 +126,7 @@
     <value>↑ 添加 ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>选项</value>
+    <value>选项(&amp;O)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>检查更新</value>
@@ -138,7 +138,7 @@
     <value>深色模式</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>帮助</value>
+    <value>帮助(&amp;H)</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>欧拉角</value>
@@ -168,7 +168,7 @@
     <value>清除所有晶体</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>语言</value>
+    <value>语言(&amp;L)</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>计算时间: </value>

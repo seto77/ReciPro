@@ -86,7 +86,7 @@
     <value>Fixer</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fichier</value>
+    <value>&amp;Fichier</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Dépôt GitHub</value>
@@ -132,7 +132,7 @@
     <value>Mode sombre</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Aide</value>
+    <value>&amp;Aide</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Angles d'Euler</value>
@@ -162,7 +162,7 @@
     <value>Effacer tous les cristaux</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Langue</value>
+    <value>&amp;Langue</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Temps de calcul : </value>

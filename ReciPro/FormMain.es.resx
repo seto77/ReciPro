@@ -86,7 +86,7 @@
     <value>Fijar</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Archivo</value>
+    <value>&amp;Archivo</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Repositorio de GitHub</value>
@@ -123,7 +123,7 @@
     <value>↑ Añadir ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Opciones</value>
+    <value>&amp;Opciones</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>Buscar actualizaciones</value>
@@ -135,7 +135,7 @@
     <value>Modo oscuro</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ayuda</value>
+    <value>Ay&amp;uda</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Ángulos de Euler</value>
@@ -165,7 +165,7 @@
     <value>Borrar todos los cristales</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Idioma</value>
+    <value>&amp;Idioma</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Tiempo de cálculo: </value>

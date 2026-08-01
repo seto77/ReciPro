@@ -86,7 +86,7 @@
     <value>고정</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>파일</value>
+    <value>파일(&amp;F)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>GitHub 저장소</value>
@@ -98,7 +98,7 @@
     <value>종료 시 레지스트리 설정 초기화 (재시작 후 적용)</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>매크로</value>
+    <value>매크로(&amp;M)</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>모든 OpenGL 렌더링 사용 안 함 (재시작 필요)</value>
@@ -126,7 +126,7 @@
     <value>↑ 추가 ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>옵션</value>
+    <value>옵션(&amp;O)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>업데이트 확인</value>
@@ -138,7 +138,7 @@
     <value>다크 모드</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>도움말</value>
+    <value>도움말(&amp;H)</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>오일러 각</value>
@@ -168,7 +168,7 @@
     <value>모든 결정 지우기</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>언어</value>
+    <value>언어(&amp;L)</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>계산 시간: </value>

@@ -3459,7 +3459,7 @@ patterns from crystal orientation.</value>
     <value>39, 21</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
+    <value>&amp;File</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 22</value>
@@ -3563,7 +3563,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>66, 21</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Options</value>
+    <value>&amp;Options</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
@@ -3620,13 +3620,13 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>47, 21</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
+    <value>&amp;Help</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 21</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>&amp;Language</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -3644,7 +3644,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>58, 21</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>Macro</value>
+    <value>&amp;Macro</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

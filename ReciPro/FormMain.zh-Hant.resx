@@ -86,7 +86,7 @@
     <value>固定</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>檔案</value>
+    <value>檔案(&amp;F)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>GitHub 儲存庫</value>
@@ -98,7 +98,7 @@
     <value>結束時重設登錄設定（重新啟動後生效）</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>巨集</value>
+    <value>巨集(&amp;M)</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>停用所有 OpenGL 算繪（需重新啟動）</value>
@@ -126,7 +126,7 @@
     <value>↑ 新增 ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>選項</value>
+    <value>選項(&amp;O)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>檢查更新</value>
@@ -138,7 +138,7 @@
     <value>深色模式</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>說明</value>
+    <value>說明(&amp;H)</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>尤拉角</value>
@@ -168,7 +168,7 @@
     <value>清除所有晶體</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>語言</value>
+    <value>語言(&amp;L)</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>計算時間: </value>

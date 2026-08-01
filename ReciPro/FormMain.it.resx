@@ -117,7 +117,7 @@
     <value>↑ Aggiungi ↑</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>&amp;Opzioni</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>Controlla aggiornamenti</value>
@@ -129,7 +129,7 @@
     <value>Modalità scura</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Guida</value>
+    <value>&amp;Guida</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Angoli di Eulero</value>
@@ -159,7 +159,7 @@
     <value>Cancella tutti i cristalli</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Lingua</value>
+    <value>&amp;Lingua</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Tempo di calcolo: </value>
