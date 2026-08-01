@@ -3399,19 +3399,19 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load Crystal List (Replace current list)</value>
+    <value>&amp;Load Crystal List (Replace current list)</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load Crystal List (Add to current list)</value>
+    <value>Load Crystal List (&amp;Add to current list)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>Reset to initial crystal list</value>
+    <value>&amp;Reset to initial crystal list</value>
   </data>
   <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3420,7 +3420,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Import Crystal from a CIF or AMC File</value>
+    <value>&amp;Import Crystal from a CIF or AMC File</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3429,13 +3429,13 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save crystal list</value>
+    <value>&amp;Save crystal list</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Export the Selected Crystal as a CIF File</value>
+    <value>&amp;Export the Selected Crystal as a CIF File</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3444,7 +3444,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Clear all crystals</value>
+    <value>&amp;Clear all crystals</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 6</value>
@@ -3453,7 +3453,7 @@ patterns from crystal orientation.</value>
     <value>304, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
+    <value>E&amp;xit</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>
@@ -3569,7 +3569,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Check for Updates</value>
+    <value>&amp;Check for Updates</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
@@ -3578,19 +3578,19 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>Hints</value>
+    <value>&amp;Hints</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Version History</value>
+    <value>&amp;Version History</value>
   </data>
   <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>License</value>
+    <value>&amp;License</value>
   </data>
   <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
@@ -3599,13 +3599,13 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>GitHub Repository</value>
+    <value>&amp;GitHub Repository</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Report Bugs, Requests, or Comments</value>
+    <value>&amp;Report Bugs, Requests, or Comments</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
@@ -3614,7 +3614,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>294, 22</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (Web)</value>
+    <value>Help (&amp;Web)</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
@@ -3632,7 +3632,7 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>111, 22</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
-    <value>Editor</value>
+    <value>&amp;Editor</value>
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 6</value>
@@ -3710,25 +3710,25 @@ Note: when enabled, any process of the same user can execute macro code in ReciP
     <value>127, 22</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rename</value>
+    <value>&amp;Rename</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 20</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>Export as CIF</value>
+    <value>&amp;Export as CIF</value>
   </data>
   <data name="duplicateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>D&amp;uplicate</value>
   </data>
   <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete</value>
+    <value>&amp;Delete</value>
   </data>
   <data name="contextMenuStripListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 99</value>

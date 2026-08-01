@@ -60,10 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Экспортировать выбранный кристалл в файл CIF</value>
+    <value>&amp;Экспортировать выбранный кристалл в файл CIF</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Лицензия</value>
+    <value>&amp;Лицензия</value>
   </data>
   <data name="buttonUp.Text" xml:space="preserve">
     <value>Вверх</value>
@@ -72,7 +72,7 @@
     <value>  Стереосеть</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>Подсказки</value>
+    <value>П&amp;одсказки</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>  Сведения
@@ -89,7 +89,7 @@
     <value>&amp;Файл</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Репозиторий GitHub</value>
+    <value>&amp;Репозиторий GitHub</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>Удалить</value>
@@ -129,10 +129,10 @@
     <value>&amp;Параметры</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Проверить обновления</value>
+    <value>&amp;Проверить обновления</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить список кристаллов (заменить текущий список)</value>
+    <value>&amp;Загрузить список кристаллов (заменить текущий список)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>Тёмная тема</value>
@@ -144,7 +144,7 @@
     <value>Углы Эйлера</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>Экспортировать как CIF</value>
+    <value>&amp;Экспортировать как CIF</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>Сбросить поворот</value>
@@ -156,13 +156,13 @@
     <value>Ориентация</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Дублировать</value>
+    <value>&amp;Дублировать</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>Функции</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить список кристаллов (добавить к текущему списку)</value>
+    <value>Загрузить &amp;список кристаллов (добавить к текущему списку)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>Очистить все кристаллы</value>
@@ -198,13 +198,13 @@
     <value>Функция порошковой дифракции (в разработке)</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Удалить</value>
+    <value>&amp;Удалить</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>Сбросить к исходному списку кристаллов</value>
+    <value>Сбросить &amp;к исходному списку кристаллов</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Сохранить список кристаллов</value>
+    <value>С&amp;охранить список кристаллов</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>Скачать библиотеку MKL</value>
@@ -213,7 +213,7 @@
     <value>Использовать ионные факторы рассеяния</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Очистить все кристаллы</value>
+    <value>Очистить &amp;все кристаллы</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
     <value>Использовать индексы Миллера–Браве (hkil)</value>
@@ -241,25 +241,25 @@
     <value>Плоскость</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Импортировать кристалл из файла CIF или AMC</value>
+    <value>&amp;Импортировать кристалл из файла CIF или AMC</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Переименовать</value>
+    <value>&amp;Переименовать</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Выход</value>
+    <value>В&amp;ыход</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Сообщить об ошибках, пожеланиях или комментариях</value>
+    <value>&amp;Сообщить об ошибках, пожеланиях или комментариях</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Отключить библиотеку Crystallography.Native (требуется перезапуск)</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>История версий</value>
+    <value>&amp;История версий</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>Справка (веб)</value>
+    <value>Спра&amp;вка (веб)</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
     <value>  Взаимодействие

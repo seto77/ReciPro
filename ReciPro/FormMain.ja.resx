@@ -399,28 +399,28 @@ v2</value>
     <value>ファイル(&amp;F)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを読込 (現在のリストを消去)</value>
+    <value>結晶リストを読込 (現在のリストを消去)(&amp;L)</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを読込 (現在のリストに追加)</value>
+    <value>結晶リストを読込 (現在のリストに追加)(&amp;A)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>結晶リストを初期状態に戻す</value>
+    <value>結晶リストを初期状態に戻す(&amp;R)</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIFあるいはAMCファイルから結晶を読み込み</value>
+    <value>CIFあるいはAMCファイルから結晶を読み込み(&amp;I)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶リストを保存</value>
+    <value>結晶リストを保存(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>選択結晶をCIF形式で書き出し</value>
+    <value>選択結晶をCIF形式で書き出し(&amp;E)</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>現在のリストを消去</value>
+    <value>現在のリストを消去(&amp;C)</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>閉じる</value>
+    <value>閉じる(&amp;X)</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>オプション(&amp;O)</value>
@@ -473,43 +473,43 @@ v2</value>
     <value>ヘルプ(&amp;H)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>アップデート</value>
+    <value>アップデート(&amp;C)</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>ヒント</value>
+    <value>ヒント(&amp;H)</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>バージョン履歴</value>
+    <value>バージョン履歴(&amp;V)</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>ライセンス</value>
+    <value>ライセンス(&amp;L)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Github ページ</value>
+    <value>Github ページ(&amp;G)</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>バグ、要望報告</value>
+    <value>バグ、要望報告(&amp;R)</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>使い方 (WEB)</value>
+    <value>使い方 (WEB)(&amp;W)</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>マクロ(&amp;M)</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
-    <value>編集</value>
+    <value>編集(&amp;E)</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>名前の変更</value>
+    <value>名前の変更(&amp;R)</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIFで出力</value>
+    <value>CIFで出力(&amp;E)</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>複製</value>
+    <value>複製(&amp;U)</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>削除</value>
+    <value>削除(&amp;D)</value>
   </data>
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 7pt</value>

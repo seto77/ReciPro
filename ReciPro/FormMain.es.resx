@@ -60,10 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Exportar el cristal seleccionado como archivo CIF</value>
+    <value>&amp;Exportar el cristal seleccionado como archivo CIF</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Licencia</value>
+    <value>&amp;Licencia</value>
   </data>
   <data name="buttonUp.Text" xml:space="preserve">
     <value>Subir</value>
@@ -72,7 +72,7 @@
     <value>  Estereograma</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>Sugerencias</value>
+    <value>&amp;Sugerencias</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>  Información
@@ -89,7 +89,7 @@
     <value>&amp;Archivo</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Repositorio de GitHub</value>
+    <value>&amp;Repositorio de GitHub</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>Eliminar</value>
@@ -126,10 +126,10 @@
     <value>&amp;Opciones</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Buscar actualizaciones</value>
+    <value>&amp;Buscar actualizaciones</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cargar lista de cristales (reemplazar lista actual)</value>
+    <value>&amp;Cargar lista de cristales (reemplazar lista actual)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>Modo oscuro</value>
@@ -141,7 +141,7 @@
     <value>Ángulos de Euler</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exportar como CIF</value>
+    <value>&amp;Exportar como CIF</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>Restablecer rotación</value>
@@ -153,13 +153,13 @@
     <value>Orientación actual</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Duplicar</value>
+    <value>&amp;Duplicar</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>Funciones</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cargar lista de cristales (añadir a la lista actual)</value>
+    <value>Cargar &amp;lista de cristales (añadir a la lista actual)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>Borrar todos los cristales</value>
@@ -195,13 +195,13 @@
     <value>Función de difracción de polvo (en desarrollo)</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Eliminar</value>
+    <value>E&amp;liminar</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>Restablecer a la lista de cristales inicial</value>
+    <value>&amp;Restablecer a la lista de cristales inicial</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Guardar lista de cristales</value>
+    <value>&amp;Guardar lista de cristales</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>Descargar biblioteca MKL</value>
@@ -210,7 +210,7 @@
     <value>Usar factores de dispersión iónicos</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Borrar todos los cristales</value>
+    <value>&amp;Borrar todos los cristales</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
     <value>Usar índices de Miller-Bravais (hkil)</value>
@@ -238,25 +238,25 @@
     <value>Plano</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Importar cristal desde un archivo CIF o AMC</value>
+    <value>&amp;Importar cristal desde un archivo CIF o AMC</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cambiar nombre</value>
+    <value>&amp;Cambiar nombre</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Salir</value>
+    <value>&amp;Salir</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Informar de errores, peticiones o comentarios</value>
+    <value>&amp;Informar de errores, peticiones o comentarios</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Desactivar biblioteca Crystallography.Native (requiere reinicio)</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Historial de versiones</value>
+    <value>&amp;Historial de versiones</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ayuda (web)</value>
+    <value>&amp;Ayuda (web)</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
     <value>  Interacción

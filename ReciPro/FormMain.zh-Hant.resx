@@ -60,10 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>將選取的晶體匯出為 CIF 檔案</value>
+    <value>將選取的晶體匯出為 CIF 檔案(&amp;E)</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>授權</value>
+    <value>授權(&amp;L)</value>
   </data>
   <data name="buttonUp.Text" xml:space="preserve">
     <value>上移</value>
@@ -72,7 +72,7 @@
     <value>  極網</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>提示</value>
+    <value>提示(&amp;H)</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>  對稱性
@@ -89,7 +89,7 @@
     <value>檔案(&amp;F)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>GitHub 儲存庫</value>
+    <value>GitHub 儲存庫(&amp;G)</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>刪除</value>
@@ -129,10 +129,10 @@
     <value>選項(&amp;O)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>檢查更新</value>
+    <value>檢查更新(&amp;C)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入晶體清單（取代目前清單）</value>
+    <value>載入晶體清單（取代目前清單）(&amp;L)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>深色模式</value>
@@ -144,7 +144,7 @@
     <value>尤拉角</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>匯出為 CIF</value>
+    <value>匯出為 CIF(&amp;E)</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>重設旋轉</value>
@@ -156,13 +156,13 @@
     <value>目前方位</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>複製</value>
+    <value>複製(&amp;U)</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>功能</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>載入晶體清單（加入目前清單）</value>
+    <value>載入晶體清單（加入目前清單）(&amp;A)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>清除所有晶體</value>
@@ -198,13 +198,13 @@
     <value>粉末繞射功能（開發中）</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>刪除</value>
+    <value>刪除(&amp;D)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>重設為初始晶體清單</value>
+    <value>重設為初始晶體清單(&amp;R)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>儲存晶體清單</value>
+    <value>儲存晶體清單(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>下載 MKL 程式庫</value>
@@ -213,7 +213,7 @@
     <value>使用離子散射因子</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>清除所有晶體</value>
+    <value>清除所有晶體(&amp;C)</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
     <value>使用米勒-布拉維 (hkil) 指數</value>
@@ -241,25 +241,25 @@
     <value>晶面</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>從 CIF 或 AMC 檔案匯入晶體</value>
+    <value>從 CIF 或 AMC 檔案匯入晶體(&amp;I)</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>重新命名</value>
+    <value>重新命名(&amp;R)</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>結束</value>
+    <value>結束(&amp;X)</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>回報錯誤、需求或意見</value>
+    <value>回報錯誤、需求或意見(&amp;R)</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>停用 Crystallography.Native 程式庫（需重新啟動）</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>版本紀錄</value>
+    <value>版本紀錄(&amp;V)</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>說明（網頁）</value>
+    <value>說明（網頁）(&amp;W)</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
     <value>  電子束

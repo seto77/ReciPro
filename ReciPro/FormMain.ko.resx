@@ -60,10 +60,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>선택한 결정을 CIF 파일로 내보내기</value>
+    <value>선택한 결정을 CIF 파일로 내보내기(&amp;E)</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
-    <value>라이선스</value>
+    <value>라이선스(&amp;L)</value>
   </data>
   <data name="buttonUp.Text" xml:space="preserve">
     <value>위로</value>
@@ -72,7 +72,7 @@
     <value>  스테레오넷</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
-    <value>힌트</value>
+    <value>힌트(&amp;H)</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>  대칭
@@ -89,7 +89,7 @@
     <value>파일(&amp;F)</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>GitHub 저장소</value>
+    <value>GitHub 저장소(&amp;G)</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>삭제</value>
@@ -129,10 +129,10 @@
     <value>옵션(&amp;O)</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>업데이트 확인</value>
+    <value>업데이트 확인(&amp;C)</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 불러오기 (현재 목록 교체)</value>
+    <value>결정 목록 불러오기 (현재 목록 교체)(&amp;L)</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>다크 모드</value>
@@ -144,7 +144,7 @@
     <value>오일러 각</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIF로 내보내기</value>
+    <value>CIF로 내보내기(&amp;E)</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>회전 초기화</value>
@@ -156,13 +156,13 @@
     <value>현재 방위</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
-    <value>복제</value>
+    <value>복제(&amp;U)</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>기능</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 불러오기 (현재 목록에 추가)</value>
+    <value>결정 목록 불러오기 (현재 목록에 추가)(&amp;A)</value>
   </data>
   <data name="buttonClearAllCrystals.Text" xml:space="preserve">
     <value>모든 결정 지우기</value>
@@ -198,13 +198,13 @@
     <value>분말 회절 기능 (개발 중)</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>삭제</value>
+    <value>삭제(&amp;D)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
-    <value>초기 결정 목록으로 재설정</value>
+    <value>초기 결정 목록으로 재설정(&amp;R)</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>결정 목록 저장</value>
+    <value>결정 목록 저장(&amp;S)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>MKL 라이브러리 다운로드</value>
@@ -213,7 +213,7 @@
     <value>이온 산란 인자 사용</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>모든 결정 지우기</value>
+    <value>모든 결정 지우기(&amp;C)</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
     <value>밀러-브라베 (hkil) 지수 사용</value>
@@ -241,25 +241,25 @@
     <value>면</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>CIF 또는 AMC 파일에서 결정 가져오기</value>
+    <value>CIF 또는 AMC 파일에서 결정 가져오기(&amp;I)</value>
   </data>
   <data name="renameToolStripMenuItem.Text" xml:space="preserve">
-    <value>이름 바꾸기</value>
+    <value>이름 바꾸기(&amp;R)</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>종료</value>
+    <value>종료(&amp;X)</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
-    <value>버그, 요청 또는 의견 보고</value>
+    <value>버그, 요청 또는 의견 보고(&amp;R)</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Crystallography.Native 라이브러리 사용 안 함 (재시작 필요)</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>버전 기록</value>
+    <value>버전 기록(&amp;V)</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>도움말 (웹)</value>
+    <value>도움말 (웹)(&amp;W)</value>
   </data>
   <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
     <value>  빔
