@@ -16,7 +16,7 @@ Quando o ReciPro é iniciado, a janela principal aparece. A partir dessa janela 
 
 ## Atalhos de teclado e mouse {#keyboard-mouse-shortcuts}
 
-A janela principal instala vários atalhos **válidos para todo o aplicativo**. Eles continuam funcionando enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração, Spot ID e Calculadora estão em foco.
+A janela principal instala vários atalhos **válidos para todo o aplicativo**. Eles continuam funcionando enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID estão em foco.
 
 | Atalho | Ação |
 |----------|--------|

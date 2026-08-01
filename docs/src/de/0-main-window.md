@@ -16,7 +16,7 @@ Beim Start von ReciPro erscheint das Hauptfenster. Von diesem Fenster aus wähle
 
 ## Tastatur- & Maus-Kurzbefehle {#keyboard-mouse-shortcuts}
 
-Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleiben aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator, Spot ID und Rechner den Fokus haben.
+Das Hauptfenster installiert mehrere **anwendungsweite** Kurzbefehle. Sie bleiben aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID den Fokus haben.
 
 | Kurzbefehl | Aktion |
 |----------|--------|

@@ -8,7 +8,7 @@ ReciPro verknüpft viele Funktionen mit **Tastenkombinationen** und mit **Mausta
 
 ## Anwendungsweite Kurzbefehle
 
-Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator, Spot ID und Rechner den Fokus haben.
+Diese werden vom [Hauptfenster](0-main-window.md) eingerichtet, bleiben aber aktiv, während die Fenster Strukturansicht, Stereonetz, Beugungssimulator und Spot ID den Fokus haben.
 
 | Kurzbefehl | Aktion |
 |----------|--------|

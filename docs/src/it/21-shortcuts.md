@@ -8,7 +8,7 @@ ReciPro associa molte funzioni a **combinazioni di tasti** e a **pulsanti del mo
 
 ## Scorciatoie valide per l'intera applicazione
 
-Queste vengono installate dalla [finestra principale](0-main-window.md) ma restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione, Spot ID e Calcolatrice hanno il fuoco.
+Queste vengono installate dalla [finestra principale](0-main-window.md) ma restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione e Spot ID hanno il fuoco.
 
 | Scorciatoia | Azione |
 |----------|--------|

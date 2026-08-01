@@ -8,7 +8,7 @@ ReciPro asocia muchas funciones a **combinaciones de teclas** y a **botones del 
 
 ## Atajos para toda la aplicación
 
-Estos se instalan desde la [ventana principal](0-main-window.md), pero permanecen activos mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción, Spot ID y Calculadora tienen el foco.
+Estos se instalan desde la [ventana principal](0-main-window.md), pero permanecen activos mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción y Spot ID tienen el foco.
 
 | Atajo | Acción |
 |----------|--------|

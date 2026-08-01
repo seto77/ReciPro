@@ -16,7 +16,7 @@ Au démarrage de ReciPro, la fenêtre principale apparaît. Depuis cette fenêtr
 
 ## Raccourcis clavier et souris {#keyboard-mouse-shortcuts}
 
-La fenêtre principale installe plusieurs raccourcis **applicables à toute l'application**. Ils restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction, Spot ID et Calculatrice ont le focus.
+La fenêtre principale installe plusieurs raccourcis **applicables à toute l'application**. Ils restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction et Spot ID ont le focus.
 
 | Raccourci | Action |
 |----------|--------|

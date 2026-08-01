@@ -8,7 +8,7 @@ ReciPro associe de nombreuses fonctions à des **combinaisons de touches** et à
 
 ## Raccourcis applicables à toute l'application
 
-Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction, Spot ID et Calculatrice ont le focus.
+Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction et Spot ID ont le focus.
 
 | Raccourci | Action |
 |----------|--------|

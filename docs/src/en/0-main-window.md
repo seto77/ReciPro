@@ -16,7 +16,7 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ## Keyboard & mouse shortcuts {#keyboard-mouse-shortcuts}
 
-The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, Spot ID, and Calculator windows are focused.
+The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID windows are focused.
 
 | Shortcut | Action |
 |----------|--------|

@@ -16,7 +16,7 @@ All'avvio di ReciPro compare la finestra principale. Da questa finestra si selez
 
 ## Scorciatoie da tastiera e mouse {#keyboard-mouse-shortcuts}
 
-La finestra principale installa diverse scorciatoie **valide per l'intera applicazione**. Restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione, Spot ID e Calcolatrice hanno il focus.
+La finestra principale installa diverse scorciatoie **valide per l'intera applicazione**. Restano attive mentre le finestre Visualizzatore struttura, Stereogramma, Simulatore di diffrazione e Spot ID hanno il focus.
 
 | Scorciatoia | Azione |
 |----------|--------|

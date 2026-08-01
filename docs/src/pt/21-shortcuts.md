@@ -8,7 +8,7 @@ O ReciPro associa muitas funções a **combinações de teclas** e a **botões d
 
 ## Atalhos válidos em todo o aplicativo
 
-Estes são instalados pela [janela principal](0-main-window.md), mas permanecem ativos enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração, Spot ID e Calculadora estiverem em foco.
+Estes são instalados pela [janela principal](0-main-window.md), mas permanecem ativos enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID estiverem em foco.
 
 | Atalho | Ação |
 |----------|--------|

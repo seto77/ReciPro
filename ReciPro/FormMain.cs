@@ -101,7 +101,7 @@ public partial class FormMain : FormBase
     public FormStereonet FormStereonet;
     public FormSpotIDv1 FormSpotIDv1;
     public FormSpotIDV2 FormSpotIDv2;
-    public FormCalculator FormCalculator;
+    //260801Cl 削除: 電卓は ReciPro から廃止 (旧: public FormCalculator FormCalculator;)
     public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
     public FormRotationMatrix FormRotation;
     public FormImageSimulator FormImageSimulator;
@@ -462,10 +462,14 @@ public partial class FormMain : FormBase
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
         FormSpotIDv2 = new FormSpotIDV2 { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
-        FormCalculator = new FormCalculator { Owner = this, Visible = false };
-        FormCalculator.KeyDown += FormMain_KeyDown;
-        FormCalculator.FormClosing += formCalculator_FormClosing;
+        //260801Cl 削除: 電卓 (FormCalculator) を ReciPro から廃止 (作者判断)。開く手段は Ctrl 二度押しだけで、
+        //その二度押し自体を廃止したため到達不能になっていた。FormCalculator 自体は共有ライブラリ側に残す
+        //(姉妹アプリ 4 本が参照しているため)。
+        //旧:
+        //commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
+        //FormCalculator = new FormCalculator { Owner = this, Visible = false };
+        //FormCalculator.KeyDown += FormMain_KeyDown;
+        //FormCalculator.FormClosing += formCalculator_FormClosing;
 
         commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.75);
         NextHandle = SetClipboardViewer(this.Handle);
@@ -1181,11 +1185,8 @@ public partial class FormMain : FormBase
         ListBox_SelectedIndexChanged(listBox, e);
     }
 
-    private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        FormCalculator.Visible = false;
-        e.Cancel = true;
-    }
+    //260801Cl 削除: 電卓の廃止に伴い不要 (旧: FormCalculator.Visible = false; e.Cancel = true;)
+    //private void formCalculator_FormClosing(object sender, FormClosingEventArgs e) { ... }
 
 
     #endregion

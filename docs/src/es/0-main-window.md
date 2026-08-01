@@ -16,7 +16,7 @@ Al iniciar ReciPro, aparece la ventana principal. Desde esta ventana selecciona 
 
 ## Atajos de teclado y ratón {#keyboard-mouse-shortcuts}
 
-La ventana principal instala varios atajos **de ámbito global de la aplicación**. Siguen funcionando mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción, Spot ID y Calculadora tienen el foco.
+La ventana principal instala varios atajos **de ámbito global de la aplicación**. Siguen funcionando mientras las ventanas Visor de estructura, Estereograma, Simulador de difracción y Spot ID tienen el foco.
 
 | Atajo | Acción |
 |----------|--------|

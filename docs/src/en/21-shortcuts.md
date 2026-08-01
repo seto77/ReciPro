@@ -8,7 +8,7 @@ ReciPro wires many functions to **key combinations** and to **mouse buttons comb
 
 ## Application-wide shortcuts
 
-These are installed by the [main window](0-main-window.md) but stay active while the Structure Viewer, Stereonet, Diffraction Simulator, Spot ID, and Calculator windows are focused.
+These are installed by the [main window](0-main-window.md) but stay active while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID windows are focused.
 
 | Shortcut | Action |
 |----------|--------|
