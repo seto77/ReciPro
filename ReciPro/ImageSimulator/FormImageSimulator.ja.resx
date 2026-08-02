@@ -895,12 +895,6 @@ CTF（contrast transfer function, コントラスト
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>利用可能をすべて選択</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>解除</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共通</value>
   </data>
@@ -911,7 +905,7 @@ CTF（contrast transfer function, コントラスト
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。EDX チャネルを 1 つ以上計算した run があるときだけ選べます。</value>
+    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。値は入射電子あたりの内殻空孔生成量 (モデル値) です。蛍光収率・自己吸収・検出器立体角・検出効率はいずれも未適用なので、実測の X 線カウントではありません。</value>
   </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -961,6 +955,9 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
   <data name="checkBoxNormarizeIndividually.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8.25pt</value>
   </data>
@@ -972,6 +969,9 @@ CTF（contrast transfer function, コントラスト
   </data>
   <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1108,6 +1108,18 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxPotentialOption.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="groupBoxSTEMoption2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1132,9 +1144,6 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
-  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -1142,7 +1151,7 @@ CTF（contrast transfer function, コントラスト
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1236,11 +1245,5 @@ CTF（contrast transfer function, コントラスト
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
 </root>

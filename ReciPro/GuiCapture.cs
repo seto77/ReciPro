@@ -339,7 +339,8 @@ internal static partial class GuiCapture
             {
                 sim.ImageMode = mode;                  // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
                 sim.EdxEnabled = edx;                  // 260801Cl: EDX を計算するかのチェック
-                if (edx) sim.SelectAvailableEdxChannels();// 260801Cl: 候補表を埋めた状態にする
+                // 260802Cl 削除: sim.SelectAvailableEdxChannels() — 元素×殻の選択 UI が無くなり、
+                // EDX が ON なら利用可能な特性 X 線を常に全部計算するようになったため不要 (作者指示)
                 sim.CaptureSelectEdxAfterRun = edx;    // 260802Cl: 計算後に表示信号を EDX へ (元素マップを撮るため)
                 Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
                 BringToFront(sim);

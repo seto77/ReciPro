@@ -265,120 +265,69 @@ public partial class FormImageSimulator : FormBase
     //Crystallography の IonizationChannelInfo / IonizationDataProvider へ移した。ここに残るのは純粋に GUI の配線のみ。
     //STEM-EDX は独立モードではないので、判定はすべて「ImageMode==STEM かつ checkBoxCalculateEdx.Checked」で行う。
 
-    /// <summary>項目 index → 候補。CheckedListBox の表示文字列は翻訳されるので、request は必ずこちらから組む</summary>
+    /// <summary>特性 X 線 ComboBox を作り直している間、SelectedIndexChanged で再描画しないためのフラグ</summary>
+    private bool edxSkipEvent;
+
+    /// <summary>構成元素から列挙した EDX チャネル候補。260802Cl 変更 (作者指示): 元素×殻の選択 UI は廃止し、
+    /// EDX チェックが ON なら**利用可能な候補を常に全部計算する**。この配列は「何を計算するか」そのもの。</summary>
     private IonizationChannelInfo[] edxCandidates = [];
 
     /// <summary>候補一覧を作り直した最後の条件 (同じ結晶・同じ電圧での再構築を省く)</summary>
     private (Crystal Crystal, double AccVol) edxListKey;
 
-    private bool edxSkipEvent;
-
-    /// <summary>ToolTip を出している項目 index (同じ項目で SetToolTip を繰り返すと点滅するため)</summary>
-    private int edxToolTipIndex = -1;
-
-    /// <summary>260802Cl 追加: 候補一覧をまだ作れない段階 (起動直後 = 結晶未ロード) で
-    /// プリセット・レジストリから復元された選択。候補が組めた時点で 1 度だけ消費する。
-    /// これが無いと、レジストリ復元が「候補 0 件 → 選択も 0 件」で必ず空振りしていた。</summary>
-    private (int Z, IonizationShell Shell)[] edxPendingChannels;
-
     /// <summary>STEM-EDX マップを要求するチェックの状態。
     /// 260802Cl 変更: getter から <c>ImageMode == ImageModes.STEM</c> の条件を外した (旧: 両方の AND)。
     /// プリセットはこのプロパティを保存するので、モードを含めると「HRTEM 表示中に保存したプリセットは
-    /// EDX 要求を落とす」ことになり、§5.9.1-6 の「EdxEnabled とチャネル一覧は分離保持」に反していた。
-    /// 実際に EDX を計算するかの判定 (モードとの AND) は <see cref="BuildEdxRequests"/> 側に置く。</summary>
+    /// EDX 要求を落とす」ことになる。実際に EDX を計算するかの判定 (モードとの AND) は
+    /// <see cref="BuildEdxRequests"/> 側に置く。</summary>
     public bool EdxEnabled
     {
         get => checkBoxCalculateEdx.Checked;
         set => checkBoxCalculateEdx.Checked = value;
     }
 
-    /// <summary>--capture 用: 元素×殻セレクタの GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
+    /// <summary>--capture 用: EDX 要求の GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
     internal Control EdxOptionGroup => groupBoxSTEMoption4;
 
     /// <summary>260802Cl 追加: --capture 用。run 完了後に表示信号を EDX へ切り替える。
     /// EDX を選べるようになるのは結果が公開されてからなので、Simulate を投げる前には設定できない。</summary>
     internal bool CaptureSelectEdxAfterRun;
 
-    /// <summary>チェック済みチャネル。表示文字列ではなく候補配列から引く</summary>
-    private IonizationChannelSpec[] CheckedEdxChannels
-        => [.. checkedListBoxEdxChannels.CheckedIndices.Cast<int>()
-            .Where(i => i < edxCandidates.Length).Select(i => edxCandidates[i].Channel)];
+    /// <summary>計算対象のチャネル = 候補のうち利用可能なもの全部 (260802Cl 変更、作者指示)。
+    /// 旧実装は CheckedListBox のチェック状態から引いていた。</summary>
+    private IonizationChannelSpec[] AvailableEdxChannels
+        => [.. edxCandidates.Where(c => c.Status == IonizationAvailability.Available).Select(c => c.Channel)];
 
-    /// <summary>260802Cl 追加: プリセット保存用の選択チャネル (設計書 §5.9.1-6)。EdxEnabled とは分離して持つので、
-    /// 一時的にチェックを外しても選択そのものは失われない。record ではなく (Z, Shell) の平坦なタプル配列にしてあるのは、
-    /// Crystallography の型に MemoryPack 属性を足さずに済ませるため (ValueTuple は MemoryPack 組み込み対応)。
-    /// set は「別の結晶・加速電圧へ適用したときは積集合だけ復元する」= 収録外・端以下になったものは黙って落とす
-    /// (勝手に別元素を選ばない。結果 0 件になったら実行前の ValidateEdxRequest が hard block する)。</summary>
-    public (int Z, IonizationShell Shell)[] EdxChannels
-    {
-        get => checkedListBoxEdxChannels is null ? [] : [.. CheckedEdxChannels.Select(s => (s.Z, s.Shell))];
-        set
-        {
-            if (checkedListBoxEdxChannels is null) return;
-            //復元するものも外すものも無いなら、候補列挙 (元素ごとの Inspect = リソース展開) を走らせない
-            if ((value is null || value.Length == 0) && checkedListBoxEdxChannels.CheckedIndices.Count == 0) return;
-            //実際の反映は RenewEdxChannelList に任せる。起動直後は結晶が未ロードで候補が 0 件になり得るので、
-            //その場合は保留しておき、候補が組めた時点 (= 結晶が入った時点) で消費する
-            edxPendingChannels = value ?? [];
-            RenewEdxChannelList();
-        }
-    }
-
-    /// <summary>候補一覧を作り直す。結晶・加速電圧が変わったときだけ実際に組み直す。</summary>
+    /// <summary>候補一覧を作り直す。結晶・加速電圧が変わったときだけ実際に組み直す
+    /// (元素ごとの Inspect は同梱リソースの展開を伴うため)。</summary>
     public void RenewEdxChannelList()
     {
-        if (checkedListBoxEdxChannels is null) return;
+        if (labelEdxSummary is null) return;
         var key = (FormMain?.Crystal, AccVol);
-        //260802Cl 変更: 早期 return を条件反転に (保留していたプリセット復元は、候補を組み直さない経路でも消費する必要がある)。
-        //旧: if (edxCandidates.Length > 0 && key == edxListKey) { RenewEdxSummary(); return; }
         if (edxCandidates.Length == 0 || key != edxListKey)
         {
-            //チェック状態は (Z,Shell) で覚えておく (項目の並びや表示文字列ではなく実体で復元する)
-            var previous = new HashSet<IonizationChannelSpec>(CheckedEdxChannels);
-            edxSkipEvent = true;
-            try
-            {
-                edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
-                edxListKey = key;
-                checkedListBoxEdxChannels.BeginUpdate();
-                checkedListBoxEdxChannels.Items.Clear();
-                foreach (var info in edxCandidates)
-                    //以前チェックされていても、電圧変更などで選べなくなった候補は復元しない (ItemCheck の拒否と辻褄を合わせる)
-                    checkedListBoxEdxChannels.Items.Add(info.ToListItemText(),
-                        info.Status == IonizationAvailability.Available && previous.Contains(info.Channel));
-                checkedListBoxEdxChannels.EndUpdate();
-            }
-            finally { edxSkipEvent = false; }
-        }
-
-        //260802Cl 追加: プリセット・レジストリからの復元を、候補が組めた時点で 1 度だけ反映する (設計書 §5.9.1-6)。
-        //収録外・端以下になったものは復元しない = 「別結晶へ適用したら積集合だけ」。空になったら実行前に hard block される
-        if (edxPendingChannels is not null && edxCandidates.Length > 0)
-        {
-            var wanted = new HashSet<IonizationChannelSpec>(edxPendingChannels.Select(v => new IonizationChannelSpec(v.Z, v.Shell)));
-            edxPendingChannels = null;
-            edxSkipEvent = true;
-            try
-            {
-                for (int i = 0; i < edxCandidates.Length; i++)
-                    checkedListBoxEdxChannels.SetItemChecked(i,
-                        edxCandidates[i].Status == IonizationAvailability.Available && wanted.Contains(edxCandidates[i].Channel));
-            }
-            finally { edxSkipEvent = false; }
+            edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
+            edxListKey = key;
         }
         RenewEdxSummary();
     }
-
     /// <summary>選択数・チャネル要約・probe grid 警告を更新する (実行時文字列)。</summary>
     public void RenewEdxSummary()
     {
         if (labelEdxSummary is null) return;
 
-        var names = CheckedEdxChannels.Select(spec => spec.ShortLabel).ToArray();
+        //260802Cl 変更 (作者指示): 「選択したチャネル」ではなく「これから計算する全チャネル」を並べる
+        var names = AvailableEdxChannels.Select(spec => spec.ShortLabel).ToArray();
         labelEdxSummary.Text = names.Length == 0
-            ? Loc(en: "No channel selected", ja: "チャネル未選択", de: "Kein Kanal ausgewählt", fr: "Aucun canal sélectionné",
-                  es: "Ningún canal seleccionado", pt: "Nenhum canal selecionado", it: "Nessun canale selezionato",
-                  ru: "Канал не выбран", zhHans: "未选择通道", zhHant: "未選擇通道", ko: "채널이 선택되지 않음")
+            ? Loc(en: "No characteristic X-ray available for this crystal", ja: "この結晶で計算できる特性 X 線がありません",
+                  de: "Keine charakteristische Röntgenlinie für diesen Kristall verfügbar",
+                  fr: "Aucune raie X caractéristique disponible pour ce cristal",
+                  es: "Ninguna línea de rayos X característica disponible para este cristal",
+                  pt: "Nenhuma linha de raios X característica disponível para este cristal",
+                  it: "Nessuna riga X caratteristica disponibile per questo cristallo",
+                  ru: "Для этого кристалла нет доступных характеристических линий",
+                  zhHans: "该晶体没有可计算的特征 X 射线", zhHant: "該晶體沒有可計算的特徵 X 射線",
+                  ko: "이 결정에서 계산할 수 있는 특성 X 선이 없습니다")
             : Loc(en: "{0} map(s): {1}", ja: "{0} 個のマップ: {1}", de: "{0} Karte(n): {1}", fr: "{0} carte(s) : {1}",
                   es: "{0} mapa(s): {1}", pt: "{0} mapa(s): {1}", it: "{0} mappa/e: {1}", ru: "{0} карт: {1}",
                   zhHans: "{0} 张图: {1}", zhHant: "{0} 張圖: {1}", ko: "{0} 개 맵: {1}")
@@ -395,11 +344,17 @@ public partial class FormImageSimulator : FormBase
             ? Color.DarkOrange : SystemColors.ControlText;
     }
 
-    /// <summary>選択チャネルを backend 要求へ変換する。EDX OFF なら null (= EDX なし run)。</summary>
+    /// <summary>計算対象チャネルを backend 要求へ変換する。EDX OFF なら null (= EDX なし run)。
+    /// 260802Cl 変更 (作者指示): 選択ではなく「この結晶・この電圧で利用可能なもの全部」。
+    /// 並びは (Z, 殻) で決定的にする (プリセット間・run 間で結果の順序が揺れないように)。</summary>
     private StemIonizationRequest[] BuildEdxRequests()
-        //260802Cl 変更: モード判定をここへ移した (EdxEnabled はチェック状態そのものになったため)
-        => ImageMode != ImageModes.STEM || !EdxEnabled ? null
-            : [.. CheckedEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
+    {
+        //モード判定はここ (EdxEnabled はチェック状態そのもの)
+        if (ImageMode != ImageModes.STEM || !EdxEnabled) return null;
+        //投げる直前に候補を最新化する (結晶・電圧が変わった直後でも取りこぼさない。中身が同じなら再列挙は起きない)
+        RenewEdxChannelList();
+        return [.. AvailableEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
+    }
 
     /// <summary>run 開始前の検証 (§5.9.1-7: 判定は GUI のモードではなく「これから投げる要求」に対して行う)。
     /// 続行してよければ true。チャネル 0 件は hard block、div 不足は確認ダイアログ (実行自体は可能)。</summary>
@@ -409,18 +364,20 @@ public partial class FormImageSimulator : FormBase
 
         if (requests.Length == 0)
         {
+            //260802Cl 変更 (作者指示): 選択 UI が無くなったので、0 件は「選び忘れ」ではなく
+            //「この結晶・この加速電圧では計算できる特性 X 線が無い」を意味する
             MessageBox.Show(
-                Loc(en: "STEM-EDX is enabled but no channel is selected. Select at least one element/shell, or clear the checkbox.",
-                    ja: "STEM-EDX が有効ですがチャネルが 1 つも選択されていません。元素・殻を選ぶか、チェックを外してください。",
-                    de: "STEM-EDX ist aktiviert, aber es ist kein Kanal ausgewählt. Wählen Sie mindestens ein Element/eine Schale oder deaktivieren Sie das Kontrollkästchen.",
-                    fr: "STEM-EDX est activé mais aucun canal n'est sélectionné. Choisissez au moins un élément/couche ou décochez la case.",
-                    es: "STEM-EDX está activado pero no hay ningún canal seleccionado. Elija al menos un elemento/capa o desmarque la casilla.",
-                    pt: "O STEM-EDX está ativado mas não há nenhum canal selecionado. Escolha pelo menos um elemento/camada ou desmarque a caixa.",
-                    it: "STEM-EDX è attivo ma non è selezionato alcun canale. Scegliere almeno un elemento/guscio oppure deselezionare la casella.",
-                    ru: "STEM-EDX включён, но не выбран ни один канал. Выберите хотя бы один элемент/оболочку или снимите флажок.",
-                    zhHans: "已启用 STEM-EDX，但未选择任何通道。请至少选择一个元素/壳层，或取消勾选。",
-                    zhHant: "已啟用 STEM-EDX，但未選擇任何通道。請至少選擇一個元素/殼層，或取消勾選。",
-                    ko: "STEM-EDX 가 활성화되어 있지만 선택된 채널이 없습니다. 원소/껍질을 하나 이상 선택하거나 체크를 해제하세요."),
+                Loc(en: "STEM-EDX is enabled, but none of this crystal's elements has a characteristic X-ray line that can be calculated at this accelerating voltage. Clear the checkbox to run without EDX.",
+                    ja: "STEM-EDX が有効ですが、この結晶の構成元素にはこの加速電圧で計算できる特性 X 線がありません。EDX なしで実行するにはチェックを外してください。",
+                    de: "STEM-EDX ist aktiviert, aber keines der Elemente dieses Kristalls besitzt bei dieser Beschleunigungsspannung eine berechenbare charakteristische Röntgenlinie. Deaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                    fr: "STEM-EDX est activé, mais aucun élément de ce cristal n'a de raie X caractéristique calculable à cette tension d'accélération. Décochez la case pour calculer sans EDX.",
+                    es: "STEM-EDX está activado, pero ningún elemento de este cristal tiene una línea de rayos X característica calculable a esta tensión de aceleración. Desmarque la casilla para calcular sin EDX.",
+                    pt: "O STEM-EDX está ativado, mas nenhum elemento deste cristal tem uma linha de raios X característica calculável a esta tensão de aceleração. Desmarque a caixa para calcular sem EDX.",
+                    it: "STEM-EDX è attivo, ma nessun elemento di questo cristallo ha una riga X caratteristica calcolabile a questa tensione di accelerazione. Deselezionare la casella per calcolare senza EDX.",
+                    ru: "STEM-EDX включён, но ни у одного элемента этого кристалла нет характеристической линии, которую можно рассчитать при этом ускоряющем напряжении. Снимите флажок, чтобы считать без EDX.",
+                    zhHans: "已启用 STEM-EDX，但该晶体的元素在此加速电压下没有可计算的特征 X 射线。取消勾选可在不计算 EDX 的情况下运行。",
+                    zhHant: "已啟用 STEM-EDX，但該晶體的元素在此加速電壓下沒有可計算的特徵 X 射線。取消勾選可在不計算 EDX 的情況下執行。",
+                    ko: "STEM-EDX 가 활성화되어 있지만, 이 결정의 원소 중 이 가속 전압에서 계산할 수 있는 특성 X 선이 없습니다. EDX 없이 실행하려면 체크를 해제하세요."),
                 "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
@@ -446,21 +403,6 @@ public partial class FormImageSimulator : FormBase
                 return false;
         }
         return true;
-    }
-
-    /// <summary>利用可能な全チャネルを選択する (--capture / マクロからも使う)</summary>
-    internal void SelectAvailableEdxChannels()
-    {
-        //「すべて選択」ではなく「利用可能なものをすべて選択」(below-edge・範囲外は選ばない)
-        edxSkipEvent = true;
-        try
-        {
-            for (int i = 0; i < edxCandidates.Length; i++)
-                if (edxCandidates[i].Status == IonizationAvailability.Available)
-                    checkedListBoxEdxChannels.SetItemChecked(i, true);
-        }
-        finally { edxSkipEvent = false; }
-        RenewEdxSummary();
     }
 
     #region STEM-EDX 結果表示
@@ -530,40 +472,6 @@ public partial class FormImageSimulator : FormBase
             RenewEdxChannelList();
         else
             RenewEdxSummary();
-    }
-
-    private void CheckedListBoxEdxChannels_ItemCheck(object sender, ItemCheckEventArgs e)
-    {
-        if (edxSkipEvent || e.Index < 0 || e.Index >= edxCandidates.Length) return;
-        //利用不可のチャネルはチェックさせない (理由は項目テキストと ToolTip)
-        if (edxCandidates[e.Index].Status != IonizationAvailability.Available)
-            e.NewValue = CheckState.Unchecked;
-        //ItemCheck は値が確定する前に来るので、要約更新は反映後へ回す
-        BeginInvoke(RenewEdxSummary);
-    }
-
-    private void CheckedListBoxEdxChannels_MouseMove(object sender, MouseEventArgs e)
-    {
-        //CheckedListBox は項目ごとの ToolTip を持たないので、ホバー中の項目に合わせて差し替える
-        var index = checkedListBoxEdxChannels.IndexFromPoint(e.Location);
-        if (index == edxToolTipIndex) return;
-        edxToolTipIndex = index;
-        toolTip.SetToolTip(checkedListBoxEdxChannels,
-            index >= 0 && index < edxCandidates.Length ? edxCandidates[index].ToDescription() : "");
-    }
-
-    private void ButtonEdxSelectAvailable_Click(object sender, EventArgs e) => SelectAvailableEdxChannels();
-
-    private void ButtonEdxClear_Click(object sender, EventArgs e)
-    {
-        edxSkipEvent = true;
-        try
-        {
-            for (int i = 0; i < checkedListBoxEdxChannels.Items.Count; i++)
-                checkedListBoxEdxChannels.SetItemChecked(i, false);
-        }
-        finally { edxSkipEvent = false; }
-        RenewEdxSummary();
     }
 
     /// <summary>特性 X 線 (EDX チャネル) の選択が変わったとき。</summary>
@@ -659,15 +567,23 @@ public partial class FormImageSimulator : FormBase
                 values[n] = (double)(n % width) / width;
             return values;
         }
-        var width = pictureBoxPhaseScale.ClientRectangle.Width;
-        scaleImage = new PseudoBitmap(gradient(width, pictureBoxPhaseScale.ClientRectangle.Height), width) { MaxValue = 1, MinValue = 0 };
-        scaleImage.SetScaleRotation();
-        pictureBoxPhaseScale.Image = scaleImage.GetImage();
-
-        width = pictureBoxScaleOfIntensity.ClientRectangle.Width;
-        scaleImage = new PseudoBitmap(gradient(width, pictureBoxScaleOfIntensity.ClientRectangle.Height), width) { MaxValue = 1, MinValue = 0 };
-        scaleImage.SetScaleGray();
-        pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+        //260802Cl 追加: ClientRectangle が 0 の間は作らない。幅か高さが 0 のまま PseudoBitmap を組むと
+        //GetImage() が不正な Bitmap を返し、PictureBox.OnPaint が "Parameter is not valid." で落ちる
+        //(WinForms は描画例外を握り潰さないので通常起動では未処理例外ダイアログになる)。
+        //レイアウト前に Load が来ると起こり得るので、そのときは次の SizeChanged で作り直す
+        void buildScale(PictureBox box, bool rotation)
+        {
+            var r = box.ClientRectangle;
+            if (r.Width <= 0 || r.Height <= 0) { box.Image = null; return; }
+            var bmp = new PseudoBitmap(gradient(r.Width, r.Height), r.Width) { MaxValue = 1, MinValue = 0 };
+            if (rotation) bmp.SetScaleRotation(); else bmp.SetScaleGray();
+            scaleImage = bmp;
+            box.Image = bmp.GetImage();
+        }
+        buildScale(pictureBoxPhaseScale, true);
+        buildScale(pictureBoxScaleOfIntensity, false);
+        pictureBoxPhaseScale.SizeChanged += (_, _) => buildScale(pictureBoxPhaseScale, true);
+        pictureBoxScaleOfIntensity.SizeChanged += (_, _) => buildScale(pictureBoxScaleOfIntensity, false);
 
         comboBoxScaleColorScale.SelectedIndex = 0;
 

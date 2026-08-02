@@ -891,12 +891,6 @@ U'g) как изображения действительной и мнимой 
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Рассчитывает карты ионизации (EDX) для выбранных каналов элемент/оболочка.&#xD;&#xA;Опорное STEM-изображение (ADF / упругое / TDS) вычисляется всегда;&#xD;&#xA;каждый канал EDX добавляет после него ещё один проход ионизации.</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>Выбрать доступные</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>Общая EDX</value>
   </data>
@@ -907,6 +901,6 @@ U'g) как изображения действительной и мнимой 
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Показывает элементную карту STEM-EDX вместо изображения типа ADF. Характеристическая рентгеновская линия выбирается ниже. Доступно, когда расчёт дал хотя бы один канал EDX.</value>
+    <value>Показывает элементную карту STEM-EDX вместо изображения типа ADF; характеристическая линия выбирается ниже. Значения — модельные ионизационные вакансии на один падающий электрон. Выход флуоресценции, самопоглощение, телесный угол и эффективность детектора НЕ учтены, поэтому это не предсказанное число рентгеновских квантов.</value>
   </data>
 </root>

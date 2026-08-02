@@ -876,12 +876,6 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Calcola le mappe di ionizzazione (EDX) per i canali elemento/guscio selezionati.&#xD;&#xA;L'immagine STEM di riferimento (ADF / elastica / TDS) viene sempre calcolata;&#xD;&#xA;ogni canale EDX aggiunge poi un ulteriore passaggio di ionizzazione.</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>Seleziona disponibili</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>Cancella</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX comune</value>
   </data>
@@ -892,6 +886,6 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Mostra la mappa elementare STEM-EDX invece dell'immagine di tipo ADF. La riga X caratteristica si sceglie qui sotto. Disponibile quando un calcolo ha prodotto almeno un canale EDX.</value>
+    <value>Mostra la mappa elementare STEM-EDX invece dell'immagine di tipo ADF; la riga X caratteristica si sceglie qui sotto. I valori sono lacune di ionizzazione modellate per elettrone incidente. Resa di fluorescenza, autoassorbimento, angolo solido ed efficienza del rivelatore NON sono applicati: non è quindi un conteggio di raggi X previsto.</value>
   </data>
 </root>

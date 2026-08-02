@@ -200,9 +200,12 @@ public partial struct ImageSimulatorSetting
     //既定値のままにするので、ダウングレード時はプリセットが復元されないだけで害はない。
     /// <summary>収束ビームの角度分解能 (rad)。EDX 固有ではなく STEM 共通の probe sampling 値として保存する</summary>
     public double AngularResolution;
-    /// <summary>STEM-EDX マップを計算するか。チャネル一覧とは分離して持つ (一時 OFF で選択を失わないため)</summary>
+    /// <summary>STEM-EDX マップを計算するか</summary>
     public bool EdxEnabled;
-    /// <summary>選択中の EDX チャネル。別結晶へ適用したときは積集合のみ復元される</summary>
+    /// <summary>260802Cl 変更 (作者指示): 元素×殻の選択 UI を廃し、EDX が ON なら利用可能な特性 X 線を常に全部
+    /// 計算するようにしたため、この項目は**未使用**。ただし**削除しない**: 削るとメンバ数が 27→26 になり、
+    /// 27 で書かれた既存 blob が MemoryPackSerializationException になる (Reg.RW が握り潰すのでプリセットが
+    /// 黙って消える)。将来また選択 UI を入れるときの枠として残す。</summary>
     public (int Z, IonizationShell Shell)[] EdxChannels;
     #endregion
 
@@ -250,7 +253,7 @@ public partial struct ImageSimulatorSetting
         //STEM probe sampling と STEM-EDX (260802Cl 追加)
         AngularResolution = f.STEM_AngularResolution;
         EdxEnabled = f.EdxEnabled;
-        EdxChannels = f.EdxChannels;
+        EdxChannels = null;//260802Cl: 未使用 (EDX が ON なら利用可能な特性 X 線を常に全部計算する)。枠だけ残す
     }
 
     public readonly void Apply(FormImageSimulator f)
@@ -293,7 +296,7 @@ public partial struct ImageSimulatorSetting
         if (AngularResolution > 0)
             f.STEM_AngularResolution = AngularResolution;
         f.EdxEnabled = EdxEnabled;
-        f.EdxChannels = EdxChannels;
+        //260802Cl: EdxChannels は未使用 (常に全チャネル計算) なので適用しない
     }
 }
 #endregion

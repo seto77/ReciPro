@@ -889,12 +889,6 @@ sin(theta)/lambda (nm^-1) 表示；
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>計算所選元素/殼層通道的游離 (EDX) 分布圖。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>選擇全部可用</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>清除</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共用</value>
   </data>
@@ -905,6 +899,6 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像。特徵 X 射線在下方選擇。計算出至少一個 EDX 通道後可用。</value>
+    <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像；特徵 X 射線在下方選擇。數值是每個入射電子產生的內殼空穴數（模型值）。螢光產額、自吸收、偵測器立體角與偵測效率均未計入，因此不是預測的 X 射線計數。</value>
   </data>
 </root>

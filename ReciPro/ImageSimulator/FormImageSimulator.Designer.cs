@@ -55,7 +55,6 @@ namespace ReciPro
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageSimulator));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
-            checkBoxEdxCommonScale = new System.Windows.Forms.CheckBox();//260802Cl 追加: EDX チャネル間共通スケール (5.9-5)
             tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             panelImageStatus = new System.Windows.Forms.Panel();
             pictureBoxScaleOfIntensity = new System.Windows.Forms.PictureBox();
@@ -80,6 +79,7 @@ namespace ReciPro
             trackBarAdvancedMin = new TrackBarAdvanced();
             panel1 = new System.Windows.Forms.Panel();
             groupBoxNormalization = new System.Windows.Forms.GroupBox();
+            checkBoxEdxCommonScale = new System.Windows.Forms.CheckBox();
             checkBoxNormarizeIndividually = new System.Windows.Forms.CheckBox();
             flowLayoutPanelIntensityRange = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxIntensityMin = new System.Windows.Forms.CheckBox();
@@ -88,8 +88,9 @@ namespace ReciPro
             numericBoxIntensityMax = new NumericBox();
             panel9 = new System.Windows.Forms.Panel();
             groupBoxSTEMoption3 = new System.Windows.Forms.GroupBox();
+            comboBoxEdxDisplay = new System.Windows.Forms.ComboBox();
+            radioButtonSTEM_target_EDX = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_TDS = new System.Windows.Forms.RadioButton();
-            radioButtonSTEM_target_EDX = new System.Windows.Forms.RadioButton();//260802Cl 追加: 表示信号の 4 つ目 (作者決定 = 二ペイン廃止)
             radioButtonSTEM_target_elas = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_both = new System.Windows.Forms.RadioButton();
             groupBoxDisplay = new System.Windows.Forms.GroupBox();
@@ -155,6 +156,11 @@ namespace ReciPro
             radioButtonPotentialShowImag = new System.Windows.Forms.RadioButton();
             checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
+            groupBoxSTEMoption4 = new System.Windows.Forms.GroupBox();
+            panelEdxDetails = new System.Windows.Forms.Panel();
+            labelEdxProbeGrid = new System.Windows.Forms.Label();
+            labelEdxSummary = new System.Windows.Forms.Label();
+            checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
             groupBoxSTEMoption2 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_AngleResolution = new NumericBox();
@@ -178,12 +184,13 @@ namespace ReciPro
             typicalLAADF2560MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalHAADF80250MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            label34 = new System.Windows.Forms.Label();
             flowLayoutPanelConvergenceRadius = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_ConvergenceAngle = new NumericBox();
             textBoxConvRadius = new System.Windows.Forms.TextBox();
             label36 = new System.Windows.Forms.Label();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelOuterRadius = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_DetectorOuterAngle = new NumericBox();
             textBoxOuterRadius = new System.Windows.Forms.TextBox();
@@ -237,18 +244,6 @@ namespace ReciPro
             flowLayoutPanelImageType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
-            //radioButtonStemEDX = new System.Windows.Forms.RadioButton();//260801Cl 削除 (設計書 §5.9.1-2)
-            //260801Cl 追加: STEM-EDX 要求 UI (設計書 §5.9.1-3)
-            groupBoxSTEMoption4 = new System.Windows.Forms.GroupBox();
-            checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
-            labelEdxSummary = new System.Windows.Forms.Label();
-            panelEdxDetails = new System.Windows.Forms.Panel();
-            checkedListBoxEdxChannels = new System.Windows.Forms.CheckedListBox();//260801Cl 変更 (作者指示): DGV+5列 -> CheckedListBox
-            flowLayoutPanelEdxButtons = new System.Windows.Forms.FlowLayoutPanel();
-            buttonEdxSelectAvailable = new System.Windows.Forms.Button();
-            buttonEdxClear = new System.Windows.Forms.Button();
-            labelEdxProbeGrid = new System.Windows.Forms.Label();
-            comboBoxEdxDisplay = new System.Windows.Forms.ComboBox();//260801Cl 追加
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -312,9 +307,8 @@ namespace ReciPro
             panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).BeginInit();
             flowLayoutPanelRealAndImaiginary.SuspendLayout();
-            groupBoxSTEMoption4.SuspendLayout();//260801Cl 追加
-            panelEdxDetails.SuspendLayout();//260801Cl 追加
-            flowLayoutPanelEdxButtons.SuspendLayout();//260801Cl 追加
+            groupBoxSTEMoption4.SuspendLayout();
+            panelEdxDetails.SuspendLayout();
             groupBoxSTEMoption2.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
             groupBoxHREMoption2.SuspendLayout();
@@ -327,6 +321,8 @@ namespace ReciPro
             contextMenuStripSTEM.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
             flowLayoutPanelConvergenceRadius.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            flowLayoutPanel12.SuspendLayout();
             flowLayoutPanelOuterRadius.SuspendLayout();
             flowLayoutPanelInnerRadius.SuspendLayout();
             groupBoxHREMoption1.SuspendLayout();
@@ -521,7 +517,6 @@ namespace ReciPro
             numericBoxGaussianBlurRadius.ShowUpDown = true;
             numericBoxGaussianBlurRadius.SkipEventDuringInput = false;
             numericBoxGaussianBlurRadius.SmartIncrement = true;
-            numericBoxGaussianBlurRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxGaussianBlurRadius, resources.GetString("numericBoxGaussianBlurRadius.ToolTip"));
             numericBoxGaussianBlurRadius.Value = 20D;
             numericBoxGaussianBlurRadius.ValueFontSize = 9F;
@@ -560,14 +555,13 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBoxNormalization, "groupBoxNormalization");
             captureExtender.SetCapture(groupBoxNormalization, true);
-            groupBoxNormalization.Controls.Add(checkBoxEdxCommonScale);//260802Cl 追加 (Dock=Top の最初 = 一番下の行)
+            groupBoxNormalization.Controls.Add(checkBoxEdxCommonScale);
             groupBoxNormalization.Controls.Add(checkBoxNormarizeIndividually);
             groupBoxNormalization.Controls.Add(flowLayoutPanelIntensityRange);
             groupBoxNormalization.Name = "groupBoxNormalization";
             groupBoxNormalization.TabStop = false;
             // 
-            // checkBoxEdxCommonScale (260802Cl 追加: EDX チャネル間の共通表示レンジ。設計書 5.9-5。
-            // 既存の checkBoxNormarizeIndividually は t/d 画像間の話なので軸を分けてある)
+            // checkBoxEdxCommonScale
             // 
             resources.ApplyResources(checkBoxEdxCommonScale, "checkBoxEdxCommonScale");
             checkBoxEdxCommonScale.Name = "checkBoxEdxCommonScale";
@@ -614,7 +608,6 @@ namespace ReciPro
             numericBoxIntensityMin.Name = "numericBoxIntensityMin";
             numericBoxIntensityMin.ShowUpDown = true;
             numericBoxIntensityMin.SmartIncrement = true;
-            numericBoxIntensityMin.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMin, resources.GetString("numericBoxIntensityMin.ToolTip"));
             numericBoxIntensityMin.ValueBoxWidth = 36;
             numericBoxIntensityMin.ValueFontSize = 9F;
@@ -640,7 +633,6 @@ namespace ReciPro
             numericBoxIntensityMax.Name = "numericBoxIntensityMax";
             numericBoxIntensityMax.ShowUpDown = true;
             numericBoxIntensityMax.SmartIncrement = true;
-            numericBoxIntensityMax.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMax, resources.GetString("numericBoxIntensityMax.ToolTip"));
             numericBoxIntensityMax.Value = 1D;
             numericBoxIntensityMax.ValueBoxWidth = 36;
@@ -655,24 +647,24 @@ namespace ReciPro
             // groupBoxSTEMoption3
             // 
             captureExtender.SetCapture(groupBoxSTEMoption3, true);
-            groupBoxSTEMoption3.Controls.Add(comboBoxEdxDisplay);//260801Cl 追加: 計算済み EDX チャネル (特性 X 線) の選択
-            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_EDX);//260802Cl 追加
+            groupBoxSTEMoption3.Controls.Add(comboBoxEdxDisplay);
+            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_EDX);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_TDS);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_elas);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_both);
-            //
+            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
+            groupBoxSTEMoption3.Name = "groupBoxSTEMoption3";
+            groupBoxSTEMoption3.TabStop = false;
+            // 
             // comboBoxEdxDisplay
-            //
+            // 
             resources.ApplyResources(comboBoxEdxDisplay, "comboBoxEdxDisplay");
             comboBoxEdxDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxEdxDisplay.FormattingEnabled = true;
             comboBoxEdxDisplay.Name = "comboBoxEdxDisplay";
             comboBoxEdxDisplay.SelectedIndexChanged += ComboBoxEdxDisplay_SelectedIndexChanged;
-            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
-            groupBoxSTEMoption3.Name = "groupBoxSTEMoption3";
-            groupBoxSTEMoption3.TabStop = false;
             // 
-            // radioButtonSTEM_target_EDX (260802Cl 追加: 表示信号の 4 つ目。選ぶと直下の ComboBox で特性 X 線を選ぶ)
+            // radioButtonSTEM_target_EDX
             // 
             resources.ApplyResources(radioButtonSTEM_target_EDX, "radioButtonSTEM_target_EDX");
             radioButtonSTEM_target_EDX.Name = "radioButtonSTEM_target_EDX";
@@ -740,7 +732,6 @@ namespace ReciPro
             numericBoxScaleLength.Name = "numericBoxScaleLength";
             numericBoxScaleLength.ShowUpDown = true;
             numericBoxScaleLength.SkipEventDuringInput = false;
-            numericBoxScaleLength.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxScaleLength, resources.GetString("numericBoxScaleLength.ToolTip"));
             numericBoxScaleLength.UpDown_Increment = 0.2D;
             numericBoxScaleLength.Value = 0.5D;
@@ -777,7 +768,6 @@ namespace ReciPro
             numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
             numericBoxLabelFontSize.ShowUpDown = true;
             numericBoxLabelFontSize.SkipEventDuringInput = false;
-            numericBoxLabelFontSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip"));
             numericBoxLabelFontSize.Value = 9D;
             numericBoxLabelFontSize.ValueFontSize = 9F;
@@ -816,80 +806,11 @@ namespace ReciPro
             resources.ApplyResources(panelModeOptions, "panelModeOptions");
             panelModeOptions.Controls.Add(groupBoxSerialImage);
             panelModeOptions.Controls.Add(groupBoxPotentialOption);
-            panelModeOptions.Controls.Add(groupBoxSTEMoption4);//260801Cl 追加: EDX 要求 UI は Dock.Top 逆順のため option2 の直前 (= 画面上は option2 の下、設計書 §5.9.1-3)
+            panelModeOptions.Controls.Add(groupBoxSTEMoption4);
             panelModeOptions.Controls.Add(groupBoxSTEMoption2);
             panelModeOptions.Controls.Add(groupBoxHREMoption2);
             panelModeOptions.Controls.Add(panelImageProperties);
             panelModeOptions.Name = "panelModeOptions";
-            //
-            // groupBoxSTEMoption4 (260801Cl 追加: STEM-EDX 元素マップ要求。設計書 §5.9.1-3 progressive disclosure)
-            //
-            resources.ApplyResources(groupBoxSTEMoption4, "groupBoxSTEMoption4");
-            captureExtender.SetCapture(groupBoxSTEMoption4, true);
-            groupBoxSTEMoption4.Controls.Add(panelEdxDetails);
-            groupBoxSTEMoption4.Controls.Add(labelEdxSummary);
-            groupBoxSTEMoption4.Controls.Add(checkBoxCalculateEdx);
-            groupBoxSTEMoption4.Name = "groupBoxSTEMoption4";
-            groupBoxSTEMoption4.TabStop = false;
-            //
-            // checkBoxCalculateEdx
-            //
-            resources.ApplyResources(checkBoxCalculateEdx, "checkBoxCalculateEdx");
-            checkBoxCalculateEdx.Name = "checkBoxCalculateEdx";
-            toolTip.SetToolTip(checkBoxCalculateEdx, resources.GetString("checkBoxCalculateEdx.ToolTip"));
-            checkBoxCalculateEdx.UseVisualStyleBackColor = true;
-            checkBoxCalculateEdx.CheckedChanged += CheckBoxCalculateEdx_CheckedChanged;
-            //
-            // labelEdxSummary
-            //
-            resources.ApplyResources(labelEdxSummary, "labelEdxSummary");
-            labelEdxSummary.Name = "labelEdxSummary";
-            //
-            // panelEdxDetails
-            //
-            resources.ApplyResources(panelEdxDetails, "panelEdxDetails");
-            panelEdxDetails.Controls.Add(checkedListBoxEdxChannels);
-            panelEdxDetails.Controls.Add(labelEdxProbeGrid);
-            panelEdxDetails.Controls.Add(flowLayoutPanelEdxButtons);
-            panelEdxDetails.Name = "panelEdxDetails";
-            //
-            // flowLayoutPanelEdxButtons
-            //
-            resources.ApplyResources(flowLayoutPanelEdxButtons, "flowLayoutPanelEdxButtons");
-            flowLayoutPanelEdxButtons.Controls.Add(buttonEdxSelectAvailable);
-            flowLayoutPanelEdxButtons.Controls.Add(buttonEdxClear);
-            flowLayoutPanelEdxButtons.Name = "flowLayoutPanelEdxButtons";
-            //
-            // buttonEdxSelectAvailable
-            //
-            resources.ApplyResources(buttonEdxSelectAvailable, "buttonEdxSelectAvailable");
-            buttonEdxSelectAvailable.Name = "buttonEdxSelectAvailable";
-            buttonEdxSelectAvailable.UseVisualStyleBackColor = true;
-            buttonEdxSelectAvailable.Click += ButtonEdxSelectAvailable_Click;
-            //
-            // buttonEdxClear
-            //
-            resources.ApplyResources(buttonEdxClear, "buttonEdxClear");
-            buttonEdxClear.Name = "buttonEdxClear";
-            buttonEdxClear.UseVisualStyleBackColor = true;
-            buttonEdxClear.Click += ButtonEdxClear_Click;
-            //
-            // labelEdxProbeGrid
-            //
-            resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
-            labelEdxProbeGrid.Name = "labelEdxProbeGrid";
-            //
-            // checkedListBoxEdxChannels
-            // 260801Cl 変更 (作者指示): DpiAwareDataGridView + 5 列 → CheckedListBox。操作はチェックだけなので
-            // 表は過剰。吸収端・過電圧・利用不可の理由は項目テキストへ畳み、provenance は項目 ToolTip に出す
-            //
-            resources.ApplyResources(checkedListBoxEdxChannels, "checkedListBoxEdxChannels");
-            checkedListBoxEdxChannels.CheckOnClick = true;
-            checkedListBoxEdxChannels.FormattingEnabled = true;
-            checkedListBoxEdxChannels.HorizontalScrollbar = true;
-            checkedListBoxEdxChannels.Name = "checkedListBoxEdxChannels";
-            checkedListBoxEdxChannels.ItemCheck += CheckedListBoxEdxChannels_ItemCheck;
-            checkedListBoxEdxChannels.MouseMove += CheckedListBoxEdxChannels_MouseMove;
             // 
             // groupBoxSerialImage
             // 
@@ -927,7 +848,6 @@ namespace ReciPro
             numericBoxDefocusNum.Minimum = 1D;
             numericBoxDefocusNum.Name = "numericBoxDefocusNum";
             numericBoxDefocusNum.ShowUpDown = true;
-            numericBoxDefocusNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip"));
             numericBoxDefocusNum.Value = 4D;
             numericBoxDefocusNum.ValueFontSize = 9F;
@@ -942,7 +862,6 @@ namespace ReciPro
             numericBoxDefocusStep.Minimum = -100D;
             numericBoxDefocusStep.Name = "numericBoxDefocusStep";
             numericBoxDefocusStep.ShowUpDown = true;
-            numericBoxDefocusStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip"));
             numericBoxDefocusStep.UpDown_Increment = 10D;
             numericBoxDefocusStep.Value = -20D;
@@ -958,7 +877,6 @@ namespace ReciPro
             numericBoxDefocusStart.Minimum = -1000D;
             numericBoxDefocusStart.Name = "numericBoxDefocusStart";
             numericBoxDefocusStart.ShowUpDown = true;
-            numericBoxDefocusStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip"));
             numericBoxDefocusStart.UpDown_Increment = 10D;
             numericBoxDefocusStart.Value = -70D;
@@ -989,7 +907,6 @@ namespace ReciPro
             numericBoxThicknessNum.Minimum = 1D;
             numericBoxThicknessNum.Name = "numericBoxThicknessNum";
             numericBoxThicknessNum.ShowUpDown = true;
-            numericBoxThicknessNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip"));
             numericBoxThicknessNum.Value = 4D;
             numericBoxThicknessNum.ValueFontSize = 9F;
@@ -1004,7 +921,6 @@ namespace ReciPro
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             numericBoxThicknessStep.ShowUpDown = true;
-            numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.UpDown_Increment = 10D;
             numericBoxThicknessStep.Value = 20D;
@@ -1020,7 +936,6 @@ namespace ReciPro
             numericBoxThicknessStart.Minimum = 0.1D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             numericBoxThicknessStart.ShowUpDown = true;
-            numericBoxThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.UpDown_Increment = 10D;
             numericBoxThicknessStart.Value = 20D;
@@ -1336,6 +1251,40 @@ namespace ReciPro
             toolTip.SetToolTip(checkBoxPotentialUg, resources.GetString("checkBoxPotentialUg.ToolTip"));
             checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
+            // groupBoxSTEMoption4
+            // 
+            resources.ApplyResources(groupBoxSTEMoption4, "groupBoxSTEMoption4");
+            captureExtender.SetCapture(groupBoxSTEMoption4, true);
+            groupBoxSTEMoption4.Controls.Add(panelEdxDetails);
+            groupBoxSTEMoption4.Controls.Add(labelEdxSummary);
+            groupBoxSTEMoption4.Controls.Add(checkBoxCalculateEdx);
+            groupBoxSTEMoption4.Name = "groupBoxSTEMoption4";
+            groupBoxSTEMoption4.TabStop = false;
+            // 
+            // panelEdxDetails
+            // 
+            panelEdxDetails.Controls.Add(labelEdxProbeGrid);
+            resources.ApplyResources(panelEdxDetails, "panelEdxDetails");
+            panelEdxDetails.Name = "panelEdxDetails";
+            // 
+            // labelEdxProbeGrid
+            // 
+            resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
+            labelEdxProbeGrid.Name = "labelEdxProbeGrid";
+            // 
+            // labelEdxSummary
+            // 
+            resources.ApplyResources(labelEdxSummary, "labelEdxSummary");
+            labelEdxSummary.Name = "labelEdxSummary";
+            // 
+            // checkBoxCalculateEdx
+            // 
+            resources.ApplyResources(checkBoxCalculateEdx, "checkBoxCalculateEdx");
+            checkBoxCalculateEdx.Name = "checkBoxCalculateEdx";
+            toolTip.SetToolTip(checkBoxCalculateEdx, resources.GetString("checkBoxCalculateEdx.ToolTip"));
+            checkBoxCalculateEdx.UseVisualStyleBackColor = true;
+            checkBoxCalculateEdx.CheckedChanged += CheckBoxCalculateEdx_CheckedChanged;
+            // 
             // groupBoxSTEMoption2
             // 
             resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
@@ -1361,12 +1310,11 @@ namespace ReciPro
             numericBoxSTEM_AngleResolution.Name = "numericBoxSTEM_AngleResolution";
             numericBoxSTEM_AngleResolution.ShowUpDown = true;
             numericBoxSTEM_AngleResolution.SmartIncrement = true;
-            numericBoxSTEM_AngleResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_AngleResolution, resources.GetString("numericBoxSTEM_AngleResolution.ToolTip"));
             numericBoxSTEM_AngleResolution.Value = 0.4D;
             numericBoxSTEM_AngleResolution.ValueBoxWidth = 36;
             numericBoxSTEM_AngleResolution.ValueFontSize = 9F;
-            numericBoxSTEM_AngleResolution.ValueChanged += NumericBoxSTEM_AngleResolution_ValueChanged;//260801Cl 追加: probe grid の division 表示 (EDX 警告) を更新
+            numericBoxSTEM_AngleResolution.ValueChanged += NumericBoxSTEM_AngleResolution_ValueChanged;
             // 
             // numericBoxSTEM_SliceThicknessForInelastic
             // 
@@ -1378,7 +1326,6 @@ namespace ReciPro
             numericBoxSTEM_SliceThicknessForInelastic.Name = "numericBoxSTEM_SliceThicknessForInelastic";
             numericBoxSTEM_SliceThicknessForInelastic.ShowUpDown = true;
             numericBoxSTEM_SliceThicknessForInelastic.SmartIncrement = true;
-            numericBoxSTEM_SliceThicknessForInelastic.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSTEM_SliceThicknessForInelastic.ToolTip"));
             numericBoxSTEM_SliceThicknessForInelastic.Value = 1D;
             numericBoxSTEM_SliceThicknessForInelastic.ValueBoxWidth = 36;
@@ -1442,7 +1389,6 @@ namespace ReciPro
             numericBoxResolution.Name = "numericBoxResolution";
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
-            numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 2D;
             numericBoxResolution.ValueBoxWidth = 45;
@@ -1455,6 +1401,7 @@ namespace ReciPro
             sizeControl1.Minimum = 8;
             sizeControl1.Name = "sizeControl1";
             sizeControl1.Value = new System.Drawing.Size(512, 512);
+            sizeControl1.ValueBoxWidth = 52;
             sizeControl1.ValueFontSize = 9F;
             // 
             // panel8
@@ -1480,7 +1427,6 @@ namespace ReciPro
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
-            numericBoxNumOfBlochWave.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             numericBoxNumOfBlochWave.Value = 80D;
             numericBoxNumOfBlochWave.ValueBoxWidth = 36;
@@ -1538,20 +1484,10 @@ namespace ReciPro
             // flowLayoutPanel8
             // 
             resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
-            flowLayoutPanel8.Controls.Add(label34);
             flowLayoutPanel8.Controls.Add(flowLayoutPanelConvergenceRadius);
-            flowLayoutPanel8.Controls.Add(label1);
-            flowLayoutPanel8.Controls.Add(flowLayoutPanelOuterRadius);
-            flowLayoutPanel8.Controls.Add(flowLayoutPanelInnerRadius);
+            flowLayoutPanel8.Controls.Add(flowLayoutPanel9);
             flowLayoutPanel8.Controls.Add(numericBoxSTEM_EffectiveSourceSize);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(label34, "label34");
-            label34.ForeColor = System.Drawing.SystemColors.ControlText;
-            label34.Name = "label34";
-            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
             // 
             // flowLayoutPanelConvergenceRadius
             // 
@@ -1571,11 +1507,10 @@ namespace ReciPro
             numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
             numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
             numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
-            numericBoxSTEM_ConvergenceAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
             numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_ConvergenceAngle.Value = 25D;
-            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 40;
+            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 36;
             numericBoxSTEM_ConvergenceAngle.ValueFontSize = 9F;
             numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1595,12 +1530,26 @@ namespace ReciPro
             label36.Name = "label36";
             toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip"));
             // 
+            // flowLayoutPanel9
+            // 
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
+            flowLayoutPanel9.Controls.Add(label1);
+            flowLayoutPanel9.Controls.Add(flowLayoutPanel12);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = System.Drawing.SystemColors.ControlText;
             label1.Name = "label1";
             toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            // 
+            // flowLayoutPanel12
+            // 
+            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelOuterRadius);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelInnerRadius);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
             // 
             // flowLayoutPanelOuterRadius
             // 
@@ -1620,11 +1569,10 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle.Name = "numericBoxSTEM_DetectorOuterAngle";
             numericBoxSTEM_DetectorOuterAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorOuterAngle.SmartIncrement = true;
-            numericBoxSTEM_DetectorOuterAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_DetectorOuterAngle, resources.GetString("numericBoxSTEM_DetectorOuterAngle.ToolTip"));
             numericBoxSTEM_DetectorOuterAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Value = 20D;
-            numericBoxSTEM_DetectorOuterAngle.ValueBoxWidth = 40;
+            numericBoxSTEM_DetectorOuterAngle.ValueBoxWidth = 36;
             numericBoxSTEM_DetectorOuterAngle.ValueFontSize = 9F;
             numericBoxSTEM_DetectorOuterAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1662,10 +1610,9 @@ namespace ReciPro
             numericBoxSTEM_DetectorInnerAngle.Name = "numericBoxSTEM_DetectorInnerAngle";
             numericBoxSTEM_DetectorInnerAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorInnerAngle.SmartIncrement = true;
-            numericBoxSTEM_DetectorInnerAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_DetectorInnerAngle, resources.GetString("numericBoxSTEM_DetectorInnerAngle.ToolTip"));
             numericBoxSTEM_DetectorInnerAngle.UpDown_Increment = 0.5D;
-            numericBoxSTEM_DetectorInnerAngle.ValueBoxWidth = 40;
+            numericBoxSTEM_DetectorInnerAngle.ValueBoxWidth = 36;
             numericBoxSTEM_DetectorInnerAngle.ValueFontSize = 9F;
             numericBoxSTEM_DetectorInnerAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1696,7 +1643,6 @@ namespace ReciPro
             numericBoxSTEM_EffectiveSourceSize.RestrictLimitValue = false;
             numericBoxSTEM_EffectiveSourceSize.ShowUpDown = true;
             numericBoxSTEM_EffectiveSourceSize.SmartIncrement = true;
-            numericBoxSTEM_EffectiveSourceSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_EffectiveSourceSize, resources.GetString("numericBoxSTEM_EffectiveSourceSize.ToolTip"));
             numericBoxSTEM_EffectiveSourceSize.UpDown_Increment = 0.1D;
             numericBoxSTEM_EffectiveSourceSize.Value = 20D;
@@ -1754,7 +1700,6 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperX.Name = "numericBoxHRTEM_ObjAperX";
             numericBoxHRTEM_ObjAperX.ShowUpDown = true;
             numericBoxHRTEM_ObjAperX.SmartIncrement = true;
-            numericBoxHRTEM_ObjAperX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperX, resources.GetString("numericBoxHRTEM_ObjAperX.ToolTip"));
             numericBoxHRTEM_ObjAperX.UpDown_Increment = 0.5D;
             numericBoxHRTEM_ObjAperX.ValueBoxWidth = 32;
@@ -1771,7 +1716,6 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperY.Name = "numericBoxHRTEM_ObjAperY";
             numericBoxHRTEM_ObjAperY.ShowUpDown = true;
             numericBoxHRTEM_ObjAperY.SmartIncrement = true;
-            numericBoxHRTEM_ObjAperY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperY, resources.GetString("numericBoxHRTEM_ObjAperY.ToolTip"));
             numericBoxHRTEM_ObjAperY.UpDown_Increment = 0.5D;
             numericBoxHRTEM_ObjAperY.ValueBoxWidth = 32;
@@ -1812,7 +1756,6 @@ namespace ReciPro
             numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
             numericBoxObjAperRadius.ShowUpDown = true;
             numericBoxObjAperRadius.SmartIncrement = true;
-            numericBoxObjAperRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
             numericBoxObjAperRadius.UpDown_Increment = 0.5D;
             numericBoxObjAperRadius.Value = 12D;
@@ -1942,7 +1885,6 @@ namespace ReciPro
             numericBoxCs.Name = "numericBoxCs";
             numericBoxCs.ShowUpDown = true;
             numericBoxCs.SmartIncrement = true;
-            numericBoxCs.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
             numericBoxCs.UpDown_Increment = 0.1D;
             numericBoxCs.Value = 1D;
@@ -1961,7 +1903,6 @@ namespace ReciPro
             numericBoxCc.RestrictLimitValue = false;
             numericBoxCc.ShowUpDown = true;
             numericBoxCc.SmartIncrement = true;
-            numericBoxCc.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
             numericBoxCc.UpDown_Increment = 0.1D;
             numericBoxCc.Value = 1.4D;
@@ -1979,7 +1920,6 @@ namespace ReciPro
             numericBoxHRTEM_BetaAgnle.Name = "numericBoxHRTEM_BetaAgnle";
             numericBoxHRTEM_BetaAgnle.ShowUpDown = true;
             numericBoxHRTEM_BetaAgnle.SmartIncrement = true;
-            numericBoxHRTEM_BetaAgnle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip"));
             numericBoxHRTEM_BetaAgnle.UpDown_Increment = 0.05D;
             numericBoxHRTEM_BetaAgnle.ValueBoxWidth = 34;
@@ -2003,7 +1943,6 @@ namespace ReciPro
             numericBoxDefocus.Name = "numericBoxDefocus";
             numericBoxDefocus.ShowUpDown = true;
             numericBoxDefocus.SmartIncrement = true;
-            numericBoxDefocus.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
             numericBoxDefocus.Value = -57.8D;
             numericBoxDefocus.ValueBoxWidth = 50;
@@ -2057,7 +1996,6 @@ namespace ReciPro
             numericBoxAccVol.Name = "numericBoxAccVol";
             numericBoxAccVol.ShowUpDown = true;
             numericBoxAccVol.SmartIncrement = true;
-            numericBoxAccVol.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
             numericBoxAccVol.Value = 200D;
             numericBoxAccVol.ValueBoxWidth = 38;
@@ -2075,7 +2013,6 @@ namespace ReciPro
             numericBoxDeltaV.RestrictLimitValue = false;
             numericBoxDeltaV.ShowUpDown = true;
             numericBoxDeltaV.SmartIncrement = true;
-            numericBoxDeltaV.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
             numericBoxDeltaV.UpDown_Increment = 0.1D;
             numericBoxDeltaV.Value = 0.8D;
@@ -2103,7 +2040,6 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanelImageType, "flowLayoutPanelImageType");
             flowLayoutPanelImageType.Controls.Add(radioButtonHRTEM);
             flowLayoutPanelImageType.Controls.Add(radioButtonSTEM);
-            //flowLayoutPanelImageType.Controls.Add(radioButtonStemEDX);//260801Cl 削除: STEM-EDX は独立モードでなく STEM run の追加出力オプション (設計書 §5.9.1-2)
             flowLayoutPanelImageType.Controls.Add(radioButtonProjectedPotential);
             flowLayoutPanelImageType.Name = "flowLayoutPanelImageType";
             // 
@@ -2124,8 +2060,7 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonSTEM, resources.GetString("radioButtonSTEM.ToolTip"));
             radioButtonSTEM.UseVisualStyleBackColor = true;
             radioButtonSTEM.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
-            //260801Cl 削除: radioButtonStemEDX の初期化ブロック (STEM-EDX の独立モード化を撤回。設計書 §5.9.1)
-            //
+            // 
             // radioButtonProjectedPotential
             // 
             resources.ApplyResources(radioButtonProjectedPotential, "radioButtonProjectedPotential");
@@ -2166,7 +2101,6 @@ namespace ReciPro
             numericBoxThickness.Name = "numericBoxThickness";
             numericBoxThickness.ShowUpDown = true;
             numericBoxThickness.SmartIncrement = true;
-            numericBoxThickness.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueBoxWidth = 48;
@@ -2335,8 +2269,8 @@ namespace ReciPro
             // 
             // buttonStop
             // 
-            buttonStop.BackColor = System.Drawing.Color.IndianRed;
             resources.ApplyResources(buttonStop, "buttonStop");
+            buttonStop.BackColor = System.Drawing.Color.IndianRed;
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.Name = "buttonStop";
             toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip"));
@@ -2435,13 +2369,10 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).EndInit();
             flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             flowLayoutPanelRealAndImaiginary.PerformLayout();
-            //260801Cl 追加: EDX 要求 UI (SuspendLayout と対)
             groupBoxSTEMoption4.ResumeLayout(false);
             groupBoxSTEMoption4.PerformLayout();
             panelEdxDetails.ResumeLayout(false);
             panelEdxDetails.PerformLayout();
-            flowLayoutPanelEdxButtons.ResumeLayout(false);
-            flowLayoutPanelEdxButtons.PerformLayout();
             groupBoxSTEMoption2.ResumeLayout(false);
             groupBoxSTEMoption2.PerformLayout();
             flowLayoutPanel11.ResumeLayout(false);
@@ -2465,6 +2396,10 @@ namespace ReciPro
             flowLayoutPanel8.PerformLayout();
             flowLayoutPanelConvergenceRadius.ResumeLayout(false);
             flowLayoutPanelConvergenceRadius.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
             flowLayoutPanelOuterRadius.ResumeLayout(false);
             flowLayoutPanelOuterRadius.PerformLayout();
             flowLayoutPanelInnerRadius.ResumeLayout(false);
@@ -2684,7 +2619,6 @@ namespace ReciPro
         private NumericBox numericBoxSTEM_EffectiveSourceSize;
         private System.Windows.Forms.ToolStripMenuItem setAllAToolStripMenuItem;
         private System.Windows.Forms.Panel panelSerialSettings;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem presets1ToolStripMenuItem;
@@ -2722,10 +2656,6 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxCalculateEdx;
         private System.Windows.Forms.Label labelEdxSummary;
         private System.Windows.Forms.Panel panelEdxDetails;
-        private System.Windows.Forms.CheckedListBox checkedListBoxEdxChannels;//260801Cl 変更 (作者指示): DGV+5列 -> CheckedListBox
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEdxButtons;
-        private System.Windows.Forms.Button buttonEdxSelectAvailable;
-        private System.Windows.Forms.Button buttonEdxClear;
         private System.Windows.Forms.Label labelEdxProbeGrid;
         private System.Windows.Forms.ComboBox comboBoxEdxDisplay;//260801Cl 追加
         private System.Windows.Forms.Label label2;
@@ -2742,5 +2672,7 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
     }
 }

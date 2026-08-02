@@ -879,12 +879,6 @@ code（高速 C++/Eigen 原生代码）或 Managed code
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>计算所选元素/壳层通道的电离 (EDX) 分布图。&#xD;&#xA;STEM 参考像 (ADF / 弹性 / TDS) 始终会计算；&#xD;&#xA;每个 EDX 通道会在其后额外增加一次电离计算。</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>选择全部可用</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>清除</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 共用</value>
   </data>
@@ -895,6 +889,6 @@ code（高速 C++/Eigen 原生代码）或 Managed code
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>显示 STEM-EDX 元素分布图，替代 ADF 类图像。特征 X 射线在下方选择。计算出至少一个 EDX 通道后可用。</value>
+    <value>显示 STEM-EDX 元素分布图，替代 ADF 类图像；特征 X 射线在下方选择。数值是每个入射电子产生的内壳空穴数（模型值）。荧光产额、自吸收、探测器立体角与探测效率均未计入，因此不是预测的 X 射线计数。</value>
   </data>
 </root>

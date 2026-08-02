@@ -894,12 +894,6 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Berechnet Ionisationskarten (EDX) für die ausgewählten Element-/Schalenkanäle.&#xD;&#xA;Das STEM-Referenzbild (ADF / elastisch / TDS) wird immer berechnet;&#xD;&#xA;jeder EDX-Kanal fügt danach einen weiteren Ionisationsdurchlauf hinzu.</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>Verfügbare auswählen</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX gemeinsam</value>
   </data>
@@ -910,6 +904,6 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes. Die charakteristische Röntgenlinie wird unten ausgewählt. Verfügbar, sobald ein Lauf mindestens einen EDX-Kanal berechnet hat.</value>
+    <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes; die charakteristische Röntgenlinie wird unten gewählt. Die Werte sind modellierte Ionisationslücken pro einfallendem Elektron. Fluoreszenzausbeute, Selbstabsorption, Detektorraumwinkel und Detektoreffizienz sind NICHT berücksichtigt - dies ist also keine vorhergesagte Röntgenzählrate.</value>
   </data>
 </root>

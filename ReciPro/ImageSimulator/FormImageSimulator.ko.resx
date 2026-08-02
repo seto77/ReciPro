@@ -890,12 +890,6 @@ Step 및 Num과 조합하여 아래의
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>선택한 원소/껍질 채널의 이온화(EDX) 맵을 계산합니다.&#xD;&#xA;STEM 참조 이미지(ADF / 탄성 / TDS)는 항상 계산되며,&#xD;&#xA;EDX 채널마다 이온화 패스가 한 번씩 추가됩니다.</value>
   </data>
-  <data name="buttonEdxSelectAvailable.Text" xml:space="preserve">
-    <value>사용 가능 모두 선택</value>
-  </data>
-  <data name="buttonEdxClear.Text" xml:space="preserve">
-    <value>해제</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
     <value>EDX 공통</value>
   </data>
@@ -906,6 +900,6 @@ Step 및 Num과 조합하여 아래의
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>ADF 계열 상 대신 STEM-EDX 원소 맵을 표시합니다. 특성 X 선 종류는 아래 목록에서 고릅니다. EDX 채널을 하나 이상 계산한 run 이 있을 때만 선택할 수 있습니다.</value>
+    <value>ADF 계열 상 대신 STEM-EDX 원소 맵을 표시합니다. 특성 X 선 종류는 아래 목록에서 고릅니다. 값은 입사 전자당 내각 공공 생성량(모델 값)입니다. 형광 수율·자기흡수·검출기 입체각·검출 효율이 모두 적용되지 않았으므로 실측 X 선 계수가 아닙니다.</value>
   </data>
 </root>
