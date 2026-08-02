@@ -338,8 +338,9 @@ internal static partial class GuiCapture
             try
             {
                 sim.ImageMode = mode;                  // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
-                sim.EdxEnabled = edx;                  // 260801Cl: EDX チェック (STEM 以外では getter が false を返すので実質 no-op)
+                sim.EdxEnabled = edx;                  // 260801Cl: EDX を計算するかのチェック
                 if (edx) sim.SelectAvailableEdxChannels();// 260801Cl: 候補表を埋めた状態にする
+                sim.CaptureSelectEdxAfterRun = edx;    // 260802Cl: 計算後に表示信号を EDX へ (元素マップを撮るため)
                 Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
                 BringToFront(sim);
                 sim.PrepareCaptureForGuiAudit();       // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)

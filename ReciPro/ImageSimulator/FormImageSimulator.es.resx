@@ -897,10 +897,10 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
     <value>Utiliza un único intervalo de visualización para todos los canales EDX, de modo que cambiar de canal no reescale el mapa. Los valores son vacantes de ionización modeladas, no recuentos de rayos X medidos.</value>
   </data>
-  <data name="labelAdjustTarget.Text" xml:space="preserve">
-    <value>Destino</value>
+  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
+    <value>EDX</value>
   </data>
-  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
-    <value>Elige a qué panel se aplican el intervalo de intensidad y la escala de color. La imagen de referencia STEM y los mapas EDX conservan siempre su propio intervalo.</value>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>Muestra el mapa elemental STEM-EDX en lugar de la imagen de tipo ADF. La línea de rayos X característica se elige abajo. Disponible cuando un cálculo ha producido al menos un canal EDX.</value>
   </data>
 </root>

@@ -907,11 +907,11 @@ CTF（contrast transfer function, コントラスト
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
     <value>EDX の全チャネルで 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上のイオン化空孔量であって、実測 X 線カウントではありません。</value>
   </data>
-  <data name="labelAdjustTarget.Text" xml:space="preserve">
-    <value>対象</value>
+  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
+    <value>EDX</value>
   </data>
-  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
-    <value>輝度レンジとカラースケールをどちらのペインに効かせるかを選びます。STEM 参照像と EDX マップは常に別々のレンジを持ちます。</value>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。EDX チャネルを 1 つ以上計算した run があるときだけ選べます。</value>
   </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1237,19 +1237,10 @@ CTF（contrast transfer function, コントラスト
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="labelPaneReference.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="labelPaneEdx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="labelAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="comboBoxAdjustTarget.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
   <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
 </root>

@@ -903,10 +903,10 @@ U'g) как изображения действительной и мнимой 
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
     <value>Использует один диапазон отображения для всех каналов EDX, поэтому переключение канала не меняет масштаб. Значения — модельные ионизационные вакансии, а не измеренные счёты рентгеновских квантов.</value>
   </data>
-  <data name="labelAdjustTarget.Text" xml:space="preserve">
-    <value>Цель</value>
+  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
+    <value>EDX</value>
   </data>
-  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
-    <value>Выбирает, к какой панели применяются диапазон яркости и цветовая шкала. Опорное STEM-изображение и карты EDX всегда имеют собственные диапазоны.</value>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>Показывает элементную карту STEM-EDX вместо изображения типа ADF. Характеристическая рентгеновская линия выбирается ниже. Доступно, когда расчёт дал хотя бы один канал EDX.</value>
   </data>
 </root>

@@ -906,10 +906,10 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
     <value>Verwendet einen gemeinsamen Anzeigebereich für alle EDX-Kanäle, sodass ein Kanalwechsel die Skalierung nicht ändert. Die Werte sind modellierte Ionisationslücken, keine gemessenen Röntgenzählraten.</value>
   </data>
-  <data name="labelAdjustTarget.Text" xml:space="preserve">
-    <value>Ziel</value>
+  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
+    <value>EDX</value>
   </data>
-  <data name="comboBoxAdjustTarget.ToolTip" xml:space="preserve">
-    <value>Legt fest, auf welchen Bereich sich Helligkeitsbereich und Farbskala auswirken. STEM-Referenz und EDX-Karten behalten immer ihren eigenen Bereich.</value>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes. Die charakteristische Röntgenlinie wird unten ausgewählt. Verfügbar, sobald ein Lauf mindestens einen EDX-Kanal berechnet hat.</value>
   </data>
 </root>
