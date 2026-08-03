@@ -3270,7 +3270,7 @@ grid shown when 'Show Subcell' is enabled.</value>
     <value>57, 25</value>
   </data>
   <data name="numericBoxProjectionCenterX.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
     <value>a-axis fractional coordinate of the projection
@@ -3358,7 +3358,7 @@ view (equivalently it translates the unit cell).</value>
     <value>57, 25</value>
   </data>
   <data name="numericBoxProjectionCenterZ.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
     <value>c-axis fractional coordinate of the projection
@@ -3948,7 +3948,7 @@ than this depth stay fully opaque (-30 to 30)</value>
     <value>127, 21</value>
   </data>
   <data name="checkBoxSymElems_Inversions.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
     <value>Inversion Cneters
@@ -3999,7 +3999,7 @@ the structure maps onto itself under x to
     <value>149, 26</value>
   </data>
   <data name="numericBoxInversionSymbolSize.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>9</value>
   </data>
   <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
     <value>Size of the inversion-center symbols,
@@ -4045,7 +4045,7 @@ as a percentage (100% = default size).</value>
     <value>60, 20</value>
   </data>
   <data name="colorControlInversion.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;colorControlInversion.Name" xml:space="preserve">
     <value>colorControlInversion</value>

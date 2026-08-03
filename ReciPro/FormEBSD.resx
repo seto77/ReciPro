@@ -6366,7 +6366,7 @@ count is not affected.</value>
     <value>258, 54</value>
   </data>
   <data name="flowLayoutPanelCopy.TabIndex" type="System.Int32, mscorlib">
-    <value>204</value>
+    <value>202</value>
   </data>
   <data name="flowLayoutPanelCopy.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6588,7 +6588,7 @@ count is not affected.</value>
     <value>142, 63</value>
   </data>
   <data name="flowLayoutPanelShowCheckBoxes.TabIndex" type="System.Int32, mscorlib">
-    <value>202</value>
+    <value>204</value>
   </data>
   <data name="flowLayoutPanelShowCheckBoxes.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>

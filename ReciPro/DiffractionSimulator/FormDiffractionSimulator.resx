@@ -7410,7 +7410,7 @@ accelerating voltage (wavelength).</value>
     <value>186, 22</value>
   </data>
   <data name="flowLayoutPanelPointSpreadIntensity.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>0</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7497,7 +7497,7 @@ accelerating voltage (wavelength).</value>
     <value>186, 25</value>
   </data>
   <data name="flowLayoutPanelScaleColor.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>53</value>
   </data>
   <data name="label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7577,7 +7577,7 @@ by intensity instead of the assigned crystal color.</value>
     <value>82, 21</value>
   </data>
   <data name="checkBoxLogScale.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>54</value>
   </data>
   <data name="checkBoxLogScale.Text" xml:space="preserve">
     <value>Log scale</value>

@@ -551,7 +551,7 @@ calculation, 1-128. Disabled when Solver is Auto.</value>
     <value>280, 27</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+    <value>33</value>
   </data>
   <data name="radioButtonCBED.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -642,7 +642,7 @@ a reflection is recorded over a larger angular range.</value>
     <value>407, 27</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>34</value>
   </data>
   <data name="numericBoxMaxNumOfG.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -753,7 +753,7 @@ accuracy but slow the computation.</value>
     <value>346, 27</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>35</value>
   </data>
   <data name="numericBoxDiskResolution.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -945,7 +945,7 @@ for finer disks but longer calculation.</value>
     <value>388, 27</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+    <value>36</value>
   </data>
   <data name="numericBoxWholeThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
