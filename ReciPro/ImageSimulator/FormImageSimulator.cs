@@ -280,10 +280,16 @@ public partial class FormImageSimulator : FormBase
     /// プリセットはこのプロパティを保存するので、モードを含めると「HRTEM 表示中に保存したプリセットは
     /// EDX 要求を落とす」ことになる。実際に EDX を計算するかの判定 (モードとの AND) は
     /// <see cref="BuildEdxRequests"/> 側に置く。</summary>
+    /// <summary>260803Cl 追加: STEM-EDX の出荷ゲート。開発中の機能を隠したまま他の修正をリリースするための一時フラグで、
+    /// EDX 完成時にこのフラグごと削除する。false の間は UI (groupBoxSTEMoption4 / EDX ラジオ) を隠し、
+    /// チェック状態の復元 (プリセット・--capture) も無視するので、EDX 計算経路には一切入らない。</summary>
+    internal static readonly bool EdxReleased = false;
+
     public bool EdxEnabled
     {
         get => checkBoxCalculateEdx.Checked;
-        set => checkBoxCalculateEdx.Checked = value;
+        //set => checkBoxCalculateEdx.Checked = value;//260803Cl 変更前
+        set => checkBoxCalculateEdx.Checked = EdxReleased && value;//260803Cl 変更: 未出荷の間はプリセット/--capture からの復元も ON にしない
     }
 
     /// <summary>--capture 用: EDX 要求の GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
@@ -350,7 +356,8 @@ public partial class FormImageSimulator : FormBase
     private StemIonizationRequest[] BuildEdxRequests()
     {
         //モード判定はここ (EdxEnabled はチェック状態そのもの)
-        if (ImageMode != ImageModes.STEM || !EdxEnabled) return null;
+        //if (ImageMode != ImageModes.STEM || !EdxEnabled) return null;//260803Cl 変更前
+        if (!EdxReleased || ImageMode != ImageModes.STEM || !EdxEnabled) return null;//260803Cl 変更: 出荷ゲート (チェックは隠れていても Checked が残り得るため、入口でも遮断する)
         //投げる直前に候補を最新化する (結晶・電圧が変わった直後でも取りこぼさない。中身が同じなら再列挙は起きない)
         RenewEdxChannelList();
         return [.. AvailableEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
@@ -589,6 +596,7 @@ public partial class FormImageSimulator : FormBase
 
         //260802Cl 追加: EDX はまだ計算結果が無いので選べない (run 完了時に RenewEdxDisplayList が有効化する)
         radioButtonSTEM_target_EDX.Enabled = false;
+        radioButtonSTEM_target_EDX.Visible = EdxReleased;//260803Cl 追加: 出荷ゲート (グレーアウトでも見えてしまうため)
         checkBoxEdxCommonScale.Visible = false;
 
         //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
@@ -1590,7 +1598,9 @@ public partial class FormImageSimulator : FormBase
         groupBoxPotentialOption.Visible = mode == ImageModes.POTENTIAL;
         groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = mode == ImageModes.HRTEM;
         //260801Cl 変更: option4 (EDX 要求) を STEM 系 GroupBox に追加。表の中身はチェック時のみ展開 (progressive disclosure)
-        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = groupBoxSTEMoption4.Visible = isStem;
+        //groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = groupBoxSTEMoption4.Visible = isStem;//260803Cl 変更前
+        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = isStem;
+        groupBoxSTEMoption4.Visible = isStem && EdxReleased;//260803Cl 変更: 出荷ゲート
         panelEdxDetails.Visible = checkBoxCalculateEdx.Checked;
         //260802Cl 追加: EDX チャネル間の共通スケールは groupBoxNormalization (HRTEM でも見える) の中にあるので、
         //STEM で EDX を表示しているときだけに絞る (groupBoxSTEMoption3 側は GroupBox ごと消えるので不要)

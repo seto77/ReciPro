@@ -75,7 +75,6 @@ title: HRTEM/STEMシミュレータ
 
 - **HRTEM** — 高分解能TEM格子縞像 → [HRTEMシミュレーション](1-hrtem-simulation.md)
 - **STEM** — 走査透過電子顕微鏡像 → [STEMシミュレーション](2-stem-simulation.md)
-- **STEM-EDX** — STEMの計算条件で STEM-EDX 出力を扱う（STEMの一種）
 - **ポテンシャル** — 投影結晶ポテンシャル → [ポテンシャルシミュレーション](3-potential-simulation.md)
 
 ---

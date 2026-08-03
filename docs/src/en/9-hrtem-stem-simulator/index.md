@@ -75,7 +75,6 @@ Results are shown as one or more image panes. They use ReciPro's standard [image
 
 - **HRTEM** — high-resolution TEM lattice-fringe images → [HRTEM simulation](1-hrtem-simulation.md)
 - **STEM** — scanning transmission electron microscope images → [STEM simulation](2-stem-simulation.md)
-- **STEM-EDX** — handles STEM-EDX output using the STEM calculation conditions (a variant of STEM)
 - **Potential** — projected crystal potential → [Potential simulation](3-potential-simulation.md)
 
 ---
