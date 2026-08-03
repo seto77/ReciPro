@@ -28,6 +28,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            //260802Cl 復元: VS の再シリアライズで消えた宣言。ツールチップは各言語の
+            //FormDiffractionSimulatorGeometry.<lang>.resx から resources.GetString で引くため、この行が無いと多言語化が切れる。
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorGeometry));
             toolTip = new System.Windows.Forms.ToolTip(components);
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale1 = new System.Windows.Forms.ComboBox();
@@ -95,7 +98,7 @@
             comboBoxGradient.Name = "comboBoxGradient";
             comboBoxGradient.Size = new System.Drawing.Size(100, 25);
             comboBoxGradient.TabIndex = 95;
-            toolTip.SetToolTip(comboBoxGradient, "Selects positive or negative film\r\ngradient (negative inverts the displayed\r\nintensity scale of the overlapped image).");
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
             comboBoxGradient.SelectedIndexChanged += toolStripComboBoxGradient_SelectedIndexChanged;
             // 
             // comboBoxScale1
@@ -108,7 +111,7 @@
             comboBoxScale1.Name = "comboBoxScale1";
             comboBoxScale1.Size = new System.Drawing.Size(88, 25);
             comboBoxScale1.TabIndex = 96;
-            toolTip.SetToolTip(comboBoxScale1, "Switches the intensity mapping of the overlapped\r\nimage between logarithmic and linear scale.");
+            toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip"));
             comboBoxScale1.SelectedIndexChanged += toolStripComboBoxScale_SelectedIndexChanged;
             // 
             // comboBoxScale2
@@ -121,7 +124,7 @@
             comboBoxScale2.Name = "comboBoxScale2";
             comboBoxScale2.Size = new System.Drawing.Size(87, 25);
             comboBoxScale2.TabIndex = 97;
-            toolTip.SetToolTip(comboBoxScale2, "Selects the color scale (Gray, Cold-Warm, Spectrum,\r\nor Fire) used to render the overlapped image.");
+            toolTip.SetToolTip(comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip"));
             comboBoxScale2.SelectedIndexChanged += toolStripComboBoxScale2_SelectedIndexChanged;
             // 
             // trackBarPictureOpacity1
@@ -135,7 +138,7 @@
             trackBarPictureOpacity1.TabIndex = 102;
             trackBarPictureOpacity1.TickFrequency = 10;
             trackBarPictureOpacity1.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarPictureOpacity1, "Adjusts the opacity (0-100%) of the\r\noverlapped image on the diffraction pattern.");
+            toolTip.SetToolTip(trackBarPictureOpacity1, resources.GetString("trackBarPictureOpacity1.ToolTip"));
             trackBarPictureOpacity1.Value = 100;
             trackBarPictureOpacity1.ValueChanged += trackBarPictureOpacity1_ValueChanged;
             // 
@@ -150,7 +153,7 @@
             label10.Size = new System.Drawing.Size(48, 18);
             label10.TabIndex = 101;
             label10.Text = "Opacity";
-            toolTip.SetToolTip(label10, "Adjusts the opacity (0-100%) of the\r\noverlapped image on the diffraction pattern.");
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
             // 
             // label24
             // 
@@ -162,7 +165,7 @@
             label24.Size = new System.Drawing.Size(58, 20);
             label24.TabIndex = 98;
             label24.Text = "Gradient";
-            toolTip.SetToolTip(label24, "Selects positive or negative film\r\ngradient (negative inverts the displayed\r\nintensity scale of the overlapped image).");
+            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
             // 
             // label23
             // 
@@ -174,7 +177,7 @@
             label23.Size = new System.Drawing.Size(57, 20);
             label23.TabIndex = 99;
             label23.Text = "Scale 1";
-            toolTip.SetToolTip(label23, "Switches the intensity mapping of the overlapped\r\nimage between logarithmic and linear scale.");
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
             // 
             // label22
             // 
@@ -186,7 +189,7 @@
             label22.Size = new System.Drawing.Size(57, 20);
             label22.TabIndex = 100;
             label22.Text = "Scale 2";
-            toolTip.SetToolTip(label22, "Selects the color scale (Gray, Cold-Warm, Spectrum,\r\nor Fire) used to render the overlapped image.");
+            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
             // 
             // numericBoxFootX
             // 
@@ -205,7 +208,7 @@
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
-            toolTip.SetToolTip(numericBoxFootX, "Sets the X pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
+            toolTip.SetToolTip(numericBoxFootX, resources.GetString("numericBoxFootX.ToolTip"));
             numericBoxFootX.Value = 512D;
             numericBoxFootX.ValueBoxWidth = 60;
             numericBoxFootX.ValueFontSize = 9F;
@@ -227,7 +230,7 @@
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
-            toolTip.SetToolTip(numericBoxFootY, "Sets the Y pixel coordinate of the foot\r\npoint (direct-beam center) on the detector.");
+            toolTip.SetToolTip(numericBoxFootY, resources.GetString("numericBoxFootY.ToolTip"));
             numericBoxFootY.Value = 512D;
             numericBoxFootY.ValueBoxWidth = 60;
             numericBoxFootY.ValueFontSize = 9F;
@@ -249,7 +252,7 @@
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
-            toolTip.SetToolTip(numericBoxPixelSize, "Sets the physical size of one detector pixel in millimeters.");
+            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
             numericBoxPixelSize.Value = 0.1D;
             numericBoxPixelSize.ValueBoxWidth = 40;
             numericBoxPixelSize.ValueFontSize = 9F;
@@ -266,7 +269,7 @@
             sizeControl1.Name = "sizeControl1";
             sizeControl1.Size = new System.Drawing.Size(198, 25);
             sizeControl1.TabIndex = 0;
-            toolTip.SetToolTip(sizeControl1, "Sets the detector size (width x height) in pixels.");
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
             sizeControl1.Value = new System.Drawing.Size(1024, 1024);
             sizeControl1.ValueFontSize = 9F;
             // 
@@ -281,7 +284,7 @@
             buttonClearPicture.Size = new System.Drawing.Size(44, 25);
             buttonClearPicture.TabIndex = 89;
             buttonClearPicture.Text = "Clear";
-            toolTip.SetToolTip(buttonClearPicture, "Clears the loaded overlapped image.");
+            toolTip.SetToolTip(buttonClearPicture, resources.GetString("buttonClearPicture.ToolTip"));
             buttonClearPicture.UseVisualStyleBackColor = true;
             buttonClearPicture.Click += buttonClearPicture_Click;
             // 
@@ -296,7 +299,7 @@
             buttonLoadPicture.Size = new System.Drawing.Size(43, 25);
             buttonLoadPicture.TabIndex = 88;
             buttonLoadPicture.Text = "Load";
-            toolTip.SetToolTip(buttonLoadPicture, "Loads an image file to overlap on the diffraction pattern.");
+            toolTip.SetToolTip(buttonLoadPicture, resources.GetString("buttonLoadPicture.ToolTip"));
             buttonLoadPicture.UseVisualStyleBackColor = true;
             buttonLoadPicture.Click += buttonLoadPicture_Click;
             // 
@@ -311,7 +314,7 @@
             buttonRot90.Size = new System.Drawing.Size(55, 25);
             buttonRot90.TabIndex = 88;
             buttonRot90.Text = "Rot 90°";
-            toolTip.SetToolTip(buttonRot90, "Rotates the overlapped image and\r\ndetector dimensions by 90 degrees.");
+            toolTip.SetToolTip(buttonRot90, resources.GetString("buttonRot90.ToolTip"));
             buttonRot90.UseVisualStyleBackColor = true;
             buttonRot90.Click += buttonRot90_Click;
             // 
@@ -323,7 +326,7 @@
             textBoxFileName.ReadOnly = true;
             textBoxFileName.Size = new System.Drawing.Size(451, 23);
             textBoxFileName.TabIndex = 103;
-            toolTip.SetToolTip(textBoxFileName, "Shows the file path of the loaded\r\noverlapped image (read-only).");
+            toolTip.SetToolTip(textBoxFileName, resources.GetString("textBoxFileName.ToolTip"));
             textBoxFileName.TextChanged += textBoxFileName_TextChanged;
             // 
             // trackBarMaxInt
@@ -339,7 +342,7 @@
             trackBarMaxInt.TabIndex = 102;
             trackBarMaxInt.TickFrequency = 10;
             trackBarMaxInt.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarMaxInt, "Sets the upper intensity limit for\r\ndisplaying the overlapped image.");
+            toolTip.SetToolTip(trackBarMaxInt, resources.GetString("trackBarMaxInt.ToolTip"));
             trackBarMaxInt.Value = 100001;
             trackBarMaxInt.ValueChanged += trackBarMaxInt_ValueChanged;
             // 
@@ -355,7 +358,7 @@
             trackBarMinInt.TabIndex = 102;
             trackBarMinInt.TickFrequency = 10;
             trackBarMinInt.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarMinInt, "Sets the lower intensity limit for\r\ndisplaying the overlapped image.");
+            toolTip.SetToolTip(trackBarMinInt, resources.GetString("trackBarMinInt.ToolTip"));
             trackBarMinInt.Value = 1;
             trackBarMinInt.ValueChanged += trackBarMaxInt_ValueChanged;
             // 
@@ -370,7 +373,7 @@
             label1.Size = new System.Drawing.Size(49, 18);
             label1.TabIndex = 101;
             label1.Text = "Max int.";
-            toolTip.SetToolTip(label1, "Sets the upper intensity limit for\r\ndisplaying the overlapped image.");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
@@ -383,7 +386,7 @@
             label2.Size = new System.Drawing.Size(48, 18);
             label2.TabIndex = 101;
             label2.Text = "Min int.";
-            toolTip.SetToolTip(label2, "Sets the lower intensity limit for\r\ndisplaying the overlapped image.");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // checkBoxSchematicDiagram
             // 
@@ -393,7 +396,7 @@
             checkBoxSchematicDiagram.Size = new System.Drawing.Size(138, 21);
             checkBoxSchematicDiagram.TabIndex = 55;
             checkBoxSchematicDiagram.Text = "Schematic diagram";
-            toolTip.SetToolTip(checkBoxSchematicDiagram, "When checked, shows the schematic\r\ndiagram of the detector geometry.");
+            toolTip.SetToolTip(checkBoxSchematicDiagram, resources.GetString("checkBoxSchematicDiagram.ToolTip"));
             checkBoxSchematicDiagram.UseVisualStyleBackColor = true;
             checkBoxSchematicDiagram.CheckedChanged += CheckBoxShowSchematicDiagram_CheckedChanged;
             // 
@@ -417,7 +420,7 @@
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
-            toolTip.SetToolTip(numericBoxCameraLength2, "Sets the camera length to the detector plane in millimeters.");
+            toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueBoxWidth = 60;
             numericBoxCameraLength2.ValueChanged += numericBoxCameraLength2_ValueChanged;
@@ -440,7 +443,7 @@
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
-            toolTip.SetToolTip(numericBoxPhi, "Sets the azimuthal angle phi of\r\nthe detector tilt axis in degrees.");
+            toolTip.SetToolTip(numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip"));
             numericBoxPhi.ValueBoxWidth = 60;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -464,7 +467,7 @@
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
-            toolTip.SetToolTip(numericBoxTau, "Sets the detector tilt angle tau\r\nabout the tilt axis in degrees.");
+            toolTip.SetToolTip(numericBoxTau, resources.GetString("numericBoxTau.ToolTip"));
             numericBoxTau.ValueBoxWidth = 60;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -478,7 +481,7 @@
             label4.Size = new System.Drawing.Size(62, 15);
             label4.TabIndex = 101;
             label4.Text = "Brightness";
-            toolTip.SetToolTip(label4, "Adjusts the displayed brightness of the overlapped\r\nimage by setting its black point (Min int.) and\r\nwhite point (Max int.).");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // checkBoxDetectorSizePosition
             // 
@@ -489,7 +492,7 @@
             checkBoxDetectorSizePosition.Size = new System.Drawing.Size(256, 21);
             checkBoxDetectorSizePosition.TabIndex = 6;
             checkBoxDetectorSizePosition.Text = "Set detector area && overlapped image.";
-            toolTip.SetToolTip(checkBoxDetectorSizePosition, "When checked, draws the detector area\r\non the diffraction pattern and\r\nenables the overlapped-image settings.");
+            toolTip.SetToolTip(checkBoxDetectorSizePosition, resources.GetString("checkBoxDetectorSizePosition.ToolTip"));
             checkBoxDetectorSizePosition.UseVisualStyleBackColor = true;
             checkBoxDetectorSizePosition.CheckedChanged += checkBoxDetectorSizePosition_CheckedChanged;
             // 

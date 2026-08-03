@@ -79,7 +79,7 @@
             radioButtonCTF_coherent.TabIndex = 53;
             radioButtonCTF_coherent.TabStop = true;
             radioButtonCTF_coherent.Text = "Coherent imaging";
-            toolTip.SetToolTip(radioButtonCTF_coherent, "Treat STEM (Scanning TEM) as coherent\r\nimaging: show the Sin[W], Cos[W], Es,\r\nEc, PCTF and ACTF curves as for HRTEM");
+            toolTip.SetToolTip(radioButtonCTF_coherent, resources.GetString("radioButtonCTF_coherent.ToolTip"));
             radioButtonCTF_coherent.UseVisualStyleBackColor = true;
             radioButtonCTF_coherent.CheckedChanged += radioButtonCTF_coherent_CheckedChanged;
             // 
@@ -93,7 +93,7 @@
             radioButtonCTF_Incoherent.Size = new System.Drawing.Size(138, 21);
             radioButtonCTF_Incoherent.TabIndex = 53;
             radioButtonCTF_Incoherent.Text = "Incoherent imaging";
-            toolTip.SetToolTip(radioButtonCTF_Incoherent, "Treat STEM (Scanning TEM) as incoherent\r\nimaging: compute a single CTFI curve by\r\nintegrating over the convergence aperture");
+            toolTip.SetToolTip(radioButtonCTF_Incoherent, resources.GetString("radioButtonCTF_Incoherent.ToolTip"));
             radioButtonCTF_Incoherent.UseVisualStyleBackColor = true;
             // 
             // checkBoxSinW
@@ -110,7 +110,7 @@
             checkBoxSinW.Name = "checkBoxSinW";
             checkBoxSinW.Size = new System.Drawing.Size(312, 32);
             checkBoxSinW.TabIndex = 5;
-            toolTip.SetToolTip(checkBoxSinW, "Plot Sin[W(u)], the sine of the wave-aberration W(u):\r\nthe phase-contrast core of the transfer function");
+            toolTip.SetToolTip(checkBoxSinW, resources.GetString("checkBoxSinW.ToolTip"));
             checkBoxSinW.UseVisualStyleBackColor = true;
             checkBoxSinW.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -127,7 +127,7 @@
             checkBoxEs_HRTEM.Name = "checkBoxEs_HRTEM";
             checkBoxEs_HRTEM.Size = new System.Drawing.Size(304, 32);
             checkBoxEs_HRTEM.TabIndex = 6;
-            toolTip.SetToolTip(checkBoxEs_HRTEM, "Plot Es(u), the spatial coherence envelope\r\nfor HRTEM (High-Resolution TEM): contrast\r\ndamping from beam-divergence (semi-angle beta)");
+            toolTip.SetToolTip(checkBoxEs_HRTEM, resources.GetString("checkBoxEs_HRTEM.ToolTip"));
             checkBoxEs_HRTEM.UseVisualStyleBackColor = true;
             checkBoxEs_HRTEM.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -144,7 +144,7 @@
             checkBoxEc.Name = "checkBoxEc";
             checkBoxEc.Size = new System.Drawing.Size(288, 32);
             checkBoxEc.TabIndex = 7;
-            toolTip.SetToolTip(checkBoxEc, "Plot Ec(u), the temporal (chromatic) coherence\r\nenvelope: contrast damping from chromatic\r\naberration and high-tension / energy spread");
+            toolTip.SetToolTip(checkBoxEc, resources.GetString("checkBoxEc.ToolTip"));
             checkBoxEc.UseVisualStyleBackColor = true;
             checkBoxEc.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -162,7 +162,7 @@
             checkBoxPCTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             checkBoxPCTF.Size = new System.Drawing.Size(349, 32);
             checkBoxPCTF.TabIndex = 8;
-            toolTip.SetToolTip(checkBoxPCTF, "Plot the PCTF (Phase Contrast Transfer\r\nFunction) = Sin[W(u)] x Es x Ec, the\r\neffective phase transfer within the aperture");
+            toolTip.SetToolTip(checkBoxPCTF, resources.GetString("checkBoxPCTF.ToolTip"));
             checkBoxPCTF.UseVisualStyleBackColor = true;
             checkBoxPCTF.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -178,7 +178,7 @@
             buttonCopyGraph.Size = new System.Drawing.Size(48, 27);
             buttonCopyGraph.TabIndex = 58;
             buttonCopyGraph.Text = "Copy";
-            toolTip.SetToolTip(buttonCopyGraph, "Copy the plotted curves (u and each\r\nfunction value) as tab-separated text\r\nto the clipboard for pasting into Excel");
+            toolTip.SetToolTip(buttonCopyGraph, resources.GetString("buttonCopyGraph.ToolTip"));
             buttonCopyGraph.UseVisualStyleBackColor = true;
             buttonCopyGraph.Click += ButtonCopyGraph_Click;
             // 
@@ -204,7 +204,7 @@
             numericBoxMaxU1.SmartIncrement = true;
             numericBoxMaxU1.TabIndex = 56;
             numericBoxMaxU1.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxMaxU1, "Upper limit of the spatial-frequency axis u\r\nfor the plot, in nm-1 (0-20); sets how far\r\nin reciprocal space the curves are drawn");
+            toolTip.SetToolTip(numericBoxMaxU1, resources.GetString("numericBoxMaxU1.ToolTip"));
             numericBoxMaxU1.Value = 6D;
             numericBoxMaxU1.ValueChanged += numericBoxMaxU1_ValueChanged;
             // 
@@ -220,7 +220,7 @@
             checkBoxCosW.Name = "checkBoxCosW";
             checkBoxCosW.Size = new System.Drawing.Size(314, 32);
             checkBoxCosW.TabIndex = 14;
-            toolTip.SetToolTip(checkBoxCosW, "Plot Cos[W(u)], the cosine of the\r\nwave-aberration W(u): the amplitude-contrast\r\ncomponent of the lens transfer");
+            toolTip.SetToolTip(checkBoxCosW, resources.GetString("checkBoxCosW.ToolTip"));
             checkBoxCosW.UseVisualStyleBackColor = true;
             checkBoxCosW.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -238,7 +238,7 @@
             checkBoxEs_STEM.Name = "checkBoxEs_STEM";
             checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
             checkBoxEs_STEM.TabIndex = 9;
-            toolTip.SetToolTip(checkBoxEs_STEM, "Plot Es(u), the spatial coherence envelope\r\nfor STEM (Scanning TEM): contrast damping\r\nfrom finite source size (sigma_s)");
+            toolTip.SetToolTip(checkBoxEs_STEM, resources.GetString("checkBoxEs_STEM.ToolTip"));
             checkBoxEs_STEM.UseVisualStyleBackColor = true;
             checkBoxEs_STEM.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
@@ -254,7 +254,7 @@
             checkBoxACTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             checkBoxACTF.Size = new System.Drawing.Size(351, 31);
             checkBoxACTF.TabIndex = 8;
-            toolTip.SetToolTip(checkBoxACTF, "Plot the ACTF (Amplitude Contrast Transfer\r\nFunction) = Cos[W(u)] x Es x Ec, the effective\r\namplitude transfer within the aperture");
+            toolTip.SetToolTip(checkBoxACTF, resources.GetString("checkBoxACTF.ToolTip"));
             checkBoxACTF.UseVisualStyleBackColor = true;
             checkBoxACTF.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
