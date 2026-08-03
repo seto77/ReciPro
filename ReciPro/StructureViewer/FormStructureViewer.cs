@@ -1507,15 +1507,27 @@ public partial class FormStructureViewer : FormBase
         lock (lockObj1)
             objs = [.. GLObjects];
         var snaps = ModelExporter.Collect(objs);
+        var lineSnaps = ModelExporter.CollectLines(objs);//260803Cl 追加 (Phase 1): 単位胞枠などの線オブジェクト
         if (snaps.Count == 0)
         {
             MessageBox.Show("No printable solid objects (atoms, bonds, or polyhedra) are displayed.", "Export 3D Model", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         var (min, max) = ModelExporter.GetBounds(snaps);
-        var size = max - min;
+        var sizeSolids = max - min;
+        //線の端点も含めた寸法 (枠を含める場合のスケール計算用)
+        foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
+        {
+            min = V3.ComponentMin(V3.ComponentMin(min, s), t);
+            max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+        }
+        var sizeWithLines = max - min;
+        //細すぎる結合の警告用: 最小の結合 (円柱) 半径
+        var bondRadii = snaps.Where(s => s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0).Select(s => s.PipeRadius1);
+        var minBondRadius = bondRadii.Any() ? bondRadii.Min() : 0;
 
-        using var dlg = new FormExport3DModel(snaps.Count, snaps.Sum(s => s.Triangles.Length / 3), size);
+        //260803Cl 旧: using var dlg = new FormExport3DModel(snaps.Count, snaps.Sum(s => s.Triangles.Length / 3), size);
+        using var dlg = new FormExport3DModel(snaps.Count, snaps.Sum(s => s.Triangles.Length / 3), sizeSolids, sizeWithLines, lineSnaps.Count > 0, minBondRadius);
         if (dlg.ShowDialog(this) != DialogResult.OK)
             return;
 
@@ -1526,12 +1538,16 @@ public partial class FormStructureViewer : FormBase
             return;
 
         var scale = dlg.MmPerAngstrom;
+        var exportSnaps = snaps;
+        if (dlg.IncludeCellEdges && lineSnaps.Count > 0)//260803Cl 追加: 単位胞枠を円柱+角球に変換して追加
+            exportSnaps = [.. snaps, .. ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusAng)];
+
         int count;
         if (System.IO.Path.GetExtension(sfd.FileName).Equals(".stl", StringComparison.OrdinalIgnoreCase))
-            count = ModelExporter.ExportStl(sfd.FileName, snaps, scale);
+            count = ModelExporter.ExportStl(sfd.FileName, exportSnaps, scale);
         else
         {
-            //RGB → 元素名のマップ (同色の複数元素は "/" 連結)。原子由来でない色 (対称要素など) は #RRGGBB のまま
+            //RGB → 元素名のマップ (同色の複数元素は "/" 連結)。原子由来でない色 (対称要素・枠など) は #RRGGBB のまま
             var colorNames = new Dictionary<int, string>();
             foreach (var a in Crystal.Atoms.Where(a => a.GLEnabled))
             {
@@ -1541,8 +1557,10 @@ public partial class FormStructureViewer : FormBase
                 else if (!nm.Split('/').Contains(a.ElementName))
                     colorNames[key] = nm + "/" + a.ElementName;
             }
-            count = ModelExporter.Export3mf(sfd.FileName, snaps, scale, name, colorNames);
+            count = ModelExporter.Export3mf(sfd.FileName, exportSnaps, scale, name, colorNames);
         }
+        var (mn, mx) = ModelExporter.GetBounds(exportSnaps);
+        var size = mx - mn;
         textBoxCalcInformation.AppendText($"Exported {count} triangles to {System.IO.Path.GetFileName(sfd.FileName)} " +
             $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/Å).\r\n");
     }

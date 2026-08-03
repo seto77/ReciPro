@@ -30,10 +30,15 @@ namespace ReciPro
             label1 = new System.Windows.Forms.Label();
             numericUpDownMaxSize = new System.Windows.Forms.NumericUpDown();
             label2 = new System.Windows.Forms.Label();
+            checkBoxCellEdges = new System.Windows.Forms.CheckBox();
+            numericUpDownEdgeDia = new System.Windows.Forms.NumericUpDown();
+            label3 = new System.Windows.Forms.Label();
             labelResult = new System.Windows.Forms.Label();
+            labelWarning = new System.Windows.Forms.Label();
             buttonOK = new System.Windows.Forms.Button();
             buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownEdgeDia)).BeginInit();
             SuspendLayout();
             //
             // labelInfo
@@ -95,7 +100,7 @@ namespace ReciPro
             0,
             0,
             0});
-            numericUpDownMaxSize.ValueChanged += numericUpDownMaxSize_ValueChanged;
+            numericUpDownMaxSize.ValueChanged += update;
             //
             // label2
             //
@@ -107,24 +112,87 @@ namespace ReciPro
             label2.TabIndex = 4;
             label2.Text = "mm";
             //
+            // checkBoxCellEdges (260803Cl 追加: 単位胞枠の円柱化)
+            //
+            checkBoxCellEdges.AutoSize = true;
+            checkBoxCellEdges.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            checkBoxCellEdges.Location = new System.Drawing.Point(12, 84);
+            checkBoxCellEdges.Name = "checkBoxCellEdges";
+            checkBoxCellEdges.Size = new System.Drawing.Size(220, 19);
+            checkBoxCellEdges.TabIndex = 5;
+            checkBoxCellEdges.Text = "Unit cell edges as cylinders,  dia.:";
+            checkBoxCellEdges.UseVisualStyleBackColor = true;
+            checkBoxCellEdges.CheckedChanged += update;
+            //
+            // numericUpDownEdgeDia
+            //
+            numericUpDownEdgeDia.DecimalPlaces = 1;
+            numericUpDownEdgeDia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            numericUpDownEdgeDia.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
+            numericUpDownEdgeDia.Location = new System.Drawing.Point(224, 82);
+            numericUpDownEdgeDia.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            65536});
+            numericUpDownEdgeDia.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            65536});
+            numericUpDownEdgeDia.Name = "numericUpDownEdgeDia";
+            numericUpDownEdgeDia.Size = new System.Drawing.Size(52, 21);
+            numericUpDownEdgeDia.TabIndex = 6;
+            numericUpDownEdgeDia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numericUpDownEdgeDia.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            65536});
+            //
+            // label3
+            //
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(280, 84);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(28, 15);
+            label3.TabIndex = 7;
+            label3.Text = "mm";
+            //
             // labelResult
             //
             labelResult.AutoSize = true;
             labelResult.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            labelResult.Location = new System.Drawing.Point(10, 86);
+            labelResult.Location = new System.Drawing.Point(10, 112);
             labelResult.Name = "labelResult";
             labelResult.Size = new System.Drawing.Size(200, 15);
-            labelResult.TabIndex = 5;
+            labelResult.TabIndex = 8;
             labelResult.Text = "Scale: 1.000 mm/Å,   Output size: 0 × 0 × 0 mm";
+            //
+            // labelWarning (260803Cl 追加: 印刷適性チェック簡易版の警告表示)
+            //
+            labelWarning.AutoSize = true;
+            labelWarning.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            labelWarning.ForeColor = System.Drawing.Color.Crimson;
+            labelWarning.Location = new System.Drawing.Point(10, 134);
+            labelWarning.MaximumSize = new System.Drawing.Size(360, 0);
+            labelWarning.Name = "labelWarning";
+            labelWarning.Size = new System.Drawing.Size(0, 15);
+            labelWarning.TabIndex = 9;
             //
             // buttonOK
             //
             buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonOK.Location = new System.Drawing.Point(196, 115);
+            buttonOK.Location = new System.Drawing.Point(196, 172);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new System.Drawing.Size(100, 25);
-            buttonOK.TabIndex = 6;
+            buttonOK.TabIndex = 10;
             buttonOK.Text = "Save...";
             buttonOK.UseVisualStyleBackColor = true;
             //
@@ -132,10 +200,10 @@ namespace ReciPro
             //
             buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonCancel.Location = new System.Drawing.Point(302, 115);
+            buttonCancel.Location = new System.Drawing.Point(302, 172);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new System.Drawing.Size(65, 25);
-            buttonCancel.TabIndex = 7;
+            buttonCancel.TabIndex = 11;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             //
@@ -145,13 +213,17 @@ namespace ReciPro
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = buttonCancel;
-            ClientSize = new System.Drawing.Size(377, 150);
+            ClientSize = new System.Drawing.Size(377, 207);
             Controls.Add(labelInfo);
             Controls.Add(labelSizeAng);
             Controls.Add(label1);
             Controls.Add(numericUpDownMaxSize);
             Controls.Add(label2);
+            Controls.Add(checkBoxCellEdges);
+            Controls.Add(numericUpDownEdgeDia);
+            Controls.Add(label3);
             Controls.Add(labelResult);
+            Controls.Add(labelWarning);
             Controls.Add(buttonOK);
             Controls.Add(buttonCancel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -163,6 +235,7 @@ namespace ReciPro
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Export 3D Model";
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownEdgeDia)).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,7 +247,11 @@ namespace ReciPro
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.NumericUpDown numericUpDownMaxSize;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBoxCellEdges;
+        public System.Windows.Forms.NumericUpDown numericUpDownEdgeDia;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelResult;
+        private System.Windows.Forms.Label labelWarning;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
     }
