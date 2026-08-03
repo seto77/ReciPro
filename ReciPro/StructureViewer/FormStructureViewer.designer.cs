@@ -213,6 +213,7 @@
             saveMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             SaveMovieMainImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             SaveMovieCrystalAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260803Cl 追加: 3Dプリント用STLエクスポート
             toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             iLikeVESTAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1873,7 +1874,7 @@
             // saveImageToolStripMenuItem
             // 
             captureExtender.SetCapture(saveImageToolStripMenuItem, true);
-            saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem1, copyToClipboardToolStripMenuItem, saveMovieToolStripMenuItem });
+            saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem1, copyToClipboardToolStripMenuItem, saveMovieToolStripMenuItem, exportModelToolStripMenuItem }); // 260803Cl 変更: 3Dモデルエクスポートを追加. 旧: { saveImageToolStripMenuItem1, copyToClipboardToolStripMenuItem, saveMovieToolStripMenuItem }
             resources.ApplyResources(saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
             saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
             // 
@@ -1952,9 +1953,15 @@
             SaveMovieCrystalAxesToolStripMenuItem.Name = "SaveMovieCrystalAxesToolStripMenuItem";
             resources.ApplyResources(SaveMovieCrystalAxesToolStripMenuItem, "SaveMovieCrystalAxesToolStripMenuItem");
             SaveMovieCrystalAxesToolStripMenuItem.Click += SaveMovieMainImageToolStripMenuItem_Click;
-            // 
+            //
+            // exportModelToolStripMenuItem (260803Cl 追加)
+            //
+            exportModelToolStripMenuItem.Name = "exportModelToolStripMenuItem";
+            resources.ApplyResources(exportModelToolStripMenuItem, "exportModelToolStripMenuItem");
+            exportModelToolStripMenuItem.Click += exportModelToolStripMenuItem_Click;
+            //
             // toolToolStripMenuItem
-            // 
+            //
             captureExtender.SetCapture(toolToolStripMenuItem, true);
             toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { iLikeVESTAToolStripMenuItem });
             toolToolStripMenuItem.Name = "toolToolStripMenuItem";
@@ -2204,6 +2211,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonResetRotation;
         private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
         private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportModelToolStripMenuItem; // 260803Cl 追加
         private System.Windows.Forms.ToolStripMenuItem SaveMovieMainImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveMovieCrystalAxesToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl;

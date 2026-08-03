@@ -5824,6 +5824,9 @@ symbols) overlaid on each atom.</value>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Movie</value>
   </data>
+  <data name="exportModelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export 3D Model (STL)...</value>
+  </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>

@@ -831,6 +831,9 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>動画を保存</value>
   </data>
+  <data name="exportModelToolStripMenuItem.Text" xml:space="preserve">
+    <value>3Dモデルを出力 (STL)...</value>
+  </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>メイン</value>
   </data>
