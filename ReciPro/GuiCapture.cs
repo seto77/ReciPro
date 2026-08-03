@@ -80,6 +80,29 @@ internal static partial class GuiCapture
         {
             var frames = (e.Exception.StackTrace ?? "").Split('\n').Take(6).Select(s => s.Trim());
             Trace($"\tThreadException\t{e.Exception.GetType().Name}: {e.Exception.Message}\t{string.Join(" | ", frames)}");
+            //260802Cl 追加: 描画中の例外はスタックに「どのコントロールか」が出ない (PictureBox.OnPaint までしか分からない)。
+            //GDI+ の "Parameter is not valid." は Image が破棄済みのときの典型なので、開いている全フォームの
+            //PictureBox を舐めて Image が生きているか実際に触って確かめ、壊れているものを名前付きで報告する
+            if (e.Exception is ArgumentException)
+                foreach (Form form in Application.OpenForms)
+                    foreach (var pb in EnumerateControls(form).OfType<PictureBox>())
+                    {
+                        var img = pb.Image;
+                        if (img is null) continue;
+                        try { _ = img.Width; }//破棄済み Bitmap は Width で ArgumentException
+                        catch (Exception ex)
+                        {
+                            var path = pb.Name;
+                            for (var c = pb.Parent; c is not null; c = c.Parent)
+                                path = (string.IsNullOrEmpty(c.Name) ? c.GetType().Name : c.Name) + "." + path;
+                            var spb = pb.Parent as Crystallography.Controls.ScalablePictureBox;
+                            Trace("\tThreadException\t  -> broken Image on " + path
+                                + $" spb#{(spb is null ? 0 : System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(spb))}"
+                                + $" pb#{(spb?.PseudoBitmap is null ? 0 : System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(spb.PseudoBitmap))}"
+                                + $" cli={pb.ClientSize.Width}x{pb.ClientSize.Height}"
+                                + "\t" + ex.GetType().Name + ": " + ex.Message);
+                        }
+                    }
         };
 
         Trace($"capture start -> {outDir}");
