@@ -1496,9 +1496,9 @@ public partial class FormStructureViewer : FormBase
 
     #endregion イメージ保存orコピー
 
-    #region 3Dモデル (STL) エクスポート
+    #region 3Dモデル (STL/3MF) エクスポート
 
-    //260803Cl 追加: 表示中の構造モデルを 3D プリント用バイナリ STL として書き出す (Phase 0)。
+    //260803Cl 追加: 表示中の構造モデルを 3D プリント用に書き出す (Phase 0: バイナリSTL / Phase 1: 3MF色分け)。
     //表示メッシュ (原子=Sphere, 結合=Cylinder, 配位多面体=Polyhedron など閉じた立体) をそのまま出力する。
     //単位胞枠 (Lines)・ラベル (TextObject)・境界面/格子面 (Polygon) は印刷できないため対象外。
     private void exportModelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1521,17 +1521,33 @@ public partial class FormStructureViewer : FormBase
 
         //ファイル名に使えない文字を除去した結晶名を既定ファイル名にする
         var name = string.Concat((Crystal?.Name ?? "model").Split(System.IO.Path.GetInvalidFileNameChars()));
-        var sfd = new SaveFileDialog { Filter = "STL File[*.stl]|*.stl", FileName = name + ".stl" };
+        var sfd = new SaveFileDialog { Filter = "3MF File (color)[*.3mf]|*.3mf|STL File (single color)[*.stl]|*.stl", FileName = name };
         if (sfd.ShowDialog() != DialogResult.OK)
             return;
 
         var scale = dlg.MmPerAngstrom;
-        var count = ModelExporter.ExportStl(sfd.FileName, snaps, scale);
+        int count;
+        if (System.IO.Path.GetExtension(sfd.FileName).Equals(".stl", StringComparison.OrdinalIgnoreCase))
+            count = ModelExporter.ExportStl(sfd.FileName, snaps, scale);
+        else
+        {
+            //RGB → 元素名のマップ (同色の複数元素は "/" 連結)。原子由来でない色 (対称要素など) は #RRGGBB のまま
+            var colorNames = new Dictionary<int, string>();
+            foreach (var a in Crystal.Atoms.Where(a => a.GLEnabled))
+            {
+                var key = a.Argb & 0xFFFFFF;
+                if (!colorNames.TryGetValue(key, out var nm))
+                    colorNames[key] = a.ElementName;
+                else if (!nm.Split('/').Contains(a.ElementName))
+                    colorNames[key] = nm + "/" + a.ElementName;
+            }
+            count = ModelExporter.Export3mf(sfd.FileName, snaps, scale, name, colorNames);
+        }
         textBoxCalcInformation.AppendText($"Exported {count} triangles to {System.IO.Path.GetFileName(sfd.FileName)} " +
             $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/Å).\r\n");
     }
 
-    #endregion 3Dモデル (STL) エクスポート
+    #endregion 3Dモデル (STL/3MF) エクスポート
 
     #region toolStripButton ライト、結晶軸、凡例
     private void toolStripButtonCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;

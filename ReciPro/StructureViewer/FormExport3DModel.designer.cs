@@ -125,7 +125,7 @@ namespace ReciPro
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new System.Drawing.Size(100, 25);
             buttonOK.TabIndex = 6;
-            buttonOK.Text = "Save as STL...";
+            buttonOK.Text = "Save...";
             buttonOK.UseVisualStyleBackColor = true;
             //
             // buttonCancel
@@ -161,7 +161,7 @@ namespace ReciPro
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            Text = "Export 3D Model (STL)";
+            Text = "Export 3D Model";
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).EndInit();
             ResumeLayout(false);
             PerformLayout();
