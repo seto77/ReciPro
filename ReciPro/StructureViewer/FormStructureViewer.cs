@@ -1501,51 +1501,54 @@ public partial class FormStructureViewer : FormBase
     //260803Cl 追加: 表示中の構造モデルを 3D プリント用に書き出す (Phase 0: バイナリSTL / Phase 1: 3MF色分け)。
     //表示メッシュ (原子=Sphere, 結合=Cylinder, 配位多面体=Polyhedron など閉じた立体) をそのまま出力する。
     //単位胞枠 (Lines)・ラベル (TextObject)・境界面/格子面 (Polygon) は印刷できないため対象外。
+    //260804Cl 変更: オプション選択フォーム全面化 (要素選択/多面体スタイル/細結合の増径/形式選択)。旧実装は commit 811e8396 参照
     private void exportModelToolStripMenuItem_Click(object sender, EventArgs e)
     {
         GLObject[] objs;
         lock (lockObj1)
             objs = [.. GLObjects];
         var snaps = ModelExporter.Collect(objs);
-        var lineSnaps = ModelExporter.CollectLines(objs);//260803Cl 追加 (Phase 1): 単位胞枠などの線オブジェクト
-        if (snaps.Count == 0)
+        var lineSnaps = ModelExporter.CollectLines(objs);
+        if (snaps.Count == 0 && lineSnaps.Count == 0)
         {
             MessageBox.Show("No printable solid objects (atoms, bonds, or polyhedra) are displayed.", "Export 3D Model", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
-        var (min, max) = ModelExporter.GetBounds(snaps);
-        var sizeSolids = max - min;
-        //線の端点も含めた寸法 (枠を含める場合のスケール計算用)
-        foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
-        {
-            min = V3.ComponentMin(V3.ComponentMin(min, s), t);
-            max = V3.ComponentMax(V3.ComponentMax(max, s), t);
-        }
-        var sizeWithLines = max - min;
-        //細すぎる結合の警告用: 最小の結合 (円柱) 半径
-        var bondRadii = snaps.Where(s => s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0).Select(s => s.PipeRadius1);
-        var minBondRadius = bondRadii.Any() ? bondRadii.Min() : 0;
 
-        //260803Cl 旧: using var dlg = new FormExport3DModel(snaps.Count, snaps.Sum(s => s.Triangles.Length / 3), size);
-        using var dlg = new FormExport3DModel(snaps.Count, snaps.Sum(s => s.Triangles.Length / 3), sizeSolids, sizeWithLines, lineSnaps.Count > 0, minBondRadius);
+        using var dlg = new FormExport3DModel(snaps, lineSnaps);
         if (dlg.ShowDialog(this) != DialogResult.OK)
+            return;
+        var scale = dlg.MmPerAngstrom;
+
+        //オプションに従ってエクスポート対象を組み立てる
+        var export = new List<MeshSnapshot>();
+        foreach (var s in snaps)
+        {
+            var isAtom = s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
+            var isPoly = s.Kind == SnapshotKind.Polyhedron;
+            if (isAtom ? !dlg.IncludeAtoms : isPoly ? !dlg.IncludePolyhedra || dlg.PolyhedraAsEdges : !dlg.IncludeBonds)
+                continue;
+            //細すぎる結合 (円柱) は元プリミティブ情報から印刷可能な太さで再生成する
+            if (!isAtom && !isPoly && dlg.ThickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < dlg.MinBondRadiusAng)
+                export.Add(MeshSnapshot.From(new Cylinder(s.PipeOrigin, s.PipeVector, dlg.MinBondRadiusAng, new Material(s.Argb), DrawingMode.Surfaces)));
+            else
+                export.Add(s);
+        }
+        if (dlg.IncludePolyhedra && dlg.PolyhedraAsEdges)//多面体を稜線枠 (円柱+頂点球) で出力
+            export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), dlg.PolyEdgeRadiusAng));
+        if (dlg.IncludeCellEdges)//単位胞枠を円柱+角球に変換して追加
+            export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusAng));
+        if (export.Count == 0)
             return;
 
         //ファイル名に使えない文字を除去した結晶名を既定ファイル名にする
         var name = string.Concat((Crystal?.Name ?? "model").Split(System.IO.Path.GetInvalidFileNameChars()));
-        var sfd = new SaveFileDialog { Filter = "3MF File (color)[*.3mf]|*.3mf|STL File (single color)[*.stl]|*.stl", FileName = name };
+        var sfd = new SaveFileDialog { Filter = dlg.Use3mf ? "3MF File[*.3mf]|*.3mf" : "STL File[*.stl]|*.stl", FileName = name };
         if (sfd.ShowDialog() != DialogResult.OK)
             return;
 
-        var scale = dlg.MmPerAngstrom;
-        var exportSnaps = snaps;
-        if (dlg.IncludeCellEdges && lineSnaps.Count > 0)//260803Cl 追加: 単位胞枠を円柱+角球に変換して追加
-            exportSnaps = [.. snaps, .. ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusAng)];
-
         int count;
-        if (System.IO.Path.GetExtension(sfd.FileName).Equals(".stl", StringComparison.OrdinalIgnoreCase))
-            count = ModelExporter.ExportStl(sfd.FileName, exportSnaps, scale);
-        else
+        if (dlg.Use3mf)
         {
             //RGB → 元素名のマップ (同色の複数元素は "/" 連結)。原子由来でない色 (対称要素・枠など) は #RRGGBB のまま
             var colorNames = new Dictionary<int, string>();
@@ -1557,9 +1560,12 @@ public partial class FormStructureViewer : FormBase
                 else if (!nm.Split('/').Contains(a.ElementName))
                     colorNames[key] = nm + "/" + a.ElementName;
             }
-            count = ModelExporter.Export3mf(sfd.FileName, exportSnaps, scale, name, colorNames);
+            count = ModelExporter.Export3mf(sfd.FileName, export, scale, name, colorNames);
         }
-        var (mn, mx) = ModelExporter.GetBounds(exportSnaps);
+        else
+            count = ModelExporter.ExportStl(sfd.FileName, export, scale);
+
+        var (mn, mx) = ModelExporter.GetBounds(export);
         var size = mx - mn;
         textBoxCalcInformation.AppendText($"Exported {count} triangles to {System.IO.Path.GetFileName(sfd.FileName)} " +
             $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/Å).\r\n");
