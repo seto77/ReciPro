@@ -44,7 +44,13 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 ### Menü „Datei“
 
 
-Bild speichern, in die Zwischenablage kopieren (Ctrl+Shift+C), Film speichern (MP4).
+| Menüeintrag | Beschreibung |
+|-------------|--------------|
+| Bild speichern | Das gerenderte Bild in eine Datei speichern |
+| Hauptbild in Zwischenablage kopieren | Das Bild kopieren (auch mit Ctrl+Shift+C) |
+| Video speichern | Ein Rotations-/Translationsvideo als MP4 speichern (Geschwindigkeit, Dauer, fps, Qualität usw.) |
+| Export 3D Model (3MF/STL) | Die dargestellte Struktur als Volumenmodell für den 3D-Druck ausgeben |
+| Tastenkürzel-Hinweise | Die Tastenkürzel anzeigen |
 
 **Film speichern** öffnet den unten gezeigten Dialog zur Filmeinstellung. Ein Film kann die Ansicht drehen, das Projektionszentrum verschieben oder beides gleichzeitig tun — aktivieren Sie **Rotation** und/oder **Translation**:
 
@@ -54,6 +60,37 @@ Bild speichern, in die Zwischenablage kopieren (Ctrl+Shift+C), Film speichern (M
 Legen Sie die Filmlänge (**Duration**), die Bildrate (**FPS**, 1–120) und die Encoder-Qualität (**Quality**, 1–100; höhere Werte verwenden eine höhere Bitrate und ergeben eine größere Datei) fest, wählen Sie den Codec (**H264** / **H265**) und drücken Sie **OK**, um eine MP4-Datei zu erzeugen. **Include final frame** hängt einen zusätzlichen Frame bei t = Duration an, sodass der Film exakt mit der endgültigen Orientierung/Position endet. (Die Liste der Encodiergeschwindigkeit beschriftet nur noch die Fortschrittsanzeige und beeinflusst die eigentliche Encodierung nicht mehr.)
 
 ![Dialog zur Filmeinstellung](../assets/cap-de-auto/FormMovie.png)
+
+#### Export 3D Model (3MF/STL)
+
+**Export 3D Model (3MF/STL)** gibt das aktuell dargestellte Strukturmodell als Volumenmodell für den 3D-Druck aus. Exportiert werden können nur geschlossene Körper — Atome (Kugeln und Ellipsoide), Bindungen (Zylinder) und Koordinationspolyeder. Atombeschriftungen, Begrenzungsflächen und Gitterebenen lassen sich nicht drucken und werden ignoriert. Der Rahmen der Elementarzelle besteht aus Liniensegmenten und wird nur dann durch Zylinder (mit Kugeln an den Ecken) ersetzt, wenn Sie die entsprechende Option aktivieren.
+
+![Dialog „Export 3D Model“](../assets/cap-de-auto/FormExport3DModel.png)
+
+Oben im Dialog stehen die Anzahl der beteiligten Objekte und Dreiecke sowie die reale Größe des Modells (**Model size**, nm).
+
+**Scale** : wie die Ausgabegröße bestimmt wird
+
+- **Fit largest dimension** : skaliert das Modell automatisch so, dass seine längste Kante die angegebene Länge erreicht (5–500 mm, standardmäßig 80 mm).
+- **Fixed scale** : den Maßstab (mm/nm) direkt angeben. Damit lassen sich mehrere Kristalle im selben Maßstab bauen und nebeneinanderstellen. Beim Umschalten wird der zuvor wirksame Maßstab als Startwert übernommen.
+- Die Zeile darunter zeigt den resultierenden Maßstab und die gedruckten Abmessungen (**Output size**, mm).
+
+**Include** : welche Elemente in den Druck eingehen
+
+- **Atoms** / **Bonds** / **Polyhedra** : auswählbar sind nur die gerade dargestellten Arten; wird ein Haken entfernt, bleibt das Objekt auf dem Bildschirm, fällt aber aus dem Druck heraus.
+- **Polyhedra: solid faces** / **edges, dia.** : Koordinationspolyeder werden entweder als massive Körper mit Flächen oder als Kantengerüst (Zylinder plus Kugeln an den Ecken, standardmäßig 2.0 mm) ausgegeben. Beim Gerüst bleiben die Atome im Inneren sichtbar.
+- **Unit cell edges as cylinders, dia.** : bindet den Rahmen der Elementarzelle ein, ersetzt durch Zylinder des angegebenen Durchmessers (standardmäßig 2.4 mm).
+
+**Printability** : Drucktauglichkeit
+
+- **Thicken bonds thinner than** : Bindungen, deren gedruckter Durchmesser unter den angegebenen Wert fiele (standardmäßig 1.2 mm), werden aus der ursprünglichen Primitive mit diesem Durchmesser neu erzeugt, damit dünne Bindungen nicht abbrechen. Bleibt die Option aus, während eine Bindung zu dünn ist, erscheint eine Warnung in Rot.
+
+**Format** : Dateiformat
+
+- **STL (single color)** : eine einfarbige binäre STL-Datei.
+- **3MF (parts colored by element)** : 3MF mit nach Element eingefärbten Teilen; die Farbnamen tragen die Elementnamen.
+
+**Save...** fragt nach dem Dateinamen. Nach Abschluss des Exports werden Dreieckszahl, gedruckte Abmessungen und Maßstab im Informationsfeld unten links protokolliert.
 
 ### Menü „Werkzeuge“
 

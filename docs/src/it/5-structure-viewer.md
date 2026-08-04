@@ -43,7 +43,13 @@ Struttura cristallina 3D con sorgente luminosa, assi cristallografici e legenda 
 
 ### Menu File
 
-Salva immagine, copia negli appunti (Ctrl+Shift+C), salva filmato (MP4).
+| Voce di menu | Descrizione |
+|--------------|-------------|
+| Salva immagine | Salvare l'immagine renderizzata in un file |
+| Copia immagine principale negli appunti | Copiare l'immagine (anche con Ctrl+Shift+C) |
+| Salva video | Salvare un filmato di rotazione/traslazione in MP4 (velocità, durata, fps, qualità e così via) |
+| Export 3D Model (3MF/STL) | Esportare la struttura visualizzata come modello solido per la stampa 3D |
+| Suggerimenti scorciatoie | Mostrare le scorciatoie da tastiera |
 
 **Salva filmato** apre la finestra di dialogo delle impostazioni del filmato mostrata sotto. Un filmato può ruotare la vista, traslare il centro di proiezione o fare entrambe le cose contemporaneamente — seleziona **Rotation** e/o **Translation**:
 
@@ -53,6 +59,37 @@ Salva immagine, copia negli appunti (Ctrl+Shift+C), salva filmato (MP4).
 Imposta la lunghezza del filmato (**Duration**), la frequenza dei fotogrammi (**FPS**, 1–120) e la qualità di codifica (**Quality**, 1–100; valori più alti usano un bitrate maggiore e producono un file più grande), scegli il codec (**H264** / **H265**) e premi **OK** per generare un file MP4. **Include final frame** aggiunge un fotogramma extra a t = Duration, così il filmato termina esattamente nell'orientamento/posizione finale. (L'elenco della velocità di codifica serve ormai solo come etichetta nella visualizzazione dell'avanzamento e non influisce più sulla codifica effettiva.)
 
 ![Finestra di dialogo delle impostazioni del filmato](../assets/cap-it-auto/FormMovie.png)
+
+#### Export 3D Model (3MF/STL)
+
+**Export 3D Model (3MF/STL)** esporta il modello di struttura attualmente disegnato sullo schermo come modello solido per la stampa 3D. Si possono esportare solo solidi chiusi: atomi (sfere ed ellissoidi), legami (cilindri) e poliedri di coordinazione. Le etichette degli atomi, i piani di delimitazione e i piani reticolari non sono stampabili e vengono ignorati. Il telaio della cella elementare è fatto di segmenti, quindi viene sostituito da cilindri (con sfere ai vertici) solo se selezioni l'opzione corrispondente.
+
+![Finestra di dialogo Export 3D Model](../assets/cap-it-auto/FormExport3DModel.png)
+
+In alto nella finestra di dialogo sono riportati il numero di oggetti e di triangoli coinvolti e la dimensione reale del modello (**Model size**, nm).
+
+**Scale** : come si stabilisce la dimensione di uscita
+
+- **Fit largest dimension** : scala il modello automaticamente in modo che il suo spigolo più lungo raggiunga la lunghezza indicata (5–500 mm, 80 mm per impostazione predefinita).
+- **Fixed scale** : indica direttamente la scala (mm/nm). Serve per costruire più cristalli alla stessa scala e affiancarli. Passando a questa opzione si parte dalla scala in vigore un attimo prima.
+- La riga sottostante mostra la scala risultante e le dimensioni stampate (**Output size**, mm).
+
+**Include** : quali elementi entrano nella stampa
+
+- **Atoms** / **Bonds** / **Polyhedra** : si possono selezionare solo i tipi attualmente visualizzati; togliendo la spunta a uno di essi resta a schermo ma esce dalla stampa.
+- **Polyhedra: solid faces** / **edges, dia.** : esporta i poliedri di coordinazione come corpi pieni con facce oppure come telaio di spigoli (cilindri più sfere ai vertici, 2.0 mm per impostazione predefinita). Il telaio lascia visibili gli atomi all'interno.
+- **Unit cell edges as cylinders, dia.** : include il telaio della cella elementare, sostituito da cilindri del diametro indicato (2.4 mm per impostazione predefinita).
+
+**Printability** : idoneità alla stampa
+
+- **Thicken bonds thinner than** : i legami il cui diametro stampato scenderebbe sotto il valore indicato (1.2 mm per impostazione predefinita) vengono ricostruiti con quel diametro a partire dalla primitiva originale, così i legami sottili non si spezzano. Se lasci l'opzione disattivata mentre un legame è troppo sottile, compare un avviso in rosso.
+
+**Format** : formato del file
+
+- **STL (single color)** : un STL binario a colore singolo.
+- **3MF (parts colored by element)** : 3MF con le parti colorate per elemento; i nomi dei colori riportano i nomi degli elementi.
+
+**Save...** chiede il nome del file. A esportazione conclusa, il numero di triangoli, le dimensioni stampate e la scala vengono registrati nel riquadro delle informazioni in basso a sinistra.
 
 ### Menu Strumenti
 

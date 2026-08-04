@@ -44,7 +44,13 @@ Estrutura cristalina 3D com fonte de luz, eixos do cristal e legenda de átomos.
 ### Menu Arquivo
 
 
-Salvar imagem, copiar para a área de transferência (Ctrl+Shift+C), salvar filme (MP4).
+| Item de menu | Descrição |
+|--------------|-----------|
+| Salvar imagem | Salvar a imagem renderizada em um arquivo |
+| Copiar imagem principal para a área de transferência | Copiar a imagem (também com Ctrl+Shift+C) |
+| Salvar vídeo | Salvar um vídeo de rotação/translação em MP4 (velocidade, duração, fps, qualidade e assim por diante) |
+| Export 3D Model (3MF/STL) | Exportar a estrutura exibida como modelo sólido para impressão 3D |
+| Dicas de atalhos | Mostrar os atalhos de teclado |
 
 **Salvar filme** abre o diálogo de configuração de filme mostrado abaixo. Um filme pode girar a visualização, transladar o centro de projeção ou fazer ambos ao mesmo tempo — marque **Rotation** e/ou **Translation**:
 
@@ -54,6 +60,37 @@ Salvar imagem, copiar para a área de transferência (Ctrl+Shift+C), salvar film
 Defina a duração do filme (**Duration**), a taxa de quadros (**FPS**, 1–120) e a qualidade do codificador (**Quality**, 1–100; valores maiores usam uma taxa de bits mais alta e geram um arquivo maior), escolha o codec (**H264** / **H265**) e pressione **OK** para gerar um arquivo MP4. **Include final frame** acrescenta um quadro extra em t = Duration para que o filme termine exatamente na orientação/posição final. (A lista de velocidade de codificação apenas rotula a exibição de progresso e não afeta mais a codificação em si.)
 
 ![Diálogo de configuração de filme](../assets/cap-pt-auto/FormMovie.png)
+
+#### Export 3D Model (3MF/STL)
+
+**Export 3D Model (3MF/STL)** exporta o modelo de estrutura desenhado na tela como um modelo sólido para impressão 3D. Só é possível exportar sólidos fechados: átomos (esferas e elipsoides), ligações (cilindros) e poliedros de coordenação. Os rótulos dos átomos, os planos de limite e os planos reticulares não podem ser impressos e são ignorados. A moldura da célula unitária é feita de segmentos de reta, por isso só é substituída por cilindros (com esferas nos vértices) quando você marca a opção correspondente.
+
+![Diálogo Export 3D Model](../assets/cap-pt-auto/FormExport3DModel.png)
+
+A parte superior do diálogo informa o número de objetos e triângulos envolvidos e o tamanho real do modelo (**Model size**, nm).
+
+**Scale** : como o tamanho de saída é decidido
+
+- **Fit largest dimension** : escala o modelo automaticamente para que sua aresta mais longa alcance o comprimento indicado (5–500 mm, 80 mm por padrão).
+- **Fixed scale** : informe a escala (mm/nm) diretamente. Use para construir vários cristais na mesma escala e colocá-los lado a lado. Ao mudar para esta opção, parte-se da escala que estava em vigor momentos antes.
+- A linha abaixo mostra a escala resultante e as dimensões impressas (**Output size**, mm).
+
+**Include** : quais elementos entram na impressão
+
+- **Atoms** / **Bonds** / **Polyhedra** : só é possível selecionar os tipos exibidos no momento; ao desmarcar um deles, ele permanece na tela mas fica de fora da impressão.
+- **Polyhedra: solid faces** / **edges, dia.** : exporta os poliedros de coordenação como corpos maciços com faces ou como uma armação de arestas (cilindros mais esferas nos vértices, 2.0 mm por padrão). A armação deixa visíveis os átomos internos.
+- **Unit cell edges as cylinders, dia.** : inclui a moldura da célula unitária, substituída por cilindros do diâmetro indicado (2.4 mm por padrão).
+
+**Printability** : adequação à impressão
+
+- **Thicken bonds thinner than** : ligações cujo diâmetro impresso ficaria abaixo do valor indicado (1.2 mm por padrão) são refeitas com esse diâmetro a partir da primitiva original, evitando que ligações finas quebrem. Se você deixar a opção desligada enquanto uma ligação estiver fina demais, aparece um aviso em vermelho.
+
+**Format** : formato de arquivo
+
+- **STL (single color)** : um STL binário de cor única.
+- **3MF (parts colored by element)** : 3MF com as peças coloridas por elemento; os nomes das cores trazem os nomes dos elementos.
+
+**Save...** pede o nome do arquivo. Concluída a exportação, a contagem de triângulos, as dimensões impressas e a escala são registradas na caixa de informações no canto inferior esquerdo.
 
 ### Menu Ferramentas
 

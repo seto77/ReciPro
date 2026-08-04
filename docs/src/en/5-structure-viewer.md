@@ -44,7 +44,13 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 ### File menu
 
 
-Save image, copy to clipboard (Ctrl+Shift+C), save movie (MP4).
+| Menu item | Description |
+|-----------|-------------|
+| Save Image | Save the rendered image to a file |
+| Copy Main Image to Clipboard | Copy the image (Ctrl+Shift+C also works) |
+| Save Movie | Save a rotation/translation movie as MP4 (speed, duration, fps, quality and so on) |
+| Export 3D Model (3MF/STL) | Write the displayed structure out as a solid model for 3D printing |
+| Shortcut Hints | Show the keyboard shortcuts |
 
 **Save movie** opens the Movie setting dialog below. A movie can rotate the view, translate the projection center, or do both at once — tick **Rotation** and/or **Translation**:
 
@@ -54,6 +60,37 @@ Save image, copy to clipboard (Ctrl+Shift+C), save movie (MP4).
 Set the movie length (**Duration**), the frame rate (**FPS**, 1–120), and the encoder quality (**Quality**, 1–100; higher values use a higher bitrate and give a larger file), choose the codec (**H264** / **H265**), and press **OK** to generate an MP4 file. **Include final frame** appends one extra frame at t = Duration so the movie ends exactly at the final orientation/position. (The encode-speed list only labels the progress display and no longer affects the actual encoding.)
 
 ![Movie setting dialog](../assets/cap-en-auto/FormMovie.png)
+
+#### Export 3D Model (3MF/STL)
+
+**Export 3D Model (3MF/STL)** writes the structure currently drawn on screen out as a solid model for 3D printing. Only closed solids can be exported — atoms (spheres and ellipsoids), bonds (cylinders) and coordination polyhedra. Atom labels, bound planes and lattice planes cannot be printed and are ignored. The unit cell frame is made of line segments, so it is replaced by cylinders (with spheres at the corners) only when you tick the corresponding option.
+
+![Export 3D Model dialog](../assets/cap-en-auto/FormExport3DModel.png)
+
+The top of the dialog reports the number of objects and triangles involved, and the real size of the model (**Model size**, nm).
+
+**Scale** : how the output size is decided
+
+- **Fit largest dimension** : scales the model automatically so that its longest edge reaches the length you give (5–500 mm, 80 mm by default).
+- **Fixed scale** : give the scale (mm/nm) directly. Use this to build several crystals at the same scale so they can be placed side by side. Switching to it starts from the scale that was in effect a moment before.
+- The line below shows the resulting scale and the printed dimensions (**Output size**, mm).
+
+**Include** : which elements go into the print
+
+- **Atoms** / **Bonds** / **Polyhedra** : only the kinds currently displayed can be selected; unticking one keeps it on screen but leaves it out of the print.
+- **Polyhedra: solid faces** / **edges, dia.** : export coordination polyhedra either as solid bodies with faces, or as an edge frame (cylinders plus spheres at the vertices, 2.0 mm by default). The frame leaves the atoms inside visible.
+- **Unit cell edges as cylinders, dia.** : include the unit cell frame, replaced by cylinders of the given diameter (2.4 mm by default).
+
+**Printability** : print soundness
+
+- **Thicken bonds thinner than** : bonds whose printed diameter would fall below the given value (1.2 mm by default) are rebuilt at that diameter from the original primitive. This keeps thin bonds from snapping. If you leave it off while a bond is too thin, a warning appears in red.
+
+**Format** : file format
+
+- **STL (single color)** : a single-colour binary STL.
+- **3MF (parts colored by element)** : 3MF with the parts coloured by element; the colour names carry the element names.
+
+**Save...** asks for the file name. Once the export finishes, the triangle count, printed dimensions and scale are logged in the information box at the bottom left.
 
 ### Tool menu
 

@@ -44,7 +44,13 @@ Estructura cristalina 3D con fuente de luz, ejes cristalinos y leyenda de átomo
 ### Menú Archivo
 
 
-Guardar imagen, copiar al portapapeles (Ctrl+Shift+C), guardar película (MP4).
+| Elemento de menú | Descripción |
+|------------------|-------------|
+| Guardar imagen | Guardar la imagen renderizada en un archivo |
+| Copiar imagen principal al portapapeles | Copiar la imagen (también con Ctrl+Shift+C) |
+| Guardar vídeo | Guardar un vídeo de rotación/traslación como MP4 (velocidad, duración, fps, calidad, etc.) |
+| Export 3D Model (3MF/STL) | Exportar la estructura mostrada como modelo sólido para impresión 3D |
+| Atajos de teclado | Mostrar los atajos de teclado |
 
 **Guardar película** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotation** y/o **Translation**:
 
@@ -54,6 +60,37 @@ Guardar imagen, copiar al portapapeles (Ctrl+Shift+C), guardar película (MP4).
 Establezca la duración de la película (**Duration**), la frecuencia de fotogramas (**FPS**, 1–120) y la calidad del codificador (**Quality**, 1–100; los valores más altos usan una tasa de bits mayor y producen un archivo más grande), elija el códec (**H264** / **H265**) y pulse **OK** para generar un archivo MP4. **Include final frame** añade un fotograma adicional en t = Duration para que la película termine exactamente en la orientación/posición final. (La lista de velocidad de codificación solo etiqueta la indicación de progreso y ya no afecta a la codificación real.)
 
 ![Cuadro de diálogo de configuración de película](../assets/cap-es-auto/FormMovie.png)
+
+#### Export 3D Model (3MF/STL)
+
+**Export 3D Model (3MF/STL)** exporta el modelo de estructura dibujado en pantalla como un modelo sólido para impresión 3D. Solo pueden exportarse sólidos cerrados: átomos (esferas y elipsoides), enlaces (cilindros) y poliedros de coordinación. Las etiquetas de los átomos, los planos de límite y los planos reticulares no pueden imprimirse y se ignoran. El armazón de la celda elemental está formado por segmentos, así que solo se sustituye por cilindros (con esferas en los vértices) si activas la opción correspondiente.
+
+![Cuadro de diálogo Export 3D Model](../assets/cap-es-auto/FormExport3DModel.png)
+
+En la parte superior del cuadro de diálogo se indican el número de objetos y triángulos implicados y el tamaño real del modelo (**Model size**, nm).
+
+**Scale** : cómo se decide el tamaño de salida
+
+- **Fit largest dimension** : escala el modelo automáticamente para que su arista más larga alcance la longitud indicada (5–500 mm, 80 mm de forma predeterminada).
+- **Fixed scale** : indica la escala (mm/nm) directamente. Sirve para construir varios cristales a la misma escala y poder colocarlos uno al lado del otro. Al cambiar a esta opción se parte de la escala que estaba en vigor justo antes.
+- La línea inferior muestra la escala resultante y las dimensiones impresas (**Output size**, mm).
+
+**Include** : qué elementos entran en la impresión
+
+- **Atoms** / **Bonds** / **Polyhedra** : solo pueden seleccionarse los tipos que se muestran en ese momento; al desmarcar uno, permanece en pantalla pero queda fuera de la impresión.
+- **Polyhedra: solid faces** / **edges, dia.** : exporta los poliedros de coordinación como cuerpos macizos con caras o como un armazón de aristas (cilindros más esferas en los vértices, 2.0 mm de forma predeterminada). El armazón deja visibles los átomos del interior.
+- **Unit cell edges as cylinders, dia.** : incluye el armazón de la celda elemental, sustituido por cilindros del diámetro indicado (2.4 mm de forma predeterminada).
+
+**Printability** : idoneidad para la impresión
+
+- **Thicken bonds thinner than** : los enlaces cuyo diámetro impreso quedaría por debajo del valor indicado (1.2 mm de forma predeterminada) se reconstruyen con ese diámetro a partir de la primitiva original, de modo que los enlaces finos no se rompan. Si lo dejas desactivado y algún enlace es demasiado fino, aparece una advertencia en rojo.
+
+**Format** : formato de archivo
+
+- **STL (single color)** : un STL binario de un solo color.
+- **3MF (parts colored by element)** : 3MF con las piezas coloreadas por elemento; los nombres de color llevan los nombres de los elementos.
+
+**Save...** pide el nombre del archivo. Cuando termina la exportación, el número de triángulos, las dimensiones impresas y la escala se registran en el cuadro de información de la parte inferior izquierda.
 
 ### Menú Herramientas
 
