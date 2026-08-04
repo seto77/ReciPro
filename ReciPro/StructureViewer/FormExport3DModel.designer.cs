@@ -148,8 +148,9 @@ namespace ReciPro
             numericUpDownEdgeDia.Size = new System.Drawing.Size(52, 21);
             numericUpDownEdgeDia.TabIndex = 6;
             numericUpDownEdgeDia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            //260804Cl 変更: 既定⌀ 1.6→2.4mm (A1 mini 印刷テストで 1.6mm は細すぎと判明。1.5倍に)。旧: 16
             numericUpDownEdgeDia.Value = new decimal(new int[] {
-            16,
+            24,
             0,
             0,
             65536});
