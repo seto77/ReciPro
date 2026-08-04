@@ -7,6 +7,10 @@
 [![GitHub Forks](https://img.shields.io/github/forks/seto77/ReciPro?style=social)](https://github.com/seto77/ReciPro/forks)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/seto77/ReciPro/blob/master/LICENSE.md)
 
+<!-- 260804Cl: 多言語 README。翻訳版は docs/readme/ 配下 (言語セットは docs/mkdocs.yml の i18n と同じ 11 言語)。
+     本ファイルを更新したら各言語版も追随させること。 -->
+**English** | [日本語](docs/readme/README.ja.md) | [Deutsch](docs/readme/README.de.md) | [Français](docs/readme/README.fr.md) | [Español](docs/readme/README.es.md) | [Italiano](docs/readme/README.it.md) | [Русский](docs/readme/README.ru.md) | [简体中文](docs/readme/README.zh-Hans.md) | [繁體中文](docs/readme/README.zh-Hant.md) | [한국어](docs/readme/README.ko.md) | [Português](docs/readme/README.pt.md)
+
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
 
 *ReciPro* has been continuously developed since 2002 and has been available on GitHub since March 2020. It has been downloaded more than 27,000 times from GitHub, and is used by hundreds of users in more than a dozen laboratories at universities and companies.
@@ -233,7 +237,7 @@ The bundled AMCSD database and all core features work entirely offline.
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMain.png" height="320px" alt="Main window">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormCrystalDatabase.png" height="320px" alt="Crystal Database">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSymmetryInformation.png" height="320px" alt="Symmetry Information">
-<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormScatteringFactor.png" height="320px" alt="Scattering Factor">
+<img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormBeamInteraction.png" height="320px" alt="Beam Interaction">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStructureViewer.png" height="320px" alt="Structure Viewer">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormStereonet.png" height="320px" alt="Stereonet">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormDiffractionSimulator.png" height="320px" alt="Diffraction Simulator">
