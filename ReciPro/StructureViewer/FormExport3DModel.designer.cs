@@ -86,7 +86,7 @@ namespace ReciPro
             labelSizeAng.Name = "labelSizeAng";
             labelSizeAng.Size = new System.Drawing.Size(120, 15);
             labelSizeAng.TabIndex = 1;
-            labelSizeAng.Text = "Model size: 0 × 0 × 0 Å";
+            labelSizeAng.Text = "Model size: 0 × 0 × 0 nm";//260805Cl 変更
             //
             // groupBoxScale
             //
@@ -205,7 +205,7 @@ namespace ReciPro
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(40, 15);
             label4.TabIndex = 5;
-            label4.Text = "mm/Å";
+            label4.Text = "mm/nm";//260805Cl 変更: 旧 "mm/Å" (実体は nm)
             //
             // labelResult
             //
@@ -214,7 +214,7 @@ namespace ReciPro
             labelResult.Name = "labelResult";
             labelResult.Size = new System.Drawing.Size(200, 15);
             labelResult.TabIndex = 6;
-            labelResult.Text = "Scale: 1.000 mm/Å,   Output size: 0 × 0 × 0 mm";
+            labelResult.Text = "Scale: 1.000 mm/nm,   Output size: 0 × 0 × 0 mm";//260805Cl 変更
             //
             // groupBoxInclude
             //
@@ -524,8 +524,11 @@ namespace ReciPro
             // FormExport3DModel
             //
             AcceptButton = buttonOK;
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            //260805Cl 変更: 旧 AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F); AutoScaleMode = AutoScaleMode.Font;
+            //Font スケーリングだと、UiFont が言語ごとに別フォント (ko/zh は Yu Gothic UI/YaHei) を当てた瞬間に
+            //絶対配置の NumericUpDown と AutoSize ラベルがずれて重なる (ko/zh-Hans のキャプチャで実測)。他フォームと同じ Dpi にする。
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             CancelButton = buttonCancel;
             ClientSize = new System.Drawing.Size(402, 445);
             Controls.Add(labelInfo);

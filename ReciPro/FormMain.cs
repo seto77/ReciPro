@@ -1406,6 +1406,10 @@ public partial class FormMain : FormBase
         // 現在結晶 (spinel) が SetGLObjects され、原子タブ含め代表状態で撮れる (reflection 版を上書き)。
         if (FormStructureViewer != null)
             yield return FormStructureViewer;
+        // 260805Cl 追加: 3Dモデル出力ダイアログ (FormExport3DModel) は表示中のメッシュを引数に取るので reflection 単独生成できない。
+        // 直前に撮った FormStructureViewer (spinel が SetGLObjects 済み) のスナップショットから組み立てて撮る。
+        if (FormStructureViewer?.PrepareCaptureExport3DModelDialog() is { } export3DModel)
+            yield return export3DModel;
         // 260524Cl 追加: 回折スポット情報 (FormDiffractionBeamTable) の表は「動力学効果」で計算しないと空になる。
         // FormDiffractionSimulator 側で動力学計算を走らせて配線済みの表を populate し、それを撮る (reflection 単独生成の空表版を上書き)。
         if (FormDiffractionSimulator?.PrepareCaptureSpotInfoForGuiAudit() is { } diffractionSpotInfo)

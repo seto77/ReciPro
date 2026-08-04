@@ -1518,7 +1518,7 @@ public partial class FormStructureViewer : FormBase
         using var dlg = new FormExport3DModel(snaps, lineSnaps);
         if (dlg.ShowDialog(this) != DialogResult.OK)
             return;
-        var scale = dlg.MmPerAngstrom;
+        var scale = dlg.MmPerNm;
 
         //オプションに従ってエクスポート対象を組み立てる
         var export = new List<MeshSnapshot>();
@@ -1529,15 +1529,15 @@ public partial class FormStructureViewer : FormBase
             if (isAtom ? !dlg.IncludeAtoms : isPoly ? !dlg.IncludePolyhedra || dlg.PolyhedraAsEdges : !dlg.IncludeBonds)
                 continue;
             //細すぎる結合 (円柱) は元プリミティブ情報から印刷可能な太さで再生成する
-            if (!isAtom && !isPoly && dlg.ThickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < dlg.MinBondRadiusAng)
-                export.Add(MeshSnapshot.From(new Cylinder(s.PipeOrigin, s.PipeVector, dlg.MinBondRadiusAng, new Material(s.Argb), DrawingMode.Surfaces)));
+            if (!isAtom && !isPoly && dlg.ThickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < dlg.MinBondRadiusNm)
+                export.Add(MeshSnapshot.From(new Cylinder(s.PipeOrigin, s.PipeVector, dlg.MinBondRadiusNm, new Material(s.Argb), DrawingMode.Surfaces)));
             else
                 export.Add(s);
         }
         if (dlg.IncludePolyhedra && dlg.PolyhedraAsEdges)//多面体を稜線枠 (円柱+頂点球) で出力
-            export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), dlg.PolyEdgeRadiusAng));
+            export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), dlg.PolyEdgeRadiusNm));
         if (dlg.IncludeCellEdges)//単位胞枠を円柱+角球に変換して追加
-            export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusAng));
+            export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusNm));
         if (export.Count == 0)
             return;
 
@@ -1568,7 +1568,22 @@ public partial class FormStructureViewer : FormBase
         var (mn, mx) = ModelExporter.GetBounds(export);
         var size = mx - mn;
         textBoxCalcInformation.AppendText($"Exported {count} triangles to {System.IO.Path.GetFileName(sfd.FileName)} " +
-            $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/Å).\r\n");
+            $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/nm).\r\n");
+    }
+
+    /// <summary>
+    /// 260805Cl 追加: --capture (GuiCapture) 用に、表示中のモデルから 3D モデル出力ダイアログを生成する。
+    /// FormExport3DModel は引数付きコンストラクタしか持たないので reflection 単独生成では撮れない。
+    /// 出力対象が何も無いときは null を返す。
+    /// </summary>
+    internal FormExport3DModel PrepareCaptureExport3DModelDialog()
+    {
+        GLObject[] objs;
+        lock (lockObj1)
+            objs = [.. GLObjects];
+        var snaps = ModelExporter.Collect(objs);
+        var lineSnaps = ModelExporter.CollectLines(objs);
+        return snaps.Count == 0 && lineSnaps.Count == 0 ? null : new FormExport3DModel(snaps, lineSnaps);
     }
 
     #endregion 3Dモデル (STL/3MF) エクスポート

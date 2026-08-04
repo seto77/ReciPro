@@ -35,9 +35,9 @@ public static class ModelExporter
 
     /// <summary>
     /// 線分スナップショット (単位胞枠など) を円柱ソリッドへ変換する (260803Cl 追加, Phase 1)。
-    /// 各線分を半径 radiusAng (Å) の円柱にし、端点 (重複除去済) には同半径の球を置いて角の継ぎ目を丸く埋める。
+    /// 各線分を半径 radiusNm (nm) の円柱にし、端点 (重複除去済) には同半径の球を置いて角の継ぎ目を丸く埋める。
     /// </summary>
-    public static List<MeshSnapshot> CylinderizeLines(IEnumerable<MeshSnapshot> lines, double radiusAng)
+    public static List<MeshSnapshot> CylinderizeLines(IEnumerable<MeshSnapshot> lines, double radiusNm)
     {
         var result = new List<MeshSnapshot>();
         var cornerKeys = new HashSet<(long X, long Y, long Z)>();
@@ -47,18 +47,18 @@ public static class ModelExporter
             var mat = new Material(s.Argb);
             foreach (var (start, end) in s.Segments)
             {
-                result.Add(MeshSnapshot.From(new Cylinder(start, end - start, radiusAng, mat, DrawingMode.Surfaces)));
+                result.Add(MeshSnapshot.From(new Cylinder(start, end - start, radiusNm, mat, DrawingMode.Surfaces)));
                 foreach (var p in (V3[])[start, end])
                     if (cornerKeys.Add(((long)Math.Round(p.X * 1E4), (long)Math.Round(p.Y * 1E4), (long)Math.Round(p.Z * 1E4))))
                         corners.Add((p, s.Argb));
             }
         }
         foreach (var (pos, argb) in corners)
-            result.Add(MeshSnapshot.From(new Sphere(pos, radiusAng, new Material(argb), DrawingMode.Surfaces)));
+            result.Add(MeshSnapshot.From(new Sphere(pos, radiusNm, new Material(argb), DrawingMode.Surfaces)));
         return result;
     }
 
-    /// <summary>全三角形のバウンディングボックス (ワールド座標 = Å)</summary>
+    /// <summary>全三角形のバウンディングボックス (ワールド座標 = nm)</summary>
     public static (V3 Min, V3 Max) GetBounds(IEnumerable<MeshSnapshot> snaps)
     {
         V3 min = new(double.MaxValue), max = new(double.MinValue);
@@ -107,11 +107,11 @@ public static class ModelExporter
     }
 
     /// <summary>
-    /// バイナリ STL (単色) を書き出す。座標は Å × scale で mm に変換し、XY 中心が原点、Z 最小値が 0 に来るよう平行移動する。
+    /// バイナリ STL (単色) を書き出す。座標は nm × scale で mm に変換し、XY 中心が原点、Z 最小値が 0 に来るよう平行移動する。
     /// </summary>
     /// <param name="path">出力ファイルパス</param>
     /// <param name="snaps">Collect() で収集したスナップショット</param>
-    /// <param name="scale">スケール (mm/Å)</param>
+    /// <param name="scale">スケール (mm/nm)</param>
     /// <returns>書き出した三角形数</returns>
     public static int ExportStl(string path, List<MeshSnapshot> snaps, double scale)
     {
@@ -149,7 +149,7 @@ public static class ModelExporter
     /// </summary>
     /// <param name="path">出力ファイルパス</param>
     /// <param name="snaps">Collect() で収集したスナップショット</param>
-    /// <param name="scale">スケール (mm/Å)</param>
+    /// <param name="scale">スケール (mm/nm)</param>
     /// <param name="title">モデル名 (親オブジェクト名とメタデータに使用)</param>
     /// <param name="colorNames">RGB (0xRRGGBB) → 材料名 (元素名など)。無指定またはヒットしない色は #RRGGBB 表記</param>
     /// <returns>書き出した三角形数</returns>
