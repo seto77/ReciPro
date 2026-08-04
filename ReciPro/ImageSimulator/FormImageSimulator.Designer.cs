@@ -89,10 +89,11 @@ namespace ReciPro
             panel9 = new System.Windows.Forms.Panel();
             groupBoxSTEMoption3 = new System.Windows.Forms.GroupBox();
             comboBoxEdxDisplay = new System.Windows.Forms.ComboBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            radioButtonSTEM_target_both = new System.Windows.Forms.RadioButton();
+            radioButtonSTEM_target_elas = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_EDX = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_TDS = new System.Windows.Forms.RadioButton();
-            radioButtonSTEM_target_elas = new System.Windows.Forms.RadioButton();
-            radioButtonSTEM_target_both = new System.Windows.Forms.RadioButton();
             groupBoxDisplay = new System.Windows.Forms.GroupBox();
             colorControlScale = new ColorControl();
             numericBoxScaleLength = new NumericBox();
@@ -156,14 +157,10 @@ namespace ReciPro
             radioButtonPotentialShowImag = new System.Windows.Forms.RadioButton();
             checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
-            groupBoxSTEMoption4 = new System.Windows.Forms.GroupBox();
-            panelEdxDetails = new System.Windows.Forms.Panel();
-            labelEdxProbeGrid = new System.Windows.Forms.Label();
-            labelEdxSummary = new System.Windows.Forms.Label();
-            checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
             groupBoxSTEMoption2 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_AngleResolution = new NumericBox();
+            labelEdxProbeGrid = new System.Windows.Forms.Label();
             numericBoxSTEM_SliceThicknessForInelastic = new NumericBox();
             groupBoxHREMoption2 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
@@ -183,14 +180,17 @@ namespace ReciPro
             typicalABF1224MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalLAADF2560MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalHAADF80250MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelConvergenceRadius = new System.Windows.Forms.FlowLayoutPanel();
-            numericBoxSTEM_ConvergenceAngle = new NumericBox();
-            textBoxConvRadius = new System.Windows.Forms.TextBox();
-            label36 = new System.Windows.Forms.Label();
+            groupBoxSTEMoption4 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelEdxDetector = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxEdxTakeOffAngle = new NumericBox();
             flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            label1 = new System.Windows.Forms.Label();
-            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            labelEdxDetectorWindow = new System.Windows.Forms.Label();
+            comboBoxEdxDetectorWindow = new System.Windows.Forms.ComboBox();
+            labelEdxSummary = new System.Windows.Forms.Label();
+            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
+            checkBoxEdxSelfAbsorption = new System.Windows.Forms.CheckBox();
+            groupBox1 = new System.Windows.Forms.GroupBox();
             flowLayoutPanelOuterRadius = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_DetectorOuterAngle = new NumericBox();
             textBoxOuterRadius = new System.Windows.Forms.TextBox();
@@ -200,6 +200,10 @@ namespace ReciPro
             textBoxInnerRadius = new System.Windows.Forms.TextBox();
             label37 = new System.Windows.Forms.Label();
             numericBoxSTEM_EffectiveSourceSize = new NumericBox();
+            flowLayoutPanelConvergenceRadius = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxSTEM_ConvergenceAngle = new NumericBox();
+            textBoxConvRadius = new System.Windows.Forms.TextBox();
+            label36 = new System.Windows.Forms.Label();
             groupBoxHREMoption1 = new System.Windows.Forms.GroupBox();
             flowLayoutPanelSpotCount = new System.Windows.Forms.FlowLayoutPanel();
             buttonDetailsOfSpots = new System.Windows.Forms.Button();
@@ -246,8 +250,6 @@ namespace ReciPro
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            label2 = new System.Windows.Forms.Label();
             numericBoxThickness = new NumericBox();
             panelSimulationActions = new System.Windows.Forms.Panel();
             checkBoxPreset = new System.Windows.Forms.CheckBox();
@@ -291,6 +293,7 @@ namespace ReciPro
             groupBoxNormalization.SuspendLayout();
             flowLayoutPanelIntensityRange.SuspendLayout();
             groupBoxSTEMoption3.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             groupBoxDisplay.SuspendLayout();
             groupBoxSimulation.SuspendLayout();
             panelModeOptions.SuspendLayout();
@@ -307,8 +310,6 @@ namespace ReciPro
             panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).BeginInit();
             flowLayoutPanelRealAndImaiginary.SuspendLayout();
-            groupBoxSTEMoption4.SuspendLayout();
-            panelEdxDetails.SuspendLayout();
             groupBoxSTEMoption2.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
             groupBoxHREMoption2.SuspendLayout();
@@ -319,12 +320,14 @@ namespace ReciPro
             groupBoxOpticalProperty.SuspendLayout();
             groupBoxSTEMoption1.SuspendLayout();
             contextMenuStripSTEM.SuspendLayout();
-            flowLayoutPanel8.SuspendLayout();
-            flowLayoutPanelConvergenceRadius.SuspendLayout();
+            groupBoxSTEMoption4.SuspendLayout();
+            flowLayoutPanelEdxDetector.SuspendLayout();
             flowLayoutPanel9.SuspendLayout();
-            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanel13.SuspendLayout();
+            groupBox1.SuspendLayout();
             flowLayoutPanelOuterRadius.SuspendLayout();
             flowLayoutPanelInnerRadius.SuspendLayout();
+            flowLayoutPanelConvergenceRadius.SuspendLayout();
             groupBoxHREMoption1.SuspendLayout();
             flowLayoutPanelSpotCount.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
@@ -340,7 +343,6 @@ namespace ReciPro
             groupBoxImageMode.SuspendLayout();
             flowLayoutPanelImageType.SuspendLayout();
             groupBoxSampleProperty.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             panelSimulationActions.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -646,13 +648,10 @@ namespace ReciPro
             // 
             // groupBoxSTEMoption3
             // 
+            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
             captureExtender.SetCapture(groupBoxSTEMoption3, true);
             groupBoxSTEMoption3.Controls.Add(comboBoxEdxDisplay);
-            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_EDX);
-            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_TDS);
-            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_elas);
-            groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_both);
-            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
+            groupBoxSTEMoption3.Controls.Add(tableLayoutPanel1);
             groupBoxSTEMoption3.Name = "groupBoxSTEMoption3";
             groupBoxSTEMoption3.TabStop = false;
             // 
@@ -663,6 +662,33 @@ namespace ReciPro
             comboBoxEdxDisplay.FormattingEnabled = true;
             comboBoxEdxDisplay.Name = "comboBoxEdxDisplay";
             comboBoxEdxDisplay.SelectedIndexChanged += ComboBoxEdxDisplay_SelectedIndexChanged;
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(radioButtonSTEM_target_both, 0, 0);
+            tableLayoutPanel1.Controls.Add(radioButtonSTEM_target_elas, 1, 0);
+            tableLayoutPanel1.Controls.Add(radioButtonSTEM_target_EDX, 1, 1);
+            tableLayoutPanel1.Controls.Add(radioButtonSTEM_target_TDS, 0, 1);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // radioButtonSTEM_target_both
+            // 
+            resources.ApplyResources(radioButtonSTEM_target_both, "radioButtonSTEM_target_both");
+            radioButtonSTEM_target_both.Checked = true;
+            radioButtonSTEM_target_both.Name = "radioButtonSTEM_target_both";
+            radioButtonSTEM_target_both.TabStop = true;
+            toolTip.SetToolTip(radioButtonSTEM_target_both, resources.GetString("radioButtonSTEM_target_both.ToolTip"));
+            radioButtonSTEM_target_both.UseVisualStyleBackColor = true;
+            radioButtonSTEM_target_both.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
+            // 
+            // radioButtonSTEM_target_elas
+            // 
+            resources.ApplyResources(radioButtonSTEM_target_elas, "radioButtonSTEM_target_elas");
+            radioButtonSTEM_target_elas.Name = "radioButtonSTEM_target_elas";
+            toolTip.SetToolTip(radioButtonSTEM_target_elas, resources.GetString("radioButtonSTEM_target_elas.ToolTip"));
+            radioButtonSTEM_target_elas.UseVisualStyleBackColor = true;
+            radioButtonSTEM_target_elas.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
             // 
             // radioButtonSTEM_target_EDX
             // 
@@ -679,24 +705,6 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonSTEM_target_TDS, resources.GetString("radioButtonSTEM_target_TDS.ToolTip"));
             radioButtonSTEM_target_TDS.UseVisualStyleBackColor = true;
             radioButtonSTEM_target_TDS.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
-            // 
-            // radioButtonSTEM_target_elas
-            // 
-            resources.ApplyResources(radioButtonSTEM_target_elas, "radioButtonSTEM_target_elas");
-            radioButtonSTEM_target_elas.Name = "radioButtonSTEM_target_elas";
-            toolTip.SetToolTip(radioButtonSTEM_target_elas, resources.GetString("radioButtonSTEM_target_elas.ToolTip"));
-            radioButtonSTEM_target_elas.UseVisualStyleBackColor = true;
-            radioButtonSTEM_target_elas.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
-            // 
-            // radioButtonSTEM_target_both
-            // 
-            resources.ApplyResources(radioButtonSTEM_target_both, "radioButtonSTEM_target_both");
-            radioButtonSTEM_target_both.Checked = true;
-            radioButtonSTEM_target_both.Name = "radioButtonSTEM_target_both";
-            radioButtonSTEM_target_both.TabStop = true;
-            toolTip.SetToolTip(radioButtonSTEM_target_both, resources.GetString("radioButtonSTEM_target_both.ToolTip"));
-            radioButtonSTEM_target_both.UseVisualStyleBackColor = true;
-            radioButtonSTEM_target_both.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
             // 
             // groupBoxDisplay
             // 
@@ -770,6 +778,7 @@ namespace ReciPro
             numericBoxLabelFontSize.SkipEventDuringInput = false;
             toolTip.SetToolTip(numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip"));
             numericBoxLabelFontSize.Value = 9D;
+            numericBoxLabelFontSize.ValueBoxWidth = 32;
             numericBoxLabelFontSize.ValueFontSize = 9F;
             numericBoxLabelFontSize.ValueChanged += CheckBoxShowLabel_CheckedChanged;
             // 
@@ -806,7 +815,6 @@ namespace ReciPro
             resources.ApplyResources(panelModeOptions, "panelModeOptions");
             panelModeOptions.Controls.Add(groupBoxSerialImage);
             panelModeOptions.Controls.Add(groupBoxPotentialOption);
-            panelModeOptions.Controls.Add(groupBoxSTEMoption4);
             panelModeOptions.Controls.Add(groupBoxSTEMoption2);
             panelModeOptions.Controls.Add(groupBoxHREMoption2);
             panelModeOptions.Controls.Add(panelImageProperties);
@@ -1251,40 +1259,6 @@ namespace ReciPro
             toolTip.SetToolTip(checkBoxPotentialUg, resources.GetString("checkBoxPotentialUg.ToolTip"));
             checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
-            // groupBoxSTEMoption4
-            // 
-            resources.ApplyResources(groupBoxSTEMoption4, "groupBoxSTEMoption4");
-            captureExtender.SetCapture(groupBoxSTEMoption4, true);
-            groupBoxSTEMoption4.Controls.Add(panelEdxDetails);
-            groupBoxSTEMoption4.Controls.Add(labelEdxSummary);
-            groupBoxSTEMoption4.Controls.Add(checkBoxCalculateEdx);
-            groupBoxSTEMoption4.Name = "groupBoxSTEMoption4";
-            groupBoxSTEMoption4.TabStop = false;
-            // 
-            // panelEdxDetails
-            // 
-            panelEdxDetails.Controls.Add(labelEdxProbeGrid);
-            resources.ApplyResources(panelEdxDetails, "panelEdxDetails");
-            panelEdxDetails.Name = "panelEdxDetails";
-            // 
-            // labelEdxProbeGrid
-            // 
-            resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
-            labelEdxProbeGrid.Name = "labelEdxProbeGrid";
-            // 
-            // labelEdxSummary
-            // 
-            resources.ApplyResources(labelEdxSummary, "labelEdxSummary");
-            labelEdxSummary.Name = "labelEdxSummary";
-            // 
-            // checkBoxCalculateEdx
-            // 
-            resources.ApplyResources(checkBoxCalculateEdx, "checkBoxCalculateEdx");
-            checkBoxCalculateEdx.Name = "checkBoxCalculateEdx";
-            toolTip.SetToolTip(checkBoxCalculateEdx, resources.GetString("checkBoxCalculateEdx.ToolTip"));
-            checkBoxCalculateEdx.UseVisualStyleBackColor = true;
-            checkBoxCalculateEdx.CheckedChanged += CheckBoxCalculateEdx_CheckedChanged;
-            // 
             // groupBoxSTEMoption2
             // 
             resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
@@ -1297,6 +1271,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
             flowLayoutPanel11.Controls.Add(numericBoxSTEM_AngleResolution);
+            flowLayoutPanel11.Controls.Add(labelEdxProbeGrid);
             flowLayoutPanel11.Controls.Add(numericBoxSTEM_SliceThicknessForInelastic);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
             // 
@@ -1315,6 +1290,11 @@ namespace ReciPro
             numericBoxSTEM_AngleResolution.ValueBoxWidth = 36;
             numericBoxSTEM_AngleResolution.ValueFontSize = 9F;
             numericBoxSTEM_AngleResolution.ValueChanged += NumericBoxSTEM_AngleResolution_ValueChanged;
+            // 
+            // labelEdxProbeGrid
+            // 
+            resources.ApplyResources(labelEdxProbeGrid, "labelEdxProbeGrid");
+            labelEdxProbeGrid.Name = "labelEdxProbeGrid";
             // 
             // numericBoxSTEM_SliceThicknessForInelastic
             // 
@@ -1447,7 +1427,10 @@ namespace ReciPro
             resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
             captureExtender.SetCapture(groupBoxSTEMoption1, true);
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
-            groupBoxSTEMoption1.Controls.Add(flowLayoutPanel8);
+            groupBoxSTEMoption1.Controls.Add(groupBoxSTEMoption4);
+            groupBoxSTEMoption1.Controls.Add(groupBox1);
+            groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_EffectiveSourceSize);
+            groupBoxSTEMoption1.Controls.Add(flowLayoutPanelConvergenceRadius);
             groupBoxSTEMoption1.Name = "groupBoxSTEMoption1";
             groupBoxSTEMoption1.TabStop = false;
             // 
@@ -1481,75 +1464,93 @@ namespace ReciPro
             resources.ApplyResources(typicalHAADF80250MradToolStripMenuItem, "typicalHAADF80250MradToolStripMenuItem");
             typicalHAADF80250MradToolStripMenuItem.Click += typicalHAADF80250MradToolStripMenuItem_Click;
             // 
-            // flowLayoutPanel8
+            // groupBoxSTEMoption4
             // 
-            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
-            flowLayoutPanel8.Controls.Add(flowLayoutPanelConvergenceRadius);
-            flowLayoutPanel8.Controls.Add(flowLayoutPanel9);
-            flowLayoutPanel8.Controls.Add(numericBoxSTEM_EffectiveSourceSize);
-            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            resources.ApplyResources(groupBoxSTEMoption4, "groupBoxSTEMoption4");
+            captureExtender.SetCapture(groupBoxSTEMoption4, true);
+            groupBoxSTEMoption4.Controls.Add(flowLayoutPanelEdxDetector);
+            groupBoxSTEMoption4.Controls.Add(labelEdxSummary);
+            groupBoxSTEMoption4.Controls.Add(flowLayoutPanel13);
+            groupBoxSTEMoption4.Name = "groupBoxSTEMoption4";
+            groupBoxSTEMoption4.TabStop = false;
             // 
-            // flowLayoutPanelConvergenceRadius
+            // flowLayoutPanelEdxDetector
             // 
-            resources.ApplyResources(flowLayoutPanelConvergenceRadius, "flowLayoutPanelConvergenceRadius");
-            flowLayoutPanelConvergenceRadius.Controls.Add(numericBoxSTEM_ConvergenceAngle);
-            flowLayoutPanelConvergenceRadius.Controls.Add(textBoxConvRadius);
-            flowLayoutPanelConvergenceRadius.Controls.Add(label36);
-            flowLayoutPanelConvergenceRadius.Name = "flowLayoutPanelConvergenceRadius";
+            resources.ApplyResources(flowLayoutPanelEdxDetector, "flowLayoutPanelEdxDetector");
+            flowLayoutPanelEdxDetector.Controls.Add(numericBoxEdxTakeOffAngle);
+            flowLayoutPanelEdxDetector.Controls.Add(flowLayoutPanel9);
+            flowLayoutPanelEdxDetector.Name = "flowLayoutPanelEdxDetector";
             // 
-            // numericBoxSTEM_ConvergenceAngle
+            // numericBoxEdxTakeOffAngle
             // 
-            numericBoxSTEM_ConvergenceAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_ConvergenceAngle.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxSTEM_ConvergenceAngle, "numericBoxSTEM_ConvergenceAngle");
-            numericBoxSTEM_ConvergenceAngle.Maximum = 1570D;
-            numericBoxSTEM_ConvergenceAngle.Minimum = 0.1D;
-            numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
-            numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
-            numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
-            numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
-            numericBoxSTEM_ConvergenceAngle.Value = 25D;
-            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 36;
-            numericBoxSTEM_ConvergenceAngle.ValueFontSize = 9F;
-            numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
-            // 
-            // textBoxConvRadius
-            // 
-            textBoxConvRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            resources.ApplyResources(textBoxConvRadius, "textBoxConvRadius");
-            textBoxConvRadius.ForeColor = System.Drawing.Color.DimGray;
-            textBoxConvRadius.Name = "textBoxConvRadius";
-            textBoxConvRadius.ReadOnly = true;
-            toolTip.SetToolTip(textBoxConvRadius, resources.GetString("textBoxConvRadius.ToolTip"));
-            // 
-            // label36
-            // 
-            resources.ApplyResources(label36, "label36");
-            label36.ForeColor = System.Drawing.Color.Black;
-            label36.Name = "label36";
-            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip"));
+            numericBoxEdxTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxEdxTakeOffAngle.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxEdxTakeOffAngle, "numericBoxEdxTakeOffAngle");
+            numericBoxEdxTakeOffAngle.Maximum = 89D;
+            numericBoxEdxTakeOffAngle.Minimum = 1D;
+            numericBoxEdxTakeOffAngle.Name = "numericBoxEdxTakeOffAngle";
+            numericBoxEdxTakeOffAngle.ShowUpDown = true;
+            numericBoxEdxTakeOffAngle.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxEdxTakeOffAngle, resources.GetString("numericBoxEdxTakeOffAngle.ToolTip"));
+            numericBoxEdxTakeOffAngle.Value = 30D;
+            numericBoxEdxTakeOffAngle.ValueBoxWidth = 36;
+            numericBoxEdxTakeOffAngle.ValueFontSize = 9F;
             // 
             // flowLayoutPanel9
             // 
             resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
-            flowLayoutPanel9.Controls.Add(label1);
-            flowLayoutPanel9.Controls.Add(flowLayoutPanel12);
+            flowLayoutPanel9.Controls.Add(labelEdxDetectorWindow);
+            flowLayoutPanel9.Controls.Add(comboBoxEdxDetectorWindow);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
-            // label1
+            // labelEdxDetectorWindow
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            resources.ApplyResources(labelEdxDetectorWindow, "labelEdxDetectorWindow");
+            labelEdxDetectorWindow.Name = "labelEdxDetectorWindow";
             // 
-            // flowLayoutPanel12
+            // comboBoxEdxDetectorWindow
             // 
-            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
-            flowLayoutPanel12.Controls.Add(flowLayoutPanelOuterRadius);
-            flowLayoutPanel12.Controls.Add(flowLayoutPanelInnerRadius);
-            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            comboBoxEdxDetectorWindow.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxEdxDetectorWindow, "comboBoxEdxDetectorWindow");
+            comboBoxEdxDetectorWindow.FormattingEnabled = true;
+            comboBoxEdxDetectorWindow.Items.AddRange(new object[] { resources.GetString("comboBoxEdxDetectorWindow.Items"), resources.GetString("comboBoxEdxDetectorWindow.Items1"), resources.GetString("comboBoxEdxDetectorWindow.Items2") });
+            comboBoxEdxDetectorWindow.Name = "comboBoxEdxDetectorWindow";
+            toolTip.SetToolTip(comboBoxEdxDetectorWindow, resources.GetString("comboBoxEdxDetectorWindow.ToolTip"));
+            // 
+            // labelEdxSummary
+            // 
+            resources.ApplyResources(labelEdxSummary, "labelEdxSummary");
+            labelEdxSummary.Name = "labelEdxSummary";
+            // 
+            // flowLayoutPanel13
+            // 
+            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
+            flowLayoutPanel13.Controls.Add(checkBoxCalculateEdx);
+            flowLayoutPanel13.Controls.Add(checkBoxEdxSelfAbsorption);
+            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            // 
+            // checkBoxCalculateEdx
+            // 
+            resources.ApplyResources(checkBoxCalculateEdx, "checkBoxCalculateEdx");
+            checkBoxCalculateEdx.Name = "checkBoxCalculateEdx";
+            toolTip.SetToolTip(checkBoxCalculateEdx, resources.GetString("checkBoxCalculateEdx.ToolTip"));
+            checkBoxCalculateEdx.UseVisualStyleBackColor = true;
+            checkBoxCalculateEdx.CheckedChanged += CheckBoxCalculateEdx_CheckedChanged;
+            // 
+            // checkBoxEdxSelfAbsorption
+            // 
+            resources.ApplyResources(checkBoxEdxSelfAbsorption, "checkBoxEdxSelfAbsorption");
+            checkBoxEdxSelfAbsorption.Name = "checkBoxEdxSelfAbsorption";
+            toolTip.SetToolTip(checkBoxEdxSelfAbsorption, resources.GetString("checkBoxEdxSelfAbsorption.ToolTip"));
+            checkBoxEdxSelfAbsorption.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(flowLayoutPanelOuterRadius);
+            groupBox1.Controls.Add(flowLayoutPanelInnerRadius);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // flowLayoutPanelOuterRadius
             // 
@@ -1649,6 +1650,47 @@ namespace ReciPro
             numericBoxSTEM_EffectiveSourceSize.ValueBoxWidth = 36;
             numericBoxSTEM_EffectiveSourceSize.ValueFontSize = 9F;
             numericBoxSTEM_EffectiveSourceSize.ValueChanged += NumericBoxTEMproperty_ValueChanged;
+            // 
+            // flowLayoutPanelConvergenceRadius
+            // 
+            resources.ApplyResources(flowLayoutPanelConvergenceRadius, "flowLayoutPanelConvergenceRadius");
+            flowLayoutPanelConvergenceRadius.Controls.Add(numericBoxSTEM_ConvergenceAngle);
+            flowLayoutPanelConvergenceRadius.Controls.Add(textBoxConvRadius);
+            flowLayoutPanelConvergenceRadius.Controls.Add(label36);
+            flowLayoutPanelConvergenceRadius.Name = "flowLayoutPanelConvergenceRadius";
+            // 
+            // numericBoxSTEM_ConvergenceAngle
+            // 
+            numericBoxSTEM_ConvergenceAngle.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxSTEM_ConvergenceAngle.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxSTEM_ConvergenceAngle, "numericBoxSTEM_ConvergenceAngle");
+            numericBoxSTEM_ConvergenceAngle.Maximum = 1570D;
+            numericBoxSTEM_ConvergenceAngle.Minimum = 0.1D;
+            numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
+            numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
+            numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
+            numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
+            numericBoxSTEM_ConvergenceAngle.Value = 25D;
+            numericBoxSTEM_ConvergenceAngle.ValueBoxWidth = 36;
+            numericBoxSTEM_ConvergenceAngle.ValueFontSize = 9F;
+            numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
+            // 
+            // textBoxConvRadius
+            // 
+            textBoxConvRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxConvRadius, "textBoxConvRadius");
+            textBoxConvRadius.ForeColor = System.Drawing.Color.DimGray;
+            textBoxConvRadius.Name = "textBoxConvRadius";
+            textBoxConvRadius.ReadOnly = true;
+            toolTip.SetToolTip(textBoxConvRadius, resources.GetString("textBoxConvRadius.ToolTip"));
+            // 
+            // label36
+            // 
+            resources.ApplyResources(label36, "label36");
+            label36.ForeColor = System.Drawing.Color.Black;
+            label36.Name = "label36";
+            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip"));
             // 
             // groupBoxHREMoption1
             // 
@@ -2072,24 +2114,10 @@ namespace ReciPro
             // groupBoxSampleProperty
             // 
             captureExtender.SetCapture(groupBoxSampleProperty, true);
-            groupBoxSampleProperty.Controls.Add(flowLayoutPanel1);
+            groupBoxSampleProperty.Controls.Add(numericBoxThickness);
             resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             groupBoxSampleProperty.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label2);
-            flowLayoutPanel1.Controls.Add(numericBoxThickness);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            label2.Name = "label2";
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // numericBoxThickness
             // 
@@ -2338,6 +2366,8 @@ namespace ReciPro
             flowLayoutPanelIntensityRange.PerformLayout();
             groupBoxSTEMoption3.ResumeLayout(false);
             groupBoxSTEMoption3.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             groupBoxDisplay.ResumeLayout(false);
             groupBoxDisplay.PerformLayout();
             groupBoxSimulation.ResumeLayout(false);
@@ -2369,10 +2399,6 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).EndInit();
             flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             flowLayoutPanelRealAndImaiginary.PerformLayout();
-            groupBoxSTEMoption4.ResumeLayout(false);
-            groupBoxSTEMoption4.PerformLayout();
-            panelEdxDetails.ResumeLayout(false);
-            panelEdxDetails.PerformLayout();
             groupBoxSTEMoption2.ResumeLayout(false);
             groupBoxSTEMoption2.PerformLayout();
             flowLayoutPanel11.ResumeLayout(false);
@@ -2392,18 +2418,22 @@ namespace ReciPro
             groupBoxSTEMoption1.ResumeLayout(false);
             groupBoxSTEMoption1.PerformLayout();
             contextMenuStripSTEM.ResumeLayout(false);
-            flowLayoutPanel8.ResumeLayout(false);
-            flowLayoutPanel8.PerformLayout();
-            flowLayoutPanelConvergenceRadius.ResumeLayout(false);
-            flowLayoutPanelConvergenceRadius.PerformLayout();
+            groupBoxSTEMoption4.ResumeLayout(false);
+            groupBoxSTEMoption4.PerformLayout();
+            flowLayoutPanelEdxDetector.ResumeLayout(false);
+            flowLayoutPanelEdxDetector.PerformLayout();
             flowLayoutPanel9.ResumeLayout(false);
             flowLayoutPanel9.PerformLayout();
-            flowLayoutPanel12.ResumeLayout(false);
-            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanel13.ResumeLayout(false);
+            flowLayoutPanel13.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             flowLayoutPanelOuterRadius.ResumeLayout(false);
             flowLayoutPanelOuterRadius.PerformLayout();
             flowLayoutPanelInnerRadius.ResumeLayout(false);
             flowLayoutPanelInnerRadius.PerformLayout();
+            flowLayoutPanelConvergenceRadius.ResumeLayout(false);
+            flowLayoutPanelConvergenceRadius.PerformLayout();
             groupBoxHREMoption1.ResumeLayout(false);
             groupBoxHREMoption1.PerformLayout();
             flowLayoutPanelSpotCount.ResumeLayout(false);
@@ -2431,9 +2461,6 @@ namespace ReciPro
             flowLayoutPanelImageType.ResumeLayout(false);
             flowLayoutPanelImageType.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
-            groupBoxSampleProperty.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             panelSimulationActions.ResumeLayout(false);
             panelSimulationActions.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -2619,7 +2646,6 @@ namespace ReciPro
         private NumericBox numericBoxSTEM_EffectiveSourceSize;
         private System.Windows.Forms.ToolStripMenuItem setAllAToolStripMenuItem;
         private System.Windows.Forms.Panel panelSerialSettings;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem presets1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presets2ToolStripMenuItem;
@@ -2655,11 +2681,14 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxSTEMoption4;
         private System.Windows.Forms.CheckBox checkBoxCalculateEdx;
         private System.Windows.Forms.Label labelEdxSummary;
-        private System.Windows.Forms.Panel panelEdxDetails;
         private System.Windows.Forms.Label labelEdxProbeGrid;
+        //260802Cl 追加: EDX 検出器ジオメトリ (現状は Enabled = false の場所取り)
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEdxDetector;
+        private System.Windows.Forms.CheckBox checkBoxEdxSelfAbsorption;
+        private NumericBox numericBoxEdxTakeOffAngle;
+        private System.Windows.Forms.Label labelEdxDetectorWindow;
+        private System.Windows.Forms.ComboBox comboBoxEdxDetectorWindow;
         private System.Windows.Forms.ComboBox comboBoxEdxDisplay;//260801Cl 追加
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         // 260521Cl: flowLayoutPanel2 は sizeControl1 へ置換したため削除
         private SizeControl sizeControl1;
         private System.Windows.Forms.Panel panel1;
@@ -2669,10 +2698,11 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

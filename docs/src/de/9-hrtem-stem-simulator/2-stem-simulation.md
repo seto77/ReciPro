@@ -80,7 +80,7 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 ![STEM-Optionen (Simulation)](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** : Schichtdicke der Probe (nm), die bei der Berechnung der TDS-Intensität (thermisch-diffus, inelastisch) verwendet wird. Kleinere Werte sind genauer, aber langsamer.
-- **Angular resolution** : Winkel-Abtastauflösung der Einfallsrichtungen der Sonde (mrad). Kleinere Werte tasten die Sonde feiner ab, sind aber langsamer.
+- **Angular resolution** : Winkel-Abtastauflösung der Einfallsrichtungen der Sonde (mrad). Kleinere Werte tasten die Sonde feiner ab, sind aber langsamer. Die Zahl der Richtungen wächst quadratisch mit diesem Verhältnis und ist damit der wichtigste Hebel für die Rechenzeit; gemessene Konvergenzwerte siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling).
 
 ---
 
@@ -121,6 +121,9 @@ Der Anzeigeschalter unten links im Fenster wählt aus, welche Streukomponente de
 | **Elastisch** | Bild nur aus elastischer Streuung |
 | **TDS** | Bild nur aus thermisch-diffuser Streuung |
 | **Elastisch & TDS** | Summe aus elastisch + TDS |
+
+!!! note
+    Alle drei Bilder werden aus dem Realteil der Fourier-Summe rekonstruiert, sodass **Elastisch & TDS** exakt die Summe der beiden anderen ist. Bis Version 4.944 wurde stattdessen der Betrag genommen, was diese Identität zerstörte und die dunklen Pixel leicht aufhellte. Siehe [Rekonstruktion eines reellen Bildes](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
 
 ---
 
@@ -163,5 +166,4 @@ Ein ausführlicherer Bericht ist als PDF verfügbar: [Vergleich von STEM-Simulat
 - [HRTEM/STEM-Simulator (Übersicht)](index.md)
 - [HRTEM-Simulation](1-hrtem-simulation.md)
 - [Potential-Simulation](3-potential-simulation.md)
-- [Anhang A3.4 — STEM-Berechnung](../appendix/a3-bloch-wave/stem.md)
 - [Anhang A3.4 — STEM-Berechnung](../appendix/a3-bloch-wave/stem.md)

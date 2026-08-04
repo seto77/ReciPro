@@ -80,7 +80,7 @@
 ![STEM 옵션 (시뮬레이션)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** : TDS(열 확산, 비탄성) 강도를 계산할 때 사용하는 시료 슬라이스 두께 (nm). 값이 작을수록 정확하지만 느립니다.
-- **Angular resolution** : 입사 프로브 방향의 각도 샘플링 분해능 (mrad). 값이 작을수록 프로브를 더 미세하게 샘플링하지만 느립니다.
+- **Angular resolution** : 입사 프로브 방향의 각도 샘플링 분해능 (mrad). 값이 작을수록 프로브를 더 미세하게 샘플링하지만 느립니다. 방향의 수는 이 비의 제곱으로 늘어나므로 계산 시간을 좌우하는 가장 큰 요소입니다. 수렴 실측값은 [프로브의 각도 샘플링](../appendix/a3-bloch-wave/stem.md#angular-sampling)을 참조하십시오.
 
 ---
 
@@ -121,6 +121,9 @@
 | **Elastic** | 탄성 산란만으로 이루어진 영상 |
 | **TDS** | 열 확산 산란만으로 이루어진 영상 |
 | **Elastic & TDS** | 탄성 + TDS의 합 |
+
+!!! note
+    세 영상 모두 푸리에 합의 실수부로부터 재구성되므로 **Elastic & TDS**는 나머지 두 영상의 엄밀한 합이 됩니다. 4.944 버전까지는 절댓값을 취했기 때문에 이 일치가 깨지고 어두운 화소가 약간 밝아졌습니다. 자세한 내용은 [실수 영상으로의 재구성](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction)을 참조하십시오.
 
 ---
 
@@ -163,5 +166,4 @@ ReciPro의 STEM 시뮬레이션은 널리 사용되는 Dr. Probe GUI (v1.10)와 
 - [HRTEM/STEM 시뮬레이터 (개요)](index.md)
 - [HRTEM 시뮬레이션](1-hrtem-simulation.md)
 - [퍼텐셜 시뮬레이션](3-potential-simulation.md)
-- [부록 A3.4 — STEM 계산](../appendix/a3-bloch-wave/stem.md)
 - [부록 A3.4 — STEM 계산](../appendix/a3-bloch-wave/stem.md)

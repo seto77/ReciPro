@@ -59,6 +59,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>Auto-absorption</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>Atténue les rayons X émis le long de leur trajet de sortie
+vers le détecteur, exp(-µT/sin α) où α est l'angle
+d'émergence. Réservé à une version future : aucune
+auto-absorption n'est appliquée actuellement.</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>Sans fenêtre</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>Fenêtre polymère mince (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Fenêtre en béryllium, 7,6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>Fenêtre, couche morte et épaisseur active du détecteur EDX.
+Sa transmission dépend fortement de l'énergie des photons et
+modifie donc les rapports entre cartes élémentaires (jamais le
+motif d'une carte). Réservé à une version future.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Détecteur annulaire</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Haut</value>
   </data>
@@ -80,11 +107,25 @@
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Normalisation</value>
   </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>Détecteur</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>Angle de sortie</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>Angle d'élévation du détecteur EDX au-dessus du plan de
+l'échantillon. Réservé à une version future : l'auto-absorption
+des rayons X émis n'est pas encore appliquée.</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Épaisseur</value>
+  </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
-    <value>Élastique</value>
+    <value>Élast.</value>
   </data>
   <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
-    <value>Élastique
+    <value>Élast.
 &amp;&amp;TDS</value>
   </data>
   <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
@@ -187,10 +228,10 @@
     <value>Options de potentiel</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>Résolution angulaire des électrons incidents</value>
+    <value>Résolution angulaire</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>Épaisseur de tranche pour le calcul TDS</value>
+    <value>Épaisseur de tranche (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>Options STEM</value>
@@ -219,19 +260,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Paramètres de simulation</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (angle de convergence
- du faisceau incident)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Externe</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Interne</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Plage de rayons du
-détecteur annulaire</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>Options STEM</value>
@@ -289,9 +322,6 @@ est affiché dans le
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>Mode image</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Épaisseur</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>Échantillon</value>
@@ -864,19 +894,8 @@ Start/Step/Num mais modifiable directement.</value>
     <value>Afficher ou masquer la fenêtre des préréglages, qui
 enregistre et rappelle les conditions d'imagerie MET.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Demi-angles de collecte interne/externe (mrad)
-du détecteur annulaire en champ sombre.</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>Échelle de couleurs utilisée pour représenter l'intensité de l'image (gris ou froid-chaud).</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>Demi-angle de convergence α (mrad) de la sonde STEM incidente.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Épaisseur de l'échantillon (nm). Cette valeur est ignorée
-lorsque le mode « Serial image » est sélectionné.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Choisir quelle grandeur (défocalisation ou épaisseur) varie
@@ -886,7 +905,7 @@ le long de l'axe horizontal de la grille d'images en série.</value>
     <value>Cartes élémentaires STEM-EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>Calculer les cartes STEM-EDX</value>
+    <value>Calculer les cartes EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Calcule les cartes d'ionisation (EDX) pour les canaux élément/couche sélectionnés.&#xD;&#xA;L'image STEM de référence (ADF / élastique / TDS) est toujours calculée ;&#xD;&#xA;chaque canal EDX ajoute ensuite une passe d'ionisation supplémentaire.</value>

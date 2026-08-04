@@ -80,7 +80,7 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 ![Opciones STEM (simulación)](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** : espesor de la rebanada de la muestra (nm) usado al calcular la intensidad TDS (térmica difusa, inelástica). Valores menores son más precisos pero más lentos.
-- **Angular resolution** : resolución de muestreo angular de las direcciones de incidencia de la sonda (mrad). Valores menores muestrean la sonda de forma más fina pero son más lentos.
+- **Angular resolution** : resolución de muestreo angular de las direcciones de incidencia de la sonda (mrad). Valores menores muestrean la sonda de forma más fina pero son más lentos. El número de direcciones crece con el cuadrado de esta razón, por lo que es la principal palanca sobre el tiempo de cálculo; véase [Muestreo angular de la sonda](../appendix/a3-bloch-wave/stem.md#angular-sampling) para las medidas de convergencia.
 
 ---
 
@@ -121,6 +121,9 @@ El conmutador de visualización situado abajo a la izquierda de la ventana selec
 | **Elastic** | Imagen solo de dispersión elástica |
 | **TDS** | Imagen solo de dispersión térmica difusa |
 | **Elastic & TDS** | Suma de elástica + TDS |
+
+!!! note
+    Las tres imágenes se reconstruyen a partir de la parte real de la suma de Fourier, de modo que **Elastic & TDS** es exactamente la suma de las otras dos. Hasta la versión 4.944 se tomaba el módulo, lo que rompía esa identidad y aclaraba ligeramente los píxeles oscuros. Véase [Reconstrucción de una imagen real](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
 
 ---
 
@@ -163,5 +166,4 @@ Hay disponible un informe más detallado en formato PDF: [Comparación de simula
 - [Simulador HRTEM/STEM (introducción)](index.md)
 - [Simulación HRTEM](1-hrtem-simulation.md)
 - [Simulación de potencial](3-potential-simulation.md)
-- [Apéndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)
 - [Apéndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)

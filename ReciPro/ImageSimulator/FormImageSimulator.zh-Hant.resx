@@ -59,6 +59,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>自吸收</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>對發射 X 射線沿逃逸至偵測器路徑的衰減 exp(-µT/sin α)
+（α 為出射角）進行修正。為將來的實作預留的項目，
+目前尚未套用自吸收。</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>無窗</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>薄高分子窗 (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>鈹窗, 7.6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>EDX 偵測器的視窗、死層與空乏層厚度模型。其穿透率強烈
+依賴光子能量，因此會改變元素分布圖之間的比值（但絕不會
+改變單幅圖內的分布）。為將來的實作預留的項目。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>環形偵測器</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>高</value>
   </data>
@@ -79,6 +104,19 @@
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>正規化</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>偵測器</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>出射角</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>相對試樣面的 EDX 偵測器仰角。為將來的實作預留的項目，
+目前尚未考慮發射 X 射線沿逃逸路徑的自吸收。</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>厚度</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
     <value>彈性</value>
@@ -187,10 +225,10 @@
     <value>位能選項</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>入射電子的角解析度</value>
+    <value>角解析度</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>TDS 計算的切片厚度</value>
+    <value>切片厚度 (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>STEM 選項</value>
@@ -219,19 +257,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>模擬設定</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α（入射束
- 的收斂角）</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>外</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>內</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>環形偵測器
-半徑範圍</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>STEM 選項</value>
@@ -288,9 +318,6 @@
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>影像模式</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>厚度</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>試樣</value>
@@ -862,19 +889,8 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>切換預設設定視窗的顯示/隱藏,
 該視窗可儲存與叫回 TEM 成像條件。</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>環狀暗視野(ADF)偵測器的內側/外側
-集光半角 (mrad)。</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>用於將影像強度對應至顏色的色階(灰階或冷暖)。</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>STEM 入射探束的會聚半角 α (mrad)。</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>試樣厚度 (nm)。當選擇「連續影像」
-模式時,此值會被忽略。</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>選擇沿連續影像格點水平方向變化的
@@ -884,7 +900,7 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>STEM-EDX 元素分布圖</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>計算 STEM-EDX 分布圖</value>
+    <value>計算 EDX 分布圖</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>計算所選元素/殼層通道的游離 (EDX) 分布圖。&#xD;&#xA;STEM 參考影像 (ADF / 彈性 / TDS) 一律會計算；&#xD;&#xA;每個 EDX 通道會在其後額外增加一次游離計算。</value>

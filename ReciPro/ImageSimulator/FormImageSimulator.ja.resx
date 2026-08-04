@@ -110,6 +110,32 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>自己吸収</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>放出された X 線が検出器へ抜ける経路での減衰
+exp(−µT/sin α)（α = 取り出し角）を適用します。
+将来の実装用の予約項目で、現在は適用していません。</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>窓なし</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>薄膜高分子窓 (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Be 窓 7.6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>EDX 検出器の窓・デッドレイヤ・空乏層厚のモデルです。
+透過率は光子エネルギーに強く依存するため、元素マップ
+同士の比を変えます (1 枚のマップ内の分布は変えません)。
+将来の実装用の予約項目です。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>環状検出器</value>
+  </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>シミュレーション条件</value>
   </data>
@@ -136,6 +162,17 @@
   <data name="checkBoxIntensityMin.Text" xml:space="preserve">
     <value>最小</value>
   </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>検出器</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>取り出し角</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>試料面から見た EDX 検出器の仰角です。将来の実装用の
+予約項目で、放出 X 線が脱出する経路に沿った自己吸収は
+まだ適用されていません。</value>
+  </data>
   <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
     <value>正規化の強度下限値。左のMinに
 チェックしたときに有効になります。</value>
@@ -148,6 +185,9 @@
   </data>
   <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
     <value>STEM像</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>厚み</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
     <value>STEM 像で TDS（thermal diffuse scattering,
@@ -288,7 +328,7 @@
     <value>STEM オプション</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>入射電子の角度分解能</value>
+    <value>角度分解能</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
     <value>入射プローブ方向の角度サンプリング分解能
@@ -296,7 +336,7 @@
 細かくサンプリングしますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>非弾性計算時のスライス厚み</value>
+    <value>スライス厚 (TDS)</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>TDS（thermal diffuse scattering,
@@ -331,9 +371,6 @@
     <value>ベーテ法で使用するブロッホ波の最大数。
 値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (アルファ)(収束角)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>外径</value>
   </data>
@@ -357,10 +394,6 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
     <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定し
 ます。この角度より内側の信号は除外されます。
 STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>(環状)検出器
-の半径</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>STEMオプション</value>
@@ -470,9 +503,6 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>試料情報</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>厚み</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>試料の厚さ
@@ -689,22 +719,12 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>プリセット設定ウィンドウ(TEM撮影条件を保存・
 呼び出し)の表示/非表示を切り替えます。</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>環状暗視野(ADF)検出器の内側/外側集光半角 (mrad)。</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>画像強度を色へ対応付けるカラースケール(グレー/寒暖)。</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>STEM入射プローブの収束半角 α (mrad)。</value>
   </data>
   <data name="label38.ToolTip" xml:space="preserve">
     <value>STEM (走査透過電子顕微鏡) 検出器の外側収集角を
 逆格子半径 (nm⁻¹) に換算した値。読み取り専用です。</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>試料の厚さ (nm)。「連続画像」モードが
-選択されている場合、この値は無視されます。</value>
   </data>
   <data name="label36.ToolTip" xml:space="preserve">
     <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
@@ -890,7 +910,7 @@ CTF（contrast transfer function, コントラスト
     <value>STEM-EDX 元素マップ</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>STEM-EDX マップを計算</value>
+    <value>EDX マップを計算</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
@@ -970,16 +990,19 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="comboBoxEdxDisplay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlScale.Font" type="System.Drawing.Font, System.Drawing">
@@ -1111,15 +1134,6 @@ CTF（contrast transfer function, コントラスト
   <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="groupBoxSTEMoption2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -1144,14 +1158,23 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
-  <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="comboBoxEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1163,6 +1186,12 @@ CTF（contrast transfer function, コントラスト
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxSTEMoption1.Font" type="System.Drawing.Font, System.Drawing">
@@ -1216,9 +1245,6 @@ CTF（contrast transfer function, コントラスト
   <data name="groupBoxImageMode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
@@ -1232,7 +1258,7 @@ CTF（contrast transfer function, コントラスト
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

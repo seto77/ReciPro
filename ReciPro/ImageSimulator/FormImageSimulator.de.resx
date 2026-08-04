@@ -59,6 +59,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>Selbstabsorption</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>Schwächt die emittierten Röntgenstrahlen entlang ihres
+Austrittswegs zum Detektor ab, exp(-µT/sin α) mit α als
+Take-off-Winkel. Für eine künftige Version reserviert:
+derzeit wird keine Selbstabsorption angewandt.</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>Ohne Fenster</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>Dünnes Polymerfenster (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Beryllium-Fenster, 7,6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>Fenster, Kontakt-/Totschicht und aktive Dicke des EDX-Detektors.
+Die Transmission hängt stark von der Photonenenergie ab und
+ändert daher die Verhältnisse zwischen Elementkarten (nie das
+Muster innerhalb einer Karte). Für eine künftige Version reserviert.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Ringdetektor</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Hoch</value>
   </data>
@@ -80,11 +107,25 @@
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Normierung</value>
   </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>Detektor</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>Take-off-Winkel</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>Erhebungswinkel des EDX-Detektors über der Probenebene.
+Für eine künftige Version reserviert: die Selbstabsorption der
+emittierten Röntgenstrahlen wird noch nicht angewandt.</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Dicke</value>
+  </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
-    <value>Elastisch</value>
+    <value>Elast.</value>
   </data>
   <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
-    <value>Elastisch
+    <value>Elast.
 &amp;&amp;TDS</value>
   </data>
   <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
@@ -187,10 +228,10 @@
     <value>Potential-Optionen</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>Winkelauflösung der einfallenden Elektronen</value>
+    <value>Winkelauflösung</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>Schichtdicke für TDS-Berechnung</value>
+    <value>Schichtdicke (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>STEM-Optionen</value>
@@ -219,19 +260,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Simulationseinstellungen</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (Konvergenzwinkel
- des einfallenden Strahls)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Außen</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Innen</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Radiusbereich des
-Ringdetektors</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>STEM-Optionen</value>
@@ -292,9 +325,6 @@ Simulator" angezeigt</value>
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>Bildmodus</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Dicke</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>Probe</value>
@@ -867,19 +897,8 @@ Start/Step/Num gefüllt, aber direkt editierbar.</value>
     <value>Blendet das Fenster für die Voreinstellungen ein oder aus,
 das TEM-Abbildungsbedingungen speichert und abruft.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Innerer/äußerer Sammelhalbwinkel (mrad)
-des ringförmigen Dunkelfeld-Detektors.</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>Farbskala zur Abbildung der Bildintensität (Grau oder Cold-Warm).</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>Konvergenz-Halbwinkel α (mrad) der einfallenden STEM-Sonde.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Probendicke (nm). Dieser Wert wird ignoriert,
-wenn der Modus "Serienbild" gewählt ist.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Wählt, welche Größe (Defokus oder Dicke) entlang
@@ -889,7 +908,7 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
     <value>STEM-EDX-Elementverteilungen</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>STEM-EDX-Karten berechnen</value>
+    <value>EDX-Karten berechnen</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Berechnet Ionisationskarten (EDX) für die ausgewählten Element-/Schalenkanäle.&#xD;&#xA;Das STEM-Referenzbild (ADF / elastisch / TDS) wird immer berechnet;&#xD;&#xA;jeder EDX-Kanal fügt danach einen weiteren Ionisationsdurchlauf hinzu.</value>

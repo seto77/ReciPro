@@ -80,7 +80,7 @@
 ![STEM 选项（模拟）](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** ：计算 TDS（热漫、非弹性）强度时所用的样品切片厚度（nm）。较小的值更精确但更慢。
-- **Angular resolution** ：入射探针方向的角度采样分辨率（mrad）。较小的值对探针采样更精细但更慢。
+- **Angular resolution** ：入射探针方向的角度采样分辨率（mrad）。较小的值对探针采样更精细但更慢。 方向数按该比值的平方增长，因而是左右计算时间的最主要因素；收敛实测值参见[探针的角度采样](../appendix/a3-bloch-wave/stem.md#angular-sampling)。
 
 ---
 
@@ -121,6 +121,9 @@
 | **Elastic** | 仅弹性散射的图像 |
 | **TDS** | 仅热漫散射的图像 |
 | **Elastic & TDS** | 弹性 + TDS 之和 |
+
+!!! note
+    三幅图像均由傅里叶求和的实部重建，因此 **Elastic & TDS** 恰为另外两幅之和。4.944 之前的版本改取模，破坏了这一恒等关系，并使暗像素略微变亮。参见[重建为实数图像](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction)。
 
 ---
 
@@ -163,5 +166,4 @@ STEM 模拟的计算开销很大，因此应适当设置以下参数。
 - [HRTEM/STEM 模拟器（概述）](index.md)
 - [HRTEM 模拟](1-hrtem-simulation.md)
 - [势模拟](3-potential-simulation.md)
-- [附录 A3.4 — STEM 计算](../appendix/a3-bloch-wave/stem.md)
 - [附录 A3.4 — STEM 计算](../appendix/a3-bloch-wave/stem.md)

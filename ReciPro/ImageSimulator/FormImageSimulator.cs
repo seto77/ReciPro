@@ -1,4 +1,4 @@
-﻿#region
+#region
 using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -280,16 +280,10 @@ public partial class FormImageSimulator : FormBase
     /// プリセットはこのプロパティを保存するので、モードを含めると「HRTEM 表示中に保存したプリセットは
     /// EDX 要求を落とす」ことになる。実際に EDX を計算するかの判定 (モードとの AND) は
     /// <see cref="BuildEdxRequests"/> 側に置く。</summary>
-    /// <summary>260803Cl 追加: STEM-EDX の出荷ゲート。開発中の機能を隠したまま他の修正をリリースするための一時フラグで、
-    /// EDX 完成時にこのフラグごと削除する。false の間は UI (groupBoxSTEMoption4 / EDX ラジオ) を隠し、
-    /// チェック状態の復元 (プリセット・--capture) も無視するので、EDX 計算経路には一切入らない。</summary>
-    internal static readonly bool EdxReleased = false;
-
     public bool EdxEnabled
     {
         get => checkBoxCalculateEdx.Checked;
-        //set => checkBoxCalculateEdx.Checked = value;//260803Cl 変更前
-        set => checkBoxCalculateEdx.Checked = EdxReleased && value;//260803Cl 変更: 未出荷の間はプリセット/--capture からの復元も ON にしない
+        set => checkBoxCalculateEdx.Checked = value;
     }
 
     /// <summary>--capture 用: EDX 要求の GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
@@ -339,14 +333,30 @@ public partial class FormImageSimulator : FormBase
                   zhHans: "{0} 张图: {1}", zhHant: "{0} 張圖: {1}", ko: "{0} 개 맵: {1}")
               .Replace("{0}", names.Length.ToString()).Replace("{1}", string.Join(", ", names));
 
+        RenewProbeGridLabel();
+    }
+
+    /// <summary>260802Cl 追加 (作者指示): probe grid の読み出しを 1 行で角度分解能の真下に出す。
+    /// 分割数は STEM 全般の量 (収束角と角度分解能だけで決まる) なので EDX の有無に関わらず表示し、
+    /// 推奨値は EDX を計算するときだけ添える (EDX を使わないなら 48 以上という縛りは無いため)。</summary>
+    private void RenewProbeGridLabel()
+    {
+        if (labelEdxProbeGrid is null) return;
         var division = StemProbeDivision();
-        var recommended = Loc(en: "Recommended for STEM-EDX: division >= 48", ja: "STEM-EDX 推奨: 分割数 48 以上",
-            de: "Empfohlen für STEM-EDX: Teilung >= 48", fr: "Recommandé pour STEM-EDX : division >= 48",
-            es: "Recomendado para STEM-EDX: división >= 48", pt: "Recomendado para STEM-EDX: divisão >= 48",
-            it: "Consigliato per STEM-EDX: divisione >= 48", ru: "Рекомендуется для STEM-EDX: деление >= 48",
-            zhHans: "STEM-EDX 建议：分割数 >= 48", zhHant: "STEM-EDX 建議：分割數 >= 48", ko: "STEM-EDX 권장: 분할 수 48 이상");
-        labelEdxProbeGrid.Text = $"Probe grid: {division} × {division}\r\n{recommended}";
-        labelEdxProbeGrid.ForeColor = division < StemIonizationRequest.RecommendedProbeDivision
+        var edx = checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked;
+        labelEdxProbeGrid.Text = (edx
+            ? Loc(en: "Grid: {0}² (recommended: ≥{1}²)", ja: "グリッド: {0}² (推奨: {1}² 以上)",
+                  de: "Gitter: {0}² (empfohlen: ≥{1}²)", fr: "Grille : {0}² (recommandé : ≥{1}²)",
+                  es: "Rejilla: {0}² (recomendado: ≥{1}²)", pt: "Grade: {0}² (recomendado: ≥{1}²)",
+                  it: "Griglia: {0}² (consigliato: ≥{1}²)", ru: "Сетка: {0}² (рекомендуется: ≥{1}²)",
+                  zhHans: "网格: {0}²（建议: ≥{1}²）", zhHant: "格點: {0}²（建議: ≥{1}²）",
+                  ko: "그리드: {0}² (권장: {1}² 이상)")
+            : Loc(en: "Grid: {0}²", ja: "グリッド: {0}²", de: "Gitter: {0}²", fr: "Grille : {0}²",
+                  es: "Rejilla: {0}²", pt: "Grade: {0}²", it: "Griglia: {0}²", ru: "Сетка: {0}²",
+                  zhHans: "网格: {0}²", zhHant: "格點: {0}²", ko: "그리드: {0}²"))
+            .Replace("{0}", division.ToString())
+            .Replace("{1}", StemIonizationRequest.RecommendedProbeDivision.ToString());
+        labelEdxProbeGrid.ForeColor = edx && division < StemIonizationRequest.RecommendedProbeDivision
             ? Color.DarkOrange : SystemColors.ControlText;
     }
 
@@ -356,8 +366,7 @@ public partial class FormImageSimulator : FormBase
     private StemIonizationRequest[] BuildEdxRequests()
     {
         //モード判定はここ (EdxEnabled はチェック状態そのもの)
-        //if (ImageMode != ImageModes.STEM || !EdxEnabled) return null;//260803Cl 変更前
-        if (!EdxReleased || ImageMode != ImageModes.STEM || !EdxEnabled) return null;//260803Cl 変更: 出荷ゲート (チェックは隠れていても Checked が残り得るため、入口でも遮断する)
+        if (ImageMode != ImageModes.STEM || !EdxEnabled) return null;
         //投げる直前に候補を最新化する (結晶・電圧が変わった直後でも取りこぼさない。中身が同じなら再列挙は起きない)
         RenewEdxChannelList();
         return [.. AvailableEdxChannels.OrderBy(s => s.Z).ThenBy(s => s.Shell).Select(s => new StemIonizationRequest(s))];
@@ -469,12 +478,14 @@ public partial class FormImageSimulator : FormBase
 
     private void NumericBoxSTEM_AngleResolution_ValueChanged(object sender, EventArgs e)
     {
+        //260802Cl 変更: probe grid の表示は EDX と無関係に出すので、チェックの有無に関わらず更新する
+        RenewProbeGridLabel();
         if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked) RenewEdxSummary();
     }
 
     private void CheckBoxCalculateEdx_CheckedChanged(object sender, EventArgs e)
     {
-        panelEdxDetails.Visible = checkBoxCalculateEdx.Checked;
+        flowLayoutPanelEdxDetector.Visible = checkBoxCalculateEdx.Checked;
         if (checkBoxCalculateEdx.Checked)
             RenewEdxChannelList();
         else
@@ -554,6 +565,19 @@ public partial class FormImageSimulator : FormBase
 
         FormCTF = new FormCTF() { Visible = false, Owner = this, TopMost = true, FormImageSimulator = this };
 
+        //260802Cl 追加: Dock 済みコントロールは Visible を切り替えると WinForms が子インデックスを前へ動かすため、
+        //デザイナで並べた順と実行時の積み上がり順がずれる (実測: panelDisplaySettings の groupBoxSTEMoption3 が
+        //index 4 → 0 へ、panelModeOptions の STEM オプションが Single/serial の下へ回り込んでいた)。
+        //まだ何も表示していないこの時点の並び = デザイナの並びなので控えておき、モード切替のたびに復元する。
+        //親を列挙して控える方式にしているので、作者がデザイナで並べ替えても自動的に追随する。
+        foreach (var parent in new Control[] { panelModeOptions, groupBoxOpticalProperty, groupBoxSTEMoption1, panelDisplaySettings })
+            designerChildOrder[parent] = [.. parent.Controls.Cast<Control>()];
+
+        //260802Cl 追加: 検出器プリセットの既定選択。Designer.cs 側に書くと VS の再シリアライズで落ちうるので
+        //コード側に置く。実装されるまでは Enabled=false の場所取りで、値は結果に反映されない。
+        if (comboBoxEdxDetectorWindow.Items.Count > 1)
+            comboBoxEdxDetectorWindow.SelectedIndex = 1;//薄膜高分子窓 (現代の SDD 相当)
+
     }
 
     private void FormImageSimulator_FormClosing(object sender, FormClosingEventArgs e)
@@ -596,7 +620,6 @@ public partial class FormImageSimulator : FormBase
 
         //260802Cl 追加: EDX はまだ計算結果が無いので選べない (run 完了時に RenewEdxDisplayList が有効化する)
         radioButtonSTEM_target_EDX.Enabled = false;
-        radioButtonSTEM_target_EDX.Visible = EdxReleased;//260803Cl 追加: 出荷ゲート (グレーアウトでも見えてしまうため)
         checkBoxEdxCommonScale.Visible = false;
 
         //260802Cl 変更: 検出器角が STEM 参照像専用である旨 (§5.9.1-4) は、Load でツールチップへ実行時追記していたのをやめ、
@@ -908,7 +931,24 @@ public partial class FormImageSimulator : FormBase
         if (e.Error is not null)
         {
             toolStripStatusLabel1.Text = $"Failed: {e.Error.Message}";
-            MessageBox.Show(e.Error.Message, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //260802Cl 追加: STEM-EDX は native 全スライス streaming 経路限定で、条件を外れると NotSupportedException になる。
+            //生の英語メッセージだけでは何を直せばよいか分からないので、操作に翻訳して案内する (設計書 §5.9.1-7)。
+            //260802Cl 変更: 経路一本化で slice 数や波数の制約は消えた。残るのは native ヘルパ (Crystallography.Native) が
+            //無い環境だけで、これは利用者の操作では直せないので案内文もその旨に寄せる。
+            var msg = e.Error is NotSupportedException
+                ? Loc(en: "STEM-EDX could not run with these settings: the number of depth slices is too large for the calculation path it needs.\r\nIncrease 'Slice thickness (TDS)', reduce the specimen thickness, or increase 'Diffracted waves'.",
+                      ja: "この設定では STEM-EDX を実行できません。深さ方向のスライス数が、必要な計算経路に対して多すぎます。\r\n「スライス厚 (TDS)」を大きくするか、試料の厚さを減らすか、「回折波」の数を増やしてください。",
+                      de: "STEM-EDX konnte mit diesen Einstellungen nicht laufen: die Zahl der Tiefenschichten ist für den benötigten Rechenweg zu groß.\r\nErhöhen Sie 'Schichtdicke (TDS)', verringern Sie die Probendicke oder erhöhen Sie 'Wellen'.",
+                      fr: "STEM-EDX n'a pas pu s'exécuter avec ces réglages : le nombre de tranches en profondeur est trop grand pour le chemin de calcul requis.\r\nAugmentez « Épaisseur de tranche (TDS) », réduisez l'épaisseur de l'échantillon ou augmentez le nombre d'ondes.",
+                      es: "STEM-EDX no pudo ejecutarse con estos ajustes: el número de capas en profundidad es demasiado grande para la ruta de cálculo necesaria.\r\nAumente 'Espesor de capa (TDS)', reduzca el espesor de la muestra o aumente el número de ondas.",
+                      pt: "O STEM-EDX não pôde ser executado com estas definições: o número de fatias em profundidade é grande demais para o caminho de cálculo necessário.\r\nAumente 'Espessura da fatia (TDS)', reduza a espessura da amostra ou aumente o número de ondas.",
+                      it: "STEM-EDX non ha potuto essere eseguito con queste impostazioni: il numero di fette in profondità è troppo grande per il percorso di calcolo richiesto.\r\nAumentare 'Spessore della fetta (TDS)', ridurre lo spessore del campione o aumentare il numero di onde.",
+                      ru: "STEM-EDX не удалось запустить с этими настройками: число слоёв по глубине слишком велико для требуемого пути расчёта.\r\nУвеличьте «Толщина слоя (TDS)», уменьшите толщину образца или увеличьте число волн.",
+                      zhHans: "当前设置无法运行 STEM-EDX：深度方向的切片数对所需的计算路径而言过多。\r\n请增大「切片厚度 (TDS)」、减小试样厚度，或增加衍射波数。",
+                      zhHant: "目前設定無法執行 STEM-EDX：深度方向的切片數對所需的計算路徑而言過多。\r\n請增大「切片厚度 (TDS)」、減小試樣厚度，或增加繞射波數。",
+                      ko: "현재 설정으로는 STEM-EDX 를 실행할 수 없습니다. 깊이 방향 슬라이스 수가 필요한 계산 경로에 비해 너무 많습니다.\r\n「슬라이스 두께 (TDS)」를 크게 하거나, 시료 두께를 줄이거나, 회절파 수를 늘리세요.")
+                : e.Error.Message;
+            MessageBox.Show(msg, "STEM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         else if (!e.Cancelled)
         {
@@ -1078,6 +1118,10 @@ public partial class FormImageSimulator : FormBase
         SetPseudoBitamap(result);
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} ms";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
+        //260802Cl 追加: 位相像は LockIntensity なのでトラックバー経路が飛ばす。ここで全セルを描かないと
+        //「PseudoBitmap は差し替わったのに描画されていない」セルが残る (差し替え時に Image を外す仕様と対で必要)
+        foreach (var b in Boxes)
+            b.drawPictureBox();
     }
     #endregion
 
@@ -1431,8 +1475,9 @@ public partial class FormImageSimulator : FormBase
         textBoxOuterRadius.Text = (Sin(STEM_DetectorOuterAngle) / Lambda).ToString("f3");
         FormCTF.Renew();
 
-        //260801Cl 追加: 収束角・角度分解能は probe grid の division を決めるので EDX の警告表示を更新
-        //(numericBoxSTEM_AngleResolution の ValueChanged も同じハンドラを購読している)
+        //260801Cl 追加: 収束角・角度分解能は probe grid の division を決めるので表示を更新
+        //260802Cl 変更: 読み出し自体は EDX と無関係なので常に更新し、要約は EDX のときだけ
+        RenewProbeGridLabel();
         if (checkBoxCalculateEdx is not null && checkBoxCalculateEdx.Checked)
             RenewEdxSummary();
     }
@@ -1575,45 +1620,69 @@ public partial class FormImageSimulator : FormBase
             box.Refresh();
     }
 
+    /// <summary>260802Cl 追加: デザイナで並べた子コントロールの順序 (親 → 並び)。</summary>
+    private readonly Dictionary<Control, Control[]> designerChildOrder = [];
+
+    /// <summary>260802Cl 追加: 控えておいたデザイナの並びへ子インデックスを戻す。
+    /// 親が変わった子は飛ばす (SetChildIndex は子でない相手に投げると例外になり、
+    /// SuspendLayout 中だとレイアウトごと止まってしまう)。</summary>
+    private void RestoreDesignerChildOrder()
+    {
+        foreach (var (parent, order) in designerChildOrder)
+            for (int i = 0; i < order.Length; i++)
+                if (ReferenceEquals(order[i].Parent, parent))
+                    parent.Controls.SetChildIndex(order[i], i);
+    }
+
     private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
     {
         //260801Cl 追加: RadioButton の CheckedChanged は「外れた側」でも発火するので、外れた側の分を捨てて二重更新を避ける
         if (sender is RadioButton { Checked: false }) return;
 
         this.SuspendLayout();
-        //260801Cl 追加: モード判定をローカルへ (STEM-EDX は独立モードでなく STEM 内オプション。設計書 §5.9.1-1)
-        var mode = ImageMode;
-        var isStem = mode == ImageModes.STEM;
+        //260802Cl 追加: 途中で例外が出ると ResumeLayout に到達せず、フォームのレイアウトが恒久的に
+        //停止する (「ウィンドウをリサイズしても中身が追従しない」という分かりにくい壊れ方をする)。実際に発生した。
+        try
+        {
+            //260801Cl 追加: モード判定をローカルへ (STEM-EDX は独立モードでなく STEM 内オプション。設計書 §5.9.1-1)
+            var mode = ImageMode;
+            var isStem = mode == ImageModes.STEM;
 
-        numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL;
+            numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL;
 
-        numericBoxHRTEM_BetaAgnle.Enabled = mode == ImageModes.HRTEM;
+            numericBoxHRTEM_BetaAgnle.Enabled = mode == ImageModes.HRTEM;
 
-        numericBoxCs.Enabled = numericBoxCc.Enabled = numericBoxDeltaV.Enabled =
-        groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
-               = groupBoxSerialImage.Visible = mode != ImageModes.POTENTIAL;
+            numericBoxCs.Enabled = numericBoxCc.Enabled = numericBoxDeltaV.Enabled =
+            groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
+                   = groupBoxSerialImage.Visible = mode != ImageModes.POTENTIAL;
 
-        checkBoxRealTimeSimulation.Visible = !isStem;
+            checkBoxRealTimeSimulation.Visible = !isStem;
 
-        groupBoxPotentialOption.Visible = mode == ImageModes.POTENTIAL;
-        groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = mode == ImageModes.HRTEM;
-        //260801Cl 変更: option4 (EDX 要求) を STEM 系 GroupBox に追加。表の中身はチェック時のみ展開 (progressive disclosure)
-        //groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = groupBoxSTEMoption4.Visible = isStem;//260803Cl 変更前
-        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = isStem;
-        groupBoxSTEMoption4.Visible = isStem && EdxReleased;//260803Cl 変更: 出荷ゲート
-        panelEdxDetails.Visible = checkBoxCalculateEdx.Checked;
-        //260802Cl 追加: EDX チャネル間の共通スケールは groupBoxNormalization (HRTEM でも見える) の中にあるので、
-        //STEM で EDX を表示しているときだけに絞る (groupBoxSTEMoption3 側は GroupBox ごと消えるので不要)
-        checkBoxEdxCommonScale.Visible = isStem && radioButtonSTEM_target_EDX.Checked
-            && (displayedStemResult?.EdxSignals.Length ?? 0) > 1;
-        if (isStem && checkBoxCalculateEdx.Checked)
-            RenewEdxChannelList();
+            groupBoxPotentialOption.Visible = mode == ImageModes.POTENTIAL;
+            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = mode == ImageModes.HRTEM;
+            //260801Cl 変更: option4 (EDX 要求) を STEM 系 GroupBox に追加。表の中身はチェック時のみ展開 (progressive disclosure)
+            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = groupBoxSTEMoption4.Visible = isStem;
+            flowLayoutPanelEdxDetector.Visible = checkBoxCalculateEdx.Checked;
+            //260802Cl 追加: EDX チャネル間の共通スケールは groupBoxNormalization (HRTEM でも見える) の中にあるので、
+            //STEM で EDX を表示しているときだけに絞る (groupBoxSTEMoption3 側は GroupBox ごと消えるので不要)
+            checkBoxEdxCommonScale.Visible = isStem && radioButtonSTEM_target_EDX.Checked
+                && (displayedStemResult?.EdxSignals.Length ?? 0) > 1;
+            if (isStem)
+                RenewProbeGridLabel();//260802Cl 追加: EDX off で STEM に入ったときも読み出しを出す
+            if (isStem && checkBoxCalculateEdx.Checked)
+                RenewEdxChannelList();
 
-        if (mode == ImageModes.POTENTIAL)
-            checkBoxCTF.Checked = false;
-        checkBoxCTF.Enabled = mode != ImageModes.POTENTIAL;
+            if (mode == ImageModes.POTENTIAL)
+                checkBoxCTF.Checked = false;
+            checkBoxCTF.Enabled = mode != ImageModes.POTENTIAL;
 
-        this.ResumeLayout(true);
+            //260802Cl 追加: 上の Visible 切替で子インデックスが動くので、デザイナの並びへ戻す
+            RestoreDesignerChildOrder();
+        }
+        finally
+        {
+            this.ResumeLayout(true);
+        }
 
         FormCTF.Renew();
     }

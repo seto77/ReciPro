@@ -35,6 +35,63 @@ Dies ist der Hauptvorteil von Bloch-Wellen-STEM für perfekte Kristalle mit klei
 
 ---
 
+## Rekonstruktion eines reellen Bildes {#real-image-reconstruction}
+
+Das Bild wird aus den Koeffizienten zurückgewonnen durch
+
+$$I(\mathbf r)=\sum_{\mathbf q}I(\mathbf q)\,\exp(2\pi i\,\mathbf q\cdot\mathbf r),
+\qquad \mathbf q=\mathbf g-\mathbf h$$
+
+Da $I(\mathbf r)$ eine reelle Intensität ist, müssen ihre Koeffizienten die hermitesche Symmetrie exakt erfüllen,
+
+$$I(-\mathbf q)=I(\mathbf q)^{*}$$
+
+und die Menge der von allen Strahlpaaren erzeugten $\mathbf q$ ist unter $\mathbf q\rightarrow-\mathbf q$ abgeschlossen. Die Summe ist daher konstruktionsbedingt reell, und **jeder verbleibende Imaginärteil ist numerischer Fehler, keine Physik**.
+
+In der Praxis bleibt ein kleiner Imaginärteil übrig, weil die Amplitude bei $\mathbf k+\mathbf q$ durch bilineare Interpolation auf dem endlichen Gitter der Einfallsrichtungen gewonnen wird (siehe [Winkelabtastung der Sonde](#angular-sampling)). Dadurch unterscheiden sich $I(-\mathbf q)$ und $I(\mathbf q)^{*}$ um einen Betrag der Ordnung $h^{2}$, wobei $h$ der Winkelschritt ist.
+
+Schreibt man ein summiertes Pixel als $a+ib$, so besteht der korrekte Weg zum reellen Bild darin, den **Realteil** $a$ zu nehmen. Das ist die orthogonale Projektion auf die reelle Achse und identisch damit, zuerst die Koeffizienten zu symmetrisieren,
+
+$$I_{\mathrm{sym}}(\mathbf q)=\tfrac12\left[I(\mathbf q)+I(-\mathbf q)^{*}\right]$$
+
+und erst danach zu summieren. Den Betrag $\sqrt{a^{2}+b^{2}}\simeq a+b^{2}/2a$ zu nehmen, ist **nicht** äquivalent und in vier getrennten Punkten falsch:
+
+- der Zusatzterm $b^{2}/2a$ ist strikt positiv und hebt sich daher nie auf — er ist ein systematischer Fehler, kein Rauschen;
+- er ist relativ zum Signal dort am größten, wo $a$ klein ist, also in den **dunklen** Pixeln, und greift damit den Bildkontrast an statt das Gesamtniveau;
+- er zerstört die Linearität, sodass das kombinierte Bild nicht mehr gleich elastisch + TDS ist, denn $\lvert z_1+z_2\rvert\neq\lvert z_1\rvert+\lvert z_2\rvert$;
+- er verbirgt negative Pixel, die das sichtbare Symptom eines unzureichenden $\mathbf q$-Satzes sind und andernfalls den Benutzer warnen würden.
+
+ReciPro rekonstruiert daher die elastischen, TDS- und STEM-EDX-Bilder aus dem Realteil und begrenzt erst nach der Unschärfe durch die Quellgröße auf null, sodass ein tatsächlich negatives Pixel bis dahin nachweisbar bleibt.
+
+!!! note
+    Bis Version 4.944 wurden die elastischen und TDS-Bilder über den Betrag summiert. Auf dem voreingestellten Winkelgitter liegt der Unterschied weit unterhalb jeder wahrnehmbaren Schwelle (siehe Tabelle unten); messbar wird er nur auf einem bewusst groben Gitter, und stets als geringfügige Aufhellung der dunklen Pixel.
+
+---
+
+## Winkelabtastung der Sonde {#angular-sampling}
+
+Der einfallende Kegel wird auf einem quadratischen Richtungsgitter mit Schrittweite $\Delta\alpha$ (**Winkelauflösung** in den STEM-Optionen) abgetastet und überdeckt den Konvergenz-Halbwinkel $\alpha$ mit einem kleinen Rand. Die Zahl der Unterteilungen entlang einer Achse ist
+
+$$N=\left\lceil\frac{2\alpha\times1.05}{\Delta\alpha}\right\rceil$$
+
+sodass die Zahl der Richtungen — und damit der zu lösenden Eigenwertprobleme — wie $N^{2}$ wächst. Dieses Gitter hat nichts mit der Zahl der Rasterpunkte zu tun: es diskretisiert die *Richtungen innerhalb der Sonde*, nicht die *Positionen der Sonde*.
+
+Es ist außerdem die einzige Quelle des oben beschriebenen hermiteschen Residuums, was dieses Residuum zu einem praktischen Konvergenzindikator macht. Die folgenden Werte wurden für SrTiO₃ [001] bei 200 kV mit $\alpha=25$ mrad, 128 Strahlen und 32×32 Rasterpunkten gemessen. „Residuum“ ist $\max_{\mathbf q}\lvert I(\mathbf q)-I(-\mathbf q)^{*}\rvert$ bezogen auf $I(\mathbf 0)$; die letzten beiden Spalten geben die Aufhellung an, die die Betragssumme am hellsten Pixel hinzugefügt hätte.
+
+| $N$ | Richtungen | Elastisches Residuum | TDS-Residuum | Betragsfehler, elastisch | Betragsfehler, TDS |
+|----:|-----------:|-----------------:|-------------:|------------------------:|--------------------:|
+| 16  | 256    | 1.2×10⁻³ | 6.1×10⁻³ | 2.4×10⁻⁵ | 1.1×10⁻⁴ |
+| 32  | 1024   | 4.1×10⁻⁴ | 2.6×10⁻³ | 1.1×10⁻⁶ | 1.3×10⁻⁵ |
+| 64  | 4096   | 5.6×10⁻⁵ | 7.2×10⁻⁴ | 5.8×10⁻⁸ | 4.3×10⁻⁷ |
+| 132 | 17424  | 3.8×10⁻⁵ | 1.1×10⁻⁴ | 4.2×10⁻⁸ | 3.6×10⁻⁸ |
+
+Die voreingestellte Winkelauflösung von 0,4 mrad ergibt $N=132$ für $\alpha=25$ mrad und liegt damit bereits im konvergierten Bereich. Zwei Punkte sind erwähnenswert:
+
+- Das TDS-Residuum ist auf jedem Gitter etwa eine Größenordnung größer als das elastische, weil die TDS-Koeffizienten zusätzlich das Dickenintegral der detektorselektierten Absorption enthalten.
+- Das Residuum ist ein Maximum über alle $\mathbf q$ und streut daher von Gitter zu Gitter, statt völlig gleichmäßig zu fallen; der zugrunde liegende Trend ist $O(h^{2})$.
+
+---
+
 ## TDS und detektorselektierte Absorption
 
 Bei HAADF-STEM ist die inelastische Komponente aus der thermisch diffusen Streuung (TDS) oft die Hauptquelle des Bildkontrasts. ReciPro behandelt TDS als die Menge an Intensität, die aus dem elastischen Kanal in einen gewählten Winkelbereich entfernt wird, dargestellt durch ein Absorptionspotential.
@@ -84,6 +141,7 @@ In ReciPro versteht man STEM am einfachsten wie folgt: man beginnt mit derselben
 - **Detektorwinkel**: BF / ABF / ADF / HAADF sind Definitionen von $D(\mathbf Q)$ und $f'_{\kappa}(\mathbf g;\theta_1,\theta_2)$.
 - **Strahlzahl**: Hochfrequente Bildanteile und Channeling reagieren empfindlich auf die Zahl der einbezogenen Strahlen.
 - **Dickenschritt**: Wird eine numerische Schichtintegration verwendet, prüfen Sie die Änderung, wenn die Schichtdicke halbiert wird.
+- **Winkelauflösung**: Legt das Richtungsgitter $N$ der Sonde fest (siehe [Winkelabtastung der Sonde](#angular-sampling)). Der Aufwand wächst wie $N^{2}$ und ist damit der wichtigste Hebel für die Rechenzeit.
 - **TDS-Modell**: Für HAADF-$Z$-Kontrast ist der TDS-Term ebenso wichtig wie der elastische Term.
 
 ## Siehe auch

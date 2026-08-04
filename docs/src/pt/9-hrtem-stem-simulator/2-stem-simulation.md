@@ -80,7 +80,7 @@ Defina a geometria da sonda convergente e do detector anular. Cada ângulo tamb�
 ![Opções STEM (simulação)](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** : espessura de fatia da amostra (nm) usada ao calcular a intensidade TDS (térmico-difuso, inelástico). Valores menores são mais precisos, mas mais lentos.
-- **Angular resolution** : resolução de amostragem angular das direções de incidência da sonda (mrad). Valores menores amostram a sonda mais finamente, mas são mais lentos.
+- **Angular resolution** : resolução de amostragem angular das direções de incidência da sonda (mrad). Valores menores amostram a sonda mais finamente, mas são mais lentos. O número de direções cresce com o quadrado dessa razão, sendo portanto a principal alavanca sobre o tempo de cálculo; veja [Amostragem angular da sonda](../appendix/a3-bloch-wave/stem.md#angular-sampling) para as medidas de convergência.
 
 ---
 
@@ -121,6 +121,9 @@ A chave de exibição no canto inferior esquerdo da janela seleciona qual compon
 | **Elastic** | Imagem somente de espalhamento elástico |
 | **TDS** | Imagem somente de espalhamento térmico difuso |
 | **Elastic & TDS** | Soma de elástico + TDS |
+
+!!! note
+    As três imagens são reconstruídas a partir da parte real da soma de Fourier, de modo que **Elastic & TDS** é exatamente a soma das outras duas. Até a versão 4.944 tomava-se o módulo, o que quebrava essa identidade e clareava levemente os pixels escuros. Veja [Reconstrução de uma imagem real](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
 
 ---
 
@@ -163,5 +166,4 @@ Um relatório mais detalhado está disponível em PDF: [Comparação de simulaç
 - [Simulador HRTEM/STEM (visão geral)](index.md)
 - [Simulação HRTEM](1-hrtem-simulation.md)
 - [Simulação de potencial](3-potential-simulation.md)
-- [Apêndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)
 - [Apêndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)

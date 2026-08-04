@@ -149,7 +149,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 828</value>
+    <value>633, 724</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -176,7 +176,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxScaleOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 2</value>
+    <value>377, 2</value>
   </data>
   <data name="pictureBoxScaleOfIntensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -245,7 +245,7 @@
     <value>NoControl</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 7</value>
+    <value>473, 7</value>
   </data>
   <data name="label33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -350,7 +350,7 @@
     <value>NoControl</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 7</value>
+    <value>373, 7</value>
   </data>
   <data name="label31.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -389,7 +389,7 @@
     <value>NoControl</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>521, 4</value>
+    <value>577, 4</value>
   </data>
   <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -428,7 +428,7 @@
     <value>NoControl</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 4</value>
+    <value>349, 4</value>
   </data>
   <data name="label30.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -467,7 +467,7 @@
     <value>NoControl</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 7</value>
+    <value>423, 7</value>
   </data>
   <data name="label29.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -506,7 +506,7 @@
     <value>NoControl</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>516, 7</value>
+    <value>572, 7</value>
   </data>
   <data name="label26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -545,7 +545,7 @@
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>467, 7</value>
+    <value>523, 7</value>
   </data>
   <data name="label28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -578,7 +578,7 @@
     <value>0, 0</value>
   </data>
   <data name="panelImageStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 24</value>
+    <value>633, 24</value>
   </data>
   <data name="panelImageStatus.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -740,7 +740,7 @@ finite resolution / point-spread.</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+    <value>270, 4</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -777,13 +777,13 @@ Gaussian blur applied to the displayed image.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 71</value>
+    <value>3, 68</value>
   </data>
   <data name="flowLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 50</value>
+    <value>359, 27</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -819,13 +819,13 @@ Gaussian blur applied to the displayed image.</value>
     <value>Max</value>
   </data>
   <data name="trackBarAdvancedMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 46</value>
+    <value>3, 43</value>
   </data>
   <data name="trackBarAdvancedMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 25</value>
+    <value>359, 25</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -865,13 +865,13 @@ to set the contrast ceiling of the shown image.</value>
     <value>Min</value>
   </data>
   <data name="trackBarAdvancedMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="trackBarAdvancedMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 25</value>
+    <value>359, 25</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -901,8 +901,11 @@ to set the contrast floor of the shown image.</value>
   <data name="groupBoxAdjust.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="groupBoxAdjust.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxAdjust.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 161</value>
+    <value>365, 113</value>
   </data>
   <data name="groupBoxAdjust.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -926,10 +929,10 @@ to set the contrast floor of the shown image.</value>
     <value>Right</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 3</value>
+    <value>368, 3</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 161</value>
+    <value>6, 113</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -959,16 +962,16 @@ to set the contrast floor of the shown image.</value>
     <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxEdxCommonScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 83</value>
+    <value>3, 81</value>
   </data>
   <data name="checkBoxEdxCommonScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxEdxCommonScale.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 0, 0</value>
+    <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBoxEdxCommonScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 19</value>
+    <value>108, 17</value>
   </data>
   <data name="checkBoxEdxCommonScale.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -1007,10 +1010,10 @@ to set the contrast floor of the shown image.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 0, 0</value>
+    <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 19</value>
+    <value>108, 17</value>
   </data>
   <data name="checkBoxNormarizeIndividually.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1105,7 +1108,7 @@ value at right, instead of using the image minimum.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 23</value>
+    <value>53, 22</value>
   </data>
   <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1191,7 +1194,7 @@ value at right, instead of using the image maximum.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 23</value>
+    <value>53, 22</value>
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1245,16 +1248,16 @@ value at right, instead of using the image maximum.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxNormalization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>350, 3</value>
+    <value>374, 3</value>
   </data>
   <data name="groupBoxNormalization.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
   </data>
   <data name="groupBoxNormalization.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 2</value>
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="groupBoxNormalization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 161</value>
+    <value>114, 113</value>
   </data>
   <data name="groupBoxNormalization.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1278,10 +1281,10 @@ value at right, instead of using the image maximum.</value>
     <value>Right</value>
   </data>
   <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 3</value>
+    <value>488, 3</value>
   </data>
   <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 161</value>
+    <value>6, 113</value>
   </data>
   <data name="panel9.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
@@ -1298,14 +1301,20 @@ value at right, instead of using the image maximum.</value>
   <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="groupBoxSTEMoption3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="comboBoxEdxDisplay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+    <value>Top</value>
+  </data>
+  <data name="comboBoxEdxDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxEdxDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 133</value>
+    <value>3, 74</value>
   </data>
   <data name="comboBoxEdxDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 25</value>
+    <value>130, 23</value>
   </data>
   <data name="comboBoxEdxDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1325,148 +1334,17 @@ value at right, instead of using the image maximum.</value>
   <data name="&gt;&gt;comboBoxEdxDisplay.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButtonSTEM_target_EDX.AutoSize" type="System.Boolean, mscorlib">
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButtonSTEM_target_EDX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 96</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 1, 1</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
-    <value>EDX</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Shows the STEM-EDX elemental map instead of the ADF-type image; pick the characteristic X-ray below. The values are modelled inner-shell vacancies generated per incident electron. Fluorescence yield, self-absorption, detector solid angle and detector efficiency are NOT applied, so this is not a predicted X-ray count.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Name" xml:space="preserve">
-    <value>radioButtonSTEM_target_EDX</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_EDX.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 76</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 1, 1</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Text" xml:space="preserve">
-    <value>TDS</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>Display only TDS (thermal diffuse scattering,
-inelastic) electrons in the STEM image.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Name" xml:space="preserve">
-    <value>radioButtonSTEM_target_TDS</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_TDS.ZOrder" xml:space="preserve">
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="radioButtonSTEM_target_elas.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 56</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 1, 1</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
-    <value>Elastic</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
-    <value>Display only elastically scattered
-electrons in the STEM image.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_elas.Name" xml:space="preserve">
-    <value>radioButtonSTEM_target_elas</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_elas.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_elas.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSTEM_target_elas.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="radioButtonSTEM_target_both.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="radioButtonSTEM_target_both.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="radioButtonSTEM_target_both.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
   </data>
   <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -1475,16 +1353,16 @@ electrons in the STEM image.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonSTEM_target_both.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>0, 0</value>
   </data>
   <data name="radioButtonSTEM_target_both.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonSTEM_target_both.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 1, 1</value>
+    <value>5, 0, 1, 0</value>
   </data>
   <data name="radioButtonSTEM_target_both.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 35</value>
+    <value>64, 34</value>
   </data>
   <data name="radioButtonSTEM_target_both.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1505,19 +1383,186 @@ inelastic) electrons in the STEM image.</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_both.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption3</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_both.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 7</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 1, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 19</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
+    <value>Elastic</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>Display only elastically scattered
+electrons in the STEM image.</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_elas.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_elas</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_elas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_elas.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_elas.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 34</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 1, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 19</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
+    <value>EDX</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>Shows the STEM-EDX elemental map instead of the ADF-type image; pick the characteristic X-ray below. The values are modelled inner-shell vacancies generated per incident electron. Fluorescence yield, self-absorption, detector solid angle and detector efficiency are NOT applied, so this is not a predicted X-ray count.</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_EDX</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_EDX.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_EDX.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 34</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 1, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 19</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Text" xml:space="preserve">
+    <value>TDS</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>Display only TDS (thermal diffuse scattering,
+inelastic) electrons in the STEM image.</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_TDS</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_TDS.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_TDS.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 53</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption3</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="radioButtonSTEM_target_both" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="radioButtonSTEM_target_elas" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="radioButtonSTEM_target_EDX" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="radioButtonSTEM_target_TDS" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="groupBoxSTEMoption3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
   <data name="groupBoxSTEMoption3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>470, 3</value>
+    <value>494, 3</value>
   </data>
   <data name="groupBoxSTEMoption3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 161</value>
+    <value>136, 113</value>
   </data>
   <data name="groupBoxSTEMoption3.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -1555,17 +1600,14 @@ inelastic) electrons in the STEM image.</value>
   <data name="colorControlScale.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
   <data name="colorControlScale.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="colorControlScale.HeaderText" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="colorControlScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 18</value>
+    <value>490, 18</value>
   </data>
   <data name="colorControlScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -1574,7 +1616,7 @@ inelastic) electrons in the STEM image.</value>
     <value>0, 1, 0, 0</value>
   </data>
   <data name="colorControlScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+    <value>56, 25</value>
   </data>
   <data name="colorControlScale.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1616,7 +1658,7 @@ inelastic) electrons in the STEM image.</value>
     <value>Length</value>
   </data>
   <data name="numericBoxScaleLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>362, 18</value>
+    <value>371, 18</value>
   </data>
   <data name="numericBoxScaleLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1628,7 +1670,7 @@ inelastic) electrons in the STEM image.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxScaleLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 24</value>
+    <value>119, 25</value>
   </data>
   <data name="numericBoxScaleLength.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1661,16 +1703,16 @@ inelastic) electrons in the STEM image.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>274, 18</value>
+    <value>283, 18</value>
   </data>
   <data name="checkBoxShowScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowScale.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 0, 0, 0</value>
+    <value>15, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 24</value>
+    <value>88, 25</value>
   </data>
   <data name="checkBoxShowScale.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1710,17 +1752,14 @@ set by the adjacent scale controls.</value>
   <data name="colorControlLabel.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
   <data name="colorControlLabel.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="colorControlLabel.HeaderText" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="colorControlLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 18</value>
+    <value>227, 18</value>
   </data>
   <data name="colorControlLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -1729,7 +1768,7 @@ set by the adjacent scale controls.</value>
     <value>0, 1, 0, 0</value>
   </data>
   <data name="colorControlLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+    <value>56, 25</value>
   </data>
   <data name="colorControlLabel.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1756,13 +1795,13 @@ set by the adjacent scale controls.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -1780,7 +1819,7 @@ set by the adjacent scale controls.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxLabelFontSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 24</value>
+    <value>76, 25</value>
   </data>
   <data name="numericBoxLabelFontSize.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1819,10 +1858,10 @@ set by the adjacent scale controls.</value>
     <value>15, 2, 0, 0</value>
   </data>
   <data name="checkBoxShowLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 0, 0, 0</value>
+    <value>15, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 24</value>
+    <value>69, 25</value>
   </data>
   <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1866,10 +1905,10 @@ image; label color and font size are set nearby.</value>
     <value>5, 2, 0, 0</value>
   </data>
   <data name="checkBoxShowUnitcell.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 0, 0</value>
+    <value>10, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 24</value>
+    <value>79, 25</value>
   </data>
   <data name="checkBoxShowUnitcell.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1901,13 +1940,16 @@ image contrast to the crystal lattice.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 164</value>
+    <value>3, 116</value>
+  </data>
+  <data name="groupBoxDisplay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 2</value>
   </data>
   <data name="groupBoxDisplay.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="groupBoxDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>571, 45</value>
+    <value>627, 43</value>
   </data>
   <data name="groupBoxDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>75</value>
@@ -1931,13 +1973,13 @@ image contrast to the crystal lattice.</value>
     <value>Bottom</value>
   </data>
   <data name="panelDisplaySettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 852</value>
+    <value>0, 748</value>
   </data>
   <data name="panelDisplaySettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="panelDisplaySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 212</value>
+    <value>633, 162</value>
   </data>
   <data name="panelDisplaySettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2860,7 +2902,7 @@ stepping defocus and/or sample thickness
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSerialImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 581</value>
+    <value>3, 405</value>
   </data>
   <data name="groupBoxSerialImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3881,7 +3923,7 @@ potential (Ug), i.e. the absorptive component.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelPotentialMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 60</value>
+    <value>10, 56</value>
   </data>
   <data name="flowLayoutPanelPotentialMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 143</value>
@@ -3917,7 +3959,7 @@ potential (Ug), i.e. the absorptive component.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxPotentialUgPrime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 41</value>
+    <value>10, 37</value>
   </data>
   <data name="checkBoxPotentialUgPrime.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 19</value>
@@ -3957,7 +3999,7 @@ arising from TDS (Thermal Diffuse Scattering).</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxPotentialUg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 22</value>
+    <value>10, 18</value>
   </data>
   <data name="checkBoxPotentialUg.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 19</value>
@@ -3991,16 +4033,16 @@ potential responsible for elastic scattering.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxPotentialOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 374</value>
+    <value>3, 202</value>
   </data>
   <data name="groupBoxPotentialOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxPotentialOption.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 4, 4, 4</value>
+    <value>10, 0, 4, 4</value>
   </data>
   <data name="groupBoxPotentialOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 207</value>
+    <value>299, 203</value>
   </data>
   <data name="groupBoxPotentialOption.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4022,176 +4064,6 @@ potential responsible for elastic scattering.</value>
   </data>
   <data name="&gt;&gt;groupBoxPotentialOption.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="groupBoxSTEMoption4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBoxSTEMoption4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="labelEdxProbeGrid.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelEdxProbeGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="labelEdxProbeGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 77</value>
-  </data>
-  <data name="labelEdxProbeGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
-  </data>
-  <data name="labelEdxProbeGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="labelEdxProbeGrid.Text" xml:space="preserve">
-    <value>Probe grid</value>
-  </data>
-  <data name="&gt;&gt;labelEdxProbeGrid.Name" xml:space="preserve">
-    <value>labelEdxProbeGrid</value>
-  </data>
-  <data name="&gt;&gt;labelEdxProbeGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEdxProbeGrid.Parent" xml:space="preserve">
-    <value>panelEdxDetails</value>
-  </data>
-  <data name="&gt;&gt;labelEdxProbeGrid.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panelEdxDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelEdxDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 55</value>
-  </data>
-  <data name="panelEdxDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 34</value>
-  </data>
-  <data name="panelEdxDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="panelEdxDetails.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelEdxDetails.Name" xml:space="preserve">
-    <value>panelEdxDetails</value>
-  </data>
-  <data name="&gt;&gt;panelEdxDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelEdxDetails.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption4</value>
-  </data>
-  <data name="&gt;&gt;panelEdxDetails.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelEdxSummary.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelEdxSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="labelEdxSummary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 40</value>
-  </data>
-  <data name="labelEdxSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 15</value>
-  </data>
-  <data name="labelEdxSummary.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="labelEdxSummary.Text" xml:space="preserve">
-    <value>No channel selected</value>
-  </data>
-  <data name="&gt;&gt;labelEdxSummary.Name" xml:space="preserve">
-    <value>labelEdxSummary</value>
-  </data>
-  <data name="&gt;&gt;labelEdxSummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEdxSummary.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption4</value>
-  </data>
-  <data name="&gt;&gt;labelEdxSummary.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBoxCalculateEdx.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 19</value>
-  </data>
-  <data name="checkBoxCalculateEdx.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>Calculate STEM-EDX maps</value>
-  </data>
-  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>Compute ionization (EDX) maps for the selected element/shell channels.
-The STEM reference image (ADF / elastic / TDS) is always computed;
-each EDX channel adds one extra ionization pass after it.</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateEdx.Name" xml:space="preserve">
-    <value>checkBoxCalculateEdx</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateEdx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateEdx.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateEdx.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 193</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 181</value>
-  </data>
-  <data name="groupBoxSTEMoption4.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
-    <value>STEM-EDX elemental maps</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBoxSTEMoption4.Name" xml:space="preserve">
-    <value>groupBoxSTEMoption4</value>
-  </data>
-  <data name="&gt;&gt;groupBoxSTEMoption4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxSTEMoption4.Parent" xml:space="preserve">
-    <value>panelModeOptions</value>
-  </data>
-  <data name="&gt;&gt;groupBoxSTEMoption4.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="groupBoxSTEMoption2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4218,7 +4090,7 @@ each EDX channel adds one extra ionization pass after it.</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>Angular resolution of incident electrons</value>
+    <value>Angular resolution</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -4233,7 +4105,7 @@ each EDX channel adds one extra ionization pass after it.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 23</value>
+    <value>193, 23</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4255,6 +4127,39 @@ STEM probe more finely but slow the calculation.</value>
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="labelEdxProbeGrid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelEdxProbeGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 23</value>
+  </data>
+  <data name="labelEdxProbeGrid.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 0, 0, 3</value>
+  </data>
+  <data name="labelEdxProbeGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="labelEdxProbeGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelEdxProbeGrid.Text" xml:space="preserve">
+    <value>Probe grid</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Name" xml:space="preserve">
+    <value>labelEdxProbeGrid</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.Parent" xml:space="preserve">
+    <value>flowLayoutPanel11</value>
+  </data>
+  <data name="&gt;&gt;labelEdxProbeGrid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -4271,13 +4176,13 @@ STEM probe more finely but slow the calculation.</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>Slice thickness for TDS calculation</value>
+    <value>Slice thickness (TDS)</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 26</value>
+    <value>3, 41</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
+    <value>3, 0, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
@@ -4286,7 +4191,7 @@ STEM probe more finely but slow the calculation.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 23</value>
+    <value>193, 23</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4307,7 +4212,7 @@ accuracy but slow the calculation.</value>
     <value>flowLayoutPanel11</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4316,10 +4221,10 @@ accuracy but slow the calculation.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 49</value>
+    <value>293, 64</value>
   </data>
   <data name="flowLayoutPanel11.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4346,13 +4251,16 @@ accuracy but slow the calculation.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSTEMoption2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 120</value>
+    <value>3, 117</value>
   </data>
   <data name="groupBoxSTEMoption2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="groupBoxSTEMoption2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxSTEMoption2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 73</value>
+    <value>299, 85</value>
   </data>
   <data name="groupBoxSTEMoption2.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -4373,7 +4281,7 @@ accuracy but slow the calculation.</value>
     <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="groupBoxHREMoption2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4475,7 +4383,7 @@ excite many strong diffracted beams.
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 0, 0, 0</value>
@@ -4510,8 +4418,11 @@ excite many strong diffracted beams.
   <data name="groupBoxHREMoption2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="groupBoxHREMoption2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxHREMoption2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 43</value>
+    <value>299, 40</value>
   </data>
   <data name="groupBoxHREMoption2.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4529,7 +4440,7 @@ excite many strong diffracted beams.
     <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="panelImageProperties.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4785,7 +4696,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;panelImageProperties.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panelModeOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4797,7 +4708,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panelModeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 552</value>
+    <value>319, 295</value>
   </data>
   <data name="panelModeOptions.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -4821,7 +4732,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 457</value>
+    <value>4, 560</value>
   </data>
   <data name="groupBoxSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4830,7 +4741,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 576</value>
+    <value>331, 319</value>
   </data>
   <data name="groupBoxSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4898,11 +4809,836 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;contextMenuStripSTEM.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+  <data name="groupBoxSTEMoption4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxSTEMoption4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>Take-off angle</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 0</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 23</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>Elevation angle of the EDX detector above the specimen
+plane. Reserved for a future release: self-absorption of the
+emitted X-rays along the escape path is not applied yet.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEdxTakeOffAngle.Name" xml:space="preserve">
+    <value>numericBoxEdxTakeOffAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEdxTakeOffAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEdxTakeOffAngle.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEdxDetector</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEdxTakeOffAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="labelEdxDetectorWindow.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 2</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="labelEdxDetectorWindow.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>Detector</value>
+  </data>
+  <data name="&gt;&gt;labelEdxDetectorWindow.Name" xml:space="preserve">
+    <value>labelEdxDetectorWindow</value>
+  </data>
+  <data name="&gt;&gt;labelEdxDetectorWindow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEdxDetectorWindow.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;labelEdxDetectorWindow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>Windowless</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>Thin polymer window (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Beryllium window, 7.6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 0</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 23</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>Window, contact/dead layer and active thickness of the EDX
+detector. Its transmission depends strongly on photon energy,
+so it changes the ratios between element maps (never the
+pattern within one map). Reserved for a future release.</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDetectorWindow.Name" xml:space="preserve">
+    <value>comboBoxEdxDetectorWindow</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDetectorWindow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDetectorWindow.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEdxDetectorWindow.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 26</value>
+  </data>
+  <data name="flowLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 3, 3, 3</value>
+  </data>
+  <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 23</value>
+  </data>
+  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel9.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEdxDetector</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 52</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 52</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelEdxDetector.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxDetector.Name" xml:space="preserve">
+    <value>flowLayoutPanelEdxDetector</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxDetector.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxDetector.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEdxDetector.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelEdxSummary.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEdxSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelEdxSummary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 37</value>
+  </data>
+  <data name="labelEdxSummary.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="labelEdxSummary.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="labelEdxSummary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 15</value>
+  </data>
+  <data name="labelEdxSummary.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelEdxSummary.Text" xml:space="preserve">
+    <value>No channel selected</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Name" xml:space="preserve">
+    <value>labelEdxSummary</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;labelEdxSummary.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxCalculateEdx.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 0</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 19</value>
+  </data>
+  <data name="checkBoxCalculateEdx.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>Calculate EDX maps</value>
+  </data>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>Compute ionization (EDX) maps for the selected element/shell channels.
+The STEM reference image (ADF / elastic / TDS) is always computed;
+each EDX channel adds one extra ionization pass after it.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Name" xml:space="preserve">
+    <value>checkBoxCalculateEdx</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.Parent" xml:space="preserve">
+    <value>flowLayoutPanel13</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateEdx.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 0</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 19</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>Self-absorption</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>Attenuates the emitted X-rays along their escape path to
+the detector, exp(-µT/sin α) with α the take-off angle.
+Reserved for a future release: no self-absorption is applied yet.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxSelfAbsorption.Name" xml:space="preserve">
+    <value>checkBoxEdxSelfAbsorption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxSelfAbsorption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxSelfAbsorption.Parent" xml:space="preserve">
+    <value>flowLayoutPanel13</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxSelfAbsorption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 18</value>
+  </data>
+  <data name="flowLayoutPanel13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 19</value>
+  </data>
+  <data name="flowLayoutPanel13.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel13.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel13.Name" xml:space="preserve">
+    <value>flowLayoutPanel13</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel13.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 140</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 107</value>
+  </data>
+  <data name="groupBoxSTEMoption4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX elemental maps</value>
+  </data>
+  <data name="groupBoxSTEMoption4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Name" xml:space="preserve">
+    <value>groupBoxSTEMoption4</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxSTEMoption4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
+    <value>Outer radius</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 3</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 23</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>Outer collection semi-angle of the annular STEM
+detector (mrad); signals above this angle are excluded.
+Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
+    <value>numericBoxSTEM_DetectorOuterAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Parent" xml:space="preserve">
+    <value>flowLayoutPanelOuterRadius</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="textBoxOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 3</value>
+  </data>
+  <data name="textBoxOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="textBoxOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 23</value>
+  </data>
+  <data name="textBoxOuterRadius.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="textBoxOuterRadius.Text" xml:space="preserve">
+    <value>2.508</value>
+  </data>
+  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
+    <value>Outer radius of the STEM (Scanning
+Transmission Electron Microscopy) detector in
+reciprocal units (nm⁻¹), converted from the
+detector outer collection angle. Read-only.</value>
+  </data>
+  <data name="&gt;&gt;textBoxOuterRadius.Name" xml:space="preserve">
+    <value>textBoxOuterRadius</value>
+  </data>
+  <data name="&gt;&gt;textBoxOuterRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxOuterRadius.Parent" xml:space="preserve">
+    <value>flowLayoutPanelOuterRadius</value>
+  </data>
+  <data name="&gt;&gt;textBoxOuterRadius.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 3</value>
+  </data>
+  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 15</value>
+  </data>
+  <data name="label38.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>nm⁻¹</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Outer radius of the STEM (Scanning
+Transmission Electron Microscopy) detector in
+reciprocal units (nm⁻¹), converted from the
+detector outer collection angle. Read-only.</value>
+  </data>
+  <data name="&gt;&gt;label38.Name" xml:space="preserve">
+    <value>label38</value>
+  </data>
+  <data name="&gt;&gt;label38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
+    <value>flowLayoutPanelOuterRadius</value>
+  </data>
+  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 44</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 26</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Name" xml:space="preserve">
+    <value>flowLayoutPanelOuterRadius</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
+    <value>Inner radius</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 3</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 23</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
+    <value>Inner collection semi-angle of the annular STEM
+detector (mrad); signals below this angle are excluded.
+Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
+    <value>numericBoxSTEM_DetectorInnerAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Parent" xml:space="preserve">
+    <value>flowLayoutPanelInnerRadius</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="textBoxInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 3</value>
+  </data>
+  <data name="textBoxInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="textBoxInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 23</value>
+  </data>
+  <data name="textBoxInnerRadius.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="textBoxInnerRadius.Text" xml:space="preserve">
+    <value>2.508</value>
+  </data>
+  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
+    <value>Detector inner angle expressed as a reciprocal-space
+radius sin(theta)/lambda (nm^-1); updates from the
+STEM detector inner angle. Read-only.</value>
+  </data>
+  <data name="&gt;&gt;textBoxInnerRadius.Name" xml:space="preserve">
+    <value>textBoxInnerRadius</value>
+  </data>
+  <data name="&gt;&gt;textBoxInnerRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxInnerRadius.Parent" xml:space="preserve">
+    <value>flowLayoutPanelInnerRadius</value>
+  </data>
+  <data name="&gt;&gt;textBoxInnerRadius.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 3</value>
+  </data>
+  <data name="label37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 15</value>
+  </data>
+  <data name="label37.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>nm⁻¹</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Detector inner angle expressed as a reciprocal-space
+radius sin(theta)/lambda (nm^-1); updates from the
+STEM detector inner angle. Read-only.</value>
+  </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>flowLayoutPanelInnerRadius</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 18</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 26</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Name" xml:space="preserve">
+    <value>flowLayoutPanelInnerRadius</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 67</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 73</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Annular detector</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterText" xml:space="preserve">
+    <value>pm</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>Effective source size (σs,  FWHM)</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 44</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 23</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>Effective electron source size (nm). Larger values
+blur the STEM probe and reduce fine image detail.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Name" xml:space="preserve">
+    <value>numericBoxSTEM_EffectiveSourceSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5041,14 +5777,17 @@ STEM convergence angle. Read-only.</value>
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="flowLayoutPanelConvergenceRadius.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="flowLayoutPanelConvergenceRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>6, 18</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 26</value>
+    <value>307, 26</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -5060,522 +5799,10 @@ STEM convergence angle. Read-only.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 12, 0, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 30</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Annular
-detector radius</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Inner/outer collection semi-angles (mrad)
-of the annular dark-field detector.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
-    <value>mrad</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
-    <value>Outer</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
-    <value>Outer collection semi-angle of the annular STEM
-detector (mrad); signals above this angle are excluded.
-Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
-    <value>numericBoxSTEM_DetectorOuterAngle</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOuterRadius</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="textBoxOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 3</value>
-  </data>
-  <data name="textBoxOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="textBoxOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 23</value>
-  </data>
-  <data name="textBoxOuterRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="textBoxOuterRadius.Text" xml:space="preserve">
-    <value>2.508</value>
-  </data>
-  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
-    <value>Outer radius of the STEM (Scanning
-Transmission Electron Microscopy) detector in
-reciprocal units (nm⁻¹), converted from the
-detector outer collection angle. Read-only.</value>
-  </data>
-  <data name="&gt;&gt;textBoxOuterRadius.Name" xml:space="preserve">
-    <value>textBoxOuterRadius</value>
-  </data>
-  <data name="&gt;&gt;textBoxOuterRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxOuterRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOuterRadius</value>
-  </data>
-  <data name="&gt;&gt;textBoxOuterRadius.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 3</value>
-  </data>
-  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 15</value>
-  </data>
-  <data name="label38.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="label38.Text" xml:space="preserve">
-    <value>nm⁻¹</value>
-  </data>
-  <data name="label38.ToolTip" xml:space="preserve">
-    <value>Outer radius of the STEM (Scanning
-Transmission Electron Microscopy) detector in
-reciprocal units (nm⁻¹), converted from the
-detector outer collection angle. Read-only.</value>
-  </data>
-  <data name="&gt;&gt;label38.Name" xml:space="preserve">
-    <value>label38</value>
-  </data>
-  <data name="&gt;&gt;label38.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOuterRadius</value>
-  </data>
-  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 26</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Name" xml:space="preserve">
-    <value>flowLayoutPanelOuterRadius</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOuterRadius.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
-    <value>mrad</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
-    <value>Inner</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 23</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
-    <value>Inner collection semi-angle of the annular STEM
-detector (mrad); signals below this angle are excluded.
-Applies to the STEM reference image (ADF / elastic / TDS) only - not used for STEM-EDX maps.</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
-    <value>numericBoxSTEM_DetectorInnerAngle</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Parent" xml:space="preserve">
-    <value>flowLayoutPanelInnerRadius</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="textBoxInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 3</value>
-  </data>
-  <data name="textBoxInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="textBoxInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 23</value>
-  </data>
-  <data name="textBoxInnerRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="textBoxInnerRadius.Text" xml:space="preserve">
-    <value>2.508</value>
-  </data>
-  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
-    <value>Detector inner angle expressed as a reciprocal-space
-radius sin(theta)/lambda (nm^-1); updates from the
-STEM detector inner angle. Read-only.</value>
-  </data>
-  <data name="&gt;&gt;textBoxInnerRadius.Name" xml:space="preserve">
-    <value>textBoxInnerRadius</value>
-  </data>
-  <data name="&gt;&gt;textBoxInnerRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxInnerRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanelInnerRadius</value>
-  </data>
-  <data name="&gt;&gt;textBoxInnerRadius.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 3</value>
-  </data>
-  <data name="label37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 15</value>
-  </data>
-  <data name="label37.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>nm⁻¹</value>
-  </data>
-  <data name="label37.ToolTip" xml:space="preserve">
-    <value>Detector inner angle expressed as a reciprocal-space
-radius sin(theta)/lambda (nm^-1); updates from the
-STEM detector inner angle. Read-only.</value>
-  </data>
-  <data name="&gt;&gt;label37.Name" xml:space="preserve">
-    <value>label37</value>
-  </data>
-  <data name="&gt;&gt;label37.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
-    <value>flowLayoutPanelInnerRadius</value>
-  </data>
-  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 26</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="flowLayoutPanelInnerRadius.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Name" xml:space="preserve">
-    <value>flowLayoutPanelInnerRadius</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelInnerRadius.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel12.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 3</value>
-  </data>
-  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 52</value>
-  </data>
-  <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Name" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
-  </data>
-  <data name="flowLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 58</value>
-  </data>
-  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="flowLayoutPanel9.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.FooterText" xml:space="preserve">
-    <value>pm</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
-    <value>Effective source size (σs,  FWHM)</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 90</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 23</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Effective electron source size (nm). Larger values
-blur the STEM probe and reduce fine image detail.</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Name" xml:space="preserve">
-    <value>numericBoxSTEM_EffectiveSourceSize</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="flowLayoutPanel8.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 113</value>
-  </data>
-  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="flowLayoutPanel8.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="groupBoxSTEMoption1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5584,13 +5811,16 @@ blur the STEM probe and reduce fine image detail.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSTEMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 243</value>
+    <value>6, 237</value>
   </data>
   <data name="groupBoxSTEMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="groupBoxSTEMoption1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 0, 6, 3</value>
+  </data>
   <data name="groupBoxSTEMoption1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 137</value>
+    <value>319, 250</value>
   </data>
   <data name="groupBoxSTEMoption1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5706,7 +5936,7 @@ blur the STEM probe and reduce fine image detail.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanelSpotCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 73</value>
+    <value>3, 70</value>
   </data>
   <data name="flowLayoutPanelSpotCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5914,7 +6144,7 @@ inside the objective aperture (read-only).</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 47</value>
+    <value>3, 44</value>
   </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 26</value>
@@ -6142,7 +6372,7 @@ beams pass the HRTEM objective aperture.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 26</value>
@@ -6169,13 +6399,16 @@ beams pass the HRTEM objective aperture.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxHREMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 141</value>
+    <value>6, 138</value>
   </data>
   <data name="groupBoxHREMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="groupBoxHREMoption1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxHREMoption1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 102</value>
+    <value>319, 99</value>
   </data>
   <data name="groupBoxHREMoption1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -6265,7 +6498,7 @@ beams pass the HRTEM objective aperture.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCTF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 99</value>
+    <value>3, 96</value>
   </data>
   <data name="checkBoxCTF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6464,7 +6697,7 @@ increase blur from beam energy spread.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 76</value>
+    <value>3, 73</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 23</value>
@@ -6689,7 +6922,7 @@ the current wavelength and spherical aberration Cs.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 44</value>
+    <value>3, 41</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 32</value>
@@ -6823,7 +7056,7 @@ sets the chromatic focus-spread (image blur).</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 23</value>
@@ -6852,8 +7085,11 @@ sets the chromatic focus-spread (image blur).</value>
   <data name="groupBoxTEMConditions.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
   </data>
+  <data name="groupBoxTEMConditions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxTEMConditions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 123</value>
+    <value>319, 120</value>
   </data>
   <data name="groupBoxTEMConditions.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6880,7 +7116,7 @@ sets the chromatic focus-spread (image blur).</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOpticalProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 71</value>
+    <value>4, 67</value>
   </data>
   <data name="groupBoxOpticalProperty.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6889,7 +7125,7 @@ sets the chromatic focus-spread (image blur).</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxOpticalProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 386</value>
+    <value>331, 493</value>
   </data>
   <data name="groupBoxOpticalProperty.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -6931,10 +7167,10 @@ sets the chromatic focus-spread (image blur).</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonHRTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>1, 0, 1, 0</value>
   </data>
   <data name="radioButtonHRTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 23</value>
+    <value>70, 21</value>
   </data>
   <data name="radioButtonHRTEM.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6975,16 +7211,16 @@ for the selected crystal, thickness, and defocus.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonSTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>1, 0, 1, 0</value>
   </data>
   <data name="radioButtonSTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
+    <value>61, 21</value>
   </data>
   <data name="radioButtonSTEM.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="radioButtonSTEM.Text" xml:space="preserve">
-    <value>STEM (-EDX)</value>
+    <value>STEM</value>
   </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
     <value>STEM (scanning transmission electron microscopy):
@@ -7013,16 +7249,16 @@ convergence angle and annular detector settings.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonProjectedPotential.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 23</value>
+    <value>4, 21</value>
   </data>
   <data name="radioButtonProjectedPotential.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonProjectedPotential.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>1, 0, 1, 0</value>
   </data>
   <data name="radioButtonProjectedPotential.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+    <value>78, 21</value>
   </data>
   <data name="radioButtonProjectedPotential.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7051,13 +7287,16 @@ TEM/STEM image-transfer effects.</value>
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanelImageType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
+  </data>
+  <data name="flowLayoutPanelImageType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
   </data>
   <data name="flowLayoutPanelImageType.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelImageType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 44</value>
+    <value>137, 43</value>
   </data>
   <data name="flowLayoutPanelImageType.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -7083,8 +7322,11 @@ TEM/STEM image-transfer effects.</value>
   <data name="groupBoxImageMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 1</value>
   </data>
+  <data name="groupBoxImageMode.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxImageMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 68</value>
+    <value>143, 64</value>
   </data>
   <data name="groupBoxImageMode.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7104,54 +7346,8 @@ TEM/STEM image-transfer effects.</value>
   <data name="&gt;&gt;groupBoxImageMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
-  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Sample thickness (nm). This value is ignored
-when "Serial image" mode is selected.</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="numericBoxThickness.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -7168,8 +7364,11 @@ when "Serial image" mode is selected.</value>
   <data name="numericBoxThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
   <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 19</value>
+    <value>3, 18</value>
   </data>
   <data name="numericBoxThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -7181,7 +7380,7 @@ when "Serial image" mode is selected.</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>158, 23</value>
   </data>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -7197,52 +7396,25 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThickness.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 21</value>
-  </data>
-  <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 42</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>groupBoxSampleProperty</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxThickness.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="groupBoxSampleProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
   </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSampleProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 0</value>
+    <value>152, 0</value>
   </data>
   <data name="groupBoxSampleProperty.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
   </data>
+  <data name="groupBoxSampleProperty.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBoxSampleProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 66</value>
+    <value>164, 50</value>
   </data>
   <data name="groupBoxSampleProperty.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -7272,7 +7444,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelModeSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 69</value>
+    <value>331, 65</value>
   </data>
   <data name="flowLayoutPanelModeSelection.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -7428,7 +7600,7 @@ microscope, thickness, defocus, and display settings.</value>
     <value>Bottom</value>
   </data>
   <data name="panelSimulationActions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 1033</value>
+    <value>4, 879</value>
   </data>
   <data name="panelSimulationActions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 3, 1, 3</value>
@@ -7467,10 +7639,10 @@ microscope, thickness, defocus, and display settings.</value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 1068</value>
+    <value>984, 914</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>581</value>
+    <value>637</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -7491,7 +7663,7 @@ microscope, thickness, defocus, and display settings.</value>
     <value>248, 17</value>
   </metadata>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
     <value>321, 22</value>
@@ -7637,7 +7809,7 @@ code (fast C++/Eigen) or Managed code
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 25</value>
+    <value>984, 25</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -7667,7 +7839,7 @@ code (fast C++/Eigen) or Managed code
     <value>NoControl</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>849, 1061</value>
+    <value>905, 907</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
@@ -7721,10 +7893,10 @@ code (fast C++/Eigen) or Managed code
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1093</value>
+    <value>0, 939</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 22</value>
+    <value>984, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -7751,7 +7923,7 @@ code (fast C++/Eigen) or Managed code
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>928, 1115</value>
+    <value>984, 961</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -7760,7 +7932,7 @@ code (fast C++/Eigen) or Managed code
     <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 700</value>
+    <value>600, 600</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM Simulator</value>
@@ -7986,11 +8158,5 @@ code (fast C++/Eigen) or Managed code
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="panelEdxDetails.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panelEdxDetails.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
 </root>

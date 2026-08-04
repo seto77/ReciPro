@@ -59,6 +59,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>Autoabsorção</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>Atenua os raios X emitidos ao longo do trajeto de saída
+até o detector, exp(-µT/sin α) com α o ângulo de saída.
+Reservado para uma versão futura: atualmente não é
+aplicada autoabsorção.</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>Sem janela</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>Janela de polímero fina (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Janela de berílio, 7,6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>Janela, camada morta e espessura ativa do detector EDX.
+A transmissão depende fortemente da energia do fóton e,
+portanto, altera as razões entre mapas elementares (nunca o
+padrão dentro de um mapa). Reservado para uma versão futura.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Detector anular</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Alto</value>
   </data>
@@ -79,6 +106,20 @@
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Normalização</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>Detector</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>Ângulo de saída</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>Ângulo de elevação do detector EDX acima do plano da amostra.
+Reservado para uma versão futura: a autoabsorção dos raios X
+emitidos ainda não é aplicada.</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Espessura</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
     <value>Elástico</value>
@@ -187,10 +228,10 @@
     <value>Opções de potencial</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>Resolução angular dos elétrons incidentes</value>
+    <value>Resolução angular</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>Espessura da fatia para cálculo de TDS</value>
+    <value>Espessura da fatia (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>Opções STEM</value>
@@ -219,19 +260,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Configurações de simulação</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (ângulo de convergência
- do feixe incidente)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Externo</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Interno</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Intervalo de raio do
-detector anular</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>Opções STEM</value>
@@ -292,9 +325,6 @@ Simulator"</value>
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>Modo de imagem</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Espessura</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>Amostra</value>
@@ -867,19 +897,8 @@ Start/Step/Num, mas pode ser editada diretamente.</value>
     <value>Mostra ou oculta a janela de configurações predefinidas, que
 armazena e recupera condições de imageamento TEM.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Semiângulos de coleta interno/externo (mrad)
-do detector anular de campo escuro.</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>Escala de cores usada para mapear a intensidade da imagem (cinza ou frio-quente).</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>Semiângulo de convergência α (mrad) da sonda STEM incidente.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Espessura da amostra (nm). Este valor é ignorado
-quando o modo "Serial image" está selecionado.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Escolhe qual grandeza (desfocagem ou espessura) varia
@@ -889,7 +908,7 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
     <value>Mapas elementares STEM-EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>Calcular mapas STEM-EDX</value>
+    <value>Calcular mapas EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Calcula mapas de ionização (EDX) para os canais elemento/camada selecionados.&#xD;&#xA;A imagem STEM de referência (ADF / elástica / TDS) é sempre calculada;&#xD;&#xA;cada canal EDX acrescenta depois uma passagem de ionização adicional.</value>

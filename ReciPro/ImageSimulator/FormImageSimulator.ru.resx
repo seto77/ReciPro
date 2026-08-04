@@ -59,6 +59,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>Самопоглощение</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>Ослабляет испущенное рентгеновское излучение вдоль пути
+выхода к детектору, exp(-µT/sin α), где α — угол выхода.
+Зарезервировано для будущей версии: сейчас самопоглощение
+не учитывается.</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>Без окна</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>Тонкое полимерное окно (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Бериллиевое окно, 7,6 мкм</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>Окно, мёртвый слой и активная толщина детектора EDX.
+Пропускание сильно зависит от энергии фотона, поэтому
+меняет отношения между элементными картами (но никогда
+не рисунок внутри карты). Зарезервировано на будущее.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Кольцевой детектор</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Выс.</value>
   </data>
@@ -80,15 +107,29 @@
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>Нормировка</value>
   </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>Детектор</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>Угол выхода</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>Угол возвышения детектора EDX над плоскостью образца.
+Зарезервировано для будущей версии: самопоглощение
+испущенного рентгеновского излучения пока не учитывается.</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Толщина</value>
+  </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
-    <value>Упругое</value>
+    <value>Упруг.</value>
   </data>
   <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
-    <value>Упругое
+    <value>Упруг.
 &amp;&amp;TDS</value>
   </data>
   <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
-    <value>STEM-изображение</value>
+    <value>STEM-изобр.</value>
   </data>
   <data name="colorControlScale.HeaderText" xml:space="preserve">
     <value>Цвет</value>
@@ -187,10 +228,10 @@
     <value>Параметры потенциала</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>Угловое разрешение падающих электронов</value>
+    <value>Угловое разрешение</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>Толщина слоя для расчёта TDS</value>
+    <value>Толщина слоя (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>Параметры STEM</value>
@@ -219,19 +260,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Настройки моделирования</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (угол сходимости
- падающего пучка)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Внешний</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Внутренний</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Диапазон радиусов
-кольцевого детектора</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>Параметры STEM</value>
@@ -289,9 +322,6 @@ Simulator"</value>
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>Режим изображения</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Толщина</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>Образец</value>
@@ -864,19 +894,8 @@ U'g) как изображения действительной и мнимой 
     <value>Показать или скрыть окно предустановок, в котором
 сохраняются и вызываются условия съёмки ПЭМ.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Внутренний/внешний полуугол сбора (mrad)
-кольцевого детектора тёмного поля.</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>Цветовая шкала для отображения интенсивности (серая или холодно-тёплая).</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>Полуугол сходимости α (mrad) падающего STEM-зонда.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Толщина образца (nm). Это значение игнорируется,
-когда выбран режим «Serial image».</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Выберите, какая величина (дефокусировка или толщина) меняется
@@ -886,7 +905,7 @@ U'g) как изображения действительной и мнимой 
     <value>Элементные карты STEM-EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>Рассчитать карты STEM-EDX</value>
+    <value>Рассчитать карты EDX</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>Рассчитывает карты ионизации (EDX) для выбранных каналов элемент/оболочка.&#xD;&#xA;Опорное STEM-изображение (ADF / упругое / TDS) вычисляется всегда;&#xD;&#xA;каждый канал EDX добавляет после него ещё один проход ионизации.</value>

@@ -59,6 +59,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>자체 흡수</value>
+  </data>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>방출된 X선이 검출기로 빠져나가는 경로에서의 감쇠
+exp(-µT/sin α)(α = 취출각)를 적용합니다. 향후 구현을
+위한 예약 항목으로, 현재는 적용하지 않습니다.</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
+    <value>창 없음</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items1" xml:space="preserve">
+    <value>박막 고분자 창 (SDD)</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Items2" xml:space="preserve">
+    <value>Be 창, 7.6 µm</value>
+  </data>
+  <data name="comboBoxEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value>EDX 검출기의 창·불감층·공핍층 두께 모델입니다.
+투과율이 광자 에너지에 강하게 의존하므로 원소 맵
+사이의 비를 바꿉니다(맵 한 장 안의 분포는 바꾸지 않음).
+향후 구현을 위한 예약 항목입니다.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>환형 검출기</value>
+  </data>
   <data name="label27.Text" xml:space="preserve">
     <value>높음</value>
   </data>
@@ -79,6 +105,20 @@
   </data>
   <data name="groupBoxNormalization.Text" xml:space="preserve">
     <value>정규화</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>검출기</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>취출각</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>시료면에서 본 EDX 검출기의 앙각입니다. 향후 구현을 위한
+예약 항목으로, 방출된 X선이 빠져나가는 경로를 따른
+자체 흡수는 아직 적용되지 않습니다.</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>두께</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
     <value>탄성</value>
@@ -187,10 +227,10 @@
     <value>퍼텐셜 옵션</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>입사 전자의 각분해능</value>
+    <value>각분해능</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>TDS 계산용 슬라이스 두께</value>
+    <value>슬라이스 두께 (TDS)</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
     <value>STEM 옵션</value>
@@ -219,19 +259,11 @@
   <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>시뮬레이션 설정</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>α (입사 빔의
- 수렴각)</value>
-  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>외측</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>내측</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>환형 검출기
-반지름 범위</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>STEM 옵션</value>
@@ -289,9 +321,6 @@ Simulator"에 표시됩니다</value>
   </data>
   <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>이미지 모드</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>두께</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>시료</value>
@@ -863,19 +892,8 @@ Step 및 Num과 조합하여 아래의
     <value>TEM 촬영 조건을 저장하고 불러오는
 프리셋 설정 창의 표시/숨김을 전환합니다.</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>환상 암시야(ADF) 검출기의 내측/외측
-수집 반각(mrad)입니다.</value>
-  </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>이미지 강도를 색으로 대응시키는 컬러 스케일(그레이스케일 또는 한색-난색)입니다.</value>
-  </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>STEM 입사 프로브의 수렴 반각 α(mrad)입니다.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>시료 두께(nm)입니다. "연속 이미지" 모드가
-선택된 경우 이 값은 무시됩니다.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value>연속 이미지 그리드의 가로축을 따라 변하는
@@ -885,7 +903,7 @@ Step 및 Num과 조합하여 아래의
     <value>STEM-EDX 원소 맵</value>
   </data>
   <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>STEM-EDX 맵 계산</value>
+    <value>EDX 맵 계산</value>
   </data>
   <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
     <value>선택한 원소/껍질 채널의 이온화(EDX) 맵을 계산합니다.&#xD;&#xA;STEM 참조 이미지(ADF / 탄성 / TDS)는 항상 계산되며,&#xD;&#xA;EDX 채널마다 이온화 패스가 한 번씩 추가됩니다.</value>

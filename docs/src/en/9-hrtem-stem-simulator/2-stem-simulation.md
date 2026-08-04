@@ -80,7 +80,7 @@ Set the geometry of the convergent probe and the annular detector. Each angle is
 ![STEM options (simulation)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 - **Slice thickness for inelastic** : specimen slice thickness (nm) used when computing the TDS (thermal-diffuse, inelastic) intensity. Smaller values are more accurate but slower.
-- **Angular resolution** : angular sampling resolution of the incident probe directions (mrad). Smaller values sample the probe more finely but are slower.
+- **Angular resolution** : angular sampling resolution of the incident probe directions (mrad). Smaller values sample the probe more finely but are slower. The number of directions grows as the square of this ratio, so it is the main lever on calculation time; see [Angular sampling of the probe](../appendix/a3-bloch-wave/stem.md#angular-sampling) for measured convergence.
 
 ---
 
@@ -110,7 +110,7 @@ Set the geometry of the convergent probe and the annular detector. Each angle is
 
 ---
 
-## STEM display target (result side)
+## STEM display target (result side) {#stem-display-target}
 
 ![STEM image](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
@@ -121,6 +121,43 @@ The display switch at the bottom-left of the window selects which scattering com
 | **Elastic** | Elastic-scattering only image |
 | **TDS** | Thermal-diffuse-scattering only image |
 | **Elastic & TDS** | Sum of elastic + TDS |
+| **EDX** | Characteristic X-ray map. The line to show (for example `O-K`) is chosen in the combo box below, and **EDX: Common** in *Normalization* puts every channel on one shared display range so switching channel does not rescale the image |
+
+!!! note
+    All three images are reconstructed from the real part of the Fourier sum, so **Elastic & TDS** is exactly the sum of the other two. Versions up to 4.944 took the magnitude instead, which broke that identity and slightly brightened the dark pixels. See [Reconstructing a real image](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+
+---
+
+## STEM-EDX elemental maps {#stem-edx}
+
+![STEM-EDX elemental maps](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.groupBoxSTEMoption4.png)
+
+Tick **Calculate EDX maps** to compute characteristic X-ray maps alongside the ADF-type image. This is not a separate mode: the elastic, TDS and EDX signals all come out of the same STEM run, and you switch between them afterwards in [STEM image](#stem-display-target) without recomputing.
+
+There is no element selector. When the checkbox is on, **every element/shell channel that can be calculated for this crystal at this accelerating voltage** is computed, and the line under the checkbox lists them (for example `3 map(s): O-K, Mg-K, Al-K`). A channel is available when the ionisation edge lies below the accelerating voltage and the shell is covered by the shipped data (K and L-total). If nothing is available the run is refused with an explanatory message rather than producing an empty map.
+
+The next line reports the probe direction grid, for example `Grid: 132² (recommended: ≥48²)`. This grid is set by **Angular resolution** and the convergence angle; see [Angular sampling of the probe](../appendix/a3-bloch-wave/stem.md#angular-sampling). Below the recommended division the ±q Hermitian residual can exceed the tolerance and abort the run, so the value turns orange and a confirmation dialog appears before the calculation starts.
+
+!!! warning "What the values are"
+    The map is the **number of inner-shell vacancies generated per incident electron** — a model quantity, not a predicted X-ray count. Fluorescence yield, self-absorption in the specimen, detector solid angle and detector efficiency are **not** applied. Use the maps for spatial distribution and for comparing thickness or orientation, not for absolute quantification.
+
+### Detector parameters (reserved)
+
+**Self-absorption**, **Take-off angle** and **Detector** are laid out but disabled: they belong to the detector model that is not implemented yet. They are shown so that the panel does not move when the model lands. Their eventual effect differs in kind:
+
+| Factor | Pixel-to-pixel contrast in one map | Ratio between element maps |
+|---|---|---|
+| Self-absorption (take-off angle) | **changes it** | **changes it** |
+| Detector window / dead layer / efficiency | no effect | **changes it strongly** |
+| Detector solid angle, beam current, dwell time | no effect | no effect |
+
+The last row is why ReciPro does not expose beam current or dwell time at all: they multiply every pixel of every map by the same number, cancel in any ratio, and are invisible after the display normalisation.
+
+### Accuracy and cost
+
+STEM-EDX places no extra limit on the wave count or the slice thickness: it runs through the same calculation paths as the ADF-type image, so whatever settings work for STEM work for EDX too.
+
+Accuracy is left to you, exactly as it is for the wave count or the angular resolution. For reference, the depth-integration error grows roughly in proportion to **Slice thickness (TDS)** — about 2–3 % at 1 nm, 4–8 % at 2 nm and 12–23 % at 4 nm (peak-relative, SrTiO₃ at 39 nm). Halving the slice thickness roughly halves the error and roughly doubles the depth-integration work.
 
 ---
 
@@ -163,5 +200,4 @@ A more detailed report is available as a PDF: [Comparison of STEM simulations by
 - [HRTEM/STEM simulator (overview)](index.md)
 - [HRTEM simulation](1-hrtem-simulation.md)
 - [Potential simulation](3-potential-simulation.md)
-- [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md)
 - [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md)
