@@ -33,6 +33,7 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 | Funktion / Eigenschaft | Beschreibung |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Index des gewählten Kristalls abrufen/setzen |
+| `CrystalList.Count` | Anzahl der Kristalle in der Liste |
 | `CrystalList.Add()` | Aktuellen Kristall an die Liste anhängen |
 | `CrystalList.Replace()` | Gewählten Kristall ersetzen |
 | `CrystalList.Delete()` | Gewählten Kristall löschen |
@@ -42,21 +43,21 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 
 ---
 
-## Direction-Klasse
+## Dir-Klasse
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Orientierung über Euler-Winkel festlegen (Bogenmaß) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Orientierung über Euler-Winkel festlegen (Grad) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias für `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Um eine beliebige Achse drehen (Bogenmaß) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Um eine beliebige Achse drehen (Grad) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Um die Zonenachse [uvw] drehen (Bogenmaß) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Um die Zonenachse [uvw] drehen (Grad) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Um die Ebenennormale (hkl) drehen (Bogenmaß) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Um die Ebenennormale (hkl) drehen (Grad) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Ebenennormale senkrecht zum Bildschirm setzen |
-| `Direction.ProjectAlongAxis(u, v, w)` | Zonenachse senkrecht zum Bildschirm setzen |
+| `Dir.Euler(phi, theta, psi)` | Orientierung über Euler-Winkel festlegen (Bogenmaß) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Orientierung über Euler-Winkel festlegen (Grad) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias für `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Um eine beliebige Achse drehen (Bogenmaß) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Um eine beliebige Achse drehen (Grad) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Um die Zonenachse [uvw] drehen (Bogenmaß) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Um die Zonenachse [uvw] drehen (Grad) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Um die Ebenennormale (hkl) drehen (Bogenmaß) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Um die Ebenennormale (hkl) drehen (Grad) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Ebenennormale senkrecht zum Bildschirm setzen |
+| `Dir.ProjectAlongAxis(u, v, w)` | Zonenachse senkrecht zum Bildschirm setzen |
 
 ---
 
@@ -112,6 +113,50 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 |----------|-------------|
 | `SaveAsPng()` | Aktuelles Muster als PNG speichern |
 | `SpotInfo()` | Reflexdaten als CSV-String abrufen |
+
+---
+
+## SpotID-Klasse
+
+Steuert [Spot ID v2](../11-spot-id-v2.md) aus einem Makro heraus: ein Bild oder eine Reflexliste laden, die Reflexe detektieren, nach Orientierungen suchen und die Kandidaten auslesen — ohne das Fenster anzufassen. `FindSpots()` und `Identify()` kehren erst zurück, wenn die Arbeit erledigt ist, und lassen sich daher direkt aneinanderreihen.
+
+### Fenstersteuerung
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Wellenquelle
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Arbeitsablauf
+
+| Funktion | Beschreibung |
+|----------|--------------|
+| `SpotID.LoadFile(filename)` | Eine Datei laden, wie es **File > Load** tut: `.csv` wird als Reflexliste gelesen (ein Bild muss zuvor geladen sein), jede andere Endung als Beugungsbild (dm3, dm4, mrc, ipa, tif und weitere unterstützte Formate). Ohne `filename` öffnet sich ein Dateidialog |
+| `SpotID.FindSpots()` | Die Reflexe im geladenen Bild detektieren und anpassen, wie es die Schaltfläche **Find spots** tut |
+| `SpotID.Identify()` | Nach Orientierungen suchen, die die detektierten Reflexe erklären, wie es die Schaltfläche **Identify spots** tut, und die Anzahl der Kandidaten zurückgeben. Geprüft werden die in der Kristallliste des Hauptfensters ausgewählten Kristalle |
+| `SpotID.CandidateList()` | Die Liste der Orientierungskandidaten als CSV-Text zurückgeben |
+| `SpotID.SpotList()` | Die beobachteten Reflexe als CSV-Text zurückgeben, mit denselben Spalten wie **File > Save**. Zusammen mit `File.SaveText()` entsteht eine Datei, die `LoadFile()` wieder einlesen kann |
+
+`CandidateList()` liefert je Kandidat: Kristallname, die Z-X-Z-Eulerwinkel (Grad), die neun Elemente R11–R33 der Rotationsmatrix (Kristall- zu Laborsystem, auf Spaltenvektoren angewandt), das mittlere Residuenquadrat (nm⁻²) und die Zuordnung der beobachteten Reflexe zu *hkl*-Indizes. Die Kandidaten sind nach der Anzahl zugeordneter Reflexe (absteigend) und danach nach dem Residuum (aufsteigend) sortiert. Zahlen werden in der Invariant Culture geschrieben, das Dezimaltrennzeichen ist also immer ein Punkt.
+
+### Eigenschaften
+
+| Eigenschaft | Typ | Beschreibung |
+|-------------|-----|--------------|
+| `Energy` | double | Strahlenergie (keV für Röntgen und Elektronen, meV für Neutronen) |
+| `CameraLength` | double | Kameralänge (mm) |
+| `PixelSizeInMM` | double | Pixelgröße (mm); Lesen oder Schreiben stellt die Einheit der Pixelgröße zugleich auf mm |
+| `PixelSizeInNMinv` | double | Pixelgröße (nm⁻¹); Lesen oder Schreiben stellt die Einheit zugleich auf nm⁻¹ |
+| `MaxNumberOfSpots` | int | Höchstzahl der Reflexe, die `FindSpots()` detektieren darf |
+| `NearestNeighbor` | int | Kleinster zwischen detektierten Reflexen erlaubter Abstand (Pixel) |
+| `FittingRange` | double | Radius des Bereichs um jeden Reflex, der zur Peak-Anpassung dient (Pixel) |
+| `AcceptableError` | double | Toleranz der relativen Netzebenenabstandsdifferenz beim Zuordnen von Reflexen (%) |
+| `IgnoreProhibitedReflections` | bool | Kinematisch verbotene Reflexe ignorieren, die über Mehrfachbeugung dennoch auftreten können |
+| `MultiGrain` | bool | Nach mehreren Körnern suchen; `False` bedeutet ein einzelnes Korn |
+| `MaxNumberOfGrains` | int | Höchstzahl der gesuchten Kornorientierungen, wenn `MultiGrain` `True` ist |
+| `NumberOfDetectedSpots` | int | Anzahl der detektierten Reflexe (nur lesend) |
+| `NumberOfCandidates` | int | Anzahl der Kandidaten des letzten `Identify()` (nur lesend) |
 
 ---
 

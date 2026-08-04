@@ -33,6 +33,7 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 | Função / Propriedade | Descrição |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Obter/definir o índice do cristal selecionado |
+| `CrystalList.Count` | Número de cristais presentes na lista |
 | `CrystalList.Add()` | Anexar o cristal atual à lista |
 | `CrystalList.Replace()` | Substituir o cristal selecionado |
 | `CrystalList.Delete()` | Excluir o cristal selecionado |
@@ -42,21 +43,21 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 
 ---
 
-## Classe Direction
+## Classe Dir
 
 | Função | Descrição |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Definir a orientação por ângulos de Euler (radianos) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Definir a orientação por ângulos de Euler (graus) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias para `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Girar em torno de um eixo arbitrário (radianos) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Girar em torno de um eixo arbitrário (graus) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Girar em torno do eixo de zona [uvw] (radianos) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Girar em torno do eixo de zona [uvw] (graus) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Girar em torno da normal ao plano (hkl) (radianos) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Girar em torno da normal ao plano (hkl) (graus) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Definir a normal ao plano perpendicular à tela |
-| `Direction.ProjectAlongAxis(u, v, w)` | Definir o eixo de zona perpendicular à tela |
+| `Dir.Euler(phi, theta, psi)` | Definir a orientação por ângulos de Euler (radianos) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Definir a orientação por ângulos de Euler (graus) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias para `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Girar em torno de um eixo arbitrário (radianos) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Girar em torno de um eixo arbitrário (graus) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Girar em torno do eixo de zona [uvw] (radianos) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Girar em torno do eixo de zona [uvw] (graus) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Girar em torno da normal ao plano (hkl) (radianos) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Girar em torno da normal ao plano (hkl) (graus) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Definir a normal ao plano perpendicular à tela |
+| `Dir.ProjectAlongAxis(u, v, w)` | Definir o eixo de zona perpendicular à tela |
 
 ---
 
@@ -112,6 +113,50 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 |----------|-------------|
 | `SaveAsPng()` | Salvar o padrão atual como PNG |
 | `SpotInfo()` | Obter os dados dos pontos como string CSV |
+
+---
+
+## Classe SpotID
+
+Comanda o [Spot ID v2](../11-spot-id-v2.md) a partir de uma macro: carregar uma imagem ou uma lista de pontos, detectar os pontos, procurar orientações e ler os candidatos de volta, sem tocar na janela. `FindSpots()` e `Identify()` só retornam depois que o trabalho termina, portanto podem ser encadeados diretamente.
+
+### Controle da janela
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Fonte de onda
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Fluxo de trabalho
+
+| Função | Descrição |
+|--------|-----------|
+| `SpotID.LoadFile(filename)` | Carregar um arquivo como **File > Load** faz: `.csv` é lido como lista de pontos (uma imagem precisa ter sido carregada antes) e qualquer outra extensão como imagem de padrão de difração (dm3, dm4, mrc, ipa, tif e outros formatos suportados). Omita `filename` para abrir um diálogo de arquivo |
+| `SpotID.FindSpots()` | Detectar os pontos da imagem carregada e ajustá-los, como faz o botão **Find spots** |
+| `SpotID.Identify()` | Procurar orientações que expliquem os pontos detectados, como faz o botão **Identify spots**, e retornar o número de candidatos. Os cristais testados são os selecionados na lista de cristais da janela principal |
+| `SpotID.CandidateList()` | Retornar a lista de orientações candidatas como texto CSV |
+| `SpotID.SpotList()` | Retornar os pontos observados como texto CSV, com as mesmas colunas de **File > Save**. Combinado com `File.SaveText()`, gera um arquivo que `LoadFile()` consegue reler |
+
+`CandidateList()` fornece, para cada candidato: nome do cristal, os ângulos de Euler Z-X-Z (graus), os nove elementos R11–R33 da matriz de rotação (do referencial do cristal para o do laboratório, aplicada a vetores coluna), o resíduo quadrático médio (nm⁻²) e a atribuição dos pontos observados a índices *hkl*. Os candidatos vêm ordenados pelo número de pontos atribuídos (decrescente) e depois pelo resíduo (crescente). Os números são escritos na cultura invariante, então o separador decimal é sempre um ponto.
+
+### Propriedades
+
+| Propriedade | Tipo | Descrição |
+|-------------|------|-----------|
+| `Energy` | double | Energia do feixe (keV para raios X e elétrons, meV para nêutrons) |
+| `CameraLength` | double | Comprimento de câmara (mm) |
+| `PixelSizeInMM` | double | Tamanho do pixel (mm); lê-lo ou escrevê-lo também muda a unidade do tamanho do pixel para mm |
+| `PixelSizeInNMinv` | double | Tamanho do pixel (nm⁻¹); lê-lo ou escrevê-lo também muda a unidade para nm⁻¹ |
+| `MaxNumberOfSpots` | int | Número máximo de pontos que `FindSpots()` pode detectar |
+| `NearestNeighbor` | int | Separação mínima permitida entre pontos detectados (pixels) |
+| `FittingRange` | double | Raio da região em torno de cada ponto usada no ajuste do pico (pixels) |
+| `AcceptableError` | double | Tolerância da diferença relativa de espaçamento *d* ao associar pontos a reflexões (%) |
+| `IgnoreProhibitedReflections` | bool | Ignorar reflexões cinematicamente proibidas, que ainda assim podem aparecer por difração múltipla |
+| `MultiGrain` | bool | Procurar vários grãos; `False` significa um único grão |
+| `MaxNumberOfGrains` | int | Número máximo de orientações de grão procuradas quando `MultiGrain` é `True` |
+| `NumberOfDetectedSpots` | int | Número de pontos detectados (somente leitura) |
+| `NumberOfCandidates` | int | Número de candidatos encontrados pelo último `Identify()` (somente leitura) |
 
 ---
 

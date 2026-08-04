@@ -33,6 +33,7 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 | Funzione / Proprietà | Descrizione |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Ottieni/imposta l'indice del cristallo selezionato |
+| `CrystalList.Count` | Numero di cristalli presenti nell'elenco |
 | `CrystalList.Add()` | Aggiungi il cristallo corrente all'elenco |
 | `CrystalList.Replace()` | Sostituisci il cristallo selezionato |
 | `CrystalList.Delete()` | Elimina il cristallo selezionato |
@@ -42,21 +43,21 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 
 ---
 
-## Classe Direction
+## Classe Dir
 
 | Funzione | Descrizione |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Imposta l'orientazione tramite angoli di Eulero (radianti) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Imposta l'orientazione tramite angoli di Eulero (gradi) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias di `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Ruota attorno a un asse arbitrario (radianti) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Ruota attorno a un asse arbitrario (gradi) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Ruota attorno all'asse di zona [uvw] (radianti) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Ruota attorno all'asse di zona [uvw] (gradi) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Ruota attorno alla normale al piano (hkl) (radianti) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Ruota attorno alla normale al piano (hkl) (gradi) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Imposta la normale al piano perpendicolare allo schermo |
-| `Direction.ProjectAlongAxis(u, v, w)` | Imposta l'asse di zona perpendicolare allo schermo |
+| `Dir.Euler(phi, theta, psi)` | Imposta l'orientazione tramite angoli di Eulero (radianti) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Imposta l'orientazione tramite angoli di Eulero (gradi) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias di `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Ruota attorno a un asse arbitrario (radianti) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Ruota attorno a un asse arbitrario (gradi) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Ruota attorno all'asse di zona [uvw] (radianti) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Ruota attorno all'asse di zona [uvw] (gradi) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Ruota attorno alla normale al piano (hkl) (radianti) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Ruota attorno alla normale al piano (hkl) (gradi) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Imposta la normale al piano perpendicolare allo schermo |
+| `Dir.ProjectAlongAxis(u, v, w)` | Imposta l'asse di zona perpendicolare allo schermo |
 
 ---
 
@@ -112,6 +113,50 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 |----------|-------------|
 | `SaveAsPng()` | Salva il pattern corrente come PNG |
 | `SpotInfo()` | Ottieni i dati degli spot come stringa CSV |
+
+---
+
+## Classe SpotID
+
+Pilota [Spot ID v2](../11-spot-id-v2.md) da una macro: caricare un'immagine o un elenco di spot, rilevare gli spot, cercare le orientazioni e rileggere i candidati, senza toccare la finestra. `FindSpots()` e `Identify()` tornano solo a lavoro concluso, quindi si possono concatenare direttamente.
+
+### Controllo della finestra
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Sorgente dell'onda
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Flusso di lavoro
+
+| Funzione | Descrizione |
+|----------|-------------|
+| `SpotID.LoadFile(filename)` | Caricare un file come fa **File > Load**: un `.csv` viene letto come elenco di spot (occorre aver caricato prima un'immagine), qualsiasi altra estensione come immagine di figura di diffrazione (dm3, dm4, mrc, ipa, tif e altri formati supportati). Omettendo `filename` si apre una finestra di selezione |
+| `SpotID.FindSpots()` | Rilevare gli spot nell'immagine caricata e adattarli, come fa il pulsante **Find spots** |
+| `SpotID.Identify()` | Cercare le orientazioni che spiegano gli spot rilevati, come fa il pulsante **Identify spots**, e restituire il numero di candidati. I cristalli provati sono quelli selezionati nell'elenco cristalli della finestra principale |
+| `SpotID.CandidateList()` | Restituire l'elenco delle orientazioni candidate come testo CSV |
+| `SpotID.SpotList()` | Restituire gli spot osservati come testo CSV, con le stesse colonne di **File > Save**. Insieme a `File.SaveText()` produce un file che `LoadFile()` sa rileggere |
+
+`CandidateList()` fornisce, per ciascun candidato: nome del cristallo, gli angoli di Eulero Z-X-Z (gradi), i nove elementi R11–R33 della matrice di rotazione (dal riferimento del cristallo a quello del laboratorio, applicata a vettori colonna), il residuo quadratico medio (nm⁻²) e l'assegnazione degli spot osservati agli indici *hkl*. I candidati sono ordinati per numero di spot assegnati (decrescente) e poi per residuo (crescente). I numeri sono scritti in invariant culture, quindi il separatore decimale è sempre il punto.
+
+### Proprietà
+
+| Proprietà | Tipo | Descrizione |
+|-----------|------|-------------|
+| `Energy` | double | Energia del fascio (keV per raggi X ed elettroni, meV per neutroni) |
+| `CameraLength` | double | Lunghezza di camera (mm) |
+| `PixelSizeInMM` | double | Dimensione del pixel (mm); leggerla o scriverla porta anche l'unità della dimensione del pixel a mm |
+| `PixelSizeInNMinv` | double | Dimensione del pixel (nm⁻¹); leggerla o scriverla porta anche l'unità a nm⁻¹ |
+| `MaxNumberOfSpots` | int | Numero massimo di spot che `FindSpots()` può rilevare |
+| `NearestNeighbor` | int | Distanza minima consentita tra spot rilevati (pixel) |
+| `FittingRange` | double | Raggio della regione attorno a ogni spot usata per il fit del picco (pixel) |
+| `AcceptableError` | double | Tolleranza della differenza relativa di distanza *d* nell'associare spot e riflessi (%) |
+| `IgnoreProhibitedReflections` | bool | Ignorare i riflessi cinematicamente proibiti, che possono comunque comparire per diffrazione multipla |
+| `MultiGrain` | bool | Cercare più grani; `False` significa grano singolo |
+| `MaxNumberOfGrains` | int | Numero massimo di orientazioni di grano cercate quando `MultiGrain` è `True` |
+| `NumberOfDetectedSpots` | int | Numero di spot rilevati (sola lettura) |
+| `NumberOfCandidates` | int | Numero di candidati trovati dall'ultimo `Identify()` (sola lettura) |
 
 ---
 

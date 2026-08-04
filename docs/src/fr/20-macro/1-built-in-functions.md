@@ -33,6 +33,7 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 | Fonction / Propriété | Description |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Obtenir/définir l'index du cristal sélectionné |
+| `CrystalList.Count` | Nombre de cristaux présents dans la liste |
 | `CrystalList.Add()` | Ajouter le cristal actuel à la liste |
 | `CrystalList.Replace()` | Remplacer le cristal sélectionné |
 | `CrystalList.Delete()` | Supprimer le cristal sélectionné |
@@ -42,21 +43,21 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 
 ---
 
-## Classe Direction
+## Classe Dir
 
 | Fonction | Description |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Définir l'orientation par les angles d'Euler (radians) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Définir l'orientation par les angles d'Euler (degrés) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias pour `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Tourner autour d'un axe arbitraire (radians) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Tourner autour d'un axe arbitraire (degrés) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Tourner autour de l'axe de zone [uvw] (radians) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Tourner autour de l'axe de zone [uvw] (degrés) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Tourner autour de la normale au plan (hkl) (radians) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Tourner autour de la normale au plan (hkl) (degrés) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Placer la normale au plan perpendiculaire à l'écran |
-| `Direction.ProjectAlongAxis(u, v, w)` | Placer l'axe de zone perpendiculaire à l'écran |
+| `Dir.Euler(phi, theta, psi)` | Définir l'orientation par les angles d'Euler (radians) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Définir l'orientation par les angles d'Euler (degrés) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias pour `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Tourner autour d'un axe arbitraire (radians) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Tourner autour d'un axe arbitraire (degrés) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Tourner autour de l'axe de zone [uvw] (radians) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Tourner autour de l'axe de zone [uvw] (degrés) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Tourner autour de la normale au plan (hkl) (radians) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Tourner autour de la normale au plan (hkl) (degrés) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Placer la normale au plan perpendiculaire à l'écran |
+| `Dir.ProjectAlongAxis(u, v, w)` | Placer l'axe de zone perpendiculaire à l'écran |
 
 ---
 
@@ -112,6 +113,50 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 |----------|-------------|
 | `SaveAsPng()` | Enregistrer le diagramme actuel au format PNG |
 | `SpotInfo()` | Obtenir les données des taches sous forme de chaîne CSV |
+
+---
+
+## Classe SpotID
+
+Pilote [Spot ID v2](../11-spot-id-v2.md) depuis une macro : charger une image ou une liste de taches, détecter les taches, chercher les orientations et récupérer les candidats, sans toucher à la fenêtre. `FindSpots()` et `Identify()` ne rendent la main qu'une fois le travail terminé et peuvent donc s'enchaîner directement.
+
+### Contrôle de la fenêtre
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Source d'onde
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Déroulement
+
+| Fonction | Description |
+|----------|-------------|
+| `SpotID.LoadFile(filename)` | Charger un fichier comme le fait **File > Load** : un `.csv` est lu comme liste de taches (une image doit avoir été chargée au préalable), toute autre extension comme image de cliché de diffraction (dm3, dm4, mrc, ipa, tif et autres formats pris en charge). Sans `filename`, une boîte de dialogue s'ouvre |
+| `SpotID.FindSpots()` | Détecter les taches de l'image chargée et les ajuster, comme le fait le bouton **Find spots** |
+| `SpotID.Identify()` | Chercher les orientations qui expliquent les taches détectées, comme le fait le bouton **Identify spots**, et renvoyer le nombre de candidats. Les cristaux testés sont ceux sélectionnés dans la liste de cristaux de la fenêtre principale |
+| `SpotID.CandidateList()` | Renvoyer la liste des orientations candidates sous forme de texte CSV |
+| `SpotID.SpotList()` | Renvoyer les taches observées sous forme de texte CSV, avec les mêmes colonnes que **File > Save**. Associé à `File.SaveText()`, il produit un fichier que `LoadFile()` sait relire |
+
+`CandidateList()` donne, pour chaque candidat : le nom du cristal, les angles d'Euler Z-X-Z (degrés), les neuf éléments R11–R33 de la matrice de rotation (repère du cristal vers le repère du laboratoire, appliquée à des vecteurs colonnes), le résidu quadratique moyen (nm⁻²) et l'affectation des taches observées à des indices *hkl*. Les candidats sont classés par nombre de taches affectées (décroissant), puis par résidu (croissant). Les nombres sont écrits en culture invariante : le séparateur décimal est toujours un point.
+
+### Propriétés
+
+| Propriété | Type | Description |
+|-----------|------|-------------|
+| `Energy` | double | Énergie du faisceau (keV pour les rayons X et les électrons, meV pour les neutrons) |
+| `CameraLength` | double | Longueur de caméra (mm) |
+| `PixelSizeInMM` | double | Taille de pixel (mm) ; la lire ou l'écrire bascule aussi l'unité de taille de pixel en mm |
+| `PixelSizeInNMinv` | double | Taille de pixel (nm⁻¹) ; la lire ou l'écrire bascule aussi l'unité en nm⁻¹ |
+| `MaxNumberOfSpots` | int | Nombre maximal de taches que `FindSpots()` peut détecter |
+| `NearestNeighbor` | int | Écart minimal autorisé entre taches détectées (pixels) |
+| `FittingRange` | double | Rayon de la région autour de chaque tache servant à l'ajustement du pic (pixels) |
+| `AcceptableError` | double | Tolérance sur l'écart relatif de distance *d* lors de l'appariement des taches aux réflexions (%) |
+| `IgnoreProhibitedReflections` | bool | Ignorer les réflexions cinématiquement interdites, qui peuvent tout de même apparaître par diffraction multiple |
+| `MultiGrain` | bool | Chercher plusieurs grains ; `False` signifie un grain unique |
+| `MaxNumberOfGrains` | int | Nombre maximal d'orientations de grains recherchées lorsque `MultiGrain` vaut `True` |
+| `NumberOfDetectedSpots` | int | Nombre de taches détectées (lecture seule) |
+| `NumberOfCandidates` | int | Nombre de candidats trouvés par le dernier `Identify()` (lecture seule) |
 
 ---
 

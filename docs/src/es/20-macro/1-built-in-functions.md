@@ -33,6 +33,7 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 | Función / Propiedad | Descripción |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Obtener/establecer el índice del cristal seleccionado |
+| `CrystalList.Count` | Número de cristales que hay en la lista |
 | `CrystalList.Add()` | Añadir el cristal actual a la lista |
 | `CrystalList.Replace()` | Reemplazar el cristal seleccionado |
 | `CrystalList.Delete()` | Eliminar el cristal seleccionado |
@@ -42,21 +43,21 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 
 ---
 
-## Clase Direction
+## Clase Dir
 
 | Función | Descripción |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Establecer la orientación mediante ángulos de Euler (radianes) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Establecer la orientación mediante ángulos de Euler (grados) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias de `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Rotar alrededor de un eje arbitrario (radianes) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Rotar alrededor de un eje arbitrario (grados) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Rotar alrededor del eje de zona [uvw] (radianes) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Rotar alrededor del eje de zona [uvw] (grados) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Rotar alrededor de la normal del plano (hkl) (radianes) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotar alrededor de la normal del plano (hkl) (grados) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Situar la normal del plano perpendicular a la pantalla |
-| `Direction.ProjectAlongAxis(u, v, w)` | Situar el eje de zona perpendicular a la pantalla |
+| `Dir.Euler(phi, theta, psi)` | Establecer la orientación mediante ángulos de Euler (radianes) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Establecer la orientación mediante ángulos de Euler (grados) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias de `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Rotar alrededor de un eje arbitrario (radianes) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Rotar alrededor de un eje arbitrario (grados) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Rotar alrededor del eje de zona [uvw] (radianes) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Rotar alrededor del eje de zona [uvw] (grados) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Rotar alrededor de la normal del plano (hkl) (radianes) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotar alrededor de la normal del plano (hkl) (grados) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Situar la normal del plano perpendicular a la pantalla |
+| `Dir.ProjectAlongAxis(u, v, w)` | Situar el eje de zona perpendicular a la pantalla |
 
 ---
 
@@ -112,6 +113,50 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 |----------|-------------|
 | `SaveAsPng()` | Guardar el patrón actual como PNG |
 | `SpotInfo()` | Obtener los datos de reflexiones como cadena CSV |
+
+---
+
+## Clase SpotID
+
+Controla [Spot ID v2](../11-spot-id-v2.md) desde una macro: cargar una imagen o una lista de puntos, detectar los puntos, buscar orientaciones y recuperar los candidatos, sin tocar la ventana. `FindSpots()` e `Identify()` solo regresan cuando el trabajo ha terminado, así que pueden encadenarse directamente.
+
+### Control de la ventana
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Fuente de onda
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Flujo de trabajo
+
+| Función | Descripción |
+|---------|-------------|
+| `SpotID.LoadFile(filename)` | Cargar un archivo igual que **File > Load**: `.csv` se lee como lista de puntos (antes debe haberse cargado una imagen) y cualquier otra extensión como imagen de patrón de difracción (dm3, dm4, mrc, ipa, tif y otros formatos admitidos). Omite `filename` para abrir un diálogo de archivo |
+| `SpotID.FindSpots()` | Detectar los puntos de la imagen cargada y ajustarlos, como hace el botón **Find spots** |
+| `SpotID.Identify()` | Buscar orientaciones que expliquen los puntos detectados, como hace el botón **Identify spots**, y devolver el número de candidatos. Se prueban los cristales seleccionados en la lista de cristales de la ventana principal |
+| `SpotID.CandidateList()` | Devolver la lista de orientaciones candidatas como texto CSV |
+| `SpotID.SpotList()` | Devolver los puntos observados como texto CSV, con las mismas columnas que **File > Save**. Combínalo con `File.SaveText()` para escribir un archivo que `LoadFile()` pueda volver a leer |
+
+`CandidateList()` da, por cada candidato: nombre del cristal, los ángulos de Euler Z-X-Z (grados), los nueve elementos R11–R33 de la matriz de rotación (del sistema del cristal al del laboratorio, aplicada a vectores columna), el residuo cuadrático medio (nm⁻²) y la asignación de los puntos observados a índices *hkl*. Los candidatos vienen ordenados por número de puntos asignados (descendente) y luego por el residuo (ascendente). Los números se escriben en la cultura invariante, así que el separador decimal es siempre un punto.
+
+### Propiedades
+
+| Propiedad | Tipo | Descripción |
+|-----------|------|-------------|
+| `Energy` | double | Energía del haz (keV para rayos X y electrones, meV para neutrones) |
+| `CameraLength` | double | Longitud de cámara (mm) |
+| `PixelSizeInMM` | double | Tamaño de píxel (mm); leerlo o escribirlo cambia también la unidad del tamaño de píxel a mm |
+| `PixelSizeInNMinv` | double | Tamaño de píxel (nm⁻¹); leerlo o escribirlo cambia también la unidad a nm⁻¹ |
+| `MaxNumberOfSpots` | int | Número máximo de puntos que `FindSpots()` puede detectar |
+| `NearestNeighbor` | int | Separación mínima permitida entre puntos detectados (píxeles) |
+| `FittingRange` | double | Radio de la región alrededor de cada punto empleada en el ajuste del pico (píxeles) |
+| `AcceptableError` | double | Tolerancia de la diferencia relativa de espaciado *d* al emparejar puntos con reflexiones (%) |
+| `IgnoreProhibitedReflections` | bool | Ignorar las reflexiones prohibidas cinemáticamente, que aun así pueden aparecer por difracción múltiple |
+| `MultiGrain` | bool | Buscar varios granos; `False` significa un solo grano |
+| `MaxNumberOfGrains` | int | Número máximo de orientaciones de grano buscadas cuando `MultiGrain` es `True` |
+| `NumberOfDetectedSpots` | int | Número de puntos detectados (solo lectura) |
+| `NumberOfCandidates` | int | Número de candidatos hallados por el último `Identify()` (solo lectura) |
 
 ---
 

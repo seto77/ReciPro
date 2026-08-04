@@ -33,6 +33,7 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 | 함수 / 속성 | 설명 |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | 선택한 결정의 인덱스를 가져오기/설정 |
+| `CrystalList.Count` | 결정 목록에 등록된 결정의 수 |
 | `CrystalList.Add()` | 현재 결정을 목록에 추가 |
 | `CrystalList.Replace()` | 선택한 결정을 교체 |
 | `CrystalList.Delete()` | 선택한 결정을 삭제 |
@@ -42,21 +43,21 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 
 ---
 
-## Direction 클래스
+## Dir 클래스
 
 | 함수 | 설명 |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | 오일러 각으로 방위를 설정 (라디안) |
-| `Direction.EulerInDegree(phi, theta, psi)` | 오일러 각으로 방위를 설정 (도) |
-| `Direction.EulerInDeg(phi, theta, psi)` | `EulerInDegree`의 별칭 |
-| `Direction.Rotate(ax, ay, az, angle)` | 임의의 축을 중심으로 회전 (라디안) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | 임의의 축을 중심으로 회전 (도) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | 정대축 [uvw]을 중심으로 회전 (라디안) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | 정대축 [uvw]을 중심으로 회전 (도) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | 면 법선 (hkl)을 중심으로 회전 (라디안) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | 면 법선 (hkl)을 중심으로 회전 (도) |
-| `Direction.ProjectAlongPlane(h, k, l)` | 면 법선을 화면에 수직으로 설정 |
-| `Direction.ProjectAlongAxis(u, v, w)` | 정대축을 화면에 수직으로 설정 |
+| `Dir.Euler(phi, theta, psi)` | 오일러 각으로 방위를 설정 (라디안) |
+| `Dir.EulerInDegree(phi, theta, psi)` | 오일러 각으로 방위를 설정 (도) |
+| `Dir.EulerInDeg(phi, theta, psi)` | `EulerInDegree`의 별칭 |
+| `Dir.Rotate(ax, ay, az, angle)` | 임의의 축을 중심으로 회전 (라디안) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | 임의의 축을 중심으로 회전 (도) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | 정대축 [uvw]을 중심으로 회전 (라디안) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | 정대축 [uvw]을 중심으로 회전 (도) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | 면 법선 (hkl)을 중심으로 회전 (라디안) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 면 법선 (hkl)을 중심으로 회전 (도) |
+| `Dir.ProjectAlongPlane(h, k, l)` | 면 법선을 화면에 수직으로 설정 |
+| `Dir.ProjectAlongAxis(u, v, w)` | 정대축을 화면에 수직으로 설정 |
 
 ---
 
@@ -112,6 +113,50 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 |----------|-------------|
 | `SaveAsPng()` | 현재 패턴을 PNG로 저장 |
 | `SpotInfo()` | 스폿 데이터를 CSV 문자열로 가져오기 |
+
+---
+
+## SpotID 클래스
+
+[Spot ID v2](../11-spot-id-v2.md) 를 매크로에서 구동합니다. 이미지 또는 스폿 목록 읽기 → 스폿 검출 → 방위 동정 → 후보 목록 취득까지를 창을 조작하지 않고 실행할 수 있습니다. `FindSpots()` 와 `Identify()` 는 처리가 끝난 뒤에 돌아오므로 그대로 이어서 호출할 수 있습니다.
+
+### 창 조작
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### 입사파의 종류
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### 처리 흐름
+
+| 함수 | 설명 |
+|------|------|
+| `SpotID.LoadFile(filename)` | **File > Load** 와 같은 방식으로 파일을 읽는다. `.csv` 는 스폿 목록으로(먼저 이미지를 읽어야 함), 그 밖의 확장자는 회절 도형 이미지로 읽는다(dm3, dm4, mrc, ipa, tif 등 지원 형식). `filename` 을 생략하면 파일 선택 대화 상자를 연다 |
+| `SpotID.FindSpots()` | 읽어들인 이미지에서 스폿을 검출하고 피팅한다(**Find spots** 버튼과 동일) |
+| `SpotID.Identify()` | 검출된 스폿을 설명하는 방위를 탐색하고(**Identify spots** 버튼과 동일) 후보 수를 반환한다. 대상 결정은 메인 창의 결정 목록에서 선택 중인 것 |
+| `SpotID.CandidateList()` | 후보 방위 목록을 CSV 텍스트로 반환한다 |
+| `SpotID.SpotList()` | 관측 스폿 목록을 CSV 텍스트로 반환한다(열은 **File > Save** 와 동일). `File.SaveText()` 와 함께 저장하면 `LoadFile()` 로 다시 읽을 수 있다 |
+
+`CandidateList()` 는 후보마다 결정 이름, Z-X-Z 오일러 각(도), 회전 행렬의 9 성분 R11–R33(결정 좌표계 → 실험실 좌표계, 열벡터에 작용), 잔차의 평균 제곱(nm⁻²), 관측 스폿과 *hkl* 지수의 대응을 반환합니다. 후보는 할당된 스폿 수의 내림차순, 그다음 잔차의 오름차순으로 정렬됩니다. 숫자는 invariant culture 로 기록되므로 소수점은 항상 마침표입니다.
+
+### 속성
+
+| 속성 | 형 | 설명 |
+|------|----|------|
+| `Energy` | double | 입사선의 에너지(X선·전자선은 keV, 중성자선은 meV) |
+| `CameraLength` | double | 카메라 길이(mm) |
+| `PixelSizeInMM` | double | 이미지의 픽셀 크기(mm). 읽거나 쓰면 픽셀 크기 단위도 mm 로 전환된다 |
+| `PixelSizeInNMinv` | double | 이미지의 픽셀 크기(nm⁻¹). 읽거나 쓰면 단위도 nm⁻¹ 로 전환된다 |
+| `MaxNumberOfSpots` | int | `FindSpots()` 가 검출하는 스폿 수의 상한 |
+| `NearestNeighbor` | int | 검출되는 스폿 사이에 허용하는 최소 간격(픽셀) |
+| `FittingRange` | double | 피크 피팅에 사용하는 각 스폿 주위 영역의 반지름(픽셀) |
+| `AcceptableError` | double | 관측 스폿을 후보 반사에 대응시킬 때 허용하는 면간격의 상대차(%) |
+| `IgnoreProhibitedReflections` | bool | 다중 회절로 나타날 수 있는 소광칙 금지 반사를 무시할지 여부 |
+| `MultiGrain` | bool | 여러 결정립을 탐색할지 여부. `False` 이면 단결정 |
+| `MaxNumberOfGrains` | int | `MultiGrain` 이 `True` 일 때 탐색하는 결정립 방위의 최대 수 |
+| `NumberOfDetectedSpots` | int | 검출된 스폿 수(읽기 전용) |
+| `NumberOfCandidates` | int | 직전 `Identify()` 가 찾은 후보 수(읽기 전용) |
 
 ---
 

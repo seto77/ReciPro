@@ -33,6 +33,7 @@ Complete reference of classes and functions available in ReciPro macros.
 | Function / Property | Description |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | Get/set selected crystal index |
+| `CrystalList.Count` | Number of crystals currently in the list |
 | `CrystalList.Add()` | Append current crystal to list |
 | `CrystalList.Replace()` | Replace selected crystal |
 | `CrystalList.Delete()` | Delete selected crystal |
@@ -42,21 +43,21 @@ Complete reference of classes and functions available in ReciPro macros.
 
 ---
 
-## Direction class
+## Dir class
 
 | Function | Description |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | Set orientation by Euler angles (radians) |
-| `Direction.EulerInDegree(phi, theta, psi)` | Set orientation by Euler angles (degrees) |
-| `Direction.EulerInDeg(phi, theta, psi)` | Alias for `EulerInDegree` |
-| `Direction.Rotate(ax, ay, az, angle)` | Rotate around arbitrary axis (radians) |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | Rotate around arbitrary axis (degrees) |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | Rotate around zone axis [uvw] (radians) |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | Rotate around zone axis [uvw] (degrees) |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | Rotate around plane normal (hkl) (radians) |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotate around plane normal (hkl) (degrees) |
-| `Direction.ProjectAlongPlane(h, k, l)` | Set plane normal perpendicular to screen |
-| `Direction.ProjectAlongAxis(u, v, w)` | Set zone axis perpendicular to screen |
+| `Dir.Euler(phi, theta, psi)` | Set orientation by Euler angles (radians) |
+| `Dir.EulerInDegree(phi, theta, psi)` | Set orientation by Euler angles (degrees) |
+| `Dir.EulerInDeg(phi, theta, psi)` | Alias for `EulerInDegree` |
+| `Dir.Rotate(ax, ay, az, angle)` | Rotate around arbitrary axis (radians) |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | Rotate around arbitrary axis (degrees) |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | Rotate around zone axis [uvw] (radians) |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | Rotate around zone axis [uvw] (degrees) |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | Rotate around plane normal (hkl) (radians) |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotate around plane normal (hkl) (degrees) |
+| `Dir.ProjectAlongPlane(h, k, l)` | Set plane normal perpendicular to screen |
+| `Dir.ProjectAlongAxis(u, v, w)` | Set zone axis perpendicular to screen |
 
 ---
 
@@ -112,6 +113,50 @@ Complete reference of classes and functions available in ReciPro macros.
 |----------|-------------|
 | `SaveAsPng()` | Save current pattern as PNG |
 | `SpotInfo()` | Get spot data as CSV string |
+
+---
+
+## SpotID class
+
+Drives [Spot ID v2](../11-spot-id-v2.md) from a macro: load an image or a spot list, detect the spots, search for orientations and read the candidates back, without touching the window. `FindSpots()` and `Identify()` return only once the work has finished, so they can be chained directly.
+
+### Window control
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### Wave source
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### Workflow
+
+| Function | Description |
+|----------|-------------|
+| `SpotID.LoadFile(filename)` | Load a file as **File > Load** does: `.csv` is read as a spot list (an image must be loaded first), any other extension as a diffraction pattern image (dm3, dm4, mrc, ipa, tif and other supported formats). Omit `filename` to open a file dialog |
+| `SpotID.FindSpots()` | Detect the spots in the loaded image and fit them, as the **Find spots** button does |
+| `SpotID.Identify()` | Search for orientations that explain the detected spots, as the **Identify spots** button does, and return the number of candidates. The crystals tested are those selected in the crystal list of the main window |
+| `SpotID.CandidateList()` | Return the candidate orientation list as CSV text |
+| `SpotID.SpotList()` | Return the observed spots as CSV text, with the same columns as **File > Save**. Pair it with `File.SaveText()` to write a file that `LoadFile()` can read back |
+
+`CandidateList()` gives, for each candidate: crystal name, the Z-X-Z Euler angles (deg), the nine rotation-matrix elements R11–R33 (crystal frame to laboratory frame, applied to column vectors), the mean-squared residual (nm⁻²), and the assignment of observed spots to *hkl* indices. Candidates come ordered by the number of assigned spots (descending), then by the residual (ascending). Numbers are written in the invariant culture, so the decimal separator is always a period.
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `Energy` | double | Beam energy (keV for X-rays and electrons, meV for neutrons) |
+| `CameraLength` | double | Camera length (mm) |
+| `PixelSizeInMM` | double | Pixel size (mm); reading or writing it also switches the pixel-size unit to mm |
+| `PixelSizeInNMinv` | double | Pixel size (nm⁻¹); reading or writing it also switches the unit to nm⁻¹ |
+| `MaxNumberOfSpots` | int | Maximum number of spots `FindSpots()` may detect |
+| `NearestNeighbor` | int | Minimum separation allowed between detected spots (pixels) |
+| `FittingRange` | double | Radius of the region around each spot used for peak fitting (pixels) |
+| `AcceptableError` | double | Tolerance of the relative *d*-spacing difference when matching spots to reflections (%) |
+| `IgnoreProhibitedReflections` | bool | Ignore kinematically forbidden reflections, which can still appear via multiple diffraction |
+| `MultiGrain` | bool | Search for several grains; `False` means a single grain |
+| `MaxNumberOfGrains` | int | Maximum number of grain orientations searched when `MultiGrain` is `True` |
+| `NumberOfDetectedSpots` | int | Number of detected spots (read-only) |
+| `NumberOfCandidates` | int | Number of candidates found by the last `Identify()` (read-only) |
 
 ---
 

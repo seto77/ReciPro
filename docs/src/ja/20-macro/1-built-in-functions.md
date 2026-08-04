@@ -39,6 +39,7 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 | 関数/プロパティ | 説明 |
 |----------------|------|
 | `CrystalList.SelectedIndex` | 選択中の結晶のインデックス（取得/設定） |
+| `CrystalList.Count` | 結晶リストに登録されている結晶の数 |
 | `CrystalList.Add()` | 現在の結晶をリスト末尾に追加 |
 | `CrystalList.Replace()` | 選択中の結晶を現在の結晶で置換 |
 | `CrystalList.Delete()` | 選択中の結晶を削除 |
@@ -48,23 +49,23 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 
 ---
 
-## Direction クラス
+## Dir クラス
 
 結晶方位の設定・回転を行います。角度の単位に注意してください（ラジアン版とデグリー版があります）。
 
 | 関数 | 説明 |
 |------|------|
-| `Direction.Euler(phi, theta, psi)` | オイラー角で方位を設定（ラジアン） |
-| `Direction.EulerInDegree(phi, theta, psi)` | オイラー角で方位を設定（度） |
-| `Direction.EulerInDeg(phi, theta, psi)` | `EulerInDegree` の別名 |
-| `Direction.Rotate(axis_x, axis_y, axis_z, angle)` | 任意軸周りに回転（ラジアン） |
-| `Direction.RotateInDeg(axis_x, axis_y, axis_z, angle)` | 任意軸周りに回転（度） |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | 晶帯軸 [uvw] 周りに回転（ラジアン） |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | 晶帯軸 [uvw] 周りに回転（度） |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | 結晶面 (hkl) 法線周りに回転（ラジアン） |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | 結晶面 (hkl) 法線周りに回転（度） |
-| `Direction.ProjectAlongPlane(h, k, l)` | 結晶面 (hkl) の法線をスクリーン垂直方向に設定 |
-| `Direction.ProjectAlongAxis(u, v, w)` | 晶帯軸 [uvw] をスクリーン垂直方向に設定 |
+| `Dir.Euler(phi, theta, psi)` | オイラー角で方位を設定（ラジアン） |
+| `Dir.EulerInDegree(phi, theta, psi)` | オイラー角で方位を設定（度） |
+| `Dir.EulerInDeg(phi, theta, psi)` | `EulerInDegree` の別名 |
+| `Dir.Rotate(axis_x, axis_y, axis_z, angle)` | 任意軸周りに回転（ラジアン） |
+| `Dir.RotateInDeg(axis_x, axis_y, axis_z, angle)` | 任意軸周りに回転（度） |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | 晶帯軸 [uvw] 周りに回転（ラジアン） |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | 晶帯軸 [uvw] 周りに回転（度） |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | 結晶面 (hkl) 法線周りに回転（ラジアン） |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 結晶面 (hkl) 法線周りに回転（度） |
+| `Dir.ProjectAlongPlane(h, k, l)` | 結晶面 (hkl) の法線をスクリーン垂直方向に設定 |
+| `Dir.ProjectAlongAxis(u, v, w)` | 晶帯軸 [uvw] をスクリーン垂直方向に設定 |
 
 ---
 
@@ -138,6 +139,50 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 |------|------|
 | `DifSim.SaveAsPng()` | 現在の回折パターンをPNGファイルとして保存 |
 | `DifSim.SpotInfo()` | スポット情報をCSV形式で取得 |
+
+---
+
+## SpotID クラス
+
+[Spot ID v2](../11-spot-id-v2.md) をマクロから駆動します。画像またはスポット一覧の読み込み → スポット検出 → 方位同定 → 候補リストの取得までを、ウィンドウを操作せずに実行できます。`FindSpots()` と `Identify()` は処理の完了を待って戻るので、そのまま続けて呼べます。
+
+### ウィンドウ操作
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### 入射波の種類
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### 処理の流れ
+
+| 関数 | 説明 |
+|------|------|
+| `SpotID.LoadFile(filename)` | **File > Load** と同じ動作でファイルを読み込む。`.csv` はスポット一覧として（先に画像の読み込みが必要）、それ以外の拡張子は回折図形の画像として読む（dm3、dm4、mrc、ipa、tif ほか対応形式）。`filename` を省略するとファイル選択ダイアログを開く |
+| `SpotID.FindSpots()` | 読み込んだ画像からスポットを検出してフィッティングする（**Find spots** ボタンと同じ） |
+| `SpotID.Identify()` | 検出したスポットを説明する方位を探索し（**Identify spots** ボタンと同じ）、候補数を返す。対象となる結晶はメインウィンドウの結晶リストで選択中のもの |
+| `SpotID.CandidateList()` | 候補方位の一覧を CSV テキストで返す |
+| `SpotID.SpotList()` | 観測スポットの一覧を CSV テキストで返す（列は **File > Save** と同じ）。`File.SaveText()` と組み合わせて保存すれば `LoadFile()` で読み戻せる |
+
+`CandidateList()` は候補ごとに、結晶名・Z-X-Z オイラー角（度）・回転行列の 9 成分 R11〜R33（結晶座標系→実験室座標系、列ベクトルに作用）・残差の平均二乗（nm⁻²）・観測スポットと *hkl* 指数の対応を返します。候補は割り当てられたスポット数の降順、次いで残差の昇順に並びます。数値は invariant culture で書き出されるため、小数点は常にピリオドです。
+
+### プロパティ
+
+| プロパティ | 型 | 説明 |
+|-----------|---|------|
+| `Energy` | double | 入射線のエネルギー（X線・電子線は keV、中性子線は meV） |
+| `CameraLength` | double | カメラ長（mm） |
+| `PixelSizeInMM` | double | 画像のピクセルサイズ（mm）。読み書きするとピクセルサイズの単位も mm に切り替わる |
+| `PixelSizeInNMinv` | double | 画像のピクセルサイズ（nm⁻¹）。読み書きすると単位も nm⁻¹ に切り替わる |
+| `MaxNumberOfSpots` | int | `FindSpots()` が検出するスポット数の上限 |
+| `NearestNeighbor` | int | 検出するスポット同士に許す最小間隔（ピクセル） |
+| `FittingRange` | double | ピークフィッティングに使う、各スポット周囲の領域の半径（ピクセル） |
+| `AcceptableError` | double | 観測スポットを候補反射に対応づけるときに許す面間隔の相対差（%） |
+| `IgnoreProhibitedReflections` | bool | 多重回折で現れうる消滅則禁制反射を無視するか |
+| `MultiGrain` | bool | 複数の結晶粒を探索するか。`False` なら単結晶 |
+| `MaxNumberOfGrains` | int | `MultiGrain` が `True` のときに探索する粒方位の最大数 |
+| `NumberOfDetectedSpots` | int | 検出されたスポット数（読み取り専用） |
+| `NumberOfCandidates` | int | 直前の `Identify()` が見つけた候補数（読み取り専用） |
 
 ---
 

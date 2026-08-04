@@ -33,6 +33,7 @@ ReciPro 巨集中可用的類別與函式完整參考。
 | 函式 / 屬性 | 說明 |
 |---------------------|-------------|
 | `CrystalList.SelectedIndex` | 取得/設定所選晶體的索引 |
+| `CrystalList.Count` | 晶體清單中登錄的晶體數量 |
 | `CrystalList.Add()` | 將目前晶體附加到清單 |
 | `CrystalList.Replace()` | 取代所選晶體 |
 | `CrystalList.Delete()` | 刪除所選晶體 |
@@ -42,21 +43,21 @@ ReciPro 巨集中可用的類別與函式完整參考。
 
 ---
 
-## Direction 類別
+## Dir 類別
 
 | 函式 | 說明 |
 |----------|-------------|
-| `Direction.Euler(phi, theta, psi)` | 以歐拉角設定取向（弧度） |
-| `Direction.EulerInDegree(phi, theta, psi)` | 以歐拉角設定取向（度） |
-| `Direction.EulerInDeg(phi, theta, psi)` | `EulerInDegree` 的別名 |
-| `Direction.Rotate(ax, ay, az, angle)` | 繞任意軸旋轉（弧度） |
-| `Direction.RotateInDeg(ax, ay, az, angle)` | 繞任意軸旋轉（度） |
-| `Direction.RotateAroundAxis(u, v, w, angle)` | 繞晶帶軸 [uvw] 旋轉（弧度） |
-| `Direction.RotateAroundAxisInDeg(u, v, w, angle)` | 繞晶帶軸 [uvw] 旋轉（度） |
-| `Direction.RotateAroundPlane(h, k, l, angle)` | 繞晶面法線 (hkl) 旋轉（弧度） |
-| `Direction.RotateAroundPlaneInDeg(h, k, l, angle)` | 繞晶面法線 (hkl) 旋轉（度） |
-| `Direction.ProjectAlongPlane(h, k, l)` | 將晶面法線設為垂直於螢幕 |
-| `Direction.ProjectAlongAxis(u, v, w)` | 將晶帶軸設為垂直於螢幕 |
+| `Dir.Euler(phi, theta, psi)` | 以歐拉角設定取向（弧度） |
+| `Dir.EulerInDegree(phi, theta, psi)` | 以歐拉角設定取向（度） |
+| `Dir.EulerInDeg(phi, theta, psi)` | `EulerInDegree` 的別名 |
+| `Dir.Rotate(ax, ay, az, angle)` | 繞任意軸旋轉（弧度） |
+| `Dir.RotateInDeg(ax, ay, az, angle)` | 繞任意軸旋轉（度） |
+| `Dir.RotateAroundAxis(u, v, w, angle)` | 繞晶帶軸 [uvw] 旋轉（弧度） |
+| `Dir.RotateAroundAxisInDeg(u, v, w, angle)` | 繞晶帶軸 [uvw] 旋轉（度） |
+| `Dir.RotateAroundPlane(h, k, l, angle)` | 繞晶面法線 (hkl) 旋轉（弧度） |
+| `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 繞晶面法線 (hkl) 旋轉（度） |
+| `Dir.ProjectAlongPlane(h, k, l)` | 將晶面法線設為垂直於螢幕 |
+| `Dir.ProjectAlongAxis(u, v, w)` | 將晶帶軸設為垂直於螢幕 |
 
 ---
 
@@ -112,6 +113,50 @@ ReciPro 巨集中可用的類別與函式完整參考。
 |----------|-------------|
 | `SaveAsPng()` | 將目前圖樣儲存為 PNG |
 | `SpotInfo()` | 以 CSV 字串取得繞射點資料 |
+
+---
+
+## SpotID 類別
+
+從巨集驅動 [Spot ID v2](../11-spot-id-v2.md)：讀入影像或斑點清單 → 偵測斑點 → 標定取向 → 取回候選清單，全程無須操作視窗。`FindSpots()` 與 `Identify()` 會等處理結束後才返回，因此可以直接接續呼叫。
+
+### 視窗操作
+
+`SpotID.Open()` / `SpotID.Close()`
+
+### 入射波種類
+
+`SpotID.Source_Xray()` / `SpotID.Source_Electron()` / `SpotID.Source_Neutron()`
+
+### 處理流程
+
+| 函式 | 說明 |
+|------|------|
+| `SpotID.LoadFile(filename)` | 以 **File > Load** 的方式讀入檔案：`.csv` 視為斑點清單讀取（須先讀入影像），其他副檔名則視為繞射圖樣影像讀取（dm3、dm4、mrc、ipa、tif 等支援格式）。省略 `filename` 則開啟檔案選擇對話方塊 |
+| `SpotID.FindSpots()` | 在讀入的影像中偵測斑點並擬合（等同 **Find spots** 按鈕） |
+| `SpotID.Identify()` | 搜尋能解釋所偵測斑點的取向（等同 **Identify spots** 按鈕），並回傳候選數。參與檢驗的晶體為主視窗晶體清單中選取的那些 |
+| `SpotID.CandidateList()` | 以 CSV 文字回傳候選取向清單 |
+| `SpotID.SpotList()` | 以 CSV 文字回傳觀測斑點清單（欄位與 **File > Save** 相同）。與 `File.SaveText()` 搭配儲存後，可用 `LoadFile()` 再次讀入 |
+
+`CandidateList()` 對每個候選回傳：晶體名稱、Z-X-Z 尤拉角（度）、旋轉矩陣的九個元素 R11–R33（晶體座標系→實驗室座標系，作用於行向量）、殘差的均方（nm⁻²），以及觀測斑點與 *hkl* 指數的對應。候選依已指派斑點數遞減、其次依殘差遞增排列。數值以 invariant culture 寫出，因此小數點一律為句點。
+
+### 屬性
+
+| 屬性 | 型別 | 說明 |
+|------|------|------|
+| `Energy` | double | 入射線能量（X 光與電子束為 keV，中子束為 meV） |
+| `CameraLength` | double | 相機長度（mm） |
+| `PixelSizeInMM` | double | 影像的像素尺寸（mm）。讀寫此屬性時也會把像素尺寸單位切換為 mm |
+| `PixelSizeInNMinv` | double | 影像的像素尺寸（nm⁻¹）。讀寫此屬性時也會把單位切換為 nm⁻¹ |
+| `MaxNumberOfSpots` | int | `FindSpots()` 可偵測的斑點數上限 |
+| `NearestNeighbor` | int | 所偵測斑點之間允許的最小間隔（像素） |
+| `FittingRange` | double | 峰形擬合所用、每個斑點周圍區域的半徑（像素） |
+| `AcceptableError` | double | 將觀測斑點對應到候選繞射時允許的面間距相對差（%） |
+| `IgnoreProhibitedReflections` | bool | 是否忽略運動學消光但可經多重繞射出現的繞射 |
+| `MultiGrain` | bool | 是否搜尋多個晶粒；`False` 表示單晶 |
+| `MaxNumberOfGrains` | int | `MultiGrain` 為 `True` 時搜尋的晶粒取向數上限 |
+| `NumberOfDetectedSpots` | int | 已偵測的斑點數（唯讀） |
+| `NumberOfCandidates` | int | 上次 `Identify()` 找到的候選數（唯讀） |
 
 ---
 
