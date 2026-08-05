@@ -45,6 +45,35 @@ ReciPro 使用三个欧拉角 — **Ψ**、**θ** 和 **Φ** — 按 **Z–X–Z
 
 由当前 (Φ, θ, Ψ) 生成的 3 × 3 矩阵。使用 **复制到 Excel** / **从 Excel 粘贴** 可将矩阵通过电子表格往返传输。
 
+该矩阵在 ReciPro 中出现的所有位置都遵循同一约定：
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) 是晶体的**主动旋转**（active rotation），在固定于显示器的实验室坐标系（\(X\)=右、\(Y\)=上、\(Z\)=朝向观察者 — 参见[附录 A1.1](appendix/a1-coordinate-system/1-orientation.md)）中表示。
+- \(\mathbf{v}_{0}\)：固定于晶体的方向在**初始取向**（\(c \parallel Z\)，\(b\) 位于 \(YZ\) 面内）下的笛卡尔坐标（列向量）。
+- \(\mathbf{v}_{\mathrm{rot}}\)：旋转后同一方向的坐标（仍在实验室坐标系中）。
+- 当 \(\Phi=\theta=\Psi=0\) 时 \(R\) 为单位矩阵。\(R\) 为正交归一矩阵且行列式为 +1，因此逆变换就是转置：\(R^{-1}=R^{\mathsf T}\)。
+
+用欧拉角表示为 \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\)（绕固定轴的右手旋转；\(\Psi\) 最先作用于向量）：
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+应用于晶体学指数时，先换算成初始取向下的笛卡尔坐标：方向 \([uvw]\) 为 \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\)，面法线 \((hkl)\) 为 \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\)（倒易点阵基矢）。
+
+同一矩阵（\(R_{ij}\) = 第 \(i\) 行第 \(j\) 列）出现于：
+
+- 本窗口的 **复制到 Excel** / **从 Excel 粘贴**（3 × 3 制表符分隔，自上而下逐行）；
+- [宏 API](20-macro/1-built-in-functions.md) 的 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 与 `Dir.GetEuler()`（9 个元素按行序 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 排列）；
+- [Spot ID v2](11-spot-id-v2.md) 保存的候选列表中的 **R11**–**R33** 列。
+
 ### OpenGL 窗口
 
 3D 视图使用三个彩色圆环（甜甜圈）显示当前旋转：

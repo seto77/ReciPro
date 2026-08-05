@@ -58,6 +58,12 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 면 법선 (hkl)을 중심으로 회전 (도) |
 | `Dir.ProjectAlongPlane(h, k, l)` | 면 법선을 화면에 수직으로 설정 |
 | `Dir.ProjectAlongAxis(u, v, w)` | 정대축을 화면에 수직으로 설정 |
+| `Dir.GetEuler()` | 현재 방위를 Z-X-Z 오일러 각 `[phi, theta, psi]`(라디안)으로 가져오기 |
+| `Dir.GetEulerInDeg()` | 현재 방위를 Z-X-Z 오일러 각 `[phi, theta, psi]`(도)로 가져오기 |
+| `Dir.GetRotationMatrix()` | 현재 회전 행렬을 9 요소 배열 `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` 로 가져오기(`SpotID.CandidateList()` 와 같은 규약) |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | 회전 행렬의 9 요소로 방위를 설정(검증과 재직교화를 거쳐 적용) |
+
+오일러 각은 짐벌 위치(θ = 0 또는 180°)에서 유일하지 않으므로, `Euler()` 뒤의 `GetEuler()` 는 같은 자세를 재현하지만 같은 숫자가 된다고는 보장하지 않습니다. 방위를 정확히 저장·복원하려면 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 를 사용하십시오. 전체 규약은 [회전 기하학](../4-rotation-geometry.md) 에 설명되어 있습니다.
 
 ---
 

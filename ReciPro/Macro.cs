@@ -550,7 +550,58 @@ public class Macro : MacroBase
             Application.DoEvents();
         }
 
+        //260805Cl 追加 (マクロ整備方針 P1-2): 現在方位の取得系。正本は回転行列 — Euler は gimbal 位置 (θ=0, π) で
+        //非一意のため、Euler→GetEuler の往復は「同じ姿勢」のみ保証し、同じ数値列は保証しない。
+        //行列の規約は SpotID.CandidateList() の R11–R33 と同一 (結晶座標系→実験室座標系、列ベクトルに作用、行優先で列挙)。
+        [Help("Gets the current crystal orientation as Z-X-Z Euler angles in radians, as a three-element array [phi, theta, psi]. Euler angles are not unique at gimbal positions (theta = 0 or pi), so setting them back reproduces the same attitude, not necessarily the same numbers; use GetRotationMatrix() for exact save/restore.")]
+        public double[] GetEuler()
+        {
+            var (phi, theta, psi) = Crystallography.Euler.FromMatrix(main.Crystal.RotationMatrix);
+            return [phi, theta, psi];
+        }
 
+        [Help("Gets the current crystal orientation as Z-X-Z Euler angles in degrees, as a three-element array [phi, theta, psi]. See GetEuler() for the uniqueness caveat.")]
+        public double[] GetEulerInDeg()
+        {
+            var (phi, theta, psi) = Crystallography.Euler.FromMatrix(main.Crystal.RotationMatrix);
+            return [phi / Math.PI * 180, theta / Math.PI * 180, psi / Math.PI * 180];
+        }
+
+        [Help("Gets the current crystal rotation matrix as a nine-element array [R11, R12, R13, R21, R22, R23, R31, R32, R33] (crystal frame to laboratory frame, applied to column vectors) -- the same convention as SpotID.CandidateList(). Pair it with SetRotationMatrix() to save and restore the orientation exactly.")]
+        public double[] GetRotationMatrix()
+        {
+            var m = main.Crystal.RotationMatrix;
+            return [m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33];
+        }
+
+        [Help("Sets the crystal orientation from nine rotation-matrix elements, in the same convention and order as GetRotationMatrix(). The elements must form a proper rotation (orthonormal, determinant +1) within a tolerance of 0.01, and are re-orthonormalized before being applied (so slightly rounded values, e.g. copied from a CSV, are accepted).", "double r11, double r12, double r13, double r21, double r22, double r23, double r31, double r32, double r33")]
+        public void SetRotationMatrix(double r11, double r12, double r13, double r21, double r22, double r23, double r31, double r32, double r33)
+        {
+            //検証: 各行の長さ・行間の直交性・右手系 (det=+1) を許容誤差 0.01 で確認 (CSV からの丸め値も通る緩さ。鏡映 det=-1 は拒否)
+            double n1 = Math.Sqrt(r11 * r11 + r12 * r12 + r13 * r13);
+            double n2 = Math.Sqrt(r21 * r21 + r22 * r22 + r23 * r23);
+            double n3 = Math.Sqrt(r31 * r31 + r32 * r32 + r33 * r33);
+            double d12 = r11 * r21 + r12 * r22 + r13 * r23;
+            double d23 = r21 * r31 + r22 * r32 + r23 * r33;
+            double d31 = r31 * r11 + r32 * r12 + r33 * r13;
+            double det = r11 * (r22 * r33 - r23 * r32) - r12 * (r21 * r33 - r23 * r31) + r13 * (r21 * r32 - r22 * r31);
+            const double tol = 0.01;
+            if (Math.Abs(n1 - 1) > tol || Math.Abs(n2 - 1) > tol || Math.Abs(n3 - 1) > tol ||
+                Math.Abs(d12) > tol || Math.Abs(d23) > tol || Math.Abs(d31) > tol || Math.Abs(det - 1) > tol)
+                throw new ArgumentException("SetRotationMatrix: the nine elements do not form a proper rotation matrix (orthonormal, determinant +1).");
+
+            //Gram-Schmidt で再直交化してから適用する (入力の丸め誤差を回転状態に持ち込まない。第 3 行は外積で右手系を保証)
+            r11 /= n1; r12 /= n1; r13 /= n1;
+            var p = r21 * r11 + r22 * r12 + r23 * r13;
+            r21 -= p * r11; r22 -= p * r12; r23 -= p * r13;
+            var n2b = Math.Sqrt(r21 * r21 + r22 * r22 + r23 * r23);
+            r21 /= n2b; r22 /= n2b; r23 /= n2b;
+            r31 = r12 * r23 - r13 * r22; r32 = r13 * r21 - r11 * r23; r33 = r11 * r22 - r12 * r21;
+
+            //⚠ Matrix3D の 9 引数コンストラクタは列優先 (e11, e21, e31, …) なので、行の取り違えを避けるためフィールド初期化子で構築する
+            main.SetRotation(new Matrix3D { E11 = r11, E12 = r12, E13 = r13, E21 = r21, E22 = r22, E23 = r23, E31 = r31, E32 = r32, E33 = r33 });
+            Application.DoEvents();
+        }
     }
     #endregion
 

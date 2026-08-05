@@ -58,6 +58,12 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Ruota attorno alla normale al piano (hkl) (gradi) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Imposta la normale al piano perpendicolare allo schermo |
 | `Dir.ProjectAlongAxis(u, v, w)` | Imposta l'asse di zona perpendicolare allo schermo |
+| `Dir.GetEuler()` | Ottieni l'orientazione corrente come angoli di Eulero Z-X-Z `[phi, theta, psi]` (radianti) |
+| `Dir.GetEulerInDeg()` | Ottieni l'orientazione corrente come angoli di Eulero Z-X-Z `[phi, theta, psi]` (gradi) |
+| `Dir.GetRotationMatrix()` | Ottieni la matrice di rotazione corrente come array di nove elementi `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` — la stessa convenzione di `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Imposta l'orientazione da nove elementi della matrice di rotazione (validati e riortonormalizzati prima dell'applicazione) |
+
+Gli angoli di Eulero non sono unici nelle posizioni di blocco cardanico (θ = 0 o 180°): `GetEuler()` dopo `Euler()` riproduce lo stesso assetto, ma non necessariamente gli stessi numeri. Per salvare e ripristinare esattamente l'orientazione, usa `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`. La convenzione completa è descritta in [Geometria di rotazione](../4-rotation-geometry.md).
 
 ---
 

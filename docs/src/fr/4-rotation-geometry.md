@@ -45,6 +45,35 @@ Chaque champ numérique est éditable ; modifier une valeur ici met à jour la F
 
 La matrice 3 × 3 produite à partir des (Φ, θ, Ψ) actuels. Utilisez **Copy to Excel** / **Paste from Excel** pour transférer la matrice vers un tableur et inversement.
 
+La matrice suit une seule et même convention partout où elle apparaît dans ReciPro :
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) est la rotation **active** du cristal, exprimée dans le repère de laboratoire fixé au moniteur (\(X\) vers la droite, \(Y\) vers le haut, \(Z\) vers l'observateur — voir l'[Annexe A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : coordonnées cartésiennes (vecteur colonne) d'une direction liée au cristal dans l'**orientation initiale** (\(c \parallel Z\), \(b\) dans le plan \(YZ\)).
+- \(\mathbf{v}_{\mathrm{rot}}\) : coordonnées de la même direction après la rotation, toujours dans le repère du laboratoire.
+- À \(\Phi=\theta=\Psi=0\), \(R\) est la matrice identité. \(R\) est orthonormée de déterminant +1 ; la transformation inverse est donc simplement la transposée : \(R^{-1}=R^{\mathsf T}\).
+
+En termes des angles d'Euler, \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rotations directes autour des axes fixes ; \(\Psi\) agit en premier sur le vecteur) :
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+Pour l'appliquer à des indices cristallographiques, convertissez-les d'abord en coordonnées cartésiennes de l'orientation initiale : une direction \([uvw]\) devient \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), et une normale de plan \((hkl)\) devient \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (axes réciproques).
+
+La même matrice (\(R_{ij}\) = ligne \(i\), colonne \(j\)) apparaît dans :
+
+- **Copy to Excel** / **Paste from Excel** dans cette fenêtre (3 × 3, séparée par tabulations, lignes de haut en bas) ;
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` et `Dir.GetEuler()` dans l'[API de macros](20-macro/1-built-in-functions.md) (neuf éléments dans l'ordre des lignes \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\)) ;
+- les colonnes **R11**–**R33** de la liste de candidats enregistrée par [Spot ID v2](11-spot-id-v2.md).
+
 ### Fenêtres OpenGL
 
 La vue 3D montre la rotation actuelle à l'aide de trois tores colorés (anneaux) :

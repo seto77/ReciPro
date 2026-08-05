@@ -58,6 +58,12 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotar alrededor de la normal del plano (hkl) (grados) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Situar la normal del plano perpendicular a la pantalla |
 | `Dir.ProjectAlongAxis(u, v, w)` | Situar el eje de zona perpendicular a la pantalla |
+| `Dir.GetEuler()` | Obtener la orientación actual como ángulos de Euler Z-X-Z `[phi, theta, psi]` (radianes) |
+| `Dir.GetEulerInDeg()` | Obtener la orientación actual como ángulos de Euler Z-X-Z `[phi, theta, psi]` (grados) |
+| `Dir.GetRotationMatrix()` | Obtener la matriz de rotación actual como un array de nueve elementos `[R11, R12, R13, R21, R22, R23, R31, R32, R33]`, la misma convención que `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Establecer la orientación a partir de nueve elementos de la matriz de rotación (validados y reortonormalizados antes de aplicarse) |
+
+Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ = 0 o 180°): `GetEuler()` tras `Euler()` reproduce la misma actitud, pero no necesariamente los mismos números. Para guardar y restaurar la orientación con exactitud, usa `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`. La convención completa se describe en [Geometría de rotación](../4-rotation-geometry.md).
 
 ---
 

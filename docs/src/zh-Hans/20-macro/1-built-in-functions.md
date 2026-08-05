@@ -58,6 +58,12 @@ ReciPro 宏中可用的类与函数完整参考。
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 绕晶面法线 (hkl) 旋转（度） |
 | `Dir.ProjectAlongPlane(h, k, l)` | 将晶面法线设为垂直于屏幕 |
 | `Dir.ProjectAlongAxis(u, v, w)` | 将晶带轴设为垂直于屏幕 |
+| `Dir.GetEuler()` | 获取当前取向的 Z-X-Z 欧拉角 `[phi, theta, psi]`（弧度） |
+| `Dir.GetEulerInDeg()` | 获取当前取向的 Z-X-Z 欧拉角 `[phi, theta, psi]`（度） |
+| `Dir.GetRotationMatrix()` | 以 9 元素数组 `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` 获取当前旋转矩阵（与 `SpotID.CandidateList()` 相同的约定） |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | 由旋转矩阵的 9 个元素设置取向（应用前经过校验与再正交化） |
+
+欧拉角在万向节位置（θ = 0 或 180°）不唯一：`Euler()` 之后的 `GetEuler()` 会再现相同的姿态，但不一定是相同的数值。要精确保存和恢复取向，请使用 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`。完整约定见[旋转几何](../4-rotation-geometry.md)。
 
 ---
 

@@ -45,6 +45,35 @@ Cada casilla numérica es editable; cambiar un valor aquí actualiza la Ventana 
 
 La matriz 3 × 3 generada a partir de los valores actuales (Φ, θ, Ψ). Use **Copy to Excel** / **Paste from Excel** para transferir la matriz de ida y vuelta a través de una hoja de cálculo.
 
+La matriz sigue una única convención en todos los lugares donde aparece en ReciPro:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) es la rotación **activa** del cristal, expresada en el sistema de laboratorio fijo al monitor (\(X\) a la derecha, \(Y\) hacia arriba, \(Z\) hacia el observador — véase el [Apéndice A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : coordenadas cartesianas (vector columna) de una dirección fija al cristal en la **orientación inicial** (\(c \parallel Z\), \(b\) en el plano \(YZ\)).
+- \(\mathbf{v}_{\mathrm{rot}}\) : coordenadas de la misma dirección tras la rotación, todavía en el sistema de laboratorio.
+- En \(\Phi=\theta=\Psi=0\), \(R\) es la matriz identidad. \(R\) es ortonormal con determinante +1, por lo que la transformación inversa es simplemente la traspuesta: \(R^{-1}=R^{\mathsf T}\).
+
+En términos de los ángulos de Euler, \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rotaciones dextrógiras en torno a los ejes fijos; \(\Psi\) actúa primero sobre el vector):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+Para aplicarla a índices cristalográficos, conviértalos primero a coordenadas cartesianas de la orientación inicial: una dirección \([uvw]\) se convierte en \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), y una normal de plano \((hkl)\) en \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (ejes recíprocos).
+
+La misma matriz (\(R_{ij}\) = fila \(i\), columna \(j\)) aparece en:
+
+- **Copy to Excel** / **Paste from Excel** en esta ventana (3 × 3, separada por tabuladores, filas de arriba abajo);
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` y `Dir.GetEuler()` en la [API de macros](20-macro/1-built-in-functions.md) (nueve elementos en orden de filas \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- las columnas **R11**–**R33** de la lista de candidatos guardada por [Spot ID v2](11-spot-id-v2.md).
+
 ### Ventanas OpenGL
 
 La vista 3D muestra la rotación actual mediante tres toros (donas) de colores:

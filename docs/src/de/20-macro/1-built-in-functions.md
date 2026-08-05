@@ -58,6 +58,12 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Um die Ebenennormale (hkl) drehen (Grad) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Ebenennormale senkrecht zum Bildschirm setzen |
 | `Dir.ProjectAlongAxis(u, v, w)` | Zonenachse senkrecht zum Bildschirm setzen |
+| `Dir.GetEuler()` | Aktuelle Orientierung als Z-X-Z-Eulerwinkel `[phi, theta, psi]` (Bogenmaß) abrufen |
+| `Dir.GetEulerInDeg()` | Aktuelle Orientierung als Z-X-Z-Eulerwinkel `[phi, theta, psi]` (Grad) abrufen |
+| `Dir.GetRotationMatrix()` | Aktuelle Rotationsmatrix als neunelementiges Array `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` abrufen — dieselbe Konvention wie `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Orientierung aus neun Matrixelementen setzen (vor der Anwendung geprüft und reorthonormalisiert) |
+
+Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetEuler()` nach `Euler()` reproduziert dieselbe Lage, aber nicht unbedingt dieselben Zahlen. Zum exakten Speichern und Wiederherstellen der Orientierung `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` verwenden. Die vollständige Konvention ist in [Rotationsgeometrie](../4-rotation-geometry.md) beschrieben.
 
 ---
 

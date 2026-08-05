@@ -58,6 +58,12 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Tourner autour de la normale au plan (hkl) (degrés) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Placer la normale au plan perpendiculaire à l'écran |
 | `Dir.ProjectAlongAxis(u, v, w)` | Placer l'axe de zone perpendiculaire à l'écran |
+| `Dir.GetEuler()` | Obtenir l'orientation actuelle en angles d'Euler Z-X-Z `[phi, theta, psi]` (radians) |
+| `Dir.GetEulerInDeg()` | Obtenir l'orientation actuelle en angles d'Euler Z-X-Z `[phi, theta, psi]` (degrés) |
+| `Dir.GetRotationMatrix()` | Obtenir la matrice de rotation actuelle sous forme de tableau à neuf éléments `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` — la même convention que `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Définir l'orientation à partir de neuf éléments de matrice de rotation (validés et réorthonormalisés avant application) |
+
+Les angles d'Euler ne sont pas uniques aux positions de blocage de cardan (θ = 0 ou 180°) : `GetEuler()` après `Euler()` reproduit la même attitude, mais pas nécessairement les mêmes nombres. Pour enregistrer et restaurer exactement l'orientation, utilisez `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`. La convention complète est décrite dans [Géométrie de rotation](../4-rotation-geometry.md).
 
 ---
 

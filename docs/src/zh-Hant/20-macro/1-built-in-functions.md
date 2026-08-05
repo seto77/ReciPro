@@ -58,6 +58,12 @@ ReciPro 巨集中可用的類別與函式完整參考。
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 繞晶面法線 (hkl) 旋轉（度） |
 | `Dir.ProjectAlongPlane(h, k, l)` | 將晶面法線設為垂直於螢幕 |
 | `Dir.ProjectAlongAxis(u, v, w)` | 將晶帶軸設為垂直於螢幕 |
+| `Dir.GetEuler()` | 取得目前取向的 Z-X-Z 尤拉角 `[phi, theta, psi]`（弧度） |
+| `Dir.GetEulerInDeg()` | 取得目前取向的 Z-X-Z 尤拉角 `[phi, theta, psi]`（度） |
+| `Dir.GetRotationMatrix()` | 以 9 元素陣列 `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` 取得目前旋轉矩陣（與 `SpotID.CandidateList()` 相同的約定） |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | 由旋轉矩陣的 9 個元素設定取向（套用前經過驗證與再正交化） |
+
+尤拉角在萬向節位置（θ = 0 或 180°）並不唯一：`Euler()` 之後的 `GetEuler()` 會重現相同的姿態，但不一定是相同的數值。要精確儲存與還原取向，請使用 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`。完整約定見[旋轉幾何](../4-rotation-geometry.md)。
 
 ---
 

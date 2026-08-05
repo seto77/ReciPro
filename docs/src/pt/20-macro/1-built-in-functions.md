@@ -58,6 +58,12 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Girar em torno da normal ao plano (hkl) (graus) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Definir a normal ao plano perpendicular à tela |
 | `Dir.ProjectAlongAxis(u, v, w)` | Definir o eixo de zona perpendicular à tela |
+| `Dir.GetEuler()` | Obter a orientação atual como ângulos de Euler Z-X-Z `[phi, theta, psi]` (radianos) |
+| `Dir.GetEulerInDeg()` | Obter a orientação atual como ângulos de Euler Z-X-Z `[phi, theta, psi]` (graus) |
+| `Dir.GetRotationMatrix()` | Obter a matriz de rotação atual como um array de nove elementos `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` — a mesma convenção de `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Definir a orientação a partir de nove elementos da matriz de rotação (validados e reortonormalizados antes da aplicação) |
+
+Os ângulos de Euler não são únicos nas posições de bloqueio do cardan (θ = 0 ou 180°): `GetEuler()` após `Euler()` reproduz a mesma atitude, mas não necessariamente os mesmos números. Para salvar e restaurar a orientação com exatidão, use `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`. A convenção completa está descrita em [Geometria de rotação](../4-rotation-geometry.md).
 
 ---
 

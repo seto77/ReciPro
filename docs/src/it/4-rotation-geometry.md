@@ -45,6 +45,35 @@ Ogni casella numerica è modificabile; modificare un valore qui aggiorna la Fine
 
 La matrice 3 × 3 generata a partire dagli attuali (Φ, θ, Ψ). Utilizzate **Copy to Excel** / **Paste from Excel** per trasferire la matrice avanti e indietro attraverso un foglio di calcolo.
 
+La matrice segue un'unica convenzione ovunque compaia in ReciPro:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) è la rotazione **attiva** del cristallo, espressa nel sistema di laboratorio fisso al monitor (\(X\) a destra, \(Y\) in alto, \(Z\) verso l'osservatore — si veda l'[Appendice A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : coordinate cartesiane (vettore colonna) di una direzione solidale al cristallo nell'**orientazione iniziale** (\(c \parallel Z\), \(b\) nel piano \(YZ\)).
+- \(\mathbf{v}_{\mathrm{rot}}\) : coordinate della stessa direzione dopo la rotazione, sempre nel sistema di laboratorio.
+- Per \(\Phi=\theta=\Psi=0\), \(R\) è la matrice identità. \(R\) è ortonormale con determinante +1, quindi la trasformazione inversa è semplicemente la trasposta: \(R^{-1}=R^{\mathsf T}\).
+
+In termini degli angoli di Eulero, \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rotazioni destrorse attorno agli assi fissi; \(\Psi\) agisce per prima sul vettore):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+Per applicarla agli indici cristallografici, convertiteli prima in coordinate cartesiane dell'orientazione iniziale: una direzione \([uvw]\) diventa \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), e una normale al piano \((hkl)\) diventa \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (assi reciproci).
+
+La stessa matrice (\(R_{ij}\) = riga \(i\), colonna \(j\)) compare in:
+
+- **Copy to Excel** / **Paste from Excel** in questa finestra (3 × 3, separata da tabulazioni, righe dall'alto in basso);
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` e `Dir.GetEuler()` nell'[API delle macro](20-macro/1-built-in-functions.md) (nove elementi in ordine di riga \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- le colonne **R11**–**R33** dell'elenco dei candidati salvato da [Spot ID v2](11-spot-id-v2.md).
+
 ### Finestre OpenGL
 
 La vista 3D mostra la rotazione corrente mediante tre tori colorati (ciambelle):

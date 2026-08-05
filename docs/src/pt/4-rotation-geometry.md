@@ -45,6 +45,35 @@ Cada caixa numérica é editável; alterar um valor aqui atualiza a Janela princ
 
 A matriz 3 × 3 produzida a partir dos valores atuais (Φ, θ, Ψ). Use **Copy to Excel** / **Paste from Excel** para transferir a matriz de ida e volta por meio de uma planilha.
 
+A matriz segue uma única convenção em todos os lugares em que aparece no ReciPro:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) é a rotação **ativa** do cristal, expressa no referencial de laboratório fixo ao monitor (\(X\) para a direita, \(Y\) para cima, \(Z\) na direção do observador — ver o [Apêndice A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : coordenadas cartesianas (vetor coluna) de uma direção fixa ao cristal na **orientação inicial** (\(c \parallel Z\), \(b\) no plano \(YZ\)).
+- \(\mathbf{v}_{\mathrm{rot}}\) : coordenadas da mesma direção após a rotação, ainda no referencial de laboratório.
+- Em \(\Phi=\theta=\Psi=0\), \(R\) é a matriz identidade. \(R\) é ortonormal com determinante +1, portanto a transformação inversa é simplesmente a transposta: \(R^{-1}=R^{\mathsf T}\).
+
+Em termos dos ângulos de Euler, \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rotações destras em torno dos eixos fixos; \(\Psi\) age primeiro sobre o vetor):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+Para aplicá-la a índices cristalográficos, converta-os primeiro em coordenadas cartesianas da orientação inicial: uma direção \([uvw]\) torna-se \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), e uma normal de plano \((hkl)\) torna-se \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (eixos recíprocos).
+
+A mesma matriz (\(R_{ij}\) = linha \(i\), coluna \(j\)) aparece em:
+
+- **Copy to Excel** / **Paste from Excel** nesta janela (3 × 3, separada por tabulações, linhas de cima para baixo);
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` e `Dir.GetEuler()` na [API de macros](20-macro/1-built-in-functions.md) (nove elementos na ordem das linhas \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- as colunas **R11**–**R33** da lista de candidatos salva pelo [Spot ID v2](11-spot-id-v2.md).
+
 ### Janelas OpenGL
 
 A visualização 3D mostra a rotação atual usando três toros coloridos (rosquinhas):

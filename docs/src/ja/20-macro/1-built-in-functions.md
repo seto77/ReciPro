@@ -66,6 +66,12 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | 結晶面 (hkl) 法線周りに回転（度） |
 | `Dir.ProjectAlongPlane(h, k, l)` | 結晶面 (hkl) の法線をスクリーン垂直方向に設定 |
 | `Dir.ProjectAlongAxis(u, v, w)` | 晶帯軸 [uvw] をスクリーン垂直方向に設定 |
+| `Dir.GetEuler()` | 現在の方位を Z-X-Z オイラー角 `[phi, theta, psi]`（ラジアン）で取得 |
+| `Dir.GetEulerInDeg()` | 現在の方位を Z-X-Z オイラー角 `[phi, theta, psi]`（度）で取得 |
+| `Dir.GetRotationMatrix()` | 現在の回転行列を 9 要素配列 `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` で取得（`SpotID.CandidateList()` と同じ規約） |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | 回転行列の 9 要素から方位を設定（検証と再直交化を経て適用） |
+
+オイラー角はジンバル位置（θ = 0, 180°）で一意に決まらないため、`Euler()` の後の `GetEuler()` は同じ姿勢を再現しますが、同じ数値列になるとは限りません。方位を正確に保存・復元するには `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` を使ってください。 規約の詳細は[回転ジオメトリ](../4-rotation-geometry.md)を参照してください。
 
 ---
 

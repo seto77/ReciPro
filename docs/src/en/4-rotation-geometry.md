@@ -45,6 +45,35 @@ Every numeric box is editable; changing a value here updates the Main window and
 
 The 3 × 3 matrix produced from the current (Φ, θ, Ψ). Use **Copy to Excel** / **Paste from Excel** to round-trip the matrix through a spreadsheet.
 
+The matrix follows one fixed convention everywhere it appears in ReciPro:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) is the **active** rotation of the crystal, expressed in the monitor-fixed laboratory frame (\(X\) right, \(Y\) up, \(Z\) toward the viewer — see [Appendix A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : Cartesian coordinates (a column vector) of a crystal-fixed direction in the **initial orientation** (\(c \parallel Z\), \(b\) in the \(YZ\) plane).
+- \(\mathbf{v}_{\mathrm{rot}}\) : coordinates of the same direction after the rotation, still in the laboratory frame.
+- At \(\Phi=\theta=\Psi=0\), \(R\) is the identity. \(R\) is orthonormal with determinant +1, so the inverse transform is simply the transpose: \(R^{-1}=R^{\mathsf T}\).
+
+In terms of the Euler angles, \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (right-handed rotations about the fixed axes; \(\Psi\) acts on the vector first):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+To apply it to crystallographic indices, first convert them to Cartesian coordinates in the initial orientation: a direction \([uvw]\) becomes \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), and a plane normal \((hkl)\) becomes \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (reciprocal axes).
+
+The same matrix, with \(R_{ij}\) = row \(i\), column \(j\), appears as:
+
+- **Copy to Excel** / **Paste from Excel** in this window (3 × 3, tab-separated, rows from top to bottom);
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` and `Dir.GetEuler()` in the [macro API](20-macro/1-built-in-functions.md) (nine elements in row order \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- the columns **R11**–**R33** of the candidate list saved by [Spot ID v2](11-spot-id-v2.md).
+
 ### OpenGL windows
 
 The 3D view shows the current rotation using three coloured toruses (doughnuts):

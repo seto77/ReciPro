@@ -58,6 +58,12 @@ Complete reference of classes and functions available in ReciPro macros.
 | `Dir.RotateAroundPlaneInDeg(h, k, l, angle)` | Rotate around plane normal (hkl) (degrees) |
 | `Dir.ProjectAlongPlane(h, k, l)` | Set plane normal perpendicular to screen |
 | `Dir.ProjectAlongAxis(u, v, w)` | Set zone axis perpendicular to screen |
+| `Dir.GetEuler()` | Get the current orientation as Z-X-Z Euler angles `[phi, theta, psi]` (radians) |
+| `Dir.GetEulerInDeg()` | Get the current orientation as Z-X-Z Euler angles `[phi, theta, psi]` (degrees) |
+| `Dir.GetRotationMatrix()` | Get the current rotation matrix as a nine-element array `[R11, R12, R13, R21, R22, R23, R31, R32, R33]` — the same convention as `SpotID.CandidateList()` |
+| `Dir.SetRotationMatrix(r11, r12, r13, r21, r22, r23, r31, r32, r33)` | Set the orientation from nine rotation-matrix elements (validated and re-orthonormalized before use) |
+
+Euler angles are not unique at gimbal positions (θ = 0 or 180°): `GetEuler()` after `Euler()` reproduces the same attitude, but not necessarily the same numbers. To save and restore the orientation exactly, use `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`. The full convention is described in [4. Rotation Geometry](../4-rotation-geometry.md).
 
 ---
 

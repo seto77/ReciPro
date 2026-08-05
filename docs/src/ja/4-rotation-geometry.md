@@ -45,6 +45,35 @@ ReciProでは **Ψ**、**θ**、**Φ** の三つのオイラー角を **Z–X–
 
 現在の (Φ, θ, Ψ) から得られる 3 × 3 行列。**エクセル形式でコピー** / **エクセル形式を張り付け** で表計算ソフトとの間で行列をやり取りできます。
 
+この行列は、ReciPro 内のどこに現れるときも次の 1 つの規約に従います:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) は結晶の**能動回転** (active rotation) を、モニタに固定された実験室座標系 (\(X\)=右、\(Y\)=上、\(Z\)=手前 — [付録 A1.1](appendix/a1-coordinate-system/1-orientation.md) 参照) で表したものです。
+- \(\mathbf{v}_{0}\) : 結晶に固定された方向の、**初期方位** (\(c \parallel Z\)、\(b\) は \(YZ\) 面内) におけるデカルト座標 (列ベクトル)。
+- \(\mathbf{v}_{\mathrm{rot}}\) : 回転後の同じ方向の座標 (同じく実験室座標系)。
+- \(\Phi=\theta=\Psi=0\) のとき \(R\) は単位行列です。\(R\) は正規直交で行列式 +1 なので、逆変換は転置 \(R^{-1}=R^{\mathsf T}\) で得られます。
+
+オイラー角で書くと \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) です (固定軸まわりの右手回転。ベクトルには \(\Psi\) が最初に作用します):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+結晶学的指数に適用するときは、まず初期方位のデカルト座標に直します: 方向 \([uvw]\) は \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\)、面法線 \((hkl)\) は \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (逆格子基本ベクトル) です。
+
+同じ行列 (\(R_{ij}\) = \(i\) 行 \(j\) 列) は次の場所に現れます:
+
+- このウィンドウの **エクセル形式でコピー** / **エクセル形式を張り付け** (3 × 3 タブ区切り、上の行から順)
+- [マクロ API](20-macro/1-built-in-functions.md) の `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()`・`Dir.GetEuler()` (9 要素を行順 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) で列挙)
+- [Spot ID v2](11-spot-id-v2.md) が保存する候補リストの **R11**–**R33** 列
+
 ### OpenGLウィンドウ
 
 3つのTorus（ドーナツ）で回転軸の状態を3次元的に描画します。

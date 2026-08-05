@@ -45,6 +45,35 @@ Jedes Zahlenfeld ist editierbar; eine Wertänderung hier aktualisiert das Hauptf
 
 Die 3 × 3-Matrix, die aus dem aktuellen (Φ, θ, Ψ) erzeugt wird. Verwenden Sie **Kopieren** / **Aus Excel einfügen**, um die Matrix über eine Tabellenkalkulation hin und zurück zu übertragen.
 
+Die Matrix folgt überall in ReciPro ein und derselben Konvention:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) ist die **aktive** Rotation des Kristalls, ausgedrückt im monitorfesten Laborsystem (\(X\) nach rechts, \(Y\) nach oben, \(Z\) zum Betrachter — siehe [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md)).
+- \(\mathbf{v}_{0}\) : kartesische Koordinaten (Spaltenvektor) einer kristallfesten Richtung in der **Ausgangsorientierung** (\(c \parallel Z\), \(b\) in der \(YZ\)-Ebene).
+- \(\mathbf{v}_{\mathrm{rot}}\) : Koordinaten derselben Richtung nach der Rotation, weiterhin im Laborsystem.
+- Bei \(\Phi=\theta=\Psi=0\) ist \(R\) die Einheitsmatrix. \(R\) ist orthonormal mit Determinante +1, die Umkehrtransformation ist daher einfach die Transponierte: \(R^{-1}=R^{\mathsf T}\).
+
+In den Eulerwinkeln gilt \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) (rechtshändige Rotationen um die festen Achsen; \(\Psi\) wirkt zuerst auf den Vektor):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+Für kristallographische Indizes rechnen Sie diese zuerst in kartesische Koordinaten der Ausgangsorientierung um: eine Richtung \([uvw]\) wird zu \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), eine Ebenennormale \((hkl)\) zu \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (reziproke Achsen).
+
+Dieselbe Matrix (\(R_{ij}\) = Zeile \(i\), Spalte \(j\)) erscheint als:
+
+- **Kopieren** / **Aus Excel einfügen** in diesem Fenster (3 × 3, tabulatorgetrennt, Zeilen von oben nach unten);
+- `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` und `Dir.GetEuler()` in der [Makro-API](20-macro/1-built-in-functions.md) (neun Elemente in Zeilenreihenfolge \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
+- die Spalten **R11**–**R33** der Kandidatenliste, die [Spot ID v2](11-spot-id-v2.md) speichert.
+
 ### OpenGL-Fenster
 
 Die 3D-Ansicht zeigt die aktuelle Rotation mithilfe von drei farbigen Tori (Donuts):

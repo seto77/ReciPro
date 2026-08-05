@@ -45,6 +45,35 @@ ReciPro는 세 개의 오일러 각 — **Ψ**, **θ**, **Φ** — 을 **Z–X�
 
 현재 (Φ, θ, Ψ)로부터 생성된 3 × 3 행렬입니다. **Excel로 복사** / **Excel에서 붙여넣기**를 사용하면 스프레드시트를 통해 행렬을 주고받을 수 있습니다.
 
+이 행렬은 ReciPro 안 어디에 나타나든 다음 한 가지 규약을 따릅니다:
+
+$$
+\mathbf{v}_{\mathrm{rot}} = R\,\mathbf{v}_{0}
+$$
+
+- \(R\) 은 결정의 **능동 회전**(active rotation)을, 모니터에 고정된 실험실 좌표계(\(X\)=오른쪽, \(Y\)=위, \(Z\)=관찰자 쪽 — [부록 A1.1](appendix/a1-coordinate-system/1-orientation.md) 참조)로 나타낸 것입니다.
+- \(\mathbf{v}_{0}\) : 결정에 고정된 방향의 **초기 방위**(\(c \parallel Z\), \(b\) 는 \(YZ\) 면 내)에서의 데카르트 좌표(열벡터).
+- \(\mathbf{v}_{\mathrm{rot}}\) : 회전 후 같은 방향의 좌표(역시 실험실 좌표계).
+- \(\Phi=\theta=\Psi=0\) 에서 \(R\) 은 단위 행렬입니다. \(R\) 은 정규 직교이고 행렬식이 +1 이므로 역변환은 전치 \(R^{-1}=R^{\mathsf T}\) 입니다.
+
+오일러 각으로는 \(R = R_Z(\Phi)\,R_X(\theta)\,R_Z(\Psi)\) 입니다(고정축 둘레의 오른손 회전. 벡터에는 \(\Psi\) 가 먼저 작용):
+
+$$
+R=\begin{pmatrix}
+\cos\Phi\cos\Psi-\cos\theta\,\sin\Phi\sin\Psi & -\cos\Phi\sin\Psi-\cos\theta\,\sin\Phi\cos\Psi & \sin\theta\,\sin\Phi\\
+\sin\Phi\cos\Psi+\cos\theta\,\cos\Phi\sin\Psi & -\sin\Phi\sin\Psi+\cos\theta\,\cos\Phi\cos\Psi & -\sin\theta\,\cos\Phi\\
+\sin\theta\,\sin\Psi & \sin\theta\,\cos\Psi & \cos\theta
+\end{pmatrix}
+$$
+
+결정학적 지수에 적용할 때는 먼저 초기 방위의 데카르트 좌표로 바꿉니다: 방향 \([uvw]\) 는 \(\mathbf{v}_0 = u\mathbf{a}+v\mathbf{b}+w\mathbf{c}\), 면 법선 \((hkl)\) 은 \(\mathbf{v}_0 = h\mathbf{a}^{*}+k\mathbf{b}^{*}+l\mathbf{c}^{*}\) (역격자 기본 벡터)입니다.
+
+같은 행렬(\(R_{ij}\) = \(i\) 행 \(j\) 열)은 다음에 나타납니다:
+
+- 이 창의 **Excel로 복사** / **Excel에서 붙여넣기** (3 × 3 탭 구분, 위 행부터 차례로);
+- [매크로 API](20-macro/1-built-in-functions.md)의 `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` 와 `Dir.GetEuler()` (9 요소를 행 순서 \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\) 로 나열);
+- [Spot ID v2](11-spot-id-v2.md) 가 저장하는 후보 목록의 **R11**–**R33** 열.
+
 ### OpenGL 창
 
 3D 뷰는 세 개의 색칠된 토러스(도넛)를 사용하여 현재 회전을 보여줍니다:
