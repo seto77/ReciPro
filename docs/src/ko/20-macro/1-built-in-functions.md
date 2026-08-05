@@ -210,6 +210,24 @@ for k in range(-2, 3):
 
 ---
 
+## StructureViewer 클래스
+
+결정 구조 뷰어를 매크로에서 구동합니다. 3D 모델은 창이 표시될 때 구축되므로, `SaveImage()` 와 `Export3DModel()` 은 필요하면 먼저 창을 엽니다.
+
+| 함수 | 설명 |
+|---|---|
+| `StructureViewer.Open()` | 결정 구조 뷰어 창을 연다 |
+| `StructureViewer.Close()` | 결정 구조 뷰어 창을 닫는다 |
+| `StructureViewer.SaveImage(filename)` | 메인 뷰의 렌더링 이미지를 PNG 로 저장(픽셀 크기는 창의 **Size (W×H)** 상자). `filename` 을 생략하면 저장 대화 상자를 연다 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 표시 중인 구조를 3D 프린팅용으로 출력(File 메뉴의 **Export 3D Model (3MF/STL)** 과 동일). 형식은 확장자로 결정(`.stl` = 단색 / `.3mf` = 원소별 색). 필수는 `filename` 뿐이며 나머지 기본값은 대화 상자와 동일(최장변 80 mm·단위 격자 테두리 ⌀2.4 mm·결합 증경 ⌀1.2 mm). `fixedScaleInMMperNm` > 0 을 주면 여러 모형을 같은 축척으로 만들 수 있다 |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## HRTEM / STEM / Potential 클래스
 
 이 세 가지 이미지 시뮬레이션 클래스는 많은 멤버를 공유합니다. 반복을 피하기 위해 아래 표에서는 자리 표시자를 사용합니다.

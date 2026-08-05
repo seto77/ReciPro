@@ -234,6 +234,24 @@ for k in range(-2, 3):
 
 ---
 
+## StructureViewer クラス
+
+結晶構造ビューアをマクロから駆動します。3D モデルはウィンドウ表示時に構築されるため、`SaveImage()` と `Export3DModel()` は必要なら先にウィンドウを開きます。
+
+| 関数 | 説明 |
+|---|---|
+| `StructureViewer.Open()` | 結晶構造ビューアのウィンドウを開く |
+| `StructureViewer.Close()` | 結晶構造ビューアのウィンドウを閉じる |
+| `StructureViewer.SaveImage(filename)` | メインビューの描画画像を PNG 保存（ピクセルサイズはウィンドウの **Size (W×H)** ボックス）。`filename` 省略で保存ダイアログ |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 表示中の構造を 3D プリント用に出力（ファイルメニューの **3Dモデルを出力 (3MF/STL)** と同じ）。形式は拡張子で決まる（`.stl` = 単色 / `.3mf` = 元素色分け）。必須は `filename` のみで、他の既定値はダイアログの既定と同じ（最長辺 80 mm・単位胞枠 ⌀2.4 mm・結合の増径 ⌀1.2 mm）。`fixedScaleInMMperNm` > 0 を渡すと複数の模型を同縮尺で作れる |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## HRTEM / STEM / Potential クラス
 
 この3つの画像シミュレーションクラスは多くのメンバーを共有します。重複を避けるため、下表ではプレースホルダを使います。

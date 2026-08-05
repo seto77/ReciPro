@@ -129,6 +129,7 @@ ReciPro.CrystalList.*  # 結晶リストの操作
 ReciPro.Dir.*          # 結晶方位 (オイラー角、晶帯軸、回転)
 ReciPro.DifSim.*       # 回折シミュレータ
 ReciPro.SpotID.*       # Spot ID (v2): スポット検出と方位同定
+ReciPro.StructureViewer.*  # 結晶構造ビューア: 画像と 3D プリント模型の出力
 ReciPro.HRTEM.*        # HRTEM シミュレーション
 ReciPro.STEM.*         # STEM シミュレーション
 ReciPro.Potential.*    # ポテンシャルシミュレーション

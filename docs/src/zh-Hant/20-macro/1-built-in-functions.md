@@ -210,6 +210,24 @@ for k in range(-2, 3):
 
 ---
 
+## StructureViewer 類別
+
+從巨集驅動結構檢視器。3D 模型在視窗顯示時建構，因此 `SaveImage()` 和 `Export3DModel()` 會在必要時先開啟視窗。
+
+| 函式 | 說明 |
+|---|---|
+| `StructureViewer.Open()` | 開啟結構檢視器視窗 |
+| `StructureViewer.Close()` | 關閉結構檢視器視窗 |
+| `StructureViewer.SaveImage(filename)` | 將主檢視的算繪影像儲存為 PNG（像素尺寸取視窗的 **Size (W×H)** 方塊）。省略 `filename` 則開啟儲存對話方塊 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 將顯示中的結構匯出用於 3D 列印（與 File 選單的 **Export 3D Model (3MF/STL)** 相同）。格式由副檔名決定（`.stl` = 單色 / `.3mf` = 依元素著色）。僅 `filename` 為必要，其餘預設值與對話方塊相同（最長邊 80 mm、晶胞外框 ⌀2.4 mm、鍵增粗至 ⌀1.2 mm）。傳入 `fixedScaleInMMperNm` > 0 可以同一比例製作多個模型 |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## HRTEM / STEM / Potential 類別
 
 這三個影像模擬類別共用許多成員。為避免重複，下表使用佔位符：

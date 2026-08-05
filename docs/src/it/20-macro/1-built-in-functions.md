@@ -210,6 +210,24 @@ Pilota [Spot ID v2](../11-spot-id-v2.md) da una macro: caricare un'immagine o un
 
 ---
 
+## Classe StructureViewer
+
+Pilota il visualizzatore di struttura da una macro. `SaveImage()` ed `Export3DModel()` aprono prima la finestra se necessario, perché il modello 3D viene costruito quando la finestra è mostrata.
+
+| Funzione | Descrizione |
+|---|---|
+| `StructureViewer.Open()` | Aprire la finestra del visualizzatore di struttura |
+| `StructureViewer.Close()` | Chiudere la finestra del visualizzatore di struttura |
+| `StructureViewer.SaveImage(filename)` | Salvare la vista principale renderizzata come PNG, alla dimensione in pixel del campo **Size (W×H)**; omettendo `filename` si apre una finestra di dialogo |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Esportare la struttura visualizzata per la stampa 3D, come **Export 3D Model (3MF/STL)** del menu File. L'estensione decide il formato (`.stl` monocolore / `.3mf` colorato per elemento); solo `filename` è obbligatorio — gli altri valori predefiniti sono quelli della finestra di dialogo (dimensione massima 80 mm, spigoli della cella ⌀2,4 mm, legami ispessiti a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 si costruiscono più modelli alla stessa scala |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## Classi HRTEM / STEM / Potential
 
 Queste tre classi di simulazione delle immagini condividono molti membri. Per evitare ripetizioni, le tabelle seguenti usano dei segnaposto:

@@ -210,6 +210,24 @@ Controla [Spot ID v2](../11-spot-id-v2.md) desde una macro: cargar una imagen o 
 
 ---
 
+## Clase StructureViewer
+
+Controla el visor de estructura desde una macro. `SaveImage()` y `Export3DModel()` abren antes la ventana si es necesario, porque el modelo 3D se construye al mostrarla.
+
+| Función | Descripción |
+|---|---|
+| `StructureViewer.Open()` | Abrir la ventana del visor de estructura |
+| `StructureViewer.Close()` | Cerrar la ventana del visor de estructura |
+| `StructureViewer.SaveImage(filename)` | Guardar la vista principal renderizada como PNG, con el tamaño en píxeles del cuadro **Size (W×H)**; omite `filename` para abrir un diálogo |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar la estructura mostrada para impresión 3D, como **Export 3D Model (3MF/STL)** del menú File. La extensión decide el formato (`.stl` monocolor / `.3mf` coloreado por elemento); solo `filename` es obligatorio — los demás valores por defecto son los del diálogo (dimensión mayor 80 mm, aristas de la celda ⌀2,4 mm, enlaces engrosados a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 se construyen varios modelos a la misma escala |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## Clases HRTEM / STEM / Potential
 
 Estas tres clases de simulación de imágenes comparten muchos miembros. Para evitar repeticiones, las tablas siguientes utilizan marcadores de posición:

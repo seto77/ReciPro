@@ -130,6 +130,7 @@ ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator
 ReciPro.SpotID.*       # Spot ID (v2): detecção de pontos e busca de orientação
+ReciPro.StructureViewer.*  # Visualizador de estrutura: exportação de imagem e modelo 3D
 ReciPro.HRTEM.*        # HRTEM simulation
 ReciPro.STEM.*         # STEM simulation
 ReciPro.Potential.*    # Potential simulation

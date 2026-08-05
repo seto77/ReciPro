@@ -1,5 +1,6 @@
 ﻿#region using
 using Crystallography;
+using Crystallography.OpenGL; // 260805Cl 追加: StructureViewerClass (GLObject/MeshSnapshot)
 using MathNet.Numerics;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,6 +21,7 @@ public class Macro : MacroBase
     public DirectionClass Dir;
     public DifSimClass DifSim;
     public SpotIDClass SpotID; // 260801Cl 追加
+    public StructureViewerClass StructureViewer; // 260805Cl 追加 (P1-4)
     public CrystalListClass CrystalList;
     public CrystalClass Crystal;
     public STEMClass STEM;
@@ -45,6 +47,9 @@ public class Macro : MacroBase
 
         SpotID = new SpotIDClass(this); // 260801Cl 追加
         addHelp(SpotID.GetType(), nameof(SpotID));
+
+        StructureViewer = new StructureViewerClass(this); // 260805Cl 追加 (P1-4)
+        addHelp(StructureViewer.GetType(), nameof(StructureViewer));
 
         Crystal = new CrystalClass(this);
         addHelp(Crystal.GetType(), nameof(Crystal));
@@ -389,6 +394,25 @@ public class Macro : MacroBase
                 ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
                 ReciPro.Crystal.Commit()
                 print('a = %.4f  density = %.4f' % (ReciPro.Crystal.GetCellInAng()[0], ReciPro.Crystal.Density))
+            """
+        ),
+        (//260805Cl 追加 (P1-4): StructureViewer クラスのサンプル
+            "10. Batch 3D-print export",
+            """
+            # Export the displayed structure for 3D printing: the default solid model, and a variant
+            # with the coordination polyhedra as edge frames (the atoms inside stay visible).
+            # The file extension picks the format: .stl = single color, .3mf = colored by element.
+            d = ReciPro.File.GetDirectoryPath()
+            ReciPro.StructureViewer.Export3DModel(d + 'model_60mm.stl', maxSizeInMM=60)
+            ReciPro.StructureViewer.Export3DModel(d + 'model_edges_60mm.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+            """,
+            "10. 3Dプリント用モデルの一括出力",
+            """
+            # 表示中の構造を 3D プリント用に出力します: 既定のソリッド模型と、配位多面体を稜線枠に
+            # した変種 (中の原子が見えます)。拡張子で形式が決まります (.stl = 単色, .3mf = 元素色分け)。
+            d = ReciPro.File.GetDirectoryPath()
+            ReciPro.StructureViewer.Export3DModel(d + 'model_60mm.stl', maxSizeInMM=60)
+            ReciPro.StructureViewer.Export3DModel(d + 'model_edges_60mm.stl', maxSizeInMM=60, polyhedraAsEdges=True)
             """
         ),
     ];
@@ -1287,6 +1311,87 @@ public class Macro : MacroBase
 
         [Help("Gets or sets the maximum number of grain orientations searched for when MultiGrain is true.")]
         public int MaxNumberOfGrains { get => spotID.MaxNumberOfGrains; set => spotID.MaxNumberOfGrains = value; }
+    }
+    #endregion
+
+    #region StructureViewer クラス
+    //260805Cl 追加 (マクロ整備方針 P1-4): 結晶構造ビューア (FormStructureViewer) をマクロから駆動する。
+    //SaveImage / Export3DModel は GL とモデルが表示時に初期化されるため、未表示なら先に Open() 相当を行う。
+    public class StructureViewerClass(Macro _p) : MacroSub(_p.main)
+    {
+        private FormStructureViewer viewer => _p.main.FormStructureViewer;
+
+        [Help("Opens the Structure Viewer window.")]
+        public void Open() => Execute(new Action(() => { viewer.Visible = true; _p.main.toolStripButtonStructureViewer.Checked = true; Application.DoEvents(); }));
+
+        [Help("Closes the Structure Viewer window.")]
+        public void Close() => Execute(new Action(() => { viewer.Visible = false; _p.main.toolStripButtonStructureViewer.Checked = false; }));
+
+        [Help("Saves the rendered main view as a PNG file, at the pixel size given by the Size (W x H) box of the window. The window is opened first when necessary. If 'filename' is omitted, opens a save dialog.", "string filename")]
+        public void SaveImage(string filename = "")
+        {
+            Open();
+            Execute(() => { viewer.SaveMainImage(filename ?? ""); return true; });
+        }
+
+        [Help("Exports the displayed structure as a 3D-print model, like File > Export 3D Model (3MF/STL). The extension picks the format: '.stl' (single color) or '.3mf' (parts colored by element). The model is scaled so that its largest dimension becomes maxSizeInMM, or by the fixed scale fixedScaleInMMperNm when that is > 0. The include switches act only on element kinds actually displayed; polyhedraAsEdges outputs coordination polyhedra as edge frames of diameter polyEdgeDiaInMM; includeCellEdges turns the unit-cell frame into cylinders of diameter cellEdgeDiaInMM; bonds that would print thinner than thickenBondsToMM are thickened to that diameter (0 disables). The defaults equal the dialog defaults. Returns an information string with the triangle count and the printed size.", "string filename, double maxSizeInMM, double fixedScaleInMMperNm, bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM")]
+        public string Export3DModel(string filename, double maxSizeInMM = 80, double fixedScaleInMMperNm = 0,
+            bool includeAtoms = true, bool includeBonds = true, bool includePolyhedra = true, bool polyhedraAsEdges = false,
+            double polyEdgeDiaInMM = 2.0, bool includeCellEdges = true, double cellEdgeDiaInMM = 2.4, double thickenBondsToMM = 1.2)
+        {
+            Open();
+            return Execute(() => export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds,
+                includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM));
+        }
+
+        private string export3DModel(string filename, double maxSizeInMM, double fixedScaleInMMperNm,
+            bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges,
+            double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM)
+        {
+            if (string.IsNullOrWhiteSpace(filename))
+                throw new ArgumentException("Export3DModel: filename is required.");
+            bool use3mf;
+            if (filename.EndsWith(".3mf", StringComparison.OrdinalIgnoreCase)) use3mf = true;
+            else if (filename.EndsWith(".stl", StringComparison.OrdinalIgnoreCase)) use3mf = false;
+            else throw new ArgumentException("Export3DModel: the filename must end with '.stl' or '.3mf'.");
+
+            GLObject[] objs;
+            lock (viewer.lockObj1)
+                objs = [.. viewer.GLObjects];
+            var snaps = ModelExporter.Collect(objs);
+            var lineSnaps = ModelExporter.CollectLines(objs);
+
+            //表示中の種類だけを対象にする (ダイアログの has* と同じ)
+            static bool isAtom(MeshSnapshot s) => s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
+            static bool isPoly(MeshSnapshot s) => s.Kind == SnapshotKind.Polyhedron;
+            includeAtoms &= snaps.Any(isAtom);
+            includePolyhedra &= snaps.Any(isPoly);
+            includeBonds &= snaps.Any(s => !isAtom(s) && !isPoly(s));
+            includeCellEdges &= lineSnaps.Count > 0;
+            if (!(includeAtoms || includeBonds || includePolyhedra || includeCellEdges))
+                throw new InvalidOperationException("Export3DModel: nothing to export (no displayed atoms, bonds, polyhedra, or unit-cell edges match the switches).");
+
+            //含める要素の合成バウンディングからスケールを決める (ダイアログの SizeNm と同じ規約)
+            var v3max = new OpenTK.Mathematics.Vector3d(double.MaxValue);
+            OpenTK.Mathematics.Vector3d min = v3max, max = -v3max;
+            void merge((OpenTK.Mathematics.Vector3d Min, OpenTK.Mathematics.Vector3d Max) b)
+            { min = OpenTK.Mathematics.Vector3d.ComponentMin(min, b.Min); max = OpenTK.Mathematics.Vector3d.ComponentMax(max, b.Max); }
+            if (includeAtoms) merge(ModelExporter.GetBounds([.. snaps.Where(isAtom)]));
+            if (includeBonds) merge(ModelExporter.GetBounds([.. snaps.Where(s => !isAtom(s) && !isPoly(s))]));
+            if (includePolyhedra) merge(ModelExporter.GetBounds([.. snaps.Where(isPoly)]));
+            if (includeCellEdges)
+                foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
+                { min = OpenTK.Mathematics.Vector3d.ComponentMin(OpenTK.Mathematics.Vector3d.ComponentMin(min, s), t); max = OpenTK.Mathematics.Vector3d.ComponentMax(OpenTK.Mathematics.Vector3d.ComponentMax(max, s), t); }
+            var sizeNm = max - min;
+            var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+            var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
+                      : maxExtent > 0 ? maxSizeInMM / maxExtent
+                      : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
+
+            return viewer.ExportModel(filename, use3mf, scale,
+                includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM / 2 / scale,
+                includeCellEdges, cellEdgeDiaInMM / 2 / scale, thickenBondsToMM > 0, thickenBondsToMM / 2 / scale, snaps, lineSnaps);
+        }
     }
     #endregion
 

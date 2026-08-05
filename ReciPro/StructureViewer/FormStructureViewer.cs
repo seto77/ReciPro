@@ -1532,28 +1532,6 @@ public partial class FormStructureViewer : FormBase
         using var dlg = new FormExport3DModel(snaps, lineSnaps);
         if (dlg.ShowDialog(this) != DialogResult.OK)
             return;
-        var scale = dlg.MmPerNm;
-
-        //オプションに従ってエクスポート対象を組み立てる
-        var export = new List<MeshSnapshot>();
-        foreach (var s in snaps)
-        {
-            var isAtom = s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
-            var isPoly = s.Kind == SnapshotKind.Polyhedron;
-            if (isAtom ? !dlg.IncludeAtoms : isPoly ? !dlg.IncludePolyhedra || dlg.PolyhedraAsEdges : !dlg.IncludeBonds)
-                continue;
-            //細すぎる結合 (円柱) は元プリミティブ情報から印刷可能な太さで再生成する
-            if (!isAtom && !isPoly && dlg.ThickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < dlg.MinBondRadiusNm)
-                export.Add(MeshSnapshot.From(new Cylinder(s.PipeOrigin, s.PipeVector, dlg.MinBondRadiusNm, new Material(s.Argb), DrawingMode.Surfaces)));
-            else
-                export.Add(s);
-        }
-        if (dlg.IncludePolyhedra && dlg.PolyhedraAsEdges)//多面体を稜線枠 (円柱+頂点球) で出力
-            export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), dlg.PolyEdgeRadiusNm));
-        if (dlg.IncludeCellEdges)//単位胞枠を円柱+角球に変換して追加
-            export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, dlg.EdgeRadiusNm));
-        if (export.Count == 0)
-            return;
 
         //ファイル名に使えない文字を除去した結晶名を既定ファイル名にする
         var name = string.Concat((Crystal?.Name ?? "model").Split(System.IO.Path.GetInvalidFileNameChars()));
@@ -1561,8 +1539,45 @@ public partial class FormStructureViewer : FormBase
         if (sfd.ShowDialog() != DialogResult.OK)
             return;
 
+        //260805Cl 変更: 組み立て〜出力〜ログを ExportModel へ集約 (マクロ StructureViewer.Export3DModel と共用)。旧実装は本メソッド内に展開されていた (commit 71af90ee 参照)
+        ExportModel(sfd.FileName, dlg.Use3mf, dlg.MmPerNm,
+            dlg.IncludeAtoms, dlg.IncludeBonds, dlg.IncludePolyhedra, dlg.PolyhedraAsEdges, dlg.PolyEdgeRadiusNm,
+            dlg.IncludeCellEdges, dlg.EdgeRadiusNm, dlg.ThickenBonds, dlg.MinBondRadiusNm, snaps, lineSnaps);
+    }
+
+    /// <summary>
+    /// 260805Cl 追加: エクスポート対象の組み立て → STL/3MF 書き出し → 情報欄へのログ (ダイアログ経由とマクロ経由の共通部)。
+    /// 半径系の引数は nm。戻り値はログに出す情報文字列 (マクロ StructureViewer.Export3DModel が return する)。
+    /// </summary>
+    internal string ExportModel(string filename, bool use3mf, double scale,
+        bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeRadiusNm,
+        bool includeCellEdges, double cellEdgeRadiusNm, bool thickenBonds, double minBondRadiusNm,
+        List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps)
+    {
+        //オプションに従ってエクスポート対象を組み立てる
+        var export = new List<MeshSnapshot>();
+        foreach (var s in snaps)
+        {
+            var isAtom = s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
+            var isPoly = s.Kind == SnapshotKind.Polyhedron;
+            if (isAtom ? !includeAtoms : isPoly ? !includePolyhedra || polyhedraAsEdges : !includeBonds)
+                continue;
+            //細すぎる結合 (円柱) は元プリミティブ情報から印刷可能な太さで再生成する
+            if (!isAtom && !isPoly && thickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < minBondRadiusNm)
+                export.Add(MeshSnapshot.From(new Cylinder(s.PipeOrigin, s.PipeVector, minBondRadiusNm, new Material(s.Argb), DrawingMode.Surfaces)));
+            else
+                export.Add(s);
+        }
+        if (includePolyhedra && polyhedraAsEdges)//多面体を稜線枠 (円柱+頂点球) で出力
+            export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyEdgeRadiusNm));
+        if (includeCellEdges)//単位胞枠を円柱+角球に変換して追加
+            export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, cellEdgeRadiusNm));
+        if (export.Count == 0)
+            throw new InvalidOperationException("Export 3D Model: nothing to export.");//ダイアログ経由では到達しない (OK ボタンが無効化される)
+
+        var name = string.Concat((Crystal?.Name ?? "model").Split(System.IO.Path.GetInvalidFileNameChars()));
         int count;
-        if (dlg.Use3mf)
+        if (use3mf)
         {
             //RGB → 元素名のマップ (同色の複数元素は "/" 連結)。原子由来でない色 (対称要素・枠など) は #RRGGBB のまま
             var colorNames = new Dictionary<int, string>();
@@ -1574,15 +1589,33 @@ public partial class FormStructureViewer : FormBase
                 else if (!nm.Split('/').Contains(a.ElementName))
                     colorNames[key] = nm + "/" + a.ElementName;
             }
-            count = ModelExporter.Export3mf(sfd.FileName, export, scale, name, colorNames);
+            count = ModelExporter.Export3mf(filename, export, scale, name, colorNames);
         }
         else
-            count = ModelExporter.ExportStl(sfd.FileName, export, scale);
+            count = ModelExporter.ExportStl(filename, export, scale);
 
         var (mn, mx) = ModelExporter.GetBounds(export);
         var size = mx - mn;
-        textBoxCalcInformation.AppendText($"Exported {count} triangles to {System.IO.Path.GetFileName(sfd.FileName)} " +
-            $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/nm).\r\n");
+        var info = $"Exported {count} triangles to {System.IO.Path.GetFileName(filename)} " +
+            $"({size.X * scale:f1} × {size.Y * scale:f1} × {size.Z * scale:f1} mm, {scale:f3} mm/nm).";
+        textBoxCalcInformation.AppendText(info + "\r\n");
+        return info;
+    }
+
+    /// <summary>260805Cl 追加: メインビューの描画画像を PNG 保存する (マクロ StructureViewer.SaveImage 用。filename が空ならダイアログ)。</summary>
+    internal void SaveMainImage(string filename)
+    {
+        using var bmp = glControlMain.GenerateBitmap();
+        if (bmp == null)
+            throw new InvalidOperationException("SaveImage: the 3D view is not ready.");
+        if (string.IsNullOrEmpty(filename))
+        {
+            var dialog = new SaveFileDialog { Filter = "Picture File[*.png]|*.png;" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+                bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+        }
+        else
+            bmp.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
     }
 
     /// <summary>

@@ -210,6 +210,24 @@ for k in range(-2, 3):
 
 ---
 
+## Класс StructureViewer
+
+Управляет просмотрщиком структуры из макроса. `SaveImage()` и `Export3DModel()` при необходимости сначала открывают окно, так как 3D-модель строится при его показе.
+
+| Функция | Описание |
+|---|---|
+| `StructureViewer.Open()` | Открыть окно просмотрщика структуры |
+| `StructureViewer.Close()` | Закрыть окно просмотрщика структуры |
+| `StructureViewer.SaveImage(filename)` | Сохранить отрисованный главный вид как PNG в пиксельном размере из поля **Size (W×H)**; без `filename` откроется диалог |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Экспортировать отображаемую структуру для 3D-печати, как **Export 3D Model (3MF/STL)** в меню File. Расширение задаёт формат (`.stl` одноцветный / `.3mf` с окраской по элементам); обязателен только `filename` — остальные значения по умолчанию совпадают с диалогом (наибольший размер 80 mm, рёбра ячейки ⌀2,4 mm, утолщение связей до ⌀1,2 mm). При `fixedScaleInMMperNm` > 0 несколько моделей получают общий масштаб |
+
+```python
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
+ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60, polyhedraAsEdges=True)
+```
+
+---
+
 ## Классы HRTEM / STEM / Potential
 
 Эти три класса симуляции изображений имеют много общих членов. Чтобы избежать повторений, в таблицах ниже используются заполнители:
