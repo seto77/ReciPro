@@ -1412,9 +1412,10 @@ public partial class FormDiffractionSimulator : FormBase
         //スケールは「計算完了時に auto 再決定・ドラッグ中は固定」(設計 §4)。Fixed scale チェック時は常に固定
         var fixedScale = (checkBoxKikuchiFixedScale.Checked || !kikuchiScaleDirty) && kikuchiAutoScale > 0 ? kikuchiAutoScale : 0;
         var contrast = trackBarKikuchiContrast.Value / 50.0;
+        const double gamma = 2.5; //260805Cl §9-7 作者調整枠。バンド端スパイク飽和と内部濃淡の両立 (KikuchiCheck smoke の形状実測より)
         using var bmp = KikuchiBandRenderer.Render(bands, w, h,
             (p00.X, p00.Y), (p10.X - p00.X, p10.Y - p00.Y), (p01.X - p00.X, p01.Y - p00.Y),
-            CameraLength2, fixedScale, contrast, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+            CameraLength2, fixedScale, contrast, gamma, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
         kikuchiAutoScale = usedScale;
         kikuchiScaleDirty = false;
 

@@ -27,11 +27,13 @@ public static class KikuchiBandRenderer
     /// スクリーン全面のバンド合成 Bitmap (32bppArgb) を作る。
     /// det00 / detDx / detDy: スクリーン画素 (0,0) の検出器座標と、画素 +x / +y あたりの検出器座標の増分 (アフィン)。
     /// scale ≤ 0 で auto スケール (表示バンド全体の |c| の 98.5 パーセンタイル、設計 §4)。usedScale に採用値が返る。
-    /// contrast: 1 が基準 (トラックバー 50/50)。γ は v1 では 1 固定 (Advanced 送り)。
+    /// contrast: 1 が基準 (トラックバー 50/50)。
+    /// gamma: 設計 §4 の m = sign(x)·|tanh x|^{1/γ}。菊池プロファイルはバンド端スパイクが内部の 10-60 倍
+    /// あるため (KikuchiCheck smoke 実測)、γ=1 だと端だけ飽和し内部の濃淡が消える。既定 2.5 (§9-7 作者調整枠)。
     /// </summary>
     public static Bitmap Render(IReadOnlyList<BandInput> bands, int width, int height,
         (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
-        double cameraLength, double scale, double contrast, Color excess, Color deficient, out double usedScale)
+        double cameraLength, double scale, double contrast, double gamma, Color excess, Color deficient, out double usedScale)
     {
         var buf = new float[width * height];
         var bandArr = bands.Where(b => b.Profile.Valid).ToArray();
@@ -66,16 +68,18 @@ public static class KikuchiBandRenderer
             var pixels = new int[width * height];
             int exR = excess.R, exG = excess.G, exB = excess.B, deR = deficient.R, deG = deficient.G, deB = deficient.B;
             var k = contrast / Math.Max(usedScale, 1e-30);
+            var invGamma = 1.0 / Math.Max(gamma, 1e-3);
             Parallel.For(0, height, py =>
             {
                 int o = py * width;
                 for (int px = 0; px < width; px++)
                 {
-                    var m = Math.Tanh(buf[o + px] * k);
-                    if (m == 0) continue; // 透明のまま
-                    int a = (int)(Math.Abs(m) * 255 + 0.5);
+                    var v = buf[o + px];
+                    if (v == 0) continue; // 透明のまま
+                    var m = Math.Pow(Math.Abs(Math.Tanh(v * k)), invGamma); // 設計 §4: |tanh|^{1/γ} で端スパイクと内部濃淡を両立
+                    int a = (int)(m * 255 + 0.5);
                     if (a > 255) a = 255;
-                    pixels[o + px] = m > 0
+                    pixels[o + px] = v > 0
                         ? (a << 24) | (exR << 16) | (exG << 8) | exB
                         : (a << 24) | (deR << 16) | (deG << 8) | deB;
                 }
