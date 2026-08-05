@@ -398,6 +398,27 @@ public partial class FormImageSimulator : FormBase
             return false;
         }
 
+        //260805Cl 追加 (作者承認): EDX は native ヘルパ必須 (managed 経路は非実装のまま確定)。backend の
+        //ガード (BetheMethod の NotSupportedException) は worker の奥で英語の生例外ダイアログになるため、
+        //実行前にここで説明付きで止める。実際に踏み得るのはポータブル版で native DLL が欠落したケース。
+        if (!NativeWrapper.Enabled)
+        {
+            MessageBox.Show(
+                Loc(en: "STEM-EDX requires the native library (Crystallography.Native), which could not be loaded on this PC. STEM itself runs without it, but EDX maps cannot be computed.\r\nIf you are using the portable version, make sure the Crystallography.Native*.dll files are next to ReciPro.exe. Clear the checkbox to run without EDX.",
+                    ja: "STEM-EDX にはネイティブライブラリ (Crystallography.Native) が必要ですが、この PC では読み込めませんでした。STEM 自体は動作しますが、EDX マップは計算できません。\r\nポータブル版をお使いの場合は、Crystallography.Native*.dll が ReciPro.exe と同じフォルダにあるか確認してください。EDX なしで実行するにはチェックを外してください。",
+                    de: "STEM-EDX benötigt die native Bibliothek (Crystallography.Native), die auf diesem PC nicht geladen werden konnte. STEM selbst funktioniert auch ohne sie, aber EDX-Karten können nicht berechnet werden.\r\nWenn Sie die portable Version verwenden, stellen Sie sicher, dass die Crystallography.Native*.dll-Dateien neben ReciPro.exe liegen. Deaktivieren Sie das Kontrollkästchen, um ohne EDX zu rechnen.",
+                    fr: "STEM-EDX nécessite la bibliothèque native (Crystallography.Native), qui n'a pas pu être chargée sur ce PC. STEM fonctionne sans elle, mais les cartes EDX ne peuvent pas être calculées.\r\nSi vous utilisez la version portable, vérifiez que les fichiers Crystallography.Native*.dll se trouvent à côté de ReciPro.exe. Décochez la case pour calculer sans EDX.",
+                    es: "STEM-EDX requiere la biblioteca nativa (Crystallography.Native), que no se pudo cargar en este PC. STEM funciona sin ella, pero los mapas EDX no se pueden calcular.\r\nSi usa la versión portátil, compruebe que los archivos Crystallography.Native*.dll estén junto a ReciPro.exe. Desmarque la casilla para calcular sin EDX.",
+                    pt: "O STEM-EDX requer a biblioteca nativa (Crystallography.Native), que não pôde ser carregada neste PC. O STEM funciona sem ela, mas os mapas EDX não podem ser calculados.\r\nSe estiver a usar a versão portátil, verifique se os ficheiros Crystallography.Native*.dll estão junto ao ReciPro.exe. Desmarque a caixa para calcular sem EDX.",
+                    it: "STEM-EDX richiede la libreria nativa (Crystallography.Native), che non è stato possibile caricare su questo PC. STEM funziona anche senza, ma le mappe EDX non possono essere calcolate.\r\nSe si usa la versione portatile, verificare che i file Crystallography.Native*.dll siano accanto a ReciPro.exe. Deselezionare la casella per calcolare senza EDX.",
+                    ru: "Для STEM-EDX требуется нативная библиотека (Crystallography.Native), которую не удалось загрузить на этом ПК. STEM работает и без неё, но карты EDX рассчитать нельзя.\r\nЕсли вы используете портативную версию, убедитесь, что файлы Crystallography.Native*.dll лежат рядом с ReciPro.exe. Снимите флажок, чтобы считать без EDX.",
+                    zhHans: "STEM-EDX 需要原生库 (Crystallography.Native)，但在此电脑上无法加载。STEM 本身可以运行，但无法计算 EDX 分布图。\r\n如果使用便携版，请确认 Crystallography.Native*.dll 与 ReciPro.exe 位于同一文件夹。取消勾选可在不计算 EDX 的情况下运行。",
+                    zhHant: "STEM-EDX 需要原生程式庫 (Crystallography.Native)，但在此電腦上無法載入。STEM 本身可以執行，但無法計算 EDX 分布圖。\r\n如果使用可攜版，請確認 Crystallography.Native*.dll 與 ReciPro.exe 位於同一資料夾。取消勾選可在不計算 EDX 的情況下執行。",
+                    ko: "STEM-EDX 에는 네이티브 라이브러리 (Crystallography.Native) 가 필요하지만 이 PC 에서 로드할 수 없었습니다. STEM 자체는 동작하지만 EDX 맵은 계산할 수 없습니다.\r\n포터블 버전을 사용 중이라면 Crystallography.Native*.dll 파일이 ReciPro.exe 와 같은 폴더에 있는지 확인하세요. EDX 없이 실행하려면 체크를 해제하세요."),
+                "STEM-EDX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         if (division < StemIonizationRequest.RecommendedProbeDivision)
         {
             //±q Hermitian 残差は div に対し O(h²) なので、粗いグリッドでは backend が §3.4 で hard fail する。
