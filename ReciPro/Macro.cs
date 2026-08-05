@@ -2,6 +2,7 @@
 using Crystallography;
 using Crystallography.OpenGL; // 260805Cl 追加: StructureViewerClass (GLObject/MeshSnapshot)
 using MathNet.Numerics;
+using V3 = OpenTK.Mathematics.Vector3d; // 260805Cl 追加 (/simplify): 隣接ファイル (ModelExporter 等) と同じ別名
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -578,10 +579,7 @@ public class Macro : MacroBase
             var p = RequirePending("SetCellInAng");
             double[] v = [a, b, c, alpha, beta, gamma];
             for (int i = 0; i < 6; i++)
-            {
-                p.Cell[i] = v[i];
-                p.CellSet[i] = !double.IsNaN(v[i]);
-            }
+                p.Cell[i] = v[i];//NaN (省略) がそのまま「未指定」の符号になる
         }
 
         [Help("Sets the pending space group by symbol: Hermann-Mauguin short or full notation, Hall symbol, or an IT number as text. Spaces and '_' are ignored ('F m -3 m', 'P4_2/mnm'). If the group has multiple settings, append one (':1', ':2', ':H', ':R', ':b1', ...) -- an ambiguous symbol raises an error listing the candidates.", "string symbol")]
@@ -631,14 +629,14 @@ public class Macro : MacroBase
 
         [Help("Adds an atom to the pending draft: 'label' is a free label, 'element' is the element symbol (e.g. 'Mg'), x/y/z are fractional coordinates, 'occ' is the occupancy (0 < occ <= 1), and 'bIso' is the isotropic displacement parameter B in A^2. Equivalent positions, Wyckoff letters and multiplicities are derived automatically at Commit().", "string label, string element, double x, double y, double z, double occ, double bIso")]
         public void AddAtom(string label, string element, double x, double y, double z, double occ = 1.0, double bIso = 0.0)
-            => RequirePending("AddAtom").AtomList.Add(new NewAtom(label ?? "", element ?? "", x, y, z, occ, bIso));
+            => RequirePending("AddAtom").Added.Add(new NewAtom(label ?? "", element ?? "", x, y, z, occ, bIso));
 
         [Help("Removes all atoms from the pending draft (e.g. to replace them after BeginEdit()). Bonds are regenerated from the new atoms at Commit().")]
         public void ClearAtoms()
         {
             var p = RequirePending("ClearAtoms");
-            p.AtomList.Clear();
-            p.AtomsReplaced = true;
+            p.Carried.Clear();
+            p.Added.Clear();
         }
 
         [Help("Validates the pending draft, builds the crystal, and applies it as the current crystal in one step (the GUI and all open simulators update, as when a CIF file is loaded). All validation errors are reported together; on failure the current crystal is unchanged and the draft is kept, so it can be fixed and committed again.")]
@@ -651,14 +649,10 @@ public class Macro : MacroBase
             var cell = ResolveCell(p, sym, errors);
 
             //原子の検証 (エラーは全件集めてからまとめて投げる)
-            var resolvedZ = new Dictionary<NewAtom, int>();
-            foreach (var na in p.AtomList.OfType<NewAtom>())
+            foreach (var na in p.Added)
             {
-                var z = AtomStatic.AtomicNumber(na.Element, caseSensitive: false);
-                if (z <= 0)
+                if (AtomStatic.AtomicNumber(na.Element, caseSensitive: false) <= 0)
                     errors.Add($"AddAtom '{na.Label}': unknown element '{na.Element}'.");
-                else
-                    resolvedZ[na] = z;
                 if (!(na.Occ > 0 && na.Occ <= 1))
                     errors.Add($"AddAtom '{na.Label}': occupancy must be 0 < occ <= 1 (got {na.Occ}).");
                 if (na.BisoAng2 < 0)
@@ -667,25 +661,21 @@ public class Macro : MacroBase
             if (errors.Count > 0)
                 throw new ArgumentException("Commit failed:\n" + string.Join("\n", errors));
 
-            //構築 (Å/度 → 内部 nm/rad、B: Å² → nm²)
+            //構築 (Å/度 → 内部 nm/rad、B: Å² → nm²)。引き継ぎ原子 (Carried) はそのまま渡す (異方性因子等を保持。Crystal ctor が ResetSymmetry を呼ぶ)
             var cellNmRad = (cell[0] / 10, cell[1] / 10, cell[2] / 10,
                              cell[3] / 180 * Math.PI, cell[4] / 180 * Math.PI, cell[5] / 180 * Math.PI);
-            var atoms = new List<Atoms>();
-            foreach (var o in p.AtomList)
+            var atoms = new List<Atoms>(p.Carried);
+            foreach (var na in p.Added)
             {
-                if (o is Atoms a)
-                    atoms.Add(a);//BeginEdit/LoadCifText 由来はそのまま渡す (異方性因子等を保持。Crystal ctor が ResetSymmetry を呼ぶ)
-                else if (o is NewAtom na)
-                {
-                    var at = new Atoms(na.Label, resolvedZ[na], 0, 0, null, p.Series, new Vector3DBase(na.X, na.Y, na.Zf), na.Occ,
-                        new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, na.BisoAng2 / 100.0, 0, new double[6], new double[6], cellNmRad));
-                    at.ResetVesta();//CIF 読込と同じ VESTA 既定色・半径
-                    atoms.Add(at);
-                }
+                var at = new Atoms(na.Label, AtomStatic.AtomicNumber(na.Element, caseSensitive: false), 0, 0, null, p.Series,
+                    new Vector3DBase(na.X, na.Y, na.Zf), na.Occ,
+                    new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, na.BisoAng2 / 100.0, 0, new double[6], new double[6], cellNmRad));
+                at.ResetVesta();//CIF 読込と同じ VESTA 既定色・半径
+                atoms.Add(at);
             }
 
-            //bonds: BeginEdit の引き継ぎを尊重。原子を入れ替えた/新規のときは VESTA 規則で自動生成 (CIF 読込と同じ)
-            var bonds = (!p.AtomsReplaced && p.BondList is { Length: > 0 }) ? p.BondList
+            //bonds: 引き継ぎ原子が残っていれば元の bonds を尊重、入れ替え/新規なら VESTA 規則で自動生成 (CIF 読込と同じ)
+            var bonds = (p.Carried.Count > 0 && p.BondList is { Length: > 0 }) ? p.BondList
                       : Bonds.GetVestaBonds(atoms.Select(a => a.AtomicNumber));
 
             var built = new Crystal(cellNmRad, null, p.Series, p.Name, p.Col, p.Rot, [.. atoms], p.Reference, bonds);
@@ -698,18 +688,18 @@ public class Macro : MacroBase
         #region pending の内部実装 (260805Cl)
 
         private PendingCrystal pending;
-        private static readonly Random rndColor = new();
 
+        //260805Cl (/simplify): List<object> + AtomsReplaced フラグ + 元素番号キャッシュ辞書を、型付き 2 リストへ整理。
+        //明示指定フラグ bool[6] も廃止 — SetCellInAng のデフォルト引数がそのまま NaN なので、Cell の NaN 自体を「未指定」の符号にする。
         private sealed class PendingCrystal
         {
             public string Name = "";
-            public readonly double[] Cell = new double[6];//Å, Å, Å, 度, 度, 度
-            public readonly bool[] CellSet = new bool[6];//明示指定フラグ (SG からの導出値と区別する)
+            public readonly double[] Cell = [double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN];//Å, Å, Å, 度, 度, 度。NaN = 未指定 (SG 制約から導出)
             public int Series = 0;//SymmetryStatic.Symmetries の系列番号。0 = Unknown (対称性なし。CIF に空間群が無いときと同じ既定)
-            public readonly List<object> AtomList = [];//Atoms (スナップショット由来) または NewAtom (AddAtom 由来)
-            public bool AtomsReplaced = false;
+            public readonly List<Atoms> Carried = [];//BeginEdit / LoadCifText で引き継いだ原子 (異方性因子等を保持したまま渡す)
+            public readonly List<NewAtom> Added = [];//AddAtom で足した原子
             public Matrix3D Rot = new();
-            public Color Col = Color.FromArgb(rndColor.Next(255), rndColor.Next(255), rndColor.Next(255));//CIF 読込と同じランダム色
+            public Color Col = Color.FromArgb(Random.Shared.Next(255), Random.Shared.Next(255), Random.Shared.Next(255));//CIF 読込と同じランダム色
             public (string Note, string Authors, string Journal, string Title) Reference = ("", "", "", "");
             public Bonds[] BondList = [];
         }
@@ -739,12 +729,8 @@ public class Macro : MacroBase
             };
             double[] cell = [c.A * 10, c.B * 10, c.C * 10, c.Alpha / Math.PI * 180, c.Beta / Math.PI * 180, c.Gamma / Math.PI * 180];
             for (int i = 0; i < 6; i++)
-            {
                 p.Cell[i] = cell[i];
-                p.CellSet[i] = true;
-            }
-            foreach (var a in c.Atoms)
-                p.AtomList.Add(a);
+            p.Carried.AddRange(c.Atoms);
             return p;
         }
 
@@ -825,18 +811,19 @@ public class Macro : MacroBase
 
             var v = new double[6];
             const double tol = 1e-4;
+            bool set(int i) => !double.IsNaN(p.Cell[i]);//260805Cl (/simplify): 明示指定フラグは Cell の NaN 自体で表す (旧: 並走する bool[6])
             //第 1 パス: 固定値と独立成分
             for (int i = 0; i < 6; i++)
             {
                 if (!double.IsNaN(fix[i]))
                 {
-                    if (p.CellSet[i] && Math.Abs(p.Cell[i] - fix[i]) > tol)
+                    if (set(i) && Math.Abs(p.Cell[i] - fix[i]) > tol)
                         errors.Add($"{names[i]} must be {fix[i]}° for {system} '{sym.SpaceGroupHMStr}' (got {p.Cell[i]}°).");
                     v[i] = fix[i];
                 }
                 else if (eq[i] < 0)
                 {
-                    if (!p.CellSet[i])
+                    if (!set(i))
                         errors.Add($"{names[i]} is required for {system} '{sym.SpaceGroupHMStr}'.");
                     else
                         v[i] = p.Cell[i];
@@ -848,17 +835,17 @@ public class Macro : MacroBase
                 if (double.IsNaN(fix[i]) && eq[i] >= 0)
                 {
                     var j = eq[i];
-                    if (p.CellSet[i] && p.CellSet[j] && Math.Abs(p.Cell[i] - p.Cell[j]) > tol * Math.Max(1, Math.Abs(p.Cell[j])))
+                    if (set(i) && set(j) && Math.Abs(p.Cell[i] - p.Cell[j]) > tol * Math.Max(1, Math.Abs(p.Cell[j])))
                         errors.Add($"{names[i]} must equal {names[j]} for {system} '{sym.SpaceGroupHMStr}' ({names[j]} = {p.Cell[j]}, {names[i]} = {p.Cell[i]}).");
                     v[i] = v[j];
                 }
             }
             //数値検証
             for (int i = 0; i < 3; i++)
-                if (p.CellSet[i] && v[i] <= 0)
+                if (set(i) && v[i] <= 0)
                     errors.Add($"{names[i]} must be > 0 Å (got {v[i]}).");
             for (int i = 3; i < 6; i++)
-                if (p.CellSet[i] && (v[i] <= 0 || v[i] >= 180))
+                if (set(i) && (v[i] <= 0 || v[i] >= 180))
                     errors.Add($"{names[i]} must be within (0°, 180°) (got {v[i]}).");
             if (errors.Count == 0)
             {
@@ -1000,11 +987,7 @@ public class Macro : MacroBase
         }
 
         [Help("Gets the current crystal rotation matrix as a nine-element array [R11, R12, R13, R21, R22, R23, R31, R32, R33] (crystal frame to laboratory frame, applied to column vectors) -- the same convention as SpotID.CandidateList(). Pair it with SetRotationMatrix() to save and restore the orientation exactly.")]
-        public double[] GetRotationMatrix()
-        {
-            var m = main.Crystal.RotationMatrix;
-            return [m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33];
-        }
+        public double[] GetRotationMatrix() => main.Crystal.RotationMatrix.ToArrayRowMajorOrder();//260805Cl (/simplify): 手組みの配列化を既存 API へ
 
         [Help("Sets the crystal orientation from nine rotation-matrix elements, in the same convention and order as GetRotationMatrix(). The elements must form a proper rotation (orthonormal, determinant +1) within a tolerance of 0.01, and are re-orthonormalized before being applied (so slightly rounded values, e.g. copied from a CSV, are accepted).", "double r11, double r12, double r13, double r21, double r22, double r23, double r31, double r32, double r33")]
         public void SetRotationMatrix(double r11, double r12, double r13, double r21, double r22, double r23, double r31, double r32, double r33)
@@ -1331,7 +1314,7 @@ public class Macro : MacroBase
         public void SaveImage(string filename = "")
         {
             Open();
-            Execute(() => { viewer.SaveMainImage(filename ?? ""); return true; });
+            Execute(() => viewer.SaveMainImage(filename ?? ""));//260805Cl (/simplify): void ラムダは Execute(Action) に一意に束縛される
         }
 
         [Help("Exports the displayed structure as a 3D-print model, like File > Export 3D Model (3MF/STL). The extension picks the format: '.stl' (single color) or '.3mf' (parts colored by element). The model is scaled so that its largest dimension becomes maxSizeInMM, or by the fixed scale fixedScaleInMMperNm when that is > 0. The include switches act only on element kinds actually displayed; polyhedraAsEdges outputs coordination polyhedra as edge frames of diameter polyEdgeDiaInMM; includeCellEdges turns the unit-cell frame into cylinders of diameter cellEdgeDiaInMM; bonds that would print thinner than thickenBondsToMM are thickened to that diameter (0 disables). The defaults equal the dialog defaults. Returns an information string with the triangle count and the printed size.", "string filename, double maxSizeInMM, double fixedScaleInMMperNm, bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM")]
@@ -1340,57 +1323,53 @@ public class Macro : MacroBase
             double polyEdgeDiaInMM = 2.0, bool includeCellEdges = true, double cellEdgeDiaInMM = 2.4, double thickenBondsToMM = 1.2)
         {
             Open();
-            return Execute(() => export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds,
-                includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM));
-        }
+            return Execute(export);
 
-        private string export3DModel(string filename, double maxSizeInMM, double fixedScaleInMMperNm,
-            bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges,
-            double polyEdgeDiaInMM, bool includeCellEdges, double cellEdgeDiaInMM, double thickenBondsToMM)
-        {
-            if (string.IsNullOrWhiteSpace(filename))
-                throw new ArgumentException("Export3DModel: filename is required.");
-            bool use3mf;
-            if (filename.EndsWith(".3mf", StringComparison.OrdinalIgnoreCase)) use3mf = true;
-            else if (filename.EndsWith(".stl", StringComparison.OrdinalIgnoreCase)) use3mf = false;
-            else throw new ArgumentException("Export3DModel: the filename must end with '.stl' or '.3mf'.");
+            //260805Cl (/simplify): 本体をローカル関数化 (旧: private メソッドへ 11 引数を転送し、シグネチャが三重に並んでいた)
+            string export()
+            {
+                if (string.IsNullOrWhiteSpace(filename))
+                    throw new ArgumentException("Export3DModel: filename is required.");
+                bool use3mf;
+                if (filename.EndsWith(".3mf", StringComparison.OrdinalIgnoreCase)) use3mf = true;
+                else if (filename.EndsWith(".stl", StringComparison.OrdinalIgnoreCase)) use3mf = false;
+                else throw new ArgumentException("Export3DModel: the filename must end with '.stl' or '.3mf'.");
 
-            GLObject[] objs;
-            lock (viewer.lockObj1)
-                objs = [.. viewer.GLObjects];
-            var snaps = ModelExporter.Collect(objs);
-            var lineSnaps = ModelExporter.CollectLines(objs);
+                GLObject[] objs;
+                lock (viewer.lockObj1)
+                    objs = [.. viewer.GLObjects];
+                var snaps = ModelExporter.Collect(objs);
+                var lineSnaps = ModelExporter.CollectLines(objs);
 
-            //表示中の種類だけを対象にする (ダイアログの has* と同じ)
-            static bool isAtom(MeshSnapshot s) => s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
-            static bool isPoly(MeshSnapshot s) => s.Kind == SnapshotKind.Polyhedron;
-            includeAtoms &= snaps.Any(isAtom);
-            includePolyhedra &= snaps.Any(isPoly);
-            includeBonds &= snaps.Any(s => !isAtom(s) && !isPoly(s));
-            includeCellEdges &= lineSnaps.Count > 0;
-            if (!(includeAtoms || includeBonds || includePolyhedra || includeCellEdges))
-                throw new InvalidOperationException("Export3DModel: nothing to export (no displayed atoms, bonds, polyhedra, or unit-cell edges match the switches).");
+                //表示中の種類だけを対象にする (ダイアログの has* と同じ)
+                static bool isAtom(MeshSnapshot s) => s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
+                static bool isPoly(MeshSnapshot s) => s.Kind == SnapshotKind.Polyhedron;
+                includeAtoms &= snaps.Any(isAtom);
+                includePolyhedra &= snaps.Any(isPoly);
+                includeBonds &= snaps.Any(s => !isAtom(s) && !isPoly(s));
+                includeCellEdges &= lineSnaps.Count > 0;
+                if (!(includeAtoms || includeBonds || includePolyhedra || includeCellEdges))
+                    throw new InvalidOperationException("Export3DModel: nothing to export (no displayed atoms, bonds, polyhedra, or unit-cell edges match the switches).");
 
-            //含める要素の合成バウンディングからスケールを決める (ダイアログの SizeNm と同じ規約)
-            var v3max = new OpenTK.Mathematics.Vector3d(double.MaxValue);
-            OpenTK.Mathematics.Vector3d min = v3max, max = -v3max;
-            void merge((OpenTK.Mathematics.Vector3d Min, OpenTK.Mathematics.Vector3d Max) b)
-            { min = OpenTK.Mathematics.Vector3d.ComponentMin(min, b.Min); max = OpenTK.Mathematics.Vector3d.ComponentMax(max, b.Max); }
-            if (includeAtoms) merge(ModelExporter.GetBounds([.. snaps.Where(isAtom)]));
-            if (includeBonds) merge(ModelExporter.GetBounds([.. snaps.Where(s => !isAtom(s) && !isPoly(s))]));
-            if (includePolyhedra) merge(ModelExporter.GetBounds([.. snaps.Where(isPoly)]));
-            if (includeCellEdges)
-                foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
-                { min = OpenTK.Mathematics.Vector3d.ComponentMin(OpenTK.Mathematics.Vector3d.ComponentMin(min, s), t); max = OpenTK.Mathematics.Vector3d.ComponentMax(OpenTK.Mathematics.Vector3d.ComponentMax(max, s), t); }
-            var sizeNm = max - min;
-            var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
-            var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
-                      : maxExtent > 0 ? maxSizeInMM / maxExtent
-                      : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
+                //含める要素の合成バウンディングからスケールを決める (ダイアログの SizeNm と同じ規約)。
+                //260805Cl (/simplify): min/max は結合的なので、種類別 GetBounds ×3 + merge ではなく 1 回の GetBounds に畳む
+                var (min, max) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : isPoly(s) ? includePolyhedra : includeBonds));
+                if (includeCellEdges)
+                    foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
+                    {
+                        min = V3.ComponentMin(V3.ComponentMin(min, s), t);
+                        max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+                    }
+                var sizeNm = max - min;
+                var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+                var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
+                          : maxExtent > 0 ? maxSizeInMM / maxExtent
+                          : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
 
-            return viewer.ExportModel(filename, use3mf, scale,
-                includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM / 2 / scale,
-                includeCellEdges, cellEdgeDiaInMM / 2 / scale, thickenBondsToMM > 0, thickenBondsToMM / 2 / scale, snaps, lineSnaps);
+                return viewer.ExportModel(filename, use3mf, scale,
+                    includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM / 2 / scale,
+                    includeCellEdges, cellEdgeDiaInMM / 2 / scale, thickenBondsToMM > 0, thickenBondsToMM / 2 / scale, snaps, lineSnaps);
+            }
         }
     }
     #endregion
