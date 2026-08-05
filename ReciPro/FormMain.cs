@@ -315,8 +315,10 @@ public partial class FormMain : FormBase
 
         //260602Cl 追加: Portable ZIP 版は実行フォルダに README-PORTABLE.txt を同梱する (MSI 版には無い)。
         //         この場合 MSI ベースの自動更新は成り立たないため「Check Updates」メニューを隠す。
-        if (File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")))
-            checkUpdatesToolStripMenuItem.Visible = false;
+        //260805Cl 変更: メニューを隠すのをやめる。portable でも更新チェックは行い、新版があれば最新リリースページを
+        //         ブラウザで開く (checkUpdatesToolStripMenuItem_Click / ProgramUpdates.Check の portable 引数参照)。
+        //旧: if (File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")))
+        //        checkUpdatesToolStripMenuItem.Visible = false;
 
         Crystallography.Controls.FormCaptureGUI.InstallShortcutFilter(); // 260323Cl 追加: Ctrl+Shift+Alt+C ショートカット
 
@@ -1942,22 +1944,34 @@ public partial class FormMain : FormBase
     #endregion
 
     #region ProgramUpdates
+
+    //260805Cl 追加: Portable ZIP 版判定 (README-PORTABLE.txt の同梱有無。release.yml / build-arm64-portable.yml が同梱する)
+    private static readonly bool IsPortable = File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt"));
+
     //260317Cl WebClient→HttpClient (ProgramUpdates.DownloadFileWithProgressAsync使用)
     //private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     private async void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        toolStripProgressBar.Visible = true;
+        toolStripProgressBar.Visible = !IsPortable; //260805Cl 変更: portable はダウンロード進捗が無い (旧: = true)
 
         //260613Cl アセット改名 (作者決定): 新クライアントは新名称 (ReciPro-setup.msi / ReciPro-setup_arm64.msi) を明示参照する。
         //         旧名 ReciProSetup.msi は旧クライアント (installerAsset 空 = ProgramUpdates 既定の {software}Setup.msi) の
         //         自動更新互換のため release に同一バイトのコピーとして数年間併置される (release.yml)
         var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciPro-setup_arm64.msi" : "ReciPro-setup.msi";
-        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset);
+        //260805Cl IsPortable 引数追加: Portable ZIP 版は新版があってもインストーラを DL せず、最新リリースページを案内する
+        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset, IsPortable);
 
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);
         else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
         {
+            //260805Cl 追加: portable 版 (Path 空 = ダウンロード対象なし) は最新リリースページをブラウザで開くだけ
+            if (IsPortable)
+            {
+                Process.Start(new ProcessStartInfo(URL) { UseShellExecute = true });
+                return;
+            }
+
             swDownload.Restart(); //260801Cl 変更: 起動時間計測用の sw との共有をやめる (旧: sw.Restart())
             try
             {
