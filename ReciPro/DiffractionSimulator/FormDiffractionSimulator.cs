@@ -407,6 +407,8 @@ public partial class FormDiffractionSimulator : FormBase
         comboBoxKikuchiMode.SelectedIndex = 1; //既定 = Kinematical (旧 checkBoxKikuchiLine_Kinematical=ON と同じ見た目。作者決定 2026-08-05)
         comboBoxKikuchiQuality.Items.AddRange(new object[] { "Fast", "Standard", "High" });
         comboBoxKikuchiQuality.SelectedIndex = 1;
+        comboBoxKikuchiScale.Items.AddRange(new object[] { "Linear", "Log", "Tanh" }); //260806Cl 追加 (作者提案: 強度スケール選択)
+        comboBoxKikuchiScale.SelectedIndex = 2; //既定 = Tanh (設計 §4)
         timerKikuchiDebounce.Tick += TimerKikuchiDebounce_Tick;
 
         if (FormDiffractionSimulatorGeometry == null)
@@ -1366,6 +1368,7 @@ public partial class FormDiffractionSimulator : FormBase
     private HashSet<(int H, int K, int L)> kikuchiPrevSelection;
     private readonly System.Windows.Forms.Timer timerKikuchiDebounce = new() { Interval = 300 };
     private int kikuchiScheduledKey;
+    private string kikuchiBandsNote = ""; //260806Cl 追加: 注記ラベル末尾の "(N bands...)" (worker 完了時に更新)
 
     private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => 129 };
 
@@ -1414,9 +1417,10 @@ public partial class FormDiffractionSimulator : FormBase
         var contrast = trackBarKikuchiContrast.Value / 50.0;
         //const double gamma = 2.5; //260805Cl 変更前: B=0 fallback を γ 飽和と誤診して入れた過剰補正 (実バンドでは全域飽和の二値画像になる)
         const double gamma = 1.0; //260805Cl §9-7 作者調整枠。まず素の tanh で様子を見る (弱部の持ち上げは Contrast トラックバー側で)
+        var scaleMode = (KikuchiBandRenderer.ScaleMode)Math.Max(0, comboBoxKikuchiScale.SelectedIndex); //260806Cl 追加 (作者提案)
         using var bmp = KikuchiBandRenderer.Render(bands, w, h,
             (p00.X, p00.Y), (p10.X - p00.X, p10.Y - p00.Y), (p01.X - p00.X, p01.Y - p00.Y),
-            CameraLength2, fixedScale, contrast, gamma, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+            CameraLength2, fixedScale, contrast, gamma, scaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
         kikuchiAutoScale = usedScale;
         kikuchiScaleDirty = false;
 
@@ -1500,7 +1504,8 @@ public partial class FormDiffractionSimulator : FormBase
                     kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
                     //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
                     var bNote = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true ? ", B=0→0.5 Å² assumed" : "";
-                    labelKikuchiNotice.Text = $"{KikuchiProfileCalculator.DisplayNormalizedTag} ({profiles.Count} bands{bNote})";
+                    kikuchiBandsNote = $" ({profiles.Count} bands{bNote})"; //260806Cl 変更: スケール開示と合成するため組み立ては UpdateKikuchiNotice へ
+                    UpdateKikuchiNotice();
                     Draw();
                 });
             }
@@ -1818,11 +1823,30 @@ public partial class FormDiffractionSimulator : FormBase
     }
 
     //private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw(); //260805Cl 削除: comboBoxKikuchiMode に統合
-    /// <summary>260805Cl 追加: 菊池表示モード変更。Dynamical のとき非整合暫定運用タグを表示 (設計 §3)</summary>
+    /// <summary>260805Cl 追加: 菊池表示モード変更。Dynamical のとき注記 (スケール開示 + 設計 §3 タグ) を表示</summary>
     private void comboBoxKikuchiMode_SelectedIndexChanged(object sender, EventArgs e)
     {
-        labelKikuchiNotice.Text = comboBoxKikuchiMode.SelectedIndex == 2 ? KikuchiProfileCalculator.DisplayNormalizedTag : "";
+        UpdateKikuchiNotice();
         Draw();
+    }
+
+    /// <summary>260806Cl 追加: 強度スケール (Linear/Log/Tanh) 変更 (作者提案)</summary>
+    private void comboBoxKikuchiScale_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        UpdateKikuchiNotice();
+        Draw();
+    }
+
+    /// <summary>260806Cl 追加: 注記ラベル = スケール開示 + 非整合タグ + worker 結果 (バンド数・B 代用)</summary>
+    private void UpdateKikuchiNotice()
+    {
+        if (comboBoxKikuchiMode.SelectedIndex != 2)
+        {
+            labelKikuchiNotice.Text = "";
+            return;
+        }
+        var sc = comboBoxKikuchiScale.SelectedIndex switch { 0 => "linear (clipped)", 1 => "log scale", _ => "tanh scale" };
+        labelKikuchiNotice.Text = $"Signed contrast, {sc} / {KikuchiProfileCalculator.DisplayNormalizedTag}{kikuchiBandsNote}";
     }
 
     #endregion

@@ -26,6 +26,13 @@ public static class KikuchiBandRenderer
     public readonly record struct BandInput(KikuchiBandProfile Profile, Vector3DBase GHat2);
 
     /// <summary>
+    /// 260806Cl 追加 (作者提案): 強度→不透明度の圧縮カーブ。x = |c|·contrast/scale として
+    /// Linear = min(x, 1) (素直に飽和 = CCD 的ハードクリップ) / Log = log(1+9x)/ln10 を 1 で clip
+    /// (x=1 で丁度 1。既存の log スケール画像表示と同思想) / Tanh = tanh(x) (設計 §4 の既定)
+    /// </summary>
+    public enum ScaleMode { Linear, Log, Tanh }
+
+    /// <summary>
     /// スクリーン全面のバンド合成 Bitmap (32bppArgb) を作る。
     /// det00 / detDx / detDy: スクリーン画素 (0,0) の検出器座標と、画素 +x / +y あたりの検出器座標の増分 (アフィン)。
     /// scale ≤ 0 で auto スケール (表示バンド全体の |c| の 98.5 パーセンタイル、設計 §4)。usedScale に採用値が返る。
@@ -35,7 +42,7 @@ public static class KikuchiBandRenderer
     /// </summary>
     public static Bitmap Render(IReadOnlyList<BandInput> bands, int width, int height,
         (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
-        double cameraLength, double scale, double contrast, double gamma, Color excess, Color deficient, out double usedScale)
+        double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale)
     {
         var buf = new float[width * height];
         var bandArr = bands.Where(b => b.Profile.Valid).ToArray();
@@ -72,6 +79,7 @@ public static class KikuchiBandRenderer
             int exR = excess.R, exG = excess.G, exB = excess.B, deR = deficient.R, deG = deficient.G, deB = deficient.B;
             var k = contrast / Math.Max(usedScale, 1e-30);
             var invGamma = 1.0 / Math.Max(gamma, 1e-3);
+            const double invLn10 = 0.43429448190325176; // 1/ln(10)。log(1+9x)/ln10 は x=1 で丁度 1
             Parallel.For(0, height, py =>
             {
                 int o = py * width;
@@ -79,7 +87,15 @@ public static class KikuchiBandRenderer
                 {
                     var v = buf[o + px];
                     if (v == 0 || !float.IsFinite(v)) continue; // 透明のまま (260805Cl 非有限値ガード追加)
-                    var m = Math.Pow(Math.Abs(Math.Tanh(v * k)), invGamma); // 設計 §4: m = sign·|tanh x|^{1/γ}
+                    var x = Math.Abs(v * k);
+                    var m = scaleMode switch //260806Cl スケール選択 (作者提案)
+                    {
+                        ScaleMode.Linear => Math.Min(x, 1.0),
+                        ScaleMode.Log => Math.Min(Math.Log(1 + 9 * x) * invLn10, 1.0),
+                        _ => Math.Tanh(x), // 設計 §4 の既定
+                    };
+                    if (invGamma != 1.0)
+                        m = Math.Pow(m, invGamma);
                     int a = (int)(m * 255 + 0.5);
                     if (a > 255) a = 255;
                     pixels[o + px] = v > 0

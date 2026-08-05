@@ -96,6 +96,8 @@
             numericBoxKikuchiBandNumber = new NumericBox(); // 260805Cl 追加: 動力学バンド表示本数 N
             comboBoxKikuchiQuality = new System.Windows.Forms.ComboBox(); // 260805Cl 追加: 品質プリセット Fast/Standard/High
             colorControlDeficientLine = new ColorControl(); // 260805Cl 追加: Deficient 色 (Excess は既存流用)
+            labelKikuchiScale = new System.Windows.Forms.Label(); // 260806Cl 追加
+            comboBoxKikuchiScale = new System.Windows.Forms.ComboBox(); // 260806Cl 追加: 強度スケール Linear/Log/Tanh (作者提案)
             trackBarKikuchiContrast = new System.Windows.Forms.TrackBar(); // 260805Cl 追加: コントラスト
             labelKikuchiContrast = new System.Windows.Forms.Label(); // 260805Cl 追加
             checkBoxKikuchiFixedScale = new System.Windows.Forms.CheckBox(); // 260805Cl 追加: Auto/Fixed contrast scale
@@ -735,6 +737,8 @@
             tabPageKikuchi.Controls.Add(labelKikuchiContrast); // 260805Cl 追加
             tabPageKikuchi.Controls.Add(trackBarKikuchiContrast); // 260805Cl 追加
             tabPageKikuchi.Controls.Add(colorControlDeficientLine); // 260805Cl 追加
+            tabPageKikuchi.Controls.Add(labelKikuchiScale); // 260806Cl 追加
+            tabPageKikuchi.Controls.Add(comboBoxKikuchiScale); // 260806Cl 追加
             tabPageKikuchi.Controls.Add(labelKikuchiNotice); // 260805Cl 追加
             resources.ApplyResources(tabPageKikuchi, "tabPageKikuchi");
             tabPageKikuchi.Name = "tabPageKikuchi";
@@ -878,6 +882,19 @@
             colorControlDeficientLine.Color = System.Drawing.Color.Red; //260805Cl 作者指定: Deficient = 赤
             colorControlDeficientLine.Name = "colorControlDeficientLine";
             colorControlDeficientLine.ColorChanged += Draw;
+            //
+            // labelKikuchiScale (260806Cl 追加)
+            //
+            resources.ApplyResources(labelKikuchiScale, "labelKikuchiScale");
+            labelKikuchiScale.Name = "labelKikuchiScale";
+            //
+            // comboBoxKikuchiScale (260806Cl 追加。Items はコンストラクタで設定)
+            //
+            resources.ApplyResources(comboBoxKikuchiScale, "comboBoxKikuchiScale");
+            comboBoxKikuchiScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxKikuchiScale.Name = "comboBoxKikuchiScale";
+            toolTip.SetToolTip(comboBoxKikuchiScale, resources.GetString("comboBoxKikuchiScale.ToolTip"));
+            comboBoxKikuchiScale.SelectedIndexChanged += comboBoxKikuchiScale_SelectedIndexChanged;
             //
             // labelKikuchiNotice (260805Cl 追加。Text は実行時に設定)
             //
@@ -2940,6 +2957,8 @@
         public NumericBox numericBoxKikuchiBandNumber; // 260805Cl 追加
         public System.Windows.Forms.ComboBox comboBoxKikuchiQuality; // 260805Cl 追加
         public ColorControl colorControlDeficientLine; // 260805Cl 追加
+        private System.Windows.Forms.Label labelKikuchiScale; // 260806Cl 追加
+        public System.Windows.Forms.ComboBox comboBoxKikuchiScale; // 260806Cl 追加
         public System.Windows.Forms.TrackBar trackBarKikuchiContrast; // 260805Cl 追加
         private System.Windows.Forms.Label labelKikuchiContrast; // 260805Cl 追加
         public System.Windows.Forms.CheckBox checkBoxKikuchiFixedScale; // 260805Cl 追加

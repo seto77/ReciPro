@@ -643,15 +643,64 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="&gt;&gt;colorControlDeficientLine.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="labelKikuchiScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelKikuchiScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 116</value>
+  </data>
+  <data name="labelKikuchiScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="labelKikuchiScale.Text" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiScale.Name" xml:space="preserve">
+    <value>labelKikuchiScale</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiScale.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiScale.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="comboBoxKikuchiScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 112</value>
+  </data>
+  <data name="comboBoxKikuchiScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 25</value>
+  </data>
+  <data name="comboBoxKikuchiScale.ToolTip" xml:space="preserve">
+    <value>Brightness compression of the signed band contrast (x = |c| / auto-scale):
+Linear = min(x, 1), saturates like an ideal detector with full-well clipping.
+Log = log10(1 + 9x), clipped at 1 (same spirit as the log-scale image display).
+Tanh = tanh(x), smooth soft limiter (default).
+All are visualization transforms, not physical camera responses.</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiScale.Name" xml:space="preserve">
+    <value>comboBoxKikuchiScale</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiScale.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiScale.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
   <data name="labelKikuchiNotice.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 138</value>
   </data>
   <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
-    <value>Brightness of dynamical bands is NOT detector-linear:
-the signed contrast c = (I - I_ref)/I_ref of all bands is summed per pixel
-and compressed once by tanh(c/scale) into opacity (excess = positive color,
-deficient = negative color). Like a log-scale display, this is a
-visualization transform, not a physical camera response.</value>
+    <value>Brightness of dynamical bands is a visualization transform, not a
+physical camera response: the signed contrast c = (I - I_ref)/I_ref of
+all bands is summed per pixel and compressed once by the selected scale
+curve (Linear / Log / Tanh) into opacity (excess = positive color,
+deficient = negative color).</value>
   </data>
   <data name="labelKikuchiNotice.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 18</value>
