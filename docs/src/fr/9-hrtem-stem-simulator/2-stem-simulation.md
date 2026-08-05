@@ -110,7 +110,7 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ---
 
-## Cible d'affichage STEM (côté résultat)
+## Cible d'affichage STEM (côté résultat) {#stem-display-target}
 
 ![Image STEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
@@ -121,9 +121,43 @@ Le sélecteur d'affichage en bas à gauche de la fenêtre choisit quelle composa
 | **Elastic** | Image issue uniquement de la diffusion élastique |
 | **TDS** | Image issue uniquement de la diffusion thermique diffuse |
 | **Elastic & TDS** | Somme de l'élastique + TDS |
+| **EDX** | Carte de rayons X caractéristiques. La raie à afficher (par exemple `O-K`) se choisit dans la liste déroulante en dessous, et **EDX commun** dans *Normalisation* place tous les canaux sur une même plage d'affichage partagée, de sorte que changer de canal ne remet pas l'image à l'échelle |
 
 !!! note
     Les trois images sont reconstruites à partir de la partie réelle de la somme de Fourier, de sorte que **Elastic & TDS** est exactement la somme des deux autres. Jusqu'à la version 4.944, c'est le module qui était pris, ce qui rompait cette identité et éclaircissait légèrement les pixels sombres. Voir [Reconstruction d'une image réelle](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+
+---
+
+## Cartes élémentaires STEM-EDX {#stem-edx}
+
+![Cartes élémentaires STEM-EDX](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.groupBoxSTEMoption4.png)
+
+Cochez **Calculer les cartes EDX** pour calculer des cartes de rayons X caractéristiques en parallèle de l'image de type ADF. Il ne s'agit pas d'un mode séparé : les signaux élastique, TDS et EDX sont issus du même calcul STEM, et l'on bascule ensuite de l'un à l'autre dans [Cible d'affichage STEM](#stem-display-target) sans recalcul.
+
+Il n'y a pas de sélecteur d'élément. Lorsque la case est cochée, **tous les canaux élément/couche calculables pour ce cristal à cette tension d'accélération** sont calculés, et la ligne sous la case les énumère (par exemple `3 carte(s) : O-K, Mg-K, Al-K`). Un canal est disponible lorsque le seuil d'ionisation se situe sous la tension d'accélération et que la couche est couverte par les données fournies — K : C–Sn (Z = 6–50), L-total : Ca–Rn (Z = 20–86). La table fournie contient des facteurs de forme d'ionisation entièrement relativistes jusqu'à un vecteur de diffusion de 8 Å⁻¹ pour chaque canal, de sorte que les raies L des éléments lourds jusqu'au radon sont simulées sans extrapolation. Si aucun canal n'est disponible, le calcul est refusé avec un message explicatif plutôt que de produire une carte vide.
+
+La ligne suivante indique la grille de directions de la sonde, par exemple `Grille : 132² (recommandé : ≥48²)`. Cette grille est déterminée par **Résolution angulaire** et par l'angle de convergence ; voir [Échantillonnage angulaire de la sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). En dessous de la division recommandée, le résidu hermitien ±q peut dépasser la tolérance et interrompre le calcul ; c'est pourquoi la valeur passe en orange et une boîte de dialogue de confirmation s'affiche avant le lancement du calcul.
+
+!!! warning "Ce que représentent les valeurs"
+    La carte donne le **nombre de lacunes de couche interne créées par électron incident** — une grandeur du modèle, pas un nombre de rayons X prédit. Le rendement de fluorescence, l'auto-absorption dans l'échantillon, l'angle solide du détecteur et l'efficacité du détecteur ne sont **pas** appliqués. Utilisez les cartes pour la distribution spatiale et pour comparer épaisseurs ou orientations, pas pour une quantification absolue.
+
+### Paramètres du détecteur (réservés)
+
+**Auto-absorption**, **Angle de sortie** et **Détecteur** sont disposés mais désactivés : ils appartiennent au modèle de détecteur qui n'est pas encore implémenté. Ils sont affichés afin que le panneau ne bouge pas lorsque ce modèle arrivera. Leur effet à terme diffère par nature :
+
+| Facteur | Contraste pixel à pixel dans une carte | Rapport entre cartes élémentaires |
+|---|---|---|
+| Auto-absorption (angle de sortie) | **le modifie** | **le modifie** |
+| Fenêtre du détecteur / couche morte / efficacité | aucun effet | **le modifie fortement** |
+| Angle solide du détecteur, courant de faisceau, temps de séjour | aucun effet | aucun effet |
+
+La dernière ligne explique pourquoi ReciPro n'expose ni le courant de faisceau ni le temps de séjour : ils multiplient chaque pixel de chaque carte par le même nombre, s'annulent dans tout rapport et sont invisibles après la normalisation d'affichage.
+
+### Précision et coût
+
+Le STEM-EDX n'impose aucune limite supplémentaire sur le nombre d'ondes ni sur l'épaisseur de tranche : il emprunte les mêmes chemins de calcul que l'image de type ADF, de sorte que tout réglage qui convient au STEM convient aussi à l'EDX.
+
+La précision est laissée à votre appréciation, exactement comme pour le nombre d'ondes ou la résolution angulaire. À titre de référence, l'erreur d'intégration en profondeur croît à peu près proportionnellement à **Épaisseur de tranche (TDS)** — environ 2–3 % à 1 nm, 4–8 % à 2 nm et 12–23 % à 4 nm (relatif au pic, SrTiO₃ à 39 nm). Diviser par deux l'épaisseur de tranche divise environ par deux l'erreur et double environ le travail d'intégration en profondeur.
 
 ---
 

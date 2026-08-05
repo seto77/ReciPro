@@ -110,7 +110,7 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ---
 
-## STEM-Anzeigeziel (Ergebnisseite)
+## STEM-Anzeigeziel (Ergebnisseite) {#stem-display-target}
 
 ![STEM-Bild](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
@@ -121,9 +121,43 @@ Der Anzeigeschalter unten links im Fenster wählt aus, welche Streukomponente de
 | **Elastisch** | Bild nur aus elastischer Streuung |
 | **TDS** | Bild nur aus thermisch-diffuser Streuung |
 | **Elastisch & TDS** | Summe aus elastisch + TDS |
+| **EDX** | Karte der charakteristischen Röntgenstrahlung. Die anzuzeigende Linie (z. B. `O-K`) wird in der Combobox darunter gewählt; **EDX gemeinsam** in *Normierung* legt alle Kanäle auf einen gemeinsamen Anzeigebereich, sodass das Bild beim Kanalwechsel nicht neu skaliert wird |
 
 !!! note
     Alle drei Bilder werden aus dem Realteil der Fourier-Summe rekonstruiert, sodass **Elastisch & TDS** exakt die Summe der beiden anderen ist. Bis Version 4.944 wurde stattdessen der Betrag genommen, was diese Identität zerstörte und die dunklen Pixel leicht aufhellte. Siehe [Rekonstruktion eines reellen Bildes](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+
+---
+
+## STEM-EDX-Elementverteilungen {#stem-edx}
+
+![STEM-EDX-Elementverteilungen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.groupBoxSTEMoption4.png)
+
+Aktiviere **EDX-Karten berechnen**, um Karten der charakteristischen Röntgenstrahlung zusätzlich zum ADF-artigen Bild zu berechnen. Dies ist kein eigener Modus: Die elastischen, TDS- und EDX-Signale entstammen demselben STEM-Lauf, und zwischen ihnen wird anschließend im [STEM-Anzeigeziel](#stem-display-target) ohne Neuberechnung umgeschaltet.
+
+Es gibt keine Elementauswahl. Ist das Kontrollkästchen aktiviert, wird **jeder Element-/Schalen-Kanal berechnet, der für diesen Kristall bei dieser Beschleunigungsspannung berechenbar ist**, und die Zeile unter dem Kontrollkästchen listet sie auf (z. B. `3 Karte(n): O-K, Mg-K, Al-K`). Ein Kanal ist verfügbar, wenn die Ionisationskante unterhalb der Beschleunigungsspannung liegt und die Schale von den mitgelieferten Daten abgedeckt wird — K: C–Sn (Z = 6–50), L-gesamt: Ca–Rn (Z = 20–86). Die mitgelieferte Tabelle enthält für jeden Kanal voll relativistische Ionisations-Formfaktoren bis zu einem Streuvektor von 8 Å⁻¹, sodass L-Linien schwerer Elemente bis hinauf zum Radon ohne Extrapolation simuliert werden. Ist kein Kanal verfügbar, wird der Lauf mit einer erklärenden Meldung abgelehnt, statt eine leere Karte zu erzeugen.
+
+Die nächste Zeile gibt das Richtungsgitter der Sonde an, z. B. `Gitter: 132² (empfohlen: ≥48²)`. Dieses Gitter wird durch **Winkelauflösung** und den Konvergenzwinkel festgelegt; siehe [Winkelabtastung der Sonde](../appendix/a3-bloch-wave/stem.md#angular-sampling). Unterhalb der empfohlenen Unterteilung kann das hermitesche ±q-Residuum die Toleranz überschreiten und den Lauf abbrechen; der Wert wird daher orange dargestellt, und vor Beginn der Berechnung erscheint ein Bestätigungsdialog.
+
+!!! warning "Was die Werte bedeuten"
+    Die Karte zeigt die **Zahl der pro einfallendem Elektron erzeugten Innerschalen-Vakanzen** — eine Modellgröße, keine vorhergesagte Röntgenzählrate. Fluoreszenzausbeute, Selbstabsorption in der Probe, Raumwinkel des Detektors und Detektoreffizienz werden **nicht** berücksichtigt. Verwende die Karten für die räumliche Verteilung und zum Vergleich von Dicke oder Orientierung, nicht zur absoluten Quantifizierung.
+
+### Detektorparameter (reserviert)
+
+**Selbstabsorption**, **Take-off-Winkel** und **Detektor** sind bereits angelegt, aber deaktiviert: Sie gehören zu dem Detektormodell, das noch nicht implementiert ist. Sie werden angezeigt, damit sich das Panel nicht verschiebt, wenn das Modell hinzukommt. Ihre spätere Wirkung unterscheidet sich grundsätzlich:
+
+| Faktor | Pixel-zu-Pixel-Kontrast innerhalb einer Karte | Verhältnis zwischen Elementkarten |
+|---|---|---|
+| Selbstabsorption (Take-off-Winkel) | **ändert ihn** | **ändert es** |
+| Detektorfenster / Totschicht / Effizienz | kein Einfluss | **ändert es stark** |
+| Raumwinkel des Detektors, Strahlstrom, Verweilzeit | kein Einfluss | kein Einfluss |
+
+Die letzte Zeile ist der Grund, warum ReciPro Strahlstrom und Verweilzeit gar nicht erst anbietet: Sie multiplizieren jedes Pixel jeder Karte mit derselben Zahl, kürzen sich in jedem Verhältnis heraus und sind nach der Anzeigenormierung unsichtbar.
+
+### Genauigkeit und Aufwand
+
+STEM-EDX setzt keine zusätzliche Grenze für die Wellenanzahl oder die Schichtdicke: Es durchläuft dieselben Berechnungspfade wie das ADF-artige Bild, sodass alle Einstellungen, die für STEM funktionieren, auch für EDX funktionieren.
+
+Die Genauigkeit bleibt dir überlassen, genau wie bei der Wellenanzahl oder der Winkelauflösung. Zur Orientierung: Der Fehler der Tiefenintegration wächst etwa proportional zur **Schichtdicke (TDS)** — rund 2–3 % bei 1 nm, 4–8 % bei 2 nm und 12–23 % bei 4 nm (relativ zum Maximum, SrTiO₃ bei 39 nm). Eine Halbierung der Schichtdicke halbiert den Fehler ungefähr und verdoppelt ungefähr den Aufwand der Tiefenintegration.
 
 ---
 

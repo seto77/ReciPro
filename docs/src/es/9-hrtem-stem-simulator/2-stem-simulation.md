@@ -110,7 +110,7 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 
 ---
 
-## Objetivo de visualización STEM (lado del resultado)
+## Objetivo de visualización STEM (lado del resultado) {#stem-display-target}
 
 ![Imagen STEM](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
@@ -121,9 +121,43 @@ El conmutador de visualización situado abajo a la izquierda de la ventana selec
 | **Elastic** | Imagen solo de dispersión elástica |
 | **TDS** | Imagen solo de dispersión térmica difusa |
 | **Elastic & TDS** | Suma de elástica + TDS |
+| **EDX** | Mapa de rayos X característicos. La línea que se muestra (por ejemplo `O-K`) se elige en el cuadro combinado situado debajo, y **EDX común** en *Normalización* pone todos los canales en un mismo rango de visualización compartido, de modo que cambiar de canal no reescala la imagen |
 
 !!! note
     Las tres imágenes se reconstruyen a partir de la parte real de la suma de Fourier, de modo que **Elastic & TDS** es exactamente la suma de las otras dos. Hasta la versión 4.944 se tomaba el módulo, lo que rompía esa identidad y aclaraba ligeramente los píxeles oscuros. Véase [Reconstrucción de una imagen real](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+
+---
+
+## Mapas elementales STEM-EDX {#stem-edx}
+
+![Mapas elementales STEM-EDX](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.groupBoxSTEMoption4.png)
+
+Marca **Calcular mapas EDX** para calcular mapas de rayos X característicos junto con la imagen de tipo ADF. No es un modo separado: las señales elástica, TDS y EDX salen del mismo cálculo STEM, y después se conmuta entre ellas en [Objetivo de visualización STEM](#stem-display-target) sin volver a calcular.
+
+No hay selector de elementos. Cuando la casilla está activada se calculan **todos los canales elemento/capa que pueden calcularse para este cristal a esta tensión de aceleración**, y la línea situada bajo la casilla los enumera (por ejemplo `3 mapa(s): O-K, Mg-K, Al-K`). Un canal está disponible cuando el borde de ionización queda por debajo de la tensión de aceleración y la capa está cubierta por los datos incluidos — K: C–Sn (Z = 6–50), L-total: Ca–Rn (Z = 20–86). La tabla incluida almacena factores de forma de ionización totalmente relativistas hasta un vector de dispersión de 8 Å⁻¹ para todos los canales, de modo que las líneas L de elementos pesados hasta el radón se simulan sin extrapolación. Si no hay ningún canal disponible, el cálculo se rechaza con un mensaje explicativo en lugar de producir un mapa vacío.
+
+La línea siguiente informa de la rejilla de direcciones de la sonda, por ejemplo `Rejilla: 132² (recomendado: ≥48²)`. Esta rejilla la determinan **Resolución angular** y el ángulo de convergencia; véase [Muestreo angular de la sonda](../appendix/a3-bloch-wave/stem.md#angular-sampling). Por debajo de la división recomendada el residuo hermítico ±q puede superar la tolerancia y abortar el cálculo, por lo que el valor se muestra en naranja y aparece un diálogo de confirmación antes de iniciar el cálculo.
+
+!!! warning "Qué representan los valores"
+    El mapa es el **número de vacantes de capa interna generadas por electrón incidente** — una magnitud del modelo, no un recuento previsto de rayos X. El rendimiento de fluorescencia, la autoabsorción en la muestra, el ángulo sólido del detector y la eficiencia del detector **no** se aplican. Usa los mapas para la distribución espacial y para comparar espesores u orientaciones, no para una cuantificación absoluta.
+
+### Parámetros del detector (reservados)
+
+**Autoabsorción**, **Ángulo de salida** y **Detector** están dispuestos pero deshabilitados: pertenecen al modelo de detector que aún no está implementado. Se muestran para que el panel no se desplace cuando ese modelo llegue. Su efecto futuro difiere en naturaleza:
+
+| Factor | Contraste píxel a píxel dentro de un mapa | Cociente entre mapas de elementos |
+|---|---|---|
+| Autoabsorción (ángulo de salida) | **lo cambia** | **lo cambia** |
+| Ventana del detector / capa muerta / eficiencia | sin efecto | **lo cambia fuertemente** |
+| Ángulo sólido del detector, corriente del haz, tiempo de permanencia | sin efecto | sin efecto |
+
+La última fila explica por qué ReciPro no expone en absoluto la corriente del haz ni el tiempo de permanencia: multiplican cada píxel de cada mapa por el mismo número, se cancelan en cualquier cociente y resultan invisibles tras la normalización de la visualización.
+
+### Precisión y coste
+
+STEM-EDX no impone ningún límite adicional al número de ondas ni al espesor de la rebanada: recorre las mismas rutas de cálculo que la imagen de tipo ADF, de modo que los ajustes que funcionan para STEM funcionan también para EDX.
+
+La precisión queda en tus manos, exactamente igual que con el número de ondas o la resolución angular. Como referencia, el error de la integración en profundidad crece aproximadamente en proporción a **Espesor de capa (TDS)** — en torno al 2–3 % a 1 nm, 4–8 % a 2 nm y 12–23 % a 4 nm (relativo al pico, SrTiO₃ a 39 nm). Reducir el espesor de la rebanada a la mitad reduce el error aproximadamente a la mitad y duplica aproximadamente el trabajo de integración en profundidad.
 
 ---
 

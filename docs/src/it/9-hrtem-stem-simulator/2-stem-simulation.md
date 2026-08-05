@@ -110,7 +110,7 @@ Imposta la geometria della sonda convergente e del rivelatore anulare. Ogni ango
 
 ---
 
-## Bersaglio di visualizzazione STEM (lato risultato)
+## Bersaglio di visualizzazione STEM (lato risultato) {#stem-display-target}
 
 ![Immagine STEM](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
@@ -121,9 +121,43 @@ L'interruttore di visualizzazione in basso a sinistra della finestra seleziona q
 | **Elastic** | Immagine della sola diffusione elastica |
 | **TDS** | Immagine della sola diffusione termica diffusa |
 | **Elastic & TDS** | Somma di elastico + TDS |
+| **EDX** | Mappa dei raggi X caratteristici. La riga da mostrare (ad esempio `O-K`) si sceglie nella casella combinata sottostante, e **EDX comune** in *Normalizz.* pone tutti i canali su un unico intervallo di visualizzazione condiviso, così che cambiando canale l'immagine non venga riscalata |
 
 !!! note
     Tutte e tre le immagini sono ricostruite dalla parte reale della somma di Fourier, quindi **Elastic & TDS** è esattamente la somma delle altre due. Fino alla versione 4.944 veniva preso il modulo, il che rompeva questa identità e schiariva leggermente i pixel scuri. Vedi [Ricostruzione di un'immagine reale](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+
+---
+
+## Mappe elementari STEM-EDX {#stem-edx}
+
+![Mappe elementari STEM-EDX](../../assets/cap-it-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.groupBoxSTEMoption4.png)
+
+Spuntare **Calcola le mappe EDX** per calcolare le mappe dei raggi X caratteristici insieme all'immagine di tipo ADF. Non si tratta di una modalità separata: i segnali elastico, TDS ed EDX provengono tutti dalla stessa esecuzione STEM, e in seguito si passa dall'uno all'altro in [Immagine STEM](#stem-display-target) senza ricalcolare.
+
+Non c'è un selettore di elementi. Quando la casella è spuntata viene calcolato **ogni canale elemento/guscio calcolabile per questo cristallo a questa tensione di accelerazione**, e la riga sotto la casella li elenca (ad esempio `3 mappa/e: O-K, Mg-K, Al-K`). Un canale è disponibile quando la soglia di ionizzazione si trova al di sotto della tensione di accelerazione e il guscio è coperto dai dati forniti — K: C–Sn (Z = 6–50), L-totale: Ca–Rn (Z = 20–86). La tabella fornita memorizza fattori di forma di ionizzazione completamente relativistici fino a un vettore di diffusione di 8 Å⁻¹ per ogni canale, per cui le righe L degli elementi pesanti fino al radon sono simulate senza estrapolazione. Se nessun canale è disponibile, il calcolo viene rifiutato con un messaggio esplicativo invece di produrre una mappa vuota.
+
+La riga successiva riporta la griglia delle direzioni della sonda, ad esempio `Griglia: 132² (consigliato: ≥48²)`. Questa griglia è determinata da **Risoluzione angolare** e dall'angolo di convergenza; vedi [Campionamento angolare della sonda](../appendix/a3-bloch-wave/stem.md#angular-sampling). Al di sotto della suddivisione consigliata il residuo hermitiano ±q può superare la tolleranza e interrompere il calcolo, per cui il valore diventa arancione e prima dell'avvio del calcolo compare una finestra di conferma.
+
+!!! warning "Che cosa rappresentano i valori"
+    La mappa è il **numero di lacune nei gusci interni generate per elettrone incidente** — una grandezza di modello, non un conteggio previsto di raggi X. La resa di fluorescenza, l'autoassorbimento nel campione, l'angolo solido del rivelatore e l'efficienza del rivelatore **non** sono applicati. Usare le mappe per la distribuzione spaziale e per confrontare spessori o orientazioni, non per una quantificazione assoluta.
+
+### Parametri del rivelatore (riservati)
+
+**Autoassorbimento**, **Angolo di uscita** e **Rivelatore** sono presenti nel pannello ma disabilitati: appartengono al modello del rivelatore non ancora implementato. Sono mostrati perché il pannello non cambi disposizione quando il modello verrà introdotto. Il loro effetto futuro differisce per natura:
+
+| Fattore | Contrasto pixel per pixel in una mappa | Rapporto tra le mappe degli elementi |
+|---|---|---|
+| Autoassorbimento (angolo di uscita) | **lo modifica** | **lo modifica** |
+| Finestra del rivelatore / strato morto / efficienza | nessun effetto | **lo modifica fortemente** |
+| Angolo solido del rivelatore, corrente del fascio, tempo di permanenza | nessun effetto | nessun effetto |
+
+L'ultima riga spiega perché ReciPro non espone affatto la corrente del fascio né il tempo di permanenza: moltiplicano ogni pixel di ogni mappa per lo stesso numero, si cancellano in qualunque rapporto e sono invisibili dopo la normalizzazione di visualizzazione.
+
+### Accuratezza e costo
+
+Lo STEM-EDX non impone limiti aggiuntivi al numero di onde né allo spessore della fetta: passa attraverso gli stessi percorsi di calcolo dell'immagine di tipo ADF, quindi le impostazioni che funzionano per lo STEM funzionano anche per l'EDX.
+
+L'accuratezza è lasciata all'utente, esattamente come per il numero di onde o la risoluzione angolare. Come riferimento, l'errore di integrazione in profondità cresce all'incirca in proporzione a **Spessore della fetta (TDS)** — circa 2–3 % a 1 nm, 4–8 % a 2 nm e 12–23 % a 4 nm (relativo al picco, SrTiO₃ a 39 nm). Dimezzare lo spessore della fetta dimezza all'incirca l'errore e raddoppia all'incirca il lavoro di integrazione in profondità.
 
 ---
 
