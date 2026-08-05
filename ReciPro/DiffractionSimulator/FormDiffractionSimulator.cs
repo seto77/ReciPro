@@ -1497,10 +1497,17 @@ public partial class FormDiffractionSimulator : FormBase
                     kikuchiProfilesGHash = gHash;
                     kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
                     kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
+                    //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
+                    var bNote = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true ? ", B=0→0.5 Å² assumed" : "";
+                    labelKikuchiNotice.Text = $"{KikuchiProfileCalculator.DisplayNormalizedTag} ({profiles.Count} bands{bNote})";
                     Draw();
                 });
             }
-            catch (Exception ex) { Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message); }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
+                try { BeginInvoke(() => labelKikuchiNotice.Text = "Dynamical band error: " + ex.Message); } catch { } //260805Cl 追加: 例外を GUI に可視化
+            }
         });
     }
 
