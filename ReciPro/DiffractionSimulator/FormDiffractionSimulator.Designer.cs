@@ -793,7 +793,8 @@
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224);
+            //colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224); //260805Cl 変更前
+            colorControlExcessLine.Color = System.Drawing.Color.White; //260805Cl 作者指定: 明線 = 白
             colorControlExcessLine.Name = "colorControlExcessLine";
             colorControlExcessLine.ColorChanged += Draw;
             // 
@@ -873,7 +874,8 @@
             resources.ApplyResources(colorControlDeficientLine, "colorControlDeficientLine");
             colorControlDeficientLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlDeficientLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlDeficientLine.Color = System.Drawing.Color.FromArgb(65, 105, 225);
+            //colorControlDeficientLine.Color = System.Drawing.Color.FromArgb(65, 105, 225); //260805Cl 変更前 (RoyalBlue 仮置き)
+            colorControlDeficientLine.Color = System.Drawing.Color.Black; //260805Cl 作者指定: 暗線 = 黒
             colorControlDeficientLine.Name = "colorControlDeficientLine";
             colorControlDeficientLine.ColorChanged += Draw;
             //

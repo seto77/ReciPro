@@ -75,8 +75,8 @@ public static class KikuchiBandRenderer
                 for (int px = 0; px < width; px++)
                 {
                     var v = buf[o + px];
-                    if (v == 0) continue; // 透明のまま
-                    var m = Math.Pow(Math.Abs(Math.Tanh(v * k)), invGamma); // 設計 §4: |tanh|^{1/γ} で端スパイクと内部濃淡を両立
+                    if (v == 0 || !float.IsFinite(v)) continue; // 透明のまま (260805Cl 非有限値ガード追加)
+                    var m = Math.Pow(Math.Abs(Math.Tanh(v * k)), invGamma); // 設計 §4: m = sign·|tanh x|^{1/γ}
                     int a = (int)(m * 255 + 0.5);
                     if (a > 255) a = 255;
                     pixels[o + px] = v > 0
@@ -98,7 +98,7 @@ public static class KikuchiBandRenderer
         for (int i = 0; i < buf.Length; i += stride)
         {
             var v = Math.Abs(buf[i]);
-            if (v > 1e-12f)
+            if (v > 1e-12f && float.IsFinite(v)) // 260805Cl 非有限値ガード追加 (Inf がスケールを壊すのを防ぐ)
                 samples.Add(v);
         }
         if (samples.Count == 0)
