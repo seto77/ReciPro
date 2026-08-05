@@ -3,8 +3,10 @@
 // 「符号付き float バッファへ c_total = Σ_g c_g を加算 → 一度だけ tanh → E/D 色 + |m| 不透明度の ARGB 変換」
 // (設計 §4。バンド別アルファ逐次合成は描画順依存になるため不可) だけを担う。
 //
-// 検出器座標 (x, y) ⇔ 方向の規約: d̂ = normalize(x, y, +L), L = CameraLength2。
-// この規約は KikuchiCheck geom テストで既存 DrawKikuchiLine の双曲線と residual ~1e-16 で一致確認済み。
+// 検出器座標 (x, y) ⇔ 方向の規約: d̂ = normalize(−x, +y, +L), L = CameraLength2。
+// DiffractionSimulator は「蛍光板を試料側からのぞき込む」座標系 (作者説明。EBSD のカメラ視点と鏡像関係) のため、
+// 素朴な (+x, +y, +L) に対して x が反転する。KikuchiCheck geom テストで既存 DrawKikuchiLine の双曲線と
+// residual ~2e-16 で一致確認済み (等価表現: d̂ = norm(+x, −y, −L) と −sinθ_B)。
 // 検出器 tilt (Tau) は呼び出し側が ĝ に Rot(axis(Phi), −Tau) を掛けて渡す (DrawKikuchiLine の vec2 と同じ扱い)。
 
 using Crystallography;
@@ -51,7 +53,8 @@ public static class KikuchiBandRenderer
                 foreach (var band in bandArr)
                 {
                     var gh = band.GHat2;
-                    var sinTp = -(gh.X * dx + gh.Y * dy + gh.Z * L) * inv; // sinθ' = −ĝ·d̂
+                    //var sinTp = -(gh.X * dx + gh.Y * dy + gh.Z * L) * inv; //260805Cl 変更前: d̂=(+x,+y,+L) は蛍光板座標系と左右鏡像だった (作者実機指摘)
+                    var sinTp = (gh.X * dx - gh.Y * dy - gh.Z * L) * inv; // sinθ' = −ĝ·d̂, d̂ = norm(−x, +y, +L)
                     sum += band.Profile.Interpolate(sinTp / band.Profile.SinThetaB);
                 }
                 buf[o + px] = (float)sum;
