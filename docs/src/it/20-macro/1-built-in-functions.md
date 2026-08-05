@@ -14,17 +14,61 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 | `File.ReadCrystalList(filename)` | Carica un file di elenco cristalli (*.xml); omettendo `filename` si apre una finestra di dialogo |
 | `File.ReadCrystal(filename)` | Carica un file di cristallo CIF/AMC; omettendo `filename` si apre una finestra di dialogo |
 | `File.ExportAsCIF(filename)` | Esporta il cristallo corrente come CIF; omettendo `filename` si apre una finestra di dialogo |
+| `File.ReadText(filename)` | Leggere un file di testo come UTF-8 e restituirlo come stringa; omettendo `filename` si apre una finestra di dialogo. Da abbinare a `Crystal.LoadCifText()` / `SaveText()` |
 | `File.SaveText(textData, filename)` | Salva dati di testo in un file; scrive `textData` in UTF-8 e, omettendo `filename`, apre una finestra di salvataggio |
 
 ---
 
 ## Classe Crystal
 
-| Proprietà | Tipo | Descrizione |
-|----------|------|-------------|
-| `Crystal.Name` | string | Nome del cristallo |
-| `Crystal.ChemicalFormula` | string | Formula chimica |
-| `Crystal.Density` | double | Densità (g/cm³) |
+Legge il cristallo selezionato e, tramite una bozza pendente, crea e modifica cristalli.
+
+### Lettura
+
+| Proprietà / Funzione | Descrizione |
+|---|---|
+| `Crystal.Name` | Nome del cristallo |
+| `Crystal.ChemicalFormula` | Formula chimica |
+| `Crystal.Density` | Densità (g/cm³) |
+| `Crystal.GetCellInAng()` | Costanti di cella come `[a, b, c, alpha, beta, gamma]` (Å, gradi) |
+| `Crystal.SpaceGroupName` | Simbolo Hermann–Mauguin del gruppo spaziale, con il suffisso di impostazione (`:2`, `:H`, …) dove applicabile |
+| `Crystal.SpaceGroupNumber` | Numero del gruppo spaziale delle International Tables (1–230) |
+| `Crystal.HasPending` | Se è aperta una bozza |
+
+### Creazione e modifica (bozza → Commit)
+
+Un cristallo si costruisce in una **bozza pendente**: la si avvia, la si riempie con i setter, e `Commit()` valida tutto, costruisce il cristallo e lo applica come cristallo corrente in un solo passo (la GUI e tutti i simulatori aperti si aggiornano, come al caricamento di un file CIF). Un `Commit()` fallito riporta tutti gli errori di validazione insieme, non cambia nulla e conserva la bozza, che può quindi essere corretta e ricommittata.
+
+| Funzione | Descrizione |
+|---|---|
+| `Crystal.BeginCreate(name)` | Avviare una bozza per un nuovo cristallo |
+| `Crystal.BeginEdit()` | Avviare una bozza dal cristallo corrente (cella, gruppo spaziale, atomi e orientazione vengono ereditati) |
+| `Crystal.LoadCifText(cifText)` | Avviare una bozza da testo CIF (il contenuto di un file .cif, non un percorso) |
+| `Crystal.SetName(name)` | Rinominare la bozza |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | Costanti di cella in **Å e gradi**. Ogni chiamata sostituisce l'intera cella; gli argomenti omessi sono derivati dai vincoli del gruppo spaziale (per un cristallo cubico basta `a`), e i valori espliciti che li contraddicono generano un errore |
+| `Crystal.SetSpaceGroup(symbol)` | Gruppo spaziale per simbolo (HM breve/completo o Hall; spazi e `_` ignorati). Aggiungete l'impostazione (`'Fd-3m:2'`, `'R-3c:H'`, `'P21/c:b1'`) quando il gruppo ne ha più d'una — i simboli ambigui generano un errore che elenca i candidati |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | Gruppo spaziale per numero IT (1–230); `setting` (`'1'`, `'2'`, `'H'`, `'R'`, `'b1'`, …) sceglie tra più impostazioni |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | Aggiungere un atomo dell'unità asimmetrica: simbolo dell'elemento, coordinate frazionarie, occupazione (0 < occ ≤ 1, default 1) e B isotropo in Å² (default 0). Posizioni equivalenti, lettere di Wyckoff e molteplicità sono derivate automaticamente |
+| `Crystal.ClearAtoms()` | Rimuovere tutti gli atomi dalla bozza |
+| `Crystal.Commit()` | Validare, costruire e applicare la bozza |
+| `Crystal.Cancel()` | Scartare la bozza |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+Dopo un `Commit()` riuscito, il `BeginEdit()` successivo parte dal cristallo **aggiornato**: le modifiche si accumulano — per scansioni in valori assoluti, leggete i valori di base prima del ciclo, come sopra. Per registrare il cristallo nell'elenco dei cristalli, chiamate `CrystalList.Add()`.
 
 ---
 

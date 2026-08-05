@@ -14,17 +14,61 @@ ReciPro 宏中可用的类与函数完整参考。
 | `File.ReadCrystalList(filename)` | 加载晶体列表文件 (*.xml)；省略 `filename` 则打开对话框 |
 | `File.ReadCrystal(filename)` | 加载 CIF/AMC 晶体文件；省略 `filename` 则打开对话框 |
 | `File.ExportAsCIF(filename)` | 将当前晶体导出为 CIF；省略 `filename` 则打开对话框 |
+| `File.ReadText(filename)` | 以 UTF-8 读取文本文件并作为字符串返回；省略 `filename` 则打开对话框。与 `Crystal.LoadCifText()` / `SaveText()` 配合使用 |
 | `File.SaveText(textData, filename)` | 将文本数据保存到文件；以 UTF-8 写出 `textData`，省略 `filename` 则打开保存对话框 |
 
 ---
 
 ## Crystal 类
 
-| 属性 | 类型 | 说明 |
-|----------|------|-------------|
-| `Crystal.Name` | string | 晶体名称 |
-| `Crystal.ChemicalFormula` | string | 化学式 |
-| `Crystal.Density` | double | 密度 (g/cm³) |
+读取当前选中的晶体，并通过 pending 草稿创建和编辑晶体。
+
+### 读取
+
+| 属性 / 函数 | 说明 |
+|---|---|
+| `Crystal.Name` | 晶体名称 |
+| `Crystal.ChemicalFormula` | 化学式 |
+| `Crystal.Density` | 密度（g/cm³） |
+| `Crystal.GetCellInAng()` | 以 `[a, b, c, alpha, beta, gamma]`（Å、度）获取晶胞参数 |
+| `Crystal.SpaceGroupName` | 空间群的 Hermann–Mauguin 记号（有多个设置的群带 `:2`、`:H` 等设置后缀） |
+| `Crystal.SpaceGroupNumber` | International Tables 空间群编号（1–230） |
+| `Crystal.HasPending` | 是否有打开的 pending 草稿 |
+
+### 创建与编辑（草稿 → Commit）
+
+晶体在 **pending 草稿**中组装：先开始草稿，用 setter 填入数值，`Commit()` 会一次性完成全部校验 → 构建晶体 → 应用为当前晶体（与读入 CIF 文件时一样，GUI 和所有打开的模拟器都会更新）。`Commit()` 失败时会把全部校验错误汇总报告，不改变当前晶体，草稿也会保留，修正后即可再次 Commit。
+
+| 函数 | 说明 |
+|---|---|
+| `Crystal.BeginCreate(name)` | 为新晶体开始草稿 |
+| `Crystal.BeginEdit()` | 从当前晶体开始草稿（晶胞、空间群、原子、取向被继承） |
+| `Crystal.LoadCifText(cifText)` | 从 CIF 文本（.cif 文件的内容，而非路径）开始草稿 |
+| `Crystal.SetName(name)` | 重命名草稿 |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | 以 **Å 和度**设置晶胞参数。每次调用都重新指定整个晶胞；省略的参数由空间群约束导出（立方晶只需 `a`），与约束矛盾的明示值会报错 |
+| `Crystal.SetSpaceGroup(symbol)` | 按记号设置空间群（HM 短/全记号或 Hall；空格与 `_` 被忽略）。群有多个设置时附加设置（`'Fd-3m:2'`、`'R-3c:H'`、`'P21/c:b1'`）— 有歧义的记号会报错并列出候选 |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | 按 IT 编号（1–230）设置空间群；有多个设置时用 `setting`（`'1'`、`'2'`、`'H'`、`'R'`、`'b1'` 等）选择 |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | 添加非对称单元的原子：元素符号、分数坐标、占有率（0 < occ ≤ 1，默认 1）、各向同性 B（Å²，默认 0）。等效位置、Wyckoff 记号与多重度自动导出 |
+| `Crystal.ClearAtoms()` | 删除草稿中的全部原子 |
+| `Crystal.Commit()` | 校验、构建并应用草稿 |
+| `Crystal.Cancel()` | 丢弃草稿 |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+`Commit()` 成功后，下一次 `BeginEdit()` 以**更新后的**晶体为起点，因此更改会累积 — 按绝对值扫描时，请像上例那样在循环前读取基准值。要把 Commit 的晶体登记到晶体列表，调用 `CrystalList.Add()`。
 
 ---
 

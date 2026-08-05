@@ -125,7 +125,7 @@ ReciPro 巨集 API 公開於頂層名稱 **`ReciPro`** 之下。每個內建類�
 
 ```python
 ReciPro.File.*         # File I/O helpers
-ReciPro.Crystal.*      # Currently selected crystal
+ReciPro.Crystal.*      # 目前晶體：讀取、建立、編輯
 ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator

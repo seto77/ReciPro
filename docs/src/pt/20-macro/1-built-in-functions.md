@@ -14,17 +14,61 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 | `File.ReadCrystalList(filename)` | Carregar um arquivo de lista de cristais (*.xml); omita `filename` para abrir um diálogo |
 | `File.ReadCrystal(filename)` | Carregar um arquivo de cristal CIF/AMC; omita `filename` para abrir um diálogo |
 | `File.ExportAsCIF(filename)` | Exportar o cristal atual como CIF; omita `filename` para abrir um diálogo |
+| `File.ReadText(filename)` | Ler um arquivo de texto como UTF-8 e devolvê-lo como string; omita `filename` para abrir um diálogo. Combina com `Crystal.LoadCifText()` / `SaveText()` |
 | `File.SaveText(textData, filename)` | Salvar dados de texto em um arquivo; grava `textData` em UTF-8 e, se `filename` for omitido, abre um diálogo de salvamento |
 
 ---
 
 ## Classe Crystal
 
-| Propriedade | Tipo | Descrição |
-|----------|------|-------------|
-| `Crystal.Name` | string | Nome do cristal |
-| `Crystal.ChemicalFormula` | string | Fórmula química |
-| `Crystal.Density` | double | Densidade (g/cm³) |
+Lê o cristal selecionado e, por meio de um rascunho pendente, cria e edita cristais.
+
+### Leitura
+
+| Propriedade / Função | Descrição |
+|---|---|
+| `Crystal.Name` | Nome do cristal |
+| `Crystal.ChemicalFormula` | Fórmula química |
+| `Crystal.Density` | Densidade (g/cm³) |
+| `Crystal.GetCellInAng()` | Constantes de célula como `[a, b, c, alpha, beta, gamma]` (Å, graus) |
+| `Crystal.SpaceGroupName` | Símbolo Hermann–Mauguin do grupo espacial, com o sufixo de configuração (`:2`, `:H`, …) quando aplicável |
+| `Crystal.SpaceGroupNumber` | Número do grupo espacial das International Tables (1–230) |
+| `Crystal.HasPending` | Se há um rascunho aberto |
+
+### Criação e edição (rascunho → Commit)
+
+Um cristal é construído em um **rascunho pendente**: inicie-o, preencha-o com os setters, e `Commit()` valida tudo, constrói o cristal e o aplica como cristal atual em um único passo (a GUI e todos os simuladores abertos se atualizam, como ao carregar um arquivo CIF). Um `Commit()` que falha relata todos os erros de validação juntos, não muda nada e mantém o rascunho, que pode então ser corrigido e recommitado.
+
+| Função | Descrição |
+|---|---|
+| `Crystal.BeginCreate(name)` | Iniciar um rascunho para um cristal novo |
+| `Crystal.BeginEdit()` | Iniciar um rascunho a partir do cristal atual (célula, grupo espacial, átomos e orientação são mantidos) |
+| `Crystal.LoadCifText(cifText)` | Iniciar um rascunho a partir de texto CIF (o conteúdo de um arquivo .cif, não um caminho) |
+| `Crystal.SetName(name)` | Renomear o rascunho |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | Constantes de célula em **Å e graus**. Cada chamada substitui a célula inteira; argumentos omitidos são derivados das restrições do grupo espacial (para um cristal cúbico basta `a`), e valores explícitos que as contradizem geram erro |
+| `Crystal.SetSpaceGroup(symbol)` | Grupo espacial por símbolo (HM curto/completo ou Hall; espaços e `_` são ignorados). Acrescente a configuração (`'Fd-3m:2'`, `'R-3c:H'`, `'P21/c:b1'`) quando o grupo tiver várias — símbolos ambíguos geram um erro listando os candidatos |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | Grupo espacial por número IT (1–230); `setting` (`'1'`, `'2'`, `'H'`, `'R'`, `'b1'`, …) escolhe entre várias configurações |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | Adicionar um átomo da unidade assimétrica: símbolo do elemento, coordenadas fracionárias, ocupação (0 < occ ≤ 1, padrão 1) e B isotrópico em Å² (padrão 0). Posições equivalentes, letras de Wyckoff e multiplicidades são derivadas automaticamente |
+| `Crystal.ClearAtoms()` | Remover todos os átomos do rascunho |
+| `Crystal.Commit()` | Validar, construir e aplicar o rascunho |
+| `Crystal.Cancel()` | Descartar o rascunho |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+Após um `Commit()` bem-sucedido, o próximo `BeginEdit()` parte do cristal **atualizado**: as mudanças se acumulam — para varreduras em valores absolutos, leia os valores base antes do laço, como acima. Para registrar o cristal na lista de cristais, chame `CrystalList.Add()`.
 
 ---
 

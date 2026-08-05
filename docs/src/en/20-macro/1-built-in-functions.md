@@ -14,17 +14,61 @@ Complete reference of classes and functions available in ReciPro macros.
 | `File.ReadCrystalList(filename)` | Load a crystal list file (*.xml); omit `filename` to open a dialog |
 | `File.ReadCrystal(filename)` | Load a CIF/AMC crystal file; omit `filename` to open a dialog |
 | `File.ExportAsCIF(filename)` | Export the current crystal as CIF; omit `filename` to open a dialog |
+| `File.ReadText(filename)` | Read a text file (UTF-8) and return it as a string; omit `filename` to open a dialog. Pairs with `Crystal.LoadCifText()` / `SaveText()` |
 | `File.SaveText(textData, filename)` | Save text data to a file; writes `textData` as UTF-8, and omitting `filename` opens a save dialog |
 
 ---
 
 ## Crystal class
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `Crystal.Name` | string | Crystal name |
-| `Crystal.ChemicalFormula` | string | Chemical formula |
-| `Crystal.Density` | double | Density (g/cm³) |
+Reads the currently selected crystal and, through a pending draft, creates and edits crystals.
+
+### Reading
+
+| Property / Function | Description |
+|---|---|
+| `Crystal.Name` | Crystal name |
+| `Crystal.ChemicalFormula` | Chemical formula |
+| `Crystal.Density` | Density (g/cm³) |
+| `Crystal.GetCellInAng()` | Cell constants as `[a, b, c, alpha, beta, gamma]` (Å, degrees) |
+| `Crystal.SpaceGroupName` | Hermann–Mauguin space-group symbol, with the setting suffix (`:2`, `:H`, …) where applicable |
+| `Crystal.SpaceGroupNumber` | International Tables space-group number (1–230) |
+| `Crystal.HasPending` | Whether a pending draft is open |
+
+### Creating and editing (draft → Commit)
+
+A crystal is built in a **pending draft**: start one, fill it with the setters, and `Commit()` validates everything, builds the crystal, and applies it as the current crystal in one step (the GUI and all open simulators update, as when a CIF file is loaded). A failed `Commit()` reports all validation errors together, changes nothing, and keeps the draft so it can be fixed and committed again.
+
+| Function | Description |
+|---|---|
+| `Crystal.BeginCreate(name)` | Start a draft for a new crystal |
+| `Crystal.BeginEdit()` | Start a draft from the current crystal (cell, space group, atoms and orientation are carried over) |
+| `Crystal.LoadCifText(cifText)` | Start a draft from CIF text (the content of a .cif file, not a path) |
+| `Crystal.SetName(name)` | Rename the draft |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | Cell constants in **Å and degrees**. Each call replaces the whole cell; omitted arguments are derived from the space-group constraints (for a cubic crystal, `a` alone is enough), and explicit values that contradict them raise an error |
+| `Crystal.SetSpaceGroup(symbol)` | Space group by symbol (HM short/full or Hall; spaces and `_` are ignored). Append the setting (`'Fd-3m:2'`, `'R-3c:H'`, `'P21/c:b1'`) when the group has several — ambiguous symbols raise an error listing the candidates |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | Space group by IT number (1–230); `setting` (`'1'`, `'2'`, `'H'`, `'R'`, `'b1'`, …) picks among multiple settings |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | Add an atom of the asymmetric unit: element symbol, fractional coordinates, occupancy (0 < occ ≤ 1, default 1) and isotropic B in Å² (default 0). Equivalent positions, Wyckoff letters and multiplicities are derived automatically |
+| `Crystal.ClearAtoms()` | Remove all atoms from the draft |
+| `Crystal.Commit()` | Validate, build and apply the draft |
+| `Crystal.Cancel()` | Discard the draft |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+After a successful `Commit()`, the next `BeginEdit()` starts from the **updated** crystal, so changes accumulate — for absolute scans, read the base values before the loop, as above. To register the committed crystal in the crystal list, call `CrystalList.Add()`.
 
 ---
 

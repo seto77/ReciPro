@@ -350,6 +350,47 @@ public class Macro : MacroBase
             ReciPro.File.SaveText(csv)
             """
         ),
+        (//260805Cl 追加 (P1-3): 結晶の生成・編集 API のサンプル
+            "09. Create a crystal and scan the lattice parameter",
+            """
+            # Build NaCl from scratch (space group, cell in angstroms, atoms in fractional coordinates),
+            # then scan the lattice parameter by +-2 %. BeginEdit() starts from the current crystal,
+            # so absolute values are set each iteration from the base cell read before the loop.
+            ReciPro.Crystal.BeginCreate('NaCl')
+            ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+            ReciPro.Crystal.SetCellInAng(5.6402)
+            ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+            ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+            ReciPro.Crystal.Commit()
+            print('density = %.4f g/cm^3' % ReciPro.Crystal.Density)
+
+            base = ReciPro.Crystal.GetCellInAng()
+            for k in range(-2, 3):
+                ReciPro.Crystal.BeginEdit()
+                ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+                ReciPro.Crystal.Commit()
+                print('a = %.4f  density = %.4f' % (ReciPro.Crystal.GetCellInAng()[0], ReciPro.Crystal.Density))
+            """,
+            "09. 結晶の作成と格子定数スキャン",
+            """
+            # NaCl をゼロから作り (空間群、Å 単位のセル定数、分率座標の原子)、格子定数を ±2 % スキャンします。
+            # BeginEdit() は「現在の結晶」を起点にするので、ループ前に読んだ基準セルから毎回絶対値を設定します。
+            ReciPro.Crystal.BeginCreate('NaCl')
+            ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+            ReciPro.Crystal.SetCellInAng(5.6402)
+            ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+            ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+            ReciPro.Crystal.Commit()
+            print('density = %.4f g/cm^3' % ReciPro.Crystal.Density)
+
+            base = ReciPro.Crystal.GetCellInAng()
+            for k in range(-2, 3):
+                ReciPro.Crystal.BeginEdit()
+                ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+                ReciPro.Crystal.Commit()
+                print('a = %.4f  density = %.4f' % (ReciPro.Crystal.GetCellInAng()[0], ReciPro.Crystal.Density))
+            """
+        ),
     ];
 
     private static readonly (string name, string body)[] _sampleMacrosEn = Array.ConvertAll(_sampleMacros, m => (name: m.nameEn, body: m.bodyEn));
@@ -405,6 +446,20 @@ public class Macro : MacroBase
         [Help("Exports the selected crystal in CIF format. If 'filename' is omitted, opens a save dialog.", "string filename")]
         public void ExportAsCIF(string filename = "") => Execute(() => main.ExportCIF(filename));
 
+        //260805Cl 追加: SaveText の対。IronPython 埋め込み環境は Python 標準ライブラリの encodings を持たず
+        //open(path, encoding=...) が使えない (LookupError) ため、テキスト読みはこの API が唯一の経路。
+        [Help("Reads a text file as UTF-8 and returns its content as a string. If 'filename' is omitted, opens a file selection dialog. Pair it with Crystal.LoadCifText() or SaveText().", "string filename")]
+        public string ReadText(string filename = "")
+        {
+            if (filename == "")
+            {
+                filename = GetFileName();
+                if (filename == "")
+                    return "";
+            }
+            return Execute(() => System.IO.File.ReadAllText(filename, Encoding.UTF8));
+        }
+
         [Help("Saves text in UTF-8. If 'filename' is omitted, opens a save dialog.", "string textData, string filename")]
         public void SaveText(string textData, string filename = "")
         {
@@ -421,23 +476,376 @@ public class Macro : MacroBase
     }
     #endregion
 
-    #region CrystalList クラス
+    #region Crystal クラス
     public class CrystalClass(Macro _p) : MacroSub(_p.main)
     {
         private FormMain main => _p.main;
 
         // (260414Ch) Help text revised for clarity and to match the underlying properties.
+        // 260805Cl: [Help] と宣言の間の空行を除去 (整備方針 §3-3)
         [Help("Gets the name of the selected crystal.")]
         public string Name { get => main.Crystal.Name; }
 
         [Help("Gets the chemical formula of the selected crystal.")]
+        public string ChemicalFormula { get => main.Crystal.ChemicalFormulaSum; }
 
-        public string ChemicalFormula { get => main.Crystal.ChemicalFormulaSum;}
-        
         [Help("Gets the density of the selected crystal in g/cm^3.")]
+        public double Density { get => main.Crystal.Density; }
 
-        public double Density { get => main.Crystal.Density;}
+        //260805Cl 追加 (マクロ整備方針 P1-3。設計正本: .project-guidance/ReciPro/ReciPro_マクロCrystal編集API設計.md):
+        //結晶の生成・編集 API。draft オブジェクト返却は補完が効かないため「Crystal 名前空間内の暗黙 pending 状態」方式 (codex 相談で確定)。
+        //単位は交換レイヤ (CIF/Crystal2) と同じ Å・度・B(Å²) で受け、Commit 境界で内部 nm/rad/nm² へ換算する。
+        //Commit は原子的: 全検証 → Crystal 構築 → crystalControl.Crystal 代入 (CIF 読込と同一経路) を一度だけ。失敗時は現結晶を変えず pending を保持する。
 
+        [Help("Gets the cell constants of the current crystal as a six-element array [a, b, c, alpha, beta, gamma] in angstroms and degrees.")]
+        public double[] GetCellInAng()
+        {
+            var c = main.Crystal;
+            return [c.A * 10, c.B * 10, c.C * 10, c.Alpha / Math.PI * 180, c.Beta / Math.PI * 180, c.Gamma / Math.PI * 180];
+        }
+
+        [Help("Gets the Hermann-Mauguin space-group symbol of the current crystal, with the setting suffix (e.g. ':2', ':H') where the group has multiple settings.")]
+        public string SpaceGroupName
+        {
+            get
+            {
+                var s = main.Crystal.Symmetry;
+                return s.SpaceGroupHMStr + (s.SpaceGroupHMsubStr.Length > 0 ? ":" + s.SpaceGroupHMsubStr : "");
+            }
+        }
+
+        [Help("Gets the International Tables space-group number (1-230) of the current crystal.")]
+        public int SpaceGroupNumber => main.Crystal.Symmetry.SpaceGroupNumber;
+
+        [Help("Gets whether a pending crystal draft (started by BeginCreate(), BeginEdit(), or LoadCifText()) is open.")]
+        public bool HasPending => pending != null;
+
+        [Help("Starts a pending draft for a new crystal with the given name (identity orientation, random color, no symmetry until SetSpaceGroup). Throws if another draft is already pending -- Commit() or Cancel() it first.", "string name")]
+        public void BeginCreate(string name)
+        {
+            RequireNoPending("BeginCreate");
+            pending = new PendingCrystal { Name = name ?? "" };
+        }
+
+        [Help("Starts a pending draft from the currently selected crystal (cell, space group, atoms, orientation, color and bonds are carried over). Note that after a successful Commit(), the next BeginEdit() starts from the UPDATED crystal, so changes accumulate; for absolute scans, read the base values before the loop and set them explicitly each iteration.")]
+        public void BeginEdit()
+        {
+            RequireNoPending("BeginEdit");
+            pending = SnapshotOf(main.Crystal ?? throw new InvalidOperationException("BeginEdit: no crystal is selected."));
+        }
+
+        [Help("Starts a pending draft from the given CIF text (the content of a .cif file, not a file path). The draft can then be adjusted with the setter functions before Commit(). Throws if the text cannot be interpreted or another draft is already pending.", "string cifText")]
+        public void LoadCifText(string cifText)
+        {
+            RequireNoPending("LoadCifText");
+            var c = ConvertCrystalData.ConvertToCrystalFromCifText(cifText) ?? throw new ArgumentException("LoadCifText: the text could not be interpreted as a CIF.");
+            pending = SnapshotOf(c);
+        }
+
+        [Help("Discards the pending draft (no effect on the current crystal).")]
+        public void Cancel() => pending = null;
+
+        [Help("Sets the name of the pending crystal.", "string name")]
+        public void SetName(string name) => RequirePending("SetName").Name = name ?? "";
+
+        [Help("Sets the pending cell constants in angstroms and degrees. Each call replaces the whole cell: omitted arguments are derived from the space-group constraints at Commit() -- e.g. SetCellInAng(4.05) is enough for a cubic crystal, and explicit values that contradict the constraints raise an error.", "double a, double b, double c, double alpha, double beta, double gamma")]
+        public void SetCellInAng(double a, double b = double.NaN, double c = double.NaN, double alpha = double.NaN, double beta = double.NaN, double gamma = double.NaN)
+        {
+            var p = RequirePending("SetCellInAng");
+            double[] v = [a, b, c, alpha, beta, gamma];
+            for (int i = 0; i < 6; i++)
+            {
+                p.Cell[i] = v[i];
+                p.CellSet[i] = !double.IsNaN(v[i]);
+            }
+        }
+
+        [Help("Sets the pending space group by symbol: Hermann-Mauguin short or full notation, Hall symbol, or an IT number as text. Spaces and '_' are ignored ('F m -3 m', 'P4_2/mnm'). If the group has multiple settings, append one (':1', ':2', ':H', ':R', ':b1', ...) -- an ambiguous symbol raises an error listing the candidates.", "string symbol")]
+        public void SetSpaceGroup(string symbol)
+        {
+            var p = RequirePending("SetSpaceGroup");
+            if (string.IsNullOrWhiteSpace(symbol))
+                throw new ArgumentException("SetSpaceGroup: symbol is empty.");
+            var text = symbol.Trim();
+
+            //":setting" suffix を切り出す ("Fd-3m:2" / "R-3c:H" / "P21/c:b2" など)
+            string setting = "";
+            var colon = text.LastIndexOf(':');
+            if (colon > 0)
+            {
+                setting = text[(colon + 1)..].Trim();
+                text = text[..colon].Trim();
+            }
+
+            if (int.TryParse(text, out var it))
+            {
+                p.Series = ResolveSeriesByNumber(it, setting);
+                return;
+            }
+
+            var key = CanonSG(text);
+            var matches = new List<int>();
+            for (int i = 1; i < SymmetryStatic.TotalSpaceGroupNumber; i++)//0 = Unknown はスキップ
+                if (SymbolVariants(SymmetryStatic.Symmetries[i]).Any(n => CanonSG(n) == key))
+                    matches.Add(i);
+            if (setting.Length > 0)
+                matches = [.. matches.Where(i => SymmetryStatic.Symmetries[i].SpaceGroupHMsubStr.Equals(setting, StringComparison.OrdinalIgnoreCase))];
+
+            if (matches.Count == 0)
+                throw new ArgumentException($"SetSpaceGroup: unknown space-group symbol '{symbol}'.");
+            if (matches.Count > 1)
+                throw new ArgumentException($"SetSpaceGroup: '{symbol}' matches {matches.Count} settings: {CandidateText(matches)} -- append a setting like ':{SymmetryStatic.Symmetries[matches[0]].SpaceGroupHMsubStr}'.");
+            p.Series = matches[0];
+        }
+
+        [Help("Sets the pending space group by International Tables number (1-230). If the group has multiple settings (origin choices, unique axes, hexagonal/rhombohedral), pass one via 'setting' ('1', '2', 'H', 'R', 'b1', ...); with the default empty setting, an ambiguous number raises an error listing the candidates.", "int itNumber, string setting")]
+        public void SetSpaceGroupByNumber(int itNumber, string setting = "")
+        {
+            var p = RequirePending("SetSpaceGroupByNumber");
+            p.Series = ResolveSeriesByNumber(itNumber, setting ?? "");
+        }
+
+        [Help("Adds an atom to the pending draft: 'label' is a free label, 'element' is the element symbol (e.g. 'Mg'), x/y/z are fractional coordinates, 'occ' is the occupancy (0 < occ <= 1), and 'bIso' is the isotropic displacement parameter B in A^2. Equivalent positions, Wyckoff letters and multiplicities are derived automatically at Commit().", "string label, string element, double x, double y, double z, double occ, double bIso")]
+        public void AddAtom(string label, string element, double x, double y, double z, double occ = 1.0, double bIso = 0.0)
+            => RequirePending("AddAtom").AtomList.Add(new NewAtom(label ?? "", element ?? "", x, y, z, occ, bIso));
+
+        [Help("Removes all atoms from the pending draft (e.g. to replace them after BeginEdit()). Bonds are regenerated from the new atoms at Commit().")]
+        public void ClearAtoms()
+        {
+            var p = RequirePending("ClearAtoms");
+            p.AtomList.Clear();
+            p.AtomsReplaced = true;
+        }
+
+        [Help("Validates the pending draft, builds the crystal, and applies it as the current crystal in one step (the GUI and all open simulators update, as when a CIF file is loaded). All validation errors are reported together; on failure the current crystal is unchanged and the draft is kept, so it can be fixed and committed again.")]
+        public void Commit()
+        {
+            var p = RequirePending("Commit");
+            var errors = new List<string>();
+            var sym = SymmetryStatic.Symmetries[p.Series];
+
+            var cell = ResolveCell(p, sym, errors);
+
+            //原子の検証 (エラーは全件集めてからまとめて投げる)
+            var resolvedZ = new Dictionary<NewAtom, int>();
+            foreach (var na in p.AtomList.OfType<NewAtom>())
+            {
+                var z = AtomStatic.AtomicNumber(na.Element, caseSensitive: false);
+                if (z <= 0)
+                    errors.Add($"AddAtom '{na.Label}': unknown element '{na.Element}'.");
+                else
+                    resolvedZ[na] = z;
+                if (!(na.Occ > 0 && na.Occ <= 1))
+                    errors.Add($"AddAtom '{na.Label}': occupancy must be 0 < occ <= 1 (got {na.Occ}).");
+                if (na.BisoAng2 < 0)
+                    errors.Add($"AddAtom '{na.Label}': bIso must be >= 0 A^2 (got {na.BisoAng2}).");
+            }
+            if (errors.Count > 0)
+                throw new ArgumentException("Commit failed:\n" + string.Join("\n", errors));
+
+            //構築 (Å/度 → 内部 nm/rad、B: Å² → nm²)
+            var cellNmRad = (cell[0] / 10, cell[1] / 10, cell[2] / 10,
+                             cell[3] / 180 * Math.PI, cell[4] / 180 * Math.PI, cell[5] / 180 * Math.PI);
+            var atoms = new List<Atoms>();
+            foreach (var o in p.AtomList)
+            {
+                if (o is Atoms a)
+                    atoms.Add(a);//BeginEdit/LoadCifText 由来はそのまま渡す (異方性因子等を保持。Crystal ctor が ResetSymmetry を呼ぶ)
+                else if (o is NewAtom na)
+                {
+                    var at = new Atoms(na.Label, resolvedZ[na], 0, 0, null, p.Series, new Vector3DBase(na.X, na.Y, na.Zf), na.Occ,
+                        new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, na.BisoAng2 / 100.0, 0, new double[6], new double[6], cellNmRad));
+                    at.ResetVesta();//CIF 読込と同じ VESTA 既定色・半径
+                    atoms.Add(at);
+                }
+            }
+
+            //bonds: BeginEdit の引き継ぎを尊重。原子を入れ替えた/新規のときは VESTA 規則で自動生成 (CIF 読込と同じ)
+            var bonds = (!p.AtomsReplaced && p.BondList is { Length: > 0 }) ? p.BondList
+                      : Bonds.GetVestaBonds(atoms.Select(a => a.AtomicNumber));
+
+            var built = new Crystal(cellNmRad, null, p.Series, p.Name, p.Col, p.Rot, [.. atoms], p.Reference, bonds);
+
+            main.crystalControl.Crystal = built;//CIF 読込と同一の適用経路 (SetToInterface + CrystalChanged → 全シミュレータ更新)
+            Application.DoEvents();
+            pending = null;//成功時のみ破棄
+        }
+
+        #region pending の内部実装 (260805Cl)
+
+        private PendingCrystal pending;
+        private static readonly Random rndColor = new();
+
+        private sealed class PendingCrystal
+        {
+            public string Name = "";
+            public readonly double[] Cell = new double[6];//Å, Å, Å, 度, 度, 度
+            public readonly bool[] CellSet = new bool[6];//明示指定フラグ (SG からの導出値と区別する)
+            public int Series = 0;//SymmetryStatic.Symmetries の系列番号。0 = Unknown (対称性なし。CIF に空間群が無いときと同じ既定)
+            public readonly List<object> AtomList = [];//Atoms (スナップショット由来) または NewAtom (AddAtom 由来)
+            public bool AtomsReplaced = false;
+            public Matrix3D Rot = new();
+            public Color Col = Color.FromArgb(rndColor.Next(255), rndColor.Next(255), rndColor.Next(255));//CIF 読込と同じランダム色
+            public (string Note, string Authors, string Journal, string Title) Reference = ("", "", "", "");
+            public Bonds[] BondList = [];
+        }
+
+        private sealed record NewAtom(string Label, string Element, double X, double Y, double Zf, double Occ, double BisoAng2);
+
+        private PendingCrystal RequirePending(string caller)
+            => pending ?? throw new InvalidOperationException($"{caller}: no pending draft. Call BeginCreate(), BeginEdit(), or LoadCifText() first.");
+
+        private void RequireNoPending(string caller)
+        {
+            if (pending != null)
+                throw new InvalidOperationException($"{caller}: another draft is already pending. Call Commit() or Cancel() first.");
+        }
+
+        /// <summary>既存 Crystal を pending へ分解する (BeginEdit / LoadCifText 共用)</summary>
+        private static PendingCrystal SnapshotOf(Crystal c)
+        {
+            var p = new PendingCrystal
+            {
+                Name = c.Name,
+                Series = c.SymmetrySeriesNumber,
+                Rot = new Matrix3D(c.RotationMatrix),
+                Col = Color.FromArgb(c.Argb),
+                Reference = (c.Note, c.PublAuthorName, c.Journal, c.PublSectionTitle),
+                BondList = c.Bonds ?? [],
+            };
+            double[] cell = [c.A * 10, c.B * 10, c.C * 10, c.Alpha / Math.PI * 180, c.Beta / Math.PI * 180, c.Gamma / Math.PI * 180];
+            for (int i = 0; i < 6; i++)
+            {
+                p.Cell[i] = cell[i];
+                p.CellSet[i] = true;
+            }
+            foreach (var a in c.Atoms)
+                p.AtomList.Add(a);
+            return p;
+        }
+
+        /// <summary>空間群記号の照合用正規化 (空白・"_" を除去して小文字化)</summary>
+        private static string CanonSG(string s) => s.Replace(" ", "").Replace("_", "").ToLowerInvariant();
+
+        /// <summary>1 系列が名乗る記号のバリエーション (HM 短縮の "=" 別名・"(1)" 原点表示・"Hex"/"Rho" 軸表示・HM full・Hall)</summary>
+        private static IEnumerable<string> SymbolVariants(Symmetry s)
+        {
+            foreach (var raw in s.SpaceGroupHMStr.Split('='))
+            {
+                var t = raw.Replace("sub", "");//DB は下付き添字を "sub" で表す ("P4sub2/mnm")
+                yield return t;
+                if (t.Length > 3 && t[^1] == ')' && char.IsDigit(t[^2]) && t[^3] == '(')
+                    yield return t[..^3];//"Fd-3m(1)" → "Fd-3m"
+                if (t.EndsWith("Hex", StringComparison.Ordinal) || t.EndsWith("Rho", StringComparison.Ordinal))
+                    yield return t[..^3];//"R-3cHex" → "R-3c"
+            }
+            yield return s.SpaceGroupHMfullStr.Replace("sub", "");
+            yield return s.SpaceGroupHallStr;
+        }
+
+        private static string CandidateText(List<int> series)
+            => string.Join(", ", series.Select(i =>
+            {
+                var s = SymmetryStatic.Symmetries[i];
+                return $"'{s.SpaceGroupHMStr}'" + (s.SpaceGroupHMsubStr.Length > 0 ? $" (setting '{s.SpaceGroupHMsubStr}')" : "");
+            }));
+
+        private static int ResolveSeriesByNumber(int itNumber, string setting)
+        {
+            var matches = new List<int>();
+            for (int i = 1; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
+                if (SymmetryStatic.Symmetries[i].SpaceGroupNumber == itNumber)
+                    matches.Add(i);
+            if (matches.Count == 0)
+                throw new ArgumentException($"SetSpaceGroupByNumber: no space group has IT number {itNumber}.");
+            if (setting.Length > 0)
+            {
+                var filtered = matches.Where(i => SymmetryStatic.Symmetries[i].SpaceGroupHMsubStr.Equals(setting, StringComparison.OrdinalIgnoreCase)).ToList();
+                if (filtered.Count == 0)
+                    throw new ArgumentException($"SetSpaceGroupByNumber: IT {itNumber} has no setting '{setting}'. Available: {CandidateText(matches)}.");
+                matches = filtered;
+            }
+            if (matches.Count > 1)
+                throw new ArgumentException($"SetSpaceGroupByNumber: IT {itNumber} has {matches.Count} settings: {CandidateText(matches)} -- pass the 'setting' argument.");
+            return matches[0];
+        }
+
+        /// <summary>セル 6 成分を SG 制約と明示/導出フラグから解決する (Å/度)。エラーは errors へ蓄積。</summary>
+        private static double[] ResolveCell(PendingCrystal p, Symmetry sym, List<string> errors)
+        {
+            string[] names = ["a", "b", "c", "alpha", "beta", "gamma"];
+            //eq[i] = 成分 i が等値に従う先頭成分 (-1 = 独立)。fix[i] = 固定角 (度, NaN = 固定なし)
+            int[] eq = [-1, -1, -1, -1, -1, -1];
+            double[] fix = [double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN];
+            var system = sym.CrystalSystemStr;
+            switch (system)
+            {
+                case "cubic": eq[1] = 0; eq[2] = 0; fix[3] = fix[4] = fix[5] = 90; break;
+                case "tetragonal": eq[1] = 0; fix[3] = fix[4] = fix[5] = 90; break;
+                case "orthorhombic": fix[3] = fix[4] = fix[5] = 90; break;
+                case "hexagonal": eq[1] = 0; fix[3] = fix[4] = 90; fix[5] = 120; break;
+                case "trigonal":
+                    if (sym.SpaceGroupHMsubStr.Equals("R", StringComparison.OrdinalIgnoreCase))
+                    { eq[1] = 0; eq[2] = 0; eq[4] = 3; eq[5] = 3; }//菱面体設定: b=c=a、β=γ=α (a と α が独立)
+                    else
+                    { eq[1] = 0; fix[3] = fix[4] = 90; fix[5] = 120; }//六方設定
+                    break;
+                case "monoclinic":
+                    //系列の主軸設定 (unique axis) に従い、自由な角以外を 90° に固定する
+                    var axis = sym.MainAxis.Length > 0 ? sym.MainAxis[0] : 'b';
+                    fix[3] = fix[4] = fix[5] = 90;
+                    fix[axis switch { 'a' => 3, 'c' => 5, _ => 4 }] = double.NaN;
+                    break;
+                default: break;//triclinic / Unknown: 全成分独立
+            }
+
+            var v = new double[6];
+            const double tol = 1e-4;
+            //第 1 パス: 固定値と独立成分
+            for (int i = 0; i < 6; i++)
+            {
+                if (!double.IsNaN(fix[i]))
+                {
+                    if (p.CellSet[i] && Math.Abs(p.Cell[i] - fix[i]) > tol)
+                        errors.Add($"{names[i]} must be {fix[i]}° for {system} '{sym.SpaceGroupHMStr}' (got {p.Cell[i]}°).");
+                    v[i] = fix[i];
+                }
+                else if (eq[i] < 0)
+                {
+                    if (!p.CellSet[i])
+                        errors.Add($"{names[i]} is required for {system} '{sym.SpaceGroupHMStr}'.");
+                    else
+                        v[i] = p.Cell[i];
+                }
+            }
+            //第 2 パス: 等値成分 (参照先は必ず独立成分)
+            for (int i = 0; i < 6; i++)
+            {
+                if (double.IsNaN(fix[i]) && eq[i] >= 0)
+                {
+                    var j = eq[i];
+                    if (p.CellSet[i] && p.CellSet[j] && Math.Abs(p.Cell[i] - p.Cell[j]) > tol * Math.Max(1, Math.Abs(p.Cell[j])))
+                        errors.Add($"{names[i]} must equal {names[j]} for {system} '{sym.SpaceGroupHMStr}' ({names[j]} = {p.Cell[j]}, {names[i]} = {p.Cell[i]}).");
+                    v[i] = v[j];
+                }
+            }
+            //数値検証
+            for (int i = 0; i < 3; i++)
+                if (p.CellSet[i] && v[i] <= 0)
+                    errors.Add($"{names[i]} must be > 0 Å (got {v[i]}).");
+            for (int i = 3; i < 6; i++)
+                if (p.CellSet[i] && (v[i] <= 0 || v[i] >= 180))
+                    errors.Add($"{names[i]} must be within (0°, 180°) (got {v[i]}).");
+            if (errors.Count == 0)
+            {
+                double ca = Math.Cos(v[3] / 180 * Math.PI), cb = Math.Cos(v[4] / 180 * Math.PI), cg = Math.Cos(v[5] / 180 * Math.PI);
+                if (1 - ca * ca - cb * cb - cg * cg + 2 * ca * cb * cg <= 0)
+                    errors.Add($"the cell angles (alpha = {v[3]}°, beta = {v[4]}°, gamma = {v[5]}°) are geometrically impossible.");
+            }
+            return v;
+        }
+
+        #endregion pending の内部実装
     }
     #endregion
 

@@ -125,7 +125,7 @@ A API de macros do ReciPro é exposta sob o nome de nível superior **`ReciPro`*
 
 ```python
 ReciPro.File.*         # File I/O helpers
-ReciPro.Crystal.*      # Currently selected crystal
+ReciPro.Crystal.*      # Cristal atual: ler, criar, editar
 ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator

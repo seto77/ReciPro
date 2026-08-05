@@ -125,7 +125,7 @@ ReciPro 宏 API 在顶层名称 **`ReciPro`** 下公开。每个内置类都是 
 
 ```python
 ReciPro.File.*         # File I/O helpers
-ReciPro.Crystal.*      # Currently selected crystal
+ReciPro.Crystal.*      # 当前晶体：读取、创建、编辑
 ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator

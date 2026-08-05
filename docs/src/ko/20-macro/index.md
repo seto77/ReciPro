@@ -125,7 +125,7 @@ ReciPro 매크로 API는 최상위 이름 **`ReciPro`** 아래에 노출됩니�
 
 ```python
 ReciPro.File.*         # File I/O helpers
-ReciPro.Crystal.*      # Currently selected crystal
+ReciPro.Crystal.*      # 현재 결정: 읽기·생성·편집
 ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator

@@ -14,17 +14,61 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 | `File.ReadCrystalList(filename)` | 결정 목록 파일(*.xml)을 불러오기. `filename` 을 생략하면 대화 상자를 연다 |
 | `File.ReadCrystal(filename)` | CIF/AMC 결정 파일을 불러오기. `filename` 을 생략하면 대화 상자를 연다 |
 | `File.ExportAsCIF(filename)` | 현재 결정을 CIF로 내보내기. `filename` 을 생략하면 대화 상자를 연다 |
+| `File.ReadText(filename)` | 텍스트 파일을 UTF-8 로 읽어 문자열로 반환. `filename` 을 생략하면 대화 상자를 연다. `Crystal.LoadCifText()` / `SaveText()` 와 짝으로 사용 |
 | `File.SaveText(textData, filename)` | 텍스트 데이터를 파일에 저장. `textData` 를 UTF-8 로 기록하며, `filename` 을 생략하면 저장 대화 상자를 연다 |
 
 ---
 
 ## Crystal 클래스
 
-| 속성 | 형식 | 설명 |
-|----------|------|-------------|
-| `Crystal.Name` | string | 결정 이름 |
-| `Crystal.ChemicalFormula` | string | 화학식 |
-| `Crystal.Density` | double | 밀도 (g/cm³) |
+현재 선택된 결정을 읽고, pending 초안을 통해 결정을 생성·편집합니다.
+
+### 읽기
+
+| 속성 / 함수 | 설명 |
+|---|---|
+| `Crystal.Name` | 결정 이름 |
+| `Crystal.ChemicalFormula` | 화학식 |
+| `Crystal.Density` | 밀도(g/cm³) |
+| `Crystal.GetCellInAng()` | 격자 상수를 `[a, b, c, alpha, beta, gamma]`(Å·도)로 가져오기 |
+| `Crystal.SpaceGroupName` | 공간군의 Hermann–Mauguin 기호(설정이 여러 개인 군에서는 `:2`, `:H` 등의 설정 접미사 포함) |
+| `Crystal.SpaceGroupNumber` | International Tables 공간군 번호(1–230) |
+| `Crystal.HasPending` | pending 초안이 열려 있는지 |
+
+### 생성과 편집 (초안 → Commit)
+
+결정은 **pending 초안**으로 조립합니다: 초안을 시작하고 setter 로 값을 채우면, `Commit()` 이 전체 검증 → 결정 구축 → 현재 결정으로의 적용을 한 번에 수행합니다 (CIF 파일을 읽을 때처럼 GUI 와 열려 있는 모든 시뮬레이터가 갱신됩니다). `Commit()` 이 실패하면 검증 오류를 전부 모아서 보고하고, 현재 결정은 바꾸지 않으며 초안도 유지되므로 수정 후 그대로 다시 Commit 할 수 있습니다.
+
+| 함수 | 설명 |
+|---|---|
+| `Crystal.BeginCreate(name)` | 새 결정의 초안을 시작 |
+| `Crystal.BeginEdit()` | 현재 결정에서 초안을 시작(격자·공간군·원자·방위를 이어받음) |
+| `Crystal.LoadCifText(cifText)` | CIF 텍스트(.cif 파일의 내용. 경로가 아님)에서 초안을 시작 |
+| `Crystal.SetName(name)` | 초안의 이름을 변경 |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | 격자 상수를 **Å·도**로 설정. 호출할 때마다 격자 전체를 다시 지정한다. 생략한 인수는 공간군 제약에서 도출되며(입방정이면 `a` 만으로 충분), 명시값이 제약과 모순되면 오류 |
+| `Crystal.SetSpaceGroup(symbol)` | 공간군을 기호로 설정(HM 짧은/전체 표기 또는 Hall. 공백과 `_` 무시). 설정이 여러 개인 군에서는 설정을 붙인다(`'Fd-3m:2'`, `'R-3c:H'`, `'P21/c:b1'`) — 모호한 기호는 후보 목록과 함께 오류 |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | 공간군을 IT 번호(1–230)로 설정. 설정이 여러 개이면 `setting`(`'1'`, `'2'`, `'H'`, `'R'`, `'b1'` 등)으로 선택 |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | 비대칭 단위의 원자를 추가: 원소 기호·분율 좌표·점유율(0 < occ ≤ 1, 기본 1)·등방성 B(Å², 기본 0). 등가 위치·Wyckoff 기호·다중도는 자동 도출 |
+| `Crystal.ClearAtoms()` | 초안의 원자를 전부 삭제 |
+| `Crystal.Commit()` | 초안을 검증·구축·적용 |
+| `Crystal.Cancel()` | 초안을 파기 |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+`Commit()` 성공 후 다음 `BeginEdit()` 은 **갱신된** 결정을 기점으로 하므로 변경이 누적됩니다 — 절대값으로 스캔할 때는 위 예처럼 루프 전에 기준값을 읽어 두십시오. Commit 한 결정을 결정 목록에 등록하려면 `CrystalList.Add()` 를 호출합니다.
 
 ---
 

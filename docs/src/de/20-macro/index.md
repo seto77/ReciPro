@@ -125,7 +125,7 @@ Die ReciPro-Makro-API wird unter dem Namen der obersten Ebene **`ReciPro`** bere
 
 ```python
 ReciPro.File.*         # File I/O helpers
-ReciPro.Crystal.*      # Currently selected crystal
+ReciPro.Crystal.*      # Aktueller Kristall: lesen, erzeugen, bearbeiten
 ReciPro.CrystalList.*  # Manage the crystal list
 ReciPro.Dir.*          # Crystal orientation (Euler, zone-axis, rotation)
 ReciPro.DifSim.*       # Diffraction simulator

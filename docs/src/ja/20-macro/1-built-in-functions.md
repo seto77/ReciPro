@@ -16,19 +16,61 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 | `File.ReadCrystalList(filename)` | 結晶リストファイル (*.xml) を読み込み。`filename` を省略するとダイアログを開く |
 | `File.ReadCrystal(filename)` | CIF/AMC形式の結晶ファイルを読み込み。`filename` を省略するとダイアログを開く |
 | `File.ExportAsCIF(filename)` | 現在選択中の結晶をCIF形式で保存。`filename` を省略するとダイアログを開く |
+| `File.ReadText(filename)` | テキストファイルを UTF-8 で読み、文字列として返す。`filename` 省略でダイアログを開く。`Crystal.LoadCifText()` / `SaveText()` と組で使う |
 | `File.SaveText(textData, filename)` | テキストデータをファイルに保存。`textData` を UTF-8 で書き出す。`filename` を省略すると保存ダイアログを開く |
 
 ---
 
 ## Crystal クラス
 
-現在選択中の結晶のプロパティを取得します。
+現在選択中の結晶の読み取りと、pending 下書きを介した結晶の生成・編集を行います。
 
-| プロパティ | 型 | 説明 |
-|-----------|-----|------|
-| `Crystal.Name` | string | 結晶名 |
-| `Crystal.ChemicalFormula` | string | 化学式 |
-| `Crystal.Density` | double | 密度 (g/cm³) |
+### 読み取り
+
+| プロパティ / 関数 | 説明 |
+|---|---|
+| `Crystal.Name` | 結晶名 |
+| `Crystal.ChemicalFormula` | 化学式 |
+| `Crystal.Density` | 密度（g/cm³） |
+| `Crystal.GetCellInAng()` | セル定数を `[a, b, c, alpha, beta, gamma]`（Å・度）で取得 |
+| `Crystal.SpaceGroupName` | 空間群の Hermann–Mauguin 記号（複数設定がある群では `:2`、`:H` などの設定サフィックス付き） |
+| `Crystal.SpaceGroupNumber` | International Tables の空間群番号（1–230） |
+| `Crystal.HasPending` | pending 下書きが開いているか |
+
+### 生成・編集 (下書き → Commit)
+
+結晶は **pending 下書き**で組み立てます: 下書きを開始し、setter で値を入れ、`Commit()` が全検証 → 結晶の構築 → 現在の結晶への適用を一括で行います (CIF ファイル読み込みと同じように、GUI と表示中の全シミュレータが更新されます)。`Commit()` が失敗したときは検証エラーを全件まとめて報告し、現在の結晶は変更せず、下書きも保持されるので、修正してそのまま再 Commit できます。
+
+| 関数 | 説明 |
+|---|---|
+| `Crystal.BeginCreate(name)` | 新規結晶の下書きを開始 |
+| `Crystal.BeginEdit()` | 現在の結晶から下書きを開始（セル・空間群・原子・方位を引き継ぐ） |
+| `Crystal.LoadCifText(cifText)` | CIF テキスト（.cif ファイルの中身。パスではない）から下書きを開始 |
+| `Crystal.SetName(name)` | 下書きの名前を変更 |
+| `Crystal.SetCellInAng(a, b, c, alpha, beta, gamma)` | セル定数を **Å・度**で設定。毎回セル全体を指定し直す（置換であって部分更新ではない）。省略した引数は空間群の制約から導出され（立方晶なら `a` だけでよい）、明示値が制約と矛盾するとエラー |
+| `Crystal.SetSpaceGroup(symbol)` | 空間群を記号で設定（HM 短縮/full か Hall。空白と `_` は無視）。複数設定がある群では設定を付ける（`'Fd-3m:2'`、`'R-3c:H'`、`'P21/c:b1'`）— 曖昧な記号は候補列挙付きのエラーになる |
+| `Crystal.SetSpaceGroupByNumber(itNumber, setting)` | 空間群を IT 番号（1–230）で設定。複数設定がある場合は `setting`（`'1'`、`'2'`、`'H'`、`'R'`、`'b1'` など）で選ぶ |
+| `Crystal.AddAtom(label, element, x, y, z, occ, bIso)` | 非対称単位の原子を追加: 元素記号・分率座標・占有率（0 < occ ≤ 1、既定 1）・等方性 B（Å²、既定 0）。等価位置・Wyckoff 記号・多重度は自動導出 |
+| `Crystal.ClearAtoms()` | 下書きの原子を全消去 |
+| `Crystal.Commit()` | 下書きを検証・構築・適用 |
+| `Crystal.Cancel()` | 下書きを破棄 |
+
+```python
+ReciPro.Crystal.BeginCreate('NaCl')
+ReciPro.Crystal.SetSpaceGroup('Fm-3m')
+ReciPro.Crystal.SetCellInAng(5.6402)
+ReciPro.Crystal.AddAtom('Na', 'Na', 0, 0, 0)
+ReciPro.Crystal.AddAtom('Cl', 'Cl', 0.5, 0.5, 0.5)
+ReciPro.Crystal.Commit()
+
+base = ReciPro.Crystal.GetCellInAng()
+for k in range(-2, 3):
+    ReciPro.Crystal.BeginEdit()
+    ReciPro.Crystal.SetCellInAng(base[0] * (1 + 0.01 * k))
+    ReciPro.Crystal.Commit()
+```
+
+`Commit()` 成功後の次の `BeginEdit()` は**更新後の**結晶が起点になるため、変更は累積します — 絶対値でスキャンするときは上の例のようにループ前に基準値を読んでください。Commit した結晶を結晶リストへ登録するには `CrystalList.Add()` を呼びます。
 
 ---
 

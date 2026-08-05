@@ -124,7 +124,7 @@ ReciPro のマクロ API はトップレベルの **`ReciPro`** という名前�
 
 ```python
 ReciPro.File.*         # ファイル I/O ヘルパー
-ReciPro.Crystal.*      # 現在選択中の結晶
+ReciPro.Crystal.*      # 現在の結晶 (読み取り・生成・編集)
 ReciPro.CrystalList.*  # 結晶リストの操作
 ReciPro.Dir.*          # 結晶方位 (オイラー角、晶帯軸、回転)
 ReciPro.DifSim.*       # 回折シミュレータ
