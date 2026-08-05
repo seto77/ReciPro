@@ -646,6 +646,13 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="labelKikuchiNotice.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 138</value>
   </data>
+  <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
+    <value>Brightness of dynamical bands is NOT detector-linear:
+the signed contrast c = (I - I_ref)/I_ref of all bands is summed per pixel
+and compressed once by tanh(c/scale) into opacity (excess = positive color,
+deficient = negative color). Like a log-scale display, this is a
+visualization transform, not a physical camera response.</value>
+  </data>
   <data name="labelKikuchiNotice.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 18</value>
   </data>

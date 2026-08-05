@@ -884,6 +884,7 @@
             resources.ApplyResources(labelKikuchiNotice, "labelKikuchiNotice");
             labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
             labelKikuchiNotice.Name = "labelKikuchiNotice";
+            toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip")); //260806Cl 追加: tanh スケールの説明
             //
             // tabPageDebye
             //
