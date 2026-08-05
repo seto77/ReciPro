@@ -93,9 +93,6 @@ von der Probe</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Strukturfaktor</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Kinematische Intensität auf Kikuchi-Linien anwenden</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>1/d-Grenzwert</value>
   </data>
@@ -548,10 +545,6 @@ der Senkrechten von der Probe fest.</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>Wählt die Reflexe für Kikuchi-Linien nach dem
 Strukturfaktor aus (stärkste Reflexe zuerst).</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>Wenn aktiviert, werden die Intensitäten der Kikuchi-Linien mit
-der kinematischen relativen Intensität jedes Reflexes gewichtet.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Wählt die Reflexe für Kikuchi-Linien

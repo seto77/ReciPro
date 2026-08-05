@@ -93,9 +93,6 @@ dal campione</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Fattore di struttura</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Applica intensità cinematica alle linee di Kikuchi</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>Soglia 1/d</value>
   </data>
@@ -542,10 +539,6 @@ perpendicolare condotta dal campione.</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>Seleziona le riflessioni per le linee di Kikuchi in base al
 fattore di struttura (prima le riflessioni più intense).</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>Se selezionato, le intensità delle linee di Kikuchi sono pesate in base
-all'intensità relativa cinematica di ciascuna riflessione.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Seleziona le riflessioni per le linee di Kikuchi

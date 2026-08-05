@@ -458,6 +458,17 @@ structure factor (strongest reflections first).</value>
   <data name="labelKikuchiMode.Text" xml:space="preserve">
     <value>Mode</value>
   </data>
+  <data name="labelKikuchiMode.ToolTip" xml:space="preserve">
+    <value>Display mode of Kikuchi lines.
+Geometric: all selected lines in one fixed color.
+Kinematical: line opacity follows the kinematical
+relative intensity of each reflection.
+Dynamical band: two-beam dynamical excess/deficient
+band profiles computed in a background thread; the
+Bands / Quality / Contrast / Scale settings below
+apply only to this mode, and geometric lines are
+drawn as a fallback while the computation runs.</value>
+  </data>
   <data name="&gt;&gt;labelKikuchiMode.Name" xml:space="preserve">
     <value>labelKikuchiMode</value>
   </data>
@@ -476,10 +487,19 @@ structure factor (strongest reflections first).</value>
   <data name="comboBoxKikuchiMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 25</value>
   </data>
+  <data name="comboBoxKikuchiMode.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
   <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
-    <value>Display mode of Kikuchi lines:
-Geometric = fixed-color lines, Kinematical = opacity by structure factor,
-Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
+    <value>Display mode of Kikuchi lines.
+Geometric: all selected lines in one fixed color.
+Kinematical: line opacity follows the kinematical
+relative intensity of each reflection.
+Dynamical band: two-beam dynamical excess/deficient
+band profiles computed in a background thread; the
+Bands / Quality / Contrast / Scale settings below
+apply only to this mode, and geometric lines are
+drawn as a fallback while the computation runs.</value>
   </data>
   <data name="&gt;&gt;comboBoxKikuchiMode.Name" xml:space="preserve">
     <value>comboBoxKikuchiMode</value>
@@ -502,12 +522,21 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="checkBoxKikuchiFixedScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
   </data>
+  <data name="checkBoxKikuchiFixedScale.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
   <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
     <value>Fixed scale</value>
   </data>
   <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
-    <value>Freeze the current contrast scale of dynamical bands
-(otherwise it is auto-determined from the 98.5 percentile).</value>
+    <value>Freeze the brightness normalization of the dynamical
+bands at the value currently in use. When off, the
+scale is re-determined after every recomputation
+(98.5th percentile of the band contrast), so the
+brightness can jump when the orientation changes;
+freeze it to compare brightness across orientation,
+thickness or accelerating voltage.
+Dynamical band mode only.</value>
   </data>
   <data name="&gt;&gt;checkBoxKikuchiFixedScale.Name" xml:space="preserve">
     <value>checkBoxKikuchiFixedScale</value>
@@ -530,9 +559,18 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="numericBoxKikuchiBandNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
+  <data name="numericBoxKikuchiBandNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
   <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
-    <value>Number of dynamical bands to display
-(top N by dynamical contrast ranking).</value>
+    <value>Number of Kikuchi bands drawn with dynamical
+profiles (1 to 50, default 10). Reflections are
+first ranked by structure factor, then the top N
+by dynamical contrast are kept. Larger values show
+more bands but take longer to compute. Separate
+from 'Top' above, which selects the reflections
+used for the Kikuchi lines themselves.
+Dynamical band mode only.</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiBandNumber.Name" xml:space="preserve">
     <value>numericBoxKikuchiBandNumber</value>
@@ -552,9 +590,16 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="comboBoxKikuchiQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 25</value>
   </data>
+  <data name="comboBoxKikuchiQuality.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
   <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
-    <value>Quality preset of the dynamical band profiles
-(number of profile samples per band).</value>
+    <value>Quality preset for the dynamical band profiles:
+the number of sample points across each band
+(Fast 65 / Standard 129 / High 257). Higher quality
+resolves the band edges and the fine excess/deficient
+structure more smoothly, at the cost of longer
+computation. Dynamical band mode only.</value>
   </data>
   <data name="&gt;&gt;comboBoxKikuchiQuality.Name" xml:space="preserve">
     <value>comboBoxKikuchiQuality</value>
@@ -580,6 +625,14 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="labelKikuchiContrast.Text" xml:space="preserve">
     <value>Contrast</value>
   </data>
+  <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>Gain applied to the dynamical band contrast before
+the Scale curve compresses it into opacity
+(1 to 100; 50 = x1.0, 100 = x2.0). Move right to
+bring up weak bands, left to keep strong bands
+from saturating. Changes only the display, not the
+computed intensities. Dynamical band mode only.</value>
+  </data>
   <data name="&gt;&gt;labelKikuchiContrast.Name" xml:space="preserve">
     <value>labelKikuchiContrast</value>
   </data>
@@ -598,8 +651,16 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="trackBarKikuchiContrast.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 16</value>
   </data>
+  <data name="trackBarKikuchiContrast.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
   <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
-    <value>Contrast of the dynamical bands (tanh saturation strength).</value>
+    <value>Gain applied to the dynamical band contrast before
+the Scale curve compresses it into opacity
+(1 to 100; 50 = x1.0, 100 = x2.0). Move right to
+bring up weak bands, left to keep strong bands
+from saturating. Changes only the display, not the
+computed intensities. Dynamical band mode only.</value>
   </data>
   <data name="&gt;&gt;trackBarKikuchiContrast.Name" xml:space="preserve">
     <value>trackBarKikuchiContrast</value>
@@ -625,11 +686,28 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
     <value>Deficient color</value>
   </data>
+  <data name="colorControlDeficientLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="colorControlDeficientLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 114</value>
   </data>
+  <data name="colorControlDeficientLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="colorControlDeficientLine.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 20</value>
+  </data>
+  <data name="colorControlDeficientLine.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
+    <value>Set the color for the deficient (dark) side of the
+dynamical Kikuchi bands: the pixels where the band
+contrast is negative, i.e. the intensity falls
+below the diffuse background level. The excess
+(bright) side uses the Kikuchi line color above.
+Dynamical band mode only.</value>
   </data>
   <data name="&gt;&gt;colorControlDeficientLine.Name" xml:space="preserve">
     <value>colorControlDeficientLine</value>
@@ -655,6 +733,17 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="labelKikuchiScale.Text" xml:space="preserve">
     <value>Scale</value>
   </data>
+  <data name="labelKikuchiScale.ToolTip" xml:space="preserve">
+    <value>Brightness compression of the signed band contrast
+(x = |c| x Contrast / auto-scale):
+Linear = min(x, 1); saturates like an ideal detector
+with full-well clipping.
+Log = log10(1 + 9x), clipped at 1 (same spirit as
+the log-scale image display).
+Tanh = tanh(x); smooth soft limiter (default).
+All are visualization transforms, not physical
+camera responses.</value>
+  </data>
   <data name="&gt;&gt;labelKikuchiScale.Name" xml:space="preserve">
     <value>labelKikuchiScale</value>
   </data>
@@ -665,7 +754,7 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;labelKikuchiScale.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="comboBoxKikuchiScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 112</value>
@@ -673,12 +762,19 @@ Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
   <data name="comboBoxKikuchiScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 25</value>
   </data>
+  <data name="comboBoxKikuchiScale.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
   <data name="comboBoxKikuchiScale.ToolTip" xml:space="preserve">
-    <value>Brightness compression of the signed band contrast (x = |c| / auto-scale):
-Linear = min(x, 1), saturates like an ideal detector with full-well clipping.
-Log = log10(1 + 9x), clipped at 1 (same spirit as the log-scale image display).
-Tanh = tanh(x), smooth soft limiter (default).
-All are visualization transforms, not physical camera responses.</value>
+    <value>Brightness compression of the signed band contrast
+(x = |c| x Contrast / auto-scale):
+Linear = min(x, 1); saturates like an ideal detector
+with full-well clipping.
+Log = log10(1 + 9x), clipped at 1 (same spirit as
+the log-scale image display).
+Tanh = tanh(x); smooth soft limiter (default).
+All are visualization transforms, not physical
+camera responses.</value>
   </data>
   <data name="&gt;&gt;comboBoxKikuchiScale.Name" xml:space="preserve">
     <value>comboBoxKikuchiScale</value>
@@ -690,7 +786,7 @@ All are visualization transforms, not physical camera responses.</value>
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;comboBoxKikuchiScale.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="labelKikuchiNotice.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 138</value>
@@ -715,7 +811,7 @@ deficient = negative color).</value>
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;labelKikuchiNotice.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8734,7 +8830,10 @@ perpendicular from the sample.</value>
     <value>Set a background color</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>Set the color of Kikuchi lines.</value>
+    <value>Set the color of the Kikuchi lines. In Dynamical
+band mode this is the color of the excess (bright)
+side of the bands; the deficient (dark) side uses
+'Deficient color'.</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
     <value>Set the color of Debye rings</value>

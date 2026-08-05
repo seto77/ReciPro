@@ -410,6 +410,7 @@ public partial class FormDiffractionSimulator : FormBase
         comboBoxKikuchiScale.Items.AddRange(new object[] { "Linear", "Log", "Tanh" }); //260806Cl 追加 (作者提案: 強度スケール選択)
         comboBoxKikuchiScale.SelectedIndex = 2; //既定 = Tanh (設計 §4)
         timerKikuchiDebounce.Tick += TimerKikuchiDebounce_Tick;
+        components.Add(timerKikuchiDebounce); //260806Cl /simplify2 (H1): 他の timer と同様に components へ登録し Dispose 経路に載せる
 
         if (FormDiffractionSimulatorGeometry == null)
         {
@@ -1422,8 +1423,13 @@ public partial class FormDiffractionSimulator : FormBase
         var contrast = trackBarKikuchiContrast.Value / 50.0;
         //const double gamma = 2.5; //260805Cl 変更前: B=0 fallback を γ 飽和と誤診して入れた過剰補正 (実バンドでは全域飽和の二値画像になる)
         const double gamma = 1.0; //260805Cl §9-7 作者調整枠。まず素の圧縮カーブで様子を見る (弱部の持ち上げは Contrast トラックバー側で)
+        //260806Cl /simplify2 (F-5): convertScreenToDetector は画素の左上角を返すが、DrawImage は PixelOffsetMode.Half で
+        //画素中心を dest に置くため、そのままだと全バンド層が +0.5px ずれる。半画素シフトした原点でサンプルする
+        var ddx = (X: p10.X - p00.X, Y: p10.Y - p00.Y);
+        var ddy = (X: p01.X - p00.X, Y: p01.Y - p00.Y);
+        var det00 = (X: p00.X + 0.5 * (ddx.X + ddy.X), Y: p00.Y + 0.5 * (ddx.Y + ddy.Y));
         using var bmp = KikuchiBandRenderer.Render(bands, w, h,
-            (p00.X, p00.Y), (p10.X - p00.X, p10.Y - p00.Y), (p01.X - p00.X, p01.Y - p00.Y),
+            det00, ddx, ddy,
             CameraLength2, fixedScale, contrast, gamma, KikuchiScaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
         kikuchiAutoScale = usedScale;
         kikuchiScaleDirty = false;
@@ -1468,7 +1474,7 @@ public partial class FormDiffractionSimulator : FormBase
     private void StartKikuchiCompute()
     {
         var crystal = formMain?.Crystal;
-        if (crystal?.VectorOfG_KikuchiLine == null || comboBoxKikuchiMode.SelectedIndex != 2)
+        if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || comboBoxKikuchiMode.SelectedIndex != 2) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化
             return;
         var key = KikuchiCurrentKey(crystal); //260806Cl /simplify: 取込条件は key と同一値から取る (4 箇所列挙のドリフト防止)
         var kV = key.KV;
@@ -1478,6 +1484,10 @@ public partial class FormDiffractionSimulator : FormBase
         var gList = key.GList;
         var oldSnap = kikuchiSnapshot;
         bool snapFresh = oldSnap != null && oldSnap.Matches(crystal, kV);
+        //260806Cl /simplify2 (C-8): snapshot 構築は UI スレッドで行う。ctor は live crystal を複数回走査するため、
+        //worker 構築だと UI の原子編集と交錯して「カーネル・ハッシュ・サイトが食い違った」snapshot ができ得る
+        //(コストは O(atoms)+getU(0) で 1ms 未満、結晶/kV 変更時のみ)
+        var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
         var prev = snapFresh ? kikuchiPrevSelection : null; //結晶・電圧が変わったら順位ヒステリシスはリセット
         int gen = System.Threading.Interlocked.Increment(ref kikuchiGeneration);
         Task.Run(() =>
@@ -1487,11 +1497,12 @@ public partial class FormDiffractionSimulator : FormBase
                 //260806Cl /simplify (効率レビュー): 候補構築 (Pair + ソート) も worker へ (旧: debounce tick で UI スレッドを塞いでいた)
                 var candidates = KikuchiBandFamily.Pair(gList)
                     .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
-                if (candidates.Count == 0)
-                    return;
-                var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
+                if (gen != System.Threading.Volatile.Read(ref kikuchiGeneration))
+                    return; //260806Cl /simplify2 (C-6): 追い越された計算は本体前に打ち切る
                 var opt = new KikuchiProfileCalculator.Options { SampleCount = key.Samples };
-                var profiles = KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
+                List<KikuchiBandProfile> profiles = candidates.Count == 0
+                    ? [] //260806Cl /simplify2 (C-7): 空でも「結果」として公開する (bare return だと key が更新されず毎 Draw 再計算し続ける)
+                    : KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
                 BeginInvoke(() =>
                 {
                     if (gen != kikuchiGeneration || IsDisposed)
@@ -1511,7 +1522,20 @@ public partial class FormDiffractionSimulator : FormBase
             catch (Exception ex)
             {
                 Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message);
-                try { BeginInvoke(() => labelKikuchiNotice.Text = "Dynamical band error: " + ex.Message); } catch { } //260805Cl 追加: 例外を GUI に可視化
+                //260805Cl 追加: 例外を GUI に可視化。260806Cl /simplify2 (C-7): key も公開して毎 Draw の無限再計算を止める
+                //(旧プロファイルは残すので、表示は直前の正常結果の再投影のまま)
+                try
+                {
+                    BeginInvoke(() =>
+                    {
+                        if (gen != kikuchiGeneration || IsDisposed)
+                            return;
+                        kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
+                        kikuchiProfilesKey = key;
+                        labelKikuchiNotice.Text = "Dynamical band error: " + ex.Message;
+                    });
+                }
+                catch { }
             }
         });
     }

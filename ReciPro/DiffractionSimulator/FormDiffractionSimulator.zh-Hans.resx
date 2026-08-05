@@ -93,9 +93,6 @@
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>结构因子</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>对菊池线应用运动学强度</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>1/d 截止</value>
   </data>
@@ -553,10 +550,6 @@ Ewald 球的程度。</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>按结构因子（强度从大到小）选择
 用于菊池线的衍射。</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>勾选后，菊池线的强度按各衍射的
-运动学相对强度加权。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>按 1/d（晶面间距）阈值选择

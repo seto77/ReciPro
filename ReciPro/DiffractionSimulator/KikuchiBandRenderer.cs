@@ -1,7 +1,7 @@
 // 260805Cl 新規作成: 菊池動力学バンドの投影・合成レンダラ (設計正本 = ReciPro_菊池線動力学化設計.md §4, §5)。
 // 物理 (KikuchiProfileCalculator) は WinForms 非依存の Crystallography 側にあり、本クラスは
-// 「符号付き float バッファへ c_total = Σ_g c_g を加算 → 一度だけ tanh → E/D 色 + |m| 不透明度の ARGB 変換」
-// (設計 §4。バンド別アルファ逐次合成は描画順依存になるため不可) だけを担う。
+// 「符号付き float バッファへ c_total = Σ_g c_g を加算 → 一度だけ選択スケール (Linear/Log/Tanh) で圧縮 →
+// E/D 色 + |m| 不透明度の ARGB 変換」(設計 §4。バンド別アルファ逐次合成は描画順依存になるため不可) だけを担う。
 //
 // 検出器座標 (x, y) ⇔ 方向の規約: d̂ = normalize(−x, +y, +L), L = CameraLength2。
 // DiffractionSimulator は「蛍光板を試料側からのぞき込む」座標系 (作者説明。EBSD のカメラ視点と鏡像関係) のため、
@@ -60,7 +60,7 @@ public static class KikuchiBandRenderer
         foreach (var b in bands)
         {
             var p = b.Profile;
-            if (!p.Valid || p.X.Length < 2)
+            if (!p.Valid || p.X.Length < 2 || p.C.Length != p.X.Length) //260806Cl /simplify2 (F-6): C/X 長不一致は境界ガードが反転するため入口で拒否
                 continue;
             var step = p.X[1] - p.X[0];
             bandData[nBands++] = new BandData
@@ -102,43 +102,48 @@ public static class KikuchiBandRenderer
 
         usedScale = scale > 0 ? scale : AutoScale(buf);
 
-        // tanh → E/D 色 + |m| 不透明度 (背景との合成は GDI+ のアルファに任せる)
+        // 選択スケールで圧縮 → E/D 色 + |m| 不透明度 (背景との合成は GDI+ のアルファに任せる)。
+        // 260806Cl /simplify2 (M1): 例外時は Bitmap を破棄してから再スロー (呼び出し側の using に届かないため)
         var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
-        var data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
         try
         {
-            var pixels = new int[width * height];
-            int exR = excess.R, exG = excess.G, exB = excess.B, deR = deficient.R, deG = deficient.G, deB = deficient.B;
-            var k = contrast / Math.Max(usedScale, 1e-30);
-            var invGamma = 1.0 / Math.Max(gamma, 1e-3);
-            const double invLn10 = 0.43429448190325176; // 1/ln(10)。log(1+9x)/ln10 は x=1 で丁度 1
-            Parallel.For(0, height, py =>
+            var data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            try
             {
-                int o = py * width;
-                for (int px = 0; px < width; px++)
+                var pixels = new int[width * height];
+                int exR = excess.R, exG = excess.G, exB = excess.B, deR = deficient.R, deG = deficient.G, deB = deficient.B;
+                var k = contrast / Math.Max(usedScale, 1e-30);
+                var invGamma = 1.0 / Math.Max(gamma, 1e-3);
+                const double invLn10 = 0.43429448190325176; // 1/ln(10)。log(1+9x)/ln10 は x=1 で丁度 1
+                Parallel.For(0, height, py =>
                 {
-                    var v = buf[o + px];
-                    if (v == 0 || !float.IsFinite(v)) continue; // 透明のまま (260805Cl 非有限値ガード追加)
-                    var x = Math.Abs(v * k);
-                    var m = scaleMode switch //260806Cl スケール選択 (作者提案)
+                    int o = py * width;
+                    for (int px = 0; px < width; px++)
                     {
-                        ScaleMode.Linear => Math.Min(x, 1.0),
-                        ScaleMode.Log => Math.Min(Math.Log(1 + 9 * x) * invLn10, 1.0),
-                        _ => Math.Tanh(x), // 設計 §4 の既定
-                    };
-                    if (invGamma != 1.0)
-                        m = Math.Pow(m, invGamma);
-                    int a = (int)(m * 255 + 0.5);
-                    if (a > 255) a = 255;
-                    pixels[o + px] = v > 0
-                        ? (a << 24) | (exR << 16) | (exG << 8) | exB
-                        : (a << 24) | (deR << 16) | (deG << 8) | deB;
-                }
-            });
-            Marshal.Copy(pixels, 0, data.Scan0, pixels.Length);
+                        var v = buf[o + px];
+                        if (v == 0 || !float.IsFinite(v)) continue; // 透明のまま (260805Cl 非有限値ガード追加)
+                        var x = Math.Abs(v * k);
+                        var m = scaleMode switch //260806Cl スケール選択 (作者提案)
+                        {
+                            ScaleMode.Linear => Math.Min(x, 1.0),
+                            ScaleMode.Log => Math.Min(Math.Log(1 + 9 * x) * invLn10, 1.0),
+                            _ => Math.Tanh(x), // 設計 §4 の既定
+                        };
+                        if (invGamma != 1.0)
+                            m = Math.Pow(m, invGamma);
+                        int a = (int)(m * 255 + 0.5);
+                        if (a > 255) a = 255;
+                        pixels[o + px] = v > 0
+                            ? (a << 24) | (exR << 16) | (exG << 8) | exB
+                            : (a << 24) | (deR << 16) | (deG << 8) | deB;
+                    }
+                });
+                Marshal.Copy(pixels, 0, data.Scan0, pixels.Length);
+            }
+            finally { bmp.UnlockBits(data); }
+            return bmp;
         }
-        finally { bmp.UnlockBits(data); }
-        return bmp;
+        catch { bmp.Dispose(); throw; } //260806Cl /simplify2 (M1): 例外時は呼び出し側の using に届かないため自前で破棄
     }
 
     /// <summary>|c| の 98.5 パーセンタイル (max 正規化はスパイクに弱いため不採用。設計 §4)。標本は最大 10 万点に間引く</summary>

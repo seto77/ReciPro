@@ -797,9 +797,10 @@
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
-            //colorControlExcessLine.Color = System.Drawing.Color.White; //260805Cl 変更前 (作者指定: 白 → 黄へ再指定)
+            //colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224); //260805Cl 変更前 (機能追加前の元値。白 → 黄と作者指定で変遷)
             colorControlExcessLine.Color = System.Drawing.Color.Yellow; //260805Cl 作者指定: Excess = 黄
             colorControlExcessLine.Name = "colorControlExcessLine";
+            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip")); //260806Cl 追加: 兄弟と同じ親バルーン経路へ一本化
             colorControlExcessLine.ColorChanged += Draw;
             // 
             // trackBarLineWidth
@@ -823,18 +824,21 @@
             //
             resources.ApplyResources(labelKikuchiMode, "labelKikuchiMode");
             labelKikuchiMode.Name = "labelKikuchiMode";
+            toolTip.SetToolTip(labelKikuchiMode, resources.GetString("labelKikuchiMode.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 combo と同文)
             //
             // comboBoxKikuchiMode (260805Cl 追加。Items はコンストラクタで設定: form resx 手書き文字列は VS 再シリアライズで消えるため)
             //
             resources.ApplyResources(comboBoxKikuchiMode, "comboBoxKikuchiMode");
             comboBoxKikuchiMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxKikuchiMode.Name = "comboBoxKikuchiMode";
+            toolTip.SetToolTip(comboBoxKikuchiMode, resources.GetString("comboBoxKikuchiMode.ToolTip")); //260806Cl 追加: 表示経路配線 (ComboBox は resx だけでは tip が出ない)
             comboBoxKikuchiMode.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged;
             //
             // checkBoxKikuchiFixedScale (260805Cl 追加)
             //
             resources.ApplyResources(checkBoxKikuchiFixedScale, "checkBoxKikuchiFixedScale");
             checkBoxKikuchiFixedScale.Name = "checkBoxKikuchiFixedScale";
+            toolTip.SetToolTip(checkBoxKikuchiFixedScale, resources.GetString("checkBoxKikuchiFixedScale.ToolTip")); //260806Cl 追加: 表示経路配線
             checkBoxKikuchiFixedScale.UseVisualStyleBackColor = true;
             checkBoxKikuchiFixedScale.CheckedChanged += Draw;
             //
@@ -846,6 +850,7 @@
             numericBoxKikuchiBandNumber.Minimum = 1D;
             numericBoxKikuchiBandNumber.Name = "numericBoxKikuchiBandNumber";
             numericBoxKikuchiBandNumber.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxKikuchiBandNumber, resources.GetString("numericBoxKikuchiBandNumber.ToolTip")); //260806Cl 追加: 兄弟 NumericBox と同じ親バルーン経路
             numericBoxKikuchiBandNumber.Value = 10D;
             numericBoxKikuchiBandNumber.ValueBoxWidth = 40;
             numericBoxKikuchiBandNumber.ValueFontSize = 9F;
@@ -856,12 +861,14 @@
             resources.ApplyResources(comboBoxKikuchiQuality, "comboBoxKikuchiQuality");
             comboBoxKikuchiQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxKikuchiQuality.Name = "comboBoxKikuchiQuality";
+            toolTip.SetToolTip(comboBoxKikuchiQuality, resources.GetString("comboBoxKikuchiQuality.ToolTip")); //260806Cl 追加: 表示経路配線
             comboBoxKikuchiQuality.SelectedIndexChanged += Draw;
             //
             // labelKikuchiContrast (260805Cl 追加)
             //
             resources.ApplyResources(labelKikuchiContrast, "labelKikuchiContrast");
             labelKikuchiContrast.Name = "labelKikuchiContrast";
+            toolTip.SetToolTip(labelKikuchiContrast, resources.GetString("labelKikuchiContrast.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 trackbar と同文)
             //
             // trackBarKikuchiContrast (260805Cl 追加)
             //
@@ -870,6 +877,7 @@
             trackBarKikuchiContrast.Minimum = 1;
             trackBarKikuchiContrast.Name = "trackBarKikuchiContrast";
             trackBarKikuchiContrast.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarKikuchiContrast, resources.GetString("trackBarKikuchiContrast.ToolTip")); //260806Cl 追加: 表示経路配線
             trackBarKikuchiContrast.Value = 50;
             trackBarKikuchiContrast.ValueChanged += Draw;
             //
@@ -878,15 +886,16 @@
             resources.ApplyResources(colorControlDeficientLine, "colorControlDeficientLine");
             colorControlDeficientLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlDeficientLine.BoxSize = new System.Drawing.Size(20, 20);
-            //colorControlDeficientLine.Color = System.Drawing.Color.Black; //260805Cl 変更前 (作者指定: 黒 → 赤へ再指定)
-            colorControlDeficientLine.Color = System.Drawing.Color.Red; //260805Cl 作者指定: Deficient = 赤
+            colorControlDeficientLine.Color = System.Drawing.Color.Red; //260805Cl 新規 (作者指定: Deficient = 赤)
             colorControlDeficientLine.Name = "colorControlDeficientLine";
+            toolTip.SetToolTip(colorControlDeficientLine, resources.GetString("colorControlDeficientLine.ToolTip")); //260806Cl 追加: 兄弟 ColorControl と同じ親バルーン経路
             colorControlDeficientLine.ColorChanged += Draw;
             //
             // labelKikuchiScale (260806Cl 追加)
             //
             resources.ApplyResources(labelKikuchiScale, "labelKikuchiScale");
             labelKikuchiScale.Name = "labelKikuchiScale";
+            toolTip.SetToolTip(labelKikuchiScale, resources.GetString("labelKikuchiScale.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 combo と同文)
             //
             // comboBoxKikuchiScale (260806Cl 追加。Items はコンストラクタで設定)
             //
@@ -899,9 +908,10 @@
             // labelKikuchiNotice (260805Cl 追加。Text は実行時に設定)
             //
             resources.ApplyResources(labelKikuchiNotice, "labelKikuchiNotice");
+            labelKikuchiNotice.AutoEllipsis = true; //260806Cl 追加: 実行時組み立て文字列が 400px を超えたときの無言切れ防止 (全文はツールチップ)
             labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
             labelKikuchiNotice.Name = "labelKikuchiNotice";
-            toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip")); //260806Cl 追加: tanh スケールの説明
+            toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip")); //260806Cl 追加: スケール変換の説明
             //
             // tabPageDebye
             //

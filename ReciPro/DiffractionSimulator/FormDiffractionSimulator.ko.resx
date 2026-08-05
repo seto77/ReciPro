@@ -93,9 +93,6 @@
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>구조 인자</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>기쿠치 선에 운동학적 강도 적용</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>1/d 컷오프</value>
   </data>
@@ -546,10 +543,6 @@ g 벡터의 길이)가 표시됩니다</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>키쿠치 선에 사용할 반사를 구조 인자(가장 강한
 반사 순)로 선택합니다.</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>체크하면 키쿠치 선의 세기가 각 반사의
-운동학적 상대 세기에 따라 가중됩니다.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>키쿠치 선에 사용할 반사를

@@ -90,9 +90,6 @@ de l'échantillon</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Facteur de structure</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Appliquer l'intensité cinématique aux lignes de Kikuchi</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>Seuil 1/d</value>
   </data>
@@ -535,10 +532,6 @@ perpendiculaire abaissée depuis l'échantillon.</value>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>Sélectionner les réflexions pour les lignes de Kikuchi par
 facteur de structure (les réflexions les plus intenses d'abord).</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>Lorsque cette case est cochée, les intensités des lignes de Kikuchi sont pondérées par
-l'intensité relative cinématique de chaque réflexion.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Sélectionner les réflexions pour les lignes de

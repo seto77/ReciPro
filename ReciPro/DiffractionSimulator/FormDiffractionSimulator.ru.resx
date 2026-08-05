@@ -93,9 +93,6 @@
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Структурный фактор</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Применить кинематическую интенсивность к линиям Кикучи</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>Порог 1/d</value>
   </data>
@@ -549,10 +546,6 @@ s_g, показывающая, насколько узел обратной ре
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
     <value>Выбрать рефлексы для линий Кикучи по
 структурному фактору (сначала самые сильные рефлексы).</value>
-  </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>Если отмечено, интенсивности линий Кикучи взвешиваются по
-кинематической относительной интенсивности каждого рефлекса.</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>Выбрать рефлексы для линий Кикучи
