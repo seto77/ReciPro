@@ -14,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -32,21 +31,47 @@ public static class KikuchiBandRenderer
     /// </summary>
     public enum ScaleMode { Linear, Log, Tanh }
 
+    /// <summary>バンドごとの前計算定数 (260806Cl /simplify: 内側ループから除算・メソッド呼び出し・参照追跡を排除)</summary>
+    private struct BandData
+    {
+        public double Gx, Gy, GzL;     // 単位法線成分 (GzL = Gz·L)
+        public double SinLo, SinHi;    // sinθ' の有効範囲 (範囲外は寄与 0 → 早期棄却)
+        public double K1, K0;          // 格子座標 t = sinθ'·K1 + K0 (= (sinθ'/sinθ_B − x0)/Δx)
+        public double[] C;
+    }
+
     /// <summary>
     /// スクリーン全面のバンド合成 Bitmap (32bppArgb) を作る。
     /// det00 / detDx / detDy: スクリーン画素 (0,0) の検出器座標と、画素 +x / +y あたりの検出器座標の増分 (アフィン)。
     /// scale ≤ 0 で auto スケール (表示バンド全体の |c| の 98.5 パーセンタイル、設計 §4)。usedScale に採用値が返る。
     /// contrast: 1 が基準 (トラックバー 50/50)。
-    /// gamma: 設計 §4 の m = sign(x)·|tanh x|^{1/γ}。菊池プロファイルはバンド端スパイクが内部の 10-60 倍
-    /// あるため (KikuchiCheck smoke 実測)、γ=1 だと端だけ飽和し内部の濃淡が消える。既定 2.5 (§9-7 作者調整枠)。
+    /// gamma: 設計 §4 の m = sign(x)·|m₀|^{1/γ}。現状の呼び出し側は 1.0 固定 (素の圧縮カーブ。§9-7 作者調整枠)。
     /// </summary>
     public static Bitmap Render(IReadOnlyList<BandInput> bands, int width, int height,
         (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
         double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale)
     {
         var buf = new float[width * height];
-        var bandArr = bands.Where(b => b.Profile.Valid).ToArray();
         double L = cameraLength;
+
+        //260806Cl /simplify: バンド定数を平坦化 (旧: ピクセル×バンドごとに Profile.Interpolate 呼び出し + SinThetaB 除算 + LINQ フィルタ)
+        var bandData = new BandData[bands.Count];
+        int nBands = 0;
+        foreach (var b in bands)
+        {
+            var p = b.Profile;
+            if (!p.Valid || p.X.Length < 2)
+                continue;
+            var step = p.X[1] - p.X[0];
+            bandData[nBands++] = new BandData
+            {
+                Gx = b.GHat2.X, Gy = b.GHat2.Y, GzL = b.GHat2.Z * L,
+                SinLo = p.X[0] * p.SinThetaB, SinHi = p.X[^1] * p.SinThetaB,
+                K1 = 1.0 / (p.SinThetaB * step), K0 = -p.X[0] / step,
+                C = p.C,
+            };
+        }
+        var nb = nBands;
 
         Parallel.For(0, height, py =>
         {
@@ -57,12 +82,19 @@ public static class KikuchiBandRenderer
                 double dx = rowX + detDx.X * px, dy = rowY + detDx.Y * px;
                 var inv = 1.0 / Math.Sqrt(dx * dx + dy * dy + L * L);
                 double sum = 0;
-                foreach (var band in bandArr)
+                for (int bi = 0; bi < nb; bi++)
                 {
-                    var gh = band.GHat2;
+                    ref readonly var bd = ref bandData[bi];
                     //var sinTp = -(gh.X * dx + gh.Y * dy + gh.Z * L) * inv; //260805Cl 変更前: d̂=(+x,+y,+L) は蛍光板座標系と左右鏡像だった (作者実機指摘)
-                    var sinTp = (gh.X * dx - gh.Y * dy - gh.Z * L) * inv; // sinθ' = −ĝ·d̂, d̂ = norm(−x, +y, +L)
-                    sum += band.Profile.Interpolate(sinTp / band.Profile.SinThetaB);
+                    var sinTp = (bd.Gx * dx - bd.Gy * dy - bd.GzL) * inv; // sinθ' = −ĝ·d̂, d̂ = norm(−x, +y, +L)
+                    if (sinTp <= bd.SinLo || sinTp >= bd.SinHi)
+                        continue; // 帯域外 (大半のピクセル) は補間せず棄却
+                    var t = sinTp * bd.K1 + bd.K0;
+                    int i = (int)t;
+                    if ((uint)i >= (uint)(bd.C.Length - 1))
+                        continue;
+                    var f = t - i;
+                    sum += bd.C[i] * (1 - f) + bd.C[i + 1] * f;
                 }
                 buf[o + px] = (float)sum;
             }

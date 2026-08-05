@@ -1359,32 +1359,37 @@ public partial class FormDiffractionSimulator : FormBase
 
     private KikuchiPotentialSnapshot kikuchiSnapshot;
     private List<KikuchiBandProfile> kikuchiProfiles;
-    private Matrix3D kikuchiProfilesRotation;
-    private double kikuchiProfilesThickness = double.NaN;
-    private int kikuchiProfilesBandNum, kikuchiProfilesSamples, kikuchiProfilesGHash;
+    private KikuchiRequestKey kikuchiProfilesKey; //260806Cl /simplify: 5 つの鏡写しフィールド + O(N) ハッシュを合成キー 1 個へ集約
     private int kikuchiGeneration;
     private double kikuchiAutoScale;
     private bool kikuchiScaleDirty = true;
     private HashSet<(int H, int K, int L)> kikuchiPrevSelection;
     private readonly System.Windows.Forms.Timer timerKikuchiDebounce = new() { Interval = 300 };
-    private int kikuchiScheduledKey;
-    private string kikuchiBandsNote = ""; //260806Cl 追加: 注記ラベル末尾の "(N bands...)" (worker 完了時に更新)
+    private KikuchiRequestKey kikuchiScheduledKey;
+    private int kikuchiBandCount = -1;      //260806Cl /simplify: 注記は文字列でなく生データで保持し UpdateKikuchiNotice が組み立てる (i18n 障害の除去)
+    private bool kikuchiUsedDefaultBiso;
 
-    private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => 129 };
+    private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => KikuchiProfileCalculator.Options.DefaultSampleCount };
 
-    /// <summary>VectorOfG_KikuchiLine の指数集合ハッシュ (静的候補の変化検知)</summary>
-    private static int KikuchiGHash(List<Vector3D> vecs)
-    {
-        int h = 17;
-        foreach (var v in vecs)
-            h = h * 31 + v.Index.GetHashCode();
-        return h;
-    }
+    /// <summary>260806Cl /simplify: スケールコンボのデコードを一箇所に (描画と注記で fallback が食い違っていた)</summary>
+    private KikuchiBandRenderer.ScaleMode KikuchiScaleMode => (KikuchiBandRenderer.ScaleMode)comboBoxKikuchiScale.SelectedIndex;
+
+    /// <summary>
+    /// 260806Cl /simplify: 計算条件を 1 つの値として比較する (旧: 6 入力が freshness 判定・debounce キー・worker 取込・
+    /// 交換の 4 箇所に別々に列挙されドリフトし得た)。GList は参照同一性で比較する —
+    /// Crystal.SetVectorOfG_KikuchiLine は毎回新しい List を作るため、O(N) の指数ハッシュなしで内容変化を検知できる。
+    /// </summary>
+    private readonly record struct KikuchiRequestKey(
+        (double E11, double E12, double E13, double E21, double E22, double E23, double E31, double E32, double E33) Rotation,
+        double Thickness, int BandNum, int Samples, double KV, List<Vector3D> GList);
+
+    private KikuchiRequestKey KikuchiCurrentKey(Crystal crystal) => new(
+        crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger, KikuchiSampleCount, Energy, crystal.VectorOfG_KikuchiLine);
 
     /// <summary>
     /// 動力学バンドを描画できたら true。プロファイル未完成のときは false (呼び出し側が幾何線 fallback)。
     /// 回転だけが変わった場合も旧プロファイルを現在の回転で再投影して描く (作者決定 2026-08-05: ドラッグ中は旧キャッシュ再投影)。
-    /// 検出器座標 (x,y) ⇔ 方向 d̂ = norm(x,y,+L) の規約は KikuchiCheck geom テストで既存双曲線と一致確認済み。
+    /// 検出器座標 (x,y) ⇔ 方向 d̂ = norm(−x,+y,+L) (蛍光板を試料側からのぞく座標系。260806Cl 修正: 旧記載 +x は鏡像修正前の誤り)。
     /// </summary>
     private bool DrawKikuchiDynamicalBands(Graphics graphics)
     {
@@ -1416,39 +1421,36 @@ public partial class FormDiffractionSimulator : FormBase
         var fixedScale = (checkBoxKikuchiFixedScale.Checked || !kikuchiScaleDirty) && kikuchiAutoScale > 0 ? kikuchiAutoScale : 0;
         var contrast = trackBarKikuchiContrast.Value / 50.0;
         //const double gamma = 2.5; //260805Cl 変更前: B=0 fallback を γ 飽和と誤診して入れた過剰補正 (実バンドでは全域飽和の二値画像になる)
-        const double gamma = 1.0; //260805Cl §9-7 作者調整枠。まず素の tanh で様子を見る (弱部の持ち上げは Contrast トラックバー側で)
-        var scaleMode = (KikuchiBandRenderer.ScaleMode)Math.Max(0, comboBoxKikuchiScale.SelectedIndex); //260806Cl 追加 (作者提案)
+        const double gamma = 1.0; //260805Cl §9-7 作者調整枠。まず素の圧縮カーブで様子を見る (弱部の持ち上げは Contrast トラックバー側で)
         using var bmp = KikuchiBandRenderer.Render(bands, w, h,
             (p00.X, p00.Y), (p10.X - p00.X, p10.Y - p00.Y), (p01.X - p00.X, p01.Y - p00.Y),
-            CameraLength2, fixedScale, contrast, gamma, scaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+            CameraLength2, fixedScale, contrast, gamma, KikuchiScaleMode, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
         kikuchiAutoScale = usedScale;
         kikuchiScaleDirty = false;
 
-        //スクリーン全面の bitmap を検出器座標の平行四辺形へ貼る (OverlappedImage と同じ 3 点指定)
+        //スクリーン全面の bitmap を検出器座標の平行四辺形へ貼る (OverlappedImage と同じ 3 点指定)。
+        //260806Cl /simplify (効率レビュー): 写像は 1:1 ピクセルなので、Draw() が設定した HighQualityBicubic のままだと
+        //1M ピクセルの無駄なリサンプルが毎フレーム走る。この blit だけ NearestNeighbor に落とす
         var pW0 = convertScreenToDetector(new Point(w, 0));
         var p0H = convertScreenToDetector(new Point(0, h));
         var dest = new PointF[] { p00.ToPointF(), pW0.ToPointF(), p0H.ToPointF() };
+        var oldInterp = graphics.InterpolationMode;
+        graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
         graphics.DrawImage(bmp, dest, new RectangleF(0, 0, w, h), GraphicsUnit.Pixel);
+        graphics.InterpolationMode = oldInterp;
         return true;
     }
 
-    /// <summary>計算条件 (結晶・kV・回転・厚み・本数・品質・静的候補) が最新プロファイルとずれていたら debounce 予約する</summary>
+    /// <summary>計算条件 (結晶・kV・回転・厚み・本数・品質・静的候補) が最新プロファイルとずれていたら debounce 予約する。
+    /// 260806Cl /simplify: キー比較を先・O(atoms) の Matches を最後にし、ドラッグ中の毎フレームでハッシュ計算しない</summary>
     private void ScheduleKikuchiComputeIfStale()
     {
         var crystal = formMain?.Crystal;
         if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0)
             return;
-        bool fresh = kikuchiProfiles != null
-            && kikuchiSnapshot != null && kikuchiSnapshot.Matches(crystal, Energy)
-            && kikuchiProfilesThickness == Thickness
-            && kikuchiProfilesBandNum == numericBoxKikuchiBandNumber.ValueInteger
-            && kikuchiProfilesSamples == KikuchiSampleCount
-            && kikuchiProfilesGHash == KikuchiGHash(crystal.VectorOfG_KikuchiLine)
-            && kikuchiProfilesRotation != null && kikuchiProfilesRotation.Tuple.Equals(crystal.RotationMatrix.Tuple);
-        if (fresh)
-            return;
-        var key = HashCode.Combine(crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger,
-            KikuchiSampleCount, Energy, KikuchiGHash(crystal.VectorOfG_KikuchiLine));
+        var key = KikuchiCurrentKey(crystal);
+        if (kikuchiProfiles != null && key == kikuchiProfilesKey && kikuchiSnapshot?.Matches(crystal, Energy) == true)
+            return; //fresh
         if (key == kikuchiScheduledKey && timerKikuchiDebounce.Enabled)
             return; //同じ条件で予約済みなら restart しない (連続 Draw による timer 飢餓の防止)
         kikuchiScheduledKey = key;
@@ -1468,16 +1470,12 @@ public partial class FormDiffractionSimulator : FormBase
         var crystal = formMain?.Crystal;
         if (crystal?.VectorOfG_KikuchiLine == null || comboBoxKikuchiMode.SelectedIndex != 2)
             return;
-        var kV = Energy;
-        var thickness = Thickness;
-        int bandNum = numericBoxKikuchiBandNumber.ValueInteger;
-        int samples = KikuchiSampleCount;
-        int gHash = KikuchiGHash(crystal.VectorOfG_KikuchiLine);
+        var key = KikuchiCurrentKey(crystal); //260806Cl /simplify: 取込条件は key と同一値から取る (4 箇所列挙のドリフト防止)
+        var kV = key.KV;
+        var thickness = key.Thickness;
+        int bandNum = key.BandNum;
         var rotation = new Matrix3D(crystal.RotationMatrix); //ドラッグによる書き換えから独立させるコピー
-        var candidates = KikuchiBandFamily.Pair(crystal.VectorOfG_KikuchiLine)
-            .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
-        if (candidates.Count == 0)
-            return;
+        var gList = key.GList;
         var oldSnap = kikuchiSnapshot;
         bool snapFresh = oldSnap != null && oldSnap.Matches(crystal, kV);
         var prev = snapFresh ? kikuchiPrevSelection : null; //結晶・電圧が変わったら順位ヒステリシスはリセット
@@ -1486,8 +1484,13 @@ public partial class FormDiffractionSimulator : FormBase
         {
             try
             {
+                //260806Cl /simplify (効率レビュー): 候補構築 (Pair + ソート) も worker へ (旧: debounce tick で UI スレッドを塞いでいた)
+                var candidates = KikuchiBandFamily.Pair(gList)
+                    .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
+                if (candidates.Count == 0)
+                    return;
                 var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
-                var opt = new KikuchiProfileCalculator.Options { SampleCount = samples };
+                var opt = new KikuchiProfileCalculator.Options { SampleCount = key.Samples };
                 var profiles = KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
                 BeginInvoke(() =>
                 {
@@ -1495,16 +1498,12 @@ public partial class FormDiffractionSimulator : FormBase
                         return;
                     kikuchiSnapshot = snap;
                     kikuchiProfiles = profiles;
-                    kikuchiProfilesRotation = rotation;
-                    kikuchiProfilesThickness = thickness;
-                    kikuchiProfilesBandNum = bandNum;
-                    kikuchiProfilesSamples = samples;
-                    kikuchiProfilesGHash = gHash;
+                    kikuchiProfilesKey = key;
                     kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
                     kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
                     //260805Cl 追加: worker の結果を注記ラベルで可視化 (バンド数 0 や B 代用の診断が GUI だけで付くように)
-                    var bNote = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true ? ", B=0→0.5 Å² assumed" : "";
-                    kikuchiBandsNote = $" ({profiles.Count} bands{bNote})"; //260806Cl 変更: スケール開示と合成するため組み立ては UpdateKikuchiNotice へ
+                    kikuchiBandCount = profiles.Count;
+                    kikuchiUsedDefaultBiso = (snap.Kernel as KikuchiTdsEinsteinKernel)?.UsedDefaultBiso == true;
                     UpdateKikuchiNotice();
                     Draw();
                 });
@@ -1823,21 +1822,16 @@ public partial class FormDiffractionSimulator : FormBase
     }
 
     //private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw(); //260805Cl 削除: comboBoxKikuchiMode に統合
-    /// <summary>260805Cl 追加: 菊池表示モード変更。Dynamical のとき注記 (スケール開示 + 設計 §3 タグ) を表示</summary>
+    /// <summary>260805Cl 追加: 菊池表示モード / 強度スケール変更 (260806Cl /simplify: 同一処理の 2 ハンドラを統合)。
+    /// Dynamical のとき注記 (スケール開示 + 設計 §3 タグ) を表示</summary>
     private void comboBoxKikuchiMode_SelectedIndexChanged(object sender, EventArgs e)
     {
         UpdateKikuchiNotice();
         Draw();
     }
 
-    /// <summary>260806Cl 追加: 強度スケール (Linear/Log/Tanh) 変更 (作者提案)</summary>
-    private void comboBoxKikuchiScale_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        UpdateKikuchiNotice();
-        Draw();
-    }
-
-    /// <summary>260806Cl 追加: 注記ラベル = スケール開示 + 非整合タグ + worker 結果 (バンド数・B 代用)</summary>
+    /// <summary>260806Cl 追加: 注記ラベル = スケール開示 + 非整合タグ + worker 結果 (バンド数・B 代用)。
+    /// 表示文字列の組み立てはここに一元化 (worker は生データのみ更新)</summary>
     private void UpdateKikuchiNotice()
     {
         if (comboBoxKikuchiMode.SelectedIndex != 2)
@@ -1845,8 +1839,14 @@ public partial class FormDiffractionSimulator : FormBase
             labelKikuchiNotice.Text = "";
             return;
         }
-        var sc = comboBoxKikuchiScale.SelectedIndex switch { 0 => "linear (clipped)", 1 => "log scale", _ => "tanh scale" };
-        labelKikuchiNotice.Text = $"Signed contrast, {sc} / {KikuchiProfileCalculator.DisplayNormalizedTag}{kikuchiBandsNote}";
+        var sc = KikuchiScaleMode switch
+        {
+            KikuchiBandRenderer.ScaleMode.Linear => "linear (clipped)",
+            KikuchiBandRenderer.ScaleMode.Log => "log scale",
+            _ => "tanh scale",
+        };
+        var bands = kikuchiBandCount < 0 ? "" : $" ({kikuchiBandCount} bands{(kikuchiUsedDefaultBiso ? ", B=0→0.5 Å² assumed" : "")})";
+        labelKikuchiNotice.Text = $"Signed contrast, {sc} / {KikuchiProfileCalculator.DisplayNormalizedTag}{bands}";
     }
 
     #endregion

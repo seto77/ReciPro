@@ -894,7 +894,7 @@
             comboBoxKikuchiScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxKikuchiScale.Name = "comboBoxKikuchiScale";
             toolTip.SetToolTip(comboBoxKikuchiScale, resources.GetString("comboBoxKikuchiScale.ToolTip"));
-            comboBoxKikuchiScale.SelectedIndexChanged += comboBoxKikuchiScale_SelectedIndexChanged;
+            comboBoxKikuchiScale.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged; //260806Cl /simplify: 同一処理のためモード変更ハンドラへ統合
             //
             // labelKikuchiNotice (260805Cl 追加。Text は実行時に設定)
             //
