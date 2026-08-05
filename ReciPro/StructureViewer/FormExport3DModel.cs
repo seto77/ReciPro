@@ -84,7 +84,11 @@ public partial class FormExport3DModel : FormBase
         var bondRadii = bonds.Where(s => s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0).Select(s => s.PipeRadius1);
         minBondRadiusNmSrc = bondRadii.Any() ? bondRadii.Min() : 0;
 
-        labelInfo.Text = $"Objects: {solids.Count:n0},  Triangles: {solids.Sum(s => s.Triangles.Length / 3):n0}";
+        //260805Cl 変更: 実行時に組み立てるラベルは Localization.Loc で多言語化する (Designer 直書きの静的ラベルは
+        //LocalizationData の reg["FormExport3DModel"] 側)。旧: $"Objects: {..},  Triangles: {..}"
+        labelInfo.Text =
+            $"{Localization.Loc(en: "Objects", ja: "オブジェクト", de: "Objekte", fr: "Objets", es: "Objetos", pt: "Objetos", it: "Oggetti", ru: "Объекты", zhHans: "对象", zhHant: "物件", ko: "개체")}: {solids.Count:n0},  " +
+            $"{Localization.Loc(en: "Triangles", ja: "三角形", de: "Dreiecke", fr: "Triangles", es: "Triángulos", pt: "Triângulos", it: "Triangoli", ru: "Треугольники", zhHans: "三角形", zhHant: "三角形", ko: "삼각형")}: {solids.Sum(s => s.Triangles.Length / 3):n0}";
         updating = true;
         checkBoxAtoms.Enabled = checkBoxAtoms.Checked = hasAtoms;
         checkBoxBonds.Enabled = checkBoxBonds.Checked = hasBonds;
@@ -134,15 +138,32 @@ public partial class FormExport3DModel : FormBase
         //260805Cl 旧 (単位表記が Å だが実体は nm):
         //labelSizeAng.Text = $"Model size: {size.X:f2} × {size.Y:f2} × {size.Z:f2} Å";
         //labelResult.Text = $"Scale: {MmPerAngstrom:f3} mm/Å,   Output size: " + ...
-        labelSizeAng.Text = $"Model size: {size.X:f3} × {size.Y:f3} × {size.Z:f3} nm";
-        labelResult.Text = $"Scale: {MmPerNm:f3} mm/nm,   Output size: " +
+        //260805Cl 変更: 実行時ラベルを Localization.Loc で多言語化 (旧は英語直書き)
+        labelSizeAng.Text =
+            $"{Localization.Loc(en: "Model size", ja: "モデル寸法", de: "Modellgröße", fr: "Taille du modèle", es: "Tamaño del modelo", pt: "Tamanho do modelo", it: "Dimensioni modello", ru: "Размер модели", zhHans: "模型尺寸", zhHant: "模型尺寸", ko: "모델 크기")}: " +
+            $"{size.X:f3} × {size.Y:f3} × {size.Z:f3} nm";
+        labelResult.Text =
+            $"{Localization.Loc(en: "Scale", ja: "スケール", de: "Maßstab", fr: "Échelle", es: "Escala", pt: "Escala", it: "Scala", ru: "Масштаб", zhHans: "比例", zhHant: "比例尺", ko: "배율")}: {MmPerNm:f3} mm/nm,   " +
+            //260805Cl: es/pt/it/ru はレイアウト実測 (ハーネス) で groupBox 幅を超えたため短縮形にする
+            $"{Localization.Loc(en: "Output size", ja: "出力寸法", de: "Ausgabegröße", fr: "Taille de sortie", es: "Tam. salida", pt: "Tam. saída", it: "Dim. output", ru: "Вывод", zhHans: "输出尺寸", zhHant: "輸出尺寸", ko: "출력 크기")}: " +
             $"{size.X * MmPerNm:f1} × {size.Y * MmPerNm:f1} × {size.Z * MmPerNm:f1} mm";
 
         //印刷適性チェック簡易版: 細すぎる結合の警告 (増径オプションが ON なら解消されるので出さない)
         var minDia = 2 * minBondRadiusNmSrc * MmPerNm;
         if (IncludeBonds && !ThickenBonds && minBondRadiusNmSrc > 0 && minDia < (double)numericUpDownMinBond.Value)
-            labelWarning.Text = $"⚠ Thinnest bond ≈ {minDia:f2} mm: may break easily. " +
-                "Enable thickening, increase the size, or increase the bond radius.";
+            labelWarning.Text = string.Format(Localization.Loc(
+                en: "⚠ Thinnest bond ≈ {0} mm: may break easily. Enable thickening, increase the size, or increase the bond radius.",
+                ja: "⚠ 最も細い結合が約 {0} mm: 折れやすくなります。太らせるか、寸法か結合半径を大きくしてください。",
+                de: "⚠ Dünnste Bindung ≈ {0} mm: bricht leicht. Verdicken aktivieren oder Größe bzw. Bindungsradius erhöhen.",
+                fr: "⚠ Liaison la plus fine ≈ {0} mm : risque de casse. Activez l'épaississement ou augmentez la taille ou le rayon.",
+                es: "⚠ Enlace más fino ≈ {0} mm: puede romperse. Active el engrosado o aumente el tamaño o el radio del enlace.",
+                pt: "⚠ Ligação mais fina ≈ {0} mm: pode quebrar. Ative o engrossamento ou aumente o tamanho ou o raio.",
+                it: "⚠ Legame più sottile ≈ {0} mm: può rompersi. Attiva l'ispessimento o aumenta dimensione o raggio.",
+                ru: "⚠ Самая тонкая связь ≈ {0} mm: легко ломается. Включите утолщение или увеличьте размер либо радиус.",
+                zhHans: "⚠ 最细的键约 {0} mm: 易折断。请启用加粗，或增大尺寸或键半径。",
+                zhHant: "⚠ 最細的鍵約 {0} mm：易折斷。請啟用加粗，或增大尺寸或鍵半徑。",
+                ko: "⚠ 가장 가는 결합이 약 {0} mm: 부러지기 쉽습니다. 굵게 하기를 켜거나 크기 또는 결합 반지름을 늘리세요."),
+                minDia.ToString("f2"));
         else
             labelWarning.Text = "";
 

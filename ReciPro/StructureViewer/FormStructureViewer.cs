@@ -1511,7 +1511,21 @@ public partial class FormStructureViewer : FormBase
         var lineSnaps = ModelExporter.CollectLines(objs);
         if (snaps.Count == 0 && lineSnaps.Count == 0)
         {
-            MessageBox.Show("No printable solid objects (atoms, bonds, or polyhedra) are displayed.", "Export 3D Model", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //260805Cl 変更: メッセージを多言語化 (旧は英語直書き)
+            MessageBox.Show(Localization.Loc(
+                en: "No printable solid objects (atoms, bonds, or polyhedra) are displayed.",
+                ja: "印刷できる立体 (原子・結合・配位多面体) が表示されていません。",
+                de: "Es werden keine druckbaren Körper (Atome, Bindungen, Polyeder) angezeigt.",
+                fr: "Aucun solide imprimable (atomes, liaisons, polyèdres) n'est affiché.",
+                es: "No se muestra ningún sólido imprimible (átomos, enlaces o poliedros).",
+                pt: "Nenhum sólido imprimível (átomos, ligações ou poliedros) está sendo exibido.",
+                it: "Nessun solido stampabile (atomi, legami o poliedri) è visualizzato.",
+                ru: "Не отображается ни одного печатаемого тела (атомы, связи, полиэдры).",
+                zhHans: "未显示可打印的实体 (原子、键或多面体)。",
+                zhHant: "未顯示可列印的實體 (原子、鍵或多面體)。",
+                ko: "출력 가능한 입체 (원자, 결합, 다면체) 가 표시되어 있지 않습니다."),
+                Localization.Loc(en: "Export 3D Model", ja: "3Dモデルの出力", de: "3D-Modell exportieren", fr: "Exporter le modèle 3D", es: "Exportar modelo 3D", pt: "Exportar modelo 3D", it: "Esporta modello 3D", ru: "Экспорт 3D-модели", zhHans: "导出 3D 模型", zhHant: "匯出 3D 模型", ko: "3D 모델 내보내기"),
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
 
