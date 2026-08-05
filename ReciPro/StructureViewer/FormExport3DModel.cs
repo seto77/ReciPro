@@ -36,8 +36,14 @@ public partial class FormExport3DModel : FormBase
     /// <summary>多面体を面ではなく稜線枠 (円柱+頂点球) で出力するか</summary>
     public bool PolyhedraAsEdges => radioButtonPolyEdges.Checked;
 
-    /// <summary>多面体稜線の円柱半径 (nm)</summary>
+    /// <summary>多面体を透かし格子 (稜線枠+面内メッシュバー) で出力するか (260805Cl 追加)</summary>
+    public bool PolyhedraAsMesh => radioButtonPolyMesh.Checked;
+
+    /// <summary>多面体稜線・メッシュバーの円柱半径 (nm)</summary>
     public double PolyEdgeRadiusNm => (double)numericUpDownPolyEdgeDia.Value / 2 / MmPerNm;
+
+    /// <summary>透かし格子のピッチ (nm) (260805Cl 追加)</summary>
+    public double PolyPitchNm => (double)numericUpDownPolyPitch.Value / MmPerNm;
 
     /// <summary>単位胞枠 (線オブジェクト) を円柱化して含めるか</summary>
     public bool IncludeCellEdges => checkBoxCellEdges.Checked && hasLines;
@@ -130,8 +136,9 @@ public partial class FormExport3DModel : FormBase
 
         numericUpDownMaxSize.Enabled = radioButtonFit.Checked;
         numericUpDownScale.Enabled = radioButtonScale.Checked;
-        radioButtonPolySolid.Enabled = radioButtonPolyEdges.Enabled = IncludePolyhedra;
-        numericUpDownPolyEdgeDia.Enabled = IncludePolyhedra && radioButtonPolyEdges.Checked;
+        radioButtonPolySolid.Enabled = radioButtonPolyEdges.Enabled = radioButtonPolyMesh.Enabled = IncludePolyhedra; //260805Cl 変更: mesh 追加
+        numericUpDownPolyEdgeDia.Enabled = IncludePolyhedra && (radioButtonPolyEdges.Checked || radioButtonPolyMesh.Checked);
+        numericUpDownPolyPitch.Enabled = IncludePolyhedra && radioButtonPolyMesh.Checked; //260805Cl 追加
         numericUpDownEdgeDia.Enabled = IncludeCellEdges;
         numericUpDownMinBond.Enabled = ThickenBonds;
 

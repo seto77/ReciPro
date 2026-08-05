@@ -35,9 +35,12 @@ public static class ModelExporter
 
     /// <summary>
     /// 線分スナップショット (単位胞枠など) を円柱ソリッドへ変換する (260803Cl 追加, Phase 1)。
-    /// 各線分を半径 radiusNm (nm) の円柱にし、端点 (重複除去済) には同半径の球を置いて角の継ぎ目を丸く埋める。
+    /// 各線分を半径 radiusNm (nm) の円柱にし、cornerSpheres が true なら端点 (重複除去済) に
+    /// 同半径の球を置いて角の継ぎ目を丸く埋める (端が別の円柱の軸上に載るバーでは不要)。
     /// </summary>
-    public static List<MeshSnapshot> CylinderizeLines(IEnumerable<MeshSnapshot> lines, double radiusNm)
+    //260805Cl 変更: cornerSpheres 引数を追加 (メッシュ格子バー用)。旧シグネチャ:
+    //public static List<MeshSnapshot> CylinderizeLines(IEnumerable<MeshSnapshot> lines, double radiusNm)
+    public static List<MeshSnapshot> CylinderizeLines(IEnumerable<MeshSnapshot> lines, double radiusNm, bool cornerSpheres = true)
     {
         var result = new List<MeshSnapshot>();
         var cornerKeys = new HashSet<(long X, long Y, long Z)>();
@@ -48,13 +51,95 @@ public static class ModelExporter
             foreach (var (start, end) in s.Segments)
             {
                 result.Add(MeshSnapshot.From(new Cylinder(start, end - start, radiusNm, mat, DrawingMode.Surfaces)));
-                foreach (var p in (V3[])[start, end])
-                    if (cornerKeys.Add(((long)Math.Round(p.X * 1E4), (long)Math.Round(p.Y * 1E4), (long)Math.Round(p.Z * 1E4))))
-                        corners.Add((p, s.Argb));
+                if (cornerSpheres)
+                    foreach (var p in (V3[])[start, end])
+                        if (cornerKeys.Add(((long)Math.Round(p.X * 1E4), (long)Math.Round(p.Y * 1E4), (long)Math.Round(p.Z * 1E4))))
+                            corners.Add((p, s.Argb));
             }
         }
         foreach (var (pos, argb) in corners)
             result.Add(MeshSnapshot.From(new Sphere(pos, radiusNm, new Material(argb), DrawingMode.Surfaces)));
+        return result;
+    }
+
+    /// <summary>
+    /// 多面体の面内に「透かし格子」のバー線分を生成する (260805Cl 追加)。
+    /// 各面 (凸多角形) の面内で直交 2 方向に pitchNm 間隔の直線を引き、多角形でクリップした線分を返す。
+    /// 画面表示の半透明多面体の物理版: 稜線枠 (CylinderizeLines) と併用し、面は透けるが形は分かる。
+    /// バーの端点は面の境界 (稜線円柱の軸上) に載るため、端点球は不要。
+    /// </summary>
+    /// <param name="polyhedra">Kind が Polyhedron のスナップショット群</param>
+    /// <param name="pitchNm">格子ピッチ (nm)</param>
+    /// <returns>Segments に格子線分を持つダミースナップショット群 (CylinderizeLines(…, cornerSpheres: false) に渡す)</returns>
+    public static List<MeshSnapshot> GenerateFaceGrids(IEnumerable<MeshSnapshot> polyhedra, double pitchNm)
+    {
+        var result = new List<MeshSnapshot>();
+        foreach (var s in polyhedra)
+        {
+            var segs = new List<(V3 Start, V3 End)>();
+            foreach (var loop in s.FaceLoops)
+            {
+                //面内基底: u = 最初の非退化辺の方向, n = 面法線 (Newell 法), v = n × u
+                var normal = new V3();
+                for (int i = 0; i < loop.Length; i++)
+                {
+                    var (p, q) = (loop[i], loop[(i + 1) % loop.Length]);
+                    normal += new V3((p.Y - q.Y) * (p.Z + q.Z), (p.Z - q.Z) * (p.X + q.X), (p.X - q.X) * (p.Y + q.Y));
+                }
+                var uRaw = loop[1] - loop[0];
+                if (normal.LengthSquared < 1E-20 || uRaw.LengthSquared < 1E-20)
+                    continue;
+                var u = V3.Normalize(uRaw);
+                var v = V3.Normalize(V3.Cross(normal, u));
+                var origin = loop[0];
+
+                //頂点を面内 2D 座標へ。巻き方向に依らないよう、符号付き面積で「内側」の符号を決めておく
+                var pts2 = loop.Select(p => (U: V3.Dot(p - origin, u), V: V3.Dot(p - origin, v))).ToArray();
+                double area2 = 0;
+                for (int i = 0; i < pts2.Length; i++)
+                {
+                    var (a, b) = (pts2[i], pts2[(i + 1) % pts2.Length]);
+                    area2 += a.U * b.V - b.U * a.V;
+                }
+                var sgn = area2 >= 0 ? 1.0 : -1.0;
+
+                //直交 2 方向の走査線 (境界上の線は稜線と重複するので半ピッチ内側から)
+                foreach (var dir in new[] { 0, 1 })//0: v=c 上を t が U 方向に走る / 1: u=c 上を t が V 方向に走る
+                {
+                    double cMin = dir == 0 ? pts2.Min(p => p.V) : pts2.Min(p => p.U),
+                           cMax = dir == 0 ? pts2.Max(p => p.V) : pts2.Max(p => p.U);
+                    for (var c = cMin + pitchNm / 2; c < cMax; c += pitchNm)
+                    {
+                        //走査線 L(t) を凸多角形の各辺の半平面でクリップ。g(t) = cross(b-a, L(t)-a) = g0 + slope*t
+                        double t0 = double.MinValue, t1 = double.MaxValue;
+                        var inside = true;
+                        for (int i = 0; i < pts2.Length && inside; i++)
+                        {
+                            var (a, b) = (pts2[i], pts2[(i + 1) % pts2.Length]);
+                            double ex = b.U - a.U, ey = b.V - a.V;
+                            //dir==0: L(t)=(t,c) → g = ex*(c-a.V) - ey*(t-a.U) → g0 = ex*(c-a.V)+ey*a.U, slope = -ey
+                            //dir==1: L(t)=(c,t) → g = ex*(t-a.V) - ey*(c-a.U) → g0 = -ey*(c-a.U)-ex*a.V, slope = ex
+                            double g0 = dir == 0 ? ex * (c - a.V) + ey * a.U : -ey * (c - a.U) - ex * a.V;
+                            var slope = dir == 0 ? -ey : ex;
+                            g0 *= sgn;
+                            slope *= sgn;
+                            if (Math.Abs(slope) < 1E-12)
+                            { if (g0 < 0) inside = false; }
+                            else if (slope > 0)
+                                t0 = Math.Max(t0, -g0 / slope);
+                            else
+                                t1 = Math.Min(t1, -g0 / slope);
+                        }
+                        if (!inside || t1 - t0 < pitchNm * 0.2)//短すぎる切れ端は捨てる
+                            continue;
+                        segs.Add(dir == 0 ? (origin + u * t0 + v * c, origin + u * t1 + v * c)
+                                          : (origin + u * c + v * t0, origin + u * c + v * t1));
+                    }
+                }
+            }
+            if (segs.Count > 0)
+                result.Add(new MeshSnapshot { Kind = SnapshotKind.Lines, Argb = s.Argb, Rendered = true, Triangles = [], Segments = [.. segs] });
+        }
         return result;
     }
 

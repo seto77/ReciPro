@@ -42,8 +42,11 @@ namespace ReciPro
             checkBoxPolyhedra = new System.Windows.Forms.CheckBox();
             radioButtonPolySolid = new System.Windows.Forms.RadioButton();
             radioButtonPolyEdges = new System.Windows.Forms.RadioButton();
+            radioButtonPolyMesh = new System.Windows.Forms.RadioButton(); // 260805Cl 追加: 透かし格子 (メッシュ) スタイル
             numericUpDownPolyEdgeDia = new System.Windows.Forms.NumericUpDown();
+            numericUpDownPolyPitch = new System.Windows.Forms.NumericUpDown(); // 260805Cl 追加
             label5 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label(); // 260805Cl 追加
             checkBoxCellEdges = new System.Windows.Forms.CheckBox();
             numericUpDownEdgeDia = new System.Windows.Forms.NumericUpDown();
             label3 = new System.Windows.Forms.Label();
@@ -60,6 +63,7 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownPolyEdgeDia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownPolyPitch)).BeginInit(); // 260805Cl 追加
             ((System.ComponentModel.ISupportInitialize)(numericUpDownEdgeDia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMinBond)).BeginInit();
             groupBoxScale.SuspendLayout();
@@ -223,15 +227,18 @@ namespace ReciPro
             groupBoxInclude.Controls.Add(checkBoxPolyhedra);
             groupBoxInclude.Controls.Add(radioButtonPolySolid);
             groupBoxInclude.Controls.Add(radioButtonPolyEdges);
+            groupBoxInclude.Controls.Add(radioButtonPolyMesh); // 260805Cl 追加
             groupBoxInclude.Controls.Add(numericUpDownPolyEdgeDia);
+            groupBoxInclude.Controls.Add(numericUpDownPolyPitch); // 260805Cl 追加
             groupBoxInclude.Controls.Add(label5);
+            groupBoxInclude.Controls.Add(label7); // 260805Cl 追加
             groupBoxInclude.Controls.Add(checkBoxCellEdges);
             groupBoxInclude.Controls.Add(numericUpDownEdgeDia);
             groupBoxInclude.Controls.Add(label3);
             groupBoxInclude.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             groupBoxInclude.Location = new System.Drawing.Point(10, 154);
             groupBoxInclude.Name = "groupBoxInclude";
-            groupBoxInclude.Size = new System.Drawing.Size(382, 102);
+            groupBoxInclude.Size = new System.Drawing.Size(382, 128); // 260805Cl 変更: mesh 行の追加で 102→128
             groupBoxInclude.TabIndex = 3;
             groupBoxInclude.TabStop = false;
             groupBoxInclude.Text = "Include";
@@ -337,10 +344,59 @@ namespace ReciPro
             label5.TabIndex = 6;
             label5.Text = "mm";
             //
+            // radioButtonPolyMesh (260805Cl 追加: 透かし格子スタイル。バー径は稜線と同じ numericUpDownPolyEdgeDia)
+            //
+            radioButtonPolyMesh.AutoSize = true;
+            radioButtonPolyMesh.Location = new System.Drawing.Point(28, 70);
+            radioButtonPolyMesh.Name = "radioButtonPolyMesh";
+            radioButtonPolyMesh.Size = new System.Drawing.Size(150, 19);
+            radioButtonPolyMesh.TabIndex = 10;
+            radioButtonPolyMesh.Text = "see-through mesh,  pitch:";
+            radioButtonPolyMesh.UseVisualStyleBackColor = true;
+            radioButtonPolyMesh.CheckedChanged += update;
+            //
+            // numericUpDownPolyPitch (260805Cl 追加)
+            //
+            numericUpDownPolyPitch.DecimalPlaces = 1;
+            numericUpDownPolyPitch.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            numericUpDownPolyPitch.Location = new System.Drawing.Point(282, 68);
+            numericUpDownPolyPitch.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            numericUpDownPolyPitch.Minimum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            65536});
+            numericUpDownPolyPitch.Name = "numericUpDownPolyPitch";
+            numericUpDownPolyPitch.Size = new System.Drawing.Size(52, 21);
+            numericUpDownPolyPitch.TabIndex = 11;
+            numericUpDownPolyPitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numericUpDownPolyPitch.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            65536});
+            //
+            // label7 (260805Cl 追加)
+            //
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(338, 70);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(28, 15);
+            label7.TabIndex = 12;
+            label7.Text = "mm";
+            //
             // checkBoxCellEdges
             //
             checkBoxCellEdges.AutoSize = true;
-            checkBoxCellEdges.Location = new System.Drawing.Point(12, 73);
+            checkBoxCellEdges.Location = new System.Drawing.Point(12, 98); // 260805Cl 変更: mesh 行の追加で 73→98
             checkBoxCellEdges.Name = "checkBoxCellEdges";
             checkBoxCellEdges.Size = new System.Drawing.Size(220, 19);
             checkBoxCellEdges.TabIndex = 7;
@@ -356,7 +412,7 @@ namespace ReciPro
             0,
             0,
             65536});
-            numericUpDownEdgeDia.Location = new System.Drawing.Point(224, 71);
+            numericUpDownEdgeDia.Location = new System.Drawing.Point(224, 96); // 260805Cl 変更: 71→96
             numericUpDownEdgeDia.Maximum = new decimal(new int[] {
             50,
             0,
@@ -381,7 +437,7 @@ namespace ReciPro
             // label3
             //
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(280, 73);
+            label3.Location = new System.Drawing.Point(280, 98); // 260805Cl 変更: 73→98
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(28, 15);
             label3.TabIndex = 9;
@@ -394,7 +450,7 @@ namespace ReciPro
             groupBoxPrintability.Controls.Add(label6);
             groupBoxPrintability.Controls.Add(labelWarning);
             groupBoxPrintability.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            groupBoxPrintability.Location = new System.Drawing.Point(10, 262);
+            groupBoxPrintability.Location = new System.Drawing.Point(10, 288); // 260805Cl 変更: 262→288
             groupBoxPrintability.Name = "groupBoxPrintability";
             groupBoxPrintability.Size = new System.Drawing.Size(382, 88);
             groupBoxPrintability.TabIndex = 4;
@@ -468,7 +524,7 @@ namespace ReciPro
             groupBoxFormat.Controls.Add(radioButtonStl);
             groupBoxFormat.Controls.Add(radioButton3mf);
             groupBoxFormat.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            groupBoxFormat.Location = new System.Drawing.Point(10, 356);
+            groupBoxFormat.Location = new System.Drawing.Point(10, 382); // 260805Cl 変更: 356→382
             groupBoxFormat.Name = "groupBoxFormat";
             groupBoxFormat.Size = new System.Drawing.Size(382, 46);
             groupBoxFormat.TabIndex = 5;
@@ -503,7 +559,7 @@ namespace ReciPro
             //
             buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonOK.Location = new System.Drawing.Point(216, 410);
+            buttonOK.Location = new System.Drawing.Point(216, 436); // 260805Cl 変更: 410→436
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new System.Drawing.Size(100, 25);
             buttonOK.TabIndex = 6;
@@ -514,7 +570,7 @@ namespace ReciPro
             //
             buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonCancel.Location = new System.Drawing.Point(322, 410);
+            buttonCancel.Location = new System.Drawing.Point(322, 436); // 260805Cl 変更: 410→436
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new System.Drawing.Size(65, 25);
             buttonCancel.TabIndex = 7;
@@ -530,7 +586,7 @@ namespace ReciPro
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             CancelButton = buttonCancel;
-            ClientSize = new System.Drawing.Size(402, 445);
+            ClientSize = new System.Drawing.Size(402, 471); // 260805Cl 変更: mesh 行の追加で 445→471
             Controls.Add(labelInfo);
             Controls.Add(labelSizeAng);
             Controls.Add(groupBoxScale);
@@ -550,6 +606,7 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMaxSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownPolyEdgeDia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownPolyPitch)).EndInit(); // 260805Cl 追加
             ((System.ComponentModel.ISupportInitialize)(numericUpDownEdgeDia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownMinBond)).EndInit();
             groupBoxScale.ResumeLayout(false);
@@ -582,8 +639,11 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxPolyhedra;
         private System.Windows.Forms.RadioButton radioButtonPolySolid;
         private System.Windows.Forms.RadioButton radioButtonPolyEdges;
+        private System.Windows.Forms.RadioButton radioButtonPolyMesh; // 260805Cl 追加
         public System.Windows.Forms.NumericUpDown numericUpDownPolyEdgeDia;
+        public System.Windows.Forms.NumericUpDown numericUpDownPolyPitch; // 260805Cl 追加
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7; // 260805Cl 追加
         private System.Windows.Forms.CheckBox checkBoxCellEdges;
         public System.Windows.Forms.NumericUpDown numericUpDownEdgeDia;
         private System.Windows.Forms.Label label3;

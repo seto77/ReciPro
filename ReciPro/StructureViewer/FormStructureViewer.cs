@@ -1542,17 +1542,23 @@ public partial class FormStructureViewer : FormBase
         //260805Cl 変更: 組み立て〜出力〜ログを ExportModel へ集約 (マクロ StructureViewer.Export3DModel と共用)。旧実装は本メソッド内に展開されていた (commit 71af90ee 参照)
         ExportModel(sfd.FileName, dlg.Use3mf, dlg.MmPerNm,
             dlg.IncludeAtoms, dlg.IncludeBonds, dlg.IncludePolyhedra, dlg.PolyhedraAsEdges, dlg.PolyEdgeRadiusNm,
-            dlg.IncludeCellEdges, dlg.EdgeRadiusNm, dlg.ThickenBonds, dlg.MinBondRadiusNm, snaps, lineSnaps);
+            dlg.IncludeCellEdges, dlg.EdgeRadiusNm, dlg.ThickenBonds, dlg.MinBondRadiusNm, snaps, lineSnaps,
+            dlg.PolyhedraAsMesh, dlg.PolyPitchNm);//260805Cl 追加: 透かし格子
     }
 
     /// <summary>
     /// 260805Cl 追加: エクスポート対象の組み立て → STL/3MF 書き出し → 情報欄へのログ (ダイアログ経由とマクロ経由の共通部)。
     /// 半径系の引数は nm。戻り値はログに出す情報文字列 (マクロ StructureViewer.Export3DModel が return する)。
     /// </summary>
+    //260805Cl 変更: 透かし格子 (polyhedraAsMesh/polyPitchNm) を追加。旧シグネチャ:
+    //internal string ExportModel(string filename, bool use3mf, double scale,
+    //    bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeRadiusNm,
+    //    bool includeCellEdges, double cellEdgeRadiusNm, bool thickenBonds, double minBondRadiusNm,
+    //    List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps)
     internal string ExportModel(string filename, bool use3mf, double scale,
         bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeRadiusNm,
         bool includeCellEdges, double cellEdgeRadiusNm, bool thickenBonds, double minBondRadiusNm,
-        List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps)
+        List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps, bool polyhedraAsMesh = false, double polyPitchNm = 0)
     {
         //オプションに従ってエクスポート対象を組み立てる
         var export = new List<MeshSnapshot>();
@@ -1560,7 +1566,7 @@ public partial class FormStructureViewer : FormBase
         {
             var isAtom = s.Kind is SnapshotKind.Sphere or SnapshotKind.Ellipsoid;
             var isPoly = s.Kind == SnapshotKind.Polyhedron;
-            if (isAtom ? !includeAtoms : isPoly ? !includePolyhedra || polyhedraAsEdges : !includeBonds)
+            if (isAtom ? !includeAtoms : isPoly ? !includePolyhedra || polyhedraAsEdges || polyhedraAsMesh : !includeBonds)//260805Cl 変更: mesh 追加
                 continue;
             //細すぎる結合 (円柱) は元プリミティブ情報から印刷可能な太さで再生成する
             if (!isAtom && !isPoly && thickenBonds && s.Kind == SnapshotKind.Cylinder && s.PipeRadius1 > 0 && s.PipeRadius1 < minBondRadiusNm)
@@ -1568,8 +1574,11 @@ public partial class FormStructureViewer : FormBase
             else
                 export.Add(s);
         }
-        if (includePolyhedra && polyhedraAsEdges)//多面体を稜線枠 (円柱+頂点球) で出力
+        if (includePolyhedra && (polyhedraAsEdges || polyhedraAsMesh))//多面体を稜線枠 (円柱+頂点球) で出力
             export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyEdgeRadiusNm));
+        if (includePolyhedra && polyhedraAsMesh && polyPitchNm > 0)//260805Cl 追加: 透かし格子 (面内メッシュバー。端は稜線円柱に埋まるので端点球なし)
+            export.AddRange(ModelExporter.CylinderizeLines(
+                ModelExporter.GenerateFaceGrids(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyPitchNm), polyEdgeRadiusNm, cornerSpheres: false));
         if (includeCellEdges)//単位胞枠を円柱+角球に変換して追加
             export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, cellEdgeRadiusNm));
         if (export.Count == 0)
