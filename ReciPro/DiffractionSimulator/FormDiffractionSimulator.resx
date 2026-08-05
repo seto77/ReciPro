@@ -446,36 +446,220 @@ structure factor (strongest reflections first).</value>
   <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelKikuchiMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 60</value>
+  <data name="labelKikuchiMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 60</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 21</value>
+  <data name="labelKikuchiMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 17</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+  <data name="labelKikuchiMode.Text" xml:space="preserve">
+    <value>Mode</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Apply Kinematical Intensity to Kikuchi Lines</value>
+  <data name="&gt;&gt;labelKikuchiMode.Name" xml:space="preserve">
+    <value>labelKikuchiMode</value>
   </data>
-  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>When checked, Kikuchi line intensities are weighted by
-the kinematical relative intensity of each reflection.</value>
+  <data name="&gt;&gt;labelKikuchiMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Name" xml:space="preserve">
-    <value>checkBoxKikuchiLine_Kinematical</value>
-  </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelKikuchiMode.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
   </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;labelKikuchiMode.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="comboBoxKikuchiMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 56</value>
+  </data>
+  <data name="comboBoxKikuchiMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 25</value>
+  </data>
+  <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
+    <value>Display mode of Kikuchi lines:
+Geometric = fixed-color lines, Kinematical = opacity by structure factor,
+Dynamical band = two-beam dynamical excess/deficient band profiles.</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiMode.Name" xml:space="preserve">
+    <value>comboBoxKikuchiMode</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiMode.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiMode.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 58</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
+    <value>Fixed scale</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
+    <value>Freeze the current contrast scale of dynamical bands
+(otherwise it is auto-determined from the 98.5 percentile).</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiFixedScale.Name" xml:space="preserve">
+    <value>checkBoxKikuchiFixedScale</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiFixedScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiFixedScale.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiFixedScale.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.HeaderText" xml:space="preserve">
+    <value>Bands</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 86</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
+    <value>Number of dynamical bands to display
+(top N by dynamical contrast ranking).</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiBandNumber.Name" xml:space="preserve">
+    <value>numericBoxKikuchiBandNumber</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiBandNumber.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiBandNumber.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiBandNumber.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 86</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 25</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>Quality preset of the dynamical band profiles
+(number of profile samples per band).</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiQuality.Name" xml:space="preserve">
+    <value>comboBoxKikuchiQuality</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiQuality.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiQuality.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;comboBoxKikuchiQuality.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelKikuchiContrast.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelKikuchiContrast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 89</value>
+  </data>
+  <data name="labelKikuchiContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="labelKikuchiContrast.Text" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiContrast.Name" xml:space="preserve">
+    <value>labelKikuchiContrast</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiContrast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiContrast.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiContrast.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="trackBarKikuchiContrast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 89</value>
+  </data>
+  <data name="trackBarKikuchiContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 16</value>
+  </data>
+  <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>Contrast of the dynamical bands (tanh saturation strength).</value>
+  </data>
+  <data name="&gt;&gt;trackBarKikuchiContrast.Name" xml:space="preserve">
+    <value>trackBarKikuchiContrast</value>
+  </data>
+  <data name="&gt;&gt;trackBarKikuchiContrast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarKikuchiContrast.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;trackBarKikuchiContrast.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="colorControlDeficientLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlDeficientLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlDeficientLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
+    <value>Deficient color</value>
+  </data>
+  <data name="colorControlDeficientLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 114</value>
+  </data>
+  <data name="colorControlDeficientLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
+  </data>
+  <data name="&gt;&gt;colorControlDeficientLine.Name" xml:space="preserve">
+    <value>colorControlDeficientLine</value>
+  </data>
+  <data name="&gt;&gt;colorControlDeficientLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlDeficientLine.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;colorControlDeficientLine.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labelKikuchiNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 138</value>
+  </data>
+  <data name="labelKikuchiNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 18</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiNotice.Name" xml:space="preserve">
+    <value>labelKikuchiNotice</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiNotice.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;labelKikuchiNotice.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -713,7 +897,7 @@ structure factor) used to draw Kikuchi lines.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 84</value>
+    <value>415, 160</value>
   </data>
   <data name="tabPageKikuchi.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -947,7 +1131,7 @@ structure factor) used to draw Kikuchi lines.</value>
     <value>9, 3</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 114</value>
+    <value>423, 190</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

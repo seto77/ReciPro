@@ -401,6 +401,14 @@ public partial class FormDiffractionSimulator : FormBase
         timerBlinkDebyeRing.Tag = true;
         timerBlinkScale.Tag = true;
 
+        //260805Cl 追加: 菊池表示モード・品質プリセット。Items はコード側で設定
+        //(form resx への手書き文字列は VS 再シリアライズで消えるため。i18n は resx 移行時に対応)
+        comboBoxKikuchiMode.Items.AddRange(new object[] { "Geometric", "Kinematical", "Dynamical band" });
+        comboBoxKikuchiMode.SelectedIndex = 1; //既定 = Kinematical (旧 checkBoxKikuchiLine_Kinematical=ON と同じ見た目。作者決定 2026-08-05)
+        comboBoxKikuchiQuality.Items.AddRange(new object[] { "Fast", "Standard", "High" });
+        comboBoxKikuchiQuality.SelectedIndex = 1;
+        timerKikuchiDebounce.Tick += TimerKikuchiDebounce_Tick;
+
         if (FormDiffractionSimulatorGeometry == null)
         {
             lastPanelSize = graphicsBox.ClientSize;
@@ -1242,6 +1250,12 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void DrawKikuchiLine(Graphics graphics)
     {
+        //260805Cl 追加: Dynamical band モード。プロファイルが揃っていればバンドを描き、
+        //ラベル不要ならここで終了。未完成 (worker 計算中) は従来の幾何線で fallback する。
+        bool dynamicalDrawn = comboBoxKikuchiMode.SelectedIndex == 2 && DrawKikuchiDynamicalBands(graphics);
+        if (dynamicalDrawn && !toolStripButtonIndexLabels.Checked)
+            return;
+
         //var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
         using var penExcess = new Pen(colorControlExcessLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
@@ -1292,9 +1306,11 @@ public partial class FormDiffractionSimulator : FormBase
 
                 if (pts.Count > 1)
                 {
-                    if (checkBoxKikuchiLine_Kinematical.Checked)
+                    //if (checkBoxKikuchiLine_Kinematical.Checked) //260805Cl 変更前 (モード選択に統合)
+                    if (comboBoxKikuchiMode.SelectedIndex == 1)
                         penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                    graphics.DrawLines(penExcess, pts.ToArray());
+                    if (!dynamicalDrawn) //260805Cl 追加: バンド描画済みのときは線は引かずラベルのみ
+                        graphics.DrawLines(penExcess, pts.ToArray());
 
                     //ラベル描画
                     if (toolStripButtonIndexLabels.Checked)
@@ -1333,6 +1349,158 @@ public partial class FormDiffractionSimulator : FormBase
         byte g = (byte)((color.G * amount) + backColor.G * (1 - amount));
         byte b = (byte)((color.B * amount) + backColor.B * (1 - amount));
         return Color.FromArgb(r, g, b);
+    }
+
+    #endregion
+
+    #region 菊池動力学バンド (260805Cl 追加。設計正本 = ReciPro_菊池線動力学化設計.md §4-§5)
+
+    private KikuchiPotentialSnapshot kikuchiSnapshot;
+    private List<KikuchiBandProfile> kikuchiProfiles;
+    private Matrix3D kikuchiProfilesRotation;
+    private double kikuchiProfilesThickness = double.NaN;
+    private int kikuchiProfilesBandNum, kikuchiProfilesSamples, kikuchiProfilesGHash;
+    private int kikuchiGeneration;
+    private double kikuchiAutoScale;
+    private bool kikuchiScaleDirty = true;
+    private HashSet<(int H, int K, int L)> kikuchiPrevSelection;
+    private readonly System.Windows.Forms.Timer timerKikuchiDebounce = new() { Interval = 300 };
+    private int kikuchiScheduledKey;
+
+    private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => 129 };
+
+    /// <summary>VectorOfG_KikuchiLine の指数集合ハッシュ (静的候補の変化検知)</summary>
+    private static int KikuchiGHash(List<Vector3D> vecs)
+    {
+        int h = 17;
+        foreach (var v in vecs)
+            h = h * 31 + v.Index.GetHashCode();
+        return h;
+    }
+
+    /// <summary>
+    /// 動力学バンドを描画できたら true。プロファイル未完成のときは false (呼び出し側が幾何線 fallback)。
+    /// 回転だけが変わった場合も旧プロファイルを現在の回転で再投影して描く (作者決定 2026-08-05: ドラッグ中は旧キャッシュ再投影)。
+    /// 検出器座標 (x,y) ⇔ 方向 d̂ = norm(x,y,+L) の規約は KikuchiCheck geom テストで既存双曲線と一致確認済み。
+    /// </summary>
+    private bool DrawKikuchiDynamicalBands(Graphics graphics)
+    {
+        ScheduleKikuchiComputeIfStale();
+        var profiles = kikuchiProfiles;
+        if (profiles == null || profiles.Count == 0 || formMain?.Crystal == null)
+            return false;
+
+        int w = graphicsBox.ClientSize.Width, h = graphicsBox.ClientSize.Height;
+        if (w <= 0 || h <= 0)
+            return false;
+
+        //スクリーン画素 → 検出器座標のアフィン (flip 込みの現行投影をそのまま継承)
+        var p00 = convertScreenToDetector(new Point(0, 0));
+        var p10 = convertScreenToDetector(new Point(1, 0));
+        var p01 = convertScreenToDetector(new Point(0, 1));
+
+        //ĝ2 = 検出器 tilt 込みの回転済み単位法線 (DrawKikuchiLine の vec2 と同じ扱い)
+        var bands = new List<KikuchiBandRenderer.BandInput>(profiles.Count);
+        var tiltRot = Tau == 0 ? null : Matrix3D.Rot(new Vector3DBase(Math.Cos(Phi), -Math.Sin(Phi), 0), -Tau);
+        foreach (var p in profiles)
+        {
+            var vec1 = formMain.Crystal.RotationMatrix * p.Family.Vec;
+            var vec2 = tiltRot == null ? vec1 : tiltRot * vec1;
+            bands.Add(new KikuchiBandRenderer.BandInput(p, vec2 / vec2.Length));
+        }
+
+        //スケールは「計算完了時に auto 再決定・ドラッグ中は固定」(設計 §4)。Fixed scale チェック時は常に固定
+        var fixedScale = (checkBoxKikuchiFixedScale.Checked || !kikuchiScaleDirty) && kikuchiAutoScale > 0 ? kikuchiAutoScale : 0;
+        var contrast = trackBarKikuchiContrast.Value / 50.0;
+        using var bmp = KikuchiBandRenderer.Render(bands, w, h,
+            (p00.X, p00.Y), (p10.X - p00.X, p10.Y - p00.Y), (p01.X - p00.X, p01.Y - p00.Y),
+            CameraLength2, fixedScale, contrast, colorControlExcessLine.Color, colorControlDeficientLine.Color, out var usedScale);
+        kikuchiAutoScale = usedScale;
+        kikuchiScaleDirty = false;
+
+        //スクリーン全面の bitmap を検出器座標の平行四辺形へ貼る (OverlappedImage と同じ 3 点指定)
+        var pW0 = convertScreenToDetector(new Point(w, 0));
+        var p0H = convertScreenToDetector(new Point(0, h));
+        var dest = new PointF[] { p00.ToPointF(), pW0.ToPointF(), p0H.ToPointF() };
+        graphics.DrawImage(bmp, dest, new RectangleF(0, 0, w, h), GraphicsUnit.Pixel);
+        return true;
+    }
+
+    /// <summary>計算条件 (結晶・kV・回転・厚み・本数・品質・静的候補) が最新プロファイルとずれていたら debounce 予約する</summary>
+    private void ScheduleKikuchiComputeIfStale()
+    {
+        var crystal = formMain?.Crystal;
+        if (crystal?.VectorOfG_KikuchiLine == null || crystal.VectorOfG_KikuchiLine.Count == 0)
+            return;
+        bool fresh = kikuchiProfiles != null
+            && kikuchiSnapshot != null && kikuchiSnapshot.Matches(crystal, Energy)
+            && kikuchiProfilesThickness == Thickness
+            && kikuchiProfilesBandNum == numericBoxKikuchiBandNumber.ValueInteger
+            && kikuchiProfilesSamples == KikuchiSampleCount
+            && kikuchiProfilesGHash == KikuchiGHash(crystal.VectorOfG_KikuchiLine)
+            && kikuchiProfilesRotation != null && kikuchiProfilesRotation.Tuple.Equals(crystal.RotationMatrix.Tuple);
+        if (fresh)
+            return;
+        var key = HashCode.Combine(crystal.RotationMatrix.Tuple, Thickness, numericBoxKikuchiBandNumber.ValueInteger,
+            KikuchiSampleCount, Energy, KikuchiGHash(crystal.VectorOfG_KikuchiLine));
+        if (key == kikuchiScheduledKey && timerKikuchiDebounce.Enabled)
+            return; //同じ条件で予約済みなら restart しない (連続 Draw による timer 飢餓の防止)
+        kikuchiScheduledKey = key;
+        timerKikuchiDebounce.Stop();
+        timerKikuchiDebounce.Start();
+    }
+
+    private void TimerKikuchiDebounce_Tick(object sender, EventArgs e)
+    {
+        timerKikuchiDebounce.Stop();
+        StartKikuchiCompute();
+    }
+
+    /// <summary>immutable なスナップショットを worker へ渡し、generation ID が一致したときだけ atomic に交換する (設計 §5)</summary>
+    private void StartKikuchiCompute()
+    {
+        var crystal = formMain?.Crystal;
+        if (crystal?.VectorOfG_KikuchiLine == null || comboBoxKikuchiMode.SelectedIndex != 2)
+            return;
+        var kV = Energy;
+        var thickness = Thickness;
+        int bandNum = numericBoxKikuchiBandNumber.ValueInteger;
+        int samples = KikuchiSampleCount;
+        int gHash = KikuchiGHash(crystal.VectorOfG_KikuchiLine);
+        var rotation = new Matrix3D(crystal.RotationMatrix); //ドラッグによる書き換えから独立させるコピー
+        var candidates = KikuchiBandFamily.Pair(crystal.VectorOfG_KikuchiLine)
+            .OrderByDescending(f => f.RelativeIntensity).Take(bandNum * 3).ToList(); //静的候補 = 表示数の3倍 (設計 §4 の二段階選定)
+        if (candidates.Count == 0)
+            return;
+        var oldSnap = kikuchiSnapshot;
+        bool snapFresh = oldSnap != null && oldSnap.Matches(crystal, kV);
+        var prev = snapFresh ? kikuchiPrevSelection : null; //結晶・電圧が変わったら順位ヒステリシスはリセット
+        int gen = System.Threading.Interlocked.Increment(ref kikuchiGeneration);
+        Task.Run(() =>
+        {
+            try
+            {
+                var snap = snapFresh ? oldSnap : new KikuchiPotentialSnapshot(crystal, kV);
+                var opt = new KikuchiProfileCalculator.Options { SampleCount = samples };
+                var profiles = KikuchiProfileCalculator.ComputeProfiles(snap, candidates, rotation, thickness, bandNum, opt, prev);
+                BeginInvoke(() =>
+                {
+                    if (gen != kikuchiGeneration || IsDisposed)
+                        return;
+                    kikuchiSnapshot = snap;
+                    kikuchiProfiles = profiles;
+                    kikuchiProfilesRotation = rotation;
+                    kikuchiProfilesThickness = thickness;
+                    kikuchiProfilesBandNum = bandNum;
+                    kikuchiProfilesSamples = samples;
+                    kikuchiProfilesGHash = gHash;
+                    kikuchiPrevSelection = [.. profiles.Select(p => p.Family.Index)];
+                    kikuchiScaleDirty = !checkBoxKikuchiFixedScale.Checked; //Auto 再決定は計算完了時のみ (ドラッグ中の明るさポンピング防止)
+                    Draw();
+                });
+            }
+            catch (Exception ex) { Console.WriteLine("Kikuchi dynamical band computation failed: " + ex.Message); }
+        });
     }
 
     #endregion
@@ -1640,7 +1808,13 @@ public partial class FormDiffractionSimulator : FormBase
         Draw();
     }
 
-    private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw();
+    //private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw(); //260805Cl 削除: comboBoxKikuchiMode に統合
+    /// <summary>260805Cl 追加: 菊池表示モード変更。Dynamical のとき非整合暫定運用タグを表示 (設計 §3)</summary>
+    private void comboBoxKikuchiMode_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        labelKikuchiNotice.Text = comboBoxKikuchiMode.SelectedIndex == 2 ? KikuchiProfileCalculator.DisplayNormalizedTag : "";
+        Draw();
+    }
 
     #endregion
 
@@ -3385,6 +3559,7 @@ public partial class FormDiffractionSimulator : FormBase
     private void checkBoxNegativeImage_CheckedChanged(object sender, EventArgs e)
     {
         colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion = colorControlExcessLine.Inversion =
+            colorControlDeficientLine.Inversion = //260805Cl 追加: Deficient 色も反転連鎖に含める
             checkBoxNegativeImage.Checked;
         SetVector();
         Draw();
