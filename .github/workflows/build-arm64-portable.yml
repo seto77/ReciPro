@@ -63,7 +63,7 @@ jobs:
         run: |
           # release.yml と同じ規則で Version.cs の History 先頭からバージョンを得る (release の存在確認はしない: artifact のみのため)
           $content = Get-Content "ReciPro\Version.cs" -Raw
-          if ($content -notmatch 'ver(\d+\.\d+)\(') {
+          if ($content -notmatch 'ver(\d+\.\d+) ?\(') { # 260805Cl 版番と '(' の間のスペースを許容 (旧: 'ver(\d+\.\d+)\(')
             throw "Could not parse version from Version.cs History."
           }
           $ver = $Matches[1]
