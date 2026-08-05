@@ -159,6 +159,8 @@ Lo STEM-EDX non impone limiti aggiuntivi al numero di onde né allo spessore del
 
 L'accuratezza è lasciata all'utente, esattamente come per il numero di onde o la risoluzione angolare. Come riferimento, l'errore di integrazione in profondità cresce all'incirca in proporzione a **Spessore della fetta (TDS)** — circa 2–3 % a 1 nm, 4–8 % a 2 nm e 12–23 % a 4 nm (relativo al picco, SrTiO₃ a 39 nm). Dimezzare lo spessore della fetta dimezza all'incirca l'errore e raddoppia all'incirca il lavoro di integrazione in profondità.
 
+Con aberrazioni impostate (per esempio Cs = 1 mm con defocus di Scherzer a α = 25 mrad), la fase di aberrazione oscilla rapidamente sulla griglia delle direzioni della sonda, e STEM-EDX può rifiutare il calcolo con un errore *non-Hermitian residual* anche con una griglia fine — questo rifiuto protegge la mappa da artefatti di griglia di alcuni punti percentuali. Ridurre Cs e il defocus (la media di scansione di una mappa EDX non dipende affatto dalle aberrazioni), oppure rendere la **Risoluzione angolare** decisamente più fine accettando un calcolo più lungo.
+
 ---
 
 ## Costo computazionale

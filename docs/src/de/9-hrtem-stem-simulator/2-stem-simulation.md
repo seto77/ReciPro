@@ -159,6 +159,8 @@ STEM-EDX setzt keine zusätzliche Grenze für die Wellenanzahl oder die Schichtd
 
 Die Genauigkeit bleibt dir überlassen, genau wie bei der Wellenanzahl oder der Winkelauflösung. Zur Orientierung: Der Fehler der Tiefenintegration wächst etwa proportional zur **Schichtdicke (TDS)** — rund 2–3 % bei 1 nm, 4–8 % bei 2 nm und 12–23 % bei 4 nm (relativ zum Maximum, SrTiO₃ bei 39 nm). Eine Halbierung der Schichtdicke halbiert den Fehler ungefähr und verdoppelt ungefähr den Aufwand der Tiefenintegration.
 
+Sind Aberrationen gesetzt (z. B. Cs = 1 mm mit Scherzer-Defokus bei α = 25 mrad), oszilliert die Aberrationsphase schnell über das Richtungsgitter der Sonde, und STEM-EDX kann die Ausführung selbst bei feinem Gitter mit einem *non-Hermitian residual*-Fehler verweigern — diese Verweigerung schützt die Karte vor Gitterartefakten von einigen Prozent. Verringere Cs und Defokus (der Rastermittelwert einer EDX-Karte hängt überhaupt nicht von den Aberrationen ab) oder mache die **Winkelauflösung** deutlich feiner und nimm die längere Rechenzeit in Kauf.
+
 ---
 
 ## Rechenaufwand

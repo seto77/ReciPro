@@ -159,6 +159,8 @@ O STEM-EDX não impõe nenhum limite extra ao número de ondas nem à espessura 
 
 A precisão fica a cargo do usuário, exatamente como no caso do número de ondas ou da resolução angular. Como referência, o erro de integração em profundidade cresce aproximadamente em proporção a **Espessura da fatia (TDS)** — cerca de 2–3 % a 1 nm, 4–8 % a 2 nm e 12–23 % a 4 nm (relativo ao pico, SrTiO₃ a 39 nm). Reduzir a espessura da fatia à metade reduz o erro aproximadamente à metade e praticamente dobra o trabalho de integração em profundidade.
 
+Com aberrações definidas (por exemplo Cs = 1 mm com desfocagem de Scherzer a α = 25 mrad), a fase de aberração oscila rapidamente sobre a grelha de direções da sonda, e o STEM-EDX pode recusar o cálculo com um erro *non-Hermitian residual* mesmo com uma grelha fina — esta recusa protege o mapa de artefactos de grelha de alguns por cento. Reduza o Cs e a desfocagem (a média de varrimento de um mapa EDX não depende de todo das aberrações), ou torne a **Resolução angular** bastante mais fina aceitando um cálculo mais longo.
+
 ---
 
 ## Custo computacional

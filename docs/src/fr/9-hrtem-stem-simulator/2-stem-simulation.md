@@ -159,6 +159,8 @@ Le STEM-EDX n'impose aucune limite supplémentaire sur le nombre d'ondes ni sur 
 
 La précision est laissée à votre appréciation, exactement comme pour le nombre d'ondes ou la résolution angulaire. À titre de référence, l'erreur d'intégration en profondeur croît à peu près proportionnellement à **Épaisseur de tranche (TDS)** — environ 2–3 % à 1 nm, 4–8 % à 2 nm et 12–23 % à 4 nm (relatif au pic, SrTiO₃ à 39 nm). Diviser par deux l'épaisseur de tranche divise environ par deux l'erreur et double environ le travail d'intégration en profondeur.
 
+Si des aberrations sont définies (par exemple Cs = 1 mm avec la défocalisation de Scherzer à α = 25 mrad), la phase d'aberration oscille rapidement sur la grille de directions de la sonde, et STEM-EDX peut refuser le calcul avec une erreur *non-Hermitian residual* même sur une grille fine — ce refus protège la carte d'artefacts de grille de quelques pour cent. Réduisez Cs et la défocalisation (la moyenne de balayage d'une carte EDX ne dépend pas du tout des aberrations), ou rendez la **Résolution angulaire** nettement plus fine en acceptant un calcul plus long.
+
 ---
 
 ## Coût de calcul

@@ -159,6 +159,8 @@ STEM-EDX places no extra limit on the wave count or the slice thickness: it runs
 
 Accuracy is left to you, exactly as it is for the wave count or the angular resolution. For reference, the depth-integration error grows roughly in proportion to **Slice thickness (TDS)** — about 2–3 % at 1 nm, 4–8 % at 2 nm and 12–23 % at 4 nm (peak-relative, SrTiO₃ at 39 nm). Halving the slice thickness roughly halves the error and roughly doubles the depth-integration work.
 
+With aberrations set (for example Cs = 1 mm with Scherzer defocus at α = 25 mrad), the aberration phase oscillates quickly across the probe direction grid, and STEM-EDX may refuse to run with a *non-Hermitian residual* error even at a fine grid — the refusal protects the map from grid artefacts of a few per cent. Reduce Cs and defocus (the scan average of an EDX map does not depend on the aberrations at all), or make **Angular resolution** substantially finer and accept the longer run.
+
 ---
 
 ## Computational cost

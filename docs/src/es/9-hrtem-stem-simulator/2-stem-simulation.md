@@ -159,6 +159,8 @@ STEM-EDX no impone ningún límite adicional al número de ondas ni al espesor d
 
 La precisión queda en tus manos, exactamente igual que con el número de ondas o la resolución angular. Como referencia, el error de la integración en profundidad crece aproximadamente en proporción a **Espesor de capa (TDS)** — en torno al 2–3 % a 1 nm, 4–8 % a 2 nm y 12–23 % a 4 nm (relativo al pico, SrTiO₃ a 39 nm). Reducir el espesor de la rebanada a la mitad reduce el error aproximadamente a la mitad y duplica aproximadamente el trabajo de integración en profundidad.
 
+Con aberraciones definidas (por ejemplo Cs = 1 mm con desenfoque de Scherzer a α = 25 mrad), la fase de aberración oscila rápidamente sobre la rejilla de direcciones de la sonda, y STEM-EDX puede rechazar el cálculo con un error *non-Hermitian residual* incluso con una rejilla fina; este rechazo protege el mapa de artefactos de rejilla de algunos por ciento. Reduzca Cs y el desenfoque (el promedio de barrido de un mapa EDX no depende en absoluto de las aberraciones), o haga la **Resolución angular** bastante más fina aceptando un cálculo más largo.
+
 ---
 
 ## Coste computacional
