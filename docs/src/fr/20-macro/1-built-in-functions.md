@@ -8,13 +8,13 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 
 | Fonction | Description |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Afficher le dialogue de sélection de dossier, renvoyer le chemin choisi |
+| `File.GetDirectoryPath(filename)` | Afficher le dialogue de sélection de dossier, renvoyer le chemin choisi ; avec `filename`, renvoie plutôt le dossier qui le contient |
 | `File.GetFileName()` | Afficher le dialogue de sélection de fichier, renvoyer le chemin choisi |
 | `File.GetFileNames()` | Afficher le dialogue de sélection de fichiers multiples, renvoyer la liste des chemins |
-| `File.ReadCrystalList()` | Charger un fichier de liste de cristaux (*.xml) |
-| `File.ReadCrystal()` | Charger un fichier de cristal CIF/AMC |
-| `File.ExportAsCIF()` | Exporter le cristal actuel au format CIF |
-| `File.SaveText()` | Enregistrer des données texte dans un fichier |
+| `File.ReadCrystalList(filename)` | Charger un fichier de liste de cristaux (*.xml) ; sans `filename`, une boîte de dialogue s'ouvre |
+| `File.ReadCrystal(filename)` | Charger un fichier de cristal CIF/AMC ; sans `filename`, une boîte de dialogue s'ouvre |
+| `File.ExportAsCIF(filename)` | Exporter le cristal actuel au format CIF ; sans `filename`, une boîte de dialogue s'ouvre |
+| `File.SaveText(textData, filename)` | Enregistrer des données texte dans un fichier ; écrit `textData` en UTF-8 ; sans `filename`, une boîte de dialogue d'enregistrement s'ouvre |
 
 ---
 
@@ -111,7 +111,7 @@ Référence complète des classes et fonctions disponibles dans les macros ReciP
 
 | Fonction | Description |
 |----------|-------------|
-| `SaveAsPng()` | Enregistrer le diagramme actuel au format PNG |
+| `SaveAsPng(filename)` | Enregistrer le diagramme actuel au format PNG ; sans `filename`, une boîte de dialogue s'ouvre |
 | `SpotInfo()` | Obtenir les données des taches sous forme de chaîne CSV |
 
 ---

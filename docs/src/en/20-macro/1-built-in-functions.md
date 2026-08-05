@@ -8,13 +8,13 @@ Complete reference of classes and functions available in ReciPro macros.
 
 | Function | Description |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Show folder-picker dialog, return selected path |
+| `File.GetDirectoryPath(filename)` | Show folder-picker dialog, return selected path; pass `filename` to get the folder that contains it instead |
 | `File.GetFileName()` | Show file-picker dialog, return selected path |
 | `File.GetFileNames()` | Show multi-file-picker dialog, return list of paths |
-| `File.ReadCrystalList()` | Load a crystal list file (*.xml) |
-| `File.ReadCrystal()` | Load a CIF/AMC crystal file |
-| `File.ExportAsCIF()` | Export the current crystal as CIF |
-| `File.SaveText()` | Save text data to a file |
+| `File.ReadCrystalList(filename)` | Load a crystal list file (*.xml); omit `filename` to open a dialog |
+| `File.ReadCrystal(filename)` | Load a CIF/AMC crystal file; omit `filename` to open a dialog |
+| `File.ExportAsCIF(filename)` | Export the current crystal as CIF; omit `filename` to open a dialog |
+| `File.SaveText(textData, filename)` | Save text data to a file; writes `textData` as UTF-8, and omitting `filename` opens a save dialog |
 
 ---
 
@@ -111,7 +111,7 @@ Complete reference of classes and functions available in ReciPro macros.
 
 | Function | Description |
 |----------|-------------|
-| `SaveAsPng()` | Save current pattern as PNG |
+| `SaveAsPng(filename)` | Save current pattern as PNG; omit `filename` to open a dialog |
 | `SpotInfo()` | Get spot data as CSV string |
 
 ---

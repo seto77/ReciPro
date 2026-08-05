@@ -8,13 +8,13 @@ ReciPro 宏中可用的类与函数完整参考。
 
 | 函数 | 说明 |
 |----------|-------------|
-| `File.GetDirectoryPath()` | 显示文件夹选择对话框，返回所选路径 |
+| `File.GetDirectoryPath(filename)` | 显示文件夹选择对话框，返回所选路径；传入 `filename` 时改为返回包含该文件的文件夹 |
 | `File.GetFileName()` | 显示文件选择对话框，返回所选路径 |
 | `File.GetFileNames()` | 显示多文件选择对话框，返回路径列表 |
-| `File.ReadCrystalList()` | 加载晶体列表文件 (*.xml) |
-| `File.ReadCrystal()` | 加载 CIF/AMC 晶体文件 |
-| `File.ExportAsCIF()` | 将当前晶体导出为 CIF |
-| `File.SaveText()` | 将文本数据保存到文件 |
+| `File.ReadCrystalList(filename)` | 加载晶体列表文件 (*.xml)；省略 `filename` 则打开对话框 |
+| `File.ReadCrystal(filename)` | 加载 CIF/AMC 晶体文件；省略 `filename` 则打开对话框 |
+| `File.ExportAsCIF(filename)` | 将当前晶体导出为 CIF；省略 `filename` 则打开对话框 |
+| `File.SaveText(textData, filename)` | 将文本数据保存到文件；以 UTF-8 写出 `textData`，省略 `filename` 则打开保存对话框 |
 
 ---
 
@@ -111,7 +111,7 @@ ReciPro 宏中可用的类与函数完整参考。
 
 | 函数 | 说明 |
 |----------|-------------|
-| `SaveAsPng()` | 将当前图样保存为 PNG |
+| `SaveAsPng(filename)` | 将当前图样保存为 PNG；省略 `filename` 则打开对话框 |
 | `SpotInfo()` | 以 CSV 字符串获取衍射点数据 |
 
 ---

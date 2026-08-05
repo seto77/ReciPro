@@ -895,13 +895,13 @@ public class Macro : MacroBase
         [Help("Gets or sets whether each image is saved separately in serial-image mode.")]
         public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
 
-        [Help("Saves the simulated image as a PNG file. If 'filename' is omitted, opens a save dialog.")]
+        [Help("Saves the simulated image as a PNG file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加 (引数を取るのにヘルプが SaveImageAsPng() と表示していた)
         public void SaveImageAsPng(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename);
         
-        [Help("Saves the simulated image as a TIFF file. If 'filename' is omitted, opens a save dialog.")] 
+        [Help("Saves the simulated image as a TIFF file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加 
         public void SaveImageAsTif(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename);
 
-        [Help("Saves the simulated image as an EMF file. If 'filename' is omitted, opens a save dialog.")]
+        [Help("Saves the simulated image as an EMF file. If 'filename' is omitted, opens a save dialog.", "string filename")]//260805Cl: Argument 追加
         public void SaveImageAsEmf(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename);
 
     }

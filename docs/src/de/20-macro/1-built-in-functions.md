@@ -8,13 +8,13 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Ordnerauswahldialog anzeigen, gewählten Pfad zurückgeben |
+| `File.GetDirectoryPath(filename)` | Ordnerauswahldialog anzeigen, gewählten Pfad zurückgeben; mit `filename` wird stattdessen der Ordner zurückgegeben, der diese Datei enthält |
 | `File.GetFileName()` | Dateiauswahldialog anzeigen, gewählten Pfad zurückgeben |
 | `File.GetFileNames()` | Mehrfachdateiauswahldialog anzeigen, Liste der Pfade zurückgeben |
-| `File.ReadCrystalList()` | Eine Kristalllistendatei (*.xml) laden |
-| `File.ReadCrystal()` | Eine CIF-/AMC-Kristalldatei laden |
-| `File.ExportAsCIF()` | Den aktuellen Kristall als CIF exportieren |
-| `File.SaveText()` | Textdaten in eine Datei speichern |
+| `File.ReadCrystalList(filename)` | Eine Kristalllistendatei (*.xml) laden; ohne `filename` öffnet sich ein Dialog |
+| `File.ReadCrystal(filename)` | Eine CIF-/AMC-Kristalldatei laden; ohne `filename` öffnet sich ein Dialog |
+| `File.ExportAsCIF(filename)` | Den aktuellen Kristall als CIF exportieren; ohne `filename` öffnet sich ein Dialog |
+| `File.SaveText(textData, filename)` | Textdaten in eine Datei speichern; schreibt `textData` als UTF-8, ohne `filename` öffnet sich ein Speicherdialog |
 
 ---
 
@@ -111,7 +111,7 @@ Vollständige Referenz der in ReciPro-Makros verfügbaren Klassen und Funktionen
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| `SaveAsPng()` | Aktuelles Muster als PNG speichern |
+| `SaveAsPng(filename)` | Aktuelles Muster als PNG speichern; ohne `filename` öffnet sich ein Dialog |
 | `SpotInfo()` | Reflexdaten als CSV-String abrufen |
 
 ---

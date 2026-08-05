@@ -8,13 +8,13 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 
 | Funzione | Descrizione |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Mostra la finestra di selezione cartella, restituisce il percorso selezionato |
+| `File.GetDirectoryPath(filename)` | Mostra la finestra di selezione cartella, restituisce il percorso selezionato; passando `filename` restituisce invece la cartella che lo contiene |
 | `File.GetFileName()` | Mostra la finestra di selezione file, restituisce il percorso selezionato |
 | `File.GetFileNames()` | Mostra la finestra di selezione multipla di file, restituisce l'elenco dei percorsi |
-| `File.ReadCrystalList()` | Carica un file di elenco cristalli (*.xml) |
-| `File.ReadCrystal()` | Carica un file di cristallo CIF/AMC |
-| `File.ExportAsCIF()` | Esporta il cristallo corrente come CIF |
-| `File.SaveText()` | Salva dati di testo in un file |
+| `File.ReadCrystalList(filename)` | Carica un file di elenco cristalli (*.xml); omettendo `filename` si apre una finestra di dialogo |
+| `File.ReadCrystal(filename)` | Carica un file di cristallo CIF/AMC; omettendo `filename` si apre una finestra di dialogo |
+| `File.ExportAsCIF(filename)` | Esporta il cristallo corrente come CIF; omettendo `filename` si apre una finestra di dialogo |
+| `File.SaveText(textData, filename)` | Salva dati di testo in un file; scrive `textData` in UTF-8 e, omettendo `filename`, apre una finestra di salvataggio |
 
 ---
 
@@ -111,7 +111,7 @@ Riferimento completo delle classi e delle funzioni disponibili nelle macro di Re
 
 | Funzione | Descrizione |
 |----------|-------------|
-| `SaveAsPng()` | Salva il pattern corrente come PNG |
+| `SaveAsPng(filename)` | Salva il pattern corrente come PNG; omettendo `filename` si apre una finestra di dialogo |
 | `SpotInfo()` | Ottieni i dati degli spot come stringa CSV |
 
 ---

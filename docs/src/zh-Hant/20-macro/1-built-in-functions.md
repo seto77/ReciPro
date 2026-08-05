@@ -8,13 +8,13 @@ ReciPro 巨集中可用的類別與函式完整參考。
 
 | 函式 | 說明 |
 |----------|-------------|
-| `File.GetDirectoryPath()` | 顯示資料夾選擇對話方塊，傳回所選路徑 |
+| `File.GetDirectoryPath(filename)` | 顯示資料夾選擇對話方塊，傳回所選路徑；傳入 `filename` 時改為傳回包含該檔案的資料夾 |
 | `File.GetFileName()` | 顯示檔案選擇對話方塊，傳回所選路徑 |
 | `File.GetFileNames()` | 顯示多檔案選擇對話方塊，傳回路徑清單 |
-| `File.ReadCrystalList()` | 載入晶體清單檔 (*.xml) |
-| `File.ReadCrystal()` | 載入 CIF/AMC 晶體檔 |
-| `File.ExportAsCIF()` | 將目前晶體匯出為 CIF |
-| `File.SaveText()` | 將文字資料儲存到檔案 |
+| `File.ReadCrystalList(filename)` | 載入晶體清單檔 (*.xml)；省略 `filename` 則開啟對話方塊 |
+| `File.ReadCrystal(filename)` | 載入 CIF/AMC 晶體檔；省略 `filename` 則開啟對話方塊 |
+| `File.ExportAsCIF(filename)` | 將目前晶體匯出為 CIF；省略 `filename` 則開啟對話方塊 |
+| `File.SaveText(textData, filename)` | 將文字資料儲存到檔案；以 UTF-8 寫出 `textData`，省略 `filename` 則開啟儲存對話方塊 |
 
 ---
 
@@ -111,7 +111,7 @@ ReciPro 巨集中可用的類別與函式完整參考。
 
 | 函式 | 說明 |
 |----------|-------------|
-| `SaveAsPng()` | 將目前圖樣儲存為 PNG |
+| `SaveAsPng(filename)` | 將目前圖樣儲存為 PNG；省略 `filename` 則開啟對話方塊 |
 | `SpotInfo()` | 以 CSV 字串取得繞射點資料 |
 
 ---

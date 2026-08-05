@@ -8,13 +8,13 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 
 | Função | Descrição |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Exibir diálogo de seleção de pasta, retornar o caminho selecionado |
+| `File.GetDirectoryPath(filename)` | Exibir diálogo de seleção de pasta, retornar o caminho selecionado; informe `filename` para obter, em vez disso, a pasta que o contém |
 | `File.GetFileName()` | Exibir diálogo de seleção de arquivo, retornar o caminho selecionado |
 | `File.GetFileNames()` | Exibir diálogo de seleção de múltiplos arquivos, retornar a lista de caminhos |
-| `File.ReadCrystalList()` | Carregar um arquivo de lista de cristais (*.xml) |
-| `File.ReadCrystal()` | Carregar um arquivo de cristal CIF/AMC |
-| `File.ExportAsCIF()` | Exportar o cristal atual como CIF |
-| `File.SaveText()` | Salvar dados de texto em um arquivo |
+| `File.ReadCrystalList(filename)` | Carregar um arquivo de lista de cristais (*.xml); omita `filename` para abrir um diálogo |
+| `File.ReadCrystal(filename)` | Carregar um arquivo de cristal CIF/AMC; omita `filename` para abrir um diálogo |
+| `File.ExportAsCIF(filename)` | Exportar o cristal atual como CIF; omita `filename` para abrir um diálogo |
+| `File.SaveText(textData, filename)` | Salvar dados de texto em um arquivo; grava `textData` em UTF-8 e, se `filename` for omitido, abre um diálogo de salvamento |
 
 ---
 
@@ -111,7 +111,7 @@ Referência completa das classes e funções disponíveis nas macros do ReciPro.
 
 | Função | Descrição |
 |----------|-------------|
-| `SaveAsPng()` | Salvar o padrão atual como PNG |
+| `SaveAsPng(filename)` | Salvar o padrão atual como PNG; omita `filename` para abrir um diálogo |
 | `SpotInfo()` | Obter os dados dos pontos como string CSV |
 
 ---

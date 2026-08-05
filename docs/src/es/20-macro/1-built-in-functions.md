@@ -8,13 +8,13 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 
 | Función | Descripción |
 |----------|-------------|
-| `File.GetDirectoryPath()` | Mostrar el diálogo de selección de carpeta y devolver la ruta elegida |
+| `File.GetDirectoryPath(filename)` | Mostrar el diálogo de selección de carpeta y devolver la ruta elegida; pasa `filename` para obtener en su lugar la carpeta que lo contiene |
 | `File.GetFileName()` | Mostrar el diálogo de selección de archivo y devolver la ruta elegida |
 | `File.GetFileNames()` | Mostrar el diálogo de selección de múltiples archivos y devolver la lista de rutas |
-| `File.ReadCrystalList()` | Cargar un archivo de lista de cristales (*.xml) |
-| `File.ReadCrystal()` | Cargar un archivo de cristal CIF/AMC |
-| `File.ExportAsCIF()` | Exportar el cristal actual como CIF |
-| `File.SaveText()` | Guardar datos de texto en un archivo |
+| `File.ReadCrystalList(filename)` | Cargar un archivo de lista de cristales (*.xml); omite `filename` para abrir un diálogo |
+| `File.ReadCrystal(filename)` | Cargar un archivo de cristal CIF/AMC; omite `filename` para abrir un diálogo |
+| `File.ExportAsCIF(filename)` | Exportar el cristal actual como CIF; omite `filename` para abrir un diálogo |
+| `File.SaveText(textData, filename)` | Guardar datos de texto en un archivo; escribe `textData` en UTF-8 y, si se omite `filename`, abre un diálogo de guardado |
 
 ---
 
@@ -111,7 +111,7 @@ Referencia completa de las clases y funciones disponibles en las macros de ReciP
 
 | Función | Descripción |
 |----------|-------------|
-| `SaveAsPng()` | Guardar el patrón actual como PNG |
+| `SaveAsPng(filename)` | Guardar el patrón actual como PNG; omite `filename` para abrir un diálogo |
 | `SpotInfo()` | Obtener los datos de reflexiones como cadena CSV |
 
 ---

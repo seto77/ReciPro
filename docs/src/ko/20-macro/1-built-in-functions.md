@@ -8,13 +8,13 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 
 | 함수 | 설명 |
 |----------|-------------|
-| `File.GetDirectoryPath()` | 폴더 선택 대화 상자를 표시하고 선택한 경로를 반환 |
+| `File.GetDirectoryPath(filename)` | 폴더 선택 대화 상자를 표시하고 선택한 경로를 반환. `filename` 을 주면 그 파일이 들어 있는 폴더를 반환한다 |
 | `File.GetFileName()` | 파일 선택 대화 상자를 표시하고 선택한 경로를 반환 |
 | `File.GetFileNames()` | 다중 파일 선택 대화 상자를 표시하고 경로 목록을 반환 |
-| `File.ReadCrystalList()` | 결정 목록 파일(*.xml)을 불러오기 |
-| `File.ReadCrystal()` | CIF/AMC 결정 파일을 불러오기 |
-| `File.ExportAsCIF()` | 현재 결정을 CIF로 내보내기 |
-| `File.SaveText()` | 텍스트 데이터를 파일에 저장 |
+| `File.ReadCrystalList(filename)` | 결정 목록 파일(*.xml)을 불러오기. `filename` 을 생략하면 대화 상자를 연다 |
+| `File.ReadCrystal(filename)` | CIF/AMC 결정 파일을 불러오기. `filename` 을 생략하면 대화 상자를 연다 |
+| `File.ExportAsCIF(filename)` | 현재 결정을 CIF로 내보내기. `filename` 을 생략하면 대화 상자를 연다 |
+| `File.SaveText(textData, filename)` | 텍스트 데이터를 파일에 저장. `textData` 를 UTF-8 로 기록하며, `filename` 을 생략하면 저장 대화 상자를 연다 |
 
 ---
 
@@ -111,7 +111,7 @@ ReciPro 매크로에서 사용할 수 있는 클래스와 함수의 전체 레�
 
 | 함수 | 설명 |
 |----------|-------------|
-| `SaveAsPng()` | 현재 패턴을 PNG로 저장 |
+| `SaveAsPng(filename)` | 현재 패턴을 PNG로 저장. `filename` 을 생략하면 대화 상자를 연다 |
 | `SpotInfo()` | 스폿 데이터를 CSV 문자열로 가져오기 |
 
 ---

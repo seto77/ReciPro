@@ -10,13 +10,13 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 
 | 関数 | 説明 |
 |------|------|
-| `File.GetDirectoryPath()` | フォルダ選択ダイアログを表示し、選択されたフォルダのパスを返す |
+| `File.GetDirectoryPath(filename)` | フォルダ選択ダイアログを表示し、選択されたフォルダのパスを返す。`filename` を渡すと、そのファイルを含むフォルダを返す |
 | `File.GetFileName()` | ファイル選択ダイアログを表示し、選択されたファイルのパスを返す |
 | `File.GetFileNames()` | 複数ファイル選択ダイアログを表示し、選択されたファイルパスのリストを返す |
-| `File.ReadCrystalList()` | 結晶リストファイル (*.xml) を読み込み |
-| `File.ReadCrystal()` | CIF/AMC形式の結晶ファイルを読み込み |
-| `File.ExportAsCIF()` | 現在選択中の結晶をCIF形式で保存 |
-| `File.SaveText()` | テキストデータをファイルに保存 |
+| `File.ReadCrystalList(filename)` | 結晶リストファイル (*.xml) を読み込み。`filename` を省略するとダイアログを開く |
+| `File.ReadCrystal(filename)` | CIF/AMC形式の結晶ファイルを読み込み。`filename` を省略するとダイアログを開く |
+| `File.ExportAsCIF(filename)` | 現在選択中の結晶をCIF形式で保存。`filename` を省略するとダイアログを開く |
+| `File.SaveText(textData, filename)` | テキストデータをファイルに保存。`textData` を UTF-8 で書き出す。`filename` を省略すると保存ダイアログを開く |
 
 ---
 
@@ -137,7 +137,7 @@ ReciProマクロで使用可能な組み込みクラスと関数の一覧です�
 
 | 関数 | 説明 |
 |------|------|
-| `DifSim.SaveAsPng()` | 現在の回折パターンをPNGファイルとして保存 |
+| `DifSim.SaveAsPng(filename)` | 現在の回折パターンをPNGファイルとして保存。`filename` を省略するとダイアログを開く |
 | `DifSim.SpotInfo()` | スポット情報をCSV形式で取得 |
 
 ---
