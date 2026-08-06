@@ -302,57 +302,52 @@
     <value>モード</value>
   </data>
   <data name="labelKikuchiMode.ToolTip" xml:space="preserve">
-    <value>菊池線の表示モードを選びます。
-Geometric: 選択された線をすべて同じ色で描画。
-Kinematical: 各反射の運動学的相対強度に応じて
+    <value>菊池線の表示モードを選びます。右側の設定群がモードに
+応じて切り替わります。
+幾何学的: 選択された線をすべて同じ色で描画。
+運動学的: 各反射の運動学的相対強度に応じて
 線の濃さを変化させます。
-Dynamical band: 二波近似の動力学計算による
+動力学的: 二波近似の動力学計算による
 excess/deficient バンド形状を背景スレッドで
-計算して描画します。下の Bands / Quality /
-Contrast / Scale はこのモード専用で、計算中は
-幾何線で代替表示します。</value>
+計算して描画します。計算中は幾何線で代替表示します。</value>
   </data>
   <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
-    <value>菊池線の表示モードを選びます。
-Geometric: 選択された線をすべて同じ色で描画。
-Kinematical: 各反射の運動学的相対強度に応じて
+    <value>菊池線の表示モードを選びます。右側の設定群がモードに
+応じて切り替わります。
+幾何学的: 選択された線をすべて同じ色で描画。
+運動学的: 各反射の運動学的相対強度に応じて
 線の濃さを変化させます。
-Dynamical band: 二波近似の動力学計算による
+動力学的: 二波近似の動力学計算による
 excess/deficient バンド形状を背景スレッドで
-計算して描画します。下の Bands / Quality /
-Contrast / Scale はこのモード専用で、計算中は
-幾何線で代替表示します。</value>
+計算して描画します。計算中は幾何線で代替表示します。</value>
   </data>
   <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
-    <value>スケール固定</value>
+    <value>明るさを固定</value>
   </data>
   <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
     <value>動力学バンドの明るさ正規化を現在値に固定します。
 オフのときは再計算のたびに自動決定されるため
 (バンドコントラストの 98.5 パーセンタイル)、方位を
 変えると明るさが変動します。方位・厚さ・加速電圧を
-跨いで明るさを比べたいときにオンにします。
-Dynamical band モードでのみ有効です。</value>
+跨いで明るさを比べたいときにオンにします。</value>
   </data>
   <data name="numericBoxKikuchiBandNumber.HeaderText" xml:space="preserve">
     <value>本数</value>
   </data>
   <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
     <value>動力学プロファイルで描画する菊池バンドの本数
-(1〜50、既定 10)。構造因子の大きい反射を候補とし、
+(1〜50、既定 30)。構造因子の大きい反射を候補とし、
 そのうち動力学コントラストの大きい上位 N 本を
 描画します。大きいほど本数は増えますが計算時間も
-増えます。上の「トップ」(菊池線そのものに使う反射の
-本数) とは別の設定です。
-Dynamical band モードでのみ有効です。</value>
+増えます。左側の反射選択 (「トップ」/「1/d の閾値」= 菊池線
+そのものに使う反射) とは別の設定です。</value>
   </data>
   <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
     <value>動力学バンドプロファイルの品質プリセットです
-(バンドを横断する方向のサンプル点数。Fast 65 /
-Standard 129 / High 257)。高品質ほどバンド端や
+(バンドを横断する方向のサンプル点数。高速 65 /
+標準 129 / 高品質 257)。高品質ほどバンド端や
 excess/deficient の微細構造が滑らかになりますが
-計算時間が増えます。
-Dynamical band モードでのみ有効です。</value>
+計算時間が増えます。</value>
   </data>
   <data name="labelKikuchiContrast.Text" xml:space="preserve">
     <value>コントラスト</value>
@@ -362,26 +357,22 @@ Dynamical band モードでのみ有効です。</value>
 (1〜100、50 = ×1.0、100 = ×2.0)。Scale のカーブで
 不透明度へ圧縮する前に掛かります。右へ動かすと
 弱いバンドが見え、左へ動かすと強いバンドの飽和を
-抑えられます。計算値ではなく表示だけが変わります。
-Dynamical band モードでのみ有効です。</value>
+抑えられます。計算値ではなく表示だけが変わります。</value>
   </data>
   <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
     <value>動力学バンドのコントラストに掛ける利得です
 (1〜100、50 = ×1.0、100 = ×2.0)。Scale のカーブで
 不透明度へ圧縮する前に掛かります。右へ動かすと
 弱いバンドが見え、左へ動かすと強いバンドの飽和を
-抑えられます。計算値ではなく表示だけが変わります。
-Dynamical band モードでのみ有効です。</value>
+抑えられます。計算値ではなく表示だけが変わります。</value>
   </data>
   <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
-    <value>Deficient の色</value>
+    <value>Deficient</value>
   </data>
   <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
-    <value>動力学菊池バンドの deficient (欠損) 側の色を
-設定します。バンドのコントラストが負になる画素、
-つまり強度が拡散背景の水準より暗くなる側です。
-excess (過剰、明るい) 側は上の「菊池線の色」を
-使います。Dynamical band モードでのみ有効です。</value>
+    <value>動力学菊池バンドの deficient (欠損、暗い) 側の色です。
+バンドのコントラストが負になる画素、つまり強度が
+拡散背景の水準より暗くなる側です。</value>
   </data>
   <data name="labelKikuchiScale.Text" xml:space="preserve">
     <value>スケール</value>
@@ -412,9 +403,14 @@ Tanh = tanh(x)。滑らかなソフトリミッタ (既定)。
     <value>動力学バンドの明るさは表示用の変換であり、実機
 カメラの応答ではありません。全バンドの符号付き
 コントラスト c = (I − I_ref)/I_ref を画素ごとに
-合算し、選択したスケールカーブ (Linear / Log /
-Tanh) で一度だけ不透明度へ圧縮しています
-(excess = 正の色、deficient = 負の色)。</value>
+合算し、選択したスケールカーブ (Linear / Log / Tanh)
+で一度だけ不透明度へ圧縮しています (excess =
+正の色、deficient = 負の色)。 「源と吸収が非整合」:
+本バージョンは吸収と拡散源を同一の散乱カーネルから
+導いていないため、意味を持つのは相対的なプロファイル形状と
+excess/deficient の符号までです。 「B→0.5」: B = 0
+の原子に既定の等方 B = 0.5 Å² (0.005 nm²)
+を代用しました。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>1/d の閾値</value>
@@ -434,21 +430,27 @@ Tanh) で一度だけ不透明度へ圧縮しています
 描画します（= d 値が 1/値 より大きい反射）。</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>菊池線の色</value>
+    <value>Excess</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>菊池線の色を設定します。Dynamical band モードでは
-バンドの excess (過剰、明るい) 側の色になります
-(deficient 側は「Deficient の色」)。</value>
+    <value>動力学菊池バンドの excess (過剰、明るい) 側の色です。
+バンドのコントラストが正になる画素、つまり強度が
+拡散背景の水準より明るくなる側です。</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>菊池線の線幅を設定</value>
+    <value>幾何線・運動学線の線幅 (描画ペンの太さ) です
+(1〜10000、既定 4000)。実際の太さは表示解像度にも比例します。
+動力学バンドの幅は計算されたプロファイルで決まるため
+影響しません。</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>線の太さ</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value>菊池線の線幅を設定</value>
+  <data name="labelKikuchiLineWidth.ToolTip" xml:space="preserve">
+    <value>幾何線・運動学線の線幅 (描画ペンの太さ) です
+(1〜10000、既定 4000)。実際の太さは表示解像度にも比例します。
+動力学バンドの幅は計算されたプロファイルで決まるため
+影響しません。</value>
   </data>
   <data name="tabPageDebye.Text" xml:space="preserve">
     <value>デバイリング</value>
@@ -1367,7 +1369,7 @@ PED（プリセッション電子回折）モードとは別です。</value>
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelKikuchiLineWidth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
@@ -1698,6 +1700,31 @@ PED（プリセッション電子回折）モードとは別です。</value>
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlKikuchiLine.FooterText" xml:space="preserve">
+    <value>菊池線の色</value>
+  </data>
+  <data name="colorControlKikuchiLine.ToolTip" xml:space="preserve">
+    <value>幾何線・運動学線の色です。幾何学的モードでは選択された
+線をすべてこの色で描画し、運動学的モードでは各反射の
+相対強度に応じて背景色へブレンドします。
+動力学的モードでは Excess / Deficient の色を使います。</value>
+  </data>
+  <data name="labelKikuchiNotice.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="labelKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>動力学バンドプロファイルの品質プリセットです
+(バンドを横断する方向のサンプル点数。高速 65 /
+標準 129 / 高品質 257)。高品質ほどバンド端や
+excess/deficient の微細構造が滑らかになりますが
+計算時間が増えます。</value>
+  </data>
+  <data name="labelKikuchiQuality.Text" xml:space="preserve">
+    <value>品質</value>
+  </data>
+  <data name="colorControlKikuchiLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
 </root>

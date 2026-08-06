@@ -218,6 +218,12 @@
     <Using Include="Crystallography.Controls" />
   </ItemGroup>
 
+  <!-- 260806Cl 追加: 開発用ベンチマーク (ReciPro.Benchmarks。リポジトリ外のローカル専用プロジェクトで、配布物にも
+       含まれない) から internal クラスも計測できるようにする。該当アセンブリが存在しない環境では単なる無害な属性 -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="ReciPro.Benchmarks" />
+  </ItemGroup>
+
   <!-- 260402Cl 追加: DATAS無効化 (ベンチマーク比較用) -->
   <ItemGroup>
     <RuntimeHostConfigurationOption Include="System.GC.DynamicAdaptationMode" Value="0" />

@@ -312,7 +312,7 @@ public partial class FormDiffractionSimulator : FormBase
     /// <summary>画像の中心。検出器(Detector)座標系(Foot原点)で表現</summary>
     public PointD Foot { get; set; } = new PointD(0, 0);
 
-     public PointD FixedCenter
+    public PointD FixedCenter
     {
         get
         {
@@ -402,13 +402,33 @@ public partial class FormDiffractionSimulator : FormBase
         timerBlinkScale.Tag = true;
 
         //260805Cl 追加: 菊池表示モード・品質プリセット。Items はコード側で設定
-        //(form resx への手書き文字列は VS 再シリアライズで消えるため。i18n は resx 移行時に対応)
-        comboBoxKikuchiMode.Items.AddRange(new object[] { "Geometric", "Kinematical", "Dynamical band" });
-        comboBoxKikuchiMode.SelectedIndex = 1; //既定 = Kinematical (旧 checkBoxKikuchiLine_Kinematical=ON と同じ見た目。作者決定 2026-08-05)
-        comboBoxKikuchiQuality.Items.AddRange(new object[] { "Fast", "Standard", "High" });
-        comboBoxKikuchiQuality.SelectedIndex = 1;
+        //(form resx への手書き文字列は VS 再シリアライズで消えるため)
+        //260806Cl i18n: Items は Loc で 11 言語対応 (言語切替は再起動制なのでコンストラクタ設定で足りる)。
+        //SelectedIndex の意味は KikuchiMode / KikuchiQuality enum が正 (表示文字列は意味キーではない)。
+        //Scale の Linear/Log/Tanh は関数名なので全言語共通 (comboBoxScaleColorScale の Gray/Fire と同じ慣行)
+        //comboBoxKikuchiMode.Items.AddRange(new object[] { "Geometric", "Kinematical", "Dynamical band" }); //260806Cl 変更前
+        comboBoxKikuchiMode.Items.AddRange(new object[] {
+            //260807Cl ru のみ形容詞形から名詞形へ: 形容詞形 (Геометрический 105px 等) は
+            //コンボ 98px に収まらず実キャプチャで文字切れになった。名詞形なら意味を落とさず収まる
+            Crystallography.Localization.Loc(en: "Geometric", ja: "幾何学的", de: "Geometrisch", fr: "Géométrique", es: "Geométrico",
+                pt: "Geométrico", it: "Geometrico", ru: "Геометрия", zhHans: "几何", zhHant: "幾何", ko: "기하학적"),
+            Crystallography.Localization.Loc(en: "Kinematical", ja: "運動学的", de: "Kinematisch", fr: "Cinématique", es: "Cinemático",
+                pt: "Cinemático", it: "Cinematico", ru: "Кинематика", zhHans: "运动学", zhHant: "運動學", ko: "운동학적"),
+            //260806Cl 変更 (作者指示): 3 項目目を "Dynamical band" → "Dynamical" (Geometric/Kinematical と語形を揃える)
+            Crystallography.Localization.Loc(en: "Dynamical", ja: "動力学的", de: "Dynamisch", fr: "Dynamique", es: "Dinámico",
+                pt: "Dinâmico", it: "Dinamico", ru: "Динамика", zhHans: "动力学", zhHant: "動力學", ko: "동역학적") });
+        comboBoxKikuchiMode.SelectedIndex = (int)KikuchiMode.Kinematical; //既定 = Kinematical (旧 checkBoxKikuchiLine_Kinematical=ON と同じ見た目。作者決定 2026-08-05)
+        //comboBoxKikuchiQuality.Items.AddRange(new object[] { "Fast", "Standard", "High" }); //260806Cl 変更前
+        comboBoxKikuchiQuality.Items.AddRange(new object[] {
+            Crystallography.Localization.Loc(en: "Fast", ja: "高速", de: "Schnell", fr: "Rapide", es: "Rápido",
+                pt: "Rápido", it: "Veloce", ru: "Быстро", zhHans: "快速", zhHant: "快速", ko: "고속"),
+            Crystallography.Localization.Loc(en: "Standard", ja: "標準", de: "Standard", fr: "Standard", es: "Estándar",
+                pt: "Padrão", it: "Standard", ru: "Стандарт", zhHans: "标准", zhHant: "標準", ko: "표준"),
+            Crystallography.Localization.Loc(en: "High", ja: "高品質", de: "Hoch", fr: "Élevée", es: "Alta",
+                pt: "Alta", it: "Alta", ru: "Высокое", zhHans: "高", zhHant: "高", ko: "고품질") });
+        comboBoxKikuchiQuality.SelectedIndex = (int)KikuchiQuality.Standard;
         comboBoxKikuchiScale.Items.AddRange(new object[] { "Linear", "Log", "Tanh" }); //260806Cl 追加 (作者提案: 強度スケール選択)
-        comboBoxKikuchiScale.SelectedIndex = 2; //既定 = Tanh (設計 §4)
+        comboBoxKikuchiScale.SelectedIndex = (int)KikuchiBandRenderer.ScaleMode.Tanh; //既定 = Tanh (設計 §4)
         timerKikuchiDebounce.Tick += TimerKikuchiDebounce_Tick;
         components.Add(timerKikuchiDebounce); //260806Cl /simplify2 (H1): 他の timer と同様に components へ登録し Dispose 経路に載せる
 
@@ -565,6 +585,35 @@ public partial class FormDiffractionSimulator : FormBase
             case "xray": Source = WaveSource.Xray; WaveLength = 0.154; BeamMode = BeamModes.Parallel; CalcMode = CalcModes.Kinematical; break; // 0.154 nm ≒ Cu Kα。波長を設定しないと電子線の 0.0025 nm が残り X線回折図にならない
         }
     }
+
+    /// <summary>
+    /// 260807Cl 追加: --capture 用。菊池タブを Dynamical モードの「実際に使われる状態」にする。
+    /// 単に comboBoxKikuchiMode を切り替えるだけでは足りない — 菊池レイヤーが OFF だと
+    /// SetVector が VectorOfG_KikuchiLine を作らず (:2013 の分岐)、Draw も DrawKikuchiLine を通らないため
+    /// バンド計算が一度も走らず、注記ラベルにバンド数が出ない状態のスクショになる (260807Cl 実測)。
+    /// レイヤー ON → 波長/入射ビームを電子線の代表状態へ → モードを Dynamical、の順で整える。
+    /// 戻り値 = 呼び出し前の状態 (呼び出し元が finally で RestoreCaptureKikuchiState へ渡す)。
+    /// 呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal (bool Layer, int Mode) PrepareCaptureKikuchiDynamical()
+    {
+        var previous = (toolStripButtonKikuchiLines.Checked, comboBoxKikuchiMode.SelectedIndex);
+        SetCaptureMode("saed"); //X線モードのままだと kV が違い、菊池の計算キーが噛み合わない
+        toolStripButtonKikuchiLines.Checked = true; //CheckedChanged → SetVector + Draw で候補反射が用意される
+        comboBoxKikuchiMode.SelectedIndex = (int)KikuchiMode.DynamicalBand;
+        return previous;
+    }
+
+    /// <summary>260807Cl 追加: <see cref="PrepareCaptureKikuchiDynamical"/> の戻り値で元の状態へ戻す</summary>
+    internal void RestoreCaptureKikuchiState((bool Layer, int Mode) previous)
+    {
+        comboBoxKikuchiMode.SelectedIndex = previous.Mode;
+        toolStripButtonKikuchiLines.Checked = previous.Layer;
+    }
+
+    /// <summary>260807Cl 追加: --capture 用。菊池タブとその注記ラベル (クロップ対象と採寸対象)。
+    /// GuiCapture が Designer の private フィールドを名前検索で掘らずに済むようにする</summary>
+    internal (TabPage Tab, Label Notice) CaptureKikuchiTab => (tabPageKikuchi, labelKikuchiNotice);
 
     /// <summary>
     /// 260524Cl 追加: --capture 用。回折スポット情報 (FormDiffractionBeamTable) の表は動力学計算をしないと空のまま。
@@ -1255,12 +1304,19 @@ public partial class FormDiffractionSimulator : FormBase
     {
         //260805Cl 追加: Dynamical band モード。プロファイルが揃っていればバンドを描き、
         //ラベル不要ならここで終了。未完成 (worker 計算中) は従来の幾何線で fallback する。
-        bool dynamicalDrawn = comboBoxKikuchiMode.SelectedIndex == 2 && DrawKikuchiDynamicalBands(graphics);
+        bool dynamicalDrawn = KikuchiModeSelected == KikuchiMode.DynamicalBand && DrawKikuchiDynamicalBands(graphics); //260806Cl enum 化
         if (dynamicalDrawn && !toolStripButtonIndexLabels.Checked)
             return;
 
         //var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
-        using var penExcess = new Pen(colorControlExcessLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
+        //using var penExcess = new Pen(colorControlExcessLine.Color, ...); //260806Cl 変更前: 線色と Dynamical の excess 色が同一コントロールだった
+        //260806Cl 変更 (作者指示): 幾何線/運動学線は colorControlKikuchiLine 専用 (colorControlExcessLine は Dynamical の excess 側専用)
+        using var penKikuchi = new Pen(colorControlKikuchiLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
+        //260807Cl /simplify: ループ不変量をここへホイスト。KikuchiModeSelected は ComboBox.SelectedIndex
+        //(= ハンドル生成後は CB_GETCURSEL の window message) で、ColorControl.Color も getter が毎回色を組む。
+        //菊池線 1 本ごと・再描画ごとに読んでいた
+        bool kinematical = KikuchiModeSelected == KikuchiMode.Kinematical;
+        Color kikuchiLineColor = colorControlKikuchiLine.Color, backGroundColor = colorControlBackGround.Color;
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
         //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
         using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
@@ -1281,7 +1337,7 @@ public partial class FormDiffractionSimulator : FormBase
             //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
             var psi = Math.Atan2(vec2.X, vec2.Y);
 
-            var( sinPsi,cosPsi) = Math.SinCos(psi);
+            var (sinPsi, cosPsi) = Math.SinCos(psi);
             var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
 
             //vec3normは、vec3を規格化したベクトル
@@ -1310,10 +1366,10 @@ public partial class FormDiffractionSimulator : FormBase
                 if (pts.Count > 1)
                 {
                     //if (checkBoxKikuchiLine_Kinematical.Checked) //260805Cl 変更前 (モード選択に統合)
-                    if (comboBoxKikuchiMode.SelectedIndex == 1)
-                        penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
+                    if (kinematical) //260806Cl enum 化 / 260807Cl ホイスト
+                        penKikuchi.Color = Blend(kikuchiLineColor, backGroundColor, g.RelativeIntensity); //260806Cl 線色コントロールを分離
                     if (!dynamicalDrawn) //260805Cl 追加: バンド描画済みのときは線は引かずラベルのみ
-                        graphics.DrawLines(penExcess, pts.ToArray());
+                        graphics.DrawLines(penKikuchi, pts.ToArray());
 
                     //ラベル描画
                     if (toolStripButtonIndexLabels.Checked)
@@ -1358,6 +1414,15 @@ public partial class FormDiffractionSimulator : FormBase
 
     #region 菊池動力学バンド (260805Cl 追加。設計正本 = ReciPro_菊池線動力学化設計.md §4-§5)
 
+    /// <summary>260806Cl 追加 (i18n 前提の enum 化): comboBoxKikuchiMode の意味キー。
+    /// Items の表示文字列は Loc で言語別なので、判定は必ずこの enum で行う (裸の int 比較禁止)</summary>
+    private enum KikuchiMode { Geometric = 0, Kinematical = 1, DynamicalBand = 2 }
+
+    /// <summary>260806Cl 追加: comboBoxKikuchiQuality の意味キー (KikuchiSampleCount が唯一の消費者)</summary>
+    private enum KikuchiQuality { Fast = 0, Standard = 1, High = 2 }
+
+    private KikuchiMode KikuchiModeSelected => (KikuchiMode)comboBoxKikuchiMode.SelectedIndex;
+
     private KikuchiPotentialSnapshot kikuchiSnapshot;
     private List<KikuchiBandProfile> kikuchiProfiles;
     private KikuchiRequestKey kikuchiProfilesKey; //260806Cl /simplify: 5 つの鏡写しフィールド + O(N) ハッシュを合成キー 1 個へ集約
@@ -1370,9 +1435,12 @@ public partial class FormDiffractionSimulator : FormBase
     private int kikuchiBandCount = -1;      //260806Cl /simplify: 注記は文字列でなく生データで保持し UpdateKikuchiNotice が組み立てる (i18n 障害の除去)
     private bool kikuchiUsedDefaultBiso;
 
-    private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => KikuchiProfileCalculator.Options.DefaultSampleCount };
+    //private int KikuchiSampleCount => comboBoxKikuchiQuality.SelectedIndex switch { 0 => 65, 2 => 257, _ => KikuchiProfileCalculator.Options.DefaultSampleCount }; //260806Cl 変更前 (裸 int)
+    private int KikuchiSampleCount => (KikuchiQuality)comboBoxKikuchiQuality.SelectedIndex switch
+    { KikuchiQuality.Fast => 65, KikuchiQuality.High => 257, _ => KikuchiProfileCalculator.Options.DefaultSampleCount };
 
-    /// <summary>260806Cl /simplify: スケールコンボのデコードを一箇所に (描画と注記で fallback が食い違っていた)</summary>
+    /// <summary>スケールコンボのデコード。260807Cl 時点の消費者は描画 (Render 呼び出し) のみ
+    /// — 注記ラベルからスケール名を落としたため (旧: 描画と注記で fallback が食い違っていたのを一箇所に集約した)</summary>
     private KikuchiBandRenderer.ScaleMode KikuchiScaleMode => (KikuchiBandRenderer.ScaleMode)comboBoxKikuchiScale.SelectedIndex;
 
     /// <summary>
@@ -1390,7 +1458,8 @@ public partial class FormDiffractionSimulator : FormBase
     /// <summary>
     /// 動力学バンドを描画できたら true。プロファイル未完成のときは false (呼び出し側が幾何線 fallback)。
     /// 回転だけが変わった場合も旧プロファイルを現在の回転で再投影して描く (作者決定 2026-08-05: ドラッグ中は旧キャッシュ再投影)。
-    /// 検出器座標 (x,y) ⇔ 方向 d̂ = norm(−x,+y,+L) (蛍光板を試料側からのぞく座標系。260806Cl 修正: 旧記載 +x は鏡像修正前の誤り)。
+    /// 検出器座標 (x,y) ⇔ 方向 d̂ = norm(+x,−y,−L) = スポット投影 ConvertReciprocalToDetector の逆写像
+    /// (260806Cl 確定。旧記載の norm(−x,+y,+L) はその −1 倍で、バンド位置は一致するが E/D 非対称だけが鏡映していた)。
     /// </summary>
     private bool DrawKikuchiDynamicalBands(Graphics graphics)
     {
@@ -1474,7 +1543,7 @@ public partial class FormDiffractionSimulator : FormBase
     private void StartKikuchiCompute()
     {
         var crystal = formMain?.Crystal;
-        if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || comboBoxKikuchiMode.SelectedIndex != 2) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化
+        if (IsDisposed || crystal?.VectorOfG_KikuchiLine == null || KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl /simplify2 (H1): 破棄後の timer 発火を無害化。enum 化
             return;
         var key = KikuchiCurrentKey(crystal); //260806Cl /simplify: 取込条件は key と同一値から取る (4 箇所列挙のドリフト防止)
         var kV = key.KV;
@@ -1532,7 +1601,7 @@ public partial class FormDiffractionSimulator : FormBase
                             return;
                         kikuchiProfiles ??= []; //初回失敗でも freshness が成立するように (非 null が条件)
                         kikuchiProfilesKey = key;
-                        labelKikuchiNotice.Text = "Dynamical band error: " + ex.Message;
+                        labelKikuchiNotice.Text = Crystallography.Localization.Loc(en: "Dynamical band error: ", ja: "動力学バンド計算エラー: ") + ex.Message; //260806Cl i18n
                     });
                 }
                 catch { }
@@ -1847,30 +1916,47 @@ public partial class FormDiffractionSimulator : FormBase
 
     //private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw(); //260805Cl 削除: comboBoxKikuchiMode に統合
     /// <summary>260805Cl 追加: 菊池表示モード / 強度スケール変更 (260806Cl /simplify: 同一処理の 2 ハンドラを統合)。
-    /// Dynamical のとき注記 (スケール開示 + 設計 §3 タグ) を表示</summary>
+    /// 260807Cl: 注記からスケール名は落としたので、ここが表示するのは非整合タグと worker 結果のみ</summary>
     private void comboBoxKikuchiMode_SelectedIndexChanged(object sender, EventArgs e)
     {
+        //260807Cl /simplify: パネル出し分けはモード専用の処理なので分離した。
+        //本ハンドラは comboBoxKikuchiScale からも呼ばれており (Designer)、スケール変更のたびに
+        //モード遷移処理まで走らせると、将来ここに状態リセット等を足したとき事故になる
+        UpdateKikuchiModeVisibility();
         UpdateKikuchiNotice();
         Draw();
     }
 
-    /// <summary>260806Cl 追加: 注記ラベル = スケール開示 + 非整合タグ + worker 結果 (バンド数・B 代用)。
-    /// 表示文字列の組み立てはここに一元化 (worker は生データのみ更新)</summary>
+    /// <summary>260807Cl 追加: モードで使わない側のパネルを隠す (作者指示)。
+    /// Geometric/Kinematical = 線色 + 線幅 / Dynamical = バンド設定一式。
+    /// コンストラクタの SelectedIndex 代入でも本ハンドラ経由で走るので起動時の初期状態もここで決まる</summary>
+    private void UpdateKikuchiModeVisibility()
+    {
+        var dynamical = KikuchiModeSelected == KikuchiMode.DynamicalBand;
+        flowLayoutPanelKikuchiKinematical.Visible = !dynamical;
+        flowLayoutPanelKikuchiDynamical.Visible = dynamical;
+    }
+
+    /// <summary>260806Cl 追加: 注記ラベル = 非整合タグ + worker 結果 (バンド数・B 代用)。
+    /// 表示文字列の組み立てはここに一元化 (worker は生データのみ更新)。ラベル幅 (7pt・247px) に収めるため、
+    /// 他所に出ている情報 (ツールチップの説明・右上のスケールコンボ) は載せない。
+    /// 旧: $"{Signed contrast}, {sc} / {DisplayNormalizedTag} ({n} bands, B=0→0.5 Å² assumed)"
+    /// 旧 sc の対応: Linear→"linear (clipped)" / Log→"log scale" / Tanh→"tanh scale" (戻すときの参考)</summary>
     private void UpdateKikuchiNotice()
     {
-        if (comboBoxKikuchiMode.SelectedIndex != 2)
-        {
-            labelKikuchiNotice.Text = "";
+        //260807Cl /simplify: Dynamical 以外では labelKikuchiNotice ごと隠れている
+        //(UpdateKikuchiModeVisibility) ので、Text を空にする必要はない
+        if (KikuchiModeSelected != KikuchiMode.DynamicalBand) //260806Cl enum 化
             return;
-        }
-        var sc = KikuchiScaleMode switch
-        {
-            KikuchiBandRenderer.ScaleMode.Linear => "linear (clipped)",
-            KikuchiBandRenderer.ScaleMode.Log => "log scale",
-            _ => "tanh scale",
-        };
-        var bands = kikuchiBandCount < 0 ? "" : $" ({kikuchiBandCount} bands{(kikuchiUsedDefaultBiso ? ", B=0→0.5 Å² assumed" : "")})";
-        labelKikuchiNotice.Text = $"Signed contrast, {sc} / {KikuchiProfileCalculator.DisplayNormalizedTag}{bands}";
+        //260806Cl i18n: 組み立て部を Loc 化 (EN/JA。他言語は EN フォールバック)。
+        //⚠表示するのは KikuchiProfileCalculator.DisplayNormalizedTag ("source-loss not balanced") と
+        //同義の短縮形 "source-loss unbalanced"。定数そのものは幅に収まらないので参照していない
+        //(実測 Segoe UI 7pt / ラベル 247px: 最長ケース "…(99 bands, B→0.5)" が収まる)。
+        //B の単位 Å² はラベルから落としたぶんツールチップ側で補っている
+        var bands = kikuchiBandCount < 0 ? "" :
+            $" ({kikuchiBandCount}{Crystallography.Localization.Loc(en: " bands", ja: " バンド")}{(kikuchiUsedDefaultBiso ? ", B→0.5" : "")})";
+        labelKikuchiNotice.Text = Crystallography.Localization.Loc(
+            en: "source-loss unbalanced", ja: "源と吸収が非整合") + bands;
     }
 
     #endregion
@@ -3617,6 +3703,7 @@ public partial class FormDiffractionSimulator : FormBase
     {
         colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion = colorControlExcessLine.Inversion =
             colorControlDeficientLine.Inversion = //260805Cl 追加: Deficient 色も反転連鎖に含める
+            colorControlKikuchiLine.Inversion = //260806Cl 追加: 幾何線/運動学線の色も反転連鎖に含める (色コントロール分離に伴う)
             checkBoxNegativeImage.Checked;
         SetVector();
         Draw();
@@ -3645,6 +3732,7 @@ public partial class FormDiffractionSimulator : FormBase
         Draw();
     }
 
-
+    //260807Cl /simplify 削除: 空の tabPageKikuchi_Click (Designer のダブルクリックで生まれた no-op)。
+    //Designer 側の tabPageKikuchi.Click += も併せて削除した (片方だけ消すとビルドが通らない)
 }
 

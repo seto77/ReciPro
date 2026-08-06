@@ -316,7 +316,13 @@ internal static partial class GuiCapture
         // 260602Cl 追加: FormDiffractionSimulator は波長×入射ビームの組合せでモード (SAED/PED/X線) ごとに右側パネル構成が
         // 変わるため、各モードの「全体フォーム画像」を追加で撮る (上で撮った全体画像は既定モードの 1 枚だけ)。
         if (form is FormDiffractionSimulator diffractionSimulatorForModeShots)
+        {
+            //260807Cl: 菊池ショットは自分で SetCaptureMode("saed") してから撮るので順序に依存しない。
+            //一方 CaptureDiffractionSimulatorModeShots は X線モードのまま抜けるため、その後に何か足すときは
+            //こちらと同様にモードを明示すること
+            CaptureKikuchiDynamicalShot(diffractionSimulatorForModeShots, outDir, trace);
             CaptureDiffractionSimulatorModeShots(diffractionSimulatorForModeShots, name, outDir, trace);
+        }
 
         // 260608Cl 追加: FormBeamInteraction は線種 (X線/電子線/中性子線) でタブ内容が大きく変わる (減衰・輸送/散乱因子の曲線・表が
         // 別物、蛍光は X線専用) ため、線種×タブごとに TabControl 全体をクロップ撮影する。
@@ -343,6 +349,44 @@ internal static partial class GuiCapture
     /// STEM は計算が重いので、完了判定は既定モードと同じく <see cref="WaitUntilScreenStable"/> (画面が止まったら完了) に委ねる。
     /// 既存の <c>FormImageSimulator.png</c> (既定=HRTEM の全体画像) はそのまま残す (index 等の既存参照を壊さない)。
     /// </summary>
+    /// <summary>
+    /// 260807Cl 追加: 特殊撮影 (モード別・タブ別) 5 種に共通する定型を 1 箇所へ集約する。
+    /// 各メソッドで固有なのは「状態づくり (<paramref name="apply"/>)」と「何を撮るか (<paramref name="capture"/>)」だけで、
+    /// 残り — レイアウト反映待ち・最前面化・計算完了待ち・保存・失敗しても次へ進む・後始末 — は全て同じだった。
+    /// <paramref name="prepare"/> を渡すと計算を起動して <see cref="WaitUntilScreenStable"/> で完了を待つ
+    /// (重い計算を伴うモード撮影用)。<paramref name="restore"/> は例外時も必ず走る。
+    /// </summary>
+    private static void CaptureVariant(Form form, string name, string outDir, Action<string> trace,
+        Action apply, Func<Bitmap> capture, Action prepare = null, bool waitStable = false, Action restore = null)
+    {
+        try
+        {
+            apply();
+            Settle(form, TabSwitchSettleMs, trace); // レイアウト反映を待つ
+            BringToFront(form);
+            prepare?.Invoke();                      // 現在の状態で計算を起動 (同期のものも非同期のものもある)
+            if (waitStable)
+                WaitUntilScreenStable(form, trace); // 計算完了 (= 画面が止まる) まで待つ
+            BringToFront(form);
+            Settle(form, TabSwitchSettleMs, trace);
+
+            var bmp = capture();
+            if (bmp != null)
+                using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+            else
+                trace($"{name}\tWARN\tvariant capture failed");
+        }
+        catch (Exception ex)
+        {
+            // 1 バリエーションの失敗で残りを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
+            trace($"{name}\tWARN\tvariant shot: {ex.GetType().Name}: {ex.Message}");
+        }
+        finally
+        {
+            try { restore?.Invoke(); } catch { /* 後始末の失敗で撮影結果を捨てない */ }
+        }
+    }
+
     private static void CaptureImageSimulatorModeShots(FormImageSimulator sim, string baseName, string outDir, Action<string> trace)
     {
         //260801Cl 追加: STEM-EDX は独立モードではなく STEM 内の追加出力オプション (設計書 §5.9.1) なので、
@@ -358,40 +402,30 @@ internal static partial class GuiCapture
         foreach (var (mode, suffix, edx) in modes)
         {
             var name = baseName + "-" + suffix; // 例: FormImageSimulator-stem
+            CaptureVariant(sim, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
+                apply: () =>
+                {
+                    sim.ImageMode = mode;               // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
+                    sim.EdxEnabled = edx;               // 260801Cl: EDX を計算するかのチェック
+                    // 260802Cl 削除: sim.SelectAvailableEdxChannels() — 元素×殻の選択 UI が無くなり、
+                    // EDX が ON なら利用可能な特性 X 線を常に全部計算するようになったため不要 (作者指示)
+                    sim.CaptureSelectEdxAfterRun = edx; // 260802Cl: 計算後に表示信号を EDX へ (元素マップを撮るため)
+                },
+                prepare: sim.PrepareCaptureForGuiAudit, // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
+                waitStable: true,
+                capture: () => CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true));
+
+            //260801Cl 追加: 元素×殻セレクタは panelModeOptions のスクロール下端に来て全体像には写らないので、
+            //選択済みの状態で GroupBox 単体も撮る (既定パスの crop は EDX OFF = 折りたたみ状態のもの)
+            if (!edx)
+                continue;
             try
             {
-                sim.ImageMode = mode;                  // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
-                sim.EdxEnabled = edx;                  // 260801Cl: EDX を計算するかのチェック
-                // 260802Cl 削除: sim.SelectAvailableEdxChannels() — 元素×殻の選択 UI が無くなり、
-                // EDX が ON なら利用可能な特性 X 線を常に全部計算するようになったため不要 (作者指示)
-                sim.CaptureSelectEdxAfterRun = edx;    // 260802Cl: 計算後に表示信号を EDX へ (元素マップを撮るため)
-                Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
-                BringToFront(sim);
-                sim.PrepareCaptureForGuiAudit();       // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
-                WaitUntilScreenStable(sim, trace);     // 計算完了 (= 画面が止まる) まで待つ
-                BringToFront(sim);
-                Settle(sim, TabSwitchSettleMs, trace);
-
-                var bmp = CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true);
-                if (bmp != null)
-                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-                else
-                    trace($"{name}\tWARN\tmode full-form capture failed");
-
-                //260801Cl 追加: 元素×殻セレクタは panelModeOptions のスクロール下端に来て全体像には写らないので、
-                //選択済みの状態で GroupBox 単体も撮る (既定パスの crop は EDX OFF = 折りたたみ状態のもの)
-                if (edx)
-                {
-                    var panel = RenderHiddenControl(sim, sim.EdxOptionGroup, trace);
-                    if (panel != null)
-                        using (panel) panel.Save(Path.Combine(outDir, name + "-selector.png"), ImageFormat.Png);
-                }
+                var panel = RenderHiddenControl(sim, sim.EdxOptionGroup, trace);
+                if (panel != null)
+                    using (panel) panel.Save(Path.Combine(outDir, name + "-selector.png"), ImageFormat.Png);
             }
-            catch (Exception ex)
-            {
-                // 1 モードの失敗で残りを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
-                trace($"{name}\tWARN\tmode shot: {ex.GetType().Name}: {ex.Message}");
-            }
+            catch (Exception ex) { trace($"{name}-selector\tWARN\tselector shot: {ex.GetType().Name}: {ex.Message}"); }
         }
     }
 
@@ -412,27 +446,11 @@ internal static partial class GuiCapture
         foreach (var suffix in new[] { "saed", "ped", "xray" })
         {
             var name = baseName + "-" + suffix; // 例: FormDiffractionSimulator-saed
-            try
-            {
-                sim.SetCaptureMode(suffix);            // 波長・入射ビーム・強度計算を代表状態へ (CheckedChanged で右側パネルの可視性も更新)
-                Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
-                BringToFront(sim);
-                sim.PrepareCaptureForGuiAudit();       // 現在モードで SetVector()+Draw() (PED は動力学計算で重い)
-                WaitUntilScreenStable(sim, trace);     // 計算完了 (= 画面が止まる) まで待つ
-                BringToFront(sim);
-                Settle(sim, TabSwitchSettleMs, trace);
-
-                var bmp = CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true);
-                if (bmp != null)
-                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-                else
-                    trace($"{name}\tWARN\tmode full-form capture failed");
-            }
-            catch (Exception ex)
-            {
-                // 1 モードの失敗で残りを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
-                trace($"{name}\tWARN\tmode shot: {ex.GetType().Name}: {ex.Message}");
-            }
+            CaptureVariant(sim, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
+                apply: () => sim.SetCaptureMode(suffix), // 波長・入射ビーム・強度計算を代表状態へ (CheckedChanged で右側パネルの可視性も更新)
+                prepare: sim.PrepareCaptureForGuiAudit,  // 現在モードで SetVector()+Draw() (PED は動力学計算で重い)
+                waitStable: true,
+                capture: () => CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true));
         }
     }
 
@@ -463,24 +481,61 @@ internal static partial class GuiCapture
                 foreach (var tab in tc.TabPages.Cast<TabPage>().ToArray()) // 線種で増減するのでスナップショット
                 {
                     var name = baseName + "-" + beamSuffix + "-" + BeamInteractionTabKey(tab.Name);
-                    try
-                    {
-                        tc.SelectedTab = tab;             // SelectedIndexChanged → UpdateAllTabs で当該タブを計算
-                        Settle(form, TabSwitchSettleMs, trace);
-                        BringToFront(form);
-                        Settle(form, TabSwitchSettleMs, trace);
-                        var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);
-                        if (bmp != null)
-                            using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-                        else
-                            trace($"{name}\tWARN\tbeam-tab capture failed");
-                    }
-                    catch (System.Exception ex) { trace($"{name}\tWARN\tbeam-tab shot: {ex.GetType().Name}: {ex.Message}"); }
+                    CaptureVariant(form, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
+                        apply: () => tc.SelectedTab = tab, // SelectedIndexChanged → UpdateAllTabs で当該タブを計算
+                        capture: () => CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true));
                 }
             }
             catch (System.Exception ex) { trace($"{baseName}-{beamSuffix}\tWARN\tbeam mode: {ex.GetType().Name}: {ex.Message}"); }
         }
         try { form.SetCaptureBeam(Crystallography.WaveSource.Xray); } catch { /* 撮影後 close 前に既定 (X線) へ戻す */ }
+    }
+
+    /// <summary>
+    /// 260807Cl 追加: tabPageKikuchi はモードでパネルが入れ替わる (Geometric/Kinematical = 線色 + 線幅 /
+    /// Dynamical = バンド設定一式) ので、既定モード (Kinematical) の 1 枚だけでは
+    /// マニュアルが説明している Dynamical 側の設定が写らない。Dynamical 状態のタブを
+    /// <c>{既定のクロップパス}-dynamical.png</c> としてもう 1 枚撮り、撮影後に元の状態へ戻す。
+    /// 状態づくり・対象コントロールとも他の特殊撮影と同じくフォーム側の internal フックへ委ねる
+    /// (<see cref="FormDiffractionSimulator.PrepareCaptureKikuchiDynamical"/> /
+    /// <see cref="FormDiffractionSimulator.CaptureKikuchiTab"/>)。
+    /// ⚠タブは選択しない: tabControl_Selecting が菊池レイヤー OFF のときタブ選択を Cancel するので
+    /// SelectedTab 代入は当てにならない (実測: 無視されて General が撮れた)。既定の tabPageKikuchi.png と
+    /// 同じ RenderHiddenControl 経路 (タブ見出し無しの中身だけ) で撮り、2 枚の見た目を揃える。
+    /// </summary>
+    private static void CaptureKikuchiDynamicalShot(FormDiffractionSimulator form, string outDir, Action<string> trace)
+    {
+        var (tab, notice) = form.CaptureKikuchiTab;
+        if (tab == null)
+        {
+            trace("FormDiffractionSimulator-kikuchi-dynamical\tWARN\ttabPageKikuchi not found");
+            return;
+        }
+        var name = SanitizeFileName(BuildCapturePath(form, tab)) + "-dynamical";
+        (bool Layer, int Mode) previous = default;
+        CaptureVariant(form, name, outDir, trace, //260807Cl /simplify2: 定型部を CaptureVariant へ集約
+            // 動力学バンドは debounce 300ms + バックグラウンド計算 + 再描画を経てから注記ラベルにバンド数が出る。
+            // 待ち時間は機械と Bands 数で変わるので、他のモード撮影と同じく「画面が止まったら完了」に委ねる
+            apply: () => previous = form.PrepareCaptureKikuchiDynamical(),
+            waitStable: true,
+            capture: () =>
+            {
+                //260807Cl 追加: 注記ラベルの実フォントと寸法を記録する。ja で注記が空白になった事故
+                //(原因: resx の Font エントリに type 属性が無く文字列扱いで無視され、9.75pt のまま
+                //高さ 16px の矩形に収まらず 1 行も描かれなかった) の再発検知用。
+                //⚠Visible はタブ未選択のここでは常に false なので見ない
+                if (notice != null)
+                {
+                    //バンド数は最大 50 (2 桁) なので、1 桁で撮れたときも 2 桁の最悪ケースで採寸する
+                    var need = TextRenderer.MeasureText(notice.Text.Replace("(9 ", "(99 "), notice.Font);
+                    trace($"{name}\tINFO\tnotice '{notice.Text}' font={notice.Font.Name} {notice.Font.SizeInPoints}pt " +
+                          $"box={notice.Width}x{notice.Height} needs={need.Width}x{need.Height} (worst case)" +
+                          (need.Height > notice.Height || need.Width > notice.Width ? "\t*** DOES NOT FIT ***" : ""));
+                }
+                return RenderHiddenControl(form, tab, trace);
+            },
+            // 撮影後は元のモード・レイヤー状態へ戻す (後続の全体画像・モードショットに影響させない)
+            restore: () => form.RestoreCaptureKikuchiState(previous));
     }
 
     /// <summary>260705Cl 追加: FormGroupRelations の残りの詳細タブ (既定選択の Matrix は全体画像で撮れている) を
@@ -495,11 +550,14 @@ internal static partial class GuiCapture
             {
                 var tab = tc.TabPages.Cast<TabPage>().FirstOrDefault(t => t.Name == tabName);
                 if (tab == null) { trace($"{baseName}-{tabName}\tWARN\t{tabName} not found"); continue; }
+                var name = baseName + "-" + tabName;
+                //260807Cl /simplify2: tabElements だけは「一時拡大 → PictureBox の Image を直接保存」で
+                //CaptureVariant の枠 (画面撮影して 1 枚保存) に収まらないため、こちらは従来どおり手続きで書く。
+                //それ以外のタブは CaptureVariant へ寄せる (下)
                 tc.SelectedTab = tab;
                 Settle(form, TabSwitchSettleMs, trace);
                 BringToFront(form);
                 Settle(form, TabSwitchSettleMs, trace);
-                var name = baseName + "-" + tabName;
                 // 260713Cl: tabElements は 2 パス重ね描き (透明ビットマップ×2 + ColorMatrix) で GDI 負荷が高く、
                 // RDP の CopyFromScreen が「ハンドル作成エラー (Win32Exception)」で失敗しやすい。pictureBox の
                 // Image を直接クローン保存すれば screen-capture 依存を外せて確実 (プログラム描画なので画素も厳密)。
@@ -524,14 +582,61 @@ internal static partial class GuiCapture
                     }
                     continue;
                 }
-                var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);
-                if (bmp != null)
-                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-                else
-                    trace($"{name}\tWARN\t{tabName} capture failed");
+                CaptureVariant(form, name, outDir, trace,
+                    apply: () => tc.SelectedTab = tab, // 既に選択済みだが、CaptureVariant の安定待ちに載せるため再指定
+                    capture: () => CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true));
             }
         }
         catch (System.Exception ex) { trace($"{baseName}-diagram\tWARN\tdiagram shot: {ex.GetType().Name}: {ex.Message}"); }
+    }
+
+    /// <summary>
+    /// 260807Cl 追加 (/simplify2 フォローアップ): 固定サイズのテキスト系コントロールを採寸し、
+    /// 表示枠に収まらないものを撮影ログへ出す。--capture は 11 言語ぶん全フォームを回るので、
+    /// 「ある言語でだけラベルが切れる/描かれない」を撮影のついでに全面検出できる。
+    ///
+    /// きっかけ: 菊池の注記ラベルが ja でだけ完全に消えた事故 (resx の Font に type 属性が無く
+    /// 9.75pt のまま残り、行高 17px が 16px の枠に入らず GDI が 1 行も描かなかった)。
+    /// 幅超過は AutoEllipsis で「…」になるが、高さ超過は無言で消えるので目視では気づけない。
+    ///
+    /// AutoSize / 複数行 / 空文字 / 非テキスト系は対象外 (自前で伸びるか、そもそも切れない)。
+    /// 判定は報告のみ — 撮影は続行する。
+    /// </summary>
+    private static void ReportTextOverflow(Form form, string formName, Action<string> trace)
+    {
+        foreach (var c in EnumerateControls(form))
+        {
+            // ⚠対象は「Text をそのまま TextRenderer で描く標準コントロール」だけに絞る。
+            //   自前描画のもの (例 LabelLaTeX: Text は "\alpha" のような LaTeX ソースで、描かれる字形とは別物) を
+            //   混ぜると誤検出だらけになり、本当の溢れが埋もれる
+            if (c is not (Label or CheckBox or RadioButton or Button) || c.GetType().Assembly != typeof(Label).Assembly)
+                continue;
+            if (c.AutoSize || string.IsNullOrEmpty(c.Text) || c.IsDisposed || c.Width <= 0 || c.Height <= 0 || c.Font == null)
+                continue;
+            if (c.Text.Contains('\n'))
+                continue; // 明示的な複数行は行数ぶんの高さを持つ前提なので 1 行採寸では判定できない
+
+            try
+            {
+                // NoPadding 必須: 既定の MeasureText は左右に余白を足すので、そのまま比べると
+                // 「%」1 文字のラベル等が軒並み数 px 超過に見える (実際には収まっている)
+                var need = TextRenderer.MeasureText(c.Text, c.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.NoPadding);
+                // チェック/ラジオはボックスとその余白 (約 20px) がテキストの外側に要る
+                var extra = c is CheckBox or RadioButton ? 20 : 0;
+                var overW = need.Width + extra - c.Width;
+                var overH = need.Height - c.Height;
+                // ⚠高さ超過を鳴らすのは AutoEllipsis の Label だけ。この組み合わせだけが
+                //   「行が枠に入らないと『…』すら出さず丸ごと描かれない」挙動になる (ja の注記ラベルが消えた事故)。
+                //   AutoEllipsis 無しの Label や Button は 1〜2px 足りなくても普通にクリップ表示されるので、
+                //   そこまで拾うと既存フォームの無害な 1px 不足で埋まって本物が見えなくなる
+                var heightMatters = c is Label { AutoEllipsis: true } && overH > 0;
+                if (overW > 2 || heightMatters)
+                    trace($"{formName}.{c.Name}\tWARN\ttext does not fit: '{c.Text}' " +
+                          $"box={c.Width}x{c.Height} needs={need.Width + extra}x{need.Height}" +
+                          (heightMatters ? $"\t*** {overH}px TOO SHORT (the line may not be drawn at all) ***" : $"\t(+{overW}px wide)"));
+            }
+            catch (Exception ex) { trace($"{formName}.{c.Name}\tWARN\ttext measure: {ex.GetType().Name}: {ex.Message}"); }
+        }
     }
 
     /// <summary>TabPage 名 → ファイル名サフィックス。260608Cl 追加。</summary>
@@ -716,6 +821,7 @@ internal static partial class GuiCapture
     /// <returns>保存できたクロップ数。</returns>
     private static int CaptureControlCrops(Form form, string name, string outDir, Action<string> trace)
     {
+        ReportTextOverflow(form, name, trace); //260807Cl 追加 (/simplify2 フォローアップ)
         var count = 0;
         // Capture=true のコントロールを列挙する。ToolStripItem (メニュードロップダウン展開等) は
         // 別ウィンドウのため非対話では撮らない (= EnumerateControls には現れないので自然に除外される)。

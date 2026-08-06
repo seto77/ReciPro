@@ -99,7 +99,7 @@ a partir da amostra</value>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>Máx.</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>Largura da linha</value>
   </data>
   <data name="tabPageKikuchi.Text" xml:space="preserve">
@@ -565,13 +565,24 @@ fator de estrutura) usadas para desenhar as linhas de Kikuchi.</value>
 (nm⁻¹); ou seja, apenas distâncias maiores que 1/valor.</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>Define a cor das linhas de Kikuchi.</value>
+    <value>Cor do lado de excesso (claro) das bandas de Kikuchi
+dinâmicas: os píxeis onde o contraste da banda é
+positivo, isto é, a intensidade sobe acima do fundo
+difuso.</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>Define a largura de linha das linhas de Kikuchi</value>
+    <value>Largura da linha (espessura do traço) das linhas de Kikuchi
+geométricas e cinemáticas (1 a 10000, padrão 4000); a largura
+desenhada também escala com a resolução do ecrã. As bandas
+dinâmicas não são afetadas — a sua largura vem do perfil
+calculado.</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value>Define a largura de linha das linhas de Kikuchi</value>
+  <data name="labelKikuchiLineWidth.ToolTip" xml:space="preserve">
+    <value>Largura da linha (espessura do traço) das linhas de Kikuchi
+geométricas e cinemáticas (1 a 10000, padrão 4000); a largura
+desenhada também escala com a resolução do ecrã. As bandas
+dinâmicas não são afetadas — a sua largura vem do perfil
+calculado.</value>
   </data>
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
     <value>Linhas de Kikuchi</value>
@@ -1064,7 +1075,7 @@ projeção polar, distinto do modo PED de elétrons.</value>
     <value>Fundo</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>Cor das linhas de Kikuchi</value>
+    <value>Excesso</value>
   </data>
   <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
     <value>Cor dos anéis de Debye</value>
@@ -1101,5 +1112,148 @@ projeção polar, distinto do modo PED de elétrons.</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
     <value>Pontos extintos (centragem)</value>
+  </data>
+  <data name="labelKikuchiMode.Text" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
+    <value>Brilho fixo</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.HeaderText" xml:space="preserve">
+    <value>Bandas</value>
+  </data>
+  <data name="labelKikuchiContrast.Text" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
+    <value>Deficiente</value>
+  </data>
+  <data name="labelKikuchiScale.Text" xml:space="preserve">
+    <value>Escala</value>
+  </data>
+  <data name="labelKikuchiMode.ToolTip" xml:space="preserve">
+    <value>Modo de exibição das linhas de Kikuchi. Os ajustes
+do grupo à direita mudam com o modo.
+Geométrico: todas as linhas selecionadas em uma cor
+fixa.
+Cinemático: a opacidade das linhas segue a intensidade
+relativa cinemática de cada reflexão.
+Dinâmico: perfis de banda excesso/deficiente dinâmicos
+de dois feixes calculados em segundo plano; as linhas
+geométricas são desenhadas enquanto o cálculo decorre.</value>
+  </data>
+  <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
+    <value>Modo de exibição das linhas de Kikuchi. Os ajustes
+do grupo à direita mudam com o modo.
+Geométrico: todas as linhas selecionadas em uma cor
+fixa.
+Cinemático: a opacidade das linhas segue a intensidade
+relativa cinemática de cada reflexão.
+Dinâmico: perfis de banda excesso/deficiente dinâmicos
+de dois feixes calculados em segundo plano; as linhas
+geométricas são desenhadas enquanto o cálculo decorre.</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
+    <value>Congela a normalização de brilho das bandas dinâmicas
+no valor em uso. Quando desligado, a escala é
+redeterminada após cada recálculo (percentil 98,5 do
+contraste das bandas), e o brilho pode saltar quando a
+orientação muda; congele-a para comparar o brilho entre
+orientações, espessuras ou tensões de aceleração.</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
+    <value>Número de bandas de Kikuchi desenhadas com perfis
+dinâmicos (1 a 50, padrão 30). As reflexões são primeiro
+ordenadas por fator de estrutura e as N melhores por
+contraste dinâmico são mantidas. Valores maiores mostram
+mais bandas mas demoram mais. Independente da seleção de reflexões
+à esquerda ('Máx.' / 'Corte de 1/d'), que escolhe as
+reflexões das próprias linhas.</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>Predefinição de qualidade dos perfis de banda dinâmicos:
+número de pontos de amostragem através de cada banda
+(Rápido 65 / Padrão 129 / Alta 257). Qualidade maior
+resolve as bordas e a estrutura fina excesso/deficiente
+com mais suavidade, ao custo de mais tempo de cálculo.</value>
+  </data>
+  <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>Ganho aplicado ao contraste das bandas dinâmicas antes
+de a curva de escala o comprimir em opacidade
+(1 a 100; 50 = x1,0, 100 = x2,0). Para a direita para
+realçar bandas fracas, para a esquerda para evitar a
+saturação das fortes. Muda apenas a exibição, não as
+intensidades calculadas.</value>
+  </data>
+  <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>Ganho aplicado ao contraste das bandas dinâmicas antes
+de a curva de escala o comprimir em opacidade
+(1 a 100; 50 = x1,0, 100 = x2,0). Para a direita para
+realçar bandas fracas, para a esquerda para evitar a
+saturação das fortes. Muda apenas a exibição, não as
+intensidades calculadas.</value>
+  </data>
+  <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
+    <value>Cor do lado deficiente (escuro) das bandas de Kikuchi
+dinâmicas: os píxeis onde o contraste da banda é
+negativo, isto é, a intensidade cai abaixo do fundo
+difuso.</value>
+  </data>
+  <data name="labelKikuchiScale.ToolTip" xml:space="preserve">
+    <value>Compressão de brilho do contraste de banda com sinal
+(x = |c| x Contraste / escala automática):
+Linear = min(x, 1); satura como um detector ideal com
+recorte de poço cheio.
+Log = log10(1 + 9x), limitado em 1 (mesmo espírito da
+exibição de imagem em escala log).
+Tanh = tanh(x); limitador suave (padrão).
+Todas são transformações de visualização, não respostas
+físicas de câmera.</value>
+  </data>
+  <data name="comboBoxKikuchiScale.ToolTip" xml:space="preserve">
+    <value>Compressão de brilho do contraste de banda com sinal
+(x = |c| x Contraste / escala automática):
+Linear = min(x, 1); satura como um detector ideal com
+recorte de poço cheio.
+Log = log10(1 + 9x), limitado em 1 (mesmo espírito da
+exibição de imagem em escala log).
+Tanh = tanh(x); limitador suave (padrão).
+Todas são transformações de visualização, não respostas
+físicas de câmera.</value>
+  </data>
+  <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
+    <value>O brilho das bandas dinâmicas é uma transformação de
+visualização, não uma resposta física de câmera: o
+contraste com sinal c = (I - I_ref)/I_ref de todas as
+bandas é somado por píxel e comprimido uma vez pela
+curva de escala escolhida (Linear / Log / Tanh) em
+opacidade (excesso = cor positiva, deficiente = cor
+negativa). «source-loss unbalanced»: nesta versão a
+absorção e a fonte difusa não derivam do mesmo núcleo
+de espalhamento, por isso só são significativas as
+formas relativas dos perfis e os sinais
+excesso/deficiente. «B→0.5»: foi substituído um B
+isotrópico padrão de 0,5 Å² (0,005 nm²) nos átomos cujo
+fator B é zero.</value>
+  </data>
+  <data name="colorControlKikuchiLine.FooterText" xml:space="preserve">
+    <value>Cor das linhas de Kikuchi</value>
+  </data>
+  <data name="colorControlKikuchiLine.ToolTip" xml:space="preserve">
+    <value>Cor das linhas de Kikuchi geométricas e cinemáticas.
+No modo Geométrico todas as linhas selecionadas usam esta
+única cor; no modo Cinemático cada linha é mesclada com a
+cor de fundo conforme a intensidade relativa da sua
+reflexão. O modo Dinâmico usa Excesso / Deficiente.</value>
+  </data>
+  <data name="labelKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>Predefinição de qualidade dos perfis de banda dinâmicos:
+número de pontos de amostragem através de cada banda
+(Rápido 65 / Padrão 129 / Alta 257). Qualidade maior
+resolve as bordas e a estrutura fina excesso/deficiente
+com mais suavidade, ao custo de mais tempo de cálculo.</value>
+  </data>
+  <data name="labelKikuchiQuality.Text" xml:space="preserve">
+    <value>Qualidade</value>
   </data>
 </root>

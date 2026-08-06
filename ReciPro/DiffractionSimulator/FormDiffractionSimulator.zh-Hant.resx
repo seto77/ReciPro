@@ -99,7 +99,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>上限</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>線寬</value>
   </data>
   <data name="tabPageKikuchi.Text" xml:space="preserve">
@@ -570,13 +570,18 @@ Ewald 球的程度。</value>
 即僅限晶面間距大於 1/值 的繞射。</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>設定菊池線的顏色。</value>
+    <value>動力學菊池帶過剩（亮）側的顏色：即帶對比度為正、強度
+高於漫散射背景的像素。</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>設定菊池線的線寬</value>
+    <value>幾何線和運動學線的線寬（畫筆粗細，1〜10000，預設 4000）。
+實際粗細還與顯示解析度成比例。動力學帶的寬度由計算出的
+輪廓決定，不受影響。</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value>設定菊池線的線寬</value>
+  <data name="labelKikuchiLineWidth.ToolTip" xml:space="preserve">
+    <value>幾何線和運動學線的線寬（畫筆粗細，1〜10000，預設 4000）。
+實際粗細還與顯示解析度成比例。動力學帶的寬度由計算出的
+輪廓決定，不受影響。</value>
   </data>
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
     <value>菊池線</value>
@@ -1066,7 +1071,7 @@ Beam/Top/Right 方向導引箭頭。</value>
     <value>背景</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>菊池線顏色</value>
+    <value>過剩側</value>
   </data>
   <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
     <value>德拜環顏色</value>
@@ -1094,5 +1099,115 @@ Beam/Top/Right 方向導引箭頭。</value>
   </data>
   <data name="colorControl3D_lText.FooterText" xml:space="preserve">
     <value>文字</value>
+  </data>
+  <data name="labelKikuchiMode.Text" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
+    <value>鎖定亮度</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.HeaderText" xml:space="preserve">
+    <value>帶數</value>
+  </data>
+  <data name="labelKikuchiContrast.Text" xml:space="preserve">
+    <value>對比度</value>
+  </data>
+  <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
+    <value>虧損側</value>
+  </data>
+  <data name="labelKikuchiScale.Text" xml:space="preserve">
+    <value>標度</value>
+  </data>
+  <data name="labelKikuchiMode.ToolTip" xml:space="preserve">
+    <value>菊池線的顯示模式。右側的設定隨模式切換。
+幾何：所有選取的線以同一固定顏色繪製。
+運動學：線的不透明度依各反射的運動學相對強度變化。
+動力學：在背景執行緒中計算雙束動力學過剩/虧損帶輪廓；
+計算期間先以幾何線代替顯示。</value>
+  </data>
+  <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
+    <value>菊池線的顯示模式。右側的設定隨模式切換。
+幾何：所有選取的線以同一固定顏色繪製。
+運動學：線的不透明度依各反射的運動學相對強度變化。
+動力學：在背景執行緒中計算雙束動力學過剩/虧損帶輪廓；
+計算期間先以幾何線代替顯示。</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
+    <value>將動力學帶的亮度正規化凍結在目前值。關閉時，每次
+重新計算後都會重新決定標度（取帶對比度的第 98.5
+百分位），因此改變取向時亮度可能跳變；凍結後可在
+不同取向、厚度或加速電壓之間比較亮度。</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
+    <value>以動力學輪廓繪製的菊池帶數目（1〜50，預設 30）。
+反射先依結構因子排序，再保留動力學對比度最高的前
+N 個。數值越大顯示的帶越多，但計算越慢。與左側的反射選擇
+（上限 / 1/d 截止值）無關，後者選擇菊池線本身所用的反射。</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>動力學帶輪廓的品質預設：橫越每條帶的取樣點數
+（快速 65 / 標準 129 / 高 257）。品質越高，帶邊緣和
+精細的過剩/虧損結構越平滑，但計算時間越長。</value>
+  </data>
+  <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>在標度曲線將其壓縮為不透明度之前，施加到動力學帶
+對比度上的增益（1〜100；50 = x1.0，100 = x2.0）。
+向右可突顯弱帶，向左可避免強帶飽和。僅改變顯示，
+不改變計算出的強度。</value>
+  </data>
+  <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>在標度曲線將其壓縮為不透明度之前，施加到動力學帶
+對比度上的增益（1〜100；50 = x1.0，100 = x2.0）。
+向右可突顯弱帶，向左可避免強帶飽和。僅改變顯示，
+不改變計算出的強度。</value>
+  </data>
+  <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
+    <value>動力學菊池帶虧損（暗）側的顏色：即帶對比度為負、強度
+低於漫散射背景的像素。</value>
+  </data>
+  <data name="labelKikuchiScale.ToolTip" xml:space="preserve">
+    <value>帶符號帶對比度的亮度壓縮（x = |c| x 對比度 /
+自動標度）：
+Linear = min(x, 1)；如理想偵測器的滿阱截波般飽和。
+Log = log10(1 + 9x)，在 1 處截斷（與影像顯示的對數
+標度同理）。
+Tanh = tanh(x)；平滑軟限幅（預設）。
+以上皆為視覺化變換，並非物理相機響應。</value>
+  </data>
+  <data name="comboBoxKikuchiScale.ToolTip" xml:space="preserve">
+    <value>帶符號帶對比度的亮度壓縮（x = |c| x 對比度 /
+自動標度）：
+Linear = min(x, 1)；如理想偵測器的滿阱截波般飽和。
+Log = log10(1 + 9x)，在 1 處截斷（與影像顯示的對數
+標度同理）。
+Tanh = tanh(x)；平滑軟限幅（預設）。
+以上皆為視覺化變換，並非物理相機響應。</value>
+  </data>
+  <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
+    <value>動力學帶的亮度是視覺化變換，並非物理相機響應：
+將所有帶的帶符號對比度 c = (I - I_ref)/I_ref 逐像素
+加總後，由所選標度曲線（Linear / Log / Tanh）一次性
+壓縮為不透明度（過剩 = 正色，虧損 = 負色）。
+「source-loss
+unbalanced」：本版本的吸收與漫散射源並非由同一散射核導出，
+因此只有輪廓的相對形狀和過剩/虧損的符號有意義。
+「B→0.5」：對 B 因子為零的原子代用了預設等向性 B = 0.5
+Å²（0.005 nm²）。</value>
+  </data>
+  <data name="colorControlKikuchiLine.FooterText" xml:space="preserve">
+    <value>菊池線顏色</value>
+  </data>
+  <data name="colorControlKikuchiLine.ToolTip" xml:space="preserve">
+    <value>幾何線和運動學線的顏色。幾何模式下所有選取的線都用這一種
+顏色繪製；運動學模式下每條線依其反射的相對強度向背景色
+混合。動力學模式改用過剩側 / 虧損側的顏色。</value>
+  </data>
+  <data name="labelKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>動力學帶輪廓的品質預設：橫越每條帶的取樣點數
+（快速 65 / 標準 129 / 高 257）。品質越高，帶邊緣和
+精細的過剩/虧損結構越平滑，但計算時間越長。</value>
+  </data>
+  <data name="labelKikuchiQuality.Text" xml:space="preserve">
+    <value>品質</value>
   </data>
 </root>

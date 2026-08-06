@@ -99,7 +99,7 @@
   <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>상위</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="labelKikuchiLineWidth.Text" xml:space="preserve">
     <value>선 너비</value>
   </data>
   <data name="tabPageKikuchi.Text" xml:space="preserve">
@@ -563,13 +563,21 @@ g 벡터의 길이)가 표시됩니다</value>
 1/값보다 큰 반사만 표시됩니다.</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>키쿠치 선의 색을 설정합니다.</value>
+    <value>동역학적 키쿠치 밴드의 과잉(밝은) 쪽 색입니다. 밴드
+대비가 양수인, 즉 강도가 확산 배경보다 높은
+픽셀입니다.</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>키쿠치 선의 선 너비를 설정합니다</value>
+    <value>기하학적·운동학적 키쿠치 선의 선 굵기(펜 두께)입니다
+(1〜10000, 기본 4000). 실제 굵기는 표시 해상도에도
+비례합니다. 동역학적 밴드의 폭은 계산된 프로파일로
+정해지므로 영향받지 않습니다.</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value>키쿠치 선의 선 너비를 설정합니다</value>
+  <data name="labelKikuchiLineWidth.ToolTip" xml:space="preserve">
+    <value>기하학적·운동학적 키쿠치 선의 선 굵기(펜 두께)입니다
+(1〜10000, 기본 4000). 실제 굵기는 표시 해상도에도
+비례합니다. 동역학적 밴드의 폭은 계산된 프로파일로
+정해지므로 영향받지 않습니다.</value>
   </data>
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
     <value>키쿠치</value>
@@ -1059,7 +1067,7 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
     <value>배경</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>키쿠치 선 색</value>
+    <value>과잉</value>
   </data>
   <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
     <value>디바이 링 색</value>
@@ -1096,5 +1104,132 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
   </data>
   <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
     <value>소광 점(격자 중심화)</value>
+  </data>
+  <data name="labelKikuchiMode.Text" xml:space="preserve">
+    <value>모드</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.Text" xml:space="preserve">
+    <value>밝기 고정</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.HeaderText" xml:space="preserve">
+    <value>밴드 수</value>
+  </data>
+  <data name="labelKikuchiContrast.Text" xml:space="preserve">
+    <value>대비</value>
+  </data>
+  <data name="colorControlDeficientLine.FooterText" xml:space="preserve">
+    <value>결손</value>
+  </data>
+  <data name="labelKikuchiScale.Text" xml:space="preserve">
+    <value>스케일</value>
+  </data>
+  <data name="labelKikuchiMode.ToolTip" xml:space="preserve">
+    <value>키쿠치 선의 표시 모드입니다. 오른쪽 설정 그룹이 모드에 따라
+바뀝니다.
+기하학적: 선택된 모든 선을 하나의 고정 색으로 그립니다.
+운동학적: 선의 불투명도가 각 반사의 운동학적 상대
+강도를 따릅니다.
+동역학적: 백그라운드 스레드에서 2빔 동역학적 과잉/결손
+밴드 프로파일을 계산합니다. 계산 중에는 기하학적 선이
+대신 그려집니다.</value>
+  </data>
+  <data name="comboBoxKikuchiMode.ToolTip" xml:space="preserve">
+    <value>키쿠치 선의 표시 모드입니다. 오른쪽 설정 그룹이 모드에 따라
+바뀝니다.
+기하학적: 선택된 모든 선을 하나의 고정 색으로 그립니다.
+운동학적: 선의 불투명도가 각 반사의 운동학적 상대
+강도를 따릅니다.
+동역학적: 백그라운드 스레드에서 2빔 동역학적 과잉/결손
+밴드 프로파일을 계산합니다. 계산 중에는 기하학적 선이
+대신 그려집니다.</value>
+  </data>
+  <data name="checkBoxKikuchiFixedScale.ToolTip" xml:space="preserve">
+    <value>동역학적 밴드의 밝기 정규화를 현재 값으로 고정합니다.
+끄면 재계산 때마다 스케일이 다시 결정되므로 (밴드
+대비의 98.5 백분위수) 방위가 바뀔 때 밝기가 튈 수
+있습니다. 방위·두께·가속 전압 간에 밝기를 비교하려면
+고정하세요.</value>
+  </data>
+  <data name="numericBoxKikuchiBandNumber.ToolTip" xml:space="preserve">
+    <value>동역학적 프로파일로 그리는 키쿠치 밴드의 수입니다
+(1〜50, 기본 30). 반사를 먼저 구조 인자로 정렬한 뒤
+동역학적 대비가 큰 상위 N개를 유지합니다. 값이 크면
+밴드가 많이 표시되지만 계산이 오래 걸립니다. 왼쪽의 반사 선택
+('상위' / '1/d 컷오프')과는 별개입니다.</value>
+  </data>
+  <data name="comboBoxKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>동역학적 밴드 프로파일의 품질 프리셋: 각 밴드를
+가로지르는 샘플 점 수 (고속 65 / 표준 129 / 고품질
+257). 품질이 높을수록 밴드 가장자리와 미세한 과잉/결손
+구조가 매끄럽게 해상되지만 계산이 오래 걸립니다.</value>
+  </data>
+  <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>스케일 곡선이 불투명도로 압축하기 전에 동역학적 밴드
+대비에 곱하는 이득입니다 (1〜100; 50 = x1.0, 100 =
+x2.0). 오른쪽으로 움직이면 약한 밴드가 살아나고,
+왼쪽으로 움직이면 강한 밴드의 포화를 막습니다. 표시만
+바꾸며 계산된 강도는 바꾸지 않습니다.</value>
+  </data>
+  <data name="trackBarKikuchiContrast.ToolTip" xml:space="preserve">
+    <value>스케일 곡선이 불투명도로 압축하기 전에 동역학적 밴드
+대비에 곱하는 이득입니다 (1〜100; 50 = x1.0, 100 =
+x2.0). 오른쪽으로 움직이면 약한 밴드가 살아나고,
+왼쪽으로 움직이면 강한 밴드의 포화를 막습니다. 표시만
+바꾸며 계산된 강도는 바꾸지 않습니다.</value>
+  </data>
+  <data name="colorControlDeficientLine.ToolTip" xml:space="preserve">
+    <value>동역학적 키쿠치 밴드의 결손(어두운) 쪽 색입니다. 밴드
+대비가 음수인, 즉 강도가 확산 배경보다 낮은
+픽셀입니다.</value>
+  </data>
+  <data name="labelKikuchiScale.ToolTip" xml:space="preserve">
+    <value>부호 있는 밴드 대비의 밝기 압축입니다 (x = |c| x
+대비 / 자동 스케일):
+Linear = min(x, 1); 이상적인 검출기의 풀웰 클리핑처럼
+포화합니다.
+Log = log10(1 + 9x), 1에서 잘림 (로그 스케일 이미지
+표시와 같은 취지).
+Tanh = tanh(x); 부드러운 소프트 리미터 (기본값).
+모두 시각화 변환이며 물리적 카메라 응답이 아닙니다.</value>
+  </data>
+  <data name="comboBoxKikuchiScale.ToolTip" xml:space="preserve">
+    <value>부호 있는 밴드 대비의 밝기 압축입니다 (x = |c| x
+대비 / 자동 스케일):
+Linear = min(x, 1); 이상적인 검출기의 풀웰 클리핑처럼
+포화합니다.
+Log = log10(1 + 9x), 1에서 잘림 (로그 스케일 이미지
+표시와 같은 취지).
+Tanh = tanh(x); 부드러운 소프트 리미터 (기본값).
+모두 시각화 변환이며 물리적 카메라 응답이 아닙니다.</value>
+  </data>
+  <data name="labelKikuchiNotice.ToolTip" xml:space="preserve">
+    <value>동역학적 밴드의 밝기는 시각화 변환이며 물리적 카메라
+응답이 아닙니다: 모든 밴드의 부호 있는 대비 c = (I -
+I_ref)/I_ref 를 픽셀마다 합산한 뒤, 선택한 스케일 곡선
+(Linear / Log / Tanh) 으로 한 번만 불투명도로
+압축합니다 (과잉 = 양의 색, 결손 = 음의 색).
+"source-loss unbalanced": 이 버전은 흡수와 확산 소스를
+같은 산란 커널에서 유도하지 않으므로, 의미가 있는 것은
+프로파일의 상대적 형태와 과잉/결손의 부호까지입니다.
+"B→0.5": B 인자가 0인 원자에 기본 등방 B = 0.5 Å²(0.005
+nm²)를 대용했습니다.</value>
+  </data>
+  <data name="colorControlKikuchiLine.FooterText" xml:space="preserve">
+    <value>키쿠치 선 색</value>
+  </data>
+  <data name="colorControlKikuchiLine.ToolTip" xml:space="preserve">
+    <value>기하학적·운동학적 키쿠치 선의 색입니다. 기하학적 모드에서는
+선택된 모든 선을 이 한 가지 색으로 그리고, 운동학적
+모드에서는 각 선이 해당 반사의 상대 강도에 따라 배경색 쪽으로
+혼합됩니다. 동역학적 모드는 과잉 / 결손 색을 사용합니다.</value>
+  </data>
+  <data name="labelKikuchiQuality.ToolTip" xml:space="preserve">
+    <value>동역학적 밴드 프로파일의 품질 프리셋: 각 밴드를
+가로지르는 샘플 점 수 (고속 65 / 표준 129 / 고품질
+257). 품질이 높을수록 밴드 가장자리와 미세한 과잉/결손
+구조가 매끄럽게 해상되지만 계산이 오래 걸립니다.</value>
+  </data>
+  <data name="labelKikuchiQuality.Text" xml:space="preserve">
+    <value>품질</value>
   </data>
 </root>

@@ -186,10 +186,24 @@ title: Diffraction Simulator
 
 ![菊池線索引標籤](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
+![菊池線索引標籤（動力學模式）](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi-dynamical.png)
+
 於工具列啟用菊池線時生效。
 
 - **Reflection selection** ：選擇由哪些反射產生菊池線。可選 **structure factor**（依 $\lvert F_{hkl}\rvert$ 排序的前 *N* 個反射）或 **1/d cutoff**（所有 1/d 低於門檻 (nm⁻¹) 的反射）。
-- **Line appearance** ：設定線寬、菊池線顏色，以及 **Draw with kinematical intensity**（依反射的運動學強度縮放線條深淺）。
+- **模式** : 菊池線的繪製方式。組合方塊下方的設定隨模式切換。
+    - **幾何** : 所有選取的線以同一固定顏色繪製。
+    - **運動學** : 線的濃淡依各反射的運動學相對強度變化。
+    - **動力學** : 以熱漫散射為源的雙束動力學過剩/虧損帶輪廓，在背景執行緒中計算。過剩帶出現在高角側，虧損特徵朝向直射束一側；試樣厚度與強度設定共用。計算期間先以幾何線代替顯示。
+- **幾何 / 運動學的設定** : **菊池線顏色** 和 **線寬**。
+- **動力學的設定** :
+    - **過剩側** / **虧損側** : 帶的明亮側（對比度為正）與暗側（對比度為負）的顏色。
+    - **帶數** : 以動力學輪廓繪製的帶數（依動力學對比度取前 *N* 條；1〜50，預設 30）。
+    - **品質** : 橫越每條帶的取樣點數（快速 65 / 標準 129 / 高 257）。
+    - **對比度** : 壓縮前施加到帶對比度上的顯示增益。
+    - **標度** : 亮度壓縮曲線（Linear / Log / Tanh）。皆為視覺化變換，並非物理相機響應。
+    - **鎖定亮度** : 凍結亮度正規化，例如用於比較不同取向或厚度。
+    - 下方灰色註記顯示源與吸收不一致的提示、繪製的帶數及診斷資訊（例如對 *B* = 0 的原子代用預設 *B* 因子）。
 - **Threshold** ：舊版參數。僅對 *d* 大於指定值的反射執行菊池線計算（為相容性而保留）。
 
 ### 德拜環

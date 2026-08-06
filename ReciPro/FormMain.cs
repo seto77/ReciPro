@@ -530,7 +530,7 @@ public partial class FormMain : FormBase
         //   (portable ZIP のみ同梱・MSI staging は release.yml の leak 検査で排除済み。上の Check Updates 非表示判定と同じ方法)。
         var arch = RuntimeInformation.ProcessArchitecture.ToString().ToLowerInvariant(); // "x64" / "arm64"
         var package = File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")) ? "zip" : "msi";
-        Text = "ReciPro  " + Version.VersionAndDate[..^1] + $",{arch}{package})" + (glControlAxes == null ? "  (3D rendering disable mode)" : "");
+        Text = "ReciPro  " + Version.VersionAndDate[..^1] + $", {arch}{package})" + (glControlAxes == null ? "  (3D rendering disable mode)" : "");
 
         commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
         if (commonDialog.AutomaticallyClose)

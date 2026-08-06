@@ -186,10 +186,24 @@ Définit les couleurs des réflexions, des étiquettes, des lignes de Kikuchi, d
 
 ![Onglet Lignes de Kikuchi](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
+![Onglet Kikuchi (mode Dynamique)](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi-dynamical.png)
+
 Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 
 - **Reflection selection** : Choisit quelles réflexions génèrent les lignes de Kikuchi. Soit **structure factor** (les *N* premières réflexions selon $\lvert F_{hkl}\rvert$), soit **1/d cutoff** (toutes les réflexions dont le 1/d est inférieur au seuil (nm⁻¹)).
-- **Line appearance** : Définit la largeur de ligne, la couleur des lignes de Kikuchi et **Draw with kinematical intensity** (met à l'échelle l'intensité de la ligne selon l'intensité cinématique de la réflexion).
+- **Mode** : Manière de tracer les lignes de Kikuchi. Les réglages sous la liste déroulante changent avec le mode.
+    - **Géométrique** : toutes les lignes sélectionnées dans une couleur fixe.
+    - **Cinématique** : l'obscurité des lignes suit l'intensité relative cinématique de chaque réflexion.
+    - **Dynamique** : profils de bandes excédent/déficit dynamiques à deux ondes alimentés par la diffusion thermique diffuse, calculés en arrière-plan. Les bandes excédentaires apparaissent du côté des grands angles et les traits déficitaires vers le faisceau direct ; l'épaisseur de l'échantillon est partagée avec les réglages d'intensité. Les lignes géométriques sont tracées en attendant la fin du calcul.
+- **Réglages Géométrique / Cinématique** : **Couleur des lignes de Kikuchi** et **Largeur de ligne**.
+- **Réglages Dynamique** :
+    - **Excès** / **Déficit** : couleurs du côté clair (contraste positif) et sombre (contraste négatif) des bandes.
+    - **Bandes** : Nombre de bandes tracées avec des profils dynamiques (les *N* meilleures par contraste dynamique ; 1–50, 30 par défaut).
+    - **Qualité** : Points d'échantillonnage à travers chaque bande (Rapide 65 / Standard 129 / Élevée 257).
+    - **Contraste** : Gain d'affichage appliqué au contraste des bandes avant compression.
+    - **Échelle** : Courbe de compression de luminosité (Linear / Log / Tanh). Ce sont des transformations de visualisation, pas des réponses physiques de caméra.
+    - **Luminosité fixe** : Fige la normalisation de luminosité, p. ex. pour comparer différentes orientations ou épaisseurs.
+    - La ligne de note grise indique la mention de déséquilibre source/perte, le nombre de bandes tracées et des diagnostics (p. ex. facteur *B* par défaut substitué aux atomes avec *B* = 0).
 - **Threshold** : Un paramètre hérité. Exécute le calcul des lignes de Kikuchi uniquement pour les réflexions dont le *d* est supérieur à la valeur spécifiée (conservé pour compatibilité).
 
 ### Anneaux de Debye

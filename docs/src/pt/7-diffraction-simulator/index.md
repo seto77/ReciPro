@@ -186,10 +186,24 @@ Define as cores dos reflexos, rótulos, linhas de Kikuchi, anéis de Debye e out
 
 ![Aba Kikuchi](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
+![Separador Kikuchi (modo Dinâmico)](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi-dynamical.png)
+
 Ativa quando as linhas de Kikuchi estão habilitadas na barra de ferramentas.
 
 - **Reflection selection** : Escolhe quais reflexos geram as linhas de Kikuchi. Ou **structure factor** (os *N* reflexos principais por $\lvert F_{hkl}\rvert$) ou **1/d cutoff** (todos os reflexos cujo 1/d está abaixo do limiar (nm⁻¹)).
-- **Line appearance** : Define a largura da linha, a cor das linhas de Kikuchi e **Draw with kinematical intensity** (escala o escurecimento da linha pela intensidade cinemática do reflexo).
+- **Modo** : Como as linhas de Kikuchi são desenhadas. Os ajustes abaixo da caixa de combinação mudam com o modo.
+    - **Geométrico** : todas as linhas selecionadas em uma cor fixa.
+    - **Cinemático** : a escuridão da linha segue a intensidade relativa cinemática de cada reflexão.
+    - **Dinâmico** : perfis de banda excesso/deficiente dinâmicos de dois feixes alimentados por espalhamento térmico difuso, calculados em segundo plano. As bandas de excesso aparecem no lado de ângulos altos e os traços deficientes na direção do feixe direto; a espessura da amostra é compartilhada com os ajustes de intensidade. As linhas geométricas são desenhadas enquanto o cálculo decorre.
+- **Ajustes Geométrico / Cinemático** : **Cor das linhas de Kikuchi** e **Largura da linha**.
+- **Ajustes Dinâmico** :
+    - **Excesso** / **Deficiente** : cores do lado claro (contraste positivo) e escuro (contraste negativo) das bandas.
+    - **Bandas** : Número de bandas desenhadas com perfis dinâmicos (as *N* melhores por contraste dinâmico; 1–50, padrão 30).
+    - **Qualidade** : Pontos de amostragem através de cada banda (Rápido 65 / Padrão 129 / Alta 257).
+    - **Contraste** : Ganho de exibição aplicado ao contraste da banda antes da compressão.
+    - **Escala** : Curva de compressão de brilho (Linear / Log / Tanh). São transformações de visualização, não respostas físicas de câmera.
+    - **Brilho fixo** : Congela a normalização de brilho, p. ex. para comparar orientações ou espessuras diferentes.
+    - A linha de aviso cinza indica a marca de desequilíbrio fonte/perda, o número de bandas desenhadas e diagnósticos (p. ex. fator *B* padrão substituído em átomos com *B* = 0).
 - **Threshold** : Um parâmetro legado. Executa o cálculo das linhas de Kikuchi apenas para reflexos com *d* maior que o valor especificado (mantido por compatibilidade).
 
 ### Anéis de Debye

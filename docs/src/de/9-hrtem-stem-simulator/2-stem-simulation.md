@@ -197,6 +197,18 @@ Ein ausführlicherer Bericht ist als PDF verfügbar: [Vergleich von STEM-Simulat
 
 ---
 
+## Vergleich mit py_multislice
+
+Die STEM-EDX-Karten von ReciPro wurden außerdem gegen [py_multislice](https://github.com/HamishGBrown/py_multislice) geprüft, einen unabhängigen Multislice-/Frozen-Phonon-Code. Die Abbildung vergleicht O-K-, Ti-K- und Sr-L-Karten von SrTiO₃ [001] bei 200 kV über eine Dickenserie (3,91–62,48 nm), aberrationsfrei (links) und mit Cs = 0,2 mm, Defokus = −25,9 nm (rechts).
+
+![STEM-EDX-Simulationsvergleich: py_multislice vs. ReciPro](../../assets/references/STEM_EDX_pyms_comparison.png)
+
+Die normierten Kartenformen stimmen im dünnen Grenzfall für Ti-K und Sr-L auf 1–2 % überein. Die **Summen** unterscheiden sich um ±10–17 %, weil beide Codes ihre Ionisationsquerschnitte aus verschiedenen Quellen beziehen (Bote–Salvat in ReciPro, Allen-Gruppen-Tabellen in py_multislice). Das Verhältnis ReciPro / py_multislice fällt zudem mit der Dicke, da ReciPros absorptives Modell thermisch gestreute Elektronen entfernt, während sie im Frozen-Phonon-Modell weiter ionisieren — das quantifiziert den praktischen Fehler der absorptiven Näherung für EDX.
+
+Der vollständige Bericht mit den quantitativen Kurven und der Ortsfrequenzanalyse steht als PDF bereit: [Vergleich von STEM-EDX-Simulationen mit py_multislice und ReciPro (v4.945)](../../assets/references/STEM_EDX_pyms_comparison.pdf).
+
+---
+
 ## Siehe auch
 
 - [HRTEM/STEM-Simulator (Übersicht)](index.md)

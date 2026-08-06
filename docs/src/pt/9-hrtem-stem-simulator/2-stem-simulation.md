@@ -197,6 +197,18 @@ Um relatório mais detalhado está disponível em PDF: [Comparação de simulaç
 
 ---
 
+## Comparação com o py_multislice
+
+Os mapas STEM-EDX do ReciPro também foram verificados contra o [py_multislice](https://github.com/HamishGBrown/py_multislice), um código multislice / fonão congelado independente. A figura compara os mapas O-K, Ti-K e Sr-L de SrTiO₃ [001] a 200 kV numa série de espessuras (3,91–62,48 nm), sem aberrações (à esquerda) e com Cs = 0,2 mm, desfocagem = −25,9 nm (à direita).
+
+![Comparação de simulações STEM-EDX: py_multislice vs ReciPro](../../assets/references/STEM_EDX_pyms_comparison.png)
+
+As formas normalizadas dos mapas concordam em 1–2 % para Ti-K e Sr-L no limite fino. Os **totais** diferem em ±10–17 % porque os dois códigos obtêm as secções eficazes de ionização de fontes diferentes (Bote–Salvat no ReciPro, tabelas do grupo Allen no py_multislice). A razão ReciPro / py_multislice também cai com a espessura, porque o modelo absortivo do ReciPro remove os eletrões dispersos termicamente enquanto o fonão congelado os mantém a ionizar — o que quantifica o erro prático da aproximação absortiva para EDX.
+
+O relatório completo, com as curvas quantitativas e a análise em frequência espacial, está disponível em PDF: [Comparação de simulações STEM-EDX por py_multislice e ReciPro (v4.945)](../../assets/references/STEM_EDX_pyms_comparison.pdf).
+
+---
+
 ## Veja também
 
 - [Simulador HRTEM/STEM (visão geral)](index.md)

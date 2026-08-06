@@ -186,10 +186,24 @@ Sets the colours of spots, labels, Kikuchi lines, Debye rings, and other overlay
 
 ![Kikuchi tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
+![Kikuchi tab (Dynamical mode)](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi-dynamical.png)
+
 Active when Kikuchi lines are enabled on the toolbar.
 
 - **Reflection selection** : Choose which reflections generate the Kikuchi lines. Either **structure factor** (the top *N* reflections by $\lvert F_{hkl}\rvert$) or **1/d cutoff** (all reflections whose 1/d is below the threshold (nm⁻¹)).
-- **Line appearance** : Sets the line width, the Kikuchi-line colour, and **Draw with kinematical intensity** (scales line darkness by the Kinematical intensity of the reflection).
+- **Mode** : How the Kikuchi lines are drawn. The settings below the combo box change with the mode.
+    - **Geometric** : all selected lines in a single fixed colour.
+    - **Kinematical** : line darkness follows the kinematical relative intensity of each reflection.
+    - **Dynamical** : two-beam dynamical excess/deficient band profiles fed by a thermal-diffuse-scattering source, computed in a background thread. Excess bands appear on the high-angle side and deficient features toward the direct beam; the specimen thickness is shared with the intensity settings. Geometric lines are drawn as a fallback while the computation runs.
+- **Geometric / Kinematical settings** : **Kikuchi line color** and **Line Width**.
+- **Dynamical settings** :
+    - **Excess** / **Deficient** : Colours of the bright (positive contrast) and dark (negative contrast) sides of the bands.
+    - **Bands** : Number of bands drawn with dynamical profiles (the top *N* by dynamical contrast; 1–50, default 30).
+    - **Quality** : Sample points across each band (Fast 65 / Standard 129 / High 257).
+    - **Contrast** : Display gain applied to the band contrast before compression.
+    - **Scale** : Brightness-compression curve (Linear / Log / Tanh). These are visualization transforms, not physical camera responses.
+    - **Lock brightness** : Freezes the brightness normalization, e.g. to compare different orientations or thicknesses.
+    - The grey notice line reports the source/loss mismatch tag, the number of bands drawn, and diagnostics such as a default *B* factor substituted for atoms with *B* = 0.
 - **Threshold** : A legacy parameter. Runs the Kikuchi-line calculation only for reflections with *d* greater than the specified value (retained for compatibility).
 
 ### Debye rings

@@ -197,6 +197,18 @@ Un rapport plus détaillé est disponible au format PDF : [Comparison of STEM si
 
 ---
 
+## Comparaison avec py_multislice
+
+Les cartes STEM-EDX de ReciPro ont également été vérifiées avec [py_multislice](https://github.com/HamishGBrown/py_multislice), un code multislice / phonon gelé indépendant. La figure ci-dessous compare les cartes O-K, Ti-K et Sr-L de SrTiO₃ [001] à 200 kV sur une série d'épaisseurs (3,91–62,48 nm), sans aberration (à gauche) et avec Cs = 0,2 mm, défocalisation = −25,9 nm (à droite).
+
+![Comparaison de simulations STEM-EDX : py_multislice vs ReciPro](../../assets/references/STEM_EDX_pyms_comparison.png)
+
+Les formes normalisées des cartes concordent à 1–2 % pour Ti-K et Sr-L dans la limite mince. Les **totaux** diffèrent de ±10–17 % car les deux codes tirent leurs sections efficaces d'ionisation de sources différentes (Bote–Salvat dans ReciPro, tables du groupe Allen dans py_multislice). Le rapport ReciPro / py_multislice décroît aussi avec l'épaisseur, parce que le modèle absorptif de ReciPro retire les électrons diffusés thermiquement alors que le phonon gelé les laisse ioniser — ce qui quantifie l'erreur pratique de l'approximation absorptive pour l'EDX.
+
+Le rapport complet, avec les courbes quantitatives et l'analyse en fréquence spatiale, est disponible en PDF : [Comparaison de simulations STEM-EDX par py_multislice et ReciPro (v4.945)](../../assets/references/STEM_EDX_pyms_comparison.pdf).
+
+---
+
 ## Voir aussi
 
 - [Simulateur HRTEM/STEM (présentation)](index.md)

@@ -197,6 +197,18 @@ ReciPro의 STEM 시뮬레이션은 널리 사용되는 Dr. Probe GUI (v1.10)와 
 
 ---
 
+## py_multislice와의 비교
+
+ReciPro의 STEM-EDX 원소 분포도는 독립적인 멀티슬라이스 / 동결 포논 코드인 [py_multislice](https://github.com/HamishGBrown/py_multislice)와도 대조 검증했습니다. 아래 그림은 SrTiO₃ [001], 200 kV에서의 O-K, Ti-K, Sr-L 분포도를 두께 계열(3.91〜62.48 nm)에 걸쳐 비교한 것으로, 왼쪽은 수차 없음, 오른쪽은 Cs = 0.2 mm·디포거스 −25.9 nm입니다.
+
+![STEM-EDX 시뮬레이션 비교: py_multislice와 ReciPro](../../assets/references/STEM_EDX_pyms_comparison.png)
+
+정규화한 분포 형상은 얇은 극한에서 Ti-K와 Sr-L 모두 1〜2 %로 일치합니다. 반면 **총량**은 ±10〜17 % 차이가 나는데, 두 코드가 이온화 단면적을 서로 다른 출처에서 가져오기 때문입니다(ReciPro는 Bote–Salvat, py_multislice는 Allen 그룹의 표). 또한 ReciPro / py_multislice 비가 두께에 따라 낮아지는 것은, ReciPro의 흡수 퍼텐셜 모형이 열산란된 전자를 제거하는 반면 동결 포논에서는 그 전자들이 계속 이온화에 기여하기 때문이며, EDX에서 흡수 근사가 갖는 실질적 오차를 정량화한 결과입니다.
+
+정량 비교 곡선과 공간 주파수 분석을 포함한 상세 보고서는 PDF로 볼 수 있습니다: [py_multislice와 ReciPro (v4.945)의 STEM-EDX 시뮬레이션 비교](../../assets/references/STEM_EDX_pyms_comparison.pdf).
+
+---
+
 ## 함께 보기
 
 - [HRTEM/STEM 시뮬레이터 (개요)](index.md)

@@ -33,22 +33,37 @@
         // groupBox6 -> groupBoxMonitor
         // groupBox7 -> groupBoxOptions
         // groupBox8 -> groupBoxViewDirection
-        // flowLayoutPanel1 -> flowLayoutPanelScaleDivision
+        // flowLayoutPanelKikuchiBandColors -> flowLayoutPanelScaleDivision
         // panel4 -> panelViewStep
         // panel3 -> panelReciprocalSpace
         // flowLayoutPanel13 -> flowLayoutPanelImageOrientation
-        // flowLayoutPanel12 -> flowLayoutPanelResolutionUnit
+        // flowLayoutPanelKikuchiMode -> flowLayoutPanelResolutionUnit
         // panel5 -> panelDetectorAndMisc
-        // panel2 -> panelSimulationOptions
+        // panelKikuchiGutter -> panelSimulationOptions
         // flowLayoutPanel4 -> flowLayoutPanelSpotShape
-        // flowLayoutPanel7 -> flowLayoutPanelSpotOpacity
-        // flowLayoutPanel8 -> flowLayoutPanelPointSpreadIntensity
-        // flowLayoutPanel9 -> flowLayoutPanelScaleColor
+        // flowLayoutPanelKikuchiBands -> flowLayoutPanelSpotOpacity
+        // flowLayoutPanelKikuchiLineWidth -> flowLayoutPanelPointSpreadIntensity
+        // flowLayoutPanelKikuchiContrast -> flowLayoutPanelScaleColor
         // flowLayoutPanel3 -> flowLayoutPanelIntensity
-        // flowLayoutPanel5 -> flowLayoutPanelBeamMode
-        // flowLayoutPanel10 -> flowLayoutPanelBeamType
+        // flowLayoutPanelKikuchiSelection -> flowLayoutPanelBeamMode
+        // flowLayoutPanelKikuchiScale -> flowLayoutPanelBeamType
         // flowLayoutPanel11 -> flowLayoutPanelWaveLength
         // (260520Cl) typo fix: numericBoxKikuchiThreadSholdOfStructureFactor -> numericBoxKikuchiThresholdOfStructureFactor (旧 typo "ThreadShold")
+        // (260807Cl) renamed Kikuchi tab controls: 260323Ch で汎用名を廃止した後、VS が空いた同じ名前を
+        //   菊池タブの新規コントロールへ再利用していたため (grep すると上表と食い違う場所に当たる)、意味のある名前へ寄せ直した:
+        // flowLayoutPanel1 -> flowLayoutPanelKikuchiBandColors   (Excess/Deficient の色)
+        // flowLayoutPanel5 -> flowLayoutPanelKikuchiSelection    (左カラム: Mode 行 + 反射選択)
+        // flowLayoutPanel7 -> flowLayoutPanelKikuchiBands        (Bands + Quality)
+        // flowLayoutPanel8 -> flowLayoutPanelKikuchiLineWidth
+        // flowLayoutPanel9 -> flowLayoutPanelKikuchiContrast
+        // flowLayoutPanel10 -> flowLayoutPanelKikuchiScale       (Scale + Lock brightness)
+        // flowLayoutPanel12 -> flowLayoutPanelKikuchiMode        (Mode ラベル + コンボ)
+        // flowLayoutPanel14 -> flowLayoutPanelKikuchiModePanels  (モード別 2 パネルの入れ物)
+        // flowLayoutPanelKinematical -> flowLayoutPanelKikuchiKinematical
+        // flowLayoutPanel1Dynamical  -> flowLayoutPanelKikuchiDynamical
+        // panel2 -> panelKikuchiGutter                           (左右カラム間の 6px 仕切り)
+        // label4 -> labelKikuchiQuality
+        // label11 -> labelKikuchiLineWidth
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -90,24 +105,36 @@
             checkBoxShowDirectPosition = new System.Windows.Forms.CheckBox();
             colorControlBackGround = new ColorControl();
             tabPageKikuchi = new System.Windows.Forms.TabPage();
-            radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
-            comboBoxKikuchiMode = new System.Windows.Forms.ComboBox(); // 260805Cl 追加: 旧 checkBoxKikuchiLine_Kinematical を表示モード選択に統合 (Geometric/Kinematical/Dynamical band)
-            labelKikuchiMode = new System.Windows.Forms.Label(); // 260805Cl 追加
-            numericBoxKikuchiBandNumber = new NumericBox(); // 260805Cl 追加: 動力学バンド表示本数 N
-            comboBoxKikuchiQuality = new System.Windows.Forms.ComboBox(); // 260805Cl 追加: 品質プリセット Fast/Standard/High
-            colorControlDeficientLine = new ColorControl(); // 260805Cl 追加: Deficient 色 (Excess は既存流用)
-            labelKikuchiScale = new System.Windows.Forms.Label(); // 260806Cl 追加
-            comboBoxKikuchiScale = new System.Windows.Forms.ComboBox(); // 260806Cl 追加: 強度スケール Linear/Log/Tanh (作者提案)
-            trackBarKikuchiContrast = new System.Windows.Forms.TrackBar(); // 260805Cl 追加: コントラスト
-            labelKikuchiContrast = new System.Windows.Forms.Label(); // 260805Cl 追加
-            checkBoxKikuchiFixedScale = new System.Windows.Forms.CheckBox(); // 260805Cl 追加: Auto/Fixed contrast scale
-            labelKikuchiNotice = new System.Windows.Forms.Label(); // 260805Cl 追加: 注記・警告表示
-            radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
-            numericBoxKikuchiThresholdOfStructureFactor = new NumericBox();
-            numericBoxKikuchiThresholdOfLength = new NumericBox();
-            colorControlExcessLine = new ColorControl();
+            flowLayoutPanelKikuchiModePanels = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelKikuchiKinematical = new System.Windows.Forms.FlowLayoutPanel();
+            colorControlKikuchiLine = new ColorControl();
+            flowLayoutPanelKikuchiLineWidth = new System.Windows.Forms.FlowLayoutPanel();
+            labelKikuchiLineWidth = new System.Windows.Forms.Label();
             trackBarLineWidth = new System.Windows.Forms.TrackBar();
-            label11 = new System.Windows.Forms.Label();
+            flowLayoutPanelKikuchiDynamical = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelKikuchiBandColors = new System.Windows.Forms.FlowLayoutPanel();
+            colorControlExcessLine = new ColorControl();
+            colorControlDeficientLine = new ColorControl();
+            flowLayoutPanelKikuchiBands = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxKikuchiBandNumber = new NumericBox();
+            labelKikuchiQuality = new System.Windows.Forms.Label();
+            comboBoxKikuchiQuality = new System.Windows.Forms.ComboBox();
+            flowLayoutPanelKikuchiContrast = new System.Windows.Forms.FlowLayoutPanel();
+            labelKikuchiContrast = new System.Windows.Forms.Label();
+            trackBarKikuchiContrast = new System.Windows.Forms.TrackBar();
+            flowLayoutPanelKikuchiScale = new System.Windows.Forms.FlowLayoutPanel();
+            labelKikuchiScale = new System.Windows.Forms.Label();
+            comboBoxKikuchiScale = new System.Windows.Forms.ComboBox();
+            checkBoxKikuchiFixedScale = new System.Windows.Forms.CheckBox();
+            labelKikuchiNotice = new System.Windows.Forms.Label();
+            panelKikuchiGutter = new System.Windows.Forms.Panel();
+            flowLayoutPanelKikuchiSelection = new System.Windows.Forms.FlowLayoutPanel();
+            labelKikuchiMode = new System.Windows.Forms.Label();
+            comboBoxKikuchiMode = new System.Windows.Forms.ComboBox();
+            radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
+            numericBoxKikuchiThresholdOfStructureFactor = new NumericBox();
+            radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
+            numericBoxKikuchiThresholdOfLength = new NumericBox();
             tabPageDebye = new System.Windows.Forms.TabPage();
             colorControlDebyeRing = new ColorControl();
             checkBoxDebyeRingLabel = new System.Windows.Forms.CheckBox();
@@ -316,6 +343,7 @@
             timerBlinkKikuchiLine = new System.Windows.Forms.Timer(components);
             timerBlinkDebyeRing = new System.Windows.Forms.Timer(components);
             timerBlinkScale = new System.Windows.Forms.Timer(components);
+            flowLayoutPanelKikuchiMode = new System.Windows.Forms.FlowLayoutPanel();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -330,8 +358,17 @@
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             groupBoxColor.SuspendLayout();
             tabPageKikuchi.SuspendLayout();
+            flowLayoutPanelKikuchiModePanels.SuspendLayout();
+            flowLayoutPanelKikuchiKinematical.SuspendLayout();
+            flowLayoutPanelKikuchiLineWidth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiContrast).BeginInit(); // 260805Cl 追加
+            flowLayoutPanelKikuchiDynamical.SuspendLayout();
+            flowLayoutPanelKikuchiBandColors.SuspendLayout();
+            flowLayoutPanelKikuchiBands.SuspendLayout();
+            flowLayoutPanelKikuchiContrast.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiContrast).BeginInit();
+            flowLayoutPanelKikuchiScale.SuspendLayout();
+            flowLayoutPanelKikuchiSelection.SuspendLayout();
             tabPageDebye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDebyeRingWidth).BeginInit();
             tabPageScale.SuspendLayout();
@@ -381,6 +418,7 @@
             flowLayoutPanelExtinctionOption.SuspendLayout();
             flowLayoutPanelBeamMode.SuspendLayout();
             flowLayoutPanelWaveLength.SuspendLayout();
+            flowLayoutPanelKikuchiMode.SuspendLayout();
             SuspendLayout();
             // 
             // toolStripContainer1
@@ -722,26 +760,227 @@
             // 
             tabPageKikuchi.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageKikuchi, true);
-            tabPageKikuchi.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
-            tabPageKikuchi.Controls.Add(radioButtonKikuchiThresholdOfLength);
-            tabPageKikuchi.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
-            tabPageKikuchi.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            tabPageKikuchi.Controls.Add(colorControlExcessLine);
-            tabPageKikuchi.Controls.Add(trackBarLineWidth);
-            tabPageKikuchi.Controls.Add(label11);
-            tabPageKikuchi.Controls.Add(labelKikuchiMode); // 260805Cl 追加 (旧 checkBoxKikuchiLine_Kinematical はモード選択へ統合)
-            tabPageKikuchi.Controls.Add(comboBoxKikuchiMode); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(checkBoxKikuchiFixedScale); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(numericBoxKikuchiBandNumber); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(comboBoxKikuchiQuality); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(labelKikuchiContrast); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(trackBarKikuchiContrast); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(colorControlDeficientLine); // 260805Cl 追加
-            tabPageKikuchi.Controls.Add(labelKikuchiScale); // 260806Cl 追加
-            tabPageKikuchi.Controls.Add(comboBoxKikuchiScale); // 260806Cl 追加
-            tabPageKikuchi.Controls.Add(labelKikuchiNotice); // 260805Cl 追加
+            tabPageKikuchi.Controls.Add(flowLayoutPanelKikuchiModePanels);
+            tabPageKikuchi.Controls.Add(panelKikuchiGutter);
+            tabPageKikuchi.Controls.Add(flowLayoutPanelKikuchiSelection);
             resources.ApplyResources(tabPageKikuchi, "tabPageKikuchi");
             tabPageKikuchi.Name = "tabPageKikuchi";
+            //260807Cl /simplify 削除: tabPageKikuchi.Click += tabPageKikuchi_Click (中身が空の no-op ハンドラだった)
+            // 
+            // flowLayoutPanelKikuchiModePanels
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiModePanels, "flowLayoutPanelKikuchiModePanels");
+            flowLayoutPanelKikuchiModePanels.Controls.Add(flowLayoutPanelKikuchiKinematical);
+            flowLayoutPanelKikuchiModePanels.Controls.Add(flowLayoutPanelKikuchiDynamical);
+            flowLayoutPanelKikuchiModePanels.Name = "flowLayoutPanelKikuchiModePanels";
+            // 
+            // flowLayoutPanelKikuchiKinematical
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiKinematical, "flowLayoutPanelKikuchiKinematical");
+            flowLayoutPanelKikuchiKinematical.Controls.Add(colorControlKikuchiLine);
+            flowLayoutPanelKikuchiKinematical.Controls.Add(flowLayoutPanelKikuchiLineWidth);
+            flowLayoutPanelKikuchiKinematical.Name = "flowLayoutPanelKikuchiKinematical";
+            // 
+            // colorControlKikuchiLine
+            // 
+            resources.ApplyResources(colorControlKikuchiLine, "colorControlKikuchiLine");
+            colorControlKikuchiLine.BackColor = System.Drawing.SystemColors.Control;
+            colorControlKikuchiLine.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlKikuchiLine.Color = System.Drawing.Color.Yellow;
+            colorControlKikuchiLine.Name = "colorControlKikuchiLine";
+            toolTip.SetToolTip(colorControlKikuchiLine, resources.GetString("colorControlKikuchiLine.ToolTip")); //260806Cl 追加: 兄弟 ColorControl と同じ親バルーン経路
+            colorControlKikuchiLine.ColorChanged += Draw;
+            // 
+            // flowLayoutPanelKikuchiLineWidth
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiLineWidth, "flowLayoutPanelKikuchiLineWidth");
+            flowLayoutPanelKikuchiLineWidth.Controls.Add(labelKikuchiLineWidth);
+            flowLayoutPanelKikuchiLineWidth.Controls.Add(trackBarLineWidth);
+            flowLayoutPanelKikuchiLineWidth.Name = "flowLayoutPanelKikuchiLineWidth";
+            // 
+            // labelKikuchiLineWidth
+            // 
+            resources.ApplyResources(labelKikuchiLineWidth, "labelKikuchiLineWidth");
+            labelKikuchiLineWidth.Name = "labelKikuchiLineWidth";
+            toolTip.SetToolTip(labelKikuchiLineWidth, resources.GetString("labelKikuchiLineWidth.ToolTip"));
+            // 
+            // trackBarLineWidth
+            // 
+            resources.ApplyResources(trackBarLineWidth, "trackBarLineWidth");
+            trackBarLineWidth.Maximum = 10000;
+            trackBarLineWidth.Minimum = 1;
+            trackBarLineWidth.Name = "trackBarLineWidth";
+            trackBarLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarLineWidth, resources.GetString("trackBarLineWidth.ToolTip"));
+            trackBarLineWidth.Value = 4000;
+            trackBarLineWidth.ValueChanged += numericUpDownResolution_ValueChanged;
+            // 
+            // flowLayoutPanelKikuchiDynamical
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiDynamical, "flowLayoutPanelKikuchiDynamical");
+            flowLayoutPanelKikuchiDynamical.Controls.Add(flowLayoutPanelKikuchiBandColors);
+            flowLayoutPanelKikuchiDynamical.Controls.Add(flowLayoutPanelKikuchiBands);
+            flowLayoutPanelKikuchiDynamical.Controls.Add(flowLayoutPanelKikuchiContrast);
+            flowLayoutPanelKikuchiDynamical.Controls.Add(flowLayoutPanelKikuchiScale);
+            flowLayoutPanelKikuchiDynamical.Controls.Add(labelKikuchiNotice);
+            flowLayoutPanelKikuchiDynamical.Name = "flowLayoutPanelKikuchiDynamical";
+            // 
+            // flowLayoutPanelKikuchiBandColors
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiBandColors, "flowLayoutPanelKikuchiBandColors");
+            flowLayoutPanelKikuchiBandColors.Controls.Add(colorControlExcessLine);
+            flowLayoutPanelKikuchiBandColors.Controls.Add(colorControlDeficientLine);
+            flowLayoutPanelKikuchiBandColors.Name = "flowLayoutPanelKikuchiBandColors";
+            // 
+            // colorControlExcessLine
+            // 
+            resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
+            colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
+            colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
+            //colorControlExcessLine.Color = System.Drawing.Color.Yellow; //260806Cl 変更前 (E/D = 黄/赤)
+            colorControlExcessLine.Color = System.Drawing.Color.White; //260806Cl 作者指定: Excess = 白
+            colorControlExcessLine.Name = "colorControlExcessLine";
+            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip"));
+            colorControlExcessLine.ColorChanged += Draw;
+            // 
+            // colorControlDeficientLine
+            // 
+            resources.ApplyResources(colorControlDeficientLine, "colorControlDeficientLine");
+            colorControlDeficientLine.BackColor = System.Drawing.SystemColors.Control;
+            colorControlDeficientLine.BoxSize = new System.Drawing.Size(20, 20);
+            //colorControlDeficientLine.Color = System.Drawing.Color.Red; //260805Cl 変更前 (作者指定: Deficient = 赤)
+            colorControlDeficientLine.Color = System.Drawing.Color.Black; //260806Cl 作者指定: Deficient = 黒
+            colorControlDeficientLine.Name = "colorControlDeficientLine";
+            toolTip.SetToolTip(colorControlDeficientLine, resources.GetString("colorControlDeficientLine.ToolTip"));
+            colorControlDeficientLine.ColorChanged += Draw;
+            // 
+            // flowLayoutPanelKikuchiBands
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiBands, "flowLayoutPanelKikuchiBands");
+            flowLayoutPanelKikuchiBands.Controls.Add(numericBoxKikuchiBandNumber);
+            flowLayoutPanelKikuchiBands.Controls.Add(labelKikuchiQuality);
+            flowLayoutPanelKikuchiBands.Controls.Add(comboBoxKikuchiQuality);
+            flowLayoutPanelKikuchiBands.Name = "flowLayoutPanelKikuchiBands";
+            // 
+            // numericBoxKikuchiBandNumber
+            // 
+            numericBoxKikuchiBandNumber.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxKikuchiBandNumber, "numericBoxKikuchiBandNumber");
+            numericBoxKikuchiBandNumber.Maximum = 50D;
+            numericBoxKikuchiBandNumber.Minimum = 1D;
+            numericBoxKikuchiBandNumber.Name = "numericBoxKikuchiBandNumber";
+            numericBoxKikuchiBandNumber.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxKikuchiBandNumber, resources.GetString("numericBoxKikuchiBandNumber.ToolTip"));
+            //numericBoxKikuchiBandNumber.Value = 10D; //260806Cl 変更前 (既定 10 本)
+            numericBoxKikuchiBandNumber.Value = 30D; //260806Cl 作者指定: 既定 30 本 (計算は遅くなる。高速化は今後の課題)
+            numericBoxKikuchiBandNumber.ValueBoxWidth = 32;
+            numericBoxKikuchiBandNumber.ValueFontSize = 9F;
+            numericBoxKikuchiBandNumber.ValueChanged += Draw;
+            // 
+            // labelKikuchiQuality
+            // 
+            resources.ApplyResources(labelKikuchiQuality, "labelKikuchiQuality");
+            labelKikuchiQuality.Name = "labelKikuchiQuality";
+            toolTip.SetToolTip(labelKikuchiQuality, resources.GetString("labelKikuchiQuality.ToolTip"));
+            // 
+            // comboBoxKikuchiQuality
+            // 
+            comboBoxKikuchiQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxKikuchiQuality, "comboBoxKikuchiQuality");
+            comboBoxKikuchiQuality.Name = "comboBoxKikuchiQuality";
+            toolTip.SetToolTip(comboBoxKikuchiQuality, resources.GetString("comboBoxKikuchiQuality.ToolTip"));
+            comboBoxKikuchiQuality.SelectedIndexChanged += Draw;
+            // 
+            // flowLayoutPanelKikuchiContrast
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiContrast, "flowLayoutPanelKikuchiContrast");
+            flowLayoutPanelKikuchiContrast.Controls.Add(labelKikuchiContrast);
+            flowLayoutPanelKikuchiContrast.Controls.Add(trackBarKikuchiContrast);
+            flowLayoutPanelKikuchiContrast.Name = "flowLayoutPanelKikuchiContrast";
+            // 
+            // labelKikuchiContrast
+            // 
+            resources.ApplyResources(labelKikuchiContrast, "labelKikuchiContrast");
+            labelKikuchiContrast.Name = "labelKikuchiContrast";
+            toolTip.SetToolTip(labelKikuchiContrast, resources.GetString("labelKikuchiContrast.ToolTip"));
+            // 
+            // trackBarKikuchiContrast
+            // 
+            resources.ApplyResources(trackBarKikuchiContrast, "trackBarKikuchiContrast");
+            trackBarKikuchiContrast.Maximum = 100;
+            trackBarKikuchiContrast.Minimum = 1;
+            trackBarKikuchiContrast.Name = "trackBarKikuchiContrast";
+            trackBarKikuchiContrast.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarKikuchiContrast, resources.GetString("trackBarKikuchiContrast.ToolTip"));
+            trackBarKikuchiContrast.Value = 50;
+            trackBarKikuchiContrast.ValueChanged += Draw;
+            // 
+            // flowLayoutPanelKikuchiScale
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiScale, "flowLayoutPanelKikuchiScale");
+            flowLayoutPanelKikuchiScale.Controls.Add(labelKikuchiScale);
+            flowLayoutPanelKikuchiScale.Controls.Add(comboBoxKikuchiScale);
+            flowLayoutPanelKikuchiScale.Controls.Add(checkBoxKikuchiFixedScale);
+            flowLayoutPanelKikuchiScale.Name = "flowLayoutPanelKikuchiScale";
+            // 
+            // labelKikuchiScale
+            // 
+            resources.ApplyResources(labelKikuchiScale, "labelKikuchiScale");
+            labelKikuchiScale.Name = "labelKikuchiScale";
+            toolTip.SetToolTip(labelKikuchiScale, resources.GetString("labelKikuchiScale.ToolTip"));
+            // 
+            // comboBoxKikuchiScale
+            // 
+            comboBoxKikuchiScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxKikuchiScale, "comboBoxKikuchiScale");
+            comboBoxKikuchiScale.Name = "comboBoxKikuchiScale";
+            toolTip.SetToolTip(comboBoxKikuchiScale, resources.GetString("comboBoxKikuchiScale.ToolTip"));
+            comboBoxKikuchiScale.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged;
+            // 
+            // checkBoxKikuchiFixedScale
+            // 
+            resources.ApplyResources(checkBoxKikuchiFixedScale, "checkBoxKikuchiFixedScale");
+            checkBoxKikuchiFixedScale.Name = "checkBoxKikuchiFixedScale";
+            toolTip.SetToolTip(checkBoxKikuchiFixedScale, resources.GetString("checkBoxKikuchiFixedScale.ToolTip"));
+            checkBoxKikuchiFixedScale.UseVisualStyleBackColor = true;
+            checkBoxKikuchiFixedScale.CheckedChanged += Draw;
+            // 
+            // labelKikuchiNotice
+            // 
+            labelKikuchiNotice.AutoEllipsis = true;
+            labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
+            resources.ApplyResources(labelKikuchiNotice, "labelKikuchiNotice");
+            labelKikuchiNotice.Name = "labelKikuchiNotice";
+            toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip"));
+            // 
+            // panelKikuchiGutter
+            // 
+            resources.ApplyResources(panelKikuchiGutter, "panelKikuchiGutter");
+            panelKikuchiGutter.Name = "panelKikuchiGutter";
+            // 
+            // flowLayoutPanelKikuchiSelection
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiSelection, "flowLayoutPanelKikuchiSelection");
+            flowLayoutPanelKikuchiSelection.Controls.Add(flowLayoutPanelKikuchiMode);
+            flowLayoutPanelKikuchiSelection.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
+            flowLayoutPanelKikuchiSelection.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
+            flowLayoutPanelKikuchiSelection.Controls.Add(radioButtonKikuchiThresholdOfLength);
+            flowLayoutPanelKikuchiSelection.Controls.Add(numericBoxKikuchiThresholdOfLength);
+            flowLayoutPanelKikuchiSelection.Name = "flowLayoutPanelKikuchiSelection";
+            // 
+            // labelKikuchiMode
+            // 
+            resources.ApplyResources(labelKikuchiMode, "labelKikuchiMode");
+            labelKikuchiMode.Name = "labelKikuchiMode";
+            toolTip.SetToolTip(labelKikuchiMode, resources.GetString("labelKikuchiMode.ToolTip"));
+            // 
+            // comboBoxKikuchiMode
+            // 
+            comboBoxKikuchiMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxKikuchiMode, "comboBoxKikuchiMode");
+            comboBoxKikuchiMode.Name = "comboBoxKikuchiMode";
+            toolTip.SetToolTip(comboBoxKikuchiMode, resources.GetString("comboBoxKikuchiMode.ToolTip"));
+            comboBoxKikuchiMode.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged;
             // 
             // radioButtonKikuchiThresholdOfStructureFactor
             // 
@@ -752,15 +991,6 @@
             toolTip.SetToolTip(radioButtonKikuchiThresholdOfStructureFactor, resources.GetString("radioButtonKikuchiThresholdOfStructureFactor.ToolTip"));
             radioButtonKikuchiThresholdOfStructureFactor.UseVisualStyleBackColor = true;
             radioButtonKikuchiThresholdOfStructureFactor.CheckedChanged += radioButtonKikuchiThresholdOfLength_CheckedChanged;
-            // 260805Cl 削除: checkBoxKikuchiLine_Kinematical (comboBoxKikuchiMode に統合)
-            //
-            // radioButtonKikuchiThresholdOfLength
-            // 
-            resources.ApplyResources(radioButtonKikuchiThresholdOfLength, "radioButtonKikuchiThresholdOfLength");
-            radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
-            toolTip.SetToolTip(radioButtonKikuchiThresholdOfLength, resources.GetString("radioButtonKikuchiThresholdOfLength.ToolTip"));
-            radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
-            radioButtonKikuchiThresholdOfLength.CheckedChanged += radioButtonKikuchiThresholdOfLength_CheckedChanged;
             // 
             // numericBoxKikuchiThresholdOfStructureFactor
             // 
@@ -773,9 +1003,17 @@
             numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip"));
             numericBoxKikuchiThresholdOfStructureFactor.Value = 100D;
-            numericBoxKikuchiThresholdOfStructureFactor.ValueBoxWidth = 45;
+            numericBoxKikuchiThresholdOfStructureFactor.ValueBoxWidth = 40;
             numericBoxKikuchiThresholdOfStructureFactor.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
+            // 
+            // radioButtonKikuchiThresholdOfLength
+            // 
+            resources.ApplyResources(radioButtonKikuchiThresholdOfLength, "radioButtonKikuchiThresholdOfLength");
+            radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
+            toolTip.SetToolTip(radioButtonKikuchiThresholdOfLength, resources.GetString("radioButtonKikuchiThresholdOfLength.ToolTip"));
+            radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
+            radioButtonKikuchiThresholdOfLength.CheckedChanged += radioButtonKikuchiThresholdOfLength_CheckedChanged;
             // 
             // numericBoxKikuchiThresholdOfLength
             // 
@@ -792,129 +1030,8 @@
             numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
-            // colorControlExcessLine
-            // 
-            resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
-            colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
-            colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
-            //colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224); //260805Cl 変更前 (機能追加前の元値。白 → 黄と作者指定で変遷)
-            colorControlExcessLine.Color = System.Drawing.Color.Yellow; //260805Cl 作者指定: Excess = 黄
-            colorControlExcessLine.Name = "colorControlExcessLine";
-            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip")); //260806Cl 追加: 兄弟と同じ親バルーン経路へ一本化
-            colorControlExcessLine.ColorChanged += Draw;
-            // 
-            // trackBarLineWidth
-            // 
-            resources.ApplyResources(trackBarLineWidth, "trackBarLineWidth");
-            trackBarLineWidth.Maximum = 10000;
-            trackBarLineWidth.Minimum = 1;
-            trackBarLineWidth.Name = "trackBarLineWidth";
-            trackBarLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarLineWidth, resources.GetString("trackBarLineWidth.ToolTip"));
-            trackBarLineWidth.Value = 4000;
-            trackBarLineWidth.ValueChanged += numericUpDownResolution_ValueChanged;
-            //
-            // label11
-            //
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
-            //
-            // labelKikuchiMode (260805Cl 追加)
-            //
-            resources.ApplyResources(labelKikuchiMode, "labelKikuchiMode");
-            labelKikuchiMode.Name = "labelKikuchiMode";
-            toolTip.SetToolTip(labelKikuchiMode, resources.GetString("labelKikuchiMode.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 combo と同文)
-            //
-            // comboBoxKikuchiMode (260805Cl 追加。Items はコンストラクタで設定: form resx 手書き文字列は VS 再シリアライズで消えるため)
-            //
-            resources.ApplyResources(comboBoxKikuchiMode, "comboBoxKikuchiMode");
-            comboBoxKikuchiMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxKikuchiMode.Name = "comboBoxKikuchiMode";
-            toolTip.SetToolTip(comboBoxKikuchiMode, resources.GetString("comboBoxKikuchiMode.ToolTip")); //260806Cl 追加: 表示経路配線 (ComboBox は resx だけでは tip が出ない)
-            comboBoxKikuchiMode.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged;
-            //
-            // checkBoxKikuchiFixedScale (260805Cl 追加)
-            //
-            resources.ApplyResources(checkBoxKikuchiFixedScale, "checkBoxKikuchiFixedScale");
-            checkBoxKikuchiFixedScale.Name = "checkBoxKikuchiFixedScale";
-            toolTip.SetToolTip(checkBoxKikuchiFixedScale, resources.GetString("checkBoxKikuchiFixedScale.ToolTip")); //260806Cl 追加: 表示経路配線
-            checkBoxKikuchiFixedScale.UseVisualStyleBackColor = true;
-            checkBoxKikuchiFixedScale.CheckedChanged += Draw;
-            //
-            // numericBoxKikuchiBandNumber (260805Cl 追加)
-            //
-            numericBoxKikuchiBandNumber.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxKikuchiBandNumber, "numericBoxKikuchiBandNumber");
-            numericBoxKikuchiBandNumber.Maximum = 50D;
-            numericBoxKikuchiBandNumber.Minimum = 1D;
-            numericBoxKikuchiBandNumber.Name = "numericBoxKikuchiBandNumber";
-            numericBoxKikuchiBandNumber.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxKikuchiBandNumber, resources.GetString("numericBoxKikuchiBandNumber.ToolTip")); //260806Cl 追加: 兄弟 NumericBox と同じ親バルーン経路
-            numericBoxKikuchiBandNumber.Value = 10D;
-            numericBoxKikuchiBandNumber.ValueBoxWidth = 40;
-            numericBoxKikuchiBandNumber.ValueFontSize = 9F;
-            numericBoxKikuchiBandNumber.ValueChanged += Draw;
-            //
-            // comboBoxKikuchiQuality (260805Cl 追加。Items はコンストラクタで設定)
-            //
-            resources.ApplyResources(comboBoxKikuchiQuality, "comboBoxKikuchiQuality");
-            comboBoxKikuchiQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxKikuchiQuality.Name = "comboBoxKikuchiQuality";
-            toolTip.SetToolTip(comboBoxKikuchiQuality, resources.GetString("comboBoxKikuchiQuality.ToolTip")); //260806Cl 追加: 表示経路配線
-            comboBoxKikuchiQuality.SelectedIndexChanged += Draw;
-            //
-            // labelKikuchiContrast (260805Cl 追加)
-            //
-            resources.ApplyResources(labelKikuchiContrast, "labelKikuchiContrast");
-            labelKikuchiContrast.Name = "labelKikuchiContrast";
-            toolTip.SetToolTip(labelKikuchiContrast, resources.GetString("labelKikuchiContrast.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 trackbar と同文)
-            //
-            // trackBarKikuchiContrast (260805Cl 追加)
-            //
-            resources.ApplyResources(trackBarKikuchiContrast, "trackBarKikuchiContrast");
-            trackBarKikuchiContrast.Maximum = 100;
-            trackBarKikuchiContrast.Minimum = 1;
-            trackBarKikuchiContrast.Name = "trackBarKikuchiContrast";
-            trackBarKikuchiContrast.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarKikuchiContrast, resources.GetString("trackBarKikuchiContrast.ToolTip")); //260806Cl 追加: 表示経路配線
-            trackBarKikuchiContrast.Value = 50;
-            trackBarKikuchiContrast.ValueChanged += Draw;
-            //
-            // colorControlDeficientLine (260805Cl 追加)
-            //
-            resources.ApplyResources(colorControlDeficientLine, "colorControlDeficientLine");
-            colorControlDeficientLine.BackColor = System.Drawing.SystemColors.Control;
-            colorControlDeficientLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlDeficientLine.Color = System.Drawing.Color.Red; //260805Cl 新規 (作者指定: Deficient = 赤)
-            colorControlDeficientLine.Name = "colorControlDeficientLine";
-            toolTip.SetToolTip(colorControlDeficientLine, resources.GetString("colorControlDeficientLine.ToolTip")); //260806Cl 追加: 兄弟 ColorControl と同じ親バルーン経路
-            colorControlDeficientLine.ColorChanged += Draw;
-            //
-            // labelKikuchiScale (260806Cl 追加)
-            //
-            resources.ApplyResources(labelKikuchiScale, "labelKikuchiScale");
-            labelKikuchiScale.Name = "labelKikuchiScale";
-            toolTip.SetToolTip(labelKikuchiScale, resources.GetString("labelKikuchiScale.ToolTip")); //260806Cl 追加 (LABEL_SHARE: 隣接 combo と同文)
-            //
-            // comboBoxKikuchiScale (260806Cl 追加。Items はコンストラクタで設定)
-            //
-            resources.ApplyResources(comboBoxKikuchiScale, "comboBoxKikuchiScale");
-            comboBoxKikuchiScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxKikuchiScale.Name = "comboBoxKikuchiScale";
-            toolTip.SetToolTip(comboBoxKikuchiScale, resources.GetString("comboBoxKikuchiScale.ToolTip"));
-            comboBoxKikuchiScale.SelectedIndexChanged += comboBoxKikuchiMode_SelectedIndexChanged; //260806Cl /simplify: 同一処理のためモード変更ハンドラへ統合
-            //
-            // labelKikuchiNotice (260805Cl 追加。Text は実行時に設定)
-            //
-            resources.ApplyResources(labelKikuchiNotice, "labelKikuchiNotice");
-            labelKikuchiNotice.AutoEllipsis = true; //260806Cl 追加: 実行時組み立て文字列が 400px を超えたときの無言切れ防止 (全文はツールチップ)
-            labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
-            labelKikuchiNotice.Name = "labelKikuchiNotice";
-            toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip")); //260806Cl 追加: スケール変換の説明
-            //
             // tabPageDebye
-            //
+            // 
             tabPageDebye.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageDebye, true);
             tabPageDebye.Controls.Add(colorControlDebyeRing);
@@ -1088,15 +1205,15 @@
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(graphicsBox, "graphicsBox");
             graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 11F);
+            graphicsBox.MouseWheelZoom = true;
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
-            graphicsBox.MouseWheelZoom = true; // 260801Cl 追加: このビューだけホイールでの拡大縮小を有効にする (GraphicsBox の既定は false)
             toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.ClientSizeChanged += graphicsBox_ClientSizeChanged;
             graphicsBox.MouseDown += graphicsBox_MouseDown;
             graphicsBox.MouseMove += graphicsBox_MouseMove;
             graphicsBox.MouseUp += graphicsBox_MouseUp;
-            graphicsBox.MouseWheel += graphicsBox_MouseWheel; // 260801Cl 追加
+            graphicsBox.MouseWheel += graphicsBox_MouseWheel;
             graphicsBox.Move += Draw;
             graphicsBox.Resize += graphicsBox_Resize;
             // 
@@ -1145,7 +1262,7 @@
             numericBox3D_SpotRadius.ShowUpDown = true;
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
-            numericBox3D_SpotRadius.ThousandsSeparator = true;
+            numericBox3D_SpotRadius.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip"));
             numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
             numericBox3D_SpotRadius.Value = 0.2D;
@@ -1215,7 +1332,7 @@
             numericBoxReciprocalThreshold.Name = "numericBoxReciprocalThreshold";
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
-            numericBoxReciprocalThreshold.ThousandsSeparator = true;
+            numericBoxReciprocalThreshold.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip"));
             numericBoxReciprocalThreshold.Value = 1D;
             numericBoxReciprocalThreshold.ValueFontSize = 9F;
@@ -1346,7 +1463,7 @@
             numericBoxStep.Name = "numericBoxStep";
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
-            numericBoxStep.ThousandsSeparator = true;
+            numericBoxStep.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
             numericBoxStep.Value = 10D;
             numericBoxStep.ValueFontSize = 9F;
@@ -1676,7 +1793,7 @@
             numericBoxResolution.Name = "numericBoxResolution";
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
-            numericBoxResolution.ThousandsSeparator = true;
+            numericBoxResolution.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.08D;
             numericBoxResolution.ValueBoxWidth = 60;
@@ -1766,7 +1883,7 @@
             numericBoxCameraLength2.Minimum = 0D;
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             numericBoxCameraLength2.ShowUpDown = true;
-            numericBoxCameraLength2.ThousandsSeparator = true;
+            numericBoxCameraLength2.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueBoxWidth = 55;
@@ -1797,7 +1914,7 @@
             numericBoxDev.Name = "numericBoxDev";
             numericBoxDev.SkipEventDuringInput = false;
             numericBoxDev.SmartIncrement = true;
-            numericBoxDev.ThousandsSeparator = true;
+            numericBoxDev.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             numericBoxDev.Value = 1.37D;
             numericBoxDev.ValueFontSize = 9F;
             // 
@@ -1815,7 +1932,7 @@
             numericBoxAcc.Name = "numericBoxAcc";
             numericBoxAcc.SkipEventDuringInput = false;
             numericBoxAcc.SmartIncrement = true;
-            numericBoxAcc.ThousandsSeparator = true;
+            numericBoxAcc.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             numericBoxAcc.Value = 12400D;
             numericBoxAcc.ValueFontSize = 9F;
             // 
@@ -2187,7 +2304,7 @@
             numericBoxPED_Semiangle.Name = "numericBoxPED_Semiangle";
             numericBoxPED_Semiangle.ShowUpDown = true;
             numericBoxPED_Semiangle.SmartIncrement = true;
-            numericBoxPED_Semiangle.ThousandsSeparator = true;
+            numericBoxPED_Semiangle.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             numericBoxPED_Semiangle.Value = 50D;
             numericBoxPED_Semiangle.ValueBoxWidth = 40;
@@ -2203,7 +2320,7 @@
             numericBoxPED_Step.Name = "numericBoxPED_Step";
             numericBoxPED_Step.ShowUpDown = true;
             numericBoxPED_Step.SmartIncrement = true;
-            numericBoxPED_Step.ThousandsSeparator = true;
+            numericBoxPED_Step.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             numericBoxPED_Step.Value = 36D;
             numericBoxPED_Step.ValueBoxWidth = 36;
@@ -2235,7 +2352,7 @@
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
-            numericBoxNumOfBlochWave.ThousandsSeparator = true;
+            numericBoxNumOfBlochWave.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             numericBoxNumOfBlochWave.Value = 240D;
             numericBoxNumOfBlochWave.ValueChanged += Draw;
@@ -2249,8 +2366,8 @@
             numericBoxThickness.Minimum = 0.01D;
             numericBoxThickness.Name = "numericBoxThickness";
             numericBoxThickness.ShowUpDown = true;
+            numericBoxThickness.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             numericBoxThickness.SkipEventDuringInput = false;
-            numericBoxThickness.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.UpDown_Increment = 10D;
             numericBoxThickness.Value = 50D;
@@ -2340,7 +2457,7 @@
             numericBoxSpotRadius.Name = "numericBoxSpotRadius";
             numericBoxSpotRadius.ShowUpDown = true;
             numericBoxSpotRadius.SmartIncrement = true;
-            numericBoxSpotRadius.ThousandsSeparator = true;
+            numericBoxSpotRadius.ThousandsSeparator = true; //260807Cl /simplify2 復元: VS 再シリアライズで消えていた (既定 false なので桁区切りが失われる)
             toolTip.SetToolTip(numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip"));
             numericBoxSpotRadius.UpDown_Increment = 0.01D;
             numericBoxSpotRadius.Value = 0.2D;
@@ -2656,6 +2773,13 @@
             timerBlinkScale.Tag = "";
             timerBlinkScale.Tick += timerBlinkScale_Tick;
             // 
+            // flowLayoutPanelKikuchiMode
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiMode, "flowLayoutPanelKikuchiMode");
+            flowLayoutPanelKikuchiMode.Controls.Add(labelKikuchiMode);
+            flowLayoutPanelKikuchiMode.Controls.Add(comboBoxKikuchiMode);
+            flowLayoutPanelKikuchiMode.Name = "flowLayoutPanelKikuchiMode";
+            // 
             // FormDiffractionSimulator
             // 
             AllowDrop = true;
@@ -2699,8 +2823,26 @@
             groupBoxColor.PerformLayout();
             tabPageKikuchi.ResumeLayout(false);
             tabPageKikuchi.PerformLayout();
+            flowLayoutPanelKikuchiModePanels.ResumeLayout(false);
+            flowLayoutPanelKikuchiModePanels.PerformLayout();
+            flowLayoutPanelKikuchiKinematical.ResumeLayout(false);
+            flowLayoutPanelKikuchiKinematical.PerformLayout();
+            flowLayoutPanelKikuchiLineWidth.ResumeLayout(false);
+            flowLayoutPanelKikuchiLineWidth.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiContrast).EndInit(); // 260805Cl 追加
+            flowLayoutPanelKikuchiDynamical.ResumeLayout(false);
+            flowLayoutPanelKikuchiDynamical.PerformLayout();
+            flowLayoutPanelKikuchiBandColors.ResumeLayout(false);
+            flowLayoutPanelKikuchiBandColors.PerformLayout();
+            flowLayoutPanelKikuchiBands.ResumeLayout(false);
+            flowLayoutPanelKikuchiBands.PerformLayout();
+            flowLayoutPanelKikuchiContrast.ResumeLayout(false);
+            flowLayoutPanelKikuchiContrast.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiContrast).EndInit();
+            flowLayoutPanelKikuchiScale.ResumeLayout(false);
+            flowLayoutPanelKikuchiScale.PerformLayout();
+            flowLayoutPanelKikuchiSelection.ResumeLayout(false);
+            flowLayoutPanelKikuchiSelection.PerformLayout();
             tabPageDebye.ResumeLayout(false);
             tabPageDebye.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDebyeRingWidth).EndInit();
@@ -2781,13 +2923,15 @@
             flowLayoutPanelBeamMode.PerformLayout();
             flowLayoutPanelWaveLength.ResumeLayout(false);
             flowLayoutPanelWaveLength.PerformLayout();
+            flowLayoutPanelKikuchiMode.ResumeLayout(false);
+            flowLayoutPanelKikuchiMode.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
         private System.Windows.Forms.CheckBox checkBoxExtinctionAll;
         private System.Windows.Forms.CheckBox checkBoxExtinctionLattice;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelKikuchiLineWidth;
         private System.Windows.Forms.TrackBar trackBarLineWidth;
         private System.Windows.Forms.TrackBar trackBarStrSize;
         private System.Windows.Forms.TabControl tabControl;
@@ -3052,5 +3196,18 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private NumericBox numericBoxCameraLength2;
         private SizeControl sizeControl1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiSelection;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiBandColors;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiContrast;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiLineWidth;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiBands;
+        private System.Windows.Forms.Label labelKikuchiQuality;
+        public ColorControl colorControlKikuchiLine;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiDynamical;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiKinematical;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiModePanels;
+        private System.Windows.Forms.Panel panelKikuchiGutter;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiMode;
     }
 }

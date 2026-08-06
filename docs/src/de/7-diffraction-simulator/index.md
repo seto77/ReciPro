@@ -186,10 +186,24 @@ Legt die Farben von Reflexen, Beschriftungen, Kikuchi-Linien, Debye-Ringen und a
 
 ![Registerkarte Kikuchi-Linien](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
+![Kikuchi-Registerkarte (Modus Dynamisch)](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi-dynamical.png)
+
 Aktiv, wenn Kikuchi-Linien in der Symbolleiste aktiviert sind.
 
 - **Auswahl der Reflexe** : Wählt aus, welche Reflexe die Kikuchi-Linien erzeugen. Entweder **Strukturfaktor** (die obersten *N* Reflexe nach $\lvert F_{hkl}\rvert$) oder **1/d-Grenzwert** (alle Reflexe, deren 1/d unterhalb des Schwellenwerts (nm⁻¹) liegt).
-- **Line appearance** : Legt die Linienbreite, die Farbe der Kikuchi-Linien und **Draw with kinematical intensity** fest (skaliert die Linienhelligkeit mit der kinematischen Intensität des Reflexes).
+- **Modus** : Wie die Kikuchi-Linien gezeichnet werden. Die Einstellungen unter dem Kombinationsfeld wechseln mit dem Modus.
+    - **Geometrisch** : alle gewählten Linien in einer festen Farbe.
+    - **Kinematisch** : Die Liniendunkelheit folgt der kinematischen relativen Intensität jedes Reflexes.
+    - **Dynamisch** : Zweistrahl-dynamische Excess-/Deficient-Bandprofile mit thermisch-diffuser Streuung als Quelle, im Hintergrund berechnet. Excess-Bänder erscheinen auf der Hochwinkelseite, Deficient-Merkmale zum Direktstrahl hin; die Probendicke wird mit den Intensitätseinstellungen geteilt. Während der Berechnung werden geometrische Linien als Übergang gezeichnet.
+- **Einstellungen für Geometrisch / Kinematisch** : **Kikuchi-Linienfarbe** und **Linienbreite**.
+- **Einstellungen für Dynamisch** :
+    - **Überschuss** / **Defizit** : Farben der hellen (positiver Kontrast) und dunklen (negativer Kontrast) Bandseite.
+    - **Bänder** : Anzahl der Bänder mit dynamischen Profilen (die besten *N* nach dynamischem Kontrast; 1–50, Standard 30).
+    - **Qualität** : Abtastpunkte quer über jedes Band (Schnell 65 / Standard 129 / Hoch 257).
+    - **Kontrast** : Anzeigeverstärkung des Bandkontrasts vor der Kompression.
+    - **Skala** : Helligkeitskompressionskurve (Linear / Log / Tanh) – Darstellungstransformationen, keine physikalischen Kameraantworten.
+    - **Helligkeit fix** : Friert die Helligkeitsnormierung ein, z. B. zum Vergleich verschiedener Orientierungen oder Dicken.
+    - Die graue Hinweiszeile zeigt den Quelle/Verlust-Hinweis, die Zahl der gezeichneten Bänder und Diagnosen (z. B. Ersatz-*B*-Faktor für Atome mit *B* = 0).
 - **Threshold** : Ein Altparameter. Führt die Kikuchi-Linien-Berechnung nur für Reflexe mit einem *d* größer als der angegebene Wert aus (aus Kompatibilitätsgründen beibehalten).
 
 ### Debye-Ringe

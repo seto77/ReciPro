@@ -197,6 +197,18 @@ STEM 模擬的計算成本很高，因此請適當設定下列參數。
 
 ---
 
+## 與 py_multislice 的比較
+
+ReciPro 的 STEM-EDX 元素分布圖也與獨立的多層法 / 凍結聲子程式 [py_multislice](https://github.com/HamishGBrown/py_multislice) 進行了比對。下圖比較了 SrTiO₃ [001]、200 kV 下 O-K、Ti-K、Sr-L 的分布圖，涵蓋厚度序列（3.91〜62.48 nm），左側無像差，右側 Cs = 0.2 mm、欠焦 −25.9 nm。
+
+![STEM-EDX 模擬比較：py_multislice 與 ReciPro](../../assets/references/STEM_EDX_pyms_comparison.png)
+
+在薄樣品極限下，正規化後的分布形狀對 Ti-K 和 Sr-L 一致到 1〜2 %。**總量**相差 ±10〜17 %，原因是兩者的游離截面來自不同來源（ReciPro 用 Bote–Salvat，py_multislice 用 Allen 組的資料表）。ReciPro / py_multislice 之比還隨厚度下降，是因為 ReciPro 的吸收位能模型會移除熱散射電子，而凍結聲子中這些電子仍持續游離——這正是吸收近似用於 EDX 時實際誤差的定量結果。
+
+包含定量曲線與空間頻率分析的完整報告可參見 PDF：[py_multislice 與 ReciPro (v4.945) 的 STEM-EDX 模擬比較](../../assets/references/STEM_EDX_pyms_comparison.pdf)。
+
+---
+
 ## 另請參閱
 
 - [HRTEM/STEM 模擬器（總覽）](index.md)

@@ -3,10 +3,13 @@
 // 「符号付き float バッファへ c_total = Σ_g c_g を加算 → 一度だけ選択スケール (Linear/Log/Tanh) で圧縮 →
 // E/D 色 + |m| 不透明度の ARGB 変換」(設計 §4。バンド別アルファ逐次合成は描画順依存になるため不可) だけを担う。
 //
-// 検出器座標 (x, y) ⇔ 方向の規約: d̂ = normalize(−x, +y, +L), L = CameraLength2。
-// DiffractionSimulator は「蛍光板を試料側からのぞき込む」座標系 (作者説明。EBSD のカメラ視点と鏡像関係) のため、
-// 素朴な (+x, +y, +L) に対して x が反転する。KikuchiCheck geom テストで既存 DrawKikuchiLine の双曲線と
-// residual ~2e-16 で一致確認済み (等価表現: d̂ = norm(+x, −y, −L) と −sinθ_B)。
+// 検出器座標 (x, y) ⇔ 方向の規約: d̂ = normalize(+x, −y, −L), L = CameraLength2。
+// これはスポット投影 ConvertReciprocalToDetector (pt = L·(gX, −gY)/(k − gZ)) の逆写像 = 物理の出射方向そのもの。
+// ⚠260806Cl 符号確定: 旧規約 d̂ = norm(−x, +y, +L) は物理方向の −1 倍で、バンド「位置」(±sinθ_B, 対称) は
+// 完全に一致するがプロファイルの E/D 非対称だけが画面上で鏡映される (作者スクリーンショット
+// 「000 側の黄線の方が明るい」= Omoto の記述と逆、で発覚。KikuchiCheck ed 診断で鏡映を数値確定)。
+// KikuchiCheck geom テストで既存 DrawKikuchiLine の双曲線と residual ~2e-16 で一致確認済み
+// (legacy の g 用菊池線 = g スポットを通る側 = 本規約の sinθ' = −sinθ_B, プロファイル x = −1)。
 // 検出器 tilt (Tau) は呼び出し側が ĝ に Rot(axis(Phi), −Tau) を掛けて渡す (DrawKikuchiLine の vec2 と同じ扱い)。
 
 using Crystallography;
@@ -65,7 +68,12 @@ public static class KikuchiBandRenderer
             var step = p.X[1] - p.X[0];
             bandData[nBands++] = new BandData
             {
-                Gx = b.GHat2.X, Gy = b.GHat2.Y, GzL = b.GHat2.Z * L,
+                //260807Cl /simplify: 内側ループの符号をここへ畳んだ。⚠これは最適化ではなく符号の表現替え —
+                //旧 (Gx*dx − Gy*dy − GzL) は 3 項すべての符号が反転して (Gx*dx + Gy*dy + GzL) になる。
+                //つまり sinθ' は旧実装のちょうど −1 倍で、これが 260806Cl の E/D 鏡映修正の実体
+                //(d̂ = norm(−x,+y,+L) → norm(+x,−y,−L))。命令数は 3 乗算 + 2 加減で旧と同じ。
+                //バンド位置は ±sinθ_B 対称なので不変、変わるのは E/D 非対称の向きだけ
+                Gx = -b.GHat2.X, Gy = b.GHat2.Y, GzL = b.GHat2.Z * L,
                 SinLo = p.X[0] * p.SinThetaB, SinHi = p.X[^1] * p.SinThetaB,
                 K1 = 1.0 / (p.SinThetaB * step), K0 = -p.X[0] / step,
                 C = p.C,
@@ -86,7 +94,8 @@ public static class KikuchiBandRenderer
                 {
                     ref readonly var bd = ref bandData[bi];
                     //var sinTp = -(gh.X * dx + gh.Y * dy + gh.Z * L) * inv; //260805Cl 変更前: d̂=(+x,+y,+L) は蛍光板座標系と左右鏡像だった (作者実機指摘)
-                    var sinTp = (bd.Gx * dx - bd.Gy * dy - bd.GzL) * inv; // sinθ' = −ĝ·d̂, d̂ = norm(−x, +y, +L)
+                    //var sinTp = (bd.Gx * dx - bd.Gy * dy - bd.GzL) * inv; //260806Cl 変更前: d̂=norm(−x,+y,+L) = −(物理出射方向) で E/D 非対称が鏡映されていた (ed 診断で確定)
+                    var sinTp = (bd.Gx * dx + bd.Gy * dy + bd.GzL) * inv; //sinθ' = −ĝ·d̂ (Gx は符号を畳み込み済み。上の BandData 構築を参照)
                     if (sinTp <= bd.SinLo || sinTp >= bd.SinHi)
                         continue; // 帯域外 (大半のピクセル) は補間せず棄却
                     var t = sinTp * bd.K1 + bd.K0;
