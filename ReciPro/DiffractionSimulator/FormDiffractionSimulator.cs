@@ -30,6 +30,7 @@ public partial class FormDiffractionSimulator : FormBase
     public FormDiffractionSimulatorCBED FormDiffractionSimulatorCBED;
     public FormDiffractionSimulatorGeometry FormDiffractionSimulatorGeometry;
     public FormDiffractionSimulatorDynamicCompression FormDiffractionSimulatorDynamicCompression;
+    public FormALCHEMI FormALCHEMI;//260807Cl 追加: ALCHEMI シミュレータ (設計 §5.5)
     public FormDiffractionSpotInfo FormDiffractionBeamTable;
     public FormDiffractionSimulatorHolder FormDiffractionSimulatorHolder;
 
@@ -445,6 +446,10 @@ public partial class FormDiffractionSimulator : FormBase
             FormDiffractionBeamTable = new FormDiffractionSpotInfo { FormDiffractionSimulator = this, Owner = this }; // 260521Cl Phase6: Owner統一(§2.7)
 
             FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this, Owner = this }; // 260521Cl Phase6: Owner統一(§2.7)
+
+            //260807Cl 追加: ALCHEMI シミュレータ。CBED と同じ外殻 (Owner=this・メニュー起動) だが、
+            //出力はロッキング曲線で親キャンバスに載らないので自前の出力領域を持つ (設計 §5.5)
+            FormALCHEMI = new FormALCHEMI { FormDiffractionSimulator = this, Owner = this };
         }
 
         FormDiffractionSimulatorCBED ??= new FormDiffractionSimulatorCBED
@@ -2513,6 +2518,9 @@ public partial class FormDiffractionSimulator : FormBase
         FormDiffractionSimulatorGeometry.Visible = true;
         FormDiffractionSimulatorDynamicCompression.Visible = true;
     }
+
+    /// <summary>260807Cl 追加: ALCHEMI シミュレータを開く。</summary>
+    private void alchemiToolStripMenuItem_Click(object sender, EventArgs e) => FormALCHEMI.Visible = true;
 
     /// <summary>ベーテ法(動力学回折)の解説をオンライン付録で開く</summary> // 260604Cl PDF同梱を廃止しGitHub Pages付録へ誘導
     /// <param name="sender"></param>

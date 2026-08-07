@@ -27,6 +27,9 @@ internal static class Program
     // 260617Cl 追加: 多言語化のオーバーフロー診断モードの引数 (GuiCapture.Diagnose)。
     private const string DiagnoseArg = "--diagnose";
 
+    //260807Cl 追加: 単一フォームを画面なしで撮る開発者向けモードの引数 (GuiCapture.CaptureSingleForm)
+    private const string CaptureFormArg = "--capture-form";
+
     /// <summary>アプリケーションのメイン エントリ ポイントです。</summary>
     // private static void Main() // 260521Cl 旧シグネチャ (--capture 引数対応のため string[] args を追加)
     [STAThread]
@@ -61,6 +64,12 @@ internal static class Program
             else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
         }
         // if (args.Length >= 3 && args[0] == CaptureArg) { var ci = new System.Globalization.CultureInfo(args[2]); ... } // 260525Cl 旧: dir 必須だった
+        //260807Cl 追加: --capture-form <TypeName> <out.png> [カルチャ] のカルチャ指定。
+        //--capture と同じく SetDefaultFont より前に確定させないとフォントとローカライズが噛み合わない
+        if (args.Length >= 4 && args[0] == CaptureFormArg
+            && Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[3], StringComparison.OrdinalIgnoreCase)))
+            captureCulture = args[3];
+
         if (captureCulture != null)
         {
             var ci = new System.Globalization.CultureInfo(captureCulture);
@@ -133,6 +142,18 @@ internal static class Program
             // GuiCapture.Run(args.Length >= 2 ? args[1] : null); // 260525Cl 旧
             // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
             Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
+        }
+
+        //260807Cl 追加: **1 フォームだけを DrawToBitmap で撮る headless モード**。
+        //--capture は CopyFromScreen なので対話デスクトップが要り、RDP 切断中・非対話セッションでは
+        //撮影が全滅する (実際にそれで新規フォームの目視確認ができなかった)。DrawToBitmap は画面に出さずに
+        //撮れるので「フォームが構築でき、レイアウトが崩れていない」ことだけなら画面なしで確認できる。
+        //⚠GL / GraphicsBox など WM_PRINT に応じない描画は抜けるので、その種のフォームには使えない。
+        //  ReciPro.exe --capture-form <FormTypeName> <出力png> [カルチャ]
+        if (args.Length >= 3 && args[0] == CaptureFormArg)
+        {
+            GuiCapture.CaptureSingleForm(args[1], args[2]);
+            Environment.Exit(0);
         }
 
         Application.Run(new FormMain());

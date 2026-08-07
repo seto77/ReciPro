@@ -1,4 +1,4 @@
-﻿namespace ReciPro
+namespace ReciPro
 {
     partial class FormDiffractionSimulator
     {
@@ -268,6 +268,7 @@
             optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             dynamicCompressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            alchemiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();//260807Cl 追加
             toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             electron300KVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2129,7 +2130,8 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripSeparator4, dynamicCompressionToolStripMenuItem, toolStripSeparator5 });
+            //260807Cl: alchemiToolStripMenuItem を追加 (旧: { toolStripSeparator4, dynamicCompressionToolStripMenuItem, toolStripSeparator5 })
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripSeparator4, dynamicCompressionToolStripMenuItem, alchemiToolStripMenuItem, toolStripSeparator5 });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
@@ -2143,6 +2145,18 @@
             dynamicCompressionToolStripMenuItem.Name = "dynamicCompressionToolStripMenuItem";
             resources.ApplyResources(dynamicCompressionToolStripMenuItem, "dynamicCompressionToolStripMenuItem");
             dynamicCompressionToolStripMenuItem.Click += dynamicCompressionToolStripMenuItem_Click;
+            //
+            // alchemiToolStripMenuItem
+            //
+            //260807Cl 追加: 表示文字列は resx でなくコード側の Loc で入れる
+            //(フォーム resx へ手書きした文字列は VS デザイナの再シリアライズで消えるため)
+            alchemiToolStripMenuItem.Name = "alchemiToolStripMenuItem";
+            alchemiToolStripMenuItem.Text = Crystallography.Localization.Loc(
+                en: "ALCHEMI simulator...", ja: "ALCHEMI シミュレータ...", de: "ALCHEMI-Simulator...",
+                fr: "Simulateur ALCHEMI...", es: "Simulador ALCHEMI...", pt: "Simulador ALCHEMI...",
+                it: "Simulatore ALCHEMI...", ru: "Симулятор ALCHEMI...", zhHans: "ALCHEMI 模拟器...",
+                zhHant: "ALCHEMI 模擬器...", ko: "ALCHEMI 시뮬레이터...");
+            alchemiToolStripMenuItem.Click += alchemiToolStripMenuItem_Click;
             // 
             // toolStripSeparator5
             // 
@@ -3017,6 +3031,7 @@
         private System.Windows.Forms.CheckBox checkBoxLogScale;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBethe;
         private System.Windows.Forms.ToolStripMenuItem dynamicCompressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alchemiToolStripMenuItem;//260807Cl 追加
         private System.Windows.Forms.RadioButton radioButtonIntensityKinematical;
         public System.Windows.Forms.RadioButton radioButtonIntensityDynamical;
         private System.Windows.Forms.ToolStripMenuItem saveCBEDasPngToolStripMenuItem;
