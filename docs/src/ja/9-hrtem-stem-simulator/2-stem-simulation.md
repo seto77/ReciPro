@@ -205,7 +205,7 @@ STEM-EDX マップは、独立したマルチスライス/フローズンフォ�
 
 規格化したマップの形状は、薄い極限で Ti-K・Sr-L とも 1–2 % で一致します。一方**総量**は ±10–17 % 異なりますが、これは両者がイオン化断面積を別の出典から取っているためです (ReciPro は Bote–Salvat、py_multislice は Allen グループの表)。また ReciPro / py_multislice 比が厚みとともに低下するのは、ReciPro の吸収ポテンシャル模型が熱散漫散乱された電子を取り除くのに対し、フローズンフォノンではそれらが引き続きイオン化に寄与するためで、EDX における吸収近似の実用上の誤差を定量化した結果といえます。
 
-定量比較の曲線と空間周波数解析を含む詳細版は PDF で参照できます: [py_multislice と ReciPro (v4.945) による STEM-EDX シミュレーションの比較](../../assets/references/STEM_EDX_pyms_comparison.pdf)。
+定量比較の曲線と空間周波数解析を含む詳細版は PDF で参照できます: [py_multislice と ReciPro (v4.945、イオン化データセット v3.0.0) による STEM-EDX シミュレーションの比較](../../assets/references/STEM_EDX_pyms_comparison.pdf)。
 
 ---
 

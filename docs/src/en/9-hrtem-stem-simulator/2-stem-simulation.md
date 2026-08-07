@@ -205,7 +205,7 @@ ReciPro's STEM-EDX maps have also been checked against [py_multislice](https://g
 
 The normalised map shapes agree to 1–2 % for Ti-K and Sr-L in the thin limit. The **totals** differ by ±10–17 % because the two codes take their ionisation cross-sections from different sources (Bote–Salvat in ReciPro, the Allen-group tables in py_multislice). The ReciPro / py_multislice ratio also falls with thickness, because ReciPro's absorptive model removes thermally scattered electrons while frozen phonon keeps them ionising — which quantifies the practical error of the absorptive approximation for EDX.
 
-The full report, including the quantitative curves and the spatial-frequency analysis, is available as a PDF: [Comparison of STEM-EDX simulations by py_multislice and ReciPro (v4.945)](../../assets/references/STEM_EDX_pyms_comparison.pdf).
+The full report, including the quantitative curves and the spatial-frequency analysis, is available as a PDF: [Comparison of STEM-EDX simulations by py_multislice and ReciPro (v4.945, ionisation dataset v3.0.0)](../../assets/references/STEM_EDX_pyms_comparison.pdf).
 
 ---
 

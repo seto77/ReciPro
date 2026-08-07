@@ -205,7 +205,7 @@ ReciPro 的 STEM-EDX 元素分布圖也與獨立的多層法 / 凍結聲子程�
 
 在薄樣品極限下，正規化後的分布形狀對 Ti-K 和 Sr-L 一致到 1〜2 %。**總量**相差 ±10〜17 %，原因是兩者的游離截面來自不同來源（ReciPro 用 Bote–Salvat，py_multislice 用 Allen 組的資料表）。ReciPro / py_multislice 之比還隨厚度下降，是因為 ReciPro 的吸收位能模型會移除熱散射電子，而凍結聲子中這些電子仍持續游離——這正是吸收近似用於 EDX 時實際誤差的定量結果。
 
-包含定量曲線與空間頻率分析的完整報告可參見 PDF：[py_multislice 與 ReciPro (v4.945) 的 STEM-EDX 模擬比較](../../assets/references/STEM_EDX_pyms_comparison.pdf)。
+包含定量曲線與空間頻率分析的完整報告可參見 PDF：[py_multislice 與 ReciPro (v4.945，游離資料集 v3.0.0) 的 STEM-EDX 模擬比較](../../assets/references/STEM_EDX_pyms_comparison.pdf)。
 
 ---
 
