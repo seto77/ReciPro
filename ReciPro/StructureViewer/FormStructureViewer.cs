@@ -1543,7 +1543,7 @@ public partial class FormStructureViewer : FormBase
         ExportModel(sfd.FileName, dlg.Use3mf, dlg.MmPerNm,
             dlg.IncludeAtoms, dlg.IncludeBonds, dlg.IncludePolyhedra, dlg.PolyhedraAsEdges, dlg.PolyEdgeRadiusNm,
             dlg.IncludeCellEdges, dlg.EdgeRadiusNm, dlg.ThickenBonds, dlg.MinBondRadiusNm, snaps, lineSnaps,
-            dlg.PolyhedraAsMesh, dlg.PolyPitchNm);//260805Cl 追加: 透かし格子
+            dlg.PolyhedraAsMesh, dlg.PolyPitchNm, dlg.PolyBarRadiusNm);//260805Cl 追加: 透かし格子 (バー径は稜線とは別指定)
     }
 
     /// <summary>
@@ -1558,7 +1558,8 @@ public partial class FormStructureViewer : FormBase
     internal string ExportModel(string filename, bool use3mf, double scale,
         bool includeAtoms, bool includeBonds, bool includePolyhedra, bool polyhedraAsEdges, double polyEdgeRadiusNm,
         bool includeCellEdges, double cellEdgeRadiusNm, bool thickenBonds, double minBondRadiusNm,
-        List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps, bool polyhedraAsMesh = false, double polyPitchNm = 0)
+        List<MeshSnapshot> snaps, List<MeshSnapshot> lineSnaps, bool polyhedraAsMesh = false, double polyPitchNm = 0,
+        double polyBarRadiusNm = 0)//260805Cl 追加: メッシュバー径 (0 なら稜線径と同じ)
     {
         //オプションに従ってエクスポート対象を組み立てる
         var export = new List<MeshSnapshot>();
@@ -1578,7 +1579,8 @@ public partial class FormStructureViewer : FormBase
             export.AddRange(ModelExporter.CylinderizeLines(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyEdgeRadiusNm));
         if (includePolyhedra && polyhedraAsMesh && polyPitchNm > 0)//260805Cl 追加: 透かし格子 (面内メッシュバー。端は稜線円柱に埋まるので端点球なし)
             export.AddRange(ModelExporter.CylinderizeLines(
-                ModelExporter.GenerateFaceGrids(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyPitchNm), polyEdgeRadiusNm, cornerSpheres: false));
+                ModelExporter.GenerateFaceGrids(snaps.Where(s => s.Kind == SnapshotKind.Polyhedron), polyPitchNm),
+                polyBarRadiusNm > 0 ? polyBarRadiusNm : polyEdgeRadiusNm, cornerSpheres: false));//260805Cl 変更: バー径を独立指定可に
         if (includeCellEdges)//単位胞枠を円柱+角球に変換して追加
             export.AddRange(ModelExporter.CylinderizeLines(lineSnaps, cellEdgeRadiusNm));
         if (export.Count == 0)

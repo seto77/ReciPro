@@ -39,8 +39,11 @@ public partial class FormExport3DModel : FormBase
     /// <summary>多面体を透かし格子 (稜線枠+面内メッシュバー) で出力するか (260805Cl 追加)</summary>
     public bool PolyhedraAsMesh => radioButtonPolyMesh.Checked;
 
-    /// <summary>多面体稜線・メッシュバーの円柱半径 (nm)</summary>
+    /// <summary>多面体稜線の円柱半径 (nm)</summary>
     public double PolyEdgeRadiusNm => (double)numericUpDownPolyEdgeDia.Value / 2 / MmPerNm;
+
+    /// <summary>透かし格子バーの円柱半径 (nm)。稜線より細くできるよう独立させている (260805Cl 追加)</summary>
+    public double PolyBarRadiusNm => (double)numericUpDownPolyBarDia.Value / 2 / MmPerNm;
 
     /// <summary>透かし格子のピッチ (nm) (260805Cl 追加)</summary>
     public double PolyPitchNm => (double)numericUpDownPolyPitch.Value / MmPerNm;
@@ -138,7 +141,9 @@ public partial class FormExport3DModel : FormBase
         numericUpDownScale.Enabled = radioButtonScale.Checked;
         radioButtonPolySolid.Enabled = radioButtonPolyEdges.Enabled = radioButtonPolyMesh.Enabled = IncludePolyhedra; //260805Cl 変更: mesh 追加
         numericUpDownPolyEdgeDia.Enabled = IncludePolyhedra && (radioButtonPolyEdges.Checked || radioButtonPolyMesh.Checked);
-        numericUpDownPolyPitch.Enabled = IncludePolyhedra && radioButtonPolyMesh.Checked; //260805Cl 追加
+        //260805Cl 追加: メッシュバー径・ピッチは mesh スタイル時のみ
+        labelBarDia.Enabled = numericUpDownPolyBarDia.Enabled =
+            labelPitch.Enabled = numericUpDownPolyPitch.Enabled = IncludePolyhedra && radioButtonPolyMesh.Checked;
         numericUpDownEdgeDia.Enabled = IncludeCellEdges;
         numericUpDownMinBond.Enabled = ThickenBonds;
 
