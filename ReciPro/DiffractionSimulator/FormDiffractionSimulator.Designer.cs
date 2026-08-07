@@ -129,6 +129,7 @@
             labelKikuchiNotice = new System.Windows.Forms.Label();
             panelKikuchiGutter = new System.Windows.Forms.Panel();
             flowLayoutPanelKikuchiSelection = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelKikuchiMode = new System.Windows.Forms.FlowLayoutPanel();
             labelKikuchiMode = new System.Windows.Forms.Label();
             comboBoxKikuchiMode = new System.Windows.Forms.ComboBox();
             radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
@@ -343,7 +344,6 @@
             timerBlinkKikuchiLine = new System.Windows.Forms.Timer(components);
             timerBlinkDebyeRing = new System.Windows.Forms.Timer(components);
             timerBlinkScale = new System.Windows.Forms.Timer(components);
-            flowLayoutPanelKikuchiMode = new System.Windows.Forms.FlowLayoutPanel();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -369,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)trackBarKikuchiContrast).BeginInit();
             flowLayoutPanelKikuchiScale.SuspendLayout();
             flowLayoutPanelKikuchiSelection.SuspendLayout();
+            flowLayoutPanelKikuchiMode.SuspendLayout();
             tabPageDebye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDebyeRingWidth).BeginInit();
             tabPageScale.SuspendLayout();
@@ -418,7 +419,6 @@
             flowLayoutPanelExtinctionOption.SuspendLayout();
             flowLayoutPanelBeamMode.SuspendLayout();
             flowLayoutPanelWaveLength.SuspendLayout();
-            flowLayoutPanelKikuchiMode.SuspendLayout();
             SuspendLayout();
             // 
             // toolStripContainer1
@@ -948,8 +948,8 @@
             // labelKikuchiNotice
             // 
             labelKikuchiNotice.AutoEllipsis = true;
-            labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(labelKikuchiNotice, "labelKikuchiNotice");
+            labelKikuchiNotice.ForeColor = System.Drawing.SystemColors.GrayText;
             labelKikuchiNotice.Name = "labelKikuchiNotice";
             toolTip.SetToolTip(labelKikuchiNotice, resources.GetString("labelKikuchiNotice.ToolTip"));
             // 
@@ -967,6 +967,13 @@
             flowLayoutPanelKikuchiSelection.Controls.Add(radioButtonKikuchiThresholdOfLength);
             flowLayoutPanelKikuchiSelection.Controls.Add(numericBoxKikuchiThresholdOfLength);
             flowLayoutPanelKikuchiSelection.Name = "flowLayoutPanelKikuchiSelection";
+            // 
+            // flowLayoutPanelKikuchiMode
+            // 
+            resources.ApplyResources(flowLayoutPanelKikuchiMode, "flowLayoutPanelKikuchiMode");
+            flowLayoutPanelKikuchiMode.Controls.Add(labelKikuchiMode);
+            flowLayoutPanelKikuchiMode.Controls.Add(comboBoxKikuchiMode);
+            flowLayoutPanelKikuchiMode.Name = "flowLayoutPanelKikuchiMode";
             // 
             // labelKikuchiMode
             // 
@@ -2773,13 +2780,6 @@
             timerBlinkScale.Tag = "";
             timerBlinkScale.Tick += timerBlinkScale_Tick;
             // 
-            // flowLayoutPanelKikuchiMode
-            // 
-            resources.ApplyResources(flowLayoutPanelKikuchiMode, "flowLayoutPanelKikuchiMode");
-            flowLayoutPanelKikuchiMode.Controls.Add(labelKikuchiMode);
-            flowLayoutPanelKikuchiMode.Controls.Add(comboBoxKikuchiMode);
-            flowLayoutPanelKikuchiMode.Name = "flowLayoutPanelKikuchiMode";
-            // 
             // FormDiffractionSimulator
             // 
             AllowDrop = true;
@@ -2843,6 +2843,8 @@
             flowLayoutPanelKikuchiScale.PerformLayout();
             flowLayoutPanelKikuchiSelection.ResumeLayout(false);
             flowLayoutPanelKikuchiSelection.PerformLayout();
+            flowLayoutPanelKikuchiMode.ResumeLayout(false);
+            flowLayoutPanelKikuchiMode.PerformLayout();
             tabPageDebye.ResumeLayout(false);
             tabPageDebye.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDebyeRingWidth).EndInit();
@@ -2923,8 +2925,6 @@
             flowLayoutPanelBeamMode.PerformLayout();
             flowLayoutPanelWaveLength.ResumeLayout(false);
             flowLayoutPanelWaveLength.PerformLayout();
-            flowLayoutPanelKikuchiMode.ResumeLayout(false);
-            flowLayoutPanelKikuchiMode.PerformLayout();
             ResumeLayout(false);
         }
 
