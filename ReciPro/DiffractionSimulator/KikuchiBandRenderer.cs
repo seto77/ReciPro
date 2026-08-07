@@ -17,7 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
+//using System.Runtime.InteropServices; //260807Cl 削除: Marshal.Copy 廃止 (BitmapData へ直接書くようにした) で不要
 using System.Threading.Tasks;
 
 namespace ReciPro;
@@ -33,6 +33,16 @@ public static class KikuchiBandRenderer
     /// (x=1 で丁度 1。既存の log スケール画像表示と同思想) / Tanh = tanh(x) (設計 §4 の既定)
     /// </summary>
     public enum ScaleMode { Linear, Log, Tanh }
+
+    // 260807Cl 追加: フレーム間バッファ再利用 (perf backlog の 1 番)。
+    // BDN 実測 (ReciPro.Benchmarks の KikuchiRenderBenchmark) では 1200×1200 の 1 フレームで
+    // 11.0 MB を確保し Gen0/Gen1/Gen2 がすべて回っていた (float[] buf 5.8MB + int[] pixels 5.8MB)。
+    // 生産の呼び出しは UI スレッド 1 本だが、[ThreadStatic] にしておけばどのスレッドから呼ばれても
+    // ロック無しで安全 (代わりに呼んだスレッドごとに 1 組保持する)。
+    // ⚠キャッシュは要求サイズ**以上**の長さがあり得るので、長さは必ず width*height を明示的に使うこと。
+    // ARGB 側は BitmapData へ直接書くので常駐するのはこの 2 本だけ (画素あたり float 1 個 + 標本 1/stride 個)。
+    [ThreadStatic] private static float[] bufCache;
+    [ThreadStatic] private static float[] sampleCache;
 
     /// <summary>バンドごとの前計算定数 (260806Cl /simplify: 内側ループから除算・メソッド呼び出し・参照追跡を排除)</summary>
     private struct BandData
@@ -54,7 +64,9 @@ public static class KikuchiBandRenderer
         (double X, double Y) det00, (double X, double Y) detDx, (double X, double Y) detDy,
         double cameraLength, double scale, double contrast, double gamma, ScaleMode scaleMode, Color excess, Color deficient, out double usedScale)
     {
-        var buf = new float[width * height];
+        //var buf = new float[width * height]; //260807Cl 変更前: 毎フレーム確保していた
+        int nPix = width * height;
+        var buf = bufCache != null && bufCache.Length >= nPix ? bufCache : (bufCache = new float[nPix]);
         double L = cameraLength;
 
         //260806Cl /simplify: バンド定数を平坦化 (旧: ピクセル×バンドごとに Profile.Interpolate 呼び出し + SinThetaB 除算 + LINQ フィルタ)
@@ -109,7 +121,7 @@ public static class KikuchiBandRenderer
             }
         });
 
-        usedScale = scale > 0 ? scale : AutoScale(buf);
+        usedScale = scale > 0 ? scale : AutoScale(buf, nPix); //260807Cl: 再利用バッファは長すぎ得るので有効長を渡す
 
         // 選択スケールで圧縮 → E/D 色 + |m| 不透明度 (背景との合成は GDI+ のアルファに任せる)。
         // 260806Cl /simplify2 (M1): 例外時は Bitmap を破棄してから再スロー (呼び出し側の using に届かないため)
@@ -119,7 +131,16 @@ public static class KikuchiBandRenderer
             var data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
             try
             {
-                var pixels = new int[width * height];
+                //260807Cl 変更: 中間の int[] を廃し、ロック済み BitmapData へ直接書く。
+                //  var pixels = new int[width * height];
+                //  ... pixels[o + px] = ...;              //透明画素は書かずに「確保直後の 0」に頼っていた
+                //  Marshal.Copy(pixels, 0, data.Scan0, pixels.Length);
+                //利点は 3 つ: (a) 画面画素数ぶんの int[] を持たなくて済む (再利用キャッシュの常駐が半分になる)、
+                //(b) 1 フレームあたり width*height*4 バイトの memcpy が 1 回消える、
+                //(c) data.Stride を素直に使うので「Stride == width*4」の暗黙の仮定が要らなくなる。
+                //⚠直接書くので「透明画素は書かない」は成立しない — 下のループで 0 を明示的に書く
+                var scan0 = data.Scan0; // ポインタはラムダに捕捉できないので IntPtr で渡して内側で変換する
+                int stride4 = data.Stride / 4; // 32bppArgb なので Stride は必ず 4 の倍数
                 int exR = excess.R, exG = excess.G, exB = excess.B, deR = deficient.R, deG = deficient.G, deB = deficient.B;
                 var k = contrast / Math.Max(usedScale, 1e-30);
                 var invGamma = 1.0 / Math.Max(gamma, 1e-3);
@@ -127,27 +148,30 @@ public static class KikuchiBandRenderer
                 Parallel.For(0, height, py =>
                 {
                     int o = py * width;
-                    for (int px = 0; px < width; px++)
+                    unsafe
                     {
-                        var v = buf[o + px];
-                        if (v == 0 || !float.IsFinite(v)) continue; // 透明のまま (260805Cl 非有限値ガード追加)
-                        var x = Math.Abs(v * k);
-                        var m = scaleMode switch //260806Cl スケール選択 (作者提案)
+                        int* dst = (int*)scan0 + py * stride4;
+                        for (int px = 0; px < width; px++)
                         {
-                            ScaleMode.Linear => Math.Min(x, 1.0),
-                            ScaleMode.Log => Math.Min(Math.Log(1 + 9 * x) * invLn10, 1.0),
-                            _ => Math.Tanh(x), // 設計 §4 の既定
-                        };
-                        if (invGamma != 1.0)
-                            m = Math.Pow(m, invGamma);
-                        int a = (int)(m * 255 + 0.5);
-                        if (a > 255) a = 255;
-                        pixels[o + px] = v > 0
-                            ? (a << 24) | (exR << 16) | (exG << 8) | exB
-                            : (a << 24) | (deR << 16) | (deG << 8) | deB;
+                            var v = buf[o + px];
+                            if (v == 0 || !float.IsFinite(v)) { dst[px] = 0; continue; } // 透明 (260805Cl 非有限値ガード追加)
+                            var x = Math.Abs(v * k);
+                            var m = scaleMode switch //260806Cl スケール選択 (作者提案)
+                            {
+                                ScaleMode.Linear => Math.Min(x, 1.0),
+                                ScaleMode.Log => Math.Min(Math.Log(1 + 9 * x) * invLn10, 1.0),
+                                _ => Math.Tanh(x), // 設計 §4 の既定
+                            };
+                            if (invGamma != 1.0)
+                                m = Math.Pow(m, invGamma);
+                            int a = (int)(m * 255 + 0.5);
+                            if (a > 255) a = 255;
+                            dst[px] = v > 0
+                                ? (a << 24) | (exR << 16) | (exG << 8) | exB
+                                : (a << 24) | (deR << 16) | (deG << 8) | deB;
+                        }
                     }
                 });
-                Marshal.Copy(pixels, 0, data.Scan0, pixels.Length);
             }
             finally { bmp.UnlockBits(data); }
             return bmp;
@@ -155,21 +179,63 @@ public static class KikuchiBandRenderer
         catch { bmp.Dispose(); throw; } //260806Cl /simplify2 (M1): 例外時は呼び出し側の using に届かないため自前で破棄
     }
 
-    /// <summary>|c| の 98.5 パーセンタイル (max 正規化はスパイクに弱いため不採用。設計 §4)。標本は最大 10 万点に間引く</summary>
-    private static double AutoScale(float[] buf)
+    /// <summary>
+    /// |c| の 98.5 パーセンタイル (max 正規化はスパイクに弱いため不採用。設計 §4)。標本は最大 10 万点に間引く。
+    /// 260807Cl: length は buf の有効長 (再利用バッファは要求より長いことがある)。
+    /// 標本配列も再利用し、全ソートを quickselect へ置き換えた (BDN 実測でここが auto スケール時の
+    /// 追加 3.6ms の主因だった)。返す値は「全ソートして添字を引く」のと**同一** — idx 番目に小さい要素そのもの。
+    /// </summary>
+    //private static double AutoScale(float[] buf) //260807Cl 変更前のシグネチャ
+    private static double AutoScale(float[] buf, int length)
     {
-        int stride = Math.Max(1, buf.Length / 100_000);
-        var samples = new List<float>(buf.Length / stride + 1);
-        for (int i = 0; i < buf.Length; i += stride)
+        int stride = Math.Max(1, length / 100_000);
+        int cap = length / stride + 1;
+        var samples = sampleCache != null && sampleCache.Length >= cap ? sampleCache : (sampleCache = new float[cap]);
+        int count = 0;
+        for (int i = 0; i < length; i += stride)
         {
             var v = Math.Abs(buf[i]);
             if (v > 1e-12f && float.IsFinite(v)) // 260805Cl 非有限値ガード追加 (Inf がスケールを壊すのを防ぐ)
-                samples.Add(v);
+                samples[count++] = v;
         }
-        if (samples.Count == 0)
+        if (count == 0)
             return 1;
-        samples.Sort();
-        var idx = Math.Min(samples.Count - 1, (int)(samples.Count * 0.985));
-        return Math.Max(samples[idx], 1e-30);
+        //samples.Sort(); var idx = ...; return Math.Max(samples[idx], 1e-30); //260807Cl 変更前: 10 万点の全ソート (O(n log n))
+        var idx = Math.Min(count - 1, (int)(count * 0.985));
+        return Math.Max(NthSmallest(samples, count, idx), 1e-30);
+    }
+
+    /// <summary>
+    /// a[0..count) のうち idx 番目に小さい値 (0 起点)。全ソートして a[idx] を読むのと同じ値を期待 O(n) で返す。
+    /// 副作用として a[0..count) は並べ替わる (標本配列は毎回作り直すので問題ない)。260807Cl 追加。
+    /// ピボットは median-of-three (整列済み・逆順入力での O(n²) 退化を防ぐ)。全要素が等しい入力でも
+    /// Hoare 分割は中央付近で交差するため範囲は必ず縮み、停止する。
+    /// </summary>
+    private static float NthSmallest(float[] a, int count, int idx)
+    {
+        int lo = 0, hi = count - 1;
+        while (lo < hi)
+        {
+            int mid = lo + ((hi - lo) >> 1);
+            if (a[mid] < a[lo]) (a[lo], a[mid]) = (a[mid], a[lo]);
+            if (a[hi] < a[lo]) (a[lo], a[hi]) = (a[hi], a[lo]);
+            if (a[hi] < a[mid]) (a[mid], a[hi]) = (a[hi], a[mid]);
+            var pivot = a[mid];
+            int i = lo, j = hi;
+            while (i <= j)
+            {
+                while (a[i] < pivot) i++;
+                while (a[j] > pivot) j--;
+                if (i <= j)
+                {
+                    (a[i], a[j]) = (a[j], a[i]);
+                    i++; j--;
+                }
+            }
+            if (idx <= j) hi = j;
+            else if (idx >= i) lo = i;
+            else return a[idx]; // ピボットと等しい帯の中 = そこが答え
+        }
+        return a[lo];
     }
 }
