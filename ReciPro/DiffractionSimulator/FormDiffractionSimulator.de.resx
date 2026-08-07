@@ -1139,7 +1139,7 @@ rechten Gruppe wechseln mit dem Modus.
 Geometrisch: alle gewählten Linien in einer festen Farbe.
 Kinematisch: Liniendeckkraft folgt der kinematischen
 relativen Intensität jedes Reflexes.
-Dynamisch: Zweistrahl-dynamische Excess-/Deficient-
+Dynamisch: Zweistrahl-dynamische Überschuss-/Defizit-
 Bandprofile, im Hintergrund berechnet; während der
 Berechnung werden geometrische Linien als Übergang
 gezeichnet.</value>
@@ -1150,7 +1150,7 @@ rechten Gruppe wechseln mit dem Modus.
 Geometrisch: alle gewählten Linien in einer festen Farbe.
 Kinematisch: Liniendeckkraft folgt der kinematischen
 relativen Intensität jedes Reflexes.
-Dynamisch: Zweistrahl-dynamische Excess-/Deficient-
+Dynamisch: Zweistrahl-dynamische Überschuss-/Defizit-
 Bandprofile, im Hintergrund berechnet; während der
 Berechnung werden geometrische Linien als Übergang
 gezeichnet.</value>
@@ -1177,8 +1177,8 @@ die Linien selbst wählt.</value>
     <value>Qualitätsvoreinstellung der dynamischen Bandprofile:
 Anzahl der Abtastpunkte quer über jedes Band
 (Schnell 65 / Standard 129 / Hoch 257). Höhere Qualität
-löst Bandkanten und die feine Excess-/Deficient-Struktur
-glatter auf, kostet aber mehr Rechenzeit.</value>
+löst Bandkanten und die feine Überschuss-/Defizit-
+Struktur glatter auf, kostet aber mehr Rechenzeit.</value>
   </data>
   <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
     <value>Verstärkung des dynamischen Bandkontrasts, bevor die
@@ -1230,12 +1230,12 @@ Darstellungstransformation, keine physikalische
 Kameraantwort: der vorzeichenbehaftete Kontrast c = (I
 - I_ref)/I_ref aller Bänder wird pro Pixel summiert und
 einmal durch die gewählte Skalenkurve (Linear / Log /
-Tanh) in Deckkraft komprimiert (Excess = positive
-Farbe, Deficient = negative Farbe). „source-loss
+Tanh) in Deckkraft komprimiert (Überschuss = positive
+Farbe, Defizit = negative Farbe). „source-loss
 unbalanced“: In dieser Version stammen Absorption und
 diffuse Quelle nicht aus demselben Streukern;
 aussagekräftig sind daher nur relative Profilformen und
-die Excess-/Deficient-Vorzeichen. „B→0.5“: Für Atome
+die Überschuss-/Defizit-Vorzeichen. „B→0.5“: Für Atome
 mit B-Faktor null wurde ein isotropes Standard-B von
 0,5 Å² (0,005 nm²) eingesetzt.</value>
   </data>
@@ -1254,8 +1254,8 @@ verwendet stattdessen Überschuss / Defizit.</value>
     <value>Qualitätsvoreinstellung der dynamischen Bandprofile:
 Anzahl der Abtastpunkte quer über jedes Band
 (Schnell 65 / Standard 129 / Hoch 257). Höhere Qualität
-löst Bandkanten und die feine Excess-/Deficient-Struktur
-glatter auf, kostet aber mehr Rechenzeit.</value>
+löst Bandkanten und die feine Überschuss-/Defizit-
+Struktur glatter auf, kostet aber mehr Rechenzeit.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
     <value>Qualität</value>

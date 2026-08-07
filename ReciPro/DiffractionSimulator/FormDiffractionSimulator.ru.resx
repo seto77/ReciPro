@@ -1255,6 +1255,6 @@ Tanh = tanh(x); мягкий ограничитель (по умолчанию).
 избыток/дефицит ценой более долгого вычисления.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">
-    <value>Кач-во</value>
+    <value>Качество</value>
   </data>
 </root>

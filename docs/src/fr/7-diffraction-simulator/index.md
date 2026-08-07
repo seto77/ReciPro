@@ -194,7 +194,7 @@ Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 - **Mode** : Manière de tracer les lignes de Kikuchi. Les réglages sous la liste déroulante changent avec le mode.
     - **Géométrique** : toutes les lignes sélectionnées dans une couleur fixe.
     - **Cinématique** : l'obscurité des lignes suit l'intensité relative cinématique de chaque réflexion.
-    - **Dynamique** : profils de bandes excédent/déficit dynamiques à deux ondes alimentés par la diffusion thermique diffuse, calculés en arrière-plan. Les bandes excédentaires apparaissent du côté des grands angles et les traits déficitaires vers le faisceau direct ; l'épaisseur de l'échantillon est partagée avec les réglages d'intensité. Les lignes géométriques sont tracées en attendant la fin du calcul.
+    - **Dynamique** : profils de bandes excès/déficit dynamiques à deux ondes alimentés par la diffusion thermique diffuse, calculés en arrière-plan. Les bandes excédentaires apparaissent du côté des grands angles et les traits déficitaires vers le faisceau direct ; l'épaisseur de l'échantillon est partagée avec les réglages d'intensité. Les lignes géométriques sont tracées en attendant la fin du calcul.
 - **Réglages Géométrique / Cinématique** : **Couleur des lignes de Kikuchi** et **Largeur de ligne**.
 - **Réglages Dynamique** :
     - **Excès** / **Déficit** : couleurs du côté clair (contraste positif) et sombre (contraste négatif) des bandes.

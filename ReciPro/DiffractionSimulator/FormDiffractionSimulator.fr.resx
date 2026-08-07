@@ -1126,7 +1126,7 @@ Géométrique : toutes les lignes sélectionnées dans une
 couleur fixe.
 Cinématique : l'opacité des lignes suit l'intensité
 relative cinématique de chaque réflexion.
-Dynamique : profils de bandes excédent/déficit
+Dynamique : profils de bandes excès/déficit
 dynamiques à deux ondes calculés en arrière-plan ; les
 lignes géométriques sont tracées en attendant la fin du
 calcul.</value>
@@ -1138,7 +1138,7 @@ Géométrique : toutes les lignes sélectionnées dans une
 couleur fixe.
 Cinématique : l'opacité des lignes suit l'intensité
 relative cinématique de chaque réflexion.
-Dynamique : profils de bandes excédent/déficit
+Dynamique : profils de bandes excès/déficit
 dynamiques à deux ondes calculés en arrière-plan ; les
 lignes géométriques sont tracées en attendant la fin du
 calcul.</value>
@@ -1167,7 +1167,7 @@ choisit les réflexions des lignes elles-mêmes.</value>
 nombre de points d'échantillonnage à travers chaque
 bande (Rapide 65 / Standard 129 / Élevée 257). Une
 qualité supérieure résout plus finement les bords de
-bande et la structure excédent/déficit, au prix d'un
+bande et la structure excès/déficit, au prix d'un
 calcul plus long.</value>
   </data>
   <data name="labelKikuchiContrast.ToolTip" xml:space="preserve">
@@ -1220,12 +1220,12 @@ transformation de visualisation, pas une réponse
 physique de caméra : le contraste signé c = (I -
 I_ref)/I_ref de toutes les bandes est sommé par pixel
 puis compressé une fois par la courbe d'échelle choisie
-(Linear / Log / Tanh) en opacité (excédent = couleur
+(Linear / Log / Tanh) en opacité (excès = couleur
 positive, déficit = couleur négative). « source-loss
 unbalanced » : dans cette version, l'absorption et la
 source diffuse ne dérivent pas du même noyau de
 diffusion ; seules les formes relatives des profils et
-les signes excédent/déficit sont significatifs. « B→0.5
+les signes excès/déficit sont significatifs. « B→0.5
 » : un B isotrope par défaut de 0,5 Å² (0,005 nm²) a
 été substitué aux atomes dont le facteur B est nul.</value>
   </data>
@@ -1244,7 +1244,7 @@ sa réflexion. Le mode Dynamique utilise Excès / Déficit.</value>
 nombre de points d'échantillonnage à travers chaque
 bande (Rapide 65 / Standard 129 / Élevée 257). Une
 qualité supérieure résout plus finement les bords de
-bande et la structure excédent/déficit, au prix d'un
+bande et la structure excès/déficit, au prix d'un
 calcul plus long.</value>
   </data>
   <data name="labelKikuchiQuality.Text" xml:space="preserve">

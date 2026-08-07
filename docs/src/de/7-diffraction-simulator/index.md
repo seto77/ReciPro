@@ -194,7 +194,7 @@ Aktiv, wenn Kikuchi-Linien in der Symbolleiste aktiviert sind.
 - **Modus** : Wie die Kikuchi-Linien gezeichnet werden. Die Einstellungen unter dem Kombinationsfeld wechseln mit dem Modus.
     - **Geometrisch** : alle gewählten Linien in einer festen Farbe.
     - **Kinematisch** : Die Liniendunkelheit folgt der kinematischen relativen Intensität jedes Reflexes.
-    - **Dynamisch** : Zweistrahl-dynamische Excess-/Deficient-Bandprofile mit thermisch-diffuser Streuung als Quelle, im Hintergrund berechnet. Excess-Bänder erscheinen auf der Hochwinkelseite, Deficient-Merkmale zum Direktstrahl hin; die Probendicke wird mit den Intensitätseinstellungen geteilt. Während der Berechnung werden geometrische Linien als Übergang gezeichnet.
+    - **Dynamisch** : Zweistrahl-dynamische Überschuss-/Defizit-Bandprofile mit thermisch-diffuser Streuung als Quelle, im Hintergrund berechnet. Überschuss-Bänder erscheinen auf der Hochwinkelseite, Defizit-Merkmale zum Direktstrahl hin; die Probendicke wird mit den Intensitätseinstellungen geteilt. Während der Berechnung werden geometrische Linien als Übergang gezeichnet.
 - **Einstellungen für Geometrisch / Kinematisch** : **Kikuchi-Linienfarbe** und **Linienbreite**.
 - **Einstellungen für Dynamisch** :
     - **Überschuss** / **Defizit** : Farben der hellen (positiver Kontrast) und dunklen (negativer Kontrast) Bandseite.
