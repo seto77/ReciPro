@@ -224,7 +224,12 @@ namespace ReciPro
             numericBoxMaxNumOfBloch.DecimalPlaces = 0;
             numericBoxMaxNumOfBloch.HeaderText = "Max. beams";
             numericBoxMaxNumOfBloch.Location = new System.Drawing.Point(8, 20);
-            numericBoxMaxNumOfBloch.Maximum = 2000D;
+            //260810Cl 変更: 2000 → 1600 (作者判断)。1600 は F(s) テーブルの s グリッド上限 16 Å⁻¹ と
+            //対になる設計目標である。AlchemiCheck basis の実測では **N = 1600 での要求 s の最大は
+            //10.54 Å⁻¹** (β-AlCo a=2.861 Å、80–400 kV で E0 非依存) なので、ここで打ち切る限り
+            //基底が収録範囲 16 Å⁻¹ を使い切ることはない (余裕 1.52×)。上限を上げる場合は
+            //テーブル側の s グリッドと必ずセットで見直すこと
+            numericBoxMaxNumOfBloch.Maximum = 1600D;
             numericBoxMaxNumOfBloch.Minimum = 1D;
             numericBoxMaxNumOfBloch.Name = "numericBoxMaxNumOfBloch";
             numericBoxMaxNumOfBloch.Size = new System.Drawing.Size(166, 22);

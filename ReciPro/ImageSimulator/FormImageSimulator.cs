@@ -483,14 +483,47 @@ public partial class FormImageSimulator : FormBase
                 if (radioButtonSTEM_target_EDX.Checked) radioButtonSTEM_target_both.Checked = true;
                 return;
             }
+            //260810Cl: dataset v5 は s > s_cert を**外挿せず 0 で打ち切り、上界 ε を宣言する**。
+            //打ち切りが起きたチャネルには ⚠ を付け、上界をツールチップで数値として見せる
+            //(silent extrapolation 禁止の契約は「黙って外挿しない」だけでなく
+            // 「切ったなら切ったと見せる」までを含む)。s_cert は行ごとの運動学的上限なので、
+            //低い加速電圧ほど起きやすい
             foreach (var sig in signals)
-                comboBoxEdxDisplay.Items.Add(sig.Channel.ShortLabel);
+                comboBoxEdxDisplay.Items.Add(sig.Channel.ShortLabel + (sig.TruncatedBeyondSMax ? " ⚠" : ""));
+            toolTip.SetToolTip(comboBoxEdxDisplay, EdxTruncationTip(signals));
             //前回と同じ特性 X 線が今回の結果にもあれば維持、無ければ先頭
             var idx = previous is null ? -1 : comboBoxEdxDisplay.Items.IndexOf(previous);
             comboBoxEdxDisplay.SelectedIndex = idx >= 0 ? idx : 0;
             comboBoxEdxDisplay.Visible = radioButtonSTEM_target_EDX.Checked;
         }
         finally { edxSkipEvent = false; }
+    }
+
+    /// <summary>260810Cl 追加: EDX 表示 ComboBox のツールチップ。打ち切りが起きたチャネルと
+    /// その上界 ε を並べる。⚠**外挿と違って誤差の大きさが宣言される**のが v5 契約の要点なので、
+    /// 「切った」だけでなく必ず ε を数値で出す。</summary>
+    private static string EdxTruncationTip(StemSignalMap[] signals)
+    {
+        var hit = signals.Where(s => s.TruncatedBeyondSMax).ToArray();
+        if (hit.Length == 0)
+            return Loc(en: "Characteristic X-ray map to display.", ja: "表示する特性 X 線マップです。",
+                de: "Anzuzeigende charakteristische Röntgenkarte.", fr: "Carte de rayons X caractéristiques à afficher.",
+                es: "Mapa de rayos X característicos a mostrar.", pt: "Mapa de raios X característicos a exibir.",
+                it: "Mappa di raggi X caratteristici da visualizzare.", ru: "Отображаемая карта характеристического рентгена.",
+                zhHans: "要显示的特征 X 射线图。", zhHant: "要顯示的特徵 X 射線圖。", ko: "표시할 특성 X 선 맵입니다.");
+        return Loc(
+            en: "⚠ marks channels whose form factor was truncated to zero beyond the certified s range (not extrapolated). The bound on the discarded part is: {0}",
+            ja: "⚠ の付いたチャネルは、保証された s の範囲より外の形状因子を 0 で打ち切っています (外挿はしません)。捨てた分の上界は: {0}",
+            de: "⚠ kennzeichnet Kanäle, deren Formfaktor jenseits des zertifizierten s-Bereichs auf null gesetzt wurde (nicht extrapoliert). Schranke des verworfenen Anteils: {0}",
+            fr: "⚠ marque les canaux dont le facteur de forme a été tronqué à zéro au-delà de la plage s certifiée (sans extrapolation). Borne de la part écartée : {0}",
+            es: "⚠ marca los canales cuyo factor de forma se truncó a cero más allá del rango s certificado (sin extrapolar). Cota de la parte descartada: {0}",
+            pt: "⚠ marca os canais cujo fator de forma foi truncado a zero além da faixa s certificada (sem extrapolação). Limite da parte descartada: {0}",
+            it: "⚠ contrassegna i canali il cui fattore di forma è stato troncato a zero oltre l'intervallo s certificato (senza estrapolazione). Limite della parte scartata: {0}",
+            ru: "⚠ отмечает каналы, у которых форм-фактор обнулён за пределами гарантированного диапазона s (без экстраполяции). Граница отброшенной части: {0}",
+            zhHans: "⚠ 标记的通道，其形状因子在保证的 s 范围之外被截断为零（不外推）。被舍弃部分的上界: {0}",
+            zhHant: "⚠ 標記的通道，其形狀因子在保證的 s 範圍之外被截斷為零（不外推）。被捨棄部分的上界: {0}",
+            ko: "⚠ 가 붙은 채널은 보증된 s 범위 밖의 형상 인자를 0 으로 절단했습니다 (외삽하지 않음). 버린 부분의 상계: {0}")
+            .Replace("{0}", string.Join(", ", hit.Select(s => $"{s.Channel.ShortLabel} |F| ≤ {s.TruncationBound:e1}")));
     }
 
     #endregion

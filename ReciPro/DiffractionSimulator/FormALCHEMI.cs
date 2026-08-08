@@ -165,9 +165,11 @@ public partial class FormALCHEMI : FormBase
         toolTip.SetToolTip(numericBoxRange, Localization.Loc(
             en: "Half width of the tilt scan. Beyond about 10 mrad a fixed union basis is no longer guaranteed and the expanded-basis check becomes mandatory; beyond 30 mrad it is outside the v1 guarantee.",
             ja: "傾斜走査の半幅です。10 mrad を超えると固定 union 基底の保証が外れ expanded-basis 検証が必須になり、30 mrad を超えると v1 の保証範囲外です。"));
+        //260810Cl: dataset v5 で表が s ≤ 16 Å⁻¹ になり、この上限 1600 と対になった。
+        //実測の最大要求は 1600 波でも 10.54 Å⁻¹ (加速電圧に依らない) なので収録範囲は使い切れない
         toolTip.SetToolTip(numericBoxMaxNumOfBloch, Localization.Loc(
-            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. A small cell in a systematic-row condition can push the basis past the tabulated range of the ionization form factor - the diagnostic line below the graph reports how far it reached.",
-            ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。小さい単位胞を系統反射列条件で解くと、イオン化形状因子テーブルの収録範囲を超えることがあります (グラフ下の診断行に到達値が出ます)。"));
+            en: "Upper bound on the number of Bloch waves per orientation. The union over the whole scan is larger. The ionization form factor is tabulated to s = 16 A^-1, and this cap of 1600 is its counterpart: even at 1600 beams the basis only reaches about 10.5 A^-1. The diagnostic line below the graph reports how far it actually reached.",
+            ja: "1 方位あたりのブロッホ波数の上限です。走査全体の union はこれより大きくなります。イオン化形状因子は s = 16 Å⁻¹ まで収録されており、この上限 1600 はその対です (1600 波でも基底が要求する s は約 10.5 Å⁻¹ に留まります)。実際の到達値はグラフ下の診断行に出ます。"));
         toolTip.SetToolTip(checkBoxDechannelling, Localization.Loc(
             en: "Electrons removed from the coherent Bloch field by thermal-diffuse absorption are re-emitted as randomly directed electrons over the remaining thickness. Omitting this dilutes the site contrast by tens of percent at typical thicknesses.",
             ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。"));
@@ -433,7 +435,60 @@ public partial class FormALCHEMI : FormBase
                 : "⚠ " + Localization.Loc(en: "NOT fit-eligible", ja: "fit 不適格", de: "NICHT fit-tauglich", fr: "NON apte au fit",
                     es: "NO apto para ajuste", pt: "NÃO apto para ajuste", it: "NON idoneo al fit", ru: "НЕ пригодно для подгонки",
                     zhHans: "不可用于拟合", zhHant: "不可用於擬合", ko: "피팅 부적격"))
+            + LowVoltageNotice()
+            + TruncationNotice()
             + (b.Warnings.Length == 0 ? "" : "   ⚠ " + string.Join(" / ", b.Warnings));
+    }
+
+    /// <summary>260810Cl 追加: 80 kV 未満の告知。**hard gate にはしない** (作者決定) —
+    /// s の要求が s_kin(E0) に収まる限り計算そのものは正しいので、電圧で弾くのは過剰。
+    /// 「16 Å⁻¹ を保証できる下限が 80 kV」という事実だけを伝える。</summary>
+    private string LowVoltageNotice() => Voltage >= 80 ? "" : "   ⚠ " + Localization.Loc(
+        en: "below 80 kV: the form factor table cannot guarantee s up to 16 A^-1 at this voltage",
+        ja: "80 kV 未満: この電圧では形状因子テーブルが s = 16 Å⁻¹ までを保証できません",
+        de: "unter 80 kV: die Formfaktortabelle kann s bis 16 A^-1 bei dieser Spannung nicht garantieren",
+        fr: "sous 80 kV : la table de facteurs de forme ne garantit pas s jusqu'à 16 A^-1 à cette tension",
+        es: "por debajo de 80 kV: la tabla de factores de forma no garantiza s hasta 16 A^-1 a esta tensión",
+        pt: "abaixo de 80 kV: a tabela de fatores de forma não garante s até 16 A^-1 nesta tensão",
+        it: "sotto 80 kV: la tabella dei fattori di forma non garantisce s fino a 16 A^-1 a questa tensione",
+        ru: "ниже 80 кВ: таблица форм-факторов не гарантирует s до 16 A^-1 при этом напряжении",
+        zhHans: "低于 80 kV：该电压下形状因子表无法保证 s 至 16 A^-1",
+        zhHant: "低於 80 kV：該電壓下形狀因子表無法保證 s 至 16 A^-1",
+        ko: "80 kV 미만: 이 전압에서는 형상 인자 표가 s = 16 A^-1 까지를 보장하지 못합니다");
+
+    /// <summary>260810Cl 追加: s &gt; s_cert を 0 で打ち切った場合の告知 (dataset v5)。
+    /// **外挿と違って誤差の大きさが宣言される**ので、上界 ε を必ず数値で見せる。
+    /// 打ち切りは形状オブジェクトの状態なので、run 後の <see cref="AlchemiResult.ChannelData"/> から読む。</summary>
+    private string TruncationNotice()
+    {
+        double bound = 0;
+        var hit = new List<string>();
+        foreach (var d in result.ChannelData)
+        {
+            //BetheMethod.cs が StemSignalMap へ配線しているのと同じ場合分け
+            var (truncated, eps) = d.Shape switch
+            {
+                IonizationTableShape ts => (ts.TruncatedBeyondSMax, ts.TruncationBound),
+                IonizationLTotalShape ls => (ls.TruncatedBeyondSMax, ls.TruncationBound),
+                _ => (false, 0.0),
+            };
+            if (!truncated) continue;
+            hit.Add(d.Target.ShortLabel);
+            bound = Math.Max(bound, eps);
+        }
+        return hit.Count == 0 ? "" : "   ⚠ " + Localization.Loc(
+            en: "F(s) truncated to zero beyond the certified range for {0} (bound |F| <= {1})",
+            ja: "{0} で保証範囲の外の F(s) を 0 で打ち切りました (上界 |F| ≤ {1})",
+            de: "F(s) jenseits des zertifizierten Bereichs für {0} auf null gesetzt (Schranke |F| <= {1})",
+            fr: "F(s) tronqué à zéro au-delà de la plage certifiée pour {0} (borne |F| <= {1})",
+            es: "F(s) truncado a cero más allá del rango certificado para {0} (cota |F| <= {1})",
+            pt: "F(s) truncado a zero além da faixa certificada para {0} (limite |F| <= {1})",
+            it: "F(s) troncato a zero oltre l'intervallo certificato per {0} (limite |F| <= {1})",
+            ru: "F(s) обнулён за пределами гарантированного диапазона для {0} (граница |F| <= {1})",
+            zhHans: "{0} 在保证范围之外的 F(s) 已截断为零（上界 |F| ≤ {1}）",
+            zhHant: "{0} 在保證範圍之外的 F(s) 已截斷為零（上界 |F| ≤ {1}）",
+            ko: "{0} 에서 보증 범위 밖의 F(s) 를 0 으로 절단했습니다 (상계 |F| ≤ {1})")
+            .Replace("{0}", string.Join(", ", hit)).Replace("{1}", bound.ToString("e1"));
     }
 
     private IEnumerable<PointD> BraggPositions(double thetaB, bool inThetaB)
