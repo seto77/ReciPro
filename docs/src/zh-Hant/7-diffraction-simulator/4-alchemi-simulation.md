@@ -77,6 +77,7 @@ $$
 | **最大波數** | 每個取向的布洛赫波數上限（1–1600）。整個掃描的聯集會更大 | 120 |
 | **求解器** | 特徵值問題的計算引擎：**原生**（Eigen C++）或**託管**（.NET）。在原生求解器不可用的環境中，選擇會固定為託管 | 原生 |
 | **包含非通道成分** | 是否加上上述 $Y_\text{dech}$ | 開 |
+| **角展寬** | 將曲線與入射束的角展寬做摺積：**無** 或 **Gaussian**（半高全寬，mrad）。這是取向軸上的後處理，於顯示歸一化**之前**套用 | 無 |
 
 **1600 波的上限與游離形狀因子的收錄範圍 $s \le 16\ \text{Å}^{-1}$ 是成對的。** 實測顯示即使 1600 波，基組所需的 $s$ 也僅約 10.5 Å⁻¹，因此只要遵守此上限就不會用盡收錄範圍。實際達到的數值顯示於圖下方的[基組診斷](#基組診斷)列。
 
@@ -122,15 +123,17 @@ $$
 第二列給出基組的狀態。
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 不可用於擬合
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 擬合適用性未評估   ⚠ Experimental：僅對 beta-AlCo [001] 250 keV 做過定量驗證
 ```
 
 - **basis N（僅中心 + 聯集追加）**：掃描全部取向上反射的真實聯集條數
 - **F(s) ≤ … Å⁻¹**：基組實際要求的形狀因子引數最大值
 - **expanded-basis**：以 1.25 倍基組重解掃描中心與兩端時的最大相對差。它是**收斂誤差的代理量**
-- **可用於擬合 / 不可用於擬合**：當 expanded-basis 超過門檻 $3\times10^{-3}$ 時判為**不可用**
+- **擬合適用性**：v1 一律回報**未評估**。該診斷有三個已知缺陷——分母是整個張量的最大值、分子是絕對產率，
+  以及當 1.25 倍基組實際上並未增大時會輕易通過——因此把結果判為「可用」會朝著危險的方向出錯
+- **Experimental**：由於只對 β-AlCo 做過定量核對，每次執行都會帶上此標記並註明已驗證範圍
 
-⚠ **請勿將標示為不可用於擬合的結果用於定量的占有率擬合。** 這是 v1 的發布條件。另請注意，診斷是針對**絕對產率**定義的，因此只看 ICP（除以掃描平均）時它偏保守。
+⚠ **v1 不保證定量的占有率擬合。** 原始診斷值仍會顯示，且越小越好，但請把它當作參考而非合格標記。另請注意，它是針對**絕對產率**定義的，因此只看 ICP（除以掃描平均）時它偏保守。
 
 在下列情形還會追加警告。
 
@@ -141,16 +144,33 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 不�
 
 ## CSV 匯出 {#csv-匯出}
 
-**匯出 CSV** 會寫出長格式表格，並在其前加上以下兩列表頭。表頭的設計使得僅憑該檔即可說明重現所需的條件。
+**匯出 CSV** 會寫出長格式表格，並在其前加上 `# key: value` 形式的表頭（以下為節錄）。表頭的設計使得僅憑該檔即可說明重現所需的條件。
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` 分開儲存，因此**可事後評估非通道成分的貢獻**。數值為原始值（每入射電子），不經過顯示歸一化；小數點一律為句點。
+`dynamic` / `dechannelled` / `total` 分開儲存，因此**可事後評估非通道成分的貢獻**。`*_conv` 欄僅在啟用角展寬時出現，內含摺積後的曲線；如此同一個檔案既有可重現的原始結果，也有用於與實驗比較的結果。數值為原始值（每入射電子），不經過顯示歸一化；小數點一律為句點。
 
 ---
 
@@ -181,7 +201,8 @@ v1 的非通道項是與取向無關的常數，因此它對 ICP 的唯一作用
 - X 光**自吸收**
 - **偵測器效率與立體角**
 - **背景**（制動輻射、重疊譜線）
-- 與**入射束角展寬**（會聚半角、漂移）的摺積——v1 未實作
+
+**入射束的角展寬**（會聚半角、漂移）*已經*建模——見「計算」框中的**角展寬**——但與之摺積並不能替代上述任何一項。
 
 ### 模型前提
 

@@ -47,6 +47,9 @@ namespace ReciPro
             checkBoxDechannelling = new CheckBox();
             comboBoxSolver = new ComboBox();
             labelSolver = new Label();
+            labelAngularSpread = new Label();//260809Cl 追加
+            comboBoxAngularSpread = new ComboBox();//260809Cl 追加
+            numericBoxSpreadFwhm = new NumericBox();//260809Cl 追加
             groupBoxChannels = new GroupBox();
             checkedListBoxChannels = new CheckedListBox();
             groupBoxSites = new GroupBox();
@@ -214,9 +217,14 @@ namespace ReciPro
             groupBoxCalculation.Controls.Add(checkBoxDechannelling);
             groupBoxCalculation.Controls.Add(labelSolver);
             groupBoxCalculation.Controls.Add(comboBoxSolver);
+            groupBoxCalculation.Controls.Add(labelAngularSpread);//260809Cl 追加
+            groupBoxCalculation.Controls.Add(comboBoxAngularSpread);//260809Cl 追加
+            groupBoxCalculation.Controls.Add(numericBoxSpreadFwhm);//260809Cl 追加
             groupBoxCalculation.Location = new System.Drawing.Point(6, 166);
             groupBoxCalculation.Name = "groupBoxCalculation";
-            groupBoxCalculation.Size = new System.Drawing.Size(346, 78);
+            //260809Cl 変更: 角度広がりの行を足したので 78 → 104 (旧: new System.Drawing.Size(346, 78))。
+            //下の groupBoxChannels / groupBoxSites を 13px ずつ縮めて吸収し、フォーム高さは変えない
+            groupBoxCalculation.Size = new System.Drawing.Size(346, 104);
             groupBoxCalculation.TabIndex = 2;
             groupBoxCalculation.TabStop = false;
             groupBoxCalculation.Text = "Calculation";
@@ -258,13 +266,42 @@ namespace ReciPro
             checkBoxDechannelling.TabIndex = 3;
             checkBoxDechannelling.Text = "Include the dechannelled component";
             checkBoxDechannelling.UseVisualStyleBackColor = true;
+
+            //260809Cl 追加: 角度広がり (設計 §3.6、指示書 ①)。方位軸上の後処理なので engine には渡さない。
+            //処理順は「畳み込み → 規格化」に固定してあるので、曲線タブの規格化より前段に置く
+            labelAngularSpread.AutoSize = true;
+            labelAngularSpread.Location = new System.Drawing.Point(8, 78);
+            labelAngularSpread.Name = "labelAngularSpread";
+            labelAngularSpread.Size = new System.Drawing.Size(90, 15);
+            labelAngularSpread.TabIndex = 4;
+            labelAngularSpread.Text = "Angular spread";
+
+            comboBoxAngularSpread.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxAngularSpread.Location = new System.Drawing.Point(112, 74);
+            comboBoxAngularSpread.Name = "comboBoxAngularSpread";
+            comboBoxAngularSpread.Size = new System.Drawing.Size(100, 23);
+            comboBoxAngularSpread.TabIndex = 5;
+
+            numericBoxSpreadFwhm.DecimalPlaces = 2;
+            numericBoxSpreadFwhm.Enabled = false;//既定 = None
+            numericBoxSpreadFwhm.FooterText = "mrad";
+            numericBoxSpreadFwhm.HeaderText = "FWHM";
+            numericBoxSpreadFwhm.Location = new System.Drawing.Point(216, 74);
+            numericBoxSpreadFwhm.Maximum = 20D;
+            numericBoxSpreadFwhm.Minimum = 0.01D;
+            numericBoxSpreadFwhm.Name = "numericBoxSpreadFwhm";
+            numericBoxSpreadFwhm.Size = new System.Drawing.Size(122, 22);
+            numericBoxSpreadFwhm.TabIndex = 6;
+            numericBoxSpreadFwhm.Value = 1D;
             #endregion
 
             #region 左ペイン: チャネル / サイト
             groupBoxChannels.Controls.Add(checkedListBoxChannels);
-            groupBoxChannels.Location = new System.Drawing.Point(6, 248);
+            //260809Cl 変更: groupBoxCalculation が 26px 伸びたぶんを、下の 2 リストを 13px ずつ縮めて吸収する
+            //(旧: Location(6, 248) / Size(346, 156))。フォーム高さと Simulate ボタンの位置は不変
+            groupBoxChannels.Location = new System.Drawing.Point(6, 274);
             groupBoxChannels.Name = "groupBoxChannels";
-            groupBoxChannels.Size = new System.Drawing.Size(346, 156);
+            groupBoxChannels.Size = new System.Drawing.Size(346, 143);
             groupBoxChannels.TabIndex = 3;
             groupBoxChannels.TabStop = false;
             groupBoxChannels.Text = "Ionization channels";
@@ -277,9 +314,9 @@ namespace ReciPro
             checkedListBoxChannels.TabIndex = 0;
 
             groupBoxSites.Controls.Add(checkedListBoxSites);
-            groupBoxSites.Location = new System.Drawing.Point(6, 408);
+            groupBoxSites.Location = new System.Drawing.Point(6, 421);//260809Cl 変更 (旧: 408)
             groupBoxSites.Name = "groupBoxSites";
-            groupBoxSites.Size = new System.Drawing.Size(346, 150);
+            groupBoxSites.Size = new System.Drawing.Size(346, 137);//260809Cl 変更 (旧: 150)
             groupBoxSites.TabIndex = 4;
             groupBoxSites.TabStop = false;
             groupBoxSites.Text = "Site hypotheses";
@@ -520,6 +557,9 @@ namespace ReciPro
         private CheckBox checkBoxDechannelling;
         private Label labelSolver;
         private ComboBox comboBoxSolver;
+        private Label labelAngularSpread;//260809Cl 追加
+        private ComboBox comboBoxAngularSpread;//260809Cl 追加
+        private NumericBox numericBoxSpreadFwhm;//260809Cl 追加
         private GroupBox groupBoxChannels;
         private CheckedListBox checkedListBoxChannels;
         private GroupBox groupBoxSites;

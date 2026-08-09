@@ -77,6 +77,7 @@ The site contrast changes strongly — and can even reverse sign — between thi
 | **Max. beams** | Upper bound on the number of Bloch waves per orientation (1–1600). The union over the whole scan is larger | 120 |
 | **Solver** | Calculation engine for the eigenvalue problem: **Native** (Eigen C++) or **Managed** (.NET). Where the native solver is unavailable the choice is fixed to Managed | Native |
 | **Include the dechannelled component** | Whether to add $Y_\text{dech}$ above | on |
+| **Angular spread** | Convolves the curve with the angular spread of the incident beam: **None** or **Gaussian** with a FWHM in mrad. It is a post-process on the orientation axis, applied **before** the display normalization | None |
 
 **The cap of 1600 beams is the counterpart of the tabulated range $s \le 16\ \text{Å}^{-1}$ of the ionization form factor.** In practice even 1600 beams only require about 10.5 Å⁻¹, so the tabulated range is never exhausted while the cap is respected. The value actually reached is reported on the [basis diagnostic](#basis-diagnostic) line below the graph.
 
@@ -122,15 +123,18 @@ The first line under the curve reports, per series, the **contrast** $(\max-\min
 The second line reports the state of the basis.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ NOT fit-eligible
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit eligibility NOT evaluated   ⚠ Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV
 ```
 
 - **basis N (centre only + added by union)** : the size of the true union of reflections taken over all orientations of the scan
 - **F(s) ≤ … Å⁻¹** : the largest form-factor argument the basis actually required
 - **expanded-basis** : the maximum relative difference when the centre and both ends of the scan are re-solved with a 1.25× basis. It is a **proxy for the convergence error**
-- **fit-eligible / NOT fit-eligible** : the result becomes **not eligible** when the expanded-basis value exceeds the threshold of $3\times10^{-3}$
+- **fit eligibility** : v1 always reports **NOT evaluated**. The diagnostic has three known defects — its denominator is the
+  maximum over the whole tensor, its numerator is the absolute yield, and it can pass trivially when the 1.25× basis does not
+  actually grow — so certifying a result as "eligible" would err in the dangerous direction
+- **Experimental** : every run carries this tag together with the verified set, because only β-AlCo has been checked quantitatively
 
-⚠ **Do not use a result flagged as not fit-eligible for a quantitative occupancy fit.** That is a release condition of v1. Note also that the diagnostic is defined on the **absolute yield**, so it errs on the conservative side when you only look at the ICP (which divides by the scan mean).
+⚠ **v1 does not certify quantitative occupancy fits.** The raw diagnostic value is still shown and smaller is better, but treat it as an indication, not as a pass mark. Note also that it is defined on the **absolute yield**, so it errs on the conservative side when you only look at the ICP (which divides by the scan mean).
 
 Further warnings are appended in the following situations.
 
@@ -141,16 +145,33 @@ Further warnings are appended in the following situations.
 
 ## CSV export
 
-**Export CSV** writes a long-format table preceded by the two header lines below. The header is written so that the file alone states the conditions needed to reproduce it.
+**Export CSV** writes a long-format table preceded by a `# key: value` header (abridged below). The header is written so that the file alone states the conditions needed to reproduce it.
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` are stored separately, so **the contribution of the dechannelled component can be assessed afterwards**. The values are raw (per incident electron) and do not pass through the display normalization; the decimal separator is always a period.
+`dynamic` / `dechannelled` / `total` are stored separately, so **the contribution of the dechannelled component can be assessed afterwards**. The `*_conv` columns appear only when the angular spread is enabled and hold the convolved curves, so the file carries both the reproducible raw result and the one to compare against an experiment. The values are raw (per incident electron) and do not pass through the display normalization; the decimal separator is always a period.
 
 ---
 
@@ -181,7 +202,8 @@ The dechannelled term of v1 is a constant independent of orientation, so its onl
 - X-ray **self-absorption**
 - **Detector efficiency and solid angle**
 - **Background** (bremsstrahlung, overlapping lines)
-- Convolution with the **angular spread of the incident beam** (convergence semi-angle, drift) — not implemented in v1
+
+The **angular spread of the incident beam** (convergence semi-angle, drift) *is* modelled — see **Angular spread** in the Calculation box — but convolving with it does not make up for any of the items above.
 
 ### Model assumptions
 

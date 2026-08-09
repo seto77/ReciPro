@@ -77,6 +77,7 @@ Le contraste de site varie fortement — et peut même changer de signe — entr
 | **Faisceaux max.** | Borne supérieure du nombre d'ondes de Bloch par orientation (1–1600). L'union sur tout le balayage est plus grande | 120 |
 | **Solveur** | Moteur de calcul du problème aux valeurs propres : **Natif** (Eigen C++) ou **Managé** (.NET). Là où le solveur natif est indisponible, le choix est fixé à Managé | Natif |
 | **Inclure la composante déchenalisée** | Ajouter ou non $Y_\text{dech}$ ci-dessus | activé |
+| **Étalement angulaire** | Convolue la courbe avec l'étalement angulaire du faisceau incident : **Aucun** ou **Gaussian** avec une largeur à mi-hauteur en mrad. C'est un post-traitement sur l'axe des orientations, appliqué **avant** la normalisation d'affichage | Aucun |
 
 **Le plafond de 1600 faisceaux est le pendant de la plage tabulée $s \le 16\ \text{Å}^{-1}$ du facteur de forme d'ionisation.** En pratique, même 1600 faisceaux n'exigent qu'environ 10,5 Å⁻¹, de sorte que la plage tabulée n'est jamais épuisée tant que le plafond est respecté. La valeur réellement atteinte est indiquée sur la ligne de [diagnostic de base](#diagnostic-de-base) sous le graphique.
 
@@ -122,15 +123,18 @@ La première ligne sous la courbe donne, par série, le **contraste** $(\max-\mi
 La deuxième ligne indique l'état de la base.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ NON apte au fit
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ aptitude au fit NON évaluée   ⚠ Experimental : vérifié quantitativement uniquement pour beta-AlCo [001] à 250 keV
 ```
 
 - **basis N (centre seul + ajoutés par l'union)** : taille de la véritable union des réflexions sur toutes les orientations du balayage
 - **F(s) ≤ … Å⁻¹** : le plus grand argument de facteur de forme réellement exigé par la base
 - **expanded-basis** : écart relatif maximal lorsque le centre et les deux extrémités du balayage sont résolus de nouveau avec une base 1,25×. C'est un **indicateur indirect de l'erreur de convergence**
-- **apte au fit / NON apte au fit** : le résultat devient **non apte** lorsque la valeur expanded-basis dépasse le seuil de $3\times10^{-3}$
+- **aptitude au fit** : la v1 indique toujours **NON évaluée**. Le diagnostic présente trois défauts connus — son dénominateur est le
+  maximum sur tout le tenseur, son numérateur est le rendement absolu, et il passe trivialement quand la base 1,25× n'augmente
+  pas réellement — de sorte que certifier un résultat « apte » se tromperait dans la mauvaise direction
+- **Experimental** : chaque exécution porte cette étiquette avec le domaine vérifié, car seul β-AlCo a été contrôlé quantitativement
 
-⚠ **N'utilisez pas un résultat signalé non apte au fit pour un ajustement quantitatif d'occupation.** C'est une condition de publication de la v1. Notez aussi que le diagnostic est défini sur le **rendement absolu** : il est donc conservateur si vous ne regardez que l'ICP (qui divise par la moyenne du balayage).
+⚠ **La v1 ne certifie pas les ajustements quantitatifs d'occupation.** La valeur brute du diagnostic reste affichée et plus elle est petite mieux c'est, mais traitez-la comme une indication, non comme une note de réussite. Notez aussi qu'elle est définie sur le **rendement absolu** : elle est donc conservatrice si vous ne regardez que l'ICP (qui divise par la moyenne du balayage).
 
 D'autres avertissements sont ajoutés dans les situations suivantes.
 
@@ -141,16 +145,33 @@ D'autres avertissements sont ajoutés dans les situations suivantes.
 
 ## Export CSV {#export-csv}
 
-**Exporter en CSV** écrit un tableau au format long précédé des deux lignes d'en-tête ci-dessous. L'en-tête est conçu pour que le fichier seul énonce les conditions nécessaires à sa reproduction.
+**Exporter en CSV** écrit un tableau au format long précédé d'un en-tête au format `# key: value` (abrégé ci-dessous). L'en-tête est conçu pour que le fichier seul énonce les conditions nécessaires à sa reproduction.
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` sont stockés séparément, de sorte que **la contribution de la composante déchenalisée peut être évaluée après coup**. Les valeurs sont brutes (par électron incident) et ne passent pas par la normalisation d'affichage ; le séparateur décimal est toujours un point.
+`dynamic` / `dechannelled` / `total` sont stockés séparément, de sorte que **la contribution de la composante déchenalisée peut être évaluée après coup**. Les colonnes `*_conv` n'apparaissent que si l'étalement angulaire est activé et contiennent les courbes convoluées : le fichier porte donc à la fois le résultat brut reproductible et celui à comparer à une expérience. Les valeurs sont brutes (par électron incident) et ne passent pas par la normalisation d'affichage ; le séparateur décimal est toujours un point.
 
 ---
 
@@ -181,7 +202,8 @@ Le terme déchenalisé de la v1 est une constante indépendante de l'orientation
 - **Auto-absorption** des rayons X
 - **Efficacité et angle solide du détecteur**
 - **Fond continu** (rayonnement de freinage, raies superposées)
-- Convolution par l'**élargissement angulaire du faisceau incident** (demi-angle de convergence, dérive) — non implémentée en v1
+
+L'**étalement angulaire du faisceau incident** (demi-angle de convergence, dérive) *est* modélisé — voir **Étalement angulaire** dans le cadre Calcul — mais la convolution ne remplace aucun des points ci-dessus.
 
 ### Hypothèses du modèle
 

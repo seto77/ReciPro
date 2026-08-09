@@ -77,6 +77,7 @@ O contraste de sítio muda fortemente — e pode até inverter de sinal — entr
 | **Feixes máx.** | Limite superior do número de ondas de Bloch por orientação (1–1600). A união sobre toda a varredura é maior | 120 |
 | **Solucionador** | Motor de cálculo do problema de autovalores: **Nativo** (Eigen C++) ou **Gerido** (.NET). Onde o solucionador nativo não está disponível, a escolha fica fixada em Gerido | Nativo |
 | **Incluir a componente descanalizada** | Se soma $Y_\text{dech}$ acima | ligado |
+| **Espalhamento angular** | Convolui a curva com o espalhamento angular do feixe incidente: **Nenhum** ou **Gaussian** com uma largura a meia altura em mrad. É um pós-processamento no eixo das orientações, aplicado **antes** da normalização de exibição | Nenhum |
 
 **O teto de 1600 feixes é a contraparte da faixa tabelada $s \le 16\ \text{Å}^{-1}$ do fator de forma de ionização.** Na prática, mesmo 1600 feixes exigem apenas cerca de 10,5 Å⁻¹, de modo que a faixa tabelada nunca é esgotada enquanto o teto for respeitado. O valor efetivamente alcançado é informado na linha de [diagnóstico da base](#diagnóstico-da-base) sob o gráfico.
 
@@ -122,15 +123,18 @@ A primeira linha sob a curva informa, por série, o **contraste** $(\max-\min)/\
 A segunda linha informa o estado da base.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ NÃO apto para ajuste
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ aptidão para ajuste NÃO avaliada   ⚠ Experimental: verificado quantitativamente apenas para beta-AlCo [001] a 250 keV
 ```
 
 - **basis N (apenas centro + acrescentados pela união)** : tamanho da união verdadeira das reflexões sobre todas as orientações da varredura
 - **F(s) ≤ … Å⁻¹** : o maior argumento de fator de forma que a base realmente exigiu
 - **expanded-basis** : diferença relativa máxima quando o centro e as duas extremidades da varredura são resolvidos novamente com uma base 1,25×. É um **substituto para o erro de convergência**
-- **apto para ajuste / NÃO apto para ajuste** : o resultado passa a **não apto** quando o valor de expanded-basis excede o limiar de $3\times10^{-3}$
+- **aptidão para ajuste** : a v1 informa sempre **NÃO avaliada**. O diagnóstico tem três defeitos conhecidos — o denominador é o
+  máximo sobre todo o tensor, o numerador é o rendimento absoluto, e ele passa trivialmente quando a base 1,25× não cresce de
+  fato — de modo que certificar um resultado como «apto» erraria na direção perigosa
+- **Experimental** : toda execução leva esta etiqueta junto com a faixa verificada, pois apenas β-AlCo foi conferido quantitativamente
 
-⚠ **Não use um resultado marcado como não apto para ajuste em um ajuste quantitativo de ocupação.** Essa é uma condição de publicação da v1. Note também que o diagnóstico é definido sobre o **rendimento absoluto**, portanto é conservador quando se olha apenas o ICP (que divide pela média da varredura).
+⚠ **A v1 não certifica ajustes quantitativos de ocupação.** O valor bruto do diagnóstico continua visível e quanto menor melhor, mas trate-o como uma indicação, não como uma marca de aprovação. Note também que ele é definido sobre o **rendimento absoluto**, portanto é conservador quando se olha apenas o ICP (que divide pela média da varredura).
 
 Nas situações a seguir são acrescentados mais avisos.
 
@@ -141,16 +145,33 @@ Nas situações a seguir são acrescentados mais avisos.
 
 ## Exportação CSV {#exportação-csv}
 
-**Exportar CSV** escreve uma tabela em formato longo precedida pelas duas linhas de cabeçalho abaixo. O cabeçalho é escrito de modo que o próprio arquivo declare as condições necessárias para reproduzi-lo.
+**Exportar CSV** escreve uma tabela em formato longo precedida por um cabeçalho no formato `# key: value` (abreviado abaixo). O cabeçalho é escrito de modo que o próprio arquivo declare as condições necessárias para reproduzi-lo.
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` são armazenados separadamente, de modo que **a contribuição da componente descanalizada pode ser avaliada posteriormente**. Os valores são brutos (por elétron incidente) e não passam pela normalização de exibição; o separador decimal é sempre um ponto.
+`dynamic` / `dechannelled` / `total` são armazenados separadamente, de modo que **a contribuição da componente descanalizada pode ser avaliada posteriormente**. As colunas `*_conv` aparecem somente com o espalhamento angular ativado e contêm as curvas convoluídas: o arquivo carrega assim tanto o resultado bruto reprodutível quanto o de comparação com um experimento. Os valores são brutos (por elétron incidente) e não passam pela normalização de exibição; o separador decimal é sempre um ponto.
 
 ---
 
@@ -181,7 +202,8 @@ O termo descanalizado da v1 é uma constante independente da orientação, de mo
 - **Autoabsorção** de raios X
 - **Eficiência e ângulo sólido do detector**
 - **Fundo** (bremsstrahlung, linhas sobrepostas)
-- Convolução com o **alargamento angular do feixe incidente** (semiângulo de convergência, deriva) — não implementada na v1
+
+O **espalhamento angular do feixe incidente** (semiângulo de convergência, deriva) *é* modelado — veja **Espalhamento angular** na caixa Cálculo — mas convoluir com ele não substitui nenhum dos pontos acima.
 
 ### Premissas do modelo
 

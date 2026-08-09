@@ -77,6 +77,7 @@ $$
 | **최대 빔 수** | 방위 1 개당 블로흐파 수의 상한 (1–1600). 스캔 전체의 합집합은 이보다 큽니다 | 120 |
 | **솔버** | 고유치 문제의 계산 엔진: **네이티브** (Eigen C++) 또는 **관리형** (.NET). 네이티브 솔버를 쓸 수 없는 환경에서는 관리형으로 고정됩니다 | 네이티브 |
 | **비채널링 성분 포함** | 위의 $Y_\text{dech}$ 를 더할지 여부 | 켬 |
+| **각도 퍼짐** | 곡선을 입사 빔의 각도 퍼짐과 컨볼루션합니다. **없음** 또는 **Gaussian** (반치전폭, mrad). 방위 축 위의 후처리이며 표시 정규화보다 **먼저** 적용됩니다 | 없음 |
 
 **빔 수 상한 1600 은 이온화 형상 인자의 수록 범위 $s \le 16\ \text{Å}^{-1}$ 와 짝을 이룹니다.** 실측으로 1600 빔에서도 기저가 요구하는 $s$ 는 약 10.5 Å⁻¹ 에 그치므로, 이 상한을 지키는 한 수록 범위를 다 쓰는 일은 없습니다. 실제 도달값은 그래프 아래의 [기저 진단](#기저-진단) 줄에 나옵니다.
 
@@ -122,15 +123,18 @@ $$
 두 번째 줄은 기저의 상태를 알려줍니다.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 피팅 부적격
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 피팅 적격성 미평가   ⚠ Experimental: 정량 검증은 beta-AlCo [001] 250 keV 뿐
 ```
 
 - **basis N (중심만 + 합집합으로 추가)** : 스캔의 모든 방위에 걸친 반사의 진짜 합집합 개수
 - **F(s) ≤ … Å⁻¹** : 기저가 실제로 요구한 형상 인자 인수의 최댓값
 - **expanded-basis** : 스캔의 중심과 양 끝을 1.25 배 기저로 다시 풀었을 때의 최대 상대차. **수렴 오차의 대리량**입니다
-- **피팅 적격 / 피팅 부적격** : expanded-basis 값이 임계값 $3\times10^{-3}$ 을 넘으면 **부적격**이 됩니다
+- **피팅 적격성** : v1 은 항상 **미평가**로 보고합니다. 이 진단에는 알려진 결함이 셋 있습니다 — 분모가 텐서 전체의 최댓값이고,
+  분자가 절대 수율이며, 1.25 배 기저가 실제로 커지지 않을 때 그대로 통과합니다. 그래서 「적격」이라고 보증하면
+  위험한 방향으로 틀리게 됩니다
+- **Experimental** : 정량적으로 확인된 것은 β-AlCo 뿐이므로, 모든 실행에 검증 범위와 함께 이 표시가 붙습니다
 
-⚠ **피팅 부적격으로 표시된 결과를 정량적인 점유율 피팅에 사용하지 마십시오.** 이는 v1 의 공개 조건입니다. 또한 이 진단은 **절대 수율**에 대해 정의되어 있으므로, 스캔 평균으로 나누는 ICP 만 볼 때에는 보수적으로 (엄격하게) 나옵니다.
+⚠ **v1 은 정량적인 점유율 피팅을 보증하지 않습니다.** 원시 진단값은 계속 표시되고 작을수록 좋지만, 합격 표시가 아니라 참고치로 다루십시오. 또한 이 진단은 **절대 수율**에 대해 정의되어 있으므로, 스캔 평균으로 나누는 ICP 만 볼 때에는 보수적으로 나옵니다.
 
 다음 상황에서는 경고가 추가로 표시됩니다.
 
@@ -141,16 +145,33 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ 피�
 
 ## CSV 내보내기 {#csv-내보내기}
 
-**CSV 내보내기**는 아래 두 줄의 머리글에 이어 long-format 표를 씁니다. 머리글은 **그 파일만으로 재현 조건을 알 수 있도록** 작성되어 있습니다.
+**CSV 내보내기**는 `# key: value` 형식의 머리글 (아래는 발췌) 에 이어 long-format 표를 씁니다. 머리글은 **그 파일만으로 재현 조건을 알 수 있도록** 작성되어 있습니다.
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` 은 따로 저장되므로 **비채널링 성분의 기여를 나중에 평가할 수 있습니다**. 값은 표시상의 정규화를 거치지 않은 원시값 (입사 전자당) 이고, 소수점은 항상 마침표입니다.
+`dynamic` / `dechannelled` / `total` 은 따로 저장되므로 **비채널링 성분의 기여를 나중에 평가할 수 있습니다**. `*_conv` 열은 각도 퍼짐을 켰을 때만 나타나며 컨볼루션된 곡선이 들어갑니다. 즉 재현용 원시값과 실험 비교용 값이 한 파일에 함께 담깁니다. 값은 표시상의 정규화를 거치지 않은 원시값 (입사 전자당) 이고, 소수점은 항상 마침표입니다.
 
 ---
 
@@ -181,7 +202,8 @@ v1 의 비채널링 항은 방위에 의존하지 않는 상수이므로, ICP �
 - X선 **자체 흡수**
 - **검출기 효율과 입체각**
 - **배경** (제동복사, 겹치는 선)
-- **입사 빔의 각도 퍼짐** (수렴 반각·드리프트) 과의 컨볼루션 — v1 에서는 미구현
+
+**입사 빔의 각도 퍼짐** (수렴 반각·드리프트) 은 *모델링되어 있습니다* — 계산 상자의 **각도 퍼짐** 참조. 다만 그것과 컨볼루션한다고 해서 위의 항목들을 대신할 수는 없습니다.
 
 ### 모델 전제
 

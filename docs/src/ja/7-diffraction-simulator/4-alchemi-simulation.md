@@ -77,6 +77,7 @@ $$
 | **最大波数** | 1 方位あたりのブロッホ波数の上限 (1〜1600)。走査全体の union はこれより大きくなります | 120 |
 | **ソルバ** | 固有値問題の計算エンジン。**ネイティブ** (Eigen C++) と**マネージド** (.NET) から選びます。ネイティブが使えない環境では自動的にマネージドに固定されます | ネイティブ |
 | **非チャネリング成分を含める** | 上記 $Y_\text{dech}$ を加えるか | オン |
+| **角度広がり** | 入射ビームの角度広がりを曲線に畳み込みます。**なし** または **Gaussian** (半値全幅 mrad)。方位軸上の後処理で、表示の規格化より**前**に適用されます | なし |
 
 **最大波数の上限 1600 はイオン化形状因子テーブルの収録範囲 $s \le 16\ \text{Å}^{-1}$ と対**になっています。実測では 1600 波でも基底が要求する $s$ は約 10.5 Å⁻¹ に留まるので、この上限を守る限り収録範囲を使い切ることはありません。実際の到達値はグラフ下の[基底診断](#基底診断)行に出ます。
 
@@ -122,15 +123,18 @@ $$
 2 行目に基底の状態が出ます。
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit 不適格
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit 適格性は未評価   ⚠ Experimental: 定量検証済みは β-AlCo [001] 250 keV のみ
 ```
 
 - **basis N (中心のみ + union で追加)** : 走査の全方位で採った反射の真の union の本数
 - **F(s) ≤ … Å⁻¹** : 基底が実際に要求した形状因子の引数の最大値
 - **expanded-basis** : 走査の中心と両端を 1.25 倍の基底で解き直したときの最大相対差。**収束誤差の代理量**です
-- **fit 適格 / fit 不適格** : expanded-basis が閾値 $3\times10^{-3}$ を超えると**不適格**になります
+- **fit 適格性** : v1 は常に**未評価**と表示します。この診断には既知の欠陥が 3 つあり — 分母がテンソル全体の最大値であること、
+  分子が絶対収率であること、1.25 倍にしても基底が実際には増えないときに素通りしてしまうこと — 「適格」と保証表示すると
+  誤りの方向が悪くなるためです
+- **Experimental** : 定量検証が済んでいるのは β-AlCo だけなので、どの run にも検証済みの範囲と一緒にこの印が付きます
 
-⚠ **fit 不適格の結果を定量的な占有率フィットに使わないでください**。これは v1 の公開条件です。なお診断は**絶対収率**に対する量なので、走査平均で割る ICP を見る用途では保守側 (厳しめ) に出ます。
+⚠ **v1 は定量的な占有率フィットを保証しません。** 生の診断値は表示され続け、小さいほど良いのは確かですが、合否印ではなく目安として扱ってください。なお診断は**絶対収率**に対する量なので、走査平均で割る ICP を見る用途では保守側 (厳しめ) に出ます。
 
 このほか、以下の状況では警告が続けて表示されます。
 
@@ -141,16 +145,33 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit 
 
 ## CSV 出力
 
-`CSV 出力`は次の 2 行のヘッダに続けて long-format の表を書き出します。ヘッダは**そのファイルだけで再現条件が分かる**ように付けてあります。
+`CSV 出力`は `# key: value` 形式のヘッダ (下は抜粋) に続けて long-format の表を書き出します。ヘッダは**そのファイルだけで再現条件が分かる**ように付けてあります。
 
 ```text
-# ReciPro ALCHEMI, 250.0 kV, row (1 0 0), theta_B 3.8424 mrad, model LocalFormFactor,
-#   quantity ..., normalization PerIncidentElectron (self-absorption and detector efficiency are NOT applied)
-# basis 347 beams, hash ..., expanded-basis 6.658e-003, fit-eligible False
-tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total
+# generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
+# model: LocalFormFactor (local form-factor approximation; NOT the two-momentum MDFF)
+# quantity: IonizationVacanciesGenerated (PerIncidentElectron)
+# crystal: MgAl2O4 (spinel) / F d -3 m
+# cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
+# accelerating_voltage_kV: 200.000
+# scan_row_hkl: 1 0 0
+# theta_B_mrad: 1.552030
+# thicknesses_nm: 10.0000 20.0000 ... 100.0000
+# angular_spread: Gaussian1D FWHM 1.0000 mrad (kernel renormalized at the scan ends)
+# processing_order: forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)
+# basis: 202 beams (120 centre-only + 82 added by the union), hash 1F3A...
+# expanded_basis_max_rel_diff: 9.500e-004
+# fit_eligibility: NotEvaluated (v1 does not certify quantitative occupancy fits; raw diagnostic AcceptedForFit=True at tolerance 3e-3)
+# occupancy_coupling: Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented
+# verification: Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). ...
+# not_modelled: X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, background, specimen thickness distribution, specimen bending
+# channel[Al-K]: edge 1.5596 keV, sigma 1.95e-007 nm2, sigma_source ... , F(s)_source ... (tabulated to s = 16.0 A^-1), not truncated
+# site[AlM]: atom indices 0, occupancy from the crystal
+# conventions: tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), positive toward +g; angles in mrad; lengths in nm; ...
+tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dechannelled_conv,total_conv
 ```
 
-`dynamic` / `dechannelled` / `total` は分離して保存されるので、**非チャネリング成分の寄与を後から評価できます**。値は表示上の規格化を通していない生値 (入射電子 1 個あたり) で、小数点は常にピリオドです。
+`dynamic` / `dechannelled` / `total` は分離して保存されるので、**非チャネリング成分の寄与を後から評価できます**。`*_conv` 列は角度広がりを有効にしたときだけ現れ、畳み込み後の曲線が入ります。つまり再現用の生値と実験比較用の値が 1 つのファイルに揃います。値は表示上の規格化を通していない生値 (入射電子 1 個あたり) で、小数点は常にピリオドです。
 
 ---
 
@@ -181,7 +202,8 @@ v1 の非チャネリング項は方位に依らない定数なので、ICP に�
 - X 線の**自己吸収**
 - **検出器の効率と立体角**
 - **背景** (制動放射・重なり線)
-- **入射ビームの角度広がり** (収束半角・ドリフト) の畳み込み — v1 では未実装です
+
+**入射ビームの角度広がり** (収束半角・ドリフト) は**モデル化されています** (計算条件の**角度広がり**)。ただしそれを畳み込んでも、上に挙げたものの代わりにはなりません。
 
 ### モデル上の前提
 

@@ -30,11 +30,28 @@ internal static partial class GuiCapture
             Environment.ExitCode = 2;
             return;
         }
+        //260809Cl 追加: --capture と同じ「代表状態づくり」を通す。従来はフォームを Show しただけだったので
+        //FormALCHEMI のように「計算しないと中身が空」のフォームでは使えなかった。FormMain を先に作って
+        //結晶 (spinel) を選び、子フォームへ親情報を注入してから PrepareSpecialCaptureState を呼ぶ。
+        //⚠FormMain 自体は Close しない (FormClosing がレジストリへ UI 言語を焼き付けるため。GuiCapture.cs の 260726Cl 注記)。
+        FormMain main = null;
+        if (type != typeof(FormMain))
+        {
+            main = new FormMain { StartPosition = FormStartPosition.Manual, Location = new Point(-32000, -32000), ShowInTaskbar = false };
+            main.Show();
+            Application.DoEvents();
+            main.PrepareCaptureCrystalSelection();
+            Application.DoEvents();
+        }
+
         using var form = (Form)Activator.CreateInstance(type);
+        if (main != null) WireCrystalDependencies(form, main);
         form.StartPosition = FormStartPosition.Manual;
         form.Location = new Point(-32000, -32000);//ハンドルは作るが画面には出さない
         form.ShowInTaskbar = false;
         form.Show();
+        Application.DoEvents();
+        PrepareSpecialCaptureState(form, s => Console.WriteLine("--capture-form: " + s));
         Application.DoEvents();
         using var bmp = new Bitmap(Math.Max(1, form.Width), Math.Max(1, form.Height));
         form.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));

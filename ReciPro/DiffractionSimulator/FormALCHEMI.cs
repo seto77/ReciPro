@@ -93,6 +93,19 @@ public partial class FormALCHEMI : FormBase
         comboBoxXAxis.Items.AddRange(["mrad", "θ_B"]);
         comboBoxXAxis.SelectedIndex = 0;
 
+        //260809Cl 追加: 角度広がり (設計 §3.6)。離散カーネル CSV は公開後なので v1 は 2 択
+        comboBoxAngularSpread.Items.AddRange([
+            Localization.Loc(en: "None", ja: "なし", de: "Keine", fr: "Aucun", es: "Ninguno", pt: "Nenhum",
+                it: "Nessuno", ru: "Нет", zhHans: "无", zhHant: "無", ko: "없음"),
+            "Gaussian"]);
+        comboBoxAngularSpread.SelectedIndex = 0;
+        comboBoxAngularSpread.SelectedIndexChanged += (s, e) =>
+        {
+            numericBoxSpreadFwhm.Enabled = comboBoxAngularSpread.SelectedIndex == 1;
+            DrawCurves();
+        };
+        numericBoxSpreadFwhm.ValueChanged += (s, e) => { if (numericBoxSpreadFwhm.Enabled) DrawCurves(); };
+
         ApplyLocalization();
 
         //値の変更で θ_B 表示を更新 (レイアウトではないのでコード側で配線する)
@@ -130,6 +143,9 @@ public partial class FormALCHEMI : FormBase
             es: "Haces máx.", pt: "Feixes máx.", it: "Fasci max.", ru: "Макс. пучков", zhHans: "最大波数", zhHant: "最大波數", ko: "최대 빔 수");
         labelSolver.Text = Localization.Loc(en: "Solver", ja: "ソルバ", de: "Löser", fr: "Solveur", es: "Solucionador",
             pt: "Solucionador", it: "Risolutore", ru: "Решатель", zhHans: "求解器", zhHant: "求解器", ko: "솔버");
+        labelAngularSpread.Text = Localization.Loc(en: "Angular spread", ja: "角度広がり", de: "Winkelverbreiterung",
+            fr: "Étalement angulaire", es: "Dispersión angular", pt: "Espalhamento angular", it: "Allargamento angolare",
+            ru: "Угловое размытие", zhHans: "角展宽", zhHant: "角展寬", ko: "각도 퍼짐");
         checkBoxDechannelling.Text = Localization.Loc(en: "Include the dechannelled component",
             ja: "非チャネリング成分を含める", de: "Dechannelling-Anteil einbeziehen", fr: "Inclure la composante déchenalisée",
             es: "Incluir la componente descanalizada", pt: "Incluir a componente descanalizada",
@@ -188,8 +204,15 @@ public partial class FormALCHEMI : FormBase
             en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
             ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
         toolTip.SetToolTip(buttonExport, Localization.Loc(
-            en: "Write the raw curves (dynamic, dechannelled and total, per incident electron) for every orientation, thickness, site and channel to a CSV file.",
-            ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を CSV に書き出します。"));
+            en: "Write the raw curves (dynamic, dechannelled and total, per incident electron) for every orientation, thickness, site and channel to a CSV file, together with a header that records the crystal, the voltage, the scan, the basis diagnostic, the angular spread and the data provenance.",
+            ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。"));
+        //260809Cl 追加
+        toolTip.SetToolTip(comboBoxAngularSpread, Localization.Loc(
+            en: "Convolution of the rocking curve with the angular spread of the incident beam (convergence semi-angle, drift). It is a post-process on the orientation axis and is applied BEFORE the display normalization. Nothing else about the experiment - thickness distribution, bending, self-absorption, detector response, background - is modelled, so this alone will not reproduce a measurement.",
+            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より**前**に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。"));
+        toolTip.SetToolTip(numericBoxSpreadFwhm, Localization.Loc(
+            en: "Full width at half maximum of the Gaussian, in mrad. Ends of the scan are handled by renormalizing the kernel. Fitting this width together with thickness and occupancy makes them correlated, so use a measured value or a narrow prior.",
+            ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。"));
     }
 
     private void FormALCHEMI_FormClosing(object sender, FormClosingEventArgs e)
@@ -439,7 +462,9 @@ public partial class FormALCHEMI : FormBase
         for (int si = 0; si < s.SiteCount; si++)
             for (int c = 0; c < s.ChannelCount; c++)
             {
-                var y = Normalize(result.Curve(result.Total, t, si, c));
+                //260809Cl: 処理順は「畳み込み → 規格化」に固定 (作者決定)。逆にすると ICP の基準が畳み込み前の
+                //走査平均のままになって意味が変わる
+                var y = Normalize(Spread(result.Curve(result.Total, t, si, c)));
                 var p = new Profile { Color = SeriesColors[color++ % SeriesColors.Length], LineWidth = 2f,
                     text = $"{result.Sites[si].Label} / {result.ChannelData[c].Target.ShortLabel}" };
                 for (int o = 0; o < s.OrientationCount; o++)
@@ -467,17 +492,79 @@ public partial class FormALCHEMI : FormBase
             zhHans: "对比度 (max−min)/mean", zhHant: "對比度 (max−min)/mean", ko: "대비 (max−min)/평균") + " —  " + stats;
 
         var b = result.Basis;
+        //260809Cl 変更: 「fit 適格 / 不適格」の 2 値表示をやめ、AlchemiBasisDiagnostic.Eligibility (常に未評価) を出す。
+        //旧: b.AcceptedForFit ? "fit 適格" : "⚠ fit 不適格"。偽陽性 (指示書 §2-8 ⑦) がある状態で「適格」と
+        //保証表示するのは誤りの方向が悪い、という作者決定。生の診断値 (expanded-basis) は左に出したままにする
         labelBasis.Text = $"basis {b.BeamCount} ({b.CenterOnlyBeamCount} + {b.AddedByUnion})   "
             + $"F(s) ≤ {b.MaxShapeArgumentAngstromInv:f2} Å⁻¹   expanded-basis {b.ExpandedBasisMaxRelDiff:e1}   "
-            + (b.AcceptedForFit
-                ? Localization.Loc(en: "fit-eligible", ja: "fit 適格", de: "fit-tauglich", fr: "apte au fit", es: "apto para ajuste",
-                    pt: "apto para ajuste", it: "idoneo al fit", ru: "пригодно для подгонки", zhHans: "可用于拟合", zhHant: "可用於擬合", ko: "피팅 적격")
-                : "⚠ " + Localization.Loc(en: "NOT fit-eligible", ja: "fit 不適格", de: "NICHT fit-tauglich", fr: "NON apte au fit",
-                    es: "NO apto para ajuste", pt: "NÃO apto para ajuste", it: "NON idoneo al fit", ru: "НЕ пригодно для подгонки",
-                    zhHans: "不可用于拟合", zhHant: "不可用於擬合", ko: "피팅 부적격"))
+            + FitEligibilityText(b.Eligibility)
+            + ExperimentalNotice()
             + LowVoltageNotice()
             + TruncationNotice()
+            + NonFiniteNotice()
             + (b.Warnings.Length == 0 ? "" : "   ⚠ " + string.Join(" / ", b.Warnings));
+    }
+
+    /// <summary>260809Cl 追加: fit 適格性の表示文。v1 は常に「未評価」だが、⑦⑤⑥ を直したら
+    /// <see cref="AlchemiFitEligibility"/> の 3 値がそのまま出るように書いてある。</summary>
+    private static string FitEligibilityText(AlchemiFitEligibility e) => e switch
+    {
+        AlchemiFitEligibility.Eligible => Localization.Loc(en: "fit-eligible", ja: "fit 適格", de: "fit-tauglich",
+            fr: "apte au fit", es: "apto para ajuste", pt: "apto para ajuste", it: "idoneo al fit",
+            ru: "пригодно для подгонки", zhHans: "可用于拟合", zhHant: "可用於擬合", ko: "피팅 적격"),
+        AlchemiFitEligibility.NotEligible => "⚠ " + Localization.Loc(en: "NOT fit-eligible", ja: "fit 不適格",
+            de: "NICHT fit-tauglich", fr: "NON apte au fit", es: "NO apto para ajuste", pt: "NÃO apto para ajuste",
+            it: "NON idoneo al fit", ru: "НЕ пригодно для подгонки", zhHans: "不可用于拟合", zhHant: "不可用於擬合",
+            ko: "피팅 부적격"),
+        _ => "⚠ " + Localization.Loc(
+            en: "fit eligibility NOT evaluated (v1 does not certify quantitative occupancy fits)",
+            ja: "fit 適格性は未評価 (v1 は定量占有率フィットを保証しません)",
+            de: "Fit-Tauglichkeit NICHT bewertet (v1 zertifiziert keine quantitativen Besetzungsfits)",
+            fr: "aptitude au fit NON évaluée (la v1 ne certifie pas les ajustements quantitatifs d'occupation)",
+            es: "aptitud para ajuste NO evaluada (v1 no certifica ajustes cuantitativos de ocupación)",
+            pt: "aptidão para ajuste NÃO avaliada (a v1 não certifica ajustes quantitativos de ocupação)",
+            it: "idoneità al fit NON valutata (la v1 non certifica fit quantitativi di occupazione)",
+            ru: "пригодность для подгонки НЕ оценивалась (v1 не гарантирует количественную подгонку заселённостей)",
+            zhHans: "拟合适用性未评估（v1 不保证定量占有率拟合）",
+            zhHant: "擬合適用性未評估（v1 不保證定量占有率擬合）",
+            ko: "피팅 적격성 미평가 (v1 은 정량 점유율 피팅을 보증하지 않습니다)"),
+    };
+
+    /// <summary>260809Cl 追加 (作者決定): 重元素 L 等をホワイトリストで塞ぐのではなく、
+    /// **収録範囲内でも「定量検証済み」ではない**ことを常に示す (指示書 ⑧⑬)。
+    /// 定量検証は β-AlCo [001] 250 keV の Al-K / Co-K / Co-L しか済んでいないので、
+    /// 「この run は検証済み」と言える場面は事実上ないため、条件分岐せず常に出す。</summary>
+    private static string ExperimentalNotice() => "   ⚠ " + Localization.Loc(
+        en: "Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L)",
+        ja: "Experimental: 定量検証済みは β-AlCo [001] 250 keV の Al-K / Co-K / Co-L のみです",
+        de: "Experimental: quantitativ verifiziert nur für beta-AlCo [001] bei 250 keV (Al-K / Co-K / Co-L)",
+        fr: "Experimental : vérifié quantitativement uniquement pour beta-AlCo [001] à 250 keV (Al-K / Co-K / Co-L)",
+        es: "Experimental: verificado cuantitativamente solo para beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
+        pt: "Experimental: verificado quantitativamente apenas para beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
+        it: "Experimental: verificato quantitativamente solo per beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
+        ru: "Experimental: количественно проверено только для beta-AlCo [001] при 250 кэВ (Al-K / Co-K / Co-L)",
+        zhHans: "Experimental：仅对 beta-AlCo [001] 250 keV 的 Al-K / Co-K / Co-L 做过定量验证",
+        zhHant: "Experimental：僅對 beta-AlCo [001] 250 keV 的 Al-K / Co-K / Co-L 做過定量驗證",
+        ko: "Experimental: 정량 검증은 beta-AlCo [001] 250 keV 의 Al-K / Co-K / Co-L 뿐입니다");
+
+    /// <summary>260809Cl 追加 (⑪): 非有限値を**黙って通さない**。表示は NaN を落として描けてしまうので、
+    /// 結果テンソルに NaN/Inf が混じったら診断行で明示する。</summary>
+    private string NonFiniteNotice()
+    {
+        if (result.Total.All(double.IsFinite) && result.Dynamic.All(double.IsFinite) && result.Dechannelled.All(double.IsFinite))
+            return "";
+        return "   ⚠ " + Localization.Loc(
+            en: "the result contains non-finite values (NaN or infinity) - do not use it",
+            ja: "結果に非有限値 (NaN または無限大) が含まれています。使用しないでください",
+            de: "das Ergebnis enthält nicht-endliche Werte (NaN oder unendlich) - nicht verwenden",
+            fr: "le résultat contient des valeurs non finies (NaN ou infini) - ne pas l'utiliser",
+            es: "el resultado contiene valores no finitos (NaN o infinito): no lo utilice",
+            pt: "o resultado contém valores não finitos (NaN ou infinito) - não o utilize",
+            it: "il risultato contiene valori non finiti (NaN o infinito) - non utilizzarlo",
+            ru: "результат содержит неконечные значения (NaN или бесконечность) - не используйте его",
+            zhHans: "结果中含有非有限值（NaN 或无穷大），请勿使用",
+            zhHant: "結果中含有非有限值（NaN 或無窮大），請勿使用",
+            ko: "결과에 비유한 값 (NaN 또는 무한대) 이 포함되어 있습니다. 사용하지 마십시오");
     }
 
     /// <summary>260810Cl 追加: 80 kV 未満の告知。**hard gate にはしない** (作者決定) —
@@ -538,6 +625,12 @@ public partial class FormALCHEMI : FormBase
             yield return new PointD(inThetaB ? n : n * thetaB * 1e3, double.NaN);
     }
 
+    /// <summary>260809Cl 追加: 選択中の角度広がりを 1 本の曲線に掛ける (None ならそのまま返す)。
+    /// カーネルは方位軸上で評価するので、走査の傾斜角をそのまま渡す。</summary>
+    private double[] Spread(double[] y) => comboBoxAngularSpread.SelectedIndex == 1
+        ? AlchemiAngularSpread.Gaussian(y, [.. result.Orientations.Select(o => o.TiltRad)], numericBoxSpreadFwhm.Value * 1e-3)
+        : y;
+
     private double[] Normalize(double[] y) => comboBoxNormalization.SelectedIndex switch
     {
         0 => y.Average() > 0 ? [.. y.Select(v => v / y.Average())] : y,
@@ -561,32 +654,112 @@ public partial class FormALCHEMI : FormBase
 
     #region CSV 出力
 
+    /// <summary>260809Cl 全面改稿 (指示書 ⑩⑪): **そのファイルだけで再現できる**ヘッダを付ける。
+    /// 旧版は 2 行 (電圧・反射列・model・basis) しか書いていなかった。
+    /// ヘッダは機械可読にするため `# key: value` の 1 行 1 項目に統一し、規約 (角度の符号・単位・hkl・
+    /// 原点・占有率と多重度・処理順) と、保証していないもの (自己吸収・検出器・背景・厚み分布・曲げ) を明記する。
+    /// 本文は long-format。角度広がりが有効なときだけ *_conv 列が増える (作者決定: 生値と畳み込み後の両方)。</summary>
     private void buttonExport_Click(object sender, EventArgs e)
     {
         if (result == null || saveFileDialog.ShowDialog() != DialogResult.OK) return;
         var s = result.Shape;
+        var b = result.Basis;
+        var inv = CultureInfo.InvariantCulture;
+        var spread = comboBoxAngularSpread.SelectedIndex == 1;
+        var fwhmMrad = numericBoxSpreadFwhm.Value;
         var sb = new StringBuilder();
-        //自己吸収・検出器効率は未適用 (設計 §3.7)。生値であることをヘッダに残す
-        sb.AppendLine($"# ReciPro ALCHEMI, {result.IncidentEnergyKeV:f1} kV, row ({resultRow.H} {resultRow.K} {resultRow.L}), "
-            + $"theta_B {resultThetaB * 1e3:f4} mrad, model {result.ModelTier}, "
-            + $"quantity {result.Quantity}, normalization {result.Normalization} (self-absorption and detector efficiency are NOT applied)");
-        sb.AppendLine($"# basis {result.Basis.BeamCount} beams, hash {result.Basis.BasisHash}, "
-            + $"expanded-basis {result.Basis.ExpandedBasisMaxRelDiff:e3}, fit-eligible {result.Basis.AcceptedForFit}");
+
+        void Key(string key, string value) => sb.Append("# ").Append(key).Append(": ").AppendLine(value);
+
+        Key("generator", $"ReciPro ALCHEMI, {Version.VersionAndDate}");
+        Key("model", $"{result.ModelTier} (local form-factor approximation; NOT the two-momentum MDFF)");
+        Key("quantity", $"{result.Quantity} ({result.Normalization})");
+        Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}");
+        Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
+            + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
+        Key("cell_volume_nm3", result.UnitCellVolumeNm3.ToString("e8", inv));
+        Key("accelerating_voltage_kV", result.IncidentEnergyKeV.ToString("f3", inv));
+        Key("scan_row_hkl", $"{resultRow.H} {resultRow.K} {resultRow.L}");
+        Key("theta_B_mrad", (resultThetaB * 1e3).ToString("f6", inv));
+        Key("scan_points", s.OrientationCount.ToString(inv));
+        Key("thicknesses_nm", string.Join(" ", result.ThicknessesNm.Select(t => t.ToString("f4", inv))));
+        Key("angular_spread", spread ? $"Gaussian1D FWHM {fwhmMrad.ToString("f4", inv)} mrad (kernel renormalized at the scan ends)" : "None");
+        Key("processing_order", "forward yield -> angular spread convolution -> (display normalization, NOT applied to these columns)");
+        Key("basis", $"{b.BeamCount} beams ({b.CenterOnlyBeamCount} centre-only + {b.AddedByUnion} added by the union), hash {b.BasisHash}");
+        Key("basis_max_shape_argument_A-1", b.MaxShapeArgumentAngstromInv.ToString("f4", inv));
+        Key("expanded_basis_max_rel_diff", b.ExpandedBasisMaxRelDiff.ToString("e3", inv));
+        Key("fit_eligibility", $"{b.Eligibility} (v1 does not certify quantitative occupancy fits; "
+            + $"raw diagnostic AcceptedForFit={b.AcceptedForFit} at tolerance 3e-3)");
+        Key("dechannelled_component", result.Dechannelled.Any(v => v != 0) ? "included" : "excluded");
+        Key("occupancy_coupling", "Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented");
+        Key("verification", "Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). "
+            + "Light or weakly scattering sites and t <= 5 nm agree with an independent multislice implementation to 1-3 %; "
+            + "heavy columns with t >= 10 nm carry a systematic error of 6-17 % of the ICP modulation");
+        Key("not_modelled", "X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, "
+            + "background, specimen thickness distribution, specimen bending");
+        foreach (var d in result.ChannelData)
+        {
+            var (truncated, eps) = d.Shape switch
+            {
+                IonizationTableShape ts => (ts.TruncatedBeyondSMax, ts.TruncationBound),
+                IonizationLTotalShape ls => (ls.TruncatedBeyondSMax, ls.TruncationBound),
+                _ => (false, 0.0),
+            };
+            Key($"channel[{d.Target.ShortLabel}]", $"edge {d.EdgeEnergyKeV.ToString("f4", inv)} keV, "
+                + $"sigma {d.TotalCrossSectionNm2.ToString("e6", inv)} nm2, "
+                + $"sigma_source {d.CrossSectionSource?.ModelId} {d.CrossSectionSource?.DatasetVersion}, "
+                + $"F(s)_source {d.ShapeSource?.ModelId} {d.ShapeSource?.DatasetVersion} "
+                + $"(tabulated to s = {IonizationFsTable.SMaxAngstromInv.ToString("f1", inv)} A^-1), "
+                + (truncated ? $"TRUNCATED beyond s_cert with |F| <= {eps.ToString("e3", inv)}" : "not truncated"));
+        }
+        foreach (var site in result.Sites)
+            Key($"site[{site.Label}]", $"atom indices {string.Join(" ", site.AtomsIndices)}"
+                + (site.OccupancyFraction is double occ ? $", occupancy override {occ.ToString("f6", inv)}" : ", occupancy from the crystal"));
+        foreach (var w in b.Warnings)
+            Key("warning", w);
+        if (!result.Total.All(double.IsFinite))
+            Key("warning", "the result contains non-finite values (NaN or infinity)");
+        Key("conventions", "tilt is the signed rotation about the axis perpendicular to both the beam and g(scan_row_hkl), "
+            + "positive toward +g; angles in mrad; lengths in nm; hkl are Miller indices of the crystal as set in the parent "
+            + "diffraction simulator; site positions are fractional coordinates of that setting; yields already include "
+            + "site multiplicity and occupancy; the decimal separator is always a period");
+
         sb.Append("tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total");
+        if (spread) sb.Append(",dynamic_conv,dechannelled_conv,total_conv");
         sb.AppendLine();
+
+        //畳み込みは (厚み, サイト, チャネル) ごとに方位軸上で 1 回。方位ループの内側で毎回やらないよう先に作る
+        var tilt = result.Orientations.Select(o => o.TiltRad).ToArray();
+        double[][] Convolved(double[] tensor) => !spread ? null :
+            [.. Enumerable.Range(0, s.ThicknessCount * s.SiteCount * s.ChannelCount).Select(k =>
+                AlchemiAngularSpread.Gaussian(
+                    result.Curve(tensor, k / (s.SiteCount * s.ChannelCount), k / s.ChannelCount % s.SiteCount, k % s.ChannelCount),
+                    tilt, fwhmMrad * 1e-3))];
+        var dynConv = Convolved(result.Dynamic);
+        var dechConv = Convolved(result.Dechannelled);
+        var totConv = Convolved(result.Total);
+
         for (int o = 0; o < s.OrientationCount; o++)
             for (int t = 0; t < s.ThicknessCount; t++)
                 for (int si = 0; si < s.SiteCount; si++)
                     for (int c = 0; c < s.ChannelCount; c++)
                     {
                         var i = s.Index(o, t, si, c);
-                        sb.Append((result.Orientations[o].TiltRad * 1e3).ToString("f6", CultureInfo.InvariantCulture)).Append(',')
-                          .Append(result.ThicknessesNm[t].ToString("f4", CultureInfo.InvariantCulture)).Append(',')
+                        sb.Append((result.Orientations[o].TiltRad * 1e3).ToString("f6", inv)).Append(',')
+                          .Append(result.ThicknessesNm[t].ToString("f4", inv)).Append(',')
                           .Append(result.Sites[si].Label).Append(',')
                           .Append(result.ChannelData[c].Target.ShortLabel).Append(',')
-                          .Append(result.Dynamic[i].ToString("e8", CultureInfo.InvariantCulture)).Append(',')
-                          .Append(result.Dechannelled[i].ToString("e8", CultureInfo.InvariantCulture)).Append(',')
-                          .Append(result.Total[i].ToString("e8", CultureInfo.InvariantCulture)).AppendLine();
+                          .Append(result.Dynamic[i].ToString("e8", inv)).Append(',')
+                          .Append(result.Dechannelled[i].ToString("e8", inv)).Append(',')
+                          .Append(result.Total[i].ToString("e8", inv));
+                        if (spread)
+                        {
+                            var k = (t * s.SiteCount + si) * s.ChannelCount + c;
+                            sb.Append(',').Append(dynConv[k][o].ToString("e8", inv))
+                              .Append(',').Append(dechConv[k][o].ToString("e8", inv))
+                              .Append(',').Append(totConv[k][o].ToString("e8", inv));
+                        }
+                        sb.AppendLine();
                     }
         File.WriteAllText(saveFileDialog.FileName, sb.ToString());
     }
