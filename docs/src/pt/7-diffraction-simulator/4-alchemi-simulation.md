@@ -188,6 +188,8 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 Qualquer outro sistema, elemento, camada ou tensão é «calculável», mas não «verificado quantitativamente».
 
+**Não foi feita nenhuma comparação com dados experimentais.** A comparação acima é entre códigos, no intervalo $t$ = 2–30 nm. O valor de 10–19 pontos citado na seção seguinte é um *diagnóstico* para isolar a causa da discrepância: não é uma correção aplicada pelo simulador, e a concordância obtida após aplicá-la não é reivindicada como verificação.
+
 ### Erro sistemático conhecido: o termo descanalizado não tem correlação de sítio
 
 O termo descanalizado da v1 é uma constante independente da orientação, de modo que seu único efeito sobre o ICP é puxá-lo para 1. Na realidade, parte dos elétrons espalhados termicamente volta a canalizar nas colunas e, por serem espalhadores fortes, retorna **preferencialmente às colunas pesadas**. Na comparação acima, a magnitude efetiva dessa contribuição estava **subestimada em 10–19 pontos nas colunas pesadas**.

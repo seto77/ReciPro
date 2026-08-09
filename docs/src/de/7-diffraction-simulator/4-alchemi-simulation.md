@@ -188,6 +188,8 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 Jedes andere System, Element, jede andere Schale oder Spannung ist „berechenbar", aber nicht „quantitativ verifiziert".
 
+**Ein Vergleich mit experimentellen Daten wurde nicht durchgeführt.** Der obige Vergleich ist ein Vergleich zweier Programme über $t$ = 2–30 nm. Der im nächsten Abschnitt genannte Wert von 10–19 Punkten ist eine *Diagnosegröße* zur Eingrenzung der Ursache der Abweichung — er ist keine Korrektur, die der Simulator anwendet, und die danach erzielte Übereinstimmung wird nicht als Verifikation beansprucht.
+
 ### Bekannter systematischer Fehler — der Dechannelling-Term hat keine Platzkorrelation
 
 Der Dechannelling-Term von v1 ist eine von der Orientierung unabhängige Konstante; seine einzige Wirkung auf das ICP ist, es in Richtung 1 zu ziehen. Tatsächlich kanalisiert ein Teil der thermisch gestreuten Elektronen erneut in die Säulen und kehrt, da starke Streuer, **bevorzugt zu den schweren Säulen** zurück. Im obigen Vergleich wurde die effektive Größe dieses Beitrags **an den schweren Säulen um 10–19 Punkte unterschätzt**.

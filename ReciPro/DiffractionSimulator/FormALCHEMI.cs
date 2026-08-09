@@ -534,18 +534,24 @@ public partial class FormALCHEMI : FormBase
     /// **収録範囲内でも「定量検証済み」ではない**ことを常に示す (指示書 ⑧⑬)。
     /// 定量検証は β-AlCo [001] 250 keV の Al-K / Co-K / Co-L しか済んでいないので、
     /// 「この run は検証済み」と言える場面は事実上ないため、条件分岐せず常に出す。</summary>
+    //260809Cl 変更: 「定量検証済み」だけでは**実験と照合済み**と読まれ得る。作者決定で文献 (OAR 1999) との
+    //比較を公開後に回したので、**照合相手が独立 multislice コードであること**を文面に出す (指示書 §1-10②)。
+    //⚠あわせて**チャネル名を落として短くした** — この診断行は右端で切れており (docs のキャプチャで確認)、
+    //  ⑧⑬ で「常に出す」と決めた Experimental タグが実際には見えていない。チャネルはマニュアルと GUI にある。
+    //  ★行の折り返し (labelBasis と panelCurveFooter の高さ) は作者の GUI 判断なので触っていない。
+    //旧文面: en "Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L)" ほか 10 言語
     private static string ExperimentalNotice() => "   ⚠ " + Localization.Loc(
-        en: "Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L)",
-        ja: "Experimental: 定量検証済みは β-AlCo [001] 250 keV の Al-K / Co-K / Co-L のみです",
-        de: "Experimental: quantitativ verifiziert nur für beta-AlCo [001] bei 250 keV (Al-K / Co-K / Co-L)",
-        fr: "Experimental : vérifié quantitativement uniquement pour beta-AlCo [001] à 250 keV (Al-K / Co-K / Co-L)",
-        es: "Experimental: verificado cuantitativamente solo para beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
-        pt: "Experimental: verificado quantitativamente apenas para beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
-        it: "Experimental: verificato quantitativamente solo per beta-AlCo [001] a 250 keV (Al-K / Co-K / Co-L)",
-        ru: "Experimental: количественно проверено только для beta-AlCo [001] при 250 кэВ (Al-K / Co-K / Co-L)",
-        zhHans: "Experimental：仅对 beta-AlCo [001] 250 keV 的 Al-K / Co-K / Co-L 做过定量验证",
-        zhHant: "Experimental：僅對 beta-AlCo [001] 250 keV 的 Al-K / Co-K / Co-L 做過定量驗證",
-        ko: "Experimental: 정량 검증은 beta-AlCo [001] 250 keV 의 Al-K / Co-K / Co-L 뿐입니다");
+        en: "Experimental: cross-checked against a multislice code only (beta-AlCo [001], 250 keV)",
+        ja: "Experimental: 検証は multislice コードとの比較のみ (β-AlCo [001] 250 keV)",
+        de: "Experimental: nur gegen einen Multislice-Code geprüft (beta-AlCo [001], 250 keV)",
+        fr: "Experimental : vérifié uniquement face à un code multislice (beta-AlCo [001], 250 keV)",
+        es: "Experimental: contrastado solo frente a un código multislice (beta-AlCo [001], 250 keV)",
+        pt: "Experimental: confrontado apenas com um código multislice (beta-AlCo [001], 250 keV)",
+        it: "Experimental: confrontato solo con un codice multislice (beta-AlCo [001], 250 keV)",
+        ru: "Experimental: сверено только с multislice-кодом (beta-AlCo [001], 250 кэВ)",
+        zhHans: "Experimental：仅与 multislice 程序对比验证（beta-AlCo [001], 250 keV）",
+        zhHant: "Experimental：僅與 multislice 程式對比驗證（beta-AlCo [001], 250 keV）",
+        ko: "Experimental: multislice 코드와의 대조만 수행 (beta-AlCo [001], 250 keV)");
 
     /// <summary>260809Cl 追加 (⑪): 非有限値を**黙って通さない**。表示は NaN を落として描けてしまうので、
     /// 結果テンソルに NaN/Inf が混じったら診断行で明示する。</summary>
@@ -692,9 +698,13 @@ public partial class FormALCHEMI : FormBase
             + $"raw diagnostic AcceptedForFit={b.AcceptedForFit} at tolerance 3e-3)");
         Key("dechannelled_component", result.Dechannelled.Any(v => v != 0) ? "included" : "excluded");
         Key("occupancy_coupling", "Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented");
-        Key("verification", "Experimental. Quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L). "
-            + "Light or weakly scattering sites and t <= 5 nm agree with an independent multislice implementation to 1-3 %; "
-            + "heavy columns with t >= 10 nm carry a systematic error of 6-17 % of the ICP modulation");
+        //260809Cl 変更: 「実験と照合済み」と読まれないよう、照合相手と厚み範囲を明示する (指示書 §1-10②)
+        Key("verification", "Experimental. Cross-checked ONLY against an independent multislice + frozen-phonon implementation "
+            + "(py_multislice), for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L) over t = 2-30 nm. "
+            + "NO comparison with experimental data has been made. "
+            + "Light or weakly scattering sites and t <= 5 nm agree to 1-3 %; "
+            + "heavy columns with t >= 10 nm carry a systematic error of 6-17 % of the ICP modulation, "
+            + "because the dechannelled term carries no site correlation");
         Key("not_modelled", "X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, "
             + "background, specimen thickness distribution, specimen bending");
         foreach (var d in result.ChannelData)

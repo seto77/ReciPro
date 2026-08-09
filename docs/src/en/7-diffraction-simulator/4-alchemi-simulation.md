@@ -188,6 +188,8 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 Any other system, element, shell or voltage is "computable" but not "quantitatively verified".
 
+**No comparison with experimental data has been made.** The comparison above is code against code, over $t$ = 2–30 nm. The 10–19 point figure quoted in the next section is a *diagnostic* used to isolate the cause of the discrepancy — it is not a correction the simulator applies, and the agreement obtained after applying it is not claimed as verification.
+
 ### Known systematic error — the dechannelled term has no site correlation
 
 The dechannelled term of v1 is a constant independent of orientation, so its only effect on the ICP is to pull it toward 1. In reality some of the thermally scattered electrons re-channel into the columns and, being strong scatterers, return **preferentially to the heavy columns**. In the comparison above, the effective amount of this contribution was **underestimated by 10–19 points on the heavy columns**.

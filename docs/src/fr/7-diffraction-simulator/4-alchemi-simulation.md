@@ -188,6 +188,8 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 Tout autre système, élément, couche ou tension est « calculable » mais non « vérifié quantitativement ».
 
+**Aucune comparaison avec des données expérimentales n'a été effectuée.** La comparaison ci-dessus est une comparaison entre codes, sur $t$ = 2–30 nm. La valeur de 10–19 points citée dans la section suivante est un *diagnostic* servant à isoler la cause de l'écart : ce n'est pas une correction appliquée par le simulateur, et l'accord obtenu après son application n'est pas revendiqué comme une vérification.
+
 ### Erreur systématique connue — le terme déchenalisé n'a pas de corrélation de site
 
 Le terme déchenalisé de la v1 est une constante indépendante de l'orientation ; son seul effet sur l'ICP est de le ramener vers 1. En réalité, une partie des électrons diffusés thermiquement se rechenalise dans les colonnes et, étant de forts diffuseurs, revient **préférentiellement vers les colonnes lourdes**. Dans la comparaison ci-dessus, la valeur effective de cette contribution était **sous-estimée de 10 à 19 points sur les colonnes lourdes**.
