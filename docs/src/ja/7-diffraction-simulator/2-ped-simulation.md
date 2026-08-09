@@ -98,6 +98,6 @@ PEDは電子回折なので、線源は **電子線** を選びます。電子�
 ## 関連項目
 
 - [回折シミュレータ（まとめ）](index.md)
-- [X線回折シミュレーション](4-x-ray-neutron-diffraction.md)
+- [X線回折シミュレーション](5-x-ray-neutron-diffraction.md)
 - [SAED シミュレーション](1-saed-simulation.md)
 - [動力学計算（Bloch波法）](../appendix/a3-bloch-wave/calculation.md)

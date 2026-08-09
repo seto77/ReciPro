@@ -20,7 +20,7 @@ Simuliert das Beugungsmuster, das entsteht, wenn ein paralleler Elektronenstrahl
 
 ![Wave Length](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Stellen Sie die Strahlungsquelle auf **Electron**. Geben Sie die Energie (keV) oder die Wellenlänge (nm) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md).
+Stellen Sie die Strahlungsquelle auf **Electron**. Geben Sie die Energie (keV) oder die Wellenlänge (nm) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ Detektorinformationen, Spiegeln, Anzeige des reziproken Raums, Kikuchi-Linien, D
 
 - [Beugungssimulator (Übersicht)](index.md)
 - [SAED-Berechnung mit parallelem Strahl](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md)
+- [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md)
 - [Simulation der Präzessions-Elektronenbeugung (PED)](2-ped-simulation.md)
 - [Definition des Koordinatensystems](../appendix/a1-coordinate-system/1-orientation.md)

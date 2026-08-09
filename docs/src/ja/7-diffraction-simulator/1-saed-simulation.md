@@ -20,7 +20,7 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 ![波長](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-線源を **電子線** にします。エネルギー (keV) または波長 (nm) を入力すると、相対論的補正付きの波長が計算されます。X線・中性子線については [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) を参照してください。
+線源を **電子線** にします。エネルギー (keV) または波長 (nm) を入力すると、相対論的補正付きの波長が計算されます。X線・中性子線については [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) を参照してください。
 
 ---
 
@@ -113,6 +113,6 @@ GUI条件: 波長 = 電子線 ・ 入射ビーム = 平行 ・ 強度計算 = �
 
 - [回折シミュレータ（まとめ）](index.md)
 - [平行ビーム SAED の計算](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [X線回折シミュレーション](4-x-ray-neutron-diffraction.md)
+- [X線回折シミュレーション](5-x-ray-neutron-diffraction.md)
 - [歳差電子回折 (PED) シミュレーション](2-ped-simulation.md)
 - [座標系の定義](../appendix/a1-coordinate-system/1-orientation.md)

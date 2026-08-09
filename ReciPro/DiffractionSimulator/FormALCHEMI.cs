@@ -64,7 +64,9 @@ public partial class FormALCHEMI : FormBase
     public FormALCHEMI()
     {
         InitializeComponent();
-        HelpPage = "7-diffraction-simulator";
+        //HelpPage = "7-diffraction-simulator"; //260807Cl 旧 (専用ページが無かったので親の概要ページ)
+        //260809Cl: 専用ページ 7.4 を新設したので差し替え。⚠slug は実ページ名と一字一句一致必須 (ずれると F1 が 404)
+        HelpPage = "7-diffraction-simulator/4-alchemi-simulation";
 
         //260807Cl: ARM64 には MKL/native Eigen の事情があるので CBED と同じ規律で選択肢を絞る
         comboBoxSolver.Items.AddRange([
@@ -257,9 +259,13 @@ public partial class FormALCHEMI : FormBase
 
     #region 実行
 
-    private async void buttonSimulate_Click(object sender, EventArgs e)
+    /// <summary>260809Cl 追加: GUI の入力から run 1 回ぶんの要求を組む (null = チャネル/サイト未選択、または軸が縮退)。
+    /// <see cref="buttonSimulate_Click"/> と <see cref="PrepareCaptureForGuiAudit"/> で共用するため切り出した。
+    /// 旧: この処理は buttonSimulate_Click に inline だった。</summary>
+    private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB)
     {
-        if (cts != null) return;
+        row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger);
+        thetaB = double.NaN;
 
         var channels = Enumerable.Range(0, checkedListBoxChannels.Items.Count)
             .Where(checkedListBoxChannels.GetItemChecked)
@@ -275,16 +281,17 @@ public partial class FormALCHEMI : FormBase
                 es: "Seleccione al menos un canal de ionización y un sitio.", pt: "Selecione ao menos um canal de ionização e um sítio.",
                 it: "Selezionare almeno un canale di ionizzazione e un sito.", ru: "Выберите хотя бы один канал ионизации и одну позицию.",
                 zhHans: "请至少选择一个电离通道和一个位点。", zhHant: "請至少選擇一個游離通道與一個位點。", ko: "이온화 채널과 자리를 각각 하나 이상 선택하세요.");
-            return;
+            return null;
         }
 
-        var (h, k, l) = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger);
+        var (h, k, l) = row;
         var rotation = new Matrix3D(Crystal.RotationMatrix);
         var beam = new Vector3DBase(0, 0, -1);
         //掃く反射列 g に対し、傾斜軸は「ビームと g の両方に垂直」= その軸まわりに振ると s_g が動く
         var g = rotation * (Crystal.MatrixInverseTransposed * (h, k, l));
         var axis = Vector3DBase.VectorProduct(beam, g);
-        if (axis.Length < 1e-9) { UpdateScanLabel(); return; }
+        if (axis.Length < 1e-9) { UpdateScanLabel(); return null; }
+        thetaB = g.Length / (2 * UniversalConstants.Convert.EnergyToElectronWaveNumber(Voltage));
 
         var range = numericBoxRange.Value * 1e-3;
         var scan = AlchemiScan.Rocking1D(beam, axis, -range, range, numericBoxPoints.ValueInteger);
@@ -293,12 +300,20 @@ public partial class FormALCHEMI : FormBase
             thicknesses.Add(t);
         var sites = siteIndices.Select(i => new AlchemiSiteBasis(Crystal.Atoms[i].Label, [i])).ToArray();
 
-        var request = new AlchemiRequest(Voltage, rotation, scan, [.. thicknesses], sites, channels)
+        return new AlchemiRequest(Voltage, rotation, scan, [.. thicknesses], sites, channels)
         {
             MaxNumOfBloch = numericBoxMaxNumOfBloch.ValueInteger,
             IncludeDechannelledComponent = checkBoxDechannelling.Checked,
             UseNativeSolver = comboBoxSolver.SelectedIndex == 0,
         };
+    }
+
+    private async void buttonSimulate_Click(object sender, EventArgs e)
+    {
+        if (cts != null) return;
+
+        var request = BuildRequest(out var row, out var thetaB);
+        if (request == null) return;
 
         cts = new CancellationTokenSource();
         buttonStop.Visible = true;
@@ -311,8 +326,8 @@ public partial class FormALCHEMI : FormBase
         {
             result = await Task.Run(() => bethe.RunAlchemi(request, ((IProgress<AlchemiProgress>)progress).Report, cts.Token), cts.Token);
             sw.Stop();
-            resultRow = (h, k, l);
-            resultThetaB = g.Length / (2 * UniversalConstants.Convert.EnergyToElectronWaveNumber(Voltage));
+            resultRow = row;
+            resultThetaB = thetaB;
             toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
             SetupThicknessSelector();
             DrawCurves();
@@ -340,6 +355,28 @@ public partial class FormALCHEMI : FormBase
     }
 
     private void buttonStop_Click(object sender, EventArgs e) => cts?.Cancel();
+
+    /// <summary>260809Cl 追加: <c>--capture</c> 用に「曲線が出た状態」を作る。
+    /// 空のフォームではマニュアルの説明図にならない (Pages 編集方針 §5) が、自動キャプチャは Show した直後に撮るので、
+    /// ここで代表計算まで済ませる。撮影ループは BackgroundWorker/await の完了を待てないため、
+    /// <see cref="BetheMethod.RunAlchemi"/> を **UI スレッドで同期に**呼ぶ (進捗・キャンセルは不要)。
+    /// 入力値は既定のまま = マニュアルの表に載せている既定値と図が一致する。</summary>
+    public void PrepareCaptureForGuiAudit()
+    {
+        RefreshLists(); //VisibleChanged 経由の初期化に頼らない (撮影順で Visible が前後するため)
+        var request = BuildRequest(out var row, out var thetaB);
+        if (request == null) return;
+
+        sw.Restart();
+        result = Crystal.Bethe.RunAlchemi(request);
+        sw.Stop();
+        resultRow = row;
+        resultThetaB = thetaB;
+        toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
+        toolStripProgressBar.Value = toolStripProgressBar.Maximum;
+        SetupThicknessSelector();
+        DrawCurves();
+    }
 
     private void ReportProgress(AlchemiProgress p)
     {
@@ -416,10 +453,13 @@ public partial class FormALCHEMI : FormBase
                 stats.Append("    ");
             }
 
-        graphControl.AddProfiles([.. profiles], showLegend: true);
-        //Bragg 位置 = 掃いた反射列の整数倍 (θ = n·θ_B)。実曲線でいちばん効いた表示要素
+        //Bragg 位置 = 掃いた反射列の整数倍 (θ = n·θ_B)。実曲線でいちばん効いた表示要素。
+        //260809Cl 修正: VerticalLines の setter は**再描画しない** (呼び出し側が AddProfiles/Draw で一括描画する規約。
+        //GraphControl.cs:434 と FormBeamInteraction.cs:1179 の注記) ので、AddProfiles より**前**に設定する。
+        //旧: AddProfiles の後に代入していたため縦線が 1 回も描かれていなかった
         graphControl.VerticalLines = checkBoxShowBragg.Checked && !double.IsNaN(thetaB)
             ? [.. BraggPositions(thetaB, inThetaB)] : [];
+        graphControl.AddProfiles([.. profiles], showLegend: true);
 
         labelStats.Text = Localization.Loc(en: "Contrast (max−min)/mean", ja: "コントラスト (max−min)/mean",
             de: "Kontrast (max−min)/Mittel", fr: "Contraste (max−min)/moyenne", es: "Contraste (max−min)/media",

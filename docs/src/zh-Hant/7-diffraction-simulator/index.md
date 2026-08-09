@@ -19,10 +19,16 @@ title: Diffraction Simulator
 
 | 模式 | 內容 | 頁面 |
 |------|----------|------|
-| **X 光（與中子）繞射** | 單晶 X 光 / 中子繞射圖樣（平行、進動 X 光、背反射勞厄） | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
+| **X 光（與中子）繞射** | 單晶 X 光 / 中子繞射圖樣（平行、進動 X 光、背反射勞厄） | [X 光繞射模擬](5-x-ray-neutron-diffraction.md) |
 | **SAED** | 平行束電子繞射（選區電子繞射） | [SAED 模擬](1-saed-simulation.md) |
 | **PED** | 進動電子繞射 | [PED 模擬](2-ped-simulation.md) |
 | **CBED** | 會聚束電子繞射 | [CBED 模擬](3-cbed-simulation.md) |
+
+> **ALCHEMI 不是一種模式。** 與由波長與入射束組合決定的 X 光 / SAED / PED / CBED 不同，ALCHEMI 模擬器是從 **選項** 功能表開啟的**子視窗**，故在此單獨列出。
+
+| 子視窗 | 內容 | 頁面 |
+|------|------|------|
+| **ALCHEMI 模擬器** | 依位點分解的游離搖擺曲線（通道增強微分析） | [ALCHEMI 模擬](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ title: Diffraction Simulator
 | 電子 | 平行 | SAED | [SAED 模擬](1-saed-simulation.md) |
 | 電子 | 進動（電子 = PED） | PED | [PED 模擬](2-ped-simulation.md) |
 | 電子 | 會聚（CBED） | CBED | [CBED 模擬](3-cbed-simulation.md) |
-| X 光 | 平行 | X 光繞射 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
-| X 光 | 進動（X 光） | 進動 X 光（進動相機） | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
-| X 光 | 背反射勞厄（X 光） | 背反射勞厄 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
-| 中子 | 平行 | 中子繞射 | [X 光繞射模擬的中子章節](4-x-ray-neutron-diffraction.md) |
+| X 光 | 平行 | X 光繞射 | [X 光繞射模擬](5-x-ray-neutron-diffraction.md) |
+| X 光 | 進動（X 光） | 進動 X 光（進動相機） | [X 光繞射模擬](5-x-ray-neutron-diffraction.md) |
+| X 光 | 背反射勞厄（X 光） | 背反射勞厄 | [X 光繞射模擬](5-x-ray-neutron-diffraction.md) |
+| 中子 | 平行 | 中子繞射 | [X 光繞射模擬的中子章節](5-x-ray-neutron-diffraction.md) |
 
 > **Note**：入射束的選項會隨波長而變。電子：**平行、進動（電子 = PED）、會聚（CBED）**；X 光：**平行、進動（X 光）、背反射勞厄**；中子：僅**平行**。選取**進動（電子 = PED）**或**會聚（CBED）**時，強度計算會自動切換為 **Dynamical**。
 
@@ -81,7 +87,7 @@ title: Diffraction Simulator
 | 目標 | 從何處開始 | 參考 |
 |------|------------|-----------|
 | 產生平行束電子繞射（SAED） | 將 **Incident beam** 設為 **Parallel**，**Wavelength** 設為電子 | [SAED 模擬](1-saed-simulation.md)、[平行束 SAED 計算](../appendix/a3-bloch-wave/calculation.md) |
-| 產生單晶 X 光繞射 | 將 **Wavelength** 切換為 X 光 / 同步輻射 | [X 光繞射模擬](4-x-ray-neutron-diffraction.md) |
+| 產生單晶 X 光繞射 | 將 **Wavelength** 切換為 X 光 / 同步輻射 | [X 光繞射模擬](5-x-ray-neutron-diffraction.md) |
 | 產生進動電子繞射（PED） | 將 **Incident beam** 設為 **Precession (electron)**，再設定半角與步階 | [PED 模擬](2-ped-simulation.md) |
 | 產生會聚束電子繞射（CBED） | 將 **Incident beam** 設為 **Convergence (CBED, electron only)**，並在 CBED 視窗中設定條件 | [CBED 模擬](3-cbed-simulation.md)、[CBED 計算](../appendix/a3-bloch-wave/cbed.md) |
 | 檢視動力學計算所得的反射清單 | 選取 **Dynamical** 並開啟 **繞射點詳情** 或 **Details** | [動力學計算（共用核心）](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ title: Diffraction Simulator
 
 ---
 
+## ALCHEMI 模擬器
+
+開啟一個計算**依位點分解的游離搖擺曲線**的子視窗：在晶體通過系統反射列的 Bragg 條件傾轉時，所選游離通道的產率依原子位點分解給出。從 **選項** 功能表開啟。與 CBED 視窗不同，它擁有自己的輸出區域，不會在上層視窗的畫布上繪圖。
+
+→ 全部設定以及適用範圍與已知限制，請參見 **[ALCHEMI 模擬](4-alchemi-simulation.md)**。
+
+---
+
 ## 相關主題
 
-- [X 光繞射模擬](4-x-ray-neutron-diffraction.md)
+- [X 光繞射模擬](5-x-ray-neutron-diffraction.md)
 - [SAED 模擬](1-saed-simulation.md)
 - [PED 模擬](2-ped-simulation.md)
 - [CBED 模擬](3-cbed-simulation.md)
+- [ALCHEMI 模擬](4-alchemi-simulation.md)
 - [動力學計算（共用核心）](../appendix/a3-bloch-wave/calculation.md)
 - [偵測器座標系](../appendix/a1-coordinate-system/2-diffraction.md)

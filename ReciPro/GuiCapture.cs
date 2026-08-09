@@ -1256,6 +1256,13 @@ internal static partial class GuiCapture
                     Application.DoEvents();
                     trace($"{form.GetType().Name}\tINFO\tprepared holder stereonet");
                     break;
+                case FormALCHEMI alchemi:
+                    // 260809Cl 追加: 空のフォームでは説明図にならないので、既定条件でロッキングカーブまで計算しておく。
+                    // RunAlchemi を同期で呼ぶ設計なので WaitUntilScreenStable は不要 (数秒で戻る)。
+                    alchemi.PrepareCaptureForGuiAudit();
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared ALCHEMI rocking curves");
+                    break;
                 case FormSpotIDV2 spotID:
                     // 260524Cl: SrTiO3 SAD の dm3 を読み込み、スポット検出を起動した代表状態で撮る。検出は非同期かつ重いので画面安定待ち。
                     var sadImage = FindReferenceFile(Path.Combine("DigitalMicroGraph", "SrTiO3", "SADiff100cm_001.dm3"));

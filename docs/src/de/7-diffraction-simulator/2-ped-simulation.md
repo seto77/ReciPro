@@ -98,6 +98,6 @@ Steuert, wie jeder Beugungsreflex gezeichnet wird.
 ## Siehe auch
 
 - [Beugungssimulator (Übersicht)](index.md)
-- [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md)
+- [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md)
 - [SAED-Simulation](1-saed-simulation.md)
 - [Dynamische Berechnung (Bloch-Wellen-Methode)](../appendix/a3-bloch-wave/calculation.md)

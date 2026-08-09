@@ -19,10 +19,16 @@ Das Fenster besitzt **links** einen Zeichenbereich für das Beugungsmuster und *
 
 | Modus | Inhalt | Seite |
 |------|----------|------|
-| **Röntgenbeugung (und Neutronenbeugung)** | Einkristall-Röntgen-/Neutronenbeugungsmuster (parallel, Präzessions-Röntgen, Back Laue) | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
+| **Röntgenbeugung (und Neutronenbeugung)** | Einkristall-Röntgen-/Neutronenbeugungsmuster (parallel, Präzessions-Röntgen, Back Laue) | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 | **SAED** | Parallelstrahl-Elektronenbeugung (selected-area electron diffraction) | [SAED-Simulation](1-saed-simulation.md) |
 | **PED** | Präzessions-Elektronenbeugung | [PED-Simulation](2-ped-simulation.md) |
 | **CBED** | Konvergente Elektronenbeugung | [CBED-Simulation](3-cbed-simulation.md) |
+
+> **ALCHEMI ist kein Modus.** Anders als Röntgen / SAED / PED / CBED, die sich aus der Kombination von Wellenlänge und einfallendem Strahl ergeben, ist der ALCHEMI-Simulator ein **Unterfenster**, das über das Menü **Optionen** geöffnet wird; er ist deshalb hier getrennt aufgeführt.
+
+| Unterfenster | Inhalt | Seite |
+|------|------|------|
+| **ALCHEMI-Simulator** | Platzaufgelöste Ionisations-Rocking-Kurven (channelling-verstärkte Mikroanalyse) | [ALCHEMI-Simulation](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ Suchen Sie die benötigte Seite anhand der Kombination aus **Wellenlänge (Quell
 | Elektron | Parallel | SAED | [SAED-Simulation](1-saed-simulation.md) |
 | Elektron | Präzession (Elektron = PED) | PED | [PED-Simulation](2-ped-simulation.md) |
 | Elektron | Konvergenz (CBED) | CBED | [CBED-Simulation](3-cbed-simulation.md) |
-| Röntgen | Parallel | Röntgenbeugung | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
-| Röntgen | Präzession (Röntgen) | Präzessions-Röntgen (Präzessionskamera) | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
-| Röntgen | Back Laue | Rückstrahl-Laue | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
-| Neutron | Parallel | Neutronenbeugung | [Neutronen-Abschnitt der Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
+| Röntgen | Parallel | Röntgenbeugung | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
+| Röntgen | Präzession (Röntgen) | Präzessions-Röntgen (Präzessionskamera) | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
+| Röntgen | Back Laue | Rückstrahl-Laue | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
+| Neutron | Parallel | Neutronenbeugung | [Neutronen-Abschnitt der Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 
 > **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl ändern sich mit der Wellenlänge. Für Elektronen: **Parallel, Präzession (Elektron = PED), Konvergenz (CBED)**; für Röntgenstrahlen: **Parallel, Präzession (Röntgen), Back Laue**; für Neutronen: nur **Parallel**. Die Auswahl von **Präzession (Elektron = PED)** oder **Konvergenz (CBED)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um.
 
@@ -81,7 +87,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle des Hauptfenst
 | Ziel | Beginnen bei | Referenz |
 |------|------------|-----------|
 | Parallelstrahl-Elektronenbeugung (SAED) erzeugen | **Incident beam** auf **Parallel** und **Wavelength** auf Elektron setzen | [SAED-Simulation](1-saed-simulation.md), [Parallelstrahl-SAED-Berechnung](../appendix/a3-bloch-wave/calculation.md) |
-| Einkristall-Röntgenbeugung erzeugen | **Wavelength** auf Röntgen / Synchrotron umschalten | [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md) |
+| Einkristall-Röntgenbeugung erzeugen | **Wavelength** auf Röntgen / Synchrotron umschalten | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 | Präzessions-Elektronenbeugung (PED) erzeugen | **Incident beam** auf **Precession (electron)** setzen, dann Halbwinkel und Schritt festlegen | [PED-Simulation](2-ped-simulation.md) |
 | Konvergente Elektronenbeugung (CBED) erzeugen | **Incident beam** auf **Convergence (CBED, electron only)** setzen und die Bedingungen im CBED-Fenster festlegen | [CBED-Simulation](3-cbed-simulation.md), [CBED-Berechnung](../appendix/a3-bloch-wave/cbed.md) |
 | Die Reflexliste aus der dynamischen Berechnung prüfen | **Dynamische Theorie** auswählen und **Reflexdetails** oder **Details** öffnen | [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ Ein Fenster zum Scrubben des Druck-/Zeit-Profils eines Hochdruck-Experiments (dy
 
 ---
 
+## ALCHEMI-Simulator
+
+Öffnet ein Unterfenster, das **platzaufgelöste Ionisations-Rocking-Kurven** berechnet: die Ausbeute eines gewählten Ionisationskanals, während der Kristall durch die Bragg-Bedingungen einer systematischen Reihe gekippt wird, getrennt nach Atomplatz. Öffnen über das Menü **Optionen**. Anders als das CBED-Fenster besitzt es einen eigenen Ausgabebereich und zeichnet nicht auf die Leinwand des übergeordneten Fensters.
+
+→ Alle Einstellungen sowie Geltungsbereich und bekannte Grenzen finden Sie unter **[ALCHEMI-Simulation](4-alchemi-simulation.md)**.
+
+---
+
 ## Verwandte Themen
 
-- [Röntgenbeugungssimulation](4-x-ray-neutron-diffraction.md)
+- [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md)
 - [SAED-Simulation](1-saed-simulation.md)
 - [PED-Simulation](2-ped-simulation.md)
 - [CBED-Simulation](3-cbed-simulation.md)
+- [ALCHEMI-Simulation](4-alchemi-simulation.md)
 - [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md)
 - [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffraction.md)

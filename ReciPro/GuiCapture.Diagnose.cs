@@ -45,6 +45,8 @@ internal static partial class GuiCapture
             diffractionSimulator.formMain = captureFormMain; // 260524Cl: 回折スポット描画 (Draw) は formMain.Crystal が必要
         else if (form is FormDiffractionSimulatorHolder holder)
             holder.FormDiffractionSimulator = captureFormMain?.FormDiffractionSimulator; // 260524Cl: ステレオネット描画の配線
+        else if (form is FormALCHEMI alchemi)
+            alchemi.FormDiffractionSimulator = captureFormMain?.FormDiffractionSimulator; // 260809Cl: 結晶・加速電圧・方位の取得元
         else if (form is FormSpotIDV2 spotID)
             spotID.FormMain = captureFormMain; // 260524Cl: スポット同定が FormMain を参照
     }

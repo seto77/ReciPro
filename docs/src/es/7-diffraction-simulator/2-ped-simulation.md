@@ -98,6 +98,6 @@ Controla cómo se dibuja cada reflejo de difracción.
 ## Véase también
 
 - [Simulador de difracción (descripción general)](index.md)
-- [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md)
+- [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md)
 - [Simulación SAED](1-saed-simulation.md)
 - [Cálculo dinámico (método de ondas de Bloch)](../appendix/a3-bloch-wave/calculation.md)

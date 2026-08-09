@@ -20,7 +20,7 @@ Simule le diagramme de diffraction produit lorsqu'un faisceau d'électrons paral
 
 ![Wave Length](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Réglez la source de rayonnement sur **Electron**. Saisissez l'énergie (keV) ou la longueur d'onde (nm), et la longueur d'onde corrigée relativistement est calculée. Pour les sources de rayons X et de neutrons, voir [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md).
+Réglez la source de rayonnement sur **Electron**. Saisissez l'énergie (keV) ou la longueur d'onde (nm), et la longueur d'onde corrigée relativistement est calculée. Pour les sources de rayons X et de neutrons, voir [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ Les informations sur le détecteur, le retournement, l'affichage de l'espace ré
 
 - [Simulateur de diffraction (vue d'ensemble)](index.md)
 - [Calcul SAED en faisceau parallèle](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md)
+- [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md)
 - [Simulation de diffraction électronique en précession (PED)](2-ped-simulation.md)
 - [Définition du système de coordonnées](../appendix/a1-coordinate-system/1-orientation.md)

@@ -17,7 +17,7 @@
 |------|------------|-----------------|
 | Caricare un cristallo e impostarne l'orientazione | [Finestra principale](0-main-window.md) | [Geometria di rotazione](4-rotation-geometry.md), [Appendice A1. Sistemi di coordinate](appendix/a1-coordinate-system/1-orientation.md) |
 | Esaminare una struttura cristallina in 3D | [Visualizzatore struttura](5-structure-viewer.md) | [Informazioni di simmetria](2-symmetry-information.md) |
-| Calcolare pattern SAED / XRD / PED / CBED | [Simulatore di diffrazione](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [Diffrazione di raggi X](7-diffraction-simulator/4-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
+| Calcolare pattern SAED / XRD / PED / CBED | [Simulatore di diffrazione](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [Diffrazione di raggi X](7-diffraction-simulator/5-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | Calcolare immagini HRTEM / STEM | [Simulatore HRTEM/STEM](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md), [STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
 | Simulare pattern EBSD | [Simulazione EBSD](12-ebsd-simulation.md) | [Traiettorie elettroniche](8-electron-trajectory.md), [Appendice A3. Calcolo EBSD](appendix/a3-bloch-wave/ebsd.md) |
 | Indicizzare spot di diffrazione sperimentali | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Simulatore di diffrazione](7-diffraction-simulator/index.md) |

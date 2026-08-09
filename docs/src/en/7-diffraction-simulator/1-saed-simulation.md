@@ -20,7 +20,7 @@ Simulates the diffraction pattern produced when a parallel electron beam passes 
 
 ![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (nm) and the relativistically corrected wavelength is computed. For X-ray and neutron sources, see [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md).
+Set the radiation source to **Electron**. Enter the energy (keV) or wavelength (nm) and the relativistically corrected wavelength is computed. For X-ray and neutron sources, see [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ Detector information, flipping, reciprocal-space display, Kikuchi lines, Debye r
 
 - [Diffraction simulator (overview)](index.md)
 - [Parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md)
+- [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md)
 - [Precession electron diffraction (PED) simulation](2-ped-simulation.md)
 - [Definition of the coordinate system](../appendix/a1-coordinate-system/1-orientation.md)

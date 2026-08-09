@@ -98,6 +98,6 @@ Controlla il modo in cui viene disegnato ciascuno spot di diffrazione.
 ## Vedi anche
 
 - [Simulatore di diffrazione (panoramica)](index.md)
-- [Simulazione della diffrazione dei raggi X](4-x-ray-neutron-diffraction.md)
+- [Simulazione della diffrazione dei raggi X](5-x-ray-neutron-diffraction.md)
 - [Simulazione SAED](1-saed-simulation.md)
 - [Calcolo dinamico (metodo delle onde di Bloch)](../appendix/a3-bloch-wave/calculation.md)

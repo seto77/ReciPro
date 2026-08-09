@@ -19,10 +19,16 @@ La finestra presenta **a sinistra** un'area di disegno per il pattern di diffraz
 
 | Modalità | Contenuto | Pagina |
 |------|----------|------|
-| **Diffrazione di raggi X (e di neutroni)** | Pattern di diffrazione di raggi X / neutroni da cristallo singolo (parallelo, raggi X a precessione, Back Laue) | [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
+| **Diffrazione di raggi X (e di neutroni)** | Pattern di diffrazione di raggi X / neutroni da cristallo singolo (parallelo, raggi X a precessione, Back Laue) | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
 | **SAED** | Diffrazione elettronica a fascio parallelo (selected-area electron diffraction) | [Simulazione SAED](1-saed-simulation.md) |
 | **PED** | Diffrazione elettronica a precessione | [Simulazione PED](2-ped-simulation.md) |
 | **CBED** | Diffrazione elettronica a fascio convergente | [Simulazione CBED](3-cbed-simulation.md) |
+
+> **ALCHEMI non è una modalità.** A differenza di raggi X / SAED / PED / CBED, determinati dalla combinazione di lunghezza d'onda e fascio incidente, il simulatore ALCHEMI è una **finestra figlia** che si apre dal menu **Opzioni**; qui è quindi elencato separatamente.
+
+| Finestra figlia | Contenuto | Pagina |
+|------|------|------|
+| **Simulatore ALCHEMI** | Curve di rocking di ionizzazione risolte per sito (microanalisi potenziata dalla canalizzazione) | [Simulazione ALCHEMI](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ Individua la pagina che ti serve dalla combinazione di **lunghezza d'onda (sorge
 | Elettrone | Parallelo | SAED | [Simulazione SAED](1-saed-simulation.md) |
 | Elettrone | Precessione (elettrone = PED) | PED | [Simulazione PED](2-ped-simulation.md) |
 | Elettrone | Convergenza (CBED) | CBED | [Simulazione CBED](3-cbed-simulation.md) |
-| Raggi X | Parallelo | Diffrazione di raggi X | [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
-| Raggi X | Precessione (raggi X) | Raggi X a precessione (camera di precessione) | [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
-| Raggi X | Back Laue | Laue in retrodiffusione | [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
-| Neutrone | Parallelo | Diffrazione di neutroni | [sezione neutroni della Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
+| Raggi X | Parallelo | Diffrazione di raggi X | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
+| Raggi X | Precessione (raggi X) | Raggi X a precessione (camera di precessione) | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
+| Raggi X | Back Laue | Laue in retrodiffusione | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
+| Neutrone | Parallelo | Diffrazione di neutroni | [sezione neutroni della Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
 
 > **Note**: Le scelte del fascio incidente cambiano con la lunghezza d'onda. Per gli elettroni: **Parallelo, Precessione (elettrone = PED), Convergenza (CBED)**; per i raggi X: **Parallelo, Precessione (raggi X), Back Laue**; per i neutroni: solo **Parallelo**. La selezione di **Precessione (elettrone = PED)** o **Convergenza (CBED)** commuta automaticamente il calcolo dell'intensità su **Dynamical**.
 
@@ -81,7 +87,7 @@ Le scorciatoie <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> a livello di applicazione della 
 | Obiettivo | Partire da | Riferimento |
 |------|------------|-----------|
 | Produrre diffrazione elettronica a fascio parallelo (SAED) | Impostare **Incident beam** su **Parallel** e **Wavelength** su elettrone | [Simulazione SAED](1-saed-simulation.md), [calcolo SAED a fascio parallelo](../appendix/a3-bloch-wave/calculation.md) |
-| Produrre diffrazione di raggi X da cristallo singolo | Commutare **Wavelength** su raggi X / Sincrotrone | [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md) |
+| Produrre diffrazione di raggi X da cristallo singolo | Commutare **Wavelength** su raggi X / Sincrotrone | [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md) |
 | Produrre diffrazione elettronica a precessione (PED) | Impostare **Incident beam** su **Precession (electron)**, quindi impostare il semiangolo e il passo | [Simulazione PED](2-ped-simulation.md) |
 | Produrre diffrazione elettronica a fascio convergente (CBED) | Impostare **Incident beam** su **Convergence (CBED, electron only)** e impostare le condizioni nella finestra CBED | [Simulazione CBED](3-cbed-simulation.md), [calcolo CBED](../appendix/a3-bloch-wave/cbed.md) |
 | Ispezionare l'elenco dei riflessi dal calcolo dinamico | Selezionare **Dynamical** e aprire **Spot Details** o **Details** | [Calcolo dinamico (nucleo condiviso)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ Una finestra per scorrere il profilo pressione/tempo di un esperimento ad alta p
 
 ---
 
+## Simulatore ALCHEMI
+
+Apre una finestra figlia che calcola **curve di rocking di ionizzazione risolte per sito**: la resa di un canale di ionizzazione scelto mentre il cristallo viene inclinato attraverso le condizioni di Bragg di una fila sistematica, separata per sito atomico. Si apre dal menu **Opzioni**. A differenza della finestra CBED, dispone di una propria area di output e non disegna sulla tela della finestra padre.
+
+→ Vedere **[Simulazione ALCHEMI](4-alchemi-simulation.md)** per tutte le impostazioni e per l'ambito di validità e i limiti noti.
+
+---
+
 ## Argomenti correlati
 
-- [Simulazione di diffrazione di raggi X](4-x-ray-neutron-diffraction.md)
+- [Simulazione di diffrazione di raggi X](5-x-ray-neutron-diffraction.md)
 - [Simulazione SAED](1-saed-simulation.md)
 - [Simulazione PED](2-ped-simulation.md)
 - [Simulazione CBED](3-cbed-simulation.md)
+- [Simulazione ALCHEMI](4-alchemi-simulation.md)
 - [Calcolo dinamico (nucleo condiviso)](../appendix/a3-bloch-wave/calculation.md)
 - [Sistema di coordinate del rivelatore](../appendix/a1-coordinate-system/2-diffraction.md)

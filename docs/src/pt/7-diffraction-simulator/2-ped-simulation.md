@@ -98,6 +98,6 @@ Controla como cada ponto de difração é desenhado.
 ## Veja também
 
 - [Simulador de difração (visão geral)](index.md)
-- [Simulação de difração de raios X](4-x-ray-neutron-diffraction.md)
+- [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md)
 - [Simulação SAED](1-saed-simulation.md)
 - [Cálculo dinâmico (método de ondas de Bloch)](../appendix/a3-bloch-wave/calculation.md)

@@ -17,7 +17,7 @@
 |------|------------|-----------------|
 | 加载晶体并设置其取向 | [主窗口](0-main-window.md) | [旋转几何](4-rotation-geometry.md)、[附录 A1. 坐标系](appendix/a1-coordinate-system/1-orientation.md) |
 | 以 3D 方式查看晶体结构 | [结构查看器](5-structure-viewer.md) | [对称性信息](2-symmetry-information.md) |
-| 计算 SAED / XRD / PED / CBED 图样 | [衍射模拟器](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md)、[X 射线衍射](7-diffraction-simulator/4-x-ray-neutron-diffraction.md)、[PED](7-diffraction-simulator/2-ped-simulation.md)、[CBED](7-diffraction-simulator/3-cbed-simulation.md) |
+| 计算 SAED / XRD / PED / CBED 图样 | [衍射模拟器](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md)、[X 射线衍射](7-diffraction-simulator/5-x-ray-neutron-diffraction.md)、[PED](7-diffraction-simulator/2-ped-simulation.md)、[CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | 计算 HRTEM / STEM 图像 | [HRTEM/STEM 模拟器](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md)、[STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
 | 模拟 EBSD 图样 | [EBSD 模拟](12-ebsd-simulation.md) | [电子轨迹](8-electron-trajectory.md)、[附录 A3. EBSD 计算](appendix/a3-bloch-wave/ebsd.md) |
 | 标定实验衍射斑点 | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [衍射模拟器](7-diffraction-simulator/index.md) |

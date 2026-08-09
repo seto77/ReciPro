@@ -20,7 +20,7 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 
 ![Wave Length](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-将辐射源设置为 **Electron**。输入能量（keV）或波长（nm），即可计算出经相对论修正的波长。关于 X 射线和中子源，请参见 [X 射线衍射模拟](4-x-ray-neutron-diffraction.md)。
+将辐射源设置为 **Electron**。输入能量（keV）或波长（nm），即可计算出经相对论修正的波长。关于 X 射线和中子源，请参见 [X 射线衍射模拟](5-x-ray-neutron-diffraction.md)。
 
 ---
 
@@ -113,6 +113,6 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 
 - [衍射模拟器（概览）](index.md)
 - [平行束 SAED 计算](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [X 射线衍射模拟](4-x-ray-neutron-diffraction.md)
+- [X 射线衍射模拟](5-x-ray-neutron-diffraction.md)
 - [进动电子衍射 (PED) 模拟](2-ped-simulation.md)
 - [坐标系的定义](../appendix/a1-coordinate-system/1-orientation.md)

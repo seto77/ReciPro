@@ -19,10 +19,16 @@ title: 回折シミュレータ
 
 | モード | 内容 | ページ |
 |--------|------|--------|
-| **X線（・中性子）回折** | 単結晶X線／中性子回折パターン（平行・歳差X線・Back Laue） | [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) |
+| **X線（・中性子）回折** | 単結晶X線／中性子回折パターン（平行・歳差X線・Back Laue） | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
 | **SAED** | 平行ビーム電子回折（制限視野電子回折） | [SAEDシミュレーション](1-saed-simulation.md) |
 | **PED** | 歳差電子回折（プリセッション） | [PEDシミュレーション](2-ped-simulation.md) |
 | **CBED** | 収束電子線回折 | [CBEDシミュレーション](3-cbed-simulation.md) |
+
+> **ALCHEMI はモードではありません。** 波長と入射ビームの組合せで決まる X線 / SAED / PED / CBED と違い、ALCHEMI シミュレータは **オプション** メニューから開く**子ウィンドウ**なので、ここでは別枠として掲げます。
+
+| 子ウィンドウ | 内容 | ページ |
+|------|------|------|
+| **ALCHEMI シミュレータ** | サイト分解のイオン化ロッキングカーブ（チャネリング増強微小分析） | [ALCHEMI シミュレーション](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ title: 回折シミュレータ
 | 電子線 | 平行 | SAED | [SAEDシミュレーション](1-saed-simulation.md) |
 | 電子線 | 歳差（電子＝PED） | PED | [PEDシミュレーション](2-ped-simulation.md) |
 | 電子線 | 収束（CBED） | CBED | [CBEDシミュレーション](3-cbed-simulation.md) |
-| X線 | 平行 | X線回折 | [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) |
-| X線 | 歳差（X線） | 歳差X線（プリセッションカメラ） | [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) |
-| X線 | Back Laue | 後方反射ラウエ | [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) |
-| 中性子 | 平行 | 中性子回折 | [X線回折シミュレーションの中性子節](4-x-ray-neutron-diffraction.md) |
+| X線 | 平行 | X線回折 | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
+| X線 | 歳差（X線） | 歳差X線（プリセッションカメラ） | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
+| X線 | Back Laue | 後方反射ラウエ | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
+| 中性子 | 平行 | 中性子回折 | [X線回折シミュレーションの中性子節](5-x-ray-neutron-diffraction.md) |
 
 > **注記**: 入射ビームの選択肢は波長で変わります。電子線では **平行・歳差(電子=PED)・収束(CBED)**、X線では **平行・歳差(X線)・Back Laue**、中性子では **平行** のみです。**歳差(電子=PED)** または **収束(CBED)** を選ぶと、強度計算は自動的に **動力学的(Dynamical)** へ切り替わります。
 
@@ -81,7 +87,7 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 | 目的 | 操作の入口 | 参照ページ |
 |------|------------|------------|
 | 平行ビームの電子回折（SAED）を出す | **入射ビーム**を **平行**、**波長**を **電子線**にする | [SAEDシミュレーション](1-saed-simulation.md)、[平行ビーム SAED の計算](../appendix/a3-bloch-wave/calculation.md) |
-| X線単結晶回折を出す | **波長**を X-ray / Synchrotron へ切り替える | [X線回折シミュレーション](4-x-ray-neutron-diffraction.md) |
+| X線単結晶回折を出す | **波長**を X-ray / Synchrotron へ切り替える | [X線回折シミュレーション](5-x-ray-neutron-diffraction.md) |
 | 歳差電子回折（PED）を出す | **入射ビーム**を **歳差 (電子)** にし、半頂角とステップを設定する | [PEDシミュレーション](2-ped-simulation.md) |
 | 収束電子線回折（CBED）を出す | **入射ビーム**を **収束 (CBED, 電子線のみ)** にし、CBED設定ウィンドウで条件を決める | [CBEDシミュレーション](3-cbed-simulation.md)、[CBED の計算](../appendix/a3-bloch-wave/cbed.md) |
 | 動力学計算の反射一覧を確認する | **動力学的効果**を選び、**スポットの詳細情報**または **詳細**を開く | [動力学計算（共通コア）](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ X線・SAED・PED のシミュレーションで共通の回折パターンウ�
 
 ---
 
+## ALCHEMI シミュレータ
+
+**サイト分解のイオン化ロッキングカーブ**（系統反射列の Bragg 条件を通して結晶を傾けたときの、選んだイオン化チャネルの収量をサイトごとに分けたもの）を計算する子ウィンドウを開きます。**オプション** メニューから開きます。CBED ウィンドウと違い、自前の出力領域を持ち、親のキャンバスには描きません。
+
+→ 全設定と適用範囲・既知の限界は **[ALCHEMI シミュレーション](4-alchemi-simulation.md)** を参照。
+
+---
+
 ## 関連項目
 
-- [X線回折シミュレーション](4-x-ray-neutron-diffraction.md)
+- [X線回折シミュレーション](5-x-ray-neutron-diffraction.md)
 - [SAEDシミュレーション](1-saed-simulation.md)
 - [PEDシミュレーション](2-ped-simulation.md)
 - [CBEDシミュレーション](3-cbed-simulation.md)
+- [ALCHEMI シミュレーション](4-alchemi-simulation.md)
 - [動力学計算（共通コア）](../appendix/a3-bloch-wave/calculation.md)
 - [検出器座標系](../appendix/a1-coordinate-system/2-diffraction.md)

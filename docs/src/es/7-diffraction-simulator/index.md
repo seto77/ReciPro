@@ -19,10 +19,16 @@ La ventana tiene un área de dibujo del patrón de difracción a la **izquierda*
 
 | Modo | Contenido | Página |
 |------|----------|------|
-| **Difracción de rayos X (y de neutrones)** | Patrón de difracción de rayos X / neutrones de monocristal (paralelo, rayos X de precesión, Back Laue) | [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
+| **Difracción de rayos X (y de neutrones)** | Patrón de difracción de rayos X / neutrones de monocristal (paralelo, rayos X de precesión, Back Laue) | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
 | **SAED** | Difracción de electrones con haz paralelo (selected-area electron diffraction) | [Simulación SAED](1-saed-simulation.md) |
 | **PED** | Difracción de electrones por precesión | [Simulación PED](2-ped-simulation.md) |
 | **CBED** | Difracción de electrones por haz convergente | [Simulación CBED](3-cbed-simulation.md) |
+
+> **ALCHEMI no es un modo.** A diferencia de rayos X / SAED / PED / CBED, que se determinan por la combinación de longitud de onda y haz incidente, el simulador ALCHEMI es una **ventana secundaria** que se abre desde el menú **Opciones**, por lo que aquí se indica por separado.
+
+| Ventana secundaria | Contenido | Página |
+|------|------|------|
+| **Simulador ALCHEMI** | Curvas de rocking de ionización resueltas por sitio (microanálisis realzado por canalización) | [Simulación ALCHEMI](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ Busque la página que necesita a partir de la combinación de **longitud de onda
 | Electrón | Paralelo | SAED | [Simulación SAED](1-saed-simulation.md) |
 | Electrón | Precesión (electrón = PED) | PED | [Simulación PED](2-ped-simulation.md) |
 | Electrón | Convergencia (CBED) | CBED | [Simulación CBED](3-cbed-simulation.md) |
-| Rayos X | Paralelo | Difracción de rayos X | [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
-| Rayos X | Precesión (rayos X) | Rayos X de precesión (cámara de precesión) | [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
-| Rayos X | Back Laue | Laue de retrorreflexión | [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
-| Neutrón | Paralelo | Difracción de neutrones | [sección de neutrones de la Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
+| Rayos X | Paralelo | Difracción de rayos X | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
+| Rayos X | Precesión (rayos X) | Rayos X de precesión (cámara de precesión) | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
+| Rayos X | Back Laue | Laue de retrorreflexión | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
+| Neutrón | Paralelo | Difracción de neutrones | [sección de neutrones de la Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
 
 > **Note**: Las opciones de haz incidente cambian con la longitud de onda. Para electrones: **Parallel, Precession (electron = PED), Convergence (CBED)**; para rayos X: **Parallel, Precession (X-ray), Back Laue**; para neutrones: solo **Parallel**. Al seleccionar **Precession (electron = PED)** o **Convergence (CBED)** se cambia automáticamente el cálculo de intensidad a **Dynamical**.
 
@@ -81,7 +87,7 @@ Los atajos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda la aplicación de la ventana
 | Objetivo | Empezar desde | Referencia |
 |------|------------|-----------|
 | Producir difracción de electrones con haz paralelo (SAED) | Poner **Incident beam** en **Parallel** y **Wavelength** en electrón | [Simulación SAED](1-saed-simulation.md), [cálculo SAED de haz paralelo](../appendix/a3-bloch-wave/calculation.md) |
-| Producir difracción de rayos X de monocristal | Cambiar **Wavelength** a rayos X / Synchrotron | [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md) |
+| Producir difracción de rayos X de monocristal | Cambiar **Wavelength** a rayos X / Synchrotron | [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md) |
 | Producir difracción de electrones por precesión (PED) | Poner **Incident beam** en **Precession (electron)** y luego fijar el semiángulo y el paso | [Simulación PED](2-ped-simulation.md) |
 | Producir difracción de electrones por haz convergente (CBED) | Poner **Incident beam** en **Convergence (CBED, electron only)** y fijar las condiciones en la ventana CBED | [Simulación CBED](3-cbed-simulation.md), [cálculo CBED](../appendix/a3-bloch-wave/cbed.md) |
 | Inspeccionar la lista de reflejos del cálculo dinámico | Seleccionar **Dynamical** y abrir **Spot Details** o **Details** | [Cálculo dinámico (núcleo compartido)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ Una ventana para recorrer el perfil de presión/tiempo de un experimento de alta
 
 ---
 
+## Simulador ALCHEMI
+
+Abre una ventana secundaria que calcula **curvas de rocking de ionización resueltas por sitio**: el rendimiento de un canal de ionización elegido mientras el cristal se inclina a través de las condiciones de Bragg de una fila sistemática, separado por sitio atómico. Se abre desde el menú **Opciones**. A diferencia de la ventana CBED, tiene su propia área de salida y no dibuja en el lienzo de la ventana principal.
+
+→ Consulte **[Simulación ALCHEMI](4-alchemi-simulation.md)** para todos los ajustes y para el alcance y las limitaciones conocidas.
+
+---
+
 ## Temas relacionados
 
-- [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md)
+- [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md)
 - [Simulación SAED](1-saed-simulation.md)
 - [Simulación PED](2-ped-simulation.md)
 - [Simulación CBED](3-cbed-simulation.md)
+- [Simulación ALCHEMI](4-alchemi-simulation.md)
 - [Cálculo dinámico (núcleo compartido)](../appendix/a3-bloch-wave/calculation.md)
 - [Sistema de coordenadas del detector](../appendix/a1-coordinate-system/2-diffraction.md)

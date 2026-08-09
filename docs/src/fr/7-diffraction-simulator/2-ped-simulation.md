@@ -98,6 +98,6 @@ Contrôle la manière dont chaque tache de diffraction est dessinée.
 ## Voir aussi
 
 - [Simulateur de diffraction (présentation)](index.md)
-- [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md)
+- [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md)
 - [Simulation SAED](1-saed-simulation.md)
 - [Calcul dynamique (méthode des ondes de Bloch)](../appendix/a3-bloch-wave/calculation.md)

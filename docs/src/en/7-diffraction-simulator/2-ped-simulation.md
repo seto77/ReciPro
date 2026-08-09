@@ -98,6 +98,6 @@ Controls how each diffraction spot is drawn.
 ## See also
 
 - [Diffraction simulator (overview)](index.md)
-- [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md)
+- [X-ray diffraction simulation](5-x-ray-neutron-diffraction.md)
 - [SAED simulation](1-saed-simulation.md)
 - [Dynamical calculation (Bloch-wave method)](../appendix/a3-bloch-wave/calculation.md)

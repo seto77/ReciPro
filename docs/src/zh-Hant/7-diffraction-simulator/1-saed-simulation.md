@@ -20,7 +20,7 @@ GUI 條件：Wave Length = Electron、Incident beam mode = Parallel、Intensity 
 
 ![Wave Length](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-將輻射源設為 **Electron**。輸入能量（keV）或波長（nm），即可計算經相對論修正後的波長。關於 X 光與中子源，請參閱 [X 光繞射模擬](4-x-ray-neutron-diffraction.md)。
+將輻射源設為 **Electron**。輸入能量（keV）或波長（nm），即可計算經相對論修正後的波長。關於 X 光與中子源，請參閱 [X 光繞射模擬](5-x-ray-neutron-diffraction.md)。
 
 ---
 
@@ -113,6 +113,6 @@ GUI 條件：Wave Length = Electron、Incident beam mode = Parallel、Intensity 
 
 - [繞射模擬器（概覽）](index.md)
 - [平行束 SAED 計算](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [X 光繞射模擬](4-x-ray-neutron-diffraction.md)
+- [X 光繞射模擬](5-x-ray-neutron-diffraction.md)
 - [進動電子繞射（PED）模擬](2-ped-simulation.md)
 - [座標系的定義](../appendix/a1-coordinate-system/1-orientation.md)

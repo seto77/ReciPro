@@ -88,7 +88,8 @@ plugins:
             7.1. SAED simulation: 7.1. SAEDシミュレーション
             7.2. PED simulation: 7.2. PEDシミュレーション
             7.3. CBED simulation: 7.3. CBEDシミュレーション
-            "7.4. X-ray / neutron diffraction": 7.4. X線・中性子線回折シミュレーション
+            7.4. ALCHEMI simulation: 7.4. ALCHEMI シミュレーション
+            "7.5. X-ray / neutron diffraction": 7.5. X線・中性子線回折シミュレーション
             8. Electron trajectory: 8. 電子飛程
             9. HRTEM/STEM simulator: 9. HRTEM/STEMシミュレータ
             9.1. HRTEM simulation: 9.1. HRTEMシミュレーション
@@ -137,7 +138,8 @@ plugins:
             7.1. SAED simulation: 7.1. SAED-Simulation
             7.2. PED simulation: 7.2. PED-Simulation
             7.3. CBED simulation: 7.3. CBED-Simulation
-            "7.4. X-ray / neutron diffraction": 7.4. Röntgen- / Neutronenbeugung
+            7.4. ALCHEMI simulation: 7.4. ALCHEMI-Simulation
+            "7.5. X-ray / neutron diffraction": 7.5. Röntgen- / Neutronenbeugung
             8. Electron trajectory: 8. Elektronenbahnen
             9. HRTEM/STEM simulator: 9. HRTEM/STEM-Simulator
             9.1. HRTEM simulation: 9.1. HRTEM-Simulation
@@ -191,7 +193,8 @@ plugins:
             7.1. SAED simulation: 7.1. Simulation SAED
             7.2. PED simulation: 7.2. Simulation PED
             7.3. CBED simulation: 7.3. Simulation CBED
-            "7.4. X-ray / neutron diffraction": 7.4. Diffraction des rayons X / neutrons
+            7.4. ALCHEMI simulation: 7.4. Simulation ALCHEMI
+            "7.5. X-ray / neutron diffraction": 7.5. Diffraction des rayons X / neutrons
             8. Electron trajectory: 8. Trajectoires électroniques
             9. HRTEM/STEM simulator: 9. Simulateur HRTEM/STEM
             9.1. HRTEM simulation: 9.1. Simulation HRTEM
@@ -244,7 +247,8 @@ plugins:
             7.1. SAED simulation: 7.1. Simulación SAED
             7.2. PED simulation: 7.2. Simulación PED
             7.3. CBED simulation: 7.3. Simulación CBED
-            "7.4. X-ray / neutron diffraction": 7.4. Difracción de rayos X / neutrones
+            7.4. ALCHEMI simulation: 7.4. Simulación ALCHEMI
+            "7.5. X-ray / neutron diffraction": 7.5. Difracción de rayos X / neutrones
             8. Electron trajectory: 8. Trayectorias electrónicas
             9. HRTEM/STEM simulator: 9. Simulador HRTEM/STEM
             9.1. HRTEM simulation: 9.1. Simulación HRTEM
@@ -297,7 +301,8 @@ plugins:
             7.1. SAED simulation: 7.1. Simulazione SAED
             7.2. PED simulation: 7.2. Simulazione PED
             7.3. CBED simulation: 7.3. Simulazione CBED
-            "7.4. X-ray / neutron diffraction": 7.4. Diffrazione di raggi X / neutroni
+            7.4. ALCHEMI simulation: 7.4. Simulazione ALCHEMI
+            "7.5. X-ray / neutron diffraction": 7.5. Diffrazione di raggi X / neutroni
             8. Electron trajectory: 8. Traiettorie elettroniche
             9. HRTEM/STEM simulator: 9. Simulatore HRTEM/STEM
             9.1. HRTEM simulation: 9.1. Simulazione HRTEM
@@ -350,7 +355,8 @@ plugins:
             7.1. SAED simulation: 7.1. Моделирование SAED
             7.2. PED simulation: 7.2. Моделирование PED
             7.3. CBED simulation: 7.3. Моделирование CBED
-            "7.4. X-ray / neutron diffraction": 7.4. Рентгеновская / нейтронная дифракция
+            7.4. ALCHEMI simulation: 7.4. Моделирование ALCHEMI
+            "7.5. X-ray / neutron diffraction": 7.5. Рентгеновская / нейтронная дифракция
             8. Electron trajectory: 8. Траектории электронов
             9. HRTEM/STEM simulator: 9. Симулятор HRTEM/STEM
             9.1. HRTEM simulation: 9.1. Моделирование HRTEM
@@ -403,7 +409,8 @@ plugins:
             7.1. SAED simulation: 7.1. SAED 模拟
             7.2. PED simulation: 7.2. PED 模拟
             7.3. CBED simulation: 7.3. CBED 模拟
-            "7.4. X-ray / neutron diffraction": 7.4. X 射线 / 中子衍射
+            7.4. ALCHEMI simulation: 7.4. ALCHEMI 模拟
+            "7.5. X-ray / neutron diffraction": 7.5. X 射线 / 中子衍射
             8. Electron trajectory: 8. 电子轨迹
             9. HRTEM/STEM simulator: 9. HRTEM/STEM 模拟器
             9.1. HRTEM simulation: 9.1. HRTEM 模拟
@@ -455,7 +462,8 @@ plugins:
             7.1. SAED simulation: 7.1. SAED 模擬
             7.2. PED simulation: 7.2. PED 模擬
             7.3. CBED simulation: 7.3. CBED 模擬
-            "7.4. X-ray / neutron diffraction": 7.4. X 射線 / 中子繞射
+            7.4. ALCHEMI simulation: 7.4. ALCHEMI 模擬
+            "7.5. X-ray / neutron diffraction": 7.5. X 射線 / 中子繞射
             8. Electron trajectory: 8. 電子軌跡
             9. HRTEM/STEM simulator: 9. HRTEM/STEM 模擬器
             9.1. HRTEM simulation: 9.1. HRTEM 模擬
@@ -507,7 +515,8 @@ plugins:
             7.1. SAED simulation: 7.1. SAED 시뮬레이션
             7.2. PED simulation: 7.2. PED 시뮬레이션
             7.3. CBED simulation: 7.3. CBED 시뮬레이션
-            "7.4. X-ray / neutron diffraction": 7.4. X선 / 중성자 회절
+            7.4. ALCHEMI simulation: 7.4. ALCHEMI 시뮬레이션
+            "7.5. X-ray / neutron diffraction": 7.5. X선 / 중성자 회절
             8. Electron trajectory: 8. 전자 궤적
             9. HRTEM/STEM simulator: 9. HRTEM/STEM 시뮬레이터
             9.1. HRTEM simulation: 9.1. HRTEM 시뮬레이션
@@ -559,7 +568,8 @@ plugins:
             7.1. SAED simulation: 7.1. Simulação SAED
             7.2. PED simulation: 7.2. Simulação PED
             7.3. CBED simulation: 7.3. Simulação CBED
-            "7.4. X-ray / neutron diffraction": 7.4. Difração de raios X / nêutrons
+            7.4. ALCHEMI simulation: 7.4. Simulação ALCHEMI
+            "7.5. X-ray / neutron diffraction": 7.5. Difração de raios X / nêutrons
             8. Electron trajectory: 8. Trajetórias eletrônicas
             9. HRTEM/STEM simulator: 9. Simulador HRTEM/STEM
             9.1. HRTEM simulation: 9.1. Simulação HRTEM
@@ -604,14 +614,16 @@ plugins:
         'ja/3-scattering-factor.md': 'ja/3-beam-interaction.md'
         'ja/3-rotation-geometry.md': 'ja/4-rotation-geometry.md'
         'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
-        'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/5-x-ray-neutron-diffraction.md'
         'ja/7-3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
         'ja/7-4-cbed-simulation.md': 'ja/7-diffraction-simulator/3-cbed-simulation.md'
-        'ja/7-diffraction-simulator/2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
-        'ja/7-diffraction-simulator/1-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'ja/7-diffraction-simulator/2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/5-x-ray-neutron-diffraction.md'
+        'ja/7-diffraction-simulator/1-x-ray-diffraction.md': 'ja/7-diffraction-simulator/5-x-ray-neutron-diffraction.md'
         'ja/7-diffraction-simulator/2-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
         'ja/7-diffraction-simulator/3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
         'ja/7-diffraction-simulator/4-cbed-simulation.md': 'ja/7-diffraction-simulator/3-cbed-simulation.md'
+        # 260809Cl: 7.4 に ALCHEMI を新設し X線/中性子を 7.5 へ繰り下げたぶんのリネーム
+        'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md': 'ja/7-diffraction-simulator/5-x-ray-neutron-diffraction.md'
         'ja/8-1-hrtem-simulation.md': 'ja/9-hrtem-stem-simulator/1-hrtem-simulation.md'
         'ja/8-2-stem-simulation.md': 'ja/9-hrtem-stem-simulator/2-stem-simulation.md'
         'ja/8-3-potential-simulation.md': 'ja/9-hrtem-stem-simulator/3-potential-simulation.md'
@@ -689,7 +701,8 @@ nav:
       - 7.1. SAED simulation: 7-diffraction-simulator/1-saed-simulation.md
       - 7.2. PED simulation: 7-diffraction-simulator/2-ped-simulation.md
       - 7.3. CBED simulation: 7-diffraction-simulator/3-cbed-simulation.md
-      - 7.4. X-ray / neutron diffraction: 7-diffraction-simulator/4-x-ray-neutron-diffraction.md
+      - 7.4. ALCHEMI simulation: 7-diffraction-simulator/4-alchemi-simulation.md
+      - 7.5. X-ray / neutron diffraction: 7-diffraction-simulator/5-x-ray-neutron-diffraction.md
   - 8. Electron trajectory: 8-electron-trajectory.md
   - 9. HRTEM/STEM simulator:
       - 9-hrtem-stem-simulator/index.md

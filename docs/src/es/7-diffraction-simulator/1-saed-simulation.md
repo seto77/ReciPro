@@ -20,7 +20,7 @@ Simula el patrón de difracción que se produce cuando un haz de electrones para
 
 ![Wave Length](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Establezca la fuente de radiación en **Electron**. Introduzca la energía (keV) o la longitud de onda (nm) y se calcula la longitud de onda corregida relativísticamente. Para fuentes de rayos X y de neutrones, consulte [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md).
+Establezca la fuente de radiación en **Electron**. Introduzca la energía (keV) o la longitud de onda (nm) y se calcula la longitud de onda corregida relativísticamente. Para fuentes de rayos X y de neutrones, consulte [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ La información del detector, el volteo, la visualización del espacio recíproc
 
 - [Simulador de difracción (resumen)](index.md)
 - [Cálculo SAED con haz paralelo](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Simulación de difracción de rayos X](4-x-ray-neutron-diffraction.md)
+- [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md)
 - [Simulación de difracción de electrones por precesión (PED)](2-ped-simulation.md)
 - [Definición del sistema de coordenadas](../appendix/a1-coordinate-system/1-orientation.md)

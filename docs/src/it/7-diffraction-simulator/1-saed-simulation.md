@@ -20,7 +20,7 @@ Simula il pattern di diffrazione prodotto quando un fascio elettronico parallelo
 
 ![Wave Length](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Impostare la sorgente di radiazione su **Electron**. Inserire l'energia (keV) o la lunghezza d'onda (nm) e viene calcolata la lunghezza d'onda corretta relativisticamente. Per le sorgenti a raggi X e a neutroni, vedere [Simulazione di diffrazione a raggi X](4-x-ray-neutron-diffraction.md).
+Impostare la sorgente di radiazione su **Electron**. Inserire l'energia (keV) o la lunghezza d'onda (nm) e viene calcolata la lunghezza d'onda corretta relativisticamente. Per le sorgenti a raggi X e a neutroni, vedere [Simulazione di diffrazione a raggi X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ Le informazioni sul rivelatore, il ribaltamento, la visualizzazione dello spazio
 
 - [Simulatore di diffrazione (panoramica)](index.md)
 - [Calcolo SAED con fascio parallelo](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Simulazione di diffrazione a raggi X](4-x-ray-neutron-diffraction.md)
+- [Simulazione di diffrazione a raggi X](5-x-ray-neutron-diffraction.md)
 - [Simulazione della diffrazione elettronica per precessione (PED)](2-ped-simulation.md)
 - [Definizione del sistema di coordinate](../appendix/a1-coordinate-system/1-orientation.md)

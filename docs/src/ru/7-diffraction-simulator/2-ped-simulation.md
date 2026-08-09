@@ -98,6 +98,6 @@
 ## См. также
 
 - [Симулятор дифракции (обзор)](index.md)
-- [Моделирование рентгеновской дифракции](4-x-ray-neutron-diffraction.md)
+- [Моделирование рентгеновской дифракции](5-x-ray-neutron-diffraction.md)
 - [Моделирование SAED](1-saed-simulation.md)
 - [Динамический расчёт (метод блоховских волн)](../appendix/a3-bloch-wave/calculation.md)

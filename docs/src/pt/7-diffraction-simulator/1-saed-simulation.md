@@ -20,7 +20,7 @@ Simula o padrão de difração produzido quando um feixe de elétrons paralelo a
 
 ![Wave Length](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Defina a fonte de radiação como **Electron**. Insira a energia (keV) ou o comprimento de onda (nm) e o comprimento de onda corrigido relativisticamente é calculado. Para fontes de raios X e nêutrons, consulte [Simulação de difração de raios X](4-x-ray-neutron-diffraction.md).
+Defina a fonte de radiação como **Electron**. Insira a energia (keV) ou o comprimento de onda (nm) e o comprimento de onda corrigido relativisticamente é calculado. Para fontes de raios X e nêutrons, consulte [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@ Informações do detector, espelhamento, exibição do espaço recíproco, linha
 
 - [Simulador de difração (visão geral)](index.md)
 - [Cálculo SAED com feixe paralelo](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Simulação de difração de raios X](4-x-ray-neutron-diffraction.md)
+- [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md)
 - [Simulação de difração eletrônica por precessão (PED)](2-ped-simulation.md)
 - [Definição do sistema de coordenadas](../appendix/a1-coordinate-system/1-orientation.md)

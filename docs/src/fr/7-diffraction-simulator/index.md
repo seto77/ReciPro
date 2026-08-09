@@ -19,10 +19,16 @@ La fenêtre comporte **à gauche** une zone de tracé du diagramme de diffractio
 
 | Mode | Contenu | Page |
 |------|----------|------|
-| **Diffraction des rayons X (et des neutrons)** | Diagramme de diffraction des rayons X / des neutrons d'un monocristal (parallèle, précession rayons X, Back Laue) | [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
+| **Diffraction des rayons X (et des neutrons)** | Diagramme de diffraction des rayons X / des neutrons d'un monocristal (parallèle, précession rayons X, Back Laue) | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 | **SAED** | Diffraction électronique en faisceau parallèle (selected-area electron diffraction) | [Simulation SAED](1-saed-simulation.md) |
 | **PED** | Diffraction électronique en précession | [Simulation PED](2-ped-simulation.md) |
 | **CBED** | Diffraction électronique en faisceau convergent | [Simulation CBED](3-cbed-simulation.md) |
+
+> **ALCHEMI n'est pas un mode.** Contrairement aux rayons X / SAED / PED / CBED, déterminés par la combinaison de la longueur d'onde et du faisceau incident, le simulateur ALCHEMI est une **fenêtre enfant** ouverte depuis le menu **Options** ; il est donc indiqué ici séparément.
+
+| Fenêtre enfant | Contenu | Page |
+|------|------|------|
+| **Simulateur ALCHEMI** | Courbes d'inclinaison d'ionisation résolues par site (microanalyse renforcée par canalisation) | [Simulation ALCHEMI](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ Recherchez la page dont vous avez besoin à partir de la combinaison de la **lon
 | Électron | Parallèle | SAED | [Simulation SAED](1-saed-simulation.md) |
 | Électron | Précession (électron = PED) | PED | [Simulation PED](2-ped-simulation.md) |
 | Électron | Convergence (CBED) | CBED | [Simulation CBED](3-cbed-simulation.md) |
-| Rayons X | Parallèle | Diffraction des rayons X | [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
-| Rayons X | Précession (rayons X) | Précession rayons X (caméra de précession) | [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
-| Rayons X | Back Laue | Laue en rétroréflexion | [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
-| Neutron | Parallèle | Diffraction des neutrons | [section neutrons de la Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
+| Rayons X | Parallèle | Diffraction des rayons X | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Rayons X | Précession (rayons X) | Précession rayons X (caméra de précession) | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Rayons X | Back Laue | Laue en rétroréflexion | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Neutron | Parallèle | Diffraction des neutrons | [section neutrons de la Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 
 > **Note** : Les choix de faisceau incident changent avec la longueur d'onde. Pour les électrons : **Parallèle, Précession (électron = PED), Convergence (CBED)** ; pour les rayons X : **Parallèle, Précession (rayons X), Back Laue** ; pour les neutrons : **Parallèle** uniquement. Sélectionner **Précession (électron = PED)** ou **Convergence (CBED)** bascule automatiquement le calcul d'intensité sur **Dynamical**.
 
@@ -81,7 +87,7 @@ Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> applicables à toute l'applicati
 | Objectif | Commencer par | Référence |
 |------|------------|-----------|
 | Produire une diffraction électronique en faisceau parallèle (SAED) | Régler **Incident beam** sur **Parallel** et **Wavelength** sur électron | [Simulation SAED](1-saed-simulation.md), [calcul SAED en faisceau parallèle](../appendix/a3-bloch-wave/calculation.md) |
-| Produire une diffraction des rayons X d'un monocristal | Basculer **Wavelength** sur rayons X / Synchrotron | [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md) |
+| Produire une diffraction des rayons X d'un monocristal | Basculer **Wavelength** sur rayons X / Synchrotron | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 | Produire une diffraction électronique en précession (PED) | Régler **Incident beam** sur **Precession (electron)**, puis fixer le demi-angle et le pas | [Simulation PED](2-ped-simulation.md) |
 | Produire une diffraction électronique en faisceau convergent (CBED) | Régler **Incident beam** sur **Convergence (CBED, electron only)** et définir les conditions dans la fenêtre CBED | [Simulation CBED](3-cbed-simulation.md), [calcul CBED](../appendix/a3-bloch-wave/cbed.md) |
 | Examiner la liste des réflexions issue du calcul dynamique | Sélectionner **Dynamical** et ouvrir **Spot Details** ou **Details** | [Calcul dynamique (cœur partagé)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ Une fenêtre pour balayer le profil pression/temps d'une expérience à haute pr
 
 ---
 
+## Simulateur ALCHEMI
+
+Ouvre une fenêtre enfant qui calcule des **courbes d'inclinaison d'ionisation résolues par site** : le rendement d'un canal d'ionisation choisi pendant que le cristal traverse les conditions de Bragg d'une rangée systématique, séparé par site atomique. Elle s'ouvre depuis le menu **Options**. Contrairement à la fenêtre CBED, elle possède sa propre zone de sortie et ne dessine pas sur le canevas de la fenêtre parente.
+
+→ Voir **[Simulation ALCHEMI](4-alchemi-simulation.md)** pour tous les réglages ainsi que le domaine de validité et les limites connues.
+
+---
+
 ## Sujets connexes
 
-- [Simulation de diffraction des rayons X](4-x-ray-neutron-diffraction.md)
+- [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md)
 - [Simulation SAED](1-saed-simulation.md)
 - [Simulation PED](2-ped-simulation.md)
 - [Simulation CBED](3-cbed-simulation.md)
+- [Simulation ALCHEMI](4-alchemi-simulation.md)
 - [Calcul dynamique (cœur partagé)](../appendix/a3-bloch-wave/calculation.md)
 - [Système de coordonnées du détecteur](../appendix/a1-coordinate-system/2-diffraction.md)

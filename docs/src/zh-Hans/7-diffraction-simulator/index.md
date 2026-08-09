@@ -19,10 +19,16 @@ title: Diffraction Simulator
 
 | 模式 | 内容 | 页面 |
 |------|----------|------|
-| **X 射线（及中子）衍射** | 单晶 X 射线 / 中子衍射图样（平行束、进动 X 射线、Back Laue） | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
+| **X 射线（及中子）衍射** | 单晶 X 射线 / 中子衍射图样（平行束、进动 X 射线、Back Laue） | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
 | **SAED** | 平行束电子衍射（选区电子衍射） | [SAED 模拟](1-saed-simulation.md) |
 | **PED** | 进动电子衍射 | [PED 模拟](2-ped-simulation.md) |
 | **CBED** | 会聚束电子衍射 | [CBED 模拟](3-cbed-simulation.md) |
+
+> **ALCHEMI 不是一种模式。** 与由波长和入射束的组合决定的 X 射线 / SAED / PED / CBED 不同，ALCHEMI 模拟器是从 **选项** 菜单打开的**子窗口**，故在此单独列出。
+
+| 子窗口 | 内容 | 页面 |
+|------|------|------|
+| **ALCHEMI 模拟器** | 按位点分解的电离摇摆曲线（沟道增强微分析） | [ALCHEMI 模拟](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ title: Diffraction Simulator
 | 电子 | 平行 | SAED | [SAED 模拟](1-saed-simulation.md) |
 | 电子 | 进动（电子 = PED） | PED | [PED 模拟](2-ped-simulation.md) |
 | 电子 | 会聚（CBED） | CBED | [CBED 模拟](3-cbed-simulation.md) |
-| X 射线 | 平行 | X 射线衍射 | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
-| X 射线 | 进动（X 射线） | 进动 X 射线（进动相机） | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
-| X 射线 | Back Laue | 背反射劳厄 | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
-| 中子 | 平行 | 中子衍射 | [X 射线衍射模拟的中子部分](4-x-ray-neutron-diffraction.md) |
+| X 射线 | 平行 | X 射线衍射 | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
+| X 射线 | 进动（X 射线） | 进动 X 射线（进动相机） | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
+| X 射线 | Back Laue | 背反射劳厄 | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
+| 中子 | 平行 | 中子衍射 | [X 射线衍射模拟的中子部分](5-x-ray-neutron-diffraction.md) |
 
 > **Note**: 入射束的可选项随波长而变化。对于电子：**平行、进动（电子 = PED）、会聚（CBED）**；对于 X 射线：**平行、进动（X 射线）、Back Laue**；对于中子：仅 **平行**。选择 **进动（电子 = PED）** 或 **会聚（CBED）** 会自动将强度计算切换为 **Dynamical**。
 
@@ -81,7 +87,7 @@ title: Diffraction Simulator
 | 目标 | 从何处开始 | 参考 |
 |------|------------|-----------|
 | 生成平行束电子衍射（SAED） | 将 **入射束** 设为 **平行**，**波长** 设为电子 | [SAED 模拟](1-saed-simulation.md)、[平行束 SAED 计算](../appendix/a3-bloch-wave/calculation.md) |
-| 生成单晶 X 射线衍射 | 将 **波长** 切换为 X 射线 / 同步辐射 | [X 射线衍射模拟](4-x-ray-neutron-diffraction.md) |
+| 生成单晶 X 射线衍射 | 将 **波长** 切换为 X 射线 / 同步辐射 | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
 | 生成进动电子衍射（PED） | 将 **入射束** 设为 **进动（电子）**，然后设置半角和步长 | [PED 模拟](2-ped-simulation.md) |
 | 生成会聚束电子衍射（CBED） | 将 **入射束** 设为 **会聚（CBED，仅限电子）**，并在 CBED 窗口中设置条件 | [CBED 模拟](3-cbed-simulation.md)、[CBED 计算](../appendix/a3-bloch-wave/cbed.md) |
 | 查看动力学计算得到的反射列表 | 选择 **动力学理论** 并打开 **斑点详情** 或 **Details** | [动力学计算（共享内核）](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ title: Diffraction Simulator
 
 ---
 
+## ALCHEMI 模拟器
+
+打开一个计算**按位点分解的电离摇摆曲线**的子窗口：在晶体通过系统反射列的 Bragg 条件倾转时，所选电离通道的产额按原子位点分解给出。从 **选项** 菜单打开。与 CBED 窗口不同，它拥有自己的输出区域，不在上级窗口的画布上绘图。
+
+→ 全部设置以及适用范围与已知限制，请参见 **[ALCHEMI 模拟](4-alchemi-simulation.md)**。
+
+---
+
 ## 相关主题
 
-- [X 射线衍射模拟](4-x-ray-neutron-diffraction.md)
+- [X 射线衍射模拟](5-x-ray-neutron-diffraction.md)
 - [SAED 模拟](1-saed-simulation.md)
 - [PED 模拟](2-ped-simulation.md)
 - [CBED 模拟](3-cbed-simulation.md)
+- [ALCHEMI 模拟](4-alchemi-simulation.md)
 - [动力学计算（共享内核）](../appendix/a3-bloch-wave/calculation.md)
 - [探测器坐标系](../appendix/a1-coordinate-system/2-diffraction.md)

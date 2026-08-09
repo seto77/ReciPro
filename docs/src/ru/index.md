@@ -17,7 +17,7 @@
 |------|------------|-----------------|
 | Загрузить кристалл и задать его ориентацию | [Главное окно](0-main-window.md) | [Геометрия вращения](4-rotation-geometry.md), [Приложение A1. Системы координат](appendix/a1-coordinate-system/1-orientation.md) |
 | Изучить структуру кристалла в 3D | [Просмотр структуры](5-structure-viewer.md) | [Сведения о симметрии](2-symmetry-information.md) |
-| Рассчитать картины SAED / XRD / PED / CBED | [Симулятор дифракции](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [Рентгеновская дифракция](7-diffraction-simulator/4-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
+| Рассчитать картины SAED / XRD / PED / CBED | [Симулятор дифракции](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [Рентгеновская дифракция](7-diffraction-simulator/5-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | Рассчитать изображения HRTEM / STEM | [Симулятор HRTEM/STEM](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md), [STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
 | Смоделировать картины EBSD | [Моделирование EBSD](12-ebsd-simulation.md) | [Траектории электронов](8-electron-trajectory.md), [Приложение A3. Расчёт EBSD](appendix/a3-bloch-wave/ebsd.md) |
 | Индексировать экспериментальные дифракционные рефлексы | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Симулятор дифракции](7-diffraction-simulator/index.md) |

@@ -98,6 +98,6 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 ## 另请参见
 
 - [衍射模拟器（概览）](index.md)
-- [X 射线衍射模拟](4-x-ray-neutron-diffraction.md)
+- [X 射线衍射模拟](5-x-ray-neutron-diffraction.md)
 - [SAED 模拟](1-saed-simulation.md)
 - [动力学计算（布洛赫波法）](../appendix/a3-bloch-wave/calculation.md)

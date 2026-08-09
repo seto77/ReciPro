@@ -17,7 +17,7 @@
 |------|------------|-----------------|
 | 결정을 불러오고 방위를 설정 | [메인 창](0-main-window.md) | [회전 기하학](4-rotation-geometry.md), [부록 A1. 좌표계](appendix/a1-coordinate-system/1-orientation.md) |
 | 결정 구조를 3D로 살펴보기 | [구조 뷰어](5-structure-viewer.md) | [대칭 정보](2-symmetry-information.md) |
-| SAED / XRD / PED / CBED 패턴 계산 | [회절 시뮬레이터](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [X선 회절](7-diffraction-simulator/4-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
+| SAED / XRD / PED / CBED 패턴 계산 | [회절 시뮬레이터](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md), [X선 회절](7-diffraction-simulator/5-x-ray-neutron-diffraction.md), [PED](7-diffraction-simulator/2-ped-simulation.md), [CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | HRTEM / STEM 이미지 계산 | [HRTEM/STEM 시뮬레이터](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md), [STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
 | EBSD 패턴 시뮬레이션 | [EBSD 시뮬레이션](12-ebsd-simulation.md) | [전자 궤적](8-electron-trajectory.md), [부록 A3. EBSD 계산](appendix/a3-bloch-wave/ebsd.md) |
 | 실험 회절 스폿 지수화 | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [회절 시뮬레이터](7-diffraction-simulator/index.md) |

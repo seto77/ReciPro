@@ -98,6 +98,6 @@ PED 는 전자 회절이므로 선원으로 **Electron beam** 을 선택합니�
 ## 관련 항목
 
 - [회절 시뮬레이터(개요)](index.md)
-- [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md)
+- [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md)
 - [SAED 시뮬레이션](1-saed-simulation.md)
 - [동역학적 계산(블로흐파 방법)](../appendix/a3-bloch-wave/calculation.md)

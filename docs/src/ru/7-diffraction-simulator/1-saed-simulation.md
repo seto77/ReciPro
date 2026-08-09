@@ -20,7 +20,7 @@
 
 ![Wave Length](../../assets/cap-ru-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Установите источник излучения на **Electron**. Введите энергию (keV) или длину волны (nm), и будет вычислена релятивистски скорректированная длина волны. Для рентгеновских и нейтронных источников см. [Моделирование рентгеновской дифракции](4-x-ray-neutron-diffraction.md).
+Установите источник излучения на **Electron**. Введите энергию (keV) или длину волны (nm), и будет вычислена релятивистски скорректированная длина волны. Для рентгеновских и нейтронных источников см. [Моделирование рентгеновской дифракции](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -113,6 +113,6 @@
 
 - [Симулятор дифракции (обзор)](index.md)
 - [Расчёт SAED с параллельным пучком](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [Моделирование рентгеновской дифракции](4-x-ray-neutron-diffraction.md)
+- [Моделирование рентгеновской дифракции](5-x-ray-neutron-diffraction.md)
 - [Моделирование прецессионной электронной дифракции (PED)](2-ped-simulation.md)
 - [Определение системы координат](../appendix/a1-coordinate-system/1-orientation.md)

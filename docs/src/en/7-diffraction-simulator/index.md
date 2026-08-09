@@ -19,10 +19,16 @@ The window has a diffraction-pattern drawing area on the **left** and, on the **
 
 | Mode | Contents | Page |
 |------|----------|------|
-| **X-ray (and neutron) diffraction** | Single-crystal X-ray / neutron diffraction pattern (parallel, precession X-ray, Back Laue) | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
+| **X-ray (and neutron) diffraction** | Single-crystal X-ray / neutron diffraction pattern (parallel, precession X-ray, Back Laue) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 | **SAED** | Parallel-beam electron diffraction (selected-area electron diffraction) | [SAED Simulation](1-saed-simulation.md) |
 | **PED** | Precession electron diffraction | [PED Simulation](2-ped-simulation.md) |
 | **CBED** | Convergent-beam electron diffraction | [CBED Simulation](3-cbed-simulation.md) |
+
+> **ALCHEMI is not a mode.** Unlike X-ray / SAED / PED / CBED, which are selected by the combination of wavelength and incident beam, the ALCHEMI simulator is a **child window** opened from the **Options** menu, so it is listed separately here.
+
+| Child window | Contents | Page |
+|------|------|------|
+| **ALCHEMI simulator** | Site-resolved ionization rocking curves (channelling-enhanced microanalysis) | [ALCHEMI Simulation](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ Look up the page you need from the combination of **wavelength (source)** and **
 | Electron | Parallel | SAED | [SAED Simulation](1-saed-simulation.md) |
 | Electron | Precession (electron = PED) | PED | [PED Simulation](2-ped-simulation.md) |
 | Electron | Convergence (CBED) | CBED | [CBED Simulation](3-cbed-simulation.md) |
-| X-ray | Parallel | X-ray diffraction | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
-| X-ray | Precession (X-ray) | Precession X-ray (precession camera) | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
-| X-ray | Back Laue | Back-reflection Laue | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
-| Neutron | Parallel | Neutron diffraction | [neutron section of X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
+| X-ray | Parallel | X-ray diffraction | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| X-ray | Precession (X-ray) | Precession X-ray (precession camera) | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| X-ray | Back Laue | Back-reflection Laue | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
+| Neutron | Parallel | Neutron diffraction | [neutron section of X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 
 > **Note**: The incident-beam choices change with the wavelength. For electrons: **Parallel, Precession (electron = PED), Convergence (CBED)**; for X-rays: **Parallel, Precession (X-ray), Back Laue**; for neutrons: **Parallel** only. Selecting **Precession (electron = PED)** or **Convergence (CBED)** automatically switches the intensity calculation to **Dynamical**.
 
@@ -81,7 +87,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts of the main wind
 | Goal | Start from | Reference |
 |------|------------|-----------|
 | Produce parallel-beam electron diffraction (SAED) | Set **Incident beam** to **Parallel** and **Wavelength** to electron | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md) |
-| Produce single-crystal X-ray diffraction | Switch **Wavelength** to X-ray / Synchrotron | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
+| Produce single-crystal X-ray diffraction | Switch **Wavelength** to X-ray / Synchrotron | [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md) |
 | Produce precession electron diffraction (PED) | Set **Incident beam** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
 | Produce convergent-beam electron diffraction (CBED) | Set **Incident beam** to **Convergence (CBED, electron only)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
 | Inspect the reflection list from the dynamical calculation | Select **Dynamical** and open **Spot Details** or **Details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ A window for scrubbing the pressure/time profile of a high-pressure (dynamic-com
 
 ---
 
+## ALCHEMI simulator
+
+Opens a child window that computes **site-resolved ionization rocking curves**: the yield of a chosen ionization channel while the crystal is tilted through the Bragg conditions of a systematic row, resolved per atomic site. Open it from the **Options** menu. Unlike the CBED window it has its own output area and does not draw on the parent canvas.
+
+→ See **[ALCHEMI Simulation](4-alchemi-simulation.md)** for every setting and for the scope and known limitations.
+
+---
+
 ## Related topics
 
-- [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md)
+- [X-ray Diffraction Simulation](5-x-ray-neutron-diffraction.md)
 - [SAED Simulation](1-saed-simulation.md)
 - [PED Simulation](2-ped-simulation.md)
 - [CBED Simulation](3-cbed-simulation.md)
+- [ALCHEMI Simulation](4-alchemi-simulation.md)
 - [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md)
 - [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md)

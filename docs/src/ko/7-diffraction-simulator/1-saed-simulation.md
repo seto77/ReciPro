@@ -20,7 +20,7 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 
 ![Wave Length](../../assets/cap-ko-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-방사선원을 **Electron**으로 설정합니다. 에너지(keV) 또는 파장(nm)을 입력하면 상대론적으로 보정된 파장이 계산됩니다. X선 및 중성자 선원에 대해서는 [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md)을 참조하십시오.
+방사선원을 **Electron**으로 설정합니다. 에너지(keV) 또는 파장(nm)을 입력하면 상대론적으로 보정된 파장이 계산됩니다. X선 및 중성자 선원에 대해서는 [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md)을 참조하십시오.
 
 ---
 
@@ -113,6 +113,6 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 
 - [회절 시뮬레이터 (개요)](index.md)
 - [평행빔 SAED 계산](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
-- [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md)
+- [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md)
 - [세차 전자 회절 (PED) 시뮬레이션](2-ped-simulation.md)
 - [좌표계의 정의](../appendix/a1-coordinate-system/1-orientation.md)

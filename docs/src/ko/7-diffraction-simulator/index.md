@@ -19,10 +19,16 @@ title: Diffraction Simulator
 
 | 모드 | 내용 | 페이지 |
 |------|----------|------|
-| **X선 회절(및 중성자 회절)** | 단결정 X선 / 중성자 회절 패턴(평행, 세차 X선, Back Laue) | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
+| **X선 회절(및 중성자 회절)** | 단결정 X선 / 중성자 회절 패턴(평행, 세차 X선, Back Laue) | [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md) |
 | **SAED** | 평행빔 전자 회절(selected-area electron diffraction) | [SAED 시뮬레이션](1-saed-simulation.md) |
 | **PED** | 세차 전자 회절 | [PED 시뮬레이션](2-ped-simulation.md) |
 | **CBED** | 수렴빔 전자 회절 | [CBED 시뮬레이션](3-cbed-simulation.md) |
+
+> **ALCHEMI 는 모드가 아닙니다.** 파장과 입사 빔의 조합으로 정해지는 X선 / SAED / PED / CBED 와 달리, ALCHEMI 시뮬레이터는 **옵션** 메뉴에서 여는 **자식 창**이므로 여기서는 별도로 표시합니다.
+
+| 자식 창 | 내용 | 페이지 |
+|------|------|------|
+| **ALCHEMI 시뮬레이터** | 자리별로 분해한 이온화 로킹 곱선 (채널링 증강 미세분석) | [ALCHEMI 시뮬레이션](4-alchemi-simulation.md) |
 
 ---
 
@@ -35,10 +41,10 @@ title: Diffraction Simulator
 | 전자 | 평행 | SAED | [SAED 시뮬레이션](1-saed-simulation.md) |
 | 전자 | 세차(전자 = PED) | PED | [PED 시뮬레이션](2-ped-simulation.md) |
 | 전자 | 수렴(CBED) | CBED | [CBED 시뮬레이션](3-cbed-simulation.md) |
-| X선 | 평행 | X선 회절 | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
-| X선 | 세차(X선) | 세차 X선(세차 카메라) | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
-| X선 | Back Laue | 후방반사 라우에 | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
-| 중성자 | 평행 | 중성자 회절 | [X선 회절 시뮬레이션의 중성자 절](4-x-ray-neutron-diffraction.md) |
+| X선 | 평행 | X선 회절 | [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md) |
+| X선 | 세차(X선) | 세차 X선(세차 카메라) | [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md) |
+| X선 | Back Laue | 후방반사 라우에 | [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md) |
+| 중성자 | 평행 | 중성자 회절 | [X선 회절 시뮬레이션의 중성자 절](5-x-ray-neutron-diffraction.md) |
 
 > **Note**: 입사빔 선택지는 파장에 따라 달라집니다. 전자의 경우: **평행, 세차(전자 = PED), 수렴(CBED)**, X선의 경우: **평행, 세차(X선), Back Laue**, 중성자의 경우: **평행**만. **세차(전자 = PED)** 또는 **수렴(CBED)**을 선택하면 강도 계산이 자동으로 **동역학 이론**으로 전환됩니다.
 
@@ -81,7 +87,7 @@ title: Diffraction Simulator
 | 목적 | 시작점 | 참조 |
 |------|------------|-----------|
 | 평행빔 전자 회절(SAED) 생성 | **Incident beam**을 **Parallel**로, **Wavelength**를 전자로 설정 | [SAED 시뮬레이션](1-saed-simulation.md), [평행빔 SAED 계산](../appendix/a3-bloch-wave/calculation.md) |
-| 단결정 X선 회절 생성 | **Wavelength**를 X선 / Synchrotron으로 전환 | [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md) |
+| 단결정 X선 회절 생성 | **Wavelength**를 X선 / Synchrotron으로 전환 | [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md) |
 | 세차 전자 회절(PED) 생성 | **Incident beam**을 **Precession (electron)**으로 설정한 다음, 반각과 스텝을 설정 | [PED 시뮬레이션](2-ped-simulation.md) |
 | 수렴빔 전자 회절(CBED) 생성 | **Incident beam**을 **Convergence (CBED, electron only)**로 설정하고 CBED 창에서 조건을 설정 | [CBED 시뮬레이션](3-cbed-simulation.md), [CBED 계산](../appendix/a3-bloch-wave/cbed.md) |
 | 동역학적 계산의 반사 목록 검사 | **동역학 이론**을 선택하고 **반사점 세부정보** 또는 **Details**를 열기 | [동역학적 계산(공유 코어)](../appendix/a3-bloch-wave/calculation.md) |
@@ -306,11 +312,20 @@ title: Diffraction Simulator
 
 ---
 
+## ALCHEMI 시뮬레이터
+
+**자리별로 분해한 이온화 로킹 곱선**을 계산하는 자식 창을 엽니다. 계통 반사열의 Bragg 조건을 통과하도록 결정을 기울이는 동안, 선택한 이온화 채널의 수율을 원자 자리별로 나누어 구합니다. **옵션** 메뉴에서 엽니다. CBED 창과 달리 자체 출력 영역을 가지며, 상위 창의 캔버스에는 그리지 않습니다.
+
+→ 모든 설정과 적용 범위·알려진 한계는 **[ALCHEMI 시뮬레이션](4-alchemi-simulation.md)** 을 참조하십시오.
+
+---
+
 ## 관련 항목
 
-- [X선 회절 시뮬레이션](4-x-ray-neutron-diffraction.md)
+- [X선 회절 시뮬레이션](5-x-ray-neutron-diffraction.md)
 - [SAED 시뮬레이션](1-saed-simulation.md)
 - [PED 시뮬레이션](2-ped-simulation.md)
 - [CBED 시뮬레이션](3-cbed-simulation.md)
+- [ALCHEMI 시뮬레이션](4-alchemi-simulation.md)
 - [동역학적 계산(공유 코어)](../appendix/a3-bloch-wave/calculation.md)
 - [검출기 좌표계](../appendix/a1-coordinate-system/2-diffraction.md)
