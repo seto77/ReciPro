@@ -78,9 +78,13 @@ references:
       you use the numbers. The version-independent DOI 10.5281/zenodo.21872049
       resolves to the latest version instead. Full attribution:
       THIRD-PARTY-NOTICES.md.
+  # ⚠ 260811Cl: 巻号と DOI は IUCr/Elsevier の書誌で照合済み。
+  #   ADNDT **95** (2009) 871–909 / doi 10.1016/j.adt.2009.08.001 が正しい。
+  #   "96" や doi 10.1016/j.adt.2010.06.001 は**別論文 (バリウム同位体の発見)** を指すので使わない。
   - type: article
     title: >-
-      Cross sections for ionization of inner shells of atoms by electron impact
+      Cross sections for ionization of K, L and M shells of atoms by impact of
+      electrons and positrons with energies up to 1 GeV: Analytical formulas
     authors:
       - family-names: Bote
         given-names: David
@@ -91,10 +95,11 @@ references:
       - family-names: Powell
         given-names: Cedric J.
     journal: "Atomic Data and Nuclear Data Tables"
-    volume: 96
+    volume: 95
     start: 871
+    end: 909
     year: 2009
-    doi: "10.1016/j.adt.2010.06.001"
+    doi: "10.1016/j.adt.2009.08.001"
     notes: >-
       Source of the bundled absolute ionization cross-section parameterization
       (Crystallography.BoteSalvat.bin; coefficients are public domain). See also

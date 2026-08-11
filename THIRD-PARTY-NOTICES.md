@@ -154,7 +154,7 @@ not ReciPro's — see https://seto77.github.io/Temari/ .
 
 | Item | Source | Status |
 |------|--------|--------|
-| Absolute ionization cross sections | Bote & Salvat, *Phys. Rev. A* **77** (2008) 042701; Bote, Salvat, Jablonski & Powell, *At. Data Nucl. Data Tables* **96** (2009) 871 (see also the 2011 erratum). Coefficients extracted from `usnistgov/BoteSalvatICX.jl` (The Unlicense — public domain). | Compiled into `Crystallography.BoteSalvat.bin`. Public domain; attribution by citation. Note that the cross section is the less certain half of the calculation, and that its uncertainty grows from the K line to the M line — Temari's manifest gives the figures. |
+| Absolute ionization cross sections | Bote & Salvat, *Phys. Rev. A* **77** (2008) 042701, [doi:10.1103/PhysRevA.77.042701](https://doi.org/10.1103/PhysRevA.77.042701); Bote, Salvat, Jablonski & Powell, *At. Data Nucl. Data Tables* **95** (2009) 871–909, [doi:10.1016/j.adt.2009.08.001](https://doi.org/10.1016/j.adt.2009.08.001) (see also the 2011 erratum, *ibid.* **97**, 186). <!-- 260811Cl 訂正: 巻号が 96 になっていた。95 が正しい (Elsevier の書誌で照合) -->. Coefficients extracted from `usnistgov/BoteSalvatICX.jl` (The Unlicense — public domain). | Compiled into `Crystallography.BoteSalvat.bin`. Public domain; attribution by citation. Note that the cross section is the less certain half of the calculation, and that its uncertainty grows from the K line to the M line — Temari's manifest gives the figures. |
 
 ## Fonts, icons, images, and sample data
 
