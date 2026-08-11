@@ -1,0 +1,180 @@
+# 260811Cl 新規作成 (⑭ 公開基盤)。GitHub の "Cite this repository" がこれを読む。
+# ⚠ version / date-released は**意図的に書いていない**。版番号は release ワークフローが
+#   Version.cs から注入していて、ここに書くと必ず陳腐化するため。版を固定して引きたい場合は
+#   Releases のタグを添える。引用そのものは preferred-citation の論文で足りる (作者判断 2026-08-11)。
+cff-version: 1.2.0
+title: "ReciPro: multipurpose crystallographic software"
+message: "If you use this software, please cite the article under preferred-citation. If you use the STEM-EDX or ALCHEMI results, also cite the ionization dataset listed under references — it is CC BY 4.0 and is not covered by this repository's MIT licence."
+type: software
+authors:
+  # ソフトウェアの作者。論文の共著者 M. Ohtsuka は preferred-citation 側に入れてある
+  # (コードの作者と論文の著者は別の集合なので分けて書く)。
+  - family-names: Seto
+    given-names: Yusuke
+    email: seto77@gmail.com
+    affiliation: "Osaka Metropolitan University"
+repository-code: "https://github.com/seto77/ReciPro"
+url: "https://seto77.github.io/ReciPro/"
+license: MIT
+license-url: "https://github.com/seto77/ReciPro/blob/master/LICENSE.md"
+keywords:
+  - crystallography
+  - electron microscopy
+  - electron diffraction
+  - dynamical diffraction
+  - Bloch wave
+  - HRTEM
+  - STEM
+  - STEM-EDX
+  - ALCHEMI
+  - EBSD
+  - crystal structure viewer
+abstract: >-
+  ReciPro is a free and open-source GUI application for crystallography and
+  transmission electron microscopy. It explores crystal databases, visualizes
+  crystal structures and goniometer settings, simulates diffraction patterns
+  (kinematical and dynamical, by the Bloch-wave method) and high-resolution
+  microscope images, and analyses diffraction data, with the windows linked so
+  that results update together in near real time. Recent additions include
+  STEM-EDX elemental maps computed from inner-shell ionization form factors and
+  an ALCHEMI simulator for site-resolved ionization rocking curves.
+preferred-citation:
+  type: article
+  title: >-
+    ReciPro: free and open-source multipurpose crystallographic software
+    integrating a crystal model database and viewer, diffraction and microscopy
+    simulators, and diffraction data analysis tools
+  authors:
+    - family-names: Seto
+      given-names: Yusuke
+    - family-names: Ohtsuka
+      given-names: Masahiro
+  journal: "Journal of Applied Crystallography"
+  volume: 55
+  start: 397
+  end: 410
+  year: 2022
+  doi: "10.1107/S1600576722000139"
+references:
+  # ⚠ CFF 1.2.0 の reference type に "dataset" は無い。正しくは "data"
+  #   (schema.json の enum で確認)。"dataset" と書くとファイル全体が schema 検証を通らず、
+  #   GitHub の "Cite this repository" が出なくなる。
+  - type: data
+    title: >-
+      Inner-shell ionization form factors F(s, E0) for STEM-EDX: 525 channels
+      (K, L1-L3, M1-M5) computed with Temari
+    authors:
+      - family-names: Seto
+        given-names: Yusuke
+    version: "5.0.0"
+    year: 2026
+    doi: "10.5281/zenodo.21872050"
+    license: CC-BY-4.0
+    notes: >-
+      Bundled as the binary resource Crystallography.IonizationFsE0.bin and used
+      by the STEM-EDX and ALCHEMI paths. Distributed by its author under
+      CC BY 4.0, separately from this software (MIT); ReciPro ships a repacked
+      form (1e-6 quantization, no value recomputed). Cite this version DOI if
+      you use the numbers. The version-independent DOI 10.5281/zenodo.21872049
+      resolves to the latest version instead. Full attribution:
+      THIRD-PARTY-NOTICES.md.
+  - type: article
+    title: >-
+      Cross sections for ionization of inner shells of atoms by electron impact
+    authors:
+      - family-names: Bote
+        given-names: David
+      - family-names: Salvat
+        given-names: Francesc
+      - family-names: Jablonski
+        given-names: Aleksander
+      - family-names: Powell
+        given-names: Cedric J.
+    journal: "Atomic Data and Nuclear Data Tables"
+    volume: 96
+    start: 871
+    year: 2009
+    doi: "10.1016/j.adt.2010.06.001"
+    notes: >-
+      Source of the bundled absolute ionization cross-section parameterization
+      (Crystallography.BoteSalvat.bin; coefficients are public domain). See also
+      the Erratum, At. Data Nucl. Data Tables 97, 186 (2011), and the
+      distorted-wave calculations it was fitted to: D. Bote & F. Salvat,
+      Phys. Rev. A 77, 042701 (2008), doi:10.1103/PhysRevA.77.042701.
+  - type: article
+    title: "The American Mineralogist Crystal Structure Database"
+    authors:
+      - family-names: Downs
+        given-names: Robert T.
+      - family-names: Hall-Wallace
+        given-names: Michelle
+    journal: "American Mineralogist"
+    volume: 88
+    start: 247
+    end: 250
+    year: 2003
+    notes: >-
+      Cite when using the bundled AMCSD crystal database (AMCSD.cdb3).
+  - type: article
+    title: >-
+      Crystallography Open Database - an open-access collection of crystal
+      structures
+    authors:
+      - family-names: Gražulis
+        given-names: Saulius
+      - family-names: Chateigner
+        given-names: Daniel
+      - family-names: Downs
+        given-names: Robert T.
+      - family-names: Yokochi
+        given-names: Alexandre F. T.
+      - family-names: Quirós
+        given-names: Miguel
+      - family-names: Lutterotti
+        given-names: Luca
+      - family-names: Manakova
+        given-names: Elena
+      - family-names: Butkus
+        given-names: Justas
+      - family-names: Moeck
+        given-names: Peter
+      - family-names: Le Bail
+        given-names: Armel
+    journal: "Journal of Applied Crystallography"
+    volume: 42
+    start: 726
+    end: 729
+    year: 2009
+    doi: "10.1107/S0021889809016690"
+    notes: >-
+      Cite when using the COD crystal database, which ReciPro downloads on first
+      use rather than bundling. COD asks that further papers be cited as well -
+      see https://www.crystallography.net/cod/citing.html .
+  - type: article
+    title: >-
+      The xraylib library for X-ray-matter interactions. Recent developments
+    authors:
+      - family-names: Schoonjans
+        given-names: Tom
+      - family-names: Brunetti
+        given-names: Antonio
+      - family-names: Golosio
+        given-names: Bruno
+      - family-names: Sanchez del Rio
+        given-names: Manuel
+      - family-names: Solé
+        given-names: Vicente Armando
+      - family-names: Ferrero
+        given-names: Claudio
+      - family-names: Vincze
+        given-names: Laszlo
+    journal: "Spectrochimica Acta Part B: Atomic Spectroscopy"
+    volume: 66
+    start: 776
+    end: 784
+    year: 2011
+    doi: "10.1016/j.sab.2011.09.011"
+    notes: >-
+      Recommended citation for the bundled xraylib native library
+      (BSD-3-Clause), which supplies the X-ray reference data shown in the Beam
+      Interaction window.
