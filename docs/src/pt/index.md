@@ -62,7 +62,9 @@ Este manual no GitHub Pages é atualmente a fonte de verdade. Use a navegação 
 4. Gire o cristal arrastando o mouse ou inserindo índices de eixo de zona/plano.
 
 ## Referência
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## Licença
 O ReciPro é distribuído sob a [Licença MIT](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
+
+As tabelas de ionização de camada interna incluídas **não** são cobertas por essa licença: são uma forma reempacotada de um conjunto de dados publicado separadamente sob CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). A atribuição completa e os demais componentes incluídos estão em [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).

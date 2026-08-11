@@ -63,7 +63,9 @@ This GitHub Pages manual is the current source of truth. Use the left navigation
 4. Rotate the crystal by mouse drag or by entering zone-axis/plane indices.
 
 ## Reference
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## License
 ReciPro is distributed under the [MIT License](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
+
+The bundled inner-shell ionization tables are **not** covered by that licence: they are a repacked form of a dataset published separately under CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). The full attribution, and the other bundled components, are listed in [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).

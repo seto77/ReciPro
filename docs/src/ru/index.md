@@ -62,7 +62,9 @@
 4. Поворачивайте кристалл перетаскиванием мышью или вводом индексов оси зоны / плоскости.
 
 ## Цитирование
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## Лицензия
 ReciPro распространяется под [лицензией MIT](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
+
+Входящие в комплект таблицы ионизации внутренних оболочек **не** покрываются этой лицензией: это переупакованная форма набора данных, опубликованного отдельно под CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). Полное указание авторства и остальные включённые компоненты перечислены в [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).

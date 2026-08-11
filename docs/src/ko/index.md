@@ -62,7 +62,9 @@
 4. 마우스 드래그 또는 정대축/결정면 지수 입력으로 결정을 회전합니다.
 
 ## 인용
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## 라이선스
 ReciPro는 [MIT 라이선스](https://github.com/seto77/ReciPro/blob/master/LICENSE.md)에 따라 배포됩니다.
+
+동봉된 내각 이온화 테이블은 이 라이선스의 대상이 **아닙니다**. 별도로 CC BY 4.0 으로 공개된 데이터셋 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)) 을 다시 패킹한 것으로, 전체 저작자 표시와 그 밖의 동봉 구성 요소는 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) 에 있습니다.

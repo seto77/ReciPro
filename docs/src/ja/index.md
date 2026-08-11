@@ -63,7 +63,9 @@
 4. マウスドラッグや晶帯軸・面指数の入力で結晶を回転。
 
 ## 引用文献
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## ライセンス
 ReciProは [MITライセンス](https://github.com/seto77/ReciPro/blob/master/LICENSE.md) の下で配布されています。
+
+同梱の内殻イオン化テーブルは**このライセンスの対象外**です。別途 CC BY 4.0 で公開されているデータセット ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)) を詰め直したもので、帰属表示の全文と他の同梱物は [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) にあります。

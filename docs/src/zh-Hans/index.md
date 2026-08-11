@@ -62,7 +62,9 @@
 4. 通过鼠标拖动或输入晶带轴/晶面指数来旋转晶体。
 
 ## 引用
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## 许可证
 ReciPro 以 [MIT 许可证](https://github.com/seto77/ReciPro/blob/master/LICENSE.md) 分发。
+
+随附的内壳电离表**不**在该许可范围内：它是以 CC BY 4.0 单独发布的数据集（[DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)）的重新打包形式。完整的署名信息以及其他随附组件见 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md)。

@@ -62,7 +62,9 @@ Questo manuale su GitHub Pages è la fonte di riferimento attuale. Usa la naviga
 4. Ruota il cristallo trascinando con il mouse o inserendo gli indici di asse di zona/piano.
 
 ## Riferimento
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
+> Y. Seto and M. Ohtsuka, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## Licenza
 ReciPro è distribuito sotto la [Licenza MIT](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
+
+Le tabelle di ionizzazione di guscio interno incluse **non** rientrano in questa licenza: sono una forma riconfezionata di un dataset pubblicato separatamente con licenza CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). L'attribuzione completa e gli altri componenti inclusi sono in [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).
