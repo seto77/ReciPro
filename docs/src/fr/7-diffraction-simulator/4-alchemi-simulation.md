@@ -50,6 +50,16 @@ Décocher **Inclure la composante déchenalisée** dans le cadre **Calcul** supp
 
 La grandeur primaire est le **nombre de lacunes de couche interne créées par électron incident**. **La conversion en photons X (rendement de fluorescence et branchement des raies), l'auto-absorption des rayons X dans l'échantillon, ainsi que l'efficacité et l'angle solide du détecteur NE sont PAS appliqués.**
 
+⚠ **Les lacunes ne sont pas des coups.** Entre cette grandeur et une intensité EDX mesurée s'intercalent trois étapes supplémentaires — atomique, échantillon et instrumentale — dont ReciPro n'effectue aucune.
+
+1. **lacune → photon** : rendement de fluorescence et branchement des raies de la couche
+2. **photon → photon sortant de l'échantillon** : auto-absorption des rayons X, qui dépend de la **profondeur à laquelle le photon a été créé** et de l'angle de sortie
+3. **photon → coup** : efficacité du détecteur, angle solide et traitement du spectre
+
+L'étape 2 en particulier ne se rattrape pas après coup en multipliant la courbe finie par un unique facteur d'absorption : il faudrait d'abord résoudre le rendement en profondeur. Comparer ces courbes à des intensités mesurées, à des facteurs k ou à des compositions suppose donc d'effectuer ces étapes en dehors de ReciPro.
+
+Notez lesquelles survivent à une normalisation. Les étapes 1 et 3, ainsi que toute absorption traitée comme une constante, sont **multiplicatives et indépendantes de l'orientation** : elles disparaissent donc dans la normalisation ICP (moyenne du balayage), même pour deux raies d'énergies très différentes. **L'auto-absorption, en général, non** : la canalisation modifie la distribution en profondeur où les lacunes sont créées, si bien que la fraction absorbée varie elle-même au long du balayage et survit à la normalisation. C'est contre ce résidu que le choix de raies d'énergies voisines est utile.
+
 ---
 
 ## Volet gauche : réglages
@@ -63,6 +73,10 @@ La grandeur primaire est le **nombre de lacunes de couche interne créées par �
 | **Points** | Nombre de points de balayage (3–1001) | 101 |
 
 La ligne du dessous indique l'angle de Bragg $\theta_B$ de la rangée choisie, à combien de $\theta_B$ correspond la largeur de balayage, et le pas d'inclinaison — vous voyez donc avant l'exécution jusqu'où va réellement le balayage.
+
+⚠ **La valeur par défaut de ±8 mrad est un point de départ commode, pas un optimum de la littérature.** La revue de Jones (2002) ne prescrit aucune largeur de balayage chiffrée en mrad, et les bornes supérieures citées dans le tableau ci-dessus sont des limites du calcul numérique de la v1, non des recommandations. Jugez plutôt l'étendue en unités de $\theta_B$ (c'est ce qu'indique la ligne sous le tableau) et choisissez-la de sorte que les traits dynamiques que vous voulez comparer tombent à l'intérieur du balayage.
+
+⚠ L'affirmation selon laquelle l'éclairement peut être ouvert jusqu'à **environ l'angle de Bragg** — donnée par Jones pour la condition optimisée en rangée systématique — porte sur le **demi-angle de convergence du cône incident**, c'est-à-dire sur **Étalement angulaire** dans le cadre **Calcul** ci-dessous. Ce n'est **pas** une demi-largeur de balayage recommandée. Ce sont deux grandeurs différentes, à ne pas confondre.
 
 ### Épaisseur
 
@@ -179,6 +193,18 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 « Calculable » et « vérifié quantitativement » sont deux choses différentes. Cette section précise la seconde.
 
+### Pas d'exactitude ±% générale — trois choses à distinguer
+
+ReciPro **ne** donne délibérément **pas** d'exactitude générale du type « occupations de site à ±N % ». La revue de Jones (2002) ne rapporte pas non plus d'erreur d'occupation universelle, et les chiffres publiés de cette forme appartiennent à un système mesuré par une procédure : ils ne sont pas une propriété de la méthode, encore moins de ce simulateur.
+
+Pour juger un résultat, distinguez trois choses différentes.
+
+**Précision** : la reproductibilité du nombre — statistique de comptage, barre d'erreur renvoyée par une régression, dispersion entre répétitions. Un faible résidu d'ajustement, ou un coefficient de corrélation proche de 1, n'établit pas à lui seul que le modèle est juste. Dans le cas discuté par Jones, l'ajout d'une constante libre à l'ajustement en a amélioré la précision sans démontrer une meilleure exactitude.
+
+**Biais de modèle** : l'erreur systématique du calcul direct lui-même — l'absence de corrélation de site du terme déchenalisé, l'approximation du facteur de forme local, l'absence de distribution d'épaisseur et de courbure (tout cela ci-dessous). Cette physique manquante ne diminue pas si l'on accumule plus de coups ou si l'on ajoute des points de balayage. (Agrandir la base est autre chose : cela réduit l'erreur **numérique** de troncature, que le [diagnostic de base](#diagnostic-de-base) rapporte séparément.)
+
+**Vérifications indépendantes** : l'accord avec quelque chose qui ne partage pas les mêmes hypothèses — et il y en a deux niveaux. La comparaison avec une **implémentation** formulée indépendamment (code contre code) éprouve la formulation et la programmation ; c'est ce qui a été fait ici, pour un système. La comparaison avec l'**expérience**, seule à confronter la physique au réel, n'a pas été faite.
+
 ### Domaine vérifié quantitativement
 
 **β-AlCo [001] à 250 keV, canaux Al-K / Co-K / Co-L** — et rien d'autre. Comparaison avec un calcul multitranche + phonons gelés (py_multislice), dont la formulation dynamique est totalement indépendante :
@@ -207,10 +233,22 @@ Le terme déchenalisé de la v1 est une constante indépendante de l'orientation
 
 L'**étalement angulaire du faisceau incident** (demi-angle de convergence, dérive) *est* modélisé — voir **Étalement angulaire** dans le cadre Calcul — mais la convolution ne remplace aucun des points ci-dessus.
 
+### Raies de basse énergie — là où l'approximation locale est la plus faible {#local-approximation}
+
+La matrice d'ionisation de la v1 est fonction du seul vecteur $G = \mathbf{g}_h - \mathbf{g}_g$ (approximation du facteur de forme local). ICSC indique que cela est raisonnable pour des couches internes fortement liées dont l'émission caractéristique se situe **au-dessus d'environ 3–4 keV** (Oxley & Allen 2003, p. 941).
+
+⚠ **Ce chiffre est un repère empirique et dépendant du modèle, pas un seuil strict — et ReciPro ne s'en sert pas pour rejeter quoi que ce soit.** Les raies situées en dessous sont calculées normalement, et ce sont souvent celles qui intéressent : Al-K est à 1,49 keV et Co-L à 0,79 keV, toutes deux appartenant au jeu β-AlCo utilisé pour la comparaison entre codes ci-dessus.
+
+Ce que ce chiffre repère, c'est l'endroit où la réduction à un **seul** vecteur $G$ commence à devenir insuffisante. L'événement d'ionisation ne se produit pas sur le noyau : sa probabilité est maximale à une distance finie du noyau, et cette distance croît quand l'énergie requise diminue. Notez ce que l'approximation conserve et ce qu'elle abandonne : $F_c(|G|/2)$ dépend du moment, une portée d'interaction finie **est** donc conservée ; ce qui est abandonné, c'est la dépendance séparée vis-à-vis des deux transferts de moment, c'est-à-dire la structure non locale de la MDFF complète. À mesure que la délocalisation augmente, c'est cette structure abandonnée qui commence à compter.
+
+L'énergie de la raie ne suffit pas à certifier un résultat : l'extension spatiale de la couche, l'orientation, l'épaisseur et les vecteurs réciproques réellement exigés par la base interviennent tous. Traitez 3–4 keV comme une invitation à regarder de plus près, non comme une note de réussite. Lorsque le choix existe, comparer des raies d'**énergies voisines** rend les biais de délocalisation des deux plus comparables ; Jones (2002) recommande précisément cela comme première mesure pratique, et comme seconde de préférer une rangée systématique à un axe de zone — c'est la géométrie que calcule la v1 (un axe de zone canalise plus fortement, mais demande une correction de délocalisation plus grande).
+
+⚠ Les basses énergies d'émission souffrent aussi le plus de l'**auto-absorption des rayons X** — l'ampleur dépendant toutefois de la composition de l'échantillon et de ses seuils d'absorption, de la longueur de trajet et de l'angle de sortie, et non de la seule énergie émise. C'est une source d'erreur **distincte**, absolument pas modélisée (voir [Grandeur de sortie](#grandeur-de-sortie) plus haut), et elle fausse la comparaison avec une expérience indépendamment de ce que fait l'approximation locale.
+
 ### Hypothèses du modèle
 
 - **Approximation traceur uniquement** : la superposition linéaire des réponses de site n'est valable que dans la limite diluée où le dopant ne perturbe pas le champ d'onde élastique. La VCA à concentration finie est hors du périmètre de la v1
-- **Approximation du facteur de forme local** : $\mu$ n'est fonction que de $G = \mathbf{g}_h - \mathbf{g}_g$, et non de la MDFF à deux impulsions (Modèle A d'OAR 1999). L'approximation se dégrade pour les couches K des éléments légers et les seuils de basse énergie
+- **Approximation du facteur de forme local** : $\mu$ n'est fonction que de $G = \mathbf{g}_h - \mathbf{g}_g$, et non de la MDFF à deux impulsions (Modèle A d'OAR 1999). L'approximation est la plus faible pour les couches K des éléments légers et les seuils de basse énergie — voir [ci-dessus](#local-approximation)
 - **Des lacunes, pas des photons X** : le rendement de fluorescence et le branchement des raies ne sont pas appliqués
 - **La borne inférieure de la tension d'accélération est 80 kV** : c'est la tension la plus basse à laquelle $s = 16\ \text{Å}^{-1}$ peut être garanti, non un seuil de refus
 

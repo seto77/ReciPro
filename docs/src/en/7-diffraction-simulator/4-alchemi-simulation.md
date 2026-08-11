@@ -50,6 +50,16 @@ Clearing **Include the dechannelled component** in the **Calculation** box drops
 
 The primary quantity is the **number of core-shell vacancies generated per incident electron**. **Conversion to X-ray photons (fluorescence yield and line branching), X-ray self-absorption in the specimen, and detector efficiency and solid angle are NOT applied.**
 
+⚠ **Vacancies are not counts.** A measured EDX intensity is separated from this quantity by three further stages — atomic, specimen and instrumental — none of which ReciPro performs.
+
+1. **vacancy → photon** : fluorescence yield and line branching of the shell
+2. **photon → photon that leaves the specimen** : X-ray self-absorption, which depends on the **depth at which the photon was created** and on the take-off angle
+3. **photon → count** : detector efficiency, solid angle, and the processing of the spectrum
+
+Stage 2 in particular cannot be recovered afterwards by multiplying the finished curve by one absorption factor — the yield would have to be resolved by depth first. Comparing these curves with measured intensities, k-factors or compositions therefore requires those stages to be carried out outside ReciPro.
+
+Note which of them survive a normalization. Stages 1 and 3, and any absorption treated as a constant, are **multiplicative and independent of the orientation**, so they drop out of the ICP (scan-mean) normalization — even for two lines of very different energy. **Self-absorption in general does not**: channelling changes the depth distribution at which the vacancies are created, so the absorbed fraction itself varies over the scan and survives the normalization. That residue is what choosing lines of similar energy helps with.
+
 ---
 
 ## Left pane: settings
@@ -63,6 +73,10 @@ The primary quantity is the **number of core-shell vacancies generated per incid
 | **Points** | Number of scan points (3–1001) | 101 |
 
 The line below shows the Bragg angle $\theta_B$ of the selected row, how many $\theta_B$ the scan width corresponds to, and the tilt step — so you can see how far the scan actually reaches before running it.
+
+⚠ **The default of ±8 mrad is a convenient starting value, not a literature optimum.** The review of Jones (2002) prescribes no numerical rocking-scan width in mrad, and the upper figures quoted in the table above are limits of the v1 numerics, not recommendations. Judge the span in units of $\theta_B$ instead (that is what the line under the table reports), and choose it so that the dynamical features you intend to compare fall inside the scan.
+
+⚠ The statement that the illumination may be opened up to **about the Bragg angle** — given by Jones for the optimized systematic-row condition — concerns the **convergence semi-angle of the incident cone**, that is, **Angular spread** in the **Calculation** box below. It is **not** a recommended rocking-scan half width. The two are different quantities and must not be conflated.
 
 ### Thickness
 
@@ -179,6 +193,18 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 "Can be computed" and "has been verified quantitatively" are different things. This section states the latter.
 
+### No blanket ±% accuracy — three things to keep apart
+
+ReciPro deliberately does **not** quote a general accuracy such as "site occupancies to ±N %". The review of Jones (2002) reports no universal occupancy error either, and published numbers of that shape belong to one system measured by one procedure — they are not a property of the method, still less of this simulator.
+
+When you judge a result, keep three different things apart.
+
+**Precision** : how reproducible the number is — counting statistics, the error bar a regression returns, the scatter between repeats. A small fit residual, or a correlation coefficient close to 1, does not by itself establish that the model is right. In the case discussed by Jones, adding a free constant to the fit improved its precision without demonstrating better accuracy.
+
+**Model bias** : the systematic error of the forward calculation itself — the missing site correlation of the dechannelled term, the local form-factor approximation, the absent thickness distribution and bending (all below). Missing physics of this kind does not shrink when you collect more counts or add more scan points. (Enlarging the basis is a different matter: that reduces the *numerical* truncation error, which the [basis diagnostic](#basis-diagnostic) reports separately.)
+
+**Independent checks** : agreement with something that does not share the same assumptions — and there are two levels of it. Comparison against an independently formulated **implementation** (code against code) tests the formulation and the coding; that is what has been done here, for one system. Comparison against **experiment**, which is what tests the physics against reality, has not been done.
+
 ### Quantitatively verified range
 
 **β-AlCo [001] at 250 keV, channels Al-K / Co-K / Co-L** — and nothing else. Compared against a multislice + frozen-phonon calculation (py_multislice) whose dynamical formulation is completely independent:
@@ -207,10 +233,22 @@ The dechannelled term of v1 is a constant independent of orientation, so its onl
 
 The **angular spread of the incident beam** (convergence semi-angle, drift) *is* modelled — see **Angular spread** in the Calculation box — but convolving with it does not make up for any of the items above.
 
+### Low-energy lines — where the local approximation is weakest {#local-approximation}
+
+The ionization matrix of v1 is a function of the single vector $G = \mathbf{g}_h - \mathbf{g}_g$ (the local form-factor approximation). ICSC states that this is reasonable for tightly bound inner shells whose characteristic emission lies **above about 3–4 keV** (Oxley & Allen 2003, p. 941).
+
+⚠ **That figure is an empirical, model-dependent guide, not a hard cutoff — and ReciPro does not use it to reject anything.** Lines below it are computed as usual, and they are often the ones of interest: Al-K is 1.49 keV and Co-L is 0.79 keV, and both are inside the β-AlCo set used for the code comparison above.
+
+What the figure marks is where the reduction to a **single** vector $G$ is expected to become insufficient. The ionization event does not happen on the nucleus: its probability peaks at a finite distance from the nucleus, and that distance grows as the required energy falls. Note what the approximation does and does not keep — $F_c(|G|/2)$ is momentum-dependent, so a finite interaction range **is** retained; what is dropped is the separate dependence on the two momentum transfers, i.e. the nonlocal structure of the full MDFF. As the delocalization grows, that dropped structure is what starts to matter.
+
+The energy of the line by itself cannot certify a result: the spatial extent of the shell, the orientation, the thickness, and the reciprocal vectors the basis actually requires all enter. Treat 3–4 keV as a flag for closer scrutiny rather than a pass mark. Where you have the choice, comparing lines of **similar energy** tends to make the delocalization bias of the two more comparable, and Jones (2002) recommends exactly that as the first practical step; the second step recommended there is to prefer a systematic row over a zone axis, which is the geometry v1 computes (a zone axis channels more strongly, but needs a larger delocalization correction).
+
+⚠ Low emission energies also suffer most strongly from **X-ray self-absorption** — though how strongly depends on the composition of the specimen and its absorption edges, the path length and the take-off angle, not on the emitted energy alone. That is a **separate** error source, not modelled at all (see [Output quantity](#output-quantity) above), and it affects the comparison with an experiment independently of anything the local approximation does.
+
 ### Model assumptions
 
 - **Tracer approximation only** : the linear superposition of site responses holds only in the dilute limit where the dopant does not perturb the elastic wave field. Finite-concentration VCA is out of scope for v1
-- **Local form-factor approximation** : $\mu$ is a function of $G = \mathbf{g}_h - \mathbf{g}_g$ alone, not the two-momentum MDFF (Model A of OAR 1999). The approximation breaks down for light-element K shells and low-energy edges
+- **Local form-factor approximation** : $\mu$ is a function of $G = \mathbf{g}_h - \mathbf{g}_g$ alone, not the two-momentum MDFF (Model A of OAR 1999). The approximation is weakest for light-element K shells and low-energy edges — see [above](#local-approximation)
 - **Vacancies, not X-ray photons** : the fluorescence yield and line branching are not applied
 - **The lower bound of the accelerating voltage is 80 kV** : this is the lowest voltage at which $s = 16\ \text{Å}^{-1}$ can be guaranteed, not a rejection threshold
 

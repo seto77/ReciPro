@@ -50,6 +50,16 @@ Das Abwählen von **Dechannelling-Anteil einbeziehen** im Feld **Berechnung** l�
 
 Die primäre Größe ist die **Anzahl der pro einfallendem Elektron erzeugten Innerschalen-Löcher**. **Die Umrechnung in Röntgenphotonen (Fluoreszenzausbeute und Linienverzweigung), die Röntgen-Selbstabsorption in der Probe sowie Detektoreffizienz und Raumwinkel sind NICHT berücksichtigt.**
 
+⚠ **Löcher sind keine Zählraten.** Zwischen dieser Größe und einer gemessenen EDX-Intensität liegen drei weitere Stufen — atomar, probenseitig und gerätebedingt —, von denen ReciPro keine ausführt.
+
+1. **Loch → Photon** : Fluoreszenzausbeute und Linienverzweigung der Schale
+2. **Photon → Photon, das die Probe verlässt** : Röntgen-Selbstabsorption; sie hängt von der **Tiefe, in der das Photon entstanden ist**, und vom Abnahmewinkel ab
+3. **Photon → Zählrate** : Detektoreffizienz, Raumwinkel und die Verarbeitung des Spektrums
+
+Insbesondere Stufe 2 lässt sich nicht nachträglich zurückgewinnen, indem man die fertige Kurve mit einem einzigen Absorptionsfaktor multipliziert — die Ausbeute müsste zuvor tiefenaufgelöst vorliegen. Ein Vergleich dieser Kurven mit gemessenen Intensitäten, k-Faktoren oder Zusammensetzungen erfordert daher, diese Stufen außerhalb von ReciPro auszuführen.
+
+Beachten Sie, welche davon eine Normierung überleben. Die Stufen 1 und 3 sowie jede als Konstante behandelte Absorption sind **multiplikativ und orientierungsunabhängig** und fallen deshalb in der ICP-Normierung (Scan-Mittel) heraus — selbst für zwei Linien sehr unterschiedlicher Energie. **Die Selbstabsorption im Allgemeinen nicht**: Die Kanalisierung verändert die Tiefenverteilung, in der die Löcher entstehen, sodass der absorbierte Anteil selbst über den Scan variiert und die Normierung übersteht. Genau gegen diesen Rest hilft die Wahl von Linien ähnlicher Energie.
+
 ---
 
 ## Linker Bereich: Einstellungen
@@ -63,6 +73,10 @@ Die primäre Größe ist die **Anzahl der pro einfallendem Elektron erzeugten In
 | **Punkte** | Anzahl der Scanpunkte (3–1001) | 101 |
 
 Die Zeile darunter zeigt den Bragg-Winkel $\theta_B$ der gewählten Reihe, wie vielen $\theta_B$ die Scanbreite entspricht, und die Kippschrittweite — so sehen Sie schon vor dem Start, wie weit der Scan tatsächlich reicht.
+
+⚠ **Der Vorgabewert ±8 mrad ist ein bequemer Startwert, kein Literaturoptimum.** Die Übersichtsarbeit von Jones (2002) gibt keine zahlenmäßige Rocking-Scan-Breite in mrad vor, und die in der Tabelle oben genannten Obergrenzen sind Grenzen der v1-Numerik, keine Empfehlungen. Beurteilen Sie die Spanne stattdessen in Einheiten von $\theta_B$ (das gibt die Zeile unter der Tabelle an) und wählen Sie sie so, dass die dynamischen Merkmale, die Sie vergleichen wollen, innerhalb des Scans liegen.
+
+⚠ Die Aussage, die Beleuchtung dürfe bis etwa **auf den Bragg-Winkel** geöffnet werden — von Jones für die optimierte Bedingung der systematischen Reihe angegeben —, betrifft den **Konvergenzhalbwinkel des einfallenden Kegels**, also **Winkelverbreiterung** im Kasten **Berechnung** weiter unten. Sie ist **keine** empfohlene halbe Rocking-Scan-Breite. Beides sind verschiedene Größen und dürfen nicht verwechselt werden.
 
 ### Dicke
 
@@ -179,6 +193,18 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 „Berechenbar" und „quantitativ verifiziert" sind zweierlei. Dieser Abschnitt benennt Letzteres.
 
+### Keine pauschale ±%-Genauigkeit — drei zu trennende Dinge
+
+ReciPro nennt **bewusst** keine allgemeine Genauigkeit wie „Platzbesetzungen auf ±N %". Auch die Übersichtsarbeit von Jones (2002) berichtet keinen universellen Besetzungsfehler, und veröffentlichte Zahlen dieser Art gehören zu einem System, gemessen mit einem Verfahren — sie sind keine Eigenschaft der Methode und erst recht nicht dieses Simulators.
+
+Halten Sie bei der Bewertung eines Ergebnisses drei verschiedene Dinge auseinander.
+
+**Präzision** : wie reproduzierbar die Zahl ist — Zählstatistik, die von einer Regression zurückgegebene Fehlerschranke, die Streuung zwischen Wiederholungen. Ein kleines Anpassungsresiduum oder ein Korrelationskoeffizient nahe 1 belegt für sich genommen nicht, dass das Modell richtig ist. In dem von Jones diskutierten Fall verbesserte eine zusätzliche freie Konstante die Präzision der Anpassung, ohne eine bessere Richtigkeit zu belegen.
+
+**Modellverzerrung** : der systematische Fehler der Vorwärtsrechnung selbst — die fehlende Platzkorrelation des Dechannelling-Terms, die lokale Formfaktor-Näherung, die nicht enthaltene Dickenverteilung und Verbiegung (alle weiter unten). Fehlende Physik dieser Art verschwindet nicht, wenn Sie mehr Zählereignisse sammeln oder mehr Scanpunkte verwenden. (Ein größeres Basissystem ist etwas anderes: Es verringert den **numerischen** Abbruchfehler, den die [Basisdiagnose](#basisdiagnose) getrennt ausweist.)
+
+**Unabhängige Prüfungen** : Übereinstimmung mit etwas, das dieselben Annahmen nicht teilt — und davon gibt es zwei Stufen. Der Vergleich mit einer unabhängig formulierten **Implementierung** (Code gegen Code) prüft Formulierung und Programmierung; das ist es, was hier für ein System getan wurde. Der Vergleich mit dem **Experiment**, der die Physik an der Wirklichkeit prüft, steht aus.
+
 ### Quantitativ verifizierter Bereich
 
 **β-AlCo [001] bei 250 keV, Kanäle Al-K / Co-K / Co-L** — und sonst nichts. Verglichen mit einer Multislice-Rechnung mit eingefrorenen Phononen (py_multislice), deren dynamische Formulierung vollständig unabhängig ist:
@@ -207,10 +233,22 @@ Der Dechannelling-Term von v1 ist eine von der Orientierung unabhängige Konstan
 
 Die **Winkelverbreiterung des einfallenden Strahls** (Konvergenzhalbwinkel, Drift) *wird* modelliert — siehe **Winkelverbreiterung** im Feld Berechnung — doch die Faltung damit ersetzt keinen der obigen Punkte.
 
+### Niederenergetische Linien — wo die lokale Näherung am schwächsten ist {#local-approximation}
+
+Die Ionisationsmatrix von v1 ist eine Funktion des einzelnen Vektors $G = \mathbf{g}_h - \mathbf{g}_g$ (lokale Formfaktor-Näherung). ICSC gibt an, dass dies für fest gebundene innere Schalen sinnvoll ist, deren charakteristische Emission **oberhalb von etwa 3–4 keV** liegt (Oxley & Allen 2003, S. 941).
+
+⚠ **Dieser Wert ist ein empirischer, modellabhängiger Anhaltspunkt, kein harter Grenzwert — und ReciPro lehnt damit nichts ab.** Linien darunter werden ganz normal gerechnet, und oft sind gerade sie von Interesse: Al-K liegt bei 1,49 keV und Co-L bei 0,79 keV, und beide gehören zum β-AlCo-Satz, der für den Codevergleich weiter oben verwendet wurde.
+
+Was der Wert markiert, ist die Stelle, an der die Reduktion auf einen **einzigen** Vektor $G$ unzureichend zu werden beginnt. Das Ionisationsereignis findet nicht am Kern statt: Seine Wahrscheinlichkeit ist in einem endlichen Abstand vom Kern maximal, und dieser Abstand wächst, je kleiner die benötigte Energie ist. Beachten Sie, was die Näherung behält und was nicht — $F_c(|G|/2)$ ist impulsabhängig, eine endliche Wechselwirkungsreichweite bleibt also **erhalten**; fallen gelassen wird die getrennte Abhängigkeit von den beiden Impulsüberträgen, d. h. die nichtlokale Struktur der vollständigen MDFF. Mit wachsender Delokalisierung beginnt genau diese weggelassene Struktur ins Gewicht zu fallen.
+
+Die Energie der Linie allein kann ein Ergebnis nicht absichern: Die räumliche Ausdehnung der Schale, die Orientierung, die Dicke und die vom Basissystem tatsächlich benötigten reziproken Vektoren gehen alle ein. Behandeln Sie 3–4 keV als Hinweis auf genaueres Hinsehen, nicht als Bestehensmarke. Wo Sie die Wahl haben, macht der Vergleich von Linien **ähnlicher Energie** die Delokalisierungsverzerrung beider eher vergleichbar; Jones (2002) empfiehlt genau das als ersten praktischen Schritt und als zweiten, eine systematische Reihe einer Zonenachse vorzuziehen — die systematische Reihe ist die Geometrie, die v1 rechnet (eine Zonenachse kanalisiert stärker, benötigt aber eine größere Delokalisierungskorrektur).
+
+⚠ Niedrige Emissionsenergien leiden zudem am stärksten unter der **Röntgen-Selbstabsorption** — wie stark, hängt allerdings von der Zusammensetzung der Probe und ihren Absorptionskanten, der Weglänge und dem Abnahmewinkel ab, nicht allein von der Emissionsenergie. Das ist eine **eigenständige** Fehlerquelle, die überhaupt nicht modelliert ist (siehe [Ausgabegröße](#ausgabegröße) oben), und sie verfälscht den Vergleich mit einem Experiment unabhängig von allem, was die lokale Näherung tut.
+
 ### Modellannahmen
 
 - **Nur Tracer-Näherung** : Die lineare Überlagerung von Platzantworten gilt nur im verdünnten Grenzfall, in dem das Dotierungsatom das elastische Wellenfeld nicht stört. VCA bei endlicher Konzentration liegt außerhalb des Umfangs von v1
-- **Lokale Formfaktor-Näherung** : $\mu$ ist allein eine Funktion von $G = \mathbf{g}_h - \mathbf{g}_g$, nicht die Zwei-Impuls-MDFF (Modell A von OAR 1999). Die Näherung versagt bei K-Schalen leichter Elemente und bei niederenergetischen Kanten
+- **Lokale Formfaktor-Näherung** : $\mu$ ist allein eine Funktion von $G = \mathbf{g}_h - \mathbf{g}_g$, nicht die Zwei-Impuls-MDFF (Modell A von OAR 1999). Die Näherung ist bei K-Schalen leichter Elemente und niederenergetischen Kanten am schwächsten — siehe [oben](#local-approximation)
 - **Löcher, keine Röntgenphotonen** : Fluoreszenzausbeute und Linienverzweigung werden nicht angewendet
 - **Die untere Grenze der Beschleunigungsspannung liegt bei 80 kV** : Das ist die niedrigste Spannung, bei der $s = 16\ \text{Å}^{-1}$ garantiert werden kann, keine Ablehnungsschwelle
 

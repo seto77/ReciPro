@@ -50,6 +50,16 @@ Deselezionare **Includi la componente decanalizzata** nel riquadro **Calcolo** e
 
 La grandezza primaria è il **numero di lacune di guscio interno generate per elettrone incidente**. **La conversione in fotoni X (resa di fluorescenza e ramificazione delle righe), l'autoassorbimento dei raggi X nel campione e l'efficienza e l'angolo solido del rivelatore NON sono applicati.**
 
+⚠ **Le lacune non sono conteggi.** Tra questa grandezza e un'intensità EDX misurata restano altri tre stadi — atomico, del campione e strumentale —, nessuno dei quali è eseguito da ReciPro.
+
+1. **lacuna → fotone** : resa di fluorescenza e ramificazione delle righe del guscio
+2. **fotone → fotone che esce dal campione** : autoassorbimento dei raggi X, che dipende dalla **profondità a cui il fotone è stato creato** e dall'angolo di uscita
+3. **fotone → conteggio** : efficienza del rivelatore, angolo solido ed elaborazione dello spettro
+
+In particolare lo stadio 2 non si recupera a posteriori moltiplicando la curva finita per un unico fattore di assorbimento: occorrerebbe prima risolvere la resa in profondità. Confrontare queste curve con intensità misurate, fattori k o composizioni richiede quindi di eseguire quegli stadi fuori da ReciPro.
+
+Si noti quali di essi sopravvivono a una normalizzazione. Gli stadi 1 e 3, e qualunque assorbimento trattato come costante, sono **moltiplicativi e indipendenti dall'orientazione**, quindi cadono nella normalizzazione ICP (media della scansione), anche per due righe di energia molto diversa. **L'autoassorbimento in generale no**: la canalizzazione cambia la distribuzione in profondità in cui le lacune vengono create, così la frazione assorbita varia lungo la scansione e sopravvive alla normalizzazione. È contro questo residuo che aiuta scegliere righe di energia simile.
+
 ---
 
 ## Riquadro sinistro: impostazioni
@@ -63,6 +73,10 @@ La grandezza primaria è il **numero di lacune di guscio interno generate per el
 | **Punti** | Numero di punti della scansione (3–1001) | 101 |
 
 La riga sottostante mostra l'angolo di Bragg $\theta_B$ della fila scelta, a quanti $\theta_B$ corrisponde l'ampiezza della scansione e il passo di inclinazione, così si vede quanto arriva davvero la scansione prima di eseguirla.
+
+⚠ **Il valore predefinito di ±8 mrad è un comodo punto di partenza, non un ottimo di letteratura.** La rassegna di Jones (2002) non prescrive alcuna ampiezza numerica di scansione in mrad, e i limiti superiori citati nella tabella qui sopra sono limiti della numerica della v1, non raccomandazioni. Valutate l'ampiezza in unità di $\theta_B$ (è quanto riporta la riga sotto la tabella) e sceglietela in modo che le caratteristiche dinamiche che intendete confrontare cadano dentro la scansione.
+
+⚠ L'affermazione che l'illuminazione possa essere aperta fino a **circa l'angolo di Bragg** — data da Jones per la condizione ottimizzata a fila sistematica — riguarda il **semiangolo di convergenza del cono incidente**, cioè **Allargamento angolare** nel riquadro **Calcolo** più sotto. **Non** è una semiampiezza di scansione raccomandata. Sono due grandezze diverse e non vanno confuse.
 
 ### Spessore
 
@@ -179,6 +193,18 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 «Calcolabile» e «verificato quantitativamente» sono due cose diverse. Questa sezione riguarda la seconda.
 
+### Nessuna accuratezza ±% generale — tre cose da tenere distinte
+
+ReciPro **non** dichiara deliberatamente un'accuratezza generale del tipo «occupazioni di sito a ±N %». Nemmeno la rassegna di Jones (2002) riporta un errore di occupazione universale, e i numeri pubblicati di quella forma appartengono a un sistema misurato con una procedura: non sono una proprietà del metodo, tanto meno di questo simulatore.
+
+Nel giudicare un risultato, tenete distinte tre cose diverse.
+
+**Precisione** : quanto è riproducibile il numero — statistica di conteggio, la barra d'errore restituita da una regressione, la dispersione tra ripetizioni. Un residuo di fit piccolo, o un coefficiente di correlazione vicino a 1, non stabilisce di per sé che il modello sia giusto. Nel caso discusso da Jones, aggiungere una costante libera al fit ne ha migliorato la precisione senza dimostrare una migliore accuratezza.
+
+**Distorsione del modello** : l'errore sistematico del calcolo diretto stesso — la mancata correlazione di sito del termine decanalizzato, l'approssimazione del fattore di forma locale, l'assenza di distribuzione di spessore e di curvatura (tutto più sotto). La fisica mancante di questo tipo non si riduce raccogliendo più conteggi o aggiungendo punti di scansione. (Allargare la base è un'altra cosa: riduce l'errore **numerico** di troncamento, che la [diagnostica della base](#diagnostica-della-base) riporta separatamente.)
+
+**Verifiche indipendenti** : l'accordo con qualcosa che non condivide le stesse ipotesi — e ce ne sono due livelli. Il confronto con un'**implementazione** formulata in modo indipendente (codice contro codice) mette alla prova la formulazione e la programmazione; è ciò che è stato fatto qui, per un sistema. Il confronto con l'**esperimento**, che è quello che mette la fisica alla prova della realtà, non è stato fatto.
+
 ### Ambito verificato quantitativamente
 
 **β-AlCo [001] a 250 keV, canali Al-K / Co-K / Co-L**, e nient'altro. Confronto con un calcolo multislice + fononi congelati (py_multislice), la cui formulazione dinamica è completamente indipendente:
@@ -207,10 +233,22 @@ Il termine decanalizzato della v1 è una costante indipendente dall'orientazione
 
 L'**allargamento angolare del fascio incidente** (semiangolo di convergenza, deriva) *è* modellato — vedere **Allargamento angolare** nel riquadro Calcolo — ma convolvere con esso non sostituisce nessuno dei punti precedenti.
 
+### Righe di bassa energia — dove l'approssimazione locale è più debole {#local-approximation}
+
+La matrice di ionizzazione della v1 è funzione del solo vettore $G = \mathbf{g}_h - \mathbf{g}_g$ (approssimazione del fattore di forma locale). ICSC afferma che ciò è ragionevole per gusci interni fortemente legati la cui emissione caratteristica sta **sopra circa 3–4 keV** (Oxley & Allen 2003, p. 941).
+
+⚠ **Quel valore è una guida empirica e dipendente dal modello, non una soglia netta — e ReciPro non lo usa per rifiutare nulla.** Le righe al di sotto vengono calcolate normalmente, e spesso sono proprio quelle di interesse: Al-K è a 1,49 keV e Co-L a 0,79 keV, ed entrambe appartengono all'insieme β-AlCo usato per il confronto tra codici più sopra.
+
+Ciò che quel valore segnala è il punto in cui la riduzione a un **unico** vettore $G$ comincia a diventare insufficiente. L'evento di ionizzazione non avviene sul nucleo: la sua probabilità è massima a distanza finita dal nucleo, e tale distanza cresce al diminuire dell'energia richiesta. Si noti che cosa l'approssimazione mantiene e che cosa scarta: $F_c(|G|/2)$ dipende dall'impulso, quindi un raggio d'interazione finito **è** mantenuto; ciò che viene scartato è la dipendenza separata dai due trasferimenti di impulso, cioè la struttura non locale della MDFF completa. Al crescere della delocalizzazione, è proprio quella struttura scartata a iniziare a contare.
+
+L'energia della riga da sola non può certificare un risultato: entrano l'estensione spaziale del guscio, l'orientazione, lo spessore e i vettori reciproci effettivamente richiesti dalla base. Trattate 3–4 keV come un invito a guardare più da vicino, non come un esito di prova. Dove potete scegliere, confrontare righe di **energia simile** tende a rendere più confrontabile la distorsione da delocalizzazione delle due; Jones (2002) raccomanda esattamente questo come primo passo pratico e, come secondo, di preferire una fila sistematica a un asse di zona — la geometria che la v1 calcola (un asse di zona canalizza più fortemente, ma richiede una correzione di delocalizzazione maggiore).
+
+⚠ Le basse energie di emissione risentono anche di più dell'**autoassorbimento dei raggi X**, benché quanto dipenda dalla composizione del campione e dalle sue soglie di assorbimento, dal cammino e dall'angolo di uscita, non dalla sola energia emessa. È una sorgente d'errore **distinta**, per nulla modellata (vedere [Grandezza in uscita](#grandezza-in-uscita) sopra), e falsa il confronto con un esperimento indipendentemente da quanto fa l'approssimazione locale.
+
 ### Ipotesi del modello
 
 - **Solo approssimazione a tracciante** : la sovrapposizione lineare delle risposte di sito vale solo nel limite diluito in cui il drogante non perturba il campo d'onda elastico. La VCA a concentrazione finita è fuori dall'ambito della v1
-- **Approssimazione del fattore di forma locale** : $\mu$ è funzione del solo $G = \mathbf{g}_h - \mathbf{g}_g$, non della MDFF a due impulsi (Modello A di OAR 1999). L'approssimazione si degrada per i gusci K degli elementi leggeri e per le soglie di bassa energia
+- **Approssimazione del fattore di forma locale** : $\mu$ è funzione del solo $G = \mathbf{g}_h - \mathbf{g}_g$, non della MDFF a due impulsi (Modello A di OAR 1999). L'approssimazione è più debole per i gusci K degli elementi leggeri e per le soglie di bassa energia — vedere [sopra](#local-approximation)
 - **Lacune, non fotoni X** : la resa di fluorescenza e la ramificazione delle righe non sono applicate
 - **Il limite inferiore della tensione di accelerazione è 80 kV** : è la tensione più bassa alla quale si può garantire $s = 16\ \text{Å}^{-1}$, non una soglia di rifiuto
 

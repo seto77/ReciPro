@@ -50,6 +50,16 @@ Desmarcar **Incluir a componente descanalizada** na caixa **Cálculo** elimina e
 
 A grandeza primária é o **número de lacunas de camada interna geradas por elétron incidente**. **A conversão em fótons de raios X (rendimento de fluorescência e ramificação de linhas), a autoabsorção de raios X na amostra e a eficiência e o ângulo sólido do detector NÃO são aplicados.**
 
+⚠ **Lacunas não são contagens.** Entre esta grandeza e uma intensidade EDX medida há mais três etapas — atômica, da amostra e instrumental —, nenhuma delas executada pelo ReciPro.
+
+1. **lacuna → fóton** : rendimento de fluorescência e ramificação de linhas da camada
+2. **fóton → fóton que sai da amostra** : autoabsorção de raios X, que depende da **profundidade em que o fóton foi criado** e do ângulo de saída
+3. **fóton → contagem** : eficiência do detector, ângulo sólido e o processamento do espectro
+
+A etapa 2, em particular, não se recupera depois multiplicando a curva pronta por um único fator de absorção: seria preciso resolver antes o rendimento em profundidade. Comparar estas curvas com intensidades medidas, fatores k ou composições exige, portanto, executar essas etapas fora do ReciPro.
+
+Repare em quais delas sobrevivem a uma normalização. As etapas 1 e 3, e qualquer absorção tratada como constante, são **multiplicativas e independentes da orientação**, de modo que somem na normalização ICP (média da varredura) — mesmo para duas linhas de energias muito diferentes. **A autoabsorção, em geral, não**: a canalização muda a distribuição em profundidade em que as lacunas são criadas, de modo que a fração absorvida varia ao longo da varredura e sobrevive à normalização. É contra esse resíduo que escolher linhas de energia parecida ajuda.
+
 ---
 
 ## Painel esquerdo: definições
@@ -63,6 +73,10 @@ A grandeza primária é o **número de lacunas de camada interna geradas por el�
 | **Pontos** | Número de pontos da varredura (3–1001) | 101 |
 
 A linha abaixo mostra o ângulo de Bragg $\theta_B$ da fila escolhida, a quantos $\theta_B$ corresponde a largura da varredura e o passo de inclinação — assim se vê até onde a varredura realmente chega antes de executá-la.
+
+⚠ **O padrão de ±8 mrad é um valor inicial conveniente, não um ótimo da literatura.** A revisão de Jones (2002) não prescreve nenhuma largura numérica de varredura em mrad, e os limites superiores citados na tabela acima são limites do cálculo numérico da v1, não recomendações. Julgue a amplitude em unidades de $\theta_B$ (é o que a linha sob a tabela informa) e escolha-a de modo que as feições dinâmicas que pretende comparar fiquem dentro da varredura.
+
+⚠ A afirmação de que a iluminação pode ser aberta até **cerca do ângulo de Bragg** — dada por Jones para a condição otimizada de fila sistemática — diz respeito ao **semiângulo de convergência do cone incidente**, ou seja, a **Espalhamento angular** na caixa **Cálculo** abaixo. **Não** é uma semilargura de varredura recomendada. São grandezas diferentes e não devem ser confundidas.
 
 ### Espessura
 
@@ -179,6 +193,18 @@ tilt_mrad,thickness_nm,site,channel,dynamic,dechannelled,total,dynamic_conv,dech
 
 «Pode ser calculado» e «foi verificado quantitativamente» são coisas diferentes. Esta seção trata do segundo.
 
+### Sem exatidão ±% geral — três coisas a separar
+
+O ReciPro **não** apresenta deliberadamente uma exatidão geral do tipo «ocupações de sítio a ±N %». A revisão de Jones (2002) também não relata um erro de ocupação universal, e os números publicados nesse formato pertencem a um sistema medido por um procedimento: não são uma propriedade do método e menos ainda deste simulador.
+
+Ao julgar um resultado, mantenha três coisas distintas separadas.
+
+**Precisão** : o quanto o número é reprodutível — estatística de contagem, a barra de erro devolvida por uma regressão, a dispersão entre repetições. Um resíduo de ajuste pequeno, ou um coeficiente de correlação próximo de 1, não estabelece por si só que o modelo esteja certo. No caso discutido por Jones, acrescentar uma constante livre ao ajuste melhorou sua precisão sem demonstrar melhor exatidão.
+
+**Viés do modelo** : o erro sistemático do próprio cálculo direto — a falta de correlação de sítio do termo descanalizado, a aproximação de fator de forma local, a ausência de distribuição de espessura e de curvatura (tudo abaixo). Física ausente desse tipo não diminui ao acumular mais contagens nem ao acrescentar pontos de varredura. (Ampliar a base é outra coisa: isso reduz o erro **numérico** de truncamento, que o [diagnóstico da base](#diagnóstico-da-base) informa separadamente.)
+
+**Verificações independentes** : concordância com algo que não compartilha as mesmas premissas — e há dois níveis. A comparação com uma **implementação** formulada de modo independente (código contra código) testa a formulação e a programação; foi o que se fez aqui, para um sistema. A comparação com o **experimento**, que é a que confronta a física com a realidade, não foi feita.
+
 ### Faixa verificada quantitativamente
 
 **β-AlCo [001] a 250 keV, canais Al-K / Co-K / Co-L** — e nada mais. Comparado com um cálculo multislice + fônons congelados (py_multislice), cuja formulação dinâmica é completamente independente:
@@ -207,10 +233,22 @@ O termo descanalizado da v1 é uma constante independente da orientação, de mo
 
 O **espalhamento angular do feixe incidente** (semiângulo de convergência, deriva) *é* modelado — veja **Espalhamento angular** na caixa Cálculo — mas convoluir com ele não substitui nenhum dos pontos acima.
 
+### Linhas de baixa energia — onde a aproximação local é mais fraca {#local-approximation}
+
+A matriz de ionização da v1 é função de um único vetor $G = \mathbf{g}_h - \mathbf{g}_g$ (a aproximação de fator de forma local). O ICSC afirma que isso é razoável para camadas internas fortemente ligadas cuja emissão característica está **acima de cerca de 3–4 keV** (Oxley & Allen 2003, p. 941).
+
+⚠ **Esse valor é um guia empírico e dependente do modelo, não um corte rígido — e o ReciPro não o usa para rejeitar nada.** Linhas abaixo dele são calculadas normalmente e muitas vezes são justamente as de interesse: Al-K está em 1,49 keV e Co-L em 0,79 keV, e ambas pertencem ao conjunto β-AlCo usado na comparação entre códigos acima.
+
+O que esse valor assinala é onde a redução a um **único** vetor $G$ começa a se tornar insuficiente. O evento de ionização não ocorre sobre o núcleo: sua probabilidade é máxima a uma distância finita do núcleo, e essa distância cresce à medida que a energia necessária diminui. Note o que a aproximação mantém e o que descarta: $F_c(|G|/2)$ depende do momento, portanto um alcance de interação finito **é** mantido; o que se perde é a dependência separada das duas transferências de momento, isto é, a estrutura não local da MDFF completa. Conforme a deslocalização cresce, é essa estrutura descartada que passa a importar.
+
+A energia da linha, por si só, não certifica um resultado: entram a extensão espacial da camada, a orientação, a espessura e os vetores recíprocos que a base realmente exige. Trate 3–4 keV como um sinal para olhar com mais cuidado, não como uma marca de aprovação. Quando houver escolha, comparar linhas de **energia semelhante** tende a tornar mais comparável o viés de deslocalização das duas; Jones (2002) recomenda exatamente isso como primeiro passo prático e, como segundo, preferir uma fila sistemática a um eixo de zona — que é a geometria calculada pela v1 (um eixo de zona canaliza mais fortemente, mas exige uma correção de deslocalização maior).
+
+⚠ Energias de emissão baixas também sofrem mais fortemente com a **autoabsorção de raios X** — embora o quanto dependa da composição da amostra e de suas bordas de absorção, do caminho percorrido e do ângulo de saída, não apenas da energia emitida. É uma fonte de erro **separada**, não modelada de forma alguma (veja [Grandeza de saída](#grandeza-de-saída) acima), e afeta a comparação com um experimento independentemente do que faça a aproximação local.
+
 ### Premissas do modelo
 
 - **Somente aproximação de traçador** : a superposição linear das respostas de sítio só vale no limite diluído em que o dopante não perturba o campo de onda elástico. A VCA a concentração finita está fora do escopo da v1
-- **Aproximação de fator de forma local** : $\mu$ é função apenas de $G = \mathbf{g}_h - \mathbf{g}_g$, e não da MDFF de dois momentos (Modelo A de OAR 1999). A aproximação falha para camadas K de elementos leves e bordas de baixa energia
+- **Aproximação de fator de forma local** : $\mu$ é função apenas de $G = \mathbf{g}_h - \mathbf{g}_g$, e não da MDFF de dois momentos (Modelo A de OAR 1999). A aproximação é mais fraca para camadas K de elementos leves e bordas de baixa energia — veja [acima](#local-approximation)
 - **Lacunas, não fótons de raios X** : o rendimento de fluorescência e a ramificação de linhas não são aplicados
 - **O limite inferior da tensão de aceleração é 80 kV** : é a menor tensão em que $s = 16\ \text{Å}^{-1}$ pode ser garantido, não um limiar de recusa
 
