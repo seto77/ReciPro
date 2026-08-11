@@ -697,6 +697,12 @@ public partial class FormALCHEMI : FormBase
         Key("fit_eligibility", $"{b.Eligibility} (v1 does not certify quantitative occupancy fits; "
             + $"raw diagnostic AcceptedForFit={b.AcceptedForFit} at tolerance 3e-3)");
         Key("dechannelled_component", result.Dechannelled.Any(v => v != 0) ? "included" : "excluded");
+        //260811Cl 追加: 何を「まだ試料内にいる電子」として再注入したのかを書き残す。
+        //TDS 以外が混じった状態では非チャネリング項は計算されない (AlchemiReduction.Yield が落ちる) ので、
+        //この行は「再注入した流束の出所」を一意に示す
+        Key("absorption_source", $"{result.AbsorptionSources} "
+            + "(only thermal diffuse scattering may be re-injected as the dechannelled component; "
+            + "no mean absorption, true inelastic loss or empirical damping is mixed into the imaginary potential)");
         Key("occupancy_coupling", "Tracer (dilute limit; site responses may be combined linearly). VCA is not implemented");
         //260809Cl 変更: 「実験と照合済み」と読まれないよう、照合相手と厚み範囲を明示する (指示書 §1-10②)
         Key("verification", "Experimental. Cross-checked ONLY against an independent multislice + frozen-phonon implementation "
