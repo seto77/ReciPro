@@ -130,6 +130,7 @@ Euler angles are not unique at gimbal positions (θ = 0 or 180°): `GetEuler()` 
 | `Thickness` | double | Specimen thickness (nm) |
 | `NumberOfDiffractedWaves` | int | Number of Bloch waves |
 | `CameraLength2` | double | Camera length (mm) |
+| `ExcitationError` | double | Spot radius (nm⁻¹): in kinematical/excitation mode, `SpotInfo()` exports reflections with \|Sg\| within this value |
 | `SkipRendering` | bool | Skip rendering for batch processing |
 
 ### Beam mode

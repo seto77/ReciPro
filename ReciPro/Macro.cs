@@ -1135,6 +1135,10 @@ public class Macro : MacroBase
         [Help("Gets or sets whether the final screen rendering step is skipped. Spot positions are still calculated.")]
         public bool SkipRendering { get => difSim.SkipRendering; set => difSim.SkipRendering = value; }
 
+        // 260813Cl 追加: SpotInfo() の出力範囲 (|Sg| < ExcitationError) がGUI状態にしか無く、マクロから制御できなかった (清華大 Xinyue 氏指摘)
+        [Help("Gets or sets the spot radius (excitation-error tolerance) in nm^-1. In kinematical/excitation mode, SpotInfo() exports reflections whose |Sg| is within this value.")]
+        public double ExcitationError { get => difSim.ExcitationError; set => difSim.ExcitationError = value; }
+
         [Help("Saves the current simulation image as a PNG file. If 'filename' is omitted, opens a save dialog.", "string filename")]
         public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
 

@@ -125,7 +125,8 @@ public partial class FormDiffractionSimulator : FormBase
     #endregion
 
     #region 試料のプロパティ
-    public double ExcitationError => numericBoxSpotRadius.Value;
+    //public double ExcitationError => numericBoxSpotRadius.Value; // 260813Cl 旧: getterのみで、マクロから Spot radius を設定できなかった (清華大 Xinyue 氏指摘: SpotInfo() の cutoff が GUI 状態依存)
+    public double ExcitationError { get => numericBoxSpotRadius.Value; set => numericBoxSpotRadius.Value = value; } // 260813Cl
 
     public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
     #endregion

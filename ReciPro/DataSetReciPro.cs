@@ -264,7 +264,8 @@ namespace ReciPro
 
             public static (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
                 ConvertPrmsToOriginalValues(double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)
-                => (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r);
+                //=> (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r); // 260813Cl 旧: R の逆変換が無く setRow の R=r*100 と非対称。CSV 読み戻し→再保存や GetPrms→SetPrms 往復で R(%) が 100 倍化 (清華大 Xinyue 氏の round-trip 報告で発覚)
+                => (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r / 100); // 260813Cl
 
 
             /// <summary>d値の値を再計算する</summary>

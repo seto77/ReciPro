@@ -145,6 +145,7 @@ for k in range(-2, 3):
 | `DifSim.Thickness` | double | 試料厚さ (nm) |
 | `DifSim.NumberOfDiffractedWaves` | int | ブロッホ波の数 |
 | `DifSim.CameraLength2` | double | カメラ長 (mm) |
+| `DifSim.ExcitationError` | double | スポット半径 (nm⁻¹)。運動学/励起誤差モードの `SpotInfo()` は \|Sg\| がこの値以内の反射を出力する |
 | `DifSim.SkipRendering` | bool | 描画のスキップ（バッチ処理で高速化） |
 
 ### 入射ビームモード
