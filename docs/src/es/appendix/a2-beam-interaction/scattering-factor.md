@@ -62,7 +62,7 @@ Un electrón rápido tiene carga, por lo que es dispersado por el **potencial el
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-El prefactor $C_\text{MB}$ se construye a partir de constantes fundamentales y depende del sistema de unidades y de si se usa $s$ o $Q$. ReciPro no evalúa esta relación directamente — usa las formas ajustadas de Peng / Kirkland / 8 gaussianas que se indican abajo — por lo que se da aquí para la comprensión física más que para el cálculo. Escrita con las constantes (para $s$ y $f_e$ en Å),
+El prefactor $C_\text{MB}$ se construye a partir de constantes fundamentales y depende del sistema de unidades y de si se usa $s$ o $Q$. Para la dispersión elástica (factores de estructura, intensidades difractadas) ReciPro no evalúa esta relación directamente — usa las formas ajustadas de Peng / Kirkland / 8 gaussianas que se indican abajo. Sin embargo, en el **potencial de absorción (TDS), ReciPro sí evalúa esta relación directamente con el factor de rayos X de Waasmaier–Kirfel a $s$ alto ($s \gtrsim 2.5$ Å⁻¹), donde las formas ajustadas fallan** (véase el [potencial de absorción en el Apéndice A3](../a3-bloch-wave/calculation.md)). Escrita con las constantes (para $s$ y $f_e$ en Å),
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 
@@ -80,7 +80,7 @@ ReciPro ofrece tres parametrizaciones de $f_e(s)$:
 - **Kirkland** : un ajuste mixto lorentziano + gaussiano, $f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$. **Su variable independiente es $q = 2s = 1/d$, no $s$** — una fuente frecuente de errores por un factor de dos al comparar modelos ($q$ en Å⁻¹, con los coeficientes ajustados $a_i,b_i,c_i,d_i$ en las unidades correspondientes).
 - **8-Gaussians** : un ajuste de ocho términos válido sobre un rango más amplio de $s$.
 
-**Elegir uno.** Las tres ajustan el mismo $f_e(s)$ subyacente y coinciden estrechamente a $s$ bajo; difieren principalmente en el rango y en cómo se representa el núcleo atómico. **Peng** (átomos neutros e iones comunes, exacto hasta $s\approx2\text{–}6$ Å⁻¹) es el valor predeterminado habitual para los factores de estructura de SAED/CBED; **Kirkland** se extiende a $s$ más altos con un término lorentziano de núcleo, adecuado para HRTEM/STEM (recuerda $q=2s$); **8-Gaussians** es para reflexiones que alcanzan valores muy altos de $s$. Para un elemento ligero las tres son casi indistinguibles; las diferencias aparecen para elementos pesados a ángulo grande.
+**Elegir uno.** Las tres ajustan el mismo $f_e(s)$ subyacente y coinciden estrechamente a $s$ bajo; difieren principalmente en el rango y en cómo se representa el núcleo atómico. **Peng** (átomos neutros e iones comunes; las tablas están ajustadas hasta $s \le 6$ Å⁻¹, pero como las colas gaussianas caen más rápido que la curva real, el ajuste solo es efectivamente exacto hasta $s \lesssim 2$ Å⁻¹) es el valor predeterminado habitual para los factores de estructura de SAED/CBED; **Kirkland** se extiende a $s$ más altos con un término lorentziano de núcleo, adecuado para HRTEM/STEM (recuerda $q=2s$); **8-Gaussians** es para reflexiones que alcanzan valores muy altos de $s$. Para un elemento ligero las tres son casi indistinguibles; las diferencias aparecen para elementos pesados a ángulo grande.
 
 ---
 

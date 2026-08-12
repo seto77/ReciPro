@@ -59,11 +59,19 @@ Il potenziale immaginario (di assorbimento) che tiene conto della diffusione ter
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-con il **fattore di diffusione di assorbimento**
+con il **fattore di diffusione di assorbimento** — un integrale che convolve il fattore di diffusione elastico $f_e$ sulla sfera di Ewald:
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Qui $h$ nel prefattore $2h/(\beta m_0 c)$ è la **costante di Planck** (non un indice di fascio). I coefficienti $U^{C}$ e $U'$ sono gli elementi della matrice di struttura $\mathbf A$ nell'[Appendice A3](index.md).
+Qui $\mathbf K$ è un vettore d'onda che percorre la sfera di Ewald e $\mathrm d\Omega$ è il suo elemento di angolo solido. ReciPro valuta questo integrale numericamente con la quadratura di Gauss–Legendre (l'integrando ha un picco acuto in avanti, quindi l'angolo polare viene suddiviso in intervalli geometrici del modulo del vettore di diffusione per risolverlo). Per la TDS raccolta da un rivelatore anulare STEM, o la TDS retrodiffusa in EBSD, **lo stesso integrando** viene integrato sull'intervallo angolare del rivelatore (un anello o l'emisfero posteriore).
+
+Il fattore elastico $f_{e,k}$ nell'integrando ha una costruzione in due tratti: a basso $s$ è l'**adattamento a 5 gaussiane di Peng** della [pagina dei fattori di diffusione](../a2-beam-interaction/scattering-factor.md); ad alto $s$ ($s \ge 2{,}5$ Å⁻¹) è la **relazione di Mott–Bethe** valutata direttamente con il fattore a raggi X di Waasmaier–Kirfel $f_0(s)$, con un raccordo liscio tra $1{,}5$ e $2{,}5$ Å⁻¹. Il motivo è che la somma gaussiana di Peng decade troppo rapidamente oltre $s \gtrsim 2$ Å⁻¹ (le code gaussiane svaniscono esponenzialmente, mentre il vero $f_e$ ha una coda $1/s^2$), il che sottostima la retrodiffusione di molti ordini di grandezza a $s$ dell'ordine di $k_{vac}$ (circa 40 Å⁻¹ a 200 kV).
+
+!!! note
+    Quando $f_e$ è una somma gaussiana pura, questo integrale ammette una soluzione in forma chiusa come doppia somma gaussiana, che le versioni precedenti di ReciPro usavano come fattore di diffusione di assorbimento. Non esiste forma chiusa per un $f_e$ con la coda ad alto $s$, quindi è stata sostituita dalla quadratura numerica, verificata riprodurre la forma chiusa quando la coda è disattivata.
+
+I coefficienti $U^{C}$ e $U'$ sono gli elementi della matrice di struttura $\mathbf A$ nell'[Appendice A3](index.md).
 
 ---
 

@@ -59,11 +59,19 @@ $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-이고, **흡수 산란 인자**는
+이고, **흡수 산란 인자**는 탄성 산란 인자 $f_e$를 Ewald 구면 위에서 합성곱하는 적분
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-이다. 여기서 전인자 $2h/(\beta m_0 c)$의 $h$는 **플랑크 상수**이다 (빔 지수가 아님). 계수 $U^{C}$와 $U'$는 [부록 A3](index.md)의 구조 행렬 $\mathbf A$의 원소이다.
+이다. 여기서 $\mathbf K$는 Ewald 구면 위를 달리는 파수 벡터이고 $\mathrm d\Omega$는 그 입체각 요소이다. ReciPro는 이 적분을 Gauss–Legendre 구적법으로 수치적으로 계산한다(피적분 함수가 전방으로 날카롭게 피크를 이루므로, 극각을 산란 벡터 크기의 등비 구간으로 분할하여 해상한다). STEM 환형 검출기에 들어오는 TDS나 EBSD의 후방 산란 TDS를 나타낼 때는 **같은 피적분 함수**를 검출기의 각도 범위(환형 영역 또는 후방 반구)로 제한하여 적분한다.
+
+피적분 함수의 $f_{e,k}$는 2단 구성이다. 낮은 $s$에서는 [산란 인자 페이지](../a2-beam-interaction/scattering-factor.md)의 **Peng 5-가우스 근사**를, 높은 $s$($s \ge 2.5$ Å⁻¹)에서는 **Mott–Bethe 관계식**을 Waasmaier–Kirfel X선 인자 $f_0(s)$로 직접 계산한 값을 쓰고, $1.5\text{–}2.5$ Å⁻¹ 사이는 매끄럽게 보간한다. Peng의 가우스 합은 $s \gtrsim 2$ Å⁻¹를 넘으면 실제 산란 인자보다 훨씬 빨리 감소하며(가우스 꼬리는 지수적으로 소멸하지만 실제 $f_e$는 $1/s^2$ 꼬리를 가짐), $s$가 $k_{vac}$ 수준(200 kV에서 약 40 Å⁻¹)에 이르는 후방 산란에서는 여러 자릿수의 과소평가가 되기 때문이다.
+
+!!! note
+    $f_e$가 순수한 가우스 합인 경우 이 적분에는 이중 가우스 합 형태의 닫힌 해가 존재하며, 이전 버전의 ReciPro는 그것을 흡수 산란 인자로 사용했다. 높은 $s$ 꼬리를 가진 $f_e$에는 닫힌 형태가 존재하지 않으므로 수치 구적법으로 대체했고, 꼬리를 비활성화한 조건에서 닫힌 형태와 일치함을 검증했다.
+
+계수 $U^{C}$와 $U'$는 [부록 A3](index.md)의 구조 행렬 $\mathbf A$의 원소이다.
 
 ---
 

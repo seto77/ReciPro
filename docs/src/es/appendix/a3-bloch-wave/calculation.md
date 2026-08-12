@@ -59,11 +59,19 @@ El potencial imaginario (de absorción) que da cuenta de la dispersión térmica
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-con el **factor de dispersión de absorción**
+con el **factor de dispersión de absorción** — una integral que convoluciona el factor de dispersión elástico $f_e$ sobre la esfera de Ewald:
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Aquí $h$ en el prefactor $2h/(\beta m_0 c)$ es la **constante de Planck** (no un índice de haz). Los coeficientes $U^{C}$ y $U'$ son los elementos de la matriz de estructura $\mathbf A$ en el [Apéndice A3](index.md).
+Aquí $\mathbf K$ es un vector de onda que recorre la esfera de Ewald y $\mathrm d\Omega$ es su elemento de ángulo sólido. ReciPro evalúa esta integral numéricamente mediante cuadratura de Gauss–Legendre (el integrando tiene un pico agudo hacia adelante, así que el ángulo polar se divide en intervalos geométricos del módulo del vector de dispersión para resolverlo). Para la TDS captada por un detector anular de STEM, o la TDS retrodispersada en EBSD, **el mismo integrando** se integra sobre el rango angular del detector (un anillo o el hemisferio trasero).
+
+El factor elástico $f_{e,k}$ del integrando tiene una construcción en dos tramos: a $s$ bajo es el **ajuste de 5 gaussianas de Peng** de la [página del factor de dispersión](../a2-beam-interaction/scattering-factor.md); a $s$ alto ($s \ge 2.5$ Å⁻¹) es la **relación de Mott–Bethe** evaluada directamente con el factor de rayos X de Waasmaier–Kirfel $f_0(s)$, con una mezcla suave entre $1.5$ y $2.5$ Å⁻¹. La razón es que la suma gaussiana de Peng decae demasiado rápido más allá de $s \gtrsim 2$ Å⁻¹ (las colas gaussianas se desvanecen exponencialmente, mientras que el $f_e$ real tiene una cola $1/s^2$), lo que subestima la retrodispersión en muchos órdenes de magnitud a $s$ del orden de $k_{vac}$ (unos 40 Å⁻¹ a 200 kV).
+
+!!! note
+    Cuando $f_e$ es una suma gaussiana pura, esta integral tiene una solución cerrada como doble suma gaussiana, que las versiones anteriores de ReciPro usaban como factor de dispersión de absorción. No existe forma cerrada para un $f_e$ con la cola de $s$ alto, así que se reemplazó por la cuadratura numérica, verificada para reproducir la forma cerrada cuando la cola está desactivada.
+
+Los coeficientes $U^{C}$ y $U'$ son los elementos de la matriz de estructura $\mathbf A$ en el [Apéndice A3](index.md).
 
 ---
 

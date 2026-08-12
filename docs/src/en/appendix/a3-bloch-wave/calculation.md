@@ -59,11 +59,19 @@ The imaginary (absorption) potential that accounts for thermal diffuse scatterin
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-with the **absorptive scattering factor**
+with the **absorptive scattering factor**, an integral that convolves the elastic scattering factor $f_e$ over the Ewald sphere:
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Here $h$ in the prefactor $2h/(\beta m_0 c)$ is **Planck's constant** (not a beam index). The $U^{C}$ and $U'$ coefficients are the entries of the structure matrix $\mathbf A$ in [Appendix A3](index.md).
+Here $\mathbf K$ is a wave vector running over the Ewald sphere and $\mathrm d\Omega$ is its solid-angle element. ReciPro evaluates this integral numerically by Gauss–Legendre quadrature (the integrand peaks sharply in the forward direction, so the polar angle is split into geometric intervals of the scattering-vector magnitude to resolve it). For the TDS collected by an annular STEM detector, or the backscattered TDS in EBSD, the **same integrand** is integrated over the detector's angular range (an annulus or the backward hemisphere) instead.
+
+The elastic factor $f_{e,k}$ in the integrand is a two-part construction: at low $s$ it is the **Peng 5-Gaussian fit** from the [scattering-factor page](../a2-beam-interaction/scattering-factor.md); at high $s$ ($s \ge 2.5$ Å⁻¹) it is the **Mott–Bethe relation** evaluated directly with the Waasmaier–Kirfel X-ray factor $f_0(s)$, with a smooth blend between $1.5$ and $2.5$ Å⁻¹. The reason is that the Peng Gaussian sum decays much too fast beyond $s \gtrsim 2$ Å⁻¹ (Gaussian tails vanish exponentially, whereas the true $f_e$ has a $1/s^2$ tail), which underestimates backscattering by many orders of magnitude at $s$ of order $k_{vac}$ (about 40 Å⁻¹ at 200 kV).
+
+!!! note
+    When $f_e$ is a pure Gaussian sum, this integral has a closed-form solution as a double Gaussian sum, which earlier versions of ReciPro used as the absorptive scattering factor. No closed form exists for an $f_e$ with the high-$s$ tail, so it was replaced by the numerical quadrature, which has been verified to reproduce the closed form when the tail is disabled.
+
+The $U^{C}$ and $U'$ coefficients are the entries of the structure matrix $\mathbf A$ in [Appendix A3](index.md).
 
 ---
 

@@ -59,11 +59,19 @@ Le potentiel imaginaire (d'absorption) qui rend compte de la diffusion thermique
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-avec le **facteur de diffusion d'absorption**
+avec le **facteur de diffusion d'absorption** — une intégrale qui convole le facteur de diffusion élastique $f_e$ sur la sphère d'Ewald :
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Ici, $h$ dans le préfacteur $2h/(\beta m_0 c)$ est la **constante de Planck** (et non un indice de faisceau). Les coefficients $U^{C}$ et $U'$ sont les entrées de la matrice de structure $\mathbf A$ dans l'[Annexe A3](index.md).
+Ici, $\mathbf K$ est un vecteur d'onde parcourant la sphère d'Ewald et $\mathrm d\Omega$ son élément d'angle solide. ReciPro évalue cette intégrale numériquement par quadrature de Gauss–Legendre (l'intégrande présente un pic aigu vers l'avant ; l'angle polaire est donc découpé en intervalles géométriques du module du vecteur de diffusion pour le résoudre). Pour la TDS collectée par un détecteur annulaire STEM, ou la TDS rétrodiffusée en EBSD, **le même intégrande** est intégré sur le domaine angulaire du détecteur (un anneau ou l'hémisphère arrière).
+
+Le facteur élastique $f_{e,k}$ de l'intégrande est construit en deux parties : à bas $s$, l'**ajustement à 5 gaussiennes de Peng** de la [page des facteurs de diffusion](../a2-beam-interaction/scattering-factor.md) ; à haut $s$ ($s \ge 2{,}5$ Å⁻¹), la **relation de Mott–Bethe** évaluée directement avec le facteur de rayons X de Waasmaier–Kirfel $f_0(s)$, avec un raccord lisse entre $1{,}5$ et $2{,}5$ Å⁻¹. La raison : la somme gaussienne de Peng décroît beaucoup trop vite au-delà de $s \gtrsim 2$ Å⁻¹ (les queues gaussiennes s'éteignent exponentiellement, alors que le vrai $f_e$ possède une queue en $1/s^2$), ce qui sous-estime la rétrodiffusion de plusieurs ordres de grandeur à $s$ de l'ordre de $k_{vac}$ (environ 40 Å⁻¹ à 200 kV).
+
+!!! note
+    Lorsque $f_e$ est une somme gaussienne pure, cette intégrale admet une solution fermée sous forme de double somme gaussienne, que les versions antérieures de ReciPro utilisaient comme facteur de diffusion d'absorption. Aucune forme fermée n'existe pour un $f_e$ doté de la queue à haut $s$ ; elle a donc été remplacée par la quadrature numérique, dont on a vérifié qu'elle reproduit la forme fermée lorsque la queue est désactivée.
+
+Les coefficients $U^{C}$ et $U'$ sont les entrées de la matrice de structure $\mathbf A$ dans l'[Annexe A3](index.md).
 
 ---
 

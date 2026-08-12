@@ -62,7 +62,7 @@ A fast electron is charged, so it is scattered by the **electrostatic potential*
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-The prefactor $C_\text{MB}$ is built from fundamental constants and depends on the unit system and on whether $s$ or $Q$ is used. ReciPro does not evaluate this relation directly — it uses the fitted Peng / Kirkland / 8-Gaussian forms below — so it is given here for physical insight rather than computation. Written out with the constants (for $s$ and $f_e$ in Å),
+The prefactor $C_\text{MB}$ is built from fundamental constants and depends on the unit system and on whether $s$ or $Q$ is used. For elastic scattering (structure factors, diffracted intensities) ReciPro does not evaluate this relation directly — it uses the fitted Peng / Kirkland / 8-Gaussian forms below. In the **absorptive (TDS) potential, however, ReciPro does evaluate this relation directly with the Waasmaier–Kirfel X-ray factor at high $s$ ($s \gtrsim 2.5$ Å⁻¹), where the fitted forms break down** (see the [absorptive potential in Appendix A3](../a3-bloch-wave/calculation.md)). Written out with the constants (for $s$ and $f_e$ in Å),
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 

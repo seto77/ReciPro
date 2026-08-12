@@ -59,11 +59,19 @@ O potencial imaginário (de absorção) que leva em conta o espalhamento térmic
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-com o **fator de espalhamento de absorção**
+com o **fator de espalhamento de absorção** — uma integral que convolve o fator de espalhamento elástico $f_e$ sobre a esfera de Ewald:
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Aqui $h$ no pré-fator $2h/(\beta m_0 c)$ é a **constante de Planck** (não um índice de feixe). Os coeficientes $U^{C}$ e $U'$ são os elementos da matriz de estrutura $\mathbf A$ no [Apêndice A3](index.md).
+Aqui $\mathbf K$ é um vetor de onda que percorre a esfera de Ewald e $\mathrm d\Omega$ é o seu elemento de ângulo sólido. O ReciPro avalia esta integral numericamente por quadratura de Gauss–Legendre (o integrando tem um pico agudo para a frente, então o ângulo polar é dividido em intervalos geométricos do módulo do vetor de espalhamento para resolvê-lo). Para a TDS coletada por um detector anular de STEM, ou a TDS retroespalhada em EBSD, **o mesmo integrando** é integrado sobre a faixa angular do detector (um anel ou o hemisfério traseiro).
+
+O fator elástico $f_{e,k}$ do integrando tem uma construção em duas partes: em $s$ baixo é o **ajuste de 5 gaussianas de Peng** da [página do fator de espalhamento](../a2-beam-interaction/scattering-factor.md); em $s$ alto ($s \ge 2{,}5$ Å⁻¹) é a **relação de Mott–Bethe** avaliada diretamente com o fator de raios X de Waasmaier–Kirfel $f_0(s)$, com uma mistura suave entre $1{,}5$ e $2{,}5$ Å⁻¹. A razão é que a soma gaussiana de Peng decai rápido demais além de $s \gtrsim 2$ Å⁻¹ (caudas gaussianas desaparecem exponencialmente, enquanto o verdadeiro $f_e$ tem uma cauda $1/s^2$), o que subestima o retroespalhamento em muitas ordens de grandeza em $s$ da ordem de $k_{vac}$ (cerca de 40 Å⁻¹ a 200 kV).
+
+!!! note
+    Quando $f_e$ é uma soma gaussiana pura, esta integral tem uma solução fechada como soma gaussiana dupla, que versões anteriores do ReciPro usavam como fator de espalhamento de absorção. Não existe forma fechada para um $f_e$ com a cauda de $s$ alto, então ela foi substituída pela quadratura numérica, verificada para reproduzir a forma fechada quando a cauda está desativada.
+
+Os coeficientes $U^{C}$ e $U'$ são os elementos da matriz de estrutura $\mathbf A$ no [Apêndice A3](index.md).
 
 ---
 

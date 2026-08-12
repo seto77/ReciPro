@@ -59,11 +59,19 @@ Das imaginäre (Absorptions-)Potential, das die thermisch diffuse Streuung (TDS)
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-mit dem **Absorptions-Streufaktor**
+mit dem **Absorptions-Streufaktor** — einem Integral, das den elastischen Streufaktor $f_e$ über die Ewald-Kugel faltet:
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-Dabei ist $h$ im Vorfaktor $2h/(\beta m_0 c)$ das **Plancksche Wirkungsquantum** (kein Strahlindex). Die Koeffizienten $U^{C}$ und $U'$ sind die Einträge der Strukturmatrix $\mathbf A$ in [Anhang A3](index.md).
+Dabei ist $\mathbf K$ ein Wellenvektor auf der Ewald-Kugel und $\mathrm d\Omega$ das zugehörige Raumwinkelelement. ReciPro wertet dieses Integral numerisch per Gauß-Legendre-Quadratur aus (der Integrand hat einen scharfen Vorwärtspeak, daher wird der Polarwinkel in geometrische Intervalle des Streuvektorbetrags unterteilt). Für die TDS eines ringförmigen STEM-Detektors oder die rückgestreute TDS bei EBSD wird **derselbe Integrand** stattdessen über den Winkelbereich des Detektors (Ring oder rückwärtige Halbkugel) integriert.
+
+Der elastische Faktor $f_{e,k}$ im Integranden ist zweistufig aufgebaut: bei kleinem $s$ die **Peng-5-Gauß-Anpassung** von der [Streufaktor-Seite](../a2-beam-interaction/scattering-factor.md); bei großem $s$ ($s \ge 2{,}5$ Å⁻¹) die **Mott-Bethe-Beziehung**, direkt mit dem Waasmaier-Kirfel-Röntgenfaktor $f_0(s)$ ausgewertet, mit einem glatten Übergang zwischen $1{,}5$ und $2{,}5$ Å⁻¹. Der Grund: die Peng-Gauß-Summe fällt jenseits von $s \gtrsim 2$ Å⁻¹ viel zu schnell ab (Gauß-Ausläufer verschwinden exponentiell, der wahre $f_e$ hat aber einen $1/s^2$-Ausläufer), was die Rückstreuung bei $s$ in der Größenordnung von $k_{vac}$ (etwa 40 Å⁻¹ bei 200 kV) um viele Größenordnungen unterschätzt.
+
+!!! note
+    Wenn $f_e$ eine reine Gauß-Summe ist, besitzt dieses Integral eine geschlossene Lösung als doppelte Gauß-Summe, die frühere Versionen von ReciPro als absorptiven Streufaktor verwendeten. Für ein $f_e$ mit dem Hoch-$s$-Ausläufer existiert keine geschlossene Form, daher wurde sie durch die numerische Quadratur ersetzt; verifiziert wurde, dass diese bei deaktiviertem Ausläufer die geschlossene Form reproduziert.
+
+Die Koeffizienten $U^{C}$ und $U'$ sind die Einträge der Strukturmatrix $\mathbf A$ in [Anhang A3](index.md).
 
 ---
 

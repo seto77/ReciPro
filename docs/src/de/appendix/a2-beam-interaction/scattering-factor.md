@@ -62,7 +62,7 @@ Ein schnelles Elektron ist geladen, daher wird es am **elektrostatischen Potenti
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-Der Vorfaktor $C_\text{MB}$ ist aus Fundamentalkonstanten aufgebaut und hängt vom Einheitensystem sowie davon ab, ob $s$ oder $Q$ verwendet wird. ReciPro wertet diese Relation nicht direkt aus — es verwendet die unten angegebenen angepassten Peng-/Kirkland-/8-Gauß-Formen — sie wird hier daher eher zum physikalischen Verständnis als zur Berechnung angegeben. Ausgeschrieben mit den Konstanten (für $s$ und $f_e$ in Å),
+Der Vorfaktor $C_\text{MB}$ ist aus Fundamentalkonstanten aufgebaut und hängt vom Einheitensystem sowie davon ab, ob $s$ oder $Q$ verwendet wird. Für die elastische Streuung (Strukturfaktoren, Beugungsintensitäten) wertet ReciPro diese Relation nicht direkt aus — es verwendet die unten angegebenen angepassten Peng-/Kirkland-/8-Gauß-Formen. Im **absorptiven (TDS-)Potential wertet ReciPro diese Relation jedoch bei großem $s$ ($s \gtrsim 2{,}5$ Å⁻¹), wo die angepassten Formen zusammenbrechen, direkt mit dem Waasmaier-Kirfel-Röntgenfaktor aus** (siehe das [Absorptionspotential in Anhang A3](../a3-bloch-wave/calculation.md)). Ausgeschrieben mit den Konstanten (für $s$ und $f_e$ in Å),
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 
@@ -80,7 +80,7 @@ ReciPro bietet drei Parametrisierungen von $f_e(s)$:
 - **Kirkland** : eine gemischte Lorentz- + Gauß-Anpassung, $f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$. **Ihre unabhängige Variable ist $q = 2s = 1/d$, nicht $s$** — eine häufige Quelle von Faktor-zwei-Fehlern beim Vergleich von Modellen ($q$ in Å⁻¹, mit den angepassten Koeffizienten $a_i,b_i,c_i,d_i$ in den entsprechenden Einheiten).
 - **8-Gaussians** : eine Anpassung mit acht Termen, gültig über einen größeren $s$-Bereich.
 
-**Auswahl eines Modells.** Alle drei passen denselben zugrunde liegenden $f_e(s)$ an und stimmen bei niedrigem $s$ eng überein; sie unterscheiden sich hauptsächlich im Bereich und darin, wie der Atomrumpf dargestellt wird. **Peng** (neutrale Atome und gängige Ionen, genau bis $s\approx2\text{–}6$ Å⁻¹) ist der übliche Standard für SAED-/CBED-Strukturfaktoren; **Kirkland** reicht mit einem Lorentz-Rumpfterm bis zu höheren $s$ und ist für HRTEM/STEM geeignet (beachte $q=2s$); **8-Gaussians** ist für Reflexe gedacht, die sehr hohe $s$ erreichen. Für ein leichtes Element sind die drei nahezu ununterscheidbar; die Unterschiede treten bei schweren Elementen bei großem Winkel auf.
+**Auswahl eines Modells.** Alle drei passen denselben zugrunde liegenden $f_e(s)$ an und stimmen bei niedrigem $s$ eng überein; sie unterscheiden sich hauptsächlich im Bereich und darin, wie der Atomrumpf dargestellt wird. **Peng** (neutrale Atome und gängige Ionen; die Tabellen sind bis $s \le 6$ Å⁻¹ angepasst, aber da Gauß-Ausläufer schneller abfallen als die wahre Kurve, ist die Anpassung effektiv nur bis $s \lesssim 2$ Å⁻¹ genau) ist der übliche Standard für SAED-/CBED-Strukturfaktoren; **Kirkland** reicht mit einem Lorentz-Rumpfterm bis zu höheren $s$ und ist für HRTEM/STEM geeignet (beachte $q=2s$); **8-Gaussians** ist für Reflexe gedacht, die sehr hohe $s$ erreichen. Für ein leichtes Element sind die drei nahezu ununterscheidbar; die Unterschiede treten bei schweren Elementen bei großem Winkel auf.
 
 ---
 

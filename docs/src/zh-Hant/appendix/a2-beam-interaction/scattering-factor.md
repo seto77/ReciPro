@@ -62,7 +62,7 @@ ReciPro 以隨附的 **xraylib** 函式庫在目前能量下計算 $f'$ 與 $f''
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-前置因子 $C_\text{MB}$ 由基本常數構成，並取決於單位系統以及採用 $s$ 還是 $Q$。ReciPro 不直接計算此關係 — 它使用下方擬合的 Peng／Kirkland／8-Gaussian 形式 — 因此此處給出此式僅為提供物理見解，而非用於計算。將常數寫出後（$s$ 與 $f_e$ 以 Å 為單位），
+前置因子 $C_\text{MB}$ 由基本常數構成，並取決於單位系統以及採用 $s$ 還是 $Q$。對於彈性散射（結構因子、繞射強度），ReciPro 不直接計算此關係 — 它使用下方擬合的 Peng／Kirkland／8-Gaussian 形式。不過在**吸收（TDS）位勢的計算中，ReciPro 會在擬合形式失效的高 $s$ 區（$s \gtrsim 2.5$ Å⁻¹）以 Waasmaier–Kirfel X 光因子直接計算此式**（參見[附錄 A3 的吸收位勢](../a3-bloch-wave/calculation.md)）。將常數寫出後（$s$ 與 $f_e$ 以 Å 為單位），
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 
@@ -80,7 +80,7 @@ ReciPro 提供 $f_e(s)$ 的三種參數化：
 - **Kirkland** ：混合 Lorentzian + 高斯擬合，$f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$。**其自變數為 $q = 2s = 1/d$，而非 $s$** — 這是比較模型時常見的因子二錯誤來源（$q$ 以 Å⁻¹ 計，擬合係數 $a_i,b_i,c_i,d_i$ 以對應單位計）。
 - **8-Gaussians** ：八項擬合，於較寬的 $s$ 範圍內有效。
 
-**選擇其一。** 三者皆擬合同一個底層 $f_e(s)$，並在低 $s$ 處密切吻合；它們主要的差異在於適用範圍以及原子內層電子如何表示。**Peng**（中性原子與常見離子，精確至 $s\approx2\text{–}6$ Å⁻¹）是 SAED／CBED 結構因子的常用預設；**Kirkland** 以一個 Lorentzian 核項延伸至更高的 $s$，適用於 HRTEM/STEM（記得 $q=2s$）；**8-Gaussians** 則用於達到極高 $s$ 的反射。對於輕元素，三者幾乎無法區分；差異會在重元素的大角度處顯現。
+**選擇其一。** 三者皆擬合同一個底層 $f_e(s)$，並在低 $s$ 處密切吻合；它們主要的差異在於適用範圍以及原子內層電子如何表示。**Peng**（中性原子與常見離子；表格擬合至 $s \le 6$ Å⁻¹，但由於 Gaussian 尾部比真實曲線下降更快，實際上僅在 $s \lesssim 2$ Å⁻¹ 內精確）是 SAED／CBED 結構因子的常用預設；**Kirkland** 以一個 Lorentzian 核項延伸至更高的 $s$，適用於 HRTEM/STEM（記得 $q=2s$）；**8-Gaussians** 則用於達到極高 $s$ 的反射。對於輕元素，三者幾乎無法區分；差異會在重元素的大角度處顯現。
 
 ---
 

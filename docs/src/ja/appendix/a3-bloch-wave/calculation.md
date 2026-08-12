@@ -59,11 +59,19 @@ $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{
 
 $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!\left[2\pi i(\mathbf g-\mathbf h)\cdot\mathbf r_k\right]T_k(\mathbf g-\mathbf h, M_k)$$
 
-であり、**吸収散乱因子** は
+であり、**吸収散乱因子** は、弾性散乱因子 $f_e$ を Ewald 球面上で畳み込む積分
 
-$$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
+$$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
+\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
 
-です。前係数 $2h/(\beta m_0 c)$ の $h$ は **プランク定数**（反射の指数 $h$ とは別）です。$U^{C}$ と $U'$ の係数が、[付録 A3](index.md) の構造行列 $\mathbf A$ の要素になります。
+です。$\mathbf K$ は Ewald 球面上を走る波数ベクトル、$\mathrm d\Omega$ はその立体角要素です。ReciPro はこの積分を Gauss–Legendre 求積で数値的に評価します（被積分関数は前方に鋭くピークするため、極角は散乱ベクトルの大きさの等比区間に分割して解像します）。STEM の環状検出器に入る TDS や EBSD の後方散乱 TDS を表すときは、**同じ被積分関数** を検出器の角度範囲（環状領域や後方半球）に制限して積分します。
+
+被積分関数の $f_{e,k}$ は二段構成です。低 $s$ では[電子散乱因子](../a2-beam-interaction/scattering-factor.md)の **Peng の 5-Gaussian 近似** を、高 $s$（$s \ge 2.5$ Å⁻¹）では **Mott–Bethe の関係式** を Waasmaier–Kirfel の X 線因子 $f_0(s)$ で直接評価した値を使い、$1.5\text{–}2.5$ Å⁻¹ の間は滑らかに補間します。Peng の Gauss 和は $s \gtrsim 2$ Å⁻¹ で実際の散乱因子より急速に小さくなり（Gauss 型の裾は指数的に消えるが、実際の $f_e$ は $1/s^2$ の裾を持つ）、$s$ が $k_{vac}$ 程度（200 kV で約 40 Å⁻¹）に達する後方散乱では桁違いの過小評価になるためです。
+
+!!! note
+    $f_e$ が純粋な Gauss 和の場合にはこの積分に Gauss 二重和の閉形式解が存在し、以前の ReciPro はそれを吸収散乱因子として使っていました。高 $s$ テールを持つ $f_e$ に閉形式は存在しないため数値積分へ置き換え、テールを無効化した条件で閉形式と一致することを検証しています。
+
+$U^{C}$ と $U'$ の係数が、[付録 A3](index.md) の構造行列 $\mathbf A$ の要素になります。
 
 ---
 
