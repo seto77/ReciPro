@@ -147,6 +147,17 @@ Kikuchi-Linien-Intensität anwenden</value>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Overlays</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Speichert die Musteransicht in eine Datei
+(PNG / TIFF / EMF). Bereich und Auflösung folgen der
+Auswahl hier; das Dateiformat wird im Speicherdialog
+gewählt. „Pattern values (*.csv)“ schreibt die rohen
+Intensitäten auf dem Detektorpixelraster statt
+eines Bildes.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Kopieren</value>
   </data>

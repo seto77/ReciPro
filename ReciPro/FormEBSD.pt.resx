@@ -147,6 +147,16 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Sobreposições</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Salva a vista do padrão em um arquivo (PNG / TIFF / EMF).
+O intervalo e a resolução seguem a seleção aqui; o
+formato é escolhido na caixa de diálogo de salvamento.
+“Pattern values (*.csv)” grava as intensidades brutas na
+grade de pixels do detector em vez de uma imagem.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>

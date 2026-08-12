@@ -115,6 +115,7 @@
             labelBrightnessMin = new System.Windows.Forms.Label();
             labelBrightness = new System.Windows.Forms.Label();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
+            buttonSaveImage = new System.Windows.Forms.Button(); // 260811Cl 追加
             buttonCopyImage = new System.Windows.Forms.Button();
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
@@ -797,8 +798,16 @@
             checkBoxShowOverlays.UseVisualStyleBackColor = true;
             checkBoxShowOverlays.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
+            // buttonSaveImage
+            //
+            resources.ApplyResources(buttonSaveImage, "buttonSaveImage");
+            buttonSaveImage.Name = "buttonSaveImage";
+            toolTip.SetToolTip(buttonSaveImage, resources.GetString("buttonSaveImage.ToolTip"));
+            buttonSaveImage.UseVisualStyleBackColor = true;
+            buttonSaveImage.Click += buttonSaveImage_Click;
+            //
             // buttonCopyImage
-            // 
+            //
             resources.ApplyResources(buttonCopyImage, "buttonCopyImage");
             buttonCopyImage.Name = "buttonCopyImage";
             toolTip.SetToolTip(buttonCopyImage, resources.GetString("buttonCopyImage.ToolTip"));
@@ -1934,6 +1943,7 @@
             // 
             resources.ApplyResources(flowLayoutPanelCopyButton, "flowLayoutPanelCopyButton");
             toolTip.SetToolTip(flowLayoutPanelCopyButton, resources.GetString("flowLayoutPanelCopyButton.ToolTip"));
+            flowLayoutPanelCopyButton.Controls.Add(buttonSaveImage); // 260811Cl 追加: Copy の左 (FlowLayoutPanel なので追加順=左からの並び)
             flowLayoutPanelCopyButton.Controls.Add(buttonCopyImage);
             flowLayoutPanelCopyButton.Controls.Add(checkBoxMatchDetectorResolution);
             flowLayoutPanelCopyButton.Name = "flowLayoutPanelCopyButton";
@@ -2210,6 +2220,7 @@
         private System.Windows.Forms.Label labelBrightness;
         private System.Windows.Forms.CheckBox checkBoxShowOverlays;
         private System.Windows.Forms.Button buttonCopyImage;
+        private System.Windows.Forms.Button buttonSaveImage; // 260811Cl 追加
         private GraphControl graphControlEnergyProfile;
         private GraphControl graphControlDepthProfile;
         public System.Windows.Forms.TrackBar trackBarOutputEnergy;

@@ -2041,6 +2041,49 @@ the detector outline on top of the pattern.</value>
   <data name="&gt;&gt;checkBoxShowOverlays.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonSaveImage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSaveImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonSaveImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="buttonSaveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 27</value>
+  </data>
+  <data name="buttonSaveImage.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Save the pattern view to a file (PNG / TIFF / EMF).
+The range and resolution follow the selection here;
+the file format is chosen in the save dialog.
+"Pattern values (*.csv)" writes the raw intensities on
+the detector pixel grid instead of an image.</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveImage.Name" xml:space="preserve">
+    <value>buttonSaveImage</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveImage.Parent" xml:space="preserve">
+    <value>flowLayoutPanelCopyButton</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveImage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonCopyImage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2080,7 +2123,7 @@ Kikuchi-line and index overlays are included as drawn).</value>
     <value>flowLayoutPanelCopyButton</value>
   </data>
   <data name="&gt;&gt;buttonCopyImage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3799,7 +3842,7 @@ pixel count exactly; the longer side is clamped to
     <value>flowLayoutPanelCopyButton</value>
   </data>
   <data name="&gt;&gt;checkBoxMatchDetectorResolution.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="radioButtonCopyCurrent.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

@@ -147,6 +147,17 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Superpositions</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Enregistre la vue du diagramme dans un fichier
+(PNG / TIFF / EMF). La plage et la résolution suivent
+la sélection ici ; le format est choisi dans la boîte
+de dialogue. « Pattern values (*.csv) » écrit les
+intensités brutes sur la grille de pixels du détecteur
+au lieu d'une image.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copier</value>
   </data>

@@ -147,6 +147,15 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>疊加層</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>將圖樣檢視儲存到檔案 (PNG / TIFF / EMF)。
+範圍與解析度沿用此處的選擇，格式在儲存對話方塊中選擇。
+選擇 "Pattern values (*.csv)" 時，寫出的不是影像，
+而是偵測器像素網格上的原始強度值。</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>複製</value>
   </data>

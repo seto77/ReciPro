@@ -147,6 +147,15 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>叠加层</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>将花样视图保存到文件 (PNG / TIFF / EMF)。
+范围与分辨率沿用此处的选择，格式在保存对话框中选择。
+选择 "Pattern values (*.csv)" 时，写出的不是图像，
+而是探测器像素网格上的原始强度值。</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>复制</value>
   </data>

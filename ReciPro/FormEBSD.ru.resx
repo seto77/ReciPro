@@ -147,6 +147,17 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Наложения</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Сохраняет вид картины в файл (PNG / TIFF / EMF).
+Диапазон и разрешение берутся из выбора здесь,
+а формат задаётся в диалоге сохранения.
+«Pattern values (*.csv)» записывает исходные
+интенсивности на пиксельной сетке детектора,
+а не изображение.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Копировать</value>
   </data>

@@ -14,6 +14,7 @@ using C4 = OpenTK.Mathematics.Color4;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging; // 260724Cl 追加: 実測 EBSD 画像の透明度合成 (ImageAttributes/ColorMatrix) 用
+using System.Globalization; // 260812Cl 追加: パターン値 csv を InvariantCulture で書くため (小数点が `,` のロケール対策)
 using System.Text;
 using System.Threading.Tasks;
 using ZLinq;
@@ -2105,16 +2106,24 @@ public partial class FormEBSD : FormBase
     #endregion
 
     // 260520Cl 改名: buttonSaveImage → buttonCopyImage (実体はクリップボードへコピー。Text="Copy"・兄弟の buttonCopyEnergyProfile と命名統一)
+    // ⚠ 260811Cl 注記: その buttonSaveImage という名前を、今度は**本物のファイル保存ボタン**として再導入した (別コントロール)。
+    //    上の履歴だけ読むと「Save は Copy に改名されて存在しない」と誤読するので併記しておく
     // 260725Cl 変更: コピー範囲 (Current view / Detector) と Match detector resolution オプションに対応
     private void buttonCopyImage_Click(object sender, EventArgs e)
     {
         //if (Pbmp != null)
         //    Clipboard.SetDataObject(Pbmp.GetImage()); // 260725Cl 変更前: パターン計算ラスターをそのままコピー (範囲・解像度の指定不可)
+        //260812Cl 変更: 範囲・解像度の決定と描画を EmitPattern へ集約 (Save と逐語的に重複していた。/simplify 指摘)
+        EmitPattern(filename: "", emf: radioButtonCopyEmf.Checked, format: null);
+    }
 
-        // コピー解像度 (mm/px): Match detector resolution 時は検出器ピクセルと 1:1
-        var resolution = checkBoxMatchDetectorResolution.Checked ? DetPixelSize : Resolution;
-        PointD center;
-        int w, h;
+    /// <summary><see cref="EmitPattern"/> の前半 (出力範囲と解像度の決定) を切り出したもの。260812Cl 追加
+    /// <para>Copy と Save に逐語的な複製があり「片方だけ直すと図と数値がずれる」状態だったのを集約した。</para></summary>
+    /// <returns>幅・高さが正なら true。ゼロ以下 (未初期化・極端な縮小) なら false で、呼び出し側は何もしない</returns>
+    private bool TryGetExportGeometry(out PointD center, out int w, out int h, out double resolution)
+    {
+        // 出力解像度 (mm/px): Match detector resolution 時は検出器ピクセルと 1:1
+        resolution = checkBoxMatchDetectorResolution.Checked ? DetPixelSize : Resolution;
         if (radioButtonDetector.Checked)
         {
             //検出器エリアのみ (Match 時は DetPixelWidth × DetPixelHeight に一致)
@@ -2128,39 +2137,178 @@ public partial class FormEBSD : FormBase
             w = (int)Math.Round(graphicsBox.ClientSize.Width * Resolution / resolution);
             h = (int)Math.Round(graphicsBox.ClientSize.Height * Resolution / resolution);
         }
-        if (w <= 0 || h <= 0) return;
+        if (w <= 0 || h <= 0) return false;
 
-        //極端なズームアウト + Match 時の巨大ビットマップ保護: 最大辺 4096 にクランプ (mm 範囲は維持し解像度を粗くする)
+        //極端なズームアウト + Match 時の巨大ビットマップ保護: 最大辺 MaxExportPixel にクランプ (mm 範囲は維持し解像度を粗くする)
         //260725Cl 注記: パターン本体のラスターは別に MaxPatternRasterSize (2048) でクランプされる (PatternRasterSize)。
         //検出器が 2048 px を超える場合、"Match detector resolution" でもパターン画像は 2048 から拡大されたものになる (オーバーレイのみ実解像度)
-        const int maxCopyPixel = 4096;
-        if (Math.Max(w, h) > maxCopyPixel)
+        if (Math.Max(w, h) > MaxExportPixel)
         {
-            var scale = (double)maxCopyPixel / Math.Max(w, h);
+            var scale = (double)MaxExportPixel / Math.Max(w, h);
             resolution /= scale;
             w = Math.Max(1, (int)(w * scale));
             h = Math.Max(1, (int)(h * scale));
         }
+        return true;
+    }
 
-        // 260725Cl 変更: コピー形式ラジオ (radioButtonCopyEmf / radioButtonCopyBmp) に対応
-        if (radioButtonCopyEmf.Checked)
-        {
+    /// <summary>出力画像の最大辺 [px]。260812Cl: Copy 側 maxCopyPixel と Save 側 maxSavePixel に割れていたのを 1 本化</summary>
+    private const int MaxExportPixel = 4096;
+
+    /// <summary>パターン + オーバーレイを 1 枚出力する。260812Cl 追加 (Copy と Save の共通実体)。
+    /// <para><paramref name="filename"/> が空ならクリップボードへ、そうでなければファイルへ。
+    /// この「空ならクリップボード」は <see cref="ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile"/> の規約に合わせてある。</para></summary>
+    /// <param name="filename">出力先。空文字ならクリップボード</param>
+    /// <param name="emf">true なら拡張メタファイル (オーバーレイをベクトルのまま保持)</param>
+    /// <param name="format">ビットマップ形式で**ファイルへ**書くときの形式。クリップボード出力時 (filename が空) と emf 時は使わない</param>
+    /// <returns>出力できたら true。⚠ 呼び出し側はこれを見てから「保存しました」と表示すること
+    /// (視野が潰れている・メタファイル生成に失敗した場合、1 バイトも書かずに false で戻る)。260812Cl 追加</returns>
+    private bool EmitPattern(string filename, bool emf, ImageFormat format)
+    {
+        if (!TryGetExportGeometry(out var center, out int w, out int h, out var resolution)) return false;
+
+        if (emf)
             //拡張メタファイル: 菊池線・指数ラベル等のオーバーレイをベクトルのまま保持 (パターン画像のみラスター埋め込み)
-            ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(Handle, g =>
+            return ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(Handle, g =>
             {
                 g.SetClip(new Rectangle(0, 0, w, h)); //メタファイルは画面やビットマップと違い自然な境界クリップが無いため明示 (Transform 設定前=デバイス座標)
                 // RenderViewTo(g, new Size(w, h), center, resolution); // 260725Cl 変更前
                 RenderViewTo(g, new Size(w, h), center, resolution, suppressDetectorOutline: radioButtonDetector.Checked); //260725Cl 変更: Detector 範囲は外枠を含めない
-            });
-        }
-        else //radioButtonCopyBmp: ビットマップ形式
-        {
-            using var bmp = new Bitmap(w, h);
-            using (var g = Graphics.FromImage(bmp))
-                // RenderViewTo(g, new Size(w, h), center, resolution); // 260725Cl 変更前
-                RenderViewTo(g, new Size(w, h), center, resolution, suppressDetectorOutline: radioButtonDetector.Checked); //260725Cl 変更: Detector 範囲は外枠を含めない
+            }, filename);
+
+        //ビットマップ形式
+        using var bmp = new Bitmap(w, h);
+        using (var g = Graphics.FromImage(bmp))
+            // RenderViewTo(g, new Size(w, h), center, resolution); // 260725Cl 変更前
+            RenderViewTo(g, new Size(w, h), center, resolution, suppressDetectorOutline: radioButtonDetector.Checked); //260725Cl 変更: Detector 範囲は外枠を含めない
+        if (filename.Length == 0)
             Clipboard.SetDataObject(bmp, true); //copy=true: bmp は直後に Dispose するため実体コピーで渡す
+        else
+            bmp.Save(filename, format);
+        return true;
+    }
+
+    // 260811Cl 追加: Copy と同じ範囲・解像度・形式の指定でファイルへ保存する。
+    // Copy はクリップボード経由なので、貼り先のアプリに劣化・書式変換を任せることになり、
+    // 「同じ条件で撮った 2 枚を数値で比べる」用途 (改修前後の回帰) に使えなかった。
+    // 画像 3 形式に加えて **パターンの生の値 (csv)** を出せるようにしてある。図は「変わったか」しか言わないが、
+    // csv は「どこがどれだけ変わったか」を言う。csv だけは画面サイズに依らないよう検出器ピクセル格子で吐く。
+    private void buttonSaveImage_Click(object sender, EventArgs e)
+    {
+        using var dlg = new SaveFileDialog
+        {
+            Filter = "PNG image (*.png)|*.png|TIFF image (*.tif)|*.tif|Enhanced metafile (*.emf)|*.emf|Pattern values (*.csv)|*.csv",
+            FilterIndex = radioButtonCopyEmf.Checked ? 3 : 1,
+            AddExtension = true,
+        };
+        if (dlg.ShowDialog() != DialogResult.OK) return;
+        //拡張子を自分で打った場合はそちらを優先する (FilterIndex はコンボの選択のままなので、
+        //"foo.csv" と打って PNG フィルタのままだと画像を csv という名前で書いてしまう)
+        //260812Cl 変更: 1 始まりの生 index を持ち回すのをやめ、ここで一度だけ ExportKind へ写す (/simplify 指摘)
+        var kind = Path.GetExtension(dlg.FileName).ToLowerInvariant() switch
+        {
+            ".png" => ExportKind.Png,
+            ".tif" or ".tiff" => ExportKind.Tiff,
+            ".emf" => ExportKind.Emf,
+            ".csv" => ExportKind.Csv,
+            _ => (ExportKind)(dlg.FilterIndex - 1),//SaveFileDialog の FilterIndex は 1 始まり。Filter の並びと ExportKind の順を揃えてある
+        };
+        SavePatternTo(dlg.FileName, kind);
+    }
+
+    /// <summary>Save の出力種別。<c>buttonSaveImage_Click</c> の Filter の並びと同じ順にしておくこと。260812Cl 追加</summary>
+    private enum ExportKind { Png, Tiff, Emf, Csv }
+
+    /// <summary>パターンを filename へ書き出す。260811Cl 追加</summary>
+    private void SavePatternTo(string filename, ExportKind kind)
+    {
+        try
+        {
+            if (kind == ExportKind.Csv) { SavePatternValuesAsCsv(filename); return; }
+
+            //範囲・解像度・描画は Copy と同一実体 (EmitPattern)。片方だけ直して図と数値がずれることが起きない
+            //260812Cl: 戻り値を見るようにした。以前は 1 バイトも書けていなくても "Pattern saved" と出していた
+            if (EmitPattern(filename, kind == ExportKind.Emf,
+                kind == ExportKind.Tiff ? ImageFormat.Tiff : ImageFormat.Png))
+            {
+                toolStripStatusLabelSummary.Text = "Pattern saved";
+                toolStripStatusLabelDetail.Text = filename;
+            }
+            else
+            {
+                toolStripStatusLabelSummary.Text = "Save failed";
+                toolStripStatusLabelDetail.Text = "Nothing was written (the view is empty, or the metafile could not be created)";
+            }
         }
+        catch (Exception ex) //保存先が書けない (読み取り専用・パス長・排他) 場合にアプリを落とさない
+        {
+            toolStripStatusLabelSummary.Text = "Save failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+        }
+    }
+
+    /// <summary>パターンの生の値 (DrawEBSDCore が作る ebsdValues) を csv で書き出す。260811Cl 追加
+    /// <para>⚠ 画面のラスターは graphicsBox のサイズに従う (PatternRasterSize) ため、そのまま吐くと
+    /// **ウィンドウの大きさで中身が変わる**。改修前後を突き合わせる用途では致命的なので、
+    /// ここでは Copy 用の上書き機構 (renderCanvasOverride / renderResolutionOverride) を使って
+    /// **検出器のピクセル格子** で計算し直してから吐き、終わったら画面用の状態へ戻す。</para></summary>
+    private void SavePatternValuesAsCsv(string filename)
+    {
+        if (MasterPattern == null) { toolStripStatusLabelSummary.Text = "No pattern to save"; return; }
+
+        //260812Cl 追加: この経路は DrawEBSD を 2 回 (検出器格子で計算 → 画面用に復元) 回したうえで
+        //画素数ぶんの数値を文字列化するため、大きな検出器では数秒 UI が止まる。押した直後に何も出ないと
+        //「効かなかった」と読めてしまうので、先に状態を出して描き切っておく
+        toolStripStatusLabelSummary.Text = "Saving pattern values...";
+        toolStripStatusLabelDetail.Text = filename;
+        statusStripMain.Refresh();
+
+        var originalPan = viewPan;
+        renderCanvasOverride = new Size(DetPixelWidth, DetPixelHeight);
+        renderResolutionOverride = DetPixelSize;
+        viewPan = new PointD(0, 0); //検出器中心 = 視野中心
+        int width, height;
+        double[] values;
+        try
+        {
+            DrawEBSD();
+            (width, height) = PatternRasterSize;
+            values = (double[])ebsdValues.Clone(); //復元時の再計算で上書きされるため控えを取る
+        }
+        finally
+        {
+            renderCanvasOverride = null;
+            renderResolutionOverride = null;
+            viewPan = originalPan;
+            DrawEBSD();
+            DrawOverlays();
+        }
+        if (width <= 0 || height <= 0 || values.Length < width * height) return;
+
+        //⚠ 260812Cl: 数値はすべて InvariantCulture で書く。既定の CurrentCulture だと、小数点が `,` のロケール
+        //  (独・仏・露・西・伊・葡 = 本アプリが対応している言語) で "0,0123" と書かれ、**区切りの `,` と衝突して
+        //  csv が壊れる**。同ファイルの BSE ベンチ出力 (403 行付近) も同じ理由で Invariant を明示している。
+        var inv = CultureInfo.InvariantCulture;
+        using var sw = new StreamWriter(filename);
+        //after を同じ条件で撮れなければ比較にならないので、条件そのものを先頭に書き込む
+        sw.WriteLine(FormattableString.Invariant($"# ReciPro EBSD pattern values, {DateTime.Now:yyyy-MM-dd HH:mm:ss}"));
+        sw.WriteLine($"# crystal = {FormMain?.Crystal?.Name}");
+        sw.WriteLine(FormattableString.Invariant($"# raster = {width} x {height} (detector pixel grid), detector pixel size = {DetPixelSize} mm"));
+        sw.WriteLine(FormattableString.Invariant($"# voltage = {Voltage} kV, detector tilt = {DetTilt} deg, sample tilt = {SmpTilt} deg"));
+        sw.WriteLine(FormattableString.Invariant($"# detector X/Y/Z = {DetX} / {DetY} / {DetZ} mm"));
+        sw.WriteLine(FormattableString.Invariant($"# model = {masterPatternCombinationModel}, with BSE distribution = {checkBoxWithBSEDistribution.Checked}"));
+        sw.WriteLine(FormattableString.Invariant($"# energy index = {trackBarOutputEnergy.Value}, depth index = {trackBarOutputThickness.Value}"));
+        var (min, max) = values.MinMax();
+        sw.WriteLine(FormattableString.Invariant($"# min = {min:r}, max = {max:r}"));
+        var row = new string[width]; //260812Cl: 行ごとに確保していたのをループ外へ (検出器が大きいと画素数ぶんの割り当てになる)
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+                row[x] = values[y * width + x].ToString("r", inv); //"r": 往復可能 = 前後差分が丸めで潰れない
+            sw.WriteLine(string.Join(",", row));
+        }
+        toolStripStatusLabelSummary.Text = "Pattern values saved";
+        toolStripStatusLabelDetail.Text = $"{filename} ({width} x {height})";
     }
 
     // 260725Cl 追加: MasterPattern 2D / 3D プレビューのクリップボードコピー。

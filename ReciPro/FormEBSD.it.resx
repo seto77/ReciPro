@@ -147,6 +147,16 @@ all'intensità delle linee di Kikuchi</value>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Overlay</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Salva la vista del pattern in un file (PNG / TIFF / EMF).
+L'intervallo e la risoluzione seguono la selezione qui;
+il formato si sceglie nella finestra di salvataggio.
+«Pattern values (*.csv)» scrive le intensità grezze sulla
+griglia di pixel del rivelatore invece di un'immagine.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copia</value>
   </data>

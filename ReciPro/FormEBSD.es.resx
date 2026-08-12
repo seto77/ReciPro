@@ -144,6 +144,16 @@ a la intensidad de las líneas de Kikuchi</value>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Superposiciones</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Guarda la vista del patrón en un archivo (PNG / TIFF / EMF).
+El rango y la resolución siguen la selección de aquí; el
+formato se elige en el diálogo de guardado.
+«Pattern values (*.csv)» escribe las intensidades brutas
+en la rejilla de píxeles del detector en vez de una imagen.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>

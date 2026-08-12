@@ -398,6 +398,16 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>パターン上に菊池線・指数・晶帯軸・
 検出器アウトラインを重ねて表示します。</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>パターン表示をファイルへ保存します (PNG / TIFF / EMF)。
+範囲と解像度はここでの選択に従い、形式は保存
+ダイアログで選びます。「Pattern values (*.csv)」を選ぶと、
+画像ではなく検出器ピクセル格子上の生の強度値を
+書き出します。</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
@@ -1058,210 +1068,6 @@ Radon バンド証拠の z 値、ZNCC =
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="labelTextSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="statusStripMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxFlipDetectorLeftRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelLineWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBseStereonetNote.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageBseDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelMasterPatternSelectors.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelDetectorCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="sizeControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelDetectorSizeTilt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripStatusLabelProgress.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonFitNistElasticSampler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelDetectorResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelBseDepth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="toolStripStatusLabelSummary.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelExpBrightness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBseDeltaE.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>オーバーレイの指数文字（菊池線指数・
 晶帯軸指数など）の色を設定します。</value>
@@ -1273,5 +1079,212 @@ Radon バンド証拠の z 値、ZNCC =
   </data>
   <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
     <value>菊池線の描画色を設定します。</value>
+  </data>
+  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelLineWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelTextSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelPolarity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBseDepth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBseDeltaE.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelBseStereonetNote.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelExpBrightness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFlipDetectorLeftRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelDetectorSizeTilt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelDetectorResolution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelDetectorCenter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="sizeControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabControlSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="tabPageBseDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageOverlays.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="statusStripMain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabelProgress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabelSummary.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
 </root>

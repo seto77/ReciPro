@@ -147,6 +147,16 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>오버레이</value>
   </data>
+  <data name="buttonSaveImage.Text" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>패턴 표시를 파일로 저장합니다 (PNG / TIFF / EMF).
+범위와 해상도는 여기서 선택한 값을 따르며, 형식은
+저장 대화 상자에서 선택합니다.
+"Pattern values (*.csv)"를 선택하면 이미지가 아니라
+검출기 픽셀 격자 위의 원시 강도 값을 기록합니다.</value>
+  </data>
   <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>복사</value>
   </data>
