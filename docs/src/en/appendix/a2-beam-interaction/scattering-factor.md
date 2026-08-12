@@ -80,7 +80,7 @@ ReciPro offers three parametrisations of $f_e(s)$:
 - **Kirkland** : a mixed Lorentzian + Gaussian fit, $f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$. **Its independent variable is $q = 2s = 1/d$, not $s$** — a frequent source of factor-of-two errors when comparing models ($q$ in Å⁻¹, with the fitted coefficients $a_i,b_i,c_i,d_i$ in the corresponding units).
 - **8-Gaussians** : an eight-term fit valid over a wider $s$ range.
 
-**Choosing one.** All three fit the same underlying $f_e(s)$ and agree closely at low $s$; they differ mainly in range and in how the atomic core is represented. **Peng** (neutral atoms and common ions, accurate to $s\approx2\text{–}6$ Å⁻¹) is the usual default for SAED/CBED structure factors; **Kirkland** extends to higher $s$ with a Lorentzian core term, suited to HRTEM/STEM (recall $q=2s$); **8-Gaussians** is for reflections reaching very high $s$. For a light element the three are nearly indistinguishable; the differences show up for heavy elements at high angle.
+**Choosing one.** All three fit the same underlying $f_e(s)$ and agree closely at low $s$; they differ mainly in range and in how the atomic core is represented. **Peng** (neutral atoms and common ions; the tables are fitted to $s \le 6$ Å⁻¹, but since Gaussian tails fall off faster than the true curve, the fit is effectively accurate only to $s \lesssim 2$ Å⁻¹) is the usual default for SAED/CBED structure factors; **Kirkland** extends to higher $s$ with a Lorentzian core term, suited to HRTEM/STEM (recall $q=2s$); **8-Gaussians** is for reflections reaching very high $s$. For a light element the three are nearly indistinguishable; the differences show up for heavy elements at high angle.
 
 ---
 

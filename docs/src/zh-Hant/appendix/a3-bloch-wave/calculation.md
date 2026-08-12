@@ -66,7 +66,7 @@ $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac
 
 此處 $\mathbf K$ 是在 Ewald 球面上取值的波向量，$\mathrm d\Omega$ 是其立體角元。ReciPro 以 Gauss–Legendre 求積數值計算此積分（被積函數在前向有尖銳峰值，因此將極角按散射向量模長的等比區間分割以解析它）。對於 STEM 環形偵測器收集的 TDS，或 EBSD 中的背向散射 TDS，則將**同一被積函數**改為在偵測器的角度範圍（環形區域或後半球）內積分。
 
-被積函數中的彈性因子 $f_{e,k}$ 採兩段構造：低 $s$ 處用[散射因子頁面](../a2-beam-interaction/scattering-factor.md)的 **Peng 5-Gaussian 擬合**；高 $s$ 處（$s \ge 2.5$ Å⁻¹）用以 Waasmaier–Kirfel X 光因子 $f_0(s)$ 直接計算的 **Mott–Bethe 關係式**，並在 $1.5\text{–}2.5$ Å⁻¹ 之間平滑過渡。原因是 Peng 的 Gaussian 和在 $s \gtrsim 2$ Å⁻¹ 之外衰減過快（Gaussian 尾部呈指數消失，而真實的 $f_e$ 具有 $1/s^2$ 尾部），在 $s$ 達到 $k_{vac}$ 量級（200 kV 時約 40 Å⁻¹）的背向散射中會低估許多個數量級。
+被積函數中的彈性因子 $f_{e,k}$ 採兩段構造：低 $s$ 處用[散射因子頁面](../a2-beam-interaction/scattering-factor.md)的 **Peng 5-Gaussian 擬合**；高 $s$ 處（$s \ge 2.5$ Å⁻¹）用以 Waasmaier–Kirfel X 光因子 $f_0(s)$ 直接計算的 **Mott–Bethe 關係式**，並在 $1.5\text{–}2.5$ Å⁻¹ 之間平滑過渡。原因是 Peng 的 Gaussian 和在 $s \gtrsim 2$ Å⁻¹ 之外衰減過快（Gaussian 尾部呈指數消失，而真實的 $f_e$ 具有 $1/s^2$ 尾部），在 $s$ 達到 $k_{vac}$ 量級（200 kV 時約 40 Å⁻¹）的背向散射中會低估許多個數量級。兩個實作細節：$f_0(s)$ 被限制在 $[0, Z]$ 內（某些擬合形式在擬合範圍外發散），且離子條目也使用中性原子的 $f_0$（高 $s$ 處只能看到核電荷，而非電子雲）。
 
 !!! note
     當 $f_e$ 是純 Gaussian 和時，此積分存在雙重 Gaussian 和形式的閉式解，ReciPro 的早期版本曾將其用作吸收散射因子。帶有高 $s$ 尾部的 $f_e$ 不存在閉式解，因此改用數值求積，並已驗證在停用尾部時數值求積能重現閉式解。
