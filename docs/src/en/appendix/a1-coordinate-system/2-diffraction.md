@@ -52,3 +52,13 @@ Once the detector is tilted:
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | Distance from the sample to the foot (mm) |
 | **Pixel size** | Side length of one (square) pixel (mm); only square pixels are supported |
 | **Detector width / height** | Number of pixels horizontally / vertically |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## Two definitions of the excitation error $S_g$
+
+ReciPro uses two deliberately different definitions of the excitation error, matched to their contexts:
+
+- **Kinematical display and `SpotInfo()` (kinematical/excitation mode)** : the signed **radial** distance from the reciprocal-lattice point to the Ewald sphere, $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$ with the sphere centre $\boldsymbol{C} = (0, 0, k)$ and $k = 1/\lambda$. $S_g > 0$ means the point lies inside the sphere. The kinematical simulator assumes no specimen shape or thickness, so no surface normal exists there; the isotropic radial distance is the neutral choice for selecting and displaying reflections.
+- **Dynamical (Bethe) calculation** : the distance measured **along the specimen-surface normal** $\boldsymbol{n}$, $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$ with $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$ and $Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$. This definition is required by the boundary condition imposed on the specimen surface.
+
+The two nearly coincide at normal incidence (surface normal parallel to the beam), but they are **not the same quantity**; do not mix values taken from the kinematical and dynamical outputs.
