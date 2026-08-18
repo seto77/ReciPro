@@ -143,7 +143,7 @@
 === "Neutron"
     ![散射因子 — neutron](../assets/cap-zh-Hans-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** 提供两种 **Model** 模式：**f(s)** 绘制常规的 X 射线原子散射因子（以电子为单位）；**F(q)+S(q)** 绘制 Rayleigh **相干** 形状因子 $F(q)$ 以及 Compton **非相干** 散射函数 $S(q)$（来自 xraylib）。该表还列出当前能量下的反常色散项 **f'(E)** 和 **f''(E)**。 选择 **f(s)** 时会出现第二行单选按钮，用于选择**曲线的数据来源**——**Waasmaier–Kirfel**（默认的拟合，且涵盖 Z = 1–98 的离子）或 **Temari**。在显示 **F(q)+S(q)** 期间该行呈灰色，因为这两条曲线来自 xraylib，没有来源可选。
+- **X-ray** 提供两种 **Model** 模式：**f(s)** 绘制常规的 X 射线原子散射因子（以电子为单位）；**F(q)+S(q)** 绘制 Rayleigh **相干** 形状因子 $F(q)$ 以及 Compton **非相干** 散射函数 $S(q)$（来自 xraylib）。该表还列出当前能量下的反常色散项 **f'(E)** 和 **f''(E)**，以及标明 f(s) 列来自哪个数据来源的 **模型** 列。 选择 **f(s)** 时会出现第二行单选按钮，用于选择**曲线的数据来源**——**Waasmaier–Kirfel**（默认的拟合，且涵盖 Z = 1–98 的离子）或 **Temari**。在显示 **F(q)+S(q)** 期间该行呈灰色，因为这两条曲线来自 xraylib，没有来源可选。
 - **Electron** 提供电子散射因子的四种来源：**Peng**、**Kirkland**、**8-Gaussians** 和 **Temari**。表中显示 $f_e(s)$（nm）以及产生它的 **model**。
 - **Neutron** 散射长度不依赖于 $s$，因此不绘制曲线；表中列出每个元素的相干散射长度 **b_coh** 及其相干 / 非相干截面。
 - **Temari** 不是拟合，而是计算得到的表格（Temari dataset-factors v1.0.0，CC-BY-4.0，来自完全 Dirac 自洽场计算）。它**仅涵盖中性原子 Z = 1–86**：离子和 Z = 87–98 没有对应数据，因此不绘制其曲线，并将表格单元格留空，而不是用中性原子数值填充。选择 Temari 期间会显示一行提示说明这一点。
