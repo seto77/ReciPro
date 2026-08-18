@@ -22,7 +22,7 @@ Questa finestra non ha combinazioni di tasti speciali. <kbd>F1</kbd> apre questa
 
 ---
 
-## Fascio e lunghezza d'onda {#reflections-tab}
+## Fascio e lunghezza d'onda
 
 La banda superiore è un **Wave Length Control** condiviso con gli altri simulatori.
 
@@ -37,15 +37,15 @@ Il fascio scelto decide anche quali schede e curve sono significative:
 
 | Fascio | Riflessioni | Attenuazioni & trasporto | Fattori di diffusione | Fluorescenza |
 |------|------|------|------|------|
-| **X-ray** | fattori di struttura incl. dispersione anomala | µ/ρ, µ, trasmissione + bordi di assorbimento (vs energia) | $f(s)$ o $F(q)+S(q)$ | righe caratteristiche + barre EDX |
-| **Electron** | fattori di struttura elettronici | σ, MFP, \|dE/ds\|, IMFP, range (vs energia) | Peng / Kirkland / 8-Gaussians | — (nascosta) |
+| **X-ray** | fattori di struttura incl. dispersione anomala | µ/ρ, µ, trasmissione + bordi di assorbimento (vs energia) | $f(s)$ (Waasmaier–Kirfel o Temari) o $F(q)+S(q)$ | righe caratteristiche + barre EDX |
+| **Electron** | fattori di struttura elettronici | σ, MFP, \|dE/ds\|, IMFP, range (vs energia) | Peng / Kirkland / 8-Gaussians / Temari | — (nascosta) |
 | **Neutron** | fattori di struttura nucleari | lunghezze di diffusione e sezioni d'urto (nessuna curva in energia) | lunghezze di diffusione (nessuna dipendenza da *s*) | — (nascosta) |
 
 La scheda **Fluorescenza** è solo per i raggi X e scompare per i fasci di elettroni e di neutroni. Per i neutroni i grafici dipendenti dall'energia in **Attenuazioni & trasporto** e **Fattori di diffusione** sono sostituiti da tabelle per elemento, perché la lunghezza di diffusione nucleare non dipende dall'angolo di diffusione né dall'energia.
 
 ---
 
-## Scheda Riflessioni
+## Scheda Riflessioni {#reflections-tab}
 
 Elenca i piani cristallini permessi (riflessioni) del cristallo e il **fattore di struttura** e l'intensità di diffrazione di ciascuno. Per i raggi X il fattore di struttura include ora i termini di **dispersione anomala** $f'/f''$ all'energia corrente, così `F_inv` (la parte immaginaria) è in genere diversa da zero in prossimità di un bordo di assorbimento. Il layout è lo stesso per ogni fascio; cambiano solo i valori del fattore di struttura e il 2θ di ciascuna riflessione.
 
@@ -130,7 +130,7 @@ L'interazione neutronica è determinata dalle sezioni d'urto nucleari piuttosto 
 
 ---
 
-## Scheda Fattori di diffusione {#fluorescence-tab}
+## Scheda Fattori di diffusione {#scattering-factors-tab}
 
 Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato in funzione di $s = \sin\theta/\lambda$ (Å⁻¹). Ogni elemento è disegnato con il proprio colore, e la **linea verticale del cursore** può essere trascinata per leggere il fattore di diffusione di ogni elemento in quella posizione nella tabella a sinistra.
 
@@ -143,14 +143,15 @@ Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato 
 === "Neutron"
     ![Fattori di diffusione — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** offre due modalità di **Model**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente.
-- **Electron** offre tre parametrizzazioni del fattore di diffusione elettronico: **Peng**, **Kirkland** e **8-Gaussians**. La tabella mostra $f_e(s)$ (nm) e quale **model** lo ha prodotto.
+- **X-ray** offre due modalità di **Model**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente. Quando è selezionato **f(s)**, una seconda riga di pulsanti di opzione sceglie **da dove proviene la curva**: **Waasmaier–Kirfel** (l'adattamento predefinito, che copre anche gli ioni su Z = 1–98) oppure **Temari**. È disattivata mentre è mostrato **F(q)+S(q)**, perché quelle due curve provengono da xraylib e non ammettono scelta della sorgente.
+- **Electron** offre quattro sorgenti per il fattore di diffusione elettronico: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. La tabella mostra $f_e(s)$ (nm) e quale **model** lo ha prodotto.
 - Le lunghezze di diffusione **Neutron** non dipendono da $s$, quindi non viene disegnata alcuna curva; la tabella elenca per ciascun elemento la lunghezza di diffusione coerente **b_coh** e le sue sezioni d'urto coerente / incoerente.
+- **Temari** non è un adattamento ma una tabella calcolata (Temari dataset-factors v1.0.0, CC-BY-4.0, da un calcolo di campo autoconsistente di Dirac completo). Copre **solo atomi neutri Z = 1–86**: ioni e Z = 87–98 non hanno voce, quindi le loro curve sono omesse e le celle restano vuote invece di essere riempite con valori di atomo neutro. Un avviso di una riga lo indica mentre Temari è selezionato.
 - **Debye-Waller** moltiplica ciascun fattore per lo smorzamento termico $e^{-B s^2}$ usando il parametro di spostamento isotropo di ciascun atomo.
 
 ---
 
-## Scheda Fluorescenza
+## Scheda Fluorescenza {#fluorescence-tab}
 
 Per un fascio di raggi X, l'emissione di **fluorescenza** caratteristica del campione. (Questa scheda è nascosta per i fasci di elettroni e di neutroni.)
 

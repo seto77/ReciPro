@@ -22,7 +22,7 @@ Dieses Fenster hat keine speziellen Tastenkombinationen. <kbd>F1</kbd> öffnet d
 
 ---
 
-## Strahl und Wellenlänge {#reflections-tab}
+## Strahl und Wellenlänge
 
 Das obere Band ist ein **Wave Length Control**, das mit den anderen Simulatoren geteilt wird.
 
@@ -37,15 +37,15 @@ Der gewählte Strahl entscheidet auch, welche Registerkarten und Kurven sinnvoll
 
 | Strahl | Reflexe | Schwächung & Transport | Streufaktoren | Fluoreszenz |
 |------|------|------|------|------|
-| **X-ray** | Strukturfaktoren inkl. anomaler Dispersion | µ/ρ, µ, Transmission + Absorptionskanten (gegen Energie) | $f(s)$ oder $F(q)+S(q)$ | charakteristische Linien + EDX-Striche |
-| **Electron** | Elektronen-Strukturfaktoren | σ, MFP, \|dE/ds\|, IMFP, Reichweite (gegen Energie) | Peng / Kirkland / 8-Gaussians | — (ausgeblendet) |
+| **X-ray** | Strukturfaktoren inkl. anomaler Dispersion | µ/ρ, µ, Transmission + Absorptionskanten (gegen Energie) | $f(s)$ (Waasmaier–Kirfel oder Temari) oder $F(q)+S(q)$ | charakteristische Linien + EDX-Striche |
+| **Electron** | Elektronen-Strukturfaktoren | σ, MFP, \|dE/ds\|, IMFP, Reichweite (gegen Energie) | Peng / Kirkland / 8-Gaussians / Temari | — (ausgeblendet) |
 | **Neutron** | nukleare Strukturfaktoren | Streulängen & Wirkungsquerschnitte (keine Energiekurve) | Streulängen (keine *s*-Abhängigkeit) | — (ausgeblendet) |
 
 Die Registerkarte **Fluoreszenz** gilt nur für Röntgenstrahlen und verschwindet bei Elektronen- und Neutronenstrahlen. Bei Neutronen werden die energieabhängigen Diagramme in **Schwächung & Transport** und **Streufaktoren** durch Elementtabellen ersetzt, da die nukleare Streulänge nicht vom Streuwinkel oder der Energie abhängt.
 
 ---
 
-## Registerkarte Reflexe
+## Registerkarte Reflexe {#reflections-tab}
 
 Listet die erlaubten Kristallebenen (Reflexe) des Kristalls sowie den **Strukturfaktor** und die Beugungsintensität jedes Reflexes auf. Bei Röntgenstrahlen enthält der Strukturfaktor nun die Terme der **anomalen Dispersion** $f'/f''$ bei der aktuellen Energie, sodass `F_inv` (der Imaginärteil) in der Nähe einer Absorptionskante im Allgemeinen ungleich null ist. Das Layout ist für jeden Strahl gleich; nur die Strukturfaktor-Werte und das 2θ jedes Reflexes ändern sich.
 
@@ -130,7 +130,7 @@ Die Neutronenwechselwirkung wird durch nukleare Wirkungsquerschnitte und nicht d
 
 ---
 
-## Registerkarte Streufaktoren {#fluorescence-tab}
+## Registerkarte Streufaktoren {#scattering-factors-tab}
 
 Der Atomformfaktor jedes beteiligten Elements, dargestellt gegen $s = \sin\theta/\lambda$ (Å⁻¹). Jedes Element wird in seiner eigenen Farbe gezeichnet, und die **vertikale Cursorlinie** kann gezogen werden, um den Streufaktor jedes Elements an dieser Position in die Tabelle links abzulesen.
 
@@ -143,14 +143,15 @@ Der Atomformfaktor jedes beteiligten Elements, dargestellt gegen $s = \sin\theta
 === "Neutron"
     ![Streufaktoren — neutron](../assets/cap-de-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** bietet zwei **Model**-Modi: **f(s)** stellt den konventionellen Röntgen-Atomformfaktor dar (in Elektroneneinheiten); **F(q)+S(q)** stellt den Rayleigh-**kohärenten** Formfaktor $F(q)$ zusammen mit der Compton-**inkohärenten** Streufunktion $S(q)$ dar (aus xraylib). Die Tabelle listet außerdem die anomalen Dispersionsterme **f'(E)** und **f''(E)** bei der aktuellen Energie auf.
-- **Electron** bietet drei Parametrisierungen des Elektronen-Streufaktors: **Peng**, **Kirkland** und **8-Gaussians**. Die Tabelle zeigt $f_e(s)$ (nm) und welches **model** ihn erzeugt hat.
+- **X-ray** bietet zwei **Model**-Modi: **f(s)** stellt den konventionellen Röntgen-Atomformfaktor dar (in Elektroneneinheiten); **F(q)+S(q)** stellt den Rayleigh-**kohärenten** Formfaktor $F(q)$ zusammen mit der Compton-**inkohärenten** Streufunktion $S(q)$ dar (aus xraylib). Die Tabelle listet außerdem die anomalen Dispersionsterme **f'(E)** und **f''(E)** bei der aktuellen Energie auf. Ist **f(s)** gewählt, erscheint eine zweite Reihe von Optionsfeldern, die bestimmt, **woher die Kurve stammt** — **Waasmaier–Kirfel** (die voreingestellte Anpassung, die auch Ionen über Z = 1–98 abdeckt) oder **Temari**. Während **F(q)+S(q)** angezeigt wird, ist sie ausgegraut, da diese beiden Kurven aus xraylib stammen und keine Quellenwahl haben.
+- **Electron** bietet vier Quellen für den Elektronen-Streufaktor: **Peng**, **Kirkland**, **8-Gaussians** und **Temari**. Die Tabelle zeigt $f_e(s)$ (nm) und welches **model** ihn erzeugt hat.
 - **Neutron**-Streulängen hängen nicht von $s$ ab, daher wird keine Kurve gezeichnet; die Tabelle listet für jedes Element die kohärente Streulänge **b_coh** und dessen kohärente / inkohärente Wirkungsquerschnitte auf.
+- **Temari** ist keine Anpassung, sondern eine berechnete Tabelle (Temari dataset-factors v1.0.0, CC-BY-4.0, aus einer vollständigen Dirac-SCF-Rechnung). Sie deckt **nur neutrale Atome Z = 1–86** ab: Ionen und Z = 87–98 haben keinen Eintrag, ihre Kurven entfallen und ihre Tabellenzellen bleiben leer, statt mit Werten neutraler Atome gefüllt zu werden. Ein einzeiliger Hinweis sagt das, solange Temari gewählt ist.
 - **Debye-Waller** multipliziert jeden Faktor mit der thermischen Dämpfung $e^{-B s^2}$ unter Verwendung des isotropen Auslenkungsparameters jedes Atoms.
 
 ---
 
-## Registerkarte Fluoreszenz
+## Registerkarte Fluoreszenz {#fluorescence-tab}
 
 Für einen Röntgenstrahl die charakteristische **Fluoreszenz**-Emission der Probe. (Diese Registerkarte ist bei Elektronen- und Neutronenstrahlen ausgeblendet.)
 

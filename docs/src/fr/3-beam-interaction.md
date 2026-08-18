@@ -22,7 +22,7 @@ Cette fenêtre n'a pas de combinaisons de touches spéciales. <kbd>F1</kbd> ouvr
 
 ---
 
-## Faisceau et longueur d'onde {#reflections-tab}
+## Faisceau et longueur d'onde
 
 Le bandeau supérieur est un **Wave Length Control** partagé avec les autres simulateurs.
 
@@ -37,15 +37,15 @@ Le faisceau choisi détermine aussi quels onglets et quelles courbes ont un sens
 
 | Faisceau | Réflexions | Atténuations & transport | Facteurs de diffusion | Fluorescence |
 |------|------|------|------|------|
-| **X-ray** | facteurs de structure incl. dispersion anomale | µ/ρ, µ, transmission + seuils d'absorption (vs énergie) | $f(s)$ ou $F(q)+S(q)$ | raies caractéristiques + bâtons EDX |
-| **Electron** | facteurs de structure électroniques | σ, MFP, \|dE/ds\|, IMFP, parcours (vs énergie) | Peng / Kirkland / 8-Gaussians | — (masqué) |
+| **X-ray** | facteurs de structure incl. dispersion anomale | µ/ρ, µ, transmission + seuils d'absorption (vs énergie) | $f(s)$ (Waasmaier–Kirfel ou Temari) ou $F(q)+S(q)$ | raies caractéristiques + bâtons EDX |
+| **Electron** | facteurs de structure électroniques | σ, MFP, \|dE/ds\|, IMFP, parcours (vs énergie) | Peng / Kirkland / 8-Gaussians / Temari | — (masqué) |
 | **Neutron** | facteurs de structure nucléaires | longueurs de diffusion & sections efficaces (pas de courbe d'énergie) | longueurs de diffusion (pas de dépendance en *s*) | — (masqué) |
 
 L'onglet **Fluorescence** est réservé aux rayons X et disparaît pour les faisceaux d'électrons et de neutrons. Pour les neutrons, les graphiques dépendant de l'énergie dans **Atténuations & transport** et **Facteurs de diffusion** sont remplacés par des tableaux d'éléments, car la longueur de diffusion nucléaire ne dépend ni de l'angle de diffusion ni de l'énergie.
 
 ---
 
-## Onglet Réflexions
+## Onglet Réflexions {#reflections-tab}
 
 Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **facteur de structure** et l'intensité de diffraction de chacun. Pour les rayons X, le facteur de structure inclut désormais les termes de **dispersion anomale** $f'/f''$ à l'énergie actuelle, de sorte que `F_inv` (la partie imaginaire) est généralement non nul près d'un seuil d'absorption. La disposition est la même pour chaque faisceau ; seules les valeurs du facteur de structure et le 2θ de chaque réflexion changent.
 
@@ -130,7 +130,7 @@ L'interaction des neutrons est déterminée par les sections efficaces nucléair
 
 ---
 
-## Onglet Facteurs de diffusion {#fluorescence-tab}
+## Onglet Facteurs de diffusion {#scattering-factors-tab}
 
 Le facteur de diffusion atomique de chaque élément constitutif, tracé en fonction de $s = \sin\theta/\lambda$ (Å⁻¹). Chaque élément est dessiné dans sa propre couleur, et la **ligne de curseur verticale** peut être glissée pour lire le facteur de diffusion de chaque élément à cette position dans le tableau de gauche.
 
@@ -143,14 +143,15 @@ Le facteur de diffusion atomique de chaque élément constitutif, tracé en fonc
 === "Neutron"
     ![Facteurs de diffusion — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** propose deux modes **Modèle** : **f(s)** trace le facteur de diffusion atomique des rayons X conventionnel (en unités d'électron) ; **F(q)+S(q)** trace le facteur de forme **cohérent** Rayleigh $F(q)$ avec la fonction de diffusion **incohérente** Compton $S(q)$ (depuis xraylib). Le tableau liste aussi les termes de dispersion anomale **f'(E)** et **f''(E)** à l'énergie actuelle.
-- **Electron** propose trois paramétrisations du facteur de diffusion électronique : **Peng**, **Kirkland** et **8-Gaussians**. Le tableau montre $f_e(s)$ (nm) et quel **modèle** l'a produit.
+- **X-ray** propose deux modes **Modèle** : **f(s)** trace le facteur de diffusion atomique des rayons X conventionnel (en unités d'électron) ; **F(q)+S(q)** trace le facteur de forme **cohérent** Rayleigh $F(q)$ avec la fonction de diffusion **incohérente** Compton $S(q)$ (depuis xraylib). Le tableau liste aussi les termes de dispersion anomale **f'(E)** et **f''(E)** à l'énergie actuelle. Lorsque **f(s)** est sélectionné, une seconde ligne de boutons radio choisit **d'où provient la courbe** : **Waasmaier–Kirfel** (l'ajustement par défaut, qui couvre aussi les ions sur Z = 1–98) ou **Temari**. Elle est grisée pendant l'affichage de **F(q)+S(q)**, car ces deux courbes proviennent de xraylib et n'offrent pas de choix de source.
+- **Electron** propose quatre sources pour le facteur de diffusion électronique : **Peng**, **Kirkland**, **8-Gaussians** et **Temari**. Le tableau montre $f_e(s)$ (nm) et quel **modèle** l'a produit.
 - Les longueurs de diffusion **Neutron** ne dépendent pas de $s$, aussi aucune courbe n'est tracée ; le tableau liste, pour chaque élément, la longueur de diffusion cohérente **b_coh** et ses sections efficaces cohérente / incohérente.
+- **Temari** n'est pas un ajustement mais une table calculée (Temari dataset-factors v1.0.0, CC-BY-4.0, issue d'un calcul de champ auto-cohérent de Dirac complet). Elle couvre **uniquement les atomes neutres Z = 1–86** : les ions et Z = 87–98 n'ont pas d'entrée, leurs courbes sont omises et leurs cellules laissées vides plutôt que remplies avec des valeurs d'atome neutre. Un avis d'une ligne l'indique tant que Temari est sélectionné.
 - **Debye-Waller** multiplie chaque facteur par l'amortissement thermique $e^{-B s^2}$ en utilisant le paramètre de déplacement isotrope de chaque atome.
 
 ---
 
-## Onglet Fluorescence
+## Onglet Fluorescence {#fluorescence-tab}
 
 Pour un faisceau de rayons X, l'émission de **fluorescence** caractéristique de l'échantillon. (Cet onglet est masqué pour les faisceaux d'électrons et de neutrons.)
 

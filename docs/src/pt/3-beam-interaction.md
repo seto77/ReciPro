@@ -22,7 +22,7 @@ Esta janela não possui combinações de teclas especiais. <kbd>F1</kbd> abre es
 
 ---
 
-## Feixe e comprimento de onda {#reflections-tab}
+## Feixe e comprimento de onda
 
 A faixa superior é um **Wave Length Control** compartilhado com os outros simuladores.
 
@@ -37,15 +37,15 @@ O feixe escolhido também decide quais abas e curvas são significativas:
 
 | Feixe | Reflexões | Atenuação & Transporte | Fatores de dispersão | Fluorescência |
 |------|------|------|------|------|
-| **X-ray** | fatores de estrutura incl. dispersão anômala | µ/ρ, µ, transmissão + bordas de absorção (vs energia) | $f(s)$ ou $F(q)+S(q)$ | linhas características + traços EDX |
-| **Electron** | fatores de estrutura de elétrons | σ, MFP, \|dE/ds\|, IMFP, alcance (vs energia) | Peng / Kirkland / 8-Gaussians | — (oculto) |
+| **X-ray** | fatores de estrutura incl. dispersão anômala | µ/ρ, µ, transmissão + bordas de absorção (vs energia) | $f(s)$ (Waasmaier–Kirfel ou Temari) ou $F(q)+S(q)$ | linhas características + traços EDX |
+| **Electron** | fatores de estrutura de elétrons | σ, MFP, \|dE/ds\|, IMFP, alcance (vs energia) | Peng / Kirkland / 8-Gaussians / Temari | — (oculto) |
 | **Neutron** | fatores de estrutura nucleares | comprimentos de espalhamento e seções de choque (sem curva de energia) | comprimentos de espalhamento (sem dependência de *s*) | — (oculto) |
 
 A aba **Fluorescência** existe apenas para raios X e desaparece para feixes de elétrons e de nêutrons. Para nêutrons, os gráficos dependentes da energia em **Atenuação & Transporte** e **Fatores de dispersão** são substituídos por tabelas de elementos, pois o comprimento de espalhamento nuclear não depende do ângulo de espalhamento nem da energia.
 
 ---
 
-## Aba Reflexões
+## Aba Reflexões {#reflections-tab}
 
 Lista os planos cristalinos permitidos (reflexões) do cristal e o **fator de estrutura** e a intensidade de difração de cada um. Para raios X, o fator de estrutura agora inclui os termos de **dispersão anômala** $f'/f''$ na energia atual, de modo que `F_inv` (a parte imaginária) é geralmente não nulo próximo a uma borda de absorção. O layout é o mesmo para cada feixe; apenas os valores do fator de estrutura e o 2θ de cada reflexão mudam.
 
@@ -130,7 +130,7 @@ A interação de nêutrons é definida por seções de choque nucleares em vez d
 
 ---
 
-## Aba Fatores de dispersão {#fluorescence-tab}
+## Aba Fatores de dispersão {#scattering-factors-tab}
 
 O fator de espalhamento atômico de cada elemento constituinte, plotado em função de $s = \sin\theta/\lambda$ (Å⁻¹). Cada elemento é desenhado em sua própria cor, e a **linha vertical do cursor** pode ser arrastada para ler o fator de espalhamento de cada elemento naquela posição na tabela à esquerda.
 
@@ -143,14 +143,15 @@ O fator de espalhamento atômico de cada elemento constituinte, plotado em funç
 === "Neutron"
     ![Fatores de dispersão — neutron](../assets/cap-pt-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** oferece dois modos de **Model**: **f(s)** plota o fator de espalhamento atômico de raios X convencional (em unidades de elétron); **F(q)+S(q)** plota o fator de forma **coerente** de Rayleigh $F(q)$ junto com a função de espalhamento **incoerente** de Compton $S(q)$ (do xraylib). A tabela também lista os termos de dispersão anômala **f'(E)** e **f''(E)** na energia atual.
-- **Electron** oferece três parametrizações do fator de espalhamento de elétrons: **Peng**, **Kirkland** e **8-Gaussians**. A tabela mostra $f_e(s)$ (nm) e qual **model** o produziu.
+- **X-ray** oferece dois modos de **Model**: **f(s)** plota o fator de espalhamento atômico de raios X convencional (em unidades de elétron); **F(q)+S(q)** plota o fator de forma **coerente** de Rayleigh $F(q)$ junto com a função de espalhamento **incoerente** de Compton $S(q)$ (do xraylib). A tabela também lista os termos de dispersão anômala **f'(E)** e **f''(E)** na energia atual. Quando **f(s)** está selecionado, uma segunda linha de botões de opção escolhe **de onde vem a curva**: **Waasmaier–Kirfel** (o ajuste padrão, que também cobre íons em Z = 1–98) ou **Temari**. Fica esmaecida enquanto **F(q)+S(q)** é exibido, porque essas duas curvas vêm do xraylib e não admitem escolha de origem.
+- **Electron** oferece quatro fontes para o fator de espalhamento de elétrons: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. A tabela mostra $f_e(s)$ (nm) e qual **model** o produziu.
 - Os comprimentos de espalhamento de **Neutron** não dependem de $s$, portanto nenhuma curva é desenhada; a tabela lista o comprimento de espalhamento coerente **b_coh** de cada elemento e suas seções de choque coerente / incoerente.
+- **Temari** não é um ajuste, mas uma tabela calculada (Temari dataset-factors v1.0.0, CC-BY-4.0, a partir de um cálculo de campo autoconsistente de Dirac completo). Cobre **apenas átomos neutros Z = 1–86**: íons e Z = 87–98 não têm entrada, portanto suas curvas são omitidas e suas células ficam em branco em vez de preenchidas com valores de átomo neutro. Um aviso de uma linha indica isso enquanto Temari está selecionado.
 - **Debye-Waller** multiplica cada fator pelo amortecimento térmico $e^{-B s^2}$ usando o parâmetro de deslocamento isotrópico de cada átomo.
 
 ---
 
-## Aba Fluorescência
+## Aba Fluorescência {#fluorescence-tab}
 
 Para um feixe de raios X, a emissão de **fluorescência** característica da amostra. (Esta aba fica oculta para feixes de elétrons e de nêutrons.)
 

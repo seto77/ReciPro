@@ -22,7 +22,7 @@ This window has no special key combinations. <kbd>F1</kbd> opens this manual pag
 
 ---
 
-## Beam and wavelength {#reflections-tab}
+## Beam and wavelength
 
 The top band is a **Wave Length Control** shared with the other simulators.
 
@@ -37,15 +37,15 @@ The chosen beam also decides which tabs and curves are meaningful:
 
 | Beam | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
 |------|------|------|------|------|
-| **X-ray** | structure factors incl. anomalous dispersion | µ/ρ, µ, transmission + absorption edges (vs energy) | $f(s)$ or $F(q)+S(q)$ | characteristic lines + EDX sticks |
-| **Electron** | electron structure factors | σ, MFP, \|dE/ds\|, IMFP, range (vs energy) | Peng / Kirkland / 8-Gaussians | — (hidden) |
+| **X-ray** | structure factors incl. anomalous dispersion | µ/ρ, µ, transmission + absorption edges (vs energy) | $f(s)$ (Waasmaier–Kirfel or Temari) or $F(q)+S(q)$ | characteristic lines + EDX sticks |
+| **Electron** | electron structure factors | σ, MFP, \|dE/ds\|, IMFP, range (vs energy) | Peng / Kirkland / 8-Gaussians / Temari | — (hidden) |
 | **Neutron** | nuclear structure factors | scattering lengths & cross sections (no energy curve) | scattering lengths (no *s* dependence) | — (hidden) |
 
 The **Fluorescence** tab is X-ray-only and disappears for electron and neutron beams. For neutrons the energy-dependent graphs in **Attenuations & Transport** and **Scattering factors** are replaced by element tables, because the nuclear scattering length does not depend on scattering angle or energy.
 
 ---
 
-## Reflections tab
+## Reflections tab {#reflections-tab}
 
 Lists the allowed crystal planes (reflections) of the crystal and the **structure factor** and diffraction intensity of each. For X-rays the structure factor now includes the **anomalous dispersion** terms $f'/f''$ at the current energy, so `F_inv` (the imaginary part) is generally non-zero near an absorption edge. The layout is the same for every beam; only the structure-factor values and the 2θ of each reflection change.
 
@@ -130,7 +130,7 @@ Neutron interaction is set by nuclear cross sections rather than an energy-depen
 
 ---
 
-## Scattering factors tab {#fluorescence-tab}
+## Scattering factors tab {#scattering-factors-tab}
 
 The atomic scattering factor of each constituent element, plotted against $s = \sin\theta/\lambda$ (Å⁻¹). Each element is drawn in its own colour, and the **vertical cursor line** can be dragged to read off the scattering factor of every element at that position into the table on the left.
 
@@ -143,14 +143,15 @@ The atomic scattering factor of each constituent element, plotted against $s = \
 === "Neutron"
     ![Scattering factors — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** offers two **Model** modes: **f(s)** plots the conventional X-ray atomic scattering factor (in electron units); **F(q)+S(q)** plots the Rayleigh **coherent** form factor $F(q)$ together with the Compton **incoherent** scattering function $S(q)$ (from xraylib). The table also lists the anomalous-dispersion terms **f'(E)** and **f''(E)** at the current energy.
-- **Electron** offers three parametrizations of the electron scattering factor: **Peng**, **Kirkland**, and **8-Gaussians**. The table shows $f_e(s)$ (nm) and which **model** produced it.
+- **X-ray** offers two **Model** modes: **f(s)** plots the conventional X-ray atomic scattering factor (in electron units); **F(q)+S(q)** plots the Rayleigh **coherent** form factor $F(q)$ together with the Compton **incoherent** scattering function $S(q)$ (from xraylib). The table also lists the anomalous-dispersion terms **f'(E)** and **f''(E)** at the current energy. When **f(s)** is selected, a second row of radio buttons chooses **where the curve comes from** — **Waasmaier–Kirfel** (the default fit, which also covers ions over Z = 1–98) or **Temari**. It is greyed out while **F(q)+S(q)** is showing, because those two curves come from xraylib and have no source choice.
+- **Electron** offers four sources for the electron scattering factor: **Peng**, **Kirkland**, **8-Gaussians** and **Temari**. The table shows $f_e(s)$ (nm) and which **model** produced it.
 - **Neutron** scattering lengths do not depend on $s$, so no curve is drawn; the table lists each element's coherent scattering length **b_coh** and its coherent / incoherent cross sections.
+- **Temari** is not a fit but a computed table (Temari dataset-factors v1.0.0, CC-BY-4.0, from a full Dirac self-consistent-field calculation). It covers **neutral atoms Z = 1–86 only**: ions and Z = 87–98 have no entry, so their curves are omitted and their table cells left blank rather than filled with neutral-atom values. A one-line notice says so while Temari is selected.
 - **Debye-Waller** multiplies each factor by the thermal damping $e^{-B s^2}$ using each atom's isotropic displacement parameter.
 
 ---
 
-## Fluorescence tab
+## Fluorescence tab {#fluorescence-tab}
 
 For an X-ray beam, the characteristic **fluorescence** emission of the sample. (This tab is hidden for electron and neutron beams.)
 
