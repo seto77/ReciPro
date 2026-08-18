@@ -10,7 +10,8 @@ ReciPro itself is distributed under the MIT License. See `LICENSE.md`.
 
 ## Status of this document
 
-Last reviewed: 2026-08-12 (260812Cl: ionization-table licence rewrite of 2026-08-11 reflected; Kirkland Appendix C parameters listed; WK X-ray factors now also feed the electron absorptive tail).
+Last reviewed: 2026-08-18 (260818Cl: Temari **dataset-factors v1.0.0** (f_x / f_e) added as a second CC BY 4.0 embedded resource — see "Atomic scattering factor tables" below).
+Prior reviews: 2026-08-12 (260812Cl: ionization-table licence rewrite of 2026-08-11 reflected; Kirkland Appendix C parameters listed; WK X-ray factors now also feed the electron absorptive tail).
 Prior reviews: 2026-07-15 (260715Ch: WiX and active SignPath scope reconciled); 2026-06-12 (win-arm64 additions).
 
 This is a detailed inventory derived from the actual `.csproj` references, the WiX installer (`ReciProSetup.Wix`), the native build (`Crystallography.Native.vcxproj`), and the bundled/downloaded data. Items still requiring external verification are marked **`TODO: confirm`**.
@@ -123,6 +124,7 @@ Consequences:
 | X-ray atomic scattering factors | Waasmaier & Kirfel (1995) *Acta Cryst.* **A51**, 416-431 (also RHF/HF analytic forms, International Tables-style) | Cited in `AtomStatic.cs`. Also used (2026-08-11) as the f_x in the Mott-Bethe high-s tail of the electron absorptive (TDS) scattering factor. |
 | Electron scattering factors | Peng et al. (1996, 1998) | Cited in `AtomStatic.cs`. |
 | Electron scattering factors (Lorentzian + Gaussian) | Kirkland, E. J. (2010) *Advanced Computing in Electron Microscopy*, 2nd ed., Springer, Appendix C | Compiled into `AtomStatic.cs` as an alternative parameterization; also served (2026-08-11) as the independent high-s referee when the Peng-to-Mott-Bethe join of the absorptive tail was chosen. |
+| X-ray and electron scattering factors (first-principles, **not** a fit) | Temari dataset-factors v1.0.0 — see "Atomic scattering factor tables" below. | **Not hardcoded**: embedded binary resource `Crystallography.TemariFactors.bin`, read by `AtomStatic.TemariScattering`. Offered in FormBeamInteraction alongside Waasmaier-Kirfel (X-ray) and Peng / Kirkland / 8-Gaussian (electron). |
 | Neutron coherent scattering lengths | Updated (2026-05-31) from the `periodictable` 2.1.0 neutron scattering table (`b_c`, fm), which is reproduced from Rauch, H. & Waschkowski, W. (2003). "Neutron Scattering Lengths" in *ILL Neutron Data Booklet*, 2nd ed., A.-J. Dianoux & G. Lander (eds.), pp. 1.1-1 to 1.1-17, with newer corrections/measurements noted by the `periodictable` project. Complex imaginary parts are derived in the same way as `periodictable`: `b_c - i sigma_a/(2000 lambda)` at lambda = 1.798 Å. See https://periodictable.readthedocs.io/en/latest/api/nsf.html. | Compiled into `AtomStatic.cs`; no runtime dependency on `periodictable`. Previous Sears (1992) / NIST NCNR values were replaced to avoid mixing old and newer recommended tables. |
 | X-ray mass / linear absorption coefficients | NIST FFAST (Chantler), http://www.nist.gov/pml/data/ffast/index.cfm | Public-domain US-gov data; attribution recommended. |
 | Elastic electron-scattering sampler | NIST Electron Elastic-Scattering Cross-Section Database (SRD 64) — `TODO: confirm` exact NIST SRD citation. | Compiled-in PCHIP form only; raw `E_*.TXT/E_*.BIN` are dev-only and NOT shipped. |
@@ -159,6 +161,33 @@ not ReciPro's — see https://seto77.github.io/Temari/ .
 | Item | Source | Status |
 |------|--------|--------|
 | Absolute ionization cross sections | Bote & Salvat, *Phys. Rev. A* **77** (2008) 042701, [doi:10.1103/PhysRevA.77.042701](https://doi.org/10.1103/PhysRevA.77.042701); Bote, Salvat, Jablonski & Powell, *At. Data Nucl. Data Tables* **95** (2009) 871–909, [doi:10.1016/j.adt.2009.08.001](https://doi.org/10.1016/j.adt.2009.08.001) (see also the 2011 erratum, *ibid.* **97**, 186). <!-- 260811Cl 訂正: 巻号が 96 になっていた。95 が正しい (Elsevier の書誌で照合) -->. Coefficients extracted from `usnistgov/BoteSalvatICX.jl` (The Unlicense — public domain). | Compiled into `Crystallography.BoteSalvat.bin`. Public domain; attribution by citation. Note that the cross section is the less certain half of the calculation, and that its uncertainty grows from the K line to the M line — Temari's manifest gives the figures. |
+
+### Atomic scattering factor tables (embedded binary resource, Beam Interaction)
+
+`Crystallography.TemariFactors.bin` holds the atomic scattering factors f_x(s) and
+f_e(s) that the Beam Interaction window offers as an alternative to the fitted
+parameterizations. Like the ionization tables above it comes from Temari, and like
+them **it is not covered by ReciPro's MIT licence** — the software is MIT, the
+datasets are CC BY 4.0, deliberately and separately. ReciPro redistributes a
+*modified* form, so the attribution below applies.
+<!-- 260818Cl 新設: 2 本目の CC BY 4.0 埋め込み資源。上のイオン化テーブルと同じ体裁で並べる。 -->
+
+| Item | Detail |
+|------|--------|
+| Material | Yusuke Seto, *Atomic scattering factors f_x(s) and f_e(s) for 86 neutral atoms (Z = 1–86) computed with Temari*, dataset **dataset-factors v1.0.0** (2026). |
+| Creator and copyright | © 2026 Yusuke Seto. |
+| Licence | **CC BY 4.0** — https://creativecommons.org/licenses/by/4.0/ |
+| Link to the original | Release [`dataset-factors-v1.0.0`](https://github.com/seto77/Temari/releases/tag/dataset-factors-v1.0.0). ⚠ **No DOI has been issued for this dataset family** (unlike the ionization tables); cite it by its release tag and archive SHA-256. Generator and documentation: https://github.com/seto77/Temari , https://seto77.github.io/Temari/ |
+| **Changes made** | **Yes.** All 7681 nodes are kept and the published interpolation contract is followed, but the values are **requantized** to an absolute step of 1e-10 electrons (f_x) and 1e-11 Å (f_e) before being delta-coded and Brotli-compressed (`tools/TemariFactorsGen/pack_temari_factors.py`). The largest deviation from the published values is 5e-11 / 5e-12 — one tenth of the 11-significant-digit rounding Temari itself applied on release, and 1/1300 of its certified budget. Nothing was recomputed. |
+| Disclaimer | The dataset is offered as-is, without warranties or conditions of any kind (CC BY 4.0 §5). |
+| Shipped version | dataset-factors 1.0.0, `model_id` `DHFS-KLI-DTM1-dt16-neutral-v1`: 86 elements, s grid 7681 points to s = 6 Å⁻¹. Full Dirac SCF with exact KLI exchange. |
+| Scope limits | **Neutral atoms only, Z = 1–86.** Ions and Z = 87–98 have no entry and are shown blank rather than substituted. f_e follows the Peng / Doyle–Turner convention and does **not** include the relativistic factor γ. |
+| What a user should cite | The release tag above. ReciPro's own requantization is not part of the dataset and should not be cited as such. |
+
+⚠ ReciPro follows Temari's published interpolation rules (cubic in s with a clamped
+left end for f_x; cubic in t = s² for f_e) but, because it stores requantized values,
+it **cannot and does not claim to pass Temari's executable contract**, whose tolerance
+is relative 1e-12. See `.project-guidance/ReciPro/ReciPro_Temari散乱因子統合_指示書.md` §7.2.
 
 ## Fonts, icons, images, and sample data
 
