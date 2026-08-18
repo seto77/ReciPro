@@ -20,7 +20,7 @@
 
 ## 著者
 
-*ReciPro* は [瀬戸雄介](https://yseto.net/en/home-e) と [大塚将志](https://researchmap.jp/7000002999) により開発されています。機能とアルゴリズムは [論文](https://github.com/seto77/ReciPro/blob/master/docs/ReciProSetoOhtsuka2022.pdf) で紹介されています。
+*ReciPro* は [瀬戸雄介](https://yseto.net/en/home-e) と [大塚昌弘](https://researchmap.jp/7000002999) により開発されています。機能とアルゴリズムは [論文](https://github.com/seto77/ReciPro/blob/master/docs/ReciProSetoOhtsuka2022.pdf) で紹介されています。
 
 ## 引用
 
