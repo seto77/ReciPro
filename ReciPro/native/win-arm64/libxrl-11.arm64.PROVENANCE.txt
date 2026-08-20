@@ -12,4 +12,4 @@ data trim (260731Cl): kissel_pe.dat / comptonprofiles.dat / auger_rates.dat stub
 output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with historical conda-forge win-64 binary)
 output sha256: D363E4D71FF299803DDD9EC81E34738B560F59B6114C866230F769E7B5757774
 actions run: https://github.com/seto77/ReciPro/actions/runs/30630401605
-license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)
+license: BSD-3-Clause (see ReciPro\native\libxrl-11.LICENSE.txt)

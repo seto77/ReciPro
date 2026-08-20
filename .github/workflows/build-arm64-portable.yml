@@ -139,7 +139,7 @@ jobs:
           # csproj 側の配線 (方針 §3.7) が publish 単独での完全性を保証する:
           #   - AddArm64CrystallographyNativeToPublish ターゲット: native 欠落時は Error
           #   - native\win-arm64\ の libxrl-11.dll / glfw3.dll / glfw3.LICENSE.txt を RID 条件 Content で平坦化
-          #   - x64 用 libxrl-11.dll (リポルート) は RID 排他条件で混入しない
+          #   - x64 用 libxrl-11.dll (native\win-x64\) は RID 排他条件で混入しない
           # 260611Cl / 260617Cl SatelliteResourceLanguages: self-contained publish は .NET ランタイム (WinForms/WPF) の
           # ローカライズリソースを 13 言語分 (~18MB) 同梱するが、アプリが提供する言語 (Crystallography.SupportedCultures)
           # に合わせて絞る。★この一覧から外れた言語はアプリ自身のサテライト DLL も含め ZIP から無言で除外されるため、

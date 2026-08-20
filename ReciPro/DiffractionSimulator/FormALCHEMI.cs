@@ -13,7 +13,7 @@
 //     50nm で −0.65)。奥に隠すと「サイト判別できない」と誤解される
 //   ・Bragg 位置の縦線を既定 ON、x 軸は mrad と θ_B の切替
 //   ・曲線の下にコントラストと相関の要約を出す (どのサイトが効いているか一目で分かる)
-//   ・基底診断 (beams / expanded-basis / F(s) 要求 s / fit 適格) を常時表示
+//   ・基底診断 (beams / expanded-basis / F(s) 要求 s / fit 適格性 = v1 は常に未評価) を常時表示 //260820Cl 用語更新
 #region using
 using Crystallography;
 using Crystallography.Controls;
@@ -64,6 +64,11 @@ public partial class FormALCHEMI : FormBase
     public FormALCHEMI()
     {
         InitializeComponent();
+        //260820Cl 追加 (/simplify2): 再描画タイマーは、下のコンボ初期化 (display_Changed → ScheduleRedraw → Start) より前に Tick を配線する
+        //(未配線のまま tick が配送されると Enabled が立ったまま固着し、以後 ScheduleRedraw が何もしなくなる)。
+        //components に載せて Dispose 経路に入れる (FormDiffractionSimulator.timerKikuchiDebounce と同じ規律)
+        timerRedraw.Tick += (s, e) => { timerRedraw.Stop(); DrawCurves(); };
+        components.Add(timerRedraw);
         //HelpPage = "7-diffraction-simulator"; //260807Cl 旧 (専用ページが無かったので親の概要ページ)
         //260809Cl: 専用ページ 7.4 を新設したので差し替え。⚠slug は実ページ名と一字一句一致必須 (ずれると F1 が 404)
         HelpPage = "7-diffraction-simulator/4-alchemi-simulation";
@@ -102,14 +107,20 @@ public partial class FormALCHEMI : FormBase
         comboBoxAngularSpread.SelectedIndexChanged += (s, e) =>
         {
             numericBoxSpreadFwhm.Enabled = comboBoxAngularSpread.SelectedIndex == 1;
-            DrawCurves();
+            ScheduleRedraw(); //260820Cl 変更 (/simplify): 旧 DrawCurves()
         };
-        numericBoxSpreadFwhm.ValueChanged += (s, e) => { if (numericBoxSpreadFwhm.Enabled) DrawCurves(); };
+        //numericBoxSpreadFwhm.ValueChanged += (s, e) => { if (numericBoxSpreadFwhm.Enabled) DrawCurves(); }; //260820Cl 変更 (/simplify)
+        numericBoxSpreadFwhm.ValueChanged += (s, e) => { if (numericBoxSpreadFwhm.Enabled) ScheduleRedraw(); };
+        //timerRedraw.Tick += (s, e) => { timerRedraw.Stop(); DrawCurves(); }; //260820Cl 追加 (/simplify) → /simplify2 で InitializeComponent 直後へ移動
 
         ApplyLocalization();
 
         //値の変更で θ_B 表示を更新 (レイアウトではないのでコード側で配線する)
-        foreach (var nb in new[] { numericBoxAxisH, numericBoxAxisK, numericBoxAxisL, numericBoxRange, numericBoxPoints })
+        //260820Cl 変更: 反射指数は IndexControl (統合 ValueChanged) に置き換えた
+        //foreach (var nb in new[] { numericBoxAxisH, numericBoxAxisK, numericBoxAxisL, numericBoxRange, numericBoxPoints })
+        //    nb.ValueChanged += (s, e) => UpdateScanLabel();
+        indexControlRow.ValueChanged += (s, e) => UpdateScanLabel();
+        foreach (var nb in new[] { numericBoxRange, numericBoxPoints })
             nb.ValueChanged += (s, e) => UpdateScanLabel();
         VisibleChanged += (s, e) => { if (Visible) RefreshLists(); };
     }
@@ -123,8 +134,12 @@ public partial class FormALCHEMI : FormBase
         groupBoxScan.Text = Localization.Loc(en: "Rocking scan", ja: "ロッキング走査", de: "Rocking-Scan", fr: "Balayage d'inclinaison",
             es: "Barrido de inclinación", pt: "Varredura de inclinação", it: "Scansione di rocking", ru: "Качательное сканирование",
             zhHans: "摇摆扫描", zhHant: "搖擺掃描", ko: "로킹 스캔");
-        numericBoxAxisH.HeaderText = Localization.Loc(en: "Row  (", ja: "反射列  (", de: "Reihe  (", fr: "Rangée  (", es: "Fila  (",
-            pt: "Fila  (", it: "Fila  (", ru: "Ряд  (", zhHans: "反射列  (", zhHant: "反射列  (", ko: "반사열  (");
+        //260820Cl 変更 (作者指示): 入力は系統反射列 g の反射指数 (hkl) — 方向指数 [uvw] ではない — なので、
+        //IndexControl の "(h k l)" ヘッダと組で「反射列 g = (h k l)」と読めるようにした。
+        //旧: numericBoxAxisH.HeaderText = Localization.Loc(en: "Row  (", ja: "反射列  (", de: "Reihe  (", fr: "Rangée  (", es: "Fila  (",
+        //    pt: "Fila  (", it: "Fila  (", ru: "Ряд  (", zhHans: "反射列  (", zhHant: "反射列  (", ko: "반사열  (");
+        labelRow.Text = Localization.Loc(en: "Row  g =", ja: "反射列  g =", de: "Reihe  g =", fr: "Rangée  g =", es: "Fila  g =",
+            pt: "Fila  g =", it: "Fila  g =", ru: "Ряд  g =", zhHans: "反射列  g =", zhHant: "反射列  g =", ko: "반사열  g =");
         numericBoxRange.HeaderText = Localization.Loc(en: "Range  ±", ja: "範囲  ±", de: "Bereich  ±", fr: "Plage  ±", es: "Rango  ±",
             pt: "Faixa  ±", it: "Intervallo  ±", ru: "Диапазон  ±", zhHans: "范围  ±", zhHant: "範圍  ±", ko: "범위  ±");
         numericBoxPoints.HeaderText = Localization.Loc(en: "Points", ja: "点数", de: "Punkte", fr: "Points", es: "Puntos",
@@ -163,7 +178,8 @@ public partial class FormALCHEMI : FormBase
             pt: "Parar", it: "Ferma", ru: "Стоп", zhHans: "停止", zhHant: "停止", ko: "중지");
         tabPageCurve.Text = Localization.Loc(en: "Curve", ja: "曲線", de: "Kurve", fr: "Courbe", es: "Curva",
             pt: "Curva", it: "Curva", ru: "Кривая", zhHans: "曲线", zhHant: "曲線", ko: "곡선");
-        labelThickness.Text = groupBoxThickness.Text;
+        //labelThickness.Text = groupBoxThickness.Text; //260820Cl 変更
+        numericBoxThickness.HeaderText = groupBoxThickness.Text;
         labelNormalization.Text = Localization.Loc(en: "Normalization", ja: "規格化", de: "Normierung", fr: "Normalisation",
             es: "Normalización", pt: "Normalização", it: "Normalizzazione", ru: "Нормировка", zhHans: "归一化",
             zhHant: "歸一化", ko: "정규화");
@@ -177,12 +193,18 @@ public partial class FormALCHEMI : FormBase
             zhHant: "匯出 CSV", ko: "CSV 내보내기");
 
         //ツールチップ (監査方針: 新規コントロールには必ず付ける)
-        toolTip.SetToolTip(numericBoxAxisH, Localization.Loc(
-            en: "The systematic row to sweep, as reflection indices. The tilt axis is taken perpendicular to both the beam and this g, so the scan sweeps this row through its Bragg conditions.",
-            ja: "掃引する系統反射列を反射指数で指定します。傾斜軸はビームとこの g の両方に垂直に取られるので、走査はこの列を Bragg 条件を通して掃きます。"));
+        //260820Cl 変更: numericBoxAxisH → indexControlRow (+ labelRow)。「方向指数ではない」ことを明記
+        //旧: toolTip.SetToolTip(numericBoxAxisH, Localization.Loc(
+        //    en: "The systematic row to sweep, as reflection indices. The tilt axis is taken perpendicular to both the beam and this g, so the scan sweeps this row through its Bragg conditions.",
+        //    ja: "掃引する系統反射列を反射指数で指定します。傾斜軸はビームとこの g の両方に垂直に取られるので、走査はこの列を Bragg 条件を通して掃きます。"));
+        var rowTip = Localization.Loc(
+            en: "The systematic row to sweep, given as the reflection indices (h k l) of its reciprocal-lattice vector g = h a* + k b* + l c* - not a direction [u v w]. The tilt axis is taken perpendicular to both the beam and this g, so the scan sweeps this row (g, 2g, 3g, ...) through its Bragg conditions. The zero of the scan is the current orientation set in the diffraction simulator.",
+            ja: "掃引する系統反射列を、その逆格子ベクトル g = h a* + k b* + l c* の反射指数 (h k l) で指定します (方向指数 [u v w] ではありません)。傾斜軸はビームとこの g の両方に垂直に取られるので、走査はこの列 (g, 2g, 3g, …) を Bragg 条件を通して掃きます。走査の原点は回折シミュレータで設定中の結晶方位です。");
+        toolTip.SetToolTip(indexControlRow, rowTip);
+        toolTip.SetToolTip(labelRow, rowTip);
         toolTip.SetToolTip(numericBoxRange, Localization.Loc(
-            en: "Half width of the tilt scan. Beyond about 10 mrad a fixed union basis is no longer guaranteed and the expanded-basis check becomes mandatory; beyond 30 mrad it is outside the v1 guarantee.",
-            ja: "傾斜走査の半幅です。10 mrad を超えると固定 union 基底の保証が外れ expanded-basis 検証が必須になり、30 mrad を超えると v1 の保証範囲外です。"));
+            en: "Half width of the tilt scan, in mrad (0.01 to 60). Beyond about 10 mrad a fixed union basis is no longer guaranteed and the expanded-basis check becomes mandatory; beyond 30 mrad it is outside the v1 guarantee.",
+            ja: "傾斜走査の半幅です (mrad、0.01〜60)。10 mrad を超えると固定 union 基底の保証が外れ expanded-basis 検証が必須になり、30 mrad を超えると v1 の保証範囲外です。"));
         //260810Cl: dataset v5 で表が s ≤ 16 Å⁻¹ になり、この上限 1600 と対になった。
         //実測の最大要求は 1600 波でも 10.54 Å⁻¹ (加速電圧に依らない) なので収録範囲は使い切れない
         toolTip.SetToolTip(numericBoxMaxNumOfBloch, Localization.Loc(
@@ -197,9 +219,32 @@ public partial class FormALCHEMI : FormBase
         toolTip.SetToolTip(checkedListBoxSites, Localization.Loc(
             en: "Atomic sites whose yield is computed separately. In the tracer picture a channel may be paired with any site, so a dopant channel on a host site is a legitimate hypothesis.",
             ja: "収量を別々に計算する原子サイトです。トレーサ近似ではチャネルとサイトの組み合わせは自由なので、ホストサイト上のドーパントチャネルも正当な仮説です。"));
-        toolTip.SetToolTip(trackBarThickness, Localization.Loc(
-            en: "Thickness shown in the graph. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
-            ja: "グラフに表示する厚みです。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
+        //260820Cl 追加 (/simplify2): Range と対で並ぶ Points、厚み列 3 個、主要アクション 2 個にチップが無かった
+        toolTip.SetToolTip(numericBoxPoints, Localization.Loc(
+            en: "Number of orientations sampled across the full scan (3 to 1001). They are spaced evenly from -Range to +Range, so an odd count places one sample exactly at the starting orientation (the spin buttons step by 2 to keep it odd). This sets the angular resolution of the curve, and the run time is proportional to it - unlike Range, which sets how far the scan goes.",
+            ja: "走査全体で標本化する方位の個数です (3〜1001)。-Range から +Range まで等間隔に並ぶので、奇数にすると 1 点がちょうど出発方位に来ます (スピンボタンは奇数を保つため 2 刻みです)。曲線の角度分解能を決め、計算時間はこれに比例します。走査の広さを決める Range とは役割が違います。"));
+        toolTip.SetToolTip(numericBoxThicknessStart, Localization.Loc(
+            en: "First thickness of the series, in nm. from, to and step build the list of thicknesses computed in one run; every site/channel curve is evaluated at all of them and the Thickness box under the graph then picks which one is drawn. Site contrast can reverse sign with thickness, so start thin enough to see that.",
+            ja: "厚み列の最初の値です (nm)。開始・終了・刻みで 1 回の計算で扱う厚みの列を作り、各サイト / チャネル曲線をそのすべてについて求めます。どれをグラフに描くかはグラフ下の厚みボックスで選びます。サイトコントラストは厚みで符号が反転しうるので、それが見える程度に薄い値から始めてください。"));
+        toolTip.SetToolTip(numericBoxThicknessEnd, Localization.Loc(
+            en: "Last thickness of the series, in nm. The list runs from the start value up to this one in increments of step, and a value not on the grid is simply not reached. Extending it costs almost nothing in solve time - the Bloch-wave problem is solved once per orientation and only the thickness propagation is repeated - but it does enlarge the CSV export.",
+            ja: "厚み列の最後の値です (nm)。開始からこの値まで刻みぶんずつ進み、刻みに乗らない端数には到達しません。ここを伸ばしても対角化は方位ごとに 1 回で厚み伝播だけを繰り返すため計算時間はほとんど増えませんが、CSV 出力は大きくなります。"));
+        toolTip.SetToolTip(numericBoxThicknessStep, Localization.Loc(
+            en: "Spacing of the thickness series, in nm. It also becomes the spin step of the Thickness box under the graph, so a coarse step makes it impossible to land between two thicknesses. A fine step multiplies the number of curves stored and exported without re-solving the Bloch-wave problem.",
+            ja: "厚み列の間隔です (nm)。この値がそのままグラフ下の厚みボックスのスピン刻みになるので、粗くすると 2 つの厚みの中間を選べません。細かくすると保存・出力される曲線の本数が増えますが、ブロッホ波の対角化はやり直しません。"));
+        toolTip.SetToolTip(buttonSimulate, Localization.Loc(
+            en: "Run the ALCHEMI simulation with the settings on the left: for every orientation of the rocking scan a Bloch-wave calculation is solved, and the ionization yield of each selected site/channel pair is accumulated over the thickness series. Cost grows with Points x thicknesses x Max. beams^3, so a wide scan with many beams can take minutes; progress is shown in the status bar and Stop cancels it.",
+            ja: "左側の設定で ALCHEMI 計算を実行します。ロッキング走査の各方位についてブロッホ波計算を解き、選択したサイト / チャネルの組ごとにイオン化収量を厚みの列にわたって積算します。計算量は 点数 × 厚み数 × 最大波数³ で増えるので、広い走査と多波条件では数分かかります。進捗はステータスバーに出て、中止は Stop ボタンです。"));
+        toolTip.SetToolTip(buttonStop, Localization.Loc(
+            en: "Cancel the running simulation. The button only appears while a run is in progress. Cancellation takes effect at the next orientation, so it is not instantaneous; the graph and the diagnostics keep the result of the previous completed run.",
+            ja: "実行中の計算を中止します。このボタンは計算中だけ表示されます。中止は次の方位の区切りで効くので即座ではありません。グラフと診断表示は直前に完了した計算の結果を保持します。"));
+        //260820Cl 変更: trackBarThickness → numericBoxThickness
+        //旧: toolTip.SetToolTip(trackBarThickness, Localization.Loc(
+        //    en: "Thickness shown in the graph. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
+        //    ja: "グラフに表示する厚みです。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
+        toolTip.SetToolTip(numericBoxThickness, Localization.Loc(
+            en: "Thickness shown in the graph. The spin buttons step through the computed thicknesses; a typed value snaps to the nearest one. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
+            ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
         toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(
             en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
             ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
@@ -209,10 +254,14 @@ public partial class FormALCHEMI : FormBase
         //260809Cl 追加
         toolTip.SetToolTip(comboBoxAngularSpread, Localization.Loc(
             en: "Convolution of the rocking curve with the angular spread of the incident beam (convergence semi-angle, drift). It is a post-process on the orientation axis and is applied BEFORE the display normalization. Nothing else about the experiment - thickness distribution, bending, self-absorption, detector response, background - is modelled, so this alone will not reproduce a measurement.",
-            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より**前**に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。"));
+            ja: "入射ビームの角度広がり (収束半角・ドリフト) をロッキング曲線に畳み込みます。方位軸上の後処理で、表示の規格化より「前」に適用されます。厚み分布・曲げ・自己吸収・検出器応答・背景は一切モデル化していないので、これだけで実測を再現できるわけではありません。"));
         toolTip.SetToolTip(numericBoxSpreadFwhm, Localization.Loc(
             en: "Full width at half maximum of the Gaussian, in mrad. Ends of the scan are handled by renormalizing the kernel. Fitting this width together with thickness and occupancy makes them correlated, so use a measured value or a narrow prior.",
             ja: "ガウシアンの半値全幅 (mrad) です。走査の端はカーネルを再規格化して扱います。この幅を厚みや占有率と一緒にフィットすると互いに相関するので、実測値か狭い事前範囲を使ってください。"));
+        //260820Cl 追加
+        toolTip.SetToolTip(textBoxDiagnostics, Localization.Loc(
+            en: "Diagnostics of the last run, one item per line: basis size and expanded-basis convergence, fit eligibility, the Experimental notice, any warnings, and the contrast (max−min)/mean of every site/channel curve with its correlation to the first one. Scroll for the rest; the text can be selected and copied.",
+            ja: "直前の計算の診断を 1 項目 1 行で示します: 基底数と expanded-basis 収束、fit 適格性、Experimental の注記、警告、各サイト/チャネル曲線のコントラスト (max−min)/mean と先頭曲線との相関。続きはスクロールで、文字列は選択してコピーできます。"));
     }
 
     private void FormALCHEMI_FormClosing(object sender, FormClosingEventArgs e)
@@ -260,7 +309,8 @@ public partial class FormALCHEMI : FormBase
     private void UpdateScanLabel()
     {
         if (FormDiffractionSimulator == null || Crystal == null) { labelThetaB.Text = "-"; return; }
-        var (h, k, l) = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger);
+        //var (h, k, l) = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
+        var (h, k, l) = indexControlRow.Values;
         var range = numericBoxRange.Value * 1e-3;
         var step = 2 * range / Math.Max(1, numericBoxPoints.ValueInteger - 1);
         var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(Voltage);
@@ -287,7 +337,8 @@ public partial class FormALCHEMI : FormBase
     /// 旧: この処理は buttonSimulate_Click に inline だった。</summary>
     private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB)
     {
-        row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger);
+        //row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
+        row = indexControlRow.Values;
         thetaB = double.NaN;
 
         var channels = Enumerable.Range(0, checkedListBoxChannels.Items.Count)
@@ -351,6 +402,7 @@ public partial class FormALCHEMI : FormBase
             sw.Stop();
             resultRow = row;
             resultThetaB = thetaB;
+            runError = null; //260820Cl 追加 (/simplify2)
             toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
             SetupThicknessSelector();
             DrawCurves();
@@ -365,7 +417,9 @@ public partial class FormALCHEMI : FormBase
         {
             //backend は「収録範囲外を黙って外挿しない」ので拒否が起こり得る。理由をそのまま見せる
             toolStripStatusLabel.Text = ex.Message;
-            labelStats.Text = ex.Message;
+            //labelStats.Text = ex.Message; //260820Cl 変更
+            textBoxDiagnostics.Text = ex.Message;
+            runError = ex.Message; headerResult = null; lastDiagnosticsText = null; //260820Cl 追加 (/simplify2): 次の再描画で見出し先頭に残す
         }
         finally
         {
@@ -395,6 +449,7 @@ public partial class FormALCHEMI : FormBase
         sw.Stop();
         resultRow = row;
         resultThetaB = thetaB;
+        runError = null; //260820Cl 追加 (/simplify2)
         toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         SetupThicknessSelector();
@@ -435,25 +490,118 @@ public partial class FormALCHEMI : FormBase
 
     #region 描画
 
+    /// <summary>260820Cl 追加: 表示中の厚みの index (計算済み厚みへの添字)。モデルはこの値で、numericBoxThickness は入力口。
+    /// /simplify 指摘で「DrawCurves が毎回 NumericBox から逆算して書き戻す」構造をやめ、スナップは ValueChanged の 1 か所に寄せた。</summary>
+    private int thicknessIndex;
+
+    /// <summary>260820Cl 追加: <see cref="SetupThicknessSelector"/> / スナップの書き戻しで ValueChanged が再入するのを止める
+    /// (隣接フォームと同じ名前。旧名 thicknessSelectorBusy)。</summary>
+    private bool skipEvent;
+
+    /// <summary>260820Cl 追加 (/simplify): 再描画の合流。スピンボタンの自動リピート (50 ms) や連続した表示切替を 1 本のタイマーに
+    /// 集め、Interval に 1 回しか <see cref="DrawCurves"/> を走らせない (角度広がり ON の畳み込みは O(N²))。
+    /// 起動中は再始動しないので、最後の変更のあと Interval 以内に必ず 1 回描く。計算完了時と撮影時は直接 DrawCurves を呼ぶ。</summary>
+    private readonly System.Windows.Forms.Timer timerRedraw = new() { Interval = 60 };
+    private void ScheduleRedraw() { if (!timerRedraw.Enabled) timerRedraw.Start(); } //260820Cl 追加
+
     private void SetupThicknessSelector()
     {
-        trackBarThickness.Maximum = Math.Max(0, result.ThicknessesNm.Length - 1);
-        trackBarThickness.Value = trackBarThickness.Maximum;
+        //260820Cl 変更 (作者指示): TrackBar (index) → NumericBox (nm)。範囲は計算済み厚みの両端、スピン刻みは厚みの刻み
+        //旧: trackBarThickness.Maximum = Math.Max(0, result.ThicknessesNm.Length - 1);
+        //    trackBarThickness.Value = trackBarThickness.Maximum;
+        var ts = result.ThicknessesNm;
+        if (ts.Length == 0) return; //backend の Validate が弾くので到達しないが、skipEvent を立てたまま例外で抜けないよう先に見る (/simplify2)
+        thicknessIndex = ts.Length - 1;
+        skipEvent = true;
+        try
+        {
+            //NumericBox の Minimum/Maximum setter は「Minimum < Maximum」を満たす代入しか受け付けないので、Maximum を一度 +∞ に解放してから入れる。
+            //厚みが 1 点だけなら選ぶものがないので範囲を付けずに無効化する (/simplify: 偽の ±0.5 nm 範囲は作らない)
+            numericBoxThickness.Maximum = double.PositiveInfinity;
+            numericBoxThickness.Minimum = ts.Length > 1 ? ts[0] : double.NegativeInfinity;
+            if (ts.Length > 1) numericBoxThickness.Maximum = ts[^1];
+            var step = ts.Length > 1 ? ts[1] - ts[0] : 1;
+            numericBoxThickness.UpDown_Increment = step;
+            //表示桁は刻みに合わせる (/simplify2): 刻み 0.15 nm で "10.2" と丸めて見せると CSV の 10.1500 と食い違う
+            numericBoxThickness.DecimalPlaces = step > 0 ? Math.Clamp(-(int)Math.Floor(Math.Log10(step)), 1, 4) : 1;
+            numericBoxThickness.Enabled = ts.Length > 1;
+            numericBoxThickness.Value = ts[^1];
+        }
+        finally { skipEvent = false; }
     }
 
-    private void trackBarThickness_Scroll(object sender, EventArgs e) => DrawCurves();
-    private void display_Changed(object sender, EventArgs e) => DrawCurves();
+    //private void trackBarThickness_Scroll(object sender, EventArgs e) => DrawCurves(); //260820Cl 変更
+    /// <summary>260820Cl 追加: 入力値を最寄りの計算済み厚みへ揃え (スナップ)、index が変わったときだけ再描画を予約する。</summary>
+    private void numericBoxThickness_ValueChanged(object sender, EventArgs e)
+    {
+        if (skipEvent || result == null) return;
+        var ts = result.ThicknessesNm;
+        var v = numericBoxThickness.Value;
+        var t = Enumerable.Range(0, ts.Length).MinBy(i => Math.Abs(ts[i] - v));
+        skipEvent = true;
+        numericBoxThickness.Value = ts[t]; //グリッド上なら同値代入 = NumericBox は無反応
+        skipEvent = false;
+        if (t == thicknessIndex) return;
+        thicknessIndex = t;
+        ScheduleRedraw();
+    }
+    //private void display_Changed(object sender, EventArgs e) => DrawCurves(); //260820Cl 変更 (/simplify)
+    private void display_Changed(object sender, EventArgs e) => ScheduleRedraw();
+
+    /// <summary>260820Cl 追加 (/simplify): run に対して不変な診断行 (basis / fit 適格性 / Experimental / 告知 / Warnings) は
+    /// result が替わったときだけ組み立てる。NonFiniteNotice は結果テンソル 3 本の全走査なので再描画ごとに回さない。</summary>
+    private AlchemiResult headerResult;
+    private string[] headerLines; //260820Cl 追加
+    private double[] tiltCache; //260820Cl 追加 (/simplify2): 走査の傾斜角 [rad]。run 不変なので headerLines と同じ契機で作る
+    private string[] BuildDiagnosticsHeader() //260820Cl 追加
+    {
+        var b = result.Basis;
+        //260809Cl 変更: 「fit 適格 / 不適格」の 2 値表示をやめ、AlchemiBasisDiagnostic.Eligibility (常に未評価) を出す。
+        //旧: b.AcceptedForFit ? "fit 適格" : "⚠ fit 不適格"。偽陽性 (指示書 §2-8 ⑦) がある状態で「適格」と
+        //保証表示するのは誤りの方向が悪い、という作者決定。生の診断値 (expanded-basis) は先頭行に出したままにする
+        var lines = new List<string>
+        {
+            $"basis {b.BeamCount} ({b.CenterOnlyBeamCount} + {b.AddedByUnion})   "
+                + $"F(s) ≤ {b.MaxShapeArgumentAngstromInv:f2} Å⁻¹   expanded-basis {b.ExpandedBasisMaxRelDiff:e1}",
+            FitEligibilityText(b.Eligibility),
+        };
+        //各 Notice は素の文 ("" = 該当なし) を返し、⚠ はここで一律に付ける (/simplify: 装飾を 1 層に)
+        lines.AddRange(new[] { ExperimentalNotice(), LowVoltageNotice(), TruncationNotice(), NonFiniteNotice() }
+            .Concat(b.Warnings).Where(n => n.Length > 0).Select(n => "⚠ " + n));
+        if (runError != null) //260820Cl 追加 (/simplify2)
+            lines.Insert(0, "⚠ " + Localization.Loc(
+                en: "the last run failed - the curves and the lines below are from the previous successful run: ",
+                ja: "直前の計算は失敗しました。曲線と以下の行は前回成功した計算のものです: ") + runError);
+        return [.. lines];
+    }
 
     private void DrawCurves()
     {
         if (result == null) return;
         var s = result.Shape;
-        int t = Math.Clamp(trackBarThickness.Value, 0, s.ThicknessCount - 1);
-        labelThicknessValue.Text = $"{result.ThicknessesNm[t]:f1} nm";
+        //int t = Math.Clamp(trackBarThickness.Value, 0, s.ThicknessCount - 1); //260820Cl 変更
+        //labelThicknessValue.Text = $"{result.ThicknessesNm[t]:f1} nm";
+        //int t = Math.Clamp(SelectedThicknessIndex(), 0, s.ThicknessCount - 1); //260820Cl 変更 (/simplify): index は常に範囲内
+        int t = thicknessIndex;
 
         var thetaB = resultThetaB;
         var inThetaB = comboBoxXAxis.SelectedIndex == 1 && !double.IsNaN(thetaB);
-        double XOf(int o) => inThetaB ? result.Orientations[o].TiltRad / thetaB : result.Orientations[o].TiltRad * 1e3;
+        //double XOf(int o) => inThetaB ? result.Orientations[o].TiltRad / thetaB : result.Orientations[o].TiltRad * 1e3; //260820Cl 変更 (/simplify)
+        //260820Cl 変更 (/simplify): 傾斜角と x 座標は全曲線で共通なので 1 回だけ作る (旧は曲線ごとに配列生成・変換していた)
+        //double[] tilt = [.. result.Orientations.Select(o => o.TiltRad)]; //260820Cl 変更 (/simplify2): run 不変なのでキャッシュ、collection expression の 2 段確保もやめる
+        //double[] xs = [.. tilt.Select(r => inThetaB ? r / thetaB : r * 1e3)];
+        if (!ReferenceEquals(headerResult, result))
+        {
+            //run 不変のもの (診断見出し・傾斜角配列) は result が替わったときだけ作る
+            headerLines = BuildDiagnosticsHeader();
+            tiltCache = new double[s.OrientationCount];
+            for (int o = 0; o < tiltCache.Length; o++) tiltCache[o] = result.Orientations[o].TiltRad;
+            headerResult = result;
+        }
+        var tilt = tiltCache;
+        var xs = new double[tilt.Length];
+        var xScale = inThetaB ? 1 / thetaB : 1e3;
+        for (int o = 0; o < xs.Length; o++) xs[o] = tilt[o] * xScale;
 
         var profiles = new List<Profile>();
         var stats = new StringBuilder();
@@ -464,11 +612,12 @@ public partial class FormALCHEMI : FormBase
             {
                 //260809Cl: 処理順は「畳み込み → 規格化」に固定 (作者決定)。逆にすると ICP の基準が畳み込み前の
                 //走査平均のままになって意味が変わる
-                var y = Normalize(Spread(result.Curve(result.Total, t, si, c)));
+                var y = Normalize(Spread(result.Curve(result.Total, t, si, c), tilt));
                 var p = new Profile { Color = SeriesColors[color++ % SeriesColors.Length], LineWidth = 2f,
                     text = $"{result.Sites[si].Label} / {result.ChannelData[c].Target.ShortLabel}" };
+                p.Pt.Capacity = s.OrientationCount; //260820Cl 追加 (/simplify2): 1001 点 × 15 曲線の倍々再確保を避ける
                 for (int o = 0; o < s.OrientationCount; o++)
-                    p.Pt.Add(new PointD(XOf(o), y[o]));
+                    p.Pt.Add(new PointD(xs[o], y[o])); //260820Cl 変更 (/simplify): 旧 XOf(o)
                 profiles.Add(p);
                 first ??= y;
                 var contrast = y.Max() - y.Min();
@@ -486,24 +635,39 @@ public partial class FormALCHEMI : FormBase
             ? [.. BraggPositions(thetaB, inThetaB)] : [];
         graphControl.AddProfiles([.. profiles], showLegend: true);
 
-        labelStats.Text = Localization.Loc(en: "Contrast (max−min)/mean", ja: "コントラスト (max−min)/mean",
+        //260820Cl 変更 (作者決定): labelStats / labelBasis (AutoSize 1 行ラベル) を廃止し、ReadOnly・Multiline・
+        //縦スクロールの textBoxDiagnostics 1 個に統合した。1 行ラベルでは親パネル幅を超えた分が黙ってクリップされ、
+        //⑧⑬ で「全 run に出す」と決めた Experimental タグや条件付き警告が画面外に出ていた (docs のキャプチャで確認)。
+        //★並び順も変えた: 保証事項 (basis 診断 → fit 適格性 → Experimental → 条件付き警告) を先頭に 1 項目 1 行で置き、
+        //スクロールしなくても見えるようにする。項目数がサイト×チャネルで増えるコントラスト統計は末尾 (折り返しで流す)。
+        //旧:
+        //labelStats.Text = Localization.Loc(en: "Contrast (max−min)/mean", ja: "コントラスト (max−min)/mean",
+        //    de: "Kontrast (max−min)/Mittel", fr: "Contraste (max−min)/moyenne", es: "Contraste (max−min)/media",
+        //    pt: "Contraste (max−min)/média", it: "Contrasto (max−min)/media", ru: "Контраст (max−min)/среднее",
+        //    zhHans: "对比度 (max−min)/mean", zhHant: "對比度 (max−min)/mean", ko: "대비 (max−min)/평균") + " —  " + stats;
+        //labelBasis.Text = $"basis {b.BeamCount} ({b.CenterOnlyBeamCount} + {b.AddedByUnion})   "
+        //    + $"F(s) ≤ {b.MaxShapeArgumentAngstromInv:f2} Å⁻¹   expanded-basis {b.ExpandedBasisMaxRelDiff:e1}   "
+        //    + FitEligibilityText(b.Eligibility) + ExperimentalNotice() + LowVoltageNotice() + TruncationNotice() + NonFiniteNotice()
+        //    + (b.Warnings.Length == 0 ? "" : "   ⚠ " + string.Join(" / ", b.Warnings));
+        //260820Cl 変更 (/simplify): run 不変の見出し行はキャッシュ (BuildDiagnosticsHeader)、ここで足すのはコントラスト行だけ。
+        //旧は毎回 6 行を組み直し (NonFiniteNotice のテンソル全走査を含む)、Trim で Notice の旧区切りを落とし、ScrollToCaret を呼んでいた
+        //(Text 代入で先頭へ戻るので不要)。
+        //if (!ReferenceEquals(headerResult, result)) { headerLines = BuildDiagnosticsHeader(); headerResult = result; } //260820Cl (/simplify2) 先頭へ移動
+        var contrastLine = Localization.Loc(en: "Contrast (max−min)/mean", ja: "コントラスト (max−min)/mean",
             de: "Kontrast (max−min)/Mittel", fr: "Contraste (max−min)/moyenne", es: "Contraste (max−min)/media",
             pt: "Contraste (max−min)/média", it: "Contrasto (max−min)/media", ru: "Контраст (max−min)/среднее",
-            zhHans: "对比度 (max−min)/mean", zhHant: "對比度 (max−min)/mean", ko: "대비 (max−min)/평균") + " —  " + stats;
-
-        var b = result.Basis;
-        //260809Cl 変更: 「fit 適格 / 不適格」の 2 値表示をやめ、AlchemiBasisDiagnostic.Eligibility (常に未評価) を出す。
-        //旧: b.AcceptedForFit ? "fit 適格" : "⚠ fit 不適格"。偽陽性 (指示書 §2-8 ⑦) がある状態で「適格」と
-        //保証表示するのは誤りの方向が悪い、という作者決定。生の診断値 (expanded-basis) は左に出したままにする
-        labelBasis.Text = $"basis {b.BeamCount} ({b.CenterOnlyBeamCount} + {b.AddedByUnion})   "
-            + $"F(s) ≤ {b.MaxShapeArgumentAngstromInv:f2} Å⁻¹   expanded-basis {b.ExpandedBasisMaxRelDiff:e1}   "
-            + FitEligibilityText(b.Eligibility)
-            + ExperimentalNotice()
-            + LowVoltageNotice()
-            + TruncationNotice()
-            + NonFiniteNotice()
-            + (b.Warnings.Length == 0 ? "" : "   ⚠ " + string.Join(" / ", b.Warnings));
+            zhHans: "对比度 (max−min)/mean", zhHant: "對比度 (max−min)/mean", ko: "대비 (max−min)/평균") + " —  " + stats.ToString().TrimEnd();
+        //textBoxDiagnostics.Text = string.Join(Environment.NewLine, [.. headerLines, contrastLine]); //260820Cl 変更 (/simplify2)
+        var text = string.Join(Environment.NewLine, [.. headerLines, contrastLine]);
+        if (text != lastDiagnosticsText) { textBoxDiagnostics.Text = text; lastDiagnosticsText = text; } //x 軸切替等で文字列が同じなら WM_SETTEXT を飛ばさない
     }
+
+    /// <summary>260820Cl 追加 (/simplify2): 直前に流した診断文字列 (同値なら再代入しない)。エラー表示で上書きしたら null に戻す。</summary>
+    private string lastDiagnosticsText;
+
+    /// <summary>260820Cl 追加 (/simplify2): 直前の run が失敗したときのメッセージ。result は前回成功分のまま残るので、
+    /// 次の再描画で見出しの先頭に差し込み、失敗した run を成功と誤読させない。成功した run で null に戻す。</summary>
+    private string runError;
 
     /// <summary>260809Cl 追加: fit 適格性の表示文。v1 は常に「未評価」だが、⑦⑤⑥ を直したら
     /// <see cref="AlchemiFitEligibility"/> の 3 値がそのまま出るように書いてある。</summary>
@@ -536,11 +700,12 @@ public partial class FormALCHEMI : FormBase
     /// 「この run は検証済み」と言える場面は事実上ないため、条件分岐せず常に出す。</summary>
     //260809Cl 変更: 「定量検証済み」だけでは**実験と照合済み**と読まれ得る。作者決定で文献 (OAR 1999) との
     //比較を公開後に回したので、**照合相手が独立 multislice コードであること**を文面に出す (指示書 §1-10②)。
-    //⚠あわせて**チャネル名を落として短くした** — この診断行は右端で切れており (docs のキャプチャで確認)、
-    //  ⑧⑬ で「常に出す」と決めた Experimental タグが実際には見えていない。チャネルはマニュアルと GUI にある。
-    //  ★行の折り返し (labelBasis と panelCurveFooter の高さ) は作者の GUI 判断なので触っていない。
+    //⚠あわせて**チャネル名を落として短くした** — 当時の診断行は右端で切れていて (docs のキャプチャで確認)、
+    //  ⑧⑬ で「常に出す」と決めた Experimental タグが実際には見えていなかった。チャネルはマニュアルと GUI にある。
+    //  ★260820Cl: 切れの問題は labelBasis を廃止して textBoxDiagnostics (Multiline・縦スクロール) に統合し、
+    //  タグを独立行として先頭側に置くことで解消した (作者決定)。文面は短いまま据え置く。
     //旧文面: en "Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV (Al-K / Co-K / Co-L)" ほか 10 言語
-    private static string ExperimentalNotice() => "   ⚠ " + Localization.Loc(
+    private static string ExperimentalNotice() => Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + … — 記号は呼び出し側で付ける
         en: "Experimental: cross-checked against a multislice code only (beta-AlCo [001], 250 keV)",
         ja: "Experimental: 検証は multislice コードとの比較のみ (β-AlCo [001] 250 keV)",
         de: "Experimental: nur gegen einen Multislice-Code geprüft (beta-AlCo [001], 250 keV)",
@@ -559,7 +724,7 @@ public partial class FormALCHEMI : FormBase
     {
         if (result.Total.All(double.IsFinite) && result.Dynamic.All(double.IsFinite) && result.Dechannelled.All(double.IsFinite))
             return "";
-        return "   ⚠ " + Localization.Loc(
+        return Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + …
             en: "the result contains non-finite values (NaN or infinity) - do not use it",
             ja: "結果に非有限値 (NaN または無限大) が含まれています。使用しないでください",
             de: "das Ergebnis enthält nicht-endliche Werte (NaN oder unendlich) - nicht verwenden",
@@ -576,7 +741,7 @@ public partial class FormALCHEMI : FormBase
     /// <summary>260810Cl 追加: 80 kV 未満の告知。**hard gate にはしない** (作者決定) —
     /// s の要求が s_kin(E0) に収まる限り計算そのものは正しいので、電圧で弾くのは過剰。
     /// 「16 Å⁻¹ を保証できる下限が 80 kV」という事実だけを伝える。</summary>
-    private string LowVoltageNotice() => Voltage >= 80 ? "" : "   ⚠ " + Localization.Loc(
+    private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + …
         en: "below 80 kV: the form factor table cannot guarantee s up to 16 A^-1 at this voltage",
         ja: "80 kV 未満: この電圧では形状因子テーブルが s = 16 Å⁻¹ までを保証できません",
         de: "unter 80 kV: die Formfaktortabelle kann s bis 16 A^-1 bei dieser Spannung nicht garantieren",
@@ -609,7 +774,7 @@ public partial class FormALCHEMI : FormBase
             hit.Add(d.Target.ShortLabel);
             bound = Math.Max(bound, eps);
         }
-        return hit.Count == 0 ? "" : "   ⚠ " + Localization.Loc(
+        return hit.Count == 0 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + …
             en: "F(s) truncated to zero beyond the certified range for {0} (bound |F| <= {1})",
             ja: "{0} で保証範囲の外の F(s) を 0 で打ち切りました (上界 |F| ≤ {1})",
             de: "F(s) jenseits des zertifizierten Bereichs für {0} auf null gesetzt (Schranke |F| <= {1})",
@@ -626,23 +791,32 @@ public partial class FormALCHEMI : FormBase
 
     private IEnumerable<PointD> BraggPositions(double thetaB, bool inThetaB)
     {
-        var maxN = (int)(result.Orientations[^1].TiltRad / thetaB);
+        //var maxN = (int)(result.Orientations[^1].TiltRad / thetaB); //260820Cl 変更 (/simplify2): 巨大セル × 広い走査で縦線が 1e4 本にならないよう上限
+        var maxN = Math.Min((int)(result.Orientations[^1].TiltRad / thetaB), 200);
         for (int n = -maxN; n <= maxN; n++)
             yield return new PointD(inThetaB ? n : n * thetaB * 1e3, double.NaN);
     }
 
     /// <summary>260809Cl 追加: 選択中の角度広がりを 1 本の曲線に掛ける (None ならそのまま返す)。
     /// カーネルは方位軸上で評価するので、走査の傾斜角をそのまま渡す。</summary>
-    private double[] Spread(double[] y) => comboBoxAngularSpread.SelectedIndex == 1
-        ? AlchemiAngularSpread.Gaussian(y, [.. result.Orientations.Select(o => o.TiltRad)], numericBoxSpreadFwhm.Value * 1e-3)
+    //private double[] Spread(double[] y) => comboBoxAngularSpread.SelectedIndex == 1 //260820Cl 変更 (/simplify): 傾斜角配列は呼び出し側で 1 回作って渡す
+    //    ? AlchemiAngularSpread.Gaussian(y, [.. result.Orientations.Select(o => o.TiltRad)], numericBoxSpreadFwhm.Value * 1e-3)
+    //    : y;
+    private double[] Spread(double[] y, double[] tiltRad) => comboBoxAngularSpread.SelectedIndex == 1
+        ? AlchemiAngularSpread.Gaussian(y, tiltRad, numericBoxSpreadFwhm.Value * 1e-3)
         : y;
 
-    private double[] Normalize(double[] y) => comboBoxNormalization.SelectedIndex switch
+    //private double[] Normalize(double[] y) => comboBoxNormalization.SelectedIndex switch //260820Cl 変更 (/simplify): 旧は要素ごとに Average()/Max() を再計算 (O(N²))
+    //{
+    //    0 => y.Average() > 0 ? [.. y.Select(v => v / y.Average())] : y,
+    //    1 => y.Max() > 0 ? [.. y.Select(v => v / y.Max())] : y,
+    //    _ => y,
+    //};
+    private double[] Normalize(double[] y)
     {
-        0 => y.Average() > 0 ? [.. y.Select(v => v / y.Average())] : y,
-        1 => y.Max() > 0 ? [.. y.Select(v => v / y.Max())] : y,
-        _ => y,
-    };
+        var d = comboBoxNormalization.SelectedIndex switch { 0 => y.Average(), 1 => y.Max(), _ => 0.0 };
+        return d > 0 ? [.. y.Select(v => v / d)] : y;
+    }
 
     private static double Correlation(double[] x, double[] y)
     {
@@ -681,8 +855,10 @@ public partial class FormALCHEMI : FormBase
         Key("model", $"{result.ModelTier} (local form-factor approximation; NOT the two-momentum MDFF)");
         Key("quantity", $"{result.Quantity} ({result.Normalization})");
         Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}");
-        Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
-            + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
+        //Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " //260820Cl 変更 (/simplify2): この 1 行だけ既定カルチャだった (de/fr では小数点がカンマになり conventions 行と矛盾)
+        //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
+        Key("cell_nm", string.Create(inv, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
+            + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
         Key("cell_volume_nm3", result.UnitCellVolumeNm3.ToString("e8", inv));
         Key("accelerating_voltage_kV", result.IncidentEnergyKeV.ToString("f3", inv));
         Key("scan_row_hkl", $"{resultRow.H} {resultRow.K} {resultRow.L}");

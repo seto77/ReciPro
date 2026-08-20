@@ -68,7 +68,7 @@ Notez lesquelles survivent à une normalisation. Les étapes 1 et 3, ainsi que t
 
 | Élément | Description | Défaut |
 |---------|-------------|--------|
-| **Rangée ( h k l )** | Rangée systématique à balayer, donnée en indices de réflexion. L'axe d'inclinaison est pris perpendiculaire à la fois au faisceau et à ce $\mathbf{g}$, de sorte que le balayage traverse les conditions de Bragg de cette rangée | (1 0 0) |
+| **Rangée g = ( h k l )** | Rangée systématique à balayer, donnée par les indices de réflexion $(h\,k\,l)$ de son vecteur du réseau réciproque $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$ — et non une direction $[u\,v\,w]$. L'axe d'inclinaison est pris perpendiculaire à la fois au faisceau et à ce $\mathbf{g}$, de sorte que le balayage traverse les conditions de Bragg de cette rangée | (1 0 0) |
 | **Plage ±** | Demi-largeur du balayage en inclinaison (mrad). Au-delà d'environ 10 mrad, une base union fixe n'est plus garantie ; au-delà de 30 mrad, on sort de la garantie v1 | 8 mrad |
 | **Points** | Nombre de points de balayage (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ La ligne du dessous indique l'angle de Bragg $\theta_B$ de la rangée choisie, �
 
 ### Épaisseur
 
-Donnez le début, la fin et le pas (nm). **Toutes les épaisseurs sont calculées ensemble en une seule exécution** ; le résultat se sélectionne avec le curseur sous la courbe.
+Donnez le début, la fin et le pas (nm). **Toutes les épaisseurs sont calculées ensemble en une seule exécution** ; le résultat se sélectionne avec la case **Épaisseur** sous la courbe (les boutons fléchés parcourent les épaisseurs calculées ; une valeur saisie est ramenée à la plus proche). Si le début et la fin ne donnent qu'une seule épaisseur, il n'y a rien à sélectionner et la case est désactivée.
 
 Le contraste de site varie fortement — et peut même changer de signe — entre échantillons minces et épais ; vérifiez donc plusieurs épaisseurs avant de conclure. C'est pourquoi le sélecteur d'épaisseur se trouve juste sous la courbe.
 
@@ -93,7 +93,7 @@ Le contraste de site varie fortement — et peut même changer de signe — entr
 | **Inclure la composante déchenalisée** | Ajouter ou non $Y_\text{dech}$ ci-dessus | activé |
 | **Étalement angulaire** | Convolue la courbe avec l'étalement angulaire du faisceau incident : **Aucun** ou **Gaussian** avec une largeur à mi-hauteur en mrad. C'est un post-traitement sur l'axe des orientations, appliqué **avant** la normalisation d'affichage | Aucun |
 
-**Le plafond de 1600 faisceaux est le pendant de la plage tabulée $s \le 16\ \text{Å}^{-1}$ du facteur de forme d'ionisation.** En pratique, même 1600 faisceaux n'exigent qu'environ 10,5 Å⁻¹, de sorte que la plage tabulée n'est jamais épuisée tant que le plafond est respecté. La valeur réellement atteinte est indiquée sur la ligne de [diagnostic de base](#diagnostic-de-base) sous le graphique.
+**Le plafond de 1600 faisceaux est le pendant de la plage tabulée $s \le 16\ \text{Å}^{-1}$ du facteur de forme d'ionisation.** En pratique, même 1600 faisceaux n'exigent qu'environ 10,5 Å⁻¹, de sorte que la plage tabulée n'est jamais épuisée tant que le plafond est respecté. La valeur réellement atteinte est indiquée sur la première ligne de la zone de [diagnostic de base](#diagnostic-de-base) sous le graphique.
 
 ### Canaux d'ionisation
 
@@ -120,7 +120,7 @@ Une fois le calcul terminé, une courbe est tracée par couple site × canal. La
 
 | Élément | Description |
 |---------|-------------|
-| **Épaisseur** | Sélectionne l'épaisseur affichée à l'aide d'un curseur (rien n'est recalculé) |
+| **Épaisseur** | Sélectionne l'épaisseur affichée ; les boutons fléchés parcourent les épaisseurs calculées et une valeur saisie est ramenée à la plus proche (rien n'est recalculé) |
 | **Normalisation** | **Moyenne du balayage (ICP)** = diviser par la moyenne sur tout le balayage (la grandeur normalement utilisée en ALCHEMI) / **Maximum = 1** / **Brut (par électron)** |
 | **Axe X** | Bascule entre **mrad** et **θ_B** (en unités de l'angle de Bragg de la rangée balayée) |
 | **Conditions de Bragg** | Trace des traits verticaux en $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ Une fois le calcul terminé, une courbe est tracée par couple site × canal. La
 
 ### Contraste et corrélation
 
-La première ligne sous la courbe donne, par série, le **contraste** $(\max-\min)/\text{moyenne}$ et le **coefficient de corrélation** $r$ par rapport à la première série. C'est un résumé permettant de juger d'un coup d'œil quel site agit : deux séries dont $r$ est proche de $+1$ ont la même dépendance en orientation, ce qui signifie que ces données ne peuvent pas séparer ces sites.
+Les dernières lignes de la zone de diagnostic en lecture seule sous la courbe (faire défiler pour la suite ; le texte peut être sélectionné et copié) donnent, par série, le **contraste** $(\max-\min)/\text{moyenne}$ et le **coefficient de corrélation** $r$ par rapport à la première série. C'est un résumé permettant de juger d'un coup d'œil quel site agit : deux séries dont $r$ est proche de $+1$ ont la même dépendance en orientation, ce qui signifie que ces données ne peuvent pas séparer ces sites.
 
 ### Diagnostic de base
 
-La deuxième ligne indique l'état de la base.
+Les premières lignes de la zone de diagnostic indiquent l'état de la base, un élément par ligne.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ aptitude au fit NON évaluée   ⚠ Experimental : vérifié quantitativement uniquement pour beta-AlCo [001] à 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ aptitude au fit NON évaluée (la v1 ne certifie pas les ajustements quantitatifs d'occupation)
+⚠ Experimental : vérifié uniquement face à un code multislice (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (centre seul + ajoutés par l'union)** : taille de la véritable union des réflexions sur toutes les orientations du balayage
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ apti
 
 ⚠ **La v1 ne certifie pas les ajustements quantitatifs d'occupation.** La valeur brute du diagnostic reste affichée et plus elle est petite mieux c'est, mais traitez-la comme une indication, non comme une note de réussite. Notez aussi qu'elle est définie sur le **rendement absolu** : elle est donc conservatrice si vous ne regardez que l'ICP (qui divise par la moyenne du balayage).
 
-D'autres avertissements sont ajoutés dans les situations suivantes.
+D'autres avertissements sont ajoutés sous forme de lignes séparées (chacune précédée de ⚠) dans la zone de diagnostic, dans les situations suivantes.
 
 - **Tension d'accélération inférieure à 80 kV** : à cette tension, la table de facteurs de forme ne garantit pas $s$ jusqu'à $16\ \text{Å}^{-1}$. Le calcul reste correct tant que le $s$ exigé par la base reste dans la plage certifiée : c'est donc un **avis, pas un refus**
 - **Troncature du facteur de forme** : là où $F(s)$ au-delà de la plage certifiée a été tronqué à zéro, **la borne d'erreur correspondante $|F| \le \varepsilon$ est affichée numériquement**. Rien n'est extrapolé en silence

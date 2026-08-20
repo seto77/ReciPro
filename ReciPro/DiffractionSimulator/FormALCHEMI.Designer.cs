@@ -32,9 +32,12 @@ namespace ReciPro
             toolTip = new ToolTip(components);
             panelLeft = new Panel();
             groupBoxScan = new GroupBox();
-            numericBoxAxisH = new NumericBox();
-            numericBoxAxisK = new NumericBox();
-            numericBoxAxisL = new NumericBox();
+            //260820Cl 変更 (作者指示): 反射指数 (hkl) の入力は FormMain 等と同じ IndexControl に統一
+            //numericBoxAxisH = new NumericBox();
+            //numericBoxAxisK = new NumericBox();
+            //numericBoxAxisL = new NumericBox();
+            labelRow = new Label();
+            indexControlRow = new IndexControl();
             numericBoxRange = new NumericBox();
             numericBoxPoints = new NumericBox();
             labelThetaB = new Label();
@@ -60,17 +63,21 @@ namespace ReciPro
             tabPageCurve = new TabPage();
             graphControl = new GraphControl();
             panelCurveFooter = new Panel();
-            labelThickness = new Label();
-            trackBarThickness = new TrackBar();
-            labelThicknessValue = new Label();
+            //260820Cl 変更 (作者指示): 厚みセレクタ (Label + TrackBar + Label) を NumericBox 1 個に統合
+            //labelThickness = new Label();
+            //trackBarThickness = new TrackBar();
+            //labelThicknessValue = new Label();
+            numericBoxThickness = new NumericBox();
             labelNormalization = new Label();
             comboBoxNormalization = new ComboBox();
             labelXAxis = new Label();
             comboBoxXAxis = new ComboBox();
             checkBoxShowBragg = new CheckBox();
             buttonExport = new Button();
-            labelStats = new Label();
-            labelBasis = new Label();
+            //260820Cl 変更 (作者決定): labelStats / labelBasis を廃止し、ReadOnly・Multiline・縦スクロールの TextBox 1 個に統合
+            //labelStats = new Label();
+            //labelBasis = new Label();
+            textBoxDiagnostics = new TextBox();
             tabPage2DMap = new TabPage();
             tabPageFit = new TabPage();
             statusStrip = new StatusStrip();
@@ -93,76 +100,107 @@ namespace ReciPro
             tabControl.SuspendLayout();
             tabPageCurve.SuspendLayout();
             panelCurveFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarThickness).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)trackBarThickness).BeginInit(); //260820Cl 廃止
             statusStrip.SuspendLayout();
             SuspendLayout();
 
             #region 左ペイン: 走査
-            groupBoxScan.Controls.Add(numericBoxAxisH);
-            groupBoxScan.Controls.Add(numericBoxAxisK);
-            groupBoxScan.Controls.Add(numericBoxAxisL);
+            //groupBoxScan.Controls.Add(numericBoxAxisH); //260820Cl 廃止
+            //groupBoxScan.Controls.Add(numericBoxAxisK); //260820Cl 廃止
+            //groupBoxScan.Controls.Add(numericBoxAxisL); //260820Cl 廃止
+            groupBoxScan.Controls.Add(labelRow); //260820Cl 追加
+            groupBoxScan.Controls.Add(indexControlRow); //260820Cl 追加
             groupBoxScan.Controls.Add(numericBoxRange);
             groupBoxScan.Controls.Add(numericBoxPoints);
             groupBoxScan.Controls.Add(labelThetaB);
             groupBoxScan.Location = new System.Drawing.Point(6, 4);
             groupBoxScan.Name = "groupBoxScan";
-            groupBoxScan.Size = new System.Drawing.Size(346, 104);
+            //groupBoxScan.Size = new System.Drawing.Size(346, 104); //260820Cl 変更: IndexControl (h k l ヘッダ付き・高さ 41) のぶん +16
+            groupBoxScan.Size = new System.Drawing.Size(346, 120);
             groupBoxScan.TabIndex = 0;
             groupBoxScan.TabStop = false;
             groupBoxScan.Text = "Rocking scan";
 
-            numericBoxAxisH.DecimalPlaces = 0;
-            numericBoxAxisH.HeaderText = "Tilt axis  (";
-            numericBoxAxisH.Location = new System.Drawing.Point(8, 20);
-            numericBoxAxisH.Maximum = 20D;
-            numericBoxAxisH.Minimum = -20D;
-            numericBoxAxisH.Name = "numericBoxAxisH";
-            numericBoxAxisH.Size = new System.Drawing.Size(112, 22);
-            numericBoxAxisH.TabIndex = 0;
-            numericBoxAxisH.Value = 1D;//既定は (1 0 0) 系統反射列
+            //260820Cl 変更 (作者指示): NumericBox 3 個 (旧ヘッダ "Tilt axis (" は誤解を招く — 傾斜軸は g に垂直な別ベクトル) を
+            //廃止し、IndexControl (Mode=Plane → "(h k l)" ヘッダ付き) に置き換えた。入力は系統反射列 g の反射指数であって
+            //方向指数 [uvw] ではないことが見た目で分かる。
+            //numericBoxAxisH.DecimalPlaces = 0;
+            //numericBoxAxisH.HeaderText = "Tilt axis  (";
+            //numericBoxAxisH.Location = new System.Drawing.Point(8, 20);
+            //numericBoxAxisH.Maximum = 20D;
+            //numericBoxAxisH.Minimum = -20D;
+            //numericBoxAxisH.Name = "numericBoxAxisH";
+            //numericBoxAxisH.Size = new System.Drawing.Size(112, 22);
+            //numericBoxAxisH.TabIndex = 0;
+            //numericBoxAxisH.Value = 1D;//既定は (1 0 0) 系統反射列
+            //
+            //numericBoxAxisK.DecimalPlaces = 0;
+            //numericBoxAxisK.Location = new System.Drawing.Point(120, 20);
+            //numericBoxAxisK.Maximum = 20D;
+            //numericBoxAxisK.Minimum = -20D;
+            //numericBoxAxisK.Name = "numericBoxAxisK";
+            //numericBoxAxisK.Size = new System.Drawing.Size(52, 22);
+            //numericBoxAxisK.TabIndex = 1;
+            //numericBoxAxisK.Value = 0D;
+            //
+            //numericBoxAxisL.DecimalPlaces = 0;
+            //numericBoxAxisL.FooterText = ")";
+            //numericBoxAxisL.Location = new System.Drawing.Point(172, 20);
+            //numericBoxAxisL.Maximum = 20D;
+            //numericBoxAxisL.Minimum = -20D;
+            //numericBoxAxisL.Name = "numericBoxAxisL";
+            //numericBoxAxisL.Size = new System.Drawing.Size(66, 22);
+            //numericBoxAxisL.TabIndex = 2;
+            //numericBoxAxisL.Value = 0D;
 
-            numericBoxAxisK.DecimalPlaces = 0;
-            numericBoxAxisK.Location = new System.Drawing.Point(120, 20);
-            numericBoxAxisK.Maximum = 20D;
-            numericBoxAxisK.Minimum = -20D;
-            numericBoxAxisK.Name = "numericBoxAxisK";
-            numericBoxAxisK.Size = new System.Drawing.Size(52, 22);
-            numericBoxAxisK.TabIndex = 1;
-            numericBoxAxisK.Value = 0D;
+            labelRow.AutoSize = true;
+            labelRow.Location = new System.Drawing.Point(8, 36);
+            labelRow.Name = "labelRow";
+            labelRow.Size = new System.Drawing.Size(50, 15);
+            labelRow.TabIndex = 0;
+            labelRow.Text = "Row  g =";
 
-            numericBoxAxisL.DecimalPlaces = 0;
-            numericBoxAxisL.FooterText = ")";
-            numericBoxAxisL.Location = new System.Drawing.Point(172, 20);
-            numericBoxAxisL.Maximum = 20D;
-            numericBoxAxisL.Minimum = -20D;
-            numericBoxAxisL.Name = "numericBoxAxisL";
-            numericBoxAxisL.Size = new System.Drawing.Size(66, 22);
-            numericBoxAxisL.TabIndex = 2;
-            numericBoxAxisL.Value = 0D;
+            indexControlRow.BoxWidth = 40;
+            indexControlRow.Location = new System.Drawing.Point(100, 16);
+            indexControlRow.Maximum = 20;
+            indexControlRow.Mode = IndexControl.ModeEnum.Plane;
+            indexControlRow.Name = "indexControlRow";
+            indexControlRow.Size = new System.Drawing.Size(160, 41); //AutoSize=true なので実幅は BoxWidth から決まる (この値は見た目に効かない)
+            indexControlRow.TabIndex = 1;
+            //indexControlRow.Values = (1, 0, 0); //260820Cl 変更: タプルリテラルは VS デザイナー (CodeDOM) が解釈できず「170 行のコードを処理できません」になる
+            indexControlRow.Values = new System.ValueTuple<int, int, int>(1, 0, 0);//既定は (1 0 0) 系統反射列。HKLValuesConverter の InstanceDescriptor が生成するのと同じ形
 
             numericBoxRange.DecimalPlaces = 2;
             numericBoxRange.FooterText = "mrad";
             numericBoxRange.HeaderText = "Range  ±";
-            numericBoxRange.Location = new System.Drawing.Point(8, 46);
+            //numericBoxRange.Location = new System.Drawing.Point(8, 46); //260820Cl 変更 (+16)
+            numericBoxRange.Location = new System.Drawing.Point(8, 62);
             numericBoxRange.Maximum = 60D;
             numericBoxRange.Minimum = 0.01D;
             numericBoxRange.Name = "numericBoxRange";
+            numericBoxRange.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            numericBoxRange.SmartIncrement = true; //260820Cl 追加
             numericBoxRange.Size = new System.Drawing.Size(178, 22);
             numericBoxRange.TabIndex = 3;
             numericBoxRange.Value = 8D;
 
             numericBoxPoints.DecimalPlaces = 0;
             numericBoxPoints.HeaderText = "Points";
-            numericBoxPoints.Location = new System.Drawing.Point(190, 46);
+            //numericBoxPoints.Location = new System.Drawing.Point(190, 46); //260820Cl 変更 (+16)
+            numericBoxPoints.Location = new System.Drawing.Point(190, 62);
             numericBoxPoints.Maximum = 1001D;
             numericBoxPoints.Minimum = 3D;
             numericBoxPoints.Name = "numericBoxPoints";
+            numericBoxPoints.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            //numericBoxPoints.SmartIncrement = true; //260820Cl 追加 → /simplify2 で撤回: 101→110 と偶数へ誘導され θ=0 の標本が消える
+            numericBoxPoints.UpDown_Increment = 2D; //260820Cl 追加 (/simplify2): 奇偶を保つ刻み
             numericBoxPoints.Size = new System.Drawing.Size(148, 22);
             numericBoxPoints.TabIndex = 4;
             numericBoxPoints.Value = 101D;
 
             labelThetaB.AutoSize = true;
-            labelThetaB.Location = new System.Drawing.Point(8, 76);
+            //labelThetaB.Location = new System.Drawing.Point(8, 76); //260820Cl 変更 (+16)
+            labelThetaB.Location = new System.Drawing.Point(8, 92);
             labelThetaB.Name = "labelThetaB";
             labelThetaB.Size = new System.Drawing.Size(60, 15);
             labelThetaB.TabIndex = 5;
@@ -173,7 +211,8 @@ namespace ReciPro
             groupBoxThickness.Controls.Add(numericBoxThicknessStart);
             groupBoxThickness.Controls.Add(numericBoxThicknessEnd);
             groupBoxThickness.Controls.Add(numericBoxThicknessStep);
-            groupBoxThickness.Location = new System.Drawing.Point(6, 112);
+            //groupBoxThickness.Location = new System.Drawing.Point(6, 112); //260820Cl 変更 (+16)
+            groupBoxThickness.Location = new System.Drawing.Point(6, 128);
             groupBoxThickness.Name = "groupBoxThickness";
             groupBoxThickness.Size = new System.Drawing.Size(346, 50);
             groupBoxThickness.TabIndex = 1;
@@ -186,6 +225,8 @@ namespace ReciPro
             numericBoxThicknessStart.Maximum = 10000D;
             numericBoxThicknessStart.Minimum = 0D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
+            numericBoxThicknessStart.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            numericBoxThicknessStart.SmartIncrement = true; //260820Cl 追加
             numericBoxThicknessStart.Size = new System.Drawing.Size(106, 22);
             numericBoxThicknessStart.TabIndex = 0;
             numericBoxThicknessStart.Value = 10D;
@@ -196,6 +237,8 @@ namespace ReciPro
             numericBoxThicknessEnd.Maximum = 10000D;
             numericBoxThicknessEnd.Minimum = 0D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
+            numericBoxThicknessEnd.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            numericBoxThicknessEnd.SmartIncrement = true; //260820Cl 追加
             numericBoxThicknessEnd.Size = new System.Drawing.Size(96, 22);
             numericBoxThicknessEnd.TabIndex = 1;
             numericBoxThicknessEnd.Value = 100D;
@@ -207,6 +250,8 @@ namespace ReciPro
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 0.1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
+            numericBoxThicknessStep.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            numericBoxThicknessStep.SmartIncrement = true; //260820Cl 追加
             numericBoxThicknessStep.Size = new System.Drawing.Size(128, 22);
             numericBoxThicknessStep.TabIndex = 2;
             numericBoxThicknessStep.Value = 10D;
@@ -220,7 +265,8 @@ namespace ReciPro
             groupBoxCalculation.Controls.Add(labelAngularSpread);//260809Cl 追加
             groupBoxCalculation.Controls.Add(comboBoxAngularSpread);//260809Cl 追加
             groupBoxCalculation.Controls.Add(numericBoxSpreadFwhm);//260809Cl 追加
-            groupBoxCalculation.Location = new System.Drawing.Point(6, 166);
+            //groupBoxCalculation.Location = new System.Drawing.Point(6, 166); //260820Cl 変更 (+16)
+            groupBoxCalculation.Location = new System.Drawing.Point(6, 182);
             groupBoxCalculation.Name = "groupBoxCalculation";
             //260809Cl 変更: 角度広がりの行を足したので 78 → 104 (旧: new System.Drawing.Size(346, 78))。
             //下の groupBoxChannels / groupBoxSites を 13px ずつ縮めて吸収し、フォーム高さは変えない
@@ -240,6 +286,9 @@ namespace ReciPro
             numericBoxMaxNumOfBloch.Maximum = 1600D;
             numericBoxMaxNumOfBloch.Minimum = 1D;
             numericBoxMaxNumOfBloch.Name = "numericBoxMaxNumOfBloch";
+            numericBoxMaxNumOfBloch.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            //numericBoxMaxNumOfBloch.SmartIncrement = true; //260820Cl 追加 → /simplify2 で撤回: 非グリッド値 (155 等) で 1 クリックが増分以外の量 (有効 2 桁への丸め) を動かす
+            numericBoxMaxNumOfBloch.UpDown_Increment = 10D; //260820Cl 追加 (/simplify2)
             numericBoxMaxNumOfBloch.Size = new System.Drawing.Size(166, 22);
             numericBoxMaxNumOfBloch.TabIndex = 0;
             numericBoxMaxNumOfBloch.Value = 120D;
@@ -279,18 +328,23 @@ namespace ReciPro
             comboBoxAngularSpread.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxAngularSpread.Location = new System.Drawing.Point(112, 74);
             comboBoxAngularSpread.Name = "comboBoxAngularSpread";
-            comboBoxAngularSpread.Size = new System.Drawing.Size(100, 23);
+            //comboBoxAngularSpread.Size = new System.Drawing.Size(100, 23); //260820Cl 変更: FWHM にスピンが付いた分を譲る
+            comboBoxAngularSpread.Size = new System.Drawing.Size(86, 23);
             comboBoxAngularSpread.TabIndex = 5;
 
             numericBoxSpreadFwhm.DecimalPlaces = 2;
             numericBoxSpreadFwhm.Enabled = false;//既定 = None
             numericBoxSpreadFwhm.FooterText = "mrad";
             numericBoxSpreadFwhm.HeaderText = "FWHM";
-            numericBoxSpreadFwhm.Location = new System.Drawing.Point(216, 74);
+            //numericBoxSpreadFwhm.Location = new System.Drawing.Point(216, 74); //260820Cl 変更
+            numericBoxSpreadFwhm.Location = new System.Drawing.Point(202, 74);
             numericBoxSpreadFwhm.Maximum = 20D;
             numericBoxSpreadFwhm.Minimum = 0.01D;
             numericBoxSpreadFwhm.Name = "numericBoxSpreadFwhm";
-            numericBoxSpreadFwhm.Size = new System.Drawing.Size(122, 22);
+            numericBoxSpreadFwhm.ShowUpDown = true; //260820Cl 追加 (他フォームと同じ慣習)
+            numericBoxSpreadFwhm.SmartIncrement = true; //260820Cl 追加
+            //numericBoxSpreadFwhm.Size = new System.Drawing.Size(122, 22); //260820Cl 変更: スピン分 +14
+            numericBoxSpreadFwhm.Size = new System.Drawing.Size(136, 22);
             numericBoxSpreadFwhm.TabIndex = 6;
             numericBoxSpreadFwhm.Value = 1D;
             #endregion
@@ -299,9 +353,11 @@ namespace ReciPro
             groupBoxChannels.Controls.Add(checkedListBoxChannels);
             //260809Cl 変更: groupBoxCalculation が 26px 伸びたぶんを、下の 2 リストを 13px ずつ縮めて吸収する
             //(旧: Location(6, 248) / Size(346, 156))。フォーム高さと Simulate ボタンの位置は不変
-            groupBoxChannels.Location = new System.Drawing.Point(6, 274);
+            //260820Cl 変更: groupBoxScan が 16px 伸びたぶんをチャネル一覧で吸収 (旧: Location(6, 274) / Size(346, 143))。
+            //groupBoxSites 以下と Simulate ボタンの位置は不変
+            groupBoxChannels.Location = new System.Drawing.Point(6, 290);
             groupBoxChannels.Name = "groupBoxChannels";
-            groupBoxChannels.Size = new System.Drawing.Size(346, 143);
+            groupBoxChannels.Size = new System.Drawing.Size(346, 127);
             groupBoxChannels.TabIndex = 3;
             groupBoxChannels.TabStop = false;
             groupBoxChannels.Text = "Ionization channels";
@@ -330,20 +386,28 @@ namespace ReciPro
             #endregion
 
             #region 左ペイン: 実行
+            //260820Cl 追加 (作者指示): 他フォーム (CBED / EBSD / ImageSimulator / Trajectory / DynamicCompression) と同じ主要アクション色
+            buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSimulate.ForeColor = System.Drawing.Color.White;
             buttonSimulate.Location = new System.Drawing.Point(6, 566);
             buttonSimulate.Name = "buttonSimulate";
             buttonSimulate.Size = new System.Drawing.Size(240, 30);
             buttonSimulate.TabIndex = 5;
             buttonSimulate.Text = "Simulate";
-            buttonSimulate.UseVisualStyleBackColor = true;
+            //buttonSimulate.UseVisualStyleBackColor = true; //260820Cl 変更: BackColor を効かせるため false
+            buttonSimulate.UseVisualStyleBackColor = false;
             buttonSimulate.Click += buttonSimulate_Click;
 
+            //260820Cl 追加 (作者指示): 他フォームと同じ停止ボタン色
+            buttonStop.BackColor = System.Drawing.Color.IndianRed;
+            buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.Location = new System.Drawing.Point(252, 566);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(100, 30);
             buttonStop.TabIndex = 6;
             buttonStop.Text = "Stop";
-            buttonStop.UseVisualStyleBackColor = true;
+            //buttonStop.UseVisualStyleBackColor = true; //260820Cl 変更
+            buttonStop.UseVisualStyleBackColor = false;
             buttonStop.Visible = false;
             buttonStop.Click += buttonStop_Click;
 
@@ -391,45 +455,60 @@ namespace ReciPro
             graphControl.Name = "graphControl";
             graphControl.TabIndex = 0;
 
-            panelCurveFooter.Controls.Add(labelThickness);
-            panelCurveFooter.Controls.Add(trackBarThickness);
-            panelCurveFooter.Controls.Add(labelThicknessValue);
+            //panelCurveFooter.Controls.Add(labelThickness); //260820Cl 廃止
+            //panelCurveFooter.Controls.Add(trackBarThickness); //260820Cl 廃止
+            //panelCurveFooter.Controls.Add(labelThicknessValue); //260820Cl 廃止
+            panelCurveFooter.Controls.Add(numericBoxThickness); //260820Cl 追加
             panelCurveFooter.Controls.Add(labelNormalization);
             panelCurveFooter.Controls.Add(comboBoxNormalization);
             panelCurveFooter.Controls.Add(labelXAxis);
             panelCurveFooter.Controls.Add(comboBoxXAxis);
             panelCurveFooter.Controls.Add(checkBoxShowBragg);
             panelCurveFooter.Controls.Add(buttonExport);
-            panelCurveFooter.Controls.Add(labelStats);
-            panelCurveFooter.Controls.Add(labelBasis);
+            //panelCurveFooter.Controls.Add(labelStats); //260820Cl 廃止
+            //panelCurveFooter.Controls.Add(labelBasis); //260820Cl 廃止
+            panelCurveFooter.Controls.Add(textBoxDiagnostics); //260820Cl 追加
             panelCurveFooter.Dock = DockStyle.Bottom;
             panelCurveFooter.Name = "panelCurveFooter";
-            panelCurveFooter.Size = new System.Drawing.Size(200, 116);
+            //panelCurveFooter.Size = new System.Drawing.Size(200, 116); //260820Cl 変更: 診断テキストボックス 4 行分 (下余白込み) に合わせて 116→136
+            panelCurveFooter.Size = new System.Drawing.Size(200, 136);
             panelCurveFooter.TabIndex = 1;
 
             //厚みセレクタ — 実曲線を見て分かったとおり、サイト信号は厚みで符号すら変わるので最上段に置く
-            labelThickness.AutoSize = true;
-            labelThickness.Location = new System.Drawing.Point(6, 8);
-            labelThickness.Name = "labelThickness";
-            labelThickness.Size = new System.Drawing.Size(64, 15);
-            labelThickness.TabIndex = 0;
-            labelThickness.Text = "Thickness";
+            //260820Cl 変更 (作者指示): Label + TrackBar + Label の 3 個を NumericBox 1 個へ。スピンで計算済み厚みを順送りし
+            //(UpDown_Increment は run 後に刻みへ設定)、直接入力は最寄りの計算済み厚みへスナップする (FormALCHEMI.cs DrawCurves)。
+            //labelThickness.AutoSize = true;
+            //labelThickness.Location = new System.Drawing.Point(6, 8);
+            //labelThickness.Name = "labelThickness";
+            //labelThickness.Size = new System.Drawing.Size(64, 15);
+            //labelThickness.TabIndex = 0;
+            //labelThickness.Text = "Thickness";
+            //
+            //trackBarThickness.AutoSize = false;
+            //trackBarThickness.Location = new System.Drawing.Point(76, 4);
+            //trackBarThickness.Maximum = 0;
+            //trackBarThickness.Name = "trackBarThickness";
+            //trackBarThickness.Size = new System.Drawing.Size(240, 26);
+            //trackBarThickness.TabIndex = 1;
+            //trackBarThickness.TickStyle = TickStyle.BottomRight;
+            //trackBarThickness.Scroll += trackBarThickness_Scroll;
+            //
+            //labelThicknessValue.AutoSize = true;
+            //labelThicknessValue.Location = new System.Drawing.Point(322, 8);
+            //labelThicknessValue.Name = "labelThicknessValue";
+            //labelThicknessValue.Size = new System.Drawing.Size(50, 15);
+            //labelThicknessValue.TabIndex = 2;
+            //labelThicknessValue.Text = "-";
 
-            trackBarThickness.AutoSize = false;
-            trackBarThickness.Location = new System.Drawing.Point(76, 4);
-            trackBarThickness.Maximum = 0;
-            trackBarThickness.Name = "trackBarThickness";
-            trackBarThickness.Size = new System.Drawing.Size(240, 26);
-            trackBarThickness.TabIndex = 1;
-            trackBarThickness.TickStyle = TickStyle.BottomRight;
-            trackBarThickness.Scroll += trackBarThickness_Scroll;
-
-            labelThicknessValue.AutoSize = true;
-            labelThicknessValue.Location = new System.Drawing.Point(322, 8);
-            labelThicknessValue.Name = "labelThicknessValue";
-            labelThicknessValue.Size = new System.Drawing.Size(50, 15);
-            labelThicknessValue.TabIndex = 2;
-            labelThicknessValue.Text = "-";
+            numericBoxThickness.DecimalPlaces = 1;
+            numericBoxThickness.FooterText = "nm";
+            numericBoxThickness.HeaderText = "Thickness";
+            numericBoxThickness.Location = new System.Drawing.Point(6, 6);
+            numericBoxThickness.Name = "numericBoxThickness";
+            numericBoxThickness.ShowUpDown = true;
+            numericBoxThickness.Size = new System.Drawing.Size(200, 22);
+            numericBoxThickness.TabIndex = 0;
+            numericBoxThickness.ValueChanged += numericBoxThickness_ValueChanged;
 
             labelNormalization.AutoSize = true;
             labelNormalization.Location = new System.Drawing.Point(6, 40);
@@ -478,19 +557,33 @@ namespace ReciPro
             buttonExport.UseVisualStyleBackColor = true;
             buttonExport.Click += buttonExport_Click;
 
-            labelStats.AutoSize = true;
-            labelStats.Location = new System.Drawing.Point(6, 66);
-            labelStats.Name = "labelStats";
-            labelStats.Size = new System.Drawing.Size(10, 15);
-            labelStats.TabIndex = 9;
-            labelStats.Text = "";
+            //260820Cl 変更 (作者決定): AutoSize 1 行ラベル 2 本 (labelStats / labelBasis) は親パネル幅を超えた分が黙って
+            //クリップされ、⑧⑬ で「全 run に出す」と決めた Experimental タグや条件付き警告が画面外に出ていた。
+            //ReadOnly・Multiline・縦スクロールの TextBox 1 個に統合し、幅は左右 Anchor で親に追従させる。
+            //labelStats.AutoSize = true;
+            //labelStats.Location = new System.Drawing.Point(6, 66);
+            //labelStats.Name = "labelStats";
+            //labelStats.Size = new System.Drawing.Size(10, 15);
+            //labelStats.TabIndex = 9;
+            //labelStats.Text = "";
+            //
+            //labelBasis.AutoSize = true;
+            //labelBasis.Location = new System.Drawing.Point(6, 90);
+            //labelBasis.Name = "labelBasis";
+            //labelBasis.Size = new System.Drawing.Size(10, 15);
+            //labelBasis.TabIndex = 10;
+            //labelBasis.Text = "";
 
-            labelBasis.AutoSize = true;
-            labelBasis.Location = new System.Drawing.Point(6, 90);
-            labelBasis.Name = "labelBasis";
-            labelBasis.Size = new System.Drawing.Size(10, 15);
-            labelBasis.TabIndex = 10;
-            labelBasis.Text = "";
+            textBoxDiagnostics.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxDiagnostics.Location = new System.Drawing.Point(6, 66);
+            textBoxDiagnostics.Multiline = true;
+            textBoxDiagnostics.Name = "textBoxDiagnostics";
+            textBoxDiagnostics.ReadOnly = true;
+            textBoxDiagnostics.ScrollBars = ScrollBars.Vertical;
+            textBoxDiagnostics.Size = new System.Drawing.Size(188, 64); //260820Cl 4 行分 (15 px × 4 + 枠)
+            textBoxDiagnostics.TabIndex = 9;
+            textBoxDiagnostics.TabStop = false;
+            textBoxDiagnostics.Text = "";
             #endregion
 
             #region ステータスバー
@@ -536,7 +629,7 @@ namespace ReciPro
             tabPageCurve.ResumeLayout(false);
             panelCurveFooter.ResumeLayout(false);
             panelCurveFooter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarThickness).EndInit();
+            //((System.ComponentModel.ISupportInitialize)trackBarThickness).EndInit(); //260820Cl 廃止
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
             ResumeLayout(false);
@@ -548,7 +641,10 @@ namespace ReciPro
         private ToolTip toolTip;
         private Panel panelLeft;
         private GroupBox groupBoxScan;
-        private NumericBox numericBoxAxisH, numericBoxAxisK, numericBoxAxisL, numericBoxRange, numericBoxPoints;
+        //private NumericBox numericBoxAxisH, numericBoxAxisK, numericBoxAxisL, numericBoxRange, numericBoxPoints; //260820Cl 変更
+        private NumericBox numericBoxRange, numericBoxPoints;
+        private Label labelRow; //260820Cl 追加
+        private IndexControl indexControlRow; //260820Cl 追加: 系統反射列 g の反射指数 (hkl)
         private Label labelThetaB;
         private GroupBox groupBoxThickness;
         private NumericBox numericBoxThicknessStart, numericBoxThicknessEnd, numericBoxThicknessStep;
@@ -569,8 +665,12 @@ namespace ReciPro
         private TabPage tabPageCurve, tabPage2DMap, tabPageFit;
         private GraphControl graphControl;
         private Panel panelCurveFooter;
-        private Label labelThickness, labelThicknessValue, labelNormalization, labelXAxis, labelStats, labelBasis;
-        private TrackBar trackBarThickness;
+        //private Label labelThickness, labelThicknessValue, labelNormalization, labelXAxis, labelStats, labelBasis; //260820Cl 変更
+        //private Label labelThickness, labelThicknessValue, labelNormalization, labelXAxis; //260820Cl 変更
+        private Label labelNormalization, labelXAxis;
+        private NumericBox numericBoxThickness; //260820Cl 追加: グラフに表示する厚み (計算済みの値を順送り)
+        private TextBox textBoxDiagnostics; //260820Cl 追加: 基底診断・Experimental タグ・警告・コントラスト統計をまとめて出す
+        //private TrackBar trackBarThickness; //260820Cl 廃止
         private ComboBox comboBoxNormalization, comboBoxXAxis;
         private CheckBox checkBoxShowBragg;
         private Button buttonExport;

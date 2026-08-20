@@ -68,7 +68,7 @@ Fíjese en cuáles sobreviven a una normalización. Las etapas 1 y 3, y cualquie
 
 | Elemento | Descripción | Predeterminado |
 |----------|-------------|----------------|
-| **Fila ( h k l )** | Fila sistemática a barrer, dada como índices de reflexión. El eje de inclinación se toma perpendicular tanto al haz como a este $\mathbf{g}$, de modo que el barrido recorre esta fila a través de sus condiciones de Bragg | (1 0 0) |
+| **Fila g = ( h k l )** | Fila sistemática a barrer, dada como los índices de reflexión $(h\,k\,l)$ de su vector de la red recíproca $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$, no como una dirección $[u\,v\,w]$. El eje de inclinación se toma perpendicular tanto al haz como a este $\mathbf{g}$, de modo que el barrido recorre esta fila a través de sus condiciones de Bragg | (1 0 0) |
 | **Rango ±** | Semianchura del barrido de inclinación (mrad). Más allá de unos 10 mrad ya no se garantiza una base unión fija, y más allá de 30 mrad queda fuera de la garantía de la v1 | 8 mrad |
 | **Puntos** | Número de puntos del barrido (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ La línea inferior muestra el ángulo de Bragg $\theta_B$ de la fila elegida, a 
 
 ### Espesor
 
-Indique inicio, fin y paso (nm). **Todos los espesores se calculan juntos en una sola ejecución**, y el resultado se conmuta con el deslizador bajo la curva.
+Indique inicio, fin y paso (nm). **Todos los espesores se calculan juntos en una sola ejecución**, y el resultado se conmuta con la casilla **Espesor** bajo la curva (los botones de giro recorren los espesores calculados; un valor tecleado se ajusta al más cercano). Si el inicio y el fin dan un único espesor no hay nada que conmutar y la casilla queda deshabilitada.
 
 El contraste de sitio cambia mucho —e incluso puede invertir su signo— entre muestras delgadas y gruesas, así que compruebe varios espesores antes de sacar conclusiones. Por eso el selector de espesor está justo debajo de la curva.
 
@@ -93,7 +93,7 @@ El contraste de sitio cambia mucho —e incluso puede invertir su signo— entre
 | **Incluir la componente descanalizada** | Si se suma $Y_\text{dech}$ anterior | activado |
 | **Dispersión angular** | Convoluciona la curva con la dispersión angular del haz incidente: **Ninguno** o **Gaussian** con una anchura a media altura en mrad. Es un posprocesado sobre el eje de orientaciones, aplicado **antes** de la normalización de visualización | Ninguno |
 
-**El tope de 1600 haces es la contrapartida del rango tabulado $s \le 16\ \text{Å}^{-1}$ del factor de forma de ionización.** En la práctica, incluso 1600 haces solo requieren unos 10,5 Å⁻¹, así que el rango tabulado nunca se agota mientras se respete el tope. El valor realmente alcanzado se indica en la línea de [diagnóstico de la base](#diagnóstico-de-la-base) bajo el gráfico.
+**El tope de 1600 haces es la contrapartida del rango tabulado $s \le 16\ \text{Å}^{-1}$ del factor de forma de ionización.** En la práctica, incluso 1600 haces solo requieren unos 10,5 Å⁻¹, así que el rango tabulado nunca se agota mientras se respete el tope. El valor realmente alcanzado se indica en la primera línea del cuadro de [diagnóstico de la base](#diagnóstico-de-la-base) bajo el gráfico.
 
 ### Canales de ionización
 
@@ -120,7 +120,7 @@ Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leye
 
 | Elemento | Descripción |
 |----------|-------------|
-| **Espesor** | Selecciona el espesor mostrado con un deslizador (no se recalcula nada) |
+| **Espesor** | Selecciona el espesor mostrado; los botones de giro recorren los espesores calculados y un valor tecleado se ajusta al más cercano (no se recalcula nada) |
 | **Normalización** | **Media del barrido (ICP)** = dividir por la media de todo el barrido (la magnitud que se usa normalmente en ALCHEMI) / **Máximo = 1** / **Bruto (por electrón)** |
 | **Eje X** | Alterna entre **mrad** y **θ_B** (en unidades del ángulo de Bragg de la fila barrida) |
 | **Condiciones de Bragg** | Dibuja líneas verticales en $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leye
 
 ### Contraste y correlación
 
-La primera línea bajo la curva indica, por serie, el **contraste** $(\max-\min)/\text{media}$ y el **coeficiente de correlación** $r$ frente a la primera serie. Es un resumen para juzgar de un vistazo qué sitio está actuando: dos series con $r$ próximo a $+1$ tienen la misma dependencia con la orientación, es decir, esos datos no pueden separar esos sitios.
+Las últimas líneas del cuadro de diagnóstico de solo lectura bajo la curva (desplácese para ver el resto; el texto se puede seleccionar y copiar) indican, por serie, el **contraste** $(\max-\min)/\text{media}$ y el **coeficiente de correlación** $r$ frente a la primera serie. Es un resumen para juzgar de un vistazo qué sitio está actuando: dos series con $r$ próximo a $+1$ tienen la misma dependencia con la orientación, es decir, esos datos no pueden separar esos sitios.
 
 ### Diagnóstico de la base
 
-La segunda línea informa del estado de la base.
+Las primeras líneas del cuadro de diagnóstico informan del estado de la base, un elemento por línea.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ aptitud para ajuste NO evaluada   ⚠ Experimental: verificado cuantitativamente solo para beta-AlCo [001] a 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ aptitud para ajuste NO evaluada (v1 no certifica ajustes cuantitativos de ocupación)
+⚠ Experimental: contrastado solo frente a un código multislice (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (solo centro + añadidos por la unión)** : tamaño de la unión verdadera de reflexiones sobre todas las orientaciones del barrido
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ apti
 
 ⚠ **La v1 no certifica ajustes cuantitativos de ocupación.** El valor bruto del diagnóstico se sigue mostrando y cuanto menor mejor, pero trátelo como una indicación, no como una marca de aprobado. Tenga en cuenta además que se define sobre el **rendimiento absoluto**, por lo que resulta conservador si solo mira el ICP (que divide por la media del barrido).
 
-En las siguientes situaciones se añaden más advertencias.
+En las siguientes situaciones se añaden más advertencias como líneas independientes (cada una precedida de ⚠) en el cuadro de diagnóstico.
 
 - **Tensión de aceleración por debajo de 80 kV** : a esta tensión la tabla de factores de forma no garantiza $s$ hasta $16\ \text{Å}^{-1}$. El cálculo en sí sigue siendo correcto mientras el $s$ requerido por la base permanezca dentro del rango certificado, así que se trata de un **aviso, no de un rechazo**
 - **Truncamiento del factor de forma** : allí donde $F(s)$ más allá del rango certificado se truncó a cero, **se muestra numéricamente la cota de error resultante $|F| \le \varepsilon$**. Nada se extrapola en silencio

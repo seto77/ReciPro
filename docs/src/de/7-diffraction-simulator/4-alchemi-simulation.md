@@ -68,7 +68,7 @@ Beachten Sie, welche davon eine Normierung überleben. Die Stufen 1 und 3 sowie 
 
 | Eintrag | Beschreibung | Standard |
 |---------|--------------|----------|
-| **Reihe ( h k l )** | Die abzutastende systematische Reihe, als Reflexindizes angegeben. Die Kippachse steht senkrecht sowohl auf dem Strahl als auch auf diesem $\mathbf{g}$, sodass der Scan diese Reihe durch ihre Bragg-Bedingungen führt | (1 0 0) |
+| **Reihe g = ( h k l )** | Die abzutastende systematische Reihe, angegeben als Reflexindizes $(h\,k\,l)$ ihres reziproken Gittervektors $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$ — keine Richtung $[u\,v\,w]$. Die Kippachse steht senkrecht sowohl auf dem Strahl als auch auf diesem $\mathbf{g}$, sodass der Scan diese Reihe durch ihre Bragg-Bedingungen führt | (1 0 0) |
 | **Bereich ±** | Halbe Breite des Kippscans (mrad). Oberhalb von etwa 10 mrad ist eine feste Vereinigungsbasis nicht mehr garantiert, oberhalb von 30 mrad liegt es außerhalb der v1-Zusicherung | 8 mrad |
 | **Punkte** | Anzahl der Scanpunkte (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ Die Zeile darunter zeigt den Bragg-Winkel $\theta_B$ der gewählten Reihe, wie v
 
 ### Dicke
 
-Geben Sie Anfang, Ende und Schritt (nm) an. **Alle Dicken werden in einem Lauf gemeinsam berechnet**; das Ergebnis wird mit dem Schieberegler unter der Kurve umgeschaltet.
+Geben Sie Anfang, Ende und Schritt (nm) an. **Alle Dicken werden in einem Lauf gemeinsam berechnet**; das Ergebnis wird mit dem Feld **Dicke** unter der Kurve umgeschaltet (die Drehknöpfe schalten durch die berechneten Dicken; ein eingetippter Wert springt auf die nächstgelegene). Ergeben Anfang und Ende nur eine einzige Dicke, gibt es nichts umzuschalten und das Feld ist deaktiviert.
 
 Der Platzkontrast ändert sich zwischen dünnen und dicken Proben stark und kann sogar das Vorzeichen wechseln. Prüfen Sie daher mehrere Dicken, bevor Sie Schlüsse ziehen. Deshalb sitzt der Dickenwähler direkt unter der Kurve.
 
@@ -93,7 +93,7 @@ Der Platzkontrast ändert sich zwischen dünnen und dicken Proben stark und kann
 | **Dechannelling-Anteil einbeziehen** | Ob $Y_\text{dech}$ (oben) addiert wird | ein |
 | **Winkelverbreiterung** | Faltet die Kurve mit der Winkelverbreiterung des einfallenden Strahls: **Keine** oder **Gaussian** mit einer Halbwertsbreite in mrad. Ein Nachbearbeitungsschritt auf der Orientierungsachse, angewendet **vor** der Anzeigenormierung | Keine |
 
-**Die Obergrenze von 1600 Strahlen ist das Gegenstück zum tabellierten Bereich $s \le 16\ \text{Å}^{-1}$ des Ionisationsformfaktors.** In der Praxis erfordern selbst 1600 Strahlen nur etwa 10,5 Å⁻¹, sodass der tabellierte Bereich bei Einhaltung der Obergrenze nie ausgeschöpft wird. Der tatsächlich erreichte Wert steht in der Zeile [Basisdiagnose](#basisdiagnose) unter dem Diagramm.
+**Die Obergrenze von 1600 Strahlen ist das Gegenstück zum tabellierten Bereich $s \le 16\ \text{Å}^{-1}$ des Ionisationsformfaktors.** In der Praxis erfordern selbst 1600 Strahlen nur etwa 10,5 Å⁻¹, sodass der tabellierte Bereich bei Einhaltung der Obergrenze nie ausgeschöpft wird. Der tatsächlich erreichte Wert steht in der ersten Zeile des Felds [Basisdiagnose](#basisdiagnose) unter dem Diagramm.
 
 ### Ionisationskanäle
 
@@ -120,7 +120,7 @@ Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichn
 
 | Eintrag | Beschreibung |
 |---------|--------------|
-| **Dicke** | Wählt mit einem Schieberegler die angezeigte Dicke (es wird nichts neu berechnet) |
+| **Dicke** | Wählt die angezeigte Dicke; die Drehknöpfe schalten durch die berechneten Dicken, ein eingetippter Wert springt auf die nächstgelegene (es wird nichts neu berechnet) |
 | **Normierung** | **Scan-Mittel (ICP)** = durch das Mittel über den gesamten Scan teilen (die in ALCHEMI übliche Größe) / **Maximum = 1** / **Roh (pro Elektron)** |
 | **X-Achse** | Schaltet zwischen **mrad** und **θ_B** (in Einheiten des Bragg-Winkels der abgetasteten Reihe) um |
 | **Bragg-Bedingungen** | Zeichnet senkrechte Linien bei $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichn
 
 ### Kontrast und Korrelation
 
-Die erste Zeile unter der Kurve nennt je Serie den **Kontrast** $(\max-\min)/\text{Mittel}$ und den **Korrelationskoeffizienten** $r$ gegenüber der ersten Serie. Sie ist eine Zusammenfassung, um auf einen Blick zu beurteilen, welcher Platz wirkt: Zwei Serien mit $r$ nahe $+1$ haben dieselbe Orientierungsabhängigkeit, das heißt, diese Daten können jene Plätze nicht trennen.
+Die letzten Zeilen des schreibgeschützten Diagnosefelds unter der Kurve (für den Rest scrollen; der Text lässt sich markieren und kopieren) nennen je Serie den **Kontrast** $(\max-\min)/\text{Mittel}$ und den **Korrelationskoeffizienten** $r$ gegenüber der ersten Serie. Sie ist eine Zusammenfassung, um auf einen Blick zu beurteilen, welcher Platz wirkt: Zwei Serien mit $r$ nahe $+1$ haben dieselbe Orientierungsabhängigkeit, das heißt, diese Daten können jene Plätze nicht trennen.
 
 ### Basisdiagnose
 
-Die zweite Zeile meldet den Zustand der Basis.
+Die ersten Zeilen des Diagnosefelds melden den Zustand der Basis, ein Eintrag je Zeile.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ Fit-Tauglichkeit NICHT bewertet   ⚠ Experimental: quantitativ verifiziert nur für beta-AlCo [001] bei 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ Fit-Tauglichkeit NICHT bewertet (v1 zertifiziert keine quantitativen Besetzungsfits)
+⚠ Experimental: nur gegen einen Multislice-Code geprüft (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (nur Zentrum + durch Vereinigung ergänzt)** : Größe der echten Vereinigung der Reflexe über alle Orientierungen des Scans
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ Fit-
 
 ⚠ **v1 bescheinigt keine quantitativen Besetzungsanpassungen.** Der rohe Diagnosewert wird weiterhin angezeigt und kleiner ist besser, aber behandeln Sie ihn als Anhaltspunkt, nicht als Bestehensmarke. Beachten Sie außerdem: Er ist auf der **absoluten Ausbeute** definiert und fällt daher konservativ aus, wenn Sie nur das ICP betrachten (das durch das Scan-Mittel teilt).
 
-In den folgenden Situationen werden weitere Warnungen angehängt.
+In den folgenden Situationen werden weitere Warnungen als eigene Zeilen (jeweils mit ⚠) im Diagnosefeld ergänzt.
 
 - **Beschleunigungsspannung unter 80 kV** : Bei dieser Spannung kann die Formfaktortabelle $s$ bis $16\ \text{Å}^{-1}$ nicht garantieren. Die Rechnung selbst bleibt korrekt, solange das von der Basis benötigte $s$ im zertifizierten Bereich bleibt — daher ist dies ein **Hinweis, keine Ablehnung**
 - **Abschneiden des Formfaktors** : Wo $F(s)$ jenseits des zertifizierten Bereichs auf null gesetzt wurde, **wird die resultierende Fehlerschranke $|F| \le \varepsilon$ numerisch angezeigt**. Es wird nichts stillschweigend extrapoliert

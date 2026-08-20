@@ -68,7 +68,7 @@ Note which of them survive a normalization. Stages 1 and 3, and any absorption t
 
 | Item | Description | Default |
 |------|-------------|---------|
-| **Row ( h k l )** | The systematic row to sweep, given as reflection indices. The tilt axis is taken perpendicular to both the beam and this $\mathbf{g}$, so the scan sweeps this row through its Bragg conditions | (1 0 0) |
+| **Row g = ( h k l )** | The systematic row to sweep, given as the reflection indices $(h\,k\,l)$ of its reciprocal-lattice vector $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$ — not a direction $[u\,v\,w]$. The tilt axis is taken perpendicular to both the beam and this $\mathbf{g}$, so the scan sweeps this row through its Bragg conditions | (1 0 0) |
 | **Range ±** | Half width of the tilt scan (mrad). Beyond about 10 mrad a fixed union basis is no longer guaranteed, and beyond 30 mrad it is outside the v1 guarantee | 8 mrad |
 | **Points** | Number of scan points (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ The line below shows the Bragg angle $\theta_B$ of the selected row, how many $\
 
 ### Thickness
 
-Give the start, end and step (nm). **All thicknesses are computed together in a single run**, and the result is switched with the slider under the curve.
+Give the start, end and step (nm). **All thicknesses are computed together in a single run**, and the result is switched with the **Thickness** box under the curve (the spin buttons step through the computed thicknesses; a typed value snaps to the nearest one). When the start and end give a single thickness there is nothing to switch between, and the box is disabled.
 
 The site contrast changes strongly — and can even reverse sign — between thin and thick specimens, so check several thicknesses before drawing conclusions. That is why the thickness selector sits directly under the curve.
 
@@ -93,7 +93,7 @@ The site contrast changes strongly — and can even reverse sign — between thi
 | **Include the dechannelled component** | Whether to add $Y_\text{dech}$ above | on |
 | **Angular spread** | Convolves the curve with the angular spread of the incident beam: **None** or **Gaussian** with a FWHM in mrad. It is a post-process on the orientation axis, applied **before** the display normalization | None |
 
-**The cap of 1600 beams is the counterpart of the tabulated range $s \le 16\ \text{Å}^{-1}$ of the ionization form factor.** In practice even 1600 beams only require about 10.5 Å⁻¹, so the tabulated range is never exhausted while the cap is respected. The value actually reached is reported on the [basis diagnostic](#basis-diagnostic) line below the graph.
+**The cap of 1600 beams is the counterpart of the tabulated range $s \le 16\ \text{Å}^{-1}$ of the ionization form factor.** In practice even 1600 beams only require about 10.5 Å⁻¹, so the tabulated range is never exhausted while the cap is respected. The value actually reached is reported on the first line of the [basis diagnostic](#basis-diagnostic) box below the graph.
 
 ### Ionization channels
 
@@ -120,7 +120,7 @@ When the calculation finishes, one curve is drawn per site × channel pair. The 
 
 | Item | Description |
 |------|-------------|
-| **Thickness** | Selects the thickness to display with a slider (nothing is recomputed) |
+| **Thickness** | Selects the thickness to display; the spin buttons step through the computed thicknesses and a typed value snaps to the nearest one (nothing is recomputed) |
 | **Normalization** | **Scan mean (ICP)** = divide by the mean over the whole scan (the quantity normally used in ALCHEMI) / **Maximum = 1** / **Raw (per electron)** |
 | **X axis** | Switches between **mrad** and **θ_B** (in units of the Bragg angle of the swept row) |
 | **Bragg conditions** | Draws vertical lines at $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ When the calculation finishes, one curve is drawn per site × channel pair. The 
 
 ### Contrast and correlation
 
-The first line under the curve reports, per series, the **contrast** $(\max-\min)/\text{mean}$ and the **correlation coefficient** $r$ against the first series. It is a summary for judging at a glance which site is doing the work: two series with $r$ close to $+1$ have the same orientation dependence, which means that data cannot separate those sites.
+The last lines of the read-only diagnostics box under the curve (scroll for the rest; the text can be selected and copied) report, per series, the **contrast** $(\max-\min)/\text{mean}$ and the **correlation coefficient** $r$ against the first series. It is a summary for judging at a glance which site is doing the work: two series with $r$ close to $+1$ have the same orientation dependence, which means that data cannot separate those sites.
 
 ### Basis diagnostic
 
-The second line reports the state of the basis.
+The first lines of the diagnostics box report the state of the basis, one item per line.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit eligibility NOT evaluated   ⚠ Experimental: quantitatively verified only for beta-AlCo [001] at 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ fit eligibility NOT evaluated (v1 does not certify quantitative occupancy fits)
+⚠ Experimental: cross-checked against a multislice code only (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (centre only + added by union)** : the size of the true union of reflections taken over all orientations of the scan
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ fit 
 
 ⚠ **v1 does not certify quantitative occupancy fits.** The raw diagnostic value is still shown and smaller is better, but treat it as an indication, not as a pass mark. Note also that it is defined on the **absolute yield**, so it errs on the conservative side when you only look at the ICP (which divides by the scan mean).
 
-Further warnings are appended in the following situations.
+Further warnings are added as separate lines of the diagnostics box, each prefixed with ⚠, in the following situations.
 
 - **Accelerating voltage below 80 kV** : at this voltage the form-factor table cannot guarantee $s$ up to $16\ \text{Å}^{-1}$. The calculation itself is still correct as long as the $s$ required by the basis stays inside the certified range, so this is a **notice, not a rejection**
 - **Form-factor truncation** : where $F(s)$ beyond the certified range was truncated to zero, **the resulting error bound $|F| \le \varepsilon$ is shown numerically**. Nothing is silently extrapolated

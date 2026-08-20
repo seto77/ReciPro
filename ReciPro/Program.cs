@@ -130,7 +130,8 @@ internal static class Program
         {
             var cult = (GuiCapture.ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture).Name;
             var outFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"recipro-diagnose-{cult}-x{(int)(diagnoseInflate * 100)}.tsv");
-            GuiCapture.Diagnose(outFile, diagnoseInflate);
+            // GuiCapture.Diagnose(outFile, diagnoseInflate); // 260820Cl 旧 (static)
+            new GuiCapture().Diagnose(outFile, diagnoseInflate); // 260820Cl: GuiCaptureHarness 派生のインスタンスへ
             Environment.Exit(0);
         }
 
@@ -138,7 +139,8 @@ internal static class Program
         //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]
         if (args.Length >= 1 && args[0] == CaptureArg)
         {
-            GuiCapture.Run(captureDir);  // 260525Cl: captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定
+            // GuiCapture.Run(captureDir); // 260820Cl 旧 (static)
+            new GuiCapture().Run(captureDir);  // 260525Cl: captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定。260820Cl: インスタンス化
             // GuiCapture.Run(args.Length >= 2 ? args[1] : null); // 260525Cl 旧
             // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
             Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
@@ -152,7 +154,8 @@ internal static class Program
         //  ReciPro.exe --capture-form <FormTypeName> <出力png> [カルチャ]
         if (args.Length >= 3 && args[0] == CaptureFormArg)
         {
-            GuiCapture.CaptureSingleForm(args[1], args[2]);
+            // GuiCapture.CaptureSingleForm(args[1], args[2]); // 260820Cl 旧 (static)
+            new GuiCapture().CaptureSingleForm(args[1], args[2]); // 260820Cl: インスタンス化
             Environment.Exit(0);
         }
 

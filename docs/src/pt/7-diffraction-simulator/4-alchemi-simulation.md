@@ -68,7 +68,7 @@ Repare em quais delas sobrevivem a uma normalização. As etapas 1 e 3, e qualqu
 
 | Item | Descrição | Padrão |
 |------|-----------|--------|
-| **Fila ( h k l )** | A fila sistemática a percorrer, dada em índices de reflexão. O eixo de inclinação é tomado perpendicular tanto ao feixe quanto a este $\mathbf{g}$, de modo que a varredura atravessa as condições de Bragg dessa fila | (1 0 0) |
+| **Fila g = ( h k l )** | A fila sistemática a percorrer, dada pelos índices de reflexão $(h\,k\,l)$ do seu vetor da rede recíproca $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$ — não uma direção $[u\,v\,w]$. O eixo de inclinação é tomado perpendicular tanto ao feixe quanto a este $\mathbf{g}$, de modo que a varredura atravessa as condições de Bragg dessa fila | (1 0 0) |
 | **Faixa ±** | Semilargura da varredura de inclinação (mrad). Acima de cerca de 10 mrad uma base união fixa deixa de ser garantida, e acima de 30 mrad está fora da garantia da v1 | 8 mrad |
 | **Pontos** | Número de pontos da varredura (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ A linha abaixo mostra o ângulo de Bragg $\theta_B$ da fila escolhida, a quantos
 
 ### Espessura
 
-Informe início, fim e passo (nm). **Todas as espessuras são calculadas juntas em uma única execução**, e o resultado é alternado com o controle deslizante sob a curva.
+Informe início, fim e passo (nm). **Todas as espessuras são calculadas juntas em uma única execução**, e o resultado é alternado com a caixa **Espessura** sob a curva (os botões giratórios percorrem as espessuras calculadas; um valor digitado é ajustado à mais próxima). Se o início e o fim derem uma única espessura, não há o que alternar e a caixa fica desabilitada.
 
 O contraste de sítio muda fortemente — e pode até inverter de sinal — entre amostras finas e espessas, portanto verifique várias espessuras antes de concluir. É por isso que o seletor de espessura fica logo abaixo da curva.
 
@@ -93,7 +93,7 @@ O contraste de sítio muda fortemente — e pode até inverter de sinal — entr
 | **Incluir a componente descanalizada** | Se soma $Y_\text{dech}$ acima | ligado |
 | **Espalhamento angular** | Convolui a curva com o espalhamento angular do feixe incidente: **Nenhum** ou **Gaussian** com uma largura a meia altura em mrad. É um pós-processamento no eixo das orientações, aplicado **antes** da normalização de exibição | Nenhum |
 
-**O teto de 1600 feixes é a contraparte da faixa tabelada $s \le 16\ \text{Å}^{-1}$ do fator de forma de ionização.** Na prática, mesmo 1600 feixes exigem apenas cerca de 10,5 Å⁻¹, de modo que a faixa tabelada nunca é esgotada enquanto o teto for respeitado. O valor efetivamente alcançado é informado na linha de [diagnóstico da base](#diagnóstico-da-base) sob o gráfico.
+**O teto de 1600 feixes é a contraparte da faixa tabelada $s \le 16\ \text{Å}^{-1}$ do fator de forma de ionização.** Na prática, mesmo 1600 feixes exigem apenas cerca de 10,5 Å⁻¹, de modo que a faixa tabelada nunca é esgotada enquanto o teto for respeitado. O valor efetivamente alcançado é informado na primeira linha da caixa de [diagnóstico da base](#diagnóstico-da-base) sob o gráfico.
 
 ### Canais de ionização
 
@@ -120,7 +120,7 @@ Ao terminar o cálculo, é desenhada uma curva por par sítio × canal. A legend
 
 | Item | Descrição |
 |------|-----------|
-| **Espessura** | Seleciona a espessura exibida com um controle deslizante (nada é recalculado) |
+| **Espessura** | Seleciona a espessura exibida; os botões giratórios percorrem as espessuras calculadas e um valor digitado é ajustado à mais próxima (nada é recalculado) |
 | **Normalização** | **Média da varredura (ICP)** = dividir pela média sobre toda a varredura (a grandeza normalmente usada em ALCHEMI) / **Máximo = 1** / **Bruto (por elétron)** |
 | **Eixo X** | Alterna entre **mrad** e **θ_B** (em unidades do ângulo de Bragg da fila percorrida) |
 | **Condições de Bragg** | Desenha linhas verticais em $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ Ao terminar o cálculo, é desenhada uma curva por par sítio × canal. A legend
 
 ### Contraste e correlação
 
-A primeira linha sob a curva informa, por série, o **contraste** $(\max-\min)/\text{média}$ e o **coeficiente de correlação** $r$ em relação à primeira série. É um resumo para julgar de relance qual sítio está atuando: duas séries com $r$ próximo de $+1$ têm a mesma dependência com a orientação, ou seja, esses dados não conseguem separar esses sítios.
+As últimas linhas da caixa de diagnóstico somente leitura sob a curva (role para ver o restante; o texto pode ser selecionado e copiado) informam, por série, o **contraste** $(\max-\min)/\text{média}$ e o **coeficiente de correlação** $r$ em relação à primeira série. É um resumo para julgar de relance qual sítio está atuando: duas séries com $r$ próximo de $+1$ têm a mesma dependência com a orientação, ou seja, esses dados não conseguem separar esses sítios.
 
 ### Diagnóstico da base
 
-A segunda linha informa o estado da base.
+As primeiras linhas da caixa de diagnóstico informam o estado da base, um item por linha.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ aptidão para ajuste NÃO avaliada   ⚠ Experimental: verificado quantitativamente apenas para beta-AlCo [001] a 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ aptidão para ajuste NÃO avaliada (a v1 não certifica ajustes quantitativos de ocupação)
+⚠ Experimental: confrontado apenas com um código multislice (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (apenas centro + acrescentados pela união)** : tamanho da união verdadeira das reflexões sobre todas as orientações da varredura
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ apti
 
 ⚠ **A v1 não certifica ajustes quantitativos de ocupação.** O valor bruto do diagnóstico continua visível e quanto menor melhor, mas trate-o como uma indicação, não como uma marca de aprovação. Note também que ele é definido sobre o **rendimento absoluto**, portanto é conservador quando se olha apenas o ICP (que divide pela média da varredura).
 
-Nas situações a seguir são acrescentados mais avisos.
+Nas situações a seguir são acrescentados mais avisos como linhas separadas (cada uma precedida de ⚠) na caixa de diagnóstico.
 
 - **Tensão de aceleração abaixo de 80 kV** : nessa tensão a tabela de fatores de forma não garante $s$ até $16\ \text{Å}^{-1}$. O cálculo em si continua correto enquanto o $s$ exigido pela base permanecer dentro da faixa certificada, portanto isso é um **aviso, não uma recusa**
 - **Truncamento do fator de forma** : onde $F(s)$ além da faixa certificada foi truncado a zero, **o limite de erro resultante $|F| \le \varepsilon$ é mostrado numericamente**. Nada é extrapolado em silêncio

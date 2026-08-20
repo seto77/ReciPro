@@ -68,7 +68,7 @@ Si noti quali di essi sopravvivono a una normalizzazione. Gli stadi 1 e 3, e qua
 
 | Voce | Descrizione | Predefinito |
 |------|-------------|-------------|
-| **Fila ( h k l )** | Fila sistematica da percorrere, indicata con gli indici di riflesso. L'asse di inclinazione è preso perpendicolare sia al fascio sia a questo $\mathbf{g}$, così la scansione attraversa le condizioni di Bragg di questa fila | (1 0 0) |
+| **Fila g = ( h k l )** | Fila sistematica da percorrere, indicata con gli indici di riflesso $(h\,k\,l)$ del suo vettore del reticolo reciproco $\mathbf{g} = h\mathbf{a}^* + k\mathbf{b}^* + l\mathbf{c}^*$ — non una direzione $[u\,v\,w]$. L'asse di inclinazione è preso perpendicolare sia al fascio sia a questo $\mathbf{g}$, così la scansione attraversa le condizioni di Bragg di questa fila | (1 0 0) |
 | **Intervallo ±** | Semiampiezza della scansione di inclinazione (mrad). Oltre circa 10 mrad una base unione fissa non è più garantita, e oltre 30 mrad si esce dalla garanzia della v1 | 8 mrad |
 | **Punti** | Numero di punti della scansione (3–1001) | 101 |
 
@@ -80,7 +80,7 @@ La riga sottostante mostra l'angolo di Bragg $\theta_B$ della fila scelta, a qua
 
 ### Spessore
 
-Indicare inizio, fine e passo (nm). **Tutti gli spessori vengono calcolati insieme in una sola esecuzione**, e il risultato si commuta con il cursore sotto la curva.
+Indicare inizio, fine e passo (nm). **Tutti gli spessori vengono calcolati insieme in una sola esecuzione**, e il risultato si commuta con la casella **Spessore** sotto la curva (i pulsanti di scorrimento passano in rassegna gli spessori calcolati; un valore digitato viene portato al più vicino). Se inizio e fine danno un solo spessore non c'è nulla da commutare e la casella è disabilitata.
 
 Il contrasto di sito cambia molto — e può perfino invertire segno — tra campioni sottili e spessi, quindi verificare più spessori prima di trarre conclusioni. Per questo il selettore di spessore sta direttamente sotto la curva.
 
@@ -93,7 +93,7 @@ Il contrasto di sito cambia molto — e può perfino invertire segno — tra cam
 | **Includi la componente decanalizzata** | Se aggiungere $Y_\text{dech}$ sopra | attivo |
 | **Allargamento angolare** | Convolve la curva con l'allargamento angolare del fascio incidente: **Nessuno** o **Gaussian** con una larghezza a metà altezza in mrad. È una post-elaborazione sull'asse delle orientazioni, applicata **prima** della normalizzazione di visualizzazione | Nessuno |
 
-**Il tetto di 1600 fasci è la controparte dell'intervallo tabulato $s \le 16\ \text{Å}^{-1}$ del fattore di forma di ionizzazione.** In pratica anche 1600 fasci richiedono solo circa 10,5 Å⁻¹, quindi l'intervallo tabulato non viene mai esaurito finché il tetto è rispettato. Il valore effettivamente raggiunto è riportato nella riga di [diagnostica della base](#diagnostica-della-base) sotto il grafico.
+**Il tetto di 1600 fasci è la controparte dell'intervallo tabulato $s \le 16\ \text{Å}^{-1}$ del fattore di forma di ionizzazione.** In pratica anche 1600 fasci richiedono solo circa 10,5 Å⁻¹, quindi l'intervallo tabulato non viene mai esaurito finché il tetto è rispettato. Il valore effettivamente raggiunto è riportato nella prima riga della casella di [diagnostica della base](#diagnostica-della-base) sotto il grafico.
 
 ### Canali di ionizzazione
 
@@ -120,7 +120,7 @@ Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale.
 
 | Voce | Descrizione |
 |------|-------------|
-| **Spessore** | Seleziona con un cursore lo spessore visualizzato (non viene ricalcolato nulla) |
+| **Spessore** | Seleziona lo spessore visualizzato; i pulsanti di scorrimento passano in rassegna gli spessori calcolati e un valore digitato viene portato al più vicino (non viene ricalcolato nulla) |
 | **Normalizzazione** | **Media della scansione (ICP)** = dividere per la media su tutta la scansione (la grandezza normalmente usata in ALCHEMI) / **Massimo = 1** / **Grezzo (per elettrone)** |
 | **Asse X** | Commuta tra **mrad** e **θ_B** (in unità dell'angolo di Bragg della fila percorsa) |
 | **Condizioni di Bragg** | Traccia linee verticali a $\theta = n\,\theta_B$ |
@@ -130,14 +130,16 @@ Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale.
 
 ### Contrasto e correlazione
 
-La prima riga sotto la curva riporta, per ogni serie, il **contrasto** $(\max-\min)/\text{media}$ e il **coefficiente di correlazione** $r$ rispetto alla prima serie. È una sintesi per capire a colpo d'occhio quale sito sta agendo: due serie con $r$ vicino a $+1$ hanno la stessa dipendenza dall'orientazione, cioè quei dati non possono separare quei siti.
+Le ultime righe della casella di diagnostica in sola lettura sotto la curva (scorrere per il resto; il testo si può selezionare e copiare) riportano, per ogni serie, il **contrasto** $(\max-\min)/\text{media}$ e il **coefficiente di correlazione** $r$ rispetto alla prima serie. È una sintesi per capire a colpo d'occhio quale sito sta agendo: due serie con $r$ vicino a $+1$ hanno la stessa dipendenza dall'orientazione, cioè quei dati non possono separare quei siti.
 
 ### Diagnostica della base
 
-La seconda riga riporta lo stato della base.
+Le prime righe della casella di diagnostica riportano lo stato della base, una voce per riga.
 
 ```text
-basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ idoneità al fit NON valutata   ⚠ Experimental: verificato quantitativamente solo per beta-AlCo [001] a 250 keV
+basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
+⚠ idoneità al fit NON valutata (la v1 non certifica fit quantitativi di occupazione)
+⚠ Experimental: confrontato solo con un codice multislice (beta-AlCo [001], 250 keV)
 ```
 
 - **basis N (solo centro + aggiunti dall'unione)** : dimensione dell'unione vera dei riflessi su tutte le orientazioni della scansione
@@ -150,7 +152,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3   ⚠ idon
 
 ⚠ **La v1 non certifica adattamenti quantitativi dell'occupazione.** Il valore grezzo della diagnostica resta visibile e più è piccolo meglio è, ma va trattato come un'indicazione, non come un esito di prova. Si noti inoltre che è definita sulla **resa assoluta**, quindi risulta conservativa se si guarda solo l'ICP (che divide per la media della scansione).
 
-Nelle situazioni seguenti vengono aggiunti ulteriori avvisi.
+Nelle situazioni seguenti vengono aggiunti ulteriori avvisi come righe separate (ciascuna preceduta da ⚠) nella casella di diagnostica.
 
 - **Tensione di accelerazione sotto 80 kV** : a questa tensione la tabella dei fattori di forma non garantisce $s$ fino a $16\ \text{Å}^{-1}$. Il calcolo in sé resta corretto finché il $s$ richiesto dalla base rimane nell'intervallo certificato, quindi è un **avviso, non un rifiuto**
 - **Troncamento del fattore di forma** : dove $F(s)$ oltre l'intervallo certificato è stato troncato a zero, **il limite di errore risultante $|F| \le \varepsilon$ è mostrato numericamente**. Nulla viene estrapolato in silenzio

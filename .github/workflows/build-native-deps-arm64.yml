@@ -4,7 +4,7 @@
 # 方針: .project-guidance/ReciPro/ReciPro_配布・リリース運用.md §4-§5 (このワークフロー自体が再現可能な手順書を兼ねる)。
 # 静的 CRT (/MT): WoA 素環境に arm64 VC redist が無くても動くようにするため (方針 §3.5)。
 # 260731Cl x64/arm64 マトリクス化 + xraylib data trim を追加 (配布サイズ削減調査 §2-②):
-#   - x64 leg を追加し、従来 conda-forge 由来だった ReciPro\libxrl-11.dll も本ワークフローの自前ビルド品に置換する。
+#   - x64 leg を追加し、従来 conda-forge 由来だった ReciPro\native\win-x64\libxrl-11.dll (260820Cl まで ReciPro\ 直下) も本ワークフローの自前ビルド品に置換する。
 #   - trim=true (既定) では meson setup 前に data/kissel_pe.dat・comptonprofiles.dat・auger_rates.dat を空 stub 化。
 #     prdata のローダは先頭 fscanf 失敗で即 break する構造のため、該当データが空配列になるだけで build は通る。
 #     これで DLL 14.8MB→~6MB (.data の 99% がデータで、Kissel 部分光電離 6.4MB+Compton プロファイル 0.8MB+Auger 1.0MB が落ちる)。
@@ -41,12 +41,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # 260731Cl x64 leg 追加。成果物は ReciPro\libxrl-11.dll (従来 conda-forge binary) を置換する。
+          # 260731Cl x64 leg 追加。成果物は ReciPro\native\win-x64\libxrl-11.dll (従来 conda-forge binary) を置換する。
           #   GLFW は x64 では OpenTK.redist.glfw (NuGet) を使うためビルドしない。
+          # 260820Cl baseline を ReciPro\libxrl-11.dll → ReciPro\native\win-x64\libxrl-11.dll へ (csproj 側の移動に追随)
           - arch: x64
             runner: windows-2025-vs2026
             build_glfw: false
-            baseline: ReciPro\libxrl-11.dll
+            baseline: ReciPro\native\win-x64\libxrl-11.dll
           - arch: arm64
             runner: windows-11-arm
             build_glfw: true
@@ -296,7 +297,7 @@ jobs:
             "output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with historical conda-forge win-64 binary)"
             "output sha256: $((Get-FileHash out\libxrl-11.dll -Algorithm SHA256).Hash)"
             "actions run: $runUrl"
-            "license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)"
+            "license: BSD-3-Clause (see ReciPro\native\libxrl-11.LICENSE.txt)"
           ) | Set-Content "out\libxrl-11.$arch.PROVENANCE.txt"
 
           if ('${{ matrix.build_glfw }}' -eq 'true') {
