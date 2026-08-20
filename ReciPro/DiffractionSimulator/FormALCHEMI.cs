@@ -515,11 +515,14 @@ public partial class FormALCHEMI : FormBase
         skipEvent = true;
         try
         {
-            //NumericBox の Minimum/Maximum setter は「Minimum < Maximum」を満たす代入しか受け付けないので、Maximum を一度 +∞ に解放してから入れる。
-            //厚みが 1 点だけなら選ぶものがないので範囲を付けずに無効化する (/simplify: 偽の ±0.5 nm 範囲は作らない)
-            numericBoxThickness.Maximum = double.PositiveInfinity;
-            numericBoxThickness.Minimum = ts.Length > 1 ? ts[0] : double.NegativeInfinity;
-            if (ts.Length > 1) numericBoxThickness.Maximum = ts[^1];
+            //260820Cl 変更: NumericBox.SetRange (同日追加) で両端を一括設定。旧は setter の「Minimum < Maximum」黙殺を避けるため
+            //Maximum を +∞ に解放してから個別に入れていた:
+            //numericBoxThickness.Maximum = double.PositiveInfinity;
+            //numericBoxThickness.Minimum = ts.Length > 1 ? ts[0] : double.NegativeInfinity;
+            //if (ts.Length > 1) numericBoxThickness.Maximum = ts[^1];
+            //厚みが 1 点だけなら選ぶものがないので範囲を外して無効化する (/simplify: 偽の ±0.5 nm 範囲は作らない)
+            if (ts.Length > 1) numericBoxThickness.SetRange(ts[0], ts[^1]);
+            else numericBoxThickness.SetRange(double.NegativeInfinity, double.PositiveInfinity);
             var step = ts.Length > 1 ? ts[1] - ts[0] : 1;
             numericBoxThickness.UpDown_Increment = step;
             //表示桁は刻みに合わせる (/simplify2): 刻み 0.15 nm で "10.2" と丸めて見せると CSV の 10.1500 と食い違う
