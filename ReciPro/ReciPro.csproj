@@ -90,7 +90,7 @@
   </Target>
 
   <ItemGroup>
-    <None Remove="default.xml" />
+    <!-- 260820Cl 実在しないファイルの None Remove を削除。旧: <None Remove="default.xml" /> / <None Remove="doc\Thumbs.db" /> (Thumbs.db は同日 git rm) / <None Remove="doc\~%24ciProManual%28en%29.docx" /> (Word ロックファイル) -->
     <None Remove="doc\Bethe.pdf" />
     <None Remove="doc\Bethe.pptx" />
     <None Remove="doc\draft.pptx" />
@@ -103,8 +103,6 @@
     <None Remove="doc\ReciProManual%28ja%29.docx" />
     <None Remove="doc\ReciProManual%28ja%29.pdf" />
     <None Remove="doc\ReciProの座標系.pptx" />
-    <None Remove="doc\Thumbs.db" />
-    <None Remove="doc\~%24ciProManual%28en%29.docx" />
     <!-- <None Remove="ImagingSolution.Control.GraphicsBox.XML" /> --> <!-- (260322Ch) 旧 GraphicsBox の XML ドキュメント参照は不要 -->
     <None Remove="initial.xml" />
     <None Include="..\LICENSE.md">
