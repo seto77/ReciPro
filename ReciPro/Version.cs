@@ -5,7 +5,7 @@ internal static class Version
     public const string Software = "ReciPro";
     public const string Author = "Y. Seto && M. Ohtsuka";
     
-    //260805Cl 表記統一: 版番と日付括弧の間にスペースを1つ入れる。⚠この行より上の行(このコメント含む)に半角スペース直後の『ver』を書かない (CI と旧版の更新チェックが History 先頭行より先に拾う)
+    //260805Cl 表記統一: 版番と日付括弧の間にスペースを1つ入れる。⚠この行より上の行(このコメント含む)に版番キーワード (v-e-r の 3 文字) を書かない (CI と旧版の更新チェックが History 先頭行より先に拾う。260820Cl: このコメント自身がそれを含んでいて v.4.947 のリリースノートがコメント文になった。CI 側は版番の数字まで見るよう修正済み)
     public const string History =
         "History" +
         "\r\n ver4.947 (2026/08/20)  Added an ALCHEMI simulator (preview): site-resolved ionization rocking curves along a systematic row by the Bloch-wave method, with angular-spread convolution, provenance-tagged CSV export and a manual page in 11 languages. Added dynamical Kikuchi bands to the diffraction simulator, Temari scattering factors and an integral absorptive factor to Beam Interaction, saving of EBSD patterns and a CITATION.cff, and fixed the R(%) round-trip in Spot ID." + // 260820Cl 追加

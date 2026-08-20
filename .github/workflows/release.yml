@@ -133,7 +133,12 @@ jobs:
           #   }
 
           # History の先頭行をリリースノートに使う (release job が notes を組む)
-          $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          # 260820Cl 変更: 旧 'ver[^\r\n"]+' はファイル中で最初に現れる "ver" を拾うため、History より上のコメントに
+          #   その 3 文字が入った途端にコメント文がリリースノートになった (v.4.947 で実際に発生し、手で直した)。
+          #   版番の数字まで含めて History の行頭 (ver4.947 (2026/08/20) …) に固定する。
+          # 旧: $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          $historyLine = ([regex]::Match($content, 'ver\d+\.\d+ ?\([^\r\n"]+').Value).Trim()
+          if (-not $historyLine) { throw "Could not extract the History line from Version.cs." }
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
           # 260613Cl ビルド時刻 → release commit (GITHUB_SHA) の commit 時刻に変更 (決定論化、Phase C)。
