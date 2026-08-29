@@ -110,6 +110,7 @@ public partial class FormDiffractionSpotInfo : FormBase
         }
 
         var rows = new List<DataSetReciPro.DataTableBetheRow>(Beams.Length);
+        var sumPhi2 = 0.0; // 260829Cl 追加: Σ|Φ|² (R 昇順の累積強度)。2021 年の DataSet 化以降、列だけ残って未代入 (常に DBNull = 空列) だった
         for (int i = 0; i < Beams.Length; i++)
         {
             var beam = Beams[i];
@@ -137,7 +138,11 @@ public partial class FormDiffractionSpotInfo : FormBase
             r.Qg = beam.Q;
             r.Φ_re = Math.Abs(beam.Psi.Real) > 1e-12 ? beam.Psi.Real : 0;
             r.Φ_im = Math.Abs(beam.Psi.Imaginary) > 1e-12 ? beam.Psi.Imaginary : 0;
-            r.__Φ__2 = Math.Abs(beam.Psi.Magnitude * beam.Psi.Magnitude) > 1e-12 ? beam.Psi.Magnitude * beam.Psi.Magnitude : 0;
+            // 260829Cl 変更前: r.__Φ__2 = Math.Abs(beam.Psi.Magnitude * beam.Psi.Magnitude) > 1e-12 ? beam.Psi.Magnitude * beam.Psi.Magnitude : 0;
+            var phi2 = beam.Psi.Magnitude * beam.Psi.Magnitude;
+            r.__Φ__2 = phi2 > 1e-12 ? phi2 : 0;
+            sumPhi2 += phi2;
+            r._Σ_Φ__2 = sumPhi2; // 260829Cl 追加: 強度保存の目安 (マニュアル記載の列)。厳密な保存量は無吸収時の Σ P_g|Φ_g|²/P_0 = 1 で、この単純和は P_g ≈ P_0 の範囲で ≈1
 
             rows.Add(r);
         }
