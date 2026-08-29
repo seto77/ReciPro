@@ -42,7 +42,7 @@ Seleciona como as intensidades dos spots são calculadas.
 
 ### Somente erro de excitação
 
-A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $s_g$). Quanto menor $\lvert s_g \rvert$, maior a intensidade; ela atinge seu máximo no valor definido por **Radius** e cai a zero quando $\lvert s_g \rvert$ excede o Radius. Como o fator de estrutura do cristal é ignorado, este é o modo mais rápido e adequado para verificar as posições dos spots de difração.
+A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $S_g$). Ela é máxima em $S_g = 0$ — exatamente sobre a esfera — e decai à medida que $\lvert S_g\rvert$ aumenta, chegando a zero assim que $\lvert S_g\rvert$ excede o **Radius** indicado para o ponto da rede recíproca. Como o fator de estrutura do cristal é ignorado, este é o modo mais rápido e adequado para verificar as posições dos spots de difração.
 
 ### Cinemática
 
@@ -98,7 +98,7 @@ Os rótulos sobrepostos aos spots são selecionados na [barra de ferramentas](in
 | **Distance** | distância de spot a spot no detector |
 | **2θ** | ângulo de espalhamento $2\theta$ (mesma definição dos círculos concêntricos da escala 2θ) |
 | **χ** | ângulo azimutal $\chi$, medido a partir da direção para cima (12 horas), positivo no sentido horário (mesma definição das linhas radiais da escala azimutal) |
-| **Excit. Err.** | erro de excitação $s_g$ |
+| **Excit. Err.** | erro de excitação $S_g$ |
 | **\|Fg\|** | valor absoluto do fator de estrutura $\lvert F_{hkl} \rvert$ |
 
 ---

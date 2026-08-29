@@ -120,7 +120,7 @@ Les informations correspondant à la position du curseur (curseur *q*, *d*, 2θ,
 | **Copy** | Copier l'image affichée dans le presse-papiers. |
 | **Copy detector area** | Copier uniquement le recadrage de la zone du détecteur. |
 
-### Preset {#toolbar}
+### Preset
 
 ![Menu Préréglages](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 
 ---
 
-## Barre d'outils
+## Barre d'outils {#toolbar}
 
 ![Barre d'outils](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ Enregistrer et rappeler une configuration complète du simulateur — longueur d
 
 ---
 
-## Simulation du porte-objet MET {#drawing-overlay-tabs}
+## Simulation du porte-objet MET
 
 ![Simulation du porte-objet MET](../../assets/cap-fr-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ Ouvre une fenêtre qui lie le diagramme de diffraction à un **TEM holder** à d
 
 ---
 
-## Onglets de superposition du tracé
+## Onglets de superposition du tracé {#drawing-overlay-tabs}
 
 ### General
 
@@ -232,7 +232,7 @@ Actif lorsque les lignes d'échelle sont activées dans la barre d'outils.
 - **Division** : Intervalle angulaire entre les lignes d'échelle adjacentes.
 - **Show scale labels** : Indique si des étiquettes numériques sont tracées sur les lignes d'échelle.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 Réglages divers tels que la sensibilité de rotation à la souris.
 
@@ -240,7 +240,7 @@ Réglages divers tels que la sensibilité de rotation à la souris.
 
 ---
 
-## Informations sur les réflexions de diffraction
+## Informations sur les réflexions de diffraction {#diffraction-spot-information}
 
 Liste les détails par réflexion calculés par la méthode des ondes de Bloch (calcul Dynamical). Ouvrez-la avec le bouton **Spot Details** (panneau de calcul d'intensité) ou la case à cocher **Details**.
 

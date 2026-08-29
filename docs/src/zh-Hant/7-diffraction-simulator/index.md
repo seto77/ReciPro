@@ -120,7 +120,7 @@ title: Diffraction Simulator
 | **Copy** | 將顯示的影像複製到剪貼簿。 |
 | **Copy detector area** | 僅複製偵測器區域的裁切。 |
 
-### 預設組合 {#toolbar}
+### 預設組合
 
 ![預設組合選單](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ title: Diffraction Simulator
 
 ---
 
-## 工具列
+## 工具列 {#toolbar}
 
 ![工具列](../../assets/cap-zh-Hant-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ title: Diffraction Simulator
 
 ---
 
-## TEM 試樣台模擬 {#drawing-overlay-tabs}
+## TEM 試樣台模擬
 
 ![TEM 試樣台模擬](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ title: Diffraction Simulator
 
 ---
 
-## 繪圖疊加層索引標籤
+## 繪圖疊加層索引標籤 {#drawing-overlay-tabs}
 
 ### 一般
 
@@ -232,7 +232,7 @@ title: Diffraction Simulator
 - **Division** ：相鄰刻度線之間的角度間隔。
 - **Show scale labels** ：是否在刻度線上繪製數值標籤。
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 雜項設定，例如滑鼠旋轉靈敏度。
 
@@ -240,7 +240,7 @@ title: Diffraction Simulator
 
 ---
 
-## 繞射斑點資訊
+## 繞射斑點資訊 {#diffraction-spot-information}
 
 列出以布洛赫波法（Dynamical 計算）所算得的逐反射詳細資訊。以 **繞射點詳情** 按鈕（強度計算面板）或 **Details** 核取方塊開啟。
 

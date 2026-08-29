@@ -124,7 +124,7 @@
 
 純量表列出電子**wavelength**、**σ elastic**、**Elastic MFP**、**|dE/ds|**、**IMFP**、**Plasma E** 與平均激發能 **J**、兩個電子**ranges** (Kanaya–Okayama 穿透估計值與 CSDA 積分路徑長度)，以及平均 **Z, A**。逐元素表格給出各元素的原子分數與彈性截面 σ。彈性截面使用 **NIST Mott** 資料 (50 eV–36 keV)，並在 36 keV 以上退回**screened Rutherford**。
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 中子交互作用由核截面而非能量相依曲線決定，因此此索引標籤僅顯示表格。純量表列出平均同調散射長度 **b̄**、**Coherent SLD**、平均的同調 / 非同調 / 吸收 / 總截面 (**σ̄_coh**、**σ̄_incoh**、**σ̄_abs**、**σ̄_total**)、巨觀總截面 **Σ_total** 與對應的**attenuation length**。吸收截面以 1/v 定律在當前波長下評估；此定律無效的核種 (Cd、Sm、Eu、Gd 共振吸收體) 會被標記。逐元素表格列出 **b_coh**、**σ_coh** 與原子分數。
 

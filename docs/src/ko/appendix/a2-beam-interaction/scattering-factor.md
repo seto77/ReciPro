@@ -46,7 +46,7 @@ $$f(s,E) = f_0(s) + f'(E) + i\,f''(E) \qquad \text{(textbook, } e^{+i\phi}\ \tex
 
 이들은 자유 매개변수가 아닙니다. 인과율(Kramers–Kronig)이 $f'$을 $f''$에 결합시키고, **광학 정리**가 $f''$을 광흡수 단면적에 직접 결합시킵니다:
 
-$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E'^2 - E^2}\,dE',
+$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E^2 - E'^2}\,dE',
 \qquad
 f''(E) = \frac{\sigma_\text{abs}(E)}{2\,r_e\,\lambda}.$$
 

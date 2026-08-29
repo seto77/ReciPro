@@ -91,8 +91,6 @@ In alto nella finestra di dialogo sono riportati il numero di oggetti e di trian
 
 **Save...** chiede il nome del file. A esportazione conclusa, il numero di triangoli, le dimensioni stampate e la scala vengono registrati nel riquadro delle informazioni in basso a sinistra.
 
-### Menu Strumenti
-
 ---
 
 ## Menu a schede

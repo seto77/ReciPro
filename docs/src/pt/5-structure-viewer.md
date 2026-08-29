@@ -92,9 +92,6 @@ A parte superior do diálogo informa o número de objetos e triângulos envolvid
 
 **Save...** pede o nome do arquivo. Concluída a exportação, a contagem de triângulos, as dimensões impressas e a escala são registradas na caixa de informações no canto inferior esquerdo.
 
-### Menu Ferramentas
-
-
 ---
 
 ## Menu de abas

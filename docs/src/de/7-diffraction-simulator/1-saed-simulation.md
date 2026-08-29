@@ -42,7 +42,7 @@ Legt fest, wie die Spotintensitäten berechnet werden.
 
 ### Nur Anregungsfehler
 
-Die Intensität wird ausschließlich aus dem geometrischen Abstand zwischen der Ewald-Kugel und dem reziproken Gitterpunkt (dem Anregungsfehler $s_g$) bestimmt. Je kleiner $\lvert s_g \rvert$ ist, desto höher die Intensität; sie erreicht ihr Maximum bei dem über **Radius** eingestellten Wert und fällt auf null, wenn $\lvert s_g \rvert$ den Radius überschreitet. Da der Strukturfaktor des Kristalls ignoriert wird, ist dies der schnellste Modus und eignet sich zum Überprüfen der Beugungsspotpositionen.
+Die Intensität wird ausschließlich aus dem geometrischen Abstand zwischen der Ewald-Kugel und dem reziproken Gitterpunkt (dem Anregungsfehler $S_g$) bestimmt. Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Da der Strukturfaktor des Kristalls ignoriert wird, ist dies der schnellste Modus und eignet sich zum Überprüfen der Beugungsspotpositionen.
 
 ### Kinematisch
 
@@ -98,7 +98,7 @@ Die über den Spots eingeblendeten Beschriftungen werden in der [Symbolleiste](i
 | **Distance** | Spot-zu-Spot-Abstand auf dem Detektor |
 | **2θ** | Streuwinkel $2\theta$ (gleiche Definition wie die konzentrischen 2θ-Skalenkreise) |
 | **χ** | Azimutwinkel $\chi$, von der 12-Uhr-Richtung aus gemessen, positiv im Uhrzeigersinn (gleiche Definition wie die radialen Azimut-Skalenlinien) |
-| **Excit. Err.** | Anregungsfehler $s_g$ |
+| **Excit. Err.** | Anregungsfehler $S_g$ |
 | **\|Fg\|** | Betrag des Strukturfaktors $\lvert F_{hkl} \rvert$ |
 
 ---

@@ -91,11 +91,11 @@
 | Report bugs, requests, or comments | 開啟 GitHub Issues 頁面 |
 | Help (Web) | 在 GitHub Pages 上以符合 UI 語言的頁面開啟線上手冊。 |
 
-語言可從另外的 **Language** 選單切換（英文/日文，需重新啟動）。
+介面語言可從另外的 **語言** 選單切換（需重新啟動）。
 
 ### Language
 
-在英文與日文之間切換 UI 語言。變更會在重新啟動 ReciPro 後生效。
+切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定。
 
 ### Macro
 

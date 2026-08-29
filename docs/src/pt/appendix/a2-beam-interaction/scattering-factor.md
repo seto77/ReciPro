@@ -46,7 +46,7 @@ $$f(s,E) = f_0(s) + f'(E) + i\,f''(E) \qquad \text{(textbook, } e^{+i\phi}\ \tex
 
 Estes não são parâmetros livres. A causalidade (Kramers–Kronig) liga $f'$ a $f''$, e o **teorema óptico** liga $f''$ diretamente à seção de choque de fotoabsorção:
 
-$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E'^2 - E^2}\,dE',
+$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E^2 - E'^2}\,dE',
 \qquad
 f''(E) = \frac{\sigma_\text{abs}(E)}{2\,r_e\,\lambda}.$$
 

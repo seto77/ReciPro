@@ -124,7 +124,7 @@ El selector de magnitud elige qué se representa frente a la energía del haz (1
 
 La tabla escalar enumera la **wavelength** del electrón, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** y la energía media de excitación **J**, dos **ranges** del electrón (la estimación de penetración de Kanaya–Okayama y la longitud de camino integrada CSDA), y los valores medios **Z, A**. La tabla por elemento da la fracción atómica de cada elemento y la sección eficaz elástica σ. Las secciones eficaces elásticas usan los datos **NIST Mott** (50 eV–36 keV) y recurren a **screened Rutherford** por encima de 36 keV.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 La interacción del neutrón se fija mediante secciones eficaces nucleares en lugar de una curva dependiente de la energía, por lo que esta pestaña muestra solo tablas. La tabla escalar enumera la longitud de dispersión coherente media **b̄**, la **Coherent SLD**, las secciones eficaces promediadas coherente / incoherente / de absorción / total (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), la sección eficaz total macroscópica **Σ_total** y la **attenuation length** correspondiente. La sección eficaz de absorción se evalúa con la ley 1/v a la longitud de onda actual; los núclidos en los que esto no es válido (Cd, Sm, Eu, Gd, absorbentes resonantes) se señalan. La tabla por elemento enumera **b_coh**, **σ_coh** y la fracción atómica.
 

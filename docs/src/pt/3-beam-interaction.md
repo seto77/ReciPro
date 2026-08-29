@@ -124,7 +124,7 @@ O seletor de grandeza escolhe o que é plotado em função da energia do feixe (
 
 A tabela escalar lista o **wavelength** do elétron, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, a **Plasma E** e a energia média de excitação **J**, dois **alcances** de elétrons (a estimativa de penetração de Kanaya–Okayama e o comprimento de trajeto integrado CSDA) e o **Z, A** médio. A tabela por elemento fornece a fração atômica e a seção de choque elástica σ de cada elemento. As seções de choque elásticas usam os dados **NIST Mott** (50 eV–36 keV) e recorrem ao **screened Rutherford** acima de 36 keV.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 A interação de nêutrons é definida por seções de choque nucleares em vez de uma curva dependente da energia, portanto esta aba mostra apenas tabelas. A tabela escalar lista o comprimento de espalhamento coerente médio **b̄**, a **Coherent SLD**, as seções de choque médias coerente / incoerente / de absorção / total (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), a seção de choque total macroscópica **Σ_total** e o **attenuation length** correspondente. A seção de choque de absorção é avaliada com a lei 1/v no comprimento de onda atual; nuclídeos para os quais isto é inválido (Cd, Sm, Eu, Gd como absorvedores ressonantes) são sinalizados. A tabela por elemento lista **b_coh**, **σ_coh** e a fração atômica.
 

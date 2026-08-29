@@ -1,6 +1,6 @@
 # CBED の計算
 
-CBED（収束電子線回折）は、[動力学コア](calculation.md) を多数の入射方向に対して解き、その結果を回折ディスクとして並べ直す計算です。平行ビームの SAED では入射方向が 1 本ですが、CBED では対物絞り内の各点を **partial incident plane wave** とみなし、それぞれについて Bloch 波解を求めます。
+CBED（収束電子線回折）は、[動力学コア](calculation.md) を多数の入射方向に対して解き、その結果を回折ディスクとして並べ直す計算です。平行ビームの SAED では入射方向が 1 本ですが、CBED ではプローブ形成絞り（コンデンサ絞り）内の各点を **部分入射平面波** とみなし、それぞれについて Bloch 波解を求めます。
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-$\mathbf K$ は入射波数ベクトルの表面平行成分です。収束半角を $\alpha$、電子波長を $\lambda$ とすると、理想的な円形絞りでは
+$\mathbf K$ は入射波数ベクトルの表面平行成分です。収束半角を $\alpha$、電子波長を $\lambda$ とすると、理想的な円形のプローブ形成絞りでは
 
 $$A(\mathbf K)=
 \begin{cases}
@@ -57,7 +57,7 @@ $$I_{\mathrm{CBED}}(\mathbf Q)=
 
 CBED では、Bloch 波解の厚さ依存性がディスク内部の強度分布として直接現れます。
 
-- 厚さを変えると、ディスク内部の振動、HOLZ 線、Kossel-Mollenstedt 縞が変化します。
+- 厚さを変えると、ディスク内部の振動、HOLZ 線、Kossel–Möllenstedt 縞が変化します。
 - 入射方位を変えると、どの反射が強く励起されるかが変わります。
 - 収束角を大きくするとディスクが広がり、反射間の重なりや高次ラウエゾーンの情報が見えやすくなります。
 

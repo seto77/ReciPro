@@ -35,7 +35,7 @@ Estas tres convenciones describen la misma geometría; solo difiere la escala. C
 !!! note "Unidades"
     Las parametrizaciones publicadas de los factores de forma usan $s$ en Å⁻¹ (por lo que $s^2$ en Å⁻²), mientras que ReciPro maneja $s^2$ internamente en nm⁻². Ambas difieren en un factor $100$ en $s^2$; las curvas y las tablas se presentan en las unidades indicadas en el encabezado de cada tabla. Un modelo — **Kirkland** — está tabulado frente a $q = 2s = 1/d$ en lugar de frente a $s$; véase [Atomic scattering factors](scattering-factor.md).
 
-### Bragg, Laue y la esfera de Ewald {#phase-convention}
+### Bragg, Laue y la esfera de Ewald
 
 La condición de Bragg es una cara de un único requisito geométrico. La interferencia constructiva (la **condición de Laue**) exige que el vector de dispersión sea igual a un vector de la red recíproca,
 
@@ -49,7 +49,7 @@ es decir, la **ley de Bragg** $\lambda = 2d\sin\theta$. Geométricamente esto es
 
 ---
 
-## Convención de fase
+## Convención de fase {#phase-convention}
 
 ReciPro construye los factores de estructura con la convención de fase cristalográfica
 

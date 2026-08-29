@@ -120,7 +120,7 @@ title: Diffraction Simulator
 | **Копировать** | Скопировать отображаемое изображение в буфер обмена. |
 | **Копировать область детектора** | Скопировать только обрезок области детектора. |
 
-### Preset {#toolbar}
+### Preset
 
 ![Меню «Предустановки»](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ title: Diffraction Simulator
 
 ---
 
-## Панель инструментов
+## Панель инструментов {#toolbar}
 
 ![Панель инструментов](../../assets/cap-ru-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ title: Diffraction Simulator
 
 ---
 
-## Моделирование держателя ПЭМ {#drawing-overlay-tabs}
+## Моделирование держателя ПЭМ
 
 ![Моделирование держателя ПЭМ](../../assets/cap-ru-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ title: Diffraction Simulator
 
 ---
 
-## Вкладки наложений рисования
+## Вкладки наложений рисования {#drawing-overlay-tabs}
 
 ### General
 
@@ -232,7 +232,7 @@ title: Diffraction Simulator
 - **Division** : Угловой интервал между соседними линиями шкалы.
 - **Show scale labels** : Рисовать ли числовые подписи на линиях шкалы.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 Прочие настройки, такие как чувствительность поворота мышью.
 
@@ -240,7 +240,7 @@ title: Diffraction Simulator
 
 ---
 
-## Сведения о дифракционных рефлексах
+## Сведения о дифракционных рефлексах {#diffraction-spot-information}
 
 Перечисляет рассчитанные для каждого рефлекса сведения, полученные методом блоховских волн (Dynamical-расчёт). Откройте их кнопкой **Spot Details** (панель расчёта интенсивности) или флажком **Details**.
 

@@ -46,7 +46,7 @@ $$f(s,E) = f_0(s) + f'(E) + i\,f''(E) \qquad \text{(textbook, } e^{+i\phi}\ \tex
 
 這些並非自由參數。因果律（Kramers–Kronig）將 $f'$ 與 $f''$ 繫結，而**光學定理**則將 $f''$ 直接與光吸收截面繫結：
 
-$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E'^2 - E^2}\,dE',
+$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E^2 - E'^2}\,dE',
 \qquad
 f''(E) = \frac{\sigma_\text{abs}(E)}{2\,r_e\,\lambda}.$$
 

@@ -69,7 +69,7 @@ X 射线的波长比电子长（Cu Kα: 0.15406 nm = 1.5406 Å），因此埃瓦
 
 ### Only excitation error
 
-强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $s_g$）决定。$\lvert s_g \rvert$ 越小强度越高，在 **Radius** 设定的值处达到峰值，当 $\lvert s_g \rvert$ 超过 Radius 时降为零。结构因子被忽略。
+强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $S_g$）决定。$S_g = 0$（即恰好位于球面上）时强度最大，随 $\lvert S_g\rvert$ 增大而减小，当 $\lvert S_g\rvert$ 超过为倒易点阵点设定的 **Radius** 时降为零。结构因子被忽略。
 
 ### Kinematical & excitation error
 

@@ -124,7 +124,7 @@ Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du
 
 Le tableau scalaire liste la **wavelength** de l'électron, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** et l'énergie d'excitation moyenne **J**, deux **ranges** électroniques (l'estimation de profondeur de pénétration de Kanaya–Okayama et la longueur de trajet intégrée CSDA) et les **Z, A** moyens. Le tableau par élément donne, pour chaque élément, la fraction atomique et la section efficace élastique σ. Les sections efficaces élastiques utilisent les données **NIST Mott** (50 eV–36 keV) et se rabattent sur le **screened Rutherford** au-dessus de 36 keV.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 L'interaction des neutrons est déterminée par les sections efficaces nucléaires plutôt que par une courbe dépendant de l'énergie, aussi cet onglet ne montre que des tableaux. Le tableau scalaire liste la longueur de diffusion cohérente moyenne **b̄**, la **Coherent SLD**, les sections efficaces moyennées cohérente / incohérente / d'absorption / totale (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), la section efficace totale macroscopique **Σ_total** et l'**attenuation length** correspondante. La section efficace d'absorption est évaluée avec la loi en 1/v à la longueur d'onde actuelle ; les nucléides pour lesquels cela n'est pas valide (Cd, Sm, Eu, Gd, absorbeurs résonnants) sont signalés. Le tableau par élément liste **b_coh**, **σ_coh** et la fraction atomique.
 

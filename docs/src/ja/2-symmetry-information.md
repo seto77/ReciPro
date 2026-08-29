@@ -95,7 +95,7 @@
 下部の2つのパネルは、*International Tables for Crystallography* Vol. A の表記に則った空間群の対称性模式図を再現します。
 
 - **対称要素 (左)**: 回転軸・らせん軸、鏡面・映進面、反転中心・回反点を、慣用の図記号で描画します。
-  - 立方晶系の\(F\)格子に関しては、単位胞の1/8の領域（Upper left quadrant only）のみを表示します。
+  - 立方晶系の\(F\)格子に関しては、投影した単位胞の左上1/4のみを表示します（[付録 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram) 参照）。
   - このような対称要素は [Structure Viewer](5-structure-viewer.md) の3Dモデル上にも直接描画することができます。
 
 - **一般位置 (右)**: 一般等価位置を円（コンマ付きは鏡像）で表示し、分率座標を付記します。

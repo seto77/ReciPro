@@ -92,9 +92,6 @@ Oben im Dialog stehen die Anzahl der beteiligten Objekte und Dreiecke sowie die 
 
 **Save...** fragt nach dem Dateinamen. Nach Abschluss des Exports werden Dreieckszahl, gedruckte Abmessungen und Maßstab im Informationsfeld unten links protokolliert.
 
-### Menü „Werkzeuge“
-
-
 ---
 
 ## Tab-Menü

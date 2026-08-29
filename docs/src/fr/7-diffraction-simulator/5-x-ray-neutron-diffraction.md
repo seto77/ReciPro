@@ -69,7 +69,7 @@ Sélectionne la méthode utilisée pour calculer les intensités des taches. Deu
 
 ### Only excitation error
 
-L'intensité est déterminée uniquement par la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $s_g$). Un $\lvert s_g \rvert$ plus petit donne une intensité plus élevée, atteignant son maximum à la valeur définie par **Radius**, et tombant à zéro lorsque $\lvert s_g \rvert$ dépasse Radius. Le facteur de structure est ignoré.
+L'intensité est déterminée uniquement par la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $S_g$). Elle est maximale à $S_g = 0$ — exactement sur la sphère — et décroît lorsque $\lvert S_g\rvert$ augmente, jusqu'à s'annuler dès que $\lvert S_g\rvert$ dépasse le **Radius** indiqué pour le point du réseau réciproque. Le facteur de structure est ignoré.
 
 ### Kinematical & excitation error
 

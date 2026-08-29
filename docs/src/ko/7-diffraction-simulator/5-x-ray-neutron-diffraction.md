@@ -69,7 +69,7 @@ X선 세차 카메라를 시뮬레이션합니다. 역격자의 단일 층을 �
 
 ### Only excitation error
 
-강도는 에발트 구와 역격자점 사이의 기하학적 거리(여기 오차 $s_g$)에 의해서만 결정됩니다. $\lvert s_g \rvert$가 작을수록 강도가 높아지며, **Radius**로 설정된 값에서 최대가 되고, $\lvert s_g \rvert$가 Radius를 초과하면 0으로 떨어집니다. 구조 인자는 무시됩니다.
+강도는 에발트 구와 역격자점 사이의 기하학적 거리(여기 오차 $S_g$)에 의해서만 결정됩니다. $S_g = 0$, 즉 구 위에 정확히 놓일 때 가장 크고, $\lvert S_g\rvert$가 커질수록 감소하며, $\lvert S_g\rvert$가 역격자점에 지정된 **Radius**를 초과하면 0이 됩니다. 구조 인자는 무시됩니다.
 
 ### Kinematical & excitation error
 

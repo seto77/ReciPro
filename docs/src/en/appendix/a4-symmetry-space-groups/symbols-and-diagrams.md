@@ -150,8 +150,8 @@ Axes that run obliquely or within the page (this occurs only for special directi
 
 A fractional height label (e.g. `1/4`) next to a symbol gives its coordinate along the projection axis whenever the element does not lie in the plane at height 0.
 
-!!! note "F-lattice cubic groups: only one octant is drawn"
-    For the $F$-centred cubic space groups, ReciPro draws only the upper-left quadrant of one-eighth of the cell (the diagram would otherwise be too dense to read); the full cell repeats it by the centring translations and by the drawn symmetry elements themselves. The same symmetry elements can also be overlaid directly on the 3-D model in the [Structure Viewer](../../5-structure-viewer.md).
+!!! note "F-lattice cubic groups: only part of the cell is drawn"
+    For the $F$-centred cubic space groups, ReciPro draws only the upper-left quarter of the projected cell (the diagram would otherwise be too dense to read); the rest of the cell repeats it by the centring translations and by the drawn symmetry elements themselves. The same symmetry elements can also be overlaid directly on the 3-D model in the [Structure Viewer](../../5-structure-viewer.md).
 
 ---
 
@@ -166,7 +166,7 @@ The right-hand diagram plots the general equivalent positions — the orbit of o
 - (Cubic space groups only) thin auxiliary lines connect three circles that are related by a body-diagonal $\langle111\rangle$ 3-fold axis.
 - In general, one circle (or one half of a split circle) corresponds to one equivalent position, so the number of circles matches the general-position **multiplicity** shown on the [Wyckoff Positions](../../2-symmetry-information.md) tab — a quick sanity check when reading either diagram. If the chosen projection axis happens to make several same-handedness copies coincide exactly, they are superimposed at one spot (distinguished only by separate height labels) rather than drawn as separate side-by-side circles, so the visible circle count can then be lower than the multiplicity.
 
-The `numericBox` fields below **Direction** let you move the test point $(x,y,z)$ away from the space group's default position for that point group, which is occasionally useful to un-clutter a diagram where several circles would otherwise coincide.
+The $x$ / $y$ / $z$ boxes below **Direction** let you move the test point $(x,y,z)$ away from the space group's default position for that point group, which is occasionally useful to un-clutter a diagram where several circles would otherwise coincide.
 
 ---
 

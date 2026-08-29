@@ -40,7 +40,7 @@ Macros are written in Python syntax. Using ReciPro's built-in classes and functi
 
 ## Editor window
 
-The macro editor has four main areas:
+The macro editor is made up of the following areas:
 
 | Area | Purpose |
 |------|---------|

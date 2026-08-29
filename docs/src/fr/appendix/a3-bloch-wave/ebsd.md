@@ -62,7 +62,7 @@ Dans le cas limite dégénéré où le dénominateur est proche de zéro, $\math
 
 ## Échantillonnage de l'espace des directions
 
-Le master pattern n'est pas l'image du détecteur elle-même ; c'est une distribution d'intensité dans l'espace des directions lié au cristal. ReciPro échantillonne cet espace des directions avec une projection équivalente Rosca-Lambert et stocke les hémisphères $+Z$ et $-Z$ comme des tableaux plans distincts. L'échantillonnage à aire égale réduit le biais de densité entre les pôles et l'équateur.
+Le master pattern n'est pas l'image du détecteur elle-même ; c'est une distribution d'intensité dans l'espace des directions lié au cristal. ReciPro échantillonne cet espace des directions avec une projection équivalente Roşca–Lambert et stocke les hémisphères $+Z$ et $-Z$ comme des tableaux plans distincts. L'échantillonnage à aire égale réduit le biais de densité entre les pôles et l'équateur.
 
 À ce stade, le master pattern dépend de la structure cristalline, de la tension d'accélération, de la profondeur, de l'énergie et du modèle d'absorption. La géométrie du détecteur, telle que le centre du pattern et la position de l'écran, n'a pas encore été appliquée.
 

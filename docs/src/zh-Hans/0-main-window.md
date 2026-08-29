@@ -91,11 +91,11 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | Report bugs, requests, or comments | 打开 GitHub Issues 页面 |
 | Help (Web) | 在 GitHub Pages 上打开与界面语言相匹配页面的在线手册。 |
 
-语言通过单独的 **Language** 菜单切换（英语/日语，需要重启）。
+界面语言通过单独的 **语言** 菜单切换（需要重启）。
 
 ### Language
 
-在英语和日语之间切换界面语言。更改在重启 ReciPro 后生效。
+切换界面语言。共支持 11 种语言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 菜单中以各语言自身的文字显示。更改在重启 ReciPro 后生效。在线手册也遵循同一设置。
 
 ### Macro
 

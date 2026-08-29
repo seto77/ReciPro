@@ -20,8 +20,11 @@ GUI 条件: 波長 = 電子線 (結晶・加速電圧・方位は親の回折シ
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+ここで $\gamma_j$ は [動力学コア](../appendix/a3-bloch-wave/calculation.md) の Bloch 波固有値、$\alpha_j$ はその励起振幅です。縮退極限 $\lambda \to 0$ では $F_{jj'}(t) \to t$ になります。
 
 イオン化行列 $\mu$ は 2 つの反射の差 $G = \mathbf{g}_h - \mathbf{g}_g$ だけで決まります。
 

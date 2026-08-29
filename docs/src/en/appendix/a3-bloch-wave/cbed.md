@@ -1,6 +1,6 @@
 # CBED Calculation
 
-CBED (convergent-beam electron diffraction) applies the [dynamical core](calculation.md) to many incident-beam directions and then places the results into diffraction disks. SAED has one incident direction; CBED treats each point inside the objective aperture as a **partial incident plane wave** and solves the Bloch-wave problem for each one.
+CBED (convergent-beam electron diffraction) applies the [dynamical core](calculation.md) to many incident-beam directions and then places the results into diffraction disks. SAED has one incident direction; CBED treats each point inside the probe-forming (condenser) aperture as a **partial incident plane wave** and solves the Bloch-wave problem for each one.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Here $\mathbf K$ is the component of the incident wavevector parallel to the specimen surface. For an ideal circular aperture with convergence semi-angle $\alpha$ and electron wavelength $\lambda$,
+Here $\mathbf K$ is the component of the incident wavevector parallel to the specimen surface. For an ideal circular probe-forming aperture with convergence semi-angle $\alpha$ and electron wavelength $\lambda$,
 
 $$A(\mathbf K)=
 \begin{cases}
@@ -57,7 +57,7 @@ For LACBED-like modes where phase coherence across a wider region matters, the a
 
 CBED makes the thickness dependence of the Bloch-wave solution visible as intensity structure inside diffraction disks.
 
-- Changing the thickness changes disk-interior oscillations, HOLZ lines, and Kossel-Mollenstedt fringes.
+- Changing the thickness changes disk-interior oscillations, HOLZ lines, and Kossel–Möllenstedt fringes.
 - Changing the incident orientation changes which reflections are strongly excited.
 - Increasing the convergence angle broadens the disks and can reveal overlap and higher-order Laue-zone information.
 

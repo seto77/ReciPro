@@ -35,7 +35,7 @@ $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\
 !!! note "단위"
     공개된 형상 인자 매개변수화는 $s$ 를 Å⁻¹ 단위로 사용하지만 (따라서 $s^2$ 은 Å⁻² 단위), ReciPro는 내부적으로 $s^2$ 을 nm⁻² 단위로 다룹니다. 둘은 $s^2$ 에서 인수 $100$ 만큼 차이가 납니다. 곡선과 표는 각 표의 머리글에 명시된 단위로 제시됩니다. 한 모델 — **Kirkland** — 은 $s$ 대신 $q = 2s = 1/d$ 에 대해 표로 정리되어 있습니다. [Atomic scattering factors](scattering-factor.md)를 참조하세요.
 
-### 브래그, 라우에, 그리고 에발트 구 {#phase-convention}
+### 브래그, 라우에, 그리고 에발트 구
 
 브래그 조건은 단일한 기하학적 요구의 한 측면입니다. 보강 간섭(**라우에 조건**)은 산란 벡터가 역격자 벡터와 같을 것을 요구하며,
 
@@ -49,7 +49,7 @@ $$2\,\mathbf k_i\cdot\mathbf g + |\mathbf g|^2 = 0 \qquad\Longleftrightarrow\qqu
 
 ---
 
-## 위상 관례
+## 위상 관례 {#phase-convention}
 
 ReciPro는 결정학적 위상 관례로 구조 인자를 구성합니다
 

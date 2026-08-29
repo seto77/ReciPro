@@ -53,15 +53,16 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Read crystal list (as new list) | Load a crystal list file (*.xml), replacing the current list |
-| Read crystal list (and add) | Append to the current list |
-| Read initial crystal list | Reload the default crystal list |
+| Load Crystal List (Replace current list) | Load a crystal-list file (`*.xml`), replacing the current list |
+| Load Crystal List (Add to current list) | Load a crystal-list file and append it to the current list |
+| Reset to initial crystal list | Reload the crystal list ReciPro ships with |
+| Import Crystal from a CIF or AMC File | Load a single crystal from a CIF / AMC file |
 | Save crystal list | Save the current crystal list |
-| Export selected crystal to CIF | Save in CIF format |
-| Clear crystal list | Remove all crystals |
+| Export the Selected Crystal as a CIF File | Save the selected crystal in CIF format |
+| Clear all crystals | Remove every crystal from the list |
 | Exit | Close the application |
 
-### Option
+### Options
 
 
 | Menu item | Description |
@@ -83,19 +84,19 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Program updates | Check whether a new version of ReciPro is available and install it |
-| Hint | Display usage hints (deprecated) |
-| Version history | Open the version-history dialog |
+| Check for Updates | Check whether a new version of ReciPro is available and install it |
+| Hints | Display usage hints (deprecated) |
+| Version History | Open the version-history dialog |
 | License | Display the MIT licence |
-| GitHub page | Open the ReciPro repository in a browser |
-| Report bugs, requests, or comments | Open the GitHub Issues page |
-| Help (Web) | Open the online manual on GitHub Pages, in the page matching the UI language. |
+| GitHub Repository | Open the ReciPro repository in a browser |
+| Report Bugs, Requests, or Comments | Open the GitHub Issues page |
+| Help (Web) | Open the online manual on GitHub Pages, in the page matching the UI language |
 
-Language is switched from the separate **Language** menu (English/Japanese, requires restart).
+The UI language is switched from the separate **Language** menu (requires restart).
 
 ### Language
 
-Switch the UI language between English and Japanese. The change takes effect after restarting ReciPro.
+Switch the UI language. Eleven languages are available — English, 日本語 (Japanese), Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 and 한국어 — and the menu shows each of them in its own script. The change takes effect after restarting ReciPro. The online manual follows the same setting, so <kbd>F1</kbd> and **Help ▸ Help (Web)** open the page in the language you have chosen.
 
 ### Macro
 
@@ -118,7 +119,7 @@ Shows crystal orientation. Drag to rotate. Axes: red = *a*, green = *b*, blue = 
 Resets to initial: *c*-axis perpendicular to screen, *b*-axis upward.
 
 ### Zone axis
-Displays closest zone axis to screen normal (e.g., *u*+*v*+*w* < 30).
+Shows the zone axis [*uvw*] closest to the screen normal, searched among indices whose magnitudes stay within the limit shown in the max-UVW box (double-click the **Current Index** label to show or hide that box).
 
 ### Euler angles (Z-X-Z)
 Set the crystal orientation with **Z–X–Z** Euler angles:
@@ -178,7 +179,7 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 
 ## Crystal Information
 
-Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSmanager, but the tabs and features shown differ per application. ReciPro shows the Basic Info, Atom, and Reference tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
+Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load a structure. This control is shared by ReciPro, PDIndexer, and CSManager, but the tabs and features shown differ per application. ReciPro shows the Basic Info, Atom, and Reference tabs (the EOS, Elasticity, and other tabs are for the other applications and are not shown in ReciPro).
 
 > **Important**: Press **Add** or **Replace** to save changes.
 
@@ -231,7 +232,7 @@ Right-click an atom row and choose **Show equivalent atom positions** to open a 
 | Radiation | Source / setting |
 |-----------|------|
 | X-ray | Scattering factors including ionic valence (International Tables for Crystallography, Vol. C). |
-| Electron | Electron scattering factors (Peng 1998, Acta Cryst. A54, 481–485). |
+| Electron | Electron scattering factors — neutral atoms from Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; ions from Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Neutron scattering lengths. Choose **Natural isotope abundance** or **Custom isotope abundance** (an arbitrary isotope composition). |
 
 ### Reference tab
@@ -259,14 +260,14 @@ Right-click an empty area of the control for these main actions:
 
 ## Functions panel {#functions}
 
-The vertical button strip on the right launches the analysis and simulation windows (see the [Functions](#functions) table below).
+The vertical button strip on the right launches the analysis and simulation windows listed below.
 
 ![Functions panel](../assets/cap-en-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 | Button | Description | Details |
 |--------|-------------|---------|
 | Crystal Database | Search and import crystals from the bundled / online databases | [1. Crystal database](1-crystal-database.md) |
-| Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [2. Symmetry information](2-symmetry-information.md) |
+| Symmetry Information | Space-group info and *International Tables* Vol. A symmetry diagrams | [2. Symmetry information](2-symmetry-information.md) |
 | Beam Interaction | Beam–crystal interaction: reflections, attenuation, scattering factors, fluorescence | [3. Beam interaction](3-beam-interaction.md) |
 | Rotation Geometry | 3D rotation matrix / goniometer angles | [4. Rotation Geometry](4-rotation-geometry.md) |
 | Structure Viewer | 3D crystal structure | [5. Structure viewer](5-structure-viewer.md) |

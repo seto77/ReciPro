@@ -56,9 +56,9 @@
 <!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
 ## 励起誤差 $S_g$ の2つの定義
 
-ReciPro は文脈に応じて、意図的に異なる2つの励起誤差の定義を使い分けている:
+ReciPro は文脈に応じて、意図的に異なる2つの励起誤差の定義を使い分けています。
 
-- **運動学的な表示および `SpotInfo()` (kinematical/excitation モード)** : 逆格子点から Ewald 球への符号付き**動径方向**距離 $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$ (球の中心 $\boldsymbol{C} = (0, 0, k)$、$k = 1/\lambda$)。$S_g > 0$ は球の内側を意味する。運動学シミュレータは試料の形状や厚さを仮定しないため表面法線という概念が存在せず、反射の選別・表示には等方的な動径距離が中立な尺度となる。
-- **動力学 (Bethe 法) 計算** : 試料表面法線 $\boldsymbol{n}$ に**沿って**測った距離 $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$ ($P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$、$Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$)。試料表面で課される境界条件が要請する定義である。
+- **運動学的な表示および `SpotInfo()` (kinematical/excitation モード)** : 逆格子点から Ewald 球への符号付き**動径方向**距離 $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$ (球の中心 $\boldsymbol{C} = (0, 0, k)$、$k = 1/\lambda$)。$S_g > 0$ は球の内側を意味します。運動学シミュレータは試料の形状や厚さを仮定しないため表面法線という概念が存在せず、反射の選別・表示には等方的な動径距離が中立な尺度になります。
+- **動力学 (Bethe 法) 計算** : 試料表面法線 $\boldsymbol{n}$ に**沿って**測った距離 $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$ ($P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$、$Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$)。試料表面で課される境界条件が要請する定義です。
 
-両者は垂直入射 (表面法線がビームと平行) ではほぼ一致するが、**同一の量ではない**。運動学出力と動力学出力の $S_g$ を混用してはならない。
+両者は垂直入射 (表面法線がビームと平行) ではほぼ一致しますが、**同一の量ではありません**。運動学出力と動力学出力の $S_g$ を混用しないでください。

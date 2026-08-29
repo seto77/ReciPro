@@ -20,9 +20,9 @@ Electrons inside a crystal are scattered by the crystal potential. Its distribut
 
 ![TEM conditions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — accelerating voltage. It sets the electron wavelength and is used to compute the Fourier coefficients $U_g$ of the potential.
+- **Acc. Voltage (kV)** — accelerating voltage. It sets the electron wavelength and is used to compute the Fourier coefficients $U_g$ of the potential.
 
-> **Defocus, Cs, Cc, β, ΔE and the PCTF are inactive in potential mode** (no image-formation optics is applied) and appear greyed out.
+> **Defocus, Cs, Cc, β, ΔV and the PCTF are inactive in potential mode** (no image-formation optics is applied) and appear greyed out.
 
 ---
 

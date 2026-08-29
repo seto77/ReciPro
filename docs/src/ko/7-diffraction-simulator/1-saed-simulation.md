@@ -42,7 +42,7 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 
 ### Only excitation error
 
-강도는 에발트 구와 역격자점 사이의 기하학적 거리(여기 오차 $s_g$)만으로 결정됩니다. $\lvert s_g \rvert$가 작을수록 강도가 높아지며, **Radius**로 설정한 값에서 최댓값에 도달하고 $\lvert s_g \rvert$가 Radius를 초과하면 0으로 떨어집니다. 결정 구조 인자를 무시하므로 가장 빠른 모드이며 회절 스폿 위치 확인에 적합합니다.
+강도는 에발트 구와 역격자점 사이의 기하학적 거리(여기 오차 $S_g$)만으로 결정됩니다. $S_g = 0$, 즉 구 위에 정확히 놓일 때 가장 크고, $\lvert S_g\rvert$가 커질수록 감소하며, $\lvert S_g\rvert$가 역격자점에 지정된 **Radius**를 초과하면 0이 됩니다. 결정 구조 인자를 무시하므로 가장 빠른 모드이며 회절 스폿 위치 확인에 적합합니다.
 
 ### Kinematical
 
@@ -98,7 +98,7 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 | **Distance** | 검출기 상의 스폿 간 거리 |
 | **2θ** | 산란각 $2\theta$ (2θ 눈금의 동심원과 같은 정의) |
 | **χ** | 방위각 $\chi$. 화면 위쪽(12시 방향)을 0°로 하여 시계 방향이 양수 (방위각 눈금의 방사선과 같은 정의) |
-| **Excit. Err.** | 여기 오차 $s_g$ |
+| **Excit. Err.** | 여기 오차 $S_g$ |
 | **\|Fg\|** | 구조 인자의 절댓값 $\lvert F_{hkl} \rvert$ |
 
 ---

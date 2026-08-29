@@ -42,7 +42,7 @@ Selects how spot intensities are computed.
 
 ### Only excitation error
 
-Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $s_g$). The smaller $\lvert s_g \rvert$ is, the higher the intensity; it reaches its maximum at the value set by **Radius**, and falls to zero when $\lvert s_g \rvert$ exceeds Radius. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
+Intensity is determined solely from the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. Because the crystal structure factor is ignored, this is the fastest mode and is suited to checking diffraction-spot positions.
 
 ### Kinematical
 
@@ -82,7 +82,7 @@ Controls how each diffraction spot is rendered.
 - **Color scale** : **Gray scale** or **Cold-warm**.
 - **Log scale** : display intensities on a logarithmic scale. Useful for patterns with large intensity contrast.
 - **Spot color** : spot colour used when the colour scale is not in use.
-- **Use crystal color** : when checked, spots are drawn in the colour assigned to each crystal.
+- **Color per crystal** : when checked, spots are drawn in the colour assigned to each crystal.
 
 ---
 
@@ -98,7 +98,7 @@ The labels overlaid on the spots are selected from the [toolbar](index.md#toolba
 | **Distance** | spot-to-spot distance on the detector |
 | **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
 | **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
-| **Excit. Err.** | excitation error $s_g$ |
+| **Excit. Err.** | excitation error $S_g$ |
 | **\|Fg\|** | absolute value of the structure factor $\lvert F_{hkl} \rvert$ |
 
 ---

@@ -62,7 +62,7 @@ En el límite degenerado en el que el denominador se acerca a cero, $\mathcal F_
 
 ## Muestreo del espacio de direcciones
 
-El master pattern no es la imagen del detector en sí; es una distribución de intensidad en el espacio de direcciones fijo al cristal. ReciPro muestrea ese espacio de direcciones con una proyección equiárea de Rosca-Lambert y almacena los hemisferios $+Z$ y $-Z$ como matrices planas separadas. El muestreo equiárea reduce el sesgo de densidad entre los polos y el ecuador.
+El master pattern no es la imagen del detector en sí; es una distribución de intensidad en el espacio de direcciones fijo al cristal. ReciPro muestrea ese espacio de direcciones con una proyección equiárea de Roşca–Lambert y almacena los hemisferios $+Z$ y $-Z$ como matrices planas separadas. El muestreo equiárea reduce el sesgo de densidad entre los polos y el ecuador.
 
 En esta etapa, el master pattern depende de la estructura cristalina, la tensión de aceleración, la profundidad, la energía y el modelo de absorción. La geometría del detector, como el centro del patrón y la posición de la pantalla, aún no se ha aplicado.
 

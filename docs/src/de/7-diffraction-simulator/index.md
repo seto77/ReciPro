@@ -120,7 +120,7 @@ Die zur Cursorposition gehörenden Informationen (Cursor-*q*, *d*, 2θ, Azimut u
 | **Kopieren** | Das angezeigte Bild in die Zwischenablage kopieren. |
 | **Detektorbereich kopieren** | Nur den Ausschnitt des Detektorbereichs kopieren. |
 
-### Preset {#toolbar}
+### Preset
 
 ![Voreinstellungen-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ---
 
-## Symbolleiste
+## Symbolleiste {#toolbar}
 
 ![Symbolleiste](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ---
 
-## TEM-Halter-Simulation {#drawing-overlay-tabs}
+## TEM-Halter-Simulation
 
 ![TEM-Halter-Simulation](../../assets/cap-de-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ---
 
-## Zeichen-Overlay-Registerkarten
+## Zeichen-Overlay-Registerkarten {#drawing-overlay-tabs}
 
 ### General
 
@@ -232,7 +232,7 @@ Aktiv, wenn die Skalenlinien in der Symbolleiste aktiviert sind.
 - **Teilung** : Winkelabstand zwischen benachbarten Skalenlinien.
 - **Maßstabsbeschriftungen anzeigen** : Ob numerische Beschriftungen auf die Skalenlinien gezeichnet werden.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 Verschiedene Einstellungen wie die Mausrotationsempfindlichkeit.
 
@@ -240,7 +240,7 @@ Verschiedene Einstellungen wie die Mausrotationsempfindlichkeit.
 
 ---
 
-## Beugungsreflex-Informationen
+## Beugungsreflex-Informationen {#diffraction-spot-information}
 
 Listet die per Reflex berechneten Details auf, die mit der Bloch-Wellen-Methode (Dynamical-Berechnung) ermittelt wurden. Öffnen Sie es mit der Schaltfläche **Reflexdetails** (Intensitätsberechnungsbereich) oder dem Kontrollkästchen **Details**.
 

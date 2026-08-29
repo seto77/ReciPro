@@ -38,7 +38,7 @@ $$T_k(\mathbf g, M_k) = \exp\!\left[-M_k\,\frac{|\mathbf g|^2}{4}\right]$$
 
 而对于各向异性的原子位移张量 $\mathbf U$，
 
-$$T_k(\mathbf g) = \exp\!\left[-2\pi\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
+$$T_k(\mathbf g) = \exp\!\left[-2\pi^2\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
 
 其二次型为
 

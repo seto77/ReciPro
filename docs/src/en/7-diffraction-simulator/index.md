@@ -120,7 +120,7 @@ The information corresponding to the cursor position (cursor *q*, *d*, 2θ, azim
 | **Copy** | Copy the displayed image to the clipboard. |
 | **Copy detector area** | Copy only the detector-area crop. |
 
-### Preset {#toolbar}
+### Preset
 
 ![Preset menu](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ Save and recall a complete simulator configuration — wavelength, detector geom
 
 ---
 
-## Toolbar
+## Toolbar {#toolbar}
 
 ![Toolbar](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ Save and recall a complete simulator configuration — wavelength, detector geom
 
 ---
 
-## TEM holder simulation {#drawing-overlay-tabs}
+## TEM holder simulation
 
 ![TEM holder simulation](../../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ Opens a window that links the diffraction pattern to a double-tilt (or rotation)
 
 ---
 
-## Drawing overlay tabs
+## Drawing overlay tabs {#drawing-overlay-tabs}
 
 ### General
 
@@ -232,7 +232,7 @@ Active when the scale lines are enabled on the toolbar.
 - **Division** : Angular interval between adjacent scale lines.
 - **Show scale labels** : Whether to draw numeric labels on the scale lines.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 Miscellaneous settings such as the mouse rotation sensitivity.
 
@@ -240,7 +240,7 @@ Miscellaneous settings such as the mouse rotation sensitivity.
 
 ---
 
-## Diffraction spot information
+## Diffraction spot information {#diffraction-spot-information}
 
 Lists the per-reflection details computed by the Bloch-wave method (Dynamical calculation). Open it with the **Spot Details** button (intensity-calculation panel) or the **Details** check box.
 

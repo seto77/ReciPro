@@ -124,7 +124,7 @@ Die Größenauswahl bestimmt, was gegen die Strahlenergie (1–30 keV) dargestel
 
 Die Skalartabelle listet die Elektronen-**wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, die **Plasma E** und die mittlere Anregungsenergie **J**, zwei Elektronen-**ranges** (die Kanaya–Okayama-Eindringtiefe-Schätzung und die CSDA-integrierte Weglänge) sowie das mittlere **Z, A** auf. Die Tabelle pro Element gibt für jedes Element den Atomanteil und den elastischen Streuquerschnitt σ an. Die elastischen Streuquerschnitte verwenden die **NIST Mott**-Daten (50 eV–36 keV) und greifen oberhalb von 36 keV auf **screened Rutherford** zurück.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 Die Neutronenwechselwirkung wird durch nukleare Wirkungsquerschnitte und nicht durch eine energieabhängige Kurve bestimmt, daher zeigt diese Registerkarte nur Tabellen. Die Skalartabelle listet die mittlere kohärente Streulänge **b̄**, die **Coherent SLD**, die gemittelten kohärenten / inkohärenten / Absorptions- / Gesamt-Wirkungsquerschnitte (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), den makroskopischen Gesamtwirkungsquerschnitt **Σ_total** und die zugehörige **attenuation length** auf. Der Absorptionsquerschnitt wird mit dem 1/v-Gesetz bei der aktuellen Wellenlänge ausgewertet; Nuklide, bei denen dies ungültig ist (Cd, Sm, Eu, Gd als resonante Absorber), werden gekennzeichnet. Die Tabelle pro Element listet **b_coh**, **σ_coh** und den Atomanteil auf.
 

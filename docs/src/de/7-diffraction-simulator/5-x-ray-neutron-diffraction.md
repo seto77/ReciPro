@@ -69,7 +69,7 @@ Wählt die Methode zur Berechnung der Spot-Intensitäten. Für Röntgenstrahlen 
 
 ### Only excitation error
 
-Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $s_g$). Ein kleineres $\lvert s_g \rvert$ ergibt eine höhere Intensität, mit einem Maximum bei dem durch **Radius** eingestellten Wert, und fällt auf null, wenn $\lvert s_g \rvert$ den Radius übersteigt. Der Strukturfaktor wird ignoriert.
+Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $S_g$). Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Der Strukturfaktor wird ignoriert.
 
 ### Kinematical & excitation error
 

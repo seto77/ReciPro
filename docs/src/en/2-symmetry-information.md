@@ -95,7 +95,7 @@ Lists every tabulated origin/axis-setting choice sharing the current space group
 The two panels at the bottom reproduce the schematic symmetry diagrams of the space group in the notation of *International Tables for Crystallography* Vol. A.
 
 - **Symmetry elements (left)**: rotation/screw axes, mirror/glide planes, and inversion centres/rotoinversion points are drawn with the conventional graphical symbols.
-  - For the \(F\) lattice of the cubic system, only one-eighth of the unit cell (the upper-left quadrant only) is shown.
+  - For the \(F\) lattice of the cubic system, only the upper-left quarter of the projected cell is shown (see [Appendix A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - These symmetry elements can also be drawn directly onto the 3D model in the [Structure Viewer](5-structure-viewer.md).
 - **General positions (right)**: the general equivalent positions are plotted as circles (a comma denotes a mirror image), annotated with their fractional coordinates.
   - For the cubic system only, auxiliary lines connect the three circles related by a three-fold rotation axis.

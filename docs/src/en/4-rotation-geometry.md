@@ -33,11 +33,13 @@ The upper half of the window shows the rotation state in the "ReciPro coordinate
 
 ### Φ, θ, Ψ (Z–X–Z Euler angles)
 
-The crystal orientation is parametrised by three rotations applied in this order:
+The crystal orientation is parametrised by three rotations. Described in the **body-fixed (intrinsic)** frame, they are applied in this order:
 
 1. **Φ** — first rotation about the **Z** axis.
 2. **θ** — rotation about the **X** axis of the once-rotated frame.
 3. **Ψ** — second rotation about the **Z** axis of the twice-rotated frame.
+
+The same rotation seen in the **fixed laboratory** frame is the reverse sequence — Ψ about $Z$, then θ about $X$, then Φ about $Z$ — which is the description used in [Appendix A1.1](appendix/a1-coordinate-system/1-orientation.md). Both give the identical matrix $R$ below; Φ is simply the outermost (goniometer-like) axis and Ψ the innermost.
 
 Every numeric box is editable; changing a value here updates the Main window and every linked simulator.
 
@@ -76,7 +78,7 @@ The same matrix, with \(R_{ij}\) = row \(i\), column \(j\), appears as:
 
 ### OpenGL windows
 
-The 3D view shows the current rotation using three coloured toruses (doughnuts):
+The 3D view shows the current rotation using three coloured tori (doughnut shapes):
 
 | Colour | Euler angle | Goniometer level |
 |--------|------------|-----------------|

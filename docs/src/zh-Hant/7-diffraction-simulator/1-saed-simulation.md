@@ -42,7 +42,7 @@ GUI 條件：Wave Length = Electron、Incident beam mode = Parallel、Intensity 
 
 ### 僅偏離向量
 
-強度僅由厄瓦爾德球與倒易點陣點之間的幾何距離（即偏離向量 $s_g$）決定。$\lvert s_g \rvert$ 越小，強度越高；當其等於 **Radius** 所設定的值時達到最大，當 $\lvert s_g \rvert$ 超過 Radius 時則降為零。由於忽略了晶體結構因子，這是最快的模式，適合用於檢查繞射光點位置。
+強度僅由厄瓦爾德球與倒易點陣點之間的幾何距離（即偏離向量 $S_g$）決定。$S_g = 0$（即恰好位於球面上）時強度最大，並隨 $\lvert S_g\rvert$ 增大而減小，當 $\lvert S_g\rvert$ 超過為倒易點陣點所設定的 **Radius** 時則降為零。由於忽略了晶體結構因子，這是最快的模式，適合用於檢查繞射光點位置。
 
 ### 運動學
 
@@ -98,7 +98,7 @@ GUI 條件：Wave Length = Electron、Incident beam mode = Parallel、Intensity 
 | **Distance** | 偵測器上光點與光點之間的距離 |
 | **2θ** | 散射角 $2\theta$ (與 2θ 刻度的同心圓定義相同) |
 | **χ** | 方位角 $\chi$，以畫面正上方 (12 點鐘方向) 為 0°，順時針為正 (與方位角刻度的放射線定義相同) |
-| **Excit. Err.** | 偏離向量 $s_g$ |
+| **Excit. Err.** | 偏離向量 $S_g$ |
 | **\|Fg\|** | 結構因子的絕對值 $\lvert F_{hkl} \rvert$ |
 
 ---

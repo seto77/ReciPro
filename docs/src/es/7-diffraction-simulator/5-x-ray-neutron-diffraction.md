@@ -69,7 +69,7 @@ Selecciona el método utilizado para calcular las intensidades de los puntos. Ha
 
 ### Only excitation error
 
-La intensidad se determina únicamente por la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $s_g$). Un $\lvert s_g \rvert$ menor da una intensidad mayor, con un máximo en el valor establecido por **Radius**, y cae a cero cuando $\lvert s_g \rvert$ supera el valor de Radius. El factor de estructura se ignora.
+La intensidad se determina únicamente por la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $S_g$). Es máxima en $S_g = 0$ —exactamente sobre la esfera— y decae a medida que crece $\lvert S_g\rvert$, llegando a cero cuando $\lvert S_g\rvert$ supera el **Radius** indicado para el punto de la red recíproca. El factor de estructura se ignora.
 
 ### Kinematical & excitation error
 

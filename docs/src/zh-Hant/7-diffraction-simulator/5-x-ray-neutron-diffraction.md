@@ -69,7 +69,7 @@ X 光的波長比電子長（Cu Kα：0.15406 nm = 1.5406 Å），因此厄瓦�
 
 ### Only excitation error
 
-強度僅由厄瓦爾德球與倒易點陣點之間的幾何距離（偏離向量 $s_g$）決定。較小的 $\lvert s_g \rvert$ 會給出較高的強度，並在 **Radius** 所設的值處達到峰值，而當 $\lvert s_g \rvert$ 超過 Radius 時則降為零。結構因子被忽略。
+強度僅由厄瓦爾德球與倒易點陣點之間的幾何距離（偏離向量 $S_g$）決定。$S_g = 0$（即恰好位於球面上）時強度最大，並隨 $\lvert S_g\rvert$ 增大而減小，當 $\lvert S_g\rvert$ 超過為倒易點陣點所設定的 **Radius** 時則降為零。結構因子被忽略。
 
 ### Kinematical & excitation error
 

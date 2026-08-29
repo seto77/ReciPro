@@ -38,7 +38,7 @@ $$T_k(\mathbf g, M_k) = \exp\!\left[-M_k\,\frac{|\mathbf g|^2}{4}\right]$$
 
 異方的な原子変位テンソル $\mathbf U$ の場合は
 
-$$T_k(\mathbf g) = \exp\!\left[-2\pi\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
+$$T_k(\mathbf g) = \exp\!\left[-2\pi^2\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
 
 であり、二次形式は
 
@@ -62,9 +62,9 @@ $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!
 であり、**吸収散乱因子** は、弾性散乱因子 $f_e$ を Ewald 球面上で畳み込む積分
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
-\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
+\qquad s_\mp=\frac{1}{2}\left|\mathbf q\mp\frac{\mathbf g-\mathbf h}{2}\right|,\qquad \mathbf q=\mathbf K-\mathbf k_{vac}+\frac{\mathbf g+\mathbf h}{2}$$
 
-です。$\mathbf K$ は Ewald 球面上を走る波数ベクトル、$\mathrm d\Omega$ はその立体角要素です。ReciPro はこの積分を Gauss–Legendre 求積で数値的に評価します（被積分関数は前方に鋭くピークするため、極角は散乱ベクトルの大きさの等比区間に分割して解像します）。STEM の環状検出器に入る TDS や EBSD の後方散乱 TDS を表すときは、**同じ被積分関数** を検出器の角度範囲（環状領域や後方半球）に制限して積分します。
+です。$\mathbf K$ は半径 $k_{vac}$ の球面上を走る **散乱後の** 波数ベクトル、$\mathrm d\Omega$ はその立体角要素で、$\mathbf K-\mathbf k_{vac}$ がその方向の散乱ベクトルにあたります。同じことですが、2 つの引数は $s_- = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf g\rvert/2$、$s_+ = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf h\rvert/2$ であり、ReciPro が評価しているのはこの形です。ReciPro はこの積分を Gauss–Legendre 求積で数値的に評価します（被積分関数は前方に鋭くピークするため、極角は散乱ベクトルの大きさの等比区間に分割して解像します）。STEM の環状検出器に入る TDS や EBSD の後方散乱 TDS を表すときは、**同じ被積分関数** を検出器の角度範囲（環状領域や後方半球）に制限して積分します。
 
 被積分関数の $f_{e,k}$ は二段構成です。低 $s$ では[電子散乱因子](../a2-beam-interaction/scattering-factor.md)の **Peng の 5-Gaussian 近似** を、高 $s$（$s \ge 2.5$ Å⁻¹）では **Mott–Bethe の関係式** を Waasmaier–Kirfel の X 線因子 $f_0(s)$ で直接評価した値を使い、$1.5\text{–}2.5$ Å⁻¹ の間は滑らかに補間します。Peng の Gauss 和は $s \gtrsim 2$ Å⁻¹ で実際の散乱因子より急速に小さくなり（Gauss 型の裾は指数的に消えるが、実際の $f_e$ は $1/s^2$ の裾を持つ）、$s$ が $k_{vac}$ 程度（200 kV で約 40 Å⁻¹）に達する後方散乱では桁違いの過小評価になるためです。なお実装では、Mott–Bethe 側の $f_0(s)$ は当てはめ範囲外で負に発散し得るため $[0, Z]$ にクランプし、イオンのエントリでも中性原子の $f_0$ を使います（高 $s$ では電子雲は効かず核電荷だけが見えるため）。
 

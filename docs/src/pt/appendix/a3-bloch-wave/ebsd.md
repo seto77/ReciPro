@@ -62,7 +62,7 @@ No limite degenerado em que o denominador está próximo de zero, $\mathcal F_{j
 
 ## Amostragem do espaço de direções
 
-O master pattern não é a própria imagem do detector; é uma distribuição de intensidade no espaço de direções fixo ao cristal. O ReciPro amostra esse espaço de direções com uma projeção equiárea de Rosca-Lambert e armazena os hemisférios $+Z$ e $-Z$ como matrizes planas separadas. A amostragem equiárea reduz o viés de densidade entre os polos e o equador.
+O master pattern não é a própria imagem do detector; é uma distribuição de intensidade no espaço de direções fixo ao cristal. O ReciPro amostra esse espaço de direções com uma projeção equiárea de Roşca–Lambert e armazena os hemisférios $+Z$ e $-Z$ como matrizes planas separadas. A amostragem equiárea reduz o viés de densidade entre os polos e o equador.
 
 Nesse estágio, o master pattern depende da estrutura cristalina, da tensão de aceleração, da profundidade, da energia e do modelo de absorção. A geometria do detector, como o centro do padrão e a posição da tela, ainda não foi aplicada.
 

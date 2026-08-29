@@ -42,7 +42,7 @@ Selecciona cómo se calculan las intensidades de los spots.
 
 ### Solo error de excitación
 
-La intensidad se determina únicamente a partir de la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $s_g$). Cuanto menor es $\lvert s_g \rvert$, mayor es la intensidad; alcanza su máximo en el valor establecido mediante **Radius** y cae a cero cuando $\lvert s_g \rvert$ supera Radius. Como se ignora el factor de estructura del cristal, este es el modo más rápido y resulta adecuado para comprobar las posiciones de los spots de difracción.
+La intensidad se determina únicamente a partir de la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $S_g$). Es máxima en $S_g = 0$ —exactamente sobre la esfera— y decae a medida que crece $\lvert S_g\rvert$, llegando a cero cuando $\lvert S_g\rvert$ supera el **Radius** indicado para el punto de la red recíproca. Como se ignora el factor de estructura del cristal, este es el modo más rápido y resulta adecuado para comprobar las posiciones de los spots de difracción.
 
 ### Cinemática
 
@@ -98,7 +98,7 @@ Las etiquetas superpuestas sobre los spots se seleccionan desde la [barra de her
 | **Distance** | distancia spot a spot en el detector |
 | **2θ** | ángulo de dispersión $2\theta$ (misma definición que los círculos concéntricos de la escala 2θ) |
 | **χ** | ángulo azimutal $\chi$, medido desde la dirección hacia arriba (las 12 en punto), positivo en sentido horario (misma definición que las líneas radiales de la escala azimutal) |
-| **Excit. Err.** | error de excitación $s_g$ |
+| **Excit. Err.** | error de excitación $S_g$ |
 | **\|Fg\|** | valor absoluto del factor de estructura $\lvert F_{hkl} \rvert$ |
 
 ---

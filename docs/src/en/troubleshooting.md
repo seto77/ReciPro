@@ -29,7 +29,7 @@ The window will be brought onto your main display. Note that **Switch to**, **Br
 **Solution** (try in order):
 
 1. **Disable OpenGL**: hold the **Ctrl** key while launching ReciPro to start with OpenGL disabled. Recent versions (v4.925 and later) harden OpenGL initialization so the app launches even when OpenGL fails — in that case the 3D features are disabled but the rest of the app works.
-2. **Reset the settings**: in the registry editor, delete the key `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, then restart. (Equivalent to **Option → Reset registry**.)
+2. **Reset the settings**: in the registry editor, delete the key `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, then restart. (Equivalent to **Options ▸ Reset registry settings on exit**.)
 3. **Clean reinstall**: uninstall ReciPro, delete the following folders if present (replace `<user>` with your account name), then reinstall:
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ If none of these help, the cause may be the OS environment itself; please [open 
 
 **Solution**:
 
-1. Go to **Option → Disable OpenGL (needs restart)** (or hold **Ctrl** while launching).
+1. Go to **Options ▸ Disable all OpenGL rendering (requires restart)** (or hold **Ctrl** while launching).
 2. Restart ReciPro.
 3. Structure Viewer and some 3D features will use software rendering.
 
@@ -59,7 +59,7 @@ If none of these help, the cause may be the OS environment itself; please [open 
 
 ### Symptom: Poor rendering quality
 
-**Solution**: Update your GPU drivers. An external (discrete) GPU with OpenGL 1.5 support is recommended.
+**Solution**: Update your GPU drivers. OpenGL 1.3 is the minimum; a discrete GPU with OpenGL 4.3 support is recommended (see [System requirements](index.md)).
 
 ---
 
@@ -130,8 +130,8 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 
 **Solution**:
 
-- **Left-click** the main drawing area to zoom out.
-- Check the incident-wave energy on the **Wave** tab (upper left): X-ray ≈ 1–100 keV, electron ≈ 10–1000 keV are appropriate.
+- **Right-click** the main drawing area to zoom out (these views have no mouse-wheel zoom — see [21. Keyboard & mouse shortcuts](21-shortcuts.md)).
+- Check the incident-wave energy in the **Wave source** panel on the right: X-ray ≈ 1–100 keV, electron ≈ 10–1000 keV are appropriate.
 
 ---
 
@@ -161,7 +161,7 @@ For example, the **Peak Identification** button in Spot ID v2 is hidden, or the 
 
 If settings become corrupted:
 
-1. **Option → Reset registry (after restart)**
+1. **Options ▸ Reset registry settings on exit (effective after restart)**
 2. Restart ReciPro — window positions, wavelength, camera length, etc. will be reset to defaults
 
 ---

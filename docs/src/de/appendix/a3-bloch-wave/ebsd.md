@@ -62,7 +62,7 @@ Im entarteten Grenzfall, in dem der Nenner nahe null liegt, gilt $\mathcal F_{jj
 
 ## Abtastung des Richtungsraums
 
-Das Master-Pattern ist nicht das Detektorbild selbst; es ist eine Intensitätsverteilung im kristallfesten Richtungsraum. ReciPro tastet diesen Richtungsraum mit einer flächentreuen Rosca-Lambert-Projektion ab und speichert die $+Z$- und $-Z$-Hemisphären als getrennte ebene Felder. Die flächentreue Abtastung verringert die Dichteverzerrung zwischen den Polen und dem Äquator.
+Das Master-Pattern ist nicht das Detektorbild selbst; es ist eine Intensitätsverteilung im kristallfesten Richtungsraum. ReciPro tastet diesen Richtungsraum mit einer flächentreuen Roşca–Lambert-Projektion ab und speichert die $+Z$- und $-Z$-Hemisphären als getrennte ebene Felder. Die flächentreue Abtastung verringert die Dichteverzerrung zwischen den Polen und dem Äquator.
 
 In diesem Stadium hängt das Master-Pattern von Kristallstruktur, Beschleunigungsspannung, Tiefe, Energie und Absorptionsmodell ab. Die Detektorgeometrie wie Pattern-Zentrum und Schirmposition wurde noch nicht angewendet.
 

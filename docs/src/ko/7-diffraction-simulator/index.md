@@ -120,7 +120,7 @@ title: Diffraction Simulator
 | **복사** | 표시된 이미지를 클립보드에 복사합니다. |
 | **검출기 영역 복사** | 검출기 영역 부분만 복사합니다. |
 
-### Preset {#toolbar}
+### Preset
 
 ![프리셋 메뉴](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ title: Diffraction Simulator
 
 ---
 
-## 도구 모음
+## 도구 모음 {#toolbar}
 
 ![도구 모음](../../assets/cap-ko-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ title: Diffraction Simulator
 
 ---
 
-## TEM 홀더 시뮬레이션 {#drawing-overlay-tabs}
+## TEM 홀더 시뮬레이션
 
 ![TEM 홀더 시뮬레이션](../../assets/cap-ko-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ title: Diffraction Simulator
 
 ---
 
-## 그리기 오버레이 탭
+## 그리기 오버레이 탭 {#drawing-overlay-tabs}
 
 ### 일반
 
@@ -232,7 +232,7 @@ title: Diffraction Simulator
 - **분할** : 인접한 축척 선 사이의 각도 간격.
 - **축척 라벨 표시** : 축척 선에 숫자 레이블을 그릴지 여부.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 마우스 회전 감도 같은 기타 설정.
 
@@ -240,7 +240,7 @@ title: Diffraction Simulator
 
 ---
 
-## 회절 스폿 정보
+## 회절 스폿 정보 {#diffraction-spot-information}
 
 블로흐파 방법(Dynamical 계산)으로 계산된 반사별 상세 정보를 나열합니다. **반사점 세부정보** 버튼(강도 계산 패널) 또는 **Details** 확인란으로 엽니다.
 

@@ -50,7 +50,7 @@ See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for 
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-| **Acc. Vol. (kV)** | Accelerating voltage. The relativistically corrected electron wavelength is shown alongside | 200 kV |
+| **Acc. Voltage (kV)** | Accelerating voltage. The relativistically corrected electron wavelength is shown alongside | 200 kV |
 | **Defocus Δf** | Defocus of the objective (probe-forming) lens (nm) | −57.8 nm |
 | **Cs** | Spherical aberration coefficient (mm). Affects the probe size | 0.5–1.0 mm |
 | **Cc** | Chromatic aberration coefficient (mm) | 1.0–2.0 mm |

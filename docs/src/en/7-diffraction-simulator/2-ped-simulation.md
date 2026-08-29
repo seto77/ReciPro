@@ -76,10 +76,10 @@ Controls how each diffraction spot is drawn.
 - **Opacity** : Spot transparency (0 = transparent, 1 = opaque).
 - **Radius (R)** : Radius of the reciprocal lattice points. For dynamical intensities, the Gaussian integral $=$ Brightness $\times I_\text{dyn}$, and the Solid sphere uses radius $R \times I_\text{dyn}^{1/2}$ (so the area is proportional to the dynamical intensity).
 - **Brightness** : Available only in **Gaussian** mode. Integrated intensity of the drawn Gaussian.
-- **Colour scale** : **Gray scale** or **Cold-warm** colour map.
+- **Color scale** : **Gray scale** or **Cold-warm** colour map.
 - **Log scale** : Display intensity on a logarithmic scale.
-- **Spot colour** : Spot colour used when no colour scale is applied.
-- **Use crystal colour** : Draw spots in the colour assigned to each crystal.
+- **Spot color** : Spot colour used when no colour scale is applied.
+- **Color per crystal** : Draw spots in the colour assigned to each crystal.
 
 ---
 

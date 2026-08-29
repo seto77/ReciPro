@@ -87,7 +87,7 @@ When several images are produced (a serial image, or the magnitude/phase of a po
 
 ---
 
-## Displaying and adjusting results (left panel)
+## Displaying and adjusting results (left panel) {#display-settings}
 
 The panel at the lower left adjusts how the result looks — brightness, color, normalization, and overlays. These apply to every mode and take effect without recalculating.
 

@@ -69,7 +69,7 @@ Seleziona il metodo utilizzato per calcolare le intensità degli spot. Per i rag
 
 ### Only excitation error
 
-L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $s_g$). Un $\lvert s_g \rvert$ più piccolo dà un'intensità maggiore, con un picco al valore impostato da **Radius**, e scende a zero quando $\lvert s_g \rvert$ supera Radius. Il fattore di struttura viene ignorato.
+L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $S_g$). È massima per $S_g = 0$ — esattamente sulla sfera — e decresce al crescere di $\lvert S_g\rvert$, annullandosi non appena $\lvert S_g\rvert$ supera il **Radius** indicato per il punto del reticolo reciproco. Il fattore di struttura viene ignorato.
 
 ### Kinematical & excitation error
 

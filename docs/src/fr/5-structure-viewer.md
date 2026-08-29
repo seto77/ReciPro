@@ -92,9 +92,6 @@ Le haut de la boîte de dialogue indique le nombre d'objets et de triangles conc
 
 **Save...** demande le nom du fichier. Une fois l'export terminé, le nombre de triangles, les dimensions imprimées et l'échelle sont consignés dans la zone d'informations en bas à gauche.
 
-### Menu Outils
-
-
 ---
 
 ## Menu des onglets

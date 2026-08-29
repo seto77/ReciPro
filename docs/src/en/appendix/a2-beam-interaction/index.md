@@ -33,9 +33,9 @@ These three conventions describe the same geometry; only the scale differs. The 
 | Diffraction-peak plot | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Units"
-    The published parametrisations of the form factors use $s$ in Å⁻¹ (so $s^2$ in Å⁻²), while ReciPro carries $s^2$ internally in nm⁻². The two differ by a factor $100$ in $s^2$; the curves and tables are presented in the units stated in each table's header. One model — **Kirkland** — is tabulated against $q = 2s = 1/d$ rather than $s$; see [Atomic scattering factors](scattering-factor.md).
+    The published parametrisations of the form factors use $s$ in Å⁻¹ (so $s^2$ in Å⁻²), while ReciPro carries $s^2$ internally in nm⁻². The two differ by a factor $100$ in $s^2$; the curves and tables are presented in the units stated in each table's header. One model — **Kirkland** — is tabulated against $q_K = 2s = 1/d$ rather than $s$; see [Atomic scattering factors](scattering-factor.md). Note that this $q_K$ is **not** the $q = 2\pi/d$ of the Reflections table above: the two differ by a factor $2\pi$.
 
-### Bragg, Laue, and the Ewald sphere {#phase-convention}
+### Bragg, Laue, and the Ewald sphere
 
 The Bragg condition is one face of a single geometric requirement. Constructive interference (the **Laue condition**) demands that the scattering vector equal a reciprocal-lattice vector,
 
@@ -49,7 +49,7 @@ i.e. **Bragg's law** $\lambda = 2d\sin\theta$. Geometrically this is the **Ewald
 
 ---
 
-## Phase convention
+## Phase convention {#phase-convention}
 
 ReciPro builds structure factors with the crystallographic phase convention
 
@@ -61,7 +61,7 @@ i.e. a **minus** sign in the exponent. This choice fixes the sign of the imagina
 
 ## Kinematical vs dynamical scattering
 
-This appendix treats **single (kinematical) scattering**: the incident beam scatters once, and the diffracted amplitude is the structure factor of the next page. That is the right picture when the interaction is weak — X-rays and neutrons in almost all samples, and electrons in *very thin* specimens.
+This appendix treats **single (kinematical) scattering**: the incident beam scatters once, and the diffracted amplitude is the structure factor of the next page. That is the right picture when the interaction is weak — X-rays and neutrons in powders, imperfect crystals and thin samples, and electrons in *very thin* specimens. (Even X-rays become dynamical in a large, nearly perfect crystal, where primary extinction weakens the strongest reflections.)
 
 When the interaction is strong — electrons in any but the thinnest crystals — the beam scatters many times before it leaves, intensity is redistributed among the reflections, and $\lvert F\rvert^2$ no longer gives the measured intensity. That regime needs the **dynamical** theory of [Appendix A3](../a3-bloch-wave/index.md). The scattering factors and structure factors derived here are the *input* to both pictures.
 

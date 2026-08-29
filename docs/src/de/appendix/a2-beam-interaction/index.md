@@ -35,7 +35,7 @@ Diese drei Konventionen beschreiben dieselbe Geometrie; nur die Skala unterschei
 !!! note "Einheiten"
     Die veröffentlichten Parametrisierungen der Formfaktoren verwenden $s$ in Å⁻¹ (also $s^2$ in Å⁻²), während ReciPro intern $s^2$ in nm⁻² führt. Die beiden unterscheiden sich um einen Faktor $100$ in $s^2$; die Kurven und Tabellen werden in den Einheiten dargestellt, die in der Kopfzeile jeder Tabelle angegeben sind. Ein Modell — **Kirkland** — ist gegen $q = 2s = 1/d$ statt gegen $s$ tabelliert; siehe [Atomic scattering factors](scattering-factor.md).
 
-### Bragg, Laue und die Ewald-Kugel {#phase-convention}
+### Bragg, Laue und die Ewald-Kugel
 
 Die Bragg-Bedingung ist eine Facette einer einzigen geometrischen Anforderung. Konstruktive Interferenz (die **Laue-Bedingung**) verlangt, dass der Streuvektor gleich einem reziproken Gittervektor ist,
 
@@ -49,7 +49,7 @@ d. h. das **Bragg'sche Gesetz** $\lambda = 2d\sin\theta$. Geometrisch ist dies d
 
 ---
 
-## Phasenkonvention
+## Phasenkonvention {#phase-convention}
 
 ReciPro bildet Strukturfaktoren mit der kristallographischen Phasenkonvention
 

@@ -20,8 +20,11 @@ For each incident orientation the wave field inside the crystal is solved with t
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+where $\gamma_j$ are the Bloch-wave eigenvalues of the [dynamical core](../appendix/a3-bloch-wave/calculation.md) and $\alpha_j$ their excitation amplitudes; $F_{jj'}(t) \to t$ in the degenerate limit $\lambda \to 0$.
 
 The ionization matrix $\mu$ depends only on the difference of two reflections, $G = \mathbf{g}_h - \mathbf{g}_g$.
 

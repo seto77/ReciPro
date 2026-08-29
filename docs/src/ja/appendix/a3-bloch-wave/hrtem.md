@@ -18,8 +18,8 @@ HRTEM 像は、出射面の波動関数（[動力学コア](calculation.md) で�
 | $C_s$ | 球面収差係数 |
 | $C_c$ | 色収差係数 |
 | $\beta$ | 照射半角（有限な光源サイズの効果） |
-| $\Delta E$ | 電子エネルギー揺らぎの $1/e$ 幅 |
-| $\Delta_0$ | デフォーカス広がりの $1/e$ 幅（ガウス分布）、$\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | 電子エネルギー揺らぎの **標準偏差**（rms）。GUI の **ΔV** 欄は FWHM で入力するので $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | デフォーカス広がり（ガウス分布）の標準偏差、$\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -61,7 +61,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-です。$\mathbf u' \to \mathbf u$ の極限で、TCC は上記の準コヒーレントのエンベロープに帰着します。
+です。$\mathbf u' = \mathbf 0$（透過波との干渉）と置くと、準コヒーレントモデルの単一周波数エンベロープ $E_c(\mathbf u)$・$E_s(\mathbf u)$ が復元されます。もう一方の極限 $\mathbf u' \to \mathbf u$ では $E_c = E_s = 1$ となり、後述の対角項 $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ になります。
 
 ---
 

@@ -124,7 +124,7 @@
 
 标量表列出电子 **wavelength**、**σ elastic**、**Elastic MFP**、**|dE/ds|**、**IMFP**、**Plasma E** 和平均激发能 **J**、两个电子 **range**（Kanaya–Okayama 穿透深度估计和 CSDA 积分路径长度），以及平均 **Z, A**。逐元素表给出每个元素的原子分数和弹性截面 σ。弹性截面使用 **NIST Mott** 数据（50 eV–36 keV），在 36 keV 以上回退到 **screened Rutherford**。
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 中子相互作用由核截面而非随能量变化的曲线决定，因此此选项卡仅显示表格。标量表列出平均相干散射长度 **b̄**、**Coherent SLD**、平均后的 相干 / 非相干 / 吸收 / 总 截面（**σ̄_coh**、**σ̄_incoh**、**σ̄_abs**、**σ̄_total**）、宏观总截面 **Σ_total** 及相应的 **attenuation length**。吸收截面在当前波长下用 1/v 定律计算；此定律不成立的核素（Cd、Sm、Eu、Gd 共振吸收体）会被标记。逐元素表列出 **b_coh**、**σ_coh** 和原子分数。
 

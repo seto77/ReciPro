@@ -38,7 +38,7 @@ $$T_k(\mathbf g, M_k) = \exp\!\left[-M_k\,\frac{|\mathbf g|^2}{4}\right]$$
 
 and for an anisotropic atomic displacement tensor $\mathbf U$,
 
-$$T_k(\mathbf g) = \exp\!\left[-2\pi\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
+$$T_k(\mathbf g) = \exp\!\left[-2\pi^2\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
 
 with the quadratic form
 
@@ -62,9 +62,9 @@ $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!
 with the **absorptive scattering factor**, an integral that convolves the elastic scattering factor $f_e$ over the Ewald sphere:
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
-\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
+\qquad s_\mp=\frac{1}{2}\left|\mathbf q\mp\frac{\mathbf g-\mathbf h}{2}\right|,\qquad \mathbf q=\mathbf K-\mathbf k_{vac}+\frac{\mathbf g+\mathbf h}{2}$$
 
-Here $\mathbf K$ is a wave vector running over the Ewald sphere and $\mathrm d\Omega$ is its solid-angle element. ReciPro evaluates this integral numerically by Gauss–Legendre quadrature (the integrand peaks sharply in the forward direction, so the polar angle is split into geometric intervals of the scattering-vector magnitude to resolve it). For the TDS collected by an annular STEM detector, or the backscattered TDS in EBSD, the **same integrand** is integrated over the detector's angular range (an annulus or the backward hemisphere) instead.
+Here $\mathbf K$ is the *scattered* wave vector, running over the sphere $|\mathbf K| = k_{vac}$ with solid-angle element $\mathrm d\Omega$, and $\mathbf K-\mathbf k_{vac}$ is therefore the scattering vector of that direction. Equivalently, the two arguments are $s_- = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf g\rvert/2$ and $s_+ = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf h\rvert/2$, which is the form ReciPro evaluates. ReciPro evaluates this integral numerically by Gauss–Legendre quadrature (the integrand peaks sharply in the forward direction, so the polar angle is split into geometric intervals of the scattering-vector magnitude to resolve it). For the TDS collected by an annular STEM detector, or the backscattered TDS in EBSD, the **same integrand** is integrated over the detector's angular range (an annulus or the backward hemisphere) instead.
 
 The elastic factor $f_{e,k}$ in the integrand is a two-part construction: at low $s$ it is the **Peng 5-Gaussian fit** from the [scattering-factor page](../a2-beam-interaction/scattering-factor.md); at high $s$ ($s \ge 2.5$ Å⁻¹) it is the **Mott–Bethe relation** evaluated directly with the Waasmaier–Kirfel X-ray factor $f_0(s)$, with a smooth blend between $1.5$ and $2.5$ Å⁻¹. The reason is that the Peng Gaussian sum decays much too fast beyond $s \gtrsim 2$ Å⁻¹ (Gaussian tails vanish exponentially, whereas the true $f_e$ has a $1/s^2$ tail), which underestimates backscattering by many orders of magnitude at $s$ of order $k_{vac}$ (about 40 Å⁻¹ at 200 kV). Two implementation details: $f_0(s)$ is clamped to $[0, Z]$ (some fitted forms diverge outside their fitting range), and the neutral-atom $f_0$ is used even for ionic entries (at high $s$ only the nuclear charge is seen, not the electron cloud).
 

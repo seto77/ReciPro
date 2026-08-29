@@ -57,7 +57,7 @@ Para los modos de tipo LACBED, donde importa la coherencia de fase a lo largo de
 
 CBED hace visible la dependencia del espesor de la solución de ondas de Bloch como estructura de intensidad dentro de los discos de difracción.
 
-- Cambiar el espesor modifica las oscilaciones en el interior de los discos, las líneas HOLZ y las franjas de Kossel-Mollenstedt.
+- Cambiar el espesor modifica las oscilaciones en el interior de los discos, las líneas HOLZ y las franjas de Kossel–Möllenstedt.
 - Cambiar la orientación de incidencia modifica qué reflexiones se excitan con intensidad.
 - Aumentar el ángulo de convergencia ensancha los discos y puede revelar solapamientos e información de zonas de Laue de orden superior.
 

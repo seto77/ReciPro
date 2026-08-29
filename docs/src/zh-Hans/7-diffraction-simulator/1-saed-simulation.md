@@ -42,7 +42,7 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 
 ### 仅激发误差
 
-强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $s_g$）决定。$\lvert s_g \rvert$ 越小，强度越高；在 **Radius** 所设定的值处达到最大，当 $\lvert s_g \rvert$ 超过 Radius 时降为零。由于忽略了晶体结构因子，这是最快的模式，适合检查衍射斑点的位置。
+强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $S_g$）决定。$S_g = 0$（即恰好位于球面上）时强度最大，随 $\lvert S_g\rvert$ 增大而减小，当 $\lvert S_g\rvert$ 超过为倒易点阵点设定的 **Radius** 时降为零。由于忽略了晶体结构因子，这是最快的模式，适合检查衍射斑点的位置。
 
 ### 运动学
 
@@ -98,7 +98,7 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 | **Distance** | 探测器上斑点之间的距离 |
 | **2θ** | 散射角 $2\theta$（与 2θ 刻度的同心圆定义相同） |
 | **χ** | 方位角 $\chi$，以屏幕正上方（12 点钟方向）为 0°，顺时针为正（与方位角刻度的放射线定义相同） |
-| **Excit. Err.** | 偏离矢量 $s_g$ |
+| **Excit. Err.** | 偏离矢量 $S_g$ |
 | **\|Fg\|** | 结构因子的绝对值 $\lvert F_{hkl} \rvert$ |
 
 ---

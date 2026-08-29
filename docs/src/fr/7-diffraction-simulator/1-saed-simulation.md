@@ -42,7 +42,7 @@ Détermine la manière dont les intensités des taches sont calculées.
 
 ### Erreur d'excitation seule
 
-L'intensité est déterminée uniquement à partir de la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $s_g$). Plus $\lvert s_g \rvert$ est petit, plus l'intensité est élevée ; elle atteint son maximum à la valeur définie par **Radius** et tombe à zéro lorsque $\lvert s_g \rvert$ dépasse le rayon. Comme le facteur de structure du cristal est ignoré, c'est le mode le plus rapide et il convient pour vérifier les positions des taches de diffraction.
+L'intensité est déterminée uniquement à partir de la distance géométrique entre la sphère d'Ewald et le point du réseau réciproque (l'erreur d'excitation $S_g$). Elle est maximale à $S_g = 0$ — exactement sur la sphère — et décroît lorsque $\lvert S_g\rvert$ augmente, jusqu'à s'annuler dès que $\lvert S_g\rvert$ dépasse le **Radius** indiqué pour le point du réseau réciproque. Comme le facteur de structure du cristal est ignoré, c'est le mode le plus rapide et il convient pour vérifier les positions des taches de diffraction.
 
 ### Cinématique
 
@@ -98,7 +98,7 @@ Les étiquettes superposées aux taches sont sélectionnées dans la [barre d'ou
 | **Distance** | distance de tache à tache sur le détecteur |
 | **2θ** | angle de diffusion $2\theta$ (même définition que les cercles concentriques de l'échelle 2θ) |
 | **χ** | angle azimutal $\chi$, mesuré depuis la direction vers le haut (12 heures), positif dans le sens horaire (même définition que les lignes radiales de l'échelle azimutale) |
-| **Excit. Err.** | erreur d'excitation $s_g$ |
+| **Excit. Err.** | erreur d'excitation $S_g$ |
 | **\|Fg\|** | valeur absolue du facteur de structure $\lvert F_{hkl} \rvert$ |
 
 ---

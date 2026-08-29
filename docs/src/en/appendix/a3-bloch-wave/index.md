@@ -54,7 +54,7 @@ From the geometry,
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-and the **excitation error** $S_g$ (the deviation of the reciprocal-lattice point from the Ewald sphere) together with the **evaluation function** $R$ used to rank reflections are
+and the **excitation error** $S_g$ (the deviation of the reciprocal-lattice point from the Ewald sphere) together with the **evaluation function** $R$ used to rank reflections (smaller $R$ = short $\mathbf g$ and close to the Ewald sphere, taken first) are
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

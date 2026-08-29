@@ -4,7 +4,7 @@
 
 ![Simulator in HRTEM mode](../../assets/cap-en-auto/FormImageSimulator-hrtem.png)
 
-> This page covers every setting that appears on the right side when **Image mode = HRTEM**. For the controls on the left side — displaying the result and adjusting its brightness — see the [overview page](index.md#displaying-and-adjusting-results-left-panel).
+> This page covers every setting that appears on the right side when **Image mode = HRTEM**. For the controls on the left side — displaying the result and adjusting its brightness — see the [overview page](index.md#display-settings).
 
 ---
 

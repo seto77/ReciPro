@@ -91,11 +91,11 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | Report bugs, requests, or comments | Die GitHub-Issues-Seite öffnen |
 | Help (Web) | Das Online-Handbuch auf GitHub Pages in der zur UI-Sprache passenden Seite öffnen. |
 
-Die Sprache wird über das separate Menü **Language** umgeschaltet (Englisch/Japanisch, erfordert Neustart).
+Die UI-Sprache wird über das separate Menü **Sprache** umgeschaltet (erfordert Neustart).
 
 ### Language
 
-Die UI-Sprache zwischen Englisch und Japanisch umschalten. Die Änderung wird nach einem Neustart von ReciPro wirksam.
+Die UI-Sprache umschalten. Elf Sprachen stehen zur Verfügung — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 und 한국어 — und das Menü zeigt jede in ihrer eigenen Schrift. Die Änderung wird nach einem Neustart von ReciPro wirksam. Das Online-Handbuch folgt derselben Einstellung.
 
 ### Macro
 

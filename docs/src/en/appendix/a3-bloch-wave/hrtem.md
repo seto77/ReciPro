@@ -18,8 +18,8 @@ The HRTEM image is formed from the exit-surface wavefunction — the transmissio
 | $C_s$ | spherical aberration coefficient |
 | $C_c$ | chromatic aberration coefficient |
 | $\beta$ | illumination semi-angle (finite source size) |
-| $\Delta E$ | $1/e$ width of the electron energy fluctuations |
-| $\Delta_0$ | $1/e$ width of the defocus spread (Gaussian), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **standard deviation** (rms) of the electron energy fluctuation. The GUI box **ΔV** takes the FWHM, so $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | standard deviation of the (Gaussian) defocus spread, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-In the limit $\mathbf u' \to \mathbf u$ the TCC reduces to the quasi-coherent envelopes above.
+Setting $\mathbf u' = \mathbf 0$ — interference of the beam $\mathbf u$ with the transmitted beam — recovers the single-frequency envelopes $E_c(\mathbf u)$ and $E_s(\mathbf u)$ of the quasi-coherent model above. The other limit, $\mathbf u' \to \mathbf u$, gives $E_c = E_s = 1$ and hence the diagonal term $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ used below.
 
 ---
 

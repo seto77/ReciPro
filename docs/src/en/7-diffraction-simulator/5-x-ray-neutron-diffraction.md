@@ -69,9 +69,9 @@ Selects the method used to compute spot intensities. Two modes are available for
 
 ### Only excitation error
 
-Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $s_g$). Smaller $\lvert s_g \rvert$ gives higher intensity, peaking at the value set by **Radius**, and falling to zero when $\lvert s_g \rvert$ exceeds Radius. The structure factor is ignored.
+Intensity is determined solely by the geometric distance between the Ewald sphere and the reciprocal-lattice point (the excitation error $S_g$). It is largest at $S_g = 0$ — exactly on the sphere — and falls off as $\lvert S_g\rvert$ grows, reaching zero once $\lvert S_g\rvert$ exceeds the **Radius** given for the reciprocal-lattice point. The structure factor is ignored.
 
-### Kinematical && exc. error
+### Kinematical & exc. error
 
 In addition to the excitation error, the Kinematical structure factor $\lvert F_{hkl} \rvert^2$ is folded into the intensity. Extinction rules are strictly obeyed. The Lorentz and polarization factors are not included (this is a simulation of the geometric pattern).
 
@@ -92,7 +92,7 @@ Controls how each diffraction spot is rendered.
 - **Color scale** : choose between **Gray scale** and **Cold-warm** colour maps.
 - **Log scale** : display intensities on a logarithmic scale.
 - **Spot color** : default spot colour when the colour scale does not apply.
-- **Use crystal color** : when checked, draws spots in the colour assigned to each crystal.
+- **Color per crystal** : when checked, draws spots in the colour assigned to each crystal.
 
 ---
 

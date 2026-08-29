@@ -91,11 +91,11 @@ Se você é novo no ReciPro, siga estes passos:
 | Report bugs, requests, or comments | Abrir a página de Issues do GitHub |
 | Help (Web) | Abrir o manual on-line no GitHub Pages, na página correspondente ao idioma da interface. |
 
-O idioma é alternado pelo menu **Language** separado (Inglês/Japonês, requer reinicialização).
+O idioma da interface é alternado pelo menu **Idioma** separado (requer reinicialização).
 
 ### Language
 
-Alternar o idioma da interface entre Inglês e Japonês. A alteração entra em vigor após reiniciar o ReciPro.
+Alternar o idioma da interface. Estão disponíveis onze idiomas — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 e 한국어 — cada um exibido na sua própria escrita. A alteração entra em vigor após reiniciar o ReciPro. O manual online segue a mesma configuração.
 
 ### Macro
 

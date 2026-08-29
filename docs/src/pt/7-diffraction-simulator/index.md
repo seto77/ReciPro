@@ -120,7 +120,7 @@ As informações correspondentes à posição do cursor (cursor *q*, *d*, 2θ, a
 | **Copy** | Copiar a imagem exibida para a área de transferência. |
 | **Copy detector area** | Copiar apenas o recorte da área do detector. |
 
-### Preset {#toolbar}
+### Preset
 
 ![Menu Predefinições](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 
 ---
 
-## Barra de ferramentas
+## Barra de ferramentas {#toolbar}
 
 ![Barra de ferramentas](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ Salvar e recuperar uma configuração completa do simulador — comprimento de o
 
 ---
 
-## Simulação do suporte TEM {#drawing-overlay-tabs}
+## Simulação do suporte TEM
 
 ![Simulação do suporte TEM](../../assets/cap-pt-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ Abre uma janela que vincula o padrão de difração a um **TEM holder** de dupla
 
 ---
 
-## Abas de overlay de desenho
+## Abas de overlay de desenho {#drawing-overlay-tabs}
 
 ### General
 
@@ -232,7 +232,7 @@ Ativa quando as linhas de escala estão habilitadas na barra de ferramentas.
 - **Division** : Intervalo angular entre linhas de escala adjacentes.
 - **Show scale labels** : Se rótulos numéricos devem ser desenhados nas linhas de escala.
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 Configurações diversas, como a sensibilidade de rotação do mouse.
 
@@ -240,7 +240,7 @@ Configurações diversas, como a sensibilidade de rotação do mouse.
 
 ---
 
-## Informações dos reflexos de difração
+## Informações dos reflexos de difração {#diffraction-spot-information}
 
 Lista os detalhes por reflexo calculados pelo método de ondas de Bloch (cálculo Dynamical). Abra-o com o botão **Spot Details** (painel de cálculo de intensidade) ou a caixa de seleção **Details**.
 

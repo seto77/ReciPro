@@ -124,7 +124,7 @@
 
 스칼라 테이블은 전자 **wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, **Plasma E** 와 평균 여기 에너지 **J**, 두 가지 전자 **range** (Kanaya–Okayama 침투 추정값과 CSDA 적분 경로 길이), 그리고 평균 **Z, A** 를 나열합니다. 원소별 테이블은 각 원소의 원자 분율과 탄성 단면적 σ를 제공합니다. 탄성 단면적은 **NIST Mott** 데이터 (50 eV–36 keV) 를 사용하며 36 keV 위에서는 **screened Rutherford** 로 대체됩니다.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 중성자 상호작용은 에너지 의존 곡선이 아니라 핵 단면적으로 정해지므로, 이 탭은 테이블만 표시합니다. 스칼라 테이블은 평균 가간섭 산란 길이 **b̄**, **Coherent SLD**, 평균화된 가간섭 / 비가간섭 / 흡수 / 전체 단면적 (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), 거시 전체 단면적 **Σ_total** 과 그에 대응하는 **attenuation length** 를 나열합니다. 흡수 단면적은 현재 파장에서 1/v 법칙으로 평가되며, 이것이 유효하지 않은 핵종 (Cd, Sm, Eu, Gd 공명 흡수체) 은 표시됩니다. 원소별 테이블은 **b_coh**, **σ_coh**, 그리고 원자 분율을 나열합니다.
 

@@ -42,7 +42,7 @@ Seleziona come vengono calcolate le intensità degli spot.
 
 ### Solo errore di eccitazione
 
-L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $s_g$). Più piccolo è $\lvert s_g \rvert$, più alta è l'intensità; essa raggiunge il suo massimo al valore impostato tramite **Radius** e scende a zero quando $\lvert s_g \rvert$ supera Radius. Poiché il fattore di struttura del cristallo viene ignorato, questa è la modalità più veloce ed è adatta a verificare le posizioni degli spot di diffrazione.
+L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $S_g$). È massima per $S_g = 0$ — esattamente sulla sfera — e decresce al crescere di $\lvert S_g\rvert$, annullandosi non appena $\lvert S_g\rvert$ supera il **Radius** indicato per il punto del reticolo reciproco. Poiché il fattore di struttura del cristallo viene ignorato, questa è la modalità più veloce ed è adatta a verificare le posizioni degli spot di diffrazione.
 
 ### Cinematica
 
@@ -98,7 +98,7 @@ Le etichette sovrapposte agli spot vengono selezionate dalla [barra degli strume
 | **Distance** | distanza spot-spot sul rivelatore |
 | **2θ** | angolo di diffusione $2\theta$ (stessa definizione dei cerchi concentrici della scala 2θ) |
 | **χ** | angolo azimutale $\chi$, misurato dalla direzione verso l'alto (ore 12), positivo in senso orario (stessa definizione delle linee radiali della scala azimutale) |
-| **Excit. Err.** | errore di eccitazione $s_g$ |
+| **Excit. Err.** | errore di eccitazione $S_g$ |
 | **\|Fg\|** | valore assoluto del fattore di struttura $\lvert F_{hkl} \rvert$ |
 
 ---

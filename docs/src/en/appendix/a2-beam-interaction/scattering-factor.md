@@ -46,7 +46,7 @@ $$f(s,E) = f_0(s) + f'(E) + i\,f''(E) \qquad \text{(textbook, } e^{+i\phi}\ \tex
 
 These are not free parameters. Causality (Kramers–Kronig) ties $f'$ to $f''$, and the **optical theorem** ties $f''$ directly to the photoabsorption cross section:
 
-$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E'^2 - E^2}\,dE',
+$$f'(E) = \frac{2}{\pi}\,\mathcal{P}\!\!\int_0^\infty \frac{E'\,f''(E')}{E^2 - E'^2}\,dE',
 \qquad
 f''(E) = \frac{\sigma_\text{abs}(E)}{2\,r_e\,\lambda}.$$
 
@@ -78,7 +78,7 @@ ReciPro offers four sources for $f_e(s)$ — three fitted parametrisations and o
 
 - **Peng** : a five-Gaussian fit, $f_e(s)=\sum_i a_i e^{-b_i s^2}$, convenient and widely used for elastic electron scattering.
 - **Kirkland** : a mixed Lorentzian + Gaussian fit, $f_e(q)=\sum_i \dfrac{a_i}{q^2+b_i} + \sum_i c_i\,e^{-d_i q^2}$. **Its independent variable is $q = 2s = 1/d$, not $s$** — a frequent source of factor-of-two errors when comparing models ($q$ in Å⁻¹, with the fitted coefficients $a_i,b_i,c_i,d_i$ in the corresponding units).
-- **Temari** : not a fit at all, but a table computed from first principles (a full Dirac self-consistent-field calculation with exact KLI exchange; Temari dataset-factors v1.0.0, CC-BY-4.0). Because a sum of Gaussians decays as $e^{-b s^2}$ while the true $f_e$ falls as $s^{-2}$, the fitted forms are out of their range beyond $s \approx 3$ Å⁻¹, where a computed table is not. **Neutral atoms Z = 1–86 only** — ions are not derivable from it — and, like the fits above, it carries no relativistic $\gamma$.
+- **Temari** : not a fit at all, but a table computed from first principles (a full Dirac self-consistent-field calculation with the KLI approximation to exact exchange; Temari dataset-factors v1.0.0, CC-BY-4.0). Because a sum of Gaussians decays as $e^{-b s^2}$ while the true $f_e$ falls as $s^{-2}$, the fitted forms are out of their range beyond $s \approx 3$ Å⁻¹, where a computed table is not. **Neutral atoms Z = 1–86 only** — ions are not derivable from it — and, like the fits above, it carries no relativistic $\gamma$.
 - **8-Gaussians** : an eight-term fit valid over a wider $s$ range.
 
 **Choosing one.** The three fits target the same underlying $f_e(s)$ and agree closely at low $s$; they differ mainly in range and in how the atomic core is represented. **Peng** (neutral atoms and common ions; the tables are fitted to $s \le 6$ Å⁻¹, but since Gaussian tails fall off faster than the true curve, the fit is effectively accurate only to $s \lesssim 2$ Å⁻¹) is the usual default for SAED/CBED structure factors; **Kirkland** extends to higher $s$ with a Lorentzian core term, suited to HRTEM/STEM (recall $q=2s$); **8-Gaussians** is for reflections reaching very high $s$. For a light element the three are nearly indistinguishable; the differences show up for heavy elements at high angle. **Temari** stands apart: it is not fitted to anything, so it is the reference to compare a fit against when you want to know how far it has drifted — at the cost of covering neutral atoms only.

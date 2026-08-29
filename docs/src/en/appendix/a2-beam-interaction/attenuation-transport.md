@@ -55,11 +55,11 @@ The X-ray refractive index of a solid is **slightly less than 1**, written
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-where $n_i$ is the number density of element $i$ and $r_e$ the classical electron radius. Here $\mu_\text{abs}$ is the absorptive part of the attenuation (tied to $f''$); it need not equal the total $\mu$ above, which also contains Rayleigh and Compton scattering. Because $n<1$, X-rays undergo **total external reflection** below a small grazing **critical angle**
+where $n_i$ is the number density of element $i$ and $r_e$ the classical electron radius. Here $\mu_\text{abs}$ is the absorptive part of the attenuation (tied to $f''$); it need not equal the total $\mu$ above, which also contains Rayleigh and Compton scattering. When $\delta>0$ the refractive index is smaller than 1, so X-rays undergo **total external reflection** below a small grazing **critical angle** $\alpha_c$:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-This follows from the refraction geometry: for a glancing angle $\alpha$ the vertical wavevector inside the solid is $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, which reaches zero at $\alpha = \alpha_c = \sqrt{2\delta}$; below that the wave cannot propagate into the material and is totally reflected. The real part of the **scattering-length density**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, sets $\delta$ and is the X-ray analogue of the neutron SLD used in reflectometry. ReciPro reports $\delta$, $\beta$, $\theta_c$, and the X-ray SLD in the scalar table.
+This follows from the refraction geometry: for a glancing angle $\alpha$ the vertical wavevector inside the solid is $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, which reaches zero at $\alpha = \alpha_c = \sqrt{2\delta}$; below that the wave cannot propagate into the material and is totally reflected. The expression assumes the lossless limit $\beta \ll \delta$: with a finite $\beta$ an evanescent wave still penetrates a few nanometres and the reflectivity stays slightly below 1. Just above an absorption edge $\delta$ can even become negative, in which case there is no critical angle and ReciPro reports none. The real part of the **scattering-length density**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, sets $\delta$ and is the X-ray analogue of the neutron SLD used in reflectometry. ReciPro reports $\delta$, $\beta$, $\alpha_c$ (listed as **θc** in the scalar table), and the X-ray SLD.
 
 ---
 
@@ -69,7 +69,7 @@ A fast electron in a solid both **scatters** (changing direction) and **loses en
 
 ### Elastic scattering and the mean free path
 
-The elastic cross section $\sigma_\text{el}$ measures how readily a single atom deflects the electron. ReciPro uses the **NIST Mott** cross sections (a partial-wave solution of the relativistic Dirac equation in the screened atomic potential), valid roughly over **50 eV – 36.4 keV**; outside that range, or for elements not in the table, it falls back to the **screened Rutherford** approximation. The two need not join perfectly smoothly at the boundary. The total cross section is the angular integral of the differential one,
+The elastic cross section $\sigma_\text{el}$ measures how readily a single atom deflects the electron. ReciPro uses the **NIST Mott** cross sections (a partial-wave solution of the relativistic Dirac equation in the screened atomic potential). The bundled table covers **50 eV – 36.4 keV** (that is the extent of ReciPro's own tabulation, not a limit of the Mott method itself); outside that range, or for elements not in the table, it falls back to the **screened Rutherford** approximation. The two need not join perfectly smoothly at the boundary. The total cross section is the angular integral of the differential one,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ Energy is lost mainly to electronic excitations (ionisation, plasmons). The **st
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-where here $s$ is the **path length** along the trajectory (the variable of the tab's *|dE/ds|* curve), not the scattering variable $\sin\theta/\lambda$ used elsewhere in this appendix. The energy gradient $dE/ds$ is negative, so the tab plots $S$ upward. At keV energies it follows, in concept, the **Bethe** form
+where here $s$ is the **path length** along the trajectory (the variable of the tab's *|dE/ds|* curve), not the scattering variable $\sin\theta/\lambda$ used elsewhere in this appendix. The gradient $dE/ds$ itself is negative, so the tab plots its magnitude $S$ upward. At keV energies it follows, in concept, the **Bethe** form
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-with $J$ the **mean excitation energy** of the solid. This non-relativistic sketch shows the scaling only; ReciPro evaluates a corrected/empirical form (of the Joy–Luo type) that stays well-behaved at low energy. The **plasmon energy** $E_p$ in the scalar table is a related but separate characterisation of the same electronic excitations. The **inelastic mean free path** (IMFP) is the corresponding average distance between energy-losing collisions; ReciPro can evaluate it from the **TPP-2M** predictive formula,
+with $J$ the **mean excitation energy** of the solid. This non-relativistic sketch shows the scaling only; ReciPro evaluates the modified **Jablonski (2008)** form, which stays well-behaved at low energy (the older **Joy–Luo (1989)** empirical form is also implemented). The **plasmon energy** $E_p$ in the scalar table is a related but separate characterisation of the same electronic excitations. The **inelastic mean free path** (IMFP) is the corresponding average distance between energy-losing collisions; ReciPro can evaluate it from the **TPP-2M** predictive formula,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ The same length scales explain why electrons demand ultrathin specimens and dyna
 
 ## See also
 
-- [Atomic scattering factors](scattering-factor.md) — the $F(q)$/$S(q)$ split behind Rayleigh/Compton, and the Mott cross sections.
+- [Atomic scattering factors](scattering-factor.md) — the $F(q)$/$S(q)$ split behind Rayleigh/Compton, and the Mott–Bethe relation (a different model from the NIST Mott cross sections used above).
 - [Fluorescence](fluorescence.md) — the relaxation that follows X-ray photoabsorption.
 - [3. Beam interaction](../../3-beam-interaction.md) — the *Attenuations & Transport* tab.
 - [8. Electron trajectory](../../8-electron-trajectory.md) · [12. EBSD simulation](../../12-ebsd-simulation.md) — where the electron ranges are used.

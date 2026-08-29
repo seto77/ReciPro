@@ -38,7 +38,7 @@ $$T_k(\mathbf g, M_k) = \exp\!\left[-M_k\,\frac{|\mathbf g|^2}{4}\right]$$
 
 이고, 비등방성 원자 변위 텐서 $\mathbf U$의 경우,
 
-$$T_k(\mathbf g) = \exp\!\left[-2\pi\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
+$$T_k(\mathbf g) = \exp\!\left[-2\pi^2\,\mathbf g^{t}\mathbf U\,\mathbf g\right]$$
 
 이며, 이차 형식은 다음과 같다:
 

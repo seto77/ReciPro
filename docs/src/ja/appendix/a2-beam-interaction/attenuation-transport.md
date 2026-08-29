@@ -55,11 +55,11 @@ $$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\varphi)$$
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i)$$
 
-と書けます($n_i$ は元素 $i$ の数密度、$r_e$ は古典電子半径)。ここで $\mu_\text{abs}$ は屈折率の虚部に対応する吸収成分($f''$ に結びつく)で、Rayleigh/Compton も含む上の total $\mu$ とは一致するとは限りません。$n<1$ のため、X線は小さなかすめ **臨界角**
+と書けます($n_i$ は元素 $i$ の数密度、$r_e$ は古典電子半径)。ここで $\mu_\text{abs}$ は屈折率の虚部に対応する吸収成分($f''$ に結びつく)で、Rayleigh/Compton も含む上の total $\mu$ とは一致するとは限りません。$\delta>0$ のとき屈折率は 1 より小さくなるので、X線は小さなかすめ **臨界角** $\alpha_c$
 
-$$\theta_c \simeq \sqrt{2\delta}$$
+$$\alpha_c \simeq \sqrt{2\delta}$$
 
-以下で **全反射** を起こします。これは屈折の幾何から導けます。かすめ角 $\alpha$ に対し固体内の鉛直波数は $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$ で、$\alpha = \alpha_c = \sqrt{2\delta}$ で 0 になり、それ以下では波が物質内へ伝播できず全反射されます。**散乱長密度** の実部 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ が $\delta$ を決め、反射率測定で使う中性子 SLD の X線版にあたります。ReciPro はスカラ表に $\delta$・$\beta$・$\theta_c$・X線 SLD を示します。
+以下で **全反射** を起こします。これは屈折の幾何から導けます。かすめ角 $\alpha$ に対し固体内の鉛直波数は $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$ で、$\alpha = \alpha_c = \sqrt{2\delta}$ で 0 になり、それ以下では波が物質内へ伝播できず全反射されます。この式は無損失極限 $\beta \ll \delta$ を仮定しています。$\beta$ が有限ならエバネッセント波が数 nm 侵入するため、反射率は厳密には 1 をわずかに下回ります。吸収端のすぐ上では $\delta$ が負になることもあり、その場合は臨界角が存在せず、ReciPro も値を返しません。**散乱長密度** の実部 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ が $\delta$ を決め、反射率測定で使う中性子 SLD の X線版にあたります。ReciPro はスカラ表に $\delta$・$\beta$・$\alpha_c$(表の見出しは **θc**)・X線 SLD を示します。
 
 ---
 
@@ -69,7 +69,7 @@ $$\theta_c \simeq \sqrt{2\delta}$$
 
 ### 弾性散乱と平均自由行程
 
-弾性断面積 $\sigma_\text{el}$ は、1個の原子が電子をどれだけ曲げやすいかを表します。ReciPro は **NIST Mott** 断面積(遮蔽原子ポテンシャル中の相対論的 Dirac 方程式の部分波解)を用い、おおよそ **50 eV – 36.4 keV** で有効です。範囲外、または表にない元素では **遮蔽 Rutherford** 近似にフォールバックします。両者は境界で完全に滑らかにつながるとは限りません。全断面積は微分断面積の角度積分です。
+弾性断面積 $\sigma_\text{el}$ は、1個の原子が電子をどれだけ曲げやすいかを表します。ReciPro は **NIST Mott** 断面積(遮蔽原子ポテンシャル中の相対論的 Dirac 方程式の部分波解)を用います。同梱の表がカバーするのは **50 eV – 36.4 keV** です(これは ReciPro が収録している範囲であって、Mott 法そのものの適用限界ではありません)。範囲外、または表にない元素では **遮蔽 Rutherford** 近似にフォールバックします。両者は境界で完全に滑らかにつながるとは限りません。全断面積は微分断面積の角度積分です。
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ $$\Sigma_\text{el} = \sum_i n_i\,\sigma_{\text{el},i}, \qquad \lambda_\text{el} 
 
 $$S(E) = -\frac{dE}{ds} > 0$$
 
-と定義されます。ここで $s$ は軌跡に沿った **経路長**(タブの *|dE/ds|* 曲線の変数)で、この付録の他の箇所で使う散乱変数 $\sin\theta/\lambda$ とは別物です。エネルギー勾配 $dE/ds$ は負ですが、タブは $S$ を上向きに描きます。keV 領域では概念的に **Bethe** 形
+と定義されます。ここで $s$ は軌跡に沿った **経路長**(タブの *|dE/ds|* 曲線の変数)で、この付録の他の箇所で使う散乱変数 $\sin\theta/\lambda$ とは別物です。勾配 $dE/ds$ 自体は負なので、タブはその絶対値 $S$ を上向きに描きます。keV 領域では概念的に **Bethe** 形
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J}$$
 
-に従います($J$ は固体の **平均励起エネルギー**)。これは非相対論的な概形でスケーリングを示すだけで、ReciPro は低エネルギーでも破綻しない補正・経験式(Joy–Luo 型)を評価します。スカラ表の **プラズモンエネルギー** $E_p$ は、同じ電子励起を特徴づける関連した別パラメータです。**非弾性平均自由行程**(IMFP)は対応するエネルギー損失衝突間の平均距離で、ReciPro は **TPP-2M** の予測式
+に従います($J$ は固体の **平均励起エネルギー**)。これは非相対論的な概形でスケーリングを示すだけで、ReciPro は低エネルギーでも破綻しない **Jablonski (2008)** の修正形を評価します(旧来の **Joy–Luo (1989)** の経験式も実装されています)。スカラ表の **プラズモンエネルギー** $E_p$ は、同じ電子励起を特徴づける関連した別パラメータです。**非弾性平均自由行程**(IMFP)は対応するエネルギー損失衝突間の平均距離で、ReciPro は **TPP-2M** の予測式
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]}$$
 
@@ -141,7 +141,7 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 ## 関連項目
 
-- [原子散乱因子](scattering-factor.md) — Rayleigh/Compton の背後にある $F(q)$/$S(q)$ 分解、および Mott 断面積。
+- [原子散乱因子](scattering-factor.md) — Rayleigh/Compton の背後にある $F(q)$/$S(q)$ 分解と Mott–Bethe の関係式(上で使う NIST Mott 断面積とは別のモデル)。
 - [蛍光](fluorescence.md) — X線光電吸収に続く緩和。
 - [3. ビーム相互作用](../../3-beam-interaction.md) — *減衰・輸送* タブ。
 - [8. 電子飛程](../../8-electron-trajectory.md) ・ [12. EBSDシミュレーション](../../12-ebsd-simulation.md) — 電子飛程が使われる場所。

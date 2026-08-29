@@ -31,7 +31,7 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 
 ## Main area
 
-3D crystal structure with light source, crystal axes, and atom legend.
+The 3-D crystal structure, drawn together with the light-direction gizmo, the crystal-axes gizmo and the atom legend.
 > The **Size (W×H)** box at the top right of the window sets the pixel size used when saving or copying the rendered image.
 > The **ProjWidth** box next to it shows the width of the projected view in nm. Edit the value to zoom numerically — it stays synchronized with right-drag / wheel zooming on the view.
 
@@ -92,9 +92,6 @@ The top of the dialog reports the number of objects and triangles involved, and 
 
 **Save...** asks for the file name. Once the export finishes, the triangle count, printed dimensions and scale are logged in the information box at the bottom left.
 
-### Tool menu
-
-
 ---
 
 ## Tab menu
@@ -147,7 +144,7 @@ If checked, all atoms, bonds, and polyhedra are hidden — useful when only the 
 
 ![Atoms tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Coordinates, element, occupancy, radius, colour, material. **Apply to same elements**.
+Sets the species, position and occupancy of every atom, and how each one is drawn (radius, colour, material).
 
 #### Atom list
 
@@ -183,7 +180,7 @@ Per-atom radius, colour, and material.
 
 ![Bonds tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-Bond length thresholds, polyhedron display, edges.
+Defines which atom pairs are bonded (by species and distance range) and how the resulting bonds and coordination polyhedra are drawn.
 
 #### Bond list
 
@@ -211,7 +208,7 @@ All bond/polyhedron rules registered for the crystal. Use **Add / Replace / Dele
 
 ![Unit Cell tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-Translation, cell planes, edges.
+Sets the position of the drawn unit cell and whether its faces and edges are shown.
 
 #### Translation
 
@@ -229,7 +226,7 @@ Whether to draw the unit-cell edges. The edge colour is configurable.
 
 ![Lattice Plane tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-Miller index specification with crystallographic equivalents.
+Draws lattice planes given by their Miller index, optionally including the crystallographically equivalent planes.
 
 #### H k l indices
 
@@ -243,7 +240,7 @@ Translate the drawn lattice plane by an integer multiple of its *d*-spacing — 
 
 ![Coordinates tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-Coordination table and graph around the target atom.
+Lists and plots the atoms coordinating a chosen target atom.
 
 #### Table (left side)
 
@@ -263,7 +260,7 @@ Rendering log (frame time, GPU info) and basic information about the selected at
 
 ![Projection tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-Projection mode (orthographic/perspective), depth fading, rendering quality, transparency mode.
+Sets the projection mode (orthographic / perspective), depth fading, the projection centre, the rendering quality and the transparency algorithm.
 
 #### Projection
 
@@ -323,7 +320,7 @@ For each class you can adjust the symbol size, line width, and colour.
 | Unit Cell | Toggle unit-cell edges |
 | Sym. Elems. | Toggle the symmetry-element overlay (see above) |
 | Reset Rotation | Return to the initial orientation |
-| Like Vesta | Vesta-style appearance |
+| Like Vesta | Switch to a VESTA-style appearance (atom colours and radii) |
 
 ---
 

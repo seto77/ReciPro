@@ -54,7 +54,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-であり、**励起誤差** $S_g$（逆格子点とエワルド球面との幾何学的距離）と、反射を順位付けする **評価関数** $R$ は
+であり、**励起誤差** $S_g$（逆格子点とエワルド球面との幾何学的距離）と、反射を順位付けする **評価関数** $R$($R$ が小さい = $\mathbf g$ が短くエワルド球にも近い反射から順に採用)は
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

@@ -17,11 +17,11 @@ and is therefore characteristic of the element:
 - **K lines** — vacancy in the $K$ shell filled from $L$ ($K\alpha$) or $M$ ($K\beta$).
 - **L lines** — vacancy in the $L$ shell filled from $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Only transitions allowed by the dipole selection rules appear, which is why the spectrum is a few discrete lines (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) rather than a continuum. Their energies follow **Moseley's law**; in the screened-hydrogenic approximation,
+The spectrum is a few discrete lines (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) rather than a continuum because the shell energies themselves are quantised; the electric-dipole selection rules then decide which of those transitions are strong (weaker forbidden, multipole and satellite lines do exist). Their energies follow **Moseley's law**; in the screened-hydrogenic approximation,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-with $\sigma$ a screening constant. For $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) this reduces to $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. This monotonic, electron-count-driven $Z$ dependence is the basis of elemental identification (EDX/WDX).
+with $\sigma$ a screening constant. For $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) this reduces to $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. The $Z$ dependence is driven by the **nuclear charge**, merely screened by the remaining electrons, so it is monotonic and essentially insensitive to chemical state — which is what makes it the basis of elemental identification (EDX/WDX).
 
 ---
 

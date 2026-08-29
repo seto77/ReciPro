@@ -35,7 +35,7 @@ Queste tre convenzioni descrivono la stessa geometria; differisce solo la scala.
 !!! note "Unità"
     Le parametrizzazioni pubblicate dei fattori di forma usano $s$ in Å⁻¹ (quindi $s^2$ in Å⁻²), mentre ReciPro tratta internamente $s^2$ in nm⁻². Le due differiscono per un fattore $100$ in $s^2$; le curve e le tabelle sono presentate nelle unità indicate nell'intestazione di ciascuna tabella. Un modello — **Kirkland** — è tabulato rispetto a $q = 2s = 1/d$ anziché a $s$; vedi [Atomic scattering factors](scattering-factor.md).
 
-### Bragg, Laue e la sfera di Ewald {#phase-convention}
+### Bragg, Laue e la sfera di Ewald
 
 La condizione di Bragg è una faccia di un unico requisito geometrico. L'interferenza costruttiva (la **condizione di Laue**) richiede che il vettore di diffusione sia uguale a un vettore del reticolo reciproco,
 
@@ -49,7 +49,7 @@ cioè la **legge di Bragg** $\lambda = 2d\sin\theta$. Geometricamente questa è 
 
 ---
 
-## Convenzione di fase
+## Convenzione di fase {#phase-convention}
 
 ReciPro costruisce i fattori di struttura con la convenzione di fase cristallografica
 

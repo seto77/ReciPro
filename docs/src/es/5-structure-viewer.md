@@ -92,9 +92,6 @@ En la parte superior del cuadro de diálogo se indican el número de objetos y t
 
 **Save...** pide el nombre del archivo. Cuando termina la exportación, el número de triángulos, las dimensiones impresas y la escala se registran en el cuadro de información de la parte inferior izquierda.
 
-### Menú Herramientas
-
-
 ---
 
 ## Menú de pestañas

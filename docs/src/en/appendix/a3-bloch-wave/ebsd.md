@@ -62,7 +62,7 @@ In the degenerate limit where the denominator is close to zero, $\mathcal F_{jj'
 
 ## Direction-Space Sampling
 
-The master pattern is not the detector image itself; it is an intensity distribution in crystal-fixed direction space. ReciPro samples that direction space with a Rosca-Lambert equal-area projection and stores the $+Z$ and $-Z$ hemispheres as separate plane arrays. Equal-area sampling reduces the density bias between the poles and the equator.
+The master pattern is not the detector image itself; it is an intensity distribution in crystal-fixed direction space. ReciPro samples that direction space with a Roşca–Lambert equal-area projection and stores the $+Z$ and $-Z$ hemispheres as separate plane arrays. Equal-area sampling reduces the density bias between the poles and the equator.
 
 At this stage the master pattern depends on crystal structure, accelerating voltage, depth, energy, and absorption model. Detector geometry such as pattern centre and screen position has not yet been applied.
 

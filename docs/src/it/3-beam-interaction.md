@@ -124,7 +124,7 @@ Il selettore di grandezza sceglie cosa viene rappresentato in funzione dell'ener
 
 La tabella scalare elenca la **wavelength** dell'elettrone, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** e l'energia media di eccitazione **J**, due **range** dell'elettrone (la stima di penetrazione di Kanaya–Okayama e la lunghezza di percorso integrata CSDA) e il valore medio di **Z, A**. La tabella per elemento fornisce per ciascun elemento la frazione atomica e la sezione d'urto elastica σ. Le sezioni d'urto elastiche usano i dati **NIST Mott** (50 eV–36 keV) e ricorrono a **screened Rutherford** sopra i 36 keV.
 
-### Neutron {#scattering-factors-tab}
+### Neutron
 
 L'interazione neutronica è determinata dalle sezioni d'urto nucleari piuttosto che da una curva dipendente dall'energia, quindi questa scheda mostra solo tabelle. La tabella scalare elenca la lunghezza di diffusione coerente media **b̄**, la **Coherent SLD**, le sezioni d'urto medie coerente / incoerente / di assorbimento / totale (**σ̄_coh**, **σ̄_incoh**, **σ̄_abs**, **σ̄_total**), la sezione d'urto totale macroscopica **Σ_total** e la corrispondente **attenuation length**. La sezione d'urto di assorbimento è valutata con la legge 1/v alla lunghezza d'onda corrente; i nuclidi per cui ciò non è valido (Cd, Sm, Eu, Gd, assorbitori risonanti) sono contrassegnati. La tabella per elemento elenca **b_coh**, **σ_coh** e la frazione atomica.
 

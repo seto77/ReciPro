@@ -120,7 +120,7 @@ title: Diffraction Simulator
 | **复制** | 将显示的图像复制到剪贴板。 |
 | **复制探测器区域** | 仅复制探测器区域的裁剪。 |
 
-### 预设 {#toolbar}
+### 预设
 
 ![预设菜单](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
@@ -128,7 +128,7 @@ title: Diffraction Simulator
 
 ---
 
-## 工具栏
+## 工具栏 {#toolbar}
 
 ![工具栏](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
@@ -172,7 +172,7 @@ title: Diffraction Simulator
 
 ---
 
-## TEM 样品台模拟 {#drawing-overlay-tabs}
+## TEM 样品台模拟
 
 ![TEM 样品台模拟](../../assets/cap-zh-Hans-auto/FormDiffractionSimulatorHolder.png)
 
@@ -180,7 +180,7 @@ title: Diffraction Simulator
 
 ---
 
-## 绘制叠加层选项卡
+## 绘制叠加层选项卡 {#drawing-overlay-tabs}
 
 ### 通用
 
@@ -232,7 +232,7 @@ title: Diffraction Simulator
 - **分度** : 相邻刻度线之间的角度间隔。
 - **显示标尺标签** : 是否在刻度线上绘制数字标签。
 
-### Misc {#diffraction-spot-information}
+### Misc
 
 诸如鼠标旋转灵敏度等杂项设置。
 
@@ -240,7 +240,7 @@ title: Diffraction Simulator
 
 ---
 
-## 衍射斑点信息
+## 衍射斑点信息 {#diffraction-spot-information}
 
 列出用布洛赫波法（动力学计算）计算的逐反射详情。用 **斑点详情** 按钮（强度计算面板）或 **Details** 复选框打开它。
 

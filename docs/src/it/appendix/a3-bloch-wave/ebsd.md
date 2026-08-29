@@ -62,7 +62,7 @@ Nel limite degenere in cui il denominatore è prossimo a zero, $\mathcal F_{jj'}
 
 ## Campionamento nello spazio delle direzioni
 
-Il master pattern non è l'immagine del rivelatore stessa; è una distribuzione di intensità nello spazio delle direzioni solidale con il cristallo. ReciPro campiona questo spazio delle direzioni con una proiezione equiareale di Rosca-Lambert e memorizza le emisfere $+Z$ e $-Z$ come array piani separati. Il campionamento equiareale riduce la distorsione di densità tra i poli e l'equatore.
+Il master pattern non è l'immagine del rivelatore stessa; è una distribuzione di intensità nello spazio delle direzioni solidale con il cristallo. ReciPro campiona questo spazio delle direzioni con una proiezione equiareale di Roşca–Lambert e memorizza le emisfere $+Z$ e $-Z$ come array piani separati. Il campionamento equiareale riduce la distorsione di densità tra i poli e l'equatore.
 
 In questa fase il master pattern dipende dalla struttura cristallina, dalla tensione di accelerazione, dalla profondità, dall'energia e dal modello di assorbimento. La geometria del rivelatore, come il centro del pattern e la posizione dello schermo, non è ancora stata applicata.
 

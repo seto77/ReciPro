@@ -69,7 +69,7 @@ Seleciona o método usado para calcular as intensidades dos spots. Dois modos es
 
 ### Only excitation error
 
-A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $s_g$). Um $\lvert s_g \rvert$ menor resulta em maior intensidade, com pico no valor definido por **Radius**, caindo a zero quando $\lvert s_g \rvert$ excede o Radius. O fator de estrutura é ignorado.
+A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $S_g$). Ela é máxima em $S_g = 0$ — exatamente sobre a esfera — e decai à medida que $\lvert S_g\rvert$ aumenta, chegando a zero assim que $\lvert S_g\rvert$ excede o **Radius** indicado para o ponto da rede recíproca. O fator de estrutura é ignorado.
 
 ### Kinematical & excitation error
 

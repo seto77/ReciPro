@@ -91,11 +91,11 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 | Report bugs, requests, or comments | GitHub Issues 페이지 열기 |
 | Help (Web) | UI 언어와 일치하는 페이지로 GitHub Pages의 온라인 매뉴얼 열기. |
 
-언어는 별도의 **Language** 메뉴에서 전환합니다 (영어/일본어, 재시작 필요).
+UI 언어는 별도의 **언어** 메뉴에서 전환합니다 (재시작 필요).
 
 ### Language
 
-UI 언어를 영어와 일본어 사이에서 전환합니다. 변경 사항은 ReciPro를 재시작한 후 적용됩니다.
+UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文, 한국어의 11개 언어를 지원하며, 메뉴에는 각 언어가 그 언어의 문자로 표시됩니다. 변경 사항은 ReciPro를 재시작한 후 적용됩니다. 온라인 매뉴얼도 같은 설정을 따릅니다.
 
 ### Macro
 

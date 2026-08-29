@@ -57,7 +57,7 @@ Per le modalità di tipo LACBED in cui la coerenza di fase su una regione più a
 
 La CBED rende visibile la dipendenza dallo spessore della soluzione delle onde di Bloch come struttura di intensità all'interno dei dischi di diffrazione.
 
-- Una variazione dello spessore modifica le oscillazioni interne ai dischi, le linee HOLZ e le frange di Kossel-Mollenstedt.
+- Una variazione dello spessore modifica le oscillazioni interne ai dischi, le linee HOLZ e le frange di Kossel–Möllenstedt.
 - Una variazione dell'orientazione di incidenza modifica quali riflessioni vengono fortemente eccitate.
 - Un aumento dell'angolo di convergenza allarga i dischi e può rivelare sovrapposizioni e informazioni provenienti dalle zone di Laue di ordine superiore.
 
