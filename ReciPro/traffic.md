@@ -386,14 +386,14 @@ Last updated: 2026-08-29
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.947 | 2026-08-20 | ReciPro-setup.msi | 229 |
+| v.4.947 | 2026-08-20 | ReciPro-setup.msi | 246 |
 | v.4.947 | 2026-08-20 | ReciPro-setup_arm64.msi | 11 |
-| v.4.947 | 2026-08-20 | ReciPro-v.4.947.zip | 33 |
-| v.4.947 | 2026-08-20 | ReciPro-v.4.947_arm64.zip | 10 |
+| v.4.947 | 2026-08-20 | ReciPro-v.4.947.zip | 34 |
+| v.4.947 | 2026-08-20 | ReciPro-v.4.947_arm64.zip | 12 |
 | v.4.947 | 2026-08-20 | ReciProSetup.msi | 10 |
 | v.4.946 | 2026-08-05 | ReciPro-setup.msi | 357 |
 | v.4.946 | 2026-08-05 | ReciPro-setup_arm64.msi | 11 |
-| v.4.946 | 2026-08-05 | ReciPro-v.4.946.zip | 88 |
+| v.4.946 | 2026-08-05 | ReciPro-v.4.946.zip | 94 |
 | v.4.946 | 2026-08-05 | ReciPro-v.4.946_arm64.zip | 21 |
 | v.4.946 | 2026-08-05 | ReciProSetup.msi | 16 |
 | v.4.945 | 2026-08-03 | ReciPro-setup.msi | 83 |
@@ -461,7 +461,7 @@ Last updated: 2026-08-29
 | v.4.918 | 2026-03-13 | ReciProSetup.msi | 22 |
 | v.4.917 | 2026-03-05 | ReciProSetup.msi | 63 |
 
-**TOTAL: 4793**
+**TOTAL: 4819**
 
 ## Stats
 
