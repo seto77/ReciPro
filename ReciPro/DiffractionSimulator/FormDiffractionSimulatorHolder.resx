@@ -1811,9 +1811,11 @@ secondary (Tilt Y) axis, in degrees.</value>
     <value>Enable arrow keys</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
-    <value>When checked, the arrow keys tilt the
-holder: Left/Right change Tilt X and
-Up/Down change Tilt Y by the arrow step.</value>
+    <value>When checked, the arrow keys tilt the holder:
+Left/Right change Tilt X and Up/Down change
+Tilt Y by the arrow step. Works while any
+ReciPro window is in front, as long as this
+window stays open.</value>
   </data>
   <data name="&gt;&gt;checkBoxEnableArrow.Name" xml:space="preserve">
     <value>checkBoxEnableArrow</value>

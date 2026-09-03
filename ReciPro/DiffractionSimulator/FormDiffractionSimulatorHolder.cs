@@ -8,7 +8,9 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorHolder : FormBase
+//260903Cl 変更: ReciPro のどのウィンドウが前面でも矢印キーを拾えるよう IMessageFilter を実装
+//旧: public partial class FormDiffractionSimulatorHolder : FormBase
+public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
 {
     #region Fields and Properties
     public FormDiffractionSimulator FormDiffractionSimulator;
@@ -54,6 +56,19 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         HelpPage = "7-diffraction-simulator"; //260801Cl 追加: 未設定だと F1 がマニュアルのトップページを開いてしまう
     }
 
+    //260903Cl 追加: アプリ全体の矢印キーを拾うメッセージフィルタの登録/解除。ハンドルの生成/破棄と対にしておく
+    //(FormBorderStyle 等の変更で WinForms がハンドルを再生成しても登録が消えない)。有効条件は PreFilterMessage 内で判定する。
+    protected override void OnHandleCreated(EventArgs e)
+    {
+        base.OnHandleCreated(e);
+        Application.AddMessageFilter(this);
+    }
+    protected override void OnHandleDestroyed(EventArgs e)
+    {
+        Application.RemoveMessageFilter(this);
+        base.OnHandleDestroyed(e);
+    }
+
     private void FormDiffractionSimulatorHolder_Load(object sender, EventArgs e)
     {
         NeutralDirection = HolderRotation * crystal.RotationMatrix;
@@ -77,6 +92,9 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     public void Draw(Graphics g = null, bool renewOutline = true)
     {
         if (graphicsBox.Width <= 0 || graphicsBox.Height <= 0) return;
+        //260903Cl 追加: graphicsBox.Resize は InitializeComponent 中 (ResumeLayout / DPI スケール) にも発火し、
+        //親 FormDiffractionSimulator は生成後の初期化子で代入されるため、未配線なら描かずに戻る (setVector が crystal を触る)
+        if (FormDiffractionSimulator?.formMain?.Crystal == null) return;
 
         //グラフィックスボックスに描画する場合
         g ??= graphicsBox.Graphics;
@@ -218,10 +236,17 @@ public partial class FormDiffractionSimulatorHolder : FormBase
 
     private (double TiltX, double TiltY) convertSrcToHolder(PointD pt)
     {
-        var (sin,cos) = Math.SinCos(-numericBoxTiltXDirection.RadianValue);
+        var (sin, cos) = Math.SinCos(-numericBoxTiltXDirection.RadianValue);
         pt = new PointD(cos * pt.X - sin * pt.Y, sin * pt.X + cos * pt.Y);
-        double tiltY = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
-        double tiltX = (Math.Cos(tiltY) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(tiltY)) : 0;
+        //260903Cl 変更: 外周付近では丸め誤差で Asin の引数が 1 をわずかに超えて NaN になるためクランプ。
+        //旧の Math.Cos(tiltY) != 0 は double の厳密比較で決して真にならず (cos(π/2)=6e-17)、ガードとして機能していなかった。
+        //旧:
+        //double tiltY = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
+        //double tiltX = (Math.Cos(tiltY) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(tiltY)) : 0;
+        double r2 = 1 + pt.X * pt.X + pt.Y * pt.Y;
+        double tiltY = Math.Asin(Math.Clamp(2 * pt.Y / r2, -1, 1));
+        double cosY = Math.Cos(tiltY);
+        double tiltX = cosY > 1e-12 ? Math.Asin(Math.Clamp(2 * pt.X / r2 / cosY, -1, 1)) : 0;
         var sign = radioButtonTiltY_Plus.Checked ? 1 : -1;
         return (tiltX, sign * tiltY);
     }
@@ -326,17 +351,28 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         Draw();
     }
 
-    //260731Cl 追加: 修飾キー無しの矢印キーは、WinForms の前処理 (ContainerControl の方向キーによるフォーカス移動) に
-    //消費されてしまい、KeyPreview = true でも Form の KeyDown まで届かない。とくに graphicsBox
-    //(Crystallography.Controls.GraphicsBox) は 260322 の自作コントロール化で ControlStyles.Selectable が付いたため、
-    //checkBoxEnableArrow_CheckedChanged の graphicsBox.Focus() 後は SelectNextControl が graphicsBox 自身を選び直して
-    //「処理済み」を返し、矢印キーが完全に握り潰されていた (v.4.919 までは動作、v.4.920 以降は無反応)。
-    //ProcessCmdKey は方向キーによるフォーカス移動よりも前に呼ばれるので、フォーカス位置によらず確実に拾える。
-    protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    //260731Cl: 修飾キー無しの矢印キーは WinForms の前処理 (方向キーによるフォーカス移動) に消費され、KeyPreview = true でも
+    //Form の KeyDown まで届かない (v.4.920 以降 graphicsBox が Selectable になり無反応化)。当初は ProcessCmdKey で拾っていた。
+    //260903Cl 変更: ProcessCmdKey はこのフォームがアクティブなときしか呼ばれないため、Application.AddMessageFilter に登録した
+    //PreFilterMessage で UI スレッド全体の WM_KEYDOWN を先取りする方式に置き換えた。これなら ReciPro のどのウィンドウが前面でも
+    //(このフォームが Visible かつ checkBoxEnableArrow.Checked なら) 矢印キーでホルダーを傾けられる。
+    //メッセージフィルタは同一スレッド内のメッセージにしか掛からないので、他アプリのキー入力を横取りすることは無い。
+    //旧:
+    //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    //{
+    //    if (checkBoxEnableArrow.Checked && tiltByArrowKey(keyData))
+    //        return true;
+    //    return base.ProcessCmdKey(ref msg, keyData);
+    //}
+    public bool PreFilterMessage(ref Message m)
     {
-        if (checkBoxEnableArrow.Checked && tiltByArrowKey(keyData))
-            return true;
-        return base.ProcessCmdKey(ref msg, keyData);
+        const int WM_KEYDOWN = 0x0100;
+        if (m.Msg != WM_KEYDOWN) return false;
+        var key = (Keys)(int)m.WParam;
+        if (key is not (Keys.Left or Keys.Right or Keys.Up or Keys.Down)) return false; //安価な判定を先に
+        if (!Visible || !checkBoxEnableArrow.Checked) return false;
+        //修飾キー併用時は tiltByArrowKey 側の完全一致で弾かれる
+        return tiltByArrowKey(key | ModifierKeys);
     }
 
     /// <summary>260731Cl 追加: 修飾キーの付かない矢印キーならホルダーを傾けて true を返す</summary>
@@ -354,7 +390,7 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     }
 
     //260731Cl 変更: 傾斜処理は tiltByArrowKey に集約し、ProcessCmdKey から呼ぶようにした。
-    //この KeyDown ハンドラ (Designer で配線済み) は通常 ProcessCmdKey が先に消費するので出番が無いが、配線を残したまま同じ処理へ委譲する。
+    //260903Cl 削除: PreFilterMessage が先に消費するので KeyDown ハンドラは到達不能。Designer の配線ごと外した。
     //旧:
     //private void FormDiffractionSimulatorHolder_KeyDown(object sender, KeyEventArgs e)
     //{
@@ -373,14 +409,14 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     //            numericBoxTiltY.Value -= numericBoxArrowStep.Value;
     //    }
     //}
-    private void FormDiffractionSimulatorHolder_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (checkBoxEnableArrow.Checked && tiltByArrowKey(e.KeyData))
-        {
-            e.SuppressKeyPress = true;
-            e.Handled = true;
-        }
-    }
+    //private void FormDiffractionSimulatorHolder_KeyDown(object sender, KeyEventArgs e)
+    //{
+    //    if (checkBoxEnableArrow.Checked && tiltByArrowKey(e.KeyData))
+    //    {
+    //        e.SuppressKeyPress = true;
+    //        e.Handled = true;
+    //    }
+    //}
 
 
     private void checkBoxEnableArrow_CheckedChanged(object sender, EventArgs e)
@@ -396,6 +432,13 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     private void checkBoxIncludingEquivalent_CheckedChanged(object sender, EventArgs e)
     {
         setVector(); Draw();
+    }
+
+    //260903Cl 変更: 兄弟フォーム (FormDiffractionSimulator 等) と同じく graphicsBox.Resize に配線し、名前も合わせた
+    //旧: private void FormDiffractionSimulatorHolder_Resize(object sender, EventArgs e)
+    private void graphicsBox_Resize(object sender, EventArgs e)
+    {
+        Draw();
     }
 }
 

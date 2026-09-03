@@ -174,7 +174,9 @@ Active lorsque « Afficher les lignes 1° » est cochée</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Lorsque cette case est cochée, les touches fléchées inclinent
 le porte-échantillon : Gauche/Droite modifient Tilt X et
-Haut/Bas modifient Tilt Y du pas des flèches.</value>
+Haut/Bas modifient Tilt Y du pas des flèches.
+Actif tant que cette fenêtre est ouverte, même si
+une autre fenêtre de ReciPro est au premier plan.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incrément de l'angle d'inclinaison (en degrés)

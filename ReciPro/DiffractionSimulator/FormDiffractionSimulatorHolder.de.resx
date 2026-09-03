@@ -174,7 +174,9 @@ Aktiv, wenn "1°-Linien anzeigen" aktiviert ist</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Wenn aktiviert, neigen die Pfeiltasten den
 Halter: Links/Rechts ändern Tilt X und
-Hoch/Runter ändern Tilt Y um den Pfeilschritt.</value>
+Hoch/Runter ändern Tilt Y um den Pfeilschritt.
+Gilt, solange dieses Fenster geöffnet ist,
+auch wenn ein anderes ReciPro-Fenster vorne liegt.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Neigungswinkelinkrement (in Grad),

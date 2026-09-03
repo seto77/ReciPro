@@ -228,7 +228,9 @@
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>チェックすると矢印キーでホルダーを
 傾斜します。左右で Tilt X、上下で Tilt
-Y を矢印ステップ分だけ変化させます。</value>
+Y を矢印ステップ分だけ変化させます。
+このウィンドウが開いている間は、ReciPro
+のどのウィンドウが前面でも有効です。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>矢印キー1回あたりに変化させる

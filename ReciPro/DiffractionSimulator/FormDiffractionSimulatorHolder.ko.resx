@@ -171,7 +171,9 @@
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>선택하면 화살표 키로 홀더를 기울입니다.
 좌/우는 기울기 X를, 상/하는 기울기 Y를
-화살표 단계만큼 변화시킵니다.</value>
+화살표 단계만큼 변화시킵니다. 이 창이
+열려 있는 동안은 다른 ReciPro 창이
+앞에 있어도 동작합니다.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>화살표 키를 한 번 누를 때마다

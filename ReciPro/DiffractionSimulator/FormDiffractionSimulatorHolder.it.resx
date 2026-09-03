@@ -174,7 +174,9 @@ Attivo quando "Show 1° Lines" è selezionato</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Se selezionato, i tasti freccia inclinano il
 portacampione: Sinistra/Destra cambiano Tilt X e
-Su/Giù cambiano Tilt Y del passo della freccia.</value>
+Su/Giù cambiano Tilt Y del passo della freccia.
+Attivo finché questa finestra è aperta, anche se
+un'altra finestra di ReciPro è in primo piano.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incremento dell'angolo di inclinazione (in gradi)

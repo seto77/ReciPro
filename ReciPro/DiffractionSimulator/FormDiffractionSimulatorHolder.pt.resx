@@ -174,7 +174,9 @@ Ativa quando "Mostrar linhas de 1°" está marcado</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Quando marcado, as teclas de seta inclinam o
 suporte: Esquerda/Direita alteram Tilt X e
-Cima/Baixo alteram Tilt Y pelo passo da seta.</value>
+Cima/Baixo alteram Tilt Y pelo passo da seta.
+Funciona enquanto esta janela estiver aberta,
+mesmo com outra janela do ReciPro à frente.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incremento do ângulo de inclinação (em graus)

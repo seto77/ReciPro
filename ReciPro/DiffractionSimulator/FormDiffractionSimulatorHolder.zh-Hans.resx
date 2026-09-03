@@ -174,7 +174,9 @@
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>勾选后，方向键可倾斜夹持器：
 左/右按箭头步长改变倾转 X，
-上/下按箭头步长改变倾转 Y。</value>
+上/下按箭头步长改变倾转 Y。
+只要本窗口保持打开，即使其他
+ReciPro 窗口在前也有效。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>每次按方向键所施加的

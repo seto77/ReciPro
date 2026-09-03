@@ -47,9 +47,6 @@
             buttonRotate180 = new System.Windows.Forms.Button();
             buttonLink = new System.Windows.Forms.Button();
             groupBoxStereonetProperties = new System.Windows.Forms.GroupBox();
-            groupBoxIndexRange = new System.Windows.Forms.GroupBox();
-            checkBoxIncludingEquivalent = new System.Windows.Forms.CheckBox();
-            indexControl = new IndexControl();
             groupBoxColorAndSize = new System.Windows.Forms.GroupBox();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             label18 = new System.Windows.Forms.Label();
@@ -67,10 +64,13 @@
             colorControlGeneralAxis = new ColorControl();
             colorControlTiltX = new ColorControl();
             colorControlTiltY = new ColorControl();
-            numericBoxDrawingArea = new NumericBox();
-            checkBoxTiltDirections = new System.Windows.Forms.CheckBox();
             checkBox1DegLine = new System.Windows.Forms.CheckBox();
+            checkBoxTiltDirections = new System.Windows.Forms.CheckBox();
             checkBoxShowIndexLabels = new System.Windows.Forms.CheckBox();
+            groupBoxIndexRange = new System.Windows.Forms.GroupBox();
+            checkBoxIncludingEquivalent = new System.Windows.Forms.CheckBox();
+            indexControl = new IndexControl();
+            numericBoxDrawingArea = new NumericBox();
             label1MousePosition = new System.Windows.Forms.Label();
             groupBoxHolderAngles = new System.Windows.Forms.GroupBox();
             numericBoxArrowStep = new NumericBox();
@@ -81,19 +81,19 @@
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
             panel1 = new System.Windows.Forms.Panel();
-            panel2 = new System.Windows.Forms.Panel();
             panel3 = new System.Windows.Forms.Panel();
+            panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBoxTEMSettings.SuspendLayout();
             groupBoxLink.SuspendLayout();
             groupBoxStereonetProperties.SuspendLayout();
-            groupBoxIndexRange.SuspendLayout();
             groupBoxColorAndSize.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             flowLayoutPanelStereonetColor.SuspendLayout();
+            groupBoxIndexRange.SuspendLayout();
             groupBoxHolderAngles.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -108,6 +108,7 @@
             toolTip1.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.MouseDown += graphicsBox_MouseDown;
             graphicsBox.MouseMove += graphicsBox_MouseMove;
+            graphicsBox.Resize += graphicsBox_Resize;
             // 
             // label1
             // 
@@ -120,6 +121,7 @@
             numericBoxTiltXDirection.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltXDirection.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxTiltXDirection, "numericBoxTiltXDirection");
+            toolTip1.SetToolTip(numericBoxTiltXDirection, resources.GetString("numericBoxTiltXDirection.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxTiltXDirection.Maximum = 180D;
             numericBoxTiltXDirection.Minimum = -180D;
             numericBoxTiltXDirection.Name = "numericBoxTiltXDirection";
@@ -133,6 +135,7 @@
             numericBoxLinkTiltX.BackColor = System.Drawing.Color.Transparent;
             numericBoxLinkTiltX.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxLinkTiltX, "numericBoxLinkTiltX");
+            toolTip1.SetToolTip(numericBoxLinkTiltX, resources.GetString("numericBoxLinkTiltX.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxLinkTiltX.Maximum = 180D;
             numericBoxLinkTiltX.Minimum = -180D;
             numericBoxLinkTiltX.Name = "numericBoxLinkTiltX";
@@ -144,6 +147,7 @@
             numericBoxLinkTiltY.BackColor = System.Drawing.Color.Transparent;
             numericBoxLinkTiltY.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxLinkTiltY, "numericBoxLinkTiltY");
+            toolTip1.SetToolTip(numericBoxLinkTiltY, resources.GetString("numericBoxLinkTiltY.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxLinkTiltY.Maximum = 180D;
             numericBoxLinkTiltY.Minimum = -180D;
             numericBoxLinkTiltY.Name = "numericBoxLinkTiltY";
@@ -225,35 +229,6 @@
             groupBoxStereonetProperties.Name = "groupBoxStereonetProperties";
             groupBoxStereonetProperties.TabStop = false;
             // 
-            // groupBoxIndexRange
-            // 
-            groupBoxIndexRange.Controls.Add(checkBoxIncludingEquivalent);
-            groupBoxIndexRange.Controls.Add(indexControl);
-            resources.ApplyResources(groupBoxIndexRange, "groupBoxIndexRange");
-            groupBoxIndexRange.Name = "groupBoxIndexRange";
-            groupBoxIndexRange.TabStop = false;
-            // 
-            // checkBoxIncludingEquivalent
-            // 
-            resources.ApplyResources(checkBoxIncludingEquivalent, "checkBoxIncludingEquivalent");
-            checkBoxIncludingEquivalent.Checked = true;
-            checkBoxIncludingEquivalent.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxIncludingEquivalent.Name = "checkBoxIncludingEquivalent";
-            toolTip1.SetToolTip(checkBoxIncludingEquivalent, resources.GetString("checkBoxIncludingEquivalent.ToolTip"));
-            checkBoxIncludingEquivalent.UseVisualStyleBackColor = true;
-            checkBoxIncludingEquivalent.CheckedChanged += checkBoxIncludingEquivalent_CheckedChanged;
-            // 
-            // indexControl
-            // 
-            resources.ApplyResources(indexControl, "indexControl");
-            indexControl.Mode = IndexControl.ModeEnum.Axis;
-            indexControl.Name = "indexControl";
-            indexControl.PlusMinus = true;
-            toolTip1.SetToolTip(indexControl, resources.GetString("indexControl.ToolTip")); // 260730Cl 追加: 文案だけあって配線が無かった (表示不能) のを解消
-            indexControl.UpDownWidth = 16;
-            indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
-            indexControl.ValueChanged += numericBoxU_ValueChanged;
-            // 
             // groupBoxColorAndSize
             // 
             resources.ApplyResources(groupBoxColorAndSize, "groupBoxColorAndSize");
@@ -326,6 +301,7 @@
             // colorControlBackGround
             // 
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
+            toolTip1.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlBackGround.BackColor = System.Drawing.Color.White;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
@@ -336,6 +312,7 @@
             // colorControlHolder
             // 
             resources.ApplyResources(colorControlHolder, "colorControlHolder");
+            toolTip1.SetToolTip(colorControlHolder, resources.GetString("colorControlHolder.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlHolder.BackColor = System.Drawing.Color.White;
             colorControlHolder.BoxSize = new System.Drawing.Size(20, 20);
             colorControlHolder.Color = System.Drawing.Color.FromArgb(255, 128, 0);
@@ -346,6 +323,7 @@
             // colorControl90DegLine
             // 
             resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
+            toolTip1.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
             colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
@@ -356,6 +334,7 @@
             // colorControl10DegLine
             // 
             resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
+            toolTip1.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(128, 128, 255);
@@ -366,6 +345,7 @@
             // colorControl1DegLine
             // 
             resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
+            toolTip1.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
@@ -376,6 +356,7 @@
             // colorControlUniqueAxis
             // 
             resources.ApplyResources(colorControlUniqueAxis, "colorControlUniqueAxis");
+            toolTip1.SetToolTip(colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
             colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(139, 0, 0);
@@ -386,6 +367,7 @@
             // colorControlGeneralAxis
             // 
             resources.ApplyResources(colorControlGeneralAxis, "colorControlGeneralAxis");
+            toolTip1.SetToolTip(colorControlGeneralAxis, resources.GetString("colorControlGeneralAxis.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(255, 0, 0);
@@ -396,6 +378,7 @@
             // colorControlTiltX
             // 
             resources.ApplyResources(colorControlTiltX, "colorControlTiltX");
+            toolTip1.SetToolTip(colorControlTiltX, resources.GetString("colorControlTiltX.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlTiltX.BackColor = System.Drawing.Color.Lime;
             colorControlTiltX.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltX.Color = System.Drawing.Color.FromArgb(0, 200, 0);
@@ -405,33 +388,12 @@
             // colorControlTiltY
             // 
             resources.ApplyResources(colorControlTiltY, "colorControlTiltY");
+            toolTip1.SetToolTip(colorControlTiltY, resources.GetString("colorControlTiltY.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             colorControlTiltY.BackColor = System.Drawing.Color.Lime;
             colorControlTiltY.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltY.Color = System.Drawing.Color.FromArgb(255, 0, 255);
             colorControlTiltY.Name = "colorControlTiltY";
             colorControlTiltY.TabStop = false;
-            // 
-            // numericBoxDrawingArea
-            // 
-            numericBoxDrawingArea.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxDrawingArea, "numericBoxDrawingArea");
-            numericBoxDrawingArea.Maximum = 90D;
-            numericBoxDrawingArea.Minimum = 1D;
-            numericBoxDrawingArea.Name = "numericBoxDrawingArea";
-            numericBoxDrawingArea.ShowUpDown = true;
-            numericBoxDrawingArea.SmartIncrement = true;
-            numericBoxDrawingArea.Value = 30D;
-            numericBoxDrawingArea.ValueBoxWidth = 45;
-            numericBoxDrawingArea.ValueChanged += numericBoxDrawingArea_ValueChanged;
-            // 
-            // checkBoxTiltDirections
-            // 
-            resources.ApplyResources(checkBoxTiltDirections, "checkBoxTiltDirections");
-            checkBoxTiltDirections.Checked = true;
-            checkBoxTiltDirections.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxTiltDirections.Name = "checkBoxTiltDirections";
-            toolTip1.SetToolTip(checkBoxTiltDirections, resources.GetString("checkBoxTiltDirections.ToolTip"));
-            checkBoxTiltDirections.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // checkBox1DegLine
             // 
@@ -442,6 +404,15 @@
             toolTip1.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip"));
             checkBox1DegLine.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
+            // checkBoxTiltDirections
+            // 
+            resources.ApplyResources(checkBoxTiltDirections, "checkBoxTiltDirections");
+            checkBoxTiltDirections.Checked = true;
+            checkBoxTiltDirections.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxTiltDirections.Name = "checkBoxTiltDirections";
+            toolTip1.SetToolTip(checkBoxTiltDirections, resources.GetString("checkBoxTiltDirections.ToolTip"));
+            checkBoxTiltDirections.CheckedChanged += checkBox1DegLine_CheckedChanged;
+            // 
             // checkBoxShowIndexLabels
             // 
             resources.ApplyResources(checkBoxShowIndexLabels, "checkBoxShowIndexLabels");
@@ -450,6 +421,49 @@
             checkBoxShowIndexLabels.Name = "checkBoxShowIndexLabels";
             toolTip1.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip"));
             checkBoxShowIndexLabels.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxIndexRange
+            // 
+            groupBoxIndexRange.Controls.Add(checkBoxIncludingEquivalent);
+            groupBoxIndexRange.Controls.Add(indexControl);
+            resources.ApplyResources(groupBoxIndexRange, "groupBoxIndexRange");
+            groupBoxIndexRange.Name = "groupBoxIndexRange";
+            groupBoxIndexRange.TabStop = false;
+            // 
+            // checkBoxIncludingEquivalent
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalent, "checkBoxIncludingEquivalent");
+            checkBoxIncludingEquivalent.Checked = true;
+            checkBoxIncludingEquivalent.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalent.Name = "checkBoxIncludingEquivalent";
+            toolTip1.SetToolTip(checkBoxIncludingEquivalent, resources.GetString("checkBoxIncludingEquivalent.ToolTip"));
+            checkBoxIncludingEquivalent.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalent.CheckedChanged += checkBoxIncludingEquivalent_CheckedChanged;
+            // 
+            // indexControl
+            // 
+            resources.ApplyResources(indexControl, "indexControl");
+            indexControl.Mode = IndexControl.ModeEnum.Axis;
+            indexControl.Name = "indexControl";
+            indexControl.PlusMinus = true;
+            toolTip1.SetToolTip(indexControl, resources.GetString("indexControl.ToolTip"));
+            indexControl.UpDownWidth = 16;
+            indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
+            indexControl.ValueChanged += numericBoxU_ValueChanged;
+            // 
+            // numericBoxDrawingArea
+            // 
+            numericBoxDrawingArea.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxDrawingArea, "numericBoxDrawingArea");
+            toolTip1.SetToolTip(numericBoxDrawingArea, resources.GetString("numericBoxDrawingArea.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
+            numericBoxDrawingArea.Maximum = 90D;
+            numericBoxDrawingArea.Minimum = 1D;
+            numericBoxDrawingArea.Name = "numericBoxDrawingArea";
+            numericBoxDrawingArea.ShowUpDown = true;
+            numericBoxDrawingArea.SmartIncrement = true;
+            numericBoxDrawingArea.Value = 30D;
+            numericBoxDrawingArea.ValueBoxWidth = 45;
+            numericBoxDrawingArea.ValueChanged += numericBoxDrawingArea_ValueChanged;
             // 
             // label1MousePosition
             // 
@@ -475,6 +489,7 @@
             numericBoxArrowStep.BackColor = System.Drawing.Color.Transparent;
             numericBoxArrowStep.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxArrowStep, "numericBoxArrowStep");
+            toolTip1.SetToolTip(numericBoxArrowStep, resources.GetString("numericBoxArrowStep.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxArrowStep.Maximum = 2D;
             numericBoxArrowStep.Minimum = 0.1D;
             numericBoxArrowStep.Name = "numericBoxArrowStep";
@@ -496,6 +511,7 @@
             numericBoxTiltX.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltX.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxTiltX, "numericBoxTiltX");
+            toolTip1.SetToolTip(numericBoxTiltX, resources.GetString("numericBoxTiltX.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxTiltX.Maximum = 180D;
             numericBoxTiltX.Minimum = -180D;
             numericBoxTiltX.Name = "numericBoxTiltX";
@@ -515,6 +531,7 @@
             numericBoxTiltY.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltY.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxTiltY, "numericBoxTiltY");
+            toolTip1.SetToolTip(numericBoxTiltY, resources.GetString("numericBoxTiltY.ToolTip")); // 260903Cl 追加: 文案だけあって配線が無く、Designer 再生成で resx から消えたので配線して保持
             numericBoxTiltY.Maximum = 180D;
             numericBoxTiltY.Minimum = -180D;
             numericBoxTiltY.Name = "numericBoxTiltY";
@@ -548,15 +565,15 @@
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // panel2
-            // 
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Name = "panel2";
-            // 
             // panel3
             // 
             resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Name = "panel2";
             // 
             // FormDiffractionSimulatorHolder
             // 
@@ -571,7 +588,6 @@
             Name = "FormDiffractionSimulatorHolder";
             FormClosing += FormDiffractionSimulatorHolder_FormClosing;
             Load += FormDiffractionSimulatorHolder_Load;
-            KeyDown += FormDiffractionSimulatorHolder_KeyDown;
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             groupBoxTEMSettings.ResumeLayout(false);
             groupBoxTEMSettings.PerformLayout();
@@ -579,8 +595,6 @@
             groupBoxLink.PerformLayout();
             groupBoxStereonetProperties.ResumeLayout(false);
             groupBoxStereonetProperties.PerformLayout();
-            groupBoxIndexRange.ResumeLayout(false);
-            groupBoxIndexRange.PerformLayout();
             groupBoxColorAndSize.ResumeLayout(false);
             groupBoxColorAndSize.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
@@ -591,6 +605,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             flowLayoutPanelStereonetColor.ResumeLayout(false);
             flowLayoutPanelStereonetColor.PerformLayout();
+            groupBoxIndexRange.ResumeLayout(false);
+            groupBoxIndexRange.PerformLayout();
             groupBoxHolderAngles.ResumeLayout(false);
             groupBoxHolderAngles.PerformLayout();
             panel1.ResumeLayout(false);

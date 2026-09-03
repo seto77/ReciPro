@@ -174,7 +174,9 @@
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Если отмечено, клавиши-стрелки наклоняют
 держатель: Влево/Вправо меняют наклон X, а
-Вверх/Вниз меняют наклон Y на шаг стрелки.</value>
+Вверх/Вниз меняют наклон Y на шаг стрелки.
+Работает, пока это окно открыто, даже если
+другое окно ReciPro находится спереди.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Приращение угла наклона (в градусах),

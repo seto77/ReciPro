@@ -174,7 +174,9 @@ Activo cuando "Mostrar líneas de 1°" está marcado</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>Cuando está marcado, las teclas de flecha inclinan el
 portamuestras: Izquierda/Derecha cambian Tilt X y
-Arriba/Abajo cambian Tilt Y según el paso de flecha.</value>
+Arriba/Abajo cambian Tilt Y según el paso de flecha.
+Funciona mientras esta ventana esté abierta,
+aunque otra ventana de ReciPro esté al frente.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incremento del ángulo de inclinación (en grados)

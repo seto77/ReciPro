@@ -174,7 +174,9 @@
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>勾選時，方向鍵會傾斜固定座：
 左/右改變傾斜X，上/下依方向鍵
-步距改變傾斜Y。</value>
+步距改變傾斜Y。只要本視窗保持
+開啟，即使其他 ReciPro 視窗在前
+也有效。</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>每次按下方向鍵所套用的
