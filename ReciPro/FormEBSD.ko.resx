@@ -456,7 +456,7 @@ Negative(흑백 반전) 중에서 선택합니다.</value>
   </data>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>정방 Lambert 마스터 패턴 그리드의 해상도(한 변당
-픽셀 수, 64~2048)입니다.
+픽셀 수, 64~8192)입니다.
 클수록 정밀하지만 느립니다.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">

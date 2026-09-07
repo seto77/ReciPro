@@ -459,7 +459,7 @@ patrón maestro se muestra en la vista 2D.</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Resolución (píxeles por lado) de la
 cuadrícula cuadrada de Lambert del patrón maestro
-(64–2048); mayor es más fino pero más lento.</value>
+(64–8192); mayor es más fino pero más lento.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>Elija la escala de color que asigna la intensidad al

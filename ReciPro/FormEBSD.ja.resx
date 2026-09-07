@@ -500,7 +500,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>正方Lambertマスターパターングリッドの分解能(1辺あたりの
-ピクセル数、64～2048)。大きいほど高精細ですが低速です。</value>
+ピクセル数、64～8192)。大きいほど高精細ですが低速です。</value>
   </data>
   <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
     <value>エネルギー</value>

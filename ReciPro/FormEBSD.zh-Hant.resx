@@ -443,7 +443,7 @@ Negative（反轉）灰階。</value>
   </data>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>正方 Lambert 主圖樣網格的解析度
-（每邊像素數，64–2048）；越大越精細
+（每邊像素數，64–8192）；越大越精細
 但越慢。</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">

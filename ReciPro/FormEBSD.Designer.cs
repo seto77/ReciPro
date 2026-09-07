@@ -64,6 +64,13 @@
         //       … 実測画像タブは既定選択タブでないため、これが無いとマニュアル用の自動キャプチャに写らない。
         //     ・toolTip.SetToolTip(...) 群 … resx に文案があっても、この行が無いと絶対に表示されない
         //       (文案だけ在って表示経路が無い、が過去に最も多かった不具合)。
+        // 260907Cl 追加: comboBoxMasterPatternGrid.Items に 4096 / 8192 を追加 (Items10 / Items11)。
+        //   値の実体は FormEBSD.resx 側。ToolTip の範囲表記も 64-8192 へ更新済み (11 言語)。
+        //   ⚠ この 2 つは極端にメモリを食う。中間の Bloch 波振幅 (Complex 16 byte × 2·grid² × energies × depths)
+        //     だけで、MonteCarlo 既定の 8 energies × 40 depths だと 2048 で約 43 GB、4096 で約 172 GB、
+        //     8192 で約 687 GB になる (最終 plane はその 1/4)。実用にはエネルギー段数・深さ段数を大幅に
+        //     減らすこと。足りなければ build は OutOfMemoryException で終わり、MasterPattern_EBSD_Completed が
+        //     "MasterPattern failed" を表示する (プロセスは落ちない)。
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -940,7 +947,7 @@
             comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPatternGrid, "comboBoxMasterPatternGrid");
             comboBoxMasterPatternGrid.FormattingEnabled = true;
-            comboBoxMasterPatternGrid.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPatternGrid.Items"), resources.GetString("comboBoxMasterPatternGrid.Items1"), resources.GetString("comboBoxMasterPatternGrid.Items2"), resources.GetString("comboBoxMasterPatternGrid.Items3"), resources.GetString("comboBoxMasterPatternGrid.Items4"), resources.GetString("comboBoxMasterPatternGrid.Items5"), resources.GetString("comboBoxMasterPatternGrid.Items6"), resources.GetString("comboBoxMasterPatternGrid.Items7"), resources.GetString("comboBoxMasterPatternGrid.Items8"), resources.GetString("comboBoxMasterPatternGrid.Items9") });
+            comboBoxMasterPatternGrid.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPatternGrid.Items"), resources.GetString("comboBoxMasterPatternGrid.Items1"), resources.GetString("comboBoxMasterPatternGrid.Items2"), resources.GetString("comboBoxMasterPatternGrid.Items3"), resources.GetString("comboBoxMasterPatternGrid.Items4"), resources.GetString("comboBoxMasterPatternGrid.Items5"), resources.GetString("comboBoxMasterPatternGrid.Items6"), resources.GetString("comboBoxMasterPatternGrid.Items7"), resources.GetString("comboBoxMasterPatternGrid.Items8"), resources.GetString("comboBoxMasterPatternGrid.Items9"), resources.GetString("comboBoxMasterPatternGrid.Items10"), resources.GetString("comboBoxMasterPatternGrid.Items11") });
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
             toolTip.SetToolTip(comboBoxMasterPatternGrid, resources.GetString("comboBoxMasterPatternGrid.ToolTip"));
             comboBoxMasterPatternGrid.SelectedIndexChanged += MasterPatternSelectionChanged;

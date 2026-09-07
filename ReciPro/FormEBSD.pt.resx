@@ -459,7 +459,7 @@ master pattern é mostrado na vista 2D.</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Resolução (pixels por lado) da grade
 quadrada de Lambert do master pattern
-(64–2048); maior é mais fina mas mais lenta.</value>
+(64–8192); maior é mais fina mas mais lenta.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>Escolha a escala de cores que mapeia a intensidade para

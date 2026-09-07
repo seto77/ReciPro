@@ -460,7 +460,7 @@ master pattern est affiché dans la vue 2D.</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Résolution (pixels par côté) de la grille
 carrée de Lambert du master pattern
-(64–2048) ; plus grande est plus fine mais plus lente.</value>
+(64–8192) ; plus grande est plus fine mais plus lente.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>Choisit l'échelle de couleurs associant l'intensité à

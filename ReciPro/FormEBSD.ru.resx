@@ -461,7 +461,7 @@ Simulate, чтобы получить распределение.</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Разрешение (пикселей на сторону) квадратной
 сетки мастер-картины Ламберта
-(64–2048); больше — детальнее, но медленнее.</value>
+(64–8192); больше — детальнее, но медленнее.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>Выберите цветовую шкалу, отображающую интенсивность в

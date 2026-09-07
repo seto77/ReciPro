@@ -447,7 +447,7 @@ Negative（反相）灰度。</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>方形 Lambert 主花样网格的
 分辨率（每边像素数，
-64–2048）；越大越精细但越慢。</value>
+64–8192）；越大越精细但越慢。</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>选择将强度映射为颜色的色阶

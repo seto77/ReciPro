@@ -202,6 +202,7 @@ public partial class FormEBSD : FormBase
 
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
+
     public double[] ThicknessArray
     {
         get
@@ -2226,6 +2227,26 @@ public partial class FormEBSD : FormBase
         {
             if (kind == ExportKind.Csv) { SavePatternValuesAsCsv(filename); return; }
 
+            //260907Cl 追加 (作者指示): 「検出器」範囲 + 「動力学EBSD」表示 + 「実測画像」非表示 のときの tif は、
+            //「補助図形」の状態に関わらずパターンだけを 16bit グレースケールで書き出す。
+            //従来はこの条件でも EmitPattern (GDI+ の 32bppArgb Bitmap → 8bit 相当の階調) を通していたため、
+            //階調が 256 段に丸められ、微小な強度差 (占有率・温度因子の効果は 0.1% 級) が保存段階で失われていた。
+            if (kind == ExportKind.Tiff && IsDynamicalPatternOnlyDetectorView)
+            {
+                var gray16 = SaveDynamicalPatternAsGray16Tiff(filename);
+                if (gray16.Saved)
+                {
+                    toolStripStatusLabelSummary.Text = "Pattern saved (16-bit grayscale TIFF)";
+                    toolStripStatusLabelDetail.Text = $"{filename} — {gray16.Width} x {gray16.Height}, 0-65535 linearly mapped from [{gray16.Min:g6}, {gray16.Max:g6}]";
+                }
+                else
+                {
+                    toolStripStatusLabelSummary.Text = "Save failed";
+                    toolStripStatusLabelDetail.Text = "Nothing was written (no pattern has been calculated, or the view is empty)";
+                }
+                return;
+            }
+
             //範囲・解像度・描画は Copy と同一実体 (EmitPattern)。片方だけ直して図と数値がずれることが起きない
             //260812Cl: 戻り値を見るようにした。以前は 1 バイトも書けていなくても "Pattern saved" と出していた
             if (EmitPattern(filename, kind == ExportKind.Emf,
@@ -2245,6 +2266,77 @@ public partial class FormEBSD : FormBase
             toolStripStatusLabelSummary.Text = "Save failed";
             toolStripStatusLabelDetail.Text = ex.Message;
         }
+    }
+
+    /// <summary>
+    /// 260907Cl 追加 (作者指示): 16bit グレースケール TIFF で書き出す条件かどうか。
+    /// 「検出器」範囲 + 「動力学EBSD」表示 + 「実測画像」非表示 のとき true。「補助図形」の状態は問わない
+    /// (この経路ではオーバーレイを一切描かず、パターンの値だけを出す)。
+    /// </summary>
+    private bool IsDynamicalPatternOnlyDetectorView
+        => radioButtonDetector.Checked && checkBoxShowDyanmicalEBSD.Checked && !checkBoxShowExperimentalImage.Checked;
+
+    /// <summary>
+    /// 260907Cl 追加 (作者指示): 動力学 EBSD パターンを 16bit グレースケール TIFF で書き出す。
+    /// <para>出力範囲・解像度は他の形式 (png/emf) と同じ <see cref="TryGetExportGeometry"/> に従うが、
+    /// 画像は GDI+ の Bitmap を経由せず <see cref="Crystallography.Tiff.Writer"/> へ直接渡すため 8bit へ丸められない。
+    /// 補助図形 (菊池線・指数・検出器枠) は描かない。</para>
+    /// <para>⚠ 画素値は「パターンの最小値→0, 最大値→65535」の線形写像。生の強度そのものではないので、
+    /// 絶対値が要るときは Save の csv (<see cref="SavePatternValuesAsCsv"/>) を使うこと。
+    /// 使った min/max はステータス欄に出す。</para>
+    /// <para>⚠ パターン本体のラスターは <see cref="MaxPatternRasterSize"/> でクランプされる。
+    /// 出力範囲がそれを超える場合、拡大した絵ではなく**実際に計算した解像度**で書き出す (補間で嵩増ししない)。</para>
+    /// </summary>
+    /// <returns>書き出せたか、および実際の画素数と写像に使った min/max</returns>
+    private (bool Saved, int Width, int Height, double Min, double Max) SaveDynamicalPatternAsGray16Tiff(string filename)
+    {
+        if (MasterPattern == null) return (false, 0, 0, 0, 0);
+        if (!TryGetExportGeometry(out var center, out int w, out int h, out var resolution)) return (false, 0, 0, 0, 0);
+
+        //csv 出力と同じく、Copy 用の上書き機構で目的の視野・解像度で計算し直してから値を取る
+        var originalPan = viewPan;
+        renderCanvasOverride = new Size(w, h);
+        renderResolutionOverride = resolution;
+        viewPan = new PointD(center.X - DetectorCenterView.X, center.Y - DetectorCenterView.Y);
+        int rasterW, rasterH;
+        double[] values;
+        try
+        {
+            DrawEBSD();
+            (rasterW, rasterH) = PatternRasterSize;
+            values = (double[])ebsdValues.Clone(); //復元時の再計算で上書きされるため控えを取る
+        }
+        finally
+        {
+            renderCanvasOverride = null;
+            renderResolutionOverride = null;
+            viewPan = originalPan;
+            DrawEBSD(); //画面用のパターンを復元
+            DrawOverlays();
+        }
+        int total = rasterW * rasterH;
+        if (rasterW <= 0 || rasterH <= 0 || values.Length < total) return (false, 0, 0, 0, 0);
+
+        double min = double.MaxValue, max = double.MinValue;
+        for (int i = 0; i < total; i++)
+            if (double.IsFinite(values[i]))
+            {
+                if (values[i] < min) min = values[i];
+                if (values[i] > max) max = values[i];
+            }
+        if (min > max) return (false, 0, 0, 0, 0); //全画素が NaN / Inf
+
+        //⚠ Tiff.Writer は sampleFormat=1 のとき「配列の最大値」で 8/16/32bit を決める (256 未満なら 8bit) ので、
+        //  最大値を必ず 65535 にして 16bit を保証する。平坦な像 (max==min) は全面 65535 とする
+        const double Max16 = 65535;
+        var gray = new double[total];
+        double scale = max > min ? Max16 / (max - min) : 0;
+        for (int i = 0; i < total; i++)
+            gray[i] = !double.IsFinite(values[i]) ? 0
+                : max > min ? Math.Round((values[i] - min) * scale) : Max16;
+
+        Tiff.Writer(filename, gray, 1, rasterW); //sampleFormat=1: 整数 (最大値 65535 なので 2 byte/pixel = 16bit グレー)
+        return (true, rasterW, rasterH, min, max);
     }
 
     /// <summary>パターンの生の値 (DrawEBSDCore が作る ebsdValues) を csv で書き出す。260811Cl 追加

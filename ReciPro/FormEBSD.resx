@@ -2645,6 +2645,12 @@ Lambert master-pattern grid (64–2048).</value>
   <data name="comboBoxMasterPatternGrid.Items9" xml:space="preserve">
     <value>2048</value>
   </data>
+  <data name="comboBoxMasterPatternGrid.Items10" xml:space="preserve">
+    <value>4096</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.Items11" xml:space="preserve">
+    <value>8192</value>
+  </data>
   <data name="comboBoxMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>271, 2</value>
   </data>
@@ -2660,7 +2666,7 @@ Lambert master-pattern grid (64–2048).</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Resolution (pixels per side) of the
 square Lambert master-pattern grid
-(64–2048); larger is finer but slower.</value>
+(64–8192); larger is finer but slower.</value>
   </data>
   <data name="&gt;&gt;comboBoxMasterPatternGrid.Name" xml:space="preserve">
     <value>comboBoxMasterPatternGrid</value>

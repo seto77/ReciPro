@@ -463,7 +463,7 @@ Master-Patterns in der 2D-Ansicht gezeigt wird.</value>
   <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
     <value>Auflösung (Pixel pro Seite) des quadratischen
 Lambert-Master-Pattern-Gitters
-(64–2048); größer ist feiner, aber langsamer.</value>
+(64–8192); größer ist feiner, aber langsamer.</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>Wählt die Farbskala, die die Intensität auf Farbe abbildet
