@@ -237,6 +237,9 @@
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>复制</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>保存视频</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>坐标轴标签</value>
   </data>
@@ -335,6 +338,11 @@ X 轴（样品旋转轴）方向观察。</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>将三维（球面）主花样
 预览复制到剪贴板。</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>保存三维（球面）主花样预览的
+旋转视频 (MP4)。
+仅旋转此视图，晶体取向不变。</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>旋转三维主花样，使在右侧输入的晶带轴

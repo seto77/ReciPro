@@ -239,6 +239,9 @@ eines Bildes.</value>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Kopieren</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Video speichern</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Achsenbeschriftungen</value>
   </data>
@@ -342,6 +345,12 @@ der X-Achse (der Probenrotationsachse) geblickt wird.</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Kopiert die 3D-Vorschau (sphärisch) des
 Master-Patterns in die Zwischenablage.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Speichert ein Rotationsvideo (MP4) der
+3D-Vorschau (sphärisch) des Master-Patterns.
+Es dreht sich nur diese Ansicht; die
+Kristallorientierung bleibt unverändert.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Dreht das 3D-Master-Pattern so, dass die rechts

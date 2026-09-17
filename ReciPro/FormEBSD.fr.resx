@@ -239,6 +239,9 @@ au lieu d'une image.</value>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Copier</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Enregistrer la vidéo</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Étiquettes d'axes</value>
   </data>
@@ -340,6 +343,12 @@ de Lambert) dans le presse-papiers.</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Copie l'aperçu 3D (sphérique) du master
 pattern dans le presse-papiers.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Enregistre une vidéo de rotation (MP4) de
+l'aperçu 3D (sphérique) du master pattern.
+Seule cette vue tourne ; l'orientation
+du cristal n'est pas modifiée.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Fait pivoter le master pattern 3D pour que l'axe de zone

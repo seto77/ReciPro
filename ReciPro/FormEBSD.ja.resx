@@ -559,7 +559,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
 をクリップボードにコピーします。</value>
   </data>
   <data name="buttonSaveMovie.Text" xml:space="preserve">
-    <value>動画保存</value>
+    <value>動画を保存</value>
   </data>
   <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
     <value>3D(球面)マスターパターンプレビューの

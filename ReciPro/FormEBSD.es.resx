@@ -235,6 +235,9 @@ en la rejilla de píxeles del detector en vez de una imagen.</value>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Guardar vídeo</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Etiquetas de ejes</value>
   </data>
@@ -339,6 +342,12 @@ del patrón maestro al portapapeles.</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Copia la vista previa 3D (esférica) del patrón
 maestro al portapapeles.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Guarda un vídeo de rotación (MP4) de la vista
+previa 3D (esférica) del patrón maestro.
+Solo gira esta vista; la orientación
+del cristal no cambia.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Rota el patrón maestro 3D para que el eje de zona

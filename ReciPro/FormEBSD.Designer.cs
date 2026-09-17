@@ -71,6 +71,8 @@
         //     8192 で約 687 GB になる (最終 plane はその 1/4)。実用にはエネルギー段数・深さ段数を大幅に
         //     減らすこと。足りなければ build は OutOfMemoryException で終わり、MasterPattern_EBSD_Completed が
         //     "MasterPattern failed" を表示する (プロセスは落ちない)。
+        // 260917Cl 追加: captureExtender.SetCapture(tabPageMasterPattern3D, true)
+        //   … 3D タブ (Save movie ボタンがある) は既定選択タブでないため、これが無いとマニュアル用の自動キャプチャに写らない。
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -1784,6 +1786,7 @@
             // tabPageMasterPattern3D
             // 
             tabPageMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageMasterPattern3D, true);
             tabPageMasterPattern3D.Controls.Add(panelMasterPattern3D);
             tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DCopy);
             tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);

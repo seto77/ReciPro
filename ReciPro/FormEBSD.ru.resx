@@ -239,6 +239,9 @@
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Копировать</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Сохранить видео</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Подписи осей</value>
   </data>
@@ -341,6 +344,12 @@ End и Step задают слои по толщине для расчёта.</va
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Копировать 3D-предпросмотр (сферический)
 мастер-картины в буфер обмена.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Сохранить видео вращения (MP4) 3D-предпросмотра
+(сферического) мастер-картины.
+Вращается только этот вид; ориентация
+кристалла не изменяется.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Повернуть 3D мастер-картину так, чтобы ось зоны

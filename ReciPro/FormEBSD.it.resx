@@ -238,6 +238,9 @@ griglia di pixel del rivelatore invece di un'immagine.</value>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Copia</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Salva video</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Etichette assi</value>
   </data>
@@ -339,6 +342,12 @@ l'asse X (l'asse di rotazione del campione).</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Copia l'anteprima 3D (sferica) del
 master pattern negli appunti.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Salva un video di rotazione (MP4)
+dell'anteprima 3D (sferica) del master pattern.
+Ruota solo questa vista; l'orientazione
+del cristallo non cambia.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Ruota il master pattern 3D in modo che l'asse di zona

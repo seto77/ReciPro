@@ -238,6 +238,9 @@ grade de pixels do detector em vez de uma imagem.</value>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>Salvar vídeo</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Rótulos dos eixos</value>
   </data>
@@ -339,6 +342,12 @@ do eixo X (o eixo de rotação da amostra).</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>Copia a pré-visualização do master pattern
 3D (esférico) para a área de transferência.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>Salva um vídeo de rotação (MP4) da pré-visualização
+do master pattern 3D (esférico).
+Apenas esta vista gira; a orientação
+do cristal não é alterada.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>Gira o master pattern 3D de modo que o eixo de zona

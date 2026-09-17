@@ -237,6 +237,9 @@
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>複製</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>儲存影片</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>軸標籤</value>
   </data>
@@ -334,6 +337,11 @@ keV；能量自 Start 向下以此增量計算至 End。</value>
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>將 3D（球面）主圖樣預覽
 複製到剪貼簿。</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>儲存 3D（球面）主圖樣預覽的
+旋轉影片 (MP4)。
+僅旋轉此檢視，晶體取向不變。</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>旋轉 3D 主圖樣，使右側輸入的晶帶軸

@@ -238,6 +238,9 @@
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>복사</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>동영상 저장</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>축 레이블</value>
   </data>
@@ -339,6 +342,11 @@
   <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
     <value>3D(구면) 마스터 패턴 미리보기를
 클립보드에 복사합니다.</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>3D(구면) 마스터 패턴 미리보기의
+회전 동영상(MP4)을 저장합니다.
+이 보기만 회전하며 결정 방위는 바뀌지 않습니다.</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
     <value>오른쪽에 입력한 정대축 [u v w]가 시선 방향을
