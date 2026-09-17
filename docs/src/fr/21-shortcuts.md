@@ -120,7 +120,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
 | Double-clic droit sur un bouton de couche actif (Spots / Kikuchi / Debye / Scale) | Faire clignoter cette couche |
 | Double-clic gauche sur le stéréonet — fenêtre **TEM holder** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — fenêtre **TEM holder** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées**) |
+| Touches fléchées — fenêtre **TEM holder** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées** ; actif quelle que soit la fenêtre de ReciPro au premier plan) |
 | Déposer `.prm` / une image — **Detector geometry**, ou `.txt` — **Dynamic compression** | Charger ces données |
 
 ### 8. Trajectoires électroniques

@@ -120,7 +120,7 @@ Symmetrieinformationen haben keine besonderen Tasten-/Mauskombinationen. In der 
 | Rechts-Doppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
 | Rechts-Doppelklick auf eine aktive Ebenen-Schaltfläche (Spots / Kikuchi / Debye / Scale) | Diese Ebene blinken lassen |
 | Links-Doppelklick auf das Stereonetz — Fenster **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
-| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Pfeiltasten aktivieren** anhaken) |
+| Pfeiltasten — Fenster **TEM-Halter** | Die Halterkippung schrittweise ändern (zuvor **Pfeiltasten aktivieren** anhaken; wirkt bei jedem ReciPro-Fenster im Vordergrund) |
 | `.prm`/Bild ablegen — **Detektorgeometrie**, oder `.txt` — **Dynamische Kompression** | Diese Daten laden |
 
 ### 8. Elektronenbahnen

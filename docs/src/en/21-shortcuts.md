@@ -120,7 +120,7 @@ Symmetry information has no special key/mouse combinations. In Beam Interaction,
 | Right double-click the status bar | Copy a text summary of the current settings |
 | Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
 | Left double-click the stereonet — **TEM holder** window | Set the holder tilt to that point |
-| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first) |
+| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Enable arrow keys** first; works with any ReciPro window in front) |
 | Drop `.prm` / image — **Detector geometry**, or `.txt` — **Dynamic compression** | Load that data |
 
 ### 8. Electron trajectory

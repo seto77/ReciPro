@@ -53,7 +53,7 @@
 
 ### SEM & 样品条件
 
-![SEM & 样品条件](../assets/cap-zh-Hans-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & 样品条件](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : 入射束的加速电压 (keV)。
 - **Wavelength** : 电子波长，与 Energy 关联。**Unit** 用于选择 Å 或 nm。
@@ -61,7 +61,7 @@
 
 ### EBSD几何
 
-![EBSD 几何](../assets/cap-zh-Hans-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSD 几何](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 探测器（荧光屏）是由像素数和像素尺寸定义的矩形。
 
@@ -73,7 +73,7 @@
 
 可在 **几何** 选项卡的 3D 视图中查看几何。
 
-![3D 几何](../assets/cap-zh-Hans-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3D 几何](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 灰色板为样品，绿色矩形板为探测器，紫色的 **+Z (=beam)** 为入射束。同时显示晶体 **a / b / c** 轴（固定于样品）。按钮 **鸟瞰视图**、**表面法向**、**X轴（旋转轴）** 和 **Z轴（射束方向）** 可将视图对齐到标准方向。坐标系定义参见[附录 A1. 坐标系](appendix/a1-coordinate-system/2-diffraction.md)。
 
@@ -81,7 +81,7 @@
 
 ## BSE 分布
 
-![BSE 分布](../assets/cap-zh-Hans-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE 分布](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 **BSE分布** 选项卡显示蒙特卡罗背散射电子分布。使用 **模拟** 重新计算它们。
 
@@ -95,7 +95,7 @@
 
 ## 叠加层
 
-![叠加层](../assets/cap-zh-Hans-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![叠加层](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 **叠加层** 选项卡用于配置绘制在 EBSD 花样上的标注。
 
@@ -111,21 +111,24 @@
 
 ## Master pattern
 
-![主花样](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxMasterPattern.png)
+![主花样](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 master pattern 是所有方向上的背散射衍射强度，由动力学理论通过 **构建主花样** 预先计算（**停止** 可中断正在进行的计算）。
 
 - **2D** 选项卡 : 半球的等面积 (Lambert) 投影。**半球** 选择投影的半球 (+Z / −Z)。
-- **3D** 选项卡 : 将强度映射到其上的球面。可用鼠标旋转，右上角的插图显示同步的晶轴 (a/b/c)。**坐标轴标签** / **坐标轴箭头** 切换标签/箭头，**沿轴观察** 沿旁边输入的晶带轴 [u v w] 俯视。
+- **3D** 选项卡 : 将强度映射到其上的球面。可用鼠标旋转，左上角的插图显示同步的晶轴 (a/b/c)。**坐标轴标签** / **坐标轴箭头** 切换标签/箭头，**沿轴观察** 沿旁边输入的晶带轴 [u v w] 俯视。
 - **Energy / Depth** 滑块 : 选择要预览的能量/深度切片。
 - 任一视图都可用 **复制** 发送到剪贴板。
+- **保存视频**（**3D** 选项卡） : 保存球面 master pattern 旋转的视频 (MP4)。旋转方向、速度、时长、fps 和质量在与[结构查看器](5-structure-viewer.md)相同的“Movie setting”对话框中设置。仅旋转此 3D 视图，晶体取向（主窗口中的欧拉角）不变。
+
+![主花样的 3D 选项卡](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### 动力学模拟参数
 
-![动力学模拟参数](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![动力学模拟参数](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : 布洛赫波计算中纳入的衍射束（波）数量。波数越多越精确，但越慢。
-- **网格** : master pattern 网格的分辨率（默认 256）。
+- **网格** : master pattern 网格的分辨率（每边像素数，64–8192；默认 256）。4096 和 8192 的中间数据需要极大的内存（在默认的 8 个能量 × 40 个深度下，4096 约需 172 GB，8192 约需 687 GB；2048 已约需 43 GB），因此必须大幅减少能量和深度的步数才能实际使用。内存不足时，计算以“MasterPattern failed”结束（ReciPro 本身继续运行）。
 - **Energy from … to … with step of …** : 积分的能量范围和步长 (keV)；由蒙特卡罗结果自动设定。
 - **Thickness from … to … with step of …** : 积分的深度范围和步长 (nm)；同样自动设定。
 - **使用非局域吸收模型** : 使用非局域吸收形式。
@@ -135,7 +138,7 @@ master pattern 是所有方向上的背散射衍射强度，由动力学理论�
 
 ## EBSD 花样
 
-![EBSD 花样](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSD 花样](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 中间面板显示当前晶体取向对应的 EBSD（菊池带）花样。花样上方的工具栏控制绘制内容和复制方式。
 
@@ -144,6 +147,9 @@ master pattern 是所有方向上的背散射衍射强度，由动力学理论�
 - **实验图像** : 叠加已载入的实验图像（见下文）。
 - **左右翻转** : 将花样及其全部叠加层左右镜像。取消勾选（默认）时为从探测器看向样品的方向，即 EBSD 相机记录到的图像；仅当您的实验图像左右相反时才勾选。
 - **Resolution**（mm/px）和 **Size (W×H)**（px）: 显示视图的分辨率与尺寸。
+- **保存** : 按旁边选择的范围与分辨率，将花样保存到文件。格式（PNG / TIFF / EMF）在保存对话框中选择。
+  - 选择 **Pattern values (\*.csv)** 时，写出的不是图像，而是探测器像素网格上的原始强度值。
+  - 当范围为 **探测器**、显示 **动力学EBSD** 且不显示 **实验图像** 时，TIFF 以 16 位灰度写出（不会被量化为 256 级）。此时无论是否勾选，**叠加层** 都不包含在内，像素值是将花样自身的最小值–最大值线性映射到 0–65535 的结果（所用的最小值和最大值显示在状态栏中；需要绝对值时请使用 csv 导出）。
 - **复制** : 按旁边选择的范围与格式，将花样复制到剪贴板。
   - **当前视图** 复制当前显示的范围（保持平移与缩放）；**探测器** 仅复制探测器区域，此时不含黄色边框，图像正好在探测器边缘处结束。
   - **emf** 复制为增强型图元文件，菊池线和指数标签保持矢量；**bmp** 则将全部内容栅格化。
@@ -157,7 +163,7 @@ master pattern 是所有方向上的背散射衍射强度，由动力学理论�
 
 ### 实验图像
 
-![实验图像](../assets/cap-zh-Hans-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![实验图像](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 将 EBSD 图像文件（TIFF、PNG、BMP 或 JPEG；16 位 TIFF 以完整位深读取）拖放到窗口的任意位置，即可作为实验花样载入。图像绘制在探测器区域上——位于模拟花样之上、菊池线叠加层之下——因此可以直接比较模拟与实测。载入时还会把探测器的 **Width** 和 **Height** 设为图像尺寸。
 

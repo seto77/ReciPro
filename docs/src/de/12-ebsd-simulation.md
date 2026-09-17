@@ -53,7 +53,7 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ### SEM & Probenbedingungen
 
-![SEM & Probenbedingungen](../assets/cap-de-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & Probenbedingungen](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : Beschleunigungsspannung des einfallenden Strahls (keV).
 - **Wavelength** : Elektronenwellenlänge, gekoppelt an Energy. **Unit** wählt Å oder nm.
@@ -61,7 +61,7 @@ Die Energie- und Tiefenbereiche werden in den Schritten 1–2 automatisch festge
 
 ### EBSD-Geometrie
 
-![EBSD-Geometrie](../assets/cap-de-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSD-Geometrie](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 Der Detektor (Leuchtschirm) ist ein Rechteck, das durch eine Pixelzahl und eine Pixelgröße definiert ist.
 
@@ -73,7 +73,7 @@ Beim Laden eines experimentellen Bildes werden **Width** und **Height** auf die 
 
 Die Geometrie lässt sich in der 3D-Ansicht auf der Registerkarte **Geometrie** inspizieren.
 
-![3D-Geometrie](../assets/cap-de-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3D-Geometrie](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 Die graue Platte ist die Probe, die grüne rechteckige Platte ist der Detektor, und das violette **+Z (=beam)** ist der einfallende Strahl. Die Kristallachsen **a / b / c** (fest mit der Probe verbunden) werden ebenfalls angezeigt. Die Schaltflächen **Vogelperspektive**, **Flächennormale**, **X-Achse (Drehachse)** und **Z-Achse (Strahlrichtung)** richten die Ansicht an Standardrichtungen aus. Siehe [Anhang A1. Koordinatensysteme](appendix/a1-coordinate-system/2-diffraction.md) für die Definitionen der Koordinatensysteme.
 
@@ -81,7 +81,7 @@ Die graue Platte ist die Probe, die grüne rechteckige Platte ist der Detektor, 
 
 ## BSE-Verteilung
 
-![BSE-Verteilung](../assets/cap-de-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE-Verteilung](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 Die Registerkarte **BSE-Verteilung** zeigt die Monte-Carlo-Verteilungen der rückgestreuten Elektronen. Verwenden Sie **Simulieren**, um sie neu zu berechnen.
 
@@ -95,7 +95,7 @@ Diese Verteilungen werden von derselben Monte-Carlo-Engine wie bei [Elektronenba
 
 ## Overlays
 
-![Overlays](../assets/cap-de-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![Overlays](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 Die Registerkarte **Overlays** konfiguriert die auf dem EBSD-Muster gezeichneten Beschriftungen.
 
@@ -111,21 +111,24 @@ Die Registerkarte **Overlays** konfiguriert die auf dem EBSD-Muster gezeichneten
 
 ## Master-Muster
 
-![Master-Pattern](../assets/cap-de-auto/FormEBSD.groupBoxMasterPattern.png)
+![Master-Pattern](../assets/cap-de-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 Das Master-Muster ist die Rückstreubeugungsintensität über alle Richtungen, im Voraus durch die dynamische Theorie mit **Master-Pattern erstellen** berechnet (**Stopp** bricht die laufende Berechnung ab).
 
 - Registerkarte **2D** : flächentreue (Lambert-)Projektion einer Halbkugel. **Halbkugel** wählt die projizierte Halbkugel (+Z / −Z).
-- Registerkarte **3D** : eine Kugel mit darauf abgebildeter Intensität. Sie kann mit der Maus gedreht werden, und ein Einschub oben rechts zeigt die synchronisierten Kristallachsen (a/b/c). **Achsenbeschriftungen** / **Achsenpfeile** schalten die Beschriftungen/Pfeile um, und **Blick entlang** blickt entlang der daneben eingegebenen Zonenachse [u v w].
+- Registerkarte **3D** : eine Kugel mit darauf abgebildeter Intensität. Sie kann mit der Maus gedreht werden, und ein Einschub oben links zeigt die synchronisierten Kristallachsen (a/b/c). **Achsenbeschriftungen** / **Achsenpfeile** schalten die Beschriftungen/Pfeile um, und **Blick entlang** blickt entlang der daneben eingegebenen Zonenachse [u v w].
 - **Energy / Depth**-Schieberegler : wählen die als Vorschau angezeigte Energie-/Tiefenscheibe.
 - Jede Ansicht kann mit **Kopieren** in die Zwischenablage übertragen werden.
+- **Video speichern** (Registerkarte **3D**) : speichert ein Video (MP4) des rotierenden sphärischen Master-Musters. Drehrichtung, Geschwindigkeit, Dauer, fps und Qualität werden im selben Dialog „Movie setting“ wie in der [Strukturansicht](5-structure-viewer.md) eingestellt. Es dreht sich nur diese 3D-Ansicht; die Kristallorientierung (die Euler-Winkel im Hauptfenster) bleibt unverändert.
+
+![Master-Muster, Registerkarte 3D](../assets/cap-de-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### Dynamische Simulationsparameter
 
-![Dynamische Simulationsparameter](../assets/cap-de-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![Dynamische Simulationsparameter](../assets/cap-de-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : Anzahl der in die Bloch-Wellen-Berechnung einbezogenen gebeugten Strahlen (Wellen). Mehr Wellen sind genauer, aber langsamer.
-- **Raster** : Auflösung des Master-Muster-Gitters (Standard 256).
+- **Raster** : Auflösung des Master-Muster-Gitters (Pixel pro Seite, 64–8192; Standard 256). 4096 und 8192 benötigen für die Zwischendaten enorm viel Speicher (bei den voreingestellten 8 Energien × 40 Tiefen etwa 172 GB bei 4096 und 687 GB bei 8192; bereits etwa 43 GB bei 2048), sodass die Anzahl der Energie- und Tiefenschritte drastisch verringert werden muss, bevor sie nutzbar sind. Reicht der Speicher nicht aus, endet die Berechnung mit „MasterPattern failed“ (ReciPro selbst läuft weiter).
 - **Energy from … to … with step of …** : integrierter Energiebereich und Schrittweite (keV); aus dem Monte-Carlo-Ergebnis automatisch festgelegt.
 - **Thickness from … to … with step of …** : integrierter Tiefenbereich und Schrittweite (nm); ebenfalls automatisch festgelegt.
 - **Nicht-lokale Absorption** : die nicht-lokale Absorptionsform verwenden.
@@ -135,7 +138,7 @@ Das Master-Muster ist die Rückstreubeugungsintensität über alle Richtungen, i
 
 ## EBSD-Muster
 
-![EBSD-Muster](../assets/cap-de-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSD-Muster](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristallorientierung. Die Leiste über dem Muster steuert, was gezeichnet und wie kopiert wird.
 
@@ -144,6 +147,9 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 - **Experimentelles Bild** : überlagert das geladene experimentelle Bild (siehe unten).
 - **L-R spiegeln** : spiegelt das Muster und alle Overlays links-rechts. Deaktiviert (Standard) ist die Ansicht vom Detektor zur Probe, also das Muster so, wie es eine EBSD-Kamera aufzeichnet; aktivieren Sie es nur, wenn Ihr experimentelles Bild die entgegengesetzte Händigkeit besitzt.
 - **Resolution** (mm/px) und **Size (W×H)** (px) : Auflösung und Größe der angezeigten Ansicht.
+- **Speichern** : speichert das Muster mit dem daneben gewählten Bereich und der gewählten Auflösung in eine Datei. Das Format (PNG / TIFF / EMF) wird im Speichern-Dialog gewählt.
+  - **Pattern values (\*.csv)** schreibt statt eines Bildes die rohen Intensitäten auf dem Pixelraster des Detektors.
+  - Ein TIFF wird als 16-Bit-Graustufenbild geschrieben (nicht auf 256 Stufen quantisiert), wenn der Bereich **Detektor** ist, **Dynamisches EBSD** angezeigt wird und **Experimentelles Bild** nicht. In diesem Fall werden die **Overlays** unabhängig von ihrem Kontrollkästchen weggelassen, und die Pixelwerte sind das Muster, linear von seinem eigenen Minimum–Maximum auf 0–65535 abgebildet (das verwendete Minimum und Maximum werden in der Statusleiste angezeigt; für absolute Werte den csv-Export verwenden).
 - **Kopieren** : kopiert das Muster mit dem daneben gewählten Bereich und Format in die Zwischenablage.
   - **Aktuelle Ansicht** kopiert den derzeit angezeigten Bereich (mit Verschiebung und Zoom); **Detektor** kopiert nur den Detektorbereich, wobei der gelbe Rahmen entfällt, sodass das Bild genau am Detektorrand endet.
   - **emf** kopiert eine Enhanced Metafile und behält Kikuchi-Linien und Indexbeschriftungen als Vektoren bei; **bmp** rastert alles.
@@ -157,7 +163,7 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 
 ### Experimentelles Bild
 
-![Experimentelles Bild](../assets/cap-de-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![Experimentelles Bild](../assets/cap-de-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 Ziehen Sie eine EBSD-Bilddatei (TIFF, PNG, BMP oder JPEG; 16-Bit-TIFF wird mit voller Tiefe gelesen) an eine beliebige Stelle des Fensters, um sie als experimentelles Muster zu laden. Sie wird über dem Detektorbereich gezeichnet — über dem simulierten Muster und unter den Kikuchi-Linien-Overlays — sodass sich Simulation und Messung direkt vergleichen lassen. Beim Laden werden außerdem **Width** und **Height** des Detektors auf die Bildgröße gesetzt.
 

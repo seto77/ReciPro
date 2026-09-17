@@ -53,7 +53,7 @@
 
 ### SEM & 시료 조건
 
-![SEM & 시료 조건](../assets/cap-ko-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & 시료 조건](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : 입사빔의 가속 전압(keV).
 - **Wavelength** : 전자 파장, Energy와 연동됩니다. **Unit** 으로 Å 또는 nm를 선택합니다.
@@ -61,7 +61,7 @@
 
 ### EBSD 기하구조
 
-![EBSD 기하구조](../assets/cap-ko-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSD 기하구조](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 검출기(형광 스크린)는 픽셀 수와 픽셀 크기로 정의되는 직사각형입니다.
 
@@ -73,7 +73,7 @@
 
 기하학은 **기하구조** 탭의 3D 보기에서 확인할 수 있습니다.
 
-![3D 기하학](../assets/cap-ko-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3D 기하학](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 회색 판은 시료, 녹색 직사각형 판은 검출기, 보라색 **+Z (=beam)**은 입사빔입니다. (시료에 고정된) 결정 **a / b / c** 축도 함께 표시됩니다. **조감도**, **표면 법선**, **X축 (회전축)** 및 **Z축 (빔 방향)** 버튼은 보기를 표준 방향으로 맞춥니다. 좌표계 정의는 [부록 A1. 좌표계](appendix/a1-coordinate-system/2-diffraction.md)를 참조하세요.
 
@@ -81,7 +81,7 @@
 
 ## BSE 분포
 
-![BSE 분포](../assets/cap-ko-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE 분포](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 **BSE 분포** 탭은 몬테카를로 후방산란 전자 분포를 표시합니다. **시뮬레이션**을 사용하여 다시 계산합니다.
 
@@ -95,7 +95,7 @@
 
 ## 오버레이
 
-![오버레이](../assets/cap-ko-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![오버레이](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 **오버레이** 탭은 EBSD 패턴 위에 그려지는 주석을 설정합니다.
 
@@ -111,21 +111,24 @@
 
 ## Master pattern
 
-![마스터 패턴](../assets/cap-ko-auto/FormEBSD.groupBoxMasterPattern.png)
+![마스터 패턴](../assets/cap-ko-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 master pattern은 모든 방향에 걸친 후방산란 회절 강도로, **마스터 패턴 생성**을 통해 동역학 이론으로 미리 계산됩니다(**정지** 로 실행 중인 계산을 중단할 수 있습니다).
 
 - **2D** 탭 : 반구의 등면적(Lambert) 투영. **반구**는 투영할 반구(+Z / −Z)를 선택합니다.
-- **3D** 탭 : 강도가 매핑된 구. 마우스로 회전할 수 있으며, 오른쪽 위의 삽입 화면에 동기화된 결정 축(a/b/c)이 표시됩니다. **축 레이블** / **축 화살표**는 레이블/화살표를 토글하며, **축 방향 보기**는 옆에 입력한 정대축 [u v w]을 따라 내려다봅니다.
+- **3D** 탭 : 강도가 매핑된 구. 마우스로 회전할 수 있으며, 왼쪽 위의 삽입 화면에 동기화된 결정 축(a/b/c)이 표시됩니다. **축 레이블** / **축 화살표**는 레이블/화살표를 토글하며, **축 방향 보기**는 옆에 입력한 정대축 [u v w]을 따라 내려다봅니다.
 - **Energy / Depth** 슬라이더 : 미리 볼 에너지/깊이 슬라이스를 선택합니다.
 - 어느 보기든 **복사**로 클립보드에 보낼 수 있습니다.
+- **동영상 저장**(**3D** 탭) : 구면 master pattern이 회전하는 동영상(MP4)을 저장합니다. 회전 방향·속도·길이·fps·품질은 [구조 뷰어](5-structure-viewer.md)와 같은 "Movie setting" 대화 상자에서 지정합니다. 이 3D 보기만 회전하며, 결정 방위(메인 창의 오일러 각)는 바뀌지 않습니다.
+
+![마스터 패턴의 3D 탭](../assets/cap-ko-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### 동역학적 시뮬레이션 매개변수
 
-![동역학 시뮬레이션 매개변수](../assets/cap-ko-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![동역학 시뮬레이션 매개변수](../assets/cap-ko-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **회절파 개수** : 블로흐파 계산에 포함되는 회절 빔(파동)의 수. 파동이 많을수록 정확하지만 느립니다.
-- **격자** : master pattern 격자의 해상도(기본값 256).
+- **격자** : master pattern 격자의 해상도(한 변의 픽셀 수, 64–8192, 기본값 256). 4096과 8192는 중간 데이터에 매우 큰 메모리가 필요하므로(기본값인 8개 에너지 × 40개 깊이에서 4096은 약 172 GB, 8192는 약 687 GB, 2048에서도 약 43 GB) 에너지·깊이 단계 수를 크게 줄여야 실제로 사용할 수 있습니다. 메모리가 부족하면 계산이 "MasterPattern failed"로 끝납니다(ReciPro 자체는 계속 실행됩니다).
 - **Energy from … to … with step of …** : 적분되는 에너지 범위 및 스텝(keV); 몬테카를로 결과로부터 자동으로 설정됩니다.
 - **Thickness from … to … with step of …** : 적분되는 깊이 범위 및 스텝(nm); 마찬가지로 자동으로 설정됩니다.
 - **비국소 흡수 모델 사용** : 비국소 흡수 모델을 사용합니다.
@@ -135,7 +138,7 @@ master pattern은 모든 방향에 걸친 후방산란 회절 강도로, **마�
 
 ## EBSD 패턴
 
-![EBSD 패턴](../assets/cap-ko-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSD 패턴](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 가운데 패널은 현재 결정 방위에 대한 EBSD(키쿠치 밴드) 패턴을 표시합니다. 패턴 위쪽의 막대에서 무엇을 그릴지와 복사 방법을 지정합니다.
 
@@ -144,6 +147,9 @@ master pattern은 모든 방향에 걸친 후방산란 회절 강도로, **마�
 - **실험 이미지** : 불러온 실험 이미지를 겹쳐 표시합니다(아래 참조).
 - **좌우 반전** : 패턴과 모든 오버레이를 좌우로 반전합니다. 해제 상태(기본값)는 검출기에서 시료를 바라보는 방향, 즉 EBSD 카메라가 기록하는 자연스러운 이미지입니다. 실험 이미지의 좌우가 반대일 때만 체크하세요.
 - **Resolution**(mm/px)·**Size (W×H)**(px) : 표시 보기의 해상도와 크기.
+- **저장** : 옆에서 선택한 범위·해상도로 패턴을 파일에 저장합니다. 형식(PNG / TIFF / EMF)은 저장 대화 상자에서 선택합니다.
+  - **Pattern values (\*.csv)** 를 선택하면 이미지가 아니라 검출기 픽셀 격자 위의 원시 강도 값을 기록합니다.
+  - 범위가 **검출기**이고 **동역학적 EBSD**를 표시하며 **실험 이미지**를 표시하지 않을 때의 TIFF는 16비트 그레이스케일로 기록됩니다(256단계로 양자화되지 않습니다). 이때 **오버레이**는 체크 여부와 관계없이 포함되지 않으며, 픽셀 값은 패턴 자체의 최솟값–최댓값을 0–65535로 선형 매핑한 것입니다(사용된 최솟값과 최댓값은 상태 표시줄에 표시됩니다. 절댓값이 필요하면 csv 내보내기를 사용하십시오).
 - **복사** : 옆에서 선택한 범위·형식으로 패턴을 클립보드에 복사합니다.
   - **현재 보기**는 이동·확대한 그대로의 표시 범위를, **검출기**는 검출기 영역만 복사합니다(후자에서는 노란색 테두리가 포함되지 않아 이미지가 검출기 가장자리에서 정확히 끝납니다).
   - **emf**는 확장 메타파일로 복사하여 키쿠치 선과 지수 레이블을 벡터로 유지하고, **bmp**는 전체를 래스터화합니다.
@@ -157,7 +163,7 @@ master pattern은 모든 방향에 걸친 후방산란 회절 강도로, **마�
 
 ### 실험 이미지
 
-![실험 이미지](../assets/cap-ko-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![실험 이미지](../assets/cap-ko-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 EBSD 이미지 파일(TIFF·PNG·BMP·JPEG. 16비트 TIFF는 비트 심도를 유지한 채 읽습니다)을 창 위에 놓으면 실험 패턴으로 불러옵니다. 이미지는 검출기 영역에, 시뮬레이션 패턴의 위·키쿠치 선 오버레이의 아래에 그려지므로 시뮬레이션과 실측을 직접 비교할 수 있습니다. 불러올 때 검출기의 **Width**·**Height** 도 이미지 크기에 맞춰집니다.
 

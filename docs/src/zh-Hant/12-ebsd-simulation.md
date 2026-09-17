@@ -53,7 +53,7 @@
 
 ### SEM & 試片條件
 
-![SEM & 試片條件](../assets/cap-zh-Hant-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & 試片條件](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy**：入射束的加速電壓 (keV)。
 - **Wavelength**：電子波長，與 Energy 連動。**Unit** 可選擇 Å 或 nm。
@@ -61,7 +61,7 @@
 
 ### EBSD 幾何
 
-![EBSD 幾何](../assets/cap-zh-Hant-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSD 幾何](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 偵測器（螢光屏）是由像素數與像素尺寸所定義的矩形。
 
@@ -73,7 +73,7 @@
 
 幾何可在 **幾何** 索引標籤的 3D 檢視中檢視。
 
-![3D geometry](../assets/cap-zh-Hant-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3D geometry](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 灰色平板為試樣，綠色矩形平板為偵測器，紫色的 **+Z (=beam)** 為入射束。同時也顯示晶體的 **a / b / c** 軸（固定於試樣）。**鳥瞰視角**、**表面法線**、**X軸（旋轉軸）** 與 **Z軸（射束方向）** 等按鈕可將檢視對齊至標準方向。座標系的定義請參閱 [附錄 A1. 座標系](appendix/a1-coordinate-system/2-diffraction.md)。
 
@@ -81,7 +81,7 @@
 
 ## BSE 分布
 
-![BSE 分布](../assets/cap-zh-Hant-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE 分布](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 **BSE 分布** 索引標籤顯示蒙地卡羅背向散射電子分布。使用 **模擬** 重新計算它們。
 
@@ -95,7 +95,7 @@
 
 ## 疊加層
 
-![疊加層](../assets/cap-zh-Hant-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![疊加層](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 **疊加層** 索引標籤設定繪製於 EBSD 圖樣上的標註。
 
@@ -111,21 +111,24 @@
 
 ## Master pattern
 
-![主圖樣](../assets/cap-zh-Hant-auto/FormEBSD.groupBoxMasterPattern.png)
+![主圖樣](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 master pattern 是所有方向上的背向散射繞射強度，事先以動力學理論透過 **建立主圖樣** 計算而得（**停止** 可中斷執行中的計算）。
 
 - **2D** 索引標籤：半球的等面積 (Lambert) 投影。**半球** 選擇所投影的半球 (+Z / −Z)。
-- **3D** 索引標籤：將強度映射其上的球面。可用滑鼠旋轉，右上角的嵌入圖顯示同步的晶體軸 (a/b/c)。**軸標籤** / **軸箭頭** 切換標籤／箭頭，而 **沿軸觀看** 會沿著旁邊輸入的晶帶軸 [u v w] 俯視。
+- **3D** 索引標籤：將強度映射其上的球面。可用滑鼠旋轉，左上角的嵌入圖顯示同步的晶體軸 (a/b/c)。**軸標籤** / **軸箭頭** 切換標籤／箭頭，而 **沿軸觀看** 會沿著旁邊輸入的晶帶軸 [u v w] 俯視。
 - **Energy / Depth** 滑桿：選擇要預覽的能量／深度切片。
 - 任一檢視皆可透過 **複製** 送至剪貼簿。
+- **儲存影片**（**3D** 索引標籤）：儲存球面 master pattern 旋轉的影片 (MP4)。旋轉方向、速度、時間長度、fps 與品質在與[結構檢視器](5-structure-viewer.md)相同的「Movie setting」對話方塊中設定。僅旋轉此 3D 檢視，晶體取向（主視窗中的歐拉角）不變。
+
+![主圖樣的 3D 索引標籤](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### 動力學模擬參數
 
-![動力學模擬參數](../assets/cap-zh-Hant-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![動力學模擬參數](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves**：布洛赫波計算中所納入的繞射束（波）數目。波數越多越精確但越慢。
-- **網格**：master pattern 網格的解析度（預設 256）。
+- **網格**：master pattern 網格的解析度（每邊像素數，64–8192；預設 256）。4096 與 8192 的中間資料需要極大的記憶體（在預設的 8 個能量 × 40 個深度下，4096 約需 172 GB，8192 約需 687 GB；2048 已約需 43 GB），因此必須大幅減少能量與深度的步數才能實際使用。記憶體不足時，計算會以「MasterPattern failed」結束（ReciPro 本身繼續執行）。
 - **Energy from … to … with step of …**：所積分的能量範圍與步進 (keV)；由蒙地卡羅結果自動設定。
 - **Thickness from … to … with step of …**：所積分的深度範圍與步進 (nm)；同樣自動設定。
 - **使用非局域吸收模型**：使用非局域吸收形式。
@@ -135,7 +138,7 @@ master pattern 是所有方向上的背向散射繞射強度，事先以動力�
 
 ## EBSD 圖樣
 
-![EBSD 圖樣](../assets/cap-zh-Hant-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSD 圖樣](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 中央面板顯示當前晶體取向的 EBSD (菊池帶) 圖樣。圖樣上方的工具列控制繪製內容與複製方式。
 
@@ -144,6 +147,9 @@ master pattern 是所有方向上的背向散射繞射強度，事先以動力�
 - **實驗影像**：疊加已載入的實驗影像（見下文）。
 - **左右翻轉**：將圖樣及其所有疊加層左右鏡像。取消勾選（預設）時為從偵測器看向試樣的方向，也就是 EBSD 相機所記錄的影像；僅當您的實驗影像左右相反時才勾選。
 - **Resolution**（mm/px）與 **Size (W×H)**（px）：所顯示檢視的解析度與尺寸。
+- **儲存**：依旁邊選定的範圍與解析度，將圖樣儲存到檔案。格式（PNG / TIFF / EMF）在儲存對話方塊中選擇。
+  - 選擇 **Pattern values (\*.csv)** 時，寫出的不是影像，而是偵測器像素網格上的原始強度值。
+  - 當範圍為 **偵測器**、顯示 **動力學 EBSD** 且不顯示 **實驗影像** 時，TIFF 以 16 位元灰階寫出（不會被量化為 256 階）。此時無論是否勾選，**疊加層** 都不包含在內，像素值是將圖樣本身的最小值–最大值線性對應到 0–65535 的結果（所用的最小值與最大值顯示於狀態列；需要絕對值時請使用 csv 匯出）。
 - **複製**：依旁邊選定的範圍與格式，將圖樣複製到剪貼簿。
   - **目前檢視** 會複製目前顯示的範圍（維持平移與縮放）；**偵測器** 僅複製偵測器區域，此時不含黃色外框，影像剛好在偵測器邊緣結束。
   - **emf** 會複製為增強型中繼檔，菊池線與指數標籤維持向量；**bmp** 則將全部內容點陣化。
@@ -157,7 +163,7 @@ master pattern 是所有方向上的背向散射繞射強度，事先以動力�
 
 ### 實驗影像
 
-![實驗影像](../assets/cap-zh-Hant-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![實驗影像](../assets/cap-zh-Hant-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 將 EBSD 影像檔（TIFF、PNG、BMP 或 JPEG；16 位元 TIFF 會以完整位元深度讀取）拖放到視窗的任意位置，即可載入為實驗圖樣。影像會繪製在偵測器區域上——位於模擬圖樣之上、菊池線疊加層之下——因此可直接比較模擬與實測。載入時也會把偵測器的 **Width** 與 **Height** 設為影像尺寸。
 

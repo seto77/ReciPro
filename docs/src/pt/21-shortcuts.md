@@ -120,7 +120,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Fazer essa camada piscar |
 | Clique duplo esquerdo na estereonete — janela **TEM holder** | Definir a inclinação do suporte para esse ponto |
-| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes) |
+| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona com qualquer janela do ReciPro em primeiro plano) |
 | Soltar `.prm` / imagem — **Detector geometry**, ou `.txt` — **Dynamic compression** | Carregar esses dados |
 
 ### 8. Trajetórias eletrônicas

@@ -120,7 +120,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Doble clic derecho en la barra de estado | Copiar un resumen de texto de los ajustes actuales |
 | Doble clic derecho en un botón de capa activa (Spots / Kikuchi / Debye / Scale) | Hacer parpadear esa capa |
 | Doble clic izquierdo en el estereograma — ventana **TEM holder** | Fijar la inclinación del portamuestras en ese punto |
-| Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**) |
+| Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**; funciona con cualquier ventana de ReciPro en primer plano) |
 | Soltar `.prm` / imagen — **Detector geometry**, o `.txt` — **Dynamic compression** | Cargar esos datos |
 
 ### 8. Trayectorias electrónicas

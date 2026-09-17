@@ -53,7 +53,7 @@
 
 ### SEMのセッティング
 
-![SEMのセッティング](../assets/cap-ja-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEMのセッティング](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **エネルギー** : 入射電子線の加速電圧（keV）。
 - **波長** : 電子線の波長。エネルギーと連動します。**単位** で Å と nm を選びます。
@@ -61,7 +61,7 @@
 
 ### EBSDのセッティング
 
-![EBSDのセッティング](../assets/cap-ja-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSDのセッティング](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 検出器（蛍光板）は、画素数と画素サイズで定義される矩形です。
 
@@ -73,7 +73,7 @@
 
 幾何条件は **SEM-EBSD設定** タブの3Dビューで確認できます。
 
-![3Dジオメトリ](../assets/cap-ja-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3Dジオメトリ](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 灰色の板が試料、緑の矩形板が検出器、紫の **+Z (=beam)** が入射電子線です。試料に固定された結晶の **a / b / c** 軸も表示されます。**鳥瞰図**・**表面法線方向**・**X軸 (試料回転軸)**・**Z軸 (電子線入射方向)** のボタンで標準的な視点に切り替えられます。座標系の定義は [Appendix A1. 座標系の定義](appendix/a1-coordinate-system/2-diffraction.md) を参照してください。
 
@@ -81,7 +81,7 @@
 
 ## BSE分布
 
-![BSE分布](../assets/cap-ja-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE分布](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 **BSE分布** タブには、モンテカルロで求めた後方散乱電子の分布が表示されます。**「分布を計算」** で再計算できます。
 
@@ -95,7 +95,7 @@
 
 ## 補助図形
 
-![補助図形](../assets/cap-ja-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![補助図形](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 **補助図形** タブで、EBSDパターンに重ねるオーバーレイを設定します。
 
@@ -111,21 +111,24 @@
 
 ## マスターパターン
 
-![マスターパターン](../assets/cap-ja-auto/FormEBSD.groupBoxMasterPattern.png)
+![マスターパターン](../assets/cap-ja-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 マスターパターンは、事前に計算する全方向の後方散乱回折強度です。**「マスターパターンを構築」** で動力学理論により計算します（**停止** で計算を中断できます）。
 
 - **2D** タブ : 半球の等面積（Lambert）投影。**半球** で投影する半球（+Z / −Z）を選びます。
-- **3D** タブ : 強度をマッピングした球。マウスで回転でき、右上のインセットに結晶軸（a/b/c）が同期表示されます。**「結晶軸のラベル」** / **「結晶軸の3D表示」** で軸ラベル・軸矢印の表示を切り替え、**「指定軸から投影」** で隣に入力した晶帯軸 \([uvw]\) 方向から眺めます。
+- **3D** タブ : 強度をマッピングした球。マウスで回転でき、左上のインセットに結晶軸（a/b/c）が同期表示されます。**「結晶軸のラベル」** / **「結晶軸の3D表示」** で軸ラベル・軸矢印の表示を切り替え、**「指定軸から投影」** で隣に入力した晶帯軸 \([uvw]\) 方向から眺めます。
 - **Energy / Depth** スライダー : プレビューするエネルギー・深さスライスを選択します。
 - いずれの図も **コピー** でクリップボードへコピーできます。
+- **動画を保存**（**3D** タブ） : 球面マスターパターンが回転する動画（MP4）を保存します。回転方向・速度・長さ・fps・品質などは、[結晶構造ビューア](5-structure-viewer.md) と同じ「Movie setting」ダイアログで指定します。回転するのはこの3D表示だけで、結晶方位（メインウィンドウのオイラー角）は変わりません。
+
+![マスターパターンの3Dタブ](../assets/cap-ja-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### 動力学計算のパラメータ
 
-![動力学計算のパラメータ](../assets/cap-ja-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![動力学計算のパラメータ](../assets/cap-ja-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **計算に取り入れる波の数** : ブロッホ波計算に取り入れる回折波（ビーム）の本数。多いほど精密ですが計算時間が増えます。
-- **グリッド** : マスターパターン格子の分解能（既定256）。
+- **グリッド** : マスターパターン格子の分解能（1辺あたりのピクセル数、64～8192。既定256）。4096・8192 は中間データに極めて大きなメモリを必要とするため（既定の 8 エネルギー × 40 深さでは 4096 で約 172 GB、8192 で約 687 GB。2048 でも約 43 GB）、エネルギー・深さの段数を大幅に減らさないと実用になりません。メモリが足りない場合は「MasterPattern failed」と表示されて計算が終了します（ReciPro 自体は動作を続けます）。
 - **エネルギー範囲**（… ～ … **ステップ** …） : 積算するエネルギー範囲とステップ（keV）。モンテカルロ結果から自動設定されます。
 - **深さ範囲**（… ～ … **ステップ** …） : 積算する深さ範囲とステップ（nm）。同じく自動設定されます。
 - **非局所吸収モデル** : 非局所形式の吸収モデルを使います。
@@ -135,7 +138,7 @@
 
 ## EBSDパターン
 
-![EBSDパターン](../assets/cap-ja-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSDパターン](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 中央パネルに、現在の結晶方位に対するEBSD（菊池バンド）パターンが表示されます。パターン上部のバーで、描画内容とコピー方法を指定します。
 
@@ -144,6 +147,9 @@
 - **実測画像** : 読み込んだ実測画像を重ねます（下記）。
 - **左右反転** : パターンとオーバーレイを左右反転します。未チェック（既定）は検出器から試料を見る向き＝EBSDカメラが記録する自然な画像です。実測画像の左右が逆の場合にのみチェックしてください。
 - **Resolution**（mm/px）・**Size (W×H)**（px） : 表示ビューの解像度とサイズ。
+- **保存** : 隣で選んだ範囲・解像度で、パターンをファイルに保存します。形式（PNG / TIFF / EMF）は保存ダイアログで選びます。
+  - **Pattern values (\*.csv)** を選ぶと、画像ではなく検出器ピクセル格子上の生の強度値を書き出します。
+  - 範囲が **検出器** で、**動力学EBSD** を表示し **実測画像** を表示していないときの TIFF は、16 bit グレースケールで書き出されます（256 階調に丸められません）。このとき **補助図形** はチェックの有無に関わらず含まれず、画素値はパターン自身の最小値～最大値を 0～65535 へ線形に割り当てたものになります（使われた最小値・最大値はステータスバーに表示されます。絶対値が必要な場合は csv を使ってください）。
 - **コピー** : 隣で選んだ範囲・形式でパターンをクリップボードにコピーします。
   - **現在の表示** はパン・ズームしたままの表示範囲を、**検出器** は検出器エリアのみをコピーします（後者では黄色い外枠が含まれず、画像は検出器の縁でちょうど終わります）。
   - **emf** は拡張メタファイルで、菊池線や指数ラベルがベクターのまま保持されます。**bmp** は全体をラスター化します。
@@ -157,7 +163,7 @@
 
 ### 実測画像
 
-![実測画像](../assets/cap-ja-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![実測画像](../assets/cap-ja-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 EBSD画像ファイル（TIFF・PNG・BMP・JPEG。16 bit TIFF はビット深度を保ったまま読み込みます）をウィンドウ上にドロップすると、実測パターンとして読み込まれます。画像は検出器エリアに、シミュレーションパターンの上・菊池線オーバーレイの下に描画されるので、シミュレーションと実測を直接見比べられます。読み込み時に検出器の **Width**・**Height** も画像サイズに合わせられます。
 

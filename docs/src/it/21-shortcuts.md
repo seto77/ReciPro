@@ -120,7 +120,7 @@ Le Informazioni di simmetria non hanno combinazioni speciali di tasti/mouse. Nel
 | Doppio clic destro sulla barra di stato | Copia un riepilogo testuale delle impostazioni correnti |
 | Doppio clic destro su un pulsante di livello attivo (Spots / Kikuchi / Debye / Scale) | Fai lampeggiare quel livello |
 | Doppio clic sinistro sullo stereogramma — finestra **TEM holder** | Imposta l'inclinazione del portacampioni su quel punto |
-| Tasti freccia — finestra **TEM holder** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**) |
+| Tasti freccia — finestra **TEM holder** | Modifica l'inclinazione del portacampioni a passi (seleziona prima **Abilita tasti freccia**; funziona con qualsiasi finestra di ReciPro in primo piano) |
 | Rilascia `.prm` / immagine — **Detector geometry**, oppure `.txt` — **Dynamic compression** | Carica quei dati |
 
 ### 8. Traiettorie elettroniche

@@ -53,7 +53,7 @@ Les plages d'énergie et de profondeur sont déterminées automatiquement aux é
 
 ### Conditions SEM & échantillon
 
-![Conditions SEM & échantillon](../assets/cap-fr-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![Conditions SEM & échantillon](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : tension d'accélération du faisceau incident (keV).
 - **Wavelength** : longueur d'onde des électrons, liée à Energy. **Unit** sélectionne Å ou nm.
@@ -61,7 +61,7 @@ Les plages d'énergie et de profondeur sont déterminées automatiquement aux é
 
 ### Géométrie EBSD
 
-![Géométrie EBSD](../assets/cap-fr-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![Géométrie EBSD](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 Le détecteur (écran phosphorescent) est un rectangle défini par un nombre de pixels et une taille de pixel.
 
@@ -73,7 +73,7 @@ Le chargement d'une image expérimentale met **Width** et **Height** à la taill
 
 La géométrie peut être inspectée dans la vue 3D de l'onglet **Géométrie**.
 
-![Géométrie 3D](../assets/cap-fr-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![Géométrie 3D](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 La plaque grise est l'échantillon, la plaque rectangulaire verte est le détecteur, et le **+Z (=beam)** violet est le faisceau incident. Les axes cristallins **a / b / c** (fixés à l'échantillon) sont également affichés. Les boutons **Vue à vol d'oiseau**, **Normale à la surface**, **Axe X (axe de rotation)** et **Axe Z (faisceau)** alignent la vue sur des directions standard. Voir [Annexe A1. Systèmes de coordonnées](appendix/a1-coordinate-system/2-diffraction.md) pour les définitions des systèmes de coordonnées.
 
@@ -81,7 +81,7 @@ La plaque grise est l'échantillon, la plaque rectangulaire verte est le détect
 
 ## Distribution BSE
 
-![Distribution BSE](../assets/cap-fr-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![Distribution BSE](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 L'onglet **Distribution BSE** affiche les distributions Monte-Carlo des électrons rétrodiffusés. Utilisez **Simuler** pour les recalculer.
 
@@ -95,7 +95,7 @@ Ces distributions sont calculées par le même moteur Monte-Carlo que [Trajectoi
 
 ## Superpositions
 
-![Superpositions](../assets/cap-fr-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![Superpositions](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 L'onglet **Superpositions** configure les annotations dessinées sur la figure EBSD.
 
@@ -111,21 +111,24 @@ L'onglet **Superpositions** configure les annotations dessinées sur la figure E
 
 ## Master pattern
 
-![Master pattern](../assets/cap-fr-auto/FormEBSD.groupBoxMasterPattern.png)
+![Master pattern](../assets/cap-fr-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 Le master pattern est l'intensité de diffraction rétrodiffusée sur toutes les directions, calculée à l'avance par la théorie dynamique avec **Créer le master pattern** (**Arrêter** interrompt le calcul en cours).
 
 - Onglet **2D** : projection équiaire (de Lambert) d'un hémisphère. **Hémisphère** sélectionne l'hémisphère projeté (+Z / −Z).
-- Onglet **3D** : une sphère sur laquelle l'intensité est mappée. Elle peut être pivotée à la souris, et un encart en haut à droite montre les axes cristallins synchronisés (a/b/c). **Étiquettes d'axes** / **Flèches d'axes** activent/désactivent les étiquettes/flèches, et **Vue selon** regarde le long de l'axe de zone [u v w] saisi à côté.
+- Onglet **3D** : une sphère sur laquelle l'intensité est mappée. Elle peut être pivotée à la souris, et un encart en haut à gauche montre les axes cristallins synchronisés (a/b/c). **Étiquettes d'axes** / **Flèches d'axes** activent/désactivent les étiquettes/flèches, et **Vue selon** regarde le long de l'axe de zone [u v w] saisi à côté.
 - Curseurs **Energy / Depth** : sélectionnent la tranche d'énergie/de profondeur à prévisualiser.
 - L'une ou l'autre vue peut être envoyée dans le presse-papiers avec **Copier**.
+- **Enregistrer la vidéo** (onglet **3D**) : enregistre une vidéo (MP4) du master pattern sphérique en rotation. La direction de rotation, la vitesse, la durée, les fps et la qualité se règlent dans la même boîte de dialogue « Movie setting » que dans le [Visualiseur de structure](5-structure-viewer.md). Seule cette vue 3D tourne ; l'orientation du cristal (les angles d'Euler de la fenêtre principale) n'est pas modifiée.
+
+![Master pattern, onglet 3D](../assets/cap-fr-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### Paramètres de simulation dynamique
 
-![Paramètres de simulation dynamique](../assets/cap-fr-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![Paramètres de simulation dynamique](../assets/cap-fr-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : nombre de faisceaux diffractés (ondes) inclus dans le calcul des ondes de Bloch. Plus d'ondes sont plus précises mais plus lentes.
-- **Grille** : résolution de la grille du master pattern (par défaut 256).
+- **Grille** : résolution de la grille du master pattern (pixels par côté, 64–8192 ; par défaut 256). 4096 et 8192 exigent une quantité de mémoire énorme pour les données intermédiaires (avec les 8 énergies × 40 profondeurs par défaut, environ 172 Go à 4096 et 687 Go à 8192 ; déjà environ 43 Go à 2048) ; il faut donc réduire fortement le nombre de pas en énergie et en profondeur pour qu'elles deviennent utilisables. Si la mémoire est insuffisante, le calcul se termine par « MasterPattern failed » (ReciPro lui-même continue de fonctionner).
 - **Energy from … to … with step of …** : plage d'énergie et pas intégrés (keV) ; déterminés automatiquement à partir du résultat Monte-Carlo.
 - **Thickness from … to … with step of …** : plage de profondeur et pas intégrés (nm) ; déterminés également automatiquement.
 - **Absorption non locale** : utiliser la forme d'absorption non locale.
@@ -135,7 +138,7 @@ Le master pattern est l'intensité de diffraction rétrodiffusée sur toutes les
 
 ## Figure EBSD
 
-![Motif EBSD](../assets/cap-fr-auto/FormEBSD.groupBoxEBSDPattern.png)
+![Motif EBSD](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientation actuelle du cristal. La barre au-dessus de la figure contrôle ce qui est dessiné et la manière dont la figure est copiée.
 
@@ -144,6 +147,9 @@ Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientat
 - **Image expérimentale** : superpose l'image expérimentale chargée (voir ci-dessous).
 - **Inverser G-D** : effectue une symétrie gauche-droite de la figure et de toutes ses superpositions. Décoché (par défaut), il s'agit de la vue depuis le détecteur vers l'échantillon, c'est-à-dire la figure telle qu'une caméra EBSD l'enregistre ; ne le cochez que si votre image expérimentale a la chiralité opposée.
 - **Resolution** (mm/px) et **Size (W×H)** (px) : résolution et taille de la vue affichée.
+- **Enregistrer** : enregistre la figure dans un fichier, selon la plage et la résolution sélectionnées à côté. Le format (PNG / TIFF / EMF) se choisit dans la boîte de dialogue d'enregistrement.
+  - **Pattern values (\*.csv)** écrit, au lieu d'une image, les intensités brutes sur la grille de pixels du détecteur.
+  - Un TIFF est écrit en niveaux de gris 16 bits (sans quantification sur 256 niveaux) lorsque la plage est **Détecteur**, que **EBSD dynamique** est affiché et que **Image expérimentale** ne l'est pas. Dans ce cas, les **Superpositions** sont omises quelle que soit leur case à cocher, et les valeurs des pixels correspondent à la figure ramenée linéairement de son propre minimum–maximum à 0–65535 (le minimum et le maximum utilisés sont indiqués dans la barre d'état ; utilisez l'export csv si des valeurs absolues sont nécessaires).
 - **Copier** : copie la figure dans le presse-papiers, selon la plage et le format sélectionnés à côté.
   - **Vue actuelle** copie la zone actuellement affichée (avec son déplacement et son zoom) ; **Détecteur** copie uniquement la zone du détecteur, auquel cas le cadre jaune est omis afin que l'image s'arrête exactement au bord du détecteur.
   - **emf** copie un métafichier amélioré (Enhanced Metafile) en conservant les lignes de Kikuchi et les étiquettes d'indices sous forme vectorielle ; **bmp** rastérise l'ensemble.
@@ -157,7 +163,7 @@ Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientat
 
 ### Image expérimentale
 
-![Image expérimentale](../assets/cap-fr-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![Image expérimentale](../assets/cap-fr-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 Déposez un fichier image EBSD (TIFF, PNG, BMP ou JPEG ; les TIFF 16 bits sont lus en pleine profondeur) n'importe où sur la fenêtre pour le charger comme figure expérimentale. Il est dessiné sur la zone du détecteur — au-dessus de la figure simulée et sous les superpositions de lignes de Kikuchi — de sorte que la simulation peut être comparée directement à la mesure. Le chargement met aussi **Width** et **Height** du détecteur à la taille de l'image.
 

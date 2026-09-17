@@ -53,7 +53,7 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 ### SEM & sample conditions
 
-![SEM & sample conditions](../assets/cap-en-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![SEM & sample conditions](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : accelerating voltage of the incident beam (keV).
 - **Wavelength** : electron wavelength, linked to Energy. **Unit** selects Å or nm.
@@ -61,7 +61,7 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 ### EBSD geometry
 
-![EBSD geometry](../assets/cap-en-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![EBSD geometry](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 The detector (phosphor screen) is a rectangle defined by a pixel count and a pixel size.
 
@@ -73,7 +73,7 @@ Loading an experimental image sets **Width** and **Height** to the image size, s
 
 The geometry can be inspected in the 3D view on the **Geometry** tab.
 
-![3D geometry](../assets/cap-en-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![3D geometry](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 The grey plate is the sample, the green rectangular slab is the detector, and the purple **+Z (=beam)** is the incident beam. The crystal **a / b / c** axes (fixed to the sample) are also shown. The buttons **Bird's-Eye View**, **Surface Normal**, **X Axis (Rotation Axis)** and **Z Axis (Beam Direction)** snap the view to standard directions. See [Appendix A1. Coordinate Systems](appendix/a1-coordinate-system/2-diffraction.md) for the coordinate-system definitions.
 
@@ -81,7 +81,7 @@ The grey plate is the sample, the green rectangular slab is the detector, and th
 
 ## BSE Distribution
 
-![BSE Distribution](../assets/cap-en-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![BSE Distribution](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them.
 
@@ -95,7 +95,7 @@ These distributions are computed by the same Monte-Carlo engine as [Electron tra
 
 ## Overlays
 
-![Overlays](../assets/cap-en-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![Overlays](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 
@@ -111,21 +111,24 @@ The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 
 ## Master pattern
 
-![Master pattern](../assets/cap-en-auto/FormEBSD.groupBoxMasterPattern.png)
+![Master pattern](../assets/cap-en-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 The master pattern is the backscatter diffraction intensity over all directions, computed in advance by the dynamical theory with **Build Master Pattern** (**Stop** interrupts the running calculation).
 
 - **2D** tab : equal-area (Lambert) projection of a hemisphere. **Hemisphere** selects the projected hemisphere (+Z / −Z).
-- **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-right shows the synchronised crystal axes (a/b/c). **Axis Labels** / **Axis arrows** toggle the labels/arrows, and **View Along** looks down the zone axis [u v w] entered next to it.
+- **3D** tab : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-left shows the synchronised crystal axes (a/b/c). **Axis Labels** / **Axis arrows** toggle the labels/arrows, and **View Along** looks down the zone axis [u v w] entered next to it.
 - **Energy / Depth** sliders : select the energy/depth slice to preview.
 - Either view can be sent to the clipboard with **Copy**.
+- **Save movie** (**3D** tab) : saves a movie (MP4) of the spherical master pattern rotating. The rotation direction, speed, duration, fps and quality are set in the same "Movie setting" dialog as in the [Structure Viewer](5-structure-viewer.md). Only this 3D view rotates; the crystal orientation (the Euler angles in the main window) is not changed.
+
+![Master pattern, 3D tab](../assets/cap-en-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### Dynamical simulation parameters
 
-![Dynamical simulation parameters](../assets/cap-en-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![Dynamical simulation parameters](../assets/cap-en-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : number of diffracted beams (waves) included in the Bloch-wave calculation. More waves are more accurate but slower.
-- **Grid** : resolution of the master-pattern grid (default 256).
+- **Grid** : resolution of the master-pattern grid (pixels per side, 64–8192; default 256). 4096 and 8192 need an enormous amount of memory for the intermediate data (with the default 8 energies × 40 depths, about 172 GB at 4096 and 687 GB at 8192; already about 43 GB at 2048), so the numbers of energy and depth steps must be reduced drastically before they become usable. If memory runs out, the build ends with "MasterPattern failed" (ReciPro itself keeps running).
 - **Energy from … to … with step of …** : energy range and step integrated over (keV); set automatically from the Monte-Carlo result.
 - **Thickness from … to … with step of …** : depth range and step integrated over (nm); likewise set automatically.
 - **Use non-local absorption model** : use the non-local absorption form.
@@ -135,7 +138,7 @@ The master pattern is the backscatter diffraction intensity over all directions,
 
 ## EBSD pattern
 
-![EBSD pattern](../assets/cap-en-auto/FormEBSD.groupBoxEBSDPattern.png)
+![EBSD pattern](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal orientation. The bar above the pattern controls what is drawn and how it is copied.
 
@@ -144,6 +147,9 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 - **Experimental image** : overlays the loaded experimental image (see below).
 - **Flip L-R** : mirrors the pattern and all its overlays left-right. Unchecked (the default) is the view from the detector towards the sample, i.e. the pattern as an EBSD camera records it; check it only if your experimental image has the opposite handedness.
 - **Resolution** (mm/px) and **Size (W×H)** (px) : resolution and size of the displayed view.
+- **Save** : saves the pattern to a file, using the range and resolution selected next to it. The format (PNG / TIFF / EMF) is chosen in the save dialog.
+  - **Pattern values (\*.csv)** writes the raw intensities on the detector pixel grid instead of an image.
+  - A TIFF is written as 16-bit grayscale (not quantised to 256 levels) when the range is **Detector**, **Dynamical EBSD** is shown and **Experimental image** is not. In that case the **Overlays** are left out whatever their checkbox says, and the pixel values are the pattern mapped linearly from its own minimum–maximum onto 0–65535 (the minimum and maximum used are reported in the status bar; use the csv export when absolute values are needed).
 - **Copy** : copies the pattern to the clipboard, using the range and format selected next to it.
   - **Current** copies the area currently shown (as panned and zoomed); **Detector** copies only the detector area, in which case the yellow frame is left out so the image ends exactly at the detector edge.
   - **emf** copies an Enhanced Metafile, keeping the Kikuchi lines and index labels as vectors; **bmp** rasterizes everything.
@@ -157,7 +163,7 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 
 ### Experimental image
 
-![Experimental image](../assets/cap-en-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![Experimental image](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 Drop an EBSD image file (TIFF, PNG, BMP or JPEG; 16-bit TIFF is read at full depth) anywhere on the window to load it as the experimental pattern. It is drawn over the detector area — above the simulated pattern and below the Kikuchi-line overlays — so the simulation can be compared with the measurement directly. Loading an image also sets the detector **Width** and **Height** to the image size.
 

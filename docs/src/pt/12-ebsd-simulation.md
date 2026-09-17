@@ -53,7 +53,7 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 ### Condições do SEM & da amostra
 
-![Condições do SEM & da amostra](../assets/cap-pt-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
+![Condições do SEM & da amostra](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
 - **Energy** : tensão de aceleração do feixe incidente (keV).
 - **Wavelength** : comprimento de onda do elétron, vinculado a Energy. **Unit** seleciona Å ou nm.
@@ -61,7 +61,7 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 ### Geometria EBSD
 
-![Geometria EBSD](../assets/cap-pt-auto/FormEBSD.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
+![Geometria EBSD](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxEBSDGeometry.png)
 
 O detector (tela de fósforo) é um retângulo definido por uma contagem de pixels e um tamanho de pixel.
 
@@ -73,7 +73,7 @@ Ao carregar uma imagem experimental, **Width** e **Height** passam a ser o taman
 
 A geometria pode ser inspecionada na vista 3D na aba **Geometria**.
 
-![Geometria 3D](../assets/cap-pt-auto/FormEBSD.tabControlSettings.tabPageGeometry.panelGeometry.png)
+![Geometria 3D](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.panelGeometry.png)
 
 A placa cinza é a amostra, a placa retangular verde é o detector e o **+Z (=beam)** roxo é o feixe incidente. Os eixos cristalinos **a / b / c** (fixos à amostra) também são mostrados. Os botões **Vista aérea**, **Normal à superfície**, **Eixo X (eixo de rotação)** e **Eixo Z (direção do feixe)** alinham a vista a direções padrão. Consulte o [Apêndice A1. Sistemas de coordenadas](appendix/a1-coordinate-system/2-diffraction.md) para as definições dos sistemas de coordenadas.
 
@@ -81,7 +81,7 @@ A placa cinza é a amostra, a placa retangular verde é o detector e o **+Z (=be
 
 ## Distribuição BSE
 
-![Distribuição BSE](../assets/cap-pt-auto/FormEBSD.tabControlSettings.tabPageBseDistribution.png)
+![Distribuição BSE](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
 A aba **Distribuição BSE** mostra as distribuições de Monte Carlo dos elétrons retroespalhados. Use **Simular** para recalculá-las.
 
@@ -95,7 +95,7 @@ Essas distribuições são calculadas pelo mesmo mecanismo de Monte Carlo das [T
 
 ## Sobreposições
 
-![Sobreposições](../assets/cap-pt-auto/FormEBSD.tabControlSettings.tabPageOverlays.png)
+![Sobreposições](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageOverlays.png)
 
 A aba **Sobreposições** configura as anotações desenhadas sobre o padrão EBSD.
 
@@ -111,21 +111,24 @@ A aba **Sobreposições** configura as anotações desenhadas sobre o padrão EB
 
 ## Master pattern
 
-![Master pattern](../assets/cap-pt-auto/FormEBSD.groupBoxMasterPattern.png)
+![Master pattern](../assets/cap-pt-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.png)
 
 O master pattern é a intensidade da difração retroespalhada em todas as direções, calculada antecipadamente pela teoria dinâmica com **Criar master pattern** (**Parar** interrompe o cálculo em execução).
 
 - Aba **2D** : projeção de área igual (de Lambert) de um hemisfério. **Hemisfério** seleciona o hemisfério projetado (+Z / −Z).
-- Aba **3D** : uma esfera com a intensidade mapeada sobre ela. Pode ser rotacionada com o mouse, e um quadro no canto superior direito mostra os eixos cristalinos sincronizados (a/b/c). **Rótulos dos eixos** / **Setas dos eixos** alternam os rótulos/setas, e **Ver na direção** olha ao longo do eixo de zona [u v w] informado ao lado.
+- Aba **3D** : uma esfera com a intensidade mapeada sobre ela. Pode ser rotacionada com o mouse, e um quadro no canto superior esquerdo mostra os eixos cristalinos sincronizados (a/b/c). **Rótulos dos eixos** / **Setas dos eixos** alternam os rótulos/setas, e **Ver na direção** olha ao longo do eixo de zona [u v w] informado ao lado.
 - Controles deslizantes **Energy / Depth** : selecionam a fatia de energia/profundidade da pré-visualização.
 - Qualquer das vistas pode ser enviada para a área de transferência com **Copiar**.
+- **Salvar vídeo** (aba **3D**) : salva um vídeo (MP4) do master pattern esférico em rotação. A direção de rotação, a velocidade, a duração, os fps e a qualidade são definidos na mesma caixa de diálogo "Movie setting" do [Visualizador de estrutura](5-structure-viewer.md). Apenas esta vista 3D gira; a orientação do cristal (os ângulos de Euler da janela principal) não é alterada.
+
+![Master pattern, aba 3D](../assets/cap-pt-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.tabControlMasterPattern.tabPageMasterPattern3D.png)
 
 ### Parâmetros de simulação dinâmica
 
-![Parâmetros de simulação dinâmica](../assets/cap-pt-auto/FormEBSD.groupBoxMasterPattern.groupBoxSimulationParameters.png)
+![Parâmetros de simulação dinâmica](../assets/cap-pt-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
 - **Number of diffracted waves** : número de feixes difratados (ondas) incluídos no cálculo de ondas de Bloch. Mais ondas são mais precisas, mas mais lentas.
-- **Grade** : resolução da grade do master pattern (padrão 256).
+- **Grade** : resolução da grade do master pattern (pixels por lado, 64–8192; padrão 256). 4096 e 8192 exigem uma quantidade enorme de memória para os dados intermediários (com as 8 energias × 40 profundidades padrão, cerca de 172 GB em 4096 e 687 GB em 8192; já cerca de 43 GB em 2048), de modo que o número de passos de energia e profundidade precisa ser reduzido drasticamente para que se tornem utilizáveis. Se a memória se esgotar, o cálculo termina com "MasterPattern failed" (o ReciPro continua em execução).
 - **Energy from … to … with step of …** : faixa de energia e passo integrados (keV); definidos automaticamente a partir do resultado de Monte Carlo.
 - **Thickness from … to … with step of …** : faixa de profundidade e passo integrados (nm); também definidos automaticamente.
 - **Absorção não local** : usar a forma de absorção não local.
@@ -135,7 +138,7 @@ O master pattern é a intensidade da difração retroespalhada em todas as dire�
 
 ## Padrão EBSD
 
-![Padrão EBSD](../assets/cap-pt-auto/FormEBSD.groupBoxEBSDPattern.png)
+![Padrão EBSD](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.png)
 
 O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientação atual do cristal. A barra acima do padrão controla o que é desenhado e como é copiado.
 
@@ -144,6 +147,9 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 - **Imagem experimental** : sobrepõe a imagem experimental carregada (veja abaixo).
 - **Inverter E-D** : espelha o padrão e todas as suas sobreposições da esquerda para a direita. Desmarcado (padrão) é a vista do detector em direção à amostra, isto é, o padrão como uma câmera EBSD o registra; marque-o apenas se a sua imagem experimental tiver a quiralidade oposta.
 - **Resolution** (mm/px) e **Size (W×H)** (px) : resolução e tamanho da vista exibida.
+- **Salvar** : salva o padrão em um arquivo, usando a faixa e a resolução selecionadas ao lado. O formato (PNG / TIFF / EMF) é escolhido na caixa de diálogo de salvamento.
+  - **Pattern values (\*.csv)** grava, em vez de uma imagem, as intensidades brutas na grade de pixels do detector.
+  - Um TIFF é gravado em escala de cinza de 16 bits (sem quantização para 256 níveis) quando a faixa é **Detector**, **EBSD dinâmico** está exibido e **Imagem experimental** não. Nesse caso as **Sobreposições** são omitidas independentemente da caixa de seleção, e os valores de pixel são o padrão mapeado linearmente do seu próprio mínimo–máximo para 0–65535 (o mínimo e o máximo usados são informados na barra de status; use a exportação csv quando precisar de valores absolutos).
 - **Copiar** : copia o padrão para a área de transferência, usando a faixa e o formato selecionados ao lado.
   - **Vista atual** copia a área exibida no momento (com o deslocamento e o zoom atuais); **Detector** copia apenas a área do detector, caso em que o contorno amarelo é omitido para que a imagem termine exatamente na borda do detector.
   - **emf** copia um Enhanced Metafile, mantendo as linhas de Kikuchi e os rótulos de índice como vetores; **bmp** rasteriza tudo.
@@ -157,7 +163,7 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 
 ### Imagem experimental
 
-![Imagem experimental](../assets/cap-pt-auto/FormEBSD.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
+![Imagem experimental](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.groupBoxEBSDPattern.tabControlPatternSettings.tabPageExperimentalImage.png)
 
 Solte um arquivo de imagem EBSD (TIFF, PNG, BMP ou JPEG; TIFF de 16 bits é lido em profundidade total) em qualquer ponto da janela para carregá-lo como padrão experimental. Ele é desenhado sobre a área do detector — acima do padrão simulado e abaixo das sobreposições de linhas de Kikuchi —, de modo que a simulação possa ser comparada diretamente com a medida. O carregamento também define **Width** e **Height** do detector com o tamanho da imagem.
 
