@@ -3763,6 +3763,27 @@ public partial class FormEBSD : FormBase
     #endregion
 
     #endregion
+
+    #region マスターパターンの動画を生成し保存
+    private void buttonSaveMovie_Click(object sender, EventArgs e)
+    {
+        //260917Cl 追加: MasterPattern3D の視点は FormMain の結晶方位とは独立 (glControl の WorldMatrix) なので、FormMovie の回転先を差し替える
+        if (glControlMasterPattern3D == null || masterPattern3DCacheGridSize <= 0)
+        {
+            toolStripStatusLabelSummary.Text = "No master pattern to record. Build or load a master pattern first.";
+            return;
+        }
+        //WorldMatrixEx は結晶方位行列の転置 (FormStructureViewer.Draw と同じ規約)
+        FormMain.FormMovie.Execute(glControlMasterPattern3D, this,
+            () => glControlMasterPattern3D.WorldMatrixEx.Transpose(),
+            (axis, angle) =>
+            {
+                glControlMasterPattern3D.WorldMatrixEx = (Matrix3D.Rot(axis.Normarize(), angle) * glControlMasterPattern3D.WorldMatrixEx.Transpose()).Transpose();
+                SyncMasterPattern3DAxesWorldMatrix(); //WorldMatrixEx の setter は WorldMatrixChanged を発火しないので axes inset を明示的に同期
+            });
+    }
+    #endregion
+
 }
 
 

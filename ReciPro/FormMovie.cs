@@ -35,7 +35,13 @@ public partial class FormMovie : FormBase
     public Vector3DBase B => FormMain.Crystal.B_Axis;
     public Vector3DBase C => FormMain.Crystal.C_Axis;
 
-    public Matrix3D Rot => FormMain.Crystal.RotationMatrix;
+    //public Matrix3D Rot => FormMain.Crystal.RotationMatrix; // 260917Cl 変更前: 常に FormMain の結晶方位を参照していた
+    public Matrix3D Rot => RotationGetter?.Invoke() ?? FormMain.Crystal.RotationMatrix; // 260917Cl
+
+    /// <summary>260917Cl 追加: 呼び出し元が FormMain の結晶方位とは独立した視点を持つ場合 (FormEBSD の MasterPattern3D など) に、現在の方位を返す。null なら FormMain の結晶方位</summary>
+    public Func<Matrix3D> RotationGetter;
+    /// <summary>260917Cl 追加: 同上の場合に、(正規化前の回転軸, 回転角 rad) を受けて視点を回す。null なら FormMain.Rotate</summary>
+    public Action<Vector3DBase, double> RotateAction;
 
     //260530Cl Media Foundation 移行で不要: private static bool ffmpegLoaded = false;
     private bool encoding = false; //260405Cl 追加: エンコード中フラグ
@@ -153,6 +159,7 @@ public partial class FormMovie : FormBase
             var (transU, transV, transW) = indexControl.Values; // 260703Cl ループ不変の GUI 値は事前に読む (quality 等の hoist と同じ流儀)
             var translationSpeed = TranslationSpeed; // 260703Cl
             var duration = Duration; // 260703Cl
+            Action<Vector3DBase, double> rotate = RotateAction ?? FormMain.Rotate; // 260917Cl 回転先 (既定は FormMain の結晶方位) もループ前に 1 回だけ決める
             var frameCount = Math.Max(1, (int)Math.Ceiling(duration * framerate)); // (260629Ch)
             if (IncludeFinalFrame)
                 frameCount++; // (260629Ch) t = Duration の終了姿勢を最後に追加する
@@ -208,7 +215,8 @@ public partial class FormMovie : FormBase
                     }
                     //else // (260629Ch) 変更前: Translation が ON のときは回転しなかった
                     if (rotateMovie) // (260629Ch)
-                        FormMain.Rotate(Direction, Speed * Math.PI * frameSeconds / 180.0); // (260629Ch)
+                        //FormMain.Rotate(Direction, Speed * Math.PI * frameSeconds / 180.0); // (260629Ch) → 260917Cl 回転先を差し替え可能に
+                        rotate(Direction, Speed * Math.PI * frameSeconds / 180.0); // 260917Cl
                 }
             }
             catch (Exception ex) // 260703Cl 追加: キャプチャ失敗時はフォームを再有効化して復帰する (従来は例外でフォームが無効のまま残った)
@@ -283,11 +291,14 @@ public partial class FormMovie : FormBase
 
     private void buttonCancel_Click(object sender, EventArgs e) => Visible = false;
 
-    public void Execute(Control target, Form caller)
+    //public void Execute(Control target, Form caller) // 260917Cl 変更前
+    public void Execute(Control target, Form caller, Func<Matrix3D> rotationGetter = null, Action<Vector3DBase, double> rotateAction = null) // 260917Cl 独立した視点を回す呼び出し元のために引数追加
     {
         if (encoding) return; //260405Cl エンコード中は開かない
         Target = target;
         Caller = caller;
+        RotationGetter = rotationGetter; // 260917Cl 下の SetTranslationModeAvailability が Direction を再計算するので、その前に設定する
+        RotateAction = rotateAction; // 260917Cl
         Location = new Point(caller.Location.X + 10, caller.Location.Y + 10);
         TopMost = true;
 
@@ -303,6 +314,8 @@ public partial class FormMovie : FormBase
         Target = null;
         Func = func;
         Caller = caller;
+        RotationGetter = null; // 260917Cl 前回の呼び出し元の差し替えを残さない
+        RotateAction = null; // 260917Cl
         Location = new Point(caller.Location.X + 10, caller.Location.Y + 10);
         TopMost = true;
         SetTranslationModeAvailability(false); // (260628Ch)

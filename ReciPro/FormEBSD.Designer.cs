@@ -122,7 +122,7 @@
             labelBrightnessMin = new System.Windows.Forms.Label();
             labelBrightness = new System.Windows.Forms.Label();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
-            buttonSaveImage = new System.Windows.Forms.Button(); // 260811Cl 追加
+            buttonSaveImage = new System.Windows.Forms.Button();
             buttonCopyImage = new System.Windows.Forms.Button();
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
@@ -180,6 +180,7 @@
             numericBoxXofDet = new NumericBox();
             numericBoxResolution = new NumericBox();
             sizeControl = new SizeControl();
+            buttonSaveMovie = new System.Windows.Forms.Button();
             panelGeometry = new System.Windows.Forms.Panel();
             flowLayoutPanelViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             graphControlDepthProfile = new GraphControl();
@@ -254,9 +255,9 @@
             flowLayoutPanelViewSettings = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelResolutionFlip = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelShowCheckBoxes = new System.Windows.Forms.FlowLayoutPanel();
-            panelSpacerLeft = new System.Windows.Forms.Panel();
-            panelSpacerRight = new System.Windows.Forms.Panel();
             panelSpacerBottom = new System.Windows.Forms.Panel();
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).BeginInit();
@@ -333,6 +334,14 @@
             flowLayoutPanelViewSettings.SuspendLayout();
             flowLayoutPanelResolutionFlip.SuspendLayout();
             flowLayoutPanelShowCheckBoxes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             SuspendLayout();
             // 
             // toolTip
@@ -806,15 +815,15 @@
             checkBoxShowOverlays.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
             // buttonSaveImage
-            //
+            // 
             resources.ApplyResources(buttonSaveImage, "buttonSaveImage");
             buttonSaveImage.Name = "buttonSaveImage";
             toolTip.SetToolTip(buttonSaveImage, resources.GetString("buttonSaveImage.ToolTip"));
             buttonSaveImage.UseVisualStyleBackColor = true;
             buttonSaveImage.Click += buttonSaveImage_Click;
-            //
+            // 
             // buttonCopyImage
-            //
+            // 
             resources.ApplyResources(buttonCopyImage, "buttonCopyImage");
             buttonCopyImage.Name = "buttonCopyImage";
             toolTip.SetToolTip(buttonCopyImage, resources.GetString("buttonCopyImage.ToolTip"));
@@ -1334,17 +1343,23 @@
             toolTip.SetToolTip(sizeControl, resources.GetString("sizeControl.ToolTip"));
             sizeControl.ValueChanged += sizeControl_ValueChanged;
             // 
+            // buttonSaveMovie
+            // 
+            resources.ApplyResources(buttonSaveMovie, "buttonSaveMovie");
+            buttonSaveMovie.Name = "buttonSaveMovie";
+            toolTip.SetToolTip(buttonSaveMovie, resources.GetString("buttonSaveMovie.ToolTip"));
+            buttonSaveMovie.UseVisualStyleBackColor = true;
+            buttonSaveMovie.Click += buttonSaveMovie_Click;
+            // 
             // panelGeometry
             // 
             captureExtender.SetCapture(panelGeometry, true);
             resources.ApplyResources(panelGeometry, "panelGeometry");
-            toolTip.SetToolTip(panelGeometry, resources.GetString("panelGeometry.ToolTip"));
             panelGeometry.Name = "panelGeometry";
             // 
             // flowLayoutPanelViewAlong
             // 
             resources.ApplyResources(flowLayoutPanelViewAlong, "flowLayoutPanelViewAlong");
-            toolTip.SetToolTip(flowLayoutPanelViewAlong, resources.GetString("flowLayoutPanelViewAlong.ToolTip"));
             flowLayoutPanelViewAlong.Controls.Add(buttonViewQuarter);
             flowLayoutPanelViewAlong.Controls.Add(buttonFromX);
             flowLayoutPanelViewAlong.Controls.Add(buttonViewFromSurfaceNormal);
@@ -1354,19 +1369,16 @@
             // graphControlDepthProfile
             // 
             resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
-            toolTip.SetToolTip(graphControlDepthProfile, resources.GetString("graphControlDepthProfile.ToolTip"));
             graphControlDepthProfile.Name = "graphControlDepthProfile";
             // 
             // poleFigureControl
             // 
             resources.ApplyResources(poleFigureControl, "poleFigureControl");
-            toolTip.SetToolTip(poleFigureControl, resources.GetString("poleFigureControl.ToolTip"));
             poleFigureControl.Name = "poleFigureControl";
             // 
             // graphControlEnergyProfile
             // 
             resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
-            toolTip.SetToolTip(graphControlEnergyProfile, resources.GetString("graphControlEnergyProfile.ToolTip"));
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
             // 
             // graphicsBox
@@ -1375,7 +1387,6 @@
             graphicsBox.BackColor = System.Drawing.Color.Transparent;
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(graphicsBox, "graphicsBox");
-            toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 9.75F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
@@ -1390,7 +1401,6 @@
             // flowLayoutPanelColorScale
             // 
             resources.ApplyResources(flowLayoutPanelColorScale, "flowLayoutPanelColorScale");
-            toolTip.SetToolTip(flowLayoutPanelColorScale, resources.GetString("flowLayoutPanelColorScale.ToolTip"));
             flowLayoutPanelColorScale.Controls.Add(labelPolarity);
             flowLayoutPanelColorScale.Controls.Add(comboBoxGradient);
             flowLayoutPanelColorScale.Controls.Add(labelColor);
@@ -1400,7 +1410,6 @@
             // flowLayoutPanelBrightness
             // 
             resources.ApplyResources(flowLayoutPanelBrightness, "flowLayoutPanelBrightness");
-            toolTip.SetToolTip(flowLayoutPanelBrightness, resources.GetString("flowLayoutPanelBrightness.ToolTip"));
             flowLayoutPanelBrightness.Controls.Add(labelBrightness);
             flowLayoutPanelBrightness.Controls.Add(labelBrightnessMin);
             flowLayoutPanelBrightness.Controls.Add(trackBarIntensityBrightnessMin);
@@ -1411,7 +1420,6 @@
             // flowLayoutPanelOutputRange
             // 
             resources.ApplyResources(flowLayoutPanelOutputRange, "flowLayoutPanelOutputRange");
-            toolTip.SetToolTip(flowLayoutPanelOutputRange, resources.GetString("flowLayoutPanelOutputRange.ToolTip"));
             flowLayoutPanelOutputRange.Controls.Add(numericBoxEnergy);
             flowLayoutPanelOutputRange.Controls.Add(trackBarOutputEnergy);
             flowLayoutPanelOutputRange.Controls.Add(numericBoxDepth);
@@ -1422,7 +1430,6 @@
             // 
             flowLayoutPanelWithBseDistribution.Controls.Add(checkBoxWithBSEDistribution);
             resources.ApplyResources(flowLayoutPanelWithBseDistribution, "flowLayoutPanelWithBseDistribution");
-            toolTip.SetToolTip(flowLayoutPanelWithBseDistribution, resources.GetString("flowLayoutPanelWithBseDistribution.ToolTip"));
             flowLayoutPanelWithBseDistribution.Name = "flowLayoutPanelWithBseDistribution";
             // 
             // tabControlSettings
@@ -1431,7 +1438,6 @@
             tabControlSettings.Controls.Add(tabPageBseDistribution);
             tabControlSettings.Controls.Add(tabPageOverlays);
             resources.ApplyResources(tabControlSettings, "tabControlSettings");
-            toolTip.SetToolTip(tabControlSettings, resources.GetString("tabControlSettings.ToolTip"));
             tabControlSettings.HotTrack = true;
             tabControlSettings.Multiline = true;
             tabControlSettings.Name = "tabControlSettings";
@@ -1445,13 +1451,11 @@
             tabPageGeometry.Controls.Add(groupBoxSampleCondition);
             tabPageGeometry.Controls.Add(flowLayoutPanelViewAlong);
             resources.ApplyResources(tabPageGeometry, "tabPageGeometry");
-            toolTip.SetToolTip(tabPageGeometry, resources.GetString("tabPageGeometry.ToolTip"));
             tabPageGeometry.Name = "tabPageGeometry";
             // 
             // groupBoxEBSDGeometry
             // 
             resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
-            toolTip.SetToolTip(groupBoxEBSDGeometry, resources.GetString("groupBoxEBSDGeometry.ToolTip"));
             captureExtender.SetCapture(groupBoxEBSDGeometry, true);
             groupBoxEBSDGeometry.Controls.Add(flowLayoutPanelDetectorGeometry);
             groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
@@ -1460,7 +1464,6 @@
             // flowLayoutPanelDetectorGeometry
             // 
             resources.ApplyResources(flowLayoutPanelDetectorGeometry, "flowLayoutPanelDetectorGeometry");
-            toolTip.SetToolTip(flowLayoutPanelDetectorGeometry, resources.GetString("flowLayoutPanelDetectorGeometry.ToolTip"));
             flowLayoutPanelDetectorGeometry.Controls.Add(flowLayoutPanelDetectorSizeTilt);
             flowLayoutPanelDetectorGeometry.Controls.Add(flowLayoutPanelDetectorPosition);
             flowLayoutPanelDetectorGeometry.Name = "flowLayoutPanelDetectorGeometry";
@@ -1468,7 +1471,6 @@
             // flowLayoutPanelDetectorSizeTilt
             // 
             resources.ApplyResources(flowLayoutPanelDetectorSizeTilt, "flowLayoutPanelDetectorSizeTilt");
-            toolTip.SetToolTip(flowLayoutPanelDetectorSizeTilt, resources.GetString("flowLayoutPanelDetectorSizeTilt.ToolTip"));
             flowLayoutPanelDetectorSizeTilt.Controls.Add(labelDetectorSizeTilt);
             flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetTilt);
             flowLayoutPanelDetectorSizeTilt.Controls.Add(numericBoxDetWidth);
@@ -1480,7 +1482,6 @@
             // flowLayoutPanelDetectorPosition
             // 
             resources.ApplyResources(flowLayoutPanelDetectorPosition, "flowLayoutPanelDetectorPosition");
-            toolTip.SetToolTip(flowLayoutPanelDetectorPosition, resources.GetString("flowLayoutPanelDetectorPosition.ToolTip"));
             flowLayoutPanelDetectorPosition.Controls.Add(labelDetectorCenter);
             flowLayoutPanelDetectorPosition.Controls.Add(numericBoxXofDet);
             flowLayoutPanelDetectorPosition.Controls.Add(numericBoxYofDet);
@@ -1490,7 +1491,6 @@
             // groupBoxSampleCondition
             // 
             resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
-            toolTip.SetToolTip(groupBoxSampleCondition, resources.GetString("groupBoxSampleCondition.ToolTip"));
             captureExtender.SetCapture(groupBoxSampleCondition, true);
             groupBoxSampleCondition.Controls.Add(flowLayoutPanelSampleCondition);
             groupBoxSampleCondition.Name = "groupBoxSampleCondition";
@@ -1499,7 +1499,6 @@
             // flowLayoutPanelSampleCondition
             // 
             resources.ApplyResources(flowLayoutPanelSampleCondition, "flowLayoutPanelSampleCondition");
-            toolTip.SetToolTip(flowLayoutPanelSampleCondition, resources.GetString("flowLayoutPanelSampleCondition.ToolTip"));
             flowLayoutPanelSampleCondition.Controls.Add(waveLengthControl);
             flowLayoutPanelSampleCondition.Controls.Add(numericBoxSampleTilt);
             flowLayoutPanelSampleCondition.Name = "flowLayoutPanelSampleCondition";
@@ -1514,13 +1513,11 @@
             tabPageBseDistribution.Controls.Add(checkBoxDrawAxesInStereonet);
             tabPageBseDistribution.Controls.Add(poleFigureControl);
             resources.ApplyResources(tabPageBseDistribution, "tabPageBseDistribution");
-            toolTip.SetToolTip(tabPageBseDistribution, resources.GetString("tabPageBseDistribution.ToolTip"));
             tabPageBseDistribution.Name = "tabPageBseDistribution";
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
-            toolTip.SetToolTip(tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             tableLayoutPanel1.Controls.Add(graphControlDepthProfile, 0, 3);
             tableLayoutPanel1.Controls.Add(graphControlEnergyProfile, 0, 1);
             tableLayoutPanel1.Controls.Add(labelBseDeltaE, 0, 0);
@@ -1533,7 +1530,6 @@
             captureExtender.SetCapture(tabPageOverlays, true);
             tabPageOverlays.Controls.Add(flowLayoutPanelOverlays);
             resources.ApplyResources(tabPageOverlays, "tabPageOverlays");
-            toolTip.SetToolTip(tabPageOverlays, resources.GetString("tabPageOverlays.ToolTip"));
             tabPageOverlays.Name = "tabPageOverlays";
             // 
             // flowLayoutPanelOverlays
@@ -1548,13 +1544,11 @@
             flowLayoutPanelOverlays.Controls.Add(checkBoxShowZoneAxisIndices);
             flowLayoutPanelOverlays.Controls.Add(groupBoxTextSettings);
             resources.ApplyResources(flowLayoutPanelOverlays, "flowLayoutPanelOverlays");
-            toolTip.SetToolTip(flowLayoutPanelOverlays, resources.GetString("flowLayoutPanelOverlays.ToolTip"));
             flowLayoutPanelOverlays.Name = "flowLayoutPanelOverlays";
             // 
             // flowLayoutPanelDetectorOutline
             // 
             resources.ApplyResources(flowLayoutPanelDetectorOutline, "flowLayoutPanelDetectorOutline");
-            toolTip.SetToolTip(flowLayoutPanelDetectorOutline, resources.GetString("flowLayoutPanelDetectorOutline.ToolTip"));
             flowLayoutPanelDetectorOutline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowLayoutPanelDetectorOutline.Controls.Add(checkBoxShowCircle);
             flowLayoutPanelDetectorOutline.Controls.Add(checkBoxShowMesh);
@@ -1563,7 +1557,6 @@
             // flowLayoutPanelKikuchiLines
             // 
             resources.ApplyResources(flowLayoutPanelKikuchiLines, "flowLayoutPanelKikuchiLines");
-            toolTip.SetToolTip(flowLayoutPanelKikuchiLines, resources.GetString("flowLayoutPanelKikuchiLines.ToolTip"));
             flowLayoutPanelKikuchiLines.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             flowLayoutPanelKikuchiLines.Controls.Add(labelLineWidth);
             flowLayoutPanelKikuchiLines.Controls.Add(trackBarLineWidth);
@@ -1574,7 +1567,6 @@
             // groupBoxLatticePlanes
             // 
             resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
-            toolTip.SetToolTip(groupBoxLatticePlanes, resources.GetString("groupBoxLatticePlanes.ToolTip"));
             groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdLength);
             groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdStructureFactor);
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
@@ -1583,7 +1575,6 @@
             // flowLayoutPanelThresholdLength
             // 
             resources.ApplyResources(flowLayoutPanelThresholdLength, "flowLayoutPanelThresholdLength");
-            toolTip.SetToolTip(flowLayoutPanelThresholdLength, resources.GetString("flowLayoutPanelThresholdLength.ToolTip"));
             flowLayoutPanelThresholdLength.Controls.Add(radioButtonKikuchiThresholdOfLength);
             flowLayoutPanelThresholdLength.Controls.Add(numericBoxKikuchiThresholdOfLength);
             flowLayoutPanelThresholdLength.Name = "flowLayoutPanelThresholdLength";
@@ -1591,7 +1582,6 @@
             // flowLayoutPanelThresholdStructureFactor
             // 
             resources.ApplyResources(flowLayoutPanelThresholdStructureFactor, "flowLayoutPanelThresholdStructureFactor");
-            toolTip.SetToolTip(flowLayoutPanelThresholdStructureFactor, resources.GetString("flowLayoutPanelThresholdStructureFactor.ToolTip"));
             flowLayoutPanelThresholdStructureFactor.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
             flowLayoutPanelThresholdStructureFactor.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
             flowLayoutPanelThresholdStructureFactor.Name = "flowLayoutPanelThresholdStructureFactor";
@@ -1600,14 +1590,12 @@
             // 
             groupBoxTextSettings.Controls.Add(flowLayoutPanelTextSettings);
             resources.ApplyResources(groupBoxTextSettings, "groupBoxTextSettings");
-            toolTip.SetToolTip(groupBoxTextSettings, resources.GetString("groupBoxTextSettings.ToolTip"));
             groupBoxTextSettings.Name = "groupBoxTextSettings";
             groupBoxTextSettings.TabStop = false;
             // 
             // flowLayoutPanelTextSettings
             // 
             resources.ApplyResources(flowLayoutPanelTextSettings, "flowLayoutPanelTextSettings");
-            toolTip.SetToolTip(flowLayoutPanelTextSettings, resources.GetString("flowLayoutPanelTextSettings.ToolTip"));
             flowLayoutPanelTextSettings.Controls.Add(labelTextSize);
             flowLayoutPanelTextSettings.Controls.Add(trackBarStrSize);
             flowLayoutPanelTextSettings.Controls.Add(colorControlString);
@@ -1616,7 +1604,6 @@
             // flowLayoutPanelExperimentalImage
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImage, "flowLayoutPanelExperimentalImage");
-            toolTip.SetToolTip(flowLayoutPanelExperimentalImage, resources.GetString("flowLayoutPanelExperimentalImage.ToolTip"));
             flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMinInt);
             flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMaxInt);
             flowLayoutPanelExperimentalImage.Name = "flowLayoutPanelExperimentalImage";
@@ -1624,7 +1611,6 @@
             // flowLayoutPanelExpMinInt
             // 
             resources.ApplyResources(flowLayoutPanelExpMinInt, "flowLayoutPanelExpMinInt");
-            toolTip.SetToolTip(flowLayoutPanelExpMinInt, resources.GetString("flowLayoutPanelExpMinInt.ToolTip"));
             flowLayoutPanelExpMinInt.Controls.Add(labelExpBrightness);
             flowLayoutPanelExpMinInt.Controls.Add(labelExpMinInt);
             flowLayoutPanelExpMinInt.Controls.Add(trackBarExpImageMinInt);
@@ -1633,7 +1619,6 @@
             // flowLayoutPanelExpMaxInt
             // 
             resources.ApplyResources(flowLayoutPanelExpMaxInt, "flowLayoutPanelExpMaxInt");
-            toolTip.SetToolTip(flowLayoutPanelExpMaxInt, resources.GetString("flowLayoutPanelExpMaxInt.ToolTip"));
             flowLayoutPanelExpMaxInt.Controls.Add(labelExpMaxInt);
             flowLayoutPanelExpMaxInt.Controls.Add(trackBarExpImageMaxInt);
             flowLayoutPanelExpMaxInt.Name = "flowLayoutPanelExpMaxInt";
@@ -1641,7 +1626,6 @@
             // flowLayoutPanelExpOpacity
             // 
             resources.ApplyResources(flowLayoutPanelExpOpacity, "flowLayoutPanelExpOpacity");
-            toolTip.SetToolTip(flowLayoutPanelExpOpacity, resources.GetString("flowLayoutPanelExpOpacity.ToolTip"));
             flowLayoutPanelExpOpacity.Controls.Add(labelExpOpacity);
             flowLayoutPanelExpOpacity.Controls.Add(trackBarExpImageOpacity);
             flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingRadon);
@@ -1651,7 +1635,6 @@
             // groupBoxSimulationParameters
             // 
             resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
-            toolTip.SetToolTip(groupBoxSimulationParameters, resources.GetString("groupBoxSimulationParameters.ToolTip"));
             captureExtender.SetCapture(groupBoxSimulationParameters, true);
             groupBoxSimulationParameters.Controls.Add(flowLayoutPanelSimulationParameters);
             groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
@@ -1660,7 +1643,6 @@
             // flowLayoutPanelSimulationParameters
             // 
             resources.ApplyResources(flowLayoutPanelSimulationParameters, "flowLayoutPanelSimulationParameters");
-            toolTip.SetToolTip(flowLayoutPanelSimulationParameters, resources.GetString("flowLayoutPanelSimulationParameters.ToolTip"));
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMaxNumOfGAndGrid);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelEnergyRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelThicknessRange);
@@ -1670,7 +1652,6 @@
             // flowLayoutPanelMaxNumOfGAndGrid
             // 
             resources.ApplyResources(flowLayoutPanelMaxNumOfGAndGrid, "flowLayoutPanelMaxNumOfGAndGrid");
-            toolTip.SetToolTip(flowLayoutPanelMaxNumOfGAndGrid, resources.GetString("flowLayoutPanelMaxNumOfGAndGrid.ToolTip"));
             flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(numericBoxMaxNumOfG);
             flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(labelMasterPatternGrid);
             flowLayoutPanelMaxNumOfGAndGrid.Controls.Add(comboBoxMasterPatternGrid);
@@ -1679,7 +1660,6 @@
             // flowLayoutPanelEnergyRange
             // 
             resources.ApplyResources(flowLayoutPanelEnergyRange, "flowLayoutPanelEnergyRange");
-            toolTip.SetToolTip(flowLayoutPanelEnergyRange, resources.GetString("flowLayoutPanelEnergyRange.ToolTip"));
             flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyStart);
             flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyEnd);
             flowLayoutPanelEnergyRange.Controls.Add(numericBoxEnergyStep);
@@ -1688,7 +1668,6 @@
             // flowLayoutPanelThicknessRange
             // 
             resources.ApplyResources(flowLayoutPanelThicknessRange, "flowLayoutPanelThicknessRange");
-            toolTip.SetToolTip(flowLayoutPanelThicknessRange, resources.GetString("flowLayoutPanelThicknessRange.ToolTip"));
             flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessStart);
             flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessEnd);
             flowLayoutPanelThicknessRange.Controls.Add(numericBoxThicknessStep);
@@ -1697,7 +1676,6 @@
             // flowLayoutPanelAbsorptionOptions
             // 
             resources.ApplyResources(flowLayoutPanelAbsorptionOptions, "flowLayoutPanelAbsorptionOptions");
-            toolTip.SetToolTip(flowLayoutPanelAbsorptionOptions, resources.GetString("flowLayoutPanelAbsorptionOptions.ToolTip"));
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxNonLocalAbsorption);
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxTDSBackground);
             flowLayoutPanelAbsorptionOptions.Name = "flowLayoutPanelAbsorptionOptions";
@@ -1705,7 +1683,6 @@
             // statusStripMain
             // 
             resources.ApplyResources(statusStripMain, "statusStripMain");
-            toolTip.SetToolTip(statusStripMain, resources.GetString("statusStripMain.ToolTip"));
             statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelProgress, toolStripStatusLabelSummary, toolStripStatusLabelDetail });
             statusStripMain.Name = "statusStripMain";
@@ -1736,7 +1713,6 @@
             scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
             scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
             resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
-            toolTip.SetToolTip(scalablePictureBoxAdvancedMasterPattern2D, resources.GetString("scalablePictureBoxAdvancedMasterPattern2D.ToolTip"));
             scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurVisible = false;
@@ -1753,7 +1729,6 @@
             // flowLayoutPanelMasterPatternSelectors
             // 
             resources.ApplyResources(flowLayoutPanelMasterPatternSelectors, "flowLayoutPanelMasterPatternSelectors");
-            toolTip.SetToolTip(flowLayoutPanelMasterPatternSelectors, resources.GetString("flowLayoutPanelMasterPatternSelectors.ToolTip"));
             flowLayoutPanelMasterPatternSelectors.Controls.Add(numericBoxMasterPatternEnergy);
             flowLayoutPanelMasterPatternSelectors.Controls.Add(trackBarMasterPatternEnergy);
             flowLayoutPanelMasterPatternSelectors.Name = "flowLayoutPanelMasterPatternSelectors";
@@ -1763,14 +1738,12 @@
             panelMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
             panelMasterPattern3D.Controls.Add(panelMasterPattern3DAxes);
             resources.ApplyResources(panelMasterPattern3D, "panelMasterPattern3D");
-            toolTip.SetToolTip(panelMasterPattern3D, resources.GetString("panelMasterPattern3D.ToolTip"));
             panelMasterPattern3D.Name = "panelMasterPattern3D";
             // 
             // panelMasterPattern3DAxes
             // 
             panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(panelMasterPattern3DAxes, "panelMasterPattern3DAxes");
-            toolTip.SetToolTip(panelMasterPattern3DAxes, resources.GetString("panelMasterPattern3DAxes.ToolTip"));
             panelMasterPattern3DAxes.Name = "panelMasterPattern3DAxes";
             // 
             // groupBoxMasterPattern
@@ -1781,7 +1754,6 @@
             groupBoxMasterPattern.Controls.Add(groupBoxSimulationParameters);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternButtons);
             resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
-            toolTip.SetToolTip(groupBoxMasterPattern, resources.GetString("groupBoxMasterPattern.ToolTip"));
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
             // 
@@ -1790,7 +1762,6 @@
             tabControlMasterPattern.Controls.Add(tabPageMasterPattern2D);
             tabControlMasterPattern.Controls.Add(tabPageMasterPattern3D);
             resources.ApplyResources(tabControlMasterPattern, "tabControlMasterPattern");
-            toolTip.SetToolTip(tabControlMasterPattern, resources.GetString("tabControlMasterPattern.ToolTip"));
             tabControlMasterPattern.Name = "tabControlMasterPattern";
             tabControlMasterPattern.SelectedIndex = 0;
             // 
@@ -1799,14 +1770,12 @@
             tabPageMasterPattern2D.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
             tabPageMasterPattern2D.Controls.Add(flowLayoutPanelMasterPattern2DControls);
             resources.ApplyResources(tabPageMasterPattern2D, "tabPageMasterPattern2D");
-            toolTip.SetToolTip(tabPageMasterPattern2D, resources.GetString("tabPageMasterPattern2D.ToolTip"));
             tabPageMasterPattern2D.Name = "tabPageMasterPattern2D";
             tabPageMasterPattern2D.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelMasterPattern2DControls
             // 
             resources.ApplyResources(flowLayoutPanelMasterPattern2DControls, "flowLayoutPanelMasterPattern2DControls");
-            toolTip.SetToolTip(flowLayoutPanelMasterPattern2DControls, resources.GetString("flowLayoutPanelMasterPattern2DControls.ToolTip"));
             flowLayoutPanelMasterPattern2DControls.Controls.Add(buttonMasterPattern2DCopy);
             flowLayoutPanelMasterPattern2DControls.Controls.Add(labelMasterPattern2DHemisphere);
             flowLayoutPanelMasterPattern2DControls.Controls.Add(comboBoxMasterPattern2DHemisphere);
@@ -1819,20 +1788,18 @@
             tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DCopy);
             tabPageMasterPattern3D.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
             resources.ApplyResources(tabPageMasterPattern3D, "tabPageMasterPattern3D");
-            toolTip.SetToolTip(tabPageMasterPattern3D, resources.GetString("tabPageMasterPattern3D.ToolTip"));
             tabPageMasterPattern3D.Name = "tabPageMasterPattern3D";
             // 
             // flowLayoutPanelMasterPattern3DCopy
             // 
             resources.ApplyResources(flowLayoutPanelMasterPattern3DCopy, "flowLayoutPanelMasterPattern3DCopy");
-            toolTip.SetToolTip(flowLayoutPanelMasterPattern3DCopy, resources.GetString("flowLayoutPanelMasterPattern3DCopy.ToolTip"));
             flowLayoutPanelMasterPattern3DCopy.Controls.Add(buttonMasterPattern3DCopy);
+            flowLayoutPanelMasterPattern3DCopy.Controls.Add(buttonSaveMovie);
             flowLayoutPanelMasterPattern3DCopy.Name = "flowLayoutPanelMasterPattern3DCopy";
             // 
             // flowLayoutPanelMasterPattern3DViewAlong
             // 
             resources.ApplyResources(flowLayoutPanelMasterPattern3DViewAlong, "flowLayoutPanelMasterPattern3DViewAlong");
-            toolTip.SetToolTip(flowLayoutPanelMasterPattern3DViewAlong, resources.GetString("flowLayoutPanelMasterPattern3DViewAlong.ToolTip"));
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(buttonMasterPattern3DViewAlong);
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(indexControl);
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(checkBoxMasterPattern3DAxisLabel);
@@ -1842,7 +1809,6 @@
             // flowLayoutPanelMasterPatternControls
             // 
             resources.ApplyResources(flowLayoutPanelMasterPatternControls, "flowLayoutPanelMasterPatternControls");
-            toolTip.SetToolTip(flowLayoutPanelMasterPatternControls, resources.GetString("flowLayoutPanelMasterPatternControls.ToolTip"));
             flowLayoutPanelMasterPatternControls.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             flowLayoutPanelMasterPatternControls.Controls.Add(flowLayoutPanelMasterPatternDepth);
             flowLayoutPanelMasterPatternControls.Name = "flowLayoutPanelMasterPatternControls";
@@ -1850,7 +1816,6 @@
             // flowLayoutPanelMasterPatternDepth
             // 
             resources.ApplyResources(flowLayoutPanelMasterPatternDepth, "flowLayoutPanelMasterPatternDepth");
-            toolTip.SetToolTip(flowLayoutPanelMasterPatternDepth, resources.GetString("flowLayoutPanelMasterPatternDepth.ToolTip"));
             flowLayoutPanelMasterPatternDepth.Controls.Add(numericBoxMasterPatternDepth);
             flowLayoutPanelMasterPatternDepth.Controls.Add(trackBarMasterPatternDepth);
             flowLayoutPanelMasterPatternDepth.Name = "flowLayoutPanelMasterPatternDepth";
@@ -1858,7 +1823,6 @@
             // flowLayoutPanelMasterPatternButtons
             // 
             resources.ApplyResources(flowLayoutPanelMasterPatternButtons, "flowLayoutPanelMasterPatternButtons");
-            toolTip.SetToolTip(flowLayoutPanelMasterPatternButtons, resources.GetString("flowLayoutPanelMasterPatternButtons.ToolTip"));
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonCreateMasterPattern);
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonStop);
             flowLayoutPanelMasterPatternButtons.Controls.Add(buttonFitNistElasticSampler);
@@ -1871,7 +1835,6 @@
             groupBoxEBSDPattern.Controls.Add(tabControlPatternSettings);
             groupBoxEBSDPattern.Controls.Add(flowLayoutPanelPatternBar);
             resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
-            toolTip.SetToolTip(groupBoxEBSDPattern, resources.GetString("groupBoxEBSDPattern.ToolTip"));
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
             // 
@@ -1880,7 +1843,6 @@
             tabControlPatternSettings.Controls.Add(tabPageOutputParameter);
             tabControlPatternSettings.Controls.Add(tabPageExperimentalImage);
             resources.ApplyResources(tabControlPatternSettings, "tabControlPatternSettings");
-            toolTip.SetToolTip(tabControlPatternSettings, resources.GetString("tabControlPatternSettings.ToolTip"));
             tabControlPatternSettings.Name = "tabControlPatternSettings";
             tabControlPatternSettings.SelectedIndex = 0;
             // 
@@ -1892,7 +1854,6 @@
             tabPageOutputParameter.Controls.Add(flowLayoutPanelOutputRange);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelWithBseDistribution);
             resources.ApplyResources(tabPageOutputParameter, "tabPageOutputParameter");
-            toolTip.SetToolTip(tabPageOutputParameter, resources.GetString("tabPageOutputParameter.ToolTip"));
             tabPageOutputParameter.Name = "tabPageOutputParameter";
             // 
             // tabPageExperimentalImage
@@ -1902,13 +1863,11 @@
             tabPageExperimentalImage.Controls.Add(dataGridViewEbsdCandidates);
             tabPageExperimentalImage.Controls.Add(flowLayoutPanelExperimentalImageTab);
             resources.ApplyResources(tabPageExperimentalImage, "tabPageExperimentalImage");
-            toolTip.SetToolTip(tabPageExperimentalImage, resources.GetString("tabPageExperimentalImage.ToolTip"));
             tabPageExperimentalImage.Name = "tabPageExperimentalImage";
             // 
             // flowLayoutPanelExperimentalImageTab
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImageTab, "flowLayoutPanelExperimentalImageTab");
-            toolTip.SetToolTip(flowLayoutPanelExperimentalImageTab, resources.GetString("flowLayoutPanelExperimentalImageTab.ToolTip"));
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExperimentalImage);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpOpacity);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelIndexingButtons);
@@ -1917,7 +1876,6 @@
             // flowLayoutPanelIndexingButtons
             // 
             resources.ApplyResources(flowLayoutPanelIndexingButtons, "flowLayoutPanelIndexingButtons");
-            toolTip.SetToolTip(flowLayoutPanelIndexingButtons, resources.GetString("flowLayoutPanelIndexingButtons.ToolTip"));
             flowLayoutPanelIndexingButtons.Controls.Add(buttonFindOrientation);
             flowLayoutPanelIndexingButtons.Controls.Add(buttonCalibrateGeometry);
             flowLayoutPanelIndexingButtons.Name = "flowLayoutPanelIndexingButtons";
@@ -1925,7 +1883,6 @@
             // flowLayoutPanelPatternBar
             // 
             resources.ApplyResources(flowLayoutPanelPatternBar, "flowLayoutPanelPatternBar");
-            toolTip.SetToolTip(flowLayoutPanelPatternBar, resources.GetString("flowLayoutPanelPatternBar.ToolTip"));
             flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelCopy);
             flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelViewSettings);
             flowLayoutPanelPatternBar.Controls.Add(flowLayoutPanelShowCheckBoxes);
@@ -1934,14 +1891,12 @@
             // flowLayoutPanelCopy
             // 
             resources.ApplyResources(flowLayoutPanelCopy, "flowLayoutPanelCopy");
-            toolTip.SetToolTip(flowLayoutPanelCopy, resources.GetString("flowLayoutPanelCopy.ToolTip"));
             flowLayoutPanelCopy.Controls.Add(flowLayoutPanelCopyOptions);
             flowLayoutPanelCopy.Name = "flowLayoutPanelCopy";
             // 
             // flowLayoutPanelCopyOptions
             // 
             resources.ApplyResources(flowLayoutPanelCopyOptions, "flowLayoutPanelCopyOptions");
-            toolTip.SetToolTip(flowLayoutPanelCopyOptions, resources.GetString("flowLayoutPanelCopyOptions.ToolTip"));
             flowLayoutPanelCopyOptions.Controls.Add(flowLayoutPanelCopyButton);
             flowLayoutPanelCopyOptions.Controls.Add(flowLayoutPanelCopyRadios);
             flowLayoutPanelCopyOptions.Name = "flowLayoutPanelCopyOptions";
@@ -1949,8 +1904,7 @@
             // flowLayoutPanelCopyButton
             // 
             resources.ApplyResources(flowLayoutPanelCopyButton, "flowLayoutPanelCopyButton");
-            toolTip.SetToolTip(flowLayoutPanelCopyButton, resources.GetString("flowLayoutPanelCopyButton.ToolTip"));
-            flowLayoutPanelCopyButton.Controls.Add(buttonSaveImage); // 260811Cl 追加: Copy の左 (FlowLayoutPanel なので追加順=左からの並び)
+            flowLayoutPanelCopyButton.Controls.Add(buttonSaveImage);
             flowLayoutPanelCopyButton.Controls.Add(buttonCopyImage);
             flowLayoutPanelCopyButton.Controls.Add(checkBoxMatchDetectorResolution);
             flowLayoutPanelCopyButton.Name = "flowLayoutPanelCopyButton";
@@ -1958,7 +1912,6 @@
             // flowLayoutPanelCopyRadios
             // 
             resources.ApplyResources(flowLayoutPanelCopyRadios, "flowLayoutPanelCopyRadios");
-            toolTip.SetToolTip(flowLayoutPanelCopyRadios, resources.GetString("flowLayoutPanelCopyRadios.ToolTip"));
             flowLayoutPanelCopyRadios.Controls.Add(flowLayoutPanelCopyRange);
             flowLayoutPanelCopyRadios.Controls.Add(flowLayoutPanelCopyFormat);
             flowLayoutPanelCopyRadios.Name = "flowLayoutPanelCopyRadios";
@@ -1966,7 +1919,6 @@
             // flowLayoutPanelCopyRange
             // 
             resources.ApplyResources(flowLayoutPanelCopyRange, "flowLayoutPanelCopyRange");
-            toolTip.SetToolTip(flowLayoutPanelCopyRange, resources.GetString("flowLayoutPanelCopyRange.ToolTip"));
             flowLayoutPanelCopyRange.Controls.Add(radioButtonCopyCurrent);
             flowLayoutPanelCopyRange.Controls.Add(radioButtonDetector);
             flowLayoutPanelCopyRange.Name = "flowLayoutPanelCopyRange";
@@ -1974,7 +1926,6 @@
             // flowLayoutPanelCopyFormat
             // 
             resources.ApplyResources(flowLayoutPanelCopyFormat, "flowLayoutPanelCopyFormat");
-            toolTip.SetToolTip(flowLayoutPanelCopyFormat, resources.GetString("flowLayoutPanelCopyFormat.ToolTip"));
             flowLayoutPanelCopyFormat.Controls.Add(radioButtonCopyEmf);
             flowLayoutPanelCopyFormat.Controls.Add(radioButtonCopyBmp);
             flowLayoutPanelCopyFormat.Name = "flowLayoutPanelCopyFormat";
@@ -1982,7 +1933,6 @@
             // flowLayoutPanelViewSettings
             // 
             resources.ApplyResources(flowLayoutPanelViewSettings, "flowLayoutPanelViewSettings");
-            toolTip.SetToolTip(flowLayoutPanelViewSettings, resources.GetString("flowLayoutPanelViewSettings.ToolTip"));
             flowLayoutPanelViewSettings.Controls.Add(flowLayoutPanelResolutionFlip);
             flowLayoutPanelViewSettings.Controls.Add(sizeControl);
             flowLayoutPanelViewSettings.Name = "flowLayoutPanelViewSettings";
@@ -1990,7 +1940,6 @@
             // flowLayoutPanelResolutionFlip
             // 
             resources.ApplyResources(flowLayoutPanelResolutionFlip, "flowLayoutPanelResolutionFlip");
-            toolTip.SetToolTip(flowLayoutPanelResolutionFlip, resources.GetString("flowLayoutPanelResolutionFlip.ToolTip"));
             flowLayoutPanelResolutionFlip.Controls.Add(numericBoxResolution);
             flowLayoutPanelResolutionFlip.Controls.Add(checkBoxFlipDetectorLeftRight);
             flowLayoutPanelResolutionFlip.Name = "flowLayoutPanelResolutionFlip";
@@ -1998,42 +1947,51 @@
             // flowLayoutPanelShowCheckBoxes
             // 
             resources.ApplyResources(flowLayoutPanelShowCheckBoxes, "flowLayoutPanelShowCheckBoxes");
-            toolTip.SetToolTip(flowLayoutPanelShowCheckBoxes, resources.GetString("flowLayoutPanelShowCheckBoxes.ToolTip"));
             flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowOverlays);
             flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowDyanmicalEBSD);
             flowLayoutPanelShowCheckBoxes.Controls.Add(checkBoxShowExperimentalImage);
             flowLayoutPanelShowCheckBoxes.Name = "flowLayoutPanelShowCheckBoxes";
             // 
-            // panelSpacerLeft
-            // 
-            resources.ApplyResources(panelSpacerLeft, "panelSpacerLeft");
-            toolTip.SetToolTip(panelSpacerLeft, resources.GetString("panelSpacerLeft.ToolTip"));
-            panelSpacerLeft.Name = "panelSpacerLeft";
-            // 
-            // panelSpacerRight
-            // 
-            resources.ApplyResources(panelSpacerRight, "panelSpacerRight");
-            toolTip.SetToolTip(panelSpacerRight, resources.GetString("panelSpacerRight.ToolTip"));
-            panelSpacerRight.Name = "panelSpacerRight";
-            // 
             // panelSpacerBottom
             // 
             resources.ApplyResources(panelSpacerBottom, "panelSpacerBottom");
-            toolTip.SetToolTip(panelSpacerBottom, resources.GetString("panelSpacerBottom.ToolTip"));
             panelSpacerBottom.Name = "panelSpacerBottom";
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(splitContainer1, "splitContainer1");
+            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(groupBoxMasterPattern);
+            // 
+            // splitContainer2
+            // 
+            resources.ApplyResources(splitContainer2, "splitContainer2");
+            splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(tabControlSettings);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(groupBoxEBSDPattern);
             // 
             // FormEBSD
             // 
             AllowDrop = true;
             resources.ApplyResources(this, "$this");
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            Controls.Add(groupBoxEBSDPattern);
-            Controls.Add(panelSpacerRight);
-            Controls.Add(panelSpacerLeft);
-            Controls.Add(groupBoxMasterPattern);
-            Controls.Add(tabControlSettings);
+            Controls.Add(splitContainer1);
             Controls.Add(panelSpacerBottom);
             Controls.Add(statusStripMain);
             Name = "FormEBSD";
@@ -2173,6 +2131,14 @@
             flowLayoutPanelResolutionFlip.PerformLayout();
             flowLayoutPanelShowCheckBoxes.ResumeLayout(false);
             flowLayoutPanelShowCheckBoxes.PerformLayout();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2272,8 +2238,6 @@
         private System.Windows.Forms.GroupBox groupBoxSampleCondition;
         private System.Windows.Forms.GroupBox groupBoxEBSDGeometry;
         private System.Windows.Forms.GroupBox groupBoxEBSDPattern;
-        private System.Windows.Forms.Panel panelSpacerLeft;
-        private System.Windows.Forms.Panel panelSpacerRight;
         private System.Windows.Forms.Panel panelSpacerBottom;
         private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisLabel;
         private System.Windows.Forms.Panel panelMasterPattern3DAxes;
@@ -2368,6 +2332,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyFormat;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopyRadios;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button buttonSaveMovie;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }
 

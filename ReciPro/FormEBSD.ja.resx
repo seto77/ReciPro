@@ -558,6 +558,14 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
     <value>3D(球面)マスターパターンプレビュー
 をクリップボードにコピーします。</value>
   </data>
+  <data name="buttonSaveMovie.Text" xml:space="preserve">
+    <value>動画保存</value>
+  </data>
+  <data name="buttonSaveMovie.ToolTip" xml:space="preserve">
+    <value>3D(球面)マスターパターンプレビューの
+回転動画 (MP4) を保存します。
+回るのはこの表示だけで、結晶方位は変わりません。</value>
+  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>結晶軸のラベル</value>
   </data>
@@ -1053,12 +1061,6 @@ Radon バンド証拠の z 値、ZNCC =
   <data name="flowLayoutPanelShowCheckBoxes.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelSpacerLeft.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panelSpacerRight.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelSpacerBottom.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1192,6 +1194,9 @@ Radon バンド証拠の z 値、ZNCC =
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveMovie.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
