@@ -112,7 +112,7 @@ all'intensità delle linee di Kikuchi</value>
     <value>Assorbimento non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Fondo TDS</value>
+    <value>Sorgente non locale</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Spessore</value>
@@ -371,7 +371,8 @@ guardare lungo la normale alla superficie del campione.</value>
 l'asse Z (la direzione del fascio elettronico).</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
-    <value>Imposta la vista geometrica 3D su un punto di vista a volo d'uccello obliquo.</value>
+    <value>Imposta la vista geometrica 3D su un
+punto di vista a volo d'uccello obliquo.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>Sovrappone gli assi cristallini a (rosso), b (verde) e
@@ -426,7 +427,8 @@ formate dagli elettroni diffusi anelasticamente). Abilita
 il gruppo di opzioni delle linee di Kikuchi.</value>
   </data>
   <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
-    <value>Disegna la griglia di suddivisione del rivelatore (linee di mesh) sul pattern.</value>
+    <value>Disegna la griglia di suddivisione del
+rivelatore (linee di mesh) sul pattern.</value>
   </data>
   <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
     <value>Sovrappone linee di Kikuchi, indici, assi di zona e
@@ -437,8 +439,16 @@ il contorno del rivelatore sopra il pattern.</value>
 intersezioni delle bande di Kikuchi.</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>Include l'intensità di fondo della TDS (Thermal Diffuse
-Scattering, diffusione termica diffusa) nel master pattern.</value>
+    <value>Sostituisce la sorgente di retrodiffusione
+localizzata sui siti atomici con la forma non
+locale del potenziale assorbente (U'_back integrato
+sull'emisfero posteriore). Entrambe usano la stessa
+sezione d'urto fisica: è un cambio di modello, non
+un fondo additivo. Questo è il termine di sorgente
+di retrodiffusione; il vicino «modello di
+assorbimento non locale» riguarda il potenziale
+assorbente U' (diffusione termica diffusa, TDS) che
+attenua l'onda, e i due sono indipendenti.</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Genera il pattern EBSD pesato in base alla distribuzione di energia
@@ -579,10 +589,12 @@ EBSD renderizzare in modalità a sezione singola;
 il valore è mostrato nel campo Profondità.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>Regola la dimensione del carattere del testo degli indici in sovrapposizione.</value>
+    <value>Regola la dimensione del carattere del
+testo degli indici in sovrapposizione.</value>
   </data>
   <data name="labelTextSize.ToolTip" xml:space="preserve">
-    <value>Regola la dimensione del carattere del testo degli indici in sovrapposizione.</value>
+    <value>Regola la dimensione del carattere del
+testo degli indici in sovrapposizione.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>Imposta la tensione di accelerazione / lunghezza d'onda
@@ -870,5 +882,94 @@ pixel del rivelatore si imposta nella geometria.</value>
     <value>Dimensione della vista del pattern in pixel dello schermo
 (larghezza x altezza). Modificandola si ridimensiona la
 finestra. Il numero di pixel del rivelatore non cambia.</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>Profondità della sorgente (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Quale evento Monte Carlo definisce la profondità della
+sorgente coerente di retrodiffusione usata nella
+pesatura (energia × profondità). Ultimo anelastico:
+solo gli eventi anelastici discreti azzerano la
+sorgente (predefinito). Ultimo trasporto: qualsiasi
+evento. Ultima decoerenza: solo gli eventi abbastanza
+localizzati da lasciare nel campione l'informazione su
+quale atomo ha diffuso. Gli elastici con la
+probabilità termico-diffusa 1 − exp(−2B s²) del
+fattore di Debye–Waller (la diffusione di Bragg
+coerente no); gli anelastici sempre per eccitazioni di
+core o ad alta perdita, e per eccitazioni di valenza
+solo con la frazione il cui trasferimento di impulso
+supera il taglio plasmonico q_c = ω_p/v_F (plasmoni e
+coppie elettrone–lacuna delocalizzate conservano lo
+stato di Bloch). Sorgenti più superficiali portano una
+modulazione di Kikuchi più debole: il fondo diffuso è
+fissato dal solo trasporto, senza parametri liberi.</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>Ultimo evento anelastico</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>Ultimo evento di trasporto (qualsiasi)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>Ultima decoerenza (pesata DW)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Quale evento Monte Carlo definisce la profondità della
+sorgente coerente di retrodiffusione usata nella
+pesatura (energia × profondità). Ultimo anelastico:
+solo gli eventi anelastici discreti azzerano la
+sorgente (predefinito). Ultimo trasporto: qualsiasi
+evento. Ultima decoerenza: solo gli eventi abbastanza
+localizzati da lasciare nel campione l'informazione su
+quale atomo ha diffuso. Gli elastici con la
+probabilità termico-diffusa 1 − exp(−2B s²) del
+fattore di Debye–Waller (la diffusione di Bragg
+coerente no); gli anelastici sempre per eccitazioni di
+core o ad alta perdita, e per eccitazioni di valenza
+solo con la frazione il cui trasferimento di impulso
+supera il taglio plasmonico q_c = ω_p/v_F (plasmoni e
+coppie elettrone–lacuna delocalizzate conservano lo
+stato di Bloch). Sorgenti più superficiali portano una
+modulazione di Kikuchi più debole: il fondo diffuso è
+fissato dal solo trasporto, senza parametri liberi.</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>Strato amorfo superficiale</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>Spessore (nm) di uno strato superficiale non
+cristallino (ossido nativo, contaminazione, danno da
+lucidatura o da assottigliamento ionico). Gli
+elettroni la cui sorgente coerente di retrodiffusione
+si trova nello strato non portano modulazione di
+Kikuchi e sono aggiunti come contributo mediato in
+direzione (uniforme) con la stessa intensità per
+elettrone; le sorgenti sotto lo strato si misurano
+dalla superficie del cristallo. Il trasporto è
+calcolato con composizione e densità del cristallo
+(adeguato per pochi nm). 0 disattiva. Il cambio
+ricampiona solo gli elettroni salvati, senza ripetere
+il Monte Carlo. Intervallo 0–100 nm, passo 0,1 nm.</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>Reiniettare flusso assorbito come fondo</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>Nel calcolo a onde di Bloch, gli elettroni rimossi dal
+canale coerente dall'assorbimento (diffusione termica
+diffusa) semplicemente scompaiono. Fisicamente
+raggiungono comunque il rivelatore, senza modulazione
+di Kikuchi. Questa opzione li restituisce come fondo
+diffuso: D(t) = Σσ_n ∫(1 − N(z))dz, dove N(z) è la
+densità dell'onda coerente mediata sulla cella. Il
+flusso si conserva e le intensità assolute aumentano
+(a 20 kV circa il 10 % per Si e il 25 % per Fe3O4). La
+luminosità relativa degli assi di zona cambia poco e
+dipende dal cristallo, perché il flusso reiniettato
+appartiene ancora alla stessa direzione di uscita.
+Nessun effetto con B = 0 (B = fattore di temperatura
+di Debye–Waller; B = 0 significa nessun assorbimento).</value>
   </data>
 </root>

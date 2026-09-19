@@ -112,7 +112,7 @@
     <value>Absorption non locale</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Fond TDS</value>
+    <value>Source non locale</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Épaisseur</value>
@@ -372,7 +372,8 @@ le long de la normale à la surface de l'échantillon.</value>
 de l'axe Z (la direction du faisceau d'électrons).</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
-    <value>Oriente la vue géométrique 3D vers un point de vue oblique en vue aérienne.</value>
+    <value>Oriente la vue géométrique 3D vers un
+point de vue oblique en vue aérienne.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>Superpose les axes cristallins a (rouge), b (vert) et
@@ -427,7 +428,8 @@ bandes formés par les électrons diffusés inélastiquement). Active
 le groupe d'options des lignes de Kikuchi.</value>
   </data>
   <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
-    <value>Trace la grille de division du détecteur (lignes de maillage) sur le diagramme.</value>
+    <value>Trace la grille de division du détecteur
+(lignes de maillage) sur le diagramme.</value>
   </data>
   <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
     <value>Superpose les lignes de Kikuchi, les indices, les axes de zone et
@@ -438,8 +440,15 @@ le contour du détecteur par-dessus le diagramme.</value>
 intersections des bandes de Kikuchi.</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>Inclut l'intensité de fond de la TDS (diffusion
-thermique diffuse) dans le master pattern.</value>
+    <value>Remplace la source de rétrodiffusion localisée aux
+sites atomiques par la forme non locale du potentiel
+absorbant (U'_back intégré sur l'hémisphère arrière).
+Les deux utilisent la même section efficace physique :
+c'est un changement de modèle, pas un fond additif. Il
+s'agit du terme de source de rétrodiffusion ; le «
+modèle d'absorption non local » voisin agit sur le
+potentiel absorbant U' (diffusion thermique diffuse,
+TDS) qui atténue l'onde, et les deux sont indépendants.</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Rend le diagramme EBSD pondéré par la distribution simulée
@@ -449,10 +458,12 @@ une seule tranche d'énergie/profondeur. Lancez
 Simulate d'abord pour obtenir la distribution.</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value>Définit la couleur utilisée pour tracer les lignes de Kikuchi.</value>
+    <value>Définit la couleur utilisée pour
+tracer les lignes de Kikuchi.</value>
   </data>
   <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
-    <value>Définit la couleur utilisée pour tracer les lignes de Kikuchi.</value>
+    <value>Définit la couleur utilisée pour
+tracer les lignes de Kikuchi.</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>Choisit un niveau de gris Positif ou Négatif (inversé)
@@ -580,10 +591,12 @@ EBSD rendre en mode tranche unique ;
 la valeur est affichée dans le champ Depth.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>Ajuste la taille de police du texte d'indices en surimpression.</value>
+    <value>Ajuste la taille de police du
+texte d'indices en surimpression.</value>
   </data>
   <data name="labelTextSize.ToolTip" xml:space="preserve">
-    <value>Ajuste la taille de police du texte d'indices en surimpression.</value>
+    <value>Ajuste la taille de police du
+texte d'indices en surimpression.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>Définit la tension d'accélération / la longueur d'onde des
@@ -873,5 +886,96 @@ détecteur se règle dans la géométrie du détecteur.</value>
     <value>Taille de la vue du diagramme en pixels d'écran
 (largeur x hauteur). La modifier redimensionne la fenêtre.
 Le nombre de pixels du détecteur n'est pas affecté.</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>Profondeur de la source (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Quel événement Monte-Carlo définit la profondeur de
+la source cohérente de rétrodiffusion utilisée pour
+la pondération (énergie × profondeur). Dernier
+inélastique : seuls les événements inélastiques
+discrets réinitialisent la source (défaut). Dernier
+transport : tout événement. Dernière décohérence :
+seuls les événements assez localisés pour laisser
+dans l'échantillon l'information « quel atome ». Les
+élastiques avec la probabilité thermique diffuse 1 −
+exp(−2B s²) du facteur de Debye–Waller (la diffusion
+de Bragg cohérente non) ; les inélastiques toujours
+pour les excitations de cœur ou à forte perte, et
+pour les excitations de valence seulement avec la
+fraction dont le transfert d'impulsion dépasse la
+coupure plasmon q_c = ω_p/v_F (plasmons et paires
+électron–trou délocalisées conservent l'état de
+Bloch). Une source plus superficielle porte une
+modulation de Kikuchi plus faible : le fond diffus
+découle du seul transport, sans paramètre libre.</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>Dernier événement inélastique</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>Dernier événement de transport (quelconque)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>Dernière décohérence (pondérée DW)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Quel événement Monte-Carlo définit la profondeur de
+la source cohérente de rétrodiffusion utilisée pour
+la pondération (énergie × profondeur). Dernier
+inélastique : seuls les événements inélastiques
+discrets réinitialisent la source (défaut). Dernier
+transport : tout événement. Dernière décohérence :
+seuls les événements assez localisés pour laisser
+dans l'échantillon l'information « quel atome ». Les
+élastiques avec la probabilité thermique diffuse 1 −
+exp(−2B s²) du facteur de Debye–Waller (la diffusion
+de Bragg cohérente non) ; les inélastiques toujours
+pour les excitations de cœur ou à forte perte, et
+pour les excitations de valence seulement avec la
+fraction dont le transfert d'impulsion dépasse la
+coupure plasmon q_c = ω_p/v_F (plasmons et paires
+électron–trou délocalisées conservent l'état de
+Bloch). Une source plus superficielle porte une
+modulation de Kikuchi plus faible : le fond diffus
+découle du seul transport, sans paramètre libre.</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>Couche amorphe de surface</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>Épaisseur (nm) d'une couche de surface non cristalline
+(oxyde natif, contamination, dommages de polissage ou
+d'amincissement ionique). Les électrons dont la source
+cohérente de rétrodiffusion se trouve dans la couche
+ne portent aucune modulation de Kikuchi et sont
+ajoutés comme contribution moyennée en direction
+(uniforme) avec la même intensité par électron ; les
+sources sous la couche sont mesurées depuis la surface
+du cristal. Le transport est calculé avec la
+composition et la densité du cristal (suffisant pour
+quelques nm). 0 désactive. Le changement ne fait que
+re-classer les électrons enregistrés, sans relancer le
+Monte-Carlo. Plage 0–100 nm, pas 0,1 nm.</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>Réinjecter le flux absorbé en fond</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>Dans le calcul par ondes de Bloch, les électrons
+retirés du canal cohérent par l'absorption (diffusion
+thermique diffuse) disparaissent. Physiquement ils
+atteignent quand même le détecteur, sans modulation de
+Kikuchi. Cette option les réintroduit comme fond
+diffus : D(t) = Σσ_n ∫(1 − N(z))dz, où N(z) est la
+densité de l'onde cohérente moyennée sur la maille. Le
+flux est conservé et les intensités absolues
+augmentent (à 20 kV, environ 10 % pour Si et 25 % pour
+Fe3O4). La brillance relative des axes de zone change
+peu et dépend du cristal, car le flux réinjecté
+appartient toujours à la même direction de sortie.
+Sans effet si B = 0 (B = facteur de température de
+Debye–Waller ; B = 0 signifie pas d'absorption).</value>
   </data>
 </root>

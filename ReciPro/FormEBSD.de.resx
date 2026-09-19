@@ -112,7 +112,7 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>Nicht-lokale Absorption</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS-Hintergrund</value>
+    <value>Nichtlokale Quelle</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Dicke</value>
@@ -374,7 +374,8 @@ entlang der Probenoberflächennormalen geblickt wird.</value>
 der Z-Achse (der Elektronenstrahlrichtung) geblickt wird.</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
-    <value>Stellt die 3D-Geometrieansicht auf eine schräge Vogelperspektive ein.</value>
+    <value>Stellt die 3D-Geometrieansicht auf
+eine schräge Vogelperspektive ein.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>Überlagert die Kristallachsen a (rot), b (grün)
@@ -430,7 +431,8 @@ die von inelastisch gestreuten Elektronen gebildet werden) an.
 Aktiviert die Optionsgruppe für die Kikuchi-Linien.</value>
   </data>
   <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
-    <value>Zeichnet das Unterteilungsgitter (Gitterlinien) des Detektors auf dem Muster.</value>
+    <value>Zeichnet das Unterteilungsgitter
+(Gitterlinien) des Detektors auf dem Muster.</value>
   </data>
   <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
     <value>Überlagert Kikuchi-Linien, Indizes, Zonenachsen und
@@ -441,8 +443,16 @@ den Detektorumriss auf dem Muster.</value>
 Schnittpunkten der Kikuchi-Bänder.</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>Bezieht die Hintergrundintensität der TDS (Thermal Diffuse
-Scattering, thermisch-diffuse Streuung) in das Master-Pattern ein.</value>
+    <value>Ersetzt die am Atomort lokalisierte Rückstreuquelle
+durch die nichtlokale Form des absorptiven
+Potentials (U'_back, über die rückwärtige Hemisphäre
+integriert). Beide verwenden denselben
+physikalischen Wirkungsquerschnitt; es ist ein
+Modellwechsel, kein additiver Untergrund. Dies ist
+der Rückstreu-Quellterm; das benachbarte
+„nichtlokale Absorptionsmodell“ betrifft das
+absorptive Potential U' (thermisch-diffuse Streuung,
+TDS), das die Welle dämpft – beide sind unabhängig.</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Stellt das EBSD-Muster gewichtet mit der simulierten
@@ -872,5 +882,96 @@ Detektorgeometrie eingestellt.</value>
     <value>Größe der Musteransicht in Bildschirmpixeln
 (Breite x Höhe). Eine Änderung verändert die Fenstergröße.
 Die Pixelanzahl des Detektors bleibt unverändert.</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>Quelltiefe (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Welches Monte-Carlo-Ereignis die Tiefe der kohärenten
+Rückstreuquelle für die (Energie × Tiefe)-Gewichtung
+festlegt. Letztes inelastisches: nur diskrete
+inelastische Ereignisse setzen die Quelle zurück
+(Standard). Letztes Transport: jedes Ereignis.
+Letzter Kohärenzverlust: nur Ereignisse, die
+lokalisiert genug sind, um Welches-Atom-Information
+in der Probe zu hinterlassen. Elastische Ereignisse
+mit der thermisch-diffusen Wahrscheinlichkeit 1 −
+exp(−2B s²) aus dem Debye-Waller-Faktor (kohärente
+Bragg-Streuung nicht); inelastische Ereignisse bei
+Rumpf-/Hochverlust-Anregungen immer, bei
+Valenzanregungen nur mit dem Anteil, dessen
+Impulsübertrag den Plasmon-Cutoff q_c = ω_p/v_F
+übersteigt (Plasmonen und delokalisierte
+Elektron-Loch-Paare erhalten den Bloch-Zustand).
+Flachere Quellen tragen schwächere
+Kikuchi-Modulation; der diffuse Untergrund folgt
+allein aus dem Transport, ohne freien Parameter.</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>Letztes inelastisches Ereignis</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>Letztes Transportereignis (beliebig)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>Letzter Kohärenzverlust (DW-gewichtet)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Welches Monte-Carlo-Ereignis die Tiefe der kohärenten
+Rückstreuquelle für die (Energie × Tiefe)-Gewichtung
+festlegt. Letztes inelastisches: nur diskrete
+inelastische Ereignisse setzen die Quelle zurück
+(Standard). Letztes Transport: jedes Ereignis.
+Letzter Kohärenzverlust: nur Ereignisse, die
+lokalisiert genug sind, um Welches-Atom-Information
+in der Probe zu hinterlassen. Elastische Ereignisse
+mit der thermisch-diffusen Wahrscheinlichkeit 1 −
+exp(−2B s²) aus dem Debye-Waller-Faktor (kohärente
+Bragg-Streuung nicht); inelastische Ereignisse bei
+Rumpf-/Hochverlust-Anregungen immer, bei
+Valenzanregungen nur mit dem Anteil, dessen
+Impulsübertrag den Plasmon-Cutoff q_c = ω_p/v_F
+übersteigt (Plasmonen und delokalisierte
+Elektron-Loch-Paare erhalten den Bloch-Zustand).
+Flachere Quellen tragen schwächere
+Kikuchi-Modulation; der diffuse Untergrund folgt
+allein aus dem Transport, ohne freien Parameter.</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>Amorphe Oberflächenschicht</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>Dicke (nm) einer nichtkristallinen Oberflächenschicht
+(natives Oxid, Kontamination, Polier- oder
+Ionenätzschäden). Elektronen, deren kohärente
+Rückstreuquelle in der Schicht liegt, tragen keine
+Kikuchi-Modulation und werden als richtungsgemittelter
+(gleichförmiger) Beitrag mit derselben Intensität pro
+Elektron addiert; Quellen unterhalb der Schicht werden
+von der Kristalloberfläche aus gemessen. Der Transport
+wird mit Zusammensetzung und Dichte des Kristalls
+berechnet (für wenige nm ausreichend). 0 deaktiviert.
+Eine Änderung bindet die gespeicherten Elektronen nur
+neu, ohne die Monte-Carlo-Rechnung zu wiederholen.
+Bereich 0–100 nm, Schritt 0,1 nm.</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>Absorbierten Fluss als Untergrund</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>In der Bloch-Wellen-Rechnung verschwinden Elektronen,
+die durch Absorption (thermisch-diffuse Streuung) den
+kohärenten Kanal verlassen. Physikalisch erreichen
+sie den Detektor trotzdem, ohne Kikuchi-Modulation.
+Diese Option fügt sie als diffusen Untergrund wieder
+hinzu: D(t) = Σσ_n ∫(1 − N(z))dz, mit N(z) der über
+die Elementarzelle gemittelten Dichte der kohärenten
+Welle. Der Fluss bleibt erhalten und die absoluten
+Intensitäten steigen (bei 20 kV etwa 10 % für Si, 25
+% für Fe3O4). Die relative Helligkeit der Zonenachsen
+ändert sich kaum und hängt vom Kristall ab, da der
+zurückgeführte Fluss derselben Austrittsrichtung
+zugeordnet bleibt. Ohne Absorption (B = 0, B =
+Debye-Waller-Temperaturfaktor) keine Wirkung.</value>
   </data>
 </root>

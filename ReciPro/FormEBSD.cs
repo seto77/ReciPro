@@ -28,6 +28,7 @@ public partial class FormEBSD : FormBase
     {
         LastInelasticEventDepth,
         LastTransportEventDepth,
+        LastDecoherenceEventDepth, // 260919Cl 追加: 非弾性 + DW 確率で熱散漫と判定された弾性散乱の最後の深さ (MonteCarlo.LastDecoherenceDepth)
     }
 
     #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
@@ -115,6 +116,8 @@ public partial class FormEBSD : FormBase
     public double DetectorPixelSize { get => numericBoxDetResolution.Value; set => numericBoxDetResolution.Value = value; }
     public double SampleTiltDegree { get => numericBoxSampleTilt.Value; set => numericBoxSampleTilt.Value = value; }
     public bool FlipDetectorLeftRight { get => checkBoxFlipDetectorLeftRight.Checked; set => checkBoxFlipDetectorLeftRight.Checked = value; }
+    public double AmorphousLayerThicknessNm { get => numericBoxAmorphousLayer.Value; set => numericBoxAmorphousLayer.Value = value; } // 260919Cl 追加: 表面非晶質層の厚さ [nm]
+    public int MonteCarloSourceDepthMode { get => comboBoxMonteCarloDepthMode.SelectedIndex; set { if ((uint)value < (uint)comboBoxMonteCarloDepthMode.Items.Count) comboBoxMonteCarloDepthMode.SelectedIndex = value; } } // 260919Cl 追加: 源の深さモード (層厚と同様に永続化)
     #endregion
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
@@ -642,6 +645,8 @@ public partial class FormEBSD : FormBase
             int defaultIndex = comboBoxMasterPatternGrid.FindStringExact("256");
             comboBoxMasterPatternGrid.SelectedIndex = defaultIndex >= 0 ? defaultIndex : 0; // (260322Ch) MasterPattern 分解能の既定値は 256 にする
         }
+        if (comboBoxMonteCarloDepthMode != null && comboBoxMonteCarloDepthMode.SelectedIndex < 0 && comboBoxMonteCarloDepthMode.Items.Count > 0)
+            comboBoxMonteCarloDepthMode.SelectedIndex = (int)monteCarloDistributionDepthMode; // 260919Cl 追加: 既定 = 最後の非弾性散乱 (従来動作)
         if (comboBoxMasterPattern2DHemisphere != null && comboBoxMasterPattern2DHemisphere.SelectedIndex < 0 && comboBoxMasterPattern2DHemisphere.Items.Count > 0)
             comboBoxMasterPattern2DHemisphere.SelectedIndex = 0; // (260322Ch) MasterPattern2D の初期表示半球を +Z にそろえる
         #region MasterPattern3D control // (260322Ch)
@@ -969,6 +974,43 @@ public partial class FormEBSD : FormBase
         Draw();
     }
 
+    /// <summary>MC 分布の (energy × depth) 重み付けと深さプロファイルに使う「干渉性後方散乱源の深さ」を現在の深さモードで返す。260919Cl 追加</summary>
+    private double GetMonteCarloSourceDepth(in EbsdBackscatteredElectron e, MonteCarloDistributionDepthMode? mode = null) => (mode ?? monteCarloDistributionDepthMode) switch // (/simplify2) ワーカーからは mode を明示して UI フィールドを読まない
+    {
+        MonteCarloDistributionDepthMode.LastInelasticEventDepth when e.HasLastInelasticEvent => e.LastInelasticDepth,
+        MonteCarloDistributionDepthMode.LastDecoherenceEventDepth when e.HasLastDecoherenceEvent => e.LastDecoherenceDepth,
+        _ => e.Depth, // transport モード、または該当イベントが無い電子は最後の輸送イベントの深さ
+    };
+
+    /// <summary>源の深さモード切替。BSE は 3 種の深さを全部持っているので MC を再実行せずに再ビニングし、統計とパターンを更新する。260919Cl 追加</summary>
+    private void ComboBoxMonteCarloDepthMode_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        monteCarloDistributionDepthMode = (MonteCarloDistributionDepthMode)Math.Clamp(comboBoxMonteCarloDepthMode.SelectedIndex, 0, Enum.GetValues<MonteCarloDistributionDepthMode>().Length - 1); // (/simplify) enum の要素数に追随
+        if (BSEs == null || BSEs.Length == 0) return;
+        RebinMcDistribution();
+        CalcStatistics();
+        Draw();
+    }
+
+    /// <summary>表面非晶質層の厚さ変更。BSE は保持しているので MC を再実行せずに再ビニングして再描画する。260919Cl 追加</summary>
+    private readonly System.Windows.Forms.Timer amorphousLayerDebounce = new() { Interval = 200 }; // 260919Cl 追加 (codex 助言): 上下ボタン連打で毎回 全 BSE を再ビニングしない
+    private void NumericBoxAmorphousLayer_ValueChanged(object sender, EventArgs e)
+    {
+        if (BSEs == null || BSEs.Length == 0) return;
+        // RebinMcDistribution(); Draw(); // 260919Cl 変更前: 即時に再ビニング + 再描画
+        amorphousLayerDebounce.Stop();
+        amorphousLayerDebounce.Tick -= AmorphousLayerDebounce_Tick; amorphousLayerDebounce.Tick += AmorphousLayerDebounce_Tick; // 多重購読を避ける
+        amorphousLayerDebounce.Start(); // 最後の変更から 200 ms 後に 1 回だけ再ビニング (構築開始時は AmorphousLayerThicknessNm を直接読むので保留値の取りこぼしは無い)
+    }
+
+    private void AmorphousLayerDebounce_Tick(object sender, EventArgs e) // 260919Cl 追加
+    {
+        amorphousLayerDebounce.Stop();
+        if (BSEs == null || BSEs.Length == 0) return;
+        RebinMcDistribution();
+        Draw();
+    }
+
     /// <summary>検出器ジオメトリ変更時に、保存済み BSE を新しい検出器へ再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加</summary>
     private void RebinMcDistribution()
     {
@@ -976,11 +1018,13 @@ public partial class FormEBSD : FormBase
         if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0 || MasterPattern.Depths.Length == 0) //260725Ch
             return;
         var bseRaw = BSEs.Select(e => (
-            monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
-                ? e.LastInelasticDepth
-                : e.Depth,
+            // monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent // 260919Cl 変更前
+            //     ? e.LastInelasticDepth
+            //     : e.Depth,
+            GetMonteCarloSourceDepth(e), // 260919Cl 変更: 3 モード (inelastic / transport / decoherence) を 1 か所で解決
                 e.Vec, e.Energy)).ToArray();
-        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths);
+        // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths); // 260919Cl 変更前
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm); // 260919Cl 表面非晶質層
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
@@ -2053,7 +2097,8 @@ public partial class FormEBSD : FormBase
 
             //最大深さ分布　ここから
             {
-                var depths = bse2.Select(e => e.HasLastInelasticEvent ? e.LastInelasticDepth : e.Depth); // (260401Ch) MasterPattern 重み付けと同じく、可能なら最後の非弾性散乱深さを深さ分布に使う
+                // var depths = bse2.Select(e => e.HasLastInelasticEvent ? e.LastInelasticDepth : e.Depth); // (260401Ch) MasterPattern 重み付けと同じく、可能なら最後の非弾性散乱深さを深さ分布に使う // 260919Cl 変更前
+                var depths = bse2.Select(e => GetMonteCarloSourceDepth(e)).ToArray(); // 260919Cl 変更: MasterPattern 重み付けと同じ深さモードを深さ分布にも使う (/simplify2: Max と Histogram で 2 回列挙しない)
                 double step = 1, lower = 0, upper = depths.Max();//nm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
@@ -2218,10 +2263,12 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>Save の出力種別。<c>buttonSaveImage_Click</c> の Filter の並びと同じ順にしておくこと。260812Cl 追加</summary>
-    private enum ExportKind { Png, Tiff, Emf, Csv }
+    // private enum ExportKind { Png, Tiff, Emf, Csv } // 260919Cl 変更前
+    internal enum ExportKind { Png, Tiff, Emf, Csv } // 260919Cl 変更: 外部ハーネス (InternalsVisibleTo) から使えるよう internal
 
     /// <summary>パターンを filename へ書き出す。260811Cl 追加</summary>
-    private void SavePatternTo(string filename, ExportKind kind)
+    // private void SavePatternTo(string filename, ExportKind kind) // 260919Cl 変更前 (private)
+    internal void SavePatternTo(string filename, ExportKind kind) // 260919Cl 変更: 外部ハーネス (源深さモード比較、InternalsVisibleTo) から呼べるよう internal
     {
         try
         {
@@ -2547,6 +2594,8 @@ public partial class FormEBSD : FormBase
         try
         {
             progress.Report((0, "MonteCarlo"));
+            double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
+            var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
             var result = await Task.Run(() =>
             {
                 var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
@@ -2562,19 +2611,22 @@ public partial class FormEBSD : FormBase
 
                 progress.Report((92, "Analyzing Monte Carlo ranges"));
                 var bseRaw = bses.Select(e => (
-                    monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
-                        ? e.LastInelasticDepth
-                        : e.Depth,
+                    // monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent // 260919Cl 変更前
+                    //     ? e.LastInelasticDepth
+                    //     : e.Depth,
+                    GetMonteCarloSourceDepth(e, depthMode), // 260919Cl 変更: 3 モード (inelastic / transport / decoherence) を 1 か所で解決
                         e.Vec, e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
-                var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch)
-                var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth99); // (260327Ch)
+                // var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch) 260919Cl 変更前
+                var (energyLoss95, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // 260919Cl 変更: 損失 95 パーセンタイル・16 段
+                var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss95, depth99); // (260327Ch) 260919Cl energyLoss80 → energyLoss95
 
                 progress.Report((95, "Fitting Monte Carlo distribution"));
                 var distribution = new EbsdMonteCarloDistribution(
                     bseRaw, energy,
                     // detectorTilt, detectorY, detectorZ, detectorR, // 260723Cl 変更前: 円形検出器 (半径)
                     detectorTilt, detectorX, detectorY, detectorZ, detectorHalfW, detectorHalfH, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要) // 260723Cl: 矩形検出器 (半幅・半高) + 中心 X
-                    grid.energies, grid.depths);
+                    // grid.energies, grid.depths); // 260919Cl 変更前
+                    grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm); // 260919Cl 表面非晶質層
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 
@@ -2633,7 +2685,7 @@ public partial class FormEBSD : FormBase
     /// build は非同期かつ重い (MonteCarlo + Bethe) が、完了判定は凝ったことをせず、GuiCapture 側が
     /// 「画面が変化しなくなったら完了」と見なす (5秒ごとの画面比較)。通常操作には影響させず、呼び出し元は GuiCapture に限定する。
     /// </summary>
-    internal void PrepareCaptureForGuiAudit()
+    internal void PrepareCaptureForGuiAudit() // 260919Cl: 外部ハーネスは InternalsVisibleTo で internal のまま使う
     {
         if (FormMain?.Crystal == null || masterPatternEbsd.IsBuilding)
             return;
@@ -2658,6 +2710,7 @@ public partial class FormEBSD : FormBase
             return;
 
         buttonCreateMasterPattern.Enabled = false; // (260327Ch) MC 前処理中の多重起動を防ぐ
+        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = false; // 260919Cl 追加 (/simplify2): 構築中の再ビニングと結果の取り合いを防ぐ
         // buttonStop.Visible = false; // (260327Ch) MC 前処理はまだ停止できないため、Bethe 開始まで出さない // 260406Cl 旧: MC 中も Stop を表示するよう変更
         monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
@@ -2678,6 +2731,7 @@ public partial class FormEBSD : FormBase
                 DisposeMonteCarloCts(); // 260406Cl
                 buttonStop.Visible = false; // 260406Cl MC 失敗/キャンセル時は Stop を隠す
                 buttonCreateMasterPattern.Enabled = true; // (260327Ch)
+                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
                 return;
             }
             DisposeMonteCarloCts(); // 260406Cl MC 完了後は CTS を破棄 (Bethe は masterPatternEbsd が管理)
@@ -2692,7 +2746,8 @@ public partial class FormEBSD : FormBase
                 BetheMethod.Solver.Eigen_Eigen,
                 32,
                 checkBoxNonLocalAbsorption.Checked,
-                checkBoxTDSBackground.Checked); // (260321Ch) UI 値をその場で request に束ねる
+                checkBoxTDSBackground.Checked, // (260321Ch) UI 値をその場で request に束ねる
+                checkBoxAbsorbedFluxBackground.Checked); // 260919Cl 追加: 吸収フラックスの拡散背景再注入
             masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged; // (260327Ch) 1 回しか使わない helper はインライン化
             masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed; // (260327Ch)
             masterPatternEbsd.MasterPatternProgressChanged += MasterPattern_EBSD_ProgressChanged; // (260327Ch)
@@ -2701,6 +2756,7 @@ public partial class FormEBSD : FormBase
             {
                 DetachMasterPatternBuildEvents();
                 buttonCreateMasterPattern.Enabled = true; // (260327Ch)
+                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
                 return;
             }
         }
@@ -2709,6 +2765,7 @@ public partial class FormEBSD : FormBase
             DisposeMonteCarloCts(); // 260406Cl
             DetachMasterPatternBuildEvents();
             buttonCreateMasterPattern.Enabled = true; // (260327Ch)
+            comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
             buttonStop.Visible = false; // (260327Ch)
             throw;
         }
@@ -2753,6 +2810,7 @@ public partial class FormEBSD : FormBase
     {
         DetachMasterPatternBuildEvents();
         buttonCreateMasterPattern.Enabled = true;
+        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
         buttonStop.Visible = false;
         var sec = sw1.ElapsedMilliseconds / 1000.0;
 
@@ -2791,6 +2849,9 @@ public partial class FormEBSD : FormBase
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了)
         // toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
         toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
+        // 260919Cl 追加 (codex 助言): 原子変位パラメータ未設定 (B=0) の原子があると吸収ポテンシャル U' がゼロ (吸収なし・非局所源ゼロ・再注入ゼロ) なので明示する。DB の初期結晶は Dsf が空のものが多い
+        int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0);
+        if (sitesWithoutB > 0) toolStripStatusLabelDetail.Text += $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B.";
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 

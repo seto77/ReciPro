@@ -106,6 +106,11 @@
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
             checkBoxTDSBackground = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelMonteCarloDepthMode = new System.Windows.Forms.FlowLayoutPanel(); // 260919Cl 追加
+            labelMonteCarloDepthMode = new System.Windows.Forms.Label(); // 260919Cl 追加
+            comboBoxMonteCarloDepthMode = new System.Windows.Forms.ComboBox(); // 260919Cl 追加
+            numericBoxAmorphousLayer = new NumericBox(); // 260919Cl 追加
+            checkBoxAbsorbedFluxBackground = new System.Windows.Forms.CheckBox(); // 260919Cl 追加
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
@@ -307,6 +312,7 @@
             flowLayoutPanelEnergyRange.SuspendLayout();
             flowLayoutPanelThicknessRange.SuspendLayout();
             flowLayoutPanelAbsorptionOptions.SuspendLayout();
+            flowLayoutPanelMonteCarloDepthMode.SuspendLayout(); // 260919Cl 追加
             statusStripMain.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             panelMasterPattern3D.SuspendLayout();
@@ -1649,6 +1655,9 @@
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelEnergyRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelThicknessRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelAbsorptionOptions);
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMonteCarloDepthMode); // 260919Cl 追加
+            flowLayoutPanelSimulationParameters.Controls.Add(numericBoxAmorphousLayer); // 260919Cl 追加
+            flowLayoutPanelSimulationParameters.Controls.Add(checkBoxAbsorbedFluxBackground); // 260919Cl 追加
             flowLayoutPanelSimulationParameters.Name = "flowLayoutPanelSimulationParameters";
             // 
             // flowLayoutPanelMaxNumOfGAndGrid
@@ -1681,6 +1690,53 @@
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxNonLocalAbsorption);
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxTDSBackground);
             flowLayoutPanelAbsorptionOptions.Name = "flowLayoutPanelAbsorptionOptions";
+            // 
+            // flowLayoutPanelMonteCarloDepthMode (260919Cl 追加)
+            // 
+            resources.ApplyResources(flowLayoutPanelMonteCarloDepthMode, "flowLayoutPanelMonteCarloDepthMode");
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(labelMonteCarloDepthMode);
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(comboBoxMonteCarloDepthMode);
+            flowLayoutPanelMonteCarloDepthMode.Name = "flowLayoutPanelMonteCarloDepthMode";
+            // 
+            // labelMonteCarloDepthMode (260919Cl 追加)
+            // 
+            resources.ApplyResources(labelMonteCarloDepthMode, "labelMonteCarloDepthMode");
+            labelMonteCarloDepthMode.Name = "labelMonteCarloDepthMode";
+            toolTip.SetToolTip(labelMonteCarloDepthMode, resources.GetString("labelMonteCarloDepthMode.ToolTip"));
+            // 
+            // comboBoxMonteCarloDepthMode (260919Cl 追加)
+            // 
+            comboBoxMonteCarloDepthMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxMonteCarloDepthMode.DropDownWidth = 420; // 260919Cl 追加 (/simplify2): de 等の長い項目名がドロップダウンで切れない
+            resources.ApplyResources(comboBoxMonteCarloDepthMode, "comboBoxMonteCarloDepthMode");
+            comboBoxMonteCarloDepthMode.FormattingEnabled = true;
+            comboBoxMonteCarloDepthMode.Items.AddRange(new object[] { resources.GetString("comboBoxMonteCarloDepthMode.Items"), resources.GetString("comboBoxMonteCarloDepthMode.Items1"), resources.GetString("comboBoxMonteCarloDepthMode.Items2") });
+            comboBoxMonteCarloDepthMode.Name = "comboBoxMonteCarloDepthMode";
+            toolTip.SetToolTip(comboBoxMonteCarloDepthMode, resources.GetString("comboBoxMonteCarloDepthMode.ToolTip"));
+            comboBoxMonteCarloDepthMode.SelectedIndexChanged += ComboBoxMonteCarloDepthMode_SelectedIndexChanged;
+            // 
+            // numericBoxAmorphousLayer (260919Cl 追加)
+            // 
+            numericBoxAmorphousLayer.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAmorphousLayer.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxAmorphousLayer, "numericBoxAmorphousLayer");
+            numericBoxAmorphousLayer.Maximum = 100D;
+            numericBoxAmorphousLayer.Minimum = 0D;
+            numericBoxAmorphousLayer.Name = "numericBoxAmorphousLayer";
+            numericBoxAmorphousLayer.ShowUpDown = true;
+            numericBoxAmorphousLayer.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxAmorphousLayer, resources.GetString("numericBoxAmorphousLayer.ToolTip"));
+            numericBoxAmorphousLayer.Value = 0D;
+            numericBoxAmorphousLayer.ValueBoxWidth = 50;
+            numericBoxAmorphousLayer.ValueChanged += NumericBoxAmorphousLayer_ValueChanged;
+            // 
+            // checkBoxAbsorbedFluxBackground (260919Cl 追加)
+            // 
+            // checkBoxAbsorbedFluxBackground.Checked = true; // 260919Cl 変更前: 既定 ON。codex 助言 (絶対強度 10〜25% 変化 + O(bLen³) の追加コストを既定にしない) で既定 OFF に
+            resources.ApplyResources(checkBoxAbsorbedFluxBackground, "checkBoxAbsorbedFluxBackground");
+            checkBoxAbsorbedFluxBackground.Name = "checkBoxAbsorbedFluxBackground";
+            toolTip.SetToolTip(checkBoxAbsorbedFluxBackground, resources.GetString("checkBoxAbsorbedFluxBackground.ToolTip"));
+            checkBoxAbsorbedFluxBackground.UseVisualStyleBackColor = true;
             // 
             // statusStripMain
             // 
@@ -2081,6 +2137,8 @@
             flowLayoutPanelThicknessRange.PerformLayout();
             flowLayoutPanelAbsorptionOptions.ResumeLayout(false);
             flowLayoutPanelAbsorptionOptions.PerformLayout();
+            flowLayoutPanelMonteCarloDepthMode.ResumeLayout(false); // 260919Cl 追加
+            flowLayoutPanelMonteCarloDepthMode.PerformLayout(); // 260919Cl 追加
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
@@ -2262,6 +2320,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergyRange;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThicknessRange;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAbsorptionOptions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMonteCarloDepthMode; // 260919Cl 追加
+        private System.Windows.Forms.Label labelMonteCarloDepthMode; // 260919Cl 追加
+        private System.Windows.Forms.ComboBox comboBoxMonteCarloDepthMode; // 260919Cl 追加
+        private NumericBox numericBoxAmorphousLayer; // 260919Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxAbsorbedFluxBackground; // 260919Cl 追加
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
         private NumericBox numericBoxEnergy;

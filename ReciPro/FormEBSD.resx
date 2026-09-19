@@ -1290,11 +1290,18 @@ scattering) when building the master pattern.</value>
     <value>146</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Include TDS background</value>
+    <value>Non-local source</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>Include TDS (Thermal Diffuse Scattering)
-background intensity in the master pattern.</value>
+    <value>Replace the local (atom-site) backscatter source
+with the non-local absorptive-potential form
+(U'_back integrated over the backward hemisphere).
+Both use the same physical cross-section, so this is
+a model switch, not an additive background. This is
+the backscatter source term; the neighbouring "Use
+non-local absorption model" controls the absorptive
+potential U' (thermal diffuse scattering, TDS) that
+damps the wave, and the two are independent.</value>
   </data>
   <data name="&gt;&gt;checkBoxTDSBackground.Name" xml:space="preserve">
     <value>checkBoxTDSBackground</value>
@@ -6949,5 +6956,256 @@ orientation is not changed.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 116</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 29</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.TabIndex" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="flowLayoutPanelMonteCarloDepthMode.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMonteCarloDepthMode.Name" xml:space="preserve">
+    <value>flowLayoutPanelMonteCarloDepthMode</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMonteCarloDepthMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMonteCarloDepthMode.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSimulationParameters</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMonteCarloDepthMode.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 0</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>Source depth (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Which Monte Carlo event defines the depth of the
+coherent backscatter source used for the (energy ×
+depth) weighting of the master pattern. Last
+inelastic: only discrete inelastic events reset the
+source (default). Last transport: every event,
+elastic or inelastic, resets it. Last decoherence:
+an event resets the source only when it is
+localized enough to leave which-atom information in
+the sample. Elastic events reset it with the
+thermal-diffuse probability 1 − exp(−2B s²) from
+the Debye–Waller factor (coherent Bragg scattering,
+already described by the Bloch waves, does not).
+Inelastic events reset it always for core/high-loss
+excitations, and for valence excitations only with
+the fraction whose momentum transfer exceeds the
+plasmon cutoff q_c = ω_p/v_F (plasmons and
+delocalized electron–hole pairs preserve the Bloch
+state). Shallower sources carry weaker Kikuchi
+modulation, so this sets the diffuse background
+from transport alone, without a free parameter.</value>
+  </data>
+  <data name="&gt;&gt;labelMonteCarloDepthMode.Name" xml:space="preserve">
+    <value>labelMonteCarloDepthMode</value>
+  </data>
+  <data name="&gt;&gt;labelMonteCarloDepthMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMonteCarloDepthMode.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMonteCarloDepthMode</value>
+  </data>
+  <data name="&gt;&gt;labelMonteCarloDepthMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>Last inelastic event</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>Last transport event (any)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>Last decoherence event (DW-weighted)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 3</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 25</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Which Monte Carlo event defines the depth of the
+coherent backscatter source used for the (energy ×
+depth) weighting of the master pattern. Last
+inelastic: only discrete inelastic events reset the
+source (default). Last transport: every event,
+elastic or inelastic, resets it. Last decoherence:
+an event resets the source only when it is
+localized enough to leave which-atom information in
+the sample. Elastic events reset it with the
+thermal-diffuse probability 1 − exp(−2B s²) from
+the Debye–Waller factor (coherent Bragg scattering,
+already described by the Bloch waves, does not).
+Inelastic events reset it always for core/high-loss
+excitations, and for valence excitations only with
+the fraction whose momentum transfer exceeds the
+plasmon cutoff q_c = ω_p/v_F (plasmons and
+delocalized electron–hole pairs preserve the Bloch
+state). Shallower sources carry weaker Kikuchi
+modulation, so this sets the diffuse background
+from transport alone, without a free parameter.</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMonteCarloDepthMode.Name" xml:space="preserve">
+    <value>comboBoxMonteCarloDepthMode</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMonteCarloDepthMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMonteCarloDepthMode.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMonteCarloDepthMode</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMonteCarloDepthMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.FooterText" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>Surface amorphous layer</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 148</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 3</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 25</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>Thickness (nm) of a non-crystalline surface layer
+(native oxide, contamination, polishing or ion-milling
+damage). Electrons whose coherent backscatter source
+lies inside the layer carry no Kikuchi modulation and
+are added as a direction-averaged (uniform)
+contribution with the same intensity per electron;
+sources below the layer are measured from the crystal
+surface. Transport is computed with the crystal's
+composition and density, which is adequate for a few
+nm. 0 disables it. Changing it re-bins the stored
+electrons without re-running the Monte Carlo. Range
+0–100 nm, step 0.1 nm.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAmorphousLayer.Name" xml:space="preserve">
+    <value>numericBoxAmorphousLayer</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAmorphousLayer.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAmorphousLayer.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSimulationParameters</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAmorphousLayer.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 179</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 21</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>Re-inject absorbed flux as diffuse background</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>In the Bloch-wave calculation, electrons removed
+from the coherent channel by absorption (thermal
+diffuse scattering) simply disappear. Physically
+they still reach the detector, without Kikuchi
+modulation. This option adds them back as a diffuse
+background: D(t) = Σσ_n ∫(1 − N(z))dz, where N(z)
+is the unit-cell-averaged density of the coherent
+wave. Flux is then conserved and absolute
+intensities rise (about 10 % for Si, 25 % for Fe3O4
+at 20 kV). The relative brightness of zone axes
+changes little and depends on the crystal, because
+the re-injected flux still belongs to the same exit
+direction. No effect when B = 0 (B = Debye–Waller
+temperature factor; B = 0 means no absorption).</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.Name" xml:space="preserve">
+    <value>checkBoxAbsorbedFluxBackground</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSimulationParameters</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
 </root>

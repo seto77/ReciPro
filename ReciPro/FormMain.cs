@@ -754,6 +754,8 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.DetectorPixelSize);
                 rw(() => FormEBSD.SampleTiltDegree);
                 rw(() => FormEBSD.FlipDetectorLeftRight);
+                rw(() => FormEBSD.AmorphousLayerThicknessNm); // 260919Cl 追加
+                rw(() => FormEBSD.MonteCarloSourceDepthMode); // 260919Cl 追加
             }
             #endregion
 
@@ -1362,7 +1364,7 @@ public partial class FormMain : FormBase
     /// </summary>
     /// <param name="preferredName">結晶名に含まれていてほしい文字列。既定は "spinel"。</param>
     /// <returns>指定名を含む結晶を見つけて選択できた場合は true。</returns>
-    internal bool PrepareCaptureCrystalSelection(string preferredName = "spinel")
+    internal bool PrepareCaptureCrystalSelection(string preferredName = "spinel") // 260919Cl: 外部ハーネスは InternalsVisibleTo で internal のまま使う
     {
         if (string.IsNullOrWhiteSpace(preferredName))
             return false;

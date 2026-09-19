@@ -112,7 +112,7 @@
     <value>使用非局域吸收模型</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>納入 TDS 背景</value>
+    <value>非局域背向散射源</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>厚度自</value>
@@ -422,8 +422,11 @@ a, b, c 軸標籤文字。</value>
 晶帶軸指數 [u v w]。</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>在主圖樣中納入 TDS（熱漫散射）
-背景強度。</value>
+    <value>將局域於原子位置的背向散射源替換為在後半球積分的
+非局域吸收勢形式 (U'_back)。兩者使用相同的物理截
+面，因此這是模型切換，而非疊加背景。
+這是背向散射源項；相鄰的「非局域吸收模型」控制使
+波衰減的吸收勢 U' (熱漫散射，TDS)，兩者相互獨立。</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>以模擬的 BSE（背向散射電子）能量與深度
@@ -805,5 +808,67 @@ robust ZNCC 逐一比較來搜尋取向。
     <value>圖樣顯示的大小 (螢幕像素，寬 × 高)。
 變更後視窗會隨之調整大小。
 偵測器本身的像素數不受影響。</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>源深度 (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>選擇用哪個蒙地卡羅事件定義相干背向散射源的深度，用於
+master pattern 的 (能量 × 深度) 加權。最後一次非彈性
+：僅離散非彈性事件重設源 (預設)。最後一次輸運：任何事
+件都重設。最後一次退相干：只有局域到足以在樣品中留下
+「哪個原子散射」資訊的事件才重設源。彈性事件以
+Debye–Waller 因子給出的熱漫散射機率 1 − exp(−2B s²)
+重設 (Bloch 波已描述的相干 Bragg 散射不重設)；非彈性
+事件對內殼/高損失激發總是重設，對價電子激發僅按動量轉
+移超過電漿子截止 q_c = ω_p/v_F 的比例重設
+(電漿子與非局域電子–電洞對保持 Bloch 態)。源越淺，
+菊池調變越弱，因此漫背景僅由輸運決定，無自由參數。</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>最後一次非彈性散射</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>最後一次輸運事件 (任意)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>最後一次退相干 (DW 加權)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>選擇用哪個蒙地卡羅事件定義相干背向散射源的深度，用於
+master pattern 的 (能量 × 深度) 加權。最後一次非彈性
+：僅離散非彈性事件重設源 (預設)。最後一次輸運：任何事
+件都重設。最後一次退相干：只有局域到足以在樣品中留下
+「哪個原子散射」資訊的事件才重設源。彈性事件以
+Debye–Waller 因子給出的熱漫散射機率 1 − exp(−2B s²)
+重設 (Bloch 波已描述的相干 Bragg 散射不重設)；非彈性
+事件對內殼/高損失激發總是重設，對價電子激發僅按動量轉
+移超過電漿子截止 q_c = ω_p/v_F 的比例重設
+(電漿子與非局域電子–電洞對保持 Bloch 態)。源越淺，
+菊池調變越弱，因此漫背景僅由輸運決定，無自由參數。</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>表面非晶層</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>非晶表面層 (自然氧化膜、污染、拋光或離子減薄損傷層)
+的厚度 (nm)。相干背向散射源位於該層內的電子不帶菊池調
+變，以每個電子相同強度的方向平均 (均勻) 成分疊加；層以
+下的源從晶體表面起算深度。輸運按晶體的成分與密度計算
+(幾 nm 足夠)。0 為停用。更改只對已儲存的電子重新分箱，
+不會重新執行蒙地卡羅。 範圍 0–100 nm，步長 0.1 nm。</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>將吸收通量重新注入為漫背景</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>在 Bloch 波計算中，因吸收 (熱漫散射) 離開相干通道的
+電子會直接消失。實際上它們仍會到達偵測器，
+只是不帶菊池調變。此選項把這部分作為漫背景加回：
+D(t) = Σσ_n ∫(1 − N(z))dz，N(z) 為相干波在單位晶胞內
+的平均密度。通量守恆，絕對強度上升 (20 kV 下 Si 約
+10%，Fe3O4 約 25%)。重新注入的通量仍屬於同一出射方
+向，因此晶帶軸的相對亮度變化很小且取決於晶體。B
+(Debye–Waller 溫度因子) = 0 即無吸收時無效果。</value>
   </data>
 </root>

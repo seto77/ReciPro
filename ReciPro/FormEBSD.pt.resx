@@ -112,7 +112,7 @@
     <value>Absorção não local</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>Fundo TDS</value>
+    <value>Fonte não local</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Espessura</value>
@@ -371,7 +371,8 @@ ao longo da normal à superfície da amostra.</value>
 do eixo Z (a direção do feixe de elétrons).</value>
   </data>
   <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
-    <value>Define a vista de geometria 3D para um ponto de vista oblíquo em perspectiva aérea.</value>
+    <value>Define a vista de geometria 3D para um
+ponto de vista oblíquo em perspectiva aérea.</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
     <value>Sobrepõe os eixos cristalinos a (vermelho), b
@@ -426,7 +427,8 @@ em forma de banda formadas por elétrons espalhados
 inelasticamente). Ativa o grupo de opções das linhas de Kikuchi.</value>
   </data>
   <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
-    <value>Desenha a grade de divisão do detector (linhas de malha) sobre o padrão.</value>
+    <value>Desenha a grade de divisão do detector
+(linhas de malha) sobre o padrão.</value>
   </data>
   <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
     <value>Sobrepõe as linhas de Kikuchi, os índices, os eixos de zona
@@ -437,8 +439,15 @@ e o contorno do detector sobre o padrão.</value>
 interseções das bandas de Kikuchi.</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>Inclui a intensidade de fundo do TDS (Espalhamento
-Térmico Difuso) no master pattern.</value>
+    <value>Substitui a fonte de retroespalhamento localizada nos
+sítios atômicos pela forma não local do potencial
+absortivo (U'_back integrado sobre o hemisfério
+posterior). Ambas usam a mesma seção de choque
+física: é uma troca de modelo, não um fundo aditivo.
+Este é o termo de fonte de retroespalhamento; o
+vizinho «modelo de absorção não local» controla o
+potencial absortivo U' (espalhamento térmico difuso,
+TDS) que atenua a onda, e os dois são independentes.</value>
   </data>
   <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
     <value>Renderiza o padrão EBSD ponderado pela distribuição
@@ -579,10 +588,12 @@ EBSD renderizar no modo de fatia única;
 o valor é mostrado na caixa Depth.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>Ajusta o tamanho da fonte do texto de índices da sobreposição.</value>
+    <value>Ajusta o tamanho da fonte do
+texto de índices da sobreposição.</value>
   </data>
   <data name="labelTextSize.ToolTip" xml:space="preserve">
-    <value>Ajusta o tamanho da fonte do texto de índices da sobreposição.</value>
+    <value>Ajusta o tamanho da fonte do
+texto de índices da sobreposição.</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
     <value>Define a tensão de aceleração / comprimento de onda
@@ -863,5 +874,91 @@ na geometria do detector.</value>
     <value>Tamanho da vista do padrão em pixels de tela
 (largura x altura). Alterá-lo redimensiona a janela.
 A contagem de pixels do detector não é afetada.</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>Profundidade da fonte (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Qual evento Monte Carlo define a profundidade da fonte
+coerente de retroespalhamento usada na ponderação
+(energia × profundidade). Último inelástico: só
+eventos inelásticos discretos reiniciam a fonte
+(padrão). Último transporte: qualquer evento. Última
+decoerência: só eventos localizados o bastante para
+deixar na amostra a informação de qual átomo espalhou.
+Os elásticos com a probabilidade térmico-difusa 1 −
+exp(−2B s²) do fator de Debye–Waller (o espalhamento
+de Bragg coerente não); os inelásticos sempre para
+excitações de caroço ou alta perda, e para excitações
+de valência só com a fração cuja transferência de
+momento excede o corte plasmônico q_c = ω_p/v_F
+(plasmons e pares elétron–buraco deslocalizados
+preservam o estado de Bloch). Fontes mais rasas
+carregam menos modulação de Kikuchi: o fundo difuso
+fica definido só pelo transporte, sem parâmetro livre.</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>Último evento inelástico</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>Último evento de transporte (qualquer)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>Última decoerência (ponderada por DW)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>Qual evento Monte Carlo define a profundidade da fonte
+coerente de retroespalhamento usada na ponderação
+(energia × profundidade). Último inelástico: só
+eventos inelásticos discretos reiniciam a fonte
+(padrão). Último transporte: qualquer evento. Última
+decoerência: só eventos localizados o bastante para
+deixar na amostra a informação de qual átomo espalhou.
+Os elásticos com a probabilidade térmico-difusa 1 −
+exp(−2B s²) do fator de Debye–Waller (o espalhamento
+de Bragg coerente não); os inelásticos sempre para
+excitações de caroço ou alta perda, e para excitações
+de valência só com a fração cuja transferência de
+momento excede o corte plasmônico q_c = ω_p/v_F
+(plasmons e pares elétron–buraco deslocalizados
+preservam o estado de Bloch). Fontes mais rasas
+carregam menos modulação de Kikuchi: o fundo difuso
+fica definido só pelo transporte, sem parâmetro livre.</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>Camada amorfa superficial</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>Espessura (nm) de uma camada superficial não
+cristalina (óxido nativo, contaminação, dano de
+polimento ou de desbaste iônico). Elétrons cuja fonte
+coerente de retroespalhamento está dentro da camada
+não carregam modulação de Kikuchi e são somados como
+contribuição média em direção (uniforme) com a mesma
+intensidade por elétron; fontes abaixo da camada são
+medidas a partir da superfície do cristal. O
+transporte é calculado com a composição e densidade
+do cristal (adequado para poucos nm). 0 desativa.
+Mudar apenas reagrupa os elétrons salvos, sem repetir
+o Monte Carlo. Intervalo 0–100 nm, passo 0,1 nm.</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>Reinjetar fluxo absorvido como fundo</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>No cálculo por ondas de Bloch, os elétrons retirados
+do canal coerente pela absorção (espalhamento
+térmico difuso) simplesmente desaparecem.
+Fisicamente eles ainda chegam ao detector, sem
+modulação de Kikuchi. Esta opção os devolve como
+fundo difuso: D(t) = Σσ_n ∫(1 − N(z))dz, onde N(z) é
+a densidade da onda coerente média na célula
+unitária. O fluxo é conservado e as intensidades
+absolutas aumentam (a 20 kV, cerca de 10 % para Si e
+25 % para Fe3O4). O brilho relativo dos eixos de
+zona muda pouco e depende do cristal, porque o fluxo
+reinjetado continua pertencendo à mesma direção de
+saída. Sem efeito se B = 0 (B = fator de temperatura
+de Debye–Waller; B = 0 significa sem absorção).</value>
   </data>
 </root>

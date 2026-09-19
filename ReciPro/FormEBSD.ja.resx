@@ -279,11 +279,15 @@ Start から End までをこの増分で計算します。</value>
 含む複素ポテンシャル吸収項)を使用します。</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
-    <value>TDS バックグラウンド</value>
+    <value>非局所後方散乱源</value>
   </data>
   <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
-    <value>TDS(熱散漫散乱)バックグラウンド
-強度をマスターパターンに含めます。</value>
+    <value>原子位置に局在した後方散乱源を、後方半球で積分した
+非局所の吸収ポテンシャル形式 (U'_back) に置き換えます。
+どちらも同じ物理断面積を使うので、背景の加算ではなく
+モデルの切り替えです。 これは後方散乱の源の項です。隣の
+「非局所吸収モデル」は波を減衰させる吸収ポテンシャル
+U' (熱散漫散乱、TDS) の側で、両者は独立です。</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>深さ範囲</value>
@@ -1291,5 +1295,87 @@ Radon バンド証拠の z 値、ZNCC =
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Text" xml:space="preserve">
+    <value>源の深さ (MC)</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>マスターパターンの (エネルギー × 深さ) 重み付けに使う
+「干渉性後方散乱源の深さ」を、モンテカルロのどの
+イベントで決めるか。最後の非弾性散乱: 離散非弾性散乱
+だけが源をリセット (既定)。最後の散乱: 弾性・非弾性を
+問わず全イベントでリセット。最後のコヒーレンス破壊:
+「どの原子で散乱したか」の情報を試料に残すほど局在し
+た事象だけが源をリセット。弾性散乱は Debye–Waller
+因子から決まる熱散漫成分の確率 1 − exp(−2B s²) で
+(Bloch 波が扱う干渉性 Bragg 散乱はリセットしない)、
+非弾性散乱は内殻・高損失励起なら常に、価電子励起なら
+運動量移行がプラズモンカットオフ q_c = ω_p/v_F を超え
+る割合だけリセット (プラズモンや非局在の電子正孔対は
+Bloch 状態を保つ)。源が浅いほど菊池変調が弱いので、
+自由パラメータ無しに輸送だけで拡散背景が決まります。</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
+    <value>最後の非弾性散乱</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items1" xml:space="preserve">
+    <value>最後の散乱 (弾性/非弾性を問わず)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Items2" xml:space="preserve">
+    <value>最後のコヒーレンス破壊 (DW 重み)</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
+    <value>マスターパターンの (エネルギー × 深さ) 重み付けに使う
+「干渉性後方散乱源の深さ」を、モンテカルロのどの
+イベントで決めるか。最後の非弾性散乱: 離散非弾性散乱
+だけが源をリセット (既定)。最後の散乱: 弾性・非弾性を
+問わず全イベントでリセット。最後のコヒーレンス破壊:
+「どの原子で散乱したか」の情報を試料に残すほど局在し
+た事象だけが源をリセット。弾性散乱は Debye–Waller
+因子から決まる熱散漫成分の確率 1 − exp(−2B s²) で
+(Bloch 波が扱う干渉性 Bragg 散乱はリセットしない)、
+非弾性散乱は内殻・高損失励起なら常に、価電子励起なら
+運動量移行がプラズモンカットオフ q_c = ω_p/v_F を超え
+る割合だけリセット (プラズモンや非局在の電子正孔対は
+Bloch 状態を保つ)。源が浅いほど菊池変調が弱いので、
+自由パラメータ無しに輸送だけで拡散背景が決まります。</value>
+  </data>
+  <data name="labelMonteCarloDepthMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="comboBoxMonteCarloDepthMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
+    <value>表面非晶質層</value>
+  </data>
+  <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
+    <value>非晶質の表面層 (自然酸化膜・コンタミ・研磨や
+イオンミリングのダメージ層) の厚さ (nm)。
+干渉性後方散乱源がこの層内にある電子は菊池変調を
+持たず、電子 1 本あたり同じ強度の方向平均 (一様)
+成分として加算します。層より下の源は結晶表面から
+深さを測ります。輸送は結晶と同じ組成・密度で
+計算します (数 nm なら十分)。0 で無効。変更時は
+保存済み電子を再ビニングするだけで、モンテカルロ
+は再実行しません。 範囲 0〜100 nm、刻み 0.1 nm。</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
+    <value>吸収フラックスを拡散背景へ再注入</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
+    <value>Bloch 波の計算では、吸収 (熱散漫散乱) で干渉性チャネル
+から外れた電子は消えてしまいます。実際にはそれらも
+検出器に届き、菊池変調を持たない背景になります。この
+オプションはその分を拡散背景として戻します: D(t) =
+Σσ_n ∫(1 − N(z))dz、N(z) は干渉性の波の単位胞平均密
+度。フラックスが保存し、絶対強度が上がります (20 kV
+で Si 約 10%、Fe3O4 約 25%)。再注入分も同じ出射方向に
+属するため、晶帯軸の相対輝度への影響は小さく結晶依存で
+す。B (Debye–Waller 温度因子) = 0、すなわち吸収なしの
+ときは効果がありません。</value>
+  </data>
+  <data name="checkBoxAbsorbedFluxBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
 </root>

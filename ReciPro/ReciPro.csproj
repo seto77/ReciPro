@@ -223,6 +223,7 @@
        含まれない) から internal クラスも計測できるようにする。該当アセンブリが存在しない環境では単なる無害な属性 -->
   <ItemGroup>
     <InternalsVisibleTo Include="ReciPro.Benchmarks" />
+    <InternalsVisibleTo Include="EbsdModeShots" /> <!-- 260919Cl 追加: EBSD 源深さ/非晶質層/B 依存の比較ハーネス (scratch)。public 化の代わりに internal を開ける -->
   </ItemGroup>
 
   <!-- 260402Cl 追加: DATAS無効化 (ベンチマーク比較用) -->
