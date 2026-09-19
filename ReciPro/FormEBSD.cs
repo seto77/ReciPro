@@ -83,6 +83,9 @@ public partial class FormEBSD : FormBase
     private void DisposeMonteCarloCts() { monteCarloCts?.Dispose(); monteCarloCts = null; } // 260406Cl 追加
 
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
+    internal EbsdMonteCarloDistribution McDistribution => mcDistribution; // 260919Cl 追加 (試行): 外部ハーネス (InternalsVisibleTo) がビン分率を読むため
+    /// <summary>260919Cl 追加 (試行): MC 電子の蛍光体応答重み φ(E)=max(0,E−E_dead) の E_dead [keV]。NaN = 重み無し (従来)。GUI 未配線、ハーネスから設定</summary>
+    internal double McEnergyWeightDeadKeV = double.NaN;
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
     /// <summary>飛程計算の際の打ち切りエネルギー (kev)</summary>
@@ -1025,7 +1028,8 @@ public partial class FormEBSD : FormBase
             GetMonteCarloSourceDepth(e), // 260919Cl 変更: 3 モード (inelastic / transport / decoherence) を 1 か所で解決
                 e.Vec, e.Energy)).ToArray();
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths); // 260919Cl 変更前
-        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm); // 260919Cl 表面非晶質層
+        // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm); // 260919Cl 変更前
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
@@ -2599,6 +2603,7 @@ public partial class FormEBSD : FormBase
         {
             progress.Report((0, "MonteCarlo"));
             double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
+            double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加 (試行): 同上
             var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
             var result = await Task.Run(() =>
             {
@@ -2630,7 +2635,8 @@ public partial class FormEBSD : FormBase
                     // detectorTilt, detectorY, detectorZ, detectorR, // 260723Cl 変更前: 円形検出器 (半径)
                     detectorTilt, detectorX, detectorY, detectorZ, detectorHalfW, detectorHalfH, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要) // 260723Cl: 矩形検出器 (半幅・半高) + 中心 X
                     // grid.energies, grid.depths); // 260919Cl 変更前
-                    grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm); // 260919Cl 表面非晶質層
+                    // grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm); // 260919Cl 変更前
+                    grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 
