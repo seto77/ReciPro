@@ -544,26 +544,6 @@ selon un seuil sur la longueur réciproque (1/d).</value>
     <value>Sélectionne les réflexions pour les lignes de Kikuchi en prenant
 les plus fortes classées par facteur de structure.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Définit le niveau de luminosité supérieur (écrêtage blanc) de l'image
-EBSD affichée comme une fraction de la plage d'intensité ;
-les pixels à ce niveau ou au-dessus sont mis en blanc.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Définit le niveau de luminosité supérieur (écrêtage blanc) de l'image
-EBSD affichée comme une fraction de la plage d'intensité ;
-les pixels à ce niveau ou au-dessus sont mis en blanc.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Définit le niveau de luminosité inférieur (écrêtage noir) de l'image
-EBSD affichée comme une fraction de la plage d'intensité ;
-les pixels à ce niveau ou en dessous sont mis en noir.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Définit le niveau de luminosité inférieur (écrêtage noir) de l'image
-EBSD affichée comme une fraction de la plage d'intensité ;
-les pixels à ce niveau ou en dessous sont mis en noir.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Définit la largeur de trait (épaisseur du stylo)
 utilisée pour tracer les lignes de Kikuchi.</value>
@@ -681,9 +661,6 @@ centre détecteur</value>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>Luminosité</value>
   </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Opacité</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Vue actuelle</value>
   </data>
@@ -744,23 +721,6 @@ pour appliquer cette orientation à tout le programme.</value>
 expérimentale superposée (et non du diagramme
 simulé), à l'aide des curseurs Min et Max à droite.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>Point blanc de l'image expérimentale
-superposée, en fraction de sa propre plage
-d'intensité (curseur logarithmique). Les
-pixels égaux ou supérieurs deviennent blancs.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Point noir de l'image expérimentale
-superposée, en fraction de sa propre plage
-d'intensité (curseur logarithmique). Les
-pixels égaux ou inférieurs deviennent noirs.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Opacité de l'image expérimentale superposée,
-de 0 (invisible) à 100 % (opaque). Réduisez-la
-pour voir le diagramme simulé en dessous.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Copie sous forme d'image raster bitmap (bmp). Tout, y
 compris les lignes de Kikuchi et les étiquettes, est
@@ -802,23 +762,6 @@ Radon (détection de lignes) de l'image
 expérimentale. Fonctionne sans master pattern ; avec
 lui, les candidats sont reclassés par ZNCC robuste
 (corrélation croisée normalisée à moyenne nulle).</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>Point blanc de l'image expérimentale
-superposée, en fraction de sa propre plage
-d'intensité (curseur logarithmique). Les
-pixels égaux ou supérieurs deviennent blancs.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Point noir de l'image expérimentale
-superposée, en fraction de sa propre plage
-d'intensité (curseur logarithmique). Les
-pixels égaux ou inférieurs deviennent noirs.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Opacité de l'image expérimentale superposée,
-de 0 (invisible) à 100 % (opaque). Réduisez-la
-pour voir le diagramme simulé en dessous.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>Largeur</value>
@@ -959,5 +902,101 @@ l'export PNG/TIFF ; l'export CSV garde les valeurs brutes.</value>
     <value>Largeur à mi-hauteur du flou gaussien, en pixels du
 détecteur (indépendante du zoom). Environ 100 px pour un
 détecteur 1344 × 1024. Plage 5–2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Point noir du cliché simulé, en pourcentage de la plage
+d'affichage (0 % = sa borne basse). Les pixels en dessous
+deviennent noirs. Le curseur est linéaire.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Point blanc du cliché simulé, en pourcentage de la plage
+d'affichage (100 % = sa borne haute). Les pixels au-dessus
+deviennent blancs. Le curseur est linéaire.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Largeur de la plage d'affichage. 0 = la plage d'intensité du
+cliché lui-même (Min 0 % et Max 100 % la couvrent exactement).
+−1 l'élargit dix fois (contraste dix fois plus faible), +1 la
+réduit au dixième. Le centre reste fixe.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Point noir du cliché expérimental superposé, en pourcentage
+de la plage d'affichage (0 % = sa borne basse). Les pixels en
+dessous deviennent noirs. Le curseur est linéaire.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>Point blanc du cliché expérimental superposé, en pourcentage
+de la plage d'affichage (100 % = sa borne haute). Les pixels
+au-dessus deviennent blancs. Le curseur est linéaire.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Largeur de la plage d'affichage du cliché expérimental
+superposé. 0 = la plage d'intensité de l'image elle-même ;
+−1 l'élargit dix fois, +1 la réduit au dixième. Le centre
+reste fixe.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Opacité</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Opacité du cliché expérimental superposé, de 0 (invisible)
+à 100 % (opaque). Réduisez-la pour voir le cliché simulé
+en dessous.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanir le fond (soustraire un flou gaussien)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Soustrait au cliché expérimental une copie floutée par une
+gaussienne pour retirer sa distribution de luminosité
+lentement variable. N'agit que sur l'image superposée ; les
+curseurs agissent ensuite sur les valeurs aplanies.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Largeur à mi-hauteur du flou gaussien, en pixels de l'image.
+Environ 100 px pour une image 1344 x 1024.
+Plage 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>Ajuster à l'image</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Règle Min, Max et Contraste du cliché simulé pour que ses
+niveaux à 2 % et 98 % s'affichent dans le même gris que ceux
+de cette image. Polarité, Couleur et les deux aplanissements
+ne changent pas : aplanir les deux côtés ou aucun.</value>
   </data>
 </root>

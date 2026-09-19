@@ -126,10 +126,9 @@
             checkBoxWithBSEDistribution = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
-            trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
-            trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
-            labelBrightnessMax = new System.Windows.Forms.Label();
-            labelBrightnessMin = new System.Windows.Forms.Label();
+            trackBarAdvancedBrightnessMin = new TrackBarAdvanced(); // 260920Cl 変更: 素の TrackBar + Min/Max ラベルを TrackBarAdvanced (数値表示付き) へ置換
+            trackBarAdvancedBrightnessMax = new TrackBarAdvanced(); // 260920Cl
+            trackBarAdvancedContrast = new TrackBarAdvanced(); // 260920Cl 追加: コントラスト
             labelBrightness = new System.Windows.Forms.Label();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
             buttonSaveImage = new System.Windows.Forms.Button();
@@ -165,12 +164,14 @@
             checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
             checkBoxFlipDetectorLeftRight = new System.Windows.Forms.CheckBox();
             checkBoxShowExperimentalImage = new System.Windows.Forms.CheckBox();
-            labelExpMinInt = new System.Windows.Forms.Label();
-            trackBarExpImageMinInt = new System.Windows.Forms.TrackBar();
-            labelExpMaxInt = new System.Windows.Forms.Label();
-            trackBarExpImageMaxInt = new System.Windows.Forms.TrackBar();
-            labelExpOpacity = new System.Windows.Forms.Label();
-            trackBarExpImageOpacity = new System.Windows.Forms.TrackBar();
+            trackBarAdvancedExpMin = new TrackBarAdvanced(); // 260920Cl 変更: 実測画像側も TrackBarAdvanced へ (対数 → リニア)
+            trackBarAdvancedExpMax = new TrackBarAdvanced(); // 260920Cl
+            trackBarAdvancedExpContrast = new TrackBarAdvanced(); // 260920Cl 追加
+            trackBarAdvancedExpOpacity = new TrackBarAdvanced(); // 260920Cl
+            flowLayoutPanelExpFlatten = new System.Windows.Forms.FlowLayoutPanel(); // 260920Cl 追加: 実測画像の背景平坦化と「見た目を合わせる」ボタン
+            checkBoxExpFlattenBackground = new System.Windows.Forms.CheckBox(); // 260920Cl 追加
+            numericBoxExpFlattenFwhm = new NumericBox(); // 260920Cl 追加
+            buttonMatchSimulation = new System.Windows.Forms.Button(); // 260920Cl 追加
             radioButtonIndexingRadon = new System.Windows.Forms.RadioButton();
             radioButtonIndexingDictionary = new System.Windows.Forms.RadioButton();
             buttonFindOrientation = new System.Windows.Forms.Button();
@@ -224,8 +225,6 @@
             groupBoxTextSettings = new System.Windows.Forms.GroupBox();
             flowLayoutPanelTextSettings = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExperimentalImage = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelExpMinInt = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelExpMaxInt = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExpOpacity = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
             flowLayoutPanelSimulationParameters = new System.Windows.Forms.FlowLayoutPanel();
@@ -275,13 +274,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageMinInt).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageMaxInt).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageOpacity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).BeginInit();
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
@@ -310,8 +304,7 @@
             groupBoxTextSettings.SuspendLayout();
             flowLayoutPanelTextSettings.SuspendLayout();
             flowLayoutPanelExperimentalImage.SuspendLayout();
-            flowLayoutPanelExpMinInt.SuspendLayout();
-            flowLayoutPanelExpMaxInt.SuspendLayout();
+            flowLayoutPanelExpFlatten.SuspendLayout(); // 260920Cl 追加
             flowLayoutPanelExpOpacity.SuspendLayout();
             groupBoxSimulationParameters.SuspendLayout();
             flowLayoutPanelSimulationParameters.SuspendLayout();
@@ -766,7 +759,7 @@
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
             toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
-            comboBoxGradient.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            comboBoxGradient.SelectedIndexChanged += DisplaySetting_Changed; // 260920Cl 改名
             // 
             // comboBoxScale
             // 
@@ -776,43 +769,50 @@
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
             toolTip.SetToolTip(comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
-            comboBoxScale.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            comboBoxScale.SelectedIndexChanged += DisplaySetting_Changed; // 260920Cl 改名
             // 
-            // trackBarIntensityBrightnessMax
+            // trackBarAdvancedBrightnessMin (260920Cl 追加)
             // 
-            resources.ApplyResources(trackBarIntensityBrightnessMax, "trackBarIntensityBrightnessMax");
-            trackBarIntensityBrightnessMax.LargeChange = 10000;
-            trackBarIntensityBrightnessMax.Maximum = 1000000;
-            trackBarIntensityBrightnessMax.Minimum = 1;
-            trackBarIntensityBrightnessMax.Name = "trackBarIntensityBrightnessMax";
-            trackBarIntensityBrightnessMax.SmallChange = 100000;
-            trackBarIntensityBrightnessMax.TickFrequency = 20000;
-            toolTip.SetToolTip(trackBarIntensityBrightnessMax, resources.GetString("trackBarIntensityBrightnessMax.ToolTip"));
-            trackBarIntensityBrightnessMax.Value = 1000000;
-            trackBarIntensityBrightnessMax.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            resources.ApplyResources(trackBarAdvancedBrightnessMin, "trackBarAdvancedBrightnessMin");
+            trackBarAdvancedBrightnessMin.ControlHeight = 25;
+            trackBarAdvancedBrightnessMin.DecimalPlaces = 0;
+            trackBarAdvancedBrightnessMin.Maximum = 100D;
+            trackBarAdvancedBrightnessMin.Minimum = 0D;
+            trackBarAdvancedBrightnessMin.Name = "trackBarAdvancedBrightnessMin";
+            trackBarAdvancedBrightnessMin.NumericBoxSize = 115;
+            toolTip.SetToolTip(trackBarAdvancedBrightnessMin, resources.GetString("trackBarAdvancedBrightnessMin.ToolTip"));
+            trackBarAdvancedBrightnessMin.Smart_Increment = false;
+            trackBarAdvancedBrightnessMin.UpDown_Increment = 1D;
+            trackBarAdvancedBrightnessMin.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
             // 
-            // trackBarIntensityBrightnessMin
+            // trackBarAdvancedBrightnessMax (260920Cl 追加)
             // 
-            resources.ApplyResources(trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
-            trackBarIntensityBrightnessMin.LargeChange = 10000;
-            trackBarIntensityBrightnessMin.Maximum = 999999;
-            trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
-            trackBarIntensityBrightnessMin.SmallChange = 100000;
-            trackBarIntensityBrightnessMin.TickFrequency = 20000;
-            toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
-            trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            resources.ApplyResources(trackBarAdvancedBrightnessMax, "trackBarAdvancedBrightnessMax");
+            trackBarAdvancedBrightnessMax.ControlHeight = 25;
+            trackBarAdvancedBrightnessMax.DecimalPlaces = 0;
+            trackBarAdvancedBrightnessMax.Maximum = 100D;
+            trackBarAdvancedBrightnessMax.Minimum = 0D;
+            trackBarAdvancedBrightnessMax.Name = "trackBarAdvancedBrightnessMax";
+            trackBarAdvancedBrightnessMax.NumericBoxSize = 115;
+            toolTip.SetToolTip(trackBarAdvancedBrightnessMax, resources.GetString("trackBarAdvancedBrightnessMax.ToolTip"));
+            trackBarAdvancedBrightnessMax.Smart_Increment = false;
+            trackBarAdvancedBrightnessMax.UpDown_Increment = 1D;
+            trackBarAdvancedBrightnessMax.Value = 100D;
+            trackBarAdvancedBrightnessMax.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
             // 
-            // labelBrightnessMax
+            // trackBarAdvancedContrast (260920Cl 追加)
             // 
-            resources.ApplyResources(labelBrightnessMax, "labelBrightnessMax");
-            labelBrightnessMax.Name = "labelBrightnessMax";
-            toolTip.SetToolTip(labelBrightnessMax, resources.GetString("labelBrightnessMax.ToolTip"));
-            // 
-            // labelBrightnessMin
-            // 
-            resources.ApplyResources(labelBrightnessMin, "labelBrightnessMin");
-            labelBrightnessMin.Name = "labelBrightnessMin";
-            toolTip.SetToolTip(labelBrightnessMin, resources.GetString("labelBrightnessMin.ToolTip"));
+            resources.ApplyResources(trackBarAdvancedContrast, "trackBarAdvancedContrast");
+            trackBarAdvancedContrast.ControlHeight = 25;
+            trackBarAdvancedContrast.DecimalPlaces = 2;
+            trackBarAdvancedContrast.Maximum = 1D;
+            trackBarAdvancedContrast.Minimum = -1D;
+            trackBarAdvancedContrast.Name = "trackBarAdvancedContrast";
+            trackBarAdvancedContrast.NumericBoxSize = 140;
+            trackBarAdvancedContrast.Smart_Increment = false;
+            toolTip.SetToolTip(trackBarAdvancedContrast, resources.GetString("trackBarAdvancedContrast.ToolTip"));
+            trackBarAdvancedContrast.UpDown_Increment = 0.05D;
+            trackBarAdvancedContrast.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
             // 
             // labelBrightness
             // 
@@ -1132,56 +1132,63 @@
             checkBoxShowExperimentalImage.UseVisualStyleBackColor = true;
             checkBoxShowExperimentalImage.CheckedChanged += checkBoxShowExperimentalImage_CheckedChanged;
             // 
-            // labelExpMinInt
+            // trackBarAdvancedExpMin (260920Cl 追加)
             // 
-            resources.ApplyResources(labelExpMinInt, "labelExpMinInt");
-            labelExpMinInt.Name = "labelExpMinInt";
-            toolTip.SetToolTip(labelExpMinInt, resources.GetString("labelExpMinInt.ToolTip"));
+            resources.ApplyResources(trackBarAdvancedExpMin, "trackBarAdvancedExpMin");
+            trackBarAdvancedExpMin.ControlHeight = 25;
+            trackBarAdvancedExpMin.DecimalPlaces = 0;
+            trackBarAdvancedExpMin.Maximum = 100D;
+            trackBarAdvancedExpMin.Minimum = 0D;
+            trackBarAdvancedExpMin.Name = "trackBarAdvancedExpMin";
+            trackBarAdvancedExpMin.NumericBoxSize = 115;
+            toolTip.SetToolTip(trackBarAdvancedExpMin, resources.GetString("trackBarAdvancedExpMin.ToolTip"));
+            trackBarAdvancedExpMin.Smart_Increment = false;
+            trackBarAdvancedExpMin.UpDown_Increment = 1D;
+            trackBarAdvancedExpMin.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // trackBarExpImageMinInt
+            // trackBarAdvancedExpMax (260920Cl 追加)
             // 
-            resources.ApplyResources(trackBarExpImageMinInt, "trackBarExpImageMinInt");
-            trackBarExpImageMinInt.LargeChange = 50;
-            trackBarExpImageMinInt.Maximum = 1000;
-            trackBarExpImageMinInt.Name = "trackBarExpImageMinInt";
-            trackBarExpImageMinInt.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarExpImageMinInt, resources.GetString("trackBarExpImageMinInt.ToolTip"));
-            trackBarExpImageMinInt.ValueChanged += trackBarExpImageIntensity_ValueChanged;
+            resources.ApplyResources(trackBarAdvancedExpMax, "trackBarAdvancedExpMax");
+            trackBarAdvancedExpMax.ControlHeight = 25;
+            trackBarAdvancedExpMax.DecimalPlaces = 0;
+            trackBarAdvancedExpMax.Maximum = 100D;
+            trackBarAdvancedExpMax.Minimum = 0D;
+            trackBarAdvancedExpMax.Name = "trackBarAdvancedExpMax";
+            trackBarAdvancedExpMax.NumericBoxSize = 115;
+            toolTip.SetToolTip(trackBarAdvancedExpMax, resources.GetString("trackBarAdvancedExpMax.ToolTip"));
+            trackBarAdvancedExpMax.Smart_Increment = false;
+            trackBarAdvancedExpMax.UpDown_Increment = 1D;
+            trackBarAdvancedExpMax.Value = 100D;
+            trackBarAdvancedExpMax.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // labelExpMaxInt
+            // trackBarAdvancedExpContrast (260920Cl 追加)
             // 
-            resources.ApplyResources(labelExpMaxInt, "labelExpMaxInt");
-            labelExpMaxInt.Name = "labelExpMaxInt";
-            toolTip.SetToolTip(labelExpMaxInt, resources.GetString("labelExpMaxInt.ToolTip"));
+            resources.ApplyResources(trackBarAdvancedExpContrast, "trackBarAdvancedExpContrast");
+            trackBarAdvancedExpContrast.ControlHeight = 25;
+            trackBarAdvancedExpContrast.DecimalPlaces = 2;
+            trackBarAdvancedExpContrast.Maximum = 1D;
+            trackBarAdvancedExpContrast.Minimum = -1D;
+            trackBarAdvancedExpContrast.Name = "trackBarAdvancedExpContrast";
+            trackBarAdvancedExpContrast.NumericBoxSize = 140;
+            trackBarAdvancedExpContrast.Smart_Increment = false;
+            toolTip.SetToolTip(trackBarAdvancedExpContrast, resources.GetString("trackBarAdvancedExpContrast.ToolTip"));
+            trackBarAdvancedExpContrast.UpDown_Increment = 0.05D;
+            trackBarAdvancedExpContrast.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // trackBarExpImageMaxInt
+            // trackBarAdvancedExpOpacity (260920Cl 追加)
             // 
-            resources.ApplyResources(trackBarExpImageMaxInt, "trackBarExpImageMaxInt");
-            trackBarExpImageMaxInt.LargeChange = 50;
-            trackBarExpImageMaxInt.Maximum = 1000;
-            trackBarExpImageMaxInt.Minimum = 1;
-            trackBarExpImageMaxInt.Name = "trackBarExpImageMaxInt";
-            trackBarExpImageMaxInt.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarExpImageMaxInt, resources.GetString("trackBarExpImageMaxInt.ToolTip"));
-            trackBarExpImageMaxInt.Value = 1000;
-            trackBarExpImageMaxInt.ValueChanged += trackBarExpImageIntensity_ValueChanged;
-            // 
-            // labelExpOpacity
-            // 
-            resources.ApplyResources(labelExpOpacity, "labelExpOpacity");
-            labelExpOpacity.Name = "labelExpOpacity";
-            toolTip.SetToolTip(labelExpOpacity, resources.GetString("labelExpOpacity.ToolTip"));
-            // 
-            // trackBarExpImageOpacity
-            // 
-            resources.ApplyResources(trackBarExpImageOpacity, "trackBarExpImageOpacity");
-            trackBarExpImageOpacity.LargeChange = 10;
-            trackBarExpImageOpacity.Maximum = 100;
-            trackBarExpImageOpacity.Name = "trackBarExpImageOpacity";
-            trackBarExpImageOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarExpImageOpacity, resources.GetString("trackBarExpImageOpacity.ToolTip"));
-            trackBarExpImageOpacity.Value = 100;
-            trackBarExpImageOpacity.ValueChanged += trackBarExpImageOpacity_ValueChanged;
+            resources.ApplyResources(trackBarAdvancedExpOpacity, "trackBarAdvancedExpOpacity");
+            trackBarAdvancedExpOpacity.ControlHeight = 25;
+            trackBarAdvancedExpOpacity.DecimalPlaces = 0;
+            trackBarAdvancedExpOpacity.Smart_Increment = false;
+            trackBarAdvancedExpOpacity.Maximum = 100D;
+            trackBarAdvancedExpOpacity.Minimum = 0D;
+            trackBarAdvancedExpOpacity.Name = "trackBarAdvancedExpOpacity";
+            trackBarAdvancedExpOpacity.NumericBoxSize = 120;
+            toolTip.SetToolTip(trackBarAdvancedExpOpacity, resources.GetString("trackBarAdvancedExpOpacity.ToolTip"));
+            trackBarAdvancedExpOpacity.UpDown_Increment = 5D;
+            trackBarAdvancedExpOpacity.Value = 100D;
+            trackBarAdvancedExpOpacity.ValueChanged += TrackBarAdvancedExpOpacity_ValueChanged;
             // 
             // radioButtonIndexingRadon
             // 
@@ -1427,7 +1434,7 @@
             checkBoxFlattenBackground.Name = "checkBoxFlattenBackground";
             toolTip.SetToolTip(checkBoxFlattenBackground, resources.GetString("checkBoxFlattenBackground.ToolTip"));
             checkBoxFlattenBackground.UseVisualStyleBackColor = true;
-            checkBoxFlattenBackground.CheckedChanged += FlattenBackground_Changed;
+            checkBoxFlattenBackground.CheckedChanged += DisplaySetting_Changed; // 260920Cl 改名
             // 
             // numericBoxFlattenFwhm (260920Cl 追加)
             // 
@@ -1442,7 +1449,7 @@
             toolTip.SetToolTip(numericBoxFlattenFwhm, resources.GetString("numericBoxFlattenFwhm.ToolTip"));
             numericBoxFlattenFwhm.Value = 100D;
             numericBoxFlattenFwhm.ValueBoxWidth = 50;
-            numericBoxFlattenFwhm.ValueChanged += FlattenBackground_Changed;
+            numericBoxFlattenFwhm.ValueChanged += DisplaySetting_Changed; // 260920Cl 改名
             // 
             // flowLayoutPanelColorScale
             // 
@@ -1457,10 +1464,9 @@
             // 
             resources.ApplyResources(flowLayoutPanelBrightness, "flowLayoutPanelBrightness");
             flowLayoutPanelBrightness.Controls.Add(labelBrightness);
-            flowLayoutPanelBrightness.Controls.Add(labelBrightnessMin);
-            flowLayoutPanelBrightness.Controls.Add(trackBarIntensityBrightnessMin);
-            flowLayoutPanelBrightness.Controls.Add(labelBrightnessMax);
-            flowLayoutPanelBrightness.Controls.Add(trackBarIntensityBrightnessMax);
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMin); // 260920Cl
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMax); // 260920Cl
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedContrast); // 260920Cl
             flowLayoutPanelBrightness.Name = "flowLayoutPanelBrightness";
             // 
             // flowLayoutPanelOutputRange
@@ -1650,30 +1656,55 @@
             // flowLayoutPanelExperimentalImage
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImage, "flowLayoutPanelExperimentalImage");
-            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMinInt);
-            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMaxInt);
+            flowLayoutPanelExperimentalImage.Controls.Add(labelExpBrightness); // 260920Cl 変更: Min/Max 用の中間 FlowLayoutPanel 2 枚を廃止し直接ぶら下げる
+            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpMin); // 260920Cl
+            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpMax); // 260920Cl
+            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpContrast); // 260920Cl
             flowLayoutPanelExperimentalImage.Name = "flowLayoutPanelExperimentalImage";
             // 
-            // flowLayoutPanelExpMinInt
+            // flowLayoutPanelExpFlatten (260920Cl 追加)
             // 
-            resources.ApplyResources(flowLayoutPanelExpMinInt, "flowLayoutPanelExpMinInt");
-            flowLayoutPanelExpMinInt.Controls.Add(labelExpBrightness);
-            flowLayoutPanelExpMinInt.Controls.Add(labelExpMinInt);
-            flowLayoutPanelExpMinInt.Controls.Add(trackBarExpImageMinInt);
-            flowLayoutPanelExpMinInt.Name = "flowLayoutPanelExpMinInt";
+            resources.ApplyResources(flowLayoutPanelExpFlatten, "flowLayoutPanelExpFlatten");
+            flowLayoutPanelExpFlatten.Controls.Add(checkBoxExpFlattenBackground);
+            flowLayoutPanelExpFlatten.Controls.Add(numericBoxExpFlattenFwhm);
+            flowLayoutPanelExpFlatten.Controls.Add(buttonMatchSimulation);
+            flowLayoutPanelExpFlatten.Name = "flowLayoutPanelExpFlatten";
             // 
-            // flowLayoutPanelExpMaxInt
+            // checkBoxExpFlattenBackground (260920Cl 追加)
             // 
-            resources.ApplyResources(flowLayoutPanelExpMaxInt, "flowLayoutPanelExpMaxInt");
-            flowLayoutPanelExpMaxInt.Controls.Add(labelExpMaxInt);
-            flowLayoutPanelExpMaxInt.Controls.Add(trackBarExpImageMaxInt);
-            flowLayoutPanelExpMaxInt.Name = "flowLayoutPanelExpMaxInt";
+            resources.ApplyResources(checkBoxExpFlattenBackground, "checkBoxExpFlattenBackground");
+            checkBoxExpFlattenBackground.Name = "checkBoxExpFlattenBackground";
+            toolTip.SetToolTip(checkBoxExpFlattenBackground, resources.GetString("checkBoxExpFlattenBackground.ToolTip"));
+            checkBoxExpFlattenBackground.UseVisualStyleBackColor = true;
+            checkBoxExpFlattenBackground.CheckedChanged += ExpFlattenBackground_Changed;
+            // 
+            // numericBoxExpFlattenFwhm (260920Cl 追加)
+            // 
+            numericBoxExpFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxExpFlattenFwhm.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxExpFlattenFwhm, "numericBoxExpFlattenFwhm");
+            numericBoxExpFlattenFwhm.Maximum = 2000D;
+            numericBoxExpFlattenFwhm.Minimum = 5D;
+            numericBoxExpFlattenFwhm.Name = "numericBoxExpFlattenFwhm";
+            numericBoxExpFlattenFwhm.ShowUpDown = true;
+            numericBoxExpFlattenFwhm.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxExpFlattenFwhm, resources.GetString("numericBoxExpFlattenFwhm.ToolTip"));
+            numericBoxExpFlattenFwhm.Value = 100D;
+            numericBoxExpFlattenFwhm.ValueBoxWidth = 50;
+            numericBoxExpFlattenFwhm.ValueChanged += ExpFlattenBackground_Changed;
+            // 
+            // buttonMatchSimulation (260920Cl 追加)
+            // 
+            resources.ApplyResources(buttonMatchSimulation, "buttonMatchSimulation");
+            buttonMatchSimulation.Name = "buttonMatchSimulation";
+            toolTip.SetToolTip(buttonMatchSimulation, resources.GetString("buttonMatchSimulation.ToolTip"));
+            buttonMatchSimulation.UseVisualStyleBackColor = true;
+            buttonMatchSimulation.Click += buttonMatchSimulation_Click;
             // 
             // flowLayoutPanelExpOpacity
             // 
             resources.ApplyResources(flowLayoutPanelExpOpacity, "flowLayoutPanelExpOpacity");
-            flowLayoutPanelExpOpacity.Controls.Add(labelExpOpacity);
-            flowLayoutPanelExpOpacity.Controls.Add(trackBarExpImageOpacity);
+            flowLayoutPanelExpOpacity.Controls.Add(trackBarAdvancedExpOpacity); // 260920Cl 変更: ラベル + 素の TrackBar → TrackBarAdvanced
             flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingRadon);
             flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingDictionary);
             flowLayoutPanelExpOpacity.Name = "flowLayoutPanelExpOpacity";
@@ -2000,6 +2031,7 @@
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImageTab, "flowLayoutPanelExperimentalImageTab");
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExperimentalImage);
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpFlatten); // 260920Cl 追加
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpOpacity);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelIndexingButtons);
             flowLayoutPanelExperimentalImageTab.Name = "flowLayoutPanelExperimentalImageTab";
@@ -2135,13 +2167,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageMinInt).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageMaxInt).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarExpImageOpacity).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).EndInit();
             flowLayoutPanelViewAlong.ResumeLayout(false);
             flowLayoutPanelViewAlong.PerformLayout();
@@ -2193,10 +2220,8 @@
             flowLayoutPanelTextSettings.PerformLayout();
             flowLayoutPanelExperimentalImage.ResumeLayout(false);
             flowLayoutPanelExperimentalImage.PerformLayout();
-            flowLayoutPanelExpMinInt.ResumeLayout(false);
-            flowLayoutPanelExpMinInt.PerformLayout();
-            flowLayoutPanelExpMaxInt.ResumeLayout(false);
-            flowLayoutPanelExpMaxInt.PerformLayout();
+            flowLayoutPanelExpFlatten.ResumeLayout(false); // 260920Cl 追加
+            flowLayoutPanelExpFlatten.PerformLayout(); // 260920Cl 追加
             flowLayoutPanelExpOpacity.ResumeLayout(false);
             flowLayoutPanelExpOpacity.PerformLayout();
             groupBoxSimulationParameters.ResumeLayout(false);
@@ -2323,10 +2348,9 @@
         public System.Windows.Forms.ComboBox comboBoxGradient;
         public System.Windows.Forms.ComboBox comboBoxScale;
         public System.Windows.Forms.TrackBar trackBarOutputThickness;
-        private System.Windows.Forms.TrackBar trackBarIntensityBrightnessMax;
-        private System.Windows.Forms.TrackBar trackBarIntensityBrightnessMin;
-        private System.Windows.Forms.Label labelBrightnessMax;
-        private System.Windows.Forms.Label labelBrightnessMin;
+        private TrackBarAdvanced trackBarAdvancedBrightnessMin; // 260920Cl
+        private TrackBarAdvanced trackBarAdvancedBrightnessMax; // 260920Cl
+        private TrackBarAdvanced trackBarAdvancedContrast; // 260920Cl
         private System.Windows.Forms.Label labelBrightness;
         private System.Windows.Forms.CheckBox checkBoxShowOverlays;
         private System.Windows.Forms.Button buttonCopyImage;
@@ -2438,14 +2462,14 @@
         private System.Windows.Forms.CheckBox checkBoxShowExperimentalImage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExperimentalImage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpOpacity;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpMaxInt;
-        private System.Windows.Forms.Label labelExpOpacity;
-        private System.Windows.Forms.Label labelExpMaxInt;
-        private System.Windows.Forms.TrackBar trackBarExpImageOpacity;
-        private System.Windows.Forms.TrackBar trackBarExpImageMaxInt;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpMinInt;
-        private System.Windows.Forms.Label labelExpMinInt;
-        private System.Windows.Forms.TrackBar trackBarExpImageMinInt;
+        private TrackBarAdvanced trackBarAdvancedExpContrast; // 260920Cl
+        private TrackBarAdvanced trackBarAdvancedExpOpacity; // 260920Cl
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpFlatten; // 260920Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxExpFlattenBackground; // 260920Cl 追加
+        private NumericBox numericBoxExpFlattenFwhm; // 260920Cl 追加
+        private System.Windows.Forms.Button buttonMatchSimulation; // 260920Cl 追加
+        private TrackBarAdvanced trackBarAdvancedExpMax; // 260920Cl
+        private TrackBarAdvanced trackBarAdvancedExpMin; // 260920Cl
         private System.Windows.Forms.Button buttonFindOrientation;
         private System.Windows.Forms.Button buttonCalibrateGeometry;
         private System.Windows.Forms.DataGridView dataGridViewEbsdCandidates;

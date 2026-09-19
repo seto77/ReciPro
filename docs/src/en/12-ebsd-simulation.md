@@ -163,7 +163,7 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 
 - **Show image with BSE angular/energy distributions** : when checked, the pattern is composited by weighting with the BSE distribution (energy, depth, direction) rather than a single slice.
 - **Energy / Depth** : when the above is off, select the energy/depth slice to display.
-- **Brightness** (**Min** / **Max**), **Polarity**, **Color** : brightness range, polarity, and colour scale.
+- **Brightness** (**Min** / **Max**), **Contrast**, **Polarity**, **Color** : the black and white points of the simulated pattern as a percentage of the display range (linear sliders), the width of that range, its polarity and the colour scale. Contrast 0 makes the display range equal to the intensity range of the pattern itself; -1 widens it tenfold (contrast ten times weaker) and +1 narrows it to a tenth, with the centre held fixed.
 - **Flatten background** (**FWHM**, px; default off, 100 px) : subtracts a Gaussian-blurred copy of the simulated pattern from itself, removing the slowly varying brightness distribution so that bands and zone axes can be compared with a background-corrected experimental pattern. The FWHM is given in detector pixels and does not depend on the zoom. It affects the displayed image and the PNG/TIFF export; the CSV export keeps the raw values.
 
 ### Experimental image
@@ -172,7 +172,9 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 
 Drop an EBSD image file (TIFF, PNG, BMP or JPEG; 16-bit TIFF is read at full depth) anywhere on the window to load it as the experimental pattern. It is drawn over the detector area — above the simulated pattern and below the Kikuchi-line overlays — so the simulation can be compared with the measurement directly. Loading an image also sets the detector **Width** and **Height** to the image size.
 
-- **Brightness** (**Min** / **Max**) : black and white points of the overlaid image, as a fraction of its own intensity range (logarithmic sliders). These act on the experimental image only, not on the simulated pattern.
+- **Brightness** (**Min** / **Max**), **Contrast** : the black and white points of the overlaid image as a percentage of its display range, and the width of that range (linear sliders, same convention as for the simulated pattern). These act on the experimental image only.
+- **Flatten background** (**FWHM**, px; default off, 100 px) : subtracts a Gaussian-blurred copy of the experimental image from itself, removing its slowly varying brightness distribution. The intensity sliders then act on the flattened values.
+- **Match to image** : sets **Min**, **Max** and **Contrast** of the simulated pattern so that its 2 % and 98 % intensity levels are shown at the same grey as those of the experimental image. The match uses percentiles, so it does not depend on the orientation solution and is insensitive to a pedestal or to a few bright zone-axis pixels. Polarity, Color and both **Flatten background** settings are left alone, so flatten both sides or neither before pressing it.
 - **Opacity** : opacity of the overlaid image, from 0 (invisible) to 100 % (opaque). Lower it to see the simulated pattern underneath.
 
 The orientation that explains the image is then searched for with one of two engines.

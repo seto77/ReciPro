@@ -542,26 +542,6 @@ mediante un umbral de espaciado recíproco (1/d).</value>
     <value>Selecciona las reflexiones para las líneas de Kikuchi tomando
 las más intensas ordenadas por factor de estructura.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Fija el nivel superior de brillo (recorte de blanco) de la
-imagen EBSD mostrada como fracción del rango de intensidad;
-los píxeles en o por encima de este se asignan a blanco.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Fija el nivel superior de brillo (recorte de blanco) de la
-imagen EBSD mostrada como fracción del rango de intensidad;
-los píxeles en o por encima de este se asignan a blanco.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Fija el nivel inferior de brillo (recorte de negro) de la
-imagen EBSD mostrada como fracción del rango de intensidad;
-los píxeles en o por debajo de este se asignan a negro.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Fija el nivel inferior de brillo (recorte de negro) de la
-imagen EBSD mostrada como fracción del rango de intensidad;
-los píxeles en o por debajo de este se asignan a negro.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Fija la anchura de línea (grosor del lápiz)
 usada para dibujar las líneas de Kikuchi.</value>
@@ -677,9 +657,6 @@ centro del detector</value>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>Brillo</value>
   </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Opacidad</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Vista actual</value>
   </data>
@@ -737,23 +714,6 @@ aplicar esa orientación a todo el programa.</value>
 imagen experimental superpuesta (no del patrón
 simulado) con los controles Mín y Máx de la derecha.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>Punto blanco de la imagen experimental
-superpuesta, como fracción de su propio rango
-de intensidad (control logarítmico). Los
-píxeles iguales o superiores se vuelven blancos.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Punto negro de la imagen experimental
-superpuesta, como fracción de su propio rango
-de intensidad (control logarítmico). Los
-píxeles iguales o inferiores se vuelven negros.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Opacidad de la imagen experimental superpuesta,
-de 0 (invisible) a 100 % (opaca). Redúzcala
-para ver el patrón simulado que hay debajo.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Copia como imagen de mapa de bits (bmp). Todo,
 incluidas las líneas de Kikuchi y las etiquetas,
@@ -794,23 +754,6 @@ Radon (detección de líneas) de la imagen
 experimental. Funciona sin patrón maestro; con él,
 los candidatos se reordenan mediante ZNCC robusta
 (correlación cruzada normalizada de media cero).</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>Punto blanco de la imagen experimental
-superpuesta, como fracción de su propio rango
-de intensidad (control logarítmico). Los
-píxeles iguales o superiores se vuelven blancos.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Punto negro de la imagen experimental
-superpuesta, como fracción de su propio rango
-de intensidad (control logarítmico). Los
-píxeles iguales o inferiores se vuelven negros.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Opacidad de la imagen experimental superpuesta,
-de 0 (invisible) a 100 % (opaca). Redúzcala
-para ver el patrón simulado que hay debajo.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>Ancho</value>
@@ -952,5 +895,101 @@ exportación PNG/TIFF; la exportación CSV conserva los valores brutos.</value>
     <value>Anchura a media altura del desenfoque gaussiano, en píxeles
 del detector (independiente del zoom). Unos 100 px para un
 detector de 1344 × 1024. Rango 5–2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Punto negro del patrón simulado, como porcentaje del rango
+de visualización (0 % = su extremo inferior). Los píxeles por
+debajo se vuelven negros. El deslizador es lineal.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Punto blanco del patrón simulado, como porcentaje del rango
+de visualización (100 % = su extremo superior). Los píxeles por
+encima se vuelven blancos. El deslizador es lineal.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Anchura del rango de visualización. 0 = el rango de intensidad
+del propio patrón (Mín 0 % y Máx 100 % lo abarcan exactamente).
+−1 lo ensancha diez veces (contraste diez veces menor), +1 lo
+reduce a la décima parte. El centro no se mueve.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Punto negro de la imagen experimental superpuesta, como
+porcentaje del rango de visualización (0 % = extremo inferior).
+Los píxeles por debajo se vuelven negros. El deslizador es lineal.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>Punto blanco de la imagen experimental superpuesta, como
+porcentaje del rango de visualización (100 % = extremo superior).
+Los píxeles por encima se vuelven blancos. El deslizador es lineal.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Anchura del rango de visualización de la imagen experimental
+superpuesta. 0 = el rango de intensidad de la propia imagen;
+−1 lo ensancha diez veces, +1 lo reduce a la décima parte.
+El centro no se mueve.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Opacidad</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Opacidad de la imagen experimental superpuesta, de 0
+(invisible) a 100 % (opaca). Redúzcala para ver el patrón
+simulado debajo.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanar el fondo (restar desenfoque gaussiano)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Resta a la imagen experimental una copia desenfocada con
+una gaussiana para eliminar su distribución de brillo de
+variación lenta. Afecta solo a la imagen superpuesta; los
+deslizadores actúan luego sobre los valores aplanados.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Anchura a media altura del desenfoque gaussiano, en píxeles
+de la imagen. Unos 100 px para una imagen de 1344 x 1024.
+Rango 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>Ajustar a la imagen</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Fija Mín, Máx y Contraste del patrón simulado para que sus
+niveles del 2 % y 98 % se muestren con el mismo gris que los
+de esta imagen. No toca Polaridad, Color ni los aplanados:
+aplane ambos lados o ninguno.</value>
   </data>
 </root>

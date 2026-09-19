@@ -1819,158 +1819,6 @@ color (Gray, Cold-Warm, Spectrum, or Fire).</value>
   <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Set the upper brightness (white-clip) level of the
-displayed EBSD image as a fraction of the intensity
-range; pixels at or above this map to white.</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMax</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBrightness</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Set the lower brightness (black-clip) level of the
-displayed EBSD image as a fraction of the intensity
-range; pixels at or below this map to black.</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMin</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBrightness</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="labelBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 0</value>
-  </data>
-  <data name="labelBrightnessMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="labelBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
-  </data>
-  <data name="labelBrightnessMax.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Set the upper brightness (white-clip) level of the
-displayed EBSD image as a fraction of the intensity
-range; pixels at or above this map to white.</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMax.Name" xml:space="preserve">
-    <value>labelBrightnessMax</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBrightness</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMax.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="labelBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 0</value>
-  </data>
-  <data name="labelBrightnessMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="labelBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 17</value>
-  </data>
-  <data name="labelBrightnessMin.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>Min</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Set the lower brightness (black-clip) level of the
-displayed EBSD image as a fraction of the intensity
-range; pixels at or below this map to black.</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMin.Name" xml:space="preserve">
-    <value>labelBrightnessMin</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMin.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBrightness</value>
-  </data>
-  <data name="&gt;&gt;labelBrightnessMin.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="labelBrightness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3271,7 +3119,7 @@ using the Min and Max sliders on the right.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelExpBrightness.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpMinInt</value>
+    <value>flowLayoutPanelExperimentalImage</value>
   </data>
   <data name="&gt;&gt;labelExpBrightness.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3395,234 +3243,6 @@ pattern and below the Kikuchi-line overlays.</value>
   <data name="&gt;&gt;checkBoxShowExperimentalImage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="labelExpMinInt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="labelExpMinInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelExpMinInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 3</value>
-  </data>
-  <data name="labelExpMinInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="labelExpMinInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 17</value>
-  </data>
-  <data name="labelExpMinInt.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>Min</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Black point of the overlaid experimental image, as
-a fraction of its own intensity range (logarithmic
-slider). Pixels at or below this become black.</value>
-  </data>
-  <data name="&gt;&gt;labelExpMinInt.Name" xml:space="preserve">
-    <value>labelExpMinInt</value>
-  </data>
-  <data name="&gt;&gt;labelExpMinInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelExpMinInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpMinInt</value>
-  </data>
-  <data name="&gt;&gt;labelExpMinInt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="trackBarExpImageMinInt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="trackBarExpImageMinInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageMinInt.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageMinInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 3</value>
-  </data>
-  <data name="trackBarExpImageMinInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="trackBarExpImageMinInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 18</value>
-  </data>
-  <data name="trackBarExpImageMinInt.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Black point of the overlaid experimental image, as
-a fraction of its own intensity range (logarithmic
-slider). Pixels at or below this become black.</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMinInt.Name" xml:space="preserve">
-    <value>trackBarExpImageMinInt</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMinInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMinInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpMinInt</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMinInt.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelExpMaxInt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="labelExpMaxInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelExpMaxInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="labelExpMaxInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="labelExpMaxInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
-  </data>
-  <data name="labelExpMaxInt.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>White point of the overlaid experimental image, as
-a fraction of its own intensity range (logarithmic
-slider). Pixels at or above this become white.</value>
-  </data>
-  <data name="&gt;&gt;labelExpMaxInt.Name" xml:space="preserve">
-    <value>labelExpMaxInt</value>
-  </data>
-  <data name="&gt;&gt;labelExpMaxInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelExpMaxInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpMaxInt</value>
-  </data>
-  <data name="&gt;&gt;labelExpMaxInt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 3</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 18</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>White point of the overlaid experimental image, as
-a fraction of its own intensity range (logarithmic
-slider). Pixels at or above this become white.</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMaxInt.Name" xml:space="preserve">
-    <value>trackBarExpImageMaxInt</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMaxInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMaxInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpMaxInt</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageMaxInt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelExpOpacity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="labelExpOpacity.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelExpOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
-  </data>
-  <data name="labelExpOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="labelExpOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
-  </data>
-  <data name="labelExpOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Opacity</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Opacity of the overlaid experimental image,
-from 0 (invisible) to 100 % (opaque). Lower
-it to see the simulated pattern underneath.</value>
-  </data>
-  <data name="&gt;&gt;labelExpOpacity.Name" xml:space="preserve">
-    <value>labelExpOpacity</value>
-  </data>
-  <data name="&gt;&gt;labelExpOpacity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelExpOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpOpacity</value>
-  </data>
-  <data name="&gt;&gt;labelExpOpacity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="trackBarExpImageOpacity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="trackBarExpImageOpacity.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageOpacity.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarExpImageOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 4</value>
-  </data>
-  <data name="trackBarExpImageOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="trackBarExpImageOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 18</value>
-  </data>
-  <data name="trackBarExpImageOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Opacity of the overlaid experimental image,
-from 0 (invisible) to 100 % (opaque). Lower
-it to see the simulated pattern underneath.</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageOpacity.Name" xml:space="preserve">
-    <value>trackBarExpImageOpacity</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageOpacity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExpOpacity</value>
-  </data>
-  <data name="&gt;&gt;trackBarExpImageOpacity.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonIndexingRadon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -3659,7 +3279,7 @@ ZNCC (zero-mean normalized cross-correlation).</value>
     <value>flowLayoutPanelExpOpacity</value>
   </data>
   <data name="&gt;&gt;radioButtonIndexingRadon.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="radioButtonIndexingDictionary.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -3696,7 +3316,7 @@ seconds, but is more reliable than Radon search.</value>
     <value>flowLayoutPanelExpOpacity</value>
   </data>
   <data name="&gt;&gt;radioButtonIndexingDictionary.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="buttonFindOrientation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -4667,7 +4287,7 @@ orientation is not changed.</value>
     <value>3, 49</value>
   </data>
   <data name="flowLayoutPanelBrightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>680, 24</value>
+    <value>680, 27</value>
   </data>
   <data name="flowLayoutPanelBrightness.TabIndex" type="System.Int32, mscorlib">
     <value>202</value>
@@ -5368,30 +4988,6 @@ orientation is not changed.</value>
   <data name="flowLayoutPanelExperimentalImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMinInt.Name" xml:space="preserve">
-    <value>flowLayoutPanelExpMinInt</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMinInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMinInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExperimentalImage</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMinInt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMaxInt.Name" xml:space="preserve">
-    <value>flowLayoutPanelExpMaxInt</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMaxInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMaxInt.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExperimentalImage</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpMaxInt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="flowLayoutPanelExperimentalImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -5399,7 +4995,7 @@ orientation is not changed.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelExperimentalImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>369, 24</value>
+    <value>655, 27</value>
   </data>
   <data name="flowLayoutPanelExperimentalImage.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
@@ -5418,48 +5014,6 @@ orientation is not changed.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelExperimentalImage.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 24</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanelExpMinInt.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="flowLayoutPanelExpOpacity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5492,7 +5046,7 @@ orientation is not changed.</value>
     <value>flowLayoutPanelExperimentalImageTab</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelExpOpacity.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBoxSimulationParameters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6281,7 +5835,7 @@ orientation is not changed.</value>
     <value>3, 0, 3, 3</value>
   </data>
   <data name="tabControlPatternSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 153</value>
+    <value>694, 160</value>
   </data>
   <data name="tabControlPatternSettings.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
@@ -6296,7 +5850,7 @@ orientation is not changed.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOutputParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>686, 123</value>
+    <value>686, 130</value>
   </data>
   <data name="tabPageOutputParameter.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6326,7 +5880,7 @@ orientation is not changed.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageExperimentalImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 123</value>
+    <value>679, 130</value>
   </data>
   <data name="tabPageExperimentalImage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6347,7 +5901,7 @@ orientation is not changed.</value>
     <value>flowLayoutPanelExperimentalImageTab</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelIndexingButtons.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="flowLayoutPanelExperimentalImageTab.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -7401,5 +6955,404 @@ detector pixels (independent of zoom). About 100 px for a
   </data>
   <data name="&gt;&gt;numericBoxFlattenFwhm.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Black point of the simulated pattern, as a percentage of
+the display range (0 % = its lower end). Pixels at or below
+it become black. The slider is linear.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 0</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMin.Name" xml:space="preserve">
+    <value>trackBarAdvancedBrightnessMin</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMin.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMin.Parent" xml:space="preserve">
+    <value>flowLayoutPanelBrightness</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>White point of the simulated pattern, as a percentage of
+the display range (100 % = its upper end). Pixels at or above
+it become white. The slider is linear.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 0</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedBrightnessMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMax.Parent" xml:space="preserve">
+    <value>flowLayoutPanelBrightness</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedBrightnessMax.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Width of the display range. 0 = the intensity range of the
+pattern itself (Min 0 % and Max 100 % then span exactly that).
+-1 widens it tenfold (contrast ten times weaker), +1 narrows it
+to a tenth (ten times stronger). The centre stays fixed.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>473, 0</value>
+  </data>
+  <data name="trackBarAdvancedContrast.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 25</value>
+  </data>
+  <data name="trackBarAdvancedContrast.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedContrast.Name" xml:space="preserve">
+    <value>trackBarAdvancedContrast</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedContrast.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedContrast.Parent" xml:space="preserve">
+    <value>flowLayoutPanelBrightness</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedContrast.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Black point of the overlaid experimental image, as a
+percentage of the display range (0 % = its lower end).
+Pixels at or below it become black. The slider is linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMin.Name" xml:space="preserve">
+    <value>trackBarAdvancedExpMin</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMin.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMin.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExperimentalImage</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>White point of the overlaid experimental image, as a
+percentage of the display range (100 % = its upper end).
+Pixels at or above it become white. The slider is linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedExpMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMax.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExperimentalImage</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpMax.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Width of the display range of the overlaid experimental
+image. 0 = the intensity range of the image itself; -1 widens
+it tenfold (contrast ten times weaker), +1 narrows it to a
+tenth (ten times stronger). The centre stays fixed.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>473, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 25</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpContrast.Name" xml:space="preserve">
+    <value>trackBarAdvancedExpContrast</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpContrast.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpContrast.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExperimentalImage</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpContrast.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Opacity of the overlaid experimental image, from 0
+(invisible) to 100 % (opaque). Lower it to see the
+simulated pattern underneath.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 25</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpOpacity.Name" xml:space="preserve">
+    <value>trackBarAdvancedExpOpacity</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpOpacity.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpOpacity.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExpOpacity</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedExpOpacity.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Flatten background (subtract Gaussian blur)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Subtract a Gaussian-blurred copy of the experimental image
+from itself to remove its slowly varying brightness
+distribution. Affects the overlaid image only; the intensity
+sliders then act on the flattened values.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Full width at half maximum of the Gaussian blur, in image
+pixels. About 100 px for a 1344 x 1024 image.
+Range 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>Match to image</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Set Min, Max and Contrast of the simulated pattern so that
+its 2 % and 98 % intensity levels are shown at the same grey
+as those of this image. Polarity, Color and both Flatten
+settings are left alone, so flatten both sides or neither.</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>530, 29</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.TabIndex" type="System.Int32, mscorlib">
+    <value>205</value>
+  </data>
+  <data name="flowLayoutPanelExpFlatten.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelExpFlatten.Name" xml:space="preserve">
+    <value>flowLayoutPanelExpFlatten</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelExpFlatten.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelExpFlatten.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExperimentalImageTab</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelExpFlatten.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 0</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 21</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBoxExpFlattenBackground.Name" xml:space="preserve">
+    <value>checkBoxExpFlattenBackground</value>
+  </data>
+  <data name="&gt;&gt;checkBoxExpFlattenBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxExpFlattenBackground.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExpFlatten</value>
+  </data>
+  <data name="&gt;&gt;checkBoxExpFlattenBackground.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.FooterText" xml:space="preserve">
+    <value>px</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.HeaderText" xml:space="preserve">
+    <value>FWHM</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 0</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 3</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 25</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxExpFlattenFwhm.Name" xml:space="preserve">
+    <value>numericBoxExpFlattenFwhm</value>
+  </data>
+  <data name="&gt;&gt;numericBoxExpFlattenFwhm.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxExpFlattenFwhm.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExpFlatten</value>
+  </data>
+  <data name="&gt;&gt;numericBoxExpFlattenFwhm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonMatchSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="buttonMatchSimulation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 1</value>
+  </data>
+  <data name="buttonMatchSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 1, 3, 1</value>
+  </data>
+  <data name="buttonMatchSimulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 25</value>
+  </data>
+  <data name="buttonMatchSimulation.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonMatchSimulation.Name" xml:space="preserve">
+    <value>buttonMatchSimulation</value>
+  </data>
+  <data name="&gt;&gt;buttonMatchSimulation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMatchSimulation.Parent" xml:space="preserve">
+    <value>flowLayoutPanelExpFlatten</value>
+  </data>
+  <data name="&gt;&gt;buttonMatchSimulation.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
 </root>

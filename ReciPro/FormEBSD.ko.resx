@@ -533,26 +533,6 @@ mm 단위로 설정합니다. Y와 함께
     <value>기쿠치 선으로 그릴 반사를 구조 인자가 큰
 상위 N개로 선별합니다.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>표시 EBSD 영상의 밝기 상한(흰색 클립) 레벨을 강도 범위에
-대한 비율로 설정합니다. 이 값 이상인 픽셀이
-흰색으로 매핑됩니다.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>표시 EBSD 영상의 밝기 상한(흰색 클립) 레벨을 강도 범위에
-대한 비율로 설정합니다. 이 값 이상인 픽셀이
-흰색으로 매핑됩니다.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>표시 EBSD 영상의 밝기 하한(검은색 클립) 레벨을 강도 범위에
-대한 비율로 설정합니다. 이 값 이하인 픽셀이
-검은색으로 매핑됩니다.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>표시 EBSD 영상의 밝기 하한(검은색 클립) 레벨을 강도 범위에
-대한 비율로 설정합니다. 이 값 이하인 픽셀이
-검은색으로 매핑됩니다.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>기쿠치 선을 그리는 데 사용하는 선 너비(펜
 두께)를 설정합니다.</value>
@@ -665,26 +645,11 @@ Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>밝기</value>
   </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>최대</value>
-  </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>최소</value>
-  </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>불투명도</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>현재 보기</value>
   </data>
   <data name="radioButtonDetector.Text" xml:space="preserve">
     <value>검출기</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>최대</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>최소</value>
   </data>
   <data name="tabPageOverlays.Text" xml:space="preserve">
     <value>오버레이</value>
@@ -729,20 +694,6 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
     <value>겹친 실험 이미지(시뮬레이션 패턴이 아님)의 흑·백
 클립 범위를 오른쪽의 최소·최대 슬라이더로 조정합니다.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 백색 기준을 해당 이미지의
-강도 범위에 대한 비율로 설정합니다(슬라이더
-는 대수). 이 값 이상의 화소는 하얗게 됩니다.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 흑색 기준을 해당 이미지의
-강도 범위에 대한 비율로 설정합니다(슬라이더
-는 대수). 이 값 이하의 화소는 검게 됩니다.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 불투명도(0 = 투명 ~ 100 % =
-불투명). 낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>비트맵(bmp) 래스터 이미지로 복사합니다. 기쿠치 선과
 라벨을 포함한 전체가 고정 해상도로 래스터화됩니다.
@@ -775,20 +726,6 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
 방위를 탐색합니다. 마스터 패턴이 없어도
 동작하며, 있으면 robust ZNCC(평균을 제거한
 정규화 상호상관)로 후보를 재정렬합니다.</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 백색 기준을 해당 이미지의
-강도 범위에 대한 비율로 설정합니다(슬라이더
-는 대수). 이 값 이상의 화소는 하얗게 됩니다.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 흑색 기준을 해당 이미지의
-강도 범위에 대한 비율로 설정합니다(슬라이더
-는 대수). 이 값 이하의 화소는 검게 됩니다.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지의 불투명도(0 = 투명 ~ 100 % =
-불투명). 낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>폭</value>
@@ -915,5 +852,96 @@ D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절�
   <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
     <value>가우시안 블러의 반치폭 (검출기 픽셀, 줌과 무관).
 1344 × 1024 검출기에서 약 100 px. 범위 5〜2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>최소</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴의 검은 레벨을 표시 범위에 대한 %로 지정합니다
+(0 % = 범위 하단). 이 값 이하의 픽셀은 검게 됩니다.
+슬라이더는 선형입니다.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>최대</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴의 흰 레벨을 표시 범위에 대한 %로 지정합니다
+(100 % = 범위 상단). 이 값 이상의 픽셀은 희게 됩니다.
+슬라이더는 선형입니다.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>대비</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>표시 범위의 폭. 0이면 패턴 자체의 강도 범위 (최소 0 %·최대
+100 %가 정확히 그 범위). −1이면 10배로 넓어지고 (대비 1/10),
++1이면 1/10로 좁아집니다 (10배). 범위의 중심은 고정됩니다.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>최소</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>겹쳐 놓은 실측 이미지의 검은 레벨을 표시 범위에 대한 %로
+지정합니다 (0 % = 범위 하단). 이 값 이하의 픽셀은 검게 됩니다.
+슬라이더는 선형입니다.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>최대</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>겹쳐 놓은 실측 이미지의 흰 레벨을 표시 범위에 대한 %로
+지정합니다 (100 % = 범위 상단). 이 값 이상의 픽셀은 희게 됩니다.
+슬라이더는 선형입니다.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>대비</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>겹쳐 놓은 실측 이미지의 표시 범위 폭. 0이면 이미지 자체의
+강도 범위, −1이면 10배로 넓어지고 (대비 1/10), +1이면 1/10로
+좁아집니다 (10배). 범위의 중심은 고정됩니다.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>불투명도</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>겹쳐 놓은 실측 이미지의 불투명도 (0 = 투명 〜 100 % = 불투명).
+낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>배경 평탄화 (가우시안 블러를 뺌)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>실측 이미지에서 가우시안으로 흐리게 한 사본을 빼서 완만하게
+변하는 밝기 분포를 제거합니다. 겹쳐 놓은 이미지에만 적용되며,
+밝기 슬라이더는 평탄화된 값에 대해 작동합니다.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>가우시안 블러의 반치폭 (이미지 픽셀). 1344 x 1024 이미지에서
+약 100 px. 범위 5〜2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>이미지에 맞추기</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴의 최소·최대·대비를, 그 2 %와 98 % 강도가
+이 이미지의 같은 위치와 같은 회색으로 표시되도록 설정합니다.
+극성·색·양쪽 평탄화 설정은 건드리지 않으므로 평탄화는 양쪽
+모두 켜거나 모두 끄십시오.</value>
   </data>
 </root>

@@ -93,6 +93,10 @@ public partial class FormEBSD : FormBase
     public bool FlattenBackground { get => checkBoxFlattenBackground.Checked; set => checkBoxFlattenBackground.Checked = value; }
     /// <summary>260920Cl 追加: 平坦化に使う Gaussian の半値幅 [検出器 px] (ズームに依らない)</summary>
     public double FlattenBackgroundFwhmPx { get => numericBoxFlattenFwhm.Value; set => numericBoxFlattenFwhm.Value = value; }
+    /// <summary>260920Cl 追加: 実測画像側の背景平坦化 (原画像 − 半値幅 FWHM の Gaussian ぼかし)。表示のみに効く</summary>
+    public bool ExpFlattenBackground { get => checkBoxExpFlattenBackground.Checked; set => checkBoxExpFlattenBackground.Checked = value; }
+    /// <summary>260920Cl 追加: 実測画像側の平坦化の半値幅 [画像 px]</summary>
+    public double ExpFlattenBackgroundFwhmPx { get => numericBoxExpFlattenFwhm.Value; set => numericBoxExpFlattenFwhm.Value = value; }
     /// <summary>260919Cl 追加: EbsdMonteCarloDistribution へ渡す E_dead。重み OFF なら NaN (= 1 本 1 票)</summary>
     internal double McEnergyWeightDeadKeV => PhosphorEnergyWeight ? PhosphorDeadEnergyKeV : double.NaN;
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
@@ -247,7 +251,11 @@ public partial class FormEBSD : FormBase
     private Bitmap expImage = null;
 
     /// <summary>輝度 (Max intensity) トラックバー値→実強度の対数変換係数。260724Cl 追加 (FormDiffractionSimulatorGeometry と同形)</summary>
-    private double expTrackbarConstantA = 0, expTrackbarConstantB = 1;
+    // private double expTrackbarConstantA = 0, expTrackbarConstantB = 1; // 260920Cl 変更前: 実測画像の輝度トラックバーは対数スケールだった
+    /// <summary>260920Cl 変更: 実測画像の実レンジ (平坦化後の値で測る)。輝度トラックバーはこのレンジに対するリニアな % で動く</summary>
+    private double expImageMin = 0, expImageMax = 1;
+    /// <summary>260920Cl 追加: 実測画像の生値と幅。平坦化の ON/OFF・半値幅を変えても読み直さずに作り直せるよう保持する</summary>
+    private double[] expImageRaw = []; private int expImageRawWidth = 0;
 
     /// <summary>expPbmp 差し替え時の不変条件 (旧インスタンス破棄と旧由来 expImage の無効化) を集約。260724Cl 追加</summary>
     private void SetExpPseudoBitmap(PseudoBitmap value)
@@ -1289,14 +1297,22 @@ public partial class FormEBSD : FormBase
         //Negativeかどうか
         Pbmp.IsNegative = comboBoxGradient.SelectedIndex == 1;
 
-        var maxRatio = (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;
-        var minRatio = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
+        // var maxRatio = (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum; // 260920Cl 変更前
+        // var minRatio = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
+        var maxRatio = trackBarAdvancedBrightnessMax.Value / 100; // 260920Cl 変更: TrackBarAdvanced (表示レンジに対する %、リニア)
+        var minRatio = trackBarAdvancedBrightnessMin.Value / 100;
 
         var (min, max) = Pbmp.SrcValuesGray.MinMax();//260717Cl 変更: Max()+Min() の 2 走査を 1 走査に
-        var dev = max - min;
+        // var dev = max - min; // 260920Cl 変更前: 表示レンジは画像の下限〜上限に固定で、これ以上コントラストを弱められなかった
+        // Pbmp.MaxValue = dev * maxRatio + min;
+        // Pbmp.MinValue = dev * minRatio + min;
+        // 260920Cl 追加 (作者指示): Contrast (−1〜+1)。0 = 従来どおり表示レンジ = 画像の下限〜上限。
+        //   −1 で表示レンジが 10 倍に広がり (コントラスト 1/10)、+1 で 1/10 に狭まる (コントラスト 10 倍)。レンジの中心は画像の中央値に固定
+        var dev = (max - min) * Math.Pow(10, -trackBarAdvancedContrast.Value);
+        var lower = (min + max - dev) / 2;
 
-        Pbmp.MaxValue = dev * maxRatio + min;
-        Pbmp.MinValue = dev * minRatio + min;
+        Pbmp.MaxValue = dev * maxRatio + lower;
+        Pbmp.MinValue = dev * minRatio + lower;
 
         #endregion
 
@@ -1412,7 +1428,7 @@ public partial class FormEBSD : FormBase
             graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             graphics.PixelOffsetMode = PixelOffsetMode.Half;
             using var ia = new ImageAttributes();
-            ia.SetColorMatrix(new ColorMatrix { Matrix33 = trackBarExpImageOpacity.Value / (float)trackBarExpImageOpacity.Maximum });
+            ia.SetColorMatrix(new ColorMatrix { Matrix33 = (float)(trackBarAdvancedExpOpacity.Value / 100) }); // 260920Cl 変更: TrackBarAdvanced 化 (0〜100 %)
             var dest = new PointF[] { // 左上、右上、左下の順 (mm 座標。Graphics.Transform が画面へ写す)
                 new((float)(detCx - halfW), (float)(detCy - halfH)),
                 new((float)(detCx + halfW), (float)(detCy - halfH)),
@@ -1928,19 +1944,24 @@ public partial class FormEBSD : FormBase
 
         SetExpPseudoBitmap(loaded);
 
-        //輝度 (Max intensity) トラックバーの対数変換係数を実レンジから設定 (FormDiffractionSimulatorGeometry と同形)
-        expTrackbarConstantA = min - 1;
-        expTrackbarConstantB = trackBarExpImageMaxInt.Maximum / Math.Log(max - expTrackbarConstantA);
+        //260920Cl 変更 (作者指示): 対数スケール → リニア。トラックバーは実レンジ (Contrast で伸縮) に対する % を表す
+        // expTrackbarConstantA = min - 1;
+        // expTrackbarConstantB = trackBarExpImageMaxInt.Maximum / Math.Log(max - expTrackbarConstantA);
+        expImageRaw = expPbmp.SrcValuesGray; expImageRawWidth = width; //260920Cl: 平坦化のやり直し用に生値を保持 (UpdateExpImageValues は別配列を入れるので複製不要)
+        UpdateExpImageValues(); //260920Cl: 平坦化の ON/OFF を反映して expImageMin/Max を決める
         skipViewEvent = true;
         try
         {
-            trackBarExpImageMaxInt.Value = trackBarExpImageMaxInt.Maximum; //標準表示 (=データ最大値) へリセット
-            trackBarExpImageMinInt.Value = trackBarExpImageMinInt.Minimum; //260724Cl: Min はデータ最小値 (v=0 → A+e⁰ = min)
+            trackBarAdvancedExpMax.Value = 100; //標準表示 (=データ最大値) へリセット //260920Cl: % 表記へ
+            trackBarAdvancedExpMin.Value = 0; //260724Cl: Min はデータ最小値 //260920Cl
+            trackBarAdvancedExpContrast.Value = 0; //260920Cl 追加: Contrast も既定へ戻す
         }
         finally { skipViewEvent = false; }
+        expPbmp.MinValue = expImageMin; expPbmp.MaxValue = expImageMax; //260920Cl: リセット後のスライダー (0 / 100 % / 0) に対応する表示窓
         expImage = expPbmp.GetImage();
 
-        checkBoxShowExperimentalImage.Enabled = trackBarExpImageOpacity.Enabled = trackBarExpImageMaxInt.Enabled = trackBarExpImageMinInt.Enabled = true;
+        checkBoxShowExperimentalImage.Enabled = trackBarAdvancedExpOpacity.Enabled = trackBarAdvancedExpMax.Enabled = trackBarAdvancedExpMin.Enabled = trackBarAdvancedExpContrast.Enabled = true; // 260920Cl
+        flowLayoutPanelExpFlatten.Enabled = true; // 260920Cl 追加: 平坦化と「見た目を合わせる」ボタンも解禁
         tabPageExperimentalImage.Enabled = true; // 260724Cl 追加: 実測画像が読み込まれたら Experimental image タブを解禁
         tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; // 260725Ch: D&Dした画像の設定をすぐ操作できるよう前面へ
 
@@ -1963,18 +1984,103 @@ public partial class FormEBSD : FormBase
     /// <summary>実測画像の表示 ON/OFF。260724Cl 追加</summary>
     private void checkBoxShowExperimentalImage_CheckedChanged(object sender, EventArgs e) => DrawOverlays();
 
-    /// <summary>実測画像の透明度。表示合成 (ColorMatrix) のみ変わるため再配置だけ行う。260724Cl 追加</summary>
-    private void trackBarExpImageOpacity_ValueChanged(object sender, EventArgs e) => DrawOverlays();
+    /// <summary>実測画像の透明度。表示合成 (ColorMatrix) のみ変わるため再配置だけ行う。260724Cl 追加。260920Cl: TrackBarAdvanced 化でシグネチャ変更 (旧 trackBarExpImageOpacity_ValueChanged(object, EventArgs))</summary>
+    private bool TrackBarAdvancedExpOpacity_ValueChanged(object sender, double value) { DrawOverlays(); return true; }
 
-    /// <summary>実測画像の輝度 (表示下限/上限強度)。対数スケールで Min/MaxValue を変え、表示用 Bitmap を作り直す。260724Cl 追加
-    /// (旧名 trackBarExpImageMaxInt_ValueChanged。Min トラックバー追加に伴い両対応の共通ハンドラへ改名。FormDiffractionSimulatorGeometry.trackBarMaxInt_ValueChanged と同形)</summary>
-    private void trackBarExpImageIntensity_ValueChanged(object sender, EventArgs e)
+    /// <summary>260920Cl 追加: 実測画像の表示値を作り直す (背景平坦化の ON/OFF・半値幅の変更、読み込み直後)。
+    /// 平坦化はシミュレーション側と同じ汎用処理 (原画像 − Gaussian ぼかし)。生値 expImageRaw は残す</summary>
+    private void UpdateExpImageValues()
+    {
+        if (expPbmp == null || expImageRaw.Length == 0) return;
+        var values = checkBoxExpFlattenBackground.Checked
+            ? ImageProcess.SubtractGaussianBackground(expImageRaw, expImageRawWidth, ExpFlattenBackgroundFwhmPx)
+            : expImageRaw;
+        expPbmp.SrcValuesGray = expPbmp.SrcValuesGrayOriginal = values;
+        (expImageMin, expImageMax) = values.MinMax();
+        if (expImageMax <= expImageMin) expImageMax = expImageMin + 1; //単色画像で表示レンジの分母が 0 になるのを防ぐ
+    }
+
+    /// <summary>260920Cl 追加: 実測画像の背景平坦化の ON/OFF・半値幅変更。表示値を作り直して窓を貼り直す</summary>
+    private void ExpFlattenBackground_Changed(object sender, EventArgs e)
     {
         if (skipViewEvent || expPbmp == null) return;
-        expPbmp.MaxValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMaxInt.Value / expTrackbarConstantB);
-        expPbmp.MinValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMinInt.Value / expTrackbarConstantB);
+        UpdateExpImageValues();
+        TrackBarAdvancedExpIntensity_ValueChanged(sender, 0);
+    }
+
+    /// <summary>260920Cl 追加 (作者指示): 表示中の実測画像に見た目が合うよう、シミュレーションパターンの Min / Max / Contrast を決める。
+    /// 方式はパーセンタイル合わせ — 両画像の下側 2 % と上側 98 % が同じ濃淡になる表示窓を解き、3 つのつまみへ落とす。
+    /// 方位や位置合わせに依存せず、実測の台座や晶帯軸の外れ値にも強い。平坦化 (Flatten background)・Polarity・Color は動かさず、
+    /// いま表示されている値どうしを比べるだけなので、両側の平坦化設定が食い違っていれば一致は粗くなる</summary>
+    private void buttonMatchSimulation_Click(object sender, EventArgs e) => MatchSimulationToExperimentalImage();
+
+    /// <summary>260920Cl 追加: 上記の本体 (ボタン以外 — 外部ハーネス・将来のマクロからも呼べるよう internal メソッドに分離)</summary>
+    internal void MatchSimulationToExperimentalImage()
+    {
+        if (Pbmp?.SrcValuesGray == null || Pbmp.SrcValuesGray.Length == 0 || expPbmp?.SrcValuesGray == null || expPbmp.SrcValuesGray.Length == 0) return;
+        const double pLo = 2, pHi = 98; //外れ値 (晶帯軸のピーク・ホットピクセル) を避ける両端
+        var (eLo, eHi) = Percentiles(expPbmp.SrcValuesGray, pLo, pHi);
+        var (sLo, sHi) = Percentiles(Pbmp.SrcValuesGray, pLo, pHi);
+        var eSpan = expPbmp.MaxValue - expPbmp.MinValue;
+        //実測がいま画面でとっている濃淡 (0 = 黒, 1 = 白)。シミュレーション側の同じパーセンタイルをここへ合わせる
+        var gLo = (eLo - expPbmp.MinValue) / eSpan;
+        var gHi = (eHi - expPbmp.MinValue) / eSpan;
+        if (!(eSpan > 0) || !(sHi > sLo) || !(gHi - gLo > 1e-6))
+        {
+            toolStripStatusLabelSummary.Text = "Could not match the brightness";
+            toolStripStatusLabelDetail.Text = "The two patterns have no usable intensity range at the 2-98 % levels.";
+            return;
+        }
+        var span = (sHi - sLo) / (gHi - gLo); //求める表示窓の幅
+        var wLo = sLo - gLo * span; //窓の下端
+        //3 つのつまみへ落とす: Contrast = 表示レンジ幅 / データ範囲 の常用対数 (符号反転)、Min/Max % = そのレンジ内での位置。
+        //  Contrast の表示レンジはデータの中央に対して対称なので、求めた窓 [wLo, wLo+span] が偏っていると Min/Max % だけでは届かない
+        //  (晶帯軸の飛び値でデータ範囲の中央が窓からずれるため実際に起きる)。窓を包含できる幅まで広げてから % を決める
+        var (dMin, dMax) = Pbmp.SrcValuesGray.MinMax();
+        var center = (dMin + dMax) / 2;
+        var needed = Math.Max(span, 2 * Math.Max(center - wLo, wLo + span - center)); //窓を [lower, lower+dev] に収めるのに要る幅
+        var contrast = Math.Clamp(-Math.Log10(needed / (dMax - dMin)), trackBarAdvancedContrast.Minimum, trackBarAdvancedContrast.Maximum);
+        var dev = (dMax - dMin) * Math.Pow(10, -contrast);
+        var lower = center - dev / 2;
+        var minPct = Math.Clamp((wLo - lower) / dev * 100, 0, 100);
+        var maxPct = Math.Clamp((wLo + span - lower) / dev * 100, 0, 100);
+        skipViewEvent = true; //3 本を 1 回の Draw() にまとめる
+        try
+        {
+            trackBarAdvancedContrast.Value = contrast;
+            trackBarAdvancedBrightnessMin.Value = minPct;
+            trackBarAdvancedBrightnessMax.Value = maxPct;
+        }
+        finally { skipViewEvent = false; }
+        Draw();
+        toolStripStatusLabelSummary.Text = "Brightness matched to the experimental image";
+        toolStripStatusLabelDetail.Text = $"Min {minPct:f0} %, Max {maxPct:f0} %, contrast {contrast:f2} (2-98 % levels of both images as displayed)";
+    }
+
+    /// <summary>260920Cl 追加: 下側 / 上側パーセンタイル。1 回のソートで両端を返す (ボタン操作なので素直に複製して並べ替える)</summary>
+    private static (double Lo, double Hi) Percentiles(double[] values, double lowerPercent, double upperPercent)
+    {
+        var sorted = (double[])values.Clone();
+        Array.Sort(sorted);
+        int n = sorted.Length;
+        return (sorted[Math.Clamp((int)(lowerPercent / 100 * (n - 1)), 0, n - 1)], sorted[Math.Clamp((int)(upperPercent / 100 * (n - 1)), 0, n - 1)]);
+    }
+
+    /// <summary>実測画像の輝度 (表示下限/上限強度) と Contrast。リニアスケールで Min/MaxValue を変え、表示用 Bitmap を作り直す。260724Cl 追加
+    /// (旧名 trackBarExpImageMaxInt_ValueChanged → trackBarExpImageIntensity_ValueChanged。260920Cl: 対数 → リニア、Contrast 追加、TrackBarAdvanced 化でシグネチャ変更)</summary>
+    private bool TrackBarAdvancedExpIntensity_ValueChanged(object sender, double value)
+    {
+        if (skipViewEvent || expPbmp == null) return false;
+        // 260920Cl: シミュレーション側 (DrawEBSDCore) と同じ規約。Contrast −1 で表示レンジ 10 倍、+1 で 1/10、中心は実レンジの中央に固定
+        var dev = (expImageMax - expImageMin) * Math.Pow(10, -trackBarAdvancedExpContrast.Value);
+        var lower = (expImageMin + expImageMax - dev) / 2;
+        // expPbmp.MaxValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMaxInt.Value / expTrackbarConstantB); // 260920Cl 変更前 (対数)
+        // expPbmp.MinValue = expTrackbarConstantA + Math.Exp(trackBarExpImageMinInt.Value / expTrackbarConstantB);
+        expPbmp.MaxValue = dev * trackBarAdvancedExpMax.Value / 100 + lower;
+        expPbmp.MinValue = dev * trackBarAdvancedExpMin.Value / 100 + lower;
         expImage = expPbmp.GetImage();
         DrawOverlays();
+        return true;
     }
 
     #endregion 実測 EBSD 画像
@@ -2178,10 +2284,13 @@ public partial class FormEBSD : FormBase
         if (mcDistribution == null && MasterPattern != null) InvalidateIndexingResults(); //260725Ch: Radon-only時に無関係な候補を消さない
         Draw();
     }
-    private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw();
+    // private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw(); // 260920Cl 変更前: トラックバー廃止で名前が実態と合わなくなったため改名
+    /// <summary>260920Cl 改名・統合: 表示設定 (Polarity / Color / 背景平坦化) の変更で描き直す。旧 trackBarIntensityBrightnessMax_ValueChanged と FlattenBackground_Changed</summary>
+    private void DisplaySetting_Changed(object sender, EventArgs e) => Draw();
 
-    /// <summary>260920Cl 追加: 背景平坦化の ON/OFF・半値幅変更で再描画</summary>
-    private void FlattenBackground_Changed(object sender, EventArgs e) => Draw();
+    /// <summary>260920Cl 追加: シミュレーションパターンの明るさ (Min/Max、%) と Contrast の変更</summary>
+    private bool TrackBarAdvancedBrightness_ValueChanged(object sender, double value) { if (skipViewEvent) return false; Draw(); return true; } // 260920Cl: 一致ボタンが 3 本まとめて動かすときは 1 回だけ描く
+
 
     #endregion
 
@@ -3575,6 +3684,7 @@ public partial class FormEBSD : FormBase
         indexingCts = null;
         indexingBusy = false;
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = true; //260724Cl: 廃止 2 ボタンを除去
+        var tcs = calibrationDoneForHarness; calibrationDoneForHarness = null; tcs?.TrySetResult(); // 260920Cl 追加: ハーネスの待ち合わせ
     }
 
     /// <summary>現在の UI 値から、実測画像のピクセルグリッドを基準にした検出器幾何スナップショットを作る</summary>
@@ -3763,8 +3873,16 @@ public partial class FormEBSD : FormBase
             pos = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, eIdx, dIdx);
             neg = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, eIdx, dIdx);
         }
-        var (refData, rw, rh) = EbsdPatternScorer.PrepareReference(expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, 160);
-        return new EbsdMatchingContext(geom, mp, pos, neg, refData, rw, rh, new Matrix3D(Crystal.RotationMatrix));
+        // var (refData, rw, rh) = EbsdPatternScorer.PrepareReference(expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, 160); // 260920Cl 変更前
+        //260920Cl 変更: SrcValuesGray は表示用 (Flatten background が ON なら平坦化後) なので、表示設定で指数付け・較正の入力が変わってしまう。
+        //  PrepareReference 自身が広域ガウシアン背景で除算するため二重処理にもなる。生値を渡して表示から切り離す
+        var (refData, rw, rh) = EbsdPatternScorer.PrepareReference(expImageRaw.Length == expPbmp.Width * expPbmp.Height ? expImageRaw : expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, 160);
+        //260920Cl 追加 (作者指示): 幾何較正は縮小せず表示中の値で比べる。平坦化するかどうかはユーザーの選択に委ねるので、
+        //  実測側は表示値 (expPbmp.SrcValuesGray = 平坦化 ON なら平坦化後) をそのまま渡し、
+        //  シミュレーション側には「シミュレーションの平坦化チェックが ON のとき」だけ同じ半値幅の高域通過を掛けさせる。
+        //  両側の設定がそろっていないと ZNCC が背景の食い違いに引かれるので、docs/ツールチップでそろえるよう案内している
+        return new EbsdMatchingContext(geom, mp, pos, neg, refData, rw, rh, new Matrix3D(Crystal.RotationMatrix),
+            expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, FlattenBackground ? FlattenBackgroundFwhmPx : 0);
     }
 
     private bool CheckMatchingPrerequisites(string title)
@@ -3790,6 +3908,9 @@ public partial class FormEBSD : FormBase
     /// 最適化の中身 (交互法 → 方位仕上げ → 6 変数同時最適化 × 多点開始) は EbsdGeometryCalibrator を参照。
     /// 結果は DetX/DetY/DetZ へ逆変換して書き戻す。
     /// </summary>
+    internal System.Threading.Tasks.Task CalibrateGeometryForHarness() { var tcs = new System.Threading.Tasks.TaskCompletionSource(); calibrationDoneForHarness = tcs; buttonCalibrateGeometry_Click(this, EventArgs.Empty); return tcs.Task; } // 260920Cl 追加: 外部ハーネスから較正を走らせて完了を待つ
+    private System.Threading.Tasks.TaskCompletionSource calibrationDoneForHarness; // 260920Cl 追加
+
     private async void buttonCalibrateGeometry_Click(object sender, EventArgs e)
     {
         if (!CheckMatchingPrerequisites("Calibrate detector geometry")) return;

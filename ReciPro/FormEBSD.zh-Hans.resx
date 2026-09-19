@@ -518,26 +518,6 @@ Negative（反相）灰度。</value>
     <value>通过取按结构因子排序最强的若干个
 来为菊池线选择衍射。</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>以强度范围的比例设置所显示 EBSD 图像的
-亮度上限（白色截断）；等于或高于该值的
-像素映射为白色。</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>以强度范围的比例设置所显示 EBSD 图像的
-亮度上限（白色截断）；等于或高于该值的
-像素映射为白色。</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>以强度范围的比例设置所显示 EBSD 图像的
-亮度下限（黑色截断）；等于或低于该值的
-像素映射为黑色。</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>以强度范围的比例设置所显示 EBSD 图像的
-亮度下限（黑色截断）；等于或低于该值的
-像素映射为黑色。</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>设置绘制菊池线所用的
 线宽（画笔粗细）。</value>
@@ -649,26 +629,11 @@ EBSD 图案能量切片 (keV)；
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>亮度</value>
   </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>最小</value>
-  </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>不透明度</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>当前视图</value>
   </data>
   <data name="radioButtonDetector.Text" xml:space="preserve">
     <value>探测器</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>最小</value>
   </data>
   <data name="tabPageOverlays.Text" xml:space="preserve">
     <value>叠加层</value>
@@ -707,18 +672,6 @@ Radon 带证据的 z 值，ZNCC = 与模拟花样的相关
     <value>用右侧的最小/最大滑块调整叠加实验图
 像（而非模拟花样）的黑白截断范围。</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>以叠加实验图像自身强度范围的比例设定其白场（滑
-块为对数）。高于或等于该值的像素变为白色。</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>以叠加实验图像自身强度范围的比例设定其黑场（滑
-块为对数）。低于或等于该值的像素变为黑色。</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>叠加的实验图像的不透明度（0 = 透明 ~ 100 %
-= 不透明）。降低该值可看到下方的模拟花样。</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>以位图 (bmp) 栅格图像复制。包括菊池线与标签在内的全部内
 容都以固定分辨率栅格化。适用于无法粘贴图元文件的程序。</value>
@@ -745,18 +698,6 @@ robust ZNCC 逐一比较以搜索取向。
     <value>将运动学菊池带模板与实验图像的 Radon 变换（直线检测）
 图进行匹配以搜索取向。无主花样时也可运行；有主花样时会
 用 robust ZNCC（零均值归一化互相关）对候选重新排序。</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>以叠加实验图像自身强度范围的比例设定其白场（滑
-块为对数）。高于或等于该值的像素变为白色。</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>以叠加实验图像自身强度范围的比例设定其黑场（滑
-块为对数）。低于或等于该值的像素变为黑色。</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>叠加的实验图像的不透明度（0 = 透明 ~ 100 %
-= 不透明）。降低该值可看到下方的模拟花样。</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>宽度</value>
@@ -877,5 +818,90 @@ B = 0 时无效。</value>
   <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
     <value>高斯模糊的半高全宽 (探测器像素，与缩放无关)。
 1344 × 1024 探测器约 100 px。范围 5–2000 px。</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>模拟图样的黑场，以显示范围的百分比表示 (0 % = 范围下端)。
+低于该值的像素变为黑色。滑块为线性。</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>模拟图样的白场，以显示范围的百分比表示 (100 % = 范围上端)。
+高于该值的像素变为白色。滑块为线性。</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>对比度</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>显示范围的宽度。0 为图样自身的强度范围 (最小 0 %、最大 100 %
+正好覆盖该范围)。−1 展宽十倍 (对比度减弱为 1/10)，+1 收窄为
+1/10 (增强十倍)。范围中心保持不变。</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>叠加实验图像的黑场，以显示范围的百分比表示 (0 % = 范围下端)。
+低于该值的像素变为黑色。滑块为线性。</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>叠加实验图像的白场，以显示范围的百分比表示 (100 % = 范围上端)。
+高于该值的像素变为白色。滑块为线性。</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>对比度</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>叠加实验图像显示范围的宽度。0 为图像自身的强度范围；−1 展宽
+十倍 (对比度减弱为 1/10)，+1 收窄为 1/10 (增强十倍)。范围中心
+保持不变。</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>叠加实验图像的不透明度 (0 = 透明 〜 100 % = 不透明)。
+调低即可看到下方的模拟图样。</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>平坦化背景 (减去高斯模糊)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>从实验图像中减去其高斯模糊副本，以去除缓慢变化的亮度分布。
+仅影响叠加的图像；亮度滑块随后作用于平坦化后的值。</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>高斯模糊的半高全宽 (图像像素)。1344 x 1024 图像约 100 px。
+范围 5-2000 px。</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>匹配到图像</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>设置模拟图样的最小、最大和对比度，使其 2 % 与 98 % 的强度
+显示为与本图像相同的灰度。不改变极性、颜色以及两侧的平坦化
+设置，因此请两侧同时开启或同时关闭平坦化。</value>
   </data>
 </root>

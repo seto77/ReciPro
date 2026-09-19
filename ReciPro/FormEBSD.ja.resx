@@ -365,30 +365,6 @@ Negative(白黒反転)から選択します。</value>
     <value>強度を色に対応させるカラースケール(Gray /
 Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
-る比率で設定します。この値以上の画素が白になります。</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ下限(黒つぶれの
-位置)を強度レンジに対する比率で設定し
-ます。この値以下の画素が黒になります。</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
-る比率で設定します。この値以上の画素が白になります。</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>最小</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>表示EBSD像の明るさ下限(黒つぶれの
-位置)を強度レンジに対する比率で設定し
-ます。この値以下の画素が黒になります。</value>
-  </data>
   <data name="labelBrightness.Text" xml:space="preserve">
     <value>明るさ</value>
   </data>
@@ -635,43 +611,6 @@ EBSD カメラが記録する自然な画像です。実測画像の
 表示します (シミュレーションパターンの
 上、菊池線オーバーレイの下)。</value>
   </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>最小</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の黒レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以下の画素は黒になります。</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の黒レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以下の画素は黒になります。</value>
-  </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の白レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以上の画素は白になります。</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の白レベルを、その画像の
-強度レンジに対する比率で設定します (スライダー
-は対数)。この値以上の画素は白になります。</value>
-  </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>不透明度</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
-下げると下のシミュレーションパターンが見えます。</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
-下げると下のシミュレーションパターンが見えます。</value>
-  </data>
   <data name="radioButtonIndexingRadon.Text" xml:space="preserve">
     <value>Radon 探索</value>
   </data>
@@ -913,12 +852,6 @@ Radon バンド証拠の z 値、ZNCC =
   <data name="flowLayoutPanelExperimentalImage.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="flowLayoutPanelExpMinInt.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelExpMaxInt.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelExpOpacity.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1142,12 +1075,6 @@ Radon バンド証拠の z 値、ZNCC =
   </data>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelBrightnessMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelBrightnessMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="labelBrightness.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1379,6 +1306,104 @@ CSV 出力は生値のままです。</value>
 1344 × 1024 の検出器で 100 px 程度。範囲 5〜2000 px。</value>
   </data>
   <data name="checkBoxFlattenBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンの黒レベルを、表示レンジに対する
+% で指定します (0 % = レンジ下端)。この値以下の画素は黒に
+なります。スライダーはリニアです。</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンの白レベルを、表示レンジに対する
+% で指定します (100 % = レンジ上端)。この値以上の画素は白に
+なります。スライダーはリニアです。</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>コントラスト</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>表示レンジの幅。0 でパターン自身の強度範囲 (最小 0 %・最大
+100 % がちょうどその範囲) になります。−1 で 10 倍に広がり
+(コントラスト 1/10)、+1 で 1/10 に狭まります (10 倍)。
+レンジの中心は動きません。</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の黒レベルを、表示レンジに対する % で指定
+します (0 % = レンジ下端)。この値以下の画素は黒になります。
+スライダーはリニアです。</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の白レベルを、表示レンジに対する % で指定
+します (100 % = レンジ上端)。この値以上の画素は白になります。
+スライダーはリニアです。</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>コントラスト</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の表示レンジの幅。0 で画像自身の強度範囲、
+−1 で 10 倍に広がり (コントラスト 1/10)、+1 で 1/10 に
+狭まります (10 倍)。レンジの中心は動きません。</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>重ねた実測画像の不透明度 (0 = 透明 〜 100 % = 不透明)。
+下げると下のシミュレーションパターンが見えます。</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>背景を平坦化 (Gaussian ぼかしを差し引く)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>実測画像から、それを Gaussian でぼかした画像を差し引き、
+全体的な明るさ分布を取り除きます。重ねた実測画像だけに
+効き、輝度スライダーは平坦化後の値に対して働きます。</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Gaussian ぼかしの半値幅 (画像ピクセル)。1344 x 1024 の
+画像で 100 px 程度。範囲 5〜2000 px。</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>画像に合わせる</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンの最小・最大・コントラストを、
+その 2 % と 98 % の強度がこの画像の同じ位置と同じ濃淡で
+表示されるように設定します。ネガ/ポジ・色・両側の平坦化
+設定は変えないので、平坦化は両方 ON か両方 OFF にします。</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonMatchSimulation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
 </root>

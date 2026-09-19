@@ -760,6 +760,8 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.PhosphorDeadEnergyKeV); // 260919Cl 追加
                 rw(() => FormEBSD.FlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.FlattenBackgroundFwhmPx); // 260920Cl 追加
+                rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加
+                rw(() => FormEBSD.ExpFlattenBackgroundFwhmPx); // 260920Cl 追加
             }
             #endregion
 

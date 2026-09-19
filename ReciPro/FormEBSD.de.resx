@@ -546,26 +546,6 @@ eines Schwellenwerts für den reziproken Abstand (1/d) aus.</value>
     <value>Wählt Reflexe für Kikuchi-Linien aus, indem die
 stärksten nach Strukturfaktor geordneten genommen werden.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Legt die obere Helligkeitsstufe (White-Clip) des angezeigten
-EBSD-Bildes als Anteil des Intensitätsbereichs fest; Pixel auf
-oder über diesem Wert werden auf Weiß abgebildet.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Legt die obere Helligkeitsstufe (White-Clip) des angezeigten
-EBSD-Bildes als Anteil des Intensitätsbereichs fest; Pixel auf
-oder über diesem Wert werden auf Weiß abgebildet.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Legt die untere Helligkeitsstufe (Black-Clip) des angezeigten
-EBSD-Bildes als Anteil des Intensitätsbereichs fest; Pixel auf
-oder unter diesem Wert werden auf Schwarz abgebildet.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Legt die untere Helligkeitsstufe (Black-Clip) des angezeigten
-EBSD-Bildes als Anteil des Intensitätsbereichs fest; Pixel auf
-oder unter diesem Wert werden auf Schwarz abgebildet.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Legt die Linienbreite (Stiftdicke) zum
 Zeichnen der Kikuchi-Linien fest.</value>
@@ -680,9 +660,6 @@ Detektorzentrums</value>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>Helligkeit</value>
   </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Deckkraft</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Aktuelle Ansicht</value>
   </data>
@@ -741,23 +718,6 @@ des überlagerten experimentellen Bildes
 (nicht des simulierten Musters) mit den
 Schiebern Min und Max rechts ein.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>Weißpunkt des überlagerten experimentellen
-Bildes, als Anteil seines eigenen
-Intensitätsbereichs (logarithmischer Schieber).
-Pixel auf oder über diesem Wert werden weiß.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Schwarzpunkt des überlagerten experimentellen
-Bildes, als Anteil seines eigenen
-Intensitätsbereichs (logarithmischer Schieber).
-Pixel auf oder unter diesem Wert werden schwarz.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Deckkraft des überlagerten experimentellen Bildes,
-von 0 (unsichtbar) bis 100 % (deckend). Verringern,
-um das simulierte Muster darunter zu sehen.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Kopiert als Bitmap-Rasterbild (bmp). Alles,
 einschließlich Kikuchi-Linien und Beschriftungen,
@@ -798,23 +758,6 @@ verglichen werden. Funktioniert ohne
 Master-Pattern; mit einem werden die
 Kandidaten per robustem ZNCC (mittelwertfreie
 normierte Kreuzkorrelation) neu sortiert.</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>Weißpunkt des überlagerten experimentellen
-Bildes, als Anteil seines eigenen
-Intensitätsbereichs (logarithmischer Schieber).
-Pixel auf oder über diesem Wert werden weiß.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Schwarzpunkt des überlagerten experimentellen
-Bildes, als Anteil seines eigenen
-Intensitätsbereichs (logarithmischer Schieber).
-Pixel auf oder unter diesem Wert werden schwarz.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Deckkraft des überlagerten experimentellen Bildes,
-von 0 (unsichtbar) bis 100 % (deckend). Verringern,
-um das simulierte Muster darunter zu sehen.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>Breite</value>
@@ -955,5 +898,101 @@ PNG/TIFF-Export; der CSV-Export behält die Rohwerte.</value>
     <value>Halbwertsbreite der Gauß-Unschärfe in Detektorpixeln
 (zoomunabhängig). Etwa 100 px für einen 1344 × 1024-Detektor.
 Bereich 5–2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Schwarzpunkt des simulierten Musters, als Prozentsatz des
+Anzeigebereichs (0 % = unteres Ende). Pixel darunter werden
+schwarz. Der Schieberegler ist linear.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Weißpunkt des simulierten Musters, als Prozentsatz des
+Anzeigebereichs (100 % = oberes Ende). Pixel darüber werden
+weiß. Der Schieberegler ist linear.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Kontrast</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Breite des Anzeigebereichs. 0 = Intensitätsbereich des Musters
+selbst (Min 0 % und Max 100 % umfassen genau diesen). −1
+verzehnfacht ihn (Kontrast zehnmal schwächer), +1 verkleinert
+ihn auf ein Zehntel. Die Mitte bleibt fest.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Schwarzpunkt des überlagerten Messbildes, als Prozentsatz des
+Anzeigebereichs (0 % = unteres Ende). Pixel darunter werden
+schwarz. Der Schieberegler ist linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>Weißpunkt des überlagerten Messbildes, als Prozentsatz des
+Anzeigebereichs (100 % = oberes Ende). Pixel darüber werden
+weiß. Der Schieberegler ist linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Kontrast</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Breite des Anzeigebereichs des überlagerten Messbildes.
+0 = Intensitätsbereich des Bildes selbst; −1 verzehnfacht ihn
+(Kontrast zehnmal schwächer), +1 verkleinert ihn auf ein
+Zehntel. Die Mitte bleibt fest.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Deckkraft</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Deckkraft des überlagerten Messbildes, von 0 (unsichtbar)
+bis 100 % (deckend). Verringern, um das simulierte Muster
+darunter zu sehen.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Untergrund glätten (Gauß-Unschärfe abziehen)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Zieht vom Messbild eine gaußsch verwischte Kopie ab und
+entfernt so seine langsam veränderliche Helligkeits-
+verteilung. Wirkt nur auf das überlagerte Bild; die
+Intensitätsregler arbeiten dann auf den geglätteten Werten.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Halbwertsbreite der Gauß-Unschärfe in Bildpixeln.
+Etwa 100 px für ein Bild mit 1344 x 1024.
+Bereich 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>An Bild anpassen</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Setzt Min, Max und Kontrast des simulierten Musters so,
+dass seine 2-%- und 98-%-Niveaus im selben Grau erscheinen
+wie die dieses Bildes. Polarität, Farbe und beide Glättungs-
+einstellungen bleiben unberührt: beide oder keine glätten.</value>
   </data>
 </root>

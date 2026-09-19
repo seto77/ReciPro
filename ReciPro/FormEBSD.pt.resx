@@ -541,26 +541,6 @@ por um corte de espaçamento recíproco (1/d).</value>
     <value>Seleciona reflexões para as linhas de Kikuchi tomando
 as mais fortes classificadas pelo fator de estrutura.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Define o nível superior de brilho (corte de branco) da
-imagem EBSD exibida como uma fração da faixa de intensidade;
-pixels neste valor ou acima são mapeados para branco.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Define o nível superior de brilho (corte de branco) da
-imagem EBSD exibida como uma fração da faixa de intensidade;
-pixels neste valor ou acima são mapeados para branco.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Define o nível inferior de brilho (corte de preto) da
-imagem EBSD exibida como uma fração da faixa de intensidade;
-pixels neste valor ou abaixo são mapeados para preto.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Define o nível inferior de brilho (corte de preto) da
-imagem EBSD exibida como uma fração da faixa de intensidade;
-pixels neste valor ou abaixo são mapeados para preto.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Define a largura da linha (espessura da caneta)
 usada para desenhar as linhas de Kikuchi.</value>
@@ -678,9 +658,6 @@ centro do detector</value>
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>Brilho</value>
   </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Opacidade</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Vista atual</value>
   </data>
@@ -735,23 +712,6 @@ para aplicar essa orientação a todo o programa.</value>
 imagem experimental sobreposta (não do padrão
 simulado) com os controles Mín e Máx à direita.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>Ponto branco da imagem experimental
-sobreposta, como fração da sua própria faixa
-de intensidade (controle logarítmico). Os
-pixels iguais ou superiores tornam-se branco.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Ponto preto da imagem experimental
-sobreposta, como fração da sua própria faixa
-de intensidade (controle logarítmico). Os
-pixels iguais ou inferiores tornam-se preto.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Opacidade da imagem experimental sobreposta,
-de 0 (invisível) a 100 % (opaca). Reduza-a
-para ver o padrão simulado por baixo.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Copia como imagem raster bitmap (bmp). Tudo,
 incluindo as linhas de Kikuchi e os rótulos,
@@ -790,23 +750,6 @@ de linhas) da imagem experimental. Funciona sem o
 master pattern; com ele, os candidatos são
 reordenados por ZNCC robusta (correlação cruzada
 normalizada de média zero).</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>Ponto branco da imagem experimental
-sobreposta, como fração da sua própria faixa
-de intensidade (controle logarítmico). Os
-pixels iguais ou superiores tornam-se branco.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Ponto preto da imagem experimental
-sobreposta, como fração da sua própria faixa
-de intensidade (controle logarítmico). Os
-pixels iguais ou inferiores tornam-se preto.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Opacidade da imagem experimental sobreposta,
-de 0 (invisível) a 100 % (opaca). Reduza-a
-para ver o padrão simulado por baixo.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>Largura</value>
@@ -947,5 +890,101 @@ exportação PNG/TIFF; a exportação CSV mantém os valores brutos.</value>
     <value>Largura a meia altura do desfoque gaussiano, em pixels do
 detector (independente do zoom). Cerca de 100 px para um
 detector de 1344 × 1024. Faixa 5–2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Ponto preto do padrão simulado, como percentagem da faixa
+de exibição (0 % = extremo inferior). Os pixels abaixo ficam
+pretos. O deslizador é linear.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Ponto branco do padrão simulado, como percentagem da faixa
+de exibição (100 % = extremo superior). Os pixels acima ficam
+brancos. O deslizador é linear.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Largura da faixa de exibição. 0 = a faixa de intensidade do
+próprio padrão (Mín 0 % e Máx 100 % cobrem exatamente essa).
+−1 alarga-a dez vezes (contraste dez vezes menor), +1 reduz-a
+a um décimo. O centro permanece fixo.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Ponto preto da imagem experimental sobreposta, como
+percentagem da faixa de exibição (0 % = extremo inferior).
+Os pixels abaixo ficam pretos. O deslizador é linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>Ponto branco da imagem experimental sobreposta, como
+percentagem da faixa de exibição (100 % = extremo superior).
+Os pixels acima ficam brancos. O deslizador é linear.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Contraste</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Largura da faixa de exibição da imagem experimental
+sobreposta. 0 = a faixa de intensidade da própria imagem;
+−1 alarga-a dez vezes, +1 reduz-a a um décimo. O centro
+permanece fixo.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Opacidade</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Opacidade da imagem experimental sobreposta, de 0
+(invisível) a 100 % (opaca). Reduza-a para ver o padrão
+simulado por baixo.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanar o fundo (subtrair desfoque gaussiano)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Subtrai da imagem experimental uma cópia desfocada com uma
+gaussiana para remover a sua distribuição de brilho de
+variação lenta. Afeta apenas a imagem sobreposta; os
+deslizadores atuam depois sobre os valores aplanados.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Largura a meia altura do desfoque gaussiano, em pixels da
+imagem. Cerca de 100 px para uma imagem de 1344 x 1024.
+Faixa 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>Ajustar à imagem</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Define Mín, Máx e Contraste do padrão simulado para que os
+seus níveis de 2 % e 98 % apareçam no mesmo cinzento que os
+desta imagem. Polaridade, Cor e os dois aplanamentos não são
+alterados: aplane ambos os lados ou nenhum.</value>
   </data>
 </root>

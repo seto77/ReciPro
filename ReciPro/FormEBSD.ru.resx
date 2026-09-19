@@ -542,26 +542,6 @@ Simulate, чтобы получить распределение.</value>
     <value>Выбирать рефлексы для линий Кикучи, беря
 самые сильные, ранжированные по структурному фактору.</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Задаёт верхний уровень яркости (отсечка по белому)
-отображаемого изображения EBSD как долю диапазона
-интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
-  </data>
-  <data name="labelBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Задаёт верхний уровень яркости (отсечка по белому)
-отображаемого изображения EBSD как долю диапазона
-интенсивности; пиксели на этом уровне и выше отображаются белым.</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Задаёт нижний уровень яркости (отсечка по чёрному)
-отображаемого изображения EBSD как долю диапазона
-интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
-  </data>
-  <data name="labelBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Задаёт нижний уровень яркости (отсечка по чёрному)
-отображаемого изображения EBSD как долю диапазона
-интенсивности; пиксели на этом уровне и ниже отображаются чёрным.</value>
-  </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Задаёт ширину линии (толщину пера),
 используемую для рисования линий Кикучи.</value>
@@ -677,26 +657,11 @@ Spectrum, Fire), используемую для отображения инте
   <data name="labelExpBrightness.Text" xml:space="preserve">
     <value>Яркость</value>
   </data>
-  <data name="labelExpMaxInt.Text" xml:space="preserve">
-    <value>Макс</value>
-  </data>
-  <data name="labelExpMinInt.Text" xml:space="preserve">
-    <value>Мин</value>
-  </data>
-  <data name="labelExpOpacity.Text" xml:space="preserve">
-    <value>Непрозрачность</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Текущий вид</value>
   </data>
   <data name="radioButtonDetector.Text" xml:space="preserve">
     <value>Детектор</value>
-  </data>
-  <data name="labelBrightnessMax.Text" xml:space="preserve">
-    <value>Макс</value>
-  </data>
-  <data name="labelBrightnessMin.Text" xml:space="preserve">
-    <value>Мин</value>
   </data>
   <data name="tabPageOverlays.Text" xml:space="preserve">
     <value>Наложения</value>
@@ -748,24 +713,6 @@ Spectrum, Fire), используемую для отображения инте
 наложенного экспериментального изображения (а не
 смоделированной картины) ползунками Мин и Макс справа.</value>
   </data>
-  <data name="labelExpMaxInt.ToolTip" xml:space="preserve">
-    <value>Точка белого наложенного экспериментального
-изображения, как доля его собственного диапазона
-интенсивности (логарифмический ползунок).
-Пиксели на этом уровне и выше становятся белыми.</value>
-  </data>
-  <data name="labelExpMinInt.ToolTip" xml:space="preserve">
-    <value>Точка чёрного наложенного экспериментального
-изображения, как доля его собственного диапазона
-интенсивности (логарифмический ползунок).
-Пиксели на этом уровне и ниже становятся чёрными.</value>
-  </data>
-  <data name="labelExpOpacity.ToolTip" xml:space="preserve">
-    <value>Непрозрачность наложенного экспериментального
-изображения, от 0 (невидимо) до 100 %
-(непрозрачно). Уменьшите, чтобы увидеть
-смоделированную картину под ним.</value>
-  </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Копировать как растровое изображение bitmap
 (bmp). Всё, включая линии Кикучи и подписи,
@@ -803,24 +750,6 @@ ZNCC. Требует мастер-картину и занимает
 мастер-картины; при её наличии кандидаты
 переупорядочиваются по устойчивой ZNCC (нормированной
 кросс-корреляции с нулевым средним).</value>
-  </data>
-  <data name="trackBarExpImageMaxInt.ToolTip" xml:space="preserve">
-    <value>Точка белого наложенного экспериментального
-изображения, как доля его собственного диапазона
-интенсивности (логарифмический ползунок).
-Пиксели на этом уровне и выше становятся белыми.</value>
-  </data>
-  <data name="trackBarExpImageMinInt.ToolTip" xml:space="preserve">
-    <value>Точка чёрного наложенного экспериментального
-изображения, как доля его собственного диапазона
-интенсивности (логарифмический ползунок).
-Пиксели на этом уровне и ниже становятся чёрными.</value>
-  </data>
-  <data name="trackBarExpImageOpacity.ToolTip" xml:space="preserve">
-    <value>Непрозрачность наложенного экспериментального
-изображения, от 0 (невидимо) до 100 %
-(непрозрачно). Уменьшите, чтобы увидеть
-смоделированную картину под ним.</value>
   </data>
   <data name="numericBoxDetWidth.HeaderText" xml:space="preserve">
     <value>Ширина</value>
@@ -960,5 +889,101 @@ Y и Z задают смещение в плоскости и длину кам�
     <value>Полная ширина на половине высоты гауссова размытия в
 пикселях детектора (не зависит от масштаба). Около 100 px для
 детектора 1344 × 1024. Диапазон 5–2000 px.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.HeaderText" xml:space="preserve">
+    <value>Мин</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Уровень чёрного смоделированной картины в процентах от
+диапазона отображения (0 % = его нижний край). Пиксели ниже
+становятся чёрными. Ползунок линейный.</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.HeaderText" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Уровень белого смоделированной картины в процентах от
+диапазона отображения (100 % = его верхний край). Пиксели выше
+становятся белыми. Ползунок линейный.</value>
+  </data>
+  <data name="trackBarAdvancedContrast.HeaderText" xml:space="preserve">
+    <value>Контраст</value>
+  </data>
+  <data name="trackBarAdvancedContrast.ToolTip" xml:space="preserve">
+    <value>Ширина диапазона отображения. 0 = диапазон интенсивности самой
+картины (Мин 0 % и Макс 100 % охватывают именно его). −1
+расширяет его в десять раз (контраст в десять раз слабее), +1
+сужает до одной десятой. Центр остаётся на месте.</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.HeaderText" xml:space="preserve">
+    <value>Мин</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMin.ToolTip" xml:space="preserve">
+    <value>Уровень чёрного наложенного экспериментального изображения
+в процентах от диапазона отображения (0 % = нижний край).
+Пиксели ниже становятся чёрными. Ползунок линейный.</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.HeaderText" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpMax.ToolTip" xml:space="preserve">
+    <value>Уровень белого наложенного экспериментального изображения
+в процентах от диапазона отображения (100 % = верхний край).
+Пиксели выше становятся белыми. Ползунок линейный.</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.HeaderText" xml:space="preserve">
+    <value>Контраст</value>
+  </data>
+  <data name="trackBarAdvancedExpContrast.ToolTip" xml:space="preserve">
+    <value>Ширина диапазона отображения наложенного экспериментального
+изображения. 0 = диапазон интенсивности самого изображения;
+−1 расширяет его в десять раз, +1 сужает до одной десятой.
+Центр остаётся на месте.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.HeaderText" xml:space="preserve">
+    <value>Непрозр.</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.FooterText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="trackBarAdvancedExpOpacity.ToolTip" xml:space="preserve">
+    <value>Непрозрачность наложенного экспериментального изображения,
+от 0 (невидимо) до 100 % (непрозрачно). Уменьшите, чтобы
+увидеть смоделированную картину под ним.</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
+    <value>Выровнять фон (вычесть гауссово размытие)</value>
+  </data>
+  <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Вычитает из экспериментального изображения его копию,
+размытую по Гауссу, удаляя медленно меняющееся распределение
+яркости. Действует только на наложенное изображение; ползунки
+затем работают с выровненными значениями.</value>
+  </data>
+  <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Полная ширина на половине высоты гауссова размытия в
+пикселях изображения. Около 100 px для изображения
+1344 x 1024. Диапазон 5-2000 px.</value>
+  </data>
+  <data name="buttonMatchSimulation.Text" xml:space="preserve">
+    <value>Подогнать к изображению</value>
+  </data>
+  <data name="buttonMatchSimulation.ToolTip" xml:space="preserve">
+    <value>Задаёт Мин, Макс и Контраст смоделированной картины так,
+чтобы её уровни 2 % и 98 % отображались тем же серым, что и
+у этого изображения. Полярность, Цвет и обе настройки
+выравнивания не меняются: выравнивайте обе стороны или ни одной.</value>
   </data>
 </root>
