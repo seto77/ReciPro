@@ -938,6 +938,7 @@ public partial class FormEBSD : FormBase
         if (masterPatternEbsd.IsBuilding)
             masterPatternEbsd.CancelMasterPatternBuild();
         masterPatternEbsd.ClearMasterPattern();
+        masterPatternBWarning = ""; // 260919Cl 追加
         tabPageOutputParameter.Enabled = false;
         checkBoxShowDyanmicalEBSD.Enabled = false;
         UpdateMasterPatternSelectors();
@@ -1095,6 +1096,9 @@ public partial class FormEBSD : FormBase
     /// <summary>直近に表示した EBSD 描画ステータス (経過時間を除いた部分)。260726Cl 追加:
     /// 同じ内容の再描画でステータスバーを書き換えないための鍵。パン・ズーム・回転が完了メッセージを潰さないようにする</summary>
     string lastEbsdRenderStatusKey = null;
+    /// <summary>260919Cl 追加: 直近に構築した MasterPattern の B=0 警告 (" | WARNING: ..." または空)。完了時のステータスは直後の preview 描画
+    /// (DrawMasterPattern2D の "MasterPattern preview" 行) に上書きされるので、preview 側の行にも同じ警告を付ける</summary>
+    string masterPatternBWarning = "";
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
@@ -2718,6 +2722,7 @@ public partial class FormEBSD : FormBase
         toolStripStatusLabelSummary.Text = "MasterPattern: MonteCarlo";
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 0, "", TimeSpan.Zero, showRemaining: true);// 260520Cl SetProgress化 (canonical進捗行)
         toolStripStatusLabelDetail.Text = ""; // (260327Ch) 前回の完了時間表示をクリア
+        masterPatternBWarning = ""; // 260919Cl 追加
         // labelMasterPatternInfo.Text = "Preparing MasterPattern by Monte Carlo..."; // 260406Cl 廃止: Label2 "MasterPattern: MonteCarlo" で代替
         sw2.Restart(); // (260327Ch) MasterPattern 全体の経過時間
         masterPatternMonteCarloElapsedMilliseconds = 0;
@@ -2837,6 +2842,10 @@ public partial class FormEBSD : FormBase
         }
 
         composedPatternCache = default; //260725Ch: 完成前の MasterPattern を保持するキャッシュを明示的に破棄
+        // 260919Cl 追加 (codex 助言): 原子変位パラメータ未設定 (B=0) の原子があると吸収ポテンシャル U' がゼロ (吸収なし・非局所源ゼロ・再注入ゼロ) なので明示する。DB の初期結晶は Dsf が空のものが多い。
+        //   後続の DrawMasterPattern2D が preview 行でステータスを上書きするので、文字列はフィールドに持ち両方の行に付ける (ハーネス実測: 完了行は数百 ms で消えていた)
+        int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0);
+        masterPatternBWarning = sitesWithoutB > 0 ? $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B." : "";
         InvalidateIndexingResults(); //260725Ch: 新しい MasterPattern に対して旧候補・実行中探索を適用させない
         UpdateMasterPatternSelectors();
         trackBarMasterPatternDepth.Value = MasterPattern.Depths.Length / 2; // 260725Ch: build直後は低コントラストな最小depthではなく中央付近を初期表示
@@ -2849,9 +2858,9 @@ public partial class FormEBSD : FormBase
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了)
         // toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
         toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
-        // 260919Cl 追加 (codex 助言): 原子変位パラメータ未設定 (B=0) の原子があると吸収ポテンシャル U' がゼロ (吸収なし・非局所源ゼロ・再注入ゼロ) なので明示する。DB の初期結晶は Dsf が空のものが多い
-        int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0);
-        if (sitesWithoutB > 0) toolStripStatusLabelDetail.Text += $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B.";
+        // int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0); // 260919Cl 変更前: ここで計算・追記していたが直後の preview 行に潰されていた
+        // if (sitesWithoutB > 0) toolStripStatusLabelDetail.Text += $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B.";
+        toolStripStatusLabelDetail.Text += masterPatternBWarning; // 260919Cl 変更: フィールド化 (上で算出)
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
@@ -3024,7 +3033,8 @@ public partial class FormEBSD : FormBase
         var depth = MasterPattern.Depths[selectedDepthIndex];
         // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // 260406Cl 廃止: Label2+Label3へ分割
         toolStripStatusLabelSummary.Text = "MasterPattern preview";
-        toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位)
+        // toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位) // 260919Cl 変更前
+        toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm" + masterPatternBWarning; // 260919Cl 変更: B=0 警告を preview 行にも残す
         masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
         masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ
