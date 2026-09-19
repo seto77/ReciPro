@@ -946,4 +946,18 @@ Aplatit le gradient de haut en bas (Si, 20 kV : ≈ 2,5 → 1,7).
 lumineux ∝ E − E_dead, nul en dessous. Typiquement 0–3 keV pour
 un écran P43 revêtu d'Al ; défaut 2 keV.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanir le fond (soustraire un flou gaussien)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Soustrait au cliché simulé une copie floutée par une
+gaussienne pour retirer la distribution de luminosité lentement
+variable (filtre passe-haut). N'agit que sur l'image affichée et
+l'export PNG/TIFF ; l'export CSV garde les valeurs brutes.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Largeur à mi-hauteur du flou gaussien, en pixels du
+détecteur (indépendante du zoom). Environ 100 px pour un
+détecteur 1344 × 1024. Plage 5–2000 px.</value>
+  </data>
 </root>

@@ -164,6 +164,7 @@ Il pannello centrale mostra il pattern EBSD (a bande di Kikuchi) per l'orientazi
 - **Mostra immagine con distribuzioni angolari/energetiche BSE** : se selezionata, il pattern viene composto pesando con la distribuzione dei BSE (energia, profondità, direzione) anziché con una singola sezione.
 - **Energy / Depth** : quando l'opzione precedente è disattivata, seleziona la sezione di energia/profondità da visualizzare.
 - **Luminosità** (**Min** / **Max**), **Polarità**, **Colore** : intervallo di luminosità, polarità e scala dei colori.
+- **Appiattire il fondo** (**FWHM**, px; disattivo per default, 100 px) : sottrae al pattern simulato una copia sfocata con una gaussiana, rimuovendo la distribuzione di luminosità a variazione lenta così da confrontare bande e assi di zona con un pattern sperimentale corretto per il fondo. La larghezza a metà altezza è in pixel del rivelatore e non dipende dallo zoom. Agisce sull'immagine visualizzata e sull'export PNG/TIFF; l'export CSV mantiene i valori grezzi.
 
 ### Immagine sperimentale
 

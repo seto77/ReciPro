@@ -198,6 +198,9 @@
             graphControlEnergyProfile = new GraphControl();
             graphicsBox = new GraphicsBox(components);
             flowLayoutPanelColorScale = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelFlatten = new System.Windows.Forms.FlowLayoutPanel(); // 260920Cl 追加: 背景平坦化 (原画像 − Gaussian ぼかし)
+            checkBoxFlattenBackground = new System.Windows.Forms.CheckBox(); // 260920Cl 追加
+            numericBoxFlattenFwhm = new NumericBox(); // 260920Cl 追加
             flowLayoutPanelBrightness = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelOutputRange = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelWithBseDistribution = new System.Windows.Forms.FlowLayoutPanel();
@@ -283,6 +286,7 @@
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             flowLayoutPanelColorScale.SuspendLayout();
+            flowLayoutPanelFlatten.SuspendLayout(); // 260920Cl 追加
             flowLayoutPanelBrightness.SuspendLayout();
             flowLayoutPanelOutputRange.SuspendLayout();
             flowLayoutPanelWithBseDistribution.SuspendLayout();
@@ -1410,6 +1414,36 @@
             graphicsBox.MouseUp += graphicsBox_MouseUp;
             graphicsBox.Resize += graphicsBox_Resize;
             // 
+            // flowLayoutPanelFlatten (260920Cl 追加)
+            // 
+            resources.ApplyResources(flowLayoutPanelFlatten, "flowLayoutPanelFlatten");
+            flowLayoutPanelFlatten.Controls.Add(checkBoxFlattenBackground);
+            flowLayoutPanelFlatten.Controls.Add(numericBoxFlattenFwhm);
+            flowLayoutPanelFlatten.Name = "flowLayoutPanelFlatten";
+            // 
+            // checkBoxFlattenBackground (260920Cl 追加)
+            // 
+            resources.ApplyResources(checkBoxFlattenBackground, "checkBoxFlattenBackground");
+            checkBoxFlattenBackground.Name = "checkBoxFlattenBackground";
+            toolTip.SetToolTip(checkBoxFlattenBackground, resources.GetString("checkBoxFlattenBackground.ToolTip"));
+            checkBoxFlattenBackground.UseVisualStyleBackColor = true;
+            checkBoxFlattenBackground.CheckedChanged += FlattenBackground_Changed;
+            // 
+            // numericBoxFlattenFwhm (260920Cl 追加)
+            // 
+            numericBoxFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxFlattenFwhm.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxFlattenFwhm, "numericBoxFlattenFwhm");
+            numericBoxFlattenFwhm.Maximum = 2000D;
+            numericBoxFlattenFwhm.Minimum = 5D;
+            numericBoxFlattenFwhm.Name = "numericBoxFlattenFwhm";
+            numericBoxFlattenFwhm.ShowUpDown = true;
+            numericBoxFlattenFwhm.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxFlattenFwhm, resources.GetString("numericBoxFlattenFwhm.ToolTip"));
+            numericBoxFlattenFwhm.Value = 100D;
+            numericBoxFlattenFwhm.ValueBoxWidth = 50;
+            numericBoxFlattenFwhm.ValueChanged += FlattenBackground_Changed;
+            // 
             // flowLayoutPanelColorScale
             // 
             resources.ApplyResources(flowLayoutPanelColorScale, "flowLayoutPanelColorScale");
@@ -1945,6 +1979,7 @@
             // tabPageOutputParameter
             // 
             tabPageOutputParameter.BackColor = System.Drawing.SystemColors.Control;
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelFlatten); // 260920Cl 追加: Dock=Top の最下段 (最初に Add = 最後にドック)
             tabPageOutputParameter.Controls.Add(flowLayoutPanelColorScale);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelBrightness);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelOutputRange);
@@ -2113,6 +2148,8 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             flowLayoutPanelColorScale.ResumeLayout(false);
             flowLayoutPanelColorScale.PerformLayout();
+            flowLayoutPanelFlatten.ResumeLayout(false); // 260920Cl 追加
+            flowLayoutPanelFlatten.PerformLayout(); // 260920Cl 追加
             flowLayoutPanelBrightness.ResumeLayout(false);
             flowLayoutPanelBrightness.PerformLayout();
             flowLayoutPanelOutputRange.ResumeLayout(false);
@@ -2391,6 +2428,9 @@
         private NumericBox numericBoxDetHeight;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWithBseDistribution;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColorScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFlatten; // 260920Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxFlattenBackground; // 260920Cl 追加
+        private NumericBox numericBoxFlattenFwhm; // 260920Cl 追加
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBrightness;
         private NumericBox numericBoxResolution;
         private System.Windows.Forms.Label labelDetectorResolution;

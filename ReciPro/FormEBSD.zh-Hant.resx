@@ -859,4 +859,15 @@ B = 0 時無效。</value>
     <value>螢光體的死層 (閾值) 能量 (keV)：發光量 ∝ E − E_dead，低於此為 0。
 帶鋁鍍層的 P43 螢光屏典型值 0–3 keV；預設 2 keV。</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>平坦化背景 (減去高斯模糊)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>從模擬圖樣中減去其高斯模糊副本，以去除緩慢變化的亮度分布
+(高通濾波)。僅影響顯示影像和 PNG/TIFF 匯出；CSV 匯出保留原始值。</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>高斯模糊的半高全寬 (偵測器像素，與縮放無關)。
+1344 × 1024 偵測器約 100 px。範圍 5–2000 px。</value>
+  </data>
 </root>

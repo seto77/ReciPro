@@ -942,4 +942,18 @@ Flacht den Gradienten von oben nach unten ab (Si, 20 kV:
 Lichtausbeute ∝ E − E_dead, darunter null. Typisch 0–3 keV für
 einen Al-beschichteten P43-Schirm; Standard 2 keV.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Untergrund glätten (Gauß-Unschärfe abziehen)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Zieht vom simulierten Muster eine gaußsch verwischte Kopie
+ab und entfernt so die langsam veränderliche Helligkeits-
+verteilung (Hochpass). Wirkt nur auf die Anzeige und den
+PNG/TIFF-Export; der CSV-Export behält die Rohwerte.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Halbwertsbreite der Gauß-Unschärfe in Detektorpixeln
+(zoomunabhängig). Etwa 100 px für einen 1344 × 1024-Detektor.
+Bereich 5–2000 px.</value>
+  </data>
 </root>

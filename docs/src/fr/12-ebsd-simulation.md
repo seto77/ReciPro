@@ -164,6 +164,7 @@ Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientat
 - **Afficher l'image avec les distributions angulaires/énergétiques BSE** : lorsque cette option est cochée, la figure est composée par pondération avec la distribution des BSE (énergie, profondeur, direction) plutôt qu'avec une seule tranche.
 - **Energy / Depth** : lorsque l'option ci-dessus est désactivée, sélectionne la tranche d'énergie/de profondeur à afficher.
 - **Luminosité** (**Min** / **Max**), **Polarité**, **Couleur** : plage de luminosité, polarité et échelle de couleurs.
+- **Aplanir le fond** (**FWHM**, px ; inactif par défaut, 100 px) : soustrait au cliché simulé une copie floutée par une gaussienne, retirant la distribution de luminosité lentement variable pour comparer bandes et axes de zone à un cliché expérimental corrigé du fond. La largeur à mi-hauteur est donnée en pixels du détecteur et ne dépend pas du zoom. Agit sur l'image affichée et l'export PNG/TIFF ; l'export CSV garde les valeurs brutes.
 
 ### Image expérimentale
 

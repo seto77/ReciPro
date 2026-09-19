@@ -164,6 +164,7 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 - **Bild mit BSE-Winkel-/Energieverteilungen anzeigen** : ist diese Option aktiviert, wird das Muster durch Gewichtung mit der BSE-Verteilung (Energie, Tiefe, Richtung) statt einer einzelnen Scheibe zusammengesetzt.
 - **Energy / Depth** : ist das Obige deaktiviert, wählt dies die anzuzeigende Energie-/Tiefenscheibe.
 - **Helligkeit** (**Min** / **Max**), **Polarität**, **Farbe** : Helligkeitsbereich, Polarität und Farbskala.
+- **Untergrund glätten** (**FWHM**, px; Standard aus, 100 px) : zieht vom simulierten Muster eine gaußsch verwischte Kopie ab und entfernt so die langsam veränderliche Helligkeitsverteilung, damit Bänder und Zonenachsen mit einem untergrundkorrigierten Messmuster verglichen werden können. Die Halbwertsbreite ist in Detektorpixeln angegeben und hängt nicht vom Zoom ab. Wirkt auf die Anzeige und den PNG/TIFF-Export; der CSV-Export behält die Rohwerte.
 
 ### Experimentelles Bild
 

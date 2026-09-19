@@ -867,4 +867,15 @@ B = 0 时无效。</value>
     <value>荧光体的死层 (阈值) 能量 (keV)：发光量 ∝ E − E_dead，低于此为 0。
 带铝镀层的 P43 荧光屏典型值 0–3 keV；默认 2 keV。</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>平坦化背景 (减去高斯模糊)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>从模拟图样中减去其高斯模糊副本，以去除缓慢变化的亮度分布
+(高通滤波)。仅影响显示图像和 PNG/TIFF 导出；CSV 导出保留原始值。</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>高斯模糊的半高全宽 (探测器像素，与缩放无关)。
+1344 × 1024 探测器约 100 px。范围 5–2000 px。</value>
+  </data>
 </root>

@@ -164,6 +164,7 @@ El panel central muestra el patrón EBSD (de bandas de Kikuchi) para la orientac
 - **Mostrar imagen con distribuciones angulares/de energía de BSE** : cuando está marcado, el patrón se compone ponderando con la distribución BSE (energía, profundidad, dirección) en lugar de una sola rebanada.
 - **Energy / Depth** : cuando lo anterior está desactivado, selecciona la rebanada de energía/profundidad a mostrar.
 - **Brillo** (**Min** / **Max**), **Polaridad**, **Color** : rango de brillo, polaridad y escala de color.
+- **Aplanar el fondo** (**FWHM**, px; desactivado por defecto, 100 px) : resta al patrón simulado una copia desenfocada con una gaussiana, eliminando la distribución de brillo de variación lenta para poder comparar bandas y ejes de zona con un patrón experimental corregido de fondo. La anchura a media altura se da en píxeles del detector y no depende del zoom. Afecta a la imagen mostrada y a la exportación PNG/TIFF; la exportación CSV conserva los valores brutos.
 
 ### Imagen experimental
 

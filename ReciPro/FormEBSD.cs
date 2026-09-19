@@ -89,6 +89,10 @@ public partial class FormEBSD : FormBase
     public bool PhosphorEnergyWeight { get => checkBoxPhosphorWeight.Checked; set => checkBoxPhosphorWeight.Checked = value; }
     /// <summary>260919Cl 追加: 蛍光体の不感層 (しきい) エネルギー E_dead [keV] (既定 2)</summary>
     public double PhosphorDeadEnergyKeV { get => numericBoxPhosphorDeadEnergy.Value; set => numericBoxPhosphorDeadEnergy.Value = value; }
+    /// <summary>260920Cl 追加: 表示パターンの背景平坦化 (原画像 − 半値幅 FWHM の Gaussian ぼかし)。表示と PNG/TIFF 出力にだけ効き、CSV は生値のまま</summary>
+    public bool FlattenBackground { get => checkBoxFlattenBackground.Checked; set => checkBoxFlattenBackground.Checked = value; }
+    /// <summary>260920Cl 追加: 平坦化に使う Gaussian の半値幅 [検出器 px] (ズームに依らない)</summary>
+    public double FlattenBackgroundFwhmPx { get => numericBoxFlattenFwhm.Value; set => numericBoxFlattenFwhm.Value = value; }
     /// <summary>260919Cl 追加: EbsdMonteCarloDistribution へ渡す E_dead。重み OFF なら NaN (= 1 本 1 票)</summary>
     internal double McEnergyWeightDeadKeV => PhosphorEnergyWeight ? PhosphorDeadEnergyKeV : double.NaN;
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
@@ -1112,6 +1116,7 @@ public partial class FormEBSD : FormBase
     /// (DrawMasterPattern2D の "MasterPattern preview" 行) に上書きされるので、preview 側の行にも同じ警告を付ける</summary>
     string masterPatternBWarning = "";
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
+    private double[] ebsdValuesFlattened = []; // 260920Cl 追加: 背景平坦化 (ImageProcess.SubtractGaussianBackground) の出力バッファ (ebsdValues は生値のまま)
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
 
@@ -1246,18 +1251,28 @@ public partial class FormEBSD : FormBase
         }
 
         // Step 3: 表示
+        // 260920Cl 追加 (作者指示): 表示用に全体的な明るさ分布を補正 = 原画像 − Gaussian ぼかし (半値幅は検出器 px 指定 → 現在のラスター px へ換算)。ebsdValues (生値, CSV 用) は触らない
+        var displayValues = ebsdValues;
+        if (checkBoxFlattenBackground.Checked)
+        {
+            double fwhmRasterPx = FlattenBackgroundFwhmPx * DetPixelSize / (2 * rasterScaleW); // 検出器 px → ラスター px (2·rasterScaleW = ラスター 1 px の mm)
+            if (ebsdValuesFlattened.Length != totalPixels) ebsdValuesFlattened = new double[totalPixels];
+            displayValues = ImageProcess.SubtractGaussianBackground(ebsdValues, width, fwhmRasterPx, ebsdValuesFlattened); // 汎用画像処理 (Crystallography.ImageProcess) へ委譲
+        }
         if (Pbmp == null || ebsdCachedSize.Width != width || ebsdCachedSize.Height != height)
         {
             Pbmp?.Dispose();
             //260717Cl 変更: Enumerable.Repeat の逐次列挙を Array.Fill + 一括コピーに
             var alpha = new byte[totalPixels];
             Array.Fill(alpha, (byte)255);
-            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. alpha] };
+            // Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. alpha] }; // 260920Cl 変更前
+            Pbmp = new PseudoBitmap(displayValues, width) { AlphaEnabled = true, FilterAlfha = [.. alpha] }; // 260920Cl 変更: 平坦化後の値を表示
             ebsdCachedSize = (width, height);
             // tabPageOutputParameter.Enabled = true; // 260724Cl 削除: 有効化は MasterPattern 構築完了時 (MasterPatternCompleted ハンドラ) に一本化
         }
         else
-            Pbmp.SrcValuesGray = Pbmp.SrcValuesGrayOriginal = ebsdValues;
+            // Pbmp.SrcValuesGray = Pbmp.SrcValuesGrayOriginal = ebsdValues; // 260920Cl 変更前
+            Pbmp.SrcValuesGray = Pbmp.SrcValuesGrayOriginal = displayValues; // 260920Cl 変更
 
         #region 画像のコントラストやスケールを設定
         var colorScale = comboBoxScale.SelectedIndex;
@@ -2164,6 +2179,9 @@ public partial class FormEBSD : FormBase
         Draw();
     }
     private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw();
+
+    /// <summary>260920Cl 追加: 背景平坦化の ON/OFF・半値幅変更で再描画</summary>
+    private void FlattenBackground_Changed(object sender, EventArgs e) => Draw();
 
     #endregion
 
@@ -3161,7 +3179,6 @@ public partial class FormEBSD : FormBase
     #endregion
 
     #region MasterPattern3D
-
 
     /// <summary>3D preview 上の既存オブジェクトを削除し、黒背景だけの状態へ戻す。 </summary>
     private void ClearMesh() // (260322Ch) 旧名: ClearMasterPattern3DPreview

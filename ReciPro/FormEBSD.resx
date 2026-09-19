@@ -4655,7 +4655,7 @@ orientation is not changed.</value>
     <value>tabPageOutputParameter</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelColorScale.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="flowLayoutPanelBrightness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4682,7 +4682,7 @@ orientation is not changed.</value>
     <value>tabPageOutputParameter</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelBrightness.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelOutputRange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4718,7 +4718,7 @@ orientation is not changed.</value>
     <value>tabPageOutputParameter</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelOutputRange.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="flowLayoutPanelWithBseDistribution.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4748,7 +4748,7 @@ orientation is not changed.</value>
     <value>tabPageOutputParameter</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWithBseDistribution.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;tabPageGeometry.Name" xml:space="preserve">
     <value>tabPageGeometry</value>
@@ -6281,7 +6281,7 @@ orientation is not changed.</value>
     <value>3, 0, 3, 3</value>
   </data>
   <data name="tabControlPatternSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 125</value>
+    <value>694, 153</value>
   </data>
   <data name="tabControlPatternSettings.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
@@ -6296,7 +6296,7 @@ orientation is not changed.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOutputParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>686, 95</value>
+    <value>686, 123</value>
   </data>
   <data name="tabPageOutputParameter.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6326,7 +6326,7 @@ orientation is not changed.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageExperimentalImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 95</value>
+    <value>679, 123</value>
   </data>
   <data name="tabPageExperimentalImage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7174,7 +7174,7 @@ that flux is conserved. Raises the absolute intensity
     <value>3, 0, 3, 3</value>
   </data>
   <data name="flowLayoutPanelPhosphorWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 29</value>
+    <value>407, 29</value>
   </data>
   <data name="flowLayoutPanelPhosphorWeight.TabIndex" type="System.Int32, mscorlib">
     <value>155</value>
@@ -7207,13 +7207,13 @@ that flux is conserved. Raises the absolute intensity
     <value>3, 4, 3, 0</value>
   </data>
   <data name="checkBoxPhosphorWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 21</value>
+    <value>190, 21</value>
   </data>
   <data name="checkBoxPhosphorWeight.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
-    <value>Weight electrons by phosphor response</value>
+    <value>Weight by phosphor response</value>
   </data>
   <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
     <value>Weight each electron by the light yield of a phosphor screen,
@@ -7281,6 +7281,125 @@ Al-coated P43 screen; default 2 keV.</value>
     <value>flowLayoutPanelPhosphorWeight</value>
   </data>
   <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 96</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>680, 29</value>
+  </data>
+  <data name="flowLayoutPanelFlatten.TabIndex" type="System.Int32, mscorlib">
+    <value>204</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelFlatten.Name" xml:space="preserve">
+    <value>flowLayoutPanelFlatten</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelFlatten.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelFlatten.Parent" xml:space="preserve">
+    <value>tabPageOutputParameter</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelFlatten.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxFlattenBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 0</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 21</value>
+  </data>
+  <data name="checkBoxFlattenBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Flatten background (subtract Gaussian blur)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Subtract a Gaussian-blurred copy of the simulated pattern
+from itself to remove the slowly varying brightness
+distribution (high-pass filter). Affects the displayed image
+and the PNG/TIFF export only; the CSV export keeps raw values.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFlattenBackground.Name" xml:space="preserve">
+    <value>checkBoxFlattenBackground</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFlattenBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFlattenBackground.Parent" xml:space="preserve">
+    <value>flowLayoutPanelFlatten</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFlattenBackground.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.FooterText" xml:space="preserve">
+    <value>px</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.HeaderText" xml:space="preserve">
+    <value>FWHM</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 0</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 3</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 25</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Full width at half maximum of the Gaussian blur, in
+detector pixels (independent of zoom). About 100 px for a
+1344 × 1024 detector. Range 5–2000 px.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxFlattenFwhm.Name" xml:space="preserve">
+    <value>numericBoxFlattenFwhm</value>
+  </data>
+  <data name="&gt;&gt;numericBoxFlattenFwhm.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxFlattenFwhm.Parent" xml:space="preserve">
+    <value>flowLayoutPanelFlatten</value>
+  </data>
+  <data name="&gt;&gt;numericBoxFlattenFwhm.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
 </root>

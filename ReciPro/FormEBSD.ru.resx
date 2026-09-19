@@ -947,4 +947,18 @@ Y и Z задают смещение в плоскости и длину кам�
 ∝ E − E_dead, ниже порога ноль. Обычно 0–3 кэВ для экрана P43
 с Al-покрытием; по умолчанию 2 кэВ.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Выровнять фон (вычесть гауссово размытие)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Вычитает из смоделированной картины её копию, размытую по
+Гауссу, удаляя медленно меняющееся распределение яркости
+(фильтр верхних частот). Действует только на отображение и
+экспорт PNG/TIFF; экспорт CSV сохраняет исходные значения.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Полная ширина на половине высоты гауссова размытия в
+пикселях детектора (не зависит от масштаба). Около 100 px для
+детектора 1344 × 1024. Диапазон 5–2000 px.</value>
+  </data>
 </root>

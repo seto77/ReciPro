@@ -939,4 +939,18 @@ Desactívelo para un detector que cuenta electrones directamente.</value>
 luminoso ∝ E − E_dead, nulo por debajo. Típicamente 0–3 keV para
 una pantalla P43 con recubrimiento de Al; por defecto 2 keV.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanar el fondo (restar desenfoque gaussiano)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Resta al patrón simulado una copia desenfocada con una
+gaussiana para eliminar la distribución de brillo de variación
+lenta (filtro paso alto). Afecta solo a la imagen mostrada y a la
+exportación PNG/TIFF; la exportación CSV conserva los valores brutos.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Anchura a media altura del desenfoque gaussiano, en píxeles
+del detector (independiente del zoom). Unos 100 px para un
+detector de 1344 × 1024. Rango 5–2000 px.</value>
+  </data>
 </root>

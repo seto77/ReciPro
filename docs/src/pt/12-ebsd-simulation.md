@@ -164,6 +164,7 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 - **Mostrar imagem com distribuições angulares/de energia de BSE** : quando marcado, o padrão é composto por ponderação com a distribuição BSE (energia, profundidade, direção) em vez de uma única fatia.
 - **Energy / Depth** : quando a opção acima está desligada, seleciona a fatia de energia/profundidade a ser exibida.
 - **Brilho** (**Min** / **Max**), **Polaridade**, **Cor** : faixa de brilho, polaridade e escala de cores.
+- **Aplanar o fundo** (**FWHM**, px; desligado por padrão, 100 px) : subtrai do padrão simulado uma cópia desfocada com uma gaussiana, removendo a distribuição de brilho de variação lenta para comparar bandas e eixos de zona com um padrão experimental corrigido de fundo. A largura a meia altura é dada em pixels do detector e não depende do zoom. Afeta a imagem exibida e a exportação PNG/TIFF; a exportação CSV mantém os valores brutos.
 
 ### Imagem experimental
 

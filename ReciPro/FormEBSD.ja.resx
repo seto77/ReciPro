@@ -1365,4 +1365,20 @@ B = 0 のときは効果なし。</value>
   <data name="checkBoxPhosphorWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>背景を平坦化 (Gaussian ぼかしを差し引く)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像から、それを Gaussian でぼかした
+画像を差し引き、全体的な明るさ分布を取り除きます
+(ハイパスフィルタ)。表示と PNG/TIFF 出力にだけ効き、
+CSV 出力は生値のままです。</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Gaussian ぼかしの半値幅 (検出器ピクセル、ズームに依らない)。
+1344 × 1024 の検出器で 100 px 程度。範囲 5〜2000 px。</value>
+  </data>
+  <data name="checkBoxFlattenBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
 </root>

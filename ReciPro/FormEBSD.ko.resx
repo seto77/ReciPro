@@ -903,4 +903,17 @@ D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절�
     <value>형광체의 불감층 (문턱) 에너지 (keV): 발광량 ∝ E − E_dead, 그 이하는
 0. Al 코팅 P43 스크린에서 0〜3 keV가 일반적. 기본값 2 keV.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>배경 평탄화 (가우시안 블러를 뺌)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>시뮬레이션 패턴에서 가우시안으로 흐리게 한 사본을 빼서
+완만하게 변하는 밝기 분포를 제거합니다 (하이패스 필터).
+표시 이미지와 PNG/TIFF 내보내기에만 적용되며 CSV 내보내기는
+원시값을 유지합니다.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>가우시안 블러의 반치폭 (검출기 픽셀, 줌과 무관).
+1344 × 1024 검출기에서 약 100 px. 범위 5〜2000 px.</value>
+  </data>
 </root>

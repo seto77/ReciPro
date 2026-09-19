@@ -934,4 +934,18 @@ Desligue para um detector que conta elétrons diretamente.</value>
 luminoso ∝ E − E_dead, nulo abaixo. Tipicamente 0–3 keV para uma
 tela P43 revestida de Al; padrão 2 keV.</value>
   </data>
+  <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
+    <value>Aplanar o fundo (subtrair desfoque gaussiano)</value>
+  </data>
+  <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
+    <value>Subtrai do padrão simulado uma cópia desfocada com uma
+gaussiana para remover a distribuição de brilho de variação
+lenta (filtro passa-alto). Afeta apenas a imagem exibida e a
+exportação PNG/TIFF; a exportação CSV mantém os valores brutos.</value>
+  </data>
+  <data name="numericBoxFlattenFwhm.ToolTip" xml:space="preserve">
+    <value>Largura a meia altura do desfoque gaussiano, em pixels do
+detector (independente do zoom). Cerca de 100 px para um
+detector de 1344 × 1024. Faixa 5–2000 px.</value>
+  </data>
 </root>
