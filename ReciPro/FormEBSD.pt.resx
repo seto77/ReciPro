@@ -879,23 +879,11 @@ A contagem de pixels do detector não é afetada.</value>
     <value>Profundidade da fonte (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Qual evento Monte Carlo define a profundidade da fonte
-coerente de retroespalhamento usada na ponderação
-(energia × profundidade). Último inelástico: só
-eventos inelásticos discretos reiniciam a fonte
-(padrão). Último transporte: qualquer evento. Última
-decoerência: só eventos localizados o bastante para
-deixar na amostra a informação de qual átomo espalhou.
-Os elásticos com a probabilidade térmico-difusa 1 −
-exp(−2B s²) do fator de Debye–Waller (o espalhamento
-de Bragg coerente não); os inelásticos sempre para
-excitações de caroço ou alta perda, e para excitações
-de valência só com a fração cuja transferência de
-momento excede o corte plasmônico q_c = ω_p/v_F
-(plasmons e pares elétron–buraco deslocalizados
-preservam o estado de Bloch). Fontes mais rasas
-carregam menos modulação de Kikuchi: o fundo difuso
-fica definido só pelo transporte, sem parâmetro livre.</value>
+    <value>Qual evento Monte Carlo fixa a profundidade da fonte coerente de
+retroespalhamento usada na ponderação (energia × profundidade):
+último evento inelástico (padrão), último evento de transporte de
+qualquer tipo ou última decoerência (elástico com probabilidade
+1 − exp(−2Bs²), inelástico só se q > q_c). Veja o manual.</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>Último evento inelástico</value>
@@ -907,58 +895,43 @@ fica definido só pelo transporte, sem parâmetro livre.</value>
     <value>Última decoerência (ponderada por DW)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Qual evento Monte Carlo define a profundidade da fonte
-coerente de retroespalhamento usada na ponderação
-(energia × profundidade). Último inelástico: só
-eventos inelásticos discretos reiniciam a fonte
-(padrão). Último transporte: qualquer evento. Última
-decoerência: só eventos localizados o bastante para
-deixar na amostra a informação de qual átomo espalhou.
-Os elásticos com a probabilidade térmico-difusa 1 −
-exp(−2B s²) do fator de Debye–Waller (o espalhamento
-de Bragg coerente não); os inelásticos sempre para
-excitações de caroço ou alta perda, e para excitações
-de valência só com a fração cuja transferência de
-momento excede o corte plasmônico q_c = ω_p/v_F
-(plasmons e pares elétron–buraco deslocalizados
-preservam o estado de Bloch). Fontes mais rasas
-carregam menos modulação de Kikuchi: o fundo difuso
-fica definido só pelo transporte, sem parâmetro livre.</value>
+    <value>Qual evento Monte Carlo fixa a profundidade da fonte coerente de
+retroespalhamento usada na ponderação (energia × profundidade):
+último evento inelástico (padrão), último evento de transporte de
+qualquer tipo ou última decoerência (elástico com probabilidade
+1 − exp(−2Bs²), inelástico só se q > q_c). Veja o manual.</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>Camada amorfa superficial</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Espessura (nm) de uma camada superficial não
-cristalina (óxido nativo, contaminação, dano de
-polimento ou de desbaste iônico). Elétrons cuja fonte
-coerente de retroespalhamento está dentro da camada
-não carregam modulação de Kikuchi e são somados como
-contribuição média em direção (uniforme) com a mesma
-intensidade por elétron; fontes abaixo da camada são
-medidas a partir da superfície do cristal. O
-transporte é calculado com a composição e densidade
-do cristal (adequado para poucos nm). 0 desativa.
-Mudar apenas reagrupa os elétrons salvos, sem repetir
-o Monte Carlo. Intervalo 0–100 nm, passo 0,1 nm.</value>
+    <value>Espessura (nm) de uma camada superficial não cristalina (óxido,
+contaminação, dano de polimento). Fontes dentro dela adicionam uma
+contribuição uniforme, média em direção, sem modulação de Kikuchi.
+0 desativa; a alteração re-agrupa os elétrons guardados sem repetir
+o Monte Carlo.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>Reinjetar fluxo absorvido como fundo</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>No cálculo por ondas de Bloch, os elétrons retirados
-do canal coerente pela absorção (espalhamento
-térmico difuso) simplesmente desaparecem.
-Fisicamente eles ainda chegam ao detector, sem
-modulação de Kikuchi. Esta opção os devolve como
-fundo difuso: D(t) = Σσ_n ∫(1 − N(z))dz, onde N(z) é
-a densidade da onda coerente média na célula
-unitária. O fluxo é conservado e as intensidades
-absolutas aumentam (a 20 kV, cerca de 10 % para Si e
-25 % para Fe3O4). O brilho relativo dos eixos de
-zona muda pouco e depende do cristal, porque o fluxo
-reinjetado continua pertencendo à mesma direção de
-saída. Sem efeito se B = 0 (B = fator de temperatura
-de Debye–Waller; B = 0 significa sem absorção).</value>
+    <value>Devolve o fluxo removido do canal coerente pela absorção como fundo
+difuso, D(t) = Σσ_n ∫(1 − N(z))dz, conservando o fluxo. Aumenta a
+intensidade absoluta (Si ≈ 10 %, Fe3O4 ≈ 25 % a 20 kV); sem efeito
+se B = 0.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Ponderar pela resposta do fósforo</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Pondera cada elétron pelo rendimento luminoso de uma tela de
+fósforo, φ(E) = max(0, E − E_dead), em vez de contá-lo uma vez.
+Achata o gradiente de cima para baixo (Si, 20 kV: ≈ 2,5 → 1,7).
+Desligue para um detector que conta elétrons diretamente.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Energia da camada morta (limiar) do fósforo em keV: rendimento
+luminoso ∝ E − E_dead, nulo abaixo. Tipicamente 0–3 keV para uma
+tela P43 revestida de Al; padrão 2 keV.</value>
   </data>
 </root>

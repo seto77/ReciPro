@@ -891,25 +891,11 @@ Le nombre de pixels du détecteur n'est pas affecté.</value>
     <value>Profondeur de la source (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Quel événement Monte-Carlo définit la profondeur de
-la source cohérente de rétrodiffusion utilisée pour
-la pondération (énergie × profondeur). Dernier
-inélastique : seuls les événements inélastiques
-discrets réinitialisent la source (défaut). Dernier
-transport : tout événement. Dernière décohérence :
-seuls les événements assez localisés pour laisser
-dans l'échantillon l'information « quel atome ». Les
-élastiques avec la probabilité thermique diffuse 1 −
-exp(−2B s²) du facteur de Debye–Waller (la diffusion
-de Bragg cohérente non) ; les inélastiques toujours
-pour les excitations de cœur ou à forte perte, et
-pour les excitations de valence seulement avec la
-fraction dont le transfert d'impulsion dépasse la
-coupure plasmon q_c = ω_p/v_F (plasmons et paires
-électron–trou délocalisées conservent l'état de
-Bloch). Une source plus superficielle porte une
-modulation de Kikuchi plus faible : le fond diffus
-découle du seul transport, sans paramètre libre.</value>
+    <value>Événement Monte-Carlo qui fixe la profondeur de la source cohérente
+de rétrodiffusion pour la pondération (énergie × profondeur) :
+dernier événement inélastique (défaut), dernier événement de
+transport de tout type, ou dernière décohérence (élastique avec la
+probabilité 1 − exp(−2Bs²), inélastique seulement si q > q_c).</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>Dernier événement inélastique</value>
@@ -921,61 +907,43 @@ découle du seul transport, sans paramètre libre.</value>
     <value>Dernière décohérence (pondérée DW)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Quel événement Monte-Carlo définit la profondeur de
-la source cohérente de rétrodiffusion utilisée pour
-la pondération (énergie × profondeur). Dernier
-inélastique : seuls les événements inélastiques
-discrets réinitialisent la source (défaut). Dernier
-transport : tout événement. Dernière décohérence :
-seuls les événements assez localisés pour laisser
-dans l'échantillon l'information « quel atome ». Les
-élastiques avec la probabilité thermique diffuse 1 −
-exp(−2B s²) du facteur de Debye–Waller (la diffusion
-de Bragg cohérente non) ; les inélastiques toujours
-pour les excitations de cœur ou à forte perte, et
-pour les excitations de valence seulement avec la
-fraction dont le transfert d'impulsion dépasse la
-coupure plasmon q_c = ω_p/v_F (plasmons et paires
-électron–trou délocalisées conservent l'état de
-Bloch). Une source plus superficielle porte une
-modulation de Kikuchi plus faible : le fond diffus
-découle du seul transport, sans paramètre libre.</value>
+    <value>Événement Monte-Carlo qui fixe la profondeur de la source cohérente
+de rétrodiffusion pour la pondération (énergie × profondeur) :
+dernier événement inélastique (défaut), dernier événement de
+transport de tout type, ou dernière décohérence (élastique avec la
+probabilité 1 − exp(−2Bs²), inélastique seulement si q > q_c).</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>Couche amorphe de surface</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Épaisseur (nm) d'une couche de surface non cristalline
-(oxyde natif, contamination, dommages de polissage ou
-d'amincissement ionique). Les électrons dont la source
-cohérente de rétrodiffusion se trouve dans la couche
-ne portent aucune modulation de Kikuchi et sont
-ajoutés comme contribution moyennée en direction
-(uniforme) avec la même intensité par électron ; les
-sources sous la couche sont mesurées depuis la surface
-du cristal. Le transport est calculé avec la
-composition et la densité du cristal (suffisant pour
-quelques nm). 0 désactive. Le changement ne fait que
-re-classer les électrons enregistrés, sans relancer le
-Monte-Carlo. Plage 0–100 nm, pas 0,1 nm.</value>
+    <value>Épaisseur (nm) d'une couche de surface non cristalline (oxyde,
+contamination, dommages de polissage). Les sources qu'elle contient
+ajoutent une contribution uniforme, moyennée en direction, sans
+modulation de Kikuchi. 0 désactive ; un changement re-binne les
+électrons mémorisés sans relancer le Monte-Carlo.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>Réinjecter le flux absorbé en fond</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>Dans le calcul par ondes de Bloch, les électrons
-retirés du canal cohérent par l'absorption (diffusion
-thermique diffuse) disparaissent. Physiquement ils
-atteignent quand même le détecteur, sans modulation de
-Kikuchi. Cette option les réintroduit comme fond
-diffus : D(t) = Σσ_n ∫(1 − N(z))dz, où N(z) est la
-densité de l'onde cohérente moyennée sur la maille. Le
-flux est conservé et les intensités absolues
-augmentent (à 20 kV, environ 10 % pour Si et 25 % pour
-Fe3O4). La brillance relative des axes de zone change
-peu et dépend du cristal, car le flux réinjecté
-appartient toujours à la même direction de sortie.
-Sans effet si B = 0 (B = facteur de température de
-Debye–Waller ; B = 0 signifie pas d'absorption).</value>
+    <value>Réinjecte le flux retiré du canal cohérent par absorption comme
+fond diffus, D(t) = Σσ_n ∫(1 − N(z))dz, afin de conserver le flux.
+Augmente l'intensité absolue (Si ≈ 10 %, Fe3O4 ≈ 25 % à 20 kV) ;
+sans effet si B = 0.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Pondérer par la réponse du phosphore</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Pondère chaque électron par le rendement lumineux d'un écran
+phosphore, φ(E) = max(0, E − E_dead), au lieu de le compter une fois.
+Aplatit le gradient de haut en bas (Si, 20 kV : ≈ 2,5 → 1,7).
+À désactiver pour un détecteur comptant directement les électrons.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Énergie de couche morte (seuil) du phosphore en keV : rendement
+lumineux ∝ E − E_dead, nul en dessous. Typiquement 0–3 keV pour
+un écran P43 revêtu d'Al ; défaut 2 keV.</value>
   </data>
 </root>

@@ -888,24 +888,10 @@ Die Pixelanzahl des Detektors bleibt unverändert.</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
     <value>Welches Monte-Carlo-Ereignis die Tiefe der kohärenten
-Rückstreuquelle für die (Energie × Tiefe)-Gewichtung
-festlegt. Letztes inelastisches: nur diskrete
-inelastische Ereignisse setzen die Quelle zurück
-(Standard). Letztes Transport: jedes Ereignis.
-Letzter Kohärenzverlust: nur Ereignisse, die
-lokalisiert genug sind, um Welches-Atom-Information
-in der Probe zu hinterlassen. Elastische Ereignisse
-mit der thermisch-diffusen Wahrscheinlichkeit 1 −
-exp(−2B s²) aus dem Debye-Waller-Faktor (kohärente
-Bragg-Streuung nicht); inelastische Ereignisse bei
-Rumpf-/Hochverlust-Anregungen immer, bei
-Valenzanregungen nur mit dem Anteil, dessen
-Impulsübertrag den Plasmon-Cutoff q_c = ω_p/v_F
-übersteigt (Plasmonen und delokalisierte
-Elektron-Loch-Paare erhalten den Bloch-Zustand).
-Flachere Quellen tragen schwächere
-Kikuchi-Modulation; der diffuse Untergrund folgt
-allein aus dem Transport, ohne freien Parameter.</value>
+Rückstreuquelle für die (Energie × Tiefe)-Gewichtung setzt:
+letztes inelastisches Ereignis (Standard), letztes Transport-
+ereignis beliebiger Art oder letzter Kohärenzverlust (elastisch
+mit Wahrscheinlichkeit 1 − exp(−2Bs²), inelastisch nur bei q > q_c).</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>Letztes inelastisches Ereignis</value>
@@ -918,60 +904,42 @@ allein aus dem Transport, ohne freien Parameter.</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
     <value>Welches Monte-Carlo-Ereignis die Tiefe der kohärenten
-Rückstreuquelle für die (Energie × Tiefe)-Gewichtung
-festlegt. Letztes inelastisches: nur diskrete
-inelastische Ereignisse setzen die Quelle zurück
-(Standard). Letztes Transport: jedes Ereignis.
-Letzter Kohärenzverlust: nur Ereignisse, die
-lokalisiert genug sind, um Welches-Atom-Information
-in der Probe zu hinterlassen. Elastische Ereignisse
-mit der thermisch-diffusen Wahrscheinlichkeit 1 −
-exp(−2B s²) aus dem Debye-Waller-Faktor (kohärente
-Bragg-Streuung nicht); inelastische Ereignisse bei
-Rumpf-/Hochverlust-Anregungen immer, bei
-Valenzanregungen nur mit dem Anteil, dessen
-Impulsübertrag den Plasmon-Cutoff q_c = ω_p/v_F
-übersteigt (Plasmonen und delokalisierte
-Elektron-Loch-Paare erhalten den Bloch-Zustand).
-Flachere Quellen tragen schwächere
-Kikuchi-Modulation; der diffuse Untergrund folgt
-allein aus dem Transport, ohne freien Parameter.</value>
+Rückstreuquelle für die (Energie × Tiefe)-Gewichtung setzt:
+letztes inelastisches Ereignis (Standard), letztes Transport-
+ereignis beliebiger Art oder letzter Kohärenzverlust (elastisch
+mit Wahrscheinlichkeit 1 − exp(−2Bs²), inelastisch nur bei q > q_c).</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>Amorphe Oberflächenschicht</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Dicke (nm) einer nichtkristallinen Oberflächenschicht
-(natives Oxid, Kontamination, Polier- oder
-Ionenätzschäden). Elektronen, deren kohärente
-Rückstreuquelle in der Schicht liegt, tragen keine
-Kikuchi-Modulation und werden als richtungsgemittelter
-(gleichförmiger) Beitrag mit derselben Intensität pro
-Elektron addiert; Quellen unterhalb der Schicht werden
-von der Kristalloberfläche aus gemessen. Der Transport
-wird mit Zusammensetzung und Dichte des Kristalls
-berechnet (für wenige nm ausreichend). 0 deaktiviert.
-Eine Änderung bindet die gespeicherten Elektronen nur
-neu, ohne die Monte-Carlo-Rechnung zu wiederholen.
-Bereich 0–100 nm, Schritt 0,1 nm.</value>
+    <value>Dicke (nm) einer nichtkristallinen Oberflächenschicht (Oxid,
+Kontamination, Polierschäden). Quellen darin liefern einen
+richtungsgemittelten, gleichmäßigen Beitrag ohne Kikuchi-
+Modulation. 0 deaktiviert; eine Änderung binnt die gespeicherten
+Elektronen neu, ohne die Monte-Carlo-Rechnung zu wiederholen.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>Absorbierten Fluss als Untergrund</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>In der Bloch-Wellen-Rechnung verschwinden Elektronen,
-die durch Absorption (thermisch-diffuse Streuung) den
-kohärenten Kanal verlassen. Physikalisch erreichen
-sie den Detektor trotzdem, ohne Kikuchi-Modulation.
-Diese Option fügt sie als diffusen Untergrund wieder
-hinzu: D(t) = Σσ_n ∫(1 − N(z))dz, mit N(z) der über
-die Elementarzelle gemittelten Dichte der kohärenten
-Welle. Der Fluss bleibt erhalten und die absoluten
-Intensitäten steigen (bei 20 kV etwa 10 % für Si, 25
-% für Fe3O4). Die relative Helligkeit der Zonenachsen
-ändert sich kaum und hängt vom Kristall ab, da der
-zurückgeführte Fluss derselben Austrittsrichtung
-zugeordnet bleibt. Ohne Absorption (B = 0, B =
-Debye-Waller-Temperaturfaktor) keine Wirkung.</value>
+    <value>Fügt den durch Absorption aus dem kohärenten Kanal entfernten
+Fluss als diffusen Untergrund D(t) = Σσ_n ∫(1 − N(z))dz wieder
+hinzu, sodass der Fluss erhalten bleibt. Erhöht die absolute
+Intensität (Si ≈ 10 %, Fe3O4 ≈ 25 % bei 20 kV); ohne Wirkung bei B = 0.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Nach Phosphorantwort gewichten</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Gewichtet jedes Elektron mit der Lichtausbeute eines Leucht-
+schirms, φ(E) = max(0, E − E_dead), statt es einmal zu zählen.
+Flacht den Gradienten von oben nach unten ab (Si, 20 kV:
+≈ 2,5 → 1,7). Für direkt zählende Elektronendetektoren ausschalten.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Totschicht- (Schwellen-) Energie des Leuchtstoffs in keV:
+Lichtausbeute ∝ E − E_dead, darunter null. Typisch 0–3 keV für
+einen Al-beschichteten P43-Schirm; Standard 2 keV.</value>
   </data>
 </root>

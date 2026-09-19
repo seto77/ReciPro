@@ -813,17 +813,9 @@ robust ZNCC 逐一比較來搜尋取向。
     <value>源深度 (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>選擇用哪個蒙地卡羅事件定義相干背向散射源的深度，用於
-master pattern 的 (能量 × 深度) 加權。最後一次非彈性
-：僅離散非彈性事件重設源 (預設)。最後一次輸運：任何事
-件都重設。最後一次退相干：只有局域到足以在樣品中留下
-「哪個原子散射」資訊的事件才重設源。彈性事件以
-Debye–Waller 因子給出的熱漫散射機率 1 − exp(−2B s²)
-重設 (Bloch 波已描述的相干 Bragg 散射不重設)；非彈性
-事件對內殼/高損失激發總是重設，對價電子激發僅按動量轉
-移超過電漿子截止 q_c = ω_p/v_F 的比例重設
-(電漿子與非局域電子–電洞對保持 Bloch 態)。源越淺，
-菊池調變越弱，因此漫背景僅由輸運決定，無自由參數。</value>
+    <value>用哪個蒙地卡羅事件決定 (能量 × 深度) 加權所用同調背向散射源的深度：
+最後一次非彈性事件 (預設)、任意類型的最後一次輸運事件，或最後一次
+退相干 (彈性以機率 1 − exp(−2Bs²)，非彈性僅當 q > q_c)。詳見手冊。</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>最後一次非彈性散射</value>
@@ -835,40 +827,36 @@ Debye–Waller 因子給出的熱漫散射機率 1 − exp(−2B s²)
     <value>最後一次退相干 (DW 加權)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>選擇用哪個蒙地卡羅事件定義相干背向散射源的深度，用於
-master pattern 的 (能量 × 深度) 加權。最後一次非彈性
-：僅離散非彈性事件重設源 (預設)。最後一次輸運：任何事
-件都重設。最後一次退相干：只有局域到足以在樣品中留下
-「哪個原子散射」資訊的事件才重設源。彈性事件以
-Debye–Waller 因子給出的熱漫散射機率 1 − exp(−2B s²)
-重設 (Bloch 波已描述的相干 Bragg 散射不重設)；非彈性
-事件對內殼/高損失激發總是重設，對價電子激發僅按動量轉
-移超過電漿子截止 q_c = ω_p/v_F 的比例重設
-(電漿子與非局域電子–電洞對保持 Bloch 態)。源越淺，
-菊池調變越弱，因此漫背景僅由輸運決定，無自由參數。</value>
+    <value>用哪個蒙地卡羅事件決定 (能量 × 深度) 加權所用同調背向散射源的深度：
+最後一次非彈性事件 (預設)、任意類型的最後一次輸運事件，或最後一次
+退相干 (彈性以機率 1 − exp(−2Bs²)，非彈性僅當 q > q_c)。詳見手冊。</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>表面非晶層</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>非晶表面層 (自然氧化膜、污染、拋光或離子減薄損傷層)
-的厚度 (nm)。相干背向散射源位於該層內的電子不帶菊池調
-變，以每個電子相同強度的方向平均 (均勻) 成分疊加；層以
-下的源從晶體表面起算深度。輸運按晶體的成分與密度計算
-(幾 nm 足夠)。0 為停用。更改只對已儲存的電子重新分箱，
-不會重新執行蒙地卡羅。 範圍 0–100 nm，步長 0.1 nm。</value>
+    <value>非晶表面層 (氧化膜、污染、拋光損傷) 的厚度 (nm)。層內的源以無菊池
+調制的方向平均 (均勻) 成分計入。0 為停用；更改時只對已儲存的電子
+重新分箱，不重新執行蒙地卡羅。</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>將吸收通量重新注入為漫背景</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>在 Bloch 波計算中，因吸收 (熱漫散射) 離開相干通道的
-電子會直接消失。實際上它們仍會到達偵測器，
-只是不帶菊池調變。此選項把這部分作為漫背景加回：
-D(t) = Σσ_n ∫(1 − N(z))dz，N(z) 為相干波在單位晶胞內
-的平均密度。通量守恆，絕對強度上升 (20 kV 下 Si 約
-10%，Fe3O4 約 25%)。重新注入的通量仍屬於同一出射方
-向，因此晶帶軸的相對亮度變化很小且取決於晶體。B
-(Debye–Waller 溫度因子) = 0 即無吸收時無效果。</value>
+    <value>將因吸收離開同調通道的通量作為漫散背景 D(t) = Σσ_n ∫(1 − N(z))dz
+加回，使通量守恆。絕對強度升高 (20 kV 時 Si 約 10%、Fe3O4 約 25%)；
+B = 0 時無效。</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>依螢光體響應加權電子</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>以螢光屏發光量 φ(E) = max(0, E − E_dead) 對每個電子加權，而非每個
+計 1 票。使圖樣上下梯度變緩 (Si, 20 kV: 約 2.5 → 1.7)。對直接計數
+電子的偵測器請關閉。</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>螢光體的死層 (閾值) 能量 (keV)：發光量 ∝ E − E_dead，低於此為 0。
+帶鋁鍍層的 P43 螢光屏典型值 0–3 keV；預設 2 keV。</value>
   </data>
 </root>

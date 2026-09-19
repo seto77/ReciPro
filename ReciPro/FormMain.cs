@@ -756,6 +756,8 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.FlipDetectorLeftRight);
                 rw(() => FormEBSD.AmorphousLayerThicknessNm); // 260919Cl 追加
                 rw(() => FormEBSD.MonteCarloSourceDepthMode); // 260919Cl 追加
+                rw(() => FormEBSD.PhosphorEnergyWeight); // 260919Cl 追加
+                rw(() => FormEBSD.PhosphorDeadEnergyKeV); // 260919Cl 追加
             }
             #endregion
 

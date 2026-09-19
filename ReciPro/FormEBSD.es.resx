@@ -884,25 +884,11 @@ El número de píxeles del detector no se ve afectado.</value>
     <value>Profundidad de la fuente (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Qué evento Monte Carlo define la profundidad de la
-fuente coherente de retrodispersión usada en la
-ponderación (energía × profundidad). Último
-inelástico: solo los eventos inelásticos discretos
-reinician la fuente (predeterminado). Último
-transporte: cualquier evento. Última decoherencia:
-solo los eventos suficientemente localizados para
-dejar en la muestra información de qué átomo dispersó.
-Los elásticos con la probabilidad térmico-difusa 1 −
-exp(−2B s²) del factor de Debye–Waller (la dispersión
-de Bragg coherente no); los inelásticos siempre para
-excitaciones de capa interna o alta pérdida, y para
-excitaciones de valencia solo con la fracción cuya
-transferencia de momento supera el corte plasmónico
-q_c = ω_p/v_F (plasmones y pares electrón–hueco
-deslocalizados conservan el estado de Bloch). Fuentes
-más superficiales llevan menos modulación de Kikuchi:
-el fondo difuso queda fijado solo por el transporte,
-sin parámetro libre.</value>
+    <value>Qué evento Monte Carlo fija la profundidad de la fuente coherente
+de retrodispersión usada en la ponderación (energía × profundidad):
+último evento inelástico (por defecto), último evento de transporte
+de cualquier tipo o última decoherencia (elástico con probabilidad
+1 − exp(−2Bs²), inelástico solo si q > q_c). Véase el manual.</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>Último evento inelástico</value>
@@ -914,61 +900,43 @@ sin parámetro libre.</value>
     <value>Última decoherencia (ponderada por DW)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Qué evento Monte Carlo define la profundidad de la
-fuente coherente de retrodispersión usada en la
-ponderación (energía × profundidad). Último
-inelástico: solo los eventos inelásticos discretos
-reinician la fuente (predeterminado). Último
-transporte: cualquier evento. Última decoherencia:
-solo los eventos suficientemente localizados para
-dejar en la muestra información de qué átomo dispersó.
-Los elásticos con la probabilidad térmico-difusa 1 −
-exp(−2B s²) del factor de Debye–Waller (la dispersión
-de Bragg coherente no); los inelásticos siempre para
-excitaciones de capa interna o alta pérdida, y para
-excitaciones de valencia solo con la fracción cuya
-transferencia de momento supera el corte plasmónico
-q_c = ω_p/v_F (plasmones y pares electrón–hueco
-deslocalizados conservan el estado de Bloch). Fuentes
-más superficiales llevan menos modulación de Kikuchi:
-el fondo difuso queda fijado solo por el transporte,
-sin parámetro libre.</value>
+    <value>Qué evento Monte Carlo fija la profundidad de la fuente coherente
+de retrodispersión usada en la ponderación (energía × profundidad):
+último evento inelástico (por defecto), último evento de transporte
+de cualquier tipo o última decoherencia (elástico con probabilidad
+1 − exp(−2Bs²), inelástico solo si q > q_c). Véase el manual.</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>Capa amorfa superficial</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Espesor (nm) de una capa superficial no cristalina
-(óxido nativo, contaminación, daño de pulido o de
-adelgazamiento iónico). Los electrones cuya fuente
-coherente de retrodispersión está dentro de la capa
-no llevan modulación de Kikuchi y se añaden como
-contribución promediada en dirección (uniforme) con
-la misma intensidad por electrón; las fuentes bajo
-la capa se miden desde la superficie del cristal.
-El transporte se calcula con la composición y
-densidad del cristal (suficiente para pocos nm). 0
-lo desactiva. Cambiarlo solo reagrupa los
-electrones guardados, sin repetir el Monte Carlo.
-Rango 0–100 nm, paso 0,1 nm.</value>
+    <value>Espesor (nm) de una capa superficial no cristalina (óxido,
+contaminación, daño de pulido). Las fuentes dentro de ella añaden
+una contribución uniforme, promediada en dirección, sin modulación
+de Kikuchi. 0 la desactiva; al cambiarlo se re-agrupan los electrones
+guardados sin repetir el Monte Carlo.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>Reinyectar flujo absorbido como fondo</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>En el cálculo de ondas de Bloch, los electrones que
-la absorción (dispersión térmica difusa) retira del
-canal coherente simplemente desaparecen. Físicamente
-siguen llegando al detector, sin modulación de
-Kikuchi. Esta opción los devuelve como fondo difuso:
-D(t) = Σσ_n ∫(1 − N(z))dz, donde N(z) es la densidad
-de la onda coherente promediada en la celda unidad.
-El flujo se conserva y las intensidades absolutas
-aumentan (a 20 kV, un 10 % en Si y un 25 % en Fe3O4).
-El brillo relativo de los ejes de zona cambia poco y
-depende del cristal, porque el flujo reinyectado
-sigue perteneciendo a la misma dirección de salida.
-Sin efecto si B = 0 (B = factor de temperatura de
-Debye–Waller; B = 0 significa sin absorción).</value>
+    <value>Devuelve el flujo eliminado del canal coherente por absorción
+como fondo difuso, D(t) = Σσ_n ∫(1 − N(z))dz, conservando el flujo.
+Aumenta la intensidad absoluta (Si ≈ 10 %, Fe3O4 ≈ 25 % a 20 kV);
+sin efecto si B = 0.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Ponderar por respuesta del fósforo</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Pondera cada electrón por el rendimiento luminoso de una pantalla
+de fósforo, φ(E) = max(0, E − E_dead), en vez de contarlo una vez.
+Aplana el gradiente de arriba abajo (Si, 20 kV: ≈ 2,5 → 1,7).
+Desactívelo para un detector que cuenta electrones directamente.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Energía de capa muerta (umbral) del fósforo en keV: rendimiento
+luminoso ∝ E − E_dead, nulo por debajo. Típicamente 0–3 keV para
+una pantalla P43 con recubrimiento de Al; por defecto 2 keV.</value>
   </data>
 </root>

@@ -84,8 +84,13 @@ public partial class FormEBSD : FormBase
 
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
     internal EbsdMonteCarloDistribution McDistribution => mcDistribution; // 260919Cl 追加 (試行): 外部ハーネス (InternalsVisibleTo) がビン分率を読むため
-    /// <summary>260919Cl 追加 (試行): MC 電子の蛍光体応答重み φ(E)=max(0,E−E_dead) の E_dead [keV]。NaN = 重み無し (従来)。GUI 未配線、ハーネスから設定</summary>
-    internal double McEnergyWeightDeadKeV = double.NaN;
+    // internal double McEnergyWeightDeadKeV = double.NaN; // 260919Cl 変更前 (試行: GUI 未配線のフィールド)
+    /// <summary>260919Cl 追加: MC 電子を蛍光体の発光量 φ(E)=max(0,E−E_dead) で重み付けするか (既定 ON。直接電子検出器なら OFF)</summary>
+    public bool PhosphorEnergyWeight { get => checkBoxPhosphorWeight.Checked; set => checkBoxPhosphorWeight.Checked = value; }
+    /// <summary>260919Cl 追加: 蛍光体の不感層 (しきい) エネルギー E_dead [keV] (既定 2)</summary>
+    public double PhosphorDeadEnergyKeV { get => numericBoxPhosphorDeadEnergy.Value; set => numericBoxPhosphorDeadEnergy.Value = value; }
+    /// <summary>260919Cl 追加: EbsdMonteCarloDistribution へ渡す E_dead。重み OFF なら NaN (= 1 本 1 票)</summary>
+    internal double McEnergyWeightDeadKeV => PhosphorEnergyWeight ? PhosphorDeadEnergyKeV : double.NaN;
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
     /// <summary>飛程計算の際の打ち切りエネルギー (kev)</summary>
@@ -1006,6 +1011,9 @@ public partial class FormEBSD : FormBase
         amorphousLayerDebounce.Tick -= AmorphousLayerDebounce_Tick; amorphousLayerDebounce.Tick += AmorphousLayerDebounce_Tick; // 多重購読を避ける
         amorphousLayerDebounce.Start(); // 最後の変更から 200 ms 後に 1 回だけ再ビニング (構築開始時は AmorphousLayerThicknessNm を直接読むので保留値の取りこぼしは無い)
     }
+
+    /// <summary>蛍光体応答重みの ON/OFF・E_dead 変更。層厚と同じく保存済み BSE をデバウンス付きで再ビニングする。260919Cl 追加</summary>
+    private void PhosphorWeight_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
 
     private void AmorphousLayerDebounce_Tick(object sender, EventArgs e) // 260919Cl 追加
     {
@@ -2603,7 +2611,7 @@ public partial class FormEBSD : FormBase
         {
             progress.Report((0, "MonteCarlo"));
             double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
-            double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加 (試行): 同上
+            double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加: 同上 (蛍光体応答重み。OFF なら NaN)
             var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
             var result = await Task.Run(() =>
             {
@@ -2720,7 +2728,7 @@ public partial class FormEBSD : FormBase
             return;
 
         buttonCreateMasterPattern.Enabled = false; // (260327Ch) MC 前処理中の多重起動を防ぐ
-        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = false; // 260919Cl 追加 (/simplify2): 構築中の再ビニングと結果の取り合いを防ぐ
+        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = false; // 260919Cl 追加 (/simplify2): 構築中の再ビニングと結果の取り合いを防ぐ
         // buttonStop.Visible = false; // (260327Ch) MC 前処理はまだ停止できないため、Bethe 開始まで出さない // 260406Cl 旧: MC 中も Stop を表示するよう変更
         monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
@@ -2742,7 +2750,7 @@ public partial class FormEBSD : FormBase
                 DisposeMonteCarloCts(); // 260406Cl
                 buttonStop.Visible = false; // 260406Cl MC 失敗/キャンセル時は Stop を隠す
                 buttonCreateMasterPattern.Enabled = true; // (260327Ch)
-                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
+                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = true; // 260919Cl 追加
                 return;
             }
             DisposeMonteCarloCts(); // 260406Cl MC 完了後は CTS を破棄 (Bethe は masterPatternEbsd が管理)
@@ -2767,7 +2775,7 @@ public partial class FormEBSD : FormBase
             {
                 DetachMasterPatternBuildEvents();
                 buttonCreateMasterPattern.Enabled = true; // (260327Ch)
-                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
+                comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = true; // 260919Cl 追加
                 return;
             }
         }
@@ -2776,7 +2784,7 @@ public partial class FormEBSD : FormBase
             DisposeMonteCarloCts(); // 260406Cl
             DetachMasterPatternBuildEvents();
             buttonCreateMasterPattern.Enabled = true; // (260327Ch)
-            comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
+            comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = true; // 260919Cl 追加
             buttonStop.Visible = false; // (260327Ch)
             throw;
         }
@@ -2821,7 +2829,7 @@ public partial class FormEBSD : FormBase
     {
         DetachMasterPatternBuildEvents();
         buttonCreateMasterPattern.Enabled = true;
-        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = true; // 260919Cl 追加
+        comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = true; // 260919Cl 追加
         buttonStop.Visible = false;
         var sec = sw1.ElapsedMilliseconds / 1000.0;
 

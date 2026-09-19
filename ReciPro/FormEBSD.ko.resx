@@ -853,20 +853,10 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
     <value>소스 깊이 (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>마스터 패턴의 (에너지 × 깊이) 가중에 쓰는 결맞음
-후방산란 소스의 깊이를 어떤 몬테카를로 이벤트로 정할지
-선택합니다. 마지막 비탄성: 이산 비탄성 산란만 소스를
-재설정 (기본값). 마지막 수송: 모든 이벤트가 재설정.
-마지막 결맞음 상실: 어느 원자에서 산란했는지의 정보를
-시료에 남길 만큼 국소화된 이벤트만 재설정합니다. 탄성
-산란은 Debye–Waller 인자에서 정해지는 열확산 확률 1 −
-exp(−2B s²)로 (Bloch 파가 다루는 결맞음 Bragg 산란은
-재설정하지 않음), 비탄성 산란은 내각·고손실 여기면
-항상, 원자가 여기면 운동량 전달이 플라즈몬 차단 q_c =
-ω_p/v_F 를 넘는 비율만큼 재설정합니다 (플라즈몬과
-비국소 전자–정공 쌍은 Bloch 상태를 유지). 소스가
-얕을수록 Kikuchi 변조가 약해지므로 자유 매개변수 없이
-수송만으로 확산 배경이 정해집니다.</value>
+    <value>(에너지 × 깊이) 가중에 쓰는 결맞음 후방산란 소스의 깊이를 어떤
+몬테카를로 사건으로 정할지: 마지막 비탄성 사건 (기본), 종류를
+불문한 마지막 수송 사건, 또는 마지막 결맞음 상실 (탄성은 확률
+1 − exp(−2Bs²), 비탄성은 q > q_c일 때만). 자세한 내용은 매뉴얼 참조.</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>마지막 비탄성 산란</value>
@@ -878,47 +868,39 @@ exp(−2B s²)로 (Bloch 파가 다루는 결맞음 Bragg 산란은
     <value>마지막 결맞음 상실 (DW 가중)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>마스터 패턴의 (에너지 × 깊이) 가중에 쓰는 결맞음
-후방산란 소스의 깊이를 어떤 몬테카를로 이벤트로 정할지
-선택합니다. 마지막 비탄성: 이산 비탄성 산란만 소스를
-재설정 (기본값). 마지막 수송: 모든 이벤트가 재설정.
-마지막 결맞음 상실: 어느 원자에서 산란했는지의 정보를
-시료에 남길 만큼 국소화된 이벤트만 재설정합니다. 탄성
-산란은 Debye–Waller 인자에서 정해지는 열확산 확률 1 −
-exp(−2B s²)로 (Bloch 파가 다루는 결맞음 Bragg 산란은
-재설정하지 않음), 비탄성 산란은 내각·고손실 여기면
-항상, 원자가 여기면 운동량 전달이 플라즈몬 차단 q_c =
-ω_p/v_F 를 넘는 비율만큼 재설정합니다 (플라즈몬과
-비국소 전자–정공 쌍은 Bloch 상태를 유지). 소스가
-얕을수록 Kikuchi 변조가 약해지므로 자유 매개변수 없이
-수송만으로 확산 배경이 정해집니다.</value>
+    <value>(에너지 × 깊이) 가중에 쓰는 결맞음 후방산란 소스의 깊이를 어떤
+몬테카를로 사건으로 정할지: 마지막 비탄성 사건 (기본), 종류를
+불문한 마지막 수송 사건, 또는 마지막 결맞음 상실 (탄성은 확률
+1 − exp(−2Bs²), 비탄성은 q > q_c일 때만). 자세한 내용은 매뉴얼 참조.</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>표면 비정질층</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>비정질 표면층(자연 산화막, 오염, 연마·이온 밀링
-손상층)의 두께(nm). 결맞음 후방산란 소스가 이 층 안에
-있는 전자는 Kikuchi 변조를 갖지 않으며, 전자당 같은
-세기의 방향 평균(균일) 성분으로 더해집니다. 층 아래의
-소스는 결정 표면부터 깊이를 잽니다. 수송은 결정과 같은
-조성·밀도로 계산합니다(수 nm면 충분). 0이면 비활성.
-바꾸면 저장된 전자를 다시 비닝할 뿐 몬테카를로를 다시
-실행하지 않습니다. 범위 0–100 nm, 단계 0.1 nm.</value>
+    <value>비정질 표면층 (산화막·오염·연마 손상)의 두께 (nm). 층 안의 소스는
+키쿠치 변조가 없는 방향 평균 (균일) 성분으로 더해집니다. 0이면
+비활성. 변경 시 저장된 전자를 다시 비닝할 뿐 몬테카를로를 다시
+실행하지 않습니다.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>흡수된 플럭스를 확산 배경으로 재주입</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>Bloch 파 계산에서는 흡수(열확산 산란)로 결맞음
-채널에서 빠진 전자가 그냥 사라집니다. 실제로는 이
-전자들도 Kikuchi 변조 없이 검출기에 도달합니다. 이
-옵션은 그 몫을 확산 배경으로 되돌립니다: D(t) = Σσ_n
-∫(1 − N(z))dz, N(z)는 결맞음 파의 단위격자 평균
-밀도. 플럭스가 보존되어 절대 강도가 올라갑니다(20
-kV에서 Si 약 10%, Fe3O4 약 25%). 재주입된 플럭스도
-같은 출사 방향에 속하므로 정대축의 상대 밝기 변화는
-작고 결정에 따라 다릅니다. B(Debye–Waller 온도 인자)
-= 0, 즉 흡수가 없으면 효과가 없습니다.</value>
+    <value>흡수로 결맞음 채널에서 빠진 플럭스를 확산 배경
+D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절대 강도가
+올라갑니다 (20 kV에서 Si 약 10%, Fe3O4 약 25%). B = 0이면 효과 없음.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>형광체 응답으로 전자 가중</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>각 전자를 1개 1표가 아니라 형광 스크린의 발광량
+φ(E) = max(0, E − E_dead)으로 가중합니다. 패턴의 상하 기울기가
+완만해집니다 (Si, 20 kV: 약 2.5 → 1.7). 전자를 직접 계수하는
+검출기에서는 끄십시오.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>형광체의 불감층 (문턱) 에너지 (keV): 발광량 ∝ E − E_dead, 그 이하는
+0. Al 코팅 P43 스크린에서 0〜3 keV가 일반적. 기본값 2 keV.</value>
   </data>
 </root>

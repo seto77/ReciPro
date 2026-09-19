@@ -111,6 +111,9 @@
             comboBoxMonteCarloDepthMode = new System.Windows.Forms.ComboBox(); // 260919Cl 追加
             numericBoxAmorphousLayer = new NumericBox(); // 260919Cl 追加
             checkBoxAbsorbedFluxBackground = new System.Windows.Forms.CheckBox(); // 260919Cl 追加
+            flowLayoutPanelPhosphorWeight = new System.Windows.Forms.FlowLayoutPanel(); // 260919Cl 追加: 蛍光体応答重み
+            checkBoxPhosphorWeight = new System.Windows.Forms.CheckBox(); // 260919Cl 追加
+            numericBoxPhosphorDeadEnergy = new NumericBox(); // 260919Cl 追加
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
@@ -313,6 +316,7 @@
             flowLayoutPanelThicknessRange.SuspendLayout();
             flowLayoutPanelAbsorptionOptions.SuspendLayout();
             flowLayoutPanelMonteCarloDepthMode.SuspendLayout(); // 260919Cl 追加
+            flowLayoutPanelPhosphorWeight.SuspendLayout(); // 260919Cl 追加
             statusStripMain.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             panelMasterPattern3D.SuspendLayout();
@@ -1657,6 +1661,7 @@
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelAbsorptionOptions);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMonteCarloDepthMode); // 260919Cl 追加
             flowLayoutPanelSimulationParameters.Controls.Add(numericBoxAmorphousLayer); // 260919Cl 追加
+            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelPhosphorWeight); // 260919Cl 追加
             flowLayoutPanelSimulationParameters.Controls.Add(checkBoxAbsorbedFluxBackground); // 260919Cl 追加
             flowLayoutPanelSimulationParameters.Name = "flowLayoutPanelSimulationParameters";
             // 
@@ -1729,6 +1734,38 @@
             numericBoxAmorphousLayer.Value = 0D;
             numericBoxAmorphousLayer.ValueBoxWidth = 50;
             numericBoxAmorphousLayer.ValueChanged += NumericBoxAmorphousLayer_ValueChanged;
+            // 
+            // flowLayoutPanelPhosphorWeight (260919Cl 追加): 蛍光体応答重み チェックボックス + E_dead
+            // 
+            resources.ApplyResources(flowLayoutPanelPhosphorWeight, "flowLayoutPanelPhosphorWeight");
+            flowLayoutPanelPhosphorWeight.Controls.Add(checkBoxPhosphorWeight);
+            flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxPhosphorDeadEnergy);
+            flowLayoutPanelPhosphorWeight.Name = "flowLayoutPanelPhosphorWeight";
+            // 
+            // checkBoxPhosphorWeight (260919Cl 追加)
+            // 
+            checkBoxPhosphorWeight.Checked = true;
+            checkBoxPhosphorWeight.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(checkBoxPhosphorWeight, "checkBoxPhosphorWeight");
+            checkBoxPhosphorWeight.Name = "checkBoxPhosphorWeight";
+            toolTip.SetToolTip(checkBoxPhosphorWeight, resources.GetString("checkBoxPhosphorWeight.ToolTip"));
+            checkBoxPhosphorWeight.UseVisualStyleBackColor = true;
+            checkBoxPhosphorWeight.CheckedChanged += PhosphorWeight_Changed;
+            // 
+            // numericBoxPhosphorDeadEnergy (260919Cl 追加)
+            // 
+            numericBoxPhosphorDeadEnergy.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPhosphorDeadEnergy.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxPhosphorDeadEnergy, "numericBoxPhosphorDeadEnergy");
+            numericBoxPhosphorDeadEnergy.Maximum = 10D;
+            numericBoxPhosphorDeadEnergy.Minimum = 0D;
+            numericBoxPhosphorDeadEnergy.Name = "numericBoxPhosphorDeadEnergy";
+            numericBoxPhosphorDeadEnergy.ShowUpDown = true;
+            numericBoxPhosphorDeadEnergy.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxPhosphorDeadEnergy, resources.GetString("numericBoxPhosphorDeadEnergy.ToolTip"));
+            numericBoxPhosphorDeadEnergy.Value = 2D;
+            numericBoxPhosphorDeadEnergy.ValueBoxWidth = 40;
+            numericBoxPhosphorDeadEnergy.ValueChanged += PhosphorWeight_Changed;
             // 
             // checkBoxAbsorbedFluxBackground (260919Cl 追加)
             // 
@@ -2139,6 +2176,8 @@
             flowLayoutPanelAbsorptionOptions.PerformLayout();
             flowLayoutPanelMonteCarloDepthMode.ResumeLayout(false); // 260919Cl 追加
             flowLayoutPanelMonteCarloDepthMode.PerformLayout(); // 260919Cl 追加
+            flowLayoutPanelPhosphorWeight.ResumeLayout(false); // 260919Cl 追加
+            flowLayoutPanelPhosphorWeight.PerformLayout(); // 260919Cl 追加
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
@@ -2325,6 +2364,9 @@
         private System.Windows.Forms.ComboBox comboBoxMonteCarloDepthMode; // 260919Cl 追加
         private NumericBox numericBoxAmorphousLayer; // 260919Cl 追加
         private System.Windows.Forms.CheckBox checkBoxAbsorbedFluxBackground; // 260919Cl 追加
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPhosphorWeight; // 260919Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxPhosphorWeight; // 260919Cl 追加
+        private NumericBox numericBoxPhosphorDeadEnergy; // 260919Cl 追加
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
         private NumericBox numericBoxEnergy;

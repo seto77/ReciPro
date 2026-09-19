@@ -7012,26 +7012,11 @@ orientation is not changed.</value>
     <value>Source depth (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Which Monte Carlo event defines the depth of the
-coherent backscatter source used for the (energy ×
-depth) weighting of the master pattern. Last
-inelastic: only discrete inelastic events reset the
-source (default). Last transport: every event,
-elastic or inelastic, resets it. Last decoherence:
-an event resets the source only when it is
-localized enough to leave which-atom information in
-the sample. Elastic events reset it with the
-thermal-diffuse probability 1 − exp(−2B s²) from
-the Debye–Waller factor (coherent Bragg scattering,
-already described by the Bloch waves, does not).
-Inelastic events reset it always for core/high-loss
-excitations, and for valence excitations only with
-the fraction whose momentum transfer exceeds the
-plasmon cutoff q_c = ω_p/v_F (plasmons and
-delocalized electron–hole pairs preserve the Bloch
-state). Shallower sources carry weaker Kikuchi
-modulation, so this sets the diffuse background
-from transport alone, without a free parameter.</value>
+    <value>Which Monte Carlo event resets the depth of the coherent
+backscatter source used for the (energy × depth) weighting:
+last inelastic event (default), last transport event of any
+kind, or last decoherence event (elastic with probability
+1 − exp(−2Bs²), inelastic only when q > q_c). See the manual.</value>
   </data>
   <data name="&gt;&gt;labelMonteCarloDepthMode.Name" xml:space="preserve">
     <value>labelMonteCarloDepthMode</value>
@@ -7067,26 +7052,11 @@ from transport alone, without a free parameter.</value>
     <value>1</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Which Monte Carlo event defines the depth of the
-coherent backscatter source used for the (energy ×
-depth) weighting of the master pattern. Last
-inelastic: only discrete inelastic events reset the
-source (default). Last transport: every event,
-elastic or inelastic, resets it. Last decoherence:
-an event resets the source only when it is
-localized enough to leave which-atom information in
-the sample. Elastic events reset it with the
-thermal-diffuse probability 1 − exp(−2B s²) from
-the Debye–Waller factor (coherent Bragg scattering,
-already described by the Bloch waves, does not).
-Inelastic events reset it always for core/high-loss
-excitations, and for valence excitations only with
-the fraction whose momentum transfer exceeds the
-plasmon cutoff q_c = ω_p/v_F (plasmons and
-delocalized electron–hole pairs preserve the Bloch
-state). Shallower sources carry weaker Kikuchi
-modulation, so this sets the diffuse background
-from transport alone, without a free parameter.</value>
+    <value>Which Monte Carlo event resets the depth of the coherent
+backscatter source used for the (energy × depth) weighting:
+last inelastic event (default), last transport event of any
+kind, or last decoherence event (elastic with probability
+1 − exp(−2Bs²), inelastic only when q > q_c). See the manual.</value>
   </data>
   <data name="&gt;&gt;comboBoxMonteCarloDepthMode.Name" xml:space="preserve">
     <value>comboBoxMonteCarloDepthMode</value>
@@ -7134,18 +7104,11 @@ from transport alone, without a free parameter.</value>
     <value>153</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Thickness (nm) of a non-crystalline surface layer
-(native oxide, contamination, polishing or ion-milling
-damage). Electrons whose coherent backscatter source
-lies inside the layer carry no Kikuchi modulation and
-are added as a direction-averaged (uniform)
-contribution with the same intensity per electron;
-sources below the layer are measured from the crystal
-surface. Transport is computed with the crystal's
-composition and density, which is adequate for a few
-nm. 0 disables it. Changing it re-bins the stored
-electrons without re-running the Monte Carlo. Range
-0–100 nm, step 0.1 nm.</value>
+    <value>Thickness (nm) of a non-crystalline surface layer (oxide,
+contamination, polishing damage). Sources inside it add a
+uniform, direction-averaged contribution without Kikuchi
+modulation. 0 disables it; changing it re-bins the stored
+electrons without re-running the Monte Carlo.</value>
   </data>
   <data name="&gt;&gt;numericBoxAmorphousLayer.Name" xml:space="preserve">
     <value>numericBoxAmorphousLayer</value>
@@ -7181,20 +7144,10 @@ electrons without re-running the Monte Carlo. Range
     <value>Re-inject absorbed flux as diffuse background</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>In the Bloch-wave calculation, electrons removed
-from the coherent channel by absorption (thermal
-diffuse scattering) simply disappear. Physically
-they still reach the detector, without Kikuchi
-modulation. This option adds them back as a diffuse
-background: D(t) = Σσ_n ∫(1 − N(z))dz, where N(z)
-is the unit-cell-averaged density of the coherent
-wave. Flux is then conserved and absolute
-intensities rise (about 10 % for Si, 25 % for Fe3O4
-at 20 kV). The relative brightness of zone axes
-changes little and depends on the crystal, because
-the re-injected flux still belongs to the same exit
-direction. No effect when B = 0 (B = Debye–Waller
-temperature factor; B = 0 means no absorption).</value>
+    <value>Add the flux removed from the coherent channel by absorption
+back as a diffuse background, D(t) = Σσ_n ∫(1 − N(z))dz, so
+that flux is conserved. Raises the absolute intensity
+(Si ≈ 10 %, Fe3O4 ≈ 25 % at 20 kV); no effect when B = 0.</value>
   </data>
   <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.Name" xml:space="preserve">
     <value>checkBoxAbsorbedFluxBackground</value>
@@ -7206,6 +7159,128 @@ temperature factor; B = 0 means no absorption).</value>
     <value>flowLayoutPanelSimulationParameters</value>
   </data>
   <data name="&gt;&gt;checkBoxAbsorbedFluxBackground.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 179</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 29</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>155</value>
+  </data>
+  <data name="flowLayoutPanelPhosphorWeight.WrapContents" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPhosphorWeight.Name" xml:space="preserve">
+    <value>flowLayoutPanelPhosphorWeight</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPhosphorWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPhosphorWeight.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSimulationParameters</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPhosphorWeight.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 0</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 21</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Weight electrons by phosphor response</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Weight each electron by the light yield of a phosphor screen,
+φ(E) = max(0, E − E_dead), instead of one count each. Flattens
+the top-to-bottom gradient (Si, 20 kV: ≈ 2.5 → 1.7). Turn off
+for a detector that counts electrons directly.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhosphorWeight.Name" xml:space="preserve">
+    <value>checkBoxPhosphorWeight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhosphorWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhosphorWeight.Parent" xml:space="preserve">
+    <value>flowLayoutPanelPhosphorWeight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhosphorWeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.FooterText" xml:space="preserve">
+    <value>keV</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.HeaderText" xml:space="preserve">
+    <value>E_dead</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 0</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 3</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 25</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Dead-layer (threshold) energy of the phosphor in keV: light
+yield ∝ E − E_dead, zero below it. Typically 0–3 keV for an
+Al-coated P43 screen; default 2 keV.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.Name" xml:space="preserve">
+    <value>numericBoxPhosphorDeadEnergy</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.Parent" xml:space="preserve">
+    <value>flowLayoutPanelPhosphorWeight</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
 </root>

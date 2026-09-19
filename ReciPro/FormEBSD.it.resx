@@ -887,24 +887,11 @@ finestra. Il numero di pixel del rivelatore non cambia.</value>
     <value>Profondità della sorgente (MC)</value>
   </data>
   <data name="labelMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Quale evento Monte Carlo definisce la profondità della
-sorgente coerente di retrodiffusione usata nella
-pesatura (energia × profondità). Ultimo anelastico:
-solo gli eventi anelastici discreti azzerano la
-sorgente (predefinito). Ultimo trasporto: qualsiasi
-evento. Ultima decoerenza: solo gli eventi abbastanza
-localizzati da lasciare nel campione l'informazione su
-quale atomo ha diffuso. Gli elastici con la
-probabilità termico-diffusa 1 − exp(−2B s²) del
-fattore di Debye–Waller (la diffusione di Bragg
-coerente no); gli anelastici sempre per eccitazioni di
-core o ad alta perdita, e per eccitazioni di valenza
-solo con la frazione il cui trasferimento di impulso
-supera il taglio plasmonico q_c = ω_p/v_F (plasmoni e
-coppie elettrone–lacuna delocalizzate conservano lo
-stato di Bloch). Sorgenti più superficiali portano una
-modulazione di Kikuchi più debole: il fondo diffuso è
-fissato dal solo trasporto, senza parametri liberi.</value>
+    <value>Quale evento Monte Carlo fissa la profondità della sorgente
+coerente di retrodiffusione per la pesatura (energia × profondità):
+ultimo evento anelastico (predefinito), ultimo evento di trasporto
+di qualsiasi tipo o ultima decoerenza (elastico con probabilità
+1 − exp(−2Bs²), anelastico solo se q > q_c). Vedi il manuale.</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.Items" xml:space="preserve">
     <value>Ultimo evento anelastico</value>
@@ -916,60 +903,43 @@ fissato dal solo trasporto, senza parametri liberi.</value>
     <value>Ultima decoerenza (pesata DW)</value>
   </data>
   <data name="comboBoxMonteCarloDepthMode.ToolTip" xml:space="preserve">
-    <value>Quale evento Monte Carlo definisce la profondità della
-sorgente coerente di retrodiffusione usata nella
-pesatura (energia × profondità). Ultimo anelastico:
-solo gli eventi anelastici discreti azzerano la
-sorgente (predefinito). Ultimo trasporto: qualsiasi
-evento. Ultima decoerenza: solo gli eventi abbastanza
-localizzati da lasciare nel campione l'informazione su
-quale atomo ha diffuso. Gli elastici con la
-probabilità termico-diffusa 1 − exp(−2B s²) del
-fattore di Debye–Waller (la diffusione di Bragg
-coerente no); gli anelastici sempre per eccitazioni di
-core o ad alta perdita, e per eccitazioni di valenza
-solo con la frazione il cui trasferimento di impulso
-supera il taglio plasmonico q_c = ω_p/v_F (plasmoni e
-coppie elettrone–lacuna delocalizzate conservano lo
-stato di Bloch). Sorgenti più superficiali portano una
-modulazione di Kikuchi più debole: il fondo diffuso è
-fissato dal solo trasporto, senza parametri liberi.</value>
+    <value>Quale evento Monte Carlo fissa la profondità della sorgente
+coerente di retrodiffusione per la pesatura (energia × profondità):
+ultimo evento anelastico (predefinito), ultimo evento di trasporto
+di qualsiasi tipo o ultima decoerenza (elastico con probabilità
+1 − exp(−2Bs²), anelastico solo se q > q_c). Vedi il manuale.</value>
   </data>
   <data name="numericBoxAmorphousLayer.HeaderText" xml:space="preserve">
     <value>Strato amorfo superficiale</value>
   </data>
   <data name="numericBoxAmorphousLayer.ToolTip" xml:space="preserve">
-    <value>Spessore (nm) di uno strato superficiale non
-cristallino (ossido nativo, contaminazione, danno da
-lucidatura o da assottigliamento ionico). Gli
-elettroni la cui sorgente coerente di retrodiffusione
-si trova nello strato non portano modulazione di
-Kikuchi e sono aggiunti come contributo mediato in
-direzione (uniforme) con la stessa intensità per
-elettrone; le sorgenti sotto lo strato si misurano
-dalla superficie del cristallo. Il trasporto è
-calcolato con composizione e densità del cristallo
-(adeguato per pochi nm). 0 disattiva. Il cambio
-ricampiona solo gli elettroni salvati, senza ripetere
-il Monte Carlo. Intervallo 0–100 nm, passo 0,1 nm.</value>
+    <value>Spessore (nm) di uno strato superficiale non cristallino (ossido,
+contaminazione, danno da lucidatura). Le sorgenti al suo interno
+aggiungono un contributo uniforme, mediato in direzione, senza
+modulazione di Kikuchi. 0 lo disattiva; la modifica ri-raggruppa
+gli elettroni salvati senza rieseguire il Monte Carlo.</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
     <value>Reiniettare flusso assorbito come fondo</value>
   </data>
   <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>Nel calcolo a onde di Bloch, gli elettroni rimossi dal
-canale coerente dall'assorbimento (diffusione termica
-diffusa) semplicemente scompaiono. Fisicamente
-raggiungono comunque il rivelatore, senza modulazione
-di Kikuchi. Questa opzione li restituisce come fondo
-diffuso: D(t) = Σσ_n ∫(1 − N(z))dz, dove N(z) è la
-densità dell'onda coerente mediata sulla cella. Il
-flusso si conserva e le intensità assolute aumentano
-(a 20 kV circa il 10 % per Si e il 25 % per Fe3O4). La
-luminosità relativa degli assi di zona cambia poco e
-dipende dal cristallo, perché il flusso reiniettato
-appartiene ancora alla stessa direzione di uscita.
-Nessun effetto con B = 0 (B = fattore di temperatura
-di Debye–Waller; B = 0 significa nessun assorbimento).</value>
+    <value>Reinietta il flusso rimosso dal canale coerente dall'assorbimento
+come fondo diffuso, D(t) = Σσ_n ∫(1 − N(z))dz, conservando il flusso.
+Aumenta l'intensità assoluta (Si ≈ 10 %, Fe3O4 ≈ 25 % a 20 kV);
+nessun effetto se B = 0.</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
+    <value>Pesare con la risposta del fosforo</value>
+  </data>
+  <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
+    <value>Pesa ogni elettrone con la resa luminosa di uno schermo al fosforo,
+φ(E) = max(0, E − E_dead), invece di contarlo una volta. Appiattisce
+il gradiente dall'alto in basso (Si, 20 kV: ≈ 2,5 → 1,7).
+Disattivare per un rivelatore che conta direttamente gli elettroni.</value>
+  </data>
+  <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
+    <value>Energia dello strato morto (soglia) del fosforo in keV: resa
+luminosa ∝ E − E_dead, nulla al di sotto. Tipicamente 0–3 keV per
+uno schermo P43 rivestito di Al; predefinito 2 keV.</value>
   </data>
 </root>
