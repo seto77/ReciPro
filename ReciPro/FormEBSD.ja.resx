@@ -1287,7 +1287,7 @@ B = 0 のときは効果なし。</value>
   <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
     <value>蛍光体の不感層 (しきい) エネルギー (keV)。発光量 ∝ E − E_dead、
 それ以下は 0。Al コート付き P43 蛍光板で 0〜3 keV が目安。
-既定 2 keV。</value>
+既定 2 keV、入力範囲 0〜10 keV。</value>
   </data>
   <data name="checkBoxPhosphorWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1388,8 +1388,9 @@ CSV 出力は生値のままです。</value>
 効き、輝度スライダーは平坦化後の値に対して働きます。</value>
   </data>
   <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
-    <value>Gaussian ぼかしの半値幅 (画像ピクセル)。1344 x 1024 の
-画像で 100 px 程度。範囲 5〜2000 px。</value>
+    <value>Gaussian ぼかしの半値幅 (実測画像自身のピクセル、ズームに
+依らない)。1344 × 1024 の画像で 100 px 程度。
+範囲 5〜2000 px。</value>
   </data>
   <data name="buttonMatchSimulation.Text" xml:space="preserve">
     <value>画像に合わせる</value>

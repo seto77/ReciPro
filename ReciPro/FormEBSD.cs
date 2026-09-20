@@ -256,6 +256,9 @@ public partial class FormEBSD : FormBase
     private double expImageMin = 0, expImageMax = 1;
     /// <summary>260920Cl 追加: 実測画像の生値と幅。平坦化の ON/OFF・半値幅を変えても読み直さずに作り直せるよう保持する</summary>
     private double[] expImageRaw = []; private int expImageRawWidth = 0;
+    /// <summary>260920Cl 追加 (/simplify): 平坦化後の実測値の置き場。ON/OFF や半値幅を動かすたびに新しい配列を作ると
+    /// フル解像度で 1 クリック 11 MB を捨てることになるので、シミュレーション側 (ebsdValuesFlattened) と同じく使い回す</summary>
+    private double[] expImageFlattened = [];
 
     /// <summary>expPbmp 差し替え時の不変条件 (旧インスタンス破棄と旧由来 expImage の無効化) を集約。260724Cl 追加</summary>
     private void SetExpPseudoBitmap(PseudoBitmap value)
@@ -1992,9 +1995,13 @@ public partial class FormEBSD : FormBase
     private void UpdateExpImageValues()
     {
         if (expPbmp == null || expImageRaw.Length == 0) return;
-        var values = checkBoxExpFlattenBackground.Checked
-            ? ImageProcess.SubtractGaussianBackground(expImageRaw, expImageRawWidth, ExpFlattenBackgroundFwhmPx)
-            : expImageRaw;
+        double[] values;
+        if (checkBoxExpFlattenBackground.Checked)
+        {
+            if (expImageFlattened.Length != expImageRaw.Length) expImageFlattened = new double[expImageRaw.Length];
+            values = ImageProcess.SubtractGaussianBackground(expImageRaw, expImageRawWidth, ExpFlattenBackgroundFwhmPx, expImageFlattened);
+        }
+        else values = expImageRaw;
         expPbmp.SrcValuesGray = expPbmp.SrcValuesGrayOriginal = values;
         (expImageMin, expImageMax) = values.MinMax();
         if (expImageMax <= expImageMin) expImageMax = expImageMin + 1; //単色画像で表示レンジの分母が 0 になるのを防ぐ
@@ -2005,6 +2012,7 @@ public partial class FormEBSD : FormBase
     {
         if (skipViewEvent || expPbmp == null) return;
         UpdateExpImageValues();
+        InvalidateIndexingResults(); //260920Cl 追加 (/simplify2): 平坦化で参照画像が変わるので、前の画像で求めた方位候補・較正結果を失効させる
         TrackBarAdvancedExpIntensity_ValueChanged(sender, 0);
     }
 
@@ -2057,7 +2065,9 @@ public partial class FormEBSD : FormBase
         toolStripStatusLabelDetail.Text = $"Min {minPct:f0} %, Max {maxPct:f0} %, contrast {contrast:f2} (2-98 % levels of both images as displayed)";
     }
 
-    /// <summary>260920Cl 追加: 下側 / 上側パーセンタイル。1 回のソートで両端を返す (ボタン操作なので素直に複製して並べ替える)</summary>
+    /// <summary>260920Cl 追加: 下側 / 上側パーセンタイル。1 回のソートで両端を返す (ボタン操作なので素直に複製して並べ替える)。
+    /// ⚠260920Cl (/simplify) 注記: 同ファイルに補間する ComputeQuantile があるが、無関係な入れ子型の private メンバーで外から呼べない。
+    ///   2 % / 98 % を 140 万点から採るだけなので、最近傍で採るこちらとの差は無視できる。共通化するなら ComputeQuantile を先に外へ出すこと</summary>
     private static (double Lo, double Hi) Percentiles(double[] values, double lowerPercent, double upperPercent)
     {
         var sorted = (double[])values.Clone();
@@ -2494,7 +2504,12 @@ public partial class FormEBSD : FormBase
         {
             DrawEBSD();
             (rasterW, rasterH) = PatternRasterSize;
-            values = (double[])ebsdValues.Clone(); //復元時の再計算で上書きされるため控えを取る
+            //260920Cl 変更 (/simplify2): 平坦化 ON のとき生値を書いていたが、ツールチップと docs 11 言語は
+            //  「表示と PNG/TIFF 出力に効く。CSV だけ生値」と書いている。表示と同じ値 (Pbmp.SrcValuesGray) を書き出す。
+            //  Pbmp は直前の DrawEBSD で同じ視野・解像度に更新済み。平坦化 OFF なら ebsdValues と同一
+            //旧: values = (double[])ebsdValues.Clone();
+            values = (double[])((checkBoxFlattenBackground.Checked && Pbmp?.SrcValuesGray is { } shown && shown.Length == ebsdValues.Length)
+                ? shown : ebsdValues).Clone(); //復元時の再計算で上書きされるため控えを取る
         }
         finally
         {
@@ -3675,6 +3690,9 @@ public partial class FormEBSD : FormBase
         indexingCts?.Dispose(); //260725Ch: 前回は EndIndexing で破棄するが、例外的な経路でも古い CTS を保持しない
         indexingCts = new System.Threading.CancellationTokenSource(); //260725Ch
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = false; //260724Cl: 廃止 2 ボタンを除去
+        //260920Cl 追加 (/simplify2): 実測画像の平坦化はワーカーが読んでいる配列 (SnapshotMatchingContext の DisplayReference) を
+        //  その場で書き換えるので、探索・較正の実行中は触らせない。MasterPattern 構築中に源深さ・層厚を止めているのと同じ流儀
+        flowLayoutPanelExpFlatten.Enabled = false;
         return true;
     }
 
@@ -3684,6 +3702,7 @@ public partial class FormEBSD : FormBase
         indexingCts = null;
         indexingBusy = false;
         buttonFindOrientation.Enabled = buttonCalibrateGeometry.Enabled = true; //260724Cl: 廃止 2 ボタンを除去
+        if (expPbmp != null) flowLayoutPanelExpFlatten.Enabled = true; //260920Cl 追加
         var tcs = calibrationDoneForHarness; calibrationDoneForHarness = null; tcs?.TrySetResult(); // 260920Cl 追加: ハーネスの待ち合わせ
     }
 
@@ -3881,8 +3900,11 @@ public partial class FormEBSD : FormBase
         //  実測側は表示値 (expPbmp.SrcValuesGray = 平坦化 ON なら平坦化後) をそのまま渡し、
         //  シミュレーション側には「シミュレーションの平坦化チェックが ON のとき」だけ同じ半値幅の高域通過を掛けさせる。
         //  両側の設定がそろっていないと ZNCC が背景の食い違いに引かれるので、docs/ツールチップでそろえるよう案内している
+        //260920Cl (/simplify2): FlattenBackgroundFwhmPx は**検出器 px**、較正側の基準は**実測画像 px** (DisplayWidth)。
+        //  実測画像を読むと検出器の画素数は画像サイズへ合わせられるので通常は一致するが、後から検出器の画素数だけ変えるとずれる。ここで換算しておく
         return new EbsdMatchingContext(geom, mp, pos, neg, refData, rw, rh, new Matrix3D(Crystal.RotationMatrix),
-            expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height, FlattenBackground ? FlattenBackgroundFwhmPx : 0);
+            expPbmp.SrcValuesGray, expPbmp.Width, expPbmp.Height,
+            FlattenBackground ? FlattenBackgroundFwhmPx * expPbmp.Width / DetPixelWidth : 0);
     }
 
     private bool CheckMatchingPrerequisites(string title)
@@ -3908,12 +3930,18 @@ public partial class FormEBSD : FormBase
     /// 最適化の中身 (交互法 → 方位仕上げ → 6 変数同時最適化 × 多点開始) は EbsdGeometryCalibrator を参照。
     /// 結果は DetX/DetY/DetZ へ逆変換して書き戻す。
     /// </summary>
+    //260920Cl (/simplify2): ハーネス 3 本は buttonCalibrateGeometry_Click の doc block の直前に挿し込まれてしまい、
+    //  その doc が FindOrientationForHarness に付いてしまっていた。doc の帰属を直す
     /// <summary>260920Cl 追加: 外部ハーネスから方位探索を走らせ、完了を待って最良候補を適用する (較正の精度評価には正しい方位が要る)</summary>
     internal async System.Threading.Tasks.Task<double> FindOrientationForHarness(bool useDictionary)
     {
         radioButtonIndexingDictionary.Checked = useDictionary; radioButtonIndexingRadon.Checked = !useDictionary;
-        var tcs = new System.Threading.Tasks.TaskCompletionSource(); calibrationDoneForHarness = tcs;
+        //260920Cl 変更 (/simplify2): ①クリック処理には前提不成立の早期 return が複数あり、そこへ落ちると EndIndexing が呼ばれず await が永久に止まっていた
+        //  → 呼び出し後に indexingBusy が立っていなければ即座に打ち切る。②継続が EndIndexing の finally 内でインライン実行される再入を避ける
+        var tcs = new System.Threading.Tasks.TaskCompletionSource(System.Threading.Tasks.TaskCreationOptions.RunContinuationsAsynchronously);
+        calibrationDoneForHarness = tcs;
         buttonFindOrientation_Click(this, EventArgs.Empty);
+        if (!indexingBusy) { calibrationDoneForHarness = null; tcs.TrySetResult(); }
         await tcs.Task;
         if (orientationCandidates is not { Count: > 0 }) return double.NaN;
         FormMain.SetRotation(orientationCandidates[0].Rotation); //一覧はランク順なので先頭が最良
@@ -3924,7 +3952,15 @@ public partial class FormEBSD : FormBase
     internal void PerturbDetectorGeometryForHarness(double dx, double dy, double dz)
     { DetectorX += dx; DetectorY += dy; DetectorZ += dz; }
 
-    internal System.Threading.Tasks.Task CalibrateGeometryForHarness() { var tcs = new System.Threading.Tasks.TaskCompletionSource(); calibrationDoneForHarness = tcs; buttonCalibrateGeometry_Click(this, EventArgs.Empty); return tcs.Task; } // 260920Cl 追加: 外部ハーネスから較正を走らせて完了を待つ
+    /// <summary>260920Cl 追加: 外部ハーネスから較正を走らせて完了を待つ。260920Cl 変更 (/simplify2): 前提不成立の早期 return でも止まらないよう indexingBusy を見て打ち切る</summary>
+    internal System.Threading.Tasks.Task CalibrateGeometryForHarness()
+    {
+        var tcs = new System.Threading.Tasks.TaskCompletionSource(System.Threading.Tasks.TaskCreationOptions.RunContinuationsAsynchronously);
+        calibrationDoneForHarness = tcs;
+        buttonCalibrateGeometry_Click(this, EventArgs.Empty);
+        if (!indexingBusy) { calibrationDoneForHarness = null; tcs.TrySetResult(); }
+        return tcs.Task;
+    }
     private System.Threading.Tasks.TaskCompletionSource calibrationDoneForHarness; // 260920Cl 追加
 
     private async void buttonCalibrateGeometry_Click(object sender, EventArgs e)

@@ -6823,7 +6823,7 @@ for a detector that counts electrons directly.</value>
   <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
     <value>Dead-layer (threshold) energy of the phosphor in keV: light
 yield ∝ E − E_dead, zero below it. Typically 0–3 keV for an
-Al-coated P43 screen; default 2 keV.</value>
+Al-coated P43 screen; default 2 keV. Input range 0–10 keV.</value>
   </data>
   <data name="&gt;&gt;numericBoxPhosphorDeadEnergy.Name" xml:space="preserve">
     <value>numericBoxPhosphorDeadEnergy</value>
@@ -7207,9 +7207,9 @@ distribution. Affects the overlaid image only; the intensity
 sliders then act on the flattened values.</value>
   </data>
   <data name="numericBoxExpFlattenFwhm.ToolTip" xml:space="preserve">
-    <value>Full width at half maximum of the Gaussian blur, in image
-pixels. About 100 px for a 1344 x 1024 image.
-Range 5-2000 px.</value>
+    <value>Full width at half maximum of the Gaussian blur, in pixels
+of the experimental image itself (independent of zoom).
+About 100 px for a 1344 × 1024 image. Range 5–2000 px.</value>
   </data>
   <data name="buttonMatchSimulation.Text" xml:space="preserve">
     <value>Match to image</value>
