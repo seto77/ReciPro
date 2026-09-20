@@ -116,7 +116,9 @@ public partial class FormTrajectory : FormBase
         //double A = sum2 / sum3;       //試料の平均原子量 (g/mol)。196.96 63.55 26.98;
         //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
         //    cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
-        var (Z, A, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        var (Z, A, valenceElectronCount, meanJEv) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        //260921Cl 変更: 重み付けの不整合を修正し J (Bragg 則) を受け取るようにした。旧シグネチャは 3 要素で J 無し
+        // var (Z, A, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);
         //試料の密度 (g/cm^3)
         double ρ = cry.Density; // 19.32 8.96 2.70
 
@@ -130,7 +132,8 @@ public partial class FormTrajectory : FormBase
             MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
             MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
             valenceElectronCount: valenceElectronCount,
-            atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler を試せるようにする
+            atoms: cry.Atoms,
+            meanIonizationPotentialEv: meanJEv); // (260331Ch) 元素組成込みの Mott/NIST sampler を試せるようにする // 260921Cl J を明示
 
         var (_, CrossSection, MeanFreePath, StoppingPower) = monte.GetParameters(energy);
         labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev ({monte.ElasticScatteringModel})"; // (260331Ch)

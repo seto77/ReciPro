@@ -136,13 +136,10 @@
     <value>Цвет</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
-    <value>Показать изображение с угловыми/энергетическими распределениями ОРЭ</value>
-  </data>
-  <data name="labelBrightness.Text" xml:space="preserve">
-    <value>Яркость</value>
+    <value>С угловыми/энергетическими распределениями ОРЭ</value>
   </data>
   <data name="tabPageOutputParameter.Text" xml:space="preserve">
-    <value>Параметры вывода</value>
+    <value>Смоделированное изображение</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Наложения</value>
@@ -579,10 +576,6 @@ Simulate, чтобы получить распределение.</value>
 электронов падающего пучка (энергию
 первичных электронов для моделирования EBSD).</value>
   </data>
-  <data name="labelBrightness.ToolTip" xml:space="preserve">
-    <value>Регулирует диапазон яркости (отсечка по чёрному/белому)
-отображаемого изображения EBSD.</value>
-  </data>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>Распределение глубины (нм), на которой у
 зарегистрированных обратно рассеянных электронов
@@ -654,9 +647,6 @@ Spectrum, Fire), используемую для отображения инте
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
     <value>Размер и наклон</value>
   </data>
-  <data name="labelExpBrightness.Text" xml:space="preserve">
-    <value>Яркость</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Текущий вид</value>
   </data>
@@ -707,11 +697,6 @@ Spectrum, Fire), используемую для отображения инте
 картиной, Bands и (hkl) = сопоставленные полосы
 (только поиск по Радону). Щёлкните строку, чтобы
 применить эту ориентацию во всей программе.</value>
-  </data>
-  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
-    <value>Настроить диапазон отсечения чёрного/белого
-наложенного экспериментального изображения (а не
-смоделированной картины) ползунками Мин и Макс справа.</value>
   </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Копировать как растровое изображение bitmap
@@ -853,15 +838,6 @@ Y и Z задают смещение в плоскости и длину кам�
 0 отключает; при изменении сохранённые электроны перебиниваются без
 повторного Монте-Карло.</value>
   </data>
-  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
-    <value>Возвращать поглощённый поток в фон</value>
-  </data>
-  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>Возвращает поток, выбывший из когерентного канала из-за поглощения,
-как диффузный фон D(t) = Σσ_n ∫(1 − N(z))dz, сохраняя поток.
-Повышает абсолютную интенсивность (Si ≈ 10 %, Fe3O4 ≈ 25 % при 20 кВ);
-не действует при B = 0.</value>
-  </data>
   <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
     <value>Взвешивать по отклику люминофора</value>
   </data>
@@ -877,7 +853,7 @@ Y и Z задают смещение в плоскости и длину кам�
 с Al-покрытием; по умолчанию 2 кэВ.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
-    <value>Выровнять фон (вычесть гауссово размытие)</value>
+    <value>Выровнять фон</value>
   </data>
   <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
     <value>Вычитает из смоделированной картины её копию, размытую по
@@ -964,7 +940,7 @@ Y и Z задают смещение в плоскости и длину кам�
 увидеть смоделированную картину под ним.</value>
   </data>
   <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
-    <value>Выровнять фон (вычесть гауссово размытие)</value>
+    <value>Выровнять фон</value>
   </data>
   <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
     <value>Вычитает из экспериментального изображения его копию,
@@ -985,5 +961,22 @@ Y и Z задают смещение в плоскости и длину кам�
 чтобы её уровни 2 % и 98 % отображались тем же серым, что и
 у этого изображения. Полярность, Цвет и обе настройки
 выравнивания не меняются: выравнивайте обе стороны или ни одной.</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.Text" xml:space="preserve">
+    <value>Контраст спадает с потерей энергии</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.ToolTip" xml:space="preserve">
+    <value>Умножает кикучи-контраст каждого энергетического среза на
+A(E) = exp(-(E0 - E) / E_c); потерянная часть уходит в плоский
+пьедестал, полная интенсивность сохраняется.
+Без этого все срезы несут полный контраст и полосы выходят
+слишком широкими (Si 20 кВ: 5 %; 1,7 % при E_c = 1 кэВ).</value>
+  </data>
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>Характерная потеря энергии E_c спада контраста
+A(E) = exp(-(E0 - E) / E_c), в кэВ. Меньше означает, что контраст
+несут только электроны с малой потерей.
+Ниже примерно 1 кэВ стандартный шаг 1 кэВ не разрешает
+разницу.</value>
   </data>
 </root>

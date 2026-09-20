@@ -136,13 +136,10 @@
     <value>颜色</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
-    <value>显示带BSE角度/能量分布的图像</value>
-  </data>
-  <data name="labelBrightness.Text" xml:space="preserve">
-    <value>亮度</value>
+    <value>含 BSE 角度/能量分布</value>
   </data>
   <data name="tabPageOutputParameter.Text" xml:space="preserve">
-    <value>输出参数</value>
+    <value>模拟图像</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>叠加层</value>
@@ -555,10 +552,6 @@ EBSD 图案能量切片 (keV)；
 波长（EBSD 模拟的
 初级电子能量）。</value>
   </data>
-  <data name="labelBrightness.ToolTip" xml:space="preserve">
-    <value>调整所显示 EBSD 图像的
-亮度（黑/白截断）范围。</value>
-  </data>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>被检出的背散射电子最后一次发生非弹性散射的
 深度 (nm) 分布（若无非弹性散射则取最大侵入
@@ -626,9 +619,6 @@ EBSD 图案能量切片 (keV)；
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
     <value>尺寸与倾斜</value>
   </data>
-  <data name="labelExpBrightness.Text" xml:space="preserve">
-    <value>亮度</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>当前视图</value>
   </data>
@@ -667,10 +657,6 @@ px）。与范围“探测器”配合使用时，输出与探测器像素数严
 Radon 带证据的 z 值，ZNCC = 与模拟花样的相关
 性，Bands 与 (hkl) = 匹配的带（仅 Radon
 搜索）。点击某行即可将该取向应用到整个程序。</value>
-  </data>
-  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
-    <value>用右侧的最小/最大滑块调整叠加实验图
-像（而非模拟花样）的黑白截断范围。</value>
   </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>以位图 (bmp) 栅格图像复制。包括菊池线与标签在内的全部内
@@ -788,14 +774,6 @@ robust ZNCC 逐一比较以搜索取向。
 调制的方向平均 (均匀) 成分计入。0 为禁用；更改时只对已保存的电子
 重新分箱，不重新运行蒙特卡罗。</value>
   </data>
-  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
-    <value>将吸收通量重新注入为漫背景</value>
-  </data>
-  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>将因吸收离开相干通道的通量作为漫散背景 D(t) = Σσ_n ∫(1 − N(z))dz
-加回，使通量守恒。绝对强度升高 (20 kV 时 Si 约 10%、Fe3O4 约 25%)；
-B = 0 时无效。</value>
-  </data>
   <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
     <value>按荧光体响应加权电子</value>
   </data>
@@ -809,7 +787,7 @@ B = 0 时无效。</value>
 带铝镀层的 P43 荧光屏典型值 0–3 keV；默认 2 keV。</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
-    <value>平坦化背景 (减去高斯模糊)</value>
+    <value>平坦化背景</value>
   </data>
   <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
     <value>从模拟图样中减去其高斯模糊副本，以去除缓慢变化的亮度分布
@@ -886,7 +864,7 @@ B = 0 时无效。</value>
 调低即可看到下方的模拟图样。</value>
   </data>
   <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
-    <value>平坦化背景 (减去高斯模糊)</value>
+    <value>平坦化背景</value>
   </data>
   <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
     <value>从实验图像中减去其高斯模糊副本，以去除缓慢变化的亮度分布。
@@ -903,5 +881,20 @@ B = 0 时无效。</value>
     <value>设置模拟图样的最小、最大和对比度，使其 2 % 与 98 % 的强度
 显示为与本图像相同的灰度。不改变极性、颜色以及两侧的平坦化
 设置，因此请两侧同时开启或同时关闭平坦化。</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.Text" xml:space="preserve">
+    <value>对比度随能量损失衰减</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.ToolTip" xml:space="preserve">
+    <value>将每个能量切片的菊池对比度乘以
+A(E) = exp(-(E0 - E) / E_c)，损失的部分转为平坦基座，
+总强度不变。
+关闭时所有切片都带满额对比度，带宽会偏大
+(Si 20 kV：比单色宽 5 %；E_c = 1 keV 时为 1.7 %)。</value>
+  </data>
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>对比度衰减 A(E) = exp(-(E0 - E) / E_c) 的特征损失 E_c (keV)。
+越小表示只有低损失电子承担菊池对比度。
+低于约 1 keV 时，默认的 1 keV 能量步长无法分辨差别。</value>
   </data>
 </root>

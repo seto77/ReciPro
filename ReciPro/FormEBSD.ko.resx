@@ -136,13 +136,10 @@
     <value>색</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
-    <value>BSE 각도/에너지 분포와 함께 이미지 표시</value>
-  </data>
-  <data name="labelBrightness.Text" xml:space="preserve">
-    <value>밝기</value>
+    <value>BSE 각도/에너지 분포 포함</value>
   </data>
   <data name="tabPageOutputParameter.Text" xml:space="preserve">
-    <value>출력 매개변수</value>
+    <value>시뮬레이션 이미지</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>오버레이</value>
@@ -570,10 +567,6 @@ mm 단위로 설정합니다. Y와 함께
 (EBSD 시뮬레이션의 일차 전자 에너지)을
 설정합니다.</value>
   </data>
-  <data name="labelBrightness.ToolTip" xml:space="preserve">
-    <value>표시 EBSD 영상의 밝기(검은색/흰색
-클립) 범위를 조정합니다.</value>
-  </data>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>검출된 후방산란 전자가 마지막으로 비탄성
 산란을 일으킨 깊이(nm)의 분포입니다(비탄성
@@ -642,9 +635,6 @@ Cold-Warm, Spectrum, Fire)을 선택합니다.</value>
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
     <value>크기 및 기울기</value>
   </data>
-  <data name="labelExpBrightness.Text" xml:space="preserve">
-    <value>밝기</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>현재 보기</value>
   </data>
@@ -689,10 +679,6 @@ EBSD 카메라가 기록하는 자연스러운 이미지입니다.
 Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
 상관, Bands·(hkl) = 일치한 밴드(Radon 탐색만).
 행을 클릭하면 그 방위가 프로그램 전체에 적용됩니다.</value>
-  </data>
-  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
-    <value>겹친 실험 이미지(시뮬레이션 패턴이 아님)의 흑·백
-클립 범위를 오른쪽의 최소·최대 슬라이더로 조정합니다.</value>
   </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>비트맵(bmp) 래스터 이미지로 복사합니다. 기쿠치 선과
@@ -819,14 +805,6 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
 비활성. 변경 시 저장된 전자를 다시 비닝할 뿐 몬테카를로를 다시
 실행하지 않습니다.</value>
   </data>
-  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
-    <value>흡수된 플럭스를 확산 배경으로 재주입</value>
-  </data>
-  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>흡수로 결맞음 채널에서 빠진 플럭스를 확산 배경
-D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절대 강도가
-올라갑니다 (20 kV에서 Si 약 10%, Fe3O4 약 25%). B = 0이면 효과 없음.</value>
-  </data>
   <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
     <value>형광체 응답으로 전자 가중</value>
   </data>
@@ -841,7 +819,7 @@ D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절�
 0. Al 코팅 P43 스크린에서 0〜3 keV가 일반적. 기본값 2 keV.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
-    <value>배경 평탄화 (가우시안 블러를 뺌)</value>
+    <value>배경 평탄화</value>
   </data>
   <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
     <value>시뮬레이션 패턴에서 가우시안으로 흐리게 한 사본을 빼서
@@ -924,7 +902,7 @@ D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절�
 낮추면 아래의 시뮬레이션 패턴이 보입니다.</value>
   </data>
   <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
-    <value>배경 평탄화 (가우시안 블러를 뺌)</value>
+    <value>배경 평탄화</value>
   </data>
   <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
     <value>실측 이미지에서 가우시안으로 흐리게 한 사본을 빼서 완만하게
@@ -943,5 +921,21 @@ D(t) = Σσ_n ∫(1 − N(z))dz 로 되돌려 플럭스를 보존합니다. 절�
 이 이미지의 같은 위치와 같은 회색으로 표시되도록 설정합니다.
 극성·색·양쪽 평탄화 설정은 건드리지 않으므로 평탄화는 양쪽
 모두 켜거나 모두 끄십시오.</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.Text" xml:space="preserve">
+    <value>에너지 손실에 따라 대비 감소</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.ToolTip" xml:space="preserve">
+    <value>각 에너지 슬라이스의 키쿠치 대비를
+A(E) = exp(-(E0 - E) / E_c) 배로 조정하고, 잃은 몫은 평탄한
+받침으로 돌려 전체 강도를 보존합니다.
+끄면 모든 슬라이스가 완전한 대비를 가져 밴드가 넓어집니다
+(Si 20 kV: 단색 대비 5 %, E_c = 1 keV 이면 1.7 %).</value>
+  </data>
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>대비 감쇠 A(E) = exp(-(E0 - E) / E_c) 의 특성 손실 E_c (keV).
+작을수록 손실이 적은 전자만 키쿠치 대비를 담당합니다.
+약 1 keV 아래에서는 기본 에너지 간격 1 keV 로 차이를
+분해할 수 없습니다.</value>
   </data>
 </root>

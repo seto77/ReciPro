@@ -136,13 +136,10 @@ Kikuchi-Linien-Intensität anwenden</value>
     <value>Farbe</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
-    <value>Bild mit BSE-Winkel-/Energieverteilungen anzeigen</value>
-  </data>
-  <data name="labelBrightness.Text" xml:space="preserve">
-    <value>Helligkeit</value>
+    <value>Mit BSE-Winkel-/Energieverteilungen</value>
   </data>
   <data name="tabPageOutputParameter.Text" xml:space="preserve">
-    <value>Ausgabeparameter</value>
+    <value>Simuliertes Bild</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>Overlays</value>
@@ -583,10 +580,6 @@ der Wert wird im Feld Depth angezeigt.</value>
 des einfallenden Strahls fest (die Primärelektronen-
 energie für die EBSD-Simulation).</value>
   </data>
-  <data name="labelBrightness.ToolTip" xml:space="preserve">
-    <value>Passt den Helligkeitsbereich (Schwarz-/Weiß-Clip)
-des angezeigten EBSD-Bildes an.</value>
-  </data>
   <data name="labelBseDepth.ToolTip" xml:space="preserve">
     <value>Verteilung der Tiefe (nm), in der die detektierten
 rückgestreuten Elektronen ihr letztes inelastisches
@@ -657,9 +650,6 @@ Detektorzentrums</value>
   <data name="labelDetectorSizeTilt.Text" xml:space="preserve">
     <value>Größe und Neigung</value>
   </data>
-  <data name="labelExpBrightness.Text" xml:space="preserve">
-    <value>Helligkeit</value>
-  </data>
   <data name="radioButtonCopyCurrent.Text" xml:space="preserve">
     <value>Aktuelle Ansicht</value>
   </data>
@@ -711,12 +701,6 @@ ZNCC = Korrelation mit dem simulierten Muster,
 Bands und (hkl) = zugeordnete Bänder (nur
 Radon-Suche). Ein Klick auf eine Zeile wendet
 diese Orientierung im ganzen Programm an.</value>
-  </data>
-  <data name="labelExpBrightness.ToolTip" xml:space="preserve">
-    <value>Stellt den Schwarz-/Weiß-Clipping-Bereich
-des überlagerten experimentellen Bildes
-(nicht des simulierten Musters) mit den
-Schiebern Min und Max rechts ein.</value>
   </data>
   <data name="radioButtonCopyBmp.ToolTip" xml:space="preserve">
     <value>Kopiert als Bitmap-Rasterbild (bmp). Alles,
@@ -862,15 +846,6 @@ richtungsgemittelten, gleichmäßigen Beitrag ohne Kikuchi-
 Modulation. 0 deaktiviert; eine Änderung binnt die gespeicherten
 Elektronen neu, ohne die Monte-Carlo-Rechnung zu wiederholen.</value>
   </data>
-  <data name="checkBoxAbsorbedFluxBackground.Text" xml:space="preserve">
-    <value>Absorbierten Fluss als Untergrund</value>
-  </data>
-  <data name="checkBoxAbsorbedFluxBackground.ToolTip" xml:space="preserve">
-    <value>Fügt den durch Absorption aus dem kohärenten Kanal entfernten
-Fluss als diffusen Untergrund D(t) = Σσ_n ∫(1 − N(z))dz wieder
-hinzu, sodass der Fluss erhalten bleibt. Erhöht die absolute
-Intensität (Si ≈ 10 %, Fe3O4 ≈ 25 % bei 20 kV); ohne Wirkung bei B = 0.</value>
-  </data>
   <data name="checkBoxPhosphorWeight.Text" xml:space="preserve">
     <value>Nach Phosphorantwort gewichten</value>
   </data>
@@ -886,7 +861,7 @@ Lichtausbeute ∝ E − E_dead, darunter null. Typisch 0–3 keV für
 einen Al-beschichteten P43-Schirm; Standard 2 keV.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
-    <value>Untergrund glätten (Gauß-Unschärfe abziehen)</value>
+    <value>Untergrund glätten</value>
   </data>
   <data name="checkBoxFlattenBackground.ToolTip" xml:space="preserve">
     <value>Zieht vom simulierten Muster eine gaußsch verwischte Kopie
@@ -973,7 +948,7 @@ bis 100 % (deckend). Verringern, um das simulierte Muster
 darunter zu sehen.</value>
   </data>
   <data name="checkBoxExpFlattenBackground.Text" xml:space="preserve">
-    <value>Untergrund glätten (Gauß-Unschärfe abziehen)</value>
+    <value>Untergrund glätten</value>
   </data>
   <data name="checkBoxExpFlattenBackground.ToolTip" xml:space="preserve">
     <value>Zieht vom Messbild eine gaußsch verwischte Kopie ab und
@@ -994,5 +969,22 @@ Bereich 5-2000 px.</value>
 dass seine 2-%- und 98-%-Niveaus im selben Grau erscheinen
 wie die dieses Bildes. Polarität, Farbe und beide Glättungs-
 einstellungen bleiben unberührt: beide oder keine glätten.</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.Text" xml:space="preserve">
+    <value>Kontrast fällt mit Energieverlust</value>
+  </data>
+  <data name="checkBoxCoherenceLoss.ToolTip" xml:space="preserve">
+    <value>Skaliert den Kikuchi-Kontrast jeder Energiescheibe mit
+A(E) = exp(-(E0 - E) / E_c); der verlorene Anteil wird zu einem
+flachen Sockel, die Gesamtintensität bleibt erhalten.
+Ohne dies tragen alle Scheiben vollen Kontrast und die Bänder
+werden zu breit (Si 20 kV: 5 %, mit E_c = 1 keV nur 1,7 %).</value>
+  </data>
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>Charakteristischer Energieverlust E_c des Kontrastabfalls
+A(E) = exp(-(E0 - E) / E_c), in keV. Kleiner heißt, nur Elektronen
+mit geringem Verlust tragen den Kikuchi-Kontrast.
+Unter etwa 1 keV kann die Standard-Schrittweite von 1 keV
+den Unterschied nicht auflösen.</value>
   </data>
 </root>

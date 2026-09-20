@@ -89,6 +89,14 @@ public partial class FormEBSD : FormBase
     public bool PhosphorEnergyWeight { get => checkBoxPhosphorWeight.Checked; set => checkBoxPhosphorWeight.Checked = value; }
     /// <summary>260919Cl 追加: 蛍光体の不感層 (しきい) エネルギー E_dead [keV] (既定 2)</summary>
     public double PhosphorDeadEnergyKeV { get => numericBoxPhosphorDeadEnergy.Value; set => numericBoxPhosphorDeadEnergy.Value = value; }
+    /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数 A(E) = exp(−(E0 − E)/E_c) を合成に使うか (既定 ON)。
+    /// 詳しい理由と実測値は <see cref="Crystallography.EbsdPatternComposer.CoherenceLossDecayKeV"/> の doc を参照</summary>
+    public bool CoherenceLossWeight { get => checkBoxCoherenceLoss.Checked; set => checkBoxCoherenceLoss.Checked = value; }
+    /// <summary>260920Cl 追加: A(E) の特性損失 E_c [keV] (既定 0.7)。小さいほど低損失電子だけが菊池コントラストを担う。
+    /// 既定値は Si 20 kV の実測パターン 1 枚で校正した値 (旧 1.0)。物質・加速電圧への一般性は未確認</summary>
+    public double CoherenceLossDecayKeV { get => numericBoxCoherenceLossDecay.Value; set => numericBoxCoherenceLossDecay.Value = value; }
+    /// <summary>260920Cl 追加: 合成器へ渡す E_c。OFF なら NaN (= 全エネルギースライスが満額のコントラストを持つ従来動作)</summary>
+    internal double ComposerCoherenceLossDecayKeV => CoherenceLossWeight ? CoherenceLossDecayKeV : double.NaN;
     /// <summary>260920Cl 追加: 表示パターンの背景平坦化 (原画像 − 半値幅 FWHM の Gaussian ぼかし)。表示と PNG/TIFF 出力にだけ効き、CSV は生値のまま</summary>
     public bool FlattenBackground { get => checkBoxFlattenBackground.Checked; set => checkBoxFlattenBackground.Checked = value; }
     /// <summary>260920Cl 追加: 平坦化に使う Gaussian の半値幅 [検出器 px] (ズームに依らない)</summary>
@@ -260,6 +268,42 @@ public partial class FormEBSD : FormBase
     /// フル解像度で 1 クリック 11 MB を捨てることになるので、シミュレーション側 (ebsdValuesFlattened) と同じく使い回す</summary>
     private double[] expImageFlattened = [];
 
+    #region 手動で拾ったバンド交点 (晶帯軸) 260921Cl 追加
+
+    /// <summary>作者がパターン上で拾ったバンド交点 (晶帯軸)。実測画像のピクセル座標で持つ。
+    /// 実測画像を読み込み直すと全部消える (作者指示)</summary>
+    private readonly List<EbsdZoneAxisPick> zoneAxisPicks = [];
+
+    /// <summary>Shift + 左ダブルクリックで選択中の点 (indexControlZoneAxis の編集対象)。-1 で未選択</summary>
+    private int selectedZoneAxisPick = -1;
+
+    /// <summary>直近の晶帯軸探索の解。候補行を選んだときに幾何も適用するために保持する</summary>
+    private List<EbsdZoneAxisSolution> zoneAxisSolutions = null;
+
+    /// <summary>indexControlZoneAxis へプログラムから書き戻す間、ValueChanged を無視する</summary>
+    private bool skipZoneAxisIndexEvent = false;
+
+    /// <summary>実測画像のピクセル座標 → 表示パターン座標 (mm)。検出器中心基準の (u,v) を表示原点へ移す</summary>
+    private PointD ZoneAxisPixelToView(double col, double row)
+    {
+        double s = DetHalfWidth * 2 / expPbmp.Width; //BuildDetectorGeometry と同じ画素サイズ
+        return new PointD(DetectorCenterView.X + (col + 0.5 - expPbmp.Width / 2.0) * s,
+                          DetectorCenterView.Y + (row + 0.5 - expPbmp.Height / 2.0) * s);
+    }
+
+    /// <summary>表示パターン座標 (mm) → 実測画像のピクセル座標 (ZoneAxisPixelToView の逆)</summary>
+    private (double Col, double Row) ZoneAxisViewToPixel(in PointD view)
+    {
+        double s = DetHalfWidth * 2 / expPbmp.Width;
+        return ((view.X - DetectorCenterView.X) / s + expPbmp.Width / 2.0 - 0.5,
+                (view.Y - DetectorCenterView.Y) / s + expPbmp.Height / 2.0 - 0.5);
+    }
+
+    /// <summary>晶帯軸ピッキングが使える状態か (モード ON かつ実測画像あり)</summary>
+    private bool ZoneAxisPickingActive => checkBoxPickZoneAxis.Checked && expPbmp != null;
+
+    #endregion
+
     /// <summary>expPbmp 差し替え時の不変条件 (旧インスタンス破棄と旧由来 expImage の無効化) を集約。260724Cl 追加</summary>
     private void SetExpPseudoBitmap(PseudoBitmap value)
     {
@@ -304,6 +348,7 @@ public partial class FormEBSD : FormBase
         dataGridViewEbsdCandidates.Font = new Font(dataGridViewEbsdCandidates.Font.FontFamily, Math.Max(7f, dataGridViewEbsdCandidates.Font.Size - 1f), dataGridViewEbsdCandidates.Font.Style, dataGridViewEbsdCandidates.Font.Unit); // 260725Ch: 候補一覧を小さい文字にして表示行数を増やす
         dataGridViewEbsdCandidates.RowTemplate.Height = dataGridViewEbsdCandidates.Font.Height + 3; // 260725Ch: フォントに合わせて行高も詰める
         dataGridViewEbsdCandidates.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // 260725Ch: 候補は行全体を選択
+        SyncZoneAxisIndexControl(); // 260921Cl: 点を選ぶまで [u v w] 欄は無効
 
         // 260724Cl 追加: 表示チェックが ON になったら対応する設定タブを前面に出す
         checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControlPatternSettings.SelectedTab = tabPageOutputParameter; };
@@ -420,7 +465,9 @@ public partial class FormEBSD : FormBase
         //var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
         //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
         //    atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260401Ch)
-        var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        var (z, a, valenceElectronCount, meanJEv) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        //260921Cl 変更: 重み付けの不整合を修正し J (Bragg 則) を受け取るようにした。旧シグネチャは 3 要素で J 無し
+        // var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);
         var rho = cry.Density;
         var energy = Voltage;
         var sampleTilt = SmpTilt;
@@ -507,7 +554,8 @@ public partial class FormEBSD : FormBase
                 inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
                 valenceElectronCount: valenceElectronCount,
                 elasticSamplerDataSource: sourceConfig.Source,
-                atoms: atoms); // (260401Ch)
+                atoms: atoms,
+                meanIonizationPotentialEv: meanJEv); // (260401Ch) // 260921Cl J を明示
 
             var (_, crossSectionNm2, meanFreePathNm, stoppingPowerKevPerNm) = monte.GetParameters(energy);
             var stopwatch = Stopwatch.StartNew();
@@ -1030,6 +1078,14 @@ public partial class FormEBSD : FormBase
     /// <summary>蛍光体応答重みの ON/OFF・E_dead 変更。層厚と同じく保存済み BSE をデバウンス付きで再ビニングする。260919Cl 追加</summary>
     private void PhosphorWeight_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
 
+    /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数の ON/OFF・E_c 変更。
+    /// これは MasterPattern のスライスを合成するときの重みだけを変えるので、MC の再ビニングも MasterPattern の再構築も要らない。再描画だけで足りる</summary>
+    private void CoherenceLoss_Changed(object sender, EventArgs e)
+    {
+        composedPatternCache = default; //ZNCC 照合用の合成も作り直す
+        if (MasterPattern != null) Draw();
+    }
+
     private void AmorphousLayerDebounce_Tick(object sender, EventArgs e) // 260919Cl 追加
     {
         amorphousLayerDebounce.Stop();
@@ -1203,6 +1259,12 @@ public partial class FormEBSD : FormBase
 
         // var useBseDistribution = checkBoxWithBSEDistribution.Checked && mcDistribution != null; // (260327Ch) // 260727Cl 変更前: 格子一致を見ておらず、MasterPattern を作り直すと別スライスの重みで合成し得た
         var useBseDistribution = checkBoxWithBSEDistribution.Checked && EnsureMcDistributionMatchesMasterPattern(); // 260727Cl
+
+        //260920Cl 追加 (作者指示): 損失依存のコントラスト係数。MC の射出エネルギー分布そのもので重み付けすると、
+        //  どのエネルギースライスも満額の菊池コントラストを持つため合成パターンのバンドが λ(E) の加重平均ぶん広がる。
+        //  Si 20 kV / 深さ 10 nm / 反射 8 本の実測で、20 keV 単色に対して 5 % 広かったものが E_c = 1 keV で 1.7 % まで戻る
+        patternComposer.BeamEnergyKeV = Voltage;
+        patternComposer.CoherenceLossDecayKeV = ComposerCoherenceLossDecayKeV;
 
         // 260325Cl: BSE 分布を使う場合は加重平均、そうでなければ単一スライス
         if (useBseDistribution)
@@ -1637,6 +1699,11 @@ public partial class FormEBSD : FormBase
             }
             #endregion
         }
+
+        //260921Cl 追加: 手動で拾ったバンド交点 (晶帯軸) を最後に重ねる。モードを切っていても、
+        //拾った点が残っている間は見えていたほうが安全 (消し忘れに気づける)
+        if (zoneAxisPicks.Count > 0) DrawZoneAxisPicks(graphics);
+
         graphicsBox.Refresh();
     }
 
@@ -1719,6 +1786,14 @@ public partial class FormEBSD : FormBase
         if (e.Button == MouseButtons.Middle)
         {
             panLastPoint = e.Location;
+            return;
+        }
+
+        //260921Cl 追加 (作者指示): 晶帯軸ピッキング。素の左ダブルクリックは従来どおり検出器セル選択なので、
+        //チェックボックスが ON のときだけこちらが横取りする
+        if (e.Button == MouseButtons.Left && e.Clicks == 2 && ZoneAxisPickingActive)
+        {
+            HandleZoneAxisDoubleClick(e.Location);
             return;
         }
 
@@ -1950,6 +2025,7 @@ public partial class FormEBSD : FormBase
         //260920Cl 変更 (作者指示): 対数スケール → リニア。トラックバーは実レンジ (Contrast で伸縮) に対する % を表す
         // expTrackbarConstantA = min - 1;
         // expTrackbarConstantB = trackBarExpImageMaxInt.Maximum / Math.Log(max - expTrackbarConstantA);
+        ClearZoneAxisPicks(); //260921Cl 追加 (作者指示): 画像を読み込み直したら拾った交点は全部消す
         expImageRaw = expPbmp.SrcValuesGray; expImageRawWidth = width; //260920Cl: 平坦化のやり直し用に生値を保持 (UpdateExpImageValues は別配列を入れるので複製不要)
         UpdateExpImageValues(); //260920Cl: 平坦化の ON/OFF を反映して expImageMin/Max を決める
         skipViewEvent = true;
@@ -2732,7 +2808,9 @@ public partial class FormEBSD : FormBase
         //double z = sum1 / sum2, a = sum2 / sum3;
         //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
         //    cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
-        var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        var (z, a, valenceElectronCount, meanJEv) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        //260921Cl 変更: 重み付けの不整合を修正し J (Bragg 則) を受け取るようにした。旧シグネチャは 3 要素で J 無し
+        // var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);
         double rho = cry.Density;
         // double energy = Voltage, ..., detectorR = DetR, ...; // 260723Cl 変更前: 円形検出器 (半径)
         double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorX = DetX, detectorY = DetY, detectorZ = DetZ, detectorHalfW = DetHalfWidth, detectorHalfH = DetHalfHeight, energyThreshold = EnergyThreshold; // 260723Cl 変更: 矩形検出器 (半幅・半高) + 中心 X
@@ -2761,7 +2839,8 @@ public partial class FormEBSD : FormBase
                     elasticScatteringModel: MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
                     inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
                     valenceElectronCount: valenceElectronCount,
-                    atoms: cry.Atoms); // (260331Ch)
+                    atoms: cry.Atoms,
+                    meanIonizationPotentialEv: meanJEv); // (260331Ch) // 260921Cl J を明示
                 var bses = EbsdBackscatterSimulator.Run(monte, loop, energyThreshold, sampleRotation, (completed, total) => //260726Cl: 本体は Crystallography/EBSD へ移設
                     progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo")), cancellationToken); // (260327Ch) fitting 分を残して 90% まで使う // 260406Cl cancellationToken 追加
                 if (bses.Length == 0)
@@ -2908,7 +2987,11 @@ public partial class FormEBSD : FormBase
                 32,
                 checkBoxNonLocalAbsorption.Checked,
                 checkBoxTDSBackground.Checked, // (260321Ch) UI 値をその場で request に束ねる
-                checkBoxAbsorbedFluxBackground.Checked); // 260919Cl 追加: 吸収フラックスの拡散背景再注入
+                //260920Cl 変更 (作者指示): 吸収フラックス再注入を GUI から廃止したので常に false。
+                //  計算コード (BetheMethod.ComputeAbsorbedFluxBackground) は調査用に残してあるので、ここを true にすれば効く。
+                //  既定 ON が物理として正しくない理由はフィールド宣言側 (FormEBSD.Designer.cs の checkBoxAbsorbedFluxBackground 跡) に書いた。
+                //旧: checkBoxAbsorbedFluxBackground.Checked);
+                false); // 260919Cl 追加 / 260920Cl GUI 廃止に伴い固定
             masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged; // (260327Ch) 1 回しか使わない helper はインライン化
             masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed; // (260327Ch)
             masterPatternEbsd.MasterPatternProgressChanged += MasterPattern_EBSD_ProgressChanged; // (260327Ch)
@@ -3634,6 +3717,7 @@ public partial class FormEBSD : FormBase
         if (announceCancel && indexingBusy) toolStripStatusLabelSummary.Text = "Canceling...";
         indexingCts?.Cancel(); //260725Ch: 結果を捨てるだけでなく、辞書/Radon探索と較正の残CPU処理も停止
         orientationCandidates = null;
+        zoneAxisSolutions = null; //260921Cl: 幾何つきの解も一緒に失効させる (拾った点そのものは残す)
         if (candidateGridInitialized)
         {
             skipCandidateSelectionEvent = true;
@@ -3705,6 +3789,195 @@ public partial class FormEBSD : FormBase
         if (expPbmp != null) flowLayoutPanelExpFlatten.Enabled = true; //260920Cl 追加
         var tcs = calibrationDoneForHarness; calibrationDoneForHarness = null; tcs?.TrySetResult(); // 260920Cl 追加: ハーネスの待ち合わせ
     }
+
+    #region 手動晶帯軸からの方位探索 260921Cl 追加 (作者指示)
+
+    /// <summary>左ダブルクリック = 追加、Ctrl = 5 画面 px 以内を削除、Shift = 選択して指数を手入力。</summary>
+    private void HandleZoneAxisDoubleClick(Point screen)
+    {
+        var view = convertScreenToDetector(new PointD(screen.X, screen.Y));
+        double radiusMm = 5 * Resolution; //「画面上で半径 5 ピクセル以内」(作者指示) を表示 mm へ換算
+
+        int near = -1; double best = double.MaxValue;
+        for (int k = 0; k < zoneAxisPicks.Count; k++)
+        {
+            var q = ZoneAxisPixelToView(zoneAxisPicks[k].Col, zoneAxisPicks[k].Row);
+            double d2 = (q.X - view.X) * (q.X - view.X) + (q.Y - view.Y) * (q.Y - view.Y);
+            if (d2 < best) { best = d2; near = k; }
+        }
+        bool hit = near >= 0 && best <= radiusMm * radiusMm;
+
+        if ((ModifierKeys & Keys.Control) == Keys.Control)
+        {
+            if (!hit) return;
+            zoneAxisPicks.RemoveAt(near);
+            if (selectedZoneAxisPick == near) selectedZoneAxisPick = -1;
+            else if (selectedZoneAxisPick > near) selectedZoneAxisPick--;
+        }
+        else if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+        {
+            if (!hit) return;
+            selectedZoneAxisPick = near;
+        }
+        else
+        {
+            var (col, row) = ZoneAxisViewToPixel(view);
+            if (col < 0 || row < 0 || col > expPbmp.Width - 1 || row > expPbmp.Height - 1) return; //画像の外は拾わない
+            zoneAxisPicks.Add(new EbsdZoneAxisPick(col, row));
+            selectedZoneAxisPick = zoneAxisPicks.Count - 1;
+        }
+        SyncZoneAxisIndexControl();
+        InvalidateIndexingResults(); //点が変われば前の候補は無効
+        ReportZoneAxisStatus();
+        DrawOverlays();
+    }
+
+    /// <summary>選択中の点の指数を indexControlZoneAxis へ反映する (プログラム側からの書き戻し)</summary>
+    private void SyncZoneAxisIndexControl()
+    {
+        skipZoneAxisIndexEvent = true;
+        try
+        {
+            var fx = (uint)selectedZoneAxisPick < (uint)zoneAxisPicks.Count ? zoneAxisPicks[selectedZoneAxisPick].FixedIndex : null;
+            indexControlZoneAxis.Values = fx is { } v ? (v.U, v.V, v.W) : (0, 0, 0);
+            indexControlZoneAxis.Enabled = selectedZoneAxisPick >= 0;
+        }
+        finally { skipZoneAxisIndexEvent = false; }
+    }
+
+    /// <summary>作者が [u v w] を打ったら、選択中の点の拘束条件にする (0 0 0 で自動へ戻す)</summary>
+    private void indexControlZoneAxis_ValueChanged(object sender, EventArgs e)
+    {
+        if (skipZoneAxisIndexEvent || (uint)selectedZoneAxisPick >= (uint)zoneAxisPicks.Count) return;
+        var (u, v, w) = indexControlZoneAxis.Values;
+        var p = zoneAxisPicks[selectedZoneAxisPick];
+        zoneAxisPicks[selectedZoneAxisPick] = new EbsdZoneAxisPick(p.Col, p.Row, u == 0 && v == 0 && w == 0 ? null : (u, v, w));
+        InvalidateIndexingResults();
+        ReportZoneAxisStatus();
+        DrawOverlays();
+    }
+
+    private void checkBoxPickZoneAxis_CheckedChanged(object sender, EventArgs e)
+    {
+        indexControlZoneAxis.Enabled = checkBoxPickZoneAxis.Checked && selectedZoneAxisPick >= 0;
+        ReportZoneAxisStatus();
+        DrawOverlays();
+    }
+
+    private void buttonClearZoneAxis_Click(object sender, EventArgs e)
+    {
+        ClearZoneAxisPicks();
+        InvalidateIndexingResults();
+        ReportZoneAxisStatus();
+        DrawOverlays();
+    }
+
+    /// <summary>拾った点と選択状態を捨てる。画像の読み込み直しと Clear ボタンの両方から呼ぶ</summary>
+    private void ClearZoneAxisPicks()
+    {
+        zoneAxisPicks.Clear();
+        selectedZoneAxisPick = -1;
+        zoneAxisSolutions = null;
+        if (indexControlZoneAxis != null) SyncZoneAxisIndexControl();
+    }
+
+    private void ReportZoneAxisStatus()
+    {
+        if (!ZoneAxisPickingActive) return;
+        int fixedCount = zoneAxisPicks.Count(p => p.FixedIndex != null);
+        toolStripStatusLabelDetail.Text = zoneAxisPicks.Count == 0
+            ? "Zone axis: double-click the band intersections (3 or more; 4 or more to refine the geometry)"
+            : $"Zone axis: {zoneAxisPicks.Count} picked" + (fixedCount > 0 ? $", {fixedCount} with a typed index" : "")
+                + (selectedZoneAxisPick >= 0 ? $", #{selectedZoneAxisPick + 1} selected" : "");
+    }
+
+    /// <summary>拾った晶帯軸から方位 (と検出器幾何) を探す</summary>
+    private void buttonFindZoneAxis_Click(object sender, EventArgs e)
+    {
+        if (expPbmp == null) { MessageBox.Show(this, "Load an experimental image first.", "Zone axis", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+        if (zoneAxisPicks.Count < 2)
+        { MessageBox.Show(this, "Pick at least 2 band intersections (3 or more is recommended).", "Zone axis", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+
+        var sw = Stopwatch.StartNew();
+        var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
+        var crystal = Crystal;
+        //指数付け用の反射リストを一時生成し、表示用 VectorOfG_KikuchiLine は退避→復元する (Find と同じ流儀)
+        var backup = crystal.VectorOfG_KikuchiLine;
+        List<EbsdZoneAxisSolution> solutions = [];
+        double usedToleranceDeg = 2.0;
+        try
+        {
+            crystal.SetVectorOfG_KikuchiLine(KikuchiDLimit, waveLengthControl.WaveSource);
+            var syms = EbsdDictionaryIndexer.GetProperRotations(crystal);
+            //許容差は段階的に緩める。検出器幾何が実測とずれていると 2° では対の角度が合わないので、
+            //見つからなければ 5° で拾い直す (どちらで当たったかはステータスに出す)
+            foreach (var tol in new[] { 2.0, 5.0 })
+            {
+                solutions = EbsdZoneAxisIndexer.Index([.. zoneAxisPicks], geom, crystal,
+                    toleranceDeg: tol, maxCandidates: 10,
+                    refineGeometry: checkBoxZoneAxisRefineGeometry.Checked,
+                    properSymmetries: syms is { Length: > 0 } ? syms : null);
+                usedToleranceDeg = tol;
+                if (solutions.Count > 0) break;
+            }
+        }
+        finally { crystal.VectorOfG_KikuchiLine = backup; }
+
+        zoneAxisSolutions = solutions;
+        //既存の候補一覧へ流し込む (行を選ぶと方位が適用される仕組みをそのまま使う)
+        orientationCandidates = [.. solutions.Select(s =>
+        {
+            var c = new EbsdOrientationCandidate
+            {
+                Rotation = s.Rotation, Score = s.Score, IsZoneAxis = true,
+                AssignedBands = s.Assigned, TotalBands = zoneAxisPicks.Count, AngularRmsDeg = s.RmsDeg,
+            };
+            for (int k = 0; k < s.Assignments.Length; k++)
+                if (s.Assignments[k] is { } a) c.Assignments[k] = (a.U, a.V, a.W);
+            return c;
+        })];
+        FillCandidateGrid();
+
+        toolStripStatusLabelSummary.Text = "Zone axis search";
+        toolStripStatusLabelDetail.Text = solutions.Count == 0
+            ? $"No orientation explains the {zoneAxisPicks.Count} picked zone axes. Check the detector geometry, or pick more points."
+            : $"{solutions.Count} candidates, best: {solutions[0].Assigned}/{zoneAxisPicks.Count} assigned, "
+                + $"{solutions[0].RmsDeg:f2} deg / {solutions[0].RmsPx:f1} px rms"
+                + (solutions[0].GeometryShiftMm > 0 ? $", detector centre moved {solutions[0].GeometryShiftMm:f3} mm" : "")
+                + (usedToleranceDeg > 2.0 ? $", needed {usedToleranceDeg:f0} deg tolerance (check the detector geometry)" : "")
+                + $", {StatusBarHelper.FormatElapsed(sw.Elapsed)}. Click a row to apply.";
+        DrawOverlays();
+    }
+
+    /// <summary>拾った晶帯軸を丸と番号で描く。指数が決まっていれば [u v w] も添える。
+    /// 座標系は DrawOverlays の変換 (表示パターン mm) に合わせる</summary>
+    private void DrawZoneAxisPicks(Graphics g)
+    {
+        if (zoneAxisPicks.Count == 0 || expPbmp == null) return;
+        float r = (float)(6 * Resolution); //画面上でおよそ 6 px の丸
+        using var pen = new Pen(Color.Cyan, (float)(1.5 * Resolution));
+        using var penSel = new Pen(Color.Yellow, (float)(2.5 * Resolution));
+        using var brush = new SolidBrush(Color.Cyan);
+        using var brushSel = new SolidBrush(Color.Yellow);
+        using var font = new Font("Segoe UI", (float)(11 * Resolution), GraphicsUnit.Pixel);
+        for (int k = 0; k < zoneAxisPicks.Count; k++)
+        {
+            var p = ZoneAxisPixelToView(zoneAxisPicks[k].Col, zoneAxisPicks[k].Row);
+            bool sel = k == selectedZoneAxisPick;
+            g.DrawEllipse(sel ? penSel : pen, (float)(p.X - r), (float)(p.Y - r), 2 * r, 2 * r);
+            g.DrawLine(sel ? penSel : pen, (float)(p.X - r * 1.8), (float)p.Y, (float)(p.X - r * 0.4), (float)p.Y);
+            g.DrawLine(sel ? penSel : pen, (float)(p.X + r * 0.4), (float)p.Y, (float)(p.X + r * 1.8), (float)p.Y);
+            //番号と、決まっていれば指数
+            string label = $"{k + 1}";
+            var idx = zoneAxisPicks[k].FixedIndex;
+            if (idx is null && zoneAxisSolutions is { Count: > 0 } && k < zoneAxisSolutions[0].Assignments.Length)
+                idx = zoneAxisSolutions[0].Assignments[k];
+            if (idx is { } v) label += $" [{v.U} {v.V} {v.W}]";
+            g.DrawString(label, font, sel ? brushSel : brush, (float)(p.X + r * 1.2), (float)(p.Y - r * 2.4));
+        }
+    }
+
+    #endregion
 
     /// <summary>現在の UI 値から、実測画像のピクセルグリッドを基準にした検出器幾何スナップショットを作る</summary>
     private EbsdDetectorGeometry BuildDetectorGeometry(int imageWidth, int imageHeight)
@@ -3851,8 +4124,20 @@ public partial class FormEBSD : FormBase
     {
         if (skipCandidateSelectionEvent || orientationCandidates == null || dataGridViewEbsdCandidates.SelectedRows.Count == 0) return;
         int idx = dataGridViewEbsdCandidates.SelectedRows[0].Index;
-        if ((uint)idx < (uint)orientationCandidates.Count)
-            FormMain.SetRotation(orientationCandidates[idx].Rotation);
+        if ((uint)idx >= (uint)orientationCandidates.Count) return;
+        //260921Cl 追加: 晶帯軸探索で幾何も最適化していた候補は、方位と一緒に検出器中心も適用する
+        //(作者が「+ 幾何」を明示的に選んだときだけなので、黙って幾何が変わることはない)
+        if (zoneAxisSolutions != null && idx < zoneAxisSolutions.Count && zoneAxisSolutions[idx].GeometryShiftMm > 0)
+        {
+            var g = zoneAxisSolutions[idx].Geometry;
+            skipViewEvent = true;
+            try
+            {
+                numericBoxXofDet.Value = g.DetX; numericBoxYofDet.Value = g.DetY; numericBoxZofDet.Value = g.DetZ;
+            }
+            finally { skipViewEvent = false; }
+        }
+        FormMain.SetRotation(orientationCandidates[idx].Rotation);
     }
 
     #endregion
@@ -3863,7 +4148,9 @@ public partial class FormEBSD : FormBase
     //EbsdDictionaryIndexer.Perturb・EbsdRadonIndexer.Perturb と 3 重複していた。式・演算順・規約 (試料系左摂動) は同一)
 
     /// <summary>MC 重み合成パターンのキャッシュ (MasterPattern と mcDistribution の組が同一なら再利用、合成は ~100ms)。260724Cl 追加</summary>
-    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
+    //260920Cl 変更: キャッシュキーに E_c を足す。E_c を変えても Mp/Dist は同一なので、旧キーのままだと古い合成を返していた
+    //旧: private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
+    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, double Ec, float[] Pos, float[] Neg) composedPatternCache;
 
     /// <summary>ZNCC 系操作に必要な状態を UI スレッド上でスナップショットする (ワーカーからコントロールを読まないため)。260724Cl 追加</summary>
     //260726Cl 戻り値変更: 匿名タプル → EbsdMatchingContext (Crystallography 側の record。探索・較正の両方へそのまま渡せる)
@@ -3878,10 +4165,13 @@ public partial class FormEBSD : FormBase
         //if (mcDistribution != null) // 260727Cl 変更前: 格子一致を見ておらず、ずれた重みで合成した参照パターンで採点し得た
         if (EnsureMcDistributionMatchesMasterPattern()) // 260727Cl
         {
-            if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution))
+            //260920Cl 変更: 表示合成と同じ A(E) を ZNCC 側にも掛ける (目的関数が別のパターンを見ないようにする)
+            double ecForMatching = ComposerCoherenceLossDecayKeV;
+            if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution)
+                || !composedPatternCache.Ec.Equals(ecForMatching)) //NaN 同士も等しいとみなしたいので Equals
             {
-                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp);
-                composedPatternCache = (mp, mcDistribution, p, n);
+                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp, Voltage, ecForMatching);
+                composedPatternCache = (mp, mcDistribution, ecForMatching, p, n);
             }
             (pos, neg) = (composedPatternCache.Pos, composedPatternCache.Neg);
         }

@@ -106,14 +106,6 @@
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
             checkBoxTDSBackground = new System.Windows.Forms.CheckBox();
-            flowLayoutPanelMonteCarloDepthMode = new System.Windows.Forms.FlowLayoutPanel(); // 260919Cl 追加
-            labelMonteCarloDepthMode = new System.Windows.Forms.Label(); // 260919Cl 追加
-            comboBoxMonteCarloDepthMode = new System.Windows.Forms.ComboBox(); // 260919Cl 追加
-            numericBoxAmorphousLayer = new NumericBox(); // 260919Cl 追加
-            checkBoxAbsorbedFluxBackground = new System.Windows.Forms.CheckBox(); // 260919Cl 追加
-            flowLayoutPanelPhosphorWeight = new System.Windows.Forms.FlowLayoutPanel(); // 260919Cl 追加: 蛍光体応答重み
-            checkBoxPhosphorWeight = new System.Windows.Forms.CheckBox(); // 260919Cl 追加
-            numericBoxPhosphorDeadEnergy = new NumericBox(); // 260919Cl 追加
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
@@ -126,10 +118,9 @@
             checkBoxWithBSEDistribution = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
-            trackBarAdvancedBrightnessMin = new TrackBarAdvanced(); // 260920Cl 変更: 素の TrackBar + Min/Max ラベルを TrackBarAdvanced (数値表示付き) へ置換
-            trackBarAdvancedBrightnessMax = new TrackBarAdvanced(); // 260920Cl
-            trackBarAdvancedContrast = new TrackBarAdvanced(); // 260920Cl 追加: コントラスト
-            labelBrightness = new System.Windows.Forms.Label();
+            trackBarAdvancedBrightnessMin = new TrackBarAdvanced();
+            trackBarAdvancedBrightnessMax = new TrackBarAdvanced();
+            trackBarAdvancedContrast = new TrackBarAdvanced();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
             buttonSaveImage = new System.Windows.Forms.Button();
             buttonCopyImage = new System.Windows.Forms.Button();
@@ -158,20 +149,21 @@
             checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
             buttonMasterPattern3DViewAlong = new System.Windows.Forms.Button();
             indexControl = new IndexControl();
+            flowLayoutPanelZoneAxis = new System.Windows.Forms.FlowLayoutPanel(); // 260921Cl 追加
+            checkBoxPickZoneAxis = new System.Windows.Forms.CheckBox(); // 260921Cl 追加
+            indexControlZoneAxis = new IndexControl(); // 260921Cl 追加
+            checkBoxZoneAxisRefineGeometry = new System.Windows.Forms.CheckBox(); // 260921Cl 追加
+            buttonFindZoneAxis = new System.Windows.Forms.Button(); // 260921Cl 追加
+            buttonClearZoneAxis = new System.Windows.Forms.Button(); // 260921Cl 追加
             checkBoxShowMesh = new System.Windows.Forms.CheckBox();
             checkBoxShowCircle = new System.Windows.Forms.CheckBox();
-            labelExpBrightness = new System.Windows.Forms.Label();
             checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
             checkBoxFlipDetectorLeftRight = new System.Windows.Forms.CheckBox();
             checkBoxShowExperimentalImage = new System.Windows.Forms.CheckBox();
-            trackBarAdvancedExpMin = new TrackBarAdvanced(); // 260920Cl 変更: 実測画像側も TrackBarAdvanced へ (対数 → リニア)
-            trackBarAdvancedExpMax = new TrackBarAdvanced(); // 260920Cl
-            trackBarAdvancedExpContrast = new TrackBarAdvanced(); // 260920Cl 追加
-            trackBarAdvancedExpOpacity = new TrackBarAdvanced(); // 260920Cl
-            flowLayoutPanelExpFlatten = new System.Windows.Forms.FlowLayoutPanel(); // 260920Cl 追加: 実測画像の背景平坦化と「見た目を合わせる」ボタン
-            checkBoxExpFlattenBackground = new System.Windows.Forms.CheckBox(); // 260920Cl 追加
-            numericBoxExpFlattenFwhm = new NumericBox(); // 260920Cl 追加
-            buttonMatchSimulation = new System.Windows.Forms.Button(); // 260920Cl 追加
+            trackBarAdvancedExpMin = new TrackBarAdvanced();
+            trackBarAdvancedExpMax = new TrackBarAdvanced();
+            trackBarAdvancedExpContrast = new TrackBarAdvanced();
+            trackBarAdvancedExpOpacity = new TrackBarAdvanced();
             radioButtonIndexingRadon = new System.Windows.Forms.RadioButton();
             radioButtonIndexingDictionary = new System.Windows.Forms.RadioButton();
             buttonFindOrientation = new System.Windows.Forms.Button();
@@ -192,6 +184,21 @@
             numericBoxResolution = new NumericBox();
             sizeControl = new SizeControl();
             buttonSaveMovie = new System.Windows.Forms.Button();
+            checkBoxFlattenBackground = new System.Windows.Forms.CheckBox();
+            numericBoxFlattenFwhm = new NumericBox();
+            checkBoxExpFlattenBackground = new System.Windows.Forms.CheckBox();
+            numericBoxExpFlattenFwhm = new NumericBox();
+            buttonMatchSimulation = new System.Windows.Forms.Button();
+            labelMonteCarloDepthMode = new System.Windows.Forms.Label();
+            comboBoxMonteCarloDepthMode = new System.Windows.Forms.ComboBox();
+            numericBoxAmorphousLayer = new NumericBox();
+            checkBoxPhosphorWeight = new System.Windows.Forms.CheckBox();
+            checkBoxCoherenceLoss = new System.Windows.Forms.CheckBox(); // 260920Cl 追加
+            numericBoxCoherenceLossDecay = new NumericBox(); // 260920Cl 追加
+            numericBoxPhosphorDeadEnergy = new NumericBox();
+            flowLayoutPanelMonteCarloDepthMode = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelPhosphorWeight = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelExpFlatten = new System.Windows.Forms.FlowLayoutPanel();
             panelGeometry = new System.Windows.Forms.Panel();
             flowLayoutPanelViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             graphControlDepthProfile = new GraphControl();
@@ -199,9 +206,6 @@
             graphControlEnergyProfile = new GraphControl();
             graphicsBox = new GraphicsBox(components);
             flowLayoutPanelColorScale = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelFlatten = new System.Windows.Forms.FlowLayoutPanel(); // 260920Cl 追加: 背景平坦化 (原画像 − Gaussian ぼかし)
-            checkBoxFlattenBackground = new System.Windows.Forms.CheckBox(); // 260920Cl 追加
-            numericBoxFlattenFwhm = new NumericBox(); // 260920Cl 追加
             flowLayoutPanelBrightness = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelOutputRange = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelWithBseDistribution = new System.Windows.Forms.FlowLayoutPanel();
@@ -220,11 +224,12 @@
             flowLayoutPanelDetectorOutline = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelKikuchiLines = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxLatticePlanes = new System.Windows.Forms.GroupBox();
-            flowLayoutPanelThresholdLength = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelThresholdStructureFactor = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxTextSettings = new System.Windows.Forms.GroupBox();
             flowLayoutPanelTextSettings = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExperimentalImage = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExpOpacity = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
             flowLayoutPanelSimulationParameters = new System.Windows.Forms.FlowLayoutPanel();
@@ -277,10 +282,12 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).BeginInit();
+            flowLayoutPanelMonteCarloDepthMode.SuspendLayout();
+            flowLayoutPanelPhosphorWeight.SuspendLayout();
+            flowLayoutPanelExpFlatten.SuspendLayout();
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             flowLayoutPanelColorScale.SuspendLayout();
-            flowLayoutPanelFlatten.SuspendLayout(); // 260920Cl 追加
             flowLayoutPanelBrightness.SuspendLayout();
             flowLayoutPanelOutputRange.SuspendLayout();
             flowLayoutPanelWithBseDistribution.SuspendLayout();
@@ -299,21 +306,18 @@
             flowLayoutPanelDetectorOutline.SuspendLayout();
             flowLayoutPanelKikuchiLines.SuspendLayout();
             groupBoxLatticePlanes.SuspendLayout();
-            flowLayoutPanelThresholdLength.SuspendLayout();
             flowLayoutPanelThresholdStructureFactor.SuspendLayout();
             groupBoxTextSettings.SuspendLayout();
             flowLayoutPanelTextSettings.SuspendLayout();
             flowLayoutPanelExperimentalImage.SuspendLayout();
-            flowLayoutPanelExpFlatten.SuspendLayout(); // 260920Cl 追加
-            flowLayoutPanelExpOpacity.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBoxSimulationParameters.SuspendLayout();
             flowLayoutPanelSimulationParameters.SuspendLayout();
             flowLayoutPanelMaxNumOfGAndGrid.SuspendLayout();
             flowLayoutPanelEnergyRange.SuspendLayout();
             flowLayoutPanelThicknessRange.SuspendLayout();
             flowLayoutPanelAbsorptionOptions.SuspendLayout();
-            flowLayoutPanelMonteCarloDepthMode.SuspendLayout(); // 260919Cl 追加
-            flowLayoutPanelPhosphorWeight.SuspendLayout(); // 260919Cl 追加
             statusStripMain.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             panelMasterPattern3D.SuspendLayout();
@@ -333,6 +337,7 @@
             tabPageExperimentalImage.SuspendLayout();
             flowLayoutPanelExperimentalImageTab.SuspendLayout();
             flowLayoutPanelIndexingButtons.SuspendLayout();
+            flowLayoutPanelZoneAxis.SuspendLayout(); // 260921Cl 追加
             flowLayoutPanelPatternBar.SuspendLayout();
             flowLayoutPanelCopy.SuspendLayout();
             flowLayoutPanelCopyOptions.SuspendLayout();
@@ -650,6 +655,8 @@
             // checkBoxTDSBackground
             // 
             resources.ApplyResources(checkBoxTDSBackground, "checkBoxTDSBackground");
+            checkBoxTDSBackground.Checked = true;
+            checkBoxTDSBackground.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxTDSBackground.Name = "checkBoxTDSBackground";
             toolTip.SetToolTip(checkBoxTDSBackground, resources.GetString("checkBoxTDSBackground.ToolTip"));
             checkBoxTDSBackground.UseVisualStyleBackColor = true;
@@ -759,7 +766,7 @@
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
             toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
-            comboBoxGradient.SelectedIndexChanged += DisplaySetting_Changed; // 260920Cl 改名
+            comboBoxGradient.SelectedIndexChanged += DisplaySetting_Changed;
             // 
             // comboBoxScale
             // 
@@ -769,9 +776,9 @@
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
             toolTip.SetToolTip(comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
-            comboBoxScale.SelectedIndexChanged += DisplaySetting_Changed; // 260920Cl 改名
+            comboBoxScale.SelectedIndexChanged += DisplaySetting_Changed;
             // 
-            // trackBarAdvancedBrightnessMin (260920Cl 追加)
+            // trackBarAdvancedBrightnessMin
             // 
             resources.ApplyResources(trackBarAdvancedBrightnessMin, "trackBarAdvancedBrightnessMin");
             trackBarAdvancedBrightnessMin.ControlHeight = 25;
@@ -779,13 +786,12 @@
             trackBarAdvancedBrightnessMin.Maximum = 100D;
             trackBarAdvancedBrightnessMin.Minimum = 0D;
             trackBarAdvancedBrightnessMin.Name = "trackBarAdvancedBrightnessMin";
-            trackBarAdvancedBrightnessMin.NumericBoxSize = 115;
-            toolTip.SetToolTip(trackBarAdvancedBrightnessMin, resources.GetString("trackBarAdvancedBrightnessMin.ToolTip"));
             trackBarAdvancedBrightnessMin.Smart_Increment = false;
-            trackBarAdvancedBrightnessMin.UpDown_Increment = 1D;
+            toolTip.SetToolTip(trackBarAdvancedBrightnessMin, resources.GetString("trackBarAdvancedBrightnessMin.ToolTip"));
+            trackBarAdvancedBrightnessMin.ValueBoxWidth = 30;
             trackBarAdvancedBrightnessMin.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
             // 
-            // trackBarAdvancedBrightnessMax (260920Cl 追加)
+            // trackBarAdvancedBrightnessMax
             // 
             resources.ApplyResources(trackBarAdvancedBrightnessMax, "trackBarAdvancedBrightnessMax");
             trackBarAdvancedBrightnessMax.ControlHeight = 25;
@@ -793,14 +799,13 @@
             trackBarAdvancedBrightnessMax.Maximum = 100D;
             trackBarAdvancedBrightnessMax.Minimum = 0D;
             trackBarAdvancedBrightnessMax.Name = "trackBarAdvancedBrightnessMax";
-            trackBarAdvancedBrightnessMax.NumericBoxSize = 115;
-            toolTip.SetToolTip(trackBarAdvancedBrightnessMax, resources.GetString("trackBarAdvancedBrightnessMax.ToolTip"));
             trackBarAdvancedBrightnessMax.Smart_Increment = false;
-            trackBarAdvancedBrightnessMax.UpDown_Increment = 1D;
+            toolTip.SetToolTip(trackBarAdvancedBrightnessMax, resources.GetString("trackBarAdvancedBrightnessMax.ToolTip"));
             trackBarAdvancedBrightnessMax.Value = 100D;
+            trackBarAdvancedBrightnessMax.ValueBoxWidth = 30;
             trackBarAdvancedBrightnessMax.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
             // 
-            // trackBarAdvancedContrast (260920Cl 追加)
+            // trackBarAdvancedContrast
             // 
             resources.ApplyResources(trackBarAdvancedContrast, "trackBarAdvancedContrast");
             trackBarAdvancedContrast.ControlHeight = 25;
@@ -808,17 +813,11 @@
             trackBarAdvancedContrast.Maximum = 1D;
             trackBarAdvancedContrast.Minimum = -1D;
             trackBarAdvancedContrast.Name = "trackBarAdvancedContrast";
-            trackBarAdvancedContrast.NumericBoxSize = 140;
             trackBarAdvancedContrast.Smart_Increment = false;
             toolTip.SetToolTip(trackBarAdvancedContrast, resources.GetString("trackBarAdvancedContrast.ToolTip"));
             trackBarAdvancedContrast.UpDown_Increment = 0.05D;
+            trackBarAdvancedContrast.ValueBoxWidth = 34;
             trackBarAdvancedContrast.ValueChanged += TrackBarAdvancedBrightness_ValueChanged;
-            // 
-            // labelBrightness
-            // 
-            resources.ApplyResources(labelBrightness, "labelBrightness");
-            labelBrightness.Name = "labelBrightness";
-            toolTip.SetToolTip(labelBrightness, resources.GetString("labelBrightness.ToolTip"));
             // 
             // checkBoxShowOverlays
             // 
@@ -1098,12 +1097,6 @@
             checkBoxShowCircle.UseVisualStyleBackColor = true;
             checkBoxShowCircle.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
-            // labelExpBrightness
-            // 
-            resources.ApplyResources(labelExpBrightness, "labelExpBrightness");
-            labelExpBrightness.Name = "labelExpBrightness";
-            toolTip.SetToolTip(labelExpBrightness, resources.GetString("labelExpBrightness.ToolTip"));
-            // 
             // checkBoxMasterPattern3DAxisArrows
             // 
             resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
@@ -1132,7 +1125,7 @@
             checkBoxShowExperimentalImage.UseVisualStyleBackColor = true;
             checkBoxShowExperimentalImage.CheckedChanged += checkBoxShowExperimentalImage_CheckedChanged;
             // 
-            // trackBarAdvancedExpMin (260920Cl 追加)
+            // trackBarAdvancedExpMin
             // 
             resources.ApplyResources(trackBarAdvancedExpMin, "trackBarAdvancedExpMin");
             trackBarAdvancedExpMin.ControlHeight = 25;
@@ -1140,13 +1133,12 @@
             trackBarAdvancedExpMin.Maximum = 100D;
             trackBarAdvancedExpMin.Minimum = 0D;
             trackBarAdvancedExpMin.Name = "trackBarAdvancedExpMin";
-            trackBarAdvancedExpMin.NumericBoxSize = 115;
-            toolTip.SetToolTip(trackBarAdvancedExpMin, resources.GetString("trackBarAdvancedExpMin.ToolTip"));
             trackBarAdvancedExpMin.Smart_Increment = false;
-            trackBarAdvancedExpMin.UpDown_Increment = 1D;
+            toolTip.SetToolTip(trackBarAdvancedExpMin, resources.GetString("trackBarAdvancedExpMin.ToolTip"));
+            trackBarAdvancedExpMin.ValueBoxWidth = 30;
             trackBarAdvancedExpMin.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // trackBarAdvancedExpMax (260920Cl 追加)
+            // trackBarAdvancedExpMax
             // 
             resources.ApplyResources(trackBarAdvancedExpMax, "trackBarAdvancedExpMax");
             trackBarAdvancedExpMax.ControlHeight = 25;
@@ -1154,14 +1146,13 @@
             trackBarAdvancedExpMax.Maximum = 100D;
             trackBarAdvancedExpMax.Minimum = 0D;
             trackBarAdvancedExpMax.Name = "trackBarAdvancedExpMax";
-            trackBarAdvancedExpMax.NumericBoxSize = 115;
-            toolTip.SetToolTip(trackBarAdvancedExpMax, resources.GetString("trackBarAdvancedExpMax.ToolTip"));
             trackBarAdvancedExpMax.Smart_Increment = false;
-            trackBarAdvancedExpMax.UpDown_Increment = 1D;
+            toolTip.SetToolTip(trackBarAdvancedExpMax, resources.GetString("trackBarAdvancedExpMax.ToolTip"));
             trackBarAdvancedExpMax.Value = 100D;
+            trackBarAdvancedExpMax.ValueBoxWidth = 30;
             trackBarAdvancedExpMax.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // trackBarAdvancedExpContrast (260920Cl 追加)
+            // trackBarAdvancedExpContrast
             // 
             resources.ApplyResources(trackBarAdvancedExpContrast, "trackBarAdvancedExpContrast");
             trackBarAdvancedExpContrast.ControlHeight = 25;
@@ -1169,25 +1160,25 @@
             trackBarAdvancedExpContrast.Maximum = 1D;
             trackBarAdvancedExpContrast.Minimum = -1D;
             trackBarAdvancedExpContrast.Name = "trackBarAdvancedExpContrast";
-            trackBarAdvancedExpContrast.NumericBoxSize = 140;
             trackBarAdvancedExpContrast.Smart_Increment = false;
             toolTip.SetToolTip(trackBarAdvancedExpContrast, resources.GetString("trackBarAdvancedExpContrast.ToolTip"));
             trackBarAdvancedExpContrast.UpDown_Increment = 0.05D;
+            trackBarAdvancedExpContrast.ValueBoxWidth = 34;
             trackBarAdvancedExpContrast.ValueChanged += TrackBarAdvancedExpIntensity_ValueChanged;
             // 
-            // trackBarAdvancedExpOpacity (260920Cl 追加)
+            // trackBarAdvancedExpOpacity
             // 
             resources.ApplyResources(trackBarAdvancedExpOpacity, "trackBarAdvancedExpOpacity");
             trackBarAdvancedExpOpacity.ControlHeight = 25;
             trackBarAdvancedExpOpacity.DecimalPlaces = 0;
-            trackBarAdvancedExpOpacity.Smart_Increment = false;
             trackBarAdvancedExpOpacity.Maximum = 100D;
             trackBarAdvancedExpOpacity.Minimum = 0D;
             trackBarAdvancedExpOpacity.Name = "trackBarAdvancedExpOpacity";
-            trackBarAdvancedExpOpacity.NumericBoxSize = 120;
+            trackBarAdvancedExpOpacity.Smart_Increment = false;
             toolTip.SetToolTip(trackBarAdvancedExpOpacity, resources.GetString("trackBarAdvancedExpOpacity.ToolTip"));
             trackBarAdvancedExpOpacity.UpDown_Increment = 5D;
             trackBarAdvancedExpOpacity.Value = 100D;
+            trackBarAdvancedExpOpacity.ValueBoxWidth = 32;
             trackBarAdvancedExpOpacity.ValueChanged += TrackBarAdvancedExpOpacity_ValueChanged;
             // 
             // radioButtonIndexingRadon
@@ -1374,6 +1365,165 @@
             buttonSaveMovie.UseVisualStyleBackColor = true;
             buttonSaveMovie.Click += buttonSaveMovie_Click;
             // 
+            // checkBoxFlattenBackground
+            // 
+            resources.ApplyResources(checkBoxFlattenBackground, "checkBoxFlattenBackground");
+            checkBoxFlattenBackground.Name = "checkBoxFlattenBackground";
+            toolTip.SetToolTip(checkBoxFlattenBackground, resources.GetString("checkBoxFlattenBackground.ToolTip"));
+            checkBoxFlattenBackground.UseVisualStyleBackColor = true;
+            checkBoxFlattenBackground.CheckedChanged += DisplaySetting_Changed;
+            // 
+            // numericBoxFlattenFwhm
+            // 
+            numericBoxFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxFlattenFwhm.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxFlattenFwhm, "numericBoxFlattenFwhm");
+            numericBoxFlattenFwhm.Maximum = 2000D;
+            numericBoxFlattenFwhm.Minimum = 5D;
+            numericBoxFlattenFwhm.Name = "numericBoxFlattenFwhm";
+            numericBoxFlattenFwhm.ShowUpDown = true;
+            numericBoxFlattenFwhm.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxFlattenFwhm, resources.GetString("numericBoxFlattenFwhm.ToolTip"));
+            numericBoxFlattenFwhm.Value = 100D;
+            numericBoxFlattenFwhm.ValueBoxWidth = 50;
+            numericBoxFlattenFwhm.ValueChanged += DisplaySetting_Changed;
+            // 
+            // checkBoxExpFlattenBackground
+            // 
+            resources.ApplyResources(checkBoxExpFlattenBackground, "checkBoxExpFlattenBackground");
+            checkBoxExpFlattenBackground.Name = "checkBoxExpFlattenBackground";
+            toolTip.SetToolTip(checkBoxExpFlattenBackground, resources.GetString("checkBoxExpFlattenBackground.ToolTip"));
+            checkBoxExpFlattenBackground.UseVisualStyleBackColor = true;
+            checkBoxExpFlattenBackground.CheckedChanged += ExpFlattenBackground_Changed;
+            // 
+            // numericBoxExpFlattenFwhm
+            // 
+            numericBoxExpFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxExpFlattenFwhm.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxExpFlattenFwhm, "numericBoxExpFlattenFwhm");
+            numericBoxExpFlattenFwhm.Maximum = 2000D;
+            numericBoxExpFlattenFwhm.Minimum = 5D;
+            numericBoxExpFlattenFwhm.Name = "numericBoxExpFlattenFwhm";
+            numericBoxExpFlattenFwhm.ShowUpDown = true;
+            numericBoxExpFlattenFwhm.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxExpFlattenFwhm, resources.GetString("numericBoxExpFlattenFwhm.ToolTip"));
+            numericBoxExpFlattenFwhm.Value = 100D;
+            numericBoxExpFlattenFwhm.ValueBoxWidth = 32;
+            numericBoxExpFlattenFwhm.ValueChanged += ExpFlattenBackground_Changed;
+            // 
+            // buttonMatchSimulation
+            // 
+            resources.ApplyResources(buttonMatchSimulation, "buttonMatchSimulation");
+            buttonMatchSimulation.Name = "buttonMatchSimulation";
+            toolTip.SetToolTip(buttonMatchSimulation, resources.GetString("buttonMatchSimulation.ToolTip"));
+            buttonMatchSimulation.UseVisualStyleBackColor = true;
+            buttonMatchSimulation.Click += buttonMatchSimulation_Click;
+            // 
+            // labelMonteCarloDepthMode
+            // 
+            resources.ApplyResources(labelMonteCarloDepthMode, "labelMonteCarloDepthMode");
+            labelMonteCarloDepthMode.Name = "labelMonteCarloDepthMode";
+            toolTip.SetToolTip(labelMonteCarloDepthMode, resources.GetString("labelMonteCarloDepthMode.ToolTip"));
+            // 
+            // comboBoxMonteCarloDepthMode
+            // 
+            comboBoxMonteCarloDepthMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxMonteCarloDepthMode.DropDownWidth = 420;
+            resources.ApplyResources(comboBoxMonteCarloDepthMode, "comboBoxMonteCarloDepthMode");
+            comboBoxMonteCarloDepthMode.FormattingEnabled = true;
+            comboBoxMonteCarloDepthMode.Items.AddRange(new object[] { resources.GetString("comboBoxMonteCarloDepthMode.Items"), resources.GetString("comboBoxMonteCarloDepthMode.Items1"), resources.GetString("comboBoxMonteCarloDepthMode.Items2") });
+            comboBoxMonteCarloDepthMode.Name = "comboBoxMonteCarloDepthMode";
+            toolTip.SetToolTip(comboBoxMonteCarloDepthMode, resources.GetString("comboBoxMonteCarloDepthMode.ToolTip"));
+            comboBoxMonteCarloDepthMode.SelectedIndexChanged += ComboBoxMonteCarloDepthMode_SelectedIndexChanged;
+            // 
+            // numericBoxAmorphousLayer
+            // 
+            numericBoxAmorphousLayer.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAmorphousLayer.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxAmorphousLayer, "numericBoxAmorphousLayer");
+            numericBoxAmorphousLayer.Maximum = 100D;
+            numericBoxAmorphousLayer.Minimum = 0D;
+            numericBoxAmorphousLayer.Name = "numericBoxAmorphousLayer";
+            numericBoxAmorphousLayer.ShowUpDown = true;
+            numericBoxAmorphousLayer.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxAmorphousLayer, resources.GetString("numericBoxAmorphousLayer.ToolTip"));
+            numericBoxAmorphousLayer.ValueBoxWidth = 50;
+            numericBoxAmorphousLayer.ValueChanged += NumericBoxAmorphousLayer_ValueChanged;
+            // 
+            // checkBoxPhosphorWeight
+            // 
+            resources.ApplyResources(checkBoxPhosphorWeight, "checkBoxPhosphorWeight");
+            checkBoxPhosphorWeight.Checked = true;
+            checkBoxPhosphorWeight.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxPhosphorWeight.Name = "checkBoxPhosphorWeight";
+            toolTip.SetToolTip(checkBoxPhosphorWeight, resources.GetString("checkBoxPhosphorWeight.ToolTip"));
+            checkBoxPhosphorWeight.UseVisualStyleBackColor = true;
+            checkBoxPhosphorWeight.CheckedChanged += PhosphorWeight_Changed;
+            // 
+            // numericBoxPhosphorDeadEnergy
+            // 
+            numericBoxPhosphorDeadEnergy.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPhosphorDeadEnergy.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxPhosphorDeadEnergy, "numericBoxPhosphorDeadEnergy");
+            numericBoxPhosphorDeadEnergy.Maximum = 10D;
+            numericBoxPhosphorDeadEnergy.Minimum = 0D;
+            numericBoxPhosphorDeadEnergy.Name = "numericBoxPhosphorDeadEnergy";
+            numericBoxPhosphorDeadEnergy.ShowUpDown = true;
+            numericBoxPhosphorDeadEnergy.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxPhosphorDeadEnergy, resources.GetString("numericBoxPhosphorDeadEnergy.ToolTip"));
+            numericBoxPhosphorDeadEnergy.Value = 2D;
+            numericBoxPhosphorDeadEnergy.ValueBoxWidth = 30;
+            numericBoxPhosphorDeadEnergy.ValueChanged += PhosphorWeight_Changed;
+            // 
+            // checkBoxCoherenceLoss
+            // 
+            resources.ApplyResources(checkBoxCoherenceLoss, "checkBoxCoherenceLoss"); // 260920Cl 追加
+            checkBoxCoherenceLoss.Checked = true;
+            checkBoxCoherenceLoss.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxCoherenceLoss.Name = "checkBoxCoherenceLoss";
+            toolTip.SetToolTip(checkBoxCoherenceLoss, resources.GetString("checkBoxCoherenceLoss.ToolTip"));
+            checkBoxCoherenceLoss.UseVisualStyleBackColor = true;
+            checkBoxCoherenceLoss.CheckedChanged += CoherenceLoss_Changed;
+            // 
+            // numericBoxCoherenceLossDecay
+            // 
+            numericBoxCoherenceLossDecay.BackColor = System.Drawing.SystemColors.Control; // 260920Cl 追加
+            numericBoxCoherenceLossDecay.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxCoherenceLossDecay, "numericBoxCoherenceLossDecay");
+            numericBoxCoherenceLossDecay.Maximum = 20D;
+            numericBoxCoherenceLossDecay.Minimum = 0.1D;
+            numericBoxCoherenceLossDecay.Name = "numericBoxCoherenceLossDecay";
+            numericBoxCoherenceLossDecay.ShowUpDown = true;
+            numericBoxCoherenceLossDecay.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxCoherenceLossDecay, resources.GetString("numericBoxCoherenceLossDecay.ToolTip"));
+            numericBoxCoherenceLossDecay.Value = 0.7D; // 260920Cl 変更 (旧 1D): 実測校正値。Si 20 kV の Si004 1 枚で E_c = 0.71 (反射中央値) / 0.68 (全画像 ZNCC)
+            numericBoxCoherenceLossDecay.ValueBoxWidth = 30;
+            numericBoxCoherenceLossDecay.ValueChanged += CoherenceLoss_Changed;
+            // 
+            // flowLayoutPanelMonteCarloDepthMode
+            // 
+            resources.ApplyResources(flowLayoutPanelMonteCarloDepthMode, "flowLayoutPanelMonteCarloDepthMode");
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(labelMonteCarloDepthMode);
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(comboBoxMonteCarloDepthMode);
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(checkBoxCoherenceLoss); // 260920Cl 追加
+            flowLayoutPanelMonteCarloDepthMode.Controls.Add(numericBoxCoherenceLossDecay); // 260920Cl 追加
+            flowLayoutPanelMonteCarloDepthMode.Name = "flowLayoutPanelMonteCarloDepthMode";
+            // 
+            // flowLayoutPanelPhosphorWeight
+            // 
+            resources.ApplyResources(flowLayoutPanelPhosphorWeight, "flowLayoutPanelPhosphorWeight");
+            flowLayoutPanelPhosphorWeight.Controls.Add(checkBoxPhosphorWeight);
+            flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxPhosphorDeadEnergy);
+            flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxAmorphousLayer);
+            flowLayoutPanelPhosphorWeight.Name = "flowLayoutPanelPhosphorWeight";
+            // 
+            // flowLayoutPanelExpFlatten
+            // 
+            resources.ApplyResources(flowLayoutPanelExpFlatten, "flowLayoutPanelExpFlatten");
+            flowLayoutPanelExpFlatten.Controls.Add(checkBoxExpFlattenBackground);
+            flowLayoutPanelExpFlatten.Controls.Add(numericBoxExpFlattenFwhm);
+            flowLayoutPanelExpFlatten.Name = "flowLayoutPanelExpFlatten";
+            // 
             // panelGeometry
             // 
             captureExtender.SetCapture(panelGeometry, true);
@@ -1421,36 +1571,6 @@
             graphicsBox.MouseUp += graphicsBox_MouseUp;
             graphicsBox.Resize += graphicsBox_Resize;
             // 
-            // flowLayoutPanelFlatten (260920Cl 追加)
-            // 
-            resources.ApplyResources(flowLayoutPanelFlatten, "flowLayoutPanelFlatten");
-            flowLayoutPanelFlatten.Controls.Add(checkBoxFlattenBackground);
-            flowLayoutPanelFlatten.Controls.Add(numericBoxFlattenFwhm);
-            flowLayoutPanelFlatten.Name = "flowLayoutPanelFlatten";
-            // 
-            // checkBoxFlattenBackground (260920Cl 追加)
-            // 
-            resources.ApplyResources(checkBoxFlattenBackground, "checkBoxFlattenBackground");
-            checkBoxFlattenBackground.Name = "checkBoxFlattenBackground";
-            toolTip.SetToolTip(checkBoxFlattenBackground, resources.GetString("checkBoxFlattenBackground.ToolTip"));
-            checkBoxFlattenBackground.UseVisualStyleBackColor = true;
-            checkBoxFlattenBackground.CheckedChanged += DisplaySetting_Changed; // 260920Cl 改名
-            // 
-            // numericBoxFlattenFwhm (260920Cl 追加)
-            // 
-            numericBoxFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFlattenFwhm.DecimalPlaces = 0;
-            resources.ApplyResources(numericBoxFlattenFwhm, "numericBoxFlattenFwhm");
-            numericBoxFlattenFwhm.Maximum = 2000D;
-            numericBoxFlattenFwhm.Minimum = 5D;
-            numericBoxFlattenFwhm.Name = "numericBoxFlattenFwhm";
-            numericBoxFlattenFwhm.ShowUpDown = true;
-            numericBoxFlattenFwhm.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxFlattenFwhm, resources.GetString("numericBoxFlattenFwhm.ToolTip"));
-            numericBoxFlattenFwhm.Value = 100D;
-            numericBoxFlattenFwhm.ValueBoxWidth = 50;
-            numericBoxFlattenFwhm.ValueChanged += DisplaySetting_Changed; // 260920Cl 改名
-            // 
             // flowLayoutPanelColorScale
             // 
             resources.ApplyResources(flowLayoutPanelColorScale, "flowLayoutPanelColorScale");
@@ -1458,15 +1578,17 @@
             flowLayoutPanelColorScale.Controls.Add(comboBoxGradient);
             flowLayoutPanelColorScale.Controls.Add(labelColor);
             flowLayoutPanelColorScale.Controls.Add(comboBoxScale);
+            flowLayoutPanelColorScale.Controls.Add(checkBoxFlattenBackground);
+            flowLayoutPanelColorScale.Controls.Add(numericBoxFlattenFwhm);
             flowLayoutPanelColorScale.Name = "flowLayoutPanelColorScale";
             // 
             // flowLayoutPanelBrightness
             // 
             resources.ApplyResources(flowLayoutPanelBrightness, "flowLayoutPanelBrightness");
-            flowLayoutPanelBrightness.Controls.Add(labelBrightness);
-            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMin); // 260920Cl
-            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMax); // 260920Cl
-            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedContrast); // 260920Cl
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMin);
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedBrightnessMax);
+            flowLayoutPanelBrightness.Controls.Add(trackBarAdvancedContrast);
+            flowLayoutPanelBrightness.Controls.Add(buttonMatchSimulation);
             flowLayoutPanelBrightness.Name = "flowLayoutPanelBrightness";
             // 
             // flowLayoutPanelOutputRange
@@ -1480,8 +1602,9 @@
             // 
             // flowLayoutPanelWithBseDistribution
             // 
-            flowLayoutPanelWithBseDistribution.Controls.Add(checkBoxWithBSEDistribution);
             resources.ApplyResources(flowLayoutPanelWithBseDistribution, "flowLayoutPanelWithBseDistribution");
+            flowLayoutPanelWithBseDistribution.Controls.Add(checkBoxWithBSEDistribution);
+            flowLayoutPanelWithBseDistribution.Controls.Add(flowLayoutPanelOutputRange);
             flowLayoutPanelWithBseDistribution.Name = "flowLayoutPanelWithBseDistribution";
             // 
             // tabControlSettings
@@ -1538,6 +1661,7 @@
             flowLayoutPanelDetectorPosition.Controls.Add(numericBoxXofDet);
             flowLayoutPanelDetectorPosition.Controls.Add(numericBoxYofDet);
             flowLayoutPanelDetectorPosition.Controls.Add(numericBoxZofDet);
+            flowLayoutPanelDetectorPosition.Controls.Add(buttonCalibrateGeometry);
             flowLayoutPanelDetectorPosition.Name = "flowLayoutPanelDetectorPosition";
             // 
             // groupBoxSampleCondition
@@ -1619,23 +1743,17 @@
             // groupBoxLatticePlanes
             // 
             resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
-            groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdLength);
             groupBoxLatticePlanes.Controls.Add(flowLayoutPanelThresholdStructureFactor);
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
             groupBoxLatticePlanes.TabStop = false;
-            // 
-            // flowLayoutPanelThresholdLength
-            // 
-            resources.ApplyResources(flowLayoutPanelThresholdLength, "flowLayoutPanelThresholdLength");
-            flowLayoutPanelThresholdLength.Controls.Add(radioButtonKikuchiThresholdOfLength);
-            flowLayoutPanelThresholdLength.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            flowLayoutPanelThresholdLength.Name = "flowLayoutPanelThresholdLength";
             // 
             // flowLayoutPanelThresholdStructureFactor
             // 
             resources.ApplyResources(flowLayoutPanelThresholdStructureFactor, "flowLayoutPanelThresholdStructureFactor");
             flowLayoutPanelThresholdStructureFactor.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
             flowLayoutPanelThresholdStructureFactor.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
+            flowLayoutPanelThresholdStructureFactor.Controls.Add(radioButtonKikuchiThresholdOfLength);
+            flowLayoutPanelThresholdStructureFactor.Controls.Add(numericBoxKikuchiThresholdOfLength);
             flowLayoutPanelThresholdStructureFactor.Name = "flowLayoutPanelThresholdStructureFactor";
             // 
             // groupBoxTextSettings
@@ -1656,57 +1774,27 @@
             // flowLayoutPanelExperimentalImage
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImage, "flowLayoutPanelExperimentalImage");
-            flowLayoutPanelExperimentalImage.Controls.Add(labelExpBrightness); // 260920Cl 変更: Min/Max 用の中間 FlowLayoutPanel 2 枚を廃止し直接ぶら下げる
-            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpMin); // 260920Cl
-            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpMax); // 260920Cl
-            flowLayoutPanelExperimentalImage.Controls.Add(trackBarAdvancedExpContrast); // 260920Cl
+            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanel2);
             flowLayoutPanelExperimentalImage.Name = "flowLayoutPanelExperimentalImage";
             // 
-            // flowLayoutPanelExpFlatten (260920Cl 追加)
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(flowLayoutPanelExpFlatten, "flowLayoutPanelExpFlatten");
-            flowLayoutPanelExpFlatten.Controls.Add(checkBoxExpFlattenBackground);
-            flowLayoutPanelExpFlatten.Controls.Add(numericBoxExpFlattenFwhm);
-            flowLayoutPanelExpFlatten.Controls.Add(buttonMatchSimulation);
-            flowLayoutPanelExpFlatten.Name = "flowLayoutPanelExpFlatten";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(trackBarAdvancedExpMin);
+            flowLayoutPanel1.Controls.Add(trackBarAdvancedExpMax);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // checkBoxExpFlattenBackground (260920Cl 追加)
+            // flowLayoutPanel2
             // 
-            resources.ApplyResources(checkBoxExpFlattenBackground, "checkBoxExpFlattenBackground");
-            checkBoxExpFlattenBackground.Name = "checkBoxExpFlattenBackground";
-            toolTip.SetToolTip(checkBoxExpFlattenBackground, resources.GetString("checkBoxExpFlattenBackground.ToolTip"));
-            checkBoxExpFlattenBackground.UseVisualStyleBackColor = true;
-            checkBoxExpFlattenBackground.CheckedChanged += ExpFlattenBackground_Changed;
-            // 
-            // numericBoxExpFlattenFwhm (260920Cl 追加)
-            // 
-            numericBoxExpFlattenFwhm.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxExpFlattenFwhm.DecimalPlaces = 0;
-            resources.ApplyResources(numericBoxExpFlattenFwhm, "numericBoxExpFlattenFwhm");
-            numericBoxExpFlattenFwhm.Maximum = 2000D;
-            numericBoxExpFlattenFwhm.Minimum = 5D;
-            numericBoxExpFlattenFwhm.Name = "numericBoxExpFlattenFwhm";
-            numericBoxExpFlattenFwhm.ShowUpDown = true;
-            numericBoxExpFlattenFwhm.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxExpFlattenFwhm, resources.GetString("numericBoxExpFlattenFwhm.ToolTip"));
-            numericBoxExpFlattenFwhm.Value = 100D;
-            numericBoxExpFlattenFwhm.ValueBoxWidth = 50;
-            numericBoxExpFlattenFwhm.ValueChanged += ExpFlattenBackground_Changed;
-            // 
-            // buttonMatchSimulation (260920Cl 追加)
-            // 
-            resources.ApplyResources(buttonMatchSimulation, "buttonMatchSimulation");
-            buttonMatchSimulation.Name = "buttonMatchSimulation";
-            toolTip.SetToolTip(buttonMatchSimulation, resources.GetString("buttonMatchSimulation.ToolTip"));
-            buttonMatchSimulation.UseVisualStyleBackColor = true;
-            buttonMatchSimulation.Click += buttonMatchSimulation_Click;
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(trackBarAdvancedExpContrast);
+            flowLayoutPanel2.Controls.Add(trackBarAdvancedExpOpacity);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // flowLayoutPanelExpOpacity
             // 
             resources.ApplyResources(flowLayoutPanelExpOpacity, "flowLayoutPanelExpOpacity");
-            flowLayoutPanelExpOpacity.Controls.Add(trackBarAdvancedExpOpacity); // 260920Cl 変更: ラベル + 素の TrackBar → TrackBarAdvanced
-            flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingRadon);
-            flowLayoutPanelExpOpacity.Controls.Add(radioButtonIndexingDictionary);
             flowLayoutPanelExpOpacity.Name = "flowLayoutPanelExpOpacity";
             // 
             // groupBoxSimulationParameters
@@ -1724,10 +1812,6 @@
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelEnergyRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelThicknessRange);
             flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelAbsorptionOptions);
-            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelMonteCarloDepthMode); // 260919Cl 追加
-            flowLayoutPanelSimulationParameters.Controls.Add(numericBoxAmorphousLayer); // 260919Cl 追加
-            flowLayoutPanelSimulationParameters.Controls.Add(flowLayoutPanelPhosphorWeight); // 260919Cl 追加
-            flowLayoutPanelSimulationParameters.Controls.Add(checkBoxAbsorbedFluxBackground); // 260919Cl 追加
             flowLayoutPanelSimulationParameters.Name = "flowLayoutPanelSimulationParameters";
             // 
             // flowLayoutPanelMaxNumOfGAndGrid
@@ -1760,85 +1844,6 @@
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxNonLocalAbsorption);
             flowLayoutPanelAbsorptionOptions.Controls.Add(checkBoxTDSBackground);
             flowLayoutPanelAbsorptionOptions.Name = "flowLayoutPanelAbsorptionOptions";
-            // 
-            // flowLayoutPanelMonteCarloDepthMode (260919Cl 追加)
-            // 
-            resources.ApplyResources(flowLayoutPanelMonteCarloDepthMode, "flowLayoutPanelMonteCarloDepthMode");
-            flowLayoutPanelMonteCarloDepthMode.Controls.Add(labelMonteCarloDepthMode);
-            flowLayoutPanelMonteCarloDepthMode.Controls.Add(comboBoxMonteCarloDepthMode);
-            flowLayoutPanelMonteCarloDepthMode.Name = "flowLayoutPanelMonteCarloDepthMode";
-            // 
-            // labelMonteCarloDepthMode (260919Cl 追加)
-            // 
-            resources.ApplyResources(labelMonteCarloDepthMode, "labelMonteCarloDepthMode");
-            labelMonteCarloDepthMode.Name = "labelMonteCarloDepthMode";
-            toolTip.SetToolTip(labelMonteCarloDepthMode, resources.GetString("labelMonteCarloDepthMode.ToolTip"));
-            // 
-            // comboBoxMonteCarloDepthMode (260919Cl 追加)
-            // 
-            comboBoxMonteCarloDepthMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxMonteCarloDepthMode.DropDownWidth = 420; // 260919Cl 追加 (/simplify2): de 等の長い項目名がドロップダウンで切れない
-            resources.ApplyResources(comboBoxMonteCarloDepthMode, "comboBoxMonteCarloDepthMode");
-            comboBoxMonteCarloDepthMode.FormattingEnabled = true;
-            comboBoxMonteCarloDepthMode.Items.AddRange(new object[] { resources.GetString("comboBoxMonteCarloDepthMode.Items"), resources.GetString("comboBoxMonteCarloDepthMode.Items1"), resources.GetString("comboBoxMonteCarloDepthMode.Items2") });
-            comboBoxMonteCarloDepthMode.Name = "comboBoxMonteCarloDepthMode";
-            toolTip.SetToolTip(comboBoxMonteCarloDepthMode, resources.GetString("comboBoxMonteCarloDepthMode.ToolTip"));
-            comboBoxMonteCarloDepthMode.SelectedIndexChanged += ComboBoxMonteCarloDepthMode_SelectedIndexChanged;
-            // 
-            // numericBoxAmorphousLayer (260919Cl 追加)
-            // 
-            numericBoxAmorphousLayer.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAmorphousLayer.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxAmorphousLayer, "numericBoxAmorphousLayer");
-            numericBoxAmorphousLayer.Maximum = 100D;
-            numericBoxAmorphousLayer.Minimum = 0D;
-            numericBoxAmorphousLayer.Name = "numericBoxAmorphousLayer";
-            numericBoxAmorphousLayer.ShowUpDown = true;
-            numericBoxAmorphousLayer.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxAmorphousLayer, resources.GetString("numericBoxAmorphousLayer.ToolTip"));
-            numericBoxAmorphousLayer.Value = 0D;
-            numericBoxAmorphousLayer.ValueBoxWidth = 50;
-            numericBoxAmorphousLayer.ValueChanged += NumericBoxAmorphousLayer_ValueChanged;
-            // 
-            // flowLayoutPanelPhosphorWeight (260919Cl 追加): 蛍光体応答重み チェックボックス + E_dead
-            // 
-            resources.ApplyResources(flowLayoutPanelPhosphorWeight, "flowLayoutPanelPhosphorWeight");
-            flowLayoutPanelPhosphorWeight.Controls.Add(checkBoxPhosphorWeight);
-            flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxPhosphorDeadEnergy);
-            flowLayoutPanelPhosphorWeight.Name = "flowLayoutPanelPhosphorWeight";
-            // 
-            // checkBoxPhosphorWeight (260919Cl 追加)
-            // 
-            checkBoxPhosphorWeight.Checked = true;
-            checkBoxPhosphorWeight.CheckState = System.Windows.Forms.CheckState.Checked;
-            resources.ApplyResources(checkBoxPhosphorWeight, "checkBoxPhosphorWeight");
-            checkBoxPhosphorWeight.Name = "checkBoxPhosphorWeight";
-            toolTip.SetToolTip(checkBoxPhosphorWeight, resources.GetString("checkBoxPhosphorWeight.ToolTip"));
-            checkBoxPhosphorWeight.UseVisualStyleBackColor = true;
-            checkBoxPhosphorWeight.CheckedChanged += PhosphorWeight_Changed;
-            // 
-            // numericBoxPhosphorDeadEnergy (260919Cl 追加)
-            // 
-            numericBoxPhosphorDeadEnergy.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhosphorDeadEnergy.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxPhosphorDeadEnergy, "numericBoxPhosphorDeadEnergy");
-            numericBoxPhosphorDeadEnergy.Maximum = 10D;
-            numericBoxPhosphorDeadEnergy.Minimum = 0D;
-            numericBoxPhosphorDeadEnergy.Name = "numericBoxPhosphorDeadEnergy";
-            numericBoxPhosphorDeadEnergy.ShowUpDown = true;
-            numericBoxPhosphorDeadEnergy.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxPhosphorDeadEnergy, resources.GetString("numericBoxPhosphorDeadEnergy.ToolTip"));
-            numericBoxPhosphorDeadEnergy.Value = 2D;
-            numericBoxPhosphorDeadEnergy.ValueBoxWidth = 40;
-            numericBoxPhosphorDeadEnergy.ValueChanged += PhosphorWeight_Changed;
-            // 
-            // checkBoxAbsorbedFluxBackground (260919Cl 追加)
-            // 
-            // checkBoxAbsorbedFluxBackground.Checked = true; // 260919Cl 変更前: 既定 ON。codex 助言 (絶対強度 10〜25% 変化 + O(bLen³) の追加コストを既定にしない) で既定 OFF に
-            resources.ApplyResources(checkBoxAbsorbedFluxBackground, "checkBoxAbsorbedFluxBackground");
-            checkBoxAbsorbedFluxBackground.Name = "checkBoxAbsorbedFluxBackground";
-            toolTip.SetToolTip(checkBoxAbsorbedFluxBackground, resources.GetString("checkBoxAbsorbedFluxBackground.ToolTip"));
-            checkBoxAbsorbedFluxBackground.UseVisualStyleBackColor = true;
             // 
             // statusStripMain
             // 
@@ -2010,10 +2015,10 @@
             // tabPageOutputParameter
             // 
             tabPageOutputParameter.BackColor = System.Drawing.SystemColors.Control;
-            tabPageOutputParameter.Controls.Add(flowLayoutPanelFlatten); // 260920Cl 追加: Dock=Top の最下段 (最初に Add = 最後にドック)
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelMonteCarloDepthMode);
+            tabPageOutputParameter.Controls.Add(flowLayoutPanelPhosphorWeight);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelColorScale);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelBrightness);
-            tabPageOutputParameter.Controls.Add(flowLayoutPanelOutputRange);
             tabPageOutputParameter.Controls.Add(flowLayoutPanelWithBseDistribution);
             resources.ApplyResources(tabPageOutputParameter, "tabPageOutputParameter");
             tabPageOutputParameter.Name = "tabPageOutputParameter";
@@ -2031,17 +2036,74 @@
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImageTab, "flowLayoutPanelExperimentalImageTab");
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExperimentalImage);
-            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpFlatten); // 260920Cl 追加
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpFlatten);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpOpacity);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelIndexingButtons);
+            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelZoneAxis); // 260921Cl 追加
             flowLayoutPanelExperimentalImageTab.Name = "flowLayoutPanelExperimentalImageTab";
             // 
             // flowLayoutPanelIndexingButtons
             // 
             resources.ApplyResources(flowLayoutPanelIndexingButtons, "flowLayoutPanelIndexingButtons");
+            flowLayoutPanelIndexingButtons.Controls.Add(radioButtonIndexingRadon);
+            flowLayoutPanelIndexingButtons.Controls.Add(radioButtonIndexingDictionary);
             flowLayoutPanelIndexingButtons.Controls.Add(buttonFindOrientation);
-            flowLayoutPanelIndexingButtons.Controls.Add(buttonCalibrateGeometry);
             flowLayoutPanelIndexingButtons.Name = "flowLayoutPanelIndexingButtons";
+            // 
+            // flowLayoutPanelZoneAxis
+            // 
+            resources.ApplyResources(flowLayoutPanelZoneAxis, "flowLayoutPanelZoneAxis");
+            flowLayoutPanelZoneAxis.Controls.Add(checkBoxPickZoneAxis);
+            flowLayoutPanelZoneAxis.Controls.Add(indexControlZoneAxis);
+            flowLayoutPanelZoneAxis.Controls.Add(checkBoxZoneAxisRefineGeometry);
+            flowLayoutPanelZoneAxis.Controls.Add(buttonFindZoneAxis);
+            flowLayoutPanelZoneAxis.Controls.Add(buttonClearZoneAxis);
+            flowLayoutPanelZoneAxis.Name = "flowLayoutPanelZoneAxis";
+            // 
+            // checkBoxPickZoneAxis
+            // 
+            resources.ApplyResources(checkBoxPickZoneAxis, "checkBoxPickZoneAxis");
+            checkBoxPickZoneAxis.Name = "checkBoxPickZoneAxis";
+            toolTip.SetToolTip(checkBoxPickZoneAxis, resources.GetString("checkBoxPickZoneAxis.ToolTip"));
+            checkBoxPickZoneAxis.UseVisualStyleBackColor = true;
+            checkBoxPickZoneAxis.CheckedChanged += checkBoxPickZoneAxis_CheckedChanged;
+            // 
+            // indexControlZoneAxis
+            // 
+            resources.ApplyResources(indexControlZoneAxis, "indexControlZoneAxis");
+            indexControlZoneAxis.BoxWidth = 32;
+            indexControlZoneAxis.BoxWidthEnabled = false;
+            indexControlZoneAxis.LabelVisible = false;
+            indexControlZoneAxis.Mode = IndexControl.ModeEnum.Axis;
+            indexControlZoneAxis.Bracket = IndexControl.BracketEnum.Angle;
+            indexControlZoneAxis.Name = "indexControlZoneAxis";
+            toolTip.SetToolTip(indexControlZoneAxis, resources.GetString("indexControlZoneAxis.ToolTip"));
+            indexControlZoneAxis.ValueChanged += indexControlZoneAxis_ValueChanged;
+            // 
+            // checkBoxZoneAxisRefineGeometry
+            // 
+            resources.ApplyResources(checkBoxZoneAxisRefineGeometry, "checkBoxZoneAxisRefineGeometry");
+            checkBoxZoneAxisRefineGeometry.Name = "checkBoxZoneAxisRefineGeometry";
+            toolTip.SetToolTip(checkBoxZoneAxisRefineGeometry, resources.GetString("checkBoxZoneAxisRefineGeometry.ToolTip"));
+            checkBoxZoneAxisRefineGeometry.UseVisualStyleBackColor = true;
+            // 
+            // buttonFindZoneAxis
+            // 
+            resources.ApplyResources(buttonFindZoneAxis, "buttonFindZoneAxis");
+            buttonFindZoneAxis.BackColor = System.Drawing.Color.SteelBlue;
+            buttonFindZoneAxis.ForeColor = System.Drawing.Color.White;
+            buttonFindZoneAxis.Name = "buttonFindZoneAxis";
+            toolTip.SetToolTip(buttonFindZoneAxis, resources.GetString("buttonFindZoneAxis.ToolTip"));
+            buttonFindZoneAxis.UseVisualStyleBackColor = false;
+            buttonFindZoneAxis.Click += buttonFindZoneAxis_Click;
+            // 
+            // buttonClearZoneAxis
+            // 
+            resources.ApplyResources(buttonClearZoneAxis, "buttonClearZoneAxis");
+            buttonClearZoneAxis.Name = "buttonClearZoneAxis";
+            toolTip.SetToolTip(buttonClearZoneAxis, resources.GetString("buttonClearZoneAxis.ToolTip"));
+            buttonClearZoneAxis.UseVisualStyleBackColor = true;
+            buttonClearZoneAxis.Click += buttonClearZoneAxis_Click;
             // 
             // flowLayoutPanelPatternBar
             // 
@@ -2170,13 +2232,17 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEbsdCandidates).EndInit();
+            flowLayoutPanelMonteCarloDepthMode.ResumeLayout(false);
+            flowLayoutPanelMonteCarloDepthMode.PerformLayout();
+            flowLayoutPanelPhosphorWeight.ResumeLayout(false);
+            flowLayoutPanelPhosphorWeight.PerformLayout();
+            flowLayoutPanelExpFlatten.ResumeLayout(false);
+            flowLayoutPanelExpFlatten.PerformLayout();
             flowLayoutPanelViewAlong.ResumeLayout(false);
             flowLayoutPanelViewAlong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             flowLayoutPanelColorScale.ResumeLayout(false);
             flowLayoutPanelColorScale.PerformLayout();
-            flowLayoutPanelFlatten.ResumeLayout(false); // 260920Cl 追加
-            flowLayoutPanelFlatten.PerformLayout(); // 260920Cl 追加
             flowLayoutPanelBrightness.ResumeLayout(false);
             flowLayoutPanelBrightness.PerformLayout();
             flowLayoutPanelOutputRange.ResumeLayout(false);
@@ -2209,9 +2275,6 @@
             flowLayoutPanelKikuchiLines.ResumeLayout(false);
             flowLayoutPanelKikuchiLines.PerformLayout();
             groupBoxLatticePlanes.ResumeLayout(false);
-            groupBoxLatticePlanes.PerformLayout();
-            flowLayoutPanelThresholdLength.ResumeLayout(false);
-            flowLayoutPanelThresholdLength.PerformLayout();
             flowLayoutPanelThresholdStructureFactor.ResumeLayout(false);
             flowLayoutPanelThresholdStructureFactor.PerformLayout();
             groupBoxTextSettings.ResumeLayout(false);
@@ -2220,10 +2283,8 @@
             flowLayoutPanelTextSettings.PerformLayout();
             flowLayoutPanelExperimentalImage.ResumeLayout(false);
             flowLayoutPanelExperimentalImage.PerformLayout();
-            flowLayoutPanelExpFlatten.ResumeLayout(false); // 260920Cl 追加
-            flowLayoutPanelExpFlatten.PerformLayout(); // 260920Cl 追加
-            flowLayoutPanelExpOpacity.ResumeLayout(false);
-            flowLayoutPanelExpOpacity.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
             groupBoxSimulationParameters.ResumeLayout(false);
             groupBoxSimulationParameters.PerformLayout();
             flowLayoutPanelSimulationParameters.ResumeLayout(false);
@@ -2236,10 +2297,6 @@
             flowLayoutPanelThicknessRange.PerformLayout();
             flowLayoutPanelAbsorptionOptions.ResumeLayout(false);
             flowLayoutPanelAbsorptionOptions.PerformLayout();
-            flowLayoutPanelMonteCarloDepthMode.ResumeLayout(false); // 260919Cl 追加
-            flowLayoutPanelMonteCarloDepthMode.PerformLayout(); // 260919Cl 追加
-            flowLayoutPanelPhosphorWeight.ResumeLayout(false); // 260919Cl 追加
-            flowLayoutPanelPhosphorWeight.PerformLayout(); // 260919Cl 追加
             statusStripMain.ResumeLayout(false);
             statusStripMain.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
@@ -2273,6 +2330,8 @@
             flowLayoutPanelExperimentalImageTab.PerformLayout();
             flowLayoutPanelIndexingButtons.ResumeLayout(false);
             flowLayoutPanelIndexingButtons.PerformLayout();
+            flowLayoutPanelZoneAxis.ResumeLayout(false); // 260921Cl 追加
+            flowLayoutPanelZoneAxis.PerformLayout();
             flowLayoutPanelPatternBar.ResumeLayout(false);
             flowLayoutPanelPatternBar.PerformLayout();
             flowLayoutPanelCopy.ResumeLayout(false);
@@ -2351,7 +2410,6 @@
         private TrackBarAdvanced trackBarAdvancedBrightnessMin; // 260920Cl
         private TrackBarAdvanced trackBarAdvancedBrightnessMax; // 260920Cl
         private TrackBarAdvanced trackBarAdvancedContrast; // 260920Cl
-        private System.Windows.Forms.Label labelBrightness;
         private System.Windows.Forms.CheckBox checkBoxShowOverlays;
         private System.Windows.Forms.Button buttonCopyImage;
         private System.Windows.Forms.Button buttonSaveImage; // 260811Cl 追加
@@ -2415,6 +2473,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern2DControls;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern3DCopy;
         private IndexControl indexControl;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelZoneAxis; // 260921Cl 追加 (手動晶帯軸指数付け)
+        private System.Windows.Forms.CheckBox checkBoxPickZoneAxis; // 260921Cl 追加
+        private IndexControl indexControlZoneAxis; // 260921Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxZoneAxisRefineGeometry; // 260921Cl 追加
+        private System.Windows.Forms.Button buttonFindZoneAxis; // 260921Cl 追加
+        private System.Windows.Forms.Button buttonClearZoneAxis; // 260921Cl 追加
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSimulationParameters;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMaxNumOfGAndGrid;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergyRange;
@@ -2424,9 +2488,17 @@
         private System.Windows.Forms.Label labelMonteCarloDepthMode; // 260919Cl 追加
         private System.Windows.Forms.ComboBox comboBoxMonteCarloDepthMode; // 260919Cl 追加
         private NumericBox numericBoxAmorphousLayer; // 260919Cl 追加
-        private System.Windows.Forms.CheckBox checkBoxAbsorbedFluxBackground; // 260919Cl 追加
+        //260920Cl 削除 (作者指示): 吸収フラックス再注入のチェックボックスを GUI から廃止した。
+        //  再注入は同じ方向 k へ足し戻すため、干渉性チャネルを離れた電子が鋭い方向 k で検出される、という物理になっていない。
+        //  正しくは方向に依らない台座なので、表示の正規化で消える。しかも 1 − N(z) は吸収の強い晶帯軸で最大になり、
+        //  晶帯軸が明るすぎるという未解決の食い違いを悪化させる向きに効く。計算コード本体 (BetheMethod.ComputeAbsorbedFluxBackground と
+        //  EBSD.MasterPatternBuildRequest.IncludeAbsorbedFluxBackground) は調査用にそのまま残してあるので、
+        //  下の RunMasterPatternBuild 呼び出しの引数を true に変えれば再現できる。
+        //private System.Windows.Forms.CheckBox checkBoxAbsorbedFluxBackground; // 260919Cl 追加
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPhosphorWeight; // 260919Cl 追加
         private System.Windows.Forms.CheckBox checkBoxPhosphorWeight; // 260919Cl 追加
+        private System.Windows.Forms.CheckBox checkBoxCoherenceLoss; // 260920Cl 追加
+        private NumericBox numericBoxCoherenceLossDecay; // 260920Cl 追加
         private NumericBox numericBoxPhosphorDeadEnergy; // 260919Cl 追加
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
@@ -2439,7 +2511,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelKikuchiLines;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDetectorGeometry;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSampleCondition;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThresholdLength;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThresholdStructureFactor;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTextSettings;
         private NumericBox numericBoxXofDet;
@@ -2452,7 +2523,6 @@
         private NumericBox numericBoxDetHeight;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWithBseDistribution;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColorScale;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFlatten; // 260920Cl 追加
         private System.Windows.Forms.CheckBox checkBoxFlattenBackground; // 260920Cl 追加
         private NumericBox numericBoxFlattenFwhm; // 260920Cl 追加
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBrightness;
@@ -2479,7 +2549,6 @@
         private System.Windows.Forms.RadioButton radioButtonIndexingRadon; //260724Cl 追加: 方位探索エンジン切替 (Radon template matching)
         private System.Windows.Forms.RadioButton radioButtonIndexingDictionary; //260724Cl 追加: 同 (Dictionary indexing)
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexingButtons;
-        private System.Windows.Forms.Label labelExpBrightness;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExperimentalImageTab;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCopy;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelViewSettings;
@@ -2507,6 +2576,8 @@
         private System.Windows.Forms.Button buttonSaveMovie;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 
