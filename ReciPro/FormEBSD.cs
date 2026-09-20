@@ -3908,6 +3908,22 @@ public partial class FormEBSD : FormBase
     /// 最適化の中身 (交互法 → 方位仕上げ → 6 変数同時最適化 × 多点開始) は EbsdGeometryCalibrator を参照。
     /// 結果は DetX/DetY/DetZ へ逆変換して書き戻す。
     /// </summary>
+    /// <summary>260920Cl 追加: 外部ハーネスから方位探索を走らせ、完了を待って最良候補を適用する (較正の精度評価には正しい方位が要る)</summary>
+    internal async System.Threading.Tasks.Task<double> FindOrientationForHarness(bool useDictionary)
+    {
+        radioButtonIndexingDictionary.Checked = useDictionary; radioButtonIndexingRadon.Checked = !useDictionary;
+        var tcs = new System.Threading.Tasks.TaskCompletionSource(); calibrationDoneForHarness = tcs;
+        buttonFindOrientation_Click(this, EventArgs.Empty);
+        await tcs.Task;
+        if (orientationCandidates is not { Count: > 0 }) return double.NaN;
+        FormMain.SetRotation(orientationCandidates[0].Rotation); //一覧はランク順なので先頭が最良
+        return orientationCandidates[0].Score;
+    }
+
+    /// <summary>260920Cl 追加: 外部ハーネスから検出器幾何を既知量だけずらす (較正がどこまで戻せるかを測るため)</summary>
+    internal void PerturbDetectorGeometryForHarness(double dx, double dy, double dz)
+    { DetectorX += dx; DetectorY += dy; DetectorZ += dz; }
+
     internal System.Threading.Tasks.Task CalibrateGeometryForHarness() { var tcs = new System.Threading.Tasks.TaskCompletionSource(); calibrationDoneForHarness = tcs; buttonCalibrateGeometry_Click(this, EventArgs.Empty); return tcs.Task; } // 260920Cl 追加: 外部ハーネスから較正を走らせて完了を待つ
     private System.Threading.Tasks.TaskCompletionSource calibrationDoneForHarness; // 260920Cl 追加
 
@@ -3942,6 +3958,8 @@ public partial class FormEBSD : FormBase
             }
 
             //DetX/DetY/DetZ へ逆変換して書き戻し (DetTilt 固定)。numericBox の範囲へクランプ (260724Cl)
+            //260920Cl: 傾斜も変数にしてみたが、単一パターンでは方位の X 回転と縮退して DD/PC が 1.5-2 mm 流れた (実測、作者判断で取り消し)。
+            //  ZNCC は 0.361 → 0.358 と下がり、傾斜の広がりも ±3.4° だった。設計正本 §7.2 の「傾斜は較正しない」を維持する
             var (detX, detY, detZ) = EbsdDetectorGeometry.FromPatternCenter(result.PatternCenterU, result.PatternCenterV, result.CameraLength, ctx.Geometry.DetTilt);
             skipDetectorGeometryEvent = true;
             try
