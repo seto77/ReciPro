@@ -236,16 +236,26 @@ public partial class FormEBSD : FormBase
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
 
+    /// <summary>MasterPattern の深さ格子 [nm]。
+    /// <para>260921Cl 変更 (深さ写像 A2): MC が決めた格子 (<see cref="mcDepthGrid"/>) があればその配列をそのまま返す。
+    /// MC の格子は不等間隔 (<see cref="EbsdMonteCarloDistribution.BuildGeometricDepthGrid"/>) なので、UI の開始・終了・刻みからは作り直せない。
+    /// ユーザーが開始・終了・刻みの欄を手で変えたときだけ、従来どおり等間隔の格子に戻る。</para></summary>
     public double[] ThicknessArray
     {
         get
         {
+            if (mcDepthGrid is { Length: > 0 }) return [.. mcDepthGrid]; //260921Cl 追加
             var thicknessArray = new List<double>();
             for (double thickness = numericBoxThicknessStart.Value; thickness <= numericBoxThicknessEnd.Value; thickness += numericBoxThicknessStep.Value)
                 thicknessArray.Add(thickness);
             return [.. thicknessArray];
         }
     }
+
+    /// <summary>260921Cl 追加 (深さ写像 A2): MC (<see cref="RunMonteCarloAndSetRangesAsync"/>) が決めた深さ格子。null なら UI の開始・終了・刻みから等間隔で作る。</summary>
+    private double[] mcDepthGrid = null;
+    /// <summary>260921Cl 追加: 開始・終了・刻みの欄をコードから設定している最中か (その ValueChanged ではユーザー操作とみなさない)。</summary>
+    private bool settingDepthGridBoxes = false;
 
     private PseudoBitmap Pbmp = null;
 
@@ -2356,6 +2366,7 @@ public partial class FormEBSD : FormBase
     #region 入力パラメータ関連
     private void NumericBoxThicknessStart_ValueChanged(object sender, EventArgs e)
     {
+        if (!settingDepthGridBoxes) mcDepthGrid = null; //260921Cl 追加 (深さ写像 A2): ユーザーが開始・終了・刻みを手で変えたら MC の不等間隔格子をやめて等間隔に戻す
         trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
         trackBarOutputThickness.Value = 0;
     }
@@ -2375,7 +2386,10 @@ public partial class FormEBSD : FormBase
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        numericBoxDepth.Value = ThicknessArray[trackBarOutputThickness.Value];
+        //numericBoxDepth.Value = ThicknessArray[trackBarOutputThickness.Value]; //260921Cl 変更前
+        //260921Cl 変更 (深さ写像 A2): 表示している深さはマスターパターンが実際に持っている格子の値にする (格子は不等間隔になりうる)
+        var shownDepths = MasterPattern?.Depths is { Length: > 0 } mpDepths && trackBarOutputThickness.Value < mpDepths.Length ? mpDepths : ThicknessArray;
+        if ((uint)trackBarOutputThickness.Value < (uint)shownDepths.Length) numericBoxDepth.Value = shownDepths[trackBarOutputThickness.Value];
         if (mcDistribution == null && MasterPattern != null) InvalidateIndexingResults(); //260725Ch: 単一スライス fallback が存在するときだけ失効
         Draw();
     }
@@ -2849,6 +2863,7 @@ public partial class FormEBSD : FormBase
             double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
             double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加: 同上 (蛍光体応答重み。OFF なら NaN)
             var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
+            var physicalDetector = BuildDetectorGeometry(DetPixelWidth, DetPixelHeight); // 260921Cl 追加 (深さ写像 A2): 深さ格子の上限 T を「検出器に当たる電子の経路長」で決めるため (UI スレッドで読む)
             var result = await Task.Run(() =>
             {
                 var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
@@ -2872,7 +2887,11 @@ public partial class FormEBSD : FormBase
                         e.Vec, e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
                 // var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch) 260919Cl 変更前
                 var (energyLoss95, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // 260919Cl 変更: 損失 95 パーセンタイル・16 段
-                var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss95, depth99); // (260327Ch) 260919Cl energyLoss80 → energyLoss95
+                //var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss95, depth99); // (260327Ch) 260919Cl energyLoss80 → energyLoss95 //260921Cl 変更前
+                //260921Cl 変更 (深さ写像 A2): マスターパターンの深さ格子は出射方向の経路長なので、上限は垂直深さの 99 % 点 (depth99) ではなく、
+                //  検出器に当たる電子の経路長 (d − a)/μ の 99.9 % 点にし、不等間隔 (浅い側が細かい) 40 点で切る
+                double pathUpper = EbsdMonteCarloDistribution.ComputePathLengthUpperBound(bseRaw, sampleTilt, physicalDetector, amorphousLayerNm);
+                var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss95, pathUpper);
 
                 progress.Report((95, "Fitting Monte Carlo distribution"));
                 var distribution = new EbsdMonteCarloDistribution(
@@ -2906,9 +2925,18 @@ public partial class FormEBSD : FormBase
             numericBoxEnergyStart.Value = result.energyStart;
             numericBoxEnergyEnd.Value = result.energyEnd;
             numericBoxEnergyStep.Value = result.energyStep;
-            numericBoxThicknessStart.Value = result.depthStart;
-            numericBoxThicknessEnd.Value = result.depthEnd;
-            numericBoxThicknessStep.Value = result.depthStep;
+            //260921Cl 変更 (深さ写像 A2): 格子は不等間隔なので配列そのものを保持し、欄は目安 (開始 = 最浅の点、終了 = T、刻み = 最初の区間幅) として表示する。
+            //  欄への代入で発火する ValueChanged をユーザー操作とみなさないよう、代入の間だけフラグを立てる
+            mcDepthGrid = result.Depths;
+            settingDepthGridBoxes = true;
+            try
+            {
+                numericBoxThicknessStart.Value = result.depthStart;
+                numericBoxThicknessEnd.Value = result.depthEnd;
+                numericBoxThicknessStep.Value = result.depthStep;
+            }
+            finally { settingDepthGridBoxes = false; }
+            trackBarOutputThickness.Maximum = Math.Max(0, ThicknessArray.Length - 1); //260921Cl: 欄の値が前回と同じで ValueChanged が来ない場合にも格子の点数へ揃える
             mcDistribution = result.Distribution;
             composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布・旧 MasterPattern を掴んだままにしない
             InvalidateIndexingResults(); //260725Ch: ZNCC 辞書の重みが変わるため候補と実行中結果を失効させる
