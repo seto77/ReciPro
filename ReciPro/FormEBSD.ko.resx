@@ -935,7 +935,7 @@ A(E) = exp(-(E0 - E) / E_c) 배로 조정하고, 잃은 몫은 평탄한
   <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
     <value>대비 감쇠 A(E) = exp(-(E0 - E) / E_c) 의 특성 손실 E_c (keV).
 작을수록 손실이 적은 전자만 키쿠치 대비를 담당합니다.
-약 1 keV 아래에서는 기본 에너지 간격 1 keV 로 차이를
-분해할 수 없습니다.</value>
+기본값 0.8 keV 는 Si 20 kV 실측 패턴 1장으로 보정한 값입니다.
+다른 물질·가속 전압에서도 성립하는지는 확인되지 않았습니다.</value>
   </data>
 </root>

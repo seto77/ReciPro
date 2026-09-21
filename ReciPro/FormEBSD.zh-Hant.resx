@@ -887,6 +887,7 @@ A(E) = exp(-(E0 - E) / E_c)，損失的部分轉為平坦基座，
   <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
     <value>對比衰減 A(E) = exp(-(E0 - E) / E_c) 的特徵損失 E_c (keV)。
 越小表示只有低損失電子承擔菊池對比。
-低於約 1 keV 時，預設的 1 keV 能量步長無法分辨差別。</value>
+預設值 0.8 keV 是以一張 Si 20 kV 實測圖樣校準的值。
+是否適用於其他物質或加速電壓尚未確認。</value>
   </data>
 </root>

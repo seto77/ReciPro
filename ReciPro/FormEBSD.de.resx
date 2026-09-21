@@ -984,7 +984,8 @@ werden zu breit (Si 20 kV: 5 %, mit E_c = 1 keV nur 1,7 %).</value>
     <value>Charakteristischer Energieverlust E_c des Kontrastabfalls
 A(E) = exp(-(E0 - E) / E_c), in keV. Kleiner heißt, nur Elektronen
 mit geringem Verlust tragen den Kikuchi-Kontrast.
-Unter etwa 1 keV kann die Standard-Schrittweite von 1 keV
-den Unterschied nicht auflösen.</value>
+Der Standardwert 0.8 keV ist an einem gemessenen Si-Muster
+bei 20 kV kalibriert. Ob er für andere Materialien oder
+Spannungen gilt, ist nicht bekannt.</value>
   </data>
 </root>

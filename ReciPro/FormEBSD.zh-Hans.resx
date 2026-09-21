@@ -895,6 +895,7 @@ A(E) = exp(-(E0 - E) / E_c)，损失的部分转为平坦基座，
   <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
     <value>对比度衰减 A(E) = exp(-(E0 - E) / E_c) 的特征损失 E_c (keV)。
 越小表示只有低损失电子承担菊池对比度。
-低于约 1 keV 时，默认的 1 keV 能量步长无法分辨差别。</value>
+默认值 0.8 keV 是用一张 Si 20 kV 实测图样校准的值。
+是否适用于其他物质或加速电压尚未确认。</value>
   </data>
 </root>

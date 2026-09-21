@@ -1502,7 +1502,8 @@
             numericBoxCoherenceLossDecay.ShowUpDown = true;
             numericBoxCoherenceLossDecay.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxCoherenceLossDecay, resources.GetString("numericBoxCoherenceLossDecay.ToolTip"));
-            numericBoxCoherenceLossDecay.Value = 0.7D; // 260920Cl 変更 (旧 1D): 実測校正値。Si 20 kV の Si004 1 枚で E_c = 0.71 (反射中央値) / 0.68 (全画像 ZNCC)
+            //numericBoxCoherenceLossDecay.Value = 0.7D; // 260920Cl 変更 (旧 1D): 実測校正値。Si 20 kV の Si004 1 枚で E_c = 0.71 (反射中央値) / 0.68 (全画像 ZNCC) //260921Cl 変更前
+            numericBoxCoherenceLossDecay.Value = 0.8D; // 260921Cl 変更 (旧 0.7D、作者判断): 深さ写像 A2 の後に再校正。Si004 で E_c = 0.82 keV (反射中央値・共通反射中央値)。欄は小数 1 桁
             numericBoxCoherenceLossDecay.ValueBoxWidth = 30;
             numericBoxCoherenceLossDecay.ValueChanged += CoherenceLoss_Changed;
             // 

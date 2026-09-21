@@ -1167,7 +1167,7 @@ A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回しま�
   <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
     <value>コントラスト減衰 A(E) = exp(-(E0 - E) / E_c) の特性損失 (keV)。
 小さいほど低損失の電子だけが菊池コントラストを担います。
-既定 0.7 keV は Si 20 kV の実測パターン 1 枚で校正した値です。
+既定 0.8 keV は Si 20 kV の実測パターン 1 枚で校正した値です。
 他の物質・加速電圧でも成り立つかは未確認です。</value>
   </data>
   <data name="checkBoxPickZoneAxis.Text" xml:space="preserve">

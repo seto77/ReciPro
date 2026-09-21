@@ -989,7 +989,8 @@ bandes sont trop larges (Si 20 kV : 5 % ; 1,7 % avec E_c = 1 keV).</value>
     <value>Perte d'énergie caractéristique E_c de la décroissance du contraste
 A(E) = exp(-(E0 - E) / E_c), en keV. Plus petit signifie que seuls les
 électrons à faible perte portent le contraste de Kikuchi.
-En dessous d'environ 1 keV, le pas d'énergie par défaut de 1 keV
-ne résout pas la différence.</value>
+La valeur par défaut de 0.8 keV est calibrée sur un pattern
+mesuré de Si à 20 kV. On ne sait pas si elle vaut pour
+d'autres matériaux ou tensions.</value>
   </data>
 </root>

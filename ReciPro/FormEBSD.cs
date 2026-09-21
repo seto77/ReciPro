@@ -96,8 +96,8 @@ public partial class FormEBSD : FormBase
     /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数 A(E) = exp(−(E0 − E)/E_c) を合成に使うか (既定 ON)。
     /// 詳しい理由と実測値は <see cref="Crystallography.EbsdPatternComposer.CoherenceLossDecayKeV"/> の doc を参照</summary>
     public bool CoherenceLossWeight { get => checkBoxCoherenceLoss.Checked; set => checkBoxCoherenceLoss.Checked = value; }
-    /// <summary>260920Cl 追加: A(E) の特性損失 E_c [keV] (既定 0.7)。小さいほど低損失電子だけが菊池コントラストを担う。
-    /// 既定値は Si 20 kV の実測パターン 1 枚で校正した値 (旧 1.0)。物質・加速電圧への一般性は未確認</summary>
+    /// <summary>260920Cl 追加: A(E) の特性損失 E_c [keV] (既定 0.8。260921Cl 変更: 旧 0.7)。小さいほど低損失電子だけが菊池コントラストを担う。
+    /// 既定値は Si 20 kV の実測パターン 1 枚で校正した値 (旧 1.0 → 0.7 → 深さ写像 A2 の後に 0.8)。物質・加速電圧への一般性は未確認</summary>
     public double CoherenceLossDecayKeV { get => numericBoxCoherenceLossDecay.Value; set => numericBoxCoherenceLossDecay.Value = value; }
     /// <summary>260920Cl 追加: 合成器へ渡す E_c。OFF なら NaN (= 全エネルギースライスが満額のコントラストを持つ従来動作)</summary>
     internal double ComposerCoherenceLossDecayKeV => CoherenceLossWeight ? CoherenceLossDecayKeV : double.NaN;

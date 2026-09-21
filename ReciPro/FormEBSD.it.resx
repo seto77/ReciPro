@@ -987,7 +987,8 @@ troppo larghe (Si 20 kV: 5 %; 1,7 % con E_c = 1 keV).</value>
     <value>Perdita di energia caratteristica E_c del decadimento del contrasto
 A(E) = exp(-(E0 - E) / E_c), in keV. Più piccola significa che solo gli
 elettroni a bassa perdita portano il contrasto di Kikuchi.
-Sotto circa 1 keV il passo di energia predefinito di 1 keV non
-risolve la differenza.</value>
+Il valore predefinito di 0.8 keV è calibrato su un pattern
+misurato di Si a 20 kV. Non è noto se valga per altri
+materiali o tensioni.</value>
   </data>
 </root>

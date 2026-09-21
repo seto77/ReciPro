@@ -7316,7 +7316,7 @@ default E_c they match the measured pattern.</value>
     <value>Characteristic energy loss E_c of the contrast decay
 A(E) = exp(-(E0 - E) / E_c), in keV. Smaller means only
 low-loss electrons carry the Kikuchi contrast.
-The default 0.7 keV is calibrated on one measured Si
+The default 0.8 keV is calibrated on one measured Si
 pattern at 20 kV. Whether it holds for other materials
 or voltages is not known.</value>
   </data>

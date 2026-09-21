@@ -977,7 +977,8 @@ largas demais (Si 20 kV: 5 %; 1,7 % com E_c = 1 keV).</value>
     <value>Perda de energia característica E_c do decaimento do contraste
 A(E) = exp(-(E0 - E) / E_c), em keV. Menor significa que só os
 elétrons de baixa perda levam o contraste de Kikuchi.
-Abaixo de ~1 keV o passo de energia padrão de 1 keV não
-resolve a diferença.</value>
+O valor padrão de 0.8 keV foi calibrado com um padrão
+medido de Si a 20 kV. Não se sabe se vale para outros
+materiais ou tensões.</value>
   </data>
 </root>
