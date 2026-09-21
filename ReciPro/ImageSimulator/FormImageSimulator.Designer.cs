@@ -531,7 +531,7 @@ namespace ReciPro
             trackBarAdvancedMax.Maximum = 1D;
             trackBarAdvancedMax.Minimum = 0D;
             trackBarAdvancedMax.Name = "trackBarAdvancedMax";
-            trackBarAdvancedMax.NumericBoxSize = 95;
+            trackBarAdvancedMax.ValueBoxWidth = 45; // 260920Cl 変更: NumericBoxSize = 95 → 数値欄の幅を直接指定 (実測: 外形 95 は維持。95 - 50 （Max + spin）)
             toolTip.SetToolTip(trackBarAdvancedMax, resources.GetString("trackBarAdvancedMax.ToolTip"));
             trackBarAdvancedMax.UpDown_Increment = 0.01D;
             trackBarAdvancedMax.Value = 1D;
@@ -544,7 +544,7 @@ namespace ReciPro
             trackBarAdvancedMin.Maximum = 65535D;
             trackBarAdvancedMin.Minimum = 0D;
             trackBarAdvancedMin.Name = "trackBarAdvancedMin";
-            trackBarAdvancedMin.NumericBoxSize = 95;
+            trackBarAdvancedMin.ValueBoxWidth = 48; // 260920Cl 変更: NumericBoxSize = 95 → 数値欄の幅を直接指定 (実測: 外形 95 は維持。95 - 47 （Min + spin）)
             toolTip.SetToolTip(trackBarAdvancedMin, resources.GetString("trackBarAdvancedMin.ToolTip"));
             trackBarAdvancedMin.ValueChanged += TrackBarAdvancedMin_ValueChanged;
             // 

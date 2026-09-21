@@ -1310,7 +1310,7 @@
             trackBarAdvancedDepthCueingNear.Maximum = 30D;
             trackBarAdvancedDepthCueingNear.Minimum = -30D;
             trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
-            trackBarAdvancedDepthCueingNear.NumericBoxSize = 105;
+            trackBarAdvancedDepthCueingNear.ValueBoxWidth = 72; // 260920Cl 変更: NumericBoxSize = 105 → 数値欄の幅を直接指定 (実測: 外形 105 は維持。105 - 33 （Å + spin）)
             toolTip.SetToolTip(trackBarAdvancedDepthCueingNear, resources.GetString("trackBarAdvancedDepthCueingNear.ToolTip"));
             trackBarAdvancedDepthCueingNear.Value = 5D;
             trackBarAdvancedDepthCueingNear.ValueChanged += trackBarAdvanced2_ValueChanged;
@@ -1329,7 +1329,7 @@
             trackBarAdvancedDepthCueingFar.Maximum = 30D;
             trackBarAdvancedDepthCueingFar.Minimum = -30D;
             trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
-            trackBarAdvancedDepthCueingFar.NumericBoxSize = 105;
+            trackBarAdvancedDepthCueingFar.ValueBoxWidth = 72; // 260920Cl 変更: NumericBoxSize = 105 → 数値欄の幅を直接指定 (実測: 外形 105 は維持。105 - 33 （Å + spin）)
             toolTip.SetToolTip(trackBarAdvancedDepthCueingFar, resources.GetString("trackBarAdvancedDepthCueingFar.ToolTip"));
             trackBarAdvancedDepthCueingFar.Value = -15D;
             trackBarAdvancedDepthCueingFar.ValueChanged += trackBarAdvanced2_ValueChanged;

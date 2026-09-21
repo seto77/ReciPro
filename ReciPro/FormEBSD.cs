@@ -283,20 +283,22 @@ public partial class FormEBSD : FormBase
     /// <summary>indexControlZoneAxis へプログラムから書き戻す間、ValueChanged を無視する</summary>
     private bool skipZoneAxisIndexEvent = false;
 
-    /// <summary>実測画像のピクセル座標 → 表示パターン座標 (mm)。検出器中心基準の (u,v) を表示原点へ移す</summary>
+    /// <summary>実測画像のピクセル座標 → 表示パターン座標 (mm)。検出器中心基準の (u,v) を表示原点へ移す。
+    /// 260921Cl 変更: 画素サイズと ±0.5 の画素中心規約は <see cref="EbsdDetectorGeometry.PixelToMm"/> に任せる。
+    /// 旧は <c>DetHalfWidth * 2 / expPbmp.Width</c> を 2 箇所へ直書きしており、<see cref="BuildDetectorGeometry"/> と
+    /// 合わせて同じ規約が 3 箇所にあった (非正方画素や原点規約を変えると、拾った点だけ黙って半画素ずれる)</summary>
     private PointD ZoneAxisPixelToView(double col, double row)
     {
-        double s = DetHalfWidth * 2 / expPbmp.Width; //BuildDetectorGeometry と同じ画素サイズ
-        return new PointD(DetectorCenterView.X + (col + 0.5 - expPbmp.Width / 2.0) * s,
-                          DetectorCenterView.Y + (row + 0.5 - expPbmp.Height / 2.0) * s);
+        var (u, v) = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height).PixelToMm(col, row);
+        return new PointD(DetectorCenterView.X + u, DetectorCenterView.Y + v);
     }
 
     /// <summary>表示パターン座標 (mm) → 実測画像のピクセル座標 (ZoneAxisPixelToView の逆)</summary>
     private (double Col, double Row) ZoneAxisViewToPixel(in PointD view)
     {
-        double s = DetHalfWidth * 2 / expPbmp.Width;
-        return ((view.X - DetectorCenterView.X) / s + expPbmp.Width / 2.0 - 0.5,
-                (view.Y - DetectorCenterView.Y) / s + expPbmp.Height / 2.0 - 0.5);
+        var geom = BuildDetectorGeometry(expPbmp.Width, expPbmp.Height);
+        return ((view.X - DetectorCenterView.X) / geom.PixelSize + geom.WidthPx / 2.0 - 0.5,
+                (view.Y - DetectorCenterView.Y) / geom.PixelSize + geom.HeightPx / 2.0 - 0.5);
     }
 
     /// <summary>晶帯軸ピッキングが使える状態か (モード ON かつ実測画像あり)</summary>
@@ -3840,7 +3842,7 @@ public partial class FormEBSD : FormBase
         {
             var fx = (uint)selectedZoneAxisPick < (uint)zoneAxisPicks.Count ? zoneAxisPicks[selectedZoneAxisPick].FixedIndex : null;
             indexControlZoneAxis.Values = fx is { } v ? (v.U, v.V, v.W) : (0, 0, 0);
-            indexControlZoneAxis.Enabled = selectedZoneAxisPick >= 0;
+            indexControlZoneAxis.Enabled = checkBoxPickZoneAxis.Checked && selectedZoneAxisPick >= 0; //260921Cl: 真の条件はここ 1 箇所だけ
         }
         finally { skipZoneAxisIndexEvent = false; }
     }
@@ -3859,7 +3861,9 @@ public partial class FormEBSD : FormBase
 
     private void checkBoxPickZoneAxis_CheckedChanged(object sender, EventArgs e)
     {
-        indexControlZoneAxis.Enabled = checkBoxPickZoneAxis.Checked && selectedZoneAxisPick >= 0;
+        //260921Cl 変更: Enabled の式を 2 通り持つとイベント順で結果が変わるので SyncZoneAxisIndexControl に一本化。
+        //  旧: indexControlZoneAxis.Enabled = checkBoxPickZoneAxis.Checked && selectedZoneAxisPick >= 0;
+        SyncZoneAxisIndexControl();
         ReportZoneAxisStatus();
         DrawOverlays();
     }
@@ -3913,7 +3917,8 @@ public partial class FormEBSD : FormBase
             //見つからなければ 5° で拾い直す (どちらで当たったかはステータスに出す)
             foreach (var tol in new[] { 2.0, 5.0 })
             {
-                solutions = EbsdZoneAxisIndexer.Index([.. zoneAxisPicks], geom, crystal,
+                //260921Cl: 引数は IReadOnlyList<EbsdZoneAxisPick> なので [.. ] のコピーは不要 (許容差リトライで 2 回コピーしていた)
+                solutions = EbsdZoneAxisIndexer.Index(zoneAxisPicks, geom, crystal,
                     toleranceDeg: tol, maxCandidates: 10,
                     refineGeometry: checkBoxZoneAxisRefineGeometry.Checked,
                     properSymmetries: syms is { Length: > 0 } ? syms : null);
@@ -3931,6 +3936,8 @@ public partial class FormEBSD : FormBase
             {
                 Rotation = s.Rotation, Score = s.Score, IsZoneAxis = true,
                 AssignedBands = s.Assigned, TotalBands = zoneAxisPicks.Count, AngularRmsDeg = s.RmsDeg,
+                //260921Cl: 幾何は候補自身に持たせる (別リストで添字合わせをしない。EbsdOrientationCandidate.Geometry の ⚠ 参照)
+                Geometry = s.Geometry, GeometryShiftMm = s.GeometryShiftMm,
             };
             for (int k = 0; k < s.Assignments.Length; k++)
                 if (s.Assignments[k] is { } a) c.Assignments[k] = (a.U, a.V, a.W);
@@ -3954,12 +3961,16 @@ public partial class FormEBSD : FormBase
     private void DrawZoneAxisPicks(Graphics g)
     {
         if (zoneAxisPicks.Count == 0 || expPbmp == null) return;
+        //260921Cl 追加: 退化配置 (カメラ長 0。DetY に 0 を入力すると作れてしまう) では
+        //  EbsdDetectorGeometry のコンストラクタが例外を投げる。DrawEBSD には同じガードがあるが
+        //  この描画経路には無く、拾った点がある状態で DetY=0 にすると描画ハンドラから未捕捉で飛んでいた
+        if (CameraLength2 <= 1E-6) return;
         float r = (float)(6 * Resolution); //画面上でおよそ 6 px の丸
         using var pen = new Pen(Color.Cyan, (float)(1.5 * Resolution));
         using var penSel = new Pen(Color.Yellow, (float)(2.5 * Resolution));
         using var brush = new SolidBrush(Color.Cyan);
         using var brushSel = new SolidBrush(Color.Yellow);
-        using var font = new Font("Segoe UI", (float)(11 * Resolution), GraphicsUnit.Pixel);
+        using var font = new Font(WineCompat.Resolve("Segoe UI"), (float)(11 * Resolution), GraphicsUnit.Pixel); //260921Cl 変更: paint 系のフォント族は WineCompat.Resolve を通す規約 (旧: new Font("Segoe UI", …))
         for (int k = 0; k < zoneAxisPicks.Count; k++)
         {
             var p = ZoneAxisPixelToView(zoneAxisPicks[k].Col, zoneAxisPicks[k].Row);
@@ -4049,6 +4060,7 @@ public partial class FormEBSD : FormBase
                 return;
             }
             orientationCandidates = candidates;
+            zoneAxisSolutions = null; //260921Cl: 候補を差し替えたらオーバーレイのラベル元も失効させる (幾何は候補自身が持つので事故にはならない)
             FillCandidateGrid();
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める
             //260724Cl: 使用モードを明示 (Codex 裁定)。旧: (refineByZncc ? " (ZNCC refined)" : "")
@@ -4125,11 +4137,15 @@ public partial class FormEBSD : FormBase
         if (skipCandidateSelectionEvent || orientationCandidates == null || dataGridViewEbsdCandidates.SelectedRows.Count == 0) return;
         int idx = dataGridViewEbsdCandidates.SelectedRows[0].Index;
         if ((uint)idx >= (uint)orientationCandidates.Count) return;
-        //260921Cl 追加: 晶帯軸探索で幾何も最適化していた候補は、方位と一緒に検出器中心も適用する
-        //(作者が「+ 幾何」を明示的に選んだときだけなので、黙って幾何が変わることはない)
-        if (zoneAxisSolutions != null && idx < zoneAxisSolutions.Count && zoneAxisSolutions[idx].GeometryShiftMm > 0)
+        //260921Cl 追加: 幾何も最適化した候補は、方位と一緒に検出器中心も適用する
+        //(作者が「+ 幾何」を明示的に選んだときだけ Geometry が入るので、黙って幾何が変わることはない)
+        //260921Cl 変更: 旧は zoneAxisSolutions[idx] という**別リストの同添字**から引いていた。
+        //  buttonFindOrientation_Click は候補だけ差し替えるので、晶帯軸探索のあとに Radon 探索を走らせると
+        //  古い晶帯軸解の幾何が Radon 候補へ適用される不具合になっていた。候補自身に持たせて構造的に断つ。
+        //  ⚠ 幾何を持つ候補は「動いていない (shift 0)」ものも含めて必ず適用する。条件付きにすると、
+        //  動かした候補の次に動かさない候補を選んだとき前の幾何が残る。
+        if (orientationCandidates[idx].Geometry is { } g)
         {
-            var g = zoneAxisSolutions[idx].Geometry;
             skipViewEvent = true;
             try
             {

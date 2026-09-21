@@ -835,9 +835,6 @@ Radon バンド証拠の z 値、ZNCC =
   <data name="flowLayoutPanelExperimentalImage.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="flowLayoutPanelExpOpacity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
     <value>動力学計算のパラメータ</value>
   </data>
@@ -1041,9 +1038,10 @@ Radon バンド証拠の z 値、ZNCC =
     <value>蛍光体応答で電子を重み付け</value>
   </data>
   <data name="checkBoxPhosphorWeight.ToolTip" xml:space="preserve">
-    <value>各電子を 1 本 1 票ではなく、蛍光板の発光量 φ(E) = max(0, E − E_dead)
-で重み付けします。パターンの上下方向の勾配が緩みます
-(Si, 20 kV: 約 2.5 → 1.7)。電子を直接計数する検出器では OFF に。</value>
+    <value>各電子を 1 本 1 票ではなく、蛍光板の発光量
+φ(E) = max(0, E − E_dead) で重み付けします。
+パターンの上下方向の勾配が緩みます (Si, 20 kV: 約 2.5 → 1.7)。
+電子を直接計数する検出器では OFF に。</value>
   </data>
   <data name="numericBoxPhosphorDeadEnergy.ToolTip" xml:space="preserve">
     <value>蛍光体の不感層 (しきい) エネルギー (keV)。発光量 ∝ E − E_dead、
@@ -1161,8 +1159,8 @@ CSV 出力は生値のままです。</value>
   </data>
   <data name="checkBoxCoherenceLoss.ToolTip" xml:space="preserve">
     <value>各エネルギースライスの菊池コントラストを
-A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回します。
-総量は変わりません。切ると全スライスが満額のコントラストを持ち、
+A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回します
+(総量は保存)。切ると全スライスが満額のコントラストを持ち、
 バンドが単色より 13 % 広くなります (Si 20 kV)。
 既定の E_c では実測とほぼ一致します。</value>
   </data>
@@ -1176,12 +1174,11 @@ A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回しま�
     <value>晶帯軸</value>
   </data>
   <data name="checkBoxPickZoneAxis.ToolTip" xml:space="preserve">
-    <value>パターン上のバンド交点 (晶帯軸) を拾います。
+    <value>実測パターン上のバンド交点 (晶帯軸) を拾います。
 左ダブルクリックで追加、Ctrl + 左ダブルクリックで
 画面上 5 px 以内の点を削除、Shift + 左ダブルクリックで
-点を選択して [u v w] を手入力できます。
-実測画像を読み込み直すと全部消えます。
-オフの間はダブルクリックは従来どおり検出器セルの選択です。</value>
+点を選んで [u v w] を手入力できます。
+オフの間はダブルクリックで検出器セルを選びます。</value>
   </data>
   <data name="indexControlZoneAxis.ToolTip" xml:space="preserve">
     <value>Shift + 左ダブルクリックで選んだ点の晶帯軸指数 [u v w]。
@@ -1192,7 +1189,7 @@ A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回しま�
     <value>+ 幾何</value>
   </data>
   <data name="checkBoxZoneAxisRefineGeometry.ToolTip" xml:space="preserve">
-    <value>方位と一緒に検出器中心 (X, Y, Z) も最適化します。
+    <value>方位と一緒に検出器中心 (X, Y, Z、mm) も最適化します。
 晶帯軸の予測位置と拾った位置のピクセル残差を最小にします。
 割り当てが 4 点以上必要です。候補を選ぶと、方位だけでなく
 最適化後の幾何も適用されます。</value>
@@ -1209,7 +1206,10 @@ A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回しま�
     <value>消去</value>
   </data>
   <data name="buttonClearZoneAxis.ToolTip" xml:space="preserve">
-    <value>拾った晶帯軸を全部消します。</value>
+    <value>拾った晶帯軸の点と手入力した [u v w] を全部消し、
+直前の晶帯軸探索の候補一覧も破棄します。
+実測画像を読み込み直したときも同じです。
+元に戻す操作はありません。</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

@@ -880,7 +880,7 @@ namespace ReciPro
             trackBarAdvancedBack.Maximum = 100D;
             trackBarAdvancedBack.Minimum = 0D;
             trackBarAdvancedBack.Name = "trackBarAdvancedBack";
-            trackBarAdvancedBack.NumericBoxSize = 60;
+            trackBarAdvancedBack.ValueBoxWidth = 43; // 260920Cl 変更: NumericBoxSize = 60 → 数値欄の幅を直接指定 (実測: 外形 60 は維持。60 - 17 （spin）)
             trackBarAdvancedBack.Size = new System.Drawing.Size(517, 26);
             trackBarAdvancedBack.TabIndex = 1;
             trackBarAdvancedBack.Value = 10D;
@@ -899,7 +899,7 @@ namespace ReciPro
             trackBarAdvancedTime.Maximum = 100D;
             trackBarAdvancedTime.Minimum = 0D;
             trackBarAdvancedTime.Name = "trackBarAdvancedTime";
-            trackBarAdvancedTime.NumericBoxSize = 128;
+            trackBarAdvancedTime.ValueBoxWidth = 54; // 260920Cl 変更: NumericBoxSize = 128 → 数値欄の幅を直接指定 (実測: 外形 128 は維持。128 - 74 （Time + ns + spin）)
             trackBarAdvancedTime.Size = new System.Drawing.Size(547, 26);
             trackBarAdvancedTime.Smart_Increment = false;
             trackBarAdvancedTime.TabIndex = 1;
@@ -917,7 +917,7 @@ namespace ReciPro
             trackBarAdvancedFront.Maximum = 100D;
             trackBarAdvancedFront.Minimum = 0D;
             trackBarAdvancedFront.Name = "trackBarAdvancedFront";
-            trackBarAdvancedFront.NumericBoxSize = 60;
+            trackBarAdvancedFront.ValueBoxWidth = 43; // 260920Cl 変更: NumericBoxSize = 60 → 数値欄の幅を直接指定 (実測: 外形 60 は維持。60 - 17 （spin）)
             trackBarAdvancedFront.Size = new System.Drawing.Size(517, 26);
             trackBarAdvancedFront.TabIndex = 1;
             trackBarAdvancedFront.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(trackBarAdvancedBack_ValueChanged);

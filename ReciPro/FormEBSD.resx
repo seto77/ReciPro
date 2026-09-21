@@ -3316,7 +3316,7 @@ Pixels at or below it become black. The slider is linear.</value>
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpMin.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelExpMinMax</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpMin.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3357,7 +3357,7 @@ Pixels at or above it become white. The slider is linear.</value>
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelExpMinMax</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpMax.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3396,7 +3396,7 @@ tenth (ten times stronger). The centre stays fixed.</value>
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpContrast.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+    <value>flowLayoutPanelExpContrastOpacity</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpContrast.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3437,7 +3437,7 @@ simulated pattern underneath.</value>
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+    <value>flowLayoutPanelExpContrastOpacity</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedExpOpacity.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5709,28 +5709,28 @@ Al-coated P43 screen; default 2 keV. Input range 0–10 keV.</value>
   <data name="flowLayoutPanelExperimentalImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="&gt;&gt;flowLayoutPanelExpMinMax.Name" xml:space="preserve">
+    <value>flowLayoutPanelExpMinMax</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpMinMax.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpMinMax.Parent" xml:space="preserve">
     <value>flowLayoutPanelExperimentalImage</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpMinMax.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+  <data name="&gt;&gt;flowLayoutPanelExpContrastOpacity.Name" xml:space="preserve">
+    <value>flowLayoutPanelExpContrastOpacity</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpContrastOpacity.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpContrastOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanelExperimentalImage</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelExpContrastOpacity.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="flowLayoutPanelExperimentalImage.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
@@ -5763,68 +5763,35 @@ Al-coated P43 screen; default 2 keV. Input range 0–10 keV.</value>
   <data name="&gt;&gt;flowLayoutPanelExperimentalImage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelExpMinMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelExpMinMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelExpMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>366, 25</value>
   </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelExpMinMax.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelExpMinMax.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelExpContrastOpacity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelExpContrastOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 34</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelExpContrastOpacity.Size" type="System.Drawing.Size, System.Drawing">
     <value>366, 25</value>
   </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelExpContrastOpacity.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelExpContrastOpacity.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 62</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelExpOpacity.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpOpacity.Name" xml:space="preserve">
-    <value>flowLayoutPanelExpOpacity</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpOpacity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanelExperimentalImageTab</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelExpOpacity.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="groupBoxSimulationParameters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7396,12 +7363,11 @@ or voltages is not known.</value>
     <value>Zone axis</value>
   </data>
   <data name="checkBoxPickZoneAxis.ToolTip" xml:space="preserve">
-    <value>Pick band intersections (zone axes) on the pattern.
-Left double-click adds a point, Ctrl + left double-click
-removes the one within 5 screen pixels, and Shift + left
-double-click selects a point so you can type its [u v w].
-Points are cleared when a new experimental image is loaded.
-While this is off, double-click selects a detector cell as before.</value>
+    <value>Pick band intersections (zone axes) on the experimental
+pattern. Left double-click adds a point, Ctrl + left
+double-click removes one within 5 screen pixels, and
+Shift + left double-click selects it so you can type
+its [u v w]. While off, double-click selects a detector cell.</value>
   </data>
   <data name="indexControlZoneAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7446,7 +7412,7 @@ which helps for low-symmetry crystals and high-index axes.</value>
     <value>+ geometry</value>
   </data>
   <data name="checkBoxZoneAxisRefineGeometry.ToolTip" xml:space="preserve">
-    <value>Also optimise the detector centre (X, Y, Z) together with
+    <value>Also optimise the detector centre (X, Y, Z, in mm) together with
 the orientation, by minimising the pixel residual between
 the predicted and the picked zone-axis positions.
 Needs at least 4 assigned points. Selecting a candidate then
@@ -7506,6 +7472,9 @@ Results appear in the candidate list on the right.</value>
     <value>Clear</value>
   </data>
   <data name="buttonClearZoneAxis.ToolTip" xml:space="preserve">
-    <value>Remove all picked zone axes.</value>
+    <value>Remove all picked zone axes and the [u v w] you typed
+for them, and discard the candidate list of the last
+zone-axis search. Loading a new experimental image
+does the same. There is no undo.</value>
   </data>
 </root>

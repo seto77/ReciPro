@@ -48,6 +48,8 @@
         //     ShowCheckBoxes, ViewSettings, Copy, ResolutionFlip, CopyOptions, MasterPatternDepth, MasterPatternControls,
         //     CopyRange, CopyButton, CopyFormat, CopyRadios}
         //   flowLayoutPanel1DetectorOutline -> flowLayoutPanelDetectorOutline / flowLayoutPanel1KikuchiLines -> flowLayoutPanelKikuchiLines
+        // (260921Cl) 同じ作者指示に従い、260920Cl に既定名で追加されていた 2 つをリネーム:
+        //   flowLayoutPanel1 -> flowLayoutPanelExpMinMax / flowLayoutPanel2 -> flowLayoutPanelExpContrastOpacity
         //   label1..15 -> label{TextSize, DetectorCenter, Polarity, Color, DetectorSizeTilt, DetectorResolution, BrightnessMin,
         //     BrightnessMax, ExpBrightness, Brightness, LineWidth, BseDepth, BseDeltaE, BseStereonetNote}
         //   groupBox2 -> groupBoxTextSettings / panel1,3,4 -> panelSpacer{Left,Right,Bottom} / statusStrip1 -> statusStripMain
@@ -228,9 +230,8 @@
             groupBoxTextSettings = new System.Windows.Forms.GroupBox();
             flowLayoutPanelTextSettings = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelExperimentalImage = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelExpOpacity = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelExpMinMax = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelExpContrastOpacity = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
             flowLayoutPanelSimulationParameters = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelMaxNumOfGAndGrid = new System.Windows.Forms.FlowLayoutPanel();
@@ -310,8 +311,8 @@
             groupBoxTextSettings.SuspendLayout();
             flowLayoutPanelTextSettings.SuspendLayout();
             flowLayoutPanelExperimentalImage.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanelExpMinMax.SuspendLayout();
+            flowLayoutPanelExpContrastOpacity.SuspendLayout();
             groupBoxSimulationParameters.SuspendLayout();
             flowLayoutPanelSimulationParameters.SuspendLayout();
             flowLayoutPanelMaxNumOfGAndGrid.SuspendLayout();
@@ -1774,28 +1775,23 @@
             // flowLayoutPanelExperimentalImage
             // 
             resources.ApplyResources(flowLayoutPanelExperimentalImage, "flowLayoutPanelExperimentalImage");
-            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanel1);
-            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpMinMax);
+            flowLayoutPanelExperimentalImage.Controls.Add(flowLayoutPanelExpContrastOpacity);
             flowLayoutPanelExperimentalImage.Name = "flowLayoutPanelExperimentalImage";
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelExpMinMax
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(trackBarAdvancedExpMin);
-            flowLayoutPanel1.Controls.Add(trackBarAdvancedExpMax);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelExpMinMax, "flowLayoutPanelExpMinMax");
+            flowLayoutPanelExpMinMax.Controls.Add(trackBarAdvancedExpMin);
+            flowLayoutPanelExpMinMax.Controls.Add(trackBarAdvancedExpMax);
+            flowLayoutPanelExpMinMax.Name = "flowLayoutPanelExpMinMax";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelExpContrastOpacity
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(trackBarAdvancedExpContrast);
-            flowLayoutPanel2.Controls.Add(trackBarAdvancedExpOpacity);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
-            // flowLayoutPanelExpOpacity
-            // 
-            resources.ApplyResources(flowLayoutPanelExpOpacity, "flowLayoutPanelExpOpacity");
-            flowLayoutPanelExpOpacity.Name = "flowLayoutPanelExpOpacity";
+            resources.ApplyResources(flowLayoutPanelExpContrastOpacity, "flowLayoutPanelExpContrastOpacity");
+            flowLayoutPanelExpContrastOpacity.Controls.Add(trackBarAdvancedExpContrast);
+            flowLayoutPanelExpContrastOpacity.Controls.Add(trackBarAdvancedExpOpacity);
+            flowLayoutPanelExpContrastOpacity.Name = "flowLayoutPanelExpContrastOpacity";
             // 
             // groupBoxSimulationParameters
             // 
@@ -2037,7 +2033,6 @@
             resources.ApplyResources(flowLayoutPanelExperimentalImageTab, "flowLayoutPanelExperimentalImageTab");
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExperimentalImage);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpFlatten);
-            flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelExpOpacity);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelIndexingButtons);
             flowLayoutPanelExperimentalImageTab.Controls.Add(flowLayoutPanelZoneAxis); // 260921Cl 追加
             flowLayoutPanelExperimentalImageTab.Name = "flowLayoutPanelExperimentalImageTab";
@@ -2075,7 +2070,10 @@
             indexControlZoneAxis.BoxWidthEnabled = false;
             indexControlZoneAxis.LabelVisible = false;
             indexControlZoneAxis.Mode = IndexControl.ModeEnum.Axis;
-            indexControlZoneAxis.Bracket = IndexControl.BracketEnum.Angle;
+            //260921Cl 変更: Angle は ⟨u v w⟩ = 対称等価な方向の**族**の表記。ここで扱うのは特定の 1 方向なので [u v w] が正しい
+            //  (EbsdZoneAxisIndexer.SameAxis は符号反転だけを同一視し、等価族には展開しない。HklText とツールチップも [u v w])
+            //旧: indexControlZoneAxis.Bracket = IndexControl.BracketEnum.Angle;
+            indexControlZoneAxis.Bracket = IndexControl.BracketEnum.Round;
             indexControlZoneAxis.Name = "indexControlZoneAxis";
             toolTip.SetToolTip(indexControlZoneAxis, resources.GetString("indexControlZoneAxis.ToolTip"));
             indexControlZoneAxis.ValueChanged += indexControlZoneAxis_ValueChanged;
@@ -2283,8 +2281,8 @@
             flowLayoutPanelTextSettings.PerformLayout();
             flowLayoutPanelExperimentalImage.ResumeLayout(false);
             flowLayoutPanelExperimentalImage.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanelExpMinMax.ResumeLayout(false);
+            flowLayoutPanelExpContrastOpacity.ResumeLayout(false);
             groupBoxSimulationParameters.ResumeLayout(false);
             groupBoxSimulationParameters.PerformLayout();
             flowLayoutPanelSimulationParameters.ResumeLayout(false);
@@ -2531,7 +2529,6 @@
         private NumericBox numericBoxDetResolution;
         private System.Windows.Forms.CheckBox checkBoxShowExperimentalImage;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExperimentalImage;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpOpacity;
         private TrackBarAdvanced trackBarAdvancedExpContrast; // 260920Cl
         private TrackBarAdvanced trackBarAdvancedExpOpacity; // 260920Cl
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpFlatten; // 260920Cl 追加
@@ -2576,8 +2573,8 @@
         private System.Windows.Forms.Button buttonSaveMovie;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpMinMax;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExpContrastOpacity;
     }
 }
 
