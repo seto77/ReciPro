@@ -66,7 +66,10 @@ $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac
 
 此处 $\mathbf K$ 是在 Ewald 球面上取值的波矢，$\mathrm d\Omega$ 是其立体角元。ReciPro 用 Gauss–Legendre 求积数值计算此积分（被积函数在前向有尖锐峰值，因此将极角按散射矢量模长的等比区间分割以分辨它）。对于 STEM 环形探测器收集的 TDS，或 EBSD 中的背散射 TDS，则将**同一被积函数**改为在探测器的角度范围（环形区域或后半球）内积分。
 
-被积函数中的弹性因子 $f_{e,k}$ 采用两段构造：低 $s$ 处用[散射因子页面](../a2-beam-interaction/scattering-factor.md)的 **Peng 5-Gaussian 拟合**；高 $s$ 处（$s \ge 2.5$ Å⁻¹）用以 Waasmaier–Kirfel X 射线因子 $f_0(s)$ 直接计算的 **Mott–Bethe 关系式**，并在 $1.5\text{–}2.5$ Å⁻¹ 之间平滑过渡。原因是 Peng 的 Gaussian 和在 $s \gtrsim 2$ Å⁻¹ 之外衰减过快（Gaussian 尾部呈指数消失，而真实的 $f_e$ 具有 $1/s^2$ 尾部），在 $s$ 达到 $k_{vac}$ 量级（200 kV 时约 40 Å⁻¹）的背散射中会低估许多个数量级。两个实现细节：$f_0(s)$ 被钳制在 $[0, Z]$ 内（某些拟合形式在拟合范围外发散），且离子条目也使用中性原子的 $f_0$（高 $s$ 处只能看到核电荷，而非电子云）。
+被积函数中的弹性因子 $f_{e,k}$ 由两个来源组成。对 **$Z = 1\text{–}86$ 的中性原子**，在 $0 \le s \le 6$ Å⁻¹ 范围内使用 **Temari** dataset-factors v2.0.0（[DOI 10.5281/zenodo.22820415](https://doi.org/10.5281/zenodo.22820415)；参见[散射因子页面](../a2-beam-interaction/scattering-factor.md)）的第一性原理 $f_e$，在 $s > 6$ Å⁻¹ 处使用以 Waasmaier–Kirfel X 射线因子 $f_0(s)$ 直接计算的 **Mott–Bethe 关系式**；**6 Å⁻¹ 以外的部分不是 Temari 的计算值**。两者在 $s = 6$ Å⁻¹ 处不作数值匹配而直接衔接（该处的跳变不超过 0.041 %）。对于 Temari 未收录的**离子**和 $Z = 87\text{–}98$，低 $s$ 部分使用 **Peng 5-Gaussian 拟合**，并在 $1.5\text{–}2.5$ Å⁻¹ 之间平滑过渡到同一条 Mott–Bethe 尾部。之所以需要尾部，是因为 Gaussian 和在 $s \gtrsim 2$ Å⁻¹ 之外衰减过快（Gaussian 尾部呈指数消失，而真实的 $f_e$ 具有 $1/s^2$ 尾部），在 $s$ 达到 $k_{vac}$ 量级（200 kV 时约 40 Å⁻¹）的背散射中会低估许多个数量级。两个实现细节：$f_0(s)$ 被钳制在 $[0, Z]$ 内（某些拟合形式在拟合范围外发散），且离子条目也使用中性原子的 $f_0$（高 $s$ 处只能看到核电荷，而非电子云）。
+
+!!! note "Mott–Bethe 尾部的贡献有多大"
+    $s > 6$ Å⁻¹ 的部分占 $f'(0)$ 的 1.5–4.8 %（80–300 kV、$B = 0.3\text{–}1.0$ Å²、Si/Fe/Au、$|\mathbf g|/2 \le 25$ nm⁻¹；20 kV 时为 1.3–3.7 %）。更换尾部模型只使 $f'$ 改变 0.04–0.43 %，对模拟观测量（CBED、STEM、HRTEM、EBSD）的影响最多 0.45 %。在 6 Å⁻¹ 以下用 Temari 代替 Peng 拟合，使 $f'(0)$ 改变 0.06–0.27 %。Temari 的表是计算值，未声称经过认证的误差上限（`certification_status = not_certified`）。
 
 !!! note
     当 $f_e$ 是纯 Gaussian 和时，此积分存在双重 Gaussian 和形式的闭式解，ReciPro 的早期版本曾将其用作吸收散射因子。带有高 $s$ 尾部的 $f_e$ 不存在闭式解，因此改用数值求积，并已验证在禁用尾部时数值求积能重现闭式解。
