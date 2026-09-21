@@ -60,7 +60,10 @@ public partial class FormEBSD : FormBase
     public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
     private GLControlAlpha glControlMasterPattern3DAxes; // (260322Ch) MasterPattern3D と同期する結晶軸 inset
     private readonly Stopwatch sw1 = new(), sw2 = new();
-    private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量）
+    // private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量） // 260921Cl 変更前
+    //260921Cl 変更 (作者指示): 250万 → 1000万。ビニングを検出器 8×8 から射出半球 16×16 (= 256 ビン) へ広げたぶん、
+    //  1 ビンあたりの電子数を確保する。半球 16×16 で 1000 万発なら 1 ビンあたり ≈ 1.8 万個で、旧 (検出器 8×8・250 万発) の ≈ 8100 個より多い。
+    private const int BackscatterMonteCarloLoopCount = 10_000_000;
     private readonly Timer timer = new();
     #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
     /*
@@ -1110,7 +1113,9 @@ public partial class FormEBSD : FormBase
                 e.Vec, e.Energy)).ToArray();
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths); // 260919Cl 変更前
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm); // 260919Cl 変更前
-        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
+        // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, ...); // 260921Cl 変更前 (検出器ビニング)
+        //260921Cl 変更 (作者指示): 検出器ではなく射出半球をビニングするので、検出器幾何ではなく試料傾斜を渡す
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
@@ -2863,8 +2868,8 @@ public partial class FormEBSD : FormBase
                 progress.Report((95, "Fitting Monte Carlo distribution"));
                 var distribution = new EbsdMonteCarloDistribution(
                     bseRaw, energy,
-                    // detectorTilt, detectorY, detectorZ, detectorR, // 260723Cl 変更前: 円形検出器 (半径)
-                    detectorTilt, detectorX, detectorY, detectorZ, detectorHalfW, detectorHalfH, // 260718Cl: smpTilt 引数を削除 (BSE Vec は既に lab 座標系で検出器写像に試料傾斜は不要) // 260723Cl: 矩形検出器 (半幅・半高) + 中心 X
+                    // detectorTilt, detectorX, detectorY, detectorZ, detectorHalfW, detectorHalfH, // 260921Cl 変更前 (検出器ビニング)
+                    sampleTilt, //260921Cl 変更 (作者指示): 射出半球を Rosca-Lambert でビニングするので試料傾斜を渡す
                     // grid.energies, grid.depths); // 260919Cl 変更前
                     // grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm); // 260919Cl 変更前
                     grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
