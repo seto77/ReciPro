@@ -85,6 +85,16 @@ come somma discreta su energia e profondità.
 
 La parte Monte Carlo traccia la diffusione elastica, la diffusione anelastica, la perdita di energia e la fuoriuscita attraverso la superficie del campione. Per gli elettroni retrodiffusi costruisce distribuzioni di profondità, energia e direzione di uscita. ReciPro distingue i modelli che usano l'ultima posizione di diffusione anelastica e l'energia immediatamente successiva come sorgente effettiva, dai modelli che usano la profondità di fuga e l'energia di fuga.
 
+### Profondità della sorgente e lunghezza del percorso
+
+Per reciprocità, il master pattern per una direzione $\widehat{\mathbf s}$ viene risolto come un'onda piana che entra lungo $-\widehat{\mathbf s}$, prendendo la superficie del cristallo perpendicolare a $\widehat{\mathbf s}$ per ciascuna direzione; la sua coordinata di spessore $t$ è quindi misurata lungo la direzione di uscita. La profondità della sorgente $z$ fornita dal Monte Carlo è invece misurata lungo la normale alla superficie inclinata del campione. Con $\mu=\cos\chi$, dove $\chi$ è l'angolo tra la direzione di uscita e la normale alla superficie, una sorgente alla profondità $z$ si trova, lungo la direzione di uscita, alla lunghezza del percorso
+
+$$t=\frac{z}{\mu}$$
+
+dalla superficie. ReciPro approssima la distribuzione in profondità di ciascun bin di direzione di uscita e di ciascuna energia con un'esponenziale $\propto e^{-z/\lambda_z(E)}$, la converte in ogni pixel del rivelatore, con il $\mu$ di quel pixel, in $\lambda_t=\lambda_z/\mu$, e integra la distribuzione risultante, normalizzata entro l'array delle profondità, su ciascun intervallo di spessore del master pattern. Nella somma precedente l'indice di profondità scorre quindi sullo spessore $t_j$, e il peso di un pixel dipende dal suo $\mu$ oltre che da $\widehat{\mathbf s}$. Per uscita radente ($\mu$ piccolo), una sorgente alla stessa profondità percorre un cammino più lungo, per cui il peso si sposta verso fette più spesse.
+
+L'array delle profondità automatico termina al 99,9° percentile della lunghezza del percorso $z/\mu$ degli elettroni che raggiungono il rivelatore, arrotondato per eccesso a due cifre significative, e ha 40 punti più fitti vicino alla superficie.
+
 ---
 
 ## Sfondo TDS e modello di assorbimento

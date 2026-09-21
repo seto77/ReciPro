@@ -85,6 +85,16 @@ als diskrete Summe über Energie und Tiefe.
 
 Der Monte-Carlo-Teil verfolgt elastische Streuung, inelastische Streuung, Energieverlust und das Austreten durch die Probenoberfläche. Für rückgestreute Elektronen bildet er Verteilungen von Tiefe, Energie und Austrittsrichtung. ReciPro unterscheidet Modelle, die die letzte Position der inelastischen Streuung und die Energie unmittelbar danach als effektive Quelle verwenden, von Modellen, die die Austrittstiefe und die Austrittsenergie verwenden.
 
+### Quelltiefe und Weglänge
+
+Nach dem Reziprozitätstheorem wird das Master-Pattern für eine Richtung $\widehat{\mathbf s}$ als ebene Welle gelöst, die entlang $-\widehat{\mathbf s}$ einfällt, wobei die Kristalloberfläche für jede Richtung senkrecht zu $\widehat{\mathbf s}$ angenommen wird; seine Dickenkoordinate $t$ wird daher entlang der Austrittsrichtung gemessen. Die Monte-Carlo-Quelltiefe $z$ wird dagegen entlang der Normalen der gekippten Probenoberfläche gemessen. Mit $\mu=\cos\chi$, wobei $\chi$ der Winkel zwischen Austrittsrichtung und Oberflächennormale ist, liegt eine Quelle in der Tiefe $z$ entlang der Austrittsrichtung auf der Weglänge
+
+$$t=\frac{z}{\mu}$$
+
+von der Oberfläche entfernt. ReciPro passt die Tiefenverteilung für jedes Austrittsrichtungs-Bin und jede Energie mit einer Exponentialfunktion $\propto e^{-z/\lambda_z(E)}$ an, rechnet sie an jedem Detektorpixel mit dessen $\mu$ in $\lambda_t=\lambda_z/\mu$ um und integriert die innerhalb des Tiefenfelds normierte Verteilung über jedes Dickenintervall des Master-Patterns. In der obigen Summe läuft der Tiefenindex daher über die Dicke $t_j$, und das Gewicht eines Pixels hängt außer von $\widehat{\mathbf s}$ auch von seinem $\mu$ ab. Bei streifendem Austritt (kleines $\mu$) legt eine Quelle in derselben Tiefe einen längeren Weg zurück, sodass sich das Gewicht zu dickeren Schichten verschiebt.
+
+Das automatisch gewählte Tiefenfeld endet beim 99,9. Perzentil der Weglänge $z/\mu$ der Elektronen, die den Detektor erreichen (auf zwei signifikante Stellen aufgerundet), und hat 40 Punkte, die zur Oberfläche hin dichter liegen.
+
 ---
 
 ## TDS-Untergrund und Absorptionsmodell

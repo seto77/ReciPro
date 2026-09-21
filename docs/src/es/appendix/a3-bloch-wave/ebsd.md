@@ -85,6 +85,16 @@ como una suma discreta sobre energía y profundidad.
 
 La parte de Monte Carlo sigue la dispersión elástica, la dispersión inelástica, la pérdida de energía y el escape a través de la superficie de la muestra. Para los electrones retrodispersados construye distribuciones de profundidad, energía y dirección de salida. ReciPro distingue entre modelos que utilizan la última posición de dispersión inelástica y la energía inmediatamente posterior como fuente efectiva, y modelos que utilizan la profundidad de escape y la energía de escape.
 
+### Profundidad de la fuente y longitud de trayectoria
+
+Por reciprocidad, el master pattern para una dirección $\widehat{\mathbf s}$ se resuelve como una onda plana que entra a lo largo de $-\widehat{\mathbf s}$, tomando la superficie del cristal perpendicular a $\widehat{\mathbf s}$ para cada dirección, de modo que su coordenada de espesor $t$ se mide a lo largo de la dirección de salida. En cambio, la profundidad de la fuente $z$ de Monte Carlo se mide a lo largo de la normal de la superficie inclinada de la muestra. Con $\mu=\cos\chi$, donde $\chi$ es el ángulo entre la dirección de salida y la normal a la superficie, una fuente a profundidad $z$ se encuentra, a lo largo de la dirección de salida, a la longitud de trayectoria
+
+$$t=\frac{z}{\mu}$$
+
+de la superficie. ReciPro ajusta la distribución de profundidad de cada bin de dirección de salida y de cada energía con una exponencial $\propto e^{-z/\lambda_z(E)}$, la convierte en cada píxel del detector con el $\mu$ de ese píxel a $\lambda_t=\lambda_z/\mu$ e integra la distribución resultante, normalizada dentro de la matriz de profundidades, sobre cada intervalo de espesor del master pattern. Por tanto, en la suma anterior el índice de profundidad recorre el espesor $t_j$, y el peso de un píxel depende de su $\mu$ además de $\widehat{\mathbf s}$. En la salida rasante ($\mu$ pequeño), una fuente a la misma profundidad recorre un camino más largo, por lo que el peso se desplaza hacia láminas más gruesas.
+
+La matriz de profundidades automática termina en el percentil 99,9 de la longitud de trayectoria $z/\mu$ de los electrones que alcanzan el detector, redondeado hacia arriba a dos cifras significativas, y tiene 40 puntos más próximos entre sí cerca de la superficie.
+
 ---
 
 ## Fondo de TDS y modelo de absorción

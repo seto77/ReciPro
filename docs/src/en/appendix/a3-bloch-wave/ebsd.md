@@ -85,6 +85,16 @@ as a discrete sum over energy and depth.
 
 The Monte-Carlo part tracks elastic scattering, inelastic scattering, energy loss, and escape through the specimen surface. For backscattered electrons it builds distributions of depth, energy, and exit direction. ReciPro distinguishes models that use the last inelastic-scattering position and the energy immediately after it as the effective source, and models that use the escape depth and escape energy.
 
+### Source Depth and Path Length
+
+By reciprocity, the master pattern for a direction $\widehat{\mathbf s}$ is solved as a plane wave entering along $-\widehat{\mathbf s}$, with the crystal surface taken perpendicular to $\widehat{\mathbf s}$ for each direction, so its thickness coordinate $t$ is measured along the exit direction. The Monte-Carlo source depth $z$, by contrast, is measured along the normal of the tilted specimen surface. With $\mu=\cos\chi$, where $\chi$ is the angle between the exit direction and the surface normal, a source at depth $z$ lies at the path length
+
+$$t=\frac{z}{\mu}$$
+
+from the surface along the exit direction. ReciPro fits the depth distribution of each exit-direction bin and energy with an exponential $\propto e^{-z/\lambda_z(E)}$, converts it at each detector pixel with that pixel's $\mu$ to $\lambda_t=\lambda_z/\mu$, and integrates the resulting distribution, normalized within the depth array, over each thickness interval of the master pattern. In the sum above, the depth index therefore runs over the thickness $t_j$, and the weight of a pixel depends on its $\mu$ as well as on $\widehat{\mathbf s}$. For grazing exit (small $\mu$), a source at the same depth travels a longer path, so the weight shifts toward thicker slices.
+
+The automatic depth array ends at the 99.9th percentile of the path length $z/\mu$ of the electrons that reach the detector, rounded up to two significant digits, and has 40 points spaced more finely near the surface.
+
 ---
 
 ## TDS Background and Absorption Model

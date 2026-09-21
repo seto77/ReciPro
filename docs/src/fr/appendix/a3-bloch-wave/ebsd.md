@@ -85,6 +85,16 @@ sous forme de somme discrète sur l'énergie et la profondeur.
 
 La partie Monte-Carlo suit la diffusion élastique, la diffusion inélastique, la perte d'énergie et l'échappement à travers la surface de l'échantillon. Pour les électrons rétrodiffusés, elle construit des distributions de profondeur, d'énergie et de direction de sortie. ReciPro distingue les modèles qui utilisent la dernière position de diffusion inélastique et l'énergie immédiatement après celle-ci comme source effective, des modèles qui utilisent la profondeur d'échappement et l'énergie d'échappement.
 
+### Profondeur de la source et longueur de trajet
+
+Par réciprocité, le master pattern pour une direction $\widehat{\mathbf s}$ est résolu comme une onde plane entrant selon $-\widehat{\mathbf s}$, la surface du cristal étant prise perpendiculaire à $\widehat{\mathbf s}$ pour chaque direction ; sa coordonnée d'épaisseur $t$ est donc mesurée le long de la direction de sortie. La profondeur de la source $z$ fournie par le Monte-Carlo est, elle, mesurée le long de la normale à la surface inclinée de l'échantillon. Avec $\mu=\cos\chi$, où $\chi$ est l'angle entre la direction de sortie et la normale à la surface, une source à la profondeur $z$ se trouve, le long de la direction de sortie, à la longueur de trajet
+
+$$t=\frac{z}{\mu}$$
+
+de la surface. ReciPro ajuste la distribution en profondeur de chaque bin de direction de sortie et de chaque énergie par une exponentielle $\propto e^{-z/\lambda_z(E)}$, la convertit en chaque pixel du détecteur, avec le $\mu$ de ce pixel, en $\lambda_t=\lambda_z/\mu$, et intègre la distribution obtenue, normalisée dans le tableau de profondeurs, sur chaque intervalle d'épaisseur du master pattern. Dans la somme ci-dessus, l'indice de profondeur parcourt donc l'épaisseur $t_j$, et le poids d'un pixel dépend de son $\mu$ en plus de $\widehat{\mathbf s}$. En sortie rasante ($\mu$ petit), une source à la même profondeur parcourt un trajet plus long, de sorte que le poids se déplace vers des tranches plus épaisses.
+
+Le tableau de profondeurs automatique s'arrête au 99,9e centile de la longueur de trajet $z/\mu$ des électrons qui atteignent le détecteur, arrondi par excès à deux chiffres significatifs, et compte 40 points plus rapprochés près de la surface.
+
 ---
 
 ## Fond TDS et modèle d'absorption

@@ -85,6 +85,16 @@ como uma soma discreta sobre energia e profundidade.
 
 A parte de Monte Carlo acompanha o espalhamento elástico, o espalhamento inelástico, a perda de energia e o escape pela superfície da amostra. Para os elétrons retroespalhados, ela constrói distribuições de profundidade, energia e direção de saída. O ReciPro distingue modelos que usam a última posição de espalhamento inelástico e a energia imediatamente posterior a ela como fonte efetiva, e modelos que usam a profundidade de escape e a energia de escape.
 
+### Profundidade da fonte e comprimento de trajetória
+
+Pela reciprocidade, o master pattern para uma direção $\widehat{\mathbf s}$ é resolvido como uma onda plana que entra ao longo de $-\widehat{\mathbf s}$, tomando a superfície do cristal perpendicular a $\widehat{\mathbf s}$ para cada direção; sua coordenada de espessura $t$ é, portanto, medida ao longo da direção de saída. Já a profundidade da fonte $z$ fornecida pelo Monte Carlo é medida ao longo da normal da superfície inclinada da amostra. Com $\mu=\cos\chi$, onde $\chi$ é o ângulo entre a direção de saída e a normal à superfície, uma fonte na profundidade $z$ está, ao longo da direção de saída, ao comprimento de trajetória
+
+$$t=\frac{z}{\mu}$$
+
+da superfície. O ReciPro ajusta a distribuição de profundidade de cada bin de direção de saída e de cada energia com uma exponencial $\propto e^{-z/\lambda_z(E)}$, converte-a em cada pixel do detector, com o $\mu$ desse pixel, para $\lambda_t=\lambda_z/\mu$, e integra a distribuição resultante, normalizada dentro da matriz de profundidades, sobre cada intervalo de espessura do master pattern. Na soma acima, o índice de profundidade percorre, portanto, a espessura $t_j$, e o peso de um pixel depende do seu $\mu$ além de $\widehat{\mathbf s}$. Na saída rasante ($\mu$ pequeno), uma fonte na mesma profundidade percorre um caminho mais longo, de modo que o peso se desloca para fatias mais espessas.
+
+A matriz de profundidades automática termina no 99,9º percentil do comprimento de trajetória $z/\mu$ dos elétrons que alcançam o detector, arredondado para cima a dois algarismos significativos, e tem 40 pontos mais próximos entre si perto da superfície.
+
 ---
 
 ## Fundo de TDS e modelo de absorção
