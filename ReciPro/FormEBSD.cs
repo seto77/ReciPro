@@ -152,6 +152,9 @@ public partial class FormEBSD : FormBase
     //260726Cl 型変更: 10 要素タプル → EbsdBackscatteredElectron (Crystallography 側の record struct。メンバー名は同一なので参照側は不変)。
     //旧: (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] BSEs = [];
     EbsdBackscatteredElectron[] BSEs = []; // (260331Ch) 最後の非弾性散乱情報も保持する
+    /// <summary>260921Cl 追加 (/simplify): <see cref="BSEs"/> を作ったときの試料傾斜 [rad]。BSE の射出方向 (lab 系) はこの傾斜で作られているので、
+    /// 射出半球へビニングし直すときは UI の現在値ではなくこちらで試料系へ戻す (傾斜だけ変えて MC を回し直していないとき、両者は食い違う)。</summary>
+    double bsesSampleTilt = double.NaN;
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -1036,7 +1039,9 @@ public partial class FormEBSD : FormBase
     {
         if (skipDetectorGeometryEvent) return; // 260724Cl 追加
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を再計算
-        RebinMcDistribution(); // 260723Cl 追加: 検出器ジオメトリ変更を BSE 重み分布 (8×8 ビン) にも反映
+        // RebinMcDistribution(); // 260723Cl 追加: 検出器ジオメトリ変更を BSE 重み分布 (8×8 ビン) にも反映 //260921Cl 変更前
+        //260921Cl (/simplify): MC 分布は射出半球をビニングするようになり検出器に依存しないので、ここで再ビニングしない。
+        //  (1000 万発に増やしたあとでは、numericBox を 1 目盛り動かすたびに全 BSE を捨てて作り直すことになっていた)
         InvalidateIndexingResults(); // 260724Cl 追加: 幾何が変わったら方位候補を失効させる (バンド検出廃止で引数レス化)
         // DrawGeometry(); // 260723Cl 削除: 直後の Draw() 内でも DrawGeometry() が呼ばれ二重描画だった
         Draw();
@@ -1099,7 +1104,9 @@ public partial class FormEBSD : FormBase
         Draw();
     }
 
-    /// <summary>検出器ジオメトリ変更時に、保存済み BSE を新しい検出器へ再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加</summary>
+    /// <summary>保存済み BSE を再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加。
+    /// 260921Cl: 射出半球のビニングになって検出器に依存しなくなったので、呼ぶのは (energy × depth) 格子・源の深さモード・
+    /// 非晶質層・蛍光体重みが変わったときだけ (旧: 検出器幾何の変更でも呼んでいた)。</summary>
     private void RebinMcDistribution()
     {
         //if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0) //260725Ch 変更前: 空Depthsだけがctorへ到達
@@ -1115,7 +1122,8 @@ public partial class FormEBSD : FormBase
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm); // 260919Cl 変更前
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, ...); // 260921Cl 変更前 (検出器ビニング)
         //260921Cl 変更 (作者指示): 検出器ではなく射出半球をビニングするので、検出器幾何ではなく試料傾斜を渡す
-        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
+        //260921Cl (/simplify): 傾斜は UI の現在値 (SmpTilt) ではなく、BSE を作ったときの値 (bsesSampleTilt)
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
@@ -2059,7 +2067,7 @@ public partial class FormEBSD : FormBase
             numericBoxDetHeight.Value = height;
         }
         finally { skipDetectorGeometryEvent = false; }
-        RebinMcDistribution();
+        // RebinMcDistribution(); //260921Cl 変更前: MC 分布は検出器に依存しなくなったので不要 (/simplify)
         DrawGeometry();
 
         //検出器全体 (=画像全体) が graphicsBox に収まるように表示をフィットし、パターンも再計算する
@@ -2820,7 +2828,8 @@ public partial class FormEBSD : FormBase
         // var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);
         double rho = cry.Density;
         // double energy = Voltage, ..., detectorR = DetR, ...; // 260723Cl 変更前: 円形検出器 (半径)
-        double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorX = DetX, detectorY = DetY, detectorZ = DetZ, detectorHalfW = DetHalfWidth, detectorHalfH = DetHalfHeight, energyThreshold = EnergyThreshold; // 260723Cl 変更: 矩形検出器 (半幅・半高) + 中心 X
+        // double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorX = DetX, ..., energyThreshold = EnergyThreshold; // 260723Cl 変更: 矩形検出器 (半幅・半高) + 中心 X //260921Cl 変更前
+        double energy = Voltage, sampleTilt = SmpTilt, energyThreshold = EnergyThreshold; //260921Cl (/simplify): MC 分布が検出器に依存しなくなり、検出器ローカルは未使用になった
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
         var monteCarloStopwatch = Stopwatch.StartNew();
@@ -2880,6 +2889,7 @@ public partial class FormEBSD : FormBase
             {
                 masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch)
                 BSEs = [];
+                bsesSampleTilt = double.NaN; //260921Cl 追加
                 mcDistribution = null;
                 composedPatternCache = default; // 260725Cl 追加 (/simplify): MC 合成キャッシュも失効させる
                 InvalidateIndexingResults(); //260725Ch: 旧 MC 合成で採点した候補を残さない
@@ -2892,6 +2902,7 @@ public partial class FormEBSD : FormBase
             }
 
             BSEs = result.Bses;
+            bsesSampleTilt = sampleTilt; //260921Cl 追加 (/simplify): このワーカーが MC に使った傾斜
             numericBoxEnergyStart.Value = result.energyStart;
             numericBoxEnergyEnd.Value = result.energyEnd;
             numericBoxEnergyStep.Value = result.energyStep;
@@ -4317,7 +4328,7 @@ public partial class FormEBSD : FormBase
             }
             finally { skipDetectorGeometryEvent = false; }
             UpdateEbsdTiltCoeffs();
-            RebinMcDistribution();
+            // RebinMcDistribution(); //260921Cl 変更前: MC 分布は検出器に依存しなくなったので不要 (/simplify)
             InvalidateIndexingResults(announceCancel: false); //260725Ch: 較正前の幾何で得た候補を残さず、実行世代も進める (260725Cl: これは自分の書き戻しなので "Canceling..." は出さない)
             FormMain.SetRotation(result.Rotation); //Draw は SetRotation → FormMain 経由で走る
             FinishIndexingProgress(sw); //260725Cl: 進捗行を 100% で締める (InvalidateIndexingResults の "Canceling..." より後に出す)
