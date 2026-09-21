@@ -4210,7 +4210,9 @@ public partial class FormEBSD : FormBase
     /// <summary>MC 重み合成パターンのキャッシュ (MasterPattern と mcDistribution の組が同一なら再利用、合成は ~100ms)。260724Cl 追加</summary>
     //260920Cl 変更: キャッシュキーに E_c を足す。E_c を変えても Mp/Dist は同一なので、旧キーのままだと古い合成を返していた
     //旧: private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, float[] Pos, float[] Neg) composedPatternCache;
-    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, double Ec, float[] Pos, float[] Neg) composedPatternCache;
+    //260921Cl 変更 (深さ写像 A2、段階 4): 大域の重みを検出器画像の画素平均にしたので、キーに検出器幾何も足す
+    //旧: private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, double Ec, float[] Pos, float[] Neg) composedPatternCache;
+    private (MasterPattern Mp, EbsdMonteCarloDistribution Dist, double Ec, (double, double, double, double, double, double, int, int, double) Geometry, float[] Pos, float[] Neg) composedPatternCache;
 
     /// <summary>ZNCC 系操作に必要な状態を UI スレッド上でスナップショットする (ワーカーからコントロールを読まないため)。260724Cl 追加</summary>
     //260726Cl 戻り値変更: 匿名タプル → EbsdMatchingContext (Crystallography 側の record。探索・較正の両方へそのまま渡せる)
@@ -4227,11 +4229,19 @@ public partial class FormEBSD : FormBase
         {
             //260920Cl 変更: 表示合成と同じ A(E) を ZNCC 側にも掛ける (目的関数が別のパターンを見ないようにする)
             double ecForMatching = ComposerCoherenceLossDecayKeV;
+            //260921Cl 追加 (深さ写像 A2、段階 4): 大域の重みは「この検出器画像の画素で作った A2 重みの平均」(ComputeDetectorAverageSliceWeights)。
+            //  射出半球全体で平均すると、検出器が見ない表面すれすれ (経路の長い) 方向まで混ざる。
+            //  ⚠ 幾何較正は較正中に幾何を動かすが、参照パターンはこのスナップショットの幾何で作ったものを固定して使う (重みの変化は小さいので近似として許す)
+            var geomKey = (geom.DetTilt, geom.DetX, geom.DetY, geom.DetZ, geom.PixelSize, geom.SampleTilt, geom.WidthPx, geom.HeightPx, geom.XMirror);
             if (!ReferenceEquals(composedPatternCache.Mp, mp) || !ReferenceEquals(composedPatternCache.Dist, mcDistribution)
-                || !composedPatternCache.Ec.Equals(ecForMatching)) //NaN 同士も等しいとみなしたいので Equals
+                || !composedPatternCache.Ec.Equals(ecForMatching) //NaN 同士も等しいとみなしたいので Equals
+                || !composedPatternCache.Geometry.Equals(geomKey)) //260921Cl 追加
             {
-                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp, Voltage, ecForMatching);
-                composedPatternCache = (mp, mcDistribution, ecForMatching, p, n);
+                //var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp, Voltage, ecForMatching); //260921Cl 変更前
+                //composedPatternCache = (mp, mcDistribution, ecForMatching, p, n); //260921Cl 変更前
+                var detectorWeights = EbsdPatternComposer.ComputeDetectorAverageSliceWeights(mcDistribution, geom);
+                var (p, n) = mcDistribution.ComposeGlobalWeightedPattern(mp, Voltage, ecForMatching, detectorWeights);
+                composedPatternCache = (mp, mcDistribution, ecForMatching, geomKey, p, n);
             }
             (pos, neg) = (composedPatternCache.Pos, composedPatternCache.Neg);
         }
