@@ -656,6 +656,11 @@
             // checkBoxTDSBackground
             // 
             resources.ApplyResources(checkBoxTDSBackground, "checkBoxTDSBackground");
+            //260921Cl 変更 (作者確認済み): 既定 ON (旧 OFF)。局所 (原子位置) 後方散乱源を非局所の
+            //  吸収ポテンシャル形 U'_back で**置換**するモデル切替で、加算ではない (加算は二重計上)。
+            //  σ_n = (2π/k)(γ/πV)·Occ_n·f'_n,back(0) の物理化により Σσ_n = (2π/k)U'_0,back が
+            //  機械精度で閉じることを確認済み (正本 §1.5 / tools/EbsdModeShots/TdsScaleCheck)。
+            //  ⚠ B = 0 の結晶では U' = 0 なので無効 (DB 初期結晶は B が空。構築時に警告が出る)。
             checkBoxTDSBackground.Checked = true;
             checkBoxTDSBackground.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxTDSBackground.Name = "checkBoxTDSBackground";
