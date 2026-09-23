@@ -853,6 +853,14 @@ Desligue para um detector que conta elétrons diretamente.</value>
 luminoso ∝ E − E_dead, nulo abaixo. Tipicamente 0–3 keV para uma
 tela P43 revestida de Al; padrão 2 keV.</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>Filtro de energia: elétrons cuja energia de saída é igual ou
+inferior a este valor (keV) não contribuem para o padrão
+(filtro de energia passa-alta ideal diante do detector).
+0 = desligado (padrão). Aplicado reagrupando os elétrons
+de Monte Carlo salvos; a simulação de Monte Carlo e o padrão
+mestre não são recalculados.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanar o fundo</value>
   </data>

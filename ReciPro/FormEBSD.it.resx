@@ -863,6 +863,14 @@ Disattivare per un rivelatore che conta direttamente gli elettroni.</value>
 luminosa ∝ E − E_dead, nulla al di sotto. Tipicamente 0–3 keV per
 uno schermo P43 rivestito di Al; predefinito 2 keV.</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>Filtro in energia: gli elettroni con energia di uscita pari o
+inferiore a questo valore (keV) non contribuiscono al pattern
+(filtro passa-alto ideale davanti al rivelatore). 0 = disattivato
+(predefinito). Si applica ricampionando gli elettroni Monte Carlo
+salvati; la simulazione Monte Carlo e il master pattern non
+vengono ricalcolati.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Appiattire il fondo</value>
   </data>

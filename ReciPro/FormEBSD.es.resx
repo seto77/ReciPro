@@ -858,6 +858,14 @@ Desactívelo para un detector que cuenta electrones directamente.</value>
 luminoso ∝ E − E_dead, nulo por debajo. Típicamente 0–3 keV para
 una pantalla P43 con recubrimiento de Al; por defecto 2 keV.</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>Filtro de energía: los electrones cuya energía de salida es
+igual o inferior a este valor (keV) no contribuyen al patrón
+(filtro de energía paso alto ideal delante del detector).
+0 = desactivado (predeterminado). Se aplica reagrupando los
+electrones Monte Carlo guardados; no se recalculan la
+simulación Monte Carlo ni el patrón maestro.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanar el fondo</value>
   </data>

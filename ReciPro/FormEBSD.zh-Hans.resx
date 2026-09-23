@@ -786,6 +786,12 @@ robust ZNCC 逐一比较以搜索取向。
     <value>荧光体的死层 (阈值) 能量 (keV)：发光量 ∝ E − E_dead，低于此为 0。
 带铝镀层的 P43 荧光屏典型值 0–3 keV；默认 2 keV。</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>能量过滤：出射能量不高于此值 (keV) 的电子不参与成像
+(相当于在探测器前放置理想的高通能量过滤器)。0 = 关闭
+(默认)。通过对已保存的蒙特卡罗电子重新分箱实现，
+不会重新计算蒙特卡罗与主图案。</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>平坦化背景</value>
   </data>

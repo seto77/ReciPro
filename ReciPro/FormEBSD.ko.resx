@@ -818,6 +818,13 @@ Radon 밴드 증거의 z 값, ZNCC = 시뮬레이션 패턴과의
     <value>형광체의 불감층 (문턱) 에너지 (keV): 발광량 ∝ E − E_dead, 그 이하는
 0. Al 코팅 P43 스크린에서 0〜3 keV가 일반적. 기본값 2 keV.</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>에너지 필터: 방출 에너지가 이 값 (keV) 이하인 전자는
+패턴에 기여하지 않음 (검출기 앞의 이상적인 고역 통과
+에너지 필터와 같음). 0 = 끔 (기본값). 저장된 몬테카를로
+전자를 다시 비닝하여 적용하므로 몬테카를로 계산과
+마스터 패턴은 다시 계산하지 않음.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>배경 평탄화</value>
   </data>

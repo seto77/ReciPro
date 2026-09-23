@@ -111,6 +111,11 @@ public partial class FormEBSD : FormBase
     public double ExpFlattenBackgroundFwhmPx { get => numericBoxExpFlattenFwhm.Value; set => numericBoxExpFlattenFwhm.Value = value; }
     /// <summary>260919Cl 追加: EbsdMonteCarloDistribution へ渡す E_dead。重み OFF なら NaN (= 1 本 1 票)</summary>
     internal double McEnergyWeightDeadKeV => PhosphorEnergyWeight ? PhosphorDeadEnergyKeV : double.NaN;
+    /// <summary>260922Cl 追加 (作者指示): エネルギーフィルター [keV]。射出エネルギーがこの値以下の電子は像に寄与させない (0 = 無し、既定)。
+    /// 蛍光体の応答重みと同じく、保存済みの MC 電子を再ビニングするだけで効く (MC の再実行・MasterPattern の再構築は不要)</summary>
+    public double EnergyFilterMinKeV { get => numericBoxEnergyFilter.Value; set => numericBoxEnergyFilter.Value = value; }
+    /// <summary>260922Cl 追加: EbsdMonteCarloDistribution へ渡すフィルターのしきい値。0 以下なら NaN (= 無し)</summary>
+    internal double McEnergyFilterMinKeV => EnergyFilterMinKeV > 0 ? EnergyFilterMinKeV : double.NaN;
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
     /// <summary>飛程計算の際の打ち切りエネルギー (kev)</summary>
@@ -371,7 +376,7 @@ public partial class FormEBSD : FormBase
 
         // 260724Cl 追加: 表示チェックが ON になったら対応する設定タブを前面に出す
         checkBoxShowDyanmicalEBSD.CheckedChanged += (_, _) => { if (checkBoxShowDyanmicalEBSD.Checked) tabControlPatternSettings.SelectedTab = tabPageOutputParameter; };
-        checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; };
+        // checkBoxShowExperimentalImage.CheckedChanged += (_, _) => { if (checkBoxShowExperimentalImage.Checked) tabControlPatternSettings.SelectedTab = tabPageExperimentalImage; }; // 260922Cl 廃止 (作者指示): 実測画像の表示 ON でタブを切り替えない
         checkBoxShowOverlays.CheckedChanged += (_, _) => { if (checkBoxShowOverlays.Checked) tabControlSettings.SelectedTab = tabPageOverlays; };
     }
 
@@ -1099,6 +1104,9 @@ public partial class FormEBSD : FormBase
     /// <summary>蛍光体応答重みの ON/OFF・E_dead 変更。層厚と同じく保存済み BSE をデバウンス付きで再ビニングする。260919Cl 追加</summary>
     private void PhosphorWeight_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
 
+    /// <summary>260922Cl 追加 (作者指示): エネルギーフィルターの変更。蛍光体応答重みと同じく、保存済み BSE をデバウンス付きで再ビニングする</summary>
+    private void EnergyFilter_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
+
     /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数の ON/OFF・E_c 変更。
     /// これは MasterPattern のスライスを合成するときの重みだけを変えるので、MC の再ビニングも MasterPattern の再構築も要らない。再描画だけで足りる</summary>
     private void CoherenceLoss_Changed(object sender, EventArgs e)
@@ -1118,10 +1126,13 @@ public partial class FormEBSD : FormBase
     /// <summary>保存済み BSE を再ビニングして mcDistribution を作り直す (MC 本体は再実行しない)。260723Cl 追加。
     /// 260921Cl: 射出半球のビニングになって検出器に依存しなくなったので、呼ぶのは (energy × depth) 格子・源の深さモード・
     /// 非晶質層・蛍光体重みが変わったときだけ (旧: 検出器幾何の変更でも呼んでいた)。</summary>
-    private void RebinMcDistribution()
+    /// <param name="allowCreate">260921Cl 追加: true なら分布がまだ無くても作る (ファイルから電子を読み込んだとき)</param>
+    //旧シグネチャ: private void RebinMcDistribution()
+    private void RebinMcDistribution(bool allowCreate = false)
     {
         //if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0) //260725Ch 変更前: 空Depthsだけがctorへ到達
-        if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0 || MasterPattern.Depths.Length == 0) //260725Ch
+        //if (mcDistribution == null || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0 || MasterPattern.Depths.Length == 0) //260725Ch //260921Cl 変更前
+        if ((mcDistribution == null && !allowCreate) || BSEs == null || BSEs.Length == 0 || MasterPattern == null || MasterPattern.Energies.Length == 0 || MasterPattern.Depths.Length == 0)
             return;
         var bseRaw = BSEs.Select(e => (
             // monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent // 260919Cl 変更前
@@ -1134,9 +1145,20 @@ public partial class FormEBSD : FormBase
         // mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, DetTilt, DetX, DetY, DetZ, DetHalfWidth, DetHalfHeight, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行) // 260921Cl 変更前 (検出器ビニング)
         //260921Cl 変更 (作者指示): 検出器ではなく射出半球をビニングするので、検出器幾何ではなく試料傾斜を渡す
         //260921Cl (/simplify): 傾斜は UI の現在値 (SmpTilt) ではなく、BSE を作ったときの値 (bsesSampleTilt)
-        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
+        //mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行) //260922Cl 変更前
+        //mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV,
+        //    energyFilterMinKeV: McEnergyFilterMinKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加 //260923Cl 変更前
+        mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV,
+            energyFilterMinKeV: McEnergyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(MasterPattern.Energies, monteCarloDistributionDepthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
+
+    /// <summary>260923Cl 追加 (案 d §2.2): 源の深さを「最後のコヒーレンス破壊事象」で取るモードでは、MC の深さ分布に入っている熱散漫の
+    /// 生存確率とマスターパターンの平均吸収が同じものを 2 回掛けるので、Bloch 波の平均吸収長 λ_abs(E) を分布へ渡して取り除く。
+    /// 他のモード (既定 = 最後の非弾性) では null (従来どおり)。</summary>
+    private double[] McAbsorptionLengthNm(double[] energies, MonteCarloDistributionDepthMode mode)
+        => mode == MonteCarloDistributionDepthMode.LastDecoherenceEventDepth && Crystal != null && energies != null && energies.Length > 0
+            ? new BetheMethod(Crystal).MeanAbsorptionLengthNm(energies) : null;
 
     /// <summary>BSE 重みを使う前に、mcDistribution の (energy × depth) 格子を現在の MasterPattern へ揃える。260727Cl 追加。
     /// MC は MasterPattern 構築とは別のタイミングでも走る (Calc BSE / 再ビニング / build 中止) ので、
@@ -1211,6 +1233,8 @@ public partial class FormEBSD : FormBase
     string masterPatternBWarning = "";
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private double[] ebsdValuesFlattened = []; // 260920Cl 追加: 背景平坦化 (ImageProcess.SubtractGaussianBackground) の出力バッファ (ebsdValues は生値のまま)
+    private double[] ebsdValuesPadded = [], ebsdValuesPaddedFlattened = []; // 260921Cl 追加: 平坦化の縁対策で視野の外側まで広げて合成・平坦化するバッファ (DrawEBSDCore の pad 参照)
+    private double[] ebsdModelBackground = [], ebsdValuesMinusBackground = []; // 260921Cl 追加: 合成器の背景 B と P − B (平坦化の入力)
     private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
 
@@ -1276,11 +1300,26 @@ public partial class FormEBSD : FormBase
         //旧: BuildEbsdLookupTable(width, height);
         var (rasterScaleW, rasterScaleH, rasterOffX, rasterOffY) = GetRasterToViewParams(width, height);
         var rasterView = new EbsdRasterView(rasterScaleW, rasterScaleH, rasterOffX, rasterOffY, DetHalfWidth, DetHalfHeight, DetectorXMirror, DetX);
-        patternComposer.BuildLookupTable(MasterPattern, Crystal.RotationMatrix, width, height, rasterView);
+
+        //260921Cl 追加: 背景平坦化のぼかしは画像端で「内側の画素だけ」で正規化するので、背景が端へ向かって暗くなる
+        //  (cos³α など) と端のぼかし値が内側に引っ張られて大きくなり、差し引いた端が暗くなっていた (拡大・縮小によらず FWHM 幅の帯)。
+        //  ぼかしカーネルの届く範囲 (GaussianBlurFast の半幅 = 3·HWHM) だけ外側まで同じ縮尺で合成し、平坦化してから中央を切り出す。
+        //  ラスター座標 (2w+1-width)·Scale + Off は幅を 2·pad 広げても内側の画素位置が変わらない。
+        //  極端に拡大したときのメモリ保護に pad は短辺の半分までに抑える (超えた分は従来どおり端で正規化)
+        double fwhmRasterPx = FlattenBackgroundFwhmPx * DetPixelSize / (2 * rasterScaleW); // 検出器 px → ラスター px (2·rasterScaleW = ラスター 1 px の mm)
+        int pad = checkBoxFlattenBackground.Checked && fwhmRasterPx >= 1 ? Math.Min((int)(fwhmRasterPx / 2 * 3), Math.Min(width, height) / 2) : 0;
+        int padWidth = width + 2 * pad, padHeight = height + 2 * pad;
+        //patternComposer.BuildLookupTable(MasterPattern, Crystal.RotationMatrix, width, height, rasterView); //260921Cl 変更前
+        patternComposer.BuildLookupTable(MasterPattern, Crystal.RotationMatrix, padWidth, padHeight, rasterView);
 
         var totalPixels = width * height;
         if (ebsdValues.Length != totalPixels)
             ebsdValues = new double[totalPixels];
+        //260921Cl 追加: 合成先。pad = 0 なら従来どおり ebsdValues へ直接書く
+        var padTotalPixels = padWidth * padHeight;
+        if (pad > 0 && ebsdValuesPadded.Length != padTotalPixels) ebsdValuesPadded = new double[padTotalPixels];
+        var composeValues = pad > 0 ? ebsdValuesPadded : ebsdValues;
+        double[] modelBackground = null; //260921Cl 追加: 合成器が出す背景 B (model 2 の加重合成 + 平坦化のときだけ。長さは composeValues と同じ)
 
         string statusText;
 
@@ -1301,15 +1340,22 @@ public partial class FormEBSD : FormBase
             {
                 case 1:
                     //260726Cl: 規格化係数の準備 (旧 EnsureMasterPatternGlobalNormalizationFactorsModel1) は合成器の内部で行う
-                    patternComposer.ApplyWeightedModel1(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
+                    patternComposer.ApplyWeightedModel1(composeValues, padWidth, padHeight, MasterPattern, mcDistribution, rasterView); //260921Cl 変更: 旧 (ebsdValues, width, height, ...)
                     statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 case 2:
-                    patternComposer.ApplyWeightedModel2(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
+                    //patternComposer.ApplyWeightedModel2(composeValues, padWidth, padHeight, MasterPattern, mcDistribution, rasterView); //260921Cl 変更: 旧 (ebsdValues, width, height, ...)
+                    //260921Cl 変更: 平坦化するときは菊池の変調を含まない背景 B も受け取り、Step 3 で P − B を平坦化する (理由は ApplyWeightedModel2 の background の doc)
+                    if (checkBoxFlattenBackground.Checked)
+                    {
+                        if (ebsdModelBackground.Length != padTotalPixels) ebsdModelBackground = new double[padTotalPixels];
+                        modelBackground = ebsdModelBackground;
+                    }
+                    patternComposer.ApplyWeightedModel2(composeValues, padWidth, padHeight, MasterPattern, mcDistribution, rasterView, modelBackground);
                     statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 default://0
-                    patternComposer.ApplyWeightedModel0(ebsdValues, width, height, MasterPattern, mcDistribution, rasterView);
+                    patternComposer.ApplyWeightedModel0(composeValues, padWidth, padHeight, MasterPattern, mcDistribution, rasterView); //260921Cl 変更: 旧 (ebsdValues, width, height, ...)
                     statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
             }
@@ -1333,18 +1379,18 @@ public partial class FormEBSD : FormBase
                     var planeIndex = energyIndex * mp.Depths.Length + depthIndex; // (260325Ch) model 1 の規格化係数参照用
                     //260726Cl: 係数配列の保持と範囲外ガードは合成器側へ (旧 masterPatternGlobalNormalizationFactors の直参照)
                     var planeScaleFactor = patternComposer.GetGlobalNormalizationFactorModel1(mp, planeIndex);
-                    patternComposer.ApplySingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
+                    patternComposer.ApplySingleSliceModel1(composeValues, padTotalPixels, posPlane, negPlane, planeScaleFactor); //260921Cl 変更: 旧 (ebsdValues, totalPixels, ...)
                     statusText = $"EBSD from MasterPattern (model=1): E={energy:g} keV, depth={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 case 2:
                     var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
                     var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
-                    patternComposer.ApplySingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
+                    patternComposer.ApplySingleSliceModel2(composeValues, padTotalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious); //260921Cl 変更: 旧 (ebsdValues, totalPixels, ...)
                     statusText = $"EBSD from MasterPattern (model=2): E={energy:g} keV, depth slice={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
                 default:
                     // ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane); // (260325Ch) 旧実装
-                    patternComposer.ApplySingleSliceModel0(ebsdValues, totalPixels, posPlane, negPlane);
+                    patternComposer.ApplySingleSliceModel0(composeValues, padTotalPixels, posPlane, negPlane); //260921Cl 変更: 旧 (ebsdValues, totalPixels, ...)
                     statusText = $"EBSD from MasterPattern (model=0): E={energy:g} keV, depth={depth:g} nm, {StatusBarHelper.FormatElapsed(sw1.Elapsed)}"; // (260325Ch)
                     break;
             }
@@ -1355,9 +1401,37 @@ public partial class FormEBSD : FormBase
         var displayValues = ebsdValues;
         if (checkBoxFlattenBackground.Checked)
         {
-            double fwhmRasterPx = FlattenBackgroundFwhmPx * DetPixelSize / (2 * rasterScaleW); // 検出器 px → ラスター px (2·rasterScaleW = ラスター 1 px の mm)
+            //double fwhmRasterPx = FlattenBackgroundFwhmPx * DetPixelSize / (2 * rasterScaleW); //260921Cl: pad の決定に要るので Step 1 の前へ移動
             if (ebsdValuesFlattened.Length != totalPixels) ebsdValuesFlattened = new double[totalPixels];
-            displayValues = ImageProcess.SubtractGaussianBackground(ebsdValues, width, fwhmRasterPx, ebsdValuesFlattened); // 汎用画像処理 (Crystallography.ImageProcess) へ委譲
+            //displayValues = ImageProcess.SubtractGaussianBackground(ebsdValues, width, fwhmRasterPx, ebsdValuesFlattened); //260921Cl 変更前
+            //260921Cl 追加: 合成器の背景 B があれば、先に P − B で差し引いてから Gaussian で平坦化する。
+            //  Gaussian だけだと滑らかな背景に −(σ²/2)∇²B が残り、A(E) でバンドが弱いとそれが主になって周辺が暗く見える
+            //  (実機ハーネス tools/EbsdModeShots aeshots で確認。詳細は ApplyWeightedModel2 の background の doc)
+            var flattenSource = composeValues;
+            if (modelBackground != null)
+            {
+                if (ebsdValuesMinusBackground.Length != padTotalPixels) ebsdValuesMinusBackground = new double[padTotalPixels];
+                var diff = ebsdValuesMinusBackground;
+                Parallel.For(0, padHeight, h => { for (int i = h * padWidth, e = i + padWidth; i < e; i++) diff[i] = composeValues[i] - modelBackground[i]; });
+                flattenSource = diff;
+            }
+            //260921Cl 変更: 広げたラスターで平坦化してから、生値・平坦化後の両方の中央 width×height を切り出す
+            if (pad > 0)
+            {
+                if (ebsdValuesPaddedFlattened.Length != padTotalPixels) ebsdValuesPaddedFlattened = new double[padTotalPixels];
+                //ImageProcess.SubtractGaussianBackground(ebsdValuesPadded, padWidth, fwhmRasterPx, ebsdValuesPaddedFlattened); //260921Cl 変更前
+                ImageProcess.SubtractGaussianBackground(flattenSource, padWidth, fwhmRasterPx, ebsdValuesPaddedFlattened);
+                Parallel.For(0, height, h =>
+                {
+                    int src = (h + pad) * padWidth + pad, dst = h * width;
+                    Array.Copy(ebsdValuesPadded, src, ebsdValues, dst, width);
+                    Array.Copy(ebsdValuesPaddedFlattened, src, ebsdValuesFlattened, dst, width);
+                });
+                displayValues = ebsdValuesFlattened;
+            }
+            else
+                //displayValues = ImageProcess.SubtractGaussianBackground(ebsdValues, width, fwhmRasterPx, ebsdValuesFlattened); //260921Cl 変更前
+                displayValues = ImageProcess.SubtractGaussianBackground(flattenSource, width, fwhmRasterPx, ebsdValuesFlattened); // 汎用画像処理 (Crystallography.ImageProcess) へ委譲。pad = 0 なら flattenSource は ebsdValues か P − B
         }
         if (Pbmp == null || ebsdCachedSize.Width != width || ebsdCachedSize.Height != height)
         {
@@ -2865,6 +2939,7 @@ public partial class FormEBSD : FormBase
             progress.Report((0, "MonteCarlo"));
             double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
             double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加: 同上 (蛍光体応答重み。OFF なら NaN)
+            double energyFilterMinKeV = McEnergyFilterMinKeV; // 260922Cl 追加: 同上 (エネルギーフィルター。無しなら NaN)
             var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
             var physicalDetector = BuildDetectorGeometry(DetPixelWidth, DetPixelHeight); // 260921Cl 追加 (深さ写像 A2): 深さ格子の上限 T を「検出器に当たる電子の経路長」で決めるため (UI スレッドで読む)
             var result = await Task.Run(() =>
@@ -2903,7 +2978,11 @@ public partial class FormEBSD : FormBase
                     sampleTilt, //260921Cl 変更 (作者指示): 射出半球をビニングするので試料傾斜を渡す (lab → 試料系の回転。格子は Lambert 等積ディスク)
                     // grid.energies, grid.depths); // 260919Cl 変更前
                     // grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm); // 260919Cl 変更前
-                    grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)
+                    //grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行) //260922Cl 変更前
+                    //grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV,
+                    //energyFilterMinKeV: energyFilterMinKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加 //260923Cl 変更前
+                    grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV,
+                    energyFilterMinKeV: energyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(grid.energies, depthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 
@@ -3129,6 +3208,18 @@ public partial class FormEBSD : FormBase
             return;
         }
 
+        masterPatternInfo = MasterPatternFileInfo.FromBuildRequest(e.Request, Voltage, $"ReciPro {Application.ProductVersion}"); //260921Cl 追加: 保存用に作成条件を控える
+        var totalSec = sw2.ElapsedMilliseconds / 1000.0;
+        var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
+        //260921Cl 変更: 「画面を使える状態にする」部分を ActivateMasterPattern へ切り出し、ファイルからの読み込みと共有する (処理と順序は同一)
+        ActivateMasterPattern("MasterPattern completed",
+            $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths",
+            TimeSpan.FromSeconds(totalSec));
+    }
+
+    /// <summary>260921Cl 追加 (MasterPattern_EBSD_Completed から切り出し): 新しい MasterPattern を画面で使える状態にする (構築完了・ファイル読み込みの共通部)。</summary>
+    private void ActivateMasterPattern(string summary, string detail, TimeSpan elapsed)
+    {
         composedPatternCache = default; //260725Ch: 完成前の MasterPattern を保持するキャッシュを明示的に破棄
         // 260919Cl 追加 (codex 助言): 原子変位パラメータ未設定 (B=0) の原子があると吸収ポテンシャル U' がゼロ (吸収なし・非局所源ゼロ・再注入ゼロ) なので明示する。DB の初期結晶は Dsf が空のものが多い。
         //   後続の DrawMasterPattern2D が preview 行でステータスを上書きするので、文字列はフィールドに持ち両方の行に付ける (ハーネス実測: 完了行は数百 ms で消えていた)
@@ -3140,12 +3231,15 @@ public partial class FormEBSD : FormBase
         DrawMasterPattern2D();
         Draw(); // (260327Ch) 描画更新で他ラベルが書き換わる前に済ませ、最後に MasterPattern 用の status を上書きする
         toolStripProgressBar.Value = 100;
-        toolStripStatusLabelSummary.Text = "MasterPattern completed";
-        var totalSec = sw2.ElapsedMilliseconds / 1000.0;
-        var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
-        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了)
+        //toolStripStatusLabelSummary.Text = "MasterPattern completed"; //260921Cl 変更前 (引数化)
+        toolStripStatusLabelSummary.Text = summary;
+        //var totalSec = sw2.ElapsedMilliseconds / 1000.0; //260921Cl: 呼び出し側へ
+        //var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
+        //StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", TimeSpan.FromSeconds(totalSec));// 260520Cl SetProgress化 (完了) //260921Cl 変更前
+        StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", elapsed);
         // toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
-        toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
+        //toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合 //260921Cl 変更前 (引数化)
+        toolStripStatusLabelDetail.Text = detail;
         // int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0); // 260919Cl 変更前: ここで計算・追記していたが直後の preview 行に潰されていた
         // if (sitesWithoutB > 0) toolStripStatusLabelDetail.Text += $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B.";
         toolStripStatusLabelDetail.Text += masterPatternBWarning; // 260919Cl 変更: フィールド化 (上で算出)
@@ -3162,6 +3256,91 @@ public partial class FormEBSD : FormBase
         numericBoxEnergy.Value = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0] : 0;
         numericBoxDepth.Value = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0] : 0;
 
+    }
+
+    /// <summary>260921Cl 追加: 今の MasterPattern の作成条件 (構築完了時または読み込み時に設定)。保存するファイルのヘッダになる</summary>
+    private MasterPatternFileInfo masterPatternInfo = null;
+
+    /// <summary>260921Cl 追加: 今の MasterPattern をファイルへ保存する (<see cref="MasterPatternFile"/>)。</summary>
+    internal bool SaveMasterPatternTo(string path)
+    {
+        if (MasterPattern == null) { toolStripStatusLabelSummary.Text = "No MasterPattern to save"; return false; }
+        var info = masterPatternInfo ?? new MasterPatternFileInfo
+        {
+            CrystalName = Crystal.Name ?? "", CrystalFingerprint = MasterPatternFile.CrystalFingerprint(Crystal), BeamEnergyKeV = Voltage,
+            Creator = $"ReciPro {Application.ProductVersion}", Note = "Build conditions were not recorded.",
+        };
+        var sw = Stopwatch.StartNew();
+        try
+        {
+            toolStripStatusLabelSummary.Text = "Saving MasterPattern..."; statusStripMain.Refresh();
+            //MasterPatternFile.Save(MasterPattern, path, info); //260921Cl 変更前: MC の電子も一緒に保存する (読み込み時に MC をやり直さない・乱数の揺らぎを入れない)
+            bool withElectrons = BSEs is { Length: > 0 } && double.IsFinite(bsesSampleTilt);
+            if (withElectrons) { info.McSampleTiltRad = bsesSampleTilt; info.McEnergyThresholdKeV = EnergyThreshold; info.McIncidentCount = BackscatterMonteCarloLoopCount; }
+            MasterPatternFile.Save(MasterPattern, path, info, withElectrons ? BSEs : null);
+            toolStripStatusLabelSummary.Text = "MasterPattern saved";
+            toolStripStatusLabelDetail.Text = $"{path} ({new System.IO.FileInfo(path).Length / 1048576.0:f0} MB, {StatusBarHelper.FormatElapsed(sw.Elapsed)})";
+            return true;
+        }
+        catch (Exception ex) //書けない場所・容量不足でアプリを落とさない
+        {
+            toolStripStatusLabelSummary.Text = "Save failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+            return false;
+        }
+    }
+
+    /// <summary>260921Cl 追加: ファイルから MasterPattern を読み込み、画面を構築完了時と同じ状態にする。
+    /// ファイルに MC の電子が入っていて、試料傾斜・打ち切りエネルギーが今と同じならそれを読み込んだパターンの格子へ再ビニングする (MC なし)。
+    /// 入っていなければ MC だけを走らせる (手元の電子は別の結晶・電圧のものかもしれないので使い回さない)。</summary>
+    /// <param name="allowMismatch">false (既定) なら、今の結晶・電圧と作成条件が違うファイルは読み込まない</param>
+    internal async Task<bool> LoadMasterPatternFromAsync(string path, bool allowMismatch = false)
+    {
+        if (masterPatternEbsd.IsBuilding || FormMain?.Crystal == null) return false;
+        var sw = Stopwatch.StartNew();
+        toolStripStatusLabelSummary.Text = "Loading MasterPattern...";
+        toolStripStatusLabelDetail.Text = path;
+        MasterPattern mp; MasterPatternFileInfo info; EbsdBackscatteredElectron[] electrons;
+        try { (mp, info, electrons) = await Task.Run(() => MasterPatternFile.Load(path)); }
+        catch (Exception ex)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern load failed";
+            toolStripStatusLabelDetail.Text = ex.Message;
+            return false;
+        }
+        var problem = MasterPatternFile.CheckCompatibility(info, Crystal, Voltage);
+        if (problem != null && !allowMismatch)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+            toolStripStatusLabelDetail.Text = problem;
+            return false;
+        }
+        if (!masterPatternEbsd.SetMasterPattern(mp)) return false;
+        masterPatternInfo = info;
+
+        bool reuseElectrons = electrons is { Length: > 0 } && Math.Abs(info.McSampleTiltRad - SmpTilt) < 1E-9 && Math.Abs(info.McEnergyThresholdKeV - EnergyThreshold) < 1E-9;
+        if (reuseElectrons)
+        {
+            BSEs = electrons;
+            bsesSampleTilt = info.McSampleTiltRad;
+            RebinMcDistribution(allowCreate: true); //読み込んだパターンの格子・今の源深さモード・非晶質層・蛍光体重みで分布を作る
+            var poleFigureRotation = M3.CreateRotationX(bsesSampleTilt); //MC 完了時 (RunMonteCarloAndSetRangesAsync) と同じ後処理
+            poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
+            CalcStatistics();
+        }
+        else
+        {
+            buttonCreateMasterPattern.Enabled = false; //MC 中の多重起動を防ぐ (構築ボタンと同じ扱い)
+            try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)"); } //失敗しても BSE 重み無しの表示はできるので続ける
+            finally { buttonCreateMasterPattern.Enabled = true; }
+        }
+        EnsureMcDistributionMatchesMasterPattern();
+        ActivateMasterPattern("MasterPattern loaded",
+            $"{System.IO.Path.GetFileName(path)}: {mp.GridSize} x {mp.GridSize}, {mp.Energies.Length} energies, {mp.Depths.Length} depths, {info.CrystalName}, {info.BeamEnergyKeV:g6} keV, "
+            + (reuseElectrons ? $"{electrons.Length:N0} saved MC electrons" : "new Monte Carlo")
+            + (problem != null ? $" | WARNING: {problem}" : ""),
+            sw.Elapsed);
+        return true;
     }
 
     /// <summary>進行中の MonteCarlo / MasterPattern build を停止する。</summary>
@@ -4046,6 +4225,9 @@ public partial class FormEBSD : FormBase
 
     #region 方位候補の探索 (Radon テンプレート照合 + ZNCC 自動精密化)
 
+    /// <summary>260922Cl 追加: 方位探索の調整パラメータ (検出器 Z の同時探索など)。GUI に出すかは作者判断待ち。既定 = 従来の動作</summary>
+    internal EbsdSearchOptions SearchOptions { get; set; } = EbsdSearchOptions.Default;
+
     private async void buttonFindOrientation_Click(object sender, EventArgs e)
     {
         if (expPbmp == null)
@@ -4081,7 +4263,11 @@ public partial class FormEBSD : FormBase
             }
             finally { crystal.VectorOfG_KikuchiLine = backup; }
 
-            var values = expPbmp.SrcValuesGray;
+            //var values = expPbmp.SrcValuesGray; //260921Cl 変更前
+            //260921Cl 変更: 表示用の値 (実測の Flatten background が ON なら「原画像 − ぼかし」= 平均ほぼ 0・負値あり) を渡していた。
+            //  Radon の前処理は背景で**割り**、辞書・ZNCC の RobustPreprocess は log(強度/背景) を取るので、正の生強度が前提。
+            //  SnapshotMatchingContext は 260920Cl に生値へ直したが、探索本体 (EbsdOrientationSearch.Run) はこちらが漏れていた
+            var values = expImageRaw.Length == expPbmp.Width * expPbmp.Height ? expImageRaw : expPbmp.SrcValuesGray;
             int iw = expPbmp.Width, ih = expPbmp.Height;
             double wl = WaveLength; //nm (pair-angle シードの幅尤度用)
 
@@ -4095,8 +4281,10 @@ public partial class FormEBSD : FormBase
 
             void Report(double r) => ReportIndexingProgress(r, sw); //260725Cl: 粗探索から進捗と経過時間を受ける
             //260726Cl: 探索本体は Crystallography/EBSD/EbsdOrientationSearch.cs へ分離 (旧はこの Task.Run の中に直書きしていた)
+            var searchOptions = SearchOptions; //260922Cl 追加: UI スレッドで捕捉
             var candidates = await Task.Run(() => EbsdOrientationSearch.Run(values, iw, ih, geom, reflections, wl, useDictionary, ctx,
-                properSymmetries: properSyms, maxCandidates: 10, cancel: cancel, progress: Report), cancel); //260725Ch
+                //properSymmetries: properSyms, maxCandidates: 10, cancel: cancel, progress: Report), cancel); //260725Ch //260922Cl 変更前
+                properSymmetries: properSyms, maxCandidates: 10, cancel: cancel, progress: Report, options: searchOptions), cancel);
             sw.Stop();
 
             //260725Cl 追加: 探索中に実測画像の差し替えや検出器幾何の変更があった場合、この結果は既に失効しているので適用しない

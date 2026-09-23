@@ -860,6 +860,14 @@ Flacht den Gradienten von oben nach unten ab (Si, 20 kV:
 Lichtausbeute ∝ E − E_dead, darunter null. Typisch 0–3 keV für
 einen Al-beschichteten P43-Schirm; Standard 2 keV.</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>Energiefilter: Elektronen mit einer Austrittsenergie bis
+einschließlich dieses Werts (keV) tragen nicht zum Muster bei
+(idealer Hochpass-Energiefilter vor dem Detektor). 0 = aus
+(Standard). Wirkt durch Neu-Binning der gespeicherten
+Monte-Carlo-Elektronen; Monte-Carlo-Lauf und Master-Pattern
+werden nicht neu berechnet.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Untergrund glätten</value>
   </data>

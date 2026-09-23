@@ -758,6 +758,7 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.MonteCarloSourceDepthMode); // 260919Cl 追加
                 rw(() => FormEBSD.PhosphorEnergyWeight); // 260919Cl 追加
                 rw(() => FormEBSD.PhosphorDeadEnergyKeV); // 260919Cl 追加
+                rw(() => FormEBSD.EnergyFilterMinKeV); // 260922Cl 追加 (エネルギーフィルター)
                 rw(() => FormEBSD.FlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.FlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加

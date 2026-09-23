@@ -1048,6 +1048,16 @@ Radon バンド証拠の z 値、ZNCC =
 それ以下は 0。Al コート付き P43 蛍光板で 0〜3 keV が目安。
 既定 2 keV、入力範囲 0〜10 keV。</value>
   </data>
+  <data name="numericBoxEnergyFilter.HeaderText" xml:space="preserve">
+    <value>エネルギーフィルター  E &gt;</value>
+  </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>エネルギーフィルター: 射出エネルギーがこの値 (keV) 以下の電子は
+パターンに寄与させない (検出器の前に理想的な高域通過の
+エネルギーフィルターを置いたのと同じ)。0 = 無し (既定)。
+保存済みのモンテカルロ電子の再ビニングで効くので、
+モンテカルロ計算とマスターパターンは作り直さない。</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>背景を平坦化</value>
   </data>

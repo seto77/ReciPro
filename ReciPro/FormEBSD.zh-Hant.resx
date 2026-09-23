@@ -778,6 +778,12 @@ robust ZNCC 逐一比較來搜尋取向。
     <value>螢光體的死層 (閾值) 能量 (keV)：發光量 ∝ E − E_dead，低於此為 0。
 帶鋁鍍層的 P43 螢光屏典型值 0–3 keV；預設 2 keV。</value>
   </data>
+  <data name="numericBoxEnergyFilter.ToolTip" xml:space="preserve">
+    <value>能量過濾：出射能量不高於此值 (keV) 的電子不參與成像
+(相當於在偵測器前放置理想的高通能量過濾器)。0 = 關閉
+(預設)。透過對已儲存的蒙地卡羅電子重新分箱實現，
+不會重新計算蒙地卡羅與主圖樣。</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>平坦化背景</value>
   </data>
