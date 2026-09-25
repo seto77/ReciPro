@@ -873,6 +873,20 @@ diagramme (filtre passe-haut idéal devant le détecteur).
 électrons Monte Carlo enregistrés ; ni le calcul Monte Carlo
 ni le motif maître ne sont recalculés.</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>Distribution d'énergie par histogramme MC</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>Construit la distribution d'énergie de sortie de chaque classe de
+direction à partir de l'histogramme Monte Carlo brut (pondéré par φ,
+réparti linéairement entre les deux tranches d'énergie voisines) au
+lieu de l'ajustement gaussien asymétrique. La gaussienne sous-estime
+le pic près de E₀ d'un facteur 2–3, ce qui élargit les bandes.
+Désactivé par défaut : l'E_c par défaut du contraste dépendant de la
+perte (0,8 keV) a été ajusté avec la gaussienne ; augmentez E_c en
+l'utilisant (Si, 20 kV : environ 1,2 keV d'après la largeur des
+bandes). Appliqué en regroupant les électrons Monte Carlo stockés.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanir le fond</value>
   </data>

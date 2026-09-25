@@ -759,6 +759,7 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.PhosphorEnergyWeight); // 260919Cl 追加
                 rw(() => FormEBSD.PhosphorDeadEnergyKeV); // 260919Cl 追加
                 rw(() => FormEBSD.EnergyFilterMinKeV); // 260922Cl 追加 (エネルギーフィルター)
+                rw(() => FormEBSD.EnergyHistogram); // 260925Cl 追加 (ビンごとのエネルギー分布を MC のヒストグラムで)
                 rw(() => FormEBSD.FlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.FlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加

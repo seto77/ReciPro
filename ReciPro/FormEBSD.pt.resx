@@ -861,6 +861,20 @@ inferior a este valor (keV) não contribuem para o padrão
 de Monte Carlo salvos; a simulação de Monte Carlo e o padrão
 mestre não são recalculados.</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>Distribuição de energia por histograma MC</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>Constrói a distribuição de energia de saída de cada bin de direção a
+partir do histograma Monte Carlo bruto (ponderado por φ, repartido
+linearmente entre as duas fatias de energia vizinhas) em vez do
+ajuste gaussiano assimétrico. A gaussiana subestima o pico perto de
+E₀ por um fator 2–3, o que alarga as bandas. Desligado por padrão:
+o E_c padrão do contraste dependente da perda (0,8 keV) foi ajustado
+com a gaussiana; ao usar, aumente E_c (Si, 20 kV: cerca de 1,2 keV
+pela largura das bandas). Aplicado reagrupando os elétrons Monte
+Carlo armazenados.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanar o fundo</value>
   </data>

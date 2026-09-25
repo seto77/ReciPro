@@ -116,6 +116,10 @@ public partial class FormEBSD : FormBase
     public double EnergyFilterMinKeV { get => numericBoxEnergyFilter.Value; set => numericBoxEnergyFilter.Value = value; }
     /// <summary>260922Cl 追加: EbsdMonteCarloDistribution へ渡すフィルターのしきい値。0 以下なら NaN (= 無し)</summary>
     internal double McEnergyFilterMinKeV => EnergyFilterMinKeV > 0 ? EnergyFilterMinKeV : double.NaN;
+    /// <summary>260925Cl 追加 (作者指示、EBSD 案 d の本体への持ち込み (i)): ビンごとの射出エネルギー分布を MC 電子の生のヒストグラムで作るか
+    /// (false = 従来の非対称ガウス、既定)。エネルギーフィルターと同じく保存済みの MC 電子の再ビニングだけで効く。
+    /// ⚠ 損失依存のコントラストの既定 E_c (0.8 keV) は非対称ガウスで実測に合わせた値 (EbsdMonteCarloDistribution の ctor の doc)</summary>
+    public bool EnergyHistogram { get => checkBoxEnergyHistogram.Checked; set => checkBoxEnergyHistogram.Checked = value; }
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
     /// <summary>飛程計算の際の打ち切りエネルギー (kev)</summary>
@@ -1148,8 +1152,11 @@ public partial class FormEBSD : FormBase
         //mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行) //260922Cl 変更前
         //mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV,
         //    energyFilterMinKeV: McEnergyFilterMinKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加 //260923Cl 変更前
+        //mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV,
+        //    energyFilterMinKeV: McEnergyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(MasterPattern.Energies, monteCarloDistributionDepthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去 //260925Cl 変更前
         mcDistribution = new EbsdMonteCarloDistribution(bseRaw, Voltage, double.IsFinite(bsesSampleTilt) ? bsesSampleTilt : SmpTilt, MasterPattern.Energies, MasterPattern.Depths, amorphousLayerNm: AmorphousLayerThicknessNm, energyWeightDeadKeV: McEnergyWeightDeadKeV,
-            energyFilterMinKeV: McEnergyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(MasterPattern.Energies, monteCarloDistributionDepthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去
+            energyFilterMinKeV: McEnergyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(MasterPattern.Energies, monteCarloDistributionDepthMode),
+            energyHistogram: EnergyHistogram); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去。260925Cl エネルギー分布のヒストグラム
         composedPatternCache = default; // 260725Cl 追加 (/simplify): 旧 MC 分布と MasterPattern を掴んだままにしない (grid 512 で数百 MB を次のクリックまで保持していた)
     }
 
@@ -2954,6 +2961,7 @@ public partial class FormEBSD : FormBase
             double amorphousLayerNm = AmorphousLayerThicknessNm; // 260919Cl 追加: UI スレッドで読んでワーカーへ渡す
             double energyWeightDeadKeV = McEnergyWeightDeadKeV; // 260919Cl 追加: 同上 (蛍光体応答重み。OFF なら NaN)
             double energyFilterMinKeV = McEnergyFilterMinKeV; // 260922Cl 追加: 同上 (エネルギーフィルター。無しなら NaN)
+            bool energyHistogram = EnergyHistogram; // 260925Cl 追加: 同上 (ビンごとのエネルギー分布を MC のヒストグラムで)
             var depthMode = monteCarloDistributionDepthMode; // (/simplify2) 同上: MC 実行中にコンボを触っても同一バッチ内でモードが混ざらない
             var physicalDetector = BuildDetectorGeometry(DetPixelWidth, DetPixelHeight); // 260921Cl 追加 (深さ写像 A2): 深さ格子の上限 T を「検出器に当たる電子の経路長」で決めるため (UI スレッドで読む)
             var result = await Task.Run(() =>
@@ -2995,8 +3003,11 @@ public partial class FormEBSD : FormBase
                     //grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行) //260922Cl 変更前
                     //grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV,
                     //energyFilterMinKeV: energyFilterMinKeV); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加 //260923Cl 変更前
+                    //grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV,
+                    //energyFilterMinKeV: energyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(grid.energies, depthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去 //260925Cl 変更前
                     grid.energies, grid.depths, amorphousLayerNm: amorphousLayerNm, energyWeightDeadKeV: energyWeightDeadKeV,
-                    energyFilterMinKeV: energyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(grid.energies, depthMode)); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去
+                    energyFilterMinKeV: energyFilterMinKeV, absorptionLengthNm: McAbsorptionLengthNm(grid.energies, depthMode),
+                    energyHistogram: energyHistogram); // 260919Cl 表面非晶質層 + エネルギー重み (試行)。260922Cl エネルギーフィルター追加。260923Cl dec モードの二重計上の除去。260925Cl エネルギー分布のヒストグラム
                 return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
             }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 

@@ -191,6 +191,7 @@
             checkBoxPhosphorWeight = new System.Windows.Forms.CheckBox();
             numericBoxPhosphorDeadEnergy = new NumericBox();
             numericBoxEnergyFilter = new NumericBox();
+            checkBoxEnergyHistogram = new System.Windows.Forms.CheckBox();
             checkBoxCoherenceLoss = new System.Windows.Forms.CheckBox();
             numericBoxCoherenceLossDecay = new NumericBox();
             checkBoxPickZoneAxis = new System.Windows.Forms.CheckBox();
@@ -1491,6 +1492,14 @@
             numericBoxEnergyFilter.ValueBoxWidth = 45;
             numericBoxEnergyFilter.ValueChanged += EnergyFilter_Changed;
             // 
+            // checkBoxEnergyHistogram
+            // 
+            resources.ApplyResources(checkBoxEnergyHistogram, "checkBoxEnergyHistogram");
+            checkBoxEnergyHistogram.Name = "checkBoxEnergyHistogram";
+            toolTip.SetToolTip(checkBoxEnergyHistogram, resources.GetString("checkBoxEnergyHistogram.ToolTip"));
+            checkBoxEnergyHistogram.UseVisualStyleBackColor = true;
+            checkBoxEnergyHistogram.CheckedChanged += EnergyFilter_Changed;
+            // 
             // checkBoxCoherenceLoss
             // 
             resources.ApplyResources(checkBoxCoherenceLoss, "checkBoxCoherenceLoss");
@@ -1586,6 +1595,7 @@
             flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxPhosphorDeadEnergy);
             flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxAmorphousLayer);
             flowLayoutPanelPhosphorWeight.Controls.Add(numericBoxEnergyFilter);
+            flowLayoutPanelPhosphorWeight.Controls.Add(checkBoxEnergyHistogram);
             flowLayoutPanelPhosphorWeight.Name = "flowLayoutPanelPhosphorWeight";
             // 
             // flowLayoutPanelExpFlatten
@@ -2504,6 +2514,7 @@
         private NumericBox numericBoxCoherenceLossDecay; // 260920Cl 追加
         private NumericBox numericBoxPhosphorDeadEnergy; // 260919Cl 追加
         private NumericBox numericBoxEnergyFilter; // 260922Cl 追加 (作者指示): エネルギーフィルター
+        private System.Windows.Forms.CheckBox checkBoxEnergyHistogram; // 260925Cl 追加 (作者指示): ビンごとのエネルギー分布を MC のヒストグラムで
         private NumericBox numericBoxMasterPatternEnergy;
         private NumericBox numericBoxMasterPatternDepth;
         private NumericBox numericBoxEnergy;

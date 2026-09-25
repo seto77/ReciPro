@@ -1058,6 +1058,22 @@ Radon バンド証拠の z 値、ZNCC =
 保存済みのモンテカルロ電子の再ビニングで効くので、
 モンテカルロ計算とマスターパターンは作り直さない。</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>エネルギー分布を MC のヒストグラムで</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>方向のビンごとの射出エネルギー分布を、非対称ガウスの当てはめ
+ではなくモンテカルロ電子の生のヒストグラム (φ 重み、隣り合う
+2 枚のエネルギーのスライスへ線形に配分) で作ります。ガウスは
+E₀ 付近の山を 2〜3 分の 1 に過小評価し、帯を広く見せます。
+既定は OFF: 損失依存のコントラストの既定の E_c (0.8 keV) は
+ガウスで合わせた値なので、使うときは E_c を上げてください
+(Si, 20 kV の帯の幅で約 1.2 keV)。保存済みのモンテカルロ電子の
+再ビニングで効きます。</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>背景を平坦化</value>
   </data>

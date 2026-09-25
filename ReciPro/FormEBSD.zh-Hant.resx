@@ -784,6 +784,17 @@ robust ZNCC 逐一比較來搜尋取向。
 (預設)。透過對已儲存的蒙地卡羅電子重新分箱實現，
 不會重新計算蒙地卡羅與主圖樣。</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>用 MC 直方圖產生能量分布</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>按方向分箱的出射能量分布不再用非對稱高斯擬合，而用蒙地卡羅
+電子的原始直方圖（φ 加權，線性分配到相鄰的兩個能量切片）產生。
+高斯函數把 E₀ 附近的峰低估 2~3 倍，使菊池帶顯得更寬。
+預設關閉：損失相關對比的預設 E_c (0.8 keV) 是用高斯函數校準的，
+使用時請提高 E_c（Si，20 kV：按帶寬約 1.2 keV）。
+透過對已儲存的蒙地卡羅電子重新分箱生效。</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>平坦化背景</value>
   </data>

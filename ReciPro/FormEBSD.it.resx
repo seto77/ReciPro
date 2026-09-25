@@ -871,6 +871,20 @@ inferiore a questo valore (keV) non contribuiscono al pattern
 salvati; la simulazione Monte Carlo e il master pattern non
 vengono ricalcolati.</value>
   </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>Distribuzione di energia da istogramma MC</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>Costruisce la distribuzione dell'energia di uscita di ogni bin di
+direzione dall'istogramma Monte Carlo grezzo (pesato con φ, ripartito
+linearmente tra le due fette di energia vicine) invece che dal fit
+gaussiano asimmetrico. La gaussiana sottostima il picco vicino a E₀
+di un fattore 2–3 e allarga le bande. Disattivato per impostazione
+predefinita: l'E_c predefinito del contrasto dipendente dalla perdita
+(0,8 keV) è stato tarato con la gaussiana; se lo si usa, aumentare
+E_c (Si, 20 kV: circa 1,2 keV dalle larghezze di banda). Si applica
+ri-raggruppando gli elettroni Monte Carlo memorizzati.</value>
+  </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Appiattire il fondo</value>
   </data>

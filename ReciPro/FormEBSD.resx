@@ -4786,6 +4786,49 @@ Monte Carlo run and the master pattern are not recomputed.</value>
   <data name="&gt;&gt;numericBoxEnergyFilter.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="checkBoxEnergyHistogram.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 32</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 0</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 21</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.Text" xml:space="preserve">
+    <value>Energy distribution from MC histogram</value>
+  </data>
+  <data name="checkBoxEnergyHistogram.ToolTip" xml:space="preserve">
+    <value>Build each direction bin's exit-energy distribution from the raw
+Monte Carlo histogram (φ-weighted, split linearly between the two
+neighbouring energy slices) instead of the asymmetric Gaussian fit.
+The Gaussian underestimates the peak near E₀ by a factor 2–3,
+which widens the bands. Off by default: the default E_c of the
+loss-dependent contrast (0.8 keV) was tuned with the Gaussian, so
+raise E_c when using this (Si, 20 kV: about 1.2 keV by band widths).
+Applied by re-binning the stored Monte Carlo electrons.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnergyHistogram.Name" xml:space="preserve">
+    <value>checkBoxEnergyHistogram</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnergyHistogram.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnergyHistogram.Parent" xml:space="preserve">
+    <value>flowLayoutPanelPhosphorWeight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnergyHistogram.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="checkBoxCoherenceLoss.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
