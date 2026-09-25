@@ -918,12 +918,12 @@ Step 및 Num과 조합하여 아래의
     <value>EDX 공통</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>EDX 의 모든 채널에 하나의 표시 범위를 사용하여, 채널을 바꿔도 밝기 기준이 달라지지 않게 합니다. 값은 모델상의 이온화 공공량이며 실측 X 선 계수가 아닙니다.</value>
+    <value>같은 물리량의 EDX 채널(껍질 채널 = 공공, 선 계열 = X 선 광자)에 하나의 표시 범위를 사용하여, 채널을 바꿔도 밝기 기준이 달라지지 않게 합니다. 값은 모델상의 양이며 실측 X 선 계수가 아닙니다.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>ADF 계열 상 대신 STEM-EDX 원소 맵을 표시합니다. 특성 X 선 종류는 아래 목록에서 고릅니다. 값은 입사 전자당 내각 공공 생성량(모델 값)입니다. 형광 수율·자기흡수·검출기 입체각·검출 효율이 모두 적용되지 않았으므로 실측 X 선 계수가 아닙니다.</value>
+    <value>ADF 계열 상 대신 STEM-EDX 원소 맵을 표시합니다. 특성 X 선 종류는 아래 목록에서 고릅니다. 껍질 채널(K, L, M)의 값은 입사 전자당 내각 공공 생성량(모델 값)입니다. 선 계열(Kα, Kβ, Lα, Lβ, Mα)의 값은 입사 전자당 생성되는 X 선 광자 수로, 형광 수율·Coster–Kronig 및 복사 캐스케이드·선 분기비를 적용했으며 오제 캐스케이드는 포함하지 않습니다. 자기흡수·검출기 입체각·검출 효율은 어느 쪽에도 적용되지 않았으므로 실측 X 선 계수가 아닙니다.</value>
   </data>
 </root>

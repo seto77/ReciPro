@@ -923,12 +923,12 @@ ao longo do eixo horizontal da grade de imagens em série.</value>
     <value>EDX comum</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Utiliza um único intervalo de visualização para todos os canais EDX, de modo que mudar de canal não reescale o mapa. Os valores são lacunas de ionização modeladas, não contagens de raios X medidas.</value>
+    <value>Utiliza um único intervalo de visualização para os canais EDX calculados da mesma grandeza (canais de camada = lacunas, séries de linhas = fotões de raios X), de modo que mudar de canal não reescale o mapa. Os valores são grandezas modeladas, não contagens de raios X medidas.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Mostra o mapa elementar STEM-EDX em vez da imagem do tipo ADF; a linha de raios X característica escolhe-se abaixo. Os valores são lacunas de ionização modeladas por eletrão incidente. O rendimento de fluorescência, a autoabsorção, o ângulo sólido e a eficiência do detetor NÃO são aplicados, pelo que não é uma contagem de raios X prevista.</value>
+    <value>Mostra o mapa elementar STEM-EDX em vez da imagem do tipo ADF; a linha de raios X característica escolhe-se abaixo. Para um canal de camada (K, L, M), os valores são lacunas de ionização modeladas por eletrão incidente. Para uma série de linhas (Kα, Kβ, Lα, Lβ, Mα), são fotões de raios X gerados por eletrão incidente: aplicam-se o rendimento de fluorescência, as cascatas Coster–Kronig e radiativas e a ramificação das linhas, mas não a cascata Auger. A autoabsorção, o ângulo sólido e a eficiência do detetor NÃO são aplicados, pelo que nenhum é uma contagem de raios X prevista.</value>
   </data>
 </root>

@@ -914,12 +914,12 @@ a lo largo del eje horizontal de la cuadrícula de imágenes en serie.</value>
     <value>EDX común</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Utiliza un único intervalo de visualización para todos los canales EDX, de modo que cambiar de canal no reescale el mapa. Los valores son vacantes de ionización modeladas, no recuentos de rayos X medidos.</value>
+    <value>Utiliza un único intervalo de visualización para los canales EDX calculados de la misma magnitud (canales de capa = vacantes, series de líneas = fotones de rayos X), de modo que cambiar de canal no reescale el mapa. Los valores son magnitudes modeladas, no recuentos de rayos X medidos.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Muestra el mapa elemental STEM-EDX en lugar de la imagen de tipo ADF; la línea de rayos X característica se elige abajo. Los valores son vacantes de ionización modeladas por electrón incidente. El rendimiento de fluorescencia, la autoabsorción, el ángulo sólido y la eficiencia del detector NO se aplican, por lo que no es un recuento de rayos X previsto.</value>
+    <value>Muestra el mapa elemental STEM-EDX en lugar de la imagen de tipo ADF; la línea de rayos X característica se elige abajo. Para un canal de capa (K, L, M) los valores son vacantes de ionización modeladas por electrón incidente. Para una serie de líneas (Kα, Kβ, Lα, Lβ, Mα) son fotones de rayos X generados por electrón incidente: se aplican el rendimiento de fluorescencia, las cascadas Coster–Kronig y radiativas y la ramificación de líneas, pero no la cascada Auger. La autoabsorción, el ángulo sólido y la eficiencia del detector NO se aplican, por lo que ninguno es un recuento de rayos X previsto.</value>
   </data>
 </root>

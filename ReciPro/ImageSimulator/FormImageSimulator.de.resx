@@ -923,12 +923,12 @@ der horizontalen Achse des Bildserien-Gitters variiert.</value>
     <value>EDX gemeinsam</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Verwendet einen gemeinsamen Anzeigebereich für alle EDX-Kanäle, sodass ein Kanalwechsel die Skalierung nicht ändert. Die Werte sind modellierte Ionisationslücken, keine gemessenen Röntgenzählraten.</value>
+    <value>Verwendet einen gemeinsamen Anzeigebereich für die berechneten EDX-Kanäle derselben Größe (Schalenkanäle = Ionisationslücken, Linienserien = Röntgenphotonen), sodass ein Kanalwechsel die Skalierung nicht ändert. Die Werte sind modellierte Größen, keine gemessenen Röntgenzählraten.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes; die charakteristische Röntgenlinie wird unten gewählt. Die Werte sind modellierte Ionisationslücken pro einfallendem Elektron. Fluoreszenzausbeute, Selbstabsorption, Detektorraumwinkel und Detektoreffizienz sind NICHT berücksichtigt - dies ist also keine vorhergesagte Röntgenzählrate.</value>
+    <value>Zeigt die STEM-EDX-Elementkarte anstelle des ADF-artigen Bildes; die charakteristische Röntgenlinie wird unten gewählt. Für einen Schalenkanal (K, L, M) sind die Werte modellierte Ionisationslücken pro einfallendem Elektron. Für eine Linienserie (Kα, Kβ, Lα, Lβ, Mα) sind es erzeugte Röntgenphotonen pro einfallendem Elektron: Fluoreszenzausbeute, Coster-Kronig- und Strahlungskaskaden sowie Linienverzweigung sind berücksichtigt, die Auger-Kaskade nicht. Selbstabsorption, Detektorraumwinkel und Detektoreffizienz sind NICHT berücksichtigt - beides ist also keine vorhergesagte Röntgenzählrate.</value>
   </data>
 </root>

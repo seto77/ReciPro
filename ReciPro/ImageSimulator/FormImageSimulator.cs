@@ -287,6 +287,13 @@ public partial class FormImageSimulator : FormBase
         set => checkBoxCalculateEdx.Checked = value;
     }
 
+    /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか (プリセットの保存・適用で使う)。</summary>
+    public bool EdxLineSeries
+    {
+        get => checkBoxEdxLineSeries.Checked;
+        set => checkBoxEdxLineSeries.Checked = value;
+    }
+
     /// <summary>--capture 用: EDX 要求の GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
     internal Control EdxOptionGroup => groupBoxSTEMoption4;
 

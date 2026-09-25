@@ -292,7 +292,11 @@ public partial class FormALCHEMI : FormBase
     {
         if (FormDiffractionSimulator == null || Crystal?.Atoms == null) return;
 
-        var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();
+        //var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();//260925Cl 変更前
+        //260925Cl 変更 (codex2 の指摘): チェックの保持を表示文字列ではなく (Z, 殻) で行う。表示文字列には U = E0/edge が入るので、
+        //電圧を変えると一致しなくなり、選んだチャネル (線の系列を含む) が外れていた。一覧の行と channelInfos は同じ順に作っている
+        var checkedChannels = Enumerable.Range(0, Math.Min(checkedListBoxChannels.Items.Count, channelInfos.Length))
+            .Where(checkedListBoxChannels.GetItemChecked).Select(i => channelInfos[i].Channel).ToHashSet();
         checkedListBoxChannels.Items.Clear();
         //channelInfos = IonizationDataProvider.EnumerateChannels(Crystal, Voltage);//260925Cl 変更前
         channelInfos = IonizationDataProvider.EnumerateChannels(Crystal, Voltage, includeLineSeries: true);//260925Cl 変更: 線の系列も一覧に並べる
@@ -303,7 +307,7 @@ public partial class FormALCHEMI : FormBase
             //    info.Status == IonizationAvailability.Available && (checkedChannels.Count == 0 || checkedChannels.Contains(text)));
             //260925Cl 変更: 最初に一覧を作るとき、線の系列は既定でチェックしない (チャネルが増える = 計算時間が増えるため)
             checkedListBoxChannels.Items.Add(text, info.Status == IonizationAvailability.Available
-                && (checkedChannels.Count == 0 ? !XrayLineSeries.IsLineSeries(info.Channel.Shell) : checkedChannels.Contains(text)));
+                && (checkedChannels.Count == 0 ? !XrayLineSeries.IsLineSeries(info.Channel.Shell) : checkedChannels.Contains(info.Channel)));
         }
 
         var checkedSites = checkedListBoxSites.CheckedItems.Cast<string>().ToHashSet();

@@ -928,13 +928,13 @@ CTF（contrast transfer function, コントラスト
     <value>EDX 共通</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>EDX の全チャネルで 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上のイオン化空孔量であって、実測 X 線カウントではありません。</value>
+    <value>同じ量の EDX チャネル (殻のチャネル = 空孔、線の系列 = X 線の光子) で 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上の量であって、実測 X 線カウントではありません。</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。値は入射電子あたりの内殻空孔生成量 (モデル値) です。蛍光収率・自己吸収・検出器立体角・検出効率はいずれも未適用なので、実測の X 線カウントではありません。</value>
+    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。殻のチャネル (K・L・M) の値は入射電子あたりの内殻空孔生成量 (モデル値) です。線の系列 (Kα・Kβ・Lα・Lβ・Mα) の値は入射電子あたりに発生する X 線の光子数で、蛍光収率・Coster–Kronig と放射の連鎖・線の分岐比を適用しています (Auger の連鎖は含みません)。自己吸収・検出器立体角・検出効率はどちらにも未適用なので、実測の X 線カウントではありません。</value>
   </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>

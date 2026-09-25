@@ -980,7 +980,7 @@ to set the contrast floor of the shown image.</value>
     <value>EDX: Common</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Uses one display range for every calculated EDX channel, so that switching channels does not rescale the map. The values are modelled ionization vacancies, not measured X-ray counts.</value>
+    <value>Uses one display range for the calculated EDX channels of the same quantity (shell channels = vacancies, line series = X-ray photons), so that switching channels does not rescale the map. The values are modelled quantities, not measured X-ray counts.</value>
   </data>
   <data name="&gt;&gt;checkBoxEdxCommonScale.Name" xml:space="preserve">
     <value>checkBoxEdxCommonScale</value>
@@ -1465,7 +1465,7 @@ electrons in the STEM image.</value>
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Shows the STEM-EDX elemental map instead of the ADF-type image; pick the characteristic X-ray below. The values are modelled inner-shell vacancies generated per incident electron. Fluorescence yield, self-absorption, detector solid angle and detector efficiency are NOT applied, so this is not a predicted X-ray count.</value>
+    <value>Shows the STEM-EDX elemental map instead of the ADF-type image; pick the characteristic X-ray below. For a shell channel (K, L, M) the values are modelled inner-shell vacancies generated per incident electron. For a line series (Kα, Kβ, Lα, Lβ, Mα) they are X-ray photons generated per incident electron: fluorescence yield, Coster–Kronig and radiative cascades and line branching are applied, the Auger cascade is not. Self-absorption, detector solid angle and detector efficiency are NOT applied, so neither is a predicted X-ray count.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_EDX.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_EDX</value>
@@ -5194,7 +5194,7 @@ Reserved for a future release: no self-absorption is applied yet.</value>
     <value>4</value>
   </data>
   <data name="flowLayoutPanel13.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel13.Name" xml:space="preserve">
     <value>flowLayoutPanel13</value>

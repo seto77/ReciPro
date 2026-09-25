@@ -905,12 +905,12 @@ lungo l'asse orizzontale della griglia di immagini seriali.</value>
     <value>EDX comune</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Usa un unico intervallo di visualizzazione per tutti i canali EDX, così cambiare canale non modifica la scala. I valori sono lacune di ionizzazione modellate, non conteggi di raggi X misurati.</value>
+    <value>Usa un unico intervallo di visualizzazione per i canali EDX calcolati della stessa grandezza (canali di shell = lacune, serie di righe = fotoni X), così cambiare canale non modifica la scala. I valori sono grandezze modellate, non conteggi di raggi X misurati.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Mostra la mappa elementare STEM-EDX invece dell'immagine di tipo ADF; la riga X caratteristica si sceglie qui sotto. I valori sono lacune di ionizzazione modellate per elettrone incidente. Resa di fluorescenza, autoassorbimento, angolo solido ed efficienza del rivelatore NON sono applicati: non è quindi un conteggio di raggi X previsto.</value>
+    <value>Mostra la mappa elementare STEM-EDX invece dell'immagine di tipo ADF; la riga X caratteristica si sceglie qui sotto. Per un canale di shell (K, L, M) i valori sono lacune di ionizzazione modellate per elettrone incidente. Per una serie di righe (Kα, Kβ, Lα, Lβ, Mα) sono fotoni X generati per elettrone incidente: resa di fluorescenza, cascate Coster–Kronig e radiative e ramificazione delle righe sono applicate, la cascata Auger no. Autoassorbimento, angolo solido ed efficienza del rivelatore NON sono applicati: nessuno dei due è quindi un conteggio di raggi X previsto.</value>
   </data>
 </root>
