@@ -2796,7 +2796,21 @@ public partial class FormEBSD : FormBase
     {
         if (masterPattern2DBitmap == null) return;
         //GetImage() は PseudoBitmap 内部キャッシュの借用参照なので Dispose せず、copy=true で実体をクリップボードへ渡す
-        Clipboard.SetDataObject(masterPattern2DBitmap.GetImage(), true);
+        //Clipboard.SetDataObject(masterPattern2DBitmap.GetImage(), true); //260923Cl 変更前
+        //260923Cl 変更: 表示中の masterPattern2DBitmap で等倍の GetImage() を呼ぶと、内部キャッシュ destBmp が表示サイズから等倍へ作り直されて旧キャッシュが Dispose される。
+        //  2D 表示の pictureBox.Image はその旧キャッシュを指したままなので、コピー直後の再描画 (マウス移動など) で
+        //  PictureBox.OnPaint が ArgumentException ("Parameter is not valid.") を投げてアプリが落ちていた (作者実機で再現)。
+        //  表示中のものとは別の PseudoBitmap (同じ強度配列・表示設定) で等倍画像を作り、表示側のキャッシュには触れない
+        var src = masterPattern2DBitmap;
+        using var copy = new PseudoBitmap(src.SrcValuesGray, src.Width)
+        {
+            MinValue = src.MinValue,
+            MaxValue = src.MaxValue,
+            GrayScale = src.GrayScale,
+            IsNegative = src.IsNegative,
+            ColorScale = src.ColorScale,
+        };
+        Clipboard.SetDataObject(copy.GetImage(), true); //copy=true で実体をクリップボードへ渡すので、直後に copy を Dispose してよい
         toolStripStatusLabelSummary.Text = "MasterPattern 2D copied to the clipboard";
     }
 
