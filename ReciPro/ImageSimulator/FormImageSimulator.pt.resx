@@ -68,6 +68,12 @@ até o detector, exp(-µT/sin α) com α o ângulo de saída.
 Reservado para uma versão futura: atualmente não é
 aplicada autoabsorção.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Séries de linhas (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Calcula também os mapas das séries de linhas de raios X característicos Kα, Kβ, Lα, Lβ e Mα&#xD;&#xA;(fótons de raios X gerados por elétron incidente, antes da detecção).&#xD;&#xA;Cada série combina os mapas de ionização das subcamadas com os rendimentos de fluorescência,&#xD;&#xA;as cascatas Coster–Kronig e radiativas e as ramificações das linhas (xraylib 4.2.1).&#xD;&#xA;A cascata Auger não está incluída (Mα cerca de 5 % baixa).&#xD;&#xA;Cada série acrescenta uma passagem de ionização.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>Sem janela</value>
   </data>

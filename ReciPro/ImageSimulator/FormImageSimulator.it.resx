@@ -68,6 +68,12 @@ il rivelatore, exp(-µT/sin α) con α angolo di uscita.
 Riservato a una versione futura: attualmente non viene
 applicato alcun autoassorbimento.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Serie di righe (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Calcola anche le mappe delle serie di righe X caratteristiche Kα, Kβ, Lα, Lβ e Mα&#xD;&#xA;(fotoni X generati per elettrone incidente, prima della rivelazione).&#xD;&#xA;Ogni serie combina le mappe di ionizzazione delle sottoshell con le rese di fluorescenza,&#xD;&#xA;le cascate Coster–Kronig e radiative e le ramificazioni delle righe (xraylib 4.2.1).&#xD;&#xA;La cascata Auger non è inclusa (Mα circa il 5 % più bassa).&#xD;&#xA;Ogni serie aggiunge un passaggio di ionizzazione.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>Senza finestra</value>
   </data>

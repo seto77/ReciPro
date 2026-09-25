@@ -67,6 +67,12 @@
 （α 为出射角）进行修正。为将来的实现预留的项目，
 目前尚未应用自吸收。</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>谱线系 (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>同时计算特征 X 射线谱线系 Kα、Kβ、Lα、Lβ、Mα 的图&#xD;&#xA;（每个入射电子产生的 X 射线光子数，探测之前）。&#xD;&#xA;每个谱线系由各支壳层的电离图结合荧光产额、&#xD;&#xA;Coster–Kronig 与辐射级联以及谱线分支比 (xraylib 4.2.1) 组成。&#xD;&#xA;不含俄歇级联（Mα 约偏低 5 %）。&#xD;&#xA;每个谱线系增加一次电离计算。</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>无窗</value>
   </data>

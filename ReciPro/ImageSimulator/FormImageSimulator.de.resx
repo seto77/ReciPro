@@ -68,6 +68,12 @@ Austrittswegs zum Detektor ab, exp(-µT/sin α) mit α als
 Take-off-Winkel. Für eine künftige Version reserviert:
 derzeit wird keine Selbstabsorption angewandt.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Linienserien (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Berechnet zusätzlich Karten der charakteristischen Röntgenlinienserien Kα, Kβ, Lα, Lβ und Mα&#xD;&#xA;(erzeugte Röntgenphotonen pro einfallendem Elektron, vor der Detektion).&#xD;&#xA;Jede Serie kombiniert die Ionisationskarten der Unterschalen mit Fluoreszenzausbeuten,&#xD;&#xA;Coster-Kronig- und Strahlungskaskaden sowie Linienverzweigung (xraylib 4.2.1).&#xD;&#xA;Die Auger-Kaskade ist nicht enthalten (Mα etwa 5 % zu niedrig).&#xD;&#xA;Jede Serie fügt einen Ionisationsdurchlauf hinzu.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>Ohne Fenster</value>
   </data>

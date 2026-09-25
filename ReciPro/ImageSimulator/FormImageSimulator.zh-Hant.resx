@@ -67,6 +67,12 @@
 （α 為出射角）進行修正。為將來的實作預留的項目，
 目前尚未套用自吸收。</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>譜線系 (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>同時計算特徵 X 射線譜線系 Kα、Kβ、Lα、Lβ、Mα 的圖&#xD;&#xA;（每個入射電子產生的 X 射線光子數，偵測之前）。&#xD;&#xA;每個譜線系由各支殼層的游離圖結合螢光產率、&#xD;&#xA;Coster–Kronig 與輻射級聯以及譜線分支比 (xraylib 4.2.1) 組成。&#xD;&#xA;不含歐傑級聯（Mα 約偏低 5 %）。&#xD;&#xA;每個譜線系增加一次游離計算。</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>無窗</value>
   </data>

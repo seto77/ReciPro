@@ -5145,6 +5145,42 @@ Reserved for a future release: no self-absorption is applied yet.</value>
   <data name="&gt;&gt;checkBoxEdxSelfAbsorption.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxEdxLineSeries.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 0</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 19</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Line series (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Also compute maps of the characteristic X-ray line series Kα, Kβ, Lα, Lβ and Mα&#xD;&#xA;(X-ray photons generated per incident electron, before detection).&#xD;&#xA;Each series combines the subshell ionization maps with fluorescence yields,&#xD;&#xA;Coster–Kronig and radiative cascades and line branching (xraylib 4.2.1).&#xD;&#xA;The Auger cascade is not included (Mα about 5 % low).&#xD;&#xA;Each series adds one ionization pass.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxLineSeries.Name" xml:space="preserve">
+    <value>checkBoxEdxLineSeries</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxLineSeries.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxLineSeries.Parent" xml:space="preserve">
+    <value>flowLayoutPanel13</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEdxLineSeries.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="flowLayoutPanel13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>

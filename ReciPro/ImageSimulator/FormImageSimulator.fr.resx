@@ -68,6 +68,12 @@ vers le détecteur, exp(-µT/sin α) où α est l'angle
 d'émergence. Réservé à une version future : aucune
 auto-absorption n'est appliquée actuellement.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Séries de raies (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Calcule aussi les cartes des séries de raies X caractéristiques Kα, Kβ, Lα, Lβ et Mα&#xD;&#xA;(photons X générés par électron incident, avant détection).&#xD;&#xA;Chaque série combine les cartes d’ionisation des sous-couches avec les rendements de fluorescence,&#xD;&#xA;les cascades Coster–Kronig et radiatives et les rapports de branchement des raies (xraylib 4.2.1).&#xD;&#xA;La cascade Auger n’est pas incluse (Mα environ 5 % trop faible).&#xD;&#xA;Chaque série ajoute un passage d’ionisation.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>Sans fenêtre</value>
   </data>

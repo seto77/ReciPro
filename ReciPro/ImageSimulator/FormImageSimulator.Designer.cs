@@ -190,6 +190,7 @@ namespace ReciPro
             flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxCalculateEdx = new System.Windows.Forms.CheckBox();
             checkBoxEdxSelfAbsorption = new System.Windows.Forms.CheckBox();
+            checkBoxEdxLineSeries = new System.Windows.Forms.CheckBox();
             groupBox1 = new System.Windows.Forms.GroupBox();
             flowLayoutPanelOuterRadius = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxSTEM_DetectorOuterAngle = new NumericBox();
@@ -1527,6 +1528,7 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
             flowLayoutPanel13.Controls.Add(checkBoxCalculateEdx);
             flowLayoutPanel13.Controls.Add(checkBoxEdxSelfAbsorption);
+            flowLayoutPanel13.Controls.Add(checkBoxEdxLineSeries);
             flowLayoutPanel13.Name = "flowLayoutPanel13";
             // 
             // checkBoxCalculateEdx
@@ -1543,6 +1545,14 @@ namespace ReciPro
             checkBoxEdxSelfAbsorption.Name = "checkBoxEdxSelfAbsorption";
             toolTip.SetToolTip(checkBoxEdxSelfAbsorption, resources.GetString("checkBoxEdxSelfAbsorption.ToolTip"));
             checkBoxEdxSelfAbsorption.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEdxLineSeries
+            // 
+            resources.ApplyResources(checkBoxEdxLineSeries, "checkBoxEdxLineSeries");
+            checkBoxEdxLineSeries.Name = "checkBoxEdxLineSeries";
+            toolTip.SetToolTip(checkBoxEdxLineSeries, resources.GetString("checkBoxEdxLineSeries.ToolTip"));
+            checkBoxEdxLineSeries.UseVisualStyleBackColor = true;
+            checkBoxEdxLineSeries.CheckedChanged += CheckBoxEdxLineSeries_CheckedChanged;
             // 
             // groupBox1
             // 
@@ -2685,6 +2695,7 @@ namespace ReciPro
         //260802Cl 追加: EDX 検出器ジオメトリ (現状は Enabled = false の場所取り)
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEdxDetector;
         private System.Windows.Forms.CheckBox checkBoxEdxSelfAbsorption;
+        private System.Windows.Forms.CheckBox checkBoxEdxLineSeries;
         private NumericBox numericBoxEdxTakeOffAngle;
         private System.Windows.Forms.Label labelEdxDetectorWindow;
         private System.Windows.Forms.ComboBox comboBoxEdxDetectorWindow;

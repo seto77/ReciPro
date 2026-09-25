@@ -67,6 +67,12 @@
 exp(-µT/sin α)(α = 취출각)를 적용합니다. 향후 구현을
 위한 예약 항목으로, 현재는 적용하지 않습니다.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>선 계열 (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>특성 X 선 계열 Kα, Kβ, Lα, Lβ, Mα 의 맵도 계산합니다&#xD;&#xA;(입사 전자 1 개당 생성되는 X 선 광자 수, 검출 전).&#xD;&#xA;각 계열은 부껍질 이온화 맵에 형광 수율,&#xD;&#xA;Coster–Kronig 및 복사 캐스케이드와 선 분기비 (xraylib 4.2.1) 를 결합해 만듭니다.&#xD;&#xA;오제 캐스케이드는 포함하지 않습니다 (Mα 는 약 5 % 낮음).&#xD;&#xA;계열 하나마다 이온화 계산이 1 회 추가됩니다.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>창 없음</value>
   </data>

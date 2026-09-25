@@ -118,6 +118,15 @@
 exp(−µT/sin α)（α = 取り出し角）を適用します。
 将来の実装用の予約項目で、現在は適用していません。</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>線の系列 (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>特性 X 線の線の系列 Kα・Kβ・Lα・Lβ・Mα のマップも計算します&#xD;&#xA;(入射電子 1 個あたりに発生する X 線の光子数。検出の前)。&#xD;&#xA;各系列は副殻のイオン化マップに、蛍光収率・Coster–Kronig と放射の連鎖・&#xD;&#xA;線の分岐比 (xraylib 4.2.1) を掛けて組みます。&#xD;&#xA;Auger の連鎖は含みません (Mα は約 5 % 小さめ)。&#xD;&#xA;系列 1 本につきイオン化パスが 1 回追加されます。</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>窓なし</value>
   </data>
