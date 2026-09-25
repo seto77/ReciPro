@@ -878,9 +878,10 @@ benachbarten Energiescheiben verteilt) statt aus der asymmetrischen
 Gauß-Anpassung. Die Gaußfunktion unterschätzt den Peak nahe E₀ um
 den Faktor 2–3 und verbreitert so die Bänder. Standard: aus, denn
 das Standard-E_c des verlustabhängigen Kontrasts (0,8 keV) wurde mit
-der Gaußfunktion abgestimmt; bei Verwendung E_c erhöhen (Si, 20 kV:
-etwa 1,2 keV nach Bandbreiten). Wirkt durch Neu-Binning der
-gespeicherten Monte-Carlo-Elektronen.</value>
+der Gaußfunktion abgestimmt; eingeschaltet muss E_c neu kalibriert
+werden. Für Si004 bei 20 kV ergibt der Median der Breiten von 18
+festen Bändern vorläufig etwa 1,2 keV; andere Maße ergeben andere
+Werte. Wirkt durch Neu-Binning der gespeicherten Monte-Carlo-Elektronen.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Untergrund glätten</value>

@@ -4814,8 +4814,10 @@ neighbouring energy slices) instead of the asymmetric Gaussian fit.
 The Gaussian underestimates the peak near E₀ by a factor 2–3,
 which widens the bands. Off by default: the default E_c of the
 loss-dependent contrast (0.8 keV) was tuned with the Gaussian, so
-raise E_c when using this (Si, 20 kV: about 1.2 keV by band widths).
-Applied by re-binning the stored Monte Carlo electrons.</value>
+E_c needs re-calibration when this is on. For Si004 at 20 kV the
+median width of 18 fixed bands gives about 1.2 keV as a provisional
+guide; other measures give different values. Applied by re-binning
+the stored Monte Carlo electrons.</value>
   </data>
   <data name="&gt;&gt;checkBoxEnergyHistogram.Name" xml:space="preserve">
     <value>checkBoxEnergyHistogram</value>

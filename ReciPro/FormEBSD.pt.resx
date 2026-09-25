@@ -871,9 +871,10 @@ linearmente entre as duas fatias de energia vizinhas) em vez do
 ajuste gaussiano assimétrico. A gaussiana subestima o pico perto de
 E₀ por um fator 2–3, o que alarga as bandas. Desligado por padrão:
 o E_c padrão do contraste dependente da perda (0,8 keV) foi ajustado
-com a gaussiana; ao usar, aumente E_c (Si, 20 kV: cerca de 1,2 keV
-pela largura das bandas). Aplicado reagrupando os elétrons Monte
-Carlo armazenados.</value>
+com a gaussiana, portanto ao ativar E_c deve ser recalibrado. Para
+Si004 a 20 kV, a mediana das larguras de 18 bandas fixas dá cerca de
+1,2 keV como guia provisório; outras medidas dão valores diferentes.
+Aplicado reagrupando os elétrons Monte Carlo armazenados.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanar o fundo</value>

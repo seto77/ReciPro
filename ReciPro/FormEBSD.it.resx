@@ -881,9 +881,11 @@ linearmente tra le due fette di energia vicine) invece che dal fit
 gaussiano asimmetrico. La gaussiana sottostima il picco vicino a E₀
 di un fattore 2–3 e allarga le bande. Disattivato per impostazione
 predefinita: l'E_c predefinito del contrasto dipendente dalla perdita
-(0,8 keV) è stato tarato con la gaussiana; se lo si usa, aumentare
-E_c (Si, 20 kV: circa 1,2 keV dalle larghezze di banda). Si applica
-ri-raggruppando gli elettroni Monte Carlo memorizzati.</value>
+(0,8 keV) è stato tarato con la gaussiana, quindi attivandolo E_c va
+ricalibrato. Per Si004 a 20 kV la mediana delle larghezze di 18 bande
+fisse dà circa 1,2 keV come riferimento provvisorio; altre misure danno
+valori diversi. Si applica ri-raggruppando gli elettroni Monte Carlo
+memorizzati.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Appiattire il fondo</value>

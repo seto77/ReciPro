@@ -1067,9 +1067,10 @@ Radon バンド証拠の z 値、ZNCC =
 2 枚のエネルギーのスライスへ線形に配分) で作ります。ガウスは
 E₀ 付近の山を 2〜3 分の 1 に過小評価し、帯を広く見せます。
 既定は OFF: 損失依存のコントラストの既定の E_c (0.8 keV) は
-ガウスで合わせた値なので、使うときは E_c を上げてください
-(Si, 20 kV の帯の幅で約 1.2 keV)。保存済みのモンテカルロ電子の
-再ビニングで効きます。</value>
+ガウスで合わせた値なので、ON では E_c の再較正が必要です。
+Si004, 20 kV の固定 18 本の帯の幅の中央値では約 1.2 keV が
+暫定の目安ですが、評価の指標によって異なります。保存済みの
+モンテカルロ電子の再ビニングで効きます。</value>
   </data>
   <data name="checkBoxEnergyHistogram.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

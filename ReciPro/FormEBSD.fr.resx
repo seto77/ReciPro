@@ -883,9 +883,11 @@ réparti linéairement entre les deux tranches d'énergie voisines) au
 lieu de l'ajustement gaussien asymétrique. La gaussienne sous-estime
 le pic près de E₀ d'un facteur 2–3, ce qui élargit les bandes.
 Désactivé par défaut : l'E_c par défaut du contraste dépendant de la
-perte (0,8 keV) a été ajusté avec la gaussienne ; augmentez E_c en
-l'utilisant (Si, 20 kV : environ 1,2 keV d'après la largeur des
-bandes). Appliqué en regroupant les électrons Monte Carlo stockés.</value>
+perte (0,8 keV) a été ajusté avec la gaussienne ; une fois activé,
+E_c doit être recalibré. Pour Si004 à 20 kV, la médiane des largeurs
+de 18 bandes fixes donne environ 1,2 keV comme repère provisoire ;
+d'autres mesures donnent d'autres valeurs. Appliqué en regroupant les
+électrons Monte Carlo stockés.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanir le fond</value>
