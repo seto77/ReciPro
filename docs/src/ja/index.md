@@ -68,4 +68,4 @@
 ## ライセンス
 ReciProは [MITライセンス](https://github.com/seto77/ReciPro/blob/master/LICENSE.md) の下で配布されています。
 
-同梱の内殻イオン化テーブルは**このライセンスの対象外**です。別途 CC BY 4.0 で公開されているデータセット ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)) を詰め直したもので、帰属表示の全文と他の同梱物は [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) にあります。
+同梱の内殻イオン化テーブルは**このライセンスの対象外**です。別途 CC BY 4.0 で公開されているデータセット ([DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)) を詰め直したもので、帰属表示の全文と他の同梱物は [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) にあります。

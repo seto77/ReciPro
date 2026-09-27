@@ -67,4 +67,4 @@ Este manual de GitHub Pages es actualmente la fuente de referencia. Use la naveg
 ## Licencia
 ReciPro se distribuye bajo la [Licencia MIT](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
 
-Las tablas de ionización de capa interna incluidas **no** están cubiertas por esa licencia: son una forma reempaquetada de un conjunto de datos publicado por separado bajo CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). La atribución completa y los demás componentes incluidos figuran en [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).
+Las tablas de ionización de capa interna incluidas **no** están cubiertas por esa licencia: son una forma reempaquetada de un conjunto de datos publicado por separado bajo CC BY 4.0 ([DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)). La atribución completa y los demás componentes incluidos figuran en [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).

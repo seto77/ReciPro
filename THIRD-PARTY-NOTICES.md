@@ -144,13 +144,13 @@ because MIT is written for software and is silent on the EU database right
 
 | Item | Detail |
 |------|--------|
-| Material | Yusuke Seto, *Inner-shell ionization form factors F(s, E₀) for STEM-EDX: 525 channels (K, L1–L3, M1–M5) computed with Temari*, dataset version **5.0.0** (2026). |
+| Material | Yusuke Seto, *Inner-shell ionization form factors F(s, E₀) for STEM-EDX: 525 channels (K, L1–L3, M1–M5) computed with Temari*, dataset version **7.0.0** (2026). |
 | Creator and copyright | © 2026 Yusuke Seto. |
 | Licence | **CC BY 4.0** — https://creativecommons.org/licenses/by/4.0/ |
-| Link to the original | DOI [10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050) (this version; the version-independent DOI 10.5281/zenodo.21872049 resolves to the latest). Generator and documentation: https://github.com/seto77/Temari , https://seto77.github.io/Temari/ |
+| Link to the original | DOI [10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468) (this version; the version-independent DOI 10.5281/zenodo.21872049 resolves to the latest). Generator and documentation: https://github.com/seto77/Temari , https://seto77.github.io/Temari/ |
 | **Changes made** | **Yes.** The published tables were repacked into a single binary resource (`tools/IonizationGen/pack_resource.py`, method 2: 1e-6 quantization + s-direction delta + byte-plane shuffle) and are read back by `IonizationFsTable`. The packing is lossy at the 1e-6 level by design — that floor is exactly one quantization code — and no value was recomputed. |
 | Disclaimer | The dataset is offered as-is, without warranties or conditions of any kind (CC BY 4.0 §5). |
-| Shipped version | dataset 5.0.0 / formatVersion 4: 525 channels, s grid 321 points to s = 16 Å⁻¹. Generation record: `tools/IonizationGen/handout/prod_v5_jl/MANIFEST.md`. |
+| Shipped version | dataset 7.0.0 / formatVersion 4: 525 channels, s grid 321 points to s = 16 Å⁻¹ (grid and format unchanged from 5.0.0; 7.0.0 is the first release computed with a finite nucleus). Generation record: `MANIFEST.md` inside the published archive (DOI above; a byte-identical mirror is attached to the Temari GitHub release `dataset-v7.0.0`). |
 | What a user should cite | The dataset DOI above for the form factors, and Bote–Salvat (below) for the absolute cross sections. |
 | Not included | No Oxley–Allen (2000) table and no µSTEM data are contained in the shipped resource. |
 

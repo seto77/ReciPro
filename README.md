@@ -190,9 +190,9 @@ The bundled AMCSD database and all core features work entirely offline.
       waves. ReciPro embeds the resulting table and does not compute it at run time.
       **The physics, its prescription and its stated accuracy are documented there**;
       see the [Temari documentation](https://seto77.github.io/Temari/).
-    * The embedded table is dataset **v5.0.0**, published separately under
+    * The embedded table is dataset **v7.0.0**, published separately under
       **CC BY 4.0** (the software is MIT — the two are different grants) with the DOI
-      [10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050). ReciPro ships
+      [10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468). ReciPro ships
       a *repacked* form of it, so **cite that DOI** if you use the numbers; the full
       attribution, including what was changed in the repacking, is in
       [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
