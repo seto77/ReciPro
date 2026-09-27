@@ -4812,12 +4812,14 @@ Monte Carlo run and the master pattern are not recomputed.</value>
 Monte Carlo histogram (φ-weighted, split linearly between the two
 neighbouring energy slices) instead of the asymmetric Gaussian fit.
 The Gaussian underestimates the peak near E₀ by a factor 2–3,
-which widens the bands. Off by default: the default E_c of the
-loss-dependent contrast (0.8 keV) was tuned with the Gaussian, so
-E_c needs re-calibration when this is on. For Si004 at 20 kV the
-median width of 18 fixed bands gives about 1.2 keV as a provisional
-guide; other measures give different values. Applied by re-binning
-the stored Monte Carlo electrons.</value>
+which widens the bands. When on, the loss-dependent contrast A(E)
+is also applied to each electron at its own exit energy before the
+split, not at the slice energies. Off by default: the default E_c
+(0.8 keV) was tuned with the Gaussian, so E_c needs re-calibration
+when this is on. For Si004 at 20 kV the median width of 18 fixed
+bands gives about 0.9 keV as a provisional guide; other measures
+give different values. Applied by re-binning the stored Monte Carlo
+electrons.</value>
   </data>
   <data name="&gt;&gt;checkBoxEnergyHistogram.Name" xml:space="preserve">
     <value>checkBoxEnergyHistogram</value>

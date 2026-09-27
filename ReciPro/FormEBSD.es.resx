@@ -875,12 +875,14 @@ dirección a partir del histograma Monte Carlo en bruto (ponderado
 por φ, repartido linealmente entre las dos rebanadas de energía
 vecinas) en lugar del ajuste gaussiano asimétrico. La gaussiana
 subestima el pico cerca de E₀ en un factor 2–3 y ensancha las bandas.
-Desactivado por defecto: el E_c por defecto del contraste dependiente
-de la pérdida (0,8 keV) se ajustó con la gaussiana, así que al
-activarlo E_c debe recalibrarse. Para Si004 a 20 kV, la mediana del
-ancho de 18 bandas fijas da unos 1,2 keV como guía provisional; otras
-medidas dan valores distintos. Se aplica reagrupando los electrones
-Monte Carlo guardados.</value>
+Al activarlo, el contraste dependiente de la pérdida A(E) también se
+aplica a cada electrón con su propia energía de salida antes del
+reparto, no en las energías de las rebanadas. Desactivado por
+defecto: el E_c por defecto (0,8 keV) se ajustó con la gaussiana, así
+que al activarlo E_c debe recalibrarse. Para Si004 a 20 kV, la
+mediana del ancho de 18 bandas fijas da unos 0,9 keV como guía
+provisional; otras medidas dan valores distintos. Se aplica
+reagrupando los electrones Monte Carlo guardados.</value>
   </data>
   <data name="checkBoxFlattenBackground.Text" xml:space="preserve">
     <value>Aplanar el fondo</value>

@@ -118,7 +118,9 @@ public partial class FormEBSD : FormBase
     internal double McEnergyFilterMinKeV => EnergyFilterMinKeV > 0 ? EnergyFilterMinKeV : double.NaN;
     /// <summary>260925Cl 追加 (作者指示、EBSD 案 d の本体への持ち込み (i)): ビンごとの射出エネルギー分布を MC 電子の生のヒストグラムで作るか
     /// (false = 従来の非対称ガウス、既定)。エネルギーフィルターと同じく保存済みの MC 電子の再ビニングだけで効く。
-    /// ⚠ 損失依存のコントラストの既定 E_c (0.8 keV) は非対称ガウスで実測に合わせた値 (EbsdMonteCarloDistribution の ctor の doc)</summary>
+    /// ⚠ 損失依存のコントラストの既定 E_c (0.8 keV) は非対称ガウスで実測に合わせた値 (EbsdMonteCarloDistribution の ctor の doc)
+    /// <para>260927Cl 追記 (作者判断 2026-09-27): ON では A(E) も電子ごとに射出エネルギーで掛けてから配分する (G_A、EbsdMonteCarloDistribution.ComputeElectronWiseCoherence)。
+    /// Si004 20 kV の固定 18 本の帯の幅の中央値で E_c ≈ 0.9 keV (暫定。節点の A のときは約 1.2 keV)。検査 = tools/EbsdProfileFit --golden-compose と --compose-matrix --energy-hist</para></summary>
     public bool EnergyHistogram { get => checkBoxEnergyHistogram.Checked; set => checkBoxEnergyHistogram.Checked = value; }
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 

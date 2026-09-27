@@ -879,11 +879,13 @@ vengono ricalcolati.</value>
 direzione dall'istogramma Monte Carlo grezzo (pesato con φ, ripartito
 linearmente tra le due fette di energia vicine) invece che dal fit
 gaussiano asimmetrico. La gaussiana sottostima il picco vicino a E₀
-di un fattore 2–3 e allarga le bande. Disattivato per impostazione
-predefinita: l'E_c predefinito del contrasto dipendente dalla perdita
+di un fattore 2–3 e allarga le bande. Attivandolo, anche il contrasto
+dipendente dalla perdita A(E) viene applicato a ogni elettrone alla
+sua energia di uscita prima della ripartizione, non alle energie delle
+fette. Disattivato per impostazione predefinita: l'E_c predefinito
 (0,8 keV) è stato tarato con la gaussiana, quindi attivandolo E_c va
 ricalibrato. Per Si004 a 20 kV la mediana delle larghezze di 18 bande
-fisse dà circa 1,2 keV come riferimento provvisorio; altre misure danno
+fisse dà circa 0,9 keV come riferimento provvisorio; altre misure danno
 valori diversi. Si applica ri-raggruppando gli elettroni Monte Carlo
 memorizzati.</value>
   </data>
