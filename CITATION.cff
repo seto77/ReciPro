@@ -66,9 +66,9 @@ references:
     authors:
       - family-names: Seto
         given-names: Yusuke
-    version: "5.0.0"
+    version: "7.0.0"
     year: 2026
-    doi: "10.5281/zenodo.21872050"
+    doi: "10.5281/zenodo.22643468"
     license: CC-BY-4.0
     notes: >-
       Bundled as the binary resource Crystallography.IonizationFsE0.bin and used

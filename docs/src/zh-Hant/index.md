@@ -67,4 +67,4 @@
 ## 授權條款
 ReciPro 以 [MIT 授權條款](https://github.com/seto77/ReciPro/blob/master/LICENSE.md) 散布。
 
-隨附的內殼游離表**不**在該授權範圍內：它是以 CC BY 4.0 單獨發布的資料集（[DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)）的重新封裝形式。完整的姓名標示以及其他隨附元件請見 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md)。
+隨附的內殼游離表**不**在該授權範圍內：它是以 CC BY 4.0 單獨發布的資料集（[DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)）的重新封裝形式。完整的姓名標示以及其他隨附元件請見 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md)。

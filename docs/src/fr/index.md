@@ -67,4 +67,4 @@ Ce manuel sur GitHub Pages constitue la référence actuelle. Utilisez la naviga
 ## Licence
 ReciPro est distribué sous la [licence MIT](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).
 
-Les tables d'ionisation de couche interne fournies ne sont **pas** couvertes par cette licence : elles constituent une forme reconditionnée d'un jeu de données publié séparément sous CC BY 4.0 ([DOI 10.5281/zenodo.21872050](https://doi.org/10.5281/zenodo.21872050)). L'attribution complète et les autres composants fournis figurent dans [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).
+Les tables d'ionisation de couche interne fournies ne sont **pas** couvertes par cette licence : elles constituent une forme reconditionnée d'un jeu de données publié séparément sous CC BY 4.0 ([DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)). L'attribution complète et les autres composants fournis figurent dans [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).
