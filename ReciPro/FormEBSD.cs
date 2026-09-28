@@ -1,4 +1,4 @@
-﻿#region using
+#region using
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -66,6 +66,10 @@ public partial class FormEBSD : FormBase
     //  260921Cl: 射出半球の格子は Lambert 等積ディスク 18×18 へ変えたが、ビン 1 個の立体角は旧 16×16 とほぼ同じ (0.0247 sr) なので 1 ビンあたりの電子数も同じ。
     private const int BackscatterMonteCarloLoopCount = 10_000_000;
     private readonly Timer timer = new();
+    private bool coherenceLossDecayManuallyEdited = false; // (260928Ch) 分布切替による既定値追従は E_c を手で編集するまで
+    private bool applyingDistributionCoherenceLossDefault = false; // (260928Ch) 自動切替の ValueChanged を手入力と誤認しない
+    private const double GaussianCoherenceLossDecayDefaultKeV = 0.8; // (260928Ch) 近似ガウスの既定較正値
+    private const double HistogramCoherenceLossDecayDefaultKeV = 0.9; // (260928Ch) Si004 の固定18本中央値に対する暫定値
     #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
     /*
     // private const int ElasticSamplerBenchmarkLoopCount = 250_000; // (260401Ch) generated / external の MC 比較は 25 万本で軽めに検証する
@@ -96,8 +100,8 @@ public partial class FormEBSD : FormBase
     /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数 A(E) = exp(−(E0 − E)/E_c) を合成に使うか (既定 ON)。
     /// 詳しい理由と実測値は <see cref="Crystallography.EbsdPatternComposer.CoherenceLossDecayKeV"/> の doc を参照</summary>
     public bool CoherenceLossWeight { get => checkBoxCoherenceLoss.Checked; set => checkBoxCoherenceLoss.Checked = value; }
-    /// <summary>260920Cl 追加: A(E) の特性損失 E_c [keV] (既定 0.8。260921Cl 変更: 旧 0.7)。小さいほど低損失電子だけが菊池コントラストを担う。
-    /// 既定値は Si 20 kV の実測パターン 1 枚で校正した値 (旧 1.0 → 0.7 → 深さ写像 A2 の後に 0.8)。物質・加速電圧への一般性は未確認</summary>
+    /// <summary>260920Cl 追加: A(E) の特性損失 E_c [keV] (近似ガウスの既定 0.8、ヒストグラム + 電子ごとの A の暫定既定 0.9)。小さいほど低損失電子だけが菊池コントラストを担う。
+    /// 分布切替への追従は値を手で編集するまで。E_c は実用上の有効補正であり物理導出は未確立</summary>
     public double CoherenceLossDecayKeV { get => numericBoxCoherenceLossDecay.Value; set => numericBoxCoherenceLossDecay.Value = value; }
     /// <summary>260920Cl 追加: 合成器へ渡す E_c。OFF なら NaN (= 全エネルギースライスが満額のコントラストを持つ従来動作)</summary>
     internal double ComposerCoherenceLossDecayKeV => CoherenceLossWeight ? CoherenceLossDecayKeV : double.NaN;
@@ -365,6 +369,7 @@ public partial class FormEBSD : FormBase
     public FormEBSD()
     {
         InitializeComponent();
+        numericBoxCoherenceLossDecay.TextChanged += CoherenceLossDecay_TextChanged; // (260928Ch) 同値の再入力や貼り付けも分布別既定値の追従に反映
         HelpPage = "12-ebsd-simulation"; //260529Cl 追加
         // 260731Cl 追加: ダークモード時、ステレオネット (PoleFigureControl) に重ねて配置したチェックボックスとラベルの
         // 背景をキャンバス背景 (CanvasBackColor: ダーク時 #202020) に合わせる (Designer は White 固定)
@@ -1111,14 +1116,36 @@ public partial class FormEBSD : FormBase
     private void PhosphorWeight_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
 
     /// <summary>260922Cl 追加 (作者指示): エネルギーフィルターの変更。蛍光体応答重みと同じく、保存済み BSE をデバウンス付きで再ビニングする</summary>
-    private void EnergyFilter_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e);
+    // private void EnergyFilter_Changed(object sender, EventArgs e) => NumericBoxAmorphousLayer_ValueChanged(sender, e); // (260928Ch) 分布別の E_c 既定値追従を追加する前
+    private void EnergyFilter_Changed(object sender, EventArgs e) // (260928Ch) GA 分布の切替時だけ未編集 E_c を既定値へ追従
+    {
+        if (sender == checkBoxEnergyHistogram && !coherenceLossDecayManuallyEdited)
+        {
+            var defaultKeV = EnergyHistogram ? HistogramCoherenceLossDecayDefaultKeV : GaussianCoherenceLossDecayDefaultKeV;
+            if (numericBoxCoherenceLossDecay.Value != defaultKeV)
+            {
+                applyingDistributionCoherenceLossDefault = true;
+                try { numericBoxCoherenceLossDecay.Value = defaultKeV; }
+                finally { applyingDistributionCoherenceLossDefault = false; }
+            }
+        }
+        NumericBoxAmorphousLayer_ValueChanged(sender, e);
+    }
 
     /// <summary>260920Cl 追加 (作者指示): 損失依存のコントラスト係数の ON/OFF・E_c 変更。
     /// これは MasterPattern のスライスを合成するときの重みだけを変えるので、MC の再ビニングも MasterPattern の再構築も要らない。再描画だけで足りる</summary>
     private void CoherenceLoss_Changed(object sender, EventArgs e)
     {
+        if (sender == numericBoxCoherenceLossDecay && !applyingDistributionCoherenceLossDefault)
+            coherenceLossDecayManuallyEdited = true; // (260928Ch) ユーザーが E_c を編集した後は分布切替で上書きしない
         composedPatternCache = default; //ZNCC 照合用の合成も作り直す
         if (MasterPattern != null) Draw();
+    }
+
+    private void CoherenceLossDecay_TextChanged(object sender, EventArgs e) // (260928Ch) 値が数値として変わらない入力も手編集として扱う
+    {
+        if (!applyingDistributionCoherenceLossDefault)
+            coherenceLossDecayManuallyEdited = true;
     }
 
     private void AmorphousLayerDebounce_Tick(object sender, EventArgs e) // 260919Cl 追加

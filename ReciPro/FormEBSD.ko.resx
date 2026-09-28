@@ -954,10 +954,16 @@ A(E) = exp(-(E0 - E) / E_c) 배로 조정하고, 잃은 몫은 평탄한
 끄면 모든 슬라이스가 완전한 대비를 가져 밴드가 넓어집니다
 (Si 20 kV: 단색 대비 5 %, E_c = 1 keV 이면 1.7 %).</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>대비 감쇠 A(E) = exp(-(E0 - E) / E_c) 의 특성 손실 E_c (keV).
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+대비 감쇠 A(E) = exp(-(E0 - E) / E_c) 의 특성 손실 E_c (keV).
 작을수록 손실이 적은 전자만 키쿠치 대비를 담당합니다.
 기본값 0.8 keV 는 Si 20 kV 실측 패턴 1장으로 보정한 값입니다.
-다른 물질·가속 전압에서도 성립하는지는 확인되지 않았습니다.</value>
+다른 물질·가속 전압에서도 성립하는지는 확인되지 않았습니다.
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>A(E) = exp(-(E0 - E) / E_c)의 현상론적 유효 매개변수 E_c (keV).
+수정 전 기본값: 비대칭 가우스는 0.8 keV, 히스토그램 + 전자별 A는 0.9 keV (20 kV Si004 고정 18개 밴드 중앙값의 잠정값).
+E_c를 수정한 뒤에는 분포를 바꿔도 입력값을 유지합니다.
+값은 물질과 반사에 따라 달라집니다. Botallackite 예는 약 0.43–0.71 keV입니다. 에너지/깊이 격자, 합성 방법 또는 평가 지표가 바뀌면 다시 보정하십시오.</value>
   </data>
 </root>

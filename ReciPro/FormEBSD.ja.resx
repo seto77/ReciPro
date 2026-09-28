@@ -1192,11 +1192,17 @@ A(E) = exp(-(E0 - E) / E_c) 倍し、失った分を平坦な台座へ回しま�
 バンドが単色より 13 % 広くなります (Si 20 kV)。
 既定の E_c では実測とほぼ一致します。</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>コントラスト減衰 A(E) = exp(-(E0 - E) / E_c) の特性損失 (keV)。
+  <!-- (260928Ch) E_c の説明をマニュアルと統一。旧値:
+コントラスト減衰 A(E) = exp(-(E0 - E) / E_c) の特性損失 (keV)。
 小さいほど低損失の電子だけが菊池コントラストを担います。
 既定 0.8 keV は Si 20 kV の実測パターン 1 枚で校正した値です。
-他の物質・加速電圧でも成り立つかは未確認です。</value>
+他の物質・加速電圧でも成り立つかは未確認です。
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>A(E) = exp(-(E0 - E) / E_c) の現象論的な有効パラメータ E_c (keV)。
+手で編集する前の既定値：近似ガウスは 0.8 keV、ヒストグラム + 電子ごとの A (G_A) は 0.9 keV（Si004、20 kV の固定18本の帯幅中央値による暫定値）。
+E_c を編集した後は、分布を切り替えても入力値を保持します。
+値は物質・反射で変わります。Botallackite の例は約 0.43〜0.71 keV。エネルギー・深さ格子、合成方法、評価指標を変えたら較正し直してください。</value>
   </data>
   <data name="checkBoxPickZoneAxis.Text" xml:space="preserve">
     <value>晶帯軸</value>

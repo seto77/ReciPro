@@ -4907,13 +4907,19 @@ default E_c they match the measured pattern.</value>
   <data name="numericBoxCoherenceLossDecay.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>Characteristic energy loss E_c of the contrast decay
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+Characteristic energy loss E_c of the contrast decay
 A(E) = exp(-(E0 - E) / E_c), in keV. Smaller means only
 low-loss electrons carry the Kikuchi contrast.
 The default 0.8 keV is calibrated on one measured Si
 pattern at 20 kV. Whether it holds for other materials
-or voltages is not known.</value>
+or voltages is not known.
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>Effective phenomenological parameter E_c (keV) in A(E) = exp(-(E0 - E) / E_c).
+Before editing: 0.8 keV for the asymmetric Gaussian; 0.9 keV for histogram + per-electron A (provisional median of 18 fixed Si004 bands at 20 kV).
+After you edit E_c, switching distributions keeps your value.
+Values depend on material and reflections; Botallackite: about 0.43–0.71 keV. Recalibrate after changing the energy/depth grid, synthesis method or evaluation metric.</value>
   </data>
   <data name="&gt;&gt;numericBoxCoherenceLossDecay.Name" xml:space="preserve">
     <value>numericBoxCoherenceLossDecay</value>

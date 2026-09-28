@@ -904,10 +904,16 @@ A(E) = exp(-(E0 - E) / E_c)，損失的部分轉為平坦基座，
 關閉時所有切片都帶滿額對比，帶寬會偏大
 (Si 20 kV：比單色寬 5 %；E_c = 1 keV 時為 1.7 %)。</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>對比衰減 A(E) = exp(-(E0 - E) / E_c) 的特徵損失 E_c (keV)。
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+對比衰減 A(E) = exp(-(E0 - E) / E_c) 的特徵損失 E_c (keV)。
 越小表示只有低損失電子承擔菊池對比。
 預設值 0.8 keV 是以一張 Si 20 kV 實測圖樣校準的值。
-是否適用於其他物質或加速電壓尚未確認。</value>
+是否適用於其他物質或加速電壓尚未確認。
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>A(E) = exp(-(E0 - E) / E_c) 中的現象論有效參數 E_c (keV)。
+編輯前的預設值：非對稱高斯為 0.8 keV；直方圖 + 逐電子 A 為 0.9 keV（20 kV Si004 固定 18 條帶寬中位數的暫定值）。
+編輯 E_c 後，切換分布時保留輸入值。
+數值隨材料和反射而變；Botallackite 範例約為 0.43–0.71 keV。能量/深度網格、合成方法或評價指標變更時請重新校準。</value>
   </data>
 </root>

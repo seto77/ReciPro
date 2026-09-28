@@ -912,10 +912,16 @@ A(E) = exp(-(E0 - E) / E_c)，损失的部分转为平坦基座，
 关闭时所有切片都带满额对比度，带宽会偏大
 (Si 20 kV：比单色宽 5 %；E_c = 1 keV 时为 1.7 %)。</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>对比度衰减 A(E) = exp(-(E0 - E) / E_c) 的特征损失 E_c (keV)。
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+对比度衰减 A(E) = exp(-(E0 - E) / E_c) 的特征损失 E_c (keV)。
 越小表示只有低损失电子承担菊池对比度。
 默认值 0.8 keV 是用一张 Si 20 kV 实测图样校准的值。
-是否适用于其他物质或加速电压尚未确认。</value>
+是否适用于其他物质或加速电压尚未确认。
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>A(E) = exp(-(E0 - E) / E_c) 中的现象学有效参数 E_c (keV)。
+编辑前的默认值：非对称高斯为 0.8 keV；直方图 + 逐电子 A 为 0.9 keV（20 kV Si004 固定 18 条带宽中位数的暂定值）。
+编辑 E_c 后，切换分布时保留输入值。
+数值随材料和反射而变；Botallackite 示例约为 0.43–0.71 keV。能量/深度网格、合成方法或评价指标变化时请重新标定。</value>
   </data>
 </root>

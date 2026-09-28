@@ -1006,12 +1006,18 @@ flachen Sockel, die Gesamtintensität bleibt erhalten.
 Ohne dies tragen alle Scheiben vollen Kontrast und die Bänder
 werden zu breit (Si 20 kV: 5 %, mit E_c = 1 keV nur 1,7 %).</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>Charakteristischer Energieverlust E_c des Kontrastabfalls
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+Charakteristischer Energieverlust E_c des Kontrastabfalls
 A(E) = exp(-(E0 - E) / E_c), in keV. Kleiner heißt, nur Elektronen
 mit geringem Verlust tragen den Kikuchi-Kontrast.
 Der Standardwert 0.8 keV ist an einem gemessenen Si-Muster
 bei 20 kV kalibriert. Ob er für andere Materialien oder
-Spannungen gilt, ist nicht bekannt.</value>
+Spannungen gilt, ist nicht bekannt.
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>Effektiver phänomenologischer Parameter E_c (keV) in A(E) = exp(-(E0 - E) / E_c).
+Vor einer Eingabe: 0,8 keV für die asymmetrische Gaußverteilung; 0,9 keV für Histogramm + A je Elektron (vorläufiger Median aus 18 festen Si004-Bändern bei 20 kV).
+Nach einer Eingabe bleibt Ihr E_c beim Verteilungswechsel erhalten.
+Die Werte hängen von Material und Reflexen ab; Botallackit: etwa 0,43–0,71 keV. Bei geänderter Energie-/Tiefengitterung, Synthese oder Bewertungsmaß neu kalibrieren.</value>
   </data>
 </root>

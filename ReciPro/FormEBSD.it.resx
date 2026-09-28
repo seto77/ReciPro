@@ -1009,12 +1009,18 @@ piatto, conservando l'intensità totale.
 Senza, tutte le fette portano contrasto pieno e le bande risultano
 troppo larghe (Si 20 kV: 5 %; 1,7 % con E_c = 1 keV).</value>
   </data>
-  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
-    <value>Perdita di energia caratteristica E_c del decadimento del contrasto
+  <!-- (260928Ch) Align E_c guidance with the manual. Previous value:
+Perdita di energia caratteristica E_c del decadimento del contrasto
 A(E) = exp(-(E0 - E) / E_c), in keV. Più piccola significa che solo gli
 elettroni a bassa perdita portano il contrasto di Kikuchi.
 Il valore predefinito di 0.8 keV è calibrato su un pattern
 misurato di Si a 20 kV. Non è noto se valga per altri
-materiali o tensioni.</value>
+materiali o tensioni.
+  -->
+  <data name="numericBoxCoherenceLossDecay.ToolTip" xml:space="preserve">
+    <value>Parametro fenomenologico efficace E_c (keV) in A(E) = exp(-(E0 - E) / E_c).
+Prima della modifica: 0,8 keV per la gaussiana asimmetrica; 0,9 keV per istogramma + A per elettrone (mediana provvisoria di 18 bande fisse Si004 a 20 kV).
+Dopo aver modificato E_c, il valore viene mantenuto quando si cambia distribuzione.
+I valori dipendono da materiale e riflessi; botallackite: circa 0,43–0,71 keV. Ricalibrare se cambiano griglia energia/profondità, sintesi o metrica.</value>
   </data>
 </root>
