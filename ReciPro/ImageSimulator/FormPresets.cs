@@ -207,6 +207,9 @@ public partial struct ImageSimulatorSetting
     /// 27 で書かれた既存 blob が MemoryPackSerializationException になる (Reg.RW が握り潰すのでプリセットが
     /// 黙って消える)。将来また選択 UI を入れるときの枠として残す。</summary>
     public (int Z, IonizationShell Shell)[] EdxChannels;
+    /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか。**末尾に追加** (上の MemoryPack の注意)。
+    /// 旧 blob では既定値 false = 従来どおり殻のチャネルだけ。</summary>
+    public bool EdxLineSeries;
     #endregion
 
     public override readonly string ToString() => Name;
@@ -254,6 +257,7 @@ public partial struct ImageSimulatorSetting
         AngularResolution = f.STEM_AngularResolution;
         EdxEnabled = f.EdxEnabled;
         EdxChannels = null;//260802Cl: 未使用 (EDX が ON なら利用可能な特性 X 線を常に全部計算する)。枠だけ残す
+        EdxLineSeries = f.EdxLineSeries;//260925Cl 追加
     }
 
     public readonly void Apply(FormImageSimulator f)
@@ -295,6 +299,7 @@ public partial struct ImageSimulatorSetting
         //旧 blob では AngularResolution が 0 になるので、その場合だけ現在値を保つ (0 は probe 分割数が 0 除算になる無効値)
         if (AngularResolution > 0)
             f.STEM_AngularResolution = AngularResolution;
+        f.EdxLineSeries = EdxLineSeries;//260925Cl 追加: 候補一覧を作る EdxEnabled より前に (同じ条件で 1 回だけ列挙する)
         f.EdxEnabled = EdxEnabled;
         //260802Cl: EdxChannels は未使用 (常に全チャネル計算) なので適用しない
     }

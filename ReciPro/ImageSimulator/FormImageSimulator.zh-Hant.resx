@@ -67,6 +67,12 @@
 （α 為出射角）進行修正。為將來的實作預留的項目，
 目前尚未套用自吸收。</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>譜線系 (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>同時計算特徵 X 射線譜線系 Kα、Kβ、Lα、Lβ、Mα 的圖&#xD;&#xA;（每個入射電子產生的 X 射線光子數，偵測之前）。&#xD;&#xA;每個譜線系由各支殼層的游離圖結合螢光產率、&#xD;&#xA;Coster–Kronig 與輻射級聯以及譜線分支比 (xraylib 4.2.1) 組成。&#xD;&#xA;不含歐傑級聯（Mα 約偏低 5 %）。&#xD;&#xA;每個譜線系增加一次游離計算。</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>無窗</value>
   </data>
@@ -909,12 +915,12 @@ sin(theta)/lambda (nm^-1) 表示；
     <value>EDX 共用</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>對所有 EDX 通道使用同一顯示範圍，切換通道時不會重新縮放。數值是模型計算的游離空穴量，而非實測 X 射線計數。</value>
+    <value>對同一物理量的 EDX 通道（殼層通道 = 空穴，譜線系 = X 射線光子）使用同一顯示範圍，切換通道時不會重新縮放。數值是模型計算的量，而非實測 X 射線計數。</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像；特徵 X 射線在下方選擇。數值是每個入射電子產生的內殼空穴數（模型值）。螢光產額、自吸收、偵測器立體角與偵測效率均未計入，因此不是預測的 X 射線計數。</value>
+    <value>顯示 STEM-EDX 元素分佈圖，取代 ADF 類影像；特徵 X 射線在下方選擇。殼層通道（K、L、M）的數值是每個入射電子產生的內殼空穴數（模型值）。譜線系（Kα、Kβ、Lα、Lβ、Mα）的數值是每個入射電子產生的 X 射線光子數：已計入螢光產率、Coster–Kronig 與輻射級聯以及譜線分支比，未計入歐傑級聯。自吸收、偵測器立體角與偵測效率均未計入，因此兩者都不是預測的 X 射線計數。</value>
   </data>
 </root>

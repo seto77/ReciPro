@@ -213,9 +213,14 @@ public partial class FormALCHEMI : FormBase
         toolTip.SetToolTip(checkBoxDechannelling, Localization.Loc(
             en: "Electrons removed from the coherent Bloch field by thermal-diffuse absorption are re-emitted as randomly directed electrons over the remaining thickness. Omitting this dilutes the site contrast by tens of percent at typical thicknesses.",
             ja: "熱散漫吸収でコヒーレントなブロッホ場から失われた電子を、方向がランダム化された電子として残りの厚みぶん走らせます。省くと典型的な厚みでサイトコントラストが数十パーセント薄まります。"));
-        toolTip.SetToolTip(checkedListBoxChannels, Localization.Loc(
-            en: "Element and shell to ionize. Cross sections are Bote-Salvat and the shape factors are self-generated DHFS tables; channels that cannot be excited or fall outside the tabulated range are listed with the reason and cannot be selected.",
-            ja: "イオン化する元素と殻です。断面積は Bote-Salvat、形状因子は自前の DHFS テーブルです。励起できない、または収録範囲外のチャネルは理由付きで表示され選択できません。"));
+        //toolTip.SetToolTip(checkedListBoxChannels, Localization.Loc(//260925Cl 変更前
+        //    en: "Element and shell to ionize. Cross sections are Bote-Salvat and the shape factors are self-generated DHFS tables; channels that cannot be excited or fall outside the tabulated range are listed with the reason and cannot be selected.",
+        //    ja: "イオン化する元素と殻です。断面積は Bote-Salvat、形状因子は自前の DHFS テーブルです。励起できない、または収録範囲外のチャネルは理由付きで表示され選択できません。"));
+        toolTip.SetToolTip(checkedListBoxChannels, Localization.Loc(//260925Cl 変更: 線の系列の説明を足した
+            en: "Element and shell to ionize. Cross sections are Bote-Salvat and the shape factors are self-generated DHFS tables; channels that cannot be excited or fall outside the tabulated range are listed with the reason and cannot be selected. "
+                + "The X-ray line series (Kα, Kβ, Lα, Lβ, Mα) follow the shells and count X-ray photons generated instead of vacancies: fluorescence yields, Coster–Kronig and radiative cascades and line branching come from xraylib 4.2.1, and the Auger cascade is not included (Mα about 5 % low). They are unchecked by default.",
+            ja: "イオン化する元素と殻です。断面積は Bote-Salvat、形状因子は自前の DHFS テーブルです。励起できない、または収録範囲外のチャネルは理由付きで表示され選択できません。"
+                + "殻の後に並ぶ線の系列 (Kα・Kβ・Lα・Lβ・Mα) は空孔ではなく発生する X 線の光子を数えます。蛍光収率・Coster–Kronig と放射の連鎖・線の分岐比は xraylib 4.2.1 のもので、Auger の連鎖は含みません (Mα は約 5 % 小さめ)。既定ではチェックしません。"));
         toolTip.SetToolTip(checkedListBoxSites, Localization.Loc(
             en: "Atomic sites whose yield is computed separately. In the tracer picture a channel may be paired with any site, so a dopant channel on a host site is a legitimate hypothesis.",
             ja: "収量を別々に計算する原子サイトです。トレーサ近似ではチャネルとサイトの組み合わせは自由なので、ホストサイト上のドーパントチャネルも正当な仮説です。"));
@@ -245,9 +250,12 @@ public partial class FormALCHEMI : FormBase
         toolTip.SetToolTip(numericBoxThickness, Localization.Loc(
             en: "Thickness shown in the graph. The spin buttons step through the computed thicknesses; a typed value snaps to the nearest one. The site contrast changes strongly - and can even reverse sign - between thin and thick specimens, so check several thicknesses before drawing conclusions.",
             ja: "グラフに表示する厚みです。スピンボタンで計算済みの厚みを順送りし、直接入力した値は最寄りの計算済み厚みに揃えられます。サイトコントラストは薄い試料と厚い試料で大きく変わり符号すら反転しうるので、結論を出す前に複数の厚みを確認してください。"));
-        toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(
-            en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
-            ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
+        //toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(//260925Cl 変更前
+        //    en: "Display normalization only; the stored quantity is always vacancies generated per incident electron. Maximum = 1 is for display and must not be used as an ICP reference.",
+        //    ja: "表示上の規格化だけで、保存される量は常に入射電子 1 個あたりの発生空孔数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
+        toolTip.SetToolTip(comboBoxNormalization, Localization.Loc(//260925Cl 変更: 線の系列は光子
+            en: "Display normalization only; the stored quantity is vacancies generated per incident electron for a shell channel and X-ray photons generated per incident electron for a line series. Maximum = 1 is for display and must not be used as an ICP reference.",
+            ja: "表示上の規格化だけで、保存される量は殻のチャネルでは入射電子 1 個あたりの発生空孔数、線の系列では入射電子 1 個あたりに発生する X 線の光子数です。最大値 = 1 は表示専用で、ICP の基準には使えません。"));
         toolTip.SetToolTip(buttonExport, Localization.Loc(
             en: "Write the raw curves (dynamic, dechannelled and total, per incident electron) for every orientation, thickness, site and channel to a CSV file, together with a header that records the crystal, the voltage, the scan, the basis diagnostic, the angular spread and the data provenance.",
             ja: "全方位・全厚み・全サイト・全チャネルの生の曲線 (動力学・非チャネリング・合計、入射電子 1 個あたり) を、結晶・電圧・走査・基底診断・角度広がり・データ出所を記録したヘッダとともに CSV に書き出します。"));
@@ -284,14 +292,22 @@ public partial class FormALCHEMI : FormBase
     {
         if (FormDiffractionSimulator == null || Crystal?.Atoms == null) return;
 
-        var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();
+        //var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();//260925Cl 変更前
+        //260925Cl 変更 (codex2 の指摘): チェックの保持を表示文字列ではなく (Z, 殻) で行う。表示文字列には U = E0/edge が入るので、
+        //電圧を変えると一致しなくなり、選んだチャネル (線の系列を含む) が外れていた。一覧の行と channelInfos は同じ順に作っている
+        var checkedChannels = Enumerable.Range(0, Math.Min(checkedListBoxChannels.Items.Count, channelInfos.Length))
+            .Where(checkedListBoxChannels.GetItemChecked).Select(i => channelInfos[i].Channel).ToHashSet();
         checkedListBoxChannels.Items.Clear();
-        channelInfos = IonizationDataProvider.EnumerateChannels(Crystal, Voltage);
+        //channelInfos = IonizationDataProvider.EnumerateChannels(Crystal, Voltage);//260925Cl 変更前
+        channelInfos = IonizationDataProvider.EnumerateChannels(Crystal, Voltage, includeLineSeries: true);//260925Cl 変更: 線の系列も一覧に並べる
         foreach (var info in channelInfos)
         {
             var text = info.ToListItemText();
-            checkedListBoxChannels.Items.Add(text,
-                info.Status == IonizationAvailability.Available && (checkedChannels.Count == 0 || checkedChannels.Contains(text)));
+            //checkedListBoxChannels.Items.Add(text,//260925Cl 変更前
+            //    info.Status == IonizationAvailability.Available && (checkedChannels.Count == 0 || checkedChannels.Contains(text)));
+            //260925Cl 変更: 最初に一覧を作るとき、線の系列は既定でチェックしない (チャネルが増える = 計算時間が増えるため)
+            checkedListBoxChannels.Items.Add(text, info.Status == IonizationAvailability.Available
+                && (checkedChannels.Count == 0 ? !XrayLineSeries.IsLineSeries(info.Channel.Shell) : checkedChannels.Contains(info.Channel)));
         }
 
         var checkedSites = checkedListBoxSites.CheckedItems.Cast<string>().ToHashSet();
@@ -856,7 +872,17 @@ public partial class FormALCHEMI : FormBase
 
         Key("generator", $"ReciPro ALCHEMI, {Version.VersionAndDate}");
         Key("model", $"{result.ModelTier} (local form-factor approximation; NOT the two-momentum MDFF)");
-        Key("quantity", $"{result.Quantity} ({result.Normalization})");
+        //Key("quantity", $"{result.Quantity} ({result.Normalization})");//260925Cl 変更前
+        //260925Cl 変更: 線の系列を含む run では、チャネルごとの量を書く (殻 = 空孔、線の系列 = X 線の光子)
+        var hasLineSeries = result.ChannelData.Any(d => XrayLineSeries.IsLineSeries(d.Target.Shell));
+        Key("quantity", hasLineSeries
+            ? $"per channel ({result.Normalization}): " + string.Join("; ", result.ChannelData.Select((d, c) => $"{d.Target.ShortLabel} {result.QuantityOf(c)}"))
+            : $"{result.Quantity} ({result.Normalization})");
+        if (hasLineSeries)
+            Key("line_series_model", "X-ray photons generated (all directions, before detection) = sum_i B_i sigma_i over the primary subshells i, "
+                + "with the shape F = sum_i B_i sigma_i F_i / sum_i B_i sigma_i; B_i = fluorescence yield x line branching after the Coster-Kronig "
+                + "and radiative cascades (xraylib 4.2.1). The Auger cascade is NOT included (M-alpha about 5 % low, L-alpha up to 2 % low for Z <= 50). "
+                + "Supply from subshells outside the F table (K above Z = 50) is left out");
         Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}");
         //Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " //260820Cl 変更 (/simplify2): この 1 行だけ既定カルチャだった (de/fr では小数点がカンマになり conventions 行と矛盾)
         //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
@@ -890,7 +916,11 @@ public partial class FormALCHEMI : FormBase
             + "Light or weakly scattering sites and t <= 5 nm agree to 1-3 %; "
             + "heavy columns with t >= 10 nm carry a systematic error of 6-17 % of the ICP modulation, "
             + "because the dechannelled term carries no site correlation");
-        Key("not_modelled", "X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, "
+        //Key("not_modelled", "X-ray self-absorption, detector efficiency and solid angle, fluorescence yield and line branching, "//260925Cl 変更前
+        //    + "background, specimen thickness distribution, specimen bending");
+        Key("not_modelled", "X-ray self-absorption, detector efficiency and solid angle, "//260925Cl 変更: 線の系列では蛍光収率・線の分岐は入っている
+            + (hasLineSeries ? "fluorescence yield and line branching for shell channels, the Auger cascade for line series, "
+                             : "fluorescence yield and line branching, ")
             + "background, specimen thickness distribution, specimen bending");
         foreach (var d in result.ChannelData)
         {

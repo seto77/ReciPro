@@ -273,7 +273,8 @@ public partial class FormImageSimulator : FormBase
     private IonizationChannelInfo[] edxCandidates = [];
 
     /// <summary>候補一覧を作り直した最後の条件 (同じ結晶・同じ電圧での再構築を省く)</summary>
-    private (Crystal Crystal, double AccVol) edxListKey;
+    //private (Crystal Crystal, double AccVol) edxListKey;//260925Cl 変更前
+    private (Crystal Crystal, double AccVol, bool LineSeries) edxListKey;//260925Cl 変更: 線の系列を含めるかも条件に入れる
 
     /// <summary>STEM-EDX マップを要求するチェックの状態。
     /// 260802Cl 変更: getter から <c>ImageMode == ImageModes.STEM</c> の条件を外した (旧: 両方の AND)。
@@ -284,6 +285,13 @@ public partial class FormImageSimulator : FormBase
     {
         get => checkBoxCalculateEdx.Checked;
         set => checkBoxCalculateEdx.Checked = value;
+    }
+
+    /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか (プリセットの保存・適用で使う)。</summary>
+    public bool EdxLineSeries
+    {
+        get => checkBoxEdxLineSeries.Checked;
+        set => checkBoxEdxLineSeries.Checked = value;
     }
 
     /// <summary>--capture 用: EDX 要求の GroupBox (スクロール下端に来て全体像に写らないため単体で撮る)</summary>
@@ -303,10 +311,13 @@ public partial class FormImageSimulator : FormBase
     public void RenewEdxChannelList()
     {
         if (labelEdxSummary is null) return;
-        var key = (FormMain?.Crystal, AccVol);
+        //var key = (FormMain?.Crystal, AccVol);//260925Cl 変更前
+        var key = (FormMain?.Crystal, AccVol, checkBoxEdxLineSeries is not null && checkBoxEdxLineSeries.Checked);//260925Cl 変更
         if (edxCandidates.Length == 0 || key != edxListKey)
         {
-            edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);
+            //edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol);//260925Cl 変更前
+            //260925Cl 変更: 「線の系列」をチェックしたときだけ Kα・Kβ・Lα・Lβ・Mα を殻の後に足す (XrayLineSeries。光子の生成数の地図)
+            edxCandidates = IonizationDataProvider.EnumerateChannels(FormMain?.Crystal, AccVol, includeLineSeries: key.Item3);
             edxListKey = key;
         }
         RenewEdxSummary();
@@ -545,6 +556,9 @@ public partial class FormImageSimulator : FormBase
         else
             RenewEdxSummary();
     }
+
+    /// <summary>260925Cl 追加: 「線の系列」の切り替え = 計算するチャネルの集合が変わる (候補一覧を作り直す)。</summary>
+    private void CheckBoxEdxLineSeries_CheckedChanged(object sender, EventArgs e) => RenewEdxChannelList();
 
     /// <summary>特性 X 線 (EDX チャネル) の選択が変わったとき。</summary>
     private void ComboBoxEdxDisplay_SelectedIndexChanged(object sender, EventArgs e)
@@ -1269,7 +1283,10 @@ public partial class FormImageSimulator : FormBase
         var planes = edx.Image.Planes;
         int tLen = result.Thicknesses.Length, dLen = result.Defocusses.Length;
         //チャネル軸: 共通なら「表示していないチャネルも含めた」全 EDX 信号が母集団 (§5.9-5)
-        var scope = checkBoxEdxCommonScale.Checked && checkBoxEdxCommonScale.Visible ? result.EdxSignals : [edx];
+        //var scope = checkBoxEdxCommonScale.Checked && checkBoxEdxCommonScale.Visible ? result.EdxSignals : [edx];//260925Cl 変更前
+        //260925Cl 変更: 共通の尺度は**同じ量**のチャネルどうしに限る (殻の空孔の地図と線の系列の光子の地図を 1 つの尺度に混ぜない)
+        var scope = checkBoxEdxCommonScale.Checked && checkBoxEdxCommonScale.Visible
+            ? [.. result.EdxSignals.Where(s => s.Quantity == edx.Quantity)] : new[] { edx };
 
         double allMax = 0;
         foreach (var s in scope)

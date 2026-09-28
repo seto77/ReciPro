@@ -68,6 +68,12 @@ vers le détecteur, exp(-µT/sin α) où α est l'angle
 d'émergence. Réservé à une version future : aucune
 auto-absorption n'est appliquée actuellement.</value>
   </data>
+  <data name="checkBoxEdxLineSeries.Text" xml:space="preserve">
+    <value>Séries de raies (Kα, Lα…)</value>
+  </data>
+  <data name="checkBoxEdxLineSeries.ToolTip" xml:space="preserve">
+    <value>Calcule aussi les cartes des séries de raies X caractéristiques Kα, Kβ, Lα, Lβ et Mα&#xD;&#xA;(photons X générés par électron incident, avant détection).&#xD;&#xA;Chaque série combine les cartes d’ionisation des sous-couches avec les rendements de fluorescence,&#xD;&#xA;les cascades Coster–Kronig et radiatives et les rapports de branchement des raies (xraylib 4.2.1).&#xD;&#xA;La cascade Auger n’est pas incluse (Mα environ 5 % trop faible).&#xD;&#xA;Chaque série ajoute un passage d’ionisation.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>Sans fenêtre</value>
   </data>
@@ -914,12 +920,12 @@ le long de l'axe horizontal de la grille d'images en série.</value>
     <value>EDX commun</value>
   </data>
   <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>Utilise une seule plage d'affichage pour tous les canaux EDX, de sorte que changer de canal ne modifie pas l'échelle. Les valeurs sont des lacunes d'ionisation modélisées, pas des comptages de rayons X mesurés.</value>
+    <value>Utilise une seule plage d'affichage pour les canaux EDX calculés de même grandeur (canaux de couche = lacunes, séries de raies = photons X), de sorte que changer de canal ne modifie pas l'échelle. Les valeurs sont des grandeurs modélisées, pas des comptages de rayons X mesurés.</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
     <value>EDX</value>
   </data>
   <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>Affiche la carte élémentaire STEM-EDX au lieu de l'image de type ADF ; la raie X caractéristique se choisit ci-dessous. Les valeurs sont des lacunes d'ionisation modélisées par électron incident. Le rendement de fluorescence, l'auto-absorption, l'angle solide et l'efficacité du détecteur ne sont PAS appliqués : ce n'est donc pas un comptage de rayons X prédit.</value>
+    <value>Affiche la carte élémentaire STEM-EDX au lieu de l'image de type ADF ; la raie X caractéristique se choisit ci-dessous. Pour un canal de couche (K, L, M), les valeurs sont des lacunes d'ionisation modélisées par électron incident. Pour une série de raies (Kα, Kβ, Lα, Lβ, Mα), ce sont des photons X générés par électron incident : rendement de fluorescence, cascades Coster–Kronig et radiatives et branchement des raies sont appliqués, la cascade Auger ne l'est pas. L'auto-absorption, l'angle solide et l'efficacité du détecteur ne sont PAS appliqués : aucun des deux n'est un comptage de rayons X prédit.</value>
   </data>
 </root>
