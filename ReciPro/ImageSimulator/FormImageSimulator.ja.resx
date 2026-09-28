@@ -108,15 +108,813 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
-    <value>自己吸収</value>
+  <data name="tableLayoutPanel.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
-    <value>放出された X 線が検出器へ抜ける経路での減衰
-exp(−µT/sin α)（α = 取り出し角）を適用します。
-将来の実装用の予約項目で、現在は適用していません。</value>
+  <data name="pictureBoxScaleOfIntensity.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelMousePositionValue.Text" xml:space="preserve">
+    <value>値: </value>
+  </data>
+  <data name="labelMousePositionValue.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelMousePositionY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelMousePositionY.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelMousePositionX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelMousePositionX.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label30.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelImageStatus.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>画像強度を色へ対応付けるカラースケール(グレー/寒暖)。</value>
+  </data>
+  <data name="comboBoxScaleColorScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>画像表示に用いるカラースケールを選択します
+(グレースケール / Cold-Warm の青赤カラーマップ)。</value>
+  </data>
+  <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
+    <value>ガウシアンぼかし(FWHM)</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>表示画像にガウシアンぼかし(右の半値全幅, pm単位)を
+適用し、有限分解能(点像分布)を近似します。</value>
+  </data>
+  <data name="numericBoxGaussianBlurRadius.ToolTip" xml:space="preserve">
+    <value>表示画像に適用するガウシアンぼ
+かしの半値全幅 (FWHM, pm単位)。</value>
+  </data>
+  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarAdvancedMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
+    <value>表示画像の輝度レンジ上限(白に対応)。
+コントラストの上限を調整します。</value>
+  </data>
+  <data name="trackBarAdvancedMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
+    <value>表示画像の輝度レンジ下限(黒に対応)。
+コントラストの下限を調整します。</value>
+  </data>
+  <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxAdjust.Text" xml:space="preserve">
+    <value>画像調整</value>
+  </data>
+  <data name="groupBoxAdjust.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
+    <value>EDX 共通</value>
+  </data>
+  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
+    <value>EDX の全チャネルで 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上のイオン化空孔量であって、実測 X 線カウントではありません。</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
+    <value>画像ごとに規格化</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
+    <value>チェックすると、個々の画像で強度を正規化します</value>
+  </data>
+  <data name="checkBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxIntensityMin.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>正規化の強度下限を画像最小値でなく右の指定値に固定します。</value>
+  </data>
+  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>正規化の強度下限値。左のMinに
+チェックしたときに有効になります。</value>
+  </data>
+  <data name="checkBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxIntensityMax.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>正規化の強度上限を画像最大値でなく右の指定値に固定します。</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の最大強度</value>
+  </data>
+  <data name="flowLayoutPanelIntensityRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxNormalization.Text" xml:space="preserve">
+    <value>強度の規格化</value>
+  </data>
+  <data name="groupBoxNormalization.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxEdxDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="comboBoxEdxDisplay.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
+    <value>弾性
+&amp;&amp;TDS</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
+    <value>STEM 像で弾性散乱電子と TDS（熱散漫散乱
+による非弾性）電子の両方を表示します。</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
+    <value>弾性</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>STEM 像で弾性散乱電子のみを表示します。</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
+    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。値は入射電子あたりの内殻空孔生成量 (モデル値) です。蛍光収率・自己吸収・検出器立体角・検出効率はいずれも未適用なので、実測の X 線カウントではありません。</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>STEM 像で TDS（thermal diffuse scattering,
+熱散漫散乱による非弾性）電子のみを表示します。</value>
+  </data>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
+    <value>STEM像</value>
+  </data>
+  <data name="groupBoxSTEMoption3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlScale.HeaderText" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="colorControlScale.ToolTip" xml:space="preserve">
+    <value>スケールバーの色</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
+    <value>長さ</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
+    <value>スケールバーの長さ (nm)</value>
+  </data>
+  <data name="checkBoxShowScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowScale.Text" xml:space="preserve">
+    <value>スケール</value>
+  </data>
+  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像上のスケールバーを表示/非表示に
+します。長さと色は隣のスケール設定で指定します。</value>
+  </data>
+  <data name="colorControlLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="colorControlLabel.HeaderText" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="colorControlLabel.ToolTip" xml:space="preserve">
+    <value>ラベルの色</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
+    <value>ラベルのフォントサイズをポイントで設定</value>
+  </data>
+  <data name="checkBoxShowLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>ラベル</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>画像条件や指数などのラベルをシミュレーション
+画像上に表示/非表示にします。色と文字サイズ
+は近くの設定で指定します。</value>
+  </data>
+  <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
+    <value>単位胞</value>
+  </data>
+  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
+    <value>投影された単位胞の輪郭をシミュレーション
+画像上に表示/非表示にし、像コントラスト
+と結晶格子の対応を確認します。</value>
+  </data>
+  <data name="groupBoxDisplay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxDisplay.Text" xml:space="preserve">
+    <value>表示オプション</value>
+  </data>
+  <data name="groupBoxDisplay.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelDisplaySettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
+    <value>シリアル(スルーフォーカス)モードで
+生成するデフォーカス枚数を設定します。</value>
+  </data>
+  <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
+    <value>シリアルモードのデフォーカス刻み幅 (nm)。</value>
+  </data>
+  <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
+    <value>シリアルモードのデフォーカス開始値
+(nm, 負値=アンダーフォーカス)。</value>
+  </data>
+  <data name="textBoxDefocusList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
+    <value>シミュレーションするデフォーカス値 (nm) のリスト。
+Start/Step/Numから自動生成され、手動編集も可能です。</value>
+  </data>
+  <data name="panelSerialDefocus.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
+    <value>連続画像モードで生成する厚さ(画像)の個数。</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>連続画像の厚さリストの増分 (nm)。
+各画像間で厚さがこの分だけ増えます。</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>連続画像モードで生成する厚さリストの開始値 (nm)。
+Step・Num と組み合わせて下の厚さリストを生成します。</value>
+  </data>
+  <data name="textBoxThicknessList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
+    <value>シミュレートする厚さ (nm) の一覧。
+1行1値。Start/Step/Num から自動生成さ
+れますが直接編集もできます。</value>
+  </data>
+  <data name="panelSerialThickness.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSerialThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxSerialThickness.Text" xml:space="preserve">
+    <value>試料厚み (nm)</value>
+  </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>異なる膜厚の連続画像を作成</value>
+  </data>
+  <data name="checkBoxSerialDefocus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxSerialDefocus.Text" xml:space="preserve">
+    <value>デフォーカス (nm)</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>異なるデフォーカス値の連続画像を作成</value>
+  </data>
+  <data name="panelSerialSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>横軸の方向:</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>連続画像グリッドの横方向に並べる
+量(デフォーカス/厚さ)を選びます。</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Text" xml:space="preserve">
+    <value>デフォーカス</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
+    <value>連続画像グリッドの横方向にデフォーカス
+を並べます(縦方向は厚さ)。</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
+    <value>試料厚み</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
+    <value>連続画像グリッドの横方向に厚さを
+並べます(縦方向はデフォーカス)。</value>
+  </data>
+  <data name="flowLayoutPanelHorizontalDirection.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelSerial.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonSingleMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSingleMode.Text" xml:space="preserve">
+    <value>単一画像</value>
+  </data>
+  <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
+    <value>シングルモード。現在のデフォーカス・
+厚みの設定で1枚の画像を生成します。</value>
+  </data>
+  <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonSerialMode.Text" xml:space="preserve">
+    <value>シリーズ画像</value>
+  </data>
+  <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
+    <value>シリアルモード。デフォーカスや試料厚みを
+段階的に変えた一連の画像 (through-focus /
+through-thickness シリーズ) を生成します。</value>
+  </data>
+  <data name="flowLayoutPanelSimulationMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSerialImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxSerialImage.Text" xml:space="preserve">
+    <value>画像モード</value>
+  </data>
+  <data name="groupBoxSerialImage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.Text" xml:space="preserve">
+    <value>振幅と位相</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル (Ug / U'g) を
+振幅と位相の像として表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.Text" xml:space="preserve">
+    <value>両方</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(Ug)の振幅と位相の両方を表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.Text" xml:space="preserve">
+    <value>振幅のみ</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(フーリエ係数 Ug)の
+振幅(絶対値)のみを表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.Text" xml:space="preserve">
+    <value>位相のみ</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(Ug)の位相のみを表示します。</value>
+  </data>
+  <data name="flowLayoutPanelMagAndPhase.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pictureBoxPhaseScale.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>位相のスケール</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelPhaseScale.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.Text" xml:space="preserve">
+    <value>実数部と虚数部</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル (Ug / U'g) を
+実部と虚部の像として表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.Text" xml:space="preserve">
+    <value>両方</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(Ug)の実部と虚部の両方を表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.Text" xml:space="preserve">
+    <value>実数部のみ</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(Ug)の実部のみを表示します。</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.Text" xml:space="preserve">
+    <value>虚数部のみ</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル(Ug)の虚部(吸収成分)のみを表示します。</value>
+  </data>
+  <data name="flowLayoutPanelRealAndImaiginary.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelPotentialMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxPotentialUgPrime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.Text" xml:space="preserve">
+    <value>U'g: 吸収ポテンシャル</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
+    <value>TDS (熱散漫散乱) に由来する虚 (吸収)
+ポテンシャル U'g の像を表示します。</value>
+  </data>
+  <data name="checkBoxPotentialUg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxPotentialUg.Text" xml:space="preserve">
+    <value>Ug: 弾性散乱ポテンシャル</value>
+  </data>
+  <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
+    <value>弾性散乱を担う結晶ポテンシャル Ug の像を表示します。</value>
+  </data>
+  <data name="groupBoxPotentialOption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxPotentialOption.Text" xml:space="preserve">
+    <value>ポテンシャルオプション</value>
+  </data>
+  <data name="groupBoxPotentialOption.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
+    <value>角度分解能</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>入射プローブ方向の角度サンプリング分解能
+(mrad) を設定します。小さいほど STEM プローブを
+細かくサンプリングしますが計算は遅くなります。</value>
+  </data>
+  <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelEdxProbeGrid.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
+    <value>スライス厚 (TDS)</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
+    <value>TDS（thermal diffuse scattering,
+熱散漫散乱による非弾性）電子強度を計算する
+際の試料スライス厚さ (nm) を設定します。小さ
+いほど精度は上がりますが計算は遅くなります。</value>
+  </data>
+  <data name="flowLayoutPanel11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSTEMoption2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
+    <value>STEM オプション</value>
+  </data>
+  <data name="groupBoxSTEMoption2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
+    <value>線形イメージ</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
+    <value>線形イメージモデル。計算コストが低い。
+弱位相物体近似が成り立つ薄い試料に適しています。</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
+    <value>透過交差係数</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
+    <value>透過交差係数(TCC)モデル。計算コストが高い。
+多くの強い回折波を励起する強散乱体に使用すべきモデルです。</value>
+  </data>
+  <data name="flowLayoutPanel10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxHREMoption2.Text" xml:space="preserve">
+    <value>HREM オプション</value>
+  </data>
+  <data name="groupBoxHREMoption2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>解像度</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の分解能 (pm/pixel)</value>
+  </data>
+  <data name="sizeControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像のサイズ（ピクセル）</value>
+  </data>
+  <data name="groupBoxImageProperty.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxImageProperty.Text" xml:space="preserve">
+    <value>生成画像</value>
+  </data>
+  <data name="groupBoxImageProperty.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>ベーテ法で使用するブロッホ波の最大数。
+値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
+  </data>
+  <data name="groupBoxDiffractedWaves.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
+    <value>波の数</value>
+  </data>
+  <data name="groupBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelImageProperties.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelModeOptions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxSimulation.Text" xml:space="preserve">
+    <value>シミュレーション条件</value>
+  </data>
+  <data name="groupBoxSimulation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="contextMenuStripSTEM.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
+    <value>取り出し角</value>
+  </data>
+  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
+    <value>試料面から見た EDX 検出器の仰角です。将来の実装用の
+予約項目で、放出 X 線が脱出する経路に沿った自己吸収は
+まだ適用されていません。</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
+    <value>検出器</value>
+  </data>
+  <data name="labelEdxDetectorWindow.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="comboBoxEdxDetectorWindow.Items" xml:space="preserve">
     <value>窓なし</value>
@@ -133,243 +931,51 @@ exp(−µT/sin α)（α = 取り出し角）を適用します。
 同士の比を変えます (1 枚のマップ内の分布は変えません)。
 将来の実装用の予約項目です。</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>環状検出器</value>
+  <data name="flowLayoutPanel9.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBoxSimulation.Text" xml:space="preserve">
-    <value>シミュレーション条件</value>
+  <data name="flowLayoutPanelEdxDetector.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
-    <value>光学条件</value>
+  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="groupBoxAdjust.Text" xml:space="preserve">
-    <value>画像調整</value>
+  <data name="labelEdxSummary.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
-    <value>ガウシアンぼかし(FWHM)</value>
+  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="groupBoxNormalization.Text" xml:space="preserve">
-    <value>強度の規格化</value>
+  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
+    <value>EDX マップを計算</value>
   </data>
-  <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>画像ごとに
-個別に規格化</value>
+  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
+    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。
+STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、
+EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
   </data>
-  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
-    <value>チェックすると、個々の画像で強度を正規化します</value>
+  <data name="checkBoxEdxSelfAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="checkBoxIntensityMin.Text" xml:space="preserve">
-    <value>最小</value>
+  <data name="checkBoxEdxSelfAbsorption.Text" xml:space="preserve">
+    <value>自己吸収</value>
   </data>
-  <data name="labelEdxDetectorWindow.Text" xml:space="preserve">
-    <value>検出器</value>
+  <data name="checkBoxEdxSelfAbsorption.ToolTip" xml:space="preserve">
+    <value>放出された X 線が検出器へ抜ける経路での減衰
+exp(−µT/sin α)（α = 取り出し角）を適用します。
+将来の実装用の予約項目で、現在は適用していません。</value>
   </data>
-  <data name="numericBoxEdxTakeOffAngle.HeaderText" xml:space="preserve">
-    <value>取り出し角</value>
+  <data name="flowLayoutPanel13.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="numericBoxEdxTakeOffAngle.ToolTip" xml:space="preserve">
-    <value>試料面から見た EDX 検出器の仰角です。将来の実装用の
-予約項目で、放出 X 線が脱出する経路に沿った自己吸収は
-まだ適用されていません。</value>
+  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
-    <value>正規化の強度下限値。左のMinに
-チェックしたときに有効になります。</value>
+  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
+    <value>STEM-EDX 元素マップ</value>
   </data>
-  <data name="checkBoxIntensityMax.Text" xml:space="preserve">
-    <value>最大</value>
-  </data>
-  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
-    <value>シミュレーション画像の最大強度</value>
-  </data>
-  <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
-    <value>STEM像</value>
-  </data>
-  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
-    <value>厚み</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>STEM 像で TDS（thermal diffuse scattering,
-熱散漫散乱による非弾性）電子のみを表示します。</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
-    <value>弾性</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
-    <value>STEM 像で弾性散乱電子のみを表示します。</value>
-  </data>
-  <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
-    <value>弾性
-&amp;&amp;TDS</value>
-  </data>
-  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
-    <value>STEM 像で弾性散乱電子と TDS（熱散漫散乱
-による非弾性）電子の両方を表示します。</value>
-  </data>
-  <data name="groupBoxDisplay.Text" xml:space="preserve">
-    <value>表示オプション</value>
-  </data>
-  <data name="colorControlScale.HeaderText" xml:space="preserve">
-    <value>カラー</value>
-  </data>
-  <data name="colorControlScale.ToolTip" xml:space="preserve">
-    <value>スケールバーの色</value>
-  </data>
-  <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
-    <value>長さ</value>
-  </data>
-  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
-    <value>スケールバーの長さ (nm)</value>
-  </data>
-  <data name="checkBoxShowScale.Text" xml:space="preserve">
-    <value>スケール</value>
-  </data>
-  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
-    <value>シミュレーション画像上のスケールバーを表示/非表示に
-します。長さと色は隣のスケール設定で指定します。</value>
-  </data>
-  <data name="colorControlLabel.HeaderText" xml:space="preserve">
-    <value>カラー</value>
-  </data>
-  <data name="colorControlLabel.ToolTip" xml:space="preserve">
-    <value>ラベルの色</value>
-  </data>
-  <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
-    <value>サイズ</value>
-  </data>
-  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
-    <value>ラベルのフォントサイズをポイントで設定</value>
-  </data>
-  <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>ラベル</value>
-  </data>
-  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>画像条件や指数などのラベルをシミュレーション
-画像上に表示/非表示にします。色と文字サイズ
-は近くの設定で指定します。</value>
-  </data>
-  <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
-    <value>単位胞</value>
-  </data>
-  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
-    <value>投影された単位胞の輪郭をシミュレーション
-画像上に表示/非表示にし、像コントラスト
-と結晶格子の対応を確認します。</value>
-  </data>
-  <data name="groupBoxSerialImage.Text" xml:space="preserve">
-    <value>画像モード</value>
-  </data>
-  <data name="checkBoxSerialThickness.Text" xml:space="preserve">
-    <value>試料厚み (nm)</value>
-  </data>
-  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
-    <value>異なる膜厚の連続画像を作成</value>
-  </data>
-  <data name="checkBoxSerialDefocus.Text" xml:space="preserve">
-    <value>デフォーカス (nm)</value>
-  </data>
-  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
-    <value>異なるデフォーカス値の連続画像を作成</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>横軸の方向:</value>
-  </data>
-  <data name="radioButtonHorizontalDefocus.Text" xml:space="preserve">
-    <value>デフォーカス</value>
-  </data>
-  <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
-    <value>試料厚み</value>
-  </data>
-  <data name="radioButtonSingleMode.Text" xml:space="preserve">
-    <value>単一画像</value>
-  </data>
-  <data name="radioButtonSerialMode.Text" xml:space="preserve">
-    <value>シリーズ画像</value>
-  </data>
-  <data name="groupBoxPotentialOption.Text" xml:space="preserve">
-    <value>ポテンシャルオプション</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioButtonPotentialModeMagAndPhase.Text" xml:space="preserve">
-    <value>振幅と位相</value>
-  </data>
-  <data name="radioButtonPotentialShowMagAndPhase.Text" xml:space="preserve">
-    <value>両方</value>
-  </data>
-  <data name="radioButtonPotentialShowMag.Text" xml:space="preserve">
-    <value>振幅のみ</value>
-  </data>
-  <data name="radioButtonPotentialShowPhase.Text" xml:space="preserve">
-    <value>位相のみ</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>位相のスケール</value>
-  </data>
-  <data name="radioButtonPotentialModeRealAndImag.Text" xml:space="preserve">
-    <value>実数部と虚数部</value>
-  </data>
-  <data name="radioButtonPotentialShowRealAndImag.Text" xml:space="preserve">
-    <value>両方</value>
-  </data>
-  <data name="radioButtonPotentialShowReal.Text" xml:space="preserve">
-    <value>実数部のみ</value>
-  </data>
-  <data name="radioButtonPotentialShowImag.Text" xml:space="preserve">
-    <value>虚数部のみ</value>
-  </data>
-  <data name="checkBoxPotentialUgPrime.Text" xml:space="preserve">
-    <value>U'g: 吸収ポテンシャル</value>
-  </data>
-  <data name="checkBoxPotentialUg.Text" xml:space="preserve">
-    <value>Ug: 弾性散乱ポテンシャル</value>
-  </data>
-  <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
-    <value>STEM オプション</value>
-  </data>
-  <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
-    <value>角度分解能</value>
-  </data>
-  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
-    <value>入射プローブ方向の角度サンプリング分解能
-(mrad) を設定します。小さいほど STEM プローブを
-細かくサンプリングしますが計算は遅くなります。</value>
-  </data>
-  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
-    <value>スライス厚 (TDS)</value>
-  </data>
-  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
-    <value>TDS（thermal diffuse scattering,
-熱散漫散乱による非弾性）電子強度を計算する
-際の試料スライス厚さ (nm) を設定します。小さ
-いほど精度は上がりますが計算は遅くなります。</value>
-  </data>
-  <data name="groupBoxHREMoption2.Text" xml:space="preserve">
-    <value>HREM オプション</value>
-  </data>
-  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
-    <value>線形イメージモデル。計算コストが低い。
-弱位相物体近似が成り立つ薄い試料に適しています。</value>
-  </data>
-  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
-    <value>透過交差係数(TCC)モデル。計算コストが高い。
-多くの強い回折波を励起する強散乱体に使用すべきモデルです。</value>
-  </data>
-  <data name="groupBoxImageProperty.Text" xml:space="preserve">
-    <value>生成画像</value>
-  </data>
-  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
-    <value>解像度</value>
-  </data>
-  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value>シミュレーション画像の分解能 (pm/pixel)</value>
-  </data>
-  <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>波の数</value>
-  </data>
-  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>ベーテ法で使用するブロッホ波の最大数。
-値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
+  <data name="groupBoxSTEMoption4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>外径</value>
@@ -379,13 +985,22 @@ exp(−µT/sin α)（α = 取り出し角）を適用します。
 ます。この角度より外側の信号は除外されます。
 STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
-プローブがぼけ、細部のコントラストが低下します。</value>
+  <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
-    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きい
-ほどプローブは細くなり、回折コントラストも変わります。</value>
+  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
+    <value>STEM (走査透過電子顕微鏡) 検出器の外側収集角を
+逆格子半径 (nm⁻¹) に換算した値。読み取り専用です。</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>STEM (走査透過電子顕微鏡) 検出器の外側収集角を
+逆格子半径 (nm⁻¹) に換算した値。読み取り専用です。</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelOuterRadius.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>内径</value>
@@ -395,14 +1010,117 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
 ます。この角度より内側の信号は除外されます。
 STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
   </data>
+  <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
+    <value>STEM検出器の内側角を逆空間半径 sin(θ)/λ
+に換算した値 (nm⁻¹)。検出器内側角から
+自動更新される読み取り専用表示です。</value>
+  </data>
+  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>STEM検出器の内側角を逆空間半径 sin(θ)/λ
+に換算した値 (nm⁻¹)。検出器内側角から
+自動更新される読み取り専用表示です。</value>
+  </data>
+  <data name="flowLayoutPanelInnerRadius.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>環状検出器</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
+    <value>実効光源サイズ (σs) (FWHM)</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
+プローブがぼけ、細部のコントラストが低下します。</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きい
+ほどプローブは細くなり、回折コントラストも変わります。</value>
+  </data>
+  <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
+    <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
+収束角の変更で自動更新される読み取り専用表示です。</value>
+  </data>
+  <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
+収束角の変更で自動更新される読み取り専用表示です。</value>
+  </data>
+  <data name="flowLayoutPanelConvergenceRadius.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSTEMoption1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
     <value>STEMオプション</value>
   </data>
-  <data name="groupBoxHREMoption1.Text" xml:space="preserve">
-    <value>対物絞り  (HRTEM オプション)</value>
+  <data name="groupBoxSTEMoption1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="checkBoxOpenAperture.Text" xml:space="preserve">
-    <value>絞り開放</value>
+  <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>スポット情報</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>対物絞り内に入る回折ビーム
+(スポット)の一覧テーブルを開きます。</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>対物絞りの大きさは
+"回折シミュレータ"
+に表示されています</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelSpotCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.ToolTip" xml:space="preserve">
+    <value>対物絞り中心のX方向シフト量 (mrad)。
+暗視野/傾斜結像に使用します。</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
+    <value>対物絞り中心のY方向シフト量 (mrad)。
+暗視野/傾斜結像に使用します。</value>
+  </data>
+  <data name="textBoxNumOfSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxNumOfSpots.ToolTip" xml:space="preserve">
+    <value>対物絞り内に入る回折ビーム(スポット)の本数(読み取り専用)。</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>スポット数</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>対物絞り内に入る回折ビーム(スポット)の本数(読み取り専用)。</value>
+  </data>
+  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>サイズ</value>
@@ -411,34 +1129,86 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
     <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の
 回折波を切り、高分解能の細部がなだらかになります。</value>
   </data>
-  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>スポット情報</value>
+  <data name="checkBoxOpenAperture.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>対物絞りの大きさは 
-"回折シミュレータ" 
-に表示されています</value>
+  <data name="checkBoxOpenAperture.Text" xml:space="preserve">
+    <value>絞り開放</value>
+  </data>
+  <data name="checkBoxOpenAperture.ToolTip" xml:space="preserve">
+    <value>対物絞りを開放(無限大)にし、すべ
+ての回折波を結像に使用します。</value>
+  </data>
+  <data name="textBoxObjAperRadius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="textBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>HRTEM対物絞り半径を逆空間半径 sin(θ)/λ
+に換算した値 (nm⁻¹)。対物絞りを通過する
+ビームを決める読み取り専用表示です。</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>HRTEM対物絞り半径を逆空間半径 sin(θ)/λ
+に換算した値 (nm⁻¹)。対物絞りを通過する
+ビームを決める読み取り専用表示です。</value>
+  </data>
+  <data name="flowLayoutPanelObjectiveAperture.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxHREMoption1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxHREMoption1.Text" xml:space="preserve">
+    <value>対物絞り  (HRTEM オプション)</value>
+  </data>
+  <data name="groupBoxHREMoption1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>デフォーカスを0 nmに設定</value>
+  </data>
+  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>デフォーカスをシェルツァー値に設定</value>
+  </data>
+  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
+    <value>収差をすべて0に設定</value>
+  </data>
+  <data name="contextMenuStripTEMcondition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxCTF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>コントラスト伝達関数 (CTF)</value>
   </data>
-  <data name="numericBoxCc.ToolTip" xml:space="preserve">
-    <value>対物レンズの色収差係数 Cc (mm) を設定します。
-大きいほどエネルギー幅による像のぼけが増えます。</value>
-  </data>
-  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
-    <value>ΔV：電子線のエネルギー幅の半値全幅
-(FWHM)（単位は eV）。色収差係数 Cc とともに、
-色収差による焦点広がり（像のボケ）を決めます。</value>
-  </data>
-  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
-    <value>β: 有限光源サイズ効果による
-照射半角 (mrad)</value>
+  <data name="checkBoxCTF.ToolTip" xml:space="preserve">
+    <value>コントラスト伝達関数 (CTF: Contrast Transfer
+Function) のグラフウィンドウを表示します。レンズ
+収差とデフォーカスが空間周波数ごとに
+像コントラストをどう伝達するかをプロットします。</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
     <value>対物レンズの球面収差係数 Cs (mm) を設定します。
 CTF（contrast transfer function, コントラスト
 伝達関数）と Scherzer デフォーカスに影響します。</value>
+  </data>
+  <data name="numericBoxCc.ToolTip" xml:space="preserve">
+    <value>対物レンズの色収差係数 Cc (mm) を設定します。
+大きいほどエネルギー幅による像のぼけが増えます。</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
+    <value>β: 有限光源サイズ効果による
+照射半角 (mrad)</value>
+  </data>
+  <data name="flowLayoutPanel5.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>デフォーカス Δf</value>
@@ -447,20 +1217,6 @@ CTF（contrast transfer function, コントラスト
     <value>対物レンズのデフォーカス量 (nm) を設定し
 ます。値を変えると CTF（コントラスト
 伝達関数）と像コントラストが変化します。</value>
-  </data>
-  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>加速電圧 (kV)</value>
-  </data>
-  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
-    <value>TEM（transmission electron microscope,
-透過電子顕微鏡）の加速電圧 (kV) を設定しま
-す。電子波長と像コントラストが変わります。</value>
-  </data>
-  <data name="groupBoxTEMConditions.Text" xml:space="preserve">
-    <value>TEMの条件</value>
-  </data>
-  <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>デフォーカスを0 nmに設定</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>シェルツァー
@@ -481,18 +1237,67 @@ CTF（contrast transfer function, コントラスト
 球面収差 Cs から計算される、位相コントラスト
 が最適となる付近のデフォーカス値です。</value>
   </data>
-  <data name="groupBoxImageMode.Text" xml:space="preserve">
-    <value>イメージモード</value>
+  <data name="flowLayoutPanelScherzer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelScherzer.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>加速電圧 (kV)</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>TEM（transmission electron microscope,
+透過電子顕微鏡）の加速電圧 (kV) を設定しま
+す。電子波長と像コントラストが変わります。</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
+    <value>ΔV：電子線のエネルギー幅の半値全幅
+(FWHM)（単位は eV）。色収差係数 Cc とともに、
+色収差による焦点広がり（像のボケ）を決めます。</value>
+  </data>
+  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxTEMConditions.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxTEMConditions.Text" xml:space="preserve">
+    <value>TEMの条件</value>
+  </data>
+  <data name="groupBoxTEMConditions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxOpticalProperty.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
+    <value>光学条件</value>
+  </data>
+  <data name="groupBoxOpticalProperty.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonHRTEM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
     <value>HRTEM（high-resolution transmission electron
 microscopy, 高分解能透過電子顕微鏡）像を、選択した
 結晶・厚さ・デフォーカス条件でシミュレートします。</value>
   </data>
+  <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
     <value>STEM（scanning transmission electron
 microscopy, 走査透過電子顕微鏡）像を、収束角と
 環状検出器の設定でシミュレートします。</value>
+  </data>
+  <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="radioButtonProjectedPotential.Text" xml:space="preserve">
     <value>ポテンシャル</value>
@@ -501,21 +1306,58 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
     <value>ポテンシャルモード：TEM/STEM の像伝達効果を
 かけず、投影結晶ポテンシャルを計算します。</value>
   </data>
-  <data name="groupBoxSampleProperty.Text" xml:space="preserve">
-    <value>試料情報</value>
+  <data name="flowLayoutPanelImageType.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxImageMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxImageMode.Text" xml:space="preserve">
+    <value>イメージモード</value>
+  </data>
+  <data name="groupBoxImageMode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>厚み</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>試料の厚さ
 「連続画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
+  <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxSampleProperty.Text" xml:space="preserve">
+    <value>試料情報</value>
+  </data>
+  <data name="groupBoxSampleProperty.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelModeSelection.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
   <data name="checkBoxPreset.Text" xml:space="preserve">
     <value>条件プリセット</value>
+  </data>
+  <data name="checkBoxPreset.ToolTip" xml:space="preserve">
+    <value>プリセット設定ウィンドウ(TEM撮影条件を保存・
+呼び出し)の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
     <value>リアルタイム計算</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
     <value>チェックすると、結晶の回転に合わせて即座に画像が計算されます</value>
+  </data>
+  <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonSimulate.Text" xml:space="preserve">
     <value>シミュレート</value>
@@ -524,327 +1366,17 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
     <value>現在の結晶、顕微鏡条件、厚さ、デフォーカス、
 表示設定で画像シミュレーションを実行します。</value>
   </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
+  <data name="panelSimulationActions.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>画像を保存</value>
+  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
-    <value>連続画像モードでシミュレーションす
-る際、各画像を個別に保存します。</value>
+  <data name="splitContainer1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をコピー</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
-    <value>保存画像に単位胞、ラベル、スケールバーを重ね印刷します。</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ヘルプ</value>
-  </data>
-  <data name="buttonStop.Text" xml:space="preserve">
-    <value>停止</value>
-  </data>
-  <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value>現在のシミュレーションを停止</value>
-  </data>
-  <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>シミュレーション画像のサイズ（ピクセル）</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>HRTEM/STEM シミュレータ</value>
-  </data>
-  <data name="checkBoxCTF.ToolTip" xml:space="preserve">
-    <value>コントラスト伝達関数 (CTF: Contrast Transfer
-Function) のグラフウィンドウを表示します。レンズ
-収差とデフォーカスが空間周波数ごとに
-像コントラストをどう伝達するかをプロットします。</value>
-  </data>
-  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
-    <value>表示画像にガウシアンぼかし(右の半値全幅, pm単位)を
-適用し、有限分解能(点像分布)を近似します。</value>
-  </data>
-  <data name="checkBoxIntensityMax.ToolTip" xml:space="preserve">
-    <value>正規化の強度上限を画像最大値でなく右の指定値に固定します。</value>
-  </data>
-  <data name="checkBoxIntensityMin.ToolTip" xml:space="preserve">
-    <value>正規化の強度下限を画像最小値でなく右の指定値に固定します。</value>
-  </data>
-  <data name="checkBoxOpenAperture.ToolTip" xml:space="preserve">
-    <value>対物絞りを開放(無限大)にし、すべ
-ての回折波を結像に使用します。</value>
-  </data>
-  <data name="checkBoxPotentialUg.ToolTip" xml:space="preserve">
-    <value>弾性散乱を担う結晶ポテンシャル Ug の像を表示します。</value>
-  </data>
-  <data name="checkBoxPotentialUgPrime.ToolTip" xml:space="preserve">
-    <value>TDS (熱散漫散乱) に由来する虚 (吸収)
-ポテンシャル U'g の像を表示します。</value>
-  </data>
-  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
-    <value>画像表示に用いるカラースケールを選択します
-(グレースケール / Cold-Warm の青赤カラーマップ)。</value>
-  </data>
-  <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
-    <value>シリアル(スルーフォーカス)モードで
-生成するデフォーカス枚数を設定します。</value>
-  </data>
-  <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
-    <value>シリアルモードのデフォーカス開始値
-(nm, 負値=アンダーフォーカス)。</value>
-  </data>
-  <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
-    <value>シリアルモードのデフォーカス刻み幅 (nm)。</value>
-  </data>
-  <data name="numericBoxGaussianBlurRadius.ToolTip" xml:space="preserve">
-    <value>表示画像に適用するガウシアンぼ
-かしの半値全幅 (FWHM, pm単位)。</value>
-  </data>
-  <data name="numericBoxHRTEM_ObjAperX.ToolTip" xml:space="preserve">
-    <value>対物絞り中心のX方向シフト量 (mrad)。
-暗視野/傾斜結像に使用します。</value>
-  </data>
-  <data name="numericBoxHRTEM_ObjAperY.ToolTip" xml:space="preserve">
-    <value>対物絞り中心のY方向シフト量 (mrad)。
-暗視野/傾斜結像に使用します。</value>
-  </data>
-  <data name="radioButtonPotentialModeMagAndPhase.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル (Ug / U'g) を
-振幅と位相の像として表示します。</value>
-  </data>
-  <data name="radioButtonPotentialModeRealAndImag.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル (Ug / U'g) を
-実部と虚部の像として表示します。</value>
-  </data>
-  <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
-    <value>シリアルモード。デフォーカスや試料厚みを
-段階的に変えた一連の画像 (through-focus /
-through-thickness シリーズ) を生成します。</value>
-  </data>
-  <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
-    <value>シングルモード。現在のデフォーカス・
-厚みの設定で1枚の画像を生成します。</value>
-  </data>
-  <data name="textBoxDefocusList.ToolTip" xml:space="preserve">
-    <value>シミュレーションするデフォーカス値 (nm) のリスト。
-Start/Step/Numから自動生成され、手動編集も可能です。</value>
-  </data>
-  <data name="textBoxOuterRadius.ToolTip" xml:space="preserve">
-    <value>STEM (走査透過電子顕微鏡) 検出器の外側収集角を
-逆格子半径 (nm⁻¹) に換算した値。読み取り専用です。</value>
-  </data>
-  <data name="trackBarAdvancedMax.ToolTip" xml:space="preserve">
-    <value>表示画像の輝度レンジ上限(白に対応)。
-コントラストの上限を調整します。</value>
-  </data>
-  <data name="trackBarAdvancedMin.ToolTip" xml:space="preserve">
-    <value>表示画像の輝度レンジ下限(黒に対応)。
-コントラストの下限を調整します。</value>
-  </data>
-  <data name="textBoxConvRadius.ToolTip" xml:space="preserve">
-    <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
-収束角の変更で自動更新される読み取り専用表示です。</value>
-  </data>
-  <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向にデフォーカス
-を並べます(縦方向は厚さ)。</value>
-  </data>
-  <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向に厚さを
-並べます(縦方向はデフォーカス)。</value>
-  </data>
-  <data name="textBoxInnerRadius.ToolTip" xml:space="preserve">
-    <value>STEM検出器の内側角を逆空間半径 sin(θ)/λ
-に換算した値 (nm⁻¹)。検出器内側角から
-自動更新される読み取り専用表示です。</value>
-  </data>
-  <data name="radioButtonPotentialShowMag.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(フーリエ係数 Ug)の
-振幅(絶対値)のみを表示します。</value>
-  </data>
-  <data name="radioButtonPotentialShowMagAndPhase.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(Ug)の振幅と位相の両方を表示します。</value>
-  </data>
-  <data name="radioButtonPotentialShowPhase.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(Ug)の位相のみを表示します。</value>
-  </data>
-  <data name="textBoxObjAperRadius.ToolTip" xml:space="preserve">
-    <value>HRTEM対物絞り半径を逆空間半径 sin(θ)/λ
-に換算した値 (nm⁻¹)。対物絞りを通過する
-ビームを決める読み取り専用表示です。</value>
-  </data>
-  <data name="radioButtonPotentialShowImag.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(Ug)の虚部(吸収成分)のみを表示します。</value>
-  </data>
-  <data name="radioButtonPotentialShowReal.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(Ug)の実部のみを表示します。</value>
-  </data>
-  <data name="radioButtonPotentialShowRealAndImag.ToolTip" xml:space="preserve">
-    <value>結晶ポテンシャル(Ug)の実部と虚部の両方を表示します。</value>
-  </data>
-  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
-    <value>対物絞り内に入る回折ビーム
-(スポット)の一覧テーブルを開きます。</value>
-  </data>
-  <data name="textBoxNumOfSpots.ToolTip" xml:space="preserve">
-    <value>対物絞り内に入る回折ビーム(スポット)の本数(読み取り専用)。</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>HRTEM(高分解能透過電子顕微鏡法)
-シミュレーションの基本原理の解説を開きます。</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.ToolTipText" xml:space="preserve">
-    <value>計算ライブラリを選択します。Native
-code(高速な C++/Eigen ネイティブ)または
-Managed code(.NET)。通常は Native が高速です。</value>
-  </data>
-  <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
-    <value>連続画像モードで生成する厚さ(画像)の個数。</value>
-  </data>
-  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>連続画像モードで生成する厚さリストの開始値 (nm)。
-Step・Num と組み合わせて下の厚さリストを生成します。</value>
-  </data>
-  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>連続画像の厚さリストの増分 (nm)。
-各画像間で厚さがこの分だけ増えます。</value>
-  </data>
-  <data name="textBoxThicknessList.ToolTip" xml:space="preserve">
-    <value>シミュレートする厚さ (nm) の一覧。
-1行1値。Start/Step/Num から自動生成さ
-れますが直接編集もできます。</value>
-  </data>
-  <data name="checkBoxPreset.ToolTip" xml:space="preserve">
-    <value>プリセット設定ウィンドウ(TEM撮影条件を保存・
-呼び出し)の表示/非表示を切り替えます。</value>
-  </data>
-  <data name="label25.ToolTip" xml:space="preserve">
-    <value>画像強度を色へ対応付けるカラースケール(グレー/寒暖)。</value>
-  </data>
-  <data name="label38.ToolTip" xml:space="preserve">
-    <value>STEM (走査透過電子顕微鏡) 検出器の外側収集角を
-逆格子半径 (nm⁻¹) に換算した値。読み取り専用です。</value>
-  </data>
-  <data name="label36.ToolTip" xml:space="preserve">
-    <value>STEM収束半角を逆空間半径 sin(θ)/λ に換算した値 (nm⁻¹)。
-収束角の変更で自動更新される読み取り専用表示です。</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向に並べる
-量(デフォーカス/厚さ)を選びます。</value>
-  </data>
-  <data name="label37.ToolTip" xml:space="preserve">
-    <value>STEM検出器の内側角を逆空間半径 sin(θ)/λ
-に換算した値 (nm⁻¹)。検出器内側角から
-自動更新される読み取り専用表示です。</value>
-  </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value>HRTEM対物絞り半径を逆空間半径 sin(θ)/λ
-に換算した値 (nm⁻¹)。対物絞りを通過する
-ビームを決める読み取り専用表示です。</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value>対物絞り内に入る回折ビーム(スポット)の本数(読み取り専用)。</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>計算ライブラリを選択します。Native
-code(高速な C++/Eigen ネイティブ)または
-Managed code(.NET)。通常は Native が高速です。</value>
-  </data>
-  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
-    <value>正規化の強度下限値。左のMinに
-チェックしたときに有効になります。</value>
-  </data>
-  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
-    <value>シミュレーション画像の最大強度</value>
-  </data>
-  <data name="colorControlScale.ToolTip1" xml:space="preserve">
-    <value>スケールバーの色</value>
-  </data>
-  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
-    <value>スケールバーの長さ (nm)</value>
-  </data>
-  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
-    <value>ラベルの色</value>
-  </data>
-  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
-    <value>ラベルのフォントサイズをポイントで設定</value>
-  </data>
-  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
-    <value>入射プローブ方向の角度サンプリング分解能
-(mrad) を設定します。小さいほど STEM プローブを
-細かくサンプリングしますが計算は遅くなります。</value>
-  </data>
-  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
-    <value>TDS（thermal diffuse scattering,
-熱散漫散乱による非弾性）電子強度を計算する
-際の試料スライス厚さ (nm) を設定します。小さ
-いほど精度は上がりますが計算は遅くなります。</value>
-  </data>
-  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
-    <value>シミュレーション画像の分解能 (pm/pixel)</value>
-  </data>
-  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>ベーテ法で使用するブロッホ波の最大数。
-値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
-    <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定し
-ます。この角度より外側の信号は除外されます。
-STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
-プローブがぼけ、細部のコントラストが低下します。</value>
-  </data>
-  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
-    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きい
-ほどプローブは細くなり、回折コントラストも変わります。</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
-    <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定し
-ます。この角度より内側の信号は除外されます。
-STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マップには使われません。</value>
-  </data>
-  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
-    <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の
-回折波を切り、高分解能の細部がなだらかになります。</value>
-  </data>
-  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
-    <value>対物レンズの色収差係数 Cc (mm) を設定します。
-大きいほどエネルギー幅による像のぼけが増えます。</value>
-  </data>
-  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
-    <value>ΔV：電子線のエネルギー幅の半値全幅
-(FWHM)（単位は eV）。色収差係数 Cc とともに、
-色収差による焦点広がり（像のボケ）を決めます。</value>
-  </data>
-  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
-    <value>β: 有限光源サイズ効果による
-照射半角 (mrad)</value>
-  </data>
-  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
-    <value>対物レンズの球面収差係数 Cs (mm) を設定します。
-CTF（contrast transfer function, コントラスト
-伝達関数）と Scherzer デフォーカスに影響します。</value>
-  </data>
-  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
-    <value>対物レンズのデフォーカス量 (nm) を設定し
-ます。値を変えると CTF（コントラスト
-伝達関数）と像コントラストが変化します。</value>
-  </data>
-  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
-    <value>TEM（transmission electron microscope,
-透過電子顕微鏡）の加速電圧 (kV) を設定しま
-す。電子波長と像コントラストが変わります。</value>
-  </data>
-  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>試料の厚さ
-「連続画像」モードが選択されている場合、この値は無視されます。</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderText" xml:space="preserve">
-    <value>実効光源サイズ (σs) (FWHM)</value>
+  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
     <value>画像として (PNG形式)</value>
@@ -858,14 +1390,27 @@ CTF（contrast transfer function, コントラスト
   <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
     <value>   シリーズ画像モードで個別に保存 </value>
   </data>
+  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
+    <value>連続画像モードでシミュレーションす
+る際、各画像を個別に保存します。</value>
+  </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>画像を保存</value>
+  </data>
   <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
     <value>画像として</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
     <value>メタファイルとして (EMF)</value>
   </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像をコピー</value>
+  </data>
   <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
     <value>     記号を重ね印刷</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
+    <value>保存画像に単位胞、ラベル、スケールバーを重ね印刷します。</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>TEMパラメータを読み込み</value>
@@ -873,403 +1418,60 @@ CTF（contrast transfer function, コントラスト
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>TEMパラメータを保存</value>
   </data>
+  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
   <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
     <value>HRTEMシミュレーションの基本概念</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>HRTEM(高分解能透過電子顕微鏡法)
+シミュレーションの基本原理の解説を開きます。</value>
   </data>
   <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
     <value>計算ライブラリ</value>
   </data>
-  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>収差をすべて0に設定</value>
-  </data>
-  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>デフォーカスをシェルツァー値に設定</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>スポット数</value>
-  </data>
-  <data name="labelMousePositionValue.Text" xml:space="preserve">
-    <value>値: </value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>カラー</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>高</value>
-  </data>
-  <data name="label30.Text" xml:space="preserve">
-    <value>低</value>
-  </data>
-  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
-    <value>線形イメージ</value>
-  </data>
-  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
-    <value>透過交差係数</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Text" xml:space="preserve">
-    <value>STEM-EDX 元素マップ</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Text" xml:space="preserve">
-    <value>EDX マップを計算</value>
-  </data>
-  <data name="checkBoxCalculateEdx.ToolTip" xml:space="preserve">
-    <value>選択した元素・殻チャネルのイオン化 (EDX) マップを計算します。&#xD;&#xA;STEM 参照像 (ADF / 弾性 / TDS) は常に計算され、&#xD;&#xA;EDX チャネル 1 本につきイオン化パスが 1 回追加されます。</value>
-  </data>
-  <data name="checkBoxEdxCommonScale.Text" xml:space="preserve">
-    <value>EDX 共通</value>
-  </data>
-  <data name="checkBoxEdxCommonScale.ToolTip" xml:space="preserve">
-    <value>EDX の全チャネルで 1 つの表示レンジを使い、チャネルを切り替えても明るさの基準が変わらないようにします。値はモデル上のイオン化空孔量であって、実測 X 線カウントではありません。</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Text" xml:space="preserve">
-    <value>EDX</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.ToolTip" xml:space="preserve">
-    <value>ADF 系の像の代わりに STEM-EDX の元素マップを表示します。特性 X 線の種類は下の一覧で選びます。値は入射電子あたりの内殻空孔生成量 (モデル値) です。蛍光収率・自己吸収・検出器立体角・検出効率はいずれも未適用なので、実測の X 線カウントではありません。</value>
-  </data>
-  <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="labelMousePositionY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelMousePositionX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label30.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label25.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="comboBoxScaleColorScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="trackBarAdvancedMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="trackBarAdvancedMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxEdxCommonScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="checkBoxNormarizeIndividually.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="checkBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="comboBoxEdxDisplay.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_EDX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxDisplay.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="textBoxDefocusList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="textBoxThicknessList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSerialThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxSerialDefocus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonHorizontalDefocus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonHorizontalThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSingleMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSerialImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonPotentialModeMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowMag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="radioButtonPotentialModeRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowReal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonPotentialShowImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxPotentialUgPrime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxPotentialUg.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxPotentialOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelEdxProbeGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSTEMoption2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonModeQuasiCoherent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="radioButtonModeTransmissionCrossCoefficient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="sizeControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxImageProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxDiffractedWaves.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="labelEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="comboBoxEdxDetectorWindow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelEdxSummary.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxCalculateEdx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxEdxSelfAbsorption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSTEMoption4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSTEMoption1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8.25pt</value>
-  </data>
-  <data name="textBoxNumOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxOpenAperture.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="textBoxObjAperRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxHREMoption1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxCTF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelScherzer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxTEMConditions.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxOpticalProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="radioButtonHRTEM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxImageMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
+  <data name="calculationLibraryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>計算ライブラリを選択します。Native
+code(高速な C++/Eigen ネイティブ)または
+Managed code(.NET)。通常は Native が高速です。</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.ToolTipText" xml:space="preserve">
+    <value>計算ライブラリを選択します。Native
+code(高速な C++/Eigen ネイティブ)または
+Managed code(.NET)。通常は Native が高速です。</value>
   </data>
   <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>現在のシミュレーションを停止</value>
+  </data>
+  <data name="statusStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>HRTEM/STEM シミュレータ</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
