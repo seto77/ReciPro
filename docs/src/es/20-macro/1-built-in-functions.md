@@ -130,6 +130,7 @@ Los ángulos de Euler no son únicos en las posiciones de bloqueo de cardán (θ
 | `Thickness` | double | Espesor de la muestra (nm) |
 | `NumberOfDiffractedWaves` | int | Número de ondas de Bloch |
 | `CameraLength2` | double | Longitud de cámara (mm) |
+| `ExcitationError` | double | Radio de las reflexiones (nm⁻¹): en modo cinemático/de error de excitación, `SpotInfo()` exporta las reflexiones con \|Sg\| dentro de este valor |
 | `SkipRendering` | bool | Omitir el renderizado para el procesamiento por lotes |
 
 ### Modo de haz

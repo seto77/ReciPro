@@ -20,8 +20,11 @@ Para cada orientación incidente se resuelve el campo de ondas dentro del crista
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+donde $\gamma_j$ son los valores propios de las ondas de Bloch del [núcleo dinámico](../appendix/a3-bloch-wave/calculation.md) y $\alpha_j$ sus amplitudes de excitación; $F_{jj'}(t) \to t$ en el límite degenerado $\lambda \to 0$.
 
 La matriz de ionización $\mu$ solo depende de la diferencia de dos reflexiones, $G = \mathbf{g}_h - \mathbf{g}_g$.
 
@@ -100,7 +103,7 @@ El contraste de sitio cambia mucho —e incluso puede invertir su signo— entre
 Lista de elemento y capa a ionizar. Cada fila se lee `elemento (Z) capa   energía del borde   U = sobretensión`, con una etiqueta entre paréntesis donde hace falta precaución.
 
 - Los canales que **no pueden excitarse** (la energía incidente está por debajo del borde de absorción) o que quedan **fuera del rango tabulado** se listan con el motivo y no pueden marcarse
-- Los canales cuya sobretensión $U = E_0/E_\text{borde}$ es inferior a 1,2 llevan una advertencia, porque allí la sección eficaz es menos fiable
+- Los canales cuya sobretensión $U = E_0/E_\text{edge}$ es inferior a 1,2 llevan una advertencia, porque allí la sección eficaz es menos fiable
 
 ### Hipótesis de sitio
 
@@ -130,7 +133,7 @@ Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leye
 
 ### Contraste y correlación
 
-Las últimas líneas del cuadro de diagnóstico de solo lectura bajo la curva (desplácese para ver el resto; el texto se puede seleccionar y copiar) indican, por serie, el **contraste** $(\max-\min)/\text{media}$ y el **coeficiente de correlación** $r$ frente a la primera serie. Es un resumen para juzgar de un vistazo qué sitio está actuando: dos series con $r$ próximo a $+1$ tienen la misma dependencia con la orientación, es decir, esos datos no pueden separar esos sitios.
+Las últimas líneas del cuadro de diagnóstico de solo lectura bajo la curva (desplácese para ver el resto; el texto se puede seleccionar y copiar) indican, por serie, el **contraste** $(\max-\min)/\text{mean}$ y el **coeficiente de correlación** $r$ frente a la primera serie. Es un resumen para juzgar de un vistazo qué sitio está actuando: dos series con $r$ próximo a $+1$ tienen la misma dependencia con la orientación, es decir, esos datos no pueden separar esos sitios.
 
 ### Diagnóstico de la base
 

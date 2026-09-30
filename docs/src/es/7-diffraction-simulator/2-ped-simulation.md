@@ -73,13 +73,13 @@ El coste computacional equivale aproximadamente a "número de pasos × cálculo 
 Controla cómo se dibuja cada reflejo de difracción.
 
 - **Solid sphere / Gaussian** : Modelo geométrico de los puntos de la red recíproca. **Solid sphere** dibuja la sección transversal de una esfera de radio $R$ con la esfera de Ewald, y **Gaussian** dibuja la sección transversal (una gaussiana 2D) de una gaussiana 3D con $\sigma = R$ con la esfera de Ewald.
-- **Opacity** : Transparencia del reflejo (0 = transparente, 1 = opaco).
-- **Radius (R)** : Radio de los puntos de la red recíproca. Para intensidades dinámicas, la integral gaussiana $=$ Brightness $\times I_\text{dyn}$, y Solid sphere utiliza el radio $R \times I_\text{dyn}^{1/2}$ (de modo que el área es proporcional a la intensidad dinámica).
-- **Brightness** : Disponible solo en el modo **Gaussian**. Intensidad integrada de la gaussiana dibujada.
-- **Colour scale** : Mapa de color **Gray scale** o **Cold-warm**.
-- **Log scale** : Mostrar la intensidad en una escala logarítmica.
-- **Spot colour** : Color del reflejo utilizado cuando no se aplica ninguna escala de color.
-- **Use crystal colour** : Dibuja los reflejos en el color asignado a cada cristal.
+- **Opacidad** : Transparencia del reflejo (0 = transparente, 1 = opaco).
+- **Radius (R)** : Radio de los puntos de la red recíproca. Para intensidades dinámicas, la integral gaussiana $=$ Brillo $\times I_\text{dyn}$, y Solid sphere utiliza el radio $R \times I_\text{dyn}^{1/2}$ (de modo que el área es proporcional a la intensidad dinámica).
+- **Brillo** : Disponible solo en el modo **Gaussian**. Intensidad integrada de la gaussiana dibujada.
+- **Escala de color** : Mapa de color **Gray scale** o **Cold-warm**.
+- **Escala log.** : Mostrar la intensidad en una escala logarítmica.
+- **Color del punto** : Color del reflejo utilizado cuando no se aplica ninguna escala de color.
+- **Color por cristal** : Dibuja los reflejos en el color asignado a cada cristal.
 
 ---
 

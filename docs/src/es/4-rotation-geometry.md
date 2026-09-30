@@ -33,11 +33,13 @@ La mitad superior de la ventana muestra el estado de rotación en el "sistema de
 
 ### Φ, θ, Ψ (ángulos de Euler Z–X–Z)
 
-La orientación del cristal se parametriza mediante tres rotaciones aplicadas en este orden:
+La orientación del cristal se parametriza mediante tres rotaciones. Descritas en el sistema de referencia **solidario al cuerpo (intrínseco)**, se aplican en este orden:
 
 1. **Φ** — primera rotación alrededor del eje **Z**.
 2. **θ** — rotación alrededor del eje **X** del sistema de referencia girado una vez.
 3. **Ψ** — segunda rotación alrededor del eje **Z** del sistema de referencia girado dos veces.
+
+La misma rotación vista en el sistema de referencia **fijo del laboratorio** corresponde a la secuencia inversa —Ψ alrededor de $Z$, luego θ alrededor de $X$ y después Φ alrededor de $Z$—, que es la descripción utilizada en el [Apéndice A1.1](appendix/a1-coordinate-system/1-orientation.md). Ambas dan exactamente la misma matriz $R$ que se muestra más abajo; Φ es simplemente el eje más externo (como en un goniómetro) y Ψ el más interno.
 
 Cada casilla numérica es editable; cambiar un valor aquí actualiza la Ventana principal y todos los simuladores vinculados.
 
@@ -76,7 +78,7 @@ La misma matriz (\(R_{ij}\) = fila \(i\), columna \(j\)) aparece en:
 
 ### Ventanas OpenGL
 
-La vista 3D muestra la rotación actual mediante tres toros (donas) de colores:
+La vista 3D muestra la rotación actual mediante tres toros de colores (con forma de rosquilla):
 
 | Color | Ángulo de Euler | Nivel del goniómetro |
 |--------|------------|-----------------|

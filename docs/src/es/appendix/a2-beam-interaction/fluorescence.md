@@ -17,11 +17,11 @@ y, por lo tanto, es característica del elemento:
 - **Líneas K** — vacante en la capa $K$ rellenada desde $L$ ($K\alpha$) o $M$ ($K\beta$).
 - **Líneas L** — vacante en la capa $L$ rellenada desde $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Solo aparecen las transiciones permitidas por las reglas de selección dipolar, razón por la cual el espectro consta de unas pocas líneas discretas (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) en lugar de un continuo. Sus energías siguen la **ley de Moseley**; en la aproximación hidrogenoide apantallada,
+El espectro consta de unas pocas líneas discretas (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) en lugar de un continuo porque las propias energías de las capas están cuantizadas; las reglas de selección de dipolo eléctrico deciden después cuáles de esas transiciones son intensas (también existen líneas prohibidas, multipolares y satélite más débiles). Sus energías siguen la **ley de Moseley**; en la aproximación hidrogenoide apantallada,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-con $\sigma$ una constante de apantallamiento. Para $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) esto se reduce a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Esta dependencia de $Z$ monótona, gobernada por el número de electrones, es la base de la identificación elemental (EDX/WDX).
+con $\sigma$ una constante de apantallamiento. Para $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) esto se reduce a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. La dependencia de $Z$ está gobernada por la **carga nuclear**, simplemente apantallada por los electrones restantes, por lo que es monótona y prácticamente insensible al estado químico, y eso es lo que la convierte en la base de la identificación elemental (EDX/WDX).
 
 ---
 
