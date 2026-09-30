@@ -110,7 +110,7 @@ Der Bereich unten links passt die Darstellung des Ergebnisses an — Helligkeit,
 
 ![STEM-Bild](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-Nur im STEM-Modus sichtbar. Wählt, welche Streukomponente des berechneten STEM-Bildes angezeigt wird (**Elast.**, **TDS** oder **Elast. & TDS**). Da diese Einstellung STEM-spezifisch ist, wird sie auch auf der Seite [STEM-Simulation](2-stem-simulation.md) beschrieben.
+Nur im STEM-Modus sichtbar. Wählt, welche Streukomponente des berechneten STEM-Bildes angezeigt wird (**Elast.**, **TDS** oder **Elast. & TDS**). Wurden im selben Lauf auch [STEM-EDX-Elementverteilungen](2-stem-simulation.md#stem-edx) berechnet, steht **EDX** als vierte Option zur Verfügung. Da diese Einstellung STEM-spezifisch ist, wird sie auch auf der Seite [STEM-Simulation](2-stem-simulation.md) beschrieben.
 
 ### Anzeige
 

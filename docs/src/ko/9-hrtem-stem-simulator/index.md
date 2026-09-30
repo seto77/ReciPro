@@ -110,7 +110,7 @@ title: HRTEM / STEM Simulator
 
 ![STEM 이미지](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-STEM 모드에서만 표시됩니다. 계산된 STEM 이미지 중 어떤 산란 성분을 표시할지(**탄성**, **TDS**, **탄성 & TDS**) 선택합니다. STEM 전용 항목이므로 [STEM 시뮬레이션](2-stem-simulation.md) 페이지에서도 설명합니다.
+STEM 모드에서만 표시됩니다. 계산된 STEM 이미지 중 어떤 산란 성분을 표시할지(**탄성**, **TDS**, **탄성 & TDS**) 선택합니다. 같은 계산에서 [STEM-EDX 맵](2-stem-simulation.md#stem-edx)도 계산했다면 네 번째 선택지로 **EDX**를 고를 수 있습니다. STEM 전용 항목이므로 [STEM 시뮬레이션](2-stem-simulation.md) 페이지에서도 설명합니다.
 
 ### 표시
 

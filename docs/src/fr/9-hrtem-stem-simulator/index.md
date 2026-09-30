@@ -110,7 +110,7 @@ Le panneau en bas à gauche règle l'apparence du résultat — luminosité, cou
 
 ![Image STEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-Affiché uniquement en mode STEM. Sélectionne la composante de diffusion de l'image STEM calculée qui est affichée (**Élast.**, **TDS** ou **Élast. & TDS**). Comme ce réglage est propre au STEM, il est également décrit sur la page [Simulation STEM](2-stem-simulation.md).
+Affiché uniquement en mode STEM. Sélectionne la composante de diffusion de l'image STEM calculée qui est affichée (**Élast.**, **TDS** ou **Élast. & TDS**). Si le calcul a aussi produit des [cartes STEM-EDX](2-stem-simulation.md#stem-edx), **EDX** est proposé comme quatrième choix. Comme ce réglage est propre au STEM, il est également décrit sur la page [Simulation STEM](2-stem-simulation.md).
 
 ### Affichage
 

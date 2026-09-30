@@ -110,7 +110,7 @@ O painel no canto inferior esquerdo ajusta a aparência do resultado — brilho,
 
 ![Imagem STEM](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-Exibido apenas no modo STEM. Seleciona qual componente de espalhamento da imagem STEM calculada é exibido (**Elástico**, **TDS** ou **Elástico & TDS**). Por ser específico do STEM, também é descrito na página [Simulação STEM](2-stem-simulation.md).
+Exibido apenas no modo STEM. Seleciona qual componente de espalhamento da imagem STEM calculada é exibido (**Elástico**, **TDS** ou **Elástico & TDS**). Se a mesma execução também calculou [mapas STEM-EDX](2-stem-simulation.md#stem-edx), **EDX** fica disponível como quarta opção. Por ser específico do STEM, também é descrito na página [Simulação STEM](2-stem-simulation.md).
 
 ### Exibição
 

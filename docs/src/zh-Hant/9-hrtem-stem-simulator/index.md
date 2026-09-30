@@ -110,7 +110,7 @@ title: HRTEM / STEM Simulator
 
 ![STEM 影像](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-僅在 STEM 模式下顯示。選擇所計算 STEM 影像中要顯示的散射成分（**彈性**、**TDS** 或 **彈性 & TDS**）。由於此項為 STEM 專屬，[STEM 模擬](2-stem-simulation.md)頁面也有說明。
+僅在 STEM 模式下顯示。選擇所計算 STEM 影像中要顯示的散射成分（**彈性**、**TDS** 或 **彈性 & TDS**）。若同一次計算中也計算了 [STEM-EDX 分布圖](2-stem-simulation.md#stem-edx)，則可選擇第四項 **EDX**。由於此項為 STEM 專屬，[STEM 模擬](2-stem-simulation.md)頁面也有說明。
 
 ### 顯示
 

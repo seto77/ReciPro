@@ -110,7 +110,7 @@ The panel at the lower left adjusts how the result looks — brightness, color, 
 
 ![STEM image](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-Shown in STEM mode only. Selects which scattering component of the calculated STEM image is displayed (**Elastic**, **TDS**, or **Elastic & TDS**). Because it is specific to STEM, it is also described on the [STEM simulation](2-stem-simulation.md) page.
+Shown in STEM mode only. Selects which scattering component of the calculated STEM image is displayed (**Elastic**, **TDS**, or **Elastic & TDS**). When the run also computed [STEM-EDX maps](2-stem-simulation.md#stem-edx), **EDX** is available as a fourth choice. Because it is specific to STEM, it is also described on the [STEM simulation](2-stem-simulation.md) page.
 
 ### Display
 
