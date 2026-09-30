@@ -20,8 +20,11 @@ Pour chaque orientation incidente, le champ d'onde dans le cristal est résolu p
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+où les $\gamma_j$ sont les valeurs propres des ondes de Bloch du [cœur dynamique](../appendix/a3-bloch-wave/calculation.md) et les $\alpha_j$ leurs amplitudes d'excitation ; $F_{jj'}(t) \to t$ dans la limite dégénérée $\lambda \to 0$.
 
 La matrice d'ionisation $\mu$ ne dépend que de la différence de deux réflexions, $G = \mathbf{g}_h - \mathbf{g}_g$.
 

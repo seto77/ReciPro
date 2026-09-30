@@ -53,13 +53,14 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 
 | Élément de menu | Description |
 |-----------|-------------|
-| Read crystal list (as new list) | Charger un fichier de liste de cristaux (*.xml) en remplaçant la liste actuelle |
-| Read crystal list (and add) | Ajouter à la liste actuelle |
-| Read initial crystal list | Recharger la liste de cristaux par défaut |
-| Save crystal list | Enregistrer la liste de cristaux actuelle |
-| Export selected crystal to CIF | Enregistrer au format CIF |
-| Clear crystal list | Supprimer tous les cristaux |
-| Exit | Fermer l'application |
+| Charger la liste des cristaux (remplacer la liste actuelle) | Charger un fichier de liste de cristaux (`*.xml`) en remplaçant la liste actuelle |
+| Charger la liste des cristaux (ajouter à la liste actuelle) | Charger un fichier de liste de cristaux et l'ajouter à la liste actuelle |
+| Réinitialiser à la liste de cristaux initiale | Recharger la liste de cristaux fournie avec ReciPro |
+| Importer un cristal depuis un fichier CIF ou AMC | Charger un seul cristal depuis un fichier CIF / AMC |
+| Enregistrer la liste des cristaux | Enregistrer la liste de cristaux actuelle |
+| Exporter le cristal sélectionné en fichier CIF | Enregistrer le cristal sélectionné au format CIF |
+| Effacer tous les cristaux | Supprimer tous les cristaux de la liste |
+| Quitter | Fermer l'application |
 
 ### Option
 
@@ -259,7 +260,7 @@ Cliquez avec le bouton droit sur une zone vide du contrôle pour ces actions pri
 
 ## Panneau Fonctions {#functions}
 
-La barre verticale de boutons à droite lance les fenêtres d'analyse et de simulation (voir le tableau [Fonctions](#functions) ci-dessous).
+La barre verticale de boutons à droite lance les fenêtres d'analyse et de simulation listées ci-dessous.
 
 ![Panneau Fonctions](../assets/cap-fr-auto/FormMain.toolStripContainer1.toolStrip1.png)
 

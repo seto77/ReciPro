@@ -55,11 +55,11 @@ L'indice de réfraction des rayons X d'un solide est **légèrement inférieur �
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-où $n_i$ est la densité numérique de l'élément $i$ et $r_e$ le rayon classique de l'électron. Ici $\mu_\text{abs}$ est la partie absorptive de l'atténuation (liée à $f''$) ; elle n'est pas nécessairement égale au $\mu$ total ci-dessus, qui contient aussi la diffusion Rayleigh et Compton. Comme $n<1$, les rayons X subissent une **réflexion externe totale** en dessous d'un petit **angle critique** rasant
+où $n_i$ est la densité numérique de l'élément $i$ et $r_e$ le rayon classique de l'électron. Ici $\mu_\text{abs}$ est la partie absorptive de l'atténuation (liée à $f''$) ; elle n'est pas nécessairement égale au $\mu$ total ci-dessus, qui contient aussi la diffusion Rayleigh et Compton. Lorsque $\delta>0$, l'indice de réfraction est inférieur à 1, de sorte que les rayons X subissent une **réflexion externe totale** en dessous d'un petit **angle critique** rasant $\alpha_c$ :
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-Cela découle de la géométrie de réfraction : pour un angle rasant $\alpha$, le vecteur d'onde vertical à l'intérieur du solide est $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, qui atteint zéro à $\alpha = \alpha_c = \sqrt{2\delta}$ ; en dessous, l'onde ne peut pas se propager dans le matériau et est totalement réfléchie. La partie réelle de la **densité de longueur de diffusion**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fixe $\delta$ et constitue l'analogue pour les rayons X de la SLD neutronique utilisée en réflectométrie. ReciPro indique $\delta$, $\beta$, $\theta_c$ et la SLD des rayons X dans le tableau scalaire.
+Cela découle de la géométrie de réfraction : pour un angle rasant $\alpha$, le vecteur d'onde vertical à l'intérieur du solide est $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, qui atteint zéro à $\alpha = \alpha_c = \sqrt{2\delta}$ ; en dessous, l'onde ne peut pas se propager dans le matériau et est totalement réfléchie. Cette expression suppose la limite sans pertes $\beta \ll \delta$ : avec un $\beta$ fini, une onde évanescente pénètre encore de quelques nanomètres et la réflectivité reste légèrement inférieure à 1. Juste au-dessus d'un seuil d'absorption, $\delta$ peut même devenir négatif ; il n'y a alors pas d'angle critique et ReciPro n'en indique aucun. La partie réelle de la **densité de longueur de diffusion**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fixe $\delta$ et constitue l'analogue pour les rayons X de la SLD neutronique utilisée en réflectométrie. ReciPro indique $\delta$, $\beta$, $\alpha_c$ (noté **θc** dans le tableau scalaire) et la SLD des rayons X.
 
 ---
 
@@ -69,7 +69,7 @@ Un électron rapide dans un solide à la fois **diffuse** (changement de directi
 
 ### Diffusion élastique et libre parcours moyen
 
-La section efficace élastique $\sigma_\text{el}$ mesure avec quelle facilité un atome unique dévie l'électron. ReciPro utilise les sections efficaces **NIST Mott** (une solution en ondes partielles de l'équation de Dirac relativiste dans le potentiel atomique écranté), valables environ sur **50 eV – 36.4 keV** ; en dehors de cette plage, ou pour les éléments absents de la table, il se rabat sur l'approximation de **Rutherford écrantée**. Les deux ne se raccordent pas nécessairement de façon parfaitement lisse à la frontière. La section efficace totale est l'intégrale angulaire de la section différentielle,
+La section efficace élastique $\sigma_\text{el}$ mesure avec quelle facilité un atome unique dévie l'électron. ReciPro utilise les sections efficaces **NIST Mott** (une solution en ondes partielles de l'équation de Dirac relativiste dans le potentiel atomique écranté). La table fournie couvre **50 eV – 36.4 keV** (il s'agit de l'étendue de la tabulation propre à ReciPro, et non d'une limite de la méthode de Mott elle-même) ; en dehors de cette plage, ou pour les éléments absents de la table, il se rabat sur l'approximation de **Rutherford écrantée**. Les deux ne se raccordent pas nécessairement de façon parfaitement lisse à la frontière. La section efficace totale est l'intégrale angulaire de la section différentielle,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ L'énergie est perdue principalement au profit des excitations électroniques (i
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-où ici $s$ est la **longueur de parcours** le long de la trajectoire (la variable de la courbe *|dE/ds|* de l'onglet), et non la variable de diffusion $\sin\theta/\lambda$ utilisée ailleurs dans cette annexe. Le gradient d'énergie $dE/ds$ est négatif, de sorte que l'onglet trace $S$ vers le haut. Aux énergies de l'ordre du keV, il suit, sur le plan conceptuel, la forme de **Bethe**
+où ici $s$ est la **longueur de parcours** le long de la trajectoire (la variable de la courbe *|dE/ds|* de l'onglet), et non la variable de diffusion $\sin\theta/\lambda$ utilisée ailleurs dans cette annexe. Le gradient $dE/ds$ lui-même est négatif, de sorte que l'onglet trace son module $S$ vers le haut. Aux énergies de l'ordre du keV, il suit, sur le plan conceptuel, la forme de **Bethe**
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-avec $J$ l'**énergie d'excitation moyenne** du solide. Cette esquisse non relativiste ne montre que la mise à l'échelle ; ReciPro évalue une forme corrigée/empirique (de type Joy–Luo) qui reste bien conditionnée à basse énergie. L'**énergie de plasmon** $E_p$ dans le tableau scalaire est une caractérisation apparentée mais distincte des mêmes excitations électroniques. Le **libre parcours moyen inélastique** (IMFP) est la distance moyenne correspondante entre collisions avec perte d'énergie ; ReciPro peut l'évaluer à partir de la formule prédictive **TPP-2M**,
+avec $J$ l'**énergie d'excitation moyenne** du solide. Cette esquisse non relativiste ne montre que la mise à l'échelle ; ReciPro évalue la forme de **Jablonski (2008)** modifiée, qui reste bien conditionnée à basse énergie (l'ancienne forme empirique de **Joy–Luo (1989)** est également implémentée). L'**énergie de plasmon** $E_p$ dans le tableau scalaire est une caractérisation apparentée mais distincte des mêmes excitations électroniques. Le **libre parcours moyen inélastique** (IMFP) est la distance moyenne correspondante entre collisions avec perte d'énergie ; ReciPro peut l'évaluer à partir de la formule prédictive **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ Les mêmes échelles de longueur expliquent pourquoi les électrons exigent des 
 
 ## Voir aussi
 
-- [Facteurs de diffusion atomique](scattering-factor.md) — la séparation $F(q)$/$S(q)$ derrière Rayleigh/Compton, et les sections efficaces de Mott.
+- [Facteurs de diffusion atomique](scattering-factor.md) — la séparation $F(q)$/$S(q)$ derrière Rayleigh/Compton, et la relation de Mott–Bethe (un modèle différent des sections efficaces de Mott NIST utilisées ci-dessus).
 - [Fluorescence](fluorescence.md) — la relaxation qui suit la photoabsorption des rayons X.
 - [3. Interaction du faisceau](../../3-beam-interaction.md) — l'onglet *Atténuations & transport*.
 - [8. Trajectoire électronique](../../8-electron-trajectory.md) · [12. Simulation EBSD](../../12-ebsd-simulation.md) — où les portées électroniques sont utilisées.

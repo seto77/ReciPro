@@ -54,7 +54,7 @@ D'après la géométrie,
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-et l'**erreur d'excitation** $S_g$ (l'écart du nœud du réseau réciproque à la sphère d'Ewald) ainsi que la **fonction d'évaluation** $R$ utilisée pour classer les réflexions s'écrivent :
+et l'**erreur d'excitation** $S_g$ (l'écart du nœud du réseau réciproque à la sphère d'Ewald) ainsi que la **fonction d'évaluation** $R$ utilisée pour classer les réflexions (plus $R$ est petit, plus $\mathbf g$ est court et proche de la sphère d'Ewald ; ces réflexions sont retenues en premier) s'écrivent :
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

@@ -22,6 +22,7 @@
 | Simuler des clichés EBSD | [Simulation EBSD](12-ebsd-simulation.md) | [Trajectoires électroniques](8-electron-trajectory.md), [Annexe A3. Calcul EBSD](appendix/a3-bloch-wave/ebsd.md) |
 | Indexer des taches de diffraction expérimentales | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Simulateur de diffraction](7-diffraction-simulator/index.md) |
 | Comprendre les équations de la diffraction dynamique | [Annexe A3. Méthode des ondes de Bloch](appendix/a3-bloch-wave/index.md) | [Calcul dynamique](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| Comprendre les symboles des groupes d'espace et les relations groupe–sous-groupe | [2. Informations de symétrie](2-symmetry-information.md) | [Annexe A4. Symétrie et groupes d'espace](appendix/a4-symmetry-space-groups/index.md), [Symboles des groupes d'espace et diagrammes](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [Relations groupe–sous-groupe](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## Fonctionnalités
 * **Interface graphique complète** : Toutes les opérations s'effectuent via une interface graphique. La plupart des entrées/sorties de fichiers prennent en charge le glisser-déposer.

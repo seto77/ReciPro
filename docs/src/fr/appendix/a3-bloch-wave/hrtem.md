@@ -18,8 +18,8 @@ L'image HRTEM se forme à partir de la fonction d'onde à la surface de sortie �
 | $C_s$ | coefficient d'aberration sphérique |
 | $C_c$ | coefficient d'aberration chromatique |
 | $\beta$ | demi-angle d'éclairement (taille finie de la source) |
-| $\Delta E$ | largeur à $1/e$ des fluctuations d'énergie de l'électron |
-| $\Delta_0$ | largeur à $1/e$ de l'étalement de défocalisation (gaussien), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **écart-type** (rms) de la fluctuation d'énergie de l'électron. Le champ **ΔV** de l'interface prend la FWHM, donc $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | écart-type de l'étalement (gaussien) de défocalisation, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-Dans la limite $\mathbf u' \to \mathbf u$, le TCC se réduit aux enveloppes quasi-cohérentes ci-dessus.
+En posant $\mathbf u' = \mathbf 0$ — interférence du faisceau $\mathbf u$ avec le faisceau transmis — on retrouve les enveloppes à fréquence unique $E_c(\mathbf u)$ et $E_s(\mathbf u)$ du modèle quasi-cohérent ci-dessus. L'autre limite, $\mathbf u' \to \mathbf u$, donne $E_c = E_s = 1$ et donc le terme diagonal $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ utilisé plus bas.
 
 ---
 

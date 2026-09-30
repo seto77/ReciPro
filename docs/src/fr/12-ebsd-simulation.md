@@ -174,7 +174,9 @@ Le panneau central affiche la figure EBSD (à bandes de Kikuchi) pour l'orientat
 
 Déposez un fichier image EBSD (TIFF, PNG, BMP ou JPEG ; les TIFF 16 bits sont lus en pleine profondeur) n'importe où sur la fenêtre pour le charger comme figure expérimentale. Il est dessiné sur la zone du détecteur — au-dessus de la figure simulée et sous les superpositions de lignes de Kikuchi — de sorte que la simulation peut être comparée directement à la mesure. Le chargement met aussi **Width** et **Height** du détecteur à la taille de l'image.
 
-- **Luminosité** (**Min** / **Max**) : points noir et blanc de l'image superposée, exprimés en fraction de sa propre plage d'intensité (curseurs logarithmiques). Ils n'agissent que sur l'image expérimentale, pas sur la figure simulée.
+- **Luminosité** (**Min** / **Max**), **Contraste** : points noir et blanc de l'image superposée, exprimés en pourcentage de sa plage d'affichage, et largeur de cette plage (curseurs linéaires, même convention que pour la figure simulée). Ils n'agissent que sur l'image expérimentale.
+- **Aplanir le fond** (**FWHM**, px ; désactivé par défaut, 100 px) : soustrait de l'image expérimentale une copie d'elle-même floutée par un filtre gaussien, ce qui supprime sa distribution de luminosité lentement variable. Les curseurs d'intensité agissent alors sur les valeurs aplanies.
+- **Ajuster à l'image** : règle **Min**, **Max** et **Contraste** de la figure simulée de sorte que ses niveaux d'intensité à 2 % et 98 % s'affichent au même gris que ceux de l'image expérimentale. L'ajustement utilise des percentiles : il ne dépend donc pas de la solution d'orientation et est insensible à un piédestal ou à quelques pixels brillants d'axes de zone. La polarité, la couleur et les deux réglages **Aplanir le fond** ne sont pas modifiés ; aplanissez donc les deux côtés, ou aucun, avant d'appuyer sur ce bouton.
 - **Opacité** : opacité de l'image superposée, de 0 (invisible) à 100 % (opaque). Réduisez-la pour voir la figure simulée en dessous.
 
 L'orientation qui explique l'image est ensuite recherchée par l'un des deux moteurs.

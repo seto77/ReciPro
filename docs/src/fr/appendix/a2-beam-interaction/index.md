@@ -33,7 +33,7 @@ Ces trois conventions décrivent la même géométrie ; seule l'échelle diffèr
 | Tracé du pic de diffraction | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unités"
-    Les paramétrisations publiées des facteurs de forme utilisent $s$ en Å⁻¹ (donc $s^2$ en Å⁻²), tandis que ReciPro manipule en interne $s^2$ en nm⁻². Les deux diffèrent d'un facteur $100$ en $s^2$ ; les courbes et les tables sont présentées dans les unités indiquées dans l'en-tête de chaque table. Un modèle — **Kirkland** — est tabulé en fonction de $q = 2s = 1/d$ plutôt que de $s$ ; voir [Atomic scattering factors](scattering-factor.md).
+    Les paramétrisations publiées des facteurs de forme utilisent $s$ en Å⁻¹ (donc $s^2$ en Å⁻²), tandis que ReciPro manipule en interne $s^2$ en nm⁻². Les deux diffèrent d'un facteur $100$ en $s^2$ ; les courbes et les tables sont présentées dans les unités indiquées dans l'en-tête de chaque table. Un modèle — **Kirkland** — est tabulé en fonction de $q_K = 2s = 1/d$ plutôt que de $s$ ; voir [Facteurs de diffusion atomique](scattering-factor.md). Notez que ce $q_K$ n'est **pas** le $q = 2\pi/d$ du tableau des réflexions ci-dessus : les deux diffèrent d'un facteur $2\pi$.
 
 ### Bragg, Laue et la sphère d'Ewald
 
@@ -61,7 +61,7 @@ c'est-à-dire un signe **moins** dans l'exposant. Ce choix fixe le signe de la p
 
 ## Diffusion cinématique vs dynamique
 
-Cette annexe traite la **diffusion simple (cinématique)** : le faisceau incident est diffusé une seule fois, et l'amplitude diffractée est le facteur de structure de la page suivante. C'est la bonne image lorsque l'interaction est faible — les rayons X et les neutrons dans presque tous les échantillons, et les électrons dans des spécimens *très minces*.
+Cette annexe traite la **diffusion simple (cinématique)** : le faisceau incident est diffusé une seule fois, et l'amplitude diffractée est le facteur de structure de la page suivante. C'est la bonne image lorsque l'interaction est faible — les rayons X et les neutrons dans les poudres, les cristaux imparfaits et les échantillons minces, et les électrons dans des spécimens *très minces*. (Même les rayons X deviennent dynamiques dans un grand cristal presque parfait, où l'extinction primaire affaiblit les réflexions les plus intenses.)
 
 Lorsque l'interaction est forte — les électrons dans tous les cristaux sauf les plus minces — le faisceau est diffusé de multiples fois avant de sortir, l'intensité est redistribuée entre les réflexions, et $\lvert F\rvert^2$ ne donne plus l'intensité mesurée. Ce régime requiert la théorie **dynamique** de l'[Appendix A3](../a3-bloch-wave/index.md). Les facteurs de diffusion et les facteurs de structure établis ici sont l'*entrée* des deux images.
 

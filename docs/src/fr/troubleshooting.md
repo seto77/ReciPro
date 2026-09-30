@@ -29,7 +29,7 @@ La fenêtre sera ramenée sur votre écran principal. Notez que **Basculer vers*
 **Solution** (à essayer dans l'ordre) :
 
 1. **Désactiver OpenGL** : maintenez la touche **Ctrl** enfoncée pendant le lancement de ReciPro pour démarrer avec OpenGL désactivé. Les versions récentes (v4.925 et ultérieures) renforcent l'initialisation d'OpenGL afin que l'application se lance même lorsqu'OpenGL échoue — dans ce cas, les fonctions 3D sont désactivées mais le reste de l'application fonctionne.
-2. **Réinitialiser les paramètres** : dans l'éditeur du Registre, supprimez la clé `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, puis redémarrez. (Équivaut à **Option → Reset registry**.)
+2. **Réinitialiser les paramètres** : dans l'éditeur du Registre, supprimez la clé `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`, puis redémarrez. (Équivaut à **Options ▸ Réinitialiser les réglages du registre à la fermeture**.)
 3. **Réinstallation propre** : désinstallez ReciPro, supprimez les dossiers suivants s'ils sont présents (remplacez `<user>` par le nom de votre compte), puis réinstallez :
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ Si rien de tout cela n'aide, la cause peut être l'environnement du système d'e
 
 **Solution** :
 
-1. Allez dans **Option → Disable OpenGL (needs restart)** (ou maintenez **Ctrl** enfoncé pendant le lancement).
+1. Allez dans **Options ▸ Désactiver tout le rendu OpenGL (redémarrage requis)** (ou maintenez **Ctrl** enfoncé pendant le lancement).
 2. Redémarrez ReciPro.
 3. Le Visualiseur de structure et certaines fonctions 3D utiliseront le rendu logiciel.
 
@@ -59,7 +59,7 @@ Si rien de tout cela n'aide, la cause peut être l'environnement du système d'e
 
 ### Symptôme : Mauvaise qualité de rendu
 
-**Solution** : Mettez à jour les pilotes de votre GPU. Un GPU externe (dédié) prenant en charge OpenGL 1.5 est recommandé.
+**Solution** : Mettez à jour les pilotes de votre GPU. OpenGL 1.3 est le minimum ; un GPU dédié prenant en charge OpenGL 4.3 est recommandé (voir [Configuration requise](index.md)).
 
 ---
 
@@ -130,8 +130,8 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 **Solution** :
 
-- **Cliquez avec le bouton gauche** dans la zone de dessin principale pour dézoomer.
-- Vérifiez l'énergie de l'onde incidente sur l'onglet **Wave** (en haut à gauche) : rayons X ≈ 1–100 keV, électrons ≈ 10–1000 keV sont appropriés.
+- **Cliquez avec le bouton droit** dans la zone de dessin principale pour dézoomer (ces vues n'ont pas de zoom à la molette — voir [21. Raccourcis clavier et souris](21-shortcuts.md)).
+- Vérifiez l'énergie de l'onde incidente dans le panneau **Source d'onde** à droite : rayons X ≈ 1–100 keV, électrons ≈ 10–1000 keV sont appropriés.
 
 ---
 
@@ -161,7 +161,7 @@ Par exemple, le bouton **Peak Identification** dans Spot ID v2 est masqué, ou l
 
 Si les paramètres deviennent corrompus :
 
-1. **Option → Reset registry (after restart)**
+1. **Options ▸ Réinitialiser les réglages du registre à la fermeture (effectif après redémarrage)**
 2. Redémarrez ReciPro — les positions des fenêtres, la longueur d'onde, la longueur de caméra, etc. seront réinitialisées aux valeurs par défaut
 
 ---
