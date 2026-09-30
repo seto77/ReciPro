@@ -52,3 +52,13 @@
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | 从样品到 foot 的距离 (mm) |
 | **Pixel size** | 单个（正方形）像素的边长 (mm)；仅支持正方形像素 |
 | **Detector width / height** | 水平 / 垂直方向的像素数 |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## 激发误差 $S_g$ 的两种定义
+
+ReciPro 有意使用两种不同的激发误差定义，分别对应不同的使用场景：
+
+- **运动学显示与 `SpotInfo()`（运动学/激发误差模式）** ：从倒易点阵点到 Ewald 球的带符号 **径向** 距离，$S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$，其中球心为 $\boldsymbol{C} = (0, 0, k)$，$k = 1/\lambda$。$S_g > 0$ 表示该点位于球内。运动学模拟器不假设样品的形状或厚度，因此不存在表面法线；各向同性的径向距离是选择和显示反射时的中性选择。
+- **动力学 (Bethe) 计算** ：沿 **样品表面法线** $\boldsymbol{n}$ 测量的距离，$S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$，其中 $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$，$Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$。这一定义是施加在样品表面上的边界条件所要求的。
+
+在垂直入射（表面法线平行于入射束）时两者几乎一致，但它们 **并不是同一个量**；请勿混用从运动学输出和动力学输出中得到的数值。

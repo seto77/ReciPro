@@ -54,14 +54,16 @@
 
 ![衍射点信息](../assets/cap-zh-Hans-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Detect & Fit Spots**：使用局部极大值和背景扣除进行自动衍射斑点检测。
+- **检测 & 拟合衍射点**：使用局部极大值和背景扣除进行自动衍射斑点检测。
 - **Number**：要检测的衍射斑点的最大数量。
-- **Nearest neighbour**：检测到的衍射斑点之间允许的最小间隔（px）。比此值更接近的峰会被合并，从而防止同一衍射斑点被重复检测。
+- **Nearest neighbor**：检测到的衍射斑点之间允许的最小间隔（px）。比此值更接近的峰会被合并，从而防止同一衍射斑点被重复检测。
 - **Fitting range (radius)**：用于拟合每个衍射斑点峰的圆形区域的半径（px）。该圆内的像素使用伪 Voigt 函数进行拟合。
-- **Apply to All**：将每个衍射斑点的拟合半径设置为当前 **Fitting range (radius)** 的值。
-- **Delete spot / Clear spots**：删除单个或全部已检测的衍射斑点。
-- **Copy to clipboard**：将衍射斑点的位置和强度复制到剪贴板。
-- **Details of the spot**：勾选后，将打开一个窗口，显示当前选中衍射斑点的详细信息。
+- **应用于全部**：将每个衍射斑点的拟合半径设置为当前 **Fitting range (radius)** 的值。
+- **删除 / 清除所有衍射点**：删除所选的衍射斑点，或删除全部已检测的衍射斑点。
+- **复制**：将衍射斑点的位置和强度复制到剪贴板。
+- **全局拟合**：一次性对所有衍射斑点的位置进行全局拟合（实验性功能）。
+- **环状**：施加环形（甜甜圈形）背景扣除（实验性功能）；旁边的输入框设置每个衍射斑点周围环带的宽度 (px)，该环带的平均值作为局部背景被扣除。
+- **衍射点详情**：勾选后，将打开一个窗口，显示当前选中衍射斑点的详细信息。
 
 ![Details of the spot](../assets/cap-zh-Hans-auto/FormSpotIDv2Details.png)
 

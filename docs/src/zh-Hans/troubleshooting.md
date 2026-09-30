@@ -29,7 +29,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 **解决方法**（按顺序尝试）：
 
 1. **禁用 OpenGL**：启动 ReciPro 时按住 **Ctrl** 键，以禁用 OpenGL 的方式启动。较新的版本（v4.925 及以后）强化了 OpenGL 初始化，因此即使 OpenGL 失败应用也能启动——在这种情况下 3D 功能被禁用，但应用的其余部分可正常工作。
-2. **重置设置**：在注册表编辑器中删除键 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然后重新启动。（等同于 **Option → Reset registry**。）
+2. **重置设置**：在注册表编辑器中删除键 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然后重新启动。（等同于 **选项 ▸ 退出时重置注册表设置（重启后生效）**。）
 3. **干净重装**：卸载 ReciPro，删除以下文件夹（如果存在，将 `<user>` 替换为你的账户名），然后重新安装：
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 **解决方法**：
 
-1. 转到 **Option → Disable OpenGL (needs restart)**（或在启动时按住 **Ctrl**）。
+1. 转到 **选项 ▸ 禁用全部 OpenGL 渲染（需要重启）**（或在启动时按住 **Ctrl**）。
 2. 重新启动 ReciPro。
 3. 结构查看器和部分 3D 功能将使用软件渲染。
 
@@ -59,7 +59,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 ### 症状：渲染质量差
 
-**解决方法**：更新 GPU 驱动程序。推荐使用支持 OpenGL 1.5 的外置（独立）GPU。
+**解决方法**：更新 GPU 驱动程序。最低要求为 OpenGL 1.3；推荐使用支持 OpenGL 4.3 的独立 GPU（参见[系统要求](index.md)）。
 
 ---
 
@@ -130,8 +130,8 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 **解决方法**：
 
-- **左键单击**主绘图区域以缩小。
-- 在 **Wave** 选项卡（左上角）检查入射波能量：X 射线 ≈ 1–100 keV、电子 ≈ 10–1000 keV 为适宜值。
+- 在主绘图区域中 **右键单击** 以缩小（这些视图不支持鼠标滚轮缩放——参见 [21. 键盘和鼠标快捷键](21-shortcuts.md)）。
+- 在右侧的 **波源** 面板中检查入射波能量：X 射线 ≈ 1–100 keV、电子 ≈ 10–1000 keV 为适宜值。
 
 ---
 
@@ -161,7 +161,7 @@ ReciPro 已启动（在任务管理器中可见），但其窗口始终不在屏
 
 如果设置变得损坏：
 
-1. **Option → Reset registry (after restart)**
+1. **选项 ▸ 退出时重置注册表设置（重启后生效）**
 2. 重新启动 ReciPro——窗口位置、波长、相机长度等将被重置为默认值
 
 ---

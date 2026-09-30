@@ -33,7 +33,7 @@ $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\
 | 衍射峰图 | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "单位"
-    已发表的形状因子参数化使用以 Å⁻¹ 为单位的 $s$（因此 $s^2$ 以 Å⁻² 为单位），而 ReciPro 内部以 nm⁻² 保存 $s^2$。两者在 $s^2$ 上相差 $100$ 倍；曲线和表格以各表表头中标注的单位呈现。有一个模型 — **Kirkland** — 是对 $q = 2s = 1/d$ 而非对 $s$ 制表的；参见 [Atomic scattering factors](scattering-factor.md)。
+    已发表的形状因子参数化使用以 Å⁻¹ 为单位的 $s$（因此 $s^2$ 以 Å⁻² 为单位），而 ReciPro 内部以 nm⁻² 保存 $s^2$。两者在 $s^2$ 上相差 $100$ 倍；曲线和表格以各表表头中标注的单位呈现。有一个模型 — **Kirkland** — 是对 $q_K = 2s = 1/d$ 而非对 $s$ 制表的；参见[原子散射因子](scattering-factor.md)。注意，这里的 $q_K$ **并不是** 上方衍射表中的 $q = 2\pi/d$：两者相差 $2\pi$ 倍。
 
 ### 布拉格、劳厄与埃瓦尔德球
 

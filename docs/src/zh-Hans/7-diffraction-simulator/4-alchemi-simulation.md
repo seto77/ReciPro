@@ -20,8 +20,11 @@ GUI 条件：Wave Length = Electron（晶体、加速电压与取向取自上级
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+其中 $\gamma_j$ 为[动力学核心](../appendix/a3-bloch-wave/calculation.md)中布洛赫波的本征值，$\alpha_j$ 为其激发振幅；在简并极限 $\lambda \to 0$ 下，$F_{jj'}(t) \to t$。
 
 电离矩阵 $\mu$ 仅取决于两个反射之差 $G = \mathbf{g}_h - \mathbf{g}_g$。
 
@@ -100,7 +103,7 @@ $$
 待电离的元素与壳层列表。每行读作 `元素 (Z) 壳层   吸收边能量   U = 过电压`，需要注意的情形会在末尾加括号标注。
 
 - **无法激发**（入射能量低于吸收边）或**超出收录范围**的通道会连同原因一起列出，且无法勾选
-- 过电压 $U = E_0/E_\text{边}$ 低于 1.2 的通道带有注意标记，因为该处截面的可靠性较低
+- 过电压 $U = E_0/E_\text{edge}$ 低于 1.2 的通道带有注意标记，因为该处截面的可靠性较低
 
 ### 位点假设
 

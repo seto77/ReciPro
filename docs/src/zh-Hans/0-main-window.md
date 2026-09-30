@@ -53,12 +53,13 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 | 菜单项 | 说明 |
 |-----------|-------------|
-| Read crystal list (as new list) | 加载晶体列表文件 (*.xml)，替换当前列表 |
-| Read crystal list (and add) | 追加到当前列表 |
-| Read initial crystal list | 重新加载默认晶体列表 |
-| Save crystal list | 保存当前晶体列表 |
-| Export selected crystal to CIF | 以 CIF 格式保存 |
-| Clear crystal list | 移除所有晶体 |
+| 加载晶体列表（替换当前列表） | 加载晶体列表文件 (`*.xml`)，替换当前列表 |
+| 加载晶体列表（添加到当前列表） | 加载晶体列表文件并追加到当前列表 |
+| 重置为初始晶体列表 | 重新加载 ReciPro 自带的晶体列表 |
+| 从 CIF 或 AMC 文件导入晶体 | 从 CIF / AMC 文件加载单个晶体 |
+| 保存晶体列表 | 保存当前晶体列表 |
+| 将选定晶体导出为 CIF 文件 | 以 CIF 格式保存所选晶体 |
+| 清除所有晶体 | 从列表中移除所有晶体 |
 | Exit | 关闭应用程序 |
 
 ### Option
@@ -259,7 +260,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ## 功能面板 {#functions}
 
-右侧的竖向按钮条用于启动分析和模拟窗口（见下方[功能](#functions)表）。
+右侧的竖向按钮条用于启动下表所列的分析和模拟窗口。
 
 ![功能面板](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
