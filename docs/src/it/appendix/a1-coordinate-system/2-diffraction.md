@@ -52,3 +52,13 @@ Una volta che il rivelatore è inclinato:
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | Distanza dal campione al foot (mm) |
 | **Pixel size** | Lunghezza del lato di un pixel (quadrato) (mm); sono supportati solo pixel quadrati |
 | **Detector width / height** | Numero di pixel in orizzontale / verticale |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## Due definizioni dell'errore di eccitazione $S_g$
+
+ReciPro utilizza due definizioni dell'errore di eccitazione volutamente diverse, adattate ai rispettivi contesti:
+
+- **Visualizzazione cinematica e `SpotInfo()` (modalità cinematica/di eccitazione)** : la distanza **radiale** con segno dal punto del reticolo reciproco alla sfera di Ewald, $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$ con il centro della sfera $\boldsymbol{C} = (0, 0, k)$ e $k = 1/\lambda$. $S_g > 0$ significa che il punto si trova all'interno della sfera. Il simulatore cinematico non presuppone alcuna forma o spessore del campione, quindi lì non esiste una normale alla superficie; la distanza radiale isotropa è la scelta neutra per selezionare e visualizzare le riflessioni.
+- **Calcolo dinamico (Bethe)** : la distanza misurata **lungo la normale alla superficie del campione** $\boldsymbol{n}$, $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$ con $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$ e $Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$. Questa definizione è richiesta dalla condizione al contorno imposta sulla superficie del campione.
+
+Le due quasi coincidono in incidenza normale (normale alla superficie parallela al fascio), ma **non sono la stessa grandezza**; non mescolare valori presi dagli output cinematici e dinamici.

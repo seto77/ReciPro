@@ -150,8 +150,8 @@ Gli assi che corrono obliqui o giacciono nella pagina (ciò accade solo per dire
 
 Un'etichetta di altezza frazionaria (es. `1/4`) accanto a un simbolo ne dà la coordinata lungo l'asse di proiezione ogniqualvolta l'elemento non giace nel piano ad altezza 0.
 
-!!! note "Gruppi cubici a reticolo F: viene disegnato solo un ottante"
-    Per i gruppi spaziali cubici a centratura $F$, ReciPro disegna solo il quadrante in alto a sinistra di un ottavo della cella (altrimenti il diagramma sarebbe troppo denso per essere leggibile); la cella completa lo ripete tramite le traslazioni di centratura e tramite gli stessi elementi di simmetria disegnati. Gli stessi elementi di simmetria possono anche essere sovrapposti direttamente al modello 3D nel [Visualizzatore struttura](../../5-structure-viewer.md).
+!!! note "Gruppi cubici a reticolo F: viene disegnata solo una parte della cella"
+    Per i gruppi spaziali cubici a centratura $F$, ReciPro disegna solo il quarto in alto a sinistra della cella proiettata (altrimenti il diagramma sarebbe troppo denso per essere leggibile); il resto della cella lo ripete tramite le traslazioni di centratura e tramite gli stessi elementi di simmetria disegnati. Gli stessi elementi di simmetria possono anche essere sovrapposti direttamente al modello 3D nel [Visualizzatore struttura](../../5-structure-viewer.md).
 
 ---
 
@@ -166,7 +166,7 @@ Il diagramma di destra traccia le posizioni equivalenti generali — l'orbita di
 - (Solo per i gruppi spaziali cubici) sottili linee ausiliarie collegano tre cerchi legati da un asse ternario lungo una diagonale di corpo $\langle111\rangle$.
 - In generale, un cerchio (o una metà di un cerchio diviso) corrisponde a una posizione equivalente, quindi il numero di cerchi coincide con la **molteplicità** della posizione generale mostrata nella scheda [Posizioni di Wyckoff](../../2-symmetry-information.md) — una rapida verifica di coerenza quando si legge uno qualunque dei due diagrammi. Se l'asse di proiezione scelto fa coincidere esattamente più copie della stessa chiralità, esse vengono sovrapposte in un unico punto (distinte solo da etichette di altezza separate) anziché disegnate come cerchi affiancati, e il numero di cerchi visibili può allora risultare inferiore alla molteplicità.
 
-I campi `numericBox` sotto **Direzione** permettono di spostare il punto di prova $(x,y,z)$ dalla posizione predefinita che il gruppo spaziale assegna per quel gruppo puntuale, il che è talvolta utile per sfoltire un diagramma in cui più cerchi coinciderebbero.
+Le caselle $x$ / $y$ / $z$ sotto **Direzione** permettono di spostare il punto di prova $(x,y,z)$ dalla posizione predefinita che il gruppo spaziale assegna per quel gruppo puntuale, il che è talvolta utile per sfoltire un diagramma in cui più cerchi coinciderebbero.
 
 ---
 

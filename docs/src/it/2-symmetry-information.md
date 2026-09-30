@@ -95,7 +95,7 @@ Elenca, a titolo di riferimento, tutte le scelte tabulate di origine e di settin
 I due pannelli in basso riproducono i diagrammi schematici di simmetria del gruppo spaziale nella notazione delle *International Tables for Crystallography* Vol. A.
 
 - **Elementi di simmetria (a sinistra)**: assi di rotazione/elicoidali, piani di riflessione/slittamento e centri di inversione/punti di rotoinversione sono disegnati con i simboli grafici convenzionali.
-  - Per il reticolo \(F\) del sistema cubico viene mostrato solo un ottavo della cella elementare (il solo quadrante in alto a sinistra).
+  - Per il reticolo \(F\) del sistema cubico viene mostrato solo il quarto in alto a sinistra della cella proiettata (vedere l'[Appendice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Questi elementi di simmetria possono anche essere disegnati direttamente sul modello 3D nel [Visualizzatore struttura](5-structure-viewer.md).
 - **Posizioni generali (a destra)**: le posizioni equivalenti generali sono rappresentate come cerchi (una virgola indica un'immagine speculare), annotati con le loro coordinate frazionarie.
   - Solo per il sistema cubico, linee ausiliarie collegano i tre cerchi correlati da un asse di rotazione ternario.

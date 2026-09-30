@@ -92,7 +92,7 @@ Controlla come viene reso ciascuno spot di diffrazione.
 - **Color scale** : scegliere tra le mappe di colore **Gray scale** e **Cold-warm**.
 - **Log scale** : visualizza le intensità su scala logaritmica.
 - **Spot color** : colore predefinito dello spot quando la scala di colore non viene applicata.
-- **Use crystal color** : se selezionato, disegna gli spot nel colore assegnato a ciascun cristallo.
+- **Color per crystal** : se selezionato, disegna gli spot nel colore assegnato a ciascun cristallo.
 
 ---
 

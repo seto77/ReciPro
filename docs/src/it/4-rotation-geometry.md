@@ -33,11 +33,13 @@ La metà superiore della finestra mostra lo stato di rotazione nel "sistema di c
 
 ### Φ, θ, Ψ (angoli di Eulero Z–X–Z)
 
-L'orientazione del cristallo è parametrizzata da tre rotazioni applicate in questo ordine:
+L'orientazione del cristallo è parametrizzata da tre rotazioni. Descritte nel sistema di riferimento **solidale al corpo (intrinseco)**, sono applicate in questo ordine:
 
 1. **Φ** — prima rotazione attorno all'asse **Z**.
 2. **θ** — rotazione attorno all'asse **X** del sistema di riferimento ruotato una volta.
 3. **Ψ** — seconda rotazione attorno all'asse **Z** del sistema di riferimento ruotato due volte.
+
+La stessa rotazione vista nel sistema di riferimento **fisso di laboratorio** corrisponde alla sequenza inversa — Ψ attorno a $Z$, poi θ attorno a $X$, poi Φ attorno a $Z$ — ed è la descrizione adottata nell'[Appendice A1.1](appendix/a1-coordinate-system/1-orientation.md). Entrambe danno la stessa identica matrice $R$ riportata sotto; Φ è semplicemente l'asse più esterno (come in un goniometro) e Ψ quello più interno.
 
 Ogni casella numerica è modificabile; modificare un valore qui aggiorna la Finestra principale e ogni simulatore collegato.
 
@@ -76,7 +78,7 @@ La stessa matrice (\(R_{ij}\) = riga \(i\), colonna \(j\)) compare in:
 
 ### Finestre OpenGL
 
-La vista 3D mostra la rotazione corrente mediante tre tori colorati (ciambelle):
+La vista 3D mostra la rotazione corrente mediante tre tori colorati (a forma di ciambella):
 
 | Colore | Angolo di Eulero | Livello del goniometro |
 |--------|------------|-----------------|
