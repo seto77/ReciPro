@@ -33,7 +33,7 @@ Diese drei Konventionen beschreiben dieselbe Geometrie; nur die Skala unterschei
 | Beugungspeak-Diagramm | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Einheiten"
-    Die veröffentlichten Parametrisierungen der Formfaktoren verwenden $s$ in Å⁻¹ (also $s^2$ in Å⁻²), während ReciPro intern $s^2$ in nm⁻² führt. Die beiden unterscheiden sich um einen Faktor $100$ in $s^2$; die Kurven und Tabellen werden in den Einheiten dargestellt, die in der Kopfzeile jeder Tabelle angegeben sind. Ein Modell — **Kirkland** — ist gegen $q = 2s = 1/d$ statt gegen $s$ tabelliert; siehe [Atomic scattering factors](scattering-factor.md).
+    Die veröffentlichten Parametrisierungen der Formfaktoren verwenden $s$ in Å⁻¹ (also $s^2$ in Å⁻²), während ReciPro intern $s^2$ in nm⁻² führt. Die beiden unterscheiden sich um einen Faktor $100$ in $s^2$; die Kurven und Tabellen werden in den Einheiten dargestellt, die in der Kopfzeile jeder Tabelle angegeben sind. Ein Modell — **Kirkland** — ist gegen $q_K = 2s = 1/d$ statt gegen $s$ tabelliert; siehe [Atomare Streufaktoren](scattering-factor.md). Beachten Sie, dass dieses $q_K$ **nicht** das $q = 2\pi/d$ der obigen Reflextabelle ist: Die beiden unterscheiden sich um einen Faktor $2\pi$.
 
 ### Bragg, Laue und die Ewald-Kugel
 

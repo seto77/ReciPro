@@ -20,8 +20,11 @@ Für jede einfallende Orientierung wird das Wellenfeld im Kristall mit der Bloch
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+Dabei sind $\gamma_j$ die Bloch-Wellen-Eigenwerte des [dynamischen Kerns](../appendix/a3-bloch-wave/calculation.md) und $\alpha_j$ ihre Anregungsamplituden; im entarteten Grenzfall $\lambda \to 0$ gilt $F_{jj'}(t) \to t$.
 
 Die Ionisationsmatrix $\mu$ hängt nur von der Differenz zweier Reflexe ab, $G = \mathbf{g}_h - \mathbf{g}_g$.
 

@@ -54,7 +54,7 @@ Aus der Geometrie folgt:
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-und der **Anregungsfehler** $S_g$ (die Abweichung des reziproken Gitterpunkts von der Ewald-Kugel) sowie die zur Reihung der Reflexe verwendete **Bewertungsfunktion** $R$ lauten:
+und der **Anregungsfehler** $S_g$ (die Abweichung des reziproken Gitterpunkts von der Ewald-Kugel) sowie die zur Reihung der Reflexe verwendete **Bewertungsfunktion** $R$ (kleineres $R$ = kurzes $\mathbf g$ und nahe an der Ewald-Kugel, wird zuerst berücksichtigt) lauten:
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

@@ -55,11 +55,11 @@ Der Röntgenbrechungsindex eines Festkörpers ist **etwas kleiner als 1** und wi
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-wobei $n_i$ die Teilchendichte des Elements $i$ und $r_e$ der klassische Elektronenradius ist. Hier ist $\mu_\text{abs}$ der absorptive Anteil der Abschwächung (an $f''$ gekoppelt); er muss nicht gleich dem gesamten $\mu$ oben sein, das auch Rayleigh- und Compton-Streuung enthält. Da $n<1$, erfahren Röntgenstrahlen **Totalreflexion** unterhalb eines kleinen streifenden **kritischen Winkels**
+wobei $n_i$ die Teilchendichte des Elements $i$ und $r_e$ der klassische Elektronenradius ist. Hier ist $\mu_\text{abs}$ der absorptive Anteil der Abschwächung (an $f''$ gekoppelt); er muss nicht gleich dem gesamten $\mu$ oben sein, das auch Rayleigh- und Compton-Streuung enthält. Für $\delta>0$ ist der Brechungsindex kleiner als 1, sodass Röntgenstrahlen unterhalb eines kleinen streifenden **kritischen Winkels** $\alpha_c$ **Totalreflexion** erfahren:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-Dies folgt aus der Brechungsgeometrie: für einen streifenden Winkel $\alpha$ ist der vertikale Wellenvektor im Festkörper $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, der bei $\alpha = \alpha_c = \sqrt{2\delta}$ null erreicht; darunter kann sich die Welle nicht in das Material ausbreiten und wird vollständig reflektiert. Der Realteil der **Streulängendichte**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, legt $\delta$ fest und ist das Röntgenanalogon der in der Reflektometrie verwendeten Neutronen-SLD. ReciPro gibt $\delta$, $\beta$, $\theta_c$ und die Röntgen-SLD in der Skalartabelle an.
+Dies folgt aus der Brechungsgeometrie: für einen streifenden Winkel $\alpha$ ist der vertikale Wellenvektor im Festkörper $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, der bei $\alpha = \alpha_c = \sqrt{2\delta}$ null erreicht; darunter kann sich die Welle nicht in das Material ausbreiten und wird vollständig reflektiert. Der Ausdruck setzt den verlustfreien Grenzfall $\beta \ll \delta$ voraus: Bei endlichem $\beta$ dringt noch eine evaneszente Welle einige Nanometer tief ein, und die Reflektivität bleibt etwas unter 1. Knapp oberhalb einer Absorptionskante kann $\delta$ sogar negativ werden; dann gibt es keinen kritischen Winkel, und ReciPro gibt auch keinen aus. Der Realteil der **Streulängendichte**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, legt $\delta$ fest und ist das Röntgenanalogon der in der Reflektometrie verwendeten Neutronen-SLD. ReciPro gibt $\delta$, $\beta$, $\alpha_c$ (in der Skalartabelle als **θc** aufgeführt) und die Röntgen-SLD an.
 
 ---
 
@@ -69,7 +69,7 @@ Ein schnelles Elektron in einem Festkörper **streut** (ändert die Richtung) un
 
 ### Elastische Streuung und mittlere freie Weglänge
 
-Der elastische Wirkungsquerschnitt $\sigma_\text{el}$ misst, wie leicht ein einzelnes Atom das Elektron ablenkt. ReciPro verwendet die **NIST-Mott**-Wirkungsquerschnitte (eine Partialwellenlösung der relativistischen Dirac-Gleichung im abgeschirmten atomaren Potential), die etwa über **50 eV – 36.4 keV** gültig sind; außerhalb dieses Bereichs oder für nicht in der Tabelle enthaltene Elemente greift es auf die **abgeschirmte Rutherford**-Näherung zurück. Die beiden müssen an der Grenze nicht perfekt glatt aneinander anschließen. Der totale Wirkungsquerschnitt ist das Winkelintegral des differentiellen,
+Der elastische Wirkungsquerschnitt $\sigma_\text{el}$ misst, wie leicht ein einzelnes Atom das Elektron ablenkt. ReciPro verwendet die **NIST-Mott**-Wirkungsquerschnitte (eine Partialwellenlösung der relativistischen Dirac-Gleichung im abgeschirmten atomaren Potential). Die mitgelieferte Tabelle deckt **50 eV – 36.4 keV** ab (das ist der Umfang von ReciPros eigener Tabellierung, keine Grenze der Mott-Methode selbst); außerhalb dieses Bereichs oder für nicht in der Tabelle enthaltene Elemente greift es auf die **abgeschirmte Rutherford**-Näherung zurück. Die beiden müssen an der Grenze nicht perfekt glatt aneinander anschließen. Der totale Wirkungsquerschnitt ist das Winkelintegral des differentiellen,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ Energie geht hauptsächlich durch elektronische Anregungen (Ionisation, Plasmone
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-wobei hier $s$ die **Weglänge** entlang der Trajektorie ist (die Variable der *|dE/ds|*-Kurve der Registerkarte), nicht die andernorts in diesem Anhang verwendete Streuvariable $\sin\theta/\lambda$. Der Energiegradient $dE/ds$ ist negativ, sodass die Registerkarte $S$ nach oben aufträgt. Bei keV-Energien folgt es konzeptionell der **Bethe**-Form
+wobei hier $s$ die **Weglänge** entlang der Trajektorie ist (die Variable der *|dE/ds|*-Kurve der Registerkarte), nicht die andernorts in diesem Anhang verwendete Streuvariable $\sin\theta/\lambda$. Der Gradient $dE/ds$ selbst ist negativ, sodass die Registerkarte seinen Betrag $S$ nach oben aufträgt. Bei keV-Energien folgt es konzeptionell der **Bethe**-Form
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-mit $J$ der **mittleren Anregungsenergie** des Festkörpers. Diese nichtrelativistische Skizze zeigt nur die Skalierung; ReciPro wertet eine korrigierte/empirische Form (vom Joy–Luo-Typ) aus, die bei niedriger Energie gutartig bleibt. Die **Plasmonenenergie** $E_p$ in der Skalartabelle ist eine verwandte, aber getrennte Charakterisierung derselben elektronischen Anregungen. Die **inelastische mittlere freie Weglänge** (IMFP) ist die entsprechende mittlere Distanz zwischen energieverlustbehafteten Stößen; ReciPro kann sie aus der **TPP-2M**-Vorhersageformel auswerten,
+mit $J$ der **mittleren Anregungsenergie** des Festkörpers. Diese nichtrelativistische Skizze zeigt nur die Skalierung; ReciPro wertet die modifizierte **Jablonski (2008)**-Form aus, die bei niedriger Energie gutartig bleibt (die ältere empirische **Joy–Luo (1989)**-Form ist ebenfalls implementiert). Die **Plasmonenenergie** $E_p$ in der Skalartabelle ist eine verwandte, aber getrennte Charakterisierung derselben elektronischen Anregungen. Die **inelastische mittlere freie Weglänge** (IMFP) ist die entsprechende mittlere Distanz zwischen energieverlustbehafteten Stößen; ReciPro kann sie aus der **TPP-2M**-Vorhersageformel auswerten,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ Dieselben Längenskalen erklären, warum Elektronen ultradünne Proben und dynam
 
 ## Siehe auch
 
-- [Atomare Streufaktoren](scattering-factor.md) — die $F(q)$/$S(q)$-Aufteilung hinter Rayleigh/Compton sowie die Mott-Wirkungsquerschnitte.
+- [Atomare Streufaktoren](scattering-factor.md) — die $F(q)$/$S(q)$-Aufteilung hinter Rayleigh/Compton sowie die Mott–Bethe-Beziehung (ein anderes Modell als die oben verwendeten NIST-Mott-Wirkungsquerschnitte).
 - [Fluoreszenz](fluorescence.md) — die Relaxation, die auf die Röntgen-Photoabsorption folgt.
 - [3. Strahl-Wechselwirkung](../../3-beam-interaction.md) — die Registerkarte *Schwächung & Transport*.
 - [8. Elektronenbahnen](../../8-electron-trajectory.md) · [12. EBSD-Simulation](../../12-ebsd-simulation.md) — wo die Elektronenreichweiten verwendet werden.

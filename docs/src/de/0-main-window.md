@@ -53,13 +53,14 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| Read crystal list (as new list) | Eine Kristalllisten-Datei (*.xml) laden und die aktuelle Liste ersetzen |
-| Read crystal list (and add) | An die aktuelle Liste anhängen |
-| Read initial crystal list | Die Standard-Kristallliste neu laden |
-| Save crystal list | Die aktuelle Kristallliste speichern |
-| Export selected crystal to CIF | Im CIF-Format speichern |
-| Clear crystal list | Alle Kristalle entfernen |
-| Exit | Die Anwendung schließen |
+| Kristallliste laden (aktuelle Liste ersetzen) | Eine Kristalllisten-Datei (`*.xml`) laden und die aktuelle Liste ersetzen |
+| Kristallliste laden (zur aktuellen Liste hinzufügen) | Eine Kristalllisten-Datei laden und an die aktuelle Liste anhängen |
+| Auf anfängliche Kristallliste zurücksetzen | Die mit ReciPro ausgelieferte Kristallliste neu laden |
+| Kristall aus CIF- oder AMC-Datei importieren | Einen einzelnen Kristall aus einer CIF- / AMC-Datei laden |
+| Kristallliste speichern | Die aktuelle Kristallliste speichern |
+| Ausgewähltes Kristall als CIF-Datei exportieren | Den ausgewählten Kristall im CIF-Format speichern |
+| Alle Kristalle leeren | Alle Kristalle aus der Liste entfernen |
+| Beenden | Die Anwendung schließen |
 
 ### Option
 
@@ -259,7 +260,7 @@ Rechtsklick auf einen leeren Bereich des Steuerelements für diese Hauptaktionen
 
 ## Funktionen-Panel {#functions}
 
-Die senkrechte Schaltflächenleiste rechts startet die Analyse- und Simulationsfenster (siehe die Tabelle [Funktionen](#functions) unten).
+Die senkrechte Schaltflächenleiste rechts startet die unten aufgeführten Analyse- und Simulationsfenster.
 
 ![Funktionen-Panel](../assets/cap-de-auto/FormMain.toolStripContainer1.toolStrip1.png)
 

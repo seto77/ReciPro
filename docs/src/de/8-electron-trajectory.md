@@ -1,8 +1,10 @@
 # Elektronenbahnen
 
-Der **Trajektorien-Simulator** berechnet die Elektronenbahnen innerhalb einer Probe mit der **Monte-Carlo-Methode**: Die einfallenden Elektronen erfahren elastische und inelastische Streuung, und die daraus resultierenden Verteilungen der rückgestreuten Elektronen (Richtung, Energie, Eindringtiefe) werden akkumuliert. Diese Verteilungen liefern auch die Winkel-/Energie-/Tiefen-Gewichtung, die von der [12. EBSD-Simulation](12-ebsd-simulation.md) verwendet wird.
+Der **Trajektorien-Simulator (Monte-Carlo-Methode)** berechnet die Elektronenbahnen innerhalb einer Probe mit der **Monte-Carlo-Methode**: Die einfallenden Elektronen erfahren elastische und inelastische Streuung, und die daraus resultierenden Verteilungen der rückgestreuten Elektronen (BSE) — Richtung, Energie beim Austritt, Eindringtiefe und laterale Ausbreitung — werden akkumuliert. Diese Verteilungen liefern auch die Winkel-/Energie-/Tiefen-Gewichtung, die von der [12. EBSD-Simulation](12-ebsd-simulation.md) verwendet wird.
 
 ![Electron Trajectory](../assets/cap-de-auto/FormTrajectory.png)
+
+Das Fenster besteht aus drei Spalten: links die **3-D-Trajektorienansicht**, in der Mitte die **Statistik** und das Stereonetz der **BSE-Richtungsverteilung**, rechts drei **Histogramme**. Zusammensetzung und Dichte der Probe stammen von dem im Hauptfenster ausgewählten Kristall; hier werden nur die Strahlenergie, die Probenkippung und die Anzahl der Trajektorien eingestellt.
 
 ---
 
@@ -23,45 +25,24 @@ Die Trajektorien werden in einer 3-D-OpenGL-Ansicht dargestellt. Sie verwendet d
 
 ## Berechnungsbedingungen
 
-Strahlenergie, Anzahl der einfallenden Elektronen, Probe/Material und weitere Monte-Carlo-Parameter (siehe den Übersichts-Screenshot oben).
+Die Bedienelemente am oberen Fensterrand legen den Lauf fest:
 
-### Strahlenergie
+- **Trajektorien simulieren** : startet den Monte-Carlo-Lauf. Die Statusleiste am unteren Rand meldet die verstrichene Zeit für die Trajektorienberechnung, das Zeichnen der Diagramme und das 3-D-Rendering getrennt.
+- **Number of trajectories** : wie viele einfallende Elektronen verfolgt werden. Mehr Elektronen verringern das statistische Rauschen aller unten beschriebenen Verteilungen; die Laufzeit wächst dabei linear.
+- **Probenkippung** (°) : Kippung der Probenoberfläche um die *X*-Achse. Für senkrechten Einfall bei 0 belassen; mit **−70°** lässt sich die Geometrie des [EBSD-Simulators](12-ebsd-simulation.md) nachbilden, bei der die starke Kippung die Rückstreuausbeute erhöht.
+- **Energy** (keV) / **Wavelength** / **Unit** : die Beschleunigungsspannung des einfallenden Strahls und die damit verknüpfte, relativistisch korrigierte Elektronenwellenlänge. Die Energie legt die kinetische Energie fest, die sowohl vom elastischen (NIST-Mott) als auch vom inelastischen (Bremsvermögen / IMFP) Modell verwendet wird.
 
-Beschleunigungsspannung des einfallenden Elektronenstrahls (keV). Legt die kinetische Energie fest, die sowohl für die elastischen (Mott) als auch für die inelastischen (dielektrische Antwort) Streumodelle verwendet wird.
+Die Streumodelle selbst sind nicht wählbar: Die elastischen Wirkungsquerschnitte stammen aus der mitgelieferten NIST-Mott-Tabelle (außerhalb ihres Gültigkeitsbereichs wird auf die abgeschirmte Rutherford-Formel zurückgegriffen), das Bremsvermögen aus der modifizierten Jablonski-Form (2008). Das tatsächlich verwendete Modell wird in der **Statistik** neben jedem Wert angegeben. Was diese Modelle sind, erläutert [Abschwächung & Transport](appendix/a2-beam-interaction/attenuation-transport.md).
 
-### Anzahl der einfallenden Elektronen
+### 3-D-Trajektorienansicht
 
-Wie viele Elektronen simuliert werden sollen. Mehr Elektronen verringern das statistische Rauschen, erhöhen aber die Laufzeit linear.
+Rote Trajektorien sind in der Probe absorbierte Elektronen, orangefarbene sind solche, die als rückgestreute Elektronen austreten. Die konzentrischen Hilfskreise sind in nm (bzw. µm) beschriftet, und **+X**, **+Y**, **+Z (=beam)** kennzeichnen die Achsen.
 
-### Probe / Material
-
-Zusammensetzung und Dichte der Probe. Standardmäßig wird der aktuell im Hauptfenster ausgewählte Kristall verwendet, dies kann aber für reine Trajektorien-Studien überschrieben werden.
-
-### Probenkippung
-
-Probenkippwinkel. Wird verwendet, wenn die Trajektoriendaten in den [EBSD-Simulator](12-ebsd-simulation.md) einfließen (typischerweise 70° für EBSD).
-
-### Wirkungsquerschnitt-Modell
-
-Das Modell für den elastischen Streu-Wirkungsquerschnitt (Mott / Bethe / NIST). Verschiedene Modelle wägen Geschwindigkeit gegen Genauigkeit bei großen Kippwinkeln oder nahe Absorptionskanten ab.
-
----
-
-## Stereonetz-Optionen
-
-Anzeigeoptionen für die Winkelverteilung, die auf die stereografische Projektion gezeichnet wird (siehe den Übersichts-Screenshot oben).
-
-### Projektionsmethode
-
-**Wulff**-Projektion (winkeltreu) oder **Schmidt**-Projektion (flächentreu). Schmidt wird üblicherweise bevorzugt, wenn statistische Dichten abgelesen werden.
-
-### Hemisphäre
-
-Stellt die obere (rückgestreute) oder untere (transmittierte) Hemisphäre dar.
-
-### Auflösung / Farbskala
-
-Klassenbreite des Winkelhistogramms und die für die Dichteanzeige verwendete Farbskala.
+- **Von der Z-Achse (=Strahlrichtung)** / **Von der X-Achse (Rotationsachse)** / **Flächennormale** : richten die Ansicht auf die Standardrichtungen aus.
+- **Anzahl der zu zeichnenden Trajektorien** : wie viele der berechneten Trajektorien dargestellt werden (alle 100.000 zu zeichnen wäre unübersichtlich und langsam).
+- **Achsen zeichnen** / **Hilfskreise zeichnen** : die Achsenpfeile und der Entfernungsmaßstab.
+- **In der Probe absorbierte Trajektorien zeichnen** : auch die Elektronen einbeziehen, die nie austreten.
+- **Pfad nach dem Austritt zeichnen** : den Weg eines rückgestreuten Elektrons auch nach dem Verlassen der Oberfläche weiterzeichnen.
 
 ---
 
@@ -69,36 +50,45 @@ Klassenbreite des Winkelhistogramms und die für die Dichteanzeige verwendete Fa
 
 ![Statistik](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Zusammenfassung des Laufs.
+Werte für die aktuelle Strahlenergie; das Modell, das den jeweiligen Wert geliefert hat, ist in Klammern angegeben.
 
-- **Rückstreuausbeute** — Anteil der einfallenden Elektronen, die durch die Eintrittsfläche austreten.
-- **Mittlere freie Weglänge** — durchschnittliche Distanz zwischen Streuereignissen.
-- **Mittlere Eindringtiefe** — durchschnittliche maximale Tiefe, die ein Elektron erreicht, bevor es entweder austritt oder absorbiert wird.
-- **Verstrichene Zeit / Durchsatz** — Rechenaufwand des Laufs in Echtzeit.
+- **Streuquerschnitt (σ_E)** (nm²) — gesamter elastischer Wirkungsquerschnitt pro Atom.
+- **Elastische mittlere freie Weglänge (λ)** (nm) — mittlere Strecke zwischen elastischen Streuereignissen.
+- **Bremsvermögen (dE/ds)** (eV/nm, negativ) — Energieverlust pro Weglängeneinheit.
+- **Rückstreukoeffizient, η** (%) — der Anteil der einfallenden Elektronen, die die Probe wieder durch die Eintrittsfläche verlassen. Auf dieser Größe beruht der BSE-Bildkontrast.
+- **Mittlere BSE-Energie** (keV) — mittlere Energie der rückgestreuten Elektronen im Moment ihres Austritts.
 
 ---
 
 ## BSE-Richtungsverteilung
 
-![BSE-Richtungsverteilung (das Stereonetz-Zentrum entspricht der Oberflächennormalen-Richtung)](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
+![BSE-Richtungsverteilung](../assets/cap-de-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
-Winkelverteilung der rückgestreuten Elektronen (das Zentrum des Stereonetzes entspricht der Richtung der Oberflächennormalen). Die gelbe/orange Umrandung (sofern vorhanden) markiert den vom EBSD-Detektor erfassten Bereich.
+Winkelverteilung der rückgestreuten Elektronen, dargestellt in einem Stereonetz, dessen Zentrum der Richtung der Oberflächennormalen entspricht.
+
+- **Häufigkeit** / **Mittlere Energie** / **Energie-Standardabweichung** : die farbkodierte Größe — wie viele Elektronen in die jeweilige Richtung austreten, ihre mittlere Energie oder die Streuung dieser Energie.
+- **Achsen zeichnen** : blendet die Richtungen +X / ±Y / ±Z ein.
+- **Min** / **Max**, **Resolution**, **Color** : die Grenzen der Farbskala, die Winkel-Klassenbreite des Histogramms und die Farbpalette.
 
 ---
 
-## Profile
+## Histogramme
 
-![Profiles](../assets/cap-de-auto/FormTrajectory.flowLayoutPanelProfiles.png)
+![Histogramme](../assets/cap-de-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Tiefen- und Energieprofile der simulierten Elektronen.
+Drei Verteilungen der rückgestreuten Elektronen, jeweils auf die Fläche 1 normiert.
 
-### Tiefenprofil
+### BSE-Energieverteilung beim Austritt
 
-Histogramm der finalen Austrittstiefe (nm) der rückgestreuten Elektronen. Wird vom EBSD-Simulator verwendet, um die Tiefenintegration des Master-Pattern zu gewichten.
+Histogramm der **Energie, die die rückgestreuten Elektronen beim Verlassen der Probe noch besitzen** (keV) — nicht ihres Energieverlusts. Der EBSD-Simulator verwendet es, um die Energieintegration des Master-Musters zu gewichten.
 
-### Energieprofil
+### Maximale oberflächenparallele BSE-Distanz
 
-Histogramm des Energieverlusts ΔE (keV) der rückgestreuten Elektronen. Wird vom EBSD-Simulator verwendet, um die Energieintegration zu gewichten.
+Histogramm der Strecke, die jedes rückgestreute Elektron vor dem Austritt **lateral** (parallel zur Oberfläche, nm) zurückgelegt hat. Sie entspricht der lateralen Ausdehnung des Wechselwirkungsvolumens und damit der intrinsischen Grenze der Ortsauflösung einer BSE- oder EBSD-Messung.
+
+### Maximale BSE-Eindringtiefe
+
+Histogramm der größten Tiefe **senkrecht zur Oberfläche** (nm), die jedes rückgestreute Elektron vor dem Austritt erreicht hat. Der EBSD-Simulator verwendet es, um die Tiefenintegration des Master-Musters zu gewichten.
 
 ---
 
@@ -106,6 +96,7 @@ Histogramm des Energieverlusts ΔE (keV) der rückgestreuten Elektronen. Wird vo
 
 - [EBSD-Simulation](12-ebsd-simulation.md)
 - [EBSD-Berechnung](appendix/a3-bloch-wave/ebsd.md)
+- [Abschwächung & Transport](appendix/a2-beam-interaction/attenuation-transport.md) — die hier verwendeten elastischen Wirkungsquerschnitte, das Bremsvermögen und die Reichweiten.
 - [Dynamische Beugung (Bloch-Welle)](appendix/a3-bloch-wave/index.md)
 - [HRTEM/STEM-Simulator](9-hrtem-stem-simulator/index.md)
 - [Beugungssimulator](7-diffraction-simulator/index.md)

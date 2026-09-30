@@ -150,8 +150,8 @@ Achsen, die schräg oder innerhalb der Zeichenebene verlaufen (das kommt nur bei
 
 Ein gebrochenes Höhenlabel (z. B. `1/4`) neben einem Symbol gibt dessen Koordinate entlang der Projektionsachse an, wann immer das Element nicht in der Ebene bei Höhe 0 liegt.
 
-!!! note "Kubische F-Gitter-Gruppen: nur ein Oktant wird gezeichnet"
-    Für die $F$-zentrierten kubischen Raumgruppen zeichnet ReciPro nur den oberen linken Quadranten eines Achtels der Zelle (das Diagramm wäre sonst zu dicht, um lesbar zu sein); die volle Zelle wiederholt ihn durch die Zentrierungstranslationen und durch die gezeichneten Symmetrieelemente selbst. Dieselben Symmetrieelemente lassen sich auch direkt dem 3D-Modell in der [Strukturansicht](../../5-structure-viewer.md) überlagern.
+!!! note "Kubische F-Gitter-Gruppen: nur ein Teil der Zelle wird gezeichnet"
+    Für die $F$-zentrierten kubischen Raumgruppen zeichnet ReciPro nur das obere linke Viertel der projizierten Zelle (das Diagramm wäre sonst zu dicht, um lesbar zu sein); der Rest der Zelle wiederholt es durch die Zentrierungstranslationen und durch die gezeichneten Symmetrieelemente selbst. Dieselben Symmetrieelemente lassen sich auch direkt dem 3D-Modell in der [Strukturansicht](../../5-structure-viewer.md) überlagern.
 
 ---
 
@@ -166,7 +166,7 @@ Das rechte Diagramm trägt die allgemeinen äquivalenten Lagen auf — die Bahn 
 - (Nur bei kubischen Raumgruppen) verbinden dünne Hilfslinien drei Kreise, die durch eine dreizählige Achse entlang der Raumdiagonale $\langle111\rangle$ verknüpft sind.
 - Im Allgemeinen entspricht ein Kreis (oder eine Hälfte eines geteilten Kreises) einer äquivalenten Lage, sodass die Zahl der Kreise mit der **Multiplizität** der allgemeinen Lage auf der Registerkarte [Wyckoff-Lagen](../../2-symmetry-information.md) übereinstimmt — eine schnelle Plausibilitätsprüfung beim Lesen beider Diagramme. Lässt die gewählte Projektionsachse mehrere Kopien gleicher Händigkeit exakt zusammenfallen, werden sie an einer Stelle übereinandergelegt (nur durch getrennte Höhenlabels unterschieden) statt als getrennte Kreise nebeneinander gezeichnet, sodass die sichtbare Kreiszahl dann kleiner als die Multiplizität sein kann.
 
-Die `numericBox`-Felder unter **Richtung** erlauben es, den Testpunkt $(x,y,z)$ von der Standardposition der Raumgruppe für diese Punktgruppe wegzubewegen — gelegentlich nützlich, um ein Diagramm zu entzerren, in dem sonst mehrere Kreise zusammenfielen.
+Die Felder $x$ / $y$ / $z$ unter **Richtung** erlauben es, den Testpunkt $(x,y,z)$ von der Standardposition der Raumgruppe für diese Punktgruppe wegzubewegen — gelegentlich nützlich, um ein Diagramm zu entzerren, in dem sonst mehrere Kreise zusammenfielen.
 
 ---
 

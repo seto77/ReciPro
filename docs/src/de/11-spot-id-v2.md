@@ -54,14 +54,16 @@ Die Kameralänge (mm) und die Detektor-Pixelgröße (mm oder nm⁻¹). Wenn eine
 
 ![Reflexinformation](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Detect & Fit Spots**: Automatische Reflexerkennung mittels lokaler Maxima und Untergrundabzug.
-- **Number**: Die maximale Anzahl der zu erkennenden Reflexe.
-- **Nearest neighbour**: Der minimale Abstand (px), der zwischen erkannten Reflexen zulässig ist. Peaks, die enger beieinander liegen, werden zusammengeführt, um eine Doppelerkennung desselben Reflexes zu verhindern.
-- **Fitting range (radius)**: Der Radius (px) des kreisförmigen Bereichs, der zum Fitten des Peaks jedes Reflexes verwendet wird. Pixel innerhalb dieses Kreises werden mit einer Pseudo-Voigt-Funktion gefittet.
-- **Apply to All**: Setzt den Fit-Radius jedes Reflexes auf den aktuellen Wert von **Fitting range (radius)**.
-- **Delete spot / Clear spots**: Einzelne oder alle erkannten Reflexe entfernen.
-- **Copy to clipboard**: Reflexpositionen und -intensitäten in die Zwischenablage kopieren.
-- **Details of the spot**: Wenn aktiviert, öffnet sich ein Fenster mit detaillierten Informationen zum aktuell ausgewählten Reflex.
+- **Reflexe finden & anpassen**: Automatische Reflexerkennung mittels lokaler Maxima und Untergrundabzug.
+- **Anzahl**: Die maximale Anzahl der zu erkennenden Reflexe.
+- **Nächster Nachbar**: Der minimale Abstand (px), der zwischen erkannten Reflexen zulässig ist. Peaks, die enger beieinander liegen, werden zusammengeführt, um eine Doppelerkennung desselben Reflexes zu verhindern.
+- **Anpassungsradius**: Der Radius (px) des kreisförmigen Bereichs, der zum Fitten des Peaks jedes Reflexes verwendet wird. Pixel innerhalb dieses Kreises werden mit einer Pseudo-Voigt-Funktion gefittet.
+- **Auf alle anwenden**: Setzt den Fit-Radius jedes Reflexes auf den aktuellen Wert von **Anpassungsradius**.
+- **Löschen / Alle leeren**: Den ausgewählten Reflex oder alle erkannten Reflexe entfernen.
+- **Kopieren**: Reflexpositionen und -intensitäten in die Zwischenablage kopieren.
+- **Globale Anp.**: Führt einen globalen Fit aller Reflexpositionen auf einmal durch (experimentell).
+- **Donut**: Wendet einen donutförmigen Untergrundabzug an (experimentell); das Feld daneben legt die Breite (px) des Rings um jeden Reflex fest, dessen Mittelwert als lokaler Untergrund abgezogen wird.
+- **Reflex-Details**: Wenn aktiviert, öffnet sich ein Fenster mit detaillierten Informationen zum aktuell ausgewählten Reflex.
 
 ![Details of the spot](../assets/cap-de-auto/FormSpotIDv2Details.png)
 
@@ -71,10 +73,10 @@ Die Kameralänge (mm) und die Detektor-Pixelgröße (mm oder nm⁻¹). Wenn eine
 
 ![Index](../assets/cap-de-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
-- **Identify Spots**: Führt den Indizierungsalgorithmus aus, um den am besten passenden Kristall und die Zonenachse zu finden.
-- **Acceptable error**: Legt die akzeptable Abweichung im Netzebenenabstand und Winkel für eine Übereinstimmung fest.
-- **Ignore prohibited reflections**: Wenn aktiviert, werden durch Schraubenachsen und Gleitspiegelebenen verbotene Reflexe bei der Suche nach der Zonenachse als nicht zwingend erfüllt behandelt.
-- **Single Grain / Multiple Grains**: Suche nach einer einzelnen Orientierung (Einkristall) oder nach mehreren Orientierungen (ein polykristalliner / Mehrkorn-Bereich). Für mehrere Körner legt **Max. num. of grains** die Obergrenze für die Anzahl der zu suchenden Körner fest.
+- **Reflexe identifizieren**: Führt den Indizierungsalgorithmus aus, um den am besten passenden Kristall und die Zonenachse zu finden.
+- **Zulässiger Fehler**: Legt die akzeptable Abweichung im Netzebenenabstand und Winkel für eine Übereinstimmung fest.
+- **Verbotene Reflexe ignorieren**: Wenn aktiviert, werden durch Schraubenachsen und Gleitspiegelebenen verbotene Reflexe bei der Suche nach der Zonenachse als nicht zwingend erfüllt behandelt.
+- **Einzelkorn / Mehrere Körner**: Suche nach einer einzelnen Orientierung (Einkristall) oder nach mehreren Orientierungen (ein polykristalliner / Mehrkorn-Bereich). Für mehrere Körner legt **Max. num. of grains** die Obergrenze für die Anzahl der zu suchenden Körner fest.
 - **Results**: Die besten Übereinstimmungen werden mit Kristallname, Zonenachse [uvw] und den einzelnen Reflexindizes (hkl) angezeigt.
 
 ---

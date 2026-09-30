@@ -165,7 +165,7 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 
 - **Bild mit BSE-Winkel-/Energieverteilungen anzeigen** : ist diese Option aktiviert, wird das Muster durch Gewichtung mit der BSE-Verteilung (Energie, Tiefe, Richtung) statt einer einzelnen Scheibe zusammengesetzt.
 - **Energy / Depth** : ist das Obige deaktiviert, wählt dies die anzuzeigende Energie-/Tiefenscheibe.
-- **Helligkeit** (**Min** / **Max**), **Polarität**, **Farbe** : Helligkeitsbereich, Polarität und Farbskala.
+- **Helligkeit** (**Min** / **Max**), **Kontrast**, **Polarität**, **Farbe** : Schwarz- und Weißpunkt des simulierten Musters in Prozent des Anzeigebereichs (lineare Schieberegler), die Breite dieses Bereichs, seine Polarität und die Farbskala. Kontrast 0 setzt den Anzeigebereich gleich dem Intensitätsbereich des Musters selbst; -1 verbreitert ihn auf das Zehnfache (zehnmal schwächerer Kontrast) und +1 verengt ihn auf ein Zehntel, jeweils bei festgehaltener Mitte.
 - **Untergrund glätten** (**FWHM**, px; Standard aus, 100 px) : zieht vom simulierten Muster eine gaußsch verwischte Kopie ab und entfernt so die langsam veränderliche Helligkeitsverteilung, damit Bänder und Zonenachsen mit einem untergrundkorrigierten Messmuster verglichen werden können. Die Halbwertsbreite ist in Detektorpixeln angegeben und hängt nicht vom Zoom ab. Wirkt auf die Anzeige und den PNG/TIFF-Export; der CSV-Export behält die Rohwerte.
 
 ### Experimentelles Bild
@@ -174,7 +174,9 @@ Das zentrale Feld zeigt das EBSD-(Kikuchi-Band-)Muster für die aktuelle Kristal
 
 Ziehen Sie eine EBSD-Bilddatei (TIFF, PNG, BMP oder JPEG; 16-Bit-TIFF wird mit voller Tiefe gelesen) an eine beliebige Stelle des Fensters, um sie als experimentelles Muster zu laden. Sie wird über dem Detektorbereich gezeichnet — über dem simulierten Muster und unter den Kikuchi-Linien-Overlays — sodass sich Simulation und Messung direkt vergleichen lassen. Beim Laden werden außerdem **Width** und **Height** des Detektors auf die Bildgröße gesetzt.
 
-- **Helligkeit** (**Min** / **Max**) : Schwarz- und Weißpunkt des überlagerten Bildes als Anteil seines eigenen Intensitätsbereichs (logarithmische Schieberegler). Sie wirken nur auf das experimentelle Bild, nicht auf das simulierte Muster.
+- **Helligkeit** (**Min** / **Max**), **Kontrast** : Schwarz- und Weißpunkt des überlagerten Bildes in Prozent seines Anzeigebereichs sowie die Breite dieses Bereichs (lineare Schieberegler, gleiche Konvention wie beim simulierten Muster). Sie wirken nur auf das experimentelle Bild.
+- **Untergrund glätten** (**FWHM**, px; Standard aus, 100 px) : zieht vom experimentellen Bild eine gaußsch verwischte Kopie ab und entfernt so seine langsam veränderliche Helligkeitsverteilung. Die Intensitätsregler wirken dann auf die geglätteten Werte.
+- **An Bild anpassen** : setzt **Min**, **Max** und **Kontrast** des simulierten Musters so, dass dessen 2-%- und 98-%-Intensitätsniveaus im selben Grauton erscheinen wie die des experimentellen Bildes. Der Abgleich verwendet Perzentile, hängt daher nicht von der Orientierungslösung ab und ist unempfindlich gegenüber einem Sockel oder einigen wenigen hellen Zonenachsen-Pixeln. Polarität, Farbe und beide Einstellungen **Untergrund glätten** bleiben unverändert; glätten Sie daher vor dem Klick entweder beide Seiten oder keine.
 - **Deckkraft** : Deckkraft des überlagerten Bildes, von 0 (unsichtbar) bis 100 % (undurchsichtig). Verringern Sie sie, um das darunterliegende simulierte Muster zu sehen.
 
 Für die Suche nach der Orientierung, die das Bild erklärt, stehen zwei Verfahren zur Verfügung.
