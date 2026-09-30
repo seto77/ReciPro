@@ -22,6 +22,7 @@
 | Simular padrões EBSD | [Simulação EBSD](12-ebsd-simulation.md) | [Trajetórias eletrônicas](8-electron-trajectory.md), [Apêndice A3. Cálculo EBSD](appendix/a3-bloch-wave/ebsd.md) |
 | Indexar reflexões de difração experimentais | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Simulador de difração](7-diffraction-simulator/index.md) |
 | Compreender as equações da difração dinâmica | [Apêndice A3. Método de ondas de Bloch](appendix/a3-bloch-wave/index.md) | [Cálculo dinâmico](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| Compreender os símbolos de grupos espaciais e as relações grupo–subgrupo | [2. Informação de simetria](2-symmetry-information.md) | [Apêndice A4. Simetria e grupos espaciais](appendix/a4-symmetry-space-groups/index.md), [Símbolos de grupos espaciais e diagramas](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [Relações grupo–subgrupo](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## Recursos
 * **Full GUI** : Todas as operações são realizadas por meio de uma interface gráfica. A maioria das operações de entrada/saída de arquivos suporta arrastar e soltar.

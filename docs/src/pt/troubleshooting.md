@@ -29,7 +29,7 @@ A janela será trazida para a sua tela principal. Observe que **Alternar para**,
 **Solução** (tente nesta ordem):
 
 1. **Desabilitar o OpenGL**: mantenha a tecla **Ctrl** pressionada ao iniciar o ReciPro para iniciar com o OpenGL desabilitado. As versões recentes (v4.925 e posteriores) reforçam a inicialização do OpenGL para que o aplicativo seja iniciado mesmo quando o OpenGL falha — nesse caso os recursos 3D ficam desabilitados, mas o restante do aplicativo funciona.
-2. **Redefinir as configurações**: no editor de registro, exclua a chave `HKEY_CURRENT_USER\Software\Crystallography\ReciPro` e reinicie. (Equivalente a **Option → Reset registry**.)
+2. **Redefinir as configurações**: no editor de registro, exclua a chave `HKEY_CURRENT_USER\Software\Crystallography\ReciPro` e reinicie. (Equivalente a **Opções ▸ Redefinir configurações do registro ao sair**.)
 3. **Reinstalação limpa**: desinstale o ReciPro, exclua as seguintes pastas se existirem (substitua `<user>` pelo nome da sua conta) e reinstale:
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ Se nada disso ajudar, a causa pode estar no próprio ambiente do sistema operaci
 
 **Solução**:
 
-1. Vá em **Option → Disable OpenGL (needs restart)** (ou mantenha **Ctrl** pressionado ao iniciar).
+1. Vá em **Opções ▸ Desativar toda a renderização OpenGL (requer reinício)** (ou mantenha **Ctrl** pressionado ao iniciar).
 2. Reinicie o ReciPro.
 3. O Visualizador de estrutura e alguns recursos 3D passarão a usar renderização por software.
 
@@ -59,7 +59,7 @@ Se nada disso ajudar, a causa pode estar no próprio ambiente do sistema operaci
 
 ### Sintoma: Qualidade de renderização ruim
 
-**Solução**: Atualize os drivers da sua GPU. Recomenda-se uma GPU externa (dedicada) com suporte a OpenGL 1.5.
+**Solução**: Atualize os drivers da sua GPU. O mínimo é OpenGL 1.3; recomenda-se uma GPU dedicada com suporte a OpenGL 4.3 (consulte [Requisitos do sistema](index.md)).
 
 ---
 
@@ -130,8 +130,8 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 **Solução**:
 
-- **Clique com o botão esquerdo** na área de desenho principal para reduzir o zoom.
-- Verifique a energia da onda incidente na aba **Wave** (canto superior esquerdo): raios X ≈ 1–100 keV, elétrons ≈ 10–1000 keV são adequados.
+- **Clique com o botão direito** na área de desenho principal para reduzir o zoom (essas vistas não têm zoom pela roda do mouse — consulte [21. Atalhos de teclado e mouse](21-shortcuts.md)).
+- Verifique a energia da onda incidente no painel **Fonte de ondas** à direita: raios X ≈ 1–100 keV, elétrons ≈ 10–1000 keV são adequados.
 
 ---
 
@@ -161,7 +161,7 @@ Por exemplo, o botão **Peak Identification** no Spot ID v2 está oculto, ou a p
 
 Se as configurações ficarem corrompidas:
 
-1. **Option → Reset registry (after restart)**
+1. **Opções ▸ Redefinir configurações do registro ao sair (efetivo após reiniciar)**
 2. Reinicie o ReciPro — posições das janelas, comprimento de onda, comprimento de câmera etc. serão redefinidos para os valores padrão
 
 ---

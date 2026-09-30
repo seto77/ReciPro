@@ -55,11 +55,11 @@ O índice de refração de raios X de um sólido é **ligeiramente menor que 1**
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-onde $n_i$ é a densidade numérica do elemento $i$ e $r_e$ o raio clássico do elétron. Aqui $\mu_\text{abs}$ é a parte absortiva da atenuação (vinculada a $f''$); ela não precisa ser igual ao $\mu$ total acima, que também contém o espalhamento Rayleigh e Compton. Como $n<1$, os raios X sofrem **reflexão externa total** abaixo de um pequeno **ângulo crítico** rasante
+onde $n_i$ é a densidade numérica do elemento $i$ e $r_e$ o raio clássico do elétron. Aqui $\mu_\text{abs}$ é a parte absortiva da atenuação (vinculada a $f''$); ela não precisa ser igual ao $\mu$ total acima, que também contém o espalhamento Rayleigh e Compton. Quando $\delta>0$ o índice de refração é menor que 1, de modo que os raios X sofrem **reflexão externa total** abaixo de um pequeno **ângulo crítico** rasante $\alpha_c$:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-Isto decorre da geometria de refração: para um ângulo rasante $\alpha$, o vetor de onda vertical dentro do sólido é $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, que atinge zero em $\alpha = \alpha_c = \sqrt{2\delta}$; abaixo disso a onda não consegue se propagar para dentro do material e é totalmente refletida. A parte real da **densidade de comprimento de espalhamento**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fixa $\delta$ e é o análogo de raios X da SLD de nêutrons usada em refletometria. O ReciPro reporta $\delta$, $\beta$, $\theta_c$ e a SLD de raios X na tabela escalar.
+Isto decorre da geometria de refração: para um ângulo rasante $\alpha$, o vetor de onda vertical dentro do sólido é $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, que atinge zero em $\alpha = \alpha_c = \sqrt{2\delta}$; abaixo disso a onda não consegue se propagar para dentro do material e é totalmente refletida. A expressão pressupõe o limite sem perdas $\beta \ll \delta$: com um $\beta$ finito, uma onda evanescente ainda penetra alguns nanômetros e a refletividade fica ligeiramente abaixo de 1. Logo acima de uma borda de absorção, $\delta$ pode até se tornar negativo; nesse caso não há ângulo crítico e o ReciPro não reporta nenhum. A parte real da **densidade de comprimento de espalhamento**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fixa $\delta$ e é o análogo de raios X da SLD de nêutrons usada em refletometria. O ReciPro reporta $\delta$, $\beta$, $\alpha_c$ (listado como **θc** na tabela escalar) e a SLD de raios X.
 
 ---
 
@@ -69,7 +69,7 @@ Um elétron rápido em um sólido tanto **espalha** (mudando de direção) quant
 
 ### Espalhamento elástico e livre caminho médio
 
-A seção de choque elástica $\sigma_\text{el}$ mede com que facilidade um único átomo desvia o elétron. O ReciPro usa as seções de choque **NIST Mott** (uma solução por ondas parciais da equação relativística de Dirac no potencial atômico blindado), válidas aproximadamente no intervalo **50 eV – 36.4 keV**; fora desse intervalo, ou para elementos não presentes na tabela, ele recorre à aproximação de **Rutherford blindado**. As duas não precisam se conectar de forma perfeitamente suave na fronteira. A seção de choque total é a integral angular da diferencial,
+A seção de choque elástica $\sigma_\text{el}$ mede com que facilidade um único átomo desvia o elétron. O ReciPro usa as seções de choque **NIST Mott** (uma solução por ondas parciais da equação relativística de Dirac no potencial atômico blindado). A tabela incluída cobre **50 eV – 36.4 keV** (essa é a extensão da tabulação própria do ReciPro, não um limite do método de Mott em si); fora desse intervalo, ou para elementos não presentes na tabela, ele recorre à aproximação de **Rutherford blindado**. As duas não precisam se conectar de forma perfeitamente suave na fronteira. A seção de choque total é a integral angular da diferencial,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ A energia é perdida principalmente em excitações eletrônicas (ionização, p
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-onde aqui $s$ é o **comprimento do caminho** ao longo da trajetória (a variável da curva *|dE/ds|* da aba), não a variável de espalhamento $\sin\theta/\lambda$ usada em outras partes deste apêndice. O gradiente de energia $dE/ds$ é negativo, de modo que a aba traça $S$ para cima. Em energias de keV, ele segue, conceitualmente, a forma de **Bethe**
+onde aqui $s$ é o **comprimento do caminho** ao longo da trajetória (a variável da curva *|dE/ds|* da aba), não a variável de espalhamento $\sin\theta/\lambda$ usada em outras partes deste apêndice. O próprio gradiente $dE/ds$ é negativo, de modo que a aba traça seu módulo $S$ para cima. Em energias de keV, ele segue, conceitualmente, a forma de **Bethe**
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-com $J$ a **energia média de excitação** do sólido. Este esboço não relativístico mostra apenas o escalonamento; o ReciPro avalia uma forma corrigida/empírica (do tipo Joy–Luo) que permanece bem-comportada em baixa energia. A **energia de plasmon** $E_p$ na tabela escalar é uma caracterização relacionada, mas distinta, das mesmas excitações eletrônicas. O **livre caminho médio inelástico** (IMFP) é a distância média correspondente entre colisões com perda de energia; o ReciPro pode avaliá-la a partir da fórmula preditiva **TPP-2M**,
+com $J$ a **energia média de excitação** do sólido. Este esboço não relativístico mostra apenas o escalonamento; o ReciPro avalia a forma modificada de **Jablonski (2008)**, que permanece bem-comportada em baixa energia (a forma empírica mais antiga de **Joy–Luo (1989)** também está implementada). A **energia de plasmon** $E_p$ na tabela escalar é uma caracterização relacionada, mas distinta, das mesmas excitações eletrônicas. O **livre caminho médio inelástico** (IMFP) é a distância média correspondente entre colisões com perda de energia; o ReciPro pode avaliá-la a partir da fórmula preditiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
