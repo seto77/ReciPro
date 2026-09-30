@@ -53,13 +53,14 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 
 | 메뉴 항목 | 설명 |
 |-----------|-------------|
-| Read crystal list (as new list) | 결정 목록 파일(*.xml)을 불러오고 현재 목록을 대체 |
-| Read crystal list (and add) | 현재 목록에 추가 |
-| Read initial crystal list | 기본 결정 목록 다시 불러오기 |
-| Save crystal list | 현재 결정 목록 저장 |
-| Export selected crystal to CIF | CIF 형식으로 저장 |
-| Clear crystal list | 모든 결정 제거 |
-| Exit | 응용 프로그램 닫기 |
+| 결정 목록 불러오기 (현재 목록 교체) | 결정 목록 파일(`*.xml`)을 불러오고 현재 목록을 대체 |
+| 결정 목록 불러오기 (현재 목록에 추가) | 결정 목록 파일을 불러와 현재 목록에 추가 |
+| Reset to initial crystal list | ReciPro에 기본 포함된 결정 목록 다시 불러오기 |
+| CIF 또는 AMC 파일에서 결정 가져오기 | CIF / AMC 파일에서 결정 하나를 불러오기 |
+| 결정 목록 저장 | 현재 결정 목록 저장 |
+| CIF로 내보내기 | 선택한 결정을 CIF 형식으로 저장 |
+| Clear all crystals | 목록에서 모든 결정 제거 |
+| 종료 | 응용 프로그램 닫기 |
 
 ### Option
 
@@ -83,13 +84,13 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 
 | 메뉴 항목 | 설명 |
 |-----------|-------------|
-| Program updates | ReciPro의 새 버전이 있는지 확인하고 설치 |
-| Hint | 사용 힌트 표시 (사용 중단됨) |
-| Version history | 버전 기록 대화 상자 열기 |
-| License | MIT 라이선스 표시 |
-| GitHub page | 브라우저에서 ReciPro 저장소 열기 |
-| Report bugs, requests, or comments | GitHub Issues 페이지 열기 |
-| Help (Web) | UI 언어와 일치하는 페이지로 GitHub Pages의 온라인 매뉴얼 열기. |
+| 업데이트 확인 | ReciPro의 새 버전이 있는지 확인하고 설치 |
+| 힌트 | 사용 힌트 표시 (사용 중단됨) |
+| 버전 기록 | 버전 기록 대화 상자 열기 |
+| 라이선스 | MIT 라이선스 표시 |
+| GitHub 저장소 | 브라우저에서 ReciPro 저장소 열기 |
+| 버그, 요청 또는 의견 보고 | GitHub Issues 페이지 열기 |
+| 도움말 (웹) | UI 언어와 일치하는 페이지로 GitHub Pages의 온라인 매뉴얼 열기. |
 
 UI 언어는 별도의 **언어** 메뉴에서 전환합니다 (재시작 필요).
 
@@ -259,7 +260,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 ## 기능 패널 {#functions}
 
-오른쪽의 세로 버튼 막대는 분석 및 시뮬레이션 창을 실행합니다 (아래의 [기능](#functions) 표 참조).
+오른쪽의 세로 버튼 막대는 아래 표에 나열된 분석 및 시뮬레이션 창을 실행합니다.
 
 ![기능 패널](../assets/cap-ko-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
