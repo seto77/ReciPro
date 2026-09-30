@@ -20,8 +20,11 @@
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+где $\gamma_j$ — собственные значения блоховских волн [динамического ядра](../appendix/a3-bloch-wave/calculation.md), а $\alpha_j$ — их амплитуды возбуждения; в вырожденном пределе $\lambda \to 0$ имеем $F_{jj'}(t) \to t$.
 
 Матрица ионизации $\mu$ зависит только от разности двух рефлексов, $G = \mathbf{g}_h - \mathbf{g}_g$.
 

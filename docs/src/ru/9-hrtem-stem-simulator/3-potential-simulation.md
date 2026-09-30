@@ -20,9 +20,9 @@
 
 ![Условия ПЭМ](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — ускоряющее напряжение. Оно задаёт длину волны электрона и используется для вычисления коэффициентов Фурье $U_g$ потенциала.
+- **Уск. напряжение (kV)** — ускоряющее напряжение. Оно задаёт длину волны электрона и используется для вычисления коэффициентов Фурье $U_g$ потенциала.
 
-> **Defocus, Cs, Cc, β, ΔE и PCTF в режиме потенциала неактивны** (изображающая оптика не применяется) и отображаются серым.
+> **Defocus, Cs, Cc, β, ΔV и PCTF в режиме потенциала неактивны** (изображающая оптика не применяется) и отображаются серым.
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ и $U'_g$ можно отображать одновременно (для
 
 ---
 
-## Дифрагированные волны
+## Волны
 
-![Дифрагированные волны](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Волны](../../assets/cap-ru-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — максимальное число блоховских волн (коэффициентов Фурье), включаемых в фурье-синтез потенциала (по умолчанию 80). Большие значения включают более высокие пространственные частоты и воспроизводят более тонкие детали потенциала.
 
