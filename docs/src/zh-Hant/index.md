@@ -22,6 +22,7 @@
 | 模擬 EBSD 圖樣 | [EBSD 模擬](12-ebsd-simulation.md) | [電子軌跡](8-electron-trajectory.md)、[附錄 A3. EBSD 計算](appendix/a3-bloch-wave/ebsd.md) |
 | 標定實驗繞射斑點 | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [繞射模擬器](7-diffraction-simulator/index.md) |
 | 理解動力學繞射方程式 | [附錄 A3. 布洛赫波法](appendix/a3-bloch-wave/index.md) | [動力學計算](appendix/a3-bloch-wave/calculation.md)、[CBED](appendix/a3-bloch-wave/cbed.md)、[STEM](appendix/a3-bloch-wave/stem.md)、[EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| 理解空間群符號與群–子群關係 | [2. 對稱性資訊](2-symmetry-information.md) | [附錄 A4. 對稱性與空間群](appendix/a4-symmetry-space-groups/index.md)、[空間群符號與對稱性示意圖](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)、[群與子群的關係](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## 功能
 * **Full GUI** : 所有操作均透過圖形介面完成。大多數檔案輸入/輸出支援拖放。

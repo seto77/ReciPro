@@ -53,13 +53,14 @@
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| Read crystal list (as new list) | 載入晶體清單檔案（*.xml）並取代目前的清單 |
-| Read crystal list (and add) | 附加至目前的清單 |
-| Read initial crystal list | 重新載入預設的晶體清單 |
-| Save crystal list | 儲存目前的晶體清單 |
-| Export selected crystal to CIF | 以 CIF 格式儲存 |
-| Clear crystal list | 移除所有晶體 |
-| Exit | 關閉應用程式 |
+| 載入晶體清單（取代目前清單） | 載入晶體清單檔案（`*.xml`）並取代目前的清單 |
+| 載入晶體清單（加入目前清單） | 載入晶體清單檔案並附加至目前的清單 |
+| 重設為初始晶體清單 | 重新載入 ReciPro 隨附的晶體清單 |
+| 從 CIF 或 AMC 檔案匯入晶體 | 從 CIF / AMC 檔案載入單一晶體 |
+| 儲存晶體清單 | 儲存目前的晶體清單 |
+| 將選取的晶體匯出為 CIF 檔案 | 以 CIF 格式儲存所選的晶體 |
+| 清除所有晶體 | 從清單中移除所有晶體 |
+| 結束 | 關閉應用程式 |
 
 ### Option
 
@@ -83,19 +84,19 @@
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| Program updates | 檢查是否有新版 ReciPro 並安裝 |
-| Hint | 顯示使用提示（已淘汰） |
-| Version history | 開啟版本歷史對話方塊 |
-| License | 顯示 MIT 授權 |
-| GitHub page | 在瀏覽器中開啟 ReciPro 儲存庫 |
-| Report bugs, requests, or comments | 開啟 GitHub Issues 頁面 |
-| Help (Web) | 在 GitHub Pages 上以符合 UI 語言的頁面開啟線上手冊。 |
+| 檢查更新 | 檢查是否有新版 ReciPro 並安裝 |
+| 提示 | 顯示使用提示（已淘汰） |
+| 版本紀錄 | 開啟版本歷史對話方塊 |
+| 授權 | 顯示 MIT 授權 |
+| GitHub 儲存庫 | 在瀏覽器中開啟 ReciPro 儲存庫 |
+| 回報錯誤、需求或意見 | 開啟 GitHub Issues 頁面 |
+| 說明（網頁） | 在 GitHub Pages 上以符合 UI 語言的頁面開啟線上手冊 |
 
 介面語言可從另外的 **語言** 選單切換（需重新啟動）。
 
 ### Language
 
-切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定。
+切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定，因此 <kbd>F1</kbd> 與 **說明 ▸ 說明（網頁）** 會以您所選的語言開啟頁面。
 
 ### Macro
 
@@ -259,7 +260,7 @@
 
 ## 功能面板 {#functions}
 
-右側的垂直按鈕列可啟動分析與模擬視窗（請參閱下方的[功能](#functions)表）。
+右側的垂直按鈕列可啟動下列分析與模擬視窗。
 
 ![Functions panel](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.toolStrip1.png)
 

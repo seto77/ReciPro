@@ -33,7 +33,7 @@ $$\mathbf Q = 2\pi(\mathbf k_s - \mathbf k_i), \qquad Q = |\mathbf Q| = \frac{4\
 | 繞射峰圖 | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "單位"
-    形狀因子已發表的參數化以 Å⁻¹ 為單位表示 $s$ (故 $s^2$ 以 Å⁻² 為單位)，而 ReciPro 內部則以 nm⁻² 攜帶 $s^2$。兩者在 $s^2$ 上相差一個因子 $100$；曲線與表格皆以各表標頭所註明的單位呈現。有一個模型 — **Kirkland** — 是針對 $q = 2s = 1/d$ 而非 $s$ 製表的；參見 [Atomic scattering factors](scattering-factor.md)。
+    形狀因子已發表的參數化以 Å⁻¹ 為單位表示 $s$ (故 $s^2$ 以 Å⁻² 為單位)，而 ReciPro 內部則以 nm⁻² 攜帶 $s^2$。兩者在 $s^2$ 上相差一個因子 $100$；曲線與表格皆以各表標頭所註明的單位呈現。有一個模型 — **Kirkland** — 是針對 $q_K = 2s = 1/d$ 而非 $s$ 製表的；參見 [Atomic scattering factors](scattering-factor.md)。請注意，此 $q_K$ **並非**上方「繞射」表中的 $q = 2\pi/d$：兩者相差一個因子 $2\pi$。
 
 ### 布拉格、勞厄與厄瓦爾德球
 

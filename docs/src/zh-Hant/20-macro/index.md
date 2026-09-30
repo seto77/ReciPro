@@ -112,7 +112,7 @@ ReciPro 內建以 **IronPython** 為基礎的巨集系統，可透過指令稿�
 
 ### 不可使用
 
-- **`print()`**：沒有主控台視窗；輸出無處可去。請使用 **Step by step** 並查看偵錯面板來檢視值。
+- **`print()`**：沒有主控台視窗；輸出無處可去。請使用 **Step by step** 並查看偵錯面板來檢視值。（例外：從外部執行巨集時——命令列 `/o` 或[具名管道](3-external-control.md)——`print()` 的輸出*會*被擷取並傳回。）
 - **`input()`**：沒有 stdin。
 - **檔案 I/O**（`open`、`with open`）：不適用於巨集。請改用 `ReciPro.File.*` 輔助函式。
 - **C 擴充套件**：`numpy`、`scipy`、`pandas`、`matplotlib` — 與 IronPython 不相容。
@@ -161,3 +161,4 @@ NameError: name 'abc' is not defined
 
 - [20.1. 內建函式](1-built-in-functions.md)
 - [20.2. 範例](2-examples.md)
+- [20.3. 外部控制（命令列・具名管道）](3-external-control.md)

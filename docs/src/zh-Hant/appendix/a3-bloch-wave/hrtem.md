@@ -18,8 +18,8 @@ HRTEM 像由出射面波函數——即由[動力學核心](calculation.md)求�
 | $C_s$ | 球差係數 |
 | $C_c$ | 色差係數 |
 | $\beta$ | 照明半角（有限光源尺寸的效應） |
-| $\Delta E$ | 電子能量漲落的 $1/e$ 寬度 |
-| $\Delta_0$ | 欠焦彌散的 $1/e$ 寬度（高斯型），$\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | 電子能量漲落的**標準差**（rms）。GUI 的 **ΔV** 欄位輸入的是半高全寬，因此 $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | （高斯型）欠焦彌散的標準差，$\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-在 $\mathbf u' \to \mathbf u$ 的極限下，TCC 退化為上述的準同調包絡。
+令 $\mathbf u' = \mathbf 0$——即束 $\mathbf u$ 與穿透束之間的干涉——即可還原上述準同調模型中的單一頻率包絡 $E_c(\mathbf u)$ 與 $E_s(\mathbf u)$。另一個極限 $\mathbf u' \to \mathbf u$ 則給出 $E_c = E_s = 1$，因而得到下文所用的對角項 $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$。
 
 ---
 

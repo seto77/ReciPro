@@ -95,7 +95,7 @@
 下方的兩個面板以 *International Tables for Crystallography* Vol. A 的記號重現該空間群的對稱性示意圖。
 
 - **對稱元素（左）**：旋轉／螺旋軸、鏡面／滑移面，以及反演中心／旋轉反演點皆以慣用的圖形符號繪製。
-  - 對於立方晶系的 \(F\) 點陣，僅顯示晶胞的八分之一（僅左上象限）。
+  - 對於立方晶系的 \(F\) 點陣，僅顯示投影晶胞左上方的四分之一（請參閱[附錄 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)）。
   - 這些對稱元素也可以直接繪製到 [結構檢視器](5-structure-viewer.md) 中的 3D 模型上。
 - **一般位置（右）**：一般等價位置以圓圈繪製（逗號表示鏡像），並標註其分數座標。
   - 僅對於立方晶系，輔助線會連接由三重旋轉軸所關聯的三個圓圈。

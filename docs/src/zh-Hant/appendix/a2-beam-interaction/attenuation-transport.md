@@ -55,11 +55,11 @@ $$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\varphi),$$
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-其中 $n_i$ 是元素 $i$ 的數密度，$r_e$ 是經典電子半徑。此處 $\mu_\text{abs}$ 是衰減中的吸收性部分（與 $f''$ 相連結）；它不必等於上面的總 $\mu$，後者還包含 Rayleigh 與 Compton 散射。由於 $n<1$，X 射線在一個微小的掠射**臨界角**以下會發生**全外反射**
+其中 $n_i$ 是元素 $i$ 的數密度，$r_e$ 是經典電子半徑。此處 $\mu_\text{abs}$ 是衰減中的吸收性部分（與 $f''$ 相連結）；它不必等於上面的總 $\mu$，後者還包含 Rayleigh 與 Compton 散射。當 $\delta>0$ 時折射率小於 1，因此 X 射線在微小的掠射**臨界角** $\alpha_c$ 以下會發生**全外反射**：
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-這源自折射幾何：對於掠射角 $\alpha$，固體內部的垂直波向量為 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$，在 $\alpha = \alpha_c = \sqrt{2\delta}$ 時降為零；在此之下，波無法傳入材料而被全反射。**散射長度密度**的實部，$\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$，決定了 $\delta$，並且是反射測量中所用中子 SLD 的 X 射線類比量。ReciPro 在純量表中報告 $\delta$、$\beta$、$\theta_c$ 與 X 射線 SLD。
+這源自折射幾何：對於掠射角 $\alpha$，固體內部的垂直波向量為 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$，在 $\alpha = \alpha_c = \sqrt{2\delta}$ 時降為零；在此之下，波無法傳入材料而被全反射。此式假設無損耗極限 $\beta \ll \delta$：若 $\beta$ 為有限值，倏逝波仍會穿入數奈米，反射率也略低於 1。在吸收邊的稍高能量側，$\delta$ 甚至可能變為負值，此時不存在臨界角，ReciPro 也不會報告臨界角。**散射長度密度**的實部，$\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$，決定了 $\delta$，並且是反射測量中所用中子 SLD 的 X 射線類比量。ReciPro 報告 $\delta$、$\beta$、$\alpha_c$（在純量表中列為 **θc**）以及 X 射線 SLD。
 
 ---
 
