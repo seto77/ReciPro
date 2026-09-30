@@ -31,7 +31,7 @@
 
 ## 메인 영역
 
-광원, 결정축, 원자 범례가 있는 3D 결정 구조.
+3D 결정 구조를 광원 방향 기즈모, 결정축 기즈모, 원자 범례와 함께 그립니다.
 > 창의 오른쪽 위에 있는 **크기 (W×H)** 박스는 렌더링된 이미지를 저장하거나 복사할 때 사용되는 픽셀 크기를 설정합니다.
 > 그 옆의 **ProjWidth** 박스는 투영된 뷰의 너비를 nm 단위로 표시합니다. 값을 편집하여 수치로 확대/축소할 수 있으며, 뷰에서의 오른쪽 드래그 / 휠 확대/축소와 동기화된 상태로 유지됩니다.
 
@@ -144,7 +144,7 @@
 
 ![원자 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-좌표, 원소, 점유율, 반지름, 색상, 재질. **같은 원소에 적용**.
+각 원자의 종, 위치, 점유율과 그리기 방식(반지름, 색상, 재질)을 설정합니다.
 
 #### 원자 목록
 
@@ -180,7 +180,7 @@
 
 ![결합 & 다면체 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-결합 길이 임계값, 다면체 표시, 모서리.
+어떤 원자 쌍을 결합으로 볼지(원소 종과 거리 범위로 지정)와, 그 결과 생기는 결합 및 배위 다면체를 어떻게 그릴지를 정의합니다.
 
 #### 결합 목록
 
@@ -208,7 +208,7 @@
 
 ![단위 격자 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-평행 이동, 격자 평면, 모서리.
+그려지는 단위 격자의 위치와, 그 면과 모서리의 표시 여부를 설정합니다.
 
 #### 평행 이동
 
@@ -226,7 +226,7 @@
 
 ![격자면 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-결정학적 등가물을 포함한 밀러 지수 지정.
+밀러 지수로 지정한 격자면을 그리며, 필요에 따라 결정학적으로 등가인 면도 함께 그립니다.
 
 #### H k l 지수
 
@@ -240,7 +240,7 @@
 
 ![배위 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-대상 원자 주위의 배위 표와 그래프.
+선택한 대상 원자에 배위하는 원자들을 표로 나열하고 그래프로 표시합니다.
 
 #### 표(왼쪽)
 
@@ -260,7 +260,7 @@
 
 ![투영 탭](../assets/cap-ko-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-투영 모드(정사영/원근), 깊이 페이딩, 렌더링 품질, 투명도 모드.
+투영 모드(정사영 / 원근), 깊이 페이딩, 투영 중심, 렌더링 품질, 투명도 알고리즘을 설정합니다.
 
 #### 투영
 
@@ -320,7 +320,7 @@
 | 단위 격자 | 단위 격자 모서리 전환 |
 | 대칭 요소 | 대칭 요소 오버레이 전환(위 참조) |
 | 회전 초기화 | 초기 방향으로 복귀 |
-| Vesta 풍 | Vesta 스타일 외관 |
+| Vesta 풍 | VESTA 스타일 외관(원자 색상과 반지름)으로 전환 |
 
 ---
 

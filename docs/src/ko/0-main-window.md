@@ -55,14 +55,14 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 |-----------|-------------|
 | 결정 목록 불러오기 (현재 목록 교체) | 결정 목록 파일(`*.xml`)을 불러오고 현재 목록을 대체 |
 | 결정 목록 불러오기 (현재 목록에 추가) | 결정 목록 파일을 불러와 현재 목록에 추가 |
-| Reset to initial crystal list | ReciPro에 기본 포함된 결정 목록 다시 불러오기 |
+| 초기 결정 목록으로 재설정 | ReciPro에 기본 포함된 결정 목록 다시 불러오기 |
 | CIF 또는 AMC 파일에서 결정 가져오기 | CIF / AMC 파일에서 결정 하나를 불러오기 |
 | 결정 목록 저장 | 현재 결정 목록 저장 |
-| CIF로 내보내기 | 선택한 결정을 CIF 형식으로 저장 |
-| Clear all crystals | 목록에서 모든 결정 제거 |
+| 선택한 결정을 CIF 파일로 내보내기 | 선택한 결정을 CIF 형식으로 저장 |
+| 모든 결정 지우기 | 목록에서 모든 결정 제거 |
 | 종료 | 응용 프로그램 닫기 |
 
-### Option
+### Options
 
 
 | 메뉴 항목 | 설명 |
@@ -90,13 +90,13 @@ ReciPro를 처음 사용하는 경우 다음 단계를 참조하십시오:
 | 라이선스 | MIT 라이선스 표시 |
 | GitHub 저장소 | 브라우저에서 ReciPro 저장소 열기 |
 | 버그, 요청 또는 의견 보고 | GitHub Issues 페이지 열기 |
-| 도움말 (웹) | UI 언어와 일치하는 페이지로 GitHub Pages의 온라인 매뉴얼 열기. |
+| 도움말 (웹) | UI 언어와 일치하는 페이지로 GitHub Pages의 온라인 매뉴얼 열기 |
 
 UI 언어는 별도의 **언어** 메뉴에서 전환합니다 (재시작 필요).
 
 ### Language
 
-UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文, 한국어의 11개 언어를 지원하며, 메뉴에는 각 언어가 그 언어의 문자로 표시됩니다. 변경 사항은 ReciPro를 재시작한 후 적용됩니다. 온라인 매뉴얼도 같은 설정을 따릅니다.
+UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文, 한국어의 11개 언어를 지원하며, 메뉴에는 각 언어가 그 언어의 문자로 표시됩니다. 변경 사항은 ReciPro를 재시작한 후 적용됩니다. 온라인 매뉴얼도 같은 설정을 따르므로, <kbd>F1</kbd> 키와 **도움말 ▸ 도움말 (웹)** 은 선택한 언어의 페이지를 엽니다.
 
 ### Macro
 
@@ -119,7 +119,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 초기 상태로 재설정: *c*-축이 화면에 수직, *b*-축이 위쪽.
 
 ### 정대축
-화면 법선에 가장 가까운 정대축을 표시합니다 (예: *u*+*v*+*w* < 30).
+화면 법선에 가장 가까운 정대축 [*uvw*]를 표시합니다. 탐색 범위는 지수의 크기가 max-UVW 상자에 표시된 한계 이내인 것으로 제한됩니다 (**Current Index** 레이블을 더블 클릭하면 이 상자를 표시하거나 숨길 수 있습니다).
 
 ### 오일러 각도 (Z-X-Z)
 **Z–X–Z** 오일러 각도로 결정 방향을 설정합니다:
@@ -179,7 +179,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 ## 결정 정보
 
-격자 상수, 대칭, 원자를 편집하고; 구조를 불러오려면 CIF/AMC 파일을 끌어다 놓으십시오. 이 컨트롤은 ReciPro, PDIndexer, CSmanager에서 공유되지만, 표시되는 탭과 기능은 응용 프로그램마다 다릅니다. ReciPro는 Basic Info, Atom, Reference 탭을 표시합니다 (EOS, Elasticity 및 기타 탭은 다른 응용 프로그램용이며 ReciPro에서는 표시되지 않습니다).
+격자 상수, 대칭, 원자를 편집하고; 구조를 불러오려면 CIF/AMC 파일을 끌어다 놓으십시오. 이 컨트롤은 ReciPro, PDIndexer, CSManager에서 공유되지만, 표시되는 탭과 기능은 응용 프로그램마다 다릅니다. ReciPro는 Basic Info, Atom, Reference 탭을 표시합니다 (EOS, Elasticity 및 기타 탭은 다른 응용 프로그램용이며 ReciPro에서는 표시되지 않습니다).
 
 > **중요**: 변경 사항을 저장하려면 **Add** 또는 **Replace**를 누르십시오.
 
@@ -232,7 +232,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 | 방사선 | 출처 / 설정 |
 |-----------|------|
 | X-ray | 이온 원자가를 포함한 산란 인자 (International Tables for Crystallography, Vol. C). |
-| Electron | 전자 산란 인자 (Peng 1998, Acta Cryst. A54, 481–485). |
+| Electron | 전자 산란 인자 — 중성 원자는 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; 이온은 Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | 중성자 산란 길이. **Natural isotope abundance** 또는 **Custom isotope abundance** (임의의 동위원소 조성)을 선택합니다. |
 
 ### Reference 탭
@@ -260,14 +260,14 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 ## 기능 패널 {#functions}
 
-오른쪽의 세로 버튼 막대는 아래 표에 나열된 분석 및 시뮬레이션 창을 실행합니다.
+오른쪽의 세로 버튼 막대는 아래에 나열된 분석 및 시뮬레이션 창을 실행합니다.
 
 ![기능 패널](../assets/cap-ko-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 | 버튼 | 설명 | 세부 정보 |
 |--------|-------------|---------|
 | Crystal Database | 번들 / 온라인 데이터베이스에서 결정 검색 및 가져오기 | [1. 결정 데이터베이스](1-crystal-database.md) |
-| Symmetry Information | 공간군 정보 및 ITC Vol. A 대칭 도표 | [2. 대칭 정보](2-symmetry-information.md) |
+| Symmetry Information | 공간군 정보 및 *International Tables* Vol. A 대칭 도표 | [2. 대칭 정보](2-symmetry-information.md) |
 | Beam Interaction | 빔-결정 상호작용: 반사, 감쇠, 산란 인자, 형광 | [3. 빔 상호작용](3-beam-interaction.md) |
 | Rotation Geometry | 3D 회전 행렬 / 고니오미터 각도 | [4. 회전 기하학](4-rotation-geometry.md) |
 | Structure Viewer | 3D 결정 구조 | [5. 구조 뷰어](5-structure-viewer.md) |
