@@ -57,7 +57,7 @@ Für LACBED-artige Modi, bei denen die Phasenkohärenz über einen größeren Be
 
 CBED macht die Dickenabhängigkeit der Bloch-Wellen-Lösung als Intensitätsstruktur innerhalb der Beugungsscheiben sichtbar.
 
-- Eine Änderung der Dicke verändert die Oszillationen im Scheibeninneren, die HOLZ-Linien und die Kossel-Möllenstedt-Streifen.
+- Eine Änderung der Dicke verändert die Oszillationen im Scheibeninneren, die HOLZ-Linien und die Kossel–Möllenstedt-Streifen.
 - Eine Änderung der Einfallsorientierung verändert, welche Reflexe stark angeregt werden.
 - Eine Vergrößerung des Konvergenzwinkels verbreitert die Scheiben und kann Überlappungen sowie Informationen aus Laue-Zonen höherer Ordnung sichtbar machen.
 

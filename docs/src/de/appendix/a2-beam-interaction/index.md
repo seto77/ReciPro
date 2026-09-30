@@ -61,7 +61,7 @@ d. h. einem **Minus**-Zeichen im Exponenten. Diese Wahl legt das Vorzeichen des 
 
 ## Kinematische vs. dynamische Streuung
 
-Dieser Anhang behandelt **Einfach- (kinematische) Streuung**: der einfallende Strahl wird einmal gestreut, und die gebeugte Amplitude ist der Strukturfaktor der nächsten Seite. Das ist das richtige Bild, wenn die Wechselwirkung schwach ist — Röntgenstrahlen und Neutronen in fast allen Proben, und Elektronen in *sehr dünnen* Präparaten.
+Dieser Anhang behandelt **Einfach- (kinematische) Streuung**: der einfallende Strahl wird einmal gestreut, und die gebeugte Amplitude ist der Strukturfaktor der nächsten Seite. Das ist das richtige Bild, wenn die Wechselwirkung schwach ist — Röntgenstrahlen und Neutronen in Pulvern, gestörten Kristallen und dünnen Proben, und Elektronen in *sehr dünnen* Präparaten. (Selbst Röntgenstrahlen verhalten sich in einem großen, nahezu perfekten Kristall dynamisch; dort schwächt die Primärextinktion die stärksten Reflexe.)
 
 Wenn die Wechselwirkung stark ist — Elektronen in allen außer den dünnsten Kristallen — wird der Strahl vielfach gestreut, bevor er austritt, die Intensität wird unter den Reflexen umverteilt, und $\lvert F\rvert^2$ liefert nicht mehr die gemessene Intensität. Dieses Regime erfordert die **dynamische** Theorie aus [Appendix A3](../a3-bloch-wave/index.md). Die hier hergeleiteten Streufaktoren und Strukturfaktoren sind die *Eingabe* für beide Bilder.
 

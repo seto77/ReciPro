@@ -48,7 +48,7 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 
 ## Dateimenü
 
-### File
+### Datei
 
 
 | Menüpunkt | Beschreibung |
@@ -62,7 +62,7 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | Alle Kristalle leeren | Alle Kristalle aus der Liste entfernen |
 | Beenden | Die Anwendung schließen |
 
-### Option
+### Optionen
 
 
 | Menüpunkt | Beschreibung |
@@ -80,25 +80,25 @@ Wenn Sie ReciPro zum ersten Mal verwenden, folgen Sie diesen Schritten:
 | GUI-Komponenten erfassen... | Entwicklerwerkzeug zum Speichern von GUI-Screenshots |
 | Pulverbeugungsfunktion (in Entwicklung) | Das Fenster für polykristalline (Pulver-) Beugung aktivieren |
 
-### Help
+### Hilfe
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| Program updates | Prüfen, ob eine neue Version von ReciPro verfügbar ist, und sie installieren |
-| Hint | Bedienungshinweise anzeigen (veraltet) |
-| Version history | Den Versionsverlauf-Dialog öffnen |
+| Auf Updates prüfen | Prüfen, ob eine neue Version von ReciPro verfügbar ist, und sie installieren |
+| Hinweise | Bedienungshinweise anzeigen (veraltet) |
+| Versionsverlauf | Den Versionsverlauf-Dialog öffnen |
 | License | Die MIT-Lizenz anzeigen |
-| GitHub page | Das ReciPro-Repository im Browser öffnen |
-| Report bugs, requests, or comments | Die GitHub-Issues-Seite öffnen |
-| Help (Web) | Das Online-Handbuch auf GitHub Pages in der zur UI-Sprache passenden Seite öffnen. |
+| GitHub-Repository | Das ReciPro-Repository im Browser öffnen |
+| Fehler, Wünsche oder Kommentare melden | Die GitHub-Issues-Seite öffnen |
+| Hilfe (Web) | Das Online-Handbuch auf GitHub Pages in der zur UI-Sprache passenden Seite öffnen |
 
 Die UI-Sprache wird über das separate Menü **Sprache** umgeschaltet (erfordert Neustart).
 
-### Language
+### Sprache
 
-Die UI-Sprache umschalten. Elf Sprachen stehen zur Verfügung — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 und 한국어 — und das Menü zeigt jede in ihrer eigenen Schrift. Die Änderung wird nach einem Neustart von ReciPro wirksam. Das Online-Handbuch folgt derselben Einstellung.
+Die UI-Sprache umschalten. Elf Sprachen stehen zur Verfügung — English, 日本語 (Japanisch), Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 und 한국어 — und das Menü zeigt jede in ihrer eigenen Schrift. Die Änderung wird nach einem Neustart von ReciPro wirksam. Das Online-Handbuch folgt derselben Einstellung, sodass <kbd>F1</kbd> und **Hilfe ▸ Hilfe (Web)** die Seite in der gewählten Sprache öffnen.
 
-### Macro
+### Makro
 
 Öffnet das [Makro](20-macro/index.md)-Fenster, um ReciPro-Operationen mit Python-ähnlichen Skripten zu automatisieren. Für wiederkehrende Arbeitsabläufe siehe die [integrierten Funktionen](20-macro/1-built-in-functions.md) und die [Makro-Beispiele](20-macro/2-examples.md).
 
@@ -119,7 +119,7 @@ Zeigt die Kristallorientierung. Zum Drehen ziehen. Achsen: rot = *a*, grün = *b
 Setzt auf den Anfangszustand zurück: *c*-Achse senkrecht zum Bildschirm, *b*-Achse nach oben.
 
 ### Zonenachse
-Zeigt die zur Bildschirmnormalen nächstgelegene Zonenachse an (z. B. *u*+*v*+*w* < 30).
+Zeigt die zur Bildschirmnormalen nächstgelegene Zonenachse [*uvw*] an; gesucht wird unter den Indizes, deren Beträge die im max-UVW-Feld angezeigte Grenze nicht überschreiten (Doppelklick auf die Beschriftung **Current Index** blendet dieses Feld ein bzw. aus).
 
 ### Euler-Winkel (Z-X-Z)
 Stellen Sie die Kristallorientierung mit **Z–X–Z**-Euler-Winkeln ein:
@@ -179,7 +179,7 @@ Siehe [Rotationsgeometrie](4-rotation-geometry.md) und [Anhang A1. Koordinatensy
 
 ## Kristallinformation
 
-Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSmanager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten Basisinfo, Atominfo und Lit. (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
+Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien per Drag & Drop hinein, um eine Struktur zu laden. Dieses Steuerelement wird von ReciPro, PDIndexer und CSManager gemeinsam genutzt, aber die angezeigten Registerkarten und Funktionen unterscheiden sich je nach Anwendung. ReciPro zeigt die Registerkarten Basisinfo, Atominfo und Lit. (die Registerkarten EOS, Elasticity und andere sind für die anderen Anwendungen und werden in ReciPro nicht angezeigt).
 
 > **Wichtig**: Drücken Sie **↑ Hinzufügen ↑** oder **↑ Ersetzen ↑**, um Änderungen zu speichern.
 
@@ -202,7 +202,7 @@ Gitterparameter, Symmetrie und daraus abgeleitete Größen.
 | Mittleres Z (Anzahl) / Mittleres Z (Masse) / Mittleres A | Anzahl- bzw. massengewichtete mittlere Ordnungszahl und mittleres Atomgewicht pro Atom. |
 | Atomdichte / Elektronendichte | Anzahl der Atome bzw. Elektronen pro Zellvolumen, angezeigt in Å⁻³ / nm⁻³ entsprechend der **Einheit**-Auswahl. |
 
-### Registerkarte Atominfoinfo
+### Registerkarte Atominfo
 
 ![Atom](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
@@ -232,7 +232,7 @@ Klicken Sie mit der rechten Maustaste auf eine Atomzeile und wählen Sie **Äqui
 | Strahlung | Quelle / Einstellung |
 |-----------|------|
 | X-ray | Streufaktoren einschließlich Ionenwertigkeit (International Tables for Crystallography, Vol. C). |
-| Electron | Elektronen-Streufaktoren (Peng 1998, Acta Cryst. A54, 481–485). |
+| Electron | Elektronen-Streufaktoren — neutrale Atome nach Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; Ionen nach Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Neutronen-Streulängen. Wählen Sie **Natural isotope abundance** oder **Custom isotope abundance** (eine beliebige Isotopenzusammensetzung). |
 
 ### Registerkarte Lit.
@@ -267,7 +267,7 @@ Die senkrechte Schaltflächenleiste rechts startet die unten aufgeführten Analy
 | Schaltfläche | Beschreibung | Details |
 |--------|-------------|---------|
 | Crystal Database | Kristalle aus den mitgelieferten / Online-Datenbanken suchen und importieren | [1. Kristalldatenbank](1-crystal-database.md) |
-| Symmetry Information | Raumgruppeninformationen und ITC-Vol.-A-Symmetriediagramme | [2. Symmetrieinformationen](2-symmetry-information.md) |
+| Symmetry Information | Raumgruppeninformationen und Symmetriediagramme aus *International Tables* Vol. A | [2. Symmetrieinformationen](2-symmetry-information.md) |
 | Beam Interaction | Strahl-Kristall-Wechselwirkung: Reflexe, Abschwächung, Streufaktoren, Fluoreszenz | [3. Strahl-Wechselwirkung](3-beam-interaction.md) |
 | Rotation Geometry | 3D-Rotationsmatrix / Goniometerwinkel | [4. Rotationsgeometrie](4-rotation-geometry.md) |
 | Structure Viewer | 3D-Kristallstruktur | [5. Strukturansicht](5-structure-viewer.md) |

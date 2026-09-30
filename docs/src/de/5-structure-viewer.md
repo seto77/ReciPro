@@ -31,7 +31,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 
 ## Hauptbereich
 
-3D-Kristallstruktur mit Lichtquelle, Kristallachsen und Atomlegende.
+Die 3D-Kristallstruktur, dargestellt zusammen mit dem Lichtrichtungs-Gizmo, dem Kristallachsen-Gizmo und der Atomlegende.
 > Die Box **Größe (B×H)** oben rechts im Fenster legt die Pixelgröße fest, die beim Speichern oder Kopieren des gerenderten Bildes verwendet wird.
 > Die Box **ProjWidth** daneben zeigt die Breite der projizierten Ansicht in nm an. Bearbeiten Sie den Wert, um numerisch zu zoomen — er bleibt mit dem Zoomen per Rechtsziehen / Mausrad in der Ansicht synchronisiert.
 
@@ -144,7 +144,7 @@ Wenn aktiviert, werden alle Atome, Bindungen und Polyeder ausgeblendet — nütz
 
 ![Tab „Atome“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Koordinaten, Element, Besetzung, Radius, Farbe, Material. **Auf gleiches Element anwenden**.
+Legt Spezies, Position und Besetzung jedes Atoms fest sowie seine Darstellung (Radius, Farbe, Material).
 
 #### Atomliste
 
@@ -180,7 +180,7 @@ Radius, Farbe und Material pro Atom.
 
 ![Tab „Bindungen & Polyeder“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-Schwellenwerte für die Bindungslänge, Polyederdarstellung, Kanten.
+Legt fest, welche Atompaare gebunden sind (nach Spezies und Abstandsbereich), und wie die daraus entstehenden Bindungen und Koordinationspolyeder gezeichnet werden.
 
 #### Bindungsliste
 
@@ -208,7 +208,7 @@ Alle für den Kristall registrierten Bindungs-/Polyederregeln. Verwenden Sie **A
 
 ![Tab „Elementarzelle“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-Translation, Zellebenen, Kanten.
+Legt die Position der gezeichneten Elementarzelle fest und ob ihre Flächen und Kanten angezeigt werden.
 
 #### Translation
 
@@ -226,7 +226,7 @@ Ob die Kanten der Elementarzelle gezeichnet werden. Die Kantenfarbe ist konfigur
 
 ![Tab „Gitterebenen“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-Angabe des Miller-Index mit kristallografischen Äquivalenten.
+Zeichnet Gitterebenen, die über ihren Miller-Index angegeben werden, optional einschließlich der kristallografisch äquivalenten Ebenen.
 
 #### H-k-l-Indizes
 
@@ -240,7 +240,7 @@ Verschiebt die gezeichnete Netzebene um ein ganzzahliges Vielfaches ihres *d*-We
 
 ![Tab „Koordination“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-Koordinationstabelle und -graph um das Zielatom.
+Listet die Atome auf, die ein ausgewähltes Zielatom koordinieren, und stellt sie grafisch dar.
 
 #### Tabelle (linke Seite)
 
@@ -260,7 +260,7 @@ Rendering-Protokoll (Bildzeit, GPU-Informationen) und grundlegende Informationen
 
 ![Tab „Projektion“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-Projektionsmodus (orthografisch/perspektivisch), Tiefenausblendung, Renderqualität, Transparenzmodus.
+Legt den Projektionsmodus (orthografisch / perspektivisch), die Tiefenausblendung, das Projektionszentrum, die Renderqualität und den Transparenzalgorithmus fest.
 
 #### Projektion
 
@@ -320,7 +320,7 @@ Für jede Klasse können Sie die Symbolgröße, Linienbreite und Farbe anpassen.
 | Elementarzelle | Kanten der Elementarzelle umschalten |
 | Sym.-Elem. | Überlagerung der Symmetrieelemente umschalten (siehe oben) |
 | Rotation zurücksetzen | Zur Ausgangsorientierung zurückkehren |
-| Wie Vesta | Erscheinungsbild im Vesta-Stil |
+| Wie Vesta | Zu einem Erscheinungsbild im VESTA-Stil wechseln (Atomfarben und -radien) |
 
 ---
 
