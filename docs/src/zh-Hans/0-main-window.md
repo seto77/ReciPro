@@ -62,7 +62,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 清除所有晶体 | 从列表中移除所有晶体 |
 | Exit | 关闭应用程序 |
 
-### Option
+### Options
 
 
 | 菜单项 | 说明 |
@@ -84,19 +84,19 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 | 菜单项 | 说明 |
 |-----------|-------------|
-| Program updates | 检查是否有新版本的 ReciPro 可用并安装它 |
-| Hint | 显示使用提示（已弃用） |
-| Version history | 打开版本历史对话框 |
-| License | 显示 MIT 许可证 |
-| GitHub page | 在浏览器中打开 ReciPro 仓库 |
-| Report bugs, requests, or comments | 打开 GitHub Issues 页面 |
-| Help (Web) | 在 GitHub Pages 上打开与界面语言相匹配页面的在线手册。 |
+| 检查更新 | 检查是否有新版本的 ReciPro 可用并安装它 |
+| 提示 | 显示使用提示（已弃用） |
+| 版本历史 | 打开版本历史对话框 |
+| 许可证 | 显示 MIT 许可证 |
+| GitHub 仓库 | 在浏览器中打开 ReciPro 仓库 |
+| 报告错误、需求或意见 | 打开 GitHub Issues 页面 |
+| 帮助（网页） | 在 GitHub Pages 上打开与界面语言相匹配页面的在线手册 |
 
 界面语言通过单独的 **语言** 菜单切换（需要重启）。
 
 ### Language
 
-切换界面语言。共支持 11 种语言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 菜单中以各语言自身的文字显示。更改在重启 ReciPro 后生效。在线手册也遵循同一设置。
+切换界面语言。共支持 11 种语言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 菜单中以各语言自身的文字显示。更改在重启 ReciPro 后生效。在线手册也遵循同一设置，因此 <kbd>F1</kbd> 和 **帮助 ▸ 帮助（网页）** 会以您所选的语言打开相应页面。
 
 ### Macro
 
@@ -119,7 +119,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 重置为初始状态：*c* 轴垂直于屏幕，*b* 轴向上。
 
 ### 晶带轴
-显示最接近屏幕法线的晶带轴（例如 *u*+*v*+*w* < 30）。
+显示最接近屏幕法线的晶带轴 [*uvw*]，搜索范围限于各指数绝对值不超过 max-UVW 框中所示上限的指数（双击 **Current Index** 标签可显示或隐藏该框）。
 
 ### 欧拉角 (Z-X-Z)
 使用 **Z–X–Z** 欧拉角设置晶体取向：
@@ -179,7 +179,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ## 晶体信息
 
-编辑晶格参数、对称性和原子；将 CIF/AMC 文件拖放进来以加载结构。该控件由 ReciPro、PDIndexer 和 CSmanager 共享，但所显示的选项卡和功能因应用程序而异。ReciPro 显示 Basic Info、Atom 和 Reference 选项卡（EOS、Elasticity 等选项卡属于其他应用程序，在 ReciPro 中不显示）。
+编辑晶格参数、对称性和原子；将 CIF/AMC 文件拖放进来以加载结构。该控件由 ReciPro、PDIndexer 和 CSManager 共享，但所显示的选项卡和功能因应用程序而异。ReciPro 显示 Basic Info、Atom 和 Reference 选项卡（EOS、Elasticity 等选项卡属于其他应用程序，在 ReciPro 中不显示）。
 
 > **重要**：按 **Add** 或 **Replace** 以保存更改。
 
@@ -232,7 +232,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 辐射 | 来源 / 设置 |
 |-----------|------|
 | X-ray | 包含离子化合价的散射因子（International Tables for Crystallography, Vol. C）。 |
-| Electron | 电子散射因子（Peng 1998, Acta Cryst. A54, 481–485）。 |
+| Electron | 电子散射因子 —— 中性原子取自 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276；离子取自 Peng (1998), *Acta Cryst.* **A54**, 481–485。 |
 | Neutron | 中子散射长度。可选择 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素组成）。 |
 
 ### Reference 选项卡
@@ -267,7 +267,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 | 按钮 | 说明 | 详情 |
 |--------|-------------|---------|
 | Crystal Database | 从随附 / 在线数据库中搜索并导入晶体 | [1. 晶体数据库](1-crystal-database.md) |
-| Symmetry Information | 空间群信息及 ITC Vol. A 对称图 | [2. 对称性信息](2-symmetry-information.md) |
+| Symmetry Information | 空间群信息及 *International Tables* Vol. A 对称图 | [2. 对称性信息](2-symmetry-information.md) |
 | Beam Interaction | 射束–晶体相互作用：反射、衰减、散射因子、荧光 | [3. 射束相互作用](3-beam-interaction.md) |
 | Rotation Geometry | 3D 旋转矩阵 / 测角仪角度 | [4. 旋转几何](4-rotation-geometry.md) |
 | Structure Viewer | 3D 晶体结构 | [5. 结构查看器](5-structure-viewer.md) |
