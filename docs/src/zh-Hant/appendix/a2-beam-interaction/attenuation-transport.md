@@ -69,7 +69,7 @@ $$\alpha_c \simeq \sqrt{2\delta}.$$
 
 ### 彈性散射與平均自由程
 
-彈性截面 $\sigma_\text{el}$ 量度單一原子使電子偏轉的難易程度。ReciPro 使用 **NIST Mott** 截面（在遮蔽原子位能中對相對論性 Dirac 方程的分波解），大致在 **50 eV – 36.4 keV** 範圍內有效；超出此範圍，或對於不在表中的元素，則回退至**遮蔽 Rutherford** 近似。兩者在邊界處不必完美平滑地銜接。總截面是微分截面的角度積分，
+彈性截面 $\sigma_\text{el}$ 量度單一原子使電子偏轉的難易程度。ReciPro 使用 **NIST Mott** 截面（在遮蔽原子位能中對相對論性 Dirac 方程的分波解）。隨附的資料表涵蓋 **50 eV – 36.4 keV**（這是 ReciPro 自身製表的範圍，而非 Mott 方法本身的限制）；超出此範圍，或對於不在表中的元素，則回退至**遮蔽 Rutherford** 近似。兩者在邊界處不必完美平滑地銜接。總截面是微分截面的角度積分，
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ $$\Sigma_\text{el} = \sum_i n_i\,\sigma_{\text{el},i}, \qquad \lambda_\text{el} 
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-此處 $s$ 是沿軌跡的**路徑長度**（索引標籤中 *|dE/ds|* 曲線的變數），而非本附錄其他地方所用的散射變數 $\sin\theta/\lambda$。能量梯度 $dE/ds$ 為負，因此索引標籤將 $S$ 向上繪出。在 keV 能量下，它在概念上遵循 **Bethe** 形式
+此處 $s$ 是沿軌跡的**路徑長度**（索引標籤中 *|dE/ds|* 曲線的變數），而非本附錄其他地方所用的散射變數 $\sin\theta/\lambda$。梯度 $dE/ds$ 本身為負，因此索引標籤將其大小 $S$ 向上繪出。在 keV 能量下，它在概念上遵循 **Bethe** 形式
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-其中 $J$ 是固體的**平均激發能**。此非相對論性的草圖僅顯示其標度關係；ReciPro 評估的是一個經修正/經驗的形式（Joy–Luo 類型），在低能量時仍保持良好行為。純量表中的**電漿子能量** $E_p$ 是同一類電子激發的一個相關但獨立的特徵量。**非彈性平均自由程**（IMFP）是相對應的、損失能量的碰撞之間的平均距離；ReciPro 可由 **TPP-2M** 預測公式評估之，
+其中 $J$ 是固體的**平均激發能**。此非相對論性的草圖僅顯示其標度關係；ReciPro 評估的是經修正的 **Jablonski (2008)** 形式，它在低能量時仍保持良好行為（較舊的 **Joy–Luo (1989)** 經驗形式亦已實作）。純量表中的**電漿子能量** $E_p$ 是同一類電子激發的一個相關但獨立的特徵量。**非彈性平均自由程**（IMFP）是相對應的、損失能量的碰撞之間的平均距離；ReciPro 可由 **TPP-2M** 預測公式評估之，
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 ## 另請參閱
 
-- [原子散射因子](scattering-factor.md) ——Rayleigh/Compton 背後的 $F(q)$/$S(q)$ 拆分，以及 Mott 截面。
+- [原子散射因子](scattering-factor.md) ——Rayleigh/Compton 背後的 $F(q)$/$S(q)$ 拆分，以及 Mott–Bethe 關係（與上文所用的 NIST Mott 截面是不同的模型）。
 - [螢光](fluorescence.md) ——X 射線光吸收之後的弛豫。
 - [3. 電子束交互作用](../../3-beam-interaction.md) —— *衰減 & 輸運* 索引標籤。
 - [8. 電子軌跡](../../8-electron-trajectory.md) · [12. EBSD 模擬](../../12-ebsd-simulation.md) ——電子射程被使用之處。

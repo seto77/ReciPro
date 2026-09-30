@@ -29,7 +29,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 **解決方法**（按順序嘗試）：
 
 1. **停用 OpenGL**：啟動 ReciPro 時按住 **Ctrl** 鍵，以停用 OpenGL 的方式啟動。較新的版本（v4.925 及以後）強化了 OpenGL 初始化，因此即使 OpenGL 失敗應用程式也能啟動——在這種情況下 3D 功能被停用，但應用程式的其餘部分可正常運作。
-2. **重設設定**：在登錄檔編輯器中刪除機碼 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然後重新啟動。（等同於 **選項 → 重設登錄檔**。）
+2. **重設設定**：在登錄檔編輯器中刪除機碼 `HKEY_CURRENT_USER\Software\Crystallography\ReciPro`，然後重新啟動。（等同於 **選項 ▸ 結束時重設登錄設定**。）
 3. **乾淨重新安裝**：解除安裝 ReciPro，刪除以下資料夾（如果存在，將 `<user>` 替換為你的帳戶名稱），然後重新安裝：
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 **解決方法**：
 
-1. 前往 **選項 → 停用 OpenGL（需重新啟動）**（或在啟動時按住 **Ctrl**）。
+1. 前往 **選項 ▸ 停用所有 OpenGL 算繪（需重新啟動）**（或在啟動時按住 **Ctrl**）。
 2. 重新啟動 ReciPro。
 3. 結構檢視器和部分 3D 功能將使用軟體算繪。
 
@@ -161,7 +161,7 @@ ReciPro 已啟動（在工作管理員中可見），但其視窗始終不在螢
 
 如果設定變得損壞：
 
-1. **選項 → 重設登錄檔（重新啟動後）**
+1. **選項 ▸ 結束時重設登錄設定（重新啟動後生效）**
 2. 重新啟動 ReciPro——視窗位置、波長、相機長度等將被重設為預設值
 
 ---

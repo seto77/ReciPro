@@ -17,11 +17,11 @@ $$E_\gamma = E_B(\text{inner shell}) - E_B(\text{outer shell}),$$
 - **K 譜線** — $K$ 殼層的空缺由 $L$（$K\alpha$）或 $M$（$K\beta$）填補。
 - **L 譜線** — $L$ 殼層的空缺由 $M$/$N$（$L\alpha$、$L\beta$、…）填補。
 
-只有偶極選擇定則所允許的躍遷才會出現，這也是為什麼光譜是由少數幾條離散譜線（K$\alpha_1$、K$\alpha_2$、K$\beta_1$、L$\alpha_1$、…）所構成，而非連續譜。其能量遵循 **Moseley 定律**；在遮蔽類氫近似下，
+光譜之所以由少數幾條離散譜線（K$\alpha_1$、K$\alpha_2$、K$\beta_1$、L$\alpha_1$、…）構成而非連續譜，是因為殼層能量本身是量子化的；電偶極選擇定則則決定其中哪些躍遷較強（較弱的禁制譜線、多極譜線與衛星譜線確實存在）。其能量遵循 **Moseley 定律**；在遮蔽類氫近似下，
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-其中 $\sigma$ 為遮蔽常數。對於 $K\alpha$（$n_2{=}2\to n_1{=}1$，$\sigma\approx1$），此式可化簡為 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$。這種單調且由電子數驅動的 $Z$ 相依性，正是元素鑑定（EDX/WDX）的基礎。
+其中 $\sigma$ 為遮蔽常數。對於 $K\alpha$（$n_2{=}2\to n_1{=}1$，$\sigma\approx1$），此式可化簡為 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$。此 $Z$ 相依性由**原子核電荷**所決定，其餘電子僅起遮蔽作用，因此它是單調的，且幾乎不受化學狀態影響——正因如此，它成為元素鑑定（EDX/WDX）的基礎。
 
 ---
 

@@ -62,7 +62,7 @@
 | 清除所有晶體 | 從清單中移除所有晶體 |
 | 結束 | 關閉應用程式 |
 
-### Option
+### Options
 
 
 | 選單項目 | 說明 |
@@ -119,7 +119,7 @@
 重設為初始狀態：*c* 軸垂直於螢幕，*b* 軸朝上。
 
 ### 晶帶軸
-顯示最接近螢幕法線的晶帶軸（例如 *u*+*v*+*w* < 30）。
+顯示最接近螢幕法線的晶帶軸 [*uvw*]；搜尋範圍限於各指數絕對值不超過 max-UVW 方塊所示上限者（雙擊 **Current Index** 標籤可顯示或隱藏該方塊）。
 
 ### Euler 角 (Z-X-Z)
 使用 **Z–X–Z** Euler 角設定晶體方位：
@@ -179,7 +179,7 @@
 
 ## 晶體資訊
 
-編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSmanager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
+編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSManager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
 
 > **重要**：請按 **↑ 新增 ↑** 或 **↑ 取代 ↑** 以儲存變更。
 
@@ -232,7 +232,7 @@
 | Radiation | 來源 / 設定 |
 |-----------|------|
 | X-ray | 含離子價數的散射因子（International Tables for Crystallography, Vol. C）。 |
-| Electron | 電子散射因子（Peng 1998, Acta Cryst. A54, 481–485）。 |
+| Electron | 電子散射因子 —— 中性原子取自 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276；離子取自 Peng (1998), *Acta Cryst.* **A54**, 481–485。 |
 | Neutron | 中子散射長度。選擇 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素組成）。 |
 
 ### 文獻 索引標籤
@@ -267,7 +267,7 @@
 | 按鈕 | 說明 | 詳細資訊 |
 |--------|-------------|---------|
 | Crystal Database | 從隨附 / 線上資料庫搜尋並匯入晶體 | [1. 晶體資料庫](1-crystal-database.md) |
-| Symmetry Information | 空間群資訊與 ITC Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
+| Symmetry Information | 空間群資訊與 *International Tables* Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
 | Beam Interaction | 電子束與晶體的交互作用：反射、衰減、散射因子、螢光 | [3. 電子束交互作用](3-beam-interaction.md) |
 | Rotation Geometry | 3D 旋轉矩陣 / 測角儀角度 | [4. 旋轉幾何](4-rotation-geometry.md) |
 | Structure Viewer | 3D 晶體結構 | [5. 結構檢視器](5-structure-viewer.md) |

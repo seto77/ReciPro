@@ -31,7 +31,7 @@
 
 ## 主區域
 
-帶有光源、晶軸與原子圖例的 3D 晶體結構。
+3D 晶體結構，並同時繪出光源方向操作器、晶軸操作器與原子圖例。
 > 視窗右上角的 **Size (W×H)** 方塊設定儲存或複製算繪影像時所使用的像素尺寸。
 > 其旁的 **ProjWidth** 方塊顯示投影檢視的寬度（nm）。編輯此值即可以數值方式縮放 — 它會與檢視上的右鍵拖曳／滾輪縮放保持同步。
 
@@ -144,7 +144,7 @@
 
 ![原子索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-座標、元素、佔有率、半徑、顏色、材質。**套用至相同元素**。
+設定每個原子的種類、位置與佔有率，以及各原子的繪製方式（半徑、顏色、材質）。
 
 #### 原子清單
 
@@ -180,7 +180,7 @@
 
 ![鍵 & 多面體索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-鍵長閾值、多面體顯示、邊。
+定義哪些原子對構成鍵（依原子種類與距離範圍），以及所產生的鍵與配位多面體的繪製方式。
 
 #### 鍵清單
 
@@ -208,7 +208,7 @@
 
 ![晶胞索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-平移、晶胞平面、邊。
+設定所繪晶胞的位置，以及是否顯示其面與邊。
 
 #### 平移
 
@@ -226,7 +226,7 @@
 
 ![晶面索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-帶有晶體學等效項的米勒指數指定。
+繪製以米勒指數指定的晶面，並可選擇一併繪出晶體學上等效的晶面。
 
 #### H k l 指數
 
@@ -240,7 +240,7 @@
 
 ![配位索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-目標原子周圍的配位表與圖。
+列出並繪製配位於所選目標原子周圍的原子。
 
 #### 表（左側）
 
@@ -260,7 +260,7 @@
 
 ![投影索引標籤](../assets/cap-zh-Hant-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-投影模式（正交／透視）、深度淡出、算繪品質、透明度模式。
+設定投影模式（正交 / 透視）、深度淡出、投影中心、算繪品質與透明度演算法。
 
 #### 投影
 
@@ -320,7 +320,7 @@
 | Unit Cell | 切換晶胞邊 |
 | Sym. Elems. | 切換對稱元素疊加（見上文） |
 | Reset Rotation | 回到初始方位 |
-| Like Vesta | Vesta 風格外觀 |
+| Like Vesta | 切換為 VESTA 風格的外觀（原子顏色與半徑） |
 
 ---
 

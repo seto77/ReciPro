@@ -129,9 +129,9 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 
 ---
 
-## 繞射波
+## 波
 
-![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - Bethe 法（動力學計算）所用布洛赫波的最大數量，預設為 80。數量越多準確度越高，但本徵值問題的求解時間為 $O(N^3)$。
 
