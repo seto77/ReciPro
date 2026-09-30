@@ -130,6 +130,7 @@ Gli angoli di Eulero non sono unici nelle posizioni di blocco cardanico (θ = 0 
 | `Thickness` | double | Spessore del campione (nm) |
 | `NumberOfDiffractedWaves` | int | Numero di onde di Bloch |
 | `CameraLength2` | double | Lunghezza di camera (mm) |
+| `ExcitationError` | double | Raggio degli spot (nm⁻¹): in modalità cinematica/di eccitazione, `SpotInfo()` esporta le riflessioni con \|Sg\| entro questo valore |
 | `SkipRendering` | bool | Salta il rendering per l'elaborazione in batch |
 
 ### Modalità del fascio

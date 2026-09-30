@@ -22,6 +22,7 @@
 | EBSD-Muster simulieren | [EBSD-Simulation](12-ebsd-simulation.md) | [Elektronenbahnen](8-electron-trajectory.md), [Anhang A3. EBSD-Berechnung](appendix/a3-bloch-wave/ebsd.md) |
 | Experimentelle Beugungsreflexe indizieren | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Beugungssimulator](7-diffraction-simulator/index.md) |
 | Die Gleichungen der dynamischen Beugung verstehen | [Anhang A3. Bloch-Wellen-Methode](appendix/a3-bloch-wave/index.md) | [Dynamische Berechnung](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| Raumgruppensymbole und Gruppe-Untergruppe-Beziehungen verstehen | [2. Symmetrieinformationen](2-symmetry-information.md) | [Anhang A4. Symmetrie und Raumgruppen](appendix/a4-symmetry-space-groups/index.md), [Raumgruppensymbole und Symmetriediagramme](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [Gruppe-Untergruppe-Beziehungen](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## Funktionen
 * **Full GUI** : Alle Operationen erfolgen über eine grafische Oberfläche. Die meisten Datei-Ein-/Ausgaben unterstützen Drag & Drop.

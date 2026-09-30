@@ -33,7 +33,7 @@ Diese drei Konventionen beschreiben dieselbe Geometrie; nur die Skala unterschei
 | Beugungspeak-Diagramm | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Einheiten"
-    Die veröffentlichten Parametrisierungen der Formfaktoren verwenden $s$ in Å⁻¹ (also $s^2$ in Å⁻²), während ReciPro intern $s^2$ in nm⁻² führt. Die beiden unterscheiden sich um einen Faktor $100$ in $s^2$; die Kurven und Tabellen werden in den Einheiten dargestellt, die in der Kopfzeile jeder Tabelle angegeben sind. Ein Modell — **Kirkland** — ist gegen $q = 2s = 1/d$ statt gegen $s$ tabelliert; siehe [Atomic scattering factors](scattering-factor.md).
+    Die veröffentlichten Parametrisierungen der Formfaktoren verwenden $s$ in Å⁻¹ (also $s^2$ in Å⁻²), während ReciPro intern $s^2$ in nm⁻² führt. Die beiden unterscheiden sich um einen Faktor $100$ in $s^2$; die Kurven und Tabellen werden in den Einheiten dargestellt, die in der Kopfzeile jeder Tabelle angegeben sind. Ein Modell — **Kirkland** — ist gegen $q_K = 2s = 1/d$ statt gegen $s$ tabelliert; siehe [Atomare Streufaktoren](scattering-factor.md). Beachten Sie, dass dieses $q_K$ **nicht** das $q = 2\pi/d$ der obigen Reflextabelle ist: Die beiden unterscheiden sich um einen Faktor $2\pi$.
 
 ### Bragg, Laue und die Ewald-Kugel
 
@@ -61,7 +61,7 @@ d. h. einem **Minus**-Zeichen im Exponenten. Diese Wahl legt das Vorzeichen des 
 
 ## Kinematische vs. dynamische Streuung
 
-Dieser Anhang behandelt **Einfach- (kinematische) Streuung**: der einfallende Strahl wird einmal gestreut, und die gebeugte Amplitude ist der Strukturfaktor der nächsten Seite. Das ist das richtige Bild, wenn die Wechselwirkung schwach ist — Röntgenstrahlen und Neutronen in fast allen Proben, und Elektronen in *sehr dünnen* Präparaten.
+Dieser Anhang behandelt **Einfach- (kinematische) Streuung**: der einfallende Strahl wird einmal gestreut, und die gebeugte Amplitude ist der Strukturfaktor der nächsten Seite. Das ist das richtige Bild, wenn die Wechselwirkung schwach ist — Röntgenstrahlen und Neutronen in Pulvern, gestörten Kristallen und dünnen Proben, und Elektronen in *sehr dünnen* Präparaten. (Selbst Röntgenstrahlen verhalten sich in einem großen, nahezu perfekten Kristall dynamisch; dort schwächt die Primärextinktion die stärksten Reflexe.)
 
 Wenn die Wechselwirkung stark ist — Elektronen in allen außer den dünnsten Kristallen — wird der Strahl vielfach gestreut, bevor er austritt, die Intensität wird unter den Reflexen umverteilt, und $\lvert F\rvert^2$ liefert nicht mehr die gemessene Intensität. Dieses Regime erfordert die **dynamische** Theorie aus [Appendix A3](../a3-bloch-wave/index.md). Die hier hergeleiteten Streufaktoren und Strukturfaktoren sind die *Eingabe* für beide Bilder.
 

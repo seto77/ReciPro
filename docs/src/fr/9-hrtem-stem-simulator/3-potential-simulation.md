@@ -20,9 +20,9 @@ Les électrons à l'intérieur d'un cristal sont diffusés par le potentiel cris
 
 ![Conditions TEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — tension d'accélération. Elle définit la longueur d'onde des électrons et sert à calculer les coefficients de Fourier $U_g$ du potentiel.
+- **Tension d'accél. (kV)** — tension d'accélération. Elle définit la longueur d'onde des électrons et sert à calculer les coefficients de Fourier $U_g$ du potentiel.
 
-> **Defocus, Cs, Cc, β, ΔE et la PCTF sont inactifs en mode potentiel** (aucune optique de formation de l'image n'est appliquée) et apparaissent grisés.
+> **Defocus, Cs, Cc, β, ΔV et la PCTF sont inactifs en mode potentiel** (aucune optique de formation de l'image n'est appliquée) et apparaissent grisés.
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 ---
 
-## Ondes diffractées
+## Ondes
 
-![Ondes diffractées](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — nombre maximal d'ondes de Bloch (coefficients de Fourier) inclus dans la synthèse de Fourier du potentiel (80 par défaut). Des valeurs plus grandes incluent des fréquences spatiales plus élevées et reproduisent des détails plus fins du potentiel.
 

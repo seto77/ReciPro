@@ -130,6 +130,7 @@ for k in range(-2, 3):
 | `Thickness` | double | 試樣厚度 (nm) |
 | `NumberOfDiffractedWaves` | int | 布洛赫波的數目 |
 | `CameraLength2` | double | 相機長度 (mm) |
+| `ExcitationError` | double | 繞射點半徑 (nm⁻¹)：在運動學／激發誤差模式下，`SpotInfo()` 會匯出 \|Sg\| 在此值以內的反射 |
 | `SkipRendering` | bool | 跳過算繪以進行批次處理 |
 
 ### 束模式

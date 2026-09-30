@@ -54,14 +54,16 @@ La lunghezza di camera (mm) e la dimensione del pixel del rivelatore (mm o nm⁻
 
 ![Informazioni spot](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Detect & Fit Spots**: Rilevamento automatico degli spot mediante massimi locali e sottrazione del fondo.
-- **Number**: Il numero massimo di spot da rilevare.
-- **Nearest neighbour**: La separazione minima (px) consentita tra gli spot rilevati. I picchi più vicini di questo valore vengono uniti, impedendo la doppia rilevazione dello stesso spot.
-- **Fitting range (radius)**: Il raggio (px) della regione circolare usata per fittare il picco di ogni spot. I pixel all'interno di questo cerchio vengono fittati con una funzione pseudo-Voigt.
-- **Apply to All**: Imposta il raggio di fitting di ogni spot al valore corrente di **Fitting range (radius)**.
-- **Delete spot / Clear spots**: Rimuove singoli spot o tutti gli spot rilevati.
-- **Copy to clipboard**: Copia le posizioni e le intensità degli spot negli appunti.
-- **Details of the spot**: Se selezionato, apre una finestra che mostra informazioni dettagliate sullo spot attualmente selezionato.
+- **Rileva & adatta spot**: Rilevamento automatico degli spot mediante massimi locali e sottrazione del fondo.
+- **Numero**: Il numero massimo di spot da rilevare.
+- **Primo vicino**: La separazione minima (px) consentita tra gli spot rilevati. I picchi più vicini di questo valore vengono uniti, impedendo la doppia rilevazione dello stesso spot.
+- **Raggio adattam.**: Il raggio (px) della regione circolare usata per fittare il picco di ogni spot. I pixel all'interno di questo cerchio vengono fittati con una funzione pseudo-Voigt.
+- **Applica a tutti**: Imposta il raggio di fitting di ogni spot al valore corrente di **Raggio adattam.**.
+- **Elimina / Cancella tutto**: Rimuove lo spot selezionato oppure tutti gli spot rilevati.
+- **Copia**: Copia le posizioni e le intensità degli spot negli appunti.
+- **Adattamento globale**: Esegue un fit globale di tutte le posizioni degli spot contemporaneamente (sperimentale).
+- **Donut**: Applica una sottrazione del fondo a forma di ciambella (sperimentale); la casella adiacente imposta la larghezza (px) dell'anello attorno a ciascuno spot la cui media viene sottratta come fondo locale.
+- **Dettagli spot**: Se selezionato, apre una finestra che mostra informazioni dettagliate sullo spot attualmente selezionato.
 
 ![Details of the spot](../assets/cap-it-auto/FormSpotIDv2Details.png)
 
@@ -71,10 +73,10 @@ La lunghezza di camera (mm) e la dimensione del pixel del rivelatore (mm o nm⁻
 
 ![Index](../assets/cap-it-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
-- **Identify Spots**: Esegue l'algoritmo di indicizzazione per trovare il cristallo e l'asse di zona che meglio corrispondono.
-- **Acceptable error**: Imposta la deviazione accettabile nella distanza interplanare e nell'angolo per una corrispondenza.
-- **Ignore prohibited reflections**: Se selezionato, le riflessioni vietate da assi elicoidali e piani di scorrimento vengono trattate come non necessariamente soddisfatte durante la ricerca dell'asse di zona.
-- **Single Grain / Multiple Grains**: Cerca un singolo orientamento (monocristallo) oppure più orientamenti (una regione policristallina / multigrano). Per più grani, **Max. num. of grains** imposta il limite superiore al numero di grani da cercare.
+- **Identifica spot**: Esegue l'algoritmo di indicizzazione per trovare il cristallo e l'asse di zona che meglio corrispondono.
+- **Errore accettabile**: Imposta la deviazione accettabile nella distanza interplanare e nell'angolo per una corrispondenza.
+- **Ignora riflessioni proibite**: Se selezionato, le riflessioni vietate da assi elicoidali e piani di scorrimento vengono trattate come non necessariamente soddisfatte durante la ricerca dell'asse di zona.
+- **Grano singolo / Grani multipli**: Cerca un singolo orientamento (monocristallo) oppure più orientamenti (una regione policristallina / multigrano). Per più grani, **Max. num. of grains** imposta il limite superiore al numero di grani da cercare.
 - **Results**: Le migliori corrispondenze vengono visualizzate con il nome del cristallo, l'asse di zona [uvw] e gli indici dei singoli spot (hkl).
 
 ---

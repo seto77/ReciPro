@@ -33,11 +33,13 @@ Die obere Hälfte des Fensters zeigt den Rotationszustand im "ReciPro-Koordinate
 
 ### Φ, θ, Ψ (Z–X–Z-Eulerwinkel)
 
-Die Kristallorientierung wird durch drei Rotationen parametrisiert, die in dieser Reihenfolge angewendet werden:
+Die Kristallorientierung wird durch drei Rotationen parametrisiert. Im **körperfesten (intrinsischen)** Bezugssystem beschrieben, werden sie in dieser Reihenfolge angewendet:
 
 1. **Φ** — erste Rotation um die **Z**-Achse.
 2. **θ** — Rotation um die **X**-Achse des einmal gedrehten Bezugssystems.
 3. **Ψ** — zweite Rotation um die **Z**-Achse des zweimal gedrehten Bezugssystems.
+
+Dieselbe Rotation, im **raumfesten Labor**-Bezugssystem betrachtet, ist die umgekehrte Abfolge (Ψ um $Z$, dann θ um $X$, dann Φ um $Z$); diese Beschreibung wird in [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md) verwendet. Beide ergeben die identische Matrix $R$ unten; Φ ist einfach die äußerste (goniometerartige) Achse und Ψ die innerste.
 
 Jedes Zahlenfeld ist editierbar; eine Wertänderung hier aktualisiert das Hauptfenster und jeden verknüpften Simulator.
 
@@ -76,7 +78,7 @@ Dieselbe Matrix (\(R_{ij}\) = Zeile \(i\), Spalte \(j\)) erscheint als:
 
 ### OpenGL-Fenster
 
-Die 3D-Ansicht zeigt die aktuelle Rotation mithilfe von drei farbigen Tori (Donuts):
+Die 3D-Ansicht zeigt die aktuelle Rotation mithilfe von drei farbigen Tori (Donut-Formen):
 
 | Farbe | Eulerwinkel | Goniometerebene |
 |--------|------------|-----------------|

@@ -82,7 +82,7 @@ Controlla come viene rappresentato ciascuno spot di diffrazione.
 - **Color scale** : **Gray scale** oppure **Cold-warm**.
 - **Log scale** : visualizza le intensità su scala logaritmica. Utile per pattern con grande contrasto di intensità.
 - **Spot color** : colore dello spot usato quando la scala di colori non è in uso.
-- **Use crystal color** : se selezionato, gli spot vengono disegnati nel colore assegnato a ciascun cristallo.
+- **Color per crystal** : se selezionato, gli spot vengono disegnati nel colore assegnato a ciascun cristallo.
 
 ---
 

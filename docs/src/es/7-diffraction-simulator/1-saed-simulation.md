@@ -82,7 +82,7 @@ Controla cómo se representa cada spot de difracción.
 - **Color scale** : **Gray scale** o **Cold-warm**.
 - **Log scale** : muestra las intensidades en escala logarítmica. Útil para patrones con gran contraste de intensidad.
 - **Spot color** : color del spot utilizado cuando no se emplea la escala de color.
-- **Use crystal color** : cuando está marcado, los spots se dibujan con el color asignado a cada cristal.
+- **Color por cristal** : cuando está marcado, los spots se dibujan con el color asignado a cada cristal.
 
 ---
 

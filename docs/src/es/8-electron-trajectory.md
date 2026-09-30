@@ -1,14 +1,16 @@
 # Trayectorias electrónicas
 
-El **Simulador de trayectorias** calcula las trayectorias de los electrones dentro de una muestra mediante el **método de Monte-Carlo**: los electrones incidentes experimentan dispersión elástica e inelástica, y se acumulan las distribuciones resultantes de los electrones retrodispersados (dirección, energía, profundidad de penetración). Estas distribuciones también alimentan la ponderación angular/de energía/de profundidad utilizada por la [12. Simulación EBSD](12-ebsd-simulation.md).
+El **Simulador de trayectorias (método de Monte Carlo)** calcula las trayectorias de los electrones dentro de una muestra mediante el **método de Monte Carlo**: los electrones incidentes experimentan dispersión elástica e inelástica, y se acumulan las distribuciones resultantes de los electrones retrodispersados (BSE): dirección, energía al escapar, profundidad de penetración y extensión lateral. Estas distribuciones también alimentan la ponderación angular/de energía/de profundidad utilizada por la [12. Simulación EBSD](12-ebsd-simulation.md).
 
 ![Electron Trajectory](../assets/cap-es-auto/FormTrajectory.png)
+
+La ventana tiene tres columnas: la **vista 3-D de trayectorias** a la izquierda, las **Estadísticas** y el estereograma de **Distribución de direcciones de BSE** en el centro, y tres **histogramas** a la derecha. La composición y la densidad de la muestra se toman del cristal seleccionado en la ventana principal; aquí solo se ajustan la energía del haz, la inclinación de la muestra y el número de trayectorias.
 
 ---
 
 ## Atajos de teclado y ratón
 
-Las trayectorias se muestran en una vista 3-D de OpenGL. Utiliza la [navegación de vista](21-shortcuts.md) estándar de ReciPro, pero **el desplazamiento está deshabilitado** — utilice los botones de vista predefinida para saltar a las orientaciones estándar.
+Las trayectorias se muestran en una vista 3-D de OpenGL. Utiliza la [navegación de vista](21-shortcuts.md) estándar de ReciPro, pero **el desplazamiento está deshabilitado**: utilice los botones de vista predefinida para saltar a las orientaciones estándar.
 
 | Atajo | Acción |
 |----------|--------|
@@ -23,45 +25,24 @@ Las trayectorias se muestran en una vista 3-D de OpenGL. Utiliza la [navegación
 
 ## Condiciones de cálculo
 
-Energía del haz, número de electrones incidentes, muestra/material y otros parámetros de Monte-Carlo (consulte la captura de pantalla general de arriba).
+Los controles de la parte superior de la ventana configuran la ejecución:
 
-### Energía del haz
+- **Simular trayectorias** : inicia la ejecución de Monte Carlo. La barra de estado de la parte inferior muestra por separado el tiempo empleado en el cálculo de trayectorias, en el dibujo de los gráficos y en la representación 3-D.
+- **Number of trajectories** : cuántos electrones incidentes se siguen. Más electrones reducen el ruido estadístico de todas las distribuciones descritas más abajo, a costa de un tiempo de ejecución que crece linealmente.
+- **Inclinación de la muestra** (°) : inclinación de la superficie de la muestra alrededor del eje *X*. Déjela en 0 para incidencia normal; utilice **−70°** para reproducir la geometría del [simulador EBSD](12-ebsd-simulation.md), donde la gran inclinación aumenta el rendimiento de retrodispersión.
+- **Energy** (keV) / **Wavelength** / **Unit** : el voltaje de aceleración del haz incidente y la longitud de onda del electrón asociada, con corrección relativista. La energía fija la energía cinética utilizada tanto por el modelo elástico (Mott del NIST) como por los inelásticos (poder de frenado / IMFP).
 
-Voltaje de aceleración del haz de electrones incidente (keV). Establece la energía cinética utilizada tanto para los modelos de dispersión elástica (Mott) como inelástica (respuesta dieléctrica).
+Los modelos de dispersión en sí no son seleccionables por el usuario: las secciones eficaces elásticas proceden de la tabla de Mott del NIST incluida (con Rutherford apantallado como alternativa fuera de su rango), y el poder de frenado de la forma de Jablonski modificada (2008). El modelo realmente utilizado se indica junto a cada valor en **Estadísticas**. Consulte [Atenuación y transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber en qué consisten estos modelos.
 
-### Número de electrones incidentes
+### Vista 3-D de trayectorias
 
-Cuántos electrones se simularán. Más electrones reducen el ruido estadístico, pero aumentan el tiempo de ejecución de forma lineal.
+Las trayectorias rojas corresponden a electrones absorbidos en la muestra, y las naranjas a los que escapan como electrones retrodispersados. Los círculos guía concéntricos están rotulados en nm (o µm), y **+X**, **+Y**, **+Z (=beam)** marcan los ejes.
 
-### Muestra / material
-
-Composición y densidad de la muestra. Por defecto utiliza el cristal seleccionado actualmente en la ventana principal, pero puede sobrescribirse para estudios exclusivos de trayectorias.
-
-### Inclinación de la muestra
-
-Ángulo de inclinación de la muestra. Se utiliza cuando los datos de trayectorias alimentan el [simulador EBSD](12-ebsd-simulation.md) (normalmente 70° para EBSD).
-
-### Modelo de sección eficaz
-
-El modelo de la sección eficaz de dispersión elástica (Mott / Bethe / NIST). Los distintos modelos sacrifican velocidad por precisión con ángulos de inclinación grandes o cerca de los bordes de absorción.
-
----
-
-## Opciones del estereograma
-
-Opciones de visualización para la distribución angular dibujada sobre la proyección estereográfica (consulte la captura de pantalla general de arriba).
-
-### Método de proyección
-
-Proyección **Wulff** (de igual ángulo) o **Schmidt** (de igual área). Schmidt suele preferirse al leer la densidad estadística.
-
-### Hemisferio
-
-Representa el hemisferio superior (retrodispersado) o inferior (transmitido).
-
-### Resolución / Escala de color
-
-Tamaño de clase del histograma angular y el mapa de color utilizado para la visualización de la densidad.
+- **Desde el eje Z (=dirección del haz)** / **Desde el eje X (eje de rotación)** / **Normal a la superficie** : ajustan la vista a las direcciones estándar.
+- **Número de trayectorias a dibujar** : cuántas de las trayectorias calculadas se representan (dibujar las 100 000 sería ilegible y lento).
+- **Dibujar ejes** / **Dibujar círculos guía** : las flechas de los ejes y la escala de distancias.
+- **Dibujar trayectorias absorbidas en la muestra** : incluye los electrones que nunca escapan.
+- **Dibujar la trayectoria tras el escape** : sigue dibujando la trayectoria de un electrón retrodispersado después de que haya abandonado la superficie.
 
 ---
 
@@ -69,36 +50,45 @@ Tamaño de clase del histograma angular y el mapa de color utilizado para la vis
 
 ![Estadísticas](../assets/cap-es-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Resumen de la ejecución.
+Valores para la energía del haz actual, con el modelo que ha producido cada uno indicado entre corchetes.
 
-- **Rendimiento de retrodispersión** — fracción de electrones incidentes que salen a través de la superficie de entrada.
-- **Recorrido libre medio** — distancia promedio entre eventos de dispersión.
-- **Profundidad de penetración media** — profundidad máxima promedio alcanzada por un electrón antes de salir o ser absorbido.
-- **Tiempo transcurrido / Rendimiento** — coste en tiempo real de la ejecución.
+- **Sección eficaz de dispersión (σ_E)** (nm²): sección eficaz elástica total por átomo.
+- **Recorrido libre medio elástico (λ)** (nm): distancia media entre eventos de dispersión elástica.
+- **Poder de frenado (dE/ds)** (eV/nm, negativo): energía perdida por unidad de longitud de trayectoria.
+- **Coeficiente de retrodispersión electrónica, η** (%): fracción de electrones incidentes que vuelven a salir por la superficie de entrada. Es la magnitud en la que se basa el contraste de las imágenes de BSE.
+- **Energía media de BSE** (keV): energía media de los electrones retrodispersados en el momento en que escapan.
 
 ---
 
-## Distribución direccional de BSE
+## Distribución de direcciones de BSE
 
 ![Distribución de direcciones de BSE](../assets/cap-es-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
-Distribución angular de los electrones retrodispersados (el centro del estereograma corresponde a la dirección normal a la superficie). El contorno amarillo/naranja (cuando está presente) marca la región subtendida por el detector EBSD.
+Distribución angular de los electrones retrodispersados, dibujada sobre un estereograma cuyo centro es la dirección normal a la superficie.
+
+- **Frecuencia** / **Energía media** / **Desviación estándar de energía** : la magnitud representada en color: cuántos electrones salen en cada dirección, su energía media o la dispersión de esa energía.
+- **Dibujar ejes** : superpone las direcciones +X / ±Y / ±Z.
+- **Min** / **Max**, **Resolution**, **Color** : los límites de la escala de color, el tamaño de clase angular del histograma y el mapa de color.
 
 ---
 
-## Perfiles
+## Histogramas
 
-![Profiles](../assets/cap-es-auto/FormTrajectory.flowLayoutPanelProfiles.png)
+![Histogramas](../assets/cap-es-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Perfiles de profundidad y energía de los electrones simulados.
+Tres distribuciones de los electrones retrodispersados, todas normalizadas a área unidad.
 
-### Perfil de profundidad
+### Distribución de energía de BSE al escapar
 
-Histograma de la profundidad final de salida (nm) de los electrones retrodispersados. Lo utiliza el simulador EBSD para ponderar la integración en profundidad del master pattern.
+Histograma de la **energía que los electrones retrodispersados conservan todavía cuando abandonan la muestra** (keV), no de su pérdida de energía. El simulador EBSD la utiliza para ponderar la integración en energía del master pattern.
 
-### Perfil de energía
+### Distancia máxima de BSE paralela a la superficie
 
-Histograma de la pérdida de energía ΔE (keV) de los electrones retrodispersados. Lo utiliza el simulador EBSD para ponderar la integración en energía.
+Histograma de la distancia que cada electrón retrodispersado recorrió **lateralmente** (en paralelo a la superficie, nm) antes de escapar. Corresponde al tamaño lateral del volumen de interacción y, por tanto, al límite intrínseco de resolución espacial de una medida de BSE o EBSD.
+
+### Profundidad máxima de penetración de BSE
+
+Histograma de la mayor profundidad **perpendicular a la superficie** (nm) alcanzada por cada electrón retrodispersado antes de escapar. El simulador EBSD la utiliza para ponderar la integración en profundidad del master pattern.
 
 ---
 
@@ -106,6 +96,7 @@ Histograma de la pérdida de energía ΔE (keV) de los electrones retrodispersad
 
 - [Simulación EBSD](12-ebsd-simulation.md)
 - [Cálculo EBSD](appendix/a3-bloch-wave/ebsd.md)
+- [Atenuación y transporte](appendix/a2-beam-interaction/attenuation-transport.md): las secciones eficaces elásticas, el poder de frenado y los alcances utilizados aquí.
 - [Difracción dinámica (onda de Bloch)](appendix/a3-bloch-wave/index.md)
 - [Simulador HRTEM/STEM](9-hrtem-stem-simulator/index.md)
 - [Simulador de difracción](7-diffraction-simulator/index.md)

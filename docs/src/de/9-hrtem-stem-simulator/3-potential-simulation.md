@@ -20,9 +20,9 @@ Elektronen innerhalb eines Kristalls werden am Kristallpotential gestreut. Seine
 
 ![TEM-Bedingungen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — Beschleunigungsspannung. Sie legt die Elektronenwellenlänge fest und wird zur Berechnung der Fourier-Koeffizienten $U_g$ des Potentials verwendet.
+- **Beschl.-Spannung (kV)** — Beschleunigungsspannung. Sie legt die Elektronenwellenlänge fest und wird zur Berechnung der Fourier-Koeffizienten $U_g$ des Potentials verwendet.
 
-> **Defocus, Cs, Cc, β, ΔE und die PCTF sind im Potentialmodus inaktiv** (es wird keine bildgebende Optik angewendet) und erscheinen ausgegraut.
+> **Defokus, Cs, Cc, β, ΔV und die PCTF sind im Potentialmodus inaktiv** (es wird keine bildgebende Optik angewendet) und erscheinen ausgegraut.
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ und $U'_g$ können gleichzeitig angezeigt werden (für jedes angekreuzte w
 
 ---
 
-## Gebeugte Wellen
+## Wellen
 
-![Gebeugte Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — maximale Anzahl der Bloch-Wellen (Fourier-Koeffizienten), die in die Fourier-Synthese des Potentials einbezogen werden (Standard 80). Größere Werte beziehen höhere Raumfrequenzen ein und geben feinere Details des Potentials wieder.
 

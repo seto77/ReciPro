@@ -54,7 +54,7 @@ Dalla geometria,
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-e l'**errore di eccitazione** $S_g$ (la deviazione del nodo del reticolo reciproco dalla sfera di Ewald) insieme alla **funzione di valutazione** $R$ usata per ordinare le riflessioni sono
+e l'**errore di eccitazione** $S_g$ (la deviazione del nodo del reticolo reciproco dalla sfera di Ewald) insieme alla **funzione di valutazione** $R$ usata per ordinare le riflessioni ($R$ più piccolo = $\mathbf g$ corto e vicino alla sfera di Ewald, preso per primo) sono
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

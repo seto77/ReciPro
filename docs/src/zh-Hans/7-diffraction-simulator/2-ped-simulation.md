@@ -76,10 +76,10 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 - **Opacity** : 衍射斑的透明度（0 = 透明，1 = 不透明）。
 - **Radius (R)** : 倒易点阵点的半径。对于动力学强度，高斯积分 $=$ Brightness $\times I_\text{dyn}$，而 Solid sphere 使用半径 $R \times I_\text{dyn}^{1/2}$（使面积正比于动力学强度）。
 - **Brightness** : 仅在 **Gaussian** 模式下可用。所绘高斯函数的积分强度。
-- **Colour scale** : **Gray scale** 或 **Cold-warm** 配色。
-- **Log scale** : 以对数刻度显示强度。
-- **Spot colour** : 未应用配色时所用的衍射斑颜色。
-- **Use crystal colour** : 以分配给每个晶体的颜色绘制衍射斑。
+- **色阶** : **Gray scale** 或 **Cold-warm** 配色。
+- **对数刻度** : 以对数刻度显示强度。
+- **斑点颜色** : 未应用配色时所用的衍射斑颜色。
+- **按晶体指定颜色** : 以分配给每个晶体的颜色绘制衍射斑。
 
 ---
 

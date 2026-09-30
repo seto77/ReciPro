@@ -55,11 +55,11 @@ $$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\varphi),$$
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-其中 $n_i$ 为元素 $i$ 的数密度，$r_e$ 为经典电子半径。这里 $\mu_\text{abs}$ 是衰减中的吸收部分（与 $f''$ 关联）；它不必等于上文的总 $\mu$，后者还包含瑞利散射和康普顿散射。由于 $n<1$，X 射线在一个小的掠射**临界角**以下会发生**全外反射**
+其中 $n_i$ 为元素 $i$ 的数密度，$r_e$ 为经典电子半径。这里 $\mu_\text{abs}$ 是衰减中的吸收部分（与 $f''$ 关联）；它不必等于上文的总 $\mu$，后者还包含瑞利散射和康普顿散射。当 $\delta>0$ 时折射率小于 1，因此 X 射线在一个小的掠射**临界角** $\alpha_c$ 以下会发生**全外反射**：
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-这源自折射几何：对于掠射角 $\alpha$，固体内部的竖直波矢为 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$，它在 $\alpha = \alpha_c = \sqrt{2\delta}$ 处达到零；在此以下波无法传入材料并被全反射。**散射长度密度**的实部 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ 决定 $\delta$，是反射率测量中所用中子 SLD 的 X 射线类比量。ReciPro 在标量表中给出 $\delta$、$\beta$、$\theta_c$ 以及 X 射线 SLD。
+这源自折射几何：对于掠射角 $\alpha$，固体内部的竖直波矢为 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$，它在 $\alpha = \alpha_c = \sqrt{2\delta}$ 处达到零；在此以下波无法传入材料并被全反射。该表达式假设无损耗极限 $\beta \ll \delta$：当 $\beta$ 有限时，倏逝波仍会穿透几纳米，反射率也略低于 1。在吸收边的高能侧附近，$\delta$ 甚至可能变为负值，此时不存在临界角，ReciPro 也不给出该值。**散射长度密度**的实部 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ 决定 $\delta$，是反射率测量中所用中子 SLD 的 X 射线类比量。ReciPro 给出 $\delta$、$\beta$、$\alpha_c$（在标量表中列为 **θc**）以及 X 射线 SLD。
 
 ---
 
@@ -69,7 +69,7 @@ $$\theta_c \simeq \sqrt{2\delta}.$$
 
 ### 弹性散射与平均自由程
 
-弹性截面 $\sigma_\text{el}$ 衡量单个原子使电子偏转的难易程度。ReciPro 使用 **NIST Mott** 截面（屏蔽原子势中相对论 Dirac 方程的分波解），大致在 **50 eV – 36.4 keV** 范围内有效；超出该范围，或对于表中没有的元素，则回退到**屏蔽 Rutherford** 近似。两者在边界处不必完美光滑地衔接。总截面是微分截面的角度积分，
+弹性截面 $\sigma_\text{el}$ 衡量单个原子使电子偏转的难易程度。ReciPro 使用 **NIST Mott** 截面（屏蔽原子势中相对论 Dirac 方程的分波解）。内置数据表覆盖 **50 eV – 36.4 keV**（这是 ReciPro 自身制表的范围，而非 Mott 方法本身的限制）；超出该范围，或对于表中没有的元素，则回退到**屏蔽 Rutherford** 近似。两者在边界处不必完美光滑地衔接。总截面是微分截面的角度积分，
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ $$\Sigma_\text{el} = \sum_i n_i\,\sigma_{\text{el},i}, \qquad \lambda_\text{el} 
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-其中此处的 $s$ 是沿轨迹的**路径长度**（选项卡 *|dE/ds|* 曲线的变量），而非本附录其他地方所用的散射变量 $\sin\theta/\lambda$。能量梯度 $dE/ds$ 为负，因此选项卡将 $S$ 向上绘出。在 keV 能量下，它在概念上遵循 **Bethe** 形式
+其中此处的 $s$ 是沿轨迹的**路径长度**（选项卡 *|dE/ds|* 曲线的变量），而非本附录其他地方所用的散射变量 $\sin\theta/\lambda$。梯度 $dE/ds$ 本身为负，因此选项卡将其大小 $S$ 向上绘出。在 keV 能量下，它在概念上遵循 **Bethe** 形式
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-其中 $J$ 为固体的**平均激发能**。这个非相对论的草图仅展示标度关系；ReciPro 实际计算的是一个经修正/经验的形式（Joy–Luo 类型），它在低能量下仍表现良好。标量表中的**等离激元能量** $E_p$ 是对同一电子激发的一个相关但独立的表征。**非弹性平均自由程**（IMFP）是损失能量的碰撞之间相应的平均距离；ReciPro 可由 **TPP-2M** 预测公式计算它，
+其中 $J$ 为固体的**平均激发能**。这个非相对论的草图仅展示标度关系；ReciPro 实际计算的是修正的 **Jablonski (2008)** 形式，它在低能量下仍表现良好（较早的 **Joy–Luo (1989)** 经验形式也已实现）。标量表中的**等离激元能量** $E_p$ 是对同一电子激发的一个相关但独立的表征。**非弹性平均自由程**（IMFP）是损失能量的碰撞之间相应的平均距离；ReciPro 可由 **TPP-2M** 预测公式计算它，
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 ## 另见
 
-- [原子散射因子](scattering-factor.md) —— 瑞利/康普顿背后的 $F(q)$/$S(q)$ 划分，以及 Mott 截面。
+- [原子散射因子](scattering-factor.md) —— 瑞利/康普顿背后的 $F(q)$/$S(q)$ 划分，以及 Mott–Bethe 关系（与上文所用的 NIST Mott 截面是不同的模型）。
 - [荧光](fluorescence.md) —— 跟随 X 射线光电吸收而来的弛豫。
 - [3. 射束相互作用](../../3-beam-interaction.md) —— *衰减 & 输运* 选项卡。
 - [8. 电子轨迹](../../8-electron-trajectory.md) · [12. EBSD 模拟](../../12-ebsd-simulation.md) —— 电子射程被用到的地方。

@@ -17,11 +17,11 @@ $$E_\gamma = E_B(\text{inner shell}) - E_B(\text{outer shell}),$$
 - **K 线** — $K$ 壳层的空位由 $L$（$K\alpha$）或 $M$（$K\beta$）填充。
 - **L 线** — $L$ 壳层的空位由 $M$/$N$（$L\alpha$, $L\beta$, …）填充。
 
-只有偶极选择定则所允许的跃迁才会出现，这就是为什么谱是几条离散的线（K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …）而不是连续谱。它们的能量遵循 **莫塞莱定律**；在屏蔽类氢近似下，
+谱之所以是几条离散的线（K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …）而不是连续谱，是因为壳层能量本身是量子化的；电偶极选择定则则决定其中哪些跃迁较强（较弱的禁戒线、多极线和伴线确实存在）。它们的能量遵循 **莫塞莱定律**；在屏蔽类氢近似下，
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-其中 $\sigma$ 是屏蔽常数。对于 $K\alpha$（$n_2{=}2\to n_1{=}1$, $\sigma\approx1$），这化简为 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$。这种单调的、由电子数驱动的 $Z$ 依赖性，是元素鉴定（EDX/WDX）的基础。
+其中 $\sigma$ 是屏蔽常数。对于 $K\alpha$（$n_2{=}2\to n_1{=}1$, $\sigma\approx1$），这化简为 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$。这种 $Z$ 依赖性由 **核电荷** 驱动，只是被其余电子屏蔽，因此是单调的，且基本不受化学状态影响——正因如此，它成为元素鉴定（EDX/WDX）的基础。
 
 ---
 

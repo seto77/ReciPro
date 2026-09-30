@@ -18,8 +18,8 @@ L'immagine HRTEM si forma a partire dalla funzione d'onda sulla superficie di us
 | $C_s$ | coefficiente di aberrazione sferica |
 | $C_c$ | coefficiente di aberrazione cromatica |
 | $\beta$ | semiangolo di illuminazione (dimensione finita della sorgente) |
-| $\Delta E$ | larghezza $1/e$ delle fluttuazioni di energia dell'elettrone |
-| $\Delta_0$ | larghezza $1/e$ della dispersione di defocalizzazione (gaussiana), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **deviazione standard** (rms) della fluttuazione di energia dell'elettrone. La casella **ΔV** della GUI accetta la FWHM, quindi $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | deviazione standard della dispersione (gaussiana) della defocalizzazione, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-Nel limite $\mathbf u' \to \mathbf u$ il TCC si riduce agli inviluppi quasi-coerenti riportati sopra.
+Ponendo $\mathbf u' = \mathbf 0$ — interferenza del fascio $\mathbf u$ con il fascio trasmesso — si ritrovano gli inviluppi a singola frequenza $E_c(\mathbf u)$ ed $E_s(\mathbf u)$ del modello quasi-coerente riportato sopra. L'altro limite, $\mathbf u' \to \mathbf u$, dà $E_c = E_s = 1$ e quindi il termine diagonale $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ usato più avanti.
 
 ---
 

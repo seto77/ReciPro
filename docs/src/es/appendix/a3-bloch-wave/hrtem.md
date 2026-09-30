@@ -18,8 +18,8 @@ La imagen HRTEM se forma a partir de la función de onda en la superficie de sal
 | $C_s$ | coeficiente de aberración esférica |
 | $C_c$ | coeficiente de aberración cromática |
 | $\beta$ | semiángulo de iluminación (tamaño finito de la fuente) |
-| $\Delta E$ | anchura $1/e$ de las fluctuaciones de energía del electrón |
-| $\Delta_0$ | anchura $1/e$ de la dispersión del desenfoque (gaussiana), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **desviación estándar** (rms) de la fluctuación de energía del electrón. La casilla **ΔV** de la GUI admite la FWHM, por lo que $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | desviación estándar de la dispersión (gaussiana) del desenfoque, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-En el límite $\mathbf u' \to \mathbf u$ el TCC se reduce a las envolventes cuasi-coherentes anteriores.
+Tomando $\mathbf u' = \mathbf 0$ (interferencia del haz $\mathbf u$ con el haz transmitido) se recuperan las envolventes de frecuencia única $E_c(\mathbf u)$ y $E_s(\mathbf u)$ del modelo cuasi-coherente anterior. El otro límite, $\mathbf u' \to \mathbf u$, da $E_c = E_s = 1$ y, por tanto, el término diagonal $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ utilizado más abajo.
 
 ---
 

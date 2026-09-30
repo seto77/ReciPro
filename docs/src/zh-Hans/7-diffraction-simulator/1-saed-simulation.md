@@ -82,7 +82,7 @@ GUI 条件：Wave Length = Electron，Incident beam mode = Parallel，Intensity 
 - **Color scale** ：**Gray scale** 或 **Cold-warm**。
 - **Log scale** ：以对数刻度显示强度。对强度对比度大的图样很有用。
 - **Spot color** ：未使用颜色刻度时所用的斑点颜色。
-- **Use crystal color** ：勾选后，斑点以分配给各晶体的颜色绘制。
+- **Color per crystal** ：勾选后，斑点以分配给各晶体的颜色绘制。
 
 ---
 

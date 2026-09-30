@@ -150,8 +150,8 @@ Los ejes que discurren oblicuos o contenidos en la página (esto solo ocurre par
 
 Una etiqueta de altura fraccionaria (p. ej. `1/4`) junto a un símbolo da su coordenada a lo largo del eje de proyección siempre que el elemento no esté contenido en el plano de altura 0.
 
-!!! note "Grupos cúbicos de red F: solo se dibuja un octante"
-    Para los grupos espaciales cúbicos centrados $F$, ReciPro dibuja solo el cuadrante superior izquierdo de un octavo de la celda (de lo contrario el diagrama sería demasiado denso para leerse); la celda completa lo repite mediante las traslaciones de centrado y mediante los propios elementos de simetría dibujados. Los mismos elementos de simetría también pueden superponerse directamente sobre el modelo 3D en el [Visor de estructura](../../5-structure-viewer.md).
+!!! note "Grupos cúbicos de red F: solo se dibuja una parte de la celda"
+    Para los grupos espaciales cúbicos centrados $F$, ReciPro dibuja solo el cuarto superior izquierdo de la celda proyectada (de lo contrario el diagrama sería demasiado denso para leerse); el resto de la celda lo repite mediante las traslaciones de centrado y mediante los propios elementos de simetría dibujados. Los mismos elementos de simetría también pueden superponerse directamente sobre el modelo 3D en el [Visor de estructura](../../5-structure-viewer.md).
 
 ---
 
@@ -166,7 +166,7 @@ El diagrama de la derecha representa las posiciones equivalentes generales — l
 - (Solo en los grupos espaciales cúbicos) líneas auxiliares finas conectan los tres círculos relacionados por un eje ternario según la diagonal del cuerpo $\langle111\rangle$.
 - En general, un círculo (o una mitad de un círculo dividido) corresponde a una posición equivalente, de modo que el número de círculos coincide con la **multiplicidad** de la posición general mostrada en la pestaña [Posiciones de Wyckoff](../../2-symmetry-information.md) — una comprobación rápida al leer cualquiera de los dos diagramas. Si el eje de proyección elegido hace que varias copias de la misma quiralidad coincidan exactamente, se superponen en un solo punto (distinguidas solo por etiquetas de altura separadas) en lugar de dibujarse como círculos contiguos, por lo que el número de círculos visibles puede entonces ser menor que la multiplicidad.
 
-Los campos `numericBox` situados bajo **Dirección** permiten alejar el punto de prueba $(x,y,z)$ de la posición por defecto que el grupo espacial asigna a ese grupo puntual, lo que a veces resulta útil para despejar un diagrama en el que varios círculos coincidirían.
+Las casillas $x$ / $y$ / $z$ situadas bajo **Dirección** permiten alejar el punto de prueba $(x,y,z)$ de la posición por defecto que el grupo espacial asigna a ese grupo puntual, lo que a veces resulta útil para despejar un diagrama en el que varios círculos coincidirían.
 
 ---
 

@@ -20,9 +20,9 @@
 
 ![TEM 條件](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — 加速電壓。它決定電子波長，並用於計算位能的傅立葉係數 $U_g$。
+- **加速電壓 (kV)** — 加速電壓。它決定電子波長，並用於計算位能的傅立葉係數 $U_g$。
 
-> **Defocus、Cs、Cc、β、ΔE 與 PCTF 在位能模式下為非作用狀態**（不套用任何成像光學），並顯示為灰色。
+> **Defocus、Cs、Cc、β、ΔV 與 PCTF 在位能模式下為非作用狀態**（不套用任何成像光學），並顯示為灰色。
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ 與 $U'_g$ 可同時顯示（每勾選一個就會增加一個顯示窗格
 
 ---
 
-## 繞射波
+## 波
 
-![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — 納入位能傅立葉合成中的布洛赫波（傅立葉係數）的最大數目（預設 80）。數值越大，納入的空間頻率越高，並能重現位能更細緻的細節。
 

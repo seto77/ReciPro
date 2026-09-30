@@ -55,11 +55,11 @@ $$\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}\,(1-\cos\varphi),$$
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-여기서 $n_i$ 는 원소 $i$ 의 수밀도, $r_e$ 는 고전 전자 반경입니다. 여기서 $\mu_\text{abs}$ 는 감쇠의 흡수성 부분 ($f''$ 에 연결됨)이며, 위의 총 $\mu$ 와 같을 필요는 없습니다. 후자는 Rayleigh 및 Compton 산란도 포함하기 때문입니다. $n<1$ 이므로 X선은 작은 빗각의 **임계각** 아래에서 **전외부반사**를 겪습니다
+여기서 $n_i$ 는 원소 $i$ 의 수밀도, $r_e$ 는 고전 전자 반경입니다. 여기서 $\mu_\text{abs}$ 는 감쇠의 흡수성 부분 ($f''$ 에 연결됨)이며, 위의 총 $\mu$ 와 같을 필요는 없습니다. 후자는 Rayleigh 및 Compton 산란도 포함하기 때문입니다. $\delta>0$ 이면 굴절률이 1보다 작으므로, X선은 작은 빗각의 **임계각** $\alpha_c$ 아래에서 **전외부반사**를 겪습니다:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-이는 굴절 기하학에서 따라옵니다: 빗각 $\alpha$ 에 대해 고체 내부의 수직 파수 벡터는 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$ 이며, $\alpha = \alpha_c = \sqrt{2\delta}$ 에서 0에 도달합니다. 그 아래에서는 파동이 재료 안으로 전파할 수 없어 완전히 반사됩니다. **산란 길이 밀도**의 실수부 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ 는 $\delta$ 를 결정하며, 반사율 측정에서 사용되는 중성자 SLD의 X선 대응물입니다. ReciPro 는 스칼라 표에 $\delta$, $\beta$, $\theta_c$, 그리고 X선 SLD를 보고합니다.
+이는 굴절 기하학에서 따라옵니다: 빗각 $\alpha$ 에 대해 고체 내부의 수직 파수 벡터는 $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$ 이며, $\alpha = \alpha_c = \sqrt{2\delta}$ 에서 0에 도달합니다. 그 아래에서는 파동이 재료 안으로 전파할 수 없어 완전히 반사됩니다. 이 식은 무손실 극한 $\beta \ll \delta$ 를 가정합니다. 유한한 $\beta$ 에서는 소멸파가 여전히 수 나노미터 침투하며, 반사율은 1보다 약간 작게 유지됩니다. 흡수단 바로 위에서는 $\delta$ 가 음수가 될 수도 있으며, 이 경우 임계각이 존재하지 않으므로 ReciPro 는 임계각을 보고하지 않습니다. **산란 길이 밀도**의 실수부 $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$ 는 $\delta$ 를 결정하며, 반사율 측정에서 사용되는 중성자 SLD의 X선 대응물입니다. ReciPro 는 $\delta$, $\beta$, $\alpha_c$ (스칼라 표에는 **θc** 로 표시), 그리고 X선 SLD를 보고합니다.
 
 ---
 
@@ -69,7 +69,7 @@ $$\theta_c \simeq \sqrt{2\delta}.$$
 
 ### 탄성 산란과 평균 자유 행로
 
-탄성 단면적 $\sigma_\text{el}$ 은 단일 원자가 전자를 얼마나 쉽게 편향시키는지를 측정합니다. ReciPro 는 **NIST Mott** 단면적 (차폐된 원자 퍼텐셜에서 상대론적 Dirac 방정식의 부분파 해)을 사용하며, 대략 **50 eV – 36.4 keV** 범위에서 유효합니다. 이 범위 밖이거나 표에 없는 원소의 경우 **차폐 Rutherford** 근사로 되돌아갑니다. 둘은 경계에서 완벽히 매끄럽게 이어질 필요는 없습니다. 총 단면적은 미분 단면적의 각도 적분입니다,
+탄성 단면적 $\sigma_\text{el}$ 은 단일 원자가 전자를 얼마나 쉽게 편향시키는지를 측정합니다. ReciPro 는 **NIST Mott** 단면적 (차폐된 원자 퍼텐셜에서 상대론적 Dirac 방정식의 부분파 해)을 사용합니다. 내장 표는 **50 eV – 36.4 keV** 를 다룹니다 (이는 ReciPro 자체 표의 수록 범위이며, Mott 방법 자체의 한계가 아닙니다). 이 범위 밖이거나 표에 없는 원소의 경우 **차폐 Rutherford** 근사로 되돌아갑니다. 둘은 경계에서 완벽히 매끄럽게 이어질 필요는 없습니다. 총 단면적은 미분 단면적의 각도 적분입니다,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ $$\Sigma_\text{el} = \sum_i n_i\,\sigma_{\text{el},i}, \qquad \lambda_\text{el} 
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-여기서 $s$ 는 궤적을 따른 **경로 길이** (탭의 *|dE/ds|* 곡선의 변수)이며, 이 부록의 다른 곳에서 사용되는 산란 변수 $\sin\theta/\lambda$ 가 아닙니다. 에너지 기울기 $dE/ds$ 는 음수이므로 탭은 $S$ 를 위쪽으로 그립니다. keV 에너지에서는 개념적으로 **Bethe** 형태를 따릅니다
+여기서 $s$ 는 궤적을 따른 **경로 길이** (탭의 *|dE/ds|* 곡선의 변수)이며, 이 부록의 다른 곳에서 사용되는 산란 변수 $\sin\theta/\lambda$ 가 아닙니다. 기울기 $dE/ds$ 자체는 음수이므로, 탭은 그 크기 $S$ 를 위쪽으로 그립니다. keV 에너지에서는 개념적으로 **Bethe** 형태를 따릅니다
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-여기서 $J$ 는 고체의 **평균 들뜸 에너지**입니다. 이 비상대론적 스케치는 스케일링만을 보여줍니다. ReciPro 는 낮은 에너지에서도 양호하게 유지되는 보정/경험적 형태(Joy–Luo 유형)를 평가합니다. 스칼라 표의 **플라스몬 에너지** $E_p$ 는 동일한 전자적 들뜸에 대한 관련되지만 별개인 특성화입니다. **비탄성 평균 자유 행로** (IMFP)는 에너지를 잃는 충돌 사이의 대응되는 평균 거리이며, ReciPro 는 이를 **TPP-2M** 예측 공식으로부터 평가할 수 있습니다,
+여기서 $J$ 는 고체의 **평균 들뜸 에너지**입니다. 이 비상대론적 스케치는 스케일링만을 보여줍니다. ReciPro 는 낮은 에너지에서도 양호하게 유지되는 수정 **Jablonski (2008)** 형태를 평가합니다 (이전의 **Joy–Luo (1989)** 경험식도 구현되어 있습니다). 스칼라 표의 **플라스몬 에너지** $E_p$ 는 동일한 전자적 들뜸에 대한 관련되지만 별개인 특성화입니다. **비탄성 평균 자유 행로** (IMFP)는 에너지를 잃는 충돌 사이의 대응되는 평균 거리이며, ReciPro 는 이를 **TPP-2M** 예측 공식으로부터 평가할 수 있습니다,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ $$\sigma_\text{abs}(\lambda) = \sigma_\text{abs}(\lambda_0)\,\frac{\lambda}{\lam
 
 ## 함께 보기
 
-- [원자 산란 인자](scattering-factor.md) — Rayleigh/Compton 뒤의 $F(q)$/$S(q)$ 분할, 그리고 Mott 단면적.
+- [원자 산란 인자](scattering-factor.md) — Rayleigh/Compton 뒤의 $F(q)$/$S(q)$ 분할, 그리고 Mott–Bethe 관계 (위에서 사용한 NIST Mott 단면적과는 다른 모델).
 - [형광](fluorescence.md) — X선 광흡수 뒤에 이어지는 완화.
 - [3. 빔 상호작용](../../3-beam-interaction.md) — *감쇠 & 수송* 탭.
 - [8. 전자 궤적](../../8-electron-trajectory.md) · [12. EBSD 시뮬레이션](../../12-ebsd-simulation.md) — 전자 비정거리가 사용되는 곳.

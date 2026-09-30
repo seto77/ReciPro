@@ -54,7 +54,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-그리고 **여기 오차** $S_g$(역격자점이 에발트 구로부터 벗어난 편차)와 반사를 순위화하는 데 사용되는 **평가 함수** $R$은 다음과 같습니다.
+그리고 **여기 오차** $S_g$(역격자점이 에발트 구로부터 벗어난 편차)와 반사를 순위화하는 데 사용되는 **평가 함수** $R$(작은 $R$ = 짧은 $\mathbf g$ 이면서 에발트 구에 가까움, 먼저 채택됨)은 다음과 같습니다.
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

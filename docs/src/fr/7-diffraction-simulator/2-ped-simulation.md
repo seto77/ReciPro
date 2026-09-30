@@ -76,10 +76,10 @@ Contrôle la manière dont chaque tache de diffraction est dessinée.
 - **Opacity** : Transparence de la tache (0 = transparent, 1 = opaque).
 - **Radius (R)** : Rayon des nœuds du réseau réciproque. Pour les intensités dynamiques, l'intégrale gaussienne $=$ Brightness $\times I_\text{dyn}$, et Solid sphere utilise le rayon $R \times I_\text{dyn}^{1/2}$ (de sorte que l'aire est proportionnelle à l'intensité dynamique).
 - **Brightness** : Disponible uniquement en mode **Gaussian**. Intensité intégrée de la gaussienne dessinée.
-- **Colour scale** : Carte de couleurs **Gray scale** ou **Cold-warm**.
+- **Color scale** : Carte de couleurs **Gray scale** ou **Cold-warm**.
 - **Log scale** : Affiche l'intensité sur une échelle logarithmique.
-- **Spot colour** : Couleur de la tache utilisée lorsqu'aucune carte de couleurs n'est appliquée.
-- **Use crystal colour** : Dessine les taches dans la couleur attribuée à chaque cristal.
+- **Spot color** : Couleur de la tache utilisée lorsqu'aucune carte de couleurs n'est appliquée.
+- **Color per crystal** : Dessine les taches dans la couleur attribuée à chaque cristal.
 
 ---
 

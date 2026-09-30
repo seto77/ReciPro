@@ -67,11 +67,11 @@ Simuliert ein Rückstrahl-Laue-Muster mit weißer (polychromatischer) Röntgenst
 
 Wählt die Methode zur Berechnung der Spot-Intensitäten. Für Röntgenstrahlen sind zwei Modi verfügbar.
 
-### Only excitation error
+### Nur Anregungsfehler
 
 Die Intensität wird ausschließlich durch den geometrischen Abstand zwischen der Ewald-Kugel und dem Punkt des reziproken Gitters bestimmt (dem Anregungsfehler $S_g$). Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Der Strukturfaktor wird ignoriert.
 
-### Kinematical & excitation error
+### Kinematisch & Anr.-Fehler
 
 Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{hkl} \rvert^2$ in die Intensität einbezogen. Auslöschungsregeln werden streng befolgt. Der Lorentz- und der Polarisationsfaktor werden nicht berücksichtigt (dies ist eine Simulation des geometrischen Musters).
 
@@ -91,8 +91,8 @@ Steuert, wie jeder Beugungsspot gerendert wird.
 - **Brightness** : nur im Modus **Gaussian** aktiv. Legt die integrierte Intensität der gerenderten Gauß-Funktion fest.
 - **Color scale** : Wahl zwischen den Farbskalen **Gray scale** und **Cold-warm**.
 - **Log scale** : Intensitäten auf einer logarithmischen Skala anzeigen.
-- **Spot color** : Standardfarbe des Spots, wenn die Farbskala nicht angewendet wird.
-- **Use crystal color** : zeichnet die Spots in der dem jeweiligen Kristall zugewiesenen Farbe, wenn aktiviert.
+- **Reflexfarbe** : Standardfarbe des Spots, wenn die Farbskala nicht angewendet wird.
+- **Farbe je Kristall** : zeichnet die Spots in der dem jeweiligen Kristall zugewiesenen Farbe, wenn aktiviert.
 
 ---
 

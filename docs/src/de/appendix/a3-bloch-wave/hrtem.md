@@ -18,8 +18,8 @@ Das HRTEM-Bild entsteht aus der Wellenfunktion an der Austrittsfläche — den T
 | $C_s$ | Koeffizient der sphärischen Aberration |
 | $C_c$ | Koeffizient der chromatischen Aberration |
 | $\beta$ | Beleuchtungs-Halbwinkel (endliche Quellgröße) |
-| $\Delta E$ | $1/e$-Breite der Energiefluktuationen des Elektrons |
-| $\Delta_0$ | $1/e$-Breite der Defokus-Streuung (gaußförmig), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **Standardabweichung** (rms) der Energiefluktuation des Elektrons. Das GUI-Feld **ΔV** erwartet die Halbwertsbreite (FWHM), daher gilt $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | Standardabweichung der (gaußförmigen) Defokus-Streuung, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-Im Grenzfall $\mathbf u' \to \mathbf u$ reduziert sich der TCC auf die obigen quasi-kohärenten Einhüllenden.
+Setzt man $\mathbf u' = \mathbf 0$ — Interferenz des Strahls $\mathbf u$ mit dem transmittierten Strahl —, erhält man die Einzelfrequenz-Einhüllenden $E_c(\mathbf u)$ und $E_s(\mathbf u)$ des obigen quasi-kohärenten Modells zurück. Der andere Grenzfall, $\mathbf u' \to \mathbf u$, ergibt $E_c = E_s = 1$ und damit den unten verwendeten Diagonalterm $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$.
 
 ---
 

@@ -52,3 +52,13 @@ Sobald der Detektor gekippt ist:
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | Abstand von der Probe zum foot (mm) |
 | **Pixel size** | Seitenlänge eines (quadratischen) Pixels (mm); es werden nur quadratische Pixel unterstützt |
 | **Detector width / height** | Anzahl der Pixel horizontal / vertikal |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## Zwei Definitionen des Anregungsfehlers $S_g$
+
+ReciPro verwendet bewusst zwei unterschiedliche Definitionen des Anregungsfehlers, die jeweils auf ihren Kontext abgestimmt sind:
+
+- **Kinematische Anzeige und `SpotInfo()` (kinematischer/Anregungsmodus)** : der vorzeichenbehaftete **radiale** Abstand vom reziproken Gitterpunkt zur Ewaldkugel, $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$ mit dem Kugelmittelpunkt $\boldsymbol{C} = (0, 0, k)$ und $k = 1/\lambda$. $S_g > 0$ bedeutet, dass der Punkt innerhalb der Kugel liegt. Der kinematische Simulator setzt keine Probenform oder -dicke voraus, sodass dort keine Oberflächennormale existiert; der isotrope radiale Abstand ist die neutrale Wahl, um Reflexe auszuwählen und anzuzeigen.
+- **Dynamische (Bethe-)Berechnung** : der **entlang der Normalen der Probenoberfläche** $\boldsymbol{n}$ gemessene Abstand, $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$ mit $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$ und $Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$. Diese Definition wird von der Randbedingung an der Probenoberfläche verlangt.
+
+Bei senkrechtem Einfall (Oberflächennormale parallel zum Strahl) fallen beide nahezu zusammen, sie sind aber **nicht dieselbe Größe**; vermischen Sie keine Werte aus der kinematischen und der dynamischen Ausgabe.

@@ -29,7 +29,7 @@ Das Fenster wird auf Ihren Hauptbildschirm geholt. Beachten Sie, dass **Wechseln
 **Lösung** (in dieser Reihenfolge versuchen):
 
 1. **OpenGL deaktivieren**: Halten Sie die **Ctrl**-Taste beim Start von ReciPro gedrückt, um mit deaktiviertem OpenGL zu starten. Neuere Versionen (v4.925 und später) härten die OpenGL-Initialisierung ab, sodass die App auch dann startet, wenn OpenGL fehlschlägt – in diesem Fall sind die 3D-Funktionen deaktiviert, der Rest der App funktioniert aber.
-2. **Einstellungen zurücksetzen**: Löschen Sie im Registrierungs-Editor den Schlüssel `HKEY_CURRENT_USER\Software\Crystallography\ReciPro` und starten Sie neu. (Entspricht **Optionen → Registrierung zurücksetzen**.)
+2. **Einstellungen zurücksetzen**: Löschen Sie im Registrierungs-Editor den Schlüssel `HKEY_CURRENT_USER\Software\Crystallography\ReciPro` und starten Sie neu. (Entspricht **Optionen ▸ Registrierungseinstellungen beim Beenden zurücksetzen**.)
 3. **Saubere Neuinstallation**: Deinstallieren Sie ReciPro, löschen Sie die folgenden Ordner, falls vorhanden (ersetzen Sie `<user>` durch Ihren Kontonamen), und installieren Sie dann neu:
    - `C:\Users\<user>\AppData\Local\Crystallography Software\ReciPro`
    - `C:\Users\<user>\AppData\Roaming\ReciPro\ReciPro`
@@ -47,7 +47,7 @@ Wenn nichts davon hilft, kann die Ursache in der Betriebssystemumgebung selbst l
 
 **Lösung**:
 
-1. Gehen Sie zu **Optionen → OpenGL deaktivieren (Neustart erforderlich)** (oder halten Sie beim Start **Ctrl** gedrückt).
+1. Gehen Sie zu **Optionen ▸ Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich)** (oder halten Sie beim Start **Ctrl** gedrückt).
 2. Starten Sie ReciPro neu.
 3. Die Strukturansicht und einige 3D-Funktionen verwenden dann Software-Rendering.
 
@@ -59,7 +59,7 @@ Wenn nichts davon hilft, kann die Ursache in der Betriebssystemumgebung selbst l
 
 ### Symptom: Schlechte Renderqualität
 
-**Lösung**: Aktualisieren Sie Ihre GPU-Treiber. Empfohlen wird eine externe (dedizierte) GPU mit OpenGL-1.5-Unterstützung.
+**Lösung**: Aktualisieren Sie Ihre GPU-Treiber. OpenGL 1.3 ist das Minimum; empfohlen wird eine dedizierte GPU mit OpenGL-4.3-Unterstützung (siehe [Systemanforderungen](index.md)).
 
 ---
 
@@ -130,8 +130,8 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 **Lösung**:
 
-- **Klicken Sie mit der linken Maustaste** in den Hauptzeichenbereich, um herauszuzoomen.
-- Prüfen Sie die Energie der einfallenden Welle auf der Registerkarte **Wave** (oben links): Röntgen ≈ 1–100 keV, Elektron ≈ 10–1000 keV sind angemessen.
+- **Klicken Sie mit der rechten Maustaste** in den Hauptzeichenbereich, um herauszuzoomen (diese Ansichten haben keinen Mausrad-Zoom — siehe [21. Tastatur- & Maus-Kurzbefehle](21-shortcuts.md)).
+- Prüfen Sie die Energie der einfallenden Welle im Bereich **Wellenquelle** rechts: Röntgen ≈ 1–100 keV, Elektron ≈ 10–1000 keV sind angemessen.
 
 ---
 
@@ -161,7 +161,7 @@ Zum Beispiel ist die Schaltfläche **Peak Identification** in Spot ID v2 verdeck
 
 Falls Einstellungen beschädigt werden:
 
-1. **Optionen → Registrierung zurücksetzen (nach Neustart)**
+1. **Optionen ▸ Registrierungseinstellungen beim Beenden zurücksetzen (wirksam nach Neustart)**
 2. Starten Sie ReciPro neu – Fensterpositionen, Wellenlänge, Kameralänge usw. werden auf die Standardwerte zurückgesetzt
 
 ---

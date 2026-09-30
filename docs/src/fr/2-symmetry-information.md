@@ -95,7 +95,7 @@ Liste, pour référence, tous les choix d'origine et d'axes tabulés qui partage
 Les deux panneaux du bas reproduisent les diagrammes schématiques de symétrie du groupe d'espace dans la notation des *International Tables for Crystallography* Vol. A.
 
 - **Éléments de symétrie (à gauche)** : les axes de rotation/hélicoïdaux, les plans miroir/de glissement et les centres d'inversion/points de rotoinversion sont dessinés avec les symboles graphiques conventionnels.
-  - Pour le réseau \(F\) du système cubique, seul un huitième de la maille (le quadrant supérieur gauche uniquement) est représenté.
+  - Pour le réseau \(F\) du système cubique, seul le quart supérieur gauche de la maille projetée est représenté (voir l'[Annexe A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Ces éléments de symétrie peuvent aussi être dessinés directement sur le modèle 3D dans le [Visualiseur de structure](5-structure-viewer.md).
 - **Positions générales (à droite)** : les positions équivalentes générales sont tracées sous forme de cercles (une virgule signale une image miroir), annotées de leurs coordonnées fractionnaires.
   - Pour le système cubique uniquement, des lignes auxiliaires relient les trois cercles reliés par un axe de rotation d'ordre 3.

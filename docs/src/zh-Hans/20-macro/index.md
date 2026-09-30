@@ -40,7 +40,7 @@ ReciPro 内置了一个基于 **IronPython** 的宏系统，可通过脚本自�
 
 ## 编辑器窗口
 
-宏编辑器有四个主要区域：
+宏编辑器由以下几个区域组成：
 
 | 区域 | 用途 |
 |------|---------|
@@ -112,7 +112,7 @@ ReciPro 内置了一个基于 **IronPython** 的宏系统，可通过脚本自�
 
 ### 不可用
 
-- **`print()`**：没有控制台窗口；输出无处可去。请使用 **Step by step** 并查看调试面板来检查取值。
+- **`print()`**：没有控制台窗口；输出无处可去。请使用 **Step by step** 并查看调试面板来检查取值。（例外：从外部运行宏时——命令行 `/o` 或[命名管道](3-external-control.md)——`print()` 的输出*会*被捕获并返回。）
 - **`input()`**：没有 stdin。
 - **文件 I/O**（`open`、`with open`）：不适用于宏。请改用 `ReciPro.File.*` 辅助函数。
 - **C 扩展包**：`numpy`、`scipy`、`pandas`、`matplotlib` —— 与 IronPython 不兼容。
@@ -161,3 +161,4 @@ NameError: name 'abc' is not defined
 
 - [20.1. 内置函数](1-built-in-functions.md)
 - [20.2. 示例](2-examples.md)
+- [20.3. 外部控制（命令行・命名管道）](3-external-control.md)

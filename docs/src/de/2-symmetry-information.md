@@ -95,7 +95,7 @@ Listet zu Referenzzwecken jede tabellierte Ursprungs-/Achsenaufstellung, die die
 Die beiden Felder unten geben die schematischen Symmetriediagramme der Raumgruppe in der Notation der *International Tables for Crystallography* Vol. A wieder.
 
 - **Symmetrieelemente (links)**: Dreh-/Schraubenachsen, Spiegel-/Gleitspiegelebenen sowie Inversionszentren/Drehinversionspunkte werden mit den konventionellen graphischen Symbolen gezeichnet.
-  - Für das \(F\)-Gitter des kubischen Systems wird nur ein Achtel der Elementarzelle (nur der obere linke Quadrant) gezeigt.
+  - Für das \(F\)-Gitter des kubischen Systems wird nur das obere linke Viertel der projizierten Zelle gezeigt (siehe [Anhang A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Diese Symmetrieelemente können auch direkt auf das 3D-Modell in der [Strukturansicht](5-structure-viewer.md) gezeichnet werden.
 - **Allgemeine Lagen (rechts)**: Die allgemeinen äquivalenten Lagen werden als Kreise dargestellt (ein Komma bezeichnet ein Spiegelbild) und mit ihren fraktionellen Koordinaten beschriftet.
   - Nur für das kubische System verbinden Hilfslinien die drei Kreise, die durch eine dreizählige Drehachse miteinander verknüpft sind.

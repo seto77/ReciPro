@@ -40,7 +40,7 @@ Las macros se escriben con sintaxis de Python. Utilizando las clases y funciones
 
 ## Ventana del editor
 
-El editor de macros tiene cuatro áreas principales:
+El editor de macros consta de las siguientes áreas:
 
 | Área | Propósito |
 |------|---------|
@@ -112,7 +112,7 @@ Estos elementos básicos están registrados previamente en la ventana emergente 
 
 ### NO utilizable
 
-- **`print()`** : no hay ventana de consola; la salida no va a ninguna parte. Use **Step by step** y observe el panel de depuración para inspeccionar valores.
+- **`print()`** : no hay ventana de consola; la salida no va a ninguna parte. Use **Step by step** y observe el panel de depuración para inspeccionar valores. (Excepción: cuando la macro se ejecuta desde fuera —con la opción de línea de comandos `/o` o mediante la [canalización con nombre](3-external-control.md)— la salida de `print()` *sí* se captura y se devuelve).
 - **`input()`** : no hay stdin.
 - **E/S de archivos** (`open`, `with open`) : no está pensado para macros. Use en su lugar los ayudantes `ReciPro.File.*`.
 - **Paquetes de extensión en C**: `numpy`, `scipy`, `pandas`, `matplotlib` — no compatibles con IronPython.
@@ -161,3 +161,4 @@ El editor selecciona automáticamente la línea indicada en el traceback (el mar
 
 - [20.1. Funciones integradas](1-built-in-functions.md)
 - [20.2. Ejemplos](2-examples.md)
+- [20.3. Control externo (línea de comandos y canalización con nombre)](3-external-control.md)

@@ -33,7 +33,7 @@ Queste tre convenzioni descrivono la stessa geometria; differisce solo la scala.
 | Diagramma del picco di diffrazione | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unità"
-    Le parametrizzazioni pubblicate dei fattori di forma usano $s$ in Å⁻¹ (quindi $s^2$ in Å⁻²), mentre ReciPro tratta internamente $s^2$ in nm⁻². Le due differiscono per un fattore $100$ in $s^2$; le curve e le tabelle sono presentate nelle unità indicate nell'intestazione di ciascuna tabella. Un modello — **Kirkland** — è tabulato rispetto a $q = 2s = 1/d$ anziché a $s$; vedi [Atomic scattering factors](scattering-factor.md).
+    Le parametrizzazioni pubblicate dei fattori di forma usano $s$ in Å⁻¹ (quindi $s^2$ in Å⁻²), mentre ReciPro tratta internamente $s^2$ in nm⁻². Le due differiscono per un fattore $100$ in $s^2$; le curve e le tabelle sono presentate nelle unità indicate nell'intestazione di ciascuna tabella. Un modello — **Kirkland** — è tabulato rispetto a $q_K = 2s = 1/d$ anziché a $s$; vedi [Atomic scattering factors](scattering-factor.md). Si noti che questo $q_K$ **non** è il $q = 2\pi/d$ della tabella delle riflessioni riportata sopra: i due differiscono per un fattore $2\pi$.
 
 ### Bragg, Laue e la sfera di Ewald
 
@@ -61,7 +61,7 @@ cioè con un segno **meno** nell'esponente. Questa scelta fissa il segno della p
 
 ## Diffusione cinematica vs dinamica
 
-Questa appendice tratta la **diffusione singola (cinematica)**: il fascio incidente viene diffuso una sola volta, e l'ampiezza diffratta è il fattore di struttura della pagina successiva. È l'immagine corretta quando l'interazione è debole — raggi X e neutroni in quasi tutti i campioni, ed elettroni in campioni *molto sottili*.
+Questa appendice tratta la **diffusione singola (cinematica)**: il fascio incidente viene diffuso una sola volta, e l'ampiezza diffratta è il fattore di struttura della pagina successiva. È l'immagine corretta quando l'interazione è debole — raggi X e neutroni in polveri, cristalli imperfetti e campioni sottili, ed elettroni in campioni *molto sottili*. (Anche i raggi X diventano dinamici in un cristallo grande e quasi perfetto, dove l'estinzione primaria indebolisce le riflessioni più intense.)
 
 Quando l'interazione è forte — elettroni in tutti i cristalli tranne i più sottili — il fascio viene diffuso molte volte prima di uscire, l'intensità viene ridistribuita tra le riflessioni, e $\lvert F\rvert^2$ non fornisce più l'intensità misurata. Questo regime richiede la teoria **dinamica** dell'[Appendix A3](../a3-bloch-wave/index.md). I fattori di diffusione e i fattori di struttura qui derivati sono l'*input* per entrambe le immagini.
 

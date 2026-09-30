@@ -76,10 +76,10 @@ GUI 條件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 - **Opacity** ：繞射點的透明度（0 = 透明，1 = 不透明）。
 - **Radius (R)** ：倒易點陣點的半徑。對於動力學強度，高斯積分 $=$ Brightness $\times I_\text{dyn}$，而 Solid sphere 使用半徑 $R \times I_\text{dyn}^{1/2}$（使面積與動力學強度成正比）。
 - **Brightness** ：僅在 **Gaussian** 模式下可用。所繪製高斯函數的積分強度。
-- **Colour scale** ：**Gray scale** 或 **Cold-warm** 色彩對應。
+- **Color scale** ：**Gray scale** 或 **Cold-warm** 色彩對應。
 - **Log scale** ：以對數刻度顯示強度。
-- **Spot colour** ：未套用色階時所用的繞射點顏色。
-- **Use crystal colour** ：以指派給每個晶體的顏色繪製繞射點。
+- **Spot color** ：未套用色階時所用的繞射點顏色。
+- **Color per crystal** ：以指派給每個晶體的顏色繪製繞射點。
 
 ---
 

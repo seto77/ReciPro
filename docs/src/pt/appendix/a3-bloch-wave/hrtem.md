@@ -18,8 +18,8 @@ A imagem HRTEM é formada a partir da função de onda na superfície de saída 
 | $C_s$ | coeficiente de aberração esférica |
 | $C_c$ | coeficiente de aberração cromática |
 | $\beta$ | semiângulo de iluminação (tamanho finito da fonte) |
-| $\Delta E$ | largura $1/e$ das flutuações de energia do elétron |
-| $\Delta_0$ | largura $1/e$ da dispersão de desfocagem (gaussiana), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | **desvio padrão** (rms) da flutuação de energia do elétron. A caixa **ΔV** da GUI recebe a FWHM, de modo que $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | desvio padrão da dispersão de desfocagem (gaussiana), $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-No limite $\mathbf u' \to \mathbf u$ o TCC se reduz aos envelopes quase coerentes acima.
+Fazendo $\mathbf u' = \mathbf 0$ — interferência do feixe $\mathbf u$ com o feixe transmitido — recuperam-se os envelopes de frequência única $E_c(\mathbf u)$ e $E_s(\mathbf u)$ do modelo quase coerente acima. O outro limite, $\mathbf u' \to \mathbf u$, dá $E_c = E_s = 1$ e, portanto, o termo diagonal $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ usado abaixo.
 
 ---
 

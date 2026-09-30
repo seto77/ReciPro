@@ -17,11 +17,11 @@ und somit charakteristisch für das Element:
 - **K-Linien** — Leerstelle in der $K$-Schale, aufgefüllt aus $L$ ($K\alpha$) oder $M$ ($K\beta$).
 - **L-Linien** — Leerstelle in der $L$-Schale, aufgefüllt aus $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Es treten nur Übergänge auf, die durch die Dipol-Auswahlregeln erlaubt sind, weshalb das Spektrum aus einigen wenigen diskreten Linien (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) statt aus einem Kontinuum besteht. Ihre Energien folgen dem **Moseley-Gesetz**; in der abgeschirmt-wasserstoffartigen Näherung,
+Das Spektrum besteht aus einigen wenigen diskreten Linien (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) statt aus einem Kontinuum, weil die Schalenenergien selbst quantisiert sind; die elektrischen Dipol-Auswahlregeln entscheiden dann, welche dieser Übergänge stark sind (schwächere verbotene, Multipol- und Satellitenlinien gibt es durchaus). Ihre Energien folgen dem **Moseley-Gesetz**; in der abgeschirmt-wasserstoffartigen Näherung,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-mit $\sigma$ als Abschirmkonstante. Für $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) reduziert sich dies auf $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Diese monotone, von der Elektronenzahl getriebene $Z$-Abhängigkeit ist die Grundlage der Elementidentifikation (EDX/WDX).
+mit $\sigma$ als Abschirmkonstante. Für $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) reduziert sich dies auf $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Die $Z$-Abhängigkeit wird von der **Kernladung** bestimmt, die von den übrigen Elektronen lediglich abgeschirmt wird; sie ist daher monoton und vom chemischen Zustand praktisch unabhängig — genau das macht sie zur Grundlage der Elementidentifikation (EDX/WDX).
 
 ---
 

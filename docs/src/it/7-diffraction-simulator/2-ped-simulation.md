@@ -76,10 +76,10 @@ Controlla il modo in cui viene disegnato ciascuno spot di diffrazione.
 - **Opacity** : trasparenza dello spot (0 = trasparente, 1 = opaco).
 - **Radius (R)** : raggio dei punti del reticolo reciproco. Per le intensità dinamiche, l'integrale della gaussiana $=$ Brightness $\times I_\text{dyn}$, e Solid sphere usa il raggio $R \times I_\text{dyn}^{1/2}$ (in modo che l'area sia proporzionale all'intensità dinamica).
 - **Brightness** : disponibile solo nella modalità **Gaussian**. Intensità integrata della gaussiana disegnata.
-- **Colour scale** : mappa di colori **Gray scale** o **Cold-warm**.
+- **Color scale** : mappa di colori **Gray scale** o **Cold-warm**.
 - **Log scale** : visualizza l'intensità in scala logaritmica.
-- **Spot colour** : colore dello spot usato quando non è applicata alcuna scala di colori.
-- **Use crystal colour** : disegna gli spot nel colore assegnato a ciascun cristallo.
+- **Spot color** : colore dello spot usato quando non è applicata alcuna scala di colori.
+- **Color per crystal** : disegna gli spot nel colore assegnato a ciascun cristallo.
 
 ---
 

@@ -62,9 +62,9 @@ $$U'_{g,h} = \gamma\,\frac{1}{\pi\Omega}\sum_k f'_k(\mathbf g,\mathbf h)\,\exp\!
 其中**吸收散射因子**是将弹性散射因子 $f_e$ 在 Ewald 球面上卷积的积分：
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{\gamma\,k_{vac}}{2}\oint_{|\mathbf K|=k_{vac}} f_{e,k}(s_-)\,f_{e,k}(s_+)\left[1-\exp\!\left\{M_k\left(\frac{|\mathbf g-\mathbf h|^2}{4}-s_-^2-s_+^2\right)\right\}\right]\mathrm d\Omega,
-\qquad s_\mp=\frac{1}{2}\left|\mathbf K\mp\frac{\mathbf g-\mathbf h}{2}\right|$$
+\qquad s_\mp=\frac{1}{2}\left|\mathbf q\mp\frac{\mathbf g-\mathbf h}{2}\right|,\qquad \mathbf q=\mathbf K-\mathbf k_{vac}+\frac{\mathbf g+\mathbf h}{2}$$
 
-此处 $\mathbf K$ 是在 Ewald 球面上取值的波矢，$\mathrm d\Omega$ 是其立体角元。ReciPro 用 Gauss–Legendre 求积数值计算此积分（被积函数在前向有尖锐峰值，因此将极角按散射矢量模长的等比区间分割以分辨它）。对于 STEM 环形探测器收集的 TDS，或 EBSD 中的背散射 TDS，则将**同一被积函数**改为在探测器的角度范围（环形区域或后半球）内积分。
+此处 $\mathbf K$ 是*散射*波矢，在球面 $|\mathbf K| = k_{vac}$ 上取值，$\mathrm d\Omega$ 是其立体角元；因此 $\mathbf K-\mathbf k_{vac}$ 就是该方向的散射矢量。等价地，两个自变量可写为 $s_- = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf g\rvert/2$ 和 $s_+ = \lvert(\mathbf K-\mathbf k_{vac})-\mathbf h\rvert/2$，这正是 ReciPro 实际计算的形式。ReciPro 用 Gauss–Legendre 求积数值计算此积分（被积函数在前向有尖锐峰值，因此将极角按散射矢量模长的等比区间分割以分辨它）。对于 STEM 环形探测器收集的 TDS，或 EBSD 中的背散射 TDS，则将**同一被积函数**改为在探测器的角度范围（环形区域或后半球）内积分。
 
 被积函数中的弹性因子 $f_{e,k}$ 由两个来源组成。对 **$Z = 1\text{–}86$ 的中性原子**，在 $0 \le s \le 6$ Å⁻¹ 范围内使用 **Temari** dataset-factors v2.0.0（[DOI 10.5281/zenodo.22820415](https://doi.org/10.5281/zenodo.22820415)；参见[散射因子页面](../a2-beam-interaction/scattering-factor.md)）的第一性原理 $f_e$，在 $s > 6$ Å⁻¹ 处使用以 Waasmaier–Kirfel X 射线因子 $f_0(s)$ 直接计算的 **Mott–Bethe 关系式**；**6 Å⁻¹ 以外的部分不是 Temari 的计算值**。两者在 $s = 6$ Å⁻¹ 处不作数值匹配而直接衔接（该处的跳变不超过 0.041 %）。对于 Temari 未收录的**离子**和 $Z = 87\text{–}98$，低 $s$ 部分使用 **Peng 5-Gaussian 拟合**，并在 $1.5\text{–}2.5$ Å⁻¹ 之间平滑过渡到同一条 Mott–Bethe 尾部。之所以需要尾部，是因为 Gaussian 和在 $s \gtrsim 2$ Å⁻¹ 之外衰减过快（Gaussian 尾部呈指数消失，而真实的 $f_e$ 具有 $1/s^2$ 尾部），在 $s$ 达到 $k_{vac}$ 量级（200 kV 时约 40 Å⁻¹）的背散射中会低估许多个数量级。两个实现细节：$f_0(s)$ 被钳制在 $[0, Z]$ 内（某些拟合形式在拟合范围外发散），且离子条目也使用中性原子的 $f_0$（高 $s$ 处只能看到核电荷，而非电子云）。
 

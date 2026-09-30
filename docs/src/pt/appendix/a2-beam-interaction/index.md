@@ -33,7 +33,7 @@ Essas três convenções descrevem a mesma geometria; apenas a escala difere. Va
 | Gráfico do pico de difração | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unidades"
-    As parametrizações publicadas dos fatores de forma usam $s$ em Å⁻¹ (logo $s^2$ em Å⁻²), enquanto o ReciPro carrega $s^2$ internamente em nm⁻². As duas diferem por um fator $100$ em $s^2$; as curvas e tabelas são apresentadas nas unidades indicadas no cabeçalho de cada tabela. Um modelo — **Kirkland** — é tabelado em função de $q = 2s = 1/d$ em vez de $s$; veja [Atomic scattering factors](scattering-factor.md).
+    As parametrizações publicadas dos fatores de forma usam $s$ em Å⁻¹ (logo $s^2$ em Å⁻²), enquanto o ReciPro carrega $s^2$ internamente em nm⁻². As duas diferem por um fator $100$ em $s^2$; as curvas e tabelas são apresentadas nas unidades indicadas no cabeçalho de cada tabela. Um modelo — **Kirkland** — é tabelado em função de $q_K = 2s = 1/d$ em vez de $s$; veja [Atomic scattering factors](scattering-factor.md). Observe que este $q_K$ **não** é o $q = 2\pi/d$ da tabela Reflections acima: os dois diferem por um fator $2\pi$.
 
 ### Bragg, Laue e a esfera de Ewald
 
@@ -61,7 +61,7 @@ isto é, um sinal de **menos** no expoente. Essa escolha fixa o sinal da parte i
 
 ## Espalhamento cinemático vs. dinâmico
 
-Este apêndice trata do **espalhamento simples (cinemático)**: o feixe incidente espalha uma vez, e a amplitude difratada é o fator de estrutura da próxima página. Essa é a imagem correta quando a interação é fraca — raios X e nêutrons em quase todas as amostras, e elétrons em espécimes *muito finos*.
+Este apêndice trata do **espalhamento simples (cinemático)**: o feixe incidente espalha uma vez, e a amplitude difratada é o fator de estrutura da próxima página. Essa é a imagem correta quando a interação é fraca — raios X e nêutrons em pós, cristais imperfeitos e amostras finas, e elétrons em espécimes *muito finos*. (Mesmo os raios X se tornam dinâmicos em um cristal grande e quase perfeito, onde a extinção primária enfraquece as reflexões mais intensas.)
 
 Quando a interação é forte — elétrons em qualquer cristal que não seja o mais fino — o feixe espalha muitas vezes antes de sair, a intensidade é redistribuída entre as reflexões, e $\lvert F\rvert^2$ não fornece mais a intensidade medida. Esse regime requer a teoria **dinâmica** do [Appendix A3](../a3-bloch-wave/index.md). Os fatores de espalhamento e os fatores de estrutura aqui deduzidos são a *entrada* para ambas as imagens.
 

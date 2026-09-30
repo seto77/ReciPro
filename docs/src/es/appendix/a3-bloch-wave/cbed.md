@@ -1,6 +1,6 @@
 # Cálculo de CBED
 
-CBED (difracción de electrones de haz convergente) aplica el [núcleo dinámico](calculation.md) a muchas direcciones del haz incidente y, a continuación, coloca los resultados en discos de difracción. SAED tiene una sola dirección de incidencia; CBED trata cada punto dentro del diafragma objetivo como una **onda plana incidente parcial** y resuelve el problema de ondas de Bloch para cada uno de ellos.
+CBED (difracción de electrones de haz convergente) aplica el [núcleo dinámico](calculation.md) a muchas direcciones del haz incidente y, a continuación, coloca los resultados en discos de difracción. SAED tiene una sola dirección de incidencia; CBED trata cada punto dentro del diafragma formador de la sonda (del condensador) como una **onda plana incidente parcial** y resuelve el problema de ondas de Bloch para cada uno de ellos.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Aquí $\mathbf K$ es la componente del vector de onda incidente paralela a la superficie de la muestra. Para un diafragma circular ideal con semiángulo de convergencia $\alpha$ y longitud de onda del electrón $\lambda$,
+Aquí $\mathbf K$ es la componente del vector de onda incidente paralela a la superficie de la muestra. Para un diafragma formador de la sonda circular ideal con semiángulo de convergencia $\alpha$ y longitud de onda del electrón $\lambda$,
 
 $$A(\mathbf K)=
 \begin{cases}

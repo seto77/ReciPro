@@ -20,9 +20,9 @@
 
 ![TEM 条件](../../assets/cap-zh-Hans-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Acc. voltage (kV)** — 加速电压。它确定电子波长，并用于计算势的傅里叶系数 $U_g$。
+- **加速电压 (kV)** — 加速电压。它确定电子波长，并用于计算势的傅里叶系数 $U_g$。
 
-> **Defocus、Cs、Cc、β、ΔE 和 PCTF 在势模式下不激活**（不施加成像光学），并显示为灰色。
+> **Defocus、Cs、Cc、β、ΔV 和 PCTF 在势模式下不激活**（不施加成像光学），并显示为灰色。
 
 ---
 

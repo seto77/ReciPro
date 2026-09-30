@@ -165,7 +165,7 @@ El panel central muestra el patrón EBSD (de bandas de Kikuchi) para la orientac
 
 - **Mostrar imagen con distribuciones angulares/de energía de BSE** : cuando está marcado, el patrón se compone ponderando con la distribución BSE (energía, profundidad, dirección) en lugar de una sola rebanada.
 - **Energy / Depth** : cuando lo anterior está desactivado, selecciona la rebanada de energía/profundidad a mostrar.
-- **Brillo** (**Min** / **Max**), **Polaridad**, **Color** : rango de brillo, polaridad y escala de color.
+- **Brillo** (**Min** / **Max**), **Contraste**, **Polaridad**, **Color** : los puntos de negro y de blanco del patrón simulado como porcentaje del rango de visualización (deslizadores lineales), la anchura de ese rango, su polaridad y la escala de color. Con Contraste 0 el rango de visualización coincide con el rango de intensidad del propio patrón; -1 lo ensancha diez veces (contraste diez veces menor) y +1 lo reduce a una décima parte, manteniendo fijo el centro.
 - **Aplanar el fondo** (**FWHM**, px; desactivado por defecto, 100 px) : resta al patrón simulado una copia desenfocada con una gaussiana, eliminando la distribución de brillo de variación lenta para poder comparar bandas y ejes de zona con un patrón experimental corregido de fondo. La anchura a media altura se da en píxeles del detector y no depende del zoom. Afecta a la imagen mostrada y a la exportación PNG/TIFF; la exportación CSV conserva los valores brutos.
 
 ### Imagen experimental
@@ -174,7 +174,9 @@ El panel central muestra el patrón EBSD (de bandas de Kikuchi) para la orientac
 
 Suelte un archivo de imagen EBSD (TIFF, PNG, BMP o JPEG; los TIFF de 16 bits se leen con toda su profundidad) en cualquier punto de la ventana para cargarlo como patrón experimental. Se dibuja sobre el área del detector —encima del patrón simulado y debajo de las superposiciones de líneas de Kikuchi—, de modo que la simulación puede compararse directamente con la medida. Al cargar la imagen también se ajustan **Width** y **Height** del detector al tamaño de la imagen.
 
-- **Brillo** (**Min** / **Max**) : puntos de negro y de blanco de la imagen superpuesta, como fracción de su propio rango de intensidad (deslizadores logarítmicos). Actúan sólo sobre la imagen experimental, no sobre el patrón simulado.
+- **Brillo** (**Min** / **Max**), **Contraste** : los puntos de negro y de blanco de la imagen superpuesta como porcentaje de su rango de visualización, y la anchura de ese rango (deslizadores lineales, con el mismo criterio que para el patrón simulado). Actúan sólo sobre la imagen experimental.
+- **Aplanar el fondo** (**FWHM**, px; desactivado por defecto, 100 px) : resta a la imagen experimental una copia desenfocada con una gaussiana, eliminando su distribución de brillo de variación lenta. Los deslizadores de intensidad actúan entonces sobre los valores aplanados.
+- **Ajustar a la imagen** : ajusta **Min**, **Max** y **Contraste** del patrón simulado para que sus niveles de intensidad del 2 % y del 98 % se muestren con el mismo gris que los de la imagen experimental. El ajuste usa percentiles, por lo que no depende de la solución de orientación y es insensible a un pedestal o a unos pocos píxeles brillantes de ejes de zona. Polaridad, Color y los dos ajustes de **Aplanar el fondo** no se modifican, así que aplane ambos lados o ninguno antes de pulsarlo.
 - **Opacidad** : opacidad de la imagen superpuesta, de 0 (invisible) a 100 % (opaca). Redúzcala para ver el patrón simulado debajo.
 
 A continuación, la orientación que explica la imagen se busca con uno de los dos motores.

@@ -1,8 +1,10 @@
 # Traiettorie elettroniche
 
-Il **simulatore di traiettorie** calcola le traiettorie degli elettroni all'interno di un campione con il **metodo Monte-Carlo**: gli elettroni incidenti subiscono diffusione elastica e anelastica, e le distribuzioni risultanti degli elettroni retrodiffusi (direzione, energia, profondità di penetrazione) vengono accumulate. Queste distribuzioni forniscono anche la ponderazione angolare/energetica/in profondità utilizzata dalla [12. Simulazione EBSD](12-ebsd-simulation.md).
+Il **Simulatore di traiettorie (metodo Monte Carlo)** calcola le traiettorie degli elettroni all'interno di un campione con il **metodo Monte-Carlo**: gli elettroni incidenti subiscono diffusione elastica e anelastica, e le distribuzioni risultanti degli elettroni retrodiffusi (BSE) — direzione, energia all'uscita, profondità di penetrazione ed estensione laterale — vengono accumulate. Queste distribuzioni forniscono anche la ponderazione angolare/energetica/in profondità utilizzata dalla [12. Simulazione EBSD](12-ebsd-simulation.md).
 
 ![Electron Trajectory](../assets/cap-it-auto/FormTrajectory.png)
+
+La finestra è divisa in tre colonne: la **vista 3-D delle traiettorie** a sinistra, le **Statistiche** e lo stereogramma della **Distribuzione direzionale BSE** al centro, e tre **istogrammi** a destra. La composizione e la densità del campione sono quelle del cristallo selezionato nella finestra principale; qui si impostano soltanto l'energia del fascio, l'inclinazione del campione e il numero di traiettorie.
 
 ---
 
@@ -23,45 +25,24 @@ Le traiettorie sono mostrate in una vista 3-D OpenGL. Essa utilizza la [navigazi
 
 ## Condizioni di calcolo
 
-Energia del fascio, numero di elettroni incidenti, campione/materiale e altri parametri Monte-Carlo (vedere lo screenshot panoramico sopra).
+I controlli nella parte superiore della finestra impostano l'esecuzione:
 
-### Energia del fascio
+- **Simula traiettorie** : avvia la simulazione Monte-Carlo. La barra di stato in basso riporta separatamente il tempo trascorso per il calcolo delle traiettorie, per il disegno dei grafici e per il rendering 3-D.
+- **Number of trajectories** : quanti elettroni incidenti seguire. Un numero maggiore di elettroni riduce il rumore statistico di tutte le distribuzioni descritte di seguito, con un tempo di esecuzione che cresce linearmente.
+- **Inclinazione campione** (°) : inclinazione della superficie del campione attorno all'asse *X*. Lasciarla a 0 per l'incidenza normale; usare **−70°** per riprodurre la geometria del [simulatore EBSD](12-ebsd-simulation.md), dove la forte inclinazione aumenta la resa di retrodiffusione.
+- **Energy** (keV) / **Wavelength** / **Unit** : la tensione di accelerazione del fascio incidente e la lunghezza d'onda elettronica corretta relativisticamente a essa associata. L'energia imposta l'energia cinetica utilizzata sia dal modello elastico (NIST Mott) sia da quello anelastico (potere frenante / IMFP).
 
-Tensione di accelerazione del fascio elettronico incidente (keV). Imposta l'energia cinetica utilizzata sia per i modelli di diffusione elastica (Mott) sia per quelli di diffusione anelastica (risposta dielettrica).
+I modelli di diffusione non sono selezionabili dall'utente: le sezioni d'urto elastiche provengono dalla tabella NIST Mott inclusa nel programma (con ricorso a Rutherford schermato al di fuori del suo intervallo), e il potere frenante dalla forma di Jablonski modificata (2008). Il modello effettivamente utilizzato è indicato accanto a ciascun valore in **Statistiche**. Vedere [Attenuazione e trasporto](appendix/a2-beam-interaction/attenuation-transport.md) per una descrizione di questi modelli.
 
-### Numero di elettroni incidenti
+### Vista 3-D delle traiettorie
 
-Quanti elettroni simulare. Un numero maggiore di elettroni riduce il rumore statistico ma aumenta linearmente il tempo di esecuzione.
+Le traiettorie rosse sono gli elettroni assorbiti nel campione, quelle arancioni gli elettroni che escono come elettroni retrodiffusi. I cerchi guida concentrici sono etichettati in nm (o µm), e **+X**, **+Y**, **+Z (=beam)** indicano gli assi.
 
-### Campione / materiale
-
-Composizione e densità del campione. Per impostazione predefinita corrisponde al cristallo attualmente selezionato nella finestra principale, ma può essere sostituito per studi delle sole traiettorie.
-
-### Inclinazione del campione
-
-Angolo di inclinazione del campione. Utilizzato quando i dati delle traiettorie alimentano il [simulatore EBSD](12-ebsd-simulation.md) (tipicamente 70° per l'EBSD).
-
-### Modello di sezione d'urto
-
-Il modello della sezione d'urto di diffusione elastica (Mott / Bethe / NIST). Modelli diversi bilanciano velocità e accuratezza ad angoli di inclinazione elevati o in prossimità dei bordi di assorbimento.
-
----
-
-## Opzioni dello stereogramma
-
-Opzioni di visualizzazione per la distribuzione angolare tracciata sulla proiezione stereografica (vedere lo screenshot panoramico sopra).
-
-### Metodo di proiezione
-
-Proiezione **Wulff** (equiangolare) o **Schmidt** (equiareale). Schmidt è solitamente preferita quando si legge la densità statistica.
-
-### Emisfero
-
-Traccia l'emisfero superiore (retrodiffuso) o inferiore (trasmesso).
-
-### Risoluzione / Scala dei colori
-
-Ampiezza delle classi dell'istogramma angolare e mappa dei colori utilizzata per la visualizzazione della densità.
+- **Dall'asse Z (=direzione del fascio)** / **Dall'asse X (asse di rotazione)** / **Normale alla superficie** : allineano la vista alle direzioni standard.
+- **Numero di traiettorie da disegnare** : quante delle traiettorie calcolate visualizzare (disegnarle tutte e 100.000 sarebbe illeggibile e lento).
+- **Disegna assi** / **Disegna cerchi guida** : le frecce degli assi e la scala delle distanze.
+- **Disegna le traiettorie assorbite nel campione** : include gli elettroni che non escono mai.
+- **Disegna il percorso dopo l'uscita** : continua a disegnare il percorso di un elettrone retrodiffuso dopo che ha lasciato la superficie.
 
 ---
 
@@ -69,12 +50,13 @@ Ampiezza delle classi dell'istogramma angolare e mappa dei colori utilizzata per
 
 ![Statistiche](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Riepilogo dell'esecuzione.
+Valori per l'energia del fascio attuale, con il modello che ha prodotto ciascuno di essi indicato tra parentesi.
 
-- **Resa di retrodiffusione** — frazione degli elettroni incidenti che escono attraverso la superficie di ingresso.
-- **Libero cammino medio** — distanza media tra gli eventi di diffusione.
-- **Profondità di penetrazione media** — profondità massima media raggiunta da un elettrone prima di uscire o essere assorbito.
-- **Tempo trascorso / Throughput** — costo dell'esecuzione in tempo reale.
+- **Sezione d'urto di diffusione (σ_E)** (nm²) — sezione d'urto elastica totale per atomo.
+- **Libero cammino medio elastico (λ)** (nm) — distanza media tra eventi di diffusione elastica.
+- **Potere frenante (dE/ds)** (eV/nm, negativo) — energia persa per unità di lunghezza di percorso.
+- **Coefficiente di elettroni retrodiffusi, η** (%) — la frazione di elettroni incidenti che escono di nuovo attraverso la superficie di ingresso. È la grandezza su cui si basa il contrasto delle immagini BSE.
+- **Energia media BSE** (keV) — energia media degli elettroni retrodiffusi nel momento in cui escono.
 
 ---
 
@@ -82,23 +64,31 @@ Riepilogo dell'esecuzione.
 
 ![Distribuzione direzionale BSE](../assets/cap-it-auto/FormTrajectory.panel2.groupBoxDirectionDistribution.png)
 
-Distribuzione angolare degli elettroni retrodiffusi (il centro dello stereogramma corrisponde alla direzione della normale alla superficie). Il contorno giallo/arancione (quando presente) delimita la regione sottesa dal rivelatore EBSD.
+Distribuzione angolare degli elettroni retrodiffusi, tracciata su uno stereogramma il cui centro corrisponde alla direzione della normale alla superficie.
+
+- **Frequenza** / **Energia media** / **Deviazione standard dell'energia** : la grandezza rappresentata dal colore — quanti elettroni escono in ciascuna direzione, la loro energia media o la dispersione di tale energia.
+- **Disegna assi** : sovrappone le direzioni +X / ±Y / ±Z.
+- **Min** / **Max**, **Resolution**, **Color** : i limiti della scala dei colori, l'ampiezza angolare delle classi dell'istogramma e la mappa dei colori.
 
 ---
 
-## Profili
+## Istogrammi
 
-![Profiles](../assets/cap-it-auto/FormTrajectory.flowLayoutPanelProfiles.png)
+![Istogrammi](../assets/cap-it-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Profili in profondità ed energia degli elettroni simulati.
+Tre distribuzioni degli elettroni retrodiffusi, tutte normalizzate ad area unitaria.
 
-### Profilo in profondità
+### Distribuzione energetica BSE all'uscita
 
-Istogramma della profondità finale di uscita (nm) degli elettroni retrodiffusi. Utilizzato dal simulatore EBSD per ponderare l'integrazione in profondità del master pattern.
+Istogramma dell'**energia che gli elettroni retrodiffusi possiedono ancora quando lasciano il campione** (keV) — non della loro perdita di energia. Il simulatore EBSD lo utilizza per ponderare l'integrazione in energia del master pattern.
 
-### Profilo energetico
+### Massima distanza BSE parallela alla superficie
 
-Istogramma della perdita di energia ΔE (keV) degli elettroni retrodiffusi. Utilizzato dal simulatore EBSD per ponderare l'integrazione in energia.
+Istogramma della distanza percorsa **lateralmente** (parallelamente alla superficie, nm) da ciascun elettrone retrodiffuso prima di uscire. Corrisponde all'estensione laterale del volume di interazione, e quindi al limite intrinseco di risoluzione spaziale di una misura BSE o EBSD.
+
+### Massima profondità di penetrazione BSE
+
+Istogramma della massima profondità **perpendicolare alla superficie** (nm) raggiunta da ciascun elettrone retrodiffuso prima di uscire. Il simulatore EBSD lo utilizza per ponderare l'integrazione in profondità del master pattern.
 
 ---
 
@@ -106,6 +96,7 @@ Istogramma della perdita di energia ΔE (keV) degli elettroni retrodiffusi. Util
 
 - [Simulazione EBSD](12-ebsd-simulation.md)
 - [Calcolo EBSD](appendix/a3-bloch-wave/ebsd.md)
+- [Attenuazione e trasporto](appendix/a2-beam-interaction/attenuation-transport.md) — le sezioni d'urto elastiche, il potere frenante e i percorsi utilizzati qui.
 - [Diffrazione dinamica (onda di Bloch)](appendix/a3-bloch-wave/index.md)
 - [Simulatore HRTEM/STEM](9-hrtem-stem-simulator/index.md)
 - [Simulatore di diffrazione](7-diffraction-simulator/index.md)

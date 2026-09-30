@@ -76,10 +76,10 @@ Controla como cada ponto de difração é desenhado.
 - **Opacity** : Transparência do ponto (0 = transparente, 1 = opaco).
 - **Radius (R)** : Raio dos pontos da rede recíproca. Para intensidades dinâmicas, a integral gaussiana $=$ Brightness $\times I_\text{dyn}$, e a Solid sphere usa o raio $R \times I_\text{dyn}^{1/2}$ (de modo que a área é proporcional à intensidade dinâmica).
 - **Brightness** : Disponível apenas no modo **Gaussian**. Intensidade integrada da gaussiana desenhada.
-- **Colour scale** : Mapa de cores **Gray scale** ou **Cold-warm**.
+- **Escala de cores** : Mapa de cores **Gray scale** ou **Cold-warm**.
 - **Log scale** : Exibe a intensidade em escala logarítmica.
-- **Spot colour** : Cor do ponto usada quando nenhuma escala de cores é aplicada.
-- **Use crystal colour** : Desenha os pontos na cor atribuída a cada cristal.
+- **Cor do ponto** : Cor do ponto usada quando nenhuma escala de cores é aplicada.
+- **Cor por cristal** : Desenha os pontos na cor atribuída a cada cristal.
 
 ---
 

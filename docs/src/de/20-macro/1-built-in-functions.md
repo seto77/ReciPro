@@ -130,6 +130,7 @@ Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetE
 | `Thickness` | double | Probendicke (nm) |
 | `NumberOfDiffractedWaves` | int | Anzahl der Bloch-Wellen |
 | `CameraLength2` | double | Kameralänge (mm) |
+| `ExcitationError` | double | Reflexradius (nm⁻¹): im kinematischen/Anregungsmodus exportiert `SpotInfo()` die Reflexe mit \|Sg\| innerhalb dieses Wertes |
 | `SkipRendering` | bool | Rendering für Stapelverarbeitung überspringen |
 
 ### Strahlmodus

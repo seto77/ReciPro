@@ -1,6 +1,6 @@
 # CBED-Berechnung
 
-CBED (konvergente Elektronenbeugung) wendet den [dynamischen Kern](calculation.md) auf viele Einfallsrichtungen des Strahls an und ordnet die Ergebnisse anschließend in Beugungsscheiben ein. SAED hat eine Einfallsrichtung; CBED behandelt jeden Punkt innerhalb der Objektivblende als **partielle einfallende ebene Welle** und löst das Bloch-Wellen-Problem für jeden einzelnen davon.
+CBED (konvergente Elektronenbeugung) wendet den [dynamischen Kern](calculation.md) auf viele Einfallsrichtungen des Strahls an und ordnet die Ergebnisse anschließend in Beugungsscheiben ein. SAED hat eine Einfallsrichtung; CBED behandelt jeden Punkt innerhalb der sondenformenden (Kondensor-)Blende als **partielle einfallende ebene Welle** und löst das Bloch-Wellen-Problem für jeden einzelnen davon.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Dabei ist $\mathbf K$ die zur Probenoberfläche parallele Komponente des einfallenden Wellenvektors. Für eine ideale kreisförmige Blende mit Konvergenz-Halbwinkel $\alpha$ und Elektronenwellenlänge $\lambda$ gilt
+Dabei ist $\mathbf K$ die zur Probenoberfläche parallele Komponente des einfallenden Wellenvektors. Für eine ideale kreisförmige sondenformende Blende mit Konvergenz-Halbwinkel $\alpha$ und Elektronenwellenlänge $\lambda$ gilt
 
 $$A(\mathbf K)=
 \begin{cases}
@@ -57,7 +57,7 @@ Für LACBED-artige Modi, bei denen die Phasenkohärenz über einen größeren Be
 
 CBED macht die Dickenabhängigkeit der Bloch-Wellen-Lösung als Intensitätsstruktur innerhalb der Beugungsscheiben sichtbar.
 
-- Eine Änderung der Dicke verändert die Oszillationen im Scheibeninneren, die HOLZ-Linien und die Kossel-Möllenstedt-Streifen.
+- Eine Änderung der Dicke verändert die Oszillationen im Scheibeninneren, die HOLZ-Linien und die Kossel–Möllenstedt-Streifen.
 - Eine Änderung der Einfallsorientierung verändert, welche Reflexe stark angeregt werden.
 - Eine Vergrößerung des Konvergenzwinkels verbreitert die Scheiben und kann Überlappungen sowie Informationen aus Laue-Zonen höherer Ordnung sichtbar machen.
 

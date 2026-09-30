@@ -55,11 +55,11 @@ L'indice di rifrazione dei raggi X di un solido è **leggermente minore di 1**, 
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-dove $n_i$ è la densità numerica dell'elemento $i$ e $r_e$ il raggio classico dell'elettrone. Qui $\mu_\text{abs}$ è la parte assorbitiva dell'attenuazione (legata a $f''$); non deve necessariamente essere uguale al $\mu$ totale visto sopra, che contiene anche la diffusione Rayleigh e Compton. Poiché $n<1$, i raggi X subiscono una **riflessione esterna totale** al di sotto di un piccolo **angolo critico** radente
+dove $n_i$ è la densità numerica dell'elemento $i$ e $r_e$ il raggio classico dell'elettrone. Qui $\mu_\text{abs}$ è la parte assorbitiva dell'attenuazione (legata a $f''$); non deve necessariamente essere uguale al $\mu$ totale visto sopra, che contiene anche la diffusione Rayleigh e Compton. Quando $\delta>0$ l'indice di rifrazione è minore di 1, per cui i raggi X subiscono una **riflessione esterna totale** al di sotto di un piccolo **angolo critico** radente $\alpha_c$:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-Ciò deriva dalla geometria della rifrazione: per un angolo radente $\alpha$ il vettore d'onda verticale all'interno del solido è $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, che raggiunge lo zero per $\alpha = \alpha_c = \sqrt{2\delta}$; al di sotto di tale valore l'onda non può propagarsi nel materiale e viene totalmente riflessa. La parte reale della **densità di lunghezza di diffusione**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, determina $\delta$ ed è l'analogo per i raggi X della SLD neutronica usata in riflettometria. ReciPro riporta $\delta$, $\beta$, $\theta_c$ e la SLD dei raggi X nella tabella scalare.
+Ciò deriva dalla geometria della rifrazione: per un angolo radente $\alpha$ il vettore d'onda verticale all'interno del solido è $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, che raggiunge lo zero per $\alpha = \alpha_c = \sqrt{2\delta}$; al di sotto di tale valore l'onda non può propagarsi nel materiale e viene totalmente riflessa. L'espressione presuppone il limite senza perdite $\beta \ll \delta$: con un $\beta$ finito un'onda evanescente penetra comunque per alcuni nanometri e la riflettività resta leggermente inferiore a 1. Appena sopra uno spigolo di assorbimento $\delta$ può persino diventare negativo; in tal caso non esiste un angolo critico e ReciPro non ne riporta alcuno. La parte reale della **densità di lunghezza di diffusione**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, determina $\delta$ ed è l'analogo per i raggi X della SLD neutronica usata in riflettometria. ReciPro riporta $\delta$, $\beta$, $\alpha_c$ (indicato come **θc** nella tabella scalare) e la SLD dei raggi X.
 
 ---
 
@@ -69,7 +69,7 @@ Un elettrone veloce in un solido sia **diffonde** (cambiando direzione) sia **pe
 
 ### Diffusione elastica e libero cammino medio
 
-La sezione d'urto elastica $\sigma_\text{el}$ misura quanto facilmente un singolo atomo devia l'elettrone. ReciPro usa le sezioni d'urto **NIST Mott** (una soluzione a onde parziali dell'equazione relativistica di Dirac nel potenziale atomico schermato), valide all'incirca su **50 eV – 36.4 keV**; al di fuori di tale intervallo, o per elementi non presenti in tabella, ripiega sull'approssimazione di **Rutherford schermata**. Le due non devono necessariamente raccordarsi in modo perfettamente liscio al confine. La sezione d'urto totale è l'integrale angolare di quella differenziale,
+La sezione d'urto elastica $\sigma_\text{el}$ misura quanto facilmente un singolo atomo devia l'elettrone. ReciPro usa le sezioni d'urto **NIST Mott** (una soluzione a onde parziali dell'equazione relativistica di Dirac nel potenziale atomico schermato). La tabella inclusa copre **50 eV – 36.4 keV** (si tratta dell'estensione della tabulazione di ReciPro, non di un limite del metodo di Mott in sé); al di fuori di tale intervallo, o per elementi non presenti in tabella, ripiega sull'approssimazione di **Rutherford schermata**. Le due non devono necessariamente raccordarsi in modo perfettamente liscio al confine. La sezione d'urto totale è l'integrale angolare di quella differenziale,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ L'energia viene persa principalmente per eccitazioni elettroniche (ionizzazione,
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-dove qui $s$ è la **lunghezza del cammino** lungo la traiettoria (la variabile della curva *|dE/ds|* della scheda), non la variabile di diffusione $\sin\theta/\lambda$ usata altrove in questa appendice. Il gradiente di energia $dE/ds$ è negativo, quindi la scheda rappresenta $S$ verso l'alto. Alle energie del keV segue, concettualmente, la forma di **Bethe**
+dove qui $s$ è la **lunghezza del cammino** lungo la traiettoria (la variabile della curva *|dE/ds|* della scheda), non la variabile di diffusione $\sin\theta/\lambda$ usata altrove in questa appendice. Il gradiente $dE/ds$ è di per sé negativo, quindi la scheda ne rappresenta il modulo $S$ verso l'alto. Alle energie del keV segue, concettualmente, la forma di **Bethe**
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; ReciPro valuta una forma corretta/empirica (del tipo Joy–Luo) che si mantiene regolare alle basse energie. L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
+con $J$ l'**energia media di eccitazione** del solido. Questo schizzo non relativistico mostra soltanto lo scaling; ReciPro valuta la forma di **Jablonski (2008)** modificata, che si mantiene regolare alle basse energie (è implementata anche la precedente forma empirica di **Joy–Luo (1989)**). L'**energia del plasmone** $E_p$ nella tabella scalare è una caratterizzazione collegata ma distinta delle stesse eccitazioni elettroniche. Il **libero cammino medio anelastico** (IMFP) è la corrispondente distanza media tra le collisioni con perdita di energia; ReciPro può valutarlo dalla formula predittiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ Le stesse scale di lunghezza spiegano perché gli elettroni richiedono campioni 
 
 ## Vedi anche
 
-- [Fattori di diffusione atomici](scattering-factor.md) — la separazione $F(q)$/$S(q)$ dietro Rayleigh/Compton, e le sezioni d'urto di Mott.
+- [Fattori di diffusione atomici](scattering-factor.md) — la separazione $F(q)$/$S(q)$ dietro Rayleigh/Compton, e la relazione di Mott–Bethe (un modello diverso dalle sezioni d'urto NIST Mott usate sopra).
 - [Fluorescenza](fluorescence.md) — la rilassazione che segue il fotoassorbimento dei raggi X.
 - [3. Interazione del fascio](../../3-beam-interaction.md) — la scheda *Attenuazioni & trasporto*.
 - [8. Traiettorie elettroniche](../../8-electron-trajectory.md) · [12. Simulazione EBSD](../../12-ebsd-simulation.md) — dove si usano le portate degli elettroni.

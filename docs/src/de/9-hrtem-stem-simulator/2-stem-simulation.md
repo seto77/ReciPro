@@ -50,7 +50,7 @@ Siehe [Anhang A3.4 — STEM-Berechnung](../appendix/a3-bloch-wave/stem.md) für 
 
 | Parameter | Beschreibung | Standard / typisch |
 |-----------|-------------|-------------------|
-| **Acc. Vol. (kV)** | Beschleunigungsspannung. Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
+| **Beschl.-Spannung (kV)** | Beschleunigungsspannung. Die relativistisch korrigierte Elektronenwellenlänge wird daneben angezeigt | 200 kV |
 | **Defocus Δf** | Defokus der Objektivlinse (sondenformenden Linse) (nm) | −57.8 nm |
 | **Cs** | Sphärischer Aberrationskoeffizient (mm). Beeinflusst die Sondengröße | 0.5–1.0 mm |
 | **Cc** | Chromatischer Aberrationskoeffizient (mm) | 1.0–2.0 mm |
@@ -102,9 +102,9 @@ Lege die Geometrie der konvergenten Sonde und des Ringdetektors fest. Jeder Wink
 
 ---
 
-## Gebeugte Wellen
+## Wellen
 
-![Gebeugte Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Wellen](../../assets/cap-de-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** : maximale Anzahl der in der Bethe-Methode verwendeten Bloch-Wellen (Standard 80). Der Aufwand des Eigenwertproblems skaliert mit der dritten Potenz der Wellenanzahl.
 

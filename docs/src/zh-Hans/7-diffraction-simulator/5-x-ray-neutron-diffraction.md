@@ -71,7 +71,7 @@ X 射线的波长比电子长（Cu Kα: 0.15406 nm = 1.5406 Å），因此埃瓦
 
 强度仅由埃瓦尔德球与倒易点阵点之间的几何距离（偏离矢量 $S_g$）决定。$S_g = 0$（即恰好位于球面上）时强度最大，随 $\lvert S_g\rvert$ 增大而减小，当 $\lvert S_g\rvert$ 超过为倒易点阵点设定的 **Radius** 时降为零。结构因子被忽略。
 
-### Kinematical & excitation error
+### Kinematical & exc. error
 
 除偏离矢量外，运动学结构因子 $\lvert F_{hkl} \rvert^2$ 也被纳入强度。严格遵守消光规则。不包含洛伦兹因子和偏振因子（这是对几何图样的模拟）。
 
@@ -92,7 +92,7 @@ X 射线的波长比电子长（Cu Kα: 0.15406 nm = 1.5406 Å），因此埃瓦
 - **Color scale** : 在 **Gray scale** 和 **Cold-warm** 两种颜色映射之间选择。
 - **Log scale** : 以对数刻度显示强度。
 - **Spot color** : 当颜色刻度不适用时的默认斑点颜色。
-- **Use crystal color** : 勾选后，以分配给每个晶体的颜色绘制斑点。
+- **Color per crystal** : 勾选后，以分配给每个晶体的颜色绘制斑点。
 
 ---
 

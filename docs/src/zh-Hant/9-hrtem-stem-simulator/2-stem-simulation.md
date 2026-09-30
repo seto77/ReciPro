@@ -50,7 +50,7 @@
 
 | 參數 | 說明 | 預設 / 典型 |
 |-----------|-------------|-------------------|
-| **Acc. Vol. (kV)** | 加速電壓。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
+| **加速電壓 (kV)** | 加速電壓。經相對論修正的電子波長會顯示於旁邊 | 200 kV |
 | **Defocus Δf** | 物鏡（探針成形透鏡）的欠焦 (nm) | −57.8 nm |
 | **Cs** | 球面像差係數 (mm)。影響探針尺寸 | 0.5–1.0 mm |
 | **Cc** | 色像差係數 (mm) | 1.0–2.0 mm |
@@ -102,9 +102,9 @@
 
 ---
 
-## 繞射波
+## 波
 
-![繞射波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![波](../../assets/cap-zh-Hant-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** : Bethe 法所用布洛赫波的最大數目（預設 80）。本徵值問題的計算成本隨波數的立方增加。
 

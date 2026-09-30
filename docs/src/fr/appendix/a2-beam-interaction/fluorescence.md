@@ -17,11 +17,11 @@ et elle est donc caractéristique de l'élément :
 - **Raies K** — lacune dans la couche $K$ comblée depuis $L$ ($K\alpha$) ou $M$ ($K\beta$).
 - **Raies L** — lacune dans la couche $L$ comblée depuis $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Seules apparaissent les transitions autorisées par les règles de sélection dipolaires, ce qui explique pourquoi le spectre est constitué de quelques raies discrètes (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) plutôt que d'un continuum. Leurs énergies suivent la **loi de Moseley** ; dans l'approximation hydrogénoïde écrantée,
+Le spectre est constitué de quelques raies discrètes (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) plutôt que d'un continuum, parce que les énergies des couches sont elles-mêmes quantifiées ; les règles de sélection dipolaires électriques décident ensuite lesquelles de ces transitions sont intenses (des raies interdites, multipolaires et satellites plus faibles existent néanmoins). Leurs énergies suivent la **loi de Moseley** ; dans l'approximation hydrogénoïde écrantée,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-avec $\sigma$ une constante d'écran. Pour $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) ceci se réduit à $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Cette dépendance en $Z$ monotone et pilotée par le nombre d'électrons est la base de l'identification élémentaire (EDX/WDX).
+avec $\sigma$ une constante d'écran. Pour $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) ceci se réduit à $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. La dépendance en $Z$ est pilotée par la **charge nucléaire**, simplement écrantée par les électrons restants ; elle est donc monotone et pratiquement insensible à l'état chimique — c'est ce qui en fait la base de l'identification élémentaire (EDX/WDX).
 
 ---
 

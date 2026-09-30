@@ -76,10 +76,10 @@ Steuert, wie jeder Beugungsreflex gezeichnet wird.
 - **Opacity** : Transparenz des Reflexes (0 = transparent, 1 = undurchsichtig).
 - **Radius (R)** : Radius der reziproken Gitterpunkte. Für dynamische Intensitäten gilt: Gauß-Integral $=$ Brightness $\times I_\text{dyn}$, und Solid sphere verwendet den Radius $R \times I_\text{dyn}^{1/2}$ (sodass die Fläche proportional zur dynamischen Intensität ist).
 - **Brightness** : Nur im Modus **Gaussian** verfügbar. Integrierte Intensität der gezeichneten Gauß-Funktion.
-- **Colour scale** : Farbskala **Gray scale** oder **Cold-warm**.
+- **Farbskala** : Farbskala **Gray scale** oder **Cold-warm**.
 - **Log scale** : Anzeige der Intensität auf einer logarithmischen Skala.
-- **Spot colour** : Farbe des Reflexes, wenn keine Farbskala angewendet wird.
-- **Use crystal colour** : Zeichnet die Reflexe in der jedem Kristall zugewiesenen Farbe.
+- **Reflexfarbe** : Farbe des Reflexes, wenn keine Farbskala angewendet wird.
+- **Farbe je Kristall** : Zeichnet die Reflexe in der jedem Kristall zugewiesenen Farbe.
 
 ---
 
