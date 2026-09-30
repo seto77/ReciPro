@@ -31,7 +31,7 @@ Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> valables dans toute l'applicatio
 
 ## Zone principale
 
-Structure cristalline 3D avec source de lumière, axes cristallins et légende des atomes.
+La structure cristalline en 3D, dessinée avec le gizmo de direction de la lumière, le gizmo des axes cristallins et la légende des atomes.
 > La boîte **Size (W×H)** en haut à droite de la fenêtre définit la taille en pixels utilisée lors de l'enregistrement ou de la copie de l'image rendue.
 > La boîte **ProjWidth** juste à côté affiche la largeur de la vue projetée en nm. Modifiez la valeur pour zoomer numériquement — elle reste synchronisée avec le zoom par glisser-droite / molette dans la vue.
 
@@ -144,7 +144,7 @@ Si cette option est cochée, tous les atomes, liaisons et polyèdres sont masqu�
 
 ![Onglet Atomes](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Coordonnées, élément, taux d'occupation, rayon, couleur, matériau. **Apply to same elements**.
+Définit l'espèce, la position et le taux d'occupation de chaque atome, ainsi que la manière dont chacun est dessiné (rayon, couleur, matériau).
 
 #### Liste des atomes
 
@@ -180,7 +180,7 @@ Rayon, couleur et matériau par atome.
 
 ![Onglet Liaisons & Polyèdres](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-Seuils de longueur de liaison, affichage des polyèdres, arêtes.
+Définit quelles paires d'atomes sont liées (par espèce et intervalle de distances) et comment les liaisons et les polyèdres de coordination qui en résultent sont dessinés.
 
 #### Liste des liaisons
 
@@ -208,7 +208,7 @@ Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez 
 
 ![Onglet Maille élémentaire](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-Translation, plans de la maille, arêtes.
+Définit la position de la maille dessinée et l'affichage ou non de ses faces et de ses arêtes.
 
 #### Translation
 
@@ -226,7 +226,7 @@ Indique si les arêtes de la maille sont dessinées. La couleur des arêtes est 
 
 ![Onglet Plans réticulaires](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-Spécification de l'indice de Miller avec les équivalents cristallographiques.
+Dessine des plans réticulaires donnés par leur indice de Miller, en incluant éventuellement les plans cristallographiquement équivalents.
 
 #### Indices H k l
 
@@ -240,7 +240,7 @@ Translate le plan réticulaire dessiné d'un multiple entier de sa distance inte
 
 ![Onglet Coordonnées](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-Tableau et graphe de coordination autour de l'atome cible.
+Liste et représente graphiquement les atomes qui coordonnent un atome cible choisi.
 
 #### Tableau (côté gauche)
 
@@ -260,7 +260,7 @@ Journal de rendu (temps d'image, informations GPU) et informations de base sur l
 
 ![Onglet Projection](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-Mode de projection (orthographique/perspective), atténuation en profondeur, qualité de rendu, mode de transparence.
+Définit le mode de projection (orthographique / perspective), l'atténuation en profondeur, le centre de projection, la qualité de rendu et l'algorithme de transparence.
 
 #### Projection
 
@@ -320,7 +320,7 @@ Pour chaque classe, vous pouvez ajuster la taille du symbole, l'épaisseur de li
 | Unit Cell | Basculer les arêtes de la maille |
 | Sym. Elems. | Basculer la superposition des éléments de symétrie (voir ci-dessus) |
 | Reset Rotation | Revenir à l'orientation initiale |
-| Like Vesta | Apparence de style Vesta |
+| Like Vesta | Passer à une apparence de style VESTA (couleurs et rayons des atomes) |
 
 ---
 

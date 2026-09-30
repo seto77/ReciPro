@@ -62,7 +62,7 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 | Effacer tous les cristaux | Supprimer tous les cristaux de la liste |
 | Quitter | Fermer l'application |
 
-### Option
+### Options
 
 
 | Élément de menu | Description |
@@ -84,19 +84,19 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 
 | Élément de menu | Description |
 |-----------|-------------|
-| Program updates | Vérifier si une nouvelle version de ReciPro est disponible et l'installer |
-| Hint | Afficher les conseils d'utilisation (obsolète) |
-| Version history | Ouvrir la boîte de dialogue de l'historique des versions |
-| License | Afficher la licence MIT |
-| GitHub page | Ouvrir le dépôt ReciPro dans un navigateur |
-| Report bugs, requests, or comments | Ouvrir la page GitHub Issues |
-| Help (Web) | Ouvrir le manuel en ligne sur GitHub Pages, dans la page correspondant à la langue de l'interface. |
+| Rechercher des mises à jour | Vérifier si une nouvelle version de ReciPro est disponible et l'installer |
+| Astuces | Afficher les conseils d'utilisation (obsolète) |
+| Historique des versions | Ouvrir la boîte de dialogue de l'historique des versions |
+| Licence | Afficher la licence MIT |
+| Dépôt GitHub | Ouvrir le dépôt ReciPro dans un navigateur |
+| Signaler des bogues, demandes ou commentaires | Ouvrir la page GitHub Issues |
+| Aide (Web) | Ouvrir le manuel en ligne sur GitHub Pages, dans la page correspondant à la langue de l'interface |
 
 La langue de l'interface se change depuis le menu **Langue** distinct (nécessite un redémarrage).
 
 ### Language
 
-Changer la langue de l'interface. Onze langues sont disponibles — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 et 한국어 — chacune affichée dans sa propre écriture. Le changement prend effet après le redémarrage de ReciPro. Le manuel en ligne suit le même réglage.
+Changer la langue de l'interface. Onze langues sont disponibles — English, 日本語 (japonais), Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 et 한국어 — et le menu affiche chacune d'elles dans sa propre écriture. Le changement prend effet après le redémarrage de ReciPro. Le manuel en ligne suit le même réglage : <kbd>F1</kbd> et **Aide ▸ Aide (Web)** ouvrent la page dans la langue que vous avez choisie.
 
 ### Macro
 
@@ -119,7 +119,7 @@ Affiche l'orientation du cristal. Faites glisser pour pivoter. Axes : rouge = *a
 Réinitialise à l'état initial : axe *c* perpendiculaire à l'écran, axe *b* vers le haut.
 
 ### Axe de zone
-Affiche l'axe de zone le plus proche de la normale à l'écran (p. ex. *u*+*v*+*w* < 30).
+Affiche l'axe de zone [*uvw*] le plus proche de la normale à l'écran, recherché parmi les indices dont les valeurs absolues restent dans la limite indiquée dans la case max-UVW (double-cliquez sur l'étiquette **Current Index** pour afficher ou masquer cette case).
 
 ### Angles d'Euler (Z-X-Z)
 Définissez l'orientation du cristal avec les angles d'Euler **Z–X–Z** :
@@ -179,7 +179,7 @@ Voir [Géométrie de rotation](4-rotation-geometry.md) et [Annexe A1. Systèmes 
 
 ## Informations sur le cristal
 
-Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-déposez des fichiers CIF/AMC pour charger une structure. Ce contrôle est partagé par ReciPro, PDIndexer et CSmanager, mais les onglets et fonctionnalités affichés diffèrent selon l'application. ReciPro affiche les onglets Basic Info, Atom et Reference (les onglets EOS, Elasticity et autres sont destinés aux autres applications et ne sont pas affichés dans ReciPro).
+Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-déposez des fichiers CIF/AMC pour charger une structure. Ce contrôle est partagé par ReciPro, PDIndexer et CSManager, mais les onglets et fonctionnalités affichés diffèrent selon l'application. ReciPro affiche les onglets Basic Info, Atom et Reference (les onglets EOS, Elasticity et autres sont destinés aux autres applications et ne sont pas affichés dans ReciPro).
 
 > **Important** : Appuyez sur **Add** ou **Replace** pour enregistrer les modifications.
 
@@ -232,7 +232,7 @@ Faites un clic droit sur une ligne d'atome et choisissez **Afficher les position
 | Rayonnement | Source / réglage |
 |-----------|------|
 | X-ray | Facteurs de diffusion incluant la valence ionique (International Tables for Crystallography, Vol. C). |
-| Electron | Facteurs de diffusion électronique (Peng 1998, Acta Cryst. A54, 481–485). |
+| Electron | Facteurs de diffusion électronique — atomes neutres d'après Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276 ; ions d'après Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Longueurs de diffusion des neutrons. Choisissez **Natural isotope abundance** ou **Custom isotope abundance** (une composition isotopique arbitraire). |
 
 ### Onglet Reference
@@ -267,7 +267,7 @@ La barre verticale de boutons à droite lance les fenêtres d'analyse et de simu
 | Bouton | Description | Détails |
 |--------|-------------|---------|
 | Crystal Database | Rechercher et importer des cristaux depuis les bases de données fournies / en ligne | [1. Base de données de cristaux](1-crystal-database.md) |
-| Symmetry Information | Informations sur le groupe d'espace et diagrammes de symétrie ITC Vol. A | [2. Informations de symétrie](2-symmetry-information.md) |
+| Symmetry Information | Informations sur le groupe d'espace et diagrammes de symétrie des *International Tables* Vol. A | [2. Informations de symétrie](2-symmetry-information.md) |
 | Beam Interaction | Interaction faisceau–cristal : réflexions, atténuation, facteurs de diffusion, fluorescence | [3. Interaction du faisceau](3-beam-interaction.md) |
 | Rotation Geometry | Matrice de rotation 3D / angles du goniomètre | [4. Géométrie de rotation](4-rotation-geometry.md) |
 | Structure Viewer | Structure cristalline 3D | [5. Visualiseur de structure](5-structure-viewer.md) |
