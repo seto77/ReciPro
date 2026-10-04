@@ -33,7 +33,7 @@ Estas tres convenciones describen la misma geometría; solo difiere la escala. C
 | Gráfico de picos de difracción | $Q = 4\pi\sin\theta/\lambda$ | $Q = q = 4\pi s$ |
 
 !!! note "Unidades"
-    Las parametrizaciones publicadas de los factores de forma usan $s$ en Å⁻¹ (por lo que $s^2$ en Å⁻²), mientras que ReciPro maneja $s^2$ internamente en nm⁻². Ambas difieren en un factor $100$ en $s^2$; las curvas y las tablas se presentan en las unidades indicadas en el encabezado de cada tabla. Un modelo — **Kirkland** — está tabulado frente a $q = 2s = 1/d$ en lugar de frente a $s$; véase [Atomic scattering factors](scattering-factor.md).
+    Las parametrizaciones publicadas de los factores de forma usan $s$ en Å⁻¹ (por lo que $s^2$ en Å⁻²), mientras que ReciPro maneja $s^2$ internamente en nm⁻². Ambas difieren en un factor $100$ en $s^2$; las curvas y las tablas se presentan en las unidades indicadas en el encabezado de cada tabla. Un modelo — **Kirkland** — está tabulado frente a $q_K = 2s = 1/d$ en lugar de frente a $s$; véase [Atomic scattering factors](scattering-factor.md). Tenga en cuenta que este $q_K$ **no** es el $q = 2\pi/d$ de la tabla de reflexiones anterior: ambos difieren en un factor $2\pi$.
 
 ### Bragg, Laue y la esfera de Ewald
 
@@ -61,7 +61,7 @@ es decir, con un signo **menos** en el exponente. Esta elección fija el signo d
 
 ## Dispersión cinemática frente a dinámica
 
-Este apéndice trata la **dispersión simple (cinemática)**: el haz incidente se dispersa una vez, y la amplitud difractada es el factor de estructura de la página siguiente. Esa es la imagen correcta cuando la interacción es débil — rayos X y neutrones en casi todas las muestras, y electrones en especímenes *muy delgados*.
+Este apéndice trata la **dispersión simple (cinemática)**: el haz incidente se dispersa una vez, y la amplitud difractada es el factor de estructura de la página siguiente. Esa es la imagen correcta cuando la interacción es débil — rayos X y neutrones en polvos, cristales imperfectos y muestras delgadas, y electrones en especímenes *muy delgados*. (Incluso los rayos X se vuelven dinámicos en un cristal grande y casi perfecto, donde la extinción primaria debilita las reflexiones más intensas).
 
 Cuando la interacción es fuerte — electrones en cualquier cristal salvo los más delgados — el haz se dispersa muchas veces antes de salir, la intensidad se redistribuye entre las reflexiones, y $\lvert F\rvert^2$ ya no proporciona la intensidad medida. Ese régimen requiere la teoría **dinámica** del [Appendix A3](../a3-bloch-wave/index.md). Los factores de dispersión y los factores de estructura aquí deducidos son la *entrada* de ambas imágenes.
 

@@ -1,6 +1,6 @@
 # Calcul CBED
 
-Le CBED (diffraction électronique en faisceau convergent) applique le [cœur dynamique](calculation.md) à de nombreuses directions du faisceau incident, puis répartit les résultats dans des disques de diffraction. La SAED possède une seule direction d'incidence ; le CBED traite chaque point à l'intérieur du diaphragme objectif comme une **onde plane incidente partielle** et résout le problème des ondes de Bloch pour chacun d'eux.
+Le CBED (diffraction électronique en faisceau convergent) applique le [cœur dynamique](calculation.md) à de nombreuses directions du faisceau incident, puis répartit les résultats dans des disques de diffraction. La SAED possède une seule direction d'incidence ; le CBED traite chaque point à l'intérieur du diaphragme de formation de la sonde (condenseur) comme une **onde plane incidente partielle** et résout le problème des ondes de Bloch pour chacun d'eux.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Ici, $\mathbf K$ est la composante du vecteur d'onde incident parallèle à la surface de l'échantillon. Pour un diaphragme circulaire idéal avec un demi-angle de convergence $\alpha$ et une longueur d'onde électronique $\lambda$,
+Ici, $\mathbf K$ est la composante du vecteur d'onde incident parallèle à la surface de l'échantillon. Pour un diaphragme de formation de la sonde circulaire idéal avec un demi-angle de convergence $\alpha$ et une longueur d'onde électronique $\lambda$,
 
 $$A(\mathbf K)=
 \begin{cases}
@@ -57,7 +57,7 @@ Pour les modes de type LACBED, où la cohérence de phase sur une région plus �
 
 Le CBED rend visible la dépendance en épaisseur de la solution des ondes de Bloch sous la forme d'une structure d'intensité à l'intérieur des disques de diffraction.
 
-- Une modification de l'épaisseur modifie les oscillations à l'intérieur des disques, les lignes HOLZ et les franges de Kossel-Möllenstedt.
+- Une modification de l'épaisseur modifie les oscillations à l'intérieur des disques, les lignes HOLZ et les franges de Kossel–Möllenstedt.
 - Une modification de l'orientation incidente modifie quelles réflexions sont fortement excitées.
 - Une augmentation de l'angle de convergence élargit les disques et peut révéler des recouvrements ainsi que des informations issues des zones de Laue d'ordre supérieur.
 

@@ -22,6 +22,7 @@
 | 模拟 EBSD 图样 | [EBSD 模拟](12-ebsd-simulation.md) | [电子轨迹](8-electron-trajectory.md)、[附录 A3. EBSD 计算](appendix/a3-bloch-wave/ebsd.md) |
 | 标定实验衍射斑点 | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [衍射模拟器](7-diffraction-simulator/index.md) |
 | 理解动力学衍射方程 | [附录 A3. 布洛赫波法](appendix/a3-bloch-wave/index.md) | [动力学计算](appendix/a3-bloch-wave/calculation.md)、[CBED](appendix/a3-bloch-wave/cbed.md)、[STEM](appendix/a3-bloch-wave/stem.md)、[EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| 理解空间群符号与群-子群关系 | [2. 对称性信息](2-symmetry-information.md) | [附录 A4. 对称性与空间群](appendix/a4-symmetry-space-groups/index.md)、[空间群符号与对称性示意图](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)、[群-子群关系](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## 功能
 * **Full GUI** : 所有操作均通过图形界面完成。大多数文件输入/输出支持拖放。

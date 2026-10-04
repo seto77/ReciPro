@@ -54,7 +54,7 @@ A partir de la geometría,
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-y el **error de excitación** $S_g$ (la desviación del punto de la red recíproca respecto de la esfera de Ewald) junto con la **función de evaluación** $R$ utilizada para ordenar las reflexiones son
+y el **error de excitación** $S_g$ (la desviación del punto de la red recíproca respecto de la esfera de Ewald) junto con la **función de evaluación** $R$ utilizada para ordenar las reflexiones ($R$ menor = $\mathbf g$ corto y cerca de la esfera de Ewald, que se toma primero) son
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

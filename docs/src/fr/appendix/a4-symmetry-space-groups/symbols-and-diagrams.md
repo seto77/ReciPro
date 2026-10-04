@@ -150,8 +150,8 @@ Les axes obliques ou contenus dans la page (cela ne se produit que pour des dire
 
 Une étiquette de hauteur fractionnaire (par ex. `1/4`) à côté d'un symbole donne sa coordonnée le long de l'axe de projection chaque fois que l'élément ne se trouve pas dans le plan de hauteur 0.
 
-!!! note "Groupes cubiques à réseau F : seul un octant est dessiné"
-    Pour les groupes d'espace cubiques centrés $F$, ReciPro ne dessine que le quadrant supérieur gauche correspondant à un huitième de la maille (le diagramme serait sinon trop dense pour être lisible) ; la maille complète le répète par les translations de centrage et par les éléments de symétrie dessinés eux-mêmes. Les mêmes éléments de symétrie peuvent aussi être superposés directement au modèle 3D dans le [Visualiseur de structure](../../5-structure-viewer.md).
+!!! note "Groupes cubiques à réseau F : seule une partie de la maille est dessinée"
+    Pour les groupes d'espace cubiques centrés $F$, ReciPro ne dessine que le quart supérieur gauche de la maille projetée (le diagramme serait sinon trop dense pour être lisible) ; le reste de la maille le répète par les translations de centrage et par les éléments de symétrie dessinés eux-mêmes. Les mêmes éléments de symétrie peuvent aussi être superposés directement au modèle 3D dans le [Visualiseur de structure](../../5-structure-viewer.md).
 
 ---
 
@@ -166,7 +166,7 @@ Le diagramme de droite trace les positions équivalentes générales — l'orbit
 - (Groupes d'espace cubiques uniquement) de fines lignes auxiliaires relient trois cercles reliés par un axe d'ordre 3 selon une diagonale du volume $\langle111\rangle$.
 - En général, un cercle (ou une moitié d'un cercle scindé) correspond à une position équivalente, si bien que le nombre de cercles égale la **multiplicité** de la position générale affichée dans l'onglet [Positions de Wyckoff](../../2-symmetry-information.md) — une vérification rapide utile pour lire l'un ou l'autre diagramme. Si l'axe de projection choisi fait coïncider exactement plusieurs copies de même chiralité, elles sont superposées en un seul endroit (distinguées uniquement par des étiquettes de hauteur séparées) au lieu d'être dessinées côte à côte, et le nombre de cercles visibles peut alors être inférieur à la multiplicité.
 
-Les champs `numericBox` sous **Direction** permettent de déplacer le point test $(x,y,z)$ hors de la position par défaut du groupe d'espace pour ce groupe ponctuel, ce qui est parfois utile pour désencombrer un diagramme où plusieurs cercles coïncideraient.
+Les champs $x$ / $y$ / $z$ sous **Direction** permettent de déplacer le point test $(x,y,z)$ hors de la position par défaut du groupe d'espace pour ce groupe ponctuel, ce qui est parfois utile pour désencombrer un diagramme où plusieurs cercles coïncideraient.
 
 ---
 

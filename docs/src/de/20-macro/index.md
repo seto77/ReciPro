@@ -40,7 +40,7 @@ Makros werden in Python-Syntax geschrieben. Mit den integrierten Klassen und Fun
 
 ## Editorfenster
 
-Der Makro-Editor hat vier Hauptbereiche:
+Der Makro-Editor besteht aus den folgenden Bereichen:
 
 | Bereich | Zweck |
 |------|---------|
@@ -112,7 +112,7 @@ Diese Grundlagen sind im Autovervollständigungs-Popup vorab registriert, sodass
 
 ### NICHT verwendbar
 
-- **`print()`** : es gibt kein Konsolenfenster; die Ausgabe verschwindet. Verwenden Sie **Step by step** und sehen Sie sich das Debug-Panel an, um Werte zu prüfen.
+- **`print()`** : es gibt kein Konsolenfenster; die Ausgabe verschwindet. Verwenden Sie **Step by step** und sehen Sie sich das Debug-Panel an, um Werte zu prüfen. (Ausnahme: Wird das Makro von außen ausgeführt — über die Kommandozeile `/o` oder die [Named Pipe](3-external-control.md) —, wird die Ausgabe von `print()` *doch* erfasst und zurückgegeben.)
 - **`input()`** : kein stdin.
 - **Datei-E/A** (`open`, `with open`) : nicht für Makros vorgesehen. Verwenden Sie stattdessen die `ReciPro.File.*`-Hilfsfunktionen.
 - **C-Erweiterungspakete**: `numpy`, `scipy`, `pandas`, `matplotlib` — nicht mit IronPython kompatibel.
@@ -161,3 +161,4 @@ Der Editor wählt automatisch die im Traceback gemeldete Zeile aus (den innerste
 
 - [20.1. Integrierte Funktionen](1-built-in-functions.md)
 - [20.2. Beispiele](2-examples.md)
+- [20.3. Externe Steuerung (Kommandozeile & Named Pipe)](3-external-control.md)

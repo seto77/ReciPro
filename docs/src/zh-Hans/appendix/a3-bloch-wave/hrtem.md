@@ -18,8 +18,8 @@ HRTEM 像由出射面波函数——即由[动力学核心](calculation.md)求�
 | $C_s$ | 球差系数 |
 | $C_c$ | 色差系数 |
 | $\beta$ | 照明半角（有限光源尺寸的效应） |
-| $\Delta E$ | 电子能量涨落的 $1/e$ 宽度 |
-| $\Delta_0$ | 欠焦弥散的 $1/e$ 宽度（高斯型），$\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | 电子能量涨落的 **标准差** (rms)。GUI 中的 **ΔV** 输入框取的是半高全宽 (FWHM)，因此 $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | （高斯型）欠焦弥散的标准差，$\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-在 $\mathbf u' \to \mathbf u$ 的极限下，TCC 退化为上述的准相干包络。
+令 $\mathbf u' = \mathbf 0$——即束 $\mathbf u$ 与透射束之间的干涉——即可还原上述准相干模型的单频包络 $E_c(\mathbf u)$ 和 $E_s(\mathbf u)$。另一个极限 $\mathbf u' \to \mathbf u$ 给出 $E_c = E_s = 1$，从而得到下文所用的对角项 $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$。
 
 ---
 

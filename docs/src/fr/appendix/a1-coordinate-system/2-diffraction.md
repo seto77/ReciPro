@@ -52,3 +52,13 @@ Une fois le détecteur incliné :
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | Distance de l'échantillon au foot (mm) |
 | **Pixel size** | Longueur du côté d'un pixel (carré) (mm) ; seuls les pixels carrés sont pris en charge |
 | **Detector width / height** | Nombre de pixels horizontalement / verticalement |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## Deux définitions de l'erreur d'excitation $S_g$
+
+ReciPro utilise délibérément deux définitions différentes de l'erreur d'excitation, adaptées à leur contexte :
+
+- **Affichage cinématique et `SpotInfo()` (mode cinématique/erreur d'excitation)** : la distance **radiale** signée entre le nœud du réseau réciproque et la sphère d'Ewald, $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$, avec le centre de la sphère $\boldsymbol{C} = (0, 0, k)$ et $k = 1/\lambda$. $S_g > 0$ signifie que le nœud se trouve à l'intérieur de la sphère. Le simulateur cinématique ne suppose ni forme ni épaisseur d'échantillon, si bien qu'aucune normale à la surface n'y existe ; la distance radiale isotrope est le choix neutre pour sélectionner et afficher les réflexions.
+- **Calcul dynamique (Bethe)** : la distance mesurée **le long de la normale à la surface de l'échantillon** $\boldsymbol{n}$, $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$, avec $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$ et $Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$. Cette définition est imposée par la condition aux limites appliquée à la surface de l'échantillon.
+
+Les deux coïncident presque en incidence normale (normale à la surface parallèle au faisceau), mais ce **ne sont pas la même grandeur** ; ne mélangez pas des valeurs issues des sorties cinématique et dynamique.

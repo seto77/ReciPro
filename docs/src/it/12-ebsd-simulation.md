@@ -165,7 +165,7 @@ Il pannello centrale mostra il pattern EBSD (a bande di Kikuchi) per l'orientazi
 
 - **Mostra immagine con distribuzioni angolari/energetiche BSE** : se selezionata, il pattern viene composto pesando con la distribuzione dei BSE (energia, profondità, direzione) anziché con una singola sezione.
 - **Energy / Depth** : quando l'opzione precedente è disattivata, seleziona la sezione di energia/profondità da visualizzare.
-- **Luminosità** (**Min** / **Max**), **Polarità**, **Colore** : intervallo di luminosità, polarità e scala dei colori.
+- **Luminosità** (**Min** / **Max**), **Contrasto**, **Polarità**, **Colore** : i punti di nero e di bianco del pattern simulato come percentuale dell'intervallo di visualizzazione (cursori lineari), l'ampiezza di tale intervallo, la sua polarità e la scala dei colori. Con Contrasto 0 l'intervallo di visualizzazione coincide con l'intervallo di intensità del pattern stesso; -1 lo allarga di dieci volte (contrasto dieci volte più debole) e +1 lo restringe a un decimo, mantenendo fisso il centro.
 - **Appiattire il fondo** (**FWHM**, px; disattivo per default, 100 px) : sottrae al pattern simulato una copia sfocata con una gaussiana, rimuovendo la distribuzione di luminosità a variazione lenta così da confrontare bande e assi di zona con un pattern sperimentale corretto per il fondo. La larghezza a metà altezza è in pixel del rivelatore e non dipende dallo zoom. Agisce sull'immagine visualizzata e sull'export PNG/TIFF; l'export CSV mantiene i valori grezzi.
 
 ### Immagine sperimentale
@@ -174,7 +174,9 @@ Il pannello centrale mostra il pattern EBSD (a bande di Kikuchi) per l'orientazi
 
 Rilascia un file immagine EBSD (TIFF, PNG, BMP o JPEG; i TIFF a 16 bit sono letti a piena profondità) in un punto qualsiasi della finestra per caricarlo come pattern sperimentale. Viene disegnato sull'area del rivelatore — sopra il pattern simulato e sotto gli overlay delle linee di Kikuchi — così da poter confrontare direttamente simulazione e misura. Il caricamento porta inoltre **Width** e **Height** del rivelatore alle dimensioni dell'immagine.
 
-- **Luminosità** (**Min** / **Max**) : punti di nero e di bianco dell'immagine sovrapposta, come frazione del suo stesso intervallo di intensità (cursori logaritmici). Agiscono solo sull'immagine sperimentale, non sul pattern simulato.
+- **Luminosità** (**Min** / **Max**), **Contrasto** : i punti di nero e di bianco dell'immagine sovrapposta come percentuale del suo intervallo di visualizzazione, e l'ampiezza di tale intervallo (cursori lineari, stessa convenzione del pattern simulato). Agiscono solo sull'immagine sperimentale.
+- **Appiattire il fondo** (**FWHM**, px; disattivo per default, 100 px) : sottrae all'immagine sperimentale una sua copia sfocata con una gaussiana, rimuovendone la distribuzione di luminosità a variazione lenta. I cursori di intensità agiscono quindi sui valori appiattiti.
+- **Adatta all'immagine** : imposta **Min**, **Max** e **Contrasto** del pattern simulato in modo che i suoi livelli di intensità al 2 % e al 98 % siano mostrati con lo stesso grigio di quelli dell'immagine sperimentale. L'adattamento usa i percentili, quindi non dipende dalla soluzione di orientazione ed è insensibile a un piedistallo o a pochi pixel luminosi degli assi di zona. Polarità, Colore e le due impostazioni **Appiattire il fondo** non vengono modificati, quindi appiattire entrambi i lati o nessuno dei due prima di premerlo.
 - **Opacità** : opacità dell'immagine sovrapposta, da 0 (invisibile) a 100 % (opaca). Riducila per vedere il pattern simulato sottostante.
 
 L'orientazione che spiega l'immagine viene poi cercata con uno dei due motori.

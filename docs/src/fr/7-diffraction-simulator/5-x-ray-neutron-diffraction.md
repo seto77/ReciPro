@@ -92,7 +92,7 @@ Contrôle la manière dont chaque tache de diffraction est rendue.
 - **Color scale** : choix entre les cartes de couleurs **Gray scale** et **Cold-warm**.
 - **Log scale** : afficher les intensités sur une échelle logarithmique.
 - **Spot color** : couleur par défaut de la tache lorsque l'échelle de couleurs ne s'applique pas.
-- **Use crystal color** : lorsque cette case est cochée, dessine les taches dans la couleur attribuée à chaque cristal.
+- **Color per crystal** : lorsque cette case est cochée, dessine les taches dans la couleur attribuée à chaque cristal.
 
 ---
 

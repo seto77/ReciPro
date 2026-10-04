@@ -31,7 +31,7 @@
 
 ## 主区域
 
-带有光源、晶体轴和原子图例的三维晶体结构。
+三维晶体结构，与光源方向小部件、晶体轴小部件以及原子图例一同绘制。
 > 窗口右上角的 **Size (W×H)** 框设置保存或复制渲染图像时所用的像素尺寸。
 > 旁边的 **ProjWidth** 框显示投影视图的宽度（单位 nm）。编辑该值即可按数值缩放——它与视图上的右键拖动/滚轮缩放保持同步。
 
@@ -144,7 +144,7 @@
 
 ![原子选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-坐标、元素、占有率、半径、颜色、材质。**Apply to same elements**。
+设置每个原子的种类、位置和占有率，以及每个原子的绘制方式（半径、颜色、材质）。
 
 #### 原子列表
 
@@ -180,7 +180,7 @@
 
 ![键 & 多面体选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-键长阈值、多面体显示、棱边。
+定义哪些原子对之间成键（按元素种类和距离范围），以及所得化学键和配位多面体的绘制方式。
 
 #### 化学键列表
 
@@ -208,7 +208,7 @@
 
 ![晶胞选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-平移、晶胞面、棱边。
+设置所绘制晶胞的位置，以及是否显示其面和棱边。
 
 #### 平移
 
@@ -226,7 +226,7 @@
 
 ![晶面选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-带晶体学等价面的米勒指数指定。
+绘制由米勒指数给定的晶面，并可选择同时包含晶体学等价的晶面。
 
 #### H k l 指数
 
@@ -240,7 +240,7 @@
 
 ![配位选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-围绕目标原子的配位表和图表。
+列出并绘制与所选目标原子配位的原子。
 
 #### 表格（左侧）
 
@@ -260,7 +260,7 @@
 
 ![投影选项卡](../assets/cap-zh-Hans-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-投影模式（正交/透视）、深度淡出、渲染质量、透明度模式。
+设置投影模式（正交 / 透视）、深度淡出、投影中心、渲染质量以及透明度算法。
 
 #### 投影
 
@@ -320,7 +320,7 @@
 | 晶胞 | 切换晶胞棱边 |
 | 对称元素 | 切换对称元素叠加层（见上文） |
 | 重置旋转 | 返回初始取向 |
-| 类 Vesta | Vesta 风格的外观 |
+| 类 Vesta | 切换为 VESTA 风格的外观（原子颜色和半径） |
 
 ---
 

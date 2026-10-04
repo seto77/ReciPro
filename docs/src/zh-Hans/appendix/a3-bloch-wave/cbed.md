@@ -1,6 +1,6 @@
 # CBED 计算
 
-CBED（会聚束电子衍射）将[动力学核心](calculation.md)应用于许多入射束方向，然后把结果排列进衍射盘中。SAED 只有一个入射方向；CBED 则把物镜光阑内的每个点都视为一个**部分入射平面波**，并对其中每一个分别求解布洛赫波问题。
+CBED（会聚束电子衍射）将[动力学核心](calculation.md)应用于许多入射束方向，然后把结果排列进衍射盘中。SAED 只有一个入射方向；CBED 则把探针形成（聚光镜）光阑内的每个点都视为一个**部分入射平面波**，并对其中每一个分别求解布洛赫波问题。
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-这里 $\mathbf K$ 是入射波矢中平行于样品表面的分量。对于一个会聚半角为 $\alpha$、电子波长为 $\lambda$ 的理想圆形光阑，有
+这里 $\mathbf K$ 是入射波矢中平行于样品表面的分量。对于一个会聚半角为 $\alpha$、电子波长为 $\lambda$ 的理想圆形探针形成光阑，有
 
 $$A(\mathbf K)=
 \begin{cases}

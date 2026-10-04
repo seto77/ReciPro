@@ -40,7 +40,7 @@ Le macro sono scritte con la sintassi di Python. Usando le classi e le funzioni 
 
 ## Finestra dell'editor
 
-L'editor delle macro ha quattro aree principali:
+L'editor delle macro è composto dalle seguenti aree:
 
 | Area | Scopo |
 |------|---------|
@@ -112,7 +112,7 @@ Questi elementi di base sono preregistrati nel popup di completamento automatico
 
 ### NON utilizzabili
 
-- **`print()`** : non esiste una finestra di console; l'output non va da nessuna parte. Usa **Step by step** e guarda il pannello di debug per ispezionare i valori.
+- **`print()`** : non esiste una finestra di console; l'output non va da nessuna parte. Usa **Step by step** e guarda il pannello di debug per ispezionare i valori. (Eccezione: quando la macro viene eseguita dall'esterno — riga di comando `/o` o [named pipe](3-external-control.md) — l'output di `print()` *viene* catturato e restituito.)
 - **`input()`** : nessuno stdin.
 - **I/O su file** (`open`, `with open`) : non previsto per le macro. Usa invece le funzioni di supporto `ReciPro.File.*`.
 - **Pacchetti con estensioni C**: `numpy`, `scipy`, `pandas`, `matplotlib` — non compatibili con IronPython.
@@ -161,3 +161,4 @@ L'editor seleziona automaticamente la riga segnalata nel traceback (il frame pi�
 
 - [20.1. Funzioni integrate](1-built-in-functions.md)
 - [20.2. Esempi](2-examples.md)
+- [20.3. Controllo esterno (riga di comando e named pipe)](3-external-control.md)

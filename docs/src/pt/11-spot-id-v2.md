@@ -56,11 +56,13 @@ O comprimento de câmera (mm) e o tamanho do pixel do detector (mm ou nm⁻¹). 
 
 - **Detect & Fit Spots**: Detecção automática de spots usando máximos locais e subtração de fundo.
 - **Number**: O número máximo de spots a detectar.
-- **Nearest neighbour**: A separação mínima (px) permitida entre spots detectados. Picos mais próximos do que isso são mesclados, evitando a detecção dupla do mesmo spot.
+- **Nearest neighbor**: A separação mínima (px) permitida entre spots detectados. Picos mais próximos do que isso são mesclados, evitando a detecção dupla do mesmo spot.
 - **Fitting range (radius)**: O raio (px) da região circular usada para ajustar o pico de cada spot. Os pixels dentro deste círculo são ajustados com uma função pseudo-Voigt.
 - **Apply to All**: Define o raio de ajuste de cada spot como o valor atual de **Fitting range (radius)**.
-- **Delete spot / Clear spots**: Remover spots detectados individualmente ou todos.
-- **Copy to clipboard**: Copiar as posições e intensidades dos spots para a área de transferência.
+- **Excluir / Limpar tudo**: Remover o spot selecionado ou todos os spots detectados.
+- **Copiar**: Copiar as posições e intensidades dos spots para a área de transferência.
+- **Ajuste global**: Realizar um ajuste global de todas as posições dos spots de uma só vez (experimental).
+- **Donut**: Aplicar uma subtração de fundo em forma de rosca (experimental); a caixa ao lado define a largura (px) do anel em torno de cada spot cuja média é subtraída como fundo local.
 - **Details of the spot**: Quando marcado, abre uma janela mostrando informações detalhadas sobre o spot atualmente selecionado.
 
 ![Details of the spot](../assets/cap-pt-auto/FormSpotIDv2Details.png)

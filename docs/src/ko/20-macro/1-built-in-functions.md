@@ -130,6 +130,7 @@ for k in range(-2, 3):
 | `Thickness` | double | 시료 두께 (nm) |
 | `NumberOfDiffractedWaves` | int | 블로흐파의 수 |
 | `CameraLength2` | double | 카메라 길이 (mm) |
+| `ExcitationError` | double | 스폿 반지름 (nm⁻¹): 운동학/여기 오차 모드에서 `SpotInfo()`는 \|Sg\|가 이 값 이내인 반사를 내보냅니다 |
 | `SkipRendering` | bool | 일괄 처리를 위해 렌더링을 건너뛰기 |
 
 ### 빔 모드

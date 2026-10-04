@@ -22,6 +22,7 @@
 | Смоделировать картины EBSD | [Моделирование EBSD](12-ebsd-simulation.md) | [Траектории электронов](8-electron-trajectory.md), [Приложение A3. Расчёт EBSD](appendix/a3-bloch-wave/ebsd.md) |
 | Индексировать экспериментальные дифракционные рефлексы | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [Симулятор дифракции](7-diffraction-simulator/index.md) |
 | Понять уравнения динамической дифракции | [Приложение A3. Метод блоховских волн](appendix/a3-bloch-wave/index.md) | [Динамический расчёт](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| Разобраться в символах пространственных групп и отношениях группа–подгруппа | [2. Сведения о симметрии](2-symmetry-information.md) | [Приложение A4. Симметрия и пространственные группы](appendix/a4-symmetry-space-groups/index.md), [Символы пространственных групп и диаграммы](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [Отношения группа–подгруппа](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## Возможности
 * **Full GUI** : Все операции выполняются через графический интерфейс. Большинство операций ввода-вывода файлов поддерживает перетаскивание (drag & drop).

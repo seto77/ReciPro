@@ -54,14 +54,16 @@ La longueur de caméra (mm) et la taille de pixel du détecteur (mm ou nm⁻¹).
 
 ![Informations sur la tache](../assets/cap-fr-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Detect & Fit Spots** : Détection automatique des taches à l'aide des maxima locaux et de la soustraction du fond.
-- **Number** : Le nombre maximal de taches à détecter.
-- **Nearest neighbour** : La séparation minimale (px) autorisée entre les taches détectées. Les pics plus proches que cette valeur sont fusionnés, évitant la double détection d'une même tache.
-- **Fitting range (radius)** : Le rayon (px) de la région circulaire utilisée pour ajuster le pic de chaque tache. Les pixels à l'intérieur de ce cercle sont ajustés par une fonction pseudo-Voigt.
-- **Apply to All** : Fixe le rayon d'ajustement de chaque tache à la valeur actuelle de **Fitting range (radius)**.
-- **Delete spot / Clear spots** : Supprimer une tache individuelle ou toutes les taches détectées.
-- **Copy to clipboard** : Copier les positions et les intensités des taches dans le presse-papiers.
-- **Details of the spot** : Lorsque cette option est cochée, une fenêtre s'ouvre affichant des informations détaillées sur la tache actuellement sélectionnée.
+- **Détecter & ajuster les taches** : Détection automatique des taches à l'aide des maxima locaux et de la soustraction du fond.
+- **Nombre** : Le nombre maximal de taches à détecter.
+- **Plus proche voisin** : La séparation minimale (px) autorisée entre les taches détectées. Les pics plus proches que cette valeur sont fusionnés, évitant la double détection d'une même tache.
+- **Rayon d'ajust.** : Le rayon (px) de la région circulaire utilisée pour ajuster le pic de chaque tache. Les pixels à l'intérieur de ce cercle sont ajustés par une fonction pseudo-Voigt.
+- **Appliquer à tous** : Fixe le rayon d'ajustement de chaque tache à la valeur actuelle de **Rayon d'ajust.**.
+- **Supprimer / Tout effacer** : Supprimer la tache sélectionnée, ou toutes les taches détectées.
+- **Copier** : Copier les positions et les intensités des taches dans le presse-papiers.
+- **Ajust. global** : Effectuer un ajustement global de toutes les positions des taches en une seule fois (expérimental).
+- **Donut** : Appliquer une soustraction de fond en forme d'anneau (expérimental) ; la case adjacente fixe la largeur (px) de l'anneau entourant chaque tache, dont la moyenne est soustraite comme fond local.
+- **Détails tache** : Lorsque cette option est cochée, une fenêtre s'ouvre affichant des informations détaillées sur la tache actuellement sélectionnée.
 
 ![Details of the spot](../assets/cap-fr-auto/FormSpotIDv2Details.png)
 

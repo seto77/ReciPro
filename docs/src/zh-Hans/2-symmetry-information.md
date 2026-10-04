@@ -95,7 +95,7 @@
 底部的两个面板按照 *International Tables for Crystallography* Vol. A 的记号，重现该空间群的对称示意图。
 
 - **对称元素（左）**：旋转/螺旋轴、镜面/滑移面以及反演中心/旋转反演点均以惯用的图形符号绘制。
-  - 对于立方晶系的 \(F\) 点阵，仅显示晶胞的八分之一（仅左上象限）。
+  - 对于立方晶系的 \(F\) 点阵，仅显示投影晶胞的左上四分之一（参见[附录 A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)）。
   - 这些对称元素也可以直接绘制到[结构查看器](5-structure-viewer.md)的三维模型上。
 - **一般位置（右）**：一般等效位置以圆圈绘制（逗号表示镜像），并标注其分数坐标。
   - 仅对立方晶系，辅助线会连接由三重旋转轴相互关联的三个圆圈。

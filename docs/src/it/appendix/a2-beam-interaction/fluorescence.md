@@ -17,11 +17,11 @@ ed è quindi caratteristica dell'elemento:
 - **Linee K** — lacuna nella shell $K$ riempita da $L$ ($K\alpha$) o $M$ ($K\beta$).
 - **Linee L** — lacuna nella shell $L$ riempita da $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Compaiono solo le transizioni consentite dalle regole di selezione di dipolo, motivo per cui lo spettro è costituito da poche linee discrete (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) anziché da un continuo. Le loro energie seguono la **legge di Moseley**; nell'approssimazione idrogenoide schermata,
+Lo spettro è costituito da poche linee discrete (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) anziché da un continuo perché le energie stesse dei gusci sono quantizzate; le regole di selezione di dipolo elettrico decidono poi quali di queste transizioni sono intense (esistono comunque linee proibite, multipolari e satelliti più deboli). Le loro energie seguono la **legge di Moseley**; nell'approssimazione idrogenoide schermata,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-con $\sigma$ costante di schermatura. Per $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) questo si riduce a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Questa dipendenza da $Z$ monotona e guidata dal numero di elettroni è la base dell'identificazione elementare (EDX/WDX).
+con $\sigma$ costante di schermatura. Per $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$) questo si riduce a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. La dipendenza da $Z$ è determinata dalla **carica nucleare**, soltanto schermata dagli elettroni restanti, per cui è monotona ed essenzialmente insensibile allo stato chimico — ed è questo che la rende la base dell'identificazione elementare (EDX/WDX).
 
 ---
 

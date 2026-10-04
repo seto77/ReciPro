@@ -50,7 +50,7 @@ Consulta el [Apéndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md
 
 | Parámetro | Descripción | Predeterminado / típico |
 |-----------|-------------|-------------------|
-| **Acc. Vol. (kV)** | Tensión de aceleración. La longitud de onda del electrón corregida relativistamente se muestra al lado | 200 kV |
+| **Voltaje de acel. (kV)** | Tensión de aceleración. La longitud de onda del electrón corregida relativistamente se muestra al lado | 200 kV |
 | **Defocus Δf** | Desenfoque de la lente objetivo (formadora de la sonda) (nm) | −57.8 nm |
 | **Cs** | Coeficiente de aberración esférica (mm). Afecta al tamaño de la sonda | 0.5–1.0 mm |
 | **Cc** | Coeficiente de aberración cromática (mm) | 1.0–2.0 mm |
@@ -102,9 +102,9 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 
 ---
 
-## Ondas difractadas
+## Ondas
 
-![Ondas difractadas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** : número máximo de ondas de Bloch usadas en el método de Bethe (predeterminado 80). El coste del problema de valores propios escala con el cubo del número de ondas.
 

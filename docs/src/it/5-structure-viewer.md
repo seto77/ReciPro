@@ -31,7 +31,7 @@ Anche le scorciatoie <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> valide per tutta l'applica
 
 ## Area principale
 
-Struttura cristallina 3D con sorgente luminosa, assi cristallografici e legenda degli atomi.
+La struttura cristallina 3-D, disegnata insieme al gizmo della direzione della luce, al gizmo degli assi cristallografici e alla legenda degli atomi.
 > Il riquadro **Size (W×H)** in alto a destra nella finestra imposta la dimensione in pixel utilizzata quando si salva o si copia l'immagine renderizzata.
 > Il riquadro **ProjWidth** accanto ad esso mostra la larghezza della vista proiettata in nm. Modifica il valore per zoomare numericamente — resta sincronizzato con lo zoom tramite trascinamento con il tasto destro / rotellina sulla vista.
 
@@ -143,7 +143,7 @@ Se selezionato, tutti gli atomi, i legami e i poliedri vengono nascosti — util
 
 ![Scheda Atomi](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Coordinate, elemento, occupazione, raggio, colore, materiale. **Apply to same elements**.
+Imposta la specie, la posizione e l'occupazione di ciascun atomo, e il modo in cui ciascuno viene disegnato (raggio, colore, materiale).
 
 #### Elenco degli atomi
 
@@ -179,7 +179,7 @@ Raggio, colore e materiale per ciascun atomo.
 
 ![Scheda Legami](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-Soglie della lunghezza dei legami, visualizzazione dei poliedri, spigoli.
+Definisce quali coppie di atomi sono legate (per specie e intervallo di distanza) e come vengono disegnati i legami e i poliedri di coordinazione risultanti.
 
 #### Elenco dei legami
 
@@ -207,7 +207,7 @@ Tutte le regole di legame/poliedro registrate per il cristallo. Usa **Add / Repl
 
 ![Scheda Cella elementare](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-Traslazione, piani della cella, spigoli.
+Imposta la posizione della cella elementare disegnata e se mostrarne le facce e gli spigoli.
 
 #### Traslazione
 
@@ -225,7 +225,7 @@ Se disegnare gli spigoli della cella elementare. Il colore degli spigoli è conf
 
 ![Scheda Piano reticolare](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-Specifica dell'indice di Miller con equivalenti cristallografici.
+Disegna piani reticolari dati dal loro indice di Miller, includendo facoltativamente i piani cristallograficamente equivalenti.
 
 #### Indici H k l
 
@@ -239,7 +239,7 @@ Trasla il piano reticolare disegnato di un multiplo intero della sua distanza in
 
 ![Scheda Coordinazione](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-Tabella e grafico di coordinazione attorno all'atomo bersaglio.
+Elenca e rappresenta graficamente gli atomi che coordinano un atomo bersaglio scelto.
 
 #### Tabella (lato sinistro)
 
@@ -259,7 +259,7 @@ Registro di rendering (tempo per fotogramma, informazioni sulla GPU) e informazi
 
 ![Scheda Proiezione](../assets/cap-it-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-Modalità di proiezione (ortografica/prospettica), dissolvenza in profondità, qualità di rendering, modalità di trasparenza.
+Imposta la modalità di proiezione (ortografica / prospettica), la dissolvenza in profondità, il centro di proiezione, la qualità di rendering e l'algoritmo di trasparenza.
 
 #### Proiezione
 
@@ -319,7 +319,7 @@ Per ciascuna classe puoi regolare la dimensione del simbolo, lo spessore della l
 | Unit Cell | Commuta gli spigoli della cella elementare |
 | Sym. Elems. | Commuta la sovrapposizione degli elementi di simmetria (vedi sopra) |
 | Reset Rotation | Torna all'orientamento iniziale |
-| Like Vesta | Aspetto in stile Vesta |
+| Like Vesta | Passa a un aspetto in stile VESTA (colori e raggi degli atomi) |
 
 ---
 

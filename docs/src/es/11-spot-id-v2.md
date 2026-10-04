@@ -54,14 +54,16 @@ La longitud de cámara (mm) y el tamaño de píxel del detector (mm o nm⁻¹). 
 
 ![Información del punto](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Detect & Fit Spots**: Detección automática de reflexiones mediante máximos locales y sustracción del fondo.
-- **Number**: El número máximo de reflexiones que se detectarán.
-- **Nearest neighbour**: La separación mínima (px) permitida entre reflexiones detectadas. Los picos más cercanos que este valor se fusionan, evitando la doble detección de la misma reflexión.
-- **Fitting range (radius)**: El radio (px) de la región circular utilizada para ajustar el pico de cada reflexión. Los píxeles dentro de este círculo se ajustan con una función pseudo-Voigt.
-- **Apply to All**: Establece el radio de ajuste de todas las reflexiones al valor actual de **Fitting range (radius)**.
-- **Delete spot / Clear spots**: Eliminar reflexiones individuales o todas las detectadas.
-- **Copy to clipboard**: Copiar las posiciones e intensidades de las reflexiones al portapapeles.
-- **Details of the spot**: Cuando está activado, se abre una ventana que muestra información detallada sobre la reflexión seleccionada actualmente.
+- **Detectar & ajustar puntos**: Detección automática de reflexiones mediante máximos locales y sustracción del fondo.
+- **Número**: El número máximo de reflexiones que se detectarán.
+- **Vecino más cercano**: La separación mínima (px) permitida entre reflexiones detectadas. Los picos más cercanos que este valor se fusionan, evitando la doble detección de la misma reflexión.
+- **Rango de ajuste (radio)**: El radio (px) de la región circular utilizada para ajustar el pico de cada reflexión. Los píxeles dentro de este círculo se ajustan con una función pseudo-Voigt.
+- **Aplicar a todos**: Establece el radio de ajuste de todas las reflexiones al valor actual de **Rango de ajuste (radio)**.
+- **Eliminar / Borrar todo**: Eliminar la reflexión seleccionada o todas las reflexiones detectadas.
+- **Copiar**: Copiar las posiciones e intensidades de las reflexiones al portapapeles.
+- **Ajuste global**: Realiza a la vez un ajuste global de las posiciones de todas las reflexiones (experimental).
+- **Donut**: Aplica una sustracción de fondo en forma de anillo (experimental); el cuadro contiguo establece la anchura (px) del anillo alrededor de cada reflexión cuyo promedio se resta como fondo local.
+- **Detalles punto**: Cuando está activado, se abre una ventana que muestra información detallada sobre la reflexión seleccionada actualmente.
 
 ![Details of the spot](../assets/cap-es-auto/FormSpotIDv2Details.png)
 
@@ -71,10 +73,10 @@ La longitud de cámara (mm) y el tamaño de píxel del detector (mm o nm⁻¹). 
 
 ![Index](../assets/cap-es-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
-- **Identify Spots**: Ejecuta el algoritmo de indexación para encontrar el cristal y el eje de zona que mejor coinciden.
-- **Acceptable error**: Establece la desviación aceptable en el espaciado interplanar y el ángulo para una coincidencia.
-- **Ignore prohibited reflections**: Cuando está activado, las reflexiones prohibidas por ejes helicoidales y planos de deslizamiento se tratan como no necesariamente satisfechas durante la búsqueda del eje de zona.
-- **Single Grain / Multiple Grains**: Buscar una única orientación (monocristal) o varias orientaciones (una región policristalina / multigrano). Para varios granos, **Max. num. of grains** establece el límite superior del número de granos que se buscarán.
+- **Identificar reflexiones**: Ejecuta el algoritmo de indexación para encontrar el cristal y el eje de zona que mejor coinciden.
+- **Error admisible**: Establece la desviación aceptable en el espaciado interplanar y el ángulo para una coincidencia.
+- **Ignorar reflexiones prohibidas**: Cuando está activado, las reflexiones prohibidas por ejes helicoidales y planos de deslizamiento se tratan como no necesariamente satisfechas durante la búsqueda del eje de zona.
+- **Grano único / Múltiples granos**: Buscar una única orientación (monocristal) o varias orientaciones (una región policristalina / multigrano). Para varios granos, **Núm. máx. de granos** establece el límite superior del número de granos que se buscarán.
 - **Results**: Las mejores coincidencias se muestran con el nombre del cristal, el eje de zona [uvw] y los índices individuales de las reflexiones (hkl).
 
 ---

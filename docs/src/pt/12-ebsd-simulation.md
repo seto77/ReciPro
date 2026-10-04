@@ -165,7 +165,7 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 
 - **Mostrar imagem com distribuições angulares/de energia de BSE** : quando marcado, o padrão é composto por ponderação com a distribuição BSE (energia, profundidade, direção) em vez de uma única fatia.
 - **Energy / Depth** : quando a opção acima está desligada, seleciona a fatia de energia/profundidade a ser exibida.
-- **Brilho** (**Min** / **Max**), **Polaridade**, **Cor** : faixa de brilho, polaridade e escala de cores.
+- **Brilho** (**Min** / **Max**), **Contraste**, **Polaridade**, **Cor** : os pontos de preto e de branco do padrão simulado como porcentagem da faixa de exibição (controles lineares), a largura dessa faixa, sua polaridade e a escala de cores. Contraste 0 torna a faixa de exibição igual à faixa de intensidade do próprio padrão; -1 a alarga dez vezes (contraste dez vezes mais fraco) e +1 a estreita para um décimo, mantendo o centro fixo.
 - **Aplanar o fundo** (**FWHM**, px; desligado por padrão, 100 px) : subtrai do padrão simulado uma cópia desfocada com uma gaussiana, removendo a distribuição de brilho de variação lenta para comparar bandas e eixos de zona com um padrão experimental corrigido de fundo. A largura a meia altura é dada em pixels do detector e não depende do zoom. Afeta a imagem exibida e a exportação PNG/TIFF; a exportação CSV mantém os valores brutos.
 
 ### Imagem experimental
@@ -174,7 +174,9 @@ O painel central mostra o padrão EBSD (de bandas de Kikuchi) para a orientaçã
 
 Solte um arquivo de imagem EBSD (TIFF, PNG, BMP ou JPEG; TIFF de 16 bits é lido em profundidade total) em qualquer ponto da janela para carregá-lo como padrão experimental. Ele é desenhado sobre a área do detector — acima do padrão simulado e abaixo das sobreposições de linhas de Kikuchi —, de modo que a simulação possa ser comparada diretamente com a medida. O carregamento também define **Width** e **Height** do detector com o tamanho da imagem.
 
-- **Brilho** (**Min** / **Max**) : pontos de preto e de branco da imagem sobreposta, como fração da sua própria faixa de intensidade (controles logarítmicos). Atuam somente sobre a imagem experimental, não sobre o padrão simulado.
+- **Brilho** (**Min** / **Max**), **Contraste** : os pontos de preto e de branco da imagem sobreposta como porcentagem da sua faixa de exibição, e a largura dessa faixa (controles lineares, mesma convenção do padrão simulado). Atuam somente sobre a imagem experimental.
+- **Aplanar o fundo** (**FWHM**, px; desligado por padrão, 100 px) : subtrai da imagem experimental uma cópia desfocada com uma gaussiana, removendo sua distribuição de brilho de variação lenta. Os controles de intensidade passam então a atuar sobre os valores aplanados.
+- **Ajustar à imagem** : define **Min**, **Max** e **Contraste** do padrão simulado de modo que seus níveis de intensidade de 2 % e 98 % sejam exibidos com o mesmo cinza que os da imagem experimental. O ajuste usa percentis, portanto não depende da solução de orientação e é insensível a um pedestal ou a alguns pixels brilhantes de eixos de zona. Polaridade, Cor e as duas configurações de **Aplanar o fundo** não são alteradas; por isso, aplane ambos os lados ou nenhum antes de pressioná-lo.
 - **Opacidade** : opacidade da imagem sobreposta, de 0 (invisível) a 100 % (opaca). Reduza-a para ver o padrão simulado por baixo.
 
 A orientação que explica a imagem é então procurada por um de dois mecanismos.

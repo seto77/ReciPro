@@ -22,7 +22,7 @@ Os elétrons dentro de um cristal são espalhados pelo potencial do cristal. Sua
 
 - **Acc. voltage (kV)** — tensão de aceleração. Ela define o comprimento de onda do elétron e é usada para calcular os coeficientes de Fourier $U_g$ do potencial.
 
-> **Defocus, Cs, Cc, β, ΔE e a PCTF ficam inativos no modo de potencial** (nenhuma óptica de formação de imagem é aplicada) e aparecem esmaecidos.
+> **Defocus, Cs, Cc, β, ΔV e a PCTF ficam inativos no modo de potencial** (nenhuma óptica de formação de imagem é aplicada) e aparecem esmaecidos.
 
 ---
 
@@ -59,9 +59,9 @@ $U_g$ e $U'_g$ podem ser exibidos ao mesmo tempo (um painel é adicionado para c
 
 ---
 
-## Ondas difratadas
+## Ondas
 
-![Ondas difratadas](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondas](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** — número máximo de ondas de Bloch (coeficientes de Fourier) incluídas na síntese de Fourier do potencial (padrão 80). Valores maiores incluem frequências espaciais mais altas e reproduzem detalhes mais finos do potencial.
 

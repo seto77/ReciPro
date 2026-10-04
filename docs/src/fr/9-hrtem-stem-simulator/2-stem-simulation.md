@@ -50,7 +50,7 @@ Voir l'[Annexe A3.4 — Calcul STEM](../appendix/a3-bloch-wave/stem.md) pour la 
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **Acc. Vol. (kV)** | Tension d'accélération. La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
+| **Tension d'accél. (kV)** | Tension d'accélération. La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
 | **Defocus Δf** | Défocalisation de la lentille objectif (lentille formant la sonde) (nm) | −57.8 nm |
 | **Cs** | Coefficient d'aberration sphérique (mm). Affecte la taille de la sonde | 0.5–1.0 mm |
 | **Cc** | Coefficient d'aberration chromatique (mm) | 1.0–2.0 mm |
@@ -102,9 +102,9 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 ---
 
-## Ondes diffractées
+## Ondes
 
-![Ondes diffractées](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
 - **Max Bloch waves** : nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes.
 

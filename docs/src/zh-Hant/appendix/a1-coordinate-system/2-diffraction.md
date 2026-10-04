@@ -52,3 +52,13 @@
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | 從試樣到 foot 的距離 (mm) |
 | **Pixel size** | 單個（正方形）像素的邊長 (mm)；僅支援正方形像素 |
 | **Detector width / height** | 水平 / 垂直方向的像素數 |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## 激發誤差 $S_g$ 的兩種定義
+
+ReciPro 刻意使用兩種不同的激發誤差定義，分別對應各自的使用情境：
+
+- **運動學顯示與 `SpotInfo()`（運動學／激發誤差模式）** ：倒易點陣點到厄瓦爾德球的帶符號**徑向**距離，$S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$，其中球心為 $\boldsymbol{C} = (0, 0, k)$，$k = 1/\lambda$。$S_g > 0$ 表示該點位於球的內側。運動學模擬器不假設試樣的形狀或厚度，因此不存在表面法線；等向的徑向距離是選取與顯示反射時的中性選擇。
+- **動力學（Bethe）計算** ：**沿試樣表面法線** $\boldsymbol{n}$ 量測的距離，$S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$，其中 $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$，$Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$。此定義是施加於試樣表面的邊界條件所要求的。
+
+在垂直入射（表面法線平行於束流）時兩者幾乎一致，但它們**並非同一個量**；請勿混用取自運動學輸出與動力學輸出的數值。

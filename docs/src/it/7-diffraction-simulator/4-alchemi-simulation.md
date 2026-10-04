@@ -20,8 +20,11 @@ Per ogni orientazione incidente il campo d'onda all'interno del cristallo viene 
 
 $$
 Y_\text{dyn} = \mathrm{Re} \sum_{jj'} \alpha_j^{*}\,\bigl(C^{\dagger} \mu_{s,c} C\bigr)_{jj'}\, \alpha_{j'}\, F_{jj'}(t),
-\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda}
+\qquad F_{jj'}(t) = \frac{e^{\lambda t} - 1}{\lambda},
+\qquad \lambda = 2\pi i\left(\gamma_j - \overline{\gamma_{j'}}\right)
 $$
+
+dove $\gamma_j$ sono gli autovalori delle onde di Bloch del [nucleo dinamico](../appendix/a3-bloch-wave/calculation.md) e $\alpha_j$ le relative ampiezze di eccitazione; $F_{jj'}(t) \to t$ nel limite degenere $\lambda \to 0$.
 
 La matrice di ionizzazione $\mu$ dipende solo dalla differenza di due riflessi, $G = \mathbf{g}_h - \mathbf{g}_g$.
 

@@ -95,7 +95,7 @@ Enumera, a título de referencia, todas las elecciones tabuladas de origen y de 
 Los dos paneles inferiores reproducen los diagramas esquemáticos de simetría del grupo espacial en la notación de las *International Tables for Crystallography* Vol. A.
 
 - **Elementos de simetría (izquierda)**: los ejes de rotación/helicoidales, los planos de espejo/deslizamiento y los centros de inversión/puntos de rotoinversión se dibujan con los símbolos gráficos convencionales.
-  - Para la red \(F\) del sistema cúbico, solo se muestra un octavo de la celda elemental (únicamente el cuadrante superior izquierdo).
+  - Para la red \(F\) del sistema cúbico, solo se muestra el cuarto superior izquierdo de la celda proyectada (véase el [Apéndice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Estos elementos de simetría también pueden dibujarse directamente sobre el modelo 3D en el [Visor de estructura](5-structure-viewer.md).
 - **Posiciones generales (derecha)**: las posiciones equivalentes generales se representan como círculos (una coma denota una imagen especular), anotadas con sus coordenadas fraccionarias.
   - Solo para el sistema cúbico, líneas auxiliares conectan los tres círculos relacionados por un eje de rotación de orden 3.

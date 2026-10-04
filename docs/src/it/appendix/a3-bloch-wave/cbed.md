@@ -1,6 +1,6 @@
 # Calcolo CBED
 
-La CBED (diffrazione elettronica a fascio convergente) applica il [nucleo dinamico](calculation.md) a molte direzioni del fascio incidente e dispone poi i risultati in dischi di diffrazione. La SAED ha una sola direzione di incidenza; la CBED tratta ogni punto all'interno dell'apertura obiettivo come un'**onda piana incidente parziale** e risolve il problema delle onde di Bloch per ciascuno di essi.
+La CBED (diffrazione elettronica a fascio convergente) applica il [nucleo dinamico](calculation.md) a molte direzioni del fascio incidente e dispone poi i risultati in dischi di diffrazione. La SAED ha una sola direzione di incidenza; la CBED tratta ogni punto all'interno dell'apertura di formazione della sonda (del condensatore) come un'**onda piana incidente parziale** e risolve il problema delle onde di Bloch per ciascuno di essi.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Qui $\mathbf K$ è la componente del vettore d'onda incidente parallela alla superficie del campione. Per un'apertura circolare ideale con semiangolo di convergenza $\alpha$ e lunghezza d'onda dell'elettrone $\lambda$,
+Qui $\mathbf K$ è la componente del vettore d'onda incidente parallela alla superficie del campione. Per un'apertura di formazione della sonda circolare ideale con semiangolo di convergenza $\alpha$ e lunghezza d'onda dell'elettrone $\lambda$,
 
 $$A(\mathbf K)=
 \begin{cases}

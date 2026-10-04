@@ -81,8 +81,8 @@ Steuert, wie jeder Beugungsspot dargestellt wird.
 - **Brightness** : nur im Modus **Gaussian** aktiv. Integrierte Intensität der gezeichneten Gaußfunktion.
 - **Color scale** : **Gray scale** oder **Cold-warm**.
 - **Log scale** : Intensitäten in logarithmischer Skala anzeigen. Nützlich für Muster mit großem Intensitätskontrast.
-- **Spot color** : Spotfarbe, die verwendet wird, wenn keine Farbskala genutzt wird.
-- **Use crystal color** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet.
+- **Reflexfarbe** : Spotfarbe, die verwendet wird, wenn keine Farbskala genutzt wird.
+- **Farbe je Kristall** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet.
 
 ---
 

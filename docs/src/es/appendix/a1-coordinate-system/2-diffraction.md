@@ -52,3 +52,13 @@ Una vez inclinado el detector:
 | <span class="rp-brown">**Camera length 2** ($C_2$)</span> | Distancia desde la muestra hasta el foot (mm) |
 | **Pixel size** | Longitud del lado de un píxel (cuadrado) (mm); solo se admiten píxeles cuadrados |
 | **Detector width / height** | Número de píxeles en horizontal / vertical |
+
+<!-- 260813Cl: 清華大との交換スキーマレビューで混同が判明したため、2つの励起誤差定義の注記を追加。 -->
+## Dos definiciones del error de excitación $S_g$
+
+ReciPro utiliza deliberadamente dos definiciones distintas del error de excitación, adaptadas a su contexto:
+
+- **Visualización cinemática y `SpotInfo()` (modo cinemático/de error de excitación)** : la distancia **radial** con signo desde el punto de la red recíproca hasta la esfera de Ewald, $S_g = k - \lvert\boldsymbol{g} - \boldsymbol{C}\rvert$, con el centro de la esfera $\boldsymbol{C} = (0, 0, k)$ y $k = 1/\lambda$. $S_g > 0$ significa que el punto está dentro de la esfera. El simulador cinemático no supone ninguna forma ni espesor de la muestra, de modo que allí no existe una normal a la superficie; la distancia radial isótropa es la elección neutra para seleccionar y mostrar las reflexiones.
+- **Cálculo dinámico (Bethe)** : la distancia medida **a lo largo de la normal a la superficie de la muestra** $\boldsymbol{n}$, $S_g = \sqrt{P_g^2/4 + Q_g} - P_g/2$, con $P_g = 2\boldsymbol{n}\cdot(\boldsymbol{k}_0 + \boldsymbol{g})$ y $Q_g = k_0^2 - \lvert\boldsymbol{k}_0 + \boldsymbol{g}\rvert^2$. Esta definición la exige la condición de contorno impuesta en la superficie de la muestra.
+
+Ambas coinciden casi por completo en incidencia normal (normal a la superficie paralela al haz), pero **no son la misma magnitud**; no mezcle valores tomados de las salidas cinemática y dinámica.

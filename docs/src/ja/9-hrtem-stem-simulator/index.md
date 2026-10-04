@@ -110,7 +110,7 @@ title: HRTEM/STEMシミュレータ
 
 ![STEM像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
-STEMモードのときだけ表示されます。計算済みのSTEM像のうち、どの散乱成分を表示するかを切り替えます（**弾性** / **TDS** / **弾性 & TDS**）。STEM固有の項目のため [STEMシミュレーション](2-stem-simulation.md) にも掲載しています。
+STEMモードのときだけ表示されます。計算済みのSTEM像のうち、どの散乱成分を表示するかを切り替えます（**弾性** / **TDS** / **弾性 & TDS**）。[STEM-EDX マップ](2-stem-simulation.md#stem-edx) も計算した場合は、4 つ目の選択肢として **EDX** を選べます。STEM固有の項目のため [STEMシミュレーション](2-stem-simulation.md) にも掲載しています。
 
 ### 表示オプション
 

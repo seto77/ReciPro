@@ -33,11 +33,13 @@ A metade superior da janela mostra o estado de rotação no "sistema de coordena
 
 ### Φ, θ, Ψ (ângulos de Euler Z–X–Z)
 
-A orientação do cristal é parametrizada por três rotações aplicadas nesta ordem:
+A orientação do cristal é parametrizada por três rotações. Descritas no referencial **solidário ao corpo (intrínseco)**, elas são aplicadas nesta ordem:
 
 1. **Φ** — primeira rotação em torno do eixo **Z**.
 2. **θ** — rotação em torno do eixo **X** do referencial girado uma vez.
 3. **Ψ** — segunda rotação em torno do eixo **Z** do referencial girado duas vezes.
+
+A mesma rotação vista no referencial **fixo do laboratório** é a sequência inversa — Ψ em torno de $Z$, depois θ em torno de $X$, depois Φ em torno de $Z$ — que é a descrição usada no [Apêndice A1.1](appendix/a1-coordinate-system/1-orientation.md). Ambas fornecem a mesma matriz $R$ abaixo; Φ é simplesmente o eixo mais externo (como em um goniômetro) e Ψ o mais interno.
 
 Cada caixa numérica é editável; alterar um valor aqui atualiza a Janela principal e cada simulador vinculado.
 

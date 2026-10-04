@@ -17,11 +17,11 @@ $$E_\gamma = E_B(\text{inner shell}) - E_B(\text{outer shell}),$$
 - **K선** — $K$ 껍질의 공공이 $L$($K\alpha$) 또는 $M$($K\beta$)에서 채워진다.
 - **L선** — $L$ 껍질의 공공이 $M$/$N$($L\alpha$, $L\beta$, …)에서 채워진다.
 
-쌍극자 선택 규칙으로 허용되는 전이만 나타나는데, 이 때문에 스펙트럼이 연속체가 아니라 몇 개의 이산적인 선(K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …)으로 나타난다. 이들의 에너지는 **모즐리의 법칙**(Moseley's law)을 따르며, 차폐된 수소형 근사에서는
+스펙트럼이 연속체가 아니라 몇 개의 이산적인 선(K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …)으로 나타나는 것은 껍질 에너지 자체가 양자화되어 있기 때문이다. 그다음 전기 쌍극자 선택 규칙이 그 전이들 중 어느 것이 강한지를 결정한다(더 약한 금지선, 다중극선, 위성선도 실제로 존재한다). 이들의 에너지는 **모즐리의 법칙**(Moseley's law)을 따르며, 차폐된 수소형 근사에서는
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-여기서 $\sigma$는 차폐 상수이다. $K\alpha$($n_2{=}2\to n_1{=}1$, $\sigma\approx1$)의 경우 이는 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$로 단순화된다. 전자 수에 의해 결정되는 이 단조로운 $Z$ 의존성이 원소 식별(EDX/WDX)의 기초가 된다.
+여기서 $\sigma$는 차폐 상수이다. $K\alpha$($n_2{=}2\to n_1{=}1$, $\sigma\approx1$)의 경우 이는 $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$로 단순화된다. 이 $Z$ 의존성은 남은 전자들에 의해 차폐될 뿐인 **핵전하**에 의해 결정되므로, 단조롭고 화학 상태에 거의 영향을 받지 않는다 — 바로 이 점이 원소 식별(EDX/WDX)의 기초가 된다.
 
 ---
 

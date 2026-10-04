@@ -33,11 +33,13 @@ La moitié supérieure de la fenêtre affiche l'état de rotation dans le « sys
 
 ### Φ, θ, Ψ (angles d'Euler Z–X–Z)
 
-L'orientation du cristal est paramétrée par trois rotations appliquées dans cet ordre :
+L'orientation du cristal est paramétrée par trois rotations. Décrites dans le repère **lié au corps (intrinsèque)**, elles sont appliquées dans cet ordre :
 
 1. **Φ** — première rotation autour de l'axe **Z**.
 2. **θ** — rotation autour de l'axe **X** du repère tourné une fois.
 3. **Ψ** — seconde rotation autour de l'axe **Z** du repère tourné deux fois.
+
+La même rotation vue dans le repère **fixe du laboratoire** correspond à la séquence inverse — Ψ autour de $Z$, puis θ autour de $X$, puis Φ autour de $Z$ — qui est la description utilisée dans l'[Annexe A1.1](appendix/a1-coordinate-system/1-orientation.md). Les deux donnent la même matrice $R$ ci-dessous ; Φ est simplement l'axe le plus externe (de type goniomètre) et Ψ le plus interne.
 
 Chaque champ numérique est éditable ; modifier une valeur ici met à jour la Fenêtre principale et chaque simulateur lié.
 

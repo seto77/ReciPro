@@ -76,10 +76,10 @@ PED 는 전자 회절이므로 선원으로 **Electron beam** 을 선택합니�
 - **Opacity** : 스폿의 투명도(0 = 투명, 1 = 불투명).
 - **Radius (R)** : 역격자점의 반지름. 동역학적 강도의 경우 가우스 적분 $=$ Brightness $\times I_\text{dyn}$ 이고, Solid sphere 는 반지름 $R \times I_\text{dyn}^{1/2}$ 을 사용합니다(따라서 면적이 동역학적 강도에 비례합니다).
 - **Brightness** : **Gaussian** 모드에서만 사용할 수 있습니다. 그려지는 가우스 함수의 적분 강도입니다.
-- **Colour scale** : **Gray scale** 또는 **Cold-warm** 컬러맵.
+- **색 척도** : **Gray scale** 또는 **Cold-warm** 컬러맵.
 - **Log scale** : 강도를 로그 스케일로 표시합니다.
-- **Spot colour** : 컬러 스케일을 적용하지 않을 때 사용하는 스폿 색상.
-- **Use crystal colour** : 각 결정에 할당된 색상으로 스폿을 그립니다.
+- **반사점 색** : 컬러 스케일을 적용하지 않을 때 사용하는 스폿 색상.
+- **결정별 지정 색** : 각 결정에 할당된 색상으로 스폿을 그립니다.
 
 ---
 

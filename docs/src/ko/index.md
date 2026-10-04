@@ -22,6 +22,7 @@
 | EBSD 패턴 시뮬레이션 | [EBSD 시뮬레이션](12-ebsd-simulation.md) | [전자 궤적](8-electron-trajectory.md), [부록 A3. EBSD 계산](appendix/a3-bloch-wave/ebsd.md) |
 | 실험 회절 스폿 지수화 | [Spot ID v1](10-spot-id.md), [Spot ID v2](11-spot-id-v2.md) | [회절 시뮬레이터](7-diffraction-simulator/index.md) |
 | 동역학적 회절 방정식 이해 | [부록 A3. 블로흐파 방법](appendix/a3-bloch-wave/index.md) | [동역학적 계산](appendix/a3-bloch-wave/calculation.md), [CBED](appendix/a3-bloch-wave/cbed.md), [STEM](appendix/a3-bloch-wave/stem.md), [EBSD](appendix/a3-bloch-wave/ebsd.md) |
+| 공간군 기호와 군–부분군 관계 이해 | [2. 대칭 정보](2-symmetry-information.md) | [부록 A4. 대칭과 공간군](appendix/a4-symmetry-space-groups/index.md), [공간군 기호와 대칭 다이어그램](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md), [군–부분군 관계](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) |
 
 ## 기능
 * **Full GUI** : 모든 작업은 그래픽 인터페이스를 통해 수행됩니다. 대부분의 파일 입출력은 끌어서 놓기를 지원합니다.

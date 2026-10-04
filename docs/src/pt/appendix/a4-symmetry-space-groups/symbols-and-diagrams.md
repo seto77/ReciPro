@@ -150,8 +150,8 @@ Eixos que correm obliquamente ou dentro da página (isso ocorre apenas para dire
 
 Um rótulo de altura fracionário (p. ex. `1/4`) ao lado de um símbolo dá a sua coordenada ao longo do eixo de projeção sempre que o elemento não está no plano de altura 0.
 
-!!! note "Grupos cúbicos de rede F: apenas um octante é desenhado"
-    Para os grupos espaciais cúbicos centrados em $F$, o ReciPro desenha apenas o quadrante superior esquerdo de um oitavo da célula (caso contrário, o diagrama seria denso demais para ser legível); a célula completa o repete pelas translações de centragem e pelos próprios elementos de simetria desenhados. Os mesmos elementos de simetria também podem ser sobrepostos diretamente ao modelo 3D no [Visualizador de estrutura](../../5-structure-viewer.md).
+!!! note "Grupos cúbicos de rede F: apenas parte da célula é desenhada"
+    Para os grupos espaciais cúbicos centrados em $F$, o ReciPro desenha apenas o quarto superior esquerdo da célula projetada (caso contrário, o diagrama seria denso demais para ser legível); o restante da célula o repete pelas translações de centragem e pelos próprios elementos de simetria desenhados. Os mesmos elementos de simetria também podem ser sobrepostos diretamente ao modelo 3D no [Visualizador de estrutura](../../5-structure-viewer.md).
 
 ---
 
@@ -166,7 +166,7 @@ O diagrama da direita plota as posições gerais equivalentes — a órbita de u
 - (Apenas nos grupos espaciais cúbicos) linhas auxiliares finas conectam três círculos relacionados por um eixo de ordem 3 ao longo da diagonal de corpo $\langle111\rangle$.
 - Em geral, um círculo (ou uma metade de um círculo dividido) corresponde a uma posição equivalente, de modo que o número de círculos coincide com a **multiplicidade** da posição geral mostrada na aba [Posições de Wyckoff](../../2-symmetry-information.md) — uma verificação rápida ao ler qualquer um dos dois diagramas. Se o eixo de projeção escolhido fizer várias cópias de mesma quiralidade coincidirem exatamente, elas são sobrepostas em um único ponto (distinguidas apenas por rótulos de altura separados), em vez de desenhadas como círculos separados lado a lado; nesse caso, o número visível de círculos pode ser menor que a multiplicidade.
 
-Os campos `numericBox` abaixo de **Direção** permitem afastar o ponto de teste $(x,y,z)$ da posição padrão do grupo pontual, o que às vezes é útil para desobstruir um diagrama em que vários círculos coincidiriam.
+As caixas $x$ / $y$ / $z$ abaixo de **Direção** permitem afastar o ponto de teste $(x,y,z)$ da posição padrão do grupo pontual, o que às vezes é útil para desobstruir um diagrama em que vários círculos coincidiriam.
 
 ---
 

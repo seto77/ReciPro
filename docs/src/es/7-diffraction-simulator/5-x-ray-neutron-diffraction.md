@@ -71,7 +71,7 @@ Selecciona el método utilizado para calcular las intensidades de los puntos. Ha
 
 La intensidad se determina únicamente por la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $S_g$). Es máxima en $S_g = 0$ —exactamente sobre la esfera— y decae a medida que crece $\lvert S_g\rvert$, llegando a cero cuando $\lvert S_g\rvert$ supera el **Radius** indicado para el punto de la red recíproca. El factor de estructura se ignora.
 
-### Kinematical & excitation error
+### Cinemática & err. exc.
 
 Además del error de excitación, el factor de estructura cinemático $\lvert F_{hkl} \rvert^2$ se incorpora a la intensidad. Las reglas de extinción se obedecen estrictamente. Los factores de Lorentz y de polarización no se incluyen (se trata de una simulación del patrón geométrico).
 
@@ -92,7 +92,7 @@ Controla cómo se renderiza cada punto de difracción.
 - **Color scale** : elija entre los mapas de color **Gray scale** y **Cold-warm**.
 - **Log scale** : muestra las intensidades en una escala logarítmica.
 - **Spot color** : color predeterminado del punto cuando la escala de color no se aplica.
-- **Use crystal color** : cuando está marcada, dibuja los puntos con el color asignado a cada cristal.
+- **Color por cristal** : cuando está marcada, dibuja los puntos con el color asignado a cada cristal.
 
 ---
 

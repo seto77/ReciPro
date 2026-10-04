@@ -18,8 +18,8 @@ HRTEM 상은 출사면 파동함수 — [동역학적 코어](calculation.md)에
 | $C_s$ | 구면 수차 계수 |
 | $C_c$ | 색 수차 계수 |
 | $\beta$ | 조명 반각 (유한 광원 크기) |
-| $\Delta E$ | 전자 에너지 요동의 $1/e$ 폭 |
-| $\Delta_0$ | 디포커스 분포의 $1/e$ 폭 (가우시안), $\Delta_0 = C_c\,\Delta E / E$ |
+| $\Delta E$ | 전자 에너지 요동의 **표준 편차** (rms). GUI의 **ΔV** 상자는 반치전폭(FWHM)을 입력받으므로 $\Delta E = \mathrm{FWHM}/(2\sqrt{2\ln 2})$ |
+| $\Delta_0$ | (가우시안) 디포커스 분포의 표준 편차, $\Delta_0 = C_c\,\Delta E / E$ |
 
 ---
 
@@ -59,7 +59,7 @@ $$E_c(\mathbf u, \mathbf u') = \exp\!\left[-\tfrac{1}{2}\left(\pi\lambda\Delta_0
 
 $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf u-\mathbf u') + \lambda^2 C_s\!\left(u^2\mathbf u - u'^2\mathbf u'\right)\right\}^2\right]$$
 
-극한 $\mathbf u' \to \mathbf u$ 에서 TCC는 위의 준가간섭 포락선으로 환원된다.
+$\mathbf u' = \mathbf 0$ 으로 두면 — 빔 $\mathbf u$ 와 투과빔의 간섭 — 위의 준가간섭 모델의 단일 주파수 포락선 $E_c(\mathbf u)$ 와 $E_s(\mathbf u)$ 가 얻어진다. 다른 극한 $\mathbf u' \to \mathbf u$ 에서는 $E_c = E_s = 1$ 이 되며, 따라서 아래에서 사용하는 대각항 $\mathrm{TCC}(\mathbf u,\mathbf u) = A(\mathbf u)^2$ 이 된다.
 
 ---
 

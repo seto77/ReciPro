@@ -31,7 +31,7 @@ Los atajos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda la aplicación de la [ventan
 
 ## Área principal
 
-Estructura cristalina 3D con fuente de luz, ejes cristalinos y leyenda de átomos.
+La estructura cristalina en 3D, dibujada junto con el indicador de dirección de la luz, el indicador de ejes cristalinos y la leyenda de átomos.
 > La caja **Size (W×H)** en la parte superior derecha de la ventana establece el tamaño en píxeles utilizado al guardar o copiar la imagen renderizada.
 > La caja **ProjWidth** situada a su lado muestra el ancho de la vista proyectada en nm. Edite el valor para hacer zoom numéricamente — permanece sincronizado con el zoom por arrastre con el botón derecho / rueda del ratón sobre la vista.
 
@@ -144,7 +144,7 @@ Si está marcado, se ocultan todos los átomos, enlaces y poliedros — útil cu
 
 ![Pestaña Átomos](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
-Coordenadas, elemento, ocupación, radio, color, material. **Apply to same elements**.
+Establece la especie, la posición y la ocupación de cada átomo, y cómo se dibuja cada uno (radio, color, material).
 
 #### Lista de átomos
 
@@ -180,7 +180,7 @@ Radio, color y material por átomo.
 
 ![Pestaña Enlaces y poliedros](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
-Umbrales de longitud de enlace, visualización de poliedros, aristas.
+Define qué pares de átomos están enlazados (por especie y rango de distancias) y cómo se dibujan los enlaces y los poliedros de coordinación resultantes.
 
 #### Lista de enlaces
 
@@ -208,7 +208,7 @@ Todas las reglas de enlace/poliedro registradas para el cristal. Use **Add / Rep
 
 ![Pestaña Celda unidad](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
-Traslación, planos de la celda, aristas.
+Establece la posición de la celda unidad dibujada y si se muestran sus caras y aristas.
 
 #### Traslación
 
@@ -226,7 +226,7 @@ Si se dibujan o no las aristas de la celda elemental. El color de las aristas es
 
 ![Pestaña Planos reticulares](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
-Especificación del índice de Miller con equivalentes cristalográficos.
+Dibuja planos reticulares dados por su índice de Miller, incluyendo opcionalmente los planos cristalográficamente equivalentes.
 
 #### Índices H k l
 
@@ -240,7 +240,7 @@ Traslada el plano reticular dibujado en un múltiplo entero de su distancia inte
 
 ![Pestaña Coordinación](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
-Tabla y gráfico de coordinación alrededor del átomo objetivo.
+Enumera y representa gráficamente los átomos que coordinan un átomo objetivo elegido.
 
 #### Tabla (lado izquierdo)
 
@@ -260,7 +260,7 @@ Registro de renderizado (tiempo de fotograma, información de la GPU) e informac
 
 ![Pestaña Proyección](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
-Modo de proyección (ortográfica/perspectiva), atenuación por profundidad, calidad de renderizado, modo de transparencia.
+Establece el modo de proyección (ortográfica / perspectiva), la atenuación por profundidad, el centro de proyección, la calidad de renderizado y el algoritmo de transparencia.
 
 #### Proyección
 
@@ -320,7 +320,7 @@ Para cada clase puede ajustar el tamaño del símbolo, el ancho de línea y el c
 | Unit Cell | Alternar las aristas de la celda elemental |
 | Sym. Elems. | Alternar la superposición de elementos de simetría (ver arriba) |
 | Reset Rotation | Volver a la orientación inicial |
-| Like Vesta | Apariencia al estilo Vesta |
+| Like Vesta | Cambia a una apariencia al estilo de VESTA (colores y radios de los átomos) |
 
 ---
 

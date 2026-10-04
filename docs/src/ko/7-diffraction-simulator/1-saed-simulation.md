@@ -82,7 +82,7 @@ GUI 조건: Wave Length = Electron, Incident beam mode = Parallel, Intensity cal
 - **Color scale** : **Gray scale** 또는 **Cold-warm**.
 - **Log scale** : 강도를 로그 스케일로 표시합니다. 강도 대비가 큰 도형에 유용합니다.
 - **Spot color** : 컬러 스케일을 사용하지 않을 때 쓰이는 스폿 색상.
-- **Use crystal color** : 체크하면 각 결정에 할당된 색상으로 스폿이 그려집니다.
+- **Color per crystal** : 체크하면 각 결정에 할당된 색상으로 스폿이 그려집니다.
 
 ---
 

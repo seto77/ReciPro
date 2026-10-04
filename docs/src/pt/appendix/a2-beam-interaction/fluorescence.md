@@ -17,11 +17,11 @@ e é, portanto, característica do elemento:
 - **Linhas K** — vacância na camada $K$ preenchida a partir de $L$ ($K\alpha$) ou $M$ ($K\beta$).
 - **Linhas L** — vacância na camada $L$ preenchida a partir de $M$/$N$ ($L\alpha$, $L\beta$, …).
 
-Somente as transições permitidas pelas regras de seleção dipolar aparecem, e é por isso que o espectro é formado por algumas linhas discretas (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) em vez de um contínuo. Suas energias seguem a **lei de Moseley**; na aproximação hidrogenoide blindada,
+O espectro é formado por algumas linhas discretas (K$\alpha_1$, K$\alpha_2$, K$\beta_1$, L$\alpha_1$, …) em vez de um contínuo porque as próprias energias das camadas são quantizadas; as regras de seleção de dipolo elétrico decidem então quais dessas transições são intensas (linhas proibidas, multipolares e satélites mais fracas também existem). Suas energias seguem a **lei de Moseley**; na aproximação hidrogenoide blindada,
 
 $$E_{n_2\to n_1} \approx R_\infty hc\,(Z-\sigma)^2\left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), \qquad \text{so}\qquad \sqrt{E} \propto (Z-\sigma),$$
 
-com $\sigma$ sendo uma constante de blindagem. Para $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$), isso se reduz a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. Essa dependência monótona de $Z$, governada pela contagem de elétrons, é a base da identificação elementar (EDX/WDX).
+com $\sigma$ sendo uma constante de blindagem. Para $K\alpha$ ($n_2{=}2\to n_1{=}1$, $\sigma\approx1$), isso se reduz a $E_{K\alpha}\approx R_\infty hc\,(Z-1)^2\left(1-\tfrac14\right)$. A dependência em $Z$ é governada pela **carga nuclear**, apenas blindada pelos elétrons restantes; por isso é monótona e praticamente insensível ao estado químico — o que a torna a base da identificação elementar (EDX/WDX).
 
 ---
 

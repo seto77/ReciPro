@@ -130,6 +130,7 @@ Les angles d'Euler ne sont pas uniques aux positions de blocage de cardan (θ = 
 | `Thickness` | double | Épaisseur de l'échantillon (nm) |
 | `NumberOfDiffractedWaves` | int | Nombre d'ondes de Bloch |
 | `CameraLength2` | double | Longueur de caméra (mm) |
+| `ExcitationError` | double | Rayon des taches (nm⁻¹) : en mode cinématique/erreur d'excitation, `SpotInfo()` exporte les réflexions dont \|Sg\| est inférieur ou égal à cette valeur |
 | `SkipRendering` | bool | Ignorer le rendu pour le traitement par lots |
 
 ### Mode de faisceau

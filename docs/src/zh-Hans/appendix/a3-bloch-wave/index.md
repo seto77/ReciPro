@@ -54,7 +54,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 $$P_g = 2\,\hat{\mathbf n}\cdot(\mathbf k + \mathbf g), \qquad Q_g = |\mathbf k|^2 - |\mathbf k + \mathbf g|^2 = -\,\mathbf g\cdot(2\mathbf k + \mathbf g)$$
 
-而 **偏离矢量** $S_g$（倒易点阵点偏离埃瓦尔德球的程度）以及用于对反射排序的 **评价函数** $R$ 为：
+而 **偏离矢量** $S_g$（倒易点阵点偏离埃瓦尔德球的程度）以及用于对反射排序的 **评价函数** $R$（$R$ 越小，表示 $\mathbf g$ 越短且越接近埃瓦尔德球，越优先选取）为：
 
 $$S_g = \frac{\sqrt{P_g^{\,2} + 4Q_g}\; -\; P_g}{2}, \qquad R = |\mathbf g|\,Q_g^{\,2}$$
 

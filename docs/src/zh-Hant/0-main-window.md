@@ -53,15 +53,16 @@
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| Read crystal list (as new list) | 載入晶體清單檔案（*.xml）並取代目前的清單 |
-| Read crystal list (and add) | 附加至目前的清單 |
-| Read initial crystal list | 重新載入預設的晶體清單 |
-| Save crystal list | 儲存目前的晶體清單 |
-| Export selected crystal to CIF | 以 CIF 格式儲存 |
-| Clear crystal list | 移除所有晶體 |
-| Exit | 關閉應用程式 |
+| 載入晶體清單（取代目前清單） | 載入晶體清單檔案（`*.xml`）並取代目前的清單 |
+| 載入晶體清單（加入目前清單） | 載入晶體清單檔案並附加至目前的清單 |
+| 重設為初始晶體清單 | 重新載入 ReciPro 隨附的晶體清單 |
+| 從 CIF 或 AMC 檔案匯入晶體 | 從 CIF / AMC 檔案載入單一晶體 |
+| 儲存晶體清單 | 儲存目前的晶體清單 |
+| 將選取的晶體匯出為 CIF 檔案 | 以 CIF 格式儲存所選的晶體 |
+| 清除所有晶體 | 從清單中移除所有晶體 |
+| 結束 | 關閉應用程式 |
 
-### Option
+### Options
 
 
 | 選單項目 | 說明 |
@@ -83,19 +84,19 @@
 
 | 選單項目 | 說明 |
 |-----------|-------------|
-| Program updates | 檢查是否有新版 ReciPro 並安裝 |
-| Hint | 顯示使用提示（已淘汰） |
-| Version history | 開啟版本歷史對話方塊 |
-| License | 顯示 MIT 授權 |
-| GitHub page | 在瀏覽器中開啟 ReciPro 儲存庫 |
-| Report bugs, requests, or comments | 開啟 GitHub Issues 頁面 |
-| Help (Web) | 在 GitHub Pages 上以符合 UI 語言的頁面開啟線上手冊。 |
+| 檢查更新 | 檢查是否有新版 ReciPro 並安裝 |
+| 提示 | 顯示使用提示（已淘汰） |
+| 版本紀錄 | 開啟版本歷史對話方塊 |
+| 授權 | 顯示 MIT 授權 |
+| GitHub 儲存庫 | 在瀏覽器中開啟 ReciPro 儲存庫 |
+| 回報錯誤、需求或意見 | 開啟 GitHub Issues 頁面 |
+| 說明（網頁） | 在 GitHub Pages 上以符合 UI 語言的頁面開啟線上手冊 |
 
 介面語言可從另外的 **語言** 選單切換（需重新啟動）。
 
 ### Language
 
-切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定。
+切換 UI 語言。共支援 11 種語言 —— English、日本語、Deutsch、Français、Español、Português、Italiano、Русский、简体中文、繁體中文、한국어 —— 選單中以各語言自身的文字顯示。變更會在重新啟動 ReciPro 後生效。線上手冊也遵循相同設定，因此 <kbd>F1</kbd> 與 **說明 ▸ 說明（網頁）** 會以您所選的語言開啟頁面。
 
 ### Macro
 
@@ -118,7 +119,7 @@
 重設為初始狀態：*c* 軸垂直於螢幕，*b* 軸朝上。
 
 ### 晶帶軸
-顯示最接近螢幕法線的晶帶軸（例如 *u*+*v*+*w* < 30）。
+顯示最接近螢幕法線的晶帶軸 [*uvw*]；搜尋範圍限於各指數絕對值不超過 max-UVW 方塊所示上限者（雙擊 **Current Index** 標籤可顯示或隱藏該方塊）。
 
 ### Euler 角 (Z-X-Z)
 使用 **Z–X–Z** Euler 角設定晶體方位：
@@ -178,7 +179,7 @@
 
 ## 晶體資訊
 
-編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSmanager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
+編輯點陣參數、對稱性與原子；將 CIF/AMC 檔案拖放至此以載入結構。此控制項由 ReciPro、PDIndexer 與 CSManager 共用，但所顯示的索引標籤與功能因應用程式而異。ReciPro 顯示 Basic Info、Atom 與 Reference 索引標籤（EOS、Elasticity 及其他索引標籤屬於其他應用程式，不會在 ReciPro 中顯示）。
 
 > **重要**：請按 **↑ 新增 ↑** 或 **↑ 取代 ↑** 以儲存變更。
 
@@ -231,7 +232,7 @@
 | Radiation | 來源 / 設定 |
 |-----------|------|
 | X-ray | 含離子價數的散射因子（International Tables for Crystallography, Vol. C）。 |
-| Electron | 電子散射因子（Peng 1998, Acta Cryst. A54, 481–485）。 |
+| Electron | 電子散射因子 —— 中性原子取自 Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276；離子取自 Peng (1998), *Acta Cryst.* **A54**, 481–485。 |
 | Neutron | 中子散射長度。選擇 **Natural isotope abundance** 或 **Custom isotope abundance**（任意同位素組成）。 |
 
 ### 文獻 索引標籤
@@ -259,14 +260,14 @@
 
 ## 功能面板 {#functions}
 
-右側的垂直按鈕列可啟動分析與模擬視窗（請參閱下方的[功能](#functions)表）。
+右側的垂直按鈕列可啟動下列分析與模擬視窗。
 
 ![Functions panel](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 | 按鈕 | 說明 | 詳細資訊 |
 |--------|-------------|---------|
 | Crystal Database | 從隨附 / 線上資料庫搜尋並匯入晶體 | [1. 晶體資料庫](1-crystal-database.md) |
-| Symmetry Information | 空間群資訊與 ITC Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
+| Symmetry Information | 空間群資訊與 *International Tables* Vol. A 對稱性圖 | [2. 對稱性資訊](2-symmetry-information.md) |
 | Beam Interaction | 電子束與晶體的交互作用：反射、衰減、散射因子、螢光 | [3. 電子束交互作用](3-beam-interaction.md) |
 | Rotation Geometry | 3D 旋轉矩陣 / 測角儀角度 | [4. 旋轉幾何](4-rotation-geometry.md) |
 | Structure Viewer | 3D 晶體結構 | [5. 結構檢視器](5-structure-viewer.md) |

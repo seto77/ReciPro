@@ -130,6 +130,7 @@ for k in range(-2, 3):
 | `Thickness` | double | Толщина образца (nm) |
 | `NumberOfDiffractedWaves` | int | Число блоховских волн |
 | `CameraLength2` | double | Длина камеры (mm) |
+| `ExcitationError` | double | Радиус рефлекса (nm⁻¹): в кинематическом режиме / режиме ошибки возбуждения `SpotInfo()` экспортирует отражения с \|Sg\| в пределах этого значения |
 | `SkipRendering` | bool | Пропустить отрисовку для пакетной обработки |
 
 ### Режим пучка

@@ -55,11 +55,11 @@ El índice de refracción de rayos X de un sólido es **ligeramente menor que 1*
 
 $$n = 1 - \delta + i\beta, \qquad \beta = \frac{\mu_\text{abs}\lambda}{4\pi} = \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,f''_i, \qquad \delta \simeq \frac{r_e\lambda^2}{2\pi}\sum_i n_i\,(Z_i+f'_i),$$
 
-donde $n_i$ es la densidad numérica del elemento $i$ y $r_e$ el radio clásico del electrón. Aquí $\mu_\text{abs}$ es la parte absortiva de la atenuación (ligada a $f''$); no tiene por qué ser igual al $\mu$ total de arriba, que también contiene dispersión Rayleigh y Compton. Como $n<1$, los rayos X experimentan **reflexión externa total** por debajo de un pequeño **ángulo crítico** rasante
+donde $n_i$ es la densidad numérica del elemento $i$ y $r_e$ el radio clásico del electrón. Aquí $\mu_\text{abs}$ es la parte absortiva de la atenuación (ligada a $f''$); no tiene por qué ser igual al $\mu$ total de arriba, que también contiene dispersión Rayleigh y Compton. Cuando $\delta>0$ el índice de refracción es menor que 1, de modo que los rayos X experimentan **reflexión externa total** por debajo de un pequeño **ángulo crítico** rasante $\alpha_c$:
 
-$$\theta_c \simeq \sqrt{2\delta}.$$
+$$\alpha_c \simeq \sqrt{2\delta}.$$
 
-Esto se sigue de la geometría de refracción: para un ángulo rasante $\alpha$ el vector de onda vertical dentro del sólido es $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, que alcanza cero en $\alpha = \alpha_c = \sqrt{2\delta}$; por debajo de ese valor la onda no puede propagarse en el material y se refleja totalmente. La parte real de la **densidad de longitud de dispersión**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fija $\delta$ y es el análogo de rayos X de la SLD de neutrones usada en reflectometría. ReciPro indica $\delta$, $\beta$, $\theta_c$ y la SLD de rayos X en la tabla escalar.
+Esto se sigue de la geometría de refracción: para un ángulo rasante $\alpha$ el vector de onda vertical dentro del sólido es $k_z^2 \simeq k^2(\alpha^2 - 2\delta)$, que alcanza cero en $\alpha = \alpha_c = \sqrt{2\delta}$; por debajo de ese valor la onda no puede propagarse en el material y se refleja totalmente. La expresión supone el límite sin pérdidas $\beta \ll \delta$: con un $\beta$ finito, una onda evanescente sigue penetrando unos pocos nanómetros y la reflectividad queda ligeramente por debajo de 1. Justo por encima de un borde de absorción $\delta$ puede incluso volverse negativo, en cuyo caso no existe ángulo crítico y ReciPro no indica ninguno. La parte real de la **densidad de longitud de dispersión**, $\text{SLD} = r_e\sum_i n_i (Z_i + f'_i)$, fija $\delta$ y es el análogo de rayos X de la SLD de neutrones usada en reflectometría. ReciPro indica $\delta$, $\beta$, $\alpha_c$ (que figura como **θc** en la tabla escalar) y la SLD de rayos X.
 
 ---
 
@@ -69,7 +69,7 @@ Un electrón rápido en un sólido a la vez **se dispersa** (cambiando de direcc
 
 ### Dispersión elástica y recorrido libre medio
 
-La sección eficaz elástica $\sigma_\text{el}$ mide con qué facilidad un solo átomo desvía el electrón. ReciPro emplea las secciones eficaces **NIST Mott** (una solución de ondas parciales de la ecuación relativista de Dirac en el potencial atómico apantallado), válidas aproximadamente en el rango **50 eV – 36.4 keV**; fuera de ese rango, o para elementos que no figuran en la tabla, recurre a la aproximación de **Rutherford apantallada**. Las dos no tienen por qué unirse de forma perfectamente suave en el límite. La sección eficaz total es la integral angular de la diferencial,
+La sección eficaz elástica $\sigma_\text{el}$ mide con qué facilidad un solo átomo desvía el electrón. ReciPro emplea las secciones eficaces **NIST Mott** (una solución de ondas parciales de la ecuación relativista de Dirac en el potencial atómico apantallado). La tabla incluida cubre **50 eV – 36.4 keV** (esa es la extensión de la propia tabulación de ReciPro, no un límite del método de Mott en sí); fuera de ese rango, o para elementos que no figuran en la tabla, recurre a la aproximación de **Rutherford apantallada**. Las dos no tienen por qué unirse de forma perfectamente suave en el límite. La sección eficaz total es la integral angular de la diferencial,
 
 $$\sigma_\text{el} = 2\pi\int_0^\pi \frac{d\sigma}{d\Omega}\,\sin\Theta\,d\Theta, \qquad \frac{d\sigma}{d\Omega} \propto \frac{Z^2}{E^2}\,\frac{1}{\big[\sin^2(\Theta/2)+\eta\big]^2},$$
 
@@ -85,11 +85,11 @@ La energía se pierde principalmente en excitaciones electrónicas (ionización,
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-donde aquí $s$ es la **longitud de recorrido** a lo largo de la trayectoria (la variable de la curva *|dE/ds|* de la pestaña), no la variable de dispersión $\sin\theta/\lambda$ usada en otras partes de este apéndice. El gradiente de energía $dE/ds$ es negativo, por lo que la pestaña representa $S$ hacia arriba. A energías de keV sigue, conceptualmente, la forma de **Bethe**
+donde aquí $s$ es la **longitud de recorrido** a lo largo de la trayectoria (la variable de la curva *|dE/ds|* de la pestaña), no la variable de dispersión $\sin\theta/\lambda$ usada en otras partes de este apéndice. El gradiente $dE/ds$ en sí es negativo, por lo que la pestaña representa su magnitud $S$ hacia arriba. A energías de keV sigue, conceptualmente, la forma de **Bethe**
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 
-con $J$ la **energía media de excitación** del sólido. Este esbozo no relativista muestra solo el escalado; ReciPro evalúa una forma corregida/empírica (del tipo Joy–Luo) que se mantiene bien comportada a baja energía. La **energía de plasmón** $E_p$ en la tabla escalar es una caracterización relacionada pero distinta de las mismas excitaciones electrónicas. El **recorrido libre medio inelástico** (IMFP) es la distancia media correspondiente entre colisiones con pérdida de energía; ReciPro puede evaluarlo a partir de la fórmula predictiva **TPP-2M**,
+con $J$ la **energía media de excitación** del sólido. Este esbozo no relativista muestra solo el escalado; ReciPro evalúa la forma de **Jablonski (2008)** modificada, que se mantiene bien comportada a baja energía (también está implementada la forma empírica más antigua de **Joy–Luo (1989)**). La **energía de plasmón** $E_p$ en la tabla escalar es una caracterización relacionada pero distinta de las mismas excitaciones electrónicas. El **recorrido libre medio inelástico** (IMFP) es la distancia media correspondiente entre colisiones con pérdida de energía; ReciPro puede evaluarlo a partir de la fórmula predictiva **TPP-2M**,
 
 $$\lambda_\text{in}(E) = \frac{E}{E_p^2\left[\beta_\text{T}\ln(\gamma_\text{T} E) - C/E + D/E^2\right]},$$
 
@@ -141,7 +141,7 @@ Las mismas escalas de longitud explican por qué los electrones exigen muestras 
 
 ## Véase también
 
-- [Factores de dispersión atómicos](scattering-factor.md) — la separación $F(q)$/$S(q)$ detrás de Rayleigh/Compton, y las secciones eficaces de Mott.
+- [Factores de dispersión atómicos](scattering-factor.md) — la separación $F(q)$/$S(q)$ detrás de Rayleigh/Compton, y la relación de Mott–Bethe (un modelo distinto de las secciones eficaces de Mott del NIST utilizadas arriba).
 - [Fluorescencia](fluorescence.md) — la relajación que sigue a la fotoabsorción de rayos X.
 - [3. Interacción del haz](../../3-beam-interaction.md) — la pestaña *Atenuación & Transporte*.
 - [8. Trayectorias electrónicas](../../8-electron-trajectory.md) · [12. Simulación EBSD](../../12-ebsd-simulation.md) — donde se usan los alcances electrónicos.

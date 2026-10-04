@@ -82,7 +82,7 @@ Contrôle la manière dont chaque tache de diffraction est rendue.
 - **Color scale** : **Gray scale** ou **Cold-warm**.
 - **Log scale** : afficher les intensités sur une échelle logarithmique. Utile pour les diagrammes présentant un grand contraste d'intensité.
 - **Spot color** : couleur de la tache utilisée lorsque l'échelle de couleurs n'est pas employée.
-- **Use crystal color** : lorsque cette option est cochée, les taches sont dessinées dans la couleur attribuée à chaque cristal.
+- **Color per crystal** : lorsque cette option est cochée, les taches sont dessinées dans la couleur attribuée à chaque cristal.
 
 ---
 

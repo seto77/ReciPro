@@ -4,9 +4,24 @@ title: HRTEM / STEM Simulator
 
 # HRTEM / STEM Simulator
 
-**HRTEM/STEM 시뮬레이터**는 TEM 격자무늬(HRTEM) 이미지, STEM 이미지, 투영 퍼텐셜을 시뮬레이션합니다. 계산을 실행하려면 **Simulate**를 클릭하십시오.
+**HRTEM/STEM 시뮬레이터**는 선택한 결정과 방위에 대해 TEM 격자무늬(HRTEM) 이미지, STEM 이미지, 투영 결정 퍼텐셜을 시뮬레이션합니다. 계산을 실행하려면 **시뮬레이션**을 클릭하십시오.
 
 ![HRTEM/STEM 시뮬레이터](../../assets/cap-ko-auto/FormImageSimulator.png)
+
+창은 좌우 두 부분으로 나뉩니다. **왼쪽**은 시뮬레이션 결과를 표시하고 그 표시 방식(이미지 창, 밝기, 색, 축척 막대 등)을 조정하며, **오른쪽**에는 계산 조건(**광학 특성**과 **시뮬레이션 설정**)이 있습니다.
+
+---
+
+## 이 페이지와 모드별 페이지
+
+- **이 페이지(개요)**: 모든 모드에 공통인 조작과 **왼쪽의 결과 표시 및 조정 컨트롤**을 설명합니다.
+- **모드별 페이지**: 해당 모드에서 **오른쪽**에 나타나는 모든 설정을 다루며, 각 페이지만 읽어도 완결되도록 구성되어 있습니다(따라서 일부 설정은 여러 페이지에 중복해서 나옵니다).
+
+| 모드 | 내용 | 페이지 |
+|------|----------|------|
+| **HRTEM** | 고분해능 TEM 격자무늬 이미지 | [HRTEM 시뮬레이션](1-hrtem-simulation.md) |
+| **STEM** | 주사 투과 전자 현미경 이미지 (BF / ABF / LAADF / HAADF) | [STEM 시뮬레이션](2-stem-simulation.md) |
+| **Potential** | 투영 결정 퍼텐셜 ($U_g$ / $U'_g$) | [퍼텐셜 시뮬레이션](3-potential-simulation.md) |
 
 ---
 
@@ -34,221 +49,111 @@ title: HRTEM / STEM Simulator
 
 | 목표 | 시작 지점 | 참조 |
 |------|------------|-----------|
-| HRTEM 이미지 하나 계산 | **Image mode**를 **HRTEM**으로 설정한 다음, **TEM conditions**에서 가속 전압과 디포커스를 설정 | [HRTEM 시뮬레이션](1-hrtem-simulation.md), [HRTEM 결상](../appendix/a3-bloch-wave/hrtem.md) |
-| STEM 이미지 계산 | **Image mode**를 **STEM**으로 설정한 다음, **STEM options**에서 수렴각과 검출기를 설정 | [STEM 시뮬레이션](2-stem-simulation.md), [STEM 계산](../appendix/a3-bloch-wave/stem.md) |
-| 투영 퍼텐셜 보기 | **Image mode**를 **Potential**로 설정 | [퍼텐셜 시뮬레이션](3-potential-simulation.md) |
-| 두께/디포커스 시리즈 생성 | **Single / Serial**과 **HRTEM options**의 이미지 조건을 구성 | [HRTEM 시뮬레이션](1-hrtem-simulation.md) |
-| TDS와 함께 HAADF-STEM 사용 | 원자 온도 인자를 0이 아닌 값으로 설정하고 LAADF/HAADF 검출기를 사용 | [STEM 계산](../appendix/a3-bloch-wave/stem.md) |
+| HRTEM 이미지 하나 계산 | **이미지 모드**를 **HRTEM**으로 설정한 다음, **TEM 조건**에서 가속 전압과 디포커스를 설정 | [HRTEM 시뮬레이션](1-hrtem-simulation.md), [HRTEM 이미지 형성](../appendix/a3-bloch-wave/hrtem.md) |
+| STEM 이미지 계산 | **이미지 모드**를 **STEM**으로 설정한 다음, **STEM 옵션**에서 수렴각과 검출기를 설정 | [STEM 시뮬레이션](2-stem-simulation.md), [STEM 계산](../appendix/a3-bloch-wave/stem.md) |
+| 투영 퍼텐셜 보기 | **이미지 모드**를 **Potential**로 설정 | [퍼텐셜 시뮬레이션](3-potential-simulation.md) |
+| 두께/디포커스 시리즈 생성 | HRTEM에서 **단일/연속 모드**와 이미지 조건을 구성 | [HRTEM 시뮬레이션](1-hrtem-simulation.md) |
+| TDS와 함께 HAADF-STEM 사용 | 원자 온도 인자를 0이 아닌 값으로 설정하고 STEM 검출기를 LAADF / HAADF로 이동 | [STEM 계산](../appendix/a3-bloch-wave/stem.md) |
 
 ---
 
 ## 기본 작업 흐름
 
-1. 메인 창에서 결정과 방위를 선택한 다음, 이 시뮬레이터를 엽니다.
-2. **Image mode**에서 HRTEM, STEM 또는 Potential을 선택합니다.
-3. **Optical property**에서 가속 전압, 디포커스, 수차, 조리개, STEM 수렴 설정을 지정합니다.
-4. **Simulation property**에서 두께, 이미지 크기, 해상도, 블로흐파 개수, 부분 가간섭성 모델을 설정합니다.
-5. **Simulate**를 클릭한 다음, **Display settings**에서 밝기, 정규화, 축척 막대, 레이블을 조정합니다.
+1. 메인 창에서 결정과 방위를 선택한 다음, 이 창을 엽니다.
+2. **이미지 모드**에서 HRTEM, STEM 또는 Potential을 선택합니다.
+3. **광학 특성**에서 가속 전압, 디포커스, 수차, 조리개, STEM 수렴각 등을 설정합니다(모드별 페이지 참조).
+4. **시뮬레이션 설정**에서 두께, 이미지 크기, 해상도, 블로흐파 개수, 부분 가간섭성 모델 등을 설정합니다(모드별 페이지 참조).
+5. **시뮬레이션**을 클릭한 다음, 필요에 따라 왼쪽의 **조정**, **정규화**, **표시**로 표시 방식을 조정합니다.
 
 ---
 
-## 이미지 영역
+## 이미지 모드 선택
 
-창의 왼쪽 절반에 시뮬레이션된 이미지가 표시됩니다. 위쪽의 상태 표시줄은 커서 위치(**X:**, **Y:**)와 커서 아래의 이미지 **Value:**(강도)를 보고하며, 그 옆에는 현재 색상 맵과 밝기 범위를 반영하는 **Low → High** 강도 척도가 표시됩니다.
+![이미지 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){ align=left }
+
+오른쪽 위의 **이미지 모드**에서 계산 종류를 선택합니다. 오른쪽 패널(**광학 특성**과 **시뮬레이션 설정**)은 선택한 모드에 맞게 바뀝니다.<div style="clear: both;"></div>
+
+- **HRTEM** — 고분해능 TEM 격자무늬 이미지 → [HRTEM 시뮬레이션](1-hrtem-simulation.md)
+- **STEM** — 주사 투과 전자 현미경 이미지 → [STEM 시뮬레이션](2-stem-simulation.md)
+- **Potential** — 투영 결정 퍼텐셜 → [퍼텐셜 시뮬레이션](3-potential-simulation.md)
+
+---
+
+## 이미지 영역 (왼쪽)
+
+창의 왼쪽 절반에 시뮬레이션된 이미지가 표시됩니다. 위쪽의 상태 표시줄은 커서 위치(**X:**, **Y:**)와 커서 아래의 이미지 **값:**(강도)을 보고하며, 그 옆에는 현재 색상 맵과 밝기 범위를 반영하는 **낮음 → 높음** 강도 척도가 표시됩니다.
+
+여러 장의 이미지가 생성되는 경우(연속 이미지, 또는 퍼텐셜의 크기/위상) 이미지는 격자 모양으로 배열되며, 모든 창이 함께 확대/축소되고 이동합니다.
+
+---
+
+## 결과 표시와 조정 (왼쪽 패널) {#display-settings}
+
+왼쪽 아래의 패널에서 결과의 표시 방식 — 밝기, 색, 정규화, 오버레이 — 을 조정합니다. 이 설정은 모든 모드에 적용되며, 재계산 없이 바로 반영됩니다.
+
+### 조정
+
+![조정](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+
+- **Min** / **Max** : 표시 강도 범위의 하한(검정)과 상한(흰색). 트랙바로 콘트라스트를 조정합니다.
+- **색** : 이미지의 색 척도 — **Gray scale** 또는 **Cold-Warm**(파랑에서 빨강).
+- **가우시안 블러 (FWHM)** : 체크하면 오른쪽에 지정한 반치전폭(pm)의 가우시안 블러를 적용하여, 유한한 분해능(점 퍼짐 함수)을 근사합니다.
+
+### 정규화
+
+![정규화](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
+
+- **이미지별** : 체크하면 이미지마다 따로 정규화합니다(체크 해제 시 시리즈 전체가 공통 척도를 사용합니다).
+- **Min** / **Max** : 정규화의 하한 / 상한을 이미지의 최솟값 / 최댓값 대신 오른쪽에 지정한 값으로 고정합니다.
+
+### STEM 이미지
+
+![STEM 이미지](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
+
+STEM 모드에서만 표시됩니다. 계산된 STEM 이미지 중 어떤 산란 성분을 표시할지(**탄성**, **TDS**, **탄성 & TDS**) 선택합니다. 같은 계산에서 [STEM-EDX 맵](2-stem-simulation.md#stem-edx)도 계산했다면 네 번째 선택지로 **EDX**를 고를 수 있습니다. STEM 전용 항목이므로 [STEM 시뮬레이션](2-stem-simulation.md) 페이지에서도 설명합니다.
+
+### 표시
+
+![표시](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
+
+이미지 위에 겹쳐 표시할 항목을 설정합니다.
+
+- **단위 격자** : 투영된 단위 격자의 윤곽을 겹쳐 표시하여, 이미지 콘트라스트와 결정 격자의 대응을 확인할 수 있습니다.
+- **레이블** : 두께, 디포커스, 지수 등의 레이블을 겹쳐 표시합니다. **크기**(글꼴 크기)와 **색**을 지정할 수 있습니다.
+- **축척 막대** : 축척 막대를 겹쳐 표시합니다. **길이**(nm)와 **색**을 지정할 수 있습니다.
+
+---
+
+## 시뮬레이션 실행
+
+![Simulation actions](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelSimulationActions.png)
+
+- **시뮬레이션** : 현재의 결정, 현미경 조건, 두께, 디포커스, 표시 설정으로 계산을 실행합니다.
+- **정지** : 실행 중인 계산을 중단합니다(계산 중에만 표시).
+- **실시간 시뮬레이션** : 체크하면 결정을 회전할 때마다 즉시 재계산합니다(STEM 모드에서는 숨겨짐).
+- **사전 설정** : TEM 결상 조건을 저장하고 불러오는 사전 설정 창을 표시/숨김 전환합니다.
 
 ---
 
 ## 파일 메뉴
 
+![파일 메뉴](../../assets/cap-ko-auto/FormImageSimulator.menuStrip1.fileToolStripMenuItem.png)
 
-### 도움말 메뉴
+- **이미지 저장** : **이미지로 (PNG 형식)**, **이미지로 (TIFF 형식)**, **메타파일로 (EMF)** 중 하나로 저장합니다. **연속 이미지 모드에서 개별 저장**은 연속 계산의 이미지를 한 장씩 따로 저장합니다.
+- **이미지 복사** : **이미지로** 또는 **메타파일로 (EMF)** 클립보드에 복사합니다.
+- **기호 겹쳐 인쇄** : 단위 격자, 레이블, 축척 막대를 저장 이미지에 합쳐 넣습니다.
+- **TEM 파라미터 불러오기** / **TEM 파라미터 저장** : 광학 조건(가속 전압, 수차 등)을 파일에 저장하고 복원합니다.
 
+## 도움말 메뉴
 
----
+![도움말 메뉴](../../assets/cap-ko-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
-## Image mode / Sample
-
-![이미지 모드](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
-
-HRTEM, Potential 또는 STEM.<div style="clear: both;"></div>
-
-![시료](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
-시료 두께를 설정합니다.<div style="clear: both;"></div>
-
-## Optical property { style="clear: both" }
-
-### TEM conditions
-
-![TEM 조건](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
-
-가속 전압, 디포커스(Scherzer 표시).
-
-#### Acc. voltage
-
-전자 현미경의 가속 전압. 이 값을 변경하면 상대론적으로 보정된 파장(필드 옆에 표시)이 갱신되며, **Cs**와 함께 아래에 표시되는 권장 **Scherzer 디포커스** 값도 갱신됩니다.
-
-#### Defocus
-
-대물렌즈의 디포커스 값. Scherzer 디포커스(약위상물체 근사에서 위상 대비 전달을 최대화하는 값)가 참조용으로 아래에 표시됩니다.
-
-### Inherent property (HRTEM optical aberrations)
-
-렌즈 함수 계산에 사용되는 현미경 고유의 수차 파라미터.
-
-- **Cs** — 구면 수차 계수.
-- **Cc** — 색 수차 계수.
-- **β** — 조명 반각(유한 광원 효과).
-- **ΔE** — 전자 에너지 변동의 1/e 폭.
-
-### Lens function
-
-렌즈 함수의 그래프. *u*의 상한을 조정하면 그리기 범위가 변경됩니다.
-
-- **sin[χ(u)]** — 위상 대비 전달 함수(PCTF).
-- **E_s(u)** — 공간 가간섭성 포락선 함수.
-- **E_c(u)** — 시간 가간섭성 포락선 함수.
-
-### Objective aperture (HRTEM option)
-
-![대물 조리개 (HRTEM 옵션)](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
-
-Cs, Cc, beta, delta-E, PCTF, 공간/시간 가간섭성 포락선, 대물 조리개.
-
-#### Size
-
-대물 조리개 크기(mrad). 조리개를 제거하려면 **Open aperture**를 선택하십시오. 블로흐파 계산에 포함되는 회절 점의 개수는 조리개에 따라 달라지며, 최댓값은 **Simulation property**의 **Max Bloch waves** 값으로 제한됩니다.
-
-#### Shift
-
-조리개의 수평 변위(mrad) — HRTEM에서 오프셋된 대물 조리개를 모방하는 데 사용됩니다.
-
-#### Spot info
-
-조리개를 통과하는 반사에 대한 상세 점 목록(강도, 복소 진폭 등)을 엽니다. 비교를 위해 회절 시뮬레이터도 함께 열려 있을 때 편리합니다.
-
-### STEM options (optical)
-
-![STEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
-
-#### Convergence semi-angle
-
-수렴 프로브의 반각(mrad). STEM 프로브의 크기와 시뮬레이션된 이미지의 공간 해상도를 제어합니다.
-
-#### Detector geometry
-
-환형 검출기의 내부/외부 수집각(mrad). BF(작은 내각), ABF, LAADF, HAADF(큰 내각) 중에서 선택하십시오.
-
-#### Scan area / step
-
-STEM 이미지의 스캔 시야와 픽셀 크기.
+- **HRTEM 시뮬레이션의 기본 개념** : HRTEM 이미지 형성에 대한 설명([부록 A3.2](../appendix/a3-bloch-wave/hrtem.md))을 엽니다.
+- **계산 라이브러리** : 계산 라이브러리를 선택합니다 — **Native code**(빠른 C++/Eigen) 또는 **Managed code**(.NET). 보통은 Native 쪽이 더 빠릅니다.
 
 ---
 
-## Simulation property
-
-### HRTEM options
-
-![HRTEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
-
-Max Bloch waves, 이미지 픽셀/해상도, 부분 가간섭성(quasi-coherent / TCC), Single/Serial 모드.
-
-#### Max Bloch waves
-
-동역학적 계산에 사용되는 블로흐파의 최대 개수. 이 값을 늘리면 정확도가 향상되지만 *O*(*N*³)의 고유값 풀이 시간이 늘어납니다.
-
-#### Image property (pixels & resolution)
-
-시뮬레이션된 이미지의 픽셀 치수와 샘플링 해상도. 해상도가 높을수록 더 세밀한 무늬 패턴을 얻지만 슬라이스당 FFT 시간은 비례하여 길어집니다.
-
-#### Partial-coherent model
-
-모든 입사빔 방향의 기여를 결합할 때 파동 간섭을 어떻게 처리할지를 정합니다.
-
-- **Quasi-coherent** — 위상 대비 전달 함수에 공간 및 시간 가간섭성 포락선을 곱하는 빠르고 근사적인 모델.
-- **Transmission cross coefficient (TCC)** — 전체 투과 교차 계수에 걸쳐 적분하는 더 정확한 모델. 더 느리지만 선형 결상 영역에서 정확합니다.
-
-[부록 A3.2 — HRTEM 결상](../appendix/a3-bloch-wave/hrtem.md)을 참조하십시오.
-
-#### Single / Serial mode
-
-- **Single image** — **Sample property**에서 설정한 두께와 **Optical property**에서 설정한 디포커스로 단일 이미지를 시뮬레이션합니다.
-- **Serial image** — 각각에 대한 **Start / Step / Num**에 따라 두께 × 디포커스 행렬을 생성합니다. 실험 이미지와 가장 잘 일치하는 조건을 찾는 데 유용합니다.
-
-### STEM options (simulation)
-
-![STEM 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
-
-- **Bloch wave count** — HRTEM에서와 동일한 역할이며, 프로브 위치마다 적용됩니다.
-- **Angular resolution** — 프로브 방향 적분에서의 표본점 개수.
-- **TDS treatment** — 온도 인자 *B*를 통해 열 확산 산란을 포함할지 여부. LAADF/HAADF에 필요합니다.
-
-### Potential options
-
-![퍼텐셜 옵션](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
-
-**Image mode = Potential**일 때 표시됩니다.
-
-- **Target potential** — **U_g**(탄성) 또는 **U′_g**(흡수 / TDS)를 선택합니다.
-- **Display method** — **Magnitude and phase** 또는 **Real and imaginary part**.
-
-### Image properties
-
-![이미지 속성](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
-
-### Diffracted waves
-
-![회절파](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
-
----
-
-## Simulate
-
-![Simulation actions](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelSimulationActions.png)
-
----
-
-## Display settings
-
-### Adjust
-
-![조정](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
-
-최소/최대 밝기, 색상 척도, 가우시안 흐림.
-
-### Normalization
-
-![정규화](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxNormalization.png)
-
-### Display
-
-![표시](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxDisplay.png)
-
-레이블(두께/디포커스), 축척 막대, 단위 격자 오버레이.
-
-### STEM image
-
-![STEM 이미지](../../assets/cap-ko-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
-
----
-
-## STEM 시뮬레이션
-
-계산은 수렴각, 블로흐파 개수, 각 해상도에 따라 달라집니다.
-
-| 검출기 | 기여 |
-|----------|-------------|
-| BF, ABF | 탄성 |
-| LAADF, HAADF | 비탄성 (TDS) |
-
-> TDS를 위해 온도 인자를 0이 아닌 값으로 설정하십시오(확실하지 않으면 B = 0.5 Å²). HAADF 강도는 $\propto Z^2$.
-
-![STEM 시뮬레이션 비교: Dr. Probe 대 ReciPro](../../assets/references/STEM_DrProbe_comparison.png)
-
-더 자세한 보고서는 PDF로 제공됩니다: [Dr. Probe GUI (v1.10)와 ReciPro (v4.854)의 STEM 시뮬레이션 비교](https://github.com/seto77/ReciPro/files/10976084/ComparisonSTEMsimulations.pdf). 자세한 내용은 [STEM 시뮬레이션](2-stem-simulation.md)을 참조하십시오.
-
----
-
-## 관련 항목
+## 함께 보기
 
 - [HRTEM 시뮬레이션](1-hrtem-simulation.md)
 - [STEM 시뮬레이션](2-stem-simulation.md)

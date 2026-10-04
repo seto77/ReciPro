@@ -53,15 +53,16 @@ Se è la prima volta che usi ReciPro, segui questi passaggi:
 
 | Voce di menu | Descrizione |
 |-----------|-------------|
-| Read crystal list (as new list) | Carica un file di elenco cristalli (*.xml) sostituendo l'elenco corrente |
-| Read crystal list (and add) | Aggiunge all'elenco corrente |
-| Read initial crystal list | Ricarica l'elenco cristalli predefinito |
-| Save crystal list | Salva l'elenco cristalli corrente |
-| Export selected crystal to CIF | Salva in formato CIF |
-| Clear crystal list | Rimuove tutti i cristalli |
-| Exit | Chiude l'applicazione |
+| Carica elenco cristalli (sostituisci elenco attuale) | Carica un file di elenco cristalli (`*.xml`) sostituendo l'elenco corrente |
+| Carica elenco cristalli (aggiungi all'elenco attuale) | Carica un file di elenco cristalli e lo aggiunge all'elenco corrente |
+| Ripristina l'elenco cristalli iniziale | Ricarica l'elenco cristalli fornito con ReciPro |
+| Importa cristallo da file CIF o AMC | Carica un singolo cristallo da un file CIF / AMC |
+| Salva elenco cristalli | Salva l'elenco cristalli corrente |
+| Esporta il cristallo selezionato come file CIF | Salva il cristallo selezionato in formato CIF |
+| Cancella tutti i cristalli | Rimuove tutti i cristalli dall'elenco |
+| Esci | Chiude l'applicazione |
 
-### Option
+### Opzioni
 
 
 | Voce di menu | Descrizione |
@@ -79,23 +80,23 @@ Se è la prima volta che usi ReciPro, segui questi passaggi:
 | Cattura componenti GUI... | Strumento per sviluppatori per salvare screenshot della GUI |
 | Funzione di diffrazione da polveri (in sviluppo) | Abilita la finestra di diffrazione policristallina (polveri) |
 
-### Help
+### Guida
 
 | Voce di menu | Descrizione |
 |-----------|-------------|
-| Program updates | Verifica se è disponibile una nuova versione di ReciPro e la installa |
-| Hint | Mostra suggerimenti d'uso (deprecato) |
-| Version history | Apre la finestra di dialogo della cronologia delle versioni |
-| License | Mostra la licenza MIT |
-| GitHub page | Apre il repository di ReciPro nel browser |
-| Report bugs, requests, or comments | Apre la pagina GitHub Issues |
-| Help (Web) | Apre il manuale online su GitHub Pages, nella pagina corrispondente alla lingua dell'interfaccia. |
+| Controlla aggiornamenti | Verifica se è disponibile una nuova versione di ReciPro e la installa |
+| Suggerimenti | Mostra suggerimenti d'uso (deprecato) |
+| Cronologia delle versioni | Apre la finestra di dialogo della cronologia delle versioni |
+| Licenza | Mostra la licenza MIT |
+| Repository GitHub | Apre il repository di ReciPro nel browser |
+| Segnala errori, richieste o commenti | Apre la pagina GitHub Issues |
+| Guida (Web) | Apre il manuale online su GitHub Pages, nella pagina corrispondente alla lingua dell'interfaccia |
 
 La lingua dell'interfaccia si cambia dal menu separato **Lingua** (richiede il riavvio).
 
-### Language
+### Lingua
 
-Cambia la lingua dell'interfaccia. Sono disponibili undici lingue — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 e 한국어 — ciascuna mostrata nella propria scrittura. La modifica ha effetto dopo il riavvio di ReciPro. Il manuale online segue la stessa impostazione.
+Cambia la lingua dell'interfaccia. Sono disponibili undici lingue — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 e 한국어 — ciascuna mostrata nella propria scrittura. La modifica ha effetto dopo il riavvio di ReciPro. Il manuale online segue la stessa impostazione, quindi <kbd>F1</kbd> e **Guida ▸ Guida (Web)** aprono la pagina nella lingua scelta.
 
 ### Macro
 
@@ -118,7 +119,7 @@ Mostra l'orientazione del cristallo. Trascina per ruotare. Assi: rosso = *a*, ve
 Ripristina lo stato iniziale: asse *c* perpendicolare allo schermo, asse *b* verso l'alto.
 
 ### Asse di zona
-Mostra l'asse di zona più vicino alla normale dello schermo (ad es. *u*+*v*+*w* < 30).
+Mostra l'asse di zona [*uvw*] più vicino alla normale dello schermo, cercato tra gli indici i cui moduli restano entro il limite indicato nella casella max-UVW (fare doppio clic sull'etichetta **Current Index** per mostrare o nascondere tale casella).
 
 ### Angoli di Eulero (Z-X-Z)
 Imposta l'orientazione del cristallo con gli angoli di Eulero **Z–X–Z**:
@@ -178,7 +179,7 @@ Vedi [Geometria di rotazione](4-rotation-geometry.md) e [Appendice A1. Sistemi d
 
 ## Informazioni sul cristallo
 
-Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia file CIF/AMC per caricare una struttura. Questo controllo è condiviso da ReciPro, PDIndexer e CSmanager, ma le schede e le funzioni mostrate differiscono per ciascuna applicazione. ReciPro mostra le schede Basic Info, Atom e Reference (le schede EOS, Elasticity e altre sono per le altre applicazioni e non vengono mostrate in ReciPro).
+Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia file CIF/AMC per caricare una struttura. Questo controllo è condiviso da ReciPro, PDIndexer e CSManager, ma le schede e le funzioni mostrate differiscono per ciascuna applicazione. ReciPro mostra le schede Basic Info, Atom e Reference (le schede EOS, Elasticity e altre sono per le altre applicazioni e non vengono mostrate in ReciPro).
 
 > **Importante**: Premi **Add** o **Replace** per salvare le modifiche.
 
@@ -231,7 +232,7 @@ Fai clic con il tasto destro su una riga di atomo e scegli **Mostra posizioni at
 | Radiazione | Sorgente / impostazione |
 |-----------|------|
 | X-ray | Fattori di diffusione inclusa la valenza ionica (International Tables for Crystallography, Vol. C). |
-| Electron | Fattori di diffusione elettronica (Peng 1998, Acta Cryst. A54, 481–485). |
+| Electron | Fattori di diffusione elettronica — atomi neutri da Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; ioni da Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutron | Lunghezze di diffusione neutronica. Scegli **Natural isotope abundance** o **Custom isotope abundance** (una composizione isotopica arbitraria). |
 
 ### Scheda Reference
@@ -259,14 +260,14 @@ Clic destro su un'area vuota del controllo per queste azioni principali:
 
 ## Pannello Funzioni {#functions}
 
-La barra verticale di pulsanti a destra avvia le finestre di analisi e simulazione (vedi la tabella [Funzioni](#functions) qui sotto).
+La barra verticale di pulsanti a destra avvia le finestre di analisi e simulazione elencate di seguito.
 
 ![Pannello Funzioni](../assets/cap-it-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 | Pulsante | Descrizione | Dettagli |
 |--------|-------------|---------|
 | Crystal Database | Cercare e importare cristalli dai database integrati / online | [1. Database dei cristalli](1-crystal-database.md) |
-| Symmetry Information | Informazioni sul gruppo spaziale e diagrammi di simmetria ITC Vol. A | [2. Informazioni di simmetria](2-symmetry-information.md) |
+| Symmetry Information | Informazioni sul gruppo spaziale e diagrammi di simmetria delle *International Tables* Vol. A | [2. Informazioni di simmetria](2-symmetry-information.md) |
 | Beam Interaction | Interazione fascio–cristallo: riflessioni, attenuazione, fattori di diffusione, fluorescenza | [3. Interazione del fascio](3-beam-interaction.md) |
 | Rotation Geometry | Matrice di rotazione 3D / angoli del goniometro | [4. Geometria di rotazione](4-rotation-geometry.md) |
 | Structure Viewer | Struttura cristallina 3D | [5. Visualizzatore struttura](5-structure-viewer.md) |

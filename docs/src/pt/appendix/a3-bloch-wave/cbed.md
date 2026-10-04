@@ -1,6 +1,6 @@
 # Cálculo CBED
 
-CBED (difração de elétrons por feixe convergente) aplica o [núcleo dinâmico](calculation.md) a muitas direções do feixe incidente e, em seguida, dispõe os resultados em discos de difração. SAED tem uma única direção de incidência; CBED trata cada ponto dentro da abertura objetiva como uma **onda plana incidente parcial** e resolve o problema de ondas de Bloch para cada um deles.
+CBED (difração de elétrons por feixe convergente) aplica o [núcleo dinâmico](calculation.md) a muitas direções do feixe incidente e, em seguida, dispõe os resultados em discos de difração. SAED tem uma única direção de incidência; CBED trata cada ponto dentro da abertura formadora da sonda (condensadora) como uma **onda plana incidente parcial** e resolve o problema de ondas de Bloch para cada um deles.
 
 ---
 
@@ -13,7 +13,7 @@ $$\psi_{\mathrm{in}}(\mathbf R,0)=\sum_{\mathbf K\in\mathrm{aperture}} A(\mathbf
 \exp[-i\chi(\mathbf K)]\,
 \exp(2\pi i\,\mathbf K\cdot\mathbf R)$$
 
-Aqui $\mathbf K$ é a componente do vetor de onda incidente paralela à superfície da amostra. Para uma abertura circular ideal com semiângulo de convergência $\alpha$ e comprimento de onda do elétron $\lambda$,
+Aqui $\mathbf K$ é a componente do vetor de onda incidente paralela à superfície da amostra. Para uma abertura formadora da sonda circular ideal com semiângulo de convergência $\alpha$ e comprimento de onda do elétron $\lambda$,
 
 $$A(\mathbf K)=
 \begin{cases}

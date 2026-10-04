@@ -130,6 +130,7 @@ Os ângulos de Euler não são únicos nas posições de bloqueio do cardan (θ 
 | `Thickness` | double | Espessura da amostra (nm) |
 | `NumberOfDiffractedWaves` | int | Número de ondas de Bloch |
 | `CameraLength2` | double | Comprimento de câmera (mm) |
+| `ExcitationError` | double | Raio do spot (nm⁻¹): no modo cinemático/de erro de excitação, `SpotInfo()` exporta as reflexões com \|Sg\| dentro deste valor |
 | `SkipRendering` | bool | Ignorar a renderização no processamento em lote |
 
 ### Modo de feixe
