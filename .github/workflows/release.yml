@@ -829,8 +829,11 @@ jobs:
             $footnote = @("", "&dagger; Arm64 files are attached after on-device verification and may appear slightly later than the x64 files.")
           }
 
+          # 261005Cl 追加: 各版の詳細は Pages の Release notes の頁に書き、Release の本文は 1 行の要約 + この link + Download 表に保つ (作者指示)
           $notes = @(
             $historyLine
+            ""
+            "Details of this and earlier versions: [Release notes](https://seto77.github.io/ReciPro/release-notes/)"
             ""
             "| Download | Description |"
             "|---|---|"

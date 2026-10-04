@@ -118,6 +118,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. 空間群記号と対称性模式図
             A4.2. Group-subgroup relations: A4.2. 群・部分群の関係
             Troubleshooting: トラブルシューティング
+            Release notes: 更新履歴
         # 260622Cl: Phase 1 = de パイロット。nav_translations は GUI の de.resx 実ラベルに用語を揃える
         #   (Stereonetz/Rotationsgeometrie/Strahl-Wechselwirkung/Strukturansicht/Beugungssimulator/
         #    HRTEM-STEM-Simulator/Makro/Kristalldatenbank 等)。固有名 (Spot ID v1/v2) と略語
@@ -173,6 +174,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Raumgruppensymbole und Symmetriediagramme
             A4.2. Group-subgroup relations: A4.2. Gruppe-Untergruppe-Beziehungen
             Troubleshooting: Fehlerbehebung
+            Release notes: Versionshinweise
         # 260622Cl: 波A 先頭 = fr。nav_translations は GUI の fr.resx 実ラベルに用語を揃える
         #   (Stéréonet/Géométrie de rotation/Interaction du faisceau/Visualiseur de structure/
         #    Simulateur de diffraction/Simulateur HRTEM-STEM/Macro/Base de données de cristaux 等)。
@@ -228,6 +230,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Symboles des groupes d'espace et diagrammes de symétrie
             A4.2. Group-subgroup relations: A4.2. Relations groupe–sous-groupe
             Troubleshooting: Dépannage
+            Release notes: Notes de version
         # 260622Cl: 波A es。nav_translations は GUI es.resx 実ラベルに一致
         #   (Estereograma/Geometría de rotación/Interacción del haz/Visor de estructura/
         #    Simulador de difracción/Simulador HRTEM-STEM/Macro/Base de datos de cristales 等)。
@@ -282,6 +285,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Símbolos de grupos espaciales y diagramas de simetría
             A4.2. Group-subgroup relations: A4.2. Relaciones grupo-subgrupo
             Troubleshooting: Solución de problemas
+            Release notes: Notas de la versión
         # 260622Cl: 波A it。nav_translations は GUI it.resx 実ラベルに一致
         #   (Stereogramma/Geometria di rotazione/Interazione del fascio/Visualizzatore struttura/
         #    Simulatore di diffrazione/Simulatore HRTEM-STEM/Macro/Database dei cristalli 等)。
@@ -336,6 +340,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Simboli dei gruppi spaziali e diagrammi di simmetria
             A4.2. Group-subgroup relations: A4.2. Relazioni gruppo-sottogruppo
             Troubleshooting: Risoluzione dei problemi
+            Release notes: Note di rilascio
         # 260622Cl: 波A ru (Cyrillic)。nav_translations は GUI ru.resx 実ラベルに一致
         #   (Стереосеть/Геометрия вращения/Взаимодействие пучка/Просмотр структуры/
         #    Симулятор дифракции/Симулятор HRTEM-STEM/Макрос/База данных кристаллов 等)。
@@ -390,6 +395,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Символы пространственных групп и диаграммы симметрии
             A4.2. Group-subgroup relations: A4.2. Отношения группа–подгруппа
             Troubleshooting: Устранение неполадок
+            Release notes: Примечания к выпуску
         # 260622Cl: 波B zh-Hans (簡体字)。partial alias = overrides/partials/languages/zh-Hans.html (Phase0設置済)。
         #   lunr は zh-Hans 非対応 → search から自動除外 (情報ログ)。nav は GUI zh-Hans.resx 実ラベルに一致
         #   (极射赤平投影/旋转几何/射束相互作用/结构查看器/衍射模拟器/HRTEM-STEM 模拟器/宏/晶体数据库 等)。
@@ -444,6 +450,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. 空间群符号与对称性示意图
             A4.2. Group-subgroup relations: A4.2. 群-子群关系
             Troubleshooting: 故障排除
+            Release notes: 版本说明
         # 260622Cl: 波B zh-Hant (繁体字・台湾)。Material 内蔵 zh-Hant partial で動作 (alias 不要)。lunr 非対応で検索除外。
         #   ★zh-Hans の単純変換でなく GUI zh-Hant.resx の台湾用語に一致 (繞射/極網/巨集/檢視器/資訊/視窗/交互作用 等)。
         - locale: zh-Hant
@@ -497,6 +504,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. 空間群符號與對稱性示意圖
             A4.2. Group-subgroup relations: A4.2. 群與子群的關係
             Troubleshooting: 疑難排解
+            Release notes: 版本說明
         # 260622Cl: 波B ko。Material 内蔵 ko partial。lunr 非対応で検索除外。260623Cl Released=true(作者判断・要ネイティブ校閲)。
         #   IUCr 未収録のため用語は GUI ko.resx 実ラベル拠 (회절/스테레오넷/회전 기하학/구조 뷰어/매크로/결정 목록 等)。
         - locale: ko
@@ -550,6 +558,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. 공간군 기호와 대칭 다이어그램
             A4.2. Group-subgroup relations: A4.2. 군-부분군 관계
             Troubleshooting: 문제 해결
+            Release notes: 릴리스 노트
         # 260622Cl: pt (pt-BR 寄り綴り要ネイティブ校閲)。260623Cl Released=true(作者判断)。nav は GUI pt.resx 実ラベルに一致
         #   (Estereonete/Geometria de rotação/Interação do feixe/Visualizador de estrutura/Simulador de difração 等)。
         - locale: pt
@@ -603,6 +612,7 @@ plugins:
             A4.1. Space-group symbols and symmetry diagrams: A4.1. Símbolos de grupos espaciais e diagramas de simetria
             A4.2. Group-subgroup relations: A4.2. Relações grupo-subgrupo
             Troubleshooting: Solução de problemas
+            Release notes: Notas de versão
   # 260622Cl: 日本語ページのリネーム/移動履歴の redirect。JA は /ja/ 配下のままなので value (ja/新.md) が
   #   正しいルート URL に解決される。英語 (/en/) 系は legacy_en_redirects.py フックが担当するため入れない。
   #   i18n の後に置くこと (i18n 適用後の File URL を解決させるため)。
@@ -741,3 +751,5 @@ nav:
           - A4.1. Space-group symbols and symmetry diagrams: appendix/a4-symmetry-space-groups/symbols-and-diagrams.md
           - A4.2. Group-subgroup relations: appendix/a4-symmetry-space-groups/group-subgroup-relations.md
   - Troubleshooting: troubleshooting.md
+  # 261005Cl 追加: 各版の詳細 (GitHub の Release ページは 1 行の要約とダウンロードだけにする)
+  - Release notes: release-notes.md
