@@ -62,7 +62,7 @@ ReciPro는 번들된 **xraylib** 라이브러리로 현재 에너지에서 $f'$�
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-전인자 $C_\text{MB}$는 기본 상수로 구성되며, 단위계 및 $s$를 쓰는지 $Q$를 쓰는지에 따라 달라집니다. 탄성 산란(구조 인자, 회절 강도)에서는 ReciPro가 이 관계를 직접 계산하지 않고 아래의 적합된 Peng / Kirkland / 8-가우스 형식을 사용합니다. 다만 **흡수(TDS) 퍼텐셜 계산에서는, 적합 형식이 무너지는 높은 $s$ 영역($s \gtrsim 2.5$ Å⁻¹)에서 이 식을 Waasmaier–Kirfel X선 인자와 함께 직접 계산합니다**([부록 A3의 흡수 퍼텐셜](../a3-bloch-wave/calculation.md) 참조). 상수와 함께 풀어 쓰면($s$와 $f_e$가 Å 단위일 때),
+전인자 $C_\text{MB}$는 기본 상수로 구성되며, 단위계 및 $s$를 쓰는지 $Q$를 쓰는지에 따라 달라집니다. 탄성 산란(구조 인자, 회절 강도)에서는 ReciPro가 이 관계를 직접 계산하지 않고 아래의 적합된 Peng / Kirkland / 8-가우스 형식을 사용합니다. 다만 **흡수(TDS) 퍼텐셜 계산에서는, 적합 형식이 무너지는 높은 $s$ 영역(중성 원자 $Z = 1\text{–}86$에서는 Temari 표의 범위를 넘는 $s > 6$ Å⁻¹, 이온 엔트리와 $Z = 87\text{–}98$에서는 $s \gtrsim 2.5$ Å⁻¹)에서 이 식을 Waasmaier–Kirfel X선 인자와 함께 직접 계산합니다**([부록 A3의 흡수 퍼텐셜](../a3-bloch-wave/calculation.md) 참조). 상수와 함께 풀어 쓰면($s$와 $f_e$가 Å 단위일 때),
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 

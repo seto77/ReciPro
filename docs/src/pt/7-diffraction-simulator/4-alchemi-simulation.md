@@ -33,8 +33,10 @@ $$
 $$
 
 - $\sigma_c$ : seção de choque total de ionização, modelo **Bote–Salvat**
-- $F_c(s)$ : fator de forma de ionização normalizado, tabelas **DHFS** geradas internamente (a mesma base de dados de [Interação do feixe](../3-beam-interaction.md) e [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
+- $F_c(s)$ : fator de forma de ionização normalizado, tabelas DHFS geradas pelo **Temari** (as mesmas tabelas do [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
 - $e^{-M_a(G)}$ : fator de Debye-Waller (ADPs anisotrópicos são suportados)
+
+Para uma série de linhas de raios X, $\sigma_c$ é $\sum_i B_i \sigma_i$ sobre suas subcamadas $i$ e $F_c$ é a média de seus fatores de forma ponderada por $B_i \sigma_i$, em que $B_i$ é o rendimento de fluorescência × a ramificação de linhas após as cascatas Coster–Kronig e radiativas (xraylib 4.2.1).
 
 Corresponde à **aproximação de fator de forma local** do ICSC (Oxley & Allen 2003). A MDFF de dois momentos não é usada.
 
@@ -51,15 +53,15 @@ Desmarcar **Incluir a componente descanalizada** na caixa **Cálculo** elimina e
 
 ### Grandeza de saída
 
-A grandeza primária é o **número de lacunas de camada interna geradas por elétron incidente**. **A conversão em fótons de raios X (rendimento de fluorescência e ramificação de linhas), a autoabsorção de raios X na amostra e a eficiência e o ângulo sólido do detector NÃO são aplicados.**
+Para um canal de camada, a grandeza primária é o **número de lacunas de camada interna geradas por elétron incidente**; a conversão em fótons de raios X (rendimento de fluorescência e ramificação de linhas) não é aplicada. Para uma série de linhas de raios X (Kα, Kβ, Lα, Lβ, Mα), listada depois das camadas em **Canais de ionização** e desmarcada por padrão, é o **número de fótons de raios X gerados por elétron incidente** (em todas as direções): aplicam-se os rendimentos de fluorescência, as cascatas Coster–Kronig e radiativas e a ramificação de linhas do xraylib 4.2.1, e a cascata Auger não é incluída. **A autoabsorção de raios X na amostra e a eficiência e o ângulo sólido do detector NÃO são aplicados em NENHUM dos dois casos.**
 
-⚠ **Lacunas não são contagens.** Entre esta grandeza e uma intensidade EDX medida há mais três etapas — atômica, da amostra e instrumental —, nenhuma delas executada pelo ReciPro.
+⚠ **Nem lacunas nem fótons gerados são contagens.** Entre as lacunas e uma intensidade EDX medida há mais três etapas — atômica, da amostra e instrumental. O ReciPro não executa nenhuma delas para um canal de camada e, para uma série de linhas, apenas a etapa 1 (sem a cascata Auger).
 
 1. **lacuna → fóton** : rendimento de fluorescência e ramificação de linhas da camada
 2. **fóton → fóton que sai da amostra** : autoabsorção de raios X, que depende da **profundidade em que o fóton foi criado** e do ângulo de saída
 3. **fóton → contagem** : eficiência do detector, ângulo sólido e o processamento do espectro
 
-A etapa 2, em particular, não se recupera depois multiplicando a curva pronta por um único fator de absorção: seria preciso resolver antes o rendimento em profundidade. Comparar estas curvas com intensidades medidas, fatores k ou composições exige, portanto, executar essas etapas fora do ReciPro.
+A etapa 2, em particular, não se recupera depois multiplicando a curva pronta por um único fator de absorção: seria preciso resolver antes o rendimento em profundidade. Comparar estas curvas com intensidades medidas, fatores k ou composições exige, portanto, executar fora do ReciPro as etapas que o ReciPro não executa: as três para um canal de camada e, para uma série de linhas, as etapas 2 e 3 e a cascata Auger da etapa 1.
 
 Repare em quais delas sobrevivem a uma normalização. As etapas 1 e 3, e qualquer absorção tratada como constante, são **multiplicativas e independentes da orientação**, de modo que somem na normalização ICP (média da varredura) — mesmo para duas linhas de energias muito diferentes. **A autoabsorção, em geral, não**: a canalização muda a distribuição em profundidade em que as lacunas são criadas, de modo que a fração absorvida varia ao longo da varredura e sobrevive à normalização. É contra esse resíduo que escolher linhas de energia parecida ajuda.
 
@@ -129,7 +131,7 @@ Ao terminar o cálculo, é desenhada uma curva por par sítio × canal. A legend
 | **Condições de Bragg** | Desenha linhas verticais em $\theta = n\,\theta_B$ |
 | **Exportar CSV** | Escreve as curvas brutas de cada orientação, espessura, sítio e canal em um arquivo CSV ([abaixo](#exportação-csv)) |
 
-⚠ **A normalização é apenas uma transformação de exibição.** A grandeza armazenada é sempre o número de lacunas geradas por elétron incidente, e **Máximo = 1 é somente para exibição** — não deve ser usado como referência de ICP.
+⚠ **A normalização é apenas uma transformação de exibição.** A grandeza armazenada é o número de lacunas geradas por elétron incidente para um canal de camada e o número de fótons de raios X gerados por elétron incidente para uma série de linhas, e **Máximo = 1 é somente para exibição** — não deve ser usado como referência de ICP.
 
 ### Contraste e correlação
 
@@ -254,7 +256,7 @@ A energia da linha, por si só, não certifica um resultado: entram a extensão 
 
 - **Somente aproximação de traçador** : a superposição linear das respostas de sítio só vale no limite diluído em que o dopante não perturba o campo de onda elástico. A VCA a concentração finita está fora do escopo da v1
 - **Aproximação de fator de forma local** : $\mu$ é função apenas de $G = \mathbf{g}_h - \mathbf{g}_g$, e não da MDFF de dois momentos (Modelo A de OAR 1999). A aproximação é mais fraca para camadas K de elementos leves e bordas de baixa energia — veja [acima](#local-approximation)
-- **Lacunas, não fótons de raios X** : o rendimento de fluorescência e a ramificação de linhas não são aplicados
+- **Lacunas para os canais de camada, fótons de raios X gerados para as séries de linhas** : o rendimento de fluorescência e a ramificação de linhas são aplicados somente às séries de linhas, sem a cascata Auger
 - **O limite inferior da tensão de aceleração é 80 kV** : é a menor tensão em que $s = 16\ \text{Å}^{-1}$ pode ser garantido, não um limiar de recusa
 
 ---

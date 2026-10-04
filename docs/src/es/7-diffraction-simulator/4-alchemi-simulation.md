@@ -33,8 +33,10 @@ $$
 $$
 
 - $\sigma_c$ : sección eficaz total de ionización, modelo **Bote–Salvat**
-- $F_c(s)$ : factor de forma de ionización normalizado, tablas **DHFS** generadas internamente (la misma base de datos que [Interacción del haz](../3-beam-interaction.md) y [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
+- $F_c(s)$ : factor de forma de ionización normalizado, tablas DHFS generadas por **Temari** (las mismas tablas que [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
 - $e^{-M_a(G)}$ : factor de Debye-Waller (se admiten ADP anisótropos)
+
+Para una serie de líneas de rayos X, $\sigma_c$ es $\sum_i B_i \sigma_i$ sobre sus subcapas $i$ y $F_c$ es la media de sus factores de forma ponderada por $B_i \sigma_i$, donde $B_i$ es el rendimiento de fluorescencia × la ramificación de líneas tras las cascadas Coster–Kronig y radiativas (xraylib 4.2.1).
 
 Corresponde a la **aproximación de factor de forma local** de ICSC (Oxley & Allen 2003). No se usa la MDFF de dos momentos.
 
@@ -51,15 +53,15 @@ Desmarcar **Incluir la componente descanalizada** en el cuadro **Cálculo** elim
 
 ### Magnitud de salida
 
-La magnitud primaria es el **número de vacantes de capa interna generadas por electrón incidente**. **NO se aplican la conversión a fotones de rayos X (rendimiento de fluorescencia y ramificación de líneas), la autoabsorción de rayos X en la muestra ni la eficiencia y el ángulo sólido del detector.**
+Para un canal de capa, la magnitud primaria es el **número de vacantes de capa interna generadas por electrón incidente**; no se aplica la conversión a fotones de rayos X (rendimiento de fluorescencia y ramificación de líneas). Para una serie de líneas de rayos X (Kα, Kβ, Lα, Lβ, Mα), que aparece tras las capas en **Canales de ionización** y está desmarcada de forma predeterminada, es el **número de fotones de rayos X generados por electrón incidente** (en todas las direcciones): se aplican los rendimientos de fluorescencia, las cascadas Coster–Kronig y radiativas y la ramificación de líneas de xraylib 4.2.1, y no se incluye la cascada Auger. **En NINGUNO de los dos casos se aplican la autoabsorción de rayos X en la muestra ni la eficiencia y el ángulo sólido del detector.**
 
-⚠ **Las vacantes no son cuentas.** Entre esta magnitud y una intensidad EDX medida quedan tres etapas más — atómica, de la muestra e instrumental —, ninguna de las cuales realiza ReciPro.
+⚠ **Ni las vacantes ni los fotones generados son cuentas.** Entre las vacantes y una intensidad EDX medida quedan tres etapas más — atómica, de la muestra e instrumental. ReciPro no realiza ninguna de ellas para un canal de capa, y para una serie de líneas solo la etapa 1 (sin la cascada Auger).
 
 1. **vacante → fotón** : rendimiento de fluorescencia y ramificación de líneas de la capa
 2. **fotón → fotón que sale de la muestra** : autoabsorción de rayos X, que depende de la **profundidad a la que se creó el fotón** y del ángulo de salida
 3. **fotón → cuenta** : eficiencia del detector, ángulo sólido y el procesado del espectro
 
-La etapa 2 en particular no se recupera después multiplicando la curva terminada por un único factor de absorción: habría que resolver antes el rendimiento en profundidad. Comparar estas curvas con intensidades medidas, factores k o composiciones exige por tanto realizar esas etapas fuera de ReciPro.
+La etapa 2 en particular no se recupera después multiplicando la curva terminada por un único factor de absorción: habría que resolver antes el rendimiento en profundidad. Comparar estas curvas con intensidades medidas, factores k o composiciones exige por tanto realizar fuera de ReciPro las etapas que ReciPro no realiza: las tres para un canal de capa y, para una serie de líneas, las etapas 2 y 3 y la cascada Auger de la etapa 1.
 
 Fíjese en cuáles sobreviven a una normalización. Las etapas 1 y 3, y cualquier absorción tratada como constante, son **multiplicativas e independientes de la orientación**, así que desaparecen en la normalización ICP (media del barrido), incluso para dos líneas de energías muy distintas. **La autoabsorción, en general, no**: la canalización cambia la distribución en profundidad en que se crean las vacantes, de modo que la fracción absorbida varía a lo largo del barrido y sobrevive a la normalización. Es contra ese residuo que ayuda elegir líneas de energía parecida.
 
@@ -129,7 +131,7 @@ Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leye
 | **Condiciones de Bragg** | Dibuja líneas verticales en $\theta = n\,\theta_B$ |
 | **Exportar CSV** | Escribe las curvas brutas de cada orientación, espesor, sitio y canal en un archivo CSV ([abajo](#exportación-csv)) |
 
-⚠ **La normalización es solo una transformación de visualización.** La magnitud almacenada son siempre las vacantes generadas por electrón incidente, y **Máximo = 1 es solo para visualización**: no debe usarse como referencia ICP.
+⚠ **La normalización es solo una transformación de visualización.** La magnitud almacenada son las vacantes generadas por electrón incidente para un canal de capa y los fotones de rayos X generados por electrón incidente para una serie de líneas, y **Máximo = 1 es solo para visualización**: no debe usarse como referencia ICP.
 
 ### Contraste y correlación
 
@@ -254,7 +256,7 @@ La energía de la línea por sí sola no puede certificar un resultado: influyen
 
 - **Solo aproximación de trazador** : la superposición lineal de respuestas de sitio solo vale en el límite diluido en que el dopante no perturba el campo de ondas elástico. La VCA a concentración finita queda fuera del alcance de la v1
 - **Aproximación de factor de forma local** : $\mu$ es función únicamente de $G = \mathbf{g}_h - \mathbf{g}_g$, no la MDFF de dos momentos (Modelo A de OAR 1999). La aproximación es más débil para capas K de elementos ligeros y bordes de baja energía — véase [arriba](#local-approximation)
-- **Vacantes, no fotones de rayos X** : no se aplican el rendimiento de fluorescencia ni la ramificación de líneas
+- **Vacantes para los canales de capa, fotones de rayos X generados para las series de líneas** : el rendimiento de fluorescencia y la ramificación de líneas se aplican solo a las series de líneas, sin la cascada Auger
 - **La cota inferior de la tensión de aceleración es 80 kV** : es la tensión más baja a la que puede garantizarse $s = 16\ \text{Å}^{-1}$, no un umbral de rechazo
 
 ---

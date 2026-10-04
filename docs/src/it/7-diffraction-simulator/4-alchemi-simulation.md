@@ -33,8 +33,10 @@ $$
 $$
 
 - $\sigma_c$ : sezione d'urto totale di ionizzazione, modello **Bote–Salvat**
-- $F_c(s)$ : fattore di forma di ionizzazione normalizzato, tabelle **DHFS** generate internamente (la stessa base dati di [Interazione del fascio](../3-beam-interaction.md) e [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
+- $F_c(s)$ : fattore di forma di ionizzazione normalizzato, tabelle DHFS generate da **Temari** (le stesse tabelle di [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
 - $e^{-M_a(G)}$ : fattore di Debye-Waller (sono supportati ADP anisotropi)
+
+Per una serie di righe X, $\sigma_c$ è $\sum_i B_i \sigma_i$ sui suoi sottogusci $i$ e $F_c$ è la media dei loro fattori di forma pesata con $B_i \sigma_i$, dove $B_i$ è resa di fluorescenza × ramificazione delle righe dopo le cascate Coster–Kronig e radiative (xraylib 4.2.1).
 
 Corrisponde all'**approssimazione del fattore di forma locale** di ICSC (Oxley & Allen 2003). La MDFF a due impulsi non viene usata.
 
@@ -51,15 +53,15 @@ Deselezionare **Includi la componente decanalizzata** nel riquadro **Calcolo** e
 
 ### Grandezza in uscita
 
-La grandezza primaria è il **numero di lacune di guscio interno generate per elettrone incidente**. **La conversione in fotoni X (resa di fluorescenza e ramificazione delle righe), l'autoassorbimento dei raggi X nel campione e l'efficienza e l'angolo solido del rivelatore NON sono applicati.**
+Per un canale di guscio la grandezza primaria è il **numero di lacune di guscio interno generate per elettrone incidente**; la conversione in fotoni X (resa di fluorescenza e ramificazione delle righe) non è applicata. Per una serie di righe X (Kα, Kβ, Lα, Lβ, Mα), elencata dopo i gusci in **Canali di ionizzazione** e non spuntata per impostazione predefinita, è il **numero di fotoni X generati per elettrone incidente** (in tutte le direzioni): le rese di fluorescenza, le cascate Coster–Kronig e radiative e la ramificazione delle righe di xraylib 4.2.1 sono applicate, e la cascata Auger non è inclusa. **L'autoassorbimento dei raggi X nel campione e l'efficienza e l'angolo solido del rivelatore NON sono applicati in NESSUNO dei due casi.**
 
-⚠ **Le lacune non sono conteggi.** Tra questa grandezza e un'intensità EDX misurata restano altri tre stadi — atomico, del campione e strumentale —, nessuno dei quali è eseguito da ReciPro.
+⚠ **Né le lacune né i fotoni generati sono conteggi.** Tra le lacune e un'intensità EDX misurata restano altri tre stadi — atomico, del campione e strumentale. Per un canale di guscio ReciPro non ne esegue nessuno, per una serie di righe solo lo stadio 1 (senza la cascata Auger).
 
 1. **lacuna → fotone** : resa di fluorescenza e ramificazione delle righe del guscio
 2. **fotone → fotone che esce dal campione** : autoassorbimento dei raggi X, che dipende dalla **profondità a cui il fotone è stato creato** e dall'angolo di uscita
 3. **fotone → conteggio** : efficienza del rivelatore, angolo solido ed elaborazione dello spettro
 
-In particolare lo stadio 2 non si recupera a posteriori moltiplicando la curva finita per un unico fattore di assorbimento: occorrerebbe prima risolvere la resa in profondità. Confrontare queste curve con intensità misurate, fattori k o composizioni richiede quindi di eseguire quegli stadi fuori da ReciPro.
+In particolare lo stadio 2 non si recupera a posteriori moltiplicando la curva finita per un unico fattore di assorbimento: occorrerebbe prima risolvere la resa in profondità. Confrontare queste curve con intensità misurate, fattori k o composizioni richiede quindi di eseguire fuori da ReciPro gli stadi che ReciPro non esegue: tutti e tre per un canale di guscio e, per una serie di righe, gli stadi 2 e 3 e la cascata Auger dello stadio 1.
 
 Si noti quali di essi sopravvivono a una normalizzazione. Gli stadi 1 e 3, e qualunque assorbimento trattato come costante, sono **moltiplicativi e indipendenti dall'orientazione**, quindi cadono nella normalizzazione ICP (media della scansione), anche per due righe di energia molto diversa. **L'autoassorbimento in generale no**: la canalizzazione cambia la distribuzione in profondità in cui le lacune vengono create, così la frazione assorbita varia lungo la scansione e sopravvive alla normalizzazione. È contro questo residuo che aiuta scegliere righe di energia simile.
 
@@ -129,7 +131,7 @@ Al termine del calcolo viene tracciata una curva per ogni coppia sito × canale.
 | **Condizioni di Bragg** | Traccia linee verticali a $\theta = n\,\theta_B$ |
 | **Esporta CSV** | Scrive le curve grezze per ogni orientazione, spessore, sito e canale in un file CSV ([sotto](#esportazione-csv)) |
 
-⚠ **La normalizzazione è solo una trasformazione di visualizzazione.** La grandezza memorizzata è sempre il numero di lacune generate per elettrone incidente, e **Massimo = 1 serve solo per la visualizzazione**: non va usato come riferimento ICP.
+⚠ **La normalizzazione è solo una trasformazione di visualizzazione.** La grandezza memorizzata è il numero di lacune generate per elettrone incidente per un canale di guscio e il numero di fotoni X generati per elettrone incidente per una serie di righe, e **Massimo = 1 serve solo per la visualizzazione**: non va usato come riferimento ICP.
 
 ### Contrasto e correlazione
 
@@ -254,7 +256,7 @@ L'energia della riga da sola non può certificare un risultato: entrano l'estens
 
 - **Solo approssimazione a tracciante** : la sovrapposizione lineare delle risposte di sito vale solo nel limite diluito in cui il drogante non perturba il campo d'onda elastico. La VCA a concentrazione finita è fuori dall'ambito della v1
 - **Approssimazione del fattore di forma locale** : $\mu$ è funzione del solo $G = \mathbf{g}_h - \mathbf{g}_g$, non della MDFF a due impulsi (Modello A di OAR 1999). L'approssimazione è più debole per i gusci K degli elementi leggeri e per le soglie di bassa energia — vedere [sopra](#local-approximation)
-- **Lacune, non fotoni X** : la resa di fluorescenza e la ramificazione delle righe non sono applicate
+- **Lacune per i canali di guscio, fotoni X generati per le serie di righe** : la resa di fluorescenza e la ramificazione delle righe sono applicate solo alle serie di righe, senza la cascata Auger
 - **Il limite inferiore della tensione di accelerazione è 80 kV** : è la tensione più bassa alla quale si può garantire $s = 16\ \text{Å}^{-1}$, non una soglia di rifiuto
 
 ---

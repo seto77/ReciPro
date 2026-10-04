@@ -68,4 +68,4 @@
 ## 라이선스
 ReciPro는 [MIT 라이선스](https://github.com/seto77/ReciPro/blob/master/LICENSE.md)에 따라 배포됩니다.
 
-동봉된 내각 이온화 테이블은 이 라이선스의 대상이 **아닙니다**. 별도로 CC BY 4.0 으로 공개된 데이터셋 ([DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)) 을 다시 패킹한 것으로, 전체 저작자 표시와 그 밖의 동봉 구성 요소는 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) 에 있습니다.
+동봉된 내각 이온화 테이블은 이 라이선스의 대상이 **아닙니다**. 별도로 CC BY 4.0 으로 공개된 데이터셋 ([DOI 10.5281/zenodo.22643468](https://doi.org/10.5281/zenodo.22643468)) 을 다시 패킹한 것입니다. 빔 상호작용 창에서 출처 Temari 로 쓰는 동봉된 원자 산란 인자 테이블도 이 라이선스의 대상이 **아닙니다**. 별도로 CC BY 4.0 으로 공개된 또 하나의 데이터셋 ([DOI 10.5281/zenodo.22820415](https://doi.org/10.5281/zenodo.22820415)) 을 다시 패킹한 것입니다. 전체 저작자 표시와 그 밖의 동봉 구성 요소는 [THIRD-PARTY-NOTICES.md](https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md) 에 있습니다.

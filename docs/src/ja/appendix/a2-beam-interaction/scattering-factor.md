@@ -62,7 +62,7 @@ ReciPro は同梱の **xraylib** ライブラリで現在のエネルギーで�
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-前係数 $C_\text{MB}$ は基礎物理定数からなり、単位系と、変数に $s$ と $Q$ のどちらを使うかに依存します。弾性散乱(構造因子・回折強度)では ReciPro はこの関係式を直接評価せず、以下の Peng / Kirkland / 8-Gaussian の近似形を使います。ただし **吸収ポテンシャル(TDS)の計算では、当てはめ形が崩れる高 $s$ 側($s \gtrsim 2.5$ Å⁻¹)でこの式を Waasmaier–Kirfel の X 線因子とともに直接評価します**([付録 A3 の吸収ポテンシャル](../a3-bloch-wave/calculation.md)参照)。定数を書き下すと($s$ と $f_e$ を Å 単位で)、
+前係数 $C_\text{MB}$ は基礎物理定数からなり、単位系と、変数に $s$ と $Q$ のどちらを使うかに依存します。弾性散乱(構造因子・回折強度)では ReciPro はこの関係式を直接評価せず、以下の Peng / Kirkland / 8-Gaussian の近似形を使います。ただし **吸収ポテンシャル(TDS)の計算では、当てはめ形が崩れる高 $s$ 側(中性原子 $Z = 1\text{–}86$ では Temari の表の範囲を超える $s > 6$ Å⁻¹、イオンのエントリと $Z = 87\text{–}98$ では $s \gtrsim 2.5$ Å⁻¹)でこの式を Waasmaier–Kirfel の X 線因子とともに直接評価します**([付録 A3 の吸収ポテンシャル](../a3-bloch-wave/calculation.md)参照)。定数を書き下すと($s$ と $f_e$ を Å 単位で)、
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{は Å}^{-1},$$
 

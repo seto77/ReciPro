@@ -33,8 +33,10 @@ $$
 $$
 
 - $\sigma_c$ : totaler Ionisationsquerschnitt aus dem **Bote–Salvat**-Modell
-- $F_c(s)$ : normierter Ionisationsformfaktor aus selbst erzeugten **DHFS**-Tabellen (dieselbe Datenbasis wie [Strahl-Wechselwirkung](../3-beam-interaction.md) und [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
+- $F_c(s)$ : normierter Ionisationsformfaktor aus von **Temari** erzeugten DHFS-Tabellen (dieselben Tabellen wie [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
 - $e^{-M_a(G)}$ : Debye-Waller-Faktor (anisotrope ADPs werden unterstützt)
+
+Für eine Röntgen-Linienserie ist $\sigma_c$ die Summe $\sum_i B_i \sigma_i$ über ihre Unterschalen $i$ und $F_c$ das mit $B_i \sigma_i$ gewichtete Mittel ihrer Formfaktoren; dabei ist $B_i$ Fluoreszenzausbeute × Linienverzweigung nach den Coster-Kronig- und Strahlungskaskaden (xraylib 4.2.1).
 
 Das entspricht der **lokalen Formfaktor-Näherung** von ICSC (Oxley & Allen 2003). Die Zwei-Impuls-MDFF wird nicht verwendet.
 
@@ -51,15 +53,15 @@ Das Abwählen von **Dechannelling-Anteil einbeziehen** im Feld **Berechnung** l�
 
 ### Ausgabegröße
 
-Die primäre Größe ist die **Anzahl der pro einfallendem Elektron erzeugten Innerschalen-Löcher**. **Die Umrechnung in Röntgenphotonen (Fluoreszenzausbeute und Linienverzweigung), die Röntgen-Selbstabsorption in der Probe sowie Detektoreffizienz und Raumwinkel sind NICHT berücksichtigt.**
+Für einen Schalenkanal ist die primäre Größe die **Anzahl der pro einfallendem Elektron erzeugten Innerschalen-Löcher**; die Umrechnung in Röntgenphotonen (Fluoreszenzausbeute und Linienverzweigung) wird nicht angewandt. Für eine Röntgen-Linienserie (Kα, Kβ, Lα, Lβ, Mα), die unter **Ionisationskanäle** nach den Schalen aufgeführt und standardmäßig nicht angehakt ist, ist es die **Anzahl der pro einfallendem Elektron erzeugten Röntgenphotonen** (in alle Richtungen): Fluoreszenzausbeuten, Coster-Kronig- und Strahlungskaskaden und Linienverzweigung aus xraylib 4.2.1 sind berücksichtigt, die Auger-Kaskade ist nicht enthalten. **Die Röntgen-Selbstabsorption in der Probe sowie Detektoreffizienz und Raumwinkel sind in KEINEM der beiden Fälle berücksichtigt.**
 
-⚠ **Löcher sind keine Zählraten.** Zwischen dieser Größe und einer gemessenen EDX-Intensität liegen drei weitere Stufen — atomar, probenseitig und gerätebedingt —, von denen ReciPro keine ausführt.
+⚠ **Löcher und erzeugte Photonen sind keine Zählraten.** Zwischen den Löchern und einer gemessenen EDX-Intensität liegen drei weitere Stufen — atomar, probenseitig und gerätebedingt. ReciPro führt für einen Schalenkanal keine davon aus und für eine Linienserie nur Stufe 1 (ohne die Auger-Kaskade).
 
 1. **Loch → Photon** : Fluoreszenzausbeute und Linienverzweigung der Schale
 2. **Photon → Photon, das die Probe verlässt** : Röntgen-Selbstabsorption; sie hängt von der **Tiefe, in der das Photon entstanden ist**, und vom Abnahmewinkel ab
 3. **Photon → Zählrate** : Detektoreffizienz, Raumwinkel und die Verarbeitung des Spektrums
 
-Insbesondere Stufe 2 lässt sich nicht nachträglich zurückgewinnen, indem man die fertige Kurve mit einem einzigen Absorptionsfaktor multipliziert — die Ausbeute müsste zuvor tiefenaufgelöst vorliegen. Ein Vergleich dieser Kurven mit gemessenen Intensitäten, k-Faktoren oder Zusammensetzungen erfordert daher, diese Stufen außerhalb von ReciPro auszuführen.
+Insbesondere Stufe 2 lässt sich nicht nachträglich zurückgewinnen, indem man die fertige Kurve mit einem einzigen Absorptionsfaktor multipliziert — die Ausbeute müsste zuvor tiefenaufgelöst vorliegen. Ein Vergleich dieser Kurven mit gemessenen Intensitäten, k-Faktoren oder Zusammensetzungen erfordert daher, die Stufen, die ReciPro nicht ausführt, außerhalb von ReciPro auszuführen: für einen Schalenkanal alle drei, für eine Linienserie die Stufen 2 und 3 sowie die Auger-Kaskade von Stufe 1.
 
 Beachten Sie, welche davon eine Normierung überleben. Die Stufen 1 und 3 sowie jede als Konstante behandelte Absorption sind **multiplikativ und orientierungsunabhängig** und fallen deshalb in der ICP-Normierung (Scan-Mittel) heraus — selbst für zwei Linien sehr unterschiedlicher Energie. **Die Selbstabsorption im Allgemeinen nicht**: Die Kanalisierung verändert die Tiefenverteilung, in der die Löcher entstehen, sodass der absorbierte Anteil selbst über den Scan variiert und die Normierung übersteht. Genau gegen diesen Rest hilft die Wahl von Linien ähnlicher Energie.
 
@@ -129,7 +131,7 @@ Nach Abschluss der Rechnung wird pro Paar aus Platz × Kanal eine Kurve gezeichn
 | **Bragg-Bedingungen** | Zeichnet senkrechte Linien bei $\theta = n\,\theta_B$ |
 | **CSV exportieren** | Schreibt die rohen Kurven für jede Orientierung, Dicke, jeden Platz und Kanal in eine CSV-Datei ([unten](#csv-export)) |
 
-⚠ **Die Normierung ist nur eine Anzeigetransformation.** Die gespeicherte Größe sind stets die pro einfallendem Elektron erzeugten Löcher, und **Maximum = 1 dient nur der Anzeige** — es darf nicht als ICP-Bezug verwendet werden.
+⚠ **Die Normierung ist nur eine Anzeigetransformation.** Die gespeicherte Größe sind für einen Schalenkanal die pro einfallendem Elektron erzeugten Löcher und für eine Linienserie die pro einfallendem Elektron erzeugten Röntgenphotonen, und **Maximum = 1 dient nur der Anzeige** — es darf nicht als ICP-Bezug verwendet werden.
 
 ### Kontrast und Korrelation
 
@@ -254,7 +256,7 @@ Die Energie der Linie allein kann ein Ergebnis nicht absichern: Die räumliche A
 
 - **Nur Tracer-Näherung** : Die lineare Überlagerung von Platzantworten gilt nur im verdünnten Grenzfall, in dem das Dotierungsatom das elastische Wellenfeld nicht stört. VCA bei endlicher Konzentration liegt außerhalb des Umfangs von v1
 - **Lokale Formfaktor-Näherung** : $\mu$ ist allein eine Funktion von $G = \mathbf{g}_h - \mathbf{g}_g$, nicht die Zwei-Impuls-MDFF (Modell A von OAR 1999). Die Näherung ist bei K-Schalen leichter Elemente und niederenergetischen Kanten am schwächsten — siehe [oben](#local-approximation)
-- **Löcher, keine Röntgenphotonen** : Fluoreszenzausbeute und Linienverzweigung werden nicht angewendet
+- **Löcher für Schalenkanäle, erzeugte Röntgenphotonen für Linienserien** : Fluoreszenzausbeute und Linienverzweigung werden nur bei den Linienserien angewendet, ohne die Auger-Kaskade
 - **Die untere Grenze der Beschleunigungsspannung liegt bei 80 kV** : Das ist die niedrigste Spannung, bei der $s = 16\ \text{Å}^{-1}$ garantiert werden kann, keine Ablehnungsschwelle
 
 ---

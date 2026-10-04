@@ -62,7 +62,7 @@ ReciPro 以隨附的 **xraylib** 函式庫在目前能量下計算 $f'$ 與 $f''
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-前置因子 $C_\text{MB}$ 由基本常數構成，並取決於單位系統以及採用 $s$ 還是 $Q$。對於彈性散射（結構因子、繞射強度），ReciPro 不直接計算此關係 — 它使用下方擬合的 Peng／Kirkland／8-Gaussian 形式。不過在**吸收（TDS）位勢的計算中，ReciPro 會在擬合形式失效的高 $s$ 區（$s \gtrsim 2.5$ Å⁻¹）以 Waasmaier–Kirfel X 光因子直接計算此式**（參見[附錄 A3 的吸收位勢](../a3-bloch-wave/calculation.md)）。將常數寫出後（$s$ 與 $f_e$ 以 Å 為單位），
+前置因子 $C_\text{MB}$ 由基本常數構成，並取決於單位系統以及採用 $s$ 還是 $Q$。對於彈性散射（結構因子、繞射強度），ReciPro 不直接計算此關係 — 它使用下方擬合的 Peng／Kirkland／8-Gaussian 形式。不過在**吸收（TDS）位勢的計算中，ReciPro 會在擬合形式失效的高 $s$ 區（對 $Z = 1\text{–}86$ 的中性原子為超出 Temari 的表範圍的 $s > 6$ Å⁻¹，對離子條目與 $Z = 87\text{–}98$ 為 $s \gtrsim 2.5$ Å⁻¹）以 Waasmaier–Kirfel X 光因子直接計算此式**（參見[附錄 A3 的吸收位勢](../a3-bloch-wave/calculation.md)）。將常數寫出後（$s$ 與 $f_e$ 以 Å 為單位），
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 

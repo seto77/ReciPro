@@ -33,8 +33,10 @@ $$
 $$
 
 - $\sigma_c$ : section efficace totale d'ionisation, modèle **Bote–Salvat**
-- $F_c(s)$ : facteur de forme d'ionisation normalisé, tables **DHFS** générées en interne (même base de données que [Interaction du faisceau](../3-beam-interaction.md) et [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
+- $F_c(s)$ : facteur de forme d'ionisation normalisé, tables DHFS générées par **Temari** (les mêmes tables que [STEM-EDX](../9-hrtem-stem-simulator/2-stem-simulation.md))
 - $e^{-M_a(G)}$ : facteur de Debye-Waller (les ADP anisotropes sont pris en charge)
+
+Pour une série de raies X, $\sigma_c$ est $\sum_i B_i \sigma_i$ sur ses sous-couches $i$ et $F_c$ est la moyenne de leurs facteurs de forme pondérée par $B_i \sigma_i$, où $B_i$ est le rendement de fluorescence × le branchement des raies après les cascades Coster–Kronig et radiatives (xraylib 4.2.1).
 
 Cela correspond à l'**approximation du facteur de forme local** d'ICSC (Oxley & Allen 2003). La MDFF à deux impulsions n'est pas utilisée.
 
@@ -51,15 +53,15 @@ Décocher **Inclure la composante déchenalisée** dans le cadre **Calcul** supp
 
 ### Grandeur de sortie
 
-La grandeur primaire est le **nombre de lacunes de couche interne créées par électron incident**. **La conversion en photons X (rendement de fluorescence et branchement des raies), l'auto-absorption des rayons X dans l'échantillon, ainsi que l'efficacité et l'angle solide du détecteur NE sont PAS appliqués.**
+Pour un canal de couche, la grandeur primaire est le **nombre de lacunes de couche interne créées par électron incident** ; la conversion en photons X (rendement de fluorescence et branchement des raies) n'est pas appliquée. Pour une série de raies X (Kα, Kβ, Lα, Lβ, Mα), listée après les couches sous **Canaux d'ionisation** et décochée par défaut, c'est le **nombre de photons X générés par électron incident** (dans toutes les directions) : les rendements de fluorescence, les cascades Coster–Kronig et radiatives et le branchement des raies de xraylib 4.2.1 sont appliqués, et la cascade Auger n'est pas incluse. **L'auto-absorption des rayons X dans l'échantillon, ainsi que l'efficacité et l'angle solide du détecteur, NE sont appliqués dans AUCUN des deux cas.**
 
-⚠ **Les lacunes ne sont pas des coups.** Entre cette grandeur et une intensité EDX mesurée s'intercalent trois étapes supplémentaires — atomique, échantillon et instrumentale — dont ReciPro n'effectue aucune.
+⚠ **Ni les lacunes ni les photons générés ne sont des coups.** Entre les lacunes et une intensité EDX mesurée s'intercalent trois étapes supplémentaires — atomique, échantillon et instrumentale. ReciPro n'en effectue aucune pour un canal de couche, et seulement l'étape 1 (sans la cascade Auger) pour une série de raies.
 
 1. **lacune → photon** : rendement de fluorescence et branchement des raies de la couche
 2. **photon → photon sortant de l'échantillon** : auto-absorption des rayons X, qui dépend de la **profondeur à laquelle le photon a été créé** et de l'angle de sortie
 3. **photon → coup** : efficacité du détecteur, angle solide et traitement du spectre
 
-L'étape 2 en particulier ne se rattrape pas après coup en multipliant la courbe finie par un unique facteur d'absorption : il faudrait d'abord résoudre le rendement en profondeur. Comparer ces courbes à des intensités mesurées, à des facteurs k ou à des compositions suppose donc d'effectuer ces étapes en dehors de ReciPro.
+L'étape 2 en particulier ne se rattrape pas après coup en multipliant la courbe finie par un unique facteur d'absorption : il faudrait d'abord résoudre le rendement en profondeur. Comparer ces courbes à des intensités mesurées, à des facteurs k ou à des compositions suppose donc d'effectuer en dehors de ReciPro les étapes que ReciPro n'effectue pas : les trois pour un canal de couche et, pour une série de raies, les étapes 2 et 3 ainsi que la cascade Auger de l'étape 1.
 
 Notez lesquelles survivent à une normalisation. Les étapes 1 et 3, ainsi que toute absorption traitée comme une constante, sont **multiplicatives et indépendantes de l'orientation** : elles disparaissent donc dans la normalisation ICP (moyenne du balayage), même pour deux raies d'énergies très différentes. **L'auto-absorption, en général, non** : la canalisation modifie la distribution en profondeur où les lacunes sont créées, si bien que la fraction absorbée varie elle-même au long du balayage et survit à la normalisation. C'est contre ce résidu que le choix de raies d'énergies voisines est utile.
 
@@ -129,7 +131,7 @@ Une fois le calcul terminé, une courbe est tracée par couple site × canal. La
 | **Conditions de Bragg** | Trace des traits verticaux en $\theta = n\,\theta_B$ |
 | **Exporter en CSV** | Écrit les courbes brutes pour chaque orientation, épaisseur, site et canal dans un fichier CSV ([ci-dessous](#export-csv)) |
 
-⚠ **La normalisation n'est qu'une transformation d'affichage.** La grandeur stockée est toujours le nombre de lacunes créées par électron incident, et **Maximum = 1 sert uniquement à l'affichage** — il ne doit pas servir de référence ICP.
+⚠ **La normalisation n'est qu'une transformation d'affichage.** La grandeur stockée est le nombre de lacunes créées par électron incident pour un canal de couche et le nombre de photons X générés par électron incident pour une série de raies, et **Maximum = 1 sert uniquement à l'affichage** — il ne doit pas servir de référence ICP.
 
 ### Contraste et corrélation
 
@@ -254,7 +256,7 @@ L'énergie de la raie ne suffit pas à certifier un résultat : l'extension spat
 
 - **Approximation traceur uniquement** : la superposition linéaire des réponses de site n'est valable que dans la limite diluée où le dopant ne perturbe pas le champ d'onde élastique. La VCA à concentration finie est hors du périmètre de la v1
 - **Approximation du facteur de forme local** : $\mu$ n'est fonction que de $G = \mathbf{g}_h - \mathbf{g}_g$, et non de la MDFF à deux impulsions (Modèle A d'OAR 1999). L'approximation est la plus faible pour les couches K des éléments légers et les seuils de basse énergie — voir [ci-dessus](#local-approximation)
-- **Des lacunes, pas des photons X** : le rendement de fluorescence et le branchement des raies ne sont pas appliqués
+- **Des lacunes pour les canaux de couche, des photons X générés pour les séries de raies** : le rendement de fluorescence et le branchement des raies ne sont appliqués qu'aux séries de raies, sans la cascade Auger
 - **La borne inférieure de la tension d'accélération est 80 kV** : c'est la tension la plus basse à laquelle $s = 16\ \text{Å}^{-1}$ peut être garanti, non un seuil de refus
 
 ---

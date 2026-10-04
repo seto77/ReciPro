@@ -62,7 +62,7 @@ ReciPro 使用随附的 **xraylib** 库在当前能量下计算 $f'$ 和 $f''$�
 
 $$f_e(s) = C_\text{MB}\,\frac{Z - f_0(s)}{s^2} \;\;\propto\; \frac{Z - f_X(Q)}{Q^2}.$$
 
-前置因子 $C_\text{MB}$ 由基本常数构成，并依赖于单位制以及使用的是 $s$ 还是 $Q$。对于弹性散射（结构因子、衍射强度），ReciPro 并不直接计算此关系 —— 它使用下面拟合的 Peng / Kirkland / 8-Gaussian 形式。不过在**吸收（TDS）势的计算中，ReciPro 会在拟合形式失效的高 $s$ 区（$s \gtrsim 2.5$ Å⁻¹）用 Waasmaier–Kirfel X 射线因子直接计算此式**（参见[附录 A3 的吸收势](../a3-bloch-wave/calculation.md)）。将常数写出（$s$ 和 $f_e$ 以 Å 为单位），
+前置因子 $C_\text{MB}$ 由基本常数构成，并依赖于单位制以及使用的是 $s$ 还是 $Q$。对于弹性散射（结构因子、衍射强度），ReciPro 并不直接计算此关系 —— 它使用下面拟合的 Peng / Kirkland / 8-Gaussian 形式。不过在**吸收（TDS）势的计算中，ReciPro 会在拟合形式失效的高 $s$ 区（对 $Z = 1\text{–}86$ 的中性原子为超出 Temari 的表范围的 $s > 6$ Å⁻¹，对离子条目和 $Z = 87\text{–}98$ 为 $s \gtrsim 2.5$ Å⁻¹）用 Waasmaier–Kirfel X 射线因子直接计算此式**（参见[附录 A3 的吸收势](../a3-bloch-wave/calculation.md)）。将常数写出（$s$ 和 $f_e$ 以 Å 为单位），
 
 $$f_e(s)\,[\text{Å}] = \frac{m_e e^2}{8\pi\varepsilon_0 h^2}\,\frac{Z - f_0(s)}{s^2} \simeq 0.023934\,\frac{Z - f_0(s)}{s^2}, \qquad s\ \text{in Å}^{-1},$$
 
