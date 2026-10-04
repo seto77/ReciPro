@@ -121,7 +121,7 @@ Der Anzeigeschalter unten links im Fenster wählt aus, welche Streukomponente de
 | **Elastisch** | Bild nur aus elastischer Streuung |
 | **TDS** | Bild nur aus thermisch-diffuser Streuung |
 | **Elastisch & TDS** | Summe aus elastisch + TDS |
-| **EDX** | Karte der charakteristischen Röntgenstrahlung. Die anzuzeigende Linie (z. B. `O-K`) wird in der Combobox darunter gewählt; **EDX gemeinsam** in *Normierung* legt die Kanäle derselben Größe (Schalenkanäle: Ionisationslücken; Linienserien: Röntgenphotonen) auf einen gemeinsamen Anzeigebereich, sodass das Bild beim Wechsel zwischen ihnen nicht neu skaliert wird |
+| **EDX** | Karte der charakteristischen Röntgenstrahlung. Die anzuzeigende Linie (z. B. `O-K`) wird in der Combobox darunter gewählt; **EDX gemeinsam** in *Normierung* legt die Kanäle derselben Größe (Schalenkanäle: Vakanzen; Linienserien: Röntgenphotonen) auf einen gemeinsamen Anzeigebereich, sodass das Bild beim Wechsel zwischen ihnen nicht neu skaliert wird |
 
 !!! note
     Alle drei Bilder werden aus dem Realteil der Fourier-Summe rekonstruiert, sodass **Elastisch & TDS** exakt die Summe der beiden anderen ist. Bis Version 4.944 wurde stattdessen der Betrag genommen, was diese Identität zerstörte und die dunklen Pixel leicht aufhellte. Siehe [Rekonstruktion eines reellen Bildes](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
