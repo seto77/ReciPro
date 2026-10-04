@@ -1,7 +1,8 @@
 # Release notes
 
 <!-- 261005Cl 新設: GitHub の Release ページには 1 行の要約とダウンロードの表だけを載せ、各版の詳細はこの頁に書く (作者指示)。
-     「Earlier versions」は ReciPro/Version.cs の History (Help ▸ Version History と同じ文) から機械で写した。 -->
+     「Earlier versions」は ReciPro/Version.cs の History (Help ▸ Version History と同じ文) から機械で写した。
+     261005Cl: ver4.00 以前の日本語の 89 項目は、この英語の頁でだけ英訳に置き換えた (日本語の頁と Version.cs は原文のまま)。 -->
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here.
 
@@ -17,7 +18,7 @@ Reworked the EBSD simulation (non-local backscatter source on by default, Monte 
 
 ## Earlier versions
 
-The one-line summaries below are the version history that ReciPro also shows in **Help ▸ Version History**. Entries before ver4.10 (2011) were written in Japanese and are kept as they were.
+The one-line summaries below are the version history that ReciPro also shows in **Help ▸ Version History**. Entries before ver4.10 (2011) were originally written in Japanese; they are given here in English translation (the Japanese page keeps the original text).
 
 ### 2026
 
@@ -415,113 +416,113 @@ The one-line summaries below are the version history that ReciPro also shows in 
 - **ver4.111** (2011/10/17) Fixed problems on Single Crystal Diffraction form.
 - **ver4.11** (2011/10/12) Fixed problems on import CIF format.
 - **ver4.10** (2011/10/12) Added language option. English and Japanese are available.
-- **ver4.00** (2011/07/19) 同位体組成の入出力と中性子線回折の強度計算に対応しました。
-- **ver3.922** (2011/07/05) CrystalInformationがはみ出していたバグを修正
-- **ver3.921** (2011/07/05) 昨日の変更を微修正。空間群情報(Symmetry info.)と構造因子(Scattering factor)を分けて表示するようにしました。
-- **ver3.92** (2011/07/04) メインツールバーに「Detailed Information」を付けました。空間群の情報や、構造因子を表示できます。
-- **ver3.91** (2011/05/10) TEMIDで、等価な軸の判定ミスがありました。修正。
-- **ver3.90** (2011/04/21) DiffractionSimulator周りを改良。なかなか完成とまではいきませんが、とりあえず。
-- **ver3.811** (2011/02/29) DiffractionSimulator周りを改良(中)。まだ途中ですが、要望があったので、とりあえず公開
+- **ver4.00** (2011/07/19) Added input and output of isotope compositions and the intensity calculation for neutron diffraction.
+- **ver3.922** (2011/07/05) Fixed a bug where Crystal Information overflowed its area.
+- **ver3.921** (2011/07/05) Minor fix to yesterday's change. Space-group information (Symmetry info.) and structure factors (Scattering factor) are now shown separately.
+- **ver3.92** (2011/07/04) Added "Detailed Information" to the main toolbar. It shows space-group information and structure factors.
+- **ver3.91** (2011/05/10) Fixed a mistake in TEMID in judging equivalent axes.
+- **ver3.90** (2011/04/21) Improved the Diffraction Simulator. Not quite finished yet, but released for now.
+- **ver3.811** (2011/02/29) Improved the Diffraction Simulator (work in progress). Still unfinished, but released for now because it was requested.
 
 ### 2010
 
-- **ver3.81** (2010/11/18) ヘルプページのリンク先を変更。内容は鋭意作成中です。
-- **ver3.80** (2010/11/08) 初回起動時にバックグラウンドでネイティブコードを生成するように変更。二回目以降の起動が早くなります。
-- **ver3.701** (2010/11/08) 三斜晶系の対称性のコーディングミスを修正
-- **ver3.70** (2010/11/07) 起動を高速化。多分数倍は速くなったと思います。
-- **ver3.62** (2010/07/21) StereoNet投影でSchmidtネット(等積投影)に対応しました。
-- **ver3.61** (2010/05/09) 開発環境をVS2010にしました。
-- **ver3.60** (2010/01/07) 結晶がランダムに配向したときのデバイリングパターンを表示できるようにしました。
+- **ver3.81** (2010/11/18) Changed the link target of the help pages. The content is being written.
+- **ver3.80** (2010/11/08) Native code is now generated in the background at the first start, so the second and later starts are faster.
+- **ver3.701** (2010/11/08) Fixed a coding error in the symmetry of the triclinic system.
+- **ver3.70** (2010/11/07) Faster start-up, probably several times faster.
+- **ver3.62** (2010/07/21) Stereonet projection now supports the Schmidt net (equal-area projection).
+- **ver3.61** (2010/05/09) Moved the development environment to Visual Studio 2010.
+- **ver3.60** (2010/01/07) Added the display of Debye-ring patterns for randomly oriented crystals.
 
 ### 2009
 
-- **ver3.59** (2009/12/24) 原子位置の計算に一部ミスがありました（特に複合格子の対称性）ので修正
-- **ver3.58** (2009/10/20) アプリ間の結晶データ送信が正常に行えなかったバグを修正
-- **ver3.57** (2009/09/26) Diffraction Simulatorでプリセッションカメラ(ZOLZ)を表示できるようにしました。&& X線の強度計算に対応
-- **ver3.56** (2009/09/24) Electron Diffractionで画像をオーバーラップして表示できるようにしました。
-- **ver3.55** (2009/09/03) 64bit OSに対応しました。
-- **ver3.54** (2009/06/01) ステレオネット描画の部分で色を変更できないバグを修正
-- **ver3.53** (2009/03/11) 回折スポットの励起誤差、結晶構造因子を表示できるようにしました。表示が込み合ってしまうので、選択表示できるように考え中です。
-- **ver3.52** (2009/03/10) CIFファイルの読み込みバグを修正
+- **ver3.59** (2009/12/24) Fixed some errors in the calculation of atomic positions (especially the symmetry of centred lattices).
+- **ver3.58** (2009/10/20) Fixed a bug that prevented crystal data from being sent between applications.
+- **ver3.57** (2009/09/26) The Diffraction Simulator can now show a precession camera pattern (ZOLZ); added the intensity calculation for X-rays.
+- **ver3.56** (2009/09/24) Images can now be overlaid in Electron Diffraction.
+- **ver3.55** (2009/09/03) Added support for 64-bit operating systems.
+- **ver3.54** (2009/06/01) Fixed a bug where colors could not be changed in the stereonet drawing.
+- **ver3.53** (2009/03/11) Excitation errors and crystal structure factors of diffraction spots can now be shown. The display gets crowded, so a way to choose what is shown is being considered.
+- **ver3.52** (2009/03/10) Fixed a bug in reading CIF files.
 
 ### 2008
 
-- **ver3.51** (2008/10/30) 'Apply to same elements'の機能にバグがあったので修正しました。
-- **ver3.50** (2008/08/31) 画像保存にバグがありましたので修正しました。
-- **ver3.49** (2008/08/27) StructureViewerで、凡例や結晶軸の画像も保存できるようにしました。
-- **ver3.48** (2008/08/27) Irregularな空間群A-1,B-1,C-1,I-1,F-1に対応しました。& StructureViewerの画像が保存できなかったのを修正。
-- **ver3.47** (2008/08/26) StructureViewerで背景色、文字色を変更できるようにしました。& 前回終了時の色を読み込むようにしました。
-- **ver3.46** (2008/08/20) CIFファイルの読み込み不具合を修正しました。
-- **ver3.45** (2008/07/10) 大円描画機能を追加（というか復活)
-- **ver3.44** (2008/06/20) 作者異動に伴いメールアドレスなど変更
-- **ver3.43** (2008/04/29) 初期結晶ファイル中のSiO2 (CaCl2構造)の格子定数が間違っていたのを修正しました。
-- **ver3.42** (2008/04/22) 読み込む/書き込む結晶を選択することができるようにしました。
-- **ver3.41** (2008/04/13) Smapのoutデータが読めなくなっていたバグを修正
-- **ver3.40** (2008/02/28) Structure Viewerで原子の配位状況を表示するようにしました。
-- **ver3.39** (2008/02/24) 電子線回折強度の計算速度を若干高速化
-- **ver3.38** (2008/02/23) 電子線回折強度の運動学的理論計算に対応しました。計算速度はこれから向上させていきます。
-- **ver3.37** (2008/02/12) 結晶ファイルのドラッグドロップ対応&外部連携強化&デザイン変更
-- **ver3.36** (2008/02/07) バグ修正&デザイン変更
-- **ver3.35** (2008/01/29) ワイコフ位置の計算部分のバグ修正(いつまで見つかるやら…)。
-- **ver3.34** (2008/01/28) ワイコフ位置の計算部分のバグ修正。
-- **ver3.33** (2008/01/28) FormElectron(電子回折)の初期表示時に解像度設定がおかしくなってしまうのを修正 (永田さん、ありがとうございます)
-- **ver3.32** (2008/01/25) 起動時にヒントをだせるようにしました。
-- **ver3.31** (2008/01/21) 配布元を変更しました
-- **ver3.30** (2008/01/21) TEMIDの結果をダブルクリックすると回転角に反映する機能を追加
-- **ver3.29** (2008/01/18) ボタンイメージを入れてみました。
-- **ver3.28** (2008/01/16) 一部デザインがおかしかったのを変更
-- **ver3.27** (2008/01/14) デザインを変更
-- **ver3.26** (2008/01/10) 原子が一個だった時、凡例がうまく表示できなかったバグを修正
-- **ver3.26** (2008/01/08) フォームの誤動作を修正
-- **ver3.25** (2008/01/07) 内部形式を変更 \+ 格子定数、原子位置の誤差に対応
+- **ver3.51** (2008/10/30) Fixed a bug in the 'Apply to same elements' function.
+- **ver3.50** (2008/08/31) Fixed a bug in saving images.
+- **ver3.49** (2008/08/27) Structure Viewer can now also save the legend and crystal-axis images.
+- **ver3.48** (2008/08/27) Added support for the irregular space groups A-1, B-1, C-1, I-1 and F-1; fixed Structure Viewer images that could not be saved.
+- **ver3.47** (2008/08/26) Structure Viewer: the background and text colors can now be changed, and the colors from the last session are restored.
+- **ver3.46** (2008/08/20) Fixed a problem in reading CIF files.
+- **ver3.45** (2008/07/10) Added (or rather restored) the great-circle drawing function.
+- **ver3.44** (2008/06/20) Changed the e-mail address and other contact details because the author moved to a new position.
+- **ver3.43** (2008/04/29) Corrected the lattice constants of SiO2 (CaCl2 structure) in the initial crystal file.
+- **ver3.42** (2008/04/22) The crystals to be read or written can now be selected.
+- **ver3.41** (2008/04/13) Fixed a bug that made SMAP output (.out) files unreadable.
+- **ver3.40** (2008/02/28) Structure Viewer now shows the coordination of atoms.
+- **ver3.39** (2008/02/24) Slightly faster calculation of electron diffraction intensities.
+- **ver3.38** (2008/02/23) Added the kinematical calculation of electron diffraction intensities. The calculation speed will be improved.
+- **ver3.37** (2008/02/12) Drag and drop of crystal files; better cooperation with external applications; design changes.
+- **ver3.36** (2008/02/07) Bug fixes; design changes.
+- **ver3.35** (2008/01/29) Fixed a bug in the calculation of Wyckoff positions (how long will they keep turning up...).
+- **ver3.34** (2008/01/28) Fixed a bug in the calculation of Wyckoff positions.
+- **ver3.33** (2008/01/28) Fixed a wrong resolution setting when FormElectron (electron diffraction) is first shown (thanks to Nagata).
+- **ver3.32** (2008/01/25) Tips can now be shown at start-up.
+- **ver3.31** (2008/01/21) Changed the distribution site.
+- **ver3.30** (2008/01/21) Double-clicking a TEMID result now applies it to the rotation angles.
+- **ver3.29** (2008/01/18) Added button images.
+- **ver3.28** (2008/01/16) Fixed parts of the design that looked wrong.
+- **ver3.27** (2008/01/14) Changed the design.
+- **ver3.26** (2008/01/10) Fixed a bug where the legend was not shown properly when there was only one atom.
+- **ver3.26** (2008/01/08) Fixed malfunctions of forms.
+- **ver3.25** (2008/01/07) Changed the internal format; added support for the errors of lattice constants and atomic positions.
 
 ### 2007
 
-- **ver3.24** (2007/12/26) StructureViewerで原子選択後右クリックで、原子の配位環境を表示できるようにした (ほかのところにも拡張予定)
-- **ver3.23** (2007/12/26) ElectronDiffractionで面間隔、逆格子原点からの距離を表示できるようにした
-- **ver3.22** (2007/12/21) StructureViewerで原子の凡例が表示できるようにしました。
-- **ver3.21** (2007/11/12) StructureViewerでBondの一部が表示されないことがあったバグを修正
-- **ver3.20** (2007/11/12) StructureViewerにアニメーション(自動回転)機能追加。
-- **ver3.19** (2007/11/09) メインウィンドウに結晶軸の方向を表示するようにしました。
-- **ver3.18** (2007/11/07) 印刷機能を付けました。
-- **ver3.17** (2007/11/07) StructureViewerで単位格子の稜が一本表示されていなかったバグを修正。ToolTipを充実。
-- **ver3.16** (2007/11/03) Stereonet, ElectronDiffractionで画像を保存、コピー機能追加 & 。ElectronDiffractionで色を変更できないバグを修正
-- **ver3.15** (2007/10/27) 共通フォーム&コントロールの部分を分離しDLL化した
-- **ver3.14** (2007/10/26) カメラ長が変更できなかったバグを修正
-- **ver3.13** (2007/09/26) SMAP(http://www.sci.hokudai.ac.jp/~hiro/)の構造解析データを直接読み込めるようにしました。
-- **ver3.12** (2007/08/21) Structure ViewerのLattice Plane表示がおかしいバグを修正 && 全体的に速度向上
-- **ver3.11** (2007/08/21) 突如落ちるなどのバグをさらにさらに改善。今度こそ？
-- **ver3.10** (2007/08/15) 下記のバグをさらに改善。文字描画が難しい・・・
-- **ver3.09** (2007/08/14) StereoNet, ElectronDiffractionがたまに止まってしまうバグを改善
-- **ver3.08** (2007/08/08) OpenGL関係でバグ修正
-- **ver3.07** (2007/08/07) StereoNet,ElectronDiffractionをOpenGL描画に変更しました。速くなりましたがまだバグがあるかも・・・
-- **ver3.06** (2007/07/05) 結晶軸計算のバグを修正
-- **ver3.05** (2007/07/05) TEMID部分の機能を追加(対称性チェック、複数パターンからの抽出など)
-- **ver3.04** (2007/06/22) ホームページアドレスを変更
-- **ver3.03** (2007/06/22) 選択している対称性に関する情報を表示できるようにしました。
-- **ver3.02** (2007/06/21) 結晶データをPDIndexerと同一形式のxmlファイルでリスト化して読み込めるようにしました。
-- **ver3.01** (2007/06/10) Electron diffraction, TEMIDフォームを追加
-- **ver3.00** (2007/05/30) ベータ版作成。ver2.40から大幅に作り直す。未だ道の途中
+- **ver3.24** (2007/12/26) In Structure Viewer, right-clicking after selecting an atom now shows its coordination environment (to be extended to other places).
+- **ver3.23** (2007/12/26) Electron Diffraction can now show d-spacings and distances from the reciprocal-lattice origin.
+- **ver3.22** (2007/12/21) Structure Viewer can now show a legend of the atoms.
+- **ver3.21** (2007/11/12) Fixed a bug where some bonds were sometimes not shown in Structure Viewer.
+- **ver3.20** (2007/11/12) Added an animation (automatic rotation) function to Structure Viewer.
+- **ver3.19** (2007/11/09) The main window now shows the directions of the crystal axes.
+- **ver3.18** (2007/11/07) Added a print function.
+- **ver3.17** (2007/11/07) Fixed a bug where one edge of the unit cell was not drawn in Structure Viewer; more tooltips.
+- **ver3.16** (2007/11/03) Added saving and copying of images in Stereonet and Electron Diffraction; fixed a bug where colors could not be changed in Electron Diffraction.
+- **ver3.15** (2007/10/27) Separated the common forms and controls into a DLL.
+- **ver3.14** (2007/10/26) Fixed a bug where the camera length could not be changed.
+- **ver3.13** (2007/09/26) Structure-analysis data of SMAP (http://www.sci.hokudai.ac.jp/~hiro/) can now be read directly.
+- **ver3.12** (2007/08/21) Fixed a bug in the Lattice Plane display of Structure Viewer; faster overall.
+- **ver3.11** (2007/08/21) Further improvements against bugs such as sudden crashes. This time for sure?
+- **ver3.10** (2007/08/15) Further improved the bug below. Drawing text is hard...
+- **ver3.09** (2007/08/14) Fixed a bug where Stereonet and Electron Diffraction sometimes stopped.
+- **ver3.08** (2007/08/08) Fixed bugs related to OpenGL.
+- **ver3.07** (2007/08/07) Stereonet and Electron Diffraction are now drawn with OpenGL. Faster, but there may still be bugs...
+- **ver3.06** (2007/07/05) Fixed a bug in the calculation of crystal axes.
+- **ver3.05** (2007/07/05) Added functions to TEMID (symmetry check, extraction from multiple patterns, etc.).
+- **ver3.04** (2007/06/22) Changed the home page address.
+- **ver3.03** (2007/06/22) Information on the selected symmetry can now be shown.
+- **ver3.02** (2007/06/21) Crystal data can now be listed and read from an XML file in the same format as PDIndexer.
+- **ver3.01** (2007/06/10) Added the Electron Diffraction and TEMID forms.
+- **ver3.00** (2007/05/30) Beta version, extensively rebuilt from ver2.40. Still a work in progress.
 
 ### 2004
 
-- **ver2.40** (2004/05/13) StereoNetに大円描画機能追加&&StereoNet,Geometricsにワイコフ位置情報を追加
+- **ver2.40** (2004/05/13) Added great-circle drawing to StereoNet; added Wyckoff-position information to StereoNet and Geometrics.
 
 ### 2003
 
-- **ver2.31** (2003/11/12) バグフィックス&&StereoNet, Diffractionの改良
-- **ver2.30** (2003/11/12) データベース機能を追加&&設定ファイルの形式変更&&StereoNet, Diffraction の画像出力機能追加
-- **ver2.20** (2003/10/28) 菊池線表示機能追加&&一部デザイン変更
-- **ver2.12** (2003/10/23) バグフィックス
-- **ver2.11** (2003/10/13) 一部のデザインを変更&&描画部の高速化とバグフィックス
-- **ver2.10** (2003/10/04) TemIDのデザイン(パターン入力部)を改良&&Helpファイルを充実
-- **ver2.00** (2003/09/28) 開発環境を「.Net Framework」に変更&&画像解析機能追加&&TemID解析結果をステレオネット、逆格子空間に反映する機能を追加
+- **ver2.31** (2003/11/12) Bug fixes; improved StereoNet and Diffraction.
+- **ver2.30** (2003/11/12) Added a database function; changed the format of the settings file; added image output to StereoNet and Diffraction.
+- **ver2.20** (2003/10/28) Added the display of Kikuchi lines; partial design changes.
+- **ver2.12** (2003/10/23) Bug fixes.
+- **ver2.11** (2003/10/13) Partial design changes; faster drawing and bug fixes.
+- **ver2.10** (2003/10/04) Improved the design of TemID (pattern input); expanded the Help file.
+- **ver2.00** (2003/09/28) Moved the development environment to the .NET Framework; added image analysis; TemID results can now be applied to the stereonet and the reciprocal space.
 
 ### 2002
 
-- **ver1.05** (2002/05/01) Tilt,Azimuth,Rotationの説明ダイアログ追加&&Ewald球の半径の調節スライドバーを追加&&逆格子点表示をスピードアップ&&バグフィックス
-- **ver1.04** (2002/04/22) 逆空間を表示する機能を追加&&バグフィックス
-- **ver1.03** (2002/03/30) ステレオネットの拡大縮小機能を追加&&空間群の間違いを訂正&&バグフィックス
-- **ver1.02** (2002/03/28) ステレオネットの機能を追加&&バグフィックス
-- **ver1.01** (2002/03/14) 空間群の間違いを訂正&PHOTO間のリンクボタン追加&3点の回折斑点から解析するモード追加
-- **ver1.00** (2002/03/03) 暫定動作バージョンを作成
+- **ver1.05** (2002/05/01) Added a dialog explaining Tilt, Azimuth and Rotation; added a slider to adjust the radius of the Ewald sphere; faster display of reciprocal-lattice points; bug fixes.
+- **ver1.04** (2002/04/22) Added the display of the reciprocal space; bug fixes.
+- **ver1.03** (2002/03/30) Added zooming of the stereonet; corrected errors in space groups; bug fixes.
+- **ver1.02** (2002/03/28) Added stereonet functions; bug fixes.
+- **ver1.01** (2002/03/14) Corrected errors in space groups; added link buttons between PHOTOs; added a mode for analysis from three diffraction spots.
+- **ver1.00** (2002/03/03) Created a provisional working version.
