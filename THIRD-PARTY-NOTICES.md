@@ -182,7 +182,7 @@ datasets are CC BY 4.0, deliberately and separately. ReciPro redistributes a
 | Disclaimer | The dataset is offered as-is, without warranties or conditions of any kind (CC BY 4.0 §5). |
 | Shipped version | dataset-factors 2.0.0, `model_id` `DHFS-KLI-DTM1-dt16-neutral-v1`: 86 elements, s grid 7681 points to s = 6 Å⁻¹. Full Dirac SCF with exact KLI exchange. Every table is declared `artifact_role = computed` / `certification_status = not_certified`: **the dataset claims no rigorous error bound** (the stopping-error bound that v1.0.0 had claimed was withdrawn by its author). ReciPro's packer verifies that the tables belong to the published release (manifest SHA-256 `d43230df…68c5c` and per-file SHA-256, through Temari's own reference loader) and verifies its own conversion; it adds no accuracy claim of its own. |
 | Scope limits | **Neutral atoms only, Z = 1–86.** Ions and Z = 87–98 have no entry and are shown blank rather than substituted. f_e follows the Peng / Doyle–Turner convention and does **not** include the relativistic factor γ. |
-| What a user should cite | The release tag above. ReciPro's own requantization is not part of the dataset and should not be cited as such. |
+| What a user should cite | The dataset DOI above for the scattering factors (this version: 10.5281/zenodo.22820415). ReciPro's own requantization is not part of the dataset and should not be cited as such. |
 
 ⚠ ReciPro follows Temari's published interpolation rules (cubic in s with a clamped
 left end for f_x; cubic in t = s² for f_e) but, because it stores requantized values,

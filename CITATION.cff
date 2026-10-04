@@ -78,6 +78,29 @@ references:
       you use the numbers. The version-independent DOI 10.5281/zenodo.21872049
       resolves to the latest version instead. Full attribution:
       THIRD-PARTY-NOTICES.md.
+  # 261004Cl 追加: 2 本目の Temari の表 (原子散乱因子)。書式は上の項に合わせる
+  - type: data
+    title: >-
+      Atomic X-ray and first-Born electron scattering factors f_x(s), f_e(s) for
+      86 neutral atoms (Z = 1-86), computed with Temari
+    authors:
+      - family-names: Seto
+        given-names: Yusuke
+    version: "2.0.0"
+    year: 2026
+    doi: "10.5281/zenodo.22820415"
+    license: CC-BY-4.0
+    notes: >-
+      dataset-factors v2.0.0, bundled as the binary resource
+      Crystallography.TemariFactors.bin. It is offered in the Beam Interaction
+      window, and its f_e(s) is used for neutral atoms up to s = 6 Å⁻¹ in the
+      absorptive (TDS) potential of the dynamical calculations. Distributed by
+      its author under CC BY 4.0, separately from this software (MIT) and from
+      the ionization dataset above; ReciPro ships a requantized copy (1e-10
+      electrons in f_x, 1e-11 Å in f_e; no value recomputed). Cite this version
+      DOI if you use the numbers. The version-independent DOI
+      10.5281/zenodo.22644247 resolves to the latest version of this series
+      instead. Full attribution: THIRD-PARTY-NOTICES.md.
   # ⚠ 260811Cl: 巻号と DOI は IUCr/Elsevier の書誌で照合済み。
   #   ADNDT **95** (2009) 871–909 / doi 10.1016/j.adt.2009.08.001 が正しい。
   #   "96" や doi 10.1016/j.adt.2010.06.001 は**別論文 (バリウム同位体の発見)** を指すので使わない。

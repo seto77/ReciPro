@@ -200,6 +200,17 @@ The bundled AMCSD database and all core features work entirely offline.
       cross section carries a larger uncertainty than the shape does, and that the
       uncertainty grows from the K line to the M line — Temari's manifest states the
       figures.
+    * Temari also generates a second embedded table, not specific to STEM-EDX: the
+      atomic scattering factors f_x(s) and f_e(s) of neutral atoms (Z = 1–86),
+      dataset-factors **v2.0.0**. It is offered as the *Temari* source (X-ray and
+      electron) in the Beam Interaction window, and its f_e(s) is used up to
+      s = 6 Å⁻¹ in the absorptive (TDS) potential of the dynamical calculations.
+      Like the ionization table, it is published separately under **CC BY 4.0**,
+      not under the software's MIT license, with the DOI
+      [10.5281/zenodo.22820415](https://doi.org/10.5281/zenodo.22820415).
+      ReciPro ships a *requantized* copy of it, so **cite that DOI** if you use the
+      numbers; the full attribution, including what was changed in the requantization,
+      is in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
 
 ### Spot ID
 
