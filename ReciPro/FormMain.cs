@@ -343,6 +343,8 @@ public partial class FormMain : FormBase
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
+            // 261004Cl 追加: Help › License の窓で、MIT の本文の前に同梱の Temari の表 (CC BY 4.0) の帰属の案内を出す
+            LicenseNote = "The bundled Temari data tables (inner-shell ionization form factors and atomic scattering factors) are not covered by ReciPro's MIT licence: they are repacked forms of datasets published separately under CC BY 4.0, and their full attribution is listed in THIRD-PARTY-NOTICES.md (https://github.com/seto77/ReciPro/blob/master/THIRD-PARTY-NOTICES.md).",
             // 260519Cl 変更: 高 DPI で 600px が物理ピクセル扱いとなり日本語版で特に狭く見えていたため LogicalToDeviceUnits で論理→物理変換
             Width = LogicalToDeviceUnits(600),
             Location = new Point(this.Location.X, this.Location.Y)
