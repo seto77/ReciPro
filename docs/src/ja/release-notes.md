@@ -11,8 +11,8 @@ ReciPro の各版で何が変わったかをこの頁にまとめます。GitHub
 EBSD シミュレーションを作り直しました (非局所後方散乱源を既定で ON、モンテカルロ法による深さとエネルギーの扱い、背景の平坦化、晶帯軸の選択、回転動画)。同梱の Temari のイオン化テーブル (dataset 7.0.0) と散乱因子テーブル (dataset-factors v2.0.0。TDS 吸収にも使うようになりました) を更新し、ネイティブの EBSD ソルバの誤り (v.4.918〜v.4.948) を直し、STEM-EDX と ALCHEMI に X 線の線の系列 (任意) を加えました。
 
 - **EBSD (修正)**: ネイティブの EBSD ソルバ (v.4.918〜v.4.948) の複素共役の誤りを直しました。局所後方散乱源と、任意の TDS 背景に影響していました。修正の直前のコードで測ると (9 結晶、20 kV)、規格化したマスターパターンは修正後のソルバと 7〜38 % (相対 L2 ノルム) 違いました。これは誤りの大きさで、v.4.948 と v.4.949 の差ではありません。旧「Include TDS background」は「非局所後方散乱源」になり、局所源を置き換えるもので、既定で ON です。
-- **イオン化テーブル (STEM-EDX、ALCHEMI)**: Temari の dataset 7.0.0 (DOI 10.5281/zenodo.22643468)。計算の全体で有限核を使った最初の版で、F の変化は F(0) = 1 に対して最大 1.7 × 10⁻³ です。
-- **散乱因子と TDS 吸収**: Temari の dataset-factors v2.0.0 (DOI 10.5281/zenodo.22820415)。値は Ba と Ta の最後の格納桁を除いて変わらず、すべてのテーブルが「計算値であり、認証されていない」と宣言されるようになりました。TDS 吸収は、中性原子 (Z = 1–86) の s = 6 Å⁻¹ までこの f\_e を使うようになり、ベンチマーク計算 (80〜300 kV、厚さ 100 nm まで) では STEM・HRTEM・CBED の結果の変化は最大 0.45 % でした ([付録 A3](appendix/a3-bloch-wave/calculation.md) を参照)。
+- **イオン化テーブル (STEM-EDX、ALCHEMI)**: Temari の dataset 7.0.0 (DOI 10.5281/zenodo.22643468)。計算の全体で有限核を使った最初の版です。dataset 5.0.0 からの F の変化は F(0) = 1 に対して最大 1.7 × 10⁻³ で、数値の方法の更新を含みます。
+- **散乱因子と TDS 吸収**: Temari の dataset-factors v2.0.0 (DOI 10.5281/zenodo.22820415)。値は Ba と Ta の最後の格納桁を除いて変わらず、すべてのテーブルが「計算値であり、認証されていない」と宣言されるようになりました。TDS 吸収は、中性原子 (Z = 1–86) の s = 6 Å⁻¹ までこの f\_e を使うようになり、ベンチマーク計算 (5 結晶、80〜300 kV、厚さは STEM と HRTEM が 10〜20 nm、CBED が 100 nm まで) では STEM・HRTEM・CBED の結果の変化は最大 0.45 % でした ([付録 A3](appendix/a3-bloch-wave/calculation.md) を参照)。
 - **X 線の線の系列 (STEM-EDX、ALCHEMI)**: Kα・Kβ・Lα・Lβ・Mα のチャネル (既定は OFF) を加えました。値は自己吸収と検出の前の、入射電子 1 個あたりに発生する X 線の光子数で、xraylib 4.2.1 の蛍光収率・Coster–Kronig と放射の連鎖・線の分岐比を使い、Auger の連鎖は含みません ([STEM-EDX](9-hrtem-stem-simulator/2-stem-simulation.md#stem-edx)・[ALCHEMI](7-diffraction-simulator/4-alchemi-simulation.md#出力量) を参照)。
 - **帰属表示**: CITATION.cff・README・THIRD-PARTY-NOTICES・マニュアルの最初の頁の License の節・ヘルプ › ライセンスの窓が、同梱の 2 つの Temari のテーブル (CC BY 4.0) を引用または案内するようになりました。
 
