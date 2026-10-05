@@ -1,20 +1,235 @@
 # Release notes
 
 <!-- 261005Cl 新設: GitHub の Release ページには 1 行の要約とダウンロードの表だけを載せ、各版の詳細はこの頁に書く (作者指示)。
+     v.4.919 以降の節は History の 1 行と git の履歴 (root と submodule の commit の題) から書いた。
      「Earlier versions」は ReciPro/Version.cs の History (Help ▸ Version History と同じ文) から機械で写した。
-     261005Cl: ver4.00 以前の日本語の 89 項目は、この英語の頁でだけ英訳に置き換えた (日本語の頁と Version.cs は原文のまま)。 -->
+     ver4.00 以前の日本語の 89 項目は、この英語の頁でだけ英訳に置き換えた (日本語の頁と Version.cs は原文のまま)。 -->
 
-This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here.
+This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
 ## v.4.949 (2026-10-04)
 
 Reworked the EBSD simulation (non-local backscatter source on by default, Monte Carlo depth and energy modelling, background flattening, zone-axis picking, rotation movie). Updated the embedded Temari ionization (dataset 7.0.0) and scattering-factor (dataset-factors v2.0.0, now also in the TDS absorption) tables, fixed an error in the native EBSD solver (v.4.918–v.4.948), and added optional X-ray line series to STEM-EDX and ALCHEMI.
 
-- **Ionization table (STEM-EDX, ALCHEMI)**: Updated the embedded Temari ionization form factors F(s, E₀) from dataset 5.0.0 to dataset 7.0.0 (DOI 10.5281/zenodo.22643468), the first version computed with a finite nucleus throughout; the grid, the 525 channels and the file format are unchanged, and F changes by at most 1.7 × 10⁻³ of F(0) = 1. CITATION.cff, README and THIRD-PARTY-NOTICES now cite dataset 7.0.0, and the License section of the manual's top page links to its DOI. Help › License now also points to THIRD-PARTY-NOTICES.md, which carries the CC BY 4.0 attribution of both bundled Temari tables (this one and the scattering factors below).
-- **Scattering factors (Beam Interaction, TDS absorption)**: Updated the embedded Temari f_x(s) and f_e(s) for neutral atoms (Z = 1–86) from dataset-factors v1.0.0 to v2.0.0 (DOI 10.5281/zenodo.22820415, now cited by CITATION.cff, README and THIRD-PARTY-NOTICES, and linked from the License section of the manual's top page); the values are unchanged except in the last stored digits for Ba and Ta. Every table is now declared computed and not certified, and the error bound that v1.0.0 stated has been withdrawn, which does not mean that the values are wrong. This f_e is now also used in the TDS absorption (see below).
-- **EBSD (fix)**: Fixed a complex-conjugation error in the native EBSD solver (v.4.918–v.4.948) that affected both the local backscatter source and the optional TDS background; with the native library disabled, the TDS background had the same error. In a benchmark on the code just before the fix (nine crystals including Si, Re and Au; 20 kV; 64 diffracted waves; B = 0.5 Å²; local source), total intensities were 1.11–2.48 times those of the corrected solver and normalized master patterns differed by 7–38 % (relative L2 norm; for Au still 30 % with 128 diffracted waves); other accelerating voltages, fewer diffracted waves (the default is 32), the multi-energy calculation of the EBSD window, the TDS background and released builds were not measured, so these are not the differences between v.4.948 and v.4.949. The former 'Include TDS background' checkbox, which added to the local source, is now 'Non-local source', which replaces the local source and is on by default.
-- **Absorptive potential (TDS)**: The TDS (thermal diffuse scattering) absorption now uses the Temari f_e for neutral atoms (Z = 1–86) up to s = 6 Å⁻¹, in place of the Peng fit blended into the Mott–Bethe tail at 1.5–2.5 Å⁻¹; beyond 6 Å⁻¹ that Mott–Bethe tail is kept (not a Temari value), joined without smoothing (see [appendix A3 of the manual](appendix/a3-bloch-wave/calculation.md)). In benchmark calculations (five crystals; 80–300 kV; B = 0.3–1.0 Å²; STEM and HRTEM at 10 and 20 nm, CBED at 20–100 nm), STEM, HRTEM and CBED results changed by at most 0.45 % in relative L2 norm (measured with a reference implementation of this change; 0.22 % with the implementation in this release at 200 kV and B = 0.5 Å²); thicker specimens were not tested, and these figures do not cover EBSD, STEM-EDX or ALCHEMI. Atoms assigned as ions also get the new f_e unless Options › 'Use ionic scattering factors' is on; atoms with Z = 87–98 and the real part of the potential are unchanged.
-- **X-ray line series (STEM-EDX, ALCHEMI)**: Added optional Kα, Kβ, Lα, Lβ and Mα channels (off by default) whose values are X-ray photons generated per incident electron: a model quantity, in all directions, before self-absorption and detection, not a predicted X-ray count. They combine the subshell ionization signals with xraylib 4.2.1 fluorescence yields, Coster–Kronig and radiative cascades and line branching ratios; the Auger cascade is not included (compared with the full cascade at 200 kV for selected elements, Mα came out about 5 % lower). They are described in the manual ([STEM Simulation › STEM-EDX elemental maps](9-hrtem-stem-simulator/2-stem-simulation.md#stem-edx); [ALCHEMI Simulation › Output quantity](7-diffraction-simulator/4-alchemi-simulation.md#output-quantity)).
+- **EBSD (fix)**: Fixed a complex-conjugation error in the native EBSD solver (v.4.918–v.4.948) that affected the local backscatter source and the optional TDS background. Measured on the code just before the fix (nine crystals, 20 kV), normalized master patterns differed from the corrected solver by 7–38 % (relative L2 norm); this is the size of the error, not the difference between v.4.948 and v.4.949. 'Include TDS background' is now 'Non-local source', which replaces the local source and is on by default.
+- **Ionization table (STEM-EDX, ALCHEMI)**: Temari dataset 7.0.0 (DOI 10.5281/zenodo.22643468), the first version computed with a finite nucleus throughout; F changes by at most 1.7 × 10⁻³ of F(0) = 1.
+- **Scattering factors and TDS absorption**: Temari dataset-factors v2.0.0 (DOI 10.5281/zenodo.22820415); the values are unchanged except in the last stored digits for Ba and Ta, and every table is now declared computed and not certified. The TDS absorption now uses this f\_e for neutral atoms (Z = 1–86) up to s = 6 Å⁻¹; in benchmark calculations (80–300 kV, up to 100 nm) STEM, HRTEM and CBED results changed by at most 0.45 % (see [appendix A3](appendix/a3-bloch-wave/calculation.md)).
+- **X-ray line series (STEM-EDX, ALCHEMI)**: optional Kα, Kβ, Lα, Lβ and Mα channels (off by default) giving the X-ray photons generated per incident electron before self-absorption and detection, with xraylib 4.2.1 fluorescence yields, Coster–Kronig and radiative cascades and line branching, without the Auger cascade (see [STEM-EDX](9-hrtem-stem-simulator/2-stem-simulation.md#stem-edx) and [ALCHEMI](7-diffraction-simulator/4-alchemi-simulation.md#output-quantity)).
+- **Attribution**: CITATION.cff, README, THIRD-PARTY-NOTICES, the License section of the manual's top page and Help › License now cite or point to both bundled Temari tables (CC BY 4.0).
+
+## v.4.948 (2026-08-30)
+
+Fixed a long-standing error in the Bloch-wave dynamical calculation that scaled each diffracted amplitude by P\_g/P\_0. Zone-axis SAED, HRTEM and STEM are unaffected; EBSD, Kikuchi bands and HOLZ reflections were affected most.
+
+- The eigenproblem now divides row g by P\_g instead of the column; the dead CBED obliquity variable was removed.
+- The whole manual was proofread in all 11 languages, and screenshots that showed a stray window, a red-X image or an unprepared state were recaptured.
+- The Spot ID information table fills its cumulative column, and index boxes and numeric spin buttons show the tooltip of their host control.
+- Updated PureHDF (2.2.0) and DynamicExpresso.
+
+## v.4.947 (2026-08-20)
+
+Added an ALCHEMI simulator (preview): site-resolved ionization rocking curves along a systematic row by the Bloch-wave method, with angular-spread convolution, provenance-tagged CSV export and a manual page in 11 languages. Added dynamical Kikuchi bands to the diffraction simulator, Temari scattering factors and an integral absorptive factor to Beam Interaction, saving of EBSD patterns and a CITATION.cff, and fixed the R(%) round-trip in Spot ID.
+
+- **ALCHEMI** (manual section 7.4): a 1D forward orientation engine with a local ionization matrix and its modal contraction, angular-spread convolution, and a CSV whose header records where the ionization tables and the absorptive potential came from.
+- **Dynamical Kikuchi bands** in the diffraction simulator: systematic-row many-beam profiles with an Einstein-model TDS source, Linear/Log/Tanh intensity scales and excess/deficient colors; band rendering became 2.1–6.3 times faster with identical output, and a left-right mirroring of the bands was fixed.
+- **Beam Interaction**: Temari is offered as a scattering-factor source, the table names the source of the X-ray f(s), and the absorptive factor is evaluated as an integral.
+- **STEM-EDX**: the ionization tables cover the M shell and reach s = 16 Å⁻¹ with data instead of extrapolating beyond 8 Å⁻¹, and the GUI shows where a form factor was cut off.
+- EBSD patterns can be saved, not only copied; macros can set the Spot ID spot radius; the portable ZIP shows Check Updates, which opens the latest release page; the Bote–Salvat reference was corrected.
+
+## v.4.946 (2026-08-05)
+
+Added STEM-EDX simulation: characteristic X-ray (inner-shell ionization) maps computed alongside STEM images by the Bloch-wave method, using original fully relativistic ionization form-factor tables (K: C-Sn, L: Ca-Rn), documented in 11 languages. Also let macros create and edit crystals and drive the Structure Viewer, and added a see-through mesh style for coordination polyhedra.
+
+- **STEM-EDX**: ionization tables with relativistic j-resolved L subshells up to Z = 86, then the v3 table (246 channels, s grid extended to 8 Å⁻¹); the run stops with a localized message when the native helpers are missing.
+- **Macros** can create and edit crystals (a draft/Commit API), read the crystal orientation, and drive Structure Viewer, including images and 3D-print models; the macro reference shows the real signatures.
+- **3D printing**: Structure Viewer exports binary STL and color-grouped 3MF models, with unit-cell edges as printable cylinders and an options dialog in 11 languages.
+- READMEs in 10 more languages; a comparison of STEM-EDX with py\_multislice was published as a PDF report.
+
+## v.4.945 (2026-08-03)
+
+Added dark mode support, improved keyboard and mouse operability, enhanced the indexing of experimental EBSD patterns with an automatic detector-geometry calibration, and fixed many bugs including a startup crash at high DPI.
+
+- **Dark mode**, including symmetry diagrams, pole figures, graphs and the 3D views; switching between dark and light restarts the application automatically.
+- **Keyboard and mouse**: standard Alt mnemonics on the menus, wheel and +/- zoom of the diffraction pattern, arrow-key stepping in numeric boxes, and Enter no longer discards a typed value; the Calculator was retired.
+- **EBSD indexing**: the detector-geometry calibration iterates from up to 200 starting geometries and finishes with a joint six-variable polish; orientations are polished with a 0.1° simplex; search progress, elapsed time and cancellation are shown.
+- **Fixes**: a startup crash at 200 % DPI, the per-crystal color in dynamical mode (issue #65), pasted rotation matrices, toolbar double-clicks, and text overflow found by an audit in all 11 languages; the xraylib binaries were trimmed from 14.8 MB to 6.3 MB each.
+
+## v.4.944 (2026-07-25)
+
+Added indexing of experimental EBSD patterns (orientation search and detector calibration), added external macro control via a named pipe and unattended command-line execution, added table (CSV) export to 'Spot ID' and diffraction spot information, and improved performance and fixed many bugs across the application.
+
+- **EBSD indexing** of experimental patterns: rectangular detector, image overlay, orientation search by Radon template matching or by a dictionary search (point-group pruning, several times faster), a left-right flip of the detector view, and detector geometry kept between sessions.
+- **External control**: macros can be sent through a named pipe, and the command line runs quietly with /o.
+- **Spot ID** and diffraction spot information export their tables; the macro SpotInfo() also works in the kinematical mode and gives detector coordinates.
+- A systematic audit fixed resource leaks and numerical bugs across the library (Fourier transforms, Marquardt fitting, image I/O, concurrency), a per-frame GPU buffer leak, and crystal copy between processes.
+
+## v.4.943 (2026-07-15)
+
+Added a 'Group Relations' function to explore group–subgroup relations of space groups (maximal subgroups/supergroups, Bärnighausen trees, and symmetry-element diagrams), and further accelerated STEM simulations with optional Intel MKL support.
+
+- **Group Relations**: maximal t-, k- and isomorphic subgroups and minimal supergroups, transformation matrices, multi-level Bärnighausen trees, orbit splitting, domains and new reflections, an Elements & Positions overlay of lost and retained symmetry elements, and a Hasse diagram of the 32 point groups.
+- **Symmetry Information**: Operations, Properties and Settings tabs, with Seitz symbols rendered as LaTeX.
+- **STEM**: large eigenvalue problems can use Intel MKL, and the calculation allocates less memory.
+- Fixed typos in fluorescence yields, a detector unit and integration bounds in the library; the nine translated UIs were proofread.
+
+## v.4.942 (2026-07-01)
+
+Enabled digital code signing of the installer and portable executable, provided free by SignPath Foundation.
+
+- The shared libraries (Crystallography, Crystallography.Controls, Crystallography.Native and Crystallography.OpenGL) are now git submodules.
+- Switching the UI language restarts the application automatically, and F1/Help opens the manual in the UI language.
+
+## v.4.941 (2026-06-23)
+
+Added multi-language UI support and fixed many bugs.
+
+- The UI, including tooltips, is available in 11 languages: English, Japanese, German, French, Spanish, Italian, Russian, Simplified and Traditional Chinese, Korean and Portuguese; the online manual was translated into the same languages.
+- Fonts are chosen centrally (size tiers, per-language fonts, Wine compatibility) so that layouts fit in every language.
+- A demo video was added to the README and the manual; the Arm64 files are attached automatically after a release.
+
+## v.4.940 (2026-06-14)
+
+Improved the accuracy of ionic elastic scattering factor calculations, and reorganized the distribution package formats.
+
+- Dynamical calculations can use ionic (full Peng) electron scattering factors (Options ▸ Use ionic scattering factors; off by default).
+- The release files were renamed (ReciPro-setup.msi; the portable ZIP without the x64 suffix), an Arm64 MSI was added, and the old Visual Studio installer project was removed.
+
+## v.4.939 (2026-06-13)
+
+Enhanced support for Arm64 environments and fixed bugs in Beam Interactions.
+
+- **Windows on Arm**: native Arm64 portable ZIP and MSI, with native libraries built from source (xraylib 4.2.1, GLFW 3.4); the MKL options are hidden on Arm64.
+- The installer moved to WiX v7, and the portable builds are published as a single file (292 files reduced to about 10); checksum files are no longer published.
+- **Beam Interaction**: the electron stopping power is documented as |dE/ds|, graphs have colored legend labels, and compositions are weighted by multiplicity × occupancy.
+- Fixed blank tab captions on high-DPI displays in the Diffraction Simulator.
+
+## v.4.938 (2026-06-11)
+
+Slightly accelerated STEM simulation and other calculations, and added experimental support for running on macOS via Wine.
+
+- Faster Bloch-wave STEM, HRTEM and CBED using native matrix multiplication and a phase recurrence.
+- A font compatibility layer for running under Wine on macOS and Linux.
+- Rigaku 2D-PXD (d*TREK extended IMG) images can be read, and numeric readouts accept a format specifier.
+- The manual gained a solid-state-physics appendix for Beam Interaction (the Bloch-wave appendix became A3).
+
+## v.4.937 (2026-06-08)
+
+Substantially overhauled 'Scattering Factor' and released it as 'Beam Interaction', now including information on absorption coefficients and fluorescence.
+
+- Tabs per beam type: scattering factors (with xraylib), attenuation and fluorescence, plus the electron elastic cross section and CSDA range and the neutron incoherent and absorption cross sections.
+- X-ray anomalous dispersion can be switched on in the diffraction simulators.
+- Faster structure-factor calculation and allocation-free extinction rules; fixed bugs in crystal comparison and atom deletion.
+- Title bars show “(F1: Help)”, and the bundled PDF help was replaced by links to the online appendices.
+
+## v.4.936 (2026-06-04)
+
+Further reduced the distribution size by eliminating redundant data.
+
+- Smaller Crystallography.dll: symmetry tables moved to readable CSV resources, NIST data packed with Brotli, and default-valued members omitted from the crystal XML.
+- The NIST elastic-scattering table was extended from 20 keV to 36.4 keV, and graph cursors show intersection markers and readouts.
+
+## v.4.935 (2026-06-02)
+
+Added a portable ZIP distribution, improved the manual, and fixed bugs.
+
+- The dynamical diffraction pipeline (Bloch-wave method, EBSD, native wrapper) was optimized.
+- The manual got per-mode Diffraction Simulator pages and a keyboard-shortcut chapter, and tooltips were added across the application.
+- Neutron scattering lengths were updated to the periodictable data.
+- The Help menu lost its redundant manual item and the bundled PDF manuals; LICENSE.md uses the standard MIT text.
+
+## v.4.934 (2026-05-30)
+
+Improved the video encoding engine and reduced the distribution size.
+
+- Video export moved from the GPL ffmpeg to Windows Media Foundation.
+- F1 opens the manual page of each window.
+- Third-party notices and a code-signing policy were added.
+
+## v.4.933 (2026-05-29)
+
+Fixed OpenGL rendering corruption on Windows on ARM (x64 emulation).
+
+## v.4.932 (2026-05-28)
+
+Improved the manual and enhanced stereographic projection features. (see https://github.com/seto77/ReciPro/issues/58)
+
+- **Stereonet**: the line width and the label color can be set.
+- **Manual**: moved to GitHub Pages (MkDocs), with formulas rendered by MathJax, appendices on coordinate systems and the Bloch-wave method (CBED, STEM, EBSD), a troubleshooting page collected from GitHub issues, and screenshots generated from the GUI.
+- Terms, units and status displays were unified across the GUI, and the remaining NumericUpDown controls were replaced by NumericBox.
+
+## v.4.931 (2026-05-19)
+
+Fixed GUI layout issues that occurred under high-DPI display settings. (see https://github.com/seto77/ReciPro/issues/59)
+
+- Layouts were rebuilt with flow panels, tables and index boxes became DPI-aware, and a common index control replaced the separate h, k, l inputs.
+
+## v.4.930 (2026-05-17)
+
+Fixed great circle rendering and added a cursor-position plane/axis index readout in the stereographic projection. (see https://github.com/seto77/ReciPro/issues/58)
+
+- Symmetry diagrams are drawn faster.
+
+## v.4.929 (2026-05-13)
+
+Fixed bugs in symmetry element rendering in 'Structure Viewer' and improved its performance.
+
+- A configuration panel for the symmetry elements; principal axes and mirror and glide planes are now resolved correctly.
+- The SixLabors dependency was removed.
+
+## v.4.928 (2026-05-09)
+
+Added a function to render symmetry elements in 'Structure Viewer'.
+
+- Symmetry diagrams: the test point and the projection axis can be chosen, and diagrams can be copied as BMP or EMF.
+
+## v.4.927 (2026-05-04)
+
+Substantially expanded 'Symmetry Information' to render ITC Vol.A style schematic diagrams of symmetry elements and general positions.
+
+- The diagrams cover the cubic groups, and screw axes are detected with the centring taken into account; the axes of hexagonal settings were fixed.
+- Symmetry Information renders its formulas as LaTeX, and the symmetry-expression parser moved to DynamicExpresso.
+
+## v.4.926 (2026-04-25)
+
+Added support for Miller-Bravais index notation (hkil 4-index representation of lattice planes for trigonal/hexagonal crystal systems). (see https://github.com/seto77/ReciPro/issues/54)
+
+- The four-index notation is used in the main window, Stereonet, Image Simulator and Spot ID.
+- The main window is moved back on screen when its saved position is off-screen.
+
+## v.4.925 (2026-04-20)
+
+Hardened the app startup so it continues even when OpenGL initialization fails. (see https://github.com/seto77/ReciPro/issues/55)
+
+- Faster Bloch-wave and HRTEM calculations and optimized native build settings; the macro window can toggle the bundled samples.
+
+## v.4.924 (2026-04-15)
+
+Enhanced the macro-related features.
+
+- An overhauled macro editor with bundled samples; refined macro help; fixed the setters for the serial-image count.
+- High-DPI layout fixes with a custom spin button; a CITATION.cff gives the preferred article citation.
+
+## v.4.923 (2026-04-05)
+
+Fixed minor bugs.
+
+- The release workflow was overhauled.
+
+## v.4.922 (2026-04-05)
+
+Greatly reduced the size of the installer package.
+
+- Releases are now built and published by GitHub Actions (tags use the “v.” prefix that the update checker expects).
+
+## v.4.921 (2026-04-01)
+
+Improved the EBSD simulation, and fixed many minor bugs.
+
+## v.4.919 (2026-03-20)
+
+Improved the OpenGL renderings and EBSD simulations, and fixed many minor bugs.
+
+- The OpenGL control and objects were reworked, and the Bloch-wave EBSD code and the native library were updated.
 
 ## Earlier versions
 
@@ -22,35 +237,6 @@ The one-line summaries below are the version history that ReciPro also shows in 
 
 ### 2026
 
-- **ver4.948** (2026/08/30) Fixed a long-standing error in the Bloch-wave dynamical calculation that scaled each diffracted amplitude by P\_g/P\_0. Zone-axis SAED, HRTEM and STEM are unaffected; EBSD, Kikuchi bands and HOLZ reflections were affected most.
-- **ver4.947** (2026/08/20) Added an ALCHEMI simulator (preview): site-resolved ionization rocking curves along a systematic row by the Bloch-wave method, with angular-spread convolution, provenance-tagged CSV export and a manual page in 11 languages. Added dynamical Kikuchi bands to the diffraction simulator, Temari scattering factors and an integral absorptive factor to Beam Interaction, saving of EBSD patterns and a CITATION.cff, and fixed the R(%) round-trip in Spot ID.
-- **ver4.946** (2026/08/05) Added STEM-EDX simulation: characteristic X-ray (inner-shell ionization) maps computed alongside STEM images by the Bloch-wave method, using original fully relativistic ionization form-factor tables (K: C-Sn, L: Ca-Rn), documented in 11 languages. Also let macros create and edit crystals and drive the Structure Viewer, and added a see-through mesh style for coordination polyhedra.
-- **ver4.945** (2026/08/03) Added dark mode support, improved keyboard and mouse operability, enhanced the indexing of experimental EBSD patterns with an automatic detector-geometry calibration, and fixed many bugs including a startup crash at high DPI.
-- **ver4.944** (2026/07/25) Added indexing of experimental EBSD patterns (orientation search and detector calibration), added external macro control via a named pipe and unattended command-line execution, added table (CSV) export to 'Spot ID' and diffraction spot information, and improved performance and fixed many bugs across the application.
-- **ver4.943** (2026/07/15) Added a 'Group Relations' function to explore group–subgroup relations of space groups (maximal subgroups/supergroups, Bärnighausen trees, and symmetry-element diagrams), and further accelerated STEM simulations with optional Intel MKL support.
-- **ver4.942** (2026/07/01) Enabled digital code signing of the installer and portable executable, provided free by SignPath Foundation.
-- **ver4.941** (2026/06/23) Added multi-language UI support and fixed many bugs.
-- **ver4.940** (2026/06/14) Improved the accuracy of ionic elastic scattering factor calculations, and reorganized the distribution package formats.
-- **ver4.939** (2026/06/13) Enhanced support for Arm64 environments and fixed bugs in Beam Interactions.
-- **ver4.938** (2026/06/11) Slightly accelerated STEM simulation and other calculations, and added experimental support for running on macOS via Wine.
-- **ver4.937** (2026/06/08) Substantially overhauled 'Scattering Factor' and released it as 'Beam Interaction', now including information on absorption coefficients and fluorescence.
-- **ver4.936** (2026/06/04) Further reduced the distribution size by eliminating redundant data.
-- **ver4.935** (2026/06/02) Added a portable ZIP distribution, improved the manual, and fixed bugs.
-- **ver4.934** (2026/05/30) Improved the video encoding engine and reduced the distribution size.
-- **ver4.933** (2026/05/29) Fixed OpenGL rendering corruption on Windows on ARM (x64 emulation).
-- **ver4.932** (2026/05/28) Improved the manual and enhanced stereographic projection features. (see https://github.com/seto77/ReciPro/issues/58)
-- **ver4.931** (2026/05/19) Fixed GUI layout issues that occurred under high-DPI display settings. (see https://github.com/seto77/ReciPro/issues/59)
-- **ver4.930** (2026/05/17) Fixed great circle rendering and added a cursor-position plane/axis index readout in the stereographic projection. (see https://github.com/seto77/ReciPro/issues/58)
-- **ver4.929** (2026/05/13) Fixed bugs in symmetry element rendering in 'Structure Viewer' and improved its performance.
-- **ver4.928** (2026/05/09) Added a function to render symmetry elements in 'Structure Viewer'.
-- **ver4.927** (2026/05/04) Substantially expanded 'Symmetry Information' to render ITC Vol.A style schematic diagrams of symmetry elements and general positions.
-- **ver4.926** (2026/04/25) Added support for Miller-Bravais index notation (hkil 4-index representation of lattice planes for trigonal/hexagonal crystal systems). (see https://github.com/seto77/ReciPro/issues/54)
-- **ver4.925** (2026/04/20) Hardened the app startup so it continues even when OpenGL initialization fails. (see https://github.com/seto77/ReciPro/issues/55)
-- **ver4.924** (2026/04/15) Enhanced the macro-related features.
-- **ver4.923** (2026/04/05) Fixed minor bugs.
-- **ver4.922** (2026/04/05) Greatly reduced the size of the installer package.
-- **ver4.921** (2026/04/01) Improved the EBSD simulation, and fixed many minor bugs.
-- **ver4.919** (2026/03/20) Improved the OpenGL renderings and EBSD simulations, and fixed many minor bugs.
 - **ver4.918** (2026/03/13) Improved the Native Library to enable automatic switching between non-AVX, AVX2 and AVX512.
 - **ver4.917** (2026/03/05) Added several 'Macro' functions (see https://github.com/seto77/ReciPro/issues/36).
 - **ver4.916** (2026/01/14) Fixed an issue with loading Crystallography.Native.dll.
