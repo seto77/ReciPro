@@ -19,7 +19,8 @@ jobs:
       - name: Collect traffic data
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
-        run: python3 scripts/github_traffic.py
+        # 261012Cl scripts/ → .github/scripts/ へ移動 (トップ階層の整理。旧: python3 scripts/github_traffic.py)
+        run: python3 .github/scripts/github_traffic.py
       - name: Commit traffic.md if changed
         run: |
           git config user.name "github-actions[bot]"

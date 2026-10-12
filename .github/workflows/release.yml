@@ -221,7 +221,8 @@ jobs:
           $native = Get-ChildItem "ReciPro\bin\Release" -Filter "Crystallography.Native*.dll" -File
           if ($native.Count -ne 3) { throw "native DLL count != 3: $($native.Count)" }
           $native | Copy-Item -Destination $s
-          Copy-Item ReciProSetup.Wix\LICENSE.rtf, ReciProSetup.Wix\REQUIREMENT.rtf $s
+          # 261012Cl WiX プロジェクトを ReciProSetup.Wix\ → .github\installer\ へ移動 (トップ階層の整理。旧パス: ReciProSetup.Wix\…)
+          Copy-Item .github\installer\LICENSE.rtf, .github\installer\REQUIREMENT.rtf $s
           # 旧 vdproj MSI と内容を揃える: 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
           Get-ChildItem $s -Filter *.pdb | Remove-Item
           # 出荷前検査 (計画書 §3 D3)
@@ -250,7 +251,8 @@ jobs:
         timeout-minutes: 10
         shell: pwsh
         run: |
-          dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=x64 `
+          # 261012Cl WiX プロジェクトを ReciProSetup.Wix\ → .github\installer\ へ移動 (トップ階層の整理。旧パス: ReciProSetup.Wix\…)
+          dotnet build .github\installer\ReciProSetup.wixproj -c Release -p:InstallerPlatform=x64 `
             -p:ProductVersion=${{ needs.prepare.outputs.product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-x64"
           if ($LASTEXITCODE -ne 0) { throw "WiX build failed (exit $LASTEXITCODE)." }
@@ -260,7 +262,7 @@ jobs:
           #   同一バイトのコピーを旧名 ReciProSetup.msi でも添付して互換維持する (数年間併置、目安 2029 頃まで。
           #   260613Cl 以降の新クライアントは FormMain が新名称を明示参照)
           # 旧: $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" -ErrorAction SilentlyContinue
-          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciPro-setup.msi" -ErrorAction SilentlyContinue
+          $msi = Get-Item ".github\installer\bin\Release\ReciPro-setup.msi" -ErrorAction SilentlyContinue
           if (-not $msi) { throw "ReciPro-setup.msi was not found." }
           Write-Host "MSI built (unsigned): $($msi.FullName) ($($msi.Length) bytes)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT

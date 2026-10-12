@@ -271,7 +271,8 @@ jobs:
           dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s `
             -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "arm64 framework-dependent publish failed." }
-          Copy-Item ReciProSetup.Wix\LICENSE.rtf, ReciProSetup.Wix\REQUIREMENT.rtf $s
+          # 261012Cl WiX プロジェクトを ReciProSetup.Wix\ → .github\installer\ へ移動 (トップ階層の整理。旧パス: ReciProSetup.Wix\…)
+          Copy-Item .github\installer\LICENSE.rtf, .github\installer\REQUIREMENT.rtf $s
           Get-ChildItem $s -Filter *.pdb | Remove-Item
           if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
           if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
@@ -291,12 +292,13 @@ jobs:
       - name: Build arm64 MSI with WiX
         shell: pwsh
         run: |
-          dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=arm64 `
+          # 261012Cl WiX プロジェクトを ReciProSetup.Wix\ → .github\installer\ へ移動 (トップ階層の整理。旧パス: ReciProSetup.Wix\…)
+          dotnet build .github\installer\ReciProSetup.wixproj -c Release -p:InstallerPlatform=arm64 `
             -p:ProductVersion=0.${{ steps.version.outputs.version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
           if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed (exit $LASTEXITCODE)." }
           # 260613Cl アセット改名 (旧: ReciProSetup-arm64.msi)
-          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciPro-setup_arm64.msi" -ErrorAction SilentlyContinue
+          $msi = Get-Item ".github\installer\bin\Release\ReciPro-setup_arm64.msi" -ErrorAction SilentlyContinue
           if (-not $msi) { throw "ReciPro-setup_arm64.msi was not produced." }
           Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
 
@@ -326,4 +328,5 @@ jobs:
         with:
           # 260613Cl アセット改名 (旧: ReciProSetup-arm64-msi-v.X / ReciProSetup-arm64.msi)
           name: ReciPro-setup_arm64-msi-v.${{ steps.version.outputs.version }}
-          path: ReciProSetup.Wix/bin/Release/ReciPro-setup_arm64.msi
+          # 261012Cl WiX プロジェクトを ReciProSetup.Wix\ → .github\installer\ へ移動 (トップ階層の整理。旧パス: ReciProSetup.Wix\…)
+          path: .github/installer/bin/Release/ReciPro-setup_arm64.msi

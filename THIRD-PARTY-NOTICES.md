@@ -14,7 +14,7 @@ Last reviewed: 2026-09-18 (260918Cl: Temari dataset-factors updated to **v2.0.0*
 Prior reviews: 2026-08-12 (260812Cl: ionization-table licence rewrite of 2026-08-11 reflected; Kirkland Appendix C parameters listed; WK X-ray factors now also feed the electron absorptive tail).
 Prior reviews: 2026-07-15 (260715Ch: WiX and active SignPath scope reconciled); 2026-06-12 (win-arm64 additions).
 
-This is a detailed inventory derived from the actual `.csproj` references, the WiX installer (`ReciProSetup.Wix`), the native build (`Crystallography.Native.vcxproj`), and the bundled/downloaded data. Items still requiring external verification are marked **`TODO: confirm`**.
+This is a detailed inventory derived from the actual `.csproj` references, the WiX installer (`.github/installer`), the native build (`Crystallography.Native.vcxproj`), and the bundled/downloaded data. Items still requiring external verification are marked **`TODO: confirm`**.
 
 Video export was migrated from a bundled GPL ffmpeg to the OS-provided **Windows Media Foundation** encoder (2026-05-30). As a result, **no ffmpeg / libx264 / libx265 / GPL binaries are bundled or distributed**, and the former GPL source-availability obligation no longer applies (see the [video encoding](#video-encoding-via-media-foundation) section). The COD citation has been added to the README and both manuals, the neutron scattering-length source has been updated to periodictable / Rauch data, and AMCSD bulk redistribution is permitted (permission obtained from one of the AMCSD maintainers). The remaining items are the minor **`TODO: confirm`** notes below (exact license texts, and the NIST SRD-64 / ITA citations).
 

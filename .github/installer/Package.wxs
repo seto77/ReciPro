@@ -22,7 +22,8 @@
     <!-- CompressionLevel 既定 (mszip) では旧 vdproj MSI より ~0.8MB 大きかったため high を明示 (260613Cl) -->
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
-    <Icon Id="AppIcon.ico" SourceFile="..\ReciPro\App.ico" />
+    <!-- 261012Cl 本フォルダを ReciProSetup.Wix\ → .github\installer\ へ移動したため 1 段深く (旧: ..\ReciPro\App.ico) -->
+    <Icon Id="AppIcon.ico" SourceFile="..\..\ReciPro\App.ico" />
 
     <!-- per-user 固定: %LocalAppData%\Crystallography Software\ReciPro (vdproj の DefaultLocation を踏襲) -->
     <StandardDirectory Id="LocalAppDataFolder">
