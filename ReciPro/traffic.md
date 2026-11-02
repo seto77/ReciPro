@@ -1,12 +1,13 @@
 # Traffic Data: ReciPro
 
-Last updated: 2026-11-01
+Last updated: 2026-11-02
 
 ## Views
 
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-11-01 | 26 | 16 |
 | 2026-10-31 | 21 | 17 |
 | 2026-10-30 | 50 | 31 |
 | 2026-10-29 | 64 | 41 |
@@ -19,12 +20,11 @@ Last updated: 2026-11-01
 | 2026-10-22 | 24 | 17 |
 | 2026-10-21 | 16 | 14 |
 | 2026-10-20 | 32 | 21 |
-| 2026-10-19 | 63 | 32 |
 
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-W44 | 323 | 188 |
+| 2026-W44 | 349 | 204 |
 | 2026-W43 | 216 | 150 |
 | 2026-W42 | 275 | 146 |
 | 2026-W41 | 305 | 180 |
@@ -37,11 +37,11 @@ Last updated: 2026-11-01
 | 2026-W34 | 423 | 172 |
 | 2026-W33 | 252 | 112 |
 | 2026-W32 | 393 | 169 |
-| 2026-W31 | 301 | 155 |
 
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-11 | 26 | 16 |
 | 2026-10 | 1305 | 759 |
 | 2026-09 | 1710 | 780 |
 | 2026-08 | 1619 | 693 |
@@ -54,13 +54,14 @@ Last updated: 2026-11-01
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 10721 | 5115 |
+| 2026 | 10747 | 5131 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-11-01 | 17 | 13 |
 | 2026-10-31 | 28 | 15 |
 | 2026-10-30 | 13 | 7 |
 | 2026-10-29 | 13 | 7 |
@@ -73,12 +74,11 @@ Last updated: 2026-11-01
 | 2026-10-22 | 6 | 5 |
 | 2026-10-21 | 9 | 7 |
 | 2026-10-20 | 9 | 6 |
-| 2026-10-19 | 21 | 15 |
 
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-W44 | 136 | 64 |
+| 2026-W44 | 153 | 77 |
 | 2026-W43 | 94 | 61 |
 | 2026-W42 | 102 | 67 |
 | 2026-W41 | 220 | 102 |
@@ -91,11 +91,11 @@ Last updated: 2026-11-01
 | 2026-W34 | 547 | 40 |
 | 2026-W33 | 4002 | 3523 |
 | 2026-W32 | 212 | 69 |
-| 2026-W31 | 238 | 85 |
 
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-11 | 17 | 13 |
 | 2026-10 | 656 | 338 |
 | 2026-09 | 2087 | 280 |
 | 2026-08 | 4965 | 3719 |
@@ -108,13 +108,23 @@ Last updated: 2026-11-01
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 13376 | 6862 |
+| 2026 | 13393 | 6875 |
 
 ## Referrers
 
 ### Weekly (最大2週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
+| 2026-W45 | Google | 107 | 70 |
+| 2026-W45 | yseto.net | 90 | 67 |
+| 2026-W45 | aocr.org | 39 | 39 |
+| 2026-W45 | seto77.github.io | 28 | 24 |
+| 2026-W45 | github.com | 16 | 11 |
+| 2026-W45 | Bing | 9 | 9 |
+| 2026-W45 | tooomm.github.io | 7 | 1 |
+| 2026-W45 | spectrum.um.edu.my | 3 | 2 |
+| 2026-W45 | e-microscopy.wp.st-andrews.ac.uk | 2 | 2 |
+| 2026-W45 | link.zhihu.com | 2 | 2 |
 | 2026-W44 | yseto.net | 657 | 490 |
 | 2026-W44 | Google | 610 | 419 |
 | 2026-W44 | aocr.org | 250 | 250 |
@@ -129,33 +139,20 @@ Last updated: 2026-11-01
 | 2026-W44 | link.zhihu.com | 4 | 4 |
 | 2026-W44 | Yahoo | 2 | 2 |
 | 2026-W44 | kaiyuanbang.cn | 2 | 2 |
-| 2026-W43 | Google | 701 | 458 |
-| 2026-W43 | yseto.net | 624 | 473 |
-| 2026-W43 | Bing | 102 | 91 |
-| 2026-W43 | seto77.github.io | 95 | 88 |
-| 2026-W43 | github.com | 90 | 82 |
-| 2026-W43 | tooomm.github.io | 67 | 7 |
-| 2026-W43 | aocr.org | 33 | 33 |
-| 2026-W43 | Yahoo | 16 | 16 |
-| 2026-W43 | spectrum.um.edu.my | 15 | 10 |
-| 2026-W43 | chatgpt.com | 12 | 12 |
-| 2026-W43 | ekp.kims.re.kr | 12 | 4 |
-| 2026-W43 | kaiyuanbang.cn | 10 | 10 |
-| 2026-W43 | away.vk.ru | 8 | 4 |
 
 ### Monthly (最大3か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026-11 | Google | 107 | 71 |
-| 2026-11 | yseto.net | 90 | 68 |
-| 2026-11 | aocr.org | 39 | 39 |
-| 2026-11 | seto77.github.io | 25 | 22 |
-| 2026-11 | github.com | 11 | 8 |
-| 2026-11 | Bing | 10 | 10 |
-| 2026-11 | tooomm.github.io | 8 | 1 |
-| 2026-11 | spectrum.um.edu.my | 3 | 2 |
-| 2026-11 | e-microscopy.wp.st-andrews.ac.uk | 2 | 2 |
-| 2026-11 | link.zhihu.com | 2 | 2 |
+| 2026-11 | Google | 214 | 141 |
+| 2026-11 | yseto.net | 180 | 135 |
+| 2026-11 | aocr.org | 78 | 78 |
+| 2026-11 | seto77.github.io | 53 | 46 |
+| 2026-11 | github.com | 27 | 19 |
+| 2026-11 | Bing | 19 | 19 |
+| 2026-11 | tooomm.github.io | 15 | 2 |
+| 2026-11 | spectrum.um.edu.my | 6 | 4 |
+| 2026-11 | e-microscopy.wp.st-andrews.ac.uk | 4 | 4 |
+| 2026-11 | link.zhihu.com | 4 | 4 |
 | 2026-10 | Google | 3589 | 2264 |
 | 2026-10 | yseto.net | 2768 | 2012 |
 | 2026-10 | seto77.github.io | 633 | 585 |
@@ -194,16 +191,16 @@ Last updated: 2026-11-01
 ### Yearly (無制限)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026 | Google | 25610 | 12716 |
-| 2026 | yseto.net | 14285 | 8697 |
-| 2026 | github.com | 7692 | 2864 |
-| 2026 | Bing | 5509 | 3040 |
-| 2026 | seto77.github.io | 3865 | 2415 |
-| 2026 | tooomm.github.io | 2703 | 119 |
+| 2026 | Google | 25717 | 12786 |
+| 2026 | yseto.net | 14375 | 8764 |
+| 2026 | github.com | 7708 | 2875 |
+| 2026 | Bing | 5518 | 3049 |
+| 2026 | seto77.github.io | 3893 | 2439 |
+| 2026 | tooomm.github.io | 2710 | 120 |
 | 2026 | chatgpt.com | 1137 | 687 |
-| 2026 | link.zhihu.com | 1059 | 897 |
+| 2026 | link.zhihu.com | 1061 | 899 |
+| 2026 | aocr.org | 322 | 322 |
 | 2026 | Baidu | 321 | 186 |
-| 2026 | aocr.org | 283 | 283 |
 | 2026 | DuckDuckGo | 239 | 115 |
 | 2026 | search.brave.com | 178 | 58 |
 | 2026 | Yahoo | 105 | 87 |
@@ -211,14 +208,14 @@ Last updated: 2026-11-01
 | 2026 | claude.ai | 77 | 29 |
 | 2026 | doubao.com | 74 | 38 |
 | 2026 | snot.cat.pdx.edu | 65 | 13 |
-| 2026 | e-microscopy.wp.st-andrews.ac.uk | 63 | 47 |
+| 2026 | e-microscopy.wp.st-andrews.ac.uk | 65 | 49 |
 | 2026 | journals.iucr.org | 62 | 32 |
 | 2026 | yuanbao.tencent.com | 60 | 15 |
 | 2026 | runtime-app.powerplatform.com | 56 | 14 |
 | 2026 | away.vk.ru | 38 | 20 |
 | 2026 | perplexity.ai | 36 | 36 |
+| 2026 | spectrum.um.edu.my | 33 | 22 |
 | 2026 | ekp.kims.re.kr | 32 | 12 |
-| 2026 | spectrum.um.edu.my | 30 | 20 |
 | 2026 | lukmuk.github.io | 26 | 15 |
 | 2026 | statics.teams.cdn.office.net | 20 | 15 |
 | 2026 | kaiyuanbang.cn | 18 | 18 |
@@ -235,6 +232,16 @@ Last updated: 2026-11-01
 ### Weekly (最大2週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-W45 | /seto77/ReciPro | Overview | 201 | 136 |
+| 2026-W45 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 165 | 113 |
+| 2026-W45 | /seto77/ReciPro/releases | /releases | 29 | 21 |
+| 2026-W45 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 22 | 22 |
+| 2026-W45 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 17 | 13 |
+| 2026-W45 | /seto77/ReciPro/issues | /issues | 16 | 9 |
+| 2026-W45 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 10 | 8 |
+| 2026-W45 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 7 | 7 |
+| 2026-W45 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 6 | 6 |
+| 2026-W45 | /seto77/ReciPro/blob/9c337768/README.md | /blob/9c337768/README.md | 5 | 5 |
 | 2026-W44 | /seto77/ReciPro | Overview | 1113 | 812 |
 | 2026-W44 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 1090 | 741 |
 | 2026-W44 | /seto77/ReciPro/releases | /releases | 194 | 122 |
@@ -248,32 +255,20 @@ Last updated: 2026-11-01
 | 2026-W44 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 20 | 20 |
 | 2026-W44 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 12 | 12 |
 | 2026-W44 | /seto77/ReciPro/tree/master | /tree/master | 6 | 5 |
-| 2026-W43 | /seto77/ReciPro | Overview | 1219 | 880 |
-| 2026-W43 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 1100 | 764 |
-| 2026-W43 | /seto77/ReciPro/releases | /releases | 293 | 157 |
-| 2026-W43 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 117 | 92 |
-| 2026-W43 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 92 | 68 |
-| 2026-W43 | /seto77/ReciPro/issues | /issues | 84 | 49 |
-| 2026-W43 | /seto77/ReciPro/blob/master/docs/ReciProSetoOhtsuka2022.pdf | /blob/master/docs/ReciProSetoOhtsuka2022.pdf | 69 | 48 |
-| 2026-W43 | /seto77/ReciPro/releases/tag/v.4.948 | /releases/tag/v.4.948 | 61 | 37 |
-| 2026-W43 | /seto77/ReciPro/tree/master | /tree/master | 48 | 41 |
-| 2026-W43 | /seto77/ReciPro/blob/master/docs/readme/README.ja.md | /blob/master/docs/readme/README.ja.md | 27 | 18 |
-| 2026-W43 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 22 | 22 |
-| 2026-W43 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 10 | 10 |
 
 ### Monthly (最大3か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-11 | /seto77/ReciPro | Overview | 193 | 135 |
-| 2026-11 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 160 | 111 |
-| 2026-11 | /seto77/ReciPro/releases | /releases | 28 | 20 |
-| 2026-11 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 22 | 22 |
-| 2026-11 | /seto77/ReciPro/issues | /issues | 18 | 10 |
-| 2026-11 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 17 | 13 |
-| 2026-11 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 10 | 8 |
-| 2026-11 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 7 | 7 |
-| 2026-11 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 6 | 6 |
-| 2026-11 | /seto77/ReciPro/blob/9c337768/README.md | /blob/9c337768/README.md | 5 | 5 |
+| 2026-11 | /seto77/ReciPro | Overview | 394 | 271 |
+| 2026-11 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 325 | 224 |
+| 2026-11 | /seto77/ReciPro/releases | /releases | 57 | 41 |
+| 2026-11 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 44 | 44 |
+| 2026-11 | /seto77/ReciPro/issues | /issues | 34 | 19 |
+| 2026-11 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 34 | 26 |
+| 2026-11 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 20 | 16 |
+| 2026-11 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 14 | 14 |
+| 2026-11 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 12 | 12 |
+| 2026-11 | /seto77/ReciPro/blob/9c337768/README.md | /blob/9c337768/README.md | 10 | 10 |
 | 2026-10 | /seto77/ReciPro | Overview | 6538 | 4471 |
 | 2026-10 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 3311 | 2296 |
 | 2026-10 | /seto77/ReciPro/releases/tag/v.4.948 | /releases/tag/v.4.948 | 2568 | 1614 |
@@ -314,12 +309,12 @@ Last updated: 2026-11-01
 ### Yearly (無制限)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026 | /seto77/ReciPro | Overview | 36986 | 23543 |
-| 2026 | /seto77/ReciPro/releases | /releases | 8613 | 4473 |
+| 2026 | /seto77/ReciPro | Overview | 37187 | 23679 |
+| 2026 | /seto77/ReciPro/releases | /releases | 8642 | 4494 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.948 | /releases/tag/v.4.948 | 7967 | 4795 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 3471 | 2407 |
-| 2026 | /seto77/ReciPro/issues | /issues | 3318 | 1912 |
-| 2026 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 2944 | 2086 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.949 | /releases/tag/v.4.949 | 3636 | 2520 |
+| 2026 | /seto77/ReciPro/issues | /issues | 3334 | 1921 |
+| 2026 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 2954 | 2094 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.946 | /releases/tag/v.4.946 | 2838 | 1623 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.923 | /releases/tag/v.4.923 | 1948 | 1274 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.947 | /releases/tag/v.4.947 | 1928 | 1233 |
@@ -332,7 +327,7 @@ Last updated: 2026-11-01
 | 2026 | /seto77/ReciPro/releases/tag/v.4.942 | /releases/tag/v.4.942 | 1221 | 879 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 1197 | 737 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.927 | /releases/tag/v.4.927 | 1071 | 786 |
-| 2026 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 1044 | 740 |
+| 2026 | /seto77/ReciPro/blob/master/docs/readme/README.zh-Hans.md | /blob/master/docs/readme/README.zh-Hans.md | 1061 | 753 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 1028 | 92 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.928 | /releases/tag/v.4.928 | 1004 | 641 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.940 | /releases/tag/v.4.940 | 989 | 459 |
@@ -352,10 +347,10 @@ Last updated: 2026-11-01
 | 2026 | /seto77/ReciPro/actions | /actions | 248 | 79 |
 | 2026 | /seto77/ReciPro/stargazers | /stargazers | 231 | 24 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.895 | /releases/tag/v.4.895 | 224 | 126 |
+| 2026 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 198 | 198 |
 | 2026 | /seto77/ReciPro/blob/master/docs/src/ja/appendix/a3-bloch-wave/index.md | /blob/master/docs/src/ja/appendix/a3-bloch-wave/index.md | 183 | 12 |
 | 2026 | /seto77/ReciPro/blob/master/README.md | /blob/master/README.md | 179 | 145 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.939 | /releases/tag/v.4.939 | 178 | 160 |
-| 2026 | /seto77/ReciPro/blob/9c337768/Version.cs | /blob/9c337768/Version.cs | 176 | 176 |
 | 2026 | /seto77/ReciPro/issues/65 | /issues/65 | 113 | 79 |
 | 2026 | /seto77/ReciPro/issues/55 | /issues/55 | 104 | 69 |
 | 2026 | /seto77/ReciPro/issues/61 | /issues/61 | 99 | 74 |
@@ -366,18 +361,18 @@ Last updated: 2026-11-01
 | 2026 | /seto77/ReciPro/blob/master/docs/src/ja/appendix/a3-bloch-wave/calculation.md | /blob/master/docs/src/ja/appendix/a3-bloch-wave/calculation.md | 56 | 5 |
 | 2026 | /seto77/ReciPro/blob/master/LICENSE.md | /blob/master/LICENSE.md | 47 | 31 |
 | 2026 | /seto77/ReciPro/issues/64 | /issues/64 | 40 | 40 |
-| 2026 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 30 | 30 |
+| 2026 | /seto77/ReciPro/wiki/8.2.-STEM-simulation | /wiki/8.2.-STEM-simulation | 37 | 37 |
+| 2026 | /seto77/ReciPro/blob/9c337768/README.md | /blob/9c337768/README.md | 30 | 30 |
 | 2026 | /seto77/ReciPro/tree/master/ReciProSetup.Wix | /tree/master/ReciProSetup.Wix | 29 | 17 |
 | 2026 | /seto77/ReciPro/tree/master/.github | /tree/master/.github | 27 | 19 |
 | 2026 | /seto77/ReciPro/tree/master/docs | /tree/master/docs | 27 | 21 |
-| 2026 | /seto77/ReciPro/blob/9c337768/README.md | /blob/9c337768/README.md | 25 | 25 |
 | 2026 | /seto77/ReciPro/tree/master/ReciPro/DiffractionSimulator | /tree/master/ReciPro/DiffractionSimulator | 24 | 20 |
 | 2026 | /seto77/ReciPro/tree/v.4.944 | /tree/v.4.944 | 24 | 8 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 18 | 18 |
 | 2026 | /seto77/ReciPro/pulls | /pulls | 16 | 15 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.941 | /releases/tag/v.4.941 | 15 | 10 |
 | 2026 | /seto77/ReciPro/issues/58 | /issues/58 | 14 | 8 |
 | 2026 | /seto77/ReciPro/wiki/7.-Diffraction-simulator | /wiki/7.-Diffraction-simulator | 12 | 7 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.906 | /releases/tag/v.4.906 | 12 | 12 |
 | 2026 | /seto77/ReciPro/issues/9 | /issues/9 | 10 | 10 |
 | 2026 | /seto77/ReciPro/tree/master/Crystallography | /tree/master/Crystallography | 8 | 6 |
 | 2026 | /seto77/ReciPro/wiki/ja.20.-Macro | /wiki/ja.20.-Macro | 7 | 3 |
@@ -388,10 +383,10 @@ Last updated: 2026-11-01
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.949 | 2026-10-04 | ReciPro-setup.msi | 672 |
+| v.4.949 | 2026-10-04 | ReciPro-setup.msi | 703 |
 | v.4.949 | 2026-10-04 | ReciPro-setup_arm64.msi | 29 |
-| v.4.949 | 2026-10-04 | ReciPro-v.4.949.zip | 118 |
-| v.4.949 | 2026-10-04 | ReciPro-v.4.949_arm64.zip | 23 |
+| v.4.949 | 2026-10-04 | ReciPro-v.4.949.zip | 121 |
+| v.4.949 | 2026-10-04 | ReciPro-v.4.949_arm64.zip | 24 |
 | v.4.949 | 2026-10-04 | ReciProSetup.msi | 32 |
 | v.4.948 | 2026-08-29 | ReciPro-setup.msi | 816 |
 | v.4.948 | 2026-08-29 | ReciPro-setup_arm64.msi | 48 |
@@ -471,13 +466,14 @@ Last updated: 2026-11-01
 | v.4.921 | 2026-04-01 | ReciProSetup.msi | 88 |
 | v.4.919 | 2026-03-20 | ReciProSetup.msi | 132 |
 
-**TOTAL: 6750**
+**TOTAL: 6785**
 
 ## Stats
 
 ### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-11-02 | 194 | 14 | 39 | 7 |
 | 2026-11-01 | 193 | 14 | 39 | 7 |
 | 2026-10-31 | 194 | 14 | 39 | 7 |
 | 2026-10-30 | 194 | 14 | 39 | 7 |
@@ -491,11 +487,11 @@ Last updated: 2026-11-01
 | 2026-10-22 | 194 | 14 | 39 | 7 |
 | 2026-10-21 | 194 | 14 | 39 | 7 |
 | 2026-10-20 | 193 | 14 | 39 | 7 |
-| 2026-10-19 | 193 | 14 | 39 | 7 |
 
 ### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-W45 | 194 | 14 | 39 | 7 |
 | 2026-W44 | 193 | 14 | 39 | 7 |
 | 2026-W43 | 194 | 14 | 39 | 7 |
 | 2026-W42 | 193 | 14 | 39 | 7 |
@@ -509,12 +505,11 @@ Last updated: 2026-11-01
 | 2026-W34 | 182 | 14 | 39 | 7 |
 | 2026-W33 | 176 | 14 | 39 | 7 |
 | 2026-W32 | 175 | 14 | 39 | 7 |
-| 2026-W31 | 175 | 14 | 39 | 7 |
 
 ### Monthly (最大12か月保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-11 | 193 | 14 | 39 | 7 |
+| 2026-11 | 194 | 14 | 39 | 7 |
 | 2026-10 | 194 | 14 | 39 | 7 |
 | 2026-09 | 190 | 14 | 39 | 7 |
 | 2026-08 | 185 | 13 | 39 | 7 |
@@ -526,6 +521,6 @@ Last updated: 2026-11-01
 ### Yearly (無制限)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026 | 193 | 14 | 39 | 7 |
+| 2026 | 194 | 14 | 39 | 7 |
 
-<!-- meta: last_collected_paths=2026-11-01 last_collected_referrers=2026-11-01 -->
+<!-- meta: last_collected_paths=2026-11-02 last_collected_referrers=2026-11-02 -->
