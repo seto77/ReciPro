@@ -7,6 +7,14 @@
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
+## v.4.951 (2026-11-05)
+
+Added 'Details of the chemical composition' to the crystal right-click menu (wt%, at%, normalized atoms, oxide/halide/sulfide conversion). Hidden windows no longer block Windows shutdown, and reordered atoms keep their display checks.
+
+- **Chemical composition**: right-click the crystal panel of the main window and choose **Details of the chemical composition** for the wt%, at% and normalized number of atoms of each element, and for a formal conversion to oxides, halides or sulfides with editable valences (see [Main window](0-main-window.md#chemical-composition)). The window was added to the shared library in October but had been left out of v.4.950.
+- **Windows shutdown (fix)**: once opened, windows that only hide when closed (such as Symmetry Information or Beam Interaction) made Windows report that ReciPro was preventing shutdown or restart. ReciPro no longer blocks it.
+- **Atom list (fix)**: after an atom was moved with Up/Down, the check that shows or hides each atom in the structure viewer could act on a different atom until the next edit. Reordering now updates the crystal at once.
+
 ## v.4.950 (2026-11-04)
 
 EBSD now asks before building a master pattern when atoms have B = 0, which gave a blank pattern. Fixed beam selection that varied between runs for body-centred crystals and U0 carried over between energies in EBSD; atomic weights follow CIAAW 2024.
