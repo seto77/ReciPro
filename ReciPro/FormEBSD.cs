@@ -369,6 +369,9 @@ public partial class FormEBSD : FormBase
     public FormEBSD()
     {
         InitializeComponent();
+        // 261104Cl 追加 (issue #68): ステータスバー詳細欄 (AutoSize=False + Spring) の幅を小さく戻す。この幅が「本来ほしい幅」になり、
+        //   入らないと欄が丸ごと隠れる。VS デザイナで保存し直すと resx の Size にレイアウト後の幅 (約 1260 px) が書かれるので、ここで毎回戻す。
+        toolStripStatusLabelDetail.Size = new Size(1, toolStripStatusLabelDetail.Height);
         numericBoxCoherenceLossDecay.TextChanged += CoherenceLossDecay_TextChanged; // (260928Ch) 同値の再入力や貼り付けも分布別既定値の追従に反映
         HelpPage = "12-ebsd-simulation"; //260529Cl 追加
         // 260731Cl 追加: ダークモード時、ステレオネット (PoleFigureControl) に重ねて配置したチェックボックスとラベルの
@@ -1264,9 +1267,12 @@ public partial class FormEBSD : FormBase
     /// <summary>直近に表示した EBSD 描画ステータス (経過時間を除いた部分)。260726Cl 追加:
     /// 同じ内容の再描画でステータスバーを書き換えないための鍵。パン・ズーム・回転が完了メッセージを潰さないようにする</summary>
     string lastEbsdRenderStatusKey = null;
-    /// <summary>260919Cl 追加: 直近に構築した MasterPattern の B=0 警告 (" | WARNING: ..." または空)。完了時のステータスは直後の preview 描画
-    /// (DrawMasterPattern2D の "MasterPattern preview" 行) に上書きされるので、preview 側の行にも同じ警告を付ける</summary>
+    /// <summary>260919Cl 追加: 直近に構築した MasterPattern の B=0 警告 ("WARNING: ... | " または空)。完了時のステータスは直後の preview 描画
+    /// (DrawMasterPattern2D の "MasterPattern preview" 行) に上書きされるので、preview 側の行にも同じ警告を付ける。
+    /// 261104Cl 変更: 末尾 → 文頭へ。詳細欄は狭いと右端で切れるので (Designer 冒頭の 261104Cl 注記)、警告を先に置いて残す</summary>
     string masterPatternBWarning = "";
+    /// <summary>261104Cl 追加: 自動実行 (PrepareCaptureForGuiAudit) からの構築では B=0 の確認ダイアログを出さない (モーダルで止まるため)</summary>
+    bool skipDisplacementParameterPrompt;
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
     private double[] ebsdValuesFlattened = []; // 260920Cl 追加: 背景平坦化 (ImageProcess.SubtractGaussianBackground) の出力バッファ (ebsdValues は生値のまま)
     private double[] ebsdValuesPadded = [], ebsdValuesPaddedFlattened = []; // 260921Cl 追加: 平坦化の縁対策で視野の外側まで広げて合成・平坦化するバッファ (DrawEBSDCore の pad 参照)
@@ -3105,17 +3111,23 @@ public partial class FormEBSD : FormBase
     /// 260524Cl 追加: --capture 用。Show しただけでは MasterPattern が無いため、Build MasterPattern を起動するだけ。
     /// build は非同期かつ重い (MonteCarlo + Bethe) が、完了判定は凝ったことをせず、GuiCapture 側が
     /// 「画面が変化しなくなったら完了」と見なす (5秒ごとの画面比較)。通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// 261104Cl 追記: B=0 の確認ダイアログは出さない (B=0 のまま構築し、完了時のステータスの警告だけ)。tools のハーネスもここを通る。
     /// </summary>
     internal void PrepareCaptureForGuiAudit() // 260919Cl: 外部ハーネスは InternalsVisibleTo で internal のまま使う
     {
         if (FormMain?.Crystal == null || masterPatternEbsd.IsBuilding)
             return;
-        buttonCreateMasterPattern_Click(buttonCreateMasterPattern, EventArgs.Empty); // Build MasterPattern ボタン相当を起動 (async)。完了判定は GuiCapture の画面安定待ちに委ねる。
+        // buttonCreateMasterPattern_Click(buttonCreateMasterPattern, EventArgs.Empty); // Build MasterPattern ボタン相当を起動 (async)。完了判定は GuiCapture の画面安定待ちに委ねる。 // 261104Cl 変更前
+        // 261104Cl 変更: B=0 の確認ダイアログで自動実行が止まらないようにする。確認はハンドラ冒頭 (最初の await より前) で読むので、呼び出しが返った時点で戻してよい
+        skipDisplacementParameterPrompt = true;
+        try { buttonCreateMasterPattern_Click(buttonCreateMasterPattern, EventArgs.Empty); } // Build MasterPattern ボタン相当を起動 (async)。完了判定は GuiCapture の画面安定待ちに委ねる。
+        finally { skipDisplacementParameterPrompt = false; }
     }
 
     /// <summary>
     /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
     /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
+    /// 261104Cl 追記: 例外として、構築前に B=0 のサイトを確認し、ユーザーが OK したら結晶へ B=0.5 Å² を書き込む (結晶を変更する唯一の箇所)。
     /// 260527Cl: 直上に PrepareCaptureForGuiAudit を挿入した際に当メソッドの doc が剥がれていたので戻した。
     /// </summary>
     private async void buttonCreateMasterPattern_Click(object sender, EventArgs e)
@@ -3129,6 +3141,39 @@ public partial class FormEBSD : FormBase
         #endregion
         if (masterPatternEbsd.IsBuilding)
             return;
+
+        // 261104Cl 追加 (GitHub issue #68): B=0 の原子があると吸収ポテンシャル U' がゼロで、非局所源 ON では MasterPattern が全面 0 (真っ黒) になる。
+        //   B=0 (静止格子) は非物理なのでそのまま計算せず、構築前に確認する。完了時のステータスバー警告は、ウィンドウ幅が足りないと
+        //   詳細欄ごと消えて (StatusStrip は収まらない欄を丸ごと隠す) 見落とされていた。標準値 0.5 Å² は作者決定 (室温の無機結晶の目安。Si 0.46 Å²)。
+        //   OK のときは結晶そのものに書き込む (作者決定: MC・Bethe・MasterPattern ファイルの照合・他の計算が同じ B を使うように)。
+        //   異方性 (Bij 入力済み) のサイトは対象外: GUI の異方性入力は Iso=0 のまま渡るので BisoEffective が 0 を返すが、上書きすると Bij が失われる。
+        //   ダイアログ表示中もメイン画面は操作できるので、結晶が切り替わっていたら書き込まずに抜ける。
+        var crystal = Crystal;
+        var zeroBSites = crystal.Atoms.Where(a => (a.Dsf?.BisoEffective ?? 0) <= 0 && a.Dsf is not { UseIso: false, IsZero: false }).ToArray();
+        if (zeroBSites.Length > 0 && !skipDisplacementParameterPrompt)
+        {
+            const double defaultBAng2 = 0.5;
+            var message = $"{zeroBSites.Length} of {crystal.Atoms.Length} atom site(s) in \"{crystal.Name}\" have B = 0 (the atomic displacement parameter is not set).\r\n\r\n"
+                + "With B = 0 these sites cause no thermal diffuse scattering, so they add no absorption and no non-local backscatter source. If every site has B = 0, the master pattern with the non-local source is blank.\r\n\r\n"
+                + $"OK: set B = {defaultBAng2.ToString(CultureInfo.InvariantCulture)} Å² (isotropic) for these site(s) and build. You can change the value later in the atom list of the main window.\r\n"
+                + "Cancel: do not build (set B yourself in the main window).";
+            if (MessageBox.Show(this, message, "Atomic displacement parameter B", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK || !ReferenceEquals(crystal, Crystal))
+                return;
+            foreach (var a in zeroBSites)
+                if (a.Dsf == null)
+                    a.Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, defaultBAng2 / 100.0, 0, new double[6], new double[6], crystal.CellValue); // Å² → nm²
+                else
+                {   // 既存の型 (U/B)・Bij・誤差は残し、等方に切り替えて Iso だけ入れる。異方性指定で Bij が全部 0 でも Iso に正の値があればそれを使う
+                    a.Dsf.UseIso = true;
+                    if (!(a.Dsf.Iso > 0))
+                        a.Dsf.Iso = a.Dsf.OriginalType == DiffuseScatteringFactor.Type.B ? defaultBAng2 / 100.0 : defaultBAng2 / 100.0 / (8 * Math.PI * Math.PI); // Å² → nm² (U 型は B/8π²)
+                }
+            // 同じ結晶オブジェクトを書き換えたので、回折・像シミュレータが使う crystal.Bethe の U キャッシュ (電圧が変わるまで残る) と固有解 (回転・電圧が同じなら再利用) を捨てる
+            crystal.Bethe?.ClearUCache();
+            if (crystal.Bethe != null)
+                crystal.Bethe.EigenValues = null;
+            FormMain.Crystal = crystal; // 原子表の表示を更新し、各フォームへ変更を伝える (SetCrystal で B=0 の旧 MasterPattern も破棄される)
+        }
 
         buttonCreateMasterPattern.Enabled = false; // (260327Ch) MC 前処理中の多重起動を防ぐ
         comboBoxMonteCarloDepthMode.Enabled = numericBoxAmorphousLayer.Enabled = flowLayoutPanelPhosphorWeight.Enabled = false; // 260919Cl 追加 (/simplify2): 構築中の再ビニングと結果の取り合いを防ぐ
@@ -3277,8 +3322,10 @@ public partial class FormEBSD : FormBase
         composedPatternCache = default; //260725Ch: 完成前の MasterPattern を保持するキャッシュを明示的に破棄
         // 260919Cl 追加 (codex 助言): 原子変位パラメータ未設定 (B=0) の原子があると吸収ポテンシャル U' がゼロ (吸収なし・非局所源ゼロ・再注入ゼロ) なので明示する。DB の初期結晶は Dsf が空のものが多い。
         //   後続の DrawMasterPattern2D が preview 行でステータスを上書きするので、文字列はフィールドに持ち両方の行に付ける (ハーネス実測: 完了行は数百 ms で消えていた)
-        int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0);
-        masterPatternBWarning = sitesWithoutB > 0 ? $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B." : "";
+        // int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0); // 261104Cl 変更前
+        int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0 && a.Dsf is not { UseIso: false, IsZero: false }); // 261104Cl 変更: 構築前の確認と同じ判定 (Bij 入力済みの異方性サイトは「B 未設定」と言わない)
+        // masterPatternBWarning = sitesWithoutB > 0 ? $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B." : ""; // 261104Cl 変更前
+        masterPatternBWarning = sitesWithoutB > 0 ? $"WARNING: B = 0 at {sitesWithoutB} atom site(s) (no absorption). Set B in the atom list of the main window. | " : ""; // 261104Cl 変更: 文頭に置く形へ (切れても先頭が残るよう要点を前に)
         InvalidateIndexingResults(); //260725Ch: 新しい MasterPattern に対して旧候補・実行中探索を適用させない
         UpdateMasterPatternSelectors();
         trackBarMasterPatternDepth.Value = MasterPattern.Depths.Length / 2; // 260725Ch: build直後は低コントラストな最小depthではなく中央付近を初期表示
@@ -3293,10 +3340,11 @@ public partial class FormEBSD : FormBase
         StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabelProgress, 1.0, "", elapsed);
         // toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
         //toolStripStatusLabelDetail.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合 //260921Cl 変更前 (引数化)
-        toolStripStatusLabelDetail.Text = detail;
+        // toolStripStatusLabelDetail.Text = detail; // 261104Cl 変更前
         // int sitesWithoutB = Crystal.Atoms.Count(a => (a.Dsf?.BisoEffective ?? 0) <= 0); // 260919Cl 変更前: ここで計算・追記していたが直後の preview 行に潰されていた
         // if (sitesWithoutB > 0) toolStripStatusLabelDetail.Text += $" | WARNING: {sitesWithoutB} atom site(s) have B = 0 (no absorption). Set the atomic displacement parameter B.";
-        toolStripStatusLabelDetail.Text += masterPatternBWarning; // 260919Cl 変更: フィールド化 (上で算出)
+        // toolStripStatusLabelDetail.Text += masterPatternBWarning; // 260919Cl 変更: フィールド化 (上で算出) // 261104Cl 変更前
+        toolStripStatusLabelDetail.Text = masterPatternBWarning + detail; // 261104Cl 変更: B=0 警告を文頭へ
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
@@ -3555,7 +3603,8 @@ public partial class FormEBSD : FormBase
         // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // 260406Cl 廃止: Label2+Label3へ分割
         toolStripStatusLabelSummary.Text = "MasterPattern preview";
         // toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位) // 260919Cl 変更前
-        toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm" + masterPatternBWarning; // 260919Cl 変更: B=0 警告を preview 行にも残す
+        // toolStripStatusLabelDetail.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm" + masterPatternBWarning; // 260919Cl 変更: B=0 警告を preview 行にも残す // 261104Cl 変更前
+        toolStripStatusLabelDetail.Text = masterPatternBWarning + $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 261104Cl 変更: B=0 警告を文頭へ
         masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
         masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ

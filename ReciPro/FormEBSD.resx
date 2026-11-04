@@ -6470,6 +6470,9 @@ does the same. There is no undo.</value>
   <data name="toolStripStatusLabelSummary.Text" xml:space="preserve">
     <value>   </value>
   </data>
+  <data name="toolStripStatusLabelDetail.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="toolStripStatusLabelDetail.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -6478,6 +6481,9 @@ does the same. There is no undo.</value>
   </data>
   <data name="toolStripStatusLabelDetail.Text" xml:space="preserve">
     <value>   </value>
+  </data>
+  <data name="toolStripStatusLabelDetail.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="scalablePictureBoxAdvancedMasterPattern2D.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

@@ -75,6 +75,15 @@
         //     "MasterPattern failed" を表示する (プロセスは落ちない)。
         // 260917Cl 追加: captureExtender.SetCapture(tabPageMasterPattern3D, true)
         //   … 3D タブ (Save movie ボタンがある) は既定選択タブでないため、これが無いとマニュアル用の自動キャプチャに写らない。
+        // 261104Cl 追加 (GitHub issue #68): toolStripStatusLabelDetail.Spring = true (+ resx 側で AutoSize=False / TextAlign=MiddleLeft)。
+        //   StatusStrip は、欄の本来の幅 (= 文字列の長さ) が入らないと欄を丸ごと隠す。完了時の詳細欄 (B=0 警告付きで約 980 px) は
+        //   ウィンドウ幅約 1300 px 未満で消え、警告が見落とされた。AutoSize を切って本来の幅を小さく見せ、Spring で残り幅いっぱいに
+        //   伸ばすと、長い文も右端で切れて途中まで表示される (文頭の警告は残る)。3 つのどれが欠けても元の「丸ごと消える」に戻る。
+        //   4 つ目の条件として resx の Size の幅が小さいこと。デザイナで保存すると Size にレイアウト後の幅 (約 1260 px) が書かれて
+        //   同じ症状に戻るので、FormEBSD のコンストラクタで毎回 Size を幅 1 に戻している (261104Cl)。
+        // 261104Cl 追加 (作者指示): statusStripMain.ShowItemToolTips = true + toolStripStatusLabelDetail.AutoToolTip = true。
+        //   切れた詳細文の全文をマウスを載せたときのツールチップで見せる。AutoToolTip は ToolTipText が空のとき Text をそのまま使うので、
+        //   詳細欄の resx に ToolTipText を置かないこと (置くと固定文になる)。StatusStrip は既定で ShowItemToolTips=false (どちらが欠けても出ない)。
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -1921,6 +1930,7 @@
             statusStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelProgress, toolStripStatusLabelSummary, toolStripStatusLabelDetail });
             statusStripMain.Name = "statusStripMain";
+            statusStripMain.ShowItemToolTips = true;
             // 
             // toolStripProgressBar
             // 
@@ -1940,7 +1950,9 @@
             // toolStripStatusLabelDetail
             // 
             resources.ApplyResources(toolStripStatusLabelDetail, "toolStripStatusLabelDetail");
+            toolStripStatusLabelDetail.AutoToolTip = true;
             toolStripStatusLabelDetail.Name = "toolStripStatusLabelDetail";
+            toolStripStatusLabelDetail.Spring = true;
             // 
             // scalablePictureBoxAdvancedMasterPattern2D
             // 
