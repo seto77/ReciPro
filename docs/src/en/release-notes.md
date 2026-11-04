@@ -7,6 +7,15 @@
 
 This page describes what changed in each version of ReciPro. The [release page on GitHub](https://github.com/seto77/ReciPro/releases) gives only a one-line summary and the download links for each version; the details are written here. Versions from v.4.919 on have a section of their own; older versions are listed with their one-line summary.
 
+## v.4.950 (2026-11-04)
+
+EBSD now asks before building a master pattern when atoms have B = 0, which gave a blank pattern. Fixed beam selection that varied between runs for body-centred crystals and U0 carried over between energies in EBSD; atomic weights follow CIAAW 2024.
+
+- **EBSD ([issue #68](https://github.com/seto77/ReciPro/issues/68))**: with the non-local backscatter source, a crystal whose atoms have no displacement parameter (B = 0) gave an all-black master pattern. Before the build, a dialog now offers to set an isotropic B = 0.5 Å² on those sites (anisotropic Bij are kept) or to cancel. In a narrow window the status bar used to hide a long message altogether; it now cuts it off at the right edge, puts the B = 0 warning first and shows the whole text on hover.
+- **Body-centred crystals (fix)**: for I lattices the beam selection followed a hash order that changed from process to process, so CBED and other dynamical results could differ between runs (relative CBED differences up to 0.76 for α-Fe and 0.98 for pyrope). The order is now fixed; other lattice types are unchanged.
+- **Multi-energy calculations (fix)**: the mean inner potential U₀ was cached under a key that ignored the accelerating voltage, so every energy of an EBSD master pattern after the first used the previous energy's U₀ (about 0.94 % per 5 kV step, a few ppm in the wave number). Single-voltage results are unchanged.
+- **Atomic weights**: CIAAW 2024 standard atomic weights; the formula and density calculation no longer fails for zero or negative occupancies.
+
 ## v.4.949 (2026-10-04)
 
 Reworked the EBSD simulation (non-local backscatter source on by default, Monte Carlo depth and energy modelling, background flattening, zone-axis picking, rotation movie). Updated the embedded Temari ionization (dataset 7.0.0) and scattering-factor (dataset-factors v2.0.0, now also in the TDS absorption) tables, fixed an error in the native EBSD solver (v.4.918–v.4.948), and added optional X-ray line series to STEM-EDX and ALCHEMI.
