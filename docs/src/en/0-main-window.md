@@ -185,7 +185,7 @@ Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load 
 
 ![Crystal Control](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), and **Z** (number of formula units per unit cell). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows.
+The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), and **Z** (number of formula units per unit cell). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows. Right-click the panel and choose [Details of the chemical composition](#chemical-composition) for wt%, at% and conversion to oxides.
 
 ### Basic Info tab
 
@@ -247,14 +247,25 @@ Right-click an empty area of the control for these main actions:
 
 | Menu item | Action |
 |-----------|------|
+| Details of the chemical composition | Open the [Details of the chemical composition](#chemical-composition) window (wt%, at%, normalized atoms, conversion to oxides). |
 | Beam Interaction | Open the [Beam Interaction](3-beam-interaction.md) window. |
-| Symmetry information | Open the [Symmetry Information](2-symmetry-information.md) window. |
-| Import from CIF, AMC | Load a crystal from a CIF / AMC file. |
+| Symmetry Information | Open the [Symmetry Information](2-symmetry-information.md) window. |
+| Import from CIF or AMC... | Load a crystal from a CIF / AMC file. |
 | Export to CIF | Export the current crystal as CIF. |
 | Revert cell constants | Restore the cell constants to the values first loaded. |
-| Convert to P1 spacegroup | Expand the structure to space group P1. |
+| Convert to P1 Space Group | Expand the structure to space group P1. |
 | Convert to a superstructure | Convert to a superstructure with integer multiples of a, b, c (size dialog). |
-| Convert to an equivalent space group | Convert to an equivalent space group (a different axis setting). |
+| Change the axes/origin setting | Convert to an equivalent space group (a different axis setting). |
+
+#### Details of the chemical composition {#chemical-composition}
+
+![Details of the chemical composition](../assets/cap-en-auto/FormChemicalComposition.png)
+
+Shows the composition of the current crystal, computed from the atom list (the number of atoms of each element is the sum of multiplicity × occupancy over its sites). The window follows the crystal selected in the main window.
+
+- The right table lists **wt%**, **at%** and **Atoms (normalized)** for each element; the left table lists the atoms per unit cell. Click a box in the normalized column of the left table to make that element the basis, then type its number of atoms (e.g. O = 24). By default the basis is O (or the first element) and the normalized column shows the chemical formula.
+- **Oxides**, **Halides** and **Sulfides** (only those that apply to the crystal are shown) convert the composition formally into components, using the **Valence** of each element. Valences can be edited (fractions such as 8/3 are accepted). Unless entered, Fe is 2, other elements take the valence of the ion chosen for the X-ray scattering factor, or else a common oxidation state. **Σ=0** sets the valence that makes the total charge zero, and **Default** clears the entered valences. Entered valences are kept with the crystal and saved in XML crystal lists.
+- **Input order** / **Atomic number** switch the order of the elements.
 
 ---
 

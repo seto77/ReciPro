@@ -1420,6 +1420,10 @@ public partial class FormMain : FormBase
             yield return groupRelations;
         if (crystalControl.FormBeamInteraction != null)
             yield return crystalControl.FormBeamInteraction;
+        // 261105Cl 追加: 化学組成の詳細 (CrystalControl の右クリックから開く)。初めて使う時に作るフォームなので、ここで作らせて
+        // 配線済み (CrystalControl = 現在結晶) のインスタンスを撮る (reflection 単独生成だと CrystalControl が無く表が空)
+        if (crystalControl.FormChemicalComposition != null)
+            yield return crystalControl.FormChemicalComposition;
         // 260524Cl 追加: FormStructureViewer は reflection 単独生成だと formMain=null で結晶が無く、原子タブ等が空で
         // クロップされない。FormMain が保持する配線済みインスタンスを渡すと、Show 時の VisibleChanged で
         // 現在結晶 (spinel) が SetGLObjects され、原子タブ含め代表状態で撮れる (reflection 版を上書き)。

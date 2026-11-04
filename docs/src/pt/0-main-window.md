@@ -185,7 +185,7 @@ Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos 
 
 ![Crystal Control](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos) e **Z** (número de unidades de fórmula por célula unitária). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md).
+A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos) e **Z** (número de unidades de fórmula por célula unitária). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md). Para % em massa, % atômica e conversão em óxidos, clique com o botão direito e escolha [Detalhes da composição química](#chemical-composition).
 
 ### Aba Basic Info
 
@@ -247,14 +247,25 @@ Clique direito em uma área vazia do controle para estas ações principais:
 
 | Item de menu | Ação |
 |-----------|------|
-| Beam Interaction | Abre a janela [Interação do feixe](3-beam-interaction.md). |
-| Symmetry information | Abre a janela [Informação de simetria](2-symmetry-information.md). |
-| Import from CIF, AMC | Carrega um cristal de um arquivo CIF / AMC. |
-| Export to CIF | Exporta o cristal atual como CIF. |
-| Revert cell constants | Restaura as constantes de célula para os valores carregados inicialmente. |
-| Convert to P1 spacegroup | Expande a estrutura para o grupo espacial P1. |
-| Convert to a superstructure | Converte em uma superestrutura com múltiplos inteiros de a, b, c (caixa de diálogo de tamanho). |
-| Convert to an equivalent space group | Converte em um grupo espacial equivalente (uma configuração de eixos diferente). |
+| Detalhes da composição química | Abre a janela [Detalhes da composição química](#chemical-composition) (% em massa, % atômica, número de átomos normalizado, conversão em óxidos). |
+| Interação do feixe | Abre a janela [Interação do feixe](3-beam-interaction.md). |
+| Informação de simetria | Abre a janela [Informação de simetria](2-symmetry-information.md). |
+| Importar de CIF ou AMC... | Carrega um cristal de um arquivo CIF / AMC. |
+| Exportar para CIF | Exporta o cristal atual como CIF. |
+| Reverter constantes de célula | Restaura as constantes de célula para os valores carregados inicialmente. |
+| Converter para o grupo espacial P1 | Expande a estrutura para o grupo espacial P1. |
+| Converter em superestrutura | Converte em uma superestrutura com múltiplos inteiros de a, b, c (caixa de diálogo de tamanho). |
+| Alterar configuração de eixos/origem | Converte em um grupo espacial equivalente (uma configuração de eixos diferente). |
+
+#### Detalhes da composição química {#chemical-composition}
+
+![Detalhes da composição química](../assets/cap-pt-auto/FormChemicalComposition.png)
+
+Mostra a composição do cristal atual, calculada a partir da lista de átomos (o número de átomos de cada elemento é a soma de multiplicidade × ocupação nos seus sítios). A janela acompanha o cristal selecionado na janela principal.
+
+- A tabela da direita mostra **% em massa**, **% atômica** e **Átomos (normalizados)** de cada elemento; a tabela da esquerda mostra os átomos por célula. Clique numa caixa da coluna normalizada da tabela esquerda para usar esse elemento como referência e digite o seu número de átomos (por exemplo, O = 24). Por padrão a referência é O (ou o primeiro elemento) e a coluna normalizada mostra a fórmula química.
+- **Óxidos**, **Haletos** e **Sulfetos** (só aparecem os aplicáveis ao cristal) convertem formalmente a composição em componentes usando a **Valência** de cada elemento. As valências podem ser editadas (frações como 8/3 são aceitas). Se não forem digitadas, Fe vale 2, os demais elementos usam a valência do íon escolhido para o fator de espalhamento de raios X ou, se não houver, um estado de oxidação comum. **Σ=0** define a valência que anula a carga total e **Restaurar padrão** apaga as valências digitadas. As valências digitadas ficam com o cristal e são salvas nas listas de cristais em XML.
+- **Ordem de entrada** / **Número atômico** alternam a ordem dos elementos.
 
 ---
 

@@ -185,7 +185,7 @@ Modifica i parametri reticolari, la simmetria e gli atomi; trascina e rilascia f
 
 ![Crystal Control](../assets/cap-it-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-La parte superiore del pannello mostra sempre **Name** (nome del cristallo), **Formula** (formula chimica, calcolata dall'elenco degli atomi) e **Z** (numero di unità di formula per cella elementare). I pulsanti **Info simmetria** e **Interazione del fascio** aprono le finestre [Informazioni di simmetria](2-symmetry-information.md) e [Interazione del fascio](3-beam-interaction.md).
+La parte superiore del pannello mostra sempre **Name** (nome del cristallo), **Formula** (formula chimica, calcolata dall'elenco degli atomi) e **Z** (numero di unità di formula per cella elementare). I pulsanti **Info simmetria** e **Interazione del fascio** aprono le finestre [Informazioni di simmetria](2-symmetry-information.md) e [Interazione del fascio](3-beam-interaction.md). Per % in peso, % atomica e conversione in ossidi, fare clic con il tasto destro e scegliere [Dettagli della composizione chimica](#chemical-composition).
 
 ### Scheda Basic Info
 
@@ -247,14 +247,25 @@ Clic destro su un'area vuota del controllo per queste azioni principali:
 
 | Voce di menu | Azione |
 |-----------|------|
-| Beam Interaction | Apre la finestra [Interazione del fascio](3-beam-interaction.md). |
-| Symmetry information | Apre la finestra [Informazioni di simmetria](2-symmetry-information.md). |
-| Import from CIF, AMC | Carica un cristallo da un file CIF / AMC. |
-| Export to CIF | Esporta il cristallo corrente come CIF. |
-| Revert cell constants | Ripristina le costanti di cella ai valori caricati inizialmente. |
-| Convert to P1 spacegroup | Espande la struttura al gruppo spaziale P1. |
-| Convert to a superstructure | Converte in una superstruttura con multipli interi di a, b, c (finestra di dialogo delle dimensioni). |
-| Convert to an equivalent space group | Converte in un gruppo spaziale equivalente (una diversa scelta degli assi). |
+| Dettagli della composizione chimica | Apre la finestra [Dettagli della composizione chimica](#chemical-composition) (% in peso, % atomica, numero di atomi normalizzato, conversione in ossidi). |
+| Interazione del fascio | Apre la finestra [Interazione del fascio](3-beam-interaction.md). |
+| Informazioni sulla simmetria | Apre la finestra [Informazioni di simmetria](2-symmetry-information.md). |
+| Importa da CIF o AMC... | Carica un cristallo da un file CIF / AMC. |
+| Esporta in CIF | Esporta il cristallo corrente come CIF. |
+| Ripristina le costanti di cella | Ripristina le costanti di cella ai valori caricati inizialmente. |
+| Converti nel gruppo spaziale P1 | Espande la struttura al gruppo spaziale P1. |
+| Converti in una superstruttura | Converte in una superstruttura con multipli interi di a, b, c (finestra di dialogo delle dimensioni). |
+| Cambia impostazione assi/origine | Converte in un gruppo spaziale equivalente (una diversa scelta degli assi). |
+
+#### Dettagli della composizione chimica {#chemical-composition}
+
+![Dettagli della composizione chimica](../assets/cap-it-auto/FormChemicalComposition.png)
+
+Mostra la composizione del cristallo corrente, calcolata dall'elenco degli atomi (il numero di atomi di ciascun elemento è la somma di molteplicità × occupazione sui suoi siti). La finestra segue il cristallo selezionato nella finestra principale.
+
+- La tabella a destra riporta **% in peso**, **% atomica** e **Atomi (normalizzati)** di ciascun elemento; la tabella a sinistra riporta gli atomi per cella. Fare clic su una casella della colonna normalizzata della tabella a sinistra per prendere quell'elemento come riferimento, poi digitarne il numero di atomi (ad es. O = 24). Per impostazione predefinita il riferimento è O (o il primo elemento) e la colonna normalizzata mostra la formula chimica.
+- **Ossidi**, **Alogenuri** e **Solfuri** (compaiono solo quelli applicabili al cristallo) convertono formalmente la composizione in componenti usando la **Valenza** di ciascun elemento. Le valenze sono modificabili (sono ammesse frazioni come 8/3). Se non inserite, Fe vale 2, gli altri elementi prendono la valenza dello ione scelto per il fattore di diffusione dei raggi X, altrimenti uno stato di ossidazione comune. **Σ=0** imposta la valenza che annulla la carica totale e **Ripristina predefiniti** cancella le valenze inserite. Le valenze inserite restano associate al cristallo e vengono salvate negli elenchi di cristalli XML.
+- **Ordine di inserimento** / **Numero atomico** cambiano l'ordine degli elementi.
 
 ---
 

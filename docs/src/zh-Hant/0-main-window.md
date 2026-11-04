@@ -185,7 +185,7 @@
 
 ![Crystal Control](../assets/cap-zh-Hant-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-面板頂端固定顯示 **Name**（晶體名稱）、**化學式**（由原子清單計算得出）與 **Z**（每個晶胞的化學式單位數）。**對稱性資訊** 與 **電子束交互作用** 按鈕分別開啟[對稱性資訊](2-symmetry-information.md)與[電子束交互作用](3-beam-interaction.md)視窗。
+面板頂端固定顯示 **Name**（晶體名稱）、**化學式**（由原子清單計算得出）與 **Z**（每個晶胞的化學式單位數）。**對稱性資訊** 與 **電子束交互作用** 按鈕分別開啟[對稱性資訊](2-symmetry-information.md)與[電子束交互作用](3-beam-interaction.md)視窗。 質量%、原子% 以及換算為氧化物，可透過右鍵選單的[化學組成詳情](#chemical-composition)檢視。
 
 ### 基本資訊 索引標籤
 
@@ -247,14 +247,25 @@
 
 | 選單項目 | 動作 |
 |-----------|------|
-| Beam Interaction | 開啟[電子束交互作用](3-beam-interaction.md)視窗。 |
-| Symmetry information | 開啟[對稱性資訊](2-symmetry-information.md)視窗。 |
-| Import from CIF, AMC | 從 CIF / AMC 檔案載入晶體。 |
-| Export to CIF | 將目前的晶體匯出為 CIF。 |
-| Revert cell constants | 將晶胞常數還原為最初載入的值。 |
-| Convert to P1 spacegroup | 將結構展開為空間群 P1。 |
-| Convert to a superstructure | 轉換為 a、b、c 為整數倍的超結構（尺寸對話方塊）。 |
-| Convert to an equivalent space group | 轉換為等價的空間群（不同的軸向設定）。 |
+| 化學組成詳情 | 開啟[化學組成詳情](#chemical-composition)視窗（質量%、原子%、正規化原子數、換算為氧化物等）。 |
+| 電子束交互作用 | 開啟[電子束交互作用](3-beam-interaction.md)視窗。 |
+| 對稱性資訊 | 開啟[對稱性資訊](2-symmetry-information.md)視窗。 |
+| 從 CIF 或 AMC 匯入... | 從 CIF / AMC 檔案載入晶體。 |
+| 匯出為 CIF | 將目前的晶體匯出為 CIF。 |
+| 還原晶胞常數 | 將晶胞常數還原為最初載入的值。 |
+| 轉換為 P1 空間群 | 將結構展開為空間群 P1。 |
+| 轉換為超結構 | 轉換為 a、b、c 為整數倍的超結構（尺寸對話方塊）。 |
+| 變更軸/原點設定 | 轉換為等價的空間群（不同的軸向設定）。 |
+
+#### 化學組成詳情 {#chemical-composition}
+
+![化學組成詳情](../assets/cap-zh-Hant-auto/FormChemicalComposition.png)
+
+顯示目前晶體的化學組成，由原子清單計算（各元素的原子數為其各位置 多重度 × 佔有率 之和）。視窗會隨主視窗中選取的晶體更新。
+
+- 右側表格列出各元素的 **質量%**、**原子%** 與 **原子數 (正規化)**；左側表格列出每個晶胞中的原子數。按一下左側表格正規化欄中的某一格，即可將該元素設為正規化基準，並輸入其原子數（例如 O = 24）。預設基準為 O（若無則為第一個元素），正規化欄即為化學式。
+- **氧化物**、**鹵化物** 與 **硫化物**（僅顯示適用於該晶體的選項）以各元素的 **價數** 將組成形式換算為各成分。價數可以編輯（可輸入 8/3 之類的分數）。未輸入時，Fe 取 2，其他元素取 X 光散射因子所選離子的價數，若無則取常見的氧化態。**Σ=0** 會填入使總電荷為零的價數，**恢復預設** 會清除已輸入的價數。輸入的價數隨晶體保存，並儲存在 XML 晶體清單中。
+- **輸入順序** / **原子序** 切換元素的排列順序。
 
 ---
 

@@ -185,7 +185,7 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 ![Crystal Control](../assets/cap-zh-Hans-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-面板顶部始终显示 **Name**（晶体名称）、**化学式**（根据原子列表计算得出）和 **Z**（每个晶胞中的化学式单位数）。**对称性信息** 和 **射束相互作用** 按钮分别打开[对称性信息](2-symmetry-information.md)和[射束相互作用](3-beam-interaction.md)窗口。
+面板顶部始终显示 **Name**（晶体名称）、**化学式**（根据原子列表计算得出）和 **Z**（每个晶胞中的化学式单位数）。**对称性信息** 和 **射束相互作用** 按钮分别打开[对称性信息](2-symmetry-information.md)和[射束相互作用](3-beam-interaction.md)窗口。 质量%、原子% 以及换算为氧化物，可通过右键菜单的[化学组成详情](#chemical-composition)查看。
 
 ### Basic Info 选项卡
 
@@ -247,14 +247,25 @@ ReciPro 启动时会显示主窗口。在这个窗口中，您可以选择晶体
 
 | 菜单项 | 操作 |
 |-----------|------|
-| Beam Interaction | 打开[射束相互作用](3-beam-interaction.md)窗口。 |
-| Symmetry information | 打开[对称性信息](2-symmetry-information.md)窗口。 |
-| Import from CIF, AMC | 从 CIF / AMC 文件加载晶体。 |
-| Export to CIF | 将当前晶体导出为 CIF。 |
-| Revert cell constants | 将晶胞常数恢复为首次加载时的值。 |
-| Convert to P1 spacegroup | 将结构展开到空间群 P1。 |
-| Convert to a superstructure | 转换为 a、b、c 取整数倍的超结构（尺寸对话框）。 |
-| Convert to an equivalent space group | 转换为等价的空间群（一种不同的轴设定）。 |
+| 化学组成详情 | 打开[化学组成详情](#chemical-composition)窗口（质量%、原子%、归一化原子数、换算为氧化物等）。 |
+| 射束相互作用 | 打开[射束相互作用](3-beam-interaction.md)窗口。 |
+| 对称性信息 | 打开[对称性信息](2-symmetry-information.md)窗口。 |
+| 从 CIF 或 AMC 导入... | 从 CIF / AMC 文件加载晶体。 |
+| 导出为 CIF | 将当前晶体导出为 CIF。 |
+| 还原晶胞常数 | 将晶胞常数恢复为首次加载时的值。 |
+| 转换为 P1 空间群 | 将结构展开到空间群 P1。 |
+| 转换为超结构 | 转换为 a、b、c 取整数倍的超结构（尺寸对话框）。 |
+| 更改轴/原点设置 | 转换为等价的空间群（一种不同的轴设定）。 |
+
+#### 化学组成详情 {#chemical-composition}
+
+![化学组成详情](../assets/cap-zh-Hans-auto/FormChemicalComposition.png)
+
+显示当前晶体的化学组成，由原子列表计算（各元素的原子数为其各位点 多重度 × 占有率 之和）。窗口随主窗口中选择的晶体而更新。
+
+- 右侧表格列出各元素的 **质量%**、**原子%** 和 **原子数 (归一化)**；左侧表格列出每个晶胞中的原子数。单击左侧表格归一化列中的某一栏，即可将该元素设为归一化基准，并输入其原子数（例如 O = 24）。默认基准为 O（若无则为第一个元素），归一化列即为化学式。
+- **氧化物**、**卤化物** 和 **硫化物**（仅显示适用于该晶体的选项）利用各元素的 **价数** 将组成形式换算为各组分。价数可以编辑（可输入 8/3 之类的分数）。未输入时，Fe 取 2，其他元素取 X 射线散射因子所选离子的价数，若无则取常见氧化态。**Σ=0** 会填入使总电荷为零的价数，**恢复默认** 会清除已输入的价数。输入的价数随晶体保存，并保存在 XML 晶体列表中。
+- **输入顺序** / **原子序数** 切换元素的排列顺序。
 
 ---
 

@@ -185,7 +185,7 @@ Bearbeiten Sie Gitterparameter, Symmetrie und Atome; ziehen Sie CIF/AMC-Dateien 
 
 ![Crystal Control](../assets/cap-de-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Summenformel** (chemische Formel, aus der Atomliste berechnet) und **Z** (Anzahl der Formeleinheiten pro Elementarzelle). Die Schaltflächen **Symmetrieinfo** und **Strahlwechselwirkung** öffnen die Fenster [Symmetrieinformationen](2-symmetry-information.md) und [Strahl-Wechselwirkung](3-beam-interaction.md).
+Der obere Bereich des Panels zeigt stets **Name** (Kristallname), **Summenformel** (chemische Formel, aus der Atomliste berechnet) und **Z** (Anzahl der Formeleinheiten pro Elementarzelle). Die Schaltflächen **Symmetrieinfo** und **Strahlwechselwirkung** öffnen die Fenster [Symmetrieinformationen](2-symmetry-information.md) und [Strahl-Wechselwirkung](3-beam-interaction.md). Gew.-%, Atom-% und die Umrechnung in Oxide zeigt der Kontextmenüpunkt [Details der chemischen Zusammensetzung](#chemical-composition).
 
 ### Registerkarte Basisinfo
 
@@ -247,14 +247,25 @@ Rechtsklick auf einen leeren Bereich des Steuerelements für diese Hauptaktionen
 
 | Menüpunkt | Aktion |
 |-----------|------|
-| Beam Interaction | Öffnet das Fenster [Strahl-Wechselwirkung](3-beam-interaction.md). |
-| Symmetry information | Öffnet das Fenster [Symmetrieinformationen](2-symmetry-information.md). |
-| Import from CIF, AMC | Lädt einen Kristall aus einer CIF-/AMC-Datei. |
-| Export to CIF | Exportiert den aktuellen Kristall als CIF. |
-| Revert cell constants | Stellt die Zellkonstanten auf die zuerst geladenen Werte zurück. |
-| Convert to P1 spacegroup | Erweitert die Struktur auf die Raumgruppe P1. |
-| Convert to a superstructure | Konvertiert in eine Überstruktur mit ganzzahligen Vielfachen von a, b, c (Größendialog). |
-| Convert to an equivalent space group | Konvertiert in eine äquivalente Raumgruppe (eine andere Achsenaufstellung). |
+| Details der chemischen Zusammensetzung | Öffnet das Fenster [Details der chemischen Zusammensetzung](#chemical-composition) (Gew.-%, Atom-%, normierte Atomanzahl, Umrechnung in Oxide). |
+| Strahlwechselwirkung | Öffnet das Fenster [Strahl-Wechselwirkung](3-beam-interaction.md). |
+| Symmetrieinformation | Öffnet das Fenster [Symmetrieinformationen](2-symmetry-information.md). |
+| Aus CIF oder AMC importieren... | Lädt einen Kristall aus einer CIF-/AMC-Datei. |
+| Als CIF exportieren | Exportiert den aktuellen Kristall als CIF. |
+| Gitterkonstanten zurücksetzen | Stellt die Zellkonstanten auf die zuerst geladenen Werte zurück. |
+| In Raumgruppe P1 umwandeln | Erweitert die Struktur auf die Raumgruppe P1. |
+| In eine Überstruktur umwandeln | Konvertiert in eine Überstruktur mit ganzzahligen Vielfachen von a, b, c (Größendialog). |
+| Achsen-/Ursprungseinstellung ändern | Konvertiert in eine äquivalente Raumgruppe (eine andere Achsenaufstellung). |
+
+#### Details der chemischen Zusammensetzung {#chemical-composition}
+
+![Details der chemischen Zusammensetzung](../assets/cap-de-auto/FormChemicalComposition.png)
+
+Zeigt die Zusammensetzung des aktuellen Kristalls, berechnet aus der Atomliste (die Atomanzahl jedes Elements ist die Summe von Multiplizität × Besetzung über seine Lagen). Das Fenster folgt dem im Hauptfenster gewählten Kristall.
+
+- Die rechte Tabelle zeigt **Gew.-%**, **Atom-%** und **Atome (normiert)** für jedes Element; die linke Tabelle zeigt die Atome pro Zelle. Klicken Sie in der linken Tabelle auf ein Feld der normierten Spalte, um dieses Element zum Bezug zu machen, und geben Sie seine Atomanzahl ein (z. B. O = 24). Standardmäßig ist O (sonst das erste Element) der Bezug, und die normierte Spalte zeigt die chemische Formel.
+- **Oxide**, **Halogenide** und **Sulfide** (nur die für den Kristall möglichen werden angezeigt) rechnen die Zusammensetzung formal in Komponenten um, mit der **Valenz** jedes Elements. Die Valenzen sind editierbar (Brüche wie 8/3 sind erlaubt). Ohne Eingabe gilt für Fe 2, für andere Elemente die Valenz des für den Röntgen-Streufaktor gewählten Ions, sonst eine übliche Oxidationsstufe. **Σ=0** setzt die Valenz, mit der die Gesamtladung null wird, und **Zurücksetzen** löscht die eingegebenen Valenzen. Eingegebene Valenzen bleiben beim Kristall und werden in XML-Kristalllisten gespeichert.
+- **Eingabereihenfolge** / **Ordnungszahl** schalten die Reihenfolge der Elemente um.
 
 ---
 

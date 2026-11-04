@@ -185,7 +185,7 @@ Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-dépose
 
 ![Crystal Control](../assets/cap-fr-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-Le haut du panneau affiche toujours **Name** (nom du cristal), **Formule chimique** (calculée à partir de la liste des atomes) et **Z** (nombre d'unités formulaires par maille). Les boutons **Infos de symétrie** et **Interaction du faisceau** ouvrent les fenêtres [Informations de symétrie](2-symmetry-information.md) et [Interaction du faisceau](3-beam-interaction.md).
+Le haut du panneau affiche toujours **Name** (nom du cristal), **Formule chimique** (calculée à partir de la liste des atomes) et **Z** (nombre d'unités formulaires par maille). Les boutons **Infos de symétrie** et **Interaction du faisceau** ouvrent les fenêtres [Informations de symétrie](2-symmetry-information.md) et [Interaction du faisceau](3-beam-interaction.md). Pour le % massique, le % atomique et la conversion en oxydes, faites un clic droit et choisissez [Détails de la composition chimique](#chemical-composition).
 
 ### Onglet Basic Info
 
@@ -247,14 +247,25 @@ Cliquez avec le bouton droit sur une zone vide du contrôle pour ces actions pri
 
 | Élément de menu | Action |
 |-----------|------|
-| Beam Interaction | Ouvre la fenêtre [Interaction du faisceau](3-beam-interaction.md). |
-| Symmetry information | Ouvre la fenêtre [Informations de symétrie](2-symmetry-information.md). |
-| Import from CIF, AMC | Charge un cristal depuis un fichier CIF / AMC. |
-| Export to CIF | Exporte le cristal actuel au format CIF. |
-| Revert cell constants | Restaure les constantes de maille aux valeurs chargées initialement. |
-| Convert to P1 spacegroup | Développe la structure dans le groupe d'espace P1. |
-| Convert to a superstructure | Convertit en une surstructure avec des multiples entiers de a, b, c (boîte de dialogue de taille). |
-| Convert to an equivalent space group | Convertit en un groupe d'espace équivalent (un autre choix d'axes). |
+| Détails de la composition chimique | Ouvre la fenêtre [Détails de la composition chimique](#chemical-composition) (% massique, % atomique, nombre d'atomes normalisé, conversion en oxydes). |
+| Interaction du faisceau | Ouvre la fenêtre [Interaction du faisceau](3-beam-interaction.md). |
+| Informations de symétrie | Ouvre la fenêtre [Informations de symétrie](2-symmetry-information.md). |
+| Importer depuis CIF ou AMC... | Charge un cristal depuis un fichier CIF / AMC. |
+| Exporter en CIF | Exporte le cristal actuel au format CIF. |
+| Rétablir les paramètres de maille | Restaure les constantes de maille aux valeurs chargées initialement. |
+| Convertir en groupe d'espace P1 | Développe la structure dans le groupe d'espace P1. |
+| Convertir en surstructure | Convertit en une surstructure avec des multiples entiers de a, b, c (boîte de dialogue de taille). |
+| Modifier le réglage des axes/de l'origine | Convertit en un groupe d'espace équivalent (un autre choix d'axes). |
+
+#### Détails de la composition chimique {#chemical-composition}
+
+![Détails de la composition chimique](../assets/cap-fr-auto/FormChemicalComposition.png)
+
+Affiche la composition du cristal courant, calculée à partir de la liste des atomes (le nombre d'atomes de chaque élément est la somme de multiplicité × occupation sur ses sites). La fenêtre suit le cristal sélectionné dans la fenêtre principale.
+
+- Le tableau de droite donne, pour chaque élément, **% mass.**, **% at.** et **Atomes (normalisés)** ; le tableau de gauche donne les atomes par maille. Cliquez sur une case de la colonne normalisée du tableau de gauche pour prendre cet élément comme référence, puis saisissez son nombre d'atomes (par ex. O = 24). Par défaut, la référence est O (ou le premier élément) et la colonne normalisée donne la formule chimique.
+- **Oxydes**, **Halogénures** et **Sulfures** (seuls ceux qui s'appliquent au cristal sont affichés) convertissent formellement la composition en composants à l'aide de la **Valence** de chaque élément. Les valences sont modifiables (les fractions comme 8/3 sont acceptées). Sans saisie, Fe vaut 2, les autres éléments prennent la valence de l'ion choisi pour le facteur de diffusion des rayons X, sinon un degré d'oxydation courant. **Σ=0** donne la valence qui annule la charge totale, et **Réinitialiser** efface les valences saisies. Les valences saisies restent attachées au cristal et sont enregistrées dans les listes de cristaux XML.
+- **Ordre de saisie** / **Numéro atomique** changent l'ordre des éléments.
 
 ---
 

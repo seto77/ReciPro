@@ -185,7 +185,7 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 ![Crystal Control](../assets/cap-ko-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-패널 상단에는 항상 **Name** (결정 이름), **화학식** (원자 목록에서 계산), **Z** (단위 격자당 화학식 단위 수)가 표시됩니다. **대칭 정보** · **빔 상호작용** 버튼은 각각 [대칭 정보](2-symmetry-information.md) · [빔 상호작용](3-beam-interaction.md) 창을 엽니다.
+패널 상단에는 항상 **Name** (결정 이름), **화학식** (원자 목록에서 계산), **Z** (단위 격자당 화학식 단위 수)가 표시됩니다. **대칭 정보** · **빔 상호작용** 버튼은 각각 [대칭 정보](2-symmetry-information.md) · [빔 상호작용](3-beam-interaction.md) 창을 엽니다. 질량%, 원자% 및 산화물로의 환산은 오른쪽 클릭 메뉴의 [화학 조성 상세](#chemical-composition)에서 볼 수 있습니다.
 
 ### Basic Info 탭
 
@@ -247,14 +247,25 @@ UI 언어를 전환합니다. English, 日本語, Deutsch, Français, Español, 
 
 | 메뉴 항목 | 동작 |
 |-----------|------|
-| Beam Interaction | [빔 상호작용](3-beam-interaction.md) 창을 엽니다. |
-| Symmetry information | [대칭 정보](2-symmetry-information.md) 창을 엽니다. |
-| Import from CIF, AMC | CIF / AMC 파일에서 결정을 불러옵니다. |
-| Export to CIF | 현재 결정을 CIF로 내보냅니다. |
-| Revert cell constants | 셀 상수를 처음 불러온 값으로 복원합니다. |
-| Convert to P1 spacegroup | 구조를 공간군 P1로 확장합니다. |
-| Convert to a superstructure | a, b, c의 정수 배수를 갖는 초격자로 변환합니다 (크기 대화 상자). |
-| Convert to an equivalent space group | 등가 공간군 (다른 축 설정)으로 변환합니다. |
+| 화학 조성 상세 | [화학 조성 상세](#chemical-composition) 창을 엽니다 (질량%, 원자%, 정규화한 원자 수, 산화물 등으로 환산). |
+| 빔 상호작용 | [빔 상호작용](3-beam-interaction.md) 창을 엽니다. |
+| 대칭 정보 | [대칭 정보](2-symmetry-information.md) 창을 엽니다. |
+| CIF 또는 AMC에서 가져오기... | CIF / AMC 파일에서 결정을 불러옵니다. |
+| CIF로 내보내기 | 현재 결정을 CIF로 내보냅니다. |
+| 격자 상수 되돌리기 | 셀 상수를 처음 불러온 값으로 복원합니다. |
+| P1 공간군으로 변환 | 구조를 공간군 P1로 확장합니다. |
+| 초구조로 변환 | a, b, c의 정수 배수를 갖는 초격자로 변환합니다 (크기 대화 상자). |
+| 축/원점 설정 변경 | 등가 공간군 (다른 축 설정)으로 변환합니다. |
+
+#### 화학 조성 상세 {#chemical-composition}
+
+![화학 조성 상세](../assets/cap-ko-auto/FormChemicalComposition.png)
+
+현재 결정의 화학 조성을 원자 목록에서 계산하여 표시합니다 (각 원소의 원자 수는 해당 자리들의 다중도 × 점유율의 합). 창은 메인 창에서 선택한 결정을 따라 갱신됩니다.
+
+- 오른쪽 표는 원소별 **질량%**, **원자%**, **원자 수 (정규화)** 를 보여 주고, 왼쪽 표는 단위 격자당 원자 수를 보여 줍니다. 왼쪽 표의 정규화 열에서 칸을 클릭하면 그 원소가 정규화 기준이 되며, 원자 수를 입력할 수 있습니다 (예: O = 24). 기본 기준은 O (없으면 첫 번째 원소)이며, 정규화 열은 화학식 그대로가 됩니다.
+- **산화물**, **할로겐화물**, **황화물** (결정에 적용 가능한 것만 표시)은 각 원소의 **원자가** 를 사용해 조성을 성분으로 형식적으로 환산합니다. 원자가는 편집할 수 있습니다 (8/3 같은 분수도 가능). 입력하지 않으면 Fe 는 2, 다른 원소는 X 선 산란 인자에 선택한 이온의 원자가, 없으면 흔한 산화수를 사용합니다. **Σ=0** 은 전체 전하가 0 이 되는 원자가를 넣고, **기본값 복원** 은 입력한 원자가를 지웁니다. 입력한 원자가는 결정에 기록되며 XML 결정 목록에 함께 저장됩니다.
+- **입력 순서** / **원자 번호순** 으로 원소의 순서를 바꿉니다.
 
 ---
 
