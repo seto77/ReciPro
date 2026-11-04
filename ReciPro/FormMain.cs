@@ -250,8 +250,13 @@ public partial class FormMain : FormBase
         //260622Cl 変更: F1 ヘルプ URL を SupportedCultures.HelpCulture 駆動に (旧: ja/en 二値判定)。
         //  Pages マニュアルは mkdocs-static-i18n で英語(en)をサイトルート (/ReciPro/) へ、他言語を /ReciPro/<lang>/ へ出す。
         //  HelpCulture の値そのものが「そのマニュアルが整備済みか」を表す (未整備言語は "en" のまま英語マニュアルへ)。
+        //FormBase.HelpUrlResolver = f =>
+        //    string.IsNullOrEmpty(f.HelpPage) ? HelpBaseUrl() : $"{HelpBaseUrl()}{f.HelpPage}/"; // 261105Cl 変更前
+        // 261105Cl 変更: 化学組成フォームは CrystalControl が初めて使う時に作る (破棄されたら作り直す) ので、下の FormSymmetryInformation の
+        // ように HelpPage を入れておけない。型で主画面の頁の節 (0-main-window.md の {#chemical-composition}、11 言語で同じ id) へ向ける
         FormBase.HelpUrlResolver = f =>
-            string.IsNullOrEmpty(f.HelpPage) ? HelpBaseUrl() : $"{HelpBaseUrl()}{f.HelpPage}/";
+            string.IsNullOrEmpty(f.HelpPage) ? (f is FormChemicalComposition ? $"{HelpBaseUrl()}0-main-window/#chemical-composition" : HelpBaseUrl())
+            : $"{HelpBaseUrl()}{f.HelpPage}/";
         //260529Cl 旧コード (コメントアウト保存):
         //FormBase.HelpUrlResolver = f =>
         //{
