@@ -89,8 +89,7 @@ Three distributions of the backscattered electrons. Each bin holds the fraction 
 
 ### BSE energy distribution at escape
 
-<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormTrajectory.cs:DrawStatistics (energies = energy - e[^1].e)) -->
-Histogram of the energy of the backscattered electrons at escape (keV), in 0.1 keV bins. ⚠ In the current implementation the quantity binned is $E_0 - E_\text{escape}$, i.e. the **energy lost**, although the group title reads "at escape" (to be confirmed with the author).
+Histogram of the **energy the backscattered electrons still carry when they leave the sample** (keV) — not their energy loss. The EBSD simulator uses it to weight the energy integration of the master pattern.
 
 ### Maximum BSE surface-parallel distance
 

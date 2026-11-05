@@ -1894,7 +1894,8 @@
             // 
             resources.ApplyResources(saveLegendToolStripMenuItem, "saveLegendToolStripMenuItem");
             saveLegendToolStripMenuItem.Name = "saveLegendToolStripMenuItem";
-            // 
+            saveLegendToolStripMenuItem.Click += saveImageToolStripMenuItem_Click; // 261105Cl 追加: 凡例の保存 (処理がつながっていなかった)
+            //
             // saveAxesToolStripMenuItem
             // 
             saveAxesToolStripMenuItem.Name = "saveAxesToolStripMenuItem";
@@ -1923,7 +1924,8 @@
             // 
             resources.ApplyResources(copyLegendToolStripMenuItem1, "copyLegendToolStripMenuItem1");
             copyLegendToolStripMenuItem1.Name = "copyLegendToolStripMenuItem1";
-            // 
+            copyLegendToolStripMenuItem1.Click += saveImageToolStripMenuItem_Click; // 261105Cl 追加: 凡例のコピー (処理がつながっていなかった)
+            //
             // copyAxesToolStripMenuItem
             // 
             copyAxesToolStripMenuItem.Name = "copyAxesToolStripMenuItem";

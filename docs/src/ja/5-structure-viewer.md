@@ -48,12 +48,10 @@
 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.designer.cs:menuStrip1 / saveImageToolStripMenuItem_Click / initializeDdpDeveloperMenu) -->
 | メニュー項目 | 説明 |
 |-------------|------|
-| 画像を保存 ▸ Main Image / Crystal Axes / Light Direction | メインビュー、または結晶軸・光源ウィジェットの画像を PNG で保存 |
-| 画像をクリップボードにコピー ▸ Main Image / Crystal Axes / Light Direction | 画像をコピー（Ctrl+Shift+C はメインビューをコピー） |
+| 画像を保存 ▸ Main Image / Legend / Crystal Axes / Light Direction | メインビュー、原子の凡例、または結晶軸・光源ウィジェットの画像を PNG で保存 |
+| 画像をクリップボードにコピー ▸ Main Image / Legend / Crystal Axes / Light Direction | 画像をコピー（Ctrl+Shift+C はメインビューをコピー） |
 | 動画を保存 ▸ メイン / 結晶軸 | メインビューまたは結晶軸ウィジェットの回転・平行移動の動画を MP4 で保存（速度・時間・fps・品質などを設定） |
 | 3Dモデルを出力 (3MF/STL) | 表示中の構造を 3D プリント用の立体データとして書き出す |
-
-画像の保存/コピーのサブメニューにある **Legend** は、現状では何も動作しません。
 
 **ツール** メニュー: **I like VESTA**（ツールバーの *Like Vesta* と同じ）と **Enable DDP**（[透明度モード](#透明度モード)に *Dual Depth Peeling* の項目を出す/隠す）。
 

@@ -48,12 +48,10 @@ The 3-D crystal structure, drawn together with the light-direction gizmo, the cr
 <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.designer.cs:menuStrip1 / saveImageToolStripMenuItem_Click / initializeDdpDeveloperMenu) -->
 | Menu item | Description |
 |-----------|-------------|
-| Save Image ▸ Main Image / Crystal Axes / Light Direction | Save the main view or one of the gizmos as PNG |
-| Copy Main Image to Clipboard ▸ Main Image / Crystal Axes / Light Direction | Copy the image (Ctrl+Shift+C copies the main view) |
+| Save Image ▸ Main Image / Legend / Crystal Axes / Light Direction | Save the main view, the atom legend or one of the gizmos as PNG |
+| Copy Main Image to Clipboard ▸ Main Image / Legend / Crystal Axes / Light Direction | Copy the image (Ctrl+Shift+C copies the main view) |
 | Save Movie ▸ Main Image / Crystal Axes | Save a rotation/translation movie of the main view or of the crystal-axes gizmo as MP4 (speed, duration, fps, quality and so on) |
 | Export 3D Model (3MF/STL) | Write the displayed structure out as a solid model for 3D printing |
-
-The **Legend** items in the Save Image / Copy submenus currently have no effect.
 
 **Tools** menu: **I like VESTA** (same as the *Like Vesta* toolbar button) and **Enable DDP** (shows/hides the *Dual Depth Peeling* entry in [Transparency mode](#transparency-mode)).
 

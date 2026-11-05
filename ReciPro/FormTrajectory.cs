@@ -169,10 +169,12 @@ public partial class FormTrajectory : FormBase
 
         //エネルギー分布を描画 ここから
         {
-            var energies = BSEs.Select(e => energy - e[^1].e);
+            //var energies = BSEs.Select(e => energy - e[^1].e); // 261105Cl 変更前: 失ったエネルギー (E0 - E_escape) を数えていた
+            var energies = BSEs.Select(e => e[^1].e); // 261105Cl 変更: 見出し・マニュアルどおり、脱出時にまだ持っているエネルギー (keV) を数える
 
             double step = 0.1;//kev単位
-            double lower = 0, upper = energy - EnergyThreshold;
+            //double lower = 0, upper = energy - EnergyThreshold; // 261105Cl 変更前
+            double lower = EnergyThreshold, upper = energy; // 261105Cl 変更: 脱出時のエネルギーはしきい値〜E0 (ビン数は従来と同じ)
             int nBuckets = (int)((upper - lower) / step);
 
             var hist = new MathNet.Numerics.Statistics.Histogram(energies, nBuckets, lower, lower + nBuckets * step);
@@ -188,7 +190,8 @@ public partial class FormTrajectory : FormBase
             graphControlEnergyProfile.ClearProfile();
             graphControlEnergyProfile.Profile = new Profile(pts);
             graphControlEnergyProfile.MaximalX = upper;
-            graphControlEnergyProfile.UpperX = upper*0.5;
+            //graphControlEnergyProfile.UpperX = upper*0.5; // 261105Cl 変更前 (損失の前半だけを表示していた)
+            graphControlEnergyProfile.UpperX = upper; // 261105Cl 変更: 脱出時のエネルギーは E0 近くに集まるので 0〜E0 の全体を表示
             graphControlEnergyProfile.Draw();
         }
         //エネルギー分布を描画 ここまで

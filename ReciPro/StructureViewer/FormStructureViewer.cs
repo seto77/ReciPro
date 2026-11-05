@@ -1480,6 +1480,23 @@ public partial class FormStructureViewer : FormBase
             bmp = glControlAxes.GenerateBitmap();
         else if (name.Contains("light"))
             bmp = glControlLight.GenerateBitmap();
+        else if (name.Contains("legend") && flowLayoutPanelLegend.Controls.Count > 0 && flowLayoutPanelLegend.ClientSize is { Width: > 0, Height: > 0 } size)
+        {
+            // 261105Cl 追加: 凡例 (原子ごとの GL の球 + ラベル) を 1 枚に合成する。
+            // DrawToBitmap では GL の部分が空白になるので、球は GenerateBitmap で読み、ラベルは DrawToBitmap で描いて、画面上と同じ位置に重ねる
+            bmp = new Bitmap(size.Width, size.Height);
+            using var g = Graphics.FromImage(bmp);
+            g.Clear(flowLayoutPanelLegend.BackColor);
+            foreach (var c in flowLayoutPanelLegend.Controls.OfType<FlowLayoutPanel>().SelectMany(p => p.Controls.OfType<Control>()))
+            {
+                if (c.Width <= 0 || c.Height <= 0) continue;
+                using var part = c is GLControlAlpha gl ? gl.GenerateBitmap(true) : new Bitmap(c.Width, c.Height);
+                if (part == null) continue;
+                if (c is not GLControlAlpha)
+                    c.DrawToBitmap(part, new Rectangle(0, 0, c.Width, c.Height));
+                g.DrawImage(part, new Rectangle(flowLayoutPanelLegend.PointToClient(c.PointToScreen(Point.Empty)), c.Size));
+            }
+        }
 
         if (bmp != null)
         {
