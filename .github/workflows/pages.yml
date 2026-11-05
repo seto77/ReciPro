@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5 # 261105Cl v4 → v5 (他 workflow と揃える。差分は Node 24 ランタイム化のみ)
 
       - name: Set up Python
         uses: actions/setup-python@v5
