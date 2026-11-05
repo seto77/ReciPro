@@ -126,14 +126,21 @@ public partial class FormStereonet : FormBase
         if (this.Visible)
         {
             pointSize = trackBarPointSize.Value;
-            setVector();
+            //setVector(); // 261105Cl 変更前 (下の SetCrystal が行う)
             centerPt = new PointD(0, 0);
 
             mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
 
             splitContainer1.BringToFront();
 
-            Draw();
+            //Draw(); // 261105Cl 変更前
+            if (!ReferenceEquals(circleListCrystal, formMain.Crystal))
+                SetCrystal(); // 261105Cl 変更 (監査 G-15): 閉じている間に結晶が替わったら、大円の一覧・指数を今の結晶で作り直してから描く (setVector と Draw を含む)
+            else
+            {
+                setVector(); // 261105Cl 同じ結晶なら従来どおり (大円のチェック状態を保つ)
+                Draw();
+            }
             lastgraphicsBoxSize = graphicsBox.ClientSize;
 
             formMain.toolStripButtonStereonet.Checked = true;
@@ -301,8 +308,10 @@ public partial class FormStereonet : FormBase
                     if (checkBox3dOptionLabel.Checked)
                     {
                         string str;
-                        if (MillerBravaisActive)
-                            str = $"({index.X} {index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
+                        //if (MillerBravaisActive) // 261105Cl 変更前: 方向 (Axes) でも面の 4 指数 (h k −h−k l) と丸括弧にしていた。最初の区切りも delimiter でなかった
+                        //    str = $"({index.X} {index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
+                        if (MillerBravaisActive && !radioButtonAxes.Checked) // 261105Cl 変更 (監査 G-8): 4 指数は面 (と菊池線) だけ。方向は 2D の図と同じく [uvw]
+                            str = $"({index.X}{delimiter}{index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})"; // 261105Cl
                         else
                             str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
 
@@ -657,6 +666,33 @@ public partial class FormStereonet : FormBase
         foreach (Vector3D v in checkedListBoxCircles.CheckedItems) // 260517Cl 型付き foreach にしてキャストを省略
         {
             var vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * v);
+            if (radioButtonLowerSphere.Checked)
+                vec.Z = -vec.Z; // 261105Cl 追加 (監査 G-6): 下半球は点 (DrawStereoNet) と同じく Z を反転して描く。旧: 反転せず、晶帯の点が大円から外れていた
+
+            if (radioButtonSchmidt.Checked) // 261105Cl 追加 (監査 G-6): Schmidt (等積) では大円は円弧にならない (旧: Wulff の円弧を描いていた)。大円上の点を投影して折れ線で描く
+            {
+                // 大円 = vec に垂直な単位ベクトルの集合。赤道との交点 ±e1 (vec × Z の向き) から、上半球側の e2 (= vec × e1, Z ≥ 0) を通る半周を投影する
+                double e1x = vec.Y, e1y = -vec.X, e1Len = Sqrt(e1x * e1x + e1y * e1y);
+                if (e1Len < 1e-9) // 大円が最外周 (赤道) と一致
+                    g.DrawEllipse(pen, -1f, -1f, 2f, 2f);
+                else
+                {
+                    (e1x, e1y) = (e1x / e1Len, e1y / e1Len);
+                    double e2x = -vec.Z * e1y, e2y = vec.Z * e1x, e2z = vec.X * e1y - vec.Y * e1x;
+                    if (e2z < 0) (e2x, e2y, e2z) = (-e2x, -e2y, -e2z);
+                    const int div = 720;
+                    var pts = new PointF[div + 1];
+                    for (int i = 0; i <= div; i++)
+                    {
+                        var (s, c) = SinCos(PI * i / div);
+                        var p = Stereonet.ConvertVectorToSchmidt(new Vector3DBase(c * e1x + s * e2x, c * e1y + s * e2y, s * e2z));
+                        pts[i] = new PointF((float)p.X, (float)-p.Y);
+                    }
+                    g.DrawLines(pen, pts);
+                }
+                continue;
+            }
+
             if (Abs(vec.Z) > 0.9999)//大円が最外周とほぼ一致するときは
             {
                 if (vec.Z > 0)
@@ -796,8 +832,11 @@ public partial class FormStereonet : FormBase
         var vSphere = srcToSphere(pt);
         if (vSphere != null)
         {
-            var azimuth = Asin(vSphere.Y);
-            var tilt = Cos(azimuth) != 0 ? Asin(vSphere.X / Cos(azimuth)) : 0;
+            //var azimuth = Asin(vSphere.Y); // 261105Cl 変更前: 下半球の表示でも上半球の方向として読んでいた
+            //var tilt = Cos(azimuth) != 0 ? Asin(vSphere.X / Cos(azimuth)) : 0;
+            var vDrawn = radioButtonLowerSphere.Checked ? new Vector3DBase(vSphere.X, vSphere.Y, -vSphere.Z) : vSphere; // 261105Cl 追加 (監査 G-25): 下半球は Z を反転した方向 (DrawStereoNet・FindIndex と同じ)
+            var azimuth = Asin(vDrawn.Y); // 261105Cl
+            var tilt = Atan2(vDrawn.X, vDrawn.Z); // 261105Cl 変更: 上半球では旧式 Asin(X / cos(azimuth)) と同じ値。下半球では 90° を超える傾斜になる
             labelXYpos.Text = $"{tilt / PI * 180:f3}° / {azimuth / PI * 180:f3}°";
             var (axis, plane) = FindIndex(vSphere);
             // 260517Cl Miller-Bravais 表示時 (hex/trigonal) は面指数を 4 指数 (h k -h-k l) に
@@ -908,6 +947,7 @@ public partial class FormStereonet : FormBase
                 checkedListBoxCircles.SelectedIndex = i;
             else
                 checkedListBoxCircles.SelectedIndex = i - 1;
+            Draw(); // 261105Cl 追加 (監査 G-17): 削除しても ItemCheck は来ないので、ここで描き直す (旧: 次の描画まで図に残っていた)
         }
     }
 
@@ -955,8 +995,10 @@ public partial class FormStereonet : FormBase
             }
             finally { suppressItemCheck = false; }
         }
+        circleListCrystal = formMain.Crystal; // 261105Cl 追加 (監査 G-15)
         Draw();
     }
+    private Crystal circleListCrystal = null; // 261105Cl 追加 (監査 G-15): checkedListBoxCircles を作ったときの結晶。閉じている間に結晶が替わったかを VisibleChanged で見る
     #endregion
 
     #region 描画対象(面・軸・菊池線)や投影方法(等積・等角)が変更されたとき
@@ -1031,6 +1073,16 @@ public partial class FormStereonet : FormBase
         //260718Cl 変更: HDC→Metafile の自前定型 (MemoryStream/Metafile が未解放だった) を、FormDiffractionSimulator と同じ共通ヘルパーへ集約
         => ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => Draw(g), "");
 
+    // 261105Cl 追加 (監査 G-24): 「画像を保存 > メタファイルとして (EMF)」。旧: 項目が無効のまま、ハンドラも無かった
+    private void saveMetafileToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        using var dialog = new SaveFileDialog() { Filter = "*.emf|*.emf" };
+        if (dialog.ShowDialog() != DialogResult.OK) return;
+        var filename = dialog.FileName;
+        if (!filename.EndsWith(".emf", StringComparison.OrdinalIgnoreCase)) filename += ".emf";
+        ClipboardMetafileHelper.SaveOrCopyDrawingAsEnhMetafile(this.Handle, g => Draw(g), filename);
+    }
+
     private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
     {
         if (pageSetupDialog1.ShowDialog() == DialogResult.OK)
@@ -1065,7 +1117,8 @@ public partial class FormStereonet : FormBase
         bmp.SetResolution(300, 300);
 
         e.Graphics.PageUnit = GraphicsUnit.Inch;
-        e.Graphics.DrawImage(bmp, new PointF(ps.Margins.Top / 100f, ps.Margins.Left / 100f));
+        //e.Graphics.DrawImage(bmp, new PointF(ps.Margins.Top / 100f, ps.Margins.Left / 100f)); // 261105Cl 変更前: X に上余白、Y に左余白を使っていた
+        e.Graphics.DrawImage(bmp, new PointF(ps.Margins.Left / 100f, ps.Margins.Top / 100f)); // 261105Cl 変更 (監査 G-24): X = 左余白、Y = 上余白
         e.HasMorePages = false;
 
         //glString.Font = new Font("Tahoma", trackBarStrSize.Value / 10f);

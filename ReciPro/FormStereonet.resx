@@ -3691,7 +3691,7 @@ Ewald-sphere reflection list shown on the stereonet</value>
     <value>as Image (PNG format)</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>True</value>
   </data>
   <data name="asMetafileToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
