@@ -8,14 +8,14 @@ A **Estereonete** exibe direções de planos e eixos cristalinos usando a proje�
 
 ## Atalhos de teclado e mouse
 
-A estereonete em si é uma projeção 2-D; uma esfera 3-D opcional pode ser exibida com **3D display**.
+A estereonete em si é uma projeção 2-D; uma esfera 3-D opcional pode ser exibida com **Vista 3D**.
 
 | Atalho | Ação |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | Arrastar com o botão esquerdo perto do centro | Inclinar o cristal |
 | Arrastar com o botão esquerdo na área externa | Girar o cristal em torno do eixo de visualização |
-| Clique duplo esquerdo | Alternar entre a projeção **Plane** e **Axis** |
+| Clique duplo esquerdo | Alternar entre a projeção **Planos** e **Eixos** |
 | Clique direito | Diminuir o zoom |
 | Arrastar com o botão direito uma caixa | Aumentar o zoom na região selecionada |
 | Arrastar com o botão do meio | Deslocar |
@@ -39,11 +39,18 @@ A projeção em estereonete dos planos cristalinos, índices de direção e linh
 
 ## Menu Arquivo
 
-Salvar ou copiar em formato raster ou vetorial. O formato vetorial permite editar fonte/espessura de linha no PowerPoint ou em outros editores vetoriais.
+Salvar como imagem raster (PNG), ou copiar como imagem raster ou como metarquivo vetorial (EMF). Um metarquivo colado permite editar fontes e espessuras de linha no PowerPoint ou em outros editores vetoriais.
+
+| Item de menu | Descrição |
+|-----------|-------------|
+| Salvar Imagem ▸ como Imagem (formato PNG) / como metarquivo (EMF) | Salvar a estereonete como arquivo PNG (o item *como metarquivo (EMF)* está desativado no momento; para saída vetorial use **Copiar para a área de transferência ▸ como metarquivo (EMF)**) |
+| Copiar para a área de transferência ▸ Como Imagem / como metarquivo (EMF) | Copiar a estereonete |
+| Salvar Vídeo ▸ Estereonete / 3D | Salvar um vídeo de rotação (MP4) da estereonete ou da vista 3-D, com o mesmo diálogo de configuração de filme do [Visualizador de estrutura](5-structure-viewer.md#menu-arquivo) (apenas rotação) |
+| Configurar Página / Visualizar Impressão / Imprimir | Imprimir a estereonete |
 
 ---
 
-## Mode
+## Modo {#mode}
 
 ![Modo](../assets/cap-pt-auto/FormStereonet.panel3.groupBoxMode.png)
 
@@ -51,9 +58,9 @@ Salvar ou copiar em formato raster ou vetorial. O formato vetorial permite edita
 
 Selecione o que projetar na rede.
 
-- **Axes** — projeta os índices de direção \([uvw]\).
-- **Planes** — projeta as normais dos planos cristalinos \((hkl)\).
-- **Kikuchi line pairs** — projeta pares de linhas de Kikuchi.
+- **Eixos** — projeta os índices de direção \([uvw]\).
+- **Planos** — projeta as normais dos planos cristalinos \((hkl)\).
+- **Pares de Kikuchi** — projeta pares de linhas de Kikuchi.
 
 ### Método de projeção
 
@@ -64,18 +71,20 @@ Selecione o que projetar na rede.
 
 ### Hemisfério
 
-Escolha o hemisfério **Upper** ou **Lower** como fonte da projeção — alterna se a face visível da esfera é a mais próxima ou a mais distante do observador.
+Escolha o hemisfério **Superior** ou **Inferior** como fonte da projeção — alterna se a face visível da esfera é a mais próxima ou a mais distante do observador.
+Superior = o lado $+Z$ (voltado para o observador, veja o [Apêndice A1.1](appendix/a1-coordinate-system/1-orientation.md)); com **Inferior**, a componente $Z$ de cada direção é invertida antes da projeção, e os pontos são desenhados como **círculos vazados** em vez de preenchidos.
 
 ### Opções de exibição
 
-- Mostrar rótulos de índice.
-- Quando **Planes** ou **Kikuchi line pairs** está selecionado, pondera cada ponto ou linha pelo fator de estrutura \(|F_{hkl}|\) (defina a fonte de onda e o comprimento de onda na [aba Wave](#wave)).
+- **Rótulos de índices**: mostrar os rótulos de índice.
+- **Fatores de estrutura na intensidade**: quando **Planos** ou **Pares de Kikuchi** está selecionado, pondera cada item pelo seu fator de estrutura (defina a fonte de onda e o comprimento de onda na [aba Onda](#wave)). O peso é $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ sobre o conjunto exibido: no modo **Planos**, o raio do ponto é multiplicado por $\sqrt{I_{\mathrm{rel}}}$ (ou seja, $\propto |F_{hkl}|$); no modo **Pares de Kikuchi**, a opacidade da linha é $I_{\mathrm{rel}}$.
+- **Dispersão anômala**: inclui os termos de dispersão anômala de raios X $f'$, $f''$ nos fatores de estrutura. Habilitado apenas para raios X e nos modos **Planos** / **Pares de Kikuchi**.
 
-> Para cristais trigonais/hexagonais, a notação de Miller–Bravais (4 índices) pode ser ativada em **Option ▸ Use Miller-Bravais (hkil) index** na janela principal.
+> Para cristais trigonais/hexagonais, a notação de Miller–Bravais (4 índices) pode ser ativada em **Opções ▸ Usar índice de Miller-Bravais (hkil)** na janela principal.
 
 ---
 
-## Indices
+## Índices {#indices}
 
 ![Índices](../assets/cap-pt-auto/FormStereonet.panel3.groupBoxIndices.png)
 
@@ -85,13 +94,19 @@ Define quais planos cristalinos / eixos são desenhados.
 
 Especifique um intervalo de índices \([uvw]\) ou \((hkl)\). O ReciPro enumera cada índice dentro dos limites e projeta cada um deles.
 
+No modo **Intervalo**, os limites são $\pm$ os valores inseridos; apenas os índices irredutíveis são considerados, agrupados em conjuntos de índices cristalograficamente equivalentes (cada conjunto recebe uma cor).
+
+### Modo de fator de estrutura
+
+Disponível apenas para **Planos** e **Pares de Kikuchi**. Projeta os planos com os maiores $|F_{hkl}|^2$ para a fonte de onda atual. **Máx.** define o número de planos a desenhar (os planos equivalentes são contados individualmente; no modo **Planos**, uma reflexão paralela a outra mais forte — uma ordem superior ou inferior dela, p. ex. 222 quando 111 é mais forte — é omitida).
+
 ### Modo especificado
 
-Especifica eixos ou planos individuais. Digite um índice, pressione **Add** para registrá-lo ou **Remove** para excluí-lo. Quando **include equivalent indices** está marcado, todos os índices cristalograficamente equivalentes também são desenhados.
+Especifica eixos ou planos individuais. Digite um índice, pressione **Adicionar** para registrá-lo ou **Remover** para excluí-lo. Quando **Incluir índices equivalentes** está marcado, todos os índices cristalograficamente equivalentes também são desenhados.
 
-### Colour / Size
+### Cor / Tamanho {#colour-size}
 
-Defina a **colour** e o **size** dos pontos plotados. Marque **Change colour automatically** para codificar por cor cada conjunto de eixos/planos equivalentes de forma diferente — útil para distinguir famílias em um gráfico de múltiplos índices.
+Defina a **Cor** e o **Tamanho** dos pontos plotados. Marque **Alternar cor** para codificar por cor cada conjunto de eixos/planos equivalentes de forma diferente — útil para distinguir famílias em um gráfico de múltiplos índices.
 
 ---
 
@@ -99,42 +114,50 @@ Defina a **colour** e o **size** dos pontos plotados. Marque **Change colour aut
 
 ![3D Options](../assets/cap-pt-auto/FormStereonet.panel3.panel3DOptions.png)
 
-Controla a sobreposição da rede 3D (esfera) — opacidade da esfera, indicadores de eixo etc.
+Exibido quando **Vista 3D** está marcado; a esfera 3-D aparece num painel à direita da rede.
+
+- **Redefinir**: retorna a vista 3-D à direção e ao zoom padrão.
+- **Rótulo**: desenha os rótulos de índice em 3-D.
+- **Hemisfério**: desenha apenas os polos do hemisfério superior ($Z>0$).
+- **Estereonete**: desenha o plano de projeção (a rede) em 3-D, com os pontos projetados dos polos do hemisfério superior.
+- **Contorno da esfera**: desenha a grade de latitude/longitude da esfera.
+- **Linhas de projeção** (com **Estereonete** ativado): desenha as linhas auxiliares de projeção de cada polo do hemisfério superior — uma reta do polo sul $(0,0,-1)$ até o polo para Wulff, um arco para Schmidt.
+- **Atenuação de profundidade**: intensidade do esmaecimento por profundidade da vista 3-D.
 
 ---
 
 ## Menu de abas
 
-### Appearance
+### Aparência {#appearance}
 
 ![Aba Aparência](../assets/cap-pt-auto/FormStereonet.tabControl.tabPage1.png)
 
-#### Outline
+#### Contorno {#outline}
 
-Como o contorno da estereonete é desenhado — o círculo delimitador e a grade opcional de círculos máximos de latitude/longitude. Escolha **Equator** ou **Pole**, alterne **1° Lines** e o preenchimento de **Background**, defina as cores da grade **90° / 10° / 1°** e ajuste a **Line width** com a barra de controle.
+Como o contorno da estereonete é desenhado — o círculo delimitador e a grade opcional de círculos máximos de latitude/longitude. Escolha **Equador** ou **Polo**, alterne **Linhas de 1°** e o preenchimento de **Fundo**, defina as cores da grade **90° / 10° / 1°** e ajuste a **Largura da linha** com a barra de controle.
 
-#### Index labels
+#### Rótulos de índices {#index-labels}
 
-- **Size** — tamanho dos rótulos de índice.
-- **Specify color** — usa uma única cor fixa para todos os rótulos de índice em vez da cor por ponto, útil quando os pontos são codificados por cor, mas você deseja todos os rótulos em uma única cor para facilitar a leitura.
-- **Delimiter** — caractere colocado entre os índices em cada rótulo: **None** (por exemplo, 100), **Space** (1 0 0) ou **Comma** (1,0,0).
+- **Tamanho** — tamanho dos rótulos de índice.
+- **Cor** — usa uma única cor fixa para todos os rótulos de índice em vez da cor por ponto, útil quando os pontos são codificados por cor, mas você deseja todos os rótulos em uma única cor para facilitar a leitura.
+- **Separ.** — caractere colocado entre os índices em cada rótulo: **Nada** (por exemplo, 100), **Espaço** (1 0 0) ou **Vírgula** (1,0,0).
 
-#### Kikuchi line mode
+#### Modo de linhas de Kikuchi {#kikuchi-line-mode}
 
-- **Point size** — tamanho dos pontos plotados.
-- **Point** / **Label** — cores dos pontos e de seus rótulos.
+- **Tamanho do ponto** — tamanho dos pontos plotados.
+- **Ponto** / **Rótulo** — cores dos pontos e de seus rótulos.
 
-### Great and Small Circle
+### Círculo máximo {#great-circle}
 
 ![Aba Círculo máximo](../assets/cap-pt-auto/FormStereonet.tabControl.tabPage2.png)
 
-Desenhe círculos máximos e círculos menores. Especifique-os pelo **zone-axis index** \([uvw]\) (o círculo máximo formado pela zona desse eixo) ou por **two crystal-plane indices** que compartilham o eixo de zona. A espessura de linha dos círculos também é configurável pela barra de controle.
+Desenhe círculos máximos (círculos menores não são suportados). Especifique-os pelo **Índice do eixo de zona** \([uvw]\) (o círculo máximo formado pela zona desse eixo) ou por **Zona definida por dois planos** (o eixo de zona é o produto vetorial deles). Use **Adicionar** / **Remover** para editar a lista; desmarcar uma entrada oculta esse círculo. A cor e a espessura de linha dos círculos também são configuráveis.
 
-### Wave {#wave}
+### Onda {#wave}
 
 ![Aba Onda](../assets/cap-pt-auto/FormStereonet.tabControl.tabPage4.png)
 
-Disponível apenas quando **Planes** ou **Kikuchi line pairs** está selecionado como alvo da projeção. Define a fonte de onda (X-ray / electron / neutron) e o comprimento de onda ou a energia necessários para calcular os fatores de estrutura do cristal usados na opção de **ponderação por fator de estrutura** em [Mode](#mode).
+Usado apenas quando **Planos** ou **Pares de Kikuchi** está selecionado como alvo da projeção (no modo **Pares de Kikuchi**, o comprimento de onda também define o ângulo de Bragg, ou seja, a separação de cada par de linhas). Define a fonte de onda (X-ray / electron / neutron) e o comprimento de onda ou a energia necessários para calcular os fatores de estrutura do cristal usados por **Fatores de estrutura na intensidade** em [Modo](#mode).
 
 ---
 

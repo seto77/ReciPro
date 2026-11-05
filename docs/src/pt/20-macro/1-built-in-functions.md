@@ -125,13 +125,13 @@ Os ângulos de Euler não são únicos nas posições de bloqueio do cardan (θ 
 
 | Propriedade | Tipo | Descrição |
 |----------|------|-------------|
-| `Energy` | double | Energia (keV) |
-| `Wavelength` | double | Comprimento de onda (Å) |
+| `Energy` | double | Energia (keV para raios X e elétrons, meV para nêutrons) |
+| `Wavelength` | double | Comprimento de onda (nm) |
 | `Thickness` | double | Espessura da amostra (nm) |
 | `NumberOfDiffractedWaves` | int | Número de ondas de Bloch |
 | `CameraLength2` | double | Comprimento de câmera (mm) |
 | `ExcitationError` | double | Raio do spot (nm⁻¹): no modo cinemático/de erro de excitação, `SpotInfo()` exporta as reflexões com \|Sg\| dentro deste valor |
-| `SkipRendering` | bool | Ignorar a renderização no processamento em lote |
+| `SkipRendering` | bool | Efetivo apenas no modo dinâmico (`Calc_Dynamical()`): o cálculo por ondas de Bloch continua sendo executado (portanto `SpotInfo()` é válido), mas nenhum spot é desenhado — as imagens salvas nesse período não contêm spots. Sem efeito no modo cinemático/de erro de excitação |
 
 ### Modo de feixe
 
@@ -156,7 +156,7 @@ Os ângulos de Euler não são únicos nas posições de bloqueio do cardan (θ 
 |----------|-------------|
 | `Tau` / `TauInDeg` | Ângulo de inclinação do detector τ (rad / graus) |
 | `Phi` / `PhiInDeg` | Eixo de rotação do detector φ (rad / graus) |
-| `Foot(x, y)` | Posição do foot em pixels |
+| `Foot(x, y)` | Posição (mm) do pé da perpendicular da amostra ao detector, medida a partir do centro da imagem; o próprio centro da imagem fica nas coordenadas do detector (−x, −y). `Foot(0, 0)` coloca o pé no centro da imagem |
 
 ### Saída
 
@@ -220,7 +220,7 @@ Comanda o visualizador de estrutura a partir de uma macro. `SaveImage()` e `Expo
 | `StructureViewer.Open()` | Abrir a janela do visualizador de estrutura |
 | `StructureViewer.Close()` | Fechar a janela do visualizador de estrutura |
 | `StructureViewer.SaveImage(filename)` | Salvar a vista principal renderizada como PNG, no tamanho em pixels do campo **Size (W×H)**; omita `filename` para abrir um diálogo |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar a estrutura exibida para impressão 3D, como **Export 3D Model (3MF/STL)** do menu File. A extensão decide o formato (`.stl` monocolor / `.3mf` colorido por elemento); apenas `filename` é obrigatório — os demais padrões são os do diálogo (maior dimensão 80 mm, arestas da célula ⌀2,4 mm, ligações engrossadas até ⌀1,2 mm). Com `fixedScaleInMMperNm` > 0 constroem-se vários modelos na mesma escala |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar a estrutura exibida para impressão 3D, como **Export 3D Model (3MF/STL)** do menu File. A extensão decide o formato (`.stl` monocolor / `.3mf` colorido por elemento); apenas `filename` é obrigatório — os demais padrões são os do diálogo (maior dimensão 80 mm, arestas da célula ⌀2,4 mm, ligações engrossadas até ⌀1,2 mm). Com `fixedScaleInMMperNm` > 0 constroem-se vários modelos na mesma escala. `filename` deve terminar em `.stl` ou `.3mf` (nenhum diálogo é aberto); retorna uma cadeia de informações com o número de triângulos e o tamanho impresso |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Essas três classes de simulação de imagem compartilham muitos membros. Para e
 
 | Função | Descrição |
 |----------|-------------|
-| `Sleep(ms)` | Aguardar o número de milissegundos especificado |
+| `ReciPro.Sleep(ms)` | Aguardar o número de milissegundos especificado. É chamado como `ReciPro.Sleep(ms)`; não aparece na tabela de funções integradas do editor |
 
 ---
 

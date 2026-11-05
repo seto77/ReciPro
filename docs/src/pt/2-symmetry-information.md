@@ -38,9 +38,10 @@ Insira dois planos cristalinos \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) ou dois 
 
 - a distância interplanar de cada plano / o comprimento de cada eixo,
 - o ângulo entre os dois planos (ou os dois eixos),
+- o ângulo entre o plano 1 e o eixo 1, e entre o plano 2 e o eixo 2,
 - **o índice de direção normal a ambos os planos** e **o índice de plano normal a ambos os eixos**.
 
-Esses cálculos respeitam a métrica da célula unitária atual.
+Esses cálculos respeitam a métrica da célula unitária atual. Os comprimentos são exibidos em Å e os ângulos em graus.
 
 ---
 
@@ -48,7 +49,7 @@ Esses cálculos respeitam a métrica da célula unitária atual.
 
 ![Posições de Wyckoff](../assets/cap-pt-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Lista cada posição de Wyckoff com sua multiplicidade, sua letra de Wyckoff, sua simetria de sítio e a indicação de se é uma posição geral ou especial. Para redes centradas, os vetores de translação da rede são mostrados na linha de cabeçalho.
+Lista cada posição de Wyckoff com sua multiplicidade (**Mult.**), sua letra de Wyckoff (**Letra Wyck.**), sua simetria de sítio (**Sim. sítio**) e **Coordenadas** (até quatro por linha; listas mais longas continuam nas linhas seguintes). A primeira entrada de Wyckoff (a de maior multiplicidade) é a posição geral. Para redes centradas, os vetores de translação da rede são mostrados na linha de cabeçalho.
 
 ---
 
@@ -57,6 +58,8 @@ Lista cada posição de Wyckoff com sua multiplicidade, sua letra de Wyckoff, su
 ![Condições](../assets/cap-pt-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 As condições de reflexão decorrentes da centragem da rede e dos operadores de simetria de deslizamento/parafuso.
+
+Cada linha tem três colunas: **Índices** (a classe de reflexões, p. ex. $hkl$, $h0l$, $00l$), **Condição** (p. ex. $h+k=2n$) e **Elemento** (a centragem da rede ou o elemento de simetria responsável). *No Condition* é exibido quando não há nenhuma.
 
 ---
 
@@ -97,12 +100,13 @@ Os dois painéis na parte inferior reproduzem os diagramas esquemáticos de sime
 - **Elementos de simetria (à esquerda)**: eixos de rotação/parafuso, planos de espelho/deslizamento e centros de inversão/pontos de rotoinversão são desenhados com os símbolos gráficos convencionais.
   - Para a rede \(F\) do sistema cúbico, apenas o quarto superior esquerdo da célula projetada é mostrado (consulte o [Apêndice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Esses elementos de simetria também podem ser desenhados diretamente sobre o modelo 3D no [Visualizador de estrutura](5-structure-viewer.md).
-- **Posições gerais (à direita)**: as posições gerais equivalentes são plotadas como círculos (uma vírgula denota uma imagem espelhada), anotadas com suas coordenadas fracionárias.
+- **Posições gerais (à direita)**: as posições gerais equivalentes são plotadas como círculos (uma vírgula denota uma imagem espelhada), cada um anotado com sua altura ao longo do eixo de projeção (`+`, `−`, `½+`, …; veja o [Apêndice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - O ponto de teste $(x,y,z)$ é definido com as caixas **a** / **b** / **c** ao lado do botão **Copiar** das posições gerais (intervalo de −1 a 1, passo 0,01). Ele é redefinido para um valor padrão do grupo pontual sempre que o grupo pontual muda, e é mantido quando apenas o grupo espacial muda dentro do mesmo grupo pontual.
   - Apenas para o sistema cúbico, linhas auxiliares conectam os três círculos relacionados por um eixo de rotação de ordem três.
 
-Controles abaixo dos diagramas:
+Controles (o painel **Opções** na parte inferior da janela e o botão **Copiar** acima de cada diagrama):
 
-- **Direção** (`a` / `b` / `c`) : escolha o eixo cristalino ao longo do qual projetar.
+- **Direção** (`a` / `b` / `c`) : escolha o eixo cristalino ao longo do qual projetar. Só pode ser escolhida para grupos espaciais ortorrômbicos (padrão `c`); para grupos monoclínicos é usado automaticamente o eixo único, e para todos os outros sistemas cristalinos, `c`.
 - **Copiar** : copia cada diagrama para a área de transferência no formato selecionado com **Formato de cópia** (**emf** vetorial / **bmp** rasterizado); o emf pode ser desagrupado e editado no PowerPoint.
 - **Relações de grupo...** abre um navegador das relações de subgrupos maximais/supergrupos minimais do grupo espacial atual. Veja o [Apêndice A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) para saber como lê-lo.
 

@@ -2,9 +2,9 @@
 
 A simulação **SAED (Selected Area Electron Diffraction)** calcula padrões de difração eletrônica de monocristal produzidos por um feixe de elétrons paralelo. Este é o modo padrão do [simulador de difração](index.md).
 
-> Esta página lista todas as configurações que aparecem no painel **Spot property**, à direita, quando você escolhe **Wave Length = Electron** e **Incident beam mode = Parallel**. Para operações de toda a janela, como desenhar e salvar, consulte a [página de visão geral](index.md).
+> Esta página lista todas as configurações que aparecem no painel **Configurações de simulação**, à direita, quando você escolhe **Fonte de ondas = Elétrons** e **Óptica = Feixe paralelo**. Para operações de toda a janela, como desenhar e salvar, consulte a [página de visão geral](index.md).
 
-Condições de GUI: Wave Length = Electron, Incident beam mode = Parallel, Intensity calculation = Only excitation error / Kinematical / Dynamical.
+Condições de GUI: Fonte de ondas = Elétrons, Óptica = Feixe paralelo, Cálculo de intensidade = Apenas erro de exc. / Cinemático & erro exc. / Teoria dinâmica.
 
 ![Simulador de difração no modo SAED](../../assets/cap-pt-auto/FormDiffractionSimulator-saed.png)
 
@@ -20,7 +20,7 @@ Simula o padrão de difração produzido quando um feixe de elétrons paralelo a
 
 ![Wave Length](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Defina a fonte de radiação como **Electron**. Insira a energia (keV) ou o comprimento de onda (nm) e o comprimento de onda corrigido relativisticamente é calculado. Para fontes de raios X e nêutrons, consulte [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md).
+Defina a fonte de radiação como **Elétrons**. Insira a energia (keV) ou o comprimento de onda (Å ou nm, alternável; padrão Å) e o comprimento de onda corrigido relativisticamente é calculado. O valor inicial é 200 keV; o menu **Predefinições** define 300 / 200 / 120 kV com um clique. Para fontes de raios X e nêutrons, consulte [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -28,9 +28,9 @@ Defina a fonte de radiação como **Electron**. Insira a energia (keV) ou o comp
 
 ![Incident beam mode](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Defina a geometria do feixe incidente como **Parallel**. Esta é a geometria de onda plana padrão usada para SAED e difração de raios X.
+Defina a geometria do feixe incidente como **Feixe paralelo**. Esta é a geometria de onda plana padrão usada para SAED e difração de raios X.
 
-> **Nota**: Para elétrons você pode escolher **Parallel / Precession (electron = PED) / Convergence (CBED)**. A escolha de **Precession** resulta em uma [simulação PED](2-ped-simulation.md), e a escolha de **Convergence** resulta em uma [simulação CBED](3-cbed-simulation.md); em ambos os casos o cálculo de intensidade muda automaticamente para Dynamical.
+> **Nota**: Para elétrons você pode escolher **Feixe paralelo / Precessão (elétrons) / Convergência (elétrons)**. A escolha de **Precessão (elétrons)** resulta em uma [simulação PED](2-ped-simulation.md), e a escolha de **Convergência (elétrons)** resulta em uma [simulação CBED](3-cbed-simulation.md); em ambos os casos o cálculo de intensidade muda automaticamente para **Teoria dinâmica**.
 
 ---
 
@@ -42,7 +42,17 @@ Seleciona como as intensidades dos spots são calculadas.
 
 ### Somente erro de excitação
 
-A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $S_g$). Ela é máxima em $S_g = 0$ — exatamente sobre a esfera — e decai à medida que $\lvert S_g\rvert$ aumenta, chegando a zero assim que $\lvert S_g\rvert$ excede o **Radius** indicado para o ponto da rede recíproca. Como o fator de estrutura do cristal é ignorado, este é o modo mais rápido e adequado para verificar as posições dos spots de difração.
+A intensidade é determinada exclusivamente pela distância geométrica entre a esfera de Ewald e o ponto da rede recíproca (o erro de excitação $S_g$). Ela é máxima em $S_g = 0$ — exatamente sobre a esfera — e decai à medida que $\lvert S_g\rvert$ aumenta, chegando a zero assim que $\lvert S_g\rvert$ excede o **Raio do ponto** indicado para o ponto da rede recíproca. Como o fator de estrutura do cristal é ignorado, este é o modo mais rápido e adequado para verificar as posições dos spots de difração.
+
+Somente neste modo aparecem as seguintes opções:
+
+| Opção | Descrição |
+|--------|-------------|
+| **Excluir todas as reflexões proibidas** | Oculta todos os reflexos proibidos pelo grupo espacial (centragem de rede, eixos helicoidais e planos de deslizamento). Marcá-la também marca e bloqueia a opção seguinte. |
+| **Excluir reflexões proibidas por centragem de rede** | Oculta apenas os reflexos proibidos pela centragem de rede (ativada por padrão). |
+| **Desenhar todos os pontos com o mesmo raio** | Desenha todos os spots excitados com o raio completo *R*, independentemente de $S_g$. |
+
+Os reflexos proibidos que permanecem visíveis são desenhados nas cores de **Pontos extintos** (consulte [Spot appearance](#spot-appearance)).
 
 ### Cinemática
 
@@ -50,9 +60,9 @@ Além do erro de excitação, o fator de estrutura cinemático $\lvert F_{hkl} \
 
 ### Dinâmica (método de ondas de Bloch, somente elétron)
 
-Um cálculo dinâmico rigoroso pelo método de ondas de Bloch (método de Bethe). Ele reproduz o espalhamento múltiplo e a variação da intensidade dependente da espessura, e é necessário para amostras espessas ou difração forte. Disponível apenas quando Electron está selecionado. Para a teoria, consulte [Apêndice A3. Método de ondas de Bloch](../appendix/a3-bloch-wave/calculation.md).
+Um cálculo dinâmico rigoroso pelo método de ondas de Bloch (método de Bethe). Ele reproduz o espalhamento múltiplo e a variação da intensidade dependente da espessura, e é necessário para amostras espessas ou difração forte. Disponível apenas quando **Elétrons** está selecionado. Para a teoria, consulte [Apêndice A3. Método de ondas de Bloch](../appendix/a3-bloch-wave/calculation.md).
 
-> **Nota**: Quando **Dynamical** está selecionado, um painel **Bloch wave settings** aparece abaixo.
+> **Nota**: Quando **Teoria dinâmica** está selecionada, um painel **Configurações de ondas de Bloch** aparece abaixo.
 
 ---
 
@@ -60,12 +70,12 @@ Um cálculo dinâmico rigoroso pelo método de ondas de Bloch (método de Bethe)
 
 ![Bloch wave parameters](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
-Ativo apenas quando **Intensity calculation = Dynamical**.
+Ativo apenas quando **Cálculo de intensidade = Teoria dinâmica**.
 
 | Parâmetro | Descrição |
 |-----------|-------------|
-| **Number of diffracted waves** | Número de ondas de Bloch incluídas no problema de autovalores. Valores maiores fornecem intensidades mais precisas, mas aumentam o tempo de cálculo com $O(N^3)$ |
-| **Thickness** | Espessura da amostra (nm) usada no cálculo dinâmico |
+| **Número de ondas difratadas** | Número de ondas de Bloch incluídas no problema de autovalores (8–1000, padrão 240). Valores maiores fornecem intensidades mais precisas, mas aumentam o tempo de cálculo com $O(N^3)$ |
+| **Espessura** | Espessura da amostra (nm) usada no cálculo dinâmico (0.01–10000 nm, padrão 50 nm) |
 
 ---
 
@@ -75,14 +85,13 @@ Ativo apenas quando **Intensity calculation = Dynamical**.
 
 Controla como cada spot de difração é renderizado.
 
-- **Solid sphere / Gaussian** : o modelo geométrico do ponto da rede recíproca. **Solid sphere** desenha a seção transversal (um círculo) entre uma esfera de raio $R$ e a esfera de Ewald, com a área do círculo correspondendo à intensidade de difração; **Gaussian** desenha a seção transversal (uma gaussiana 2-D) de uma gaussiana 3-D com $\sigma = R$, cuja integral corresponde à intensidade de difração.
-- **Opacity** : transparência do spot (0 = transparente, 1 = opaco).
-- **Radius (R)** : raio virtual do ponto da rede recíproca. O tamanho do spot é fixado pela combinação do modo **Appearance** e do **Intensity calculation** (por exemplo, Solid sphere + Dynamical fornece um raio proporcional a $I_\text{dyn}^{1/2}$).
-- **Brightness** : ativo apenas no modo **Gaussian**. Intensidade integrada da gaussiana renderizada.
-- **Color scale** : **Gray scale** ou **Cold-warm**.
-- **Log scale** : exibe as intensidades em escala logarítmica. Útil para padrões com grande contraste de intensidade.
-- **Spot color** : cor do spot usada quando a escala de cores não está em uso.
-- **Use crystal color** : quando marcado, os spots são desenhados na cor atribuída a cada cristal.
+
+- **Esfera sólida / Gaussiana** : o modelo geométrico do ponto da rede recíproca (padrão **Esfera sólida**). **Esfera sólida** desenha a seção transversal (um círculo) entre uma esfera e a esfera de Ewald: o raio da esfera é $R\,I^{1/3}$ para **Cinemático & erro exc.** (volume da esfera ∝ intensidade) e $R$ para **Apenas erro de exc.**; para **Teoria dinâmica**, desenha-se um disco de raio $R\,I_\text{dyn}^{1/2}$ (área ∝ intensidade) sem o corte pela esfera de Ewald. **Gaussiana** desenha a seção transversal (uma gaussiana 2-D) de uma gaussiana 3-D com $\sigma = R$, cuja integral corresponde à intensidade de difração.
+- **Opacidade** : transparência do spot (0 = transparente, 1 = opaco).
+- **Raio do ponto (R)** : raio virtual do ponto da rede recíproca (nm⁻¹; 0.01–1, padrão 0.2). O tamanho do spot é fixado pela combinação do modo de **Aparência** e do **Cálculo de intensidade** (veja acima).
+- **Brilho**, **Escala de cores**, **Escala log** : exibidos apenas no modo **Gaussiana**. **Brilho** ajusta a intensidade integrada da gaussiana renderizada; a **Escala de cores** é **Gray** (spots nas cores de ponto abaixo), **Cold-Warm**, **Spectrum** ou **Fire**; **Escala log** exibe as intensidades em escala logarítmica (útil para padrões com grande contraste de intensidade).
+- **Cor do ponto** : exibida enquanto a **Escala de cores** for **Gray** (a configuração inicial). **Pontos gerais**, **Pontos extintos (paraf./desl.)** e **Pontos extintos (centragem)** definem as cores dos reflexos permitidos e proibidos.
+- **Cor por cristal** : quando marcado, os spots são desenhados na cor atribuída a cada cristal (também para um único cristal).
 
 ---
 
@@ -93,13 +102,13 @@ Os rótulos sobrepostos aos spots são selecionados na [barra de ferramentas](in
 | Rótulo | Conteúdo |
 |-------|---------|
 | **Index** | índices de Miller $(hkl)$ |
-| **d** | distância interplanar $d$ |
-| **1/d** | inverso da distância interplanar $1/d$ |
-| **Distance** | distância de spot a spot no detector |
+| **d** | distância interplanar $d$ (exibida em Å) |
+| **1/d** | inverso da distância interplanar $1/d$ (nm⁻¹) |
+| **Distância** | distância do spot ao reflexo direto no detector, $L_2 \tan 2\theta$ (mm; $L_2$ = comprimento de câmara 2; exata para um detector não inclinado, τ = 0) |
 | **2θ** | ângulo de espalhamento $2\theta$ (mesma definição dos círculos concêntricos da escala 2θ) |
 | **χ** | ângulo azimutal $\chi$, medido a partir da direção para cima (12 horas), positivo no sentido horário (mesma definição das linhas radiais da escala azimutal) |
-| **Excit. Err.** | erro de excitação $S_g$ |
-| **\|Fg\|** | valor absoluto do fator de estrutura $\lvert F_{hkl} \rvert$ |
+| **Erro excit.** | erro de excitação $S_g$ (nm⁻¹) |
+| **\|Fg\|** | intensidade relativa (%) no modo **Cinemático & erro exc.**; no modo **Teoria dinâmica**, a intensidade relativa (% do feixe difratado mais intenso, excluindo 000) e a amplitude complexa na superfície de saída. Nada é exibido no modo **Apenas erro de exc.** |
 
 ---
 

@@ -16,20 +16,21 @@ Quando o ReciPro é iniciado, a janela principal aparece. A partir dessa janela 
 
 ## Atalhos de teclado e mouse {#keyboard-mouse-shortcuts}
 
-A janela principal instala vários atalhos **válidos para todo o aplicativo**. Eles continuam funcionando enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID estão em foco.
+A janela principal instala vários atalhos **válidos para todo o aplicativo**. Eles continuam funcionando enquanto as janelas Visualizador de estrutura, Estereonete, Simulador de difração e Spot ID v1 estão em foco.
 
 | Atalho | Ação |
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas pressionadas para uma diagonal) |
 | Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
-| Arrastar com o botão esquerdo o widget de orientação (canto inferior esquerdo, abaixo de *Current Direction*) | Girar o cristal |
+| Arrastar com o botão esquerdo o widget de orientação (canto inferior esquerdo, abaixo de *Orientação atual*) | Girar o cristal |
 | Clique duplo com o botão direito no widget de orientação | Copiar a imagem do widget para a área de transferência |
-| Clique único em um botão de função | Abrir / fechar essa janela |
+| Clique único em um botão de função | Abrir / fechar essa janela (uma janela minimizada é restaurada em vez de fechada) |
 | Clique duplo em um botão de função | Forçar a janela a ficar visível e trazê-la para a frente |
-| Clique direito em um cristal na lista | Menu de contexto (Renomear / Duplicar / Excluir / Exportar CIF…) |
-| Clique duplo no rótulo **Current Index** | Mostrar / ocultar a caixa max-UVW |
-| Soltar um arquivo sobre a janela | Carregar uma lista de cristais (`.xml`, `.cdb2`) ou um cristal (`.cif`, `.amc`) |
+| Clique direito em um cristal na lista | Menu de contexto (Renomear / Exportar como CIF / Duplicar / Excluir) |
+| Clique duplo no rótulo do índice do eixo de zona (`[u v w]`, abaixo de *Orientação atual*) | Mostrar / ocultar a caixa max-UVW |
+| Soltar um arquivo sobre a janela | Carregar uma lista de cristais (`.xml`, `.out`, `.cdb2`; pergunta se deve substituir ou anexar) ou um cristal (`.cif`, `.amc`) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Abrir a ferramenta (experimental) de captura da GUI para a janela ativa |
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para ver todas as janelas de relance.
 
@@ -40,7 +41,7 @@ A janela principal instala vários atalhos **válidos para todo o aplicativo**. 
 Se você é novo no ReciPro, siga estes passos:
 
 1. Selecione o cristal desejado na **Lista de cristais**. Para usar um arquivo CIF/AMC, arraste-o e solte-o na **Informação do cristal**.
-2. Se você editar parâmetros de rede ou posições de átomos, pressione **Add** ou **Replace** para que as alterações sejam gravadas de volta na lista de cristais.
+2. Se você editar parâmetros de rede ou posições de átomos, pressione **Adicionar** ou **Substituir** para que as alterações sejam gravadas de volta na lista de cristais.
 3. Defina a orientação do cristal no **Controle de rotação** usando um eixo de zona, um plano cristalino, ângulos de Euler ou arrastando com o mouse.
 4. Abra a ferramenta desejada em **Funções**. As janelas de cálculo de difração, HRTEM/STEM, EBSD e outras usam o cristal e a orientação atualmente selecionados.
 
@@ -53,11 +54,11 @@ Se você é novo no ReciPro, siga estes passos:
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| Carregar lista de cristais (substituir lista atual) | Carregar um arquivo de lista de cristais (`*.xml`), substituindo a lista atual |
-| Carregar lista de cristais (adicionar à lista atual) | Carregar um arquivo de lista de cristais e anexá-lo à lista atual |
+| Carregar lista de cristais (substituir lista atual) | Carregar um arquivo de lista de cristais (`*.xml`, `*.out`), substituindo a lista atual; uma caixa de diálogo permite escolher quais cristais carregar |
+| Carregar lista de cristais (adicionar à lista atual) | Carregar um arquivo de lista de cristais e anexá-lo à lista atual (com a mesma caixa de diálogo de seleção) |
 | Redefinir para a lista de cristais inicial | Recarregar a lista de cristais que acompanha o ReciPro |
 | Importar cristal de arquivo CIF ou AMC | Carregar um único cristal de um arquivo CIF / AMC |
-| Salvar lista de cristais | Salvar a lista de cristais atual |
+| Salvar lista de cristais | Salvar a lista de cristais atual (uma caixa de diálogo permite escolher quais cristais gravar) |
 | Exportar o cristal selecionado como arquivo CIF | Salvar o cristal selecionado no formato CIF |
 | Limpar todos os cristais | Remover todos os cristais da lista |
 | Sair | Fechar o aplicativo |
@@ -70,7 +71,7 @@ Se você é novo no ReciPro, siga estes passos:
 | Mostrar dicas | Alternar a exibição das dicas de ferramenta |
 | Modo escuro | Alternar entre os temas de cores claro e escuro |
 | Usar índice de Miller-Bravais (hkil) | Usar a notação de 4 índices para os sistemas trigonal/hexagonal em todo o aplicativo |
-| Usar fatores de dispersão iônicos | Incluir o termo de carga iônica nos fatores de dispersão atômica usados nos cálculos |
+| Usar fatores de dispersão iônicos | Usar os fatores de espalhamento de elétrons iônicos (Peng) para os íons atribuídos aos átomos nos cálculos dinâmicos de elétrons (ondas de Bloch), incluindo os perfis de Kikuchi; o termo de monopolo $g \neq 0$ é somado apenas aos coeficientes elásticos $U_g$ (a absorção TDS e a fonte TDS de Kikuchi usam a parte iônica finita). Quando desmarcado, são usados os fatores de átomos neutros. Se a célula unitária não for eletricamente neutra ($\Sigma q \neq 0$), o termo de monopolo é descartado e apenas a parte finita (íon blindado) é usada; um aviso é exibido quando a opção é ativada |
 | Baixar biblioteca MKL | Baixar a biblioteca nativa Intel MKL (~55 MB); depois de instalada é usada automaticamente em cálculos grandes |
 | Accept external macro commands (named pipe) | Escutar no pipe nomeado `ReciPro.Macro.v1` e executar macros enviadas por programas externos — ver [Controle externo](20-macro/3-external-control.md) |
 | Redefinir configurações do registro ao sair (efetivo após reiniciar) | Redefinir as configurações na próxima reinicialização |
@@ -100,7 +101,7 @@ Alternar o idioma da interface. Estão disponíveis onze idiomas — English, �
 
 ### Macro
 
-Abre a janela [Macro](20-macro/index.md) para automatizar as operações do ReciPro com scripts em estilo Python. Para fluxos de trabalho repetidos, consulte as [funções integradas](20-macro/1-built-in-functions.md) e os [exemplos de macro](20-macro/2-examples.md).
+**Editor** abre a janela [Macro](20-macro/index.md) para automatizar as operações do ReciPro com scripts em estilo Python. As macros registradas nessa janela também são listadas abaixo de **Editor**; escolher uma delas a executa diretamente. Para fluxos de trabalho repetidos, consulte as [funções integradas](20-macro/1-built-in-functions.md) e os [exemplos de macro](20-macro/2-examples.md).
 
 
 ---
@@ -119,7 +120,7 @@ Mostra a orientação do cristal. Arraste para girar. Eixos: vermelho = *a*, ver
 Redefine para o estado inicial: eixo *c* perpendicular à tela, eixo *b* para cima.
 
 ### Eixo de zona
-Mostra o eixo de zona [*uvw*] mais próximo da normal da tela, procurado entre os índices cujas magnitudes permanecem dentro do limite indicado na caixa max-UVW (clique duas vezes no rótulo **Current Index** para mostrar ou ocultar essa caixa).
+Mostra o eixo de zona [*uvw*] mais próximo da normal da tela. Os candidatos são os índices irredutíveis (mdc = 1) com $|u|+|v|+|w| \le$ o limite da caixa max-UVW (1–100, padrão 30); clique duas vezes no rótulo do índice para mostrar ou ocultar essa caixa.
 
 ### Ângulos de Euler (Z-X-Z)
 Defina a orientação do cristal com ângulos de Euler **Z–X–Z**:
@@ -134,7 +135,7 @@ As rotações são aplicadas na ordem \(\Psi \to \Theta \to \Phi\). Consulte [Ge
 
 ![Setas](../assets/cap-pt-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-Gira pelo ângulo Step. Marque Animation para uma rotação contínua.
+Gira pelo ângulo **Passo** (padrão 10°). ↺ / ↻ giram em torno da normal da tela. Marque **Animation** para uma rotação contínua; **Passo** passa então a ser uma velocidade em °/s.
 
 ### Visualizar ao longo de
 
@@ -142,9 +143,9 @@ Gira pelo ângulo Step. Marque Animation para uma rotação contínua.
 
 Alinha um eixo de zona [*uvw*] ou um plano cristalino (*hkl*) perpendicular à tela.
 
-- **Fix**: quando marcado, o eixo de zona ou plano especificado é mantido espacialmente fixo durante as operações de rotação subsequentes.
-- **Axis**: coloca o eixo de zona inserido \([uvw]\) perpendicular à tela. Se **Plane** também estiver definido, essa direção é apontada para cima na tela.
-- **Plane**: coloca a normal do plano cristalino inserido \((hkl)\) perpendicular à tela. Se **Axis** também estiver definido, essa direção é apontada para cima na tela.
+- **Fixar**: quando marcado, todas as rotações subsequentes (setas, arrasto com o mouse) são realizadas em torno do eixo de zona ou da normal do plano especificados, de modo que essa direção permanece fixa. Apenas uma das duas caixas **Fixar** pode estar marcada, e ela não pode ser marcada enquanto o índice for 0 0 0.
+- **Eixo**: coloca o eixo de zona inserido \([uvw]\) perpendicular à tela. Se **Plano** também estiver definido e o eixo estiver contido nesse plano ($uh+vk+wl=0$), a normal do plano é apontada para cima na tela; caso contrário, uma direção para cima é escolhida automaticamente.
+- **Plano**: coloca a normal do plano cristalino inserido \((hkl)\) perpendicular à tela. Se **Eixo** também estiver definido e estiver contido no plano ($uh+vk+wl=0$), esse eixo é apontado para cima na tela; caso contrário, uma direção para cima é escolhida automaticamente.
 
 ### Maneiras básicas de definir a orientação
 
@@ -164,28 +165,28 @@ Consulte [Geometria de rotação](4-rotation-geometry.md) e [Apêndice A1. Siste
 
 ![Lista de cristais](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-~80 cristais na instalação padrão. Selecione para ver os detalhes e definir para os cálculos. **Clique direito em um cristal** na Lista de cristais para um menu de contexto: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
+66 cristais na instalação padrão. Selecione para ver os detalhes e definir para os cálculos. **Clique direito em um cristal** na Lista de cristais para um menu de contexto: *Renomear*, *Exportar como CIF*, *Duplicar*, *Excluir*.
 
 ![Botões de edição de cristal](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
 | Botão | Ação |
 |--------|--------|
-| Up / Down | Reordenar |
-| Duplicate | Copiar o cristal selecionado |
-| Delete / All clear | Remover cristais |
-| Add / Replace | Adicionar à lista ou substituir a entrada selecionada |
+| Subir / Descer | Reordenar |
+| Duplicar | Copiar o cristal selecionado |
+| Excluir / Limpar todos os cristais | Remover o cristal selecionado / todos os cristais |
+| Adicionar / Substituir | Adicionar à lista ou substituir a entrada selecionada |
 
 ---
 
 ## Informação do cristal
 
-Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos CIF/AMC para carregar uma estrutura. Este controle é compartilhado pelo ReciPro, PDIndexer e CSManager, mas as abas e os recursos exibidos diferem conforme o aplicativo. O ReciPro exibe as abas Basic Info, Atom e Reference (as abas EOS, Elasticity e outras são destinadas aos outros aplicativos e não são exibidas no ReciPro).
+Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos CIF/AMC para carregar uma estrutura. Este controle é compartilhado pelo ReciPro, PDIndexer e CSManager, mas as abas e os recursos exibidos diferem conforme o aplicativo. O ReciPro exibe as abas Info. básica, Info. de átomos e Ref. (as abas EOS, Elasticidade e outras são destinadas aos outros aplicativos e não são exibidas no ReciPro).
 
-> **Importante**: Pressione **Add** ou **Replace** para salvar as alterações.
+> **Importante**: Pressione **Adicionar** ou **Substituir** para salvar as alterações.
 
 ![Crystal Control](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos) e **Z** (número de unidades de fórmula por célula unitária). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md). Para % em massa, % atômica e conversão em óxidos, clique com o botão direito e escolha [Detalhes da composição química](#chemical-composition).
+A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos), **Z** (número de unidades de fórmula por célula unitária) e **Cor** (a cor de exibição do cristal, usada na visualização 3D da estrutura e nas curvas de perfil de difração). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md). Para % em massa, % atômica e conversão em óxidos, clique com o botão direito e escolha [Detalhes da composição química](#chemical-composition).
 
 ### Aba Basic Info
 
@@ -197,16 +198,18 @@ Parâmetros de rede, simetria e grandezas derivadas deles.
 |------|------|
 | Parâmetros da célula | Parâmetros de rede a, b, c (**Unidade**: Å = 10⁻¹⁰ m ou nm) e α, β, γ. A escolha de uma simetria os restringe automaticamente (por exemplo, a=b=c, α=β=γ=90° para cúbico). |
 | Simetria | Escolha o **Sistema cristalino**, o **Grupo pontual** e o **Grupo espacial**. Digite na caixa **Pesquisar** para listar os candidatos correspondentes (diferencia maiúsculas de minúsculas). |
-| Volume da célula / Massa da célula | Volume e massa da célula unitária. O volume é exibido em Å³ / nm³ conforme a seleção de **Unidade**. |
-| Volume molar / Massa molar / Densidade | Volume molar, massa molar e densidade. Exibidos **somente quando os átomos foram inseridos**. |
-| Z médio (número) / Z médio (massa) / A médio | Número atômico médio ponderado por número e por massa, e peso atômico médio por átomo. |
+| Volume da célula / Massa da célula | Volume e massa da célula unitária. O volume é exibido em Å³ / nm³ conforme a seleção de **Unidade**; a massa, em 10⁻²⁴ g. |
+| Volume molar / Massa molar / Densidade | Volume molar (cm³/mol, por unidade de fórmula), massa molar (g/mol) e densidade (g/cm³). Exibidos **somente quando os átomos foram inseridos**. |
+| Z médio (número) / Z médio (massa) / A médio | Número atômico médio ponderado por número e por massa, e peso atômico médio por átomo (g/mol). As ocupações são levadas em conta. |
+| Mostrar erros | Mostrar os campos de erro (±) dos parâmetros da célula. |
+| Change axes/origin setting | O mesmo que o item do menu de contexto **Alterar configuração de eixos/origem**: converte para outra configuração de eixos/origem do mesmo grupo espacial. |
 | Densidade atômica / Densidade eletrônica | Número de átomos e de elétrons por volume da célula, exibidos em Å⁻³ / nm⁻³ conforme a seleção de **Unidade**. |
 
 ### Aba Atom
 
 ![Atom](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
-Defina a espécie, a posição, o fator de temperatura e o fator de espalhamento de cada átomo. Edite a lista de átomos com **Add**, **Replace** (substituir a linha selecionada), **Up/Down** (reordenar) e **Delete**. Cada átomo possui:
+Defina a espécie, a posição, o fator de temperatura e o fator de espalhamento de cada átomo. Edite a lista de átomos com **Adicionar**, **Substituir** (substituir a linha selecionada), **Subir/Descer** (reordenar) e **Excluir**. A lista de átomos também mostra, para cada sítio, sua multiplicidade (**Mult.**), a letra de Wyckoff (**Letra Wyck.**) e a simetria do sítio (**Sim. sítio**). Cada átomo possui:
 
 | Item | Descrição |
 |------|------|
@@ -217,7 +220,7 @@ Defina a espécie, a posição, o fator de temperatura e o fator de espalhamento
 
 Clique com o botão direito em uma linha de átomo e escolha **Mostrar posições equivalentes do átomo** para abrir uma pequena janela que lista todas as posições geradas pelas operações de simetria do grupo espacial; seu botão **Copy** copia a lista como texto separado por tabulações (por exemplo, para colar em uma planilha).
 
-**Origin shift**: desloca a origem de todas as coordenadas atômicas. Use os botões predefinidos (**+** / **−**) para deslocamentos padrão, ou **Apply custom shift** para um valor arbitrário.
+**Deslocamento da origem**: desloca a origem de todas as coordenadas atômicas. Escolha o sinal com **+** / **−** e pressione um dos vetores predefinidos — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — ou use **Apply custom shift** para um valor arbitrário.
 
 **Fator de Debye–Waller (fator de temperatura)**:
 

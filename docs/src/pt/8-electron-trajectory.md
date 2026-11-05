@@ -1,6 +1,7 @@
 # Trajetórias eletrônicas
 
-O **Simulador de Trajetórias (Método de Monte Carlo)** calcula as trajetórias dos elétrons dentro de uma amostra pelo **método de Monte Carlo**: os elétrons incidentes sofrem espalhamento elástico e inelástico, e as distribuições resultantes dos elétrons retroespalhados (BSE) — direção, energia no escape, profundidade de penetração e espalhamento lateral — são acumuladas. Essas distribuições também fornecem a ponderação angular/de energia/de profundidade usada pela [12. Simulação EBSD](12-ebsd-simulation.md).
+O **Simulador de Trajetórias (Método de Monte Carlo)** calcula as trajetórias dos elétrons dentro de uma amostra pelo **método de Monte Carlo**: os elétrons incidentes sofrem espalhamento elástico e inelástico, e as distribuições resultantes dos elétrons retroespalhados (BSE) — direção, energia no escape, profundidade de penetração e espalhamento lateral — são acumuladas.
+A [12. Simulação EBSD](12-ebsd-simulation.md) usa o mesmo mecanismo de Monte Carlo para sua ponderação angular/de energia/de profundidade, mas o executa internamente com suas próprias configurações; os resultados desta janela não são repassados a ela.
 
 ![Electron Trajectory](../assets/cap-pt-auto/FormTrajectory.png)
 
@@ -28,18 +29,20 @@ As trajetórias são exibidas em uma vista 3D OpenGL. Ela usa a [navegação de 
 Os controles na parte superior da janela definem a execução:
 
 - **Simular trajetórias** : inicia a execução de Monte Carlo. A barra de status na parte inferior informa separadamente o tempo decorrido do cálculo das trajetórias, do desenho dos gráficos e da renderização 3D.
-- **Number of trajectories** : quantos elétrons incidentes rastrear. Mais elétrons reduzem o ruído estatístico de todas as distribuições abaixo, com um tempo de execução que cresce linearmente.
-- **Inclinação da amostra** (°) : inclinação da superfície da amostra em torno do eixo *X*. Deixe em 0 para incidência normal; use **−70°** para reproduzir a geometria do [simulador EBSD](12-ebsd-simulation.md), em que a grande inclinação aumenta o rendimento de retroespalhamento.
+- **Number of trajectories** (100–1 000 000, padrão 100 000) : quantos elétrons incidentes rastrear. Mais elétrons reduzem o ruído estatístico de todas as distribuições abaixo, com um tempo de execução que cresce linearmente.
+- **Inclinação da amostra** (°, −90 a 0, padrão 0) : inclinação da superfície da amostra em torno do eixo *X*. Deixe em 0 para incidência normal; use **−70°** para reproduzir a geometria do [simulador EBSD](12-ebsd-simulation.md), em que a grande inclinação aumenta o rendimento de retroespalhamento.
 - **Energy** (keV) / **Wavelength** / **Unit** : a tensão de aceleração do feixe incidente e o comprimento de onda do elétron, com correção relativística, vinculado a ela. A energia define a energia cinética usada tanto pelo modelo elástico (NIST Mott) quanto pelo inelástico (poder de freamento / IMFP).
 
-Os próprios modelos de espalhamento não podem ser escolhidos pelo usuário: as seções de choque elásticas vêm da tabela NIST Mott incluída (com recurso ao Rutherford blindado fora de seu intervalo), e o poder de freamento da forma modificada de Jablonski (2008). O modelo efetivamente usado é indicado ao lado de cada valor em **Estatísticas**. Consulte [Atenuação e transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber o que são esses modelos.
+Um elétron é rastreado até deixar a amostra ou até sua energia cair para **2 keV** (limiar fixo). Os elétrons que saem com mais de 2 keV são contados como elétrons retroespalhados; η (sua fração em relação a todos os elétrons incidentes), a energia média de BSE, a estereonete e os histogramas abaixo são calculados a partir desses elétrons. A seção de choque, o livre caminho médio e o poder de freamento em **Estatísticas** são valores do modelo na energia do feixe.
+
+Os próprios modelos de espalhamento não podem ser escolhidos pelo usuário: as seções de choque elásticas vêm da tabela NIST Mott incluída (com recurso ao Rutherford blindado fora de seu intervalo), e o poder de freamento da forma modificada de Jablonski (2008). O modelo efetivamente usado é indicado ao lado da seção de choque e do poder de freamento em **Estatísticas**. Consulte [Atenuação e transporte](appendix/a2-beam-interaction/attenuation-transport.md) para saber o que são esses modelos.
 
 ### Vista 3D das trajetórias
 
-As trajetórias vermelhas são elétrons absorvidos na amostra; as laranja são as que escapam como elétrons retroespalhados. Os círculos-guia concêntricos são rotulados em nm (ou µm), e **+X**, **+Y**, **+Z (=beam)** marcam os eixos.
+As trajetórias dos elétrons retroespalhados são desenhadas em **vermelho**, e as dos elétrons absorvidos na amostra em **azul**; ao longo de cada caminho, a cor esmaece em direção ao branco/transparente em 16 passos à medida que o elétron perde energia. O caminho após o escape (veja abaixo) é desenhado como um curto segmento **laranja** cujo comprimento é proporcional à energia de escape. Os círculos-guia concêntricos são rotulados em nm (ou µm), e **+X**, **+Y**, **+Z (=beam)** marcam os eixos.
 
 - **Do eixo Z (=direção do feixe)** / **Do eixo X (eixo de rotação)** / **Da normal à superfície** : alinham a vista com as direções padrão.
-- **Número de trajetórias a desenhar** : quantas das trajetórias calculadas renderizar (desenhar todas as 100 000 seria ilegível e lento).
+- **Número de trajetórias a desenhar** (1–100 000, padrão 500) : quantas das trajetórias calculadas renderizar (desenhar todas as 100 000 seria ilegível e lento). São tomadas as primeiras na ordem de cálculo, pulando os elétrons absorvidos quando estes não são desenhados.
 - **Desenhar eixos** / **Desenhar círculos-guia** : as setas dos eixos e a escala de distância.
 - **Desenhar trajetórias absorvidas na amostra** : inclui os elétrons que nunca escapam.
 - **Desenhar o caminho após o escape** : continua desenhando o caminho de um elétron retroespalhado depois que ele deixou a superfície.
@@ -50,7 +53,7 @@ As trajetórias vermelhas são elétrons absorvidos na amostra; as laranja são 
 
 ![Estatísticas](../assets/cap-pt-auto/FormTrajectory.panel2.groupBoxStatistics.png)
 
-Valores para a energia do feixe atual, com o modelo que produziu cada um indicado entre colchetes.
+Valores para a energia do feixe atual. A seção de choque e o poder de freamento trazem entre colchetes o nome do modelo que os produziu.
 
 - **Seção de choque de dispersão (σ_E)** (nm²) — seção de choque elástica total por átomo.
 - **Livre caminho médio elástico (λ)** (nm) — distância média entre eventos de espalhamento elástico.
@@ -76,11 +79,11 @@ Distribuição angular dos elétrons retroespalhados, desenhada em uma estereone
 
 ![Histogramas](../assets/cap-pt-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
-Três distribuições dos elétrons retroespalhados, todas normalizadas para área unitária.
+Três distribuições dos elétrons retroespalhados. Cada classe contém a fração de todos os elétrons retroespalhados que caem nela (os valores das classes somam 1; não são divididos pela largura da classe).
 
 ### Distribuição de energia dos BSE no escape
 
-Histograma da **energia que os elétrons retroespalhados ainda carregam ao deixar a amostra** (keV) — não da sua perda de energia. O simulador EBSD a usa para ponderar a integração em energia do master pattern.
+Histograma da **energia que os elétrons retroespalhados ainda carregam ao deixar a amostra** (keV) — não da sua perda de energia. O simulador EBSD pondera a integração em energia do master pattern com uma distribuição desse tipo, obtida da sua própria execução de Monte Carlo.
 
 ### Distância máxima de BSE paralela à superfície
 
@@ -88,7 +91,7 @@ Histograma de quanto cada elétron retroespalhado percorreu **lateralmente** (pa
 
 ### Profundidade máxima de penetração de BSE
 
-Histograma da maior profundidade **perpendicular à superfície** (nm) que cada elétron retroespalhado alcançou antes de escapar. O simulador EBSD a usa para ponderar a integração em profundidade do master pattern.
+Histograma da maior profundidade **perpendicular à superfície** (nm) que cada elétron retroespalhado alcançou antes de escapar.
 
 ---
 
