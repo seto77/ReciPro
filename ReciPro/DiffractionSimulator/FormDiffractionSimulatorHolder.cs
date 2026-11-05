@@ -409,6 +409,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
     //PreFilterMessage で UI スレッド全体の WM_KEYDOWN を先取りする方式に置き換えた。これなら ReciPro のどのウィンドウが前面でも
     //(このフォームが Visible かつ checkBoxEnableArrow.Checked なら) 矢印キーでホルダーを傾けられる。
     //メッセージフィルタは同一スレッド内のメッセージにしか掛からないので、他アプリのキー入力を横取りすることは無い。
+    //261105Cl 変更 (作者決定 D25): ほかの窓の入力欄の矢印キーまで奪っていたので、この窓がアクティブなときだけに絞った (PreFilterMessage の ActiveForm 判定)。
+    //フィルタ方式は残す (この窓の中ではフォーカスのあるコントロールより先に拾える)
     //旧:
     //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     //{
@@ -422,7 +424,9 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
         if (m.Msg != WM_KEYDOWN) return false;
         var key = (Keys)(int)m.WParam;
         if (key is not (Keys.Left or Keys.Right or Keys.Up or Keys.Down)) return false; //安価な判定を先に
-        if (!Visible || !checkBoxEnableArrow.Checked) return false;
+        //if (!Visible || !checkBoxEnableArrow.Checked) return false; // 261105Cl 変更前: どの窓が前面でも矢印キーを奪い、主窓などの入力欄でカーソルを動かせなかった
+        // 261105Cl 変更 (作者決定 D25): この窓が前面 (アクティブ) のときだけ傾きに使う。ほかの窓 (この窓から開いたダイアログを含む) では素通しにする
+        if (!Visible || !checkBoxEnableArrow.Checked || ActiveForm != this) return false; // 261105Cl
         //修飾キー併用時は tiltByArrowKey 側の完全一致で弾かれる
         return tiltByArrowKey(key | ModifierKeys);
     }
@@ -478,7 +482,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase, IMessageFilter
 
     private void buttonRotate180_Click(object sender, EventArgs e)
     {
-        FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI);
+        //FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI); // 261105Cl 変更前: 主窓で「軸/面を固定」していると、その結晶軸 (面法線) のまわりに回っていた
+        FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI, ignoreFixedAxis: true); // 261105Cl 変更 (作者決定 D25): 常にビーム軸 (画面に垂直) のまわり
     }
 
     private void checkBoxIncludingEquivalent_CheckedChanged(object sender, EventArgs e)

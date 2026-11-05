@@ -175,8 +175,8 @@ Ativa quando "Mostrar linhas de 1°" está marcado</value>
     <value>Quando marcado, as teclas de seta inclinam o
 suporte: Esquerda/Direita alteram Tilt X e
 Cima/Baixo alteram Tilt Y pelo passo da seta.
-Funciona enquanto esta janela estiver aberta,
-mesmo com outra janela do ReciPro à frente.</value>
+Funciona apenas enquanto esta janela estiver
+ativa (à frente).</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Incremento do ângulo de inclinação (em graus)
@@ -234,7 +234,9 @@ suporte e usa a orientação resultante
 como a direção neutra.</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>Gira o cristal 180° em torno do eixo do feixe ([001]).</value>
+    <value>Gira o cristal 180° em torno do eixo do feixe (perpendicular
+à tela), mesmo que um eixo ou plano esteja fixado ("Fixar")
+na janela principal.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>Ângulo Tilt X alvo (em graus)

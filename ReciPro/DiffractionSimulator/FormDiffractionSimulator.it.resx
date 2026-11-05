@@ -487,10 +487,15 @@ definizione delle linee radiali della scala azimutale)</value>
 che indica quanto il punto del reticolo reciproco
 si discosta dall'esatta condizione di Bragg/sfera di Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensità</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Se selezionato, per ogni spot viene visualizzata l'ampiezza
-del fattore di struttura |Fg|; un |Fg| maggiore
-indica generalmente una riflessione più intensa.</value>
+    <value>Se selezionato, per ogni spot viene visualizzata l'intensità
+in % della riflessione più intensa: |Fg|² (cinematica, senza
+l'errore di eccitazione) oppure |Φg|² seguito dall'ampiezza
+complessa Φg = Re + Im i (teoria dinamica). Con «Solo errore
+di ecc.» non viene visualizzato nulla.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Imposta la dimensione delle stringhe</value>
@@ -864,6 +869,9 @@ dal campione al rivelatore (monitor).</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Imposta la lunghezza di camera 2, ossia la distanza
 dal campione al rivelatore (monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Dettagli</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Apre la finestra delle impostazioni dettagliate del sistema ottico.</value>

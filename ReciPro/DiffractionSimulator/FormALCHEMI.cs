@@ -51,6 +51,8 @@ public partial class FormALCHEMI : FormBase
     /// CSV のヘッダは以前は出力した時点の結晶を書いていた (run の後に結晶を替えると、別の結晶の名前・格子定数が付いた) うえ、方位を書いていなかった</summary>
     private (string Crystal, string Cell) resultHeader;
     private Matrix3D resultRotation;
+    /// <summary>261105Cl 追加 (作者決定 D ALCHEMI): run 時の結晶 (参照)。結晶か加速電圧 (result.IncidentEnergyKeV) が今と違えば <see cref="RefreshLists"/> で曲線を消す</summary>
+    private Crystal resultCrystal;
     private readonly System.Diagnostics.Stopwatch sw = new();
 
     /// <summary>曲線の色 (サイト × チャネルの順に巡回)。GraphControl の凡例色と一致する</summary>
@@ -345,6 +347,35 @@ public partial class FormALCHEMI : FormBase
             checkedListBoxSites.Items.Add(text, checkedSites.Count == 0 || checkedSites.Contains(text));
         }
         UpdateScanLabel();
+        ClearResultIfStale(); // 261105Cl 追加 (作者決定 D ALCHEMI): 親の結晶・波長の変更と再表示はここを通る
+    }
+
+    /// <summary>261105Cl 追加 (作者決定 D ALCHEMI): 表示中の曲線を計算したときの結晶・加速電圧が今のものと違えば、曲線・診断・厚みの選択を消す。
+    /// 以前は結晶や電圧を替えても前の曲線が残り、今の条件の結果と見分けがつかなかった (CSV のヘッダは計算時の条件を書く)。
+    /// 結晶は参照で比べる (主窓で格子定数などを編集して適用すると別の Crystal になる)</summary>
+    private void ClearResultIfStale()
+    {
+        if (result == null || (ReferenceEquals(resultCrystal, Crystal) && result.IncidentEnergyKeV == Voltage)) return;
+        result = null;
+        headerResult = null; headerLines = null; tiltCache = null; lastDiagnosticsText = null; runError = null;
+        resultThetaB = double.NaN;
+        resultCrystal = null;
+        graphControl.VerticalLines = [];
+        graphControl.ClearProfile();
+        textBoxDiagnostics.Text = "";
+        numericBoxThickness.Enabled = false;
+        toolStripStatusLabel.Text = Localization.Loc(
+            en: "The crystal or the accelerating voltage has changed, so the previous curves were cleared.",
+            ja: "結晶または加速電圧が変わったので、前の曲線を消しました。",
+            de: "Kristall oder Beschleunigungsspannung wurde geändert; die bisherigen Kurven wurden gelöscht.",
+            fr: "Le cristal ou la tension d'accélération a changé ; les courbes précédentes ont été effacées.",
+            es: "El cristal o el voltaje de aceleración ha cambiado; se han borrado las curvas anteriores.",
+            pt: "O cristal ou a tensão de aceleração mudou; as curvas anteriores foram apagadas.",
+            it: "Il cristallo o la tensione di accelerazione è cambiato; le curve precedenti sono state cancellate.",
+            ru: "Кристалл или ускоряющее напряжение изменились, поэтому прежние кривые удалены.",
+            zhHans: "晶体或加速电压已更改，已清除之前的曲线。",
+            zhHant: "晶體或加速電壓已變更，已清除先前的曲線。",
+            ko: "결정 또는 가속 전압이 바뀌어 이전 곡선을 지웠습니다.");
     }
 
     /// <summary>選んだ反射列の θ_B と走査刻みを表示する (実行前に「何 θ_B ぶん振るのか」が分かるように)。</summary>
@@ -476,6 +507,7 @@ public partial class FormALCHEMI : FormBase
         toolStripProgressBar.Value = 0;
         sw.Restart();
         var progress = new Progress<AlchemiProgress>(ReportProgress);
+        var runCrystal = Crystal; // 261105Cl 追加 (作者決定 D ALCHEMI): 計算する結晶 (計算中に主窓で替えられても、結果はこの結晶のもの)
         var bethe = Crystal.Bethe;
         try
         {
@@ -484,10 +516,12 @@ public partial class FormALCHEMI : FormBase
             resultRow = row;
             resultThetaB = thetaB;
             (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
+            resultCrystal = runCrystal; // 261105Cl 追加 (作者決定 D ALCHEMI)
             runError = null; //260820Cl 追加 (/simplify2)
             toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
             SetupThicknessSelector();
             DrawCurves();
+            ClearResultIfStale(); // 261105Cl 追加 (作者決定 D ALCHEMI): 計算中に結晶・電圧を替えていたら、描いた曲線はもう今の条件のものではないので消す
         }
         catch (OperationCanceledException)
         {
@@ -533,6 +567,7 @@ public partial class FormALCHEMI : FormBase
         resultRow = row;
         resultThetaB = thetaB;
         (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
+        resultCrystal = Crystal; // 261105Cl 追加 (作者決定 D ALCHEMI)
         runError = null; //260820Cl 追加 (/simplify2)
         toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;

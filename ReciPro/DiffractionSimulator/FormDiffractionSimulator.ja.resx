@@ -216,12 +216,14 @@
 球からどれだけ外れているかを表します。</value>
   </data>
   <data name="toolStripButtonFg.Text" xml:space="preserve">
-    <value>構造因子</value>
+    <value>強度</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>チェックすると、各スポットの構造因子の
-大きさ |Fg| を表示します。|Fg| が大き
-いほど、一般に強い反射を示します。</value>
+    <value>チェックすると、各スポットの強度を、最も強い反射を
+100 % とした割合で表示します。運動学では |Fg|² (励起
+誤差は含みません)、動力学では |Φg|² と回折波の複素振幅
+Φg (実部 + 虚部 i) です。「励起誤差のみ考慮」では
+表示しません。</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.ToolTip" xml:space="preserve">

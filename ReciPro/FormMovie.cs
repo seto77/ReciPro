@@ -204,7 +204,9 @@ public partial class FormMovie : FormBase
             var (transU, transV, transW) = indexControl.Values; // 260703Cl ループ不変の GUI 値は事前に読む (quality 等の hoist と同じ流儀)
             var translationSpeed = TranslationSpeed; // 260703Cl
             var duration = Duration; // 260703Cl
-            Action<Vector3DBase, double> rotate = RotateAction ?? FormMain.Rotate; // 260917Cl 回転先 (既定は FormMain の結晶方位) もループ前に 1 回だけ決める
+            //Action<Vector3DBase, double> rotate = RotateAction ?? FormMain.Rotate; // 260917Cl 回転先 (既定は FormMain の結晶方位) もループ前に 1 回だけ決める // 261105Cl 変更前
+            // 261105Cl 変更: FormMain.Rotate に既定引数 (ignoreFixedAxis) を足したので、メソッドグループのままでは Action<,> に変換できない。ラムダで包む
+            Action<Vector3DBase, double> rotate = RotateAction ?? ((axis, angle) => FormMain.Rotate(axis, angle)); // 261105Cl
             var frameCount = Math.Max(1, (int)Math.Ceiling(duration * framerate)); // (260629Ch)
             if (IncludeFinalFrame)
                 frameCount++; // (260629Ch) t = Duration の終了姿勢を最後に追加する

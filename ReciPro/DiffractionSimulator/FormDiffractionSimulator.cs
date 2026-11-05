@@ -526,6 +526,10 @@ public partial class FormDiffractionSimulator : FormBase
         glControl = glControlZsort;
         splitContainer1.Panel2.Controls.Add(glControl);
         glControl.BringToFront();
+
+        // 261105Cl 追加 (作者決定 C20): スポットのラベルの d は主窓の Å/nm に従うので、切り替えたら描き直す (Load は一度しか来ないので購読も一度)
+        if (formMain?.crystalControl != null) // 261105Cl
+            formMain.crystalControl.LengthUnitChanged += (s, ev) => { if (Visible && toolStripButtonDspacing.Checked) Draw(); }; // 261105Cl
     }
 
     //クローズ
@@ -1303,7 +1307,10 @@ public partial class FormDiffractionSimulator : FormBase
             else
                 sb.AppendLine(g.Text);
         }
-        if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
+        //if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å"); // 261105Cl 変更前: d だけ Å 固定 (ほかのラベルは nm)
+        // 261105Cl 変更 (作者決定 C20): d の単位は主窓の格子定数の欄の Å/nm の切り替えに従う (切り替えたら Load で購読した LengthUnitChanged で描き直す)
+        if (toolStripButtonDspacing.Checked) // 261105Cl
+            sb.AppendLine(formMain?.crystalControl?.LengthUnit == LengthUnitEnum.NanoMeter ? $"{g.d:0.####} nm" : $"{g.d * 10:#.###} Å"); // 261105Cl
         if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
         //if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm"); // 261105Cl 変更前 (監査 C15)
         // 261105Cl 変更: CL·tan2θ は傾けていない平板の検出器でしか画面上の距離と合わない (検出器の傾斜・X 線プリセッション CL·λ/d・Back Laue で違う)。

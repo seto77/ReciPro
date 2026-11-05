@@ -491,10 +491,14 @@ g 벡터의 길이)가 표시됩니다</value>
 역격자점이 정확한 브래그 조건/에발트 구 조건에서
 얼마나 벗어나 있는지를 나타냅니다.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>강도</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>체크하면 각 점에 대해 구조 인자의 크기
-|Fg|가 표시됩니다. |Fg|가 클수록
-일반적으로 더 강한 반사를 의미합니다.</value>
+    <value>체크하면 각 점의 강도를 가장 강한 반사를 100%로 한
+비율로 표시합니다. 운동학에서는 |Fg|²(여기 오차 미포함),
+동역학 이론에서는 |Φg|²와 회절파의 복소 진폭
+Φg = Re + Im i입니다. '여기 오차만'에서는 표시하지 않습니다.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>문자 크기를 설정합니다</value>
@@ -864,6 +868,9 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>카메라 길이 2, 즉 시료에서 검출기(모니터)
 까지의 거리를 설정합니다.</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>상세</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>상세 광학계 설정 창을 엽니다.</value>

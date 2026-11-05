@@ -480,10 +480,15 @@ lignes radiales de l'échelle azimutale)</value>
 pour chaque tache, indiquant l'écart entre le nœud du
 réseau réciproque et la condition exacte de Bragg/sphère d'Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensité</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Lorsque cette case est cochée, le module du facteur de structure
-|Fg| est affiché pour chaque tache ; un |Fg| plus grand
-indique généralement une réflexion plus intense.</value>
+    <value>Lorsque cette case est cochée, l'intensité de chaque tache
+est affichée en % de la réflexion la plus intense : |Fg|²
+(cinématique, sans l'erreur d'excitation) ou |Φg|² suivi de
+l'amplitude complexe Φg = Re + Im i (théorie dynamique).
+Rien n'est affiché avec « Erreur d'excitation ».</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Définir une taille de caractères</value>
@@ -858,6 +863,9 @@ entre l'échantillon et le détecteur (moniteur).</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Définir la longueur de caméra 2, c'est-à-dire la distance
 entre l'échantillon et le détecteur (moniteur).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Détails</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Ouvrir la fenêtre de réglages détaillés de l'optique.</value>

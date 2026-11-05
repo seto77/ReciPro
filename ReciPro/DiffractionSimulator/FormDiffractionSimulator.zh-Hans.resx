@@ -498,10 +498,14 @@
 表示倒易点阵点偏离精确布拉格条件/
 Ewald 球的程度。</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>强度</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>勾选后，显示各斑点的结构因子
-幅值 |Fg|；|Fg| 越大，
-通常表示衍射越强。</value>
+    <value>勾选后，以最强反射为 100% 显示各斑点的强度：
+运动学为 |Fg|²（不含激发误差），动力学理论为
+|Φg|² 及衍射波的复振幅 Φg = Re + Im i。
+选择“仅激发误差”时不显示。</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>设置字符串的大小</value>
@@ -871,6 +875,9 @@ mm（原点：图样垂足）。</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>设置相机长度 2，即从试样到
 检测器（显示器）的距离。</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>详细</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>打开详细光学系统设置窗口。</value>

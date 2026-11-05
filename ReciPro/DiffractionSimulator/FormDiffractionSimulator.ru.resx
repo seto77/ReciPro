@@ -494,10 +494,15 @@
 s_g, показывающая, насколько узел обратной решётки отклоняется
 от точного условия Брэгга / сферы Эвальда.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Интенс.</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Если отмечено, для каждого рефлекса отображается величина
-структурного фактора |Fg|; большее |Fg| обычно
-означает более сильный рефлекс.</value>
+    <value>Если отмечено, для каждого рефлекса отображается
+интенсивность в % от самого сильного рефлекса: |Fg|²
+(кинематика, без ошибки возбуждения) или |Φg|² и затем
+комплексная амплитуда Φg = Re + Im i (динамическая теория).
+При «Только ошибка возб.» ничего не отображается.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Задать размер строк</value>
@@ -869,6 +874,9 @@ s_g, показывающая, насколько узел обратной ре
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Задать длину камеры 2, т. е. расстояние
 от образца до детектора (монитора).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Детали</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Открыть окно подробных настроек оптической системы.</value>

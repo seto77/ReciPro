@@ -921,12 +921,16 @@ public partial class FormMain : FormBase
     /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
-    public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
+    /// <param name="ignoreFixedAxis">261105Cl 追加: true なら「軸/面を固定」を無視して axis のまわりに回す (試料ホルダーの「180° 回転」)</param>
+    //public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle); // 261105Cl 変更前
+    public void Rotate((double X, double Y, double Z) axis, double angle, bool ignoreFixedAxis = false) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle, ignoreFixedAxis); // 261105Cl
 
     /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
-    public void Rotate(Vector3DBase axis, double angle)
+    /// <param name="ignoreFixedAxis">261105Cl 追加: true なら「軸/面を固定」を無視して axis のまわりに回す (試料ホルダーの「180° 回転」)</param>
+    //public void Rotate(Vector3DBase axis, double angle) // 261105Cl 変更前
+    public void Rotate(Vector3DBase axis, double angle, bool ignoreFixedAxis = false) // 261105Cl
     {
         //if (angle == 0) return; // 261105Cl 変更前
         // 261105Cl 変更 (監査 #29): 結晶リストが空 (または結晶が無い) なら何もしない。以前は下の crystals[0] で例外になり、アニメーション中は Timer のたびに出続けた
@@ -937,7 +941,8 @@ public partial class FormMain : FormBase
         // 261105Cl 追加 (監査 G-12): 「軸を固定」「面を固定」のときは、その結晶の固定した軸 (面法線) のまわりに回す。Link 中も同じ回転を FormRotation に渡すため、下のループから切り出した
         Matrix3D rotationFor(Crystal cry)
         {
-            if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked)
+            //if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked) // 261105Cl 変更前
+            if (ignoreFixedAxis || (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked)) // 261105Cl
                 return Matrix3D.Rot(axis, angle);
             var (u, v, w) = indexControlAxis.Values;
             var (h, k, l) = indexControlPlane.Values;

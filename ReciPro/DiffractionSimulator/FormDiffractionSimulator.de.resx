@@ -493,10 +493,15 @@ Azimut-Skalenlinien)</value>
 Reflex angezeigt, der angibt, wie weit der reziproke
 Gitterpunkt von der exakten Bragg-/Ewald-Kugel-Bedingung entfernt ist.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensität</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Wenn aktiviert, wird der Betrag des Strukturfaktors
-|Fg| für jeden Reflex angezeigt; ein größeres |Fg|
-bedeutet im Allgemeinen einen stärkeren Reflex.</value>
+    <value>Wenn aktiviert, wird die Intensität jedes Reflexes in %
+des stärksten Reflexes angezeigt: |Fg|² (kinematisch, ohne
+Anregungsfehler) bzw. |Φg|² gefolgt von der komplexen
+Amplitude Φg = Re + Im i (dynamische Theorie).
+Bei „Nur Anregungsfehler“ wird nichts angezeigt.</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Legt die Größe der Zeichenketten fest</value>
@@ -871,6 +876,9 @@ der Probe zum Detektor (Monitor).</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Legt Kameralänge 2 fest, d. h. den Abstand von
 der Probe zum Detektor (Monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Öffnet das Fenster für die detaillierten Optikeinstellungen.</value>

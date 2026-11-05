@@ -498,10 +498,14 @@
 表示倒晶格點偏離嚴格 Bragg 條件 /
 Ewald 球的程度。</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>勾選後，將為每個斑點顯示結構因子
-大小 |Fg|；|Fg| 越大，
-一般代表繞射越強。</value>
+    <value>勾選後，以最強反射為 100% 顯示各斑點的強度：
+運動學為 |Fg|²（不含激發誤差），動力學理論為
+|Φg|² 及繞射波的複振幅 Φg = Re + Im i。
+選擇「僅激發誤差」時不顯示。</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>設定字串的大小</value>
@@ -868,6 +872,9 @@ Beam/Top/Right 方向導引箭頭。</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>設定相機長度 2，即試料
 到偵測器（螢幕）的距離。</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>詳細</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>開啟詳細光學系統設定視窗。</value>

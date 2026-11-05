@@ -493,10 +493,15 @@ definição das linhas radiais da escala azimutal)</value>
 para cada ponto, mostrando o quão distante o ponto da
 rede recíproca está da condição exata de Bragg/esfera de Ewald.</value>
   </data>
+  <data name="toolStripButtonFg.Text" xml:space="preserve">
+    <value>Intensidade</value>
+  </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>Quando marcado, a magnitude do fator de estrutura
-|Fg| é exibida para cada ponto; |Fg| maior
-geralmente significa uma reflexão mais forte.</value>
+    <value>Quando marcado, a intensidade de cada ponto é exibida
+em % da reflexão mais intensa: |Fg|² (cinemático, sem o
+erro de excitação) ou |Φg|² seguido da amplitude complexa
+Φg = Re + Im i (teoria dinâmica). Nada é exibido com
+"Apenas erro de exc.".</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Define o tamanho dos textos</value>
@@ -870,6 +875,9 @@ da amostra até o detector (monitor).</value>
   <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
     <value>Define o Comprimento de Câmera 2, ou seja, a distância
 da amostra até o detector (monitor).</value>
+  </data>
+  <data name="buttonDetailedGeometry.Text" xml:space="preserve">
+    <value>Detalhes</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Abra a janela de configurações detalhadas da óptica.</value>

@@ -175,8 +175,8 @@ Aktiv, wenn "1°-Linien anzeigen" aktiviert ist</value>
     <value>Wenn aktiviert, neigen die Pfeiltasten den
 Halter: Links/Rechts ändern Tilt X und
 Hoch/Runter ändern Tilt Y um den Pfeilschritt.
-Gilt, solange dieses Fenster geöffnet ist,
-auch wenn ein anderes ReciPro-Fenster vorne liegt.</value>
+Gilt nur, solange dieses Fenster aktiv
+(im Vordergrund) ist.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>Neigungswinkelinkrement (in Grad),
@@ -234,7 +234,9 @@ Tilt X/Y setzen und die resultierende
 Orientierung als neutrale Richtung verwenden.</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>Den Kristall um 180° um die Strahlachse ([001]) drehen.</value>
+    <value>Dreht den Kristall um 180° um die Strahlachse (senkrecht
+zum Bildschirm), auch wenn im Hauptfenster eine Achse
+oder Ebene fixiert ist („Fest“).</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>Ziel-Kippwinkel Kippung X (in Grad),

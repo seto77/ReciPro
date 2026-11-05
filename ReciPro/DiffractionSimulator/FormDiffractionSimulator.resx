@@ -476,12 +476,14 @@ point is from the exact Bragg/Ewald-sphere condition.</value>
     <value>32, 22</value>
   </data>
   <data name="toolStripButtonFg.Text" xml:space="preserve">
-    <value>|Fg|</value>
+    <value>Intensity</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>When checked, the structure-factor magnitude
-|Fg| is displayed for each spot; larger |Fg|
-generally means a stronger reflection.</value>
+    <value>When checked, the intensity of each spot is displayed
+as % of the strongest reflection: |Fg|² (kinematical;
+the excitation error is not included), or |Φg|² followed
+by the complex amplitude Φg = Re + Im i (dynamical theory).
+Nothing is shown with 'Only excitation error'.</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>287, 0</value>

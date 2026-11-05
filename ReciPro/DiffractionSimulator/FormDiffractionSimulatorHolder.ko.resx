@@ -172,8 +172,7 @@
     <value>선택하면 화살표 키로 홀더를 기울입니다.
 좌/우는 기울기 X를, 상/하는 기울기 Y를
 화살표 단계만큼 변화시킵니다. 이 창이
-열려 있는 동안은 다른 ReciPro 창이
-앞에 있어도 동작합니다.</value>
+활성(맨 앞)일 때만 동작합니다.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
     <value>화살표 키를 한 번 누를 때마다
@@ -231,7 +230,8 @@
 중립 방향으로 사용합니다.</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>결정을 빔([001]) 축을 중심으로 180° 회전합니다.</value>
+    <value>결정을 빔 축(화면에 수직인 축)을 중심으로 180° 회전합니다.
+메인 창에서 축/면을 '고정'해 두어도 빔 축을 중심으로 회전합니다.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
     <value>"현재 방향에 연결" 버튼을 눌렀을 때 적용되는

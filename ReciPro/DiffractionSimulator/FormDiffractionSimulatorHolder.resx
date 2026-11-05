@@ -478,7 +478,9 @@ match it to your TEM goniometer convention.</value>
     <value>↻ rotate 180°</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal 180° about the beam ([001]) axis.</value>
+    <value>Rotate the crystal 180° about the beam axis (the axis
+normal to the screen), even when an axis or a plane
+is fixed (Fix) in the main window.</value>
   </data>
   <data name="&gt;&gt;buttonRotate180.Name" xml:space="preserve">
     <value>buttonRotate180</value>
@@ -1813,9 +1815,8 @@ secondary (Tilt Y) axis, in degrees.</value>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
     <value>When checked, the arrow keys tilt the holder:
 Left/Right change Tilt X and Up/Down change
-Tilt Y by the arrow step. Works while any
-ReciPro window is in front, as long as this
-window stays open.</value>
+Tilt Y by the arrow step. Works only while
+this window is active (in front).</value>
   </data>
   <data name="&gt;&gt;checkBoxEnableArrow.Name" xml:space="preserve">
     <value>checkBoxEnableArrow</value>
