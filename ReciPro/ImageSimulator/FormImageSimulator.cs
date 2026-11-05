@@ -1096,7 +1096,10 @@ public partial class FormImageSimulator : FormBase
             Native);
 
         var temp = sw1.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   ";
+        //toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   "; // 261105Cl 変更前
+        //261105Cl 変更: 追記でなく代入 (リアルタイム計算の RotationChanged → SimulateHRTEM(true) は Simulate() を通らず欄を空にしないので、
+        //回転のたびに文字列が伸び続けていた。ポテンシャル像と同じ書き方)
+        toolStripStatusLabel1.Text = $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   ";
 
         GeneratePseudBitmap();
 
