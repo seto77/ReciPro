@@ -8,7 +8,7 @@ ReciPro incluye un sistema de macros basado en **IronPython** para automatizar o
 
 ![Editor de macros](../../assets/cap-es-auto/FormMacro.png)
 
-En la captura de pantalla anterior, **Show samples** está activado, por lo que se muestran las macros de ejemplo integradas. La lista de macros está a la izquierda, el editor de código a la derecha y una tabla de ayuda de las funciones integradas en la parte inferior.
+En la captura de pantalla anterior, **Mostrar ejemplos** está activado, por lo que se muestran las macros de ejemplo integradas. La lista de macros está a la izquierda, el editor de código a la derecha y una tabla de ayuda de las funciones integradas en la parte inferior.
 
 ---
 
@@ -56,7 +56,7 @@ La barra de título muestra **`Macro*`** (con un asterisco) mientras haya cambio
 
 ### Macros de ejemplo
 
-Al activar **Show samples** (arriba a la izquierda), su lista de macros se reemplaza temporalmente por las macros de ejemplo integradas (bucles y condicionales básicos, funciones matemáticas, rotación/alineación, recorrido de la lista de cristales, simulación de difracción/imagen, series de inclinación/energía, información de reflexiones y más). Los ejemplos son de solo lectura y se muestran en el idioma actual de la interfaz; utilícelos para aprender o como punto de partida para copiar. Al desactivarlo se restauran sus propias macros.
+Al activar **Mostrar ejemplos** (arriba a la izquierda), su lista de macros se reemplaza temporalmente por las macros de ejemplo integradas (bucles y condicionales básicos, funciones matemáticas, rotación/alineación, recorrido de la lista de cristales, simulación de difracción/imagen, series de inclinación/energía, información de reflexiones y más). Los ejemplos son de solo lectura y se muestran en el idioma actual de la interfaz; utilícelos para aprender o como punto de partida para copiar. Al desactivarlo se restauran sus propias macros.
 
 ---
 

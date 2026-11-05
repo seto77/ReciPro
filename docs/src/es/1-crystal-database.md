@@ -64,7 +64,7 @@ Introduzca los criterios de búsqueda a continuación y pulse el botón **Buscar
 
 Coincidencia de texto libre con el nombre del cristal. Se permiten coincidencias parciales; no se distingue entre mayúsculas y minúsculas. Solo se aplican los criterios cuyas casillas están marcadas, y se combinan con Y lógico (AND).
 
-### Element
+### Elementos {#element}
 
 Pulse el botón **Tabla periódica** para abrir el selector de elementos. Cada botón de elemento alterna entre tres estados:
 
@@ -76,11 +76,11 @@ Un cristal debe contener todos los elementos marcados como *debe incluir* y ning
 
 Los tres botones en la parte superior de la ventana restablecen cada elemento a uno de los tres estados con un solo clic.
 
-### Reference
+### Referencia
 
 Coincidencia de texto libre (parcial, sin distinguir mayúsculas y minúsculas) con los metadatos de la publicación: título del artículo, nombre de la revista y lista de autores.
 
-### Crystal system
+### Sistema cristalino
 
 Restringe la búsqueda a un sistema cristalino específico (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). El primer elemento, *Unknown*, no aplica ninguna restricción.
 
@@ -90,11 +90,11 @@ Restringe la búsqueda a un sistema cristalino específico (cubic, tetragonal, o
 
 Introduzca las constantes reticulares objetivo *a*, *b*, *c* (Å) y *α*, *β*, *γ* (°) y los errores admisibles: una tolerancia relativa (±%) común a *a*, *b*, *c* y una tolerancia absoluta (±°) común a los ángulos. Un valor de 0 significa que ese parámetro se ignora.
 
-### d-spacing
+### Dist. interpl.
 
 Introduzca hasta tres distancias interplanares *d* (Å; marque cada una para usarla), cada una con una tolerancia relativa (±%). Un cristal coincide cuando cada valor introducido concuerda con una de sus reflexiones más intensas almacenadas en la base de datos (hasta 16, ordenadas por intensidad de difracción de polvo de rayos X a λ = 1.54 Å). Con **Ignorar factor de dispersión** marcado, los valores se comparan en cambio con todas las distancias *d* geométricamente posibles calculadas a partir de la celda elemental (incluidas las reflexiones sistemáticamente ausentes). Útil cuando solo se conocen las posiciones de los picos de difracción de un experimento.
 
-### Density
+### Densidad
 
 Filtra por densidad de masa (g/cm³) dentro de una tolerancia relativa (±%).
 

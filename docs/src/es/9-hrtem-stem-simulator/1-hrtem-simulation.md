@@ -39,7 +39,7 @@ Establece las condiciones de formación de imagen de la lente objetivo.
 
 | Parámetro | Descripción | Valor por defecto / típico |
 |-----------|-------------|-------------------|
-| **Voltaje de acel. (kV)** | Voltaje de aceleración. A la derecha se muestra la longitud de onda del electrón con corrección relativista | 200 kV |
+| **Voltaje de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Voltaje de aceleración (kV). A la derecha se muestra la longitud de onda del electrón con corrección relativista | 200 kV |
 | **Desenfoque Δf** | Desenfoque de la lente objetivo (nm). Debajo se muestra como referencia el valor del **desenfoque de Scherzer** | −57.8 nm |
 | **Cs** | Coeficiente de aberración esférica (mm). Afecta a la CTF y al desenfoque de Scherzer. Se admiten valores negativos (−20 a 20 mm) | 1.0 mm (por defecto); 0.5–1.0 (convencional), < 0.01 (corregida en Cs) |
 | **Cc** | Coeficiente de aberración cromática (mm). Determina el emborronamiento de la imagen causado por la dispersión de energía | 1.4 mm (por defecto); 1.0–2.0 mm |
@@ -52,7 +52,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 
 y cada onda difractada se multiplica por $\exp[-i\chi(u)]$, de modo que **un Δf negativo corresponde a subenfoque** (el convenio en el que el desenfoque de Scherzer es negativo).
 
-> **Menú contextual**: en el panel de condiciones TEM puede aplicar con un solo clic **Ajustar desenfoque a 0 nm** / **Ajustar desenfoque al valor de Scherzer** / **Ajustar todas las aberraciones a cero** (este último pone a 0 Cs, Cc, β, ΔV **y también el desenfoque**). El mismo menú contiene cuatro ajustes predefinidos de microscopio — *300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* y *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100* —, que fijan el voltaje de aceleración, Cs, Cc y ΔV indicados en el elemento y a continuación ajustan el desenfoque al valor de Scherzer (β no se modifica). La casilla **Predefinidos** de la parte inferior derecha abre la ventana que guarda sus propias condiciones (véase [Preset list](index.md#preset-list)).
+> **Menú contextual**: en el panel de condiciones TEM puede aplicar con un solo clic **Ajustar desenfoque a 0 nm** / **Ajustar desenfoque al valor de Scherzer** / **Condiciones ideales (Cs, Cc, β, ΔV, Δf = 0)** (este último pone a 0 Cs, Cc, β, ΔV **y también el desenfoque**). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> El mismo menú contiene cuatro ajustes predefinidos de microscopio — *300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* y *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* —, que fijan el voltaje de aceleración, Cs, Cc y ΔV indicados en el elemento y a continuación ajustan el desenfoque al valor de Scherzer (β no se modifica). La casilla **Predefinidos** de la parte inferior derecha abre la ventana que guarda sus propias condiciones (véase [Lista de preajustes](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Desenfoque de Scherzer
 
@@ -104,7 +104,7 @@ Limita las ondas difractadas que atraviesan el diafragma objetivo. El propio cá
 
 Selecciona cómo se incluye la coherencia parcial (β y la dispersión del foco δ). La onda de salida se calcula para una única dirección de incidencia (el eje del haz); la dispersión de la iluminación y la dispersión de energía solo intervienen a través de las funciones envolventes siguientes.
 
-- **Imagen lineal** (modelo cuasicoherente) : de bajo coste computacional. Cada onda difractada $\psi_g$ de la onda de salida dinámica se multiplica por $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ y la imagen es $\left|\sum_g\right|^2$. Es precisa cuando la imagen está dominada por la interferencia con el haz transmitido (muestras delgadas).
+- **Imagen lineal** (modelo cuasicoherente) : de bajo coste computacional. Cada onda difractada $\psi_g$ de la onda de salida dinámica se multiplica por $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ y las ondas se suman coherentemente: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Es precisa cuando la imagen está dominada por la interferencia con el haz transmitido (muestras delgadas).
 - **Coef. cruz. de transm.** (coeficiente de transmisión cruzada) : de alto coste computacional pero más preciso. Se suma cada par de haces $(g,h)$ con la envolvente mutua (el coeficiente de transmisión cruzada completo), y es el modelo que debe usarse con dispersores fuertes que excitan muchas ondas difractadas intensas. El coste crece con el cuadrado del número de haces dentro del diafragma.
 
 Para más detalles, consulte el [Apéndice A3.2 — Formación de la imagen HRTEM](../appendix/a3-bloch-wave/hrtem.md).
@@ -123,7 +123,7 @@ Para una imagen en serie, establezca lo siguiente.
 | Elemento | Descripción |
 |------|-------------|
 | **Espesor (nm)** / **Desenfoque (nm)** | Magnitud que se barre (se permiten ambas) |
-| **Start / Paso / Núm** | Valor inicial, anchura del paso y número de imágenes. Se expanden en el cuadro de lista inferior, que también puede editarse directamente |
+| **Inicio / Paso / Núm** | Valor inicial, anchura del paso y número de imágenes. Se expanden en el cuadro de lista inferior, que también puede editarse directamente |
 | **Dirección horizontal:** | Cuando se barren tanto el espesor como el desenfoque, la magnitud dispuesta en la dirección horizontal de la rejilla (**Desenfoque** o **Espesor**) |
 
 Barrer a la vez el espesor y el desenfoque produce una matriz de imágenes de filas × columnas. **Núm** está limitado a 20 para cada magnitud. Cuando solo se barre una magnitud y hay más de dos imágenes, la fila se reparte en una rejilla casi cuadrada.

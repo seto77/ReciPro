@@ -4,7 +4,7 @@ La **simulación STEM (Scanning Transmission Electron Microscopy)** calcula imá
 
 ![Simulador en modo STEM](../../assets/cap-es-auto/FormImageSimulator-stem.png)
 
-> Esta página enumera todos los ajustes que aparecen a la derecha cuando **Image mode = STEM**. Para los controles de la izquierda relativos a la visualización del resultado, el brillo y la normalización, consulta la [página de introducción](index.md). Solo se repite a continuación el **objetivo de visualización** específico de STEM.
+> Esta página enumera todos los ajustes que aparecen a la derecha cuando **Modo de imagen = STEM**. Para los controles de la izquierda relativos a la visualización del resultado, el brillo y la normalización, consulta la [página de introducción](index.md). Solo se repite a continuación el **objetivo de visualización** específico de STEM.
 
 ---
 
@@ -40,7 +40,7 @@ Consulta el [Apéndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md
 
 ![Parámetros de la muestra](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : espesor de la muestra (nm). Este valor se ignora en el modo **Serial image**.
+- **Espesor** : espesor de la muestra (nm). Este valor se ignora en el modo **Imagen en serie**.
 
 ---
 
@@ -50,7 +50,7 @@ Consulta el [Apéndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md
 
 | Parámetro | Descripción | Predeterminado / típico |
 |-----------|-------------|-------------------|
-| **Voltaje de acel. (kV)** | Tensión de aceleración. La longitud de onda del electrón corregida relativistamente se muestra al lado | 200 kV |
+| **Voltaje de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensión de aceleración (kV). La longitud de onda del electrón corregida relativistamente se muestra al lado | 200 kV |
 | **Desenfoque Δf** | Desenfoque de la lente objetivo (formadora de la sonda) (nm) | −57.8 nm |
 | **Cs** | Coeficiente de aberración esférica (mm). Afecta al tamaño de la sonda | 0.5–1.0 mm |
 | **Cc** | Coeficiente de aberración cromática (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@ Define la geometría de la sonda convergente y del detector anular. Cada ángulo
 
 | Parámetro | Descripción | Predeterminado / típico |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Semiángulo de la sonda convergente (mrad). Valores mayores dan una sonda más fina y cambian el contraste de difracción | 25 mrad (por defecto); 15–25 mrad |
+| **Conv. semi-angle α** | Semiángulo de la sonda convergente (mrad). Valores mayores dan una sonda más fina y cambian el contraste de difracción | 25 mrad (por defecto); 15–25 mrad |
 | **Detector anular — Interior** | Semiángulo interior de captación del detector anular (mrad). La señal dentro de este ángulo se excluye | 0 (por defecto); BF: 0, HAADF: 80 |
 | **Detector anular — Exterior** | Semiángulo exterior de captación del detector anular (mrad). La señal fuera de este ángulo se excluye | 20 (por defecto); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Tamaño efectivo de la fuente de electrones (pm). Se aplica tras el cálculo como una convolución gaussiana de cada imagen Elástica / TDS / EDX. Valores mayores difuminan la imagen y reducen el contraste de los detalles finos | 20 pm (por defecto) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamaño efectivo de la fuente de electrones (pm). Se aplica tras el cálculo como una convolución gaussiana de cada imagen Elástica / TDS / EDX. Valores mayores difuminan la imagen y reducen el contraste de los detalles finos | 20 pm (por defecto) |
 
 Los ángulos del detector solo se aplican a la imagen STEM de referencia (Elástico / TDS / Elástico & TDS); los mapas STEM-EDX no los usan. Los valores por defecto se aplican solo en el primer inicio; después se restauran los últimos valores utilizados.
 
@@ -86,12 +86,13 @@ Los ángulos del detector solo se aplican a la imagen STEM de referencia (Elást
 
 ---
 
-## Modo de imagen (single / serial)
+## Modo único/en serie
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![Modo único/en serie](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : calcula una imagen STEM al espesor actual.
-- **Serial image** : genera una serie de imágenes con el espesor / desenfoque escalonado por etapas (definido mediante **Start / Step / Num**; la lista de abajo también se puede editar directamente).
+- **Imagen única** : calcula una imagen STEM al espesor actual.
+- **Imagen en serie** : genera una serie de imágenes con el espesor / desenfoque escalonado por etapas (definido mediante **Inicio / Paso / Núm**; la lista de abajo también se puede editar directamente).
 
 ---
 
@@ -108,7 +109,7 @@ Los ángulos del detector solo se aplican a la imagen STEM de referencia (Elást
 
 ![Ondas](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : número máximo de ondas de Bloch usadas en el método de Bethe (predeterminado 80). El coste del problema de valores propios escala con el cubo del número de ondas.
+- Número máximo de ondas de Bloch usadas en el método de Bethe (predeterminado 80). El coste del problema de valores propios escala con el cubo del número de ondas.
 
 ---
 
@@ -129,13 +130,13 @@ El conmutador de visualización situado abajo a la izquierda de la ventana selec
 
 | Objetivo de visualización | Descripción |
 |----------------|-------------|
-| **Elastic** | Imagen solo de dispersión elástica |
+| **Elástico** | Imagen solo de dispersión elástica |
 | **TDS** | Imagen solo de dispersión térmica difusa |
-| **Elastic & TDS** | Suma de elástica + TDS |
+| **Elástico & TDS** | Suma de elástica + TDS |
 | **EDX** | Mapa de rayos X característicos. La línea que se muestra (por ejemplo `O-K`) se elige en el cuadro combinado situado debajo, y **EDX común** en *Normalización* pone los canales de la misma magnitud (canales de capa: vacantes; series de líneas: fotones de rayos X) en un mismo rango de visualización compartido, de modo que cambiar entre ellos no reescala la imagen |
 
 !!! note
-    Las tres imágenes se reconstruyen a partir de la parte real de la suma de Fourier, de modo que **Elastic & TDS** es exactamente la suma de las otras dos. Hasta la versión 4.944 se tomaba el módulo, lo que rompía esa identidad y aclaraba ligeramente los píxeles oscuros. Véase [Reconstrucción de una imagen real](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
+    Las tres imágenes se reconstruyen a partir de la parte real de la suma de Fourier, de modo que **Elástico & TDS** es exactamente la suma de las otras dos. Hasta la versión 4.944 se tomaba el módulo, lo que rompía esa identidad y aclaraba ligeramente los píxeles oscuros. Véase [Reconstrucción de una imagen real](../appendix/a3-bloch-wave/stem.md#real-image-reconstruction).
 
 ---
 

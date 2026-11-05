@@ -2,9 +2,9 @@
 
 La simulación **SAED (Selected Area Electron Diffraction)** calcula los patrones de difracción de electrones de monocristal producidos por un haz de electrones paralelo. Este es el modo predeterminado del [simulador de difracción](index.md).
 
-> Esta página enumera cada ajuste que aparece en el panel **Spot property** a la derecha cuando se elige **Wave Length = Electron** e **Incident beam mode = Parallel**. Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de resumen](index.md).
+> Esta página enumera cada ajuste que aparece en el panel **Ajustes de simulación** a la derecha cuando se elige **Fuente de ondas** = **Electrones** y **Óptica** = **Haz paralelo**. Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de resumen](index.md).
 
-Condiciones de la GUI: Wave Length = Electron, Incident beam mode = Parallel, Intensity calculation = Only excitation error / Kinematical / Dynamical.
+Condiciones de la GUI: Fuente de ondas = Electrones, Óptica = Haz paralelo, Cálculo de intensidad = Solo error de exc. / Cinemática & err. exc. / Teoría dinámica.
 
 ![Simulador de difracción en modo SAED](../../assets/cap-es-auto/FormDiffractionSimulator-saed.png)
 
@@ -16,27 +16,27 @@ Simula el patrón de difracción que se produce cuando un haz de electrones para
 
 ---
 
-## Wave Length
+## Fuente de ondas {#wave-length}
 
-![Wave Length](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Fuente de ondas](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
 Establezca la fuente de radiación en **Electrones**. Introduzca la energía (keV) o la longitud de onda (Å o nm, conmutable; por defecto Å) y se calcula la longitud de onda corregida relativísticamente. El valor inicial es 200 keV; el menú **Preajustes** fija 300 / 200 / 120 kV con un clic. Para fuentes de rayos X y de neutrones, consulte [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Incident beam mode
+## Óptica {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Óptica](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Establezca la geometría del haz incidente en **Parallel**. Esta es la geometría estándar de onda plana utilizada para SAED y para la difracción de rayos X.
+Establezca **Óptica** (la geometría del haz incidente) en **Haz paralelo**. Esta es la geometría estándar de onda plana utilizada para SAED y para la difracción de rayos X.
 
-> **Nota**: Para los electrones puede elegir **Parallel / Precession (electron = PED) / Convergence (CBED)**. Elegir **Precession** produce una [simulación PED](2-ped-simulation.md) y elegir **Convergence** produce una [simulación CBED](3-cbed-simulation.md); en ambos casos el cálculo de intensidad cambia automáticamente a Dynamical.
+> **Nota**: Para los electrones puede elegir **Haz paralelo** / **Precesión (electrones)** / **Convergencia (electrones)**. Elegir **Precesión (electrones)** produce una [simulación PED](2-ped-simulation.md) y elegir **Convergencia (electrones)** produce una [simulación CBED](3-cbed-simulation.md); en ambos casos el cálculo de intensidad cambia automáticamente a **Teoría dinámica**.
 
 ---
 
-## Intensity calculation
+## Cálculo de intensidad
 
-![Intensity calculation](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
+![Cálculo de intensidad](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
 
 Selecciona cómo se calculan las intensidades de los spots.
 
@@ -52,7 +52,7 @@ Solo en este modo aparecen las opciones siguientes:
 | **Excluir reflexiones prohibidas por centrado de red** | Oculta solo las reflexiones prohibidas por el centrado de la red (activada por defecto). |
 | **Dibujar todos los puntos con el mismo radio** | Dibuja todos los spots excitados con el radio completo *R*, independientemente de $S_g$. |
 
-Las reflexiones prohibidas que siguen visibles se dibujan con los colores **Puntos extintos** (véase [Spot appearance](#spot-appearance)).
+Las reflexiones prohibidas que siguen visibles se dibujan con los colores **Puntos extintos** (véase [Apariencia de los puntos](#spot-appearance)).
 
 ### Cinemática
 
@@ -60,17 +60,17 @@ Además del error de excitación, el factor de estructura cinemático $\lvert F_
 
 ### Dinámica (método de ondas de Bloch, solo electrón)
 
-Un cálculo dinámico riguroso mediante el método de ondas de Bloch (método de Bethe). Reproduce la dispersión múltiple y la variación de la intensidad en función del espesor, y es necesario para muestras gruesas o difracción intensa. Disponible solo cuando se selecciona Electron. Para la teoría, consulte [Apéndice A3. Método de ondas de Bloch](../appendix/a3-bloch-wave/calculation.md).
+Un cálculo dinámico riguroso mediante el método de ondas de Bloch (método de Bethe). Reproduce la dispersión múltiple y la variación de la intensidad en función del espesor, y es necesario para muestras gruesas o difracción intensa. Disponible solo cuando se selecciona **Electrones**. Para la teoría, consulte [Apéndice A3. Método de ondas de Bloch](../appendix/a3-bloch-wave/calculation.md).
 
-> **Nota**: Cuando se selecciona **Dynamical**, aparece debajo un panel **Bloch wave settings**.
+> **Nota**: Cuando se selecciona **Teoría dinámica**, aparece debajo un panel **Ajustes de ondas de Bloch**.
 
 ---
 
-## Bloch wave settings (teoría dinámica)
+## Ajustes de ondas de Bloch (teoría dinámica)
 
 ![Bloch wave parameters](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
-Activo solo cuando **Intensity calculation = Dynamical**.
+Activo solo cuando **Cálculo de intensidad** = **Teoría dinámica**.
 
 | Parámetro | Descripción |
 |-----------|-------------|
@@ -79,35 +79,35 @@ Activo solo cuando **Intensity calculation = Dynamical**.
 
 ---
 
-## Spot appearance
+## Apariencia de los puntos {#spot-appearance}
 
-![Appearance](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
+![Apariencia](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
 Controla cómo se representa cada spot de difracción.
 
 - **Esfera sólida / Gaussiana** : el modelo geométrico del punto de la red recíproca (por defecto **Esfera sólida**). **Esfera sólida** dibuja la sección transversal (un círculo) entre una esfera y la esfera de Ewald: el radio de la esfera es $R\,I^{1/3}$ con **Cinemática & err. exc.** (volumen de la esfera ∝ intensidad) y $R$ con **Solo error de exc.**; con **Teoría dinámica** se dibuja un disco de radio $R\,I_\text{dyn}^{1/2}$ (área ∝ intensidad) sin el corte de la esfera de Ewald. **Gaussiana** dibuja la sección transversal (una gaussiana 2-D) de una gaussiana 3-D con $\sigma = R$, cuya integral corresponde a la intensidad de difracción.
 - **Opacidad** : transparencia del spot (0 = transparente, 1 = opaco).
 - **Radio del punto (R)** : radio virtual del punto de la red recíproca (nm⁻¹; 0.01–1, por defecto 0.2). El tamaño del spot queda fijado por la combinación del modo de **Apariencia** y el **Cálculo de intensidad** (véase arriba).
-- **Brillo**, **Escala de color**, **Escala log.** : solo se muestran en el modo **Gaussiana**. **Brillo** escala la intensidad integrada de la gaussiana dibujada; **Escala de color** es **Gray** (spots con los colores de spot indicados abajo), **Cold-Warm**, **Spectrum** o **Fire**; **Escala log.** muestra las intensidades en escala logarítmica (útil para patrones con gran contraste de intensidad).
+- **Brillo**, **Escala de color**, **Escala log.** : solo se muestran en el modo **Gaussiana**. **Brillo** escala la intensidad integrada de la gaussiana dibujada; **Escala de color** es **Gray** (spots con los colores de spot indicados abajo), **Cold-warm**, **Spectrum** o **Fire**; **Escala log.** muestra las intensidades en escala logarítmica (útil para patrones con gran contraste de intensidad).
 - **Color del punto** : se muestra mientras la **Escala de color** es **Gray** (el ajuste inicial). **Puntos generales**, **Puntos extintos (tornillo/desl.)** y **Puntos extintos (centrado)** fijan los colores de las reflexiones permitidas y prohibidas.
 - **Color por cristal** : cuando está marcado, los spots se dibujan con el color asignado a cada cristal (también con un solo cristal).
 
 ---
 
-## Spot labels
+## Etiquetas de los puntos
 
 Las etiquetas superpuestas sobre los spots se seleccionan desde la [barra de herramientas](index.md#toolbar).
 
 | Etiqueta | Contenido |
 |-------|---------|
-| **Index** | índices de Miller $(hkl)$ |
-| **d** | distancia interplanar $d$ (en Å) |
-| **1/d** | inverso de la distancia interplanar $1/d$ (nm⁻¹) |
-| **Distancia** | distancia del spot al haz directo en el detector, $L_2 \tan 2\theta$ (mm; $L_2$ = longitud de cámara 2; exacta para un detector sin inclinar, τ = 0) |
+| **Index** | índices de Miller $(hkl)$; cuatro índices $(hkil)$ cuando **Opciones ▸ Usar índices de Miller-Bravais (hkil)** de la ventana principal está activado y el cristal usa ejes hexagonales (las etiquetas de las líneas de Kikuchi, de los anillos de Debye y de la vista 3D siguen el mismo ajuste) <!-- 261105Cl 監査: C23 --> |
+| **d** | distancia interplanar $d$, en Å o nm según la unidad de longitud de la ventana principal <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | inverso de la distancia interplanar $1/d$, en nm⁻¹ o Å⁻¹ según la unidad de longitud de la ventana principal <!-- 261106Cl 作者の決定 C2 --> |
+| **Distancia** | distancia en el detector desde el spot hasta el haz transmitido (directo) (mm), medida entre las posiciones dibujadas, por lo que también es válida para un detector inclinado, la cámara de precesión de rayos X y Back Laue (medida desde el orificio del haz); no se muestra cuando el haz transmitido no cae en el detector <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | ángulo de dispersión $2\theta$ (misma definición que los círculos concéntricos de la escala 2θ) |
 | **χ** | ángulo azimutal $\chi$, medido desde la dirección hacia arriba (las 12 en punto), positivo en sentido horario (misma definición que las líneas radiales de la escala azimutal) |
-| **Err. excit.** | error de excitación $S_g$ (nm⁻¹) |
-| **\|Fg\|** | intensidad relativa (%) en el modo **Cinemática & err. exc.**; en el modo **Teoría dinámica**, la intensidad relativa (% del haz difractado más intenso, excluido el 000) y la amplitud compleja en la superficie de salida. No se muestra nada con **Solo error de exc.** |
+| **Err. excit.** | error de excitación $S_g$, en nm⁻¹ o Å⁻¹ según la unidad de longitud de la ventana principal |
+| **Intensidad** | intensidad relativa (%) en el modo **Cinemática & err. exc.**; en el modo **Teoría dinámica**, la intensidad relativa (% del haz difractado más intenso, excluido el 000) y la amplitud compleja en la superficie de salida. No se muestra nada con **Solo error de exc.** |
 
 ---
 

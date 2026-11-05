@@ -19,7 +19,7 @@ El estereograma en sí es una proyección 2-D; opcionalmente se puede mostrar un
 | Clic derecho | Alejar el zoom |
 | Arrastrar un recuadro con el botón derecho | Acercar el zoom a la región seleccionada |
 | Arrastrar con el botón central | Desplazar |
-| Mover el ratón (sin botón) | Leer los índices (hkl)/[uvw] bajo el cursor — útil para indexar un reflejo medido |
+| Mover el ratón (sin botón) | Leer los índices (hkl)/[uvw] bajo el cursor — útil para indexar un reflejo medido (también en el hemisferio inferior) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Arrastrar sobre la red rota el **cristal**; el estado de rotación se comparte entre todas las ventanas.
 
@@ -39,11 +39,11 @@ Aquí se muestra la proyección en estereograma de los planos cristalinos, los �
 
 ## Menú Archivo
 
-Guardar como imagen ráster (PNG), o copiar como imagen ráster o como metarchivo vectorial (EMF). Un metarchivo pegado permite editar las fuentes y los grosores de línea en PowerPoint u otros editores vectoriales.
+Guardar o copiar como imagen ráster (PNG) o como metarchivo vectorial (EMF). Un metarchivo pegado permite editar las fuentes y los grosores de línea en PowerPoint u otros editores vectoriales.
 
 | Elemento de menú | Descripción |
 |-----------|-------------|
-| Guardar imagen ▸ como imagen (formato PNG) / como metarchivo (EMF) | Guardar el estereograma como archivo PNG (el elemento *como metarchivo (EMF)* está desactivado actualmente; para una salida vectorial use **Copiar al portapapeles ▸ como metarchivo (EMF)**) |
+| Guardar imagen ▸ como imagen (formato PNG) / como metarchivo (EMF) | Guardar el estereograma como archivo PNG o como archivo EMF vectorial <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | Copiar al portapapeles ▸ Como imagen / como metarchivo (EMF) | Copiar el estereograma |
 | Guardar vídeo ▸ Estereograma / 3D | Guardar un vídeo de rotación (MP4) del estereograma o de la vista 3-D, con el mismo cuadro de diálogo de configuración de vídeo que el [Visor de estructura](5-structure-viewer.md#menú-archivo) (solo rotación) |
 | Configurar página / Vista previa de impresión / Imprimir | Imprimir el estereograma |
@@ -66,8 +66,8 @@ Seleccione qué se proyecta sobre la red.
 
 | Método | Descripción |
 |--------|-------------|
-| **Wulff** (**Equiangular** / estereográfica) | Conserva la relación angular entre los elementos proyectados, pero no el ángulo sólido. La emplean los cristalógrafos clásicos al leer ángulos entre ejes o entre planos. |
-| **Schmidt** (**Equiárea** / Lambert) | Conserva el ángulo sólido (el área) de cada región, pero distorsiona los ángulos. Preferida para figuras de polos estadísticas en las que importa la densidad relativa. |
+| **Equiangular** (Wulff / estereográfica) | Conserva la relación angular entre los elementos proyectados, pero no el ángulo sólido. La emplean los cristalógrafos clásicos al leer ángulos entre ejes o entre planos. |
+| **Equiárea** (Schmidt / de igual área / Lambert) | Conserva el ángulo sólido (el área) de cada región, pero distorsiona los ángulos. Preferida para figuras de polos estadísticas en las que importa la densidad relativa. |
 
 ### Hemisferio
 
@@ -116,8 +116,8 @@ Establezca el **Color** y el **Tamaño** de los puntos representados. Marque **R
 
 Se muestran cuando **Vista 3D** está marcado; la esfera 3-D aparece en un panel a la derecha de la red.
 
-- **Restablecer**: devuelve la vista 3-D a la dirección y el zoom predeterminados.
-- **Etiqueta**: dibuja las etiquetas de índices en 3-D.
+- **Restab. vista**: devuelve la vista 3-D a la dirección y el zoom predeterminados.
+- **Etiqueta**: dibuja las etiquetas de índices en 3-D. Las direcciones se etiquetan [uvw]; la forma de cuatro índices (con **Usar índices de Miller-Bravais (hkil)** activado) solo se usa para planos y líneas de Kikuchi. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Hemisferio**: dibuja solo los polos del hemisferio superior ($Z>0$).
 - **Estereograma**: dibuja en 3-D el plano de proyección (la red), con los puntos proyectados de los polos del hemisferio superior.
 - **Contorno de esfera**: dibuja la malla de latitud/longitud de la esfera.
@@ -151,13 +151,13 @@ Cómo se dibuja el contorno del estereograma — el círculo delimitador y la ma
 
 ![Pestaña Círculo máximo](../assets/cap-es-auto/FormStereonet.tabControl.tabPage2.png)
 
-Dibuje círculos máximos (los círculos menores no están disponibles). Especifíquelos mediante el **Índice del eje de zona** \([uvw]\) (el círculo máximo formado por la zona de ese eje) o mediante **Zona definida por dos planos** (el eje de zona es su producto vectorial). Use **Añadir** / **Quitar** para editar la lista; al desmarcar una entrada se oculta ese círculo. El color y el grosor de línea de los círculos también se pueden configurar.
+Dibuje círculos máximos (los círculos menores no están disponibles). Especifíquelos mediante el **Índice del eje de zona** \([uvw]\) (el círculo máximo formado por la zona de ese eje) o mediante **Zona definida por dos planos** (el eje de zona es su producto vectorial). Use **Añadir** / **Quitar** para editar la lista; al desmarcar una entrada se oculta ese círculo. El color y el grosor de línea de los círculos también se pueden configurar. Los círculos siguen el tipo de proyección y el hemisferio elegidos en [Modo](#mode) (Wulff o Schmidt, superior o inferior). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Onda {#wave}
 
 ![Pestaña Onda](../assets/cap-es-auto/FormStereonet.tabControl.tabPage4.png)
 
-Solo se usa cuando se selecciona **Planos** o **Pares de Kikuchi** como objeto de proyección (en el modo **Pares de Kikuchi** la longitud de onda fija además el ángulo de Bragg, es decir, la separación de cada par de líneas). Establece la fuente de onda (X-ray / electron / neutron) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que usa **Factores de estructura en la intensidad** en [Modo](#mode).
+Solo se usa cuando se selecciona **Planos** o **Pares de Kikuchi** como objeto de proyección (en el modo **Pares de Kikuchi** la longitud de onda fija además el ángulo de Bragg, es decir, la separación de cada par de líneas). Establece la fuente de onda (Rayos X / Electrones / Neutrón) y la longitud de onda o energía necesarias para calcular los factores de estructura cristalina que usa **Factores de estructura en la intensidad** en [Modo](#mode).
 
 ---
 

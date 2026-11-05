@@ -96,8 +96,8 @@ El panel de la parte inferior izquierda ajusta el aspecto del resultado: brillo,
 ![Ajuste](../../assets/cap-es-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min** / **Max** : extremos inferior (negro) y superior (blanco) del rango de intensidad mostrado. Utilice las barras deslizantes para ajustar el contraste.
-- **Color** : escala de color de la imagen: **Gray scale** o **Cold-Warm** (de azul a rojo).
-- **Desenfoque gaussiano (FWHM)** : si está marcado, aplica un desenfoque gaussiano con la anchura a media altura (pm) indicada a la derecha, lo que aproxima una resolución finita (función de dispersión de punto).
+- **Color** : escala de color de la imagen: **Gray scale** o **Cold-warm** (de azul a rojo).
+- **Desenfoque gaussiano (FWHM)** : si está marcado, aplica un desenfoque gaussiano con la anchura a media altura (pm) indicada a la derecha, lo que aproxima una resolución finita (función de dispersión de punto). Mientras está marcado, las imágenes recién calculadas también se desenfocan. La FWHM se convierte a píxeles con la **Resolución** (pm/px) con la que se calculó cada imagen. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normalización
 
@@ -133,15 +133,15 @@ Establece los elementos superpuestos a la imagen.
 - **Simular** : ejecuta el cálculo con el cristal, las condiciones del microscopio, el espesor, el desenfoque y los ajustes de visualización actuales.
 - **Detener** : interrumpe el cálculo en curso (solo se muestra durante el cálculo).
 - **Tiempo real** : si está marcado, recalcula inmediatamente al girar el cristal (oculto en modo STEM).
-- **Predefinidos** : muestra u oculta la ventana de ajustes predefinidos, que guarda y recupera condiciones de imagen TEM (véase [Preset list](#preset-list) más abajo).
+- **Predefinidos** : muestra u oculta la ventana de ajustes predefinidos, que guarda y recupera condiciones de imagen TEM (véase [Lista de preajustes](#preset-list) más abajo).
 
-### Preset list {#preset-list}
+### Lista de preajustes {#preset-list}
 
-La ventana **Preset list** guarda instantáneas con nombre de los ajustes del simulador. Una instantánea guarda el modo de imagen, el voltaje de aceleración, Cs, Cc, ΔV, el desenfoque, β, la apertura de objetivo (tamaño y desplazamiento), el modelo de coherencia parcial de HRTEM, el espesor y las listas de espesores / desenfoques en serie, el tamaño y la resolución de la imagen, el número de ondas de Bloch y los ajustes STEM (ángulo de convergencia, ángulos del detector, tamaño de la fuente, espesor de capa, resolución angular, **Calcular mapas EDX** y **Series de líneas (Kα, Lα…)**). La lista se guarda con la configuración de ReciPro y se conserva tras reiniciar.
+La ventana **Lista de preajustes** guarda instantáneas con nombre de los ajustes del simulador. Una instantánea guarda el modo de imagen, el voltaje de aceleración, Cs, Cc, ΔV, el desenfoque, β, la apertura de objetivo (tamaño y desplazamiento), el modelo de coherencia parcial de HRTEM, el espesor, el modo único/en serie, qué magnitudes barre una serie (espesor / desenfoque) con sus **Inicio / Paso / Núm**, las listas de espesores / desenfoques en serie, el tamaño y la resolución de la imagen, el número de ondas de Bloch y los ajustes STEM (ángulo de convergencia, ángulos del detector, tamaño de la fuente, espesor de capa, resolución angular, **Calcular mapas EDX** y **Series de líneas (Kα, Lα…)**). La lista se guarda con la configuración de ReciPro y se conserva tras reiniciar. Los preajustes guardados por versiones anteriores no contienen los ajustes de modo único/en serie; al aplicarlos, esos ajustes no cambian. <!-- 261105Cl 監査: FormPresets.cs ImageSimulatorSetting (SerialImageMode ほか) -->
 
 - Al hacer clic en una entrada, se aplica inmediatamente.
-- **OK** cierra la ventana y conserva los ajustes actuales; **Cancelar** (o <kbd>Esc</kbd>) la cierra y restaura los ajustes vigentes cuando se abrió la ventana.
-- **Gestionar la lista de preajustes** : si está marcado, al hacer clic en una entrada solo se selecciona (no se aplica) y aparecen la casilla **Nombre** y los botones **Add** / **Reemplazar** / **Cambiar nombre** / **Eliminar**. **Add** añade los ajustes actuales con el nombre indicado, **Reemplazar** sobrescribe la entrada seleccionada con los ajustes actuales y **Cambiar nombre** cambia solo su nombre.
+- **Aceptar** cierra la ventana y conserva los ajustes actuales; **Cancelar** (o <kbd>Esc</kbd>) la cierra y restaura los ajustes vigentes cuando se abrió la ventana.
+- **Gestionar la lista de preajustes** : si está marcado, al hacer clic en una entrada solo se selecciona (no se aplica) y aparecen la casilla **Nombre** y los botones **Añadir** / **Reemplazar** / **Cambiar nombre** / **Eliminar**. **Añadir** añade los ajustes actuales con el nombre indicado, **Reemplazar** sobrescribe en su lugar la entrada seleccionada con los ajustes actuales y el nombre de la casilla **Nombre**, y **Cambiar nombre** cambia solo su nombre.
 
 Los ajustes predefinidos de microscopio (ARM300F, 2100F, …) no están en esta lista; se encuentran en el menú contextual de **Condiciones TEM** (véase [Simulación HRTEM](1-hrtem-simulation.md#tem-conditions)).
 
@@ -154,14 +154,15 @@ Los ajustes predefinidos de microscopio (ARM300F, 2100F, …) no están en esta 
 - **Guardar imagen** : guarda **como Imagen (formato PNG)**, **como Imagen (formato TIFF)** o **como metarchivo (EMF)**. PNG y EMF guardan lo que se muestra (rango de visualización y escala de color); **Guardar individualmente en modo de imagen en serie** (activado por defecto) escribe cada panel en su propio archivo en lugar de una sola imagen en mosaico. TIFF escribe siempre un archivo de coma flotante por panel, sin superposiciones. Guarda los valores de píxel después de la **Normalización** (y del **Desenfoque gaussiano (FWHM)**, si se aplica), no el rango de visualización de **Ajuste**; con los valores por defecto (**Min** 0, **Max** 1, **Por imagen**) cada imagen se escala a 0–1, así que desmarque **Min** / **Max** para exportar las intensidades calculadas. Los mapas EDX se escriben siempre sin escalar.
 - **Copiar imagen** : copia al portapapeles **como Imagen** o **como metarchivo (EMF)**.
 - **Sobreimprimir símbolos** (activado por defecto) : incrusta la celda unidad, las etiquetas y la barra de escala en la imagen PNG / EMF guardada o copiada.
-- **Cargar parámetros TEM** / **Guardar parámetros TEM** : se muestran pero están desactivados (no implementados). Use la [Preset list](#preset-list) para guardar y recuperar condiciones.
+- **Cargar parámetros TEM** / **Guardar parámetros TEM** : leen o escriben los ajustes del simulador como un archivo XML (`*.rpis`). El archivo contiene los mismos elementos que un [preajuste](#preset-list) —modo de imagen, voltaje de aceleración, aberraciones, desenfoque, apertura de objetivo, espesor y los ajustes de modo único/en serie, tamaño y resolución de la imagen, ajustes STEM, etc.—, de modo que las condiciones pueden conservarse o compartirse entre ordenadores. Los elementos que faltan en un archivo (por ejemplo, uno escrito por una versión anterior) toman los valores iniciales de la ventana y los elementos desconocidos se ignoran; un archivo que no se puede leer se indica con un mensaje. La carga no recalcula la imagen. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Menú Ayuda
 
 ![Menú Ayuda](../../assets/cap-es-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Concepto básico de la simulación HRTEM** : abre la explicación de la formación de la imagen HRTEM ([Apéndice A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Biblioteca de cálculo** : selecciona la biblioteca de cálculo: **Native code** (C++/Eigen, rápida) o **Managed code** (.NET). Native suele ser más rápida. La elección solo se usa para la síntesis de la imagen HRTEM; STEM selecciona su solver automáticamente (STEM-EDX siempre necesita la biblioteca nativa), y la elección vuelve a **Native code** cada vez que se inicia ReciPro.
+
+La biblioteca de cálculo ya no se elige en esta ventana: la síntesis de la imagen HRTEM usa automáticamente la biblioteca nativa (C++/Eigen) cuando está disponible. Para dejar de usarla, active **Opciones ▸ Desactivar biblioteca Crystallography.Native (requiere reinicio)** en la [ventana principal](../0-main-window.md). <!-- 261106Cl 作者の決定 E12: 計算ライブラリの切替を廃止 -->
 
 ---
 

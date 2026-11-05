@@ -85,7 +85,7 @@ Usadas por los paneles de resultados de [HRTEM/STEM](9-hrtem-stem-simulator/inde
 | Un clic / doble clic en un botón de función | Activar/desactivar esa ventana / forzarla al primer plano |
 | Clic derecho en un cristal de la lista | Menú contextual (Cambiar nombre / Exportar como CIF / Duplicar / Eliminar) |
 | Doble clic en la etiqueta del índice de eje de zona (`[u v w]`) | Mostrar / ocultar el cuadro max-UVW |
-| Soltar un archivo | Cargar una lista de cristales (`.xml`, `.out`, `.cdb2`) o un cristal (`.cif`, `.amc`) |
+| Soltar un archivo | Cargar una lista de cristales (`.xml`, `.out`) o un cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Base de datos de cristales
 [Abrir página →](1-crystal-database.md)
@@ -94,7 +94,7 @@ Usadas por los paneles de resultados de [HRTEM/STEM](9-hrtem-stem-simulator/inde
 |----------|--------|
 | <kbd>ENTER</kbd> en un campo de búsqueda | Ejecutar la búsqueda |
 | Clic en una fila de resultados | Cargar ese cristal |
-| Clic en un elemento del popup de tabla periódica | Recorrer su filtro: ignorar → debe incluir → debe excluir |
+| Clic en un elemento de la ventana emergente **Tabla periódica** | Recorrer su filtro: *puede incluir o no* → *debe incluir* → *debe excluir* |
 
 ### 2. Información de simetría · 3. Interacción del haz
 La Información de simetría no tiene combinaciones especiales de teclas/ratón. En la Interacción del haz, además de <kbd>F1</kbd> y los botones **Copiar**, el cursor vertical del gráfico **Factores de dispersión** se puede arrastrar para leer el valor de cada elemento.
@@ -131,9 +131,9 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | <kbd>CTRL</kbd> + arrastrar con el botón central | Mover el centro del detector (cuando se muestra el área del detector) |
 | Doble clic derecho en la barra de estado | Copiar un resumen de texto de los ajustes actuales |
 | Doble clic derecho en un botón de capa activa (Puntos / Líneas de Kikuchi / Anillos de Debye / Escala) | Hacer parpadear esa capa |
-| Doble clic izquierdo en el estereograma — ventana **TEM holder** | Fijar la inclinación del portamuestras en ese punto |
-| Teclas de flecha — ventana **TEM holder** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**; funciona con cualquier ventana de ReciPro en primer plano) |
-| Soltar `.prm` / imagen — **Detector geometry**, o `.txt` — **Dynamic compression** | Cargar esos datos |
+| Doble clic izquierdo en el estereograma — ventana **Simulación de portamuestras TEM** | Fijar la inclinación del portamuestras en ese punto |
+| Teclas de flecha — ventana **Simulación de portamuestras TEM** | Avanzar la inclinación del portamuestras por pasos (marque primero **Activar teclas de flecha**; solo mientras la ventana del portamuestras está activa) <!-- 261106Cl 作者の決定 D25 --> |
+| Soltar `.prm` / imagen — **Geometría del detector**, o `.txt` — **Compresión dinámica** | Cargar esos datos |
 
 ### 8. Trayectorias electrónicas
 [Abrir página →](8-electron-trajectory.md) — una [vista 3-D](#3d) con el desplazamiento desactivado.
@@ -148,7 +148,7 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | Doble clic izquierdo en un panel | Maximizar ese panel / restaurar la cuadrícula (disposiciones de varios paneles) |
 
 ### 10. Spot ID v1
-[Abrir página →](10-spot-id.md) — la imagen es solo de referencia (no interactiva).
+[Abrir página →](10-spot-id.md) — no hay vista de imagen (la geometría de las reflexiones se introduce como números).
 
 | Atajo | Acción |
 |----------|--------|
@@ -182,4 +182,4 @@ La Información de simetría no tiene combinaciones especiales de teclas/ratón.
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Guardar el texto del editor de vuelta en la entrada seleccionada de la lista de macros |
 | <kbd>F10</kbd> | Avanzar un paso (durante la ejecución paso a paso) |
 | Doble clic en una fila de la lista de ayuda de funciones | Insertar la firma de esa función en el cursor |
-| Soltar un archivo `.mcr` | Cargarlo en el editor |
+| Soltar un archivo `.mcr` sobre la ventana | Cargarlo en el editor y añadirlo a la lista de macros (el nombre del archivo pasa a ser el nombre de la macro) |

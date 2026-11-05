@@ -6,7 +6,7 @@
 
 Se abre desde el menú **Opciones** del [Simulador de difracción](index.md) → **Simulador ALCHEMI...**
 
-Condiciones de la GUI: Wave Length = Electron (el cristal, la tensión de aceleración y la orientación se toman del simulador de difracción principal)
+Condiciones de la GUI: Fuente de ondas = Electrones (el cristal, la tensión de aceleración y la orientación se toman del simulador de difracción principal). Con otra fuente la ventana se abre igualmente, pero la lectura de θ_B y **Simular** solo muestran el aviso *ALCHEMI es solo para electrones. Ajuste la fuente del simulador de difracción a Electrón.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![Simulador ALCHEMI](../../assets/cap-es-auto/FormALCHEMI.png)
 
@@ -115,13 +115,13 @@ Lista de sitios atómicos cuyo rendimiento se calcula por separado, mostrados co
 
 ### Simular / Detener
 
-**Simular** inicia el barrido. El progreso se muestra en la barra de estado en cinco etapas (resolviendo datos de ionización → construyendo la base unión → construyendo las matrices de ionización → resolviendo orientaciones → verificando la base ampliada), y **Detener** aborta en cualquier momento.
+**Simular** inicia el barrido. El progreso se muestra en la barra de estado en cinco etapas (resolviendo datos de ionización → construyendo la base unión → construyendo las matrices de ionización → resolviendo orientaciones → verificando la base ampliada), y **Detener** aborta en cualquier momento. Si la fila **g** es paralela al haz, el barrido no puede inclinarla a través de sus condiciones de Bragg; **Simular** solo indica entonces este motivo en la barra de estado. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Panel derecho: pestaña Curva
 
-Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leyenda se lee `etiqueta de sitio / canal`.
+Al terminar el cálculo se dibuja una curva por cada par sitio × canal. La leyenda se lee `etiqueta de sitio / canal`. Si después se cambia el cristal o la tensión de aceleración (también con la ventana cerrada), se borran las curvas, los diagnósticos y la elección de espesor, y la línea de estado indica el motivo. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Elemento | Descripción |
 |----------|-------------|
@@ -166,7 +166,7 @@ En las siguientes situaciones se añaden más advertencias como líneas independ
 
 ## Exportación CSV {#exportación-csv}
 
-**Exportar CSV** escribe una tabla en formato largo precedida por una cabecera con el formato `# key: value` (abreviada abajo). La cabecera está pensada para que el propio archivo indique las condiciones necesarias para reproducirlo.
+**Exportar CSV** escribe una tabla en formato largo precedida por una cabecera con el formato `# key: value` (abreviada abajo). La cabecera está pensada para que el propio archivo indique las condiciones necesarias para reproducirlo; `scan_origin_rotation_matrix` registra la orientación del cristal en el origen del barrido (inclinación 0) como una matriz de rotación por filas. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ En las siguientes situaciones se añaden más advertencias como líneas independ
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

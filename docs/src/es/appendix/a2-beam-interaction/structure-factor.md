@@ -54,7 +54,7 @@ de modo que $B$ aumenta con la temperatura y disminuye para los átomos pesados.
 
 Una reflexión puede estar **ausente** por dos motivos distintos:
 
-- **Ausencias sistemáticas (de grupo espacial).** El centrado de la red y los elementos de simetría con una componente traslacional (ejes helicoidales, planos de deslizamiento) hacen desaparecer clases enteras de reflexiones de forma *exacta*, para todo cristal de ese grupo espacial, con independencia del contenido atómico. Estas son las reglas que subyacen a **Hide prohibited planes**.
+- **Ausencias sistemáticas (de grupo espacial).** El centrado de la red y los elementos de simetría con una componente traslacional (ejes helicoidales, planos de deslizamiento) hacen desaparecer clases enteras de reflexiones de forma *exacta*, para todo cristal de ese grupo espacial, con independencia del contenido atómico. Estas son las reglas que subyacen a **Ocultar planos prohibidos**.
 - **Casi-extinciones accidentales.** Cuando las contribuciones atómicas se cancelan por casualidad para una estructura concreta, la intensidad es pequeña pero no está prohibida por simetría, y puede reaparecer si cambian la composición o las posiciones. Estas *no* se eliminan mediante las reglas de extinción.
 
 Una ausencia sistemática es una cancelación de fase entre las copias relacionadas por simetría de la celda. Para las traslaciones de centrado $\mathbf t_\alpha$, el factor de estructura lleva un factor común
@@ -96,7 +96,7 @@ no nula solo cuando la parte normal y la anómala tienen fases distintas — es 
 
 ## Del factor de estructura a la intensidad de polvo
 
-Activar **Powder Diffraction Intensities (Bragg–Brentano)** convierte $\lvert F\rvert^2$ en una intensidad de polvo relativa al incorporar la geometría de un policristal orientado al azar:
+Activar **Intensidades de difracción de polvo (óptica Bragg-Brentano)** convierte $\lvert F\rvert^2$ en una intensidad de polvo relativa al incorporar la geometría de un policristal orientado al azar:
 
 $$I_{hkl} \;\propto\; m_{hkl}\, \lvert F_{hkl}\rvert^2\, L p(\theta),$$
 

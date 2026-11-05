@@ -15,7 +15,7 @@ La ventana tiene una vista 3D principal más dos pequeños gizmos — la caja de
 | <kbd>F1</kbd> | Abrir esta página del manual en línea |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Copiar la imagen renderizada al portapapeles |
 | Arrastrar con el botón izquierdo en la vista principal | Rotar el modelo |
-| Doble clic izquierdo sobre un átomo | Mostrar sus coordenadas, distancias a los vecinos más próximos y ángulos de enlace |
+| Doble clic izquierdo sobre un átomo | Mostrar las coordenadas del átomo pulsado y las distancias y ángulos de enlace de los vecinos que lo rodean (solo pueden seleccionarse los átomos mostrados) <!-- 261105Cl 監査: 近接原子はクリックした位置の周り (ca87b772, 8cc95680) --> |
 | Arrastrar con el botón derecho arriba/abajo, o rueda del ratón | Zoom |
 | Arrastrar con el botón central | Desplazamiento |
 | <kbd>CTRL</kbd> + arrastrar con el botón derecho arriba/abajo | Cambiar la distancia de la cámara (solo en modo perspectiva) |
@@ -31,7 +31,7 @@ Los atajos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda la aplicación de la [ventan
 
 ## Área principal
 
-La estructura cristalina en 3D, dibujada junto con el indicador de dirección de la luz, el indicador de ejes cristalinos y la leyenda de átomos.
+La estructura cristalina en 3D, dibujada junto con el indicador de dirección de la luz, el indicador de ejes cristalinos y la leyenda de átomos. La posición y el tamaño de la ventana se conservan para el próximo inicio. <!-- 261106Cl 作者の決定 H6 -->
 > La caja **Tamaño (An×Al)** en la parte superior derecha de la ventana establece el tamaño en píxeles de la vista 3D (la ventana se redimensiona en consecuencia); las imágenes guardadas y copiadas tienen ese tamaño.
 > La caja **ProjWidth** situada a su lado muestra el ancho de la vista proyectada en nm. Edite el valor para hacer zoom numéricamente — permanece sincronizado con el zoom por arrastre con el botón derecho / rueda del ratón sobre la vista.
 
@@ -47,36 +47,36 @@ La estructura cristalina en 3D, dibujada junto con el indicador de dirección de
 | Elemento de menú | Descripción |
 |------------------|-------------|
 | Guardar imagen ▸ Imagen principal / Leyenda / Ejes cristalinos / Dirección de la luz | Guardar como PNG la vista principal, la leyenda de átomos o uno de los indicadores |
-| Copiar imagen principal al portapapeles ▸ Imagen principal / Leyenda / Ejes cristalinos / Dirección de la luz | Copiar la imagen (Ctrl+Shift+C copia la vista principal) |
+| Copiar imagen al portapapeles ▸ Imagen principal / Leyenda / Ejes cristalinos / Dirección de la luz <!-- 261105Cl 監査: copyToClipboardToolStripMenuItem.Text --> | Copiar la imagen (Ctrl+Shift+C copia la vista principal) |
 | Guardar vídeo ▸ Imagen principal / Ejes cristalinos | Guardar como MP4 un vídeo de rotación/traslación de la vista principal o del indicador de ejes cristalinos (velocidad, duración, fps, calidad, etc.) |
-| Export 3D Model (3MF/STL) | Exportar la estructura mostrada como modelo sólido para impresión 3D |
+| Export 3D model (3MF/STL) | Exportar la estructura mostrada como modelo sólido para impresión 3D |
 
 Menú **Herramientas**: **Me gusta VESTA** (igual que el botón *Como Vesta* de la barra de herramientas) y **Enable DDP** (muestra/oculta la entrada *Dual Depth Peeling* del [Modo de transparencia](#modo-de-transparencia)).
 
 **Atajos de teclado** (un menú de nivel superior aparte) enumera los atajos de teclado.
 
-**Guardar vídeo** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotation** y/o **Translation**:
+**Guardar vídeo** abre el cuadro de diálogo de configuración de película que se muestra a continuación. Una película puede rotar la vista, trasladar el centro de proyección o hacer ambas cosas a la vez — marque **Rotación** y/o **Traslación**:
 
-- **Rotation**: rota la vista a la velocidad **Speed** (°/s; los valores negativos invierten el sentido) alrededor del eje elegido debajo — **Proyección actual** (dirección de inclinación elegida con los botones de flecha), un **Índice de dirección** [uvw], o la normal de un **Plano reticular** (hkl).
-- **Translation**: mueve el centro de proyección a lo largo del índice de dirección [uvw] a la velocidad **Speed** (periodos de red por segundo). Esta opción solo aparece cuando el cuadro de diálogo se abre desde el Visor de estructura y, mientras está habilitada, **Índice de dirección** es el único modo de dirección disponible.
+- **Rotación**: rota la vista a la velocidad **Velocidad** (°/s; los valores negativos invierten el sentido) alrededor del eje elegido debajo — **Proyección actual** (dirección de inclinación elegida con los botones de flecha), un **Índice de dirección** [uvw], o la normal de un **Plano reticular** (hkl). El eje se toma de la orientación del cristal en el momento de pulsar **OK**. Con los índices de Miller–Bravais activados, solo **Plano reticular** muestra cuatro índices; un **Índice de dirección** es siempre el [uvw] de tres índices. <!-- 261105Cl 監査: FormMovie.cs (OK の時点で回転軸を求め直す、4 指数は格子面だけ, 35fa72fc) -->
+- **Traslación**: mueve el centro de proyección a lo largo del índice de dirección [uvw] a la velocidad **Velocidad** (periodos de red por segundo). Esta opción solo aparece cuando el cuadro de diálogo se abre desde el Visor de estructura y, mientras está habilitada, **Índice de dirección** es el único modo de dirección disponible.
 
-Establezca la duración de la película (**Duration**), la frecuencia de fotogramas (**FPS**, 1–120) y la calidad del codificador (**Quality**, 1–100; los valores más altos usan una tasa de bits mayor y producen un archivo más grande), elija el códec (**H264** / **H265**) y pulse **OK** para generar un archivo MP4. **Include final frame** añade un fotograma adicional en t = Duration para que la película termine exactamente en la orientación/posición final. (La lista de velocidad de codificación solo etiqueta la indicación de progreso y ya no afecta a la codificación real.)
+Establezca la duración de la película (**Duración**), la frecuencia de fotogramas (**FPS**, 1–120) y la calidad del codificador (**Calidad**, 1–100; los valores más altos usan una tasa de bits mayor y producen un archivo más grande), elija el códec (**H264** / **H265**) y pulse **OK** para generar un archivo MP4. **Incluir fotograma final** añade un fotograma adicional en t = Duración para que la película termine exactamente en la orientación/posición final. (La lista de velocidad de codificación solo etiqueta la indicación de progreso y ya no afecta a la codificación real.)
 
 ![Cuadro de diálogo de configuración de película](../assets/cap-es-auto/FormMovie.png)
 
-#### Export 3D Model (3MF/STL)
+#### Export 3D model (3MF/STL)
 
-**Export 3D Model (3MF/STL)** exporta el modelo de estructura dibujado en pantalla como un modelo sólido para impresión 3D. Solo pueden exportarse sólidos cerrados: átomos (esferas y elipsoides), enlaces (cilindros) y poliedros de coordinación. Las etiquetas de los átomos, los planos de límite y los planos reticulares no pueden imprimirse y se ignoran. El armazón de la celda elemental está formado por segmentos, así que solo se sustituye por cilindros (con esferas en los vértices) si activas la opción correspondiente.
+**Export 3D model (3MF/STL)** exporta el modelo de estructura dibujado en pantalla como un modelo sólido para impresión 3D. Solo pueden exportarse sólidos cerrados: átomos (esferas y elipsoides), enlaces (cilindros) y poliedros de coordinación. Las etiquetas de los átomos, los planos de límite, los planos reticulares y los símbolos de los elementos de simetría no se exportan. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> El armazón de la celda elemental está formado por segmentos, así que solo se sustituye por cilindros (con esferas en los vértices) si activas la opción correspondiente. **Recortar objetos** (por los planos límite) no se aplica a la salida: los objetos que cruzan los planos límite se exportan enteros (el cuadro de diálogo lo indica). <!-- 261106Cl 作者の決定 H10 -->
 
-![Cuadro de diálogo Export 3D Model](../assets/cap-es-auto/FormExport3DModel.png)
+![Cuadro de diálogo Exportar modelo 3D](../assets/cap-es-auto/FormExport3DModel.png)
 
-En la parte superior del cuadro de diálogo se indican el número de objetos y triángulos implicados y el tamaño real del modelo (**Model size**, nm).
+En la parte superior del cuadro de diálogo se indican el número de objetos y triángulos implicados y el tamaño real del modelo (**Tamaño del modelo**, nm).
 
 **Escala** : cómo se decide el tamaño de salida
 
-- **Dimensión máxima** : escala el modelo automáticamente para que su arista más larga alcance la longitud indicada (5–500 mm, 80 mm de forma predeterminada).
+- **Dimensión máxima** : escala el modelo automáticamente para que su arista más larga alcance la longitud indicada (5–500 mm, 80 mm de forma predeterminada). Se incluye el grosor de los cilindros que sustituyen al armazón de la celda y a los armazones de aristas de los poliedros. <!-- 261105Cl 監査: 円柱の太さを含めて合わせる (82e50b62) -->
 - **Escala fija** : indica la escala (mm/nm) directamente. Sirve para construir varios cristales a la misma escala y poder colocarlos uno al lado del otro. Al cambiar a esta opción se parte de la escala que estaba en vigor justo antes.
-- La línea inferior muestra la escala resultante y las dimensiones impresas (**Output size**, mm).
+- La línea inferior muestra la escala resultante y las dimensiones impresas (**Tam. salida**, mm), incluido también ese grosor de los cilindros.
 
 **Incluir** : qué elementos entran en la impresión
 
@@ -108,31 +108,31 @@ Especifica el intervalo de dibujo del cristal. Hay dos modos, que se cambian con
 
 En este modo, los ejes *a*, *b*, *c* de la celda elemental son la unidad del intervalo de dibujo.
 
-- **Center**: coordenada fraccionaria central del volumen de dibujo.
-- **Range**: límite superior/inferior para cada uno de los ejes *a*, *b*, *c*.
+- **Centro**: desplazamiento del centro del intervalo de dibujo respecto al [Centro de proyección](#centro-de-proyección), en coordenadas fraccionarias (los valores positivos lo mueven hacia +*a*, +*b*, +*c*). El intervalo dibujado es (centro de proyección + Centro) ± Rango. <!-- 261106Cl 作者の決定 H3/H18, C4 -->
+- **Rango**: límite superior/inferior para cada uno de los ejes *a*, *b*, *c*.
 - Los **botones de preajuste** de la derecha proporcionan valores de uso frecuente (p. ej. celda 1×1×1, celda 2×2×2).
 
 ### Límites definidos por planos cristalinos
 
 ![Límites por planos cristalinos](../assets/cap-es-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro añade un poliedro casi esférico de radio **Distancia máx. al origen** (Å) para cerrarla.
+En este modo, el área de dibujo está delimitada por un conjunto de planos cristalinos. Si los planos no definen una región espacialmente cerrada, ReciPro añade un poliedro casi esférico de radio **Distancia máx. al origen** (Å, medida desde el [centro de proyección](#centro-de-proyección)) para cerrarla. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Lista de límites
 
-Todos los planos límite registrados para el cristal actual. Use **Add / Replace / Delete** para manipular la lista; la casilla situada más a la izquierda desactiva temporalmente un plano sin eliminarlo.
+Todos los planos límite registrados para el cristal actual. Use **Añadir / Reemplazar / Eliminar** para manipular la lista; la casilla situada más a la izquierda desactiva temporalmente un plano sin eliminarlo.
 
-> Para guardar los cambios de forma permanente, también debe pulsar **Add** o **Replace** en la **Ventana principal**. De lo contrario, los cambios se pierden la próxima vez que cambie la selección en la lista principal de cristales.
+> Para guardar los cambios de forma permanente, también debe pulsar **Añadir** o **Reemplazar** en la **Ventana principal**. De lo contrario, los cambios se pierden la próxima vez que cambie la selección en la lista principal de cristales.
 
 #### Índices H k l
 
 Establece el plano límite mediante su índice de Miller. La casilla incluye los planos cristalográficamente equivalentes generados a partir del (*hkl*) seleccionado.
 
-#### Distancia desde el origen
+#### Distancia al centro de proy.
 
-La distancia desde el origen hasta el plano límite, introducida como múltiplo de la distancia interplanar *d* del (*hkl*) seleccionado (casilla **d×**) o en Å (la casilla entre paréntesis). Las dos casillas están vinculadas: al cambiar una se actualiza la otra.
+La distancia desde el [centro de proyección](#centro-de-proyección) (no desde el origen de la celda) hasta el plano límite, introducida <!-- 261106Cl 作者の決定 C4 --> como múltiplo de la distancia interplanar *d* del (*hkl*) seleccionado (casilla **d×**) o en Å (la casilla entre paréntesis). Las dos casillas están vinculadas: al cambiar una se actualiza la otra.
 
-- **Translation** (Å): solo tiene efecto cuando **Planos equivalentes** está marcado y se generan exactamente dos planos equivalentes (normalmente (*hkl*) y su opuesto). En ese caso, el primer plano se aleja del origen y el segundo se acerca a él en esa cantidad, es decir, la lámina se desplaza a lo largo de la normal. En todos los demás casos el valor se ignora.
+- **Translation** (Å): desplaza toda la región delimitada por los planos en esa cantidad a lo largo de la normal del (*hkl*) especificado; los valores positivos la mueven hacia +**g**, es decir, en el sentido de la normal de (*hkl*). Funciona con cualquier número de planos, incluido un único plano sin **Planos equivalentes**. <!-- 261106Cl 作者の決定 B11, C5 -->
 - **Distancia máx. al origen** (Å): radio del poliedro de cierre usado cuando los planos no encierran una región (véase arriba).
 - **Actualizar inmediatamente**: aplica las modificaciones del plano seleccionado sin pulsar **Reemplazar**.
 
@@ -156,13 +156,13 @@ Establece la especie, la posición y la ocupación de cada átomo, y cómo se di
 
 #### Lista de átomos
 
-La lista de átomos del cristal. Use **Add / Replace / Delete** para manipular la lista; la casilla situada más a la izquierda oculta temporalmente un átomo.
+La lista de átomos del cristal. Use **Añadir / Reemplazar / Eliminar** para manipular la lista; la casilla situada más a la izquierda oculta temporalmente un átomo.
 
-> Para guardar los cambios de forma permanente, haga clic también en **Add** o **Replace** en la **Ventana principal**.
+> Para guardar los cambios de forma permanente, haga clic también en **Añadir** o **Reemplazar** en la **Ventana principal**.
 
 #### Elemento y posición
 
-- **Label**: etiqueta de texto libre para el átomo (se usa en leyendas y descripciones emergentes).
+- **Etiqueta**: etiqueta de texto libre para el átomo (se usa en leyendas y descripciones emergentes).
 - **Element**: elemento químico / estado de ionización.
 - **X, Y, Z**: coordenadas fraccionarias. Números reales entre 0 y 1, o fracciones como `1/2` o `2/3`.
 - **Occ**: ocupación, un número real entre 0 y 1.
@@ -182,7 +182,7 @@ Radio, color y material por átomo.
 - **Radius**: radio atómico dibujado.
 - **Atom color**: color de la superficie.
 - **Material**: propiedades de textura / material utilizadas por el shader de OpenGL.
-- **Apply to same elements**: aplica el radio y el color actuales a todos los átomos de la misma especie elemental.
+- **Aplicar al mismo elemento**: aplica el radio y el color actuales a todos los átomos de la misma especie elemental.
 
 ### Enlaces y poliedros
 
@@ -192,25 +192,26 @@ Define qué pares de átomos están enlazados (por especie y rango de distancias
 
 #### Lista de enlaces
 
-Todas las reglas de enlace/poliedro registradas para el cristal. Use **Add / Replace / Delete**; la casilla situada más a la izquierda desactiva temporalmente una entrada. Como con los átomos y los límites, se requiere **Add** / **Replace** en la **Ventana principal** para hacer permanente el cambio.
+Todas las reglas de enlace/poliedro registradas para el cristal. Use **Añadir / Reemplazar / Eliminar**; la casilla situada más a la izquierda desactiva temporalmente una entrada. Como con los átomos y los límites, se requiere **Añadir** / **Reemplazar** en la **Ventana principal** para hacer permanente el cambio.
 
 #### Propiedad del enlace
 
-- **Bonding Atom (center)**: especie elemental usada como átomo central del enlace / poliedro.
-- **Bonding Atom (vertex)**: especie elemental usada como vértice (el otro extremo).
-- **Length between … and …**: umbrales de distancia inferior y superior. Los pares de átomos fuera de este intervalo no se dibujan.
-- **Bond Radius**: grosor dibujado del enlace (radio del cilindro).
-- **Alpha**: transparencia del enlace (0 = transparente, 1 = opaco).
+- **Mostrar enlaces**: dibuja los enlaces de esta regla (la casilla situada sobre los ajustes de enlace).
+- **Átomos enlazantes** **(centro)** - **(vértice)**: especie elemental usada como átomo central del enlace / poliedro y como vértice (el otro extremo).
+- **Longitud entre** … **-** … (Å): umbrales de distancia inferior y superior. Los pares de átomos fuera de este intervalo no se dibujan.
+- **Radius** (Å): grosor dibujado del enlace (radio del cilindro).
+- **Opacidad**: opacidad del enlace (0 = transparente, 1 = opaco).
 
 #### Propiedad del poliedro
 
-- **Show Polyhedron**: cuando está marcado, se dibuja el poliedro definido por el enlace actual (solo si el conjunto centro/vértice es geométricamente válido).
-- **Inner Bonds**: muestra/oculta los enlaces dentro del poliedro.
-- **Center Atom**: muestra/oculta el átomo central.
-- **Vertex Atoms**: muestra/oculta los átomos de los vértices.
-- **Color** / **Alpha**: color de cara y transparencia.
+- **Mostrar poliedro**: cuando está marcado, se dibuja el poliedro definido por el enlace actual (solo si el conjunto centro/vértice es geométricamente válido).
+- **Mostrar enlaces internos**: con **Mostrar poliedro** activado, dibuja los enlaces del centro a los vértices (requieren también **Mostrar enlaces**).
+- **Mostrar átomo central**: muestra/oculta el átomo central.
+- **Mostrar átomos de vértice**: muestra/oculta los átomos de los vértices. Un átomo central o de vértice oculto se dibuja de todos modos cuando otro poliedro mostrado lo muestra, o cuando es el extremo de un enlace de una definición sin poliedro. <!-- 261105Cl 監査: 3 つのチェックが描画に効くようになった (7e198f9d) -->
+- **Opacidad**: opacidad de las caras (0 = transparente, 1 = opaco).
 - **Mostrar aristas**: dibuja las aristas que conectan los vértices.
-- **Edge Color** / **Width**: color y ancho de línea de las aristas.
+- **Anchura**: ancho de línea de las aristas en píxeles (1–5). Los valores inferiores a 1 guardados por versiones anteriores se dibujan con 1 px. <!-- 261106Cl 作者の決定 H4 -->
+- Esta pestaña no tiene casillas de color: los enlaces toman los colores de los átomos de sus dos extremos, y los poliedros el color de su átomo central (los colores de los átomos se fijan en la pestaña [Átomos](#átomos)). <!-- 261105Cl 監査: BondControl の colorControlPolyhedron/Bond/Edges は Visible=False。色は原子の材質から (FormStructureViewer.cs) -->
 
 ### Celda elemental
 
@@ -222,7 +223,7 @@ Establece la posición de la celda unidad dibujada y si se muestran sus caras y 
 
 Cada grupo espacial tiene un origen predeterminado. Para alejar el centro de la celda elemental dibujada de ese origen, establezca la traslación a lo largo de *a*, *b*, *c*.
 
-La traslación está ligada al [Centro de proyección](#centro-de-proyección): fijar el centro de proyección en $(x, y, z)$ fija la traslación en $(0.5-x,\ 0.5-y,\ 0.5-z)$.
+La traslación está ligada al [Centro de proyección](#centro-de-proyección): fijar el centro de proyección en $(x, y, z)$ fija la traslación en $(x-0.5,\ y-0.5,\ z-0.5)$. Una traslación positiva mueve la celda dibujada hacia +*a*, +*b*, +*c*. <!-- 261106Cl 作者の決定 H3/H18 -->
 
 #### Mostrar plano de la celda
 
@@ -233,6 +234,10 @@ Si se dibujan o no las seis caras que delimitan la celda elemental. Cuando está
 Si se dibujan o no las aristas de la celda elemental. El color de las aristas es configurable.
 
 La casilla principal **Mostrar celda unidad** (= el botón *Celda unidad* de la barra de herramientas) activa o desactiva toda la celda. Los colores de caras y aristas pueden fijarse para **Todos los planos** / **Todas las aristas** a la vez o para **Cada plano** / **Cada arista** (*a*, *b*, *c* por separado); **Anchura de arista** fija el ancho de línea y **Opacidad**, la transparencia de las caras.
+
+#### Mostrar subcelda
+
+**Mostrar subcelda** dibuja líneas de rejilla que dividen la celda en el número de partes indicado en las casillas **a**, **b**, **c** (de 1 a 10 cada una; las casillas solo pueden usarse mientras está marcada), sobre las caras y en el interior de la celda. No se dibujan las líneas que coinciden con aristas de la celda. Las líneas toman el color de las aristas (**Todas las aristas** / **Cada arista**), la mitad del ancho de arista (al menos 1 px) y una opacidad de 0,5, y se muestran con independencia de **Mostrar arista de celda**. No se incluyen en la exportación del modelo 3D. <!-- 261106Cl 作者の決定 H5 -->
 
 ### Planos reticulares
 
@@ -246,7 +251,7 @@ Especifica el plano reticular mediante su índice de Miller. La casilla incluye 
 
 #### Traslación
 
-Traslada el plano reticular dibujado en un múltiplo entero de su distancia interplanar *d* — útil para visualizar planos sucesivos de la misma familia.
+Desplaza los planos reticulares dibujados a lo largo de su normal en una fracción de la distancia interplanar *d* (**× d**, de −0,5 a 0,5); los valores positivos los mueven hacia +**g** (los planos quedan en **g**·**r** = (*m* + T)*d*). Por ello, los valores guardados en listas de cristales por versiones anteriores se dibujan en el lado opuesto (0 y ±0,5 se ven igual). <!-- 261106Cl 作者の決定 C5 --> Se dibujan todos los planos de la familia que cruzan el intervalo de dibujo, uno por cada *d*. Los planos están fijados a la red cristalina: con 0 pasan por los puntos de la red, y se mueven con la estructura cuando cambia el [Centro de proyección](#centro-de-proyección). <!-- 261105Cl 監査: LatticePlaneControl numericBoxDistance (−0.5〜0.5, × d)、FormStructureViewer.cs:SetLatticePlanes (4fd9e8c3)。「d の整数倍」は誤り -->
 
 ### Coordinación
 
@@ -260,7 +265,7 @@ Enumera qué átomos rodean al átomo objetivo seleccionado y a qué distancia. 
 
 #### Gráfico (lado derecho)
 
-Histograma del número de vecinos en función de la distancia, derivado de los mismos datos que la tabla. Ajuste **Bar Width** hasta que las barras separen limpiamente las capas de coordinación — esto da una estimación visual del número de coordinación.
+Histograma del número de vecinos en función de la distancia, derivado de los mismos datos que la tabla. Ajuste **Semianchura** (la semianchura *w* de cada barra, que cubre *d* ± *w*) hasta que las barras separen limpiamente las capas de coordinación <!-- 261106Cl 作者の決定 B18 --> — esto da una estimación visual del número de coordinación.
 
 ### Información
 
@@ -285,7 +290,7 @@ Atenúa los objetos lejanos en la dirección de profundidad (**Atenuación por p
 
 #### Centro de proyección
 
-Establece el centro de proyección en las coordenadas especificadas. Active **Personalizado** para introducir coordenadas arbitrarias. Cada coordenada se pliega al intervalo de −0.5 a +0.5 (un periodo de red). Una película de **Translation** (véase el [Menú Archivo](#menú-archivo)) controla estos valores automáticamente.
+Establece el centro de proyección en las coordenadas especificadas. Active **Personalizado** para introducir coordenadas arbitrarias. Los valores escritos (de −1 a 1) se usan tal cual. Una película de **Traslación** (véase el [Menú Archivo](#menú-archivo)) controla estos valores automáticamente y pliega cada coordenada al intervalo de −0.5 a +0.5 (un periodo de red) a medida que avanza. <!-- 261105Cl 監査: 折り畳むのは SetProjectionCenter (動画の経路) だけ。マクロに投影中心の関数は無い -->
 
 #### Calidad de renderizado
 
@@ -296,8 +301,8 @@ Calidad de dibujo (subdivisión de malla, antialiasing). Una calidad mayor es m�
 Algoritmo usado para átomos y poliedros translúcidos.
 
 - **Approximate (Z depth sorting, OpenGL 4.1+)**: rápido, pero puede ser impreciso cuando se solapan muchos objetos translúcidos.
-- **High quality (Dual Depth Peeling, OpenGL 4.1+)**: transparencia independiente del orden mediante pelado de profundidad (depth peeling). Solo se muestra cuando **Herramientas ▸ Enable DDP** está activado (activado por defecto cuando PPLL no está disponible). El número de pasadas de pelado sigue el ajuste de [Calidad de renderizado](#calidad-de-renderizado).
-- **High quality (Per-Pixel Linked List, OpenGL 4.3+)**: transparencia exacta independiente del orden; solo se muestra cuando la GPU admite OpenGL 4.3. Precisa pero lenta; requiere en la práctica una GPU dedicada.
+- **High quality (dual depth peeling, OpenGL 4.1+)**: transparencia independiente del orden mediante pelado de profundidad (depth peeling). Solo se muestra cuando **Herramientas ▸ Enable DDP** está activado (activado por defecto cuando PPLL no está disponible). El número de pasadas de pelado sigue el ajuste de [Calidad de renderizado](#calidad-de-renderizado).
+- **High quality (per-pixel linked list, OpenGL 4.3+)**: transparencia exacta independiente del orden; solo se muestra cuando la GPU admite OpenGL 4.3. Precisa pero lenta; requiere en la práctica una GPU dedicada.
 
 ### Elementos de simetría
 
@@ -315,7 +320,7 @@ El interruptor general es **Mostrar elementos de simetría**. Para cada grupo pu
 
 - **Controles accesorios**: establece los tamaños de visualización (esfera de luz, ejes, leyenda). **Agrupar por elemento** alterna la visualización de la leyenda.
 - **Átomos enlazados**: **Mostrar átomos enlazados aunque estén fuera de los límites** sigue dibujando los átomos enlazados a átomos dentro del intervalo de dibujo, incluso cuando quedan fuera de él.
-- **Etiqueta**: **Mostrar etiqueta**, **Tamaño de fuente**, **Borde blanco** y el color de las etiquetas (**Usar color del material** o **Usar color fijo**). Al hacer clic en una entrada de la leyenda de átomos se activan o desactivan individualmente las etiquetas de ese átomo (o de ese elemento, con **Agrupar por elemento**).
+- **Etiqueta**: ajustes de las etiquetas de los átomos en la vista 3D (no de la leyenda) — **Mostrar etiqueta**, **Tamaño de fuente**, **Borde blanco** y el color de las etiquetas (**Usar color del material** o **Usar color fijo**). Al hacer clic en una entrada de la leyenda de átomos se activan o desactivan individualmente las etiquetas de ese átomo (o de ese elemento, con **Agrupar por elemento**).
 
 ---
 
@@ -328,7 +333,7 @@ El interruptor general es **Mostrar elementos de simetría**. Para cada grupo pu
 | Ejes | Mostrar la orientación de los ejes (tamaño = constante de red) |
 | Luz | Establecer la dirección de la luz |
 | Leyenda | Leyenda de átomos |
-| Átomos | Alternar los objetos de átomos |
+| Átomos | Mostrar/ocultar los átomos; los enlaces, los poliedros y las etiquetas se construyen sobre los átomos, así que también se ocultan <!-- 261105Cl 監査: toolStripButtonAtomObjects.ToolTipText (2028c4a1) --> |
 | Etiquetas | Alternar las etiquetas de los átomos |
 | Celda unidad | Alternar las aristas de la celda elemental |
 | Elem. sim. | Alternar la superposición de elementos de simetría (ver arriba) |

@@ -2,9 +2,9 @@
 
 La simulación de **PED (Precession Electron Diffraction)** calcula los patrones de difracción de electrones obtenidos al hacer precesar el haz incidente sobre un cono alrededor del eje óptico.
 
-> Esta página enumera todos los ajustes que aparecen en el lado derecho cuando selecciona **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**. Tenga en cuenta que **al seleccionar Precession (electron) para el haz incidente, el cálculo de intensidad cambia automáticamente a Dynamical**. Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de descripción general](index.md).
+> Esta página enumera todos los ajustes que aparecen en el lado derecho cuando selecciona **Fuente de ondas = Electrones, Óptica = Precesión (electrones), Cálculo de intensidad = Teoría dinámica (automático)**. Tenga en cuenta que **al seleccionar Precesión (electrones) en Óptica, el cálculo de intensidad cambia automáticamente a Teoría dinámica**. Para operaciones que afectan a toda la ventana, como dibujar y guardar, consulte la [página de descripción general](index.md).
 
-Condiciones de la GUI: **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+Condiciones de la GUI: **Fuente de ondas = Electrones, Óptica = Precesión (electrones), Cálculo de intensidad = Teoría dinámica (automático)**
 
 ![Simulador de difracción en modo PED](../../assets/cap-es-auto/FormDiffractionSimulator-ped.png)
 
@@ -20,21 +20,21 @@ En la PED, el haz de electrones se hace precesar sobre un cono alrededor del eje
 
 ---
 
-## Configuración de la longitud de onda
+## Fuente de ondas {#wavelength-setup}
 
-![Longitud de onda](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Fuente de ondas](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Dado que la PED es difracción de electrones, seleccione **Electron beam** como fuente. Al introducir la energía de los electrones (keV) o la longitud de onda (Å o nm, conmutable; por defecto Å) se calcula la longitud de onda corregida relativísticamente.
+Dado que la PED es difracción de electrones, seleccione **Electrones** como **Fuente de ondas**. Al introducir la energía de los electrones (keV) o la longitud de onda (Å o nm, conmutable; por defecto Å) se calcula la longitud de onda corregida relativísticamente.
 
 ---
 
-## Haz incidente
+## Óptica {#incident-beam}
 
-![Modo del haz incidente](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Óptica](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Para la geometría del haz incidente, seleccione **Precession (electron)** (disponible solo cuando se ha seleccionado el haz de electrones).
+En **Óptica** (la geometría del haz incidente), seleccione **Precesión (electrones)** (disponible solo cuando se ha seleccionado **Electrones**).
 
-> **Nota** : Al seleccionar **Precession (electron)** **el cálculo de intensidad cambia automáticamente a Dynamical**, y aparecen el panel de ajustes del método de ondas de Bloch y el panel de ajustes de precesión. **Only excitation error** / **Kinematical** ya no se pueden seleccionar.
+> **Nota** : Al seleccionar **Precesión (electrones)** **el cálculo de intensidad cambia automáticamente a Teoría dinámica**, y aparecen el panel de ajustes del método de ondas de Bloch y el panel de ajustes de precesión. **Solo error de exc.** / **Cinemática & err. exc.** ya no se pueden seleccionar.
 
 ---
 
@@ -53,7 +53,7 @@ Defina la forma y el muestreo del cono de precesión.
 
 ## Cálculo de intensidad y ajustes del método de ondas de Bloch
 
-En el momento en que se selecciona **Precession (electron)**, queda fijado **Intensity = Dynamical (automatic)**. Para el haz paralelo en cada dirección de precesión, la intensidad de difracción se calcula mediante el método de ondas de Bloch (cálculo dinámico), y la integración sobre todas las direcciones produce el patrón PED.
+En el momento en que se selecciona **Precesión (electrones)**, el **Cálculo de intensidad** queda fijado en **Teoría dinámica** (automático). Para el haz paralelo en cada dirección de precesión, la intensidad de difracción se calcula mediante el método de ondas de Bloch (cálculo dinámico), y la integración sobre todas las direcciones produce el patrón PED.
 
 ![Parámetros del método de ondas de Bloch](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
@@ -72,10 +72,10 @@ El coste computacional equivale aproximadamente a "número de pasos × cálculo 
 
 Controla cómo se dibuja cada reflejo de difracción.
 
-- **Solid sphere / Gaussian** : Modelo geométrico de los puntos de la red recíproca. **Solid sphere** dibuja la sección transversal de una esfera de radio $R$ con la esfera de Ewald, y **Gaussian** dibuja la sección transversal (una gaussiana 2D) de una gaussiana 3D con $\sigma = R$ con la esfera de Ewald.
+- **Esfera sólida / Gaussiana** : Modelo geométrico de los puntos de la red recíproca. **Esfera sólida** dibuja la sección transversal de una esfera de radio $R$ con la esfera de Ewald, y **Gaussiana** dibuja la sección transversal (una gaussiana 2D) de una gaussiana 3D con $\sigma = R$ con la esfera de Ewald.
 - **Opacidad** : Transparencia del reflejo (0 = transparente, 1 = opaco).
-- **Radius (R)** : Radio de los puntos de la red recíproca. Para intensidades dinámicas, la integral gaussiana $=$ Brillo $\times I_\text{dyn}$, y Solid sphere utiliza el radio $R \times I_\text{dyn}^{1/2}$ (de modo que el área es proporcional a la intensidad dinámica).
-- **Brillo**, **Escala de color**, **Escala log.** : solo se muestran en el modo **Gaussian**. **Brillo** escala la intensidad integrada de la gaussiana dibujada; **Escala de color** es **Gray** (reflejos con los colores de punto indicados abajo), **Cold-Warm**, **Spectrum** o **Fire**; **Escala log.** muestra la intensidad en una escala logarítmica.
+- **Radio del punto (R)** : Radio de los puntos de la red recíproca. Para intensidades dinámicas, la integral gaussiana $=$ Brillo $\times I_\text{dyn}$, y Esfera sólida utiliza el radio $R \times I_\text{dyn}^{1/2}$ (de modo que el área es proporcional a la intensidad dinámica).
+- **Brillo**, **Escala de color**, **Escala log.** : solo se muestran en el modo **Gaussiana**. **Brillo** escala la intensidad integrada de la gaussiana dibujada; **Escala de color** es **Gray** (reflejos con los colores de punto indicados abajo), **Cold-warm**, **Spectrum** o **Fire**; **Escala log.** muestra la intensidad en una escala logarítmica.
 - **Color del punto** : se muestra mientras la **Escala de color** es **Gray** (el ajuste inicial): **Puntos generales** / **Puntos extintos (tornillo/desl.)** / **Puntos extintos (centrado)**.
 - **Color por cristal** : Dibuja los reflejos en el color asignado a cada cristal.
 

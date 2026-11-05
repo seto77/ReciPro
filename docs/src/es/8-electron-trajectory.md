@@ -31,7 +31,9 @@ Los controles de la parte superior de la ventana configuran la ejecución:
 - **Simular trayectorias** : inicia la ejecución de Monte Carlo. La barra de estado de la parte inferior muestra por separado el tiempo empleado en el cálculo de trayectorias, en el dibujo de los gráficos y en la representación 3-D.
 - **Number of trajectories** (100–1 000 000, por defecto 100 000) : cuántos electrones incidentes se siguen. Más electrones reducen el ruido estadístico de todas las distribuciones descritas más abajo, a costa de un tiempo de ejecución que crece linealmente.
 - **Inclinación de la muestra** (°, de −90 a 0, por defecto 0) : inclinación de la superficie de la muestra alrededor del eje *X*. Déjela en 0 para incidencia normal; utilice **−70°** para reproducir la geometría del [simulador EBSD](12-ebsd-simulation.md), donde la gran inclinación aumenta el rendimiento de retrodispersión.
-- **Energy** (keV) / **Wavelength** / **Unit** : el voltaje de aceleración del haz incidente y la longitud de onda del electrón asociada, con corrección relativista. La energía fija la energía cinética utilizada tanto por el modelo elástico (Mott del NIST) como por los inelásticos (poder de frenado / IMFP).
+- **Energía** (keV) / **Long. de onda** / **Unit** : el voltaje de aceleración del haz incidente y la longitud de onda del electrón asociada, con corrección relativista. La energía fija la energía cinética utilizada tanto por el modelo elástico (Mott del NIST) como por los inelásticos (poder de frenado / IMFP).
+
+Cambiar **Inclinación de la muestra** o **Energía** después de una ejecución no cambia el resultado mostrado: hasta que se vuelva a pulsar **Simular trayectorias**, cada redibujado (vista 3-D, estereograma, histogramas) usa la inclinación y la energía con las que se calcularon las trayectorias. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
 
 Cada electrón se sigue hasta que abandona la muestra o su energía cae a **2 keV** (umbral fijo). Los electrones que salen con más de 2 keV se cuentan como electrones retrodispersados; η (su fracción respecto de todos los electrones incidentes), la energía media de BSE, el estereograma y los histogramas descritos más abajo se calculan a partir de estos electrones. La sección eficaz, el recorrido libre medio y el poder de frenado de **Estadísticas** son valores del modelo a la energía del haz.
 
@@ -59,7 +61,7 @@ Valores para la energía del haz actual. La sección eficaz y el poder de frenad
 - **Recorrido libre medio elástico (λ)** (nm): distancia media entre eventos de dispersión elástica.
 - **Poder de frenado (dE/ds)** (eV/nm, negativo): energía perdida por unidad de longitud de trayectoria.
 - **Coeficiente de retrodispersión electrónica, η** (%): fracción de electrones incidentes que vuelven a salir por la superficie de entrada. Es la magnitud en la que se basa el contraste de las imágenes de BSE.
-- **Energía media de BSE** (keV): energía media de los electrones retrodispersados en el momento en que escapan.
+- **Energía media de BSE** (keV): energía media de los electrones retrodispersados en el momento en que escapan. Se muestra como «-» cuando no se retrodispersa ningún electrón (los histogramas quedan entonces vacíos). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

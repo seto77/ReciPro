@@ -38,8 +38,8 @@ Introduzca dos planos cristalinos \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) o dos
 
 - el espaciado d de cada plano / la longitud de cada eje,
 - el ángulo entre los dos planos (o los dos ejes),
-- el ángulo entre el plano 1 y el eje 1, y entre el plano 2 y el eje 2,
-- **el índice de dirección normal a ambos planos** y **el índice de plano normal a ambos ejes**.
+- el ángulo entre la normal del plano 1 y el eje 1, y entre la normal del plano 2 y el eje 2 (90° cuando el eje está contenido en el plano),
+- **Eje paralelo a ambos planos** (el eje de zona [*uvw*] de los dos planos) y **Plano que contiene ambos ejes** (el plano (*hkl*) que contiene los dos ejes). Los signos siguen [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) y (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 Estos cálculos respetan la métrica de la celda elemental actual. Las longitudes se muestran en Å y los ángulos en grados.
 
@@ -49,7 +49,7 @@ Estos cálculos respetan la métrica de la celda elemental actual. Las longitude
 
 ![Posiciones de Wyckoff](../assets/cap-es-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Enumera cada posición de Wyckoff con su multiplicidad (**Mult.**), su letra de Wyckoff (**Letra Wyck.**), su simetría de sitio (**Sim. sitio**) y sus **Coordenadas** (hasta cuatro por fila; las listas más largas continúan en las filas siguientes). La primera entrada de Wyckoff (la de mayor multiplicidad) es la posición general. En el caso de las redes centradas, los vectores de traslación de la red se muestran en la fila de cabecera.
+Enumera cada posición de Wyckoff con su multiplicidad (**Mult.**), su letra de Wyckoff (**Letra Wyck.**), su simetría de sitio (**Sim. sitio**) y sus **Coordenadas** (hasta cuatro por fila; las listas más largas continúan en las filas siguientes). La primera entrada de Wyckoff (la de mayor multiplicidad) es la posición general. En el caso de las redes centradas, los vectores de traslación de la red se muestran en la fila de cabecera; para los grupos R en ejes hexagonales son las tres traslaciones de centrado de la configuración obversa, (0,0,0)+, (2/3,1/3,1/3)+ y (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 
