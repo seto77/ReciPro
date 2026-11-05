@@ -341,13 +341,17 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
             {
                 var vec = initialRot * corrRot * g;
                 vec.Y = -vec.Y; vec.Z = -vec.Z;//ここでベクトルのY,Zの符号を反転
-                if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
-                {
-                    //2020/02/03の変更対処済み
-                    var point = Geometry.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
-                    if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
-                        gVector.Add(g);
-                }
+                //if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい) // 261105Cl 変更前 (φ = 0 の式)
+                //{
+                //    //2020/02/03の変更対処済み
+                //    var point = Geometry.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                //    if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
+                //        gVector.Add(g);
+                //}
+                // 261105Cl 変更 (監査 #17): 下の GetDiffractionSpots と同じく、親の検出器の変換 (DetectorRotationInv。τ と φ の両方) で検出器内かを判定する
+                var v = detectorRotationInv * new Vector3DBase(vec.X, vec.Y, vec.Z + ewaldRadius);
+                if (v.Z > 0 && IsDetectorArea(new PointD(v.X * cameraLength2 / v.Z, v.Y * cameraLength2 / v.Z)))
+                    gVector.Add(g);
             }//ここまで
 
             //ここから揺動のループ
@@ -436,7 +440,10 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         return data;
     }
 
-    private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength;
+    //private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength; // 261105Cl 変更前
+    private double excitationError, ewaldRadius, cameraLength2, waveLength; // 261105Cl 変更: cosTau・sinTau (φ = 0 の式) は detectorRotationInv に置き換えた
+    /// <summary>261105Cl 追加 (監査 #17): 親の検出器の回転 (τ, φ) の逆行列 (<see cref="FormDiffractionSimulator.DetectorRotationInv"/>)。setParameter で控える</summary>
+    private Matrix3D detectorRotationInv = new();
     private double spotRadiusOnDetector, error2, error3;
     static readonly double sqrt2PI = Math.Sqrt(2 * Math.PI);
 
@@ -526,8 +533,9 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         ewaldRadius = FormDiffractionSimulator.EwaldRadius;
         cameraLength2 = FormDiffractionSimulator.CameraLength2;
         waveLength = FormDiffractionSimulator.WaveLength;
-        cosTau = FormDiffractionSimulator.CosTau;
-        sinTau = FormDiffractionSimulator.SinTau;
+        //cosTau = FormDiffractionSimulator.CosTau; // 261105Cl 変更前
+        //sinTau = FormDiffractionSimulator.SinTau;
+        detectorRotationInv = new Matrix3D(FormDiffractionSimulator.DetectorRotationInv); // 261105Cl 追加 (監査 #17): 親と同じ検出器の変換 (φ も含む)
         spotRadiusOnDetector = cameraLength2 * Math.Tan(2 * Math.Asin(waveLength * excitationError / 2));
         error2 = excitationError * excitationError;
         error3 = excitationError * excitationError * excitationError;
@@ -552,11 +560,19 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 double dev = ewaldRadius - Math.Sqrt(L2 + (vec.Z + ewaldRadius) * (vec.Z + ewaldRadius)), dev2 = dev * dev;
                 if (dev2 < 9 * error2)
                 {
-                    if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
+                    //if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい) // 261105Cl 変更前
+                    //{
+                    //    //2020/02/03の変更対処済み
+                    //    var point = Geometry.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                    //    PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
+                    // 261105Cl 変更 (監査 #17): 親 (FormDiffractionSimulator.ConvertReciprocalToDetector の平面検出器) と同じ変換にする。
+                    //   旧式は平面 (0, sinτ, −cosτ)·r = L (法線の向きが逆、= n·r = −L) との交点なので、本来の交点 P ではなく −P (原点に対して点対称の位置) を返していた
+                    //   (上の候補の絞り込みは正しい向きの平面なので、検出器内と判定した反射を反対側に描いていた)。τ≠0 では傾きによる歪みも反対側に出て、φ は使っていなかった。
+                    //   (vec.X, vec.Y, vec.Z + EwaldRadius) は Y・Z を反転した後の vec なので、親の (g.X, −g.Y, EwaldRadius − g.Z) と同じ
+                    var v = detectorRotationInv * new Vector3DBase(vec.X, vec.Y, vec.Z + ewaldRadius);
+                    if (v.Z > 0) // 検出器の側へ散乱するもの (親は v.Z < 0 を NaN にする)
                     {
-                        //2020/02/03の変更対処済み
-                        var point = Geometry.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
-                        PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
+                        PointD pt = new PointD(v.X * cameraLength2 / v.Z, v.Y * cameraLength2 / v.Z);
 
                         //if (IsDetectorArea(pt))
                         {
