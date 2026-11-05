@@ -864,6 +864,9 @@ public partial class FormImageSimulator : FormBase
         this.buttonSimulate.Visible = false;
         this.buttonStop.Visible = true;
         this.splitContainer1.Enabled = false;
+        //261105Cl 追加: 計算中はプリセット窓も操作できなくする (別窓なので splitContainer1 の無効化が及ばず、
+        //計算中にプリセットでモードや条件が変わると、完了時に結果が描かれない・表示中の条件と結果が食い違うことがあった)
+        FormPresets.Enabled = false;
 
         if (sync)
             // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
@@ -1060,6 +1063,7 @@ public partial class FormImageSimulator : FormBase
         this.buttonStop.Visible = false;
         this.buttonStop.Enabled = true;//260801Cl 追加 (buttonStop_Click で無効化した分を戻す)
         this.splitContainer1.Enabled = true;
+        FormPresets.Enabled = true;//261105Cl 追加 (simulateSTEM で無効化した分を戻す)
         stemBethe = null;//260801Cl 追加
         //260801Cl 修正: sw3 の Stop/Reset が 2 回書かれ sw4 が reset されていなかった (旧: sw3.Reset(); sw3.Reset();)
         sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Stop(); sw3.Reset(); sw4.Stop(); sw4.Reset(); sw5.Stop(); sw5.Reset();
