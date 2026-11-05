@@ -1732,7 +1732,10 @@ public partial class FormImageSimulator : FormBase
             var mode = ImageMode;
             var isStem = mode == ImageModes.STEM;
 
-            numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL;
+            //numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL; // 261105Cl 変更前
+            //261105Cl 変更: シリーズ画像でデフォーカスを振っている間は無効のまま (CheckBoxSerialDefocus_CheckedChanged と同じ条件。
+            //旧: モードを切り替えるとシリーズ中でも入力できる状態に戻り、入れた値は計算に使われなかった)
+            numericBoxDefocus.Enabled = mode != ImageModes.POTENTIAL && !(radioButtonSerialMode.Checked && checkBoxSerialDefocus.Checked);
 
             numericBoxHRTEM_BetaAgnle.Enabled = mode == ImageModes.HRTEM;
 
