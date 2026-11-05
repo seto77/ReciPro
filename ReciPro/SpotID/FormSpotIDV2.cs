@@ -1586,7 +1586,10 @@ public partial class FormSpotIDV2 : FormBase
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
     {
         if (FormMain.Crystal.Bethe.IsCBED_Busy) return;
+        // 261105Cl 追加: 粒が選ばれていないときは何もしない (旧は下の bindingSourceGrains.Current で例外になり、splitContainer1 が無効のまま残った)
+        if (bindingSourceGrains.Current is not DataRowView) return;
         clearStatusLabel();
+        sw.Restart(); // 261105Cl 追加: 進捗表示の経過時間をこの計算の開始から数える (旧はスポット検出・同定のときの時刻からの経過を表示していた)
 
         splitContainer1.Enabled = false;
 
@@ -1604,10 +1607,16 @@ public partial class FormSpotIDV2 : FormBase
 
         for (int h = -max; h <= max; h++)
             for (int w = max; w >= -max; w--)
-                if (h * h + w * w <= max * max)
-                    directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax) * new Vector3DBase(0, 0, -1));
-                else
-                    directions.Add(null);
+                // 261105Cl 変更前:
+                //if (h * h + w * w <= max * max)
+                //    directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax) * new Vector3DBase(0, 0, -1));
+                //else
+                //    directions.Add(null);
+                // 261105Cl 変更: 正方格子の全点に方向を入れる (null を入れない)。円の内外は BetheMethod.cbed_DoWork の inside() が決め、外の点は計算されず振幅 0 のまま
+                //  (完了時の比較で denom == 0 として飛ばされる)。旧は円 h²+w² ≤ max² の外に null を入れていたが、
+                //  (1) inside() の円 (h²+w² ≤ (max+0.5)²) の方が一回り大きく、間の 64 点は null = 晶帯軸の方向として重複して計算され、
+                //  (2) ディスク位置の計算 (kvac * BeamDirections[r]) が null で NullReferenceException になって、Amplitudes が null のまま完了していた
+                directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax) * new Vector3DBase(0, 0, -1)); // 261105Cl
         var rotArray = directions.ToArray();
         var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
@@ -1624,6 +1633,14 @@ public partial class FormSpotIDV2 : FormBase
         //イベント削除
         FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
         FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
+
+        // 261105Cl 追加: 計算が失敗・中断したときは結果を使わずに戻る (旧は不完全な Disks のまま下へ進んだ)
+        if (e.Error != null || e.Cancelled)
+        {
+            splitContainer1.Enabled = true;
+            toolStripStatusLabelRefine.Text = e.Error != null ? $"Refinement failed: {e.Error.Message}" : "Refinement cancelled.";
+            return;
+        }
 
         //検出しているスポットの強度を取得
         var spots = dataSet.DataTableSpot.Spots;
@@ -1654,12 +1671,17 @@ public partial class FormSpotIDV2 : FormBase
         {
             for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++)
             {
-                var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared());
-                var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2));
+                //var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared()); // 261105Cl 変更前
+                //var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2)); // 261105Cl 変更前
+                // 261105Cl 変更: Amplitudes (CBED の表示用に、検出器上で重なった他のディスクの強度を足し込んだもの) ではなく、入射方向 r ごとの振幅 RawAmplitudes を使う。
+                //  SAED は平行照射なので r ごとに独立した 1 枚の回折図形であり、重なりを足すと別の入射方向の強度が混ざる (ディスクが重ならなければ両者は一致する)
+                var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].RawAmplitudes[r].MagnitudeSquared()); // 261105Cl
+                var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].RawAmplitudes[r].MagnitudeSquared(), 2)); // 261105Cl
                 if (denom != 0)
                 {
                     var a = numer / denom;
-                    var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2));
+                    //var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2)); // 261105Cl 変更前
+                    var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].RawAmplitudes[r].MagnitudeSquared(), 2)); // 261105Cl
                     if (bestResidual > residual)
                     {
                         bestResidual = residual;
@@ -1673,9 +1695,31 @@ public partial class FormSpotIDV2 : FormBase
         splitContainer1.Enabled = true;
         //2022/08/04 書き直す必要あり
         //FormMain.SetRotation(bestDirection * grain.Rotation);
-        FormMain.SetRotation(grain.Rotation);
+        //FormMain.SetRotation(grain.Rotation); // 261105Cl 変更前: 方位は元のまま (bestDirection は使われず、厚みだけが反映されていた)
+
+        // 261105Cl 追加: 比較できるスポットが無かったときは何も変えずに戻る (旧は厚み 0 nm を回折シミュレーターへ設定していた)
+        if (double.IsPositiveInfinity(bestResidual))
+        {
+            toolStripStatusLabelRefine.Text = "Refinement failed: no indexed spot could be compared with the calculation.";
+            return;
+        }
+
+        // 261105Cl 追加: 方位の精密化。BeamDirections[r] は、結晶を grain.Rotation で回した状態での入射方向 (画面座標系: 右 +X、上 +Y、手前 +Z。基準は (0,0,-1))。
+        //  bestDirection を (0,0,-1) へ重ねる最小の回転 (軸 = bestDirection × (0,0,-1) で面内、角度 = 傾き) を grain.Rotation に左から掛ける
+        //  (FormMain の回転ボタンと同じく、画面座標系の回転を左から掛ける流儀)。軸が面内なので、面内の回転 (スポットの位置) は 1 次では変わらない
+        var tilt = Math.Asin(Math.Min(1, Math.Sqrt(bestDirection.X * bestDirection.X + bestDirection.Y * bestDirection.Y))); // 261105Cl 追加
+        grain.Rotation = Matrix3D.Rot(Vector3DBase.VectorProduct(bestDirection, new Vector3DBase(0, 0, -1)), tilt) * grain.Rotation; // 261105Cl 追加
+        FormMain.SetRotation(grain.Rotation); // 261105Cl 追加
+        scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); // 261105Cl 追加: 晶帯軸の表示を更新
+        scalablePictureBoxAdvanced.Refresh(); // 261105Cl 追加
 
         FormMain.FormDiffractionSimulator.Thickness = bestThickness;
+
+        // 261105Cl 追加: 結果をステータスバーへ。最良の方向が探索範囲の外周 (傾きが Search angle range 以上。外周の点はすべてこれに入る) にあるときは、
+        //  真の最適が範囲の外にあり得ることを知らせる。粒の方位は更新済みなので、もう一度押せば新しい方位のまわりを探す
+        toolStripStatusLabelRefine.Text = $"Refined: thickness {bestThickness:f0} nm, beam tilt {tilt * 1000:f2} mrad, zone axis {FormMain.CurrentZoneAxis}, residual {bestResidual:g3}"; // 261105Cl 追加
+        if (tilt >= numericBoxSemiangle.Value / 1000 * (1 - 1e-9)) // 261105Cl 追加
+            toolStripStatusLabelRefine.Text += $". The best direction is at the edge of the search range ({numericBoxSemiangle.Value:f1} mrad); the optimum may lie outside. Refine again or widen the range."; // 261105Cl 追加
     }
 
     bool skipProgressChangedEvent = false;
