@@ -365,7 +365,10 @@ public partial class FormSpotIDv1 : FormBase
         //photo3が選択されているかどうかで分岐
 
         var candidate = new List<ZoneAxes>();
-        if (!checkBoxPhoto3.Checked)
+        //if (!checkBoxPhoto3.Checked) // 261105Cl 変更前
+        // 261105Cl 変更 (監査 I19): 写真 3 にチェックがあっても値が揃っていない (photo3.Paintable が false) ときは 2 枚で探す。
+        //  ボタンの表記 (textBox_TextChanged) は「揃っているときだけ three patterns」なのに、旧はチェックだけで 3 枚の探索に入り、表記と動作が違った
+        if (!(checkBoxPhoto3.Checked && photo3.Paintable)) // 261105Cl
         {//1,2だけ選択されている場合
             for (int i = 0; i < formMain.Crystals.Length; i++)
                 candidate.AddRange(FindZoneAxis.ZoneAxisFromTwoZoneAxis(formMain.Crystals[i], photo1, photo2, true));
