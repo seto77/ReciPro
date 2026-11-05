@@ -105,12 +105,12 @@ public partial class FormSpotIDv1 : FormBase
         if (photo1.Paintable && photo2.Paintable && checkBoxPhoto3.Checked && photo3.Paintable)
             buttonSearchAll.Text = Localization.Loc(en: "Search zone axes from three patterns", ja: "三枚の写真から晶帯軸を検索", // 261105Cl
                 de: "Zonenachsen aus drei Mustern suchen", fr: "Trouver les axes de zone à partir de trois clichés", es: "Buscar ejes de zona a partir de tres patrones",
-                pt: "Encontrar Eixos de Zona de Três Padrões", it: "Trova assi di zona da tre pattern", ru: "Найти оси зон по трём картинам",
+                pt: "Encontrar eixos de zona de três padrões", it: "Trova assi di zona da tre pattern", ru: "Найти оси зон по трём картинам", // 261106Cl pt を resx と同じ sentence case に (旧 "Encontrar Eixos de Zona de Três Padrões")
                 zhHans: "从三张图样查找晶带轴", zhHant: "由三張圖樣尋找晶帶軸", ko: "세 패턴에서 정대축 찾기");
         else
             buttonSearchAll.Text = Localization.Loc(en: "Search zone axes from two patterns", ja: "二枚の写真から晶帯軸を検索", // 261105Cl
                 de: "Zonenachsen aus zwei Mustern suchen", fr: "Trouver les axes de zone à partir de deux clichés", es: "Buscar ejes de zona a partir de dos patrones",
-                pt: "Encontrar Eixos de Zona de Dois Padrões", it: "Trova assi di zona da due pattern", ru: "Найти оси зон по двум картинам",
+                pt: "Encontrar eixos de zona de dois padrões", it: "Trova assi di zona da due pattern", ru: "Найти оси зон по двум картинам", // 261106Cl pt を resx と同じ sentence case に (旧 "Encontrar Eixos de Zona de Dois Padrões")
                 zhHans: "从两张图样查找晶带轴", zhHant: "由兩張圖樣尋找晶帶軸", ko: "두 패턴에서 정대축 찾기");
 
         //最大の長さを調べて、その値で50を割ったときの値がmagになる
