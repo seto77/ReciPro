@@ -32,7 +32,8 @@
 ## メインエリア
 
 画面上部に結晶構造が描画されます。左上に光源の方向、左下に結晶軸の方向、右側に原子の凡例が表示されます。
-> ウィンドウ右上の **Size (W×H)** ボックスで、画像の保存・コピー時のピクセルサイズを指定します。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:sizeControl1_ValueChanged) -->
+> ウィンドウ右上の **Size (W×H)** ボックスで 3D ビューのピクセルサイズを指定します (それに合わせてウィンドウがリサイズされます)。保存・コピーされる画像はこのサイズになります。
 > その隣の **ProjWidth** ボックスは投影ビューの横幅 (nm) を表示します。値を編集して数値でズームすることもでき、ビュー上の右ドラッグ/ホイールによるズームと連動します。
 
 ---
@@ -44,13 +45,19 @@
 ### ファイルメニュー
 
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.designer.cs:menuStrip1 / saveImageToolStripMenuItem_Click / initializeDdpDeveloperMenu) -->
 | メニュー項目 | 説明 |
 |-------------|------|
-| 画像を保存 | 描画画像をファイルに保存 |
-| 画像をクリップボードにコピー | 画像をコピー（Ctrl+Shift+C でも可） |
-| 動画を保存 | 回転・平行移動の動画を MP4 で保存（速度・時間・fps・品質などを設定） |
+| 画像を保存 ▸ Main Image / Crystal Axes / Light Direction | メインビュー、または結晶軸・光源ウィジェットの画像を PNG で保存 |
+| 画像をクリップボードにコピー ▸ Main Image / Crystal Axes / Light Direction | 画像をコピー（Ctrl+Shift+C はメインビューをコピー） |
+| 動画を保存 ▸ メイン / 結晶軸 | メインビューまたは結晶軸ウィジェットの回転・平行移動の動画を MP4 で保存（速度・時間・fps・品質などを設定） |
 | 3Dモデルを出力 (3MF/STL) | 表示中の構造を 3D プリント用の立体データとして書き出す |
-| ショートカットヒント | キーボードショートカットを表示 |
+
+画像の保存/コピーのサブメニューにある **Legend** は、現状では何も動作しません。
+
+**ツール** メニュー: **I like VESTA**（ツールバーの *Like Vesta* と同じ）と **Enable DDP**（[透明度モード](#透明度モード)に *Dual Depth Peeling* の項目を出す/隠す）。
+
+**ショートカットヒント**（独立したトップレベルメニュー）でキーボードショートカットを一覧できます。
 
 **動画を保存** を選ぶと、下記の「Movie setting」ダイアログが開きます。動画では視点の回転と投影中心の平行移動を、単独または同時に指定できます（**Rotation** / **Translation** チェックボックス）。
 
@@ -79,7 +86,9 @@
 
 - **Atoms** / **Bonds** / **Polyhedra** : 画面に表示されている種類だけ選択でき、チェックを外すと画面に出したまま印刷からだけ除外できます。
 - **Polyhedra: solid faces** / **edges, dia.** : 配位多面体を面のある中実の立体として出すか、稜線だけの枠（円柱＋頂点の球、既定 2.0 mm）として出すかを選びます。枠にすると中の原子が見えます。
-- **Unit cell edges as cylinders, dia.** : 単位胞の枠を指定径（既定 2.4 mm）の円柱に置き換えて含めます。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormExport3DModel.cs:PolyhedraAsMesh/PolyBarRadiusNm/PolyPitchNm; FormStructureViewer.cs:ExportModel) -->
+- **see-through mesh: bar dia. / pitch** : 稜線枠に加え、各面に細いバーの格子を張ります（バー径 0.8–5.0 mm・既定 1.2 mm、ピッチ 1.5–20 mm・既定 5.0 mm）。遠目には面が埋まって見えますが、中は透けて見えます。
+- **Unit cell edges as cylinders, dia.** : 単位胞の枠を指定径（既定 2.4 mm）の円柱に置き換えて含めます。単位胞の枠が表示されているときは既定でチェックが入ります。
 
 **Printability** : 印刷適性
 
@@ -112,7 +121,8 @@
 
 ![結晶面で範囲指定](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-結晶面の集合で描画領域を定義します。指定した面が空間的に閉じた領域を作らない場合、ReciPro は自動的に 1 単位胞の境界にフォールバックします。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:initBounds; BoundControl.resx:numericBoxMaximumDistanceFromOrigin) -->
+結晶面の集合で描画領域を定義します。指定した面が空間的に閉じた領域を作らない場合、ReciPro は半径 **Max Distance from Origin**（Å）の球に近い多面体を追加して領域を閉じます。
 
 #### 境界面リスト
 
@@ -126,7 +136,12 @@
 
 #### 原点からの距離
 
-結晶中心から境界面までの距離。単位は **d** または **Å** から選択。**d** の場合は入力値 × (h k l) の *d* 値、**Å** の場合は絶対値です。一方を変更すると他方が連動して更新されます。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: BoundControl.resx:numericBoxDistanceD/numericBoxDistance/numericBoxTranslation/checkBoxImmediateUpdate) -->
+原点から境界面までの距離。選択した (h k l) の *d* 値の倍数（**d×** ボックス）でも、Å（括弧内のボックス）でも入力できます。2 つのボックスは連動し、一方を変更すると他方が更新されます。
+
+- **Translation**（Å）: 境界面を法線方向に平行移動します。正の値で原点から遠ざかります。
+- **Max Distance from Origin**（Å）: 面が領域を閉じないときに使う、閉じるための多面体の半径（上記）。
+- **Update Immediately**: 選択中の面の編集を、**置換** を押さずに即座に反映します。
 
 #### 境界面を表示 / 不透明度
 
@@ -136,9 +151,10 @@
 
 チェック時は境界面の内側のみを描画。境界と交差する原子・結合・多面体はクリップされます。
 
-#### 原子を非表示
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:setAtoms, toolStripButtonAtomObjects_CheckedChanged (描画範囲タブに該当チェックボックスは無い)) -->
+#### 原子を非表示にするには
 
-チェック時はすべての原子・結合・多面体を非表示にします。格子面や単位胞だけを表示したいときに使います。
+描画範囲タブにはそのためのチェックボックスはありません。ツールバーの **原子** ボタンをオフにすると原子が生成されなくなり、結合・多面体も消えます。格子面や単位胞だけを表示したいときに使います。
 
 ### 原子情報
 
@@ -214,6 +230,9 @@
 
 空間群にはそれぞれデフォルト原点があります。描画する単位胞の中心をデフォルト原点からずらしたいとき、*a*, *b*, *c* 各軸方向の移動量を入力します。
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:numericBoxProjectionCenterX_ValueChanged) -->
+この平行移動量は[投影中心](#投影中心)と連動しています。投影中心を $(x, y, z)$ にすると、平行移動量は $(0.5-x,\ 0.5-y,\ 0.5-z)$ に設定されます。
+
 #### 面を表示
 
 単位胞を構成する 6 つの面を描画するかどうか。表示する場合は面の色と透過率を設定できます。
@@ -221,6 +240,9 @@
 #### 辺を表示
 
 単位胞の辺を描画するかどうか。辺の色を設定できます。
+
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:setUnitCellPlanes; FormStructureViewer.ja.resx) -->
+全体のスイッチは **単位胞を表示**（ツールバーの *単位胞* ボタンと同じ）です。面・辺の色は **全ての面の色** / **全ての辺の色** で一括、または **各面の色** / **各辺の色** で *a*, *b*, *c* ごとに指定できます。**辺の太さ** で線幅、**不透明度** で面の透明度を設定します。
 
 ### 格子面
 
@@ -269,7 +291,8 @@
 
 #### 奥行きフェードアウト
 
-奥行き方向に遠い物体を徐々に透明化します。**Far** より遠い物体は完全透明、**Near** より近い物体は完全不透明、その間は線形補間。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: Crystallography.OpenGL/Shaders/fragZSORT.c, fragPPLL.c:applyDepthCueing; FormStructureViewer.cs:checkBoxDepthCueing_CheckedChanged) -->
+奥行き方向に遠い物体の色を**背景色**へ線形に近づけます（**奥行き方向によるフェードアウト効果**）。**最近 (Near)** より手前の物体は元の色、**最遠 (Far)** より奥の物体は背景色、その間は線形補間です（不透明度そのものは変わりません）。Near / Far の単位は Å です。
 
 #### 投影中心
 
@@ -283,18 +306,21 @@
 
 半透明の原子・多面体の重なりを計算するアルゴリズム。
 
-- **Approximate**: 高速だが、半透明物体が多数重なる場合は不正確になりうる
-- **Perfect**: 順序非依存透明度 (OIT) で正確だが非常に低速。実質的に外付け GPU が必要
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:rebuildTransparencyModeItems, comboBoxTransparency_SelectedIndexChanged; FormStructureViewer.ja.resx:comboBoxTransparency.Items) -->
+- **近似 (Z depth sorting, OpenGL 4.1+)**: 高速だが、半透明物体が多数重なる場合は不正確になりうる
+- **高品質 (Dual Depth Peeling, OpenGL 4.1+)**: デプスピーリングによる順序非依存透明度。**ツール ▸ Enable DDP** がオンのときだけ表示されます（PPLL が使えない環境では既定でオン）。ピーリングのパス数は[描画品質](#描画品質)に従います。
+- **高品質 (Per-Pixel Linked List, OpenGL 4.3+)**: 正確な順序非依存透明度。GPU が OpenGL 4.3 に対応するときだけ表示されます。正確だが低速で、実質的に外付け GPU が必要
 
 ### 対称要素
 
 **対称要素**タブは、空間群の対称操作を3Dモデル上に直接描画します（ツールバーの **対称要素** ボタンで表示/非表示を切替）。要素の種類ごとに個別に表示できます。
 
-- **回転軸** と **らせん軸**
-- **鏡映面** と **映進面**
-- **対称心** と **回反軸**
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.ja.resx:groupBoxAxes/groupBoxPlanes/groupBoxInversion) -->
+- **対称軸**: **回転軸**・**らせん軸**・**回反軸**
+- **対称面**: **鏡映面**・**映進面**
+- **対称心**
 
-各種類について、記号サイズ・線幅・色を調整できます。
+全体のスイッチは **対称要素を表示** です。各グループについてシンボルサイズ（%）と色、対称軸・対称面では線の太さも調整できます。
 
 ### その他
 
@@ -302,7 +328,8 @@
 
 - **光源, 結晶軸, 凡例の設定**: 表示サイズを設定します。「元素でまとめる」で凡例表示を切り替えることができます。
 - **結合原子**: 「境界外の結合原子も表示」で、描画範囲の外にあっても、範囲内の原子と結合している原子を表示します。
-- **原子ラベル**: 原子ラベルのフォントサイズや色などを指定します。
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:legendControl_MouseClick; FormStructureViewer.ja.resx:groupBoxLabel) -->
+- **原子ラベル**: **原子ラベルを表示**・**サイズ**・**白く縁取り**、ラベル色（**原子色を使う** / **固定色を使う**）を指定します。原子の凡例の項目をクリックすると、その原子（**元素でまとめる** 時はその元素）のラベル表示を個別に切り替えられます。
 
 ---
 
@@ -310,6 +337,7 @@
 
 ![ツールバー](../assets/cap-ja-auto/FormStructureViewer.toolStrip1.png)
 
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormStructureViewer.cs:toolStripButtonLikeVesta_Click) -->
 | ボタン | 説明 |
 |--------|------|
 | 結晶軸 | 結晶軸の方向を表示（サイズは格子定数を反映） |
@@ -320,7 +348,7 @@
 | 単位胞 | 単位胞の辺の表示切替 |
 | 対称要素 | 対称要素オーバーレイの表示切替（上記参照） |
 | 角度をリセット | 初期方位に戻す |
-| Like Vesta | Vestaソフトウェア風の原子色・サイズ・結合設定に変更 |
+| Like Vesta | VESTA 風の外観に変更: 原子の色・半径をリセットし、結合リストを既定の結合で**置き換え**ます |
 
 ---
 
