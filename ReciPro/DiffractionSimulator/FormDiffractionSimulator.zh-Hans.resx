@@ -363,7 +363,7 @@
     <value>进动属性</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>进动角</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>步长</value>
@@ -922,12 +922,12 @@ mm（原点：图样垂足）。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value>设置 PED（进动电子衍射）模拟的
-进动半角（mrad）；即用于倾斜并积分
+进动角（mrad）；即用于倾斜并积分
 入射束的圆锥半顶角。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
     <value>设置 PED（进动电子衍射）模拟的
-进动半角（mrad）；即用于倾斜并积分
+进动角（mrad）；即用于倾斜并积分
 入射束的圆锥半顶角。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">

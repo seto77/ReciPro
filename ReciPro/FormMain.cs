@@ -837,6 +837,7 @@ public partial class FormMain : FormBase
                 rw(() => FormEBSD.ExpFlattenBackground); // 260920Cl 追加
                 rw(() => FormEBSD.ExpFlattenBackgroundFwhmPx); // 260920Cl 追加
                 rw(() => FormEBSD.CoherenceLossWeight); // 261105Cl 追加 (監査 F18・作者決定): 「損失でコントラストを減衰」のチェックだけ保存 (E_c は分布に合わせた既定値への追従を保つため保存しない)
+                rw(() => FormEBSD.AcceleratingVoltageKV); // 261106Cl 追加 (作者決定 D4): 加速電圧も保存して次の起動で戻す (範囲の値より先に戻す。下の範囲は前回の電圧で決めたものなので、電圧も一緒に戻れば合う)
                 rw(() => FormEBSD.RangesFromMonteCarlo); // 261105Cl 追加 (監査 F5・作者決定): 「範囲を MC から自動」のチェック (範囲の値そのものは保存しない)
                 // 261106Cl 追加 (作者決定 C11): 手で入れた範囲の値も保存する。書き込みは常に (閉じたときの欄の値)、読み込みはチェックが OFF (手入力) で戻ったときだけ
                 //   (ON なら範囲は MC が決めるので、前回の MC の値を戻しても次の MC で書き換わるだけ。既定値のまま始める)。チェックの後に読むので、欄は読み取り専用になっていない。

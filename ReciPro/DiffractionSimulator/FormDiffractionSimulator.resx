@@ -4420,7 +4420,7 @@ pointer in mm (origin: crystal).</value>
     <value>29</value>
   </data>
   <data name="labelD.Text" xml:space="preserve">
-    <value>d: 00.00 nm</value>
+    <value>d: -</value>
   </data>
   <data name="labelD.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4463,7 +4463,7 @@ pointer in mm (origin: crystal).</value>
     <value>29</value>
   </data>
   <data name="labelDinv.Text" xml:space="preserve">
-    <value>d⁻¹: 00.00 nm⁻¹</value>
+    <value>d⁻¹: -</value>
   </data>
   <data name="labelDinv.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -5726,7 +5726,7 @@ reciprocal-space length per pixel (nm⁻¹/px).</value>
     <value>48</value>
   </data>
   <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
-    <value>Set Camera Length 2, i.e., the distance
+    <value>Set camera length 2, i.e., the distance
 from the sample to the detector (monitor).</value>
   </data>
   <data name="&gt;&gt;numericBoxCameraLength2.Name" xml:space="preserve">
@@ -6763,7 +6763,7 @@ diffraction (PED) simulation</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Semi-angle</value>
+    <value>Prec. angle</value>
   </data>
   <data name="numericBoxPED_Semiangle.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 20</value>
@@ -6787,7 +6787,7 @@ diffraction (PED) simulation</value>
     <value>1</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Precession semi-angle (mrad) for the PED (Precession
+    <value>Precession angle (mrad) for the PED (Precession
 Electron Diffraction) simulation; the cone half-angle
 used to tilt and integrate the incident beam.</value>
   </data>

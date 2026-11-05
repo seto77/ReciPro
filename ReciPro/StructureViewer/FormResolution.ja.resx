@@ -114,21 +114,21 @@
   </data>
   <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
     <value>画像の高さをピクセル単位で設定します (0–4096、
-256刻み)。Keep Aspect Ratio がオンなら幅も連動します。</value>
+256刻み)。Keep aspect ratio がオンなら幅も連動します。</value>
   </data>
   <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
     <value>画像の横幅をピクセル単位で設定しま
-す (0–4096、256刻み)。Keep Aspect
-Ratio がオンなら高さも連動します。</value>
+す (0–4096、256刻み)。Keep aspect
+ratio がオンなら高さも連動します。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>画像の横幅をピクセル単位で設定しま
-す (0–4096、256刻み)。Keep Aspect
-Ratio がオンなら高さも連動します。</value>
+す (0–4096、256刻み)。Keep aspect
+ratio がオンなら高さも連動します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value>画像の高さをピクセル単位で設定します (0–4096、
-256刻み)。Keep Aspect Ratio がオンなら幅も連動します。</value>
+256刻み)。Keep aspect ratio がオンなら幅も連動します。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>出力画像の幅をピクセル単位で設定します (1〜4096 px)。</value>

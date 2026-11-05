@@ -357,7 +357,7 @@ intensidad relativa</value>
     <value>Propiedad de precesión</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Semiángulo</value>
+    <value>Áng. prec.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Paso</value>
@@ -918,12 +918,12 @@ prohibidas por el centrado de la red.</value>
 de electrones por precesión (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Semiángulo de precesión (mrad) para la simulación PED (difracción
+    <value>Ángulo de precesión (mrad) para la simulación PED (difracción
 de electrones por precesión); el semiángulo del cono
 usado para inclinar e integrar el haz incidente.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Semiángulo de precesión (mrad) para la simulación PED (difracción
+    <value>Ángulo de precesión (mrad) para la simulación PED (difracción
 de electrones por precesión); el semiángulo del cono
 usado para inclinar e integrar el haz incidente.</value>
   </data>

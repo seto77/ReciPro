@@ -363,7 +363,7 @@ simulation</value>
     <value>Präzessionseigenschaft</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Halbwinkel</value>
+    <value>Präz.-Winkel</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Schritt</value>
@@ -922,12 +922,12 @@ Gitterzentrierung verbotene Reflexe ausgeblendet.</value>
 Präzessions-Elektronenbeugung (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Präzessions-Halbwinkel (mrad) für die PED-Simulation
+    <value>Präzessionswinkel (mrad) für die PED-Simulation
 (Präzessions-Elektronenbeugung); der halbe Kegelwinkel,
 der zum Kippen und Integrieren des einfallenden Strahls verwendet wird.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Präzessions-Halbwinkel (mrad) für die PED-Simulation
+    <value>Präzessionswinkel (mrad) für die PED-Simulation
 (Präzessions-Elektronenbeugung); der halbe Kegelwinkel,
 der zum Kippen und Integrieren des einfallenden Strahls verwendet wird.</value>
   </data>

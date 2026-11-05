@@ -174,6 +174,9 @@ public partial class FormEBSD : FormBase
     public double DepthRangeStartNm { get => numericBoxThicknessStart.Value; set => numericBoxThicknessStart.Value = value; } // 261106Cl 追加
     public double DepthRangeEndNm { get => numericBoxThicknessEnd.Value; set => numericBoxThicknessEnd.Value = value; } // 261106Cl 追加
     public double DepthRangeStepNm { get => numericBoxThicknessStep.Value; set => numericBoxThicknessStep.Value = value; } // 261106Cl 追加
+    /// <summary>261106Cl 追加 (作者決定 D4): 加速電圧 (kV) も主窓の設定として保存し、次の起動で戻す (旧は毎回 20 kV から始まった)。
+    /// 電圧を変えると <see cref="waveLengthControl_WavelengthChanged"/> が古い MasterPattern・MC の結果を捨てる (起動時は何も無いので菊池線の更新だけ)</summary>
+    public double AcceleratingVoltageKV { get => waveLengthControl.Energy; set => waveLengthControl.Energy = value; }
     #endregion
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;

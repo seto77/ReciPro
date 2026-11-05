@@ -363,7 +363,7 @@
     <value>세차 특성</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>반각</value>
+    <value>세차각</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>간격</value>
@@ -914,12 +914,12 @@ mm 단위로 표시합니다(원점: 패턴의 발 위치).</value>
 관한 설정</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차각(mrad)
 입니다. 입사 빔을 기울여 적분하는 원뿔의
 반정각(half-angle)입니다.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>PED(세차 전자 회절) 시뮬레이션의 세차 반각(mrad)
+    <value>PED(세차 전자 회절) 시뮬레이션의 세차각(mrad)
 입니다. 입사 빔을 기울여 적분하는 원뿔의
 반정각(half-angle)입니다.</value>
   </data>

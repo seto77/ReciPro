@@ -209,7 +209,8 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormResolution";
-            Text = "Image Size";
+            //Text = "Image Size"; // 261106Cl 変更前
+            Text = "Image size"; // 261106Cl 変更: K5 (英語の表示を sentence case に) の漏れ (Crystallography.Controls の同名フォームは "Image size")
             ((System.ComponentModel.ISupportInitialize)(numericUpDownWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numericUpDownHeight)).EndInit();
             ResumeLayout(false);

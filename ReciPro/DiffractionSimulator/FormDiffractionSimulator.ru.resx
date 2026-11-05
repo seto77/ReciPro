@@ -363,7 +363,7 @@
     <value>Свойства прецессии</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Полуугол</value>
+    <value>Угол прец.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Шаг</value>
@@ -920,12 +920,12 @@ s_g, показывающая, насколько узел обратной ре
 электронной дифракции (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+    <value>Угол прецессии (mrad) для моделирования PED (прецессионной
 электронной дифракции); половинный угол конуса,
 используемый для наклона и интегрирования падающего пучка.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Полуугол прецессии (mrad) для моделирования PED (прецессионной
+    <value>Угол прецессии (mrad) для моделирования PED (прецессионной
 электронной дифракции); половинный угол конуса,
 используемый для наклона и интегрирования падающего пучка.</value>
   </data>

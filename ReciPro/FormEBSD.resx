@@ -1347,12 +1347,12 @@ damps the wave, and the two are independent.</value>
     <value>Energy and depth ranges from MC (automatic)</value>
   </data>
   <data name="checkBoxRangesFromMonteCarlo.ToolTip" xml:space="preserve">
-    <value>On (default): each Simulate and Build Master Pattern sets the
+    <value>On (default): each Simulate and 'Build master pattern' sets the
 Energy and Depth ranges below from the Monte Carlo result
 (energy: from E0 down to about 95 % of the energy loss; depth: up
 to the 99.9 % point of the exit path length, 40 unequal steps).
 The range boxes are then read-only.
-Off: the boxes keep the values you enter, and Build Master Pattern
+Off: the boxes keep the values you enter, and 'Build master pattern'
 uses them. Build refuses (with a message) a range whose lower end
 is not below its upper end, an energy above E0, or a range that
 does not overlap the Monte Carlo distribution.</value>

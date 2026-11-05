@@ -363,7 +363,7 @@ intensidade relativa</value>
     <value>Propriedade de precessão</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Semiângulo</value>
+    <value>Âng. prec.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Passo</value>
@@ -921,12 +921,12 @@ pela centragem da rede são ocultadas.</value>
 de elétrons por precessão (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Semiângulo de precessão (mrad) para a simulação de PED (Difração
+    <value>Ângulo de precessão (mrad) para a simulação de PED (Difração
 de Elétrons por Precessão); o meio-ângulo do cone
 usado para inclinar e integrar o feixe incidente.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Semiângulo de precessão (mrad) para a simulação de PED (Difração
+    <value>Ângulo de precessão (mrad) para a simulação de PED (Difração
 de Elétrons por Precessão); o meio-ângulo do cone
 usado para inclinar e integrar o feixe incidente.</value>
   </data>

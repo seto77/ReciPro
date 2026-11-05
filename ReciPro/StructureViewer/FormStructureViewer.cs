@@ -524,7 +524,8 @@ public partial class FormStructureViewer : FormBase
         {
             foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
                 foreach (var (X, Y, Z, D) in bc.PlaneParams)
-                    bounds.Add((new V4(X, Y, Z, D), bc.Color));
+                    //bounds.Add((new V4(X, Y, Z, D), bc.Color)); // 261106Cl 変更前: 面 (n, D) をそのまま「n·r + D ≥ 0 が内側」として使い、面は投影中心から −n の側にあった
+                    bounds.Add((new V4(-X, -Y, -Z, D), bc.Color)); // 261106Cl 変更 (作者決定 D5): Bound.PlaneParams は「n·r ≤ D が内側」(面は投影中心から +n の側、距離 D)。ここの bounds は n·r + D ≥ 0 が内側なので法線を反転する
             if (!Geometry.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))//描画範囲が閉じていない場合
             {
                 //球面に近いポリゴンを作成

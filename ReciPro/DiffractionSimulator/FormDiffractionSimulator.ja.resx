@@ -1274,7 +1274,9 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
 描画します（= d 値が 1/値 より大きい反射）。</value>
   </data>
   <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
-    <value />
+    <value>動力学菊池バンドの excess (過剰、明るい) 側の色です。
+バンドのコントラストが正になるピクセル、つまり強度が
+拡散背景の水準より明るくなる側です。</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
     <value>デバイリングの色を設定</value>

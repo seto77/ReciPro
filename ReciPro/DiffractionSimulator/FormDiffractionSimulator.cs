@@ -2850,7 +2850,8 @@ public partial class FormDiffractionSimulator : FormBase
                 sb.AppendLine($"Thickness:\t{Thickness} nm"); // 261105Cl
                 sb.AppendLine($"Number of diffracted waves:\t{NumberOfDiffractedWaves}"); // 261105Cl
                 if (BeamMode == BeamModes.PrecessionElectron) // 261105Cl
-                    sb.AppendLine($"Precession semi-angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261105Cl
+                    //sb.AppendLine($"Precession semi-angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261105Cl // 261106Cl 変更前
+                    sb.AppendLine($"Precession angle:\t{numericBoxPED_Semiangle.Value} mrad"); // 261106Cl 変更 (作者決定 D1): 欄の名前を「歳差角 (Precession angle)」にしたのに合わせる
             }
             sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
             sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");

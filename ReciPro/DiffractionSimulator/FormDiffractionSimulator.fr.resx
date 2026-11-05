@@ -348,7 +348,7 @@ l'intensité relative</value>
     <value>Propriété de précession</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>Demi-angle</value>
+    <value>Angle préc.</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>Pas</value>
@@ -909,12 +909,12 @@ par le mode de centrage du réseau sont masquées.</value>
 électronique en précession (PED)</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Demi-angle de précession (mrad) pour la simulation PED (diffraction
+    <value>Angle de précession (mrad) pour la simulation PED (diffraction
 électronique en précession) ; demi-angle au sommet du cône
 utilisé pour incliner et intégrer le faisceau incident.</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Demi-angle de précession (mrad) pour la simulation PED (diffraction
+    <value>Angle de précession (mrad) pour la simulation PED (diffraction
 électronique en précession) ; demi-angle au sommet du cône
 utilisé pour incliner et intégrer le faisceau incident.</value>
   </data>

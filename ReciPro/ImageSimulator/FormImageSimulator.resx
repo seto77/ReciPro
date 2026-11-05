@@ -764,7 +764,7 @@ beams pass the HRTEM objective aperture.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="checkBoxCTF.ToolTip" xml:space="preserve">
-    <value>Show the Contrast Transfer Function (CTF) graph
+    <value>Show the contrast transfer function (CTF) graph
 window, which plots how lens aberrations and defocus
 transfer image contrast versus spatial frequency.</value>
   </data>

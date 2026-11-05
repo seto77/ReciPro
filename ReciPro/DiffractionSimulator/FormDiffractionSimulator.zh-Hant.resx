@@ -363,7 +363,7 @@
     <value>進動性質</value>
   </data>
   <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
-    <value>半角</value>
+    <value>進動角</value>
   </data>
   <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
     <value>步進</value>
@@ -919,12 +919,12 @@ Beam/Top/Right 方向導引箭頭。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value>設定 PED（進動電子繞射）模擬的
-進動半角 (mrad)；即用於傾斜並積分
+進動角 (mrad)；即用於傾斜並積分
 入射束的圓錐半頂角。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
     <value>設定 PED（進動電子繞射）模擬的
-進動半角 (mrad)；即用於傾斜並積分
+進動角 (mrad)；即用於傾斜並積分
 入射束的圓錐半頂角。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
