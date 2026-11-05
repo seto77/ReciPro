@@ -314,7 +314,7 @@ est affiché dans le
     <value>Défocalisation Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Tension d'accél. (kV)</value>
+    <value>Tension d'accél.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Défocalisation

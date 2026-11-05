@@ -313,7 +313,7 @@ Simulator"에 표시됩니다</value>
     <value>디포커스 Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>가속 전압 (kV)</value>
+    <value>가속 전압</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>셰르처

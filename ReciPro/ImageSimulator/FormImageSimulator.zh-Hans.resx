@@ -310,7 +310,7 @@
     <value>欠焦 Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>加速电压 (kV)</value>
+    <value>加速电压</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>谢尔策

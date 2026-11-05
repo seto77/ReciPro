@@ -299,7 +299,7 @@ Simulator"</value>
     <value>Ajustar todas las aberraciones a cero</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Función de transferencia de contraste (CTF)</value>
@@ -308,7 +308,7 @@ Simulator"</value>
     <value>Desenfoque Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Voltaje de acel. (kV)</value>
+    <value>Voltaje de acel.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Desenfoque de

@@ -2690,7 +2690,7 @@ Applies to the STEM reference image (ADF / elastic / TDS) only - not used for ST
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5" /&gt;&lt;Rows Styles="Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5,Percent,5" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="presets2ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F</value>
+    <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3074,7 +3074,7 @@ in serial (through-focus) mode.</value>
     <value>0</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="&gt;&gt;labelMousePositionValue.Name" xml:space="preserve">
     <value>labelMousePositionValue</value>
@@ -5539,7 +5539,7 @@ set by the adjacent scale controls.</value>
     <value>0</value>
   </data>
   <data name="presets3ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F</value>
+    <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>0°</value>
@@ -7049,7 +7049,7 @@ stores and recalls TEM imaging conditions.</value>
     <value>    </value>
   </data>
   <data name="presets4ToolStripMenuItem.Text" xml:space="preserve">
-    <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100</value>
+    <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100</value>
   </data>
   <data name="groupBoxPotentialOption.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 4, 4</value>
@@ -7692,7 +7692,7 @@ potential (Ug), i.e. the absorptive component.</value>
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Voltage (kV)</value>
+    <value>Acc. Voltage</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

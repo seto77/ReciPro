@@ -308,7 +308,7 @@ Simulator" angezeigt</value>
     <value>Alle Aberrationen auf Null setzen</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+    <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Kontrastübertragungsfunktion (CTF)</value>
@@ -317,7 +317,7 @@ Simulator" angezeigt</value>
     <value>Defokus Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Beschl.-Spannung (kV)</value>
+    <value>Beschl.-Spannung</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Scherzer-

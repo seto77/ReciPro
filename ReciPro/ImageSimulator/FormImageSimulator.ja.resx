@@ -431,14 +431,14 @@
     <value />
   </data>
   <data name="numericBoxDefocusNum.ToolTip" xml:space="preserve">
-    <value>シリアル(スルーフォーカス)モードで
-生成するデフォーカス枚数を設定します。</value>
+    <value>シリーズ画像 (スルーフォーカス) モードで
+生成するデフォーカスの枚数を設定します。</value>
   </data>
   <data name="numericBoxDefocusStep.ToolTip" xml:space="preserve">
-    <value>シリアルモードのデフォーカス刻み幅 (nm)。</value>
+    <value>シリーズ画像モードのデフォーカス刻み幅 (nm)。</value>
   </data>
   <data name="numericBoxDefocusStart.ToolTip" xml:space="preserve">
-    <value>シリアルモードのデフォーカス開始値
+    <value>シリーズ画像モードのデフォーカス開始値
 (nm, 負値=アンダーフォーカス)。</value>
   </data>
   <data name="textBoxDefocusList.Font" type="System.Drawing.Font, System.Drawing">
@@ -452,14 +452,14 @@ Start/Step/Numから自動生成され、手動編集も可能です。</value>
     <value />
   </data>
   <data name="numericBoxThicknessNum.ToolTip" xml:space="preserve">
-    <value>連続画像モードで生成する厚さ(画像)の個数。</value>
+    <value>シリーズ画像モードで生成する厚さ(画像)の個数。</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>連続画像の厚さリストの増分 (nm)。
+    <value>シリーズ画像の厚さリストの増分 (nm)。
 各画像間で厚さがこの分だけ増えます。</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>連続画像モードで生成する厚さリストの開始値 (nm)。
+    <value>シリーズ画像モードで生成する厚さリストの開始値 (nm)。
 Step・Num と組み合わせて下の厚さリストを生成します。</value>
   </data>
   <data name="textBoxThicknessList.Font" type="System.Drawing.Font, System.Drawing">
@@ -480,7 +480,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>試料厚み (nm)</value>
   </data>
   <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
-    <value>異なる膜厚の連続画像を作成</value>
+    <value>異なる膜厚のシリーズ画像を作成</value>
   </data>
   <data name="checkBoxSerialDefocus.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -489,7 +489,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>デフォーカス (nm)</value>
   </data>
   <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
-    <value>異なるデフォーカス値の連続画像を作成</value>
+    <value>異なるデフォーカス値のシリーズ画像を作成</value>
   </data>
   <data name="panelSerialSettings.ToolTip" xml:space="preserve">
     <value />
@@ -501,7 +501,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>横軸の方向:</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向に並べる
+    <value>シリーズ画像のグリッドの横方向に並べる
 量(デフォーカス/厚さ)を選びます。</value>
   </data>
   <data name="radioButtonHorizontalDefocus.Font" type="System.Drawing.Font, System.Drawing">
@@ -511,7 +511,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>デフォーカス</value>
   </data>
   <data name="radioButtonHorizontalDefocus.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向にデフォーカス
+    <value>シリーズ画像のグリッドの横方向にデフォーカス
 を並べます(縦方向は厚さ)。</value>
   </data>
   <data name="radioButtonHorizontalThickness.Font" type="System.Drawing.Font, System.Drawing">
@@ -521,7 +521,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>試料厚み</value>
   </data>
   <data name="radioButtonHorizontalThickness.ToolTip" xml:space="preserve">
-    <value>連続画像グリッドの横方向に厚さを
+    <value>シリーズ画像のグリッドの横方向に厚さを
 並べます(縦方向はデフォーカス)。</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.ToolTip" xml:space="preserve">
@@ -537,7 +537,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>単一画像</value>
   </data>
   <data name="radioButtonSingleMode.ToolTip" xml:space="preserve">
-    <value>シングルモード。現在のデフォーカス・
+    <value>単一画像モード。現在のデフォーカス・
 厚みの設定で1枚の画像を生成します。</value>
   </data>
   <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
@@ -547,7 +547,7 @@ Step・Num と組み合わせて下の厚さリストを生成します。</valu
     <value>シリーズ画像</value>
   </data>
   <data name="radioButtonSerialMode.ToolTip" xml:space="preserve">
-    <value>シリアルモード。デフォーカスや試料厚みを
+    <value>シリーズ画像モード。デフォーカスや試料厚みを
 段階的に変えた一連の画像 (through-focus /
 through-thickness シリーズ) を生成します。</value>
   </data>
@@ -558,7 +558,7 @@ through-thickness シリーズ) を生成します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxSerialImage.Text" xml:space="preserve">
-    <value>画像モード</value>
+    <value>単一/シリーズ画像</value>
   </data>
   <data name="groupBoxSerialImage.ToolTip" xml:space="preserve">
     <value />
@@ -836,7 +836,7 @@ through-thickness シリーズ) を生成します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
-    <value>HREM オプション</value>
+    <value>HRTEM オプション</value>
   </data>
   <data name="groupBoxHREMoption2.ToolTip" xml:space="preserve">
     <value />
@@ -1249,7 +1249,7 @@ CTF（contrast transfer function, コントラスト
     <value />
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>加速電圧 (kV)</value>
+    <value>加速電圧</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
     <value>TEM（transmission electron microscope,
@@ -1325,7 +1325,7 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>試料の厚さ
-「連続画像」モードが選択されている場合、この値は無視されます。</value>
+「シリーズ画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
@@ -1393,8 +1393,8 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
     <value>   シリーズ画像モードで個別に保存 </value>
   </data>
   <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
-    <value>連続画像モードでシミュレーションす
-る際、各画像を個別に保存します。</value>
+    <value>シリーズ画像モードでシミュレーションする
+際、各画像を個別に保存します。</value>
   </data>
   <data name="toolStripMenuItemSave.Text" xml:space="preserve">
     <value>画像を保存</value>

@@ -310,7 +310,7 @@
     <value>散焦 Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>加速電壓 (kV)</value>
+    <value>加速電壓</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Scherzer

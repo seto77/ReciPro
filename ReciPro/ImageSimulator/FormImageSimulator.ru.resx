@@ -314,7 +314,7 @@ Simulator"</value>
     <value>Дефокус Δf</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Уск. напряжение (kV)</value>
+    <value>Уск. напряжение</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Дефокус
