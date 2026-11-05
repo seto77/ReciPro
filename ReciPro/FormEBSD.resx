@@ -1846,7 +1846,7 @@ grayscale for the pattern intensity.</value>
     <value>Spectrum</value>
   </data>
   <data name="comboBoxScale.Items3" xml:space="preserve">
-    <value>FIre</value>
+    <value>Fire</value>
   </data>
   <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>188, 0</value>
