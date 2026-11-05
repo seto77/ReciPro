@@ -291,11 +291,20 @@ public partial class FormALCHEMI : FormBase
 
     #region チャネル・サイト一覧の更新
 
+    /// <summary>261105Cl 追加 (監査 #19): チャネル・サイトの一覧を作ったときの結晶と加速電圧 (kV)。<see cref="BuildRequest"/> で今の値と比べる</summary>
+    private Crystal listsCrystal = null;
+    private double listsVoltage = double.NaN;
+
     /// <summary>結晶や加速電圧が変わったときにチャネル候補とサイト候補を作り直す。
-    /// 収録範囲 (K は Z=6-50 等) は Crystallography 側の照会に任せ、GUI にハードコードしない (設計 §5.9-3)。</summary>
-    private void RefreshLists()
+    /// 収録範囲 (K は Z=6-50 等) は Crystallography 側の照会に任せ、GUI にハードコードしない (設計 §5.9-3)。
+    /// 261105Cl 変更 (監査 #19): 以前は再表示 (VisibleChanged) でしか呼ばれず、窓を開いたまま結晶・電圧を変えると古い一覧のまま計算していた
+    /// (サイトの番号を新しい結晶の Atoms に当てるので、サイトが減ると例外、そうでなければ黙って別のサイト。チャネルも古い結晶の元素)。
+    /// 親 (FormDiffractionSimulator) の SetCrystal・波長の変更から呼ぶので internal にした</summary>
+    //private void RefreshLists() // 261105Cl 変更前
+    internal void RefreshLists()
     {
         if (FormDiffractionSimulator == null || Crystal?.Atoms == null) return;
+        (listsCrystal, listsVoltage) = (Crystal, Voltage); // 261105Cl 追加 (監査 #19)
 
         //var checkedChannels = checkedListBoxChannels.CheckedItems.Cast<string>().ToHashSet();//260925Cl 変更前
         //260925Cl 変更 (codex2 の指摘): チェックの保持を表示文字列ではなく (Z, 殻) で行う。表示文字列には U = E0/edge が入るので、
@@ -361,6 +370,11 @@ public partial class FormALCHEMI : FormBase
         //row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
         row = indexControlRow.Values;
         thetaB = double.NaN;
+
+        // 261105Cl 追加 (監査 #19): 一覧が今の結晶・電圧のものでなければ (親が隠れていて通知が来なかったときなど) 先に作り直す。
+        //   チェックはチャネルが (Z, 殻)、サイトが表示文字列で引き継がれ、新しい結晶に無いサイトのチェックは外れる (→ 下の「選んでください」で止まる)
+        if (!ReferenceEquals(listsCrystal, Crystal) || listsVoltage != Voltage)
+            RefreshLists();
 
         var channels = Enumerable.Range(0, checkedListBoxChannels.Items.Count)
             .Where(checkedListBoxChannels.GetItemChecked)

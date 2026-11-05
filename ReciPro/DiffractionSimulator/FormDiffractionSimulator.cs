@@ -2288,6 +2288,8 @@ public partial class FormDiffractionSimulator : FormBase
         if (FormDiffractionSimulatorHolder.Visible)
             FormDiffractionSimulatorHolder.CrystalChanged();
 
+        if (FormALCHEMI?.Visible == true) // 261105Cl 追加 (監査 #19): 開いたままの ALCHEMI のサイト・チャネル一覧を新しい結晶で作り直す
+            FormALCHEMI.RefreshLists();
     }
     #endregion
 
@@ -2790,6 +2792,8 @@ public partial class FormDiffractionSimulator : FormBase
     #region 波長コントロールのイベント
     private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
     {
+        if (FormALCHEMI?.Visible == true) // 261105Cl 追加 (監査 #19): ALCHEMI のチャネル一覧 (励起できるか・過電圧比 U) は加速電圧で変わる
+            FormALCHEMI.RefreshLists();
         if (this.Visible == false) return;
 
         SetVector();
