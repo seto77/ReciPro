@@ -1357,7 +1357,8 @@ public partial class FormStructureViewer : FormBase
         if (e.Button == MouseButtons.Left && e.Clicks == 2)
         {
             var index = SearchAtom(e.X, e.Y);
-            if (index > 0)
+            //if (index > 0) // 261105Cl 変更前: GLObjects[0] の原子を無視していた (SearchAtom は見つからないとき -1 を返す)
+            if (index >= 0) // 261105Cl 変更
             {
                 tabControl.SelectedIndex = 6;
 
@@ -1436,7 +1437,8 @@ public partial class FormStructureViewer : FormBase
 
         var depthList = new SortedList<double, int>();
         for (int i = 0; i < GLObjects.Count; i++)
-            if (GLObjects[i] is Sphere sphere)
+            //if (GLObjects[i] is Sphere sphere) // 261105Cl 変更前: 対称要素の反転中心 (Sphere, Tag は symmetryID) や表示していない原子も拾い、反転中心では呼び出し側の (Tag as atomID).Index で例外になっていた
+            if (GLObjects[i] is Sphere { Tag: atomID, Rendered: true } sphere) // 261105Cl 変更: 表示中の原子だけ
             {
                 var origin = rot * new V4(sphere.Origin, 1);
                 double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
