@@ -16,20 +16,22 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ## Keyboard & mouse shortcuts {#keyboard-mouse-shortcuts}
 
-The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID windows are focused.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:FormMain_Load (KeyDown += FormMain_KeyDown は StructureViewer/Stereonet/DiffractionSimulator/SpotIDv1 のみ), FormMain_DragDrop, labelCurrentIndex_DoubleClick, contextMenuStripListBox, toolStripButtons_MouseDown; Crystallography.Controls/FormCaptureGUI.cs:InstallShortcutFilter) -->
+The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, and Spot ID v1 windows are focused.
 
 | Shortcut | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
 | Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
-| Left-drag the orientation widget (bottom-left, under *Current Direction*) | Rotate the crystal |
+| Left-drag the orientation widget (bottom-left, under *Current orientation*) | Rotate the crystal |
 | Right double-click the orientation widget | Copy the widget image to the clipboard |
-| Single-click a function button | Open / close that window |
+| Single-click a function button | Open / close that window (a minimised window is restored instead of closed) |
 | Double-click a function button | Force the window visible and bring it to the front |
-| Right-click a crystal in the list | Context menu (Rename / Duplicate / Delete / Export CIF…) |
-| Double-click the **Current Index** label | Show / hide the max-UVW box |
-| Drop a file on the window | Load a crystal list (`.xml`, `.cdb2`) or a crystal (`.cif`, `.amc`) |
+| Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
+| Double-click the zone-axis index label (`[u v w]`, under *Current orientation*) | Show / hide the max-UVW box |
+| Drop a file on the window | Load a crystal list (`.xml`, `.out`, `.cdb2`; asks whether to replace or append) or a crystal (`.cif`, `.amc`) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Open the (experimental) GUI-capture tool for the active window |
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
@@ -53,11 +55,11 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Load Crystal List (Replace current list) | Load a crystal-list file (`*.xml`), replacing the current list |
-| Load Crystal List (Add to current list) | Load a crystal-list file and append it to the current list |
+| Load Crystal List (Replace current list) | Load a crystal-list file (`*.xml`, `*.out`), replacing the current list; a dialog lets you choose which crystals to load <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:ReadCrystalList (showSelectionDialog=true → FormCrystalSelection), SaveCrystalDataToolStripMenuItem_Click) --> |
+| Load Crystal List (Add to current list) | Load a crystal-list file and append it to the current list (with the same selection dialog) |
 | Reset to initial crystal list | Reload the crystal list ReciPro ships with |
 | Import Crystal from a CIF or AMC File | Load a single crystal from a CIF / AMC file |
-| Save crystal list | Save the current crystal list |
+| Save crystal list | Save the current crystal list (a dialog lets you choose which crystals to write) |
 | Export the Selected Crystal as a CIF File | Save the selected crystal in CIF format |
 | Clear all crystals | Remove every crystal from the list |
 | Exit | Close the application |
@@ -70,7 +72,7 @@ If you are new to ReciPro, refer to the following steps:
 | Show Tooltips | Toggle tooltip display |
 | Dark mode | Switch between light and dark colour themes |
 | Use Miller-Bravais (hkil) index | Use 4-index notation for trigonal/hexagonal systems throughout the app |
-| Use ionic scattering factors | Include the ionic charge term in the atomic scattering factors used by the calculations |
+| Use ionic scattering factors | Use ionic electron scattering factors (Peng, including the $g \neq 0$ monopole term) for the atoms' assigned ions in the dynamical (Bloch-wave) electron calculations and Kikuchi profiles; when unchecked, neutral-atom factors are used. If the unit cell is not charge-neutral ($\Sigma q \neq 0$), the monopole term is dropped and only the finite (screened-ion) part is used, with a notice <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:toolStripMenuItemIonicScattering_CheckedChanged, BetheMethod.cs:ElasticIonModel) --> |
 | Download MKL Library | Download the Intel MKL native library (~55 MB); once installed it is used automatically for large computations |
 | Accept external macro commands (named pipe) | Listen on the named pipe `ReciPro.Macro.v1` and run macros sent by external programs — see [External control](20-macro/3-external-control.md) |
 | Reset registry settings on exit (effective after restart) | Reset settings on next restart |
@@ -100,7 +102,8 @@ Switch the UI language. Eleven languages are available — English, 日本語 (J
 
 ### Macro
 
-Open the [Macro](20-macro/index.md) window to automate ReciPro operations with Python-style scripts. For repeated workflows, see the [built-in functions](20-macro/1-built-in-functions.md) and [macro examples](20-macro/2-examples.md).
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:editorToolStripMenuItem_Click, SetMacroToMenu, macroMenuItem_Click) -->
+**Editor** opens the [Macro](20-macro/index.md) window to automate ReciPro operations with Python-style scripts. The macros registered in that window are also listed below **Editor**; choosing one runs it directly. For repeated workflows, see the [built-in functions](20-macro/1-built-in-functions.md) and [macro examples](20-macro/2-examples.md).
 
 
 ---
@@ -119,7 +122,8 @@ Shows crystal orientation. Drag to rotate. Axes: red = *a*, green = *b*, blue = 
 Resets to initial: *c*-axis perpendicular to screen, *b*-axis upward.
 
 ### Zone axis
-Shows the zone axis [*uvw*] closest to the screen normal, searched among indices whose magnitudes stay within the limit shown in the max-UVW box (double-click the **Current Index** label to show or hide that box).
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:numericBoxMaxUVW_ValueChanged, labelCurrentIndex_DoubleClick; FormMain.Designer.cs numericBoxMaxUVW (1–100, 既定 30)) -->
+Shows the zone axis [*uvw*] closest to the screen normal. The candidates are the irreducible indices (gcd = 1) with $|u|+|v|+|w| \le$ the limit in the max-UVW box (1–100, default 30); double-click the index label to show or hide that box.
 
 ### Euler angles (Z-X-Z)
 Set the crystal orientation with **Z–X–Z** Euler angles:
@@ -134,7 +138,8 @@ The rotations are applied in the order \(\Psi \to \Theta \to \Phi\). See [Rotati
 
 ![Arrows](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
-Rotate by angle Step. Check Animation for continuous rotation.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:ButtonDirection_Click, CheckBoxAnimation_CheckedChanged, Timer_Tick; FormMain.Designer.cs numericBoxStep (既定 10°)) -->
+Rotate by angle Step (default 10°). ↺ / ↻ rotate about the screen normal. Check Animation for continuous rotation; Step is then a rate in °/s.
 
 ### View along
 
@@ -142,9 +147,10 @@ Rotate by angle Step. Check Animation for continuous rotation.
 
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
-- **Fix**: when checked, the specified zone axis or plane is held spatially fixed during subsequent rotation operations.
-- **Axis**: places the entered zone axis \([uvw]\) perpendicular to the screen. If **Plane** is also set, that direction is pointed upward on the screen.
-- **Plane**: places the normal of the entered crystal plane \((hkl)\) perpendicular to the screen. If **Axis** is also set, that direction is pointed upward on the screen.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.cs:buttonSetVector_Click, Rotate(Vector3DBase,double), checkBoxFixAxis_CheckedChanged/checkBoxFixPlane_CheckedChanged) -->
+- **Fix**: when checked, subsequent rotations (arrows, mouse drag) are all performed about the specified zone axis or plane normal, so that direction stays fixed. Only one of the two **Fix** boxes can be on, and it cannot be checked while the index is 0 0 0.
+- **Axis**: places the entered zone axis \([uvw]\) perpendicular to the screen. If **Plane** is also set and the axis lies in that plane ($uh+vk+wl=0$), the plane normal is pointed upward on the screen; otherwise an upward direction is chosen automatically.
+- **Plane**: places the normal of the entered crystal plane \((hkl)\) perpendicular to the screen. If **Axis** is also set and lies in the plane ($uh+vk+wl=0$), that axis is pointed upward on the screen; otherwise an upward direction is chosen automatically.
 
 ### Basic ways to set the orientation
 
@@ -164,7 +170,8 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 
 ![Crystal List](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-~80 crystals in default installation. Select to view details and set for calculations. **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: ReciPro/initial.xml (Crystal 66 件)) -->
+66 crystals in the default installation. Select to view details and set for calculations. **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
 
 ![Crystal edit buttons](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
@@ -172,7 +179,7 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 |--------|--------|
 | Up / Down | Reorder |
 | Duplicate | Copy the selected crystal |
-| Delete / All clear | Remove crystals |
+| Delete / Clear all crystals | Remove the selected crystal / every crystal <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: FormMain.resx buttonClearAllCrystals.Text) --> |
 | Add / Replace | Add to list or replace the selected entry |
 
 ---
@@ -185,7 +192,8 @@ Edit lattice parameters, symmetry, and atoms; drag & drop CIF/AMC files to load 
 
 ![Crystal Control](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
-The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), and **Z** (number of formula units per unit cell). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows. Right-click the panel and choose [Details of the chemical composition](#chemical-composition) for wt%, at% and conversion to oxides.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: CrystalControl.resx colorControl.HeaderText/ToolTip) -->
+The top of the panel always shows **Name** (crystal name), **Formula** (chemical formula, computed from the atom list), **Z** (number of formula units per unit cell), and **Color** (the crystal's display colour, used in the 3D structure view and in diffraction-profile curves). The **Symmetry info.** and **Beam interaction** buttons open the [Symmetry Information](2-symmetry-information.md) and [Beam Interaction](3-beam-interaction.md) windows. Right-click the panel and choose [Details of the chemical composition](#chemical-composition) for wt%, at% and conversion to oxides.
 
 ### Basic Info tab
 
@@ -197,16 +205,19 @@ Lattice parameters, symmetry, and quantities derived from them.
 |------|------|
 | Cell constants | Lattice parameters a, b, c (**Unit**: Å = 10⁻¹⁰ m or nm) and α, β, γ. Choosing a symmetry constrains them automatically (e.g. a=b=c, α=β=γ=90° for cubic). |
 | Symmetry | Choose the **Crystal System**, **Point Group**, and **Space Group**. Type in the **Search** box to list matching candidates (case-sensitive). |
-| Cell Volume / Cell Mass | Volume and mass of the unit cell. The volume is shown in Å³ / nm³ following the **Unit** selection. |
-| Molar Volume / Molar Mass / Density | Molar volume, molar mass, and density. Shown **only when atoms have been entered**. |
-| Mean Z (number) / Mean Z (mass) / Mean A | Number- and mass-averaged atomic number, and the mean atomic weight per atom. |
+| Cell Volume / Cell Mass | Volume and mass of the unit cell. The volume is shown in Å³ / nm³ following the **Unit** selection; the mass is in 10⁻²⁴ g. <!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: CrystalControl.resx numericBox*.FooterText/HeaderText, SymmetryControl.resx checkBoxShowError, CrystalControl.cs:buttonChangeAxesOriginSetting_Click) --> |
+| Molar Volume / Molar Mass / Density | Molar volume (cm³/mol, per formula unit), molar mass (g/mol), and density (g/cm³). Shown **only when atoms have been entered**. |
+| Mean Z (number) / Mean Z (mass) / Mean A | Number- and mass-averaged atomic number, and the mean atomic weight per atom (g/mol). Occupancies are included. |
+| Show Errors | Show the error (±) fields of the cell constants. |
+| Change axes/origin setting | Same as the context-menu item of that name: convert to another axis/origin setting of the same space group. |
 | Atom density / Electron density | Numbers of atoms and electrons per unit-cell volume, shown in Å⁻³ / nm⁻³ following the **Unit** selection. |
 
 ### Atom tab
 
 ![Atom](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
-Set the species, position, temperature factor, and scattering factor of each atom. Edit the atom list with **Add**, **Replace** (replace the selected row), **Up/Down** (reorder), and **Delete**. Each atom has:
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: AtomControl.resx multi/wyckLet/siteSymDataGridViewTextBoxColumn.HeaderText) -->
+Set the species, position, temperature factor, and scattering factor of each atom. Edit the atom list with **Add**, **Replace** (replace the selected row), **Up/Down** (reorder), and **Delete**. The atom list also shows, for each site, its multiplicity (**Multi.**), Wyckoff letter (**Wyck. Let.**) and site symmetry (**Site Sym.**). Each atom has:
 
 | Item | Description |
 |------|------|
@@ -217,7 +228,8 @@ Set the species, position, temperature factor, and scattering factor of each ato
 
 Right-click an atom row and choose **Show equivalent atom positions** to open a small window listing all positions generated by the space-group symmetry operations; its **Copy** button copies the list as tab-separated text (e.g. for pasting into a spreadsheet).
 
-**Origin shift**: shifts the origin of all atomic coordinates. Use the preset buttons (**+** / **−**) for standard shifts, or **Apply custom shift** for an arbitrary amount.
+<!-- 261105Cl draft: コードから起こした修正・著者未査読 (根拠: AtomControl.resx: radioButtonOriginShiftPlus/Minus, buttonOriginShift1–9, buttonOriginShiftCustom) -->
+**Origin shift**: shifts the origin of all atomic coordinates. Choose the sign with **+** / **−**, then press one of the preset vectors — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — or use **Apply custom shift** for an arbitrary amount.
 
 **Debye–Waller factor (temperature factor)**:
 
