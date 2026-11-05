@@ -68,10 +68,10 @@
 
 | 参数 | 说明 | 默认值 / 典型值 |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 25 mrad（默认）；15–25 mrad |
+| **会聚半角 α** | 会聚探针的半角（mrad）。较大的值得到更细的探针并改变衍射衬度 | 25 mrad（默认）；15–25 mrad |
 | **环形探测器 — 内** | 环形探测器的内侧收集半角（mrad）。此角度以内的信号被排除 | 0（默认）；BF: 0, HAADF: 80 |
 | **环形探测器 — 外** | 环形探测器的外侧收集半角（mrad）。此角度以外的信号被排除 | 20（默认）；BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效电子源尺寸（pm）。在计算之后以高斯卷积的形式作用于每一幅 Elastic / TDS / EDX 图像。较大的值会使图像模糊并降低细节衬度 | 20 pm（默认） |
+| **有效电子源尺寸 (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有效电子源尺寸（pm）。在计算之后以高斯卷积的形式作用于每一幅 Elastic / TDS / EDX 图像。较大的值会使图像模糊并降低细节衬度 | 20 pm（默认） |
 
 探测器角度只作用于 STEM 参考图像（Elastic / TDS / Elastic & TDS）；STEM-EDX 分布图不使用它们。上述默认值仅在首次启动时适用；之后会恢复上次使用的值。
 

@@ -56,7 +56,7 @@ ReciPro 运行期间，可通过 Windows 命名管道 **`\\.\pipe\ReciPro.Macro.
 
 侦听器**默认关闭**。请在主窗口中启用：
 
-**选项 → Accept external macro commands (named pipe)**
+**选项 → 接受外部宏命令 (命名管道)**
 
 该设置会在下次启动时保留。
 

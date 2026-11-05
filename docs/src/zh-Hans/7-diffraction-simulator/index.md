@@ -67,7 +67,7 @@ title: Diffraction Simulator
 | 鼠标滚轮 | 每格放大 / 缩小 ×2；光标下的点被移到视图中心（勾选 **固定** 时则保持固定的中心） |
 | 右键单击 | 缩小（×1/1.2） |
 | 右键拖出选框 | 放大到所选区域 |
-| 在状态栏右键双击 | 复制当前设置的文本摘要：晶体与欧拉角、波源、能量、波长、光学、斑点形状、强度计算（**动力学** 时还包括厚度、衍射波数，PED 时还有进动半角）以及探测器几何 <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
+| 在状态栏右键双击 | 复制当前设置的文本摘要：晶体与欧拉角、波源、能量、波长、光学、斑点形状、强度计算（**动力学** 时还包括厚度、衍射波数，PED 时还有进动角）以及探测器几何 <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
 | 在已点亮的图层按钮（衍射斑点 / 菊池线 / 德拜环 / 标尺）上右键双击 | 让该图层闪烁开关 |
 
 从此处打开的辅助窗口还增加了几项：
@@ -91,7 +91,7 @@ title: Diffraction Simulator
 |------|------------|-----------|
 | 生成平行束电子衍射（SAED） | 将 **光学** 设为 **平行束**，**波源** 设为 **电子** | [SAED 模拟](1-saed-simulation.md)、[平行束 SAED 计算](../appendix/a3-bloch-wave/calculation.md) |
 | 生成单晶 X 射线衍射 | 将 **波源** 切换为 **X射线**（同步辐射时，将 **Element** 设为 **0: Custom**） | [X 射线衍射模拟](5-x-ray-neutron-diffraction.md) |
-| 生成进动电子衍射（PED） | 将 **光学** 设为 **进动（电子）**，然后设置半角和步长 | [PED 模拟](2-ped-simulation.md) |
+| 生成进动电子衍射（PED） | 将 **光学** 设为 **进动（电子）**，然后设置进动角和步长 | [PED 模拟](2-ped-simulation.md) |
 | 生成会聚束电子衍射（CBED） | 将 **光学** 设为 **会聚（电子）**，并在 CBED 窗口中设置条件 | [CBED 模拟](3-cbed-simulation.md)、[CBED 计算](../appendix/a3-bloch-wave/cbed.md) |
 | 查看动力学计算得到的反射列表 | 选择 **动力学理论** 并按 **斑点详情** | [动力学计算（共享内核）](../appendix/a3-bloch-wave/calculation.md) |
 | 将探测器几何与实验图像对照 | 通过 **探测器几何 & 叠加图像** 中的 **详细** 打开探测器几何设置并使用叠加图像 | [探测器坐标系](../appendix/a1-coordinate-system/2-diffraction.md) |
@@ -309,7 +309,7 @@ title: Diffraction Simulator
 
 ![探测器区域与叠加图像](../../assets/cap-zh-Hans-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-勾选 **设置探测器区域 & 叠加图像。** 以指定探测器：像素尺寸（默认 1024 × 1024）、**像素大小**（mm，默认 0.1）以及 **脚点** 位置 **fx, fy**（px，默认 512, 512）——即从样品到探测器平面的垂线的垂足，只有在探测器不倾斜（τ = 0）时才与直射束位置重合。<!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> 可以加载实验图像（**载入** 或拖放），并以 **不透明度**、**渐变**（正片/负片）、**比例 1**（log/linear）、**比例 2**（Gray / Cold-warm / Spectrum / Fire）、**最大强度** / **最小强度**、**旋转 90°** 和 **清除** 进行叠加显示。加载 `.ipa` 图像会设定 τ = 0（该文件不含倾斜信息），将垂足置于图像中心，并把相机长度 2 设为胶片距离。无法作为 `.prm` 文件或图像读取的文件会以消息提示。<!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) -->**示意图** 显示几何的草图。用它来叠加模拟图样与实验图像，并微调探测器几何。
+勾选 **设置探测器区域 & 叠加图像。** 以指定探测器：像素尺寸（默认 1024 × 1024）、**像素大小**（mm，默认 0.1）以及 **垂足** 位置 **fx, fy**（px，默认 512, 512）——即从样品到探测器平面的垂线的垂足，只有在探测器不倾斜（τ = 0）时才与直射束位置重合。<!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> 可以加载实验图像（**载入** 或拖放），并以 **不透明度**、**渐变**（正片/负片）、**比例 1**（log/linear）、**比例 2**（Gray / Cold-warm / Spectrum / Fire）、**最大强度** / **最小强度**、**旋转 90°** 和 **清除** 进行叠加显示。加载 `.ipa` 图像会设定 τ = 0（该文件不含倾斜信息），将垂足置于图像中心，并把相机长度 2 设为胶片距离。无法作为 `.prm` 文件或图像读取的文件会以消息提示。<!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) -->**示意图** 显示几何的草图。用它来叠加模拟图样与实验图像，并微调探测器几何。
 
 坐标系定义另见 [探测器坐标系](../appendix/a1-coordinate-system/2-diffraction.md)。
 
@@ -319,7 +319,7 @@ title: Diffraction Simulator
 
 ![动态压缩](../../assets/cap-zh-Hans-auto/FormDiffractionSimulatorDynamicCompression.png)
 
-用于模拟冲击压缩（动态压缩）样品衍射的窗口。拖入含三列（深度 µm、时间 ns、压力 MBar）的制表符分隔 `.txt` 文件，即可加载各时刻的压力曲线；图的横轴为深度（µm）；**时间** 滑块（ns）选择图中显示的曲线。图中的两条竖线（**正面** / **背面**）可以拖动，以设定压缩的前沿和后沿。该窗口还包含压缩模型（**2018 / 2019 model**）、冲击速度（**Us**、**Ur**，km/s）、**EOS**（K0、K'0）、**冲击面** / **滑移面**、压缩区域和释放区域的旋转分布、质量吸收系数、Ω 步进以及 **保存图样**（`#.tif`），并通过 **模拟** 运行。旋转宽度 σ 为 0（或旋转角的分割数为 0）时按单一取向处理。无论运行成功与否，之后都会恢复晶体及其取向。<!-- 261105Cl 監査: FormDiffractionSimulatorDynamicCompression.cs execute / buttonSimulate_Click (fb26838, 4a21154, 8461e90) -->
+用于模拟冲击压缩（动态压缩）样品衍射的窗口。拖入含三列（深度 µm、时间 ns、压力 MBar）的制表符分隔 `.txt` 文件，即可加载各时刻的压力曲线；图的横轴为深度（µm）；**时间** 滑块（ns）选择图中显示的曲线。图中的两条竖线（**前方** / **后方**）可以拖动，以设定压缩的前沿和后沿。该窗口还包含压缩模型（**2018 / 2019 model**）、冲击速度（**Us**、**Ur**，km/s）、**EOS**（K0、K'0）、**冲击面** / **滑移面**、压缩区域和释放区域的旋转分布、质量吸收系数、Ω 步进以及 **保存图样**（`#.tif`），并通过 **模拟** 运行。旋转宽度 σ 为 0（或旋转角的分割数为 0）时按单一取向处理。无论运行成功与否，之后都会恢复晶体及其取向。<!-- 261105Cl 監査: FormDiffractionSimulatorDynamicCompression.cs execute / buttonSimulate_Click (fb26838, 4a21154, 8461e90) -->
 
 ---
 

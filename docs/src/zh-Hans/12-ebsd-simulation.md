@@ -55,7 +55,7 @@
 
 ![SEM & 样品条件](../assets/cap-zh-Hans-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **能量** : 入射束的加速电压 (keV)。
+- **能量** : 入射束的加速电压 (keV)。该值会保留到下次启动。<!-- 261106Cl 作者の決定 D4 -->
 - **波长** : 电子波长，与能量关联。**Unit** 用于选择 Å 或 nm。
 - **样品倾斜** : 样品倾斜角（通常为 −70°）。EBSD 中较大的倾斜可提高背散射电子产额。更改该值会丢弃蒙特卡罗结果（BSE 分布及其权重；请重新运行 **模拟**）；master pattern 与倾斜无关，因此会保留。<!-- 261106Cl 作者の決定 F17 -->
 
