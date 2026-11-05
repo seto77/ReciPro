@@ -156,9 +156,11 @@ cada reflexión de Bragg se convierte en un disco cuya
 intensidad interna cambia con la inclinación del haz incidente.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>Modo LACBED (Difracción de Electrones de Haz Convergente
-de Gran Ángulo): usa un ángulo de convergencia más amplio para
-registrar una reflexión en un rango angular mayor.</value>
+    <value>Modo LACBED (CBED de gran ángulo): solo se conserva y dibuja
+el disco transmitido (000), sin sumar los discos vecinos que
+se solapan, por lo que puede usarse un semiángulo mayor que
+los ángulos de Bragg (LACBED de campo claro). Este modo no
+ensancha el semiángulo en sí.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de haces difractados (ondas de Bloch)
@@ -174,15 +176,16 @@ precisión pero ralentizan el cálculo.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Paso de muestreo angular por píxel a lo largo de cada
-disco (mrad/píxel). Valores menores dan más divisiones
-de diámetro, mostradas a la derecha, para
-discos más finos pero un cálculo más largo.</value>
+disco (mrad/píxel). Valores menores dan discos más
+finos con más píxeles; el número de píxeles de un disco
+se muestra a la derecha (Píxeles totales). El tiempo
+de cálculo crece con ese número.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Paso de muestreo angular por píxel a lo largo de cada
-disco (mrad/píxel). Valores menores dan más divisiones
-de diámetro, mostradas a la derecha, para
-discos más finos pero un cálculo más largo.</value>
+    <value>Número de píxeles de cada disco, es decir, las
+direcciones del haz incidente dentro del círculo de
+convergencia. Se hace un cálculo de ondas de Bloch por
+píxel, por lo que el tiempo de cálculo es proporcional a él.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Establece un rango y un paso de los espesores de la muestra</value>
@@ -264,10 +267,10 @@ patrón de discos mostrado actualmente.</value>
 patrón de discos mostrado actualmente.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Paso de muestreo angular por píxel a lo largo
-de cada disco (mrad/píxel). Valores menores
-dan más divisiones de diámetro, mostradas aquí,
-para discos más finos pero un cálculo más largo.</value>
+    <value>Número de píxeles de cada disco, es decir, las
+direcciones del haz incidente dentro del círculo de
+convergencia. Se hace un cálculo de ondas de Bloch por
+píxel, por lo que el tiempo de cálculo es proporcional a él.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Establece un valor de gamma. Cuanto mayor sea este valor,

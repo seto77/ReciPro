@@ -159,9 +159,11 @@ ogni riflessione di Bragg diventa un disco la cui intensità
 interna varia con l'inclinazione del fascio incidente.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>Modalità LACBED (diffrazione elettronica a fascio convergente ad
-ampio angolo): usa un angolo di convergenza più largo, così che
-una riflessione viene registrata su un intervallo angolare maggiore.</value>
+    <value>Modalità LACBED (CBED ad ampio angolo): viene conservato e
+disegnato solo il disco trasmesso (000), senza sommare i dischi
+vicini sovrapposti, quindi si può usare un semiangolo maggiore
+degli angoli di Bragg (LACBED in campo chiaro). Questa modalità
+non allarga il semiangolo stesso.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Numero di fasci diffratti (onde di Bloch)
@@ -177,15 +179,16 @@ precisione ma rallentano il calcolo.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Passo di campionamento angolare per pixel attraverso
-ciascun disco (mrad/pixel). Valori più piccoli danno più
-divisioni in diametro, mostrate a destra, per dischi
-più dettagliati ma con calcolo più lungo.</value>
+ciascun disco (mrad/pixel). Valori più piccoli danno dischi
+più dettagliati con più pixel; il numero di pixel di un disco
+è mostrato a destra (Pixel totali). Il tempo di calcolo
+cresce con questo numero.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Passo di campionamento angolare per pixel attraverso
-ciascun disco (mrad/pixel). Valori più piccoli danno più
-divisioni in diametro, mostrate a destra, per dischi
-più dettagliati ma con calcolo più lungo.</value>
+    <value>Numero di pixel di ciascun disco, cioè le direzioni del
+fascio incidente all'interno del cerchio di convergenza.
+Si esegue un calcolo a onde di Bloch per pixel, quindi il
+tempo di calcolo è proporzionale a questo numero.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Imposta un intervallo e un passo degli spessori del campione</value>
@@ -267,10 +270,10 @@ figura a dischi attualmente visualizzata.</value>
 figura a dischi attualmente visualizzata.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Passo di campionamento angolare per pixel attraverso
-ciascun disco (mrad/pixel). Valori più piccoli danno
-più divisioni in diametro, mostrate qui, per dischi
-più dettagliati ma con calcolo più lungo.</value>
+    <value>Numero di pixel di ciascun disco, cioè le direzioni del
+fascio incidente all'interno del cerchio di convergenza.
+Si esegue un calcolo a onde di Bloch per pixel, quindi il
+tempo di calcolo è proporzionale a questo numero.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Imposta un valore gamma. Più grande è questo valore,

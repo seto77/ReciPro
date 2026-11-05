@@ -156,9 +156,11 @@ cada reflexão de Bragg torna-se um disco cuja
 intensidade interna varia com a inclinação do feixe incidente.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>Modo LACBED (Difração de Elétrons por Feixe Convergente
-de Grande Ângulo): usa um ângulo de convergência maior, de modo
-que uma reflexão é registrada ao longo de uma faixa angular maior.</value>
+    <value>Modo LACBED (CBED de grande ângulo): apenas o disco
+transmitido (000) é mantido e desenhado, sem somar os
+discos vizinhos sobrepostos, de modo que se pode usar um
+semiângulo maior que os ângulos de Bragg (LACBED de campo
+claro). Este modo não alarga o semiângulo em si.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Número de feixes difratados (ondas de Bloch)
@@ -174,15 +176,16 @@ precisão, mas tornam o cálculo mais lento.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Passo de amostragem angular por pixel ao longo de
-cada disco (mrad/pixel). Valores menores dão mais
-divisões de diâmetro, mostradas à direita, para
-discos mais finos, mas cálculos mais longos.</value>
+cada disco (mrad/pixel). Valores menores dão discos
+mais finos com mais pixels; o número de pixels de um
+disco é mostrado à direita (Total de pixels). O tempo
+de cálculo cresce com esse número.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Passo de amostragem angular por pixel ao longo de
-cada disco (mrad/pixel). Valores menores dão mais
-divisões de diâmetro, mostradas à direita, para
-discos mais finos, mas cálculos mais longos.</value>
+    <value>Número de pixels de cada disco, isto é, as direções do
+feixe incidente dentro do círculo de convergência. É feito
+um cálculo de ondas de Bloch por pixel, portanto o tempo
+de cálculo é proporcional a esse número.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Define um intervalo e um passo para as espessuras da amostra</value>
@@ -264,10 +267,10 @@ padrão de discos atualmente exibido.</value>
 padrão de discos atualmente exibido.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Passo de amostragem angular por pixel ao longo de
-cada disco (mrad/pixel). Valores menores dão
-mais divisões de diâmetro, mostradas aqui,
-para discos mais finos, mas cálculos mais longos.</value>
+    <value>Número de pixels de cada disco, isto é, as direções do
+feixe incidente dentro do círculo de convergência. É feito
+um cálculo de ondas de Bloch por pixel, portanto o tempo
+de cálculo é proporcional a esse número.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>Define um valor de gama. Quanto maior esse valor,

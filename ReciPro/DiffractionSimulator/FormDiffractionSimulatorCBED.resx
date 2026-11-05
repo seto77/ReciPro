@@ -598,9 +598,11 @@ internal intensity changes with incident-beam tilt.</value>
     <value>LACBED</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED (Large-Angle Convergent-Beam Electron
-Diffraction) mode: uses a wider convergence angle so
-a reflection is recorded over a larger angular range.</value>
+    <value>LACBED (Large-Angle CBED) mode: only the transmitted
+(000) disk is kept and drawn, without adding the
+overlapping neighbouring disks, so a semi-angle larger
+than the Bragg angles can be used (bright-field LACBED).
+This mode does not widen the semi-angle itself.</value>
   </data>
   <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -787,9 +789,10 @@ accuracy but slow the computation.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Angular sampling step per pixel across each
-disk (mrad/pixel). Smaller values give more
-diameter divisions, shown at right, for
-finer disks but longer calculation.</value>
+disk (mrad/pixel). A smaller step gives finer
+disks with more pixels; the number of pixels
+in a disk is shown at right (Total pixels).
+The calculation time grows with that number.</value>
   </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -858,10 +861,10 @@ finer disks but longer calculation.</value>
     <value>Total pixels:</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Angular sampling step per pixel across each
-disk (mrad/pixel). Smaller values give more
-diameter divisions, shown at right, for
-finer disks but longer calculation.</value>
+    <value>Number of pixels in each disk, i.e. the incident-
+beam directions inside the convergence circle.
+One Bloch-wave calculation is made per pixel, so
+the calculation time is proportional to it.</value>
   </data>
   <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -888,10 +891,10 @@ finer disks but longer calculation.</value>
     <value>31029</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Angular sampling step per pixel across
-each disk (mrad/pixel). Smaller values
-give more diameter divisions, shown here,
-for finer disks but longer calculation.</value>
+    <value>Number of pixels in each disk, i.e. the incident-
+beam directions inside the convergence circle.
+One Bloch-wave calculation is made per pixel, so
+the calculation time is proportional to it.</value>
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

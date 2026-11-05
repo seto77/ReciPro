@@ -159,9 +159,10 @@
 강도가 변하는 디스크로 표시됩니다.</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED(대각도 수렴빔 전자 회절) 모드:
-더 넓은 수렴각을 사용하여 하나의 반사를 더
-넓은 각도 범위에 걸쳐 기록합니다.</value>
+    <value>LACBED(대각도 CBED) 모드: 투과 디스크(000)만 출력해
+그리며, 겹치는 이웃 디스크를 더하지 않으므로 Bragg 각보다
+큰 반각을 쓸 수 있습니다(명시야 LACBED). 이 모드가
+반각 자체를 넓히지는 않습니다.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>동역학적 다중 산란 계산에 포함되는
@@ -177,15 +178,15 @@
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>각 디스크를 가로지르는 픽셀당 각도 샘플링
-간격(mrad/pixel)입니다. 값이 작을수록 오른쪽에
-표시되는 직경 방향 분할 수가 많아져 디스크가
-더 정밀해지지만 계산은 길어집니다.</value>
+간격(mrad/pixel)입니다. 값이 작을수록 디스크가
+정밀해지고 픽셀 수가 늘어납니다. 디스크 하나의
+픽셀 수는 오른쪽(전체 픽셀)에 표시되며, 계산
+시간은 이 수에 비례해 늘어납니다.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>각 디스크를 가로지르는 픽셀당 각도 샘플링
-간격(mrad/pixel)입니다. 값이 작을수록 오른쪽에
-표시되는 직경 방향 분할 수가 많아져 디스크가
-더 정밀해지지만 계산은 길어집니다.</value>
+    <value>디스크 하나의 픽셀 수, 즉 수렴원 안에 있는 입사빔
+방향의 수입니다. 픽셀마다 블로흐파 계산을 한 번
+하므로 계산 시간은 이 수에 비례합니다.</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>시료 두께의 범위와 간격을 설정합니다</value>
@@ -267,10 +268,9 @@ Positive는 밝을수록 강하고, Negative는
 패턴의 시료 두께(nm)입니다.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>각 디스크를 가로지르는 픽셀당 각도 샘플링
-간격(mrad/pixel)입니다. 값이 작을수록 여기에
-표시되는 직경 방향 분할 수가 많아져 디스크가
-더 정밀해지지만 계산은 길어집니다.</value>
+    <value>디스크 하나의 픽셀 수, 즉 수렴원 안에 있는 입사빔
+방향의 수입니다. 픽셀마다 블로흐파 계산을 한 번
+하므로 계산 시간은 이 수에 비례합니다.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>감마 값을 설정합니다. 이 값이 클수록

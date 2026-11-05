@@ -132,8 +132,10 @@
 応じたディスク内強度分布を計算します。</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED（大角度収束電子回折）モード：より広い収束角を
-使い、1つの反射を広い角度範囲にわたって記録します。</value>
+    <value>LACBED（大角度収束電子回折）モード：透過ディスク (000)
+だけを出力・表示し、重なる隣のディスクを足し合わせない
+ので、Bragg 角より大きい半頂角を使えます (明視野 LACBED)。
+このモードで半頂角そのものが広がるわけではありません。</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>回折波の数</value>
@@ -152,8 +154,9 @@
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel)
-を設定します。小さいほど右に表示される直径方向の
-分割数が増え、精細になりますが計算は遅くなります。</value>
+を設定します。小さいほどディスクが精細になり画素数が
+増えます。1 ディスクの画素数は右の「総ピクセル数」に
+表示され、計算時間はこれに比例して増えます。</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>総ピクセル数:</value>
@@ -288,14 +291,14 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
 レベル（最小/最大）を適用します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>各ディスクを横切る 1 画素あたりの角度刻み
-(mrad/pixel) です。小さいほど右に表示される直径方向の
-分割数が増え、精細になりますが計算は遅くなります。</value>
+    <value>1 ディスクの画素数 (収束円の内側にある入射ビームの
+方向の数) です。画素ごとに 1 回ブロッホ波の計算を
+行うので、計算時間はこの数に比例します。</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>設定された角度刻みから計算された、
-ディスク直径方向の分割数です。大きいほど
-ディスクは精細ですが計算量が増えます。</value>
+    <value>1 ディスクの画素数 (収束円の内側にある入射ビームの
+方向の数) です。画素ごとに 1 回ブロッホ波の計算を
+行うので、計算時間はこの数に比例します。</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
     <value>ガンマ値を設定します。この値が大きいほ
