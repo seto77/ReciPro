@@ -343,6 +343,7 @@ namespace ReciPro
             0,
             0,
             65536});
+            numericUpDownPolyEdgeDia.ValueChanged += update; // 261105Cl 追加: 稜線の太さも出力寸法 (最大寸法に合わせる倍率) に効く
             //
             // label5
             //
@@ -498,6 +499,7 @@ namespace ReciPro
             0,
             0,
             65536});
+            numericUpDownEdgeDia.ValueChanged += update; // 261105Cl 追加: 枠の太さも出力寸法 (最大寸法に合わせる倍率) に効く
             //
             // label3
             //

@@ -130,9 +130,19 @@ public partial class FormExport3DModel : FormBase
 
         var size = SizeNm;
         var maxExtent = Math.Max(size.X, Math.Max(size.Y, size.Z));
-        MmPerNm = radioButtonFit.Checked
-            ? (maxExtent > 0 ? (double)numericUpDownMaxSize.Value / maxExtent : 1)
+        // 261105Cl 追加: 要素ごとの範囲 (nm) と、円柱化して外へ張り出す量 (片側 mm = 単位胞の枠・多面体の稜線の半径)
+        List<(V3 Min, V3 Max, double PadMm)> boxes = [];
+        if (IncludeAtoms) boxes.Add((boundsAtoms.Min, boundsAtoms.Max, 0));
+        if (IncludeBonds) boxes.Add((boundsBonds.Min, boundsBonds.Max, 0));
+        if (IncludePolyhedra) boxes.Add((boundsPoly.Min, boundsPoly.Max, PolyhedraAsEdges || PolyhedraAsMesh ? (double)numericUpDownPolyEdgeDia.Value / 2 : 0));
+        if (IncludeCellEdges) boxes.Add((boundsLines.Min, boundsLines.Max, (double)numericUpDownEdgeDia.Value / 2));
+        //MmPerNm = radioButtonFit.Checked // 261105Cl 変更前: 枠・稜線の円柱の太さを数えず、出力が最大寸法を直径の分だけ超えていた
+        //    ? (maxExtent > 0 ? (double)numericUpDownMaxSize.Value / maxExtent : 1)
+        //    : (double)numericUpDownScale.Value;
+        MmPerNm = radioButtonFit.Checked // 261105Cl 変更
+            ? (maxExtent > 0 ? ModelExporter.FitScale(boxes, (double)numericUpDownMaxSize.Value) : 1)
             : (double)numericUpDownScale.Value;
+        var outputMm = ModelExporter.OutputSizeMm(boxes, MmPerNm); // 261105Cl 追加: 円柱の太さを含めた出力寸法
         //固定スケールに切り替えた瞬間は直前の実効スケールを初期値にする (寸法指定からの連続性)
         if (sender == radioButtonScale && radioButtonScale.Checked)
             numericUpDownScale.Value = Math.Clamp((decimal)Math.Round(MmPerNm, 3), numericUpDownScale.Minimum, numericUpDownScale.Maximum);
@@ -158,7 +168,8 @@ public partial class FormExport3DModel : FormBase
             $"{Localization.Loc(en: "Scale", ja: "スケール", de: "Maßstab", fr: "Échelle", es: "Escala", pt: "Escala", it: "Scala", ru: "Масштаб", zhHans: "比例", zhHant: "比例尺", ko: "배율")}: {MmPerNm:f3} mm/nm,   " +
             //260805Cl: es/pt/it/ru はレイアウト実測 (ハーネス) で groupBox 幅を超えたため短縮形にする
             $"{Localization.Loc(en: "Output size", ja: "出力寸法", de: "Ausgabegröße", fr: "Taille de sortie", es: "Tam. salida", pt: "Tam. saída", it: "Dim. output", ru: "Вывод", zhHans: "输出尺寸", zhHant: "輸出尺寸", ko: "출력 크기")}: " +
-            $"{size.X * MmPerNm:f1} × {size.Y * MmPerNm:f1} × {size.Z * MmPerNm:f1} mm";
+            //$"{size.X * MmPerNm:f1} × {size.Y * MmPerNm:f1} × {size.Z * MmPerNm:f1} mm"; // 261105Cl 変更前
+            $"{outputMm.X:f1} × {outputMm.Y:f1} × {outputMm.Z:f1} mm"; // 261105Cl 変更
 
         //印刷適性チェック簡易版: 細すぎる結合の警告 (増径オプションが ON なら解消されるので出さない)
         var minDia = 2 * minBondRadiusNmSrc * MmPerNm;

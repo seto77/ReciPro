@@ -1358,17 +1358,31 @@ public class Macro : MacroBase
 
                 //含める要素の合成バウンディングからスケールを決める (ダイアログの SizeNm と同じ規約)。
                 //260805Cl (/simplify): min/max は結合的なので、種類別 GetBounds ×3 + merge ではなく 1 回の GetBounds に畳む
-                var (min, max) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : isPoly(s) ? includePolyhedra : includeBonds));
+                //var (min, max) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : isPoly(s) ? includePolyhedra : includeBonds)); // 261105Cl 変更前 (12 行): 枠・稜線の円柱の太さを数えず、出力が maxSizeInMM を直径の分だけ超えていた
+                //if (includeCellEdges)
+                //    foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
+                //    {
+                //        min = V3.ComponentMin(V3.ComponentMin(min, s), t);
+                //        max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+                //    }
+                //var sizeNm = max - min;
+                //var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+                //var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
+                //          : maxExtent > 0 ? maxSizeInMM / maxExtent
+                //          : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
+                // 261105Cl 変更: 要素ごとの範囲 (nm) と、円柱化して外へ張り出す量 (片側 mm) から、ダイアログと同じく円柱の太さを含めて最大寸法に合わせる
+                var (solidMin, solidMax) = ModelExporter.GetBounds(snaps.Where(s => isAtom(s) ? includeAtoms : !isPoly(s) && includeBonds));
+                var (polyMin, polyMax) = ModelExporter.GetBounds(snaps.Where(s => isPoly(s) && includePolyhedra));
+                V3 lineMin = new(double.MaxValue), lineMax = new(double.MinValue);
                 if (includeCellEdges)
                     foreach (var (s, t) in lineSnaps.SelectMany(l => l.Segments))
                     {
-                        min = V3.ComponentMin(V3.ComponentMin(min, s), t);
-                        max = V3.ComponentMax(V3.ComponentMax(max, s), t);
+                        lineMin = V3.ComponentMin(V3.ComponentMin(lineMin, s), t);
+                        lineMax = V3.ComponentMax(V3.ComponentMax(lineMax, s), t);
                     }
-                var sizeNm = max - min;
-                var maxExtent = Math.Max(sizeNm.X, Math.Max(sizeNm.Y, sizeNm.Z));
+                List<(V3 Min, V3 Max, double PadMm)> boxes = [(solidMin, solidMax, 0), (polyMin, polyMax, polyhedraAsEdges ? polyEdgeDiaInMM / 2 : 0), (lineMin, lineMax, cellEdgeDiaInMM / 2)];
                 var scale = fixedScaleInMMperNm > 0 ? fixedScaleInMMperNm
-                          : maxExtent > 0 ? maxSizeInMM / maxExtent
+                          : ModelExporter.FitScale(boxes, maxSizeInMM) is var fit && fit > 0 ? fit
                           : throw new InvalidOperationException("Export3DModel: the model extent is zero; pass fixedScaleInMMperNm.");
 
                 return viewer.ExportModel(filename, use3mf, scale,
