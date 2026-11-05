@@ -881,7 +881,8 @@ public partial class DiffractionPatternControl : UserControlBase
                             scalablePictureBox.PseudoBitmap.Filter3[j * ImageWidth + i] = e.Button == System.Windows.Forms.MouseButtons.Left;
                 scalablePictureBox.drawPictureBox();
             }
-            else if (radioButtonManualRectangle.Checked && startMaskPoint.X != int.MinValue)
+            //else if (radioButtonManualRectangle.Checked && startMaskPoint.X != int.MinValue) // 261105Cl 変更前
+            else if (radioButtonManualRectangle.Checked && !double.IsNaN(startMaskPoint.X)) // 261105Cl 変更 (監査 I22): 未開始は NaN (int.MinValue ではない。MouseMove・円・ドーナツと同じ判定)
             {
                 var startPoint = new Point((int)Math.Round(startMaskPoint.X), (int)Math.Round(startMaskPoint.Y));
                 var currentPoint = new Point((int)Math.Round(pt.X), (int)Math.Round(pt.Y));
@@ -906,7 +907,8 @@ public partial class DiffractionPatternControl : UserControlBase
                 for (int j = top; j <= bottom; j++)
                     for (int i = left; i <= right; i++)
                     {
-                        var r2 = (new PointD(j, i) - center).Length2;
+                        //var r2 = (new PointD(j, i) - center).Length2; // 261105Cl 変更前
+                        var r2 = (new PointD(i, j) - center).Length2; // 261105Cl 変更 (監査 I22): i が x、j が y (MouseMove の表示と同じ)。旧は x と y が逆で、中心が画像の中央でないと表示と違う所がマスクされた
                         if (r2 < maxR * maxR && r2 > minR * minR)
                             scalablePictureBox.PseudoBitmap.Filter3[j * ImageWidth + i] = e.Button == System.Windows.Forms.MouseButtons.Left;
                     }
