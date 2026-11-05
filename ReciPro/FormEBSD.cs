@@ -2433,6 +2433,13 @@ public partial class FormEBSD : FormBase
             toolStripStatusLabelSummary.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
             return;
         }
+        // 261105Cl 追加 (監査 F6): 構築の前段の MC (と MasterPattern 読み込み後の MC) の間は IsBuilding が false なので上を通り抜け、
+        //   MC が 2 本同時に走っていた (monteCarloCts も上書きされ、Stop で構築側の MC を止められなくなる)。MC は 1 本だけにする
+        if (monteCarloCts != null)
+        {
+            toolStripStatusLabelSummary.Text = "Monte Carlo is running. Wait for it to finish or press Stop.";
+            return;
+        }
 
         buttonSimulateBSE.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
         buttonCreateMasterPattern.Enabled = false; // (260401Ch) Calc BSE 実行中に MasterPattern 前段 MC を重ねて走らせない
@@ -3231,7 +3238,8 @@ public partial class FormEBSD : FormBase
         //    return;
         //}
         #endregion
-        if (masterPatternEbsd.IsBuilding)
+        // if (masterPatternEbsd.IsBuilding) // 261105Cl 変更前
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null) // 261105Cl 変更 (監査 F6): MC (Calc BSE・読み込み後の MC) の最中も始めない (ボタンは無効だが PrepareCaptureForGuiAudit はコードから呼ぶ)
             return;
 
         // 261104Cl 追加 (GitHub issue #68): B=0 の原子があると吸収ポテンシャル U' がゼロで、非局所源 ON では MasterPattern が全面 0 (真っ黒) になる。
@@ -3527,6 +3535,13 @@ public partial class FormEBSD : FormBase
             toolStripStatusLabelDetail.Text = ex.Message;
             return false;
         }
+        // 261105Cl 追加 (監査 F 追加 b): ファイルを読んでいる間に構築・Calc BSE が始まっていたら差し込まない (構築中は SetMasterPattern も拒む。MC の最中だと MC の結果と取り合う)
+        if (masterPatternEbsd.IsBuilding || monteCarloCts != null)
+        {
+            toolStripStatusLabelSummary.Text = "MasterPattern not loaded";
+            toolStripStatusLabelDetail.Text = "A calculation was started while the file was being read. Load it again when it has finished.";
+            return false;
+        }
         var problem = MasterPatternFile.CheckCompatibility(info, Crystal, Voltage);
         if (problem != null && !allowMismatch)
         {
@@ -3551,8 +3566,23 @@ public partial class FormEBSD : FormBase
         else
         {
             buttonCreateMasterPattern.Enabled = false; //MC 中の多重起動を防ぐ (構築ボタンと同じ扱い)
-            try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)"); } //失敗しても BSE 重み無しの表示はできるので続ける
-            finally { buttonCreateMasterPattern.Enabled = true; }
+            // try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)"); } //失敗しても BSE 重み無しの表示はできるので続ける // 261105Cl 変更前
+            // finally { buttonCreateMasterPattern.Enabled = true; }
+            // 261105Cl 変更 (監査 F 追加 b): 構築の MC と同じく取り消し可能にする。SetCrystal・電圧の変更・Stop が止められ、Calc BSE とも重ならない (monteCarloCts を見る)
+            monteCarloCts = new System.Threading.CancellationTokenSource();
+            buttonStop.Visible = true;
+            try { await RunMonteCarloAndSetRangesAsync(statusPrefix: "MasterPattern (loaded)", cancellationToken: monteCarloCts.Token); } //失敗しても BSE 重み無しの表示はできるので続ける
+            finally { DisposeMonteCarloCts(); buttonStop.Visible = false; buttonCreateMasterPattern.Enabled = true; }
+            // 261105Cl 追加 (監査 F 追加 b): MC の間に結晶・電圧が替わると、SetCrystal が読み込んだ MasterPattern を破棄している (MasterPattern = null)。
+            //   以前はそのまま ActivateMasterPattern へ進んで MasterPattern.Depths で NullReferenceException だった。窓を閉じていて SetCrystal が呼ばれなかったときは
+            //   MasterPattern は残るが今の結晶・電圧のものではないので、どちらも SetCrystal と同じ状態にして読み込みをやめる
+            if (!ReferenceEquals(MasterPattern, mp) || !MasterPatternBasisIsCurrent)
+            {
+                SetCrystal();
+                toolStripStatusLabelSummary.Text = "MasterPattern discarded";
+                toolStripStatusLabelDetail.Text = "The crystal or the accelerating voltage was changed while the master pattern was being loaded. Load it again.";
+                return false;
+            }
         }
         EnsureMcDistributionMatchesMasterPattern();
         ActivateMasterPattern("MasterPattern loaded",
@@ -3568,6 +3598,7 @@ public partial class FormEBSD : FormBase
     {
         // 260406Cl 追加: MC 実行中のキャンセル
         // MC と Bethe は排他的に実行される (buttonSimulateBSE/buttonCreateMasterPattern が互いの Enabled を制御するため同時には走らない)
+        // 261105Cl 追記: 構築の MC の間は buttonSimulateBSE が押せたので排他になっていなかった (監査 F6)。今は両ハンドラが monteCarloCts を見て MC を 1 本にする
         if (monteCarloCts != null && !monteCarloCts.IsCancellationRequested)
         {
             monteCarloCts.Cancel();
