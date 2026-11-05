@@ -125,13 +125,13 @@ for k in range(-2, 3):
 
 | Свойство | Тип | Описание |
 |----------|------|-------------|
-| `Energy` | double | Энергия (keV) |
-| `Wavelength` | double | Длина волны (Å) |
+| `Energy` | double | Энергия (keV для рентгеновских лучей и электронов, meV для нейтронов) |
+| `Wavelength` | double | Длина волны (nm) |
 | `Thickness` | double | Толщина образца (nm) |
 | `NumberOfDiffractedWaves` | int | Число блоховских волн |
 | `CameraLength2` | double | Длина камеры (mm) |
 | `ExcitationError` | double | Радиус рефлекса (nm⁻¹): в кинематическом режиме / режиме ошибки возбуждения `SpotInfo()` экспортирует отражения с \|Sg\| в пределах этого значения |
-| `SkipRendering` | bool | Пропустить отрисовку для пакетной обработки |
+| `SkipRendering` | bool | Действует только в динамическом режиме (`Calc_Dynamical()`): расчёт блоховских волн всё равно выполняется (поэтому `SpotInfo()` остаётся корректным), но рефлексы не рисуются — изображения, сохранённые в это время, не содержат рефлексов. В кинематическом режиме и режиме ошибки возбуждения не действует |
 
 ### Режим пучка
 
@@ -156,7 +156,7 @@ for k in range(-2, 3):
 |----------|-------------|
 | `Tau` / `TauInDeg` | Угол наклона детектора τ (rad / градусы) |
 | `Phi` / `PhiInDeg` | Ось поворота детектора φ (rad / градусы) |
-| `Foot(x, y)` | Положение foot в пикселях |
+| `Foot(x, y)` | Положение (mm) основания перпендикуляра, опущенного из образца на детектор, отсчитываемое от центра изображения; сам центр изображения находится в координатах детектора (−x, −y). `Foot(0, 0)` помещает основание перпендикуляра в центр изображения |
 
 ### Вывод
 
@@ -220,7 +220,7 @@ for k in range(-2, 3):
 | `StructureViewer.Open()` | Открыть окно просмотрщика структуры |
 | `StructureViewer.Close()` | Закрыть окно просмотрщика структуры |
 | `StructureViewer.SaveImage(filename)` | Сохранить отрисованный главный вид как PNG в пиксельном размере из поля **Size (W×H)**; без `filename` откроется диалог |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Экспортировать отображаемую структуру для 3D-печати, как **Export 3D Model (3MF/STL)** в меню File. Расширение задаёт формат (`.stl` одноцветный / `.3mf` с окраской по элементам); обязателен только `filename` — остальные значения по умолчанию совпадают с диалогом (наибольший размер 80 mm, рёбра ячейки ⌀2,4 mm, утолщение связей до ⌀1,2 mm). При `fixedScaleInMMperNm` > 0 несколько моделей получают общий масштаб |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Экспортировать отображаемую структуру для 3D-печати, как **Export 3D Model (3MF/STL)** в меню File. Расширение задаёт формат (`.stl` одноцветный / `.3mf` с окраской по элементам); обязателен только `filename` — остальные значения по умолчанию совпадают с диалогом (наибольший размер 80 mm, рёбра ячейки ⌀2,4 mm, утолщение связей до ⌀1,2 mm). При `fixedScaleInMMperNm` > 0 несколько моделей получают общий масштаб. `filename` должен оканчиваться на `.stl` или `.3mf` (диалог не открывается); возвращается информационная строка с числом треугольников и размером печатной модели |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | Функция | Описание |
 |----------|-------------|
-| `Sleep(ms)` | Ожидать указанное число миллисекунд |
+| `ReciPro.Sleep(ms)` | Ожидать указанное число миллисекунд. Вызывается как `ReciPro.Sleep(ms)`; в таблице встроенных функций редактора не указана |
 
 ---
 
