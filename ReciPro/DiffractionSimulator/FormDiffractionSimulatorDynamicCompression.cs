@@ -269,8 +269,15 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
 
                     double start = Math.Max(0, omega - range * sigmaOmega), end = omega + range * sigmaOmega, step = (end - start) / div2;
                     var rotationAngles = new List<PointD>();
-                    for (var speed = start; speed <= end + step / 2; speed += step)
-                        rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    //for (var speed = start; speed <= end + step / 2; speed += step) // 261105Cl 変更前
+                    //    rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    // 261105Cl 変更 (監査 #33): σ_ω = 0 (入力が 0、または圧縮面ちょうどの層で time = 0) だと step = 0 でこのループが終わらず UI が固まっていた。
+                    //   幅が 0 なら回転角は ω の 1 点 (重み 1)。分割数 0 (step = ∞) も同じく 1 点にする (∞ を足してもループが終わらない)
+                    if (step > 0 && double.IsFinite(step))
+                        for (var speed = start; speed <= end + step / 2; speed += step)
+                            rotationAngles.Add(new PointD(speed, Math.Exp(-(speed - omega) * (speed - omega) / 2 / sigmaOmega / sigmaOmega)));
+                    else
+                        rotationAngles.Add(new PointD(omega, 1));
                     foreach (var axis in rotationAxes2018)
                         foreach (var angle in rotationAngles)
                             rotationList.Add((Matrix3D.Rot(axis, angle.X), angle.Y));
@@ -283,17 +290,40 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                     double stepTheta = (range * sigmaTheta) / ((int)Math.Sqrt(div1) + 1);
                     double startR = Math.Max(0, omega - range * sigmaOmega), endR = omega + range * sigmaOmega, stepR = (endR - startR) / div2;
                     double stepPhi = (2 * Math.PI) / ((int)Math.Sqrt(div1) + 1);
-                    if (stepTheta == 0)
-                        stepTheta = double.PositiveInfinity;
-                    if (stepR == 0)
-                        stepR = double.PositiveInfinity;
+                    //if (stepTheta == 0) // 261105Cl 変更前
+                    //    stepTheta = double.PositiveInfinity;
+                    //if (stepR == 0)
+                    //    stepR = double.PositiveInfinity;
+                    //
+                    //for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
+                    //    for (var phi = 0.0; phi < 2 * Math.PI; phi += stepPhi)
+                    //        for (var r = startR; r <= endR; r += stepR)
+                    //        {
+                    //            var v = new Vector3DBase(Math.Sin(theta) * Math.Cos(phi), Math.Sin(theta) * Math.Sin(phi), Math.Cos(theta));
+                    //            rotationList.Add((Matrix3D.Rot(m2 * v, r), Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2 - theta * theta / 2 / sigmaTheta2) * r * r * Math.Sin(theta)));
+                    //        }
+                    // 261105Cl 変更 (監査 #33 と同じ σ = 0 の扱い): 重み exp(−(r−ω)²/2σ_ω²)·r² × exp(−θ²/2σ_θ²)·sinθ は r と θ で分かれるので、別々に標本化する。
+                    //   以前は σ_θ = 0 で θ の点が 1 つもできずこの層が黙って抜け落ち、σ_ω = 0 で重みが 0/0 = NaN になって像全体が NaN だった。
+                    //   幅が 0 (または分割数 0) の側は、その極限どおり 1 点 (θ = 0 / r = ω、重み 1) にする
+                    var thetaSamples = new List<(double Theta, double Weight)>();
+                    if (stepTheta > 0 && double.IsFinite(stepTheta))
+                        for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
+                            thetaSamples.Add((theta, Math.Exp(-theta * theta / 2 / sigmaTheta2) * Math.Sin(theta)));
+                    else
+                        thetaSamples.Add((0, 1));
+                    var rSamples = new List<(double R, double Weight)>();
+                    if (stepR > 0 && double.IsFinite(stepR))
+                        for (var r = startR; r <= endR; r += stepR)
+                            rSamples.Add((r, Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2) * r * r));
+                    else
+                        rSamples.Add((omega, 1));
 
-                    for (var theta = stepTheta / 2; theta <= range * sigmaTheta; theta += stepTheta)
-                        for (var phi = 0.0; phi < 2 * Math.PI; phi += stepPhi)
-                            for (var r = startR; r <= endR; r += stepR)
+                    foreach (var (theta, wTheta) in thetaSamples)
+                        for (var phi = 0.0; phi < 2 * Math.PI; phi += theta == 0 ? 2 * Math.PI : stepPhi) // θ = 0 では φ によらず同じ軸なので 1 回
+                            foreach (var (r, wR) in rSamples)
                             {
                                 var v = new Vector3DBase(Math.Sin(theta) * Math.Cos(phi), Math.Sin(theta) * Math.Sin(phi), Math.Cos(theta));
-                                rotationList.Add((Matrix3D.Rot(m2 * v, r), Math.Exp(-(r - omega) * (r - omega) / 2 / sigmaOmega2 - theta * theta / 2 / sigmaTheta2) * r * r * Math.Sin(theta)));
+                                rotationList.Add((Matrix3D.Rot(m2 * v, r), wTheta * wR));
                             }
                 }
             }
