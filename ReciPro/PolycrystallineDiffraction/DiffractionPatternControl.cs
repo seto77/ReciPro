@@ -1049,9 +1049,24 @@ public partial class DiffractionPatternControl : UserControlBase
             // 261105Cl 追加 (監査 A19): 結晶の欄を編集すると CrystalControl.GenerateFromInterface が新しい Crystal を作り、結晶子の集合 (Crystallites) は
             // 前の結晶から引き継ぐ。Crystallites.BaseCrystal が前の結晶のままだと、応力・歪み・Hill 係数・弾性定数・結晶子サイズの編集が計算に効かない。
             // 角度の分割 (配列の大きさを決める AngleResolution・SubDivision) が同じなら、計算する結晶に付け替える (違うときは従来どおり。Ctrl+Simulate で作り直す)
-            if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c) && b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
-                c.Crystallites.BaseCrystal = c;
-            if (renewGVector)
+            //if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c) && b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
+            //    c.Crystallites.BaseCrystal = c; // 261106Cl 変更前
+            // 261106Cl 変更 (作者の決定 C8-1): 角度の分割が違うとき (結晶の欄で角度分解能・分割数を変えた) は、結晶子の集合をこの結晶で作り直し、
+            //  逆格子ベクトルと回折の画素も計算し直す (以前は Ctrl+Simulate を押すまで前の分割の集合のまま、応力などの編集が効かなかった)。
+            //  配列の大きさが分割で決まるので前の集合の濃度 (方位の偏り) は引き継げず、一様に戻る (Ctrl+Simulate と同じ)
+            bool rebuilt = false;
+            if (c.Crystallites?.BaseCrystal is Crystal b && !ReferenceEquals(b, c))
+            {
+                if (b.AngleResolution == c.AngleResolution && b.SubDivision == c.SubDivision)
+                    c.Crystallites.BaseCrystal = c;
+                else
+                {
+                    c.SetCrystallites();
+                    rebuilt = true;
+                }
+            }
+            //if (renewGVector) // 261106Cl 変更前
+            if (renewGVector || rebuilt) // 261106Cl 変更: 作り直した集合は逆格子ベクトルが未設定
             {
                 if (c.Crystallites == null)
                     c.SetCrystallites();
@@ -1059,7 +1074,8 @@ public partial class DiffractionPatternControl : UserControlBase
                 c.Crystallites.ValidIndex = null;
                 //c.Crystallites.ValidSubRotNum = null;
             }
-            if (renewDiffractionPixels)
+            //if (renewDiffractionPixels) // 261106Cl 変更前
+            if (renewDiffractionPixels || rebuilt) // 261106Cl 変更: 作り直した集合は回折の画素が未計算
             {
                 c.Crystallites.ProgressChanged += ProgressChanged;
                 c.Crystallites.SetDiffractedPixels(DetectorProperty);
@@ -1067,7 +1083,9 @@ public partial class DiffractionPatternControl : UserControlBase
 
             }
 
-            double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density);
+            //double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density); // 261106Cl 変更前
+            // 261106Cl 変更: 上で作り直すと結晶子の数が変わるので、前の数で作った濃度 (Debug の test) は使わない
+            double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density?.Length == c.Crystallites.TotalCrystalline ? density : null);
 
             for (int i = 0; i < ImageLength; i++)
                 diffractionPixels[i] += temp[i];

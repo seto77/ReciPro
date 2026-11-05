@@ -773,7 +773,11 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         if (tabControlCrystals.TabPages.Count == 0 || dpc.Crystals == null || dpc.Crystals.Count == 0) return;
 
         for (int i = 0; i < dpc.Crystals.Count; i++)
-            if (dpc.Crystals[i].Crystallites == null || ModifierKeys == Keys.Control)
+            //if (dpc.Crystals[i].Crystallites == null || ModifierKeys == Keys.Control) // 261106Cl 変更前
+            // 261106Cl 変更 (作者の決定 C8-1): 結晶の欄で角度の分割 (角度分解能・分割数) を変えたときも、Ctrl を押さずに作り直す。
+            //  ここで作り直すと下の極点図も新しい集合で描く (DiffractionPatternControl.GetDiffractionPixels も同じ判定で作り直すので、ほかの経路の計算でも効く)
+            if (dpc.Crystals[i].Crystallites == null || ModifierKeys == Keys.Control
+                || (dpc.Crystals[i].Crystallites.BaseCrystal is Crystal b && (b.AngleResolution != dpc.Crystals[i].AngleResolution || b.SubDivision != dpc.Crystals[i].SubDivision)))
             {
                 dpc.Crystals[i].SetCrystallites();
             }
