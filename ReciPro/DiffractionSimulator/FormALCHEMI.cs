@@ -127,6 +127,13 @@ public partial class FormALCHEMI : FormBase
         foreach (var nb in new[] { numericBoxRange, numericBoxPoints })
             nb.ValueChanged += (s, e) => UpdateScanLabel();
         VisibleChanged += (s, e) => { if (Visible) RefreshLists(); };
+        // 261105Cl 追加 (監査 D22): 励起できない・収録範囲外のチャネル (理由つきで並ぶ) はチェックできないようにする。
+        //   ツールチップは「選択できません」と書いているのにチェックでき、計算では黙って外していた (BuildRequest の Status 判定)
+        checkedListBoxChannels.ItemCheck += (s, e) =>
+        {
+            if (e.NewValue == CheckState.Checked && e.Index < channelInfos.Length && channelInfos[e.Index].Status != IonizationAvailability.Available)
+                e.NewValue = CheckState.Unchecked;
+        };
     }
 
     /// <summary>表示文字列を 11 言語へ差し替える (Designer は英語のまま = VS で開いても壊れない)。</summary>
@@ -414,7 +421,24 @@ public partial class FormALCHEMI : FormBase
         //掃く反射列 g に対し、傾斜軸は「ビームと g の両方に垂直」= その軸まわりに振ると s_g が動く
         var g = rotation * (Crystal.MatrixInverseTransposed * (h, k, l));
         var axis = Vector3DBase.VectorProduct(beam, g);
-        if (axis.Length < 1e-9) { UpdateScanLabel(); return null; }
+        //if (axis.Length < 1e-9) { UpdateScanLabel(); return null; } // 261105Cl 変更前: 何も表示せずに止まっていた
+        if (axis.Length < 1e-9) // 261105Cl 変更 (監査 D22): g がビームと平行 (傾斜軸が作れない) なら理由を出す
+        {
+            UpdateScanLabel();
+            toolStripStatusLabel.Text = Localization.Loc(
+                en: "The row g is parallel to the beam, so the scan cannot tilt it through its Bragg conditions. Choose a row that is not along the beam.",
+                ja: "反射列 g がビームと平行なので、走査で Bragg 条件を通して振れません。ビーム方向でない反射列を選んでください。",
+                de: "Die Reihe g ist parallel zum Strahl und kann daher nicht durch ihre Bragg-Bedingungen gekippt werden. Wählen Sie eine Reihe, die nicht entlang des Strahls liegt.",
+                fr: "La rangée g est parallèle au faisceau ; le balayage ne peut donc pas la faire passer par ses conditions de Bragg. Choisissez une rangée qui n'est pas le long du faisceau.",
+                es: "La fila g es paralela al haz, por lo que el barrido no puede inclinarla a través de sus condiciones de Bragg. Elija una fila que no esté a lo largo del haz.",
+                pt: "A fila g é paralela ao feixe, portanto a varredura não pode incliná-la através de suas condições de Bragg. Escolha uma fila que não esteja ao longo do feixe.",
+                it: "La fila g è parallela al fascio, quindi la scansione non può inclinarla attraverso le sue condizioni di Bragg. Scegliere una fila non lungo il fascio.",
+                ru: "Ряд g параллелен пучку, поэтому сканирование не может провести его через условия Брэгга. Выберите ряд, не направленный вдоль пучка.",
+                zhHans: "反射列 g 与电子束平行，扫描无法使其通过布拉格条件。请选择不沿电子束方向的反射列。",
+                zhHant: "反射列 g 與電子束平行，掃描無法使其通過布拉格條件。請選擇不沿電子束方向的反射列。",
+                ko: "반사열 g 가 빔과 평행하므로 스캔으로 Bragg 조건을 통과시킬 수 없습니다. 빔 방향이 아닌 반사열을 선택하세요.");
+            return null;
+        }
         thetaB = g.Length / (2 * UniversalConstants.Convert.EnergyToElectronWaveNumber(Voltage));
 
         var range = numericBoxRange.Value * 1e-3;
