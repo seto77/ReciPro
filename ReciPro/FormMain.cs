@@ -1336,32 +1336,48 @@ public partial class FormMain : FormBase
 
     private void buttonDuplicate_Click(object sender, EventArgs e) => DuplicateCrystal();
 
-    public void DuplicateCrystal()
+    //public void DuplicateCrystal() // 261105Cl 変更前
+    /// <param name="index">261105Cl 追加: 複製する行 (省略時は今の選択行)。右クリックのメニューは右クリックした行を渡す (監査 #24)</param>
+    public void DuplicateCrystal(int index = -1)
     {
-        if (listBox.SelectedIndex < 0) return;
-        var c = (Crystal)listBox.SelectedItem;
+        //if (listBox.SelectedIndex < 0) return; // 261105Cl 変更前 (2 行)
+        //var c = (Crystal)listBox.SelectedItem;
+        var n = (uint)index < (uint)listBox.Items.Count ? index : listBox.SelectedIndex; // 261105Cl 変更
+        if (n < 0) return;
+        var c = (Crystal)listBox.Items[n];
         var newCrystal = new Crystal(c);
 
-        var index = newCrystal.Name.LastIndexOf(" #");
-        if (index >= 0 && int.TryParse(newCrystal.Name[(index + 2)..], out int num))
-            newCrystal.Name = newCrystal.Name[0..(index + 2)] + (num + 1).ToString();
+        //var index = newCrystal.Name.LastIndexOf(" #"); // 261105Cl 変更前 (3 行。引数の index と名前が重なるので sharp に)
+        //if (index >= 0 && int.TryParse(newCrystal.Name[(index + 2)..], out int num))
+        //    newCrystal.Name = newCrystal.Name[0..(index + 2)] + (num + 1).ToString();
+        var sharp = newCrystal.Name.LastIndexOf(" #");
+        if (sharp >= 0 && int.TryParse(newCrystal.Name[(sharp + 2)..], out int num))
+            newCrystal.Name = newCrystal.Name[0..(sharp + 2)] + (num + 1).ToString();
         else
             newCrystal.Name += " #1";
 
-        listBox.Items.Insert(listBox.SelectedIndex + 1, newCrystal);
-        listBox.SelectedIndex++;
+        //listBox.Items.Insert(listBox.SelectedIndex + 1, newCrystal); // 261105Cl 変更前 (2 行)
+        //listBox.SelectedIndex++;
+        listBox.Items.Insert(n + 1, newCrystal); // 261105Cl 変更: 複製元の行のすぐ下に入れて選ぶ
+        listBox.SelectedIndex = n + 1;
         // 260428Cl Application.DoEvents() を削除
     }
 
 
     private void ButtonDelete_Click(object sender, EventArgs e) => DeleteCrystal();
 
-    public void DeleteCrystal()
+    //public void DeleteCrystal() // 261105Cl 変更前
+    /// <param name="index">261105Cl 追加: 消す行 (省略時は今の選択行)。右クリックのメニューは右クリックした行を渡す (監査 #24)</param>
+    public void DeleteCrystal(int index = -1)
     {
-        if (listBox.SelectedIndex >= 0)
+        //if (listBox.SelectedIndex >= 0) // 261105Cl 変更前 (3 行)
+        //{
+        //    var n = listBox.SelectedIndex;
+        //    listBox.Items.Remove(listBox.SelectedItem);
+        var n = (uint)index < (uint)listBox.Items.Count ? index : listBox.SelectedIndex; // 261105Cl 変更
+        if (n >= 0)
         {
-            var n = listBox.SelectedIndex;
-            listBox.Items.Remove(listBox.SelectedItem);
+            listBox.Items.RemoveAt(n);
             if (listBox.Items.Count > n)
                 listBox.SelectedIndex = n;
             else
@@ -1476,28 +1492,44 @@ public partial class FormMain : FormBase
             {
                 if (listBox.SelectedIndex != index)
                     listBox.SelectedIndex = index;
+                contextMenuTargetIndex = index; // 261105Cl 追加
                 contextMenuStripListBox.Show(listBox, e.Location);
             }
         }
     }
 
+    /// <summary>261105Cl 追加 (監査 #24): 右クリックした行。複数選択 (回折シミュレータなどを開いているとき) では SelectedIndex = index が選択に足すだけで、
+    /// SelectedIndex を読むと一番上の選択行が返るので、右クリックした結晶でなく先頭の選択結晶が削除・改名・複製・出力されていた。
+    /// ClearSelected は多結晶表示の選択も変えるので使わず、対象の行をここに持つ (メニューは listBox_MouseDown からしか開かない)</summary>
+    private int contextMenuTargetIndex = -1;
+
+    /// <summary>261105Cl 追加: 右クリックのメニューの対象の行 (無効なら今の選択行)</summary>
+    private int ContextTargetIndex => (uint)contextMenuTargetIndex < (uint)listBox.Items.Count ? contextMenuTargetIndex : listBox.SelectedIndex;
+
     /// <summary>選択結晶をCIF形式で保存</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => ExportCIF();
+    //private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => ExportCIF(); // 261105Cl 変更前 (3 行)
+    //private void duplicateToolStripMenuItem_Click(object sender, EventArgs e) => DuplicateCrystal();
+    //private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => DeleteCrystal();
+    // 261105Cl 変更: 右クリックした行の結晶を対象にする
+    private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => ExportCIF(crystal: ContextTargetIndex >= 0 ? (Crystal)listBox.Items[ContextTargetIndex] : null);
 
-    private void duplicateToolStripMenuItem_Click(object sender, EventArgs e) => DuplicateCrystal();
+    private void duplicateToolStripMenuItem_Click(object sender, EventArgs e) => DuplicateCrystal(ContextTargetIndex);
 
-    private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => DeleteCrystal();
+    private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => DeleteCrystal(ContextTargetIndex);
 
     #region リストボックス上で結晶の名前を変更
     TextBox renameTextBox;
     private void renameToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        var target = ContextTargetIndex; // 261105Cl 追加 (監査 #24): 右クリックした行 (以前は SelectedIndex = 複数選択では先頭の選択行)
+        if (target < 0) return; // 261105Cl 追加
         var pos = new Point(-1, -1);
         for (int x = 0; x < listBox.Width; x += listBox.ColumnWidth)
             for (int y = 0; y < listBox.Height; y += listBox.ItemHeight)
-                if (listBox.SelectedIndex == listBox.IndexFromPoint(x, y))
+                //if (listBox.SelectedIndex == listBox.IndexFromPoint(x, y)) // 261105Cl 変更前
+                if (target == listBox.IndexFromPoint(x, y)) // 261105Cl 変更
                     pos = new Point(x, y);
 
         if (pos.X < 0) return;
@@ -1517,8 +1549,10 @@ public partial class FormMain : FormBase
             renameTextBox.KeyDown += renameTextBox_KeyDown;
         }
         renameTextBox.Location = new Point(listBox.Location.X + pos.X, listBox.Location.Y + pos.Y);
-        renameTextBox.Text = listBox.SelectedItem.ToString();
-        renameTextBox.Tag = listBox.SelectedIndex;
+        //renameTextBox.Text = listBox.SelectedItem.ToString(); // 261105Cl 変更前 (2 行)
+        //renameTextBox.Tag = listBox.SelectedIndex;
+        renameTextBox.Text = listBox.Items[target].ToString(); // 261105Cl 変更
+        renameTextBox.Tag = target;
         groupBoxCrystalList.Controls.Add(renameTextBox);
         renameTextBox.BringToFront();
         renameTextBox.Focus();
@@ -1541,7 +1575,9 @@ public partial class FormMain : FormBase
 
         if (e.KeyCode == Keys.Escape)
         {
-            renameTextBox.Text = listBox.SelectedItem.ToString();
+            //renameTextBox.Text = listBox.SelectedItem.ToString(); // 261105Cl 変更前
+            if (renameTextBox.Tag is int index && (uint)index < (uint)listBox.Items.Count) // 261105Cl 変更: 改名している行の元の名前に戻す
+                renameTextBox.Text = listBox.Items[index].ToString();
             renameTextBox_Leave(sender, e);
         }
     }
@@ -1691,17 +1727,22 @@ public partial class FormMain : FormBase
     private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
     private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => ExportCIF();
 
-    public void ExportCIF(string filename = "")
+    //public void ExportCIF(string filename = "") // 261105Cl 変更前
+    /// <param name="crystal">261105Cl 追加: 出力する結晶 (省略時は今の結晶)。右クリックのメニューは右クリックした行の結晶を渡す (監査 #24)</param>
+    public void ExportCIF(string filename = "", Crystal crystal = null)
     {
+        crystal ??= Crystal; // 261105Cl 追加
         if (filename == "")
         {
-            using var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };//260717Cl using 化
+            //using var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };//260717Cl using 化 // 261105Cl 変更前
+            using var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = crystal.Name + ".cif" }; // 261105Cl 変更
             if (dlg.ShowDialog() == DialogResult.OK)
                 filename = dlg.FileName;
             else
                 return;
         }
-        Crystal.ExportCIF(filename);
+        //Crystal.ExportCIF(filename); // 261105Cl 変更前
+        crystal.ExportCIF(filename); // 261105Cl 変更
     }
 
 
