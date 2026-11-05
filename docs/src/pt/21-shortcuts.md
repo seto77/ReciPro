@@ -85,7 +85,7 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 | Clique único / clique duplo em um botão de função | Alternar essa janela / forçá-la para a frente |
 | Clique direito em um cristal na lista | Menu de contexto (Renomear / Exportar como CIF / Duplicar / Excluir) |
 | Clique duplo no rótulo do índice do eixo de zona (`[u v w]`) | Mostrar / ocultar a caixa de max-UVW |
-| Soltar um arquivo | Carregar uma lista de cristais (`.xml`, `.out`, `.cdb2`) ou um cristal (`.cif`, `.amc`) |
+| Soltar um arquivo | Carregar uma lista de cristais (`.xml`, `.out`) ou um cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Banco de dados de cristais
 [Abrir página →](1-crystal-database.md)
@@ -94,10 +94,10 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 |----------|--------|
 | <kbd>ENTER</kbd> em um campo de busca | Executar a busca |
 | Clique em uma linha de resultado | Carregar esse cristal |
-| Clique em um elemento no pop-up da tabela periódica | Percorrer seu filtro: ignorar → deve incluir → deve excluir |
+| Clique em um elemento no pop-up **Tabela Periódica** | Percorrer seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 ### 2. Informação de simetria · 3. Interação do feixe
-A Informação de simetria não tem combinações especiais de tecla/mouse. Na Interação do feixe, além de <kbd>F1</kbd> e dos botões **Copy**, o cursor vertical no gráfico **Scattering factors** pode ser arrastado para ler o valor de cada elemento.
+A Informação de simetria não tem combinações especiais de tecla/mouse. Na Interação do feixe, além de <kbd>F1</kbd> e dos botões **Copiar**, o cursor vertical no gráfico **Fatores de dispersão** pode ser arrastado para ler o valor de cada elemento.
 [Simetria →](2-symmetry-information.md) · [Interação do feixe →](3-beam-interaction.md)
 
 ### 4. Geometria de rotação
@@ -118,7 +118,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 
 | Atalho | Ação |
 |----------|--------|
-| Clique duplo esquerdo na rede | Alternar entre projeção **Plane** e **Axis** |
+| Clique duplo esquerdo na rede | Alternar entre projeção **Planos** e **Eixos** |
 | Mover o mouse sobre a rede | Ler o (hkl)/[uvw] sob o cursor |
 
 ### 7. Simulador de difração
@@ -131,9 +131,9 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | <kbd>CTRL</kbd> + arrastar com o botão do meio | Mover o centro do detector (quando a área do detector é exibida) |
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Fazer essa camada piscar |
-| Clique duplo esquerdo na estereonete — janela **TEM holder** | Definir a inclinação do suporte para esse ponto |
-| Teclas de seta — janela **TEM holder** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona com qualquer janela do ReciPro em primeiro plano) |
-| Soltar `.prm` / imagem — **Detector geometry**, ou `.txt` — **Dynamic compression** | Carregar esses dados |
+| Clique duplo esquerdo na estereonete — janela **Simulação de Suporte TEM** | Definir a inclinação do suporte para esse ponto |
+| Teclas de seta — janela **Simulação de Suporte TEM** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
+| Soltar `.prm` / imagem — **Geometria do detector**, ou `.txt` — **Compressão dinâmica** | Carregar esses dados |
 
 ### 8. Trajetórias eletrônicas
 [Abrir página →](8-electron-trajectory.md) — uma [visualização 3-D](#3d) com o deslocamento desativado.
@@ -148,7 +148,7 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | Clique duplo esquerdo em um painel | Maximizar esse painel / restaurar a grade (layouts de múltiplos painéis) |
 
 ### 10. Spot ID v1
-[Abrir página →](10-spot-id.md) — a imagem é apenas de referência (não interativa).
+[Abrir página →](10-spot-id.md) — não há visualização de imagem (a geometria das reflexões é inserida numericamente).
 
 | Atalho | Ação |
 |----------|--------|
@@ -182,4 +182,4 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Salvar o texto do editor de volta na entrada selecionada da lista de macros |
 | <kbd>F10</kbd> | Avançar um passo (durante a execução passo a passo) |
 | Clique duplo em uma linha da lista de ajuda de funções | Inserir a assinatura dessa função no ponto de inserção |
-| Soltar um arquivo `.mcr` | Carregá-lo no editor |
+| Soltar um arquivo `.mcr` sobre a janela | Carregá-lo no editor e adicioná-lo à lista de macros (o nome do arquivo passa a ser o nome da macro) |

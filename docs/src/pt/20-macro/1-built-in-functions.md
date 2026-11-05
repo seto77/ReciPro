@@ -184,10 +184,10 @@ Comanda o [Spot ID v2](../11-spot-id-v2.md) a partir de uma macro: carregar uma 
 | Função | Descrição |
 |--------|-----------|
 | `SpotID.LoadFile(filename)` | Carregar um arquivo como **File > Load** faz: `.csv` é lido como lista de pontos (uma imagem precisa ter sido carregada antes) e qualquer outra extensão como imagem de padrão de difração (dm3, dm4, mrc, ipa, tif e outros formatos suportados). Omita `filename` para abrir um diálogo de arquivo |
-| `SpotID.FindSpots()` | Detectar os pontos da imagem carregada e ajustá-los, como faz o botão **Find spots** |
-| `SpotID.Identify()` | Procurar orientações que expliquem os pontos detectados, como faz o botão **Identify spots**, e retornar o número de candidatos. Os cristais testados são os selecionados na lista de cristais da janela principal |
+| `SpotID.FindSpots()` | Detectar os pontos da imagem carregada e ajustá-los, como faz o botão **Detectar & ajustar spots** <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | Procurar orientações que expliquem os pontos detectados, como faz o botão **Identificar spots**, e retornar o número de candidatos. Os cristais testados são os selecionados na lista de cristais da janela principal. Retorna 0 sem buscar quando nenhuma imagem está carregada, há menos de dois pontos registrados ou nenhum cristal está selecionado |
 | `SpotID.CandidateList()` | Retornar a lista de orientações candidatas como texto CSV |
-| `SpotID.SpotList()` | Retornar os pontos observados como texto CSV, com as mesmas colunas de **File > Save**. Combinado com `File.SaveText()`, gera um arquivo que `LoadFile()` consegue reler |
+| `SpotID.SpotList()` | Retornar os pontos observados como texto CSV, com as mesmas colunas do botão **Salvar** de **Informação do spot**. Combinado com `File.SaveText()`, gera um arquivo que `LoadFile()` consegue reler |
 
 `CandidateList()` fornece, para cada candidato: nome do cristal, os ângulos de Euler Z-X-Z (graus), os nove elementos R11–R33 da matriz de rotação (do referencial do cristal para o do laboratório, aplicada a vetores coluna), o resíduo quadrático médio (nm⁻²) e a atribuição dos pontos observados a índices *hkl*. Os candidatos vêm ordenados pelo número de pontos atribuídos (decrescente) e depois pelo resíduo (crescente). Os números são escritos na cultura invariante, então o separador decimal é sempre um ponto.
 
@@ -197,13 +197,13 @@ Comanda o [Spot ID v2](../11-spot-id-v2.md) a partir de uma macro: carregar uma 
 |-------------|------|-----------|
 | `Energy` | double | Energia do feixe (keV para raios X e elétrons, meV para nêutrons) |
 | `CameraLength` | double | Comprimento de câmara (mm) |
-| `PixelSizeInMM` | double | Tamanho do pixel (mm); lê-lo ou escrevê-lo também muda a unidade do tamanho do pixel para mm |
-| `PixelSizeInNMinv` | double | Tamanho do pixel (nm⁻¹); lê-lo ou escrevê-lo também muda a unidade para nm⁻¹ |
+| `PixelSizeInMM` | double | Tamanho do pixel (mm). Escrevê-lo muda a unidade do tamanho do pixel para mm; lê-lo retorna o valor convertido em mm sem mudar a unidade <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | Tamanho do pixel (nm⁻¹). Escrevê-lo muda a unidade para nm⁻¹; lê-lo retorna o valor convertido em nm⁻¹ sem mudar a unidade |
 | `MaxNumberOfSpots` | int | Número máximo de pontos que `FindSpots()` pode detectar |
 | `NearestNeighbor` | int | Separação mínima permitida entre pontos detectados (pixels) |
 | `FittingRange` | double | Raio da região em torno de cada ponto usada no ajuste do pico (pixels) |
 | `AcceptableError` | double | Tolerância da diferença relativa de espaçamento *d* ao associar pontos a reflexões (%) |
-| `IgnoreProhibitedReflections` | bool | Ignorar reflexões cinematicamente proibidas, que ainda assim podem aparecer por difração múltipla |
+| `IgnoreProhibitedReflections` | bool | Ignorar reflexões cinematicamente proibidas, que ainda assim podem aparecer por difração múltipla. Sempre `true` para raios X e nêutrons; um valor definido passa a valer quando a fonte volta a ser elétrons <!-- 261106Cl 作者の決定 I4 --> |
 | `MultiGrain` | bool | Procurar vários grãos; `False` significa um único grão |
 | `MaxNumberOfGrains` | int | Número máximo de orientações de grão procuradas quando `MultiGrain` é `True` |
 | `NumberOfDetectedSpots` | int | Número de pontos detectados (somente leitura) |
@@ -219,8 +219,8 @@ Comanda o visualizador de estrutura a partir de uma macro. `SaveImage()` e `Expo
 |---|---|
 | `StructureViewer.Open()` | Abrir a janela do visualizador de estrutura |
 | `StructureViewer.Close()` | Fechar a janela do visualizador de estrutura |
-| `StructureViewer.SaveImage(filename)` | Salvar a vista principal renderizada como PNG, no tamanho em pixels do campo **Size (W×H)**; omita `filename` para abrir um diálogo |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar a estrutura exibida para impressão 3D, como **Export 3D Model (3MF/STL)** do menu File. A extensão decide o formato (`.stl` monocolor / `.3mf` colorido por elemento); apenas `filename` é obrigatório — os demais padrões são os do diálogo (maior dimensão 80 mm, arestas da célula ⌀2,4 mm, ligações engrossadas até ⌀1,2 mm). Com `fixedScaleInMMperNm` > 0 constroem-se vários modelos na mesma escala. `filename` deve terminar em `.stl` ou `.3mf` (nenhum diálogo é aberto); retorna uma cadeia de informações com o número de triângulos e o tamanho impresso |
+| `StructureViewer.SaveImage(filename)` | Salvar a vista principal renderizada como PNG, no tamanho em pixels do campo **Tamanho (L×A)**; omita `filename` para abrir um diálogo |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exportar a estrutura exibida para impressão 3D, como **Export 3D model (3MF/STL)...** do menu **Arquivo**. A extensão decide o formato (`.stl` monocolor / `.3mf` colorido por elemento); apenas `filename` é obrigatório — os demais padrões são os do diálogo (maior dimensão 80 mm, arestas da célula ⌀2,4 mm, ligações engrossadas até ⌀1,2 mm). Com `fixedScaleInMMperNm` > 0 constroem-se vários modelos na mesma escala. `filename` deve terminar em `.stl` ou `.3mf` (nenhum diálogo é aberto); retorna uma cadeia de informações com o número de triângulos e o tamanho impresso |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Essas três classes de simulação de imagem compartilham muitos membros. Para e
 
 | Função | Descrição |
 |----------|-------------|
-| `ReciPro.Sleep(ms)` | Aguardar o número de milissegundos especificado. É chamado como `ReciPro.Sleep(ms)`; não aparece na tabela de funções integradas do editor |
+| `ReciPro.Sleep(ms)` | Aguardar o número de milissegundos especificado. É chamado como `ReciPro.Sleep(ms)` <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

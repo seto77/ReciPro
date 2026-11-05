@@ -22,14 +22,14 @@ A janela principal instala vários atalhos **válidos para todo o aplicativo**. 
 |----------|--------|
 | <kbd>F1</kbd> | Abrir esta página do manual on-line |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + teclas de seta | Girar o cristal um passo nessa direção (mantenha duas setas pressionadas para uma diagonal) |
-| Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos) |
+| Manter <kbd>CTRL</kbd> pressionado enquanto o ReciPro inicia | Iniciar com o OpenGL desativado (recuperação para problemas gráficos; apenas nesta execução, não é salvo) |
 | Arrastar com o botão esquerdo o widget de orientação (canto inferior esquerdo, abaixo de *Orientação atual*) | Girar o cristal |
 | Clique duplo com o botão direito no widget de orientação | Copiar a imagem do widget para a área de transferência |
 | Clique único em um botão de função | Abrir / fechar essa janela (uma janela minimizada é restaurada em vez de fechada) |
 | Clique duplo em um botão de função | Forçar a janela a ficar visível e trazê-la para a frente |
 | Clique direito em um cristal na lista | Menu de contexto (Renomear / Exportar como CIF / Duplicar / Excluir) |
 | Clique duplo no rótulo do índice do eixo de zona (`[u v w]`, abaixo de *Orientação atual*) | Mostrar / ocultar a caixa max-UVW |
-| Soltar um arquivo sobre a janela | Carregar uma lista de cristais (`.xml`, `.out`, `.cdb2`; pergunta se deve substituir ou anexar) ou um cristal (`.cif`, `.amc`) |
+| Soltar um arquivo sobre a janela | Carregar uma lista de cristais (`.xml`, `.out`; pergunta se deve substituir ou anexar) ou um cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Abrir a ferramenta (experimental) de captura da GUI para a janela ativa |
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para ver todas as janelas de relance.
@@ -49,7 +49,7 @@ Se você é novo no ReciPro, siga estes passos:
 
 ## Menu Arquivo
 
-### File
+### Arquivo
 
 
 | Item de menu | Descrição |
@@ -63,12 +63,12 @@ Se você é novo no ReciPro, siga estes passos:
 | Limpar todos os cristais | Remover todos os cristais da lista |
 | Sair | Fechar o aplicativo |
 
-### Options
+### Opções
 
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| Mostrar dicas | Alternar a exibição das dicas de ferramenta |
+| Mostrar dicas | Mostrar ou ocultar as dicas de ferramenta em todas as janelas — as dos controles, dos itens da barra de ferramentas e dos menus, das células das tabelas e das abas; a configuração é mantida para a próxima inicialização <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Modo escuro | Alternar entre os temas de cores claro e escuro |
 | Usar índice de Miller-Bravais (hkil) | Usar a notação de 4 índices para os sistemas trigonal/hexagonal em todo o aplicativo |
 | Usar fatores de dispersão iônicos | Usar os fatores de espalhamento de elétrons iônicos (Peng) para os íons atribuídos aos átomos nos cálculos dinâmicos de elétrons (ondas de Bloch), incluindo os perfis de Kikuchi; o termo de monopolo $g \neq 0$ é somado apenas aos coeficientes elásticos $U_g$ (a absorção TDS e a fonte TDS de Kikuchi usam a parte iônica finita). Quando desmarcado, são usados os fatores de átomos neutros. Se a célula unitária não for eletricamente neutra ($\Sigma q \neq 0$), o termo de monopolo é descartado e apenas a parte finita (íon blindado) é usada; um aviso é exibido quando a opção é ativada |
@@ -81,7 +81,7 @@ Se você é novo no ReciPro, siga estes passos:
 | Capturar componentes da GUI... | Ferramenta de desenvolvedor para salvar capturas de tela da GUI |
 | Função de difração de pó (em desenvolvimento) | Ativar a janela de difração policristalina (de pó) |
 
-### Help
+### Ajuda
 
 | Item de menu | Descrição |
 |-----------|-------------|
@@ -95,7 +95,7 @@ Se você é novo no ReciPro, siga estes passos:
 
 O idioma da interface é alternado pelo menu **Idioma** separado (requer reinicialização).
 
-### Language
+### Idioma
 
 Alternar o idioma da interface. Estão disponíveis onze idiomas — English, 日本語, Deutsch, Français, Español, Português, Italiano, Русский, 简体中文, 繁體中文 e 한국어 — cada um exibido na sua própria escrita. A alteração entra em vigor após reiniciar o ReciPro. O manual on-line segue a mesma configuração, de modo que <kbd>F1</kbd> e **Ajuda ▸ Ajuda (Web)** abrem a página no idioma escolhido.
 
@@ -180,7 +180,7 @@ Consulte [Geometria de rotação](4-rotation-geometry.md) e [Apêndice A1. Siste
 
 ## Informação do cristal
 
-Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos CIF/AMC para carregar uma estrutura. Este controle é compartilhado pelo ReciPro, PDIndexer e CSManager, mas as abas e os recursos exibidos diferem conforme o aplicativo. O ReciPro exibe as abas Info. básica, Info. de átomos e Ref. (as abas EOS, Elasticidade e outras são destinadas aos outros aplicativos e não são exibidas no ReciPro).
+Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos CIF/AMC para carregar uma estrutura. Este controle é compartilhado pelo ReciPro, PDIndexer e CSManager, mas as abas e os recursos exibidos diferem conforme o aplicativo. O ReciPro exibe as abas **Info. básica**, **Info. de átomos** e **Ref.** (as abas EOS, Elasticidade e outras são destinadas aos outros aplicativos e não são exibidas no ReciPro).
 
 > **Importante**: Pressione **Adicionar** ou **Substituir** para salvar as alterações.
 
@@ -188,15 +188,15 @@ Edite os parâmetros de rede, a simetria e os átomos; arraste e solte arquivos 
 
 A parte superior do painel sempre exibe **Name** (nome do cristal), **Fórmula** (fórmula química, calculada a partir da lista de átomos), **Z** (número de unidades de fórmula por célula unitária) e **Cor** (a cor de exibição do cristal, usada na visualização 3D da estrutura e nas curvas de perfil de difração). Os botões **Info. de simetria** e **Interação do feixe** abrem as janelas [Informação de simetria](2-symmetry-information.md) e [Interação do feixe](3-beam-interaction.md). Para % em massa, % atômica e conversão em óxidos, clique com o botão direito e escolha [Detalhes da composição química](#chemical-composition).
 
-### Aba Basic Info
+### Aba Info. básica {#basic-info-tab}
 
-![Basic Info](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![Info. básica](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 Parâmetros de rede, simetria e grandezas derivadas deles.
 
 | Item | Descrição |
 |------|------|
-| Parâmetros da célula | Parâmetros de rede a, b, c (**Unidade**: Å = 10⁻¹⁰ m ou nm) e α, β, γ. A escolha de uma simetria os restringe automaticamente (por exemplo, a=b=c, α=β=γ=90° para cúbico). |
+| Parâmetros da célula | Parâmetros de rede a, b, c (**Unidade**: Å = 10⁻¹⁰ m ou nm; a unidade é mantida para a próxima inicialização) e α, β, γ. A escolha de uma simetria os restringe automaticamente (por exemplo, a=b=c, α=β=γ=90° para cúbico). |
 | Simetria | Escolha o **Sistema cristalino**, o **Grupo pontual** e o **Grupo espacial**. Digite na caixa **Pesquisar** para listar os candidatos correspondentes (diferencia maiúsculas de minúsculas). |
 | Volume da célula / Massa da célula | Volume e massa da célula unitária. O volume é exibido em Å³ / nm³ conforme a seleção de **Unidade**; a massa, em 10⁻²⁴ g. |
 | Volume molar / Massa molar / Densidade | Volume molar (cm³/mol, por unidade de fórmula), massa molar (g/mol) e densidade (g/cm³). Exibidos **somente quando os átomos foram inseridos**. |
@@ -205,15 +205,15 @@ Parâmetros de rede, simetria e grandezas derivadas deles.
 | Change axes/origin setting | O mesmo que o item do menu de contexto **Alterar configuração de eixos/origem**: converte para outra configuração de eixos/origem do mesmo grupo espacial. |
 | Densidade atômica / Densidade eletrônica | Número de átomos e de elétrons por volume da célula, exibidos em Å⁻³ / nm⁻³ conforme a seleção de **Unidade**. |
 
-### Aba Atom
+### Aba Info. de átomos {#atom-tab}
 
-![Atom](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![Info. de átomos](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 Defina a espécie, a posição, o fator de temperatura e o fator de espalhamento de cada átomo. Edite a lista de átomos com **Adicionar**, **Substituir** (substituir a linha selecionada), **Subir/Descer** (reordenar) e **Excluir**. A lista de átomos também mostra, para cada sítio, sua multiplicidade (**Mult.**), a letra de Wyckoff (**Letra Wyck.**) e a simetria do sítio (**Sim. sítio**). Cada átomo possui:
 
 | Item | Descrição |
 |------|------|
-| Label | Rótulo do átomo (qualquer identificador). |
+| Rótulo | Rótulo do átomo (qualquer identificador). |
 | Element | Elemento (incluindo a valência iônica). |
 | X, Y, Z | Coordenadas fracionárias (0–1). Frações como 1/2 ou 2/3 podem ser inseridas. |
 | Occ | Ocupação (0–1). |
@@ -222,27 +222,27 @@ Clique com o botão direito em uma linha de átomo e escolha **Mostrar posiçõe
 
 **Deslocamento da origem**: desloca a origem de todas as coordenadas atômicas. Escolha o sinal com **+** / **−** e pressione um dos vetores predefinidos — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — ou use **Apply custom shift** para um valor arbitrário.
 
-**Fator de Debye–Waller (fator de temperatura)**:
+**Deslocamento (B)** (fator de Debye–Waller / de temperatura):
 
 | Item | Descrição |
 |------|------|
 | Notation | Usar a notação U ou B. Ao trocar, os valores exibidos são convertidos ($B = 8\pi^2 U$). |
-| Model | Isotrópico ou anisotrópico. |
+| Modelo | Isotropia ou anisotropia. |
 | U##, β## | Para o caso anisotrópico, inserir cada componente: $U_{ij}$ em Å², ou na notação B os $\beta_{ij} = 2\pi^2 a^*_i a^*_j U_{ij}$ adimensionais (iguais a B(i,j) nos arquivos AMCSD). |
 
-**Scattering factor**: escolha o fator de espalhamento usado para cada átomo.
+**Fator de dispersão**: escolha o fator de espalhamento usado para cada átomo.
 
 | Radiação | Fonte / configuração |
 |-----------|------|
-| X-ray | Fatores de espalhamento incluindo a valência iônica (International Tables for Crystallography, Vol. C). |
-| Electron | Fatores de espalhamento de elétrons — átomos neutros de Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; íons de Peng (1998), *Acta Cryst.* **A54**, 481–485. |
-| Neutron | Comprimentos de espalhamento de nêutrons. Escolha **Natural isotope abundance** ou **Custom isotope abundance** (uma composição isotópica arbitrária). |
+| Raios X | Fatores de espalhamento incluindo a valência iônica (International Tables for Crystallography, Vol. C). |
+| Elétrons | Fatores de espalhamento de elétrons — átomos neutros de Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276; íons de Peng (1998), *Acta Cryst.* **A54**, 481–485. |
+| Nêutrons | Comprimentos de espalhamento de nêutrons. Escolha **Natural isotope abundance** ou **Custom isotope abundance** (uma composição isotópica arbitrária). |
 
-### Aba Reference
+### Aba Ref. {#reference-tab}
 
-![Reference](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![Ref.](../assets/cap-pt-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
-Registre a fonte da estrutura: **Note**, **Authors**, **Journal** e **Title**.
+Registre a fonte da estrutura: **Note**, **Autores**, **Revista** e **Título**.
 
 ### Menu de contexto (clique direito)
 
@@ -280,19 +280,19 @@ A faixa vertical de botões à direita inicia as janelas de análise e simulaç�
 
 | Botão | Descrição | Detalhes |
 |--------|-------------|---------|
-| Crystal Database | Pesquisar e importar cristais dos bancos de dados incluídos / on-line | [1. Banco de dados de cristais](1-crystal-database.md) |
-| Symmetry Information | Informações de grupo espacial e diagramas de simetria das *International Tables* Vol. A | [2. Informação de simetria](2-symmetry-information.md) |
-| Beam Interaction | Interação feixe–cristal: reflexões, atenuação, fatores de espalhamento, fluorescência | [3. Interação do feixe](3-beam-interaction.md) |
-| Rotation Geometry | Matriz de rotação 3D / ângulos do goniômetro | [4. Geometria de rotação](4-rotation-geometry.md) |
-| Structure Viewer | Estrutura cristalina 3D | [5. Visualizador de estrutura](5-structure-viewer.md) |
-| Stereonet | Projeção estereográfica | [6. Estereonete](6-stereonet.md) |
-| Diffraction Simulator | Difração de raios X / elétrons de monocristal | [7. Simulador de difração](7-diffraction-simulator/index.md) |
-| Trajectory Simulator | Simulação de Monte Carlo de trajetórias eletrônicas | [8. Trajetórias eletrônicas](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | Simulação de imagem HRTEM / STEM | [9. Simulador HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
+| Banco de Cristais | Pesquisar e importar cristais dos bancos de dados incluídos / on-line | [1. Banco de dados de cristais](1-crystal-database.md) |
+| Informação de Simetria | Informações de grupo espacial e diagramas de simetria das *International Tables* Vol. A | [2. Informação de simetria](2-symmetry-information.md) |
+| Interação do Feixe | Interação feixe–cristal: reflexões, atenuação, fatores de espalhamento, fluorescência | [3. Interação do feixe](3-beam-interaction.md) |
+| Geometria de Rotação | Matriz de rotação 3D / ângulos do goniômetro | [4. Geometria de rotação](4-rotation-geometry.md) |
+| Visualizador de Estrutura | Estrutura cristalina 3D | [5. Visualizador de estrutura](5-structure-viewer.md) |
+| Estereonete | Projeção estereográfica | [6. Estereonete](6-stereonet.md) |
+| Simulador de Difração | Difração de raios X / elétrons de monocristal | [7. Simulador de difração](7-diffraction-simulator/index.md) |
+| Simulador de Trajetória | Simulação de Monte Carlo de trajetórias eletrônicas | [8. Trajetórias eletrônicas](8-electron-trajectory.md) |
+| Simulador HRTEM/STEM | Simulação de imagem HRTEM / STEM | [9. Simulador HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | Indexação de padrões SAED (antigo "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Detecção e indexação de pontos | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | Simulação de padrões EBSD | [12. Simulação EBSD](12-ebsd-simulation.md) |
-| Powder Diffraction | Difração policristalina (de pó) — ativar via **Opções ▸ Função de difração de pó (em desenvolvimento)** | - |
+| Simulador EBSD | Simulação de padrões EBSD | [12. Simulação EBSD](12-ebsd-simulation.md) |
+| Difração de Pó | Difração policristalina (de pó) — ativar via **Opções ▸ Função de difração de pó (em desenvolvimento)** | - |
 
 ---
 

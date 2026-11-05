@@ -16,19 +16,19 @@ Simula o padrão de difração produzido quando um feixe de elétrons paralelo a
 
 ---
 
-## Wave Length
+## Fonte de ondas {#wave-length}
 
-![Wave Length](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Fonte de ondas](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
 Defina a fonte de radiação como **Elétrons**. Insira a energia (keV) ou o comprimento de onda (Å ou nm, alternável; padrão Å) e o comprimento de onda corrigido relativisticamente é calculado. O valor inicial é 200 keV; o menu **Predefinições** define 300 / 200 / 120 kV com um clique. Para fontes de raios X e nêutrons, consulte [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Incident beam mode
+## Óptica {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Óptica](../../assets/cap-pt-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Defina a geometria do feixe incidente como **Feixe paralelo**. Esta é a geometria de onda plana padrão usada para SAED e difração de raios X.
+Defina a **Óptica** (a geometria do feixe incidente) como **Feixe paralelo**. Esta é a geometria de onda plana padrão usada para SAED e difração de raios X.
 
 > **Nota**: Para elétrons você pode escolher **Feixe paralelo / Precessão (elétrons) / Convergência (elétrons)**. A escolha de **Precessão (elétrons)** resulta em uma [simulação PED](2-ped-simulation.md), e a escolha de **Convergência (elétrons)** resulta em uma [simulação CBED](3-cbed-simulation.md); em ambos os casos o cálculo de intensidade muda automaticamente para **Teoria dinâmica**.
 
@@ -89,7 +89,7 @@ Controla como cada spot de difração é renderizado.
 - **Esfera sólida / Gaussiana** : o modelo geométrico do ponto da rede recíproca (padrão **Esfera sólida**). **Esfera sólida** desenha a seção transversal (um círculo) entre uma esfera e a esfera de Ewald: o raio da esfera é $R\,I^{1/3}$ para **Cinemático & erro exc.** (volume da esfera ∝ intensidade) e $R$ para **Apenas erro de exc.**; para **Teoria dinâmica**, desenha-se um disco de raio $R\,I_\text{dyn}^{1/2}$ (área ∝ intensidade) sem o corte pela esfera de Ewald. **Gaussiana** desenha a seção transversal (uma gaussiana 2-D) de uma gaussiana 3-D com $\sigma = R$, cuja integral corresponde à intensidade de difração.
 - **Opacidade** : transparência do spot (0 = transparente, 1 = opaco).
 - **Raio do ponto (R)** : raio virtual do ponto da rede recíproca (nm⁻¹; 0.01–1, padrão 0.2). O tamanho do spot é fixado pela combinação do modo de **Aparência** e do **Cálculo de intensidade** (veja acima).
-- **Brilho**, **Escala de cores**, **Escala log** : exibidos apenas no modo **Gaussiana**. **Brilho** ajusta a intensidade integrada da gaussiana renderizada; a **Escala de cores** é **Gray** (spots nas cores de ponto abaixo), **Cold-Warm**, **Spectrum** ou **Fire**; **Escala log** exibe as intensidades em escala logarítmica (útil para padrões com grande contraste de intensidade).
+- **Brilho**, **Escala de cores**, **Escala log** : exibidos apenas no modo **Gaussiana**. **Brilho** ajusta a intensidade integrada da gaussiana renderizada; a **Escala de cores** é **Gray** (spots nas cores de ponto abaixo), **Cold-warm**, **Spectrum** ou **Fire**; **Escala log** exibe as intensidades em escala logarítmica (útil para padrões com grande contraste de intensidade).
 - **Cor do ponto** : exibida enquanto a **Escala de cores** for **Gray** (a configuração inicial). **Pontos gerais**, **Pontos extintos (paraf./desl.)** e **Pontos extintos (centragem)** definem as cores dos reflexos permitidos e proibidos.
 - **Cor por cristal** : quando marcado, os spots são desenhados na cor atribuída a cada cristal (também para um único cristal).
 
@@ -101,14 +101,14 @@ Os rótulos sobrepostos aos spots são selecionados na [barra de ferramentas](in
 
 | Rótulo | Conteúdo |
 |-------|---------|
-| **Index** | índices de Miller $(hkl)$ |
-| **d** | distância interplanar $d$ (exibida em Å) |
-| **1/d** | inverso da distância interplanar $1/d$ (nm⁻¹) |
-| **Distância** | distância do spot ao reflexo direto no detector, $L_2 \tan 2\theta$ (mm; $L_2$ = comprimento de câmara 2; exata para um detector não inclinado, τ = 0) |
+| **Index** | índices de Miller $(hkl)$; quatro índices $(hkil)$ quando **Opções ▸ Usar índice de Miller-Bravais (hkil)** da janela principal está ativado e o cristal usa eixos hexagonais (os rótulos das linhas de Kikuchi, dos anéis de Debye e da vista 3-D seguem a mesma configuração) <!-- 261105Cl 監査: C23 --> |
+| **d** | distância interplanar $d$, em Å ou nm conforme a unidade de comprimento da janela principal <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | inverso da distância interplanar $1/d$, em nm⁻¹ ou Å⁻¹ conforme a unidade de comprimento da janela principal <!-- 261106Cl 作者の決定 C2 --> |
+| **Distância** | distância no detector entre o spot e o spot transmitido (direto) (mm), medida entre as posições desenhadas; por isso vale também para um detector inclinado, para a câmera de precessão de raios X e para o Retro-Laue (medida a partir do orifício do feixe); não é exibida quando o feixe transmitido não atinge o detector <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | ângulo de espalhamento $2\theta$ (mesma definição dos círculos concêntricos da escala 2θ) |
 | **χ** | ângulo azimutal $\chi$, medido a partir da direção para cima (12 horas), positivo no sentido horário (mesma definição das linhas radiais da escala azimutal) |
-| **Erro excit.** | erro de excitação $S_g$ (nm⁻¹) |
-| **\|Fg\|** | intensidade relativa (%) no modo **Cinemático & erro exc.**; no modo **Teoria dinâmica**, a intensidade relativa (% do feixe difratado mais intenso, excluindo 000) e a amplitude complexa na superfície de saída. Nada é exibido no modo **Apenas erro de exc.** |
+| **Erro excit.** | erro de excitação $S_g$, em nm⁻¹ ou Å⁻¹ conforme a unidade de comprimento da janela principal |
+| **Intensidade** | intensidade relativa (%) no modo **Cinemático & erro exc.**; no modo **Teoria dinâmica**, a intensidade relativa (% do feixe difratado mais intenso, excluindo 000) e a amplitude complexa na superfície de saída. Nada é exibido no modo **Apenas erro de exc.** |
 
 ---
 

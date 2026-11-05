@@ -105,7 +105,7 @@ $$
 
 A diagonalização de $\mathbf{A}$ fornece **todos** os vetores de onda de Bloch e as amplitudes de uma só vez. As amplitudes dos feixes difratados — e, portanto, as intensidades — seguem então das condições de contorno nas superfícies de entrada e de saída e da espessura da amostra. Essas etapas, o potencial óptico (complexo), o fator de Debye–Waller e os coeficientes de transmissão $T_{\mathbf g}$ são descritos em [Cálculo dinâmico (núcleo comum)](calculation.md).
 
-> **Nota:** Os valores $V_{\mathbf g}$ mostrados na tabela **Details** do simulador de difração são os valores brutos *antes* da aplicação do fator de correção relativística.
+> **Nota:** Os valores $V_{\mathbf g}$ mostrados na tabela **Detalhes dos pontos** do simulador de difração são os valores brutos *antes* da aplicação do fator de correção relativística.
 
 ---
 

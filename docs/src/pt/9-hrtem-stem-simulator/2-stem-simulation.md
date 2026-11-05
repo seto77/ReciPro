@@ -4,7 +4,7 @@ A **simulação STEM (Scanning Transmission Electron Microscopy)** calcula image
 
 ![Simulador no modo STEM](../../assets/cap-pt-auto/FormImageSimulator-stem.png)
 
-> Esta página lista todas as configurações que aparecem à direita quando **Image mode = STEM**. Para os controles de exibição do resultado, brilho e normalização à esquerda, consulte a [página de visão geral](index.md). Apenas o **alvo de exibição** específico do STEM é repetido abaixo.
+> Esta página lista todas as configurações que aparecem à direita quando **Modo de imagem = STEM**. Para os controles de exibição do resultado, brilho e normalização à esquerda, consulte a [página de visão geral](index.md). Apenas o **alvo de exibição** específico do STEM é repetido abaixo.
 
 ---
 
@@ -40,7 +40,7 @@ Consulte o [Apêndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)
 
 ![Parâmetros da amostra](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : espessura da amostra (nm). Este valor é ignorado no modo **Serial image**.
+- **Espessura** : espessura da amostra (nm). Este valor é ignorado no modo **Imagem em série**.
 
 ---
 
@@ -50,7 +50,7 @@ Consulte o [Apêndice A3.4 — Cálculo STEM](../appendix/a3-bloch-wave/stem.md)
 
 | Parâmetro | Descrição | Padrão / típico |
 |-----------|-------------|-------------------|
-| **Tensão de acel. (kV)** | Tensão de aceleração. O comprimento de onda do elétron corrigido relativisticamente é exibido ao lado | 200 kV |
+| **Tensão de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensão de aceleração (kV). O comprimento de onda do elétron corrigido relativisticamente é exibido ao lado | 200 kV |
 | **Desfoco Δf** | Desfocagem da lente objetiva (formadora da sonda) (nm) | −57.8 nm |
 | **Cs** | Coeficiente de aberração esférica (mm). Afeta o tamanho da sonda | 0.5–1.0 mm |
 | **Cc** | Coeficiente de aberração cromática (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@ Defina a geometria da sonda convergente e do detector anular. Cada ângulo tamb�
 
 | Parâmetro | Descrição | Padrão / típico |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Semiângulo da sonda convergente (mrad). Valores maiores geram uma sonda mais fina e alteram o contraste de difração | 25 mrad (padrão); 15–25 mrad |
+| **Conv. semi-angle α** | Semiângulo da sonda convergente (mrad). Valores maiores geram uma sonda mais fina e alteram o contraste de difração | 25 mrad (padrão); 15–25 mrad |
 | **Detector anular — Interno** | Semiângulo interno de coleta do detector anular (mrad). O sinal dentro desse ângulo é excluído | 0 (padrão); BF: 0, HAADF: 80 |
 | **Detector anular — Externo** | Semiângulo externo de coleta do detector anular (mrad). O sinal fora desse ângulo é excluído | 20 (padrão); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Tamanho efetivo da fonte de elétrons (pm). Aplicado após o cálculo como uma convolução gaussiana de cada imagem Elástico / TDS / EDX. Valores maiores borram a imagem e reduzem o contraste de detalhes finos | 20 pm (padrão) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamanho efetivo da fonte de elétrons (pm). Aplicado após o cálculo como uma convolução gaussiana de cada imagem Elástico / TDS / EDX. Valores maiores borram a imagem e reduzem o contraste de detalhes finos | 20 pm (padrão) |
 
 Os ângulos do detector se aplicam apenas à imagem STEM de referência (Elástico / TDS / Elástico & TDS); os mapas STEM-EDX não os usam. Os padrões valem apenas na primeira execução; depois disso, os últimos valores usados são restaurados.
 
@@ -86,12 +86,13 @@ Os ângulos do detector se aplicam apenas à imagem STEM de referência (Elásti
 
 ---
 
-## Modo de imagem (single / serial)
+## Modo único/série
 
-![Modo de imagem](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
+![Modo único/série](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
-- **Single image** : calcula uma imagem STEM na espessura atual.
-- **Serial image** : gera uma série de imagens com a espessura / desfocagem variada em etapas (definidas por **Start / Step / Num**; a lista abaixo também pode ser editada diretamente).
+- **Imagem única** : calcula uma imagem STEM na espessura atual.
+- **Imagem em série** : gera uma série de imagens com a espessura / desfocagem variada em etapas (definidas por **Início / Passo / Núm**; a lista abaixo também pode ser editada diretamente).
 
 ---
 
@@ -108,7 +109,7 @@ Os ângulos do detector se aplicam apenas à imagem STEM de referência (Elásti
 
 ![Ondas](../../assets/cap-pt-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : número máximo de ondas de Bloch usadas no método de Bethe (padrão 80). O custo do problema de autovalores escala com o cubo do número de ondas.
+- Número máximo de ondas de Bloch usadas no método de Bethe (padrão 80). O custo do problema de autovalores escala com o cubo do número de ondas.
 
 ---
 
@@ -129,7 +130,7 @@ A chave de exibição no canto inferior esquerdo da janela seleciona qual compon
 
 | Alvo de exibição | Descrição |
 |----------------|-------------|
-| **Elastic** | Imagem somente de espalhamento elástico |
+| **Elástico** | Imagem somente de espalhamento elástico |
 | **TDS** | Imagem somente de espalhamento térmico difuso |
 | **Elastic & TDS** | Soma de elástico + TDS |
 | **EDX** | Mapa de raios X característicos. A linha a exibir (por exemplo `O-K`) é escolhida na caixa de combinação abaixo, e **EDX comum** em *Normalização* coloca os canais da mesma grandeza (canais de camada: vacâncias; séries de linhas: fótons de raios X) em uma única faixa de exibição compartilhada, de modo que trocar entre eles não reescala a imagem |

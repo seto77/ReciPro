@@ -38,8 +38,8 @@ Insira dois planos cristalinos \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) ou dois 
 
 - a distância interplanar de cada plano / o comprimento de cada eixo,
 - o ângulo entre os dois planos (ou os dois eixos),
-- o ângulo entre o plano 1 e o eixo 1, e entre o plano 2 e o eixo 2,
-- **o índice de direção normal a ambos os planos** e **o índice de plano normal a ambos os eixos**.
+- o ângulo entre a normal do plano 1 e o eixo 1, e entre a normal do plano 2 e o eixo 2 (90° quando o eixo está contido no plano), <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
+- **O eixo paralelo a ambos os planos** (o eixo de zona [*uvw*] dos dois planos) e **O plano que contém ambos os eixos** (o plano (*hkl*) que contém os dois eixos). Os sinais seguem [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) e (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 Esses cálculos respeitam a métrica da célula unitária atual. Os comprimentos são exibidos em Å e os ângulos em graus.
 
@@ -49,7 +49,7 @@ Esses cálculos respeitam a métrica da célula unitária atual. Os comprimentos
 
 ![Posições de Wyckoff](../assets/cap-pt-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Lista cada posição de Wyckoff com sua multiplicidade (**Mult.**), sua letra de Wyckoff (**Letra Wyck.**), sua simetria de sítio (**Sim. sítio**) e **Coordenadas** (até quatro por linha; listas mais longas continuam nas linhas seguintes). A primeira entrada de Wyckoff (a de maior multiplicidade) é a posição geral. Para redes centradas, os vetores de translação da rede são mostrados na linha de cabeçalho.
+Lista cada posição de Wyckoff com sua multiplicidade (**Mult.**), sua letra de Wyckoff (**Letra Wyck.**), sua simetria de sítio (**Sim. sítio**) e **Coordenadas** (até quatro por linha; listas mais longas continuam nas linhas seguintes). A primeira entrada de Wyckoff (a de maior multiplicidade) é a posição geral. Para redes centradas, os vetores de translação da rede são mostrados na linha de cabeçalho; para grupos R em eixos hexagonais, são as três translações de centragem da configuração obversa, (0,0,0)+, (2/3,1/3,1/3)+ e (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 

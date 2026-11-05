@@ -39,7 +39,7 @@ Define as condições de imagem da lente objetiva.
 
 | Parâmetro | Descrição | Padrão / típico |
 |-----------|-------------|-------------------|
-| **Tensão de acel. (kV)** | Tensão de aceleração. O comprimento de onda do elétron corrigido relativisticamente é exibido à direita | 200 kV |
+| **Tensão de acel.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tensão de aceleração (kV). O comprimento de onda do elétron corrigido relativisticamente é exibido à direita | 200 kV |
 | **Desfoco Δf** | Desfoco da lente objetiva (nm). O valor de referência do **Desfoco de Scherzer** é exibido abaixo | −57.8 nm |
 | **Cs** | Coeficiente de aberração esférica (mm). Afeta a CTF e o desfoco de Scherzer. Valores negativos (−20 a 20 mm) são aceitos | 1.0 mm (padrão); 0.5–1.0 (convencional), < 0.01 (corrigido por Cs) |
 | **Cc** | Coeficiente de aberração cromática (mm). Determina o borramento da imagem causado pela dispersão de energia | 1.4 mm (padrão); 1.0–2.0 mm |
@@ -52,7 +52,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 
 e cada onda difratada é multiplicada por $\exp[-i\chi(u)]$, de modo que **Δf negativo é subfoco** (a convenção em que o desfoco de Scherzer é negativo).
 
-> **Menu de clique direito**: no painel Condições TEM é possível aplicar com um único clique **Definir desfoco como 0 nm** / **Definir desfoco com o valor de Scherzer** / **Definir todas as aberrações como zero** (este último define Cs, Cc, β, ΔV **e o desfoco** como 0). O mesmo menu contém quatro predefinições de microscópio — *300kV Cold-FEG sem Cs (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* e *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100* — que definem a tensão de aceleração, Cs, Cc e ΔV conforme escrito no item e, em seguida, definem o desfoco com o valor de Scherzer (β não é alterado). A caixa de seleção **Predefinições**, no canto inferior direito, abre a janela que armazena as suas próprias condições (veja [Lista de predefinições](index.md#preset-list)).
+> **Menu de clique direito**: no painel Condições TEM é possível aplicar com um único clique **Definir desfoco como 0 nm** / **Definir desfoco com o valor de Scherzer** / **Condições ideais (Cs, Cc, β, ΔV, Δf = 0)** (este último define Cs, Cc, β, ΔV **e o desfoco** como 0). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> O mesmo menu contém quatro predefinições de microscópio — *300kV Cold-FEG sem Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* e *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — que definem a tensão de aceleração, Cs, Cc e ΔV conforme escrito no item e, em seguida, definem o desfoco com o valor de Scherzer (β não é alterado). A caixa de seleção **Predefinições**, no canto inferior direito, abre a janela que armazena as suas próprias condições (veja [Lista de predefinições](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Desfoco de Scherzer
 
@@ -104,7 +104,7 @@ Restringe as ondas difratadas que passam pela abertura da objetiva. O próprio c
 
 Seleciona como a coerência parcial (β e a dispersão de foco δ) é incluída. A onda de saída é calculada para uma única direção incidente (o eixo do feixe); a dispersão da iluminação e a dispersão de energia entram apenas por meio das funções envelope abaixo.
 
-- **Imagem linear** (modelo quase coerente) : computacionalmente barato. Cada onda difratada $\psi_g$ da onda de saída dinâmica é multiplicada por $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ e a imagem é $\left|\sum_g\right|^2$. Preciso quando a imagem é dominada pela interferência com o feixe transmitido (amostras finas).
+- **Imagem linear** (modelo quase coerente) : computacionalmente barato. Cada onda difratada $\psi_g$ da onda de saída dinâmica é multiplicada por $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ e as ondas são somadas coerentemente: $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Preciso quando a imagem é dominada pela interferência com o feixe transmitido (amostras finas).
 - **Coef. cruz. de transm.** (coeficiente de transmissão cruzada) : computacionalmente caro, porém mais preciso. Cada par de feixes $(g,h)$ é somado com o envelope mútuo (o coeficiente de transmissão cruzada completo), e é o modelo a usar para espalhadores fortes que excitam muitas ondas difratadas intensas. O custo cresce com o quadrado do número de feixes dentro da abertura.
 
 Para mais detalhes, consulte o [Apêndice A3.2 — Formação da imagem HRTEM](../appendix/a3-bloch-wave/hrtem.md).
@@ -123,7 +123,7 @@ Para uma imagem em série, defina o seguinte.
 | Item | Descrição |
 |------|-------------|
 | **Espessura (nm)** / **Desfoco (nm)** | Qual grandeza varrer (ambas são permitidas) |
-| **Start / Passo / Núm** | Valor inicial, largura do passo e número de imagens. São expandidos na caixa de lista abaixo, que também pode ser editada diretamente |
+| **Início / Passo / Núm** | Valor inicial, largura do passo e número de imagens. São expandidos na caixa de lista abaixo, que também pode ser editada diretamente |
 | **Direção horizontal:** | Quando espessura e desfoco são varridos, a grandeza disposta na direção horizontal da grade (**Desfoco** ou **Espessura**) |
 
 Varrer espessura e desfoco produz uma matriz de imagens linhas × colunas. **Núm** é limitado a 20 para cada grandeza. Quando apenas uma grandeza é varrida e há mais de duas imagens, a linha é quebrada numa grade aproximadamente quadrada.

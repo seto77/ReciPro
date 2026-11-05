@@ -31,7 +31,9 @@ Os controles na parte superior da janela definem a execução:
 - **Simular trajetórias** : inicia a execução de Monte Carlo. A barra de status na parte inferior informa separadamente o tempo decorrido do cálculo das trajetórias, do desenho dos gráficos e da renderização 3D.
 - **Number of trajectories** (100–1 000 000, padrão 100 000) : quantos elétrons incidentes rastrear. Mais elétrons reduzem o ruído estatístico de todas as distribuições abaixo, com um tempo de execução que cresce linearmente.
 - **Inclinação da amostra** (°, −90 a 0, padrão 0) : inclinação da superfície da amostra em torno do eixo *X*. Deixe em 0 para incidência normal; use **−70°** para reproduzir a geometria do [simulador EBSD](12-ebsd-simulation.md), em que a grande inclinação aumenta o rendimento de retroespalhamento.
-- **Energy** (keV) / **Wavelength** / **Unit** : a tensão de aceleração do feixe incidente e o comprimento de onda do elétron, com correção relativística, vinculado a ela. A energia define a energia cinética usada tanto pelo modelo elástico (NIST Mott) quanto pelo inelástico (poder de freamento / IMFP).
+- **Energia** (keV) / **Compr. de onda** / **Unit** : a tensão de aceleração do feixe incidente e o comprimento de onda do elétron, com correção relativística, vinculado a ela. A energia define a energia cinética usada tanto pelo modelo elástico (NIST Mott) quanto pelo inelástico (poder de freamento / IMFP).
+
+Alterar **Inclinação da amostra** ou **Energia** depois de uma execução não altera o resultado exibido: até que **Simular trajetórias** seja pressionado novamente, cada redesenho (vista 3D, estereonete, histogramas) usa a inclinação e a energia com que as trajetórias foram calculadas. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
 
 Um elétron é rastreado até deixar a amostra ou até sua energia cair para **2 keV** (limiar fixo). Os elétrons que saem com mais de 2 keV são contados como elétrons retroespalhados; η (sua fração em relação a todos os elétrons incidentes), a energia média de BSE, a estereonete e os histogramas abaixo são calculados a partir desses elétrons. A seção de choque, o livre caminho médio e o poder de freamento em **Estatísticas** são valores do modelo na energia do feixe.
 
@@ -59,7 +61,7 @@ Valores para a energia do feixe atual. A seção de choque e o poder de freament
 - **Livre caminho médio elástico (λ)** (nm) — distância média entre eventos de espalhamento elástico.
 - **Poder de freamento (dE/ds)** (eV/nm, negativo) — energia perdida por unidade de comprimento de trajetória.
 - **Coeficiente de elétrons retroespalhados, η** (%) — a fração dos elétrons incidentes que saem novamente pela superfície de entrada. É a grandeza na qual se baseia o contraste das imagens BSE.
-- **Energia média de BSE** (keV) — energia média dos elétrons retroespalhados no momento em que escapam.
+- **Energia média de BSE** (keV) — energia média dos elétrons retroespalhados no momento em que escapam. Exibida como “-” quando nenhum elétron é retroespalhado (os histogramas ficam então vazios). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

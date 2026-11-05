@@ -30,7 +30,7 @@ Esta janela não possui combinações com teclas modificadoras; ela é operada p
 | <kbd>F1</kbd> | Abrir esta página do manual online |
 | <kbd>ENTER</kbd> em qualquer campo de pesquisa | Executar a pesquisa no banco de dados (equivale ao botão **Pesquisar**) |
 | Clicar em uma linha da tabela de resultados | Carregar esse cristal na janela principal |
-| Clicar em um elemento no pop-up **Tabela Periódica** | Alternar seu filtro: *ignore* → *must include* → *must exclude* |
+| Clicar em um elemento no pop-up **Tabela Periódica** | Alternar seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para uma visão geral de cada janela.
 
@@ -64,7 +64,7 @@ Insira abaixo os critérios de pesquisa e pressione o botão **Pesquisar** ou a 
 
 Correspondência de texto livre com o nome do cristal. Correspondências parciais são permitidas; maiúsculas e minúsculas não são diferenciadas. Apenas os critérios cujas caixas de seleção estão marcadas são aplicados, e eles são combinados com E lógico (AND).
 
-### Element
+### Elementos {#element}
 
 Pressione o botão **Tabela Periódica** para abrir o seletor de elementos. Cada botão de elemento alterna entre três estados:
 
@@ -76,11 +76,11 @@ Um cristal deve conter todos os elementos marcados como *deve incluir* e nenhum 
 
 Os três botões na parte superior da janela redefinem todos os elementos para um dos três estados com um único clique.
 
-### Reference
+### Referência
 
 Correspondência de texto livre (parcial, sem diferenciar maiúsculas de minúsculas) com os metadados da publicação: título do artigo, nome do periódico e lista de autores.
 
-### Crystal system
+### Sistema Cristalino
 
 Restringe a pesquisa a um sistema cristalino específico (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). O primeiro item, *Unknown*, não aplica nenhuma restrição.
 
@@ -90,11 +90,11 @@ Restringe a pesquisa a um sistema cristalino específico (cubic, tetragonal, ort
 
 Insira as constantes de rede desejadas *a*, *b*, *c* (Å) e *α*, *β*, *γ* (°) e os erros aceitáveis: uma tolerância relativa (±%) comum a *a*, *b*, *c* e uma tolerância absoluta (±°) comum aos ângulos. Um valor 0 significa que o parâmetro é ignorado.
 
-### d-spacing
+### Distância d
 
 Insira até três distâncias *d* (Å; marque cada uma para usá-la), cada uma com uma tolerância relativa (±%). Um cristal corresponde quando todos os valores inseridos coincidem com alguma das suas reflexões mais intensas armazenadas no banco de dados (até 16, ordenadas pela intensidade de difração de pó de raios X em λ = 1,54 Å). Com **Ignorar fator de dispersão** marcado, os valores são comparados com todas as distâncias *d* geometricamente possíveis calculadas a partir da célula unitária (incluindo as reflexões sistematicamente ausentes). Útil quando, a partir de um experimento, somente as posições dos picos de difração são conhecidas.
 
-### Density
+### Densidade
 
 Filtrar pela densidade de massa (g/cm³) dentro de uma tolerância relativa (±%).
 

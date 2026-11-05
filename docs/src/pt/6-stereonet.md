@@ -19,7 +19,7 @@ A estereonete em si é uma projeção 2-D; uma esfera 3-D opcional pode ser exib
 | Clique direito | Diminuir o zoom |
 | Arrastar com o botão direito uma caixa | Aumentar o zoom na região selecionada |
 | Arrastar com o botão do meio | Deslocar |
-| Mover o mouse (sem botão) | Ler o (hkl)/[uvw] sob o cursor — útil para indexar um reflexo medido |
+| Mover o mouse (sem botão) | Ler o (hkl)/[uvw] sob o cursor — útil para indexar um reflexo medido (também no hemisfério inferior) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Arrastar na rede gira o **cristal**; o estado de rotação é compartilhado entre todas as janelas.
 
@@ -39,11 +39,11 @@ A projeção em estereonete dos planos cristalinos, índices de direção e linh
 
 ## Menu Arquivo
 
-Salvar como imagem raster (PNG), ou copiar como imagem raster ou como metarquivo vetorial (EMF). Um metarquivo colado permite editar fontes e espessuras de linha no PowerPoint ou em outros editores vetoriais.
+Salvar ou copiar como imagem raster (PNG) ou como metarquivo vetorial (EMF). Um metarquivo colado permite editar fontes e espessuras de linha no PowerPoint ou em outros editores vetoriais.
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| Salvar Imagem ▸ como Imagem (formato PNG) / como metarquivo (EMF) | Salvar a estereonete como arquivo PNG (o item *como metarquivo (EMF)* está desativado no momento; para saída vetorial use **Copiar para a área de transferência ▸ como metarquivo (EMF)**) |
+| Salvar Imagem ▸ como Imagem (formato PNG) / como metarquivo (EMF) | Salvar a estereonete como arquivo PNG ou como arquivo vetorial EMF <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | Copiar para a área de transferência ▸ Como Imagem / como metarquivo (EMF) | Copiar a estereonete |
 | Salvar Vídeo ▸ Estereonete / 3D | Salvar um vídeo de rotação (MP4) da estereonete ou da vista 3-D, com o mesmo diálogo de configuração de filme do [Visualizador de estrutura](5-structure-viewer.md#menu-arquivo) (apenas rotação) |
 | Configurar Página / Visualizar Impressão / Imprimir | Imprimir a estereonete |
@@ -66,8 +66,8 @@ Selecione o que projetar na rede.
 
 | Método | Descrição |
 |--------|-------------|
-| **Wulff** (ângulo igual / estereográfica) | Preserva a relação angular entre os elementos projetados, mas não o ângulo sólido. Usado pelos cristalógrafos clássicos ao ler ângulos entre eixos ou entre planos. |
-| **Schmidt** (área igual / Lambert) | Preserva o ângulo sólido (a área) de cada região, mas distorce os ângulos. Preferido para figuras de polo estatísticas, em que a densidade relativa importa. |
+| **Equiangular** (Wulff / estereográfica) | Preserva a relação angular entre os elementos projetados, mas não o ângulo sólido. Usado pelos cristalógrafos clássicos ao ler ângulos entre eixos ou entre planos. |
+| **Equiárea** (Schmidt / área igual / Lambert) | Preserva o ângulo sólido (a área) de cada região, mas distorce os ângulos. Preferido para figuras de polo estatísticas, em que a densidade relativa importa. |
 
 ### Hemisfério
 
@@ -116,8 +116,8 @@ Defina a **Cor** e o **Tamanho** dos pontos plotados. Marque **Alternar cor** pa
 
 Exibido quando **Vista 3D** está marcado; a esfera 3-D aparece num painel à direita da rede.
 
-- **Redefinir**: retorna a vista 3-D à direção e ao zoom padrão.
-- **Rótulo**: desenha os rótulos de índice em 3-D.
+- **Redefinir vista**: retorna a vista 3-D à direção e ao zoom padrão.
+- **Rótulo**: desenha os rótulos de índice em 3-D. As direções são rotuladas [uvw]; a forma de quatro índices (com **Usar índice de Miller-Bravais (hkil)** ativado) é usada apenas para os planos e as linhas de Kikuchi. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Hemisfério**: desenha apenas os polos do hemisfério superior ($Z>0$).
 - **Estereonete**: desenha o plano de projeção (a rede) em 3-D, com os pontos projetados dos polos do hemisfério superior.
 - **Contorno da esfera**: desenha a grade de latitude/longitude da esfera.
@@ -151,7 +151,7 @@ Como o contorno da estereonete é desenhado — o círculo delimitador e a grade
 
 ![Aba Círculo máximo](../assets/cap-pt-auto/FormStereonet.tabControl.tabPage2.png)
 
-Desenhe círculos máximos (círculos menores não são suportados). Especifique-os pelo **Índice do eixo de zona** \([uvw]\) (o círculo máximo formado pela zona desse eixo) ou por **Zona definida por dois planos** (o eixo de zona é o produto vetorial deles). Use **Adicionar** / **Remover** para editar a lista; desmarcar uma entrada oculta esse círculo. A cor e a espessura de linha dos círculos também são configuráveis.
+Desenhe círculos máximos (círculos menores não são suportados). Especifique-os pelo **Índice do eixo de zona** \([uvw]\) (o círculo máximo formado pela zona desse eixo) ou por **Zona definida por dois planos** (o eixo de zona é o produto vetorial deles). Use **Adicionar** / **Remover** para editar a lista; desmarcar uma entrada oculta esse círculo. A cor e a espessura de linha dos círculos também são configuráveis. Os círculos seguem o método de projeção e o hemisfério escolhidos em [Modo](#mode) (Wulff ou Schmidt, superior ou inferior). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Onda {#wave}
 

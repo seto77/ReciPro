@@ -44,7 +44,7 @@ e um $\omega$ pequeno significa que a maioria das vacâncias decai por emissão 
 
 $$p_{\ell\mid X} = \frac{\Gamma_\ell}{\sum_{\ell'\in X}\Gamma_{\ell'}},$$
 
-a taxa radiativa relativa dentro da camada $X$. O ReciPro lista $\omega_K$ para cada elemento e a linha mais forte do espectro.
+a taxa radiativa relativa dentro da camada $X$. O ReciPro lista $\omega_K$ para cada elemento e a linha mais forte do espectro. Esta é uma lista de referência que não considera com que intensidade cada camada é excitada (sem seção de choque de ionização), de modo que essa linha não precisa ser a mais forte num espectro medido. <!-- 261106Cl 作者の決定 J6 -->
 
 ---
 
