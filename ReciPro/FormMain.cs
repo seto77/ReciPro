@@ -413,9 +413,23 @@ public partial class FormMain : FormBase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during initializing GLControl");
+                //MessageBox.Show("Error during initializing GLControl"); // 261105Cl 変更前
+                // 261105Cl 変更 (作者決定「今回の起動だけ」): 今回だけ 3D を無効にしたことと、常に無効にする方法 (メニューの文言は FormMain.*.resx と同じ) を案内する
+                MessageBox.Show("Error during initializing GLControl\r\n\r\n" + Crystallography.Localization.Loc(
+                    en: "3D rendering (OpenGL) is turned off for this launch only. To turn it off permanently, tick Options › \"Disable all OpenGL rendering (requires restart)\".",
+                    ja: "今回の起動に限り 3D 描画 (OpenGL) を無効にしました。常に無効にするには、オプション › 「OpenGLによる全てのレンダリングを無効化 (要再起動)」にチェックを入れてください。",
+                    de: "Die 3D-Darstellung (OpenGL) ist nur für diesen Start deaktiviert. Um sie dauerhaft zu deaktivieren, aktivieren Sie Optionen › „Gesamtes OpenGL-Rendering deaktivieren (Neustart erforderlich)“.",
+                    fr: "Le rendu 3D (OpenGL) est désactivé pour ce lancement uniquement. Pour le désactiver définitivement, cochez Options › « Désactiver tout le rendu OpenGL (redémarrage requis) ».",
+                    es: "El renderizado 3D (OpenGL) está desactivado solo para este inicio. Para desactivarlo de forma permanente, marque Opciones › «Desactivar todo el renderizado OpenGL (requiere reinicio)».",
+                    pt: "A renderização 3D (OpenGL) está desativada apenas nesta execução. Para desativá-la permanentemente, marque Opções › \"Desativar toda a renderização OpenGL (requer reinício)\".",
+                    it: "Il rendering 3D (OpenGL) è disattivato solo per questo avvio. Per disattivarlo in modo permanente, seleziona Opzioni › \"Disabilita tutto il rendering OpenGL (richiede il riavvio)\".",
+                    ru: "3D-отрисовка (OpenGL) отключена только для этого запуска. Чтобы отключить её навсегда, отметьте Параметры › «Отключить весь рендеринг OpenGL (требуется перезапуск)».",
+                    zhHans: "仅本次启动禁用 3D 渲染 (OpenGL)。若要始终禁用，请勾选 选项 › “禁用全部 OpenGL 渲染（需要重启）”。",
+                    zhHant: "僅本次啟動停用 3D 算繪 (OpenGL)。若要永久停用，請勾選 選項 › 「停用所有 OpenGL 算繪（需重新啟動）」。",
+                    ko: "이번 실행에서만 3D 렌더링(OpenGL)을 사용하지 않습니다. 항상 사용하지 않으려면 옵션 › '모든 OpenGL 렌더링 사용 안 함 (재시작 필요)'에 체크하세요."));
                 MessageBox.Show(ex.Message);
-                disableOpneGLToolStripMenuItem.Checked = true;
+                //disableOpneGLToolStripMenuItem.Checked = true; // 261105Cl 変更前: 保存値が無ければ終了時に保存されて以後ずっと無効、保存値があれば Load 末尾の Registry(Read) で戻されて 3D ボタンが無効にならなかった
+                disableOpenGLThisLaunch = true; // 261105Cl 変更 (作者決定): 今回の起動だけ。メニューのチェック (保存される設定) には触らない
             }
         }
 
