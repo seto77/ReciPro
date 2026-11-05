@@ -47,6 +47,10 @@ public partial class FormALCHEMI : FormBase
     /// <summary>run 時の反射列と θ_B [rad]。実行後にユーザーが入力を触っても表示がずれないよう結果と一緒に固定する</summary>
     private (int H, int K, int L) resultRow;
     private double resultThetaB = double.NaN;
+    /// <summary>261105Cl 追加 (監査 D10): run 時の結晶 (名前 / 空間群)・格子定数の行と、走査の原点の方位 (親の結晶の RotationMatrix の写し)。
+    /// CSV のヘッダは以前は出力した時点の結晶を書いていた (run の後に結晶を替えると、別の結晶の名前・格子定数が付いた) うえ、方位を書いていなかった</summary>
+    private (string Crystal, string Cell) resultHeader;
+    private Matrix3D resultRotation;
     private readonly System.Diagnostics.Stopwatch sw = new();
 
     /// <summary>曲線の色 (サイト × チャネルの順に巡回)。GraphControl の凡例色と一致する</summary>
@@ -339,6 +343,7 @@ public partial class FormALCHEMI : FormBase
     private void UpdateScanLabel()
     {
         if (FormDiffractionSimulator == null || Crystal == null) { labelThetaB.Text = "-"; return; }
+        if (FormDiffractionSimulator.waveLengthControl.WaveSource != WaveSource.Electron) { labelThetaB.Text = NotElectronNotice(); return; } // 261105Cl 追加 (監査 D9): X 線・中性子のエネルギーで θ_B を出さない
         //var (h, k, l) = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
         var (h, k, l) = indexControlRow.Values;
         var range = numericBoxRange.Value * 1e-3;
@@ -365,11 +370,21 @@ public partial class FormALCHEMI : FormBase
     /// <summary>260809Cl 追加: GUI の入力から run 1 回ぶんの要求を組む (null = チャネル/サイト未選択、または軸が縮退)。
     /// <see cref="buttonSimulate_Click"/> と <see cref="PrepareCaptureForGuiAudit"/> で共用するため切り出した。
     /// 旧: この処理は buttonSimulate_Click に inline だった。</summary>
-    private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB)
+    //private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB) // 261105Cl 変更前
+    /// <param name="header">261105Cl 追加 (監査 D10): CSV のヘッダに書く、この run の結晶 (名前 / 空間群) と格子定数の行</param>
+    private AlchemiRequest BuildRequest(out (int H, int K, int L) row, out double thetaB, out (string Crystal, string Cell) header)
     {
         //row = (numericBoxAxisH.ValueInteger, numericBoxAxisK.ValueInteger, numericBoxAxisL.ValueInteger); //260820Cl 変更
         row = indexControlRow.Values;
         thetaB = double.NaN;
+        header = default; // 261105Cl 追加
+
+        // 261105Cl 追加 (監査 D9): ALCHEMI は電子線専用。X 線・中性子のときは Energy (光子・中性子のエネルギー) を電子の加速電圧として計算し、CSV にも書いていた
+        if (FormDiffractionSimulator.waveLengthControl.WaveSource != WaveSource.Electron)
+        {
+            toolStripStatusLabel.Text = NotElectronNotice();
+            return null;
+        }
 
         // 261105Cl 追加 (監査 #19): 一覧が今の結晶・電圧のものでなければ (親が隠れていて通知が来なかったときなど) 先に作り直す。
         //   チェックはチャネルが (Z, 殻)、サイトが表示文字列で引き継がれ、新しい結晶に無いサイトのチェックは外れる (→ 下の「選んでください」で止まる)
@@ -409,6 +424,11 @@ public partial class FormALCHEMI : FormBase
             thicknesses.Add(t);
         var sites = siteIndices.Select(i => new AlchemiSiteBasis(Crystal.Atoms[i].Label, [i])).ToArray();
 
+        // 261105Cl 追加 (監査 D10): 旧 buttonExport_Click の "crystal"・"cell_nm" の行と同じ書式 (InvariantCulture) で、run の時点の値を控える
+        header = ($"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}",
+            string.Create(CultureInfo.InvariantCulture, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
+                + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
+
         return new AlchemiRequest(Voltage, rotation, scan, [.. thicknesses], sites, channels)
         {
             MaxNumOfBloch = numericBoxMaxNumOfBloch.ValueInteger,
@@ -421,7 +441,8 @@ public partial class FormALCHEMI : FormBase
     {
         if (cts != null) return;
 
-        var request = BuildRequest(out var row, out var thetaB);
+        //var request = BuildRequest(out var row, out var thetaB); // 261105Cl 変更前
+        var request = BuildRequest(out var row, out var thetaB, out var header); // 261105Cl 変更 (監査 D10)
         if (request == null) return;
 
         cts = new CancellationTokenSource();
@@ -437,6 +458,7 @@ public partial class FormALCHEMI : FormBase
             sw.Stop();
             resultRow = row;
             resultThetaB = thetaB;
+            (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
             runError = null; //260820Cl 追加 (/simplify2)
             toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
             SetupThicknessSelector();
@@ -476,7 +498,8 @@ public partial class FormALCHEMI : FormBase
     public void PrepareCaptureForGuiAudit()
     {
         RefreshLists(); //VisibleChanged 経由の初期化に頼らない (撮影順で Visible が前後するため)
-        var request = BuildRequest(out var row, out var thetaB);
+        //var request = BuildRequest(out var row, out var thetaB); // 261105Cl 変更前
+        var request = BuildRequest(out var row, out var thetaB, out var header); // 261105Cl 変更 (監査 D10)
         if (request == null) return;
 
         sw.Restart();
@@ -484,6 +507,7 @@ public partial class FormALCHEMI : FormBase
         sw.Stop();
         resultRow = row;
         resultThetaB = thetaB;
+        (resultHeader, resultRotation) = (header, request.BaseRotation); // 261105Cl 追加 (監査 D10)
         runError = null; //260820Cl 追加 (/simplify2)
         toolStripStatusLabel.Text = $"{sw.ElapsedMilliseconds / 1000.0:f2} s";
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
@@ -756,6 +780,20 @@ public partial class FormALCHEMI : FormBase
         zhHant: "Experimental：僅與 multislice 程式對比驗證（beta-AlCo [001], 250 keV）",
         ko: "Experimental: multislice 코드와의 대조만 수행 (beta-AlCo [001], 250 keV)");
 
+    /// <summary>261105Cl 追加 (監査 D9): 線源が電子線でないときの案内 (θ_B の表示欄とステータスバー)</summary>
+    private static string NotElectronNotice() => Localization.Loc(
+        en: "ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.",
+        ja: "ALCHEMI は電子線専用です。回折シミュレータの線源を電子線にしてください。",
+        de: "ALCHEMI ist nur für Elektronen. Stellen Sie die Strahlungsquelle des Beugungssimulators auf Elektronen.",
+        fr: "ALCHEMI est réservé aux électrons. Réglez la source du simulateur de diffraction sur Électron.",
+        es: "ALCHEMI es solo para electrones. Ajuste la fuente del simulador de difracción a Electrón.",
+        pt: "O ALCHEMI é apenas para elétrons. Defina a fonte do simulador de difração como Elétron.",
+        it: "ALCHEMI è solo per elettroni. Impostare la sorgente del simulatore di diffrazione su Elettroni.",
+        ru: "ALCHEMI работает только с электронами. Выберите электроны в качестве источника в симуляторе дифракции.",
+        zhHans: "ALCHEMI 仅适用于电子。请将衍射模拟器的线源设为电子。",
+        zhHant: "ALCHEMI 僅適用於電子。請將繞射模擬器的線源設為電子。",
+        ko: "ALCHEMI 는 전자선 전용입니다. 회절 시뮬레이터의 선원을 전자로 설정하세요.");
+
     /// <summary>260809Cl 追加 (⑪): 非有限値を**黙って通さない**。表示は NaN を落として描けてしまうので、
     /// 結果テンソルに NaN/Inf が混じったら診断行で明示する。</summary>
     private string NonFiniteNotice()
@@ -779,7 +817,8 @@ public partial class FormALCHEMI : FormBase
     /// <summary>260810Cl 追加: 80 kV 未満の告知。**hard gate にはしない** (作者決定) —
     /// s の要求が s_kin(E0) に収まる限り計算そのものは正しいので、電圧で弾くのは過剰。
     /// 「16 Å⁻¹ を保証できる下限が 80 kV」という事実だけを伝える。</summary>
-    private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + …
+    //private string LowVoltageNotice() => Voltage >= 80 ? "" : Localization.Loc( //260820Cl 変更 (/simplify): 旧 "   ⚠ " + … // 261105Cl 変更前: 今の電圧 (run の後に電圧を変えると、表示中の結果と合わない告知)
+    private string LowVoltageNotice() => result.IncidentEnergyKeV >= 80 ? "" : Localization.Loc( // 261105Cl 変更 (監査 D10): 結果を計算した電圧で判定する
         en: "below 80 kV: the form factor table cannot guarantee s up to 16 A^-1 at this voltage",
         ja: "80 kV 未満: この電圧では形状因子テーブルが s = 16 Å⁻¹ までを保証できません",
         de: "unter 80 kV: die Formfaktortabelle kann s bis 16 A^-1 bei dieser Spannung nicht garantieren",
@@ -902,13 +941,19 @@ public partial class FormALCHEMI : FormBase
                 + "with the shape F = sum_i B_i sigma_i F_i / sum_i B_i sigma_i; B_i = fluorescence yield x line branching after the Coster-Kronig "
                 + "and radiative cascades (xraylib 4.2.1). The Auger cascade is NOT included (M-alpha about 5 % low, L-alpha up to 2 % low for Z <= 50). "
                 + "Supply from subshells outside the F table (K above Z = 50) is left out");
-        Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}");
+        //Key("crystal", $"{Crystal.Name} / {Crystal.Symmetry.SpaceGroupHMStr}"); // 261105Cl 変更前: 出力した時点の結晶
         //Key("cell_nm", $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " //260820Cl 変更 (/simplify2): この 1 行だけ既定カルチャだった (de/fr では小数点がカンマになり conventions 行と矛盾)
         //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg");
-        Key("cell_nm", string.Create(inv, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} "
-            + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
+        //Key("cell_nm", string.Create(inv, $"a {Crystal.A:f6} b {Crystal.B:f6} c {Crystal.C:f6} " // 261105Cl 変更前
+        //    + $"alpha {Crystal.Alpha * 180 / Math.PI:f4} beta {Crystal.Beta * 180 / Math.PI:f4} gamma {Crystal.Gamma * 180 / Math.PI:f4} deg"));
+        Key("crystal", resultHeader.Crystal); // 261105Cl 変更 (監査 D10): run の時点の結晶 (BuildRequest で控えた値)
+        Key("cell_nm", resultHeader.Cell); // 261105Cl 変更 (監査 D10)
         Key("cell_volume_nm3", result.UnitCellVolumeNm3.ToString("e8", inv));
         Key("accelerating_voltage_kV", result.IncidentEnergyKeV.ToString("f3", inv));
+        // 261105Cl 追加 (監査 D10): 走査の原点 (tilt = 0) の方位。以前は書いておらず、ファイルだけでは計算を再現できなかった
+        var r = resultRotation;
+        Key("scan_origin_rotation_matrix", string.Create(inv, $"{r.E11:f9} {r.E12:f9} {r.E13:f9} {r.E21:f9} {r.E22:f9} {r.E23:f9} {r.E31:f9} {r.E32:f9} {r.E33:f9} "
+            + $"(row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)"));
         Key("scan_row_hkl", $"{resultRow.H} {resultRow.K} {resultRow.L}");
         Key("theta_B_mrad", (resultThetaB * 1e3).ToString("f6", inv));
         Key("scan_points", s.OrientationCount.ToString(inv));
