@@ -4,7 +4,7 @@ L'**Interaction du faisceau** décrit comment le cristal sélectionné interagit
 
 ![Interaction du faisceau](../assets/cap-fr-auto/FormBeamInteraction.png)
 
-Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Réflexions**, **Atténuations & transport**, **Facteurs de diffusion** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
+Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Taches**, **Atténuations & transport**, **Facteurs de diffusion** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
 
 !!! tip "Contexte de physique du solide (Annexe A2)"
     La diffusion et la physique du solide sous-jacentes à ces quatre onglets — facteurs de diffusion atomiques, facteur de structure, atténuation et transport du faisceau, et fluorescence — sont expliquées dans **[Annexe A2. Interaction du faisceau (contexte de physique du solide)](appendix/a2-beam-interaction/index.md)**.
@@ -28,14 +28,14 @@ Le bandeau supérieur est un **Wave Length Control** partagé avec les autres si
 
 ![Wave Length Control](../assets/cap-fr-auto/FormBeamInteraction.waveLengthControl.png)
 
-- **X-ray / Electron / Neutron** : les facteurs de diffusion atomiques et la physique de l'interaction diffèrent selon le type de faisceau incident, ils sont donc commutés ici.
-- Pour les **X-ray**, le choix de l'**Element** (matériau de l'anode) et de la raie caractéristique (Kα, etc.) fixe automatiquement la longueur d'onde de ce rayonnement X caractéristique.
-- **Energy (keV)** et **Wavelength (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Réflexions**.
+- **Rayons X / Électrons / Neutrons** : les facteurs de diffusion atomiques et la physique de l'interaction diffèrent selon le type de faisceau incident, ils sont donc commutés ici.
+- Pour les **Rayons X**, le choix de l'**Element** (matériau de l'anode) et de la raie caractéristique (Kα, etc.) fixe automatiquement la longueur d'onde de ce rayonnement X caractéristique.
+- **Énergie (keV)** et **Long. d'onde (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Taches**.
 - **Unit (Å / nm)** change l'unité de longueur utilisée pour les distances d et les grandeurs similaires.
 
 Le faisceau choisi détermine aussi quels onglets et quelles courbes ont un sens :
 
-| Faisceau | Réflexions | Atténuations & transport | Facteurs de diffusion | Fluorescence |
+| Faisceau | Taches | Atténuations & transport | Facteurs de diffusion | Fluorescence |
 |------|------|------|------|------|
 | **X-ray** | facteurs de structure incl. dispersion anomale | µ/ρ, µ, transmission + seuils d'absorption (vs énergie) | $f(s)$ (Waasmaier–Kirfel ou Temari) ou $F(q)+S(q)$ | raies caractéristiques + bâtons EDX |
 | **Electron** | facteurs de structure électroniques | σ, MFP, \|dE/ds\|, IMFP, parcours (vs énergie) | Peng / Kirkland / 8-Gaussians / Temari | — (masqué) |
@@ -45,7 +45,7 @@ L'onglet **Fluorescence** est réservé aux rayons X et disparaît pour les fais
 
 ---
 
-## Onglet Réflexions {#reflections-tab}
+## Onglet Taches {#reflections-tab}
 
 Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **facteur de structure** et l'intensité de diffraction de chacun. Pour les rayons X, le facteur de structure inclut désormais les termes de **dispersion anomale** $f'/f''$ à l'énergie actuelle, de sorte que `F_inv` (la partie imaginaire) est généralement non nul près d'un seuil d'absorption. La disposition est la même pour chaque faisceau ; seules les valeurs du facteur de structure et le 2θ de chaque réflexion changent.
 
@@ -60,17 +60,17 @@ Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **f
 
 **Options**
 
-- **Intensités de diffraction des poudres (optique de Bragg-Brentano)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), incluant la multiplicité et le facteur de Lorentz–polarisation. Lorsqu'elle est désactivée, l'intensité du facteur de structure est affichée. L'activer force également *Masquer les plans équivalents* et *Masquer les plans interdits*.
-- **Masquer les plans équivalents** : regroupe les plans cristallographiquement équivalents en une seule entrée.
-- **Masquer les plans interdits** : exclut les plans dont l'intensité est nulle d'après les règles d'extinction.
-- **d-Spacing Cutoff >** : exclut les réflexions dont la distance d est inférieure à cette valeur (l'unité de longueur suit la sélection **Unit**).
+- **Intensités de diffraction des poudres (optique de Bragg-Brentano)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, où $m$ est la multiplicité, $V$ le volume de la maille, et $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz–polarisation) pour les rayons X ou $L = 1/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz seul, sans terme de polarisation) pour les électrons et les neutrons. Lorsqu'elle est désactivée, l'intensité du facteur de structure $\lvert F\rvert^2$ est affichée. L'activer force également *Masquer les plans équivalents* et *Masquer les plans interdits* et les grise.
+- **Masquer les plans équivalents** (activé par défaut) : regroupe les plans cristallographiquement équivalents en une seule entrée. La colonne **Mult.** n'est affichée que lorsque cette option est active.
+- **Masquer les plans interdits** (activé par défaut) : exclut les plans systématiquement éteints d'après les règles d'extinction. Lorsque cette option est désactivée, une colonne **Condition** indique la ou les conditions de réflexion qui interdisent chaque plan éteint.
+- **Seuil distance d >** (1 Å par défaut) : exclut les réflexions dont la distance d est inférieure à cette valeur (l'unité de longueur suit la sélection **Unit**).
 
 Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents par symétrie) :
 
 | Colonne | Signification |
 |------|------|
 | **h, k, l** | indices de Miller |
-| **Multi.** | multiplicité (nombre de plans équivalents par symétrie) |
+| **Mult.** | multiplicité (nombre de plans équivalents par symétrie) |
 | **d (Å)** | distance interréticulaire |
 | **q (2π/d)** | norme du vecteur de diffusion |
 | **2θ (°)** | angle de diffraction pour la longueur d'onde sélectionnée |
@@ -79,6 +79,8 @@ Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents
 | **\|F\|** | amplitude du facteur de structure ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | intensité du facteur de structure ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensité relative, la réflexion la plus forte étant fixée à 100 |
+| **Condition** | condition(s) d'extinction violée(s) par le plan (affichée seulement lorsque *Masquer les plans interdits* est désactivé) |
+| **i** | l'indice de Miller–Bravais redondant $i=-(h+k)$ (affiché seulement lorsque **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** est activé dans la fenêtre principale et que le cristal utilise des axes hexagonaux — hexagonal, ou trigonal hors réglage à axes rhomboédriques) |
 
 **Diagramme des pics de diffraction.** Sous le tableau, les mêmes réflexions sont tracées sous forme de motif de bâtons, les pics les plus forts étant étiquetés par leur *hkl*.
 
@@ -103,21 +105,21 @@ Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents
 
 ### X-ray
 
-Les boutons radio choisissent le coefficient tracé en fonction de l'énergie des photons (1–60 keV, axe logarithmique) :
+Les boutons radio choisissent le coefficient tracé en fonction de l'énergie des photons (calculé sur 1–60 keV avec un axe d'énergie linéaire ; l'axe vertical est logarithmique pour µ/ρ et µ, et linéaire pour T %) :
 
 - **µ/ρ** — le coefficient d'atténuation **massique** (cm²/g) : avec quelle force le matériau retire les rayons X par gramme, indépendamment de la densité de son empilement (c'est la valeur que l'on trouve dans les tables de référence). Le graphique montre la valeur **total** avec ses composantes **photo**, **Rayleigh** et **Compton**.
 - **µ** — le coefficient d'atténuation **linéaire** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹) : l'atténuation par centimètre du matériau réel à sa densité réelle. L'intensité transmise suit $I = I_0\,e^{-\mu t}$, et $1/\mu$ est la distance sur laquelle l'intensité tombe à environ 37 % (1/e).
-- **T %** — la **transmission** $T = e^{-\mu t}$ en pourcentage pour l'épaisseur d'échantillon **t** réglée dans le champ **Thickness t** (µm). 100 % = transparent, 0 % = totalement bloqué ; utilisez cela pour juger d'une épaisseur d'échantillon raisonnable à l'énergie actuelle.
+- **T %** — la **transmission** $T = e^{-\mu t}$ en pourcentage pour l'épaisseur d'échantillon **t** réglée dans le champ **Épaisseur t** (µm, 100 µm par défaut). 100 % = transparent, 0 % = totalement bloqué ; utilisez cela pour juger d'une épaisseur d'échantillon raisonnable à l'énergie actuelle.
 
-Les lignes verticales marquent l'énergie actuelle et les **seuils d'absorption** de chaque élément. Le tableau scalaire à gauche liste, à l'énergie actuelle : **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (couche de demi-atténuation, $\ln 2/\mu$), **Transmission** à l'épaisseur *t*, **µ_en/ρ** (coefficient d'absorption d'énergie massique), les décréments de l'indice de réfraction des rayons X **δ** et **β** ($n = 1-\delta+i\beta$), l'angle **θc (critical)** de réflexion totale externe et la **X-ray SLD** réelle (densité de longueur de diffusion). Le tableau inférieur liste les énergies de **seuil** d'absorption **K** et **L3** ainsi que leurs rapports de **Jump** pour chaque élément.
+La ligne verticale marque l'énergie actuelle. Le tableau scalaire à gauche liste, à l'énergie actuelle : **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (couche de demi-atténuation, $\ln 2/\mu$), **Transmission** à l'épaisseur *t*, **µ_en/ρ** (coefficient d'absorption d'énergie massique), les décréments de l'indice de réfraction des rayons X **δ** et **β** ($n = 1-\delta+i\beta$), l'angle **θc (critical)** de réflexion totale externe et la **X-ray SLD** réelle (densité de longueur de diffusion). Le tableau inférieur liste les énergies de **seuil** d'absorption **K** et **L3** ainsi que leurs rapports de **Saut** pour chaque élément.
 
 ### Electron
 
-Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du faisceau (1–30 keV) :
+Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du faisceau (calculé sur 1–50 keV ; la vue initiale montre 0–20 keV) :
 
 - **Tous (normalisés)** — superpose les trois courbes ci-dessous, chacune remise à l'échelle de son propre maximum afin que les formes puissent être comparées sur un seul graphique (lire les valeurs absolues dans le tableau).
 - **σ élastique (nm²)** — section efficace de diffusion élastique : la probabilité qu'un seul atome dévie l'électron.
-- **LPM élastique (nm)** — libre parcours moyen : la distance moyenne que l'électron parcourt entre deux événements de diffusion élastique.
+- **MFP élastique (nm)** — libre parcours moyen : la distance moyenne que l'électron parcourt entre deux événements de diffusion élastique.
 - **|dE/ds| (keV/nm)** — norme du pouvoir d'arrêt : l'énergie que l'électron perd par nanomètre parcouru.
 - **IMFP (nm)** — libre parcours moyen inélastique : la distance moyenne entre les collisions avec perte d'énergie.
 - **Portée CSDA (µm)** — la longueur totale du trajet que l'électron parcourt avant de s'arrêter.

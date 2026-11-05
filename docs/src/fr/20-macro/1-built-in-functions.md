@@ -125,13 +125,13 @@ Les angles d'Euler ne sont pas uniques aux positions de blocage de cardan (θ = 
 
 | Propriété | Type | Description |
 |----------|------|-------------|
-| `Energy` | double | Énergie (keV) |
-| `Wavelength` | double | Longueur d'onde (Å) |
+| `Energy` | double | Énergie (keV pour les rayons X et les électrons, meV pour les neutrons) |
+| `Wavelength` | double | Longueur d'onde (nm) |
 | `Thickness` | double | Épaisseur de l'échantillon (nm) |
 | `NumberOfDiffractedWaves` | int | Nombre d'ondes de Bloch |
 | `CameraLength2` | double | Longueur de caméra (mm) |
 | `ExcitationError` | double | Rayon des taches (nm⁻¹) : en mode cinématique/erreur d'excitation, `SpotInfo()` exporte les réflexions dont \|Sg\| est inférieur ou égal à cette valeur |
-| `SkipRendering` | bool | Ignorer le rendu pour le traitement par lots |
+| `SkipRendering` | bool | Effectif uniquement en mode dynamique (`Calc_Dynamical()`) : le calcul des ondes de Bloch s'exécute toujours (de sorte que `SpotInfo()` reste valide), mais aucune tache n'est dessinée — les images enregistrées pendant ce temps ne contiennent aucune tache. Sans effet en mode cinématique / erreur d'excitation |
 
 ### Mode de faisceau
 
@@ -156,7 +156,7 @@ Les angles d'Euler ne sont pas uniques aux positions de blocage de cardan (θ = 
 |----------|-------------|
 | `Tau` / `TauInDeg` | Angle d'inclinaison du détecteur τ (rad / deg) |
 | `Phi` / `PhiInDeg` | Axe de rotation du détecteur φ (rad / deg) |
-| `Foot(x, y)` | Position du foot en pixels |
+| `Foot(x, y)` | Position (mm) du pied de la perpendiculaire abaissée de l'échantillon sur le détecteur, mesurée depuis le centre de l'image ; le centre de l'image lui-même se trouve aux coordonnées détecteur (−x, −y). `Foot(0, 0)` place le pied au centre de l'image |
 
 ### Sortie
 
@@ -220,7 +220,7 @@ Pilote la visionneuse de structure depuis une macro. `SaveImage()` et `Export3DM
 | `StructureViewer.Open()` | Ouvrir la fenêtre de la visionneuse de structure |
 | `StructureViewer.Close()` | Fermer la fenêtre de la visionneuse de structure |
 | `StructureViewer.SaveImage(filename)` | Enregistrer la vue principale rendue en PNG, à la taille en pixels du champ **Size (W×H)** ; sans `filename`, une boîte de dialogue s'ouvre |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exporter la structure affichée pour l'impression 3D, comme **Export 3D Model (3MF/STL)** du menu File. L'extension détermine le format (`.stl` monochrome / `.3mf` coloré par élément) ; seul `filename` est requis — les autres valeurs par défaut sont celles de la boîte de dialogue (plus grande dimension 80 mm, arêtes de maille ⌀2,4 mm, liaisons épaissies à ⌀1,2 mm). Avec `fixedScaleInMMperNm` > 0, plusieurs modèles partagent la même échelle |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Exporter la structure affichée pour l'impression 3D, comme **Export 3D Model (3MF/STL)** du menu File. L'extension détermine le format (`.stl` monochrome / `.3mf` coloré par élément) ; seul `filename` est requis — les autres valeurs par défaut sont celles de la boîte de dialogue (plus grande dimension 80 mm, arêtes de maille ⌀2,4 mm, liaisons épaissies à ⌀1,2 mm). Avec `fixedScaleInMMperNm` > 0, plusieurs modèles partagent la même échelle. `filename` doit se terminer par `.stl` ou `.3mf` (aucune boîte de dialogue n'est ouverte) ; renvoie une chaîne d'information avec le nombre de triangles et la taille imprimée |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Ces trois classes de simulation d'image partagent de nombreux membres. Pour évi
 
 | Fonction | Description |
 |----------|-------------|
-| `Sleep(ms)` | Attendre le nombre de millisecondes spécifié |
+| `ReciPro.Sleep(ms)` | Attendre le nombre de millisecondes spécifié. S'appelle sous la forme `ReciPro.Sleep(ms)` ; elle ne figure pas dans la table des fonctions intégrées de l'éditeur |
 
 ---
 

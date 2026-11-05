@@ -32,7 +32,7 @@ Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> valables dans toute l'applicatio
 ## Zone principale
 
 La structure cristalline en 3D, dessinée avec le gizmo de direction de la lumière, le gizmo des axes cristallins et la légende des atomes.
-> La boîte **Size (W×H)** en haut à droite de la fenêtre définit la taille en pixels utilisée lors de l'enregistrement ou de la copie de l'image rendue.
+> La boîte **Taille (L×H)** en haut à droite de la fenêtre définit la taille en pixels de la vue 3D (la fenêtre est redimensionnée en conséquence) ; les images enregistrées et copiées ont cette taille.
 > La boîte **ProjWidth** juste à côté affiche la largeur de la vue projetée en nm. Modifiez la valeur pour zoomer numériquement — elle reste synchronisée avec le zoom par glisser-droite / molette dans la vue.
 
 ---
@@ -46,18 +46,21 @@ La structure cristalline en 3D, dessinée avec le gizmo de direction de la lumi�
 
 | Élément de menu | Description |
 |-----------------|-------------|
-| Enregistrer l'image | Enregistrer l'image rendue dans un fichier |
-| Copier l'image principale dans le presse-papiers | Copier l'image (aussi avec Ctrl+Shift+C) |
-| Enregistrer la vidéo | Enregistrer une vidéo de rotation/translation en MP4 (vitesse, durée, fps, qualité, etc.) |
+| Enregistrer l'image ▸ Image principale / Légende / Axes cristallins / Direction de la lumière | Enregistrer la vue principale, la légende des atomes ou l'un des gizmos en PNG |
+| Copier l'image principale dans le presse-papiers ▸ Image principale / Légende / Axes cristallins / Direction de la lumière | Copier l'image (Ctrl+Shift+C copie la vue principale) |
+| Enregistrer la vidéo ▸ Image principale / Axes cristallins | Enregistrer en MP4 une vidéo de rotation/translation de la vue principale ou du gizmo des axes cristallins (vitesse, durée, fps, qualité, etc.) |
 | Export 3D Model (3MF/STL) | Exporter la structure affichée sous forme de modèle solide pour l'impression 3D |
-| Aide raccourcis clavier | Afficher les raccourcis clavier |
 
-**Enregistrer le film** ouvre la boîte de dialogue de réglage du film ci-dessous. Un film peut faire pivoter la vue, translater le centre de projection, ou faire les deux à la fois — cochez **Rotation** et/ou **Translation** :
+Menu **Outils** : **J'aime VESTA** (identique au bouton *Comme Vesta* de la barre d'outils) et **Enable DDP** (affiche/masque l'entrée *Dual Depth Peeling* du [Mode de transparence](#mode-de-transparence)).
 
-- **Rotation** : fait pivoter la vue à la vitesse **Speed** (°/s ; les valeurs négatives inversent le sens) autour de l'axe choisi en dessous — **Projection actuelle** (direction d'inclinaison choisie avec les boutons fléchés), un **Indice de direction** [uvw], ou la normale d'un **Plan réticulaire** (hkl).
-- **Translation** : déplace le centre de projection le long de l'indice de direction [uvw] à la vitesse **Speed** (périodes du réseau par seconde). Cette option n'apparaît que lorsque la boîte de dialogue est ouverte depuis le Visualiseur de structure, et tant qu'elle est activée, **Indice de direction** est le seul mode de direction disponible.
+**Aide raccourcis clavier** (un menu de premier niveau distinct) liste les raccourcis clavier.
 
-Réglez la longueur du film (**Duration**), la fréquence d'images (**FPS**, 1–120) et la qualité d'encodage (**Quality**, 1–100 ; des valeurs plus élevées utilisent un débit plus élevé et donnent un fichier plus volumineux), choisissez le codec (**H264** / **H265**), puis appuyez sur **OK** pour générer un fichier MP4. **Include final frame** ajoute une image supplémentaire à t = Duration afin que le film se termine exactement à l'orientation/position finale. (La liste de vitesse d'encodage ne sert plus qu'à étiqueter l'affichage de la progression et n'affecte plus l'encodage réel.)
+**Enregistrer la vidéo** ouvre la boîte de dialogue de réglage du film ci-dessous. Un film peut faire pivoter la vue, translater le centre de projection, ou faire les deux à la fois — cochez **Rotation** et/ou **Translation** :
+
+- **Rotation** : fait pivoter la vue à la vitesse **Vitesse** (°/s ; les valeurs négatives inversent le sens) autour de l'axe choisi en dessous — **Projection actuelle** (direction d'inclinaison choisie avec les boutons fléchés), un **Indice de direction** [uvw], ou la normale d'un **Plan réticulaire** (hkl).
+- **Translation** : déplace le centre de projection le long de l'indice de direction [uvw] à la vitesse **Vitesse** (périodes du réseau par seconde). Cette option n'apparaît que lorsque la boîte de dialogue est ouverte depuis le Visualiseur de structure, et tant qu'elle est activée, **Indice de direction** est le seul mode de direction disponible.
+
+Réglez la longueur du film (**Durée**), la fréquence d'images (**FPS**, 1–120) et la qualité d'encodage (**Quality**, 1–100 ; des valeurs plus élevées utilisent un débit plus élevé et donnent un fichier plus volumineux), choisissez le codec (**H264** / **H265**), puis appuyez sur **OK** pour générer un fichier MP4. **Include final frame** ajoute une image supplémentaire à t = **Durée** afin que le film se termine exactement à l'orientation/position finale. (La liste de vitesse d'encodage ne sert plus qu'à étiqueter l'affichage de la progression et n'affecte plus l'encodage réel.)
 
 ![Boîte de dialogue de réglage du film](../assets/cap-fr-auto/FormMovie.png)
 
@@ -65,32 +68,33 @@ Réglez la longueur du film (**Duration**), la fréquence d'images (**FPS**, 1�
 
 **Export 3D Model (3MF/STL)** exporte le modèle de structure actuellement dessiné à l'écran sous forme de modèle solide pour l'impression 3D. Seuls les solides fermés peuvent être exportés : atomes (sphères et ellipsoïdes), liaisons (cylindres) et polyèdres de coordination. Les étiquettes d'atomes, les plans de délimitation et les plans réticulaires ne sont pas imprimables et sont ignorés. Le cadre de la maille est constitué de segments : il n'est remplacé par des cylindres (avec des sphères aux sommets) que si vous cochez l'option correspondante.
 
-![Boîte de dialogue Export 3D Model](../assets/cap-fr-auto/FormExport3DModel.png)
+![Boîte de dialogue Exporter le modèle 3D](../assets/cap-fr-auto/FormExport3DModel.png)
 
 Le haut de la boîte de dialogue indique le nombre d'objets et de triangles concernés ainsi que la taille réelle du modèle (**Model size**, nm).
 
-**Scale** : comment la taille de sortie est déterminée
+**Échelle** : comment la taille de sortie est déterminée
 
-- **Fit largest dimension** : met le modèle à l'échelle automatiquement pour que sa plus grande arête atteigne la longueur indiquée (5–500 mm, 80 mm par défaut).
-- **Fixed scale** : donne l'échelle (mm/nm) directement. Utile pour construire plusieurs cristaux à la même échelle et les placer côte à côte. En basculant sur cette option, l'échelle en vigueur juste avant sert de valeur de départ.
+- **Plus grande dim.** : met le modèle à l'échelle automatiquement pour que sa plus grande arête atteigne la longueur indiquée (5–500 mm, 80 mm par défaut).
+- **Échelle fixe** : donne l'échelle (mm/nm) directement. Utile pour construire plusieurs cristaux à la même échelle et les placer côte à côte. En basculant sur cette option, l'échelle en vigueur juste avant sert de valeur de départ.
 - La ligne du dessous affiche l'échelle obtenue et les dimensions imprimées (**Output size**, mm).
 
-**Include** : les éléments inclus dans l'impression
+**Inclure** : les éléments inclus dans l'impression
 
-- **Atoms** / **Bonds** / **Polyhedra** : seuls les types actuellement affichés peuvent être sélectionnés ; décocher l'un d'eux le laisse à l'écran mais l'exclut de l'impression.
-- **Polyhedra: solid faces** / **edges, dia.** : exporte les polyèdres de coordination soit comme des corps pleins avec faces, soit comme une armature d'arêtes (cylindres plus sphères aux sommets, 2.0 mm par défaut). L'armature laisse voir les atomes à l'intérieur.
-- **Unit cell edges as cylinders, dia.** : inclut le cadre de la maille, remplacé par des cylindres du diamètre indiqué (2.4 mm par défaut).
+- **Atomes** / **Liaisons** / **Polyèdres** : seuls les types actuellement affichés peuvent être sélectionnés ; décocher l'un d'eux le laisse à l'écran mais l'exclut de l'impression.
+- **Polyèdres : faces** / **arêtes, Ø** : exporte les polyèdres de coordination soit comme des corps pleins avec faces, soit comme une armature d'arêtes (cylindres plus sphères aux sommets, 2.0 mm par défaut). L'armature laisse voir les atomes à l'intérieur.
+- **grille ajourée : Ø barreau / pas** : l'armature d'arêtes plus une grille de barreaux fins sur chaque face (diamètre des barreaux 0.8–5.0 mm, 1.2 mm par défaut ; pas 1.5–20 mm, 5.0 mm par défaut). De loin, les faces paraissent pleines, mais l'intérieur reste visible.
+- **Arêtes de maille (cyl.), Ø** : inclut le cadre de la maille, remplacé par des cylindres du diamètre indiqué (2.4 mm par défaut). Cette case est cochée par défaut dès que le cadre de la maille est affiché.
 
-**Printability** : aptitude à l'impression
+**Imprimabilité** : aptitude à l'impression
 
-- **Thicken bonds thinner than** : les liaisons dont le diamètre imprimé tomberait sous la valeur indiquée (1.2 mm par défaut) sont reconstruites à ce diamètre à partir de la primitive d'origine, ce qui évite que les liaisons fines ne cassent. Si vous laissez l'option désactivée alors qu'une liaison est trop fine, un avertissement s'affiche en rouge.
+- **Épaissir liaisons sous** : les liaisons dont le diamètre imprimé tomberait sous la valeur indiquée (1.2 mm par défaut) sont reconstruites à ce diamètre à partir de la primitive d'origine, ce qui évite que les liaisons fines ne cassent. Si vous laissez l'option désactivée alors qu'une liaison est trop fine, un avertissement s'affiche en rouge.
 
 **Format** : format de fichier
 
-- **STL (single color)** : un STL binaire monochrome.
-- **3MF (parts colored by element)** : 3MF dont les pièces sont colorées par élément ; les noms de couleur reprennent les noms des éléments.
+- **STL (monocouleur)** : un STL binaire monochrome.
+- **3MF (coloré par élément)** : 3MF dont les pièces sont colorées par élément ; les noms de couleur reprennent les noms des éléments.
 
-**Save...** demande le nom du fichier. Une fois l'export terminé, le nombre de triangles, les dimensions imprimées et l'échelle sont consignés dans la zone d'informations en bas à gauche.
+**Enregistrer...** demande le nom du fichier. Une fois l'export terminé, le nombre de triangles, les dimensions imprimées et l'échelle sont consignés dans la zone d'informations en bas à gauche.
 
 ---
 
@@ -112,13 +116,13 @@ Dans ce mode, les axes *a*, *b*, *c* de la maille sont l'unité de la plage de d
 
 ![Limites par plans cristallins](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-Dans ce mode, la zone de dessin est délimitée par un ensemble de plans cristallins. Si les plans ne définissent pas une région spatialement fermée, ReciPro revient automatiquement à une limite d'une seule maille.
+Dans ce mode, la zone de dessin est délimitée par un ensemble de plans cristallins. Si les plans ne définissent pas une région spatialement fermée, ReciPro ajoute, pour la fermer, un polyèdre quasi sphérique de rayon **Distance max. à l'origine** (Å).
 
 #### Liste des limites
 
-Tous les plans limites enregistrés pour le cristal actuel. Utilisez **Add / Replace / Delete** pour manipuler la liste ; la case à cocher la plus à gauche désactive temporairement un plan sans le supprimer.
+Tous les plans limites enregistrés pour le cristal actuel. Utilisez **Ajouter / Remplacer / Supprimer** pour manipuler la liste ; la case à cocher la plus à gauche désactive temporairement un plan sans le supprimer.
 
-> Pour enregistrer les modifications de façon permanente, vous devez également appuyer sur **Add** ou **Replace** dans la **Fenêtre principale**. Sinon, les modifications sont perdues la prochaine fois que vous changez la sélection dans la liste principale des cristaux.
+> Pour enregistrer les modifications de façon permanente, vous devez également appuyer sur **Ajouter** ou **Remplacer** dans la **Fenêtre principale**. Sinon, les modifications sont perdues la prochaine fois que vous changez la sélection dans la liste principale des cristaux.
 
 #### Indices H k l
 
@@ -126,19 +130,23 @@ Définit le plan limite par son indice de Miller. La case à cocher inclut les p
 
 #### Distance par rapport à l'origine
 
-La distance entre le centre du cristal et le plan limite. L'unité peut être choisie entre **d** et **Å**. Avec **d**, la distance correspond à la valeur saisie multipliée par la distance interréticulaire (*d*) du (*hkl*) sélectionné. Avec **Å**, la valeur est la distance absolue. Modifier l'une met automatiquement l'autre à jour.
+La distance de l'origine au plan limite, saisie soit comme multiple de la distance interréticulaire *d* du (*hkl*) sélectionné (champ **d×**), soit en Å (le champ entre parenthèses). Les deux champs sont liés : modifier l'un met l'autre à jour.
+
+- **Translation** (Å) : n'a d'effet que lorsque **Plans équivalents** est coché et que deux plans équivalents exactement sont générés (typiquement (*hkl*) et son opposé). Le premier plan est alors éloigné de l'origine de cette valeur et le second en est rapproché d'autant, c'est-à-dire que la tranche se déplace le long de la normale. Dans tous les autres cas, la valeur est ignorée.
+- **Distance max. à l'origine** (Å) : rayon du polyèdre de fermeture utilisé lorsque les plans n'enferment pas de région (voir ci-dessus).
+- **Mise à jour immédiate** : applique les modifications du plan sélectionné sans appuyer sur **Remplacer**.
 
 #### Afficher les plans limites / Opacité
 
-Affiche ou masque les plans limites eux-mêmes. Lorsqu'ils sont affichés, **Opacity** définit la transparence (0 = transparent, 1 = opaque).
+Affiche ou masque les plans limites eux-mêmes. Lorsqu'ils sont affichés, **Opacité** définit la transparence (0 = transparent, 1 = opaque).
 
 #### Découper les objets selon les plans limites
 
 Si cette option est cochée, seule la région intérieure définie par les limites est rendue ; les atomes, liaisons et polyèdres qui coupent les limites sont découpés.
 
-#### Masquer les atomes
+#### Masquage des atomes
 
-Si cette option est cochée, tous les atomes, liaisons et polyèdres sont masqués — utile lorsque seuls la maille ou les plans réticulaires doivent être visualisés.
+L'onglet Limites ne comporte pas de case à cocher pour cela. Désactivez plutôt le bouton **Atomes** de la barre d'outils : aucun atome n'est généré, de sorte que les liaisons et les polyèdres disparaissent également — utile lorsque seuls la maille ou les plans réticulaires doivent être visualisés.
 
 ### Atomes
 
@@ -148,13 +156,13 @@ Définit l'espèce, la position et le taux d'occupation de chaque atome, ainsi q
 
 #### Liste des atomes
 
-La liste des atomes du cristal. Utilisez **Add / Replace / Delete** pour manipuler la liste ; la case à cocher la plus à gauche masque temporairement un atome.
+La liste des atomes du cristal. Utilisez **Ajouter / Remplacer / Supprimer** pour manipuler la liste ; la case à cocher la plus à gauche masque temporairement un atome.
 
-> Pour enregistrer les modifications de façon permanente, cliquez également sur **Add** ou **Replace** dans la **Fenêtre principale**.
+> Pour enregistrer les modifications de façon permanente, cliquez également sur **Ajouter** ou **Remplacer** dans la **Fenêtre principale**.
 
 #### Élément et position
 
-- **Label** : étiquette en texte libre pour l'atome (utilisée dans les légendes et les info-bulles).
+- **Étiquette** : étiquette en texte libre pour l'atome (utilisée dans les légendes et les info-bulles).
 - **Element** : élément chimique / état d'ionisation.
 - **X, Y, Z** : coordonnées fractionnaires. Nombres réels entre 0 et 1, ou fractions telles que `1/2` ou `2/3`.
 - **Occ** : taux d'occupation, un nombre réel entre 0 et 1.
@@ -174,7 +182,7 @@ Rayon, couleur et matériau par atome.
 - **Radius** : rayon atomique dessiné.
 - **Atom color** : couleur de surface.
 - **Material** : propriétés de texture / matériau utilisées par le shader OpenGL.
-- **Apply to same elements** : applique le rayon et la couleur actuels à tous les atomes de la même espèce d'élément.
+- **Appliquer au même élément** : applique le rayon et la couleur actuels à tous les atomes de la même espèce d'élément.
 
 ### Liaisons et polyèdres
 
@@ -184,7 +192,7 @@ Définit quelles paires d'atomes sont liées (par espèce et intervalle de dista
 
 #### Liste des liaisons
 
-Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez **Add / Replace / Delete** ; la case à cocher la plus à gauche désactive temporairement une entrée. Comme pour les atomes et les limites, **Add** / **Replace** dans la **Fenêtre principale** est requis pour rendre la modification permanente.
+Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez **Ajouter / Remplacer / Supprimer** ; la case à cocher la plus à gauche désactive temporairement une entrée. Comme pour les atomes et les limites, **Ajouter** / **Remplacer** dans la **Fenêtre principale** est requis pour rendre la modification permanente.
 
 #### Propriété de liaison
 
@@ -196,10 +204,10 @@ Toutes les règles de liaison/polyèdre enregistrées pour le cristal. Utilisez 
 
 #### Propriété de polyèdre
 
-- **Show Polyhedron** : lorsqu'elle est cochée, le polyèdre défini par la liaison actuelle est dessiné (uniquement si l'ensemble centre/sommet est géométriquement valide).
-- **Inner Bonds** : affiche/masque les liaisons à l'intérieur du polyèdre.
-- **Center Atom** : affiche/masque l'atome central.
-- **Vertex Atoms** : affiche/masque les atomes sommets.
+- **Afficher le polyèdre** : lorsqu'elle est cochée, le polyèdre défini par la liaison actuelle est dessiné (uniquement si l'ensemble centre/sommet est géométriquement valide).
+- **Afficher les liaisons internes** : affiche/masque les liaisons à l'intérieur du polyèdre.
+- **Afficher l'atome central** : affiche/masque l'atome central.
+- **Afficher les atomes des sommets** : affiche/masque les atomes sommets.
 - **Color** / **Alpha** : couleur de face et transparence.
 - **Afficher les arêtes** : dessine les arêtes reliant les sommets.
 - **Edge Color** / **Width** : couleur et épaisseur de ligne des arêtes.
@@ -214,6 +222,8 @@ Définit la position de la maille dessinée et l'affichage ou non de ses faces e
 
 Chaque groupe d'espace possède une origine par défaut. Pour éloigner le centre de la maille dessinée de cette origine, réglez la translation le long de *a*, *b*, *c*.
 
+La translation est liée au [Centre de projection](#centre-de-projection) : régler le centre de projection sur $(x, y, z)$ règle la translation sur $(0.5-x,\ 0.5-y,\ 0.5-z)$.
+
 #### Afficher le plan de la maille
 
 Indique si les six faces qui délimitent la maille sont dessinées. Lorsque cette option est activée, vous pouvez régler la couleur des faces et leur transparence.
@@ -221,6 +231,8 @@ Indique si les six faces qui délimitent la maille sont dessinées. Lorsque cett
 #### Afficher les arêtes
 
 Indique si les arêtes de la maille sont dessinées. La couleur des arêtes est configurable.
+
+La case maîtresse **Afficher la maille élémentaire** (= le bouton *Maille élémentaire* de la barre d'outils) active/désactive toute la maille. Les couleurs des faces et des arêtes se règlent soit pour **Tous les plans** / **Toutes les arêtes** à la fois, soit pour **Chaque plan** / **Chaque arête** (*a*, *b*, *c* séparément) ; **Largeur d'arête** définit l'épaisseur de ligne et **Opacité** la transparence des faces.
 
 ### Plans réticulaires
 
@@ -248,7 +260,7 @@ Liste les atomes qui entourent l'atome cible sélectionné et à quelle distance
 
 #### Graphe (côté droit)
 
-Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Bar Width** jusqu'à ce que les barres séparent nettement les sphères de coordination — cela donne une estimation visuelle du nombre de coordination.
+Histogramme du nombre de voisins en fonction de la distance, dérivé des mêmes données que le tableau. Ajustez **Largeur barre** jusqu'à ce que les barres séparent nettement les sphères de coordination — cela donne une estimation visuelle du nombre de coordination.
 
 ### Information
 
@@ -269,7 +281,7 @@ Définit le mode de projection (orthographique / perspective), l'atténuation en
 
 #### Atténuation en profondeur
 
-Atténue les objets éloignés dans la direction de la profondeur. Les objets plus éloignés que **Far** sont entièrement transparents ; les objets plus proches que **Near** sont entièrement opaques ; les objets intermédiaires sont interpolés linéairement.
+Atténue les objets éloignés dans la direction de la profondeur (**Fondu en profondeur**). La couleur est mélangée linéairement vers la **couleur de fond** : les objets plus proches que **Près** gardent leur propre couleur, les objets plus éloignés que **Loin** prennent la couleur de fond, et les objets intermédiaires sont interpolés. (L'opacité elle-même n'est pas modifiée.) **Près** et **Loin** sont exprimés en Å.
 
 #### Centre de projection
 
@@ -283,26 +295,27 @@ Qualité de dessin (subdivision du maillage, anticrénelage). Une qualité supé
 
 Algorithme utilisé pour les atomes et polyèdres translucides.
 
-- **Approximate** : rapide mais peut être imprécis lorsque de nombreux objets translucides se chevauchent.
-- **Perfect** : transparence indépendante de l'ordre — précise mais très lente, nécessite en pratique un GPU dédié.
+- **Approximate (Z depth sorting, OpenGL 4.1+)** : rapide mais peut être imprécis lorsque de nombreux objets translucides se chevauchent.
+- **High quality (Dual Depth Peeling, OpenGL 4.1+)** : transparence indépendante de l'ordre par pelage en profondeur (depth peeling). Affiché seulement lorsque **Outils ▸ Enable DDP** est activé (activé par défaut lorsque PPLL n'est pas disponible). Le nombre de passes de pelage suit le réglage [Qualité de rendu](#qualité-de-rendu).
+- **High quality (Per-Pixel Linked List, OpenGL 4.3+)** : transparence exacte indépendante de l'ordre ; affiché seulement lorsque le GPU prend en charge OpenGL 4.3. Précis mais lent ; nécessite en pratique un GPU dédié.
 
 ### Éléments de symétrie
 
-L'onglet **Symmetry Elements** dessine les opérateurs de symétrie du groupe d'espace directement sur le modèle 3D (à basculer avec le bouton **Symmetry Elements** de la barre d'outils). Chaque classe d'éléments peut être affichée/masquée indépendamment :
+L'onglet **Élém. sym.** dessine les opérateurs de symétrie du groupe d'espace directement sur le modèle 3D (à basculer avec le bouton **Élém. sym.** de la barre d'outils). Chaque classe d'éléments peut être affichée/masquée indépendamment :
 
-- **Axes de rotation** et **axes hélicoïdaux**
-- **Plans miroirs** et **plans de glissement**
-- **Centres d'inversion** et **axes de rotoinversion**
+- **Axes de symétrie** : **Rotations**, **Hélices**, **Rotoinversions**
+- **Plans** : **Miroirs**, **Glissements**
+- **Centres d'inversion**
 
-Pour chaque classe, vous pouvez ajuster la taille du symbole, l'épaisseur de ligne et la couleur.
+L'interrupteur principal est **Afficher les éléments de symétrie**. Pour chaque groupe, vous pouvez ajuster la taille du symbole (%) et la couleur, et pour les axes et les plans également l'épaisseur de ligne.
 
 ### Divers
 
 ![Onglet Divers](../assets/cap-fr-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
-- **Accessory controls** : définit les tailles d'affichage (boule de lumière, axes, légende). **Group by element** active/désactive l'affichage de la légende.
-- **Bonded atoms** : **Show bonded atoms even if they are outside the boundaries** continue de dessiner les atomes liés à des atomes situés à l'intérieur de la plage de dessin, même lorsqu'ils tombent en dehors de celle-ci.
-- **Label** : définit la taille de police, la couleur et d'autres propriétés des étiquettes des atomes.
+- **Éléments accessoires** : définit les tailles d'affichage (boule de lumière, axes, légende). **Grouper par élément** active/désactive l'affichage de la légende.
+- **Atomes liés** : **Afficher les atomes liés même s'ils sont en dehors des limites** continue de dessiner les atomes liés à des atomes situés à l'intérieur de la plage de dessin, même lorsqu'ils tombent en dehors de celle-ci.
+- **Étiquette** : **Afficher l'étiquette**, **Taille de police**, **Bord blanc** et la couleur des étiquettes (**Utiliser la couleur du matériau** ou **Utiliser une couleur fixe**). Cliquer sur une entrée de la légende des atomes active/désactive individuellement les étiquettes de cet atome (ou de cet élément, avec **Grouper par élément**).
 
 ---
 
@@ -313,14 +326,14 @@ Pour chaque classe, vous pouvez ajuster la taille du symbole, l'épaisseur de li
 | Bouton | Description |
 |--------|-------------|
 | Axes | Afficher l'orientation des axes (taille = constante de réseau) |
-| Light | Régler la direction de la lumière |
-| Legend | Légende des atomes |
-| Atoms | Basculer les objets atomes |
-| Labels | Basculer les étiquettes des atomes |
-| Unit Cell | Basculer les arêtes de la maille |
-| Sym. Elems. | Basculer la superposition des éléments de symétrie (voir ci-dessus) |
-| Reset Rotation | Revenir à l'orientation initiale |
-| Like Vesta | Passer à une apparence de style VESTA (couleurs et rayons des atomes) |
+| Lumière | Régler la direction de la lumière |
+| Légende | Légende des atomes |
+| Atomes | Basculer les objets atomes |
+| Étiquettes | Basculer les étiquettes des atomes |
+| Maille élémentaire | Basculer les arêtes de la maille |
+| Élém. sym. | Basculer la superposition des éléments de symétrie (voir ci-dessus) |
+| Réinitialiser la rotation | Revenir à l'orientation initiale |
+| Comme Vesta | Passer à une apparence de style VESTA : les couleurs et rayons des atomes sont réinitialisés, et la liste des liaisons est **remplacée** par les liaisons par défaut |
 
 ---
 

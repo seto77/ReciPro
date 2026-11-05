@@ -166,7 +166,7 @@ Le diagramme de droite trace les positions équivalentes générales — l'orbit
 - (Groupes d'espace cubiques uniquement) de fines lignes auxiliaires relient trois cercles reliés par un axe d'ordre 3 selon une diagonale du volume $\langle111\rangle$.
 - En général, un cercle (ou une moitié d'un cercle scindé) correspond à une position équivalente, si bien que le nombre de cercles égale la **multiplicité** de la position générale affichée dans l'onglet [Positions de Wyckoff](../../2-symmetry-information.md) — une vérification rapide utile pour lire l'un ou l'autre diagramme. Si l'axe de projection choisi fait coïncider exactement plusieurs copies de même chiralité, elles sont superposées en un seul endroit (distinguées uniquement par des étiquettes de hauteur séparées) au lieu d'être dessinées côte à côte, et le nombre de cercles visibles peut alors être inférieur à la multiplicité.
 
-Les champs $x$ / $y$ / $z$ sous **Direction** permettent de déplacer le point test $(x,y,z)$ hors de la position par défaut du groupe d'espace pour ce groupe ponctuel, ce qui est parfois utile pour désencombrer un diagramme où plusieurs cercles coïncideraient.
+Les trois cases étiquetées **a** / **b** / **c**, à côté du bouton **Copier** des positions générales ($x$, $y$, $z$ fractionnaires ; plage −1 à 1), permettent de déplacer le point test $(x,y,z)$ hors de la position par défaut du groupe d'espace pour ce groupe ponctuel, ce qui est parfois utile pour désencombrer un diagramme où plusieurs cercles coïncideraient.
 
 ---
 
