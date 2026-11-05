@@ -210,6 +210,23 @@ public partial struct ImageSimulatorSetting
     /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか。**末尾に追加** (上の MemoryPack の注意)。
     /// 旧 blob では既定値 false = 従来どおり殻のチャネルだけ。</summary>
     public bool EdxLineSeries;
+
+    //261105Cl 追加: 単一/シリーズ画像の切替と、シリーズの条件 (開始値・刻み・個数)。**末尾に追加** (上の MemoryPack の注意)。
+    //旧: これらを保存せず、プリセットの適用・起動時の復元でモードが戻らなかった。
+    //旧 blob ではすべて既定値 (Num = 0) になるので、SerialThicknessNum > 0 を「この版以降に保存した設定」の目印にして、
+    //旧 blob の適用は従来どおり (モード・開始値・刻み・個数に触れない) にする (Num の入力欄の最小値は 1)。
+    /// <summary>261105Cl 追加: シリーズ画像モードか (false = 単一画像)</summary>
+    public bool SerialImageMode;
+    /// <summary>261105Cl 追加: シリーズで厚みを振るか</summary>
+    public bool SerialImageWithThickness;
+    /// <summary>261105Cl 追加: シリーズでデフォーカスを振るか</summary>
+    public bool SerialImageWithDefocus;
+    /// <summary>261105Cl 追加: シリーズの厚みの開始値・刻み (nm)・個数</summary>
+    public double SerialThicknessStart, SerialThicknessStep;
+    public int SerialThicknessNum;
+    /// <summary>261105Cl 追加: シリーズのデフォーカスの開始値・刻み (nm)・個数</summary>
+    public double SerialDefocusStart, SerialDefocusStep;
+    public int SerialDefocusNum;
     #endregion
 
     public override readonly string ToString() => Name;
@@ -243,8 +260,18 @@ public partial struct ImageSimulatorSetting
         Beta = f.HRTEM_Beta;
 
         //シリアルイメージモード
-        ThicknessArray = f.ThicknessArray;
-        DefocusArray = f.DefocusArray;
+        //ThicknessArray = f.ThicknessArray; // 261105Cl 変更前
+        //DefocusArray = f.DefocusArray; // 261105Cl 変更前
+        //261105Cl 変更: リストの中身をモードに依らず保存する (旧: 単一モードでは単一の値 1 個になり、適用するとシリーズのリストが 1 行に潰れていた)。
+        //リストが読めない・空のときは単一の値で代える (旧と違い、保存のたびに「リストが不正」のメッセージを出さない)
+        ThicknessArray = f.SerialImageThicknessList is { Length: > 0 } thicknesses ? thicknesses : [f.Thickness];
+        DefocusArray = f.SerialImageDefocusList is { Length: > 0 } defocusses ? defocusses : [f.Defocus];
+        //261105Cl 追加: 単一/シリーズの切替とシリーズの条件
+        SerialImageMode = f.SerialImageMode;
+        SerialImageWithThickness = f.SerialImageWithThickness;
+        SerialImageWithDefocus = f.SerialImageWithDefocus;
+        (SerialThicknessStart, SerialThicknessStep, SerialThicknessNum) = (f.SerialImageThicknessStart, f.SerialImageThicknessStep, f.SerialImageThicknessNum);
+        (SerialDefocusStart, SerialDefocusStep, SerialDefocusNum) = (f.SerialImageDefocusStart, f.SerialImageDefocusStep, f.SerialImageDefocusNum);
 
         //STEM固有
         DetectorInnerAngle = f.STEM_DetectorInnerAngle;
@@ -284,8 +311,23 @@ public partial struct ImageSimulatorSetting
         f.HRTEM_Beta = Beta;
 
         //シリアルイメージモード
+        //261105Cl 追加: 開始値・刻み・個数を先に戻す (戻すとリストが作り直されるので、手で編集したリストは下で上書きして戻す)。
+        //SerialThicknessNum > 0 = この版以降に保存した設定 (旧 blob は従来どおり触れない)
+        var hasSerialSettings = SerialThicknessNum > 0;
+        if (hasSerialSettings)
+        {
+            (f.SerialImageThicknessStart, f.SerialImageThicknessStep, f.SerialImageThicknessNum) = (SerialThicknessStart, SerialThicknessStep, SerialThicknessNum);
+            (f.SerialImageDefocusStart, f.SerialImageDefocusStep, f.SerialImageDefocusNum) = (SerialDefocusStart, SerialDefocusStep, SerialDefocusNum);
+        }
         f.ThicknessArray = ThicknessArray;
         f.DefocusArray = DefocusArray;
+        //261105Cl 追加: 単一/シリーズの切替 (リストを戻した後に。切替のハンドラが入力欄の有効・無効を決める)
+        if (hasSerialSettings)
+        {
+            f.SerialImageWithThickness = SerialImageWithThickness;
+            f.SerialImageWithDefocus = SerialImageWithDefocus;
+            if (SerialImageMode) f.SerialImageMode = true; else f.SingleImageMode = true;
+        }
 
         //STEM固有
         f.STEM_DetectorInnerAngle = DetectorInnerAngle;

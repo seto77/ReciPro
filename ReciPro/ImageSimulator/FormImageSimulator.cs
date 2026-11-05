@@ -152,7 +152,29 @@ public partial class FormImageSimulator : FormBase
                 textBoxDefocusList.Text = String.Join("\r\n", value);
         }
     }
-    #endregion 
+
+    /// <summary>261105Cl 追加: シリーズ画像の厚みリストの中身 (単一/シリーズのモードに依らない)。読めない行があれば null (メッセージは出さない)。
+    /// プリセット・起動時の復元の保存用 (ThicknessArray は単一モードでは単一の厚みを返すので、それを保存するとリストが 1 行に潰れていた)。
+    /// 書き込みは ThicknessArray の setter (どちらのモードでもリストに書く) を使う</summary>
+    public double[] SerialImageThicknessList
+    {
+        get
+        {
+            try { return [.. textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str))]; }
+            catch { return null; }
+        }
+    }
+
+    /// <summary>261105Cl 追加: シリーズ画像のデフォーカスリストの中身 (単一/シリーズのモードに依らない)。読めない行があれば null。SerialImageThicknessList と同じ</summary>
+    public double[] SerialImageDefocusList
+    {
+        get
+        {
+            try { return [.. textBoxDefocusList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str))]; }
+            catch { return null; }
+        }
+    }
+    #endregion
 
     #region 画像関連
     public bool UnitCellVisible { get => checkBoxShowUnitcell.Checked; set => checkBoxShowUnitcell.Checked = value; }
