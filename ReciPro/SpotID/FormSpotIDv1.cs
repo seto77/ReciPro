@@ -97,10 +97,21 @@ public partial class FormSpotIDv1 : FormBase
         buttonSearchAll.Enabled = (photo1.Paintable && photo2.Paintable && checkBoxPhoto2.Checked)
             || (photo1.Paintable && photo2.Paintable && checkBoxPhoto2.Checked && checkBoxPhoto3.Checked && photo3.Paintable);
 
+        // 261105Cl 変更: 英語の直書きで resx の訳 (ja ほか) を毎回上書きしていたので、11 言語の Localization.Loc にする (英語の文言は従来どおり)
+        //if (photo1.Paintable && photo2.Paintable && checkBoxPhoto3.Checked && photo3.Paintable)
+        //    buttonSearchAll.Text = "Search zone axes from three patterns";
+        //else
+        //    buttonSearchAll.Text = "Search zone axes from two patterns";
         if (photo1.Paintable && photo2.Paintable && checkBoxPhoto3.Checked && photo3.Paintable)
-            buttonSearchAll.Text = "Search zone axes from three patterns";
+            buttonSearchAll.Text = Localization.Loc(en: "Search zone axes from three patterns", ja: "三枚の写真から晶帯軸を検索", // 261105Cl
+                de: "Zonenachsen aus drei Mustern suchen", fr: "Trouver les axes de zone à partir de trois clichés", es: "Buscar ejes de zona a partir de tres patrones",
+                pt: "Encontrar Eixos de Zona de Três Padrões", it: "Trova assi di zona da tre pattern", ru: "Найти оси зон по трём картинам",
+                zhHans: "从三张图样查找晶带轴", zhHant: "由三張圖樣尋找晶帶軸", ko: "세 패턴에서 정대축 찾기");
         else
-            buttonSearchAll.Text = "Search zone axes from two patterns";
+            buttonSearchAll.Text = Localization.Loc(en: "Search zone axes from two patterns", ja: "二枚の写真から晶帯軸を検索", // 261105Cl
+                de: "Zonenachsen aus zwei Mustern suchen", fr: "Trouver les axes de zone à partir de deux clichés", es: "Buscar ejes de zona a partir de dos patrones",
+                pt: "Encontrar Eixos de Zona de Dois Padrões", it: "Trova assi di zona da due pattern", ru: "Найти оси зон по двум картинам",
+                zhHans: "从两张图样查找晶带轴", zhHant: "由兩張圖樣尋找晶帶軸", ko: "두 패턴에서 정대축 찾기");
 
         //最大の長さを調べて、その値で50を割ったときの値がmagになる
         double maxlength = double.NegativeInfinity;
