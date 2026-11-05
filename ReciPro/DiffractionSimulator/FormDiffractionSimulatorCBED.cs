@@ -307,7 +307,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             else
             {
                 Disks[i].PBitmap.MaxValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxRatio;
-                Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxOverall * minRatio;
+                //Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxOverall * minRatio; // 261105Cl 変更前: maxOverall が余分 (強度の 2 乗の次元)。最小値スライダーの効きが maxOverall 倍に弱まっていた
+                Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGray.Max() * minRatio; // 261105Cl 修正: Max と同じく各ディスクの最大値が基準 (全ディスク共通モードの maxOverall × ratio と対)
             }
             //GrayかColorか
             if (colorScale == 0)
