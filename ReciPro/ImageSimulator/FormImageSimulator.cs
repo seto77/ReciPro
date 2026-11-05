@@ -1108,17 +1108,30 @@ public partial class FormImageSimulator : FormBase
     #endregion
 
     #region ポテンシャルシミュレーション
-    private void simulatePotential(bool realtimeMode = false)
+    /// <summary>261105Cl 追加: 最後に計算したポテンシャル像と、その計算条件 (表示の切替で、計算し直さずに描き直すため)</summary>
+    private (double[][] Images, bool MagAndPhase, Matrix3D Mat, Size Size, double Resolution)? potentialResult;
+
+    //private void simulatePotential(bool realtimeMode = false) // 261105Cl 変更前
+    /// <param name="redrawOnly">261105Cl 追加: true なら前回の計算結果 (potentialResult) を今の表示の選択で描き直すだけ</param>
+    private void simulatePotential(bool realtimeMode = false, bool redrawOnly = false)
     {
         sw1.Restart();
 
         if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
-        //Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]); // 261105Cl 変更前
-        //261105Cl 変更: ポテンシャル像は Ug・U'g だけで決まり厚みに依らないので、単一モードの厚みを渡す。
-        //旧: ThicknessArray はこのモードでは隠れているシリーズ画像の厚みリストを読み、リストが不正だと null → NullReferenceException
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, Thickness);
-        var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
+        //261105Cl 変更: 計算は redrawOnly でないとき、または前回と量が違うとき (振幅・位相 ⇔ 実部・虚部) だけ
+        if (!redrawOnly || potentialResult is not { } last || last.MagAndPhase != radioButtonPotentialModeMagAndPhase.Checked)
+        {
+            //Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]); // 261105Cl 変更前
+            //261105Cl 変更: ポテンシャル像は Ug・U'g だけで決まり厚みに依らないので、単一モードの厚みを渡す。
+            //旧: ThicknessArray はこのモードでは隠れているシリーズ画像の厚みリストを読み、リストが不正だと null → NullReferenceException
+            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, Thickness);
+            //var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked); // 261105Cl 変更前
+            potentialResult = (FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked),
+                radioButtonPotentialModeMagAndPhase.Checked, FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal, ImageSize, ImageResolution);
+        }
+        //261105Cl 変更: 以降は計算したときの像・方位・大きさ・解像度で描く (描き直しで今の入力欄の値と混ざらないように)
+        var (images, _, mat, size, resolution) = potentialResult.Value;
 
         //画像が上下左右反転 (180度回転) しているみたいなので、処理 20230304
         //なぜかまた上下左右反転 (180度回転) しているみたいなので、削除 20241101
@@ -1141,8 +1154,9 @@ public partial class FormImageSimulator : FormBase
         SkipEvent = false;
 
         //作成したイメージをPseudoBitmapに変換
-        var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
-        int width = ImageSize.Width, height = ImageSize.Height;
+        //var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal; // 261105Cl 変更前 (mat は potentialResult から)
+        //int width = ImageSize.Width, height = ImageSize.Height; // 261105Cl 変更前
+        int width = size.Width, height = size.Height; // 261105Cl 変更
         var range = Enumerable.Range(0, 2).ToList();
         var pseudo = range.Select(_ => range.Select(_ => new PseudoBitmap()).ToList()).ToList();
 
@@ -1156,7 +1170,8 @@ public partial class FormImageSimulator : FormBase
                 {
                     MaxValue = j == 0 ? max : 180,
                     MinValue = j == 0 ? min : -180,
-                    Tag = new ImageInfo(width, height, ImageResolution, mat, text, j == 1),
+                    //Tag = new ImageInfo(width, height, ImageResolution, mat, text, j == 1), // 261105Cl 変更前
+                    Tag = new ImageInfo(width, height, resolution, mat, text, j == 1), // 261105Cl 変更: 計算したときの解像度
                     Scale = j == 0 ?
                     (comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear) :
                     PseudoBitmap.Scales.RotationLinear
@@ -1169,7 +1184,8 @@ public partial class FormImageSimulator : FormBase
                 {
                     MaxValue = max,
                     MinValue = min,
-                    Tag = new ImageInfo(width, height, ImageResolution, mat, text),
+                    //Tag = new ImageInfo(width, height, ImageResolution, mat, text), // 261105Cl 変更前
+                    Tag = new ImageInfo(width, height, resolution, mat, text), // 261105Cl 変更: 計算したときの解像度
                     Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
                 };
 
@@ -2063,6 +2079,23 @@ public partial class FormImageSimulator : FormBase
     {
         flowLayoutPanelMagAndPhase.Visible = panelPhaseScale.Visible = radioButtonPotentialModeMagAndPhase.Checked;
         flowLayoutPanelRealAndImaiginary.Visible = radioButtonPotentialModeRealAndImag.Checked;
+        //261105Cl 追加: 振幅・位相 ⇔ 実部・虚部 の切替も像に反映する (このハンドラは Mag 側にだけ配線されていて、切替 1 回につき 1 回来る)
+        DisplaySelection_Changed(this, e);
+    }
+
+    /// <summary>261105Cl 追加: 表示の選択 (ポテンシャルの振幅・位相 / 実部・虚部と表示する成分、Ug・U'g、シリーズ画像の横方向) が
+    /// 変わったときに像を描き直す (旧: 次の Simulate まで像が変わらなかった)。ポテンシャルは前回の計算結果から描き直し
+    /// (量が変わるときだけ計算し直す)、HRTEM/STEM は保持している結果から作り直す。</summary>
+    private void DisplaySelection_Changed(object sender, EventArgs e)
+    {
+        if (sender is RadioButton { Checked: false }) return;//RadioButton の CheckedChanged は外れた側でも来るので捨てる
+        if (ImageMode == ImageModes.POTENTIAL)
+        {
+            if (potentialResult is not null)
+                simulatePotential(redrawOnly: true);
+        }
+        else
+            GeneratePseudBitmap();
     }
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
@@ -2231,9 +2264,10 @@ public partial class FormImageSimulator : FormBase
     }
     #endregion
 
-    private void radioButtonPotentialShowPhase_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
+    //261105Cl 削除: 空のハンドラ。radioButtonPotentialShowPhase は DisplaySelection_Changed へ配線し直した
+    //private void radioButtonPotentialShowPhase_CheckedChanged(object sender, EventArgs e)
+    //{
+    //
+    //}
 }
 

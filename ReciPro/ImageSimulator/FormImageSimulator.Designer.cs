@@ -1043,6 +1043,7 @@ namespace ReciPro
             radioButtonHorizontalDefocus.TabStop = true;
             toolTip.SetToolTip(radioButtonHorizontalDefocus, resources.GetString("radioButtonHorizontalDefocus.ToolTip"));
             radioButtonHorizontalDefocus.UseVisualStyleBackColor = true;
+            radioButtonHorizontalDefocus.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // radioButtonHorizontalThickness
             // 
@@ -1050,6 +1051,7 @@ namespace ReciPro
             radioButtonHorizontalThickness.Name = "radioButtonHorizontalThickness";
             toolTip.SetToolTip(radioButtonHorizontalThickness, resources.GetString("radioButtonHorizontalThickness.ToolTip"));
             radioButtonHorizontalThickness.UseVisualStyleBackColor = true;
+            radioButtonHorizontalThickness.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // flowLayoutPanelSimulationMode
             // 
@@ -1125,6 +1127,7 @@ namespace ReciPro
             radioButtonPotentialShowMagAndPhase.TabStop = true;
             toolTip.SetToolTip(radioButtonPotentialShowMagAndPhase, resources.GetString("radioButtonPotentialShowMagAndPhase.ToolTip"));
             radioButtonPotentialShowMagAndPhase.UseVisualStyleBackColor = true;
+            radioButtonPotentialShowMagAndPhase.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // radioButtonPotentialShowMag
             // 
@@ -1132,6 +1135,7 @@ namespace ReciPro
             radioButtonPotentialShowMag.Name = "radioButtonPotentialShowMag";
             toolTip.SetToolTip(radioButtonPotentialShowMag, resources.GetString("radioButtonPotentialShowMag.ToolTip"));
             radioButtonPotentialShowMag.UseVisualStyleBackColor = true;
+            radioButtonPotentialShowMag.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // radioButtonPotentialShowPhase
             // 
@@ -1140,7 +1144,7 @@ namespace ReciPro
             radioButtonPotentialShowPhase.Name = "radioButtonPotentialShowPhase";
             toolTip.SetToolTip(radioButtonPotentialShowPhase, resources.GetString("radioButtonPotentialShowPhase.ToolTip"));
             radioButtonPotentialShowPhase.UseVisualStyleBackColor = true;
-            radioButtonPotentialShowPhase.CheckedChanged += radioButtonPotentialShowPhase_CheckedChanged;
+            radioButtonPotentialShowPhase.CheckedChanged += DisplaySelection_Changed; // 261105Cl 変更: 旧 radioButtonPotentialShowPhase_CheckedChanged (空のハンドラ)
             // 
             // panelPhaseScale
             // 
@@ -1285,6 +1289,7 @@ namespace ReciPro
             radioButtonPotentialShowRealAndImag.TabStop = true;
             toolTip.SetToolTip(radioButtonPotentialShowRealAndImag, resources.GetString("radioButtonPotentialShowRealAndImag.ToolTip"));
             radioButtonPotentialShowRealAndImag.UseVisualStyleBackColor = true;
+            radioButtonPotentialShowRealAndImag.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // radioButtonPotentialShowReal
             // 
@@ -1292,6 +1297,7 @@ namespace ReciPro
             radioButtonPotentialShowReal.Name = "radioButtonPotentialShowReal";
             toolTip.SetToolTip(radioButtonPotentialShowReal, resources.GetString("radioButtonPotentialShowReal.ToolTip"));
             radioButtonPotentialShowReal.UseVisualStyleBackColor = true;
+            radioButtonPotentialShowReal.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // radioButtonPotentialShowImag
             // 
@@ -1299,6 +1305,7 @@ namespace ReciPro
             radioButtonPotentialShowImag.Name = "radioButtonPotentialShowImag";
             toolTip.SetToolTip(radioButtonPotentialShowImag, resources.GetString("radioButtonPotentialShowImag.ToolTip"));
             radioButtonPotentialShowImag.UseVisualStyleBackColor = true;
+            radioButtonPotentialShowImag.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // checkBoxPotentialUgPrime
             // 
@@ -1308,6 +1315,7 @@ namespace ReciPro
             checkBoxPotentialUgPrime.Name = "checkBoxPotentialUgPrime";
             toolTip.SetToolTip(checkBoxPotentialUgPrime, resources.GetString("checkBoxPotentialUgPrime.ToolTip"));
             checkBoxPotentialUgPrime.UseVisualStyleBackColor = true;
+            checkBoxPotentialUgPrime.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // checkBoxPotentialUg
             // 
@@ -1317,6 +1325,7 @@ namespace ReciPro
             checkBoxPotentialUg.Name = "checkBoxPotentialUg";
             toolTip.SetToolTip(checkBoxPotentialUg, resources.GetString("checkBoxPotentialUg.ToolTip"));
             checkBoxPotentialUg.UseVisualStyleBackColor = true;
+            checkBoxPotentialUg.CheckedChanged += DisplaySelection_Changed; // 261105Cl 追加: 表示の選択を変えたら描き直す
             // 
             // groupBoxSTEMoption2
             // 
