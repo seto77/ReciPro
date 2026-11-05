@@ -1114,7 +1114,10 @@ public partial class FormImageSimulator : FormBase
 
         if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
+        //Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]); // 261105Cl 変更前
+        //261105Cl 変更: ポテンシャル像は Ug・U'g だけで決まり厚みに依らないので、単一モードの厚みを渡す。
+        //旧: ThicknessArray はこのモードでは隠れているシリーズ画像の厚みリストを読み、リストが不正だと null → NullReferenceException
+        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, Thickness);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
 
         //画像が上下左右反転 (180度回転) しているみたいなので、処理 20230304
