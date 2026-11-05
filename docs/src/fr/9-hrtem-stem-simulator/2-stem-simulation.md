@@ -40,7 +40,7 @@ Voir l'[Annexe A3.4 — Calcul STEM](../appendix/a3-bloch-wave/stem.md) pour la 
 
 ![Paramètres de l'échantillon](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-- **Thickness** : épaisseur de l'échantillon (nm). Cette valeur est ignorée en mode **Serial image**.
+- **Épaisseur** : épaisseur de l'échantillon (nm). Cette valeur est ignorée en mode **Image en série**.
 
 ---
 
@@ -50,7 +50,7 @@ Voir l'[Annexe A3.4 — Calcul STEM](../appendix/a3-bloch-wave/stem.md) pour la 
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **Tension d'accél. (kV)** | Tension d'accélération. La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
+| **Tension d'accél.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tension d'accélération (kV). La longueur d'onde des électrons corrigée relativistiquement est affichée à côté | 200 kV |
 | **Défocalisation Δf** | Défocalisation de la lentille objectif (lentille formant la sonde) (nm) | −57.8 nm |
 | **Cs** | Coefficient d'aberration sphérique (mm). Affecte la taille de la sonde | 0.5–1.0 mm |
 | **Cc** | Coefficient d'aberration chromatique (mm) | 1.0–2.0 mm |
@@ -68,10 +68,10 @@ Définissez la géométrie de la sonde convergente et du détecteur annulaire. C
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **α (convergence angle)** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 25 mrad (par défaut) ; 15–25 mrad |
+| **Conv. semi-angle α** | Demi-angle de la sonde convergente (mrad). Des valeurs plus grandes donnent une sonde plus fine et modifient le contraste de diffraction | 25 mrad (par défaut) ; 15–25 mrad |
 | **Détecteur annulaire — Interne** | Demi-angle de collection interne du détecteur annulaire (mrad). Le signal à l'intérieur de cet angle est exclu | 0 (par défaut) ; BF: 0, HAADF: 80 |
 | **Détecteur annulaire — Externe** | Demi-angle de collection externe du détecteur annulaire (mrad). Le signal à l'extérieur de cet angle est exclu | 20 (par défaut) ; BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Taille effective de la source d'électrons (pm). Appliquée après le calcul sous forme de convolution gaussienne de chaque image Élast. / TDS / EDX. Des valeurs plus grandes brouillent l'image et réduisent le contraste des détails fins | 20 pm (par défaut) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Taille effective de la source d'électrons (pm). Appliquée après le calcul sous forme de convolution gaussienne de chaque image Élast. / TDS / EDX. Des valeurs plus grandes brouillent l'image et réduisent le contraste des détails fins | 20 pm (par défaut) |
 
 Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Élast. / TDS / Élast. & TDS) ; les cartes STEM-EDX ne les utilisent pas. Les valeurs par défaut ne s'appliquent qu'au premier démarrage ; ensuite, les dernières valeurs utilisées sont restaurées.
 
@@ -86,12 +86,13 @@ Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Éla
 
 ---
 
-## Mode d'image (single / serial)
+## Mode unique/série
 
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
 ![Mode unique/série](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Image unique** : calcule une seule image STEM à l'épaisseur courante.
-- **Image en série** : génère une série d'images avec l'épaisseur / la défocalisation variées par paliers (définies via **Start / Pas / N** ; la liste ci-dessous peut aussi être modifiée directement).
+- **Image en série** : génère une série d'images avec l'épaisseur / la défocalisation variées par paliers (définies via **Début / Pas / N** ; la liste ci-dessous peut aussi être modifiée directement).
 
 ---
 
@@ -108,7 +109,7 @@ Les angles du détecteur ne s'appliquent qu'à l'image STEM de référence (Éla
 
 ![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** : nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes.
+- Nombre maximal d'ondes de Bloch utilisées dans la méthode de Bethe (par défaut 80). Le coût du problème aux valeurs propres varie comme le cube du nombre d'ondes.
 
 ---
 
@@ -129,9 +130,9 @@ Le sélecteur d'affichage en bas à gauche de la fenêtre choisit quelle composa
 
 | Cible d'affichage | Description |
 |----------------|-------------|
-| **Elastic** | Image issue uniquement de la diffusion élastique |
+| **Élast.** | Image issue uniquement de la diffusion élastique |
 | **TDS** | Image issue uniquement de la diffusion thermique diffuse |
-| **Elastic & TDS** | Somme de l'élastique + TDS |
+| **Élast. & TDS** | Somme de l'élastique + TDS |
 | **EDX** | Carte de rayons X caractéristiques. La raie à afficher (par exemple `O-K`) se choisit dans la liste déroulante en dessous, et **EDX commun** dans *Normalisation* place les canaux de même grandeur (canaux de couche : lacunes ; séries de raies : photons X) sur une même plage d'affichage partagée, de sorte que passer de l'un à l'autre ne remet pas l'image à l'échelle |
 
 !!! note

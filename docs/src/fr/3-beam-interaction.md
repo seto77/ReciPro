@@ -4,7 +4,7 @@ L'**Interaction du faisceau** décrit comment le cristal sélectionné interagit
 
 ![Interaction du faisceau](../assets/cap-fr-auto/FormBeamInteraction.png)
 
-Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Taches**, **Atténuations & transport**, **Facteurs de diffusion** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
+Le faisceau incident est sélectionné dans le bandeau en haut de la fenêtre ; les quatre onglets en dessous — **Réflexions**, **Atténuations & transport**, **Facteurs de diffusion** et **Fluorescence** — montrent les différents aspects de l'interaction. Chaque section d'onglet ci-dessous montre l'onglet sous les faisceaux **X-ray / Electron / Neutron** (utilisez les onglets dans chaque figure) ; le contenu change nettement selon le faisceau.
 
 !!! tip "Contexte de physique du solide (Annexe A2)"
     La diffusion et la physique du solide sous-jacentes à ces quatre onglets — facteurs de diffusion atomiques, facteur de structure, atténuation et transport du faisceau, et fluorescence — sont expliquées dans **[Annexe A2. Interaction du faisceau (contexte de physique du solide)](appendix/a2-beam-interaction/index.md)**.
@@ -30,12 +30,13 @@ Le bandeau supérieur est un **Wave Length Control** partagé avec les autres si
 
 - **Rayons X / Électrons / Neutrons** : les facteurs de diffusion atomiques et la physique de l'interaction diffèrent selon le type de faisceau incident, ils sont donc commutés ici.
 - Pour les **Rayons X**, le choix de l'**Element** (matériau de l'anode) et de la raie caractéristique (Kα, etc.) fixe automatiquement la longueur d'onde de ce rayonnement X caractéristique.
-- **Énergie (keV)** et **Long. d'onde (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Taches**.
+- **Énergie (keV)** et **Long. d'onde (Å)** sont liés ; le réglage de l'un met à jour l'autre, et tous deux déterminent le 2θ utilisé dans le tableau **Réflexions**.
 - **Unit (Å / nm)** change l'unité de longueur utilisée pour les distances d et les grandeurs similaires.
+- Changer de source restaure l'énergie utilisée en dernier avec cette source (pour les rayons X, aussi l'élément et la raie). Une source pas encore utilisée part de Cu Kα pour les rayons X, de 200 kV pour les électrons et de 25,3 meV (neutrons thermiques). Ces valeurs ne sont pas conservées après la fermeture de ReciPro. <!-- 261106Cl 作者の決定 J18 -->
 
 Le faisceau choisi détermine aussi quels onglets et quelles courbes ont un sens :
 
-| Faisceau | Taches | Atténuations & transport | Facteurs de diffusion | Fluorescence |
+| Faisceau | Réflexions | Atténuations & transport | Facteurs de diffusion | Fluorescence |
 |------|------|------|------|------|
 | **X-ray** | facteurs de structure incl. dispersion anomale | µ/ρ, µ, transmission + seuils d'absorption (vs énergie) | $f(s)$ (Waasmaier–Kirfel ou Temari) ou $F(q)+S(q)$ | raies caractéristiques + bâtons EDX |
 | **Electron** | facteurs de structure électroniques | σ, MFP, \|dE/ds\|, IMFP, parcours (vs énergie) | Peng / Kirkland / 8-Gaussians / Temari | — (masqué) |
@@ -45,7 +46,7 @@ L'onglet **Fluorescence** est réservé aux rayons X et disparaît pour les fais
 
 ---
 
-## Onglet Taches {#reflections-tab}
+## Onglet Réflexions {#reflections-tab}
 
 Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **facteur de structure** et l'intensité de diffraction de chacun. Pour les rayons X, le facteur de structure inclut désormais les termes de **dispersion anomale** $f'/f''$ à l'énergie actuelle, de sorte que `F_inv` (la partie imaginaire) est généralement non nul près d'un seuil d'absorption. La disposition est la même pour chaque faisceau ; seules les valeurs du facteur de structure et le 2θ de chaque réflexion changent.
 
@@ -60,10 +61,10 @@ Liste les plans cristallins autorisés (réflexions) du cristal ainsi que le **f
 
 **Options**
 
-- **Intensités de diffraction des poudres (optique de Bragg-Brentano)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, où $m$ est la multiplicité, $V$ le volume de la maille, et $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz–polarisation) pour les rayons X ou $L = 1/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz seul, sans terme de polarisation) pour les électrons et les neutrons. Lorsqu'elle est désactivée, l'intensité du facteur de structure $\lvert F\rvert^2$ est affichée. L'activer force également *Masquer les plans équivalents* et *Masquer les plans interdits* et les grise.
+- **Intensités de diffraction des poudres (optique de Bragg-Brentano)** : calcule l'intensité relative comme une intensité de diffraction sur poudre (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, où $m$ est la multiplicité, $V$ le volume de la maille, et $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz–polarisation) pour les rayons X ou $L = 1/(\sin 2\theta\,\sin\theta)$ (facteur de Lorentz seul, sans terme de polarisation) pour les électrons et les neutrons. Les réflexions que le faisceau ne peut pas atteindre (d < λ/2, 2θ affiché comme ∞) reçoivent une intensité de 0. <!-- 261105Cl 監査: J25 届かない反射の BB 強度は 0 --> Lorsqu'elle est désactivée, l'intensité du facteur de structure $\lvert F\rvert^2$ est affichée. L'activer force également *Masquer les plans équivalents* et *Masquer les plans interdits* et les grise.
 - **Masquer les plans équivalents** (activé par défaut) : regroupe les plans cristallographiquement équivalents en une seule entrée. La colonne **Mult.** n'est affichée que lorsque cette option est active.
 - **Masquer les plans interdits** (activé par défaut) : exclut les plans systématiquement éteints d'après les règles d'extinction. Lorsque cette option est désactivée, une colonne **Condition** indique la ou les conditions de réflexion qui interdisent chaque plan éteint.
-- **Seuil distance d >** (1 Å par défaut) : exclut les réflexions dont la distance d est inférieure à cette valeur (l'unité de longueur suit la sélection **Unit**).
+- **Seuil distance d >** (1 Å par défaut) : exclut les réflexions dont la distance d est inférieure à cette valeur (l'unité de longueur suit la sélection **Unit**). La plus petite valeur acceptée est (a + b + c)/20 de la maille actuelle, dans la même unité. <!-- 261105Cl 監査: J8 numericBoxCutoffD.Minimum を表示単位に合わせた -->
 
 Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents par symétrie) :
 
@@ -80,7 +81,7 @@ Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents
 | **F^2** | intensité du facteur de structure ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensité relative, la réflexion la plus forte étant fixée à 100 |
 | **Condition** | condition(s) d'extinction violée(s) par le plan (affichée seulement lorsque *Masquer les plans interdits* est désactivé) |
-| **i** | l'indice de Miller–Bravais redondant $i=-(h+k)$ (affiché seulement lorsque **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** est activé dans la fenêtre principale et que le cristal utilise des axes hexagonaux — hexagonal, ou trigonal hors réglage à axes rhomboédriques) |
+| **i** | l'indice de Miller–Bravais redondant $i=-(h+k)$ (affiché seulement lorsque **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** est activé dans la fenêtre principale et que le cristal utilise des axes hexagonaux — hexagonal, ou trigonal hors réglage à axes rhomboédriques) ; **Copier** l'écrit tel qu'affiché <!-- 261105Cl 監査: J9 i 列は表示している値をコピー --> |
 
 **Diagramme des pics de diffraction.** Sous le tableau, les mêmes réflexions sont tracées sous forme de motif de bâtons, les pics les plus forts étant étiquetés par leur *hkl*.
 
@@ -105,7 +106,7 @@ Chaque ligne correspond à une réflexion (ou à un groupe de plans équivalents
 
 ### X-ray
 
-Les boutons radio choisissent le coefficient tracé en fonction de l'énergie des photons (calculé sur 1–60 keV avec un axe d'énergie linéaire ; l'axe vertical est logarithmique pour µ/ρ et µ, et linéaire pour T %) :
+Les boutons radio choisissent le coefficient tracé en fonction de l'énergie des photons (calculé sur 1–60 keV avec un axe d'énergie linéaire ; l'axe vertical est logarithmique pour µ/ρ et µ, et linéaire pour T % ; si l'énergie actuelle est hors de cette plage, le titre du graphique l'indique, p. ex. *(0,5 keV actuels hors plage)*) : <!-- 261106Cl 作者の決定 J5 -->
 
 - **µ/ρ** — le coefficient d'atténuation **massique** (cm²/g) : avec quelle force le matériau retire les rayons X par gramme, indépendamment de la densité de son empilement (c'est la valeur que l'on trouve dans les tables de référence). Le graphique montre la valeur **total** avec ses composantes **photo**, **Rayleigh** et **Compton**.
 - **µ** — le coefficient d'atténuation **linéaire** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹) : l'atténuation par centimètre du matériau réel à sa densité réelle. L'intensité transmise suit $I = I_0\,e^{-\mu t}$, et $1/\mu$ est la distance sur laquelle l'intensité tombe à environ 37 % (1/e).
@@ -115,7 +116,7 @@ La ligne verticale marque l'énergie actuelle. Le tableau scalaire à gauche lis
 
 ### Electron
 
-Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du faisceau (calculé sur 1–50 keV ; la vue initiale montre 0–20 keV) :
+Le sélecteur de grandeur choisit ce qui est tracé en fonction de l'énergie du faisceau (calculé sur 1–50 keV ; la vue initiale montre 0–20 keV ; une énergie hors de cette plage est signalée dans le titre du graphique, p. ex. *(200 keV actuels hors plage)*) : <!-- 261106Cl 作者の決定 J5 -->
 
 - **Tous (normalisés)** — superpose les trois courbes ci-dessous, chacune remise à l'échelle de son propre maximum afin que les formes puissent être comparées sur un seul graphique (lire les valeurs absolues dans le tableau).
 - **σ élastique (nm²)** — section efficace de diffusion élastique : la probabilité qu'un seul atome dévie l'électron.
@@ -146,10 +147,10 @@ Le facteur de diffusion atomique de chaque élément constitutif, tracé en fonc
     ![Facteurs de diffusion — neutron](../assets/cap-fr-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** propose deux modes **Modèle** : **f(s)** trace le facteur de diffusion atomique des rayons X conventionnel (en unités d'électron) ; **F(q)+S(q)** trace le facteur de forme **cohérent** Rayleigh $F(q)$ avec la fonction de diffusion **incohérente** Compton $S(q)$ (depuis xraylib). Le tableau liste aussi les termes de dispersion anomale **f'(E)** et **f''(E)** à l'énergie actuelle, ainsi qu'une colonne **modèle** indiquant de quelle source provient la colonne f(s). Lorsque **f(s)** est sélectionné, une seconde ligne de boutons radio choisit **d'où provient la courbe** : **Waasmaier–Kirfel** (l'ajustement par défaut, qui couvre aussi les ions sur Z = 1–98) ou **Temari**. Elle est grisée pendant l'affichage de **F(q)+S(q)**, car ces deux courbes proviennent de xraylib et n'offrent pas de choix de source.
-- **Electron** propose quatre sources pour le facteur de diffusion électronique : **Peng**, **Kirkland**, **8-Gaussians** et **Temari**. Le tableau montre $f_e(s)$ (nm) et quel **modèle** l'a produit.
+- **Electron** propose quatre sources pour le facteur de diffusion électronique : **Peng**, **Kirkland**, **8-Gaussians** et **Temari**. Le tableau montre $f_e(s)$ (nm) et quel **modèle** l'a produit. **Kirkland** et **8-Gaussians** n'ont pas de paramètres pour les ions : pour les ions, leurs courbes sont donc omises et leurs cellules laissées vides (**Peng** donne des valeurs pour les ions). <!-- 261106Cl 作者の決定 J12 -->
 - Les longueurs de diffusion **Neutron** ne dépendent pas de $s$, aussi aucune courbe n'est tracée ; le tableau liste, pour chaque élément, la longueur de diffusion cohérente **b_coh** et ses sections efficaces cohérente / incohérente.
 - **Temari** n'est pas un ajustement mais une table calculée (Temari dataset-factors v2.0.0, CC-BY-4.0, issue d'un calcul de champ auto-cohérent de Dirac complet). Elle couvre **uniquement les atomes neutres Z = 1–86** : les ions et Z = 87–98 n'ont pas d'entrée, leurs courbes sont omises et leurs cellules laissées vides plutôt que remplies avec des valeurs d'atome neutre.
-- **Debye-Waller** multiplie chaque facteur par l'amortissement thermique $e^{-B s^2}$ en utilisant le paramètre de déplacement isotrope de chaque atome.
+- **Déplacement (B)** multiplie chaque facteur par l'amortissement thermique $e^{-B s^2}$ en utilisant le paramètre de déplacement isotrope de chaque atome.
 
 ---
 
@@ -159,7 +160,7 @@ Pour un faisceau de rayons X, l'émission de **fluorescence** caractéristique d
 
 ![Fluorescence (X-ray)](../assets/cap-fr-auto/FormBeamInteraction-xray-fluorescence.png)
 
-Le diagramme **EDX emission lines** trace les raies caractéristiques (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) de chaque élément sous forme de bâtons à leurs énergies de photons, avec une hauteur proportionnelle à fraction atomique × taux radiatif × rendement de fluorescence (un aperçu qualitatif de style EDX ; la section efficace d'excitation et l'efficacité du détecteur ne sont pas modélisées). Le tableau inférieur liste, par raie, l'élément, le nom de la raie, l'énergie **E keV**, l'intensité relative **Rel.I** et le rendement de fluorescence **ω**. Le tableau scalaire indique le rendement de la couche K **ω_K** de chaque élément et la **strongest line** du spectre.
+Le diagramme **Raies d'émission EDX (liste de référence ; excitation non prise en compte)** trace les raies caractéristiques (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) de chaque élément sous forme de bâtons à leurs énergies de photons, avec une hauteur proportionnelle à fraction atomique × taux radiatif × rendement de fluorescence (un aperçu qualitatif de style EDX et une liste de référence : la section efficace d'excitation et l'efficacité du détecteur ne sont pas modélisées, de sorte que la « raie la plus intense » n'est pas forcément la plus forte d'un spectre mesuré). <!-- 261106Cl 作者の決定 J6 --> Le tableau inférieur liste, par raie, l'élément, le nom de la raie, l'énergie **E keV**, l'intensité relative **Rel.I** (la part de cette raie parmi les transitions radiatives qui comblent une lacune de sa couche, en %) et le rendement de fluorescence **ω**. Le tableau scalaire indique le rendement de la couche K **ω_K** de chaque élément, la **raie la plus intense (excit. ignorée)** du spectre et la **source** des valeurs : *xraylib (E, I, ω)* lorsque xraylib est disponible (énergies des raies, intensités relatives et rendements proviennent tous de xraylib), sinon *internal (E only)*. <!-- 261105Cl 監査: FormBeamInteraction.cs (Rel.I = LineRadRate × 100、出典の行, Controls c6d62ed) -->
 
 ---
 

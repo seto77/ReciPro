@@ -30,7 +30,7 @@ Cette fenêtre n'a pas de combinaisons avec des touches de modification ; elle s
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | <kbd>ENTER</kbd> dans n'importe quel champ de recherche | Lancer la recherche dans la base de données (équivaut au bouton **Rechercher**) |
 | Cliquer sur une ligne du tableau des résultats | Charger ce cristal dans la fenêtre principale |
-| Cliquer sur un élément dans la fenêtre contextuelle **Periodic Table** | Faire défiler son filtre : *peut inclure ou non* → *doit inclure* → *doit exclure* |
+| Cliquer sur un élément dans la fenêtre contextuelle **Tableau périodique** | Faire défiler son filtre : *peut inclure ou non* → *doit inclure* → *doit exclure* |
 
 → Voir **[21. Raccourcis clavier et souris](21-shortcuts.md)** pour un aperçu de chaque fenêtre.
 
@@ -64,7 +64,7 @@ Saisissez ci-dessous les critères de recherche et appuyez sur le bouton **Reche
 
 Correspondance en texte libre avec le nom du cristal. Les correspondances partielles sont autorisées ; la casse est ignorée. Seuls les critères dont la case est cochée sont appliqués, et ils sont combinés par ET.
 
-### Éléments
+### Éléments {#element}
 
 Appuyez sur le bouton **Tableau périodique** pour ouvrir le sélecteur d'éléments. Chaque bouton d'élément parcourt trois états :
 

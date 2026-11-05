@@ -33,6 +33,8 @@ Les commandes situées en haut de la fenêtre définissent le calcul :
 - **Inclinaison de l'échantillon** (°, −90 à 0, 0 par défaut) : inclinaison de la surface de l'échantillon autour de l'axe *X*. Laissez 0 pour une incidence normale ; utilisez **−70°** pour reproduire la géométrie du [simulateur EBSD](12-ebsd-simulation.md), où la forte inclinaison augmente le rendement de rétrodiffusion.
 - **Énergie** (keV) / **Long. d'onde** / **Unit** : la tension d'accélération du faisceau incident, et la longueur d'onde électronique corrigée relativistement qui lui est liée. L'énergie fixe l'énergie cinétique utilisée à la fois par le modèle élastique (Mott NIST) et par le modèle inélastique (pouvoir d'arrêt / IMFP).
 
+Modifier **Inclinaison de l'échantillon** ou **Énergie** après un calcul ne change pas le résultat affiché : tant que **Simuler les trajectoires** n'est pas pressé de nouveau, chaque nouveau tracé (vue 3-D, stéréonet, histogrammes) utilise l'inclinaison et l'énergie avec lesquelles les trajectoires ont été calculées. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
+
 Un électron est suivi jusqu'à ce qu'il quitte l'échantillon ou que son énergie tombe à **2 keV** (seuil fixe). Les électrons qui sortent avec plus de 2 keV sont comptés comme électrons rétrodiffusés ; η (leur fraction parmi tous les électrons incidents), l'énergie BSE moyenne, le stéréonet et les histogrammes ci-dessous sont calculés à partir de ces électrons. La section efficace, le libre parcours moyen et le pouvoir d'arrêt affichés dans **Statistiques** sont des valeurs de modèle à l'énergie du faisceau.
 
 Les modèles de diffusion eux-mêmes ne sont pas sélectionnables par l'utilisateur : les sections efficaces élastiques proviennent de la table de Mott NIST fournie (avec repli sur la formule de Rutherford écrantée hors de son domaine), et le pouvoir d'arrêt de la forme de Jablonski modifiée (2008). Le modèle effectivement utilisé est indiqué à côté de la section efficace et du pouvoir d'arrêt dans **Statistiques**. Voir [Atténuation et transport](appendix/a2-beam-interaction/attenuation-transport.md) pour la description de ces modèles.
@@ -59,7 +61,7 @@ Valeurs pour l'énergie de faisceau actuelle. La section efficace et le pouvoir 
 - **Libre parcours moyen élastique (λ)** (nm) — distance moyenne entre deux événements de diffusion élastique.
 - **Pouvoir d'arrêt (dE/ds)** (eV/nm, négatif) — énergie perdue par unité de longueur de trajet.
 - **Coefficient de rétrodiffusion électronique, η** (%) — fraction des électrons incidents qui ressortent par la surface d'entrée. C'est la grandeur sur laquelle repose le contraste de l'imagerie BSE.
-- **Énergie BSE moyenne** (keV) — énergie moyenne des électrons rétrodiffusés au moment de leur échappement.
+- **Énergie BSE moyenne** (keV) — énergie moyenne des électrons rétrodiffusés au moment de leur échappement. Affichée « - » lorsqu'aucun électron n'est rétrodiffusé (les histogrammes sont alors vides). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

@@ -2,7 +2,7 @@
 
 La **simulation de diffraction des rayons X / des neutrons** calcule les figures de diffraction des rayons X et des neutrons sur monocristal. C'est l'un des principaux modes du [simulateur de diffraction](index.md).
 
-> Cette page répertorie chaque réglage qui apparaît à droite lorsque vous sélectionnez **Source d'onde = Rayons X** (ou neutrons). Pour les opérations à l'échelle de la fenêtre, telles que le tracé et l'enregistrement, voir la [page de présentation](index.md).
+> Cette page répertorie chaque réglage qui apparaît à droite lorsque vous sélectionnez **Source d'onde** = **Rayons X** (ou **Neutrons**). Pour les opérations à l'échelle de la fenêtre, telles que le tracé et l'enregistrement, voir la [page de présentation](index.md).
 
 Conditions GUI : Source d'onde = Rayons X / Neutrons · Optique = Faisceau parallèle / Précession (rayons X, ZOLZ) / Laue en retour (rayons X) · Calcul d'intensité = Erreur d'excitation / Cinématique & err. exc.
 
@@ -16,11 +16,11 @@ Les rayons X ont une longueur d'onde plus grande que les électrons (Cu Kα : 0.
 
 ---
 
-## Wave Length
+## Source d'onde {#wave-length}
 
-![Wave Length](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Source d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Sélectionnez **Rayons X** comme source de rayonnement. Les rayons X peuvent être spécifiés de deux manières : rayons X caractéristiques et rayonnement synchrotron.
+Sélectionnez **Rayons X** comme **Source d'onde**. Les rayons X peuvent être spécifiés de deux manières : rayons X caractéristiques et rayonnement synchrotron.
 
 ### Rayons X caractéristiques
 
@@ -39,29 +39,31 @@ Réglez **Element** sur **0: Custom** et entrez directement l'énergie (keV) ou 
 
 ---
 
-## Mode du faisceau incident
+## Optique {#incident-beam-mode}
 
-![Beam mode](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optique](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 Sélectionne la géométrie du faisceau incident. Trois modes sont disponibles pour les rayons X.
 
-### Parallel
+### Faisceau parallèle {#parallel}
 
 L'onde plane standard. Un faisceau incident parallèle utilisé pour la SAED et la diffraction des rayons X sur monocristal.
 
-### Precession (X-ray) — chambre de précession
+### Précession (rayons X, ZOLZ) — chambre de précession {#precession-x-ray--precession-camera}
 
-Simule une chambre de précession de rayons X. Il s'agit d'un cliché de précession qui capture une seule couche du réseau réciproque.
+Simule une chambre de précession de rayons X. Il s'agit d'un cliché de précession qui capture une seule couche du réseau réciproque. Les anneaux de Debye sont dessinés comme des cercles de rayon $2L_2\sin\theta$ ($L_2$ = longueur de caméra 2), comme les cercles de l'échelle 2θ. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
-### Back-Laue (Laue en réflexion)
+### Laue en retour (rayons X) — Laue en réflexion {#back-laue-back-reflection-laue}
 
-Simule une figure de Laue en réflexion avec des rayons X blancs (polychromatiques). Dans cette géométrie en réflexion, le détecteur est placé du côté de la source et **Monochrome** est désactivé. Les taches sont projetées sur un détecteur plan **perpendiculaire au faisceau**, à la longueur de caméra, du côté de la source ; l'inclinaison du détecteur **Tau / Phi** de la [géométrie du détecteur](index.md#detector-geometry) n'est pas utilisée dans cette projection.
+Simule une figure de Laue en réflexion avec des rayons X blancs (polychromatiques). Dans cette géométrie en réflexion, le détecteur est placé du côté de la source ; les champs d'énergie / de longueur d'onde et le sélecteur d'élément du contrôle **Source d'onde** sont masqués et **Flat white** est affiché à la place. Les taches sont projetées sur un détecteur plan **perpendiculaire au faisceau**, à la longueur de caméra, du côté de la source ; l'inclinaison du détecteur **Tau / Phi** de la [géométrie du détecteur](index.md#detector-geometry) n'est pas utilisée dans cette projection.
 
 - Le spectre blanc est coupé à **50 keV** : les réflexions sont collectées jusqu'à $d = \lambda(50\ \text{keV})/2$, et aucune pondération spectrale n'est appliquée.
 - Les harmoniques $n\mathbf{g}$ situées sur une même droite passant par l'origine tombent sur la même tache ; leurs $\lvert F\rvert^2$ sont additionnés sur la réflexion d'ordre le plus bas et les intensités des taches sont normalisées à la tache la plus intense.
 - **Dispersion anomale (f', f'')** est désactivée (l'énergie n'est pas unique), et le **Rayon de tache** n'a pas d'unité dans ce mode.
+- 2θ (position de la souris, étiquettes des taches et échelle 2θ) est l'angle de diffusion : 180° au trou du faisceau au centre, décroissant vers l'extérieur. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Tous les cristaux sélectionnés sont dessinés ; avec plusieurs cristaux (ou avec **Couleur par cristal** activé), les taches de chaque cristal prennent la couleur de ce cristal. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
 
-> **Note** : Les options du faisceau incident suivent la longueur d'onde. **Précession (électrons)** et **Convergence (électrons)** n'apparaissent que lorsque le rayonnement électronique est sélectionné, tandis que les options **Précession (rayons X, ZOLZ)** et **Laue en retour (rayons X)** ci-dessus n'apparaissent que lorsque le rayonnement X est sélectionné. Pour les neutrons, seul **Faisceau parallèle** est disponible. Selon l'état au moment de la capture, la capture d'écran peut ne pas afficher les options spécifiques aux rayons X.
+> **Note** : Les options d'**Optique** suivent la source d'onde. **Précession (électrons)** et **Convergence (électrons)** n'apparaissent que lorsque **Électrons** est sélectionné, tandis que les options **Précession (rayons X, ZOLZ)** et **Laue en retour (rayons X)** ci-dessus n'apparaissent que lorsque **Rayons X** est sélectionné. Pour les neutrons, seul **Faisceau parallèle** est disponible. Selon l'état au moment de la capture, la capture d'écran peut ne pas afficher les options spécifiques aux rayons X.
 
 ---
 
@@ -100,7 +102,7 @@ Contrôle la manière dont chaque tache de diffraction est rendue.
 - **Opacité** : transparence de la tache (0 = transparent, 1 = opaque).
 - **Rayon de tache (R)** : rayon du point du réseau réciproque. La taille de la tache rendue est déterminée par la combinaison de **Apparence** et de **Calcul d'intensité**.
 - **Luminosité** : actif uniquement en mode **Gaussienne**. Définit l'intensité intégrée de la gaussienne rendue.
-- **Échelle de couleurs** (Gaussienne uniquement) : **Gray**, **Cold-Warm**, **Spectrum** ou **Fire**.
+- **Échelle de couleurs** (Gaussienne uniquement) : **Gray**, **Cold-warm**, **Spectrum** ou **Fire**.
 - **Échelle log** (Gaussienne uniquement) : afficher les intensités sur une échelle logarithmique.
 - **Couleur de tache** : couleurs des taches utilisées avec l'échelle de couleurs **Gray** (ce groupe est masqué pour les autres échelles de couleurs).
 - **Couleur par cristal** : lorsque cette case est cochée, dessine les taches dans la couleur attribuée à chaque cristal.
@@ -112,7 +114,7 @@ Contrôle la manière dont chaque tache de diffraction est rendue.
 Les anneaux de Debye d'un échantillon polycristallin peuvent être affichés. Activez **Anneaux de Debye** dans la barre d'outils (voir [Barre d'outils](index.md#toolbar)).
 
 - **Ignorer l'intensité de diffraction** : dessine tous les anneaux avec la même couleur et la même intensité (utilisé pour une comparaison purement géométrique qui ignore le facteur de structure).
-- **Afficher les étiquettes d'indices** : affiche l'indice (*hkl*) près de chaque anneau.
+- **Afficher les étiquettes d'indices** : affiche les indices {*hkl*} près de chaque anneau (quatre indices {*hkil*} avec **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** activé, pour les axes hexagonaux). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Les réglages détaillés se trouvent dans l'onglet Anneaux de Debye du [menu à onglets](index.md#drawing-overlay-tabs).
 
@@ -120,7 +122,7 @@ Les réglages détaillés se trouvent dans l'onglet Anneaux de Debye du [menu à
 
 ## Diffraction des neutrons
 
-Sélectionner **Neutrons** dans le contrôle de longueur d'onde calcule une figure de diffraction des neutrons. Entrez l'énergie (meV) ou la longueur d'onde (Å ou nm, au choix ; Å par défaut). Le faisceau incident ne peut être que **Faisceau parallèle**. Le calcul de l'intensité peut être **Erreur d'excitation** ou **Cinématique & err. exc.** (**Théorie dynamique** n'est pas disponible). L'intensité cinématique utilise la longueur de diffusion des neutrons au lieu du facteur de diffusion atomique.
+Sélectionner **Neutrons** dans **Source d'onde** calcule une figure de diffraction des neutrons. Entrez l'énergie (meV) ou la longueur d'onde (Å ou nm, au choix ; Å par défaut). **Optique** ne peut être que **Faisceau parallèle**. Le calcul de l'intensité peut être **Erreur d'excitation** ou **Cinématique & err. exc.** (**Théorie dynamique** n'est pas disponible). L'intensité cinématique utilise la longueur de diffusion des neutrons au lieu du facteur de diffusion atomique.
 
 ---
 

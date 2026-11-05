@@ -20,7 +20,7 @@ Les électrons à l'intérieur d'un cristal sont diffusés par le potentiel cris
 
 ![Conditions TEM](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-- **Tension d'accél. (kV)** — tension d'accélération. Elle définit la longueur d'onde des électrons et sert à calculer les coefficients de Fourier $U_g$ du potentiel.
+- **Tension d'accél.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> — tension d'accélération (kV). Elle définit la longueur d'onde des électrons et sert à calculer les coefficients de Fourier $U_g$ du potentiel.
 
 > **Defocus, Cs, Cc, β, ΔV et la PCTF sont inactifs en mode potentiel** (aucune optique de formation de l'image n'est appliquée) et apparaissent grisés.
 
@@ -45,8 +45,8 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 | Mode | Options |
 |------|---------|
-| **Magnitude and phase** | **Both** / **Magnitude only** / **Phase only** (la phase est rendue avec une roue chromatique, et une échelle de phase est affichée en dessous) |
-| **Real and imaginary part** | **Both** / **Real only** / **Imaginary only** |
+| **Module et phase** | **Les deux** / **Module seul** / **Phase seule** (la phase est rendue avec une roue chromatique, et une échelle de phase est affichée en dessous) |
+| **Partie réelle et imaginaire** | **Les deux** / **Partie réelle seule** / **Partie imaginaire seule** |
 
 ---
 
@@ -54,8 +54,8 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 ![Propriétés de l'image](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
 
-- **Size (W×H)** — dimensions en pixels de l'image générée (512×512 par défaut).
-- **Resolution** — résolution d'échantillonnage (pm/px).
+- **Taille (L×H)** — dimensions en pixels de l'image générée (512×512 par défaut).
+- **Résolution** — résolution d'échantillonnage (pm/px).
 
 ---
 
@@ -63,13 +63,13 @@ $U_g$ et $U'_g$ peuvent être affichés en même temps (un volet est ajouté pou
 
 ![Ondes](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
 
-- **Max Bloch waves** — nombre maximal d'ondes de Bloch (coefficients de Fourier) inclus dans la synthèse de Fourier du potentiel (80 par défaut). Des valeurs plus grandes incluent des fréquences spatiales plus élevées et reproduisent des détails plus fins du potentiel.
+- Nombre maximal d'ondes de Bloch (coefficients de Fourier) inclus dans la synthèse de Fourier du potentiel (80 par défaut). Des valeurs plus grandes incluent des fréquences spatiales plus élevées et reproduisent des détails plus fins du potentiel.
 
 ---
 
 ## Ajustement de l'image (côté gauche)
 
-La luminosité (Min / Max), l'échelle de couleurs et la superposition de la grille de la maille se règlent à gauche dans **Adjust** et **Display** (voir la [page de présentation](index.md#display-settings)).
+La luminosité (Min / Max), l'échelle de couleurs et la superposition de la grille de la maille se règlent à gauche dans **Ajuster** et **Affichage** (voir la [page de présentation](index.md#display-settings)).
 
 ---
 

@@ -8,7 +8,7 @@ title: Diffraction Simulator
 
 ![Simulateur de diffraction](../../assets/cap-fr-auto/FormDiffractionSimulator.png)
 
-La fenêtre comporte **à gauche** une zone de tracé du diagramme de diffraction et **à droite** les panneaux de réglage des propriétés des réflexions (longueur d'onde, faisceau incident, calcul d'intensité, apparence, etc.). La combinaison de la longueur d'onde et du faisceau incident détermine le mode d'acquisition (diffraction des rayons X, SAED, PED, CBED), et les panneaux de droite se reconfigurent en conséquence.
+La fenêtre comporte **à gauche** une zone de tracé du diagramme de diffraction et **à droite** le panneau **Paramètres de simulation** (source d'onde, optique, calcul d'intensité, apparence, etc.). La combinaison de la source d'onde et de l'optique détermine le mode d'acquisition (diffraction des rayons X, SAED, PED, CBED), et les panneaux de droite se reconfigurent en conséquence.
 
 ---
 
@@ -30,21 +30,23 @@ La fenêtre comporte **à gauche** une zone de tracé du diagramme de diffractio
 |------|------|------|
 | **Simulateur ALCHEMI** | Courbes d'inclinaison d'ionisation résolues par site (microanalyse renforcée par canalisation) | [Simulation ALCHEMI](4-alchemi-simulation.md) |
 
+Masquer le simulateur de diffraction masque aussi toutes ses fenêtres enfants (informations sur les réflexions, géométrie du détecteur, CBED, compression dynamique, simulation du porte-objet MET et simulateur ALCHEMI). Lorsque le simulateur est de nouveau affiché, seule la fenêtre CBED (en mode convergence) se rouvre d'elle-même. <!-- 261105Cl 監査: FormElectronDiffraction_VisibleChanged (f98bc0d) -->
+
 ---
 
 ## Aperçu rapide des modes
 
-Recherchez la page dont vous avez besoin à partir de la combinaison de la **longueur d'onde (source)** et du **faisceau incident**.
+Recherchez la page dont vous avez besoin à partir de la combinaison de la **Source d'onde** et de l'**Optique** (faisceau incident).
 
-| Longueur d'onde | Faisceau incident | Mode | Page |
+| Source d'onde | Optique | Mode | Page |
 |------------|--------------------|------|------|
-| Électron | Parallèle | SAED | [Simulation SAED](1-saed-simulation.md) |
-| Électron | Précession (électron = PED) | PED | [Simulation PED](2-ped-simulation.md) |
-| Électron | Convergence (CBED) | CBED | [Simulation CBED](3-cbed-simulation.md) |
-| Rayons X | Parallèle | Diffraction des rayons X | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
-| Rayons X | Précession (rayons X) | Précession rayons X (caméra de précession) | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
-| Rayons X | Back Laue | Laue en rétroréflexion | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
-| Neutron | Parallèle | Diffraction des neutrons | [section neutrons de la Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Électrons | Faisceau parallèle | SAED | [Simulation SAED](1-saed-simulation.md) |
+| Électrons | Précession (électrons) | PED | [Simulation PED](2-ped-simulation.md) |
+| Électrons | Convergence (électrons) | CBED | [Simulation CBED](3-cbed-simulation.md) |
+| Rayons X | Faisceau parallèle | Diffraction des rayons X | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Rayons X | Précession (rayons X, ZOLZ) | Précession rayons X (caméra de précession) | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Rayons X | Laue en retour (rayons X) | Laue en rétroréflexion | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Neutrons | Faisceau parallèle | Diffraction des neutrons | [section neutrons de la Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 
 > **Note** : Les choix de faisceau incident (**Optique**) changent avec la longueur d'onde. Pour les électrons : **Faisceau parallèle, Précession (électrons), Convergence (électrons)** ; pour les rayons X : **Faisceau parallèle, Précession (rayons X, ZOLZ), Laue en retour (rayons X)** ; pour les neutrons : **Faisceau parallèle** uniquement. Changer de source d'onde ramène toujours l'optique sur **Faisceau parallèle**. Sélectionner **Précession (électrons)** ou **Convergence (électrons)** bascule automatiquement le calcul d'intensité sur **Théorie dynamique** ; **Théorie dynamique** n'est proposée que pour les électrons (choisir les rayons X ou les neutrons revient à **Cinématique & err. exc.**). Le mode Laue en retour utilise un faisceau blanc (polychromatique).
 
@@ -65,7 +67,7 @@ Ceux-ci s'appliquent à la fenêtre du diagramme de diffraction partagée par le
 | Molette de la souris | Zoomer / dézoomer d'un facteur ×2 par cran ; le point sous le curseur est amené au centre de la vue (avec **Fixer** coché, le centre fixe est conservé) |
 | Clic droit | Dézoomer (×1/1.2) |
 | Glissement droit d'un cadre | Zoomer sur la région sélectionnée |
-| Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
+| Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels : cristal et angles d'Euler, source, énergie, longueur d'onde, optique, forme des taches, calcul d'intensité (pour **Théorie dynamique**, aussi l'épaisseur, le nombre d'ondes diffractées et, en PED, le demi-angle de précession) et géométrie du détecteur <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
 | Double-clic droit sur un bouton de couche actif (Taches / Lignes de Kikuchi / Anneaux de Debye / Échelle) | Faire clignoter cette couche |
 
 Les fenêtres auxiliaires ouvertes d'ici en ajoutent quelques autres :
@@ -73,9 +75,9 @@ Les fenêtres auxiliaires ouvertes d'ici en ajoutent quelques autres :
 | Raccourci | Action |
 |----------|--------|
 | Double-clic gauche sur le stéréonet — **Simulation du porte-objet MET** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — **Simulation du porte-objet MET** | Modifier l'inclinaison du porte-objet pas à pas (cocher d'abord **Activer les touches fléchées** ; actif quelle que soit la fenêtre de ReciPro au premier plan) |
-| Déposer un fichier `.prm` ou une image — **Detector geometry** | Charger la géométrie du détecteur / l'image de superposition |
-| Déposer un profil `.txt` — **Dynamic Compression** | Charger des profils position/temps/pression (choisir l'instant avec le curseur **Temps** ; faire glisser les lignes verticales du graphique pour régler l'avant et l'arrière) |
+| Touches fléchées — **Simulation du porte-objet MET** | Modifier l'inclinaison du porte-objet pas à pas (cocher d'abord **Activer les touches fléchées** ; seulement lorsque la fenêtre du porte-objet est active) <!-- 261106Cl 作者の決定 D25 --> |
+| Déposer un fichier `.prm` ou une image — **Géométrie du détecteur** | Charger la géométrie du détecteur / l'image de superposition |
+| Déposer un profil `.txt` — **Compression dynamique** | Charger des profils profondeur/temps/pression (choisir l'instant avec le curseur **Temps** ; faire glisser les lignes verticales du graphique pour régler l'avant et l'arrière) |
 
 Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> applicables à toute l'application, depuis la fenêtre principale, fonctionnent également lorsque cette fenêtre a le focus (voir [fenêtre principale](../0-main-window.md)).
 
@@ -88,11 +90,11 @@ Les raccourcis <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> applicables à toute l'applicati
 | Objectif | Commencer par | Référence |
 |------|------------|-----------|
 | Produire une diffraction électronique en faisceau parallèle (SAED) | Régler **Optique** sur **Faisceau parallèle** et **Source d'onde** sur **Électrons** | [Simulation SAED](1-saed-simulation.md), [calcul SAED en faisceau parallèle](../appendix/a3-bloch-wave/calculation.md) |
-| Produire une diffraction des rayons X d'un monocristal | Basculer **Source d'onde** sur rayons X / Synchrotron | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
+| Produire une diffraction des rayons X d'un monocristal | Basculer **Source d'onde** sur **Rayons X** (pour le rayonnement synchrotron, régler **Element** sur **0: Custom**) | [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md) |
 | Produire une diffraction électronique en précession (PED) | Régler **Optique** sur **Précession (électrons)**, puis fixer le demi-angle et le pas | [Simulation PED](2-ped-simulation.md) |
 | Produire une diffraction électronique en faisceau convergent (CBED) | Régler **Optique** sur **Convergence (électrons)** et définir les conditions dans la fenêtre CBED | [Simulation CBED](3-cbed-simulation.md), [calcul CBED](../appendix/a3-bloch-wave/cbed.md) |
 | Examiner la liste des réflexions issue du calcul dynamique | Sélectionner **Théorie dynamique** et appuyer sur **Détails des taches** | [Calcul dynamique (cœur partagé)](../appendix/a3-bloch-wave/calculation.md) |
-| Comparer la géométrie du détecteur avec une image expérimentale | Ouvrir les réglages de géométrie du détecteur via **Details** dans **Géométrie détecteur & image superposée** et utiliser l'image de superposition | [Système de coordonnées du détecteur](../appendix/a1-coordinate-system/2-diffraction.md) |
+| Comparer la géométrie du détecteur avec une image expérimentale | Ouvrir les réglages de géométrie du détecteur via **Détails** dans **Géométrie détecteur & image superposée** et utiliser l'image de superposition | [Système de coordonnées du détecteur](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
 
@@ -106,7 +108,7 @@ Voir « Raccourcis clavier et souris » en haut de cette page.
 
 ### Position de la souris
 
-La ligne **Position de la souris :** au-dessus du diagramme affiche, pour la position du curseur, *d* (nm), *d*⁻¹ (nm⁻¹) et 2θ (en degrés et en rad, ou en mrad en dessous de 0.1 rad). Cocher **Details** ajoute trois lectures de coordonnées : les coordonnées du détecteur (mm, origine = pied de la perpendiculaire issue de l'échantillon), les coordonnées de l'espace réel (mm, origine = cristal) et les coordonnées de l'espace réciproque (nm⁻¹). En mode Laue en retour, les valeurs de *d* et de l'espace réciproque sont affichées sous la forme « - ».
+La ligne **Position de la souris :** au-dessus du diagramme affiche, pour la position du curseur, *d* et *d*⁻¹ (en nm et nm⁻¹ ou en Å et Å⁻¹, selon l'unité de longueur de la fenêtre principale) et 2θ <!-- 261106Cl 作者の決定 C2 --> (en degrés et en rad, ou en mrad en dessous de 0.1 rad). Cocher **Details** ajoute trois lectures de coordonnées : les coordonnées du détecteur (mm, origine = pied de la perpendiculaire issue de l'échantillon), les coordonnées de l'espace réel (mm, origine = cristal) et les coordonnées de l'espace réciproque (nm⁻¹). En mode Laue en retour, les valeurs de *d* et de l'espace réciproque sont affichées sous la forme « - », et 2θ est l'angle de diffusion, c.-à-d. 180° moins l'angle par rapport à l'axe du faisceau (180° au trou du faisceau, au centre). <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
 
 ---
 
@@ -117,11 +119,11 @@ La ligne **Position de la souris :** au-dessus du diagramme affiche, pour la pos
 | Élément de menu | Description |
 |-----------|-------------|
 | **Enregistrer l'image** | Enregistrer le diagramme de diffraction affiché, **comme image (format PNG)** ou **comme métafichier (EMF)**. |
-| **Enregistrer la zone du détecteur** | Enregistrer uniquement le recadrage de la zone du détecteur (PNG / EMF). Affiché uniquement lorsque la zone du détecteur est visible. |
-| **Enregistrer les disques CBED** | Mode CBED uniquement : enregistrer les disques calculés **comme images individuelles (format PNG / TIFF)** ou **comme image collective (format PNG / TIFF)**. |
+| **Enregistrer la zone du détecteur** | Enregistrer uniquement le recadrage de la zone du détecteur (PNG / EMF) sur la grille de pixels du détecteur. Affiché uniquement lorsque la zone du détecteur est visible. On vous demande s'il faut inclure l'image superposée uniquement lorsqu'une image est chargée. <!-- 261105Cl 監査: SaveOrCopyDetector (C18) --> |
+| **Enregistrer les disques CBED** | Mode CBED uniquement : enregistrer les disques calculés **comme images individuelles (format PNG / TIFF)** ou **comme image collective (format PNG / TIFF)**. Toujours les disques CBED, même lorsque la zone du détecteur est affichée. |
 | **Copier** | Copier l'image affichée dans le presse-papiers (**comme image** / **comme métafichier (EMF)**). |
-| **Copier la zone du détecteur** | Copier uniquement le recadrage de la zone du détecteur. Affiché uniquement lorsque la zone du détecteur est visible. |
-| **Copier les disques CBED** | Mode CBED uniquement : copier les disques **comme image collective**. |
+| **Copier la zone du détecteur** | Copier uniquement le recadrage de la zone du détecteur sur la grille de pixels du détecteur. Affiché uniquement lorsque la zone du détecteur est visible. On vous demande s'il faut inclure l'image superposée uniquement lorsqu'une image est chargée. |
+| **Copier les disques CBED** | Mode CBED uniquement : copier les disques **comme image collective** (toujours les disques CBED, même lorsque la zone du détecteur est affichée). |
 | **Enregistrer la vidéo** | Enregistrer une vidéo du **Cliché de diffraction** ou de la vue **Espace réciproque**. |
 | **Mise en page / Aperçu avant impression / Imprimer** | Imprimer le diagramme affiché. |
 
@@ -129,7 +131,7 @@ La ligne **Position de la souris :** au-dessus du diagramme affiche, pour la pos
 
 ![Menu Préréglages](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
-Préréglages fixes de source d'onde qui ne règlent que le rayonnement et son énergie : **Électron 300 kV**, **Électron 200 kV**, **Électron 120 keV**, **Rayons X 30 keV**, **Rayons X 20 keV**, **Rayons X 17.48 keV (MoKα₁)** et **Rayons X 8.041 keV (CuKα₁)** (les deux derniers sélectionnent la raie caractéristique Kα₁ de Mo / Cu). Les autres réglages (géométrie du détecteur, onglets, propriétés des taches) ne sont ni enregistrés ni modifiés.
+Préréglages fixes de source d'onde qui ne règlent que le rayonnement et son énergie : **Électron 300 kV**, **Électron 200 kV**, **Électron 120 kV**, **Rayons X 30 keV**, **Rayons X 20 keV**, **Rayons X 17.48 keV (MoKα₁)** et **Rayons X 8.041 keV (CuKα₁)** (les deux derniers sélectionnent la raie caractéristique Kα₁ de Mo / Cu). Les autres réglages (géométrie du détecteur, onglets, propriétés des taches) ne sont ni enregistrés ni modifiés.
 
 ### Menus Options et Aide
 
@@ -151,7 +153,7 @@ Préréglages fixes de source d'onde qui ne règlent que le rayonnement et son �
 | Lignes de Kikuchi | Afficher / masquer la couche des lignes de Kikuchi |
 | Anneaux de Debye | Afficher / masquer la couche des anneaux de Debye |
 | Échelle | Afficher / masquer la couche des lignes d'échelle |
-| Index / d / 1/d / Distance / 2θ / χ / Err. d'excit. / \|Fg\| | Choix de l'étiquette attachée à chaque réflexion |
+| Index / d / 1/d / Distance / 2θ / χ / Err. d'excit. / Intensité <!-- 261106Cl 作者の決定 C11, C1 --> | Choix de l'étiquette attachée à chaque réflexion |
 
 ---
 
@@ -166,15 +168,15 @@ Préréglages fixes de source d'onde qui ne règlent que le rayonnement et son �
 | **Résolution** | La taille d'un pixel d'écran, en **mm/px** (sur le plan du détecteur) ou en **nm⁻¹/px** (au choix ; 0.08 mm/px par défaut). Elle n'a pas besoin de correspondre à la taille réelle des pixels du détecteur ; elle est traitée comme une échelle d'affichage et mise à jour automatiquement lorsque vous zoomez avec la souris. |
 | **Taille (L×H)** | Largeur et hauteur en pixels de la zone de tracé. Selon la résolution de votre écran, de très grandes valeurs peuvent ne pas être réglables. |
 | **Définir le centre à / Fixer** | Place le centre de la zone de tracé sur le **perpendicular foot** (pied de la perpendiculaire), le **direct spot** (tache directe) ou le centre du **detector** (ce dernier uniquement lorsqu'une zone de détecteur est définie). Avec **Fixer** coché (par défaut), le centre reste à cet endroit : le déplacement à la souris est désactivé et le zoom conserve ce centre. |
-| **Retournement horizontal / Retournement vertical / Image négative** | Retournements géométriques (horizontal / vertical) et inversion du contraste du diagramme affiché. Utilisez-les pour faire correspondre l'orientation ou le contraste d'une image expérimentale. |
-| **Espace réciproque** | Ouvre, à côté du diagramme, une vue 3-D de la sphère d'Ewald et des points du réseau réciproque, visualisant quelles réflexions sont excitées. Son panneau **Options** règle les couleurs (taches proches / éloignées de la sphère d'Ewald, sphère d'Ewald, origine, guide de direction), le rayon des taches en 3-D (nm⁻¹), le seuil d'intensité relative (%), la transparence des taches éloignées de la sphère d'Ewald, les étiquettes et la direction de vue (boutons fléchés avec un **Pas** angulaire, **Réinitialiser**). |
+| **Retournement horizontal / Retournement vertical / Image négative** | Retournements géométriques (horizontal / vertical) et inversion des couleurs du diagramme : **Image négative** inverse le fond, les taches, les étiquettes, les lignes de Kikuchi, les réflexions interdites, la tache directe, le pied de la perpendiculaire, les anneaux de Debye et les lignes d'échelle (les couleurs des cristaux, les échelles de couleurs de l'affichage gaussien, la vue 3-D et une image superposée ne sont pas inversées). <!-- 261105Cl 監査: checkBoxNegativeImage_CheckedChanged (C21) --> Utilisez-les pour faire correspondre l'orientation ou le contraste d'une image expérimentale. |
+| **Espace réciproque** | Ouvre, à côté du diagramme, une vue 3-D de la sphère d'Ewald et des points du réseau réciproque, visualisant quelles réflexions sont excitées. Son panneau **Options** règle les couleurs (taches proches / éloignées de la sphère d'Ewald, sphère d'Ewald, origine, guide de direction), le rayon des taches en 3-D (nm⁻¹), le seuil d'intensité relative (%), la transparence des taches éloignées de la sphère d'Ewald, les étiquettes et la direction de vue (boutons fléchés avec un **Pas** angulaire, **Réinit. la vue**). |
 
 ### Détecteur (longueur de caméra)
 
 ![Géométrie détecteur & image superposée](../../assets/cap-fr-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **Longueur de caméra 2** : Distance (mm) de l'échantillon au pied de la perpendiculaire abaissée sur le plan du détecteur (1000 mm par défaut). Elle est égale à la longueur de caméra usuelle lorsque le détecteur n'est pas incliné (τ = 0).
-- **Details** : Ouvre la fenêtre des réglages de géométrie du détecteur (voir [Géométrie du détecteur](#detector-geometry) ci-dessous).
+- **Long. caméra 2** : Distance (mm) de l'échantillon au pied de la perpendiculaire abaissée sur le plan du détecteur (1000 mm par défaut). Elle est égale à la longueur de caméra usuelle lorsque le détecteur n'est pas incliné (τ = 0).
+- **Détails** : Ouvre la fenêtre des réglages de géométrie du détecteur (voir [Géométrie du détecteur](#detector-geometry) ci-dessous).
 
 ### Divers {#misc}
 
@@ -189,7 +191,7 @@ Préréglages fixes de source d'onde qui ne règlent que le rayonnement et son �
 
 ![Simulation du porte-objet MET](../../assets/cap-fr-auto/FormDiffractionSimulatorHolder.png)
 
-Ouvre une fenêtre qui lie le diagramme de diffraction à un **porte-objet MET** à double inclinaison (**Inclinaison X** = rotation primaire, **Inclinaison Y** = rotation secondaire). Le réglage des angles d'inclinaison du porte-objet met à jour le diagramme et l'orientation du cristal, et les orientations accessibles peuvent être affichées sur un stéréonet (ajouté dans la v4.914). **Lier à la direction actuelle** prend l'orientation actuelle du cristal comme référence du porte-objet (aux valeurs Inclinaison X / Inclinaison Y indiquées) ; **Réglages MET** donne la direction de l'axe d'inclinaison X à l'écran (−29° par défaut) et la polarité de l'inclinaison Y, et **↻ rotation 180°** fait tourner le cristal de 180° autour du faisceau. Un double-clic gauche sur le stéréonet règle l'inclinaison du porte-objet sur ce point, et cocher **Activer les touches fléchées** permet de modifier l'inclinaison X avec ←/→ et l'inclinaison Y avec ↑/↓ (pas de 0.1–2°, 0.2° par défaut). Tant que cette fenêtre est ouverte, les touches fléchées agissent quelle que soit la fenêtre de ReciPro au premier plan.
+Ouvre une fenêtre qui lie le diagramme de diffraction à un **porte-objet MET** à double inclinaison (**Inclinaison X** = rotation primaire, **Inclinaison Y** = rotation secondaire). Le réglage des angles d'inclinaison du porte-objet met à jour le diagramme et l'orientation du cristal, et les orientations accessibles peuvent être affichées sur un stéréonet (ajouté dans la v4.914). **Lier à la direction actuelle** prend l'orientation actuelle du cristal comme référence du porte-objet (aux valeurs Inclinaison X / Inclinaison Y indiquées) ; **Réglages MET** donne la direction de l'axe d'inclinaison X à l'écran (−29° par défaut) et la polarité de l'inclinaison Y, et **↻ rotation 180°** fait tourner le cristal de 180° autour du faisceau (toujours autour de l'axe du faisceau, même lorsqu'un axe ou un plan est fixé dans la fenêtre principale). Un double-clic gauche sur le stéréonet règle l'inclinaison du porte-objet sur ce point, et cocher **Activer les touches fléchées** permet de modifier l'inclinaison X avec ←/→ et l'inclinaison Y avec ↑/↓ (pas de 0.1–2°, 0.2° par défaut). Les touches fléchées n'inclinent le porte-objet que lorsque cette fenêtre est active. <!-- 261106Cl 作者の決定 D25 --> Lorsque la fenêtre est de nouveau affichée après avoir été masquée (avec le simulateur), ou lorsque Inclinaison X / Inclinaison Y est modifiée, une rotation ou un changement de cristal effectué entre-temps est pris comme nouvelle référence : l'orientation actuelle est considérée comme l'orientation à l'inclinaison présente, et la liste des axes de zone est reconstruite pour le cristal actuel. <!-- 261105Cl 監査: FormDiffractionSimulatorHolder.cs OnVisibleChanged / numericBoxTilt_ValueChanged (54e23f0) -->
 
 ---
 
@@ -209,11 +211,11 @@ Définit la **Taille du texte** des étiquettes, ainsi que les couleurs du **Tex
 
 Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 
-- **Sélection des réflexions** : Choisit quelles réflexions génèrent les lignes de Kikuchi. Soit **Facteur de structure** (les *N* premières réflexions selon $\lvert F_{hkl}\rvert$, champ **Haut** ; 1–1000, 100 par défaut), soit **Seuil 1/d** (toutes les réflexions dont le 1/d est inférieur au seuil ; 0–100 nm⁻¹, 10 par défaut).
+- **Sélection des réflexions** : Choisit quelles réflexions génèrent les lignes de Kikuchi. Soit **Facteur de structure** (les *N* premières réflexions selon $\lvert F_{hkl}\rvert$, champ **Max.** ; 1–1000, 100 par défaut), soit **Seuil 1/d** (toutes les réflexions dont le 1/d est inférieur au seuil ; 0–100 nm⁻¹, 10 par défaut).
 - **Mode** : Manière de tracer les lignes de Kikuchi (**Cinématique** par défaut). Les réglages sous la liste déroulante changent avec le mode.
     - **Géométrique** : toutes les lignes sélectionnées dans une couleur fixe.
     - **Cinématique** : l'obscurité des lignes suit l'intensité relative cinématique de chaque réflexion.
-    - **Dynamique** : profils de bandes excès/déficit dynamiques à deux ondes alimentés par la diffusion thermique diffuse, calculés en arrière-plan. Les bandes excédentaires apparaissent du côté des grands angles et les traits déficitaires vers le faisceau direct ; l'épaisseur de l'échantillon est partagée avec les réglages d'intensité. Les lignes géométriques sont tracées en attendant la fin du calcul.
+    - **Dynamique** : profils de bandes excès/déficit dynamiques à deux ondes alimentés par la diffusion thermique diffuse, calculés en arrière-plan. Les bandes excédentaires apparaissent du côté des grands angles et les traits déficitaires vers le faisceau direct ; l'épaisseur de l'échantillon est partagée avec les réglages d'intensité. Les lignes géométriques sont tracées en attendant la fin du calcul. Les bandes dynamiques ne sont calculées que pour un faisceau d'**Électrons** ; pour les rayons X et les neutrons, les lignes sont tracées comme des lignes géométriques et l'avis indique *Électrons seulement : lignes*. <!-- 261105Cl 監査: DrawKikuchiLine / UpdateKikuchiNotice -->
 - **Réglages Géométrique / Cinématique** : **Couleur des lignes de Kikuchi** et **Largeur de ligne**.
 - **Réglages Dynamique** :
     - **Excès** / **Déficit** : couleurs du côté clair (contraste positif) et sombre (contraste négatif) des bandes.
@@ -232,7 +234,7 @@ Actif lorsque les lignes de Kikuchi sont activées dans la barre d'outils.
 Actif lorsque les anneaux de Debye sont activés dans la barre d'outils.
 
 - **Ignorer l'intensité de diffraction** : Si coché, tous les anneaux de Debye sont tracés avec la même couleur et la même intensité (en ignorant le facteur de structure du cristal). Utilisez-le pour une comparaison purement géométrique.
-- **Afficher les étiquettes d'indices** : Si coché, le (*hkl*) apparaît à proximité de chaque anneau.
+- **Afficher les étiquettes d'indices** : Si coché, les indices {*hkl*} apparaissent à proximité de chaque anneau (quatre indices {*hkil*} lorsque **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** est activé dans la fenêtre principale et que le cristal utilise des axes hexagonaux). <!-- 261105Cl 監査: DrawDebyeRing (C23)。ラベルは波かっこ -->
 
 ### Échelle
 
@@ -240,7 +242,7 @@ Actif lorsque les anneaux de Debye sont activés dans la barre d'outils.
 
 Actif lorsque les lignes d'échelle sont activées dans la barre d'outils.
 
-- **Ligne d'échelle 2θ / Ligne d'échelle azimutale** : **2θ** représente un angle de diffusion constant (cercles concentriques), l'**azimut** représente un angle azimutal constant (lignes radiales depuis le centre). Les couleurs sont configurables indépendamment.
+- **Ligne d'échelle 2θ / Ligne d'échelle azimutale** : **2θ** représente un angle de diffusion constant (cercles concentriques), l'**azimut** représente un angle azimutal constant (lignes radiales depuis le centre). Les couleurs sont configurables indépendamment. En mode Laue en retour, les étiquettes 2θ sont des angles de diffusion : le centre vaut donc 180°.
 - **Largeur de ligne** : Épaisseur des lignes d'échelle.
 - **Division** : Densité des lignes d'échelle, **Fine** / **Moyenne** (par défaut) / **Grossière**.
 - **Afficher les étiquettes d'échelle** : Indique si des étiquettes numériques sont tracées sur les lignes d'échelle.
@@ -251,7 +253,7 @@ Actif lorsque les lignes d'échelle sont activées dans la barre d'outils.
 
 ## Informations sur les réflexions de diffraction {#diffraction-spot-information}
 
-Liste les détails par réflexion calculés par la méthode des ondes de Bloch (calcul Dynamical). Ouvrez-la avec le bouton **Détails des taches** du panneau de calcul d'intensité. En mode **Erreur d'excitation** / **Cinématique & err. exc.**, le bouton liste les réflexions actuellement tracées avec leurs potentiels électroniques et $P_g$, $Q_g$ (sans amplitudes dynamiques) ; en mode CBED, le tableau suit l'épaisseur sélectionnée dans la fenêtre CBED.
+Liste les détails par réflexion calculés par la méthode des ondes de Bloch (calcul Dynamical). Ouvrez-la avec le bouton **Détails des taches** du panneau de calcul d'intensité. En mode **Erreur d'excitation** / **Cinématique & err. exc.**, le bouton liste les réflexions actuellement tracées avec leurs potentiels électroniques et $P_g$, $Q_g$ (sans amplitudes dynamiques) ; en mode CBED, le tableau suit l'épaisseur sélectionnée dans la fenêtre CBED. Pour les rayons X et les neutrons, $S_g$, $P_g$ et $Q_g$ sont calculés avec la longueur d'onde réelle (sans correction de réfraction), les colonnes de potentiel et le sélecteur d'unité de potentiel sont masqués, et la tension d'accélération, $m/m_0$ et $v/c$ sont affichés sous la forme « - ». <!-- 261105Cl 監査: FormDiffractionSpotInfo.cs SetTable (C 組) -->
 
 ![Informations sur les réflexions de diffraction](../../assets/cap-fr-auto/FormDiffractionSpotInfo.png)
 
@@ -284,16 +286,16 @@ Le schéma (en haut à gauche) montre les vecteurs sur la sphère d'Ewald et dé
 
 ### Unités de potentiel et autres commandes
 
-- **Unité de potentiel** : Bascule le potentiel affiché entre **Vg [eV]** (potentiel électrostatique, eV) et **Ug [nm⁻²]** (la grandeur mise à l'échelle $U_g = (2 m_0/h^2)\, V_g$ qui entre dans les équations des ondes de Bloch). Les en-têtes de colonnes changent en conséquence entre *Vg / V'g* et *Ug / U'g*.
-- Au-dessus du tableau sont affichés la tension d'accélération, la longueur d'onde ($\lambda = 1/k_\text{vac}$), le rapport de masse relativiste $m/m_0$, le rapport de vitesse $v/c$, le volume de la maille, l'épaisseur de l'échantillon et (en mode CBED) le demi-angle maximal du faisceau d'électrons.
+- **Unité de potentiel** : Bascule le potentiel affiché entre **Vg [eV]** (potentiel électrostatique, eV) et **Ug [nm⁻²]** (la grandeur mise à l'échelle $U_g = (2 m_0/h^2)\, V_g$ qui entre dans les équations des ondes de Bloch). Les en-têtes de colonnes changent en conséquence entre *Vg / V'g* et *Ug / U'g*. Affiché uniquement pour les électrons. <!-- 261106Cl 作者の決定 C5 -->
+- Au-dessus du tableau sont affichés la tension d'accélération, la longueur d'onde ($\lambda = 1/k_\text{vac}$), le rapport de masse relativiste $m/m_0$, le rapport de vitesse $v/c$, le volume de la maille, l'épaisseur de l'échantillon et (en mode CBED) le demi-angle de convergence α (libellé à l'écran : « Demi-angle max. du faisceau d'électrons »). L'épaisseur n'apparaît que pour un calcul **Théorie dynamique** (en mode CBED, l'épaisseur de la fenêtre CBED) et le demi-angle qu'en mode CBED ; sinon, ils affichent « - ».
 - **Note 1 :** l'unité de longueur est le **nm**, pas l'Å. **Note 2 :** l'unité de nombre d'onde est le **1/nm**, pas le 2π/nm.
-- **Chiffre significatif** : nombre de chiffres significatifs affichés dans le tableau (1–16, 4 par défaut). **Ajuster auto. la largeur des lignes** : ajustement automatique des largeurs de colonnes. **Copier dans le presse-papiers** : exporte le tableau sous forme de texte pouvant être collé dans un tableur. **Save as CSV** : écrit la même table (les colonnes visibles) dans un fichier CSV ; le séparateur décimal est toujours le point, de sorte que le fichier reste valide dans les paramètres régionaux à virgule décimale.
+- **Chiffre significatif** : nombre de chiffres significatifs affichés dans le tableau (1–16, 4 par défaut). **Ajuster auto. la largeur des lignes** : ajustement automatique des largeurs de colonnes. **Copier dans le presse-papiers** : exporte le tableau sous forme de texte pouvant être collé dans un tableur. **Enregistrer en CSV** : écrit la même table (les colonnes visibles) dans un fichier CSV ; le séparateur décimal est toujours le point, de sorte que le fichier reste valide dans les paramètres régionaux à virgule décimale. **Copier dans le presse-papiers** et **Enregistrer en CSV** fonctionnent même lorsque le tableau n'a qu'une seule ligne. Tous deux commencent par des lignes `# key: value` donnant les conditions (source, tension d'accélération ou énergie, longueur d'onde, épaisseur, demi-angle de convergence en CBED, cristal, angles d'Euler, mode de calcul), et les en-têtes de colonnes portent les unités, p. ex. `d (nm)`, `Sg (nm⁻¹)`, `Qg (nm⁻²)`. <!-- 261106Cl 作者の決定 C22 -->
 
 ---
 
 ## Géométrie du détecteur {#detector-geometry}
 
-Une fenêtre pour la configuration détaillée de la géométrie du détecteur (longueur de caméra, inclinaison, rotation) et la superposition d'une image expérimentale. Ouvrez-la via **Details** dans le panneau **Géométrie détecteur & image superposée**.
+Une fenêtre pour la configuration détaillée de la géométrie du détecteur (longueur de caméra, inclinaison, rotation) et la superposition d'une image expérimentale. Ouvrez-la via **Détails** dans le panneau **Géométrie détecteur & image superposée**.
 
 ![Géométrie du détecteur](../../assets/cap-fr-auto/FormDiffractionSimulatorGeometry.png)
 
@@ -301,13 +303,13 @@ Une fenêtre pour la configuration détaillée de la géométrie du détecteur (
 
 ![Réglages de la géométrie du détecteur](../../assets/cap-fr-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
-Spécifiez la géométrie de réflexion : **Longueur de caméra 2** (mm, 1–10000, 1000 par défaut) et l'inclinaison du détecteur **τ** (−200 à 200°) autour d'un axe situé dans le plan du détecteur, à l'azimut **φ**. Pour Back Laue (Laue en rétroréflexion), seule la **Longueur de caméra 2** est utilisée : le diagramme est toujours projeté sur un détecteur perpendiculaire au faisceau du côté de la source, et τ / φ ne sont pas appliqués à cette projection. Déposer un fichier `.prm` charge la longueur d'onde, la longueur de caméra 2, τ, φ, la position du pied et la taille des pixels (la source passe aux rayons X avec une longueur d'onde personnalisée, et la zone du détecteur est activée).
+Spécifiez la géométrie de réflexion : **Longueur de caméra 2** (mm, 1–10000, 1000 par défaut) et l'inclinaison du détecteur **τ** (−200 à 200°) autour d'un axe situé dans le plan du détecteur, à l'azimut **φ**. Pour Back Laue (Laue en rétroréflexion), seule la **Longueur de caméra 2** est utilisée : le diagramme est toujours projeté sur un détecteur perpendiculaire au faisceau du côté de la source, et τ / φ ne sont pas appliqués à cette projection. Déposer un fichier `.prm` charge les éléments qui y sont enregistrés — la source (élément et raie des rayons X, électrons ou neutrons) avec sa longueur d'onde, la longueur de caméra 2, τ, φ, la position du pied, la taille des pixels et la taille du détecteur — et active la zone du détecteur ; les éléments absents du fichier restent inchangés. <!-- 261105Cl 監査: FormDiffractionSimulatorGeometry_DragDrop (952b457)。以前の「常に X 線・任意波長」は誤り -->
 
 ### Zone du détecteur et image superposée
 
 ![Zone du détecteur et image superposée](../../assets/cap-fr-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-Cochez **Définir la zone du détecteur & l'image superposée.** pour spécifier le détecteur : taille en pixels (1024 × 1024 par défaut), **taille pix.** (mm, 0.1 par défaut) et la position du **Pied** **fx, fy** (px, 512, 512 par défaut). Une image expérimentale peut être chargée (**Charger** ou dépôt) et superposée avec **Opacité**, **Dégradé** (film positif/négatif), **Échelle 1** (log/linéaire), **Échelle 2** (Gray / Cold-Warm / Spectrum / Fire), **Int. max./min.**, **Rot 90°** et **Effacer**. **Schéma de principe** affiche un croquis de la géométrie. Utilisez ceci pour superposer le diagramme simulé et une image expérimentale et affiner la géométrie du détecteur.
+Cochez **Définir la zone du détecteur & l'image superposée.** pour spécifier le détecteur : taille en pixels (1024 × 1024 par défaut), **taille pix.** (mm, 0.1 par défaut) et la position du **Pied** **fx, fy** (px, 512, 512 par défaut) — le pied de la perpendiculaire abaissée de l'échantillon sur le plan du détecteur, qui ne coïncide avec la position du faisceau direct que lorsque le détecteur n'est pas incliné (τ = 0). <!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> Une image expérimentale peut être chargée (**Charger** ou dépôt) et superposée avec **Opacité**, **Dégradé** (film positif/négatif), **Échelle 1** (log/linéaire), **Échelle 2** (Gray / Cold-warm / Spectrum / Fire), **Int. max./min.**, **Rot 90°** et **Effacer**. Le chargement d'une image `.ipa` règle τ = 0 (le fichier ne contient pas d'inclinaison), place le pied au centre de l'image et règle la longueur de caméra 2 sur la distance du film. Un fichier qui ne peut être lu ni comme fichier `.prm` ni comme image est signalé par un message. <!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) --> **Schéma de principe** affiche un croquis de la géométrie. Utilisez ceci pour superposer le diagramme simulé et une image expérimentale et affiner la géométrie du détecteur.
 
 Voir aussi [Système de coordonnées du détecteur](../appendix/a1-coordinate-system/2-diffraction.md) pour les définitions du système de coordonnées.
 
@@ -317,7 +319,7 @@ Voir aussi [Système de coordonnées du détecteur](../appendix/a1-coordinate-sy
 
 ![Compression dynamique](../../assets/cap-fr-auto/FormDiffractionSimulatorDynamicCompression.png)
 
-Une fenêtre pour simuler la diffraction d'un échantillon soumis à un choc (compression dynamique). Déposez un fichier `.txt` séparé par des tabulations à trois colonnes (position, temps, pression) pour charger les profils de pression à chaque instant ; le curseur **Temps** (ns) sélectionne le profil affiché dans le graphique. Les deux lignes verticales du graphique (**Avant** / **Arrière**) peuvent être glissées pour régler l'avant et l'arrière de la compression. La fenêtre contient aussi le modèle de compression (**2018 / 2019 model**), les vitesses de choc (**Us**, **Ur**, km/s), l'**EOS** (K0, K'0), le **Plan choqué** / **Plan de glissement**, les distributions de rotation des zones comprimée et libérée, le coefficient d'absorption massique, l'incrémentation de Ω et **Enregistrer les motifs** (`#.tif`), et se lance avec **Simuler**.
+Une fenêtre pour simuler la diffraction d'un échantillon soumis à un choc (compression dynamique). Déposez un fichier `.txt` séparé par des tabulations à trois colonnes (profondeur en µm, temps en ns, pression en MBar) pour charger les profils de pression à chaque instant ; l'axe horizontal du graphique est la profondeur (µm) ; le curseur **Temps** (ns) sélectionne le profil affiché dans le graphique. Les deux lignes verticales du graphique (**Avant** / **Arrière**) peuvent être glissées pour régler l'avant et l'arrière de la compression. La fenêtre contient aussi le modèle de compression (**2018 / 2019 model**), les vitesses de choc (**Us**, **Ur**, km/s), l'**EOS** (K0, K'0), le **Plan choqué** / **Plan de glissement**, les distributions de rotation des zones comprimée et libérée, le coefficient d'absorption massique, l'incrémentation de Ω et **Enregistrer les motifs** (`#.tif`), et se lance avec **Simuler**. Une largeur de rotation σ nulle (ou un nombre de divisions nul pour l'angle de rotation) est traitée comme une orientation unique. Que l'exécution réussisse ou échoue, le cristal et son orientation sont ensuite restaurés. <!-- 261105Cl 監査: FormDiffractionSimulatorDynamicCompression.cs execute / buttonSimulate_Click (fb26838, 4a21154, 8461e90) -->
 
 ---
 

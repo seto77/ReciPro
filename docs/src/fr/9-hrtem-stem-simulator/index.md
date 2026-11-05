@@ -96,8 +96,8 @@ Le panneau en bas à gauche règle l'apparence du résultat — luminosité, cou
 ![Ajuster](../../assets/cap-fr-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 - **Min** / **Max** : extrémités inférieure (noir) et supérieure (blanc) de la plage d'intensité affichée. Utilisez les curseurs pour régler le contraste.
-- **Couleur** : échelle de couleurs de l'image — **Gray scale** (niveaux de gris) ou **Cold-Warm** (du bleu au rouge).
-- **Flou gaussien (FWHM)** : lorsque cette case est cochée, applique un flou gaussien dont la largeur à mi-hauteur (pm) est indiquée à droite, pour simuler une résolution finie (fonction d'étalement du point).
+- **Couleur** : échelle de couleurs de l'image — **Gray scale** (niveaux de gris) ou **Cold-warm** (du bleu au rouge).
+- **Flou gaussien (FWHM)** : lorsque cette case est cochée, applique un flou gaussien dont la largeur à mi-hauteur (pm) est indiquée à droite, pour simuler une résolution finie (fonction d'étalement du point). Tant que la case est cochée, les images nouvellement calculées sont elles aussi floutées. La FWHM est convertie en pixels avec la **Résolution** (pm/px) avec laquelle chaque image a été calculée. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normalisation
 
@@ -137,11 +137,11 @@ Définit les éléments superposés à l'image.
 
 ### Liste des préréglages {#preset-list}
 
-La fenêtre **Preset list** conserve des instantanés nommés des réglages du simulateur. Un instantané enregistre le mode image, la tension d'accélération, Cs, Cc, ΔV, la défocalisation, β, le diaphragme objectif (taille et décalage), le modèle de cohérence partielle HRTEM, l'épaisseur et les listes d'épaisseurs / de défocalisations en série, la taille et la résolution de l'image, le nombre d'ondes de Bloch, ainsi que les réglages STEM (angle de convergence, angles du détecteur, taille de source, épaisseur de tranche, résolution angulaire, **Calculer les cartes EDX** et **Séries de raies (Kα, Lα…)**). La liste est enregistrée avec les réglages de ReciPro et survit à un redémarrage.
+La fenêtre **Liste des préréglages** conserve des instantanés nommés des réglages du simulateur. Un instantané enregistre le mode image, la tension d'accélération, Cs, Cc, ΔV, la défocalisation, β, le diaphragme objectif (taille et décalage), le modèle de cohérence partielle HRTEM, l'épaisseur, le mode unique/série, les grandeurs balayées par une série (épaisseur / défocalisation) avec leurs **Début / Pas / N**, les listes d'épaisseurs / de défocalisations en série, la taille et la résolution de l'image, le nombre d'ondes de Bloch, ainsi que les réglages STEM (angle de convergence, angles du détecteur, taille de source, épaisseur de tranche, résolution angulaire, **Calculer les cartes EDX** et **Séries de raies (Kα, Lα…)**). La liste est enregistrée avec les réglages de ReciPro et survit à un redémarrage. Les préréglages enregistrés par des versions antérieures ne contiennent pas les réglages du mode unique/série ; leur application laisse ces réglages inchangés. <!-- 261105Cl 監査: FormPresets.cs ImageSimulatorSetting (SerialImageMode ほか) -->
 
 - Cliquer sur une entrée l'applique immédiatement.
 - **OK** ferme la fenêtre en conservant les réglages actuels ; **Annuler** (ou <kbd>Esc</kbd>) la ferme et restaure les réglages en vigueur à l'ouverture de la fenêtre.
-- **Gérer la liste des préréglages** : lorsque cette case est cochée, cliquer sur une entrée ne fait que la sélectionner (elle n'est pas appliquée), et le champ **Nom** apparaît avec **Add** / **Remplacer** / **Renommer** / **Supprimer**. **Add** ajoute les réglages actuels sous le nom indiqué, **Remplacer** écrase l'entrée sélectionnée avec les réglages actuels, **Renommer** ne change que son nom.
+- **Gérer la liste des préréglages** : lorsque cette case est cochée, cliquer sur une entrée ne fait que la sélectionner (elle n'est pas appliquée), et le champ **Nom** apparaît avec **Ajouter** / **Remplacer** / **Renommer** / **Supprimer**. **Ajouter** ajoute les réglages actuels sous le nom indiqué, **Remplacer** écrase sur place l'entrée sélectionnée avec les réglages actuels et le nom du champ **Nom**, **Renommer** ne change que son nom.
 
 Les préréglages de microscope (ARM300F, 2100F, …) ne figurent pas dans cette liste ; ils se trouvent dans le menu contextuel (clic droit) de **Conditions TEM** (voir [Simulation HRTEM](1-hrtem-simulation.md#tem-conditions)).
 
@@ -154,14 +154,15 @@ Les préréglages de microscope (ARM300F, 2100F, …) ne figurent pas dans cette
 - **Enregistrer l'image** : enregistre **comme image (format PNG)**, **comme image (format TIFF)** ou **comme métafichier (EMF)**. PNG et EMF enregistrent ce qui est affiché (plage d'affichage et échelle de couleurs) ; **Enregistrer individuellement en mode série** (activé par défaut) écrit chaque panneau dans son propre fichier au lieu d'une seule image en mosaïque. TIFF écrit toujours un fichier à virgule flottante par panneau, sans superpositions. Il stocke les valeurs des pixels après **Normalisation** (et après **Flou gaussien (FWHM)** s'il est appliqué), et non la plage d'affichage **Ajuster** ; avec les valeurs par défaut (**Min** 0, **Max** 1, **Par image**), chaque image est mise à l'échelle sur 0–1 : décochez **Min** / **Max** pour exporter les intensités calculées. Les cartes EDX sont toujours écrites sans mise à l'échelle.
 - **Copier l'image** : copie dans le presse-papiers **comme image** ou **comme métafichier (EMF)**.
 - **Surimprimer les symboles** (activé par défaut) : incruste la maille, les étiquettes et la barre d'échelle dans l'image PNG / EMF enregistrée ou copiée.
-- **Charger les paramètres TEM** / **Enregistrer les paramètres TEM** : affichés mais désactivés (non implémentés). Utilisez la [liste des préréglages](#preset-list) pour enregistrer et rappeler des conditions.
+- **Charger les paramètres TEM** / **Enregistrer les paramètres TEM** : lisent ou écrivent les réglages du simulateur dans un fichier XML (`*.rpis`). Le fichier contient les mêmes éléments qu'un [préréglage](#preset-list) — mode image, tension d'accélération, aberrations, défocalisation, diaphragme objectif, épaisseur et réglages du mode unique/série, taille et résolution de l'image, réglages STEM, etc. —, de sorte que les conditions peuvent être conservées ou partagées entre ordinateurs. Les éléments absents d'un fichier (par exemple écrit par une version plus ancienne) prennent les valeurs initiales de la fenêtre et les éléments inconnus sont ignorés ; un fichier illisible est signalé par un message. Le chargement ne recalcule pas l'image. <!-- 261106Cl 作者の決定 E7: FormPresets.cs ImageSimulatorSetting.SaveXml/LoadXml -->
 
 ## Menu Aide
 
 ![Menu Aide](../../assets/cap-fr-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
 - **Concept de base de la simulation HRTEM** : ouvre l'explication de la formation de l'image HRTEM ([Annexe A3.2](../appendix/a3-bloch-wave/hrtem.md)).
-- **Bibliothèque de calcul** : sélectionne la bibliothèque de calcul — **Native code** (C++/Eigen rapide) ou **Managed code** (.NET). Le code natif est normalement plus rapide. Ce choix n'est utilisé que pour la synthèse d'image HRTEM ; le STEM choisit son solveur automatiquement (le STEM-EDX exige toujours la bibliothèque native), et le choix est réinitialisé à **Native code** à chaque démarrage de ReciPro.
+
+La bibliothèque de calcul ne se choisit plus dans cette fenêtre : la synthèse d'image HRTEM utilise automatiquement la bibliothèque native (C++/Eigen) lorsqu'elle est disponible. Pour ne plus l'utiliser, activez **Options ▸ Désactiver la bibliothèque Crystallography.Native (redémarrage requis)** dans la [fenêtre principale](../0-main-window.md). <!-- 261106Cl 作者の決定 E12: 計算ライブラリの切替を廃止 -->
 
 ---
 

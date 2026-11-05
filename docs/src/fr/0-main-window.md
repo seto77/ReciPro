@@ -22,14 +22,14 @@ La fenêtre principale installe plusieurs raccourcis **applicables à toute l'ap
 |----------|--------|
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + touches fléchées | Faire pivoter le cristal d'un pas dans cette direction (maintenez deux flèches pour une diagonale) |
-| Maintenir <kbd>CTRL</kbd> au démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques) |
+| Maintenir <kbd>CTRL</kbd> au démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques ; pour ce lancement uniquement, non enregistré) |
 | Glisser avec le bouton gauche le widget d'orientation (en bas à gauche, sous *Orientation actuelle*) | Faire pivoter le cristal |
 | Double-clic droit sur le widget d'orientation | Copier l'image du widget dans le presse-papiers |
 | Simple clic sur un bouton de fonction | Ouvrir / fermer cette fenêtre (une fenêtre réduite est restaurée au lieu d'être fermée) |
 | Double-clic sur un bouton de fonction | Forcer l'affichage de la fenêtre et la mettre au premier plan |
 | Clic droit sur un cristal dans la liste | Menu contextuel (Renommer / Exporter en CIF / Dupliquer / Supprimer) |
 | Double-clic sur l'étiquette d'indice d'axe de zone (`[u v w]`, sous *Orientation actuelle*) | Afficher / masquer la zone max-UVW |
-| Déposer un fichier sur la fenêtre | Charger une liste de cristaux (`.xml`, `.out`, `.cdb2` ; une question demande s'il faut remplacer la liste ou y ajouter) ou un cristal (`.cif`, `.amc`) |
+| Déposer un fichier sur la fenêtre | Charger une liste de cristaux (`.xml`, `.out` ; une question demande s'il faut remplacer la liste ou y ajouter) ou un cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Ouvrir l'outil (expérimental) de capture de l'interface pour la fenêtre active |
 
 → Voir **[21. Raccourcis clavier et souris](21-shortcuts.md)** pour chaque fenêtre en un coup d'œil.
@@ -68,7 +68,7 @@ Si vous débutez avec ReciPro, suivez les étapes ci-dessous :
 
 | Élément de menu | Description |
 |-----------|-------------|
-| Afficher les info-bulles | Basculer l'affichage des info-bulles |
+| Afficher les info-bulles | Afficher ou masquer les info-bulles dans toutes les fenêtres — celles des contrôles, des éléments de barre d'outils et de menu, des cellules de tableau et des onglets ; le réglage est conservé pour le prochain démarrage <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Mode sombre | Basculer entre les thèmes de couleur clair et sombre |
 | Utiliser l'indice de Miller-Bravais (hkil) | Utiliser la notation à 4 indices pour les systèmes trigonaux/hexagonaux dans toute l'application |
 | Utiliser les facteurs de diffusion ioniques | Utiliser les facteurs de diffusion électronique ioniques (Peng) des ions attribués aux atomes dans les calculs électroniques dynamiques (ondes de Bloch), y compris les profils de Kikuchi ; le terme monopolaire à $g \neq 0$ n'est ajouté qu'aux coefficients élastiques $U_g$ (l'absorption TDS et la source TDS de Kikuchi utilisent la partie ionique finie). Option décochée, les facteurs des atomes neutres sont utilisés. Si la maille n'est pas électriquement neutre ($\Sigma q \neq 0$), le terme monopolaire est abandonné et seule la partie finie (ion écranté) est utilisée ; un avertissement s'affiche à l'activation de l'option |
@@ -116,7 +116,7 @@ L'état de rotation du cristal est partagé par le simulateur de diffraction, le
 
 Affiche l'orientation du cristal. Faites glisser pour pivoter. Axes : rouge = *a*, vert = *b*, bleu = *c*.
 
-### Réinitialiser la rotation
+### Réinit. la rotation
 Réinitialise à l'état initial : axe *c* perpendiculaire à l'écran, axe *b* vers le haut.
 
 ### Axe de zone
@@ -180,7 +180,7 @@ Voir [Géométrie de rotation](4-rotation-geometry.md) et [Annexe A1. Systèmes 
 
 ## Informations sur le cristal
 
-Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-déposez des fichiers CIF/AMC pour charger une structure. Ce contrôle est partagé par ReciPro, PDIndexer et CSManager, mais les onglets et fonctionnalités affichés diffèrent selon l'application. ReciPro affiche les onglets Infos de base, Infos atome et Réf. (les onglets EOS, Élasticité et autres sont destinés aux autres applications et ne sont pas affichés dans ReciPro).
+Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-déposez des fichiers CIF/AMC pour charger une structure. Ce contrôle est partagé par ReciPro, PDIndexer et CSManager, mais les onglets et fonctionnalités affichés diffèrent selon l'application. ReciPro affiche les onglets **Infos de base**, **Infos atome** et **Réf.** (les onglets EOS, Élasticité et autres sont destinés aux autres applications et ne sont pas affichés dans ReciPro).
 
 > **Important** : Appuyez sur **Ajouter** ou **Remplacer** pour enregistrer les modifications.
 
@@ -188,7 +188,7 @@ Modifiez les paramètres de maille, la symétrie et les atomes ; glissez-dépose
 
 Le haut du panneau affiche toujours **Name** (nom du cristal), **Formule chimique** (calculée à partir de la liste des atomes), **Z** (nombre d'unités formulaires par maille) et **Couleur** (couleur d'affichage du cristal, utilisée dans la vue 3D de la structure et pour les courbes de profils de diffraction). Les boutons **Infos de symétrie** et **Interaction du faisceau** ouvrent les fenêtres [Informations de symétrie](2-symmetry-information.md) et [Interaction du faisceau](3-beam-interaction.md). Pour le % massique, le % atomique et la conversion en oxydes, faites un clic droit et choisissez [Détails de la composition chimique](#chemical-composition).
 
-### Onglet Infos de base
+### Onglet Infos de base {#basic-info-tab}
 
 ![Infos de base](../assets/cap-fr-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
@@ -196,7 +196,7 @@ Paramètres de maille, symétrie et grandeurs qui en découlent.
 
 | Élément | Description |
 |------|------|
-| Constantes de maille | Paramètres de maille a, b, c (**Unité** : Å = 10⁻¹⁰ m ou nm) et α, β, γ. Le choix d'une symétrie les contraint automatiquement (p. ex. a=b=c, α=β=γ=90° pour le système cubique). |
+| Constantes de maille | Paramètres de maille a, b, c (**Unité** : Å = 10⁻¹⁰ m ou nm ; l'unité est conservée pour le prochain démarrage) et α, β, γ. Le choix d'une symétrie les contraint automatiquement (p. ex. a=b=c, α=β=γ=90° pour le système cubique). |
 | Symétrie | Choisissez le **Système cristallin**, le **Groupe ponctuel** et le **Groupe d'espace**. Saisissez du texte dans le champ **Rechercher** pour lister les candidats correspondants (sensible à la casse). |
 | Volume de maille / Masse de maille | Volume et masse de la maille. Le volume est affiché en Å³ / nm³ selon la sélection **Unité** ; la masse est en 10⁻²⁴ g. |
 | Volume molaire / Masse molaire / Densité | Volume molaire (cm³/mol, par unité formulaire), masse molaire (g/mol) et densité (g/cm³). Affichés **uniquement lorsque des atomes ont été saisis**. |
@@ -205,7 +205,7 @@ Paramètres de maille, symétrie et grandeurs qui en découlent.
 | Change axes/origin setting | Identique à l'élément **Modifier le réglage des axes/de l'origine** du menu contextuel : convertit vers un autre réglage d'axes/d'origine du même groupe d'espace. |
 | Densité atomique / Densité électronique | Nombre d'atomes et d'électrons par volume de maille, affichés en Å⁻³ / nm⁻³ selon la sélection **Unité**. |
 
-### Onglet Infos atome
+### Onglet Infos atome {#atom-tab}
 
 ![Infos atome](../assets/cap-fr-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
@@ -222,7 +222,7 @@ Faites un clic droit sur une ligne d'atome et choisissez **Afficher les position
 
 **Décalage d'origine** : décale l'origine de toutes les coordonnées atomiques. Choisissez le signe avec **+** / **−**, puis appuyez sur l'un des vecteurs prédéfinis — (⅛ ⅛ ⅛), (¼ ¼ ¼), (0 ¼ ⅛), (¼ 0 ¼), (0 ¼ ¼), (¼ ¼ 0), (¼ −¼ 0), (¼ −¼ ¼), (0 ¼ −⅛) — ou utilisez **Apply custom shift** pour une valeur arbitraire.
 
-**Facteur de Debye–Waller (facteur de température)** :
+**Déplacement (B)** (facteur de Debye–Waller / de température) :
 
 | Élément | Description |
 |------|------|
@@ -238,7 +238,7 @@ Faites un clic droit sur une ligne d'atome et choisissez **Afficher les position
 | Électrons | Facteurs de diffusion électronique — atomes neutres d'après Peng, Ren, Dudarev & Whelan (1996), *Acta Cryst.* **A52**, 257–276 ; ions d'après Peng (1998), *Acta Cryst.* **A54**, 481–485. |
 | Neutrons | Longueurs de diffusion des neutrons. Choisissez **Natural isotope abundance** ou **Custom isotope abundance** (une composition isotopique arbitraire). |
 
-### Onglet Réf.
+### Onglet Réf. {#reference-tab}
 
 ![Réf.](../assets/cap-fr-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
@@ -288,10 +288,10 @@ La barre verticale de boutons à droite lance les fenêtres d'analyse et de simu
 | Stéréonet | Projection stéréographique | [6. Stéréonet](6-stereonet.md) |
 | Simulateur de diffraction | Diffraction des rayons X / des électrons sur monocristal | [7. Simulateur de diffraction](7-diffraction-simulator/index.md) |
 | Simulateur de trajectoire | Simulation Monte-Carlo de trajectoires électroniques | [8. Trajectoires électroniques](8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | Simulation d'images HRTEM / STEM | [9. Simulateur HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
+| Simulateur HRTEM/STEM | Simulation d'images HRTEM / STEM | [9. Simulateur HRTEM/STEM](9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | Indexation de clichés SAED (anciennement « TEM ID ») | [10. Spot ID v1](10-spot-id.md) |
 | Spot ID v2 | Détection et indexation des taches | [11. Spot ID v2](11-spot-id-v2.md) |
-| EBSD Simulator | Simulation de clichés EBSD | [12. Simulation EBSD](12-ebsd-simulation.md) |
+| Simulateur EBSD | Simulation de clichés EBSD | [12. Simulation EBSD](12-ebsd-simulation.md) |
 | Diffraction sur poudre | Diffraction polycristalline (sur poudre) — activer via **Options ▸ Fonction de diffraction sur poudre (en développement)** | - |
 
 ---

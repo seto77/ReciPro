@@ -19,7 +19,7 @@ Le stéréonet lui-même est une projection 2-D ; une sphère 3-D facultative pe
 | Clic droit | Dézoomer |
 | Glisser-droit d'un cadre | Zoomer sur la région sélectionnée |
 | Glisser-milieu | Déplacer |
-| Déplacer la souris (sans bouton) | Lire les (hkl)/[uvw] sous le curseur — utile pour indexer une tache mesurée |
+| Déplacer la souris (sans bouton) | Lire les (hkl)/[uvw] sous le curseur — utile pour indexer une tache mesurée (aussi dans l'hémisphère inférieur) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Le glissement sur le net fait tourner le **cristal** ; l'état de rotation est partagé entre toutes les fenêtres.
 
@@ -39,11 +39,11 @@ La projection stéréonet des plans cristallins, des indices de direction et des
 
 ## Menu Fichier
 
-Enregistrer en image matricielle (PNG), ou copier en image matricielle ou en métafichier vectoriel (EMF). Un métafichier collé permet d'éditer les polices et l'épaisseur des traits dans PowerPoint ou d'autres éditeurs vectoriels.
+Enregistrer ou copier en image matricielle (PNG) ou en métafichier vectoriel (EMF). Un métafichier collé permet d'éditer les polices et l'épaisseur des traits dans PowerPoint ou d'autres éditeurs vectoriels.
 
 | Élément de menu | Description |
 |-----------------|-------------|
-| Enregistrer l'image ▸ comme image (format PNG) / comme métafichier (EMF) | Enregistrer le stéréonet dans un fichier PNG (l'élément *comme métafichier (EMF)* est actuellement désactivé ; pour une sortie vectorielle, utilisez **Copier dans le presse-papiers ▸ comme métafichier (EMF)**) |
+| Enregistrer l'image ▸ comme image (format PNG) / comme métafichier (EMF) | Enregistrer le stéréonet dans un fichier PNG ou dans un fichier vectoriel EMF <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | Copier dans le presse-papiers ▸ Comme image / comme métafichier (EMF) | Copier le stéréonet |
 | Enregistrer la vidéo ▸ Stéréonet / 3D | Enregistrer une vidéo de rotation (MP4) du stéréonet ou de la vue 3-D, avec la même boîte de dialogue de réglage du film que le [Visualiseur de structure](5-structure-viewer.md#menu-fichier) (rotation uniquement) |
 | Mise en page / Aperçu avant impression / Imprimer | Imprimer le stéréonet |
@@ -66,8 +66,8 @@ Sélectionnez ce qui doit être projeté sur le net.
 
 | Méthode | Description |
 |--------|-------------|
-| **Wulff** (**Équiangle** / stéréographique) | Conserve la relation angulaire entre les éléments projetés, mais pas l'angle solide. Utilisée par les cristallographes classiques pour lire les angles entre axes ou entre plans. |
-| **Schmidt** (**Équiaire** / Lambert) | Conserve l'angle solide (l'aire) de chaque région, mais déforme les angles. Préférée pour les figures de pôles statistiques où la densité relative importe. |
+| **Équiangle** (Wulff / stéréographique) | Conserve la relation angulaire entre les éléments projetés, mais pas l'angle solide. Utilisée par les cristallographes classiques pour lire les angles entre axes ou entre plans. |
+| **Équiaire** (Schmidt / à aires égales / Lambert) | Conserve l'angle solide (l'aire) de chaque région, mais déforme les angles. Préférée pour les figures de pôles statistiques où la densité relative importe. |
 
 ### Hémisphère
 
@@ -116,8 +116,8 @@ Définissez la **Couleur** et la **Taille** des points tracés. Cochez **Rotatio
 
 Affichées lorsque **Vue 3D** est coché ; la sphère 3-D apparaît dans un panneau à droite du net.
 
-- **Réinitialiser** : ramène la vue 3-D à la direction et au zoom par défaut.
-- **Étiquette** : dessine les étiquettes d'indices en 3-D.
+- **Réinit. la vue** : ramène la vue 3-D à la direction et au zoom par défaut.
+- **Étiquette** : dessine les étiquettes d'indices en 3-D. Les directions sont étiquetées [uvw] ; la forme à quatre indices (avec **Utiliser l'indice de Miller-Bravais (hkil)** activé) n'est utilisée que pour les plans et les lignes de Kikuchi. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Hémisphère** : ne dessine que les pôles de l'hémisphère supérieur ($Z>0$).
 - **Stéréonet** : dessine le plan de projection (le net) en 3-D, avec les points projetés des pôles de l'hémisphère supérieur.
 - **Contour de la sphère** : dessine la grille de latitude/longitude de la sphère.
@@ -151,7 +151,7 @@ Manière dont le contour du stéréonet est tracé — le cercle de délimitatio
 
 ![Onglet Grand cercle](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage2.png)
 
-Tracez des grands cercles (les petits cercles ne sont pas pris en charge). Spécifiez-les soit par **Indice d'axe de zone** \([uvw]\) (le grand cercle formé par la zone de cet axe), soit par **Zone définie par deux plans** (l'axe de zone est leur produit vectoriel). Utilisez **Ajouter** / **Supprimer** pour modifier la liste ; décocher une entrée masque ce cercle. La couleur et l'épaisseur des traits des cercles sont également configurables.
+Tracez des grands cercles (les petits cercles ne sont pas pris en charge). Spécifiez-les soit par **Indice d'axe de zone** \([uvw]\) (le grand cercle formé par la zone de cet axe), soit par **Zone définie par deux plans** (l'axe de zone est leur produit vectoriel). Utilisez **Ajouter** / **Supprimer** pour modifier la liste ; décocher une entrée masque ce cercle. La couleur et l'épaisseur des traits des cercles sont également configurables. Les cercles suivent la méthode de projection et l'hémisphère choisis dans [Mode](#mode) (Wulff ou Schmidt, supérieur ou inférieur). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Onde {#wave}
 

@@ -24,7 +24,7 @@ La plupart des opérations dans ReciPro ne concernent que des *directions* (expr
 
 ## Orientation initiale du cristal
 
-L'orientation initiale (au premier lancement ou après **Réinitialiser la rotation**) est définie comme suit :
+L'orientation initiale (au premier lancement ou après **Réinit. la rotation**) est définie comme suit :
 
 1. L'axe <span class="rp-blue">$c$</span> est aligné sur l'axe <span class="rp-blue">$Z$</span>.
 2. L'axe <span class="rp-green">$b$</span> se trouve dans le plan <span class="rp-green">$Y$</span><span class="rp-blue">$Z$</span>, proche de l'axe <span class="rp-green">$Y$</span>.

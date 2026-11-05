@@ -38,8 +38,8 @@ Saisissez deux plans cristallins \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) ou deu
 
 - la distance interréticulaire de chaque plan / la longueur de chaque axe,
 - l'angle entre les deux plans (ou les deux axes),
-- l'angle entre le plan 1 et l'axe 1, et entre le plan 2 et l'axe 2,
-- **l'indice de direction normal aux deux plans** et **l'indice de plan normal aux deux axes**.
+- l'angle entre la normale du plan 1 et l'axe 1, et entre la normale du plan 2 et l'axe 2 (90° lorsque l'axe est contenu dans le plan),
+- **L'axe parallèle aux deux plans** (l'axe de zone [*uvw*] des deux plans) et **Le plan contenant les deux axes** (le plan (*hkl*) qui contient les deux axes). Les signes suivent [*uvw*] = (*h*₁*k*₁*l*₁) × (*h*₂*k*₂*l*₂) et (*hkl*) = [*u*₁*v*₁*w*₁] × [*u*₂*v*₂*w*₂]. <!-- 261106Cl 作者の決定 B16 --> <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 Ces calculs tiennent compte de la métrique de la maille actuelle. Les longueurs sont affichées en Å et les angles en degrés.
 
@@ -49,7 +49,7 @@ Ces calculs tiennent compte de la métrique de la maille actuelle. Les longueurs
 
 ![Positions de Wyckoff](../assets/cap-fr-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Liste chaque position de Wyckoff avec sa multiplicité (**Mult.**), sa lettre de Wyckoff (**Lettre Wyck.**), sa symétrie de site (**Sym. site**) et ses **Coordonnées** (jusqu'à quatre par ligne ; les listes plus longues se poursuivent sur les lignes suivantes). La première entrée de Wyckoff (multiplicité la plus élevée) est la position générale. Pour les réseaux centrés, les vecteurs de translation du réseau sont indiqués dans la ligne d'en-tête.
+Liste chaque position de Wyckoff avec sa multiplicité (**Mult.**), sa lettre de Wyckoff (**Lettre Wyck.**), sa symétrie de site (**Sym. site**) et ses **Coordonnées** (jusqu'à quatre par ligne ; les listes plus longues se poursuivent sur les lignes suivantes). La première entrée de Wyckoff (multiplicité la plus élevée) est la position générale. Pour les réseaux centrés, les vecteurs de translation du réseau sont indiqués dans la ligne d'en-tête ; pour les groupes R en axes hexagonaux, ce sont les trois translations de centrage du réglage direct (obverse), (0,0,0)+, (2/3,1/3,1/3)+ et (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 

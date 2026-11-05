@@ -16,21 +16,21 @@ Simule le diagramme de diffraction produit lorsqu'un faisceau d'électrons paral
 
 ---
 
-## Wave Length
+## Source d'onde {#wave-length}
 
-![Wave Length](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Source d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
 Réglez la source de rayonnement sur **Électrons**. Saisissez l'énergie (keV) ou la longueur d'onde (Å ou nm, au choix ; Å par défaut), et la longueur d'onde corrigée relativistement est calculée. La valeur initiale est 200 keV ; le menu **Préréglages** règle 300 / 200 / 120 kV en un clic. Pour les sources de rayons X et de neutrons, voir [Simulation de diffraction des rayons X](5-x-ray-neutron-diffraction.md).
 
 ---
 
-## Incident beam mode
+## Optique {#incident-beam-mode}
 
-![Incident beam mode](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optique](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Réglez la géométrie du faisceau incident sur **Faisceau parallèle**. Il s'agit de la géométrie d'onde plane standard utilisée pour la SAED et la diffraction des rayons X.
+Réglez **Optique** (la géométrie du faisceau incident) sur **Faisceau parallèle**. Il s'agit de la géométrie d'onde plane standard utilisée pour la SAED et la diffraction des rayons X.
 
-> **Note** : Pour les électrons, vous pouvez choisir **Faisceau parallèle / Précession (électrons) / Convergence (électrons)**. Le choix de **Précession (électrons)** donne une [simulation PED](2-ped-simulation.md), et le choix de **Convergence (électrons)** donne une [simulation CBED](3-cbed-simulation.md) ; dans les deux cas, le calcul d'intensité passe automatiquement à **Théorie dynamique**.
+> **Note** : Pour les électrons, vous pouvez choisir **Faisceau parallèle** / **Précession (électrons)** / **Convergence (électrons)**. Le choix de **Précession (électrons)** donne une [simulation PED](2-ped-simulation.md), et le choix de **Convergence (électrons)** donne une [simulation CBED](3-cbed-simulation.md) ; dans les deux cas, le calcul d'intensité passe automatiquement à **Théorie dynamique**.
 
 ---
 
@@ -88,7 +88,7 @@ Contrôle la manière dont chaque tache de diffraction est rendue.
 - **Sphère pleine / Gaussienne** : le modèle géométrique du point du réseau réciproque (**Sphère pleine** par défaut). **Sphère pleine** dessine la section transversale (un cercle) entre une sphère et la sphère d'Ewald : le rayon de la sphère vaut $R\,I^{1/3}$ pour **Cinématique & err. exc.** (volume de la sphère ∝ intensité) et $R$ pour **Erreur d'excitation** ; pour **Théorie dynamique**, un disque de rayon $R\,I_\text{dyn}^{1/2}$ (aire ∝ intensité) est dessiné sans découpe par la sphère d'Ewald. **Gaussienne** dessine la section transversale (une gaussienne 2-D) d'une gaussienne 3-D avec $\sigma = R$, dont l'intégrale correspond à l'intensité de diffraction.
 - **Opacité** : transparence de la tache (0 = transparente, 1 = opaque).
 - **Rayon de tache (R)** : rayon virtuel du point du réseau réciproque (nm⁻¹ ; 0.01–1, 0.2 par défaut). La taille de la tache est fixée par la combinaison du mode **Apparence** et du **Calcul d'intensité** (voir ci-dessus).
-- **Luminosité**, **Échelle de couleurs**, **Échelle log** : affichés uniquement en mode **Gaussienne**. **Luminosité** met à l'échelle l'intensité intégrée de la gaussienne rendue ; **Échelle de couleurs** vaut **Gray** (taches dans les couleurs de taches ci-dessous), **Cold-Warm**, **Spectrum** ou **Fire** ; **Échelle log** affiche les intensités sur une échelle logarithmique (utile pour les diagrammes présentant un grand contraste d'intensité).
+- **Luminosité**, **Échelle de couleurs**, **Échelle log** : affichés uniquement en mode **Gaussienne**. **Luminosité** met à l'échelle l'intensité intégrée de la gaussienne rendue ; **Échelle de couleurs** vaut **Gray** (taches dans les couleurs de taches ci-dessous), **Cold-warm**, **Spectrum** ou **Fire** ; **Échelle log** affiche les intensités sur une échelle logarithmique (utile pour les diagrammes présentant un grand contraste d'intensité).
 - **Couleur de tache** : affiché tant que l'**Échelle de couleurs** est **Gray** (réglage initial). **Taches générales**, **Taches éteintes (hélic./gliss.)** et **Taches éteintes (centrage)** définissent les couleurs des réflexions autorisées et interdites.
 - **Couleur par cristal** : lorsque cette option est cochée, les taches sont dessinées dans la couleur attribuée à chaque cristal (y compris pour un seul cristal).
 
@@ -100,14 +100,14 @@ Les étiquettes superposées aux taches sont sélectionnées dans la [barre d'ou
 
 | Label | Contenu |
 |-------|---------|
-| **Index** | indices de Miller $(hkl)$ |
-| **d** | distance interréticulaire $d$ (affichée en Å) |
-| **1/d** | inverse de la distance interréticulaire $1/d$ (nm⁻¹) |
-| **Distance** | distance de la tache à la tache directe sur le détecteur, $L_2 \tan 2\theta$ (mm ; $L_2$ = longueur de caméra 2 ; exacte pour un détecteur non incliné, τ = 0) |
+| **Index** | indices de Miller $(hkl)$ ; quatre indices $(hkil)$ lorsque **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** est activé dans la fenêtre principale et que le cristal utilise des axes hexagonaux (les étiquettes des lignes de Kikuchi, des anneaux de Debye et de la vue 3-D suivent le même réglage) <!-- 261105Cl 監査: C23 --> |
+| **d** | distance interréticulaire $d$, en Å ou en nm selon l'unité de longueur de la fenêtre principale <!-- 261106Cl 作者の決定 C20 --> |
+| **1/d** | inverse de la distance interréticulaire $1/d$, en nm⁻¹ ou en Å⁻¹ selon l'unité de longueur de la fenêtre principale <!-- 261106Cl 作者の決定 C2 --> |
+| **Distance** | distance sur le détecteur entre la tache et la tache transmise (directe) (mm), mesurée entre les positions dessinées ; elle reste donc valable pour un détecteur incliné, la chambre de précession des rayons X et le Back Laue (mesurée depuis le trou du faisceau) ; non affichée lorsque le faisceau transmis manque le détecteur <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | angle de diffusion $2\theta$ (même définition que les cercles concentriques de l'échelle 2θ) |
 | **χ** | angle azimutal $\chi$, mesuré depuis la direction vers le haut (12 heures), positif dans le sens horaire (même définition que les lignes radiales de l'échelle azimutale) |
-| **Err. d'excit.** | erreur d'excitation $S_g$ (nm⁻¹) |
-| **\|Fg\|** | intensité relative (%) en mode **Cinématique & err. exc.** ; en mode **Théorie dynamique**, l'intensité relative (% du faisceau diffracté le plus intense, 000 exclu) et l'amplitude complexe sur la surface de sortie. Rien n'est affiché en mode **Erreur d'excitation** |
+| **Err. d'excit.** | erreur d'excitation $S_g$, en nm⁻¹ ou en Å⁻¹ selon l'unité de longueur de la fenêtre principale |
+| **Intensité** | intensité relative (%) en mode **Cinématique & err. exc.** ; en mode **Théorie dynamique**, l'intensité relative (% du faisceau diffracté le plus intense, 000 exclu) et l'amplitude complexe sur la surface de sortie. Rien n'est affiché en mode **Erreur d'excitation** |
 
 ---
 

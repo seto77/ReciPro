@@ -2,7 +2,7 @@
 
 La simulation **PED (Precession Electron Diffraction)** calcule les clichés de diffraction électronique obtenus en faisant précesser le faisceau incident sur un cône autour de l'axe optique.
 
-> Cette page recense tous les paramètres qui apparaissent sur le côté droit lorsque vous sélectionnez **Source d'onde = Électrons, Optique = Précession (électrons), Calcul d'intensité = Théorie dynamique (automatique)**. Notez que **la sélection de Précession (électrons) pour le faisceau incident bascule automatiquement le calcul d'intensité sur Théorie dynamique**. Pour les opérations à l'échelle de la fenêtre, telles que le dessin et l'enregistrement, consultez la [page de présentation](index.md).
+> Cette page recense tous les paramètres qui apparaissent sur le côté droit lorsque vous sélectionnez **Source d'onde = Électrons, Optique = Précession (électrons), Calcul d'intensité = Théorie dynamique (automatique)**. Notez que **la sélection de Précession (électrons) dans Optique bascule automatiquement le calcul d'intensité sur Théorie dynamique**. Pour les opérations à l'échelle de la fenêtre, telles que le dessin et l'enregistrement, consultez la [page de présentation](index.md).
 
 Conditions GUI : **Source d'onde = Électrons, Optique = Précession (électrons), Calcul d'intensité = Théorie dynamique (automatique)**
 
@@ -20,19 +20,19 @@ En PED, le faisceau électronique est mis en précession sur un cône autour de 
 
 ---
 
-## Réglage de la longueur d'onde
+## Source d'onde {#wavelength-setup}
 
-![Longueur d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Source d'onde](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Puisque la PED est une diffraction électronique, sélectionnez **Électrons** comme source. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (Å ou nm, au choix ; Å par défaut) calcule la longueur d'onde corrigée relativistement.
+Puisque la PED est une diffraction électronique, sélectionnez **Électrons** comme **Source d'onde**. La saisie de l'énergie des électrons (keV) ou de la longueur d'onde (Å ou nm, au choix ; Å par défaut) calcule la longueur d'onde corrigée relativistement.
 
 ---
 
-## Faisceau incident
+## Optique {#incident-beam}
 
-![Mode du faisceau incident](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Optique](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Pour la géométrie du faisceau incident, sélectionnez **Précession (électrons)** (disponible uniquement lorsque le faisceau électronique est sélectionné).
+Dans **Optique** (la géométrie du faisceau incident), sélectionnez **Précession (électrons)** (disponible uniquement lorsque **Électrons** est sélectionné).
 
 > **Note** : La sélection de **Précession (électrons)** **bascule automatiquement le calcul d'intensité sur Théorie dynamique**, et le panneau de réglages de la méthode des ondes de Bloch ainsi que le panneau de réglages de la précession apparaissent. **Erreur d'excitation** / **Cinématique & err. exc.** ne peuvent plus être sélectionnés.
 
@@ -53,7 +53,7 @@ Définissez la forme et l'échantillonnage du cône de précession.
 
 ## Calcul d'intensité et réglages des ondes de Bloch
 
-Dès que **Précession (électrons)** est sélectionné, **Calcul d'intensité = Théorie dynamique (automatique)** est fixé. Pour le faisceau parallèle dans chaque direction de précession, l'intensité de diffraction est calculée par la méthode des ondes de Bloch (calcul dynamique), et l'intégration sur toutes les directions donne le cliché PED.
+Dès que **Précession (électrons)** est sélectionné, **Calcul d'intensité** est fixé sur **Théorie dynamique** (automatique). Pour le faisceau parallèle dans chaque direction de précession, l'intensité de diffraction est calculée par la méthode des ondes de Bloch (calcul dynamique), et l'intégration sur toutes les directions donne le cliché PED.
 
 ![Paramètres des ondes de Bloch](../../assets/cap-fr-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
@@ -75,7 +75,7 @@ Contrôle la manière dont chaque tache de diffraction est dessinée.
 - **Sphère pleine / Gaussienne** : Modèle géométrique des nœuds du réseau réciproque. **Sphère pleine** dessine la section d'une sphère de rayon $R$ avec la sphère d'Ewald, et **Gaussienne** dessine la section (une gaussienne 2D) d'une gaussienne 3D avec $\sigma = R$ et la sphère d'Ewald.
 - **Opacité** : Transparence de la tache (0 = transparent, 1 = opaque).
 - **Rayon de tache (R)** : Rayon des nœuds du réseau réciproque. Pour les intensités dynamiques, l'intégrale gaussienne $=$ Luminosité $\times I_\text{dyn}$, et Sphère pleine utilise le rayon $R \times I_\text{dyn}^{1/2}$ (de sorte que l'aire est proportionnelle à l'intensité dynamique).
-- **Luminosité**, **Échelle de couleurs**, **Échelle log** : affichés uniquement en mode **Gaussienne**. **Luminosité** met à l'échelle l'intensité intégrée de la gaussienne dessinée ; **Échelle de couleurs** vaut **Gray** (taches dans les couleurs de taches ci-dessous), **Cold-Warm**, **Spectrum** ou **Fire** ; **Échelle log** affiche l'intensité sur une échelle logarithmique.
+- **Luminosité**, **Échelle de couleurs**, **Échelle log** : affichés uniquement en mode **Gaussienne**. **Luminosité** met à l'échelle l'intensité intégrée de la gaussienne dessinée ; **Échelle de couleurs** vaut **Gray** (taches dans les couleurs de taches ci-dessous), **Cold-warm**, **Spectrum** ou **Fire** ; **Échelle log** affiche l'intensité sur une échelle logarithmique.
 - **Couleur de tache** : affiché tant que l'**Échelle de couleurs** est **Gray** (réglage initial) : **Taches générales** / **Taches éteintes (hélic./gliss.)** / **Taches éteintes (centrage)**.
 - **Couleur par cristal** : Dessine les taches dans la couleur attribuée à chaque cristal.
 

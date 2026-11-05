@@ -85,7 +85,7 @@ Utilisées par les panneaux de résultat du [HRTEM/STEM](9-hrtem-stem-simulator/
 | Simple clic / double-clic sur un bouton de fonction | Activer/désactiver cette fenêtre / la forcer au premier plan |
 | Clic droit sur un cristal dans la liste | Menu contextuel (Renommer / Exporter en CIF / Dupliquer / Supprimer) |
 | Double-clic sur l'étiquette d'indice d'axe de zone (`[u v w]`) | Afficher/masquer le champ max-UVW |
-| Déposer un fichier | Charger une liste de cristaux (`.xml`, `.out`, `.cdb2`) ou un cristal (`.cif`, `.amc`) |
+| Déposer un fichier | Charger une liste de cristaux (`.xml`, `.out`) ou un cristal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> |
 
 ### 1. Base de données de cristaux
 [Ouvrir la page →](1-crystal-database.md)
@@ -94,7 +94,7 @@ Utilisées par les panneaux de résultat du [HRTEM/STEM](9-hrtem-stem-simulator/
 |----------|--------|
 | <kbd>ENTER</kbd> dans un champ de recherche | Lancer la recherche |
 | Clic sur une ligne de résultat | Charger ce cristal |
-| Clic sur un élément dans le popup du tableau périodique | Faire défiler son filtre : ignorer → doit inclure → doit exclure |
+| Clic sur un élément dans le popup **Tableau périodique** | Faire défiler son filtre : *peut inclure ou non* → *doit inclure* → *doit exclure* |
 
 ### 2. Informations de symétrie · 3. Interaction du faisceau
 Les Informations de symétrie n'ont pas de combinaisons clavier/souris particulières. Dans l'Interaction du faisceau, outre <kbd>F1</kbd> et les boutons **Copier**, le curseur vertical du graphique **Facteurs de diffusion** peut être glissé pour lire la valeur de chaque élément.
@@ -132,8 +132,8 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
 | Double-clic droit sur un bouton de couche actif (Taches / Lignes de Kikuchi / Anneaux de Debye / Échelle) | Faire clignoter cette couche |
 | Double-clic gauche sur le stéréonet — fenêtre **Simulation du porte-objet MET** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — fenêtre **Simulation du porte-objet MET** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées** ; actif quelle que soit la fenêtre de ReciPro au premier plan) |
-| Déposer `.prm` / une image — **Detector geometry**, ou `.txt` — **Dynamic Compression** | Charger ces données |
+| Touches fléchées — fenêtre **Simulation du porte-objet MET** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées** ; seulement lorsque la fenêtre du porte-objet est active) <!-- 261106Cl 作者の決定 D25 --> |
+| Déposer `.prm` / une image — **Géométrie du détecteur**, ou `.txt` — **Compression dynamique** | Charger ces données |
 
 ### 8. Trajectoires électroniques
 [Ouvrir la page →](8-electron-trajectory.md) — une [vue 3-D](#3d) avec déplacement désactivé.
@@ -148,7 +148,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Double-clic gauche sur un panneau | Agrandir ce panneau / restaurer la grille (dispositions multi-panneaux) |
 
 ### 10. Spot ID v1
-[Ouvrir la page →](10-spot-id.md) — l'image sert uniquement de référence (non interactive).
+[Ouvrir la page →](10-spot-id.md) — il n'y a pas de vue d'image (la géométrie des taches est saisie sous forme de nombres).
 
 | Raccourci | Action |
 |----------|--------|
@@ -182,4 +182,4 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Enregistrer le texte de l'éditeur dans l'entrée de la liste des macros sélectionnée |
 | <kbd>F10</kbd> | Avancer d'un pas (pendant l'exécution pas à pas) |
 | Double-clic sur une ligne de la liste d'aide des fonctions | Insérer la signature de cette fonction au niveau du curseur |
-| Déposer un fichier `.mcr` | Le charger dans l'éditeur |
+| Déposer un fichier `.mcr` sur la fenêtre | Le charger dans l'éditeur et l'ajouter à la liste des macros (le nom du fichier devient le nom de la macro) |

@@ -39,7 +39,7 @@ Définit les conditions d'imagerie de la lentille objectif.
 
 | Paramètre | Description | Par défaut / typique |
 |-----------|-------------|-------------------|
-| **Tension d'accél. (kV)** | Tension d'accélération. La longueur d'onde des électrons corrigée relativistiquement est affichée à droite | 200 kV |
+| **Tension d'accél.** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Tension d'accélération (kV). La longueur d'onde des électrons corrigée relativistiquement est affichée à droite | 200 kV |
 | **Défocalisation Δf** | Défocalisation de la lentille objectif (nm). La valeur de référence de la **défocalisation de Scherzer** est affichée en dessous | −57.8 nm |
 | **Cs** | Coefficient d'aberration sphérique (mm). Affecte la CTF et la défocalisation de Scherzer. Les valeurs négatives (−20 à 20 mm) sont acceptées | 1.0 mm (par défaut) ; 0.5–1.0 (conventionnel), < 0.01 (corrigé Cs) |
 | **Cc** | Coefficient d'aberration chromatique (mm). Détermine le flou de l'image dû à la dispersion en énergie | 1.4 mm (par défaut) ; 1.0–2.0 mm |
@@ -52,7 +52,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4 ,$$
 
 et chaque onde diffractée est multipliée par $\exp[-i\chi(u)]$ ; une **Δf négative correspond donc à une sous-focalisation** (convention dans laquelle la défocalisation de Scherzer est négative).
 
-> **Menu contextuel** : sur le panneau Conditions TEM, vous pouvez appliquer en un clic **Régler la défocalisation à 0 nm** / **Régler la défocalisation à la valeur de Scherzer** / **Mettre toutes les aberrations à zéro** (cette dernière met Cs, Cc, β, ΔV **et la défocalisation** à 0). Le même menu contient quatre préréglages de microscope — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F* et *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100* — qui règlent la tension d'accélération, Cs, Cc et ΔV comme indiqué dans l'élément, puis règlent la défocalisation à la valeur de Scherzer (β n'est pas modifié). La case **Préréglages** en bas à droite ouvre la fenêtre qui enregistre vos propres conditions (voir [Liste des préréglages](index.md#preset-list)).
+> **Menu contextuel** : sur le panneau Conditions TEM, vous pouvez appliquer en un clic **Régler la défocalisation à 0 nm** / **Régler la défocalisation à la valeur de Scherzer** / **Conditions idéales (Cs, Cc, β, ΔV, Δf = 0)** (cette dernière met Cs, Cc, β, ΔV **et la défocalisation** à 0). <!-- 261106Cl 作者の決定 E19: 表示名を理想条件に --> Le même menu contient quatre préréglages de microscope — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*, *200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*, *200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F* et *200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100* — qui règlent la tension d'accélération, Cs, Cc et ΔV comme indiqué dans l'élément, puis règlent la défocalisation à la valeur de Scherzer (β n'est pas modifié). La case **Préréglages** en bas à droite ouvre la fenêtre qui enregistre vos propres conditions (voir [Liste des préréglages](index.md#preset-list)). <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### Défocalisation de Scherzer
 
@@ -104,7 +104,7 @@ Limite les ondes diffractées qui traversent le diaphragme objectif. Le calcul d
 
 Sélectionne la manière dont la cohérence partielle (β et l'étalement de focalisation δ) est prise en compte. L'onde de sortie est calculée pour une seule direction incidente (l'axe du faisceau) ; la divergence de l'illumination et la dispersion en énergie n'interviennent qu'à travers les fonctions enveloppes ci-dessous.
 
-- **Image linéaire** (modèle quasi cohérent) : peu coûteux en calcul. Chaque onde diffractée $\psi_g$ de l'onde de sortie dynamique est multipliée par $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ et l'image vaut $\left|\sum_g\right|^2$. Précis lorsque l'image est dominée par l'interférence avec le faisceau transmis (échantillons minces).
+- **Image linéaire** (modèle quasi cohérent) : peu coûteux en calcul. Chaque onde diffractée $\psi_g$ de l'onde de sortie dynamique est multipliée par $\exp[-i\chi(g)]\,E_\text{s}(g)\,E_\text{c}(g)$ et les ondes sont sommées de façon cohérente : $I(\mathbf{r}) = \left|\sum_g \psi_g\,e^{-i\chi(g)}\,E_\text{s}(g)\,E_\text{c}(g)\,e^{2\pi i\,\mathbf{g}\cdot\mathbf{r}}\right|^2$. Précis lorsque l'image est dominée par l'interférence avec le faisceau transmis (échantillons minces).
 - **Coef. transm. croisée** : coûteux en calcul mais plus précis. Chaque paire de faisceaux $(g,h)$ est sommée avec l'enveloppe mutuelle (le coefficient de transmission croisée complet) ; c'est le modèle à utiliser pour les diffuseurs forts qui excitent de nombreuses ondes diffractées intenses. Le coût croît comme le carré du nombre de faisceaux à l'intérieur du diaphragme.
 
 Pour plus de détails, voir l'[Annexe A3.2 — Formation de l'image HRTEM](../appendix/a3-bloch-wave/hrtem.md).
@@ -123,7 +123,7 @@ Pour une image en série, définissez les éléments suivants.
 | Élément | Description |
 |------|-------------|
 | **Épaisseur (nm)** / **Défocalisation (nm)** | La grandeur à faire varier (les deux sont possibles) |
-| **Start / Pas / N** | Valeur de départ, largeur du pas et nombre d'images. Ils sont développés dans la zone de liste ci-dessous, qui peut aussi être modifiée directement |
+| **Début / Pas / N** | Valeur de départ, largeur du pas et nombre d'images. Ils sont développés dans la zone de liste ci-dessous, qui peut aussi être modifiée directement |
 | **Direction horizontale:** | Lorsque l'épaisseur et la défocalisation varient toutes deux, la grandeur disposée selon la direction horizontale de la grille (**Défocalisation** ou **Épaisseur**) |
 
 Faire varier à la fois l'épaisseur et la défocalisation produit une matrice d'images lignes × colonnes. **N** est limité à 20 pour chaque grandeur. Lorsqu'une seule grandeur varie et qu'il y a plus de deux images, la rangée est repliée en une grille presque carrée.

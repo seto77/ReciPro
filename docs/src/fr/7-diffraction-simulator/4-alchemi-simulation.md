@@ -6,7 +6,7 @@
 
 Ouvrez-le depuis le menu **Options** du [Simulateur de diffraction](index.md) → **Simulateur ALCHEMI...**
 
-Conditions GUI : Wave Length = Electron (le cristal, la tension d'accélération et l'orientation proviennent du simulateur de diffraction parent)
+Conditions GUI : Source d'onde = Électrons (le cristal, la tension d'accélération et l'orientation proviennent du simulateur de diffraction parent). Avec une autre source, la fenêtre s'ouvre quand même, mais l'affichage de θ_B et **Simuler** ne montrent que l'avis *ALCHEMI est réservé aux électrons. Réglez la source du simulateur de diffraction sur Électron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![Simulateur ALCHEMI](../../assets/cap-fr-auto/FormALCHEMI.png)
 
@@ -115,13 +115,13 @@ Liste des sites atomiques dont le rendement est calculé séparément, affichés
 
 ### Simuler / Arrêter
 
-**Simuler** lance le balayage. La progression est indiquée dans la barre d'état en cinq étapes (résolution des données d'ionisation → construction de la base union → construction des matrices d'ionisation → résolution des orientations → vérification de la base élargie) ; **Arrêter** interrompt à tout moment.
+**Simuler** lance le balayage. La progression est indiquée dans la barre d'état en cinq étapes (résolution des données d'ionisation → construction de la base union → construction des matrices d'ionisation → résolution des orientations → vérification de la base élargie) ; **Arrêter** interrompt à tout moment. Si la rangée **g** est parallèle au faisceau, le balayage ne peut pas la faire passer par ses conditions de Bragg ; **Simuler** se contente alors d'indiquer cette raison dans la barre d'état. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
 ## Volet droit : onglet Courbe
 
-Une fois le calcul terminé, une courbe est tracée par couple site × canal. La légende se lit `étiquette de site / canal`.
+Une fois le calcul terminé, une courbe est tracée par couple site × canal. La légende se lit `étiquette de site / canal`. Si le cristal ou la tension d'accélération est modifié ensuite (y compris pendant que la fenêtre est fermée), les courbes, les diagnostics et le choix d'épaisseur sont effacés et la ligne d'état en indique la raison. <!-- 261106Cl 作者の決定 ALCHEMI -->
 
 | Élément | Description |
 |---------|-------------|
@@ -166,7 +166,7 @@ D'autres avertissements sont ajoutés sous forme de lignes séparées (chacune p
 
 ## Export CSV {#export-csv}
 
-**Exporter en CSV** écrit un tableau au format long précédé d'un en-tête au format `# key: value` (abrégé ci-dessous). L'en-tête est conçu pour que le fichier seul énonce les conditions nécessaires à sa reproduction.
+**Exporter en CSV** écrit un tableau au format long précédé d'un en-tête au format `# key: value` (abrégé ci-dessous). L'en-tête est conçu pour que le fichier seul énonce les conditions nécessaires à sa reproduction ; `scan_origin_rotation_matrix` consigne l'orientation du cristal à l'origine du balayage (inclinaison 0) sous forme de matrice de rotation stockée ligne par ligne. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ D'autres avertissements sont ajoutés sous forme de lignes séparées (chacune p
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000
