@@ -677,8 +677,16 @@ public partial class FormImageSimulator : FormBase
             var r = box.ClientRectangle;
             if (r.Width <= 0 || r.Height <= 0) { box.Image = null; return; }
             var bmp = new PseudoBitmap(gradient(r.Width, r.Height), r.Width) { MaxValue = 1, MinValue = 0 };
-            if (rotation) bmp.SetScaleRotation(); else bmp.SetScaleGray();
-            scaleImage = bmp;
+            //if (rotation) bmp.SetScaleRotation(); else bmp.SetScaleGray(); // 261105Cl 変更前
+            //scaleImage = bmp; // 261105Cl 変更前
+            //261105Cl 変更: scaleImage は強度のスケールだけを指す (旧: 位相のスケールを作り直すと scaleImage が位相の画像に替わり、
+            //カラースケールの切替で強度の欄に位相の画像が入っていた)。強度のスケールは今のカラースケールで作る (旧: 大きさが変わると Gray に戻った)
+            if (rotation) bmp.SetScaleRotation();
+            else
+            {
+                if (comboBoxScaleColorScale.SelectedIndex == 1) bmp.SetScaleColdWarm(); else bmp.SetScaleGray();
+                scaleImage = bmp;
+            }
             box.Image = bmp.GetImage();
         }
         buildScale(pictureBoxPhaseScale, true);
@@ -2065,6 +2073,12 @@ public partial class FormImageSimulator : FormBase
             SkipEvent = true;
             comboBoxScaleColorScale.SelectedIndex = 0;
             SkipEvent = false;
+            //261105Cl 追加: 上の SkipEvent でスケールの見本が ColdWarm のまま残っていた (像は GeneratePseudBitmap で Gray になる)
+            if (scaleImage is not null)
+            {
+                scaleImage.SetScaleGray();
+                pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+            }
         }
         GeneratePseudBitmap();
     }
@@ -2115,12 +2129,16 @@ public partial class FormImageSimulator : FormBase
     {
         if (SkipEvent) return;
 
-        if (comboBoxScaleColorScale.SelectedIndex == 0)
-            scaleImage.SetScaleGray();
+        //261105Cl 変更: 強度のスケールがまだ無い (欄の大きさが 0 の間) ときは飛ばす (大きさが決まったときに今のカラースケールで作られる)
+        if (scaleImage is not null)
+        {
+            if (comboBoxScaleColorScale.SelectedIndex == 0)
+                scaleImage.SetScaleGray();
 
-        else
-            scaleImage.SetScaleColdWarm();
-        pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+            else
+                scaleImage.SetScaleColdWarm();
+            pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
+        }
 
         foreach (var box in Boxes)
             if (box.PseudoBitmap.Tag is ImageInfo { LockIntensity: false })
