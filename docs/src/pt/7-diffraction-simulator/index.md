@@ -46,7 +46,7 @@ Localize a página de que precisa a partir da combinação de **Fonte de ondas**
 | Raios X | Feixe paralelo | Difração de raios X | [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
 | Raios X | Precessão (raios X, ZOLZ) | Raios X em precessão (câmera de precessão) | [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
 | Raios X | Retro-Laue (raios X) | Laue de retroreflexão | [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
-| Nêutron | Feixe paralelo | Difração de nêutrons | [seção de nêutrons da Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
+| Nêutrons | Feixe paralelo | Difração de nêutrons | [seção de nêutrons da Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
 
 > **Nota**: As opções de feixe incidente (**Óptica**) mudam com o comprimento de onda. Para elétrons: **Feixe paralelo, Precessão (elétrons), Convergência (elétrons)**; para raios X: **Feixe paralelo, Precessão (raios X, ZOLZ), Retro-Laue (raios X)**; para nêutrons: apenas **Feixe paralelo**. Mudar a fonte de ondas sempre redefine a óptica para **Feixe paralelo**. Selecionar **Precessão (elétrons)** ou **Convergência (elétrons)** alterna automaticamente o cálculo de intensidade para **Teoria dinâmica**; a **Teoria dinâmica** só é oferecida para elétrons (ao selecionar raios X ou nêutrons, o cálculo volta para **Cinemático & erro exc.**). O Retro-Laue (Back Laue) usa um feixe branco (policromático).
 
@@ -67,15 +67,15 @@ Estes se aplicam à janela do padrão de difração compartilhada pelas simulaç
 | Roda do mouse | Ampliar / reduzir o zoom por ×2 a cada passo da roda; o ponto sob o cursor é levado ao centro da vista (com **Fixar** marcado, o centro fixado é mantido) |
 | Clique direito | Reduzir o zoom (×1/1.2) |
 | Arrastar com o botão direito um retângulo | Ampliar o zoom na região selecionada |
-| Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais: cristal e ângulos de Euler, fonte, energia, comprimento de onda, óptica, forma dos pontos, cálculo de intensidade (para **Teoria dinâmica**, também a espessura, o número de ondas difratadas e, para PED, o semiângulo de precessão) e a geometria do detector <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
+| Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais: cristal e ângulos de Euler, fonte, energia, comprimento de onda, óptica, forma dos pontos, cálculo de intensidade (para **Teoria dinâmica**, também a espessura, o número de ondas difratadas e, para PED, o ângulo de precessão) e a geometria do detector <!-- 261105Cl 監査: statusStrip1_MouseDown (C24) --> |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Piscar essa camada ligando e desligando |
 
 As janelas auxiliares abertas a partir daqui adicionam mais alguns:
 
 | Atalho | Ação |
 |----------|--------|
-| Clique duplo esquerdo na estereonete — **Simulação de Suporte TEM** | Ajustar a inclinação do suporte para esse ponto |
-| Teclas de seta — **Simulação de Suporte TEM** | Avançar a inclinação do suporte passo a passo (marque **Ativar teclas de seta** primeiro; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
+| Clique duplo esquerdo na estereonete — **Simulação de suporte TEM** | Ajustar a inclinação do suporte para esse ponto |
+| Teclas de seta — **Simulação de suporte TEM** | Avançar a inclinação do suporte passo a passo (marque **Ativar teclas de seta** primeiro; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
 | Soltar um arquivo `.prm` ou uma imagem — **Geometria do detector** | Carregar geometria do detector / imagem de overlay |
 | Soltar um perfil `.txt` — **Compressão dinâmica** | Carregar perfis de posição/tempo/pressão (escolha o tempo com o controle deslizante **Tempo**; arraste as linhas verticais no gráfico para definir a frente / a traseira) |
 
@@ -91,7 +91,7 @@ Os atalhos <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> de toda a aplicação, da janela pri
 |------|------------|-----------|
 | Produzir difração de elétrons com feixe paralelo (SAED) | Definir **Óptica** como **Feixe paralelo** e a **Fonte de ondas** como **Elétrons** | [Simulação SAED](1-saed-simulation.md), [cálculo de SAED com feixe paralelo](../appendix/a3-bloch-wave/calculation.md) |
 | Produzir difração de raios X de monocristal | Alternar a **Fonte de ondas** para **Raios X** (para radiação síncrotron, defina **Element** como **0: Custom**) | [Simulação de difração de raios X](5-x-ray-neutron-diffraction.md) |
-| Produzir difração de elétrons em precessão (PED) | Definir **Óptica** como **Precessão (elétrons)** e, em seguida, definir o semiângulo e o passo | [Simulação PED](2-ped-simulation.md) |
+| Produzir difração de elétrons em precessão (PED) | Definir **Óptica** como **Precessão (elétrons)** e, em seguida, definir o ângulo de precessão e o passo | [Simulação PED](2-ped-simulation.md) |
 | Produzir difração de elétrons com feixe convergente (CBED) | Definir **Óptica** como **Convergência (elétrons)** e definir as condições na janela CBED | [Simulação CBED](3-cbed-simulation.md), [cálculo CBED](../appendix/a3-bloch-wave/cbed.md) |
 | Inspecionar a lista de reflexos do cálculo dinâmico | Selecionar **Teoria dinâmica** e clicar em **Detalhes dos pontos** | [Cálculo dinâmico (núcleo compartilhado)](../appendix/a3-bloch-wave/calculation.md) |
 | Comparar a geometria do detector com uma imagem experimental | Abrir as configurações de geometria do detector em **Detalhes**, no grupo **Geometria detector & imagem sobreposta**, e usar a imagem de overlay | [Sistema de coordenadas do detector](../appendix/a1-coordinate-system/2-diffraction.md) |
@@ -118,10 +118,10 @@ A linha **Posição do mouse:** acima do padrão mostra, para a posição do cur
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| **Salvar imagem** | Salvar o padrão de difração exibido, **como Imagem (formato PNG)** ou **como metarquivo (EMF)**. |
+| **Salvar imagem** | Salvar o padrão de difração exibido, **como imagem (formato PNG)** ou **como metarquivo (EMF)**. |
 | **Salvar área do detector** | Salvar apenas o recorte da área do detector (PNG / EMF) na grade de pixels do detector. Exibido apenas enquanto a área do detector estiver sendo mostrada. Pergunta-se se a imagem sobreposta deve ser incluída somente quando há uma carregada. <!-- 261105Cl 監査: SaveOrCopyDetector (C18) --> |
-| **Salvar discos CBED** | Apenas no modo CBED: salvar os discos calculados **como Imagens individuais (formato PNG / TIFF)** ou **como imagem coletiva (formato PNG / TIFF)**. Sempre os discos CBED, mesmo enquanto a área do detector está sendo exibida. |
-| **Copiar** | Copiar a imagem exibida para a área de transferência (**como Imagem** / **como metarquivo (EMF)**). |
+| **Salvar discos CBED** | Apenas no modo CBED: salvar os discos calculados **como imagens individuais (formato PNG / TIFF)** ou **como imagem coletiva (formato PNG / TIFF)**. Sempre os discos CBED, mesmo enquanto a área do detector está sendo exibida. |
+| **Copiar** | Copiar a imagem exibida para a área de transferência (**como imagem** / **como metarquivo (EMF)**). |
 | **Copiar área do detector** | Copiar apenas o recorte da área do detector na grade de pixels do detector. Exibido apenas enquanto a área do detector estiver sendo mostrada. Pergunta-se se a imagem sobreposta deve ser incluída somente quando há uma carregada. |
 | **Copiar discos CBED** | Apenas no modo CBED: copiar os discos **como imagem coletiva** (sempre os discos CBED, mesmo enquanto a área do detector está sendo exibida). |
 | **Salvar vídeo** | Gravar um vídeo do **Padrão de difração** ou da vista do **Espaço recíproco**. |
@@ -175,7 +175,7 @@ Predefinições fixas de fonte de ondas que definem apenas a radiação e sua en
 
 ![Detector (comprimento de câmera)](../../assets/cap-pt-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **Comp. câmara 2** : Distância (mm) da amostra ao pé da perpendicular baixada sobre o plano do detector (padrão 1000 mm). Coincide com o comprimento de câmera usual quando o detector não está inclinado (τ = 0).
+- **Comp. câmera 2** : Distância (mm) da amostra ao pé da perpendicular baixada sobre o plano do detector (padrão 1000 mm). Coincide com o comprimento de câmera usual quando o detector não está inclinado (τ = 0).
 - **Detalhes** : Abre a janela de configurações de geometria do detector (consulte [Geometria do detector](#detector-geometry) abaixo).
 
 ### Diversos {#misc}
@@ -191,7 +191,7 @@ Predefinições fixas de fonte de ondas que definem apenas a radiação e sua en
 
 ![Simulação do suporte TEM](../../assets/cap-pt-auto/FormDiffractionSimulatorHolder.png)
 
-Abre uma janela que vincula o padrão de difração a um **suporte TEM** de dupla inclinação (**Inclinação X** = rotação primária, **Inclinação Y** = rotação secundária). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). **Vincular à Direção Atual** toma a orientação atual do cristal como referência do suporte (nos valores dados de Inclinação X / Inclinação Y); **Configurações de TEM** definem a direção do eixo de Inclinação X na tela (padrão −29°) e a polaridade da Inclinação Y, e **↻ girar 180°** gira o cristal 180° em torno do feixe (sempre em torno do eixo do feixe, mesmo quando um eixo ou plano está fixado na janela principal). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Ativar teclas de seta** permite que ←/→ avancem a Inclinação X e ↑/↓ a Inclinação Y passo a passo (passo 0.1–2°, padrão 0.2°). As teclas de seta inclinam o suporte somente enquanto esta janela estiver ativa. <!-- 261106Cl 作者の決定 D25 --> Quando a janela é exibida novamente depois de ter sido ocultada (junto com o simulador), ou quando Inclinação X / Inclinação Y é alterada, uma rotação ou uma troca de cristal feita nesse meio-tempo é tomada como a nova referência: a orientação atual é tratada como a orientação na inclinação presente, e a lista de eixos de zona é refeita para o cristal atual. <!-- 261105Cl 監査: FormDiffractionSimulatorHolder.cs OnVisibleChanged / numericBoxTilt_ValueChanged (54e23f0) -->
+Abre uma janela que vincula o padrão de difração a um **suporte TEM** de dupla inclinação (**Inclinação X** = rotação primária, **Inclinação Y** = rotação secundária). Definir os ângulos de inclinação do suporte atualiza o padrão e a orientação do cristal, e as orientações alcançáveis podem ser exibidas em uma estereonete (adicionado na v4.914). **Vincular à direção atual** toma a orientação atual do cristal como referência do suporte (nos valores dados de Inclinação X / Inclinação Y); **Configurações de TEM** definem a direção do eixo de Inclinação X na tela (padrão −29°) e a polaridade da Inclinação Y, e **↻ girar 180°** gira o cristal 180° em torno do feixe (sempre em torno do eixo do feixe, mesmo quando um eixo ou plano está fixado na janela principal). Um clique duplo esquerdo na estereonete ajusta a inclinação do suporte para esse ponto, e marcar **Ativar teclas de seta** permite que ←/→ avancem a Inclinação X e ↑/↓ a Inclinação Y passo a passo (passo 0.1–2°, padrão 0.2°). As teclas de seta inclinam o suporte somente enquanto esta janela estiver ativa. <!-- 261106Cl 作者の決定 D25 --> Quando a janela é exibida novamente depois de ter sido ocultada (junto com o simulador), ou quando Inclinação X / Inclinação Y é alterada, uma rotação ou uma troca de cristal feita nesse meio-tempo é tomada como a nova referência: a orientação atual é tratada como a orientação na inclinação presente, e a lista de eixos de zona é refeita para o cristal atual. <!-- 261105Cl 監査: FormDiffractionSimulatorHolder.cs OnVisibleChanged / numericBoxTilt_ValueChanged (54e23f0) -->
 
 ---
 
@@ -309,7 +309,7 @@ Especifique a geometria de reflexão: **Comprimento da câmera 2** (mm, 1–1000
 
 ![Área do detector e imagem sobreposta](../../assets/cap-pt-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-Marque **Definir área do detector & imagem sobreposta.** para especificar o detector: tamanho em pixels (padrão 1024 × 1024), **tam. pix.** (mm, padrão 0.1) e a posição do pé **Pé: fx, fy** (px, padrão 512, 512) — o pé da perpendicular baixada da amostra ao plano do detector, que coincide com a posição do feixe direto somente quando o detector não está inclinado (τ = 0). <!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> Uma imagem experimental pode ser carregada (**Carregar** ou soltando o arquivo) e sobreposta com **Opacidade**, **Gradiente** (filme positivo/negativo), **Escala 1** (log/linear), **Escala 2** (Gray / Cold-warm / Spectrum / Fire), **Int. máx./Int. mín.**, **Girar 90°** e **Limpar**. Carregar uma imagem `.ipa` define τ = 0 (o arquivo não contém inclinação), coloca o pé no centro da imagem e define o comprimento de câmera 2 como a distância do filme. Um arquivo que não pode ser lido como arquivo `.prm` nem como imagem é informado com uma mensagem. <!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) --> **Diagrama esquemático** mostra um esboço da geometria. Use isto para sobrepor o padrão simulado e uma imagem experimental e ajustar finamente a geometria do detector.
+Marque **Definir área do detector & imagem sobreposta.** para especificar o detector: tamanho em pixels (padrão 1024 × 1024), **Tamanho do pixel** (mm, padrão 0.1) e a posição do pé **Pé: fx, fy** (px, padrão 512, 512) — o pé da perpendicular baixada da amostra ao plano do detector, que coincide com a posição do feixe direto somente quando o detector não está inclinado (τ = 0). <!-- 261105Cl 監査: numericBoxFootX/Y.ToolTip, convertDetectorToReal --> Uma imagem experimental pode ser carregada (**Carregar** ou soltando o arquivo) e sobreposta com **Opacidade**, **Gradiente** (filme positivo/negativo), **Escala 1** (log/linear), **Escala 2** (Gray / Cold-warm / Spectrum / Fire), **Int. máx./Int. mín.**, **Girar 90°** e **Limpar**. Carregar uma imagem `.ipa` define τ = 0 (o arquivo não contém inclinação), coloca o pé no centro da imagem e define o comprimento de câmera 2 como a distância do filme. Um arquivo que não pode ser lido como arquivo `.prm` nem como imagem é informado com uma mensagem. <!-- 261105Cl 監査: ReadImage / showCannotRead (4dc847a) --> **Diagrama esquemático** mostra um esboço da geometria. Use isto para sobrepor o padrão simulado e uma imagem experimental e ajustar finamente a geometria do detector.
 
 Consulte também [Sistema de coordenadas do detector](../appendix/a1-coordinate-system/2-diffraction.md) para as definições do sistema de coordenadas.
 

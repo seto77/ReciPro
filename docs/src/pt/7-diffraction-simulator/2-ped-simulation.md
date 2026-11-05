@@ -46,7 +46,7 @@ Defina a forma e a amostragem do cone de precessão.
 
 | Parâmetro | Descrição | Recomendado |
 |-----------|-------------|-------------|
-| **Semiângulo** | Semiângulo de abertura do cone de precessão (mrad; 0.1–500, padrão 50) | 10–40 mrad |
+| **Âng. prec.** | Ângulo de precessão, isto é, o semiângulo de abertura do cone de precessão (mrad; 0.1–500, padrão 50) <!-- 261106Cl 仕上げ R3 D1: 欄名 Semiângulo → Âng. prec. --> | 10–40 mrad |
 | **Passo** | Número de direções de feixe paralelo amostradas sobre o cone de precessão (2–1080, padrão 36). Valores maiores produzem uma integração mais suave, mas aumentam o tempo de cálculo linearmente | 36–72 |
 
 ---

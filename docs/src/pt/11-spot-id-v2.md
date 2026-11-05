@@ -30,7 +30,7 @@ Você constrói a lista de spots diretamente sobre a imagem carregada. O painel 
 
 ## Menu Arquivo
 
-Abrir uma imagem de difração; **Salvar** / **Copiar** gravam a imagem exibida como Metafile (EMF) ou como imagem (PNG). As imagens também podem ser carregadas por arrastar e soltar. Para um arquivo Gatan DM3/DM4 calibrado em nm⁻¹, a radiação é definida como elétrons, e a tensão de aceleração e o tamanho do pixel (nm⁻¹) são lidos do arquivo (nesse caso o comprimento de câmera não é necessário).
+Abrir uma imagem de difração; **Salvar** / **Copiar** gravam a imagem exibida como metarquivo (EMF) ou como imagem (PNG). As imagens também podem ser carregadas por arrastar e soltar. Para um arquivo Gatan DM3/DM4 calibrado em nm⁻¹, a radiação é definida como elétrons, e a tensão de aceleração e o tamanho do pixel (nm⁻¹) são lidos do arquivo (nesse caso o comprimento de câmera não é necessário).
 
 **Salvar ▸ Candidate list (CSV)...** exporta os candidatos de orientação encontrados pela indexação e **Copiar ▸ Candidate list (TSV)** coloca a mesma tabela na área de transferência: uma linha por candidato × grão, com o posto, o índice do grão, o nome do cristal, os ângulos de Euler ZXZ (°), os nove elementos da matriz de rotação, o resíduo quadrático médio (nm⁻²), o número de pontos atribuídos e as atribuições ponto → (hkl). O CSV usa sempre o ponto como separador decimal; o TSV pode ser colado diretamente numa planilha.
 
@@ -44,7 +44,7 @@ Abrir uma imagem de difração; **Salvar** / **Copiar** gravam a imagem exibida 
 
 Selecione o tipo de radiação (raios X / elétron / nêutron) e defina a energia ou o comprimento de onda.
 
-### Comprimento de câmera / Tamanho do pixel
+### Comprimento da câmera / Tamanho do pixel
 
 O comprimento de câmera (mm) e o tamanho do pixel do detector (mm ou nm⁻¹). Quando um arquivo Gatan DM calibrado em nm⁻¹ é carregado, o tamanho do pixel (nm⁻¹) é lido do cabeçalho do arquivo e o comprimento de câmera não é usado (a caixa **Comprimento da câmera** fica desativada enquanto a unidade for nm⁻¹). Alterar o comprimento de onda, o comprimento de câmera ou a unidade do tamanho do pixel mantém as posições dos spots (em pixels) e recalcula os seus espaçamentos *d* com a nova calibração.
 

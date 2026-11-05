@@ -2,9 +2,9 @@
 
 A **simulação de difração de raios X / nêutrons** calcula padrões de difração de monocristal para raios X e nêutrons. É um dos principais modos do [simulador de difração](index.md).
 
-> Esta página lista todas as configurações que aparecem no lado direito quando você seleciona **Raios X** (ou **Nêutron**) como fonte de ondas. Para operações que afetam toda a janela, como desenhar e salvar, consulte a [página de visão geral](index.md).
+> Esta página lista todas as configurações que aparecem no lado direito quando você seleciona **Raios X** (ou **Nêutrons**) como fonte de ondas. Para operações que afetam toda a janela, como desenhar e salvar, consulte a [página de visão geral](index.md).
 
-Condições da GUI: Fonte de ondas = Raios X / Nêutron · Óptica = Feixe paralelo / Precessão (raios X, ZOLZ) / Retro-Laue (raios X) · Cálculo de intensidade = Apenas erro de exc. / Cinemático & erro exc.
+Condições da GUI: Fonte de ondas = Raios X / Nêutrons · Óptica = Feixe paralelo / Precessão (raios X, ZOLZ) / Retro-Laue (raios X) · Cálculo de intensidade = Apenas erro de exc. / Cinemático & erro exc.
 
 ![Simulador de difração no modo raios X / nêutrons](../../assets/cap-pt-auto/FormDiffractionSimulator-xray.png)
 
@@ -122,7 +122,7 @@ As configurações detalhadas estão na aba **Anéis de Debye** do [menu de abas
 
 ## Difração de nêutrons
 
-Selecionar **Nêutron** em **Fonte de ondas** calcula um padrão de difração de nêutrons.
+Selecionar **Nêutrons** em **Fonte de ondas** calcula um padrão de difração de nêutrons.
 Insira a energia (meV) ou o comprimento de onda (Å ou nm, alternável; padrão Å). A **Óptica** só pode ser **Feixe paralelo**. O cálculo da intensidade pode ser **Apenas erro de exc.** ou **Cinemático & erro exc.** (a **Teoria dinâmica** não está disponível). A intensidade cinemática usa o comprimento de espalhamento de nêutrons em vez do fator de espalhamento atômico.
 
 ---

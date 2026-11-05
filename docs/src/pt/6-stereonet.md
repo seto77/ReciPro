@@ -43,10 +43,10 @@ Salvar ou copiar como imagem raster (PNG) ou como metarquivo vetorial (EMF). Um 
 
 | Item de menu | Descrição |
 |-----------|-------------|
-| Salvar Imagem ▸ como Imagem (formato PNG) / como metarquivo (EMF) | Salvar a estereonete como arquivo PNG ou como arquivo vetorial EMF <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
-| Copiar para a área de transferência ▸ Como Imagem / como metarquivo (EMF) | Copiar a estereonete |
-| Salvar Vídeo ▸ Estereonete / 3D | Salvar um vídeo de rotação (MP4) da estereonete ou da vista 3-D, com o mesmo diálogo de configuração de filme do [Visualizador de estrutura](5-structure-viewer.md#menu-arquivo) (apenas rotação) |
-| Configurar Página / Visualizar Impressão / Imprimir | Imprimir a estereonete |
+| Salvar imagem ▸ como imagem (formato PNG) / como metarquivo (EMF) | Salvar a estereonete como arquivo PNG ou como arquivo vetorial EMF <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
+| Copiar para a área de transferência ▸ Como imagem / como metarquivo (EMF) | Copiar a estereonete |
+| Salvar vídeo ▸ Estereonete / 3D | Salvar um vídeo de rotação (MP4) da estereonete ou da vista 3-D, com o mesmo diálogo de configuração de filme do [Visualizador de estrutura](5-structure-viewer.md#menu-arquivo) (apenas rotação) |
+| Configurar página / Visualizar impressão / Imprimir | Imprimir a estereonete |
 
 ---
 

@@ -68,10 +68,10 @@ Defina a geometria da sonda convergente e do detector anular. Cada ângulo tamb�
 
 | Parâmetro | Descrição | Padrão / típico |
 |-----------|-------------|-------------------|
-| **Conv. semi-angle α** | Semiângulo da sonda convergente (mrad). Valores maiores geram uma sonda mais fina e alteram o contraste de difração | 25 mrad (padrão); 15–25 mrad |
+| **Semiâng. conv. α** | Semiângulo da sonda convergente (mrad). Valores maiores geram uma sonda mais fina e alteram o contraste de difração | 25 mrad (padrão); 15–25 mrad |
 | **Detector anular — Interno** | Semiângulo interno de coleta do detector anular (mrad). O sinal dentro desse ângulo é excluído | 0 (padrão); BF: 0, HAADF: 80 |
 | **Detector anular — Externo** | Semiângulo externo de coleta do detector anular (mrad). O sinal fora desse ângulo é excluído | 20 (padrão); BF: 5, HAADF: 250 |
-| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamanho efetivo da fonte de elétrons (pm). Aplicado após o cálculo como uma convolução gaussiana de cada imagem Elástico / TDS / EDX. Valores maiores borram a imagem e reduzem o contraste de detalhes finos | 20 pm (padrão) |
+| **Tamanho efetivo da fonte (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Tamanho efetivo da fonte de elétrons (pm). Aplicado após o cálculo como uma convolução gaussiana de cada imagem Elástico / TDS / EDX. Valores maiores borram a imagem e reduzem o contraste de detalhes finos | 20 pm (padrão) |
 
 Os ângulos do detector se aplicam apenas à imagem STEM de referência (Elástico / TDS / Elástico & TDS); os mapas STEM-EDX não os usam. Os padrões valem apenas na primeira execução; depois disso, os últimos valores usados são restaurados.
 

@@ -66,7 +66,7 @@ Defina a duração do filme (**Duração**), a taxa de quadros (**FPS**, 1–120
 
 #### Export 3D model (3MF/STL)
 
-**Export 3D model (3MF/STL)** exporta o modelo de estrutura desenhado na tela como um modelo sólido para impressão 3D. Só é possível exportar sólidos fechados: átomos (esferas e elipsoides), ligações (cilindros) e poliedros de coordenação. Os rótulos dos átomos, os planos de limite, os planos reticulares e os símbolos dos elementos de simetria não são exportados. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> A moldura da célula unitária é feita de segmentos de reta, por isso só é substituída por cilindros (com esferas nos vértices) quando você marca a opção correspondente. **Cortar objetos** (recorte pelos planos limitantes) não é aplicado à saída: os objetos que atravessam os planos limitantes são exportados inteiros (o diálogo o indica). <!-- 261106Cl 作者の決定 H10 -->
+**Export 3D model (3MF/STL)** exporta o modelo de estrutura desenhado na tela como um modelo sólido para impressão 3D. Só é possível exportar sólidos fechados: átomos (esferas e elipsoides), ligações (cilindros) e poliedros de coordenação. Os rótulos dos átomos, os planos de limite, os planos reticulares e os símbolos dos elementos de simetria não são exportados. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> A moldura da célula unitária é feita de segmentos de reta, por isso só é substituída por cilindros (com esferas nos vértices) quando você marca a opção correspondente. **Cortar objetos nos planos delimitadores** não é aplicado à saída: os objetos que atravessam os planos limitantes são exportados inteiros (o diálogo o indica). <!-- 261106Cl 作者の決定 H10 -->
 
 ![Diálogo Exportar modelo 3D](../assets/cap-pt-auto/FormExport3DModel.png)
 
@@ -116,7 +116,7 @@ Neste modo, os eixos *a*, *b*, *c* da célula unitária são a unidade do interv
 
 ![Limites por planos cristalinos](../assets/cap-pt-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-Neste modo, a área de desenho é delimitada por um conjunto de planos cristalinos. Se os planos não definirem uma região espacialmente fechada, o ReciPro acrescenta um poliedro quase esférico de raio **Distância máx. da origem** (Å, medida a partir do [centro de projeção](#centro-de-projeção)) para fechá-la. <!-- 261106Cl 作者の決定 C4 -->
+Neste modo, a área de desenho é delimitada por um conjunto de planos cristalinos. Se os planos não definirem uma região espacialmente fechada, o ReciPro acrescenta um poliedro quase esférico de raio **Dist. máx. (centro proj.)** (Å, medida a partir do [centro de projeção](#centro-de-projeção)) para fechá-la. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Lista de limites
 
@@ -130,17 +130,17 @@ Define o plano limitante por seu índice de Miller. A caixa de seleção inclui 
 
 #### Distância ao centro de proj.
 
-A distância do [centro de projeção](#centro-de-projeção) (e não da origem da célula) ao plano limitante, inserida <!-- 261106Cl 作者の決定 C4 --> como múltiplo da distância interplanar (*d*-spacing) do (*hkl*) selecionado (caixa **d×**) ou em Å (a caixa entre parênteses). As duas caixas estão vinculadas: alterar uma atualiza a outra.
+A distância do [centro de projeção](#centro-de-projeção) (e não da origem da célula) ao plano limitante, inserida <!-- 261106Cl 作者の決定 C4 --> como múltiplo da distância interplanar (*d*-spacing) do (*hkl*) selecionado (caixa **d×**) ou em Å (a caixa entre parênteses). As duas caixas estão vinculadas: alterar uma atualiza a outra. Cada plano fica no lado +**g** do centro de projeção (no sentido da sua normal (*hkl*)), e é desenhado o lado que contém o centro; com um único plano, a região é o semiespaço do lado do centro. <!-- 261106Cl 仕上げ R3 D5: Boundary.cs Bound.Reset (面は nᵢ·r ≤ D) -->
 
-- **Translation** (Å): move toda a região delimitada pelos planos nesse valor ao longo da normal do (*hkl*) especificado; valores positivos a movem em direção a +**g**, isto é, no sentido da normal de (*hkl*). Funciona com qualquer número de planos, inclusive um único plano sem **Planos equivalentes**. <!-- 261106Cl 作者の決定 B11, C5 -->
-- **Distância máx. da origem** (Å): raio do poliedro de fechamento usado quando os planos não delimitam uma região (veja acima).
+- **Translação** (Å): move toda a região delimitada pelos planos nesse valor ao longo da normal do (*hkl*) especificado; valores positivos a movem em direção a +**g**, isto é, no sentido da normal de (*hkl*). Funciona com qualquer número de planos, inclusive um único plano sem **Planos equivalentes**. <!-- 261106Cl 作者の決定 B11, C5 -->
+- **Dist. máx. (centro proj.)** (Å): raio do poliedro de fechamento usado quando os planos não delimitam uma região (veja acima).
 - **Atualizar imediatamente**: aplica as edições do plano selecionado sem pressionar **Substituir**.
 
-#### Mostrar planos limitantes / Opacidade
+#### Mostrar planos / Opacidade
 
 Mostra ou oculta os próprios planos limitantes. Quando exibidos, **Opacidade** define a transparência (0 = transparente, 1 = opaco).
 
-#### Recortar objetos pelos planos limitantes
+#### Cortar objetos nos planos delimitadores
 
 Se marcado, somente a região interna definida pelos limites é renderizada; átomos, ligações e poliedros que cruzam os limites são recortados.
 
@@ -167,9 +167,9 @@ A lista de átomos no cristal. Use **Adicionar / Substituir / Excluir** para man
 - **X, Y, Z**: coordenadas fracionárias. Números reais entre 0 e 1, ou frações como `1/2` ou `2/3`.
 - **Occ**: ocupação, um número real entre 0 e 1.
 
-#### Deslocamento de origem
+#### Deslocamento da origem
 
-![Deslocamento de origem](../assets/cap-pt-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+![Deslocamento da origem](../assets/cap-pt-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
 
 Desloca cada átomo pelo mesmo deslocamento fracionário. Pressione um botão de predefinição (por exemplo, para alternar entre as escolhas de origem 1 / 2 do mesmo grupo espacial) ou insira um (Δx, Δy, Δz) personalizado e pressione **Apply custom shift**.
 
@@ -229,7 +229,7 @@ A translação está ligada ao [Centro de projeção](#centro-de-projeção): de
 
 Define se as seis faces que delimitam a célula unitária são desenhadas. Quando ativado, você pode definir a cor da face e a transparência.
 
-#### Mostrar arestas
+#### Mostrar aresta da célula
 
 Define se as arestas da célula unitária são desenhadas. A cor das arestas é configurável.
 
@@ -237,7 +237,7 @@ A caixa de seleção principal **Mostrar célula unitária** (= o botão *Célul
 
 #### Mostrar subcélula
 
-**Mostrar subcélula** desenha linhas de grade que dividem a célula no número de partes indicado nas caixas **a**, **b**, **c** (1–10 cada; as caixas só podem ser usadas enquanto a opção estiver marcada), nas faces e no interior da célula. As linhas que coincidem com as arestas da célula não são desenhadas. As linhas usam a cor das arestas (**Todas as arestas** / **Cada aresta**), metade da largura da aresta (no mínimo 1 px) e opacidade 0,5, e são exibidas independentemente de **Mostrar arestas**. Não são incluídas na exportação do modelo 3D. <!-- 261106Cl 作者の決定 H5 -->
+**Mostrar subcélula** desenha linhas de grade que dividem a célula no número de partes indicado nas caixas **a**, **b**, **c** (1–10 cada; as caixas só podem ser usadas enquanto a opção estiver marcada), nas faces e no interior da célula. As linhas que coincidem com as arestas da célula não são desenhadas. As linhas usam a cor das arestas (**Todas as arestas** / **Cada aresta**), metade da largura da aresta (no mínimo 1 px) e opacidade 0,5, e são exibidas independentemente de **Mostrar aresta da célula**. Não são incluídas na exportação do modelo 3D. <!-- 261106Cl 作者の決定 H5 -->
 
 ### Planos reticulares
 

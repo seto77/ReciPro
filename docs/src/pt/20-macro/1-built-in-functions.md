@@ -196,7 +196,7 @@ Comanda o [Spot ID v2](../11-spot-id-v2.md) a partir de uma macro: carregar uma 
 | Propriedade | Tipo | Descrição |
 |-------------|------|-----------|
 | `Energy` | double | Energia do feixe (keV para raios X e elétrons, meV para nêutrons) |
-| `CameraLength` | double | Comprimento de câmara (mm) |
+| `CameraLength` | double | Comprimento de câmera (mm) |
 | `PixelSizeInMM` | double | Tamanho do pixel (mm). Escrevê-lo muda a unidade do tamanho do pixel para mm; lê-lo retorna o valor convertido em mm sem mudar a unidade <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
 | `PixelSizeInNMinv` | double | Tamanho do pixel (nm⁻¹). Escrevê-lo muda a unidade para nm⁻¹; lê-lo retorna o valor convertido em nm⁻¹ sem mudar a unidade |
 | `MaxNumberOfSpots` | int | Número máximo de pontos que `FindSpots()` pode detectar |

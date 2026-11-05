@@ -21,11 +21,11 @@ O Spot ID v1 recebe a geometria das reflexões como **entrada numérica** (o ant
 
 ## Busca de eixo de zona a partir da geometria das reflexões (antigo TEM ID)
 
-Quando você não tem uma imagem para carregar, ainda é possível buscar eixos de zona candidatos inserindo manualmente a geometria de um padrão de difração de elétrons de área selecionada (SAED). Insira as condições de observação do TEM e a geometria das reflexões e, em seguida, pressione **Encontrar Eixo de Zona** de uma foto (ou **Encontrar Eixos de Zona de Dois Padrões** / **de Três Padrões** para usar várias fotos juntas) para encontrar orientações de cristal candidatas.
+Quando você não tem uma imagem para carregar, ainda é possível buscar eixos de zona candidatos inserindo manualmente a geometria de um padrão de difração de elétrons de área selecionada (SAED). Insira as condições de observação do TEM e a geometria das reflexões e, em seguida, pressione **Encontrar eixo de zona** de uma foto (ou **Encontrar Eixos de Zona de Dois Padrões** / **de Três Padrões** para usar várias fotos juntas) para encontrar orientações de cristal candidatas.
 
 ### Condição do TEM {#tem-condition}
 
-Insira **Tensão acel.** (kV, padrão 200) e **Comprimento de câmera** (mm, padrão 1000). O **Comprimento de onda** (nm) é calculado a partir da tensão e exibido somente para leitura.
+Insira **Tensão acel.** (kV, padrão 200) e **Comprimento da câmera** (mm, padrão 1000). O **Comprimento de onda** (nm) é calculado a partir da tensão e exibido somente para leitura.
 
 ### Foto 1, 2, 3 {#photo-1-2-3}
 
@@ -34,14 +34,14 @@ Insira a geometria das reflexões de difração.
 - Para inserir a distância entre reflexões no detector, use a caixa **mm**.
 - Se você conhece o valor de *d*, insira-o nas unidades **Å** ou **nm⁻¹**.
 
-Modo **Três Lados** : Insira os comprimentos dos três lados de um triângulo que tem o direct spot como um dos vértices.
+Modo **Três lados** : Insira os comprimentos dos três lados de um triângulo que tem o direct spot como um dos vértices.
 
-Modo **Dois Lados e um Ângulo** : Insira os comprimentos de dois lados (incluindo o direct spot) e o ângulo entre eles.
+Modo **Dois lados e um ângulo** : Insira os comprimentos de dois lados (incluindo o direct spot) e o ângulo entre eles.
 
 - Tolerâncias (as caixas **±**) : cada comprimento tem uma tolerância em % (0–50, padrão 5) e θ em graus (0–30, padrão 3). O valor não inserido (θ no modo de três lados, l3 no modo de dois lados) é calculado e exibido, e um esboço do padrão resultante é desenhado ao lado das entradas.
 - **Condições do porta-amostra** : **Tilt 1** / **Tilt 2** (°) do porta-amostra goniométrico com que a foto foi obtida, cada um com uma tolerância (0–10°, padrão 3°). Os ângulos entre as configurações do porta-amostra das fotos são calculados e exibidos.
 - **Foto 2** / **Foto 3** : ativam a segunda e a terceira fotos. As caixas de seleção entre as fotos tratam l1 (ou l2) de duas fotos como a mesma reflexão e copiam o seu comprimento.
-- **Encontrar Eixo de Zona** busca numa única foto; **Encontrar Eixos de Zona de Dois Padrões** / **de Três Padrões** busca combinações consistentes com as fotos e com os ângulos de inclinação do porta-amostra entre elas; a foto 3 só é usada quando **Foto 3** está marcada e todos os seus valores foram inseridos; caso contrário, são usadas duas fotos. Na tabela de resultados de uma única foto (**Encontrar Eixo de Zona**), g1, d1, g2 e d2 são sempre exibidos, além de g3 e d3 no modo de três lados ou de θ no modo de dois lados e um ângulo. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> A busca percorre todos os cristais selecionados na lista da janela principal (a seleção múltipla fica habilitada enquanto o Spot ID v1 está aberto). Se forem encontrados mais de 1000 candidatos, nada é listado e você é solicitado a restringir as condições; caso contrário, a janela de resultados é aberta. Clique duas vezes numa linha para selecionar o cristal e girá-lo até essa orientação. O sinal de cada eixo de zona candidato segue a convenção dos livros-texto, **g**₁ × **g**₂; por isso, é o inverso do das versões anteriores a 2026-11 (a orientação é a mesma). <!-- 261106Cl 作者の決定 B16 -->
+- **Encontrar eixo de zona** busca numa única foto; **Encontrar Eixos de Zona de Dois Padrões** / **de Três Padrões** busca combinações consistentes com as fotos e com os ângulos de inclinação do porta-amostra entre elas; a foto 3 só é usada quando **Foto 3** está marcada e todos os seus valores foram inseridos; caso contrário, são usadas duas fotos. Na tabela de resultados de uma única foto (**Encontrar eixo de zona**), g1, d1, g2 e d2 são sempre exibidos, além de g3 e d3 no modo de três lados ou de θ no modo de dois lados e um ângulo. <!-- 261105Cl 監査: buttonSearchAll_Click (afd65e0)、FormSpotIDv1Results.SetDataSet (46d91db) --> A busca percorre todos os cristais selecionados na lista da janela principal (a seleção múltipla fica habilitada enquanto o Spot ID v1 está aberto). Se forem encontrados mais de 1000 candidatos, nada é listado e você é solicitado a restringir as condições; caso contrário, a janela de resultados é aberta. Clique duas vezes numa linha para selecionar o cristal e girá-lo até essa orientação. O sinal de cada eixo de zona candidato segue a convenção dos livros-texto, **g**₁ × **g**₂; por isso, é o inverso do das versões anteriores a 2026-11 (a orientação é a mesma). <!-- 261106Cl 作者の決定 B16 -->
 
 ---
 

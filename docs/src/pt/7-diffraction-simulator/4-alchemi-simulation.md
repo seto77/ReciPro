@@ -93,7 +93,7 @@ O contraste de sítio muda fortemente — e pode até inverter de sinal — entr
 
 | Item | Descrição | Padrão |
 |------|-----------|--------|
-| **Feixes máx.** | Limite superior do número de ondas de Bloch por orientação (1–1600). A união sobre toda a varredura é maior | 120 |
+| **Ondas difr. máx.** | Limite superior do número de ondas de Bloch por orientação (1–1600). A união sobre toda a varredura é maior | 120 |
 | **Solucionador** | Motor de cálculo do problema de autovalores: **Nativo** (Eigen C++) ou **Gerido** (.NET). Onde o solucionador nativo não está disponível, a escolha fica fixada em Gerido | Nativo |
 | **Incluir a componente descanalizada** | Se soma $Y_\text{dech}$ acima | ligado |
 | **Espalhamento angular** | Convolui a curva com o espalhamento angular do feixe incidente: **Nenhum** ou **Gaussian** com uma largura a meia altura em mrad. É um pós-processamento no eixo das orientações, aplicado **antes** da normalização de exibição | Nenhum |

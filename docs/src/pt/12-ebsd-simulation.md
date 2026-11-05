@@ -55,7 +55,7 @@ As faixas de energia e profundidade são definidas automaticamente nas etapas 1�
 
 ![Condições do SEM & da amostra](../assets/cap-pt-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energia** : tensão de aceleração do feixe incidente (keV).
+- **Energia** : tensão de aceleração do feixe incidente (keV). O valor é restaurado na próxima inicialização, junto com as faixas de energia e profundidade digitadas à mão. <!-- 261106Cl 仕上げ R3 D4: FormEBSD.AcceleratingVoltageKV をレジストリに保存 -->
 - **Compr. de onda** : comprimento de onda do elétron, vinculado a **Energia**. **Unit** seleciona Å ou nm.
 - **Inclinação da amostra** : ângulo de inclinação da amostra (tipicamente −70°). A grande inclinação no EBSD aumenta o rendimento de elétrons retroespalhados. Alterá-la descarta os resultados de Monte Carlo (as distribuições BSE e os seus pesos; execute **Simular** novamente); o master pattern não depende da inclinação e é mantido. <!-- 261106Cl 作者の決定 F17 -->
 
@@ -67,7 +67,7 @@ O detector (tela de fósforo) é um retângulo definido por uma contagem de pixe
 
 - **Tamanho e inclinação** : **Inclinação** é a inclinação da tela do detector (°), medida a partir do plano horizontal (perpendicular ao feixe): 0° = tela horizontal, 90° = tela vertical (o padrão). **Largura** e **Altura** são o número de pixels do detector. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
 - **Resolução** : o tamanho físico de um pixel do detector (mm/px). O tamanho físico do detector é, portanto, Largura × Resolução por Altura × Resolução.
-- **Coordenadas do centro do detector** : posição **X**, **Y**, **Z** do centro do detector em relação ao ponto de impacto do feixe (mm), no referencial do microscópio (laboratório). **Y** é o deslocamento horizontal perpendicular tanto ao feixe (Z) quanto ao eixo de inclinação da amostra (X), e não uma direção dentro da superfície inclinada da amostra. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y e Z, junto com a inclinação, determinam o comprimento de câmara; X é o deslocamento esquerda-direita.
+- **Coordenadas do centro do detector** : posição **X**, **Y**, **Z** do centro do detector em relação ao ponto de impacto do feixe (mm), no referencial do microscópio (laboratório). **Y** é o deslocamento horizontal perpendicular tanto ao feixe (Z) quanto ao eixo de inclinação da amostra (X), e não uma direção dentro da superfície inclinada da amostra. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y e Z, junto com a inclinação, determinam o comprimento de câmera; X é o deslocamento esquerda-direita.
 
 Ao carregar uma imagem experimental, **Largura** e **Altura** passam a ser o tamanho da imagem, de modo que um pixel do detector corresponda a um pixel da imagem (a **Resolução** não é alterada).
 

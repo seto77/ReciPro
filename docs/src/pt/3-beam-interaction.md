@@ -28,7 +28,7 @@ A faixa superior é um **Wave Length Control** compartilhado com os outros simul
 
 ![Wave Length Control](../assets/cap-pt-auto/FormBeamInteraction.waveLengthControl.png)
 
-- **Raios X / Elétrons / Nêutron** : os fatores de espalhamento atômico e a física da interação diferem conforme o tipo de feixe incidente, por isso são alternados aqui.
+- **Raios X / Elétrons / Nêutrons** : os fatores de espalhamento atômico e a física da interação diferem conforme o tipo de feixe incidente, por isso são alternados aqui.
 - Para **Raios X**, escolher o **Element** (material do anodo) e a linha característica (Kα, etc.) define automaticamente o comprimento de onda desse raio X característico.
 - **Energia** (keV) e **Compr. de onda** (Å) estão vinculados; definir um atualiza o outro, e ambos determinam o 2θ usado na tabela **Reflexões**.
 - **Unit (Å / nm)** alterna a unidade de comprimento usada para o espaçamento d e grandezas semelhantes.
@@ -40,7 +40,7 @@ O feixe escolhido também decide quais abas e curvas são significativas:
 |------|------|------|------|------|
 | **Raios X** | fatores de estrutura incl. dispersão anômala | µ/ρ, µ, transmissão + bordas de absorção (vs energia) | $f(s)$ (Waasmaier–Kirfel ou Temari) ou $F(q)+S(q)$ | linhas características + traços EDX |
 | **Elétrons** | fatores de estrutura de elétrons | σ, MFP, \|dE/ds\|, IMFP, alcance (vs energia) | Peng / Kirkland / 8-Gaussians / Temari | — (oculto) |
-| **Nêutron** | fatores de estrutura nucleares | comprimentos de espalhamento e seções de choque (sem curva de energia) | comprimentos de espalhamento (sem dependência de *s*) | — (oculto) |
+| **Nêutrons** | fatores de estrutura nucleares | comprimentos de espalhamento e seções de choque (sem curva de energia) | comprimentos de espalhamento (sem dependência de *s*) | — (oculto) |
 
 A aba **Fluorescência** existe apenas para raios X e desaparece para feixes de elétrons e de nêutrons. Para nêutrons, os gráficos dependentes da energia em **Atenuação & Transporte** e **Fatores de dispersão** são substituídos por tabelas de elementos, pois o comprimento de espalhamento nuclear não depende do ângulo de espalhamento nem da energia.
 
@@ -148,7 +148,7 @@ O fator de espalhamento atômico de cada elemento constituinte, plotado em funç
 
 - **Raios X** oferece dois modos de **Modelo**: **f(s)** plota o fator de espalhamento atômico de raios X convencional (em unidades de elétron); **F(q)+S(q)** plota o fator de forma **coerente** de Rayleigh $F(q)$ junto com a função de espalhamento **incoerente** de Compton $S(q)$ (do xraylib). A tabela também lista os termos de dispersão anômala **f'(E)** e **f''(E)** na energia atual e uma coluna **modelo** que indica de qual fonte veio a coluna f(s). Quando **f(s)** está selecionado, uma segunda linha de botões de opção escolhe **de onde vem a curva**: **Waasmaier–Kirfel** (o ajuste padrão, que também cobre íons em Z = 1–98) ou **Temari**. Fica esmaecida enquanto **F(q)+S(q)** é exibido, porque essas duas curvas vêm do xraylib e não admitem escolha de origem.
 - **Elétrons** oferece quatro fontes para o fator de espalhamento de elétrons: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. A tabela mostra $f_e(s)$ (nm) e qual **modelo** o produziu. **Kirkland** e **8-Gaussians** não têm parâmetros para íons; por isso, para íons as suas curvas são omitidas e as suas células da tabela ficam em branco (**Peng** dá valores para íons). <!-- 261106Cl 作者の決定 J12 -->
-- Os comprimentos de espalhamento de **Nêutron** não dependem de $s$, portanto nenhuma curva é desenhada; a tabela lista o comprimento de espalhamento coerente **b_coh** de cada elemento e suas seções de choque coerente / incoerente.
+- Os comprimentos de espalhamento de **Nêutrons** não dependem de $s$, portanto nenhuma curva é desenhada; a tabela lista o comprimento de espalhamento coerente **b_coh** de cada elemento e suas seções de choque coerente / incoerente.
 - **Temari** não é um ajuste, mas uma tabela calculada (Temari dataset-factors v2.0.0, CC-BY-4.0, a partir de um cálculo de campo autoconsistente de Dirac completo). Cobre **apenas átomos neutros Z = 1–86**: íons e Z = 87–98 não têm entrada, portanto suas curvas são omitidas e suas células ficam em branco em vez de preenchidas com valores de átomo neutro.
 - **Deslocamento (B)** multiplica cada fator pelo amortecimento térmico $e^{-B s^2}$ usando o parâmetro de deslocamento isotrópico de cada átomo.
 

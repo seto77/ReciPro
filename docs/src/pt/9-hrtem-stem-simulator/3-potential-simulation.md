@@ -12,7 +12,7 @@ A **simulação de potencial** calcula e exibe a distribuição 2D do potencial 
 
 Os elétrons dentro de um cristal são espalhados pelo potencial do cristal. Sua distribuição está na base de todos os fenômenos de difração e formação de imagem e é uma informação essencial para a compreensão da estrutura cristalina. Como este modo não inclui nem aberrações da lente nem efeitos dinâmicos dependentes da espessura, ele é bem adequado para inspecionar a própria estrutura.
 
-> **No modo de potencial, os painéis de espessura da amostra, normalização de intensidade e modo de imagem (single / serial) não são exibidos.** Das condições do TEM, apenas a tensão de aceleração está ativa.
+> **No modo de potencial, os painéis de espessura da amostra, normalização de intensidade e "Modo único/série" não são exibidos.** Das condições do TEM, apenas a tensão de aceleração está ativa.
 
 ---
 

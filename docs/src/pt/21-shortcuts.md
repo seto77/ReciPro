@@ -94,7 +94,7 @@ Usadas pelos painéis de resultado do [HRTEM/STEM](9-hrtem-stem-simulator/index.
 |----------|--------|
 | <kbd>ENTER</kbd> em um campo de busca | Executar a busca |
 | Clique em uma linha de resultado | Carregar esse cristal |
-| Clique em um elemento no pop-up **Tabela Periódica** | Percorrer seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
+| Clique em um elemento no pop-up **Tabela periódica** | Percorrer seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 ### 2. Informação de simetria · 3. Interação do feixe
 A Informação de simetria não tem combinações especiais de tecla/mouse. Na Interação do feixe, além de <kbd>F1</kbd> e dos botões **Copiar**, o cursor vertical no gráfico **Fatores de dispersão** pode ser arrastado para ler o valor de cada elemento.
@@ -131,8 +131,8 @@ A Informação de simetria não tem combinações especiais de tecla/mouse. Na I
 | <kbd>CTRL</kbd> + arrastar com o botão do meio | Mover o centro do detector (quando a área do detector é exibida) |
 | Clique duplo direito na barra de status | Copiar um resumo em texto das configurações atuais |
 | Clique duplo direito em um botão de camada ativo (Spots / Kikuchi / Debye / Scale) | Fazer essa camada piscar |
-| Clique duplo esquerdo na estereonete — janela **Simulação de Suporte TEM** | Definir a inclinação do suporte para esse ponto |
-| Teclas de seta — janela **Simulação de Suporte TEM** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
+| Clique duplo esquerdo na estereonete — janela **Simulação de suporte TEM** | Definir a inclinação do suporte para esse ponto |
+| Teclas de seta — janela **Simulação de suporte TEM** | Avançar a inclinação do suporte em passos (marque **Ativar teclas de seta** antes; funciona somente enquanto a janela do suporte estiver ativa) <!-- 261106Cl 作者の決定 D25 --> |
 | Soltar `.prm` / imagem — **Geometria do detector**, ou `.txt` — **Compressão dinâmica** | Carregar esses dados |
 
 ### 8. Trajetórias eletrônicas

@@ -1,6 +1,6 @@
 # Trajetórias eletrônicas
 
-O **Simulador de Trajetórias (Método de Monte Carlo)** calcula as trajetórias dos elétrons dentro de uma amostra pelo **método de Monte Carlo**: os elétrons incidentes sofrem espalhamento elástico e inelástico, e as distribuições resultantes dos elétrons retroespalhados (BSE) — direção, energia no escape, profundidade de penetração e espalhamento lateral — são acumuladas.
+O **Simulador de trajetórias (método de Monte Carlo)** calcula as trajetórias dos elétrons dentro de uma amostra pelo **método de Monte Carlo**: os elétrons incidentes sofrem espalhamento elástico e inelástico, e as distribuições resultantes dos elétrons retroespalhados (BSE) — direção, energia no escape, profundidade de penetração e espalhamento lateral — são acumuladas.
 A [12. Simulação EBSD](12-ebsd-simulation.md) usa o mesmo mecanismo de Monte Carlo para sua ponderação angular/de energia/de profundidade, mas o executa internamente com suas próprias configurações; os resultados desta janela não são repassados a ela.
 
 ![Electron Trajectory](../assets/cap-pt-auto/FormTrajectory.png)

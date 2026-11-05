@@ -30,7 +30,7 @@ Esta janela não possui combinações com teclas modificadoras; ela é operada p
 | <kbd>F1</kbd> | Abrir esta página do manual online |
 | <kbd>ENTER</kbd> em qualquer campo de pesquisa | Executar a pesquisa no banco de dados (equivale ao botão **Pesquisar**) |
 | Clicar em uma linha da tabela de resultados | Carregar esse cristal na janela principal |
-| Clicar em um elemento no pop-up **Tabela Periódica** | Alternar seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
+| Clicar em um elemento no pop-up **Tabela periódica** | Alternar seu filtro: *pode ou não incluir* → *deve incluir* → *deve excluir* |
 
 → Consulte **[21. Atalhos de teclado e mouse](21-shortcuts.md)** para uma visão geral de cada janela.
 
@@ -55,7 +55,7 @@ Insira abaixo os critérios de pesquisa e pressione o botão **Pesquisar** ou a 
 | **Name** | Nome do cristal |
 | **Elementos** | Seletor da tabela periódica (pode/deve/não deve conter) |
 | **Referência** | Título, periódico, autor |
-| **Sistema Cristalino** | Selecionar o sistema cristalino |
+| **Sistema cristalino** | Selecionar o sistema cristalino |
 | **Parâm. célula** | Constantes de rede e erro |
 | **Distância d** | Valores de d das reflexões intensas e erro |
 | **Densidade** | Densidade e erro |
@@ -66,7 +66,7 @@ Correspondência de texto livre com o nome do cristal. Correspondências parciai
 
 ### Elementos {#element}
 
-Pressione o botão **Tabela Periódica** para abrir o seletor de elementos. Cada botão de elemento alterna entre três estados:
+Pressione o botão **Tabela periódica** para abrir o seletor de elementos. Cada botão de elemento alterna entre três estados:
 
 - **pode ou não incluir** (padrão — amarelo)
 - **deve incluir** (azul)
@@ -80,7 +80,7 @@ Os três botões na parte superior da janela redefinem todos os elementos para u
 
 Correspondência de texto livre (parcial, sem diferenciar maiúsculas de minúsculas) com os metadados da publicação: título do artigo, nome do periódico e lista de autores.
 
-### Sistema Cristalino
+### Sistema cristalino
 
 Restringe a pesquisa a um sistema cristalino específico (cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic, triclinic). O primeiro item, *Unknown*, não aplica nenhuma restrição.
 
