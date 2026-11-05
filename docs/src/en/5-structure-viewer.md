@@ -119,7 +119,7 @@ In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing
 ![Bounds by crystal planes](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:initBounds; BoundControl.resx:numericBoxMaximumDistanceFromOrigin) -->
-In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro adds a near-spherical polyhedron of radius **Max distance from origin** (Å) to close it.
+In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro adds a near-spherical polyhedron of radius **Max distance from origin** (Å, measured from the [projection center](#projection-center)) to close it. <!-- 261106Cl 作者の決定 C4 -->
 
 #### Bound list
 
@@ -131,12 +131,12 @@ All bound planes registered for the current crystal. Use **Add / Replace / Delet
 
 Set the bound plane by its Miller index. The checkbox includes crystallographically equivalent planes generated from the selected (*hkl*).
 
-#### Distance from origin
+#### Distance from proj. center
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BoundControl.resx:numericBoxDistanceD/numericBoxDistance/numericBoxTranslation/checkBoxImmediateUpdate) -->
-The distance from the origin to the bound plane, entered either as a multiple of the *d*-spacing of the selected (*hkl*) (**d×** box) or in Å (the box in parentheses). The two boxes are linked: changing one updates the other.
+The distance from the [projection center](#projection-center) (not from the origin of the cell) to the bound plane, entered either <!-- 261106Cl 作者の決定 C4 --> as a multiple of the *d*-spacing of the selected (*hkl*) (**d×** box) or in Å (the box in parentheses). The two boxes are linked: changing one updates the other.
 
-- **Translation** (Å): moves the whole region bounded by the planes by this amount along the normal of the specified (*hkl*): each plane is placed at D + T(**n**ᵢ·**n**₀), where **n**₀ is the unit normal of the specified plane and **n**ᵢ that of plane *i*. It works for any number of planes; without **Equivalent planes** the single plane simply moves by T. <!-- 261106Cl 作者の決定 B11 -->
+- **Translation** (Å): moves the whole region bounded by the planes by this amount along the normal of the specified (*hkl*); positive values move it toward +**g**, i.e. in the direction of the (*hkl*) normal. It works for any number of planes, including a single plane without **Equivalent planes**. <!-- 261106Cl 作者の決定 B11, C5 -->
 - **Max distance from origin** (Å): radius of the closing polyhedron used when the planes do not enclose a region (see above).
 - **Update immediately**: apply edits of the selected plane without pressing **Replace**.
 
@@ -258,7 +258,7 @@ Specify the lattice plane by its Miller index. The checkbox optionally includes 
 
 #### Translation
 
-Shift the drawn lattice planes along their normal by a fraction of the *d*-spacing (**× d**, −0.5 to 0.5). Every plane of the family that crosses the drawing range is drawn, one per *d*. The planes are fixed to the crystal lattice: at 0 they pass through the lattice points, and they move with the structure when the [Projection center](#projection-center) changes. <!-- 261105Cl 監査: LatticePlaneControl numericBoxDistance (−0.5〜0.5, × d)、FormStructureViewer.cs:SetLatticePlanes (4fd9e8c3)。「d の整数倍」は誤り -->
+Shift the drawn lattice planes along their normal by a fraction of the *d*-spacing (**× d**, −0.5 to 0.5); positive values move them toward +**g** (the planes lie at **g**·**r** = (*m* + T)*d*). Values saved in crystal lists by earlier versions are therefore drawn on the opposite side (0 and ±0.5 look the same). <!-- 261106Cl 作者の決定 C5 --> Every plane of the family that crosses the drawing range is drawn, one per *d*. The planes are fixed to the crystal lattice: at 0 they pass through the lattice points, and they move with the structure when the [Projection center](#projection-center) changes. <!-- 261105Cl 監査: LatticePlaneControl numericBoxDistance (−0.5〜0.5, × d)、FormStructureViewer.cs:SetLatticePlanes (4fd9e8c3)。「d の整数倍」は誤り -->
 
 ### Coordination
 

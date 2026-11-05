@@ -111,7 +111,7 @@ See "Keyboard & mouse shortcuts" at the top of this page.
 ### Mouse position
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:graphicsBox_MouseMove, checkBoxMousePositionDetailes_CheckedChanged) -->
-The **Mouse position:** line above the pattern shows, for the cursor position, *d* (nm), *d*⁻¹ (nm⁻¹) and 2θ (in degrees and in rad, or mrad below 0.1 rad). Ticking **Details** adds three coordinate read-outs: the detector coordinates (mm, origin = foot of the perpendicular from the sample), the real-space coordinates (mm, origin = crystal), and the reciprocal-space coordinates (nm⁻¹). In Back Laue mode the *d* and reciprocal-space values are shown as "-", and 2θ is the scattering angle, i.e. 180° minus the angle from the beam axis (180° at the beam hole in the centre). <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+The **Mouse position:** line above the pattern shows, for the cursor position, *d* and *d*⁻¹ (in nm and nm⁻¹ or Å and Å⁻¹, following the main window's length unit) and 2θ <!-- 261106Cl 作者の決定 C2 --> (in degrees and in rad, or mrad below 0.1 rad). Ticking **Details** adds three coordinate read-outs: the detector coordinates (mm, origin = foot of the perpendicular from the sample), the real-space coordinates (mm, origin = crystal), and the reciprocal-space coordinates (nm⁻¹). In Back Laue mode the *d* and reciprocal-space values are shown as "-", and 2θ is the scattering angle, i.e. 180° minus the angle from the beam axis (180° at the beam hole in the centre). <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
 
 ---
 
@@ -158,7 +158,7 @@ Fixed wave-source presets that only set the radiation and its energy: **Electron
 | Kikuchi | Show / hide the Kikuchi-line layer |
 | Debye | Show / hide the Debye-ring layer |
 | Scale | Show / hide the scale-line layer |
-| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Intensity <!-- 261106Cl 作者の決定 C11 --> | Choice of label attached to each spot |
+| Index / d / 1/d / Distance / 2θ / χ / Excitation error / Intens. <!-- 261106Cl 作者の決定 C11, C1 --> | Choice of label attached to each spot |
 
 ---
 

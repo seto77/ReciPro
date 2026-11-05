@@ -69,7 +69,7 @@ If you are new to ReciPro, refer to the following steps:
 
 | Menu item | Description |
 |-----------|-------------|
-| Show tooltips | Show or hide the tooltips in all windows; the setting is kept for the next start <!-- 261106Cl 作者の決定 A20 --> |
+| Show tooltips | Show or hide the tooltips in every window — those of controls, toolbar and menu items, table cells and tabs; the setting is kept for the next start <!-- 261106Cl 作者の決定 C9 --> <!-- 261106Cl 作者の決定 A20 --> |
 | Dark mode | Switch between light and dark colour themes |
 | Use Miller-Bravais (hkil) index | Use 4-index notation for trigonal/hexagonal systems throughout the app |
 | Use ionic scattering factors | Use ionic electron scattering factors (Peng) for the atoms' assigned ions in the dynamical (Bloch-wave) electron calculations, including Kikuchi profiles; the $g \neq 0$ monopole term is added only to the elastic coefficients $U_g$ (TDS absorption and the Kikuchi TDS source use the finite ionic part). When unchecked, neutral-atom factors are used. If the unit cell is not charge-neutral ($\Sigma q \neq 0$), the monopole term is dropped and only the finite (screened-ion) part is used; a notice is shown when the option is switched on <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:toolStripMenuItemIonicScattering_CheckedChanged, BetheMethod.cs:ElasticIonModel) --> |

@@ -107,12 +107,12 @@ The labels overlaid on the spots are selected from the [toolbar](index.md#toolba
 |-------|---------|
 | **Index** | Miller indices $(hkl)$; four indices $(hkil)$ when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes (the Kikuchi-line, Debye-ring and 3-D labels follow the same setting) <!-- 261105Cl 監査: C23 --> |
 | **d** | interplanar spacing $d$, in Å or nm following the main window's length unit <!-- 261106Cl 作者の決定 C20 --> |
-| **1/d** | reciprocal of the interplanar spacing $1/d$ (nm⁻¹) |
+| **1/d** | reciprocal of the interplanar spacing $1/d$, in nm⁻¹ or Å⁻¹ following the main window's length unit <!-- 261106Cl 作者の決定 C2 --> |
 | **Distance** | distance on the detector from the spot to the transmitted (direct) spot (mm), measured between the drawn positions, so it also holds for a tilted detector, the X-ray precession camera and Back Laue (measured from the beam hole); not shown when the transmitted beam misses the detector <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
 | **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
-| **Excit. err.** | excitation error $S_g$ (nm⁻¹) |
-| **Intensity** | relative intensity (%) in **Kinematical & exc. error** mode; in **Dynamical theory** mode the relative intensity (% of the strongest diffracted beam, 000 excluded) and the complex exit-surface amplitude. Nothing is shown for **Only excitation error** |
+| **Excit. err.** | excitation error $S_g$, in nm⁻¹ or Å⁻¹ following the main window's length unit |
+| **Intens.** | relative intensity (%) in **Kinematical & exc. error** mode; in **Dynamical theory** mode the relative intensity (% of the strongest diffracted beam, 000 excluded) and the complex exit-surface amplitude. Nothing is shown for **Only excitation error** |
 
 ---
 
