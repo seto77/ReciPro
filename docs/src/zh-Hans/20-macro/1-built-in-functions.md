@@ -125,13 +125,13 @@ for k in range(-2, 3):
 
 | 属性 | 类型 | 说明 |
 |----------|------|-------------|
-| `Energy` | double | 能量 (keV) |
-| `Wavelength` | double | 波长 (Å) |
+| `Energy` | double | 能量（X 射线与电子为 keV，中子为 meV） |
+| `Wavelength` | double | 波长 (nm) |
 | `Thickness` | double | 样品厚度 (nm) |
 | `NumberOfDiffractedWaves` | int | 布洛赫波的数目 |
 | `CameraLength2` | double | 相机长度 (mm) |
 | `ExcitationError` | double | 斑点半径 (nm⁻¹)：在运动学/激发误差模式下，`SpotInfo()` 导出 \|Sg\| 在此值以内的反射 |
-| `SkipRendering` | bool | 跳过渲染以进行批处理 |
+| `SkipRendering` | bool | 仅在动力学模式（`Calc_Dynamical()`）下有效：布洛赫波计算照常进行（因此 `SpotInfo()` 有效），但不绘制衍射斑点——在此期间保存的图像中没有斑点。在运动学/仅激发误差模式下无效 |
 
 ### 束模式
 
@@ -156,7 +156,7 @@ for k in range(-2, 3):
 |----------|-------------|
 | `Tau` / `TauInDeg` | 探测器倾斜角 τ（rad / deg） |
 | `Phi` / `PhiInDeg` | 探测器旋转轴 φ（rad / deg） |
-| `Foot(x, y)` | foot 位置（以像素计） |
+| `Foot(x, y)` | 从样品向探测器所作垂线的垂足位置（mm），从图像中心起算；图像中心本身位于探测器坐标 (−x, −y)。`Foot(0, 0)` 将垂足置于图像中心 |
 
 ### 输出
 
@@ -220,7 +220,7 @@ for k in range(-2, 3):
 | `StructureViewer.Open()` | 打开结构查看器窗口 |
 | `StructureViewer.Close()` | 关闭结构查看器窗口 |
 | `StructureViewer.SaveImage(filename)` | 将主视图渲染图像保存为 PNG（像素尺寸取窗口的 **Size (W×H)** 框）。省略 `filename` 则打开保存对话框 |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 将显示中的结构导出用于 3D 打印（与 File 菜单的 **Export 3D Model (3MF/STL)** 相同）。格式由扩展名决定（`.stl` = 单色 / `.3mf` = 按元素着色）。仅 `filename` 为必需，其余默认值与对话框相同（最长边 80 mm、晶胞边框 ⌀2.4 mm、化学键增粗至 ⌀1.2 mm）。传入 `fixedScaleInMMperNm` > 0 可按同一比例制作多个模型 |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | 将显示中的结构导出用于 3D 打印（与 File 菜单的 **Export 3D Model (3MF/STL)** 相同）。格式由扩展名决定（`.stl` = 单色 / `.3mf` = 按元素着色）。仅 `filename` 为必需，其余默认值与对话框相同（最长边 80 mm、晶胞边框 ⌀2.4 mm、化学键增粗至 ⌀1.2 mm）。传入 `fixedScaleInMMperNm` > 0 可按同一比例制作多个模型。`filename` 必须以 `.stl` 或 `.3mf` 结尾（不会打开对话框）；返回包含三角形数和打印尺寸的信息字符串 |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 函数 | 说明 |
 |----------|-------------|
-| `Sleep(ms)` | 等待指定的毫秒数 |
+| `ReciPro.Sleep(ms)` | 等待指定的毫秒数。以 `ReciPro.Sleep(ms)` 的形式调用；它不列在编辑器的内置函数表中 |
 
 ---
 

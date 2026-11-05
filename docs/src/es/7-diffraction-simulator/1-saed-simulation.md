@@ -20,7 +20,7 @@ Simula el patrón de difracción que se produce cuando un haz de electrones para
 
 ![Wave Length](../../assets/cap-es-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Establezca la fuente de radiación en **Electron**. Introduzca la energía (keV) o la longitud de onda (nm) y se calcula la longitud de onda corregida relativísticamente. Para fuentes de rayos X y de neutrones, consulte [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md).
+Establezca la fuente de radiación en **Electrones**. Introduzca la energía (keV) o la longitud de onda (Å o nm, conmutable; por defecto Å) y se calcula la longitud de onda corregida relativísticamente. El valor inicial es 200 keV; el menú **Preajustes** fija 300 / 200 / 120 kV con un clic. Para fuentes de rayos X y de neutrones, consulte [Simulación de difracción de rayos X](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -42,7 +42,17 @@ Selecciona cómo se calculan las intensidades de los spots.
 
 ### Solo error de excitación
 
-La intensidad se determina únicamente a partir de la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $S_g$). Es máxima en $S_g = 0$ —exactamente sobre la esfera— y decae a medida que crece $\lvert S_g\rvert$, llegando a cero cuando $\lvert S_g\rvert$ supera el **Radius** indicado para el punto de la red recíproca. Como se ignora el factor de estructura del cristal, este es el modo más rápido y resulta adecuado para comprobar las posiciones de los spots de difracción.
+La intensidad se determina únicamente a partir de la distancia geométrica entre la esfera de Ewald y el punto de la red recíproca (el error de excitación $S_g$). Es máxima en $S_g = 0$ —exactamente sobre la esfera— y decae a medida que crece $\lvert S_g\rvert$, llegando a cero cuando $\lvert S_g\rvert$ supera el **Radio del punto** indicado para el punto de la red recíproca. Como se ignora el factor de estructura del cristal, este es el modo más rápido y resulta adecuado para comprobar las posiciones de los spots de difracción.
+
+Solo en este modo aparecen las opciones siguientes:
+
+| Opción | Descripción |
+|--------|-------------|
+| **Excluir todas las reflexiones prohibidas** | Oculta todas las reflexiones prohibidas por el grupo espacial (centrado de la red, ejes helicoidales y planos de deslizamiento). Al marcarla se marca y bloquea también la opción siguiente. |
+| **Excluir reflexiones prohibidas por centrado de red** | Oculta solo las reflexiones prohibidas por el centrado de la red (activada por defecto). |
+| **Dibujar todos los puntos con el mismo radio** | Dibuja todos los spots excitados con el radio completo *R*, independientemente de $S_g$. |
+
+Las reflexiones prohibidas que siguen visibles se dibujan con los colores **Puntos extintos** (véase [Spot appearance](#spot-appearance)).
 
 ### Cinemática
 
@@ -64,8 +74,8 @@ Activo solo cuando **Intensity calculation = Dynamical**.
 
 | Parámetro | Descripción |
 |-----------|-------------|
-| **Number of diffracted waves** | Número de ondas de Bloch incluidas en el problema de valores propios. Valores mayores dan intensidades más precisas pero aumentan el tiempo de cálculo como $O(N^3)$ |
-| **Thickness** | Espesor de la muestra (nm) utilizado en el cálculo dinámico |
+| **Número de ondas difractadas** | Número de ondas de Bloch incluidas en el problema de valores propios (8–1000, por defecto 240). Valores mayores dan intensidades más precisas pero aumentan el tiempo de cálculo como $O(N^3)$ |
+| **Espesor** | Espesor de la muestra (nm) utilizado en el cálculo dinámico (0.01–10000 nm, por defecto 50 nm) |
 
 ---
 
@@ -75,14 +85,12 @@ Activo solo cuando **Intensity calculation = Dynamical**.
 
 Controla cómo se representa cada spot de difracción.
 
-- **Solid sphere / Gaussian** : el modelo geométrico del punto de la red recíproca. **Solid sphere** dibuja la sección transversal (un círculo) entre una esfera de radio $R$ y la esfera de Ewald, donde el área del círculo corresponde a la intensidad de difracción; **Gaussian** dibuja la sección transversal (una gaussiana 2-D) de una gaussiana 3-D con $\sigma = R$, cuya integral corresponde a la intensidad de difracción.
-- **Opacity** : transparencia del spot (0 = transparente, 1 = opaco).
-- **Radius (R)** : radio virtual del punto de la red recíproca. El tamaño del spot queda fijado por la combinación del modo **Appearance** y la **Intensity calculation** (p. ej., Solid sphere + Dynamical da un radio proporcional a $I_\text{dyn}^{1/2}$).
-- **Brightness** : activo solo en el modo **Gaussian**. Intensidad integrada de la gaussiana dibujada.
-- **Color scale** : **Gray scale** o **Cold-warm**.
-- **Log scale** : muestra las intensidades en escala logarítmica. Útil para patrones con gran contraste de intensidad.
-- **Spot color** : color del spot utilizado cuando no se emplea la escala de color.
-- **Color por cristal** : cuando está marcado, los spots se dibujan con el color asignado a cada cristal.
+- **Esfera sólida / Gaussiana** : el modelo geométrico del punto de la red recíproca (por defecto **Esfera sólida**). **Esfera sólida** dibuja la sección transversal (un círculo) entre una esfera y la esfera de Ewald: el radio de la esfera es $R\,I^{1/3}$ con **Cinemática & err. exc.** (volumen de la esfera ∝ intensidad) y $R$ con **Solo error de exc.**; con **Teoría dinámica** se dibuja un disco de radio $R\,I_\text{dyn}^{1/2}$ (área ∝ intensidad) sin el corte de la esfera de Ewald. **Gaussiana** dibuja la sección transversal (una gaussiana 2-D) de una gaussiana 3-D con $\sigma = R$, cuya integral corresponde a la intensidad de difracción.
+- **Opacidad** : transparencia del spot (0 = transparente, 1 = opaco).
+- **Radio del punto (R)** : radio virtual del punto de la red recíproca (nm⁻¹; 0.01–1, por defecto 0.2). El tamaño del spot queda fijado por la combinación del modo de **Apariencia** y el **Cálculo de intensidad** (véase arriba).
+- **Brillo**, **Escala de color**, **Escala log.** : solo se muestran en el modo **Gaussiana**. **Brillo** escala la intensidad integrada de la gaussiana dibujada; **Escala de color** es **Gray** (spots con los colores de spot indicados abajo), **Cold-Warm**, **Spectrum** o **Fire**; **Escala log.** muestra las intensidades en escala logarítmica (útil para patrones con gran contraste de intensidad).
+- **Color del punto** : se muestra mientras la **Escala de color** es **Gray** (el ajuste inicial). **Puntos generales**, **Puntos extintos (tornillo/desl.)** y **Puntos extintos (centrado)** fijan los colores de las reflexiones permitidas y prohibidas.
+- **Color por cristal** : cuando está marcado, los spots se dibujan con el color asignado a cada cristal (también con un solo cristal).
 
 ---
 
@@ -93,13 +101,13 @@ Las etiquetas superpuestas sobre los spots se seleccionan desde la [barra de her
 | Etiqueta | Contenido |
 |-------|---------|
 | **Index** | índices de Miller $(hkl)$ |
-| **d** | distancia interplanar $d$ |
-| **1/d** | inverso de la distancia interplanar $1/d$ |
-| **Distance** | distancia spot a spot en el detector |
+| **d** | distancia interplanar $d$ (en Å) |
+| **1/d** | inverso de la distancia interplanar $1/d$ (nm⁻¹) |
+| **Distancia** | distancia del spot al haz directo en el detector, $L_2 \tan 2\theta$ (mm; $L_2$ = longitud de cámara 2; exacta para un detector sin inclinar, τ = 0) |
 | **2θ** | ángulo de dispersión $2\theta$ (misma definición que los círculos concéntricos de la escala 2θ) |
 | **χ** | ángulo azimutal $\chi$, medido desde la dirección hacia arriba (las 12 en punto), positivo en sentido horario (misma definición que las líneas radiales de la escala azimutal) |
-| **Excit. Err.** | error de excitación $S_g$ |
-| **\|Fg\|** | valor absoluto del factor de estructura $\lvert F_{hkl} \rvert$ |
+| **Err. excit.** | error de excitación $S_g$ (nm⁻¹) |
+| **\|Fg\|** | intensidad relativa (%) en el modo **Cinemática & err. exc.**; en el modo **Teoría dinámica**, la intensidad relativa (% del haz difractado más intenso, excluido el 000) y la amplitud compleja en la superficie de salida. No se muestra nada con **Solo error de exc.** |
 
 ---
 

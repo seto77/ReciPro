@@ -41,7 +41,7 @@ Die Kristallorientierung wird durch drei Rotationen parametrisiert. Im **körper
 
 Dieselbe Rotation, im **raumfesten Labor**-Bezugssystem betrachtet, ist die umgekehrte Abfolge (Ψ um $Z$, dann θ um $X$, dann Φ um $Z$); diese Beschreibung wird in [Anhang A1.1](appendix/a1-coordinate-system/1-orientation.md) verwendet. Beide ergeben die identische Matrix $R$ unten; Φ ist einfach die äußerste (goniometerartige) Achse und Ψ die innerste.
 
-Jedes Zahlenfeld ist editierbar; eine Wertänderung hier aktualisiert das Hauptfenster und jeden verknüpften Simulator.
+Die Felder Φ, θ, Ψ und die neun Matrixfelder sind **schreibgeschützte** Anzeigen. Um die Orientierung zu ändern, drehen Sie den Kristall im Hauptfenster, verwenden Sie **Aus Excel einfügen** oder bearbeiten Sie (bei aktiviertem **Verknüpfen**) die Winkel der experimentellen Achsen weiter unten; jede Änderung wird an das Hauptfenster und alle verknüpften Simulatoren weitergegeben.
 
 ### Rotationsmatrix
 
@@ -88,7 +88,7 @@ Die 3D-Ansicht zeigt die aktuelle Rotation mithilfe von drei farbigen Tori (Donu
 
 Die Pfeile in **Rot**, **Grün** und **Blau** stellen die X-, Y- und Z-Achse in kartesischen Realraumkoordinaten dar. Diese sind *nicht* identisch mit den im Hauptfenster gezeigten Kristallachsen.
 
-Die graue Kugel im Zentrum stellt die Probe dar; die roten/grünen/blauen Kugeln zeigen, wie sich das Objekt aus seiner Ausgangsorientierung gedreht hat (bei Φ = θ = Ψ = 0 sind sie jeweils an +X, +Y, +Z ausgerichtet).
+Die graue Kugel im Zentrum stellt die Probe dar. Die kleinen roten / grünen / blauen Kugeln (beschriftet mit **+a/−a**, **+b/−b**, **+c/−c**) markieren die Richtungen der normierten Kristallachsen *a*, *b*, *c* nach der Rotation (größere Kugel = +-Ende). Bei Φ = θ = Ψ = 0 zeigen sie die Ausgangsorientierung des Kristalls (*c* ∥ +Z, *b* in der YZ-Ebene), sodass *a* und *b* nur bei orthogonalen Zellen mit +X und +Y zusammenfallen.
 
 > **Hinweis**: Das Ziehen im OpenGL-Fenster ändert nur die *Projektionsrichtung* dieser Ansicht, nicht die Kristallorientierung selbst. Um den Kristall zu drehen, verwenden Sie das Hauptfenster.
 
@@ -109,15 +109,34 @@ Die untere Hälfte definiert Eulerwinkel auf einem beliebigen Satz von Rotations
 
 ### 1., 2., 3. Achse
 
-Wählen Sie die Rotationsachsen des Goniometers aus **±X**, **±Y** und **±Z** für jede Ebene (oben, Mitte, unten). Die Grafik wird entsprechend aktualisiert.
+Wählen Sie die Rotationsachse jeder Goniometerebene (1. = oben, 2. = Mitte, 3. = unten) aus **X**, **Y** oder **Z** (nur die positiven Richtungen des Laborsystems). Die 2. Achse darf nicht gleich der 1. sein und die 3. nicht gleich der 2. (das widersprechende Optionsfeld wird deaktiviert). Standard ist **X – Z – Y**. Die Grafik wird entsprechend aktualisiert.
 
-Die Eulerwinkel für jede Achse werden in den zugehörigen farbigen Textfeldern (gelb, hellblau, rosa) angezeigt. Sie können die Werte auch direkt eingeben.
+Der Winkel jeder Achse wird im zugehörigen farbigen Feld (gelb, hellblau, rosa) angezeigt und kann direkt eingegeben werden (in Grad; Werte außerhalb von −180…180° werden umgebrochen). Die experimentelle Rotation wird auf dieselbe Weise zusammengesetzt wie ReciPros eigene Matrix, mit der 1. Achse als äußerster:
+
+$$
+R_{\mathrm{exp}} = R_{\mathbf{e}_1}(\omega_1)\,R_{\mathbf{e}_2}(\omega_2)\,R_{\mathbf{e}_3}(\omega_3)
+$$
+
+(rechtshändige Rotationen um die festen Laborachsen $\mathbf{e}_i$).
+
+| Bedienelement | Aktion |
+|---------|--------|
+| **2. Achse** / **3. Achse** | Diese Ebene aktivieren oder deaktivieren (ein Goniometer mit nur einer oder zwei Achsen). Beim Deaktivieren wird ihr Winkel auf 0 gesetzt. Das Deaktivieren der 2. Achse deaktiviert auch die 3. |
+| **Fest** | Diesen Winkel auf seinem aktuellen Wert halten, während Verknüpfen eine neue Orientierung in Goniometerwinkel zerlegt (siehe unten). |
+| **Winkel zurücksetzen** | Alle drei experimentellen Winkel auf 0 setzen. |
+
 
 ---
 
 ## Verknüpfen
 
 Wenn **Verknüpfen** aktiviert ist, sind das ReciPro-Koordinatensystem und das experimentelle Koordinatensystem gekoppelt: Ihre Eulerwinkel werden so angepasst, dass die Objektorientierung zwischen beiden Systemen konsistent bleibt.
+
+In dem Moment, in dem **Verknüpfen** aktiviert wird, wird der Versatz $R_{\mathrm{base}} = R_{\mathrm{exp}}^{-1} R$ zwischen beiden Systemen gespeichert, und von da an gilt $R = R_{\mathrm{exp}}\,R_{\mathrm{base}}$. Solange verknüpft ist:
+
+- dreht die Bearbeitung eines experimentellen Winkels den Kristall in jedem Fenster;
+- wird eine inkrementelle Rotation (Pfeilschaltflächen, CTRL+SHIFT+Pfeiltasten oder Ziehen im Hauptfenster bzw. in anderen Fenstern) numerisch in die aktivierten, nicht mit **Fest** fixierten Goniometerwinkel zerlegt, und der Kristall wird auf die **nächstgelegene Orientierung gesetzt, die das Goniometer erreichen kann** — bei fixierten oder deaktivierten Achsen folgt der Kristall daher den Einschränkungen des Goniometers statt exakt der Maus;
+- wird eine absolute Orientierung (Felder der Euler-Winkel, **Zurücksetzen**, **Blick entlang** Achse/Ebene, **Aus Excel einfügen**) exakt übernommen; dabei werden die 2. und 3. Achse wieder aktiviert, jedes **Fest** aufgehoben und die Orientierung erneut in alle drei Goniometerwinkel zerlegt.
 
 ### Beispiel-Arbeitsablauf
 

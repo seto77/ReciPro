@@ -46,13 +46,13 @@ Suchen Sie die benötigte Seite anhand der Kombination aus **Wellenlänge (Quell
 | Röntgen | Back Laue | Rückstrahl-Laue | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 | Neutron | Parallel | Neutronenbeugung | [Neutronen-Abschnitt der Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
 
-> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl ändern sich mit der Wellenlänge. Für Elektronen: **Parallel, Präzession (Elektron = PED), Konvergenz (CBED)**; für Röntgenstrahlen: **Parallel, Präzession (Röntgen), Back Laue**; für Neutronen: nur **Parallel**. Die Auswahl von **Präzession (Elektron = PED)** oder **Konvergenz (CBED)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um.
+> **Hinweis**: Die Auswahlmöglichkeiten für den einfallenden Strahl (**Optik**) ändern sich mit der Wellenlänge. Für Elektronen: **Paralleler Strahl, Präzession (Elektron), Konvergenz (Elektron)**; für Röntgenstrahlen: **Paralleler Strahl, Präzession (Röntgen, ZOLZ), Rück-Laue (Röntgen)**; für Neutronen: nur **Paralleler Strahl**. Ein Wechsel der Wellenquelle setzt die Optik stets auf **Paralleler Strahl** zurück. Die Auswahl von **Präzession (Elektron)** oder **Konvergenz (Elektron)** schaltet die Intensitätsberechnung automatisch auf **Dynamische Theorie** um; **Dynamische Theorie** wird nur für Elektronen angeboten (bei Auswahl von Röntgenstrahlen oder Neutronen wird auf **Kinematisch & Anr.-Fehler** zurückgeschaltet). Rück-Laue verwendet einen weißen (polychromatischen) Strahl.
 
 ---
 
 ## Tastatur- & Maus-Kurzbefehle
 
-Diese gelten für das Beugungsmuster-Fenster, das von der Röntgen-, SAED- und PED-Simulation gemeinsam genutzt wird. Ziehen auf dem Muster dreht den **Kristall**. Hier gibt es **kein Zoomen mit dem Mausrad** — zoomen Sie mit Rechtsklick / Rechtsziehen.
+Diese gelten für das Beugungsmuster-Fenster, das von der Röntgen-, SAED- und PED-Simulation gemeinsam genutzt wird. Ziehen auf dem Muster dreht den **Kristall**. Zoomen Sie mit dem Mausrad oder mit Rechtsklick / Rechtsziehen.
 
 | Kurzbefehl | Aktion |
 |----------|--------|
@@ -62,7 +62,8 @@ Diese gelten für das Beugungsmuster-Fenster, das von der Röntgen-, SAED- und P
 | Linksdoppelklick auf einen Reflex | Reflexdetails anzeigen (Index, *d*, Strukturfaktor, Anregungsfehler) |
 | Mittelziehen | Das Muster verschieben |
 | <kbd>CTRL</kbd> + Mittelziehen | Das Detektorzentrum verschieben (wenn der Detektorbereich angezeigt wird) |
-| Rechtsklick | Herauszoomen |
+| Mausrad | Pro Raststufe um ×2 hinein-/herauszoomen; der Punkt unter dem Cursor wird in die Mitte der Ansicht gebracht (bei angehaktem **Fest** bleibt stattdessen das feste Zentrum erhalten) |
+| Rechtsklick | Herauszoomen (×1/1,2) |
 | Rechtsziehen eines Rahmens | In den ausgewählten Bereich hineinzoomen |
 | Rechtsdoppelklick auf die Statusleiste | Eine Textzusammenfassung der aktuellen Einstellungen kopieren |
 | Rechtsdoppelklick auf eine aktive Ebenen-Schaltfläche (Spots / Kikuchi / Debye / Scale) | Diese Ebene ein- und ausblinken lassen |
@@ -74,7 +75,7 @@ Die von hier geöffneten Hilfsfenster fügen einige weitere hinzu:
 | Linksdoppelklick auf das Stereonetz — **TEM-Halter** | Die Halterkippung auf diesen Punkt setzen |
 | Pfeiltasten — **TEM-Halter** | Die Halterkippung schrittweise ändern (zuerst **Pfeiltasten aktivieren** anhaken; wirkt bei jedem ReciPro-Fenster im Vordergrund) |
 | Eine `.prm`-Datei oder ein Bild ablegen — **Detektorgeometrie** | Detektorgeometrie / Overlay-Bild laden |
-| Ein `.txt`-Profil ablegen — **Dynamische Kompression** | Ein Druck-/Zeit-Profil laden (die rote Linie im Diagramm ziehen, um zu scrubben) |
+| Ein `.txt`-Profil ablegen — **Dynamische Kompression** | Positions-/Zeit-/Druckprofile laden (die Zeit mit dem Schieberegler **Zeit** wählen; die senkrechten Linien im Diagramm ziehen, um Vorder- und Rückseite festzulegen) |
 
 Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle des Hauptfensters funktionieren ebenfalls, während dieses Fenster fokussiert ist (siehe [Hauptfenster](../0-main-window.md)).
 
@@ -86,12 +87,12 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle des Hauptfenst
 
 | Ziel | Beginnen bei | Referenz |
 |------|------------|-----------|
-| Parallelstrahl-Elektronenbeugung (SAED) erzeugen | **Incident beam** auf **Parallel** und **Wavelength** auf Elektron setzen | [SAED-Simulation](1-saed-simulation.md), [Parallelstrahl-SAED-Berechnung](../appendix/a3-bloch-wave/calculation.md) |
-| Einkristall-Röntgenbeugung erzeugen | **Wavelength** auf Röntgen / Synchrotron umschalten | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
-| Präzessions-Elektronenbeugung (PED) erzeugen | **Incident beam** auf **Precession (electron)** setzen, dann Halbwinkel und Schritt festlegen | [PED-Simulation](2-ped-simulation.md) |
-| Konvergente Elektronenbeugung (CBED) erzeugen | **Incident beam** auf **Convergence (CBED, electron only)** setzen und die Bedingungen im CBED-Fenster festlegen | [CBED-Simulation](3-cbed-simulation.md), [CBED-Berechnung](../appendix/a3-bloch-wave/cbed.md) |
-| Die Reflexliste aus der dynamischen Berechnung prüfen | **Dynamische Theorie** auswählen und **Reflexdetails** oder **Details** öffnen | [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md) |
-| Die Detektorgeometrie mit einem experimentellen Bild abgleichen | Die Detektorgeometrie-Einstellungen über **Details** öffnen und das Overlay-Bild verwenden | [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffraction.md) |
+| Parallelstrahl-Elektronenbeugung (SAED) erzeugen | **Optik** auf **Paralleler Strahl** und **Wellenquelle** auf Elektron setzen | [SAED-Simulation](1-saed-simulation.md), [Parallelstrahl-SAED-Berechnung](../appendix/a3-bloch-wave/calculation.md) |
+| Einkristall-Röntgenbeugung erzeugen | **Wellenquelle** auf Röntgen / Synchrotron umschalten | [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md) |
+| Präzessions-Elektronenbeugung (PED) erzeugen | **Optik** auf **Präzession (Elektron)** setzen, dann Halbwinkel und Schritt festlegen | [PED-Simulation](2-ped-simulation.md) |
+| Konvergente Elektronenbeugung (CBED) erzeugen | **Optik** auf **Konvergenz (Elektron)** setzen und die Bedingungen im CBED-Fenster festlegen | [CBED-Simulation](3-cbed-simulation.md), [CBED-Berechnung](../appendix/a3-bloch-wave/cbed.md) |
+| Die Reflexliste aus der dynamischen Berechnung prüfen | **Dynamische Theorie** auswählen und **Reflexdetails** drücken | [Dynamische Berechnung (gemeinsamer Kern)](../appendix/a3-bloch-wave/calculation.md) |
+| Die Detektorgeometrie mit einem experimentellen Bild abgleichen | Die Detektorgeometrie-Einstellungen über **Details** in **Detektorgeometrie & Überlagerungsbild** öffnen und das Overlay-Bild verwenden | [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
 
@@ -105,7 +106,7 @@ Siehe "Tastatur- & Maus-Kurzbefehle" am Anfang dieser Seite.
 
 ### Mausposition
 
-Die zur Cursorposition gehörenden Informationen (Cursor-*q*, *d*, 2θ, Azimut usw.) werden in der Statuszeile über dem Muster angezeigt. Das Anhaken von **Details** fügt detailliertere Informationen hinzu (das (*hkl*) des nächstgelegenen Reflexes, Anregungsfehler, Strukturfaktor usw.).
+Die Zeile **Mausposition:** über dem Muster zeigt für die Cursorposition *d* (nm), *d*⁻¹ (nm⁻¹) und 2θ (in Grad und in rad bzw. unter 0,1 rad in mrad). Das Anhaken von **Details** fügt drei Koordinatenanzeigen hinzu: die Detektorkoordinaten (mm, Ursprung = Lotfußpunkt von der Probe), die Realraumkoordinaten (mm, Ursprung = Kristall) und die Reziprokraumkoordinaten (nm⁻¹). Im Rück-Laue-Modus werden *d* und die Reziprokraumwerte als „-“ angezeigt.
 
 ---
 
@@ -115,16 +116,28 @@ Die zur Cursorposition gehörenden Informationen (Cursor-*q*, *d*, 2θ, Azimut u
 
 | Menüpunkt | Beschreibung |
 |-----------|-------------|
-| **Bild speichern** | Das angezeigte Beugungsmuster in einer Datei speichern. |
-| **Detektorbereich speichern** | Nur den Ausschnitt des Detektorbereichs speichern. |
-| **Kopieren** | Das angezeigte Bild in die Zwischenablage kopieren. |
-| **Detektorbereich kopieren** | Nur den Ausschnitt des Detektorbereichs kopieren. |
+| **Bild speichern** | Das angezeigte Beugungsmuster speichern, **als Bild (PNG-Format)** oder **als Metadatei (EMF)**. |
+| **Detektorbereich speichern** | Nur den Ausschnitt des Detektorbereichs speichern (PNG / EMF). Wird nur angezeigt, solange der Detektorbereich dargestellt ist. |
+| **CBED-Scheiben speichern** | Nur im CBED-Modus: die berechneten Scheiben **als Einzelbilder (PNG-Format / TIFF-Format)** oder **als Sammelbild (PNG-Format / TIFF-Format)** speichern. |
+| **Kopieren** | Das angezeigte Bild in die Zwischenablage kopieren (**als Bild** / **als Metadatei (EMF)**). |
+| **Detektorbereich kopieren** | Nur den Ausschnitt des Detektorbereichs kopieren. Wird nur angezeigt, solange der Detektorbereich dargestellt ist. |
+| **CBED-Scheiben kopieren** | Nur im CBED-Modus: die Scheiben **als Sammelbild** kopieren. |
+| **Video speichern** | Ein Video des **Beugungsmuster**s oder der Ansicht **Reziproker Raum** aufzeichnen. |
+| **Seite einrichten / Druckvorschau / Drucken** | Das angezeigte Muster drucken. |
 
 ### Preset
 
 ![Voreinstellungen-Menü](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.menuStrip1.presetToolStripMenuItem.png)
 
-Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlänge, Detektorgeometrie, Registerkarten-Einstellungen, Reflexeigenschaften usw. — als Preset. Nützlich für den schnellen Wechsel zwischen Geräten / Aufnahmemodi.
+Feste Wellenquellen-Voreinstellungen, die nur die Strahlung und ihre Energie setzen: **Elektron 300 kV**, **Elektron 200 kV**, **Elektron 120 keV**, **Röntgen 30 keV**, **Röntgen 20 keV**, **Röntgen 17.48 keV (MoKα₁)** und **Röntgen 8.041 keV (CuKα₁)** (die letzten beiden wählen die charakteristische Linie Mo bzw. Cu Kα₁). Andere Einstellungen (Detektorgeometrie, Registerkarten, Reflexeigenschaften) werden weder gespeichert noch geändert.
+
+### Menüs Optionen und Hilfe
+
+| Menüpunkt | Beschreibung |
+|-----------|-------------|
+| **Optionen > Dynamische Kompression** | Öffnet das Fenster [Dynamische Kompression](#dynamische-kompression) (zusammen mit dem Fenster der Detektorgeometrie). |
+| **Optionen > ALCHEMI-Simulator...** | Öffnet den [ALCHEMI-Simulator](4-alchemi-simulation.md). |
+| **Hilfe > Grundkonzept der Bethe-Methode** | Öffnet den [Anhang zur Bloch-Wellen-Methode](../appendix/a3-bloch-wave/index.md) des Online-Handbuchs im Browser. |
 
 ---
 
@@ -150,17 +163,17 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 | Element | Beschreibung |
 |------|-------------|
-| **Auflösung** | Die Größe eines Pixels (mm). Sie muss nicht der tatsächlichen Detektor-Pixelgröße entsprechen; sie wird als Anzeigemaßstab behandelt und automatisch aktualisiert, wenn Sie mit der Maus zoomen. |
-| **Size (W×H)** | Pixelbreite und -höhe des Zeichenbereichs. Je nach Bildschirmauflösung sind sehr große Werte möglicherweise nicht einstellbar. |
-| **Zentrum setzen / Fixieren** | Das Musterzentrum auf einen beliebigen Pixel im Zeichenbereich setzen und es bei Bedarf fixieren. Wenn fixiert, kann das Zentrum nicht durch Verschieben mit der Maus bewegt werden. |
+| **Auflösung** | Die Größe eines Bildschirmpixels, in **mm/px** (auf der Detektorebene) oder **nm⁻¹/px** (wählbar; Standard 0,08 mm/px). Sie muss nicht der tatsächlichen Detektor-Pixelgröße entsprechen; sie wird als Anzeigemaßstab behandelt und automatisch aktualisiert, wenn Sie mit der Maus zoomen. |
+| **Größe (B×H)** | Pixelbreite und -höhe des Zeichenbereichs. Je nach Bildschirmauflösung sind sehr große Werte möglicherweise nicht einstellbar. |
+| **Zentrum setzen auf / Fest** | Legt die Mitte des Zeichenbereichs auf den Lotfußpunkt (**perpendicular foot**), den Primärstrahlreflex (**direct spot**) oder das Zentrum des Detektors (**detector**; nur wenn ein Detektorbereich definiert ist). Bei angehaktem **Fest** (Standard) bleibt das Zentrum dort: Das Verschieben mit der Maus ist deaktiviert, und beim Zoomen bleibt dieses Zentrum erhalten. |
 | **Horizontal spiegeln / Vertikal spiegeln / Negativbild** | Geometrische Spiegelungen (horizontal / vertikal) und Kontrastumkehr des angezeigten Musters. Verwenden Sie diese, um die Orientierung oder den Kontrast eines experimentellen Bildes anzupassen. |
-| **Reziproker Raum** | Überlagert die Ewald-Kugel und reziproke Gittervektoren über dem Muster und visualisiert, welche Reflexe angeregt sind. |
+| **Reziproker Raum** | Öffnet neben dem Muster eine 3D-Ansicht der Ewald-Kugel und der reziproken Gitterpunkte und visualisiert, welche Reflexe angeregt sind. Ihr Feld **Optionen** legt die Farben (Reflexe nahe der / fern der Ewald-Kugel, Ewald-Kugel, Ursprung, Richtungshilfe), den 3D-Reflexradius (nm⁻¹), den Schwellenwert der relativen Intensität (%), die Transparenz der Reflexe fern der Ewald-Kugel, die Beschriftungen und die Blickrichtung fest (Pfeilschaltflächen mit einem Winkel-**Schritt**, **Zurücksetzen**). |
 
 ### Detektor (Kameralänge)
 
 ![Detektorgeometrie & Überlagerungsbild](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
-- **Camera length** : Abstand von der Probe zum Detektor (mm).
+- **Kameralänge 2** : Abstand (mm) von der Probe zum Fußpunkt des auf die Detektorebene gefällten Lots (Standard 1000 mm). Er entspricht der üblichen Kameralänge, wenn der Detektor nicht gekippt ist (τ = 0).
 - **Details** : Öffnet das Fenster der Detektorgeometrie-Einstellungen (siehe [Detektorgeometrie](#detector-geometry) unten).
 
 ### Misc
@@ -176,7 +189,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ![TEM-Halter-Simulation](../../assets/cap-de-auto/FormDiffractionSimulatorHolder.png)
 
-Öffnet ein Fenster, das das Beugungsmuster mit einem Doppelkipp- (oder Rotations-) **TEM-Halter** verknüpft. Das Festlegen der Halterkippwinkel aktualisiert das Muster und die Kristallorientierung, und die erreichbaren Orientierungen können auf einem Stereonetz angezeigt werden (hinzugefügt in v4.914). Ein Linksdoppelklick auf das Stereonetz setzt die Halterkippung auf diesen Punkt, und das Anhaken von **Pfeiltasten aktivieren** ermöglicht es den Pfeiltasten, die Kippung schrittweise zu ändern. Solange dieses Fenster geöffnet ist, wirken die Pfeiltasten unabhängig davon, welches ReciPro-Fenster im Vordergrund ist.
+Öffnet ein Fenster, das das Beugungsmuster mit einem Doppelkipp-**TEM-Halter** verknüpft (**Kippung X** = Primär-, **Kippung Y** = Sekundärrotation). Das Festlegen der Halterkippwinkel aktualisiert das Muster und die Kristallorientierung, und die erreichbaren Orientierungen können auf einem Stereonetz angezeigt werden (hinzugefügt in v4.914). **Mit aktueller Richtung verknüpfen** übernimmt die aktuelle Kristallorientierung als Referenz des Halters (bei den angegebenen Werten Kippung X / Kippung Y); **TEM-Einstellungen** geben die Richtung der Achse Kippung X auf dem Bildschirm (Standard −29°) und die Polarität von Kippung Y an, und **↻ 180° drehen** dreht den Kristall um 180° um den Strahl. Ein Linksdoppelklick auf das Stereonetz setzt die Halterkippung auf diesen Punkt, und das Anhaken von **Pfeiltasten aktivieren** lässt ←/→ die Kippung X und ↑/↓ die Kippung Y schrittweise ändern (Schritt 0,1–2°, Standard 0,2°). Solange dieses Fenster geöffnet ist, wirken die Pfeiltasten unabhängig davon, welches ReciPro-Fenster im Vordergrund ist.
 
 ---
 
@@ -186,7 +199,7 @@ Speichern und Abrufen einer vollständigen Simulator-Konfiguration — Wellenlä
 
 ![Registerkarte Allgemein](../../assets/cap-de-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
-Legt die Farben von Reflexen, Beschriftungen, Kikuchi-Linien, Debye-Ringen und anderen Overlays fest. Die hier vorgenommenen Einstellungen gelten für alle Rendermodi.
+Legt die **Textgröße** der Beschriftungen fest sowie die Farben der Beschriftung (**Text**), der Markierung **Lotfußpunkt von der Probe**, der Markierung **Direkte Position** und des **Hintergrund**s (die beiden Markierungen lassen sich jeweils abschalten). Reflexfarben werden unter **Darstellung** festgelegt (siehe die Seiten der einzelnen Modi), die Farben von Kikuchi-Linien, Debye-Ringen und Skalenlinien in deren eigenen Registerkarten. Die hier vorgenommenen Einstellungen gelten für alle Rendermodi.
 
 ### Kikuchi-Linien
 
@@ -196,8 +209,8 @@ Legt die Farben von Reflexen, Beschriftungen, Kikuchi-Linien, Debye-Ringen und a
 
 Aktiv, wenn Kikuchi-Linien in der Symbolleiste aktiviert sind.
 
-- **Auswahl der Reflexe** : Wählt aus, welche Reflexe die Kikuchi-Linien erzeugen. Entweder **Strukturfaktor** (die obersten *N* Reflexe nach $\lvert F_{hkl}\rvert$) oder **1/d-Grenzwert** (alle Reflexe, deren 1/d unterhalb des Schwellenwerts (nm⁻¹) liegt).
-- **Modus** : Wie die Kikuchi-Linien gezeichnet werden. Die Einstellungen unter dem Kombinationsfeld wechseln mit dem Modus.
+- **Auswahl der Reflexe** : Wählt aus, welche Reflexe die Kikuchi-Linien erzeugen. Entweder **Strukturfaktor** (die obersten *N* Reflexe nach $\lvert F_{hkl}\rvert$, Feld **Oben**; 1–1000, Standard 100) oder **1/d-Grenzwert** (alle Reflexe, deren 1/d unterhalb des Schwellenwerts liegt; 0–100 nm⁻¹, Standard 10).
+- **Modus** : Wie die Kikuchi-Linien gezeichnet werden (Standard **Kinematisch**). Die Einstellungen unter dem Kombinationsfeld wechseln mit dem Modus.
     - **Geometrisch** : alle gewählten Linien in einer festen Farbe.
     - **Kinematisch** : Die Liniendunkelheit folgt der kinematischen relativen Intensität jedes Reflexes.
     - **Dynamisch** : Zweistrahl-dynamische Überschuss-/Defizit-Bandprofile mit thermisch-diffuser Streuung als Quelle, im Hintergrund berechnet. Überschuss-Bänder erscheinen auf der Hochwinkelseite, Defizit-Merkmale zum Direktstrahl hin; die Probendicke wird mit den Intensitätseinstellungen geteilt. Während der Berechnung werden geometrische Linien als Übergang gezeichnet.
@@ -205,12 +218,12 @@ Aktiv, wenn Kikuchi-Linien in der Symbolleiste aktiviert sind.
 - **Einstellungen für Dynamisch** :
     - **Überschuss** / **Defizit** : Farben der hellen (positiver Kontrast) und dunklen (negativer Kontrast) Bandseite.
     - **Bänder** : Anzahl der Bänder mit dynamischen Profilen (die besten *N* nach dynamischem Kontrast; 1–50, Standard 30).
-    - **Qualität** : Abtastpunkte quer über jedes Band (Schnell 65 / Standard 129 / Hoch 257).
+    - **Qualität** : Abtastpunkte quer über jedes Band (Schnell 65 / Standard 129 / Hoch 257; Standard: Standard).
     - **Kontrast** : Anzeigeverstärkung des Bandkontrasts vor der Kompression.
-    - **Skala** : Helligkeitskompressionskurve (Linear / Log / Tanh) – Darstellungstransformationen, keine physikalischen Kameraantworten.
+    - **Skala** : Helligkeitskompressionskurve (Linear / Log / Tanh; Standard Tanh) – Darstellungstransformationen, keine physikalischen Kameraantworten.
     - **Helligkeit fix** : Friert die Helligkeitsnormierung ein, z. B. zum Vergleich verschiedener Orientierungen oder Dicken.
     - Die graue Hinweiszeile zeigt den Quelle/Verlust-Hinweis, die Zahl der gezeichneten Bänder und Diagnosen (z. B. Ersatz-*B*-Faktor für Atome mit *B* = 0).
-- **Threshold** : Ein Altparameter. Führt die Kikuchi-Linien-Berechnung nur für Reflexe mit einem *d* größer als der angegebene Wert aus (aus Kompatibilitätsgründen beibehalten).
+- (Den früheren separaten Parameter **Threshold** gibt es nicht mehr; die Reflexe werden nur durch die obige Auswahl begrenzt.)
 
 ### Debye-Ringe
 
@@ -229,20 +242,16 @@ Aktiv, wenn die Skalenlinien in der Symbolleiste aktiviert sind.
 
 - **2θ / Azimuth scale lines** : **2θ** stellt einen konstanten Streuwinkel dar (konzentrische Kreise), **Azimuth** stellt einen konstanten Azimutwinkel dar (radiale Linien vom Zentrum aus). Die Farben sind unabhängig voneinander konfigurierbar.
 - **Linienbreite** : Dicke der Skalenlinien.
-- **Teilung** : Winkelabstand zwischen benachbarten Skalenlinien.
+- **Teilung** : Dichte der Skalenlinien, **Fein** / **Mittel** (Standard) / **Grob**.
 - **Maßstabsbeschriftungen anzeigen** : Ob numerische Beschriftungen auf die Skalenlinien gezeichnet werden.
 
-### Misc
-
-Verschiedene Einstellungen wie die Mausrotationsempfindlichkeit.
-
-- **Mouse sensitivity** : Betrag der Kristalldrehung pro Pixel des Mausziehens.
+(Eine eigene Registerkarte *Misc* gibt es nicht; die **Rotationssensitivität** der Maus befindet sich in der Gruppe **Sonstiges** im rechten Bereich, siehe [Misc](#misc) oben.)
 
 ---
 
 ## Beugungsreflex-Informationen {#diffraction-spot-information}
 
-Listet die per Reflex berechneten Details auf, die mit der Bloch-Wellen-Methode (Dynamical-Berechnung) ermittelt wurden. Öffnen Sie es mit der Schaltfläche **Reflexdetails** (Intensitätsberechnungsbereich) oder dem Kontrollkästchen **Details**.
+Listet die per Reflex berechneten Details auf, die mit der Bloch-Wellen-Methode (Dynamical-Berechnung) ermittelt wurden. Öffnen Sie es mit der Schaltfläche **Reflexdetails** im Intensitätsberechnungsbereich. Im Modus **Nur Anregungsfehler** / **Kinematisch & Anr.-Fehler** listet die Schaltfläche die aktuell gezeichneten Reflexe mit ihren Elektronenpotentialen sowie $P_g$, $Q_g$ auf (ohne dynamische Amplituden); im CBED-Modus folgt die Tabelle der im CBED-Fenster gewählten Dicke.
 
 ![Beugungsreflex-Informationen](../../assets/cap-de-auto/FormDiffractionSpotInfo.png)
 
@@ -278,7 +287,7 @@ Das Schema (oben links) zeigt die Vektoren auf der Ewald-Kugel und definiert die
 - **Unit of potential** : Schaltet das angezeigte Potential zwischen **Vg [eV]** (elektrostatisches Potential, eV) und **Ug [nm⁻²]** um (die skalierte Größe $U_g = (2 m_0/h^2)\, V_g$, die in die Bloch-Wellen-Gleichungen eingeht). Die Spaltenüberschriften wechseln entsprechend zwischen *Vg / V'g* und *Ug / U'g*.
 - Über der Tabelle werden die Beschleunigungsspannung, die Wellenlänge ($\lambda = 1/k_\text{vac}$), das relativistische Massenverhältnis $m/m_0$, das Geschwindigkeitsverhältnis $v/c$, das Gittervolumen, die Probendicke und (im CBED-Modus) der maximale Halbwinkel des Elektronenstrahls angezeigt.
 - **Note 1:** Die Längeneinheit ist **nm**, nicht Å. **Note 2:** Die Wellenzahleinheit ist **1/nm**, nicht 2π/nm.
-- **Effective digit** : Anzahl der in der Tabelle angezeigten signifikanten Stellen. **Auto resize row width** : Spaltenbreiten automatisch anpassen. **Copy to clipboard** : exportiert die Tabelle als Text, der in eine Tabellenkalkulation eingefügt werden kann. **Save as CSV** : schreibt dieselbe Tabelle (die sichtbaren Spalten) in eine CSV-Datei; das Dezimaltrennzeichen ist stets ein Punkt, sodass die Datei auch in Gebietsschemata mit Dezimalkomma gültig bleibt. (Dieses Formular wird auch unter einer japanischen Oberfläche auf Englisch angezeigt.)
+- **Effective digit** : Anzahl der in der Tabelle angezeigten signifikanten Stellen (1–16, Standard 4). **Auto resize row width** : Spaltenbreiten automatisch anpassen. **Copy to clipboard** : exportiert die Tabelle als Text, der in eine Tabellenkalkulation eingefügt werden kann. **Save as CSV** : schreibt dieselbe Tabelle (die sichtbaren Spalten) in eine CSV-Datei; das Dezimaltrennzeichen ist stets ein Punkt, sodass die Datei auch in Gebietsschemata mit Dezimalkomma gültig bleibt. (Dieses Formular wird auch unter einer japanischen Oberfläche auf Englisch angezeigt.)
 
 ---
 
@@ -292,13 +301,13 @@ Ein Fenster für die detaillierte Einrichtung der Detektorgeometrie (Kameraläng
 
 ![Detektorgeometrie-Einstellungen](../../assets/cap-de-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
-Geben Sie die Reflexionsgeometrie wie die Kameralänge und die Detektorkippung (**Tau / Phi**) an. Für Back Laue (Rückstrahl-Laue) legen Sie hier die Geometrie fest, die den Detektor auf der Quellenseite platziert.
+Geben Sie die Reflexionsgeometrie an: **Kameralänge 2** (mm, 1–10000, Standard 1000) und die Detektorkippung **τ** (−200 bis 200°) um eine in der Detektorebene liegende Achse beim Azimut **φ**. Für Rück-Laue (Rückstrahl-Laue) wird nur **Kameralänge 2** verwendet: Das Muster wird stets auf einen Detektor senkrecht zum Strahl auf der Quellenseite projiziert, und τ / φ werden auf diese Projektion nicht angewendet. Das Ablegen einer `.prm`-Datei lädt daraus Wellenlänge, Kameralänge 2, τ, φ, Fußpunktposition und Pixelgröße (die Quelle wird auf Röntgen mit benutzerdefinierter Wellenlänge umgeschaltet, und der Detektorbereich wird eingeschaltet).
 
 ### Detektorbereich und überlagertes Bild
 
 ![Detektorbereich und überlagertes Bild](../../assets/cap-de-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-Geben Sie den aktiven Bereich des Detektors an und legen Sie ein experimentelles Bild ab, um es zu überlagern. Verwenden Sie dies, um das simulierte Muster und ein experimentelles Bild zu überlagern und die Detektorgeometrie fein abzustimmen.
+Haken Sie **Detektorbereich & überlagertes Bild festlegen.** an, um den Detektor festzulegen: Größe in Pixeln (Standard 1024 × 1024), **Pix.-Größe** (mm, Standard 0,1) und die Position des Fußpunkts **Fuß: fx, fy** (px, Standard 512, 512). Ein experimentelles Bild lässt sich laden (**Laden** oder Ablegen) und mit **Deckkraft**, **Gradient** (Positiv-/Negativfilm), **Maßstab 1** (log/linear), **Maßstab 2** (Gray / Cold-Warm / Spectrum / Fire), **Max. Int.**/**Min. Int.**, **90° drehen** und **Leeren** überlagern. **Schemazeichnung** zeigt eine Skizze der Geometrie. Verwenden Sie dies, um das simulierte Muster und ein experimentelles Bild zu überlagern und die Detektorgeometrie fein abzustimmen.
 
 Siehe auch [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffraction.md) für die Definitionen des Koordinatensystems.
 
@@ -308,7 +317,7 @@ Siehe auch [Detektor-Koordinatensystem](../appendix/a1-coordinate-system/2-diffr
 
 ![Dynamische Kompression](../../assets/cap-de-auto/FormDiffractionSimulatorDynamicCompression.png)
 
-Ein Fenster zum Scrubben des Druck-/Zeit-Profils eines Hochdruck-Experiments (dynamische Kompression). Legen Sie ein `.txt`-Druck-/Zeit-Profil auf dieses Fenster ab, um es zu laden, und ziehen Sie dann die rote Linie im Diagramm, um kontinuierlich durch die Zeit (den Druck) zu fahren, während der entsprechende Zustand im Beugungsmuster widergespiegelt wird.
+Ein Fenster zur Simulation der Beugung an einer stoßkomprimierten Probe (dynamische Kompression). Legen Sie eine tabulatorgetrennte `.txt`-Datei mit drei Spalten (Position, Zeit, Druck) ab, um für jeden Zeitpunkt Druckprofile zu laden; der Schieberegler **Zeit** (ns) wählt das im Diagramm gezeigte Profil. Die beiden senkrechten Linien im Diagramm (**Vorne** / **Hinten**) lassen sich ziehen, um Vorder- und Rückseite der Kompression festzulegen. Das Fenster enthält außerdem das Kompressionsmodell (**2018 / 2019 model**), die Stoßgeschwindigkeiten (**Us**, **Ur**, km/s), die **EOS** (K0, K'0), **Stoßwellenebene** / **Gleitebene**, die Rotationsverteilungen des komprimierten und des freigegebenen Bereichs, den Massenabsorptionskoeffizienten, die Ω-Schrittweite und **Muster speichern** (`#.tif`) und startet mit **Simulieren**.
 
 ---
 

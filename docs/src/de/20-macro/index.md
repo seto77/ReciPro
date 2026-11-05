@@ -20,7 +20,7 @@ Im obigen Screenshot ist **Beispiele anzeigen** aktiviert, sodass die integriert
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Den Editortext zurück in den ausgewählten Eintrag der Makroliste speichern |
 | <kbd>F10</kbd> | Einen Schritt weiter (während der schrittweisen Ausführung) |
 | Doppelklick auf eine Zeile in der Funktionshilfe-Liste | Die Signatur dieser Funktion an der Einfügemarke einfügen |
-| Eine `.mcr`-Datei auf das Fenster ziehen | In den Editor laden |
+| Eine `.mcr`-Datei auf das Fenster ziehen | In den Editor laden und zur Makroliste hinzufügen (der Dateiname wird zum Makronamen) |
 
 **Run**, **Step** und **Stop** sind Schaltflächen (kein Tastaturkürzel).
 
@@ -34,7 +34,7 @@ Makros werden in Python-Syntax geschrieben. Mit den integrierten Klassen und Fun
 
 - **Sprache**: Python 3 (IronPython 3.4)
 - **Speicherung**: Komprimiertes Binärformat in der Windows-Registry (bleibt über Sitzungen hinweg erhalten)
-- **Zugriff**: Klicken Sie im Hauptfenster auf die Schaltfläche Makro, um den Makro-Editor zu öffnen
+- **Zugriff**: **Makro > Editor** im Menü des Hauptfensters öffnet den Makro-Editor. Jedes Makro der Liste wird außerdem als Eintrag des Menüs **Makro** hinzugefügt; seine Auswahl führt das Makro direkt aus
 
 ---
 
@@ -46,6 +46,7 @@ Der Makro-Editor besteht aus den folgenden Bereichen:
 |------|---------|
 | **Makroliste** (links) | Gespeicherte Makros. `Add` fügt ein neues Makro hinzu, `Replace` überschreibt das ausgewählte, `Delete` entfernt es. Up/Down ändern die Reihenfolge. |
 | **Namensfeld** (oben) | Bezeichner des gerade bearbeiteten Makros. |
+| **Menü File** | **Load file** liest eine `.mcr`-Datei (UTF-8) und fügt sie der Liste hinzu; **Save file** schreibt den Editortext in eine `.mcr`-Datei. |
 | **Codebereich** (rechts) | Python-Code-Editor mit Zeilennummern-Leiste, automatischer Einrückung und Syntax-Hilfe-Popup. |
 | **Tabelle der integrierten Funktionen** (unten) | Liste der von ReciPro bereitgestellten integrierten Funktionen/Eigenschaften, jeweils mit einer Hilfe-Beschreibung. Eine Referenz beim Schreiben von Code. |
 | **Statusleiste** (ganz unten) | Zeigt die aktuelle Position der Einfügemarke als `Line N, Col M` an. |

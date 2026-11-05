@@ -60,17 +60,17 @@ Lista os planos cristalinos permitidos (reflexões) do cristal e o **fator de es
 
 **Options**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : calcula a intensidade relativa como intensidade de difração de pó (Bragg–Brentano), incluindo a multiplicidade e o fator de Lorentz–polarização. Quando desativado, exibe a intensidade do fator de estrutura. Ativá-lo também força *Hide equivalent planes* e *Hide prohibited planes*.
-- **Hide equivalent planes** : agrupa planos cristalograficamente equivalentes em uma única entrada.
-- **Hide prohibited planes** : exclui planos cuja intensidade é zero pelas regras de extinção.
-- **d-Spacing Cutoff >** : exclui reflexões com um espaçamento d menor que este valor (a unidade de comprimento segue a seleção em **Unit**).
+- **Intensidades de difração de pó (óptica Bragg-Brentano)** : calcula a intensidade relativa como intensidade de difração de pó (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, onde $m$ é a multiplicidade, $V$ o volume da célula e $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (fator de Lorentz–polarização) para raios X ou $L = 1/(\sin 2\theta\,\sin\theta)$ (apenas o fator de Lorentz, sem termo de polarização) para elétrons e nêutrons. Quando desativado, exibe a intensidade do fator de estrutura $\lvert F\rvert^2$. Ativá-lo também força *Ocultar planos equivalentes* e *Ocultar planos proibidos* e os deixa desabilitados (em cinza).
+- **Ocultar planos equivalentes** (ativado por padrão) : agrupa planos cristalograficamente equivalentes em uma única entrada. A coluna **Mult.** só é exibida enquanto esta opção estiver ativada.
+- **Ocultar planos proibidos** (ativado por padrão) : exclui os planos sistematicamente ausentes pelas regras de extinção. Enquanto estiver desativada, uma coluna **Condição** mostra a(s) condição(ões) de reflexão que proíbem cada plano ausente.
+- **Corte de dist. interplanar >** (padrão 1 Å) : exclui reflexões com um espaçamento d menor que este valor (a unidade de comprimento segue a seleção em **Unit**).
 
 Cada linha é uma reflexão (ou um grupo de planos simetricamente equivalentes):
 
 | Coluna | Significado |
 |------|------|
 | **h, k, l** | índices de Miller |
-| **Multi.** | multiplicidade (número de planos simetricamente equivalentes) |
+| **Mult.** | multiplicidade (número de planos simetricamente equivalentes) |
 | **d (Å)** | espaçamento interplanar |
 | **q (2π/d)** | módulo do vetor de espalhamento |
 | **2θ (°)** | ângulo de difração para o comprimento de onda selecionado |
@@ -79,6 +79,8 @@ Cada linha é uma reflexão (ou um grupo de planos simetricamente equivalentes):
 | **\|F\|** | amplitude do fator de estrutura ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | intensidade do fator de estrutura ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensidade relativa, com a reflexão mais forte definida como 100 |
+| **Condição** | condição(ões) de extinção violada(s) pelo plano (exibida apenas quando *Ocultar planos proibidos* está desativado) |
+| **i** | o índice de Miller–Bravais redundante $i=-(h+k)$ (exibido apenas quando **Opções ▸ Usar índice de Miller-Bravais (hkil)** da janela principal está ativado e o cristal usa eixos hexagonais — hexagonal, ou trigonal fora de uma configuração de eixos romboédricos) |
 
 **Gráfico de picos de difração.** Abaixo da tabela, as mesmas reflexões são desenhadas como um padrão de traços, com os picos mais fortes rotulados pelo seu *hkl*.
 
@@ -103,17 +105,17 @@ Quão profundamente o feixe penetra no material e como ele perde energia. O cont
 
 ### X-ray
 
-Os botões de opção escolhem o coeficiente plotado em função da energia do fóton (1–60 keV, eixo logarítmico):
+Os botões de opção escolhem o coeficiente plotado em função da energia do fóton (calculado em 1–60 keV sobre um eixo de energia linear; o eixo vertical é logarítmico para µ/ρ e µ e linear para T %):
 
 - **µ/ρ** — o coeficiente de atenuação de **massa** (cm²/g): quão fortemente o material remove raios X por grama, independentemente de quão densamente está empacotado (este é o valor encontrado em tabelas de referência). O gráfico mostra o **total** junto com seus componentes **photo**, **Rayleigh** e **Compton**.
 - **µ** — o coeficiente de atenuação **linear** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): a atenuação por centímetro do material real em sua densidade real. A intensidade transmitida segue $I = I_0\,e^{-\mu t}$, e $1/\mu$ é a distância ao longo da qual a intensidade cai para cerca de 37 % (1/e).
-- **T %** — a **transmissão** $T = e^{-\mu t}$ em porcentagem para a espessura da amostra **t** definida na caixa **Thickness t** (µm). 100 % = transparente, 0 % = totalmente bloqueado; use isto para julgar uma espessura de amostra sensata na energia atual.
+- **T %** — a **transmissão** $T = e^{-\mu t}$ em porcentagem para a espessura da amostra **t** definida na caixa **Thickness t** (µm, padrão 100 µm). 100 % = transparente, 0 % = totalmente bloqueado; use isto para julgar uma espessura de amostra sensata na energia atual.
 
-As linhas verticais marcam a energia atual e as **bordas de absorção** de cada elemento. A tabela escalar à esquerda lista, na energia atual: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (camada semirredutora, $\ln 2/\mu$), **Transmission** na espessura *t*, **µ_en/ρ** (coeficiente de absorção de energia de massa), os decrementos do índice de refração de raios X **δ** e **β** ($n = 1-\delta+i\beta$), o ângulo **θc (critical)** para reflexão externa total e a **X-ray SLD** real (densidade de comprimento de espalhamento). A tabela inferior lista as energias das **bordas** de absorção **K** e **L3** e suas razões **Jump** para cada elemento.
+A linha vertical marca a energia atual. A tabela escalar à esquerda lista, na energia atual: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (camada semirredutora, $\ln 2/\mu$), **Transmission** na espessura *t*, **µ_en/ρ** (coeficiente de absorção de energia de massa), os decrementos do índice de refração de raios X **δ** e **β** ($n = 1-\delta+i\beta$), o ângulo **θc (critical)** para reflexão externa total e a **X-ray SLD** real (densidade de comprimento de espalhamento). A tabela inferior lista as energias das **bordas** de absorção **K** e **L3** e suas razões **Jump** para cada elemento.
 
 ### Electron
 
-O seletor de grandeza escolhe o que é plotado em função da energia do feixe (1–30 keV):
+O seletor de grandeza escolhe o que é plotado em função da energia do feixe (calculado em 1–50 keV; a visualização inicial mostra 0–20 keV):
 
 - **All (normalized)** — sobrepõe as três curvas abaixo, cada uma reescalonada ao seu próprio máximo para que as formas possam ser comparadas em um único gráfico (leia os valores absolutos na tabela).
 - **σ elastic (nm²)** — seção de choque de espalhamento elástico: quão provável é que um único átomo desvie o elétron.

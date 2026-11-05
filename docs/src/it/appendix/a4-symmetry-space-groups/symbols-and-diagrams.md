@@ -166,7 +166,7 @@ Il diagramma di destra traccia le posizioni equivalenti generali — l'orbita di
 - (Solo per i gruppi spaziali cubici) sottili linee ausiliarie collegano tre cerchi legati da un asse ternario lungo una diagonale di corpo $\langle111\rangle$.
 - In generale, un cerchio (o una metà di un cerchio diviso) corrisponde a una posizione equivalente, quindi il numero di cerchi coincide con la **molteplicità** della posizione generale mostrata nella scheda [Posizioni di Wyckoff](../../2-symmetry-information.md) — una rapida verifica di coerenza quando si legge uno qualunque dei due diagrammi. Se l'asse di proiezione scelto fa coincidere esattamente più copie della stessa chiralità, esse vengono sovrapposte in un unico punto (distinte solo da etichette di altezza separate) anziché disegnate come cerchi affiancati, e il numero di cerchi visibili può allora risultare inferiore alla molteplicità.
 
-Le caselle $x$ / $y$ / $z$ sotto **Direzione** permettono di spostare il punto di prova $(x,y,z)$ dalla posizione predefinita che il gruppo spaziale assegna per quel gruppo puntuale, il che è talvolta utile per sfoltire un diagramma in cui più cerchi coinciderebbero.
+Le tre caselle etichettate **a** / **b** / **c** accanto al pulsante **Copia** delle posizioni generali (coordinate frazionarie $x$, $y$, $z$; intervallo da −1 a 1) permettono di spostare il punto di prova $(x,y,z)$ dalla posizione predefinita che il gruppo spaziale assegna per quel gruppo puntuale, il che è talvolta utile per sfoltire un diagramma in cui più cerchi coinciderebbero.
 
 ---
 

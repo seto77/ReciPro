@@ -20,7 +20,7 @@ Simuliert das Beugungsmuster, das entsteht, wenn ein paralleler Elektronenstrahl
 
 ![Wave Length](../../assets/cap-de-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Stellen Sie die Strahlungsquelle auf **Electron**. Geben Sie die Energie (keV) oder die Wellenlänge (nm) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md).
+Stellen Sie die Strahlungsquelle auf **Elektron**. Geben Sie die Energie (keV) oder die Wellenlänge (Å oder nm, umschaltbar; Standard Å) ein, und die relativistisch korrigierte Wellenlänge wird berechnet. Der Anfangswert ist 200 keV; das Menü **Voreinstellungen** setzt 300 / 200 / 120 kV mit einem Klick. Für Röntgen- und Neutronenquellen siehe [Röntgenbeugungssimulation](5-x-ray-neutron-diffraction.md).
 
 ---
 
@@ -44,6 +44,16 @@ Legt fest, wie die Spotintensitäten berechnet werden.
 
 Die Intensität wird ausschließlich aus dem geometrischen Abstand zwischen der Ewald-Kugel und dem reziproken Gitterpunkt (dem Anregungsfehler $S_g$) bestimmt. Sie ist bei $S_g = 0$ — genau auf der Kugel — am größten und nimmt mit wachsendem $\lvert S_g\rvert$ ab; sie fällt auf null, sobald $\lvert S_g\rvert$ den für den reziproken Gitterpunkt angegebenen **Radius** überschreitet. Da der Strukturfaktor des Kristalls ignoriert wird, ist dies der schnellste Modus und eignet sich zum Überprüfen der Beugungsspotpositionen.
 
+Nur in diesem Modus erscheinen die folgenden Optionen:
+
+| Option | Beschreibung |
+|--------|-------------|
+| **Alle verbotenen Reflexe ausschließen** | Blendet jeden durch die Raumgruppe verbotenen Reflex aus (Gitterzentrierung, Schraubenachsen und Gleitspiegelebenen). Das Anhaken aktiviert und sperrt zugleich die nächste Option. |
+| **Durch Gitterzentrierung verbotene Reflexe ausschließen** | Blendet nur Reflexe aus, die durch die Gitterzentrierung verboten sind (standardmäßig an). |
+| **Alle Reflexe mit gleichem Radius zeichnen** | Zeichnet jeden angeregten Spot unabhängig von $S_g$ mit dem vollen Radius *R*. |
+
+Verbotene Reflexe, die sichtbar bleiben, werden in den Farben **Ausgelöscht** gezeichnet (siehe [Darstellung der Spots](#darstellung-der-spots)).
+
 ### Kinematisch
 
 Zusätzlich zum Anregungsfehler wird der kinematische Strukturfaktor $\lvert F_{hkl} \rvert^2$ in die Intensität einbezogen. Auslöschungsregeln werden korrekt wiedergegeben, wodurch sich dieser Modus für dünne Proben oder schwache Beugung eignet.
@@ -64,8 +74,8 @@ Nur aktiv, wenn **Intensity calculation = Dynamical**.
 
 | Parameter | Beschreibung |
 |-----------|-------------|
-| **Number of diffracted waves** | Anzahl der Bloch-Wellen, die im Eigenwertproblem berücksichtigt werden. Größere Werte ergeben genauere Intensitäten, erhöhen aber die Rechenzeit mit $O(N^3)$ |
-| **Thickness** | Probendicke (nm), die in der dynamischen Berechnung verwendet wird |
+| **Anzahl gebeugter Wellen** | Anzahl der Bloch-Wellen, die im Eigenwertproblem berücksichtigt werden (8–1000, Standard 240). Größere Werte ergeben genauere Intensitäten, erhöhen aber die Rechenzeit mit $O(N^3)$ |
+| **Dicke** | Probendicke (nm), die in der dynamischen Berechnung verwendet wird (0,01–10000 nm, Standard 50 nm) |
 
 ---
 
@@ -75,14 +85,12 @@ Nur aktiv, wenn **Intensity calculation = Dynamical**.
 
 Steuert, wie jeder Beugungsspot dargestellt wird.
 
-- **Solid sphere / Gaussian** : das geometrische Modell des reziproken Gitterpunkts. **Solid sphere** zeichnet den Querschnitt (einen Kreis) zwischen einer Kugel mit Radius $R$ und der Ewald-Kugel, wobei die Kreisfläche der Beugungsintensität entspricht; **Gaussian** zeichnet den Querschnitt (eine 2-D-Gaußfunktion) einer 3-D-Gaußfunktion mit $\sigma = R$, deren Integral der Beugungsintensität entspricht.
-- **Opacity** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
-- **Radius (R)** : virtueller Radius des reziproken Gitterpunkts. Die Spotgröße wird durch die Kombination aus dem Modus **Appearance** und der **Intensity calculation** festgelegt (z. B. ergibt Solid sphere + Dynamical einen Radius proportional zu $I_\text{dyn}^{1/2}$).
-- **Brightness** : nur im Modus **Gaussian** aktiv. Integrierte Intensität der gezeichneten Gaußfunktion.
-- **Color scale** : **Gray scale** oder **Cold-warm**.
-- **Log scale** : Intensitäten in logarithmischer Skala anzeigen. Nützlich für Muster mit großem Intensitätskontrast.
-- **Reflexfarbe** : Spotfarbe, die verwendet wird, wenn keine Farbskala genutzt wird.
-- **Farbe je Kristall** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet.
+- **Vollkugel / Gauß** : das geometrische Modell des reziproken Gitterpunkts (Standard **Vollkugel**). **Vollkugel** zeichnet den Querschnitt (einen Kreis) zwischen einer Kugel und der Ewald-Kugel: Der Kugelradius ist $R\,I^{1/3}$ bei **Kinematisch & Anr.-Fehler** (Kugelvolumen ∝ Intensität) und $R$ bei **Nur Anregungsfehler**; bei **Dynamische Theorie** wird eine Scheibe mit Radius $R\,I_\text{dyn}^{1/2}$ (Fläche ∝ Intensität) ohne den Schnitt mit der Ewald-Kugel gezeichnet. **Gauß** zeichnet den Querschnitt (eine 2-D-Gaußfunktion) einer 3-D-Gaußfunktion mit $\sigma = R$, deren Integral der Beugungsintensität entspricht.
+- **Deckkraft** : Transparenz des Spots (0 = transparent, 1 = undurchsichtig).
+- **Reflexradius (R)** : virtueller Radius des reziproken Gitterpunkts (nm⁻¹; 0,01–1, Standard 0,2). Die Spotgröße wird durch die Kombination aus dem Modus **Darstellung** und der **Intensitätsberechnung** festgelegt (siehe oben).
+- **Helligkeit**, **Farbskala**, **Log-Skala** : nur im Modus **Gauß** angezeigt. **Helligkeit** skaliert die integrierte Intensität der gezeichneten Gaußfunktion; **Farbskala** ist **Gray** (Spots in den unten festgelegten Reflexfarben), **Cold-Warm**, **Spectrum** oder **Fire**; **Log-Skala** zeigt die Intensitäten in logarithmischer Skala an (nützlich für Muster mit großem Intensitätskontrast).
+- **Reflexfarbe** : angezeigt, solange die **Farbskala** **Gray** ist (die Anfangseinstellung). **Allgemeine Reflexe**, **Ausgelöscht (Schraube/Gleit.)** und **Ausgelöscht (Zentrierung)** legen die Farben der erlaubten und der verbotenen Reflexe fest.
+- **Farbe je Kristall** : wenn aktiviert, werden die Spots in der jedem Kristall zugewiesenen Farbe gezeichnet (auch bei einem einzelnen Kristall).
 
 ---
 
@@ -93,13 +101,13 @@ Die über den Spots eingeblendeten Beschriftungen werden in der [Symbolleiste](i
 | Label | Inhalt |
 |-------|---------|
 | **Index** | Miller-Indizes $(hkl)$ |
-| **d** | Netzebenenabstand $d$ |
-| **1/d** | Kehrwert des Netzebenenabstands $1/d$ |
-| **Distance** | Spot-zu-Spot-Abstand auf dem Detektor |
+| **d** | Netzebenenabstand $d$ (angezeigt in Å) |
+| **1/d** | Kehrwert des Netzebenenabstands $1/d$ (nm⁻¹) |
+| **Abstand** | Abstand des Spots vom Primärstrahlreflex auf dem Detektor, $L_2 \tan 2\theta$ (mm; $L_2$ = Kameralänge 2; exakt für einen nicht gekippten Detektor, τ = 0) |
 | **2θ** | Streuwinkel $2\theta$ (gleiche Definition wie die konzentrischen 2θ-Skalenkreise) |
 | **χ** | Azimutwinkel $\chi$, von der 12-Uhr-Richtung aus gemessen, positiv im Uhrzeigersinn (gleiche Definition wie die radialen Azimut-Skalenlinien) |
-| **Excit. Err.** | Anregungsfehler $S_g$ |
-| **\|Fg\|** | Betrag des Strukturfaktors $\lvert F_{hkl} \rvert$ |
+| **Anr.-Fehler** | Anregungsfehler $S_g$ (nm⁻¹) |
+| **\|Fg\|** | relative Intensität (%) im Modus **Kinematisch & Anr.-Fehler**; im Modus **Dynamische Theorie** die relative Intensität (% des stärksten gebeugten Strahls, ohne 000) und die komplexe Amplitude an der Austrittsfläche. Bei **Nur Anregungsfehler** wird nichts angezeigt |
 
 ---
 

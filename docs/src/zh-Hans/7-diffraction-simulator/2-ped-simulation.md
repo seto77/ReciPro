@@ -24,7 +24,7 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 ![波长](../../assets/cap-zh-Hans-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-由于 PED 属于电子衍射，请选择 **Electron beam** 作为波源。输入电子能量 (keV) 或波长 (nm) 即可计算出经相对论修正的波长。
+由于 PED 属于电子衍射，请选择 **Electron beam** 作为波源。输入电子能量 (keV) 或波长（Å 或 nm，可切换；默认 Å）即可计算出经相对论修正的波长。
 
 ---
 
@@ -46,8 +46,8 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 | 参数 | 说明 | 推荐值 |
 |-----------|-------------|-------------|
-| **Semi-angle** | 进动锥的半角 (mrad) | 10–40 mrad |
-| **Step** | 在进动锥上采样的平行束方向数。值越大积分越平滑，但计算时间线性增加 | 36–72 |
+| **半角** | 进动锥的半角（mrad；0.1–500，默认 50） | 10–40 mrad |
+| **步长** | 在进动锥上采样的平行束方向数（2–1080，默认 36）。值越大积分越平滑，但计算时间线性增加 | 36–72 |
 
 ---
 
@@ -59,8 +59,8 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 
 | 参数 | 说明 | 推荐值 |
 |-----------|-------------|-------------|
-| **No. of diffracted waves** | 本征值问题中所包含的布洛赫波数。值越大强度越精确，但计算时间按 $O(N^3)$ 增长 | 50–200 |
-| **Thickness** | 动力学计算中所用的样品厚度 (nm) | — |
+| **衍射波数目** | 本征值问题中所包含的布洛赫波数（8–1000，默认 240）。值越大强度越精确，但计算时间按 $O(N^3)$ 增长 | 50–200 |
+| **厚度** | 动力学计算中所用的样品厚度（nm；0.01–10000，默认 50） | — |
 
 计算开销大致为“步数 × 每个方向的布洛赫波计算”。关于动力学计算的细节，请参见[动力学计算（布洛赫波法）](../appendix/a3-bloch-wave/calculation.md)。
 
@@ -75,10 +75,8 @@ GUI 条件：**Wave = Electron beam, Incident beam = Precession (electron), Inte
 - **Solid sphere / Gaussian** : 倒易点阵点的几何模型。**Solid sphere** 绘制半径为 $R$ 的球与埃瓦尔德球的截面，**Gaussian** 绘制 $\sigma = R$ 的三维高斯函数与埃瓦尔德球的截面（一个二维高斯函数）。
 - **Opacity** : 衍射斑的透明度（0 = 透明，1 = 不透明）。
 - **Radius (R)** : 倒易点阵点的半径。对于动力学强度，高斯积分 $=$ Brightness $\times I_\text{dyn}$，而 Solid sphere 使用半径 $R \times I_\text{dyn}^{1/2}$（使面积正比于动力学强度）。
-- **Brightness** : 仅在 **Gaussian** 模式下可用。所绘高斯函数的积分强度。
-- **色阶** : **Gray scale** 或 **Cold-warm** 配色。
-- **对数刻度** : 以对数刻度显示强度。
-- **斑点颜色** : 未应用配色时所用的衍射斑颜色。
+- **亮度**、**色阶**、**对数刻度** : 仅在 **高斯** 模式下显示。**亮度** 缩放所绘高斯函数的积分强度；**色阶** 可选 **Gray**（衍射斑使用下面的斑点颜色）、**Cold-Warm**、**Spectrum** 或 **Fire**；**对数刻度** 以对数刻度显示强度。
+- **斑点颜色** : 在 **色阶** 为 **Gray**（初始设置）时显示：**一般斑点** / **消光斑点 (螺旋或滑移)** / **消光斑点 (点阵心化)**。
 - **按晶体指定颜色** : 以分配给每个晶体的颜色绘制衍射斑。
 
 ---

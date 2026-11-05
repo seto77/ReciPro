@@ -125,13 +125,13 @@ Gli angoli di Eulero non sono unici nelle posizioni di blocco cardanico (θ = 0 
 
 | Proprietà | Tipo | Descrizione |
 |----------|------|-------------|
-| `Energy` | double | Energia (keV) |
-| `Wavelength` | double | Lunghezza d'onda (Å) |
+| `Energy` | double | Energia (keV per raggi X ed elettroni, meV per neutroni) |
+| `Wavelength` | double | Lunghezza d'onda (nm) |
 | `Thickness` | double | Spessore del campione (nm) |
 | `NumberOfDiffractedWaves` | int | Numero di onde di Bloch |
 | `CameraLength2` | double | Lunghezza di camera (mm) |
 | `ExcitationError` | double | Raggio degli spot (nm⁻¹): in modalità cinematica/di eccitazione, `SpotInfo()` esporta le riflessioni con \|Sg\| entro questo valore |
-| `SkipRendering` | bool | Salta il rendering per l'elaborazione in batch |
+| `SkipRendering` | bool | Efficace solo in modalità dinamica (`Calc_Dynamical()`): il calcolo a onde di Bloch viene comunque eseguito (quindi `SpotInfo()` resta valido), ma non viene disegnato alcuno spot — le immagini salvate nel frattempo non contengono spot. Nessun effetto in modalità cinematica/di eccitazione |
 
 ### Modalità del fascio
 
@@ -156,7 +156,7 @@ Gli angoli di Eulero non sono unici nelle posizioni di blocco cardanico (θ = 0 
 |----------|-------------|
 | `Tau` / `TauInDeg` | Angolo di inclinazione del rivelatore τ (rad / gradi) |
 | `Phi` / `PhiInDeg` | Asse di rotazione del rivelatore φ (rad / gradi) |
-| `Foot(x, y)` | Posizione del foot in pixel |
+| `Foot(x, y)` | Posizione (mm) del piede della perpendicolare dal campione al rivelatore, misurata dal centro dell'immagine; il centro dell'immagine stesso si trova alle coordinate del rivelatore (−x, −y). `Foot(0, 0)` porta il piede al centro dell'immagine |
 
 ### Output
 
@@ -219,8 +219,8 @@ Pilota il visualizzatore di struttura da una macro. `SaveImage()` ed `Export3DMo
 |---|---|
 | `StructureViewer.Open()` | Aprire la finestra del visualizzatore di struttura |
 | `StructureViewer.Close()` | Chiudere la finestra del visualizzatore di struttura |
-| `StructureViewer.SaveImage(filename)` | Salvare la vista principale renderizzata come PNG, alla dimensione in pixel del campo **Size (W×H)**; omettendo `filename` si apre una finestra di dialogo |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Esportare la struttura visualizzata per la stampa 3D, come **Export 3D Model (3MF/STL)** del menu File. L'estensione decide il formato (`.stl` monocolore / `.3mf` colorato per elemento); solo `filename` è obbligatorio — gli altri valori predefiniti sono quelli della finestra di dialogo (dimensione massima 80 mm, spigoli della cella ⌀2,4 mm, legami ispessiti a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 si costruiscono più modelli alla stessa scala |
+| `StructureViewer.SaveImage(filename)` | Salvare la vista principale renderizzata come PNG, alla dimensione in pixel del campo **Dimensione (L×A)**; omettendo `filename` si apre una finestra di dialogo |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Esportare la struttura visualizzata per la stampa 3D, come **Export 3D Model (3MF/STL)** del menu File. L'estensione decide il formato (`.stl` monocolore / `.3mf` colorato per elemento); solo `filename` è obbligatorio — gli altri valori predefiniti sono quelli della finestra di dialogo (dimensione massima 80 mm, spigoli della cella ⌀2,4 mm, legami ispessiti a ⌀1,2 mm). Con `fixedScaleInMMperNm` > 0 si costruiscono più modelli alla stessa scala. `filename` deve terminare con `.stl` o `.3mf` (non si apre alcuna finestra di dialogo); restituisce una stringa informativa con il numero di triangoli e la dimensione di stampa |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Queste tre classi di simulazione delle immagini condividono molti membri. Per ev
 
 | Funzione | Descrizione |
 |----------|-------------|
-| `Sleep(ms)` | Attendi il numero di millisecondi specificato |
+| `ReciPro.Sleep(ms)` | Attendi il numero di millisecondi specificato. Si richiama come `ReciPro.Sleep(ms)`; non è elencata nella tabella delle funzioni integrate dell'editor |
 
 ---
 

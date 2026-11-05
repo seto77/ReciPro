@@ -58,19 +58,21 @@ Enumera los planos cristalinos permitidos (reflexiones) del cristal y el **facto
 === "Neutron"
     ![Reflexiones — neutron](../assets/cap-es-auto/FormBeamInteraction-neutron-reflections.png)
 
-**Options**
+**Opciones**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : calcula la intensidad relativa como una intensidad de difracción de polvo (Bragg–Brentano), incluyendo la multiplicidad y el factor de Lorentz–polarización. Cuando está desactivado, muestra la intensidad del factor de estructura. Activarlo también fuerza *Hide equivalent planes* y *Hide prohibited planes*.
-- **Hide equivalent planes** : agrupa los planos cristalográficamente equivalentes en una sola entrada.
-- **Hide prohibited planes** : excluye los planos cuya intensidad es nula por las reglas de extinción.
-- **d-Spacing Cutoff >** : excluye las reflexiones con un espaciado d menor que este valor (la unidad de longitud sigue la selección de **Unit**).
+- **Intensidades de difracción de polvo (óptica Bragg-Brentano)** : calcula la intensidad relativa como una intensidad de difracción de polvo (Bragg–Brentano), $I \propto m\,\lvert F
+vert^2 / V^2 	imes L$, donde $m$ es la multiplicidad, $V$ el volumen de la celda y $L = (1+\cos^2 2	heta)/(\sin 2	heta\,\sin	heta)$ (factor de Lorentz–polarización) para rayos X o $L = 1/(\sin 2	heta\,\sin	heta)$ (solo factor de Lorentz, sin término de polarización) para electrones y neutrones. Cuando está desactivado, muestra la intensidad del factor de estructura $\lvert F
+vert^2$. Activarlo también fuerza *Ocultar planos equivalentes* y *Ocultar planos prohibidos* y los deja atenuados (no editables).
+- **Ocultar planos equivalentes** (activado por defecto) : agrupa los planos cristalográficamente equivalentes en una sola entrada. La columna **Mult.** solo se muestra mientras está activado.
+- **Ocultar planos prohibidos** (activado por defecto) : excluye los planos sistemáticamente ausentes según las reglas de extinción. Mientras está desactivado, una columna **Condición** muestra la(s) condición(es) de reflexión que prohíben cada plano ausente.
+- **Corte distancia interplanar >** (por defecto 1 Å) : excluye las reflexiones con un espaciado d menor que este valor (la unidad de longitud sigue la selección de **Unit**).
 
 Cada fila es una reflexión (o un grupo de planos equivalentes por simetría):
 
 | Columna | Significado |
 |------|------|
 | **h, k, l** | índices de Miller |
-| **Multi.** | multiplicidad (número de planos equivalentes por simetría) |
+| **Mult.** | multiplicidad (número de planos equivalentes por simetría) |
 | **d (Å)** | espaciado interplanar |
 | **q (2π/d)** | módulo del vector de dispersión |
 | **2θ (°)** | ángulo de difracción para la longitud de onda seleccionada |
@@ -79,6 +81,8 @@ Cada fila es una reflexión (o un grupo de planos equivalentes por simetría):
 | **\|F\|** | amplitud del factor de estructura ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | intensidad del factor de estructura ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensidad relativa, con la reflexión más intensa fijada en 100 |
+| **Condición** | condición(es) de extinción que incumple el plano (solo se muestra cuando *Ocultar planos prohibidos* está desactivado) |
+| **i** | el índice de Miller–Bravais redundante $i=-(h+k)$ (solo se muestra cuando **Opciones ▸ Usar índices de Miller-Bravais (hkil)** de la ventana principal está activado y el cristal usa ejes hexagonales: hexagonal, o trigonal que no esté en una configuración de ejes romboédricos) |
 
 **Gráfica de picos de difracción.** Bajo la tabla, las mismas reflexiones se dibujan como un patrón de barras, con los picos más intensos etiquetados por su *hkl*.
 
@@ -103,24 +107,24 @@ Hasta qué profundidad penetra el haz en el material y cómo pierde energía. El
 
 ### X-ray
 
-Los botones de opción eligen el coeficiente representado frente a la energía del fotón (1–60 keV, eje logarítmico):
+Los botones de opción eligen el coeficiente representado frente a la energía del fotón (calculado en 1–60 keV sobre un eje de energía lineal; el eje vertical es logarítmico para µ/ρ y µ y lineal para T %):
 
 - **µ/ρ** — el coeficiente de atenuación **másico** (cm²/g): con qué intensidad el material elimina rayos X por gramo, independientemente de lo densamente que esté empaquetado (este es el valor que se encuentra en las tablas de referencia). La gráfica muestra el **total** junto con sus componentes **photo**, **Rayleigh** y **Compton**.
 - **µ** — el coeficiente de atenuación **lineal** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): la atenuación por centímetro del material real a su densidad real. La intensidad transmitida sigue $I = I_0\,e^{-\mu t}$, y $1/\mu$ es la distancia en la que la intensidad cae a aproximadamente el 37 % (1/e).
-- **T %** — la **transmisión** $T = e^{-\mu t}$ en porcentaje para el espesor de muestra **t** fijado en el campo **Thickness t** (µm). 100 % = transparente, 0 % = totalmente bloqueado; úselo para juzgar un espesor de muestra razonable a la energía actual.
+- **T %** — la **transmisión** $T = e^{-\mu t}$ en porcentaje para el espesor de muestra **t** fijado en el campo **Espesor t** (µm, por defecto 100 µm). 100 % = transparente, 0 % = totalmente bloqueado; úselo para juzgar un espesor de muestra razonable a la energía actual.
 
-Las líneas verticales marcan la energía actual y los **bordes de absorción** de cada elemento. La tabla escalar de la izquierda enumera, a la energía actual: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (capa hemirreductora, $\ln 2/\mu$), **Transmission** al espesor *t*, **µ_en/ρ** (coeficiente de absorción de energía másico), los decrementos del índice de refracción de rayos X **δ** y **β** ($n = 1-\delta+i\beta$), el ángulo **θc (critical)** de reflexión externa total y la **X-ray SLD** real (densidad de longitud de dispersión). La tabla inferior enumera las energías de los **bordes** de absorción **K** y **L3** y sus relaciones de **Jump** para cada elemento.
+La línea vertical marca la energía actual. La tabla escalar de la izquierda enumera, a la energía actual: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (capa hemirreductora, $\ln 2/\mu$), **Transmission** al espesor *t*, **µ_en/ρ** (coeficiente de absorción de energía másico), los decrementos del índice de refracción de rayos X **δ** y **β** ($n = 1-\delta+i\beta$), el ángulo **θc (critical)** de reflexión externa total y la **X-ray SLD** real (densidad de longitud de dispersión). La tabla inferior enumera, para cada elemento, las energías de los bordes de absorción **K** y **L3** (columna **Borde**) y sus relaciones de salto (columna **Salto**).
 
 ### Electron
 
-El selector de magnitud elige qué se representa frente a la energía del haz (1–30 keV):
+El selector de magnitud elige qué se representa frente a la energía del haz (calculado en 1–50 keV; la vista inicial muestra 0–20 keV):
 
-- **All (normalized)** — superpone las tres curvas siguientes, cada una reescalada a su propio máximo para que las formas puedan compararse en una sola gráfica (lea los valores absolutos en la tabla).
-- **σ elastic (nm²)** — sección eficaz de dispersión elástica: la probabilidad de que un solo átomo desvíe el electrón.
-- **Elastic MFP (nm)** — recorrido libre medio: la distancia media que recorre el electrón entre sucesos de dispersión elástica.
+- **Todo (normalizado)** — superpone las tres curvas siguientes, cada una reescalada a su propio máximo para que las formas puedan compararse en una sola gráfica (lea los valores absolutos en la tabla).
+- **σ elástica (nm²)** — sección eficaz de dispersión elástica: la probabilidad de que un solo átomo desvíe el electrón.
+- **MFP elástico (nm)** — recorrido libre medio: la distancia media que recorre el electrón entre sucesos de dispersión elástica.
 - **|dE/ds| (keV/nm)** — magnitud del poder de frenado: la energía que el electrón pierde por nanómetro de recorrido.
 - **IMFP (nm)** — recorrido libre medio inelástico: la distancia media entre colisiones con pérdida de energía.
-- **Range CSDA (µm)** — la longitud total del camino que recorre el electrón antes de detenerse.
+- **Alcance CSDA (µm)** — la longitud total del camino que recorre el electrón antes de detenerse.
 
 La tabla escalar enumera la **wavelength** del electrón, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** y la energía media de excitación **J**, dos **ranges** del electrón (la estimación de penetración de Kanaya–Okayama y la longitud de camino integrada CSDA), y los valores medios **Z, A**. La tabla por elemento da la fracción atómica de cada elemento y la sección eficaz elástica σ. Las secciones eficaces elásticas usan los datos **NIST Mott** (50 eV–36 keV) y recurren a **screened Rutherford** por encima de 36 keV.
 

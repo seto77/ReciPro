@@ -20,7 +20,7 @@ Dans la capture d'écran ci-dessus, l'option **Show samples** est activée, ce q
 | <kbd>CTRL</kbd>+<kbd>S</kbd> | Enregistrer le texte de l'éditeur dans l'entrée sélectionnée de la liste des macros |
 | <kbd>F10</kbd> | Avancer d'un pas (pendant l'exécution pas à pas) |
 | Double-cliquer sur une ligne de la liste d'aide des fonctions | Insérer la signature de cette fonction à l'emplacement du curseur |
-| Déposer un fichier `.mcr` sur la fenêtre | Le charger dans l'éditeur |
+| Déposer un fichier `.mcr` sur la fenêtre | Le charger dans l'éditeur et l'ajouter à la liste des macros (le nom du fichier devient le nom de la macro) |
 
 **Run**, **Step** et **Stop** sont des boutons (sans raccourci clavier).
 
@@ -34,7 +34,7 @@ Les macros sont écrites en syntaxe Python. À l'aide des classes et fonctions i
 
 - **Langage** : Python 3 (IronPython 3.4)
 - **Stockage** : format binaire compressé dans le Registre Windows (conservé d'une session à l'autre)
-- **Accès** : cliquez sur le bouton Macro dans la fenêtre principale pour ouvrir l'éditeur de macros
+- **Accès** : **Macro > Editor** dans le menu de la fenêtre principale ouvre l'éditeur de macros. Chaque macro de la liste est aussi ajoutée comme élément du menu **Macro** ; la choisir l'exécute directement
 
 ---
 
@@ -46,6 +46,7 @@ L'éditeur de macros se compose des zones suivantes :
 |------|---------|
 | **Liste des macros** (à gauche) | Macros enregistrées. `Add` ajoute une nouvelle macro, `Replace` écrase celle sélectionnée, `Delete` la supprime. Up/Down réordonnent. |
 | **Champ de nom** (en haut) | Identifiant de la macro en cours d'édition. |
+| **Menu File** | **Load file** lit un fichier `.mcr` (UTF-8) et l'ajoute à la liste ; **Save file** écrit le texte de l'éditeur dans un fichier `.mcr`. |
 | **Zone de code** (à droite) | Éditeur de code Python avec gouttière de numéros de ligne, indentation automatique et fenêtre d'aide de syntaxe. |
 | **Table des fonctions intégrées** (en bas) | Liste des fonctions/propriétés intégrées fournies par ReciPro, chacune accompagnée d'une description d'aide. Une référence pendant l'écriture du code. |
 | **Barre d'état** (tout en bas) | Affiche la position actuelle du curseur sous la forme `Line N, Col M`. |

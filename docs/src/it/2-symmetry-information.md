@@ -38,9 +38,10 @@ Inserisci due piani cristallini \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) oppure 
 
 - la distanza interplanare di ciascun piano / la lunghezza di ciascun asse,
 - l'angolo tra i due piani (o i due assi),
+- l'angolo tra il piano 1 e l'asse 1, e tra il piano 2 e l'asse 2,
 - **l'indice di direzione normale a entrambi i piani** e **l'indice di piano normale a entrambi gli assi**.
 
-Questi calcoli rispettano la metrica della cella elementare corrente.
+Questi calcoli rispettano la metrica della cella elementare corrente. Le lunghezze sono mostrate in Å e gli angoli in gradi.
 
 ---
 
@@ -48,7 +49,7 @@ Questi calcoli rispettano la metrica della cella elementare corrente.
 
 ![Posizioni di Wyckoff](../assets/cap-it-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Elenca ogni posizione di Wyckoff con la sua molteplicità, la lettera di Wyckoff, la simmetria del sito e l'indicazione se si tratti di una posizione generale o speciale. Per i reticoli centrati, i vettori di traslazione reticolare sono mostrati nella riga di intestazione.
+Elenca ogni posizione di Wyckoff con la sua molteplicità (**Mult.**), la lettera di Wyckoff (**Let. Wyck.**), la simmetria del sito (**Simm. sito**) e le **Coordinate** (fino a quattro per riga; gli elenchi più lunghi proseguono nelle righe successive). La prima voce di Wyckoff (molteplicità massima) è la posizione generale. Per i reticoli centrati, i vettori di traslazione reticolare sono mostrati nella riga di intestazione.
 
 ---
 
@@ -57,6 +58,8 @@ Elenca ogni posizione di Wyckoff con la sua molteplicità, la lettera di Wyckoff
 ![Condizioni](../assets/cap-it-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 Le condizioni di riflessione derivanti dalla centratura del reticolo e dagli operatori di simmetria di slittamento ed elicoidali.
+
+Ogni riga ha tre colonne: **Indici** (la classe di riflessioni, ad es. $hkl$, $h0l$, $00l$), **Condizione** (ad es. $h+k=2n$) ed **Elemento** (la centratura del reticolo o l'elemento di simmetria responsabile). Quando non ce n'è alcuna viene mostrato *No Condition*.
 
 ---
 
@@ -97,12 +100,13 @@ I due pannelli in basso riproducono i diagrammi schematici di simmetria del grup
 - **Elementi di simmetria (a sinistra)**: assi di rotazione/elicoidali, piani di riflessione/slittamento e centri di inversione/punti di rotoinversione sono disegnati con i simboli grafici convenzionali.
   - Per il reticolo \(F\) del sistema cubico viene mostrato solo il quarto in alto a sinistra della cella proiettata (vedere l'[Appendice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Questi elementi di simmetria possono anche essere disegnati direttamente sul modello 3D nel [Visualizzatore struttura](5-structure-viewer.md).
-- **Posizioni generali (a destra)**: le posizioni equivalenti generali sono rappresentate come cerchi (una virgola indica un'immagine speculare), annotati con le loro coordinate frazionarie.
+- **Posizioni generali (a destra)**: le posizioni equivalenti generali sono rappresentate come cerchi (una virgola indica un'immagine speculare), ciascuno annotato con la sua altezza lungo l'asse di proiezione (`+`, `−`, `½+`, …; vedi l'[Appendice A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - Il punto di prova $(x,y,z)$ si imposta con le caselle **a** / **b** / **c** accanto al pulsante **Copia** delle posizioni generali (intervallo da −1 a 1, passo 0.01). Viene riportato a un valore predefinito per il gruppo puntuale ogni volta che il gruppo puntuale cambia, e mantenuto quando cambia solo il gruppo spaziale all'interno dello stesso gruppo puntuale.
   - Solo per il sistema cubico, linee ausiliarie collegano i tre cerchi correlati da un asse di rotazione ternario.
 
-Controlli sotto i diagrammi:
+Controlli (il pannello **Opzioni** in basso nella finestra e il pulsante **Copia** sopra ciascun diagramma):
 
-- **Direzione** (`a` / `b` / `c`) : scegli l'asse cristallino lungo cui proiettare.
+- **Direzione** (`a` / `b` / `c`) : scegli l'asse cristallino lungo cui proiettare. È selezionabile solo per i gruppi spaziali ortorombici (predefinito `c`); per i gruppi monoclini si usa automaticamente l'asse unico, e per tutti gli altri sistemi cristallini `c`.
 - **Copia** : copia ciascun diagramma negli appunti nel formato selezionato con **Formato di copia** (**emf** vettoriale / **bmp** raster); l'emf può essere separato nei suoi componenti e modificato in PowerPoint.
 - **Relazioni di gruppo…** apre un browser per le relazioni sottogruppo massimale/supergruppo minimale del gruppo spaziale corrente. Vedi l'[Appendice A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) per come leggerlo.
 

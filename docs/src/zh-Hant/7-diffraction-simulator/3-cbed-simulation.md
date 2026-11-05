@@ -2,9 +2,9 @@
 
 **CBED（會聚束電子繞射，Convergent-Beam Electron Diffraction）模擬** 使用布洛赫波法（Bethe）計算並顯示會聚束繞射圖樣。CBED 圖樣顯示的是繞射盤而非繞射斑點，並含有關於晶體對稱性、厚度與結構的豐富資訊。
 
-> 本頁列出在 [繞射模擬器](index.md) 中選擇 **Wavelength = Electron** 與 **Incident beam = Convergence (CBED, electron only)** 時所開啟之專用視窗的所有設定。將入射束切換為會聚時，**Intensity calculation** 會自動設為 **Dynamical**，並開啟此 CBED 設定視窗。關於繞射圖樣的繪製與儲存，以及繞射模擬器共通的其他操作，請參閱 [總覽頁面](index.md)。
+> 本頁列出在 [繞射模擬器](index.md) 中選擇 **Wavelength = Electron** 與 **Incident beam = 會聚 (電子)** 時所開啟之專用視窗的所有設定。將入射束切換為會聚時，**強度計算** 會自動設為 **動力學理論**，並開啟此 CBED 設定視窗。計算出的圓盤可從主視窗的 **檔案 > 儲存 CBED 圓盤** / **複製 CBED 圓盤** 儲存。關於繞射圖樣的繪製與儲存，以及繞射模擬器共通的其他操作，請參閱 [總覽頁面](index.md)。
 
-GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electron only) · Intensity calculation = Dynamical（自動）
+GUI 條件：Wave Length = Electron · Incident beam = Convergence (electron) · Intensity calculation = Dynamical（自動）
 
 ![CBED 模擬](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.png)
 
@@ -14,23 +14,25 @@ GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electr
 
 ![輸入參數](../../assets/cap-zh-Hant-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
+此視窗開啟期間，主視窗的 **布洛赫波設定** 與 **外觀** 面板會停用；波數與厚度改由此處取得。
+
 | 參數 | 說明 | 預設 / 典型值 |
 |-----------|-------------|-------------------|
 | **Mode** | **CBED**：標準的會聚束圖樣，每個盤對應一個反射，透射盤（000）位於中央。**LACBED**（Large-Angle CBED）：大角度會聚束圖樣，不同反射的盤會彼此重疊。適合用於觀察高階勞厄區（HOLZ）線與對稱性 | CBED |
-| **Convergence semi-angle (mrad)** | 會聚束圓錐的半角。決定每個繞射盤的大小（盤在倒易空間中的直徑對應於 $2\alpha$） | 5–30 mrad |
-| **Disk resolution (mrad/px)** | 每個盤內的角度解析度。數值越小解析度越高，但所計算的束方向數（像素數）會以平方成長，因此計算時間也以平方增加。最終得到的總像素數（= 束方向總數）顯示於右側 | — |
-| **No. of Bloch waves** | 在每個入射束方向下，納入布洛赫波計算的最大束數。束數越多精度越高，但本徵值問題的成本以 $O(N^3)$ 成長 | 100–500 |
-| **Thickness range** | 試樣厚度（nm）的起始值、結束值與步進值。會一併計算多個厚度，並以輸出側的厚度滑桿切換 | — |
-| **Solver** | 本徵值問題的計算引擎。**Auto**：自動選擇最佳的求解器。**Eigenproblem (MKL)**：以 Intel MKL 為基礎（最快）。**Eigenproblem (Eigen)**：Eigen C++ 函式庫。**Managed**：純 .NET 受控（最慢但始終可用） | Auto |
-| **Thread count** | 計算所用的並行執行緒數 | — |
-| **Draw disk outlines** | 勾選時，會繪製一個圓以標示每個繞射盤的邊界 | — |
+| **半角 (mrad)** | 會聚束圓錐的半角（0–2000 mrad）。決定每個繞射盤的大小（盤在倒易空間中的直徑對應於 $2\alpha$） | 預設 6 mrad；典型值 5–30 mrad |
+| **圓盤解析度 (mrad/px)** | 每個盤內的角度解析度。盤以 $N\times N$ 格點取樣，$N = \lceil 2\alpha / \text{resolution} \rceil$，只計算圓內的點。數值越小解析度越高，但束方向數會以平方成長，因此計算時間也以平方增加。最終得到的數目（= 束方向總數）顯示為 **總像素** | 預設 0.1 mrad/px |
+| **繞射波數目** | 在每個入射束方向下，納入布洛赫波計算的最大束數（1–2048）。束數越多精度越高，但本徵值問題的成本以 $O(N^3)$ 成長 | 預設 64；典型值 100–500 |
+| **厚度自 / 至 / 步距** | 試樣厚度（nm，各為 1–1000）的起始值、結束值與步進值。會一併計算多個厚度，並以輸出側的厚度滑桿切換 | 預設 20 至 200 nm，步距 20 nm |
+| **求解器** | 計算引擎。**Auto**；**Eigenproblem with Eigen lib.** / **Eigenproblem with MKL lib.**（對角化）；**Matrix exp. with Eigen lib.** / **Matrix exp. with MKL lib.**（矩陣指數法，v4.794）。**Auto** 在可使用 Eigen 時，以 Eigen 與所有邏輯處理器執行矩陣指數法，否則使用 MKL 的本徵值問題。矩陣指數法需要等間距的厚度，否則會退回本徵值問題。ARM64 上不提供 MKL 項目，原生 Eigen 函式庫無法使用時則會隱藏 Eigen 項目 | Auto |
+| **執行緒** | 並行執行緒數（1–128）。選擇 **Auto** 時停用；選擇某個求解器時，會設為邏輯處理器數（MKL 時為其 ¼） | — |
+| **繪製輔助圓** | 勾選時，會在主圖樣上以黃色圓標示每個繞射盤的邊界（LACBED 時，000 為圓，其他反射為十字） | 開啟 |
 
 ---
 
 ## 執行 / 停止
 
-- **Start**：以目前的輸入參數開始 CBED 模擬。
-- **Stop**：取消執行中的計算。
+- **模擬**：以目前的輸入參數開始 CBED 模擬。
+- **停止**：取消執行中的計算。
 
 ---
 
@@ -42,12 +44,12 @@ GUI 條件：Wave Length = Electron · Incident beam = Convergence (CBED, electr
 
 | 參數 | 說明 |
 |-----------|-------------|
-| **Sample thickness** | 以滑桿在輸入參數的厚度範圍內，選擇要顯示的試樣厚度 |
-| **Brightness adjustment** | **Common to all disks**：在所有盤之間使用共通的亮度尺度，以顯示完整的 CBED 圖樣。**Per disk**：以全解析度顯示單一選定的盤，並在該盤內進行正規化 |
-| **Brightness (Max / Min)** | 所顯示強度的上限與下限。當您想強調微弱特徵時可加以調整 |
-| **γ (emphasis of outer disks)** | 伽瑪校正。用於使大角度的暗外側盤相對於中央透射盤更易觀察 |
-| **Scale** | 從 **Positive** / **Negative**（黑白反轉）中選擇強度漸層 |
-| **Color** | 顯示所用的色彩對映。可從 **Gray** 等選項中選擇 |
+| **厚度** | 以滑桿在輸入參數的厚度範圍內，選擇要顯示的試樣厚度（[繞射斑點資訊](index.md#diffraction-spot-information)表格會隨之變更） |
+| **調整亮度** | **套用至所有圓盤**：使用單一亮度尺度，以所有盤中的最大值正規化。**套用至個別圓盤**：每個盤各以其自身的最大值正規化（γ 會重設為 0 並停用） |
+| **亮度 (Max / Min)** | 所顯示強度的上限與下限，以最大值的比例表示（滑桿位置以 4 次方套用）。當您想強調微弱特徵時可加以調整 |
+| **Gamma（增強外圈圓盤）** | 將每個像素乘上 $\exp(\gamma\,r)$（$r$ 為其與圖樣中心的距離），使大角度的暗外側盤相對於中央透射盤更易觀察。僅在 **套用至所有圓盤** 時有效 |
+| **漸層** | 從 **Positive** / **Negative**（黑白反轉）中選擇強度漸層 |
+| **顏色** | 顯示所用的色彩對映：**Gray**、**Cold-Warm**、**Spectrum** 或 **Fire** |
 
 ---
 

@@ -2,9 +2,9 @@
 
 La simulazione della **PED (Precession Electron Diffraction)** calcola i pattern di diffrazione elettronica ottenuti facendo precessare il fascio incidente lungo un cono attorno all'asse ottico.
 
-> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**. Si noti che **la selezione di Precession (electron) per il fascio incidente commuta automaticamente il calcolo dell'intensità su Dynamical**. Per le operazioni a livello dell'intera finestra, come il disegno e il salvataggio, vedere la [pagina panoramica](index.md).
+> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Sorgente d'onda = Elettroni, Ottica = Precessione (elettroni), Calcolo intensità = Teoria dinamica (automatico)**. Si noti che **la selezione di Precessione (elettroni) per il fascio incidente commuta automaticamente il calcolo dell'intensità su Teoria dinamica**. Per le operazioni a livello dell'intera finestra, come il disegno e il salvataggio, vedere la [pagina panoramica](index.md).
 
-Condizioni GUI: **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
+Condizioni GUI: **Sorgente d'onda = Elettroni, Ottica = Precessione (elettroni), Calcolo intensità = Teoria dinamica (automatico)**
 
 ![Simulatore di diffrazione in modalità PED](../../assets/cap-it-auto/FormDiffractionSimulator-ped.png)
 
@@ -24,7 +24,7 @@ Nella PED il fascio elettronico viene fatto precessare lungo un cono attorno all
 
 ![Lunghezza d'onda](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Poiché la PED è una diffrazione elettronica, selezionare **Electron beam** come sorgente. Inserendo l'energia degli elettroni (keV) o la lunghezza d'onda (nm) si calcola la lunghezza d'onda corretta relativisticamente.
+Poiché la PED è una diffrazione elettronica, selezionare **Elettroni** come sorgente. Inserendo l'energia degli elettroni (keV) o la lunghezza d'onda (Å o nm, commutabile; predefinito Å) si calcola la lunghezza d'onda corretta relativisticamente.
 
 ---
 
@@ -32,9 +32,9 @@ Poiché la PED è una diffrazione elettronica, selezionare **Electron beam** com
 
 ![Modalità del fascio incidente](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
-Per la geometria del fascio incidente, selezionare **Precession (electron)** (disponibile solo quando è selezionato il fascio elettronico).
+Per la geometria del fascio incidente (**Ottica**), selezionare **Precessione (elettroni)** (disponibile solo quando è selezionato il fascio elettronico).
 
-> **Nota** : la selezione di **Precession (electron)** **commuta automaticamente il calcolo dell'intensità su Dynamical**, e compaiono il pannello delle impostazioni del metodo delle onde di Bloch e il pannello delle impostazioni della precessione. **Only excitation error** / **Kinematical** non possono più essere selezionati.
+> **Nota** : la selezione di **Precessione (elettroni)** **commuta automaticamente il calcolo dell'intensità su Teoria dinamica**, e compaiono il pannello delle impostazioni del metodo delle onde di Bloch e il pannello delle impostazioni della precessione. **Solo errore di ecc.** / **Cinematica & err. ecc.** non possono più essere selezionati.
 
 ---
 
@@ -42,25 +42,25 @@ Per la geometria del fascio incidente, selezionare **Precession (electron)** (di
 
 ![Parametri di precessione](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
 
-Impostare la forma e il campionamento del cono di precessione.
+Impostare la forma e il campionamento del cono di precessione (gruppo **Proprietà di precessione**).
 
 | Parametro | Descrizione | Consigliato |
 |-----------|-------------|-------------|
-| **Semi-angle** | Semiapertura del cono di precessione (mrad) | 10–40 mrad |
-| **Step** | Numero di direzioni di fascio parallelo campionate sul cono di precessione. Valori maggiori danno un'integrazione più regolare ma aumentano linearmente il tempo di calcolo | 36–72 |
+| **Semiangolo** | Semiapertura del cono di precessione (mrad; 0.1–500, predefinito 50) | 10–40 mrad |
+| **Passo** | Numero di direzioni di fascio parallelo campionate sul cono di precessione (2–1080, predefinito 36). Valori maggiori danno un'integrazione più regolare ma aumentano linearmente il tempo di calcolo | 36–72 |
 
 ---
 
 ## Calcolo dell'intensità e impostazioni del metodo delle onde di Bloch
 
-Nel momento in cui si seleziona **Precession (electron)**, viene fissato **Intensity = Dynamical (automatic)**. Per il fascio parallelo in ciascuna direzione di precessione, l'intensità di diffrazione viene calcolata con il metodo delle onde di Bloch (calcolo dinamico), e l'integrazione su tutte le direzioni fornisce il pattern PED.
+Nel momento in cui si seleziona **Precessione (elettroni)**, viene fissato **Calcolo intensità = Teoria dinamica (automatico)**. Per il fascio parallelo in ciascuna direzione di precessione, l'intensità di diffrazione viene calcolata con il metodo delle onde di Bloch (calcolo dinamico), e l'integrazione su tutte le direzioni fornisce il pattern PED.
 
 ![Parametri delle onde di Bloch](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 | Parametro | Descrizione | Consigliato |
 |-----------|-------------|-------------|
-| **No. of diffracted waves** | Numero di onde di Bloch incluse nel problema agli autovalori. Valori maggiori danno intensità più accurate ma il tempo di calcolo cresce come $O(N^3)$ | 50–200 |
-| **Thickness** | Spessore del campione usato nel calcolo dinamico (nm) | — |
+| **Numero di onde diffratte** | Numero di onde di Bloch incluse nel problema agli autovalori (8–1000, predefinito 240). Valori maggiori danno intensità più accurate ma il tempo di calcolo cresce come $O(N^3)$ | 50–200 |
+| **Spessore** | Spessore del campione usato nel calcolo dinamico (nm; 0.01–10000, predefinito 50) | — |
 
 Il costo computazionale è all'incirca "numero di passi × calcolo delle onde di Bloch per direzione". Per i dettagli del calcolo dinamico, vedere [Calcolo dinamico (metodo delle onde di Bloch)](../appendix/a3-bloch-wave/calculation.md).
 
@@ -70,16 +70,14 @@ Il costo computazionale è all'incirca "numero di passi × calcolo delle onde di
 
 ![Aspetto](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
-Controlla il modo in cui viene disegnato ciascuno spot di diffrazione.
+Controlla il modo in cui viene disegnato ciascuno spot di diffrazione (gruppo **Aspetto**).
 
-- **Solid sphere / Gaussian** : modello geometrico dei punti del reticolo reciproco. **Solid sphere** disegna la sezione tra una sfera di raggio $R$ e la sfera di Ewald, mentre **Gaussian** disegna la sezione (una gaussiana 2D) tra una gaussiana 3D con $\sigma = R$ e la sfera di Ewald.
-- **Opacity** : trasparenza dello spot (0 = trasparente, 1 = opaco).
-- **Radius (R)** : raggio dei punti del reticolo reciproco. Per le intensità dinamiche, l'integrale della gaussiana $=$ Brightness $\times I_\text{dyn}$, e Solid sphere usa il raggio $R \times I_\text{dyn}^{1/2}$ (in modo che l'area sia proporzionale all'intensità dinamica).
-- **Brightness** : disponibile solo nella modalità **Gaussian**. Intensità integrata della gaussiana disegnata.
-- **Color scale** : mappa di colori **Gray scale** o **Cold-warm**.
-- **Log scale** : visualizza l'intensità in scala logaritmica.
-- **Spot color** : colore dello spot usato quando non è applicata alcuna scala di colori.
-- **Color per crystal** : disegna gli spot nel colore assegnato a ciascun cristallo.
+- **Sfera piena / Gaussiana** : modello geometrico dei punti del reticolo reciproco. **Sfera piena** disegna la sezione tra una sfera di raggio $R$ e la sfera di Ewald, mentre **Gaussiana** disegna la sezione (una gaussiana 2D) tra una gaussiana 3D con $\sigma = R$ e la sfera di Ewald.
+- **Opacità** : trasparenza dello spot (0 = trasparente, 1 = opaco).
+- **Raggio riflesso (R)** : raggio dei punti del reticolo reciproco. Per le intensità dinamiche, l'integrale della gaussiana $=$ Luminosità $\times I_\text{dyn}$, e Sfera piena usa il raggio $R \times I_\text{dyn}^{1/2}$ (in modo che l'area sia proporzionale all'intensità dinamica).
+- **Luminosità**, **Scala colori**, **Scala log** : mostrati solo nella modalità **Gaussiana**. **Luminosità** scala l'intensità integrata della gaussiana disegnata; **Scala colori** è **Gray** (spot nei colori degli spot indicati sotto), **Cold-Warm**, **Spectrum** o **Fire**; **Scala log** visualizza l'intensità in scala logaritmica.
+- **Colore riflesso** : mostrato finché la **Scala colori** è **Gray** (impostazione iniziale): **Spot generali** / **Spot estinti (vite/slitt.)** / **Spot estinti (centratura)**.
+- **Colore per cristallo** : disegna gli spot nel colore assegnato a ciascun cristallo.
 
 ---
 

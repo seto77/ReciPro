@@ -2,9 +2,9 @@
 
 La **simulazione della diffrazione di raggi X / neutroni** calcola i pattern di diffrazione di raggi X e neutroni da monocristallo. È una delle modalità principali del [simulatore di diffrazione](index.md).
 
-> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Wave Length = X-ray** (o neutron). Per le operazioni a livello di finestra, come il disegno e il salvataggio, consultare la [pagina panoramica](index.md).
+> Questa pagina elenca tutte le impostazioni che compaiono sul lato destro quando si seleziona **Wave Length = Raggi X** (o Neutroni). Per le operazioni a livello di finestra, come il disegno e il salvataggio, consultare la [pagina panoramica](index.md).
 
-Condizioni della GUI: Wave Length = X-ray / Neutron · Incident beam = Parallel / Precession (X-ray) / Back-Laue · Intensity calculation = Only excitation error / Kinematical
+Condizioni della GUI: Wave Length = Raggi X / Neutroni · Fascio incidente = Fascio parallelo / Precessione (raggi X, ZOLZ) / Back Laue (raggi X) · Calcolo intensità = Solo errore di ecc. / Cinematica & err. ecc.
 
 ![Simulatore di diffrazione in modalità raggi X / neutroni](../../assets/cap-it-auto/FormDiffractionSimulator-xray.png)
 
@@ -20,7 +20,7 @@ I raggi X hanno una lunghezza d'onda maggiore degli elettroni (Cu Kα: 0.15406 n
 
 ![Wave Length](../../assets/cap-it-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
-Selezionare **X-ray** come sorgente di radiazione. I raggi X possono essere specificati in due modi: raggi X caratteristici e radiazione di sincrotrone.
+Selezionare **Raggi X** come sorgente di radiazione. I raggi X possono essere specificati in due modi: raggi X caratteristici e radiazione di sincrotrone.
 
 ### Raggi X caratteristici
 
@@ -29,9 +29,9 @@ La scelta di un **elemento** e di una **transizione** fissa la lunghezza d'onda 
 | Elemento | Linea | Lunghezza d'onda (Å) | Energia (keV) |
 |---------|------|-----------------|--------------|
 | Cu | Kα₁ | 1.5406 | 8.048 |
-| Mo | Kα₁ | 0.7107 | 17.479 |
+| Mo | Kα₁ | 0.7093 | 17.479 |
 | Co | Kα₁ | 1.7890 | 6.930 |
-| Cr | Kα₁ | 2.2910 | 5.415 |
+| Cr | Kα₁ | 2.2897 | 5.415 |
 
 ### Radiazione di sincrotrone
 
@@ -45,19 +45,23 @@ Impostare **Element** su **0: Custom** e inserire direttamente l'energia (keV) o
 
 Seleziona la geometria del fascio incidente. Per i raggi X sono disponibili tre modalità.
 
-### Parallel
+### Fascio parallelo
 
 L'onda piana standard. Un fascio incidente parallelo utilizzato per SAED e per la diffrazione di raggi X da monocristallo.
 
-### Precession (X-ray) — camera di precessione
+### Precessione (raggi X, ZOLZ) — camera di precessione
 
 Simula una camera di precessione a raggi X. Si tratta di una fotografia di precessione che cattura un singolo strato del reticolo reciproco.
 
-### Back-Laue (Laue in retroriflessione)
+### Back Laue (raggi X) — Laue in retroriflessione
 
-Simula un pattern di Laue in retroriflessione con raggi X bianchi (policromatici). In questa geometria di retroriflessione il rivelatore è collocato sul lato della sorgente e **Monochrome** viene disattivato. La geometria di riflessione è data da **Tau / Phi** in **Detector geometry** (vedere [Detector geometry](index.md#detector-geometry)).
+Simula un pattern di Laue in retroriflessione con raggi X bianchi (policromatici). In questa geometria di retroriflessione il rivelatore è collocato sul lato della sorgente e **Monochrome** viene disattivato. Gli spot sono proiettati su un rivelatore piano **perpendicolare al fascio**, posto alla lunghezza di camera sul lato della sorgente; l'inclinazione del rivelatore **Tau / Phi** della [geometria del rivelatore](index.md#detector-geometry) non viene usata in questa proiezione.
 
-> **Nota**: Le opzioni del fascio incidente seguono la lunghezza d'onda. **Precession (electron)** e **Convergence (CBED)** compaiono solo quando è selezionata la radiazione elettronica, mentre le opzioni **Precession (X-ray)** e **Back-Laue** sopra indicate compaiono solo quando è selezionata la radiazione a raggi X. Per i neutroni è disponibile solo **Parallel**. A seconda dello stato al momento dell'acquisizione, lo screenshot potrebbe non mostrare le opzioni specifiche dei raggi X.
+- Lo spettro bianco è troncato a **50 keV**: le riflessioni vengono raccolte fino a $d = \lambda(50\ \text{keV})/2$ e non si applica alcuna pesatura spettrale.
+- Le armoniche $n\mathbf{g}$ che giacciono sulla stessa retta passante per l'origine cadono sullo stesso spot; i loro $\lvert F\rvert^2$ vengono sommati sulla riflessione di ordine più basso e le intensità degli spot sono normalizzate allo spot più intenso.
+- **Dispersione anomala (f', f'')** è disabilitata (l'energia non ha un valore unico) e **Raggio riflesso** non ha unità in questa modalità.
+
+> **Nota**: Le opzioni del fascio incidente seguono la lunghezza d'onda. **Precessione (elettroni)** e **Convergenza (elettroni)** compaiono solo quando è selezionata la radiazione elettronica, mentre le opzioni **Precessione (raggi X, ZOLZ)** e **Back Laue (raggi X)** sopra indicate compaiono solo quando è selezionata la radiazione a raggi X. Per i neutroni è disponibile solo **Fascio parallelo**. A seconda dello stato al momento dell'acquisizione, lo screenshot potrebbe non mostrare le opzioni specifiche dei raggi X.
 
 ---
 
@@ -67,15 +71,22 @@ Simula un pattern di Laue in retroriflessione con raggi X bianchi (policromatici
 
 Seleziona il metodo utilizzato per calcolare le intensità degli spot. Per i raggi X sono disponibili due modalità.
 
-### Only excitation error
+### Solo errore di ecc.
 
-L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $S_g$). È massima per $S_g = 0$ — esattamente sulla sfera — e decresce al crescere di $\lvert S_g\rvert$, annullandosi non appena $\lvert S_g\rvert$ supera il **Radius** indicato per il punto del reticolo reciproco. Il fattore di struttura viene ignorato.
+L'intensità è determinata esclusivamente dalla distanza geometrica tra la sfera di Ewald e il punto del reticolo reciproco (l'errore di eccitazione $S_g$). È massima per $S_g = 0$ — esattamente sulla sfera — e decresce al crescere di $\lvert S_g\rvert$, annullandosi non appena $\lvert S_g\rvert$ supera il **Raggio riflesso** indicato per il punto del reticolo reciproco. Il fattore di struttura viene ignorato.
 
-### Kinematical & excitation error
+Solo in questa modalità compaiono le opzioni seguenti:
+
+- **Escludi tutte le riflessioni proibite** / **Escludi le riflessioni proibite dalla centratura reticolare** (predefinito: solo centratura reticolare) : nascondono le riflessioni proibite dal gruppo spaziale. Le riflessioni non nascoste vengono disegnate con i colori distinti impostati in **Colore riflesso** (proibite da assi elicoidali/piani di slittamento e proibite dal reticolo).
+- **Disegna tutti i riflessi con lo stesso raggio** : disegna ogni spot con la dimensione corrispondente a $S_g = 0$, indipendentemente dal suo errore di eccitazione.
+
+### Cinematica & err. ecc.
 
 Oltre all'errore di eccitazione, il fattore di struttura cinematico $\lvert F_{hkl} \rvert^2$ viene incorporato nell'intensità. Le regole di estinzione sono rigorosamente rispettate. I fattori di Lorentz e di polarizzazione non sono inclusi (si tratta di una simulazione del pattern geometrico).
 
-> **Nota**: La **teoria dinamica** è disabilitata per i raggi X (disponibile solo quando è selezionata la radiazione elettronica).
+- **Dispersione anomala (f', f'')** (solo raggi X, attiva per impostazione predefinita) : aggiunge al fattore di struttura (e anche agli anelli di Debye) i termini di dispersione anomala f′, f″ all'energia corrente dei raggi X. In una struttura non centrosimmetrica che contiene diffusori anomali chimicamente distinti, la legge di Friedel cessa allora di valere e le intensità di $hkl$ / $\bar h\bar k\bar l$ differiscono (coppie di Bijvoet); l'effetto è massimo in prossimità di uno spigolo di assorbimento. Disabilitata per Back Laue. Vedere [Fattore di struttura](../appendix/a2-beam-interaction/structure-factor.md).
+
+> **Nota**: La **Teoria dinamica** è disabilitata per i raggi X (disponibile solo quando è selezionata la radiazione elettronica).
 
 ---
 
@@ -85,31 +96,31 @@ Oltre all'errore di eccitazione, il fattore di struttura cinematico $\lvert F_{h
 
 Controlla come viene reso ciascuno spot di diffrazione.
 
-- **Solid sphere / Gaussian** : modello geometrico del punto del reticolo reciproco. **Solid sphere** utilizza la sezione trasversale tra una sfera di raggio *R* e la sfera di Ewald (l'area del cerchio corrisponde all'intensità di diffrazione); **Gaussian** utilizza la sezione trasversale tra una gaussiana 3-D con σ = *R* e la sfera di Ewald (l'integrale della gaussiana 2-D corrisponde all'intensità di diffrazione).
-- **Opacity** : trasparenza dello spot (0 = trasparente, 1 = opaco).
-- **Radius (R)** : raggio del punto del reticolo reciproco. La dimensione dello spot reso è determinata dalla combinazione di **Appearance** e **Intensity calculation**.
-- **Brightness** : attivo solo nella modalità **Gaussian**. Imposta l'intensità integrata della gaussiana resa.
-- **Color scale** : scegliere tra le mappe di colore **Gray scale** e **Cold-warm**.
-- **Log scale** : visualizza le intensità su scala logaritmica.
-- **Spot color** : colore predefinito dello spot quando la scala di colore non viene applicata.
-- **Color per crystal** : se selezionato, disegna gli spot nel colore assegnato a ciascun cristallo.
+- **Sfera piena / Gaussiana** : modello geometrico del punto del reticolo reciproco. **Sfera piena** disegna la sezione trasversale tra una sfera e la sfera di Ewald; con **Cinematica & err. ecc.** il raggio della sfera è $R \times I_\text{rel}^{1/3}$ (cosicché il *volume* della sfera è proporzionale all'intensità relativa), con **Solo errore di ecc.** è *R* stesso. **Gaussiana** utilizza la sezione trasversale tra una gaussiana 3-D con σ = *R* e la sfera di Ewald (l'integrale della gaussiana 2-D corrisponde all'intensità di diffrazione); gli spot con $\lvert S_g\rvert \ge 3R$ non vengono disegnati.
+- **Opacità** : trasparenza dello spot (0 = trasparente, 1 = opaco).
+- **Raggio riflesso (R)** : raggio del punto del reticolo reciproco. La dimensione dello spot reso è determinata dalla combinazione di **Aspetto** e **Calcolo intensità**.
+- **Luminosità** : attivo solo nella modalità **Gaussiana**. Imposta l'intensità integrata della gaussiana resa.
+- **Scala colori** (solo Gaussiana) : **Gray**, **Cold-Warm**, **Spectrum** o **Fire**.
+- **Scala log** (solo Gaussiana) : visualizza le intensità su scala logaritmica.
+- **Colore riflesso** : colori degli spot usati con la scala colori **Gray** (questo gruppo è nascosto per le altre scale colori).
+- **Colore per cristallo** : se selezionato, disegna gli spot nel colore assegnato a ciascun cristallo.
 
 ---
 
 ## Anelli di Debye (policristallino)
 
-È possibile visualizzare gli anelli di Debye di un campione policristallino. Abilitare **Debye rings** sulla barra degli strumenti (vedere [Toolbar](index.md#toolbar)).
+È possibile visualizzare gli anelli di Debye di un campione policristallino. Abilitare **Anelli di Debye** sulla barra degli strumenti (vedere [Barra degli strumenti](index.md#toolbar)).
 
-- **Ignore diffraction intensity** : disegna tutti gli anelli con lo stesso colore e la stessa intensità (utilizzato per un confronto puramente geometrico che ignora il fattore di struttura).
-- **Show index label** : visualizza l'indice (*hkl*) accanto a ciascun anello.
+- **Ignora intensità di diffrazione** : disegna tutti gli anelli con lo stesso colore e la stessa intensità (utilizzato per un confronto puramente geometrico che ignora il fattore di struttura).
+- **Mostra etichette indici** : visualizza l'indice (*hkl*) accanto a ciascun anello.
 
-Le impostazioni dettagliate si trovano nella scheda Debye rings del [menu a schede](index.md#drawing-overlay-tabs).
+Le impostazioni dettagliate si trovano nella scheda Anelli di Debye del [menu a schede](index.md#drawing-overlay-tabs).
 
 ---
 
 ## Diffrazione di neutroni
 
-La selezione di **Neutron** nel controllo Wave Length calcola un pattern di diffrazione di neutroni. Inserire l'energia (meV) o la lunghezza d'onda (nm). Il fascio incidente può essere solo **Parallel**. Il calcolo dell'intensità può essere **Only excitation error** o **Kinematical** (Dynamical non è disponibile). L'intensità cinematica utilizza la lunghezza di diffusione del neutrone al posto del fattore di diffusione atomico.
+La selezione di **Neutroni** nel controllo Wave Length calcola un pattern di diffrazione di neutroni. Inserire l'energia (meV) o la lunghezza d'onda (Å o nm, commutabile; predefinito Å). Il fascio incidente può essere solo **Fascio parallelo**. Il calcolo dell'intensità può essere **Solo errore di ecc.** o **Cinematica & err. ecc.** (la **Teoria dinamica** non è disponibile). L'intensità cinematica utilizza la lunghezza di diffusione del neutrone al posto del fattore di diffusione atomico.
 
 ---
 

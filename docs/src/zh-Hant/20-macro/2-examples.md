@@ -32,7 +32,7 @@ circumference = 2 * math.pi * r
 ### C. 旋轉目前的晶體
 
 ```python
-# Rotate the current crystal by 30 degrees around the a-axis (x-axis).
+# Rotate the current crystal by 30 degrees around its a-axis [100].
 ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
 ```
 
@@ -148,7 +148,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 - **檢視變數值**：`print()` 在此環境中無法運作（沒有主控台）。請使用 **Step by step** 執行方式，並觀察偵錯面板，它會在每一行列出區域變數。
 - **`math` 已預先匯入**：`math.sqrt(x)`、`math.sin(x)`、`math.pi`、`math.radians(deg)` 無需 `import math` 即可使用。
-- **批次處理加速**：在密集迴圈期間設定 `ReciPro.DifSim.SkipRendering = True`，之後再將其重設為 `False`。
+- **批次處理加速**：`ReciPro.DifSim.SkipRendering = True` 僅在**動力學**模式下跳過繞射點的繪製（計算本身照常執行，因此適合 `SpotInfo()` 的批次處理；儲存的影像不含繞射點）。之後請將其重設為 `False`。在運動學／激發誤差模式下無作用。
 - **等待算繪**：當需要讓 GUI 跟上時，呼叫 `ReciPro.Sleep(ms)` 來暫停執行。
 - **自動完成**：彈出視窗顯示完整的 `ReciPro.Class.Member` 形式。輸入幾個字母，然後用 `Enter` 或 `Tab` 確認。
 

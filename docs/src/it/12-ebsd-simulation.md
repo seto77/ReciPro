@@ -7,7 +7,7 @@ Il **Simulatore EBSD** simula i pattern di diffrazione da retrodiffusione elettr
 La finestra è composta da tre colonne.
 
 - **Sinistra** : condizioni di simulazione. Le schede selezionano **Geometria** (geometria campione/rivelatore e una vista 3D), **Distribuzione BSE** (distribuzioni degli elettroni retrodiffusi) e **Overlay** (linee di Kikuchi e altre annotazioni).
-- **Centro** : il pattern EBSD (di Kikuchi) per l'orientazione corrente del cristallo. Sotto di esso, le schede selezionano **Parametri di output** e **Immagine sperimentale**.
+- **Centro** : il pattern EBSD (di Kikuchi) per l'orientazione corrente del cristallo. Sotto di esso, le schede selezionano **Immagine simulata** e **Immagine sperimentale**.
 - **Destra** : il master pattern indipendente dall'orientazione, nelle schede **2D** e **3D**.
 
 La barra di stato in basso mostra l'avanzamento del calcolo in corso e un riepilogo del risultato. Se la finestra è stretta, un messaggio lungo viene troncato sul bordo destro; passandoci sopra il mouse si vede il messaggio completo.
@@ -23,7 +23,7 @@ La vista centrale del pattern EBSD (di Kikuchi) e le viste del master pattern su
 | <kbd>F1</kbd> | Apre questa pagina del manuale online |
 | Trascinare con il tasto sinistro il pattern vicino al centro | Inclina il cristallo |
 | Trascinare con il tasto sinistro l'area esterna del pattern | Ruota il cristallo |
-| Doppio clic sul pattern | Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche |
+| Doppio clic sul pattern | Seleziona la sotto-cella del rivelatore sotto il cursore e mostra le sue statistiche (quando la selezione **Zone axis** è attiva: aggiunge un asse di zona; vedi [Selezione degli assi di zona](#selezione-degli-assi-di-zona)) |
 | Rilasciare un file immagine sulla finestra | Lo carica come immagine EBSD sperimentale |
 | Trascinare con il tasto sinistro una vista 3D (geometria / sfera master) | Ruotala |
 | Trascinare con il tasto destro, o rotellina del mouse, su una vista 3D | Zoom |
@@ -40,7 +40,7 @@ Le viste 3D utilizzano la [navigazione della vista](21-shortcuts.md) standard di
 
 La pressione di **Crea master pattern** esegue in ordine i passaggi seguenti.
 
-1. **Simulazione Monte-Carlo dei BSE** : utilizzando la composizione del cristallo corrente, la densità, la tensione di accelerazione e l'inclinazione del campione, circa 2,5 milioni di elettroni vengono tracciati all'interno del campione (diffusione elastica: sezioni d'urto di Mott/NIST; diffusione anelastica: modello di risposta dielettrica). Ciò produce la distribuzione congiunta di *profondità di penetrazione × direzione di uscita × energia di uscita* degli elettroni retrodiffusi.
+1. **Simulazione Monte-Carlo dei BSE** : utilizzando la composizione del cristallo corrente, la densità, la tensione di accelerazione e l'inclinazione del campione, 10 milioni di elettroni incidenti vengono tracciati all'interno del campione (diffusione elastica: sezioni d'urto di Mott/NIST; diffusione anelastica: modello di risposta dielettrica). Ciò produce la distribuzione congiunta di *profondità di penetrazione × direzione di uscita × energia di uscita* degli elettroni retrodiffusi.
 2. **Selezione automatica degli intervalli** : da tale distribuzione, l'intervallo di energia (dall'energia incidente fino a circa il 95° percentile della perdita di energia) e l'intervallo di profondità usati nel calcolo dinamico vengono impostati automaticamente. La profondità è qui lo spessore del master pattern, cioè la lunghezza del percorso misurata lungo la direzione di uscita (profondità della sorgente ÷ cos χ, dove χ è l'angolo tra la direzione di uscita e la normale alla superficie del campione). L'intervallo di profondità arriva fino al 99,9° percentile di tale lunghezza del percorso per gli elettroni che raggiungono il rivelatore (arrotondato per eccesso a due cifre significative) ed è diviso in 40 passi disuguali, più fitti vicino alla superficie.
 3. **Costruzione del master pattern** : per ogni energia e profondità, il problema di diffrazione dinamica (a onde di Bloch) viene risolto e integrato sulla sfera delle direzioni, pesato con la distribuzione Monte-Carlo, per fornire l'intensità di diffrazione retrodiffusa in ogni direzione. Il risultato è memorizzato su una griglia equiareale (di Roşca–Lambert).
 4. **Proiezione sul rivelatore, con pesatura** : per l'orientazione corrente del cristallo, l'intensità per la direzione sottesa da ciascun pixel del rivelatore viene cercata nel master pattern e disegnata come pattern di Kikuchi, opzionalmente pesata con la distribuzione angolare/energetica dei BSE.
@@ -55,9 +55,9 @@ Gli intervalli di energia e profondità vengono impostati automaticamente nei pa
 
 ![Condizioni SEM & campione](../assets/cap-it-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageGeometry.groupBoxSampleCondition.png)
 
-- **Energy** : tensione di accelerazione del fascio incidente (keV).
-- **Wavelength** : lunghezza d'onda dell'elettrone, collegata a Energy. **Unit** seleziona Å o nm.
-- **Sample tilt** : angolo di inclinazione del campione (tipicamente −70°). La forte inclinazione nell'EBSD aumenta la resa degli elettroni retrodiffusi.
+- **Energia** : tensione di accelerazione del fascio incidente (keV).
+- **Lungh. d'onda** : lunghezza d'onda dell'elettrone, collegata a Energia. **Unit** seleziona Å o nm.
+- **Inclinazione campione** : angolo di inclinazione del campione (tipicamente −70°). La forte inclinazione nell'EBSD aumenta la resa degli elettroni retrodiffusi.
 
 ### Geometria EBSD
 
@@ -65,11 +65,11 @@ Gli intervalli di energia e profondità vengono impostati automaticamente nei pa
 
 Il rivelatore (schermo a fosfori) è un rettangolo definito da un numero di pixel e da una dimensione di pixel.
 
-- **Dimensioni e inclinazione** : **Tilt** è l'inclinazione del piano del rivelatore (°); **Width** e **Height** sono il numero di pixel del rivelatore.
-- **Risoluzione** : la dimensione fisica di un pixel del rivelatore (mm/px). La dimensione fisica del rivelatore è quindi Width × Risoluzione per Height × Risoluzione.
-- **Coordinate del centro del rivelatore** : posizione **X**, **Y**, **Z** del centro del rivelatore rispetto al punto di impatto del fascio (mm). Y e Z, insieme all'inclinazione, determinano la lunghezza di camera; X è lo scostamento sinistra-destra.
+- **Dimensioni e inclinazione** : **Inclinazione** è l'inclinazione del piano del rivelatore (°); **Larghezza** e **Altezza** sono il numero di pixel del rivelatore.
+- **Risoluzione** : la dimensione fisica di un pixel del rivelatore (mm/px). La dimensione fisica del rivelatore è quindi Larghezza × Risoluzione per Altezza × Risoluzione.
+- **Coord. centro rivelatore** : posizione **X**, **Y**, **Z** del centro del rivelatore rispetto al punto di impatto del fascio (mm). Y e Z, insieme all'inclinazione, determinano la lunghezza di camera; X è lo scostamento sinistra-destra.
 
-Caricando un'immagine sperimentale, **Width** e **Height** vengono portati alle dimensioni dell'immagine, così che un pixel del rivelatore corrisponda a un pixel dell'immagine (la **Risoluzione** resta invariata).
+Caricando un'immagine sperimentale, **Larghezza** e **Altezza** vengono portati alle dimensioni dell'immagine, così che un pixel del rivelatore corrisponda a un pixel dell'immagine (la **Risoluzione** resta invariata).
 
 La geometria può essere esaminata nella vista 3D della scheda **Geometria**.
 
@@ -85,9 +85,9 @@ La piastra grigia è il campione, la lastra rettangolare verde è il rivelatore 
 
 La scheda **Distribuzione BSE** mostra le distribuzioni Monte-Carlo degli elettroni retrodiffusi. Usa **Simula** per ricalcolarle.
 
-- **Stereonet** : distribuzione angolare (istogramma delle direzioni di uscita) degli elettroni retrodiffusi. Il centro è la direzione della normale alla superficie e il contorno giallo segna la regione rettangolare sottesa dal rivelatore. **Disegna assi** sovrappone gli assi cristallini e la scala dei colori (**Min** / **Max**, **Resolution**, **Colore**) è regolabile.
+- **Stereonet** : distribuzione angolare (istogramma delle direzioni di uscita) degli elettroni retrodiffusi. Il centro è la direzione della normale alla superficie e il contorno giallo segna la regione rettangolare sottesa dal rivelatore. **Disegna assi** sovrappone gli assi cristallini e la scala dei colori (**Min** / **Max**, **Resolution**, **Color**) è regolabile.
 - **ΔE (keV)** : distribuzione della perdita di energia degli elettroni retrodiffusi.
-- **Profondità (nm)** : distribuzione della profondità alla quale gli elettroni retrodiffusi rivelati hanno subito l'ultimo evento di diffusione anelastica — la stessa definizione di profondità che pesa il master pattern.
+- **Profondità (nm)** : distribuzione della profondità della sorgente degli elettroni retrodiffusi rivelati, secondo la definizione di **Profondità della sorgente (MC)** (predefinita: l'ultimo evento di diffusione anelastica) — la stessa definizione di profondità che pesa il master pattern.
 
 Queste distribuzioni sono calcolate dallo stesso motore Monte-Carlo di [Traiettorie elettroniche](8-electron-trajectory.md) e sono utilizzate per pesare il master pattern.
 
@@ -99,10 +99,10 @@ Queste distribuzioni sono calcolate dallo stesso motore Monte-Carlo di [Traietto
 
 La scheda **Overlay** configura le annotazioni disegnate sul pattern EBSD.
 
-- **Background color** : colore di sfondo.
+- **Colore di sfondo** : colore di sfondo.
 - **Contorno del rivelatore** : il contorno del rivelatore. **Mostra riquadro** (il rettangolo giallo al bordo del rivelatore) / **Mostra griglia** (griglia di suddivisione).
 - **Mostra linee di Kikuchi** : disegna le linee di Kikuchi. **Spessore linea** / **Colore** e **Applica fattori di struttura all'intensità delle linee di Kikuchi** (ogni linea sfuma verso lo sfondo in proporzione al proprio fattore di struttura).
-- **Criteri linee di Kikuchi** : quali linee di Kikuchi disegnare: **Fattore di struttura** (le prime **Top** *N* per fattore di struttura) oppure **Soglia 1/d** (quelle con 1/d al di sotto di una soglia, nm⁻¹).
+- **Criteri linee di Kikuchi** : quali linee di Kikuchi disegnare: **Fattore di struttura** (le prime *N* per fattore di struttura, con *N* impostato in **Max**) oppure **Soglia 1/d** (quelle con 1/d al di sotto di una soglia, nm⁻¹).
 - **Mostra indici linee di Kikuchi** : mostra gli indici delle linee di Kikuchi (bande).
 - **Mostra indici asse di zona** : mostra gli indici degli assi di zona.
 - **Impostazioni testo** : **Dimensione testo** / **Colore** delle etichette degli indici.
@@ -119,7 +119,7 @@ Se un sito atomico non ha il parametro di spostamento atomico (B = 0), premendo 
 
 - Scheda **2D** : proiezione equiareale (di Lambert) di un emisfero. **Emisfero** seleziona l'emisfero proiettato (+Z / −Z).
 - Scheda **3D** : una sfera con l'intensità mappata su di essa. Può essere ruotata con il mouse e un riquadro in alto a sinistra mostra gli assi cristallini sincronizzati (a/b/c). **Etichette assi** / **Frecce assi** commutano le etichette/frecce e **Vista lungo** guarda lungo l'asse di zona [u v w] inserito accanto.
-- Cursori **Energy / Depth** : selezionano la sezione di energia/profondità da visualizzare in anteprima.
+- Cursori **Energia / Profondità** : selezionano la sezione di energia/profondità da visualizzare in anteprima.
 - Ciascuna vista può essere inviata negli appunti con **Copia**.
 - **Salva video** (scheda **3D**) : salva un video (MP4) del master pattern sferico in rotazione. Direzione di rotazione, velocità, durata, fps e qualità si impostano nella stessa finestra di dialogo «Movie setting» del [Visualizzatore struttura](5-structure-viewer.md). Ruota solo questa vista 3D; l'orientazione del cristallo (gli angoli di Eulero della finestra principale) non cambia.
 
@@ -129,16 +129,17 @@ Se un sito atomico non ha il parametro di spostamento atomico (B = 0), premendo 
 
 ![Parametri di simulazione dinamica](../assets/cap-it-auto/FormEBSD.splitContainer1.groupBoxMasterPattern.groupBoxSimulationParameters.png)
 
-- **Number of diffracted waves** : numero di fasci diffratti (onde) inclusi nel calcolo a onde di Bloch. Più onde sono più accurate ma più lente.
+- **Numero di onde diffratte** : numero di fasci diffratti (onde) inclusi nel calcolo a onde di Bloch. Più onde sono più accurate ma più lente.
 - **Griglia** : risoluzione della griglia del master pattern (pixel per lato, 64–8192; predefinito 256). 4096 e 8192 richiedono un'enorme quantità di memoria per i dati intermedi (con le 16 energie × 40 profondità predefinite, circa 344 GB a 4096 e 1374 GB a 8192; già circa 86 GB a 2048), quindi il numero di passi in energia e profondità va ridotto drasticamente perché diventino utilizzabili. Se la memoria non basta, il calcolo termina con «MasterPattern failed» (ReciPro continua a funzionare).
-- **Energy from … to … with step of …** : intervallo di energia e passo su cui si integra (keV); impostato automaticamente dal risultato Monte-Carlo.
-- **Thickness from … to … with step of …** : intervallo di profondità e passo su cui si integra (nm); impostato anch'esso automaticamente. Le profondità automatiche non sono equispaziate, quindi le caselle mostrano come riferimento il punto meno profondo, l'estremo superiore e il primo intervallo; modificare a mano una casella passa a profondità equispaziate con quei valori.
+- **Energia … a … passo …** : intervallo di energia e passo su cui si integra (keV); impostato automaticamente dal risultato Monte-Carlo.
+- **Spessore … a … passo …** : intervallo di profondità e passo su cui si integra (nm); impostato anch'esso automaticamente. Le profondità automatiche non sono equispaziate, quindi le caselle mostrano come riferimento il punto meno profondo, l'estremo superiore e il primo intervallo; modificare a mano una casella passa a profondità equispaziate con quei valori.
 - **Assorbimento non locale** : usa la forma di assorbimento non locale.
-- **Sorgente non locale** : sostituisce la sorgente di retrodiffusione localizzata sui siti atomici con la forma non locale del potenziale assorbente (U'_back integrato sull'emisfero posteriore). Entrambe usano la stessa sezione d'urto fisica: è un cambio di modello, non un fondo additivo.
+- **Sorgente non locale** (attivo per impostazione predefinita) : sostituisce la sorgente di retrodiffusione localizzata sui siti atomici con la forma non locale del potenziale assorbente (U'_back integrato sull'emisfero posteriore). Entrambe usano la stessa sezione d'urto fisica: è un cambio di modello, non un fondo additivo.
 - **Profondità della sorgente (MC)** : quale evento Monte Carlo definisce la profondità della sorgente coerente di retrodiffusione usata nella pesatura (energia × profondità): l'ultimo evento anelastico (predefinito), l'ultimo evento di trasporto di qualsiasi tipo, o l'ultima decoerenza. In quest'ultimo caso un evento azzera la sorgente solo se è abbastanza localizzato da lasciare nel campione l'informazione su quale atomo ha diffuso: gli elastici con la probabilità termico-diffusa 1 − exp(−2B s²) del fattore di Debye–Waller (la diffusione di Bragg coerente no), gli anelastici sempre per eccitazioni di core o ad alta perdita e, per eccitazioni di valenza, solo con la frazione il cui trasferimento di impulso supera il taglio plasmonico q_c = ω_p/v_F (plasmoni e coppie elettrone–lacuna delocalizzate conservano lo stato di Bloch). Sorgenti più superficiali portano una modulazione di Kikuchi più debole: l'ultima opzione fissa il fondo diffuso con il solo trasporto, senza parametri liberi. Il cambio ricampiona solo gli elettroni salvati, senza ripetere il Monte Carlo.
 - **Il contrasto cala con la perdita di energia** (attivo per impostazione predefinita; E_c = 0,8 keV con gaussiana asimmetrica e 0,9 keV con istogramma + A per elettrone) : moltiplica il contrasto di Kikuchi di ogni fetta di energia per A(E) = exp(−(E0 − E)/E_c), dove E0 è l'energia del fascio ed E l'energia di uscita, e sposta la parte persa in un piedistallo piatto mediato sulle direzioni, così che la luminosità senza contrasto di banda resti invariata. I pesi Monte Carlo contano ogni elettrone retrodiffuso, ma gli elettroni che hanno perso molta energia portano poco contrasto di Kikuchi netto; senza questa correzione ogni fetta porta il contrasto pieno e le bande risultano circa il 12 % più larghe che per elettroni monocromatici a E0 (Si, 20 kV). E_c è un parametro efficace, non una costante del materiale; valori più piccoli danno un'attenuazione più forte. Il valore predefinito di 0,8 keV della gaussiana asimmetrica si basa su una calibrazione, con le condizioni di calcolo originali, sulle larghezze di banda di un pattern misurato di Si a 20 kV (insieme di dati Si004; rapporto di lunghezza d'onda efficace α ≈ 1.017). I valori calibrati dipendono dal materiale e dalle riflessioni usate; per la botallackite si sono ottenuti circa 0.43–0.71 keV a seconda della scelta delle riflessioni. Per confronti quantitativi delle larghezze di banda, ricalibrare E_c quando cambiano la griglia energia/profondità, il metodo di sintesi o la misura di valutazione. Modificarlo ripesa soltanto le fette esistenti, senza ricalcolare il master pattern né il Monte Carlo.
 - **Strato amorfo superficiale** : spessore (nm) di uno strato superficiale non cristallino (ossido nativo, contaminazione, danno da lucidatura o da assottigliamento ionico). Gli elettroni la cui sorgente coerente di retrodiffusione si trova nello strato non portano modulazione di Kikuchi e sono aggiunti come contributo uniforme mediato in direzione, con la stessa intensità per elettrone; le sorgenti sotto lo strato si misurano dalla superficie del cristallo. Il trasporto è calcolato con composizione e densità del cristallo, adeguato per pochi nm. 0 disattiva; il cambio ricampiona solo gli elettroni salvati, senza ripetere il Monte Carlo.
 - **Pesare con la risposta del fosforo** (attivo per default, E_dead = 2 keV) : pesa ogni elettrone Monte Carlo con la resa luminosa di uno schermo al fosforo, φ(E) = max(0, E − E_dead), invece di contare ogni elettrone una volta. Gli elettroni di energia più alta lasciano il campione inclinato più in avanti, quindi la pesatura riduce il gradiente di intensità dall'alto in basso del pattern (per Si a 20 kV da circa 2,5 a 1,7 sul rivelatore) e attenua leggermente gli assi di zona. Si applica al binning sul piano del rivelatore e alla distribuzione di energia per bin; la modifica ri-raggruppa gli elettroni salvati senza rieseguire il Monte Carlo. Disattivare per un rivelatore diretto che conta gli elettroni. E_dead è l'energia dello strato morto (soglia) del fosforo; valori tipici 0–3 keV per uno schermo P43 con rivestimento di alluminio.
+- **Energy filter E >** (keV; predefinito 0 = disattivato) : un filtro di energia passa-alto ideale davanti al rivelatore. Gli elettroni la cui energia di uscita è pari o inferiore a questo valore non contribuiscono al pattern. La modifica ri-raggruppa gli elettroni salvati senza rieseguire il Monte Carlo né ricostruire il master pattern.
 - **Distribuzione di energia da istogramma MC** (disattivato per impostazione predefinita) : costruisce la distribuzione dell'energia di uscita di ogni bin di direzione dall'istogramma Monte Carlo grezzo (pesato con φ, ripartito linearmente tra le due fette di energia vicine del master pattern) invece che da una gaussiana asimmetrica adattata alla media e alle dispersioni dei due lati. La gaussiana sottostima il picco vicino all'energia del fascio di un fattore 2–3, facendo apparire le bande più larghe. Attivandolo, anche l'A(E) di **Il contrasto cala con la perdita di energia** viene applicato a ogni elettrone alla sua energia di uscita prima di ripartirlo tra le fette di energia, invece di essere valutato alle energie delle fette. In modalità istogramma + A per elettrone, finché E_c non viene modificato passa al valore provvisorio di 0,9 keV ricavato dalla mediana delle larghezze di 18 bande fisse Si004 a 20 kV; altre misure (ad esempio la correlazione dell’intera immagine) danno valori diversi. Dopo aver modificato E_c, il valore inserito viene mantenuto quando si cambia distribuzione. La modifica ri-raggruppa gli elettroni memorizzati senza ripetere il Monte Carlo.
 
 ---
@@ -153,7 +154,7 @@ Il pannello centrale mostra il pattern EBSD (a bande di Kikuchi) per l'orientazi
 - **Overlay** : disegna le linee di Kikuchi, gli indici e il contorno del rivelatore configurati nella scheda **Overlay**.
 - **Immagine sperimentale** : sovrappone l'immagine sperimentale caricata (vedi sotto).
 - **Inverti S-D** : specchia il pattern e tutti i suoi overlay da sinistra a destra. Deselezionata (impostazione predefinita) è la vista dal rivelatore verso il campione, cioè il pattern come lo registra una telecamera EBSD; selezionala solo se la tua immagine sperimentale ha la chiralità opposta.
-- **Resolution** (mm/px) e **Size (W×H)** (px) : risoluzione e dimensioni della vista visualizzata.
+- **Risoluzione** (mm/px) e **Dimensioni (L×A)** (px) : risoluzione e dimensioni della vista visualizzata.
 - **Salva** : salva il pattern in un file, con l'intervallo e la risoluzione selezionati accanto. Il formato (PNG / TIFF / EMF) si sceglie nella finestra di salvataggio.
   - **Pattern values (\*.csv)** scrive, invece di un'immagine, le intensità grezze sulla griglia di pixel del rivelatore.
   - Un TIFF viene scritto in scala di grigi a 16 bit (non quantizzato a 256 livelli) quando l'intervallo è **Rivelatore**, **EBSD dinamico** è visualizzato e **Immagine sperimentale** no. In tal caso gli **Overlay** vengono omessi qualunque sia la loro casella, e i valori dei pixel sono il pattern mappato linearmente dal proprio minimo–massimo su 0–65535 (il minimo e il massimo usati sono riportati nella barra di stato; usare l'esportazione csv se servono valori assoluti).
@@ -162,10 +163,10 @@ Il pannello centrale mostra il pattern EBSD (a bande di Kikuchi) per l'orientazi
   - **emf** copia un Enhanced Metafile mantenendo vettoriali le linee di Kikuchi e le etichette degli indici; **bmp** rasterizza tutto.
   - **Adatta alla risoluzione del rivelatore** copia con un pixel dell'immagine per pixel del rivelatore (il lato maggiore è limitato a 4096 px). Deselezionata, viene usata la risoluzione a schermo.
 
-### Parametri di output
+### Immagine simulata
 
-- **Mostra immagine con distribuzioni angolari/energetiche BSE** : se selezionata, il pattern viene composto pesando con la distribuzione dei BSE (energia, profondità, direzione) anziché con una singola sezione.
-- **Energy / Depth** : quando l'opzione precedente è disattivata, seleziona la sezione di energia/profondità da visualizzare.
+- **Con distribuzioni angolari/energetiche BSE** (attivo per impostazione predefinita) : se selezionata, il pattern viene composto pesando con la distribuzione dei BSE (energia, profondità, direzione) anziché con una singola sezione.
+- **Energia** / **Profondità** : quando l'opzione precedente è disattivata, seleziona la sezione di energia/profondità da visualizzare.
 - **Luminosità** (**Min** / **Max**), **Contrasto**, **Polarità**, **Colore** : i punti di nero e di bianco del pattern simulato come percentuale dell'intervallo di visualizzazione (cursori lineari), l'ampiezza di tale intervallo, la sua polarità e la scala dei colori. Con Contrasto 0 l'intervallo di visualizzazione coincide con l'intervallo di intensità del pattern stesso; -1 lo allarga di dieci volte (contrasto dieci volte più debole) e +1 lo restringe a un decimo, mantenendo fisso il centro.
 - **Appiattire il fondo** (**FWHM**, px; disattivo per default, 100 px) : sottrae al pattern simulato una copia sfocata con una gaussiana, rimuovendo la distribuzione di luminosità a variazione lenta così da confrontare bande e assi di zona con un pattern sperimentale corretto per il fondo. La larghezza a metà altezza è in pixel del rivelatore e non dipende dallo zoom. Agisce sull'immagine visualizzata e sull'export PNG/TIFF; l'export CSV mantiene i valori grezzi.
 
@@ -197,7 +198,17 @@ L'orientazione che spiega l'immagine viene poi cercata con uno dei due motori.
 
 **Facendo clic su una riga, quell'orientazione viene applicata all'intero programma**: il pattern simulato viene ridisegnato sopra quello sperimentale e l'orientazione del cristallo di tutte le altre finestre lo segue.
 
-**Calibra geometria** raffina la geometria del rivelatore — centro del pattern (PC) e distanza del rivelatore (DD) — alternandola con l'orientazione, massimizzando la ZNCC tra pattern simulato e sperimentale. Richiede il master pattern, mantiene fissa l'inclinazione del rivelatore e riscrive il risultato nei campi **Coordinate del centro del rivelatore** X/Y/Z. Poiché la scansione del fascio di un SEM sposta il centro del pattern solo di una frazione di millimetro, di norma una sola calibrazione all'inizio dell'esperimento basta per un'intera serie di immagini.
+### Selezione degli assi di zona
+
+Invece di confrontare l'intera immagine, l'orientazione si può trovare anche dalle intersezioni di bande (assi di zona) selezionate a mano sull'immagine sperimentale.
+
+- **Zone axis** : attiva la selezione. Quando è attiva, un doppio clic sinistro sul pattern aggiunge un punto, <kbd>CTRL</kbd> + doppio clic sinistro rimuove il punto entro 5 pixel dello schermo e <kbd>SHIFT</kbd> + doppio clic sinistro seleziona un punto (disegnato in giallo; gli altri sono in ciano, numerati). Quando è disattivata, il doppio clic seleziona come di consueto una cella del rivelatore.
+- **[u v w]** : l'indice dell'asse di zona del punto selezionato. Lasciare 0 0 0 perché sia la ricerca ad assegnarlo; digitare un indice vincola la ricerca (utile per cristalli a bassa simmetria e assi ad alti indici).
+- **+ geometry** : ottimizza anche il centro del rivelatore (X, Y, Z, mm) insieme all'orientazione, minimizzando il residuo in pixel tra le posizioni previste e quelle selezionate degli assi di zona. Richiede almeno 4 punti assegnati; selezionando poi un candidato viene applicata anche la geometria raffinata.
+- **Find** : cerca le orientazioni che spiegano gli assi di zona selezionati (almeno 2 punti; tre di solito bastano, due sono ambigui). La tolleranza angolare è di 2°, riprovata a 5° se non si trova nulla. Fino a 10 candidati vengono scritti nella stessa tabella dei candidati e, facendo clic su una riga, vengono applicati come sopra.
+- **Clear** : rimuove tutti i punti selezionati, gli indici digitati e i candidati dell'ultima ricerca per assi di zona (senza annullamento). Caricare una nuova immagine sperimentale ha lo stesso effetto.
+
+**Calibra geometria** raffina la geometria del rivelatore — centro del pattern (PC) e distanza del rivelatore (DD) — alternandola con l'orientazione, massimizzando la ZNCC tra pattern simulato e sperimentale. Richiede il master pattern, mantiene fissa l'inclinazione del rivelatore e riscrive il risultato nei campi **Coord. centro rivelatore** X/Y/Z. Poiché la scansione del fascio di un SEM sposta il centro del pattern solo di una frazione di millimetro, di norma una sola calibrazione all'inizio dell'esperimento basta per un'intera serie di immagini.
 
 ---
 

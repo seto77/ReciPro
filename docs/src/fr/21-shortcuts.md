@@ -8,12 +8,23 @@ ReciPro associe de nombreuses fonctions à des **combinaisons de touches** et à
 
 ## Raccourcis applicables à toute l'application
 
-Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction et Spot ID ont le focus.
+Ils sont installés par la [fenêtre principale](0-main-window.md) mais restent actifs lorsque les fenêtres Visualiseur de structure, Stéréonet, Simulateur de diffraction et Spot ID v1 ont le focus.
 
 | Raccourci | Action |
 |----------|--------|
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + touches fléchées | Faire tourner le cristal d'un pas dans cette direction (maintenez deux flèches pour une diagonale) |
-| Maintenir <kbd>CTRL</kbd> pendant le démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques) |
+| Maintenir <kbd>CTRL</kbd> pendant le démarrage de ReciPro | Démarrer avec OpenGL désactivé (récupération en cas de problèmes graphiques ; pour ce lancement uniquement, non enregistré) |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> (n'importe quelle fenêtre) | Ouvrir l'outil (expérimental) de capture de l'interface pour la fenêtre active |
+
+### Champs de saisie numérique
+
+La plupart des champs numériques de toutes les fenêtres se comportent de la même manière.
+
+| Raccourci | Action |
+|----------|--------|
+| <kbd>↑</kbd> / <kbd>↓</kbd> (champ ayant le focus, boutons d'incrémentation affichés) | Augmenter / diminuer la valeur d'un pas, exactement comme les boutons d'incrémentation |
+| <kbd>ENTER</kbd> | Valider la valeur saisie |
+| <kbd>SHIFT</kbd>+<kbd>ENTER</kbd> ou <kbd>CTRL</kbd>+<kbd>ENTER</kbd> | Évaluer l'expression arithmétique saisie et la remplacer par le résultat |
 
 ---
 
@@ -47,7 +58,7 @@ Utilisées par la figure du [Simulateur de diffraction](7-diffraction-simulator/
 | Glisser un cadre avec le bouton droit | Zoomer sur la région sélectionnée |
 | Glisser avec le bouton du milieu | Déplacement |
 
-Il n'y a **pas** de zoom à la molette sur ces vues.
+Seule la figure du Simulateur de diffraction zoome aussi avec la molette de la souris (×2 / ×0.5, recentrée sur le curseur) ; le Stéréonet et la figure de Kikuchi de l'EBSD n'ont **pas** de zoom à la molette. Il n'y a pas de zoom par les touches <kbd>+</kbd> / <kbd>-</kbd>.
 
 ### Vues d'image { #image }
 
@@ -72,9 +83,9 @@ Utilisées par les panneaux de résultat du [HRTEM/STEM](9-hrtem-stem-simulator/
 | Glisser avec le bouton gauche le widget d'orientation (en bas à gauche) | Faire tourner le cristal |
 | Double-clic droit sur le widget d'orientation | Copier l'image du widget dans le presse-papiers |
 | Simple clic / double-clic sur un bouton de fonction | Activer/désactiver cette fenêtre / la forcer au premier plan |
-| Clic droit sur un cristal dans la liste | Menu contextuel (Renommer / Dupliquer / Supprimer / Exporter CIF…) |
-| Double-clic sur l'étiquette **Current Index** | Afficher/masquer le champ max-UVW |
-| Déposer un fichier | Charger une liste de cristaux (`.xml`, `.cdb2`) ou un cristal (`.cif`, `.amc`) |
+| Clic droit sur un cristal dans la liste | Menu contextuel (Renommer / Exporter en CIF / Dupliquer / Supprimer) |
+| Double-clic sur l'étiquette d'indice d'axe de zone (`[u v w]`) | Afficher/masquer le champ max-UVW |
+| Déposer un fichier | Charger une liste de cristaux (`.xml`, `.out`, `.cdb2`) ou un cristal (`.cif`, `.amc`) |
 
 ### 1. Base de données de cristaux
 [Ouvrir la page →](1-crystal-database.md)
@@ -86,7 +97,7 @@ Utilisées par les panneaux de résultat du [HRTEM/STEM](9-hrtem-stem-simulator/
 | Clic sur un élément dans le popup du tableau périodique | Faire défiler son filtre : ignorer → doit inclure → doit exclure |
 
 ### 2. Informations de symétrie · 3. Interaction du faisceau
-Les Informations de symétrie n'ont pas de combinaisons clavier/souris particulières. Dans l'Interaction du faisceau, outre <kbd>F1</kbd> et les boutons **Copy**, le curseur vertical du graphique **Scattering factors** peut être glissé pour lire la valeur de chaque élément.
+Les Informations de symétrie n'ont pas de combinaisons clavier/souris particulières. Dans l'Interaction du faisceau, outre <kbd>F1</kbd> et les boutons **Copier**, le curseur vertical du graphique **Facteurs de diffusion** peut être glissé pour lire la valeur de chaque élément.
 [Symétrie →](2-symmetry-information.md) · [Interaction du faisceau →](3-beam-interaction.md)
 
 ### 4. Géométrie de rotation
@@ -107,21 +118,22 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 
 | Raccourci | Action |
 |----------|--------|
-| Double-clic gauche sur le réseau | Basculer entre la projection **Plane** et **Axis** |
+| Double-clic gauche sur le réseau | Basculer entre la projection **Plans** et **Axes** |
 | Déplacer la souris sur le réseau | Lire les (hkl)/[uvw] sous le curseur |
 
 ### 7. Simulateur de diffraction
-[Ouvrir la page →](7-diffraction-simulator/index.md) — la figure est une [vue de figure de diffraction](#pattern) (pas de zoom à la molette).
+[Ouvrir la page →](7-diffraction-simulator/index.md) — la figure est une [vue de figure de diffraction](#pattern), avec en plus le zoom à la molette.
 
 | Raccourci | Action |
 |----------|--------|
+| Molette de la souris vers le haut / bas | Zoomer (×2) / dézoomer (×0.5) en recentrant la vue sur la position du curseur (sur le centre fixe lorsque la case **Fixer** du centre est cochée) |
 | Double-clic gauche sur une tache | Afficher les détails de la réflexion (indice, *d*, facteur de structure, erreur d'excitation) |
 | <kbd>CTRL</kbd> + glisser avec le bouton du milieu | Déplacer le centre du détecteur (lorsque la zone du détecteur est affichée) |
 | Double-clic droit sur la barre d'état | Copier un résumé textuel des réglages actuels |
-| Double-clic droit sur un bouton de couche actif (Spots / Kikuchi / Debye / Scale) | Faire clignoter cette couche |
-| Double-clic gauche sur le stéréonet — fenêtre **TEM holder** | Régler l'inclinaison du porte-objet sur ce point |
-| Touches fléchées — fenêtre **TEM holder** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées** ; actif quelle que soit la fenêtre de ReciPro au premier plan) |
-| Déposer `.prm` / une image — **Detector geometry**, ou `.txt` — **Dynamic compression** | Charger ces données |
+| Double-clic droit sur un bouton de couche actif (Taches / Lignes de Kikuchi / Anneaux de Debye / Échelle) | Faire clignoter cette couche |
+| Double-clic gauche sur le stéréonet — fenêtre **Simulation du porte-objet MET** | Régler l'inclinaison du porte-objet sur ce point |
+| Touches fléchées — fenêtre **Simulation du porte-objet MET** | Modifier l'inclinaison du porte-objet par pas (cochez d'abord **Activer les touches fléchées** ; actif quelle que soit la fenêtre de ReciPro au premier plan) |
+| Déposer `.prm` / une image — **Detector geometry**, ou `.txt` — **Dynamic Compression** | Charger ces données |
 
 ### 8. Trajectoires électroniques
 [Ouvrir la page →](8-electron-trajectory.md) — une [vue 3-D](#3d) avec déplacement désactivé.
@@ -160,6 +172,7 @@ Les Informations de symétrie n'ont pas de combinaisons clavier/souris particuli
 | Raccourci | Action |
 |----------|--------|
 | Double-clic sur la figure de Kikuchi | Sélectionner la sous-cellule du détecteur sous le curseur et afficher ses statistiques |
+| Avec la sélection **Zone axis** activée : double-clic gauche / <kbd>CTRL</kbd> + double-clic gauche / <kbd>SHIFT</kbd> + double-clic gauche sur la figure | Ajouter un point d'axe de zone / supprimer le point situé à moins de 5 pixels écran / sélectionner ce point |
 
 ### 20. Macro
 [Ouvrir la page →](20-macro/index.md)

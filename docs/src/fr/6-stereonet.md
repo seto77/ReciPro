@@ -8,14 +8,14 @@ Le **Stéréonet** affiche les plans cristallins et les directions des axes à l
 
 ## Raccourcis clavier et souris
 
-Le stéréonet lui-même est une projection 2-D ; une sphère 3-D facultative peut être affichée avec **3D display**.
+Le stéréonet lui-même est une projection 2-D ; une sphère 3-D facultative peut être affichée avec **Vue 3D**.
 
 | Raccourci | Action |
 |----------|--------|
 | <kbd>F1</kbd> | Ouvrir cette page du manuel en ligne |
 | Glisser-gauche près du centre | Incliner le cristal |
 | Glisser-gauche dans la zone extérieure | Faire tourner le cristal autour de l'axe de visée |
-| Double-clic gauche | Basculer entre la projection **Plane** et **Axis** |
+| Double-clic gauche | Basculer entre la projection **Plans** et **Axes** |
 | Clic droit | Dézoomer |
 | Glisser-droit d'un cadre | Zoomer sur la région sélectionnée |
 | Glisser-milieu | Déplacer |
@@ -39,7 +39,14 @@ La projection stéréonet des plans cristallins, des indices de direction et des
 
 ## Menu Fichier
 
-Enregistrer ou copier au format raster ou vectoriel. Le format vectoriel permet d'éditer la police/l'épaisseur des traits dans PowerPoint ou d'autres éditeurs vectoriels.
+Enregistrer en image matricielle (PNG), ou copier en image matricielle ou en métafichier vectoriel (EMF). Un métafichier collé permet d'éditer les polices et l'épaisseur des traits dans PowerPoint ou d'autres éditeurs vectoriels.
+
+| Élément de menu | Description |
+|-----------------|-------------|
+| Enregistrer l'image ▸ comme image (format PNG) / comme métafichier (EMF) | Enregistrer le stéréonet dans un fichier PNG (l'élément *comme métafichier (EMF)* est actuellement désactivé ; pour une sortie vectorielle, utilisez **Copier dans le presse-papiers ▸ comme métafichier (EMF)**) |
+| Copier dans le presse-papiers ▸ Comme image / comme métafichier (EMF) | Copier le stéréonet |
+| Enregistrer la vidéo ▸ Stéréonet / 3D | Enregistrer une vidéo de rotation (MP4) du stéréonet ou de la vue 3-D, avec la même boîte de dialogue de réglage du film que le [Visualiseur de structure](5-structure-viewer.md#menu-fichier) (rotation uniquement) |
+| Mise en page / Aperçu avant impression / Imprimer | Imprimer le stéréonet |
 
 ---
 
@@ -52,26 +59,28 @@ Enregistrer ou copier au format raster ou vectoriel. Le format vectoriel permet 
 Sélectionnez ce qui doit être projeté sur le net.
 
 - **Axes** — projette les indices de direction \([uvw]\).
-- **Planes** — projette les normales aux plans cristallins \((hkl)\).
-- **Kikuchi line pairs** — projette les paires de lignes de Kikuchi.
+- **Plans** — projette les normales aux plans cristallins \((hkl)\).
+- **Paires de Kikuchi** — projette les paires de lignes de Kikuchi.
 
 ### Méthode de projection
 
 | Méthode | Description |
 |--------|-------------|
-| **Wulff** (équiangulaire / stéréographique) | Conserve la relation angulaire entre les éléments projetés, mais pas l'angle solide. Utilisée par les cristallographes classiques pour lire les angles entre axes ou entre plans. |
-| **Schmidt** (équivalente / Lambert) | Conserve l'angle solide (l'aire) de chaque région, mais déforme les angles. Préférée pour les figures de pôles statistiques où la densité relative importe. |
+| **Wulff** (**Équiangle** / stéréographique) | Conserve la relation angulaire entre les éléments projetés, mais pas l'angle solide. Utilisée par les cristallographes classiques pour lire les angles entre axes ou entre plans. |
+| **Schmidt** (**Équiaire** / Lambert) | Conserve l'angle solide (l'aire) de chaque région, mais déforme les angles. Préférée pour les figures de pôles statistiques où la densité relative importe. |
 
 ### Hémisphère
 
-Choisissez l'hémisphère **Upper** ou **Lower** comme source de projection — cela détermine si la face visible de la sphère est celle la plus proche ou la plus éloignée de l'observateur.
+Choisissez l'hémisphère **Supérieure** ou **Inférieure** comme source de projection — cela détermine si la face visible de la sphère est celle la plus proche ou la plus éloignée de l'observateur.
+Supérieure = le côté $+Z$ (vers l'observateur, voir l'[Annexe A1.1](appendix/a1-coordinate-system/1-orientation.md)) ; avec **Inférieure**, la composante $Z$ de chaque direction est inversée avant la projection, et les points sont dessinés en **cercles vides** au lieu de cercles pleins.
 
 ### Options d'affichage
 
-- Afficher les étiquettes d'indices.
-- Lorsque **Planes** ou **Kikuchi line pairs** est sélectionné, pondérer chaque point ou ligne par le facteur de structure \(|F_{hkl}|\) (définir la source d'onde et la longueur d'onde dans l'[onglet Wave](#wave)).
+- **Étiquettes d'indices** : afficher les étiquettes d'indices.
+- **Facteurs de structure sur l’intensité** : lorsque **Plans** ou **Paires de Kikuchi** est sélectionné, pondérer chaque élément par son facteur de structure (définir la source d'onde et la longueur d'onde dans l'[onglet Onde](#wave)). Le poids est $I_{\mathrm{rel}} = |F_{hkl}|^2 / \max|F|^2$ sur l'ensemble affiché : en mode **Plans**, le rayon des points est multiplié par $\sqrt{I_{\mathrm{rel}}}$ (c.-à-d. $\propto |F_{hkl}|$) ; en mode **Paires de Kikuchi**, l'opacité des lignes vaut $I_{\mathrm{rel}}$.
+- **Dispersion anomale** : inclure les termes de dispersion anomale des rayons X $f'$, $f''$ dans les facteurs de structure. Disponible uniquement pour les rayons X et en mode **Plans** / **Paires de Kikuchi**.
 
-> Pour les cristaux trigonaux/hexagonaux, la notation Miller–Bravais (4 indices) peut être activée via **Option ▸ Use Miller-Bravais (hkil) index** dans la fenêtre principale.
+> Pour les cristaux trigonaux/hexagonaux, la notation Miller–Bravais (4 indices) peut être activée via **Options ▸ Utiliser l'indice de Miller-Bravais (hkil)** dans la fenêtre principale.
 
 ---
 
@@ -85,56 +94,70 @@ Définit quels plans cristallins / axes sont tracés.
 
 Spécifiez une plage d'indices \([uvw]\) ou \((hkl)\). ReciPro énumère chaque indice à l'intérieur des limites et projette chacun d'eux.
 
+En mode **Plage**, les limites sont $\pm$ les valeurs saisies ; seuls les indices irréductibles sont retenus, regroupés en ensembles d'indices cristallographiquement équivalents (chaque ensemble reçoit une couleur).
+
+### Mode facteur de structure
+
+Disponible uniquement pour **Plans** et **Paires de Kikuchi**. Projette les plans ayant les plus grands $|F_{hkl}|^2$ pour la source d'onde actuelle. **Max.** fixe le nombre de plans à tracer (les plans équivalents sont comptés individuellement ; en mode **Plans**, une réflexion parallèle à une réflexion plus forte — un ordre supérieur ou inférieur de celle-ci, p. ex. 222 lorsque 111 est plus forte — est ignorée).
+
 ### Mode spécifié
 
-Spécifie individuellement des axes ou des plans particuliers. Saisissez un indice, appuyez sur **Add** pour l'enregistrer, ou sur **Remove** pour le supprimer. Lorsque **include equivalent indices** est coché, tous les indices cristallographiquement équivalents sont également tracés.
+Spécifie individuellement des axes ou des plans particuliers. Saisissez un indice, appuyez sur **Ajouter** pour l'enregistrer, ou sur **Supprimer** pour le supprimer. Lorsque **Inclure les indices équivalents** est coché, tous les indices cristallographiquement équivalents sont également tracés.
 
-### Colour / Size
+### Couleur / Taille
 
-Définissez la **colour** et la **size** des points tracés. Cochez **Change colour automatically** pour coder par couleur différemment chaque ensemble d'axes/plans équivalents — utile pour distinguer les familles sur un tracé multi-indices.
+Définissez la **Couleur** et la **Taille** des points tracés. Cochez **Rotation des couleurs** pour coder par couleur différemment chaque ensemble d'axes/plans équivalents — utile pour distinguer les familles sur un tracé multi-indices.
 
 ---
 
-## 3D Options
+## Options 3D {#3d-options}
 
-![3D Options](../assets/cap-fr-auto/FormStereonet.panel3.panel3DOptions.png)
+![Options 3D](../assets/cap-fr-auto/FormStereonet.panel3.panel3DOptions.png)
 
-Contrôle la superposition du net 3D (sphère) — opacité de la sphère, indicateurs d'axes, etc.
+Affichées lorsque **Vue 3D** est coché ; la sphère 3-D apparaît dans un panneau à droite du net.
+
+- **Réinitialiser** : ramène la vue 3-D à la direction et au zoom par défaut.
+- **Étiquette** : dessine les étiquettes d'indices en 3-D.
+- **Hémisphère** : ne dessine que les pôles de l'hémisphère supérieur ($Z>0$).
+- **Stéréonet** : dessine le plan de projection (le net) en 3-D, avec les points projetés des pôles de l'hémisphère supérieur.
+- **Contour de la sphère** : dessine la grille de latitude/longitude de la sphère.
+- **Lignes de projection** (avec **Stéréonet** activé) : dessine les lignes de projection auxiliaires de chaque pôle de l'hémisphère supérieur — une droite du pôle sud $(0,0,-1)$ au pôle pour Wulff, un arc pour Schmidt.
+- **Fondu en profondeur** : intensité de l'atténuation en profondeur de la vue 3-D.
 
 ---
 
 ## Menu des onglets
 
-### Appearance
+### Apparence
 
 ![Onglet Apparence](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage1.png)
 
-#### Outline
+#### Contour
 
-Manière dont le contour du stéréonet est tracé — le cercle de délimitation et la grille facultative latitude/longitude en grands cercles. Choisissez **Equator** ou **Pole**, activez **1° Lines** et le remplissage **Background**, définissez les couleurs de grille **90° / 10° / 1°** et ajustez la **Line width** avec le curseur.
+Manière dont le contour du stéréonet est tracé — le cercle de délimitation et la grille facultative latitude/longitude en grands cercles. Choisissez **Équateur** ou **Pôle**, activez **Lignes à 1°** et le remplissage **Fond**, définissez les couleurs de grille **90° / 10° / 1°** et ajustez la **Largeur de ligne** avec le curseur.
 
-#### Index labels
+#### Étiquettes d'indices
 
-- **Size** — taille des étiquettes d'indices.
-- **Specify color** — utilise une seule couleur fixe pour toutes les étiquettes d'indices au lieu de la couleur propre à chaque point ; utile lorsque les points sont codés par couleur mais que vous souhaitez toutes les étiquettes dans une même couleur pour une meilleure lisibilité.
-- **Delimiter** — caractère placé entre les indices de chaque étiquette : **None** (p. ex. 100), **Space** (1 0 0) ou **Comma** (1,0,0).
+- **Taille** — taille des étiquettes d'indices.
+- **Couleur** (case à cocher) — utilise une seule couleur fixe pour toutes les étiquettes d'indices au lieu de la couleur propre à chaque point ; utile lorsque les points sont codés par couleur mais que vous souhaitez toutes les étiquettes dans une même couleur pour une meilleure lisibilité.
+- **Sépar.** — caractère placé entre les indices de chaque étiquette : **Aucun** (p. ex. 100), **Espace** (1 0 0) ou **Virgule** (1,0,0).
 
-#### Kikuchi line mode
+#### Mode lignes de Kikuchi
 
-- **Point size** — taille des points tracés.
-- **Point** / **Label** — couleurs des points et de leurs étiquettes.
+- **Taille des points** — taille des points tracés.
+- **Point** / **Étiquette** — couleurs des points et de leurs étiquettes.
 
-### Great and Small Circle
+### Grand cercle
 
 ![Onglet Grand cercle](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage2.png)
 
-Tracez des grands cercles et des petits cercles. Spécifiez-les soit par **zone-axis index** \([uvw]\) (le grand cercle formé par la zone de cet axe), soit par **two crystal-plane indices** qui partagent l'axe de zone. L'épaisseur des traits des cercles est également configurable au moyen d'un curseur.
+Tracez des grands cercles (les petits cercles ne sont pas pris en charge). Spécifiez-les soit par **Indice d'axe de zone** \([uvw]\) (le grand cercle formé par la zone de cet axe), soit par **Zone définie par deux plans** (l'axe de zone est leur produit vectoriel). Utilisez **Ajouter** / **Supprimer** pour modifier la liste ; décocher une entrée masque ce cercle. La couleur et l'épaisseur des traits des cercles sont également configurables.
 
-### Wave {#wave}
+### Onde {#wave}
 
 ![Onglet Onde](../assets/cap-fr-auto/FormStereonet.tabControl.tabPage4.png)
 
-Disponible uniquement lorsque **Planes** ou **Kikuchi line pairs** est sélectionné comme cible de projection. Définit la source d'onde (X-ray / electron / neutron) ainsi que la longueur d'onde ou l'énergie nécessaires au calcul des facteurs de structure cristalline utilisés pour l'option **structure-factor weighting** dans [Mode](#mode).
+Utilisé uniquement lorsque **Plans** ou **Paires de Kikuchi** est sélectionné comme cible de projection (en mode **Paires de Kikuchi**, la longueur d'onde fixe aussi l'angle de Bragg, c.-à-d. l'écartement de chaque paire de lignes). Définit la source d'onde (rayons X / électrons / neutrons) ainsi que la longueur d'onde ou l'énergie nécessaires au calcul des facteurs de structure cristalline utilisés par **Facteurs de structure sur l’intensité** dans [Mode](#mode).
 
 ---
 

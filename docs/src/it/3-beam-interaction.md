@@ -16,7 +16,7 @@ Il fascio incidente si seleziona nella banda in cima alla finestra; le quattro s
 
 ## Scorciatoie da tastiera e mouse
 
-Questa finestra non ha combinazioni di tasti speciali. <kbd>F1</kbd> apre questa pagina del manuale. Nella scheda **Fattori di diffusione** la linea verticale del cursore può essere **trascinata** per leggere il fattore di diffusione di ciascun elemento in quella posizione, e ogni scheda ha un pulsante **Copy** che esporta la sua tabella come testo incollabile in un foglio di calcolo.
+Questa finestra non ha combinazioni di tasti speciali. <kbd>F1</kbd> apre questa pagina del manuale. Nella scheda **Fattori di diffusione** la linea verticale del cursore può essere **trascinata** per leggere il fattore di diffusione di ciascun elemento in quella posizione, e ogni scheda ha un pulsante **Copia** che esporta la sua tabella come testo incollabile in un foglio di calcolo.
 
 → Vedi **[21. Scorciatoie da tastiera e mouse](21-shortcuts.md)** per tutte le finestre a colpo d'occhio.
 
@@ -60,17 +60,17 @@ Elenca i piani cristallini permessi (riflessioni) del cristallo e il **fattore d
 
 **Options**
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : calcola l'intensità relativa come intensità di diffrazione da polveri (Bragg–Brentano), includendo la molteplicità e il fattore di Lorentz–polarizzazione. Quando è disattivata, mostra l'intensità del fattore di struttura. Attivandola si forzano inoltre *Hide equivalent planes* e *Hide prohibited planes*.
-- **Hide equivalent planes** : raggruppa i piani cristallograficamente equivalenti in un'unica voce.
-- **Hide prohibited planes** : esclude i piani la cui intensità è zero per le regole di estinzione.
-- **d-Spacing Cutoff >** : esclude le riflessioni con una distanza interplanare minore di questo valore (l'unità di lunghezza segue la selezione di **Unit**).
+- **Intensità di diffrazione da polveri (ottica Bragg-Brentano)** : calcola l'intensità relativa come intensità di diffrazione da polveri (Bragg–Brentano), $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, dove $m$ è la molteplicità, $V$ il volume della cella e $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (fattore di Lorentz–polarizzazione) per i raggi X oppure $L = 1/(\sin 2\theta\,\sin\theta)$ (solo fattore di Lorentz, senza termine di polarizzazione) per elettroni e neutroni. Quando è disattivata, mostra l'intensità del fattore di struttura $\lvert F\rvert^2$. Attivandola si attivano forzatamente anche *Nascondi piani equivalenti* e *Nascondi piani proibiti*, che diventano non modificabili (in grigio).
+- **Nascondi piani equivalenti** (attiva per impostazione predefinita) : raggruppa i piani cristallograficamente equivalenti in un'unica voce. La colonna **Molt.** è mostrata solo mentre questa opzione è attiva.
+- **Nascondi piani proibiti** (attiva per impostazione predefinita) : esclude i piani sistematicamente estinti per le regole di estinzione. Quando è disattivata, una colonna **Condizione** mostra la condizione (o le condizioni) di riflessione che proibisce ciascun piano estinto.
+- **Soglia distanza interplanare >** (predefinito 1 Å) : esclude le riflessioni con una distanza interplanare minore di questo valore (l'unità di lunghezza segue la selezione di **Unit**).
 
 Ogni riga è una riflessione (o un gruppo di piani simmetricamente equivalenti):
 
 | Colonna | Significato |
 |------|------|
 | **h, k, l** | indici di Miller |
-| **Multi.** | molteplicità (numero di piani simmetricamente equivalenti) |
+| **Molt.** | molteplicità (numero di piani simmetricamente equivalenti) |
 | **d (Å)** | distanza interplanare |
 | **q (2π/d)** | modulo del vettore di diffusione |
 | **2θ (°)** | angolo di diffrazione per la lunghezza d'onda selezionata |
@@ -79,6 +79,8 @@ Ogni riga è una riflessione (o un gruppo di piani simmetricamente equivalenti):
 | **\|F\|** | ampiezza del fattore di struttura ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
 | **F^2** | intensità del fattore di struttura ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | intensità relativa, con la riflessione più forte posta a 100 |
+| **Condizione** | condizione (o condizioni) di estinzione violate dal piano (mostrata solo quando *Nascondi piani proibiti* è disattivata) |
+| **i** | l'indice di Miller–Bravais ridondante $i=-(h+k)$ (mostrato solo quando nella finestra principale è attiva **Opzioni ▸ Usa indici di Miller-Bravais (hkil)** e il cristallo usa assi esagonali — esagonale, oppure trigonale non in un setting ad assi romboedrici) |
 
 **Grafico dei picchi di diffrazione.** Sotto la tabella le stesse riflessioni sono disegnate come pattern a barre, con i picchi più forti etichettati dai loro *hkl*.
 
@@ -103,24 +105,24 @@ Quanto a fondo il fascio penetra nel materiale e come perde energia. Il contenut
 
 ### X-ray
 
-I pulsanti di opzione scelgono il coefficiente rappresentato in funzione dell'energia dei fotoni (1–60 keV, asse logaritmico):
+I pulsanti di opzione scelgono il coefficiente rappresentato in funzione dell'energia dei fotoni (calcolato su 1–60 keV con asse dell'energia lineare; l'asse verticale è logaritmico per µ/ρ e µ e lineare per T %):
 
 - **µ/ρ** — il coefficiente di attenuazione **massico** (cm²/g): quanto fortemente il materiale rimuove i raggi X per grammo, indipendentemente da quanto è densamente impacchettato (è il valore che si trova nelle tabelle di riferimento). Il grafico mostra il valore **total** insieme alle sue componenti **photo**, **Rayleigh** e **Compton**.
 - **µ** — il coefficiente di attenuazione **lineare** $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): l'attenuazione per centimetro del materiale reale alla sua densità effettiva. L'intensità trasmessa segue $I = I_0\,e^{-\mu t}$, e $1/\mu$ è la distanza su cui l'intensità scende a circa il 37 % (1/e).
-- **T %** — la **trasmissione** $T = e^{-\mu t}$ in percentuale per lo spessore del campione **t** impostato nel campo **Thickness t** (µm). 100 % = trasparente, 0 % = completamente bloccato; usalo per valutare uno spessore di campione sensato all'energia corrente.
+- **T %** — la **trasmissione** $T = e^{-\mu t}$ in percentuale per lo spessore del campione **t** impostato nel campo **Spessore t** (µm, predefinito 100 µm). 100 % = trasparente, 0 % = completamente bloccato; usalo per valutare uno spessore di campione sensato all'energia corrente.
 
-Le linee verticali indicano l'energia corrente e i **bordi di assorbimento** di ciascun elemento. La tabella scalare a sinistra elenca, all'energia corrente: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (strato di dimezzamento, $\ln 2/\mu$), **Transmission** allo spessore *t*, **µ_en/ρ** (coefficiente di assorbimento di energia massico), i decrementi dell'indice di rifrazione per raggi X **δ** e **β** ($n = 1-\delta+i\beta$), l'angolo **θc (critical)** per la riflessione esterna totale e la **X-ray SLD** reale (densità di lunghezza di diffusione). La tabella inferiore elenca le energie dei **bordi** di assorbimento **K** e **L3** e i loro rapporti di **Jump** per ciascun elemento.
+La linea verticale indica l'energia corrente. La tabella scalare a sinistra elenca, all'energia corrente: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (strato di dimezzamento, $\ln 2/\mu$), **Transmission** allo spessore *t*, **µ_en/ρ** (coefficiente di assorbimento di energia massico), i decrementi dell'indice di rifrazione per raggi X **δ** e **β** ($n = 1-\delta+i\beta$), l'angolo **θc (critical)** per la riflessione esterna totale e la **X-ray SLD** reale (densità di lunghezza di diffusione). La tabella inferiore elenca le energie dei **bordi** di assorbimento **K** e **L3** e i loro rapporti di **Salto** per ciascun elemento.
 
 ### Electron
 
-Il selettore di grandezza sceglie cosa viene rappresentato in funzione dell'energia del fascio (1–30 keV):
+Il selettore di grandezza sceglie cosa viene rappresentato in funzione dell'energia del fascio (calcolato su 1–50 keV; la vista iniziale mostra 0–20 keV):
 
-- **All (normalized)** — sovrappone le tre curve sottostanti, ciascuna riscalata al proprio massimo così che le forme possano essere confrontate in un unico grafico (leggi i valori assoluti dalla tabella).
-- **σ elastic (nm²)** — sezione d'urto di diffusione elastica: quanto è probabile che un singolo atomo devii l'elettrone.
-- **Elastic MFP (nm)** — libero cammino medio: la distanza media percorsa dall'elettrone tra eventi di diffusione elastica.
+- **Tutti (normalizzati)** — sovrappone le tre curve sottostanti, ciascuna riscalata al proprio massimo così che le forme possano essere confrontate in un unico grafico (leggi i valori assoluti dalla tabella).
+- **σ elastica (nm²)** — sezione d'urto di diffusione elastica: quanto è probabile che un singolo atomo devii l'elettrone.
+- **MFP elastico (nm)** — libero cammino medio: la distanza media percorsa dall'elettrone tra eventi di diffusione elastica.
 - **|dE/ds| (keV/nm)** — modulo del potere frenante: l'energia che l'elettrone perde per nanometro di percorso.
 - **IMFP (nm)** — libero cammino medio anelastico: la distanza media tra le collisioni con perdita di energia.
-- **Range CSDA (µm)** — la lunghezza totale del percorso che l'elettrone compie prima di fermarsi.
+- **Percorso CSDA (µm)** — la lunghezza totale del percorso che l'elettrone compie prima di fermarsi.
 
 La tabella scalare elenca la **wavelength** dell'elettrone, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, la **Plasma E** e l'energia media di eccitazione **J**, due **range** dell'elettrone (la stima di penetrazione di Kanaya–Okayama e la lunghezza di percorso integrata CSDA) e il valore medio di **Z, A**. La tabella per elemento fornisce per ciascun elemento la frazione atomica e la sezione d'urto elastica σ. Le sezioni d'urto elastiche usano i dati **NIST Mott** (50 eV–36 keV) e ricorrono a **screened Rutherford** sopra i 36 keV.
 
@@ -143,8 +145,8 @@ Il fattore di diffusione atomico di ciascun elemento costituente, rappresentato 
 === "Neutron"
     ![Fattori di diffusione — neutron](../assets/cap-it-auto/FormBeamInteraction-neutron-scattering.png)
 
-- **X-ray** offre due modalità di **Model**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente e una colonna **modello** che indica da quale sorgente proviene la colonna f(s). Quando è selezionato **f(s)**, una seconda riga di pulsanti di opzione sceglie **da dove proviene la curva**: **Waasmaier–Kirfel** (l'adattamento predefinito, che copre anche gli ioni su Z = 1–98) oppure **Temari**. È disattivata mentre è mostrato **F(q)+S(q)**, perché quelle due curve provengono da xraylib e non ammettono scelta della sorgente.
-- **Electron** offre quattro sorgenti per il fattore di diffusione elettronico: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. La tabella mostra $f_e(s)$ (nm) e quale **model** lo ha prodotto.
+- **X-ray** offre due modalità di **Modello**: **f(s)** rappresenta il fattore di diffusione atomico convenzionale per raggi X (in unità elettroniche); **F(q)+S(q)** rappresenta il fattore di forma **coerente** di Rayleigh $F(q)$ insieme alla funzione di diffusione **incoerente** di Compton $S(q)$ (da xraylib). La tabella elenca inoltre i termini di dispersione anomala **f'(E)** e **f''(E)** all'energia corrente e una colonna **modello** che indica da quale sorgente proviene la colonna f(s). Quando è selezionato **f(s)**, una seconda riga di pulsanti di opzione sceglie **da dove proviene la curva**: **Waasmaier–Kirfel** (l'adattamento predefinito, che copre anche gli ioni su Z = 1–98) oppure **Temari**. È disattivata mentre è mostrato **F(q)+S(q)**, perché quelle due curve provengono da xraylib e non ammettono scelta della sorgente.
+- **Electron** offre quattro sorgenti per il fattore di diffusione elettronico: **Peng**, **Kirkland**, **8-Gaussians** e **Temari**. La tabella mostra $f_e(s)$ (nm) e quale **modello** lo ha prodotto.
 - Le lunghezze di diffusione **Neutron** non dipendono da $s$, quindi non viene disegnata alcuna curva; la tabella elenca per ciascun elemento la lunghezza di diffusione coerente **b_coh** e le sue sezioni d'urto coerente / incoerente.
 - **Temari** non è un adattamento ma una tabella calcolata (Temari dataset-factors v2.0.0, CC-BY-4.0, da un calcolo di campo autoconsistente di Dirac completo). Copre **solo atomi neutri Z = 1–86**: ioni e Z = 87–98 non hanno voce, quindi le loro curve sono omesse e le celle restano vuote invece di essere riempite con valori di atomo neutro.
 - **Debye-Waller** moltiplica ciascun fattore per lo smorzamento termico $e^{-B s^2}$ usando il parametro di spostamento isotropo di ciascun atomo.
@@ -163,7 +165,7 @@ Il grafico **EDX emission lines** disegna le righe caratteristiche (Kα1, Kα2, 
 
 ## Copia negli appunti
 
-Ogni scheda ha un pulsante **Copy** che copia la sua tabella negli appunti come testo che può essere incollato in un foglio di calcolo come Excel.
+Ogni scheda ha un pulsante **Copia** che copia la sua tabella negli appunti come testo che può essere incollato in un foglio di calcolo come Excel.
 
 ---
 

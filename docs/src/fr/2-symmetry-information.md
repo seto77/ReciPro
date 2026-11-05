@@ -38,9 +38,10 @@ Saisissez deux plans cristallins \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) ou deu
 
 - la distance interréticulaire de chaque plan / la longueur de chaque axe,
 - l'angle entre les deux plans (ou les deux axes),
+- l'angle entre le plan 1 et l'axe 1, et entre le plan 2 et l'axe 2,
 - **l'indice de direction normal aux deux plans** et **l'indice de plan normal aux deux axes**.
 
-Ces calculs tiennent compte de la métrique de la maille actuelle.
+Ces calculs tiennent compte de la métrique de la maille actuelle. Les longueurs sont affichées en Å et les angles en degrés.
 
 ---
 
@@ -48,7 +49,7 @@ Ces calculs tiennent compte de la métrique de la maille actuelle.
 
 ![Positions de Wyckoff](../assets/cap-fr-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
-Liste chaque position de Wyckoff avec sa multiplicité, sa lettre de Wyckoff, sa symétrie de site, et indique s'il s'agit d'une position générale ou spéciale. Pour les réseaux centrés, les vecteurs de translation du réseau sont indiqués dans la ligne d'en-tête.
+Liste chaque position de Wyckoff avec sa multiplicité (**Mult.**), sa lettre de Wyckoff (**Lettre Wyck.**), sa symétrie de site (**Sym. site**) et ses **Coordonnées** (jusqu'à quatre par ligne ; les listes plus longues se poursuivent sur les lignes suivantes). La première entrée de Wyckoff (multiplicité la plus élevée) est la position générale. Pour les réseaux centrés, les vecteurs de translation du réseau sont indiqués dans la ligne d'en-tête.
 
 ---
 
@@ -57,6 +58,8 @@ Liste chaque position de Wyckoff avec sa multiplicité, sa lettre de Wyckoff, sa
 ![Conditions](../assets/cap-fr-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageConditions.png)
 
 Les conditions de réflexion issues du centrage du réseau et des opérateurs de symétrie de glissement/hélicoïdaux.
+
+Chaque ligne comporte trois colonnes : **Indices** (la classe de réflexions, p. ex. $hkl$, $h0l$, $00l$), **Condition** (p. ex. $h+k=2n$) et **Élément** (le centrage du réseau ou l'élément de symétrie responsable). *No Condition* s'affiche lorsqu'il n'y en a aucune.
 
 ---
 
@@ -97,12 +100,13 @@ Les deux panneaux du bas reproduisent les diagrammes schématiques de symétrie 
 - **Éléments de symétrie (à gauche)** : les axes de rotation/hélicoïdaux, les plans miroir/de glissement et les centres d'inversion/points de rotoinversion sont dessinés avec les symboles graphiques conventionnels.
   - Pour le réseau \(F\) du système cubique, seul le quart supérieur gauche de la maille projetée est représenté (voir l'[Annexe A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md#symmetry-element-diagram)).
   - Ces éléments de symétrie peuvent aussi être dessinés directement sur le modèle 3D dans le [Visualiseur de structure](5-structure-viewer.md).
-- **Positions générales (à droite)** : les positions équivalentes générales sont tracées sous forme de cercles (une virgule signale une image miroir), annotées de leurs coordonnées fractionnaires.
+- **Positions générales (à droite)** : les positions équivalentes générales sont tracées sous forme de cercles (une virgule signale une image miroir), chacun annoté de sa hauteur selon l'axe de projection (`+`, `−`, `½+`, … ; voir l'[Annexe A4.1](appendix/a4-symmetry-space-groups/symbols-and-diagrams.md)).
+  - Le point d'essai $(x,y,z)$ se règle avec les cases **a** / **b** / **c** placées à côté du bouton **Copier** des positions générales (plage −1 à 1, pas de 0.01). Il est réinitialisé à une valeur par défaut propre au groupe ponctuel chaque fois que le groupe ponctuel change, et conservé lorsque seul le groupe d'espace change au sein du même groupe ponctuel.
   - Pour le système cubique uniquement, des lignes auxiliaires relient les trois cercles reliés par un axe de rotation d'ordre 3.
 
-Commandes situées sous les diagrammes :
+Commandes (le panneau **Options** en bas de la fenêtre, et le bouton **Copier** au-dessus de chaque diagramme) :
 
-- **Direction** (`a` / `b` / `c`) : choisit l'axe cristallin selon lequel projeter.
+- **Direction** (`a` / `b` / `c`) : choisit l'axe cristallin selon lequel projeter. Ce choix n'est possible que pour les groupes d'espace orthorhombiques (`c` par défaut) ; pour les groupes monocliniques, l'axe unique est utilisé automatiquement, et `c` pour tous les autres systèmes cristallins.
 - **Copier** : copie chaque diagramme dans le presse-papiers au format choisi via **Format de copie** (vectoriel **emf** / matriciel **bmp**) ; l'emf peut être dissocié puis modifié dans PowerPoint.
 - **Relations de groupe…** ouvre un navigateur des relations sous-groupe maximal/supergroupe minimal du groupe d'espace actuel. Voir l'[Annexe A4.2](appendix/a4-symmetry-space-groups/group-subgroup-relations.md) pour sa lecture.
 

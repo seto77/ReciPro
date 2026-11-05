@@ -2,9 +2,9 @@
 
 La **simulazione CBED (Convergent-Beam Electron Diffraction)** calcola e visualizza i pattern di diffrazione a fascio convergente utilizzando il metodo delle onde di Bloch (Bethe). I pattern CBED mostrano dischi di diffrazione anziché spot e contengono informazioni ricche sulla simmetria del cristallo, sullo spessore e sulla struttura.
 
-> Questa pagina elenca tutte le impostazioni della finestra dedicata che si apre quando si seleziona **Wavelength = Electron** e **Incident beam = Convergence (CBED, electron only)** nel [Simulatore di diffrazione](index.md). Commutando il fascio incidente su convergente, **Intensity calculation** viene impostato automaticamente su **Dynamical** e si apre questa finestra delle impostazioni CBED. Per il disegno e il salvataggio dei pattern di diffrazione e per le altre operazioni comuni al simulatore di diffrazione, vedere la [pagina panoramica](index.md).
+> Questa pagina elenca tutte le impostazioni della finestra dedicata che si apre quando si seleziona **Sorgente d'onda = Elettroni** e **Ottica = Convergenza (elettroni)** nel [Simulatore di diffrazione](index.md). Commutando il fascio incidente su convergente, il **Calcolo intensità** viene impostato automaticamente su **Teoria dinamica** e si apre questa finestra delle impostazioni CBED. I dischi calcolati possono essere salvati da **File > Salva dischi CBED** / **Copia dischi CBED** della finestra principale. Per il disegno e il salvataggio dei pattern di diffrazione e per le altre operazioni comuni al simulatore di diffrazione, vedere la [pagina panoramica](index.md).
 
-Condizioni GUI: Wave Length = Electron · Incident beam = Convergence (CBED, electron only) · Intensity calculation = Dynamical (automatico)
+Condizioni GUI: Sorgente d'onda = Elettroni · Ottica = Convergenza (elettroni) · Calcolo intensità = Teoria dinamica (automatico)
 
 ![Simulazione CBED](../../assets/cap-it-auto/FormDiffractionSimulatorCBED.png)
 
@@ -14,23 +14,25 @@ Condizioni GUI: Wave Length = Electron · Incident beam = Convergence (CBED, ele
 
 ![Parametri di input](../../assets/cap-it-auto/FormDiffractionSimulatorCBED.groupBoxInputParameters.png)
 
+Finché questa finestra è aperta, i pannelli **Impostazioni onde di Bloch** e **Aspetto** della finestra principale sono disabilitati; il numero di onde e gli spessori vengono presi da qui.
+
 | Parametro | Descrizione | Predefinito / Tipico |
 |-----------|-------------|-------------------|
-| **Mode** | **CBED**: pattern standard a fascio convergente in cui ogni disco corrisponde a una riflessione, con il disco trasmesso (000) al centro. **LACBED** (Large-Angle CBED): pattern a fascio convergente ad ampio angolo in cui i dischi di riflessioni diverse si sovrappongono. Utile per osservare le linee HOLZ (higher-order Laue zone) e la simmetria | CBED |
-| **Convergence semi-angle (mrad)** | Semiangolo del cono del fascio convergente. Determina la dimensione di ciascun disco di diffrazione (il diametro del disco nello spazio reciproco corrisponde a $2\alpha$) | 5–30 mrad |
-| **Disk resolution (mrad/px)** | Risoluzione angolare all'interno di ciascun disco. Valori più piccoli danno una risoluzione maggiore, ma il numero di direzioni del fascio (pixel) calcolate cresce con il quadrato, quindi anche il tempo di calcolo aumenta in modo quadratico. Il conteggio totale dei pixel risultante (= numero totale di direzioni del fascio) è mostrato a destra | — |
-| **No. of Bloch waves** | Numero massimo di fasci inclusi nel calcolo delle onde di Bloch per ciascuna direzione del fascio incidente. Più fasci danno una maggiore accuratezza, ma il costo del problema agli autovalori cresce come $O(N^3)$ | 100–500 |
-| **Thickness range** | Valori iniziale, finale e di passo dello spessore del campione (nm). Più spessori vengono calcolati insieme e commutati con il cursore dello spessore sul lato di output | — |
-| **Solver** | Motore di calcolo per il problema agli autovalori. **Auto**: seleziona automaticamente il solver migliore. **Eigenproblem (MKL)**: basato su Intel MKL (il più veloce). **Eigenproblem (Eigen)**: libreria C++ Eigen. **Managed**: .NET gestito puro (il più lento ma sempre disponibile) | Auto |
-| **Thread count** | Numero di thread paralleli per il calcolo | — |
-| **Draw disk outlines** | Quando selezionato, disegna un cerchio che indica il contorno di ciascun disco di diffrazione | — |
+| **CBED / LACBED** | **CBED**: pattern standard a fascio convergente in cui ogni disco corrisponde a una riflessione, con il disco trasmesso (000) al centro. **LACBED** (Large-Angle CBED): pattern a fascio convergente ad ampio angolo in cui i dischi di riflessioni diverse si sovrappongono. Utile per osservare le linee HOLZ (higher-order Laue zone) e la simmetria | CBED |
+| **Semiangolo (mrad)** | Semiangolo del cono del fascio convergente (0–2000 mrad). Determina la dimensione di ciascun disco di diffrazione (il diametro del disco nello spazio reciproco corrisponde a $2\alpha$) | predefinito 6 mrad; tipicamente 5–30 mrad |
+| **Risoluzione disco (mrad/px)** | Risoluzione angolare all'interno di ciascun disco. Il disco è campionato su una griglia $N\times N$ con $N = \lceil 2\alpha / \text{resolution} \rceil$, e vengono calcolati solo i punti interni al cerchio. Valori più piccoli danno una risoluzione maggiore, ma il numero di direzioni del fascio cresce con il quadrato, quindi anche il tempo di calcolo aumenta in modo quadratico. Il conteggio risultante (= numero totale di direzioni del fascio) è mostrato come **Pixel totali** | predefinito 0.1 mrad/px |
+| **Numero di onde diffratte** | Numero massimo di fasci inclusi nel calcolo delle onde di Bloch per ciascuna direzione del fascio incidente (1–2048). Più fasci danno una maggiore accuratezza, ma il costo del problema agli autovalori cresce come $O(N^3)$ | predefinito 64; tipicamente 100–500 |
+| **Spessore da / a / con passo di** | Valori iniziale, finale e di passo dello spessore del campione (nm, ciascuno 1–1000). Più spessori vengono calcolati insieme e commutati con il cursore dello spessore sul lato di output | predefinito da 20 a 200 nm, passo 20 nm |
+| **Risolutore** | Motore di calcolo. **Auto**; **Eigenproblem with Eigen lib.** / **Eigenproblem with MKL lib.** (diagonalizzazione); **Matrix exp. with Eigen lib.** / **Matrix exp. with MKL lib.** (metodo dell'esponenziale di matrice, v4.794). **Auto** usa il metodo dell'esponenziale di matrice con Eigen e tutti i processori logici quando Eigen è disponibile, altrimenti il problema agli autovalori con MKL. Il percorso dell'esponenziale di matrice richiede spessori equispaziati e in caso contrario ricade sul problema agli autovalori. Le voci MKL non sono offerte su ARM64, e le voci Eigen sono nascoste quando la libreria nativa Eigen non è disponibile | Auto |
+| **Thread** | Numero di thread paralleli (1–128). Disabilitato con **Auto**; selezionando un risolutore viene impostato al numero di processori logici (¼ di esso per MKL) | — |
+| **Disegna cerchi guida** | Quando selezionato, disegna sul pattern principale cerchi gialli che indicano il contorno di ciascun disco di diffrazione (in LACBED, un cerchio per 000 e croci per le altre riflessioni) | attivo |
 
 ---
 
-## Run / Stop
+## Simula / Arresta {#run-stop}
 
-- **Start** : avvia la simulazione CBED con i parametri di input correnti.
-- **Stop** : annulla il calcolo in corso.
+- **Simula** : avvia la simulazione CBED con i parametri di input correnti.
+- **Arresta** : annulla il calcolo in corso.
 
 ---
 
@@ -42,12 +44,12 @@ Una volta completato il calcolo, i parametri di output diventano disponibili. Tu
 
 | Parametro | Descrizione |
 |-----------|-------------|
-| **Sample thickness** | Seleziona con un cursore lo spessore del campione da visualizzare, all'interno dell'intervallo di spessore dei parametri di input |
-| **Brightness adjustment** | **Common to all disks**: utilizza una scala di luminosità comune a tutti i dischi per visualizzare il pattern CBED completo. **Per disk**: visualizza un singolo disco selezionato a piena risoluzione, normalizzato all'interno di quel disco |
-| **Brightness (Max / Min)** | Limite superiore e inferiore dell'intensità visualizzata. Da regolare quando si desidera enfatizzare caratteristiche deboli |
-| **γ (emphasis of outer disks)** | Correzione gamma. Utilizzata per rendere più visibili i dischi esterni scuri ad ampio angolo rispetto al disco trasmesso centrale |
-| **Scale** | Seleziona la gradazione di intensità tra **Positive** / **Negative** (bianco-nero invertito) |
-| **Color** | Mappa di colori utilizzata per la visualizzazione. Scegliere tra **Gray** e altri |
+| **Spessore** | Seleziona con un cursore lo spessore del campione da visualizzare, all'interno dell'intervallo di spessore dei parametri di input (la tabella delle [informazioni sui riflessi di diffrazione](index.md#diffraction-spot-information) lo segue) |
+| **Regola luminosità** | **per tutti i dischi**: un'unica scala di luminosità, normalizzata al massimo su tutti i dischi. **per dischi singoli**: ogni disco è normalizzato al proprio massimo (γ viene azzerato a 0 e disabilitato) |
+| **Luminosità (Max / Min)** | Limite superiore e inferiore dell'intensità visualizzata, come frazioni del massimo (alla posizione del cursore viene applicata la 4ª potenza). Da regolare quando si desidera enfatizzare caratteristiche deboli |
+| **Gamma (Accentua dischi esterni)** | Moltiplica ogni pixel per $\exp(\gamma\,r)$, dove $r$ è la sua distanza dal centro del pattern, per rendere più visibili i dischi esterni scuri ad ampio angolo rispetto al disco trasmesso centrale. Attivo solo con **per tutti i dischi** |
+| **Gradiente** | Seleziona la gradazione di intensità tra **Positive** / **Negative** (bianco-nero invertito) |
+| **Colore** | Mappa di colori utilizzata per la visualizzazione: **Gray**, **Cold-Warm**, **Spectrum** o **Fire** |
 
 ---
 

@@ -58,8 +58,8 @@ Dieses GitHub-Pages-Handbuch ist derzeit die maßgebliche Quelle. Nutzen Sie die
 
 ## Schnellstart
 1. Von [Releases](https://github.com/seto77/ReciPro/releases/latest) herunterladen und installieren.
-2. Wählen Sie einen Kristall aus der integrierten Liste (~80 Kristalle). Sie können auch CIF-Dateien importieren oder [CSManager](https://github.com/seto77/CSManager) verwenden.
-3. Rufen Sie Funktionen über das rechte Bedienfeld auf: Strukturansicht, Stereonetz, Beugungssimulator, HRTEM-Simulation usw.
+2. Wählen Sie einen Kristall aus der integrierten Liste (66 Kristalle). Sie können auch CIF-Dateien importieren oder [CSManager](https://github.com/seto77/CSManager) verwenden.
+3. Rufen Sie Funktionen über das rechte Bedienfeld auf: Strukturansicht, Stereonetz, Beugungssimulator, HRTEM/STEM-Simulator usw.
 4. Drehen Sie den Kristall per Maus-Drag oder durch Eingabe von Zonenachsen-/Netzebenen-Indizes.
 
 ## Zitierung

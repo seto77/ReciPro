@@ -125,13 +125,13 @@ Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetE
 
 | Eigenschaft | Typ | Beschreibung |
 |----------|------|-------------|
-| `Energy` | double | Energie (keV) |
-| `Wavelength` | double | Wellenlänge (Å) |
+| `Energy` | double | Energie (keV für Röntgen und Elektronen, meV für Neutronen) |
+| `Wavelength` | double | Wellenlänge (nm) |
 | `Thickness` | double | Probendicke (nm) |
 | `NumberOfDiffractedWaves` | int | Anzahl der Bloch-Wellen |
 | `CameraLength2` | double | Kameralänge (mm) |
 | `ExcitationError` | double | Reflexradius (nm⁻¹): im kinematischen/Anregungsmodus exportiert `SpotInfo()` die Reflexe mit \|Sg\| innerhalb dieses Wertes |
-| `SkipRendering` | bool | Rendering für Stapelverarbeitung überspringen |
+| `SkipRendering` | bool | Wirkt nur im dynamischen Modus (`Calc_Dynamical()`): Die Bloch-Wellen-Rechnung läuft weiterhin (sodass `SpotInfo()` gültig ist), aber es werden keine Reflexe gezeichnet — in der Zwischenzeit gespeicherte Bilder enthalten keine Reflexe. Im kinematischen/Anregungsmodus ohne Wirkung |
 
 ### Strahlmodus
 
@@ -156,7 +156,7 @@ Eulerwinkel sind an Gimbal-Positionen (θ = 0 oder 180°) nicht eindeutig: `GetE
 |----------|-------------|
 | `Tau` / `TauInDeg` | Detektor-Kippwinkel τ (rad / Grad) |
 | `Phi` / `PhiInDeg` | Detektor-Rotationsachse φ (rad / Grad) |
-| `Foot(x, y)` | Foot-Position in Pixeln |
+| `Foot(x, y)` | Position (mm) des Fußpunkts des Lots von der Probe auf den Detektor, gemessen von der Bildmitte; die Bildmitte selbst liegt bei den Detektorkoordinaten (−x, −y). `Foot(0, 0)` legt den Fußpunkt in die Bildmitte |
 
 ### Ausgabe
 
@@ -220,7 +220,7 @@ Steuert die Strukturansicht aus einem Makro. `SaveImage()` und `Export3DModel()`
 | `StructureViewer.Open()` | Das Strukturansicht-Fenster öffnen |
 | `StructureViewer.Close()` | Das Strukturansicht-Fenster schließen |
 | `StructureViewer.SaveImage(filename)` | Die gerenderte Hauptansicht als PNG speichern, in der Pixelgröße des Felds **Size (W×H)**; ohne `filename` öffnet sich ein Dialog |
-| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Die dargestellte Struktur für den 3D-Druck exportieren, wie **Export 3D Model (3MF/STL)** im Datei-Menü. Die Endung bestimmt das Format (`.stl` einfarbig / `.3mf` nach Element gefärbt); nur `filename` ist erforderlich — die übrigen Standardwerte entsprechen dem Dialog (größte Abmessung 80 mm, Zellkanten ⌀2,4 mm, Bindungen auf ⌀1,2 mm verdickt). Mit `fixedScaleInMMperNm` > 0 entstehen mehrere Modelle im selben Maßstab |
+| `StructureViewer.Export3DModel(filename, maxSizeInMM, fixedScaleInMMperNm, includeAtoms, includeBonds, includePolyhedra, polyhedraAsEdges, polyEdgeDiaInMM, includeCellEdges, cellEdgeDiaInMM, thickenBondsToMM)` | Die dargestellte Struktur für den 3D-Druck exportieren, wie **Export 3D Model (3MF/STL)** im Datei-Menü. Die Endung bestimmt das Format (`.stl` einfarbig / `.3mf` nach Element gefärbt); nur `filename` ist erforderlich — die übrigen Standardwerte entsprechen dem Dialog (größte Abmessung 80 mm, Zellkanten ⌀2,4 mm, Bindungen auf ⌀1,2 mm verdickt). Mit `fixedScaleInMMperNm` > 0 entstehen mehrere Modelle im selben Maßstab. `filename` muss auf `.stl` oder `.3mf` enden (es wird kein Dialog geöffnet); gibt eine Informationszeichenkette mit der Anzahl der Dreiecke und der gedruckten Größe zurück |
 
 ```python
 ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_60mm.stl', maxSizeInMM=60)
@@ -317,7 +317,7 @@ Diese drei Bildsimulationsklassen teilen sich viele Mitglieder. Um Wiederholunge
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| `Sleep(ms)` | Die angegebene Anzahl Millisekunden warten |
+| `ReciPro.Sleep(ms)` | Die angegebene Anzahl Millisekunden warten. Aufruf als `ReciPro.Sleep(ms)`; die Funktion ist nicht in der Tabelle der integrierten Funktionen des Editors aufgeführt |
 
 ---
 

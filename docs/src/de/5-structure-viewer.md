@@ -32,7 +32,7 @@ Die anwendungsweiten <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>-Kurzbefehle aus dem [Haupt
 ## Hauptbereich
 
 Die 3D-Kristallstruktur, dargestellt zusammen mit dem Lichtrichtungs-Gizmo, dem Kristallachsen-Gizmo und der Atomlegende.
-> Die Box **Größe (B×H)** oben rechts im Fenster legt die Pixelgröße fest, die beim Speichern oder Kopieren des gerenderten Bildes verwendet wird.
+> Die Box **Größe (B×H)** oben rechts im Fenster legt die Pixelgröße der 3D-Ansicht fest (das Fenster wird entsprechend angepasst); gespeicherte und kopierte Bilder haben diese Größe.
 > Die Box **ProjWidth** daneben zeigt die Breite der projizierten Ansicht in nm an. Bearbeiten Sie den Wert, um numerisch zu zoomen — er bleibt mit dem Zoomen per Rechtsziehen / Mausrad in der Ansicht synchronisiert.
 
 ---
@@ -46,18 +46,21 @@ Die 3D-Kristallstruktur, dargestellt zusammen mit dem Lichtrichtungs-Gizmo, dem 
 
 | Menüeintrag | Beschreibung |
 |-------------|--------------|
-| Bild speichern | Das gerenderte Bild in eine Datei speichern |
-| Hauptbild in Zwischenablage kopieren | Das Bild kopieren (auch mit Ctrl+Shift+C) |
-| Video speichern | Ein Rotations-/Translationsvideo als MP4 speichern (Geschwindigkeit, Dauer, fps, Qualität usw.) |
+| Bild speichern ▸ Hauptbild / Legende / Kristallachsen / Lichtrichtung | Die Hauptansicht, die Atomlegende oder eines der Gizmos als PNG speichern |
+| Hauptbild in Zwischenablage kopieren ▸ Hauptbild / Legende / Kristallachsen / Lichtrichtung | Das Bild kopieren (Ctrl+Shift+C kopiert die Hauptansicht) |
+| Video speichern ▸ Hauptbild / Kristallachsen | Ein Rotations-/Translationsvideo der Hauptansicht oder des Kristallachsen-Gizmos als MP4 speichern (Geschwindigkeit, Dauer, fps, Qualität usw.) |
 | Export 3D Model (3MF/STL) | Die dargestellte Struktur als Volumenmodell für den 3D-Druck ausgeben |
-| Tastenkürzel-Hinweise | Die Tastenkürzel anzeigen |
 
-**Film speichern** öffnet den unten gezeigten Dialog zur Filmeinstellung. Ein Film kann die Ansicht drehen, das Projektionszentrum verschieben oder beides gleichzeitig tun — aktivieren Sie **Rotation** und/oder **Translation**:
+Menü **Werkzeuge**: **Ich mag VESTA** (wie die Symbolleisten-Schaltfläche *Wie Vesta*) und **Enable DDP** (blendet den Eintrag *Dual Depth Peeling* im [Transparenzmodus](#transparenzmodus) ein bzw. aus).
 
-- **Rotation**: dreht die Ansicht mit **Speed** (°/s; negative Werte kehren die Richtung um) um die darunter gewählte Achse — **Aktuelle Projektion** (Kipprichtung, mit den Pfeil-Schaltflächen gewählt), ein **Richtungsindex** [uvw] oder die Normale einer **Gitterebene** (hkl).
-- **Translation**: verschiebt das Projektionszentrum entlang des Richtungsindex [uvw] mit **Speed** (Gitterperioden pro Sekunde). Diese Option erscheint nur, wenn der Dialog aus der Strukturansicht geöffnet wurde, und solange sie aktiviert ist, ist **Richtungsindex** der einzige Richtungsmodus.
+**Tastenkürzel-Hinweise** (ein eigenes Menü der obersten Ebene) listet die Tastenkürzel auf.
 
-Legen Sie die Filmlänge (**Duration**), die Bildrate (**FPS**, 1–120) und die Encoder-Qualität (**Quality**, 1–100; höhere Werte verwenden eine höhere Bitrate und ergeben eine größere Datei) fest, wählen Sie den Codec (**H264** / **H265**) und drücken Sie **OK**, um eine MP4-Datei zu erzeugen. **Include final frame** hängt einen zusätzlichen Frame bei t = Duration an, sodass der Film exakt mit der endgültigen Orientierung/Position endet. (Die Liste der Encodiergeschwindigkeit beschriftet nur noch die Fortschrittsanzeige und beeinflusst die eigentliche Encodierung nicht mehr.)
+**Video speichern** öffnet den unten gezeigten Dialog zur Filmeinstellung. Ein Film kann die Ansicht drehen, das Projektionszentrum verschieben oder beides gleichzeitig tun — aktivieren Sie **Rotation** und/oder **Translation**:
+
+- **Rotation**: dreht die Ansicht mit **Geschwindigkeit** (°/s; negative Werte kehren die Richtung um) um die darunter gewählte Achse — **Aktuelle Projektion** (Kipprichtung, mit den Pfeil-Schaltflächen gewählt), ein **Richtungsindex** [uvw] oder die Normale einer **Gitterebene** (hkl).
+- **Translation**: verschiebt das Projektionszentrum entlang des Richtungsindex [uvw] mit **Geschwindigkeit** (Gitterperioden pro Sekunde). Diese Option erscheint nur, wenn der Dialog aus der Strukturansicht geöffnet wurde, und solange sie aktiviert ist, ist **Richtungsindex** der einzige Richtungsmodus.
+
+Legen Sie die Filmlänge (**Dauer**), die Bildrate (**FPS**, 1–120) und die Encoder-Qualität (**Quality**, 1–100; höhere Werte verwenden eine höhere Bitrate und ergeben eine größere Datei) fest, wählen Sie den Codec (**H264** / **H265**) und drücken Sie **OK**, um eine MP4-Datei zu erzeugen. **Include final frame** hängt einen zusätzlichen Frame bei t = Dauer an, sodass der Film exakt mit der endgültigen Orientierung/Position endet. (Die Liste der Encodiergeschwindigkeit beschriftet nur noch die Fortschrittsanzeige und beeinflusst die eigentliche Encodierung nicht mehr.)
 
 ![Dialog zur Filmeinstellung](../assets/cap-de-auto/FormMovie.png)
 
@@ -69,28 +72,29 @@ Legen Sie die Filmlänge (**Duration**), die Bildrate (**FPS**, 1–120) und die
 
 Oben im Dialog stehen die Anzahl der beteiligten Objekte und Dreiecke sowie die reale Größe des Modells (**Model size**, nm).
 
-**Scale** : wie die Ausgabegröße bestimmt wird
+**Maßstab** : wie die Ausgabegröße bestimmt wird
 
-- **Fit largest dimension** : skaliert das Modell automatisch so, dass seine längste Kante die angegebene Länge erreicht (5–500 mm, standardmäßig 80 mm).
-- **Fixed scale** : den Maßstab (mm/nm) direkt angeben. Damit lassen sich mehrere Kristalle im selben Maßstab bauen und nebeneinanderstellen. Beim Umschalten wird der zuvor wirksame Maßstab als Startwert übernommen.
+- **Größte Abmessung** : skaliert das Modell automatisch so, dass seine längste Kante die angegebene Länge erreicht (5–500 mm, standardmäßig 80 mm).
+- **Fester Maßstab** : den Maßstab (mm/nm) direkt angeben. Damit lassen sich mehrere Kristalle im selben Maßstab bauen und nebeneinanderstellen. Beim Umschalten wird der zuvor wirksame Maßstab als Startwert übernommen.
 - Die Zeile darunter zeigt den resultierenden Maßstab und die gedruckten Abmessungen (**Output size**, mm).
 
-**Include** : welche Elemente in den Druck eingehen
+**Einschließen** : welche Elemente in den Druck eingehen
 
-- **Atoms** / **Bonds** / **Polyhedra** : auswählbar sind nur die gerade dargestellten Arten; wird ein Haken entfernt, bleibt das Objekt auf dem Bildschirm, fällt aber aus dem Druck heraus.
-- **Polyhedra: solid faces** / **edges, dia.** : Koordinationspolyeder werden entweder als massive Körper mit Flächen oder als Kantengerüst (Zylinder plus Kugeln an den Ecken, standardmäßig 2.0 mm) ausgegeben. Beim Gerüst bleiben die Atome im Inneren sichtbar.
-- **Unit cell edges as cylinders, dia.** : bindet den Rahmen der Elementarzelle ein, ersetzt durch Zylinder des angegebenen Durchmessers (standardmäßig 2.4 mm).
+- **Atome** / **Bindungen** / **Polyeder** : auswählbar sind nur die gerade dargestellten Arten; wird ein Haken entfernt, bleibt das Objekt auf dem Bildschirm, fällt aber aus dem Druck heraus.
+- **Polyeder: Flächen** / **Kanten, Ø** : Koordinationspolyeder werden entweder als massive Körper mit Flächen oder als Kantengerüst (Zylinder plus Kugeln an den Ecken, standardmäßig 2.0 mm) ausgegeben. Beim Gerüst bleiben die Atome im Inneren sichtbar.
+- **Gitternetz: Steg-Ø / Teilung** : das Kantengerüst plus ein Gitter aus dünnen Stegen auf jeder Fläche (Stegdurchmesser 0.8–5.0 mm, standardmäßig 1.2 mm; Teilung 1.5–20 mm, standardmäßig 5.0 mm). Aus der Ferne wirken die Flächen geschlossen, das Innere bleibt aber sichtbar.
+- **Zellkanten als Zylinder, Ø** : bindet den Rahmen der Elementarzelle ein, ersetzt durch Zylinder des angegebenen Durchmessers (standardmäßig 2.4 mm). Dieses Kästchen ist standardmäßig aktiviert, sobald der Zellrahmen angezeigt wird.
 
-**Printability** : Drucktauglichkeit
+**Druckbarkeit** : Drucktauglichkeit
 
-- **Thicken bonds thinner than** : Bindungen, deren gedruckter Durchmesser unter den angegebenen Wert fiele (standardmäßig 1.2 mm), werden aus der ursprünglichen Primitive mit diesem Durchmesser neu erzeugt, damit dünne Bindungen nicht abbrechen. Bleibt die Option aus, während eine Bindung zu dünn ist, erscheint eine Warnung in Rot.
+- **Bindungen verdicken unter** : Bindungen, deren gedruckter Durchmesser unter den angegebenen Wert fiele (standardmäßig 1.2 mm), werden aus der ursprünglichen Primitive mit diesem Durchmesser neu erzeugt, damit dünne Bindungen nicht abbrechen. Bleibt die Option aus, während eine Bindung zu dünn ist, erscheint eine Warnung in Rot.
 
 **Format** : Dateiformat
 
-- **STL (single color)** : eine einfarbige binäre STL-Datei.
-- **3MF (parts colored by element)** : 3MF mit nach Element eingefärbten Teilen; die Farbnamen tragen die Elementnamen.
+- **STL (einfarbig)** : eine einfarbige binäre STL-Datei.
+- **3MF (nach Element gefärbt)** : 3MF mit nach Element eingefärbten Teilen; die Farbnamen tragen die Elementnamen.
 
-**Save...** fragt nach dem Dateinamen. Nach Abschluss des Exports werden Dreieckszahl, gedruckte Abmessungen und Maßstab im Informationsfeld unten links protokolliert.
+**Speichern...** fragt nach dem Dateinamen. Nach Abschluss des Exports werden Dreieckszahl, gedruckte Abmessungen und Maßstab im Informationsfeld unten links protokolliert.
 
 ---
 
@@ -112,7 +116,7 @@ In diesem Modus sind die Achsen *a*, *b*, *c* der Elementarzelle die Einheit des
 
 ![Grenzen durch Kristallebenen](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
-In diesem Modus wird der Zeichenbereich durch eine Reihe von Kristallebenen begrenzt. Wenn die Ebenen keinen räumlich abgeschlossenen Bereich definieren, fällt ReciPro automatisch auf eine Begrenzung von einer Elementarzelle zurück.
+In diesem Modus wird der Zeichenbereich durch eine Reihe von Kristallebenen begrenzt. Wenn die Ebenen keinen räumlich abgeschlossenen Bereich definieren, fügt ReciPro ein nahezu kugelförmiges Polyeder mit dem Radius **Max. Abstand vom Ursprung** (Å) hinzu, um ihn abzuschließen.
 
 #### Grenzenliste
 
@@ -126,7 +130,11 @@ Legt die Begrenzungsebene über ihren Miller-Index fest. Das Kontrollkästchen s
 
 #### Abstand vom Ursprung
 
-Der Abstand vom Zentrum des Kristalls zur Begrenzungsebene. Die Einheit ist zwischen **d** und **Å** wählbar. Bei **d** ist der Abstand der Eingabewert multipliziert mit dem *d*-Wert (Netzebenenabstand) des ausgewählten (*hkl*). Bei **Å** ist der Wert der absolute Abstand. Eine Änderung des einen aktualisiert automatisch den anderen.
+Der Abstand vom Ursprung zur Begrenzungsebene, eingegeben entweder als Vielfaches des *d*-Werts (Netzebenenabstand) des ausgewählten (*hkl*) (Feld **d×**) oder in Å (das Feld in Klammern). Die beiden Felder sind gekoppelt: Eine Änderung des einen aktualisiert das andere.
+
+- **Translation** (Å): wirkt nur, wenn **Äquivalente Ebenen** aktiviert ist und genau zwei äquivalente Ebenen erzeugt werden (typischerweise (*hkl*) und die Gegenebene). Die erste Ebene wird dann um diesen Betrag vom Ursprung weg und die zweite zu ihm hin verschoben, d. h. die Scheibe verschiebt sich entlang der Normalen. In allen anderen Fällen wird der Wert ignoriert.
+- **Max. Abstand vom Ursprung** (Å): Radius des abschließenden Polyeders, das verwendet wird, wenn die Ebenen keinen Bereich einschließen (siehe oben).
+- **Sofort aktualisieren**: Änderungen an der ausgewählten Ebene übernehmen, ohne **Ersetzen** zu drücken.
 
 #### Begrenzungsebenen anzeigen / Deckkraft
 
@@ -138,7 +146,7 @@ Wenn aktiviert, wird nur der durch die Grenzen definierte Innenbereich gerendert
 
 #### Atome ausblenden
 
-Wenn aktiviert, werden alle Atome, Bindungen und Polyeder ausgeblendet — nützlich, wenn nur die Zelle oder die Netzebenen dargestellt werden sollen.
+Im Tab „Grenzen“ gibt es dafür kein Kontrollkästchen. Schalten Sie stattdessen die Symbolleisten-Schaltfläche **Atome** aus: Es werden keine Atome erzeugt, sodass auch Bindungen und Polyeder verschwinden — nützlich, wenn nur die Zelle oder die Netzebenen dargestellt werden sollen.
 
 ### Atome
 
@@ -214,6 +222,8 @@ Legt die Position der gezeichneten Elementarzelle fest und ob ihre Flächen und 
 
 Jede Raumgruppe hat einen Standardursprung. Um das Zentrum der gezeichneten Elementarzelle von diesem Ursprung wegzubewegen, stellen Sie die Translation entlang *a*, *b*, *c* ein.
 
+Die Translation ist an das [Projektionszentrum](#projektionszentrum) gekoppelt: Wird das Projektionszentrum auf $(x, y, z)$ gesetzt, wird die Translation auf $(0.5-x,\ 0.5-y,\ 0.5-z)$ gesetzt.
+
 #### Zellebene anzeigen
 
 Ob die sechs Flächen gezeichnet werden, die die Elementarzelle begrenzen. Wenn aktiviert, können Sie die Flächenfarbe und Transparenz einstellen.
@@ -221,6 +231,8 @@ Ob die sechs Flächen gezeichnet werden, die die Elementarzelle begrenzen. Wenn 
 #### Kanten anzeigen
 
 Ob die Kanten der Elementarzelle gezeichnet werden. Die Kantenfarbe ist konfigurierbar.
+
+Das Hauptkontrollkästchen **Elementarzelle anzeigen** (= die Symbolleisten-Schaltfläche *Elementarzelle*) schaltet die gesamte Zelle ein/aus. Flächen- und Kantenfarben lassen sich für **Alle Ebenen** / **Alle Kanten** auf einmal oder für **Jede Ebene** / **Jede Kante** (*a*, *b*, *c* getrennt) festlegen; **Kantenbreite** legt die Linienbreite und **Deckkraft** die Transparenz der Flächen fest.
 
 ### Gitterebenen
 
@@ -269,7 +281,7 @@ Legt den Projektionsmodus (orthografisch / perspektivisch), die Tiefenausblendun
 
 #### Tiefenausblendung
 
-Blendet entfernte Objekte in der Tiefenrichtung aus. Objekte weiter als **Far** sind vollständig transparent; Objekte näher als **Near** sind vollständig undurchsichtig; dazwischenliegende Objekte werden linear interpoliert.
+Blendet entfernte Objekte in der Tiefenrichtung aus (**Tiefenabblendung**). Die Farbe wird linear zur **Hintergrundfarbe** hin gemischt: Objekte näher als **Nah** behalten ihre eigene Farbe, Objekte weiter als **Fern** nehmen die Hintergrundfarbe an, und dazwischenliegende Objekte werden interpoliert. (Die Deckkraft selbst wird nicht verändert.) **Nah** und **Fern** werden in Å angegeben.
 
 #### Projektionszentrum
 
@@ -283,26 +295,27 @@ Zeichenqualität (Mesh-Unterteilung, Kantenglättung). Höhere Qualität ist lan
 
 Algorithmus für durchscheinende Atome und Polyeder.
 
-- **Approximate**: schnell, kann aber ungenau sein, wenn sich viele durchscheinende Objekte überlappen.
-- **Perfect**: reihenfolgeunabhängige Transparenz — genau, aber sehr langsam, erfordert praktisch eine dedizierte GPU.
+- **Approximate (Z depth sorting, OpenGL 4.1+)**: schnell, kann aber ungenau sein, wenn sich viele durchscheinende Objekte überlappen.
+- **High quality (Dual Depth Peeling, OpenGL 4.1+)**: reihenfolgeunabhängige Transparenz durch Depth Peeling. Wird nur angezeigt, wenn **Werkzeuge ▸ Enable DDP** aktiviert ist (standardmäßig an, wenn PPLL nicht verfügbar ist). Die Anzahl der Peeling-Durchgänge folgt der Einstellung [Renderqualität](#renderqualität).
+- **High quality (Per-Pixel Linked List, OpenGL 4.3+)**: exakte reihenfolgeunabhängige Transparenz; wird nur angezeigt, wenn die GPU OpenGL 4.3 unterstützt. Genau, aber langsam; erfordert praktisch eine dedizierte GPU.
 
 ### Symmetrieelemente
 
 Der Tab **Sym.-Elem.** zeichnet die Symmetrieoperatoren der Raumgruppe direkt auf das 3D-Modell (umschalten mit der Symbolleisten-Schaltfläche **Sym.-Elem.**). Jede Klasse von Elementen kann unabhängig ein-/ausgeblendet werden:
 
-- **Drehachsen** und **Schraubenachsen**
-- **Spiegelebenen** und **Gleitspiegelebenen**
-- **Inversionszentren** und **Drehinversionsachsen**
+- **Symmetrieachsen**: **Drehungen**, **Schraubungen**, **Drehinversionen**
+- **Ebenen**: **Spiegelungen**, **Gleitspiegelungen**
+- **Inversionszentren**
 
-Für jede Klasse können Sie die Symbolgröße, Linienbreite und Farbe anpassen.
+Der Hauptschalter ist **Symmetrieelemente anzeigen**. Für jede Gruppe können Sie die Symbolgröße (%) und die Farbe anpassen, bei Achsen und Ebenen zusätzlich die Linienbreite.
 
 ### Sonstiges
 
 ![Tab „Sonstiges“](../assets/cap-de-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
-- **Accessory controls**: legt die Anzeigegrößen fest (Lichtkugel, Achsen, Legende). **Group by element** schaltet die Legendenanzeige um.
-- **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** zeichnet weiterhin Atome, die an Atome innerhalb des Zeichenbereichs gebunden sind, auch wenn sie außerhalb davon liegen.
-- **Label**: legt die Schriftgröße, Farbe und weitere Eigenschaften der Atombeschriftungen fest.
+- **Zusatzelemente**: legt die Anzeigegrößen fest (Lichtkugel, Achsen, Legende). **Nach Element gruppieren** schaltet die Legendenanzeige um.
+- **Gebundene Atome**: **Gebundene Atome anzeigen, auch wenn sie außerhalb der Grenzen liegen** zeichnet weiterhin Atome, die an Atome innerhalb des Zeichenbereichs gebunden sind, auch wenn sie außerhalb davon liegen.
+- **Beschriftung**: **Beschriftung anzeigen**, **Schriftgröße**, **Weißer Rand** und die Beschriftungsfarbe (**Materialfarbe verwenden** oder **Feste Farbe verwenden**). Ein Klick auf einen Eintrag der Atomlegende schaltet die Beschriftungen dieses Atoms (bzw. mit **Nach Element gruppieren** dieses Elements) einzeln um.
 
 ---
 
@@ -320,7 +333,7 @@ Für jede Klasse können Sie die Symbolgröße, Linienbreite und Farbe anpassen.
 | Elementarzelle | Kanten der Elementarzelle umschalten |
 | Sym.-Elem. | Überlagerung der Symmetrieelemente umschalten (siehe oben) |
 | Rotation zurücksetzen | Zur Ausgangsorientierung zurückkehren |
-| Wie Vesta | Zu einem Erscheinungsbild im VESTA-Stil wechseln (Atomfarben und -radien) |
+| Wie Vesta | Zu einem Erscheinungsbild im VESTA-Stil wechseln: Atomfarben und -radien werden zurückgesetzt, und die Bindungsliste wird durch die Standardbindungen **ersetzt** |
 
 ---
 

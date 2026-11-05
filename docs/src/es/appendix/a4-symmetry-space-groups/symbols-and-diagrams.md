@@ -166,7 +166,7 @@ El diagrama de la derecha representa las posiciones equivalentes generales — l
 - (Solo en los grupos espaciales cúbicos) líneas auxiliares finas conectan los tres círculos relacionados por un eje ternario según la diagonal del cuerpo $\langle111\rangle$.
 - En general, un círculo (o una mitad de un círculo dividido) corresponde a una posición equivalente, de modo que el número de círculos coincide con la **multiplicidad** de la posición general mostrada en la pestaña [Posiciones de Wyckoff](../../2-symmetry-information.md) — una comprobación rápida al leer cualquiera de los dos diagramas. Si el eje de proyección elegido hace que varias copias de la misma quiralidad coincidan exactamente, se superponen en un solo punto (distinguidas solo por etiquetas de altura separadas) en lugar de dibujarse como círculos contiguos, por lo que el número de círculos visibles puede entonces ser menor que la multiplicidad.
 
-Las casillas $x$ / $y$ / $z$ situadas bajo **Dirección** permiten alejar el punto de prueba $(x,y,z)$ de la posición por defecto que el grupo espacial asigna a ese grupo puntual, lo que a veces resulta útil para despejar un diagrama en el que varios círculos coincidirían.
+Las tres casillas rotuladas **a** / **b** / **c** situadas junto al botón **Copiar** de las posiciones generales ($x$, $y$, $z$ fraccionarias; intervalo de −1 a 1) permiten alejar el punto de prueba $(x,y,z)$ de la posición por defecto que el grupo espacial asigna a ese grupo puntual, lo que a veces resulta útil para despejar un diagrama en el que varios círculos coincidirían.
 
 ---
 

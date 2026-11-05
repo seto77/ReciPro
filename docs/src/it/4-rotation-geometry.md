@@ -41,11 +41,11 @@ L'orientazione del cristallo è parametrizzata da tre rotazioni. Descritte nel s
 
 La stessa rotazione vista nel sistema di riferimento **fisso di laboratorio** corrisponde alla sequenza inversa — Ψ attorno a $Z$, poi θ attorno a $X$, poi Φ attorno a $Z$ — ed è la descrizione adottata nell'[Appendice A1.1](appendix/a1-coordinate-system/1-orientation.md). Entrambe danno la stessa identica matrice $R$ riportata sotto; Φ è semplicemente l'asse più esterno (come in un goniometro) e Ψ quello più interno.
 
-Ogni casella numerica è modificabile; modificare un valore qui aggiorna la Finestra principale e ogni simulatore collegato.
+Le caselle Φ, θ, Ψ e le nove caselle della matrice sono visualizzazioni **di sola lettura**. Per modificare l'orientazione, ruotate il cristallo nella Finestra principale, usate **Incolla da Excel** oppure (con **Collega** attivo) modificate più sotto gli angoli degli assi sperimentali; ogni modifica viene propagata alla Finestra principale e a tutti i simulatori collegati.
 
 ### Rotation matrix
 
-La matrice 3 × 3 generata a partire dagli attuali (Φ, θ, Ψ). Utilizzate **Copy to Excel** / **Paste from Excel** per trasferire la matrice avanti e indietro attraverso un foglio di calcolo.
+La matrice 3 × 3 generata a partire dagli attuali (Φ, θ, Ψ). Utilizzate **Copia in Excel** / **Incolla da Excel** per trasferire la matrice avanti e indietro attraverso un foglio di calcolo.
 
 La matrice segue un'unica convenzione ovunque compaia in ReciPro:
 
@@ -72,7 +72,7 @@ Per applicarla agli indici cristallografici, convertiteli prima in coordinate ca
 
 La stessa matrice (\(R_{ij}\) = riga \(i\), colonna \(j\)) compare in:
 
-- **Copy to Excel** / **Paste from Excel** in questa finestra (3 × 3, separata da tabulazioni, righe dall'alto in basso);
+- **Copia in Excel** / **Incolla da Excel** in questa finestra (3 × 3, separata da tabulazioni, righe dall'alto in basso);
 - `Dir.GetRotationMatrix()` / `Dir.SetRotationMatrix()` e `Dir.GetEuler()` nell'[API delle macro](20-macro/1-built-in-functions.md) (nove elementi in ordine di riga \(R_{11}, R_{12}, R_{13}, R_{21}, \ldots, R_{33}\));
 - le colonne **R11**–**R33** dell'elenco dei candidati salvato da [Spot ID v2](11-spot-id-v2.md).
 
@@ -88,7 +88,7 @@ La vista 3D mostra la rotazione corrente mediante tre tori colorati (a forma di 
 
 Le frecce **rossa**, **verde** e **blu** rappresentano gli assi X, Y, Z in coordinate cartesiane dello spazio reale. Questi *non* coincidono con gli assi cristallini mostrati nella Finestra principale.
 
-La sfera grigia al centro rappresenta il campione; le sfere rosse/verdi/blu mostrano come l'oggetto è ruotato rispetto alla sua orientazione iniziale (quando Φ = θ = Ψ = 0, sono allineate rispettivamente a +X, +Y, +Z).
+La sfera grigia al centro rappresenta il campione. Le piccole sfere rosse / verdi / blu (etichettate **+a/−a**, **+b/−b**, **+c/−c**) indicano le direzioni degli assi *a*, *b*, *c* normalizzati del cristallo dopo la rotazione (sfera più grande = estremo +). Per Φ = θ = Ψ = 0 mostrano l'orientazione iniziale del cristallo (*c* ∥ +Z, *b* nel piano YZ); quindi *a* e *b* coincidono con +X e +Y solo per le celle ortogonali.
 
 > **Nota**: Trascinare nella finestra OpenGL cambia solo la *direzione di proiezione* di questa vista, non l'orientazione del cristallo in sé. Per ruotare il cristallo, utilizzate la Finestra principale.
 
@@ -96,10 +96,10 @@ La sfera grigia al centro rappresenta il campione; le sfere rosse/verdi/blu most
 
 | Pulsante | Azione |
 |--------|--------|
-| Copy to Excel | Copia la matrice di rotazione 3×3 in formato separato da tabulazioni |
-| Paste from Excel | Imposta la matrice di rotazione dagli appunti (3×3 separata da tabulazioni) |
-| View along beam | Adatta alla proiezione della Finestra principale (asse Z perpendicolare allo schermo) |
-| Isometric | Passa alla proiezione isometrica |
+| Copia in Excel | Copia la matrice di rotazione 3×3 in formato separato da tabulazioni |
+| Incolla da Excel | Imposta la matrice di rotazione dagli appunti (3×3 separata da tabulazioni) |
+| Vista lungo il fascio | Adatta alla proiezione della Finestra principale (asse Z perpendicolare allo schermo) |
+| Vista isometrica | Passa alla proiezione isometrica |
 
 ---
 
@@ -109,22 +109,41 @@ La metà inferiore definisce gli angoli di Eulero su un insieme arbitrario di as
 
 ### 1°, 2°, 3° asse
 
-Selezionate gli assi di rotazione del goniometro tra **±X**, **±Y** e **±Z** per ciascun livello (superiore, centrale, inferiore). La grafica si aggiorna di conseguenza.
+Selezionate l'asse di rotazione di ciascun livello del goniometro (1º = superiore, 2º = centrale, 3º = inferiore) tra **X**, **Y** o **Z** (solo le direzioni positive del sistema di laboratorio). Il 2º asse non può coincidere con il 1º, né il 3º con il 2º (il pulsante di opzione in conflitto viene disabilitato). L'impostazione predefinita è **X – Z – Y**. La grafica si aggiorna di conseguenza.
 
-Gli angoli di Eulero per ciascun asse sono visualizzati nelle corrispondenti caselle di testo colorate (giallo, azzurro, rosa). Potete anche inserire i valori direttamente.
+L'angolo di ciascun asse è mostrato nella corrispondente casella colorata (gialla, azzurra, rosa) e può essere inserito direttamente (in gradi; i valori al di fuori di −180…180° vengono ricondotti all'intervallo). La rotazione sperimentale è composta nello stesso modo della matrice di ReciPro, con il 1º asse più esterno:
+
+$$
+R_{\mathrm{exp}} = R_{\mathbf{e}_1}(\omega_1)\,R_{\mathbf{e}_2}(\omega_2)\,R_{\mathbf{e}_3}(\omega_3)
+$$
+
+(rotazioni destrorse attorno agli assi fissi di laboratorio $\mathbf{e}_i$).
+
+| Controllo | Azione |
+|---------|--------|
+| **2º asse** / **3º asse** | Abilita o disabilita quel livello (goniometro con uno o due soli assi). Disabilitandolo, il suo angolo viene posto a 0. Disabilitare il 2º asse disabilita anche il 3º. |
+| **Fissa** | Mantiene quell'angolo al valore attuale mentre Collega scompone una nuova orientazione negli angoli del goniometro (vedi sotto). |
+| **Azzera angoli** | Pone a 0 tutti e tre gli angoli sperimentali. |
+
 
 ---
 
-## Link
+## Collega {#link}
 
-Quando **Link** è attivato, il sistema di coordinate ReciPro e il sistema di coordinate sperimentale sono accoppiati: i loro angoli di Eulero vengono regolati in modo che l'orientazione dell'oggetto sia coerente tra i due sistemi.
+Quando **Collega** è attivato, il sistema di coordinate ReciPro e il sistema di coordinate sperimentale sono accoppiati: i loro angoli di Eulero vengono regolati in modo che l'orientazione dell'oggetto sia coerente tra i due sistemi.
+
+Nel momento in cui si attiva **Collega**, viene memorizzato lo scarto $R_{\mathrm{base}} = R_{\mathrm{exp}}^{-1} R$ tra i due sistemi e da quel momento vale $R = R_{\mathrm{exp}}\,R_{\mathrm{base}}$. Finché il collegamento è attivo:
+
+- la modifica di un angolo sperimentale ruota il cristallo in tutte le finestre;
+- una rotazione incrementale (pulsanti freccia, CTRL+SHIFT+frecce, o trascinamento nella Finestra principale o in altre finestre) viene scomposta numericamente negli angoli del goniometro abilitati e non **Fissa**ti, e il cristallo viene portato all'**orientazione più vicina raggiungibile dal goniometro** — quindi, con assi fissati o disabilitati, il cristallo segue i vincoli del goniometro anziché esattamente il mouse;
+- l'impostazione di un'orientazione assoluta (caselle degli angoli di Eulero, **Reimposta rotazione**, **Vista lungo** Asse/Piano, **Incolla da Excel**) viene applicata esattamente, riabilita il 2º e il 3º asse, annulla ogni **Fissa** e viene di nuovo scomposta in tutti e tre gli angoli del goniometro.
 
 ### Esempio di flusso di lavoro
 
 1. In laboratorio, impostate un goniometro in modo che l'asse *a* di un cristallo sia allineato con la direzione di incidenza dei raggi X e l'asse *b* sia orizzontale.
 2. Inserite gli angoli di Eulero del goniometro di laboratorio nel sistema di coordinate sperimentale.
 3. Nella Finestra principale, ruotate il cristallo in modo che l'asse *a* sia rivolto verso la normale dello schermo e l'asse *b* sia orizzontale.
-4. Attivate **Link** — ora, ogni volta che orientate il cristallo verso una diversa orientazione nella Finestra principale, gli angoli del goniometro richiesti vengono visualizzati automaticamente.
+4. Attivate **Collega** — ora, ogni volta che orientate il cristallo verso una diversa orientazione nella Finestra principale, gli angoli del goniometro richiesti vengono visualizzati automaticamente.
 
 ---
 
