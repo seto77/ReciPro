@@ -6,7 +6,7 @@
 
 Open it from the **Options** menu of the [Diffraction Simulator](index.md) → **ALCHEMI simulator...**
 
-GUI conditions: Wave Length = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator)
+GUI conditions: Wave Length = Electron (the crystal, accelerating voltage and orientation are taken from the parent diffraction simulator). With another source the window still opens, but the θ_B read-out and **Simulate** only show the notice *ALCHEMI is for electrons. Set the wave source of the diffraction simulator to Electron.* <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI simulator](../../assets/cap-en-auto/FormALCHEMI.png)
 
@@ -115,7 +115,7 @@ The list of atomic sites whose yield is computed separately, shown as `label ele
 
 ### Simulate / Stop
 
-**Simulate** starts the scan. The progress is reported in the status bar in five stages (resolving ionization data → building the union basis → building the ionization matrices → solving orientations → checking the expanded basis), and **Stop** aborts at any time.
+**Simulate** starts the scan. The progress is reported in the status bar in five stages (resolving ionization data → building the union basis → building the ionization matrices → solving orientations → checking the expanded basis), and **Stop** aborts at any time. If the row **g** is parallel to the beam, the scan cannot tilt it through its Bragg conditions; **Simulate** then only reports this reason in the status bar. <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
@@ -166,7 +166,7 @@ Further warnings are added as separate lines of the diagnostics box, each prefix
 
 ## CSV export
 
-**Export CSV** writes a long-format table preceded by a `# key: value` header (abridged below). The header is written so that the file alone states the conditions needed to reproduce it.
+**Export CSV** writes a long-format table preceded by a `# key: value` header (abridged below). The header is written so that the file alone states the conditions needed to reproduce it; `scan_origin_rotation_matrix` records the crystal orientation at the scan origin (tilt 0) as a row-major rotation matrix. <!-- 261105Cl 監査: FormALCHEMI.cs buttonExport_Click の Key("scan_origin_rotation_matrix", ...) -->
 
 ```text
 # generator: ReciPro ALCHEMI, ver 4.947 (2026-08-09)
@@ -175,6 +175,7 @@ Further warnings are added as separate lines of the diagnostics box, each prefix
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

@@ -184,10 +184,10 @@ Drives [Spot ID v2](../11-spot-id-v2.md) from a macro: load an image or a spot l
 | Function | Description |
 |----------|-------------|
 | `SpotID.LoadFile(filename)` | Load a file as **File > Load** does: `.csv` is read as a spot list (an image must be loaded first), any other extension as a diffraction pattern image (dm3, dm4, mrc, ipa, tif and other supported formats). Omit `filename` to open a file dialog |
-| `SpotID.FindSpots()` | Detect the spots in the loaded image and fit them, as the **Find spots** button does |
-| `SpotID.Identify()` | Search for orientations that explain the detected spots, as the **Identify spots** button does, and return the number of candidates. The crystals tested are those selected in the crystal list of the main window |
+| `SpotID.FindSpots()` | Detect the spots in the loaded image and fit them, as the **Detect & Fit Spots** button does <!-- 261105Cl 監査: ボタン名を FormSpotIDV2.resx に合わせた --> |
+| `SpotID.Identify()` | Search for orientations that explain the detected spots, as the **Identify Spots** button does, and return the number of candidates. The crystals tested are those selected in the crystal list of the main window. Returns 0 without searching when no image is loaded, fewer than two spots are registered or no crystal is selected |
 | `SpotID.CandidateList()` | Return the candidate orientation list as CSV text |
-| `SpotID.SpotList()` | Return the observed spots as CSV text, with the same columns as **File > Save**. Pair it with `File.SaveText()` to write a file that `LoadFile()` can read back |
+| `SpotID.SpotList()` | Return the observed spots as CSV text, with the same columns as the **Save** button of **Spot information**. Pair it with `File.SaveText()` to write a file that `LoadFile()` can read back |
 
 `CandidateList()` gives, for each candidate: crystal name, the Z-X-Z Euler angles (deg), the nine rotation-matrix elements R11–R33 (crystal frame to laboratory frame, applied to column vectors), the mean-squared residual (nm⁻²), and the assignment of observed spots to *hkl* indices. Candidates come ordered by the number of assigned spots (descending), then by the residual (ascending). Numbers are written in the invariant culture, so the decimal separator is always a period.
 
@@ -197,8 +197,8 @@ Drives [Spot ID v2](../11-spot-id-v2.md) from a macro: load an image or a spot l
 |----------|------|-------------|
 | `Energy` | double | Beam energy (keV for X-rays and electrons, meV for neutrons) |
 | `CameraLength` | double | Camera length (mm) |
-| `PixelSizeInMM` | double | Pixel size (mm); reading or writing it also switches the pixel-size unit to mm |
-| `PixelSizeInNMinv` | double | Pixel size (nm⁻¹); reading or writing it also switches the unit to nm⁻¹ |
+| `PixelSizeInMM` | double | Pixel size (mm). Writing it switches the pixel-size unit to mm; reading it returns the value converted to mm without changing the unit <!-- 261105Cl 監査: Macro.cs の Help 文 (I6) --> |
+| `PixelSizeInNMinv` | double | Pixel size (nm⁻¹). Writing it switches the unit to nm⁻¹; reading it returns the value converted to nm⁻¹ without changing the unit |
 | `MaxNumberOfSpots` | int | Maximum number of spots `FindSpots()` may detect |
 | `NearestNeighbor` | int | Minimum separation allowed between detected spots (pixels) |
 | `FittingRange` | double | Radius of the region around each spot used for peak fitting (pixels) |

@@ -6,7 +6,7 @@
 
 起動: [回折シミュレータ](index.md) の **オプション** メニュー → **ALCHEMI シミュレータ...**
 
-GUI 条件: 波長 = 電子線 (結晶・加速電圧・方位は親の回折シミュレータから受け取ります)
+GUI 条件: 波長 = 電子線 (結晶・加速電圧・方位は親の回折シミュレータから受け取ります)。ほかの線源でもウィンドウは開きますが、θ_B の表示と **計算** には「ALCHEMI は電子線専用です。回折シミュレータの線源を電子線にしてください。」という案内だけが出ます。 <!-- 261105Cl 監査: FormALCHEMI.cs NotElectronNotice (6ae7a85) -->
 
 ![ALCHEMI シミュレータ](../../assets/cap-ja-auto/FormALCHEMI.png)
 
@@ -115,7 +115,7 @@ $$
 
 ### 計算 / 中止
 
-**計算**で走査を開始します。進捗はステータスバーに 5 段 (イオン化データの解決 → union 基底の構築 → イオン化行列の構築 → 方位の計算 → 拡張基底の検証) で表示され、**中止**でいつでも打ち切れます。
+**計算**で走査を開始します。進捗はステータスバーに 5 段 (イオン化データの解決 → union 基底の構築 → イオン化行列の構築 → 方位の計算 → 拡張基底の検証) で表示され、**中止**でいつでも打ち切れます。反射列 **g** がビームと平行なときは走査で Bragg 条件を通せないので、**計算** はその理由をステータスバーに出すだけです。 <!-- 261105Cl 監査: FormALCHEMI.cs BuildRequest (732813e) -->
 
 ---
 
@@ -175,6 +175,7 @@ basis 347 (184 + 163)   F(s) ≤ 6.20 Å⁻¹   expanded-basis 6.7e-3
 # crystal: MgAl2O4 (spinel) / F d -3 m
 # cell_nm: a 0.808000 b 0.808000 c 0.808000 alpha 90.0000 beta 90.0000 gamma 90.0000 deg
 # accelerating_voltage_kV: 200.000
+# scan_origin_rotation_matrix: 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 0.000000000 0.000000000 0.000000000 1.000000000 (row-major; the crystal orientation of the parent diffraction simulator at the run, mapping the crystal's Cartesian frame to the laboratory frame, in which the beam travels along -z)
 # scan_row_hkl: 1 0 0
 # theta_B_mrad: 1.552030
 # thicknesses_nm: 10.0000 20.0000 ... 100.0000

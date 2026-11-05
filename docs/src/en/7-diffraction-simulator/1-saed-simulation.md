@@ -105,10 +105,10 @@ The labels overlaid on the spots are selected from the [toolbar](index.md#toolba
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormDiffractionSimulator.cs:DrawDiffractionSpotsLabel) -->
 | Label | Content |
 |-------|---------|
-| **Index** | Miller indices $(hkl)$ |
+| **Index** | Miller indices $(hkl)$; four indices $(hkil)$ when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes (the Kikuchi-line, Debye-ring and 3-D labels follow the same setting) <!-- 261105Cl 監査: C23 --> |
 | **d** | interplanar spacing $d$ (shown in Å) |
 | **1/d** | reciprocal of the interplanar spacing $1/d$ (nm⁻¹) |
-| **Distance** | distance of the spot from the direct spot on the detector, $L_2 \tan 2\theta$ (mm; $L_2$ = camera length 2; exact for an untilted detector, τ = 0) |
+| **Distance** | distance on the detector from the spot to the transmitted (direct) spot (mm), measured between the drawn positions, so it also holds for a tilted detector, the X-ray precession camera and Back Laue (measured from the beam hole); not shown when the transmitted beam misses the detector <!-- 261105Cl 監査: DrawDiffractionSpotsLabel (C15)。L2 tan2θ は傾けない平板の検出器だけ --> |
 | **2θ** | scattering angle $2\theta$ (same definition as the concentric 2θ scale circles) |
 | **χ** | azimuth angle $\chi$, measured from the upward (12 o'clock) direction, positive clockwise (same definition as the radial azimuth scale lines) |
 | **Excit. Err.** | excitation error $S_g$ (nm⁻¹) |

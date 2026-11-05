@@ -52,7 +52,7 @@ The standard plane wave. A parallel incident beam used for SAED and single-cryst
 
 ### Precession (X-ray, ZOLZ) — precession camera {#precession-x-ray--precession-camera}
 
-Simulates an X-ray precession camera. This is a precession photograph that captures a single layer of the reciprocal lattice.
+Simulates an X-ray precession camera. This is a precession photograph that captures a single layer of the reciprocal lattice. Debye rings are drawn as circles of radius $2L_2\sin\theta$ ($L_2$ = camera length 2), the same as the 2θ scale circles. <!-- 261105Cl 監査: DrawDebyeRing (C6) -->
 
 ### Back Laue (X-ray) — back-reflection Laue {#back-laue-back-reflection-laue}
 
@@ -62,6 +62,8 @@ Simulates a back-reflection Laue pattern with white (polychromatic) X-rays. In t
 - The white spectrum is cut at **50 keV**: reflections are collected down to $d = \lambda(50\ \text{keV})/2$, and no spectral weighting is applied.
 - Harmonics $n\mathbf{g}$ lying on the same line through the origin fall on the same spot; their $\lvert F\rvert^2$ are summed onto the lowest-order reflection and the spot intensities are normalised to the strongest spot.
 - **Anomalous dispersion (f', f'')** is disabled (the energy is not single-valued), and **Spot radius** has no unit in this mode.
+- 2θ (mouse position, spot labels and the 2θ scale) is the scattering angle: 180° at the beam hole in the centre, decreasing outward. <!-- 261105Cl 監査: Back Laue の 2θ (C13) -->
+- Every selected crystal is drawn; with more than one crystal (or with **Color per crystal** on) the spots of each crystal take that crystal's colour. <!-- 261105Cl 監査: Back Laue の複数結晶 -->
 
 > **Note**: The **Optics** options follow the wave source. **Precession (electron)** and **Convergence (electron)** appear only when **Electron** is selected, whereas the **Precession (X-ray, ZOLZ)** and **Back Laue (X-ray)** options above appear only when **X-ray** is selected. For neutrons, only **Parallel beam** is available. Depending on the state at capture time, the screenshot may not show the X-ray-specific options.
 
@@ -117,7 +119,7 @@ Controls how each diffraction spot is rendered.
 Debye rings of a polycrystalline specimen can be displayed. Enable **Debye rings** on the toolbar (see [Toolbar](index.md#toolbar)).
 
 - **Ignore diffraction intensity** : draws all rings in the same colour and intensity (used for a purely geometric comparison that ignores the structure factor).
-- **Show Index Labels** : displays the (*hkl*) index near each ring.
+- **Show Index Labels** : displays the indices {*hkl*} near each ring (four indices {*hkil*} with **Options ▸ Use Miller-Bravais (hkil) index** on for hexagonal axes). <!-- 261105Cl 監査: DrawDebyeRing (C23) -->
 
 Detailed settings are on the Debye rings tab of the [tab menu](index.md#drawing-overlay-tabs).
 
