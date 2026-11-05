@@ -732,6 +732,10 @@ public partial class FormMain : FormBase
             //260723Cl 外部マクロ命令の Named Pipe リスナーを有効にするか (commonDialog 生成後 = メニュー構築後のみ到達)
             rw(() => MacroPipeListenerEnabled);
 
+            // 261105Cl 追加 (作者の決定 A20): Options ▸ Show Tooltips と、結晶の欄の格子定数の単位 (Å/nm) を次の起動でも残す
+            rw(() => toolTipToolStripMenuItem.Checked); // 261105Cl 追加
+            rw(() => crystalControl.symmetryControl.LengthUnit); // 261105Cl 追加
+
             //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
             rw(() => commonDialog.AutomaticallyClose);
 
@@ -1839,7 +1843,8 @@ public partial class FormMain : FormBase
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-    private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked;
+    //private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked; // 261105Cl 変更前: 主窓の toolTip だけに効いていた
+    private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => FormBase.ShowToolTips = toolTipToolStripMenuItem.Checked; // 261105Cl 変更 (作者の決定 A20): 全フォーム・部品のツールチップに効かせる
     private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
     private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => ExportCIF();
 

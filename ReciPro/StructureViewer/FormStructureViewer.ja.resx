@@ -1194,11 +1194,11 @@ List、新しい OpenGL が必要）かを選びます。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>結晶構造</value>
+    <value>結晶構造ビューア</value>
   </data>
   <data name="labelMessage.Text" xml:space="preserve">
     <value>このコントロールは現在
-「結晶構造」ウィンドウに表示されています。</value>
+「結晶構造ビューア」ウィンドウに表示されています。</value>
   </data>
   <data name="labelGraphicsCard.Text" xml:space="preserve">
     <value>グラフィックカード:  </value>

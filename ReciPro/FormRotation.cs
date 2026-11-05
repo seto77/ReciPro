@@ -397,25 +397,46 @@ public partial class FormRotationMatrix : FormBase
         numericBox33.Value = RotReciPro.E33;
         skip = false;
 
-        if (renewExpEuler && Linked)
+        //if (renewExpEuler && Linked)
+        //{
+        //    skip = true;
+        //    checkBoxEnable2nd.Checked = checkBoxEnable3rd.Checked = true;
+        //    checkBoxFix1st.Checked = checkBoxFix2nd.Checked = checkBoxFix3rd.Checked = false;
+        //    var settings = new List<(V3 Vec, double Angle, bool Variable)>();
+        //    var dir = getExpDirections();
+        //    settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
+        //    settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
+        //    settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
+        //
+        //    var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), [.. settings]);
+        //    numericBoxExp1.RadianValue = angles[0];
+        //    numericBoxExp2.RadianValue = angles[1];
+        //    numericBoxExp3.RadianValue = angles[2];
+        //    skip = false;
+        //} // 261105Cl 変更前: Link 中に方位を外から決められると、ゴニオの制約 (Fix・第 2/第 3 軸の有効) を黙って全部外して 3 軸に分解し直していた
+
+        // 261105Cl 変更 (作者の決定 G-13): Link 中に方位を外から絶対値で決められたとき (主窓の Euler 角の入力・Reset・View along、この窓の Paste、
+        //  結晶の切り替え、他の窓やマクロからの方位の設定) は、Link を外して主窓のステータスバーで知らせる。
+        //  方位は入力どおり正確に入り、ゴニオの角度と制約の設定はそのまま残る (Link を入れ直せば、その時点の方位で結び直す)。
+        //  矢印ボタン・ドラッグなどの相対回転は FormMain.Rotate → SetRotation(Matrix3D) で制約を保ったまま回すので、ここには来ない。
+        //  方位が Link の関係 (R = R_exp R_base) から変わっていないとき (結晶の編集など) は Link を保つ
+        if (renewExpEuler && Linked && (RotExp * RotBase - RotReciPro).ToArrayRight().Max(v => Math.Abs(v)) > 1e-6)
         {
-            skip = true;
-            checkBoxEnable2nd.Checked = checkBoxEnable3rd.Checked = true;
-            checkBoxFix1st.Checked = checkBoxFix2nd.Checked = checkBoxFix3rd.Checked = false;
-            var settings = new List<(V3 Vec, double Angle, bool Variable)>();
-            var dir = getExpDirections();
-            settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
-            settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
-            settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
-
-            var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), [.. settings]);
-            numericBoxExp1.RadianValue = angles[0];
-            numericBoxExp2.RadianValue = angles[1];
-            numericBoxExp3.RadianValue = angles[2];
+            skip = true; // CheckBoxLink_CheckedChanged の描き直しは飛ばし、下でまとめて描く
+            checkBoxLink.Checked = false;
             skip = false;
-
-
-
+            FormMain.toolStripStatusLabel.Text = Localization.Loc(
+                en: "Rotation Geometry: Link was turned off to set the orientation exactly (goniometer settings are kept).",
+                ja: "回転ジオメトリ: 方位を入力どおりに設定するため、リンクを外しました (ゴニオメーターの設定は保たれます)。",
+                de: "Rotationsgeometrie: „Verknüpfen“ wurde ausgeschaltet, um die Orientierung genau zu setzen (Goniometer-Einstellungen bleiben erhalten).",
+                fr: "Géométrie de rotation : « Lier » a été désactivé pour appliquer l'orientation exacte (réglages du goniomètre conservés).",
+                es: "Geometría de rotación: se desactivó «Enlazar» para fijar la orientación exacta (se conservan los ajustes del goniómetro).",
+                pt: "Geometria de rotação: \"Vincular\" foi desativado para definir a orientação exata (as configurações do goniômetro são mantidas).",
+                it: "Geometria di rotazione: «Collega» è stato disattivato per impostare l'orientazione esatta (le impostazioni del goniometro restano).",
+                ru: "Геометрия вращения: «Связать» отключено, чтобы задать ориентацию точно (настройки гониометра сохранены).",
+                zhHans: "旋转几何：为精确设置取向，已取消“联动”（测角仪设置保持不变）。",
+                zhHant: "旋轉幾何：為精確設定方位，已取消「連結」（測角儀設定保持不變）。",
+                ko: "회전 기하학: 방위를 정확히 설정하기 위해 '연동'을 해제했습니다 (고니오미터 설정은 유지됩니다)."); // 261105Cl
         }
         //ReciPro coordinatesの描画
         var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };

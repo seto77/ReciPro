@@ -1398,7 +1398,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel; // 261105Cl private → internal (FormRotation が Link を外したことを知らせるため)
         public System.Windows.Forms.ToolStripButton toolStripButtonDiffractionPoly;
         public System.Windows.Forms.ToolStripButton toolStripButtonBeamInteraction;
         public System.Windows.Forms.ToolStripButton toolStripButtonSymmetryInformation;

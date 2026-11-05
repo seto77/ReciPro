@@ -312,7 +312,7 @@
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>対称性
-詳細</value>
+情報</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>「対称性情報」機能を開く</value>
@@ -325,17 +325,18 @@
     <value>「ビーム相互作用」機能を開く</value>
   </data>
   <data name="toolStripButtonRotation.Text" xml:space="preserve">
-    <value>ゴニオ
-メーター</value>
+    <value>回転
+ジオメトリ</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
     <value>「回転ジオメトリ」機能を開きます。</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
-    <value>結晶構造</value>
+    <value>結晶構造
+ビューア</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>ストラクチャビューア（結晶の三次元構造
+    <value>「結晶構造ビューア」（結晶の三次元構造
 表示）を開きます。</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
