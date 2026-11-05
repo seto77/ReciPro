@@ -1142,7 +1142,8 @@ public partial class FormImageSimulator : FormBase
 
         //振幅と位相モードの時
         if (radioButtonPotentialModeMagAndPhase.Checked)
-            foreach (var (i, j, text) in new[] { (0, 0, "Ug magnitude"), (0, 1, "Ug phase"), (1, 0, "U'g magnitude"), (1, 1, "Ug phase") })
+            //foreach (var (i, j, text) in new[] { (0, 0, "Ug magnitude"), (0, 1, "Ug phase"), (1, 0, "U'g magnitude"), (1, 1, "Ug phase") }) // 261105Cl 変更前: U'g の位相ペインが "Ug phase" になっていた
+            foreach (var (i, j, text) in new[] { (0, 0, "Ug magnitude"), (0, 1, "Ug phase"), (1, 0, "U'g magnitude"), (1, 1, "U'g phase") }) // 261105Cl 修正
             {
                 var src = j == 0 ? images[i * 2 + j] : images[i * 2 + j].Select(d => d / Math.PI * 180).ToArray();
                 pseudo[i][j] = new PseudoBitmap(src, width)
