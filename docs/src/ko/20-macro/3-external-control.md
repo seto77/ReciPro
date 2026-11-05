@@ -56,7 +56,7 @@ ReciPro가 실행 중일 때, Windows 명명된 파이프 **`\\.\pipe\ReciPro.Ma
 
 리스너는 **기본적으로 꺼져 있습니다**. 메인 창의 메뉴에서 활성화합니다.
 
-**옵션 → Accept external macro commands (named pipe)**
+**옵션 → 외부 매크로 명령 수락 (명명된 파이프)**
 
 이 설정은 다음 실행에도 유지됩니다.
 

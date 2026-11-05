@@ -49,7 +49,7 @@ $\mathbf g$의 직교 성분은 역격자 기저 벡터와 밀러 지수로부�
 $$\begin{pmatrix} g_x\\ g_y\\ g_z\end{pmatrix} = \begin{pmatrix} a_x^{*} & b_x^{*} & c_x^{*}\\ a_y^{*} & b_y^{*} & c_y^{*}\\ a_z^{*} & b_z^{*} & c_z^{*}\end{pmatrix}\begin{pmatrix} h\\ k\\ l\end{pmatrix} = \begin{pmatrix} h\,a_x^{*} + k\,b_x^{*} + l\,c_x^{*}\\ h\,a_y^{*} + k\,b_y^{*} + l\,c_y^{*}\\ h\,a_z^{*} + k\,b_z^{*} + l\,c_z^{*}\end{pmatrix}$$
 
 !!! note
-    회절 시뮬레이터의 **Details** 테이블에 표시되는 $U_{\mathbf g}$ 값은 상대론적 인자 $\gamma$가 적용되기 *이전*의 원시 값이다.
+    회절 시뮬레이터의 **반사점 세부정보** 테이블에 표시되는 $U_{\mathbf g}$ 값은 상대론적 인자 $\gamma$가 적용되기 *이전*의 원시 값이다.
 
 ---
 
