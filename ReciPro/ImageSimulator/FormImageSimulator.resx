@@ -181,9 +181,6 @@
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>panelPhaseScale</value>
   </data>
-  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="groupBoxSimulation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 6, 6</value>
   </data>
@@ -296,7 +293,7 @@ each EDX channel adds one extra ionization pass after it.</value>
     <value>groupBoxPotentialOption</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set all aberrations to zero</value>
+    <value>Ideal conditions (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="flowLayoutPanelConvergenceRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -366,9 +363,6 @@ each EDX channel adds one extra ionization pass after it.</value>
   </data>
   <data name="label37.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
-  </data>
-  <data name="loadTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="checkBoxPreset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -747,6 +741,9 @@ beams pass the HRTEM objective aperture.</value>
   </data>
   <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Parent" xml:space="preserve">
     <value>flowLayoutPanelConvergenceRadius</value>
@@ -1336,6 +1333,9 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
     <value>Calculation library</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="radioButtonSingleMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 4</value>
@@ -3039,6 +3039,11 @@ in serial (through-focus) mode.</value>
   </data>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Load TEM parameters</value>
+  </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load simulation conditions from a file saved with
+"Save TEM parameters" (*.rpis). Items that are not in
+the file (e.g. from an older version) are set to their defaults.</value>
   </data>
   <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6808,6 +6813,11 @@ stores and recalls TEM imaging conditions.</value>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Save TEM parameters</value>
   </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save the current simulation conditions (the same items
+as a preset) to an XML file (*.rpis), which can be loaded
+on another PC or shared with collaborators.</value>
+  </data>
   <data name="comboBoxEdxDetectorWindow.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -8260,6 +8270,9 @@ crystal potential (Fourier coefficient Ug).</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.Name" xml:space="preserve">
     <value>groupBoxSampleProperty</value>

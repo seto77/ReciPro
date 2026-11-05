@@ -2368,11 +2368,13 @@ namespace ReciPro
             // 
             resources.ApplyResources(loadTEMParameterToolStripMenuItem, "loadTEMParameterToolStripMenuItem");
             loadTEMParameterToolStripMenuItem.Name = "loadTEMParameterToolStripMenuItem";
+            loadTEMParameterToolStripMenuItem.Click += loadTEMParameterToolStripMenuItem_Click;
             // 
             // saveTEMParametersToolStripMenuItem
             // 
             resources.ApplyResources(saveTEMParametersToolStripMenuItem, "saveTEMParametersToolStripMenuItem");
             saveTEMParametersToolStripMenuItem.Name = "saveTEMParametersToolStripMenuItem";
+            saveTEMParametersToolStripMenuItem.Click += saveTEMParametersToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 

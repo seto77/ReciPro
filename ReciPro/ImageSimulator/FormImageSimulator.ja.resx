@@ -1179,7 +1179,7 @@ STEM 参照像 (ADF / 弾性 / TDS) にのみ適用されます。STEM-EDX マ�
     <value>デフォーカスをシェルツァー値に設定</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>収差をすべて0に設定</value>
+    <value>理想条件 (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="contextMenuStripTEMcondition.ToolTip" xml:space="preserve">
     <value />
@@ -1417,8 +1417,16 @@ microscopy, 走査透過電子顕微鏡）像を、収束角と
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>TEMパラメータを読み込み</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>「TEMパラメータを保存」で保存したファイル (*.rpis) から計算条件を
+読み込みます。ファイルに無い項目 (古い版のファイルなど) は初期値になります。</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>TEMパラメータを保存</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>今の計算条件 (条件プリセットと同じ項目) を XML ファイル (*.rpis) に
+保存します。別の PC で読み込んだり、共同研究者と共有したりできます。</value>
   </data>
   <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

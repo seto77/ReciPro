@@ -161,11 +161,17 @@
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>数量</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>步长</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>数量</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>步长</value>
@@ -301,7 +307,7 @@
     <value>将欠焦设为谢尔策值</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>将所有像差设为零</value>
+    <value>理想条件 (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>衬度传递函数 (CTF)</value>
@@ -367,8 +373,16 @@
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>加载 TEM 参数</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>从用「保存 TEM 参数」保存的文件 (*.rpis) 读取模拟条件。
+文件中没有的项目（例如旧版本的文件）将设为默认值。</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>保存 TEM 参数</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>将当前的模拟条件（与预设设置相同的项目）保存到 XML 文件 (*.rpis)。
+可以在其他电脑上读取，或与合作者共享。</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>

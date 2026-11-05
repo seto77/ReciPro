@@ -164,11 +164,17 @@ des rayons X émis n'est pas encore appliquée.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>N</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Début</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Pas</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>N</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Début</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Pas</value>
@@ -305,7 +311,7 @@ est affiché dans le
     <value>Régler la défocalisation à la valeur de Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Mettre toutes les aberrations à zéro</value>
+    <value>Conditions idéales (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Fonction de transfert de contraste (CTF)</value>
@@ -371,8 +377,18 @@ est affiché dans le
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Charger les paramètres TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Charge les conditions de simulation depuis un fichier enregistré avec
+« Enregistrer les paramètres TEM » (*.rpis). Les éléments absents du
+fichier (p. ex. d'une version antérieure) prennent leur valeur par défaut.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer les paramètres TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Enregistre les conditions de simulation actuelles (les mêmes
+éléments que les préréglages) dans un fichier XML (*.rpis),
+qui peut être chargé sur un autre PC ou partagé avec des collaborateurs.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Fichier</value>

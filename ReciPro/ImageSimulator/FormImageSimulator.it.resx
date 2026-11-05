@@ -161,8 +161,14 @@ dei raggi X emessi non è ancora applicato.</value>
   <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Visualizzazione</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Inizio</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Inizio</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
@@ -293,7 +299,7 @@ Simulator"</value>
     <value>Imposta defocus al valore di Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Azzera tutte le aberrazioni</value>
+    <value>Condizioni ideali (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
     <value>300kV Cold-FEG senza Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
@@ -359,8 +365,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Carica parametri TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carica le condizioni di simulazione da un file salvato con
+"Salva parametri TEM" (*.rpis). Le voci assenti nel file
+(ad es. di una versione precedente) assumono il valore predefinito.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Salva parametri TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salva le condizioni di simulazione attuali (le stesse voci
+delle preimpostazioni) in un file XML (*.rpis), che può essere
+caricato su un altro PC o condiviso con i collaboratori.</value>
   </data>
   <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
     <value>Concetto base della simulazione HRTEM</value>

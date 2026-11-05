@@ -164,11 +164,17 @@ emitidos ainda não é aplicada.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Início</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Início</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Passo</value>
@@ -305,7 +311,7 @@ Simulator"</value>
     <value>Definir desfoco com o valor de Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Definir todas as aberrações como zero</value>
+    <value>Condições ideais (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
     <value>300kV Cold-FEG sem Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
@@ -374,8 +380,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Carregar parâmetros TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carrega as condições de simulação de um arquivo salvo com
+"Salvar parâmetros TEM" (*.rpis). Os itens ausentes no arquivo
+(p. ex., de uma versão anterior) recebem o valor padrão.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Salvar parâmetros TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Salva as condições de simulação atuais (os mesmos itens
+das predefinições) em um arquivo XML (*.rpis), que pode ser
+carregado em outro PC ou compartilhado com colaboradores.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Arquivo</value>

@@ -1,8 +1,12 @@
 ﻿using MemoryPack;
 using System.Buffers;
 using System.Drawing;
+using System.IO;//261105Cl 追加
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;//261105Cl 追加: TEM パラメータのファイル (XML) の読み書き
+using System.Xml.Linq;//261105Cl 追加
+using System.Xml.Serialization;//261105Cl 追加
 using static ReciPro.FormImageSimulator;
 
 namespace ReciPro;
@@ -160,6 +164,11 @@ public partial struct ImageSimulatorSetting
 
     //共通
     public string Name;
+    /// <summary>261105Cl 注記 (監査 E8): **未使用**。一度も保存・適用されていない (計算ライブラリの切替は画面から廃止し、
+    /// HRTEM の像合成は NativeWrapper.Enabled と Options の設定に従う)。既存のプリセットを読めるよう残す:
+    /// 削るとフィールドの並びがずれ、MemoryPack で保存済みのプリセット (レジストリの blob) が読めなくなる (下の EdxChannels と同じ)。
+    /// TEM パラメータのファイル (XML) には書かない</summary>
+    [XmlIgnore]//261105Cl 追加
     public bool Native;
 
     public HRTEM_Modes HRTEM_Mode;
@@ -206,6 +215,7 @@ public partial struct ImageSimulatorSetting
     /// 計算するようにしたため、この項目は**未使用**。ただし**削除しない**: 削るとメンバ数が 27→26 になり、
     /// 27 で書かれた既存 blob が MemoryPackSerializationException になる (Reg.RW が握り潰すのでプリセットが
     /// 黙って消える)。将来また選択 UI を入れるときの枠として残す。</summary>
+    [XmlIgnore]//261105Cl 追加: 未使用なので TEM パラメータのファイル (XML) には書かない
     public (int Z, IonizationShell Shell)[] EdxChannels;
     /// <summary>260925Cl 追加: EDX で線の系列 (Kα・Kβ・Lα・Lβ・Mα) も計算するか。**末尾に追加** (上の MemoryPack の注意)。
     /// 旧 blob では既定値 false = 従来どおり殻のチャネルだけ。</summary>
@@ -345,6 +355,45 @@ public partial struct ImageSimulatorSetting
         f.EdxEnabled = EdxEnabled;
         //260802Cl: EdxChannels は未使用 (常に全チャネル計算) なので適用しない
     }
+
+    #region TEM パラメータのファイル (XML) の読み書き 261105Cl 追加 (監査 E7: メニューの Load/Save TEM parameters)
+    //人が読めて、別の PC・共同研究者と共有できるよう XML にする (プリセット・起動時の復元は従来どおりレジストリの MemoryPack blob)。
+    //書くのはこの構造体の公開フィールドのうち [XmlIgnore] (未使用の Native・EdxChannels) 以外のすべて。
+    //フィールドを足せば自動的にファイルにも入る。読むときは、ファイルに無い項目 (古い版のファイル) を defaults の値にし、
+    //知らない項目 (新しい版のファイル) は無視する。
+
+    /// <summary>261105Cl 追加: TEM パラメータのファイルの拡張子 (中身は XML。ReciPro Image Simulator の略。.rpmp = ReciPro Master Pattern にならう)</summary>
+    public const string FileExtension = ".rpis";
+
+    /// <summary>261105Cl 追加: この設定を XML ファイルに書く</summary>
+    public readonly void SaveXml(string path)
+    {
+        using var writer = XmlWriter.Create(path, new XmlWriterSettings { Indent = true });
+        new XmlSerializer(typeof(ImageSimulatorSetting)).Serialize(writer, this);
+    }
+
+    /// <summary>261105Cl 追加: <see cref="SaveXml"/> で書いたファイルを読む。ファイルに無い項目は <paramref name="defaults"/> の値にする。
+    /// XML でない・別の種類の XML・値が読めないときは例外 (呼び出し側で知らせる)</summary>
+    public static ImageSimulatorSetting LoadXml(string path, ImageSimulatorSetting defaults)
+    {
+        var file = XElement.Load(path);
+        if (file.Name.LocalName != nameof(ImageSimulatorSetting))
+            throw new InvalidDataException($"The root element is <{file.Name.LocalName}>, not <{nameof(ImageSimulatorSetting)}>.");
+
+        //既定値を XML にして、ファイルにある項目だけ差し替えてから読む (XmlSerializer は既存の値の上に読み込めないため)
+        var serializer = new XmlSerializer(typeof(ImageSimulatorSetting));
+        var merged = new XDocument();
+        using (var writer = merged.CreateWriter())
+            serializer.Serialize(writer, defaults);
+        foreach (var element in file.Elements())
+        {
+            merged.Root.Element(element.Name)?.Remove();
+            merged.Root.Add(new XElement(element));
+        }
+        using var reader = merged.Root.CreateReader();
+        return (ImageSimulatorSetting)serializer.Deserialize(reader);
+    }
+    #endregion
 }
 #endregion
 

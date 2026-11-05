@@ -161,11 +161,17 @@
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>數量</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>步進</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>數量</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>起始</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>步進</value>
@@ -301,7 +307,7 @@
     <value>將散焦設為 Scherzer 值</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>將所有像差設為零</value>
+    <value>理想條件 (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>對比傳遞函數 (CTF)</value>
@@ -367,8 +373,16 @@
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>載入 TEM 參數</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>從以「儲存 TEM 參數」儲存的檔案 (*.rpis) 讀取模擬條件。
+檔案中沒有的項目（例如舊版本的檔案）將設為預設值。</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>儲存 TEM 參數</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將目前的模擬條件（與預設設定相同的項目）儲存到 XML 檔案 (*.rpis)。
+可以在其他電腦上讀取，或與合作者共用。</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>檔案</value>

@@ -164,11 +164,17 @@ emittierten Röntgenstrahlen wird noch nicht angewandt.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Anz</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Schritt</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Anz</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Schritt</value>
@@ -305,7 +311,7 @@ Simulator" angezeigt</value>
     <value>Defokus auf Scherzer-Wert setzen</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alle Aberrationen auf Null setzen</value>
+    <value>Ideale Bedingungen (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
     <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
@@ -374,8 +380,18 @@ Simulator" angezeigt</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM-Parameter laden</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Lädt Simulationsbedingungen aus einer mit „TEM-Parameter speichern“
+gespeicherten Datei (*.rpis). Einträge, die in der Datei fehlen
+(z. B. aus einer älteren Version), erhalten ihre Standardwerte.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM-Parameter speichern</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Speichert die aktuellen Simulationsbedingungen (dieselben
+Einträge wie die Voreinstellungen) in einer XML-Datei (*.rpis),
+die auf einem anderen PC geladen oder weitergegeben werden kann.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Datei</value>

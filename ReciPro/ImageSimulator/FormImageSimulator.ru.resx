@@ -164,11 +164,17 @@
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>N</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Нач.</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>N</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Нач.</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Шаг</value>
@@ -305,7 +311,7 @@ Simulator"</value>
     <value>Установить дефокус по Шерцеру</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Обнулить все аберрации</value>
+    <value>Идеальные условия (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>Функция передачи контраста (CTF)</value>
@@ -371,8 +377,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Загрузить параметры ПЭМ</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Загружает условия моделирования из файла, сохранённого командой
+«Сохранить параметры ПЭМ» (*.rpis). Параметры, которых нет в файле
+(например, из старой версии), получают значения по умолчанию.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить параметры ПЭМ</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохраняет текущие условия моделирования (те же параметры,
+что и в пресетах) в XML-файл (*.rpis), который можно открыть
+на другом ПК или передать коллегам.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Файл</value>

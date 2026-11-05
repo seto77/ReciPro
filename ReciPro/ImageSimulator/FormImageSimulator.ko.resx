@@ -163,11 +163,17 @@ exp(-µT/sin α)(α = 취출각)를 적용합니다. 향후 구현을
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>개수</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>시작</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>간격</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>개수</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>시작</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>간격</value>
@@ -304,7 +310,7 @@ Simulator"에 표시됩니다</value>
     <value>디포커스를 셰르처 값으로 설정</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>모든 수차를 0으로 설정</value>
+    <value>이상적인 조건 (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="checkBoxCTF.Text" xml:space="preserve">
     <value>콘트라스트 전달 함수 (CTF)</value>
@@ -370,8 +376,16 @@ Simulator"에 표시됩니다</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM 파라미터 불러오기</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>'TEM 파라미터 저장'으로 저장한 파일(*.rpis)에서 시뮬레이션 조건을
+불러옵니다. 파일에 없는 항목(예: 이전 버전의 파일)은 기본값이 됩니다.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>TEM 파라미터 저장</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>현재 시뮬레이션 조건(사전 설정과 같은 항목)을 XML 파일(*.rpis)에
+저장합니다. 다른 PC에서 불러오거나 공동 연구자와 공유할 수 있습니다.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>파일</value>

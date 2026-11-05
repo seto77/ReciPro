@@ -25,7 +25,14 @@ public partial class FormImageSimulator : FormBase
     public bool CTFVisible { get => checkBoxCTF.Checked; set => checkBoxCTF.Checked = value; }
 
     public ImageSimulatorSetting Setting { get => new("", this); set => value.Apply(this); }
-    public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
+    //public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0; // 261105Cl 変更前
+    //261105Cl 廃止 (監査 E12): 画面の計算ライブラリの切替 (Native / Managed) は HRTEM の像合成にしか効かず、起動のたびに Native に戻っていた。
+    //切替は Designer で非表示にし、HRTEM の像合成は NativeWrapper.Enabled と主窓の Options の「Crystallography.Native を無効化」に従う
+    //(GetHRTEMImage は native && BetheMethod.EigenEnabled で native を使う。EigenEnabled = 読み込めた かつ Options で無効にしていない)
+
+    /// <summary>261105Cl 追加: 初期状態 (デザイナの値) の設定。TEM パラメータのファイルに無い項目 (古い版のファイル) はこの値にする。
+    /// コンストラクタで InitializeComponent の直後 (レジストリから復元する前) に控える</summary>
+    private readonly ImageSimulatorSetting defaultSetting;
 
     public ImageModes ImageMode
     {
@@ -679,6 +686,7 @@ public partial class FormImageSimulator : FormBase
     {
         InitializeComponent();
         HelpPage = "9-hrtem-stem-simulator"; //260529Cl 追加
+        defaultSetting = new ImageSimulatorSetting("", this);//261105Cl 追加: 初期状態を控える (TEM パラメータのファイルに無い項目の既定値)
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
 
@@ -709,7 +717,7 @@ public partial class FormImageSimulator : FormBase
 
     private void FormImageSimulator_Load(object sender, EventArgs e)
     {
-        toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
+        //toolStripComboBoxCaclulationLibrary.SelectedIndex = 0; // 261105Cl 変更前 (監査 E12: 起動のたびに Native に戻していた。切替は廃止した)
 
         //260718Cl 変更: 小さな UI スケール画像 2 枚の生成に ParallelEnumerable は過剰なため、単純 for に
         static double[] gradient(int width, int height)
@@ -1172,7 +1180,8 @@ public partial class FormImageSimulator : FormBase
             ThicknessArray,
             DefocusArray,
             HRTEM_Mode == HRTEM_Modes.Quasi,
-            Native);
+            //Native); // 261105Cl 変更前
+            native: true);//261105Cl 変更 (監査 E12): 画面の切替を廃止。実際に native を使うかは BetheMethod.EigenEnabled (NativeWrapper.Enabled と Options) が決める
 
         var temp = sw1.ElapsedMilliseconds;
         //toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   "; // 261105Cl 変更前
@@ -2100,6 +2109,66 @@ public partial class FormImageSimulator : FormBase
     private void ToolStripMenuItemCopyImage_Click(object sender, EventArgs e) => Save(FormatEnum.PNG, ActionEnum.Copy);
     private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(FormatEnum.Meta, ActionEnum.Copy);
     #endregion 画像のコピー/保存
+
+    #region TEM パラメータのファイルの読み書き 261105Cl 追加 (監査 E7: 旧はメニューが常に灰色で未配線)
+    //中身はプリセットと同じ範囲 (ImageSimulatorSetting)。形式は XML (ImageSimulatorSetting.SaveXml / LoadXml)
+
+    /// <summary>261105Cl 追加: File > Load TEM parameters</summary>
+    private void loadTEMParameterToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var ext = "*" + ImageSimulatorSetting.FileExtension;
+        using var dlg = new OpenFileDialog { Filter = $"{ext}|{ext}|*.*|*.*" };
+        if (dlg.ShowDialog() != DialogResult.OK) return;
+
+        ImageSimulatorSetting setting;
+        try
+        {
+            setting = ImageSimulatorSetting.LoadXml(dlg.FileName, defaultSetting);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                Loc(en: "This file could not be read as TEM parameters. Choose a file saved with \"Save TEM parameters\" ({0}).",
+                    ja: "このファイルは TEM パラメータとして読み込めませんでした。「TEMパラメータを保存」で保存したファイル ({0}) を選んでください。",
+                    de: "Diese Datei konnte nicht als TEM-Parameter gelesen werden. Wählen Sie eine mit „TEM-Parameter speichern“ gespeicherte Datei ({0}).",
+                    fr: "Impossible de lire ce fichier comme paramètres TEM. Choisissez un fichier enregistré avec « Enregistrer les paramètres TEM » ({0}).",
+                    es: "No se pudo leer este archivo como parámetros TEM. Elija un archivo guardado con «Guardar parámetros TEM» ({0}).",
+                    pt: "Não foi possível ler este arquivo como parâmetros TEM. Escolha um arquivo salvo com \"Salvar parâmetros TEM\" ({0}).",
+                    it: "Impossibile leggere questo file come parametri TEM. Scegliere un file salvato con \"Salva parametri TEM\" ({0}).",
+                    ru: "Не удалось прочитать этот файл как параметры ПЭМ. Выберите файл, сохранённый командой «Сохранить параметры ПЭМ» ({0}).",
+                    zhHans: "无法将此文件读取为 TEM 参数。请选择用「保存 TEM 参数」保存的文件 ({0})。",
+                    zhHant: "無法將此檔案讀取為 TEM 參數。請選擇以「儲存 TEM 參數」儲存的檔案 ({0})。",
+                    ko: "이 파일을 TEM 파라미터로 읽을 수 없습니다. 'TEM 파라미터 저장'으로 저장한 파일 ({0}) 을 선택하세요.")
+                .Replace("{0}", ext) + $"\r\n\r\n{dlg.FileName}\r\n{ex.Message}",
+                loadTEMParameterToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        Setting = setting;
+    }
+
+    /// <summary>261105Cl 追加: File > Save TEM parameters</summary>
+    private void saveTEMParametersToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var ext = "*" + ImageSimulatorSetting.FileExtension;
+        using var dlg = new SaveFileDialog { Filter = $"{ext}|{ext}" };
+        if (dlg.ShowDialog() != DialogResult.OK) return;
+        try
+        {
+            Setting.SaveXml(dlg.FileName);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                Loc(en: "The TEM parameters could not be saved.", ja: "TEM パラメータを保存できませんでした。",
+                    de: "Die TEM-Parameter konnten nicht gespeichert werden.", fr: "Impossible d'enregistrer les paramètres TEM.",
+                    es: "No se pudieron guardar los parámetros TEM.", pt: "Não foi possível salvar os parâmetros TEM.",
+                    it: "Impossibile salvare i parametri TEM.", ru: "Не удалось сохранить параметры ПЭМ.",
+                    zhHans: "无法保存 TEM 参数。", zhHant: "無法儲存 TEM 參數。", ko: "TEM 파라미터를 저장할 수 없습니다.")
+                + $"\r\n\r\n{dlg.FileName}\r\n{ex.Message}",
+                saveTEMParametersToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+    }
+    #endregion
 
     #region その他イベント
     private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)

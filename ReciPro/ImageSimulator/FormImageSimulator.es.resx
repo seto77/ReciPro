@@ -155,11 +155,17 @@ autoabsorción de los rayos X emitidos.</value>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
   </data>
+  <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Paso</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Núm</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Inicio</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Paso</value>
@@ -296,7 +302,7 @@ Simulator"</value>
     <value>Ajustar desenfoque al valor de Scherzer</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ajustar todas las aberraciones a cero</value>
+    <value>Condiciones ideales (Cs, Cc, β, ΔV, Δf = 0)</value>
   </data>
   <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
     <value>300kV Cold-FEG sin Cs (Cs 0, Cc 2.8, ΔV 0.3) ARM300F</value>
@@ -365,8 +371,18 @@ Simulator"</value>
   <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
     <value>Cargar parámetros TEM</value>
   </data>
+  <data name="loadTEMParameterToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Carga las condiciones de simulación desde un archivo guardado con
+«Guardar parámetros TEM» (*.rpis). Los elementos que faltan en el
+archivo (p. ej., de una versión anterior) toman su valor predeterminado.</value>
+  </data>
   <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
     <value>Guardar parámetros TEM</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Guarda las condiciones de simulación actuales (los mismos
+elementos que los predefinidos) en un archivo XML (*.rpis),
+que puede cargarse en otro PC o compartirse con colaboradores.</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>Archivo</value>
