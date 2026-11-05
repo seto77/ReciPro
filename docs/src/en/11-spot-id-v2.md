@@ -95,16 +95,6 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 
 ---
 
-<!-- 261105Cl 要確認: FormSpotIDv1 はスポット検出・フィッティングを持たない (旧 TEM ID の数値入力のみ) ので、以下の「v1 からの改善点」はコードと対応しない。複数プロファイル形状・サテライト反射対応の実装も見当たらない (FormSpotIDV2.cs)。削除を検討 -->
-## Improvements over v1
-
-- Better noise handling in spot detection.
-- More robust fitting algorithms with multiple profile shapes.
-- Faster indexing with optimized search algorithms.
-- Support for overlapping spots and satellite reflections.
-
----
-
 ## See also
 
 - [Spot ID v1](10-spot-id.md)
