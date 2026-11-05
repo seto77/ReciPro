@@ -2550,35 +2550,54 @@ public partial class FormDiffractionSimulator : FormBase
     /// <param name="e"></param>
     private void presetToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var name = (sender as ToolStripMenuItem).Text.Split(" ", true);
-        if (name[0].Contains("Electron"))
+        // 261105Cl 変更 (監査 #36・C3): 翻訳後のメニュー文字列 ("Elektron 300 kV" など) を "Electron"/"X-ray" と比べていたため、
+        //  de/es/fr/it/ko/pt/ru/zh の 8 言語では何も起きなかった。押されたメニュー項目そのもので判定する (値は英語の表示と同じ)。
+        //var name = (sender as ToolStripMenuItem).Text.Split(" ", true); // 261105Cl 変更前 (以下 if 文の終わりまで)
+        //if (name[0].Contains("Electron"))
+        //{
+        //    Source = WaveSource.Electron;
+        //    Energy = name[1].ToDouble();
+        //
+        //}
+        //else if (name[0].Contains("X-ray"))
+        //{
+        //    Source = WaveSource.Xray;
+        //    if (name.Length == 3)
+        //    {
+        //        waveLengthControl.XrayWaveSourceElementNumber = 0;
+        //        Energy = name[1].ToDouble();
+        //    }
+        //    else
+        //    {
+        //        if (name[3] == "(MoKα₁)")
+        //        {
+        //            waveLengthControl.XrayWaveSourceElementNumber = 42;
+        //            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+        //        }
+        //        else if (name[3] == "(CuKα₁)")
+        //        {
+        //            waveLengthControl.XrayWaveSourceElementNumber = 29;
+        //            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+        //        }
+        //
+        //    }
+        //}
+        if (sender == electron300KVToolStripMenuItem || sender == electron200KVToolStripMenuItem || sender == electron120KeVToolStripMenuItem) // 261105Cl
         {
-            Source = WaveSource.Electron;
-            Energy = name[1].ToDouble();
-
+            Source = WaveSource.Electron; // 261105Cl
+            Energy = sender == electron300KVToolStripMenuItem ? 300 : sender == electron200KVToolStripMenuItem ? 200 : 120; // 261105Cl kV
         }
-        else if (name[0].Contains("X-ray"))
+        else if (sender == xray30KeVToolStripMenuItem || sender == xray20KeVToolStripMenuItem) // 261105Cl 特性 X 線でない単色 X 線
         {
-            Source = WaveSource.Xray;
-            if (name.Length == 3)
-            {
-                waveLengthControl.XrayWaveSourceElementNumber = 0;
-                Energy = name[1].ToDouble();
-            }
-            else
-            {
-                if (name[3] == "(MoKα₁)")
-                {
-                    waveLengthControl.XrayWaveSourceElementNumber = 42;
-                    waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
-                }
-                else if (name[3] == "(CuKα₁)")
-                {
-                    waveLengthControl.XrayWaveSourceElementNumber = 29;
-                    waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
-                }
-
-            }
+            Source = WaveSource.Xray; // 261105Cl
+            waveLengthControl.XrayWaveSourceElementNumber = 0; // 261105Cl
+            Energy = sender == xray30KeVToolStripMenuItem ? 30 : 20; // 261105Cl keV
+        }
+        else if (sender == xrayMoKαToolStripMenuItem || sender == xrayCuKαToolStripMenuItem) // 261105Cl
+        {
+            Source = WaveSource.Xray; // 261105Cl
+            waveLengthControl.XrayWaveSourceElementNumber = sender == xrayMoKαToolStripMenuItem ? 42 : 29; // 261105Cl Mo / Cu
+            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1; // 261105Cl
         }
 
     }
@@ -2672,15 +2691,21 @@ public partial class FormDiffractionSimulator : FormBase
 
         if (sender is ToolStripButton button)
         {
-            var text = button.Text;
-            if (text.Contains("Spot"))
-                groupBoxSpotProperty.Enabled = button.Checked;
-            else if (text.Contains("Kikuchi") || text.Contains("Debye") || text.Contains("Scale"))//260717Cl 修正: 2 つ目の条件が "Kikuchi" の重複で、Debye Ring ボタンでタブが自動選択されなかった
+            // 261105Cl 変更 (監査 #36・C4): 翻訳後の表示文字列で判定していたため、英語以外ではタブの自動選択が効かず、
+            //  英語では Spots を外すと groupBoxSpotProperty ごと無効になり、菊池線・デバイリング・目盛が使う波長・光学系・厚さまで変えられなかった
+            //  (他の 10 言語では一度も無効にならない)。ボタンそのもので判定し、Optics の欄は無効にしない。
+            //var text = button.Text; // 261105Cl 変更前
+            //if (text.Contains("Spot"))
+            //    groupBoxSpotProperty.Enabled = button.Checked;
+            //else if (text.Contains("Kikuchi") || text.Contains("Debye") || text.Contains("Scale"))//260717Cl 修正: 2 つ目の条件が "Kikuchi" の重複で、Debye Ring ボタンでタブが自動選択されなかった
+            if (button == toolStripButtonKikuchiLines || button == toolStripButtonDebyeRing || button == toolStripButtonScale) // 261105Cl
             {
                 TabPage page;
-                if (button.Name.Contains("Kikuchi"))
+                //if (button.Name.Contains("Kikuchi")) // 261105Cl 変更前
+                if (button == toolStripButtonKikuchiLines) // 261105Cl
                     page = tabPageKikuchi;
-                else if (button.Name.Contains("Debye"))
+                //else if (button.Name.Contains("Debye")) // 261105Cl 変更前
+                else if (button == toolStripButtonDebyeRing) // 261105Cl
                     page = tabPageDebye;
                 else
                     page = tabPageScale;
