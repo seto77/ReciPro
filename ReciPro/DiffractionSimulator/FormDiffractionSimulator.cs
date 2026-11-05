@@ -719,7 +719,7 @@ public partial class FormDiffractionSimulator : FormBase
             SetVector(); // 261105Cl
 
         //背景を描画
-        if (drawOverlappedImage)
+        //if (drawOverlappedImage) // 261105Cl 変更前 (監査 C10): 重ね画像を描かないとき (検出器範囲の保存・コピーで "No") は背景まで描かず、透明な画像になっていた
         {
             var topleft = convertScreenToDetector(new Point(0, 0));
             var bottomright = convertScreenToDetector(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
@@ -3321,11 +3321,14 @@ public partial class FormDiffractionSimulator : FormBase
 
     }
 
-    private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
-    private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    //private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false); // 261105Cl 変更前 (3 行): CBED のメニューも検出器範囲の分岐に入り得た
+    //private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false, cbed: true); // 261105Cl
+    private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true, cbed: true); // 261105Cl
 
     //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
-    private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+    //private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true); // 261105Cl 変更前
+    private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true, cbed: true); // 261105Cl
 
     public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "")
     {
@@ -3385,12 +3388,20 @@ public partial class FormDiffractionSimulator : FormBase
         }
     }
 
-    private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false)
+    //private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false) // 261105Cl 変更前のシグネチャ
+    /// <param name="cbed">261105Cl 追加: CBED のメニューから呼ぶときは true (検出器範囲の分岐に入れない)</param>
+    private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false, bool cbed = false)
     {
         bool drawOverlappedImage;
-        if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null)
+        // 261105Cl 変更 (監査 C10): 重ね画像が無いと検出器範囲の Save/Copy は何もしなかった (メニューは検出器範囲の表示中なら出ている)。
+        //  重ね画像が無ければ尋ねずに、シミュレーションだけを検出器の範囲・画素で出す
+        //if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null) // 261105Cl 変更前
+        //{
+        //    drawOverlappedImage = MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+        if (!cbed && FormDiffractionSimulatorGeometry.ShowDetectorArea) // 261105Cl
         {
-            drawOverlappedImage = MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+            drawOverlappedImage = FormDiffractionSimulatorGeometry.OverlappedImage != null // 261105Cl
+                && MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes; // 261105Cl
 
             graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
@@ -3425,7 +3436,8 @@ public partial class FormDiffractionSimulator : FormBase
             Draw();
             graphicsBox.Refresh();
         }
-        else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
+        //else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null) // 261105Cl 変更前
+        else if (cbed && FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null) // 261105Cl
         {
             drawOverlappedImage = true;
 
