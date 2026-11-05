@@ -4600,16 +4600,36 @@ public partial class FormEBSD : FormBase
         //  古い晶帯軸解の幾何が Radon 候補へ適用される不具合になっていた。候補自身に持たせて構造的に断つ。
         //  ⚠ 幾何を持つ候補は「動いていない (shift 0)」ものも含めて必ず適用する。条件付きにすると、
         //  動かした候補の次に動かさない候補を選んだとき前の幾何が残る。
-        if (orientationCandidates[idx].Geometry is { } g)
+        // if (orientationCandidates[idx].Geometry is { } g) // 261105Cl 変更前
+        // {
+        //     skipViewEvent = true;
+        //     try
+        //     {
+        //         numericBoxXofDet.Value = g.DetX; numericBoxYofDet.Value = g.DetY; numericBoxZofDet.Value = g.DetZ;
+        //     }
+        //     finally { skipViewEvent = false; }
+        // }
+        // FormMain.SetRotation(orientationCandidates[idx].Rotation);
+        // 261105Cl 変更 (監査 #26): 抑止フラグが違っていた (skipViewEvent は表示用。幾何の欄のハンドラは skipDetectorGeometryEvent を見る)。
+        //   X を書いた時点で numericBoxDetectorGeometry_ValueChanged → InvalidateIndexingResults が候補一覧を null にし、
+        //   Y・Z を書いたあと orientationCandidates[idx] で NullReferenceException だった。較正 (buttonCalibrateGeometry_Click) と同じ書き戻し方にする:
+        //   正しいフラグで 3 欄を書き、傾斜係数を明示的に更新する。候補一覧は残す (各候補が自分の幾何を持つので、別の行を選べばその幾何が入る)
+        var candidate = orientationCandidates[idx];
+        if (candidate.Geometry is { } g)
         {
-            skipViewEvent = true;
+            skipDetectorGeometryEvent = true;
             try
             {
-                numericBoxXofDet.Value = g.DetX; numericBoxYofDet.Value = g.DetY; numericBoxZofDet.Value = g.DetZ;
+                numericBoxXofDet.Value = Math.Clamp(g.DetX, numericBoxXofDet.Minimum, numericBoxXofDet.Maximum);
+                numericBoxYofDet.Value = Math.Clamp(g.DetY, numericBoxYofDet.Minimum, numericBoxYofDet.Maximum);
+                numericBoxZofDet.Value = Math.Clamp(g.DetZ, numericBoxZofDet.Minimum, numericBoxZofDet.Maximum);
             }
-            finally { skipViewEvent = false; }
+            finally { skipDetectorGeometryEvent = false; }
+            UpdateEbsdTiltCoeffs();
+            // 実行中の探索・較正は旧い幾何で計算しているので結果を捨てさせる (候補一覧そのものは消さない。InvalidateIndexingResults の前半だけ)
+            if (indexingBusy) { indexingGeneration++; indexingCts?.Cancel(); }
         }
-        FormMain.SetRotation(orientationCandidates[idx].Rotation);
+        FormMain.SetRotation(candidate.Rotation); //Draw は SetRotation → FormMain 経由で走る
     }
 
     #endregion
