@@ -50,7 +50,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 | パラメータ | 説明 | 既定値 / 典型値 |
 |-----------|------|-----------------|
-| **加速電圧 (kV)** | 加速電圧。相対論補正された電子波長が右に表示されます | 200 kV |
+| **加速電圧** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速電圧 (kV)。相対論補正された電子波長が右に表示されます | 200 kV |
 | **デフォーカス Δf** | 対物（プローブ形成）レンズのデフォーカス (nm) | −57.8 nm |
 | **Cs** | 球面収差係数 (mm)。プローブ径に影響します | 0.5–1.0 mm |
 | **Cc** | 色収差係数 (mm) | 1.0–2.0 mm |
@@ -71,7 +71,7 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 | **α (convergence angle)**（収束角） | 収束プローブの半角 (mrad)。大きいほどプローブが細くなり、回折コントラストも変わります | 25 mrad（既定）。15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.ja.resx:numericBoxSTEM_*.HeaderText, BetheMethod.cs:RunSTEM) --> |
 | **環状検出器 — 内径** | 環状検出器の内側取り込み半角 (mrad)。これより内側の信号は除外 | 0（既定）。BF: 0、HAADF: 80 |
 | **環状検出器 — 外径** | 環状検出器の外側取り込み半角 (mrad)。これより外側の信号は除外 | 20（既定）。BF: 5、HAADF: 250 |
-| **実効光源サイズ (σs) (FWHM)** | 有効電子源サイズ (pm)。計算後に、弾性・TDS・EDX の各像へガウス関数の畳み込みとして適用します。大きいほど像がぼけ、細部のコントラストが低下します | 20 pm（既定） |
+| **実効光源サイズ (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | 有効電子源サイズ (pm)。計算後に、弾性・TDS・EDX の各像へガウス関数の畳み込みとして適用します。大きいほど像がぼけ、細部のコントラストが低下します | 20 pm（既定） |
 
 検出器角は STEM の参照像（弾性 / TDS / 弾性 & TDS）にだけ使われ、STEM-EDX マップには使われません。既定値は初回起動時のもので、以後は前回の値が復元されます。
 
@@ -87,9 +87,10 @@ STEM像は、収束した電子ビームを試料上で走査し、各位置で�
 
 ---
 
-## 画像モード（単一 / シリーズ画像）
+## 単一/シリーズ画像
 
-![画像モード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text「単一/シリーズ画像」) に合わせた -->
+![単一/シリーズ画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **単一画像** : 現在の厚さで1枚のSTEM像を計算します。
 - **シリーズ画像** : 厚さ・デフォーカスを段階的に変えた一連の像を生成します（**Start / Step / Num** で指定、下のリスト欄で直接編集も可能）。

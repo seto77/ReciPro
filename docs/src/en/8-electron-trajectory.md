@@ -34,6 +34,8 @@ The controls along the top of the window set the run:
 - **Sample Tilt** (°, −90 to 0, default 0) : tilt of the sample surface about the *X* axis. Leave it at 0 for normal incidence; use **−70°** to reproduce the geometry of the [EBSD simulator](12-ebsd-simulation.md), where the large tilt raises the backscatter yield.
 - **Energy** (keV) / **Wavelength** / **Unit** : the accelerating voltage of the incident beam, and the relativistically corrected electron wavelength linked to it. The energy sets the kinetic energy used by both the elastic (NIST Mott) and the inelastic (stopping power / IMFP) models.
 
+Changing **Sample Tilt** or **Energy** after a run does not change the result shown: until **Simulate trajectories** is pressed again, every redraw (3-D view, stereonet, histograms) uses the tilt and energy the trajectories were computed with. <!-- 261105Cl 監査: FormTrajectory.cs calcTilt/calcEnergy (9890ced0) -->
+
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormTrajectory.cs:EnergyThreshold = 2, DrawStatistics / Crystallography/EBSD/MonteCarlo.cs:MonteCarlo(thresholdKev)) -->
 An electron is tracked until it leaves the sample or its energy falls to **2 keV** (fixed threshold). Electrons that leave with more than 2 keV are counted as backscattered electrons; η (their fraction of all incident electrons), the average BSE energy, the stereonet and the histograms below are computed from these electrons. The cross section, mean free path and stopping power in **Statistics** are model values at the beam energy.
 
@@ -63,7 +65,7 @@ Values for the current beam energy. The cross section and the stopping power car
 - **Elastic mean free path (λ)** (nm) — average distance between elastic scattering events.
 - **Stopping Power (dE/ds)** (eV/nm, negative) — energy lost per unit path length.
 - **Backscattered electron coefficient, η** (%) — the fraction of incident electrons that leave again through the entrance surface. This is the quantity that BSE imaging contrast is built on.
-- **Average BSE Energy** (keV) — mean energy of the backscattered electrons at the moment they escape.
+- **Average BSE Energy** (keV) — mean energy of the backscattered electrons at the moment they escape. Shown as “-” when no electron is backscattered (the histograms are then empty). <!-- 261105Cl 監査: FormTrajectory.cs DrawStatistics (count == 0) -->
 
 ---
 

@@ -61,10 +61,10 @@ Lists the allowed crystal planes (reflections) of the crystal and the **structur
 **Options**
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.cs:SetSortedPlanes, checkBoxBragBrentano_CheckedChanged) -->
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, where $m$ is the multiplicity, $V$ the cell volume, and $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–polarization factor) for X-rays or $L = 1/(\sin 2\theta\,\sin\theta)$ (Lorentz factor only, no polarization term) for electrons and neutrons. When off, it displays the structure-factor intensity $\lvert F\rvert^2$. Turning it on also forces *Hide equivalent planes* and *Hide prohibited planes* on and greys them out.
+- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, $I \propto m\,\lvert F\rvert^2 / V^2 \times L$, where $m$ is the multiplicity, $V$ the cell volume, and $L = (1+\cos^2 2\theta)/(\sin 2\theta\,\sin\theta)$ (Lorentz–polarization factor) for X-rays or $L = 1/(\sin 2\theta\,\sin\theta)$ (Lorentz factor only, no polarization term) for electrons and neutrons. Reflections the beam cannot reach (d < λ/2, 2θ shown as ∞) get an intensity of 0. <!-- 261105Cl 監査: J25 届かない反射の BB 強度は 0 --> When off, it displays the structure-factor intensity $\lvert F\rvert^2$. Turning it on also forces *Hide equivalent planes* and *Hide prohibited planes* on and greys them out.
 - **Hide equivalent planes** (on by default) : collapses crystallographically equivalent planes into a single entry. The **Multi.** column is shown only while this is on. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormBeamInteraction.Designer.cs (Checked/Value), FormBeamInteraction.cs:SetSortedPlanes) -->
 - **Hide prohibited planes** (on by default) : excludes planes that are systematically absent by the extinction rules. While it is off, a **Condition** column shows the reflection condition(s) that forbid each absent plane.
-- **d-Spacing Cutoff >** (default 1 Å) : excludes reflections with a d-spacing smaller than this value (length unit follows the **Unit** selection).
+- **d-Spacing Cutoff >** (default 1 Å) : excludes reflections with a d-spacing smaller than this value (length unit follows the **Unit** selection). The smallest value it accepts is (a + b + c)/20 of the current cell, in the same unit. <!-- 261105Cl 監査: J8 numericBoxCutoffD.Minimum を表示単位に合わせた -->
 
 Each row is one reflection (or a group of symmetry-equivalent planes):
 
@@ -81,7 +81,7 @@ Each row is one reflection (or a group of symmetry-equivalent planes):
 | **F^2** | structure-factor intensity ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative intensity, with the strongest reflection set to 100 |
 | **Condition** | extinction condition(s) violated by the plane (shown only when *Hide prohibited planes* is off) |
-| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes — hexagonal, or trigonal not in a rhombohedral-axes setting) |
+| **i** | the redundant Miller–Bravais index $i=-(h+k)$ (shown only when the main window's **Options ▸ Use Miller-Bravais (hkil) index** is on and the crystal uses hexagonal axes — hexagonal, or trigonal not in a rhombohedral-axes setting); **Copy** writes it as displayed <!-- 261105Cl 監査: J9 i 列は表示している値をコピー --> |
 
 **Diffraction-peak plot.** Below the table the same reflections are drawn as a stick pattern, with the strongest peaks labelled by their *hkl*.
 
@@ -162,7 +162,7 @@ For an X-ray beam, the characteristic **fluorescence** emission of the sample. (
 
 ![Fluorescence (X-ray)](../assets/cap-en-auto/FormBeamInteraction-xray-fluorescence.png)
 
-The **EDX emission lines** plot draws the characteristic lines (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) of every element as sticks at their photon energies, with the height proportional to the atomic fraction × radiative rate × fluorescence yield (a qualitative EDX-style preview; excitation cross section and detector efficiency are not modelled). The lower table lists, per line, the element, line name, energy **E keV**, relative intensity **Rel.I**, and the fluorescence yield **ω**. The scalar table reports the K-shell yield **ω_K** of each element and the **strongest line** in the spectrum.
+The **EDX emission lines** plot draws the characteristic lines (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) of every element as sticks at their photon energies, with the height proportional to the atomic fraction × radiative rate × fluorescence yield (a qualitative EDX-style preview; excitation cross section and detector efficiency are not modelled). The lower table lists, per line, the element, line name, energy **E keV**, relative intensity **Rel.I** (the share of this line among the radiative transitions that fill a vacancy in its shell, %), and the fluorescence yield **ω**. The scalar table reports the K-shell yield **ω_K** of each element, the **strongest line** in the spectrum, and the **source** of the values: *xraylib (E, I, ω)* when xraylib is available (line energies, relative intensities and yields all come from xraylib), otherwise *internal (E only)*. <!-- 261105Cl 監査: FormBeamInteraction.cs (Rel.I = LineRadRate × 100、出典の行, Controls c6d62ed) -->
 
 ---
 

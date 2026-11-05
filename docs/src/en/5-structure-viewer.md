@@ -15,7 +15,7 @@ The window has a main 3-D view plus two small gizmos — the **crystal-axes** bo
 | <kbd>F1</kbd> | Open this page of the online manual |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Copy the rendered image to the clipboard |
 | Left-drag the main view | Rotate the model |
-| Left double-click an atom | Show its coordinates, nearest-neighbour distances, and bond angles |
+| Left double-click an atom | Show the coordinates of the clicked atom and the distances and bond angles of the neighbours around it (only displayed atoms can be picked) <!-- 261105Cl 監査: 近接原子はクリックした位置の周り (ca87b772, 8cc95680) --> |
 | Right-drag up/down, or Mouse wheel | Zoom |
 | Middle-drag | Pan |
 | <kbd>CTRL</kbd> + Right-drag up/down | Change the camera distance (perspective mode only) |
@@ -49,7 +49,7 @@ The 3-D crystal structure, drawn together with the light-direction gizmo, the cr
 | Menu item | Description |
 |-----------|-------------|
 | Save Image ▸ Main Image / Legend / Crystal Axes / Light Direction | Save the main view, the atom legend or one of the gizmos as PNG |
-| Copy Main Image to Clipboard ▸ Main Image / Legend / Crystal Axes / Light Direction | Copy the image (Ctrl+Shift+C copies the main view) |
+| Copy Image to Clipboard ▸ Main Image / Legend / Crystal Axes / Light Direction <!-- 261105Cl 監査: copyToClipboardToolStripMenuItem.Text --> | Copy the image (Ctrl+Shift+C copies the main view) |
 | Save Movie ▸ Main Image / Crystal Axes | Save a rotation/translation movie of the main view or of the crystal-axes gizmo as MP4 (speed, duration, fps, quality and so on) |
 | Export 3D Model (3MF/STL) | Write the displayed structure out as a solid model for 3D printing |
 
@@ -59,7 +59,7 @@ The 3-D crystal structure, drawn together with the light-direction gizmo, the cr
 
 **Save movie** opens the Movie setting dialog below. A movie can rotate the view, translate the projection center, or do both at once — tick **Rotation** and/or **Translation**:
 
-- **Rotation**: rotates the view at **Speed** (°/s; negative values reverse the direction) about the axis chosen below — **Current projection** (tilt direction picked with the arrow buttons), a **Direction index** [uvw], or the normal of a **Lattice plane** (hkl).
+- **Rotation**: rotates the view at **Speed** (°/s; negative values reverse the direction) about the axis chosen below — **Current projection** (tilt direction picked with the arrow buttons), a **Direction index** [uvw], or the normal of a **Lattice plane** (hkl). The axis is taken from the crystal orientation at the moment **OK** is pressed. With Miller–Bravais indices on, four indices are shown only for **Lattice plane**; a **Direction index** is always the three-index [uvw]. <!-- 261105Cl 監査: FormMovie.cs (OK の時点で回転軸を求め直す、4 指数は格子面だけ, 35fa72fc) -->
 - **Translation**: moves the projection center along the direction index [uvw] at **Speed** (lattice periods per second). This option appears only when the dialog is opened from the Structure Viewer, and while it is enabled **Direction index** is the only direction mode.
 
 Set the movie length (**Duration**), the frame rate (**FPS**, 1–120), and the encoder quality (**Quality**, 1–100; higher values use a higher bitrate and give a larger file), choose the codec (**H264** / **H265**), and press **OK** to generate an MP4 file. **Include final frame** appends one extra frame at t = Duration so the movie ends exactly at the final orientation/position. (The encode-speed list only labels the progress display and no longer affects the actual encoding.)
@@ -68,7 +68,7 @@ Set the movie length (**Duration**), the frame rate (**FPS**, 1–120), and the 
 
 #### Export 3D Model (3MF/STL)
 
-**Export 3D Model (3MF/STL)** writes the structure currently drawn on screen out as a solid model for 3D printing. Only closed solids can be exported — atoms (spheres and ellipsoids), bonds (cylinders) and coordination polyhedra. Atom labels, bound planes and lattice planes cannot be printed and are ignored. The unit cell frame is made of line segments, so it is replaced by cylinders (with spheres at the corners) only when you tick the corresponding option.
+**Export 3D Model (3MF/STL)** writes the structure currently drawn on screen out as a solid model for 3D printing. Only closed solids can be exported — atoms (spheres and ellipsoids), bonds (cylinders) and coordination polyhedra. Atom labels, bound planes, lattice planes and symmetry-element symbols are not exported. <!-- 261105Cl 監査: 配位多面体を出力し、対称要素は出さない (6c31fc0d) --> The unit cell frame is made of line segments, so it is replaced by cylinders (with spheres at the corners) only when you tick the corresponding option.
 
 ![Export 3D Model dialog](../assets/cap-en-auto/FormExport3DModel.png)
 
@@ -76,9 +76,9 @@ The top of the dialog reports the number of objects and triangles involved, and 
 
 **Scale** : how the output size is decided
 
-- **Fit largest dimension** : scales the model automatically so that its longest edge reaches the length you give (5–500 mm, 80 mm by default).
+- **Fit largest dimension** : scales the model automatically so that its longest edge reaches the length you give (5–500 mm, 80 mm by default). The thickness of the cylinders that replace the unit-cell frame and the polyhedron edge frames is included. <!-- 261105Cl 監査: 円柱の太さを含めて合わせる (82e50b62) -->
 - **Fixed scale** : give the scale (mm/nm) directly. Use this to build several crystals at the same scale so they can be placed side by side. Switching to it starts from the scale that was in effect a moment before.
-- The line below shows the resulting scale and the printed dimensions (**Output size**, mm).
+- The line below shows the resulting scale and the printed dimensions (**Output size**, mm), also including that cylinder thickness.
 
 **Include** : which elements go into the print
 
@@ -210,13 +210,13 @@ All bond/polyhedron rules registered for the crystal. Use **Add / Replace / Dele
 #### Polyhedron property
 
 - **Show Polyhedron**: when checked, the polyhedron defined by the current bond is drawn (only if the centre/vertex set is geometrically valid).
-- **Show Inner Bonds**: show/hide the bonds inside the polyhedron.
+- **Show Inner Bonds**: with **Show Polyhedron** on, draw the bonds from the centre to the vertices (they also need **Show Bonds**).
 - **Show Center Atom**: show/hide the centre atom.
-- **Show Vertex Atoms**: show/hide the vertex atoms.
+- **Show Vertex Atoms**: show/hide the vertex atoms. A hidden centre or vertex atom is still drawn when another displayed polyhedron shows it, or when it ends a bond of a definition without a polyhedron. <!-- 261105Cl 監査: 3 つのチェックが描画に効くようになった (7e198f9d) -->
 - **Opacity**: face opacity (0 = transparent, 1 = opaque).
 - **Show Edges**: draw the edges connecting the vertices.
 - **Width**: line width of the edges.
-- The three **Color** boxes next to **Add / Replace / Delete** set the colours of the polyhedron faces, the bond cylinders and the polyhedron edges.
+- There are no colour boxes in this tab: bonds take the colours of the atoms at their two ends, and polyhedra the colour of their centre atom (atom colours are set in the [Atoms](#atoms) tab). <!-- 261105Cl 監査: BondControl の colorControlPolyhedron/Bond/Edges は Visible=False。色は原子の材質から (FormStructureViewer.cs) -->
 
 ### Unit Cell
 
@@ -254,7 +254,7 @@ Specify the lattice plane by its Miller index. The checkbox optionally includes 
 
 #### Translation
 
-Translate the drawn lattice plane by an integer multiple of its *d*-spacing — useful for visualising successive planes of the same family.
+Shift the drawn lattice planes along their normal by a fraction of the *d*-spacing (**× d**, −0.5 to 0.5). Every plane of the family that crosses the drawing range is drawn, one per *d*. The planes are fixed to the crystal lattice: at 0 they pass through the lattice points, and they move with the structure when the [Projection center](#projection-center) changes. <!-- 261105Cl 監査: LatticePlaneControl numericBoxDistance (−0.5〜0.5, × d)、FormStructureViewer.cs:SetLatticePlanes (4fd9e8c3)。「d の整数倍」は誤り -->
 
 ### Coordination
 
@@ -294,7 +294,7 @@ Fades distant objects in the depth direction (**Depth Fade**). The colour is ble
 
 #### Projection center
 
-Sets the centre of projection to the specified coordinates. Turn on **Custom** to enter arbitrary coordinates. Each coordinate is folded into the range −0.5 to +0.5 (one lattice period). A **Translation** movie (see the [File menu](#file-menu)) drives these values automatically.
+Sets the centre of projection to the specified coordinates. Turn on **Custom** to enter arbitrary coordinates. Typed values (−1 to 1) are used as they are. A **Translation** movie (see the [File menu](#file-menu)) drives these values automatically and folds each coordinate into −0.5 to +0.5 (one lattice period) as it moves. <!-- 261105Cl 監査: 折り畳むのは SetProjectionCenter (動画の経路) だけ。マクロに投影中心の関数は無い -->
 
 #### Rendering quality
 
@@ -326,7 +326,7 @@ The master switch is **Show Symmetry Elements**. For each group you can adjust t
 
 - **Accessory controls**: set the display sizes (light ball, axes, legend). **Group by element** toggles the legend display.
 - **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** keeps drawing atoms that are bonded to atoms inside the drawing range, even when they fall outside it.
-- **Label**: **Show label**, **Font size**, **White edge**, and the label colour (**Use material color** or **Use fixed color**). Clicking an entry of the atom legend toggles the labels of that atom (or element, with **Group by element**) individually. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:legendControl_MouseClick; FormStructureViewer.resx:groupBoxLabel) -->
+- **Label**: settings of the atom labels in the 3-D view (not the legend) — **Show label**, **Font size**, **White edge**, and the label colour (**Use material color** or **Use fixed color**). Clicking an entry of the atom legend toggles the labels of that atom (or element, with **Group by element**) individually. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStructureViewer.cs:legendControl_MouseClick; FormStructureViewer.resx:groupBoxLabel) -->
 
 ---
 
@@ -340,7 +340,7 @@ The master switch is **Show Symmetry Elements**. For each group you can adjust t
 | Axes | Show axis orientation (size = lattice constant) |
 | Light | Set light direction |
 | Legend | Atom legend |
-| Atoms | Toggle atom objects |
+| Atoms | Show/hide the atoms; bonds, polyhedra and labels are built on the atoms, so they are hidden as well <!-- 261105Cl 監査: toolStripButtonAtomObjects.ToolTipText (2028c4a1) --> |
 | Labels | Toggle atom labels |
 | Unit Cell | Toggle unit-cell edges |
 | Sym. Elems. | Toggle the symmetry-element overlay (see above) |

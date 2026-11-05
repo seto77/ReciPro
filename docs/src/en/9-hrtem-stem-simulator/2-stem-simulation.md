@@ -50,7 +50,7 @@ See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for 
 
 | Parameter | Description | Default / typical |
 |-----------|-------------|-------------------|
-| **Acc. Voltage (kV)** | Accelerating voltage. The relativistically corrected electron wavelength is shown alongside | 200 kV |
+| **Acc. Voltage** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | Accelerating voltage (kV). The relativistically corrected electron wavelength is shown alongside | 200 kV |
 | **Defocus Δf** | Defocus of the objective (probe-forming) lens (nm) | −57.8 nm |
 | **Cs** | Spherical aberration coefficient (mm). Affects the probe size | 0.5–1.0 mm |
 | **Cc** | Chromatic aberration coefficient (mm) | 1.0–2.0 mm |
@@ -71,7 +71,7 @@ Set the geometry of the convergent probe and the annular detector. Each angle is
 | **α (convergence angle)** | Semi-angle of the convergent probe (mrad). Larger values give a finer probe and change the diffraction contrast | 25 mrad (default); 15–25 mrad <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.resx:numericBoxSTEM_*.HeaderText/FooterText/ToolTip, BetheMethod.cs:RunSTEM) --> |
 | **Annular detector — Inner radius** | Inner collection semi-angle of the annular detector (mrad). Signal inside this angle is excluded | 0 (default); BF: 0, HAADF: 80 |
 | **Annular detector — Outer radius** | Outer collection semi-angle of the annular detector (mrad). Signal outside this angle is excluded | 20 (default); BF: 5, HAADF: 250 |
-| **Effective source size (σs, FWHM)** | Effective electron source size (pm). Applied after the calculation as a Gaussian convolution of every Elastic / TDS / EDX image. Larger values blur the image and reduce fine-detail contrast | 20 pm (default) |
+| **Effective source size (FWHM)** <!-- 261105Cl 監査: 見出しを numericBoxSTEM_EffectiveSourceSize.HeaderText に合わせた --> | Effective electron source size (pm). Applied after the calculation as a Gaussian convolution of every Elastic / TDS / EDX image. Larger values blur the image and reduce fine-detail contrast | 20 pm (default) |
 
 The detector angles apply only to the STEM reference image (Elastic / TDS / Elastic & TDS); STEM-EDX maps do not use them. The defaults apply on first start only; afterwards the last-used values are restored.
 
@@ -87,9 +87,10 @@ The detector angles apply only to the STEM reference image (Elastic / TDS / Elas
 
 ---
 
-## Image mode (single / serial)
+## Single/serial mode
 
-![Image mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text) と HRTEM のページに合わせた -->
+![Single/serial mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **Single image** : compute one STEM image at the current thickness.
 - **Serial image** : generate a series of images with thickness / defocus stepped in stages (set by **Start / Step / Num**; the list below can also be edited directly).

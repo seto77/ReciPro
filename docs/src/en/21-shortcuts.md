@@ -87,7 +87,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 | Single-click / double-click a function button | Toggle that window / force it to the front |
 | Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
 | Double-click the zone-axis index label (`[u v w]`) | Show / hide the max-UVW box |
-| Drop a file | Load a crystal list (`.xml`, `.out`, `.cdb2`) or a crystal (`.cif`, `.amc`) <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
+| Drop a file | Load a crystal list (`.xml`, `.out`) or a crystal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 を外した (ドロップを受け付けない) --> <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormMain.cs:FormMain_DragDrop, contextMenuStripListBox) --> |
 
 ### 1. Crystal database
 [Open page →](1-crystal-database.md)

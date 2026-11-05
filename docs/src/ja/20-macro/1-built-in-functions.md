@@ -341,7 +341,7 @@ ReciPro.StructureViewer.Export3DModel('D:/print/NaCl_edges.stl', maxSizeInMM=60,
 
 | 関数 | 説明 |
 |------|------|
-| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> 指定ミリ秒だけ待機。`ReciPro.Sleep(ms)` の形で呼ぶ。エディタの組み込み関数表には表示されない |
+| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> 指定ミリ秒だけ待機。`ReciPro.Sleep(ms)` の形で呼ぶ <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

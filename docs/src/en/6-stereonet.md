@@ -19,7 +19,7 @@ The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown wi
 | Right-click | Zoom out |
 | Right-drag a box | Zoom in to the selected region |
 | Middle-drag | Pan |
-| Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot |
+| Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot (also in the lower hemisphere) <!-- 261105Cl 監査: 下半球の読み取り (268779a1) --> |
 
 Dragging on the net rotates the **crystal**; the rotation state is shared across all windows.
 
@@ -39,12 +39,12 @@ The stereonet projection of the selected crystal's crystal planes, direction ind
 
 ## File menu
 
-Save as a raster image (PNG), or copy as a raster image or a vector metafile (EMF). A pasted metafile lets you edit fonts and line widths in PowerPoint or other vector editors.
+Save or copy as a raster image (PNG) or a vector metafile (EMF). A pasted metafile lets you edit fonts and line widths in PowerPoint or other vector editors.
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.Designer.cs:fileToolStripMenuItem; FormStereonet.cs:toolStripMenuItemSaveMovieStereonet_Click/toolStripMenuItemSaveMovie3D_Click) -->
 | Menu item | Description |
 |-----------|-------------|
-| Save Image ▸ as Image (PNG format) / as Metafile (EMF) | Save the stereonet as a PNG file (the *as Metafile (EMF)* item is currently disabled; for vector output use **Copy to clipboard ▸ as Metafile (EMF)**) |
+| Save Image ▸ as Image (PNG format) / as Metafile (EMF) | Save the stereonet as a PNG file or as a vector EMF file <!-- 261105Cl 監査: as Metafile (EMF) の保存を配線 (FormStereonet.cs, 268779a1) --> |
 | Copy to clipboard ▸ As Image / as Metafile (EMF) | Copy the stereonet |
 | Save Movie ▸ Stereonet / 3D | Save a rotation movie (MP4) of the stereonet or of the 3-D view, using the same Movie setting dialog as the [Structure Viewer](5-structure-viewer.md#file-menu) (rotation only) |
 | Page Setup / Print Preview / Print | Print the stereonet |
@@ -122,7 +122,7 @@ Set the **colour** and **size** of the plotted points. Tick **Rotate color** to 
 Shown when **3D View** is ticked; the 3-D sphere appears in a pane to the right of the net.
 
 - **Reset**: return the 3-D view to the default direction and zoom.
-- **Label**: draw index labels in 3-D.
+- **Label**: draw index labels in 3-D. Directions are labelled [uvw]; the four-index form (with **Use Miller-Bravais (hkil) index** on) is used only for planes and Kikuchi lines. <!-- 261105Cl 監査: 3D のラベル (FormStereonet.cs, 268779a1) -->
 - **Hemisphere**: draw only the poles on the upper ($Z>0$) hemisphere.
 - **Stereonet**: draw the projection plane (net) in 3-D, with the projected points of the upper-hemisphere poles.
 - **Sphere outline**: draw the latitude/longitude grid of the sphere.
@@ -157,7 +157,7 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 ![Great Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormStereonet.cs:buttonAddCircle_Click, DrawCircles) -->
-Draw great circles (small circles are not supported). Specify either by **Zone axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **Zone defined by two planes** (the zone axis is their cross product). Use **Add** / **Remove** to edit the list; unticking an entry hides that circle. The colour and line width of the circles are also configurable.
+Draw great circles (small circles are not supported). Specify either by **Zone axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **Zone defined by two planes** (the zone axis is their cross product). Use **Add** / **Remove** to edit the list; unticking an entry hides that circle. The colour and line width of the circles are also configurable. The circles follow the projection method and hemisphere chosen in [Mode](#mode) (Wulff or Schmidt, upper or lower). <!-- 261105Cl 監査: Schmidt・下半球の大円 (268779a1) -->
 
 ### Wave {#wave}
 

@@ -38,8 +38,8 @@ Enter two crystal planes \((h_1, k_1, l_1)\), \((h_2, k_2, l_2)\) or two directi
 
 - the d-spacing of each plane / the length of each axis,
 - the angle between the two planes (or two axes),
-- the angle between plane 1 and axis 1, and between plane 2 and axis 2, <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
-- **the direction index normal to both planes** and **the plane index normal to both axes**.
+- the angle between the normal of plane 1 and axis 1, and between the normal of plane 2 and axis 2 (90° when the axis lies in the plane), <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:numericBox_ValueChanged) -->
+- **The axis parallel to both planes** (the zone axis [*uvw*] of the two planes) and **The plane containing both axes** (the plane (*hkl*) that contains the two axes). <!-- 261105Cl 監査: 画面のラベル (FormSymmetryInformation.cs label40/label42) と面・軸の角度のツールチップ (numericBoxAnglePlaneAxis1/2.ToolTip) に合わせた。以前の「normal to」は逆 -->
 
 These calculations respect the metric of the current unit cell. Lengths are shown in Å and angles in degrees.
 
@@ -50,7 +50,7 @@ These calculations respect the metric of the current unit cell. Lengths are show
 ![Wyckoff Positions](../assets/cap-en-auto/FormSymmetryInformation.splitContainer1.panel2.tabControl.tabPageWyckoff.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormSymmetryInformation.cs:SetupExtraTables/SetWyckoffPosition) -->
-Lists every Wyckoff position with its multiplicity (**Mult.**), Wyckoff letter (**Wyck. Let.**), site symmetry (**Site Sym.**), and **Coordinates** (up to four per row; longer lists continue on the following rows). The first Wyckoff entry (highest multiplicity) is the general position. For centred lattices, the lattice translation vectors are shown in the header row.
+Lists every Wyckoff position with its multiplicity (**Mult.**), Wyckoff letter (**Wyck. Let.**), site symmetry (**Site Sym.**), and **Coordinates** (up to four per row; longer lists continue on the following rows). The first Wyckoff entry (highest multiplicity) is the general position. For centred lattices, the lattice translation vectors are shown in the header row; for R groups in hexagonal axes these are the three centring translations of the obverse setting, (0,0,0)+, (2/3,1/3,1/3)+ and (1/3,2/3,2/3)+. <!-- 261105Cl 監査: R 群の六方軸でも中心化の行が出る (FormSymmetryInformation.cs, Controls ead58e7) -->
 
 ---
 

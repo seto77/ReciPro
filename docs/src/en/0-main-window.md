@@ -30,7 +30,7 @@ The main window installs several **application-wide** shortcuts. They keep worki
 | Double-click a function button | Force the window visible and bring it to the front |
 | Right-click a crystal in the list | Context menu (Rename / Export as CIF / Duplicate / Delete) |
 | Double-click the zone-axis index label (`[u v w]`, under *Current orientation*) | Show / hide the max-UVW box |
-| Drop a file on the window | Load a crystal list (`.xml`, `.out`, `.cdb2`; asks whether to replace or append) or a crystal (`.cif`, `.amc`) |
+| Drop a file on the window | Load a crystal list (`.xml`, `.out`; asks whether to replace or append) or a crystal (`.cif`, `.amc`) <!-- 261105Cl 監査: .cdb2 はドロップで読めないので外した (FormMain.cs:FormMain_DragDrop) --> |
 | <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>C</kbd> | Open the (experimental) GUI-capture tool for the active window |
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.

@@ -317,7 +317,7 @@ These three image-simulation classes share many members. To avoid repetition, th
 
 | Function | Description |
 |----------|-------------|
-| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> Wait for specified milliseconds. Called as `ReciPro.Sleep(ms)`; it is not listed in the built-in-function table of the editor |
+| `ReciPro.Sleep(ms)` | <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: Macro.cs:Macro.Sleep / Macro ctor (addHelp は子クラスのみ)) --> Wait for specified milliseconds. Called as `ReciPro.Sleep(ms)` <!-- 261105Cl 監査: エディタの関数表にも出るようになった (41cb5a7b) --> |
 
 ---
 

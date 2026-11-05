@@ -66,9 +66,9 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 The detector (phosphor screen) is a rectangle defined by a pixel count and a pixel size.
 
-- **Size and Tilt** : **Tilt** is the tilt of the detector plane (°); **Width** and **Height** are the number of detector pixels.
+- **Size and Tilt** : **Tilt** is the tilt of the detector screen (°), measured from the horizontal plane (perpendicular to the beam): 0° = horizontal screen, 90° = vertical screen (the default). **Width** and **Height** are the number of detector pixels. <!-- 261105Cl 監査: numericBoxDetTilt.ToolTip (EbsdDetectorGeometry の法線 (0, sin d, −cos d)) -->
 - **Resolution** : the physical size of one detector pixel (mm/px). The physical detector size is therefore Width × Resolution by Height × Resolution.
-- **Coordinates of detector center** : position **X**, **Y**, **Z** of the detector centre relative to the beam-impact point (mm). Y and Z, together with the tilt, determine the camera length; X is the left–right offset.
+- **Coordinates of detector center** : position **X**, **Y**, **Z** of the detector centre relative to the beam-impact point (mm), in the microscope (laboratory) frame. **Y** is the horizontal offset perpendicular to both the beam (Z) and the sample tilt axis (X), not a direction within the tilted sample surface. <!-- 261105Cl 監査: numericBoxDetY.ToolTip --> Y and Z, together with the tilt, determine the camera length; X is the left–right offset.
 
 Loading an experimental image sets **Width** and **Height** to the image size, so that one detector pixel corresponds to one image pixel (**Resolution** is left unchanged).
 
@@ -84,13 +84,13 @@ The grey plate is the sample, the green rectangular slab is the detector, and th
 
 ![BSE Distribution](../assets/cap-en-auto/FormEBSD.splitContainer1.splitContainer2.tabControlSettings.tabPageBseDistribution.png)
 
-The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them.
+The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them. Only one Monte Carlo runs at a time: while one is running (started by **Simulate** or by the first step of **Build Master Pattern**), **Simulate** does not start another, and the status bar asks you to wait or press **Stop**. <!-- 261105Cl 監査: FormEBSD.cs buttonBSE_Click (monteCarloCts) -->
 
 - **Stereonet** : angular distribution (histogram of exit directions) of the backscattered electrons. The centre is the surface-normal direction, and the yellow outline marks the rectangular region subtended by the detector. **Draw axes** overlays the crystal axes, and the colour scale (**Min** / **Max**, **Resolution**, **Color**) is adjustable.
 - **ΔE (keV)** : energy-loss distribution of the backscattered electrons.
 - **Depth (nm)** : distribution of the source depth of the detected backscattered electrons, as defined by **Source depth (MC)** (default: the last inelastic scattering event) — the same depth definition that weights the master pattern. <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormEBSD.cs: BSE 深さ分布で GetMonteCarloSourceDepth を使用) -->
 
-These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern.
+These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern. Changing the crystal or the accelerating voltage discards these results together with the master pattern (a change made while the window is closed takes effect when it is reopened); the status bar says what was discarded. <!-- 261105Cl 監査: FormEBSD.cs SetCrystal / 電圧の変更 / 開き直し (4bc81f06) -->
 
 ---
 
@@ -103,7 +103,7 @@ The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 - **Background color** : background colour.
 - **Detector outline** : the detector outline. **Show frame** (the yellow rectangle at the detector edge) / **Show mesh** (division grid).
 - **Show Kikuchi lines** : draw Kikuchi lines. **Line Width** / **Color**, and **Apply structure factors to Kikuchi line intensity** (each line fades toward the background in proportion to its structure factor).
-- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (**Top** *N* by structure factor) or **1/d Cutoff** (those with 1/d below a threshold, nm⁻¹).
+- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (**Top** *N* by structure factor) or **1/d Cutoff** (those with 1/d below a threshold, nm⁻¹). Switching between the two redraws the lines at once. <!-- 261105Cl 監査: 1/d Cutoff 側にもハンドラを配線 (d88da429) -->
 - **Show Kikuchi line indices** : show indices of the Kikuchi lines (bands).
 - **Show zone axis indices** : show zone-axis indices.
 - **Text settings** : **Text Size** / **Color** of the index labels.
@@ -157,8 +157,8 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
 - **Flip L-R** : mirrors the pattern and all its overlays left-right. Unchecked (the default) is the view from the detector towards the sample, i.e. the pattern as an EBSD camera records it; check it only if your experimental image has the opposite handedness.
 - **Resolution** (mm/px) and **Size (W×H)** (px) : resolution and size of the displayed view.
 - **Save** : saves the pattern to a file, using the range and resolution selected next to it. The format (PNG / TIFF / EMF) is chosen in the save dialog.
-  - **Pattern values (\*.csv)** writes the raw intensities on the detector pixel grid instead of an image.
-  - A TIFF is written as 16-bit grayscale (not quantised to 256 levels) when the range is **Detector**, **Dynamical EBSD** is shown and **Experimental image** is not. In that case the **Overlays** are left out whatever their checkbox says, and the pixel values are the pattern mapped linearly from its own minimum–maximum onto 0–65535 (the minimum and maximum used are reported in the status bar; use the csv export when absolute values are needed).
+  - **Pattern values (\*.csv)** writes the raw intensities on the detector pixel grid instead of an image. Its `#` header lines record the conditions (crystal, detector raster and pixel size, voltage, detector and sample tilts in degrees, detector X/Y/Z, …) and the minimum and maximum. <!-- 261105Cl 監査: 傾斜角は度で書く (FormEBSD.cs, 5f7484d1) -->
+  - A TIFF is written as 16-bit grayscale (not quantised to 256 levels) when the range is **Detector**, **Dynamical EBSD** is shown and no experimental image is overlaid (none is loaded, or **Experimental image** is unchecked). <!-- 261105Cl 監査: 16 bit の条件 (FormEBSD.cs, 5f7484d1) --> In that case the **Overlays** are left out whatever their checkbox says, and the pixel values are the pattern mapped linearly from its own minimum–maximum onto 0–65535 (the minimum and maximum used are reported in the status bar; use the csv export when absolute values are needed).
 - **Copy** : copies the pattern to the clipboard, using the range and format selected next to it.
   - **Current** copies the area currently shown (as panned and zoomed); **Detector** copies only the detector area, in which case the yellow frame is left out so the image ends exactly at the detector edge.
   - **emf** copies an Enhanced Metafile, keeping the Kikuchi lines and index labels as vectors; **bmp** rasterizes everything.
@@ -213,7 +213,7 @@ Instead of matching the whole image, the orientation can also be found from band
 - **Find** : searches the orientations that explain the picked zone axes (at least 2 points; three are usually enough, two are ambiguous). The angular tolerance is 2°, retried at 5° if nothing is found. Up to 10 candidates are written to the same candidate table, and clicking a row applies them as above.
 - **Clear** : removes all picked points, the typed indices and the candidates of the last zone-axis search (no undo). Loading a new experimental image does the same.
 
-**Calibrate geometry** refines the detector geometry — pattern centre (PC) and detector distance (DD) — alternately with the orientation, by maximizing the ZNCC between the simulated and experimental patterns. It requires the master pattern, keeps the detector tilt fixed, and writes the result back to the **Coordinates of detector center** X/Y/Z boxes. Since the beam scan of an SEM moves the pattern centre by only a fraction of a millimetre, one calibration at the beginning of an experiment is usually enough for a whole series of images.
+**Calibrate geometry** refines the detector geometry — pattern centre (PC) and detector distance (DD) — alternately with the orientation, by maximizing the ZNCC between the simulated and experimental patterns. It requires the master pattern, keeps the detector tilt fixed, and writes the result back to the **Coordinates of detector center** X/Y/Z boxes, keeping the detector on the side (+Y or −Y) where it was placed. <!-- 261105Cl 監査: +Y 側の検出器も側を保つ (e1d645d5) --> Since the beam scan of an SEM moves the pattern centre by only a fraction of a millimetre, one calibration at the beginning of an experiment is usually enough for a whole series of images.
 
 ---
 

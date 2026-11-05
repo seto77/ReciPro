@@ -39,7 +39,7 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 | パラメータ | 説明 | 既定値 / 典型値 |
 |-----------|------|-----------------|
-| **加速電圧 (kV)** | 加速電圧。相対論補正された電子波長が右に表示されます | 200 kV |
+| **加速電圧** <!-- 261105Cl 監査: 見出しから (kV) を外した (numericBoxAccVol.HeaderText)。単位は欄の右に出る --> | 加速電圧 (kV)。相対論補正された電子波長が右に表示されます | 200 kV |
 | **デフォーカス Δf** | 対物レンズのデフォーカス (nm)。下に **シェルツァーデフォーカス** の参考値が表示されます | −57.8 nm |
 | **Cs** | 球面収差係数 (mm)。CTFとシェルツァーデフォーカスに影響します。負の値（−20〜20 mm）も入力できます | 1.0 mm（既定）。0.5–1.0（通常）、< 0.01（Cs補正） <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.Designer.cs / FormImageSimulator.ja.resx:numericBoxDeltaV.HeaderText) --> |
 | **Cc** | 色収差係数 (mm)。エネルギー幅による像のぼけを決めます | 1.4 mm（既定）。1.0–2.0 mm |
@@ -54,7 +54,7 @@ $$\chi(u) = \pi\lambda\,\Delta f\,u^2 + \tfrac{\pi}{2}\,C_s\lambda^3 u^4$$
 で、各回折波に $\exp[-i\chi(u)]$ を掛けます。したがって **Δf が負のときがアンダーフォーカス** です（シェルツァーデフォーカスが負になる流儀）。
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: FormImageSimulator.cs:zeroAllToolStripMenuItem_Click / presets1ToolStripMenuItem_Click〜presets4) -->
-> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **収差をすべて0に設定** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセットリスト](index.md#preset-list) 参照）。
+> **右クリックメニュー**: TEMの条件パネルでは、**デフォーカスを0 nmに設定** / **デフォーカスをシェルツァー値に設定** / **収差をすべて0に設定** をワンクリックで行えます（最後のものは Cs・Cc・β・ΔV に加えて **デフォーカスも** 0 にします）。同じメニューに顕微鏡プリセットが 4 つあります — *300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔV 0.3) ARM300F*、*200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔV 0.8) 2100F*、*200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔV 0.8) 2100F*、*200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔV 2.0) 2100*（項目名は英語のみ）。項目名に書かれた加速電圧・Cs・Cc・ΔV を設定し、デフォーカスをシェルツァー値にします（β は変更しません）。右下の **条件プリセット** で開くウィンドウは、利用者が自分の条件を保存するためのものです（[プリセットリスト](index.md#preset-list) 参照）。 <!-- 261105Cl 監査: プリセット名は ΔV (FormImageSimulator.resx presets1〜4ToolStripMenuItem.Text) -->
 
 ### シェルツァーデフォーカス
 
@@ -102,9 +102,10 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 
 ---
 
-## HREM オプション（部分コヒーレンスモデル）
+## HRTEM オプション（部分コヒーレンスモデル）
 
-![HREM オプション](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxHREMoption2.Text「HRTEM オプション」) に合わせた -->
+![HRTEM オプション](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 <!-- 261105Cl コードから起こした修正。別担当がコードと再照合済み (誤りは訂正) (根拠: BetheMethod.cs:GetHRTEMImage (入射方向は k=(0,0) の 1 方向のみ)) -->
 部分コヒーレンス（β と焦点広がり δ）の取り込み方を選びます。出射波は 1 つの入射方向（光軸方向）についてだけ計算し、照射角の広がりとエネルギー幅は下記のエンベロープ関数としてのみ入ります。
@@ -117,9 +118,10 @@ $$E_\text{s}(u)=\exp\!\left[-\pi^2\beta^2u^2\left(\Delta f+C_s\lambda^2u^2\right
 
 ---
 
-## 画像モード（単一 / シリーズ画像）
+## 単一/シリーズ画像
 
-![画像モード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+<!-- 261105Cl 監査: 見出しを画面 (groupBoxSerialImage.Text「単一/シリーズ画像」) に合わせた -->
+![単一/シリーズ画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 - **単一画像** : 現在の厚さとデフォーカスで1枚のHRTEM像を計算します。
 - **シリーズ画像** : 厚さ・デフォーカスを段階的に変えた一連の画像（through-thickness / through-focus シリーズ）を生成します。実験像とのベストマッチ条件探索に有用です。

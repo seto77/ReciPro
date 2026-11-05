@@ -97,7 +97,7 @@ The panel at the lower left adjusts how the result looks — brightness, color, 
 
 - **Min** / **Max** : lower (black) and upper (white) ends of the displayed intensity range. Use the trackbars to adjust the contrast.
 - **Color** : color scale of the image — **Gray scale** or **Cold-Warm** (blue to red).
-- **Gaussian Blur (FWHM)** : when checked, applies a Gaussian blur with the full width at half maximum (pm) given on the right, approximating a finite resolution (point-spread function).
+- **Gaussian Blur (FWHM)** : when checked, applies a Gaussian blur with the full width at half maximum (pm) given on the right, approximating a finite resolution (point-spread function). While it is checked, newly calculated images are blurred as well. The FWHM is converted to pixels with the **Resolution** (pm/px) each image was calculated with. <!-- 261105Cl 監査: FormImageSimulator.cs:ApplyGaussianBlur -->
 
 ### Normalization
 
@@ -140,11 +140,11 @@ Sets the items overlaid on the image.
 
 <!-- screenshot: Preset list window (FormPresets) with a few entries -->
 
-The **Preset list** window keeps named snapshots of the simulator settings. A snapshot stores the image mode, accelerating voltage, Cs, Cc, ΔV, defocus, β, objective aperture (size and shift), HRTEM partial-coherence model, thickness and the serial thickness / defocus lists, image size and resolution, number of Bloch waves, and the STEM settings (convergence angle, detector angles, source size, slice thickness, angular resolution, **Calculate EDX maps** and **Line series (Kα, Lα…)**). The list is saved with ReciPro's settings and survives a restart.
+The **Preset list** window keeps named snapshots of the simulator settings. A snapshot stores the image mode, accelerating voltage, Cs, Cc, ΔV, defocus, β, objective aperture (size and shift), HRTEM partial-coherence model, thickness, the single/serial mode, which quantities a series sweeps (thickness / defocus) with their **Start / Step / Num**, the serial thickness / defocus lists, image size and resolution, number of Bloch waves, and the STEM settings (convergence angle, detector angles, source size, slice thickness, angular resolution, **Calculate EDX maps** and **Line series (Kα, Lα…)**). The list is saved with ReciPro's settings and survives a restart. Presets saved by earlier versions do not hold the single/serial settings; applying them leaves those settings unchanged. <!-- 261105Cl 監査: FormPresets.cs ImageSimulatorSetting (SerialImageMode ほか) -->
 
 - Clicking an entry applies it immediately.
 - **OK** closes the window and keeps the current settings; **Cancel** (or <kbd>Esc</kbd>) closes it and restores the settings that were in effect when the window was opened.
-- **Manage the preset list** : when checked, clicking an entry only selects it (it is not applied) and the **Name** box with **Add** / **Replace** / **Rename** / **Delete** appears. **Add** appends the current settings under the given name, **Replace** overwrites the selected entry with the current settings, **Rename** changes only its name.
+- **Manage the preset list** : when checked, clicking an entry only selects it (it is not applied) and the **Name** box with **Add** / **Replace** / **Rename** / **Delete** appears. **Add** appends the current settings under the given name, **Replace** overwrites the selected entry in place with the current settings and the name in the **Name** box, **Rename** changes only its name.
 
 The microscope presets (ARM300F, 2100F, …) are not in this list; they are in the right-click menu of **TEM conditions** (see [HRTEM simulation](1-hrtem-simulation.md#tem-conditions)).
 
