@@ -952,7 +952,8 @@ public partial class FormDiffractionSimulator : FormBase
         var linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
         var logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
 
-        if (Source == WaveSource.Xray)
+        //if (Source == WaveSource.Xray) // 261105Cl 変更前 (監査 C14): 中性子も X 線と同じ 0.1 nm 程度の波長でスポットの σ が大きいのに補正が無く、ガウス表示でほとんど描かれなかった
+        if (Source != WaveSource.Electron) // 261105Cl
         {
             linearCoeff *= 1000;
             logCoeff *= 1000000;
