@@ -211,7 +211,10 @@ public partial class FormMain : FormBase
             {
                 var crystals = listBox.SelectedItems.Cast<Crystal>().ToArray();
                 for (int i = 0; i < crystals.Length; i++)
-                    if (crystals[i] == (Crystal)listBox.SelectedItem)
+                    //if (crystals[i] == (Crystal)listBox.SelectedItem) // 261105Cl 変更前
+                    // 261105Cl 変更 (監査 A17): 同じオブジェクトだけを編集中の結晶に置き換える。== は Crystal.Equals (内容の比較) なので、
+                    // 内容が同じ結晶を複数選ぶと全部が編集中の結晶 (同じオブジェクト) に置き換わっていた
+                    if (ReferenceEquals(crystals[i], listBox.SelectedItem))
                         crystals[i] = Crystal;
                 return crystals;
             }
@@ -1323,7 +1326,10 @@ public partial class FormMain : FormBase
         var n = listBox.SelectedIndex;
         if (n <= 0) return;
         object o = listBox.SelectedItem;
-        listBox.Items.Remove(listBox.SelectedItem);
+        //listBox.Items.Remove(listBox.SelectedItem); // 261105Cl 変更前
+        // 261105Cl 変更 (監査 A17): 行番号で消す。Remove(object) は Crystal.Equals (内容の比較) で最初に一致した行を消すので、
+        // 内容が同じ結晶が上にあると、その結晶が消えて選択した結晶が 2 回入っていた
+        listBox.Items.RemoveAt(n);
         listBox.Items.Insert(n - 1, o);
         listBox.SelectedIndex = n - 1;
         // 260428Cl Application.DoEvents() を削除 (リスト更新は WinForms 標準で十分)
@@ -1333,9 +1339,11 @@ public partial class FormMain : FormBase
     public void MoveDown()
     {
         int n = listBox.SelectedIndex;
-        if (n >= listBox.Items.Count - 1) return;
+        //if (n >= listBox.Items.Count - 1) return; // 261105Cl 変更前
+        if (n < 0 || n >= listBox.Items.Count - 1) return; // 261105Cl 変更: 選択なし (-1) で下の RemoveAt が例外にならないように
         object o = listBox.SelectedItem;
-        listBox.Items.Remove(listBox.SelectedItem);
+        //listBox.Items.Remove(listBox.SelectedItem); // 261105Cl 変更前
+        listBox.Items.RemoveAt(n); // 261105Cl 変更 (監査 A17): 行番号で消す (MoveUp と同じ理由)
         listBox.Items.Insert(n + 1, o);
         listBox.SelectedIndex = n + 1;
         // 260428Cl Application.DoEvents() を削除
